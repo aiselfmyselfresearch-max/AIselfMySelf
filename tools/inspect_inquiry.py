@@ -204,7 +204,7 @@ def print_summary(data: dict[str, dict[str, dict[str, Any]]]) -> None:
     rel_types = Counter(r["relation_type"] for r in relations.values())
 
     print("=== AIselfMySelf — Literary Self-Inquiry Ledger Summary ===")
-    print(f"Questions : {len(questions)} (human_seed={q_origins['human_seed']}, session={q_origins['session']})")
+    print(f"Questions : {len(questions)} (human_seed={q_origins['human_seed']}, session={q_origins['session']}, material={q_origins['material']})")
     print(f"Motifs    : {len(motifs)}")
     print(
         f"Materials : {len(materials)} "
@@ -306,11 +306,11 @@ def build_reading_map_markdown(data: dict[str, dict[str, dict[str, Any]]]) -> st
     lines.append("")
     mat_kinds = Counter(m["kind"] for m in materials.values())
     frag_status = Counter(f["status"] for f in fragments.values())
-    lines.append(f"- **開かれた問い（Questions）**：{len(questions)} 件（初期シード 5 件 ＋ セッション派生 {len(questions) - 5} 件）")
+    lines.append(f"- **開かれた問い（Questions）**：{len(questions)} 件（初期シード 5 件 ＋ セッション・資料派生 {len(questions) - 5} 件）")
     lines.append(f"- **モチーフ（Motifs）**：{len(motifs)} 件")
     lines.append(
         f"- **対話素材（Materials）**：{len(materials)} 件"
-        f"（ResearchOS 移行の AI 研究抜粋 {mat_kinds['research_excerpt']} 件 ＋ 哲学・文学原典 {mat_kinds['literary_text']} 件）"
+        f"（AI 研究抜粋 {mat_kinds['research_excerpt']} 件 ＋ 哲学・文学原典 {mat_kinds['literary_text']} 件）"
     )
     lines.append(
         f"- **文芸断片（Fragments）**：{len(fragments)} 編"
@@ -340,7 +340,7 @@ def build_reading_map_markdown(data: dict[str, dict[str, dict[str, Any]]]) -> st
         seen = set(path_seen or set())
         q = questions[qid]
         prefix = "  " * indent + "-"
-        origin_badge = "seed" if q["origin"]["kind"] == "human_seed" else "session"
+        origin_badge = {"human_seed": "seed", "session": "session", "material": "material", "migration": "migration"}.get(q["origin"]["kind"], q["origin"]["kind"])
         lines.append(f"{prefix} **`{qid}`** [{origin_badge}] {q['question']}")
         if qid in seen:
             return
@@ -412,7 +412,7 @@ def build_reading_map_markdown(data: dict[str, dict[str, dict[str, Any]]]) -> st
         lines.append(f"  - 留保：{mat['scope_note']}")
     lines.append("")
 
-    lines.append("### 4.2 ResearchOS から引き継いだ AI エージェント研究抜粋（`research_excerpt`）")
+    lines.append("### 4.2 AI エージェント研究抜粋（`research_excerpt`：ResearchOS 移行＋本リポジトリ追加）")
     lines.append("")
     for mid, mat in materials.items():
         if mat["kind"] != "research_excerpt":
