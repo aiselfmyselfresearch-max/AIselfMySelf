@@ -12,6 +12,7 @@ Usage examples:
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -112,9 +113,13 @@ def build_context_packet(data: dict[str, dict[str, dict[str, Any]]], target_qid:
         raise ValueError(f"unknown question ID: {target_qid!r}")
 
     q = questions[target_qid]
-    next_session_num = len(sessions) + 1
-    next_frag_num = len(fragments) + 1
-    next_q_num = len(questions) + 1
+    def next_number(ids) -> int:
+        numbers = [int(m.group(1)) for i in ids if (m := re.search(r"(\d+)$", i))]
+        return (max(numbers) if numbers else 0) + 1
+
+    next_session_num = next_number(sessions)
+    next_frag_num = next_number(fragments)
+    next_q_num = next_number(questions)
 
     # Gather related fragments (referencing target_qid or its parent questions)
     related_qids = {target_qid} | set(q.get("previous_question_ids", []))
@@ -316,7 +321,7 @@ def build_reading_map_markdown(data: dict[str, dict[str, dict[str, Any]]]) -> st
     lines.append("")
 
     # Section 1: Motifs
-    lines.append("## 1. 問いを横断する 6 つのモチーフ")
+    lines.append(f"## 1. 問いを横断する {len(motifs)} つのモチーフ")
     lines.append("")
     lines.append("| ID | モチーフ | 説明 | 関連する問い | 素材数 |")
     lines.append("|---|---|---|---|---:|")
