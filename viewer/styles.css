@@ -389,6 +389,29 @@ code {
   border-radius: 6px;
 }
 
+.literary-body.form-other {
+  background: var(--bg);
+  padding: 1.35rem 1.6rem;
+  border-left: 3px solid var(--accent-crimson);
+  border-radius: 0 6px 6px 0;
+}
+
+.packet-pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow);
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  max-height: 70vh;
+  overflow-y: auto;
+  margin: 0;
+}
+
 .dialogue-turn {
   margin-bottom: 0.9rem;
   display: grid;

@@ -8,7 +8,7 @@
     poem: "詩的断章",
     essay: "エッセイ",
     fragment: "断章",
-    other: "その他",
+    other: "編集覚書・連作",
   };
 
   const NARRATOR_INFO = {
@@ -91,6 +91,9 @@
     });
     if (viewName === "constellation") {
       renderConstellation();
+    }
+    if (viewName === "packet") {
+      loadPacketPreview();
     }
   }
 
@@ -710,6 +713,80 @@
     bindJumpButtons(container);
   }
 
+  /* View 6: Context Packet Builder */
+  function buildFallbackPacket(qid) {
+    const q = STATE.byId[qid] || STATE.questions[STATE.questions.length - 1];
+    const relQids = new Set([q.question_id, ...(q.previous_question_ids || [])]);
+    const relFrags = STATE.fragments.filter((f) => f.question_ids.some((id) => relQids.has(id))).slice(-3);
+    const out = [
+      `# 継続セッション用コンテキスト束（対象：${q.question_id}）`,
+      "",
+      `## 1. 今回たどる問い`,
+      `- ID: ${q.question_id}`,
+      `- 問い: ${q.question}`,
+      `- 来歴: ${q.origin.detail}`,
+      "",
+      `## 2. 対話素材`,
+      ...(q.material_ids || []).map((mid) => {
+        const m = STATE.byId[mid];
+        return m ? `- ${mid} (${m.title}): "${m.passage}"\n  留保: ${m.scope_note}` : `- ${mid}`;
+      }),
+      "",
+      `## 3. 先行断片`,
+      ...relFrags.map((f) => `### ${f.fragment_id}: ${f.title}\n${f.text}\n`),
+    ];
+    return out.join("\n");
+  }
+
+  function populatePacketSelect() {
+    const select = document.getElementById("packet-q-select");
+    const responded = new Set(
+      STATE.relations
+        .filter((r) => (r.relation_type === "responds_to" || r.relation_type === "reframes") && r.right.type === "question")
+        .map((r) => r.right.id)
+    );
+    const sorted = STATE.questions.slice().sort((a, b) => {
+      const aOpen = !responded.has(a.question_id) ? 0 : 1;
+      const bOpen = !responded.has(b.question_id) ? 0 : 1;
+      return aOpen - bOpen;
+    });
+    select.innerHTML = sorted
+      .map((q) => {
+        const seedTag = !responded.has(q.question_id) ? "[次の種] " : "";
+        return `<option value="${escapeHtml(q.question_id)}">${escapeHtml(seedTag + q.question_id + ": " + q.question.slice(0, 34))}…</option>`;
+      })
+      .join("");
+    select.addEventListener("change", loadPacketPreview);
+
+    const copyBtn = document.getElementById("copy-packet-btn");
+    copyBtn.addEventListener("click", async () => {
+      const text = document.getElementById("packet-preview").textContent;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+        const prev = copyBtn.textContent;
+        copyBtn.textContent = "コピーしました";
+        setTimeout(() => (copyBtn.textContent = prev), 1500);
+      }
+    });
+  }
+
+  async function loadPacketPreview() {
+    const select = document.getElementById("packet-q-select");
+    const preview = document.getElementById("packet-preview");
+    const qid = select.value || "auto";
+    try {
+      const res = await fetch(`./api/packet?question_id=${encodeURIComponent(qid)}`, { cache: "no-store" });
+      if (res.ok) {
+        const json = await res.json();
+        preview.textContent = json.packet;
+        return;
+      }
+    } catch (_e) {
+      // Fallback below
+    }
+    preview.textContent = buildFallbackPacket(qid);
+  }
+
   async function init() {
     const raw = await loadData();
     const byId = {};
@@ -731,6 +808,7 @@
 
     renderStats();
     populateMotifFilter();
+    populatePacketSelect();
     renderFragmentList();
     renderRelationLegend();
     renderQuestionsTree();
