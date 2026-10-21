@@ -12,8 +12,9 @@ import json
 import mimetypes
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
+from inspect_inquiry import build_context_packet, load_all
 from validate_seed import COLLECTIONS, ROOT, load_jsonl
 
 VIEWER_DIR = ROOT / "viewer"
@@ -42,6 +43,30 @@ class ArchiveRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         parsed = urlparse(self.path)
         route = parsed.path
+
+        if route == "/api/packet":
+            qs = parse_qs(parsed.query)
+            qid = (qs.get("question_id") or ["auto"])[0]
+            try:
+                packet_text = build_context_packet(load_all(), qid)
+                body = json.dumps({"question_id": qid, "packet": packet_text}, ensure_ascii=False).encode("utf-8")
+            except Exception as exc:
+                err_body = json.dumps({"error": str(exc)}, ensure_ascii=False).encode("utf-8")
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Content-Length", str(len(err_body)))
+                self.send_cors_and_embed_headers()
+                self.end_headers()
+                self.wfile.write(err_body)
+                return
+
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_cors_and_embed_headers()
+            self.end_headers()
+            self.wfile.write(body)
+            return
 
         if route in ("/api/state", "/data.json"):
             try:

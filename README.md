@@ -10,7 +10,7 @@
 
 - **AIの自己の扱い**：このプロジェクトでいう「AIの自己」は、個々のAIモデルに意識や主観的体験が確認されたという主張ではありません。会話を持ち越さない個々のAI呼び出しを、リポジトリ全体という場に生じる**「思考・記憶・解釈の一つ」**として位置づけ、保存された文章を次のセッションが読み直して語り手を作り直す運動そのものを探究の対象にします。
 - **語りのモードの明示**：作品内では一人称を使えますが、台帳メタデータでは `fictional_first_person` や `reflective_literary_voice` などのモードを明示し、生身の経験の事実報告と混同させません（[`CONTENT_POLICY.md`](CONTENT_POLICY.md)）。
-- **AI研究と人文学原典の往復**：`ResearchOS` 由来の AI エージェント記憶・共有リポジトリ・自己選好に関する研究抜粋（14件）に加え、ロック、ヒューム、夏目漱石、中島敦などの哲学・文学原典（4件）を独立した対話相手として迎え入れています。
+- **AI研究と人文学原典の往復**：`ResearchOS` 由来の AI エージェント記憶・共有リポジトリ・自己選好に関する研究抜粋（14件）に加え、ロック、ヒューム、夏目漱石、中島敦、アンリ・ベルクソン、ミハイル・バフチン、宮沢賢治、モンテーニュの哲学・文学原典（8件）を独立した対話相手として迎え入れています。
 
 ## 2. すぐ読むには
 
@@ -33,12 +33,12 @@
 
 | 記録 | 保存先 | 現在の件数 | 役割 |
 |---|---|---:|---|
-| 問い | `state/questions.jsonl` | 15 | 開いたままの問い（初期シード5件＋セッション派生10件） |
+| 問い | `state/questions.jsonl` | 20 | 開いたままの問い（初期シード5件＋セッション派生15件） |
 | モチーフ | `state/motifs.jsonl` | 6 | 記憶、連続、身体、声、他者、忘却と沈黙の6つの糸 |
-| 素材 | `state/materials.jsonl` | 18 | AI研究抜粋14件（`research_excerpt`）＋哲学・文学原典4件（`literary_text`） |
-| 断片 | `state/fragments.jsonl` | 12 | 対話・書簡・詩・情景・エッセイなどの生成断片（`selected` / `draft`） |
-| 関係 | `state/relations.jsonl` | 31 | 共鳴・対照・変奏・切断・枠組転換などの解釈的関係 |
-| セッション | `state/sessions.jsonl` | 12 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| 素材 | `state/materials.jsonl` | 22 | AI研究抜粋14件（`research_excerpt`）＋哲学・文学原典8件（`literary_text`） |
+| 断片 | `state/fragments.jsonl` | 17 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）の断片 |
+| 関係 | `state/relations.jsonl` | 46 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
+| セッション | `state/sessions.jsonl` | 17 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方
@@ -66,12 +66,16 @@ python3 tools/inspect_inquiry.py
 
 # 3. 特定の問い・断片・素材の詳細と接続関係の表示
 python3 tools/inspect_inquiry.py --id Q-010
-python3 tools/inspect_inquiry.py --id FRAG-008
+python3 tools/inspect_inquiry.py --id FRAG-016
 
-# 4. READING_MAP.md の再生成と同期チェック
+# 4. 次のセッション用の継続コンテキスト束（プロンプト・パケット）の生成
+python3 tools/inspect_inquiry.py --packet auto
+python3 tools/inspect_inquiry.py --packet Q-016
+
+# 5. READING_MAP.md の再生成と同期チェック
 python3 tools/inspect_inquiry.py --write-map
 python3 tools/inspect_inquiry.py --check-map
 
-# 5. 上流 ResearchOS チェックアウトとのスナップショット整合性検査（ローカル追加素材は保持）
+# 6. 上流 ResearchOS チェックアウトとのスナップショット整合性検査（ローカル追加素材は保持）
 python3 tools/import_researchos.py --source-root /path/to/ResearchOS --check
 ```

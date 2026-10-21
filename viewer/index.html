@@ -41,6 +41,9 @@
       <button class="tab-btn" role="tab" aria-selected="false" data-view="sessions">
         セッション年譜
       </button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-view="packet">
+        次の思考を編む
+      </button>
     </nav>
   </header>
 
@@ -66,6 +69,7 @@
                 <option value="scene">情景 (scene)</option>
                 <option value="poem">詩的断章 (poem)</option>
                 <option value="fragment">断章 (fragment)</option>
+                <option value="other">編集覚書・連作 (other)</option>
               </select>
               <select id="frag-motif-filter" class="select-input" aria-label="モチーフで絞り込み">
                 <option value="all">すべてのモチーフ</option>
@@ -138,6 +142,23 @@
         </p>
       </div>
       <div id="sessions-timeline" class="timeline-list"></div>
+    </section>
+
+    <!-- View 6: Stateless Continuation Packet Builder -->
+    <section id="view-packet" class="view-panel" role="tabpanel" hidden>
+      <div class="section-intro with-controls">
+        <div>
+          <h2>次の思考を編む（継続セッション・コンテキスト束編成）</h2>
+          <p>
+            <code>Stateless Language Agents</code>（<code>MAT-EVD-001</code>）の設計思想に基づき、全履歴を漫然と渡すのではなく、次にたどる問い・モチーフ・原典抜粋・先行断片・<code>prompts/continuation.md</code> を 1 つのプロンプト束として再構成します。
+          </p>
+        </div>
+        <div style="display:flex;gap:0.55rem;align-items:center;flex-wrap:wrap;">
+          <select id="packet-q-select" class="select-input" style="min-width:290px;" aria-label="次のセッションでたどる問い"></select>
+          <button id="copy-packet-btn" type="button" class="btn-ghost">コンテキスト束をコピー</button>
+        </div>
+      </div>
+      <pre id="packet-preview" class="packet-pre" aria-live="polite"></pre>
     </section>
   </main>
 
