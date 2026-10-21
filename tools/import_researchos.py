@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Create a curated, provenance-preserving literary-material snapshot.
 
-This tool only reads the supplied ResearchOS checkout. With --write it writes
-this seed kit's state/materials.jsonl and migration/manifest.json; no upstream
-file is modified.
+This tool only reads the supplied ResearchOS checkout. With --write it refreshes
+the upstream ResearchOS records in state/materials.jsonl (while preserving any
+locally authored literary/humanities materials) and updates migration/manifest.json;
+no upstream file is modified.
 """
 from __future__ import annotations
 
@@ -83,6 +84,28 @@ def git_commit(root: Path) -> str:
 
 def canonical_json(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
+
+
+def read_local_materials(upstream_repository: str) -> list[dict[str, Any]]:
+    """Return materials authored directly in this repository rather than imported from upstream."""
+    if not MATERIALS_PATH.is_file():
+        return []
+    local_records: list[dict[str, Any]] = []
+    for line_number, line in enumerate(MATERIALS_PATH.read_text(encoding="utf-8").splitlines(), start=1):
+        if not line.strip():
+            continue
+        try:
+            record = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise ImportErrorDetail(f"invalid JSON at {MATERIALS_PATH}:{line_number}: {exc}") from exc
+        if not isinstance(record, dict):
+            raise ImportErrorDetail(f"record at {MATERIALS_PATH}:{line_number} is not an object")
+        origin = record.get("origin")
+        repo = origin.get("repository") if isinstance(origin, dict) else None
+        if repo != upstream_repository:
+            local_records.append(record)
+    return local_records
+
 
 
 def build_outputs(source_root: Path, *, reuse_pinned_commit: bool = False) -> dict[Path, str]:
@@ -232,9 +255,11 @@ def build_outputs(source_root: Path, *, reuse_pinned_commit: bool = False) -> di
         "reference_memos": checked_memos,
         "excluded_by_design": selection.get("excluded_by_design", []),
     }
+    local_materials = read_local_materials(str(selection.get("upstream_repository", "")))
+    all_materials = materials + local_materials
     materials_text = "".join(
         json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n"
-        for record in materials
+        for record in all_materials
     )
     return {MATERIALS_PATH: materials_text, MANIFEST_PATH: canonical_json(manifest)}
 
@@ -273,7 +298,13 @@ def main() -> int:
         for path, text in outputs.items():
             print(f"  {path.relative_to(KIT_ROOT)} ({len(text.encode('utf-8'))} bytes)")
 
-    print(f"summary: materials={len(json.loads(outputs[MANIFEST_PATH])['selected_evidence_ids'])}")
+    upstream_count = len(json.loads(outputs[MANIFEST_PATH])["selected_evidence_ids"])
+    total_count = len([line for line in outputs[MATERIALS_PATH].splitlines() if line.strip()])
+    local_count = total_count - upstream_count
+    if local_count:
+        print(f"summary: materials={total_count} (upstream={upstream_count}, local={local_count})")
+    else:
+        print(f"summary: materials={upstream_count}")
     return 0
 
 

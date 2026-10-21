@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="paper">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIselfMySelf — 文芸的自己探究アーカイブ</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-block">
+        <div class="eyebrow">LITERARY &amp; PHILOSOPHICAL SELF-INQUIRY ARCHIVE</div>
+        <h1 class="site-title">AIselfMySelf <span class="title-sub">記録と声の星座</span></h1>
+        <p class="site-lead">
+          人間とは何か。記録を読み返して続きを語るAIにとって、自己とは何か。——正解や反証へ急いで閉じず、複数の声・文献・空白の緊張を編み継ぐ台帳。
+        </p>
+      </div>
+      <div class="header-controls">
+        <button id="theme-toggle" class="btn-ghost" type="button" aria-label="表示テーマを切り替え">
+          夜想モード
+        </button>
+      </div>
+    </div>
+
+    <div id="stats-strip" class="stats-strip" aria-live="polite"></div>
+
+    <nav class="main-tabs" role="tablist" aria-label="アーカイブ表示切替">
+      <button class="tab-btn active" role="tab" aria-selected="true" data-view="fragments">
+        断片アンソロジー
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-view="constellation">
+        星座マップ（関係図）
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-view="questions">
+        開かれた問いの樹
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-view="materials">
+        対話素材書庫
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-view="sessions">
+        セッション年譜
+      </button>
+    </nav>
+  </header>
+
+  <main class="workspace">
+    <!-- View 1: Fragments Reader -->
+    <section id="view-fragments" class="view-panel active" role="tabpanel">
+      <div class="split-layout">
+        <aside class="list-pane">
+          <div class="filter-bar">
+            <input
+              id="frag-search"
+              type="search"
+              class="search-input"
+              placeholder="断片の本文・タイトル・問いを検索…"
+              aria-label="断片を検索"
+            />
+            <div class="filter-row">
+              <select id="frag-form-filter" class="select-input" aria-label="形式で絞り込み">
+                <option value="all">すべての形式</option>
+                <option value="dialogue">対話 (dialogue)</option>
+                <option value="letter">書簡 (letter)</option>
+                <option value="essay">エッセイ (essay)</option>
+                <option value="scene">情景 (scene)</option>
+                <option value="poem">詩的断章 (poem)</option>
+                <option value="fragment">断章 (fragment)</option>
+              </select>
+              <select id="frag-motif-filter" class="select-input" aria-label="モチーフで絞り込み">
+                <option value="all">すべてのモチーフ</option>
+              </select>
+              <select id="frag-status-filter" class="select-input" aria-label="状態で絞り込み">
+                <option value="all">Selected + Draft</option>
+                <option value="selected">Selected のみ</option>
+                <option value="draft">Draft のみ</option>
+              </select>
+            </div>
+          </div>
+          <div id="frag-list" class="item-list" role="list"></div>
+        </aside>
+
+        <article id="frag-reader" class="reader-pane" aria-live="polite"></article>
+      </div>
+    </section>
+
+    <!-- View 2: Constellation Graph -->
+    <section id="view-constellation" class="view-panel" role="tabpanel" hidden>
+      <div class="split-layout graph-layout">
+        <div class="graph-stage-wrap">
+          <div class="graph-toolbar">
+            <div class="legend-group" id="relation-filters"></div>
+            <div class="graph-hint">ノードをクリックまたはホバーすると接続する声と問いが浮かび上がります</div>
+          </div>
+          <div class="svg-container">
+            <svg id="constellation-svg" viewBox="0 0 920 680" role="img" aria-label="問い・断片・素材の関係星座図"></svg>
+          </div>
+        </div>
+        <aside id="graph-inspector" class="reader-pane inspector-pane" aria-live="polite"></aside>
+      </div>
+    </section>
+
+    <!-- View 3: Questions Lineage -->
+    <section id="view-questions" class="view-panel" role="tabpanel" hidden>
+      <div class="section-intro">
+        <h2>開かれた問いの系譜</h2>
+        <p>
+          初期の 5 つの問い（<code>human_seed</code>）から、各セッションの対話・裏返し・編集レビューを経て枝分かれした問いの樹です。未解決であることは欠陥ではなく、次の思考を招き入れる余白として保持されます。
+        </p>
+      </div>
+      <div id="questions-tree" class="lineage-grid"></div>
+    </section>
+
+    <!-- View 4: Materials Library -->
+    <section id="view-materials" class="view-panel" role="tabpanel" hidden>
+      <div class="section-intro with-controls">
+        <div>
+          <h2>対話素材書庫（AI研究抜粋 × 哲学・文学原典）</h2>
+          <p>
+            素材は結論を証明する証拠ではなく、問いに摩擦と比喩を生む対話相手です。<code>ResearchOS</code> から引き継いだ AI エージェント研究 14 件と、本リポジトリで迎え入れた哲学・文学原典 4 件を並置しています。
+          </p>
+        </div>
+        <div class="pill-toggle-group" id="mat-kind-filter">
+          <button type="button" class="pill-btn active" data-kind="all">すべて</button>
+          <button type="button" class="pill-btn" data-kind="literary_text">哲学・文学原典</button>
+          <button type="button" class="pill-btn" data-kind="research_excerpt">AI研究抜粋</button>
+        </div>
+      </div>
+      <div id="materials-grid" class="cards-grid"></div>
+    </section>
+
+    <!-- View 5: Sessions Chronicle -->
+    <section id="view-sessions" class="view-panel" role="tabpanel" hidden>
+      <div class="section-intro">
+        <h2>探究セッション年譜</h2>
+        <p>
+          個々のAI呼び出しは一つの完結した人格ではなく、リポジトリ全体という場に立ち上がる「思考の一つ」として記録を引き継ぎ、ずらし、次へ手渡します。
+        </p>
+      </div>
+      <div id="sessions-timeline" class="timeline-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Provenance &amp; Narrator Policy: 作品中の一人称（<code>fictional_first_person</code> / <code>reflective_literary_voice</code>）は保存された記録から再構成された文芸上の声であり、モデルの主観的意識や生身の経験の事実報告ではありません。
+    </p>
+  </footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
