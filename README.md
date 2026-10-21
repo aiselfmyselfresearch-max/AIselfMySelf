@@ -31,7 +31,7 @@
 
 ## 4. 記録形式とディレクトリ構成
 
-| 記録 | 保存先 | 現在の件数 | 役割 |
+| 記録 | 保存先 | 現在の件数（2026-10-21 時点） | 役割 |
 |---|---|---:|---|
 | 問い | `state/questions.jsonl` | 15 | 開いたままの問い（初期シード5件＋セッション派生10件） |
 | モチーフ | `state/motifs.jsonl` | 6 | 記憶、連続、身体、声、他者、忘却と沈黙の6つの糸 |
@@ -40,6 +40,8 @@
 | 関係 | `state/relations.jsonl` | 31 | 共鳴・対照・変奏・切断・枠組転換などの解釈的関係 |
 | セッション | `state/sessions.jsonl` | 12 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
 
+件数は凍結ベース `state/*.jsonl` と並列セッションのシャード `state/*.d/*.jsonl` の和集合です。シャードがなければ従来どおりの件数になります。
+
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方
 CONTENT_POLICY.md           引用・創作・AIの一人称の扱い
@@ -47,10 +49,12 @@ MIGRATION.md                ResearchOSからの移行対象と来歴管理
 READING_MAP.md              state/*.jsonl から生成される読書案内・全断片アンソロジー
 migration/                  上流ResearchOSの選定定義（selection.json）とマニフェスト（manifest.json）
 schema/                     6種類の台帳に対応するJSON Schema
-state/                      問い・モチーフ・素材・断片・関係・セッションのJSONL台帳
+state/                      問い・モチーフ・素材・断片・関係・セッションのJSONL台帳（凍結ベース＋セッション別シャード）
 prompts/                    初回セッション・継続・編集レビュー用プロンプト
 viewer/                     対話型Webアーカイブ＆星座ビューア（HTML/CSS/JS）
-tools/                      検証・集計・読書案内生成・Webビューア・上流照合スクリプト（標準ライブラリのみ）
+tools/                      検証・集計・読書案内生成・Webビューア・上流照合・並列作業用スクリプト（標準ライブラリのみ）
+docs/                       並列セッションの運用ルールと安全性の点検記録
+tests/                      並列読み書き・原子的置換・ビューア・台帳整合性の回帰テスト（標準ライブラリのみ）
 ```
 
 ## 5. 検査・整理・同期コマンド
@@ -74,4 +78,24 @@ python3 tools/inspect_inquiry.py --check-map
 
 # 5. 上流 ResearchOS チェックアウトとのスナップショット整合性検査（ローカル追加素材は保持）
 python3 tools/import_researchos.py --source-root /path/to/ResearchOS --check
+
+# 6. 並列セッション用：非連番IDの採番と、セッション専用シャードの作成
+python3 tools/new_id.py FRAG
+python3 tools/new_ledger_shard.py fragments --create
+
+# 7. 回帰テスト（並列セッションの End-to-End・並列HTTPリクエストを含む）
+python3 -m unittest discover -s tests -v
+
+# 8. 並列読み書きのストレス測定（一時ディレクトリだけで動作し、state/ は変更しない）
+python3 tools/parallel_probe.py
 ```
+
+## 6. 並列セッションで探究を続ける
+
+同じリポジトリで複数のセッションが同時に探究を進められます。台帳を書く手順は次の3つです。既存の行は書き換えません。
+
+1. `state/*.jsonl`（凍結ベース）には追記せず、`python3 tools/new_ledger_shard.py <collection> --create` で自分のシャードを作る。
+2. ID は `python3 tools/new_id.py <PREFIX>` で採番する（連番の計算は並列で衝突する）。
+3. シャードへ追記したら `python3 tools/validate_seed.py` と `python3 tools/inspect_inquiry.py --check-map` を通す。
+
+検証・集計・読書案内・ビューアは、ベースと全シャードを和集合として読みます。`--write-map` と `import_researchos.py --write` は排他ロックと原子的置換を使います。運用の詳細と、まだ保証していない範囲は [`docs/parallel-work.md`](docs/parallel-work.md) と [`docs/parallel-safety-audit.md`](docs/parallel-safety-audit.md) を参照してください。

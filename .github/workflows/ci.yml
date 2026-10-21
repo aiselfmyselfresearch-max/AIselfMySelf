@@ -1,0 +1,32 @@
+name: ledger-ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate ledgers (base + shards)
+        run: python3 tools/validate_seed.py
+
+      - name: Check READING_MAP.md is current
+        run: python3 tools/inspect_inquiry.py --check-map
+
+      - name: Check viewer JavaScript syntax
+        run: node --check viewer/app.js
+
+      - name: Run regression tests
+        run: python3 -m unittest discover -s tests -v

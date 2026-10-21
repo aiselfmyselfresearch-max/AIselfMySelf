@@ -64,15 +64,36 @@
       .replace(/'/g, "&#39;");
   }
 
+  async function fetchArchiveJson(url) {
+    const maxAttempts = 3;
+    for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
+      let res;
+      try {
+        res = await fetch(url, { cache: "no-store" });
+      } catch (_err) {
+        return null; // network failure: fall through to the next URL
+      }
+      if (res.ok) {
+        try {
+          return await res.json();
+        } catch (_err) {
+          return null;
+        }
+      }
+      // 503 means a ledger is being rewritten right now; retry briefly.
+      if (res.status !== 503 || attempt === maxAttempts - 1) {
+        return null;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 250 * (attempt + 1)));
+    }
+    return null;
+  }
+
   async function loadData() {
     for (const url of ["./api/state", "./data.json"]) {
-      try {
-        const res = await fetch(url, { cache: "no-store" });
-        if (res.ok) {
-          return await res.json();
-        }
-      } catch (_err) {
-        // Fall through to fallback static JSON
+      const data = await fetchArchiveJson(url);
+      if (data) {
+        return data;
       }
     }
     throw new Error("台帳データを読み込めませんでした。`python3 tools/serve_viewer.py` を起動してください。");

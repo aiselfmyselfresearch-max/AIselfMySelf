@@ -16,7 +16,8 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from validate_seed import COLLECTIONS, ROOT, load_jsonl
+import ledger_io
+from validate_seed import COLLECTIONS, ROOT
 
 DEFAULT_MAP_PATH = ROOT / "READING_MAP.md"
 
@@ -59,10 +60,16 @@ KIND_LABELS = {
 
 
 def load_all() -> dict[str, dict[str, dict[str, Any]]]:
-    errors: list[str] = []
-    data: dict[str, dict[str, dict[str, Any]]] = {}
-    for name, (filename, id_key, _) in COLLECTIONS.items():
-        data[name] = load_jsonl(ROOT / "state" / filename, id_key, errors)
+    """Load all six ledgers (base files plus session shards) as one snapshot."""
+    specs = {
+        name: (ROOT / "state" / filename, id_key)
+        for name, (filename, id_key, _schema) in COLLECTIONS.items()
+    }
+    try:
+        data, errors = ledger_io.load_collections(specs, root=ROOT)
+    except ledger_io.LedgerBusy as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        raise SystemExit(2) from exc
     if errors:
         for err in errors:
             print(f"error: {err}", file=sys.stderr)
@@ -216,7 +223,13 @@ def build_reading_map_markdown(data: dict[str, dict[str, dict[str, Any]]]) -> st
     lines.append("")
     mat_kinds = Counter(m["kind"] for m in materials.values())
     frag_status = Counter(f["status"] for f in fragments.values())
-    lines.append(f"- **開かれた問い（Questions）**：{len(questions)} 件（初期シード 5 件 ＋ セッション派生 {len(questions) - 5} 件）")
+    seed_questions = sum(
+        1 for q in questions.values() if q.get("origin", {}).get("kind") == "human_seed"
+    )
+    lines.append(
+        f"- **開かれた問い（Questions）**：{len(questions)} 件"
+        f"（初期シード {seed_questions} 件 ＋ セッション派生 {len(questions) - seed_questions} 件）"
+    )
     lines.append(f"- **モチーフ（Motifs）**：{len(motifs)} 件")
     lines.append(
         f"- **対話素材（Materials）**：{len(materials)} 件"
@@ -231,7 +244,7 @@ def build_reading_map_markdown(data: dict[str, dict[str, dict[str, Any]]]) -> st
     lines.append("")
 
     # Section 1: Motifs
-    lines.append("## 1. 問いを横断する 6 つのモチーフ")
+    lines.append(f"## 1. 問いを横断するモチーフ（{len(motifs)} 件）")
     lines.append("")
     lines.append("| ID | モチーフ | 説明 | 関連する問い | 素材数 |")
     lines.append("|---|---|---|---|---:|")
@@ -241,7 +254,7 @@ def build_reading_map_markdown(data: dict[str, dict[str, dict[str, Any]]]) -> st
     lines.append("")
 
     # Section 2: Questions Lineage
-    lines.append("## 2. 開かれた問いの系譜（Q-001 〜 Q-015）")
+    lines.append(f"## 2. 開かれた問いの系譜（{len(questions)} 件）")
     lines.append("")
     lines.append("解決や反証で閉じることを目的とせず、セッションの往復によって問いの輪郭がどう枝分かれしたかを示します。")
     lines.append("")
@@ -335,7 +348,7 @@ def build_reading_map_markdown(data: dict[str, dict[str, dict[str, Any]]]) -> st
     lines.append("")
 
     # Section 5: Sessions Chronicle
-    lines.append("## 5. セッション履歴（SESSION-001 〜 SESSION-012）")
+    lines.append(f"## 5. セッション履歴（{len(sessions)} 回）")
     lines.append("")
     lines.append("| Session | 日付 | テンプレート | たどった問い | 生成断片 | 新しい問い | 方向づけ・メモ |")
     lines.append("|---|---|---|---|---|---|---|")
@@ -360,21 +373,46 @@ def main() -> int:
     action.add_argument("--check-map", action="store_true", help="Verify READING_MAP.md matches current state ledgers")
     args = parser.parse_args()
 
+    if args.write_map:
+        # Regenerate from a fresh union snapshot while holding the writer lock, and
+        # replace the file atomically so a reader never sees a half-written map.
+        try:
+            with ledger_io.exclusive_lock(ROOT / "state" / "questions.jsonl"):
+                data = load_all()
+                expected_md = build_reading_map_markdown(data)
+                ledger_io.atomic_write_text(args.map_path, expected_md)
+        except ledger_io.LedgerLockTimeout as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
+        print(
+            f"WROTE {ledger_io.display_path(args.map_path, ROOT)} "
+            f"({len(expected_md.encode('utf-8'))} bytes)"
+        )
+        return 0
+
     data = load_all()
 
     if args.id:
         return print_record_detail(data, args.id)
 
-    expected_md = build_reading_map_markdown(data)
-    if args.write_map:
-        args.map_path.write_text(expected_md, encoding="utf-8")
-        print(f"WROTE {args.map_path.relative_to(ROOT)} ({len(expected_md.encode('utf-8'))} bytes)")
-        return 0
     if args.check_map:
-        if not args.map_path.is_file() or args.map_path.read_text(encoding="utf-8") != expected_md:
-            print(f"STALE {args.map_path.relative_to(ROOT)}: run `python3 tools/inspect_inquiry.py --write-map`", file=sys.stderr)
+        try:
+            actual_md = (
+                ledger_io.read_text_stable(args.map_path) if args.map_path.is_file() else None
+            )
+        except ledger_io.LedgerBusy as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
+        if actual_md != build_reading_map_markdown(data):
+            print(
+                f"STALE {ledger_io.display_path(args.map_path, ROOT)}: "
+                "run `python3 tools/inspect_inquiry.py --write-map`",
+                file=sys.stderr,
+            )
             return 1
-        print(f"PASS: {args.map_path.relative_to(ROOT)} is up to date with state/*.jsonl")
+        print(
+            f"PASS: {ledger_io.display_path(args.map_path, ROOT)} is up to date with state/*.jsonl"
+        )
         return 0
 
     print_summary(data)
