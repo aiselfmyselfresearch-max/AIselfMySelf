@@ -206,10 +206,12 @@ def print_summary(data: dict[str, dict[str, dict[str, Any]]]) -> None:
     print("=== AIselfMySelf — Literary Self-Inquiry Ledger Summary ===")
     print(f"Questions : {len(questions)} (human_seed={q_origins['human_seed']}, session={q_origins['session']}, material={q_origins['material']})")
     print(f"Motifs    : {len(motifs)}")
-    print(
-        f"Materials : {len(materials)} "
-        f"(research_excerpt={mat_kinds['research_excerpt']}, literary_text={mat_kinds['literary_text']})"
+    mat_breakdown = ", ".join(
+        f"{k}={mat_kinds[k]}"
+        for k in ("research_excerpt", "literary_text", "project_trace", "conversation_trace")
+        if mat_kinds[k]
     )
+    print(f"Materials : {len(materials)} ({mat_breakdown})")
     print(
         f"Fragments : {len(fragments)} "
         f"(selected={frag_status['selected']}, draft={frag_status['draft']}, archived={frag_status['archived']})"
@@ -308,9 +310,17 @@ def build_reading_map_markdown(data: dict[str, dict[str, dict[str, Any]]]) -> st
     frag_status = Counter(f["status"] for f in fragments.values())
     lines.append(f"- **開かれた問い（Questions）**：{len(questions)} 件（初期シード 5 件 ＋ セッション・資料派生 {len(questions) - 5} 件）")
     lines.append(f"- **モチーフ（Motifs）**：{len(motifs)} 件")
+    mat_parts = [
+        f"AI 研究抜粋 {mat_kinds['research_excerpt']} 件",
+        f"哲学・文学原典 {mat_kinds['literary_text']} 件",
+    ]
+    if mat_kinds["project_trace"]:
+        mat_parts.append(f"プロジェクト痕跡 {mat_kinds['project_trace']} 件")
+    if mat_kinds["conversation_trace"]:
+        mat_parts.append(f"対話痕跡 {mat_kinds['conversation_trace']} 件")
     lines.append(
         f"- **対話素材（Materials）**：{len(materials)} 件"
-        f"（AI 研究抜粋 {mat_kinds['research_excerpt']} 件 ＋ 哲学・文学原典 {mat_kinds['literary_text']} 件）"
+        f"（{' ＋ '.join(mat_parts)}）"
     )
     lines.append(
         f"- **文芸断片（Fragments）**：{len(fragments)} 編"
@@ -423,6 +433,24 @@ def build_reading_map_markdown(data: dict[str, dict[str, dict[str, Any]]]) -> st
         lines.append(f"  - 問いへの招き：{mat['literary_invitation']}")
         lines.append(f"  - 留保：{mat['scope_note']}")
     lines.append("")
+
+    trace_items = [
+        (mid, mat)
+        for mid, mat in materials.items()
+        if mat["kind"] in ("project_trace", "conversation_trace")
+    ]
+    if trace_items:
+        lines.append("### 4.3 プロジェクト自身の痕跡（`project_trace` / `conversation_trace`）")
+        lines.append("")
+        for mid, mat in trace_items:
+            authors = ", ".join(mat["source"]["authors"])
+            lines.append(
+                f"- **`{mid}`** **{mat['title']}** ({authors}, {mat['source']['year']}) — [参照先]({mat['source']['url']})"
+            )
+            lines.append(f"  - 箇所・版：{mat['context']} ／ {mat['source']['version_note']}")
+            lines.append(f"  - 問いへの招き：{mat['literary_invitation']}")
+            lines.append(f"  - 留保：{mat['scope_note']}")
+        lines.append("")
 
     # Section 5: Sessions Chronicle
     lines.append(f"## 5. セッション履歴（{first_s} 〜 {last_s}）")

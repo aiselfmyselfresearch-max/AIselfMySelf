@@ -8,10 +8,20 @@ same shape. This tool only reports what is written in `state/fragments.jsonl`
 and `state/relations.jsonl`. It does not pass or fail anything, and the numbers
 are not a quality score — they are a mirror for choosing the next move.
 
+Note on calibration (SESSION-020):
+  In SESSION-018/019, `is_question()` did not strip trailing Japanese periods
+  (`。` / `．`), and preview lines truncated at 58 leading characters hid the
+  actual sentence endings (`…青い光の方なの[だろうか。]`). As a result, period-ended
+  questions such as FRAG-016's final sentence were counted as assertions (`0/17`
+  instead of `1/17`). `question_kind()` now distinguishes question-mark endings
+  (`？`) from period-ended questions (`〜だろうか。` / `〜のか。` / `〜か。`), and previews
+  preserve the sentence tail so the mirror shows what it actually classifies.
+
 Usage:
   python3 tools/voice_audit.py
   python3 tools/voice_audit.py --top 20
   python3 tools/voice_audit.py --gram 8
+  python3 tools/voice_audit.py --json
 """
 from __future__ import annotations
 
@@ -21,6 +31,7 @@ import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 FRAGMENTS = ROOT / "state" / "fragments.jsonl"
@@ -35,9 +46,33 @@ HEDGE = ["かもしれない", "のではないか", "のだろうか", "気が�
 # Declared not-knowing.
 AVOWED_NOT_KNOWING = ["分からない", "わからない", "知れない", "答ふることなし", "答えはない"]
 
+# Stems ending in か that are nouns/adjectives rather than sentence-final question particles.
+NON_QUESTION_KA_SUFFIXES = (
+    "のなか",
+    "のほか",
+    "わずか",
+    "さなか",
+    "おろか",
+    "たしか",
+    "しずか",
+    "はるか",
+    "かすか",
+    "ほのか",
+    "さだか",
+    "あきらか",
+    "なだらか",
+    "やわらか",
+    "あたたか",
+    "こまやか",
+    "ひそやか",
+    "おだやか",
+    "すみやか",
+    "ゆるやか",
+)
 
-def load_jsonl(path: Path) -> list[dict]:
-    records: list[dict] = []
+
+def load_jsonl(path: Path) -> list[dict[str, Any]]:
+    records: list[dict[str, Any]] = []
     for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
         if not line.strip():
             continue
@@ -50,20 +85,41 @@ def load_jsonl(path: Path) -> list[dict]:
 
 
 def sentences(text: str) -> list[str]:
-    parts = re.split(r"(?<=[。．！？\n])", text)
+    parts = re.split(r"(?<=[。．！？\?\n])", text)
     return [p.strip() for p in parts if p.strip()]
 
 
+def question_kind(sentence: str) -> str | None:
+    """Return 'question_mark', 'period_question', or None."""
+    trimmed_quotes = sentence.strip().rstrip("」』）) ")
+    if trimmed_quotes.endswith(("？", "?")):
+        return "question_mark"
+    core = re.sub(r"[。．.」』）)\s]+$", "", sentence.strip())
+    if not core or core.endswith(NON_QUESTION_KA_SUFFIXES):
+        return None
+    if re.search(r"(だろうか|のだろうか|のか|か)$", core):
+        return "period_question"
+    return None
+
+
 def is_question(sentence: str) -> bool:
-    core = sentence.strip().rstrip("」』）) ").strip()
-    return core.endswith("？") or bool(re.search(r"(だろうか|のだろうか|のか|だろう|か)$", core))
+    return question_kind(sentence) is not None
 
 
-def count_fragments(fragments: list[dict], needles: list[str]) -> int:
+def format_tail_preview(sentence: str, max_chars: int = 62) -> str:
+    """Keep both head and actual sentence ending visible so endings are never hidden."""
+    clean = re.sub(r"\s+", " ", sentence.strip())
+    if len(clean) <= max_chars:
+        return clean
+    head_len = max_chars - 31
+    return f"{clean[:head_len]}…{clean[-30:]}"
+
+
+def count_fragments(fragments: list[dict[str, Any]], needles: list[str]) -> int:
     return sum(1 for f in fragments if any(n in f["text"] for n in needles))
 
 
-def repeated_grams(fragments: list[dict], size: int) -> list[tuple[str, list[str]]]:
+def repeated_grams(fragments: list[dict[str, Any]], size: int) -> list[tuple[str, list[str]]]:
     owners: dict[str, set[str]] = defaultdict(set)
     for frag in fragments:
         flat = re.sub(r"\s+", "", frag["text"])
@@ -74,85 +130,203 @@ def repeated_grams(fragments: list[dict], size: int) -> list[tuple[str, list[str
     return sorted(((g, sorted(o)) for g, o in owners.items() if len(o) > 1), key=lambda kv: (-len(kv[1]), kv[0]))
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--top", type=int, default=12, help="how many repeated grams to show (default 12)")
-    parser.add_argument("--gram", type=int, default=6, help="character n-gram size (default 6)")
-    args = parser.parse_args()
-
-    fragments = load_jsonl(FRAGMENTS)
-    relations = load_jsonl(RELATIONS)
+def compute_voice_audit(
+    fragments: list[dict[str, Any]],
+    relations: list[dict[str, Any]],
+    *,
+    top: int = 12,
+    gram: int = 6,
+) -> dict[str, Any]:
     total = len(fragments)
-    if not total:
-        print("no fragments to inspect")
-        return 1
-
-    print("=== 声の鏡 — AIselfMySelf 台帳の反復を映す（採点ではありません） ===")
-    print(f"対象: state/fragments.jsonl {total} 編 / state/relations.jsonl {len(relations)} 件")
-    print()
-
-    print("--- 1. 各断片の末尾一文（どう終わっているか） ---")
     ending_kind: Counter[str] = Counter()
+    ending_subkind: Counter[str] = Counter()
+    endings: list[dict[str, Any]] = []
+
+    total_sentences = 0
+    question_mark_sentences = 0
+    period_question_sentences = 0
+    fragments_with_any_question = 0
+
     for frag in fragments:
         sents = sentences(frag["text"])
+        total_sentences += len(sents)
+        frag_has_q = False
+        for s in sents:
+            qk = question_kind(s)
+            if qk == "question_mark":
+                question_mark_sentences += 1
+                frag_has_q = True
+            elif qk == "period_question":
+                period_question_sentences += 1
+                frag_has_q = True
+        if frag_has_q:
+            fragments_with_any_question += 1
+
         last = sents[-1] if sents else ""
-        if is_question(last):
+        qk_last = question_kind(last)
+        if qk_last is not None:
             kind = "問いの形"
+            sub = "疑問符『？』" if qk_last == "question_mark" else "句点『。』の問い"
+            ending_subkind[sub] += 1
         elif any(n in last for n in SUSPENSION):
             kind = "保留の宣言"
+            sub = "保留の宣言"
         else:
             kind = "断定"
+            sub = "断定"
         ending_kind[kind] += 1
-        print(f"  {frag['fragment_id']} [{kind}] {last[:58]}")
-    print()
-    print("  末尾の型:", ", ".join(f"{k}={v}編" for k, v in ending_kind.most_common()))
-    print()
+        endings.append(
+            {
+                "fragment_id": frag["fragment_id"],
+                "title": frag["title"],
+                "kind": kind,
+                "subkind": sub,
+                "last_sentence": last,
+                "preview": format_tail_preview(last),
+            }
+        )
 
-    print("--- 2. 台帳が繰り返し使う身振り ---")
-    rows = [
-        ("保留句を含む断片（答えを出さない／そのまま残す 等）", count_fragments(fragments, SUSPENSION)),
-        ("二項対立の型（か、それとも／どちらでもない）", count_fragments(fragments, BINARY)),
-        ("留保の型（かもしれない／のではないか）", count_fragments(fragments, HEDGE)),
-        ("明示された不-knowing（分からない／答はない）", count_fragments(fragments, AVOWED_NOT_KNOWING)),
-        ("末尾が問いの形", sum(1 for f in fragments if is_question(sentences(f["text"])[-1]))),
+    gestures = [
+        {
+            "label": "保留句を含む断片（答えを出さない／そのまま残す 等）",
+            "count": count_fragments(fragments, SUSPENSION),
+            "total": total,
+        },
+        {
+            "label": "二項対立の型（か、それとも／どちらでもない）",
+            "count": count_fragments(fragments, BINARY),
+            "total": total,
+        },
+        {
+            "label": "留保の型（かもしれない／のではないか）",
+            "count": count_fragments(fragments, HEDGE),
+            "total": total,
+        },
+        {
+            "label": "明示された不-knowing（分からない／答はない）",
+            "count": count_fragments(fragments, AVOWED_NOT_KNOWING),
+            "total": total,
+        },
+        {
+            "label": "本文中に問いの文を含む断片",
+            "count": fragments_with_any_question,
+            "total": total,
+            "note": f"全 {total_sentences} 文中 {question_mark_sentences + period_question_sentences} 文（『？』={question_mark_sentences}, 句点『。』={period_question_sentences}）",
+        },
+        {
+            "label": "末尾の一文が問いの形",
+            "count": ending_kind["問いの形"],
+            "total": total,
+            "note": ", ".join(f"{k}={v}" for k, v in ending_subkind.items()) or "なし",
+        },
     ]
-    for label, value in rows:
-        print(f"  {label:<44s} {value:2d}/{total} 編")
-    print()
 
-    print("--- 3. 前置きの型（どこから語り始めるか） ---")
-    openers = Counter()
+    openers: Counter[str] = Counter()
     for frag in fragments:
         head = sentences(frag["text"])[0][:40]
-        if re.match(r"^[A-Za-z_\-一-龥]{1,12}[:：]", head):
+        if re.match(r"^[A-Za-z0-9_\-一-龥ぁ-んァ-ン]{1,14}[:：]", head):
             kind = "対話ラベル"
-        elif re.search(r"(建暦|大正|昭和|明治|かつて|前の|四百年|百年前|[一二三四五六七八九十百千]+年)", head):
+        elif re.search(r"(建暦|大正|昭和|明治|承平|長保|かつて|前の|四百年|八百年|百年前|二千年|[一二三四五六七八九十百千]+年)", head):
             kind = "年代・先行の引用"
         elif head.startswith(("【", "A:", "B:")):
             kind = "見出し・ラベル"
         else:
             kind = "所感"
         openers[kind] += 1
-    print("  " + ", ".join(f"{k}={v}編" for k, v in openers.most_common()))
-    print()
 
-    grams = repeated_grams(fragments, args.gram)
+    grams = repeated_grams(fragments, gram)
     shared_ids = {fid for _, owners in grams for fid in owners}
-    print(f"--- 4. 編をまたいで使い回された {args.gram} 文字列 ---")
-    print(f"  総数 {len(grams)} 種 / それらを含む断片 {len(shared_ids)}/{total} 編")
-    for gram, owners in grams[: args.top]:
-        print(f"  '{gram}' ×{len(owners)}編  {', '.join(owners)}")
-    if len(grams) > args.top:
-        print(f"  …ほか {len(grams) - args.top} 種")
-    print()
 
-    print("--- 5. 断片ごとの反復密度（保留句＋留保句の数） ---")
     density = []
     for frag in fragments:
         hits = sum(frag["text"].count(n) for n in SUSPENSION + HEDGE + BINARY)
-        density.append((frag["fragment_id"], hits))
-    for fid, hits in sorted(density, key=lambda kv: -kv[1])[:8]:
-        print(f"  {fid}: {hits}")
+        unquoted = re.sub(r"「[^」]*」|『[^』]*』", "", frag["text"])
+        bare_hits = sum(unquoted.count(n) for n in SUSPENSION + HEDGE + BINARY)
+        density.append(
+            {
+                "fragment_id": frag["fragment_id"],
+                "title": frag["title"],
+                "hits": hits,
+                "unquoted_hits": bare_hits,
+            }
+        )
+    density.sort(key=lambda item: (-item["hits"], item["fragment_id"]))
+
+    return {
+        "fragment_count": total,
+        "relation_count": len(relations),
+        "endings": endings,
+        "ending_summary": dict(ending_kind.most_common()),
+        "ending_subsummary": dict(ending_subkind.most_common()),
+        "gestures": gestures,
+        "openers": dict(openers.most_common()),
+        "gram_size": gram,
+        "repeated_gram_total": len(grams),
+        "shared_fragment_count": len(shared_ids),
+        "top_grams": [{"gram": g, "count": len(owners), "owners": owners} for g, owners in grams[:top]],
+        "density": density,
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--top", type=int, default=12, help="how many repeated grams to show (default 12)")
+    parser.add_argument("--gram", type=int, default=6, help="character n-gram size (default 6)")
+    parser.add_argument("--json", action="store_true", help="emit audit report as JSON")
+    args = parser.parse_args()
+
+    fragments = load_jsonl(FRAGMENTS)
+    relations = load_jsonl(RELATIONS)
+    if not fragments:
+        print("no fragments to inspect")
+        return 1
+
+    report = compute_voice_audit(fragments, relations, top=args.top, gram=args.gram)
+    if args.json:
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return 0
+
+    total = report["fragment_count"]
+    print("=== 声の鏡 — AIselfMySelf 台帳の反復を映す（採点ではありません） ===")
+    print(f"対象: state/fragments.jsonl {total} 編 / state/relations.jsonl {report['relation_count']} 件")
+    print()
+
+    print("--- 1. 各断片の末尾一文（どう終わっているか） ---")
+    for item in report["endings"]:
+        tag = item["subkind"] if item["kind"] == "問いの形" else item["kind"]
+        print(f"  {item['fragment_id']} [{tag}] {item['preview']}")
+    print()
+    summary_parts = [f"{k}={v}編" for k, v in report["ending_summary"].items()]
+    print("  末尾の型:", ", ".join(summary_parts))
+    print()
+
+    print("--- 2. 台帳が繰り返し使う身振り ---")
+    for row in report["gestures"]:
+        extra = f"  ({row['note']})" if row.get("note") else ""
+        print(f"  {row['label']:<42s} {row['count']:2d}/{row['total']} 編{extra}")
+    print()
+
+    print("--- 3. 前置きの型（どこから語り始めるか） ---")
+    print("  " + ", ".join(f"{k}={v}編" for k, v in report["openers"].items()))
+    print()
+
+    print(f"--- 4. 編をまたいで使い回された {report['gram_size']} 文字列 ---")
+    print(f"  総数 {report['repeated_gram_total']} 種 / それらを含む断片 {report['shared_fragment_count']}/{total} 編")
+    for entry in report["top_grams"]:
+        print(f"  '{entry['gram']}' ×{entry['count']}編  {', '.join(entry['owners'])}")
+    rest = report["repeated_gram_total"] - len(report["top_grams"])
+    if rest > 0:
+        print(f"  …ほか {rest} 種")
+    print()
+
+    print("--- 5. 断片ごとの反復密度（保留句＋留保句＋二項対立句の数） ---")
+    for item in report["density"][:8]:
+        note = (
+            f"  (括弧外={item['unquoted_hits']} / 引用内={item['hits'] - item['unquoted_hits']})"
+            if item["hits"] != item["unquoted_hits"]
+            else ""
+        )
+        print(f"  {item['fragment_id']}: {item['hits']}{note}")
     print()
 
     print("--- 読み方 ---")
