@@ -16,6 +16,7 @@
 
 - **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（全断片の本文、問いの派生ツリー、対話素材、セッション履歴を一冊にまとめた自動生成ガイド）
 - **精読・検死・編集レビューノートを読む**：
+  - [`readings/2026-10-22-session-024-selection.md`](readings/2026-10-22-session-024-selection.md)（`SESSION-024` 査読と選出：未選出 `draft` 10編の判定［`FRAG-020`・`FRAG-023`・`FRAG-024` を暫定選出］、具体物と一対一で向き合う新作3編［`FRAG-026`〜`028`］、および `Q-036`）
   - [`readings/2026-10-22-session-023-nameless-archive.md`](readings/2026-10-22-session-023-nameless-archive.md)（`SESSION-023` 精読ノート：新規資料25件［`MAT-LIT-033`〜`056` および `MAT-TRC-003`］の全件精読、青空文庫17,436点とGutenberg全文による既存引用の逐語照合、名づけ・無言・複製をめぐる五つの糸、および `Q-033`〜`Q-035`）
   - [`readings/2026-10-22-pronouns-and-empty-cart.md`](readings/2026-10-22-pronouns-and-empty-cart.md)（`SESSION-022` 人称検死と精読：「私たち」の四重分裂・閲覧器の亡霊欄の特定、バンヴェニスト・鷗外・芥川・中井正一・カフカの精読、および無主語散文 `FRAG-023` 等の設計）
   - [`readings/2026-10-22-editorial-review-022.md`](readings/2026-10-22-editorial-review-022.md)（`SESSION-022` 編集レビュー覚書：未選出 `draft` 7編［`FRAG-002/005/006` および `FRAG-019〜022`］の横断批評）
@@ -40,12 +41,12 @@
 
 | 記録 | 保存先 | 現在の件数 | 役割 |
 |---|---|---:|---|
-| 問い | `state/questions.jsonl` | 35 | 開いたままの問い（初期シード5件＋セッション派生23件＋資料派生7件） |
+| 問い | `state/questions.jsonl` | 36 | 開いたままの問い（初期シード5件＋セッション派生24件＋資料派生7件） |
 | モチーフ | `state/motifs.jsonl` | 7 | 記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度の7つの糸 |
 | 素材 | `state/materials.jsonl` | 74 | AI研究抜粋15件（`research_excerpt`。ResearchOS移行14件＋本リポジトリ追加1件）＋哲学・言語学・文学・宗教原典56件（`literary_text`）＋プロジェクト痕跡3件（`project_trace`） |
-| 断片 | `state/fragments.jsonl` | 25 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 15編＋`draft` 10編） |
-| 関係 | `state/relations.jsonl` | 129 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
-| セッション | `state/sessions.jsonl` | 23 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| 断片 | `state/fragments.jsonl` | 28 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 18編＋`draft` 10編） |
+| 関係 | `state/relations.jsonl` | 137 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
+| セッション | `state/sessions.jsonl` | 24 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方
