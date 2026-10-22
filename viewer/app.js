@@ -422,25 +422,32 @@ function renderConstellation() {
     nodePos.set(node.key, node);
   });
 
-  // Outer arc (right): materials participating in relations
-  const relMatIds = new Set(
-    state.data.relations
-      .flatMap((r) => {
-        const { left, right } = getRelEnds(r);
-        return [left.type === "material" ? left.id : null, right.type === "material" ? right.id : null];
-      })
-      .filter(Boolean)
+  // Outer dual-arc (right): ALL materials (never omit materials absent from explicit relations.jsonl)
+  const engagedMatIds = new Set(
+    state.data.fragments.flatMap((f) => f.material_ids || [])
   );
-  const mats = state.data.materials.filter((m) => relMatIds.has(m.material_id));
+  const mats = state.data.materials;
   mats.forEach((m, idx) => {
-    const angle = -Math.PI * 0.44 + (Math.PI * 0.88 * idx) / Math.max(1, mats.length - 1);
-    const r = 320;
+    const angle = -Math.PI * 0.46 + (Math.PI * 0.92 * idx) / Math.max(1, mats.length - 1);
+    const r = mats.length > 44 ? (idx % 2 === 0 ? 302 : 352) : 320;
     const x = cx + r * Math.cos(angle);
     const y = cy + r * Math.sin(angle);
     const isLit = m.kind === "literary_text";
     const isTrace = m.kind === "project_trace" || m.kind === "conversation_trace";
+    const isEngaged = engagedMatIds.has(m.material_id);
     const color = isLit ? "#3b6048" : (isTrace ? "#8a6120" : "#295270");
-    const node = { key: `material:${m.material_id}`, type: "material", id: m.material_id, label: m.material_id.replace("MAT-", ""), sub: m.title, x, y, color, radius: 5.8 };
+    const node = {
+      key: `material:${m.material_id}`,
+      type: "material",
+      id: m.material_id,
+      label: m.material_id.replace("MAT-", ""),
+      sub: m.title,
+      x,
+      y,
+      color,
+      radius: isEngaged ? 5.6 : 4.6,
+      unengaged: !isEngaged,
+    };
     nodes.push(node);
     nodePos.set(node.key, node);
   });
@@ -480,6 +487,23 @@ function renderConstellation() {
     (r) => state.activeRelType === "all" || r.relation_type === state.activeRelType
   );
 
+  // Add subtle structural links for materials that only connect through fragment.material_ids or material.question_ids
+  const implicitLinks = [];
+  if (state.activeRelType === "all") {
+    state.data.fragments.forEach((f) => {
+      (f.material_ids || []).forEach((mid) => {
+        implicitLinks.push({ fromKey: `fragment:${f.fragment_id}`, toKey: `material:${mid}` });
+      });
+    });
+    state.data.questions.forEach((q) => {
+      (q.material_ids || []).forEach((mid) => {
+        if (!engagedMatIds.has(mid)) {
+          implicitLinks.push({ fromKey: `question:${q.question_id}`, toKey: `material:${mid}` });
+        }
+      });
+    });
+  }
+
   const selectedKey = state.selectedGraphNode;
   const connectedKeys = new Set();
   if (selectedKey) {
@@ -491,7 +515,22 @@ function renderConstellation() {
       if (fk === selectedKey) connectedKeys.add(tk);
       if (tk === selectedKey) connectedKeys.add(fk);
     });
+    implicitLinks.forEach((lnk) => {
+      if (lnk.fromKey === selectedKey) connectedKeys.add(lnk.toKey);
+      if (lnk.toKey === selectedKey) connectedKeys.add(lnk.fromKey);
+    });
   }
+
+  const implicitEdgesHtml = implicitLinks
+    .map((lnk) => {
+      const src = nodePos.get(lnk.fromKey);
+      const dst = nodePos.get(lnk.toKey);
+      if (!src || !dst) return "";
+      const isHighlighted = selectedKey && (src.key === selectedKey || dst.key === selectedKey);
+      const dimClass = selectedKey && !isHighlighted ? "dimmed" : "";
+      return `<line class="graph-edge ${dimClass}" x1="${src.x.toFixed(1)}" y1="${src.y.toFixed(1)}" x2="${dst.x.toFixed(1)}" y2="${dst.y.toFixed(1)}" stroke="rgba(140, 130, 112, 0.28)" stroke-width="${isHighlighted ? 1.6 : 0.7}" stroke-opacity="${isHighlighted ? 0.85 : 0.3}" />`;
+    })
+    .join("");
 
   const edgesHtml = visibleRels
     .map((r) => {
@@ -513,18 +552,22 @@ function renderConstellation() {
       const dimClass = selectedKey && !connectedKeys.has(n.key) ? "dimmed" : "";
       const isSelected = selectedKey === n.key;
       const textAnchor = n.x < cx - 15 ? "end" : n.x > cx + 15 ? "start" : "middle";
-      const dx = n.x < cx - 15 ? -10 : n.x > cx + 15 ? 10 : 0;
-      const dy = dx === 0 ? (n.y < cy ? -10 : 14) : 4;
+      const dx = n.x < cx - 15 ? -9 : n.x > cx + 15 ? 9 : 0;
+      const dy = dx === 0 ? (n.y < cy ? -10 : 14) : 3.5;
+      const fillAttr = n.unengaged ? "var(--surface)" : n.color;
+      const strokeAttr = n.unengaged ? n.color : "#ffffff";
+      const fontSize = mats.length > 50 && n.type === "material" ? "9.2" : "10.5";
       return `
         <g class="graph-node ${dimClass}" data-node-key="${escapeHtml(n.key)}">
-          <circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${isSelected ? n.radius + 3 : n.radius}" fill="${n.color}" stroke="#ffffff" stroke-width="${isSelected ? 2.5 : 1.2}" />
-          <text x="${(n.x + dx).toFixed(1)}" y="${(n.y + dy).toFixed(1)}" text-anchor="${textAnchor}" font-size="10.5" fill="currentColor">${escapeHtml(n.label)}</text>
+          <circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${isSelected ? n.radius + 3 : n.radius}" fill="${fillAttr}" stroke="${strokeAttr}" stroke-width="${isSelected ? 2.5 : 1.4}" />
+          <text x="${(n.x + dx).toFixed(1)}" y="${(n.y + dy).toFixed(1)}" text-anchor="${textAnchor}" font-size="${fontSize}" fill="currentColor">${escapeHtml(n.label)}</text>
+          <title>${escapeHtml(`${n.id}${n.unengaged ? " [未消化蔵書]" : ""}: ${n.sub || ""}`)}</title>
         </g>
       `;
     })
     .join("");
 
-  svg.innerHTML = `<g>${edgesHtml}</g><g>${nodesHtml}</g>`;
+  svg.innerHTML = `<g>${implicitEdgesHtml}${edgesHtml}</g><g>${nodesHtml}</g>`;
 
   svg.querySelectorAll(".graph-node").forEach((g) => {
     g.addEventListener("click", () => {
@@ -599,19 +642,27 @@ function renderGraphInspector() {
   bindJumpButtons(pane);
 }
 
-/* 3. Question Lineage Tree */
+/* 3. Question Lineage Tree (DAG-aware: preserves all secondary parent-child links) */
 function renderLineage() {
-  // Primary parent links live in q.previous_question_ids (first parent serves as primary tree branch to prevent DAG duplication, showing co-parents as badges)
   const childrenMap = new Map();
+  const secondaryChildrenMap = new Map();
   const hasParent = new Set();
+  let totalParentEdges = 0;
+  let multiParentCount = 0;
 
   state.data.questions.forEach((q) => {
     const prevs = q.previous_question_ids || [];
+    totalParentEdges += prevs.length;
+    if (prevs.length > 1) multiParentCount += 1;
     if (prevs.length > 0) {
       const primaryParent = prevs[0];
       hasParent.add(q.question_id);
       if (!childrenMap.has(primaryParent)) childrenMap.set(primaryParent, []);
       childrenMap.get(primaryParent).push(q.question_id);
+      prevs.slice(1).forEach((secParent) => {
+        if (!secondaryChildrenMap.has(secParent)) secondaryChildrenMap.set(secParent, []);
+        secondaryChildrenMap.get(secParent).push(q.question_id);
+      });
     }
   });
 
@@ -621,6 +672,7 @@ function renderLineage() {
     if (!q) return "";
     const linkedFrags = state.data.fragments.filter((f) => (f.question_ids || []).includes(q.question_id));
     const kids = childrenMap.get(q.question_id) || [];
+    const secKids = secondaryChildrenMap.get(q.question_id) || [];
     const kind = getOriginKind(q);
     const coParents = (q.previous_question_ids || []).slice(1);
     return `
@@ -628,20 +680,32 @@ function renderLineage() {
         <div style="display:flex;flex-wrap:wrap;gap:0.45rem;align-items:center;">
           <code>${escapeHtml(q.question_id)}</code>
           <span class="badge ${kind === "human_seed" ? "badge-lit" : "badge-ai"}">${escapeHtml(kind)}</span>
-          ${coParents.map((pid) => `<span class="badge badge-mode">併走親: ${escapeHtml(pid)}</span>`).join("")}
+          ${coParents.map((pid) => `<button type="button" class="dag-jump-pill" data-jump-q="${escapeHtml(pid)}" title="併走する親の問いへ移動">併走親: ${escapeHtml(pid)}</button>`).join("")}
         </div>
         <div class="q-title">${escapeHtml(q.question)}</div>
         ${q.notes ? `<div style="font-size:0.82rem;color:var(--ink-muted);margin-bottom:0.55rem;">${escapeHtml(q.notes)}</div>` : ""}
         <div class="tag-row" style="margin-bottom:0;">
           ${linkedFrags.map((f) => renderEntityJumpButton("fragment", f.fragment_id)).join("")}
         </div>
+        ${
+          secKids.length > 0
+            ? `<div class="dag-cross-refs"><span class="dag-label">↳ 合流先の子 (${secKids.length}):</span> ${secKids
+                .map((cid) => {
+                  const cq = state.maps.question.get(cid);
+                  const shortText = cq ? cq.question.slice(0, 24) + "…" : "";
+                  return `<button type="button" class="dag-jump-pill secondary" data-jump-q="${escapeHtml(cid)}" title="${escapeHtml(cq ? cq.question : cid)}">${escapeHtml(cid)}: ${escapeHtml(shortText)}</button>`;
+                })
+                .join("")}</div>`
+            : ""
+        }
         ${kids.length > 0 ? `<div class="q-branches">${kids.map((cid) => renderQuestionSubtree(state.maps.question.get(cid), true)).join("")}</div>` : ""}
       </div>
     `;
   }
 
+  const summaryBanner = `<div class="dag-summary-banner">全 <strong>${state.data.questions.length}</strong> 問 ／ 根の問い <strong>${roots.length}</strong> 問 ／ 親子辺 <strong>${totalParentEdges}</strong> 本すべて可視化（複数親の合流 <strong>${multiParentCount}</strong> 問は併走親ピル・合流先ピルで双方向接続）</div>`;
   const container = document.getElementById("lineage-container");
-  container.innerHTML = roots.map((r) => renderQuestionSubtree(r, false)).join("");
+  container.innerHTML = summaryBanner + roots.map((r) => renderQuestionSubtree(r, false)).join("");
   bindJumpButtons(container);
 }
 
@@ -657,7 +721,13 @@ function renderMaterials() {
       const isLit = m.kind === "literary_text";
       const isTrace = m.kind === "project_trace" || m.kind === "conversation_trace";
       const badgeCls = isLit ? "badge-lit" : (isTrace ? "badge-trace" : "badge-ai");
-      const badgeLabel = isLit ? "哲学・文学原典" : (isTrace ? "プロジェクト痕跡" : "AIエージェント研究");
+      const badgeLabel = isLit
+        ? "哲学・文学原典"
+        : m.kind === "conversation_trace"
+        ? "対話痕跡"
+        : m.kind === "project_trace"
+        ? "プロジェクト痕跡"
+        : "AIエージェント研究";
       const usedIn = state.data.fragments.filter((f) => (f.material_ids || []).includes(m.material_id));
       const authorLine = m.source && Array.isArray(m.source.authors) && m.source.authors.length
         ? `${m.source.authors.join(", ")} (${m.source.year})`
@@ -723,15 +793,30 @@ function renderSimpleMarkdown(md) {
     }
   };
 
+  let inTable = false;
+  let tableHeaderDone = false;
+  const closeTable = () => {
+    if (inTable) {
+      out.push("</tbody></table></div>");
+      inTable = false;
+      tableHeaderDone = false;
+    }
+  };
+
   const inlineFmt = (s) =>
     escapeHtml(s)
       .replace(/`([^`]+)`/g, "<code>$1</code>")
       .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-      .replace(/\*([^*]+)\*/g, "<em>$1</em>");
+      .replace(/\*([^*]+)\*/g, "<em>$1</em>")
+      .replace(
+        /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,
+        '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+      );
 
   for (const rawLine of lines) {
     if (rawLine.startsWith("```")) {
       closeList();
+      closeTable();
       if (!inPre) {
         inPre = true;
         preBuf = [];
@@ -746,11 +831,35 @@ function renderSimpleMarkdown(md) {
       continue;
     }
     const line = rawLine.trimEnd();
-    if (!line.trim()) {
+    const trimmed = line.trim();
+    if (/^\|(.+)\|$/.test(trimmed)) {
+      closeList();
+      const cells = trimmed
+        .slice(1, -1)
+        .split("|")
+        .map((c) => c.trim());
+      if (!inTable) {
+        out.push('<div class="table-scroll"><table class="mirror-table">');
+        inTable = true;
+        tableHeaderDone = false;
+      }
+      if (cells.every((c) => /^:?-{2,}:?$/.test(c))) {
+        continue;
+      }
+      if (!tableHeaderDone) {
+        out.push(`<thead><tr>${cells.map((c) => `<th>${inlineFmt(c)}</th>`).join("")}</tr></thead><tbody>`);
+        tableHeaderDone = true;
+      } else {
+        out.push(`<tr>${cells.map((c) => `<td>${inlineFmt(c)}</td>`).join("")}</tr>`);
+      }
+      continue;
+    }
+    closeTable();
+    if (!trimmed) {
       closeList();
       continue;
     }
-    if (/^---+$/.test(line.trim())) {
+    if (/^---+$/.test(trimmed)) {
       closeList();
       out.push("<hr/>");
       continue;
@@ -758,7 +867,7 @@ function renderSimpleMarkdown(md) {
     const hm = line.match(/^(#{1,4})\s+(.+)$/);
     if (hm) {
       closeList();
-      const lvl = Math.min(3, hm[1].length);
+      const lvl = Math.min(4, hm[1].length);
       out.push(`<h${lvl}>${inlineFmt(hm[2])}</h${lvl}>`);
       continue;
     }
@@ -793,6 +902,7 @@ function renderSimpleMarkdown(md) {
     out.push(`<p>${inlineFmt(line)}</p>`);
   }
   closeList();
+  closeTable();
   return out.join("\n");
 }
 

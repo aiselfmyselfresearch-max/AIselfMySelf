@@ -341,17 +341,40 @@ def build_reading_map_markdown(data: dict[str, dict[str, dict[str, Any]]]) -> st
     lines.append("")
 
     # Section 2: Questions Lineage
+    total_parent_edges = sum(len(q.get("previous_question_ids", [])) for q in questions.values())
+    multi_parent_count = sum(1 for q in questions.values() if len(q.get("previous_question_ids", [])) > 1)
     lines.append(f"## 2. 開かれた問いの系譜（{first_q} 〜 {last_q}）")
     lines.append("")
-    lines.append("解決や反証で閉じることを目的とせず、セッションの往復によって問いの輪郭がどう枝分かれしたかを示します。")
+    lines.append(
+        "解決や反証で閉じることを目的とせず、セッションの往復によって問いの輪郭がどう枝分かれ・合流したかを示します。"
+        f"（全 {len(questions)} 問 ／ 根の問い {len(roots)} 問 ／ 親子辺 {total_parent_edges} 本 ／ "
+        f"複数親の合流 {multi_parent_count} 問。合流ノードは初回のみ部分木を展開し、別経路からは `↳ 合流参照` として示します。）"
+    )
     lines.append("")
+
+    expanded_qids: set[str] = set()
 
     def render_tree(qid: str, indent: int = 0, path_seen: set[str] | None = None) -> None:
         seen = set(path_seen or set())
         q = questions[qid]
+        prevs = q.get("previous_question_ids", [])
         prefix = "  " * indent + "-"
-        origin_badge = {"human_seed": "seed", "session": "session", "material": "material", "migration": "migration"}.get(q["origin"]["kind"], q["origin"]["kind"])
-        lines.append(f"{prefix} **`{qid}`** [{origin_badge}] {q['question']}")
+        origin_badge = {
+            "human_seed": "seed",
+            "session": "session",
+            "material": "material",
+            "migration": "migration",
+        }.get(q["origin"]["kind"], q["origin"]["kind"])
+        if qid in expanded_qids:
+            parents_note = ", ".join(f"`{p}`" for p in prevs)
+            lines.append(
+                f"{prefix} ↳ 合流参照: **`{qid}`** [{origin_badge}] {q['question']} "
+                f"_(合流元: {parents_note} — 上掲の展開を参照)_"
+            )
+            return
+        expanded_qids.add(qid)
+        co_note = f" _(合流元: {', '.join(f'`{p}`' for p in prevs)})_" if len(prevs) > 1 else ""
+        lines.append(f"{prefix} **`{qid}`** [{origin_badge}] {q['question']}{co_note}")
         if qid in seen:
             return
         seen.add(qid)

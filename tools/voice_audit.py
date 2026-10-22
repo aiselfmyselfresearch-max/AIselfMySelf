@@ -110,7 +110,7 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
 
 
 def sentences(text: str) -> list[str]:
-    parts = re.split(r"(?<=[。．！？\?\n])", text)
+    parts = re.split(r"(?<=[。．！？\?][」』）\)])|(?<=[。．！？\?\n])(?![」』）\)])", text)
     return [p.strip() for p in parts if p.strip()]
 
 

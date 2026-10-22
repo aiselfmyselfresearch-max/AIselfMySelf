@@ -410,6 +410,76 @@ code {
   font-size: 1.02rem;
 }
 
+.notebook-markdown h4 {
+  font-size: 0.94rem;
+  color: var(--accent-indigo);
+  margin-top: 1.15rem;
+  margin-bottom: 0.45rem;
+}
+
+.notebook-markdown a {
+  color: var(--accent-indigo);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin: 1rem 0 1.25rem;
+}
+
+.dag-summary-banner {
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-indigo);
+  border-radius: 6px;
+  padding: 0.6rem 0.95rem;
+  font-size: 0.83rem;
+  color: var(--ink-muted);
+}
+
+.dag-meta-row,
+.dag-cross-refs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.77rem;
+}
+
+.dag-label {
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+
+.dag-jump-pill {
+  background: var(--accent-indigo-soft);
+  color: var(--accent-indigo);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 0.14rem 0.55rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.14s ease, border-color 0.14s ease;
+}
+
+.dag-jump-pill.secondary {
+  background: var(--accent-amber-soft);
+  color: var(--accent-amber);
+}
+
+.dag-jump-pill:hover {
+  border-color: var(--accent-crimson);
+}
+
+.dag-highlight {
+  outline: 2px solid var(--accent-crimson);
+  outline-offset: 2px;
+  transition: outline 0.25s ease;
+}
+
 .notebook-markdown blockquote {
   margin: 0.85rem 0;
   padding: 0.6rem 1rem;
