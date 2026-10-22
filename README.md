@@ -15,7 +15,7 @@
 ## 2. すぐ読むには
 
 - **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（全断片の本文、問いの派生ツリー、対話素材、セッション履歴を一冊にまとめた自動生成ガイド）
-- **直近の精読ノートを読む**：[`readings/2026-10-22-session-021-externalized-self.md`](readings/2026-10-22-session-021-externalized-self.md)（14件の新規素材を、一節・読解・台帳への接続・裏切り・残る問いの形で読んだ作業ノート）。前身は [`readings/2026-10-22-close-reading.md`](readings/2026-10-22-close-reading.md)（15件の精読ノート）
+- **直近の作業ノートを読む**：[`readings/2026-10-22-session-022-surface-sheet.md`](readings/2026-10-22-session-022-surface-sheet.md)（種メモから断片 `FRAG-020` を書くまでの継承・ずらし・編集レビューの記録）。資料の精読ノートは [`readings/2026-10-22-session-021-externalized-self.md`](readings/2026-10-22-session-021-externalized-self.md)（14件）と [`readings/2026-10-22-close-reading.md`](readings/2026-10-22-close-reading.md)（15件）
 - **ブラウザで対話型アーカイブ・星座図を開く**：
   ```sh
   python3 tools/serve_viewer.py --host 0.0.0.0 --port 8000
@@ -34,12 +34,12 @@
 
 | 記録 | 保存先 | 現在の件数 | 役割 |
 |---|---|---:|---|
-| 問い | `state/questions.jsonl` | 30 | 開いたままの問い（初期シード5件＋セッション・資料派生25件） |
+| 問い | `state/questions.jsonl` | 31 | 開いたままの問い（初期シード5件＋セッション・資料派生26件） |
 | モチーフ | `state/motifs.jsonl` | 7 | 記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度の7つの糸 |
 | 素材 | `state/materials.jsonl` | 52 | AI研究抜粋15件（`research_excerpt`。ResearchOS移行14件＋本リポジトリ追加1件）＋哲学・文学原典37件（`literary_text`） |
-| 断片 | `state/fragments.jsonl` | 19 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）の断片 |
-| 関係 | `state/relations.jsonl` | 96 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
-| セッション | `state/sessions.jsonl` | 21 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| 断片 | `state/fragments.jsonl` | 20 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）の断片 |
+| 関係 | `state/relations.jsonl` | 102 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
+| セッション | `state/sessions.jsonl` | 22 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方
