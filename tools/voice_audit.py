@@ -312,9 +312,68 @@ def compute_voice_audit(
                     }
                 )
 
+    # Section 7: Sentence-final Ji (辞) distribution & Material groove depth on the wax tablet
+    ji_categories = [
+        "常体・基本述語（る・い・こと等）",
+        "過去・完了辞（た・ていた）",
+        "打消辞（ない・ぬ・ず）",
+        "断定辞（だ・である・のだ）",
+        "疑問辞（か・だろうか・？）",
+        "敬体辞（です・ます・でしょう）",
+        "対人終助詞（よ・ね・わ・ぞ等）",
+        "体言止め（名詞・漢語止）",
+    ]
+    ji_sent_counts: Counter[str] = Counter()
+    ji_frag_sets: dict[str, list[str]] = {k: [] for k in ji_categories}
+    for frag in fragments:
+        fid = frag["fragment_id"]
+        seen_in_frag: set[str] = set()
+        for s in sentences(frag["text"]):
+            core = re.sub(r"[。．.！？\?」』）)\s]+$", "", s)
+            if not core:
+                continue
+            if re.search(r"(です|ます|でした|ました|でしょう|ません)$", core):
+                cat = "敬体辞（です・ます・でしょう）"
+            elif question_kind(s) is not None:
+                cat = "疑問辞（か・だろうか・？）"
+            elif re.search(r"(だ|である|なのだ|のである|のだ)$", core):
+                cat = "断定辞（だ・である・のだ）"
+            elif re.search(r"(た|だった|ていた|られた|れた)$", core):
+                cat = "過去・完了辞（た・ていた）"
+            elif re.search(r"(よ|ね|な|ぞ|かし|わ|さ)$", core):
+                cat = "対人終助詞（よ・ね・わ・ぞ等）"
+            elif re.search(r"(ない|ぬ|ず)$", core):
+                cat = "打消辞（ない・ぬ・ず）"
+            elif re.search(r"[一-龥ァ-ン]$", core):
+                cat = "体言止め（名詞・漢語止）"
+            else:
+                cat = "常体・基本述語（る・い・こと等）"
+            ji_sent_counts[cat] += 1
+            seen_in_frag.add(cat)
+        for cat in seen_in_frag:
+            ji_frag_sets[cat].append(fid)
+
+    ji_distribution = [
+        {
+            "label": cat,
+            "sentence_count": ji_sent_counts[cat],
+            "fragment_count": len(ji_frag_sets[cat]),
+            "fragment_ids": ji_frag_sets[cat],
+        }
+        for cat in ji_categories
+    ]
+
+    mat_usage: Counter[str] = Counter()
+    for frag in fragments:
+        for mid in frag.get("material_ids", []):
+            mat_usage[mid] += 1
+    deep_grooves = [{"material_id": mid, "count": c} for mid, c in mat_usage.most_common(8)]
+    once_grooves = sum(1 for _, c in mat_usage.items() if c == 1)
+
     return {
         "fragment_count": total,
         "relation_count": len(relations),
+        "total_sentences": total_sentences,
         "endings": endings,
         "ending_summary": dict(ending_kind.most_common()),
         "ending_subsummary": dict(ending_subkind.most_common()),
@@ -329,6 +388,10 @@ def compute_voice_audit(
         "zero_pronoun_fragment_ids": zero_pronoun_ids,
         "narrator_mode_counts": mode_counts,
         "mode_mismatches": mode_mismatches,
+        "ji_distribution": ji_distribution,
+        "deep_grooves": deep_grooves,
+        "once_grooves_count": once_grooves,
+        "engaged_materials_count": len(mat_usage),
     }
 
 
@@ -407,6 +470,20 @@ def main() -> int:
     print(f"  未使用の narrator_mode : {', '.join(empty_modes) if empty_modes else 'なし'}")
     for mm in report["mode_mismatches"]:
         print(f"  名札と地の文のずれ     : {mm['fragment_id']} (narrator_mode={mm['narrator_mode']} だが地の文に {mm['found']})")
+    print()
+
+    print(f"--- 7. 文末の『辞』の鏡と蝋板の溝の深さ（全 {report['total_sentences']} 文） ---")
+    for j in report["ji_distribution"]:
+        fids_str = ", ".join(j["fragment_ids"][:6]) + ("…" if len(j["fragment_ids"]) > 6 else "")
+        print(
+            f"  {j['label']:<24s} {j['sentence_count']:3d} 文 / {j['fragment_count']:2d} 編"
+            + (f"  [{fids_str}]" if fids_str else "")
+        )
+    deep_str = ", ".join(f"{d['material_id']}×{d['count']}" for d in report["deep_grooves"][:5])
+    print(f"  蝋板の深い溝（上位）   : {deep_str}")
+    print(
+        f"  1回のみ参照の浅い溝   : {report['once_grooves_count']}/{report['engaged_materials_count']} 素材"
+    )
     print()
 
     print("--- 読み方 ---")

@@ -893,6 +893,32 @@ function renderMirrorView() {
         </div>
       ` : ""}
 
+      ${va.ji_distribution ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">文末の『辞』の息づかいと蝋板の溝の深さ（全 ${va.total_sentences || 0} 文）</h3>
+          <table class="mirror-table">
+            <thead><tr><th>文末の『辞』分類</th><th>文数 / 編数</th><th>該当断片</th></tr></thead>
+            <tbody>
+              ${va.ji_distribution.map((j) => `
+                <tr>
+                  <td><strong>${escapeHtml(j.label)}</strong></td>
+                  <td>${j.sentence_count} 文 / ${j.fragment_count} 編</td>
+                  <td>${(j.fragment_ids || []).map((fid) => `<button type="button" class="link-pill" style="margin:0.12rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("") || "—"}</td>
+                </tr>
+              `).join("")}
+              <tr>
+                <td><strong>蝋板の深い溝（上位参照素材）</strong></td>
+                <td colspan="2">${(va.deep_grooves || []).map((d) => `<code style="margin-right:0.4rem;">${escapeHtml(d.material_id)}×${d.count}</code>`).join("")}</td>
+              </tr>
+              <tr>
+                <td><strong>1回のみ参照の浅い溝</strong></td>
+                <td colspan="2">${va.once_grooves_count || 0} / ${va.engaged_materials_count || 0} 素材</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
+
       <div class="reader-pane" style="margin-bottom:1.4rem;">
         <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">各断片の末尾一文（先頭＋末尾の両端表示・省略隠れなし）</h3>
         <table class="mirror-table">
