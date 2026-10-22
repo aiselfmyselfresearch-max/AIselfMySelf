@@ -46,6 +46,31 @@ HEDGE = ["かもしれない", "のではないか", "のだろうか", "気が�
 # Declared not-knowing.
 AVOWED_NOT_KNOWING = ["分からない", "わからない", "知れない", "答ふることなし", "答えはない"]
 
+NARRATOR_MODE_ENUM = (
+    "reflective_literary_voice",
+    "fictional_first_person",
+    "dialogue",
+    "third_person",
+    "other",
+    "human_narrator",
+)
+
+PRONOUN_SPECS: tuple[tuple[str, str], ...] = (
+    ("私（単数）", r"私(?!たち|達|的|物|記|見|小説|語|言|事|法|信|生活|自身|文書|家|鉄|立|権|益)"),
+    ("わたし", r"わたし(?!たち)"),
+    ("わたくし", r"わたくし(?!たち)"),
+    ("僕", r"僕"),
+    ("俺", r"俺"),
+    ("私たち・われわれ", r"(?:私たち|私達|わたしたち|わたくしたち|われわれ|我々)"),
+    ("あなた", r"あなた"),
+    ("君", r"君"),
+    ("彼・彼女", r"(?:彼(?!女)|彼女)"),
+)
+
+FIRST_PERSON_UNQUOTED_RE = re.compile(
+    r"(?:私たち|私達|わたしたち|わたくしたち|われわれ|我々|わたし|わたくし|僕|俺|私(?!たち|達|的|物|記|見|小説|語|言|事|法|信|生活|自身|文書|家|鉄|立|権|益))"
+)
+
 # Stems ending in か that are nouns/adjectives rather than sentence-final question particles.
 NON_QUESTION_KA_SUFFIXES = (
     "のなか",
@@ -252,6 +277,41 @@ def compute_voice_audit(
         )
     density.sort(key=lambda item: (-item["hits"], item["fragment_id"]))
 
+    pronouns = []
+    for label, pattern in PRONOUN_SPECS:
+        rx = re.compile(pattern)
+        all_fids = [f["fragment_id"] for f in fragments if rx.search(f["text"])]
+        bare_fids = [f["fragment_id"] for f in fragments if rx.search(re.sub(r"「[^」]*」|『[^』]*』", "", f["text"]))]
+        pronouns.append(
+            {
+                "label": label,
+                "count": len(all_fids),
+                "unquoted_count": len(bare_fids),
+                "fragment_ids": all_fids,
+                "unquoted_fragment_ids": bare_fids,
+            }
+        )
+
+    zero_pronoun_ids = []
+    mode_counts = {m: 0 for m in NARRATOR_MODE_ENUM}
+    mode_mismatches = []
+    for frag in fragments:
+        mode = frag["narrator_mode"]
+        mode_counts[mode] = mode_counts.get(mode, 0) + 1
+        if not any(re.search(pat, frag["text"]) for _, pat in PRONOUN_SPECS):
+            zero_pronoun_ids.append(frag["fragment_id"])
+        if mode == "third_person":
+            unquoted = re.sub(r"「[^」]*」|『[^』]*』", "", frag["text"])
+            fp_matches = sorted(set(FIRST_PERSON_UNQUOTED_RE.findall(unquoted)))
+            if fp_matches:
+                mode_mismatches.append(
+                    {
+                        "fragment_id": frag["fragment_id"],
+                        "narrator_mode": mode,
+                        "found": fp_matches,
+                    }
+                )
+
     return {
         "fragment_count": total,
         "relation_count": len(relations),
@@ -265,6 +325,10 @@ def compute_voice_audit(
         "shared_fragment_count": len(shared_ids),
         "top_grams": [{"gram": g, "count": len(owners), "owners": owners} for g, owners in grams[:top]],
         "density": density,
+        "pronouns": pronouns,
+        "zero_pronoun_fragment_ids": zero_pronoun_ids,
+        "narrator_mode_counts": mode_counts,
+        "mode_mismatches": mode_mismatches,
     }
 
 
@@ -327,6 +391,22 @@ def main() -> int:
             else ""
         )
         print(f"  {item['fragment_id']}: {item['hits']}{note}")
+    print()
+
+    print("--- 6. 人称と名札の鏡（どの人称に寄りかかっているか） ---")
+    for p in report["pronouns"]:
+        note = (
+            f" (括弧外={p['unquoted_count']}編)"
+            if p["count"] != p["unquoted_count"]
+            else ""
+        )
+        print(f"  {p['label']:<18s} {p['count']:2d}/{total} 編{note}")
+    z_ids = ", ".join(report["zero_pronoun_fragment_ids"]) or "なし"
+    print(f"  {'人称代名詞ゼロ（無主語）':<14s} {len(report['zero_pronoun_fragment_ids']):2d}/{total} 編  [{z_ids}]")
+    empty_modes = [m for m, c in report["narrator_mode_counts"].items() if c == 0]
+    print(f"  未使用の narrator_mode : {', '.join(empty_modes) if empty_modes else 'なし'}")
+    for mm in report["mode_mismatches"]:
+        print(f"  名札と地の文のずれ     : {mm['fragment_id']} (narrator_mode={mm['narrator_mode']} だが地の文に {mm['found']})")
     print()
 
     print("--- 読み方 ---")
