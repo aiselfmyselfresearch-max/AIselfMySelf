@@ -34,12 +34,12 @@
 
 | 記録 | 保存先 | 現在の件数 | 役割 |
 |---|---|---:|---|
-| 問い | `state/questions.jsonl` | 25 | 開いたままの問い（初期シード5件＋セッション・資料派生20件） |
+| 問い | `state/questions.jsonl` | 26 | 開いたままの問い（初期シード5件＋セッション・資料派生21件） |
 | モチーフ | `state/motifs.jsonl` | 7 | 記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度の7つの糸 |
 | 素材 | `state/materials.jsonl` | 38 | AI研究抜粋15件（`research_excerpt`。ResearchOS移行14件＋本リポジトリ追加1件）＋哲学・文学原典23件（`literary_text`） |
-| 断片 | `state/fragments.jsonl` | 18 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）の断片 |
-| 関係 | `state/relations.jsonl` | 67 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
-| セッション | `state/sessions.jsonl` | 19 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| 断片 | `state/fragments.jsonl` | 19 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）の断片 |
+| 関係 | `state/relations.jsonl` | 73 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
+| セッション | `state/sessions.jsonl` | 20 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方
