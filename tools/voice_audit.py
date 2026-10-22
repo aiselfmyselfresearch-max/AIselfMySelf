@@ -472,7 +472,8 @@ def main() -> int:
         )
         print(f"  {p['label']:<18s} {p['count']:2d}/{total} 編{note}")
     z_ids = ", ".join(report["zero_pronoun_fragment_ids"]) or "なし"
-    print(f"  {'人称代名詞ゼロ（無主語）':<14s} {len(report['zero_pronoun_fragment_ids']):2d}/{total} 編  [{z_ids}]")
+    print(f"  {'人称代名詞ゼロ':<14s} {len(report['zero_pronoun_fragment_ids']):2d}/{total} 編  [{z_ids}]")
+    print("    （無主語の断片と、固有名で主語を立てて代名詞を要さない断片が、同じ数に入る。SESSION-028 の FRAG-033 が後者。）")
     empty_modes = [m for m, c in report["narrator_mode_counts"].items() if c == 0]
     print(f"  未使用の narrator_mode : {', '.join(empty_modes) if empty_modes else 'なし'}")
     for mm in report["mode_mismatches"]:
