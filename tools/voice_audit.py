@@ -154,6 +154,16 @@ def format_tail_preview(sentence: str, max_chars: int = 62) -> str:
     return f"{clean[:head_len]}…{clean[-30:]}"
 
 
+def japanese_char_ratio(text: str) -> float:
+    """Share of non-space characters that are kana or kanji. A crude mirror of
+    how much of a fragment is written in Japanese at all, not of its quality."""
+    chars = [c for c in text if not c.isspace()]
+    if not chars:
+        return 0.0
+    ja = sum(1 for c in chars if "\u3040" <= c <= "\u30ff" or "\u4e00" <= c <= "\u9fff")
+    return round(ja / len(chars), 3)
+
+
 def count_fragments(fragments: list[dict[str, Any]], needles: list[str]) -> int:
     return sum(1 for f in fragments if any(n in f["text"] for n in needles))
 
@@ -352,9 +362,27 @@ def compute_voice_audit(
         "least_archival": sorted(subject, key=lambda i: (i["archive_hits"], i["fragment_id"]))[:5],
     }
 
+    languages = []
+    for frag in fragments:
+        ratio = japanese_char_ratio(frag["text"])
+        languages.append(
+            {
+                "fragment_id": frag["fragment_id"],
+                "language": frag.get("language", ""),
+                "ja_ratio": ratio,
+            }
+        )
+    language_counts = Counter(i["language"] for i in languages)
+    mixed = [i for i in languages if i["language"].strip() not in ("ja", "")]
+    mostly_not_ja = [i for i in languages if i["ja_ratio"] < 0.6]
+
     return {
         "subject_mirror": subject,
         "subject_summary": subject_summary,
+        "language_mirror": languages,
+        "language_counts": dict(language_counts.most_common()),
+        "mixed_language_fragments": mixed,
+        "mostly_not_ja_ids": [i["fragment_id"] for i in mostly_not_ja],
         "fragment_count": total,
         "relation_count": len(relations),
         "endings": endings,
@@ -462,6 +490,21 @@ def main() -> int:
     print("  世界の語（海・手・鯖・歌 等）だけが多く、調度語の少ない順:")
     for item in ss["least_archival"]:
         print(f"    {item['fragment_id']} {item['session_id']:<12s} 調度={item['archive_hits']:3d} 世界={item['world_hits']:3d}  {item['title'][:30]}")
+    print()
+
+    print("--- 8. 言語の鏡（何語で書いているか） ---")
+    lm = report["language_mirror"]
+    print("  language 欄: " + ", ".join(f"{k}={v}編" for k, v in report["language_counts"].items()))
+    mixed = report["mixed_language_fragments"]
+    if mixed:
+        print("  日本語以外を含む断片:")
+        for i in mixed:
+            print(f"    {i['fragment_id']}  language={i['language']}  日本語の字 {i['ja_ratio']:.0%}")
+    else:
+        print("  日本語以外を含む断片: なし")
+    print(f"  日本語の字が半分未満の断片: {', '.join(report['mostly_not_ja_ids']) or 'なし'}")
+    print("  第7節の語彙表は日本語のみで作られているため、英語の部分は 0 回と数えられる。")
+    print("  この鏡は言語をまたげない。何語で読んだかは tools/provenance_audit.py が見る。")
     print()
 
     print("--- 読み方 ---")
