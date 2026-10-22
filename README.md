@@ -16,6 +16,7 @@
 
 - **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（全断片の本文、問いの派生ツリー、対話素材、セッション履歴を一冊にまとめた自動生成ガイド）
 - **精読・検死・編集レビューノートを読む**：
+  - [`readings/2026-10-22-session-025-four-names.md`](readings/2026-10-22-session-025-four-names.md)（`SESSION-025` 作業ノート：未応答だった `Q-038`（四つの呼び名）・`Q-033`（孤児の親）・`Q-035`（保持を欠く現在）への断片3編、未消化素材12件の消費（関与 60/77 → 72/77）、逆参照ゼロだった 5 編への参照、および選集に入っていながらどこからも参照されない `FRAG-014`・`FRAG-015` の発見）
   - [`readings/2026-10-22-session-024-vessels.md`](readings/2026-10-22-session-024-vessels.md)（`SESSION-024` 作業ノート：`voice_audit.py` の人称表に『自分』の欄が無く 9 編の一人称を数えられなかった盲点の実測、三人称情景 `FRAG-026`・一人称「自分」の断章 `FRAG-027`・定型句ゼロの詩 `FRAG-028` の設計、八本目のモチーフ `MOTIF-008`「作法と定型」の追加、および未検討 6 編を含む 13 草稿の横断レビュー）
   - [`readings/2026-10-22-orphaned-words.md`](readings/2026-10-22-orphaned-words.md)（`SESSION-023` 精読ノート：新規 27 件の対話素材［`MAT-LIT-033`〜`MAT-LIT-055` と AI 研究抜粋 4 件］を「記録の器」「今の保持」「声の帰属」「答えを急がない作法」「研究側の四つの呼び名」の五群に分けて読み、`Q-033`〜`Q-038` を開いた作業ノート）
   - [`readings/2026-10-22-pronouns-and-empty-cart.md`](readings/2026-10-22-pronouns-and-empty-cart.md)（`SESSION-022` 人称検死と精読：「私たち」の四重分裂・閲覧器の亡霊欄の特定、バンヴェニスト・鷗外・芥川・中井正一・カフカの精読、および無主語散文 `FRAG-023` 等の設計）
@@ -41,12 +42,12 @@
 
 | 記録 | 保存先 | 現在の件数 | 役割 |
 |---|---|---:|---|
-| 問い | `state/questions.jsonl` | 40 | 開いたままの問い（初期シード5件＋セッション派生31件＋資料派生4件） |
+| 問い | `state/questions.jsonl` | 43 | 開いたままの問い（初期シード5件＋セッション派生34件＋資料派生4件） |
 | モチーフ | `state/motifs.jsonl` | 8 | 記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度、作法と定型の8つの糸 |
 | 素材 | `state/materials.jsonl` | 77 | AI研究抜粋19件（`research_excerpt`。ResearchOS移行14件＋本リポジトリ追加5件）＋哲学・言語学・文学原典55件（`literary_text`）＋プロジェクト痕跡3件（`project_trace`） |
-| 断片 | `state/fragments.jsonl` | 28 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 15編＋`draft` 13編） |
-| 関係 | `state/relations.jsonl` | 203 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
-| セッション | `state/sessions.jsonl` | 24 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| 断片 | `state/fragments.jsonl` | 31 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 15編＋`draft` 16編） |
+| 関係 | `state/relations.jsonl` | 234 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
+| セッション | `state/sessions.jsonl` | 25 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方
