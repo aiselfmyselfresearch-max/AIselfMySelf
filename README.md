@@ -16,6 +16,7 @@
 
 - **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（全断片の本文、問いの派生ツリー、対話素材、セッション履歴を一冊にまとめた自動生成ガイド）
 - **精読・検死・編集レビューノートを読む**：
+  - [`readings/2026-10-22-session-026-self-measurement.md`](readings/2026-10-22-session-026-self-measurement.md)（`SESSION-026` 自己計測：`selection_audit.py --save/--compare` による前後スナップショット実験（関係線を得たのは draft 2件・selected 0件）、実験中に見つかった時刻精度の欠陥を注記のみで保存、`FRAG-030` と `Q-038`）
   - [`readings/2026-10-22-session-025-flat-perspective.md`](readings/2026-10-22-session-025-flat-perspective.md)（`SESSION-025` 選出の重みの実測：`tools/selection_audit.py` の作成と、selected/draft の差が関係線・言及・本文長にほとんど現れず描画半径 8.0 対 6.2 にだけ現れること、最後の空席 `human_narrator` による `FRAG-029`、および `Q-037`）
   - [`readings/2026-10-22-session-024-selection.md`](readings/2026-10-22-session-024-selection.md)（`SESSION-024` 査読と選出：未選出 `draft` 10編の判定［`FRAG-020`・`FRAG-023`・`FRAG-024` を暫定選出］、具体物と一対一で向き合う新作3編［`FRAG-026`〜`028`］、および `Q-036`）
   - [`readings/2026-10-22-session-023-nameless-archive.md`](readings/2026-10-22-session-023-nameless-archive.md)（`SESSION-023` 精読ノート：新規資料25件［`MAT-LIT-033`〜`056` および `MAT-TRC-003`］の全件精読、青空文庫17,436点とGutenberg全文による既存引用の逐語照合、名づけ・無言・複製をめぐる五つの糸、および `Q-033`〜`Q-035`）
@@ -42,12 +43,12 @@
 
 | 記録 | 保存先 | 現在の件数 | 役割 |
 |---|---|---:|---|
-| 問い | `state/questions.jsonl` | 37 | 開いたままの問い（初期シード5件＋セッション派生25件＋資料派生7件） |
+| 問い | `state/questions.jsonl` | 38 | 開いたままの問い（初期シード5件＋セッション派生26件＋資料派生7件） |
 | モチーフ | `state/motifs.jsonl` | 7 | 記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度の7つの糸 |
 | 素材 | `state/materials.jsonl` | 75 | AI研究抜粋15件（`research_excerpt`。ResearchOS移行14件＋本リポジトリ追加1件）＋哲学・言語学・文学・宗教原典56件（`literary_text`）＋プロジェクト痕跡4件（`project_trace`） |
-| 断片 | `state/fragments.jsonl` | 29 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・全6語り手モード（`other`・`human_narrator` を含む）の断片（`selected` 18編＋`draft` 11編） |
-| 関係 | `state/relations.jsonl` | 143 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
-| セッション | `state/sessions.jsonl` | 25 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| 断片 | `state/fragments.jsonl` | 30 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・全6語り手モード（`other`・`human_narrator` を含む）の断片（`selected` 18編＋`draft` 12編） |
+| 関係 | `state/relations.jsonl` | 150 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
+| セッション | `state/sessions.jsonl` | 26 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方
@@ -96,6 +97,8 @@ python3 tools/voice_audit.py --top 20 --gram 8
 # 8. 選出の重みが台帳のどこに保存されているかを測る（関係線・言及・本文長・描画定数）
 python3 tools/selection_audit.py
 python3 tools/selection_audit.py --json --top 10
+python3 tools/selection_audit.py --save      # 作業前後に実行して、選出の循環を時系列で見る
+python3 tools/selection_audit.py --compare
 ```
 
 `voice_audit.py` は「末尾が問いの形で終わった断片は何編か」「編をまたいで使い回された文字列は何種か」などを数えるだけで、品質を採点しません。同じ句の反復は、声が続いている証拠にも、口が勝手に動いている証拠にもなります（[`PROJECT_CHARTER.md`](PROJECT_CHARTER.md) の「成功の見方」参照）。
