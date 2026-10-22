@@ -2,9 +2,11 @@
 
 `*.jsonl` は一行一レコード（UTF-8、キー昇順ソート推奨）です。
 
-- `questions.jsonl` / `motifs.jsonl`：開かれた問いの系譜と、問いを横断する7つのモチーフ。
+- `questions.jsonl` / `motifs.jsonl`：開かれた問いの系譜と、問いを横断する8つのモチーフ。
 - `materials.jsonl`：`ResearchOS` から選定した AI 研究抜粋（`research_excerpt`）、本リポジトリで追加した AI 研究抜粋・哲学・文学原典（`literary_text`）・プロジェクト痕跡（`project_trace`）。`tools/import_researchos.py --write` を実行しても、本リポジトリ側で追加したローカル素材は保持されます。
 - `fragments.jsonl` / `relations.jsonl` / `sessions.jsonl`：各セッションで生成・選出された文芸断片、解釈的関係、セッション履歴。
+
+**記帳は自動で行います（2026-10-22 改訂）。** 人間の個別の採否判断は待ちません。断片の `status` は書き手が決め、`selected`／`draft` の理由を `editor_note` に一行で残します。手順は `FRAG-030`『記帳規程・第一版』の六項目に従ってください。
 
 台帳を更新した後は、必ず以下の2つを実行して整合性と読書案内を同期してください。
 

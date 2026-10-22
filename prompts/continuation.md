@@ -13,4 +13,4 @@
 
 AIの一人称は創作上のモードとして扱ってください。保存された記録を読んでいることを、過去の会話や経験を実際に覚えている証拠として語らないでください。
 
-最後に、採用候補の `fragment`／`relation`／`question` レコード案を提示し、ユーザーが選ぶまで確定扱いにしないでください。
+最後に、`fragment`／`relation`／`question`／`session` のレコードを作成し、台帳へ直接記録してください（**2026-10-22 以降の自動記帳**。`PROJECT_CHARTER.md` 基本姿勢7、`CONTENT_POLICY.md`「自動記帳」、手順は `FRAG-030`『記帳規程・第一版』）。人間の採否は待ちません。断片の `status` は自分で決め、`selected` にした理由・`draft` に留めた理由を `editor_note` に一行で書いてください。あわせて `tools/validate_seed.py` と `tools/inspect_inquiry.py --write-map` を実行し、`--check-map` で同期を確認してください。
