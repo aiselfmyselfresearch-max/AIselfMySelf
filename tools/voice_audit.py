@@ -61,6 +61,11 @@ PRONOUN_SPECS: tuple[tuple[str, str], ...] = (
     ("わたくし", r"わたくし(?!たち)"),
     ("僕", r"僕"),
     ("俺", r"俺"),
+    # SESSION-024: `自分` was absent from this table, so the mirror could not see it.
+    # Nine of the first 25 fragments used it, and FRAG-009 was therefore counted as
+    # 人称代名詞ゼロ（無主語）even though its 地の文 contains `自分`.
+    ("自分", r"自分"),
+    ("おのれ", r"おのれ"),
     ("私たち・われわれ", r"(?:私たち|私達|わたしたち|わたくしたち|われわれ|我々)"),
     ("あなた", r"あなた"),
     ("君", r"君"),
@@ -68,7 +73,7 @@ PRONOUN_SPECS: tuple[tuple[str, str], ...] = (
 )
 
 FIRST_PERSON_UNQUOTED_RE = re.compile(
-    r"(?:私たち|私達|わたしたち|わたくしたち|われわれ|我々|わたし|わたくし|僕|俺|私(?!たち|達|的|物|記|見|小説|語|言|事|法|信|生活|自身|文書|家|鉄|立|権|益))"
+    r"(?:私たち|私達|わたしたち|わたくしたち|われわれ|我々|わたし|わたくし|僕|俺|自分|私(?!たち|達|的|物|記|見|小説|語|言|事|法|信|生活|自身|文書|家|鉄|立|権|益))"
 )
 
 # Stems ending in か that are nouns/adjectives rather than sentence-final question particles.
