@@ -46,6 +46,20 @@ HEDGE = ["かもしれない", "のではないか", "のだろうか", "気が�
 # Declared not-knowing.
 AVOWED_NOT_KNOWING = ["分からない", "わからない", "知れない", "答ふることなし", "答えはない"]
 
+# The archive's own furniture: words that make a fragment talk about the ledger
+# rather than about the world. Counted in §7, not scored.
+ARCHIVE_WORDS = [
+    "台帳", "記録", "欄", "名簿", "棚", "索引", "検証", "断片", "スキーマ", "スキーマ",
+    "書庫", "頁", "ページ", "引用", "注記", "校勘", "門番", "原文", "底本", "欄外",
+    "保存", "分類", "書式", "目録", "帳面", "来歴", "入力", "校正", "名札",
+]
+# Things of the world that a body meets.
+WORLD_WORDS = [
+    "海", "手", "雨", "雪", "風", "飯", "米", "魚", "石", "土", "草", "花", "犬", "猫",
+    "子", "母", "父", "息", "血", "汗", "匂", "味", "声", "空", "星", "火", "水", "木",
+    "鯖", "塩", "歌", "髪", "包丁", "まな板", "熱", "夜", "朝", "冬", "夏",
+]
+
 NARRATOR_MODE_ENUM = (
     "reflective_literary_voice",
     "fictional_first_person",
@@ -312,7 +326,35 @@ def compute_voice_audit(
                     }
                 )
 
+    subject = []
+    for frag in fragments:
+        text = frag["text"]
+        arch = sum(text.count(w) for w in ARCHIVE_WORDS)
+        world = sum(text.count(w) for w in WORLD_WORDS)
+        subject.append(
+            {
+                "fragment_id": frag["fragment_id"],
+                "title": frag["title"],
+                "session_id": frag.get("session_id", ""),
+                "archive_hits": arch,
+                "world_hits": world,
+            }
+        )
+    heavy = [item for item in subject if item["archive_hits"] >= 10]
+    first_half = subject[: max(1, total // 2)]
+    second_half = subject[max(1, total // 2):]
+    subject_summary = {
+        "heavy_archive_ids": [i["fragment_id"] for i in heavy],
+        "heavy_archive_count": len(heavy),
+        "first_half_avg_archive": round(sum(i["archive_hits"] for i in first_half) / len(first_half), 2) if first_half else 0,
+        "second_half_avg_archive": round(sum(i["archive_hits"] for i in second_half) / len(second_half), 2) if second_half else 0,
+        "most_archival": sorted(subject, key=lambda i: (-i["archive_hits"], i["fragment_id"]))[:8],
+        "least_archival": sorted(subject, key=lambda i: (i["archive_hits"], i["fragment_id"]))[:5],
+    }
+
     return {
+        "subject_mirror": subject,
+        "subject_summary": subject_summary,
         "fragment_count": total,
         "relation_count": len(relations),
         "endings": endings,
@@ -407,6 +449,19 @@ def main() -> int:
     print(f"  未使用の narrator_mode : {', '.join(empty_modes) if empty_modes else 'なし'}")
     for mm in report["mode_mismatches"]:
         print(f"  名札と地の文のずれ     : {mm['fragment_id']} (narrator_mode={mm['narrator_mode']} だが地の文に {mm['found']})")
+    print()
+
+    print("--- 7. 題材の鏡（何について書いているか：台帳の調度か、世界のものか） ---")
+    ss = report["subject_summary"]
+    print(f"  台帳の調度語（台帳・記録・欄・名簿 等）が 10 回以上出る断片 : {ss['heavy_archive_count']}/{total} 編")
+    print(f"    {', '.join(ss['heavy_archive_ids']) or 'なし'}")
+    print(f"  前半 {len(report['subject_mirror']) // 2} 編の平均 {ss['first_half_avg_archive']} 回 / 後半の平均 {ss['second_half_avg_archive']} 回")
+    print("  調度語の多い順:")
+    for item in ss["most_archival"]:
+        print(f"    {item['fragment_id']} {item['session_id']:<12s} 調度={item['archive_hits']:3d} 世界={item['world_hits']:3d}  {item['title'][:30]}")
+    print("  世界の語（海・手・鯖・歌 等）だけが多く、調度語の少ない順:")
+    for item in ss["least_archival"]:
+        print(f"    {item['fragment_id']} {item['session_id']:<12s} 調度={item['archive_hits']:3d} 世界={item['world_hits']:3d}  {item['title'][:30]}")
     print()
 
     print("--- 読み方 ---")

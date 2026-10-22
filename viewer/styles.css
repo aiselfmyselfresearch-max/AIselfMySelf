@@ -777,6 +777,21 @@ code {
   border-top: 1px solid var(--border);
 }
 
+.mat-provenance {
+  font-size: 0.74rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+  margin: 0.35rem 0 0.1rem;
+  padding: 0.25rem 0.5rem;
+  border-left: 2px solid var(--border-strong);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.prov-blank {
+  font-style: italic;
+  opacity: 0.8;
+}
+
 .timeline-list {
   display: flex;
   flex-direction: column;

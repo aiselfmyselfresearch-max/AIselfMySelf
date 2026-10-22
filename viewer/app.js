@@ -662,6 +662,12 @@ function renderMaterials() {
       const authorLine = m.source && Array.isArray(m.source.authors) && m.source.authors.length
         ? `${m.source.authors.join(", ")} (${m.source.year})`
         : "";
+      const prov = m.provenance;
+      const provLine = prov
+        ? `<div class="mat-provenance">原語 ${escapeHtml(prov.original_language)}`
+          + `${prov.original_language !== prov.access_language ? ` → 参照 ${escapeHtml(prov.access_language)}` : ""}`
+          + ` ／ 運び手: ${prov.carrier ? escapeHtml(prov.carrier) : "<span class=\"prov-blank\">（空欄）</span>"}</div>`
+        : "";
       return `
         <article id="mcard-${escapeHtml(m.material_id)}" class="mat-card">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
@@ -670,6 +676,7 @@ function renderMaterials() {
           </div>
           <h3 class="mat-title">${escapeHtml(m.title)}</h3>
           ${authorLine ? `<div style="font-size:0.78rem;color:var(--ink-muted);">${escapeHtml(authorLine)}</div>` : ""}
+          ${provLine}
           ${m.literary_invitation ? `<div class="mat-invitation">問いへの誘い: ${escapeHtml(m.literary_invitation)}</div>` : ""}
           <blockquote class="mat-passage">${escapeHtml(m.passage)}</blockquote>
           ${usedIn.length > 0 ? `<div class="tag-row" style="margin-bottom:0;">${usedIn.map((f) => renderEntityJumpButton("fragment", f.fragment_id)).join("")}</div>` : ""}
