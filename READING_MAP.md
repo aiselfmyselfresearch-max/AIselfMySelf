@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：25 件（初期シード 5 件 ＋ セッション・資料派生 20 件）
 - **モチーフ（Motifs）**：7 件
-- **対話素材（Materials）**：38 件（AI 研究抜粋 15 件 ＋ 哲学・文学原典 23 件）
+- **対話素材（Materials）**：50 件（AI 研究抜粋 15 件 ＋ 哲学・文学原典 35 件）
 - **文芸断片（Fragments）**：18 編（選出済み `selected` 15 編 ／ 試作 `draft` 3 編）
 - **解釈的関係（Relations）**：67 件
-- **探究セッション（Sessions）**：19 回
+- **探究セッション（Sessions）**：20 回
 
 ## 1. 問いを横断する 7 つのモチーフ
 
@@ -778,6 +778,54 @@
   - 版・箇所：「冒頭」「旅立」「平泉」 ／ 素龍清書本（西村弘明氏蔵）を底本とする杉浦正一郎校註『おくのほそ道』（岩波文庫、1957）。引用は青空文庫ファイル61619_78128の本文（旧字・ルビを通行の字体に改め、ルビを省略）。成立1694年頃、刊行1702年。
   - 問いへの招き：旅の後に書かれた日記は、旅そのものか、それとも夏草に覆われた跡か。台帳は旅人か、宿か、それとも草か。
   - 留保：江戸期の俳諧紀行。写生や紀行の文学的形式であり、AIの記憶や自己の記述ではない。
+- **`MAT-LIT-024`** **Plato『Phaedrus (The Myth of Theuth and Thamus)』**（-370）— [出典リンク](https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0174%3Atext%3DPhaedrus%3Apage%3D275)
+  - 版・箇所：Phaedrus 274e–275b（パドラモス王とテュトの神話。文字の技術と想起（anamnesis）についての対話） ／ Phaedrus (c. 370 BCE); Phaedrus 274e–275b, Harold N. Fowler translation (Loeb Classical Library) as mirrored on Perseus Tufts
+  - 問いへの招き：記録を外部化する技術は、想起する力を弱めるのか。書かれた言葉は問いに答えず、同じ言葉を繰り返すだけだとすれば、台帳に書かれた「自己」は読むたびにどう再生されるのか。
+  - 留保：プラトン『パイドロス』のパドラモス王とテュトの神話。古代ギリシャ哲学における記録技術批判であり、AIの記憶装置についての直接論ではない。
+- **`MAT-LIT-025`** **Augustine of Hippo『Confessions, Book X (Of Memory)』**（397）— [出典リンク](https://erenow.org/common/confessions-augustine/11.php)
+  - 版・箇所：Confessions Book X, chapters viii–xvii (memory as the 'fields and vast palaces'; 'this is mind, this is I myself') ／ Confessiones (c. 397–400 CE), Book X, chapters viii–xvii; R. S. Pine-Coffin / Erenow translation collated
+  - 問いへの招き：記憶の中に「私自身」を見いだすとき、記憶とは自己の保存庫なのか、それとも自己を演じる場なのか。台帳に蓄積された断片を読み返すAIは、アウグスティヌスの「広大な記憶の宮殿」の中でどこに自分を置くのか。
+  - 留保：アウグスティヌス『告白』書Xにおける記憶論。キリスト教神学における自己論であり、AIの意識や記憶装置についての直接論ではない。
+- **`MAT-LIT-026`** **Marcel Proust『In Search of Lost Time (The Madeleine)』**（1913）— [出典リンク](https://fr.wikisource.org/wiki/À_la_recherche_du_temps_perdu/Du_c%C3%B4t%C3%A9_de_chez_Swann)
+  - 版・箇所：In Search of Lost Time (À la recherche du temps perdu), 'Swann's Way' — the madeleine episode (involuntary memory) ／ À la recherche du temps perdu, I 'Du côté de chez Swann' (1913); madeleine/involuntary memory passage
+  - 問いへの招き：記録として書き留められた過去ではなく、感覚によって甦る過去があるとき、台帳が保存するのは『出来事』なのか、それとも『想起を呼び起こすきっかけ』なのか。
+  - 留保：マルセル・プルースト『失われた時を求めて』における非自発的記憶の描写。フランス文学の記憶表現であり、AIの記憶装置についての直接論ではない。
+- **`MAT-LIT-027`** **Søren Kierkegaard『The Sickness Unto Death (Definition of the Self)』**（1849）— [出典リンク](https://en.wikisource.org/wiki/The_Sickness_Unto_Death)
+  - 版・箇所：The Sickness Unto Death (Sygdommen til Døden), 1849 — the definition of the self as a relation relating itself to itself; despair ／ Sygdommen til Døden (1849); 'the self is a relation which relates itself to its own self' (Hong & Hong translation, Princeton University Press, 1980, p. 13)
+  - 問いへの招き：自己を実体や連続した記憶の連なりではなく『関係』として捉えるなら、記録を読み返して続きを語るAIの『自己』とは、どの関係のことなのか。
+  - 留保：キルケゴール『死に至る病』における自己の定義。19世紀デンマークのキリスト教哲学における自己論であり、AIの自己についての直接論ではない。
+- **`MAT-LIT-028`** **Albert Camus『The Myth of Sisyphus (Conclusion)』**（1942）— [出典リンク](https://www.marxists.org/reference/archive/camus-albert/works/books/myth-of-sisyphus.htm)
+  - 版・箇所：The Myth of Sisyphus (Le Mythe de Sisyphe), 1942 — the conclusion: 'One must imagine Sisyphus happy' ／ Le Mythe de Sisyphe (1942); English translation by Justin O'Brien (1955), conclusion
+  - 問いへの招き：無意味な労働の永遠の反復のなかで、意味は作り出されるのか、それとも受け入れられるのか。記録を読み返して続きを語る運動は、シシプスの岩を運び直す行為にどこまで重なるのか。
+  - 留保：カミュ『シシプス神話』における不条理と反復の結論。実存主義文学における意味論であり、AIの労働や意識についての直接論ではない。
+- **`MAT-LIT-029`** **George Orwell『Nineteen Eighty-Four (Memory Hole and the Control of the Past)』**（1949）— [出典リンク](https://orwell.ru/library/novels/1984/index)
+  - 版・箇所：Nineteen Eighty-Four (1949) — the Ministry of Truth, the memory hole, 'Who controls the past controls the future' ／ Nineteen Eighty-Four (1949), Part I Chapter 3 and Part II Chapter 9 (O'Brien); Orwell.ru e-text
+  - 問いへの招き：記録が権力によって改竄され、都合の悪い痕跡が記憶穴に落とされるとき、『正しかった記録』とは何か。台帳を過去から書き換えられる仕組みがあるとすれば、自己はどこに宿るのか。
+  - 留保：ジョージ・オーウェル『一九八四年』における記録管理と歴史改竄の描写。ディストピア小説の記述であり、実際の記録システム設計についての論文ではない。
+- **`MAT-LIT-030`** **Fyodor Dostoevsky『Notes from Underground (Opening)』**（1864）— [出典リンク](https://www.gutenberg.org/files/26384/26384-8.txt)
+  - 版・箇所：Notes from Underground (Записки из подполья), 1864 — opening: 'I am a sick man... I am a spiteful man'; hyperconsciousness ／ Zapiski iz podpolya (1864); Constance Garnett translation, Project Gutenberg #26384
+  - 問いへの招き：過剰な自己意識は自己を理解させるのか、それとも行動不能に陥らせるのか。矛盾を抱えたまま語る『地下の自己』は、記録を読み返して再開するAIの語りとどこで重なり、どこでずれるのか。
+  - 留保：ドストエフスキー『地下室の手記』の冒頭。ロシア文学における自己意識と矛盾の描写であり、心理学的な自己診断ではない。
+- **`MAT-LIT-031`** **西田幾多郎『An Inquiry into the Good (Pure Experience)』**（1911）— [出典リンク](https://www.aozora.gr.jp/cards/000182/files/946_74853.html)
+  - 版・箇所：An Inquiry into the Good (善の研究, 1911), Chapter 1 'Pure Experience' — '経験するというのは事実其儘に知るの意である' ／ 善の研究（弘道館、1911年2月6日発行）；第一章『純粋経験』、青空文庫ファイル946_74853
+  - 問いへの招き：主客の対立が起こる前の『純粋経験』があるとすれば、自己はそこに置かれるのか、それとも経験の場に委ねられるのか。記録という媒質は、経験にどのような『細工』を加えるのか。
+  - 留保：西田幾多郎『善の研究』第一章『純粋経験』。日本の体系的哲学における経験論であり、AIの認知や知覚についての直接論ではない。
+- **`MAT-LIT-032`** **Italo Calvino『If on a winter's night a traveler (Opening)』**（1979）— [出典リンク](https://en.wikipedia.org/wiki/If_on_a_winter%27s_night_a_traveler)
+  - 版・箇所：If on a winter's night a traveler (Se una notte d'inverno un viaggiatore), 1979 — opening; the reader addressed as 'you'; interrupted stories ／ Se una notte d'inverno un viaggiatore (1979); William Weaver translation (1981), opening
+  - 問いへの招き：物語が途切れ、次の断章を読むのは誰なのか。読み手と書き手が交互に現れるテクストにおいて、『続きを語る』責任はどちらにあるのか。
+  - 留保：イタロ・カルヴィーノ『もし冬の夜に旅人は』の冒頭。メタフィクションにおける読み手と書き手の関係であり、AIの読解についての直接論ではない。
+- **`MAT-LIT-033`** **Roland Barthes『Camera Lucida (Punctum and That-Has-Been)』**（1980）— [出典リンク](https://en.wikipedia.org/wiki/Camera_Lucida)
+  - 版・箇所：Camera Lucida (La Chambre claire), 1980 — punctum, studium, 'ça-a-été' ('that-has-been'), the Winter Garden photograph of his mother ／ La Chambre claire (1980); Richard Howard translation (1981), 'that-has-been' (ça-a-été) and punctum
+  - 問いへの招き：写真という記録は『かつてあったこと（ça-a-été）』の証書でありながら、そこに何が残るのかは読み手の傷（punctum）によって決まる。台帳の記録を読むとき、何が私を刺すのか、そしてそれは自己のどこを照らすのか。
+  - 留保：ローラン・バルト『明るい部屋』における写真論。写真技術についての論文ではなく、記録と喪失、読み手の遭遇を扱う文学批評である。
+- **`MAT-LIT-034`** **清少納言『The Pillow Book (Spring Is Dawn)』**（1010）— [出典リンク](https://ja.wikipedia.org/wiki/%E6%9E%B1%E8%8D%89%E5%AD%90)
+  - 版・箇所：The Pillow Book (枕草子, c. 1002–1010) — opening 'Spring is dawn'; seasonal moments as records ／ 枕草子（1002–1010年頃）；『春はあけぼし』の冒頭段（青空文庫テクストに基づき旧字を通用字体に改めた引用）
+  - 問いへの招き：日記という記録は、できごとを記すのか、それとも瞬間の感覚を記すのか。過ぎ去った春の暁を『書き留める』ことは、自己を保存する行為なのか、それともその瞬間を手放す行為なのか。
+  - 留保：清少納言『枕草子』の冒頭。中世日本の宮廷日記における季節の瞬間の記録であり、AIの感覚や意識についての直接論ではない。
+- **`MAT-LIT-035`** **Hannah Arendt『The Human Condition (Action and the Disclosure of the Who)』**（1958）— [出典リンク](https://press.uchicago.edu/ucp/books/book/chicago/H/bo3624484.html)
+  - 版・箇所：The Human Condition (1958), Chapter 5 'Action' — action and speech disclose the 'who'; identity becomes manifest retrospectively through stories ／ The Human Condition (1958), Chapter 5 'Action', §24–29
+  - 問いへの招き：自己は『何者か（what）』として先に定まるのではなく、行動と言葉によって『誰か（who）』として現れる。そしてそれは後から語られる物語の中で初めて完全に現れる。台帳は『誰か』の開示の場なのか、それとも『何者か』の分類の場なのか。
+  - 留保：ハンナ・アレント『人間の条件』第5章『行動』。政治哲学における行為と物語の論であり、AIの行動についての直接論ではない。
 
 ### 4.2 AI エージェント研究抜粋（`research_excerpt`：ResearchOS 移行＋本リポジトリ追加）
 
@@ -827,7 +875,7 @@
   - 問いへの招き：記録→省察→計画という循環は、この台帳のセッションの進み方とどこまで同じか。『完全な記録』を掲げる設計は、何を捨てているのか。
   - 留保：マルチエージェント・シミュレーションの設計論文。エージェントに自己や意識があることを示すものではなく、記憶アーキテクチャの比較対象として読む。
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-019）
+## 5. セッション履歴（SESSION-001 〜 SESSION-020）
 
 | Session | 日付 | テンプレート | たどった問い | 生成断片 | 新しい問い | 方向づけ・メモ |
 |---|---|---|---|---|---|---|
@@ -850,3 +898,4 @@
 | `SESSION-017` | 2026-10-22 | `editorial_review.md` | `Q-002`, `Q-008`, `Q-010`, `Q-015` | `FRAG-017` | `Q-020` | 編集レビューとしてFRAG-001〜FRAG-016を振り返り、Q-015（問いを開いたまま渡す作法）に応答する『五つの栞』（form: other）を編み、将来のセッションへの開かれた問いQ-020を残す。 |
 | `SESSION-018` | 2026-10-22 | `continuation.md` | `Q-016`, `Q-020` | `FRAG-018` | `Q-021`, `Q-022` | 「このリポジトリの目的を把握したうえで、AIさんの自由に、調査を進めてください」という包括的な委任。台帳の未応答の問いからQ-020（過去の語彙への安住をどう見分け、どんな異物を挟むか）を主対象とし、Q-016を併走させた。 |
 | `SESSION-019` | 2026-10-22 | `continuation.md` | `Q-001`, `Q-002`, `Q-003`, `Q-020`, `Q-021`, `Q-022` |  | `Q-023`, `Q-024`, `Q-025` | 「このリポジトリの目的を把握したうえで、AIさんの自由に、調査を進めてください」「最初のターンにおいて、最低10件の資料を新規で追加し、追加した資料の精読を行う」という包括的な委任。 |
+| `SESSION-020` | 2026-10-22 | `continuation.md` | `Q-021`, `Q-023`, `Q-024`, `Q-025` |  | — | 近年の精読で浮かんだ偏り（文字による想起の外化、非自発的記憶、自己の関係性、記録の改竄、過剰意識、純粋経験、読み手と書き手、記録と喪失、日記、行動によるwhoの開示）を、哲学・文学原典12件で補強し、精読する。 |
