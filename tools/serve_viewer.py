@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Serve the interactive AIselfMySelf archive viewer over HTTP (stdlib only).
 
-Reads state/*.jsonl dynamically on every /api/state request so ledger updates
-appear immediately on page refresh. Binds to 0.0.0.0 by default for browser
-preview compatibility.
+Reads state/*.jsonl, tools/voice_audit.py metrics, and readings/*.md dynamically
+on every /api/state request so updates appear immediately on page refresh.
+Binds to 0.0.0.0 by default for browser preview compatibility.
 """
 from __future__ import annotations
 
@@ -16,18 +16,45 @@ from urllib.parse import parse_qs, urlparse
 
 from inspect_inquiry import build_context_packet, load_all
 from validate_seed import COLLECTIONS, ROOT, load_jsonl
+from voice_audit import compute_voice_audit
 
 VIEWER_DIR = ROOT / "viewer"
+READINGS_DIR = ROOT / "readings"
 
 
-def read_archive_payload() -> dict[str, list[dict]]:
+def read_readings_list() -> list[dict[str, str]]:
+    if not READINGS_DIR.is_dir():
+        return []
+    notes: list[dict[str, str]] = []
+    for md_path in sorted(READINGS_DIR.glob("*.md"), reverse=True):
+        content = md_path.read_text(encoding="utf-8")
+        title = md_path.stem
+        for line in content.splitlines():
+            if line.startswith("# "):
+                title = line[2:].strip()
+                break
+        notes.append(
+            {
+                "filename": md_path.name,
+                "title": title,
+                "content": content,
+            }
+        )
+    return notes
+
+
+def read_archive_payload() -> dict[str, object]:
     errors: list[str] = []
-    payload: dict[str, list[dict]] = {}
+    payload: dict[str, object] = {}
     for name, (filename, id_key, _) in COLLECTIONS.items():
         records = load_jsonl(ROOT / "state" / filename, id_key, errors)
         payload[name] = list(records.values())
     if errors:
         raise RuntimeError("; ".join(errors))
+    fragments = payload["fragments"]  # type: ignore[assignment]
+    relations = payload["relations"]  # type: ignore[assignment]
+    payload["voice_audit"] = compute_voice_audit(fragments, relations, top=16, gram=6)  # type: ignore[arg-type]
+    payload["readings"] = read_readings_list()
     return payload
 
 

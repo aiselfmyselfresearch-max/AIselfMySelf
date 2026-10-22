@@ -1,848 +1,992 @@
-(function () {
-  "use strict";
+/* AIselfMySelf Interactive Archive Viewer (Vanilla JS, zero external dependencies) */
 
-  const FORM_LABELS = {
-    dialogue: "対話",
-    scene: "情景",
-    letter: "書簡",
-    poem: "詩的断章",
-    essay: "エッセイ",
-    fragment: "断章",
-    other: "編集覚書・連作",
+const FORM_LABELS = {
+  essay: "エッセイ",
+  dialogue: "対話篇",
+  letter: "書簡",
+  poem: "詩篇",
+  scene: "情景",
+  fragment: "断章",
+  other: "記録票・その他",
+};
+
+const MODE_LABELS = {
+  reflective_literary_voice: "省察的文学声 (reflective_literary_voice)",
+  fictional_first_person: "虚構の一人称 (fictional_first_person)",
+  third_person: "三人称 (third_person)",
+  dialogue: "対話体 (dialogue)",
+};
+
+const REL_META = {
+  echo: { label: "echo（呼応）", color: "#3b6048", dash: "" },
+  contrast: { label: "contrast（対比）", color: "#9b3728", dash: "5,3" },
+  transforms: { label: "transforms（変容）", color: "#295270", dash: "" },
+  interrupts: { label: "interrupts（切断）", color: "#c94a38", dash: "2,3" },
+  leaves_open: { label: "leaves_open（開放）", color: "#8a6120", dash: "6,4" },
+  responds_to: { label: "responds_to（応答）", color: "#6b655b", dash: "" },
+  reframes: { label: "reframes（再枠組）", color: "#5e4b8b", dash: "" },
+  metaphorically_resonates: { label: "metaphorically_resonates（比喩共鳴）", color: "#2d726d", dash: "" },
+};
+
+const state = {
+  data: null,
+  maps: {},
+  currentView: "anthology",
+  selectedFragmentId: null,
+  selectedGraphNode: null,
+  activeRelType: "all",
+  activeMatKind: "all",
+  activeMirrorPane: "audit",
+  selectedNotebook: 0,
+};
+
+function escapeHtml(str) {
+  return String(str ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+async function fetchArchive() {
+  for (const endpoint of ["api/state", "data.json"]) {
+    try {
+      const res = await fetch(endpoint, { cache: "no-store" });
+      if (res.ok) return await res.json();
+    } catch (_) {
+      // Fall through to next endpoint
+    }
+  }
+  throw new Error("台帳データを読み込めませんでした。`python3 tools/serve_viewer.py` 経由で開いてください。");
+}
+
+function indexData(data) {
+  state.data = data;
+  state.maps = {
+    question: new Map(data.questions.map((x) => [x.question_id, x])),
+    motif: new Map(data.motifs.map((x) => [x.motif_id, x])),
+    material: new Map(data.materials.map((x) => [x.material_id, x])),
+    fragment: new Map(data.fragments.map((x) => [x.fragment_id, x])),
+    relation: new Map(data.relations.map((x) => [x.relation_id, x])),
+    session: new Map(data.sessions.map((x) => [x.session_id, x])),
   };
+  if (!state.selectedFragmentId && data.fragments.length > 0) {
+    state.selectedFragmentId = data.fragments[data.fragments.length - 1].fragment_id;
+  }
+}
 
-  const NARRATOR_INFO = {
-    fictional_first_person: {
-      label: "創作上の一人称 (fictional_first_person)",
-      note: "記録から再構成された創作上の語り手です。モデルの主観的意識や実体験の事実報告ではありません。",
-    },
-    reflective_literary_voice: {
-      label: "内省的・文芸的な声 (reflective_literary_voice)",
-      note: "保存された台帳・文献を読み返して思考を編む文芸上の声であり、生身の経験の報告ではありません。",
-    },
-    dialogue: {
-      label: "対話体 (dialogue)",
-      note: "複数の視点をぶつけ合う対話形式であり、単一の結論へ畳まないための構成です。",
-    },
-    third_person: {
-      label: "三人称 (third_person)",
-      note: "記録と読み手のあいだの情景・構造を外側から描く三人称の語りです。",
-    },
-    human_narrator: {
-      label: "人間の語り手 (human_narrator)",
-      note: "人間の書き手による直接の記述です。",
-    },
-    other: {
-      label: "その他 (other)",
-      note: "実験的な語りのモードです。",
-    },
-  };
+function switchView(viewName) {
+  state.currentView = viewName;
+  document.querySelectorAll(".tab-btn").forEach((btn) => {
+    const active = btn.dataset.view === viewName;
+    btn.classList.toggle("active", active);
+    btn.setAttribute("aria-selected", String(active));
+  });
+  document.querySelectorAll(".view-panel").forEach((panel) => {
+    const show = panel.id === `view-${viewName}`;
+    panel.hidden = !show;
+    panel.classList.toggle("active", show);
+  });
+  if (viewName === "constellation") {
+    renderConstellation();
+  } else if (viewName === "packet") {
+    loadContextPacket();
+  } else if (viewName === "mirror") {
+    renderMirrorView();
+  }
+}
 
-  const RELATION_STYLES = {
-    echo: { label: "共鳴 (echo)", color: "#295270", dash: "" },
-    contrast: { label: "対照 (contrast)", color: "#9b3728", dash: "6,3" },
-    transforms: { label: "変奏 (transforms)", color: "#3b6048", dash: "" },
-    interrupts: { label: "切断 (interrupts)", color: "#c23b22", dash: "3,3" },
-    reframes: { label: "枠組転換 (reframes)", color: "#8a6120", dash: "" },
-    metaphorically_resonates: { label: "比喩共鳴 (metaphor)", color: "#6b4c8c", dash: "5,3" },
-    responds_to: { label: "応答 (responds_to)", color: "#6e7781", dash: "" },
-    leaves_open: { label: "開放 (leaves_open)", color: "#9a7b2c", dash: "2,4" },
-  };
+function jumpToFragment(fragmentId) {
+  state.selectedFragmentId = fragmentId;
+  switchView("anthology");
+  renderFragmentList();
+  renderFragmentReader(fragmentId);
+}
 
-  let STATE = null;
-  let activeFragmentId = null;
-  let activeGraphNode = null;
-  let activeRelationFilter = "all";
-  let activeMaterialKind = "all";
+function jumpToQuestion(questionId) {
+  switchView("lineage");
+  const el = document.getElementById(`qcard-${questionId}`);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    el.style.outline = "2px solid var(--accent-crimson)";
+    setTimeout(() => { el.style.outline = ""; }, 1800);
+  }
+}
 
-  function escapeHtml(value) {
-    return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#39;");
+function jumpToMaterial(materialId) {
+  state.activeMatKind = "all";
+  document.querySelectorAll("#mat-kind-group .pill-btn").forEach((b) => {
+    b.classList.toggle("active", b.dataset.matKind === "all");
+  });
+  renderMaterials();
+  switchView("materials");
+  const el = document.getElementById(`mcard-${materialId}`);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    el.style.outline = "2px solid var(--accent-crimson)";
+    setTimeout(() => { el.style.outline = ""; }, 1800);
+  }
+}
+
+function jumpToSession(sessionId) {
+  switchView("timeline");
+  const el = document.getElementById(`scard-${sessionId}`);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    el.style.outline = "2px solid var(--accent-crimson)";
+    setTimeout(() => { el.style.outline = ""; }, 1800);
+  }
+}
+
+function renderStats() {
+  const d = state.data;
+  const litCount = d.materials.filter((m) => m.material_kind === "literary_text").length;
+  const resCount = d.materials.filter((m) => m.material_kind === "research_excerpt").length;
+  const trcCount = d.materials.filter((m) => m.material_kind === "project_trace" || m.material_kind === "conversation_trace").length;
+  const selectedCount = d.fragments.filter((f) => f.status === "selected").length;
+  const draftCount = d.fragments.filter((f) => f.status === "draft").length;
+  const matDetail = trcCount > 0
+    ? `原典 ${litCount} / AI研究 ${resCount} / 痕跡 ${trcCount}`
+    : `原典 ${litCount} / AI研究 ${resCount}`;
+
+  document.getElementById("stats-strip").innerHTML = `
+    <span class="stat-chip"><strong>${d.fragments.length}</strong> 創作断片（選集 ${selectedCount} / 草稿 ${draftCount}）</span>
+    <span class="stat-chip"><strong>${d.questions.length}</strong> 開かれた問い</span>
+    <span class="stat-chip"><strong>${d.materials.length}</strong> 対話素材（${matDetail}）</span>
+    <span class="stat-chip"><strong>${d.motifs.length}</strong> モチーフ</span>
+    <span class="stat-chip"><strong>${d.relations.length}</strong> 関係線</span>
+    <span class="stat-chip"><strong>${d.sessions.length}</strong> セッション</span>
+  `;
+
+  const sub = document.getElementById("materials-subtitle");
+  if (sub) {
+    sub.textContent = `全 ${d.materials.length} 件（哲学・文学原典 ${litCount} 件 ／ AI エージェント研究抜粋 ${resCount} 件 ／ プロジェクト痕跡 ${trcCount} 件）。すべて「正解の根拠」ではなく、創作と省察の対話相手として迎え入れられています。`;
+  }
+}
+
+/* 1. Anthology View */
+function renderFragmentList() {
+  const q = document.getElementById("frag-search").value.trim().toLowerCase();
+  const statusFilter = document.getElementById("filter-status").value;
+  const formFilter = document.getElementById("filter-form").value;
+  const modeFilter = document.getElementById("filter-mode").value;
+
+  const filtered = state.data.fragments.filter((f) => {
+    if (statusFilter !== "all" && f.status !== statusFilter) return false;
+    if (formFilter !== "all" && f.form !== formFilter) return false;
+    if (modeFilter !== "all" && f.narrator_mode !== modeFilter) return false;
+    if (!q) return true;
+    const hay = `${f.fragment_id} ${f.title} ${f.text} ${f.editor_note || ""} ${(f.linked_questions || []).join(" ")}`.toLowerCase();
+    return hay.includes(q);
+  });
+
+  const listEl = document.getElementById("fragment-list");
+  if (filtered.length === 0) {
+    listEl.innerHTML = `<div style="padding:1.2rem;color:var(--ink-muted);font-size:0.86rem;">条件に一致する創作断片はありません。</div>`;
+    return;
   }
 
-  async function loadData() {
-    for (const url of ["./api/state", "./data.json"]) {
-      try {
-        const res = await fetch(url, { cache: "no-store" });
-        if (res.ok) {
-          return await res.json();
+  listEl.innerHTML = filtered
+    .map((f) => {
+      const isSelected = f.fragment_id === state.selectedFragmentId;
+      const badgeCls = f.status === "selected" ? "badge-selected" : "badge-draft";
+      const preview = f.text.replace(/\s+/g, " ").slice(0, 74);
+      return `
+        <button type="button" class="frag-item ${isSelected ? "selected" : ""}" data-frag-id="${escapeHtml(f.fragment_id)}">
+          <div class="frag-item-top">
+            <span><code>${escapeHtml(f.fragment_id)}</code> · ${escapeHtml(FORM_LABELS[f.form] || f.form)}</span>
+            <span class="badge ${badgeCls}">${escapeHtml(f.status)}</span>
+          </div>
+          <div class="frag-item-title">${escapeHtml(f.title)}</div>
+          <div class="frag-item-preview">${escapeHtml(preview)}…</div>
+        </button>
+      `;
+    })
+    .join("");
+
+  listEl.querySelectorAll(".frag-item").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      state.selectedFragmentId = btn.dataset.fragId;
+      renderFragmentList();
+      renderFragmentReader(state.selectedFragmentId);
+    });
+  });
+}
+
+function formatLiteraryBody(fragment) {
+  const lines = fragment.text.split("\n");
+  if (fragment.form === "dialogue") {
+    return lines
+      .map((line) => {
+        if (!line.trim()) return "";
+        const m = line.match(/^([^:：]{1,18})[:：]\s*(.+)$/);
+        if (m) {
+          return `<div class="dialogue-turn"><span class="dialogue-speaker">${escapeHtml(m[1])}</span><div>${escapeHtml(m[2])}</div></div>`;
         }
-      } catch (_err) {
-        // Fall through to fallback static JSON
-      }
-    }
-    throw new Error("台帳データを読み込めませんでした。`python3 tools/serve_viewer.py` を起動してください。");
-  }
-
-  function switchTab(viewName) {
-    document.querySelectorAll(".tab-btn").forEach((btn) => {
-      const isMatch = btn.dataset.view === viewName;
-      btn.classList.toggle("active", isMatch);
-      btn.setAttribute("aria-selected", String(isMatch));
-    });
-    document.querySelectorAll(".view-panel").forEach((panel) => {
-      const isMatch = panel.id === `view-${viewName}`;
-      panel.classList.toggle("active", isMatch);
-      panel.hidden = !isMatch;
-    });
-    if (viewName === "constellation") {
-      renderConstellation();
-    }
-    if (viewName === "packet") {
-      loadPacketPreview();
-    }
-  }
-
-  function renderStats() {
-    const strip = document.getElementById("stats-strip");
-    const qCount = STATE.questions.length;
-    const motifCount = STATE.motifs.length;
-    const matLit = STATE.materials.filter((m) => m.kind === "literary_text").length;
-    const matAi = STATE.materials.filter((m) => m.kind === "research_excerpt").length;
-    const fragSelected = STATE.fragments.filter((f) => f.status === "selected").length;
-    const fragTotal = STATE.fragments.length;
-
-    strip.innerHTML = [
-      `<span class="stat-chip"><strong>${qCount}</strong>開かれた問い</span>`,
-      `<span class="stat-chip"><strong>${motifCount}</strong>横断モチーフ</span>`,
-      `<span class="stat-chip"><strong>${STATE.materials.length}</strong>対話素材（AI研究 ${matAi} / 哲学・文学 ${matLit}）</span>`,
-      `<span class="stat-chip"><strong>${fragTotal}</strong>文芸断片（Selected ${fragSelected} / Draft ${fragTotal - fragSelected}）</span>`,
-      `<span class="stat-chip"><strong>${STATE.relations.length}</strong>解釈的関係</span>`,
-      `<span class="stat-chip"><strong>${STATE.sessions.length}</strong>セッション</span>`,
-    ].join("");
-  }
-
-  function populateMotifFilter() {
-    const select = document.getElementById("frag-motif-filter");
-    STATE.motifs.forEach((m) => {
-      const opt = document.createElement("option");
-      opt.value = m.motif_id;
-      opt.textContent = `${m.motif_id}: ${m.label}`;
-      select.appendChild(opt);
-    });
-  }
-
-  function formatFragmentBody(frag) {
-    if (frag.form === "dialogue") {
-      return frag.text
-        .split("\n")
-        .filter((line) => line.trim())
-        .map((line) => {
-          const idx = line.indexOf(":");
-          if (idx > 0 && idx < 18) {
-            const speaker = line.slice(0, idx).trim();
-            const speech = line.slice(idx + 1).trim();
-            return `<div class="dialogue-turn"><span class="dialogue-speaker">${escapeHtml(speaker)}</span><div>${escapeHtml(speech)}</div></div>`;
-          }
-          return `<p>${escapeHtml(line)}</p>`;
-        })
-        .join("");
-    }
-    return frag.text
-      .split("\n\n")
-      .map((para) => `<p>${escapeHtml(para).replace(/\n/g, "<br />")}</p>`)
+        return `<p>${escapeHtml(line)}</p>`;
+      })
       .join("");
   }
+  if (fragment.form === "poem") {
+    return fragment.text
+      .split("\n\n")
+      .map((stanza) => `<p>${stanza.split("\n").map(escapeHtml).join("<br/>")}</p>`)
+      .join("");
+  }
+  return fragment.text
+    .split("\n\n")
+    .map((para) => `<p>${para.split("\n").map(escapeHtml).join("<br/>")}</p>`)
+    .join("");
+}
 
-  function renderFragmentList() {
-    const query = document.getElementById("frag-search").value.trim().toLowerCase();
-    const formVal = document.getElementById("frag-form-filter").value;
-    const motifVal = document.getElementById("frag-motif-filter").value;
-    const statusVal = document.getElementById("frag-status-filter").value;
+function renderEntityJumpButton(type, id) {
+  if (type === "fragment") {
+    const f = state.maps.fragment.get(id);
+    return `<button type="button" class="link-pill" data-jump-frag="${escapeHtml(id)}">${escapeHtml(id)}: ${escapeHtml(f ? f.title : "")}</button>`;
+  }
+  if (type === "question") {
+    const q = state.maps.question.get(id);
+    const shortQ = q ? q.text.slice(0, 28) + "…" : "";
+    return `<button type="button" class="link-pill" data-jump-q="${escapeHtml(id)}">${escapeHtml(id)}: ${escapeHtml(shortQ)}</button>`;
+  }
+  if (type === "material") {
+    const m = state.maps.material.get(id);
+    return `<button type="button" class="link-pill" data-jump-mat="${escapeHtml(id)}">${escapeHtml(id)}: ${escapeHtml(m ? m.source_title.slice(0, 26) : "")}</button>`;
+  }
+  if (type === "session") {
+    const s = state.maps.session.get(id);
+    const shortS = s ? s.session_note.slice(0, 26) + "…" : "";
+    return `<button type="button" class="link-pill" data-jump-sess="${escapeHtml(id)}">${escapeHtml(id)}: ${escapeHtml(shortS)}</button>`;
+  }
+  return `<code>${escapeHtml(id)}</code>`;
+}
 
-    const filtered = STATE.fragments
-      .slice()
-      .reverse()
-      .filter((f) => {
-        if (formVal !== "all" && f.form !== formVal) return false;
-        if (motifVal !== "all" && !f.motif_ids.includes(motifVal)) return false;
-        if (statusVal !== "all" && f.status !== statusVal) return false;
-        if (query) {
-          const hay = `${f.fragment_id} ${f.title} ${f.text} ${f.question_ids.join(" ")} ${f.material_ids.join(" ")}`.toLowerCase();
-          if (!hay.includes(query)) return false;
+function bindJumpButtons(container) {
+  container.querySelectorAll("[data-jump-frag]").forEach((b) => {
+    b.addEventListener("click", () => jumpToFragment(b.dataset.jumpFrag));
+  });
+  container.querySelectorAll("[data-jump-q]").forEach((b) => {
+    b.addEventListener("click", () => jumpToQuestion(b.dataset.jumpQ));
+  });
+  container.querySelectorAll("[data-jump-mat]").forEach((b) => {
+    b.addEventListener("click", () => jumpToMaterial(b.dataset.jumpMat));
+  });
+  container.querySelectorAll("[data-jump-sess]").forEach((b) => {
+    b.addEventListener("click", () => jumpToSession(b.dataset.jumpSess));
+  });
+}
+
+function renderFragmentReader(fragmentId) {
+  const f = state.maps.fragment.get(fragmentId);
+  const pane = document.getElementById("fragment-reader");
+  if (!f) {
+    pane.innerHTML = `<div class="empty-state">断片が見つかりません。</div>`;
+    return;
+  }
+
+  const relatedRels = state.data.relations.filter(
+    (r) => (r.from_type === "fragment" && r.from_id === f.fragment_id) ||
+           (r.to_type === "fragment" && r.to_id === f.fragment_id)
+  );
+
+  const badgeCls = f.status === "selected" ? "badge-selected" : "badge-draft";
+  pane.innerHTML = `
+    <div class="reader-meta-top">
+      <code>${escapeHtml(f.fragment_id)}</code>
+      <span class="badge ${badgeCls}">${escapeHtml(f.status)}</span>
+      <span class="badge badge-mode">${escapeHtml(FORM_LABELS[f.form] || f.form)}</span>
+      <span style="font-size:0.78rem;color:var(--ink-muted);">執筆セッション: <button type="button" class="link-pill" data-jump-sess="${escapeHtml(f.session_id)}" style="padding:0.1rem 0.45rem;">${escapeHtml(f.session_id)}</button> · ${escapeHtml(f.created_at)}</span>
+    </div>
+    <h2 class="reader-title">${escapeHtml(f.title)}</h2>
+    <div class="narrator-banner">
+      語り手モード（明示）: <strong>${escapeHtml(MODE_LABELS[f.narrator_mode] || f.narrator_mode)}</strong>
+    </div>
+    <div class="literary-body form-${escapeHtml(f.form)}">
+      ${formatLiteraryBody(f)}
+    </div>
+
+    ${f.editor_note ? `
+      <div class="meta-box">
+        <h3>編集ノート・校勘記 (Editor Note)</h3>
+        <p style="margin:0;color:var(--ink-muted);line-height:1.78;">${escapeHtml(f.editor_note)}</p>
+      </div>
+    ` : ""}
+
+    <div class="meta-box">
+      <h3>向き合っている問い・モチーフ・対話素材</h3>
+      <div class="tag-row">
+        ${(f.linked_questions || []).map((qid) => renderEntityJumpButton("question", qid)).join("")}
+        ${(f.linked_materials || []).map((mid) => renderEntityJumpButton("material", mid)).join("")}
+      </div>
+      <div class="tag-row">
+        ${(f.linked_motifs || []).map((mfid) => {
+          const mf = state.maps.motif.get(mfid);
+          return `<span class="stat-chip" title="${escapeHtml(mf ? mf.description : "")}"><strong>${escapeHtml(mf ? mf.name : mfid)}</strong> (${escapeHtml(mfid)})</span>`;
+        }).join("")}
+      </div>
+    </div>
+
+    <div class="meta-box">
+      <h3>この断片を結ぶ関係線 (${relatedRels.length}件)</h3>
+      <ul class="rel-list">
+        ${relatedRels.map((r) => {
+          const isOutgoing = r.from_id === f.fragment_id;
+          const peerType = isOutgoing ? r.to_type : r.from_type;
+          const peerId = isOutgoing ? r.to_id : r.from_id;
+          const dir = isOutgoing ? "→" : "←";
+          const meta = REL_META[r.relation_type] || { label: r.relation_type, color: "#666" };
+          return `
+            <li>
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.45rem;margin-bottom:0.3rem;">
+                <span class="badge" style="background:${meta.color}22;color:${meta.color};">${escapeHtml(meta.label)}</span>
+                <span>${dir}</span>
+                ${renderEntityJumpButton(peerType, peerId)}
+              </div>
+              <div style="color:var(--ink-muted);">${escapeHtml(r.note || "")}</div>
+            </li>
+          `;
+        }).join("")}
+      </ul>
+    </div>
+  `;
+
+  bindJumpButtons(pane);
+}
+
+/* 2. Constellation SVG Graph View */
+function renderRelationFilterPills() {
+  const wrap = document.getElementById("relation-filters");
+  const types = ["all", ...Object.keys(REL_META)];
+  wrap.innerHTML = types
+    .map((t) => {
+      const active = state.activeRelType === t;
+      const label = t === "all" ? "すべての関係線" : REL_META[t].label;
+      return `<button type="button" class="pill-btn ${active ? "active" : ""}" data-rel-type="${t}">${escapeHtml(label)}</button>`;
+    })
+    .join("");
+
+  wrap.querySelectorAll(".pill-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      state.activeRelType = btn.dataset.relType;
+      renderRelationFilterPills();
+      renderConstellation();
+    });
+  });
+}
+
+function renderConstellation() {
+  const svg = document.getElementById("constellation-svg");
+  const cx = 460;
+  const cy = 380;
+  const nodes = [];
+  const nodePos = new Map();
+
+  // Inner circle: fragments
+  const frags = state.data.fragments;
+  frags.forEach((f, idx) => {
+    const angle = (2 * Math.PI * idx) / frags.length - Math.PI / 2;
+    const r = 165;
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    const node = { key: `fragment:${f.fragment_id}`, type: "fragment", id: f.fragment_id, label: f.fragment_id, sub: f.title, x, y, color: "#9b3728", radius: f.status === "selected" ? 8 : 6.2 };
+    nodes.push(node);
+    nodePos.set(node.key, node);
+  });
+
+  // Middle arc (left): questions
+  const qs = state.data.questions;
+  qs.forEach((q, idx) => {
+    const angle = Math.PI * 0.56 + (Math.PI * 0.88 * idx) / Math.max(1, qs.length - 1);
+    const r = 308;
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    const node = { key: `question:${q.question_id}`, type: "question", id: q.question_id, label: q.question_id, sub: q.text, x, y, color: "#8a6120", radius: q.origin === "human_seed" ? 6.8 : 5 };
+    nodes.push(node);
+    nodePos.set(node.key, node);
+  });
+
+  // Outer arc (right): materials participating in relations
+  const relMatIds = new Set(
+    state.data.relations
+      .flatMap((r) => [r.from_type === "material" ? r.from_id : null, r.to_type === "material" ? r.to_id : null])
+      .filter(Boolean)
+  );
+  const mats = state.data.materials.filter((m) => relMatIds.has(m.material_id));
+  mats.forEach((m, idx) => {
+    const angle = -Math.PI * 0.44 + (Math.PI * 0.88 * idx) / Math.max(1, mats.length - 1);
+    const r = 320;
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    const isLit = m.material_kind === "literary_text";
+    const isTrace = m.material_kind === "project_trace" || m.material_kind === "conversation_trace";
+    const color = isLit ? "#3b6048" : (isTrace ? "#8a6120" : "#295270");
+    const node = { key: `material:${m.material_id}`, type: "material", id: m.material_id, label: m.material_id.replace("MAT-", ""), sub: m.source_title, x, y, color, radius: 5.8 };
+    nodes.push(node);
+    nodePos.set(node.key, node);
+  });
+
+  // Top-most arc: sessions or motifs referenced directly in relations (e.g., REL-067 -> SESSION-019)
+  const relExtraNodes = [];
+  for (const r of state.data.relations) {
+    for (const [t, id] of [[r.from_type, r.from_id], [r.to_type, r.to_id]]) {
+      const k = `${t}:${id}`;
+      if (!nodePos.has(k) && (t === "session" || t === "motif")) {
+        if (!relExtraNodes.some((e) => e.key === k)) {
+          const rec = state.maps[t]?.get(id);
+          relExtraNodes.push({
+            key: k,
+            type: t,
+            id,
+            label: id,
+            sub: t === "session" ? (rec?.session_note || id) : (rec?.name || id),
+            color: "#5e4b8b",
+            radius: 6.4,
+          });
         }
-        return true;
-      });
+      }
+    }
+  }
+  relExtraNodes.forEach((item, idx) => {
+    const angle = -Math.PI / 2 + (idx - (relExtraNodes.length - 1) / 2) * 0.16;
+    const r = 250;
+    item.x = cx + r * Math.cos(angle);
+    item.y = cy + r * Math.sin(angle);
+    nodes.push(item);
+    nodePos.set(item.key, item);
+  });
 
-    const listEl = document.getElementById("frag-list");
-    if (!filtered.length) {
-      listEl.innerHTML = `<div style="padding:1.25rem;color:var(--ink-muted);font-size:0.86rem;">条件に一致する断片がありません。</div>`;
+  const visibleRels = state.data.relations.filter(
+    (r) => state.activeRelType === "all" || r.relation_type === state.activeRelType
+  );
+
+  const selectedKey = state.selectedGraphNode;
+  const connectedKeys = new Set();
+  if (selectedKey) {
+    connectedKeys.add(selectedKey);
+    visibleRels.forEach((r) => {
+      const fk = `${r.from_type}:${r.from_id}`;
+      const tk = `${r.to_type}:${r.to_id}`;
+      if (fk === selectedKey) connectedKeys.add(tk);
+      if (tk === selectedKey) connectedKeys.add(fk);
+    });
+  }
+
+  const edgesHtml = visibleRels
+    .map((r) => {
+      const src = nodePos.get(`${r.from_type}:${r.from_id}`);
+      const dst = nodePos.get(`${r.to_type}:${r.to_id}`);
+      if (!src || !dst) return "";
+      const meta = REL_META[r.relation_type] || { color: "#888", dash: "" };
+      const mx = (src.x + dst.x) / 2 + (cx - (src.x + dst.x) / 2) * 0.18;
+      const my = (src.y + dst.y) / 2 + (cy - (src.y + dst.y) / 2) * 0.18;
+      const isHighlighted = selectedKey && (src.key === selectedKey || dst.key === selectedKey);
+      const dimClass = selectedKey && !isHighlighted ? "dimmed" : "";
+      return `<path class="graph-edge ${dimClass}" d="M ${src.x.toFixed(1)} ${src.y.toFixed(1)} Q ${mx.toFixed(1)} ${my.toFixed(1)} ${dst.x.toFixed(1)} ${dst.y.toFixed(1)}" stroke="${meta.color}" stroke-width="${isHighlighted ? 2.4 : 1.15}" stroke-opacity="${isHighlighted ? 0.95 : 0.42}" ${meta.dash ? `stroke-dasharray="${meta.dash}"` : ""} />`;
+    })
+    .join("");
+
+  const nodesHtml = nodes
+    .map((n) => {
+      const dimClass = selectedKey && !connectedKeys.has(n.key) ? "dimmed" : "";
+      const isSelected = selectedKey === n.key;
+      const textAnchor = n.x < cx - 15 ? "end" : n.x > cx + 15 ? "start" : "middle";
+      const dx = n.x < cx - 15 ? -10 : n.x > cx + 15 ? 10 : 0;
+      const dy = dx === 0 ? (n.y < cy ? -10 : 14) : 4;
+      return `
+        <g class="graph-node ${dimClass}" data-node-key="${escapeHtml(n.key)}">
+          <circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${isSelected ? n.radius + 3 : n.radius}" fill="${n.color}" stroke="#ffffff" stroke-width="${isSelected ? 2.5 : 1.2}" />
+          <text x="${(n.x + dx).toFixed(1)}" y="${(n.y + dy).toFixed(1)}" text-anchor="${textAnchor}" font-size="10.5" fill="currentColor">${escapeHtml(n.label)}</text>
+        </g>
+      `;
+    })
+    .join("");
+
+  svg.innerHTML = `<g>${edgesHtml}</g><g>${nodesHtml}</g>`;
+
+  svg.querySelectorAll(".graph-node").forEach((g) => {
+    g.addEventListener("click", () => {
+      const key = g.dataset.nodeKey;
+      state.selectedGraphNode = state.selectedGraphNode === key ? null : key;
+      renderConstellation();
+      renderGraphInspector();
+    });
+  });
+}
+
+function renderGraphInspector() {
+  const pane = document.getElementById("graph-inspector");
+  if (!state.selectedGraphNode) {
+    pane.innerHTML = `<div class="empty-state">左の星座マップ上のノード（断片・問い・素材・セッション）をクリックすると、本文抜粋と関係の網が表示されます。</div>`;
+    return;
+  }
+  const [type, id] = state.selectedGraphNode.split(":");
+  const record = state.maps[type]?.get(id);
+  if (!record) return;
+
+  const rels = state.data.relations.filter(
+    (r) => (r.from_type === type && r.from_id === id) || (r.to_type === type && r.to_id === id)
+  );
+
+  let header = "";
+  let body = "";
+  let jumpBtn = "";
+  if (type === "fragment") {
+    header = `<span class="badge badge-lit">創作断片</span> <code>${escapeHtml(id)}</code>`;
+    body = `<h3 class="reader-title" style="font-size:1.2rem;margin-top:0.4rem;">${escapeHtml(record.title)}</h3>
+            <p style="font-size:0.88rem;line-height:1.8;">${escapeHtml(record.text.slice(0, 220))}…</p>`;
+    jumpBtn = `<button type="button" class="btn-ghost" data-jump-frag="${escapeHtml(id)}">選集リーダーで全文を読む →</button>`;
+  } else if (type === "question") {
+    header = `<span class="badge badge-mode">開かれた問い</span> <code>${escapeHtml(id)}</code>`;
+    body = `<p class="q-title" style="margin-top:0.5rem;">${escapeHtml(record.text)}</p>
+            <p style="font-size:0.84rem;color:var(--ink-muted);">${escapeHtml(record.notes || "")}</p>`;
+    jumpBtn = `<button type="button" class="btn-ghost" data-jump-q="${escapeHtml(id)}">問いの系譜で見る →</button>`;
+  } else if (type === "material") {
+    const isLit = record.material_kind === "literary_text";
+    const isTrace = record.material_kind === "project_trace" || record.material_kind === "conversation_trace";
+    const cls = isLit ? "badge-lit" : (isTrace ? "badge-trace" : "badge-ai");
+    const label = isLit ? "哲学・文学原典" : (isTrace ? "プロジェクト痕跡" : "AI研究抜粋");
+    header = `<span class="badge ${cls}">${label}</span> <code>${escapeHtml(id)}</code>`;
+    body = `<h3 class="mat-title" style="margin-top:0.5rem;">${escapeHtml(record.source_title)}</h3>
+            <div class="mat-invitation" style="margin:0.6rem 0;">${escapeHtml(record.inquiry_invitation || "")}</div>
+            <blockquote class="mat-passage">${escapeHtml(record.passage)}</blockquote>`;
+    jumpBtn = `<button type="button" class="btn-ghost" data-jump-mat="${escapeHtml(id)}">素材書庫カードで見る →</button>`;
+  } else if (type === "session") {
+    header = `<span class="badge badge-ai">探求セッション</span> <code>${escapeHtml(id)}</code>`;
+    body = `<p style="font-size:0.9rem;line-height:1.75;margin-top:0.5rem;">${escapeHtml(record.session_note)}</p>`;
+    jumpBtn = `<button type="button" class="btn-ghost" data-jump-sess="${escapeHtml(id)}">セッション年譜で見る →</button>`;
+  }
+
+  pane.innerHTML = `
+    <div>${header}</div>
+    ${body}
+    <div style="margin:0.85rem 0;">${jumpBtn}</div>
+    <div class="meta-box">
+      <h3>接続している関係 (${rels.length}件)</h3>
+      <ul class="rel-list">
+        ${rels.map((r) => {
+          const out = r.from_type === type && r.from_id === id;
+          const pType = out ? r.to_type : r.from_type;
+          const pId = out ? r.to_id : r.from_id;
+          return `<li><strong>${escapeHtml(r.relation_type)}</strong> ${out ? "→" : "←"} ${renderEntityJumpButton(pType, pId)}<div style="color:var(--ink-muted);margin-top:0.2rem;">${escapeHtml(r.note || "")}</div></li>`;
+        }).join("")}
+      </ul>
+    </div>
+  `;
+  bindJumpButtons(pane);
+}
+
+/* 3. Question Lineage Tree */
+function renderLineage() {
+  const childrenMap = new Map();
+  state.data.relations.forEach((r) => {
+    if (r.from_type === "question" && r.to_type === "question") {
+      if (!childrenMap.has(r.to_id)) childrenMap.set(r.to_id, []);
+      childrenMap.get(r.to_id).push({ childId: r.from_id, rel: r });
+    }
+  });
+
+  const childSet = new Set(
+    state.data.relations
+      .filter((r) => r.from_type === "question" && r.to_type === "question")
+      .map((r) => r.from_id)
+  );
+
+  const roots = state.data.questions.filter((q) => !childSet.has(q.question_id));
+
+  function renderQuestionSubtree(q, incomingRel) {
+    const linkedFrags = state.data.fragments.filter((f) => (f.linked_questions || []).includes(q.question_id));
+    const kids = childrenMap.get(q.question_id) || [];
+    return `
+      <div id="qcard-${escapeHtml(q.question_id)}" class="${incomingRel ? "branch-node" : "seed-card"}">
+        <div style="display:flex;flex-wrap:wrap;gap:0.45rem;align-items:center;">
+          <code>${escapeHtml(q.question_id)}</code>
+          <span class="badge ${q.origin === "human_seed" ? "badge-lit" : "badge-ai"}">${escapeHtml(q.origin)}</span>
+          ${incomingRel ? `<span class="badge badge-mode">↳ ${escapeHtml(incomingRel.relation_type)}</span>` : ""}
+        </div>
+        <div class="q-title">${escapeHtml(q.text)}</div>
+        ${q.notes ? `<div style="font-size:0.82rem;color:var(--ink-muted);margin-bottom:0.55rem;">${escapeHtml(q.notes)}</div>` : ""}
+        <div class="tag-row" style="margin-bottom:0;">
+          ${linkedFrags.map((f) => renderEntityJumpButton("fragment", f.fragment_id)).join("")}
+        </div>
+        ${kids.length > 0 ? `<div class="q-branches">${kids.map((k) => renderQuestionSubtree(state.maps.question.get(k.childId), k.rel)).join("")}</div>` : ""}
+      </div>
+    `;
+  }
+
+  const container = document.getElementById("lineage-container");
+  container.innerHTML = roots.map((r) => renderQuestionSubtree(r, null)).join("");
+  bindJumpButtons(container);
+}
+
+/* 4. Materials Library */
+function renderMaterials() {
+  const grid = document.getElementById("materials-grid");
+  const list = state.data.materials.filter(
+    (m) => state.activeMatKind === "all" || m.material_kind === state.activeMatKind
+  );
+
+  grid.innerHTML = list
+    .map((m) => {
+      const isLit = m.material_kind === "literary_text";
+      const isTrace = m.material_kind === "project_trace" || m.material_kind === "conversation_trace";
+      const badgeCls = isLit ? "badge-lit" : (isTrace ? "badge-trace" : "badge-ai");
+      const badgeLabel = isLit ? "哲学・文学原典" : (isTrace ? "プロジェクト痕跡" : "AIエージェント研究");
+      const usedIn = state.data.fragments.filter((f) => (f.linked_materials || []).includes(m.material_id));
+      return `
+        <article id="mcard-${escapeHtml(m.material_id)}" class="mat-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
+            <code>${escapeHtml(m.material_id)}</code>
+            <span class="badge ${badgeCls}">${badgeLabel}</span>
+          </div>
+          <h3 class="mat-title">${escapeHtml(m.source_title)}</h3>
+          ${m.inquiry_invitation ? `<div class="mat-invitation">問いへの誘い: ${escapeHtml(m.inquiry_invitation)}</div>` : ""}
+          <blockquote class="mat-passage">${escapeHtml(m.passage)}</blockquote>
+          ${usedIn.length > 0 ? `<div class="tag-row" style="margin-bottom:0;">${usedIn.map((f) => renderEntityJumpButton("fragment", f.fragment_id)).join("")}</div>` : ""}
+          <div class="mat-scope">射程・編集覚書: ${escapeHtml(m.scope_note)}</div>
+        </article>
+      `;
+    })
+    .join("");
+
+  bindJumpButtons(grid);
+}
+
+/* 5. Sessions Timeline */
+function renderTimeline() {
+  const listEl = document.getElementById("timeline-list");
+  listEl.innerHTML = [...state.data.sessions]
+    .reverse()
+    .map((s) => `
+      <div id="scard-${escapeHtml(s.session_id)}" class="session-card">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:0.5rem;margin-bottom:0.45rem;">
+          <div><code>${escapeHtml(s.session_id)}</code> · <strong>${escapeHtml(s.started_at)}</strong></div>
+          <span class="badge badge-ai">${escapeHtml(s.model_or_human)}</span>
+        </div>
+        <p style="margin:0 0 0.7rem;font-size:0.9rem;line-height:1.75;">${escapeHtml(s.session_note)}</p>
+        <div class="tag-row" style="margin-bottom:0;">
+          ${(s.fragments_written || []).map((fid) => renderEntityJumpButton("fragment", fid)).join("")}
+          ${(s.questions_raised || []).map((qid) => renderEntityJumpButton("question", qid)).join("")}
+          ${(s.materials_added || []).map((mid) => renderEntityJumpButton("material", mid)).join("")}
+        </div>
+      </div>
+    `)
+    .join("");
+
+  bindJumpButtons(listEl);
+}
+
+/* 6. Voice Mirror & Close-Reading Notebooks */
+function renderSimpleMarkdown(md) {
+  const lines = String(md || "").split("\n");
+  const out = [];
+  let inList = false;
+  let listTag = "ul";
+  let inPre = false;
+  let preBuf = [];
+
+  const closeList = () => {
+    if (inList) {
+      out.push(`</${listTag}>`);
+      inList = false;
+    }
+  };
+
+  const inlineFmt = (s) =>
+    escapeHtml(s)
+      .replace(/`([^`]+)`/g, "<code>$1</code>")
+      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+      .replace(/\*([^*]+)\*/g, "<em>$1</em>");
+
+  for (const rawLine of lines) {
+    if (rawLine.startsWith("```")) {
+      closeList();
+      if (!inPre) {
+        inPre = true;
+        preBuf = [];
+      } else {
+        out.push(`<pre class="packet-pre" style="max-height:none;margin:0.8rem 0;">${escapeHtml(preBuf.join("\n"))}</pre>`);
+        inPre = false;
+      }
+      continue;
+    }
+    if (inPre) {
+      preBuf.push(rawLine);
+      continue;
+    }
+    const line = rawLine.trimEnd();
+    if (!line.trim()) {
+      closeList();
+      continue;
+    }
+    if (/^---+$/.test(line.trim())) {
+      closeList();
+      out.push("<hr/>");
+      continue;
+    }
+    const hm = line.match(/^(#{1,4})\s+(.+)$/);
+    if (hm) {
+      closeList();
+      const lvl = Math.min(3, hm[1].length);
+      out.push(`<h${lvl}>${inlineFmt(hm[2])}</h${lvl}>`);
+      continue;
+    }
+    if (line.startsWith(">")) {
+      closeList();
+      out.push(`<blockquote>${inlineFmt(line.replace(/^>\s?/, ""))}</blockquote>`);
+      continue;
+    }
+    const ulm = line.match(/^\s*[-*]\s+(.+)$/);
+    if (ulm) {
+      if (!inList || listTag !== "ul") {
+        closeList();
+        listTag = "ul";
+        inList = true;
+        out.push("<ul>");
+      }
+      out.push(`<li>${inlineFmt(ulm[1])}</li>`);
+      continue;
+    }
+    const olm = line.match(/^\s*\d+\.\s+(.+)$/);
+    if (olm) {
+      if (!inList || listTag !== "ol") {
+        closeList();
+        listTag = "ol";
+        inList = true;
+        out.push("<ol>");
+      }
+      out.push(`<li>${inlineFmt(olm[1])}</li>`);
+      continue;
+    }
+    closeList();
+    out.push(`<p>${inlineFmt(line)}</p>`);
+  }
+  closeList();
+  return out.join("\n");
+}
+
+function renderMirrorView() {
+  const auditPane = document.getElementById("mirror-audit-pane");
+  const notePane = document.getElementById("mirror-notebooks-pane");
+  const showAudit = state.activeMirrorPane === "audit";
+  auditPane.hidden = !showAudit;
+  notePane.hidden = showAudit;
+
+  document.querySelectorAll("#mirror-subtab-group .pill-btn").forEach((b) => {
+    b.classList.toggle("active", b.dataset.mirrorPane === state.activeMirrorPane);
+  });
+
+  if (showAudit) {
+    const va = state.data.voice_audit;
+    if (!va) {
+      auditPane.innerHTML = `<div class="reader-pane"><div class="empty-state"><code>voice_audit</code> データがありません。</div></div>`;
       return;
     }
-
-    if (!filtered.some((f) => f.fragment_id === activeFragmentId)) {
-      activeFragmentId = filtered[0].fragment_id;
-    }
-
-    listEl.innerHTML = filtered
-      .map((f) => {
-        const isSel = f.fragment_id === activeFragmentId;
-        const statusClass = f.status === "selected" ? "badge-selected" : "badge-draft";
-        return `
-          <button type="button" class="frag-item ${isSel ? "selected" : ""}" data-frag-id="${escapeHtml(f.fragment_id)}">
-            <div class="frag-item-top">
-              <span><strong>${escapeHtml(f.fragment_id)}</strong> · ${escapeHtml(FORM_LABELS[f.form] || f.form)}</span>
-              <span class="badge ${statusClass}">${escapeHtml(f.status)}</span>
-            </div>
-            <div class="frag-item-title">${escapeHtml(f.title)}</div>
-            <div class="frag-item-preview">${escapeHtml(f.text.replace(/\n+/g, " "))}</div>
-          </button>
-        `;
-      })
-      .join("");
-
-    listEl.querySelectorAll(".frag-item").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        activeFragmentId = btn.dataset.fragId;
-        renderFragmentList();
-        renderFragmentReader();
-      });
-    });
-
-    renderFragmentReader();
-  }
-
-  function renderFragmentReader() {
-    const reader = document.getElementById("frag-reader");
-    const frag = STATE.byId[activeFragmentId];
-    if (!frag) return;
-
-    const narrator = NARRATOR_INFO[frag.narrator_mode] || NARRATOR_INFO.other;
-    const statusClass = frag.status === "selected" ? "badge-selected" : "badge-draft";
-    const linkedRels = STATE.relations.filter(
-      (r) => r.left.id === frag.fragment_id || r.right.id === frag.fragment_id
-    );
-
-    reader.innerHTML = `
-      <div class="reader-meta-top">
-        <code>${escapeHtml(frag.fragment_id)}</code>
-        <span class="badge ${statusClass}">${escapeHtml(frag.status)}</span>
-        <span class="badge badge-ai">${escapeHtml(FORM_LABELS[frag.form] || frag.form)}</span>
-        <span class="badge badge-mode">${escapeHtml(narrator.label)}</span>
-        <span style="font-size:0.8rem;color:var(--ink-muted);">${escapeHtml(frag.session_id || "")} (${escapeHtml(frag.created_at)})</span>
-      </div>
-      <h2 class="reader-title">${escapeHtml(frag.title)}</h2>
-      <div class="narrator-banner">
-        <strong>語りの位置づけ：</strong>${escapeHtml(narrator.note)}
-      </div>
-      <div class="literary-body form-${escapeHtml(frag.form)}">
-        ${formatFragmentBody(frag)}
-      </div>
-
-      ${
-        frag.editor_note
-          ? `<div class="meta-box">
-               <h3>編集・制作ノート</h3>
-               <p style="margin:0;color:var(--ink-muted);">${escapeHtml(frag.editor_note)}</p>
-             </div>`
-          : ""
-      }
-
-      <div class="meta-box">
-        <h3>たどっている問い・モチーフ・対話素材</h3>
-        <div class="tag-row">
-          ${frag.question_ids
-            .map((qid) => {
-              const q = STATE.byId[qid];
-              return `<button type="button" class="link-pill" data-jump-question="${escapeHtml(qid)}" title="${escapeHtml(q ? q.question : qid)}">${escapeHtml(qid)}: ${escapeHtml((q ? q.question : "").slice(0, 26))}…</button>`;
-            })
-            .join("")}
+    const g = va.gestures;
+    auditPane.innerHTML = `
+      <div class="mirror-grid">
+        <div class="mirror-card">
+          <h3>末尾の型（全 ${va.fragment_count} 編）</h3>
+          <table class="mirror-table">
+            <tbody>
+              ${Object.entries(va.ending_counts).map(([k, v]) => `<tr><td>${escapeHtml(k)}</td><td><strong>${v}</strong> 編</td></tr>`).join("")}
+            </tbody>
+          </table>
         </div>
-        <div class="tag-row">
-          ${frag.motif_ids
-            .map((mid) => {
-              const m = STATE.byId[mid];
-              return `<span class="badge badge-selected">${escapeHtml(mid)} · ${escapeHtml(m ? m.label : "")}</span>`;
-            })
-            .join("")}
-          ${frag.material_ids
-            .map((matId) => {
-              const mat = STATE.byId[matId];
-              const cls = mat && mat.kind === "literary_text" ? "badge-lit" : "badge-ai";
-              return `<button type="button" class="link-pill ${cls}" data-jump-material="${escapeHtml(matId)}">${escapeHtml(matId)}: ${escapeHtml(mat ? mat.title.slice(0, 28) : "")}</button>`;
-            })
-            .join("")}
+        <div class="mirror-card">
+          <h3>台帳が繰り返し使う身振り</h3>
+          <table class="mirror-table">
+            <tbody>
+              <tr><td>保留句を含む断片</td><td><strong>${g.suspension_fragments}/${va.fragment_count}</strong> 編</td></tr>
+              <tr><td>二項対立の型</td><td><strong>${g.binary_fragments}/${va.fragment_count}</strong> 編</td></tr>
+              <tr><td>留保の型（かもしれない／のではないか）</td><td><strong>${g.hedge_fragments}/${va.fragment_count}</strong> 編</td></tr>
+              <tr><td>明示された不-knowing</td><td><strong>${g.unknowing_fragments}/${va.fragment_count}</strong> 編</td></tr>
+              <tr><td>本文中に問いを含む断片</td><td><strong>${g.question_fragments}/${va.fragment_count}</strong> 編（${g.total_sentences}文中 ${g.total_question_sentences}文：『？』=${g.qmark_sentences}, 句点『。』=${g.period_question_sentences}）</td></tr>
+              <tr><td>末尾一文が問いの形</td><td><strong>${g.ending_question_fragments}/${va.fragment_count}</strong> 編（句点『。』=${g.ending_period_questions}, 疑問符『？』=${g.ending_qmark_questions}）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mirror-card">
+          <h3>反復密度上位（括弧引用の内外を分離）</h3>
+          <table class="mirror-table">
+            <thead><tr><th>断片</th><th>合計</th><th>地の文 / 引用内</th></tr></thead>
+            <tbody>
+              ${va.density.slice(0, 9).map((d) => `
+                <tr>
+                  <td>${renderEntityJumpButton("fragment", d.fragment_id)}</td>
+                  <td><strong>${d.hits}</strong></td>
+                  <td>地の文 ${d.unquoted_hits} / 引用 ${d.hits - d.unquoted_hits}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
         </div>
       </div>
 
-      <div class="meta-box">
-        <h3>解釈的関係（共鳴・対照・切断・応答）</h3>
-        <ul class="rel-list">
-          ${linkedRels
-            .map((r) => {
-              const otherId = r.left.id === frag.fragment_id ? r.right.id : r.left.id;
-              const style = RELATION_STYLES[r.relation_type] || { label: r.relation_type };
-              return `
-                <li>
-                  <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;margin-bottom:0.25rem;">
-                    <span><code>${escapeHtml(r.left.id)}</code> → <strong>${escapeHtml(style.label)}</strong> → <code>${escapeHtml(r.right.id)}</code></span>
-                    <button type="button" class="link-pill" data-jump-any="${escapeHtml(otherId)}">${escapeHtml(otherId)} を開く</button>
-                  </div>
-                  <div style="color:var(--ink-muted);">${escapeHtml(r.note || "")}</div>
-                </li>
-              `;
-            })
-            .join("")}
-        </ul>
+      <div class="reader-pane" style="margin-bottom:1.4rem;">
+        <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">各断片の末尾一文（先頭＋末尾の両端表示・省略隠れなし）</h3>
+        <table class="mirror-table">
+          <thead><tr><th style="width:150px;">断片</th><th style="width:130px;">末尾分類</th><th>最終文プレビュー</th></tr></thead>
+          <tbody>
+            ${va.endings.map((e) => `
+              <tr>
+                <td><button type="button" class="link-pill" data-jump-frag="${escapeHtml(e.fragment_id)}">${escapeHtml(e.fragment_id)}</button></td>
+                <td><span class="badge ${e.kind.includes("問い") || e.kind.includes("疑問") ? "badge-lit" : "badge-mode"}">${escapeHtml(e.kind)}</span></td>
+                <td style="font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">${escapeHtml(e.preview)}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="reader-pane">
+        <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">編をまたいで使い回された ${va.gram_size} 文字列（全 ${va.shared_gram_total} 種中 上位 ${va.shared_grams.length} 種）</h3>
+        <table class="mirror-table">
+          <thead><tr><th>文字列</th><th>編数</th><th>出現断片</th></tr></thead>
+          <tbody>
+            ${va.shared_grams.map((sg) => `
+              <tr>
+                <td><code>${escapeHtml(sg.gram)}</code></td>
+                <td><strong>${sg.count}</strong> 編</td>
+                <td>${sg.fragment_ids.map((fid) => `<button type="button" class="link-pill" style="margin:0.12rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("")}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
       </div>
     `;
-
-    bindJumpButtons(reader);
-  }
-
-  function bindJumpButtons(container) {
-    container.querySelectorAll("[data-jump-question]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const qid = btn.dataset.jumpQuestion;
-        switchTab("questions");
-        const target = document.getElementById(`qcard-${qid}`);
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "center" });
-          target.style.outline = "2px solid var(--accent-crimson)";
-          setTimeout(() => (target.style.outline = ""), 1800);
-        }
-      });
-    });
-
-    container.querySelectorAll("[data-jump-material]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const mid = btn.dataset.jumpMaterial;
-        activeMaterialKind = "all";
-        updateMaterialPills();
-        renderMaterials();
-        switchTab("materials");
-        const target = document.getElementById(`mcard-${mid}`);
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "center" });
-          target.style.outline = "2px solid var(--accent-crimson)";
-          setTimeout(() => (target.style.outline = ""), 1800);
-        }
-      });
-    });
-
-    container.querySelectorAll("[data-jump-any]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.dataset.jumpAny;
-        if (id.startsWith("FRAG-")) {
-          activeFragmentId = id;
-          document.getElementById("frag-search").value = "";
-          document.getElementById("frag-form-filter").value = "all";
-          document.getElementById("frag-motif-filter").value = "all";
-          document.getElementById("frag-status-filter").value = "all";
-          switchTab("fragments");
-          renderFragmentList();
-        } else if (id.startsWith("Q-")) {
-          switchTab("questions");
-          const target = document.getElementById(`qcard-${id}`);
-          if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
-        } else if (id.startsWith("MAT-")) {
-          activeMaterialKind = "all";
-          updateMaterialPills();
-          renderMaterials();
-          switchTab("materials");
-          const target = document.getElementById(`mcard-${id}`);
-          if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-      });
-    });
-  }
-
-  /* View 2: Constellation SVG Graph */
-  function renderRelationLegend() {
-    const container = document.getElementById("relation-filters");
-    const types = ["all", ...Object.keys(RELATION_STYLES)];
-    container.innerHTML = types
-      .map((t) => {
-        const isAll = t === "all";
-        const label = isAll ? "すべての関係" : RELATION_STYLES[t].label;
-        const active = activeRelationFilter === t ? "active" : "";
-        return `<button type="button" class="pill-btn ${active}" data-rel-type="${escapeHtml(t)}">${escapeHtml(label)}</button>`;
-      })
-      .join("");
-    container.querySelectorAll("button").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        activeRelationFilter = btn.dataset.relType;
-        renderRelationLegend();
-        renderConstellation();
-      });
-    });
-  }
-
-  function renderConstellation() {
-    const svg = document.getElementById("constellation-svg");
-    const cx = 460;
-    const cy = 340;
-
-    // Collect nodes participating in relations + all questions & fragments
-    const seedQuestions = STATE.questions.filter((q) => q.origin.kind === "human_seed");
-    const sessionQuestions = STATE.questions.filter((q) => q.origin.kind !== "human_seed");
-    const relMaterials = STATE.materials.filter((m) =>
-      STATE.relations.some((r) => r.left.id === m.material_id || r.right.id === m.material_id)
-    );
-
-    const coords = {};
-    const placeRing = (items, rx, ry, startAngle) => {
-      items.forEach((item, idx) => {
-        const angle = startAngle + (2 * Math.PI * idx) / items.length;
-        const id = item.question_id || item.fragment_id || item.material_id;
-        coords[id] = {
-          id,
-          x: cx + rx * Math.cos(angle),
-          y: cy + ry * Math.sin(angle),
-          item,
-        };
-      });
-    };
-
-    placeRing(seedQuestions, 108, 86, -Math.PI / 2);
-    placeRing(STATE.fragments, 238, 190, -Math.PI / 2 + 0.16);
-    placeRing([...sessionQuestions, ...relMaterials], 385, 290, -Math.PI / 2);
-
-    const visibleRelations = STATE.relations.filter(
-      (r) => activeRelationFilter === "all" || r.relation_type === activeRelationFilter
-    );
-
-    // Also include question derivation edges lightly
-    const lineageEdges = [];
-    STATE.questions.forEach((q) => {
-      (q.previous_question_ids || []).forEach((prevId) => {
-        if (coords[q.question_id] && coords[prevId]) {
-          lineageEdges.push({ from: prevId, to: q.question_id });
-        }
-      });
-    });
-
-    if (!activeGraphNode) {
-      activeGraphNode = "FRAG-012";
+    bindJumpButtons(auditPane);
+  } else {
+    const notes = state.data.readings || [];
+    if (notes.length === 0) {
+      notePane.innerHTML = `<div class="reader-pane"><div class="empty-state">精読ノートがありません。</div></div>`;
+      return;
     }
-
-    const parts = [];
-    // Subtle orbital guides
-    parts.push(
-      `<ellipse cx="${cx}" cy="${cy}" rx="108" ry="86" fill="none" stroke="var(--border)" stroke-dasharray="3,5" opacity="0.65" />`,
-      `<ellipse cx="${cx}" cy="${cy}" rx="238" ry="190" fill="none" stroke="var(--border)" stroke-dasharray="3,5" opacity="0.65" />`,
-      `<ellipse cx="${cx}" cy="${cy}" rx="385" ry="290" fill="none" stroke="var(--border)" stroke-dasharray="3,5" opacity="0.5" />`
-    );
-
-    if (activeRelationFilter === "all") {
-      lineageEdges.forEach((le) => {
-        const a = coords[le.from];
-        const b = coords[le.to];
-        parts.push(
-          `<line class="graph-edge" data-left="${escapeHtml(le.from)}" data-right="${escapeHtml(le.to)}" x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="2,4" opacity="0.55" />`
-        );
-      });
-    }
-
-    visibleRelations.forEach((r) => {
-      const a = coords[r.left.id];
-      const b = coords[r.right.id];
-      if (!a || !b) return;
-      const st = RELATION_STYLES[r.relation_type] || { color: "#666", dash: "" };
-      const mx = (a.x + b.x) / 2 + (cy - (a.y + b.y) / 2) * 0.12;
-      const my = (a.y + b.y) / 2 + ((a.x + b.x) / 2 - cx) * 0.12;
-      const d = `M ${a.x.toFixed(1)} ${a.y.toFixed(1)} Q ${mx.toFixed(1)} ${my.toFixed(1)} ${b.x.toFixed(1)} ${b.y.toFixed(1)}`;
-      parts.push(
-        `<path class="graph-edge" data-left="${escapeHtml(r.left.id)}" data-right="${escapeHtml(r.right.id)}" d="${d}" stroke="${st.color}" stroke-width="1.8" ${st.dash ? `stroke-dasharray="${st.dash}"` : ""} opacity="0.78"><title>${escapeHtml(r.left.id)} [${escapeHtml(r.relation_type)}] ${escapeHtml(r.right.id)}: ${escapeHtml(r.note || "")}</title></path>`
-      );
-    });
-
-    Object.values(coords).forEach((node) => {
-      const id = node.id;
-      let fill = "#295270";
-      let radius = 8;
-      if (id.startsWith("Q-")) {
-        fill = node.item.origin.kind === "human_seed" ? "#8a6120" : "#b07d2b";
-        radius = node.item.origin.kind === "human_seed" ? 9.5 : 7.5;
-      } else if (id.startsWith("FRAG-")) {
-        fill = node.item.status === "selected" ? "#9b3728" : "#7c6f64";
-        radius = 9.5;
-      } else if (id.startsWith("MAT-")) {
-        fill = node.item.kind === "literary_text" ? "#6b4c8c" : "#3b6048";
-        radius = 8;
-      }
-      const isSelected = activeGraphNode === id;
-      const labelY = node.y < cy ? node.y - 13 : node.y + 18;
-      parts.push(`
-        <g class="graph-node" data-node-id="${escapeHtml(id)}">
-          ${isSelected ? `<circle cx="${node.x.toFixed(1)}" cy="${node.y.toFixed(1)}" r="${radius + 6}" fill="none" stroke="${fill}" stroke-width="2" />` : ""}
-          <circle cx="${node.x.toFixed(1)}" cy="${node.y.toFixed(1)}" r="${radius}" fill="${fill}" stroke="var(--surface)" stroke-width="2" />
-          <text x="${node.x.toFixed(1)}" y="${labelY.toFixed(1)}" text-anchor="middle" font-size="11" font-weight="600" fill="var(--ink)">${escapeHtml(id)}</text>
-        </g>
-      `);
-    });
-
-    svg.innerHTML = parts.join("");
-
-    const highlightNode = (focusId) => {
-      if (!focusId) {
-        svg.querySelectorAll(".graph-node, .graph-edge").forEach((el) => el.classList.remove("dimmed"));
-        return;
-      }
-      const neighbors = new Set([focusId]);
-      svg.querySelectorAll(".graph-edge").forEach((edge) => {
-        const l = edge.dataset.left;
-        const r = edge.dataset.right;
-        if (l === focusId || r === focusId) {
-          neighbors.add(l);
-          neighbors.add(r);
-          edge.classList.remove("dimmed");
-        } else {
-          edge.classList.add("dimmed");
-        }
-      });
-      svg.querySelectorAll(".graph-node").forEach((n) => {
-        n.classList.toggle("dimmed", !neighbors.has(n.dataset.nodeId));
-      });
-    };
-
-    svg.querySelectorAll(".graph-node").forEach((nodeEl) => {
-      nodeEl.addEventListener("mouseenter", () => highlightNode(nodeEl.dataset.nodeId));
-      nodeEl.addEventListener("mouseleave", () => highlightNode(activeGraphNode));
-      nodeEl.addEventListener("click", () => {
-        activeGraphNode = nodeEl.dataset.nodeId;
-        renderConstellation();
-      });
-    });
-
-    highlightNode(activeGraphNode);
-    renderGraphInspector(activeGraphNode);
-  }
-
-  function renderGraphInspector(id) {
-    const pane = document.getElementById("graph-inspector");
-    const rec = STATE.byId[id];
-    if (!rec) return;
-
-    const rels = STATE.relations.filter((r) => r.left.id === id || r.right.id === id);
-    let bodyHtml = "";
-
-    if (id.startsWith("FRAG-")) {
-      bodyHtml = `
-        <span class="badge badge-lit">${escapeHtml(FORM_LABELS[rec.form] || rec.form)}</span>
-        <span class="badge badge-mode">${escapeHtml(rec.narrator_mode)}</span>
-        <h3 class="reader-title" style="font-size:1.22rem;margin-top:0.65rem;">${escapeHtml(rec.title)}</h3>
-        <div class="literary-body" style="font-size:0.95rem;max-height:300px;overflow-y:auto;padding-right:0.35rem;">
-          ${formatFragmentBody(rec)}
-        </div>
-        <button type="button" class="btn-ghost" data-jump-any="${escapeHtml(id)}">アンソロジー全画面で読む →</button>
-      `;
-    } else if (id.startsWith("Q-")) {
-      bodyHtml = `
-        <span class="badge badge-mode">問い (${escapeHtml(rec.origin.kind)})</span>
-        <h3 class="reader-title" style="font-size:1.18rem;margin-top:0.65rem;">${escapeHtml(rec.question)}</h3>
-        <p style="font-size:0.86rem;color:var(--ink-muted);">${escapeHtml(rec.notes || "")}</p>
-        <p style="font-size:0.8rem;color:var(--ink-muted);">来歴：${escapeHtml(rec.origin.detail)}</p>
-      `;
-    } else if (id.startsWith("MAT-")) {
-      bodyHtml = `
-        <span class="badge ${rec.kind === "literary_text" ? "badge-lit" : "badge-ai"}">${escapeHtml(rec.kind)}</span>
-        <h3 class="reader-title" style="font-size:1.15rem;margin-top:0.65rem;">${escapeHtml(rec.title)}</h3>
-        <div class="mat-invitation">${escapeHtml(rec.literary_invitation)}</div>
-        <blockquote class="mat-passage" style="margin-top:0.75rem;">${escapeHtml(rec.passage)}</blockquote>
-      `;
-    }
-
-    pane.innerHTML = `
-      <div style="margin-bottom:0.5rem;"><code>${escapeHtml(id)}</code></div>
-      ${bodyHtml}
-      <div class="meta-box">
-        <h3>接続する解釈的関係 (${rels.length})</h3>
-        <ul class="rel-list">
-          ${
-            rels.length
-              ? rels
-                  .map(
-                    (r) => `
-                  <li>
-                    <div><code>${escapeHtml(r.left.id)}</code> → <strong>${escapeHtml((RELATION_STYLES[r.relation_type] || { label: r.relation_type }).label)}</strong> → <code>${escapeHtml(r.right.id)}</code></div>
-                    <div style="color:var(--ink-muted);margin-top:0.2rem;">${escapeHtml(r.note || "")}</div>
-                  </li>`
-                  )
-                  .join("")
-              : `<li style="color:var(--ink-muted);">まだ明示的な relation は登録されていません（次のセッションの種として開かれています）。</li>`
-          }
-        </ul>
+    const idx = Math.min(state.selectedNotebook, notes.length - 1);
+    const current = notes[idx];
+    notePane.innerHTML = `
+      <div class="split-layout">
+        <aside class="list-pane">
+          <div class="filter-bar">
+            <div style="font-size:0.82rem;font-weight:600;color:var(--ink-muted);">readings/ 収録ノート (${notes.length}冊)</div>
+          </div>
+          <div class="item-list">
+            ${notes.map((n, i) => `
+              <button type="button" class="frag-item ${i === idx ? "selected" : ""}" data-note-idx="${i}">
+                <div class="frag-item-top"><code>${escapeHtml(n.filename)}</code></div>
+                <div class="frag-item-title">${escapeHtml(n.title)}</div>
+              </button>
+            `).join("")}
+          </div>
+        </aside>
+        <article class="reader-pane">
+          <div class="notebook-markdown">${renderSimpleMarkdown(current.content)}</div>
+        </article>
       </div>
     `;
-    bindJumpButtons(pane);
-  }
-
-  /* View 3: Questions Lineage */
-  function renderQuestionsTree() {
-    const container = document.getElementById("questions-tree");
-    const childrenMap = {};
-    STATE.questions.forEach((q) => (childrenMap[q.question_id] = []));
-    const roots = [];
-    STATE.questions.forEach((q) => {
-      if (!q.previous_question_ids || q.previous_question_ids.length === 0) {
-        roots.push(q);
-      } else {
-        q.previous_question_ids.forEach((pid) => {
-          if (childrenMap[pid]) childrenMap[pid].push(q);
-        });
-      }
-    });
-
-    const renderBranch = (q, seen = new Set()) => {
-      const frags = STATE.fragments.filter((f) => f.question_ids.includes(q.question_id));
-      const next = (childrenMap[q.question_id] || []).filter((c) => !seen.has(c.question_id));
-      const nextSeen = new Set(seen);
-      nextSeen.add(q.question_id);
-
-      return `
-        <div id="qcard-${escapeHtml(q.question_id)}" class="branch-node">
-          <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.4rem;">
-            <code>${escapeHtml(q.question_id)}</code>
-            <span style="font-size:0.78rem;color:var(--ink-muted);">${escapeHtml(q.origin.detail)}</span>
-          </div>
-          <div class="q-title">${escapeHtml(q.question)}</div>
-          ${q.notes ? `<div style="font-size:0.83rem;color:var(--ink-muted);margin-bottom:0.5rem;">${escapeHtml(q.notes)}</div>` : ""}
-          <div class="tag-row" style="margin-bottom:0;">
-            ${frags.map((f) => `<button type="button" class="link-pill" data-jump-any="${escapeHtml(f.fragment_id)}">${escapeHtml(f.fragment_id)}: ${escapeHtml(f.title.slice(0, 18))}…</button>`).join("")}
-          </div>
-          ${next.length ? `<div class="q-branches">${next.map((c) => renderBranch(c, nextSeen)).join("")}</div>` : ""}
-        </div>
-      `;
-    };
-
-    container.innerHTML = roots
-      .map((root) => {
-        const frags = STATE.fragments.filter((f) => f.question_ids.includes(root.question_id));
-        const children = childrenMap[root.question_id] || [];
-        return `
-          <div id="qcard-${escapeHtml(root.question_id)}" class="seed-card">
-            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
-              <div><code>${escapeHtml(root.question_id)}</code> <span class="badge badge-mode">human_seed</span></div>
-              <span style="font-size:0.8rem;color:var(--ink-muted);">${escapeHtml(root.origin.detail)}</span>
-            </div>
-            <div class="q-title" style="font-size:1.18rem;">${escapeHtml(root.question)}</div>
-            <p style="margin:0 0 0.7rem;font-size:0.85rem;color:var(--ink-muted);">${escapeHtml(root.notes || "")}</p>
-            <div class="tag-row">
-              ${frags.map((f) => `<button type="button" class="link-pill" data-jump-any="${escapeHtml(f.fragment_id)}">${escapeHtml(f.fragment_id)}: ${escapeHtml(f.title.slice(0, 22))}…</button>`).join("")}
-            </div>
-            ${
-              children.length
-                ? `<div class="q-branches">${children.map((c) => renderBranch(c, new Set([root.question_id]))).join("")}</div>`
-                : ""
-            }
-          </div>
-        `;
-      })
-      .join("");
-
-    bindJumpButtons(container);
-  }
-
-  /* View 4: Materials Library */
-  function updateMaterialPills() {
-    document.querySelectorAll("#mat-kind-filter .pill-btn").forEach((btn) => {
-      btn.classList.toggle("active", btn.dataset.kind === activeMaterialKind);
-    });
-  }
-
-  function renderMaterials() {
-    const grid = document.getElementById("materials-grid");
-    const items = STATE.materials
-      .slice()
-      .sort((a, b) => {
-        if (a.kind === b.kind) return 0;
-        return a.kind === "literary_text" ? -1 : 1;
-      })
-      .filter((m) => activeMaterialKind === "all" || m.kind === activeMaterialKind);
-
-    grid.innerHTML = items
-      .map((m) => {
-        const isLit = m.kind === "literary_text";
-        const usedBy = STATE.fragments.filter((f) => f.material_ids.includes(m.material_id));
-        const authors =
-          m.source.authors.length > 2
-            ? `${m.source.authors[0]} et al.`
-            : m.source.authors.join(", ");
-        return `
-          <div id="mcard-${escapeHtml(m.material_id)}" class="mat-card">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
-              <code>${escapeHtml(m.material_id)}</code>
-              <span class="badge ${isLit ? "badge-lit" : "badge-ai"}">${isLit ? "哲学・文学原典" : "AI研究抜粋"}</span>
-            </div>
-            <h3 class="mat-title">${escapeHtml(m.title)}</h3>
-            <div style="font-size:0.8rem;color:var(--ink-muted);">
-              ${escapeHtml(authors)} (${escapeHtml(m.source.year)}) · ${escapeHtml(m.context)}
-              — <a href="${escapeHtml(m.source.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-indigo);">原典リンク ↗</a>
-            </div>
-            <div class="mat-invitation">${escapeHtml(m.literary_invitation)}</div>
-            <blockquote class="mat-passage">${escapeHtml(m.passage)}</blockquote>
-            <div class="tag-row" style="margin-bottom:0;">
-              ${usedBy.map((f) => `<button type="button" class="link-pill" data-jump-any="${escapeHtml(f.fragment_id)}">${escapeHtml(f.fragment_id)} で対話</button>`).join("")}
-            </div>
-            <div class="mat-scope"><strong>留保：</strong>${escapeHtml(m.scope_note)}</div>
-          </div>
-        `;
-      })
-      .join("");
-
-    bindJumpButtons(grid);
-  }
-
-  /* View 5: Sessions Chronicle */
-  function renderSessions() {
-    const container = document.getElementById("sessions-timeline");
-    container.innerHTML = STATE.sessions
-      .slice()
-      .reverse()
-      .map((s) => `
-        <div class="session-card">
-          <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;">
-            <div><strong><code>${escapeHtml(s.session_id)}</code></strong> · <span class="badge badge-ai">${escapeHtml(s.prompt_template)}</span></div>
-            <span style="font-size:0.82rem;color:var(--ink-muted);">${escapeHtml(s.started_at)}</span>
-          </div>
-          <p style="margin:0 0 0.5rem;font-weight:500;">${escapeHtml(s.human_direction)}</p>
-          ${s.notes ? `<p style="margin:0 0 0.65rem;font-size:0.84rem;color:var(--ink-muted);">${escapeHtml(s.notes)}</p>` : ""}
-          <div class="tag-row" style="margin-bottom:0;">
-            ${s.produced_fragment_ids.map((fid) => `<button type="button" class="link-pill badge-lit" data-jump-any="${escapeHtml(fid)}">生成断片: ${escapeHtml(fid)}</button>`).join("")}
-            ${s.new_question_ids.map((qid) => `<button type="button" class="link-pill" data-jump-question="${escapeHtml(qid)}">新しい問い: ${escapeHtml(qid)}</button>`).join("")}
-          </div>
-        </div>
-      `)
-      .join("");
-
-    bindJumpButtons(container);
-  }
-
-  /* View 6: Context Packet Builder */
-  function buildFallbackPacket(qid) {
-    const q = STATE.byId[qid] || STATE.questions[STATE.questions.length - 1];
-    const relQids = new Set([q.question_id, ...(q.previous_question_ids || [])]);
-    const relFrags = STATE.fragments.filter((f) => f.question_ids.some((id) => relQids.has(id))).slice(-3);
-    const out = [
-      `# 継続セッション用コンテキスト束（対象：${q.question_id}）`,
-      "",
-      `## 1. 今回たどる問い`,
-      `- ID: ${q.question_id}`,
-      `- 問い: ${q.question}`,
-      `- 来歴: ${q.origin.detail}`,
-      "",
-      `## 2. 対話素材`,
-      ...(q.material_ids || []).map((mid) => {
-        const m = STATE.byId[mid];
-        return m ? `- ${mid} (${m.title}): "${m.passage}"\n  留保: ${m.scope_note}` : `- ${mid}`;
-      }),
-      "",
-      `## 3. 先行断片`,
-      ...relFrags.map((f) => `### ${f.fragment_id}: ${f.title}\n${f.text}\n`),
-    ];
-    return out.join("\n");
-  }
-
-  function populatePacketSelect() {
-    const select = document.getElementById("packet-q-select");
-    const responded = new Set(
-      STATE.relations
-        .filter((r) => (r.relation_type === "responds_to" || r.relation_type === "reframes") && r.right.type === "question")
-        .map((r) => r.right.id)
-    );
-    const sorted = STATE.questions.slice().sort((a, b) => {
-      const aOpen = !responded.has(a.question_id) ? 0 : 1;
-      const bOpen = !responded.has(b.question_id) ? 0 : 1;
-      return aOpen - bOpen;
-    });
-    select.innerHTML = sorted
-      .map((q) => {
-        const seedTag = !responded.has(q.question_id) ? "[次の種] " : "";
-        return `<option value="${escapeHtml(q.question_id)}">${escapeHtml(seedTag + q.question_id + ": " + q.question.slice(0, 34))}…</option>`;
-      })
-      .join("");
-    select.addEventListener("change", loadPacketPreview);
-
-    const copyBtn = document.getElementById("copy-packet-btn");
-    copyBtn.addEventListener("click", async () => {
-      const text = document.getElementById("packet-preview").textContent;
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(text);
-        const prev = copyBtn.textContent;
-        copyBtn.textContent = "コピーしました";
-        setTimeout(() => (copyBtn.textContent = prev), 1500);
-      }
-    });
-  }
-
-  async function loadPacketPreview() {
-    const select = document.getElementById("packet-q-select");
-    const preview = document.getElementById("packet-preview");
-    const qid = select.value || "auto";
-    try {
-      const res = await fetch(`./api/packet?question_id=${encodeURIComponent(qid)}`, { cache: "no-store" });
-      if (res.ok) {
-        const json = await res.json();
-        preview.textContent = json.packet;
-        return;
-      }
-    } catch (_e) {
-      // Fallback below
-    }
-    preview.textContent = buildFallbackPacket(qid);
-  }
-
-  async function init() {
-    const raw = await loadData();
-    const byId = {};
-    ["questions", "motifs", "materials", "fragments", "relations", "sessions"].forEach((col) => {
-      raw[col].forEach((rec) => {
-        const id =
-          rec.question_id ||
-          rec.motif_id ||
-          rec.material_id ||
-          rec.fragment_id ||
-          rec.relation_id ||
-          rec.session_id;
-        byId[id] = rec;
-      });
-    });
-
-    STATE = { ...raw, byId };
-    activeFragmentId = STATE.fragments[STATE.fragments.length - 1].fragment_id;
-
-    renderStats();
-    populateMotifFilter();
-    populatePacketSelect();
-    renderFragmentList();
-    renderRelationLegend();
-    renderQuestionsTree();
-    renderMaterials();
-    renderSessions();
-
-    document.querySelectorAll(".tab-btn").forEach((btn) => {
-      btn.addEventListener("click", () => switchTab(btn.dataset.view));
-    });
-
-    ["frag-search", "frag-form-filter", "frag-motif-filter", "frag-status-filter"].forEach((id) => {
-      document.getElementById(id).addEventListener("input", renderFragmentList);
-      document.getElementById(id).addEventListener("change", renderFragmentList);
-    });
-
-    document.querySelectorAll("#mat-kind-filter .pill-btn").forEach((btn) => {
+    notePane.querySelectorAll("[data-note-idx]").forEach((btn) => {
       btn.addEventListener("click", () => {
-        activeMaterialKind = btn.dataset.kind;
-        updateMaterialPills();
-        renderMaterials();
+        state.selectedNotebook = Number(btn.dataset.noteIdx);
+        renderMirrorView();
       });
     });
-
-    const themeBtn = document.getElementById("theme-toggle");
-    themeBtn.addEventListener("click", () => {
-      const root = document.documentElement;
-      const next = root.getAttribute("data-theme") === "paper" ? "night" : "paper";
-      root.setAttribute("data-theme", next);
-      themeBtn.textContent = next === "paper" ? "夜想モード" : "和紙モード";
-    });
   }
+}
 
-  init().catch((err) => {
-    const ws = document.querySelector(".workspace");
-    ws.innerHTML = `<div class="reader-pane"><p>${escapeHtml(err.message)}</p></div>`;
+/* 7. Context Packet Generator */
+function populatePacketSelect() {
+  const sel = document.getElementById("packet-question-select");
+  if (!sel) return;
+  const openQs = state.data.questions.filter((q) => q.status === "open");
+  sel.innerHTML =
+    `<option value="auto">自動推薦（まだ専用応答のない最新の問い）</option>` +
+    openQs
+      .map((q) => `<option value="${escapeHtml(q.question_id)}">${escapeHtml(q.question_id)}: ${escapeHtml(q.text.slice(0, 44))}…</option>`)
+      .join("");
+}
+
+async function loadContextPacket() {
+  const sel = document.getElementById("packet-question-select");
+  const out = document.getElementById("packet-output");
+  if (!sel || !out) return;
+  const qid = sel.value || "auto";
+  out.textContent = "コンテキスト・パケットを組み立てています…";
+  try {
+    const res = await fetch(`api/packet?question_id=${encodeURIComponent(qid)}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const payload = await res.json();
+    out.textContent = payload.packet;
+  } catch (err) {
+    out.textContent = `パケット生成APIの呼び出しに失敗しました（python3 tools/serve_viewer.py 経由で開いてください）: ${err.message}`;
+  }
+}
+
+/* Theme & Event Wiring */
+function setupEvents() {
+  document.querySelectorAll(".tab-btn").forEach((btn) => {
+    btn.addEventListener("click", () => switchView(btn.dataset.view));
   });
-})();
+
+  ["frag-search", "filter-status", "filter-form", "filter-mode"].forEach((id) => {
+    document.getElementById(id).addEventListener("input", renderFragmentList);
+    document.getElementById(id).addEventListener("change", renderFragmentList);
+  });
+
+  document.querySelectorAll("#mat-kind-group .pill-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      state.activeMatKind = btn.dataset.matKind;
+      document.querySelectorAll("#mat-kind-group .pill-btn").forEach((b) => {
+        b.classList.toggle("active", b === btn);
+      });
+      renderMaterials();
+    });
+  });
+
+  document.querySelectorAll("#mirror-subtab-group .pill-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      state.activeMirrorPane = btn.dataset.mirrorPane;
+      renderMirrorView();
+    });
+  });
+
+  const packetSel = document.getElementById("packet-question-select");
+  if (packetSel) {
+    packetSel.addEventListener("change", loadContextPacket);
+  }
+  const copyBtn = document.getElementById("copy-packet-btn");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", async () => {
+      const text = document.getElementById("packet-output").textContent;
+      await navigator.clipboard.writeText(text);
+      copyBtn.textContent = "コピーしました";
+      setTimeout(() => { copyBtn.textContent = "パケットをコピー"; }, 1600);
+    });
+  }
+
+  const themeBtn = document.getElementById("theme-toggle");
+  themeBtn.addEventListener("click", () => {
+    const html = document.documentElement;
+    const next = html.getAttribute("data-theme") === "paper" ? "night" : "paper";
+    html.setAttribute("data-theme", next);
+    themeBtn.textContent = next === "paper" ? "夜想モード" : "紙面モード";
+  });
+}
+
+async function init() {
+  setupEvents();
+  try {
+    const data = await fetchArchive();
+    indexData(data);
+    renderStats();
+    renderFragmentList();
+    renderFragmentReader(state.selectedFragmentId);
+    renderRelationFilterPills();
+    renderLineage();
+    renderMaterials();
+    renderTimeline();
+    populatePacketSelect();
+  } catch (err) {
+    document.getElementById("stats-strip").innerHTML = `<span style="color:var(--accent-crimson);font-size:0.86rem;">${escapeHtml(err.message)}</span>`;
+  }
+}
+
+init();
