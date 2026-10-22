@@ -16,8 +16,9 @@
 
 - **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（全断片の本文、問いの派生ツリー、対話素材、セッション履歴を一冊にまとめた自動生成ガイド）
 - **精読・検死ノートを読む**：
-  - [`readings/2026-10-22-forensics-and-new-voices.md`](readings/2026-10-22-forensics-and-new-voices.md)（台帳検死：`voice_audit.py` の二重の死角と括弧引用内外の分離、新古典・近代原典 4 件の逐語照合精読、および `FRAG-019`〜`FRAG-021` の設計ノート）
-  - [`readings/2026-10-22-close-reading.md`](readings/2026-10-22-close-reading.md)（15件の新規素材を、一節・読解・台帳への接続・裏切り・残る問いの形で読んだ作業ノート）
+  - [`readings/2026-10-22-forensics-and-new-voices.md`](readings/2026-10-22-forensics-and-new-voices.md)（`SESSION-021` 台帳検死：`voice_audit.py` の二重の死角と括弧引用内外の分離、並行 `SESSION-020` との同時収束の検証、新古典・近代原典 4 件の精読、および `FRAG-020`〜`FRAG-022` の設計ノート）
+  - [`readings/2026-10-22-session-020-unwritten.md`](readings/2026-10-22-session-020-unwritten.md)（`SESSION-020` 作業ノート：`unwritten` 欄など 8 通りのレコード候補をスキーマ検証へ当てた実験と `FRAG-019` の記録）
+  - [`readings/2026-10-22-close-reading.md`](readings/2026-10-22-close-reading.md)（`SESSION-019` 精読ノート：15件の新規素材を、一節・読解・台帳への接続・裏切り・残る問いの形で読んだ作業ノート）
 - **ブラウザで対話型アーカイブ・星座図を開く**：
   ```sh
   python3 tools/serve_viewer.py --host 0.0.0.0 --port 8000
@@ -36,12 +37,12 @@
 
 | 記録 | 保存先 | 現在の件数 | 役割 |
 |---|---|---:|---|
-| 問い | `state/questions.jsonl` | 28 | 開いたままの問い（初期シード5件＋セッション派生20件＋資料派生3件） |
+| 問い | `state/questions.jsonl` | 29 | 開いたままの問い（初期シード5件＋セッション派生21件＋資料派生3件） |
 | モチーフ | `state/motifs.jsonl` | 7 | 記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度の7つの糸 |
 | 素材 | `state/materials.jsonl` | 43 | AI研究抜粋15件（`research_excerpt`。ResearchOS移行14件＋本リポジトリ追加1件）＋哲学・文学原典27件（`literary_text`）＋プロジェクト痕跡1件（`project_trace`） |
-| 断片 | `state/fragments.jsonl` | 21 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）の断片（`selected` 15編＋`draft` 6編） |
-| 関係 | `state/relations.jsonl` | 86 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
-| セッション | `state/sessions.jsonl` | 20 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| 断片 | `state/fragments.jsonl` | 22 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）の断片（`selected` 15編＋`draft` 7編） |
+| 関係 | `state/relations.jsonl` | 95 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
+| セッション | `state/sessions.jsonl` | 21 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方
