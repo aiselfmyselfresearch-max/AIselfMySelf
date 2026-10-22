@@ -4,21 +4,107 @@
   "title": "Literary Fragment",
   "type": "object",
   "additionalProperties": false,
-  "required": ["fragment_id", "created_at", "language", "form", "title", "text", "narrator_mode", "question_ids", "motif_ids", "material_ids", "status"],
+  "required": [
+    "fragment_id",
+    "created_at",
+    "language",
+    "form",
+    "title",
+    "text",
+    "narrator_mode",
+    "question_ids",
+    "motif_ids",
+    "material_ids",
+    "status"
+  ],
   "properties": {
-    "fragment_id": {"type": "string", "minLength": 1},
-    "created_at": {"type": "string", "minLength": 4},
-    "language": {"type": "string", "minLength": 2},
-    "form": {"type": "string", "enum": ["fragment", "dialogue", "essay", "poem", "letter", "scene", "other"]},
-    "title": {"type": "string"},
-    "text": {"type": "string", "minLength": 1},
-    "narrator_mode": {"type": "string", "enum": ["human_narrator", "fictional_first_person", "reflective_literary_voice", "dialogue", "third_person", "other"]},
-    "question_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-    "motif_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-    "material_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-    "session_id": {"type": "string"},
-    "prompt_template": {"type": "string"},
-    "status": {"type": "string", "enum": ["draft", "selected", "archived"]},
-    "editor_note": {"type": "string"}
+    "fragment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 4
+    },
+    "language": {
+      "type": "string",
+      "minLength": 2
+    },
+    "form": {
+      "type": "string",
+      "enum": [
+        "fragment",
+        "dialogue",
+        "essay",
+        "poem",
+        "letter",
+        "scene",
+        "other"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "narrator_mode": {
+      "type": "string",
+      "enum": [
+        "human_narrator",
+        "fictional_first_person",
+        "reflective_literary_voice",
+        "dialogue",
+        "third_person",
+        "other"
+      ]
+    },
+    "question_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "motif_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "material_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "prompt_template": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "selected",
+        "archived"
+      ]
+    },
+    "editor_note": {
+      "type": "string"
+    },
+    "revises": {
+      "type": "string",
+      "description": "この断片が改稿である場合、改稿前の断片ID（例: FRAG-030）。台帳は追記型なので旧版は残す。"
+    },
+    "revision_note": {
+      "type": "string",
+      "description": "改稿で何を削り、何を加え、何を変えなかったか。改稿の是非は判定しない。"
+    }
   }
 }

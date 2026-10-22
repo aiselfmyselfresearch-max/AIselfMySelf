@@ -376,7 +376,14 @@ def compute_voice_audit(
     mixed = [i for i in languages if i["language"].strip() not in ("ja", "")]
     mostly_not_ja = [i for i in languages if i["ja_ratio"] < 0.6]
 
+    revision_pairs = [
+        (frag["fragment_id"], frag["revises"])
+        for frag in fragments
+        if isinstance(frag.get("revises"), str) and frag.get("revises")
+    ]
+
     return {
+        "revision_pairs": revision_pairs,
         "subject_mirror": subject,
         "subject_summary": subject_summary,
         "language_mirror": languages,
@@ -452,6 +459,11 @@ def main() -> int:
     if rest > 0:
         print(f"  …ほか {rest} 種")
     print()
+    if report["revision_pairs"]:
+        pairs_txt = ", ".join(f"{new_id} ← {old_id}" for new_id, old_id in report["revision_pairs"])
+        print(f"  改稿関係（revises）: {pairs_txt}")
+        print("    旧版と改稿のあいだで共有される文字列は、反復ではなく書き直しである。上の数にはそのまま入る。")
+        print()
 
     print("--- 5. 断片ごとの反復密度（保留句＋留保句＋二項対立句の数） ---")
     for item in report["density"][:8]:

@@ -318,6 +318,10 @@ function renderFragmentReader(fragmentId) {
     <div class="narrator-banner">
       語り手モード（明示）: <strong>${escapeHtml(MODE_LABELS[f.narrator_mode] || f.narrator_mode)}</strong>
     </div>
+    ${f.revises ? `
+    <div class="narrator-banner" style="border-color:var(--accent);">
+      改稿: <button type="button" class="link-pill" data-jump-frag="${escapeHtml(f.revises)}" style="padding:0.1rem 0.45rem;">${escapeHtml(f.revises)}</button> の書き直し（旧版は台帳に残っています）
+    </div>` : ""}
     <div class="literary-body form-${escapeHtml(f.form)}">
       ${formatLiteraryBody(f)}
     </div>
