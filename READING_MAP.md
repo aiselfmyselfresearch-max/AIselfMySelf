@@ -2826,7 +2826,7 @@
 
 ### 4.3 プロジェクト自身の痕跡（`project_trace` / `conversation_trace`）
 
-- **`MAT-TRC-001`** **台帳検死記録：五十八文字目の切断と『問いで終わる断片 0/17』の伝播** (AIselfMySelf Archive, 2026) — [参照先](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-10-22-forensics-and-new-voices.md)
+- **`MAT-TRC-001`** **台帳点検記録：五十八文字目の切断と『問いで終わる断片 0/17』の伝播** (AIselfMySelf Archive, 2026) — [参照先](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-10-22-inspection-and-new-voices.md)
   - 箇所・版：state/fragments.jsonl (FRAG-016, FRAG-018), tools/voice_audit.py (SESSION-018版), readings/2026-10-22-close-reading.md (§1-2) ／ Base commit 5438a8b815c72bc61291f64e3673feecd8e7190d (PR #5 / PR #6 state snapshot inspected in SESSION-020)
   - 問いへの招き：原文が同じファイルの二行上に無傷で残っていても、次のセッションが原文ではなく『採寸の要約』の方を信じて続きを語ってしまうとき、保存されていることと記憶されていることの間にはどんな断層があるのか。
   - 留保：スクリプト上の単純な文字列処理バグに起因する事例であり、AIの意図的改変や主観的錯覚を意味しない。ただし『要約が原記録を覆う』構造の実例として保持する。さらに同じ分岐点（5438a8b）から並行して走った SESSION-020（FRAG-019 / readings/2026-10-22-session-020-unwritten.md）でも『着手前 0編 → FRAG-019 が初めて（1編）』として三世代目の継承が独立に発生した。
