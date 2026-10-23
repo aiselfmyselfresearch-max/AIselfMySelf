@@ -48,8 +48,11 @@ Note on calibration (SESSION-030):
   last sentence contains `だけ`. Counting them as one gesture repeated the
   mistake that session had just named — one word covering several uses. The
   occurrences split into 残余 (what is left over), 回数 (how many times), and
-  程度・範囲 (how far). Measured: 61 occurrences in 26/35 fragments, of which
-  残余 40, 程度・範囲 12, その他 8, 回数 1.
+  程度・範囲 (how far). Measured at 35 fragments: 61 occurrences, of which
+  残余 46, 程度・範囲 7, その他 8, 回数 1. (The first published figures were
+  40/12/8/1: the window in `only_kind()` was 4 characters and the longest
+  pattern, `だけである`, is 5, so it fell into その他 and `だけで` took those
+  hits instead. Fixed in SESSION-031.)
   What is *not* in this tool is the reading of those nine endings. Whether a
   sentence that ends on a remainder is performing subtraction, or merely using
   the cheapest emphatic particle in Japanese, cannot be counted, and an earlier
@@ -251,7 +254,10 @@ def only_kind(text: str) -> dict[str, int]:
     for i in range(len(text)):
         if text[i] != "だ" or not text.startswith("だけ", i):
             continue
-        window = text[i : i + 4]
+        # NOTE (SESSION-031): this window was 4 characters until it was measured against
+        # the pattern list, where the longest pattern is 5 (`だけである`). Anything that
+        # long fell through into その他: FRAG-033's 「名だけである」 and FRAG-038's 初稿.
+        window = text[i : i + 6]
         before = text[max(0, i - 2) : i + 2]
         if any(before.startswith(w) or before.endswith(w) for w in ONLY_COUNT) or any(
             text[max(0, i - 3) : i].startswith(w[:-2]) for w in ONLY_COUNT
