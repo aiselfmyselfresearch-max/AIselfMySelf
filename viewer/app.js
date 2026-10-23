@@ -295,6 +295,13 @@ function bindJumpButtons(container) {
   container.querySelectorAll("[data-goto-errata]").forEach((b) => {
     b.addEventListener("click", () => switchView("errata"));
   });
+  container.querySelectorAll("[data-jump-errata]").forEach((b) => {
+    b.addEventListener("click", () => {
+      switchView("errata");
+      const card = document.getElementById(`errata-${b.dataset.jumpErrata}`);
+      if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  });
 }
 
 function renderFragmentReader(fragmentId) {
@@ -700,6 +707,27 @@ function renderMaterials() {
           ${m.literary_invitation ? `<div class="mat-invitation">問いへの誘い: ${escapeHtml(m.literary_invitation)}</div>` : ""}
           <blockquote class="mat-passage">${escapeHtml(m.passage)}</blockquote>
           ${usedIn.length > 0 ? `<div class="tag-row" style="margin-bottom:0;">${usedIn.map((f) => renderEntityJumpButton("fragment", f.fragment_id)).join("")}</div>` : ""}
+          ${(() => {
+            const rows = (state.data.errata || []).filter((e) => !e.fragment_id && e.subject_id === m.material_id);
+            if (rows.length === 0) return "";
+            return `
+              <div class="meta-box" style="border-left:3px solid var(--accent-crimson); margin-top:0.6rem;">
+                <h3 style="font-size:0.9rem;">この素材についての訂正録 (${rows.length}件)</h3>
+                <p style="margin:0 0 0.4rem;color:var(--ink-muted);font-size:0.82rem;">素材の本文も書き換えていません。測定値と手続きの食い違いだけを横に置いています。</p>
+                <ul class="rel-list">
+                  ${rows.map((e) => `
+                    <li>
+                      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.4rem;margin-bottom:0.2rem;">
+                        <button type="button" class="link-pill" data-jump-errata="${escapeHtml(e.errata_id)}" style="padding:0.05rem 0.4rem;">${escapeHtml(e.errata_id)}</button>
+                        <span class="badge">${escapeHtml(e.verdict)}</span>
+                      </div>
+                      <div style="color:var(--ink-muted);font-size:0.84rem;">再測定: ${escapeHtml(e.measured_now || "—")}</div>
+                    </li>
+                  `).join("")}
+                </ul>
+              </div>
+            `;
+          })()}
           <div class="mat-scope">射程・編集覚書: ${escapeHtml(m.scope_note)}</div>
         </article>
       `;
@@ -735,7 +763,7 @@ function renderErrata() {
       <span class="badge" style="border-color:var(--accent-moss); color:var(--accent-moss);">成り立つ ${counts.holds || 0}</span>
       <span class="badge" style="border-color:var(--accent-amber); color:var(--accent-amber);">再測定不能 ${counts.unmeasurable || 0}</span>
       <span class="badge">全 ${errata.length} 件</span>
-      <span class="badge" style="border-color:var(--accent-indigo); color:var(--accent-indigo);">うち台帳自身の測定について ${errata.filter((e) => e.subject_type === "material").length} 件</span>
+      <span class="badge" style="border-color:var(--accent-indigo); color:var(--accent-indigo);">うち台帳自身について（測定・訂正） ${errata.filter((e) => e.subject_type === "material" || e.subject_type === "other").length} 件</span>
     </div>
   `;
 
@@ -750,7 +778,7 @@ function renderErrata() {
       const subjectTitle = subject
         ? (subject.title || subject.question || subject.label || subjectId)
         : subjectId;
-      const subjectLabel = { fragment: "断片", material: "素材（台帳自身の測定）", question: "問い", session: "セッション", motif: "モチーフ" }[subjectType] || subjectType;
+      const subjectLabel = { fragment: "断片", material: "素材（台帳自身の測定）", other: "訂正録・台帳の記録", question: "問い", session: "セッション", motif: "モチーフ" }[subjectType] || subjectType;
       const checkText = e.check && e.check.kind !== "manual"
         ? `${e.check.kind}${e.check.params ? " " + JSON.stringify(e.check.params) : ""}`
         : "手続き未記録（再実行しない）";

@@ -97,8 +97,10 @@ def main() -> int:
     unmeasurable = sum(1 for r in rows if r["verdict"] == "unmeasurable")
     print("--- 集計 ---")
     print(f"  自分の測定についての errata {len(rows)} 件: 成り立たない {contradicted} / 成り立つ {holds} / 再測定不能 {unmeasurable}")
-    print("  成り立たないもののうち、当時の手続きが誤っていたのは ERR-009（計器の不備）。")
-    print("  残りは、測ったあとに台帳が伸びたことによる経年。誰も本文を書き換えていない。")
+    print("  成り立たない理由は三つに分かれる。")
+    print("   計器の誤り（当時の道具が測れていなかった）: ERR-009")
+    print("   経年（測ったあとに台帳が伸びた。誰も本文を書き換えていない）: ERR-010〜012, ERR-014")
+    print("   診断の誤り（数を測り直すのではなく、なぜ合わないかの説明が誤っていた）: ERR-016")
     return 0
 
 

@@ -18,7 +18,7 @@ import re
 import subprocess
 import unicodedata
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -54,29 +54,72 @@ def normalize(text: str) -> str:
     return re.sub(r"[\s、。，「」『』…・—\-－?!？！.,·]", "", text)
 
 
-def quotation_match(fragments: list[dict[str, Any]], materials: list[dict[str, Any]], min_len: int) -> dict[str, Any]:
-    quotes: list[tuple[str, str]] = []
+def quotation_match(fragments: list[dict[str, Any]], materials: list[dict[str, Any]], min_len: int,
+                     literary_min_len: int | None = None,
+                     trace_min_len: int | None = None,
+                     trace_scope: str = "any") -> dict[str, Any]:
+    """Count 「」 quotations and check which of them reach a stored passage.
+
+    Default behaviour (literary_min_len is None) uses one ruler for everything
+    and takes the first matching material in file order. Passing
+    literary_min_len splits the check in two: literature is matched at
+    literary_min_len characters, the ledger's own project_trace records at
+    trace_min_len, optionally only against the materials a fragment actually
+    cites (trace_scope="own"). The split exists because MAT-TRC-004 was
+    reconstructed with exactly such a split; see tools/reconstruct.py.
+    """
+    quotes: list[tuple[str, Optional[str], str]] = []
     for fragment in fragments:
         for quote in re.findall(r"「([^」]*)」", fragment["text"]):
             if len(quote) >= min_len:
-                quotes.append((fragment["fragment_id"], quote))
+                quotes.append((fragment["fragment_id"], fragment.get("material_ids"), quote))
     normalized = [(m["material_id"], normalize(m["passage"])) for m in materials]
+
+    if literary_min_len is None:
+        originals, trace, unmatched = [], [], 0
+        for fragment_id, _cited, quote in quotes:
+            key = normalize(quote)
+            hit = next((mid for mid, passage in normalized if key and key in passage), None)
+            if hit is None:
+                unmatched += 1
+            elif hit.startswith("MAT-TRC"):
+                trace.append((fragment_id, hit))
+            else:
+                originals.append((fragment_id, hit))
+        return {
+            "measurable": True,
+            "value": len(quotes),
+            "detail": (
+                f"「」{min_len}文字以上 {len(quotes)} 箇所 / 素材と一致 {len(originals) + len(trace)}"
+                f"（うち台帳自身の検死記録 {len(trace)}）→ 原典一致 {len(originals)} / 不一致 {unmatched}"
+            ),
+        }
+
+    trace_min_len = min_len if trace_min_len is None else trace_min_len
     originals, trace, unmatched = [], [], 0
-    for fragment_id, quote in quotes:
+    for fragment_id, cited, quote in quotes:
         key = normalize(quote)
-        hit = next((mid for mid, passage in normalized if key and key in passage), None)
-        if hit is None:
+        if not key:
             unmatched += 1
-        elif hit.startswith("MAT-TRC"):
-            trace.append((fragment_id, hit))
+            continue
+        hits = [mid for mid, passage in normalized if key in passage]
+        cited = set(cited or [])
+        trace_hits = [mid for mid in hits if mid.startswith("MAT-TRC")
+                      and (trace_scope != "own" or mid in cited)]
+        lit_hits = [mid for mid in hits if not mid.startswith("MAT-TRC")]
+        if len(key) >= trace_min_len and trace_hits:
+            trace.append((fragment_id, trace_hits[0]))
+        elif len(key) >= literary_min_len and lit_hits:
+            originals.append((fragment_id, lit_hits[0]))
         else:
-            originals.append((fragment_id, hit))
+            unmatched += 1
     return {
         "measurable": True,
-        "value": len(quotes),
+        "value": len(originals) + len(trace),
         "detail": (
-            f"「」{min_len}文字以上 {len(quotes)} 箇所 / 素材と一致 {len(originals) + len(trace)}"
-            f"（うち台帳自身の検死記録 {len(trace)}）→ 原典一致 {len(originals)} / 不一致 {unmatched}"
+            f"「」{min_len}文字以上 {len(quotes)} 箇所 / 一致 {len(originals) + len(trace)}"
+            f"（原典 {len(originals)}［{literary_min_len}文字以上］"
+            f"＋台帳自身 {len(trace)}［{trace_scope}・{trace_min_len}文字以上］）→ 不一致 {unmatched}"
         ),
     }
 
@@ -126,7 +169,12 @@ def run_check(check: dict[str, Any], fragments: list[dict[str, Any]],
     if kind == "quotation_match":
         if materials is None:
             return {"measurable": False, "value": "—", "detail": "素材が読み込まれていない"}
-        return quotation_match(fragments, materials, int(params.get("min_len", 4)))
+        return quotation_match(
+            fragments, materials, int(params.get("min_len", 4)),
+            literary_min_len=(int(params["literary_min_len"]) if "literary_min_len" in params else None),
+            trace_min_len=(int(params["trace_min_len"]) if "trace_min_len" in params else None),
+            trace_scope=str(params.get("trace_scope", "any")),
+        )
 
     if kind == "git_deletions":
         try:
