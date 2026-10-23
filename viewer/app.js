@@ -292,6 +292,9 @@ function bindJumpButtons(container) {
   container.querySelectorAll("[data-jump-sess]").forEach((b) => {
     b.addEventListener("click", () => jumpToSession(b.dataset.jumpSess));
   });
+  container.querySelectorAll("[data-goto-errata]").forEach((b) => {
+    b.addEventListener("click", () => switchView("errata"));
+  });
 }
 
 function renderFragmentReader(fragmentId) {
@@ -323,6 +326,28 @@ function renderFragmentReader(fragmentId) {
     <div class="literary-body form-${escapeHtml(f.form)}">
       ${formatLiteraryBody(f)}
     </div>
+
+    ${(() => {
+      const rows = (state.data.errata || []).filter((e) => e.fragment_id === f.fragment_id);
+      if (rows.length === 0) return "";
+      return `
+        <div class="meta-box" style="border-left:3px solid var(--accent-crimson);">
+          <h3>この断片についての訂正録 (${rows.length}件)</h3>
+          <p style="margin:0 0 0.5rem;color:var(--ink-muted);font-size:0.84rem;">本文は書き換えていません。判断だけを横に置いています。<button type="button" class="link-pill" data-goto-errata="1" style="padding:0.1rem 0.45rem;">訂正録タブで読む</button></p>
+          <ul class="rel-list">
+            ${rows.map((e) => `
+              <li>
+                <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.45rem;margin-bottom:0.25rem;">
+                  <code>${escapeHtml(e.errata_id)}</code>
+                  <span class="badge">${escapeHtml(e.verdict)}</span>
+                </div>
+                <div style="color:var(--ink-muted);">主張「${escapeHtml(e.claim)}」 → 再測定: ${escapeHtml(e.measured_now || "—")}</div>
+              </li>
+            `).join("")}
+          </ul>
+        </div>
+      `;
+    })()}
 
     ${f.editor_note ? `
       <div class="meta-box">
@@ -710,6 +735,7 @@ function renderErrata() {
       <span class="badge" style="border-color:var(--accent-moss); color:var(--accent-moss);">成り立つ ${counts.holds || 0}</span>
       <span class="badge" style="border-color:var(--accent-amber); color:var(--accent-amber);">再測定不能 ${counts.unmeasurable || 0}</span>
       <span class="badge">全 ${errata.length} 件</span>
+      <span class="badge" style="border-color:var(--accent-indigo); color:var(--accent-indigo);">うち台帳自身の測定について ${errata.filter((e) => e.subject_type === "material").length} 件</span>
     </div>
   `;
 
@@ -718,7 +744,13 @@ function renderErrata() {
     .sort((a, b) => (a.errata_id > b.errata_id ? 1 : -1))
     .map((e) => {
       const color = verdictColor[e.verdict] || "var(--ink-muted)";
-      const frag = state.maps.fragment.get(e.fragment_id);
+      const subjectType = e.fragment_id ? "fragment" : (e.subject_type || "other");
+      const subjectId = e.fragment_id || e.subject_id || "";
+      const subject = state.maps[subjectType] ? state.maps[subjectType].get(subjectId) : null;
+      const subjectTitle = subject
+        ? (subject.title || subject.question || subject.label || subjectId)
+        : subjectId;
+      const subjectLabel = { fragment: "断片", material: "素材（台帳自身の測定）", question: "問い", session: "セッション", motif: "モチーフ" }[subjectType] || subjectType;
       const checkText = e.check && e.check.kind !== "manual"
         ? `${e.check.kind}${e.check.params ? " " + JSON.stringify(e.check.params) : ""}`
         : "手続き未記録（再実行しない）";
@@ -729,14 +761,15 @@ function renderErrata() {
             <code>${escapeHtml(e.errata_id)}</code>
             <span class="badge" style="border-color:${color}; color:${color};">${escapeHtml(verdictLabel[e.verdict] || e.verdict)}</span>
           </div>
-          <h3 class="mat-title">${frag ? escapeHtml(frag.title) : escapeHtml(e.fragment_id)}</h3>
+          <h3 class="mat-title">${escapeHtml(subjectTitle)}</h3>
           <blockquote class="mat-passage">${escapeHtml(e.claim)}</blockquote>
           <div style="font-size:0.8rem;color:var(--ink-muted);">位置: ${escapeHtml(e.claim_location)} ／ 状態: ${escapeHtml(statusLabel[e.status] || e.status)}</div>
           <div style="font-size:0.84rem;margin-top:0.4rem;">再測定: ${escapeHtml(e.measured_now || "—")}</div>
           <div style="font-size:0.78rem;color:var(--ink-muted);">検査: <code>${escapeHtml(checkText)}</code></div>
           <div class="mat-scope">${escapeHtml(e.note)}</div>
           <div class="tag-row" style="margin-bottom:0;">
-            ${renderEntityJumpButton("fragment", e.fragment_id)}
+            <span style="font-size:0.76rem;color:var(--ink-muted);">対象: ${escapeHtml(subjectLabel)}</span>
+            ${state.maps[subjectType] ? renderEntityJumpButton(subjectType, subjectId) : `<code>${escapeHtml(subjectId)}</code>`}
             ${correctedBy ? `<span style="font-size:0.78rem;color:var(--ink-muted);">校勘: </span>${renderEntityJumpButton("fragment", e.corrected_by)}` : ""}
           </div>
         </article>

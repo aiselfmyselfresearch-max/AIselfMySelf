@@ -15,6 +15,8 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
+import unicodedata
 from pathlib import Path
 from typing import Any
 
@@ -44,7 +46,43 @@ def in_range(fragments: list[dict[str, Any]], low: int, high: int) -> list[dict[
     return [f for f in fragments if low <= number(f["fragment_id"]) <= high]
 
 
-def run_check(check: dict[str, Any], fragments: list[dict[str, Any]]) -> dict[str, Any]:
+def normalize(text: str) -> str:
+    """NFKC, then drop whitespace and punctuation. Stated here because an
+    undocumented normalization is what made several earlier measurements
+    unreproducible."""
+    text = unicodedata.normalize("NFKC", text)
+    return re.sub(r"[\s、。，「」『』…・—\-－?!？！.,·]", "", text)
+
+
+def quotation_match(fragments: list[dict[str, Any]], materials: list[dict[str, Any]], min_len: int) -> dict[str, Any]:
+    quotes: list[tuple[str, str]] = []
+    for fragment in fragments:
+        for quote in re.findall(r"「([^」]*)」", fragment["text"]):
+            if len(quote) >= min_len:
+                quotes.append((fragment["fragment_id"], quote))
+    normalized = [(m["material_id"], normalize(m["passage"])) for m in materials]
+    originals, trace, unmatched = [], [], 0
+    for fragment_id, quote in quotes:
+        key = normalize(quote)
+        hit = next((mid for mid, passage in normalized if key and key in passage), None)
+        if hit is None:
+            unmatched += 1
+        elif hit.startswith("MAT-TRC"):
+            trace.append((fragment_id, hit))
+        else:
+            originals.append((fragment_id, hit))
+    return {
+        "measurable": True,
+        "value": len(quotes),
+        "detail": (
+            f"「」{min_len}文字以上 {len(quotes)} 箇所 / 素材と一致 {len(originals) + len(trace)}"
+            f"（うち台帳自身の検死記録 {len(trace)}）→ 原典一致 {len(originals)} / 不一致 {unmatched}"
+        ),
+    }
+
+
+def run_check(check: dict[str, Any], fragments: list[dict[str, Any]],
+              materials: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     kind = check.get("kind")
     params = check.get("params") or {}
     by_id = {f["fragment_id"]: f for f in fragments}
@@ -70,6 +108,42 @@ def run_check(check: dict[str, Any], fragments: list[dict[str, Any]]) -> dict[st
         return {"measurable": True, "value": f"{len(found)}/{len(targets)}",
                 "detail": ("一致: " + (", ".join(found) or "—")) + " / 不一致: " + (", ".join(missing) or "—")}
 
+    if kind == "narrator_mode_usage":
+        modes = params.get("modes", [])
+        unused = [m for m in modes if not any(f.get("narrator_mode") == m for f in fragments)]
+        counted = {m: sum(1 for f in fragments if f.get("narrator_mode") == m) for m in modes}
+        return {"measurable": True, "value": len(unused),
+                "detail": " / ".join(f"{m}={counted[m]}" for m in modes) + f" → 未使用 {len(unused)} 種"}
+
+    if kind == "pronoun_absence":
+        import sys
+        sys.path.insert(0, str(ROOT / "tools"))
+        from voice_audit import compute_voice_audit  # local import: optional dependency
+        audit = compute_voice_audit(fragments, [], top=1, gram=6)
+        ids = audit.get("zero_pronoun_fragment_ids", [])
+        return {"measurable": True, "value": len(ids), "detail": ", ".join(ids) or "—"}
+
+    if kind == "quotation_match":
+        if materials is None:
+            return {"measurable": False, "value": "—", "detail": "素材が読み込まれていない"}
+        return quotation_match(fragments, materials, int(params.get("min_len", 4)))
+
+    if kind == "git_deletions":
+        try:
+            out = subprocess.run(
+                ["git", "log", "--numstat", "--format=", "--", params.get("path", "state/")],
+                cwd=ROOT, capture_output=True, text=True, check=True,
+            ).stdout
+        except (OSError, subprocess.CalledProcessError) as exc:
+            return {"measurable": False, "value": "—", "detail": f"git を実行できない: {exc}"}
+        added = deleted = 0
+        for line in out.splitlines():
+            parts = line.split("\t")
+            if len(parts) == 3 and parts[0].isdigit() and parts[1].isdigit():
+                added += int(parts[0])
+                deleted += int(parts[1])
+        return {"measurable": True, "value": deleted, "detail": f"追加 {added} / 削除 {deleted}（{params.get('path', 'state/')}）"}
+
     if kind == "last_sentence_length":
         fid = params.get("fragment_id", "")
         text = by_id.get(fid, {}).get("text", "")
@@ -79,7 +153,11 @@ def run_check(check: dict[str, Any], fragments: list[dict[str, Any]]) -> dict[st
 
 
 def recorded_number(value: str) -> str:
-    match = re.match(r"\s*(\d+)", value or "")
+    """A leading number (optionally a fraction such as 1/17) is compared
+    automatically; the annotation after it is left for the reader. Records that
+    start with prose are treated as descriptive and are not compared at all."""
+    text = (value or "").strip()
+    match = re.match(r"^(\d+(?:/\d+)?)", text)
     return match.group(1) if match else ""
 
 
@@ -90,15 +168,21 @@ def main() -> int:
 
     errata = load_jsonl("errata.jsonl")
     fragments = load_jsonl("fragments.jsonl")
+    materials = load_jsonl("materials.jsonl")
 
     results = []
     for record in sorted(errata, key=lambda r: r["errata_id"]):
-        measured = run_check(record.get("check", {}), fragments)
+        measured = run_check(record.get("check", {}), fragments, materials)
         agree: bool | None = None
         if measured["measurable"]:
             recorded = recorded_number(record.get("measured_now", ""))
             measured_str = str(measured["value"])
-            agree = bool(recorded) and recorded in (measured_str, measured_str.split("/")[0])
+            if not recorded:
+                agree = None
+            else:
+                # a fraction such as 4/32 is compared on its numerator: the
+                # denominators come from different ledger sizes by design.
+                agree = recorded.split("/")[0] == measured_str.split("/")[0]
         results.append({"errata": record, "measured": measured, "agree": agree})
 
     if args.json:
@@ -109,20 +193,31 @@ def main() -> int:
     print(f"対象: state/errata.jsonl {len(errata)} 件 / state/fragments.jsonl {len(fragments)} 編\n")
     for row in results:
         rec, mes, agree = row["errata"], row["measured"], row["agree"]
-        mark = "再現" if agree else ("不一致" if agree is False else "対象外")
-        print(f"[{rec['errata_id']}] {rec['fragment_id']}  verdict={rec['verdict']} / status={rec['status']} / 再測定={mark}")
+        if not mes["measurable"]:
+            mark = "対象外"
+        elif agree is None:
+            mark = "記述的"
+        else:
+            mark = "再現" if agree else "不一致"
+        subject = rec.get("fragment_id") or rec.get("subject_id") or "—"
+        print(f"[{rec['errata_id']}] {subject}  verdict={rec['verdict']} / status={rec['status']} / 再測定={mark}")
         print(f"   主張 : {rec['claim']}")
         print(f"   記録 : {rec.get('measured_now','—')}")
         print(f"   今回 : {mes['value']}  ({mes['detail']})")
+        if agree is None and mes["measurable"]:
+            print("   ※ 記録が記述的なため、自動比較はしない（数値の一致は註を読んで確かめる）")
         print(f"   註   : {rec['note']}\n")
 
     open_count = sum(1 for r in errata if r["status"] == "open")
     contradicted = sum(1 for r in errata if r["verdict"] == "contradicted")
     agreeing = sum(1 for row in results if row["agree"] is True)
     disagreeing = sum(1 for row in results if row["agree"] is False)
+    descriptive = sum(1 for row in results if row["agree"] is None and row["measured"]["measurable"])
+    unmeasurable = sum(1 for row in results if not row["measured"]["measurable"])
     print("--- 集計 ---")
     print(f"  errata 総数 {len(errata)} / contradicted {contradicted} / open {open_count}")
     print(f"  再測定できたもの {agreeing + disagreeing} 件のうち、記録と一致 {agreeing} 件・不一致 {disagreeing} 件")
+    print(f"  記述的で自動比較しないもの {descriptive} 件 / 手続き未記録で再実行しないもの {unmeasurable} 件")
     print("  この道具は本文を書き換えない。判定もしない。")
     return 0
 

@@ -16,6 +16,7 @@
 
 - **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（全断片の本文、問いの派生ツリー、対話素材、セッション履歴を一冊にまとめた自動生成ガイド）
 - **精読・検死・編集レビューノートを読む**：
+  - [`readings/2026-10-23-measurement-age.md`](readings/2026-10-23-measurement-age.md)（`SESSION-029` 作業ノート：訂正録を素材へ拡張（`subject_type`／`subject_id`、既存8件は不改変）、台帳が自分について書いた測定値6件の再測定（`MAT-TRC-001`〜`005`）、新しい道具 `tools/drift_audit.py`、**`MAT-TRC-004` の「原典一致 8」が当時の正規化不記載のため再現できず、いま測れば 13 になる**こと（`ERR-013`）、訂正録自身の数が同一セッション内で古くなる例（`ERR-015`）、断片リーダー→訂正録の逆リンク、詩 `FRAG-033`、`Q-051` の開設）
   - [`readings/2026-10-23-errata.md`](readings/2026-10-23-errata.md)（`SESSION-028` 作業ノート：本文を書き換えずに判断を横に置く層 `state/errata.jsonl`・`schema/errata.schema.json`・再測定器 `tools/errata_audit.py` の新設、全31編の数量的主張の再測定（contradicted 4／holds 2／unmeasurable 2）、**訂正の本文 FRAG-020 自身が83文字（実際は63文字）・引用文字列（実際は2編のみ）の誤りを持つ**ことの発見、`Q-050` の開設、および `human_narrator` 初使用の断片 `FRAG-032`）
   - [`readings/2026-10-23-scribal-error.md`](readings/2026-10-23-scribal-error.md)（`SESSION-027` 精読ノート：git 履歴・スキーマ・`editor_note` の語彙による「訂正の欄がない」ことの実測、誤りを含む `selected` 断片 FRAG-018 と、それを正す `draft` FRAG-020 の校勘記が台帳の欄で結ばれていないことの発見、新規 35 件（書き写す者／誤りを生きる者／記憶はなぜ誤るか／機械はなぜ誤るか／訂正の作法の五群）の精読、Q-047〜Q-049 の開設、九本目のモチーフ `MOTIF-009`「誤りと訂正」の追加）
   - [`readings/2026-10-23-quotation-marks.md`](readings/2026-10-23-quotation-marks.md)（`SESSION-026` 精読ノート：本文の鉤括弧 88 箇所を素材本文と照合し、原典に届いていたのが 8 箇所だけであったことの実測、新規 38 件（引用する／註する／反復する／名を貸す／数えるの五群）の精読、Q-044〜Q-046 の開設、およびモチーフ索引への追記）
@@ -45,13 +46,13 @@
 
 | 記録 | 保存先 | 現在の件数 | 役割 |
 |---|---|---:|---|
-| 問い | `state/questions.jsonl` | 50 | 開いたままの問い（初期シード5件＋セッション派生35件＋資料派生10件） |
+| 問い | `state/questions.jsonl` | 51 | 開いたままの問い（初期シード5件＋セッション派生36件＋資料派生10件） |
 | モチーフ | `state/motifs.jsonl` | 9 | 記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度、作法と定型、誤りと訂正の9つの糸 |
 | 素材 | `state/materials.jsonl` | 150 | AI研究・科学コミュニケーション抜粋30件（`research_excerpt`。ResearchOS移行14件＋本リポジトリ追加16件）＋哲学・言語学・文学原典115件（`literary_text`）＋プロジェクト痕跡5件（`project_trace`） |
-| 断片 | `state/fragments.jsonl` | 32 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 15編＋`draft` 17編。`narrator_mode` は `human_narrator` を含む全6種） |
-| 関係 | `state/relations.jsonl` | 293 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
-| セッション | `state/sessions.jsonl` | 28 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
-| 訂正 | `state/errata.jsonl` | 8 | 断片の主張のうち、再測定で成り立たなくなったもの・今も成り立つもの・再測定できないもの（`contradicted` 4／`holds` 2／`unmeasurable` 2）。本文は書き換えない |
+| 断片 | `state/fragments.jsonl` | 33 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 15編＋`draft` 18編。`narrator_mode` は `human_narrator` を含む全6種） |
+| 関係 | `state/relations.jsonl` | 296 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
+| セッション | `state/sessions.jsonl` | 29 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| 訂正 | `state/errata.jsonl` | 15 | 断片・素材・訂正録自身についての主張のうち、再測定で成り立たなくなったもの・今も成り立つもの・再測定できないもの（`contradicted` 9／`holds` 3／`unmeasurable` 3）。本文は書き換えない |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方
@@ -64,7 +65,7 @@ state/                      問い・モチーフ・素材・断片・関係・�
 readings/                   資料の精読ノート（台帳からは独立した作業文書）
 prompts/                    初回セッション・継続・編集レビュー用プロンプト
 viewer/                     対話型Webアーカイブ＆星座ビューア（HTML/CSS/JS）
-tools/                      検証・集計・読書案内生成・反復の鏡・訂正録の再測定・Webビューア・上流照合スクリプト（標準ライブラリのみ）
+tools/                      検証・集計・読書案内生成・反復の鏡・訂正録の再測定・経年検査・Webビューア・上流照合スクリプト（標準ライブラリのみ）
 ```
 
 ## 5. 検査・整理・同期コマンド
@@ -97,7 +98,10 @@ python3 tools/import_researchos.py --source-root /path/to/ResearchOS --check
 python3 tools/errata_audit.py
 python3 tools/inspect_inquiry.py --id ERR-004
 
-# 8. 断片の反復を映す鏡（採点・合否ではなく、次の一手を選ぶための観察）
+# 8. 経年検査（台帳が自分について書いた測定値を、いま測り直して食い違いを見る）
+python3 tools/drift_audit.py
+
+# 9. 断片の反復を映す鏡（採点・合否ではなく、次の一手を選ぶための観察）
 python3 tools/voice_audit.py
 python3 tools/voice_audit.py --top 20 --gram 8
 ```

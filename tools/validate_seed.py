@@ -189,10 +189,30 @@ def main() -> int:
     check_refs("sessions", sessions, "new_question_ids", "question", questions, errors)
 
     errata = collections.get("errata", {})
+    subject_collections = {
+        "fragment": fragments,
+        "material": materials,
+        "question": questions,
+        "session": sessions,
+        "motif": motifs,
+    }
     for errata_id, record in errata.items():
         fragment_id = record.get("fragment_id")
+        subject_type = record.get("subject_type")
+        subject_id = record.get("subject_id")
+        if fragment_id and (subject_type or subject_id):
+            errors.append(f"errata:{errata_id}: use either fragment_id or subject_type+subject_id, not both")
+        if not fragment_id and not (subject_type and subject_id):
+            errors.append(f"errata:{errata_id}: needs a subject (fragment_id, or subject_type with subject_id)")
         if fragment_id and fragment_id not in fragments:
             errors.append(f"errata:{errata_id}: fragment_id references unknown fragment {fragment_id!r}")
+        if subject_type and subject_id:
+            target = subject_collections.get(subject_type)
+            if target is None:
+                if subject_type != "other":
+                    errors.append(f"errata:{errata_id}: unknown subject_type {subject_type!r}")
+            elif subject_id not in target:
+                errors.append(f"errata:{errata_id}: subject_id references unknown {subject_type} {subject_id!r}")
         corrected_by = record.get("corrected_by")
         if corrected_by and corrected_by not in fragments:
             errors.append(f"errata:{errata_id}: corrected_by references unknown fragment {corrected_by!r}")

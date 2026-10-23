@@ -5,7 +5,7 @@
 - `questions.jsonl` / `motifs.jsonl`：開かれた問いの系譜と、問いを横断する9つのモチーフ（記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度、作法と定型、誤りと訂正）。
 - `materials.jsonl`：`ResearchOS` から選定した AI 研究抜粋（`research_excerpt`）、本リポジトリで追加した AI 研究抜粋・哲学・文学原典（`literary_text`）・プロジェクト痕跡（`project_trace`）。`tools/import_researchos.py --write` を実行しても、本リポジトリ側で追加したローカル素材は保持されます。
 - `fragments.jsonl` / `relations.jsonl` / `sessions.jsonl`：各セッションで生成・選出された文芸断片、解釈的関係、セッション履歴。
-- `errata.jsonl`：断片の主張のうち、再測定で成り立たなくなったもの（`contradicted`）・今も成り立つもの（`holds`）・再測定できないもの（`unmeasurable`）を、本文を書き換えずに記録する層。各レコードは再実行できる `check` を持ち、`python3 tools/errata_audit.py` で記録値と現在値を並べて確認できます。
+- `errata.jsonl`：断片・素材・訂正録自身についての主張のうち、再測定で成り立たなくなったもの（`contradicted`）・今も成り立つもの（`holds`）・再測定できないもの（`unmeasurable`）を、本文を書き換えずに記録する層。各レコードは再実行できる `check` を持ち、`python3 tools/errata_audit.py` で記録値と現在値を並べて確認できます。対象は `fragment_id`、または `subject_type`＋`subject_id` のどちらか一方で指定します。素材（`project_trace`）を対象にしたものは `python3 tools/drift_audit.py` で経年だけを見られます。
 
 台帳を更新した後は、必ず以下の2つを実行して整合性と読書案内を同期してください。
 
