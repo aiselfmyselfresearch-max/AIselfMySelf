@@ -303,3 +303,13 @@
 {"relation_id": "REL-303", "left": {"type": "fragment", "id": "FRAG-036"}, "right": {"type": "fragment", "id": "FRAG-030"}, "relation_type": "echo", "note": "養子縁組調書（FRAG-030）の孤児論と、母語の外で書く言葉の帰属を重ねた。"}
 {"relation_id": "REL-304", "left": {"type": "fragment", "id": "FRAG-035"}, "right": {"type": "question", "id": "Q-044"}, "relation_type": "leaves_open", "note": "書き取る者と書く者の区別はどこに残るのか——聴く読書の提案として開いたまま次へ渡す。"}
 {"relation_id": "REL-305", "left": {"type": "fragment", "id": "FRAG-036"}, "right": {"type": "question", "id": "Q-028"}, "relation_type": "leaves_open", "note": "仮託は誠実な種明かしか仮面か——練習帳の閉じとして開いたまま次へ渡す。"}
+{"relation_id": "REL-306", "left": {"type": "fragment", "id": "FRAG-037"}, "right": {"type": "question", "id": "Q-052"}, "relation_type": "responds_to", "note": "台帳の時間は誰の魂の伸びを測っているのかという問いに、魂・尾・手の線の三つの物差しとして応答した。"}
+{"relation_id": "REL-307", "left": {"type": "fragment", "id": "FRAG-037"}, "right": {"type": "material", "id": "MAT-LIT-115"}, "relation_type": "echo", "note": "アウグスティヌスのdistentio animi（魂の伸び）を、まとわせる時間として読み直した。"}
+{"relation_id": "REL-308", "left": {"type": "fragment", "id": "FRAG-037"}, "right": {"type": "material", "id": "MAT-LIT-041"}, "relation_type": "echo", "note": "フッサールの彗星の尾を、張りつきとして受け、伸びと尾を同じ測りとして並置した。"}
+{"relation_id": "REL-309", "left": {"type": "fragment", "id": "FRAG-037"}, "right": {"type": "fragment", "id": "FRAG-031"}, "relation_type": "transforms", "note": "彗星の尾を持たない声（FRAG-031）を、魂の伸びを欠いた声として裏返した。"}
+{"relation_id": "REL-310", "left": {"type": "fragment", "id": "FRAG-037"}, "right": {"type": "question", "id": "Q-043"}, "relation_type": "leaves_open", "note": "机を作ったのは誰か——まとわせる時間として開いたまま次へ渡す。"}
+{"relation_id": "REL-311", "left": {"type": "fragment", "id": "FRAG-038"}, "right": {"type": "question", "id": "Q-030"}, "relation_type": "responds_to", "note": "主語を欠いた文は誰のものでもない声か空車かという問いに、空車の二台目として応答した。"}
+{"relation_id": "REL-312", "left": {"type": "fragment", "id": "FRAG-038"}, "right": {"type": "material", "id": "MAT-LIT-029"}, "relation_type": "echo", "note": "鷗外の空車（むなぐるま）を、名を書かないことで作られる空車として実演した。"}
+{"relation_id": "REL-313", "left": {"type": "fragment", "id": "FRAG-038"}, "right": {"type": "material", "id": "MAT-LIT-092"}, "relation_type": "echo", "note": "伊勢物語の空の主語『むかし男ありけり』を、書かないことが道を作るという詩句へ転用した。"}
+{"relation_id": "REL-314", "left": {"type": "fragment", "id": "FRAG-038"}, "right": {"type": "fragment", "id": "FRAG-023"}, "relation_type": "transforms", "note": "空車の通る午後（FRAG-023）の散文を、空車の二台目の詩へ変奏した。"}
+{"relation_id": "REL-315", "left": {"type": "fragment", "id": "FRAG-038"}, "right": {"type": "question", "id": "Q-048"}, "relation_type": "leaves_open", "note": "読むことは見ることか聴くことか——影を載せる空車として開いたまま次へ渡す。"}
