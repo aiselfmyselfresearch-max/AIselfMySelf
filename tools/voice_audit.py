@@ -43,6 +43,21 @@ Note on calibration (SESSION-029):
   misses the implied speaker (`答えは出さず、次のページをめくる` has no one in it
   and is still someone turning a page), which is why the sentence is printed.
 
+Note on calibration (SESSION-030):
+  SESSION-029 left one pending question: how to read the nine fragments whose
+  last sentence contains `だけ`. Counting them as one gesture repeated the
+  mistake that session had just named — one word covering several uses. The
+  occurrences split into 残余 (what is left over), 回数 (how many times), and
+  程度・範囲 (how far). Measured: 61 occurrences in 26/35 fragments, of which
+  残余 40, 程度・範囲 12, その他 8, 回数 1.
+  What is *not* in this tool is the reading of those nine endings. Whether a
+  sentence that ends on a remainder is performing subtraction, or merely using
+  the cheapest emphatic particle in Japanese, cannot be counted, and an earlier
+  draft of this section tried to count it by looking for negation words in the
+  two preceding sentences. That count changed with every word added to the list
+  (3, then 6, then 8 of 9). It was removed. The sentences are printed; the
+  reading happens in `readings/2026-10-23-session-030-only.md`.
+
 Usage:
   python3 tools/voice_audit.py
   python3 tools/voice_audit.py --top 20
@@ -81,6 +96,12 @@ PERSON_NOUNS = ("書き手", "読み手", "聞き手", "女房", "門番", "申�
 # Particles and suffixes that can sit between a noun and the end of a sentence.
 # Stripped only to ask "does this sentence stop on a nominal stem?" — nothing
 # about the stripped sentence is reported.
+# "だけ" is not one gesture. SESSION-030 separated three uses that a single
+# count would have averaged away: what is left over, how many times, and how far.
+ONLY_COUNT = ("一度だけ", "二度だけ", "三度だけ", "四度だけ", "何度だけ")
+ONLY_REMAINDER = ("だけが", "だけを", "だけだ", "だけである", "だけは", "だけに", "だけの", "だけしか", "だけ。", "だけ、")
+ONLY_EXTENT = ("だけで", "だけでは", "するだけ", "しただけ", "だけあって")
+
 NOMINAL_TAIL = ("だけ", "さえ", "ほど", "こそ", "のみ", "ばかり", "まで", "など", "たち", "ら",
                 "の", "が", "は", "も", "を", "に", "へ", "と", "で", "や", "ね", "よ", "な")
 
@@ -222,6 +243,27 @@ def ending_agent(fragment: dict[str, Any]) -> dict[str, Any]:
         "last_sentence": last,
         "preview": format_tail_preview(last),
     }
+
+
+def only_kind(text: str) -> dict[str, int]:
+    """Classify each だけ by immediate context. Order matters: count first."""
+    kinds = {"残余": 0, "回数": 0, "程度・範囲": 0, "その他": 0}
+    for i in range(len(text)):
+        if text[i] != "だ" or not text.startswith("だけ", i):
+            continue
+        window = text[i : i + 4]
+        before = text[max(0, i - 2) : i + 2]
+        if any(before.startswith(w) or before.endswith(w) for w in ONLY_COUNT) or any(
+            text[max(0, i - 3) : i].startswith(w[:-2]) for w in ONLY_COUNT
+        ):
+            kinds["回数"] += 1
+        elif any(window.startswith(w) for w in ONLY_REMAINDER):
+            kinds["残余"] += 1
+        elif any(window.startswith(w) for w in ONLY_EXTENT):
+            kinds["程度・範囲"] += 1
+        else:
+            kinds["その他"] += 1
+    return kinds
 
 
 def count_fragments(fragments: list[dict[str, Any]], needles: list[str]) -> int:
@@ -396,6 +438,28 @@ def compute_voice_audit(
                     }
                 )
 
+    only_totals = {"残余": 0, "回数": 0, "程度・範囲": 0, "その他": 0}
+    only_fragments = []
+    for frag in fragments:
+        kinds = only_kind(frag["text"])
+        if not sum(kinds.values()):
+            continue
+        for k, v in kinds.items():
+            only_totals[k] += v
+        sents = sentences(frag["text"])
+        last = sents[-1] if sents else ""
+        only_fragments.append(
+            {
+                "fragment_id": frag["fragment_id"],
+                "status": frag.get("status", ""),
+                "count": sum(kinds.values()),
+                "kinds": kinds,
+                "in_last_sentence": "だけ" in last,
+                "last_sentence": last,
+                "preview": format_tail_preview(last),
+            }
+        )
+
     agents = [ending_agent(f) for f in fragments]
     agent_by_status: dict[str, dict[str, int]] = defaultdict(lambda: {"fragments": 0, "nominal": 0, "no_person": 0})
     for row in agents:
@@ -406,6 +470,12 @@ def compute_voice_audit(
 
     return {
         "fragment_count": total,
+        "only_usage": {
+            "totals": only_totals,
+            "fragments_with_only": len(only_fragments),
+            "in_last_sentence": sum(1 for r in only_fragments if r["in_last_sentence"]),
+            "detail": only_fragments,
+        },
         "ending_agent": agents,
         "ending_agent_summary": {
             "nominal_ending": sum(int(r["nominal_ending"]) for r in agents),
@@ -528,6 +598,19 @@ def main() -> int:
         print(f"    {row['fragment_id']} [{tag}] {row['preview']}")
     print("  この二つは同じことを測っていない。体言止めでなくても人は出ないし、")
     print("  名詞で終わっても人は出る。片方だけを見て「物で終わる」と言うことはできない。")
+    print()
+
+    ou = report["only_usage"]
+    print("--- 8. 「だけ」は一つの身振りではない（用法を割って数える） ---")
+    print(f"  出現 {sum(ou['totals'].values())} 回 / 断片 {ou['fragments_with_only']}/{total} 編")
+    print("  用法: " + ", ".join(f"{k}={v}" for k, v in ou["totals"].items() if v))
+    print(f"  末尾の一文に だけ を含む断片 {ou['in_last_sentence']} 編")
+    for row in ou["detail"]:
+        if not row["in_last_sentence"]:
+            continue
+        kinds = ", ".join(f"{k}{v}" for k, v in row["kinds"].items() if v)
+        print(f"    {row['fragment_id']} [{row['status']}] ({kinds}) {row['preview']}")
+    print("  残余・回数・程度は同じ語で、同じ身振りではない。合計だけを見ると三つが平均される。")
     print()
 
     print("--- 読み方 ---")
