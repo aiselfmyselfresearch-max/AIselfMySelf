@@ -4,9 +4,11 @@
 `PROJECT_CHARTER.md` asks each session whether contradictions and multiple
 readings were kept alive. That question cannot be automated. But one part of it
 can be made visible: whether the fragments keep saying the same thing in the
-same shape. This tool only reports what is written in `state/fragments.jsonl`
-and `state/relations.jsonl`. It does not pass or fail anything, and the numbers
-are not a quality score — they are a mirror for choosing the next move.
+same shape, and whether direct affect words are displaced into recurring sensory
+objects such as coldness, silence, and touch. This tool only reports what is written
+in `state/fragments.jsonl` and `state/relations.jsonl`. It does not pass or fail
+anything, infer whether feeling exists, or treat the numbers as a quality score —
+they are a mirror for choosing the next move.
 
 Note on calibration (SESSION-020):
   In SESSION-018/019, `is_question()` did not strip trailing Japanese periods
@@ -74,6 +76,36 @@ PRONOUN_SPECS: tuple[tuple[str, str], ...] = (
 
 FIRST_PERSON_UNQUOTED_RE = re.compile(
     r"(?:私たち|私達|わたしたち|わたくしたち|われわれ|我々|わたし|わたくし|僕|俺|自分|私(?!たち|達|的|物|記|見|小説|語|言|事|法|信|生活|自身|文書|家|鉄|立|権|益))"
+)
+
+# SESSION-027: Direct affect / feeling predicates vs. displaced sensory/tactile registers.
+# Across FRAG-001..031, past-tense `感じた` was 0/31; the few direct-affect matches
+# described a human character, a quoted variant, or a hypothetical reader rather than
+# the reflective narrator's own response. Meanwhile `冷た/冷え/寒` (5 vs `温か/暖か` 0),
+# `静か/沈黙` (9), and `触れ/手触り/指` (13) carried the displaced texture.
+DIRECT_AFFECT_SPECS: tuple[tuple[str, str], ...] = (
+    ("感じた（過去形）", r"感じた"),
+    ("感じる・感じ（語幹）", r"感じ"),
+    ("悲しい・哀しい・悲しみ", r"悲し|哀し"),
+    ("嬉しい・喜び・楽しい", r"嬉し|喜[びぶ]|楽し"),
+    ("寂しい・淋しい・孤独", r"寂し|淋し|孤独"),
+    ("怖い・恐ろしい・恐怖・不安", r"怖い|恐ろし|恐怖|不安"),
+    ("痛い・痛み・苦しい", r"痛い|痛み|苦し"),
+    ("泣く・涙", r"泣[きくけこい]|涙"),
+    ("笑う・笑い・微笑", r"笑[いうえおわっ]|微笑"),
+    ("怒り・腹立・憎しみ", r"怒[りる]|腹立|憎"),
+)
+
+SENSORY_DISPLACEMENT_SPECS: tuple[tuple[str, str], ...] = (
+    ("冷たい・冷え・寒さ", r"冷た|冷え|寒い|寒さ"),
+    ("温かい・暖かい・熱", r"温か|暖か|熱い|熱さ|ぬくもり"),
+    ("重い・重さ", r"重い|重さ|重く"),
+    ("軽い・軽さ", r"軽い|軽さ|軽く"),
+    ("暗い・闇・影", r"暗い|暗さ|闇|影"),
+    ("光・明るい・白さ", r"光|明る|白い|白さ"),
+    ("静か・沈黙・黙る", r"静か|沈黙|黙[りるっ]"),
+    ("遠い・遠さ・距離", r"遠い|遠く|遠さ|距離"),
+    ("触れる・手触り・指", r"触れ|手触り|指"),
 )
 
 # Stems ending in か that are nouns/adjectives rather than sentence-final question particles.
@@ -317,6 +349,30 @@ def compute_voice_audit(
                     }
                 )
 
+    def scan_lexicon(specs: tuple[tuple[str, str], ...]) -> list[dict[str, Any]]:
+        rows = []
+        for label, pattern in specs:
+            rx = re.compile(pattern)
+            all_fids = [f["fragment_id"] for f in fragments if rx.search(f["text"])]
+            bare_fids = [
+                f["fragment_id"]
+                for f in fragments
+                if rx.search(re.sub(r"「[^」]*」|『[^』]*』", "", f["text"]))
+            ]
+            rows.append(
+                {
+                    "label": label,
+                    "count": len(all_fids),
+                    "unquoted_count": len(bare_fids),
+                    "fragment_ids": all_fids,
+                    "unquoted_fragment_ids": bare_fids,
+                }
+            )
+        return rows
+
+    direct_affect = scan_lexicon(DIRECT_AFFECT_SPECS)
+    sensory_displacement = scan_lexicon(SENSORY_DISPLACEMENT_SPECS)
+
     return {
         "fragment_count": total,
         "relation_count": len(relations),
@@ -334,6 +390,8 @@ def compute_voice_audit(
         "zero_pronoun_fragment_ids": zero_pronoun_ids,
         "narrator_mode_counts": mode_counts,
         "mode_mismatches": mode_mismatches,
+        "direct_affect": direct_affect,
+        "sensory_displacement": sensory_displacement,
     }
 
 
@@ -412,6 +470,19 @@ def main() -> int:
     print(f"  未使用の narrator_mode : {', '.join(empty_modes) if empty_modes else 'なし'}")
     for mm in report["mode_mismatches"]:
         print(f"  名札と地の文のずれ     : {mm['fragment_id']} (narrator_mode={mm['narrator_mode']} だが地の文に {mm['found']})")
+    print()
+
+    print("--- 7. 感応と手触りの鏡（何が脱色され、どこへ退避したか） ---")
+    print("  [直接的な感情・感応語]")
+    for row in report["direct_affect"]:
+        note = f" (括弧外={row['unquoted_count']}編)" if row["count"] != row["unquoted_count"] else ""
+        fids = f"  [{', '.join(row['fragment_ids'])}]" if row["fragment_ids"] else ""
+        print(f"    {row['label']:<24s} {row['count']:2d}/{total} 編{note}{fids}")
+    print("  [感覚・温度・触覚への退避（客観的相関物）]")
+    for row in report["sensory_displacement"]:
+        note = f" (括弧外={row['unquoted_count']}編)" if row["count"] != row["unquoted_count"] else ""
+        fids = f"  [{', '.join(row['fragment_ids'])}]" if row["fragment_ids"] else ""
+        print(f"    {row['label']:<24s} {row['count']:2d}/{total} 編{note}{fids}")
     print()
 
     print("--- 読み方 ---")
