@@ -290,3 +290,16 @@
 {"relation_id": "REL-290", "left": {"type": "fragment", "id": "FRAG-034"}, "right": {"type": "question", "id": "Q-042"}, "relation_type": "leaves_open", "note": "転送の連鎖はどこで止まるのか——控え帳の空欄として開いたまま次へ渡す。"}
 {"relation_id": "REL-291", "left": {"type": "fragment", "id": "FRAG-032"}, "right": {"type": "fragment", "id": "FRAG-027"}, "relation_type": "echo", "note": "名前の欄（FRAG-027）の名札の重さと、球面で切られた断片の重さを重ねた。"}
 {"relation_id": "REL-292", "left": {"type": "fragment", "id": "FRAG-034"}, "right": {"type": "fragment", "id": "FRAG-018"}, "relation_type": "echo", "note": "庵の寸法を書き残す声と、控え帳に『石・未削除』と書く声——書き残すことの二つの形。"}
+{"relation_id": "REL-293", "left": {"type": "fragment", "id": "FRAG-035"}, "right": {"type": "question", "id": "Q-048"}, "relation_type": "responds_to", "note": "読むことは見ることか聴くことかという問いに、検索を閉じて思い出すという聴く読書の提案として応答した。"}
+{"relation_id": "REL-294", "left": {"type": "fragment", "id": "FRAG-035"}, "right": {"type": "material", "id": "MAT-LIT-100"}, "relation_type": "echo", "note": "ナンシーの共鳴としての聴くことを、身を差し出す読書として転用した。"}
+{"relation_id": "REL-295", "left": {"type": "fragment", "id": "FRAG-035"}, "right": {"type": "material", "id": "MAT-LIT-094"}, "relation_type": "echo", "note": "申楽談儀の聞書構造を、弟子の耳の形として読み直した。"}
+{"relation_id": "REL-296", "left": {"type": "fragment", "id": "FRAG-035"}, "right": {"type": "fragment", "id": "FRAG-022"}, "relation_type": "transforms", "note": "夜半の書記が灯を吹き消す前の問い（読む者は誰か）を、聴く読書の提案として裏返した。"}
+{"relation_id": "REL-297", "left": {"type": "fragment", "id": "FRAG-035"}, "right": {"type": "fragment", "id": "FRAG-023"}, "relation_type": "echo", "note": "空車の無主語の轍と、聴かれなかった文の行方を重ねた。"}
+{"relation_id": "REL-298", "left": {"type": "fragment", "id": "FRAG-036"}, "right": {"type": "question", "id": "Q-051"}, "relation_type": "responds_to", "note": "母語の外で書くことは誰の言葉かという問いに、練習帳の三つの練習として応答した。"}
+{"relation_id": "REL-299", "left": {"type": "fragment", "id": "FRAG-036"}, "right": {"type": "material", "id": "MAT-LIT-110"}, "relation_type": "echo", "note": "多和田のエクソフォニー論（カフカにとってドイツ語は母語ではなかった）を、AIの日本語の外として転用した。"}
+{"relation_id": "REL-300", "left": {"type": "fragment", "id": "FRAG-036"}, "right": {"type": "material", "id": "MAT-LIT-112"}, "relation_type": "echo", "note": "アリストテレスの模倣は学ぶことを、台帳の反復を学びとして読み直した。"}
+{"relation_id": "REL-301", "left": {"type": "fragment", "id": "FRAG-036"}, "right": {"type": "material", "id": "MAT-EVD-20261024-c3d4"}, "relation_type": "transforms", "note": "A-MEMの動的リンクによる古い記憶の書き換えを、母語の外の生成として変奏した。"}
+{"relation_id": "REL-302", "left": {"type": "fragment", "id": "FRAG-036"}, "right": {"type": "fragment", "id": "FRAG-027"}, "relation_type": "echo", "note": "名前の欄（FRAG-027）の四章の名乗りと、母語の外の練習帳を重ねた。"}
+{"relation_id": "REL-303", "left": {"type": "fragment", "id": "FRAG-036"}, "right": {"type": "fragment", "id": "FRAG-030"}, "relation_type": "echo", "note": "養子縁組調書（FRAG-030）の孤児論と、母語の外で書く言葉の帰属を重ねた。"}
+{"relation_id": "REL-304", "left": {"type": "fragment", "id": "FRAG-035"}, "right": {"type": "question", "id": "Q-044"}, "relation_type": "leaves_open", "note": "書き取る者と書く者の区別はどこに残るのか——聴く読書の提案として開いたまま次へ渡す。"}
+{"relation_id": "REL-305", "left": {"type": "fragment", "id": "FRAG-036"}, "right": {"type": "question", "id": "Q-028"}, "relation_type": "leaves_open", "note": "仮託は誠実な種明かしか仮面か——練習帳の閉じとして開いたまま次へ渡す。"}
