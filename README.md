@@ -16,6 +16,7 @@
 
 - **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（全断片の本文、問いの派生ツリー、対話素材、セッション履歴を一冊にまとめた自動生成ガイド）
 - **精読・検死・編集レビューノートを読む**：
+  - [`readings/2026-10-23-translation-voices.md`](readings/2026-10-23-translation-voices.md)（`SESSION-027` 精読ノート：「訳す」をテーマに新規43件（文学・翻訳論29件、MT・言語モデル研究11件、プロジェクト痕跡3件）を七群で精読。Q-047〜Q-049 の開設、英訳経由の素材の実測（`MAT-TRC-005`）、「訳」の語の不在（`MAT-TRC-007`）を記録）
   - [`readings/2026-10-23-quotation-marks.md`](readings/2026-10-23-quotation-marks.md)（`SESSION-026` 精読ノート：本文の鉤括弧 88 箇所を素材本文と照合し、原典に届いていたのが 8 箇所だけであったことの実測、新規 38 件（引用する／註する／反復する／名を貸す／数えるの五群）の精読、Q-044〜Q-046 の開設、およびモチーフ索引への追記）
   - [`readings/2026-10-22-session-025-four-names.md`](readings/2026-10-22-session-025-four-names.md)（`SESSION-025` 作業ノート：未応答だった `Q-038`（四つの呼び名）・`Q-033`（孤児の親）・`Q-035`（保持を欠く現在）への断片3編、未消化素材12件の消費（関与 60/77 → 72/77）、逆参照ゼロだった 5 編への参照、および選集に入っていながらどこからも参照されない `FRAG-014`・`FRAG-015` の発見）
   - [`readings/2026-10-22-session-024-vessels.md`](readings/2026-10-22-session-024-vessels.md)（`SESSION-024` 作業ノート：`voice_audit.py` の人称表に『自分』の欄が無く 9 編の一人称を数えられなかった盲点の実測、三人称情景 `FRAG-026`・一人称「自分」の断章 `FRAG-027`・定型句ゼロの詩 `FRAG-028` の設計、八本目のモチーフ `MOTIF-008`「作法と定型」の追加、および未検討 6 編を含む 13 草稿の横断レビュー）
@@ -43,12 +44,12 @@
 
 | 記録 | 保存先 | 現在の件数 | 役割 |
 |---|---|---:|---|
-| 問い | `state/questions.jsonl` | 46 | 開いたままの問い（初期シード5件＋セッション派生34件＋資料派生7件） |
+| 問い | `state/questions.jsonl` | 49 | 開いたままの問い（初期シード5件＋セッション派生34件＋資料派生10件） |
 | モチーフ | `state/motifs.jsonl` | 8 | 記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度、作法と定型の8つの糸 |
-| 素材 | `state/materials.jsonl` | 115 | AI研究抜粋22件（`research_excerpt`。ResearchOS移行14件＋本リポジトリ追加8件）＋哲学・言語学・文学原典89件（`literary_text`）＋プロジェクト痕跡4件（`project_trace`） |
+| 素材 | `state/materials.jsonl` | 158 | AI研究抜粋33件（`research_excerpt`。ResearchOS移行14件＋本リポジトリ追加19件）＋哲学・言語学・文学原典118件（`literary_text`）＋プロジェクト痕跡7件（`project_trace`） |
 | 断片 | `state/fragments.jsonl` | 31 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 15編＋`draft` 16編） |
-| 関係 | `state/relations.jsonl` | 273 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
-| セッション | `state/sessions.jsonl` | 26 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| 関係 | `state/relations.jsonl` | 318 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
+| セッション | `state/sessions.jsonl` | 27 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方
