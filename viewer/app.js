@@ -715,19 +715,41 @@ function renderSimpleMarkdown(md) {
   let listTag = "ul";
   let inPre = false;
   let preBuf = [];
-
-  const closeList = () => {
-    if (inList) {
-      out.push(`</${listTag}>`);
-      inList = false;
-    }
-  };
+  let tableBuf = [];
 
   const inlineFmt = (s) =>
     escapeHtml(s)
       .replace(/`([^`]+)`/g, "<code>$1</code>")
       .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
       .replace(/\*([^*]+)\*/g, "<em>$1</em>");
+
+  const closeTable = () => {
+    if (!tableBuf.length) return;
+    const parseRow = (r) =>
+      r.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map((c) => c.trim());
+    if (tableBuf.length >= 2 && /^\|?[\s:-]+(\|[\s:-]+)+\|?$/.test(tableBuf[1].trim())) {
+      const headers = parseRow(tableBuf[0]);
+      const bodyRows = tableBuf.slice(2).map(parseRow);
+      out.push(
+        `<table class="mirror-table" style="margin:0.85rem 0;"><thead><tr>${headers
+          .map((h) => `<th>${inlineFmt(h)}</th>`)
+          .join("")}</tr></thead><tbody>${bodyRows
+          .map((cells) => `<tr>${cells.map((c) => `<td>${inlineFmt(c)}</td>`).join("")}</tr>`)
+          .join("")}</tbody></table>`
+      );
+    } else {
+      tableBuf.forEach((r) => out.push(`<p>${inlineFmt(r)}</p>`));
+    }
+    tableBuf = [];
+  };
+
+  const closeList = () => {
+    closeTable();
+    if (inList) {
+      out.push(`</${listTag}>`);
+      inList = false;
+    }
+  };
 
   for (const rawLine of lines) {
     if (rawLine.startsWith("```")) {
@@ -746,6 +768,15 @@ function renderSimpleMarkdown(md) {
       continue;
     }
     const line = rawLine.trimEnd();
+    if (/^\s*\|.+\|\s*$/.test(line)) {
+      if (inList) {
+        out.push(`</${listTag}>`);
+        inList = false;
+      }
+      tableBuf.push(line);
+      continue;
+    }
+    closeTable();
     if (!line.trim()) {
       closeList();
       continue;
@@ -890,6 +921,41 @@ function renderMirrorView() {
               `).join("")}
             </tbody>
           </table>
+        </div>
+      ` : ""}
+
+      ${va.direct_affect && va.sensory_displacement ? `
+        <div class="mirror-grid" style="margin-bottom:1.4rem;">
+          <div class="mirror-card">
+            <h3>直接的な感情・感応語（何が脱色されたか）</h3>
+            <table class="mirror-table">
+              <thead><tr><th>語彙群</th><th>出現編数</th><th>該当断片</th></tr></thead>
+              <tbody>
+                ${va.direct_affect.map((row) => `
+                  <tr>
+                    <td><strong>${escapeHtml(row.label)}</strong></td>
+                    <td>${row.count}/${va.fragment_count} 編${row.count !== row.unquoted_count ? ` <span style="color:var(--ink-muted);font-size:0.78rem;">(地の文=${row.unquoted_count}編)</span>` : ""}</td>
+                    <td>${(row.fragment_ids || []).map((fid) => `<button type="button" class="link-pill" style="margin:0.12rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("") || "—"}</td>
+                  </tr>
+                `).join("")}
+              </tbody>
+            </table>
+          </div>
+          <div class="mirror-card">
+            <h3>感覚・温度・触覚への退避（客観的相関物）</h3>
+            <table class="mirror-table">
+              <thead><tr><th>語彙群</th><th>出現編数</th><th>該当断片</th></tr></thead>
+              <tbody>
+                ${va.sensory_displacement.map((row) => `
+                  <tr>
+                    <td><strong>${escapeHtml(row.label)}</strong></td>
+                    <td>${row.count}/${va.fragment_count} 編${row.count !== row.unquoted_count ? ` <span style="color:var(--ink-muted);font-size:0.78rem;">(地の文=${row.unquoted_count}編)</span>` : ""}</td>
+                    <td>${(row.fragment_ids || []).map((fid) => `<button type="button" class="link-pill" style="margin:0.12rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("") || "—"}</td>
+                  </tr>
+                `).join("")}
+              </tbody>
+            </table>
+          </div>
         </div>
       ` : ""}
 
