@@ -55,6 +55,19 @@ NARRATOR_MODE_ENUM = (
     "human_narrator",
 )
 
+# SESSION-027: the mirror had no column for laughter. Q-047 asks whether the
+# thing this tool has always counted (repetition) is the very thing that makes
+# a machine visible, and whether a library with no laughter has put something
+# outside the human. Both questions are rhetorical until the count exists.
+# The classification below is deliberately crude: it cannot tell whether
+# anybody actually laughed, only which characters were written next to 笑.
+LAUGH_CHAR = "笑"
+LAUGH_MODIFIERS = ("冷", "苦", "嘲", "微", "失", "哄", "爆", "談")
+LAUGH_ACTS = ("笑う", "笑った", "笑って", "笑い声", "笑い出", "笑え", "笑われ", "笑い合", "笑み")
+
+# For section 8: how wide a window to keep on each side of a reused string.
+CONTEXT_WIDTH = 10
+
 PRONOUN_SPECS: tuple[tuple[str, str], ...] = (
     ("私（単数）", r"私(?!たち|達|的|物|記|見|小説|語|言|事|法|信|生活|自身|文書|家|鉄|立|権|益)"),
     ("わたし", r"わたし(?!たち)"),
@@ -158,6 +171,132 @@ def repeated_grams(fragments: list[dict[str, Any]], size: int) -> list[tuple[str
             if re.search(r"[ぁ-んァ-ン一-龥]", gram):
                 owners[gram].add(frag["fragment_id"])
     return sorted(((g, sorted(o)) for g, o in owners.items() if len(o) > 1), key=lambda kv: (-len(kv[1]), kv[0]))
+
+
+def laugh_audit(fragments: list[dict[str, Any]]) -> dict[str, Any]:
+    """Report every 笑 in the ledger with its neighbourhood (SESSION-027).
+
+    The tool cannot decide whether a laugh happened. It can only show whether
+    the ledger ever wrote one down, and what was written beside it.
+    """
+    hits: list[dict[str, Any]] = []
+    fragments_with_laugh: list[str] = []
+    for frag in fragments:
+        text = frag["text"]
+        found = False
+        for match in re.finditer(LAUGH_CHAR, text):
+            found = True
+            start, end = match.start(), match.end()
+            before = text[max(0, start - 12) : start]
+            after = text[end : end + 12]
+            # The character immediately following 笑 decides the kind.
+            nxt = text[end : end + 2]
+            prv = text[max(0, start - 1) : start]
+            if prv and prv in LAUGH_MODIFIERS:
+                kind = "修飾された笑い（冷笑・苦笑・嘲笑・微笑 など）"
+            elif any(nxt.startswith(act[1:]) for act in LAUGH_ACTS) or any(a in text[start : start + 4] for a in LAUGH_ACTS):
+                kind = "笑いの行為（笑う・笑った・笑い声 など）"
+            else:
+                kind = "その他"
+            hits.append(
+                {
+                    "fragment_id": frag["fragment_id"],
+                    "kind": kind,
+                    "before": re.sub(r"\s+", " ", before),
+                    "after": re.sub(r"\s+", " ", after),
+                }
+            )
+        if found:
+            fragments_with_laugh.append(frag["fragment_id"])
+    kind_counts = Counter(hit["kind"] for hit in hits)
+    return {
+        "fragment_count": len(fragments_with_laugh),
+        "fragments": fragments_with_laugh,
+        "occurrences": len(hits),
+        "kinds": dict(kind_counts.most_common()),
+        "hits": hits,
+    }
+
+
+def repetition_contexts(
+    fragments: list[dict[str, Any]], size: int, limit: int = 8
+) -> list[dict[str, Any]]:
+    """Do the reused strings sit in the same place, or in new ones? (SESSION-027)
+
+    Q-044 asks which theory of repetition the mirror is actually measuring.
+    A string that always appears in the same surrounding words is being
+    recited; the same string in many different surroundings is being used as
+    stock. This section cannot tell which is better. It can tell them apart.
+
+    Overlapping n-grams from one shared sentence would flood the table, so a
+    gram is dropped when it is a substring of a longer gram already kept.
+    """
+    owners: dict[str, set[str]] = defaultdict(set)
+    lefts: dict[str, list[str]] = defaultdict(list)
+    rights: dict[str, list[str]] = defaultdict(list)
+    for frag in fragments:
+        flat = re.sub(r"\s+", "", frag["text"])
+        for i in range(len(flat) - size + 1):
+            gram = flat[i : i + size]
+            if not re.search(r"[ぁ-んァ-ン一-龥]", gram):
+                continue
+            owners[gram].add(frag["fragment_id"])
+            lefts[gram].append(flat[max(0, i - CONTEXT_WIDTH) : i])
+            rights[gram].append(flat[i + size : i + size + CONTEXT_WIDTH])
+
+    candidates = [g for g, ids in owners.items() if len(ids) > 1 and len(lefts[g]) > 1]
+    candidates.sort(key=lambda g: (-len(g), g))
+    kept: list[str] = []
+    for gram in candidates:
+        if any(gram in longer for longer in kept):
+            continue
+        # Drop near-duplicates produced by sliding windows of the same sentence
+        # ("かもしれない" / "のかもしれな"). A shared run of len-1 characters is
+        # enough to call them the same phrase seen through two windows.
+        if any(gram[:-1] in longer or gram[1:] in longer for longer in kept):
+            continue
+        kept.append(gram)
+
+    rows = []
+    for gram in kept:
+        rows.append(
+            {
+                "gram": gram,
+                "fragment_count": len(owners[gram]),
+                "occurrences": len(lefts[gram]),
+                "distinct_left": len(set(lefts[gram])),
+                "distinct_right": len(set(rights[gram])),
+                "sample": (lefts[gram][0], gram, rights[gram][0]),
+            }
+        )
+    rows.sort(key=lambda r: (-r["occurrences"], -r["fragment_count"], r["gram"]))
+    return rows[:limit]
+
+
+def context_summary(fragments: list[dict[str, Any]], size: int) -> dict[str, Any]:
+    """One number for section 8: are reused strings wearing new surroundings?"""
+    owners: dict[str, set[str]] = defaultdict(set)
+    lefts: dict[str, set[str]] = defaultdict(set)
+    rights: dict[str, set[str]] = defaultdict(set)
+    for frag in fragments:
+        flat = re.sub(r"\s+", "", frag["text"])
+        for i in range(len(flat) - size + 1):
+            gram = flat[i : i + size]
+            if not re.search(r"[ぁ-んァ-ン一-龥]", gram):
+                continue
+            owners[gram].add(frag["fragment_id"])
+            lefts[gram].add(flat[max(0, i - CONTEXT_WIDTH) : i])
+            rights[gram].add(flat[i + size : i + size + CONTEXT_WIDTH])
+    ratios = []
+    for gram, ids in owners.items():
+        if len(ids) > 1 and len(lefts[gram]) > 1:
+            ratios.append((len(lefts[gram]) + len(rights[gram])) / len(lefts[gram]))
+    ratios.sort()
+    if not ratios:
+        return {"median_ratio": 0.0, "count": 0}
+    mid = len(ratios) // 2
+    median = ratios[mid] if len(ratios) % 2 else (ratios[mid - 1] + ratios[mid]) / 2
+    return {"median_ratio": round(median, 2), "count": len(ratios), "max_ratio": round(ratios[-1], 2)}
 
 
 def compute_voice_audit(
@@ -334,6 +473,9 @@ def compute_voice_audit(
         "zero_pronoun_fragment_ids": zero_pronoun_ids,
         "narrator_mode_counts": mode_counts,
         "mode_mismatches": mode_mismatches,
+        "laughter": laugh_audit(fragments),
+        "repetition_contexts": repetition_contexts(fragments, gram),
+        "context_summary": context_summary(fragments, gram),
     }
 
 
@@ -412,6 +554,40 @@ def main() -> int:
     print(f"  未使用の narrator_mode : {', '.join(empty_modes) if empty_modes else 'なし'}")
     for mm in report["mode_mismatches"]:
         print(f"  名札と地の文のずれ     : {mm['fragment_id']} (narrator_mode={mm['narrator_mode']} だが地の文に {mm['found']})")
+    print()
+
+    laugh = report["laughter"]
+    print("--- 7. 笑いの鏡（書かれた笑いと、その隣にあった語） ---")
+    if laugh["occurrences"] == 0:
+        print(f"  笑いを含む断片 0/{total} 編 —— 31編のどこにも、誰も笑っていない。")
+    else:
+        print(
+            f"  笑いを含む断片 {laugh['fragment_count']}/{total} 編"
+            f"（延べ {laugh['occurrences']} 箇所: "
+            + ", ".join(f"{k}={v}" for k, v in laugh["kinds"].items())
+            + "）"
+        )
+        for hit in laugh["hits"]:
+            print(f"    {hit['fragment_id']} [{hit['kind']}] …{hit['before']}【笑】{hit['after']}…")
+    print("  ※ この欄は、誰かが実際に笑ったかどうかを判定できない。笑の字の隣に何が書かれていたかだけを映す。")
+    print()
+
+    print("--- 8. 反復の位置（同じ句は、同じ場所に置かれているか） ---")
+    print("  反復の回数に対して、前後の文脈がどれだけ違うか。文脈が少ないほど暗唱、多いほど在庫からの作曲。")
+    for row in report["repetition_contexts"]:
+        ratio = (row["distinct_left"] + row["distinct_right"]) / max(1, row["occurrences"])
+        print(
+            f"  '{row['gram']}' ×{row['fragment_count']}編/{row['occurrences']}回"
+            f"  左文脈{row['distinct_left']}種・右文脈{row['distinct_right']}種"
+            f"（比 {ratio:.2f}）= {row['sample'][0]}【{row['gram']}】{row['sample'][2]}"
+        )
+    summary = report["context_summary"]
+    if summary.get("count"):
+        print(
+            f"  → 使い回された {summary['count']} 種の中央値は {summary['median_ratio']}"
+            f"（2.00 に近いほど、同じ句が毎回ちがう前後の語と組んでいる＝在庫、1.00 に近いほど暗唱）"
+        )
+    print("  ※ 比が小さいことは悪ではない。定型句がなければ歌えない（MAT-LIT-060）。")
     print()
 
     print("--- 読み方 ---")
