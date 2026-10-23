@@ -19,6 +19,7 @@ COLLECTIONS = {
     "fragments": ("fragments.jsonl", "fragment_id", "fragment.schema.json"),
     "relations": ("relations.jsonl", "relation_id", "relation.schema.json"),
     "sessions": ("sessions.jsonl", "session_id", "session.schema.json"),
+    "errata": ("errata.jsonl", "errata_id", "errata.schema.json"),
 }
 
 
@@ -186,6 +187,15 @@ def main() -> int:
     check_refs("sessions", sessions, "context_material_ids", "material", materials, errors)
     check_refs("sessions", sessions, "produced_fragment_ids", "fragment", fragments, errors)
     check_refs("sessions", sessions, "new_question_ids", "question", questions, errors)
+
+    errata = collections.get("errata", {})
+    for errata_id, record in errata.items():
+        fragment_id = record.get("fragment_id")
+        if fragment_id and fragment_id not in fragments:
+            errors.append(f"errata:{errata_id}: fragment_id references unknown fragment {fragment_id!r}")
+        corrected_by = record.get("corrected_by")
+        if corrected_by and corrected_by not in fragments:
+            errors.append(f"errata:{errata_id}: corrected_by references unknown fragment {corrected_by!r}")
 
     for fragment_id, record in fragments.items():
         session_id = record.get("session_id")

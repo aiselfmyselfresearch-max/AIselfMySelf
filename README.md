@@ -16,6 +16,7 @@
 
 - **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（全断片の本文、問いの派生ツリー、対話素材、セッション履歴を一冊にまとめた自動生成ガイド）
 - **精読・検死・編集レビューノートを読む**：
+  - [`readings/2026-10-23-errata.md`](readings/2026-10-23-errata.md)（`SESSION-028` 作業ノート：本文を書き換えずに判断を横に置く層 `state/errata.jsonl`・`schema/errata.schema.json`・再測定器 `tools/errata_audit.py` の新設、全31編の数量的主張の再測定（contradicted 4／holds 2／unmeasurable 2）、**訂正の本文 FRAG-020 自身が83文字（実際は63文字）・引用文字列（実際は2編のみ）の誤りを持つ**ことの発見、`Q-050` の開設、および `human_narrator` 初使用の断片 `FRAG-032`）
   - [`readings/2026-10-23-scribal-error.md`](readings/2026-10-23-scribal-error.md)（`SESSION-027` 精読ノート：git 履歴・スキーマ・`editor_note` の語彙による「訂正の欄がない」ことの実測、誤りを含む `selected` 断片 FRAG-018 と、それを正す `draft` FRAG-020 の校勘記が台帳の欄で結ばれていないことの発見、新規 35 件（書き写す者／誤りを生きる者／記憶はなぜ誤るか／機械はなぜ誤るか／訂正の作法の五群）の精読、Q-047〜Q-049 の開設、九本目のモチーフ `MOTIF-009`「誤りと訂正」の追加）
   - [`readings/2026-10-23-quotation-marks.md`](readings/2026-10-23-quotation-marks.md)（`SESSION-026` 精読ノート：本文の鉤括弧 88 箇所を素材本文と照合し、原典に届いていたのが 8 箇所だけであったことの実測、新規 38 件（引用する／註する／反復する／名を貸す／数えるの五群）の精読、Q-044〜Q-046 の開設、およびモチーフ索引への追記）
   - [`readings/2026-10-22-session-025-four-names.md`](readings/2026-10-22-session-025-four-names.md)（`SESSION-025` 作業ノート：未応答だった `Q-038`（四つの呼び名）・`Q-033`（孤児の親）・`Q-035`（保持を欠く現在）への断片3編、未消化素材12件の消費（関与 60/77 → 72/77）、逆参照ゼロだった 5 編への参照、および選集に入っていながらどこからも参照されない `FRAG-014`・`FRAG-015` の発見）
@@ -30,7 +31,7 @@
   ```sh
   python3 tools/serve_viewer.py --host 0.0.0.0 --port 8000
   ```
-  断片アンソロジー、関係ネットワークの星座図（SVG）、開かれた問いの系譜ツリー、対話素材書庫、セッション年譜、声の鏡・精読ノート、探求バトン生成の 7 画面をブラウザで閲覧・検索できます。
+  断片アンソロジー、関係ネットワークの星座図（SVG）、開かれた問いの系譜ツリー、対話素材書庫、セッション年譜、声の鏡・精読ノート、訂正録、探求バトン生成の 8 画面をブラウザで閲覧・検索できます。
 
 ## 3. 探究のしかた
 
@@ -44,12 +45,13 @@
 
 | 記録 | 保存先 | 現在の件数 | 役割 |
 |---|---|---:|---|
-| 問い | `state/questions.jsonl` | 49 | 開いたままの問い（初期シード5件＋セッション派生34件＋資料派生10件） |
+| 問い | `state/questions.jsonl` | 50 | 開いたままの問い（初期シード5件＋セッション派生35件＋資料派生10件） |
 | モチーフ | `state/motifs.jsonl` | 9 | 記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度、作法と定型、誤りと訂正の9つの糸 |
 | 素材 | `state/materials.jsonl` | 150 | AI研究・科学コミュニケーション抜粋30件（`research_excerpt`。ResearchOS移行14件＋本リポジトリ追加16件）＋哲学・言語学・文学原典115件（`literary_text`）＋プロジェクト痕跡5件（`project_trace`） |
-| 断片 | `state/fragments.jsonl` | 31 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 15編＋`draft` 16編） |
-| 関係 | `state/relations.jsonl` | 284 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
-| セッション | `state/sessions.jsonl` | 27 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| 断片 | `state/fragments.jsonl` | 32 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 15編＋`draft` 17編。`narrator_mode` は `human_narrator` を含む全6種） |
+| 関係 | `state/relations.jsonl` | 293 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
+| セッション | `state/sessions.jsonl` | 28 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| 訂正 | `state/errata.jsonl` | 8 | 断片の主張のうち、再測定で成り立たなくなったもの・今も成り立つもの・再測定できないもの（`contradicted` 4／`holds` 2／`unmeasurable` 2）。本文は書き換えない |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方
@@ -57,12 +59,12 @@ CONTENT_POLICY.md           引用・創作・AIの一人称の扱い
 MIGRATION.md                ResearchOSからの移行対象と来歴管理
 READING_MAP.md              state/*.jsonl から生成される読書案内・全断片アンソロジー
 migration/                  上流ResearchOSの選定定義（selection.json）とマニフェスト（manifest.json）
-schema/                     6種類の台帳に対応するJSON Schema
-state/                      問い・モチーフ・素材・断片・関係・セッションのJSONL台帳
+schema/                     7種類の台帳に対応するJSON Schema（訂正録 errata を含む）
+state/                      問い・モチーフ・素材・断片・関係・セッション・訂正のJSONL台帳
 readings/                   資料の精読ノート（台帳からは独立した作業文書）
 prompts/                    初回セッション・継続・編集レビュー用プロンプト
 viewer/                     対話型Webアーカイブ＆星座ビューア（HTML/CSS/JS）
-tools/                      検証・集計・読書案内生成・反復の鏡・Webビューア・上流照合スクリプト（標準ライブラリのみ）
+tools/                      検証・集計・読書案内生成・反復の鏡・訂正録の再測定・Webビューア・上流照合スクリプト（標準ライブラリのみ）
 ```
 
 ## 5. 検査・整理・同期コマンド
@@ -91,7 +93,11 @@ python3 tools/inspect_inquiry.py --check-map
 # 6. 上流 ResearchOS チェックアウトとのスナップショット整合性検査（ローカル追加素材は保持）
 python3 tools/import_researchos.py --source-root /path/to/ResearchOS --check
 
-# 7. 断片の反復を映す鏡（採点・合否ではなく、次の一手を選ぶための観察）
+# 7. 訂正録の再測定（記録された検査を今の台帳に対して再実行。判定はしない）
+python3 tools/errata_audit.py
+python3 tools/inspect_inquiry.py --id ERR-004
+
+# 8. 断片の反復を映す鏡（採点・合否ではなく、次の一手を選ぶための観察）
 python3 tools/voice_audit.py
 python3 tools/voice_audit.py --top 20 --gram 8
 ```

@@ -218,6 +218,15 @@ def print_summary(data: dict[str, dict[str, dict[str, Any]]]) -> None:
     )
     print(f"Relations : {len(relations)}")
     print(f"Sessions  : {len(sessions)}")
+    if data.get("errata"):
+        errata = data["errata"]
+        err_verdict = Counter(e["verdict"] for e in errata.values())
+        err_status = Counter(e["status"] for e in errata.values())
+        print(
+            f"Errata    : {len(errata)} "
+            f"(contradicted={err_verdict['contradicted']}, holds={err_verdict['holds']}, "
+            f"unmeasurable={err_verdict['unmeasurable']}; open={err_status['open']})"
+        )
     print()
     print("--- Fragment Forms & Narrator Modes ---")
     print("  Forms         :", ", ".join(f"{k}={v}" for k, v in sorted(frag_forms.items())))

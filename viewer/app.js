@@ -105,6 +105,8 @@ function switchView(viewName) {
     loadContextPacket();
   } else if (viewName === "mirror") {
     renderMirrorView();
+  } else if (viewName === "errata") {
+    renderErrata();
   }
 }
 
@@ -682,6 +684,69 @@ function renderMaterials() {
   bindJumpButtons(grid);
 }
 
+
+/* 7. Errata — corrections kept beside the text, never over it */
+function renderErrata() {
+  const listEl = document.getElementById("errata-list");
+  const summaryEl = document.getElementById("errata-summary");
+  const errata = state.data.errata || [];
+  if (errata.length === 0) {
+    listEl.innerHTML = `<p style="color:var(--ink-muted);">訂正の記録はまだありません。</p>`;
+    summaryEl.innerHTML = "";
+    return;
+  }
+
+  const verdictLabel = { contradicted: "再測定で成り立たない", holds: "再測定でも成り立つ", unmeasurable: "再測定できない" };
+  const verdictColor = { contradicted: "var(--accent-crimson)", holds: "var(--accent-moss)", unmeasurable: "var(--accent-amber)" };
+  const statusLabel = { open: "未決", annotated: "註記済み", withdrawn: "撤回" };
+  const counts = errata.reduce((acc, e) => {
+    acc[e.verdict] = (acc[e.verdict] || 0) + 1;
+    return acc;
+  }, {});
+
+  summaryEl.innerHTML = `
+    <div class="tag-row" style="margin-bottom:0;">
+      <span class="badge" style="border-color:var(--accent-crimson); color:var(--accent-crimson);">成り立たない ${counts.contradicted || 0}</span>
+      <span class="badge" style="border-color:var(--accent-moss); color:var(--accent-moss);">成り立つ ${counts.holds || 0}</span>
+      <span class="badge" style="border-color:var(--accent-amber); color:var(--accent-amber);">再測定不能 ${counts.unmeasurable || 0}</span>
+      <span class="badge">全 ${errata.length} 件</span>
+    </div>
+  `;
+
+  listEl.innerHTML = errata
+    .slice()
+    .sort((a, b) => (a.errata_id > b.errata_id ? 1 : -1))
+    .map((e) => {
+      const color = verdictColor[e.verdict] || "var(--ink-muted)";
+      const frag = state.maps.fragment.get(e.fragment_id);
+      const checkText = e.check && e.check.kind !== "manual"
+        ? `${e.check.kind}${e.check.params ? " " + JSON.stringify(e.check.params) : ""}`
+        : "手続き未記録（再実行しない）";
+      const correctedBy = e.corrected_by && state.maps.fragment.get(e.corrected_by);
+      return `
+        <article class="mat-card" id="errata-${escapeHtml(e.errata_id)}">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
+            <code>${escapeHtml(e.errata_id)}</code>
+            <span class="badge" style="border-color:${color}; color:${color};">${escapeHtml(verdictLabel[e.verdict] || e.verdict)}</span>
+          </div>
+          <h3 class="mat-title">${frag ? escapeHtml(frag.title) : escapeHtml(e.fragment_id)}</h3>
+          <blockquote class="mat-passage">${escapeHtml(e.claim)}</blockquote>
+          <div style="font-size:0.8rem;color:var(--ink-muted);">位置: ${escapeHtml(e.claim_location)} ／ 状態: ${escapeHtml(statusLabel[e.status] || e.status)}</div>
+          <div style="font-size:0.84rem;margin-top:0.4rem;">再測定: ${escapeHtml(e.measured_now || "—")}</div>
+          <div style="font-size:0.78rem;color:var(--ink-muted);">検査: <code>${escapeHtml(checkText)}</code></div>
+          <div class="mat-scope">${escapeHtml(e.note)}</div>
+          <div class="tag-row" style="margin-bottom:0;">
+            ${renderEntityJumpButton("fragment", e.fragment_id)}
+            ${correctedBy ? `<span style="font-size:0.78rem;color:var(--ink-muted);">校勘: </span>${renderEntityJumpButton("fragment", e.corrected_by)}` : ""}
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+
+  bindJumpButtons(listEl);
+}
+
 /* 5. Sessions Timeline */
 function renderTimeline() {
   const listEl = document.getElementById("timeline-list");
@@ -1057,6 +1122,7 @@ async function init() {
     renderLineage();
     renderMaterials();
     renderTimeline();
+    renderErrata();
     populatePacketSelect();
   } catch (err) {
     document.getElementById("stats-strip").innerHTML = `<span style="color:var(--accent-crimson);font-size:0.86rem;">${escapeHtml(err.message)}</span>`;

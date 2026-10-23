@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "errata.schema.json",
+  "title": "Errata Record",
+  "description": "A dated record of a claim held in a fragment that no longer matches measurement. The fragment is not rewritten; the judgement is kept beside it, with the check that produced it. Modelled on Augustine's Retractationes and on retraction notices in publishing, not on silent correction.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["errata_id", "fragment_id", "claim", "claim_location", "check", "verdict", "status", "created_at", "note"],
+  "properties": {
+    "errata_id": {"type": "string", "minLength": 1},
+    "fragment_id": {"type": "string", "minLength": 1},
+    "claim": {"type": "string", "minLength": 1},
+    "claim_location": {"type": "string", "minLength": 1},
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": {"type": "string", "enum": ["tail_question_count", "phrase_set_count", "phrase_in_fragments", "last_sentence_length", "manual"]},
+        "params": {"type": "object"}
+      }
+    },
+    "verdict": {"type": "string", "enum": ["holds", "contradicted", "unmeasurable"]},
+    "status": {"type": "string", "enum": ["open", "annotated", "withdrawn"]},
+    "measured_now": {"type": "string"},
+    "corrected_by": {"type": "string"},
+    "note": {"type": "string"},
+    "created_at": {"type": "string"}
+  }
+}

@@ -34,6 +34,7 @@
       <button class="tab-btn" role="tab" aria-selected="false" data-view="materials">対話素材書庫</button>
       <button class="tab-btn" role="tab" aria-selected="false" data-view="timeline">セッション年譜</button>
       <button class="tab-btn" role="tab" aria-selected="false" data-view="mirror">声の鏡・精読ノート</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-view="errata">訂正録</button>
       <button class="tab-btn" role="tab" aria-selected="false" data-view="packet">探求バトン生成</button>
     </nav>
   </header>
@@ -150,7 +151,17 @@
       <div id="mirror-notebooks-pane" hidden></div>
     </section>
 
-    <!-- 7. 次の探求バトン生成 -->
+    <!-- 7. 訂正録 -->
+    <section id="view-errata" class="view-panel" hidden>
+      <div class="section-intro">
+        <h2>訂正録 — 本文は書き換えず、判断を横に置く</h2>
+        <p><code>state/errata.jsonl</code> に記録された、断片の主張とその再測定の結果です。記録された検査は <code>tools/errata_audit.py</code> で今の台帳に対して再実行できます。<strong>この画面は本文を書き換えません。合否も判定しません。</strong>訂正の記録そのものが誤りを含みうることも、そのまま表示します。</p>
+      </div>
+      <div id="errata-summary" class="section-intro" style="padding-top:0;"></div>
+      <div id="errata-list" class="cards-grid"></div>
+    </section>
+
+    <!-- 8. 次の探求バトン生成 -->
     <section id="view-packet" class="view-panel" hidden>
       <div class="section-intro with-controls">
         <div>
