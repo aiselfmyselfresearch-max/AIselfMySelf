@@ -6,6 +6,8 @@
 - `materials.jsonl`：`ResearchOS` から選定した AI 研究抜粋（`research_excerpt`）、本リポジトリで追加した AI 研究抜粋・哲学・文学原典（`literary_text`）・プロジェクト痕跡（`project_trace`）。`tools/import_researchos.py --write` を実行しても、本リポジトリ側で追加したローカル素材は保持されます。
 - `fragments.jsonl` / `relations.jsonl` / `sessions.jsonl`：各セッションで生成・選出された文芸断片、解釈的関係、セッション履歴。
 
+`materials.jsonl` の各レコードは任意の `verification` 欄（`status` / `checked_at` / `method` / `note`）を持てます。`source` の存在を記録する欄と、`source` を実際に開いたかどうかを記録する欄は別です（`SESSION-027` に追加）。状態の内訳は `python3 tools/cite_check.py` で確認できます。
+
 台帳を更新した後は、必ず以下の2つを実行して整合性と読書案内を同期してください。
 
 ```sh
