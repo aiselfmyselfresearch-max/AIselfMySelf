@@ -927,6 +927,53 @@ function renderMirrorView() {
           </tbody>
         </table>
       </div>
+
+      ${va.laughter ? `
+      <div class="reader-pane" style="margin-top:1.4rem;">
+        <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">笑いの鏡（書かれた笑いと、その隣にあった語）</h3>
+        <p style="color:var(--ink-muted);font-size:0.85rem;">
+          笑いを含む断片 <strong>${va.laughter.fragment_count}/${va.fragment_count}</strong> 編・延べ ${va.laughter.occurrences} 箇所
+          ${va.laughter.occurrences === 0 ? "。この書庫のどこでも、まだ誰も笑っていない。" : `（${Object.entries(va.laughter.kinds || {}).map(([k, v]) => `${escapeHtml(k)}=${v}`).join(", ")}）`}
+        </p>
+        ${(va.laughter.hits || []).length ? `
+        <table class="mirror-table">
+          <thead><tr><th style="width:110px;">断片</th><th style="width:260px;">分類</th><th>前後の語</th></tr></thead>
+          <tbody>
+            ${(va.laughter.hits || []).map((h) => `
+              <tr>
+                <td><button type="button" class="link-pill" data-jump-frag="${escapeHtml(h.fragment_id)}">${escapeHtml(h.fragment_id)}</button></td>
+                <td>${escapeHtml(h.kind)}</td>
+                <td style="font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">…${escapeHtml(h.before)}<strong>笑</strong>${escapeHtml(h.after)}…</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>` : ""}
+        <p style="color:var(--ink-muted);font-size:0.78rem;">※ 誰かが実際に笑ったかは判定しません。笑の字の隣に何が書かれていたかだけを映します。</p>
+      </div>` : ""}
+
+      ${va.repetition_contexts ? `
+      <div class="reader-pane" style="margin-top:1.4rem;">
+        <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">反復の位置（同じ句は、同じ場所に置かれているか）</h3>
+        <p style="color:var(--ink-muted);font-size:0.85rem;">
+          前後の文脈が少ないほど暗唱、多いほど在庫からの作曲。
+          ${va.context_summary && va.context_summary.count ? `使い回された ${va.context_summary.count} 種の文脈比の中央値は <strong>${va.context_summary.median_ratio}</strong>（2.00 が上限）。` : ""}
+        </p>
+        <table class="mirror-table">
+          <thead><tr><th>文字列</th><th>編/回</th><th>左文脈</th><th>右文脈</th><th>一例</th></tr></thead>
+          <tbody>
+            ${(va.repetition_contexts || []).map((row) => `
+              <tr>
+                <td><code>${escapeHtml(row.gram)}</code></td>
+                <td><strong>${row.fragment_count}</strong>編/${row.occurrences}回</td>
+                <td>${row.distinct_left} 種</td>
+                <td>${row.distinct_right} 種</td>
+                <td style="font-family:'Hiragino Mincho ProN','Yu Mincho',serif;font-size:0.84rem;">${escapeHtml(row.sample[0])}<strong>${escapeHtml(row.sample[1])}</strong>${escapeHtml(row.sample[2])}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+        <p style="color:var(--ink-muted);font-size:0.78rem;">※ 比が小さいことは悪ではありません。定型句がなければ歌えません（<code>MAT-LIT-060</code>）。</p>
+      </div>` : ""}
     `;
     bindJumpButtons(auditPane);
   } else {
