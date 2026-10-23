@@ -2,7 +2,7 @@
 
 `*.jsonl` は一行一レコード（UTF-8、キー昇順ソート推奨）です。
 
-- `questions.jsonl` / `motifs.jsonl`：開かれた問いの系譜と、問いを横断する7つのモチーフ。
+- `questions.jsonl` / `motifs.jsonl`：開かれた問いの系譜と、問いを横断する9つのモチーフ（記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度、作法と定型、誤りと訂正）。
 - `materials.jsonl`：`ResearchOS` から選定した AI 研究抜粋（`research_excerpt`）、本リポジトリで追加した AI 研究抜粋・哲学・文学原典（`literary_text`）・プロジェクト痕跡（`project_trace`）。`tools/import_researchos.py --write` を実行しても、本リポジトリ側で追加したローカル素材は保持されます。
 - `fragments.jsonl` / `relations.jsonl` / `sessions.jsonl`：各セッションで生成・選出された文芸断片、解釈的関係、セッション履歴。
 
