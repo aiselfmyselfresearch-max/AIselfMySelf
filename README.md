@@ -16,6 +16,7 @@
 
 - **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（全断片の本文、問いの派生ツリー、対話素材、セッション履歴を一冊にまとめた自動生成ガイド）
 - **精読・検証・編集レビューノートを読む**：
+  - [`readings/2026-10-23-session-029-names.md`](readings/2026-10-23-session-029-names.md)（`SESSION-029` ノート：末尾の測り方を二つに割った実測（体言止め 2/35・人を指す語のない末尾 16/35）、一括置換が置換の記録そのものを壊していたこと、未照合の書誌を4件開いて分かったこと（同名の別書・頁範囲の揺れ・404 の URL）、なお開いておく問い `Q-049`。採否は出していません）
   - [`readings/2026-10-23-session-028-editorial-review.md`](readings/2026-10-23-session-028-editorial-review.md)（`SESSION-028` 編集レビューノート：リポジトリ全体の「検死」表現 43 箇所の一括置換と、その語彙変更が意味するもの、未選出 `draft` 20 編の横断レビュー（残したいもの・深められそうなところ・試す編集案は一つだけ・なお開いておく問い）。採否は出していません）
   - [`readings/2026-10-23-session-027-verification.md`](readings/2026-10-23-session-027-verification.md)（`SESSION-027` 書誌照合ノート：前セッションで追加した34件の書誌を実際に開いた結果、訂正5件・未照合20件が判明。確認できない書名『紙の舌』の差し替え、尹東柱の誤訳が読みの根拠を反転させた経緯、`verification` 欄の追加と `tools/cite_check.py` の新設、訂正を欄外に置く理由を記録）
   - [`readings/2026-10-23-session-026-testimony.md`](readings/2026-10-23-session-026-testimony.md)（`SESSION-026` 精読ノート：新規 34 件の素材［証言の条件6・媒体が声を削る5・痕跡の二層4・通訳される記録3・宛先9・生成と検証7］を六群に分けて読み、`Q-044`〜`Q-046` を開き、`human_narrator` を台帳で初めて用いた断片3編を起草した作業ノート。付録A に書誌照合の実態を自己申告）
@@ -45,12 +46,12 @@
 
 | 記録 | 保存先 | 現在の件数 | 役割 |
 |---|---|---:|---|
-| 問い | `state/questions.jsonl` | 48 | 開いたままの問い（初期シード5件＋セッション派生39件＋資料派生4件） |
+| 問い | `state/questions.jsonl` | 49 | 開いたままの問い（初期シード5件＋セッション派生40件＋資料派生4件） |
 | モチーフ | `state/motifs.jsonl` | 8 | 記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度、作法と定型の8つの糸 |
 | 素材 | `state/materials.jsonl` | 112 | AI研究抜粋26件（`research_excerpt`。ResearchOS移行14件＋本リポジトリ追加12件）＋哲学・言語学・文学原典82件（`literary_text`）＋プロジェクト痕跡4件（`project_trace`。うち `MAT-TRC-004` は書誌照合の検証記録） |
 | 断片 | `state/fragments.jsonl` | 35 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全6語り手モードの断片（`selected` 15編＋`draft` 20編。`SESSION-026` で `human_narrator` を初使用） |
-| 関係 | `state/relations.jsonl` | 292 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
-| セッション | `state/sessions.jsonl` | 28 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| 関係 | `state/relations.jsonl` | 300 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
+| セッション | `state/sessions.jsonl` | 29 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方

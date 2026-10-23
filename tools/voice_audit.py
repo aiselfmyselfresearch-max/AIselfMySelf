@@ -17,6 +17,32 @@ Note on calibration (SESSION-020):
   (`？`) from period-ended questions (`〜だろうか。` / `〜のか。` / `〜か。`), and previews
   preserve the sentence tail so the mirror shows what it actually classifies.
 
+Note on calibration (SESSION-029):
+  SESSION-028's editorial review kept asking whether the archive contains
+  "物で終わる断片" (fragments that end on an object). That phrase mixed two
+  different measurements, so neither can be checked by it:
+
+    (a) 体言止め — the last sentence ends on a noun or a nominalised phrase,
+        with no predicate at all. Counted here mechanically by stripping
+        trailing particles and auxiliary suffixes and asking whether the stem
+        ends in a kanji or katakana. It is deliberately conservative: it can
+        miss a noun ending in hiragana, and it does not try to read intent.
+    (b) 人を指す語のない末尾 — the last sentence contains no pronoun and no
+        person noun from a short explicit list. This is *not* the same as (a):
+        a sentence can end on a verb and still never mention anyone
+        (`轍の音だけがしばらく石の上に残る`), and it can end on a noun and still
+        be about a person (`敬具　検めている者`).
+
+  The mirror reports (a) and (b) separately, with the sentence shown, because
+  the numbers alone would let either one stand in for the other. Measured
+  across 35 fragments, (a) is 2/35 and (b) is 16/35, so "物で終わる" was never
+  a property of a fifth of the archive — and (b) is split almost evenly between
+  selected (7/15) and draft (9/20), so nobody was selecting for it either. The
+  intuition behind the phrase was pointing at something else, and the column
+  exists to make that gap visible rather than to settle it. Note also that (b)
+  misses the implied speaker (`答えは出さず、次のページをめくる` has no one in it
+  and is still someone turning a page), which is why the sentence is printed.
+
 Usage:
   python3 tools/voice_audit.py
   python3 tools/voice_audit.py --top 20
@@ -45,6 +71,18 @@ BINARY = ["か、それとも", "それとも", "どちらでもない", "一方
 HEDGE = ["かもしれない", "のではないか", "のだろうか", "気がする", "ように思"]
 # Declared not-knowing.
 AVOWED_NOT_KNOWING = ["分からない", "わからない", "知れない", "答ふることなし", "答えはない"]
+
+# Who can appear in a sentence. Pronouns above, plus a short explicit list of
+# person nouns this archive actually uses. The list is a net, not a definition:
+# a sentence can be about a person and use none of these words, and the mirror
+# cannot tell you that. Read the sentence it prints next to the count.
+PERSON_NOUNS = ("書き手", "読み手", "聞き手", "女房", "門番", "申出人", "曾良", "芭蕉", "誰", "者", "人")
+
+# Particles and suffixes that can sit between a noun and the end of a sentence.
+# Stripped only to ask "does this sentence stop on a nominal stem?" — nothing
+# about the stripped sentence is reported.
+NOMINAL_TAIL = ("だけ", "さえ", "ほど", "こそ", "のみ", "ばかり", "まで", "など", "たち", "ら",
+                "の", "が", "は", "も", "を", "に", "へ", "と", "で", "や", "ね", "よ", "な")
 
 NARRATOR_MODE_ENUM = (
     "reflective_literary_voice",
@@ -143,6 +181,47 @@ def format_tail_preview(sentence: str, max_chars: int = 62) -> str:
         return clean
     head_len = max_chars - 31
     return f"{clean[:head_len]}…{clean[-30:]}"
+
+
+PERSON_RE = re.compile("|".join([pat for _, pat in PRONOUN_SPECS] + [re.escape(n) for n in PERSON_NOUNS]))
+
+
+def ends_on_nominal(sentence: str) -> bool:
+    """True when the last sentence stops on a noun-like stem (体言止め).
+
+    Conservative by construction: strips a chain of trailing particles/suffixes,
+    then asks whether what remains ends in kanji or katakana. Hiragana and
+    Latin endings are treated as predicates. A miss is cheaper here than a
+    guess, because the sentence is printed beside the count.
+    """
+    core = re.sub(r"[\s。．.、，,！？\?\!」』）\)】]+$", "", sentence.strip())
+    if not core:
+        return False
+    changed = True
+    while changed:
+        changed = False
+        for tail in NOMINAL_TAIL:
+            if core.endswith(tail) and len(core) > len(tail):
+                core = core[: -len(tail)]
+                changed = True
+                break
+    return bool(re.search(r"[一-龥ァ-ン]$", core))
+
+
+def ending_agent(fragment: dict[str, Any]) -> dict[str, Any]:
+    """Describe who or what holds the last position of a fragment."""
+    sents = sentences(fragment["text"])
+    last = sents[-1] if sents else ""
+    found = sorted(set(PERSON_RE.findall(last)))
+    return {
+        "fragment_id": fragment["fragment_id"],
+        "status": fragment.get("status", ""),
+        "nominal_ending": ends_on_nominal(last),
+        "person_present": bool(found),
+        "person_words": found,
+        "last_sentence": last,
+        "preview": format_tail_preview(last),
+    }
 
 
 def count_fragments(fragments: list[dict[str, Any]], needles: list[str]) -> int:
@@ -317,8 +396,23 @@ def compute_voice_audit(
                     }
                 )
 
+    agents = [ending_agent(f) for f in fragments]
+    agent_by_status: dict[str, dict[str, int]] = defaultdict(lambda: {"fragments": 0, "nominal": 0, "no_person": 0})
+    for row in agents:
+        bucket = agent_by_status[row["status"] or "unknown"]
+        bucket["fragments"] += 1
+        bucket["nominal"] += int(row["nominal_ending"])
+        bucket["no_person"] += int(not row["person_present"])
+
     return {
         "fragment_count": total,
+        "ending_agent": agents,
+        "ending_agent_summary": {
+            "nominal_ending": sum(int(r["nominal_ending"]) for r in agents),
+            "no_person_in_last_sentence": sum(int(not r["person_present"]) for r in agents),
+            "total": total,
+            "by_status": dict(agent_by_status),
+        },
         "relation_count": len(relations),
         "endings": endings,
         "ending_summary": dict(ending_kind.most_common()),
@@ -412,6 +506,28 @@ def main() -> int:
     print(f"  未使用の narrator_mode : {', '.join(empty_modes) if empty_modes else 'なし'}")
     for mm in report["mode_mismatches"]:
         print(f"  名札と地の文のずれ     : {mm['fragment_id']} (narrator_mode={mm['narrator_mode']} だが地の文に {mm['found']})")
+    print()
+
+    ea = report["ending_agent_summary"]
+    print("--- 7. 最後の位置を誰が取るか（末尾一文の二つの測り方） ---")
+    print(f"  体言止め（述語なしで名詞に止まる）      {ea['nominal_ending']:2d}/{ea['total']} 編")
+    print(f"  人を指す語が出ない末尾                  {ea['no_person_in_last_sentence']:2d}/{ea['total']} 編")
+    for status, row in sorted(ea["by_status"].items()):
+        print(
+            f"    {status:<9s} {row['fragments']:2d} 編中  体言止め {row['nominal']:2d}"
+            f" / 人なし {row['no_person']:2d}"
+        )
+    print("  末尾一文（体言止め / 人なし の印つき）:")
+    for row in report["ending_agent"]:
+        marks = []
+        if row["nominal_ending"]:
+            marks.append("体言")
+        if not row["person_present"]:
+            marks.append("人なし")
+        tag = "・".join(marks) if marks else "—"
+        print(f"    {row['fragment_id']} [{tag}] {row['preview']}")
+    print("  この二つは同じことを測っていない。体言止めでなくても人は出ないし、")
+    print("  名詞で終わっても人は出る。片方だけを見て「物で終わる」と言うことはできない。")
     print()
 
     print("--- 読み方 ---")
