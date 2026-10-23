@@ -893,6 +893,34 @@ function renderMirrorView() {
         </div>
       ` : ""}
 
+      ${va.addressee ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">宛先の鏡（誰に書いているか。人称ではなく方向を数える）</h3>
+          <p style="color:var(--ink-muted);font-size:0.82rem;margin-top:0;">
+            二人称の語 ${va.addressee.occurrence_total} 箇所 / 含む断片 ${va.addressee.totals.any}/${va.fragment_count} 編 —
+            括弧外（語り手から外へ）${va.addressee.totals.bare} 編、作中人物の発話のみ ${va.addressee.totals.speech_only} 編、
+            二人称なし ${va.addressee.totals.silent} 編。タイトルに宛名 ${va.addressee.totals.title_address} 編。
+          </p>
+          <table class="mirror-table">
+            <thead><tr><th>断片</th><th>位置</th><th>括弧外 / 発話 / 書名</th><th>語</th></tr></thead>
+            <tbody>
+              ${(va.addressee.fragments || []).filter((a) => a.total > 0).map((a) => `
+                <tr>
+                  <td>${renderEntityJumpButton("fragment", a.fragment_id)}${a.title_address ? ' <span style="color:var(--ink-muted);font-size:0.75rem;">★宛名</span>' : ""}</td>
+                  <td>${escapeHtml(a.position)}</td>
+                  <td>${a.bare} / ${a.speech} / ${a.quoted_title}</td>
+                  <td style="color:var(--ink-muted);font-size:0.78rem;">${Object.entries(a.labels || {}).sort((x, y) => y[1] - x[1]).map(([k, v]) => `${escapeHtml(k)}×${v}`).join("・")}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+          <p style="color:var(--ink-muted);font-size:0.78rem;margin-bottom:0;">
+            この表は宛先の有無を評価しません。作中人物に宛てた声と、読者に宛てた声は、どちらも声です。
+            括弧の外にある二人称が語り手の声とは限りません（ラベルで書かれた対話は括弧の外に出ます）。
+          </p>
+        </div>
+      ` : ""}
+
       <div class="reader-pane" style="margin-bottom:1.4rem;">
         <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">各断片の末尾一文（先頭＋末尾の両端表示・省略隠れなし）</h3>
         <table class="mirror-table">

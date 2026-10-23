@@ -17,6 +17,14 @@ Note on calibration (SESSION-020):
   (`？`) from period-ended questions (`〜だろうか。` / `〜のか。` / `〜か。`), and previews
   preserve the sentence tail so the mirror shows what it actually classifies.
 
+Note on calibration (SESSION-028):
+  `MAT-TRC-005` counted 二人称 by hand (39 箇所 / 15 編) but could not separate
+  語り手から外へ向かう呼びかけ from 作中人物同士の発話, and could not see 宛名 in
+  titles. `addressee_audit()` now does both mechanically: it splits each
+  occurrence into 括弧内（発話） / 書名 / 括弧外, and reads 宛名 from the title
+  (`〜へ` / `〜宛`). It still cannot tell *who* the "あなた" is — that is the
+  point of the measurement, not a bug to be fixed by a wider regex.
+
 Usage:
   python3 tools/voice_audit.py
   python3 tools/voice_audit.py --top 20
@@ -71,6 +79,24 @@ PRONOUN_SPECS: tuple[tuple[str, str], ...] = (
     ("君", r"君"),
     ("彼・彼女", r"(?:彼(?!女)|彼女)"),
 )
+
+# SESSION-028: 二人称を「宛先」として数えるための表。PRONOUN_SPECS は人称の
+# 出現を数えるが、その相手が作中人物か読者かを区別しない。ここでは区別する。
+ADDRESSEE_SPECS: tuple[tuple[str, str], ...] = (
+    ("あなたがた", r"あなたがた|あなた達"),
+    ("あなた", r"あなた(?!がた|達)"),
+    ("君", r"君"),
+    ("きみ", r"きみ"),
+    ("お前", r"お前|おまえ"),
+    ("汝", r"汝"),
+    ("そなた", r"そなた"),
+    ("読者", r"読者"),
+    ("貴方", r"貴方|貴女"),
+)
+
+# 「〜へ」「〜への手紙」「〜宛」を宛名とみなす。単なる助詞の「へ」（…へ挟む）や、
+# 名詞としての「宛名」（…宛名のない封筒）は宛名ではない。SESSION-028 の第三次の校正。
+TITLE_ADDRESSEE_RE = re.compile(r"(?:へ(?:の|$|[——、。])|宛(?:$|[——、。）]))")
 
 FIRST_PERSON_UNQUOTED_RE = re.compile(
     r"(?:私たち|私達|わたしたち|わたくしたち|われわれ|我々|わたし|わたくし|僕|俺|自分|私(?!たち|達|的|物|記|見|小説|語|言|事|法|信|生活|自身|文書|家|鉄|立|権|益))"
@@ -158,6 +184,109 @@ def repeated_grams(fragments: list[dict[str, Any]], size: int) -> list[tuple[str
             if re.search(r"[ぁ-んァ-ン一-龥]", gram):
                 owners[gram].add(frag["fragment_id"])
     return sorted(((g, sorted(o)) for g, o in owners.items() if len(o) > 1), key=lambda kv: (-len(kv[1]), kv[0]))
+
+
+
+def _span_mask(text: str, open_ch: str, close_ch: str) -> list[bool]:
+    """Return a per-character mask that is True inside open_ch ... close_ch spans."""
+    mask = [False] * len(text)
+    depth_positions: list[int] = []
+    for i, ch in enumerate(text):
+        if ch == open_ch:
+            depth_positions.append(i)
+            mask[i] = True
+        elif ch == close_ch and depth_positions:
+            depth_positions.pop()
+            mask[i] = True
+        elif depth_positions:
+            mask[i] = True
+    return mask
+
+
+def addressee_audit(fragments: list[dict[str, Any]]) -> dict[str, Any]:
+    """Count 二人称 as 宛先 rather than as 人称 (SESSION-028).
+
+    For every fragment this reports:
+      - speech: 二人称 inside 「」 (作中人物の発話)
+      - quoted_title: 二人称 inside 『』 (書名・作品名)
+      - bare: 二人称 outside both (語り手から外へ向かう呼びかけ)
+      - title_address: タイトルに「〜へ」「〜宛」があるか（本文外の宛名）
+
+    The three categories are not a quality ranking. A fragment with only
+    speech has an addressee *inside* the story; a fragment with bare
+    occurrences may have one *outside* it. Neither is better.
+    """
+    per_fragment: list[dict[str, Any]] = []
+    totals = {"any": 0, "bare": 0, "speech_only": 0, "silent": 0, "title_address": 0}
+
+    for frag in fragments:
+        text = frag["text"]
+        speech_mask = _span_mask(text, "「", "」")
+        title_mask = _span_mask(text, "『", "』")
+        counts = {"speech": 0, "quoted_title": 0, "bare": 0}
+        labels: dict[str, int] = {}
+
+        for label, pattern in ADDRESSEE_SPECS:
+            for m in re.finditer(pattern, text):
+                idx = m.start()
+                if speech_mask[idx]:
+                    counts["speech"] += 1
+                elif title_mask[idx]:
+                    counts["quoted_title"] += 1
+                else:
+                    counts["bare"] += 1
+                labels[label] = labels.get(label, 0) + 1
+
+        title_address = bool(TITLE_ADDRESSEE_RE.search(frag.get("title", "")))
+        has_any = sum(counts.values()) > 0
+
+        if has_any:
+            totals["any"] += 1
+        if counts["bare"] > 0:
+            totals["bare"] += 1
+        elif has_any:
+            totals["speech_only"] += 1
+        if not has_any:
+            totals["silent"] += 1
+        if title_address:
+            totals["title_address"] += 1
+
+        if counts["bare"] > 0:
+            position = "語り手から外へ"
+        elif counts["speech"] > 0:
+            position = "作中人物のみ"
+        elif counts["quoted_title"] > 0:
+            position = "書名のみ"
+        else:
+            position = "二人称なし"
+
+        per_fragment.append(
+            {
+                "fragment_id": frag["fragment_id"],
+                "title": frag["title"],
+                "form": frag.get("form"),
+                "narrator_mode": frag.get("narrator_mode"),
+                "speech": counts["speech"],
+                "quoted_title": counts["quoted_title"],
+                "bare": counts["bare"],
+                "total": sum(counts.values()),
+                "labels": labels,
+                "title_address": title_address,
+                "position": position,
+            }
+        )
+
+    per_fragment.sort(key=lambda item: (-item["bare"], -item["speech"], item["fragment_id"]))
+    total = len(fragments)
+    return {
+        "total": total,
+        "totals": totals,
+        "fragments": per_fragment,
+        "title_address_ids": [f["fragment_id"] for f in per_fragment if f["title_address"]],
+        "bare_ids": [f["fragment_id"] for f in per_fragment if f["bare"] > 0],
+        "silent_ids": [f["fragment_id"] for f in per_fragment if f["total"] == 0],
+        "occurrence_total": sum(f["total"] for f in per_fragment),
+    }
 
 
 def compute_voice_audit(
@@ -334,6 +463,8 @@ def compute_voice_audit(
         "zero_pronoun_fragment_ids": zero_pronoun_ids,
         "narrator_mode_counts": mode_counts,
         "mode_mismatches": mode_mismatches,
+        # SESSION-028: 宛先（誰に書いているか）を測る。MAT-TRC-005 の手数えを置き換える。
+        "addressee": addressee_audit(fragments),
     }
 
 
@@ -412,6 +543,29 @@ def main() -> int:
     print(f"  未使用の narrator_mode : {', '.join(empty_modes) if empty_modes else 'なし'}")
     for mm in report["mode_mismatches"]:
         print(f"  名札と地の文のずれ     : {mm['fragment_id']} (narrator_mode={mm['narrator_mode']} だが地の文に {mm['found']})")
+    print()
+
+    addressee = report["addressee"]
+    totals = addressee["totals"]
+    print("--- 7. 宛先の鏡（誰に書いているか。人称ではなく方向を数える） ---")
+    print(
+        f"  二人称の語 {addressee['occurrence_total']} 箇所 / "
+        f"含む断片 {totals['any']}/{total} 編（うち括弧外＝語り手から外へ {totals['bare']} 編、"
+        f"作中人物の発話のみ {totals['speech_only']} 編、二人称なし {totals['silent']} 編）"
+    )
+    print(f"  タイトルに宛名（〜へ／〜宛）: {totals['title_address']} 編 [{', '.join(addressee['title_address_ids']) or 'なし'}]")
+    for item in addressee["fragments"]:
+        if item["total"] == 0:
+            continue
+        labels = "・".join(f"{k}×{v}" for k, v in sorted(item["labels"].items(), key=lambda kv: -kv[1]))
+        flag = "★宛名" if item["title_address"] else "　　"
+        print(
+            f"  {item['fragment_id']} {flag} [{item['position']}] "
+            f"括弧外={item['bare']} 発話={item['speech']} 書名={item['quoted_title']}  ({labels})"
+        )
+    empty = [f["fragment_id"] for f in addressee["fragments"] if f["total"] == 0]
+    print(f"  二人称を一度も置かない断片 {len(empty)} 編: {', '.join(empty)}")
+    print("  この表は宛先の有無を評価しない。作中人物に宛てた声と、読者に宛てた声は、どちらも声である。")
     print()
 
     print("--- 読み方 ---")
