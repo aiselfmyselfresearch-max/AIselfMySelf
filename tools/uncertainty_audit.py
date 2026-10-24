@@ -7,12 +7,17 @@ that later sessions can reproduce the snapshot used by MAT-TRC-009.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
+
 FRAGMENTS = ROOT / "state" / "fragments.jsonl"
 
 # Keep categories intentionally lexical. A hit says that a form is present, not
@@ -28,8 +33,14 @@ SPECS: tuple[tuple[str, str], ...] = (
 )
 
 
-def load() -> list[dict[str, object]]:
-    return [json.loads(line) for line in FRAGMENTS.read_text(encoding="utf-8").splitlines() if line.strip()]
+def load(*, base_only: bool = False, exclude: str | None = None) -> list[dict[str, object]]:
+    if base_only:
+        return [json.loads(line) for line in FRAGMENTS.read_text(encoding="utf-8").splitlines() if line.strip()]
+    errors: list[str] = []
+    records = ledger_io.load_jsonl_union(FRAGMENTS, "fragment_id", errors, root=ROOT, exclude=exclude)
+    if errors:
+        raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
+    return list(records.values())
 
 
 def audit(fragments: list[dict[str, object]]) -> dict[str, object]:
@@ -63,7 +74,12 @@ def audit(fragments: list[dict[str, object]]) -> dict[str, object]:
 
 
 def main() -> int:
-    result = audit(load())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--json", action="store_true", help="emit JSON (default)")
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/fragments.jsonl only")
+    parser.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
+    args = parser.parse_args()
+    result = audit(load(base_only=args.base_only, exclude=args.exclude_shard))
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0
 

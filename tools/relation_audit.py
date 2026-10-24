@@ -50,6 +50,9 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
+
 STATE = ROOT / "state"
 
 FILES = {
@@ -72,28 +75,35 @@ RELATION_TYPES = (
 )
 
 
-def load(path: Path, key: str) -> dict[str, dict[str, Any]]:
+def load(path: Path, key: str, *, base_only: bool = False, exclude: str | None = None) -> dict[str, dict[str, Any]]:
     records: dict[str, dict[str, Any]] = {}
     if not path.exists():
         return records
-    for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
-        if not line.strip():
-            continue
-        try:
-            rec = json.loads(line)
-        except json.JSONDecodeError as exc:
-            print(f"error: {path.name}:{lineno}: {exc}", file=sys.stderr)
-            raise SystemExit(1)
-        records[rec[key]] = rec
-    return records
+    if base_only:
+        for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            if not line.strip():
+                continue
+            try:
+                rec = json.loads(line)
+            except json.JSONDecodeError as exc:
+                print(f"error: {path.name}:{lineno}: {exc}", file=sys.stderr)
+                raise SystemExit(1)
+            records[rec[key]] = rec
+        return records
+    errors: list[str] = []
+    merged = ledger_io.load_jsonl_union(path, key, errors, root=ROOT, exclude=exclude)
+    if errors:
+        print("error: " + "; ".join(errors), file=sys.stderr)
+        raise SystemExit(1)
+    return merged
 
 
-def audit() -> dict[str, Any]:
+def audit(*, base_only: bool = False, exclude: str | None = None) -> dict[str, Any]:
     nodes: dict[str, dict[str, dict[str, Any]]] = {}
     for kind, (filename, key) in FILES.items():
-        nodes[kind] = load(STATE / filename, key)
+        nodes[kind] = load(STATE / filename, key, base_only=base_only, exclude=exclude)
 
-    relations = load(STATE / "relations.jsonl", "relation_id")
+    relations = load(STATE / "relations.jsonl", "relation_id", base_only=base_only, exclude=exclude)
 
     outgoing: dict[str, list[dict[str, Any]]] = defaultdict(list)
     incoming: dict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -194,9 +204,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--json", action="store_true", help="emit the audit as JSON")
     parser.add_argument("--kind", choices=sorted(FILES), help="show only one kind in the degree table")
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/*.jsonl only")
+    parser.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
     args = parser.parse_args()
 
-    report = audit()
+    report = audit(base_only=args.base_only, exclude=args.exclude_shard)
     if args.json:
         print(json.dumps(report, ensure_ascii=False, indent=2))
         return 0
