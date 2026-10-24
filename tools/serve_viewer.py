@@ -21,6 +21,7 @@ from eros_audit import measure_eros_audit
 from signature_audit import measure_signature_audit
 from inspect_inquiry import build_context_packet, load_all
 from passion_audit import GROUPS as PASSION_GROUPS, measure as measure_passion_audit
+from prayer_audit import measure_prayer_audit
 from validate_seed import COLLECTIONS, ROOT, load_jsonl
 from voice_audit import compute_voice_audit
 
@@ -137,6 +138,7 @@ def _read_archive_payload_once() -> dict[str, object]:
     payload["eros_audit"] = measure_eros_audit(fragments, payload["materials"])  # type: ignore[arg-type]
     payload["currency_audit"] = measure_currency_audit(fragments, payload["materials"])  # type: ignore[arg-type]
     payload["signature_audit"] = measure_signature_audit(fragments, payload["materials"])  # type: ignore[arg-type]
+    payload["prayer_audit"] = measure_prayer_audit(fragments, payload["materials"])  # type: ignore[arg-type]
     payload["metabolism_audit"] = compute_metabolism_snapshot(payload)
     payload["readings"] = read_readings_list()
     return payload
