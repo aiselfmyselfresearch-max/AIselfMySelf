@@ -94,3 +94,36 @@ python3 tools/inspect_inquiry.py --check-map   # 同上
 - `map/` は git 管理外のため、clone だけでは全文がない。`--write-map` か CI artifact で取得する。
 - `--check` は追跡している索引のみを検査する（`map/` は untracked のため対象外）。
 - 過去のコミットに残った 37MB 級の `READING_MAP.md` blob がサーバ側履歴に残っている。clone は shallow で軽いが、完全履歴を軽くしたい場合は `git filter-repo` による履歴書き換えが要る（破壊的なので既定では行わない）。
+
+## 7. 成長予算とローテーション（A1・A2・B3）
+
+READING_MAP.md の事故は「単一ファイルが全成長を吸収する」ことの結果だった。同じ病が README と台帳モノリスに再発しないよう、予算と移行手順を置く。
+
+### 7.1 サイズ予算（`tools/size_budget.py`）
+
+| 対象 | soft（WARN） | hard（CI 停止） | soft 超過時の移行 |
+|---|---:|---:|---|
+| `README.md` | 150 KB | 300 KB | 詳細窓を維持し、超過分を `docs/sessions.md` へ verbatim ローテーション |
+| `READING_MAP.md` | 2 MB | 5 MB | map_build の 2MB 警告と同じ。超えたら索引の表を分割（§3 Tier 2 の拡張） |
+| `state/<collection>.jsonl`（各モノリス） | 5 MB | 10 MB | モノリスを生成物化し、`state/*.d/` シャードを正本に切り替える（§3 Tier 1 の移行） |
+| git pack（参考値） | 500 MB | 1GB（指針） | §6 の留保（filter-repo）を人間の判断で実行 |
+
+`python3 tools/size_budget.py` が各ファイルを点検する（`--strict` は WARN も失敗）。CI（`ci.yml`）は hard 超過で停止する。リポジトリ全体は GitHub の指針（<1GB 推奨）を超えるまでは現状維持。
+
+### 7.2 README ローテーション規約
+
+記憶の削除ではなく**移動**である。README は入口であり全量ではない。
+
+1. 到達点 bullet の詳細窓は **3件**、注釈付き報告エントリの詳細窓は **5件**。
+2. 窓を入れ替えるときは、最も古いものを `docs/sessions.md` の該当節へ **一字一句変えずに**移し、README には見出し／リンクの1行を残す。
+3. `docs/sessions.md` も追記専用。既存行の書き換え・要約・圧縮をしない（訂正は新しい注記）。
+4. WARN はこの操作の合図。hard 超過は移行が済むまでマージしない。
+
+### 7.3 読み痕跡 `read_log`（B3）
+
+台帳は「何を集めたか」（素材）と「どう解釈したか」（関係）を持つが、「どの記録を・どのセッションが・どう読み返したか」の網羅的痕跡を持たなかった。`state/read_log.jsonl` はそれを記録する追記専用コレクションで、「記録を読み返して続きを語る AI」の**読み返し**そのものを測定可能にする。
+
+- 各行は (session, target, reading, note)。`reading` は quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted。
+- 精選された解釈は関係へ、本文は断片・報告へ置く（read_log は痕跡の索引であり、解釈の置き場ではない）。
+- `tools/read_log_backfill.py` が確定できる部分（各セッションの `context_material_ids`）を機械的に転記し、`--check` で網羅を CI が検査する。
+- 書案内（`READING_MAP.md`／`map/`）への収録はまだ行わない。読み返しの索引が必要になった時点で `map_build.py` に表を追加する。

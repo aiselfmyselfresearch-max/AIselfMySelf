@@ -20,6 +20,7 @@ COLLECTIONS = {
     "fragments": ("fragments.jsonl", "fragment_id", "fragment.schema.json"),
     "relations": ("relations.jsonl", "relation_id", "relation.schema.json"),
     "sessions": ("sessions.jsonl", "session_id", "session.schema.json"),
+    "read_log": ("read_log.jsonl", "read_id", "read_log.schema.json"),
 }
 
 
@@ -185,6 +186,8 @@ def main() -> int:
         if session_id and session_id not in sessions:
             errors.append(f"fragments:{fragment_id}: session_id references unknown session {session_id!r}")
 
+    read_logs = collections.get("read_log", {})
+
     endpoint_collections = {
         "question": questions,
         "motif": motifs,
@@ -192,6 +195,18 @@ def main() -> int:
         "fragment": fragments,
         "session": sessions,
     }
+    for read_id, record in read_logs.items():
+        session_id = record.get("session_id")
+        if session_id and session_id not in sessions:
+            errors.append(f"read_log:{read_id}: session_id references unknown session {session_id!r}")
+        ref = record.get("target")
+        if isinstance(ref, dict):
+            target = endpoint_collections.get(ref.get("type"))
+            if target is None or ref.get("id") not in target:
+                errors.append(
+                    f"read_log:{read_id}: target references unknown "
+                    f"{ref.get('type')} ID {ref.get('id')!r}"
+                )
     for relation_id, relation in relations.items():
         for endpoint in ("left", "right"):
             ref = relation.get(endpoint)

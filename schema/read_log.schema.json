@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "read_log.schema.json",
+  "title": "Read Log Entry",
+  "description": "A trace that one session read one existing ledger record (material, fragment, question, motif, or session). This is the exhaustive 'who re-read what' log; curated interpretation belongs to relations, and text belongs to fragments/reports. One row per (session, target, reading) — append only, never rewritten. The reading field names what the session did with the record, not what the record means.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["read_id", "session_id", "target", "reading", "note", "created_at"],
+  "properties": {
+    "read_id": {"type": "string", "minLength": 1},
+    "session_id": {"type": "string", "minLength": 1},
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id"],
+      "properties": {
+        "type": {"type": "string", "enum": ["question", "motif", "material", "fragment", "session"]},
+        "id": {"type": "string", "minLength": 1}
+      }
+    },
+    "reading": {
+      "type": "string",
+      "enum": ["quoted", "summarized", "interpreted", "reinterpreted", "contested", "used_as_context", "counted"],
+      "description": "quoted=一節をそのまま引いた / summarized=要約した / interpreted=解釈を加えた / reinterpreted=以前の読みに重ねて読み直した / contested=異議・反論として扱った / used_as_context=文脈として読んだ（討議の対象にしない） / counted=監査・集計の対象として数えただけ"
+    },
+    "note": {"type": "string"},
+    "created_at": {"type": "string", "minLength": 4}
+  }
+}

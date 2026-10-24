@@ -38,6 +38,7 @@ PREFIXES: dict[str, tuple[str, str]] = {
     "FRAG": ("fragments.jsonl", "fragment_id"),
     "REL": ("relations.jsonl", "relation_id"),
     "SESSION": ("sessions.jsonl", "session_id"),
+    "READ": ("read_log.jsonl", "read_id"),
 }
 
 _ID_SUFFIX = re.compile(r"^[0-9a-f]+$")

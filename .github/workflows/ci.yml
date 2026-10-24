@@ -25,6 +25,12 @@ jobs:
       - name: Check READING_MAP.md is current
         run: python3 tools/inspect_inquiry.py --check-map
 
+      - name: Check size budgets
+        run: python3 tools/size_budget.py
+
+      - name: Check read_log coverage
+        run: python3 tools/read_log_backfill.py --check
+
       - name: Check viewer JavaScript syntax
         run: node --check viewer/app.js
 
