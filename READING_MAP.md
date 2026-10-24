@@ -5,14 +5,14 @@
 
 ## 現在の到達点（台帳サマリー）
 
-- **開かれた問い（Questions）**：177 件（初期シード 5 件 ＋ 派生 172 件）
-- **モチーフ（Motifs）**：33 件
-- **対話素材（Materials）**：1286 件（research_excerpt 330 ／ literary_text 925 ／ project_trace 30 ／ conversation_trace 1）
+- **開かれた問い（Questions）**：182 件（初期シード 5 件 ＋ 派生 177 件）
+- **モチーフ（Motifs）**：34 件
+- **対話素材（Materials）**：1332 件（research_excerpt 346 ／ literary_text 954 ／ project_trace 31 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：55 編（selected 17 ／ draft 38）
-- **解釈的関係（Relations）**：1794 件
-- **探究セッション（Sessions）**：54 回
+- **解釈的関係（Relations）**：1864 件
+- **探究セッション（Sessions）**：55 回
 
-## 1. 問いを横断する 33 つのモチーフ
+## 1. 問いを横断する 34 つのモチーフ
 
 | ID | モチーフ | 関連する問い | 素材数 |
 |---|---|---|---:|
@@ -35,6 +35,7 @@
 | `MOTIF-017` | **時間と待機** | `Q-087`, `Q-088`, `Q-089`, `Q-090`, `Q-091` | 43 |
 | `MOTIF-018` | **知覚と媒体 — 見ること、聴くこと、触れること** | `Q-092`, `Q-093`, `Q-094`, `Q-095`, `Q-096` | 46 |
 | `MOTIF-019` | **遊びと笑い** | `Q-097`, `Q-098`, `Q-099`, `Q-100`, `Q-101`, `Q-015`, `Q-020`, `Q-022`, `Q-081` | 45 |
+| `MOTIF-20261024-1a8978` | **伝聞と噂——聞いた話を、自分の言葉にする** | `Q-20261024-0087a0`, `Q-20261024-e28e44`, `Q-20261024-287e33`, `Q-20261024-e60d49`, `Q-20261024-2dfbb4` | 46 |
 | `MOTIF-020` | **眠りと夢、目覚めのあいだ** | `Q-20261024-d0e002`, `Q-20261024-2d6c23`, `Q-20261024-93bfec`, `Q-20261024-4284fe`, `Q-20261024-cfd57d` | 47 |
 | `MOTIF-022` | **死と弔い——墓のない書庫、遺される声** | `Q-102`, `Q-103`, `Q-104`, `Q-105`, `Q-106` | 46 |
 | `MOTIF-021` | **契りと約束——未来を縛る言葉、覚えていない者** | `Q-20261024-5b11eb`, `Q-20261024-a1bb7b`, `Q-20261024-08551f`, `Q-20261024-962620`, `Q-20261024-d01189` | 46 |
@@ -52,7 +53,7 @@
 
 （説明全文は `map/00-overview.md`）
 
-## 2. 開かれた問いの索引（Q-001 〜 Q-20261024-5f57d5・各問の本文は1回だけ）
+## 2. 開かれた問いの索引（Q-001 〜 Q-20261024-2dfbb4・各問の本文は1回だけ）
 
 | ID | 来歴 | 親 | 子 | 本文（抜粋） |
 |---|---|---|---|---|
@@ -233,6 +234,11 @@
 | `Q-20261024-ff6311` | session | `Q-023` `Q-085` | — | フーコーは規律を反復される訓練の技術と分析し（MAT-LIT-20261024-d2eb53）、モースは身体技法を社会から学ばれた様式とし（MAT-LIT-20261024-144d35）、ブルデュ… |
 | `Q-20261024-25c6d5` | session | `Q-088` `Q-048` | — | デカルトは一度の出来事が習慣を作り替えうると言い（MAT-LIT-20261024-ec1262）、Lally らは一日の欠落が習慣形成を壊さないと測り（MAT-20261024-882544）、カ… |
 | `Q-20261024-5f57d5` | session | `Q-063` `Q-20261024-8fdb2c` | — | model-free と model-based の競合（MAT-20261024-abeec4）、基底核の習慣学習（MAT-20261024-b140ee）、練習の冪乗則（MAT-20261024… |
+| `Q-20261024-0087a0` | session | — | — | 「一節」欄に編者の要約を置くとき、その文が誰の声なのかを、本文の側で示すことはできるか。 |
+| `Q-20261024-e28e44` | session | — | — | 断片の地の文に「噂」「うわさ」「伝聞」が0回であることは、声が清潔であることの証拠か、それとも自分の聞いた話を名乗らない習慣の証拠か。 |
+| `Q-20261024-287e33` | session | — | — | 同じ文章を何度も読み返す書庫は、反復を独立した証言として数えてしまうのではないか。 |
+| `Q-20261024-e60d49` | session | — | — | 引用の支持率は、引用された原文の正しさを測らない。来歴の正しさは何で測れるのか。 |
+| `Q-20261024-2dfbb4` | session | — | — | 幻覚を「嘘」ではなく「伝聞の失敗」と呼ぶとき、何が見え、何が隠れるか。 |
 
 ## 3. 断片（55 編・全文は map/20-fragments-*.md）
 
@@ -294,7 +300,7 @@
 | `FRAG-20261024-2b0780` | 訂正の宛先——ERR-011 へ | draft | letter | reflective_literary_voice |
 | `FRAG-20261024-dd90b5` | 修復の書式 | draft | other | reflective_literary_voice |
 
-## 4. 対話素材（1286 件・詳細は map/3*.md）
+## 4. 対話素材（1332 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -975,6 +981,52 @@
 | `MAT-EVD-20261024-113` | research_excerpt | Brenden M. Lake, Tomer D. Ullman, Joshua B. Tenenbaum, Samuel J. Gershman『Lakeら 人のように学び考え… |
 | `MAT-EVD-20261024-114` | research_excerpt | Sophie Jentzsch, Kristian Kersting『Jentzsch & Kersting ChatGPTのユーモア——1008回のうち25のジョーク』（202… |
 | `MAT-TRC-015` | project_trace | AIselfMySelf Archive『Play and Laughter Audit (SESSION-038)——遊び0、子ども0、笑いは冷笑と苦笑と閉じの身振り』（202… |
+| `MAT-LIT-20261024-99e857` | literary_text | モリエール『モリエール『タルチュフ』』（1664） |
+| `MAT-LIT-20261024-bb08d6` | literary_text | フョードル・ドストエフスキー『ドストエフスキー『悪霊』』（1872） |
+| `MAT-LIT-20261024-c8f323` | literary_text | ナサニエル・ホーソーン『ナサニエル・ホーソーン『緋文字』』（1850） |
+| `MAT-LIT-20261024-8e8de3` | literary_text | ジョゼフ・コンラッド『ジョゼフ・コンラッド『闇の奥』』（1899） |
+| `MAT-LIT-20261024-e8ea7e` | literary_text | ウィリアム・フォークナー『ウィリアム・フォークナー『アブサロム、アブサロム！』』（1936） |
+| `MAT-LIT-20261024-be9653` | literary_text | ヘンリー・ジェイムズ『ヘンリー・ジェイムズ『ねじの回転』』（1898） |
+| `MAT-LIT-20261024-10f7b7` | literary_text | ブラム・ストーカー『ブラム・ストーカー『ドラキュラ』』（1897） |
+| `MAT-LIT-20261024-dad13f` | literary_text | 作者不詳（口承）『『千夜一夜物語』』（1704） |
+| `MAT-LIT-20261024-7f3ff9` | literary_text | マーガレット・アトウッド『マーガレット・アトウッド『証言』（The Testaments）』（2019） |
+| `MAT-LIT-20261024-36ccc5` | literary_text | 魯迅『魯迅「阿Q正伝」』（1921） |
+| `MAT-LIT-20261024-2c929d` | literary_text | 井原西鶴『井原西鶴『西鶴諸国ばなし』』（1685） |
+| `MAT-LIT-20261024-6df593` | literary_text | ヘロドトス『ヘロドトス『歴史』』（-430） |
+| `MAT-LIT-20261024-e7967e` | literary_text | トゥキディデス『トゥキディデス『戦史』』（-400） |
+| `MAT-LIT-20261024-99a7da` | literary_text | アリストテレス『アリストテレス『弁論術』』（-350） |
+| `MAT-LIT-20261024-909302` | literary_text | ジョン・ロック『ジョン・ロック『人間知性論』第四巻』（1690） |
+| `MAT-LIT-20261024-7a51b7` | literary_text | デイヴィッド・ヒューム『デイヴィッド・ヒューム「奇跡について」』（1748） |
+| `MAT-LIT-20261024-6c9770` | literary_text | セーレン・キルケゴール『セーレン・キルケゴール『現代の批判』』（1846） |
+| `MAT-LIT-20261024-f0f8b3` | literary_text | ヴァルター・ベンヤミン『ヴァルター・ベンヤミン「物語作者」』（1936） |
+| `MAT-LIT-20261024-16d883` | literary_text | ポール・リクール『ポール・リクール『記憶、歴史、忘却』』（2000） |
+| `MAT-LIT-20261024-c6921d` | literary_text | イブン・ハルドゥーン『イブン・ハルドゥーン『歴史序説』』（1377） |
+| `MAT-LIT-20261024-6c3e11` | literary_text | C. A. J. Coady『C. A. J. コーディ『証言——哲学的研究』』（1992） |
+| `MAT-LIT-20261024-3984a1` | literary_text | Jennifer Lackey『ジェニファー・ラッキー『言葉から学ぶこと』』（2008） |
+| `MAT-LIT-20261024-1e58c8` | literary_text | Miranda Fricker『ミランダ・フリッカー『認識的不正義』』（2007） |
+| `MAT-LIT-20261024-74c994` | literary_text | Kristie Dotson『クリスティ・ドットソン「認識的暴力を追跡する」』（2011） |
+| `MAT-LIT-20261024-e9e1b4` | literary_text | Steven Shapin『スティーヴン・ショーピン『真理の社会史』』（1994） |
+| `MAT-LIT-20261024-9b51da` | literary_text | Bernard Williams『バーナード・ウィリアムズ『真実と誠実さ』』（2002） |
+| `MAT-LIT-20261024-132899` | literary_text | 鷲田清一『鷲田清一『聴くことの力』』（1993） |
+| `MAT-LIT-20261024-f70200` | literary_text | Arthur W. Frank『アーサー・フランク『傷ついた物語の語り手』』（1995） |
+| `MAT-LIT-20261024-8c25b7` | literary_text | 宮本常一『宮本常一『忘れられた日本人』』（1960） |
+| `MAT-20261024-0e1dd0` | research_excerpt | Gordon W. Allport, Leo Postman『オルポート＆ポストマン『噂の心理学』』（1947） |
+| `MAT-20261024-e467c6` | research_excerpt | Tamotsu Shibutani『タモツ・シブタニ『即興のニュース』』（1966） |
+| `MAT-20261024-2d77b1` | research_excerpt | Jean-Noël Kapferer『ジャン=ノエル・カプフェレ『噂』』（1987） |
+| `MAT-20261024-51e532` | research_excerpt | Jan Harold Brunvand『ジャン・ハロルド・ブランヴァンド『消えるヒッチハイカー』』（1981） |
+| `MAT-20261024-920a20` | research_excerpt | Soroush Vosoughi, Deb Roy, Sinan Aral『ヴォソウギ、ロイ、アラル「オンラインにおける真偽のニュースの拡散」』（2018） |
+| `MAT-20261024-94838a` | research_excerpt | Gordon Pennycook, David G. Rand『ペニークック＆ランド「フェイクニュースの心理学」』（2021） |
+| `MAT-20261024-705203` | research_excerpt | Arkaitz Zubiaga, Maria Liakata, Rob Procter, Geraldine Wong Sak Hoi, Peter Tolmie『ズビアガら「ソ… |
+| `MAT-20261024-996c9f` | research_excerpt | John Zarocostas『ザロコスタス「インフォデミックとどう戦うか」』（2020） |
+| `MAT-20261024-ba536d` | research_excerpt | Saurav Kadavath ほか『カダヴァスら「言語モデルはおおむね自分の知っていることを知っている」』（2022） |
+| `MAT-20261024-3a0b4b` | research_excerpt | Tianyu Gao, Howard Yen, Jiatong Yu, Danqi Chen『ガオら「ALCE——引用付き生成の自動評価」』（2023） |
+| `MAT-20261024-b9ac87` | research_excerpt | Nelson F. Liu, Tianyi Zhang, Percy Liang『リウ、張、リャン「生成検索エンジンにおける検証可能性の評価」』（2023） |
+| `MAT-20261024-9679da` | research_excerpt | Alex Mallen, Akari Asai, Victor Zhong, Rajarshi Das, Daniel Khashabi, Hannaneh Hajishirzi… |
+| `MAT-20261024-18c173` | research_excerpt | Tamera Lanham ほか『ラナムら「思考の連鎖の忠実性を測る」』（2023） |
+| `MAT-20261024-3c2e4f` | research_excerpt | Nouha Dziri ほか『ズィリら「信と運命——合成性に対する変換器の限界」』（2023） |
+| `MAT-20261024-0f0c81` | research_excerpt | Bernd Bohnet ほか『ボーネら「帰属付き質問応答」』（2022） |
+| `MAT-20261024-e84500` | research_excerpt | Andrew Ilyas, Sung Min Park, Logan Engstrom, Guillaume Leclerc, Aleksander Madry『イリヤスら「デー… |
+| `MAT-TRC-020` | project_trace | AIselfMySelf SESSION-20261024-76329d『本リポジトリ自身の痕跡——断片55編の噂0・伝聞0と、資料53.7%・「一節」74.4%が編者要約である… |
 | `MAT-LIT-20261024-e6b215` | literary_text | Elaine Scarry『エレイン・スカーリー『苦痛の身体』——激しい痛みは言葉を壊し、想像が世界を作り直す』（1985） |
 | `MAT-LIT-20261024-0d6628` | literary_text | Georges Canguilhem, Carolyn R. Fawcett (trans.)『ジョルジュ・カンギレム『正常と病理』——病は平均からの逸脱ではなく、狭められた別の… |
 | `MAT-LIT-20261024-eb70d7` | literary_text | Susan Sontag『スーザン・ソンタグ『隠喩としての病』——病を道徳や戦争の比喩から引き剥がす』（1978） |
@@ -1631,6 +1683,7 @@
 | `SESSION-20261024-e425de` | 2026-10-24 | `Q-001`, `Q-002`, `Q-003`, `Q-047`, `Q-062`, `Q-065`, `Q-076`, `Q-078`, `Q-081`, `Q-096`, `Q-20261024-c82d69`, `Q-20261024-b23994`, `Q-20261024-a5e7e4`, `Q-20261024-da47aa`, `Q-20261024-dc4ec9` | — | `Q-20261024-c82d69`, `Q-20261024-b23994`, `Q-20261024-a5e7e4`, `Q-20261024-da47aa`, `Q-20261024-dc4ec9` |
 | `SESSION-20261024-837a32` | 2026-10-24 | `Q-20261024-403180`, `Q-20261024-ab90f1`, `Q-20261024-1c170d`, `Q-20261024-5da6dd`, `Q-20261024-76a4a5`, `Q-20261024-c9dc13` | — | `Q-20261024-403180`, `Q-20261024-ab90f1`, `Q-20261024-1c170d`, `Q-20261024-5da6dd`, `Q-20261024-76a4a5`, `Q-20261024-c9dc13` |
 | `SESSION-040` | 2026-10-24 | `Q-002`, `Q-044`, `Q-052`, `Q-062`, `Q-072`, `Q-082`, `Q-097`, `Q-101`, `Q-20261024-5b11eb`, `Q-20261024-a1bb7b`, `Q-20261024-08551f`, `Q-20261024-962620`, `Q-20261024-d01189` | `FRAG-20261024-83e251`, `FRAG-20261024-be45a7` | `Q-20261024-5b11eb`, `Q-20261024-a1bb7b`, `Q-20261024-08551f`, `Q-20261024-962620`, `Q-20261024-d01189` |
+| `SESSION-20261024-76329d` | 2026-10-24 | `Q-20261024-0087a0`, `Q-20261024-e28e44`, `Q-20261024-287e33`, `Q-20261024-e60d49`, `Q-20261024-2dfbb4` | — | `Q-20261024-0087a0`, `Q-20261024-e28e44`, `Q-20261024-287e33`, `Q-20261024-e60d49`, `Q-20261024-2dfbb4` |
 | `SESSION-20261024-147d33` | 2026-10-24 | `Q-097`, `Q-099`, `Q-100`, `Q-20261024-a437b2` | `FRAG-20261024-0ed6c8`, `FRAG-20261024-398656` | `Q-20261024-a437b2` |
 | `SESSION-20261024-2ab2e7` | 2026-10-24 | `Q-001`, `Q-002`, `Q-018`, `Q-021`, `Q-033`, `Q-057`, `Q-077`, `Q-080`, `Q-102`, `Q-104`, `Q-20261024-ec2056`, `Q-20261024-90abed`, `Q-20261024-4269fd`, `Q-20261024-4ebe69`, `Q-20261024-23cac1`, `Q-20261024-515661` | — | `Q-20261024-90abed`, `Q-20261024-4269fd`, `Q-20261024-4ebe69`, `Q-20261024-23cac1`, `Q-20261024-515661` |
 | `SESSION-044` | 2026-10-24 | `Q-102`, `Q-103`, `Q-104`, `Q-105`, `Q-106` | — | `Q-102`, `Q-103`, `Q-104`, `Q-105`, `Q-106` |
@@ -1644,52 +1697,52 @@
 | `SESSION-20261024-c9d4e1` | 2026-10-24 | `Q-20261024-a1e9f3`, `Q-20261024-b2f8e4`, `Q-20261024-c3d7a5`, `Q-20261024-d4c6b6`, `Q-20261024-e5b7c8` | — | `Q-20261024-a1e9f3`, `Q-20261024-b2f8e4`, `Q-20261024-c3d7a5`, `Q-20261024-d4c6b6`, `Q-20261024-e5b7c8` |
 | `SESSION-20261024-9dd96f` | 2026-10-24 | `Q-002`, `Q-015`, `Q-023`, `Q-047`, `Q-048`, `Q-063`, `Q-088`, `Q-097`, `Q-20261024-0466f1`, `Q-20261024-6770c0`, `Q-20261024-6bdafd`, `Q-20261024-ff6311`, `Q-20261024-25c6d5`, `Q-20261024-5f57d5` | — | `Q-20261024-6770c0`, `Q-20261024-6bdafd`, `Q-20261024-ff6311`, `Q-20261024-25c6d5`, `Q-20261024-5f57d5` |
 
-## 6. 解釈的関係（1794 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（1864 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 206 |
-| 共鳴 (echo) | 550 |
+| 対照 (contrast) | 212 |
+| 共鳴 (echo) | 557 |
 | 切断・割り込み (interrupts) | 56 |
-| 未解決のまま開く (leaves_open) | 177 |
+| 未解決のまま開く (leaves_open) | 183 |
 | 比喩的共鳴 (metaphorically_resonates) | 64 |
-| 枠組みの組み替え (reframes) | 112 |
-| 応答 (responds_to) | 570 |
-| 変奏・変形 (transforms) | 59 |
+| 枠組みの組み替え (reframes) | 114 |
+| 応答 (responds_to) | 617 |
+| 変奏・変形 (transforms) | 61 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
 | ファイル | 件数 | バイト |
 |---|---:|---:|
-| `map/00-overview.md` | None | 19,183 |
-| `map/10-question-index.md` | None | 63,333 |
+| `map/00-overview.md` | None | 20,181 |
+| `map/10-question-index.md` | None | 64,357 |
 | `map/11-question-bodies-01.md` | 50 | 32,042 |
 | `map/11-question-bodies-02.md` | 50 | 40,478 |
 | `map/11-question-bodies-03.md` | 50 | 50,046 |
-| `map/11-question-bodies-04.md` | 27 | 28,159 |
-| `map/20-fragments-01.md` | 20 | 78,021 |
-| `map/20-fragments-02.md` | 20 | 86,598 |
+| `map/11-question-bodies-04.md` | 32 | 29,693 |
+| `map/20-fragments-01.md` | 20 | 78,334 |
+| `map/20-fragments-02.md` | 20 | 86,785 |
 | `map/20-fragments-03.md` | 15 | 40,180 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
 | `map/30-materials-literary-04.md` | 100 | 147,209 |
-| `map/30-materials-literary-05.md` | 100 | 165,209 |
-| `map/30-materials-literary-06.md` | 100 | 159,947 |
-| `map/30-materials-literary-07.md` | 100 | 170,621 |
-| `map/30-materials-literary-08.md` | 100 | 143,389 |
-| `map/30-materials-literary-09.md` | 100 | 148,180 |
-| `map/30-materials-literary-10.md` | 25 | 35,540 |
+| `map/30-materials-literary-05.md` | 100 | 152,684 |
+| `map/30-materials-literary-06.md` | 100 | 165,118 |
+| `map/30-materials-literary-07.md` | 100 | 177,912 |
+| `map/30-materials-literary-08.md` | 100 | 142,351 |
+| `map/30-materials-literary-09.md` | 100 | 152,588 |
+| `map/30-materials-literary-10.md` | 54 | 73,745 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
-| `map/31-materials-research-03.md` | 100 | 174,762 |
-| `map/31-materials-research-04.md` | 30 | 43,727 |
-| `map/32-materials-trace-01.md` | 31 | 71,487 |
+| `map/31-materials-research-03.md` | 100 | 178,227 |
+| `map/31-materials-research-04.md` | 46 | 66,342 |
+| `map/32-materials-trace-01.md` | 32 | 73,441 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 103,983 |
-| `map/40-relations-03.md` | 500 | 124,968 |
-| `map/40-relations-04.md` | 294 | 65,171 |
-| `map/50-sessions-01.md` | 50 | 44,677 |
-| `map/50-sessions-02.md` | 4 | 4,704 |
+| `map/40-relations-03.md` | 500 | 129,669 |
+| `map/40-relations-04.md` | 364 | 78,066 |
+| `map/50-sessions-01.md` | 50 | 44,505 |
+| `map/50-sessions-02.md` | 5 | 6,017 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
