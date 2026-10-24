@@ -19,6 +19,17 @@ import ledger_io  # noqa: E402
 import serve_viewer  # noqa: E402
 
 
+def ledger_record_count(root: Path, collection: str) -> int:
+    """Count records the tools see: the frozen base file plus every shard."""
+    files = [root / "state" / f"{collection}.jsonl"]
+    files.extend(sorted((root / "state" / f"{collection}.d").glob("*.jsonl")))
+    return sum(
+        len([line for line in path.read_text(encoding="utf-8").splitlines() if line.strip()])
+        for path in files
+        if path.is_file()
+    )
+
+
 def copy_repo(destination: Path) -> Path:
     repo = destination / "repo"
     shutil.copytree(
@@ -64,11 +75,7 @@ class ServerTests(unittest.TestCase):
                 <= set(payload)
             )
             # The payload may also carry derived panes (voice_audit, readings).
-            expected_fragments = sum(
-                1
-                for line in (ROOT / "state" / "fragments.jsonl").read_text(encoding="utf-8").splitlines()
-                if line.strip()
-            )
+            expected_fragments = ledger_record_count(ROOT, "fragments")
             self.assertEqual(len(payload["fragments"]), expected_fragments)
 
             status, _headers, body = get(port, "/")
@@ -112,9 +119,7 @@ class ServerTests(unittest.TestCase):
             stop = threading.Event()
             results: dict[int, int] = {}
             failures: list[str] = []
-            material_count = len(
-                [line for line in original.splitlines() if line.strip()]
-            )
+            material_count = ledger_record_count(repo, "materials")
 
             with mock.patch.object(serve_viewer, "ROOT", repo), mock.patch.object(
                 serve_viewer, "VIEWER_DIR", repo / "viewer"

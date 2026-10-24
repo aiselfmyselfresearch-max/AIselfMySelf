@@ -121,17 +121,22 @@ def copy_repo(destination: Path) -> Path:
 
 
 def ledger_counts(repo: Path) -> dict[str, int]:
-    """Count ledger records before the workers run.
+    """Count ledger records (base + shards) before the workers run.
 
     The tests used to hardcode absolute counts, which made them fail every time
-    a session added material. Counting the baseline first keeps the assertion
-    about *this* test's three concurrent appends.
+    a session added material. They also counted only the frozen base file, which
+    stopped matching the validators and the viewer once a session began writing
+    to its own shard. Both are fixed by taking a union baseline before the
+    workers start.
     """
     counts: dict[str, int] = {}
     for collection in ("fragments", "questions", "relations", "sessions"):
-        path = repo / "state" / f"{collection}.jsonl"
+        files = [repo / "state" / f"{collection}.jsonl"]
+        files.extend(sorted((repo / "state" / f"{collection}.d").glob("*.jsonl")))
         counts[collection] = sum(
-            1 for line in path.read_text(encoding="utf-8").splitlines() if line.strip()
+            len([line for line in path.read_text(encoding="utf-8").splitlines() if line.strip()])
+            for path in files
+            if path.is_file()
         )
     return counts
 
@@ -146,6 +151,7 @@ class ParallelSessionTests(unittest.TestCase):
     def test_three_sessions_write_concurrently_and_all_tools_see_the_union(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             repo = copy_repo(Path(tmp))
+            baseline = ledger_counts(repo)
             processes = [
                 subprocess.Popen(
                     [sys.executable, "-c", WORKER, str(slot)],
@@ -163,7 +169,6 @@ class ParallelSessionTests(unittest.TestCase):
             fragment_ids = [entry["fragment"] for entry in written]
             self.assertEqual(len(set(fragment_ids)), 3)
 
-            baseline = ledger_counts(repo)
             validation = run_tool(repo, "tools/validate_seed.py")
             self.assertEqual(validation.returncode, 0, validation.stdout + validation.stderr)
             for collection in ("fragments", "questions", "relations", "sessions"):

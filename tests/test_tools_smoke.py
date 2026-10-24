@@ -36,7 +36,7 @@ class RepositorySmokeTests(unittest.TestCase):
                 ignore=shutil.ignore_patterns(".git", "__pycache__", "*.pyc", "tests"),
             )
             shard_dir = repo / "state" / "materials.d"
-            shard_dir.mkdir()
+            shard_dir.mkdir(exist_ok=True)
             (shard_dir / "2026-10-21-aaaaaaaaaaaa.jsonl").write_text(
                 '{"material_id": "MAT-LIT-999"}\n', encoding="utf-8"
             )
