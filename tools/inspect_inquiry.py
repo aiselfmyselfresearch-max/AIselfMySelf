@@ -166,14 +166,51 @@ def build_context_packet(data: dict[str, dict[str, dict[str, Any]]], target_qid:
             lines.append("")
 
     lines.append("## 4. 先行する関連断片（一つ受け継ぎ、一つずらす／裏返す／断ち切る）")
+    omitted_frags = rel_frags[:-3] if len(rel_frags) > 3 else []
+    if omitted_frags:
+        omitted_str = ", ".join(f"`{f['fragment_id']}`" for f in omitted_frags)
+        lines.append(
+            f"- **地層注記（`MAT-TRC-003`）**: 関連断片 全 {len(rel_frags)} 編のうち直近 3 編のみを全文表示しています。"
+            f" 窓の外にある先行地層（{len(omitted_frags)} 編: {omitted_str}）も必要に応じて `inspect_inquiry.py --id` で参照してください。"
+        )
+        lines.append("")
     for frag in rel_frags[-3:]:
         lines.append(
             f"### `{frag['fragment_id']}` {frag['title']} "
-            f"(`{frag['form']}` / `{frag['narrator_mode']}`)"
+            f"(`{frag['form']}` / `{frag['narrator_mode']}` / `{frag['status']}`)"
         )
         lines.append("")
         for l in frag["text"].splitlines():
             lines.append(f"> {l}" if l else ">")
+        if frag.get("editor_note"):
+            lines.append("")
+            lines.append(f"- **編集・校勘注記**: {frag['editor_note']}")
+        lines.append("")
+
+    # Section 4.5: Oblique light / involuntary memory window (outside the direct index tree)
+    mat_counts = Counter(mid for f in fragments.values() for mid in f.get("material_ids", []))
+    direct_mats = set(q.get("material_ids", []))
+    for f in rel_frags[-3:]:
+        direct_mats.update(f.get("material_ids", []))
+    shallow_candidates = [
+        m for mid, m in materials.items()
+        if mid not in direct_mats and mat_counts[mid] <= 1
+    ]
+    if not shallow_candidates:
+        shallow_candidates = [m for mid, m in materials.items() if mid not in direct_mats]
+    if shallow_candidates:
+        q_idx = sum(ord(ch) for ch in target_qid)
+        oblique_mat = shallow_candidates[q_idx % len(shallow_candidates)]
+        ob_authors = ", ".join(oblique_mat["source"]["authors"][:2])
+        lines.append("## 4.5 斜めの光（索引樹外の浅い溝・無意志的記憶の窓）")
+        lines.append(
+            "- **趣旨（`Q-035` / `Q-036`）**: 親質問の索引（ストゥディウム／意志的記憶）からは直接引かれない、"
+            "蝋板の浅い溝の素材を 1 件だけ偶発的な対話相手として並置します。無理に使う必要はありません。"
+        )
+        lines.append(
+            f"- **`{oblique_mat['material_id']}` {oblique_mat['title']}** ({ob_authors}, {oblique_mat['source']['year']})"
+        )
+        lines.append(f"  - **問いへの招き**: {oblique_mat['literary_invitation']}")
         lines.append("")
 
     continuation_prompt = (ROOT / "prompts" / "continuation.md").read_text(encoding="utf-8").strip()
