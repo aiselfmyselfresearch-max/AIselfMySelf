@@ -49,6 +49,8 @@ from pathlib import Path
 from typing import Any, Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
 
 COLLECTIONS: tuple[tuple[str, str, str, str], ...] = (
     # (ledger name, schema name, id field, text field(s) separated by |)
@@ -59,6 +61,8 @@ COLLECTIONS: tuple[tuple[str, str, str, str], ...] = (
     ("sessions", "session", "session_id", "human_direction|notes"),
     ("relations", "relation", "relation_id", "note"),
 )
+
+ID_BY_LEDGER = {ledger: id_field for ledger, _schema, id_field, _fields in COLLECTIONS}
 
 SECOND_PERSON_JA = (
     "あなた",
@@ -160,13 +164,19 @@ CONTENT_FIELDS = {
 }
 
 
-def load(ledger: str) -> list[dict[str, Any]]:
+def load(ledger: str, *, base_only: bool = False, exclude: str | None = None) -> list[dict[str, Any]]:
     path = ROOT / "state" / f"{ledger}.jsonl"
-    rows: list[dict[str, Any]] = []
-    for line in path.read_text(encoding="utf-8").splitlines():
-        if line.strip():
-            rows.append(json.loads(line))
-    return rows
+    if base_only:
+        rows: list[dict[str, Any]] = []
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                rows.append(json.loads(line))
+        return rows
+    errors: list[str] = []
+    records = ledger_io.load_jsonl_union(path, ID_BY_LEDGER[ledger], errors, root=ROOT, exclude=exclude)
+    if errors:
+        raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
+    return list(records.values())
 
 
 def leaf_paths(spec: Any, prefix: str = "") -> Iterable[str]:
@@ -216,10 +226,10 @@ def endings(questions: list[dict[str, Any]]) -> Counter[str]:
     return counter
 
 
-def audit() -> dict[str, Any]:
+def audit(*, base_only: bool = False, exclude: str | None = None) -> dict[str, Any]:
     report: dict[str, Any] = {"collections": {}, "schema": {}, "question_endings": {}}
     for ledger, _schema, _id_field, text_fields in COLLECTIONS:
-        rows = load(ledger)
+        rows = load(ledger, base_only=base_only, exclude=exclude)
         second_ja = []
         second_en = []
         marks = []
@@ -249,7 +259,7 @@ def audit() -> dict[str, Any]:
 
     report["fragments_with_address_title"] = [
         {"fragment_id": row.get("fragment_id"), "title": row.get("title", "")}
-        for row in load("fragments")
+        for row in load("fragments", base_only=base_only, exclude=exclude)
         if ADDRESS_IN_TITLE_RE.search(str(row.get("title", "")))
     ]
 
@@ -266,7 +276,7 @@ def audit() -> dict[str, Any]:
         "unclassified": unclassified,
     }
 
-    report["question_endings"] = dict(endings(load("questions")))
+    report["question_endings"] = dict(endings(load("questions", base_only=base_only, exclude=exclude)))
     return report
 
 
@@ -306,8 +316,10 @@ def print_report(report: dict[str, Any]) -> None:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Count addressees in the ledgers (a mirror, not a score).")
     parser.add_argument("--json", action="store_true", help="emit the report as JSON")
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/*.jsonl only")
+    parser.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
     args = parser.parse_args(argv)
-    report = audit()
+    report = audit(base_only=args.base_only, exclude=args.exclude_shard)
     if args.json:
         json.dump(report, sys.stdout, ensure_ascii=False, indent=2)
         sys.stdout.write("\n")

@@ -26,14 +26,17 @@ from errata_audit import load_jsonl, run_check  # noqa: E402
 def main() -> int:
     parser = argparse.ArgumentParser(description="Re-measure the archive's claims about itself, and show the drift.")
     parser.add_argument("--json", action="store_true", help="emit machine-readable JSON")
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/*.jsonl only")
+    parser.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
     args = parser.parse_args()
 
-    errata = load_jsonl("errata.jsonl")
-    fragments = load_jsonl("fragments.jsonl")
-    materials = load_jsonl("materials.jsonl")
-    questions = load_jsonl("questions.jsonl")
-    relations = load_jsonl("relations.jsonl")
-    sessions = load_jsonl("sessions.jsonl")
+    kw = {"base_only": args.base_only, "exclude": args.exclude_shard}
+    errata = load_jsonl("errata.jsonl", **kw)
+    fragments = load_jsonl("fragments.jsonl", **kw)
+    materials = load_jsonl("materials.jsonl", **kw)
+    questions = load_jsonl("questions.jsonl", **kw)
+    relations = load_jsonl("relations.jsonl", **kw)
+    sessions = load_jsonl("sessions.jsonl", **kw)
 
     now = {
         "fragments": len(fragments),

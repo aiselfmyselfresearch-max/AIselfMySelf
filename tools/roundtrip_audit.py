@@ -8,6 +8,7 @@ a high similarity is not a faithful one. Both numbers are counts of change.
 """
 from __future__ import annotations
 
+import argparse
 import difflib
 import json
 import re
@@ -15,6 +16,9 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
+
 SAMPLE = ROOT / "readings" / "2026-10-24-roundtrip-sample.json"
 
 FIRST_PERSON = ("私", "僕", "自分", "われ", "わたし", "俺")
@@ -37,11 +41,22 @@ def counts(text: str) -> dict[str, int]:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/fragments.jsonl only")
+    args = parser.parse_args()
+
     data = json.loads(SAMPLE.read_text(encoding="utf-8"))
-    fragments = {
-        f["fragment_id"]: f
-        for f in (json.loads(l) for l in (ROOT / "state" / "fragments.jsonl").read_text(encoding="utf-8").splitlines() if l.strip())
-    }
+    base = ROOT / "state" / "fragments.jsonl"
+    if args.base_only:
+        fragments = {
+            f["fragment_id"]: f
+            for f in (json.loads(l) for l in base.read_text(encoding="utf-8").splitlines() if l.strip())
+        }
+    else:
+        errors: list[str] = []
+        fragments = ledger_io.load_jsonl_union(base, "fragment_id", errors, root=ROOT)
+        if errors:
+            raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
     print("往復翻訳の漂流——同一モデル・同一セッション内の最小値\n")
     header = f"{'fragment':10} {'chars':>12} {'ratio(正規化)':>12} {'一人称':>10} {'「':>6} {'？':>4}"
     print(header)

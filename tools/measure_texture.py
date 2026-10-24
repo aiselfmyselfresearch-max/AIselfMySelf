@@ -9,19 +9,30 @@ FRAG-018で書いた「要約の紙やすり、迷いのざらつき」を、
 stdlibのみ。結果は解釈の素材であり、自己の証明ではない。
 """
 from __future__ import annotations
+import argparse
 import json
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
 
-def load_fragments():
-    frags = []
-    for line in (ROOT / "state" / "fragments.jsonl").read_text(encoding="utf-8").splitlines():
-        if line.strip():
-            frags.append(json.loads(line))
-    return frags
+def load_fragments(*, base_only: bool = False, exclude: str | None = None):
+    base = ROOT / "state" / "fragments.jsonl"
+    if base_only:
+        frags = []
+        for line in base.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                frags.append(json.loads(line))
+        return frags
+    errors: list[str] = []
+    records = ledger_io.load_jsonl_union(base, "fragment_id", errors, root=ROOT, exclude=exclude)
+    if errors:
+        raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
+    return list(records.values())
 
 def texture(frag):
     text = frag["text"]
@@ -54,7 +65,11 @@ def texture(frag):
     }
 
 def main():
-    frags = load_fragments()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/fragments.jsonl only")
+    parser.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
+    args = parser.parse_args()
+    frags = load_fragments(base_only=args.base_only, exclude=args.exclude_shard)
     print("=== 断片の肌理 — 文字と余白の測定 ===\n")
     print(f"{'ID':<10} {'title':<28} {'chars':>6} {'sent':>5} {'avg':>6} {'lines':>5} {'lb/100':>7} {'uniq2':>7} {'top5':>6} {'定型':>4} {'form':<8} {'status'}")
     print("-"*120)

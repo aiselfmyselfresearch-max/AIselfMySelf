@@ -66,11 +66,15 @@ def main() -> int:
     parser.add_argument("--fragments", type=int, default=31, help="fragment population at the time")
     parser.add_argument("--min-len", type=int, default=4, help="length at which quotations were counted")
     parser.add_argument("--trace-scope", choices=["any", "own"], default="own")
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/*.jsonl only")
     args = parser.parse_args()
 
     target_total, target_matched, target_originals = (int(x) for x in args.target.split(","))
-    fragments = [f for f in load_jsonl("fragments.jsonl") if number(f["fragment_id"]) <= args.fragments]
-    materials = load_jsonl("materials.jsonl")
+    fragments = [
+        f for f in load_jsonl("fragments.jsonl", base_only=args.base_only)
+        if number(f["fragment_id"]) <= args.fragments
+    ]
+    materials = load_jsonl("materials.jsonl", base_only=args.base_only)
     quotes = collect(fragments, args.min_len)
 
     print("=== 復元 — 失われた測り方を、数の側から探す（証明ではありません） ===\n")

@@ -30,7 +30,18 @@ import ledger_io  # noqa: E402
 QUESTION_TAIL = re.compile(r"(？|\?|だろうか。|でしょうか。|のか。|ではないか。|のだろうか。)$")
 
 
-def load_jsonl(name: str, id_key: str, *, base_only: bool = False,
+ID_KEYS: dict[str, str] = {
+    "errata.jsonl": "errata_id",
+    "fragments.jsonl": "fragment_id",
+    "materials.jsonl": "material_id",
+    "motifs.jsonl": "motif_id",
+    "questions.jsonl": "question_id",
+    "relations.jsonl": "relation_id",
+    "sessions.jsonl": "session_id",
+}
+
+
+def load_jsonl(name: str, id_key: str | None = None, *, base_only: bool = False,
                exclude: str | None = None) -> list[dict[str, Any]]:
     """Load a collection the way every other tool does: base plus shards.
 
@@ -40,12 +51,19 @@ def load_jsonl(name: str, id_key: str, *, base_only: bool = False,
     serve_viewer, sleep_audit and promise_audit all measured 50, so the mirror
     of corrections silently lagged behind the archive it audits. ``base_only``
     reproduces the old count for comparison.
+
+    ``id_key`` defaults via ``ID_KEYS`` so older callers (``drift_audit.py``,
+    ``reconstruct.py``) that pass only ``name`` continue to work without ripple
+    failures.
     """
     base = ROOT / "state" / name
     if base_only:
         return [json.loads(line) for line in base.read_text(encoding="utf-8").splitlines() if line.strip()]
+    resolved_key = id_key or ID_KEYS.get(name)
+    if not resolved_key:
+        raise ValueError(f"unknown ledger {name!r}; pass id_key explicitly")
     errors: list[str] = []
-    records = ledger_io.load_jsonl_union(base, id_key, errors, root=ROOT, exclude=exclude)
+    records = ledger_io.load_jsonl_union(base, resolved_key, errors, root=ROOT, exclude=exclude)
     if errors:
         raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
     return list(records.values())

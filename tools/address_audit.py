@@ -36,11 +36,15 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
+
 FRAGMENTS = ROOT / "state" / "fragments.jsonl"
 
 # Second-person forms. `君` is matched without a following hiragana that would
@@ -71,8 +75,14 @@ def addressee_kind(line: str) -> str:
     return "固有名の可能性（要確認）"
 
 
-def load(path: Path) -> list[dict[str, Any]]:
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+def load(path: Path, *, base_only: bool = False, exclude: str | None = None) -> list[dict[str, Any]]:
+    if base_only:
+        return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    errors: list[str] = []
+    records = ledger_io.load_jsonl_union(path, "fragment_id", errors, root=ROOT, exclude=exclude)
+    if errors:
+        raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
+    return list(records.values())
 
 
 def strip_quotes(text: str) -> str:
@@ -166,9 +176,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Measure whom the fragments address. A mirror, not a score.")
     parser.add_argument("--json", action="store_true", help="emit machine-readable output")
     parser.add_argument("--show", metavar="FRAG_ID", help="show one fragment's row")
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/fragments.jsonl only")
+    parser.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
     args = parser.parse_args()
 
-    data = audit(load(FRAGMENTS))
+    data = audit(load(FRAGMENTS, base_only=args.base_only, exclude=args.exclude_shard))
     if args.show:
         for row in data["rows"]:
             if row["fragment_id"] == args.show:
