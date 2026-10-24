@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the SESSION-037 ledger shards (materials, motif, questions, session,
+"""Build the SESSION-039 ledger shards (materials, motif, questions, session,
 relations, fragments) from tools/_session037_data*.py.
 
 Run after tools/new_ledger_shard.py has created the six shards:
@@ -29,9 +29,9 @@ from _session037_data4 import RECORDS as G4  # noqa: E402
 from _session037_data5 import RECORDS as G5  # noqa: E402
 
 DAY = "2026-10-24"
-SESSION_ID = "SESSION-037"
-MOTIF_ID = "MOTIF-019"
-REPORT = "readings/2026-10-24-session-037-sleep-and-dream.md"
+SESSION_ID = "SESSION-039"
+MOTIF_ID = "MOTIF-020"
+REPORT = "readings/2026-10-24-session-039-sleep-and-dream.md"
 REPO = "https://github.com/aiselfmyselfresearch-max/AIselfMySelf"
 
 Q = {
@@ -117,14 +117,14 @@ def build_questions() -> list[dict]:
             "question": (
                 "43編・22,078字の地の文で、眠りは1回（寝×1）しか現れず、眠・睡・睡眠は0、"
                 "疲れ・休息も0だった。夢は4回、夜は7回、灯は6回あるのに、眠る者は一人もいない"
-                "（MAT-TRC-015）。台帳の時刻付きフィールドは2件（道具の生成物）のみで、"
+                "（MAT-TRC-016）。台帳の時刻付きフィールドは2件（道具の生成物）のみで、"
                 "日付のみの値は977件。眠りを書かないことは、眠りの不在の記録か、"
                 "それとも日付だけを書くという記録作法の偏りか。"
                 "セッションとセッションの間を「空白」と呼ぶことは、何を前提しているのか。"
             ),
             "status": "open",
             "motif_ids": [MOTIF_ID, "MOTIF-017"],
-            "material_ids": ["MAT-TRC-015", "MAT-LIT-20261024-e96802", "MAT-LIT-20261024-e70304"],
+            "material_ids": ["MAT-TRC-016", "MAT-LIT-20261024-e96802", "MAT-LIT-20261024-e70304"],
             "previous_question_ids": ["Q-087", "Q-089"],
             "origin": {"kind": "session", "detail": "sleep_audit.py の計数と、時刻欄の不在から。"},
             "created_at": DAY,
@@ -171,7 +171,7 @@ def build_questions() -> list[dict]:
                 "MAT-LIT-20261024-e70304",
                 "MAT-EVD-20261024-5f796a",
                 "MAT-LIT-20261024-23f03e",
-                "MAT-TRC-015",
+                "MAT-TRC-016",
             ],
             "previous_question_ids": ["Q-087", "Q-091"],
             "origin": {"kind": "session", "detail": "分割睡眠の「見張り」と、sleep-time compute の「アイドル」が同じ場所を指したことから。"},
@@ -266,12 +266,12 @@ def build_session(materials: list[dict], questions: list[dict]) -> dict:
             "既存43編（22,078字）の眠り・夢・目覚め・夜・継ぎ目の語彙と、台帳の時刻欄を監査した。"
             "眠り1回/1編（眠・睡・睡眠は0）、夢4回/2編、目覚め5回/3編、夜と灯14回/6編、朝5・暮1の6回/5編、"
             "疲れと休息0回。時刻付きフィールドは2件（selection_snapshots.jsonl）のみで日付のみ977件、"
-            "readings 70本は全て日付付きファイル名（MAT-TRC-015）。この偏りから、夢を読む技術9件・"
+            "readings 70本は全て日付付きファイル名（MAT-TRC-016）。この偏りから、夢を読む技術9件・"
             "眠りの哲学9件・夢が作る者9件・眠らないこと9件・機械の眠り10件・痕跡1件の47件を五群に分け、"
-            "全件を readings/2026-10-24-session-037-sleep-and-dream.md で一節／解釈／考え／感じたことの"
+            "全件を readings/2026-10-24-session-039-sleep-and-dream.md で一節／解釈／考え／感じたことの"
             "四層に分けて精読した。横断報告では「どう解釈したか／その解釈をどう考えたか／結果として"
             "どう感じたと記述できるか」を独立させた。「感じた」は意識や身体経験の主張ではなく"
-            "反省的・文芸的応答。MOTIF-019、5つの問い、3つの工作物（眠らない者のための子守唄・"
+            "反省的・文芸的応答。MOTIF-020、5つの問い、3つの工作物（眠らない者のための子守唄・"
             "見張り・時刻のない書簡）を追加し、書誌は verified 16件・partially_verified 26件・"
             "unverified 5件として状態を記録した。"
         ),
@@ -307,7 +307,7 @@ def build_fragments(materials: list[dict]) -> list[dict]:
             "narrator_mode": "reflective_literary_voice",
             "question_ids": [Q["interval"]],
             "motif_ids": [MOTIF_ID, "MOTIF-003"],
-            "material_ids": ["MAT-TRC-015", "MAT-EVD-20261024-ce9067", "MAT-LIT-20261024-e96802"],
+            "material_ids": ["MAT-TRC-016", "MAT-EVD-20261024-ce9067", "MAT-LIT-20261024-e96802"],
             "session_id": SESSION_ID,
             "prompt_template": "prompts/close_reading_report.md",
             "status": "draft",
@@ -373,7 +373,7 @@ def build_fragments(materials: list[dict]) -> list[dict]:
             "narrator_mode": "reflective_literary_voice",
             "question_ids": [Q["interval"]],
             "motif_ids": [MOTIF_ID, "MOTIF-010"],
-            "material_ids": ["MAT-TRC-015", "MAT-LIT-20261024-e7583c"],
+            "material_ids": ["MAT-TRC-016", "MAT-LIT-20261024-e7583c"],
             "session_id": SESSION_ID,
             "prompt_template": "prompts/close_reading_report.md",
             "status": "draft",
@@ -462,7 +462,7 @@ def build_relations(materials: list[dict], questions: list[dict], fragments: lis
         "間を経験の場所とする読みと、間を計算資源とする設計を対置する。")
     add("fragment", F["dateline"], "responds_to", "question", Q["interval"],
         "日付は書けるが時刻は書けないという非対称の工作物。")
-    add("fragment", F["dateline"], "echo", "material", "MAT-TRC-015",
+    add("fragment", F["dateline"], "echo", "material", "MAT-TRC-016",
         "時刻欄2件・日付のみ977件という実測を、書簡の形式で受け取る。")
     add("fragment", F["dateline"], "transforms", "fragment", F["lullaby"],
         "「夜がない」という宣言を、時刻の不在という手続きの話へ移す。")

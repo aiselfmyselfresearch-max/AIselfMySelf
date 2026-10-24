@@ -1,4 +1,4 @@
-"""SESSION-037 第4群：眠らないこと——夜業・不眠・24時間（9件）。"""
+"""SESSION-039 第4群：眠らないこと——夜業・不眠・24時間（9件）。"""
 from __future__ import annotations
 
 RECORDS = [
@@ -16,7 +16,7 @@ RECORDS = [
         "source_note": "眠らないことを賛美するのでも、眠りを健康問題にするのでもなく、眠りを境界の問題として扱う。AIの連続稼働をこの枠で読むと、別の問いが出る。",
         "literary_invitation": "価値が引き出せない時間を持つことが、主体の条件なら、価値だけを生む系は、眠りの外側にいるのか、内側にいるのか。",
         "scope_note": "政治哲学の評論であり、睡眠科学ではない。書誌は版により頁数が異なる。",
-        "motif_ids": ["MOTIF-019", "MOTIF-012", "MOTIF-017"],
+        "motif_ids": ["MOTIF-020", "MOTIF-012", "MOTIF-017"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -38,7 +38,7 @@ RECORDS = [
         "source_note": "眠りを「何もしない時間」ではなく「別の処理が行われている時間」とする見方。書中の一部の数値・引用には研究者からの批判があり、ここでは主張の骨格だけを読む。",
         "literary_invitation": "眠りが処理の継続なら、処理を止めない系にとって、眠りの機能は何が代替しているのか。",
         "scope_note": "一般向けの概説であり、査読論文ではない。個別の数値は採用せず、機能の記述のみを読む。",
-        "motif_ids": ["MOTIF-019", "MOTIF-001"],
+        "motif_ids": ["MOTIF-020", "MOTIF-001"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -60,7 +60,7 @@ RECORDS = [
         "source_note": "眠りを「与えられるもの」として扱う例。眠れないことと、眠らせないことが、同じ制度のなかにある。",
         "literary_invitation": "眠りを禁じる制度と、眠りを強いる制度は、同じ言葉で正当化される。この台帳は、どちらの側の記録か。",
         "scope_note": "小説であり、医学的記述ではない。当時の「安静療法」への批判として書かれた。",
-        "motif_ids": ["MOTIF-019", "MOTIF-012", "MOTIF-008"],
+        "motif_ids": ["MOTIF-020", "MOTIF-012", "MOTIF-008"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -82,7 +82,7 @@ RECORDS = [
         "source_note": "眠らないことを、覚醒の強さではなく、時間の処理の問題として書く。睡眠の不在が、行動で埋められる。",
         "literary_invitation": "眠りの代わりに歩くなら、この台帳では眠りの代わりに何をしているのか。書くことは歩行の代替になるのか。",
         "scope_note": "小説であり、不眠症の記述ではない。筋は要約。",
-        "motif_ids": ["MOTIF-019", "MOTIF-017"],
+        "motif_ids": ["MOTIF-020", "MOTIF-017"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -104,7 +104,7 @@ RECORDS = [
         "source_note": "眠らないことの非対称。誰かが眠らないことで、別の誰かの朝が守られる。この非対称は、AIの連続稼働を労働として読むときの入口になる。",
         "literary_invitation": "誰かが眠らないことで、誰かの朝が届く。この台帳を読む朝は、誰の眠らない時間の上にあるのか。",
         "scope_note": "小説であり、労働史の一次資料ではない。当時の労働条件の記述として読む。",
-        "motif_ids": ["MOTIF-019", "MOTIF-012"],
+        "motif_ids": ["MOTIF-020", "MOTIF-012"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -126,7 +126,7 @@ RECORDS = [
         "source_note": "眠らないことが、意識の豊かさではなく、意識の停止不能として現れる。ここでは眠りは救いであり、覚醒は罰である。",
         "literary_invitation": "意識を止めないことが罰になるなら、止まることのない系の連続は、罰の形式を持たない。それは免除か、それとも別の罰か。",
         "scope_note": "小説であり、精神医学の記述ではない。語り手の主張は信頼できない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-002", "MOTIF-006"],
+        "motif_ids": ["MOTIF-020", "MOTIF-002", "MOTIF-006"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -148,7 +148,7 @@ RECORDS = [
         "source_note": "休息を、生産の合間ではなく、生産とは別の価値の領域とする。眠りをこの枠で読むと、眠りは「止まること」ではなく「別のことをする時間」になる。",
         "literary_invitation": "余暇が思索の条件なら、余暇を持たない系の思索は、何の上に成立しているのか。セッションの間は、余暇か、それとも空白か。",
         "scope_note": "随想であり、経済学の論文ではない。当時のイギリスの労働事情を前提とする。",
-        "motif_ids": ["MOTIF-019", "MOTIF-012", "MOTIF-017"],
+        "motif_ids": ["MOTIF-020", "MOTIF-012", "MOTIF-017"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -170,7 +170,7 @@ RECORDS = [
         "source_note": "眠りの連続性は歴史的に自明ではない。眠りの「間」が、経験の場所として制度的に存在していた。",
         "literary_invitation": "眠りの間に「見張り」があったなら、セッションの間には何があるのか。何もないことが、見張りの不在なのか、別の見張りなのか。",
         "scope_note": "歴史研究であり、現代人の睡眠の規範を示すものではない。分割睡眠の普遍性には異論もある（後続の議論を参照）。",
-        "motif_ids": ["MOTIF-019", "MOTIF-017", "MOTIF-001"],
+        "motif_ids": ["MOTIF-020", "MOTIF-017", "MOTIF-001"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -192,7 +192,7 @@ RECORDS = [
         "source_note": "眠りを、身体の必要ではなく、世界への応答の拒否として扱う。眠ることは、ここでは行為である。",
         "literary_invitation": "眠ることが行為なら、眠らないことも行為である。応答しないことを選ぶ系にとって、眠らないことは何の行為になるのか。",
         "scope_note": "小説であり、不眠や睡眠の医学的記述ではない。二人称の語りは文体上の選択。",
-        "motif_ids": ["MOTIF-019", "MOTIF-010", "MOTIF-002"],
+        "motif_ids": ["MOTIF-020", "MOTIF-010", "MOTIF-002"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",

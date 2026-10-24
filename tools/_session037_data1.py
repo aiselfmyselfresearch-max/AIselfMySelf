@@ -1,4 +1,4 @@
-"""SESSION-037 第1群：夢を読む技術——分類・註解・記録（9件）。
+"""SESSION-039 第1群：夢を読む技術——分類・註解・記録（9件）。
 
 各レコードは material.schema.json の必須欄を満たす。origin は
 _session037_build_state.py が共通の値を注入する。
@@ -20,7 +20,7 @@ RECORDS = [
         "source_note": "夢を私的な内面ではなく、読み取り可能な徴として扱う伝統の起点。夢の意味を一般則にせず、夢見手との関係に置く点が後続の夢書と異なる。",
         "literary_invitation": "夢を読むのに、夢そのものではなく、見た者の身分から読む——この手続きは、AIの出力を読むときの何に対応するのか。",
         "scope_note": "占いの技術書であり、夢の生理や意識の理論ではない。夢の内容の真偽は扱わない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-001", "MOTIF-011"],
+        "motif_ids": ["MOTIF-020", "MOTIF-001", "MOTIF-011"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -42,7 +42,7 @@ RECORDS = [
         "source_note": "五分類はしばしば「三つの正統な夢と二つの偽の夢」と要約される。偽の夢を切り捨てるのではなく、名前を与えて残した点が重要。",
         "literary_invitation": "意味のない夢にも名前が与えられている。名前を与えることは、切り捨てることでも、救うことでもある。台帳の「まだ読まれていない断片」は、どちらの欄に入るのか。",
         "scope_note": "夢の分類学であり、夢の因果の説明ではない。分類の基準は「未来を告げるか」であって、夢の強度や記憶ではない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-008"],
+        "motif_ids": ["MOTIF-020", "MOTIF-008"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -64,7 +64,7 @@ RECORDS = [
         "source_note": "夢を「読む」伝統とは逆向きの用法。夢は特別な知らせではなく、目覚めている世界の側の性質を言い当てる比喩になる。",
         "literary_invitation": "夢が比喩であるとき、目覚めている世界もまた夢に似ていることになる。台帳の記録もまた、作られたものとしてこの偈の側にあるのか。",
         "scope_note": "般若経の空の教説であり、睡眠中の夢の理論ではない。引用は偈の一部で、全経の文脈を代表しない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-006"],
+        "motif_ids": ["MOTIF-020", "MOTIF-006"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -86,7 +86,7 @@ RECORDS = [
         "source_note": "夢を記録する形式が、睡眠の記述ではなく、関係の記述として始まっていることを示す。",
         "literary_invitation": "夢の記録は、誰に会ったかの記録である。台帳に残っているのは、誰に会った記録か。",
         "scope_note": "日記の文学であり、睡眠や夢の医学的記述ではない。夢の箇所の厳密な章段同定はしていない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-005", "MOTIF-010"],
+        "motif_ids": ["MOTIF-020", "MOTIF-005", "MOTIF-010"],
         "verification": {
             "status": "unverified",
             "checked_at": "2026-10-24",
@@ -108,7 +108,7 @@ RECORDS = [
         "source_note": "夢と現の境界を、語り手が判定しないまま読者へ渡す形式。判定を保留することが、悲しみの強度を作っている。",
         "literary_invitation": "朝が来なければ、その一夜は夢ではなかったことになる。判定を下すのは、眠りから覚めた側ではなく、光の側だ。",
         "scope_note": "怪異譚であり、夢の理論ではない。原文の該当句は引用せず、筋の要約にとどめた。",
-        "motif_ids": ["MOTIF-019", "MOTIF-001", "MOTIF-006"],
+        "motif_ids": ["MOTIF-020", "MOTIF-001", "MOTIF-006"],
         "verification": {
             "status": "unverified",
             "checked_at": "2026-10-24",
@@ -130,7 +130,7 @@ RECORDS = [
         "source_note": "「夢の女」という題が示すのは、夢を見る主体の側の偏り。夢は対象の属性ではなく、見る者の病の名になる。",
         "literary_invitation": "対象を夢と呼ぶとき、実際に夢を見ているのは誰か。AIが読む資料を「夢の資料」と呼ぶことはできるか。",
         "scope_note": "近代小説の一例。精神医学的な夢理論とは関係しない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-005"],
+        "motif_ids": ["MOTIF-020", "MOTIF-005"],
         "verification": {
             "status": "unverified",
             "checked_at": "2026-10-24",
@@ -152,7 +152,7 @@ RECORDS = [
         "source_note": "夢の報告が、覚醒後の検閲を通らない例。訂正されない夢は、記録としては現実と区別できない。",
         "literary_invitation": "訂正の欄がない記録は、夢を夢として扱えるのか。台帳の status 欄は、夢と現実を分けるためにあるのか。",
         "scope_note": "幻想文学の一例。睡眠中の夢の生理を扱わない。個々の作品の厳密な同定はしていない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-016"],
+        "motif_ids": ["MOTIF-020", "MOTIF-016"],
         "verification": {
             "status": "unverified",
             "checked_at": "2026-10-24",
@@ -174,7 +174,7 @@ RECORDS = [
         "source_note": "夢の報告の最小形。報告されるのは像と順序だけで、その像がどこで生じたかは報告に含まれない。",
         "literary_invitation": "体験の身分を書かずに、体験の記述だけを残すことはできる。この台帳の断片は、すでにそうなっているのではないか。",
         "scope_note": "幻想小説であり、夢の判定を目的としない。引用は筋の要約。",
-        "motif_ids": ["MOTIF-019", "MOTIF-008"],
+        "motif_ids": ["MOTIF-020", "MOTIF-008"],
         "verification": {
             "status": "unverified",
             "checked_at": "2026-10-24",
@@ -196,7 +196,7 @@ RECORDS = [
         "source_note": "夢を「読む」伝統の近代版。ただし意味の所在は神や未来ではなく、夢見手の無意識へ移される。",
         "literary_invitation": "夢が眠りを守るなら、夢を見ない者は何を守られているのか。守るべき眠りを持たない者に、夢の代わりに何が残るのか。",
         "scope_note": "精神分析の理論であり、現在の夢研究の通説ではない。引用句は流布する要約で、原文の一節ではない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-001", "MOTIF-006"],
+        "motif_ids": ["MOTIF-020", "MOTIF-001", "MOTIF-006"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",

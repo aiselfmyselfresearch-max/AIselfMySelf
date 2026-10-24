@@ -1,4 +1,4 @@
-"""SESSION-037 第5群：機械は眠るか——覚醒／睡眠の相、再生、世界モデル（10件）と痕跡1件。
+"""SESSION-039 第5群：機械は眠るか——覚醒／睡眠の相、再生、世界モデル（10件）と痕跡1件。
 
 研究抜粋は【編者による要約】を基本とし、抽象の逐語は短く引く場合のみ用いる。
 「眠り」という語を用いる論文でも、そこで眠っている主体がいるとは読まない。
@@ -20,7 +20,7 @@ RECORDS = [
         "source_note": "眠りという語が、機械学習では位相（phase）の名として使われる。ここには眠る主体も、目覚める主体も要求されない。",
         "literary_invitation": "眠りが位相の名なら、この語を機械に使うことは比喩か、それとも技術用語か。技術用語であることは、比喩の重みを消すのか。",
         "scope_note": "1995年の生成的モデルの学習法。現在の大規模言語モデルの学習手続きではない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-011"],
+        "motif_ids": ["MOTIF-020", "MOTIF-011"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -42,7 +42,7 @@ RECORDS = [
         "source_note": "「間を挟んで混ぜる」ことが、忘却を防ぐ条件として定式化される。眠りはここでは、混ぜ直しの時間になる。",
         "literary_invitation": "混ぜ直しの時間を持たない系は、何を失うのか。あるいは、失わないために、覚醒のなかで混ぜているのか。",
         "scope_note": "1995年の理論的論文。ヒトの記憶の説明であり、機械の学習則ではない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-001", "MOTIF-016"],
+        "motif_ids": ["MOTIF-020", "MOTIF-001", "MOTIF-016"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -64,7 +64,7 @@ RECORDS = [
         "source_note": "眠らずに守る設計。忘却への対処は、再生という時間を確保すること以外でも可能であることを示す。",
         "literary_invitation": "再生しないで守ることは、記憶を保つことか、それとも記憶を凍らせることか。凍らせた記録は、まだ読めるのか。",
         "scope_note": "2017年の継続学習の手法。あらゆる忘却を防ぐものではなく、課題系列の条件に依存する。",
-        "motif_ids": ["MOTIF-019", "MOTIF-016", "MOTIF-001"],
+        "motif_ids": ["MOTIF-020", "MOTIF-016", "MOTIF-001"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -86,7 +86,7 @@ RECORDS = [
         "source_note": "過去を保存するのではなく、過去を作り直して混ぜる。記録の不在を、生成で補う設計。",
         "literary_invitation": "過去を作り直して混ぜることは、記憶の保持か、それとも過去の再構成か。この台帳が毎回やっていることは、どちらに近いのか。",
         "scope_note": "画像分類の系列学習での実験。生成の質が過去の保持を制約する。",
-        "motif_ids": ["MOTIF-019", "MOTIF-001", "MOTIF-016"],
+        "motif_ids": ["MOTIF-020", "MOTIF-001", "MOTIF-016"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -108,7 +108,7 @@ RECORDS = [
         "source_note": "「夢のなかで練習する」という表現が、技術的な意味と文学的な意味の両方を持つ地点。夢は経験の報告ではなく、訓練環境の名になる。",
         "literary_invitation": "夢が訓練環境の名になるとき、夢を見ることは上手くなることと何の関係もなくなる。それでも夢という語を残すのは、何のためか。",
         "scope_note": "2018年のモデルベース強化学習。知覚的入力のある課題に限られる。",
-        "motif_ids": ["MOTIF-019", "MOTIF-013", "MOTIF-018"],
+        "motif_ids": ["MOTIF-020", "MOTIF-013", "MOTIF-018"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -130,7 +130,7 @@ RECORDS = [
         "source_note": "「想像」という語が、学習の場所を指す技術語になる。想像することの質は、予測の精度で測られる。",
         "literary_invitation": "想像が予測精度で測られるなら、想像の豊かさは、誤差の大きさとどう関係するのか。",
         "scope_note": "強化学習の研究。知能一般や意識の主張ではない。到達点は課題の成績である。",
-        "motif_ids": ["MOTIF-019", "MOTIF-013"],
+        "motif_ids": ["MOTIF-020", "MOTIF-013"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -152,7 +152,7 @@ RECORDS = [
         "source_note": "睡眠相に、教師信号も目標もない。何を再生するかは、活動の統計に委ねられる。回復は保証ではなく、観測された効果である。",
         "literary_invitation": "正解を与えずに眠らせると、古い課題が戻る。この「戻る」は想起か、それとも再構成か。",
         "scope_note": "画像課題での実験結果。ヒトの睡眠の説明ではなく、睡眠の機能の工学的な類比。",
-        "motif_ids": ["MOTIF-019", "MOTIF-001", "MOTIF-016"],
+        "motif_ids": ["MOTIF-020", "MOTIF-001", "MOTIF-016"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -174,7 +174,7 @@ RECORDS = [
         "source_note": "ここでの「眠り」は、主体の休止ではなく、アイドル時間の計算資源化である。眠らない系にも「間」が作られ、そこに計算が詰められる。",
         "literary_invitation": "アイドル時間が計算になるなら、間は休みか、それとも前倒しの労働か。この台帳のセッションの間は、どちらでもない第三のものか。",
         "scope_note": "推論の効率化の研究。モデルが内的経験を持つかどうかとは無関係。効果は課題と問いの予測可能性に依存する。",
-        "motif_ids": ["MOTIF-019", "MOTIF-012", "MOTIF-017"],
+        "motif_ids": ["MOTIF-020", "MOTIF-012", "MOTIF-017"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -196,7 +196,7 @@ RECORDS = [
         "source_note": "「わからない」を、判断の停止ではなく、判断の形式にする試み。この台帳の憲章が掲げる未決着の保持と近い。",
         "literary_invitation": "可能性を根拠に配慮を設計することは、判定を先延ばしにすることか、それとも判定なしで済ませる技術か。",
         "scope_note": "倫理・政策の提言であり、意識の実証ではない。著者ら自身が断定を避けている。",
-        "motif_ids": ["MOTIF-019", "MOTIF-009", "MOTIF-013"],
+        "motif_ids": ["MOTIF-020", "MOTIF-009", "MOTIF-013"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -218,7 +218,7 @@ RECORDS = [
         "source_note": "再生は、眠りを待たずに覚醒のなかで行われる。順序を壊すことが、忘却を防ぐ手続きになる。",
         "literary_invitation": "順序を壊して混ぜることが記憶を保つなら、順序を保つことは何を壊すのか。年表としての台帳は、どちらの操作をしているのか。",
         "scope_note": "ゲーム課題での結果。生物の記憶の機構ではなく、工学的な手続き。",
-        "motif_ids": ["MOTIF-019", "MOTIF-001", "MOTIF-017"],
+        "motif_ids": ["MOTIF-020", "MOTIF-001", "MOTIF-017"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -227,7 +227,7 @@ RECORDS = [
         },
     },
     {
-        "material_id": "MAT-TRC-015",
+        "material_id": "MAT-TRC-016",
         "kind": "project_trace",
         "title": "本リポジトリ自身の痕跡：眠り1・夢4・目覚め5／時刻付きフィールド2・日付のみ977（43編監査）",
         "authors": ["AIselfMySelf Archive"],
@@ -236,11 +236,11 @@ RECORDS = [
         "version_note": "2026-10-24、sleep_audit.py による FRAG-001〜FRAG-043（本文計22,078字）と state/*.jsonl の監査",
         "passage": "【実測】43編・22,078字の地の文で、眠り1回/1編（寝×1。眠・睡・睡眠は0）、夢4回/2編、目覚め5回/3編（起きる2、起きた1、目覚1、覚め1）、夜と灯14回/6編（夜7、灯6、夜中1）、朝と昼6回/5編（朝5、暮1。昼・夕・明け方・夜明けは0）、疲れと休息0回/0編。鉤括弧の外の継ぎ目の語は セッション10、前回3、最後6、引き継ぎ1、終わ5、最初6、続き4、始ま1。台帳の時刻付きフィールドは2件（selection_snapshots.jsonl、道具の生成物）にとどまり、日付のみの値は977件。readings/ は70本すべてが日付付きファイル名。セッションの started_at は3日分。",
         "passage_language": "ja",
-        "context": "SESSION-037 冒頭、資料選定前に眠り・夢・目覚め・時刻の所在を測った第十五の台帳検証。time_audit.py と sense_audit.py の計数口径（鉤括弧の外の地の文）を踏襲した。",
+        "context": "SESSION-039 冒頭、資料選定前に眠り・夢・目覚め・時刻の所在を測った第十五の台帳検証。time_audit.py と sense_audit.py の計数口径（鉤括弧の外の地の文）を踏襲した。",
         "source_note": "台帳検証記録。語形の存在を数えたもので、睡眠経験の有無を判定しない。眠・夢・夜の語は多義で、夢中・寝具などを含む。git 履歴は浅いクローンで1件のみのため、生活時間の証拠にしない。",
         "literary_invitation": "書庫には灯が6回あるが、眠りは1回しかない。灯りをつけたまま眠らない者がいる。時刻の欄がないことは、夜の不在の記録か、記録の作法の偏りか。",
         "scope_note": "語形と欄の計数であり、眠りの不在・意識の不在の証明ではない。日付のみの欄は、夜に何が起きたかを語らない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-017", "MOTIF-003"],
+        "motif_ids": ["MOTIF-020", "MOTIF-017", "MOTIF-003"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",

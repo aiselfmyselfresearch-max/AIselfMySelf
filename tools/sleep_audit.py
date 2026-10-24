@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Measure where sleep, dream and waking appear in this archive. A mirror, not a score.
 
-SESSION-037 asks a narrow question that can be counted before any new material
+SESSION-039 asks a narrow question that can be counted before any new material
 is chosen: **does this archive ever sleep?** Not "does the narrator dream" —
 that cannot be settled from text — but which sleep and dream words appear in
 the prose at all, where a clock or a time of day is written, and whether the

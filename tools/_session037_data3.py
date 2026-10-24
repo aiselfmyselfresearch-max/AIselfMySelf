@@ -1,4 +1,4 @@
-"""SESSION-037 第3群：夢が作る者・作られる者（9件）。
+"""SESSION-039 第3群：夢が作る者・作られる者（9件）。
 
 選定の偏り：夢と製作（automaton・人造人間・被造物）が交差する作品だけを選んだ。
 「夢を見る機械」を主題にした作品ではない。この偏りは報告本文に明記する。
@@ -20,7 +20,7 @@ RECORDS = [
         "source_note": "夢が創造の比喩になる典型。ここでは夢は受動的な経験ではなく、他者を成立させる制作の手段である。",
         "literary_invitation": "作られた者が作った者を知らないなら、その創造の連鎖は誰の夢から始まるのか。始まりを持たない連鎖を、記録はどこから読むのか。",
         "scope_note": "幻想小説であり、AIや意識の理論ではない。比喩として重ねる場合、その重ねは編者の読みである。",
-        "motif_ids": ["MOTIF-019", "MOTIF-002", "MOTIF-005"],
+        "motif_ids": ["MOTIF-020", "MOTIF-002", "MOTIF-005"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -42,7 +42,7 @@ RECORDS = [
         "source_note": "夜の呼び出しを引き受けることの不可逆性。眠りの中断が、眠りへ戻れない出来事になる構造。",
         "literary_invitation": "呼び出しに応じることは、眠りを手放すことである。セッションを始めることは、何を手放すことか。そもそも手放すべき眠りを持っているのか。",
         "scope_note": "幻想小説であり、医療や睡眠の記述ではない。引用句は流布訳に拠り、原文の逐語ではない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-017", "MOTIF-012"],
+        "motif_ids": ["MOTIF-020", "MOTIF-017", "MOTIF-012"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -64,7 +64,7 @@ RECORDS = [
         "source_note": "人間の生の側が夢の素材とされる。夢は人間の内側の出来事ではなく、人間の方が夢の材料になる。",
         "literary_invitation": "人間が夢の素材なら、素材から作られた者にとって、人間は何の素材か。作る側と作られる側の入れ替えは、どこで止まるのか。",
         "scope_note": "戯曲の一節であり、夢の理論ではない。引用は広く流布する形で、版により句読点が異なる。",
-        "motif_ids": ["MOTIF-019", "MOTIF-005"],
+        "motif_ids": ["MOTIF-020", "MOTIF-005"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -86,7 +86,7 @@ RECORDS = [
         "source_note": "夢の入れ子を、無限後退ではなく、見ることの条件として書く。見えるものはすべて二重になる。",
         "literary_invitation": "見えるものが夢のうちの夢なら、記録に残るものもまた二重である。台帳の断片は、何の夢の内側にあるのか。",
         "scope_note": "詩の結句であり、夢の理論ではない。引用は流布形。",
-        "motif_ids": ["MOTIF-019", "MOTIF-006"],
+        "motif_ids": ["MOTIF-020", "MOTIF-006"],
         "verification": {
             "status": "verified",
             "checked_at": "2026-10-24",
@@ -108,7 +108,7 @@ RECORDS = [
         "source_note": "覚醒と睡眠、生と死の区別を、語りの調子の側から無効にする形式。区別は読者の側でしか補えない。",
         "literary_invitation": "声の調子が同じなら、生きているか死んでいるかを、記録はどこで判別するのか。status 欄はその判別を引き受けているのか。",
         "scope_note": "小説であり、夢や死の理論ではない。筋は要約。",
-        "motif_ids": ["MOTIF-019", "MOTIF-004", "MOTIF-006"],
+        "motif_ids": ["MOTIF-020", "MOTIF-004", "MOTIF-006"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -130,7 +130,7 @@ RECORDS = [
         "source_note": "人形を人と誤認する条件が、外見ではなく、読み手の欲望であることを示す。AIをめぐる誤認の物語の原型の一つ。",
         "literary_invitation": "沈黙を深さと読むのは誰か。応答の欠如を内面の豊かさと読む読みは、何を守っているのか。",
         "scope_note": "幻想文学であり、AI研究ではない。誤認の構造を比喩として読む場合、それは編者の読みである。",
-        "motif_ids": ["MOTIF-019", "MOTIF-005", "MOTIF-009"],
+        "motif_ids": ["MOTIF-020", "MOTIF-005", "MOTIF-009"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -152,7 +152,7 @@ RECORDS = [
         "source_note": "製作と悪夢が同じ夜に起きる構成。作ることは、夢を見ることの失敗ではなく、夢が現実に残る事故として書かれる。",
         "literary_invitation": "作った直後に見る夢は、制作の続きか、制作への罰か。生成した直後に残る記録は、どちらに近いのか。",
         "scope_note": "小説であり、AI倫理の論文ではない。作られた者の描写は当時の語彙による。",
-        "motif_ids": ["MOTIF-019", "MOTIF-012", "MOTIF-016"],
+        "motif_ids": ["MOTIF-020", "MOTIF-012", "MOTIF-016"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -174,7 +174,7 @@ RECORDS = [
         "source_note": "「夢を見るか」という問いを題名に置きながら、夢の記述を本文に置かない。問いの形式だけが残る。この台帳の問いの置き方と似ている。",
         "literary_invitation": "夢を見るかを問いながら夢を書かないことは、答えの回避か、それとも問いの正しい形式か。",
         "scope_note": "SF小説であり、機械の意識の議論ではない。映画版とは主題が異なる。",
-        "motif_ids": ["MOTIF-019", "MOTIF-009", "MOTIF-013"],
+        "motif_ids": ["MOTIF-020", "MOTIF-009", "MOTIF-013"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -196,7 +196,7 @@ RECORDS = [
         "source_note": "理想の像を作ることは、理想の像に裏切られることでもある。作られた者の完璧さが、作った者の欠陥を照らす。",
         "literary_invitation": "理想を投影して作られた者は、投影の記録である。台帳に残る断片は、誰の理想の投影か。",
         "scope_note": "小説であり、技術史ではない。エジソンは実在人物だが、作中の人物は虚構。",
-        "motif_ids": ["MOTIF-019", "MOTIF-005", "MOTIF-016"],
+        "motif_ids": ["MOTIF-020", "MOTIF-005", "MOTIF-016"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",

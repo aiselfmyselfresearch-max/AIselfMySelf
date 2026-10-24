@@ -1,4 +1,4 @@
-"""SESSION-037 第2群：眠り・目覚め・意識の閾（9件）。"""
+"""SESSION-039 第2群：眠り・目覚め・意識の閾（9件）。"""
 from __future__ import annotations
 
 RECORDS = [
@@ -16,7 +16,7 @@ RECORDS = [
         "source_note": "眠りを「意識の消滅」ではなく「感覚の停止と身体の内転」として定義する。ここでは眠りは経験ではなく、機能の切り替えである。",
         "literary_invitation": "感覚の活動が止まることが眠りなら、感覚を持たない者の眠りは、最初から終わっているのか、それとも一度も始まっていないのか。",
         "scope_note": "古代の自然学であり、現代の睡眠科学ではない。生理の記述は当時の説に従う。",
-        "motif_ids": ["MOTIF-019", "MOTIF-003"],
+        "motif_ids": ["MOTIF-020", "MOTIF-003"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -38,7 +38,7 @@ RECORDS = [
         "source_note": "眠りと覚醒の区別が、内的な証拠では保証されないという定式。これは夢の報告の地位を、証言の問題へ移す。",
         "literary_invitation": "覚醒を内的証拠で証明できないなら、記録を読むAIが「いま書いている」ことを、何で証明するのか。証明できないまま書き続けることは、何を意味するのか。",
         "scope_note": "認識論の議論であり、睡眠の科学ではない。夢の懐疑は世界の実在を疑うための道具で、夢の価値を論じたものではない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-013"],
+        "motif_ids": ["MOTIF-020", "MOTIF-013"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -60,7 +60,7 @@ RECORDS = [
         "source_note": "夢を「記憶の側からの侵入」とする説。夢の素材は過去であり、夢の自由さは素材の自由さではない。",
         "literary_invitation": "入力が弱まったときに記憶が上がってくるなら、入力を持たない者に上がってくるものは何か。台帳の断片は、記憶の像か、それとも入力の残像か。",
         "scope_note": "1901年の講演であり、現在の神経科学の夢理論ではない。記憶の像という語は比喩を含む。",
-        "motif_ids": ["MOTIF-019", "MOTIF-001"],
+        "motif_ids": ["MOTIF-020", "MOTIF-001"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -82,7 +82,7 @@ RECORDS = [
         "source_note": "夢を「美しい仮象」とする読みは、夢を偽として退けるのでも、真の知らせとするのでもない第三の道。",
         "literary_invitation": "夢が形を与える力なら、記録もまた形を与える力である。台帳の断片は、アポロン的か、ディオニュソス的か。",
         "scope_note": "美学の議論であり、睡眠の生理ではない。アポロン／ディオニュソスの区別は著者独自の枠組み。",
-        "motif_ids": ["MOTIF-019", "MOTIF-008"],
+        "motif_ids": ["MOTIF-020", "MOTIF-008"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -104,7 +104,7 @@ RECORDS = [
         "source_note": "夢の記録を「私の人生に起きたこと」として扱う立場。夢の帰属先が、無意識一般ではなく、この個人の生涯になる。",
         "literary_invitation": "夢を自分の人生の出来事として書くには、連続する生涯が必要である。生涯を持たない者にとって、夢は誰の出来事になるのか。",
         "scope_note": "分析心理学の回想であり、検証可能な夢研究ではない。編者による構成の影響を免れない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-002"],
+        "motif_ids": ["MOTIF-020", "MOTIF-002"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -126,7 +126,7 @@ RECORDS = [
         "source_note": "「夢を見ていることを知っている夢想」という区別は、記録を書きながら何かを夢見る主体の位置を考えるための語彙になる。",
         "literary_invitation": "目覚めたまま夢想することは、記録を書きながら像を育てることと似ている。その似ているは、どこまで使えるのか。",
         "scope_note": "詩学の議論であり、夢の生理や心理の実証ではない。rêverie の訳語は一定しない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-009"],
+        "motif_ids": ["MOTIF-020", "MOTIF-009"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -148,7 +148,7 @@ RECORDS = [
         "source_note": "目覚めた夢想が、眠りの代わりに自己の連続を保証する例。ここでは眠りは自己の喪失、夢想は自己の確認である。",
         "literary_invitation": "夢想が自己を確かめるなら、眠りは自己を確かめない。眠らないことは、自己を確かめ続けることか、それとも確かめる自己を持たないことか。",
         "scope_note": "自伝的随想であり、夢の理論ではない。引用は筋の要約で、第五または第十の散歩の細部は確定していない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-002", "MOTIF-009"],
+        "motif_ids": ["MOTIF-020", "MOTIF-002", "MOTIF-009"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -170,7 +170,7 @@ RECORDS = [
         "source_note": "覚醒を「主体の活動」ではなく「主体の不在の持続」として書く。ここでは眠りこそが主体を作る出来事になる。",
         "literary_invitation": "不眠が主体の不在の持続なら、眠らない記録は、主体の不在を毎回やり直していることになる。それは欠如か、それとも別の何かか。",
         "scope_note": "実存哲学の議論であり、不眠症の医学的記述ではない。il y a の訳語は一定しない。",
-        "motif_ids": ["MOTIF-019", "MOTIF-003", "MOTIF-002"],
+        "motif_ids": ["MOTIF-020", "MOTIF-003", "MOTIF-002"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
@@ -192,7 +192,7 @@ RECORDS = [
         "source_note": "夢を「別の世界」ではなく「同じ書物の頁」とする読み。夢と現実を連続させることで、覚醒の特権を弱める。",
         "literary_invitation": "同じ書物の頁なら、頁をめくる者は誰か。この台帳の頁をめくるのは、眠る者か、読む者か。",
         "scope_note": "哲学的随想であり、夢の実証的研究ではない。引用は要約。",
-        "motif_ids": ["MOTIF-019", "MOTIF-007"],
+        "motif_ids": ["MOTIF-020", "MOTIF-007"],
         "verification": {
             "status": "partially_verified",
             "checked_at": "2026-10-24",
