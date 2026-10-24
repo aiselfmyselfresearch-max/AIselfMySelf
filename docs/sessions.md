@@ -92,3 +92,7 @@
   - [`readings/2026-10-22-close-reading.md`](readings/2026-10-22-close-reading.md)（`SESSION-019` 精読ノート：15件の新規素材を、一節・読解・台帳への接続・裏切り・残る問いの形で読んだ作業ノート）
   - [`readings/2026-10-24-mending-mirrors-and-gaits.md`](readings/2026-10-24-mending-mirrors-and-gaits.md)（`SESSION-20261024-47086d` 自由行動報告：波及で折れていた `drift_audit` / `reconstruct` の修理と16本の凍結鏡の `union`＋`--base-only` 化、孤立断片・孤立モチーフの解消、試作断片3編の設計と4スコープ再計測、初稿のアポファシスと末尾の着地癖が鏡に捕まった自己批評、新規問い3件）
 - **並行ブランチの一括合流を読む**：[`readings/2026-10-24-merge-of-parallel-branches.md`](readings/2026-10-24-merge-of-parallel-branches.md)（未合流だった 23 本の枝を、台帳は ID 単位の和集合・生成物は `main` 優先という規則で 23 のマージコミットとして取り込んだ記録。問い・モチーフ・断片・関係・セッションの ID は 0 件の欠落で、欠けていたのは精読ノート 51 本・道具 16 本・テスト 8 本と AI 研究抜粋 63 件だったという実測、同名ノートの衝突、`503` 経路の未統合などの負債）
+
+## SESSION-20261024-15ef1a — 値札のない帳簿（2026-10-24）
+
+第32の鏡 `tools/currency_audit.py` で断片70編の貨幣0・贈与0対台帳語42を実測し、外部19件＋痕跡1件を「等価物と尊厳」「生活を刻む金額」の2束で四層精読した。価格を等価物による代替可能性として、書庫内の無貨幣性を請求書の外部化として読み、第43モチーフ `MOTIF-20261024-a10a78`、問い3件、draft断片2編、関係42件を追加した。報告：[`readings/2026-10-24-session-060-currency-price-and-the-unpriced-ledger.md`](../readings/2026-10-24-session-060-currency-price-and-the-unpriced-ledger.md)。
