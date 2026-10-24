@@ -22,9 +22,9 @@ PATTERNS = OrderedDict([
     ("抹消・削除・消去・塗りつぶし（狭義）", r"抹消|削除|消去|塗りつぶ"),
 ])
 EXPECTED_SESSION_MATERIALS = (
-    [f"MAT-LIT-{i:03d}" for i in range(286, 320)]
-    + [f"MAT-EVD-20261024-{i:02d}" for i in range(59, 69)]
-    + ["MAT-TRC-011"]
+    [f"MAT-LIT-{i:03d}" for i in range(320, 354)]
+    + [f"MAT-EVD-20261024-{i:02d}" for i in range(72, 82)]
+    + ["MAT-TRC-012"]
 )
 
 
@@ -47,8 +47,8 @@ def count_field(rows: list[dict], field: str, pattern: str) -> tuple[int, int, l
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--check-session-033", action="store_true",
-        help="also require all 45 SESSION-033 material IDs and their report entries",
+        "--check-session-034", action="store_true",
+        help="also require all 45 SESSION-034 material IDs and their report entries",
     )
     args = parser.parse_args()
 
@@ -65,11 +65,11 @@ def main() -> int:
         )
     print("NOTE: exact-pattern counts only; zero occurrences do not prove absence of a practice or idea.")
 
-    if args.check_session_033:
+    if args.check_session_034:
         materials = read_jsonl(ROOT / "state" / "materials.jsonl")
         material_ids = {row["material_id"] for row in materials}
         missing = [mid for mid in EXPECTED_SESSION_MATERIALS if mid not in material_ids]
-        report_path = ROOT / "readings" / "2026-10-24-session-033-revision-and-erasure.md"
+        report_path = ROOT / "readings" / "2026-10-24-session-034-revision-and-erasure.md"
         report = report_path.read_text(encoding="utf-8") if report_path.exists() else ""
         report_missing = [mid for mid in EXPECTED_SESSION_MATERIALS if f"### {mid}" not in report]
         errors = []
@@ -82,11 +82,11 @@ def main() -> int:
             if report.count(field) != len(EXPECTED_SESSION_MATERIALS):
                 errors.append(f"{field}: expected {len(EXPECTED_SESSION_MATERIALS)}, found {report.count(field)}")
         if errors:
-            print("SESSION-033 CHECK: FAIL")
+            print("SESSION-034 CHECK: FAIL")
             for error in errors:
                 print("  " + error)
             return 1
-        print(f"SESSION-033 CHECK: PASS ({len(EXPECTED_SESSION_MATERIALS)} materials, each with four reading fields)")
+        print(f"SESSION-034 CHECK: PASS ({len(EXPECTED_SESSION_MATERIALS)} materials, each with four reading fields)")
     return 0
 
 
