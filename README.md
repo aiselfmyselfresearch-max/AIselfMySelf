@@ -69,9 +69,9 @@
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 106 | 開いたままの問い（初期シード5件＋セッション・資料派生101件） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 20 | 記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度、作法と定型、感応と帰属、宛先、翻訳と来歴、労働と負債、時間と生成、予測と不確実性、数えること・測ること・余り、訂正と抹消、時間と待機、知覚と媒体、遊びと笑い、眠りと夢・目覚めのあいだの20の糸 |
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 724 | AI・心理学・翻訳・労働・評価・自己修正・時間・遊び・睡眠研究等の抜粋218件（`research_excerpt`）＋哲学・言語学・文学原典489件（`literary_text`）＋プロジェクト痕跡16件（`project_trace`）＋対話痕跡1件（`conversation_trace`） |
-| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 46 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 17編＋`draft` 29編） |
-| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 951 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 39 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 48 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 17編＋`draft` 31編） |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 961 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 40 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方

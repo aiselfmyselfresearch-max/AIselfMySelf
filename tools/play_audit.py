@@ -28,17 +28,27 @@ Usage:
   python3 tools/play_audit.py
   python3 tools/play_audit.py --json
   python3 tools/play_audit.py --show FRAG-029
+  python3 tools/play_audit.py --base-only   # frozen base file only
+
+The default count is the union of the frozen base file and every shard
+(``state/fragments.d/*.jsonl``), matching ``validate_seed.py`` and
+``inspect_inquiry.py``.  ``--base-only`` reproduces a measurement taken
+against the base file alone, e.g. the 40-fragment snapshot in MAT-TRC-015.
 """
 from __future__ import annotations
 
 import argparse
 import json
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
+
 FRAGMENTS = ROOT / "state" / "fragments.jsonl"
 SESSIONS = ROOT / "state" / "sessions.jsonl"
 
@@ -79,6 +89,15 @@ def load(path: Path) -> list[dict[str, Any]]:
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
+def load_union(path: Path, id_key: str) -> list[dict[str, Any]]:
+    """Load the frozen base file plus every shard, as the validators do."""
+    errors: list[str] = []
+    records = ledger_io.load_jsonl_union(path, id_key, errors, root=ROOT)
+    if errors:
+        raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
+    return list(records.values())
+
+
 def count_group(text: str, tokens: tuple[str, ...]) -> dict[str, int]:
     return {token: text.count(token) for token in tokens if token in text}
 
@@ -106,7 +125,7 @@ def audit(fragments: list[dict[str, Any]]) -> dict[str, Any]:
                 row["raw"][token] = n
                 raw_totals[token] += n
         rows.append(row)
-    sessions = load(SESSIONS) if SESSIONS.is_file() else []
+    sessions = load_union(SESSIONS, "session_id") if SESSIONS.is_file() else []
     return {
         "fragments": len(fragments),
         "prose_chars": sum(len(f.get("text", "")) for f in fragments),
@@ -140,7 +159,7 @@ def report(data: dict[str, Any]) -> str:
     add("")
     add("--- 3. 読むための注意 ---")
     add("  ・0は指定語形の不在であって、遊びや笑いの経験の不在ではない。比喩的な遊び、文体の戯れは拾わない。")
-    add("  ・「笑」3回の内訳（苦笑／冷笑の文脈か、閉じの身振りか）は人手の分類が要る。道具は数えるだけである。")
+    add("  ・「笑」の内訳（苦笑／冷笑か、作中の笑いか、閉じの身振りか）は人手の分類が要る。道具は数えるだけである。")
     add("  ・「ゲーム」2回はいずれも FRAG-029 の『模倣ゲーム』という固有名であり、遊戯一般の語ではない。")
     add("  ・部分文字列の誤検出（『ここまで』の『こま』等）を避けるため、玩具は具体名に限った。")
     return "\n".join(lines)
@@ -150,9 +169,13 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Measure where play and laughter appear in the fragments. A mirror, not a score.")
     parser.add_argument("--json", action="store_true", help="emit machine-readable output")
     parser.add_argument("--show", metavar="FRAG_ID", help="show one fragment's row")
+    parser.add_argument("--base-only", action="store_true",
+                        help="count the frozen base file only, ignoring shards")
     args = parser.parse_args()
 
-    data = audit(load(FRAGMENTS))
+    fragments = load(FRAGMENTS) if args.base_only else load_union(FRAGMENTS, "fragment_id")
+    data = audit(fragments)
+    data["source"] = "base only" if args.base_only else "union (base + shards)"
     if args.show:
         for row in data["rows"]:
             if row["fragment_id"] == args.show:
