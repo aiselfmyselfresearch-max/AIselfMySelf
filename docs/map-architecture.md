@@ -1,0 +1,96 @@
+# 読書案内データのアーキテクチャ — 増加に耐える4層の設計
+
+`READING_MAP.md` が 37MB・71,909行に達し、チャット・PR・clone を重くしていた問題（2026-10-24 診定）に対する設計変更の記録。調査した外部の事例と、このリポジトリへの適用をまとめる。
+
+## 1. 何が問題だったか
+
+| 観測 | 計測値（変更前） |
+|---|---|
+| `READING_MAP.md` | 36,916,878 bytes / 71,909 行 |
+| うち「開かれた問いの系譜」セクション | 66,342 行（**全体の 92%**） |
+| 原因 | 問いの DAG（`previous_question_ids` は多対多）を全文付きツリーとして展開しており、問い 1 件の本文が**パスの数だけ繰り返し**出力されていた |
+| 台帳そのもの（`state/`） | 3.2MB — 本体は軽い |
+
+## 2. 調査した事例と結論
+
+### 2.1 GitHub での巨大ファイル・生成物の扱い
+
+- GitHub 公式は「リポジトリは 1GB 以下が望ましい（5GB 以下を強く推奨）」とし、**プログラムで生成されるファイルは Git の外（object storage 等）に置く**よう明示している
+  （[Repository limits - GitHub Docs](https://docs.github.com/en/repositories/creating-and-managing-repositories/repository-limits)、[About large files on GitHub](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)）。
+- 単一オブジェクトの推奨上限は 1MB（強制は 100MB、50MB 超で警告）。
+- **Git LFS は不向き**。LFS は「コミットと対応するバイナリ」のための仕組みであり、「毎回生成されるレポート」「毎日全文書き換えされるファイル」は Git の外に置くべきケースとして挙げられている
+  （[Git LFS Guide](https://www.fast.io/resources/github-lfs-guide/)）。
+- **GitHub Releases / Actions artifacts** が生成物の配布に使われる（Release asset は最大 2GB、Actions artifact は最大 5GB・保存 90 日）
+  （[community discussion #171247](https://github.com/orgs/community/discussions/171247)）。
+
+### 2.2 大規模データの分割（パーティショニング／シャーディング）
+
+- **レンジ分割**は順序付きキーに有効で、末尾への追記（append-only）と相性がよい。新規レコードは末尾シャードにだけ落ち、既存シャードは不変になる
+  （[Azure Sharding Pattern](https://learn.microsoft.com/en-us/azure/architecture/patterns/sharding)、[Data partitioning strategies](https://learn.microsoft.com/en-us/azure/architecture/best-practices/data-partitioning-strategies)）。
+- シャードキーは**安定**した値を選ぶこと（変わりうる値をキーにするとデータ移動が発生する）。台帳の挿入順は不変なのでキーに適する。
+- シャードを引くための**セカンダリ索引**（Index Table / shard map）を別に持つ。
+- 不変・append-only なパーティションは分析・再生成に向く。
+
+## 3. 採用した4層構造
+
+```
+Tier 1  state/            台帳の正本（append-only JSONL シャード・git 管理・約3MB）
+Tier 2  READING_MAP.md    小型索引（決定的生成・git 管理・約250KB・警告閾値2MB）
+Tier 3  map/              全文生成文書（レンジ分割シャード・git 管理外・約2.4MB）
+Tier 4  CI artifact       .github/workflows/map.yml が map/ を毎回 build して配布
+```
+
+### Tier 1 — 台帳（正本）
+
+`state/*.jsonl` ＋ `state/*.d/*.jsonl` の追記専用シャード。既存のままで、これが唯一の source of truth。
+
+### Tier 2 — 追跡される小型索引（`READING_MAP.md`）
+
+サマリー・モチーフ表・**問いの DAG 索引（各行1問・本文抜粋100字・親子ID）**・断片一覧・素材一覧・セッション一覧・関係の種類別件数・シャード目録。
+本文は持たない。サイズは 2MB を超えたら警告（`map_build.py`）。
+
+### Tier 3 — 全文シャード（`map/`・git 管理外）
+
+| ファイル | 内容 | 分割単位 |
+|---|---|---|
+| `00-overview.md` | 総覧・モチーフ全文 | — |
+| `10-question-index.md` | 問いの DAG（ID・親子・抜粋） | — |
+| `11-question-bodies-NN.md` | 問い本文（**各1回だけ**） | 50 件 |
+| `20-fragments-NN.md` | 断片アンソロジー全文 | 20 編 |
+| `30/31/32-materials-*.md` | 素材カタログ全文 | 100 件 |
+| `40-relations-NN.md` | 解釈的関係の全表 | 500 件 |
+| `50-sessions-NN.md` | セッション年譜 | 50 件 |
+| `manifest.json` | ID→シャード対応表・sha256・件数・バイト | — |
+
+- **シャードキー**：台帳の挿入順（安定・不変）。追加されたレコードは末尾シャードに入るため、再生成の差分は末尾だけ。
+- **セカンダリ索引**：`manifest.json`（sha256 付き）と Tier 2 索引の ID 列。
+- 写しは `tools/map_build.py` が `state/.ledger.lock` の排他ロックと `ledger_io.atomic_write_text`（一時ファイル＋`os.replace`）で行う。
+
+### Tier 4 — git の外での配布
+
+`.github/workflows/map.yml` が `main` への push と手動実行で `map/` を build し、Actions artifact `reading-map`（90日保持）としてアップロードする。Git 履歴は一切増えない。
+
+## 4. 効果
+
+| 指標 | 変更前 | 変更後 |
+|---|---:|---:|
+| git 追跡の生成物 | 36.9 MB | **0.24 MB**（99.3% 減） |
+| 問い本文の重複 | パス数だけ重複（最大数百回） | **各1回** |
+| 再生成の差分 | 全体書き換え気味 | 末尾シャードのみ |
+| 10万件規模への拡張 | 1ファイルが肥大化し続ける | 分割単位ごとに追加、索引は O(n) の1行/件 |
+
+## 5. 運用コマンド
+
+```sh
+python3 tools/map_build.py            # map/ と READING_MAP.md を再生成
+python3 tools/map_build.py --check    # 索引が台帳と一致するか（CI も同じ）
+python3 tools/map_build.py --report   # シャードのサイズ報告
+python3 tools/inspect_inquiry.py --write-map   # map_build.py への委譲（互換）
+python3 tools/inspect_inquiry.py --check-map   # 同上
+```
+
+## 6. 留保
+
+- `map/` は git 管理外のため、clone だけでは全文がない。`--write-map` か CI artifact で取得する。
+- `--check` は追跡している索引のみを検査する（`map/` は untracked のため対象外）。
+- 過去のコミットに残った 37MB 級の `READING_MAP.md` blob がサーバ側履歴に残っている。clone は shallow で軽いが、完全履歴を軽くしたい場合は `git filter-repo` による履歴書き換えが要る（破壊的なので既定では行わない）。

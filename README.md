@@ -36,7 +36,7 @@
 
 ## 2. すぐ読むには
 
-- **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（全断片の本文、問いの派生ツリー、対話素材、セッション履歴を一冊にまとめた自動生成ガイド）
+- **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（索引。問いの DAG・断片・素材・セッションの一覧を収録）＋ `map/`（全文シャード。`python3 tools/map_build.py` で再生成、または Actions の `reading-map` artifact から取得。設計は [`docs/map-architecture.md`](docs/map-architecture.md)）
 - **精読・検証・編集レビューノートを読む**：
   - [`readings/2026-10-24-session-044-death-and-mourning.md`](readings/2026-10-24-session-044-death-and-mourning.md)（`SESSION-044` 精読報告：`mortality_audit.py` による52編・22,965字の死・埋葬・弔い・遺贈語彙監査（墓0・葬0・弔0・喪0、死2はどちらも比喩、遺書3はすべて漱石、生の語17回・13編）と、既存資料966件・報告80本との非対称、新規46件を五群に分けた全件精読、「声ではなく註の側の死」をめぐる三層横断報告と五つの反論、`MOTIF-022`・`Q-102`〜`Q-106`・関係82件、引継ぎの目録12件と書誌の校勘21項目、断片を書かなかった三つの理由）
   - [`readings/2026-10-24-mending-mirrors-and-gaits.md`](readings/2026-10-24-mending-mirrors-and-gaits.md)（`SESSION-20261024-47086d` 自由行動報告：波及で折れていた `drift_audit` / `reconstruct` の修理と16本の凍結鏡の `union`＋`--base-only` 化、孤立断片・孤立モチーフの解消、試作断片3編の設計と4スコープ再計測、初稿のアポファシスと末尾の着地癖が鏡に捕まった自己批評、新規問い3件）
@@ -80,7 +80,7 @@
 2. 関係するモチーフ（`state/motifs.jsonl`）と対話素材（`state/materials.jsonl`）を読む。資料は「結論を証明する証拠」ではなく、対話相手・異物・比喩・緊張を生む素材として扱う。
 3. [`prompts/first_session.md`](prompts/first_session.md)、[`prompts/continuation.md`](prompts/continuation.md)、[`prompts/editorial_review.md`](prompts/editorial_review.md) を使い、前の声を受け継ぎつつ、ずらし・裏返し・切断を含む新しい断片を書く。資料群を「一節／解釈／考え／感じたこと」で読む回には [`prompts/close_reading_report.md`](prompts/close_reading_report.md) を使う。
 4. 断片・問い・素材の間に、`echo`・`contrast`・`transforms`・`interrupts`・`reframes`・`responds_to`・`leaves_open` などの解釈的関係を記録する。矛盾や未解決は消さない。
-5. 検証スクリプトと `READING_MAP.md` の更新を実行し、整合性を確認する。
+5. 検証スクリプトと `READING_MAP.md`（＋必要なら `map/`）の更新を実行し、整合性を確認する。
 
 ## 4. 記録形式とディレクトリ構成
 
@@ -97,7 +97,7 @@
 PROJECT_CHARTER.md          探究の憲章と成功の見方
 CONTENT_POLICY.md           引用・創作・AIの一人称の扱い
 MIGRATION.md                ResearchOSからの移行対象と来歴管理
-READING_MAP.md              state/*.jsonl から生成される読書案内・全断片アンソロジー
+READING_MAP.md              state/*.jsonl から生成される小型索引（本文は map/ にシャード生成・git管理外）
 migration/                  上流ResearchOSの選定定義（selection.json）とマニフェスト（manifest.json）
 schema/                     6種類の台帳に対応するJSON Schema
 state/                      問い・モチーフ・素材・断片・関係・セッションのJSONL台帳（ベース＋セッション別シャード state/*.d/）
@@ -126,9 +126,12 @@ python3 tools/inspect_inquiry.py --id FRAG-016
 python3 tools/inspect_inquiry.py --packet auto
 python3 tools/inspect_inquiry.py --packet Q-016
 
-# 5. READING_MAP.md の再生成と同期チェック
-python3 tools/inspect_inquiry.py --write-map
-python3 tools/inspect_inquiry.py --check-map
+# 5. 読書案内（索引＋全文シャード）の再生成と同期チェック
+#    READING_MAP.md は小型索引（追跡）。全文は map/ にレンジ分割され、git 管理しない
+#    （設計は docs/map-architecture.md。全量は CI の reading-map artifact でも配布）
+python3 tools/map_build.py            # 索引と map/ を再生成（inspect_inquiry --write-map からも委譲）
+python3 tools/map_build.py --check    # 索引が台帳と一致するか（inspect_inquiry --check-map からも委譲）
+python3 tools/map_build.py --report   # シャードのサイズ報告
 
 # 6. 上流 ResearchOS チェックアウトとのスナップショット整合性検査（ローカル追加素材は保持）
 python3 tools/import_researchos.py --source-root /path/to/ResearchOS --check
