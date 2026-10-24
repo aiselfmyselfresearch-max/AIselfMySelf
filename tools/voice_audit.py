@@ -109,6 +109,31 @@ SENSORY_DISPLACEMENT_SPECS: tuple[tuple[str, str], ...] = (
 )
 
 # Stems ending in か that are nouns/adjectives rather than sentence-final question particles.
+# SESSION-030: labor, debt, and benefactive grammar. The archive's "hand" is
+# counted three ways, because a first pass that counted every `手` as a body
+# part included role nouns such as 書き手/読み手 and inflated the total to 85.
+# The categories below separate paper (手紙), role (書き手...), and a residual
+# candidate for body/metaphor. The residual still contains idioms such as
+# 手がかり, 手に入る, and 手数; the human-classified figure recorded in
+# MAT-TRC-008 is about 27 occurrences across 11 fragments.
+LABOR_DEBT_SPECS: tuple[tuple[str, str], ...] = (
+    ("手紙", r"手紙"),
+    ("役割名詞（書き手・読み手など）", r"(?:書き|読み|聞き|話し|語り|受け|担い|作り|使い|売り|買い|相手|人手|立ち|刻み)手"),
+    (
+        "手（身体・比喩の候補）",
+        r"(?<!書き)(?<!読み)(?<!聞き)(?<!話し)(?<!語り)(?<!受け)(?<!担い)(?<!作り)(?<!使い)(?<!売り)(?<!買い)(?<!相)(?<!立ち)(?<!刻み)手(?=[をにがはもでからまでだけの、。])",
+    ),
+    ("指", r"指"),
+    ("掌", r"掌"),
+    ("労働（働・仕事・職・勤・作業・雇・賃）", r"働|労働|仕事|職|勤|作業|雇|賃"),
+    ("貨幣（金・銭・円・ドル・価格・給料）", r"金|銭|円|ドル|価格|値段|給料|報酬|代金"),
+    ("借用（借・貸・負債・借金）", r"借|貸|負債|借金"),
+    ("返済（返済・利子・支払・弁済）", r"返済|利子|利息|支払|弁済"),
+    ("授受補助（てくれ・てもら・てあげ）", r"てくれ|でくれ|てもら|でもら|てあげ|であげ|ていただ|てくださ|てさしあげ"),
+    ("感謝・謝罪", r"ありがとう|感謝|謝罪|謝る|すみません|ごめん|申し訳"),
+    ("恩・義理・おかげ", r"恩|義理|負い目|おかげ"),
+)
+
 NON_QUESTION_KA_SUFFIXES = (
     "のなか",
     "のほか",
@@ -372,6 +397,7 @@ def compute_voice_audit(
 
     direct_affect = scan_lexicon(DIRECT_AFFECT_SPECS)
     sensory_displacement = scan_lexicon(SENSORY_DISPLACEMENT_SPECS)
+    labor_debt = scan_lexicon(LABOR_DEBT_SPECS)
 
     return {
         "fragment_count": total,
@@ -392,6 +418,7 @@ def compute_voice_audit(
         "mode_mismatches": mode_mismatches,
         "direct_affect": direct_affect,
         "sensory_displacement": sensory_displacement,
+        "labor_debt": labor_debt,
     }
 
 
@@ -485,6 +512,18 @@ def main() -> int:
         print(f"    {row['label']:<24s} {row['count']:2d}/{total} 編{note}{fids}")
     print()
 
+    print("--- 8. 労働・負債・授受の鏡（誰が働き、何を借り、誰に返すのか） ---")
+    print("  [手・労働・貨幣・授受の語彙]")
+    for row in report.get("labor_debt", []):
+        note = f" (地の文={row['unquoted_count']}編)" if row["count"] != row["unquoted_count"] else ""
+        fids = f"  [{', '.join(row['fragment_ids'])}]" if row["fragment_ids"] else ""
+        print(f"    {row['label']:<32s} {row['count']:2d}/{total} 編{note}{fids}")
+    print("  較正: 「手」は役割名詞（書き手・読み手など）を別行に分けた。「手（身体・比喩の候補）」には成句")
+    print("        （手がかり・手に入る・手数）が残るため、人手の分類では約27回・11編（MAT-TRC-008）。")
+    print("        授受補助は、基準にした31編では3回あり、いずれも命令・依頼（〜てくれ・〜てください）で、")
+    print("        恩恵の受益者は現れなかった。現在の36編では6編・7回。うち5回は命令・依頼のままで、恩恵の受益者が")
+    print("        文法に現れるのは FRAG-036「あなたがこの行を読んでくれた」の一度だけである。")
+    print()
     print("--- 読み方 ---")
     print("  この表は合否でも品質評価でもない（PROJECT_CHARTER.md「成功の見方」）。")
     print("  同じ句が何度も出ることは、声が続いている証拠にも、口が勝手に動いている証拠にもなる。")
