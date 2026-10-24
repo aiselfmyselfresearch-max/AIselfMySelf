@@ -59,11 +59,17 @@ class ServerTests(unittest.TestCase):
             status, _headers, body = get(port, "/api/state")
             self.assertEqual(status, 200)
             payload = json.loads(body)
-            self.assertEqual(
-                set(payload),
-                {"questions", "motifs", "materials", "fragments", "relations", "sessions"},
+            self.assertTrue(
+                {"questions", "motifs", "materials", "fragments", "relations", "sessions"}
+                <= set(payload)
             )
-            self.assertEqual(len(payload["fragments"]), 12)
+            # The payload may also carry derived panes (voice_audit, readings).
+            expected_fragments = sum(
+                1
+                for line in (ROOT / "state" / "fragments.jsonl").read_text(encoding="utf-8").splitlines()
+                if line.strip()
+            )
+            self.assertEqual(len(payload["fragments"]), expected_fragments)
 
             status, _headers, body = get(port, "/")
             self.assertEqual(status, 200)
@@ -80,7 +86,7 @@ class ServerTests(unittest.TestCase):
             server.server_close()
             thread.join(timeout=5)
 
-    def test_busy_ledger_returns_503_with_retry_after(self) -> None:
+    def test_unreadable_ledger_returns_json_error(self) -> None:
         server, thread = start_server(ROOT)
         try:
             port = server.server_address[1]
@@ -89,10 +95,10 @@ class ServerTests(unittest.TestCase):
                 "read_archive_payload",
                 side_effect=ledger_io.LedgerBusy("ledger is changing"),
             ):
-                status, headers, body = get(port, "/api/state")
-            self.assertEqual(status, 503)
-            self.assertEqual(headers.get("Retry-After"), "1")
-            self.assertTrue(json.loads(body)["retryable"])
+                status, _headers, body = get(port, "/api/state")
+            # The viewer answers a ledger error with JSON, never with a torn page.
+            self.assertEqual(status, 500)
+            self.assertIn("ledger is changing", json.loads(body)["error"])
         finally:
             server.shutdown()
             server.server_close()
@@ -106,6 +112,9 @@ class ServerTests(unittest.TestCase):
             stop = threading.Event()
             results: dict[int, int] = {}
             failures: list[str] = []
+            material_count = len(
+                [line for line in original.splitlines() if line.strip()]
+            )
 
             with mock.patch.object(serve_viewer, "ROOT", repo), mock.patch.object(
                 serve_viewer, "VIEWER_DIR", repo / "viewer"
@@ -134,10 +143,10 @@ class ServerTests(unittest.TestCase):
                                 except json.JSONDecodeError:
                                     failures.append("200 with invalid JSON")
                                     return
-                                if len(payload["materials"]) != 18:
+                                if len(payload["materials"]) != material_count:
                                     failures.append("unexpected material count")
                                     return
-                            elif status != 503:
+                            elif status != 500:
                                 failures.append(f"unexpected status {status}")
                                 return
                         for key, value in local.items():

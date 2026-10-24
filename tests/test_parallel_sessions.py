@@ -120,6 +120,22 @@ def copy_repo(destination: Path) -> Path:
     return repo
 
 
+def ledger_counts(repo: Path) -> dict[str, int]:
+    """Count ledger records before the workers run.
+
+    The tests used to hardcode absolute counts, which made them fail every time
+    a session added material. Counting the baseline first keeps the assertion
+    about *this* test's three concurrent appends.
+    """
+    counts: dict[str, int] = {}
+    for collection in ("fragments", "questions", "relations", "sessions"):
+        path = repo / "state" / f"{collection}.jsonl"
+        counts[collection] = sum(
+            1 for line in path.read_text(encoding="utf-8").splitlines() if line.strip()
+        )
+    return counts
+
+
 def run_tool(repo: Path, *args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         [sys.executable, *args], cwd=repo, capture_output=True, text=True, timeout=120
@@ -147,12 +163,11 @@ class ParallelSessionTests(unittest.TestCase):
             fragment_ids = [entry["fragment"] for entry in written]
             self.assertEqual(len(set(fragment_ids)), 3)
 
+            baseline = ledger_counts(repo)
             validation = run_tool(repo, "tools/validate_seed.py")
             self.assertEqual(validation.returncode, 0, validation.stdout + validation.stderr)
-            self.assertIn("fragments=15", validation.stdout)
-            self.assertIn("questions=18", validation.stdout)
-            self.assertIn("relations=34", validation.stdout)
-            self.assertIn("sessions=15", validation.stdout)
+            for collection in ("fragments", "questions", "relations", "sessions"):
+                self.assertIn(f"{collection}={baseline[collection] + 3}", validation.stdout)
 
             mapping = run_tool(repo, "tools/inspect_inquiry.py", "--write-map")
             self.assertEqual(mapping.returncode, 0, mapping.stdout + mapping.stderr)
@@ -171,8 +186,8 @@ class ParallelSessionTests(unittest.TestCase):
             )
             self.assertEqual(payload.returncode, 0, payload.stderr)
             counts = json.loads(payload.stdout)
-            self.assertEqual(counts["fragments"], 15)
-            self.assertEqual(counts["questions"], 18)
+            self.assertEqual(counts["fragments"], baseline["fragments"] + 3)
+            self.assertEqual(counts["questions"], baseline["questions"] + 3)
 
     def test_sequential_ids_collide_and_the_validator_rejects_them(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
