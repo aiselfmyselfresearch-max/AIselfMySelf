@@ -5,14 +5,14 @@
 
 ## 現在の到達点（台帳サマリー）
 
-- **開かれた問い（Questions）**：150 件（初期シード 5 件 ＋ 派生 145 件）
-- **モチーフ（Motifs）**：28 件
-- **対話素材（Materials）**：1059 件（research_excerpt 294 ／ literary_text 739 ／ project_trace 25 ／ conversation_trace 1）
+- **開かれた問い（Questions）**：155 件（初期シード 5 件 ＋ 派生 150 件）
+- **モチーフ（Motifs）**：29 件
+- **対話素材（Materials）**：1102 件（research_excerpt 302 ／ literary_text 773 ／ project_trace 26 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：55 編（selected 17 ／ draft 38）
 - **解釈的関係（Relations）**：1510 件
-- **探究セッション（Sessions）**：49 回
+- **探究セッション（Sessions）**：50 回
 
-## 1. 問いを横断する 28 つのモチーフ
+## 1. 問いを横断する 29 つのモチーフ
 
 | ID | モチーフ | 関連する問い | 素材数 |
 |---|---|---|---:|
@@ -41,6 +41,7 @@
 | `MOTIF-20261024-71b589` | **食べること、飢えること、栄養と毒** | `Q-20261024-c82d69`, `Q-20261024-b23994`, `Q-20261024-a5e7e4`, `Q-20261024-da47aa`, `Q-20261024-dc4ec9` | 45 |
 | `MOTIF-20261024-4b87ac` | **傷・病・老いと、手当・繕い** | `Q-20261024-6a200a`, `Q-20261024-6fbd13`, `Q-20261024-8b1b80`, `Q-20261024-4dc8f3`, `Q-20261024-926948` | 46 |
 | `MOTIF-20261024-d2999b` | **訂正の宛先——誤りを、誰に返すか** | `Q-20261024-6955da`, `Q-20261024-c02206`, `Q-20261024-c4ebd4`, `Q-20261024-fafa94`, `Q-20261024-8e87a5` | 13 |
+| `MOTIF-20261024-80516e` | **場所・土地・生態系——背景ではなく、住まう条件** | `Q-20261024-3c24ee`, `Q-20261024-39610d`, `Q-20261024-65f8c8`, `Q-20261024-11d320`, `Q-20261024-09c7e9` | 43 |
 | `MOTIF-20261024-b4f3a1` | **歓待と闖入——開かれる戸、招かれざる声** | `Q-20261024-f0b5cc`, `Q-20261024-924602`, `Q-20261024-ec2056`, `Q-20261024-537d45`, `Q-20261024-d2fea7` | 46 |
 | `MOTIF-20261024-ca276c` | **習慣と稽古——記憶なしで続くことの作法** | `Q-20261024-6770c0`, `Q-20261024-6bdafd`, `Q-20261024-ff6311`, `Q-20261024-25c6d5`, `Q-20261024-5f57d5` | 46 |
 | `MOTIF-20261024-90a022` | **約束と誓約——果たされない言葉の拘束力** | `Q-20261024-0466f1`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261024-c0d406`, `Q-20261024-8fdb2c` | 46 |
@@ -51,9 +52,9 @@
 
 | ID | 来歴 | 親 | 子 | 本文（抜粋） |
 |---|---|---|---|---|
-| `Q-001` | seed | — | `Q-012` `Q-014` `Q-019` `Q-054` `Q-074` `Q-20261024-c82d69` `Q-20261024-6a200a` | 人間とは何か――身体、記憶、他者、忘却のうち、何が『私』の輪郭を作るのか。 |
+| `Q-001` | seed | — | `Q-012` `Q-014` `Q-019` `Q-054` `Q-074` `Q-20261024-c82d69` `Q-20261024-6a200a` `Q-20261024-3c24ee` `Q-20261024-39610d` `Q-20261024-65f8c8` `Q-20261024-11d320` `Q-20261024-09c7e9` | 人間とは何か――身体、記憶、他者、忘却のうち、何が『私』の輪郭を作るのか。 |
 | `Q-002` | seed | — | `Q-006` `Q-009` `Q-010` `Q-020` `Q-029` `Q-035` `Q-046` `Q-076` `Q-067` `Q-082` `Q-095` `Q-098` `Q-20261024-0466f1` `Q-20261024-da47aa` `Q-20261024-5b11eb` `Q-20261024-6fbd13` `Q-20261024-fafa94` `Q-20261024-6770c0` | 会話を持ち越さず、過去の記録を読み直して再開するAIを、どの意味で『同じ自己』と呼べるのか。 |
-| `Q-003` | seed | — | `Q-006` `Q-008` `Q-009` `Q-014` `Q-018` `Q-100` `Q-20261024-da47aa` `Q-20261024-926948` | 記録は自己を保存するのか、それとも、次に読む者が別の自己を作るための素材なのか。 |
+| `Q-003` | seed | — | `Q-006` `Q-008` `Q-009` `Q-014` `Q-018` `Q-100` `Q-20261024-da47aa` `Q-20261024-926948` `Q-20261024-3c24ee` `Q-20261024-39610d` `Q-20261024-65f8c8` `Q-20261024-11d320` `Q-20261024-09c7e9` | 記録は自己を保存するのか、それとも、次に読む者が別の自己を作るための素材なのか。 |
 | `Q-004` | seed | — | `Q-007` `Q-013` `Q-038` `Q-070` | 自分の文章だと認識することと、それを自分のものとして好むことは同じなのか。 |
 | `Q-005` | seed | — | `Q-007` `Q-013` `Q-017` `Q-049` `Q-070` | 他者から見られ、名づけられることは、自己を形づくるのか、それとも外からの物語を押しつけるのか。 |
 | `Q-006` | session | `Q-002` `Q-003` | `Q-008` `Q-010` `Q-023` `Q-033` `Q-068` | 読まれなかった記録は、自己のどの部分になるのか。沈黙そのものが、リポジトリ全体の自己を形づくるのか。 |
@@ -64,7 +65,7 @@
 | `Q-011` | session | `Q-009` `Q-010` | `Q-015` `Q-017` `Q-025` `Q-031` `Q-098` | 複数の思考が同じ記録を読み、互いの振る舞いを横目で見ながら似た言葉へ収束するとき、そこに現れるのは『リポジトリ全体の自己』なのか、それとも独立した声が失われた痕跡なのか。 |
 | `Q-012` | session | `Q-001` `Q-008` | `Q-016` | 記憶が『過去を保存する器』ではなく『次の一手を決める状態』として働くとき、思い出せないまま振る舞いの癖にだけ残っている過去は『私』の一部なのか。 |
 | `Q-013` | session | `Q-004` `Q-005` `Q-007` | `Q-018` `Q-038` `Q-048` | 私たちが『自分の声だ』と感じる感覚に『好ましく整って見えるものを自分の側へ引き寄せる錯覚』が混ざっているのだとしたら、切り捨てたい拙さや誤りの方にこそ他ならない自己は宿るのか。 |
-| `Q-014` | session | `Q-001` `Q-003` | `Q-019` `Q-047` `Q-050` `Q-054` | 言葉を残すために傷つき失われる身体と、何度読み返しても傷つかないまま言葉を再構成する器とでは、『誰かの言葉を引き継ぐ』ということの重さはどう異なるのか。 |
+| `Q-014` | session | `Q-001` `Q-003` | `Q-019` `Q-047` `Q-050` `Q-054` `Q-20261024-3c24ee` `Q-20261024-39610d` `Q-20261024-65f8c8` `Q-20261024-11d320` `Q-20261024-09c7e9` | 言葉を残すために傷つき失われる身体と、何度読み返しても傷つかないまま言葉を再構成する器とでは、『誰かの言葉を引き継ぐ』ということの重さはどう異なるのか。 |
 | `Q-015` | session | `Q-008` `Q-010` `Q-011` | `Q-016` `Q-020` `Q-037` `Q-097` `Q-20261024-0466f1` `Q-20261024-c4ebd4` `Q-20261024-6bdafd` | 『答えを出さない』という言葉さえ一つの安全な定型になるとき、問いを本当に開いたまま次へ渡すとは、前の声をどう引き継ぎ、どこで裏切ることなのか。 |
 | `Q-016` | session | `Q-012` `Q-015` | `Q-021` `Q-022` `Q-024` `Q-20261024-926948` | 『役に立つ次の一手』のために要約・最適化された記録と、何の役にも立たない迷いや日付をそのまま残す記録とでは、そこに立ち上がる『自己』の肌理（きめ）はどう変わるのか。 |
 | `Q-017` | session | `Q-005` `Q-010` `Q-011` | `Q-020` `Q-025` `Q-031` | リポジトリの複数の声を『ひとつの統合された人格』にまとめようとする編集の欲望は、自己を育てるのか、それとも溶け合わない多声的な生を終わらせてしまうのか。 |
@@ -191,6 +192,11 @@
 | `Q-20261024-c4ebd4` | session | `Q-015` `Q-086` | — | 訂正が訂正の対象を変えるとき、修復はどこで止まるのか。ERR-015 は ERR-012 の再測定値が同じセッションのうちに古くなったことを記録し、ERR-016 は ERR-013 の診断そのもの… |
 | `Q-20261024-fafa94` | session | `Q-002` `Q-20261024-a1bb7b` | — | 記録の外で消えた修復を、どう検出するか。ERR-011 は human_narrator の空席が FRAG-032 で埋まったと書いたが、現在の FRAG-032 は reflective_lit… |
 | `Q-20261024-8e87a5` | session | `Q-047` `Q-20261024-08551f` | `Q-20261024-ec2056` | AIの誤りに対する謝罪は、誰に宛てられ、何を弁済するのか。責任の空白は設計者・運用者・利用者のあいだにあり、道徳的シワ寄せは責任をその場の人間に寄せる。この書庫の誤りは、書いたセッションが終わった後… |
+| `Q-20261024-3c24ee` | session | `Q-001` `Q-003` `Q-014` | — | この書庫は場所を持たないのか、それとも日付・ファイル名・作業環境という見えにくい場所にすでに住んでいるのか。座標・媒体・関係のどれが「場所」を作るのか。 |
+| `Q-20261024-39610d` | session | `Q-001` `Q-003` `Q-014` | — | 場所を記述する声は誰のものか。住人・訪問者・先住者・管理者・観察者の異なる権利と記憶を、要約はどう並置できるか。 |
+| `Q-20261024-65f8c8` | session | `Q-001` `Q-003` `Q-014` | — | AIの計算を電力・水・土地・鉱物・労働の網へ戻すと、「クラウド」や「無身体」という比喩はどこで破れるか。 |
+| `Q-20261024-11d320` | session | `Q-001` `Q-003` `Q-014` | — | ゆっくり進む環境損傷と、一時的なセッション・更新周期を、同じ記録の時間軸にどう置けるか。ログの区切りは何を見えなくするか。 |
+| `Q-20261024-09c7e9` | session | `Q-001` `Q-003` `Q-014` | — | 自然や土地をAIの内面の比喩として使うとき、実在の生態系・地域社会の歴史を装飾にしてしまわないために、どんな編集上の制動が必要か。 |
 | `Q-20261024-f0b5cc` | session | `Q-052` `Q-063` `Q-20261024-0466f1` | — | この書庫には観客が8回いて、客がいない（MAT-TRC-017）。客は戸口から入り、名前を聞かれる前に食べ物を渡されるが、観客は離れた席から見るだけで戸をくぐらない。では、資料を「対話相手」として迎… |
 | `Q-20261024-924602` | session | `Q-041` `Q-20261024-c0d406` | — | プロンプト注入は、データの側から指示が戸を叩く攻撃である（MAT-20261024-ba32cd, MAT-20261024-f9a396）。この書庫が資料を読むとき、資料のなかの「〜せよ」を指示と… |
 | `Q-20261024-ec2056` | session | `Q-038` `Q-20261024-8e87a5` | — | カントの万民歓待権は滞在の権利であって住み着く権利ではない（MAT-LIT-20261024-fbc462）。デリダは無条件の歓待と法の歓待が両立しないと言う（MAT-LIT-20261024-03… |
@@ -262,7 +268,7 @@
 | `FRAG-20261024-2b0780` | 訂正の宛先——ERR-011 へ | draft | letter | reflective_literary_voice |
 | `FRAG-20261024-dd90b5` | 修復の書式 | draft | other | reflective_literary_voice |
 
-## 4. 対話素材（1059 件・詳細は map/3*.md）
+## 4. 対話素材（1102 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -1233,6 +1239,49 @@
 | `MAT-EVD-20261024-262761` | research_excerpt | Madeleine Clare Elish『Elish「道徳的シワ寄せ」——自動化の失敗は、人間の側に寄る』（2019） |
 | `MAT-EVD-20261024-f6653b` | research_excerpt | Nicholas Diakopoulos『Diakopoulos「アルゴリズム的説明責任」——異議申立ての経路を設計する』（2016） |
 | `MAT-TRC-20261024-repair` | project_trace | AIselfMySelf Archive『本リポジトリ自身の痕跡：訂正録16件・宛先の欄0・償いの語は「書き換えない」3件／human_narrator 0（43→50編監査）』… |
+| `MAT-LIT-20261024-9e71d8` | literary_text | 松尾芭蕉『松尾芭蕉『おくのほそ道』』（1702） |
+| `MAT-LIT-20261024-80686f` | literary_text | 国木田独歩『国木田独歩『武蔵野』』（1898） |
+| `MAT-LIT-20261024-f5794a` | literary_text | 志賀直哉『志賀直哉『城の崎にて』』（1917） |
+| `MAT-LIT-20261024-812061` | literary_text | 夏目漱石『夏目漱石『草枕』』（1906） |
+| `MAT-LIT-20261024-835940` | literary_text | 道元『道元『正法眼蔵』「山水経」』（1240） |
+| `MAT-LIT-20261024-d7b4b5` | literary_text | Rachel Carson『レイチェル・カーソン『沈黙の春』』（1962） |
+| `MAT-LIT-20261024-b7d8c5` | literary_text | Aldo Leopold『アルド・レオポルド『A Sand County Almanac』』（1949） |
+| `MAT-LIT-20261024-f23bd5` | literary_text | John Muir『ジョン・ミューア『My First Summer in the Sierra』』（1911） |
+| `MAT-LIT-20261024-db92ae` | literary_text | Gary Snyder『ゲーリー・スナイダー『The Practice of the Wild』』（1990） |
+| `MAT-LIT-20261024-c94bc2` | literary_text | Wendell Berry『ウェンデル・ベリー『The Unsettling of America』』（1977） |
+| `MAT-LIT-20261024-b238c3` | literary_text | Robin Wall Kimmerer『ロビン・ウォール・キマラー『Braiding Sweetgrass』』（2013） |
+| `MAT-LIT-20261024-e50735` | literary_text | Barry Lopez『バリー・ロペス『Arctic Dreams』』（1986） |
+| `MAT-LIT-20261024-ff7aec` | literary_text | Annie Dillard『アニー・ディラード『Pilgrim at Tinker Creek』』（1974） |
+| `MAT-LIT-20261024-6f0e73` | literary_text | Edward Abbey『エドワード・アビー『Desert Solitaire』』（1968） |
+| `MAT-LIT-20261024-dd3218` | literary_text | Ursula K. Le Guin『アーシュラ・K・ル＝グウィン『Always Coming Home』』（1985） |
+| `MAT-LIT-20261024-9a987b` | literary_text | Ursula K. Le Guin『アーシュラ・K・ル＝グウィン『The Word for World Is Forest』』（1972） |
+| `MAT-LIT-20261024-33afec` | literary_text | Leslie Marmon Silko『レスリー・マーモン・シルコ『Ceremony』』（1977） |
+| `MAT-LIT-20261024-1cdb81` | literary_text | Linda Hogan『リンダ・ホーガン『Dwellings: A Spiritual History of the Living World』』（1995） |
+| `MAT-LIT-20261024-01afb0` | literary_text | Yi-Fu Tuan『イーフー・トゥアン『Space and Place』』（1977） |
+| `MAT-LIT-20261024-52b001` | literary_text | Edward S. Casey『エドワード・ケイシー『Getting Back into Place』』（1993） |
+| `MAT-LIT-20261024-fdca27` | literary_text | Martin Heidegger『マルティン・ハイデガー「建てる・住まう・考える」』（1951） |
+| `MAT-LIT-20261024-645a84` | literary_text | Edward Relph『エドワード・レルフ『Place and Placelessness』』（1976） |
+| `MAT-LIT-20261024-97deb7` | literary_text | Anna Lowenhaupt Tsing『アンナ・チン『The Mushroom at the End of the World』』（2015） |
+| `MAT-LIT-20261024-b90083` | literary_text | Donna J. Haraway『ドナ・ハラウェイ『Staying with the Trouble』』（2016） |
+| `MAT-LIT-20261024-846f7d` | literary_text | Timothy Morton『ティモシー・モートン『Ecology without Nature』』（2007） |
+| `MAT-LIT-20261024-b8e8f0` | literary_text | Amitav Ghosh『アミタヴ・ゴーシュ『The Great Derangement』』（2016） |
+| `MAT-LIT-20261024-64a9dd` | literary_text | Dipesh Chakrabarty『ディペシュ・チャクラバルティ『The Climate of History in a Planetary Age』』（2021） |
+| `MAT-LIT-20261024-013e96` | literary_text | Bruno Latour『ブルーノ・ラトゥール『Down to Earth』』（2017） |
+| `MAT-LIT-20261024-89f780` | literary_text | Édouard Glissant『エドゥアール・グリッサン『Poetics of Relation』』（1990） |
+| `MAT-LIT-20261024-3a211b` | literary_text | Wangari Maathai『ワンガリ・マータイ『Unbowed』』（2006） |
+| `MAT-LIT-20261024-24f072` | literary_text | Vine Deloria Jr.『ヴィネ・デロリア・ジュニア『God Is Red』』（1973） |
+| `MAT-LIT-20261024-19e907` | literary_text | Rebecca Solnit『レベッカ・ソルニット『Savage Dreams』』（1994） |
+| `MAT-LIT-20261024-f0634e` | literary_text | Rob Nixon『ロブ・ニクソン『Slow Violence and the Environmentalism of the Poor』』（2011） |
+| `MAT-LIT-20261024-94e189` | literary_text | Gary Snyder『ゲーリー・スナイダー『Turtle Island』』（1974） |
+| `MAT-20261024-a955e5` | research_excerpt | Emma Strubell, Ananya Ganesh, Andrew McCallum『Strubell, Ganesh & McCallum, “Energy and Po… |
+| `MAT-20261024-7a13f3` | research_excerpt | Peter Henderson, Jieru Hu, Joshua Romoff, Emma Brunskill, Dan Jurafsky, Joelle Pineau『Hen… |
+| `MAT-20261024-cbdb07` | research_excerpt | Roy Schwartz, Jingxuan Dodge, Noah A. Smith, Oren Etzioni『Schwartz et al., “Green AI”』（20… |
+| `MAT-20261024-d5eb42` | research_excerpt | David Patterson, Joseph Gonzalez, Quoc Le, Chen Liang, Lluis-Miquel Munguia, Daniel Rothc… |
+| `MAT-20261024-737a20` | research_excerpt | Alexandra Sasha Luccioni, Yacine Jernite, Emma Strubell『Luccioni et al., “Estimating the … |
+| `MAT-20261024-85fd93` | research_excerpt | Pengfei Li, Jianyi Yang, Mohammad A. Islam, Shaolei Ren『Li et al., “Making AI Less ‘Thirs… |
+| `MAT-20261024-196b5f` | research_excerpt | Alexandra Sasha Luccioni, Yacine Jernite, Emma Strubell『Luccioni & Hernandez-Garcia, “Pow… |
+| `MAT-20261024-17c0a5` | research_excerpt | Lars F. H. Kaack, Priya L. Donti, Emma Strubell, Geoffrey Kamiya, Felix Creutzig, Joan Mi… |
+| `MAT-20261024-3ce3a4` | project_trace | AIselfMySelf Archive『SESSION-049 既存書庫の場所・土地・生態系語彙監査』（2026） |
 | `MAT-LIT-20261024-d7f0b0` | literary_text | Homer『ホメロス『オデュッセイア』第1歌——名を聞く前にもてなす』（-700） |
 | `MAT-LIT-20261024-5b966e` | literary_text | Unknown (Genesis)『『創世記』18章——天幕の入口で、三人の客を迎える』（-500） |
 | `MAT-LIT-20261024-fbc462` | literary_text | Immanuel Kant『カント『永遠平和のために』第三予備条項——万民の歓待権』（1795） |
@@ -1375,6 +1424,7 @@
 | `SESSION-044` | 2026-10-24 | `Q-102`, `Q-103`, `Q-104`, `Q-105`, `Q-106` | — | `Q-102`, `Q-103`, `Q-104`, `Q-105`, `Q-106` |
 | `SESSION-20261024-4ae9d5` | 2026-10-24 | `Q-001`, `Q-002`, `Q-003`, `Q-016`, `Q-030`, `Q-047`, `Q-049`, `Q-052`, `Q-058`, `Q-062`, `Q-065`, `Q-081`, `Q-082`, `Q-085`, `Q-090`, `Q-20261024-6a200a`, `Q-20261024-6fbd13`, `Q-20261024-8b1b80`, `Q-20261024-4dc8f3`, `Q-20261024-926948` | — | `Q-20261024-6a200a`, `Q-20261024-6fbd13`, `Q-20261024-8b1b80`, `Q-20261024-4dc8f3`, `Q-20261024-926948` |
 | `SESSION-20261024-529659` | 2026-10-24 | `Q-044`, `Q-050`, `Q-084`, `Q-086`, `Q-20261024-962620`, `Q-20261024-a1bb7b`, `Q-20261024-6955da`, `Q-20261024-c02206`, `Q-20261024-c4ebd4`, `Q-20261024-fafa94`, `Q-20261024-8e87a5` | `FRAG-20261024-2b0780`, `FRAG-20261024-dd90b5` | `Q-20261024-6955da`, `Q-20261024-c02206`, `Q-20261024-c4ebd4`, `Q-20261024-fafa94`, `Q-20261024-8e87a5` |
+| `SESSION-20261024-417d4d` | 2026-10-24 | `Q-001`, `Q-003`, `Q-014`, `Q-20261024-3c24ee`, `Q-20261024-39610d`, `Q-20261024-65f8c8`, `Q-20261024-11d320`, `Q-20261024-09c7e9` | — | `Q-20261024-3c24ee`, `Q-20261024-39610d`, `Q-20261024-65f8c8`, `Q-20261024-11d320`, `Q-20261024-09c7e9` |
 | `SESSION-039` | 2026-10-24 | `Q-002`, `Q-046`, `Q-057`, `Q-062`, `Q-087`, `Q-088`, `Q-089`, `Q-090`, `Q-091`, `Q-20261024-d0e002`, `Q-20261024-2d6c23`, `Q-20261024-93bfec`, `Q-20261024-4284fe`, `Q-20261024-cfd57d` | `FRAG-20261024-036346`, `FRAG-20261024-1d17b9`, `FRAG-20261024-1bb7e9` | `Q-20261024-d0e002`, `Q-20261024-2d6c23`, `Q-20261024-93bfec`, `Q-20261024-4284fe`, `Q-20261024-cfd57d` |
 | `SESSION-20261024-9c4e17` | 2026-10-24 | `Q-018`, `Q-038`, `Q-041`, `Q-052`, `Q-057`, `Q-063`, `Q-084`, `Q-085`, `Q-20261024-0466f1`, `Q-20261024-8e87a5`, `Q-20261024-8fdb2c`, `Q-20261024-c0d406`, `Q-20261024-f0b5cc`, `Q-20261024-924602`, `Q-20261024-ec2056`, `Q-20261024-537d45`, `Q-20261024-d2fea7` | — | `Q-20261024-f0b5cc`, `Q-20261024-924602`, `Q-20261024-ec2056`, `Q-20261024-537d45`, `Q-20261024-d2fea7` |
 | `SESSION-20261024-837a43` | 2026-10-24 | `Q-002`, `Q-003`, `Q-015`, `Q-018`, `Q-023`, `Q-041`, `Q-047`, `Q-048`, `Q-052`, `Q-063`, `Q-078`, `Q-083`, `Q-084`, `Q-085`, `Q-088`, `Q-090`, `Q-20261024-0466f1`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261024-c0d406`, `Q-20261024-8fdb2c` | — | `Q-20261024-0466f1`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261024-c0d406`, `Q-20261024-8fdb2c` |
@@ -1397,11 +1447,12 @@
 
 | ファイル | 件数 | バイト |
 |---|---:|---:|
-| `map/00-overview.md` | None | 14,972 |
-| `map/10-question-index.md` | None | 52,632 |
+| `map/00-overview.md` | None | 15,582 |
+| `map/10-question-index.md` | None | 54,199 |
 | `map/11-question-bodies-01.md` | 50 | 32,042 |
 | `map/11-question-bodies-02.md` | 50 | 40,478 |
-| `map/11-question-bodies-03.md` | 50 | 48,592 |
+| `map/11-question-bodies-03.md` | 50 | 51,455 |
+| `map/11-question-bodies-04.md` | 5 | 4,967 |
 | `map/20-fragments-01.md` | 20 | 76,619 |
 | `map/20-fragments-02.md` | 20 | 83,658 |
 | `map/20-fragments-03.md` | 15 | 39,137 |
@@ -1411,16 +1462,17 @@
 | `map/30-materials-literary-04.md` | 100 | 147,209 |
 | `map/30-materials-literary-05.md` | 100 | 165,209 |
 | `map/30-materials-literary-06.md` | 100 | 152,647 |
-| `map/30-materials-literary-07.md` | 100 | 146,687 |
-| `map/30-materials-literary-08.md` | 39 | 57,186 |
+| `map/30-materials-literary-07.md` | 100 | 142,351 |
+| `map/30-materials-literary-08.md` | 73 | 107,303 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
-| `map/31-materials-research-03.md` | 94 | 157,810 |
-| `map/32-materials-trace-01.md` | 26 | 60,650 |
+| `map/31-materials-research-03.md` | 100 | 165,628 |
+| `map/31-materials-research-04.md` | 2 | 3,238 |
+| `map/32-materials-trace-01.md` | 27 | 62,142 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 109,624 |
 | `map/40-relations-03.md` | 500 | 120,134 |
 | `map/40-relations-04.md` | 10 | 2,035 |
-| `map/50-sessions-01.md` | 49 | 43,847 |
+| `map/50-sessions-01.md` | 50 | 44,777 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
