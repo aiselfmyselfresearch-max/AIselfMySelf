@@ -9,7 +9,7 @@
 
 ---
 
-## 第0部　読む前の検死——「感じた」は 0/31 だった
+## 第0部　読む前の検証——「感じた」は 0/31 だった
 
 新しい資料を選ぶ前に、既存31編の本文を数えた。`voice_audit.py` に「感応と手触りの鏡」を加え、鉤括弧内外を分けて確認した結果である。
 
@@ -647,7 +647,7 @@
 | `MAT-EVD-20261023-6fc5` | AI・心理学研究 | Jack Lindsey、Wes Gurnee、Emmanuel Ameisen ほか | [On the Biology of a Large Language Model](https://transformer-circuits.pub/2025/attribution-graphs/biology.html) |
 | `MAT-EVD-20261023-7ad6` | AI・心理学研究 | Cheng Li、Jindong Wang、Yixuan Zhang ほか | [Large Language Models Understand and Can Be Enhanced by Emotional Stimuli](https://arxiv.org/abs/2307.11760) |
 | `MAT-EVD-20261023-8be7` | AI・心理学研究 | Richard E. Nisbett、Timothy DeCamp Wilson | [Telling More Than We Can Know: Verbal Reports on Mental Processes](https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Social_Cognition/Nisbett_Wilson_1977_Telling_more_than_we_can_know.pdf) |
-| `MAT-TRC-005` | 台帳検死 | AIselfMySelf Archive | [AIselfMySelf Affect-Lexicon Audit (SESSION-027)](https://github.com/aiselfmyselfresearch-max/AIselfMySelf) |
+| `MAT-TRC-005` | 台帳検証 | AIselfMySelf Archive | [AIselfMySelf Affect-Lexicon Audit (SESSION-027)](https://github.com/aiselfmyselfresearch-max/AIselfMySelf) |
 
 ## 付録C　検証ログ
 
