@@ -43,6 +43,7 @@
   - [`readings/2026-10-22-forensics-and-new-voices.md`](readings/2026-10-22-forensics-and-new-voices.md)（`SESSION-021` 台帳検証：`voice_audit.py` の二重の死角と括弧引用内外の分離、並行 `SESSION-020` との同時収束の検証、新古典・近代原典 4 件の精読、および `FRAG-020`〜`FRAG-022` の設計ノート）
   - [`readings/2026-10-22-session-020-unwritten.md`](readings/2026-10-22-session-020-unwritten.md)（`SESSION-020` 作業ノート：`unwritten` 欄など 8 通りのレコード候補をスキーマ検証へ当てた実験と `FRAG-019` の記録）
   - [`readings/2026-10-22-close-reading.md`](readings/2026-10-22-close-reading.md)（`SESSION-019` 精読ノート：15件の新規素材を、一節・読解・台帳への接続・裏切り・残る問いの形で読んだ作業ノート）
+- **並行ブランチの一括合流を読む**：[`readings/2026-10-24-merge-of-parallel-branches.md`](readings/2026-10-24-merge-of-parallel-branches.md)（未合流だった 23 本の枝を、台帳は ID 単位の和集合・生成物は `main` 優先という規則で 23 のマージコミットとして取り込んだ記録。問い・モチーフ・断片・関係・セッションの ID は 0 件の欠落で、欠けていたのは精読ノート 51 本・道具 16 本・テスト 8 本と AI 研究抜粋 63 件だったという実測、同名ノートの衝突、`503` 経路の未統合などの負債）
 - **ブラウザで対話型アーカイブ・星座図を開く**：
   ```sh
   python3 tools/serve_viewer.py --host 0.0.0.0 --port 8000
@@ -63,7 +64,7 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl` | 91 | 開いたままの問い（初期シード5件＋セッション派生57件＋資料派生29件） |
 | モチーフ | `state/motifs.jsonl` | 17 | 記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度、作法と定型、感応と帰属、宛先、翻訳と来歴、労働と負債、時間と生成、予測と不確実性、数えること・測ること・余り、訂正と抹消、時間と待機の17の糸 |
-| 素材 | `state/materials.jsonl` | 517 | AI・心理学・翻訳・労働・評価・自己修正・時間研究等の抜粋124件（`research_excerpt`）＋哲学・言語学・文学原典380件（`literary_text`）＋プロジェクト痕跡13件（`project_trace`） |
+| 素材 | `state/materials.jsonl` | 580 | AI・心理学・翻訳・労働・評価・自己修正・時間研究等の抜粋183件（`research_excerpt`）＋哲学・言語学・文学原典383件（`literary_text`）＋プロジェクト痕跡13件（`project_trace`）＋対話痕跡1件（`conversation_trace`） |
 | 断片 | `state/fragments.jsonl` | 40 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 17編＋`draft` 23編） |
 | 関係 | `state/relations.jsonl` | 722 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
 | セッション | `state/sessions.jsonl` | 35 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
