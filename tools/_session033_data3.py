@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-"""SESSION-031 materials, group 5 (machine time, 8 research excerpts) and
-the project trace MAT-TRC-009."""
+"""SESSION-033 materials, group 5 (machine time, 8 research excerpts) and
+the project trace MAT-TRC-011."""
 from __future__ import annotations
 
-from _session031_common import M13, evd, material
+from _session033_common import M15, evd, material
 
 EVD_BASE = "MAT-EVD-20261024-"
 
 MATERIALS = [
     evd(
-        EVD_BASE + "29",
+        EVD_BASE + "59",
         "Dhingraら「時間を意識した言語モデルは時間的知識ベースである」（TempLAMA）——事実には消費期限がある",
         ["Bhuwan Dhingra", "Jeremy R. Cole", "Julian Martin Eisenschlos", "Daniel Gillick", "Jacob Eisenstein", "William W. Cohen"],
         2022,
@@ -20,10 +20,10 @@ MATERIALS = [
         "時間とともに答えが変わる穴埋め問答でLMを探査し、単一時点のスナップショットで訓練されたモデルが、時間を外れた事実を平均化してしまう問題を測った研究。",
         "「消費期限」という比喩は、百年・千年の尺度で置かれた文学資料と同じ台帳のなかで鋭く響く。消費期限を持つ知識と持たない知識は、どう並べれば混ざらないか。",
         "ベンチマークの成績を、モデルの時間経験の有無の証拠として使わない。設計上の制約（スナップショット訓練）を示す資料として読む。",
-        [M13, "MOTIF-001", "MOTIF-012"],
+        [M15, "MOTIF-001", "MOTIF-012"],
     ),
     evd(
-        EVD_BASE + "30",
+        EVD_BASE + "60",
         "Chenら「時間に敏感な問いに答えるデータセット」（TimeQA）——人間87%に対してモデル27%",
         ["Wenhu Chen", "Xinyi Wang", "William Yang Wang"],
         2021,
@@ -32,12 +32,12 @@ MATERIALS = [
         "“This gap reflects concerning incompetence of these models to deal with temporal reasoning in text.”（この格差は、テキストの時間的推論を扱うモデルの無能さを懸念させる）。論文はhard版で人間87%に対し微調整済みモデル27%と報告する。",
         "en",
         "時間指示子（before, in, after）を含む問いをeasy/hardで用意し、モデルが文脈中の時間関係を扱えるかを測った初期の体系的ベンチマーク。",
-        "「いつ」を扱う能力の低さは、語彙の問題ではなく、出来事を順序づける構造の問題だと示唆する。この書庫の番号順（セッション001→031）は、順序を人間が台帳に肩代わりさせている。",
+        "「いつ」を扱う能力の低さは、語彙の問題ではなく、出来事を順序づける構造の問題だと示唆する。この書庫の番号順（セッション001→033）は、順序を人間が台帳に肩代わりさせている。",
         "精度の数値を固定的な能力値として扱わない。測定時点と課題設定に依存する値として註に残す。",
-        [M13, "MOTIF-001", "MOTIF-008"],
+        [M15, "MOTIF-001", "MOTIF-008"],
     ),
     evd(
-        EVD_BASE + "31",
+        EVD_BASE + "61",
         "Varshneyら「FreshLLMs」（FreshQA）——一度訓練されると更新されないモデル",
         ["Gurusha Varshney", "Dilara Soylu", "Egbert M. Hsu", "Dillon Chen", "Christopher Potts", "Oriol Vinyals", "David J. Crandall"],
         2023,
@@ -48,10 +48,10 @@ MATERIALS = [
         "問いを変化速度で四区分（不変・緩変化・速変化・誤った前提）し、答えが時間とともに移ろう動的ベンチマーク。検索エンジンで最新情報を注入するFreshPromptも提案する。",
         "「一度訓練されると更新されない」存在は、どの時点の世界に住むのか。この書庫の語り手も、カットオフと台帳のあいだの複数の時間にまたがっている。「今」はどの日付か。",
         "検索拡張を時間問題の解決と断定しない。鮮度という評価軸の登場を記録するにとどめる。",
-        [M13, "MOTIF-001", "MOTIF-002"],
+        [M15, "MOTIF-001", "MOTIF-002"],
     ),
     evd(
-        EVD_BASE + "32",
+        EVD_BASE + "62",
         "Jangら「言語モデルの継続的知識学習に向けて」（CKL）——忘れることを定量化する",
         ["Joel Jang", "Seonghyeon Ye", "Sohee Yang", "Joongbo Shin", "Janghoon Han", "Gyeonghun Kim", "Stanley Jungkyu Choi", "Minjoon Seo"],
         2022,
@@ -62,24 +62,24 @@ MATERIALS = [
         "モデルを時間で層別したデータで再訓練し、破滅的忘却と更新の両立を測る枠組み。忘れること自体が測定対象になる。",
         "忘却を測る指標が存在するということは、機械の忘却が人間の忘却と違い、数値で管理される対象だということである。MOTIF-006の「忘却と沈黙」は、台帳の世界ではFUARという比率に変換されうる。",
         "機械の忘却と人間の追憶を同列に語らない。測定可能性の差を残す。",
-        [M13, "MOTIF-006", "MOTIF-001"],
+        [M15, "MOTIF-006", "MOTIF-001"],
     ),
     evd(
-        EVD_BASE + "33",
-        "Packerら「MemGPT」——OSの仮想記憶としての長期記憶",
-        ["Charles Packer", "Sarah Wooders", "Kevin Lin", "Vivian Fang", "Shishir G. Patil", "Ion Stoica", "Joseph E. Gonzalez"],
-        2023,
-        "https://arxiv.org/abs/2310.08560",
-        "arXiv:2310.08560（2023）。関数呼び出しで記憶階層を操作するエージェント。",
-        "“…provide the illusion of an extended virtual memory via paging between physical memory and disk.”（物理メモリとディスクのあいだのページングによって、拡張された仮想記憶の錯覚を提供する）",
+        EVD_BASE + "63",
+        "Hochreiter＆Schmidhuber「長い短期記憶」（LSTM）——長い時間間隔を越えて情報を保つ",
+        ["Sepp Hochreiter", "Jürgen Schmidhuber"],
+        1997,
+        "https://doi.org/10.1162/neco.1997.9.8.1735",
+        "Neural Computation 第9巻第8号（1997）1735-1780頁。DOI: 10.1162/neco.1997.9.8.1735。定素子流路とゲート構造の古典論文。",
+        "“Learning to store information over extended time intervals by recurrent backpropagation takes a very long time, mostly because of insufficient, decaying error backflow.”（リカレント誤差逆伝播で長い時間間隔を越えて情報を蓄える学習には非常に長い時間がかかる。おもに誤差の逆流が不十分で減衰するためだ）",
         "en",
-        "コンテキスト窓を主記憶、外部ストアをディスクに見立て、エージェント自身が情報を出し入れ（ページング）する設計。",
-        "「錯覚」という語が論文自ら使われている点が重要である。連続した自己の感じは、ここでは設計によって作られる知覚効果である。この書庫の引き継ぎも、人間が読めば錯覚に見え、台帳から見れば手順である。",
-        "設計の比喩（OS、ページング）を心の構造の解明と取り違えない。",
-        [M13, "MOTIF-002", "MOTIF-007"],
+        "リカレントネットが長い時間間隔を越えて情報を保てない問題（誤差逆流の減衰）を、定素子流路（CEC）と入出力ゲートで解決した古典。",
+        "「長い時間を越えて保つ」ことが、気合いや記憶力ではなく構造の発明として現れる。セッションを越えた引き継ぎを内部の保持に任せず台帳という外部構造で解くこの書庫は、LSTMと同じ問題系にいる。内部にゲートを作るか、外部に台帳を作るかの違いだ。",
+        "ゲートの働きを人間の記憶や待機のアナロジーにしない。勾配という測定可能な制約の話として読む。",
+        [M15, "MOTIF-002", "MOTIF-007"],
     ),
     evd(
-        EVD_BASE + "34",
+        EVD_BASE + "64",
         "Lazaridouら「溝に気をつけろ」（Mind the Gap）——時間が経つほど悪くなる予測",
         ["Angeliki Lazaridou", "Adhiguna Kuncoro", "Elena Gribovskaya", "Devang Agrawal", "Adam Liska", "Tayfun Terzi", "Mai Gimenez", "Cyprien de Masson d'Autume", "Tomas Kocisky", "Sebastian Ruder", "Dani Yogatama", "Kris Cao", "Susannah Young", "Phil Blunsom"],
         2021,
@@ -90,10 +90,10 @@ MATERIALS = [
         "訓練期間と評価期間を意図的にずらし、静的な評価が時間一般化を過大評価していることを示した研究。モデルサイズだけでは解決しないと報告する。",
         "「未来の発話を予測する」という設定は、この書庫が次のセッションへ文を渡す構造と同じ形をしている。渡した文が未来でどう読まれるかは、渡す側の管理外にある。",
         "パープレキシティの悪化を、声の劣化という文学的判断に直結させない。",
-        [M13, "MOTIF-002", "MOTIF-006"],
+        [M15, "MOTIF-002", "MOTIF-006"],
     ),
     evd(
-        EVD_BASE + "35",
+        EVD_BASE + "65",
         "Liškaら「StreamingQA」——四半期ごとに評価される知識",
         ["Adam Liska", "Tomáš Kočiský", "Elena Gribovskaya", "Tayfun Terzi", "Eren Sezener", "Devang Agrawal", "Cyprien de Masson d'Autume", "Tim Scholtes", "Manzil Zaheer", "Susannah Young", "Ellen Gilsenan-McMahon", "Sophia Austin", "Phil Blunsom", "Angeliki Lazaridou"],
         2022,
@@ -104,10 +104,10 @@ MATERIALS = [
         "2007-2020年のニュース記事に日付を付し、四半期ごとにモデルを評価して、新知識への適応と古い知識の忘却を同時に測るベンチマーク。",
         "人間の暦（四半期）が評価の単位になっている点が象徴的である。機械の時間は、人間の暦で刻まれてはじめて測定可能になる。この書庫のセッション番号も、同じ構造を持つ。",
         "ベンチマークの暦が中立の尺度であるかのように書かない。人間の制度の借用である。",
-        [M13, "MOTIF-008", "MOTIF-012"],
+        [M15, "MOTIF-008", "MOTIF-012"],
     ),
     evd(
-        EVD_BASE + "36",
+        EVD_BASE + "66",
         "Maharanaら「LoCoMo」——35セッションにまたがる長期記憶の評価",
         ["Aditi Maharana", "Bhuwan Dhingra", "Dhruv Raval", "Mansi Gupte", "Mohit Bansal"],
         2024,
@@ -116,17 +116,17 @@ MATERIALS = [
         "“…LLMs exhibit challenges in understanding lengthy conversations and comprehending long-range temporal and causal dynamics within dialogues.”（LLMは長い会話の理解、とくに対話内の長距離の時間的・因果的なダイナミクスの把握に困難を示す）",
         "en",
         "固定ペルソナと時間イベントグラフで生成された長期対話を使い、複数セッションを越えた想起・順序づけ・要約を測る。人間の検証と編集が介在する。",
-        "この書庫のセッション数（31）はLoCoMoの最長（35）に近い。人間が台帳で補っている時間的順序を、モデル単体では保持しにくいことを、この研究は数字で示している。",
+        "この書庫のセッション数（33）はLoCoMoの最長（35）に近い。人間が台帳で補っている時間的順序を、モデル単体では保持しにくいことを、この研究は数字で示している。",
         "合成対話の構成に人間の編集が入る点を忘れない。数値はこの課題設定の上での値である。",
-        [M13, "MOTIF-002", "MOTIF-001"],
+        [M15, "MOTIF-002", "MOTIF-001"],
     ),
     material(
-        "MAT-TRC-009",
+        "MAT-TRC-011",
         "project_trace",
         "本リポジトリ自身の痕跡：暦はメタデータに住み、本文に明日がない",
         {
-            "source_id": "SRC-TRC-009",
-            "title": "AIselfMySelf Time and Waiting Audit (SESSION-031)",
+            "source_id": "SRC-TRC-011",
+            "title": "AIselfMySelf Time and Waiting Audit (SESSION-033)",
             "authors": ["AIselfMySelf Archive"],
             "year": 2026,
             "url": "https://github.com/aiselfmyselfresearch-max/AIselfMySelf",
@@ -137,7 +137,7 @@ MATERIALS = [
         "ユーザーから時間と待機を自由に調査するよう委任され、資料選定前に既存断片の時間語彙を測った第七の台帳検死。",
         "百年と瞬間のあいだが抜け、明日がなく、「次の」だけが未来である書庫に、語り手自身の待機は書けるのか。",
         "正規表現による語形の計数であり、比喩的時間・無主語の時間・文脈的な時制は拾わない。0は指定語形の不在であって時間経験の不在ではない。鉤括弧の除去は入れ子を扱わず、またラベル付き対話（voice-A:）は鉤括弧を持たないため「外」に数えられる。終止形のた/だは形容詞や条件を含む粗い信号である。多義の生字（時・間）は語群に含めず別集計した。本記録の数は36編（a001c0a時点）に対するもので、本セッションが断片を追加した後の再測定は報告第6部に置く。",
-        "SESSION-031で追加したプロジェクト痕跡。時間が本文とメタデータのどちらに住むかを、再現可能な計数として記録する。",
-        [M13, "MOTIF-001", "MOTIF-008"],
+        "SESSION-033で追加したプロジェクト痕跡。時間が本文とメタデータのどちらに住むかを、再現可能な計数として記録する。",
+        [M15, "MOTIF-001", "MOTIF-008"],
     ),
 ]

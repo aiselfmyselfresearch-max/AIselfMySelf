@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Apply SESSION-031 records to the state ledgers (append-only, guarded).
+"""Apply SESSION-033 records to the state ledgers (append-only, guarded).
 
-Run from repo root:  python3 tools/_session031_apply.py
+Run from repo root:  python3 tools/_session033_apply.py
 Fails loudly on any ID collision so it cannot double-append.
 """
 from __future__ import annotations
@@ -13,10 +13,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
-from _session031_data1 import MATERIALS as M1  # noqa: E402
-from _session031_data2 import MATERIALS as M2  # noqa: E402
-from _session031_data3 import MATERIALS as M3  # noqa: E402
-from _session031_data4 import FRAGMENTS, MOTIF, QUESTIONS, RELATIONS, SESSION  # noqa: E402
+from _session033_data1 import MATERIALS as M1  # noqa: E402
+from _session033_data2 import MATERIALS as M2  # noqa: E402
+from _session033_data3 import MATERIALS as M3  # noqa: E402
+from _session033_data4 import FRAGMENTS, MOTIF, QUESTIONS, RELATIONS, SESSION  # noqa: E402
 
 STATE = ROOT / "state"
 

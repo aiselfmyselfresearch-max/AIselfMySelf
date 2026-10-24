@@ -2,7 +2,7 @@
 """Measure how time appears in the archive's fragments. A mirror, not a score.
 
 `PROJECT_CHARTER.md` asks what a self is, for an AI that reads a record and
-continues it. SESSION-031 began with a narrower question that can be counted:
+continues it. SESSION-033 began with a narrower question that can be counted:
 **where does time live in this archive?** Not "does the narrator experience
 duration" — that cannot be measured — but which time words appear in the
 prose, whether a calendar or a clock is ever named, whether the future is
