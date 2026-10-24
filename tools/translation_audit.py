@@ -11,6 +11,7 @@ quality.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -18,6 +19,13 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
+
+ID_KEYS = {
+    "materials.jsonl": "material_id",
+    "fragments.jsonl": "fragment_id",
+}
 TRANSLATOR = re.compile(r"trans\.|translated|訳者|拙訳|\(trans\.\)")
 WOMEN = {
     "Virginia Woolf", "Simone Weil", "Edith Stein", "George Eliot",
@@ -28,9 +36,15 @@ WOMEN = {
 }
 
 
-def load(name: str) -> list[dict]:
+def load(name: str, *, base_only: bool = False, exclude: str | None = None) -> list[dict]:
     path = ROOT / "state" / name
-    return [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
+    if base_only or name not in ID_KEYS:
+        return [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
+    errors: list[str] = []
+    records = ledger_io.load_jsonl_union(path, ID_KEYS[name], errors, root=ROOT, exclude=exclude)
+    if errors:
+        raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
+    return list(records.values())
 
 
 THIS_REPORT = "readings/2026-10-24-translation-and-the-untranslated.md"
@@ -47,9 +61,17 @@ def baseline(mats: list[dict]) -> list[dict]:
 
 
 def main() -> int:
-    all_mats = load("materials.jsonl")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/*.jsonl only")
+    parser.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
+    args = parser.parse_args()
+    kw = {"base_only": args.base_only, "exclude": args.exclude_shard}
+    all_mats = load("materials.jsonl", **kw)
     mats = baseline(all_mats)
-    frags = [f for f in load("fragments.jsonl") if f.get("session_id") not in ("SESSION-028", "SESSION-029")]
+    frags = [
+        f for f in load("fragments.jsonl", **kw)
+        if f.get("created_at") != "2026-10-24" and f.get("session_id") not in ("SESSION-028", "SESSION-029")
+    ]
     reports = [p for p in sorted((ROOT / "readings").glob("*.md")) if "2026-10-24" not in p.name]
 
     print(f"基準状態：2026-10-24 の各セッションの追加分（{len(all_mats) - len(mats)}件）を除いた集計")

@@ -16,12 +16,15 @@ Usage:
   python3 tools/sense_audit.py --show FRAG-001
 """
 from __future__ import annotations
-import argparse, json, re
+import argparse, json, re, sys
 from collections import Counter
 from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
+
 FRAGMENTS = ROOT / "state" / "fragments.jsonl"
 SESSIONS = ROOT / "state" / "sessions.jsonl"
 READINGS = ROOT / "readings"
@@ -41,8 +44,14 @@ RAW_POLYSEMY = {
 
 DATE_PATTERN = re.compile(r"\d{4}年|\d{1,2}月\d{1,2}日|\d{4}-\d{2}-\d{2}")
 
-def load(path: Path):
-    return [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
+def load(path: Path, *, base_only: bool = False, exclude: str | None = None):
+    if base_only or path.name != "fragments.jsonl":
+        return [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
+    errors: list[str] = []
+    records = ledger_io.load_jsonl_union(path, "fragment_id", errors, root=ROOT, exclude=exclude)
+    if errors:
+        raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
+    return list(records.values())
 
 def strip_quotes(text: str) -> str:
     out = re.sub(r"「[^「」]*」", "", text)
@@ -97,7 +106,7 @@ def report(data):
         totals=data["group_totals"].get(name,{})
         docs=data["group_docs"].get(name,[])
         total=sum(totals.values())
-        detail="、".join(f"{k}×{v}" for k,v in sorted(totals.items(), key=lambda kv: -kv[1])) or ["なし"]
+        detail="、".join(f"{k}×{v}" for k,v in sorted(totals.items(), key=lambda kv: -kv[1])) or "なし"
         a(f"  {name:<10}: {total:>3} 回 / {len(docs):>2} 編  （{detail}）")
     a("")
     a("--- 2. 多義の語 ---")
@@ -118,8 +127,10 @@ def main():
     p=argparse.ArgumentParser(description="Sense audit")
     p.add_argument("--json", action="store_true")
     p.add_argument("--show", metavar="FRAG_ID")
+    p.add_argument("--base-only", action="store_true", help="read frozen state/fragments.jsonl only")
+    p.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
     args=p.parse_args()
-    frags=load(FRAGMENTS)
+    frags=load(FRAGMENTS, base_only=args.base_only, exclude=args.exclude_shard)
     data=audit(frags)
     if args.show:
         for r in data["rows"]:

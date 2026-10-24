@@ -14,6 +14,7 @@ does not grade anything: it only makes the carriers visible and countable.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -21,6 +22,9 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
+
 MATERIALS = ROOT / "state" / "materials.jsonl"
 
 CARRIER_HINTS = re.compile(
@@ -30,8 +34,14 @@ SUMMARY_HINTS = re.compile(r"(要約|以下は.*要約)")
 NAME_HINT = re.compile(r"([A-Z][A-Za-z.\-]+(?:\s+[A-Z][A-Za-z.\-]+){0,3})")
 
 
-def load(path: Path) -> list[dict]:
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+def load(path: Path, *, base_only: bool = False, exclude: str | None = None) -> list[dict]:
+    if base_only:
+        return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    errors: list[str] = []
+    records = ledger_io.load_jsonl_union(path, "material_id", errors, root=ROOT, exclude=exclude)
+    if errors:
+        raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
+    return list(records.values())
 
 
 def guess_carrier_from_note(note: str) -> str:
@@ -43,7 +53,11 @@ def guess_carrier_from_note(note: str) -> str:
 
 
 def main() -> int:
-    rows = load(MATERIALS)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/materials.jsonl only")
+    parser.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
+    args = parser.parse_args()
+    rows = load(MATERIALS, base_only=args.base_only, exclude=args.exclude_shard)
     lit = [r for r in rows if r["kind"] == "literary_text"]
 
     print("=== 来歴の監査 — 声はどの言語を通って、誰の手でこの台帳に来たか ===")
