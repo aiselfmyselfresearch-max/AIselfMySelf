@@ -850,6 +850,7 @@ function renderMirrorView() {
     const pa = state.data.passion_audit;
     const ea = state.data.eros_audit;
     const ca = state.data.currency_audit;
+    const sa = state.data.signature_audit;
     const ma = state.data.metabolism_audit;
 
     auditPane.innerHTML = `
@@ -992,6 +993,33 @@ function renderMirrorView() {
                 const gp = ca.fragments_prose.groups[g] || { label: g, count: 0, doc_count: 0, doc_ids: [] };
                 const gq = (ca.fragments_quotes && ca.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
                 const gm = (ca.materials && ca.materials.groups[g]) || { count: 0, doc_count: 0 };
+                return `
+                  <tr>
+                    <td><strong>${escapeHtml(gp.label)}</strong></td>
+                    <td><strong>${gp.count}</strong> 回 (${gp.doc_count}編) <span style="color:var(--ink-muted);font-size:0.78rem;">/ 引用内 ${gq.count}回</span></td>
+                    <td>${gm.count}回 (${gm.doc_count}件)</td>
+                    <td>${(gp.doc_ids || []).map((fid) => `<button type="button" class="link-pill" style="margin:0.1rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("") || "—"}</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
+
+      ${sa && sa.fragments_prose ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">署名・筆跡・印章と「手のない続き」の鏡（地の文 ${sa.fragments_prose.char_total.toLocaleString()}字 / 素材 ${(sa.materials && sa.materials.doc_total) || 0}件）</h3>
+          <div style="font-size:0.8rem;color:var(--ink-muted);margin-bottom:0.55rem;">
+            地の文の生字出現 — <code>署=${(sa.raw_kanji_counts && sa.raw_kanji_counts["署"]) || 0}</code> / <code>筆=${(sa.raw_kanji_counts && sa.raw_kanji_counts["筆"]) || 0}</code> / <code>印=${(sa.raw_kanji_counts && sa.raw_kanji_counts["印"]) || 0}</code> / <code>偽=${(sa.raw_kanji_counts && sa.raw_kanji_counts["偽"]) || 0}</code> / <code>贋=${(sa.raw_kanji_counts && sa.raw_kanji_counts["贋"]) || 0}</code>
+          </div>
+          <table class="mirror-table">
+            <thead><tr><th>語群（非該当複合差し引き・最長一致）</th><th>断片（地の文 / 引用内）</th><th>素材</th><th>該当断片（地の文）</th></tr></thead>
+            <tbody>
+              ${(sa.group_order || []).map((g) => {
+                const gp = sa.fragments_prose.groups[g] || { label: g, count: 0, doc_count: 0, doc_ids: [] };
+                const gq = (sa.fragments_quotes && sa.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
+                const gm = (sa.materials && sa.materials.groups[g]) || { count: 0, doc_count: 0 };
                 return `
                   <tr>
                     <td><strong>${escapeHtml(gp.label)}</strong></td>

@@ -18,6 +18,7 @@ from urllib.parse import parse_qs, urlparse
 import ledger_io
 from currency_audit import measure_currency_audit
 from eros_audit import measure_eros_audit
+from signature_audit import measure_signature_audit
 from inspect_inquiry import build_context_packet, load_all
 from passion_audit import GROUPS as PASSION_GROUPS, measure as measure_passion_audit
 from validate_seed import COLLECTIONS, ROOT, load_jsonl
@@ -135,6 +136,7 @@ def _read_archive_payload_once() -> dict[str, object]:
     payload["passion_audit"] = pa
     payload["eros_audit"] = measure_eros_audit(fragments, payload["materials"])  # type: ignore[arg-type]
     payload["currency_audit"] = measure_currency_audit(fragments, payload["materials"])  # type: ignore[arg-type]
+    payload["signature_audit"] = measure_signature_audit(fragments, payload["materials"])  # type: ignore[arg-type]
     payload["metabolism_audit"] = compute_metabolism_snapshot(payload)
     payload["readings"] = read_readings_list()
     return payload
