@@ -17,11 +17,83 @@ from urllib.parse import parse_qs, urlparse
 
 import ledger_io
 from inspect_inquiry import build_context_packet, load_all
+from passion_audit import GROUPS as PASSION_GROUPS, measure as measure_passion_audit
 from validate_seed import COLLECTIONS, ROOT, load_jsonl
 from voice_audit import compute_voice_audit
 
 VIEWER_DIR = ROOT / "viewer"
 READINGS_DIR = ROOT / "readings"
+
+
+def compute_metabolism_snapshot(payload: dict[str, object]) -> dict[str, object]:
+    """Compute pure in-memory archive metabolism metrics from an already-loaded payload."""
+    materials: list[dict[str, object]] = payload["materials"]  # type: ignore[assignment]
+    motifs: list[dict[str, object]] = payload["motifs"]  # type: ignore[assignment]
+    questions: list[dict[str, object]] = payload["questions"]  # type: ignore[assignment]
+    fragments: list[dict[str, object]] = payload["fragments"]  # type: ignore[assignment]
+    relations: list[dict[str, object]] = payload["relations"]  # type: ignore[assignment]
+    sessions: list[dict[str, object]] = payload["sessions"]  # type: ignore[assignment]
+
+    mat_ids = {str(m["material_id"]) for m in materials}
+    motif_ids = {str(m["motif_id"]) for m in motifs}
+    q_ids = {str(q["question_id"]) for q in questions}
+    frag_ids = {str(f["fragment_id"]) for f in fragments}
+
+    frag_mats: set[str] = set()
+    direct_frag_motifs: set[str] = set()
+    for f in fragments:
+        frag_mats.update(str(mid) for mid in (f.get("material_ids") or []))  # type: ignore[union-attr]
+        direct_frag_motifs.update(str(mid) for mid in (f.get("motif_ids") or []))  # type: ignore[union-attr]
+
+    q_mats: set[str] = set()
+    for q in questions:
+        q_mats.update(str(mid) for mid in (q.get("material_ids") or []))  # type: ignore[union-attr]
+
+    rel_mats: set[str] = set()
+    rel_qs: set[str] = set()
+    frag_in: set[str] = set()
+    frag_out: set[str] = set()
+    for rel in relations:
+        left = rel.get("left") or {}
+        right = rel.get("right") or {}
+        lt, lid = str(left.get("type", "")), str(left.get("id", ""))  # type: ignore[union-attr]
+        rt, rid = str(right.get("type", "")), str(right.get("id", ""))  # type: ignore[union-attr]
+        if lt == "material":
+            rel_mats.add(lid)
+        if rt == "material":
+            rel_mats.add(rid)
+        if lt == "question":
+            rel_qs.add(lid)
+        if rt == "question":
+            rel_qs.add(rid)
+        if lt == "fragment":
+            frag_out.add(lid)
+        if rt == "fragment":
+            frag_in.add(rid)
+
+    producing = sum(1 for s in sessions if s.get("produced_fragment_ids"))
+    total_mats = len(mat_ids)
+    digested_mats = len(frag_mats & mat_ids)
+    return {
+        "material_count": total_mats,
+        "motif_count": len(motif_ids),
+        "question_count": len(q_ids),
+        "fragment_count": len(frag_ids),
+        "relation_count": len(relations),
+        "session_count": len(sessions),
+        "producing_sessions": producing,
+        "zero_fragment_sessions": len(sessions) - producing,
+        "materials_in_fragments": digested_mats,
+        "materials_in_fragments_pct": round(digested_mats * 100.0 / total_mats, 1) if total_mats else 0.0,
+        "materials_in_questions": len(q_mats & mat_ids),
+        "untouched_materials": len(mat_ids - frag_mats - q_mats),
+        "isolated_material_ids": sorted(mat_ids - rel_mats),
+        "direct_fragment_motifs": len(direct_frag_motifs & motif_ids),
+        "unfragmented_motif_ids": sorted(motif_ids - direct_frag_motifs),
+        "isolated_question_ids": sorted(q_ids - rel_qs),
+        "incoming_zero_fragment_ids": sorted(frag_ids - frag_in),
+        "outgoing_zero_fragment_ids": sorted(frag_ids - frag_out),
+    }
 
 
 def read_readings_list() -> list[dict[str, str]]:
@@ -56,6 +128,10 @@ def _read_archive_payload_once() -> dict[str, object]:
     fragments = payload["fragments"]  # type: ignore[assignment]
     relations = payload["relations"]  # type: ignore[assignment]
     payload["voice_audit"] = compute_voice_audit(fragments, relations, top=16, gram=6)  # type: ignore[arg-type]
+    pa = measure_passion_audit(fragments)  # type: ignore[arg-type]
+    pa["group_order"] = list(PASSION_GROUPS.keys())
+    payload["passion_audit"] = pa
+    payload["metabolism_audit"] = compute_metabolism_snapshot(payload)
     payload["readings"] = read_readings_list()
     return payload
 

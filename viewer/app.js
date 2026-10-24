@@ -847,6 +847,8 @@ function renderMirrorView() {
     const emptyModes = Object.entries(va.narrator_mode_counts || {})
       .filter(([, c]) => c === 0)
       .map(([m]) => m);
+    const pa = state.data.passion_audit;
+    const ma = state.data.metabolism_audit;
 
     auditPane.innerHTML = `
       <div class="mirror-grid">
@@ -887,6 +889,66 @@ function renderMirrorView() {
           </table>
         </div>
       </div>
+
+      ${ma || pa ? `
+        <div class="mirror-grid" style="margin-bottom:1.4rem;">
+          ${ma ? `
+            <div class="mirror-card">
+              <h3>代謝と孤立の鏡（星座の到達性と眠る蔵書）</h3>
+              <table class="mirror-table">
+                <tbody>
+                  <tr>
+                    <td>断片を持つモチーフ</td>
+                    <td><strong>${ma.direct_fragment_motifs} / ${ma.motif_count}</strong>（未接続 ${ma.unfragmented_motif_ids.length}）</td>
+                  </tr>
+                  <tr>
+                    <td>関係網の孤立資料（0辺）</td>
+                    <td><strong>${ma.isolated_material_ids.length} / ${ma.material_count}</strong></td>
+                  </tr>
+                  <tr>
+                    <td>断片から参照された資料</td>
+                    <td><strong>${ma.materials_in_fragments} / ${ma.material_count}</strong> (${ma.materials_in_fragments_pct}% — 眠る蔵書の余白 ${(100 - ma.materials_in_fragments_pct).toFixed(1)}%)</td>
+                  </tr>
+                  <tr>
+                    <td>関係網の孤立問い / 片道断片</td>
+                    <td>孤立問い <strong>${ma.isolated_question_ids.length}</strong> / incoming=0 断片 <strong>${ma.incoming_zero_fragment_ids.length}</strong> / outgoing=0 断片 <strong>${ma.outgoing_zero_fragment_ids.length}</strong></td>
+                  </tr>
+                  <tr>
+                    <td>実作セッション / 精読専念セッション</td>
+                    <td>断片生成 <strong>${ma.producing_sessions}</strong> 回 / 断片0編 <strong>${ma.zero_fragment_sessions}</strong> 回（計 ${ma.session_count}）</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          ` : ""}
+          ${pa ? `
+            <div class="mirror-card">
+              <h3>情動と抑制の鏡（地の文 ${pa.prose_chars.toLocaleString()}字 / 括弧内 ${pa.quoted_chars.toLocaleString()}字）</h3>
+              <div style="font-size:0.8rem;color:var(--ink-muted);margin-bottom:0.55rem;">
+                句読点・感嘆符 — 地の文: <code>。=${pa.punctuation_prose["。"]}</code> / <code>？=${pa.punctuation_prose["？/?"]}</code> / <strong><code>！=${pa.punctuation_prose["！/!"]}</code></strong>
+                ｜ 鉤括弧内: <code>。=${pa.punctuation_quotes["。"]}</code> / <code>？=${pa.punctuation_quotes["？/?"]}</code> / <strong><code>！=${pa.punctuation_quotes["！/!"]}</code></strong>
+              </div>
+              <table class="mirror-table">
+                <thead><tr><th>語群（最大一致・括弧外）</th><th>回数</th><th>該当断片</th></tr></thead>
+                <tbody>
+                  ${(pa.group_order || Object.keys(pa.group_totals || {})).map((g) => {
+                    const totObj = (pa.group_totals && pa.group_totals[g]) || {};
+                    const count = Object.values(totObj).reduce((acc, v) => acc + v, 0);
+                    const docs = (pa.group_docs && pa.group_docs[g]) || [];
+                    return `
+                      <tr>
+                        <td>${escapeHtml(g)}</td>
+                        <td><strong>${count}</strong> 回 (${docs.length}編)</td>
+                        <td>${docs.map((fid) => `<button type="button" class="link-pill" style="margin:0.1rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("") || "—"}</td>
+                      </tr>
+                    `;
+                  }).join("")}
+                </tbody>
+              </table>
+            </div>
+          ` : ""}
+        </div>
+      ` : ""}
 
       ${va.pronouns ? `
         <div class="reader-pane" style="margin-bottom:1.4rem;">

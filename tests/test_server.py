@@ -74,9 +74,21 @@ class ServerTests(unittest.TestCase):
                 {"questions", "motifs", "materials", "fragments", "relations", "sessions"}
                 <= set(payload)
             )
-            # The payload may also carry derived panes (voice_audit, readings).
+            # The payload also carries derived panes (voice_audit, passion_audit, metabolism_audit, readings).
             expected_fragments = ledger_record_count(ROOT, "fragments")
             self.assertEqual(len(payload["fragments"]), expected_fragments)
+            self.assertIn("passion_audit", payload)
+            self.assertIn("metabolism_audit", payload)
+            self.assertEqual(payload["passion_audit"]["fragments"], expected_fragments)
+            self.assertEqual(len(payload["passion_audit"]["group_order"]), 5)
+            self.assertEqual(
+                payload["metabolism_audit"]["material_count"],
+                ledger_record_count(ROOT, "materials"),
+            )
+            self.assertEqual(
+                payload["metabolism_audit"]["fragment_count"],
+                expected_fragments,
+            )
 
             status, _headers, body = get(port, "/")
             self.assertEqual(status, 200)
@@ -92,6 +104,18 @@ class ServerTests(unittest.TestCase):
             server.shutdown()
             server.server_close()
             thread.join(timeout=5)
+
+    def test_metabolism_snapshot_tracks_graph_connectivity(self) -> None:
+        payload = serve_viewer.read_archive_payload()
+        ma = payload["metabolism_audit"]
+        self.assertEqual(ma["isolated_material_ids"], [])
+        self.assertEqual(ma["unfragmented_motif_ids"], [])
+        self.assertEqual(ma["isolated_question_ids"], [])
+        self.assertEqual(ma["incoming_zero_fragment_ids"], [])
+        self.assertEqual(ma["outgoing_zero_fragment_ids"], [])
+        pa = payload["passion_audit"]
+        self.assertEqual(pa["punctuation_prose"]["！/!"], 0)
+        self.assertGreaterEqual(pa["punctuation_quotes"]["！/!"], 5)
 
     def test_unreadable_ledger_returns_json_error(self) -> None:
         server, thread = start_server(ROOT)
