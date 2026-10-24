@@ -10,11 +10,13 @@ from __future__ import annotations
 import argparse
 import json
 import mimetypes
+import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 from inspect_inquiry import build_context_packet, load_all
+import ledger_io
 from validate_seed import COLLECTIONS, ROOT, load_jsonl
 from voice_audit import compute_voice_audit
 
@@ -43,14 +45,25 @@ def read_readings_list() -> list[dict[str, str]]:
     return notes
 
 
-def read_archive_payload() -> dict[str, object]:
-    errors: list[str] = []
-    payload: dict[str, object] = {}
-    for name, (filename, id_key, _) in COLLECTIONS.items():
-        records = load_jsonl(ROOT / "state" / filename, id_key, errors)
-        payload[name] = list(records.values())
-    if errors:
-        raise RuntimeError("; ".join(errors))
+def read_archive_payload(retries: int = 8, delay: float = 0.02) -> dict[str, object]:
+    # A writer may replace a ledger between one collection's read and the next.
+    # Retry the whole payload so a browser refresh during an edit sees one
+    # consistent snapshot instead of a 500.
+    for attempt in range(retries + 1):
+        errors: list[str] = []
+        payload: dict[str, object] = {}
+        try:
+            for name, (filename, id_key, _) in COLLECTIONS.items():
+                records = load_jsonl(ROOT / "state" / filename, id_key, errors)
+                payload[name] = list(records.values())
+        except ledger_io.LedgerBusy:
+            if attempt >= retries:
+                raise
+            time.sleep(delay)
+            continue
+        if errors:
+            raise RuntimeError("; ".join(errors))
+        break
     fragments = payload["fragments"]  # type: ignore[assignment]
     relations = payload["relations"]  # type: ignore[assignment]
     payload["voice_audit"] = compute_voice_audit(fragments, relations, top=16, gram=6)  # type: ignore[arg-type]
