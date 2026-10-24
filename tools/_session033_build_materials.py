@@ -734,8 +734,8 @@ materials.append(entry(
 # ---------------------------------------------------------------------------
 materials.append(entry(
     "MAT-TRC-011", "project_trace",
-    "SESSION-033 検死記録——断片は漢数字で数え、報告はアラビア数字で測る",
-    src("SRC-MAT-TRC-011", "SESSION-033 検死記録（数・測定語彙監査）",
+    "SESSION-033 検証記録——断片は漢数字で数え、報告はアラビア数字で測る",
+    src("SRC-MAT-TRC-011", "SESSION-033 検証記録（数・測定語彙監査）",
         ["AIselfMySelf（本リポジトリ運用記録）"], 2026,
         "https://github.com/aiselfmyselfresearch-max/AIselfMySelf",
         "2026-10-24 時点。tools/measure_audit.py --readings による集計。"),

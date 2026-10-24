@@ -748,7 +748,7 @@ materials.append(entry(
     E13))
 
 # ---------------------------------------------------------------------------
-# 第6群 運用痕跡（MAT-TRC-010）——このセッションの検死記録
+# 第6群 運用痕跡（MAT-TRC-010）——このセッションの検証記録
 # ---------------------------------------------------------------------------
 def count_time_vocab(fragments_path):
     pattern = re.compile(r"[時刻季朝晩未来過去今日今]")
@@ -775,8 +775,8 @@ counts_str = "、".join(f"{k}: {v}回" for k, v in sorted(counts.items()))
 
 materials.append(entry(
     "MAT-TRC-010", "project_trace",
-    "SESSION-032 検死記録——既存36編の「時間語彙」監査",
-    src("SRC-MAT-TRC-010", "SESSION-032 検死記録（時間語彙監査）",
+    "SESSION-032 検証記録——既存36編の「時間語彙」監査",
+    src("SRC-MAT-TRC-010", "SESSION-032 検証記録（時間語彙監査）",
         ["AIselfMySelf（本リポジトリ運用記録）"], 2026,
         "https://github.com/aiselfmyselfresearch-max/AIselfMySelf",
         "2026-10-24 時点。state/fragments.jsonl の既存36編の本文を走査した集計。"),

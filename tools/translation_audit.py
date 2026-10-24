@@ -80,7 +80,7 @@ def main() -> int:
     print("\n== 書く側 ==")
     print(f"断片 {len(frags)}  言語 {dict(Counter(f.get('language') for f in frags))}  "
           f"総字数 {sum(len(f['text']) for f in frags)}")
-    print(f"精読・検死レポート {len(reports)} 本  総字数 {sum(len(p.read_text(encoding='utf-8')) for p in reports)}")
+    print(f"精読・検証レポート {len(reports)} 本  総字数 {sum(len(p.read_text(encoding='utf-8')) for p in reports)}")
     written = Counter(f.get("language") for f in frags)
     print(f"書庫が書く言語の種類 {len(written)}")
 
