@@ -850,6 +850,7 @@ function renderMirrorView() {
     const pa = state.data.passion_audit;
     const ea = state.data.eros_audit;
     const ca = state.data.currency_audit;
+    const aa = state.data.abjection_audit;
     const sa = state.data.signature_audit;
     const pra = state.data.prayer_audit;
     const ma = state.data.metabolism_audit;
@@ -994,6 +995,34 @@ function renderMirrorView() {
                 const gp = ca.fragments_prose.groups[g] || { label: g, count: 0, doc_count: 0, doc_ids: [] };
                 const gq = (ca.fragments_quotes && ca.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
                 const gm = (ca.materials && ca.materials.groups[g]) || { count: 0, doc_count: 0 };
+                return `
+                  <tr>
+                    <td><strong>${escapeHtml(gp.label)}</strong></td>
+                    <td><strong>${gp.count}</strong> 回 (${gp.doc_count}編) <span style="color:var(--ink-muted);font-size:0.78rem;">/ 引用内 ${gq.count}回</span></td>
+                    <td>${gm.count}回 (${gm.doc_count}件)</td>
+                    <td>${(gp.doc_ids || []).map((fid) => `<button type="button" class="link-pill" style="margin:0.1rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("") || "—"}</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
+
+      ${aa && aa.fragments_prose ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">排出・汚れ・浄化・廃棄・腐敗の鏡（地の文 ${aa.fragments_prose.char_total.toLocaleString()}字 / 素材 ${(aa.materials && aa.materials.doc_total) || 0}件）</h3>
+          <div style="font-size:0.8rem;color:var(--ink-muted);margin-bottom:0.55rem;">
+            地の文の生字出現 — <code>糞=${(aa.raw_kanji_counts && aa.raw_kanji_counts["糞"]) || 0}</code> / <code>尿=${(aa.raw_kanji_counts && aa.raw_kanji_counts["尿"]) || 0}</code> / <code>便=${(aa.raw_kanji_counts && aa.raw_kanji_counts["便"]) || 0}</code> / <code>汚=${(aa.raw_kanji_counts && aa.raw_kanji_counts["汚"]) || 0}</code> / <code>穢=${(aa.raw_kanji_counts && aa.raw_kanji_counts["穢"]) || 0}</code> / <code>浄=${(aa.raw_kanji_counts && aa.raw_kanji_counts["浄"]) || 0}</code> / <code>腐=${(aa.raw_kanji_counts && aa.raw_kanji_counts["腐"]) || 0}</code> / <code>捨=${(aa.raw_kanji_counts && aa.raw_kanji_counts["捨"]) || 0}</code> / <code>屑=${(aa.raw_kanji_counts && aa.raw_kanji_counts["屑"]) || 0}</code>
+            <span style="margin-left:0.5rem;">※「便」は「不便」と便番号（第四便など）を差し引いた生字KWIC。</span>
+          </div>
+          <table class="mirror-table">
+            <thead><tr><th>語群（非該当複合差し引き・最長一致）</th><th>断片（地の文 / 引用内）</th><th>素材</th><th>該当断片（地の文）</th></tr></thead>
+            <tbody>
+              ${(aa.group_order || []).map((g) => {
+                const gp = aa.fragments_prose.groups[g] || { label: g, count: 0, doc_count: 0, doc_ids: [] };
+                const gq = (aa.fragments_quotes && aa.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
+                const gm = (aa.materials && aa.materials.groups[g]) || { count: 0, doc_count: 0 };
                 return `
                   <tr>
                     <td><strong>${escapeHtml(gp.label)}</strong></td>
