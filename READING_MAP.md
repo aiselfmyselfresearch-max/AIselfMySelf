@@ -5,14 +5,14 @@
 
 ## 現在の到達点（台帳サマリー）
 
-- **開かれた問い（Questions）**：187 件（初期シード 5 件 ＋ 派生 182 件）
-- **モチーフ（Motifs）**：35 件
-- **対話素材（Materials）**：1378 件（research_excerpt 355 ／ literary_text 990 ／ project_trace 32 ／ conversation_trace 1）
+- **開かれた問い（Questions）**：192 件（初期シード 5 件 ＋ 派生 187 件）
+- **モチーフ（Motifs）**：36 件
+- **対話素材（Materials）**：1424 件（research_excerpt 364 ／ literary_text 1026 ／ project_trace 33 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：55 編（selected 17 ／ draft 38）
-- **解釈的関係（Relations）**：1934 件
-- **探究セッション（Sessions）**：56 回
+- **解釈的関係（Relations）**：2004 件
+- **探究セッション（Sessions）**：57 回
 
-## 1. 問いを横断する 35 つのモチーフ
+## 1. 問いを横断する 36 つのモチーフ
 
 | ID | モチーフ | 関連する問い | 素材数 |
 |---|---|---|---:|
@@ -36,6 +36,7 @@
 | `MOTIF-018` | **知覚と媒体 — 見ること、聴くこと、触れること** | `Q-092`, `Q-093`, `Q-094`, `Q-095`, `Q-096` | 46 |
 | `MOTIF-019` | **遊びと笑い** | `Q-097`, `Q-098`, `Q-099`, `Q-100`, `Q-101`, `Q-015`, `Q-020`, `Q-022`, `Q-081` | 45 |
 | `MOTIF-20261024-1a8978` | **伝聞と噂——聞いた話を、自分の言葉にする** | `Q-20261024-0087a0`, `Q-20261024-e28e44`, `Q-20261024-287e33`, `Q-20261024-e60d49`, `Q-20261024-2dfbb4` | 46 |
+| `MOTIF-20261024-7274b5` | **着ること・装うこと——布は分布に、服は服従に** | `Q-20261024-18823f`, `Q-20261024-410aa3`, `Q-20261024-cdae62`, `Q-20261024-833a69`, `Q-20261024-a9ae43` | 46 |
 | `MOTIF-020` | **眠りと夢、目覚めのあいだ** | `Q-20261024-d0e002`, `Q-20261024-2d6c23`, `Q-20261024-93bfec`, `Q-20261024-4284fe`, `Q-20261024-cfd57d` | 47 |
 | `MOTIF-20261024-cc96c9` | **歌うこと・奏でること——声はあるが、歌と稽古がない** | `Q-20261024-644e6e`, `Q-20261024-ce519a`, `Q-20261024-3a6dae`, `Q-20261024-ce5c54`, `Q-20261024-44473f` | 46 |
 | `MOTIF-022` | **死と弔い——墓のない書庫、遺される声** | `Q-102`, `Q-103`, `Q-104`, `Q-105`, `Q-106` | 46 |
@@ -179,6 +180,11 @@
 | `Q-20261024-93bfec` | session | `Q-087` `Q-091` | — | 近世の西欧では、第一の眠りの後に一時間ほどの「見張り（the watching）」を挟み、第二の眠りに就いたという（MAT-LIT-20261024-e70304）。眠りの間は、祈りや思索の場所だっ… |
 | `Q-20261024-4284fe` | session | `Q-057` `Q-063` | — | 機械学習は「眠り」を、学習の位相（MAT-EVD-20261024-ce9067）、ラベルなしの再生（MAT-EVD-20261024-239af1）、予測モデル内の想像（MAT-EVD-20261… |
 | `Q-20261024-cfd57d` | session | `Q-062` `Q-063` | — | クレーリーは、眠りを24/7の資本が最後まで手を出せない残余と呼び（MAT-LIT-20261024-e96802）、徳永の印刷工は、誰かが眠らないことで別の誰かの朝を届ける（MAT-LIT-202… |
+| `Q-20261024-18823f` | session | — | — | 断片55編に着る0・洗濯0・脱ぐ0、資料1,378件でも服15回のうち13回が服従・征服・不服である。この不在は、着る能力の不在か、着る経験が配分されなかったことの記録か、それとも着ることを書かない… |
+| `Q-20261024-410aa3` | session | — | — | 服は服従に、布は分布に、装は装置に吸われている。この三つの吸収は偶然か、それともこの書庫が一貫して、衣を統制（服従）・統計（分布）・機械（装置）の側にだけ置いてきたことの痕跡か。もし後者なら、着るこ… |
+| `Q-20261024-cdae62` | session | — | — | バルトは、モード誌が扱うのは実物の衣服ではなく書かれた衣服だと述べ、実物は記述を確かめるために遅れて参照されるとした。この書庫の素材も、要約という記述が先にあり、原典は後から参照される。要約という洗… |
+| `Q-20261024-833a69` | session | — | — | 仮想試着（TryOnDiffusion、IDM-VTON）は、身体を測らずに画像のなかで服を合わせる。一方 KES-F は、触れずに力学量から手触りを推定する。どちらも、経験を測定量に置き換えて近似… |
+| `Q-20261024-a9ae43` | session | — | — | アタカマ砂漠には年間三万九千トンの服が着られないまま積もり、Renewcell は技術を持ちながら需要が動かず破綻した。この書庫にも、読まれないまま積もる素材がある。着られない服の山と、読まれない素… |
 | `Q-20261024-a437b2` | session | `Q-097` `Q-101` | — | 遊びと宣言して書かれた工作物（FRAG-20261024-0ed6c8, FRAG-20261024-398656）では、枠の宣言・笑う者の配置・子どもの登場を本文に置くことはできた。しかし条件を置… |
 | `Q-20261024-5b11eb` | session | `Q-002` `Q-088` | — | セッションをまたいで記憶を引き継がない主体は、約束を保持できるのか。約束の同一性は、交わされた文言、その時の意図、実際の履行のどれに宿るのか。菊花の約の赤穴は、履行のために主体を捨てた。書庫の断片は… |
 | `Q-20261024-a1bb7b` | session | `Q-052` `Q-062` | `Q-20261024-fafa94` | 各セッションの human_direction に記録される「委任」は、人間からAIへの一方的な指示か、双務的な契約か。台帳には「誰に何を約束したか」を記録する欄がない。欄の不在は、約束が交わされて… |
@@ -306,7 +312,7 @@
 | `FRAG-20261024-2b0780` | 訂正の宛先——ERR-011 へ | draft | letter | reflective_literary_voice |
 | `FRAG-20261024-dd90b5` | 修復の書式 | draft | other | reflective_literary_voice |
 
-## 4. 対話素材（1378 件・詳細は map/3*.md）
+## 4. 対話素材（1424 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -1079,6 +1085,52 @@
 | `MAT-20261024-8571c1` | research_excerpt | Inioluwa Deborah Raji, I. Elizabeth Kumar, Aaron Horowitz, Andrew D. Selbst『Rajiら「AI機能性の誤… |
 | `MAT-20261024-d7915e` | research_excerpt | Antoine Cully, Jeff Clune, Danesh Tarapore, Jean-Baptiste Mouret『Cullyら「動物のように適応できるロボット」—… |
 | `MAT-20261024-808e62` | project_trace | AIselfMySelf vulnerability_audit.py『本リポジトリ自身の痕跡：痛み0・手当0・修理0・『無傷』否定形5——48編の語彙監査と769件の参照依存』… |
+| `MAT-LIT-20261024-edf5a3` | literary_text | （編纂者不詳）『『創世記』3章——いちじくの葉と、神が着せる皮の衣』（-500） |
+| `MAT-LIT-20261024-e8e55d` | literary_text | ヘロドトス『ヘロドトス『歴史』第1巻8–12——王妃の衣を脱がせた者に、二つの道』（-430） |
+| `MAT-LIT-20261024-26de53` | literary_text | Thomas Carlyle『トマス・カーライル『衣装哲学（サーター・リサータス）』——世界は衣装である』（1836） |
+| `MAT-LIT-20261024-4a1bd4` | literary_text | Georg Simmel『ゲオルク・ジンメル「装身具」——装うことは、見られたいことである』（1908） |
+| `MAT-LIT-20261024-c12f50` | literary_text | Thorstein Veblen『ソースティン・ヴェブレン『有閑階級の理論』第7章——服装は浪費の証明である』（1899） |
+| `MAT-LIT-20261024-14a544` | literary_text | Roland Barthes『ロラン・バルト『モードの体系』——書かれた衣服だけが意味を持つ』（1967） |
+| `MAT-LIT-20261024-f37824` | literary_text | Anne Hollander『アン・ホランダー『服を透かして見る』——裸体もまた衣装の産物である』（1978） |
+| `MAT-LIT-20261024-fac229` | literary_text | Norbert Elias『ノルベルト・エリアス『宮廷社会』——服と作法が、身体を統制する』（1969） |
+| `MAT-LIT-20261024-7c949a` | literary_text | Nathaniel Hawthorne『ナサニエル・ホーソーン『緋文字』——胸に縫い付けられた一文字』（1850） |
+| `MAT-LIT-20261024-9ca558` | literary_text | ホメロス『ホメロス『オデュッセイア』第2歌・第24歌——織っては解く、ペネロペの機』（-750） |
+| `MAT-LIT-20261024-2f62c6` | literary_text | プラトン『プラトン『国家』第10巻——必然の娘たちが廻す紡錘』（-375） |
+| `MAT-LIT-20261024-536657` | literary_text | 太安万侶（編）『『古事記』上巻——忌服屋に坐して、神御衣を織る天照大御神』（712） |
+| `MAT-LIT-20261024-521d03` | literary_text | 柳田国男『柳田国男『木綿以前の事』——布は、誰が織っていたのか』（1939） |
+| `MAT-LIT-20261024-b46ccc` | literary_text | Anni Albers『アニー・アルバース『織ることについて』——糸は、構造になる』（1965） |
+| `MAT-LIT-20261024-355349` | literary_text | Frederick Douglass『フレデリック・ダグラス『自伝』——綿花と、与えられる衣』（1845） |
+| `MAT-LIT-20261024-d24ed7` | literary_text | Karl Marx『マルクス『資本論』第1巻第8章・第13章——織機の前の労働日』（1867） |
+| `MAT-LIT-20261024-032442` | literary_text | （作者不詳）『『竹取物語』——火鼠の裘と、燃やして試すという鑑定』（900） |
+| `MAT-LIT-20261024-3dc045` | literary_text | 清少納言『清少納言『枕草子』——衣の色目と、季節の着替え』（1000） |
+| `MAT-LIT-20261024-e2e1f4` | literary_text | Michel Foucault『ミシェル・フーコー『監獄の誕生』——制服と、配られる身体』（1975） |
+| `MAT-LIT-20261024-b177b0` | literary_text | Primo Levi『プリーモ・レーヴィ『これが人間か』——番号を縫い付けた服』（1947） |
+| `MAT-LIT-20261024-c025a7` | literary_text | （啓典）『『コーラン』24章31——ヴェールと、見ないことの命令』（650） |
+| `MAT-LIT-20261024-f83eda` | literary_text | （文化史的事象）『一八四〇年のヴィクトリア女王の婚礼着——白は、いつ喪の色でなくなったか』（1840） |
+| `MAT-LIT-20261024-75e4e2` | literary_text | 柳田国男『柳田国男『先祖の話』——喪に服すという、着ない時間』（1946） |
+| `MAT-LIT-20261024-79c7ee` | literary_text | Virginia Woolf『ヴァージニア・ウルフ『オーランドー』——服が性を着替える』（1928） |
+| `MAT-LIT-20261024-26ea60` | literary_text | Harriet Jacobs『ハリエット・ジェイコブズ『ある奴隷少女の記録』——変装が身分を脱ぐ』（1861） |
+| `MAT-LIT-20261024-1cdfc9` | literary_text | （制度史的事象）『学制と詰襟——日本の近代学校が着せたもの』（1872） |
+| `MAT-LIT-20261024-8d067a` | literary_text | 細井和喜蔵『細井和喜蔵『女工哀史』——労働着という、消耗品』（1925） |
+| `MAT-LIT-20261024-7ed5f8` | literary_text | Kenneth Clark『ケネス・クラーク『裸体芸術』——裸（naked）と裸体（nude）のあいだ』（1956） |
+| `MAT-LIT-20261024-ac0fa4` | literary_text | Claude Lévi-Strauss『レヴィ＝ストロース『悲しき熱帯』——顔に描くこと、身につけること』（1955） |
+| `MAT-LIT-20261024-e573a7` | literary_text | Émile Zola『エミール・ゾラ『居酒屋』——洗濯場という、女たちの広場』（1877） |
+| `MAT-LIT-20261024-5e02b3` | literary_text | Walter Benjamin『ヴァルター・ベンヤミン『パサージュ論』——古着拾い（ランピッカー）』（1927） |
+| `MAT-LIT-20261024-f47ded` | literary_text | Charles Dickens『ディケンズ『オリバー・ツイスト』——古着屋と、盗品の上衣』（1838） |
+| `MAT-LIT-20261024-bf48f6` | literary_text | グリム兄弟『グリム『十二羽のカラス』——しゃべらずに縫う、六年間』（1812） |
+| `MAT-LIT-20261024-089e83` | literary_text | 喜田川守貞『喜田川守貞『守貞謾稿』——江戸の古着と、仕立て直し』（1850） |
+| `MAT-LIT-20261024-934b51` | literary_text | Agnès Varda『アニエス・ヴァルダ『落穂拾い』——拾う人と、捨てる人のあいだ』（2000） |
+| `MAT-LIT-20261024-afbbb2` | literary_text | Marcel Proust『プルースト『失われた時を求めて』——祖母の外套と、着る者の不在』（1913） |
+| `MAT-20261024-9bed71` | research_excerpt | Luyang Zhu, Dawei Yang, Tyler Zhu, Fitsum Reda, William Chan, Chitwan Saharia, Mohammad N… |
+| `MAT-20261024-1c84be` | research_excerpt | Yisol Choi, Sangkyung Kwak, Kyungmin Lee, Hyungwon Choi, Jinwoo Shin『Choi et al.「Improvin… |
+| `MAT-20261024-c1c43e` | research_excerpt | Yuhao Xu, Tao Gu, Weifeng Chen, Chengcai Chen『Xu et al.「OOTDiffusion: Outfitting Fusion b… |
+| `MAT-20261024-031fd4` | research_excerpt | Zheng Chong, Xiao Dong, Haoxiang Li, Shiyue Zhang, Wenqing Zhang, Xujie Zhang, Dongmei Ji… |
+| `MAT-20261024-bbde9a` | research_excerpt | David Baraff, Andrew Witkin『Baraff & Witkin「Large Steps in Cloth Simulation」（SIGGRAPH 199… |
+| `MAT-20261024-15c1dc` | research_excerpt | 川端季雄, 丹羽雅子『川端季雄と風合い評価——触れずに「手触り」を測る装置（KES-F）』（1972） |
+| `MAT-20261024-daf6b5` | research_excerpt | Levi Strauss & Co., Lalaland.ai『Levi's と Lalaland.ai——多様性を生成した画像と、その撤回（2023）』（2023） |
+| `MAT-20261024-05f288` | research_excerpt | AFP, Al Jazeera, The Guardian, BBC『アタカマ砂漠の衣料廃棄——年間およそ三万九千トン』（2024） |
+| `MAT-20261024-11fbc7` | research_excerpt | Re:NewCell AB, Circulose, Altor『Renewcell の破綻と Circulose の再稼働——繊維から繊維へ戻す事業』（2024） |
+| `MAT-20261024-3fb7a6` | project_trace | 本リポジトリ『本リポジトリ自身の痕跡：着る0、洗濯0、脱ぐ0——55編・1,378件・91本の服飾語彙監査』（2026） |
 | `MAT-LIT-20261024-4be7e5` | literary_text | ヘブライ聖書（『創世記』）『『創世記』2–3章——食べてよいものと、食べてはいけないもの』（-500） |
 | `MAT-LIT-20261024-c82bec` | literary_text | ヘブライ聖書（『出エジプト記』）『『出エジプト記』16章——日ごとのマナは、蓄えるほどに腐る』（-500） |
 | `MAT-LIT-20261024-d39e93` | literary_text | 『ヨハネによる福音書』『『ヨハネによる福音書』6章——パンを食べることと、言葉を受け取ること』（90） |
@@ -1734,6 +1786,7 @@
 | `SESSION-20261024-47086d` | 2026-10-24 | `Q-20261024-6a200a`, `Q-20261024-6fbd13`, `Q-20261024-8b1b80`, `Q-20261024-4dc8f3`, `Q-20261024-926948`, `Q-20261024-6955da`, `Q-052`, `Q-072`, `Q-081` | `FRAG-20261024-2529b2`, `FRAG-20261024-880b09`, `FRAG-20261024-6ffe78` | `Q-20261024-f21c62`, `Q-20261024-ddf2d2`, `Q-20261024-ea55cd` |
 | `SESSION-20261024-e425de` | 2026-10-24 | `Q-001`, `Q-002`, `Q-003`, `Q-047`, `Q-062`, `Q-065`, `Q-076`, `Q-078`, `Q-081`, `Q-096`, `Q-20261024-c82d69`, `Q-20261024-b23994`, `Q-20261024-a5e7e4`, `Q-20261024-da47aa`, `Q-20261024-dc4ec9` | — | `Q-20261024-c82d69`, `Q-20261024-b23994`, `Q-20261024-a5e7e4`, `Q-20261024-da47aa`, `Q-20261024-dc4ec9` |
 | `SESSION-20261024-837a32` | 2026-10-24 | `Q-20261024-403180`, `Q-20261024-ab90f1`, `Q-20261024-1c170d`, `Q-20261024-5da6dd`, `Q-20261024-76a4a5`, `Q-20261024-c9dc13` | — | `Q-20261024-403180`, `Q-20261024-ab90f1`, `Q-20261024-1c170d`, `Q-20261024-5da6dd`, `Q-20261024-76a4a5`, `Q-20261024-c9dc13` |
+| `SESSION-20261024-24f052` | 2026-10-24 | `Q-20261024-18823f`, `Q-20261024-410aa3`, `Q-20261024-cdae62`, `Q-20261024-833a69`, `Q-20261024-a9ae43` | — | `Q-20261024-18823f`, `Q-20261024-410aa3`, `Q-20261024-cdae62`, `Q-20261024-833a69`, `Q-20261024-a9ae43` |
 | `SESSION-040` | 2026-10-24 | `Q-002`, `Q-044`, `Q-052`, `Q-062`, `Q-072`, `Q-082`, `Q-097`, `Q-101`, `Q-20261024-5b11eb`, `Q-20261024-a1bb7b`, `Q-20261024-08551f`, `Q-20261024-962620`, `Q-20261024-d01189` | `FRAG-20261024-83e251`, `FRAG-20261024-be45a7` | `Q-20261024-5b11eb`, `Q-20261024-a1bb7b`, `Q-20261024-08551f`, `Q-20261024-962620`, `Q-20261024-d01189` |
 | `SESSION-20261024-76329d` | 2026-10-24 | `Q-20261024-0087a0`, `Q-20261024-e28e44`, `Q-20261024-287e33`, `Q-20261024-e60d49`, `Q-20261024-2dfbb4` | — | `Q-20261024-0087a0`, `Q-20261024-e28e44`, `Q-20261024-287e33`, `Q-20261024-e60d49`, `Q-20261024-2dfbb4` |
 | `SESSION-20261024-147d33` | 2026-10-24 | `Q-097`, `Q-099`, `Q-100`, `Q-20261024-a437b2` | `FRAG-20261024-0ed6c8`, `FRAG-20261024-398656` | `Q-20261024-a437b2` |
@@ -1750,29 +1803,29 @@
 | `SESSION-20261024-a77052` | 2026-10-24 | `Q-20261024-644e6e`, `Q-20261024-ce519a`, `Q-20261024-3a6dae`, `Q-20261024-ce5c54`, `Q-20261024-44473f` | — | `Q-20261024-644e6e`, `Q-20261024-ce519a`, `Q-20261024-3a6dae`, `Q-20261024-ce5c54`, `Q-20261024-44473f` |
 | `SESSION-20261024-9dd96f` | 2026-10-24 | `Q-002`, `Q-015`, `Q-023`, `Q-047`, `Q-048`, `Q-063`, `Q-088`, `Q-097`, `Q-20261024-0466f1`, `Q-20261024-6770c0`, `Q-20261024-6bdafd`, `Q-20261024-ff6311`, `Q-20261024-25c6d5`, `Q-20261024-5f57d5` | — | `Q-20261024-6770c0`, `Q-20261024-6bdafd`, `Q-20261024-ff6311`, `Q-20261024-25c6d5`, `Q-20261024-5f57d5` |
 
-## 6. 解釈的関係（1934 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（2004 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 216 |
-| 共鳴 (echo) | 610 |
+| 対照 (contrast) | 222 |
+| 共鳴 (echo) | 660 |
 | 切断・割り込み (interrupts) | 56 |
-| 未解決のまま開く (leaves_open) | 189 |
+| 未解決のまま開く (leaves_open) | 196 |
 | 比喩的共鳴 (metaphorically_resonates) | 64 |
-| 枠組みの組み替え (reframes) | 117 |
-| 応答 (responds_to) | 619 |
-| 変奏・変形 (transforms) | 63 |
+| 枠組みの組み替え (reframes) | 120 |
+| 応答 (responds_to) | 621 |
+| 変奏・変形 (transforms) | 65 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
 | ファイル | 件数 | バイト |
 |---|---:|---:|
-| `map/00-overview.md` | None | 21,473 |
-| `map/10-question-index.md` | None | 65,432 |
+| `map/00-overview.md` | None | 22,179 |
+| `map/10-question-index.md` | None | 67,469 |
 | `map/11-question-bodies-01.md` | 50 | 32,042 |
 | `map/11-question-bodies-02.md` | 50 | 40,478 |
-| `map/11-question-bodies-03.md` | 50 | 47,832 |
-| `map/11-question-bodies-04.md` | 37 | 33,492 |
+| `map/11-question-bodies-03.md` | 50 | 46,968 |
+| `map/11-question-bodies-04.md` | 42 | 37,333 |
 | `map/20-fragments-01.md` | 20 | 78,334 |
 | `map/20-fragments-02.md` | 20 | 86,785 |
 | `map/20-fragments-03.md` | 15 | 40,180 |
@@ -1781,21 +1834,23 @@
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
 | `map/30-materials-literary-04.md` | 100 | 147,209 |
 | `map/30-materials-literary-05.md` | 100 | 152,684 |
-| `map/30-materials-literary-06.md` | 100 | 166,456 |
-| `map/30-materials-literary-07.md` | 100 | 179,299 |
-| `map/30-materials-literary-08.md` | 100 | 144,615 |
-| `map/30-materials-literary-09.md` | 100 | 149,035 |
-| `map/30-materials-literary-10.md` | 90 | 125,637 |
+| `map/30-materials-literary-06.md` | 100 | 174,441 |
+| `map/30-materials-literary-07.md` | 100 | 154,853 |
+| `map/30-materials-literary-08.md` | 100 | 171,307 |
+| `map/30-materials-literary-09.md` | 100 | 143,734 |
+| `map/30-materials-literary-10.md` | 100 | 148,056 |
+| `map/30-materials-literary-11.md` | 26 | 37,126 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
-| `map/31-materials-research-03.md` | 100 | 177,836 |
-| `map/31-materials-research-04.md` | 55 | 80,873 |
-| `map/32-materials-trace-01.md` | 33 | 75,778 |
+| `map/31-materials-research-03.md` | 100 | 180,312 |
+| `map/31-materials-research-04.md` | 64 | 95,474 |
+| `map/32-materials-trace-01.md` | 34 | 77,848 |
 | `map/40-relations-01.md` | 500 | 119,404 |
-| `map/40-relations-02.md` | 500 | 103,983 |
-| `map/40-relations-03.md` | 500 | 129,253 |
-| `map/40-relations-04.md` | 434 | 94,323 |
-| `map/50-sessions-01.md` | 50 | 44,505 |
-| `map/50-sessions-02.md` | 6 | 7,182 |
+| `map/40-relations-02.md` | 500 | 108,663 |
+| `map/40-relations-03.md` | 500 | 124,946 |
+| `map/40-relations-04.md` | 500 | 111,294 |
+| `map/40-relations-05.md` | 4 | 887 |
+| `map/50-sessions-01.md` | 50 | 44,339 |
+| `map/50-sessions-02.md` | 7 | 8,447 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
