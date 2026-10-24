@@ -43,6 +43,9 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
+
 FRAGMENTS = ROOT / "state" / "fragments.jsonl"
 RELATIONS = ROOT / "state" / "relations.jsonl"
 SESSIONS = ROOT / "state" / "sessions.jsonl"
@@ -50,22 +53,34 @@ READING_MAP = ROOT / "READING_MAP.md"
 VIEWER = ROOT / "viewer" / "app.js"
 SNAPSHOTS = ROOT / "state" / "selection_snapshots.jsonl"
 
+ID_KEYS = {
+    "fragments.jsonl": "fragment_id",
+    "relations.jsonl": "relation_id",
+    "sessions.jsonl": "session_id",
+}
 
-def load_jsonl(path: Path) -> list[dict[str, Any]]:
+
+def load_jsonl(path: Path, *, base_only: bool = False, exclude: str | None = None) -> list[dict[str, Any]]:
     if not path.is_file():
         return []
-    records: list[dict[str, Any]] = []
-    for line in path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        try:
-            record = json.loads(line)
-        except json.JSONDecodeError:
-            continue
-        if isinstance(record, dict):
-            records.append(record)
-    return records
+    if base_only or path.name not in ID_KEYS:
+        records: list[dict[str, Any]] = []
+        for line in path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                record = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if isinstance(record, dict):
+                records.append(record)
+        return records
+    errors: list[str] = []
+    merged = ledger_io.load_jsonl_union(path, ID_KEYS[path.name], errors, root=ROOT, exclude=exclude)
+    if errors:
+        raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
+    return list(merged.values())
 
 
 def relation_counts(relations: list[dict[str, Any]]) -> tuple[Counter, dict[str, Counter]]:
@@ -122,10 +137,11 @@ def mean(values: list[float]) -> float:
     return round(sum(values) / len(values), 2) if values else 0.0
 
 
-def build_report() -> dict[str, Any]:
-    fragments = load_jsonl(FRAGMENTS)
-    relations = load_jsonl(RELATIONS)
-    sessions = load_jsonl(SESSIONS)
+def build_report(*, base_only: bool = False, exclude: str | None = None) -> dict[str, Any]:
+    kw = {"base_only": base_only, "exclude": exclude}
+    fragments = load_jsonl(FRAGMENTS, **kw)
+    relations = load_jsonl(RELATIONS, **kw)
+    sessions = load_jsonl(SESSIONS, **kw)
     ids = [str(f.get("fragment_id", "")) for f in fragments if f.get("fragment_id")]
 
     degree, rel_types = relation_counts(relations)
@@ -292,6 +308,8 @@ def main() -> int:
     parser.add_argument("--top", type=int, default=8, help="how many fragments to list")
     parser.add_argument("--save", action="store_true", help="append this measurement to state/selection_snapshots.jsonl")
     parser.add_argument("--compare", action="store_true", help="diff the last two snapshots")
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/*.jsonl only")
+    parser.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
     args = parser.parse_args()
 
     if args.compare:
@@ -341,7 +359,7 @@ def main() -> int:
         print("  どちらが良いという話ではない。Q-037 は循環の所在を記録する問いである。")
         return 0
 
-    report = build_report()
+    report = build_report(base_only=args.base_only, exclude=args.exclude_shard)
     if args.save:
         record = save_snapshot(report)
         print(f"SAVED snapshot at {record['saved_at']} "

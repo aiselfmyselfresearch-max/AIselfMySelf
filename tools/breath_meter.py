@@ -25,6 +25,9 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
+
 FRAGMENTS = ROOT / "state" / "fragments.jsonl"
 
 # Marks where a reader is conventionally allowed to take a breath.
@@ -68,8 +71,14 @@ def profile(text: str) -> dict:
     }
 
 
-def load_fragments() -> list[dict]:
-    return [json.loads(line) for line in FRAGMENTS.read_text(encoding="utf-8").splitlines() if line.strip()]
+def load_fragments(*, base_only: bool = False, exclude: str | None = None) -> list[dict]:
+    if base_only:
+        return [json.loads(line) for line in FRAGMENTS.read_text(encoding="utf-8").splitlines() if line.strip()]
+    errors: list[str] = []
+    records = ledger_io.load_jsonl_union(FRAGMENTS, "fragment_id", errors, root=ROOT, exclude=exclude)
+    if errors:
+        raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
+    return list(records.values())
 
 
 def show(label: str, p: dict) -> None:
@@ -89,6 +98,8 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("ids", nargs="*", help="fragment ids (default: all)")
     ap.add_argument("--text", help="measure a plain text file instead")
+    ap.add_argument("--base-only", action="store_true", help="read frozen state/fragments.jsonl only")
+    ap.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
     args = ap.parse_args()
 
     if args.text:
@@ -97,7 +108,7 @@ def main() -> int:
         show(Path(args.text).name, profile(text))
         return 0
 
-    frags = load_fragments()
+    frags = load_fragments(base_only=args.base_only, exclude=args.exclude_shard)
     if args.ids:
         wanted = set(args.ids)
         frags = [f for f in frags if f["fragment_id"] in wanted]

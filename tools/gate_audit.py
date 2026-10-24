@@ -33,9 +33,18 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
+
 MATERIALS = ROOT / "state" / "materials.jsonl"
 FRAGMENTS = ROOT / "state" / "fragments.jsonl"
 QUESTIONS = ROOT / "state" / "questions.jsonl"
+
+ID_KEYS = {
+    "materials.jsonl": "material_id",
+    "fragments.jsonl": "fragment_id",
+    "questions.jsonl": "question_id",
+}
 
 QUESTION_TAIL = re.compile(r"か[。？]\s*$")
 QUOTE_CHARS = "「」『』\"'“”‘’"
@@ -48,10 +57,16 @@ TAIL_KINDS = [
 ]
 
 
-def load(path: Path) -> list[dict[str, Any]]:
+def load(path: Path, *, base_only: bool = False, exclude: str | None = None) -> list[dict[str, Any]]:
     if not path.is_file():
         return []
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    if base_only or path.name not in ID_KEYS:
+        return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    errors: list[str] = []
+    records = ledger_io.load_jsonl_union(path, ID_KEYS[path.name], errors, root=ROOT, exclude=exclude)
+    if errors:
+        raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
+    return list(records.values())
 
 
 def measure(materials: list[dict[str, Any]], fragments: list[dict[str, Any]],
@@ -106,13 +121,16 @@ def measure(materials: list[dict[str, Any]], fragments: list[dict[str, Any]],
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--json", action="store_true", help="print the measurement as JSON")
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/*.jsonl only")
+    parser.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
     args = parser.parse_args()
 
-    materials = load(MATERIALS)
+    kw = {"base_only": args.base_only, "exclude": args.exclude_shard}
+    materials = load(MATERIALS, **kw)
     if not materials:
         print(f"error: no materials found at {MATERIALS.relative_to(ROOT)}", file=sys.stderr)
         return 1
-    result = measure(materials, load(FRAGMENTS), load(QUESTIONS))
+    result = measure(materials, load(FRAGMENTS, **kw), load(QUESTIONS, **kw))
 
     if args.json:
         print(json.dumps(result, ensure_ascii=False, indent=1, sort_keys=True))

@@ -14,10 +14,14 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
+
 FRAGMENTS = ROOT / "state" / "fragments.jsonl"
 READINGS = ROOT / "readings"
 
@@ -40,8 +44,14 @@ SPECS: tuple[tuple[str, str], ...] = (
 )
 
 
-def load_fragments() -> list[dict[str, object]]:
-    return [json.loads(line) for line in FRAGMENTS.read_text(encoding="utf-8").splitlines() if line.strip()]
+def load_fragments(*, base_only: bool = False, exclude: str | None = None) -> list[dict[str, object]]:
+    if base_only:
+        return [json.loads(line) for line in FRAGMENTS.read_text(encoding="utf-8").splitlines() if line.strip()]
+    errors: list[str] = []
+    records = ledger_io.load_jsonl_union(FRAGMENTS, "fragment_id", errors, root=ROOT, exclude=exclude)
+    if errors:
+        raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
+    return list(records.values())
 
 
 def audit_texts(records: list[tuple[str, str, str]]) -> dict[str, object]:
@@ -78,9 +88,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--readings", action="store_true", help="also audit readings/*.md as a second corpus")
     parser.add_argument("--json", action="store_true", help="emit machine-readable JSON instead of a table")
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/fragments.jsonl only")
+    parser.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
     args = parser.parse_args()
 
-    fragments = load_fragments()
+    fragments = load_fragments(base_only=args.base_only, exclude=args.exclude_shard)
     result = {"fragments": audit_texts([(str(f["fragment_id"]), str(f["title"]), str(f["text"])) for f in fragments])}
 
     if args.readings:

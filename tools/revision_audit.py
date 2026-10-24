@@ -10,10 +10,18 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from collections import OrderedDict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
+
+ID_KEYS = {
+    "fragments.jsonl": "fragment_id",
+    "materials.jsonl": "material_id",
+}
 PATTERNS = OrderedDict([
     ("誤・間違・過ち（接辞を含む）", r"誤|間違|過ち"),
     ("訂正・修正（厳密）", r"訂正|修正"),
@@ -28,8 +36,14 @@ EXPECTED_SESSION_MATERIALS = (
 )
 
 
-def read_jsonl(path: Path) -> list[dict]:
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+def read_jsonl(path: Path, *, base_only: bool = False, exclude: str | None = None) -> list[dict]:
+    if base_only or path.name not in ID_KEYS:
+        return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    errors: list[str] = []
+    records = ledger_io.load_jsonl_union(path, ID_KEYS[path.name], errors, root=ROOT, exclude=exclude)
+    if errors:
+        raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
+    return list(records.values())
 
 
 def count_field(rows: list[dict], field: str, pattern: str) -> tuple[int, int, list[str]]:
@@ -50,9 +64,12 @@ def main() -> int:
         "--check-session-034", action="store_true",
         help="also require all 45 SESSION-034 material IDs and their report entries",
     )
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/*.jsonl only")
+    parser.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
     args = parser.parse_args()
 
-    fragments = read_jsonl(ROOT / "state" / "fragments.jsonl")
+    kw = {"base_only": args.base_only, "exclude": args.exclude_shard}
+    fragments = read_jsonl(ROOT / "state" / "fragments.jsonl", **kw)
     chars = sum(len(row.get("text", "")) for row in fragments)
     print(f"fragments={len(fragments)} chars={chars} fields=text,editor_note")
     print("category\tbody_occurrences/body_fragments\tnote_occurrences/note_fragments\tbody_ids\tnote_ids")
@@ -66,7 +83,7 @@ def main() -> int:
     print("NOTE: exact-pattern counts only; zero occurrences do not prove absence of a practice or idea.")
 
     if args.check_session_034:
-        materials = read_jsonl(ROOT / "state" / "materials.jsonl")
+        materials = read_jsonl(ROOT / "state" / "materials.jsonl", **kw)
         material_ids = {row["material_id"] for row in materials}
         missing = [mid for mid in EXPECTED_SESSION_MATERIALS if mid not in material_ids]
         report_path = ROOT / "readings" / "2026-10-24-session-034-revision-and-erasure.md"

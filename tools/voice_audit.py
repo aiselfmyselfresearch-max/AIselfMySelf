@@ -36,8 +36,16 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
+
 FRAGMENTS = ROOT / "state" / "fragments.jsonl"
 RELATIONS = ROOT / "state" / "relations.jsonl"
+
+ID_KEYS = {
+    "fragments.jsonl": "fragment_id",
+    "relations.jsonl": "relation_id",
+}
 
 # Phrases that perform suspension rather than describe it.
 SUSPENSION = ["答えを出さ", "答えは出さ", "出さず", "そのまま残", "開いたまま", "保留", "決めない", "委ねる"]
@@ -158,17 +166,24 @@ NON_QUESTION_KA_SUFFIXES = (
 )
 
 
-def load_jsonl(path: Path) -> list[dict[str, Any]]:
-    records: list[dict[str, Any]] = []
-    for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
-        if not line.strip():
-            continue
-        try:
-            records.append(json.loads(line))
-        except json.JSONDecodeError as exc:
-            print(f"error: {path.name}:{lineno}: {exc}", file=sys.stderr)
-            raise SystemExit(1)
-    return records
+def load_jsonl(path: Path, *, base_only: bool = False, exclude: str | None = None) -> list[dict[str, Any]]:
+    if base_only or path.name not in ID_KEYS:
+        records: list[dict[str, Any]] = []
+        for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            if not line.strip():
+                continue
+            try:
+                records.append(json.loads(line))
+            except json.JSONDecodeError as exc:
+                print(f"error: {path.name}:{lineno}: {exc}", file=sys.stderr)
+                raise SystemExit(1)
+        return records
+    errors: list[str] = []
+    merged = ledger_io.load_jsonl_union(path, ID_KEYS[path.name], errors, root=ROOT, exclude=exclude)
+    if errors:
+        print("error: " + "; ".join(errors), file=sys.stderr)
+        raise SystemExit(1)
+    return list(merged.values())
 
 
 def sentences(text: str) -> list[str]:
@@ -427,10 +442,12 @@ def main() -> int:
     parser.add_argument("--top", type=int, default=12, help="how many repeated grams to show (default 12)")
     parser.add_argument("--gram", type=int, default=6, help="character n-gram size (default 6)")
     parser.add_argument("--json", action="store_true", help="emit audit report as JSON")
+    parser.add_argument("--base-only", action="store_true", help="read frozen state/*.jsonl only")
+    parser.add_argument("--exclude-shard", metavar="SUFFIX", help="ignore shards matching SUFFIX")
     args = parser.parse_args()
 
-    fragments = load_jsonl(FRAGMENTS)
-    relations = load_jsonl(RELATIONS)
+    fragments = load_jsonl(FRAGMENTS, base_only=args.base_only, exclude=args.exclude_shard)
+    relations = load_jsonl(RELATIONS, base_only=args.base_only, exclude=args.exclude_shard)
     if not fragments:
         print("no fragments to inspect")
         return 1
@@ -441,8 +458,9 @@ def main() -> int:
         return 0
 
     total = report["fragment_count"]
+    scope_label = "base only" if args.base_only else ("union (exclude=" + args.exclude_shard + ")" if args.exclude_shard else "union (base + shards)")
     print("=== 声の鏡 — AIselfMySelf 台帳の反復を映す（採点ではありません） ===")
-    print(f"対象: state/fragments.jsonl {total} 編 / state/relations.jsonl {report['relation_count']} 件")
+    print(f"対象: fragments {total} 編 / relations {report['relation_count']} 件 [{scope_label}]")
     print()
 
     print("--- 1. 各断片の末尾一文（どう終わっているか） ---")
