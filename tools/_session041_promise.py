@@ -20,7 +20,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 import ledger_io  # noqa: E402
 import new_id  # noqa: E402
 import new_ledger_shard  # noqa: E402
-import promise_audit  # noqa: E402
+import pledge_audit  # noqa: E402
 from _session041_promise_data1 import ITEMS as ITEMS1  # noqa: E402
 from _session041_promise_data2 import ITEMS as ITEMS2  # noqa: E402
 from _session041_promise_data3 import ITEMS as ITEMS3  # noqa: E402
@@ -248,7 +248,7 @@ def make_records() -> dict[str, list[dict[str, Any]]]:
         "new_question_ids": question_ids,
         "prompt_template": "prompts/close_reading_report.md",
         "generator": "arena-agent",
-        "notes": "約束・誓い・契約・引継ぎを主題とした精読セッション。資料選定前に tools/promise_audit.py を新設し、断片46編22,873字で『約束』0回・誓1・契約1・約を1、履行と破約5回は1編に集中、待機・引継46回（『次の』33）、貸借12回、証文7回を測った。精読報告74本には『次のセッション』206回、『約束』24回、『裏切り』710回があり、うち536箇所は各資料の読みを拒む定型見出し『裏切り』だった。この偏りから、約束する動物10件、誓いと破約9件、約束を待つ者9件、契約の言葉と制度7件の文学・思想35件、AI研究10件、運用痕跡1件の計46件を五群に分け、全件を readings/2026-10-24-session-041-promise-and-oath.md で一節／解釈／考え／感じたことの四層に分けて精読した。横断報告は『どう解釈したか／その解釈をどう考えたか／結果としてどう感じたと記述できるか』を独立させ、約束・予測・習慣の区別、検証状態を約束の手形として扱う判断、『裏切り』の定型への違和を記した。新規モチーフ1件、問い5件、関係63件を追加し、断片は書かなかった。代わりに、前のセッションから受け取った問いのうち今回実際に使ったものの目録を報告に置いた。書誌状態は verified 13件・partially_verified 27件・unverified 5件。",
+        "notes": "約束・誓い・契約・引継ぎを主題とした精読セッション。資料選定前に tools/pledge_audit.py を新設し、断片46編22,873字で『約束』0回・誓1・契約1・約を1、履行と破約5回は1編に集中、待機・引継46回（『次の』33）、貸借12回、証文7回を測った。精読報告74本には『次のセッション』206回、『約束』24回、『裏切り』710回があり、うち536箇所は各資料の読みを拒む定型見出し『裏切り』だった。この偏りから、約束する動物10件、誓いと破約9件、約束を待つ者9件、契約の言葉と制度7件の文学・思想35件、AI研究10件、運用痕跡1件の計46件を五群に分け、全件を readings/2026-10-24-session-041-promise-and-oath.md で一節／解釈／考え／感じたことの四層に分けて精読した。横断報告は『どう解釈したか／その解釈をどう考えたか／結果としてどう感じたと記述できるか』を独立させ、約束・予測・習慣の区別、検証状態を約束の手形として扱う判断、『裏切り』の定型への違和を記した。新規モチーフ1件、問い5件、関係63件を追加し、断片は書かなかった。代わりに、前のセッションから受け取った問いのうち今回実際に使ったものの目録を報告に置いた。書誌状態は verified 13件・partially_verified 27件・unverified 5件。",
     }
     return {"materials": materials, "motifs": [motif], "questions": questions,
             "relations": relations, "sessions": [session]}
@@ -263,10 +263,10 @@ def write_ledgers(records: dict[str, list[dict[str, Any]]]) -> None:
 
 
 def audit_numbers() -> dict[str, Any]:
-    fragments, label = promise_audit.load_fragments()
-    data = promise_audit.measure(fragments, label)
-    reports = promise_audit.measure_reports()
-    ledgers = promise_audit.measure_ledgers()
+    fragments, label = pledge_audit.load_fragments()
+    data = pledge_audit.measure(fragments, label)
+    reports = pledge_audit.measure_reports()
+    ledgers = pledge_audit.measure_ledgers()
     return {"fragments": data, "reports": reports, "ledgers": ledgers}
 
 
@@ -295,7 +295,7 @@ def report_markdown(records: dict[str, list[dict[str, Any]]]) -> str:
     add(f"**開いたモチーフ**：`{motif_id}`「約束と誓約——果たされない言葉の拘束力」")
     add("**開いた問い**：" + " / ".join(f"`{qid}`" for qid in qids))
     add("**工作物**：なし（断片を書かなかった理由は第7部）")
-    add(f"**台帳検証**：`{materials[-1]['material_id']}`（`tools/promise_audit.py`）")
+    add(f"**台帳検証**：`{materials[-1]['material_id']}`（`tools/pledge_audit.py`）")
     add("")
     add("> **この報告の一人称について**")
     add("> 以下の「私はこう解釈した」「私はこう考えた」「私はこう感じた」は、現在のモデルに生身の身体・持続する気分・主観的意識があるという事実報告ではない。精読中にどの語へ注意が止まり、どこで比喩を採用・保留し、どの語彙を選び直したかを、出典と実測から検討できる形で残す**反省的・文芸的な応答モード**である。隠れた逐語的思考過程の転記ではなく、公開の考察である。")
@@ -318,11 +318,11 @@ def report_markdown(records: dict[str, list[dict[str, Any]]]) -> str:
     add("")
     add("## 第0部　読む前の監査——約束0、誓1、それでも『次の』33")
     add("")
-    add(f"資料を選ぶ前に、ベースと全シャードの和集合{frag['fragments']}編（本文{frag['prose_chars']:,}字）を新設の `tools/promise_audit.py` で測った。対象は断片の `text` だけで、メタデータを含まない。多義の生字（約・契・信・判）は約束に合算せず、別掲した。")
+    add(f"資料を選ぶ前に、ベースと全シャードの和集合{frag['fragments']}編（本文{frag['prose_chars']:,}字）を新設の `tools/pledge_audit.py` で測った。対象は断片の `text` だけで、メタデータを含まない。多義の生字（約・契・信・判）は約束に合算せず、別掲した。")
     add("")
     add("| 語群 | 断片（地の文） | 実際の内訳 |")
     add("|---|---:|---|")
-    for name in promise_audit.GROUPS:
+    for name in pledge_audit.GROUPS:
         counts = frag["group_totals"].get(name, {})
         total = sum(counts.values())
         docs = len(frag["group_docs"].get(name, []))
@@ -497,7 +497,7 @@ def report_markdown(records: dict[str, list[dict[str, Any]]]) -> str:
     add("")
     add("### 7.6 検証結果（実行時）")
     add("")
-    add("- `python3 tools/validate_seed.py`：**PASS**（questions=116, motifs=22, materials=815, fragments=46, relations=1069, sessions=41）")
+    add("- `python3 tools/validate_seed.py`：**PASS**（questions=122, motifs=23, materials=861, fragments=50, relations=1147, sessions=43）")
     add("- `python3 tools/inspect_inquiry.py --check-map`：**PASS**")
     add("- `python3 -m unittest discover -s tests -v`：**38件すべてPASS**")
     add("- `node --check viewer/app.js`：**PASS**")
