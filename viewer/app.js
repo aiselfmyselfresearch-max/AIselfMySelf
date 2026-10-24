@@ -959,6 +959,27 @@ function renderMirrorView() {
         </div>
       ` : ""}
 
+      ${va.labor_debt ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">労働・負債・授受の鏡（誰が働き、何を借り、誰に返すのか）</h3>
+          <table class="mirror-table">
+            <thead><tr><th>語彙群</th><th>出現編数</th><th>該当断片</th></tr></thead>
+            <tbody>
+              ${va.labor_debt.map((row) => `
+                <tr>
+                  <td><strong>${escapeHtml(row.label)}</strong></td>
+                  <td>${row.count}/${va.fragment_count} 編${row.count !== row.unquoted_count ? ` <span style="color:var(--ink-muted);font-size:0.78rem;">(地の文=${row.unquoted_count}編)</span>` : ""}</td>
+                  <td>${(row.fragment_ids || []).map((fid) => `<button type="button" class="link-pill" style="margin:0.12rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("") || "—"}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+          <p style="color:var(--ink-muted);font-size:0.82rem;margin:0.6rem 0 0;">
+            「手」は役割名詞（書き手・読み手など）を別行に分離。残る「手（身体・比喩の候補）」には成句（手がかり・手に入る・手数）が含まれるため、人手の分類では約27回・11編（SESSION-030、<code>MAT-TRC-008</code>）。授受補助は36編で6編・7回。恩恵の受益者が文法に現れるのは <code>FRAG-036</code>「あなたがこの行を読んでくれた」の一度だけで、他は命令・依頼である。
+          </p>
+        </div>
+      ` : ""}
+
       <div class="reader-pane" style="margin-bottom:1.4rem;">
         <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">各断片の末尾一文（先頭＋末尾の両端表示・省略隠れなし）</h3>
         <table class="mirror-table">
