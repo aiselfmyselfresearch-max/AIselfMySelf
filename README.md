@@ -51,12 +51,12 @@
 
 | 記録 | 保存先 | 現在の件数 | 役割 |
 |---|---|---:|---|
-| 問い | `state/questions.jsonl` | 66 | 開いたままの問い（初期シード5件＋セッション派生45件＋資料派生16件） |
-| モチーフ | `state/motifs.jsonl` | 12 | 記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度、作法と定型、感応と帰属、宛先、翻訳と来歴、労働と負債の12の糸 |
-| 素材 | `state/materials.jsonl` | 292 | AI・心理学・翻訳・労働研究抜粋56件（`research_excerpt`）＋哲学・言語学・文学原典228件（`literary_text`）＋プロジェクト痕跡8件（`project_trace`） |
-| 断片 | `state/fragments.jsonl` | 36 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 17編＋`draft` 19編） |
-| 関係 | `state/relations.jsonl` | 465 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
-| セッション | `state/sessions.jsonl` | 30 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| 問い | `state/questions.jsonl` | 71 | 開いたままの問い（初期シード5件＋セッション派生45件＋資料派生21件） |
+| モチーフ | `state/motifs.jsonl` | 13 | 記憶、連続、身体、声、他者、忘却と沈黙、住まいと調度、作法と定型、感応と帰属、宛先、翻訳と来歴、労働と負債、時間と生成の13の糸 |
+| 素材 | `state/materials.jsonl` | 338 | AI・心理学・翻訳・労働研究抜粋66件（`research_excerpt`）＋哲学・言語学・文学原典263件（`literary_text`）＋プロジェクト痕跡9件（`project_trace`） |
+| 断片 | `state/fragments.jsonl` | 37 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 17編＋`draft` 20編） |
+| 関係 | `state/relations.jsonl` | 500 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
+| セッション | `state/sessions.jsonl` | 31 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方
