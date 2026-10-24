@@ -128,6 +128,9 @@ class ServerTests(unittest.TestCase):
         self.assertGreater(
             ca["fragments_prose"]["groups"]["non_monetary_ledger_idioms"]["count"], 0
         )
+        sa = payload["signature_audit"]
+        self.assertEqual(sa["fragment_count"], len(payload["fragments"]))
+        self.assertIn("signature_mark", sa["fragments_prose"]["groups"])
         pra = payload["prayer_audit"]
         self.assertEqual(pra["fragment_count"], len(payload["fragments"]))
         self.assertIn("prayer_act", pra["fragments_prose"]["groups"])
