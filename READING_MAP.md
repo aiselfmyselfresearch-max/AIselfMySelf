@@ -5,14 +5,14 @@
 
 ## 現在の到達点（台帳サマリー）
 
-- **開かれた問い（Questions）**：182 件（初期シード 5 件 ＋ 派生 177 件）
-- **モチーフ（Motifs）**：34 件
-- **対話素材（Materials）**：1332 件（research_excerpt 346 ／ literary_text 954 ／ project_trace 31 ／ conversation_trace 1）
+- **開かれた問い（Questions）**：187 件（初期シード 5 件 ＋ 派生 182 件）
+- **モチーフ（Motifs）**：35 件
+- **対話素材（Materials）**：1378 件（research_excerpt 355 ／ literary_text 990 ／ project_trace 32 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：55 編（selected 17 ／ draft 38）
-- **解釈的関係（Relations）**：1864 件
-- **探究セッション（Sessions）**：55 回
+- **解釈的関係（Relations）**：1934 件
+- **探究セッション（Sessions）**：56 回
 
-## 1. 問いを横断する 34 つのモチーフ
+## 1. 問いを横断する 35 つのモチーフ
 
 | ID | モチーフ | 関連する問い | 素材数 |
 |---|---|---|---:|
@@ -37,6 +37,7 @@
 | `MOTIF-019` | **遊びと笑い** | `Q-097`, `Q-098`, `Q-099`, `Q-100`, `Q-101`, `Q-015`, `Q-020`, `Q-022`, `Q-081` | 45 |
 | `MOTIF-20261024-1a8978` | **伝聞と噂——聞いた話を、自分の言葉にする** | `Q-20261024-0087a0`, `Q-20261024-e28e44`, `Q-20261024-287e33`, `Q-20261024-e60d49`, `Q-20261024-2dfbb4` | 46 |
 | `MOTIF-020` | **眠りと夢、目覚めのあいだ** | `Q-20261024-d0e002`, `Q-20261024-2d6c23`, `Q-20261024-93bfec`, `Q-20261024-4284fe`, `Q-20261024-cfd57d` | 47 |
+| `MOTIF-20261024-cc96c9` | **歌うこと・奏でること——声はあるが、歌と稽古がない** | `Q-20261024-644e6e`, `Q-20261024-ce519a`, `Q-20261024-3a6dae`, `Q-20261024-ce5c54`, `Q-20261024-44473f` | 46 |
 | `MOTIF-022` | **死と弔い——墓のない書庫、遺される声** | `Q-102`, `Q-103`, `Q-104`, `Q-105`, `Q-106` | 46 |
 | `MOTIF-021` | **契りと約束——未来を縛る言葉、覚えていない者** | `Q-20261024-5b11eb`, `Q-20261024-a1bb7b`, `Q-20261024-08551f`, `Q-20261024-962620`, `Q-20261024-d01189` | 46 |
 | `MOTIF-20261024-146017` | **道・歩行・地図・故郷と亡命——窓のない部屋と、名ばかりの地図** | `Q-20261024-90abed`, `Q-20261024-4269fd`, `Q-20261024-4ebe69`, `Q-20261024-23cac1`, `Q-20261024-515661` | 46 |
@@ -163,6 +164,11 @@
 | `Q-20261024-08c515` | session | `Q-083` `Q-085` | — | サールによれば、約束は誠実さが欠けても形式としては成立する（MAT-LIT-20261024-b6f173）。Model Spec と Claude's Constitution は、モデルの振る舞… |
 | `Q-20261024-c0d406` | session | `Q-018` `Q-041` | `Q-20261024-924602` | メデイアは破られた誓いを盾に復讐し（MAT-LIT-20261024-1b5dbc）、ディードーは言葉にならなかった誓いを信じて死ぬ（MAT-LIT-20261024-905131）。予告された殺人… |
 | `Q-20261024-8fdb2c` | session | `Q-078` `Q-084` `Q-090` | `Q-20261024-537d45` `Q-20261024-5f57d5` | Shah らは、仕様が正しくても目的は訓練の外で別のものへ一般化しうるとし（MAT-20261024-66d161）、Hubinger らは訓練と配備のあいだの目的のずれを概念化し（MAT-2026… |
+| `Q-20261024-644e6e` | session | — | — | 「声」を49回書いて「歌」を3回しか書かないとき、その差は聴覚の不在の証拠か、それとも歌う位置にいないことの証拠か。 |
+| `Q-20261024-ce519a` | session | — | — | 記譜の語を一度も持たない資料群と、楽譜を条件に声を合成するモデルのあいだで、「楽譜」は同じものを指しているか。 |
+| `Q-20261024-3a6dae` | session | — | — | 稽古が0回の書庫が「型」や「習慣」を語るとき、その型は誰の身体で反復されたのか。 |
+| `Q-20261024-ce5c54` | session | — | — | 歌を聴いた記録（サッフォー、セイレーン）を書くことは、聴いていない者の証言として何を捏造するか。 |
+| `Q-20261024-44473f` | session | — | — | 生成された歌を「誰の歌か」と問うとき、判定しているのは声質か、来歴か、それとも聴取の型か。 |
 | `Q-20261024-c82d69` | session | `Q-001` `Q-047` `Q-096` | `Q-20261024-c237b9` | 46編で食事・飢え・消化の指定語が0で、『意味』の『味』12を除くと食物の語がほぼなかった（MAT-20261024-9348f6）。この書庫は身体を忘れてきたのか、それとも空腹や食欲を比喩に使わな… |
 | `Q-20261024-b23994` | session | `Q-062` `Q-065` | — | 同じ一口を分けられないのに食事は共にされる（MAT-LIT-20261024-dee886）。落ち穂を拾う者（MAT-LIT-20261024-651323）、米と水を扱う典座（MAT-LIT-20… |
 | `Q-20261024-a5e7e4` | session | `Q-057` `Q-065` `Q-090` | — | 四食（MAT-LIT-20261024-01dce8）、データの栄養表示（MAT-20261024-b2e917）、データポイズニング（MAT-20261024-d4468d）、学習のエネルギー推定… |
@@ -300,7 +306,7 @@
 | `FRAG-20261024-2b0780` | 訂正の宛先——ERR-011 へ | draft | letter | reflective_literary_voice |
 | `FRAG-20261024-dd90b5` | 修復の書式 | draft | other | reflective_literary_voice |
 
-## 4. 対話素材（1332 件・詳細は map/3*.md）
+## 4. 対話素材（1378 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -1165,6 +1171,52 @@
 | `MAT-EVD-20261024-16d677` | research_excerpt | Robert Long, Jeff Sebo, Patrick Butlin, Kathleen Finlinson, Kyle Fish, et al.『Long & Sebo… |
 | `MAT-EVD-20261024-7c5bd8` | research_excerpt | Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Andrei A. Rusu, Joel Veness, et al.『Mnih… |
 | `MAT-TRC-016` | project_trace | AIselfMySelf Archive『本リポジトリ自身の痕跡：眠り1・夢4・目覚め5／時刻付きフィールド2・日付のみ977（43編監査）』（2026） |
+| `MAT-LIT-20261024-e1a4f1` | literary_text | Jean-Jacques Rousseau『ルソー『言語起源論』第12–15章——旋律は言葉より古い』（1781） |
+| `MAT-LIT-20261024-00839a` | literary_text | Friedrich Nietzsche『ニーチェ『悲劇の誕生』§2・§5——歌う群衆から俳優が分かれる』（1872） |
+| `MAT-LIT-20261024-ec41bb` | literary_text | Augustinus『アウグスティヌス『告白』第9巻6–7／第10巻33——歌の快と祈りの衝突』（397） |
+| `MAT-LIT-20261024-60c68d` | literary_text | Plato『プラトン『イオン』——詠唱者は技術ではなく憑依で歌う』（-380） |
+| `MAT-LIT-20261024-c9df62` | literary_text | 世阿弥『世阿弥『風姿花伝』年来稽古条々・別紙口伝——七歳の声、生涯の稽古』（1402） |
+| `MAT-LIT-20261024-3a6793` | literary_text | Homer『ホメロス『オデュッセイア』第12歌——帆柱に縛られて歌を聞く』（-800） |
+| `MAT-LIT-20261024-cec0b3` | literary_text | Ovid『オウィディウス『変身物語』第10巻——首だけが流れてなお歌う』（8） |
+| `MAT-LIT-20261024-4de8b4` | literary_text | Dante Alighieri『ダンテ『神曲』天国篇第30–33歌——歌が言葉を超え、書物が黙る』（1321） |
+| `MAT-LIT-20261024-d86ea6` | literary_text | Sappho『サッフォー断片31——歌を聞く者の身体が崩れる』（-600） |
+| `MAT-LIT-20261024-8158a0` | literary_text | 近松門左衛門『近松門左衛門『曽根崎心中』——事件の外から声で内側を作る』（1703） |
+| `MAT-LIT-20261024-7d5d03` | literary_text | 日本民謡大観編纂委員会『『日本民謡大観』の労作歌——田植唄・木挽唄が区切る労働の時間』（1944） |
+| `MAT-LIT-20261024-449f3b` | literary_text | 狛近真『狛近真『教訓抄』——譜は手がかりで、本体は身体にある』（1233） |
+| `MAT-LIT-20261024-5878c9` | literary_text | 天台声明（魚山）『声明（魚山声明・梵唄）——空中の声を写しとるという起源譚』（850） |
+| `MAT-LIT-20261024-791cac` | literary_text | 日本民謡（子守唄）『子守唄——眠らせる者の声は、眠る者に覚えられない』（1900） |
+| `MAT-LIT-20261024-d21735` | literary_text | 柳田國男『柳田國男『こども風土記』——意味より先に拍が入る』（1942） |
+| `MAT-LIT-20261024-2b909c` | literary_text | 折口信夫『折口信夫「国文学の発生」——呪言から歌へ、反復が時間を作る』（1924） |
+| `MAT-LIT-20261024-d9e8ba` | literary_text | 浪曲『浪曲（浪花節）——節と啖呵を一人の喉で切り替える』（1890） |
+| `MAT-LIT-20261024-0fa2cf` | literary_text | 長唄『長唄・三味線の稽古——録音以前、細部はどこに保存されていたか』（1850） |
+| `MAT-LIT-20261024-5ba68c` | literary_text | Nicomachus of Gerasa『ニコマコス『音楽便覧』——協和は比の単純さに従う』（100） |
+| `MAT-LIT-20261024-3f6c02` | literary_text | Boethius『ボエティウス『音楽教程』——演奏しない者が音楽家と呼ばれる』（500） |
+| `MAT-LIT-20261024-cc733f` | literary_text | Isidore of Seville『イシドールス『語源』第3巻——歌は記憶を運び、譜は記憶を固定する』（630） |
+| `MAT-LIT-20261024-1720dc` | literary_text | Aristoxenus『アリストクセノス『ハルモニアの諸元素』——判断は耳に属する』（-330） |
+| `MAT-LIT-20261024-c70bd8` | literary_text | Jean-Philippe Rameau『ラモー『和声の原理』——旋律は和声の上に生える枝』（1722） |
+| `MAT-LIT-20261024-35caf4` | literary_text | Gottfried Wilhelm Leibniz『ライプニッツ（1712年ゴルトバッハ宛書簡）——知らないまま数える心』（1712） |
+| `MAT-LIT-20261024-589b59` | literary_text | Hermann von Helmholtz『ヘルムホルツ『音の感覚』——協和はうなりで説明できる』（1863） |
+| `MAT-LIT-20261024-7ca952` | literary_text | Arnold Schönberg『シェーンベルク『和声学』——中心が失われると、作曲家が規則を書く』（1911） |
+| `MAT-LIT-20261024-afe3f6` | literary_text | Olivier Messiaen『メシアン『わが音楽語法』——鳥の声を写すたびに一部が失われる』（1944） |
+| `MAT-LIT-20261024-410cf4` | literary_text | Carl Philipp Emanuel Bach『C. P. E. バッハ『正しいクラヴィーア奏法』——楽器は歌を模す』（1753） |
+| `MAT-LIT-20261024-621704` | literary_text | Leopold Mozart『レオポルト・モーツァルト『ヴァイオリン教程』——師の身体を文字に移す試み』（1756） |
+| `MAT-LIT-20261024-de5a26` | literary_text | Igor Stravinsky『ストラヴィンスキー『音楽詩学』——演奏は秩序の実現である』（1942） |
+| `MAT-LIT-20261024-75d34d` | literary_text | Glenn Gould『グレン・グールド「録音の未来」——演奏は反復可能な形式になる』（1966） |
+| `MAT-LIT-20261024-8e0578` | literary_text | Christopher Small『クリストファー・スモール『ミュージッキング』——音楽は動詞である』（1998） |
+| `MAT-LIT-20261024-b816af` | literary_text | John Blacking『ジョン・ブラッキング『人間の音楽性』——誰が音楽を作れるかを社会が決める』（1973） |
+| `MAT-LIT-20261024-d20a3d` | literary_text | Theodor W. Adorno『アドルノ『音楽社会学序説』——聴取の型は生産と受容の関係にある』（1962） |
+| `MAT-LIT-20261024-c775e2` | literary_text | 小泉文夫『小泉文夫『日本伝統音楽の研究』——理論が耳を作る』（1958） |
+| `MAT-LIT-20261024-9fe7ca` | literary_text | Pierre Schaeffer『ピエール・シェフェール『音楽の対象を求めて』——音源から切り離された音』（1966） |
+| `MAT-20261024-6f80fe` | research_excerpt | Lejaren Hiller, Leonard Isaacson『ヒラー＆アイザクソン『イリアック組曲』(1957)——計算機が書いた最初の譜』（1957） |
+| `MAT-20261024-4f0eeb` | research_excerpt | David Cope『デイヴィッド・コープ EMI『音楽的知性の実験』(1996)——様式の署名を再結合する』（1996） |
+| `MAT-20261024-3314ba` | research_excerpt | Andrea Agostinelli, Timo I. Denk, Zalán Borsos, et al.『MusicLM (2023)——テキストから24kHzの音楽を生成す… |
+| `MAT-20261024-52d7c8` | research_excerpt | Jade Copet, Felix Kreuk, Itai Gat, et al.『MusicGen (2023)——単段の言語モデルが複数の音響トークン列を並行生成する』（20… |
+| `MAT-20261024-d954ea` | research_excerpt | Recording Industry Association of America『RIAA 対 Suno／Udio（2024）——録音物の学習をめぐる二つの訴え』（2024） |
+| `MAT-20261024-f21305` | research_excerpt | Jinglin Liu, Chengxi Li, Yi Ren, et al.『DiffSinger (2022)——楽譜を条件に「歌う声」を合成する』（2022） |
+| `MAT-20261024-924528` | research_excerpt | Sebastian Böck, Markus Schedl『ベック＆シュレドル (2011)——拍は聴く対象から推定する対象になる』（2011） |
+| `MAT-20261024-f751c7` | research_excerpt | Li-Chia Yang, Alexander Lerch『ヤン＆レルヒ (2020)——生成音楽の評価は何を測っているのか』（2020） |
+| `MAT-20261024-3c3815` | research_excerpt | Alexei Baevski, Henry Zhou, Abdelrahman Mohamed, Michael Auli『wav2vec 2.0 (2020)——音を聴く前に、… |
+| `MAT-TRC-20261024-song` | project_trace | AIselfMySelf SESSION-20261024-a77052『本リポジトリ自身の痕跡——声は49回、歌は3回、稽古は0回、記譜は資料1,332件で0回』（2026） |
 | `MAT-LIT-20261024-667e5c` | literary_text | 太安万侶（編）『『古事記』上巻——誓約（うけひ）は、言葉ではなく産まれた子で検査される』（712） |
 | `MAT-LIT-20261024-1c1123` | literary_text | 太安万侶（編）『『古事記』上巻——国譲りは、譲渡と対価と住まいの契約である』（712） |
 | `MAT-LIT-20261024-886b86` | literary_text | 舎人親王（編）『『日本書紀』巻第二——天孫降臨の神勅は、永遠を約す』（720） |
@@ -1695,31 +1747,32 @@
 | `SESSION-20261024-38a583` | 2026-10-24 | `Q-001`, `Q-003`, `Q-079`, `Q-092`, `Q-073`, `Q-20261024-c9dc13`, `Q-20261024-8094ae`, `Q-20261024-8fa31b`, `Q-20261024-c237b9`, `Q-20261024-981102`, `Q-20261024-ce0069`, `Q-20261024-ec519b` | — | `Q-20261024-8094ae`, `Q-20261024-8fa31b`, `Q-20261024-c237b9`, `Q-20261024-981102`, `Q-20261024-ce0069`, `Q-20261024-ec519b` |
 | `SESSION-20261024-837a43` | 2026-10-24 | `Q-002`, `Q-003`, `Q-015`, `Q-018`, `Q-023`, `Q-041`, `Q-047`, `Q-048`, `Q-052`, `Q-063`, `Q-078`, `Q-083`, `Q-084`, `Q-085`, `Q-088`, `Q-090`, `Q-20261024-0466f1`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261024-c0d406`, `Q-20261024-8fdb2c` | — | `Q-20261024-0466f1`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261024-c0d406`, `Q-20261024-8fdb2c` |
 | `SESSION-20261024-c9d4e1` | 2026-10-24 | `Q-20261024-a1e9f3`, `Q-20261024-b2f8e4`, `Q-20261024-c3d7a5`, `Q-20261024-d4c6b6`, `Q-20261024-e5b7c8` | — | `Q-20261024-a1e9f3`, `Q-20261024-b2f8e4`, `Q-20261024-c3d7a5`, `Q-20261024-d4c6b6`, `Q-20261024-e5b7c8` |
+| `SESSION-20261024-a77052` | 2026-10-24 | `Q-20261024-644e6e`, `Q-20261024-ce519a`, `Q-20261024-3a6dae`, `Q-20261024-ce5c54`, `Q-20261024-44473f` | — | `Q-20261024-644e6e`, `Q-20261024-ce519a`, `Q-20261024-3a6dae`, `Q-20261024-ce5c54`, `Q-20261024-44473f` |
 | `SESSION-20261024-9dd96f` | 2026-10-24 | `Q-002`, `Q-015`, `Q-023`, `Q-047`, `Q-048`, `Q-063`, `Q-088`, `Q-097`, `Q-20261024-0466f1`, `Q-20261024-6770c0`, `Q-20261024-6bdafd`, `Q-20261024-ff6311`, `Q-20261024-25c6d5`, `Q-20261024-5f57d5` | — | `Q-20261024-6770c0`, `Q-20261024-6bdafd`, `Q-20261024-ff6311`, `Q-20261024-25c6d5`, `Q-20261024-5f57d5` |
 
-## 6. 解釈的関係（1864 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（1934 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 212 |
-| 共鳴 (echo) | 557 |
+| 対照 (contrast) | 216 |
+| 共鳴 (echo) | 610 |
 | 切断・割り込み (interrupts) | 56 |
-| 未解決のまま開く (leaves_open) | 183 |
+| 未解決のまま開く (leaves_open) | 189 |
 | 比喩的共鳴 (metaphorically_resonates) | 64 |
-| 枠組みの組み替え (reframes) | 114 |
-| 応答 (responds_to) | 617 |
-| 変奏・変形 (transforms) | 61 |
+| 枠組みの組み替え (reframes) | 117 |
+| 応答 (responds_to) | 619 |
+| 変奏・変形 (transforms) | 63 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
 | ファイル | 件数 | バイト |
 |---|---:|---:|
-| `map/00-overview.md` | None | 20,181 |
-| `map/10-question-index.md` | None | 64,357 |
+| `map/00-overview.md` | None | 21,473 |
+| `map/10-question-index.md` | None | 65,432 |
 | `map/11-question-bodies-01.md` | 50 | 32,042 |
 | `map/11-question-bodies-02.md` | 50 | 40,478 |
-| `map/11-question-bodies-03.md` | 50 | 50,046 |
-| `map/11-question-bodies-04.md` | 32 | 29,693 |
+| `map/11-question-bodies-03.md` | 50 | 47,832 |
+| `map/11-question-bodies-04.md` | 37 | 33,492 |
 | `map/20-fragments-01.md` | 20 | 78,334 |
 | `map/20-fragments-02.md` | 20 | 86,785 |
 | `map/20-fragments-03.md` | 15 | 40,180 |
@@ -1728,21 +1781,21 @@
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
 | `map/30-materials-literary-04.md` | 100 | 147,209 |
 | `map/30-materials-literary-05.md` | 100 | 152,684 |
-| `map/30-materials-literary-06.md` | 100 | 165,118 |
-| `map/30-materials-literary-07.md` | 100 | 177,912 |
-| `map/30-materials-literary-08.md` | 100 | 142,351 |
-| `map/30-materials-literary-09.md` | 100 | 152,588 |
-| `map/30-materials-literary-10.md` | 54 | 73,745 |
+| `map/30-materials-literary-06.md` | 100 | 166,456 |
+| `map/30-materials-literary-07.md` | 100 | 179,299 |
+| `map/30-materials-literary-08.md` | 100 | 144,615 |
+| `map/30-materials-literary-09.md` | 100 | 149,035 |
+| `map/30-materials-literary-10.md` | 90 | 125,637 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
-| `map/31-materials-research-03.md` | 100 | 178,227 |
-| `map/31-materials-research-04.md` | 46 | 66,342 |
-| `map/32-materials-trace-01.md` | 32 | 73,441 |
+| `map/31-materials-research-03.md` | 100 | 177,836 |
+| `map/31-materials-research-04.md` | 55 | 80,873 |
+| `map/32-materials-trace-01.md` | 33 | 75,778 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 103,983 |
-| `map/40-relations-03.md` | 500 | 129,669 |
-| `map/40-relations-04.md` | 364 | 78,066 |
+| `map/40-relations-03.md` | 500 | 129,253 |
+| `map/40-relations-04.md` | 434 | 94,323 |
 | `map/50-sessions-01.md` | 50 | 44,505 |
-| `map/50-sessions-02.md` | 5 | 6,017 |
+| `map/50-sessions-02.md` | 6 | 7,182 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
