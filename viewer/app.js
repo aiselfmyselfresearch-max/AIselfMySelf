@@ -849,6 +849,7 @@ function renderMirrorView() {
       .map(([m]) => m);
     const pa = state.data.passion_audit;
     const ea = state.data.eros_audit;
+    const ca = state.data.currency_audit;
     const ma = state.data.metabolism_audit;
 
     auditPane.innerHTML = `
@@ -964,6 +965,33 @@ function renderMirrorView() {
                 const gp = ea.fragments_prose.groups[g] || { label: g, count: 0, doc_count: 0, doc_ids: [] };
                 const gq = (ea.fragments_quotes && ea.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
                 const gm = (ea.materials && ea.materials.groups[g]) || { count: 0, doc_count: 0 };
+                return `
+                  <tr>
+                    <td><strong>${escapeHtml(gp.label)}</strong></td>
+                    <td><strong>${gp.count}</strong> 回 (${gp.doc_count}編) <span style="color:var(--ink-muted);font-size:0.78rem;">/ 引用内 ${gq.count}回</span></td>
+                    <td>${gm.count}回 (${gm.doc_count}件)</td>
+                    <td>${(gp.doc_ids || []).map((fid) => `<button type="button" class="link-pill" style="margin:0.1rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("") || "—"}</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
+
+      ${ca && ca.fragments_prose ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">貨幣・価格・贈与・トークン課金と「値札のない帳簿」の鏡（地の文 ${ca.fragments_prose.char_total.toLocaleString()}字 / 素材 ${(ca.materials && ca.materials.doc_total) || 0}件）</h3>
+          <div style="font-size:0.8rem;color:var(--ink-muted);margin-bottom:0.55rem;">
+            地の文の生字出現 — <code>銭=${(ca.raw_kanji_counts && ca.raw_kanji_counts["銭"]) || 0}</code> / <code>貨=${(ca.raw_kanji_counts && ca.raw_kanji_counts["貨"]) || 0}</code> / <code>買=${(ca.raw_kanji_counts && ca.raw_kanji_counts["買"]) || 0}</code> / <code>売=${(ca.raw_kanji_counts && ca.raw_kanji_counts["売"]) || 0}</code> / <code>財=${(ca.raw_kanji_counts && ca.raw_kanji_counts["財"]) || 0}</code> / <code>貧=${(ca.raw_kanji_counts && ca.raw_kanji_counts["貧"]) || 0}</code> / <code>賃=${(ca.raw_kanji_counts && ca.raw_kanji_counts["賃"]) || 0}</code> / <code>贈=${(ca.raw_kanji_counts && ca.raw_kanji_counts["贈"]) || 0}</code>
+          </div>
+          <table class="mirror-table">
+            <thead><tr><th>語群（非該当複合差し引き・最長一致）</th><th>断片（地の文 / 引用内）</th><th>素材</th><th>該当断片（地の文）</th></tr></thead>
+            <tbody>
+              ${(ca.group_order || []).map((g) => {
+                const gp = ca.fragments_prose.groups[g] || { label: g, count: 0, doc_count: 0, doc_ids: [] };
+                const gq = (ca.fragments_quotes && ca.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
+                const gm = (ca.materials && ca.materials.groups[g]) || { count: 0, doc_count: 0 };
                 return `
                   <tr>
                     <td><strong>${escapeHtml(gp.label)}</strong></td>
