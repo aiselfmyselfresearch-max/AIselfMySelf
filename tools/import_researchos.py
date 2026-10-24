@@ -5,6 +5,12 @@ This tool only reads the supplied ResearchOS checkout. With --write it refreshes
 the upstream ResearchOS records in state/materials.jsonl (while preserving any
 locally authored literary/humanities materials) and updates migration/manifest.json;
 no upstream file is modified.
+
+The two output files are replaced atomically while an advisory writer lock is
+held, so a crash cannot leave a truncated materials ledger and two parallel
+``--write`` runs cannot interleave.  Because this tool regenerates the frozen
+materials base file, it refuses to run while state/materials.d/ contains shard
+records: those records must be consolidated first.
 """
 from __future__ import annotations
 
@@ -15,6 +21,8 @@ import subprocess
 import sys
 from pathlib import Path
 from typing import Any
+
+import ledger_io
 
 KIT_ROOT = Path(__file__).resolve().parents[1]
 SELECTION_PATH = KIT_ROOT / "migration" / "selection.json"
@@ -39,17 +47,18 @@ def read_ledger(root: Path, collection: str, id_key: str) -> dict[str, tuple[dic
     base = root / "state" / f"{collection}.jsonl"
     shard_dir = base.with_name(base.stem + ".d")
     files = [base] + (sorted(shard_dir.glob("*.jsonl")) if shard_dir.is_dir() else [])
+    if not base.is_file():
+        raise ImportErrorDetail(f"missing ledger: {base}")
+    try:
+        texts = ledger_io.read_snapshot(files)
+    except ledger_io.LedgerBusy as exc:
+        raise ImportErrorDetail(f"upstream ledgers kept changing while being read: {exc}") from exc
     found: dict[str, tuple[dict[str, Any], str]] = {}
     for path in files:
-        if not path.is_file():
-            if path == base:
-                raise ImportErrorDetail(f"missing ledger: {path}")
+        text = texts.get(path)
+        if text is None:
             continue
-        try:
-            lines = path.read_text(encoding="utf-8").splitlines()
-        except OSError as exc:
-            raise ImportErrorDetail(f"cannot read {path}: {exc}") from exc
-        for line_number, line in enumerate(lines, start=1):
+        for line_number, line in enumerate(text.splitlines(), start=1):
             if not line.strip():
                 continue
             try:
@@ -91,7 +100,7 @@ def read_local_materials(upstream_repository: str) -> list[dict[str, Any]]:
     if not MATERIALS_PATH.is_file():
         return []
     local_records: list[dict[str, Any]] = []
-    for line_number, line in enumerate(MATERIALS_PATH.read_text(encoding="utf-8").splitlines(), start=1):
+    for line_number, line in enumerate(ledger_io.read_text_stable(MATERIALS_PATH).splitlines(), start=1):
         if not line.strip():
             continue
         try:
@@ -264,36 +273,65 @@ def build_outputs(source_root: Path, *, reuse_pinned_commit: bool = False) -> di
     return {MATERIALS_PATH: materials_text, MANIFEST_PATH: canonical_json(manifest)}
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source-root", required=True, type=Path, help="Path to the original ResearchOS checkout")
     action = parser.add_mutually_exclusive_group()
     action.add_argument("--write", action="store_true", help="Write the curated snapshot and manifest")
     action.add_argument("--check", action="store_true", help="Check that committed outputs match the source snapshot")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     try:
-        outputs = build_outputs(args.source_root, reuse_pinned_commit=not args.write)
-    except (ImportErrorDetail, OSError) as exc:
+        if args.write:
+            with ledger_io.exclusive_lock(MATERIALS_PATH):
+                # Re-check under the lock: new_ledger_shard.py takes the same
+                # lock, so no materials shard can appear between this check and
+                # the base rewrite.
+                shards = [
+                    path
+                    for path in ledger_io.collection_files(MATERIALS_PATH)[1:]
+                    if path.stat().st_size > 0
+                ]
+                if shards:
+                    print(
+                        "error: state/materials.d/ contains shard records; this tool rewrites "
+                        "the frozen materials base and cannot reconcile shards. Consolidate "
+                        "the shard records into state/materials.jsonl and remove the shards "
+                        "before --write.",
+                        file=sys.stderr,
+                    )
+                    return 2
+                outputs = build_outputs(args.source_root, reuse_pinned_commit=False)
+                # Write the ledger first, then the manifest.  A crash in between
+                # leaves a stale manifest (which --check reports), never a
+                # half-written ledger.
+                for path, text in outputs.items():
+                    ledger_io.atomic_write_text(path, text)
+                    print(f"WROTE {path.relative_to(KIT_ROOT)}")
+        else:
+            outputs = build_outputs(args.source_root, reuse_pinned_commit=True)
+    except ledger_io.LedgerLockTimeout as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
+    except (ImportErrorDetail, OSError, ledger_io.LedgerBusy) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
 
-    if args.write:
-        for path, text in outputs.items():
-            path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text(text, encoding="utf-8")
-            print(f"WROTE {path.relative_to(KIT_ROOT)}")
-    elif args.check:
+    if args.check:
         stale: list[str] = []
-        for path, expected in outputs.items():
-            if not path.is_file() or path.read_text(encoding="utf-8") != expected:
-                stale.append(path.relative_to(KIT_ROOT).as_posix())
+        try:
+            for path, expected in outputs.items():
+                if not path.is_file() or ledger_io.read_text_stable(path) != expected:
+                    stale.append(path.relative_to(KIT_ROOT).as_posix())
+        except ledger_io.LedgerBusy as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
         if stale:
             print("STALE " + ", ".join(stale), file=sys.stderr)
             print("run with --write after reviewing the selected records", file=sys.stderr)
             return 1
         print("PASS: selected source/evidence snapshot and manifest match the upstream checkout")
-    else:
+    elif not args.write:
         print(f"DRY RUN: would write {len(outputs)} files")
         for path, text in outputs.items():
             print(f"  {path.relative_to(KIT_ROOT)} ({len(text.encode('utf-8'))} bytes)")

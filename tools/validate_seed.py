@@ -7,9 +7,10 @@ that IDs referenced across JSONL collections actually exist.
 from __future__ import annotations
 
 import json
-import sys
 from pathlib import Path
 from typing import Any
+
+import ledger_io
 
 ROOT = Path(__file__).resolve().parents[1]
 COLLECTIONS = {
@@ -103,30 +104,14 @@ def validate_value(value: Any, spec: dict[str, Any], root_schema: dict[str, Any]
 
 
 def load_jsonl(path: Path, id_key: str, errors: list[str]) -> dict[str, dict[str, Any]]:
-    records: dict[str, dict[str, Any]] = {}
-    if not path.is_file():
-        errors.append(f"{path.relative_to(ROOT)}: ledger file is missing")
-        return records
-    for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
-        if not line.strip():
-            continue
-        try:
-            record = json.loads(line)
-        except json.JSONDecodeError as exc:
-            errors.append(f"{path.relative_to(ROOT)}:{lineno}: invalid JSON: {exc}")
-            continue
-        if not isinstance(record, dict):
-            errors.append(f"{path.relative_to(ROOT)}:{lineno}: record must be an object")
-            continue
-        identity = record.get(id_key)
-        if not isinstance(identity, str) or not identity:
-            errors.append(f"{path.relative_to(ROOT)}:{lineno}: missing {id_key}")
-            continue
-        if identity in records:
-            errors.append(f"{path.relative_to(ROOT)}:{lineno}: duplicate {id_key} {identity}")
-            continue
-        records[identity] = record
-    return records
+    """Load one ledger (frozen base file plus its session shards) into an ID map.
+
+    The actual reading, retrying and duplicate detection live in ``ledger_io`` so
+    that every tool sees the same union view.  Errors are appended to ``errors``
+    in the same shape as before; a ledger that keeps changing raises
+    ``ledger_io.LedgerBusy`` instead of reporting a torn read as corruption.
+    """
+    return ledger_io.load_jsonl_union(path, id_key, errors, root=ROOT)
 
 
 def check_refs(
@@ -148,12 +133,20 @@ def check_refs(
 
 def main() -> int:
     errors: list[str] = []
-    collections: dict[str, dict[str, dict[str, Any]]] = {}
+    specs = {
+        name: (ROOT / "state" / filename, id_key)
+        for name, (filename, id_key, _schema) in COLLECTIONS.items()
+    }
+    try:
+        collections, load_errors = ledger_io.load_collections(specs, root=ROOT)
+    except ledger_io.LedgerBusy as exc:
+        print("FAIL: ledgers are being rewritten concurrently; retry in a moment")
+        print(f"  - {exc}")
+        return 2
+    errors.extend(load_errors)
 
-    for name, (filename, id_key, schema_filename) in COLLECTIONS.items():
-        path = ROOT / "state" / filename
-        records = load_jsonl(path, id_key, errors)
-        collections[name] = records
+    for name, (_filename, _id_key, schema_filename) in COLLECTIONS.items():
+        records = collections[name]
         schema_path = ROOT / "schema" / schema_filename
         try:
             schema = json.loads(schema_path.read_text(encoding="utf-8"))
