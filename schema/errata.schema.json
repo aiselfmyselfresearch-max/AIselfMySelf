@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "errata.schema.json",
+  "title": "Errata Record",
+  "description": "A dated record of a claim held in a fragment, a material, or another ledger record, that no longer matches measurement. The record is not rewritten; the judgement is kept beside it, with the check that produced it. Modelled on Augustine's Retractationes and on retraction notices in publishing, not on silent correction.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "errata_id",
+    "claim",
+    "claim_location",
+    "check",
+    "verdict",
+    "status",
+    "created_at",
+    "note"
+  ],
+  "properties": {
+    "errata_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_type": {
+      "type": "string",
+      "enum": [
+        "fragment",
+        "material",
+        "question",
+        "session",
+        "motif",
+        "other"
+      ]
+    },
+    "subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim_location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "tail_question_count",
+            "phrase_set_count",
+            "phrase_in_fragments",
+            "last_sentence_length",
+            "narrator_mode_usage",
+            "pronoun_absence",
+            "quotation_match",
+            "git_deletions",
+            "manual"
+          ]
+        },
+        "params": {
+          "type": "object",
+          "description": "All inputs needed to re-run the check. A check with unrecorded inputs is not reproducible and should be classified unmeasurable."
+        }
+      }
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "holds",
+        "contradicted",
+        "unmeasurable"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "annotated",
+        "withdrawn"
+      ]
+    },
+    "measured_now": {
+      "type": "string"
+    },
+    "corrected_by": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "fragment_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Shortcut for subject_type='fragment'. Use either this or subject_id, not both."
+    }
+  }
+}
