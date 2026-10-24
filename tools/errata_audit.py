@@ -27,6 +27,19 @@ import ledger_io  # noqa: E402
 
 # A tail sentence is treated as a question when it ends with a question mark,
 # or with one of the interrogative closings that the ledger uses with 句点.
+QUOTE_RE = re.compile(r"「[^」]*」|『[^』]*』")
+
+
+def split_prose_and_quotes(text: str) -> tuple[str, str]:
+    """Split a fragment into prose (outside the corner brackets) and quotes.
+
+    Mirrors ``currency_audit.split_prose_and_quotes`` so that a count re-run here
+    agrees with the mirrors that produced the original number.
+    """
+    quotes = [m.group(0)[1:-1] for m in QUOTE_RE.finditer(text)]
+    return QUOTE_RE.sub(" ", text), " ".join(quotes)
+
+
 QUESTION_TAIL = re.compile(r"(？|\?|だろうか。|でしょうか。|のか。|ではないか。|のだろうか。)$")
 
 
@@ -228,6 +241,63 @@ def run_check(check: dict[str, Any], fragments: list[dict[str, Any]],
                 added += int(parts[0])
                 deleted += int(parts[1])
         return {"measurable": True, "value": deleted, "detail": f"追加 {added} / 削除 {deleted}（{params.get('path', 'state/')}）"}
+
+    if kind == "term_occurrence_count":
+        # Re-counts terms in the fragments themselves, so an errata record about
+        # a number written into a fragment can be re-run after the ledger grows
+        # (SESSION-062: the count in FRAG-20261024-a29f5b moved when the two new
+        # fragments of the same session were added).
+        terms = params.get("terms", [])
+        subset = in_range(fragments, int(params.get("from", 1)), int(params.get("to", 10**6)))
+        skip = set(params.get("exclude_fragments", []))
+        subset = [f for f in subset if f["fragment_id"] not in skip]
+        scope = params.get("scope", "prose")
+        total = 0
+        per_term: dict[str, int] = {}
+        for f in subset:
+            text = f["text"]
+            if scope == "prose":
+                prose, _quotes = split_prose_and_quotes(text)
+                text = prose
+            elif scope == "quotes":
+                _prose, quotes = split_prose_and_quotes(text)
+                text = quotes
+            for term in terms:
+                hits = text.count(term)
+                per_term[term] = per_term.get(term, 0) + hits
+                total += hits
+        return {
+            "measurable": True,
+            "value": total,
+            "detail": " / ".join(f"{t}={n}" for t, n in per_term.items()) or "—",
+        }
+
+    if kind == "audit_group_count":
+        # Re-runs one group of one of the mirror audits (voice/currency/prayer/...)
+        # over the current fragment set, so a number a fragment was written from
+        # can be checked against the ledger as it stands now.
+        module_name = str(params.get("module", ""))
+        group = str(params.get("group", ""))
+        if not module_name or not group:
+            return {"measurable": False, "value": "—", "detail": "module と group が指定されていない"}
+        try:
+            module = __import__(module_name)
+        except ImportError as exc:
+            return {"measurable": False, "value": "—", "detail": f"鏡を読み込めない: {exc}"}
+        if not hasattr(module, "measure_prayer_audit") and not hasattr(module, "measure"):
+            return {"measurable": False, "value": "—", "detail": "この鏡は純メモリ計測を公開していない"}
+        measure = getattr(module, "measure_prayer_audit", None) or getattr(module, "measure")
+        payload = measure(fragments)
+        layer = "fragments_quotes" if params.get("scope") == "quotes" else "fragments_prose"
+        try:
+            info = payload[layer]["groups"][group]
+        except KeyError:
+            return {"measurable": False, "value": "—", "detail": f"{layer}.{group} が無い"}
+        return {
+            "measurable": True,
+            "value": info["count"],
+            "detail": f"{layer} {info['count']}回 / {info['doc_count']}編（{module_name}:{group}）",
+        }
 
     if kind == "last_sentence_length":
         fid = params.get("fragment_id", "")
