@@ -1,15 +1,15 @@
-"""Helpers for SESSION-033 (time and waiting) ledger construction.
+"""Helpers for SESSION-035 (time and waiting) ledger construction.
 
 Session-specific builder (underscore-prefixed, like _session029_*). The
 permanent, reusable mirror lives in tools/time_audit.py; this module only
-assembles the JSONL records appended during SESSION-033.
+assembles the JSONL records appended during SESSION-035.
 """
 from __future__ import annotations
 
 COMMIT = "a001c0ae98c0a3ea88af53fa533fca9f24fb722e"
 REPO = "https://github.com/aiselfmyselfresearch-max/AIselfMySelf"
-EVIDENCE_PATH = "readings/2026-10-24-session-033-time-and-waiting.md"
-M15 = "MOTIF-015"
+EVIDENCE_PATH = "readings/2026-10-24-session-035-time-and-waiting.md"
+M17 = "MOTIF-017"
 
 
 def origin(record_id: str) -> dict:
@@ -73,7 +73,7 @@ def lit(material_id: str, title: str, authors: list[str], year: int, url: str,
         material_id, "literary_text", title,
         source(material_id, title, authors, year, url, version_note),
         passage, passage_language, context,
-        note or f"SESSION-033で追加した対話素材。時間と待機を主題に、既存の記憶・連続の糸とは別に、時間そのものの語彙を読む。",
+        note or f"SESSION-035で追加した対話素材。時間と待機を主題に、既存の記憶・連続の糸とは別に、時間そのものの語彙を読む。",
         invitation, scope, motifs,
     )
 
@@ -85,6 +85,6 @@ def evd(material_id: str, title: str, authors: list[str], year: int, url: str,
         material_id, "research_excerpt", title,
         source(material_id, title, authors, year, url, version_note),
         passage, passage_language, context,
-        note or "SESSION-033で追加した研究抜粋。機械システムが時間をどう扱うかを、主観的経験の証明とせず、設計上の制約として読む。",
+        note or "SESSION-035で追加した研究抜粋。機械システムが時間をどう扱うかを、主観的経験の証明とせず、設計上の制約として読む。",
         invitation, scope, motifs,
     )
