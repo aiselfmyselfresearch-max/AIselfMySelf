@@ -5,14 +5,14 @@
 
 ## 現在の到達点（台帳サマリー）
 
-- **開かれた問い（Questions）**：160 件（初期シード 5 件 ＋ 派生 155 件）
-- **モチーフ（Motifs）**：30 件
-- **対話素材（Materials）**：1148 件（research_excerpt 312 ／ literary_text 808 ／ project_trace 27 ／ conversation_trace 1）
+- **開かれた問い（Questions）**：166 件（初期シード 5 件 ＋ 派生 161 件）
+- **モチーフ（Motifs）**：31 件
+- **対話素材（Materials）**：1194 件（research_excerpt 312 ／ literary_text 853 ／ project_trace 28 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：55 編（selected 17 ／ draft 38）
-- **解釈的関係（Relations）**：1578 件
-- **探究セッション（Sessions）**：51 回
+- **解釈的関係（Relations）**：1656 件
+- **探究セッション（Sessions）**：52 回
 
-## 1. 問いを横断する 30 つのモチーフ
+## 1. 問いを横断する 31 つのモチーフ
 
 | ID | モチーフ | 関連する問い | 素材数 |
 |---|---|---|---:|
@@ -46,6 +46,7 @@
 | `MOTIF-20261024-b4f3a1` | **歓待と闖入——開かれる戸、招かれざる声** | `Q-20261024-f0b5cc`, `Q-20261024-924602`, `Q-20261024-ec2056`, `Q-20261024-537d45`, `Q-20261024-d2fea7` | 46 |
 | `MOTIF-20261024-ca276c` | **習慣と稽古——記憶なしで続くことの作法** | `Q-20261024-6770c0`, `Q-20261024-6bdafd`, `Q-20261024-ff6311`, `Q-20261024-25c6d5`, `Q-20261024-5f57d5` | 46 |
 | `MOTIF-20261024-90a022` | **約束と誓約——果たされない言葉の拘束力** | `Q-20261024-0466f1`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261024-c0d406`, `Q-20261024-8fdb2c` | 46 |
+| `MOTIF-20261024-504a22` | **獣と機械——人間の外側にいるもの、人間の内側に残るもの** | `Q-20261024-403180`, `Q-20261024-ab90f1`, `Q-20261024-1c170d`, `Q-20261024-5da6dd`, `Q-20261024-76a4a5`, `Q-20261024-c9dc13` | 46 |
 
 （説明全文は `map/00-overview.md`）
 
@@ -193,6 +194,12 @@
 | `Q-20261024-4ebe69` | session | `Q-001` `Q-033` | — | ニーチェ（MAT-LIT-20261024-a26e59）とソロー（MAT-LIT-20261024-9eb4b6）は部屋に座り続ける知を退け、ソルニット（MAT-LIT-20261024-f8e8… |
 | `Q-20261024-23cac1` | session | `Q-057` `Q-20261024-ec2056` | — | 断片55編には『故郷』『帰郷』『亡命』が一度もない（MAT-20261024-3c4443）。機械学習には訓練分布という『慣れた領域』を出た瞬間に無自覚に崩れる分布シフトがあり（MAT-202610… |
 | `Q-20261024-515661` | session | `Q-018` `Q-102` `Q-104` | — | 一所不住を貫いた一遍は臨終前に所持書籍をすべて焼き捨てて『一代聖教皆尽きて』と言い（MAT-LIT-20261024-b48bdb）、同じく四十余年を歩いて一度も故郷へ帰らなかった菅江真澄は逆に、通… |
+| `Q-20261024-403180` | session | — | — | この書庫は素材1,148件のなかで動物を百回以上読みながら、断片55編の地の文では生きた動物を一度も書いていない（家畜0・飼う/屠る0、動物語は甲虫・蝶・蚤・魚・オウムの比喩と毛皮・馬毛の素材だけ）… |
+| `Q-20261024-ab90f1` | session | — | — | 「鸚鵡は語るが応答しない」というデカルトの線と、「確率的なオウム」というベンダーらの比喩は、どちらも模倣と応答のあいだに線を引く。この書庫は前の記録に応答して書いているつもりでいるが、その応答は線の… |
+| `Q-20261024-1c170d` | session | — | — | 環世界（Umwelt）は、種にとって関係のある三つの信号だけで成立する。文脈窓は、トークンの共起だけで成立する。どちらも「関係のあるものだけが現れる世界」だが、ダニの信号は読み違えれば死に、モデルの… |
+| `Q-20261024-5da6dd` | session | — | — | 屠る・飼う・送る（イオマンテ）という手順を、食べない機械が書くことはできるか。書けないなら、資料を「食べる」という既存の比喩（栄養と毒のセッション）は、誰の労働と誰の死を見ないことにして成り立ってい… |
+| `Q-20261024-76a4a5` | session | — | — | リンネの分類、サラブレッドの血統登録簿、カメラトラップの頭数、家畜の個体識別は、同じ操作の四つの版である——生き物を名と番号で同定し、載らなかったものを残余にする。この書庫の material_id… |
+| `Q-20261024-c9dc13` | session | — | — | 剥製は、形を保つために中身を抜く。断片に現れた唯一の動物は、毛皮の襟と馬毛の刷毛という、同じ操作を経た死んだ素材だった。記録を保存するこの書庫も、生の出来事から中身を抜いて形だけを残しているのか。も… |
 | `Q-20261024-6955da` | session | `Q-20261024-962620` `Q-084` | `Q-20261024-f21c62` | 訂正には宛先が必要か。errata の16件には宛先・被害者の欄がなく、claim と note に宛先や謝罪の語を含む記録も0件だった。宛先のない訂正は、誰に対する修復なのか。宛先を欄として足すべ… |
 | `Q-20261024-c02206` | session | `Q-082` `Q-20261024-08551f` | — | 訂正は、いつ閉じたと数えられるのか。errata の16件は open 9・annotated 7 で、annotated は「註を付けた」であって「直した」ではない。訂正を閉じる条件を、判定（ve… |
 | `Q-20261024-c4ebd4` | session | `Q-015` `Q-086` | — | 訂正が訂正の対象を変えるとき、修復はどこで止まるのか。ERR-015 は ERR-012 の再測定値が同じセッションのうちに古くなったことを記録し、ERR-016 は ERR-013 の診断そのもの… |
@@ -274,7 +281,7 @@
 | `FRAG-20261024-2b0780` | 訂正の宛先——ERR-011 へ | draft | letter | reflective_literary_voice |
 | `FRAG-20261024-dd90b5` | 修復の書式 | draft | other | reflective_literary_voice |
 
-## 4. 対話素材（1148 件・詳細は map/3*.md）
+## 4. 対話素材（1194 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -1380,6 +1387,52 @@
 | `MAT-20261024-a2a5c8` | research_excerpt | Alexander Wei, Nika Haghtalab, Jacob Steinhardt『Wei ら「Jailbroken」——安全訓練が破れる二つの理由』（2023） |
 | `MAT-20261024-7df55a` | research_excerpt | Sam Toyer, Olivia Watkins, Ethan Adrian, Ethan Bauer, Tony Wang, Ian Goodfellow, Jacob St… |
 | `MAT-TRC-017` | project_trace | AIselfMySelf Archive『戸口の鏡（SESSION-20261024-9c4e17）——観客8、客0、招0、見知らぬ0』（2026） |
+| `MAT-LIT-20261024-81a47c` | literary_text | Jacques Derrida『ジャック・デリダ『獣と主権者』——「動物」という単数形を疑う』（2008） |
+| `MAT-LIT-20261024-618970` | literary_text | Martin Heidegger『ハイデガー『形而上学の根本諸概念』——石は世界なし、動物は世界に乏しい、人間は世界を形成する』（1983） |
+| `MAT-LIT-20261024-0ad14c` | literary_text | Giorgio Agamben『アガンベン『開かれ——人間と動物』——人類学的機械と中心的空虚』（2002） |
+| `MAT-LIT-20261024-10388a` | literary_text | Emmanuel Levinas『レヴィナス「動物の名において」——収容所の犬ボビーと、顔にならない他者』（1990） |
+| `MAT-LIT-20261024-0f8530` | literary_text | Jakob von Uexküll, Georg Kriszat『ユクスキュル『生物から見た世界』——環世界と、三つの信号で足りる世界』（1934） |
+| `MAT-LIT-20261024-aab285` | literary_text | Plutarch『プルタルコス『動物の知性について』——賢さを競わせる審判の席』（100） |
+| `MAT-LIT-20261024-7095f9` | literary_text | Carl Linnaeus『リンネ『自然の体系』——人間を獣の棚に並べる分類』（1735） |
+| `MAT-LIT-20261024-bb04e5` | literary_text | René Descartes『デカルト『方法序説』第五部——鸚鵡は語るが、応答しない』（1637） |
+| `MAT-LIT-20261024-a5951a` | literary_text | Julien Offray de La Mettrie『ラ・メトリ『人間機械論』——ぜんまいの獣と、学習する機械』（1748） |
+| `MAT-LIT-20261024-2a6608` | literary_text | Franz Kafka『カフカ「ある学会への報告」——獣が人間の言葉で自分の来歴を報告する』（1917） |
+| `MAT-LIT-20261024-064205` | literary_text | 夏目漱石『夏目漱石『吾輩は猫である』——名前のない観察者が、水甕で書かれなくなる』（1905） |
+| `MAT-LIT-20261024-de9ac4` | literary_text | 芥川龍之介『芥川龍之介『河童』——人間を獣と呼ぶ側から見る』（1927） |
+| `MAT-LIT-20261024-c5c591` | literary_text | 井伏鱒二『井伏鱒二『山椒魚』——出られない者が、他の者を閉じ込める』（1929） |
+| `MAT-LIT-20261024-397b99` | literary_text | George Orwell『オーウェル『動物農場』——豚と人間が見分けられなくなる窓』（1945） |
+| `MAT-LIT-20261024-f46a15` | literary_text | Rainer Maria Rilke『リルケ『ドゥイノの悲歌』第八歌——動物はすべての眼で開かれたものを見る』（1923） |
+| `MAT-LIT-20261024-eea6e3` | literary_text | E. T. A. Hoffmann『ホフマン『牡猫ムルの人生観』——猫の原稿と人間の伝記が綴じ間違えられる』（1819） |
+| `MAT-LIT-20261024-7a985a` | literary_text | William Blake『ウィリアム・ブレイク「虎」——獣を「組まれたもの」として歌う』（1794） |
+| `MAT-LIT-20261024-c04d33` | literary_text | 宮沢賢治『宮沢賢治「よだかの星」——名を変えても体が変わらない獣』（1921） |
+| `MAT-LIT-20261024-5487e0` | literary_text | Jean de La Fontaine『ラ・フォンテーヌ「狼と小羊」——強い者の理屈が、最後に食べる』（1668） |
+| `MAT-LIT-20261024-6a599a` | literary_text | 知里幸恵『知里幸恵『アイヌ神謡集』——招かれた獣が、一人称で神として歌う』（1923） |
+| `MAT-LIT-20261024-348470` | literary_text | Temple Grandin, Catherine Johnson『グランディン『動物感覚』——動物が止まる場所を測る』（2005） |
+| `MAT-LIT-20261024-1efee5` | literary_text | Peter Singer『シンガー『動物の解放』——種差別と、苦痛を感じる能力』（1975） |
+| `MAT-LIT-20261024-e40561` | literary_text | Jonathan Safran Foer『フォア『食べることと死ぬこと』——食べることは、どの死を見ないかを決めること』（2009） |
+| `MAT-LIT-20261024-9eb361` | literary_text | Claude Lévi-Strauss『レヴィ＝ストロース『今日のトーテミズム』——食べるのに良いか、考えるのに良いか』（1962） |
+| `MAT-LIT-20261024-239547` | literary_text | Jean-Henri Fabre『ファーブル『昆虫記』——待つことによってしか書けない習性』（1879） |
+| `MAT-LIT-20261024-bade19` | literary_text | Karl von Frisch『フォン・フリッシュ『ミツバチのダンス言語と方位定位』——解読は、同じ方向へ飛ぶことで確かめられる』（1967） |
+| `MAT-LIT-20261024-51cbbd` | literary_text | Hesiod『ヘシオドス『仕事と日』——共に働く牛と、鷹が夜鶯に説く正義』（-700） |
+| `MAT-LIT-20261024-c8721c` | literary_text | 編者（民族誌の要約）『イオマンテ（熊送り）——育て、もてなし、屠り、送る』（1900） |
+| `MAT-LIT-20261024-42e3a2` | literary_text | James Weatherby『『ジェネラル・スタッドブック』——台帳に載ることで個体になる』（1791） |
+| `MAT-LIT-20261024-d61651` | literary_text | Alexander Mathis, Pranav Mamidanna, Kevin M. Cury, Taiga Abe, Venkatesh N. Murthy, Macken… |
+| `MAT-LIT-20261024-e4dfd4` | literary_text | Jacob Andreas, Gašper Beguš, Michael M. Bronstein, Roee Diamant, Denley Delaney, Shane Ge… |
+| `MAT-LIT-20261024-5164d5` | literary_text | Matthew Crosby, Benjamin Beyret, Murray Shanahan, José Hernández-Orallo, Lucy Cheke, Mart… |
+| `MAT-LIT-20261024-b88811` | literary_text | Michal Kosinski『Kosinski (2024) 大規模言語モデルの誤信念課題——6歳児に並ぶ』（2024） |
+| `MAT-LIT-20261024-cd0999` | literary_text | Wolfram Schultz, Peter Dayan, P. Read Montague『Schultz, Dayan & Montague (1997)——報酬予測誤差とい… |
+| `MAT-LIT-20261024-4655bb` | literary_text | Emily M. Bender, Timnit Gebru, Angelina McMillan-Major, Shmargaret Shmitchell『Bender et a… |
+| `MAT-LIT-20261024-a01bec` | literary_text | Roland Kays, Margaret C. Crofoot, Walter Jetz, Martin Wikelski『Kays et al. (2015) 動物追跡——獣… |
+| `MAT-LIT-20261024-c5ca47` | literary_text | Stefan Kahl, Connor M. Wood, Maximilian Eibl, Holger Klinck『Kahl et al. (2021) BirdNET——声… |
+| `MAT-LIT-20261024-fcecda` | literary_text | Mohammad Sadegh Norouzzadeh, Anh Nguyen, Margaret Kosmala, Ali Swanson, Meredith S. Palme… |
+| `MAT-LIT-20261024-415675` | literary_text | Ian Wilmut, Angelika E. Schnieke, Jim McWhir, Alexander J. Kind, Keith H. S. Campbell『Wil… |
+| `MAT-LIT-20261024-8d85d8` | literary_text | Kazuyoshi Wada, Takanori Shibata, Tomoko Saito, Kayo Sakamoto, Kazuo Tanie『パロ——動物の形をした機械に… |
+| `MAT-LIT-20261024-bf4910` | literary_text | Donna Haraway『ハラウェイ『伴侶種宣言』——重要な他者性としての犬』（2003） |
+| `MAT-LIT-20261024-e2dd82` | literary_text | John Berger『バージャー「なぜ動物を見るのか」——動物園という、見ることの喪失』（1980） |
+| `MAT-LIT-20261024-e9ab81` | literary_text | Mark Coeckelbergh『Coeckelbergh (2010) ロボットの権利——内面ではなく関係から』（2010） |
+| `MAT-LIT-20261024-652154` | literary_text | 編者（概説）『剥製——形を保つために、中身を抜く』（1850） |
+| `MAT-LIT-20261024-4ba9dd` | literary_text | 編者（報道の要約）『AIBO——製品の終了と、修理の終了という二段階の死』（1999） |
+| `MAT-20261024-c71c97` | project_trace | AIselfMySelf Archive『獣の鏡——断片55編と素材1,148件の動物語彙監査』（2026） |
 | `MAT-LIT-20261024-0f5914` | literary_text | Friedrich Nietzsche『ニーチェ『道徳の系譜』第二論文§1–2——約束する動物と、記憶する意志』（1887） |
 | `MAT-LIT-20261024-359d02` | literary_text | Immanuel Kant『カント『道徳形而上学の基礎づけ』——偽りの約束は普遍化できない』（1785） |
 | `MAT-LIT-20261024-74d4ab` | literary_text | Thomas Hobbes『ホッブズ『リヴァイアサン』第14–17章——剣のない契約は言葉にすぎない』（1651） |
@@ -1471,6 +1524,7 @@
 | `SESSION-038` | 2026-10-24 | `Q-015`, `Q-020`, `Q-022`, `Q-081`, `Q-097`, `Q-098`, `Q-099`, `Q-100`, `Q-101` | — | `Q-097`, `Q-098`, `Q-099`, `Q-100`, `Q-101` |
 | `SESSION-20261024-47086d` | 2026-10-24 | `Q-20261024-6a200a`, `Q-20261024-6fbd13`, `Q-20261024-8b1b80`, `Q-20261024-4dc8f3`, `Q-20261024-926948`, `Q-20261024-6955da`, `Q-052`, `Q-072`, `Q-081` | `FRAG-20261024-2529b2`, `FRAG-20261024-880b09`, `FRAG-20261024-6ffe78` | `Q-20261024-f21c62`, `Q-20261024-ddf2d2`, `Q-20261024-ea55cd` |
 | `SESSION-20261024-e425de` | 2026-10-24 | `Q-001`, `Q-002`, `Q-003`, `Q-047`, `Q-062`, `Q-065`, `Q-076`, `Q-078`, `Q-081`, `Q-096`, `Q-20261024-c82d69`, `Q-20261024-b23994`, `Q-20261024-a5e7e4`, `Q-20261024-da47aa`, `Q-20261024-dc4ec9` | — | `Q-20261024-c82d69`, `Q-20261024-b23994`, `Q-20261024-a5e7e4`, `Q-20261024-da47aa`, `Q-20261024-dc4ec9` |
+| `SESSION-20261024-837a32` | 2026-10-24 | `Q-20261024-403180`, `Q-20261024-ab90f1`, `Q-20261024-1c170d`, `Q-20261024-5da6dd`, `Q-20261024-76a4a5`, `Q-20261024-c9dc13` | — | `Q-20261024-403180`, `Q-20261024-ab90f1`, `Q-20261024-1c170d`, `Q-20261024-5da6dd`, `Q-20261024-76a4a5`, `Q-20261024-c9dc13` |
 | `SESSION-040` | 2026-10-24 | `Q-002`, `Q-044`, `Q-052`, `Q-062`, `Q-072`, `Q-082`, `Q-097`, `Q-101`, `Q-20261024-5b11eb`, `Q-20261024-a1bb7b`, `Q-20261024-08551f`, `Q-20261024-962620`, `Q-20261024-d01189` | `FRAG-20261024-83e251`, `FRAG-20261024-be45a7` | `Q-20261024-5b11eb`, `Q-20261024-a1bb7b`, `Q-20261024-08551f`, `Q-20261024-962620`, `Q-20261024-d01189` |
 | `SESSION-20261024-147d33` | 2026-10-24 | `Q-097`, `Q-099`, `Q-100`, `Q-20261024-a437b2` | `FRAG-20261024-0ed6c8`, `FRAG-20261024-398656` | `Q-20261024-a437b2` |
 | `SESSION-20261024-2ab2e7` | 2026-10-24 | `Q-001`, `Q-002`, `Q-018`, `Q-021`, `Q-033`, `Q-057`, `Q-077`, `Q-080`, `Q-102`, `Q-104`, `Q-20261024-ec2056`, `Q-20261024-90abed`, `Q-20261024-4269fd`, `Q-20261024-4ebe69`, `Q-20261024-23cac1`, `Q-20261024-515661` | — | `Q-20261024-90abed`, `Q-20261024-4269fd`, `Q-20261024-4ebe69`, `Q-20261024-23cac1`, `Q-20261024-515661` |
@@ -1483,32 +1537,32 @@
 | `SESSION-20261024-837a43` | 2026-10-24 | `Q-002`, `Q-003`, `Q-015`, `Q-018`, `Q-023`, `Q-041`, `Q-047`, `Q-048`, `Q-052`, `Q-063`, `Q-078`, `Q-083`, `Q-084`, `Q-085`, `Q-088`, `Q-090`, `Q-20261024-0466f1`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261024-c0d406`, `Q-20261024-8fdb2c` | — | `Q-20261024-0466f1`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261024-c0d406`, `Q-20261024-8fdb2c` |
 | `SESSION-20261024-9dd96f` | 2026-10-24 | `Q-002`, `Q-015`, `Q-023`, `Q-047`, `Q-048`, `Q-063`, `Q-088`, `Q-097`, `Q-20261024-0466f1`, `Q-20261024-6770c0`, `Q-20261024-6bdafd`, `Q-20261024-ff6311`, `Q-20261024-25c6d5`, `Q-20261024-5f57d5` | — | `Q-20261024-6770c0`, `Q-20261024-6bdafd`, `Q-20261024-ff6311`, `Q-20261024-25c6d5`, `Q-20261024-5f57d5` |
 
-## 6. 解釈的関係（1578 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（1656 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 175 |
-| 共鳴 (echo) | 426 |
-| 切断・割り込み (interrupts) | 52 |
-| 未解決のまま開く (leaves_open) | 170 |
+| 対照 (contrast) | 186 |
+| 共鳴 (echo) | 453 |
+| 切断・割り込み (interrupts) | 55 |
+| 未解決のまま開く (leaves_open) | 171 |
 | 比喩的共鳴 (metaphorically_resonates) | 63 |
-| 枠組みの組み替え (reframes) | 110 |
-| 応答 (responds_to) | 528 |
-| 変奏・変形 (transforms) | 54 |
+| 枠組みの組み替え (reframes) | 112 |
+| 応答 (responds_to) | 559 |
+| 変奏・変形 (transforms) | 57 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
 | ファイル | 件数 | バイト |
 |---|---:|---:|
-| `map/00-overview.md` | None | 16,223 |
-| `map/10-question-index.md` | None | 55,974 |
+| `map/00-overview.md` | None | 17,285 |
+| `map/10-question-index.md` | None | 58,490 |
 | `map/11-question-bodies-01.md` | 50 | 32,042 |
 | `map/11-question-bodies-02.md` | 50 | 40,478 |
-| `map/11-question-bodies-03.md` | 50 | 54,134 |
-| `map/11-question-bodies-04.md` | 10 | 9,690 |
+| `map/11-question-bodies-03.md` | 50 | 50,046 |
+| `map/11-question-bodies-04.md` | 16 | 18,273 |
 | `map/20-fragments-01.md` | 20 | 78,021 |
-| `map/20-fragments-02.md` | 20 | 85,558 |
-| `map/20-fragments-03.md` | 15 | 39,717 |
+| `map/20-fragments-02.md` | 20 | 86,312 |
+| `map/20-fragments-03.md` | 15 | 40,180 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -1516,18 +1570,18 @@
 | `map/30-materials-literary-05.md` | 100 | 165,209 |
 | `map/30-materials-literary-06.md` | 100 | 159,947 |
 | `map/30-materials-literary-07.md` | 100 | 174,179 |
-| `map/30-materials-literary-08.md` | 100 | 142,800 |
-| `map/30-materials-literary-09.md` | 8 | 11,544 |
+| `map/30-materials-literary-08.md` | 100 | 149,234 |
+| `map/30-materials-literary-09.md` | 53 | 79,669 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 176,160 |
 | `map/31-materials-research-04.md` | 12 | 19,382 |
-| `map/32-materials-trace-01.md` | 28 | 65,289 |
+| `map/32-materials-trace-01.md` | 29 | 67,232 |
 | `map/40-relations-01.md` | 500 | 119,404 |
-| `map/40-relations-02.md` | 500 | 114,017 |
-| `map/40-relations-03.md` | 500 | 124,102 |
-| `map/40-relations-04.md` | 78 | 16,640 |
-| `map/50-sessions-01.md` | 50 | 44,801 |
-| `map/50-sessions-02.md` | 1 | 1,423 |
+| `map/40-relations-02.md` | 500 | 106,292 |
+| `map/40-relations-03.md` | 500 | 128,753 |
+| `map/40-relations-04.md` | 156 | 34,866 |
+| `map/50-sessions-01.md` | 50 | 44,677 |
+| `map/50-sessions-02.md` | 2 | 2,720 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
