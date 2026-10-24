@@ -230,6 +230,7 @@ def load_collections(
     root: Path | None = None,
     retries: int = 5,
     delay: float = 0.02,
+    exclude: str | None = None,
 ) -> tuple[dict[str, dict[str, dict[str, Any]]], list[str]]:
     """Load collections from base files plus shards as one snapshot.
 
@@ -242,7 +243,11 @@ def load_collections(
     last_parse_errors: list[str] = []
     for attempt in range(retries + 1):
         files_by_collection = {
-            name: collection_files(base) for name, (base, _id_key) in specs.items()
+            name: [
+                path for path in collection_files(base)
+                if not (exclude and exclude in path.name)
+            ]
+            for name, (base, _id_key) in specs.items()
         }
         all_paths: list[Path] = []
         for files in files_by_collection.values():
@@ -291,10 +296,11 @@ def load_jsonl_union(
     root: Path | None = None,
     retries: int = 5,
     delay: float = 0.02,
+    exclude: str | None = None,
 ) -> dict[str, dict[str, Any]]:
     """Compatibility wrapper: load one collection (base + shards) into an ID map."""
     data, new_errors = load_collections(
-        {"ledger": (Path(path), id_key)}, root=root, retries=retries, delay=delay
+        {"ledger": (Path(path), id_key)}, root=root, retries=retries, delay=delay, exclude=exclude
     )
     if errors is not None:
         errors.extend(new_errors)

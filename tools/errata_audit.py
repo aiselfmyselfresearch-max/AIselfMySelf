@@ -16,20 +16,39 @@ import argparse
 import json
 import re
 import subprocess
+import sys
 import unicodedata
 from pathlib import Path
 from typing import Any, Optional
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+import ledger_io  # noqa: E402
 
 # A tail sentence is treated as a question when it ends with a question mark,
 # or with one of the interrogative closings that the ledger uses with 句点.
 QUESTION_TAIL = re.compile(r"(？|\?|だろうか。|でしょうか。|のか。|ではないか。|のだろうか。)$")
 
 
-def load_jsonl(name: str) -> list[dict[str, Any]]:
-    path = ROOT / "state" / name
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+def load_jsonl(name: str, id_key: str, *, base_only: bool = False,
+               exclude: str | None = None) -> list[dict[str, Any]]:
+    """Load a collection the way every other tool does: base plus shards.
+
+    Until SESSION-041 this function read only ``state/<name>`` and therefore
+    missed every record written to ``state/<name>.d/``. The errata ledger was
+    measured against 43 fragments while validate_seed, inspect_inquiry,
+    serve_viewer, sleep_audit and promise_audit all measured 50, so the mirror
+    of corrections silently lagged behind the archive it audits. ``base_only``
+    reproduces the old count for comparison.
+    """
+    base = ROOT / "state" / name
+    if base_only:
+        return [json.loads(line) for line in base.read_text(encoding="utf-8").splitlines() if line.strip()]
+    errors: list[str] = []
+    records = ledger_io.load_jsonl_union(base, id_key, errors, root=ROOT, exclude=exclude)
+    if errors:
+        raise SystemExit("ledger has errors; run tools/validate_seed.py: " + "; ".join(errors))
+    return list(records.values())
 
 
 def number(fragment_id: str) -> int:
@@ -212,11 +231,15 @@ def recorded_number(value: str) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Re-run the checks recorded in the errata ledger.")
     parser.add_argument("--json", action="store_true", help="emit machine-readable JSON")
+    parser.add_argument("--base-only", action="store_true",
+                        help="read only the frozen base files (the pre-SESSION-041 behaviour)")
+    parser.add_argument("--exclude-shard", metavar="SUFFIX",
+                        help="ignore shards whose filename contains SUFFIX")
     args = parser.parse_args()
 
-    errata = load_jsonl("errata.jsonl")
-    fragments = load_jsonl("fragments.jsonl")
-    materials = load_jsonl("materials.jsonl")
+    errata = load_jsonl("errata.jsonl", "errata_id", base_only=args.base_only, exclude=args.exclude_shard)
+    fragments = load_jsonl("fragments.jsonl", "fragment_id", base_only=args.base_only, exclude=args.exclude_shard)
+    materials = load_jsonl("materials.jsonl", "material_id", base_only=args.base_only, exclude=args.exclude_shard)
 
     results = []
     for record in sorted(errata, key=lambda r: r["errata_id"]):
@@ -238,7 +261,9 @@ def main() -> int:
         return 0
 
     print("=== 訂正録の再測定 — 訂正そのものを測る（採点ではありません） ===")
-    print(f"対象: state/errata.jsonl {len(errata)} 件 / state/fragments.jsonl {len(fragments)} 編\n")
+    scope = "base only（凍結ベース）" if args.base_only else "union（base + shards）"
+    print(f"対象: state/errata.jsonl {len(errata)} 件 / state/fragments.jsonl {len(fragments)} 編"
+          f" / materials {len(materials)} 件（{scope}）\n")
     for row in results:
         rec, mes, agree = row["errata"], row["measured"], row["agree"]
         if not mes["measurable"]:

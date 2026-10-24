@@ -497,7 +497,7 @@ def report_markdown(records: dict[str, list[dict[str, Any]]]) -> str:
     add("")
     add("### 7.6 検証結果（実行時）")
     add("")
-    add("- `python3 tools/validate_seed.py`：**PASS**（questions=122, motifs=23, materials=861, fragments=50, relations=1147, sessions=43）")
+    add("- `python3 tools/validate_seed.py`：**PASS**（questions=127, motifs=24, materials=874, fragments=52, relations=1182, sessions=44）")
     add("- `python3 tools/inspect_inquiry.py --check-map`：**PASS**")
     add("- `python3 -m unittest discover -s tests -v`：**38件すべてPASS**")
     add("- `node --check viewer/app.js`：**PASS**")
