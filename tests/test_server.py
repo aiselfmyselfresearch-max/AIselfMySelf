@@ -131,6 +131,15 @@ class ServerTests(unittest.TestCase):
         sa = payload["signature_audit"]
         self.assertEqual(sa["fragment_count"], len(payload["fragments"]))
         self.assertIn("signature_mark", sa["fragments_prose"]["groups"])
+        sea = payload["secret_audit"]
+        self.assertEqual(sea["fragment_count"], len(payload["fragments"]))
+        self.assertIn("秘密と隠匿", sea["group_sums"])
+        self.assertIn("嘘と偽り", sea["group_sums"])
+        self.assertIn("暗号と鍵", sea["group_sums"])
+        self.assertEqual(
+            sum(sea["group_sums"].values()),
+            sum(sum(counts.values()) for counts in sea["group_totals"].values()),
+        )
         pra = payload["prayer_audit"]
         self.assertEqual(pra["fragment_count"], len(payload["fragments"]))
         self.assertIn("prayer_act", pra["fragments_prose"]["groups"])

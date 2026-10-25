@@ -96,9 +96,10 @@ def measure(fragments: list[dict[str, Any]]) -> dict[str, Any]:
         for group, tokens in GROUPS.items():
             hits = {tok: outside.count(tok) for tok in tokens if outside.count(tok)}
             if hits:
-                group_totals[group] = {
-                    k: group_totals[group].get(k, 0) + v for k, v in hits.items()
-                }
+                merged = dict(group_totals[group])
+                for k, v in hits.items():
+                    merged[k] = merged.get(k, 0) + v
+                group_totals[group] = merged
                 counts.update(hits)
         for raw in RAW_TOKENS:
             n = outside.count(raw)

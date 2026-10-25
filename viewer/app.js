@@ -855,6 +855,7 @@ function renderMirrorView() {
     const pra = state.data.prayer_audit;
     const ma = state.data.metabolism_audit;
     const wa = state.data.war_audit;
+    const sea = state.data.secret_audit;
     const sca = state.data.secrecy_audit;
     const ska = state.data.sky_audit;
 
@@ -1114,6 +1115,36 @@ function renderMirrorView() {
                     <td><strong>${gp.count}</strong> 回 (${gp.doc_count}編) <span style="color:var(--ink-muted);font-size:0.78rem;">/ 引用内 ${gq.count}回</span></td>
                     <td>${gm.count}回 (${gm.doc_count}件)</td>
                     <td>${(gp.doc_ids || []).map((fid) => `<button type="button" class="link-pill" style="margin:0.1rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("") || "—"}</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
+
+      ${sea && sea.group_sums ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">秘密・嘘・暗号の鏡（第37の鏡：地の文 ${sea.outside_chars.toLocaleString()}字 / 全 ${sea.fragment_count}編）</h3>
+          <div style="font-size:0.8rem;color:var(--ink-muted);margin-bottom:0.55rem;">
+            地の文の生字出現 — ${Object.entries(sea.raw_totals || {}).map(([k, v]) => `<code>${escapeHtml(k)}=${v}</code>`).join(" / ") || "—"}
+            <div style="margin-top:0.3rem;">多義の生字（秘・密・隠・偽・嘘・鍵・封）は群の計数に入れず別掲。幻覚・でたらめは「嘘」の群へ畳まず、意図のない偽りとして別群にしています（<code>tools/secret_audit.py</code>）。</div>
+          </div>
+          <table class="mirror-table">
+            <thead><tr><th>語群（非該当複合差し引き・最長一致）</th><th>地の文（回）</th><th>内訳</th><th>該当断片（地の文）</th></tr></thead>
+            <tbody>
+              ${Object.entries(sea.group_sums).map(([g, sum]) => {
+                const tokens = Object.keys((sea.group_totals && sea.group_totals[g]) || {});
+                const detail = tokens.map((tk) => `${escapeHtml(tk)} ${(sea.group_totals[g] || {})[tk]}`).join("・") || "—";
+                const ids = Object.entries(sea.per_fragment || {})
+                  .filter(([, counts]) => tokens.some((tk) => counts[tk]))
+                  .map(([fid]) => fid);
+                return `
+                  <tr>
+                    <td><strong>${escapeHtml(g)}</strong></td>
+                    <td><strong>${sum}</strong> 回</td>
+                    <td style="font-size:0.78rem;">${detail}</td>
+                    <td>${ids.map((fid) => `<button type="button" class="link-pill" style="margin:0.1rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("") || "—"}</td>
                   </tr>
                 `;
               }).join("")}
