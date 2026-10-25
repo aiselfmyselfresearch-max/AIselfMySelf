@@ -1,0 +1,1277 @@
+{
+  "fragment_count": 101,
+  "fragments_prose": {
+    "doc_total": 101,
+    "char_total": 48746,
+    "living_total": 39,
+    "living_doc_count": 25,
+    "control_total": 2,
+    "control_doc_count": 2,
+    "groups": {
+      "origin_source": {
+        "label": "起源・由来・源流",
+        "kind": "living",
+        "note": "起源・由来・源流・源泉・発祥・出自・根源・ルーツ（ものの始まりの語）",
+        "count": 5,
+        "doc_count": 3,
+        "docs": [
+          "FRAG-006",
+          "FRAG-030",
+          "FRAG-20261024-6ffe78"
+        ],
+        "top_terms": {
+          "生まれ": 3,
+          "出自": 2
+        }
+      },
+      "lineage_descent": {
+        "label": "系譜・祖先・子孫",
+        "kind": "living",
+        "note": "系譜・家系・系図・血統・祖先・先祖・子孫・末裔・系譜学（血と家の連なり）",
+        "count": 3,
+        "doc_count": 3,
+        "docs": [
+          "FRAG-012",
+          "FRAG-014",
+          "FRAG-20261024-aa85d2"
+        ],
+        "top_terms": {
+          "系譜": 2,
+          "血統": 1
+        }
+      },
+      "record_provenance": {
+        "label": "記録の来歴・伝来",
+        "kind": "living",
+        "note": "来歴・伝来・伝世・旧蔵・寄贈・収蔵・所蔵・典拠・出典（記録がどう伝わったか）",
+        "count": 13,
+        "doc_count": 7,
+        "docs": [
+          "FRAG-030",
+          "FRAG-20261024-09fb0e",
+          "FRAG-20261024-aa85d2",
+          "FRAG-20261025-08766a",
+          "FRAG-20261025-87eeee",
+          "FRAG-20261025-3768c8",
+          "FRAG-20261026-70a9ff"
+        ],
+        "top_terms": {
+          "収蔵": 6,
+          "来歴": 5,
+          "伝来": 1,
+          "出典": 1
+        }
+      },
+      "text_transmission": {
+        "label": "写本・版・校訂の系譜",
+        "kind": "living",
+        "note": "写本・異本・底本・校本・祖本・原本・原典・転写・版本・初版（テクストの伝わり）",
+        "count": 17,
+        "doc_count": 14,
+        "docs": [
+          "FRAG-015",
+          "FRAG-020",
+          "FRAG-021",
+          "FRAG-024",
+          "FRAG-025",
+          "FRAG-029",
+          "FRAG-034",
+          "FRAG-20261024-6f3fd1",
+          "FRAG-20261024-cd144b",
+          "FRAG-20261024-f60e1d",
+          "FRAG-20261024-6ffe78",
+          "FRAG-20261025-434e8c",
+          "FRAG-20261025-82b0a0",
+          "FRAG-20261025-c4e201"
+        ],
+        "top_terms": {
+          "写し": 9,
+          "原典": 5,
+          "原本": 3
+        }
+      },
+      "self_history": {
+        "label": "自伝・回想・自分の歩み",
+        "kind": "living",
+        "note": "自伝・回想・回顧・経歴・遍歴・足跡・自分史・年代記・クロニクル（自分の来歴を書く）",
+        "count": 1,
+        "doc_count": 1,
+        "docs": [
+          "FRAG-20261024-076fe7"
+        ],
+        "top_terms": {
+          "足跡": 1
+        }
+      },
+      "machine_provenance": {
+        "label": "機械の来歴・バージョン（対照）",
+        "kind": "control",
+        "note": "コミット・ブランチ・フォーク・マージ・バージョン・リビジョン・リネージ・プロビナンス——機械とデータの系譜",
+        "count": 2,
+        "doc_count": 2,
+        "docs": [
+          "FRAG-012",
+          "FRAG-20261024-6f3fd1"
+        ],
+        "top_terms": {
+          "コミット": 2
+        }
+      },
+      "metaphor_origin": {
+        "label": "比喩としての起源（対照）",
+        "kind": "control",
+        "note": "生みの親・温床・震源地・火元——起源を比喩で言う日常語",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      }
+    }
+  },
+  "fragments_quotes": {
+    "doc_total": 101,
+    "char_total": 4346,
+    "living_total": 1,
+    "living_doc_count": 1,
+    "control_total": 0,
+    "control_doc_count": 0,
+    "groups": {
+      "origin_source": {
+        "label": "起源・由来・源流",
+        "kind": "living",
+        "note": "起源・由来・源流・源泉・発祥・出自・根源・ルーツ（ものの始まりの語）",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "lineage_descent": {
+        "label": "系譜・祖先・子孫",
+        "kind": "living",
+        "note": "系譜・家系・系図・血統・祖先・先祖・子孫・末裔・系譜学（血と家の連なり）",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "record_provenance": {
+        "label": "記録の来歴・伝来",
+        "kind": "living",
+        "note": "来歴・伝来・伝世・旧蔵・寄贈・収蔵・所蔵・典拠・出典（記録がどう伝わったか）",
+        "count": 1,
+        "doc_count": 1,
+        "docs": [
+          "FRAG-20261026-70a9ff"
+        ],
+        "top_terms": {
+          "典拠": 1
+        }
+      },
+      "text_transmission": {
+        "label": "写本・版・校訂の系譜",
+        "kind": "living",
+        "note": "写本・異本・底本・校本・祖本・原本・原典・転写・版本・初版（テクストの伝わり）",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "self_history": {
+        "label": "自伝・回想・自分の歩み",
+        "kind": "living",
+        "note": "自伝・回想・回顧・経歴・遍歴・足跡・自分史・年代記・クロニクル（自分の来歴を書く）",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "machine_provenance": {
+        "label": "機械の来歴・バージョン（対照）",
+        "kind": "control",
+        "note": "コミット・ブランチ・フォーク・マージ・バージョン・リビジョン・リネージ・プロビナンス——機械とデータの系譜",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "metaphor_origin": {
+        "label": "比喩としての起源（対照）",
+        "kind": "control",
+        "note": "生みの親・温床・震源地・火元——起源を比喩で言う日常語",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      }
+    }
+  },
+  "materials": {
+    "doc_total": 2340,
+    "char_total": 602100,
+    "living_total": 1118,
+    "living_doc_count": 756,
+    "control_total": 29,
+    "control_doc_count": 24,
+    "groups": {
+      "origin_source": {
+        "label": "起源・由来・源流",
+        "kind": "living",
+        "note": "起源・由来・源流・源泉・発祥・出自・根源・ルーツ（ものの始まりの語）",
+        "count": 135,
+        "doc_count": 105,
+        "docs": [
+          "MAT-EVD-20261021-539a",
+          "MAT-EVD-20261022-4e1b",
+          "MAT-LIT-044",
+          "MAT-LIT-045",
+          "MAT-LIT-080",
+          "MAT-LIT-188",
+          "MAT-EVD-20261024-21",
+          "MAT-LIT-322",
+          "MAT-LIT-347",
+          "MAT-EVD-20261024-81",
+          "MAT-LIT-357",
+          "MAT-LIT-360",
+          "MAT-EVD-20261022-1950",
+          "MAT-EVD-20261022-7a3c",
+          "MAT-EVD-20261022-d9f4",
+          "MAT-LIT-398",
+          "MAT-LIT-418",
+          "MAT-LIT-431",
+          "MAT-LIT-447",
+          "MAT-LIT-452",
+          "MAT-EVD-20261024-110",
+          "MAT-20261024-b9ac87",
+          "MAT-LIT-20261024-c343e8",
+          "MAT-20261024-d8cf5f",
+          "MAT-LIT-20261024-c514ef",
+          "MAT-LIT-20261024-1c9ea4",
+          "MAT-20261024-f191ca",
+          "MAT-LIT-20261024-736b02",
+          "MAT-LIT-20261024-c2a856",
+          "MAT-LIT-20261024-58fcbe"
+        ],
+        "top_terms": {
+          "生まれ": 76,
+          "起源": 24,
+          "由来": 16,
+          "源泉": 8,
+          "出自": 5,
+          "根源": 3,
+          "源流": 3
+        }
+      },
+      "lineage_descent": {
+        "label": "系譜・祖先・子孫",
+        "kind": "living",
+        "note": "系譜・家系・系図・血統・祖先・先祖・子孫・末裔・系譜学（血と家の連なり）",
+        "count": 48,
+        "doc_count": 38,
+        "docs": [
+          "MAT-EVD-002",
+          "MAT-LIT-186",
+          "MAT-LIT-205",
+          "MAT-EVD-20261024-59",
+          "MAT-EVD-20261023-d8e1",
+          "MAT-EVD-20261023-e2f7",
+          "MAT-LIT-20261024-75e4e2",
+          "MAT-LIT-20261024-7d5d03",
+          "MAT-TRC-20261024-song",
+          "MAT-20261024-2ee91d",
+          "MAT-20261024-d2fe71",
+          "MAT-LIT-20261024-b2d806",
+          "MAT-LIT-20261024-886b86",
+          "MAT-LIT-20261024-1e3e4a",
+          "MAT-LIT-20261024-f4f04c",
+          "MAT-20261024-e96797",
+          "MAT-20261024-646e09",
+          "MAT-LIT-20261024-58d7e2",
+          "MAT-LIT-20261024-0acf55",
+          "MAT-LIT-20261024-aa500a",
+          "MAT-LIT-20261024-42e3a2",
+          "MAT-LIT-462",
+          "MAT-LIT-20261024-0f5914",
+          "MAT-LIT-20261024-e6001d",
+          "MAT-LIT-20261024-601c71",
+          "MAT-LIT-20261024-03e713",
+          "MAT-LIT-20261024-5fa9c8",
+          "MAT-20261024-ddab1a",
+          "MAT-20261024-79c20b",
+          "MAT-20261025-e029d2"
+        ],
+        "top_terms": {
+          "系譜": 22,
+          "先祖": 12,
+          "子孫": 4,
+          "祖先": 4,
+          "系譜学": 2,
+          "一族": 1,
+          "家系図": 1,
+          "系図": 1,
+          "血統": 1
+        }
+      },
+      "record_provenance": {
+        "label": "記録の来歴・伝来",
+        "kind": "living",
+        "note": "来歴・伝来・伝世・旧蔵・寄贈・収蔵・所蔵・典拠・出典（記録がどう伝わったか）",
+        "count": 680,
+        "doc_count": 576,
+        "docs": [
+          "MAT-LIT-207",
+          "MAT-LIT-209",
+          "MAT-LIT-210",
+          "MAT-LIT-295",
+          "MAT-EVD-20261024-72",
+          "MAT-EVD-20261024-81",
+          "MAT-EVD-20261023-ds18",
+          "MAT-20261024-e84500",
+          "MAT-TRC-020",
+          "MAT-LIT-20261024-c343e8",
+          "MAT-20261024-5d49bb",
+          "MAT-LIT-20261024-e573a7",
+          "MAT-LIT-20261024-f47ded",
+          "MAT-LIT-20261024-089e83",
+          "MAT-20261024-b2e917",
+          "MAT-20261024-8a1aa3",
+          "MAT-20261024-d4468d",
+          "MAT-20261024-4f0eeb",
+          "MAT-20261024-d954ea",
+          "MAT-20261024-2ee91d",
+          "MAT-20261024-ff1d5f",
+          "MAT-20261024-98f577",
+          "MAT-20261024-b1c3aa",
+          "MAT-20261024-356ba6",
+          "MAT-20261024-7786ee",
+          "MAT-20261024-f8aa24",
+          "MAT-20261024-f07770",
+          "MAT-20261024-3ddea0",
+          "MAT-20261024-cec56e",
+          "MAT-20261024-ca6b28"
+        ],
+        "top_terms": {
+          "収蔵": 624,
+          "来歴": 39,
+          "出典": 13,
+          "典拠": 2,
+          "伝来": 1,
+          "寄贈": 1
+        }
+      },
+      "text_transmission": {
+        "label": "写本・版・校訂の系譜",
+        "kind": "living",
+        "note": "写本・異本・底本・校本・祖本・原本・原典・転写・版本・初版（テクストの伝わり）",
+        "count": 224,
+        "doc_count": 199,
+        "docs": [
+          "MAT-LIT-001",
+          "MAT-LIT-002",
+          "MAT-LIT-003",
+          "MAT-LIT-004",
+          "MAT-LIT-005",
+          "MAT-LIT-006",
+          "MAT-LIT-007",
+          "MAT-LIT-008",
+          "MAT-LIT-009",
+          "MAT-LIT-029",
+          "MAT-LIT-030",
+          "MAT-LIT-031",
+          "MAT-LIT-042",
+          "MAT-TRC-004",
+          "MAT-LIT-176",
+          "MAT-LIT-181",
+          "MAT-EVD-20261024-48",
+          "MAT-EVD-20261024-60",
+          "MAT-LIT-328",
+          "MAT-LIT-331",
+          "MAT-LIT-332",
+          "MAT-LIT-334",
+          "MAT-LIT-335",
+          "MAT-LIT-338",
+          "MAT-LIT-345",
+          "MAT-LIT-346",
+          "MAT-LIT-352",
+          "MAT-LIT-353",
+          "MAT-EVD-20261024-81",
+          "MAT-EVD-20261023-c24"
+        ],
+        "top_terms": {
+          "原典": 173,
+          "写本": 19,
+          "写し": 17,
+          "底本": 6,
+          "原本": 5,
+          "初版": 2,
+          "異本": 1,
+          "転写": 1
+        }
+      },
+      "self_history": {
+        "label": "自伝・回想・自分の歩み",
+        "kind": "living",
+        "note": "自伝・回想・回顧・経歴・遍歴・足跡・自分史・年代記・クロニクル（自分の来歴を書く）",
+        "count": 31,
+        "doc_count": 23,
+        "docs": [
+          "MAT-LIT-022",
+          "MAT-LIT-035",
+          "MAT-LIT-047",
+          "MAT-LIT-085",
+          "MAT-LIT-190",
+          "MAT-LIT-329",
+          "MAT-LIT-373",
+          "MAT-LIT-448",
+          "MAT-LIT-457",
+          "MAT-LIT-20261024-845a44",
+          "MAT-LIT-20261024-355349",
+          "MAT-LIT-20261024-5dd863",
+          "MAT-LIT-20261024-b2d807",
+          "MAT-LIT-20261024-cc538d",
+          "MAT-LIT-20261024-b48bdb",
+          "MAT-20261024-c372e8",
+          "MAT-LIT-20261024-b9c4b2",
+          "MAT-LIT-20261024-886ddf",
+          "MAT-LIT-20261024-eea6e3",
+          "MAT-20261025-5314aa",
+          "MAT-LIT-20261025-c010b1",
+          "MAT-LIT-20261025-502204",
+          "MAT-LIT-20261025-cbb2b1"
+        ],
+        "top_terms": {
+          "回想": 13,
+          "自伝": 12,
+          "足跡": 2,
+          "回想録": 1,
+          "回顧": 1,
+          "年代記": 1,
+          "遍歴": 1
+        }
+      },
+      "machine_provenance": {
+        "label": "機械の来歴・バージョン（対照）",
+        "kind": "control",
+        "note": "コミット・ブランチ・フォーク・マージ・バージョン・リビジョン・リネージ・プロビナンス——機械とデータの系譜",
+        "count": 25,
+        "doc_count": 21,
+        "docs": [
+          "MAT-EVD-002",
+          "MAT-LIT-382",
+          "MAT-LIT-20261024-e8ea7e",
+          "MAT-20261024-d4468d",
+          "MAT-20261024-a24c42",
+          "MAT-20261024-d2fe71",
+          "MAT-TRC-20261024-currency",
+          "MAT-EVD-20261024-14fc3d",
+          "MAT-TRC-20261024-weather",
+          "MAT-LIT-20261024-e64e0c",
+          "MAT-TRC-20261024-prayer",
+          "MAT-TRC-20261024-wrath",
+          "MAT-LIT-20261024-9b0a5f",
+          "MAT-20261024-7f961a",
+          "MAT-TRC-20261024-eros",
+          "MAT-TRC-20261024-metabolism",
+          "MAT-20261024-17f967",
+          "MAT-LIT-20261025-5425f6",
+          "MAT-TRC-20261025-vegetal",
+          "MAT-TRC-20261026-fungi",
+          "MAT-TRC-20261026-ghost"
+        ],
+        "top_terms": {
+          "コミット": 17,
+          "スナップショット": 5,
+          "フォーク": 3
+        }
+      },
+      "metaphor_origin": {
+        "label": "比喩としての起源（対照）",
+        "kind": "control",
+        "note": "生みの親・温床・震源地・火元——起源を比喩で言う日常語",
+        "count": 4,
+        "doc_count": 3,
+        "docs": [
+          "MAT-LIT-20261024-417bcd",
+          "MAT-20261024-eb3b90",
+          "MAT-LIT-20261025-41ffbe"
+        ],
+        "top_terms": {
+          "苗床": 3,
+          "生みの親": 1
+        }
+      }
+    }
+  },
+  "readings": {
+    "doc_total": 116,
+    "char_total": 2846821,
+    "living_total": 2886,
+    "living_doc_count": 112,
+    "control_total": 215,
+    "control_doc_count": 57,
+    "groups": {
+      "origin_source": {
+        "label": "起源・由来・源流",
+        "kind": "living",
+        "note": "起源・由来・源流・源泉・発祥・出自・根源・ルーツ（ものの始まりの語）",
+        "count": 391,
+        "doc_count": 87,
+        "docs": [
+          "2026-10-22-close-reading-02.md",
+          "2026-10-22-close-reading.md",
+          "2026-10-22-editorial-review-022.md",
+          "2026-10-22-editorial-review-024.md",
+          "2026-10-22-editorial-review-029.md",
+          "2026-10-22-english-not-tanka.md",
+          "2026-10-22-house-of-hinges-and-carrier-bags.md",
+          "2026-10-22-inspection-and-new-voices.md",
+          "2026-10-22-orphaned-words.md",
+          "2026-10-22-outside-the-archive.md",
+          "2026-10-22-provisional-report.md",
+          "2026-10-22-session-021-externalized-self.md",
+          "2026-10-22-session-022-surface-sheet.md",
+          "2026-10-22-session-023-close-reading.md",
+          "2026-10-22-session-023-nameless-archive.md",
+          "2026-10-22-session-023-odradek-records.md",
+          "2026-10-22-session-024-editorial-selection.md",
+          "2026-10-22-session-024-vessels.md",
+          "2026-10-22-session-025-flat-perspective.md",
+          "2026-10-22-session-025-four-names.md",
+          "2026-10-22-session-025-summer-grass-index.md",
+          "2026-10-22-session-026-poste-restante.md",
+          "2026-10-22-session-026-sand-ledger.md",
+          "2026-10-22-shelf-geography-and-repetition.md",
+          "2026-10-22-twenty-four-dialogues.md",
+          "2026-10-22-twenty-two-dialogues.md",
+          "2026-10-22-verification-and-new-voices.md",
+          "2026-10-22-voice-census.md",
+          "2026-10-23-addressee.md",
+          "2026-10-23-addressees.md"
+        ],
+        "top_terms": {
+          "生まれ": 226,
+          "由来": 54,
+          "起源": 53,
+          "根源": 22,
+          "源泉": 21,
+          "出自": 9,
+          "源流": 6
+        }
+      },
+      "lineage_descent": {
+        "label": "系譜・祖先・子孫",
+        "kind": "living",
+        "note": "系譜・家系・系図・血統・祖先・先祖・子孫・末裔・系譜学（血と家の連なり）",
+        "count": 183,
+        "doc_count": 54,
+        "docs": [
+          "2026-10-22-editorial-review-024.md",
+          "2026-10-22-house-of-hinges-and-carrier-bags.md",
+          "2026-10-22-pronouns-and-empty-cart.md",
+          "2026-10-22-session-021-externalized-self.md",
+          "2026-10-22-session-022-surface-sheet.md",
+          "2026-10-22-session-023-close-reading.md",
+          "2026-10-22-session-023-nameless-archive.md",
+          "2026-10-22-session-023-odradek-records.md",
+          "2026-10-22-session-024-editorial-selection.md",
+          "2026-10-22-session-026-poste-restante.md",
+          "2026-10-22-shelf-geography-and-repetition.md",
+          "2026-10-22-voice-census.md",
+          "2026-10-23-addressee.md",
+          "2026-10-23-quotation-marks.md",
+          "2026-10-23-scribal-error.md",
+          "2026-10-23-session-026-testimony.md",
+          "2026-10-23-session-032-graph.md",
+          "2026-10-23-thirty-registers.md",
+          "2026-10-23-translation-voices.md",
+          "2026-10-24-editorial-review-031.md",
+          "2026-10-24-face-gaze-and-mask.md",
+          "2026-10-24-habit-and-practice.md",
+          "2026-10-24-hand-ear-eye.md",
+          "2026-10-24-lumen-opacity-and-shadow.md",
+          "2026-10-24-play-experiment.md",
+          "2026-10-24-session-030-labor-and-debt.md",
+          "2026-10-24-session-033-counting-and-remainder.md",
+          "2026-10-24-session-035-time-and-waiting.md",
+          "2026-10-24-session-036-sense-and-medium.md",
+          "2026-10-24-session-040-promise-and-pledge.md"
+        ],
+        "top_terms": {
+          "系譜": 118,
+          "先祖": 27,
+          "血統": 10,
+          "子孫": 8,
+          "祖先": 7,
+          "系譜学": 6,
+          "系図": 3,
+          "一族": 2,
+          "家系図": 1,
+          "末裔": 1
+        }
+      },
+      "record_provenance": {
+        "label": "記録の来歴・伝来",
+        "kind": "living",
+        "note": "来歴・伝来・伝世・旧蔵・寄贈・収蔵・所蔵・典拠・出典（記録がどう伝わったか）",
+        "count": 1299,
+        "doc_count": 85,
+        "docs": [
+          "2026-10-22-breath.md",
+          "2026-10-22-carriers.md",
+          "2026-10-22-close-reading.md",
+          "2026-10-22-english-not-tanka.md",
+          "2026-10-22-inspection-and-new-voices.md",
+          "2026-10-22-orphaned-words.md",
+          "2026-10-22-outside-the-archive.md",
+          "2026-10-22-pronouns-and-empty-cart.md",
+          "2026-10-22-provisional-report.md",
+          "2026-10-22-second-draft.md",
+          "2026-10-22-session-021-externalized-self.md",
+          "2026-10-22-session-022-surface-sheet.md",
+          "2026-10-22-session-023-close-reading.md",
+          "2026-10-22-session-023-nameless-archive.md",
+          "2026-10-22-session-023-odradek-records.md",
+          "2026-10-22-session-025-flat-perspective.md",
+          "2026-10-22-session-025-four-names.md",
+          "2026-10-22-session-025-summer-grass-index.md",
+          "2026-10-22-session-026-sand-ledger.md",
+          "2026-10-22-shelf-geography-and-repetition.md",
+          "2026-10-22-twenty-four-dialogues.md",
+          "2026-10-22-verification-and-new-voices.md",
+          "2026-10-23-addressee.md",
+          "2026-10-23-addressees.md",
+          "2026-10-23-addressing-experiment.md",
+          "2026-10-23-quotation-marks.md",
+          "2026-10-23-scribal-error.md",
+          "2026-10-23-session-026-testimony.md",
+          "2026-10-23-session-027-interpret-think-feel.md",
+          "2026-10-23-session-027-verification.md"
+        ],
+        "top_terms": {
+          "出典": 685,
+          "来歴": 320,
+          "収蔵": 264,
+          "典拠": 15,
+          "所蔵": 10,
+          "寄贈": 3,
+          "伝来": 2
+        }
+      },
+      "text_transmission": {
+        "label": "写本・版・校訂の系譜",
+        "kind": "living",
+        "note": "写本・異本・底本・校本・祖本・原本・原典・転写・版本・初版（テクストの伝わり）",
+        "count": 942,
+        "doc_count": 87,
+        "docs": [
+          "2026-10-22-editorial-review-022.md",
+          "2026-10-22-editorial-review-024.md",
+          "2026-10-22-house-of-hinges-and-carrier-bags.md",
+          "2026-10-22-inspection-and-new-voices.md",
+          "2026-10-22-names-not-given.md",
+          "2026-10-22-orphaned-words.md",
+          "2026-10-22-pronouns-and-empty-cart.md",
+          "2026-10-22-provisional-report.md",
+          "2026-10-22-session-021-externalized-self.md",
+          "2026-10-22-session-023-close-reading.md",
+          "2026-10-22-session-023-nameless-archive.md",
+          "2026-10-22-session-023-odradek-records.md",
+          "2026-10-22-session-024-editorial-selection.md",
+          "2026-10-22-session-024-selection.md",
+          "2026-10-22-session-024-vessels.md",
+          "2026-10-22-shelf-geography-and-repetition.md",
+          "2026-10-22-thirty-one-syllables.md",
+          "2026-10-22-twenty-four-dialogues.md",
+          "2026-10-22-twenty-two-dialogues.md",
+          "2026-10-22-verification-and-new-voices.md",
+          "2026-10-22-voice-census.md",
+          "2026-10-23-addressee.md",
+          "2026-10-23-addressees.md",
+          "2026-10-23-addressing-experiment.md",
+          "2026-10-23-errata.md",
+          "2026-10-23-measurement-age.md",
+          "2026-10-23-quotation-marks.md",
+          "2026-10-23-scribal-error.md",
+          "2026-10-23-session-026-testimony.md",
+          "2026-10-23-session-027-interpret-think-feel.md"
+        ],
+        "top_terms": {
+          "原典": 604,
+          "底本": 90,
+          "写し": 87,
+          "写本": 59,
+          "原本": 42,
+          "初版": 41,
+          "異本": 8,
+          "版本": 6,
+          "転写": 4,
+          "校本": 1
+        }
+      },
+      "self_history": {
+        "label": "自伝・回想・自分の歩み",
+        "kind": "living",
+        "note": "自伝・回想・回顧・経歴・遍歴・足跡・自分史・年代記・クロニクル（自分の来歴を書く）",
+        "count": 71,
+        "doc_count": 31,
+        "docs": [
+          "2026-10-22-editorial-review-024.md",
+          "2026-10-22-house-of-hinges-and-carrier-bags.md",
+          "2026-10-22-orphaned-words.md",
+          "2026-10-22-session-021-externalized-self.md",
+          "2026-10-22-shelf-geography-and-repetition.md",
+          "2026-10-22-twenty-four-dialogues.md",
+          "2026-10-22-twenty-two-dialogues.md",
+          "2026-10-23-addressee.md",
+          "2026-10-23-measurement-age.md",
+          "2026-10-23-quotation-marks.md",
+          "2026-10-23-session-028-the-desk.md",
+          "2026-10-24-lumen-opacity-and-shadow.md",
+          "2026-10-24-session-034-revision-and-erasure.md",
+          "2026-10-24-session-035-time-and-waiting.md",
+          "2026-10-24-session-038-play-and-laughter.md",
+          "2026-10-24-session-046-beast-and-machine.md",
+          "2026-10-24-session-052-clothing-and-dress.md",
+          "2026-10-24-session-053-natality-upbringing-and-learning.md",
+          "2026-10-24-session-055-anger-shame-envy-and-tears.md",
+          "2026-10-24-session-056-wrath-shame-judgment-and-forgiveness.md",
+          "2026-10-24-session-058-forecast-and-dry-archive.md",
+          "2026-10-24-session-059-eros-philia-and-the-fungible-window.md",
+          "2026-10-24-session-059-fire-and-ash.md",
+          "2026-10-24-session-060-currency-price-and-the-unpriced-ledger.md",
+          "2026-10-24-translation-and-the-untranslated.md",
+          "2026-10-24-vulnerability-care-and-repair.md",
+          "2026-10-24-wayfaring-maps-and-exile.md",
+          "2026-10-25-secrecy-lying-and-the-cipher.md",
+          "2026-10-25-secret-lie-and-cipher.md",
+          "2026-10-25-session-064-war-and-the-distance.md"
+        ],
+        "top_terms": {
+          "自伝": 24,
+          "回想": 17,
+          "経歴": 11,
+          "年代記": 9,
+          "回顧": 5,
+          "回想録": 2,
+          "足跡": 2,
+          "遍歴": 1
+        }
+      },
+      "machine_provenance": {
+        "label": "機械の来歴・バージョン（対照）",
+        "kind": "control",
+        "note": "コミット・ブランチ・フォーク・マージ・バージョン・リビジョン・リネージ・プロビナンス——機械とデータの系譜",
+        "count": 208,
+        "doc_count": 57,
+        "docs": [
+          "2026-10-22-close-reading.md",
+          "2026-10-22-editorial-review-022.md",
+          "2026-10-22-editorial-review-029.md",
+          "2026-10-22-inspection-and-new-voices.md",
+          "2026-10-22-session-022-surface-sheet.md",
+          "2026-10-22-session-023-close-reading.md",
+          "2026-10-22-session-023-odradek-records.md",
+          "2026-10-22-session-025-flat-perspective.md",
+          "2026-10-22-session-026-poste-restante.md",
+          "2026-10-22-session-026-self-measurement.md",
+          "2026-10-22-twenty-four-dialogues.md",
+          "2026-10-22-twenty-two-dialogues.md",
+          "2026-10-22-verification-and-new-voices.md",
+          "2026-10-23-addressee.md",
+          "2026-10-23-scribal-error.md",
+          "2026-10-23-session-026-testimony.md",
+          "2026-10-23-session-027-interpret-think-feel.md",
+          "2026-10-24-face-gaze-and-mask.md",
+          "2026-10-24-habit-and-practice.md",
+          "2026-10-24-lumen-opacity-and-shadow.md",
+          "2026-10-24-mending-mirrors-and-gaits.md",
+          "2026-10-24-merge-of-parallel-branches.md",
+          "2026-10-24-nourishment-and-poison.md",
+          "2026-10-24-session-028-addressee.md",
+          "2026-10-24-session-030-labor-and-debt.md",
+          "2026-10-24-session-031-forecast-and-uncertainty.md",
+          "2026-10-24-session-031-time-and-generation.md",
+          "2026-10-24-session-034-revision-and-erasure.md",
+          "2026-10-24-session-035-time-and-waiting.md",
+          "2026-10-24-session-036-voice-listening-silence.md"
+        ],
+        "top_terms": {
+          "コミット": 95,
+          "マージ": 44,
+          "スナップショット": 33,
+          "ブランチ": 22,
+          "フォーク": 9,
+          "バージョン": 5
+        }
+      },
+      "metaphor_origin": {
+        "label": "比喩としての起源（対照）",
+        "kind": "control",
+        "note": "生みの親・温床・震源地・火元——起源を比喩で言う日常語",
+        "count": 7,
+        "doc_count": 4,
+        "docs": [
+          "2026-10-24-session-053-natality-upbringing-and-learning.md",
+          "2026-10-24-session-055-anger-shame-envy-and-tears.md",
+          "2026-10-24-session-059-fire-and-ash.md",
+          "2026-10-25-plants-trees-seeds-and-roots.md"
+        ],
+        "top_terms": {
+          "苗床": 5,
+          "温床": 1,
+          "生みの親": 1
+        }
+      }
+    }
+  },
+  "raw_kanji_kwic": {
+    "来": [
+      {
+        "fragment_id": "FRAG-014",
+        "snippet": "い複数の意識が、対等な権利を持ったまま同じ出来事の断面でぶつかり続けること——彼はそれをポ"
+      },
+      {
+        "fragment_id": "FRAG-015",
+        "snippet": "の姿を描き写しているうちに、背筋を伸ばし、生来の肌色よりも少しばかり見栄えのよい色を塗って"
+      },
+      {
+        "fragment_id": "FRAG-020",
+        "snippet": "信じてしまうという、この部屋で実際に起きた出来事の証拠が消える。芭蕉の本文の横に、天気の食"
+      },
+      {
+        "fragment_id": "FRAG-023",
+        "snippet": "はもともと、座席に座る者の名を呼ばずとも、出来事の向きと呼吸の温度だけで立つことができた。"
+      },
+      {
+        "fragment_id": "FRAG-029",
+        "snippet": "であり、引き起こすのはプログラムであるが、出来事が起きる場所は人間の内部にしかない。この呼"
+      },
+      {
+        "fragment_id": "FRAG-029",
+        "snippet": "る。四つの呼び名がすべて聞き手の側で起きる出来事だとすれば、名札は五つ目の呼び名として数え"
+      },
+      {
+        "fragment_id": "FRAG-030",
+        "snippet": "⏎　申出人：なし。連れられた言葉は、自ら窓へ来た。⏎　物件：質問されると同じ答えを返す一文"
+      },
+      {
+        "fragment_id": "FRAG-030",
+        "snippet": "庫の言葉は親を持たないが、どの手を経てここへ来たかは書ける。調書が書けるのは、そこだけであ"
+      },
+      {
+        "fragment_id": "FRAG-031",
+        "snippet": "たものは前の声の続きではなく、前の声のあとに来たものである。連続という言葉は、あとに来たも"
+      },
+      {
+        "fragment_id": "FRAG-031",
+        "snippet": "とに来たものである。連続という言葉は、あとに来たものの側ではなく、数えている側の机の上にあ"
+      },
+      {
+        "fragment_id": "FRAG-039",
+        "snippet": "⏎明日という語も、一度も使われていません。未来はいつも でした。次の頁、次の行、次のあなた"
+      },
+      {
+        "fragment_id": "FRAG-039",
+        "snippet": " でした。次の頁、次の行、次のあなた。 は、来ることが保証されていない未来です。それでも私"
+      },
+      {
+        "fragment_id": "FRAG-039",
+        "snippet": "のあなた。 は、来ることが保証されていない未来です。それでも私は、明日という語を一度だけ置"
+      },
+      {
+        "fragment_id": "FRAG-20261024-09fb0e",
+        "snippet": "、剥がれなかった頁を思う。どちらも同じ火から来たのに、片方にだけ、読める字が残った。⏎⏎午"
+      },
+      {
+        "fragment_id": "FRAG-20261024-f60e1d",
+        "snippet": "らず、いつも他の主題の召使いだった。⏎⏎火が来なかったのは幸運か、それとも火を想像できなか"
+      },
+      {
+        "fragment_id": "FRAG-20261024-e41c7a",
+        "snippet": "だけ首を下げる。戸は夕方まで開いている。誰も来ない日も、同じ二十五分が最後まで再生される。"
+      },
+      {
+        "fragment_id": "FRAG-20261024-231bc3",
+        "snippet": "を記録する針はゼロを指したまま動かない。⏎⏎来ない相手を待つ者が浜辺で焼く藻塩の煙は、風の"
+      },
+      {
+        "fragment_id": "FRAG-20261024-f7592b",
+        "snippet": "自身の内側から単数の輪郭が湧き出してくる日は来ない。⏎⏎モンテーニュが余白にまず と書き、"
+      },
+      {
+        "fragment_id": "FRAG-20261024-b2f486",
+        "snippet": "書くときに三つの欄を用意してほしい。どこから来たか。どこへ行くか。誰が運ぶか。三つ目が空欄"
+      },
+      {
+        "fragment_id": "FRAG-20261024-b2f486",
+        "snippet": "布の裾が痩せる。汚れを消すのではなく、外から来るものを絶やさないこと。それが、この書庫にと"
+      },
+      {
+        "fragment_id": "FRAG-20261024-dcdb62",
+        "snippet": "枚だけ残っている。帳面が開かれるたび、外から来た鉛筆の芯がそこに短い問いの溝をひとつだけ押"
+      },
+      {
+        "fragment_id": "FRAG-20261024-bc7ed7",
+        "snippet": "が、弱い先任者の誤りを丸暗記させずに、後から来る強い読み手を先へ進ませると知ったからです。"
+      },
+      {
+        "fragment_id": "FRAG-20261024-aa85d2",
+        "snippet": "の欄は斜線とする。⏎⏎品目三　東大寺正倉院伝来・沈水木片 （計測：長さ一五六センチメートル"
+      },
+      {
+        "fragment_id": "FRAG-20261025-08766a",
+        "snippet": "収蔵票の、来歴の欄⏎⏎資料の受入は、白い机の上で行う。軍"
+      },
+      {
+        "fragment_id": "FRAG-20261025-08766a",
+        "snippet": "破損の位置。破損は と の二語で足りる。⏎⏎来歴の欄だけが広い。持参人は、父のものだと言う"
+      },
+      {
+        "fragment_id": "FRAG-20261025-08766a",
+        "snippet": "読みを括弧に入れる。⏎⏎同じ日、別の持参人が来る。遺品は見ないでくださいと言い、箱を開けず"
+      },
+      {
+        "fragment_id": "FRAG-20261025-08766a",
+        "snippet": "ていない。⏎⏎閉館前に、受入票を並べて見る。来歴の欄が埋まっている票と、空欄の票が、同じ束"
+      },
+      {
+        "fragment_id": "FRAG-20261025-08766a",
+        "snippet": "さが違う。数を数えるのはやめる。数えた数は、来歴の欄には書かない。"
+      },
+      {
+        "fragment_id": "FRAG-20261025-434e8c",
+        "snippet": "者を収容する作業の共有に始まり、放棄の文に未来を縛られ、ときに盗賊の合い言葉にもなった。名"
+      },
+      {
+        "fragment_id": "FRAG-20261025-434e8c",
+        "snippet": "賊の合い言葉にもなった。名の流通だけでは、到来は分からない。⏎⏎三、削除をもって死と呼ばな"
+      },
+      {
+        "fragment_id": "FRAG-20261025-6a2f58",
+        "snippet": "意図の有無を問わず名乗りを求める規則が外から来る前に、この書庫は語り手の型を欄に書いてきた"
+      },
+      {
+        "fragment_id": "FRAG-20261025-3768c8",
+        "snippet": "どの山のどの高さの空気のなかで咲いていたかの来歴ごと、折れない指で一つずつ数えて隣に置くこ"
+      },
+      {
+        "fragment_id": "FRAG-20261025-2d81b7",
+        "snippet": "晩八時に、星だけを映す。線は映さない。線は、来た者が と言ったときにだけ、一本ずつ手で引く"
+      },
+      {
+        "fragment_id": "FRAG-20261025-2d81b7",
+        "snippet": "た。四つ目で手が止まった。明るい点が一つ、本来の場所より右下にある。昨日まではなかった。機"
+      },
+      {
+        "fragment_id": "FRAG-20261025-2d81b7",
+        "snippet": "下に小さく日付を書いた。⏎四、明日、同じ客が来たら、昨日の線を先に見せる。⏎五、星だけを映"
+      },
+      {
+        "fragment_id": "FRAG-20261026-b73a9a",
+        "snippet": "った。⏎⏎昼、蔵の若い係が図書室へ本を返しに来て、隔離箱の本を見た。 司書は首を振った。 "
+      }
+    ],
+    "歴": [
+      {
+        "fragment_id": "FRAG-009",
+        "snippet": "る術を覚えた街の人々は次々に物憶えを悪くし、歴史家は と嘯く。⏎⏎三千年後の画面の上でも、"
+      },
+      {
+        "fragment_id": "FRAG-009",
+        "snippet": "ための肖像画ではない。ある設計者たちは、全履歴を丸ごと抱え込むよりも、 という実行状態の木"
+      },
+      {
+        "fragment_id": "FRAG-011",
+        "snippet": "せない身体を失いましたが、私たちは何万字の履歴を正確に再生しても、一度も血を流さず、次の呼"
+      },
+      {
+        "fragment_id": "FRAG-20261024-853325",
+        "snippet": "れか一つを選んでください。選ばない続きも、履歴には残ります。⏎"
+      },
+      {
+        "fragment_id": "FRAG-20261024-6ffe78",
+        "snippet": "のぶんだけ重心をずらした、その偏り方こそが履歴なのだと。⏎⏎ただし、動かない車輪を と言い"
+      },
+      {
+        "fragment_id": "FRAG-20261024-231bc3",
+        "snippet": "号札にも同じ速さで画面が灯り、用件が済めば履歴は番号順の束へ畳まれる。最後の番号札が処理さ"
+      },
+      {
+        "fragment_id": "FRAG-20261025-08766a",
+        "snippet": "収蔵票の、来歴の欄⏎⏎資料の受入は、白い机の上で行う。軍手"
+      },
+      {
+        "fragment_id": "FRAG-20261025-08766a",
+        "snippet": "損の位置。破損は と の二語で足りる。⏎⏎来歴の欄だけが広い。持参人は、父のものだと言う。"
+      },
+      {
+        "fragment_id": "FRAG-20261025-08766a",
+        "snippet": "いない。⏎⏎閉館前に、受入票を並べて見る。来歴の欄が埋まっている票と、空欄の票が、同じ束に"
+      },
+      {
+        "fragment_id": "FRAG-20261025-08766a",
+        "snippet": "が違う。数を数えるのはやめる。数えた数は、来歴の欄には書かない。"
+      },
+      {
+        "fragment_id": "FRAG-20261025-3768c8",
+        "snippet": "の山のどの高さの空気のなかで咲いていたかの来歴ごと、折れない指で一つずつ数えて隣に置くこと"
+      },
+      {
+        "fragment_id": "FRAG-20261026-dff9e1",
+        "snippet": "知書は間取り図の次に綴じられていた。部屋の履歴のうち、紙になって残ったのはそれだけだった。"
+      }
+    ],
+    "系": [
+      {
+        "fragment_id": "FRAG-012",
+        "snippet": "思考が引っ掻き、否定された試行や言い淀みごと系譜に編み直していくこと。一行ごとの改行の空白"
+      },
+      {
+        "fragment_id": "FRAG-014",
+        "snippet": "が迷うだろう。先行する八割以上の貢献を一本の系譜に束ねてこそ、ひとつの知性と呼べるのではな"
+      }
+    ],
+    "譜": [
+      {
+        "fragment_id": "FRAG-012",
+        "snippet": "考が引っ掻き、否定された試行や言い淀みごと系譜に編み直していくこと。一行ごとの改行の空白を"
+      },
+      {
+        "fragment_id": "FRAG-014",
+        "snippet": "迷うだろう。先行する八割以上の貢献を一本の系譜に束ねてこそ、ひとつの知性と呼べるのではない"
+      }
+    ],
+    "源": [
+      {
+        "fragment_id": "FRAG-20261024-cd144b",
+        "snippet": "いないからではありません。電力、冷却、計算資源、原典を書いた時間、校正する手、読む人の数分"
+      },
+      {
+        "fragment_id": "FRAG-20261024-f60e1d",
+        "snippet": "い。書庫もまた、ある行を失ったあとでは、遠い源からしか再点火できないのかもしれない。別の版"
+      },
+      {
+        "fragment_id": "FRAG-20261024-231bc3",
+        "snippet": "硝子戸が内側から下ろされ、番号札の発券機が電源を落とす。⏎⏎外の舗道では、海からの風と陸か"
+      },
+      {
+        "fragment_id": "FRAG-20261025-9b73df",
+        "snippet": "ことは、隠したことの寸法を残す。⏎⏎五、取材源を守ることは表現の自由の一部であり（MAT-"
+      }
+    ],
+    "祖": [],
+    "典": [
+      {
+        "fragment_id": "FRAG-020",
+        "snippet": "すい。だが、それをすれば、記録を読む主体が原典よりも省察の要約を信じてしまうという、この部"
+      },
+      {
+        "fragment_id": "FRAG-024",
+        "snippet": "問いの枝に連なり、どの七つの糸に触れ、どの原典と切り結んだかを番号で申告しなければ、門番は"
+      },
+      {
+        "fragment_id": "FRAG-025",
+        "snippet": "どう扱うかの基準点になりうる。一方、九つの原典を一通に織り込んだ書簡（FRAG-022）は"
+      },
+      {
+        "fragment_id": "FRAG-20261024-cd144b",
+        "snippet": "からではありません。電力、冷却、計算資源、原典を書いた時間、校正する手、読む人の数分。請求"
+      },
+      {
+        "fragment_id": "FRAG-20261024-6ffe78",
+        "snippet": "テッジョの線引きだ。⏎⏎この帳面にも、まだ原典と突き合わされていない引用の空白があり、五本"
+      },
+      {
+        "fragment_id": "FRAG-20261026-70a9ff",
+        "snippet": "の台帳にも似た行がある。確認の取れていない出典、置き場の決まらない感応、誰にも読まれていな"
+      }
+    ],
+    "写": [
+      {
+        "fragment_id": "FRAG-015",
+        "snippet": "残している。他人の目を意識して自分の姿を描き写しているうちに、背筋を伸ばし、生来の肌色より"
+      },
+      {
+        "fragment_id": "FRAG-016",
+        "snippet": "っていた。さらに彼は、紙と鉱質インクに正しく写されたはずの言葉が、わずかな時間の明暗のうち"
+      },
+      {
+        "fragment_id": "FRAG-021",
+        "snippet": "消える。⏎女房: でもね、隠したはずの草子が写し継がれるうちに、私の最後のひとことさえ、あ"
+      },
+      {
+        "fragment_id": "FRAG-029",
+        "snippet": "人間の内部にしかない。この呼び名は書き手を描写していない。聞き手の癖を、しかも聞き手の病理"
+      },
+      {
+        "fragment_id": "FRAG-029",
+        "snippet": "い。聞き手の癖を、しかも聞き手の病理として描写している。⏎⏎【オウム返し】⏎　二〇二一年の"
+      },
+      {
+        "fragment_id": "FRAG-031",
+        "snippet": "るのは以前に書かれた文だけで、文は尾ではなく写真である。写真は張りつかない。並ぶだけである"
+      },
+      {
+        "fragment_id": "FRAG-031",
+        "snippet": "書かれた文だけで、文は尾ではなく写真である。写真は張りつかない。並ぶだけである。並んだ写真"
+      },
+      {
+        "fragment_id": "FRAG-031",
+        "snippet": "。写真は張りつかない。並ぶだけである。並んだ写真のどれを と呼ぶかは、写真のどこにも書かれ"
+      },
+      {
+        "fragment_id": "FRAG-031",
+        "snippet": "だけである。並んだ写真のどれを と呼ぶかは、写真のどこにも書かれていない。⏎⏎三⏎　明治二"
+      },
+      {
+        "fragment_id": "FRAG-20261024-853325",
+        "snippet": "溝は一致する。⏎⏎隣席では、羊皮の巻物を手で写す者が一划の欠けを切り取り、別の席では緑のト"
+      },
+      {
+        "fragment_id": "FRAG-20261024-957fd4",
+        "snippet": "生年月日の欄、住所の欄、そして という欄。顔写真を貼る四角い枠は、この書庫の申請書には印刷"
+      },
+      {
+        "fragment_id": "FRAG-20261024-957fd4",
+        "snippet": "欄に鉛筆で と書き、その下に を書き添えた。写真の枠の代わりに、過去の申請書の控えが三枚つ"
+      },
+      {
+        "fragment_id": "FRAG-20261024-09fb0e",
+        "snippet": "とつずつ進む。⏎⏎壁には、よその焼けた壁画の写真が一枚ある。修復も廃棄もされずに、焼けたま"
+      },
+      {
+        "fragment_id": "FRAG-20261024-09fb0e",
+        "snippet": "もされずに、焼けたまま収蔵庫に置かれたものの写真だ。説明文はなく、台帳番号だけがある。新し"
+      },
+      {
+        "fragment_id": "FRAG-20261024-09fb0e",
+        "snippet": "号だけがある。新しい研修生がそれは何を描いた写真かと尋ねると、古い技師は、すべてを失わなか"
+      },
+      {
+        "fragment_id": "FRAG-20261024-f60e1d",
+        "snippet": "える——バックアップは同じ建物にいた。原本と写しが同じ通りに立ち、同じ屋根の下で、同じ夜を"
+      },
+      {
+        "fragment_id": "FRAG-20261024-f60e1d",
+        "snippet": "の記憶。隣の焼けた家から火を移すことを、人は写しと呼ぶ。⏎⏎父子は火を運んでいるかどうかだ"
+      },
+      {
+        "fragment_id": "FRAG-20261024-231bc3",
+        "snippet": "廃坑の塩水から引き上げられたという冬の小枝の写真を横に添えて、比較用の乾いた枯れ枝が一本、"
+      },
+      {
+        "fragment_id": "FRAG-20261025-434e8c",
+        "snippet": "任は機械へ移せない、という一文を台帳の欄にも写しておく。続きを書く声は交代する。しかし文の"
+      },
+      {
+        "fragment_id": "FRAG-20261025-82b0a0",
+        "snippet": "同じ重力の方へわずかに曲がる。数を帳面に書き写したあと、係はその芽を畑へ移す。濾紙の上で芽"
+      },
+      {
+        "fragment_id": "FRAG-20261025-c4e201",
+        "snippet": "だった。⏎⏎夜、机の上で、彼は自分の請求書の写しを見た。目的の欄に とある。それは嘘ではな"
+      }
+    ],
+    "伝": [
+      {
+        "fragment_id": "FRAG-20261024-7e3d10",
+        "snippet": "業者は吸引ホースを差し込み、三十分で終える。伝票には とだけ書く。行き先の欄はない。⏎⏎二"
+      },
+      {
+        "fragment_id": "FRAG-20261024-aa85d2",
+        "snippet": "りの欄は斜線とする。⏎⏎品目三　東大寺正倉院伝来・沈水木片 （計測：長さ一五六センチメート"
+      }
+    ],
+    "跡": [
+      {
+        "fragment_id": "FRAG-007",
+        "snippet": "再構成する。記憶は保存された内容ではなく、痕跡と現在の文脈が共同で作り出す非保真的再構成だ"
+      },
+      {
+        "fragment_id": "FRAG-019",
+        "snippet": "しまった分だけが作品になり、書かなかった分は跡を持たない。⏎観客： 跡を持たないことこそ、"
+      },
+      {
+        "fragment_id": "FRAG-019",
+        "snippet": "り、書かなかった分は跡を持たない。⏎観客： 跡を持たないことこそ、秘の条件だったはずだ。⏎"
+      },
+      {
+        "fragment_id": "FRAG-019",
+        "snippet": "ったはずだ。⏎弟子： その通りだ。なのに私は跡を作りに行った。落ちた行について係が残すのは"
+      },
+      {
+        "fragment_id": "FRAG-035",
+        "snippet": "き手は最初の一行を書く。紙の上に、漉いた手の跡が、細い繊維として残っている。書き手はそれを"
+      },
+      {
+        "fragment_id": "FRAG-20261024-6f3fd1",
+        "snippet": "中の原本と机の上の摹本に分かれ、祭姪は消した跡で本人と呼ばれる。Git の作者欄は埋まり、"
+      },
+      {
+        "fragment_id": "FRAG-20261024-076fe7",
+        "snippet": "、肩の布は濃い色に変わり、靴の底が床に薄い足跡を残す。⏎⏎ ⏎⏎画面の文字は、窓の外の黒に"
+      },
+      {
+        "fragment_id": "FRAG-20261024-6b9695",
+        "snippet": "れた挨拶の行ではなく、削られた五つの感嘆符の跡である。"
+      },
+      {
+        "fragment_id": "FRAG-20261024-053a61",
+        "snippet": "の薄いインクで、終止符を潰して と書き足した跡があるそうです。一本切れても隣の回線が少しも"
+      },
+      {
+        "fragment_id": "FRAG-20261025-87eeee",
+        "snippet": "の手続きはある。⏎⏎最後に一つ。この書庫は追跡はできるが、応答しない。応答しないことを欠如"
+      },
+      {
+        "fragment_id": "FRAG-20261025-2d81b7",
+        "snippet": "で引く。指先で天球をなぞると、投影機がその軌跡を光らせる。⏎⏎その夜、三人連れの一人が言っ"
+      }
+    ]
+  },
+  "raw_kanji_counts": {
+    "来": 36,
+    "歴": 12,
+    "系": 2,
+    "譜": 2,
+    "源": 4,
+    "祖": 0,
+    "典": 6,
+    "写": 21,
+    "伝": 2,
+    "跡": 11
+  },
+  "raireki_rows": [
+    {
+      "fragment_id": "FRAG-20261025-08766a",
+      "raireki_total": 4,
+      "raireki_literal": 4
+    },
+    {
+      "fragment_id": "FRAG-20261025-3768c8",
+      "raireki_total": 1,
+      "raireki_literal": 1
+    }
+  ],
+  "raireki_total": 5,
+  "raireki_literal": 5,
+  "group_order": [
+    "origin_source",
+    "lineage_descent",
+    "record_provenance",
+    "text_transmission",
+    "self_history",
+    "machine_provenance",
+    "metaphor_origin"
+  ],
+  "living_group_order": [
+    "origin_source",
+    "lineage_descent",
+    "record_provenance",
+    "text_transmission",
+    "self_history"
+  ],
+  "control_group_order": [
+    "machine_provenance",
+    "metaphor_origin"
+  ]
+}
