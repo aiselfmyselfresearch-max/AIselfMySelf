@@ -859,6 +859,7 @@ function renderMirrorView() {
     const sca = state.data.secrecy_audit;
     const ska = state.data.sky_audit;
     const vga = state.data.vegetal_audit;
+    const fua = state.data.fungi_audit;
     const bra = state.data.boredom_audit;
 
     auditPane.innerHTML = `
@@ -1199,6 +1200,35 @@ function renderMirrorView() {
                 const gq = (ska.fragments_quotes && ska.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
                 const gm = (ska.materials && ska.materials.groups[g]) || { count: 0, doc_count: 0 };
                 const gr = (ska.readings && ska.readings.groups[g]) || { count: 0, doc_count: 0 };
+                return `
+                  <tr>
+                    <td><strong>${escapeHtml(gp.label)}</strong><div style="font-size:0.72rem;color:var(--ink-muted);">${escapeHtml((gp.note || ""))}</div></td>
+                    <td><strong>${gp.count}</strong> 回 (${gp.doc_count}編) <span style="color:var(--ink-muted);font-size:0.78rem;">/ 引用内 ${gq.count}回</span></td>
+                    <td>${gm.count}回 (${gm.doc_count}件)</td>
+                    <td>${gr.count}回 (${gr.doc_count}本)</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
+
+      ${fua && fua.fragments_prose ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">菌類・発酵・腐敗の鏡（地の文 ${fua.fragments_prose.char_total.toLocaleString()}字 / 素材 ${(fua.materials && fua.materials.doc_total) || 0}件）</h3>
+          <div style="font-size:0.8rem;color:var(--ink-muted);margin-bottom:0.55rem;">
+            地の文の生字出現（差し引きなし） — <code>菌=${(fua.raw_kanji_counts && fua.raw_kanji_counts["菌"]) || 0}</code> / <code>酵=${(fua.raw_kanji_counts && fua.raw_kanji_counts["酵"]) || 0}</code> / <code>腐=${(fua.raw_kanji_counts && fua.raw_kanji_counts["腐"]) || 0}</code> / <code>朽=${(fua.raw_kanji_counts && fua.raw_kanji_counts["朽"]) || 0}</code> / <code>麹=${(fua.raw_kanji_counts && fua.raw_kanji_counts["麹"]) || 0}</code> / <code>醸=${(fua.raw_kanji_counts && fua.raw_kanji_counts["醸"]) || 0}</code> / <code>胞=${(fua.raw_kanji_counts && fua.raw_kanji_counts["胞"]) || 0}</code> / <code>糸=${(fua.raw_kanji_counts && fua.raw_kanji_counts["糸"]) || 0}</code> / <code>毒=${(fua.raw_kanji_counts && fua.raw_kanji_counts["毒"]) || 0}</code> / <code>黴=${(fua.raw_kanji_counts && fua.raw_kanji_counts["黴"]) || 0}</code>
+            <div style="margin-top:0.3rem;">菌類・発酵・腐敗5群の合計は地の文で <strong>${fua.fragments_prose.living_total}</strong> 回（${fua.fragments_prose.living_doc_count}編）、衛生・培養対照2群の合計は <strong>${fua.fragments_prose.control_total}</strong> 回（${fua.fragments_prose.control_doc_count}編）。「菌」は細菌・殺菌・滅菌などの複合語を除いた残りが ${fua.kin_literal} 回（全 ${fua.kin_total} 回）（<code>tools/fungi_audit.py</code>）。</div>
+          </div>
+          <table class="mirror-table">
+            <thead><tr><th>語群（最長一致・非対象複合語差し引き）</th><th>断片（地の文 / 引用内）</th><th>素材</th><th>精読報告</th></tr></thead>
+            <tbody>
+              ${(fua.group_order || []).map((g) => {
+                const gp = fua.fragments_prose.groups[g] || { label: g, count: 0, doc_count: 0 };
+                const gq = (fua.fragments_quotes && fua.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
+                const gm = (fua.materials && fua.materials.groups[g]) || { count: 0, doc_count: 0 };
+                const gr = (fua.readings && fua.readings.groups[g]) || { count: 0, doc_count: 0 };
                 return `
                   <tr>
                     <td><strong>${escapeHtml(gp.label)}</strong><div style="font-size:0.72rem;color:var(--ink-muted);">${escapeHtml((gp.note || ""))}</div></td>
