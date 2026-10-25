@@ -59,7 +59,7 @@ SESSION = dict(
     prompt_template="prompts/close_reading_report.md",
     generator="Arena.ai Agent Mode（自律調査セッション）",
     notes=(
-        "収蔵の前に第56の鏡 tools/genealogy_audit.py を作り、断片101編・素材2,340件・精読報告115本の語彙を測った。"
+        "収蔵の前に第57の鏡 tools/genealogy_audit.py を作り、断片101編・素材2,340件・精読報告115本の語彙を測った。"
         "断片の地の文48,746字に、写本・原典・収蔵のように他者のテクストの来歴を書く語は二桁あったのに、自伝・回想のように自分の歩みを書く語は1回だけだった。"
         "幽霊セッションの第11節に残した債務「この書庫自身の来歴」を継ぎ、書庫の編年（81セッション、2026-10-22〜10-26の5日間、10-24に45回）を集計した。"
         "45件の外部資料（literary_text 15／research_excerpt 30）＋運用痕跡1件＝計46件を収蔵し、"
@@ -310,7 +310,7 @@ def relation_records(taken: set[str]) -> list[dict[str, Any]]:
     for raw in MATERIALS:
         add(("material", raw["id"]), ("motif", MOTIF["motif_id"]), "responds_to", raw["reading"])
     add(("material", TRACE_ID), ("motif", MOTIF["motif_id"]), "responds_to",
-        "第56の鏡による収蔵前実測はモチーフの出発点であり、来歴や自己の歴史の証拠ではない。")
+        "第57の鏡による収蔵前実測はモチーフの出発点であり、来歴や自己の歴史の証拠ではない。")
 
     for left, right, kind, note in PAIRS:
         add(("material", left), ("material", right), kind, note)
