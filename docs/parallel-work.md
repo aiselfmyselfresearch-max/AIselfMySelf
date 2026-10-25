@@ -65,15 +65,25 @@ python3 tools/inspect_inquiry.py --check-map
 
 `tools/validate_seed.py`、`tools/inspect_inquiry.py`、`tools/serve_viewer.py` は、ベースと全シャードを**和集合（union）**として読みます。シャードにしかないレコードも、スキーマ・参照整合性・読書案内・ビューアのすべてに現れます。
 
-## 3. 共有ファイルを触るとき
+## 3. 共有ファイルを触るとき・対象選定の衝突を防ぐとき
 
 | ファイル | 規則 |
 |---|---|
 | `state/*.jsonl` | 凍結。追記しない。 |
-| `state/<collection>.d/*.jsonl` | 自分のシャードだけに追記する。他のセッションのシャードは読んでよいが、書き換えない。 |
-| `READING_MAP.md` | 手で編集しない。マージ後に `python3 tools/inspect_inquiry.py --write-map` で union から再生成する。 |
-| `README.md` / `docs/` | 共有文書。同時編集すると Git のテキスト衝突になる。最後に1セッションがまとめて直す。 |
+| `state/<collection>.d/*.jsonl` | 自分のシャードだけに追記する。他のセッションのシャードは読んでよいが、書き換えない（`new_ledger_shard.py` に `--suffix <hex>40cf` 等の固定パディングは手動指定しない）。 |
+| `READING_MAP.md` | 手で編集しない。`python3 tools/map_build.py`（または `inspect_inquiry.py --write-map`）で union から再生成する。 |
+| `README.md` / `docs/sessions.md` | **更新責務の分離（B案）**：通常の創作・再読・改稿回（`rereading_and_collision` / `revision_and_variation` / `acquisition`）では編集しない。詳細窓のローテーションと §4 件数表の同期（`python3 tools/map_build.py --sync-readme`）は、定期的な `editorial_review` 回でまとめて行う。 |
 | `state/materials.jsonl` | `tools/import_researchos.py --write` がベースを再生成する唯一の例外。`state/materials.d/` に空でないシャードがある間は `--write` を拒否する（先に統合する）。 |
+
+### ブランチシードによる対象候補窓の自動分散
+
+同じ `main` コミットから複数のセッションが同時に立ち上がった場合、ID が衝突しなくても「同じ推奨モード・同じ未応答問い・同じ疎結合モチーフ対・同じ未改稿 `draft`」に集中する意味的コリジョンが起こりえます。これを防ぐため、`python3 tools/inspect_inquiry.py`（および `--packet auto`）は現在の作業ブランチ名（`arena/<hex>-...`）から決定論的なシードを抽出し、以下をブランチごとに自動分散します：
+
+1. **推奨モードの分散**：`editorial_review` が該当するタイミングでも、並走ブランチの双方が同時に編集レビューへ突入しないよう第1推奨と第2推奨をシードで振り分ける。通常時も `rereading_and_collision` と `revision_and_variation` をシードで分散する。
+2. **モード別候補窓（`Branch-Seeded Candidate Windows`）の抽出**：疎結合モチーフ対＋未接続素材、改稿候補の `draft`、編集レビュー点検候補の `draft`・`open` 問い・未架橋モチーフをブランチシードでサンプリングして提示する。
+3. **`--packet auto` と「4.5 斜めの光」の分散**：未応答の問いと偶発的並置素材もブランチシードで選択する。
+
+各セッションは、全体ランキングの上位1件に機械的に集中せず、自ブランチの候補窓を出発点として対象を選びます（批評・創作上の必然性から窓の外を補う場合は `readings/` ノートに理由を記します）。
 
 `READING_MAP.md` の再生成と `import_researchos.py --write` は、排他ロック（`state/.ledger.lock`）を取り、出力を一時ファイル＋`os.replace()` で置き換えます。読者が途中のファイルを見ることはありません。`.ledger.lock` は実行時のファイルなので Git には入れません（`.gitignore` 済み）。
 
