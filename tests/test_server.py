@@ -78,8 +78,11 @@ class ServerTests(unittest.TestCase):
             expected_fragments = ledger_record_count(ROOT, "fragments")
             self.assertEqual(len(payload["fragments"]), expected_fragments)
             self.assertIn("passion_audit", payload)
+            self.assertIn("vegetal_audit", payload)
             self.assertIn("metabolism_audit", payload)
             self.assertEqual(payload["passion_audit"]["fragments"], expected_fragments)
+            self.assertEqual(payload["vegetal_audit"]["fragment_count"], expected_fragments)
+            self.assertEqual(len(payload["vegetal_audit"]["group_order"]), 7)
             self.assertEqual(len(payload["passion_audit"]["group_order"]), 5)
             self.assertEqual(
                 payload["metabolism_audit"]["material_count"],

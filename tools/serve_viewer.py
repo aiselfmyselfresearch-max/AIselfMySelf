@@ -8,8 +8,10 @@ Binds to 0.0.0.0 by default for browser preview compatibility.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import mimetypes
+import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -20,6 +22,7 @@ from abjection_audit import measure_abjection_audit
 from war_audit import measure_war_audit
 from secrecy_audit import measure_secrecy_audit
 from sky_audit import measure_sky_audit
+from vegetal_audit import measure_vegetal_audit
 from currency_audit import measure_currency_audit
 from eros_audit import measure_eros_audit
 from signature_audit import measure_signature_audit
@@ -125,7 +128,23 @@ def read_readings_list() -> list[dict[str, str]]:
     return notes
 
 
-def _read_archive_payload_once() -> dict[str, object]:
+_DERIVED_LOCK = threading.Lock()
+_DERIVED_CACHE: tuple[str, dict[str, object], bytes] | None = None
+
+
+def _readings_signature(readings_dir: Path) -> list[tuple[str, int, int]]:
+    sig: list[tuple[str, int, int]] = []
+    if readings_dir.is_dir():
+        for path in sorted(readings_dir.glob("*.md")):
+            try:
+                st = path.stat()
+                sig.append((path.name, st.st_size, st.st_mtime_ns))
+            except OSError:
+                continue
+    return sig
+
+
+def _load_raw_collections() -> tuple[dict[str, object], str, Path]:
     errors: list[str] = []
     payload: dict[str, object] = {}
     for name, (filename, id_key, _) in COLLECTIONS.items():
@@ -133,23 +152,74 @@ def _read_archive_payload_once() -> dict[str, object]:
         payload[name] = list(records.values())
     if errors:
         raise RuntimeError("; ".join(errors))
-    fragments = payload["fragments"]  # type: ignore[assignment]
-    relations = payload["relations"]  # type: ignore[assignment]
-    payload["voice_audit"] = compute_voice_audit(fragments, relations, top=16, gram=6)  # type: ignore[arg-type]
-    pa = measure_passion_audit(fragments)  # type: ignore[arg-type]
-    pa["group_order"] = list(PASSION_GROUPS.keys())
-    payload["passion_audit"] = pa
-    payload["eros_audit"] = measure_eros_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    payload["currency_audit"] = measure_currency_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    payload["signature_audit"] = measure_signature_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    payload["prayer_audit"] = measure_prayer_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    payload["abjection_audit"] = measure_abjection_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    payload["war_audit"] = measure_war_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    payload["secrecy_audit"] = measure_secrecy_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    payload["sky_audit"] = measure_sky_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    payload["metabolism_audit"] = compute_metabolism_snapshot(payload)
-    payload["readings"] = read_readings_list()
-    return payload
+
+    readings_dir = ROOT / "readings"
+    digest_input = json.dumps(
+        {
+            "root": str(ROOT),
+            "collections": payload,
+            "readings_sig": _readings_signature(readings_dir),
+        },
+        ensure_ascii=False,
+        sort_keys=True,
+    ).encode("utf-8")
+    cache_key = hashlib.sha256(digest_input).hexdigest()
+    return payload, cache_key, readings_dir
+
+
+def _ensure_derived(
+    payload: dict[str, object], cache_key: str, readings_dir: Path
+) -> tuple[dict[str, object], bytes]:
+    global _DERIVED_CACHE
+    with _DERIVED_LOCK:
+        if _DERIVED_CACHE is not None and _DERIVED_CACHE[0] == cache_key:
+            payload.update(_DERIVED_CACHE[1])
+            return payload, _DERIVED_CACHE[2]
+
+        fragments = payload["fragments"]  # type: ignore[assignment]
+        relations = payload["relations"]  # type: ignore[assignment]
+        readings_docs = [
+            (path.name, path.read_text(encoding="utf-8"))
+            for path in sorted(readings_dir.glob("*.md"))
+        ]
+        derived: dict[str, object] = {}
+        derived["voice_audit"] = compute_voice_audit(fragments, relations, top=16, gram=6)  # type: ignore[arg-type]
+        pa = measure_passion_audit(fragments)  # type: ignore[arg-type]
+        pa["group_order"] = list(PASSION_GROUPS.keys())
+        derived["passion_audit"] = pa
+        derived["eros_audit"] = measure_eros_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["currency_audit"] = measure_currency_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["signature_audit"] = measure_signature_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["prayer_audit"] = measure_prayer_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["abjection_audit"] = measure_abjection_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["war_audit"] = measure_war_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["secrecy_audit"] = measure_secrecy_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["sky_audit"] = measure_sky_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["vegetal_audit"] = measure_vegetal_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        payload.update(derived)
+        derived["metabolism_audit"] = compute_metabolism_snapshot(payload)
+        derived["readings"] = [
+            {
+                "filename": name,
+                "title": next(
+                    (line[2:].strip() for line in content.splitlines() if line.startswith("# ")),
+                    name,
+                ),
+                "content": content,
+            }
+            for name, content in readings_docs
+        ]
+        payload["metabolism_audit"] = derived["metabolism_audit"]
+        payload["readings"] = derived["readings"]
+        encoded = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        _DERIVED_CACHE = (cache_key, derived, encoded)
+        return payload, encoded
+
+
+def _read_archive_payload_once() -> dict[str, object]:
+    payload, cache_key, readings_dir = _load_raw_collections()
+    full_payload, _encoded = _ensure_derived(payload, cache_key, readings_dir)
+    return full_payload
 
 
 def read_archive_payload(retries: int = 6, delay: float = 0.02) -> dict[str, object]:
