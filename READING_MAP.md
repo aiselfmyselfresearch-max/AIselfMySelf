@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：300 件（初期シード 5 件 ＋ 派生 295 件）
 - **モチーフ（Motifs）**：57 件
-- **対話素材（Materials）**：2340 件（research_excerpt 747 ／ literary_text 1536 ／ project_trace 56 ／ conversation_trace 1）
+- **対話素材（Materials）**：2341 件（research_excerpt 747 ／ literary_text 1536 ／ project_trace 57 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：101 編（selected 17 ／ draft 84）
-- **解釈的関係（Relations）**：3996 件
-- **探究セッション（Sessions）**：81 回
+- **解釈的関係（Relations）**：3999 件
+- **探究セッション（Sessions）**：82 回
 
 ## 1. 問いを横断する 57 つのモチーフ
 
@@ -487,7 +487,7 @@
 | `FRAG-20261026-b73a9a` | 漬物蔵の朝、図書室の黴 | draft | scene | third_person |
 | `FRAG-20261026-7b2ac0` | 糸を持たない記述のための覚え書き——培養という言葉の前で | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（2340 件・詳細は map/3*.md）
+## 4. 対話素材（2341 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -2831,6 +2831,7 @@
 | `MAT-LIT-20261026-109c81` | literary_text | 編者要約『「発酵する文化」という言い方——社会の変化を発酵に喩えることの効力と危うさ』（2023） |
 | `MAT-LIT-20261026-e6e5f7` | literary_text | 編者要約『スローフードと発酵の時間——速さに対抗する「待つ」技術としての発酵』（2022） |
 | `MAT-TRC-20261026-fungi` | project_trace | AIselfMySelf Archive『運用痕跡：断片97編の地の文に発酵0回・菌根0回、菌類・発酵・腐敗5群12回に対し衛生・培養対照群1回——菌類の鏡による収蔵前実測』（2… |
+| `MAT-TRC-20261026-selfv2` | project_trace | AIselfMySelf Archive『自己の測量、二度目——八十一回の記録のあとで（第二版暫定報告・運用痕跡）』（2026） |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261026-6f7122・全文は map/50-sessions-*.md）
 
@@ -2916,19 +2917,20 @@
 | `SESSION-20261025-9c4e7a` | 2026-10-25 | `Q-20261025-4c8a17`, `Q-20261025-b05e3d`, `Q-20261025-71d9f2`, `Q-20261025-e6402b`, `Q-20261025-9a37c8` | `FRAG-20261025-2d81b7`, `FRAG-20261025-c90813` | `Q-20261025-4c8a17`, `Q-20261025-b05e3d`, `Q-20261025-71d9f2`, `Q-20261025-e6402b`, `Q-20261025-9a37c8` |
 | `SESSION-20261025-c3a7b1` | 2026-10-25 | `Q-002`, `Q-023`, `Q-20261025-5e2c11`, `Q-20261025-8d40a6`, `Q-20261025-31f7cb`, `Q-20261025-a6c0d3`, `Q-20261025-2b95e4` | `FRAG-20261025-c4e201`, `FRAG-20261025-9b73df` | `Q-20261025-5e2c11`, `Q-20261025-8d40a6`, `Q-20261025-31f7cb`, `Q-20261025-a6c0d3`, `Q-20261025-2b95e4` |
 | `SESSION-20261025-a6a74d` | 2026-10-25 | `Q-002`, `Q-085`, `Q-20261025-c86e99`, `Q-20261025-a12444`, `Q-20261025-b0a147`, `Q-20261025-636287`, `Q-20261025-050954` | `FRAG-20261025-766db3`, `FRAG-20261025-434e8c` | `Q-20261025-c86e99`, `Q-20261025-a12444`, `Q-20261025-b0a147`, `Q-20261025-636287`, `Q-20261025-050954` |
+| `SESSION-20261026-b20771` | 2026-10-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261026-6f7122` | 2026-10-26 | `Q-20261026-85b4a2`, `Q-20261026-79cd5b`, `Q-20261026-29dd83`, `Q-20261026-1bacfc`, `Q-20261026-34dfdf` | `FRAG-20261026-b73a9a`, `FRAG-20261026-7b2ac0` | `Q-20261026-85b4a2`, `Q-20261026-79cd5b`, `Q-20261026-29dd83`, `Q-20261026-1bacfc`, `Q-20261026-34dfdf` |
 
-## 6. 解釈的関係（3996 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（3999 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 432 |
 | 共鳴 (echo) | 1247 |
 | 切断・割り込み (interrupts) | 81 |
-| 未解決のまま開く (leaves_open) | 651 |
+| 未解決のまま開く (leaves_open) | 652 |
 | 比喩的共鳴 (metaphorically_resonates) | 82 |
-| 枠組みの組み替え (reframes) | 233 |
-| 応答 (responds_to) | 1116 |
+| 枠組みの組み替え (reframes) | 234 |
+| 応答 (responds_to) | 1117 |
 | 変奏・変形 (transforms) | 154 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -2973,7 +2975,7 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 47 | 80,814 |
-| `map/32-materials-trace-01.md` | 57 | 134,897 |
+| `map/32-materials-trace-01.md` | 58 | 137,215 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
 | `map/40-relations-03.md` | 500 | 112,564 |
@@ -2981,8 +2983,8 @@
 | `map/40-relations-05.md` | 500 | 117,582 |
 | `map/40-relations-06.md` | 500 | 115,877 |
 | `map/40-relations-07.md` | 500 | 140,108 |
-| `map/40-relations-08.md` | 496 | 129,874 |
+| `map/40-relations-08.md` | 499 | 130,901 |
 | `map/50-sessions-01.md` | 50 | 44,267 |
-| `map/50-sessions-02.md` | 31 | 33,182 |
+| `map/50-sessions-02.md` | 32 | 34,084 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
