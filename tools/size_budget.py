@@ -1,133 +1,461 @@
 #!/usr/bin/env python3
-"""Check size budgets for the tracked files that grow with every session.
+"""Check tracked file, shard-directory, and tool hygiene budgets.
 
-背景（docs/map-architecture.md §7）:
-この書庫では「単一ファイルが全成長を吸収する」ことが READING_MAP.md 36.9MB の
-事故で確認された。予防のため、同じ病になりやすい追跡ファイルに予算を置く。
+Covers:
+  1. Individual tracked files (`README.md`, `READING_MAP.md`, frozen `state/*.jsonl`).
+  2. Shard directories (`state/*.d/`): aggregate byte budgets and shard-file counts.
+  3. Auxiliary directories (`readings/`, `tools/`): total non-cache byte budgets.
+  4. Repository hygiene guards:
+     - `tools/_*` temporary scratch scripts are strictly forbidden (hard limit 0).
+     - `tools/*_audit*.py` count is capped to freeze per-theme audit proliferation
+       in favour of the dictionary-driven `tools/lexicon_audit.py`.
 
-予算（バイト）::
+Default mode exits 0 on soft warnings and 1 on hard-limit violations (including
+any `tools/_*` scratch script).  Pass ``--strict`` to treat soft warnings as
+failures as well.
 
-    README.md               soft 150,000    hard 300,000
-    READING_MAP.md          soft 2,000,000   hard 5,000,000
-    state/<collection>.jsonl（各モノリス） soft 5,000,000  hard 10,000,000
-
-- soft 超過 : WARN を表示。README はローテーション（docs/sessions.md へ移動）の、
-  モノリスは生成物化（shard を正本に）の合図。--strict では exit 1。
-- hard 超過 : 常に exit 1（CI が停止）。移行が済むまでマージしない。
-
-リポジトリ全体のサイズ（git pack）は参考値として表示するのみ。指針は 1GB
-（docs/map-architecture.md §6 参照）。
-
-使い方::
-
-    python3 tools/size_budget.py            # 予算どおり（hard 超過のみ失敗）
-    python3 tools/size_budget.py --strict   # WARN も失敗にする
+Usage:
+  python3 tools/size_budget.py            # report; fail on hard limits
+  python3 tools/size_budget.py --strict   # fail on soft limits too
+  python3 tools/size_budget.py --json     # machine-readable report
 """
 from __future__ import annotations
 
 import argparse
-import subprocess
+import json
 import sys
+from dataclasses import asdict, dataclass
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+ROOT = Path(__file__).resolve().parents[1]
+MIB = 1024 * 1024
 
-from validate_seed import ROOT
 
-# (表示名, パス（root からの相対。glob 可）, soft, hard)
-FILE_BUDGETS: tuple[tuple[str, str, int, int], ...] = (
-    ("README.md", "README.md", 150_000, 300_000),
-    ("READING_MAP.md", "READING_MAP.md", 2_000_000, 5_000_000),
-    ("state/*.jsonl（モノリス）", "state/*.jsonl", 5_000_000, 10_000_000),
+@dataclass(frozen=True)
+class Budget:
+    rel_path: str
+    soft_bytes: int
+    hard_bytes: int
+    remedy: str
+
+
+@dataclass(frozen=True)
+class ShardBudget:
+    rel_dir: str
+    soft_bytes: int
+    hard_bytes: int
+    soft_shards: int
+    hard_shards: int
+    remedy: str
+
+
+@dataclass(frozen=True)
+class DirBudget:
+    rel_dir: str
+    soft_bytes: int
+    hard_bytes: int
+    remedy: str
+
+
+BUDGETS: tuple[Budget, ...] = (
+    Budget(
+        "README.md",
+        soft_bytes=32 * 1024,
+        hard_bytes=96 * 1024,
+        remedy="Move older session detail verbatim to docs/sessions.md; keep only the recent window in README.md",
+    ),
+    Budget(
+        "READING_MAP.md",
+        soft_bytes=2 * MIB,
+        hard_bytes=5 * MIB,
+        remedy="Tighten excerpts in tools/map_build.py (build_index); full bodies belong in untracked map/",
+    ),
+    Budget(
+        "state/materials.jsonl",
+        soft_bytes=10 * MIB,
+        hard_bytes=25 * MIB,
+        remedy="Keep new records in state/materials.d/ shards and avoid bulk material imports",
+    ),
+    Budget(
+        "state/relations.jsonl",
+        soft_bytes=4 * MIB,
+        hard_bytes=15 * MIB,
+        remedy="Write new edges to state/relations.d/ shards",
+    ),
+    Budget(
+        "state/fragments.jsonl",
+        soft_bytes=4 * MIB,
+        hard_bytes=15 * MIB,
+        remedy="Write new fragments to state/fragments.d/ shards",
+    ),
+    Budget(
+        "state/questions.jsonl",
+        soft_bytes=2 * MIB,
+        hard_bytes=10 * MIB,
+        remedy="Write new questions to state/questions.d/ shards",
+    ),
+    Budget(
+        "state/sessions.jsonl",
+        soft_bytes=2 * MIB,
+        hard_bytes=10 * MIB,
+        remedy="Write new session logs to state/sessions.d/ shards",
+    ),
+    Budget(
+        "state/motifs.jsonl",
+        soft_bytes=1 * MIB,
+        hard_bytes=5 * MIB,
+        remedy="Cross-pollinate existing motifs instead of minting 1-session=1-motif records",
+    ),
+    Budget(
+        "state/errata.jsonl",
+        soft_bytes=1 * MIB,
+        hard_bytes=5 * MIB,
+        remedy="Append new errata to state/errata.d/ shards",
+    ),
+    Budget(
+        "state/read_log.jsonl",
+        soft_bytes=2 * MIB,
+        hard_bytes=10 * MIB,
+        remedy="Keep read_log rows in state/read_log.d/ shards",
+    ),
+    Budget(
+        "state/editorial_decisions.jsonl",
+        soft_bytes=1 * MIB,
+        hard_bytes=5 * MIB,
+        remedy="Keep editorial status overlays in state/editorial_decisions.d/ shards",
+    ),
 )
 
-REPO_SOFT = 500_000_000  # 参考値：GitHub 指針は 1GB 未満推奨
+SHARD_BUDGETS: tuple[ShardBudget, ...] = (
+    ShardBudget(
+        "state/materials.d",
+        soft_bytes=10 * MIB,
+        hard_bytes=20 * MIB,
+        soft_shards=80,
+        hard_shards=160,
+        remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
+    ),
+    ShardBudget(
+        "state/relations.d",
+        soft_bytes=4 * MIB,
+        hard_bytes=10 * MIB,
+        soft_shards=80,
+        hard_shards=160,
+        remedy="Compact old state/relations.d/ shards into frozen base in a dedicated maintenance PR",
+    ),
+    ShardBudget(
+        "state/read_log.d",
+        soft_bytes=4 * MIB,
+        hard_bytes=10 * MIB,
+        soft_shards=80,
+        hard_shards=160,
+        remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
+    ),
+    ShardBudget(
+        "state/fragments.d",
+        soft_bytes=4 * MIB,
+        hard_bytes=10 * MIB,
+        soft_shards=80,
+        hard_shards=160,
+        remedy="Compact old state/fragments.d/ shards when shard count exceeds soft budget",
+    ),
+    ShardBudget(
+        "state/questions.d",
+        soft_bytes=2 * MIB,
+        hard_bytes=8 * MIB,
+        soft_shards=80,
+        hard_shards=160,
+        remedy="Pause redundant leaf questions via editorial_decisions; compact shards periodically",
+    ),
+    ShardBudget(
+        "state/sessions.d",
+        soft_bytes=2 * MIB,
+        hard_bytes=8 * MIB,
+        soft_shards=80,
+        hard_shards=160,
+        remedy="Compact old state/sessions.d/ shards in a maintenance PR",
+    ),
+    ShardBudget(
+        "state/motifs.d",
+        soft_bytes=1 * MIB,
+        hard_bytes=4 * MIB,
+        soft_shards=80,
+        hard_shards=160,
+        remedy="Freeze 1-session=1-motif creation; reuse and bridge existing motifs",
+    ),
+    ShardBudget(
+        "state/errata.d",
+        soft_bytes=1 * MIB,
+        hard_bytes=4 * MIB,
+        soft_shards=80,
+        hard_shards=160,
+        remedy="Keep errata shards concise",
+    ),
+    ShardBudget(
+        "state/editorial_decisions.d",
+        soft_bytes=1 * MIB,
+        hard_bytes=4 * MIB,
+        soft_shards=80,
+        hard_shards=160,
+        remedy="Record concise append-only editorial decisions",
+    ),
+)
+
+DIR_BUDGETS: tuple[DirBudget, ...] = (
+    DirBudget(
+        "readings",
+        soft_bytes=15 * MIB,
+        hard_bytes=30 * MIB,
+        remedy="Avoid verbose boilerplate acquisition reports; focus readings/ on close reading and editorial notes",
+    ),
+    DirBudget(
+        "tools",
+        soft_bytes=2 * MIB,
+        hard_bytes=5 * MIB,
+        remedy="Never commit data-embedded scripts in tools/; use tools/lexicon_audit.py instead of new *_audit.py",
+    ),
+)
+
+AUDIT_SCRIPT_SOFT_COUNT = 57
+AUDIT_SCRIPT_HARD_COUNT = 60
 
 
-def check_files(root: Path) -> tuple[list[str], bool, bool]:
-    """Return (report lines, any_warn, any_fail) for every budgeted file."""
-    lines: list[str] = []
-    any_warn = False
-    any_fail = False
-    for label, pattern, soft, hard in FILE_BUDGETS:
-        matches = sorted(root.glob(pattern)) if any(ch in pattern for ch in "*?[") else [root / pattern]
-        if not matches:
-            lines.append(f"  - {label}: 対象なし（スキップ）")
-            continue
-        for path in matches:
-            if not path.is_file():
-                continue
-            size = path.stat().st_size
-            if size >= hard:
-                status = "FAIL"
-                any_fail = True
-            elif size >= soft:
-                status = "WARN"
-                any_warn = True
-            else:
-                status = "OK"
-            try:
-                shown = str(path.relative_to(root))
-            except ValueError:
-                shown = path.name
-            lines.append(
-                "  - {label}: {size:,} B / soft {soft:,} / hard {hard:,} → {status}".format(
-                    label=shown,
-                    size=size,
-                    soft=soft,
-                    hard=hard,
-                    status=status,
+@dataclass
+class CheckResult:
+    rel_path: str
+    exists: bool
+    size_bytes: int
+    soft_bytes: int
+    hard_bytes: int
+    status: str  # "ok" | "warn" | "fail" | "missing"
+    remedy: str
+    file_count: int | None = None
+    soft_count: int | None = None
+    hard_count: int | None = None
+
+
+def _fmt_bytes(num_bytes: int) -> str:
+    if num_bytes >= MIB:
+        return f"{num_bytes / MIB:.2f} MiB ({num_bytes:,} B)"
+    if num_bytes >= 1024:
+        return f"{num_bytes / 1024:.1f} KiB ({num_bytes:,} B)"
+    return f"{num_bytes} B"
+
+
+def _status_for_pair(
+    val: int, soft: int, hard: int, count: int | None = None, soft_c: int | None = None, hard_c: int | None = None
+) -> str:
+    if val > hard or (count is not None and hard_c is not None and count > hard_c):
+        return "fail"
+    if val > soft or (count is not None and soft_c is not None and count > soft_c):
+        return "warn"
+    return "ok"
+
+
+def evaluate(root: Path = ROOT, budgets: tuple[Budget, ...] = BUDGETS) -> list[CheckResult]:
+    results: list[CheckResult] = []
+    for budget in budgets:
+        target = root / budget.rel_path
+        if not target.is_file():
+            results.append(
+                CheckResult(
+                    rel_path=budget.rel_path,
+                    exists=False,
+                    size_bytes=0,
+                    soft_bytes=budget.soft_bytes,
+                    hard_bytes=budget.hard_bytes,
+                    status="missing",
+                    remedy=budget.remedy,
                 )
             )
-    return lines, any_warn, any_fail
-
-
-def repo_pack_bytes(root: Path) -> int | None:
-    """git pack size in bytes, or None when git is unavailable."""
-    try:
-        proc = subprocess.run(
-            ["git", "-C", str(root), "count-objects", "-v"],
-            capture_output=True, text=True, timeout=30,
+            continue
+        size = target.stat().st_size
+        status = _status_for_pair(size, budget.soft_bytes, budget.hard_bytes)
+        results.append(
+            CheckResult(
+                rel_path=budget.rel_path,
+                exists=True,
+                size_bytes=size,
+                soft_bytes=budget.soft_bytes,
+                hard_bytes=budget.hard_bytes,
+                status=status,
+                remedy=budget.remedy,
+            )
         )
-    except (OSError, subprocess.SubprocessError):
-        return None
-    if proc.returncode != 0:
-        return None
-    for line in proc.stdout.splitlines():
-        if line.startswith("size-pack:"):
-            return int(line.split()[1]) * 1024
-    return None
+
+    # Shard directories (only reported/checked if state/ exists; missing .d dirs are normal -> 0 bytes / 0 shards)
+    if (root / "state").is_dir():
+        for sbudget in SHARD_BUDGETS:
+            sdir = root / sbudget.rel_dir
+            shards = sorted(sdir.glob("*.jsonl")) if sdir.is_dir() else []
+            total_bytes = sum(p.stat().st_size for p in shards)
+            count = len(shards)
+            status = _status_for_pair(
+                total_bytes,
+                sbudget.soft_bytes,
+                sbudget.hard_bytes,
+                count,
+                sbudget.soft_shards,
+                sbudget.hard_shards,
+            )
+            results.append(
+                CheckResult(
+                    rel_path=f"{sbudget.rel_dir}/",
+                    exists=sdir.is_dir(),
+                    size_bytes=total_bytes,
+                    soft_bytes=sbudget.soft_bytes,
+                    hard_bytes=sbudget.hard_bytes,
+                    status=status,
+                    remedy=sbudget.remedy,
+                    file_count=count,
+                    soft_count=sbudget.soft_shards,
+                    hard_count=sbudget.hard_shards,
+                )
+            )
+
+    # Directory aggregate byte budgets
+    for dbudget in DIR_BUDGETS:
+        ddir = root / dbudget.rel_dir
+        if not ddir.is_dir():
+            continue
+        files = [
+            p
+            for p in ddir.rglob("*")
+            if p.is_file() and "__pycache__" not in p.parts and not p.name.endswith(".pyc")
+        ]
+        total_bytes = sum(p.stat().st_size for p in files)
+        status = _status_for_pair(total_bytes, dbudget.soft_bytes, dbudget.hard_bytes)
+        results.append(
+            CheckResult(
+                rel_path=f"{dbudget.rel_dir}/",
+                exists=True,
+                size_bytes=total_bytes,
+                soft_bytes=dbudget.soft_bytes,
+                hard_bytes=dbudget.hard_bytes,
+                status=status,
+                remedy=dbudget.remedy,
+                file_count=len(files),
+            )
+        )
+
+    # Hygiene guards inside tools/
+    tools_dir = root / "tools"
+    if tools_dir.is_dir():
+        scratch_files = sorted(
+            p
+            for p in tools_dir.glob("_*")
+            if p.is_file() and p.name != "__init__.py"
+        )
+        scratch_bytes = sum(p.stat().st_size for p in scratch_files)
+        results.append(
+            CheckResult(
+                rel_path="tools/_* (scratch ban)",
+                exists=bool(scratch_files),
+                size_bytes=scratch_bytes,
+                soft_bytes=0,
+                hard_bytes=0,
+                status="fail" if scratch_files else "ok",
+                remedy=(
+                    "Delete temporary scratch scripts from tools/_* ("
+                    + ", ".join(p.name for p in scratch_files[:5])
+                    + ("..." if len(scratch_files) > 5 else "")
+                    + "); never commit one-off session builders"
+                    if scratch_files
+                    else "Scratch scripts in tools/_* are forbidden"
+                ),
+                file_count=len(scratch_files),
+                soft_count=0,
+                hard_count=0,
+            )
+        )
+
+        audit_files = sorted(p for p in tools_dir.glob("*_audit*.py") if p.is_file())
+        audit_bytes = sum(p.stat().st_size for p in audit_files)
+        audit_count = len(audit_files)
+        audit_status = _status_for_pair(
+            0, 0, 0, audit_count, AUDIT_SCRIPT_SOFT_COUNT, AUDIT_SCRIPT_HARD_COUNT
+        )
+        results.append(
+            CheckResult(
+                rel_path="tools/*_audit*.py (freeze)",
+                exists=True,
+                size_bytes=audit_bytes,
+                soft_bytes=2 * MIB,
+                hard_bytes=5 * MIB,
+                status=audit_status,
+                remedy="Per-theme *_audit.py creation is frozen; pass dictionaries to tools/lexicon_audit.py instead",
+                file_count=audit_count,
+                soft_count=AUDIT_SCRIPT_SOFT_COUNT,
+                hard_count=AUDIT_SCRIPT_HARD_COUNT,
+            )
+        )
+
+    return results
+
+
+def print_report(results: list[CheckResult]) -> None:
+    print("=== repository size & hygiene budget report ===")
+    for item in results:
+        tag = item.status.upper()
+        if not item.exists and item.file_count is None:
+            print(f"  [{tag:7}] {item.rel_path:<30} (file not found)")
+            continue
+        count_part = ""
+        if item.file_count is not None:
+            if item.soft_count is not None and item.hard_count is not None:
+                count_part = (
+                    f"  [files: {item.file_count} / soft {item.soft_count} / hard {item.hard_count}]"
+                )
+            else:
+                count_part = f"  [files: {item.file_count}]"
+        print(
+            f"  [{tag:7}] {item.rel_path:<30} {_fmt_bytes(item.size_bytes):>22}  "
+            f"(soft {_fmt_bytes(item.soft_bytes)}, hard {_fmt_bytes(item.hard_bytes)}){count_part}"
+        )
+        if item.status in ("warn", "fail"):
+            print(f"            remedy: {item.remedy}")
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--strict", action="store_true", help="treat WARN as failure")
-    parser.add_argument("--root", type=Path, default=ROOT, help="repository root (default: this checkout)")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="exit non-zero when soft budgets are exceeded (default: warn only)",
+    )
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        help="emit machine-readable JSON instead of the text table",
+    )
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=ROOT,
+        help="repository root to inspect (for tests)",
+    )
     args = parser.parse_args(argv)
 
-    root = args.root
-    lines, any_warn, any_fail = check_files(root)
+    results = evaluate(args.root)
+    if args.json:
+        print(json.dumps([asdict(r) for r in results], ensure_ascii=False, indent=2))
+    else:
+        print_report(results)
 
-    print("size budgets:")
-    for line in lines:
-        print(line)
-
-    pack = repo_pack_bytes(root)
-    if pack is not None:
-        note = "（指針 1GB。超過時は docs/map-architecture.md §6 の留保を参照）"
-        mark = " WARN" if pack >= REPO_SOFT else ""
-        print(f"  - git pack（参考値）: {pack:,} B{mark} {note}")
-
-    if any_fail:
-        print("FAIL: hard size budget exceeded — 移行（ローテーション／生成物化）が済むまでマージしない")
+    hard_exceeded = any(r.status == "fail" for r in results)
+    soft_exceeded = any(r.status == "warn" for r in results)
+    if hard_exceeded:
+        if not args.json:
+            print("FAIL: one or more files/directories exceeded their hard size or hygiene limit", file=sys.stderr)
         return 1
-    if any_warn and args.strict:
-        print("FAIL (--strict): soft size budget exceeded — ローテーション／生成物化を検討する")
+    if args.strict and soft_exceeded:
+        if not args.json:
+            print("FAIL (--strict): one or more soft budgets were exceeded", file=sys.stderr)
         return 1
-    if any_warn:
-        print("WARN: soft size budget exceeded — ローテーション／生成物化の合図（docs/map-architecture.md §7）")
-        return 0
-    print("PASS: all size budgets are within soft limits")
+    if soft_exceeded and not args.json:
+        print("WARN: soft size budget exceeded (pass --strict to make this fatal)")
+    elif not args.json:
+        print("PASS: all size budgets are within soft limits")
     return 0
 
 

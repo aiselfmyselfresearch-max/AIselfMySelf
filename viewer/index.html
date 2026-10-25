@@ -86,15 +86,26 @@
       <div class="split-layout graph-layout">
         <div class="graph-stage-wrap">
           <div class="graph-toolbar">
+            <div style="display:flex;flex-wrap:wrap;gap:0.55rem;align-items:center;margin-bottom:0.45rem;">
+              <label for="constellation-scope" style="font-size:0.8rem;color:var(--ink-muted);font-weight:600;">表示スコープ:</label>
+              <select id="constellation-scope" aria-label="星座の表示スコープ" style="max-width:16rem;">
+                <option value="core">骨格星座（断片・モチーフ・主要問い）</option>
+                <option value="ego">選択ノードの近傍1ホップ（素材含む）</option>
+                <option value="motif">モチーフ別星座（断片・問い・代表素材）</option>
+              </select>
+              <select id="constellation-motif" aria-label="対象モチーフ" hidden style="max-width:16rem;"></select>
+              <input id="constellation-focus-input" type="search" placeholder="IDで中心指定 (例: FRAG-001, Q-081)" style="max-width:14rem;padding:0.32rem 0.55rem;font-size:0.8rem;" />
+              <span id="constellation-stats" style="font-size:0.78rem;color:var(--ink-muted);margin-left:auto;"></span>
+            </div>
             <div id="relation-filters" class="legend-group"></div>
-            <div class="graph-hint">ノードをクリックすると詳細を表示し、繋がっている関係線を強調します。</div>
+            <div class="graph-hint">ノードをクリックすると詳細を表示し、繋がっている関係線を強調します（2,400件超の素材は「選択ノードの近傍」または「モチーフ別」で局所展開できます）。</div>
           </div>
           <div class="svg-container">
             <svg id="constellation-svg" viewBox="0 0 920 760" role="img" aria-label="問い・創作断片・対話素材・セッションの関係星座図"></svg>
           </div>
         </div>
         <aside id="graph-inspector" class="reader-pane inspector-pane">
-          <div class="empty-state">左の星座マップ上のノード（断片・問い・素材・セッション）をクリックすると、本文抜粋と関係の網が表示されます。</div>
+          <div class="empty-state">左の星座マップ上のノード（断片・問い・モチーフ・素材・セッション）をクリックすると、本文抜粋と関係の網が表示されます。</div>
         </aside>
       </div>
     </section>
@@ -103,7 +114,7 @@
     <section id="view-lineage" class="view-panel" hidden>
       <div class="section-intro">
         <h2>問いの系譜ツリー</h2>
-        <p>初期の5つの問いの種（<code>human_seed</code>）や対話素材（<code>material</code>）から、各セッションと創作断片を経てどの問いが枝分かれしてきたかを辿ります。未完の問い（<code>open</code>）はそのまま次の書き手への種として開かれています。</p>
+        <p>初期の5つの問いの種（<code>human_seed</code>）や対話素材（<code>material</code>）から、各セッションと創作断片を経てどの問いが枝分かれしてきたかを辿ります。未完の問い（<code>open</code>）はそのまま次の書き手への種として開かれ、休止（<code>paused</code>）は編集レビューの判断を保持します。</p>
       </div>
       <div id="lineage-container" class="lineage-grid"></div>
     </section>
@@ -115,11 +126,14 @@
           <h2>対話素材書庫（哲学・文学・AI研究・台帳検証）</h2>
           <p id="materials-subtitle">すべての素材は「正解の根拠」ではなく、創作と省察のための対話相手として迎え入れられています。</p>
         </div>
-        <div class="pill-toggle-group" id="mat-kind-group">
-          <button class="pill-btn active" data-mat-kind="all">すべて</button>
-          <button class="pill-btn" data-mat-kind="literary_text">哲学・文学原典</button>
-          <button class="pill-btn" data-mat-kind="research_excerpt">AI研究抜粋</button>
-          <button class="pill-btn" data-mat-kind="project_trace">プロジェクト痕跡</button>
+        <div style="display:flex;flex-wrap:wrap;gap:0.55rem;align-items:center;">
+          <input id="mat-search" type="search" placeholder="素材ID・表題・著者・本文を検索…" style="min-width:15rem;padding:0.38rem 0.65rem;font-size:0.84rem;" />
+          <div class="pill-toggle-group" id="mat-kind-group">
+            <button class="pill-btn active" data-mat-kind="all">すべて</button>
+            <button class="pill-btn" data-mat-kind="literary_text">哲学・文学原典</button>
+            <button class="pill-btn" data-mat-kind="research_excerpt">AI研究抜粋</button>
+            <button class="pill-btn" data-mat-kind="project_trace">プロジェクト痕跡</button>
+          </div>
         </div>
       </div>
       <div id="materials-grid" class="cards-grid"></div>

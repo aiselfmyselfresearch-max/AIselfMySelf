@@ -21,6 +21,11 @@ COLLECTIONS = {
     "relations": ("relations.jsonl", "relation_id", "relation.schema.json"),
     "sessions": ("sessions.jsonl", "session_id", "session.schema.json"),
     "read_log": ("read_log.jsonl", "read_id", "read_log.schema.json"),
+    "editorial_decisions": (
+        "editorial_decisions.jsonl",
+        "decision_id",
+        "editorial_decision.schema.json",
+    ),
 }
 
 
@@ -206,6 +211,32 @@ def main() -> int:
                 errors.append(
                     f"read_log:{read_id}: target references unknown "
                     f"{ref.get('type')} ID {ref.get('id')!r}"
+                )
+
+    ed_valid_status = {
+        "fragment": {"draft", "selected", "archived"},
+        "question": {"open", "paused", "archived"},
+    }
+    for decision_id, record in collections.get("editorial_decisions", {}).items():
+        session_id = record.get("session_id")
+        if session_id and session_id not in sessions:
+            errors.append(
+                f"editorial_decisions:{decision_id}: session_id references unknown session {session_id!r}"
+            )
+        ref = record.get("target")
+        if isinstance(ref, dict):
+            ttype = ref.get("type")
+            target = endpoint_collections.get(ttype)
+            if target is None or ref.get("id") not in target:
+                errors.append(
+                    f"editorial_decisions:{decision_id}: target references unknown "
+                    f"{ttype} ID {ref.get('id')!r}"
+                )
+            allowed = ed_valid_status.get(ttype)
+            if allowed and record.get("status") not in allowed:
+                errors.append(
+                    f"editorial_decisions:{decision_id}: status {record.get('status')!r} "
+                    f"is not valid for target type {ttype!r} (expected {sorted(allowed)})"
                 )
     for relation_id, relation in relations.items():
         for endpoint in ("left", "right"):

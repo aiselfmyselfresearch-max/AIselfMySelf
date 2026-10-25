@@ -13,9 +13,10 @@ import json
 import mimetypes
 import threading
 import time
+from collections import Counter
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 
 import ledger_io
 from abjection_audit import measure_abjection_audit
@@ -113,29 +114,86 @@ def compute_metabolism_snapshot(payload: dict[str, object]) -> dict[str, object]
     }
 
 
-def read_readings_list() -> list[dict[str, str]]:
-    if not READINGS_DIR.is_dir():
-        return []
-    notes: list[dict[str, str]] = []
-    for md_path in sorted(READINGS_DIR.glob("*.md"), reverse=True):
-        content = md_path.read_text(encoding="utf-8")
-        title = md_path.stem
-        for line in content.splitlines():
-            if line.startswith("# "):
-                title = line[2:].strip()
-                break
-        notes.append(
-            {
-                "filename": md_path.name,
-                "title": title,
-                "content": content,
-            }
-        )
-    return notes
+def compute_read_log_summary(read_log_rows: list[dict[str, object]]) -> dict[str, object]:
+    """Summarize read_log without shipping 1+ MB of per-event rows in /api/state."""
+    mat_sessions: dict[str, set[str]] = {}
+    frag_sessions: dict[str, set[str]] = {}
+    reading_counts: Counter[str] = Counter()
+    for row in read_log_rows:
+        sid = str(row.get("session_id", ""))
+        reading = str(row.get("reading", ""))
+        if reading:
+            reading_counts[reading] += 1
+        target = row.get("target")
+        if isinstance(target, dict):
+            ttype = target.get("type")
+            tid = str(target.get("id", ""))
+            if ttype == "material" and tid:
+                mat_sessions.setdefault(tid, set()).add(sid)
+            elif ttype == "fragment" and tid:
+                frag_sessions.setdefault(tid, set()).add(sid)
+    reread_2plus = sum(1 for sids in mat_sessions.values() if len(sids) >= 2)
+    return {
+        "total_rows": len(read_log_rows),
+        "distinct_materials_read": len(mat_sessions),
+        "materials_reread_in_2plus_sessions": reread_2plus,
+        "distinct_fragments_read": len(frag_sessions),
+        "by_reading": dict(reading_counts.most_common()),
+    }
+
+
+def read_reading_note(filename: str) -> dict[str, str] | None:
+    """Safely read one Markdown note from ``ROOT / 'readings'`` by bare filename."""
+    if (
+        not filename
+        or not filename.endswith(".md")
+        or "/" in filename
+        or "\\" in filename
+        or ".." in filename
+        or "\x00" in filename
+    ):
+        return None
+    readings_dir = (ROOT / "readings").resolve()
+    if not readings_dir.is_dir():
+        return None
+    candidate = (readings_dir / filename).resolve()
+    if candidate.parent != readings_dir or not candidate.is_file():
+        return None
+    content = candidate.read_text(encoding="utf-8")
+    title = candidate.stem
+    for line in content.splitlines():
+        if line.startswith("# "):
+            title = line[2:].strip()
+            break
+    return {
+        "filename": candidate.name,
+        "title": title,
+        "content": content,
+    }
+
+
+def _repo_stat_signature(root: Path) -> tuple[tuple[str, int, int, int], ...] | None:
+    """Fast stat signature across state/ base+shards and readings/*.md."""
+    entries: list[tuple[str, int, int, int]] = []
+    try:
+        for _name, (filename, _id_key, _schema) in COLLECTIONS.items():
+            base = root / "state" / filename
+            for p in ledger_io.collection_files(base):
+                st = p.stat()
+                entries.append((str(p.relative_to(root)), st.st_ino, st.st_size, st.st_mtime_ns))
+        readings_dir = root / "readings"
+        if readings_dir.is_dir():
+            for p in sorted(readings_dir.glob("*.md")):
+                st = p.stat()
+                entries.append((f"readings/{p.name}", st.st_ino, st.st_size, st.st_mtime_ns))
+    except OSError:
+        return None
+    return tuple(entries)
 
 
 _DERIVED_LOCK = threading.Lock()
 _DERIVED_CACHE: tuple[str, dict[str, object], bytes] | None = None
+_FAST_STAT_CACHE: tuple[str, tuple[tuple[str, int, int, int], ...], dict[str, object], bytes] | None = None
 
 
 def _readings_signature(readings_dir: Path) -> list[tuple[str, int, int]]:
@@ -151,13 +209,16 @@ def _readings_signature(readings_dir: Path) -> list[tuple[str, int, int]]:
 
 
 def _load_raw_collections() -> tuple[dict[str, object], str, Path]:
-    errors: list[str] = []
-    payload: dict[str, object] = {}
-    for name, (filename, id_key, _) in COLLECTIONS.items():
-        records = load_jsonl(ROOT / "state" / filename, id_key, errors)
-        payload[name] = list(records.values())
+    specs = {
+        name: (ROOT / "state" / filename, id_key)
+        for name, (filename, id_key, _schema) in COLLECTIONS.items()
+    }
+    raw_by_name, errors = ledger_io.load_collections(specs, root=ROOT)
     if errors:
         raise RuntimeError("; ".join(errors))
+    payload: dict[str, object] = {
+        name: list(records.values()) for name, records in raw_by_name.items()
+    }
 
     readings_dir = ROOT / "readings"
     digest_input = json.dumps(
@@ -183,12 +244,19 @@ def _ensure_derived(
             # (the handler only serialises it; callers must not mutate it).
             return _DERIVED_CACHE[1], _DERIVED_CACHE[2]
 
+        read_log_rows = payload.pop("read_log", [])  # type: ignore[arg-type]
+        payload["read_log_summary"] = compute_read_log_summary(read_log_rows)  # type: ignore[arg-type]
+
         fragments = payload["fragments"]  # type: ignore[assignment]
         relations = payload["relations"]  # type: ignore[assignment]
-        readings_docs = [
-            (path.name, path.read_text(encoding="utf-8"))
-            for path in sorted(readings_dir.glob("*.md"))
-        ]
+        readings_docs = (
+            [
+                (path.name, path.read_text(encoding="utf-8"))
+                for path in sorted(readings_dir.glob("*.md"), reverse=True)
+            ]
+            if readings_dir.is_dir()
+            else []
+        )
         derived: dict[str, object] = {}
         derived["voice_audit"] = compute_voice_audit(fragments, relations, top=16, gram=6)  # type: ignore[arg-type]
         pa = measure_passion_audit(fragments)  # type: ignore[arg-type]
@@ -218,7 +286,7 @@ def _ensure_derived(
                     (line[2:].strip() for line in content.splitlines() if line.startswith("# ")),
                     name,
                 ),
-                "content": content,
+                "chars": len(content),
             }
             for name, content in readings_docs
         ]
@@ -230,8 +298,23 @@ def _ensure_derived(
 
 
 def _read_archive_payload_once() -> dict[str, object]:
+    global _FAST_STAT_CACHE
+    fast_sig = _repo_stat_signature(ROOT)
+    if fast_sig is not None:
+        with _DERIVED_LOCK:
+            if (
+                _FAST_STAT_CACHE is not None
+                and _FAST_STAT_CACHE[0] == str(ROOT)
+                and _FAST_STAT_CACHE[1] == fast_sig
+            ):
+                return _FAST_STAT_CACHE[2]
+
     payload, cache_key, readings_dir = _load_raw_collections()
-    full_payload, _encoded = _ensure_derived(payload, cache_key, readings_dir)
+    full_payload, encoded = _ensure_derived(payload, cache_key, readings_dir)
+    post_sig = _repo_stat_signature(ROOT)
+    if post_sig is not None and post_sig == fast_sig:
+        with _DERIVED_LOCK:
+            _FAST_STAT_CACHE = (str(ROOT), post_sig, full_payload, encoded)
     return full_payload
 
 
@@ -296,9 +379,35 @@ class ArchiveRequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(body)
             return
 
+        if route.startswith("/api/readings/"):
+            raw_name = unquote(route[len("/api/readings/") :])
+            note = read_reading_note(raw_name)
+            if note is None:
+                err_body = json.dumps({"error": "reading note not found"}, ensure_ascii=False).encode("utf-8")
+                self.send_response(404)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Content-Length", str(len(err_body)))
+                self.send_cors_and_embed_headers()
+                self.end_headers()
+                self.wfile.write(err_body)
+                return
+            body = json.dumps(note, ensure_ascii=False).encode("utf-8")
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_cors_and_embed_headers()
+            self.end_headers()
+            self.wfile.write(body)
+            return
+
         if route in ("/api/state", "/data.json"):
             try:
-                body = json.dumps(read_archive_payload(), ensure_ascii=False).encode("utf-8")
+                payload = read_archive_payload()
+                with _DERIVED_LOCK:
+                    if _DERIVED_CACHE is not None and _DERIVED_CACHE[1] is payload:
+                        body = _DERIVED_CACHE[2]
+                    else:
+                        body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
             except Exception as exc:
                 err_body = json.dumps({"error": str(exc)}, ensure_ascii=False).encode("utf-8")
                 self.send_response(500)
