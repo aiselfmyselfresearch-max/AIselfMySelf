@@ -19,6 +19,8 @@ import ledger_io
 from abjection_audit import measure_abjection_audit
 from war_audit import measure_war_audit
 from secret_audit import measure as measure_secret_audit
+from secrecy_audit import measure_secrecy_audit
+from sky_audit import measure_sky_audit
 from currency_audit import measure_currency_audit
 from eros_audit import measure_eros_audit
 from signature_audit import measure_signature_audit
@@ -145,6 +147,8 @@ def _read_archive_payload_once() -> dict[str, object]:
     payload["abjection_audit"] = measure_abjection_audit(fragments, payload["materials"])  # type: ignore[arg-type]
     payload["war_audit"] = measure_war_audit(fragments, payload["materials"])  # type: ignore[arg-type]
     payload["secret_audit"] = measure_secret_audit(fragments)  # type: ignore[arg-type]
+    payload["secrecy_audit"] = measure_secrecy_audit(fragments, payload["materials"])  # type: ignore[arg-type]
+    payload["sky_audit"] = measure_sky_audit(fragments, payload["materials"])  # type: ignore[arg-type]
     payload["metabolism_audit"] = compute_metabolism_snapshot(payload)
     payload["readings"] = read_readings_list()
     return payload

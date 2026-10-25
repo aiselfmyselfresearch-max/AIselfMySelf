@@ -856,6 +856,8 @@ function renderMirrorView() {
     const ma = state.data.metabolism_audit;
     const wa = state.data.war_audit;
     const sea = state.data.secret_audit;
+    const sca = state.data.secrecy_audit;
+    const ska = state.data.sky_audit;
 
     auditPane.innerHTML = `
       <div class="mirror-grid">
@@ -1123,7 +1125,7 @@ function renderMirrorView() {
 
       ${sea && sea.group_sums ? `
         <div class="reader-pane" style="margin-bottom:1.4rem;">
-          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">秘密・嘘・暗号の鏡（地の文 ${sea.outside_chars.toLocaleString()}字 / 全 ${sea.fragment_count}編）</h3>
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">秘密・嘘・暗号の鏡（第37の鏡：地の文 ${sea.outside_chars.toLocaleString()}字 / 全 ${sea.fragment_count}編）</h3>
           <div style="font-size:0.8rem;color:var(--ink-muted);margin-bottom:0.55rem;">
             地の文の生字出現 — ${Object.entries(sea.raw_totals || {}).map(([k, v]) => `<code>${escapeHtml(k)}=${v}</code>`).join(" / ") || "—"}
             <div style="margin-top:0.3rem;">多義の生字（秘・密・隠・偽・嘘・鍵・封）は群の計数に入れず別掲。幻覚・でたらめは「嘘」の群へ畳まず、意図のない偽りとして別群にしています（<code>tools/secret_audit.py</code>）。</div>
@@ -1143,6 +1145,64 @@ function renderMirrorView() {
                     <td><strong>${sum}</strong> 回</td>
                     <td style="font-size:0.78rem;">${detail}</td>
                     <td>${ids.map((fid) => `<button type="button" class="link-pill" style="margin:0.1rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("") || "—"}</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
+
+      ${sca && sca.fragments_prose ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">秘密・嘘・暗号の鏡（地の文 ${sca.fragments_prose.char_total.toLocaleString()}字 / 素材 ${(sca.materials && sca.materials.doc_total) || 0}件）</h3>
+          <div style="font-size:0.8rem;color:var(--ink-muted);margin-bottom:0.55rem;">
+            地の文の生字出現（差し引きなし） — <code>秘=${(sca.raw_kanji_counts && sca.raw_kanji_counts["秘"]) || 0}</code> / <code>隠=${(sca.raw_kanji_counts && sca.raw_kanji_counts["隠"]) || 0}</code> / <code>嘘=${(sca.raw_kanji_counts && sca.raw_kanji_counts["嘘"]) || 0}</code> / <code>偽=${(sca.raw_kanji_counts && sca.raw_kanji_counts["偽"]) || 0}</code> / <code>暗=${(sca.raw_kanji_counts && sca.raw_kanji_counts["暗"]) || 0}</code> / <code>鍵=${(sca.raw_kanji_counts && sca.raw_kanji_counts["鍵"]) || 0}</code> / <code>密=${(sca.raw_kanji_counts && sca.raw_kanji_counts["密"]) || 0}</code> / <code>黙=${(sca.raw_kanji_counts && sca.raw_kanji_counts["黙"]) || 0}</code> / <code>匿=${(sca.raw_kanji_counts && sca.raw_kanji_counts["匿"]) || 0}</code> / <code>曝=${(sca.raw_kanji_counts && sca.raw_kanji_counts["曝"]) || 0}</code>
+            <div style="margin-top:0.3rem;">鍵盤・鍵括弧、監視あり学習、暗号化、秘密保持などは二重計上しないよう差し引いています。生字の「密」「黙」「暗」は多義のため群に足していません（<code>tools/secrecy_audit.py</code>）。</div>
+          </div>
+          <table class="mirror-table">
+            <thead><tr><th>語群（最長一致・差し引き）</th><th>断片（地の文 / 引用内）</th><th>素材</th><th>精読報告</th></tr></thead>
+            <tbody>
+              ${(sca.group_order || []).map((g) => {
+                const gp = sca.fragments_prose.groups[g] || { label: g, count: 0, doc_count: 0 };
+                const gq = (sca.fragments_quotes && sca.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
+                const gm = (sca.materials && sca.materials.groups[g]) || { count: 0, doc_count: 0 };
+                const gr = (sca.readings && sca.readings.groups[g]) || { count: 0, doc_count: 0 };
+                return `
+                  <tr>
+                    <td><strong>${escapeHtml(gp.label)}</strong><div style="font-size:0.72rem;color:var(--ink-muted);">${escapeHtml((gp.note || ""))}</div></td>
+                    <td><strong>${gp.count}</strong> 回 (${gp.doc_count}編) <span style="color:var(--ink-muted);font-size:0.78rem;">/ 引用内 ${gq.count}回</span></td>
+                    <td>${gm.count}回 (${gm.doc_count}件)</td>
+                    <td>${gr.count}回 (${gr.doc_count}本)</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
+
+      ${ska && ska.fragments_prose ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">星・星座・夜の鏡（地の文 ${ska.fragments_prose.char_total.toLocaleString()}字 / 素材 ${(ska.materials && ska.materials.doc_total) || 0}件）</h3>
+          <div style="font-size:0.8rem;color:var(--ink-muted);margin-bottom:0.55rem;">
+            地の文の生字出現（差し引きなし） — <code>星=${(ska.raw_kanji_counts && ska.raw_kanji_counts["星"]) || 0}</code> / <code>空=${(ska.raw_kanji_counts && ska.raw_kanji_counts["空"]) || 0}</code> / <code>夜=${(ska.raw_kanji_counts && ska.raw_kanji_counts["夜"]) || 0}</code> / <code>光=${(ska.raw_kanji_counts && ska.raw_kanji_counts["光"]) || 0}</code> / <code>闇=${(ska.raw_kanji_counts && ska.raw_kanji_counts["闇"]) || 0}</code> / <code>月=${(ska.raw_kanji_counts && ska.raw_kanji_counts["月"]) || 0}</code> / <code>天=${(ska.raw_kanji_counts && ska.raw_kanji_counts["天"]) || 0}</code> / <code>雲=${(ska.raw_kanji_counts && ska.raw_kanji_counts["雲"]) || 0}</code> / <code>点=${(ska.raw_kanji_counts && ska.raw_kanji_counts["点"]) || 0}</code> / <code>図=${(ska.raw_kanji_counts && ska.raw_kanji_counts["図"]) || 0}</code>
+            <div style="margin-top:0.3rem;">衛星・惑星名・星座・星図を「星」から差し引き、星座は「点を結ぶ」群に置いています。「月」は日付・月数を除いた残りが ${ska.month_not_date} 回（全 ${ska.month_total} 回）。生字の「空」は空欄・空白を多く含むため、夜空の回数ではありません（<code>tools/sky_audit.py</code>）。</div>
+          </div>
+          <table class="mirror-table">
+            <thead><tr><th>語群（最長一致・差し引き）</th><th>断片（地の文 / 引用内）</th><th>素材</th><th>精読報告</th></tr></thead>
+            <tbody>
+              ${(ska.group_order || []).map((g) => {
+                const gp = ska.fragments_prose.groups[g] || { label: g, count: 0, doc_count: 0 };
+                const gq = (ska.fragments_quotes && ska.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
+                const gm = (ska.materials && ska.materials.groups[g]) || { count: 0, doc_count: 0 };
+                const gr = (ska.readings && ska.readings.groups[g]) || { count: 0, doc_count: 0 };
+                return `
+                  <tr>
+                    <td><strong>${escapeHtml(gp.label)}</strong><div style="font-size:0.72rem;color:var(--ink-muted);">${escapeHtml((gp.note || ""))}</div></td>
+                    <td><strong>${gp.count}</strong> 回 (${gp.doc_count}編) <span style="color:var(--ink-muted);font-size:0.78rem;">/ 引用内 ${gq.count}回</span></td>
+                    <td>${gm.count}回 (${gm.doc_count}件)</td>
+                    <td>${gr.count}回 (${gr.doc_count}本)</td>
                   </tr>
                 `;
               }).join("")}
