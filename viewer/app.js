@@ -860,6 +860,7 @@ function renderMirrorView() {
     const ska = state.data.sky_audit;
     const vga = state.data.vegetal_audit;
     const fua = state.data.fungi_audit;
+    const gha = state.data.ghost_audit;
     const bra = state.data.boredom_audit;
 
     auditPane.innerHTML = `
@@ -1200,6 +1201,35 @@ function renderMirrorView() {
                 const gq = (ska.fragments_quotes && ska.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
                 const gm = (ska.materials && ska.materials.groups[g]) || { count: 0, doc_count: 0 };
                 const gr = (ska.readings && ska.readings.groups[g]) || { count: 0, doc_count: 0 };
+                return `
+                  <tr>
+                    <td><strong>${escapeHtml(gp.label)}</strong><div style="font-size:0.72rem;color:var(--ink-muted);">${escapeHtml((gp.note || ""))}</div></td>
+                    <td><strong>${gp.count}</strong> 回 (${gp.doc_count}編) <span style="color:var(--ink-muted);font-size:0.78rem;">/ 引用内 ${gq.count}回</span></td>
+                    <td>${gm.count}回 (${gm.doc_count}件)</td>
+                    <td>${gr.count}回 (${gr.doc_count}本)</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
+
+      ${gha && gha.fragments_prose ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">幽霊・亡霊・怪談の鏡（地の文 ${gha.fragments_prose.char_total.toLocaleString()}字 / 素材 ${(gha.materials && gha.materials.doc_total) || 0}件）</h3>
+          <div style="font-size:0.8rem;color:var(--ink-muted);margin-bottom:0.55rem;">
+            地の文の生字出現（差し引きなし） — <code>幽=${(gha.raw_kanji_counts && gha.raw_kanji_counts["幽"]) || 0}</code> / <code>霊=${(gha.raw_kanji_counts && gha.raw_kanji_counts["霊"]) || 0}</code> / <code>魂=${(gha.raw_kanji_counts && gha.raw_kanji_counts["魂"]) || 0}</code> / <code>怪=${(gha.raw_kanji_counts && gha.raw_kanji_counts["怪"]) || 0}</code> / <code>怨=${(gha.raw_kanji_counts && gha.raw_kanji_counts["怨"]) || 0}</code> / <code>祟=${(gha.raw_kanji_counts && gha.raw_kanji_counts["祟"]) || 0}</code> / <code>憑=${(gha.raw_kanji_counts && gha.raw_kanji_counts["憑"]) || 0}</code> / <code>妖=${(gha.raw_kanji_counts && gha.raw_kanji_counts["妖"]) || 0}</code> / <code>冥=${(gha.raw_kanji_counts && gha.raw_kanji_counts["冥"]) || 0}</code> / <code>魄=${(gha.raw_kanji_counts && gha.raw_kanji_counts["魄"]) || 0}</code>
+            <div style="margin-top:0.3rem;">幽霊・怪5群の合計は地の文で <strong>${gha.fragments_prose.living_total}</strong> 回（${gha.fragments_prose.living_doc_count}編）、機械・語の幽霊対照2群の合計は <strong>${gha.fragments_prose.control_total}</strong> 回（${gha.fragments_prose.control_doc_count}編）。「幽霊」は幽霊文字・幽霊部員などの語だけの複合語を除いた残りが ${gha.yurei_literal} 回（全 ${gha.yurei_total} 回）（<code>tools/ghost_audit.py</code>）。</div>
+          </div>
+          <table class="mirror-table">
+            <thead><tr><th>語群（最長一致・非対象複合語差し引き）</th><th>断片（地の文 / 引用内）</th><th>素材</th><th>精読報告</th></tr></thead>
+            <tbody>
+              ${(gha.group_order || []).map((g) => {
+                const gp = gha.fragments_prose.groups[g] || { label: g, count: 0, doc_count: 0 };
+                const gq = (gha.fragments_quotes && gha.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
+                const gm = (gha.materials && gha.materials.groups[g]) || { count: 0, doc_count: 0 };
+                const gr = (gha.readings && gha.readings.groups[g]) || { count: 0, doc_count: 0 };
                 return `
                   <tr>
                     <td><strong>${escapeHtml(gp.label)}</strong><div style="font-size:0.72rem;color:var(--ink-muted);">${escapeHtml((gp.note || ""))}</div></td>

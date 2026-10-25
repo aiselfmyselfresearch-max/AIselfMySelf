@@ -86,6 +86,9 @@ class ServerTests(unittest.TestCase):
             self.assertIn("fungi_audit", payload)
             self.assertEqual(payload["fungi_audit"]["fragment_count"], expected_fragments)
             self.assertEqual(len(payload["fungi_audit"]["group_order"]), 7)
+            self.assertIn("ghost_audit", payload)
+            self.assertEqual(payload["ghost_audit"]["fragment_count"], expected_fragments)
+            self.assertEqual(len(payload["ghost_audit"]["group_order"]), 7)
             self.assertEqual(len(payload["passion_audit"]["group_order"]), 5)
             self.assertEqual(
                 payload["metabolism_audit"]["material_count"],
