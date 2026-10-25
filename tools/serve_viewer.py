@@ -27,6 +27,7 @@ from sky_audit import measure_sky_audit
 from vegetal_audit import measure_vegetal_audit
 from fungi_audit import measure_fungi_audit
 from ghost_audit import measure_ghost_audit
+from genealogy_audit import measure_genealogy_audit
 from currency_audit import measure_currency_audit
 from eros_audit import measure_eros_audit
 from signature_audit import measure_signature_audit
@@ -203,6 +204,7 @@ def _ensure_derived(
         derived["vegetal_audit"] = measure_vegetal_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
         derived["fungi_audit"] = measure_fungi_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
         derived["ghost_audit"] = measure_ghost_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["genealogy_audit"] = measure_genealogy_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
         derived["secret_audit"] = measure_secret_audit(fragments)  # type: ignore[arg-type]
         derived["boredom_audit"] = measure_boredom_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
         payload.update(derived)

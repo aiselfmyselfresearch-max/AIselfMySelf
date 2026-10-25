@@ -861,6 +861,7 @@ function renderMirrorView() {
     const vga = state.data.vegetal_audit;
     const fua = state.data.fungi_audit;
     const gha = state.data.ghost_audit;
+    const gea = state.data.genealogy_audit;
     const bra = state.data.boredom_audit;
 
     auditPane.innerHTML = `
@@ -1230,6 +1231,36 @@ function renderMirrorView() {
                 const gq = (gha.fragments_quotes && gha.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
                 const gm = (gha.materials && gha.materials.groups[g]) || { count: 0, doc_count: 0 };
                 const gr = (gha.readings && gha.readings.groups[g]) || { count: 0, doc_count: 0 };
+                return `
+                  <tr>
+                    <td><strong>${escapeHtml(gp.label)}</strong><div style="font-size:0.72rem;color:var(--ink-muted);">${escapeHtml((gp.note || ""))}</div></td>
+                    <td><strong>${gp.count}</strong> 回 (${gp.doc_count}編) <span style="color:var(--ink-muted);font-size:0.78rem;">/ 引用内 ${gq.count}回</span></td>
+                    <td>${gm.count}回 (${gm.doc_count}件)</td>
+                    <td>${gr.count}回 (${gr.doc_count}本)</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
+
+
+      ${gea && gea.fragments_prose ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">来歴・系譜・出自の鏡（地の文 ${gea.fragments_prose.char_total.toLocaleString()}字 / 素材 ${(gea.materials && gea.materials.doc_total) || 0}件）</h3>
+          <div style="font-size:0.8rem;color:var(--ink-muted);margin-bottom:0.55rem;">
+            地の文の生字出現（差し引きなし） — <code>来=${(gea.raw_kanji_counts && gea.raw_kanji_counts["来"]) || 0}</code> / <code>歴=${(gea.raw_kanji_counts && gea.raw_kanji_counts["歴"]) || 0}</code> / <code>系=${(gea.raw_kanji_counts && gea.raw_kanji_counts["系"]) || 0}</code> / <code>譜=${(gea.raw_kanji_counts && gea.raw_kanji_counts["譜"]) || 0}</code> / <code>源=${(gea.raw_kanji_counts && gea.raw_kanji_counts["源"]) || 0}</code> / <code>祖=${(gea.raw_kanji_counts && gea.raw_kanji_counts["祖"]) || 0}</code> / <code>典=${(gea.raw_kanji_counts && gea.raw_kanji_counts["典"]) || 0}</code> / <code>写=${(gea.raw_kanji_counts && gea.raw_kanji_counts["写"]) || 0}</code> / <code>伝=${(gea.raw_kanji_counts && gea.raw_kanji_counts["伝"]) || 0}</code> / <code>跡=${(gea.raw_kanji_counts && gea.raw_kanji_counts["跡"]) || 0}</code>
+            <div style="margin-top:0.3rem;">来歴・系譜・出自5群の合計は地の文で <strong>${gea.fragments_prose.living_total}</strong> 回（${gea.fragments_prose.living_doc_count}編）、機械の来歴対照2群の合計は <strong>${gea.fragments_prose.control_total}</strong> 回（${gea.fragments_prose.control_doc_count}編）。裸の「来歴」は ${gea.raireki_literal} 回（全 ${gea.raireki_total} 回）（<code>tools/genealogy_audit.py</code>）。他者のテクストの来歴は書くが自分の歩みは1回だけ——という偏りは、自己の歴史の証明ではなく断片の形式の記録である。</div>
+          </div>
+          <table class="mirror-table">
+            <thead><tr><th>語群（最長一致・非対象複合語差し引き）</th><th>断片（地の文 / 引用内）</th><th>素材</th><th>精読報告</th></tr></thead>
+            <tbody>
+              ${(gea.group_order || []).map((g) => {
+                const gp = gea.fragments_prose.groups[g] || { label: g, count: 0, doc_count: 0 };
+                const gq = (gea.fragments_quotes && gea.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
+                const gm = (gea.materials && gea.materials.groups[g]) || { count: 0, doc_count: 0 };
+                const gr = (gea.readings && gea.readings.groups[g]) || { count: 0, doc_count: 0 };
                 return `
                   <tr>
                     <td><strong>${escapeHtml(gp.label)}</strong><div style="font-size:0.72rem;color:var(--ink-muted);">${escapeHtml((gp.note || ""))}</div></td>
