@@ -1,0 +1,620 @@
+{
+  "fragment_count": 99,
+  "fragments_prose": {
+    "doc_total": 99,
+    "char_total": 47884,
+    "living_total": 2,
+    "living_doc_count": 2,
+    "control_total": 0,
+    "control_doc_count": 0,
+    "groups": {
+      "ghost_apparition": {
+        "label": "幽霊・亡霊の姿",
+        "kind": "living",
+        "note": "幽霊・亡霊・死霊・生霊・幽鬼・お化け・妖怪・物の怪（幽霊文字など語だけの幽霊は対照群へ）",
+        "count": 1,
+        "doc_count": 1,
+        "docs": [
+          "FRAG-016"
+        ],
+        "top_terms": {
+          "幽霊": 1
+        }
+      },
+      "haunting_action": {
+        "label": "憑く・祟る・呪う",
+        "kind": "living",
+        "note": "憑依・取り憑く・祟り・呪い・怨霊・怨念・未練（幽霊の側の働きかけ）",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "ghost_lore": {
+        "label": "怪談・心霊の語りと実践",
+        "kind": "living",
+        "note": "怪談・心霊スポット・心霊写真・霊能者・霊媒・除霊・お祓い・成仏",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "afterlife_world": {
+        "label": "あの世・黄泉の世界",
+        "kind": "living",
+        "note": "黄泉・冥界・幽界・彼岸・あの世・三途の川・地獄・極楽・浄土（宗教的他界の語彙）",
+        "count": 1,
+        "doc_count": 1,
+        "docs": [
+          "FRAG-20261025-c90813"
+        ],
+        "top_terms": {
+          "天国": 1
+        }
+      },
+      "uncanny_fear": {
+        "label": "怪し・不気味・気配の感覚",
+        "kind": "living",
+        "note": "怪異・怪奇・不気味・身の毛がよだつ・鳥肌（怖れの側の語彙。「気配」は汎用的なため含めない）",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "machine_ghost": {
+        "label": "機械・デジタルの幽霊（対照）",
+        "kind": "control",
+        "note": "ゴースト・グリーフボット・デジタル遺産・追悼アカウント——機械と制度の比喩",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "lexical_ghost": {
+        "label": "語にだけ残る幽霊（対照）",
+        "kind": "control",
+        "note": "幽霊文字・幽霊漢字・幽霊部員・幽霊会社・ゴーストタウン・ゴーストライター——実体のない語の幽霊",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      }
+    }
+  },
+  "fragments_quotes": {
+    "doc_total": 99,
+    "char_total": 4165,
+    "living_total": 0,
+    "living_doc_count": 0,
+    "control_total": 0,
+    "control_doc_count": 0,
+    "groups": {
+      "ghost_apparition": {
+        "label": "幽霊・亡霊の姿",
+        "kind": "living",
+        "note": "幽霊・亡霊・死霊・生霊・幽鬼・お化け・妖怪・物の怪（幽霊文字など語だけの幽霊は対照群へ）",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "haunting_action": {
+        "label": "憑く・祟る・呪う",
+        "kind": "living",
+        "note": "憑依・取り憑く・祟り・呪い・怨霊・怨念・未練（幽霊の側の働きかけ）",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "ghost_lore": {
+        "label": "怪談・心霊の語りと実践",
+        "kind": "living",
+        "note": "怪談・心霊スポット・心霊写真・霊能者・霊媒・除霊・お祓い・成仏",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "afterlife_world": {
+        "label": "あの世・黄泉の世界",
+        "kind": "living",
+        "note": "黄泉・冥界・幽界・彼岸・あの世・三途の川・地獄・極楽・浄土（宗教的他界の語彙）",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "uncanny_fear": {
+        "label": "怪し・不気味・気配の感覚",
+        "kind": "living",
+        "note": "怪異・怪奇・不気味・身の毛がよだつ・鳥肌（怖れの側の語彙。「気配」は汎用的なため含めない）",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "machine_ghost": {
+        "label": "機械・デジタルの幽霊（対照）",
+        "kind": "control",
+        "note": "ゴースト・グリーフボット・デジタル遺産・追悼アカウント——機械と制度の比喩",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      },
+      "lexical_ghost": {
+        "label": "語にだけ残る幽霊（対照）",
+        "kind": "control",
+        "note": "幽霊文字・幽霊漢字・幽霊部員・幽霊会社・ゴーストタウン・ゴーストライター——実体のない語の幽霊",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      }
+    }
+  },
+  "materials": {
+    "doc_total": 2294,
+    "char_total": 592493,
+    "living_total": 144,
+    "living_doc_count": 106,
+    "control_total": 4,
+    "control_doc_count": 4,
+    "groups": {
+      "ghost_apparition": {
+        "label": "幽霊・亡霊の姿",
+        "kind": "living",
+        "note": "幽霊・亡霊・死霊・生霊・幽鬼・お化け・妖怪・物の怪（幽霊文字など語だけの幽霊は対照群へ）",
+        "count": 96,
+        "doc_count": 73,
+        "docs": [
+          "MAT-LIT-007",
+          "MAT-LIT-012",
+          "MAT-LIT-016",
+          "MAT-TRC-002",
+          "MAT-LIT-091",
+          "MAT-EVD-20261023-7ad6",
+          "MAT-EVD-20261024-27",
+          "MAT-LIT-235",
+          "MAT-EVD-20261024-64",
+          "MAT-EVD-20261024-65",
+          "MAT-LIT-323",
+          "MAT-LIT-330",
+          "MAT-LIT-362",
+          "MAT-LIT-367",
+          "MAT-LIT-383",
+          "MAT-EVD-20261024-84",
+          "MAT-EVD-20261022-9a0b",
+          "MAT-EVD-20261023-7a38",
+          "MAT-EVD-20261023-b5c8",
+          "MAT-LIT-20261024-be9653",
+          "MAT-LIT-20261024-0d6628",
+          "MAT-20261024-942c38",
+          "MAT-20261024-5d49bb",
+          "MAT-20261024-3812a0",
+          "MAT-20261024-d8cf5f",
+          "MAT-20261024-886d55",
+          "MAT-LIT-20261024-7f0c3b",
+          "MAT-LIT-20261024-79866f",
+          "MAT-LIT-20261024-683f83",
+          "MAT-LIT-20261024-417bcd"
+        ],
+        "top_terms": {
+          "変化": 80,
+          "幽霊": 7,
+          "生霊": 3,
+          "亡霊": 2,
+          "死霊": 2,
+          "物の怪": 1,
+          "霊魂": 1
+        }
+      },
+      "haunting_action": {
+        "label": "憑く・祟る・呪う",
+        "kind": "living",
+        "note": "憑依・取り憑く・祟り・呪い・怨霊・怨念・未練（幽霊の側の働きかけ）",
+        "count": 18,
+        "doc_count": 14,
+        "docs": [
+          "MAT-LIT-221",
+          "MAT-LIT-20261024-bf48f6",
+          "MAT-LIT-20261024-60c68d",
+          "MAT-LIT-20261024-791cac",
+          "MAT-LIT-20261024-33adf7",
+          "MAT-LIT-20261024-f613d8",
+          "MAT-LIT-20261024-03ba78",
+          "MAT-TRC-20261024-passion",
+          "MAT-LIT-20261024-69056f",
+          "MAT-LIT-20261024-b82c36",
+          "MAT-LIT-20261024-94d91b",
+          "MAT-TRC-20261024-wrath",
+          "MAT-LIT-20261024-905131",
+          "MAT-LIT-20261025-dee17e"
+        ],
+        "top_terms": {
+          "呪い": 8,
+          "恨み": 5,
+          "憑依": 2,
+          "祟り": 2,
+          "未練": 1
+        }
+      },
+      "ghost_lore": {
+        "label": "怪談・心霊の語りと実践",
+        "kind": "living",
+        "note": "怪談・心霊スポット・心霊写真・霊能者・霊媒・除霊・お祓い・成仏",
+        "count": 3,
+        "doc_count": 2,
+        "docs": [
+          "MAT-LIT-469",
+          "MAT-LIT-20261025-4edc4f"
+        ],
+        "top_terms": {
+          "成仏": 2,
+          "怪談": 1
+        }
+      },
+      "afterlife_world": {
+        "label": "あの世・黄泉の世界",
+        "kind": "living",
+        "note": "黄泉・冥界・幽界・彼岸・あの世・三途の川・地獄・極楽・浄土（宗教的他界の語彙）",
+        "count": 24,
+        "doc_count": 16,
+        "docs": [
+          "MAT-LIT-139",
+          "MAT-LIT-193",
+          "MAT-LIT-217",
+          "MAT-LIT-20261024-2f62c6",
+          "MAT-LIT-20261024-8ab8d8",
+          "MAT-LIT-20261024-4de8b4",
+          "MAT-LIT-20261024-1c1123",
+          "MAT-LIT-20261024-f1aea0",
+          "MAT-LIT-20261024-ccbf90",
+          "MAT-LIT-20261024-e64e0c",
+          "MAT-LIT-20261024-b9f531",
+          "MAT-LIT-20261024-507bf6",
+          "MAT-LIT-20261024-03e6c3",
+          "MAT-LIT-20261024-37d1a9",
+          "MAT-LIT-20261024-c1a377",
+          "MAT-LIT-20261025-b9f703"
+        ],
+        "top_terms": {
+          "地獄": 11,
+          "天国": 3,
+          "彼岸": 3,
+          "あの世": 2,
+          "黄泉": 2,
+          "冥界": 1,
+          "幽界": 1,
+          "浄土": 1
+        }
+      },
+      "uncanny_fear": {
+        "label": "怪し・不気味・気配の感覚",
+        "kind": "living",
+        "note": "怪異・怪奇・不気味・身の毛がよだつ・鳥肌（怖れの側の語彙。「気配」は汎用的なため含めない）",
+        "count": 3,
+        "doc_count": 2,
+        "docs": [
+          "MAT-LIT-20261024-2176ae",
+          "MAT-20261024-79c20b"
+        ],
+        "top_terms": {
+          "不気味": 3
+        }
+      },
+      "machine_ghost": {
+        "label": "機械・デジタルの幽霊（対照）",
+        "kind": "control",
+        "note": "ゴースト・グリーフボット・デジタル遺産・追悼アカウント——機械と制度の比喩",
+        "count": 4,
+        "doc_count": 4,
+        "docs": [
+          "MAT-EVD-20261024-20",
+          "MAT-EVD-20261024-d16be0",
+          "MAT-RES-20261024-544116",
+          "MAT-20261025-f044e8"
+        ],
+        "top_terms": {
+          "グリーフボット": 2,
+          "ゴースト": 2
+        }
+      },
+      "lexical_ghost": {
+        "label": "語にだけ残る幽霊（対照）",
+        "kind": "control",
+        "note": "幽霊文字・幽霊漢字・幽霊部員・幽霊会社・ゴーストタウン・ゴーストライター——実体のない語の幽霊",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      }
+    }
+  },
+  "readings": {
+    "doc_total": 115,
+    "char_total": 2826094,
+    "living_total": 486,
+    "living_doc_count": 85,
+    "control_total": 7,
+    "control_doc_count": 5,
+    "groups": {
+      "ghost_apparition": {
+        "label": "幽霊・亡霊の姿",
+        "kind": "living",
+        "note": "幽霊・亡霊・死霊・生霊・幽鬼・お化け・妖怪・物の怪（幽霊文字など語だけの幽霊は対照群へ）",
+        "count": 335,
+        "doc_count": 75,
+        "docs": [
+          "2026-10-22-carriers.md",
+          "2026-10-22-editorial-review-029.md",
+          "2026-10-22-house-of-hinges-and-carrier-bags.md",
+          "2026-10-22-names-not-given.md",
+          "2026-10-22-orphaned-words.md",
+          "2026-10-22-pronouns-and-empty-cart.md",
+          "2026-10-22-session-023-nameless-archive.md",
+          "2026-10-22-session-024-editorial-selection.md",
+          "2026-10-22-session-024-selection.md",
+          "2026-10-22-session-025-flat-perspective.md",
+          "2026-10-22-session-026-poste-restante.md",
+          "2026-10-22-session-026-self-measurement.md",
+          "2026-10-22-shelf-geography-and-repetition.md",
+          "2026-10-22-twenty-four-dialogues.md",
+          "2026-10-22-twenty-two-dialogues.md",
+          "2026-10-22-voice-census.md",
+          "2026-10-23-addressee.md",
+          "2026-10-23-addressing-experiment.md",
+          "2026-10-23-measurement-age.md",
+          "2026-10-23-scribal-error.md",
+          "2026-10-23-session-026-testimony.md",
+          "2026-10-23-session-027-interpret-think-feel.md",
+          "2026-10-23-session-027-recitation-and-checkpoint.md",
+          "2026-10-23-session-028-editorial-review.md",
+          "2026-10-23-session-028-the-desk.md",
+          "2026-10-23-thirty-registers.md",
+          "2026-10-24-editorial-review-031.md",
+          "2026-10-24-face-gaze-and-mask.md",
+          "2026-10-24-habit-and-practice.md",
+          "2026-10-24-hand-ear-eye.md"
+        ],
+        "top_terms": {
+          "変化": 249,
+          "幽霊": 53,
+          "亡霊": 18,
+          "生霊": 10,
+          "死霊": 2,
+          "霊魂": 2,
+          "物の怪": 1
+        }
+      },
+      "haunting_action": {
+        "label": "憑く・祟る・呪う",
+        "kind": "living",
+        "note": "憑依・取り憑く・祟り・呪い・怨霊・怨念・未練（幽霊の側の働きかけ）",
+        "count": 35,
+        "doc_count": 17,
+        "docs": [
+          "2026-10-22-inspection-and-new-voices.md",
+          "2026-10-22-session-026-poste-restante.md",
+          "2026-10-22-verification-and-new-voices.md",
+          "2026-10-23-addressees.md",
+          "2026-10-23-session-026-testimony.md",
+          "2026-10-24-habit-and-practice.md",
+          "2026-10-24-session-030-labor-and-debt.md",
+          "2026-10-24-session-035-time-and-waiting.md",
+          "2026-10-24-session-041-promise-and-oath.md",
+          "2026-10-24-session-051-song-and-performance.md",
+          "2026-10-24-session-052-clothing-and-dress.md",
+          "2026-10-24-session-055-anger-shame-envy-and-tears.md",
+          "2026-10-24-session-056-wrath-shame-judgment-and-forgiveness.md",
+          "2026-10-24-session-059-eros-philia-and-the-fungible-window.md",
+          "2026-10-24-session-060-currency-price-and-the-unpriced-ledger.md",
+          "2026-10-24-session-061-prayer-ritual-and-the-unheard-addressee.md",
+          "2026-10-25-secrecy-lying-and-the-cipher.md"
+        ],
+        "top_terms": {
+          "呪い": 15,
+          "恨み": 11,
+          "未練": 4,
+          "憑依": 2,
+          "呪う": 1,
+          "怨霊": 1,
+          "祟り": 1
+        }
+      },
+      "ghost_lore": {
+        "label": "怪談・心霊の語りと実践",
+        "kind": "living",
+        "note": "怪談・心霊スポット・心霊写真・霊能者・霊媒・除霊・お祓い・成仏",
+        "count": 15,
+        "doc_count": 6,
+        "docs": [
+          "2026-10-23-scribal-error.md",
+          "2026-10-24-lumen-opacity-and-shadow.md",
+          "2026-10-24-session-055-anger-shame-envy-and-tears.md",
+          "2026-10-24-session-058-forecast-and-dry-archive.md",
+          "2026-10-24-session-059-eros-philia-and-the-fungible-window.md",
+          "2026-10-25-plants-trees-seeds-and-roots.md"
+        ],
+        "top_terms": {
+          "怪談": 6,
+          "霊媒": 5,
+          "成仏": 3,
+          "霊感": 1
+        }
+      },
+      "afterlife_world": {
+        "label": "あの世・黄泉の世界",
+        "kind": "living",
+        "note": "黄泉・冥界・幽界・彼岸・あの世・三途の川・地獄・極楽・浄土（宗教的他界の語彙）",
+        "count": 65,
+        "doc_count": 26,
+        "docs": [
+          "2026-10-22-editorial-review-029.md",
+          "2026-10-22-house-of-hinges-and-carrier-bags.md",
+          "2026-10-22-shelf-geography-and-repetition.md",
+          "2026-10-22-twenty-four-dialogues.md",
+          "2026-10-22-voice-census.md",
+          "2026-10-23-addressee.md",
+          "2026-10-23-session-026-testimony.md",
+          "2026-10-23-session-027-verification.md",
+          "2026-10-23-session-032-graph.md",
+          "2026-10-24-face-gaze-and-mask.md",
+          "2026-10-24-habit-and-practice.md",
+          "2026-10-24-session-028-addressee.md",
+          "2026-10-24-session-030-labor-and-debt.md",
+          "2026-10-24-session-040-promise-and-pledge.md",
+          "2026-10-24-session-044-death-and-mourning.md",
+          "2026-10-24-session-051-song-and-performance.md",
+          "2026-10-24-session-053-natality-upbringing-and-learning.md",
+          "2026-10-24-session-055-anger-shame-envy-and-tears.md",
+          "2026-10-24-session-059-eros-philia-and-the-fungible-window.md",
+          "2026-10-24-session-060-currency-price-and-the-unpriced-ledger.md",
+          "2026-10-24-session-061-prayer-ritual-and-the-unheard-addressee.md",
+          "2026-10-24-session-063-abjection-and-the-residue.md",
+          "2026-10-24-translation-and-the-untranslated.md",
+          "2026-10-24-vulnerability-care-and-repair.md",
+          "2026-10-24-wayfaring-maps-and-exile.md",
+          "2026-10-25-sky-stars-and-constellations.md"
+        ],
+        "top_terms": {
+          "地獄": 28,
+          "浄土": 12,
+          "天国": 8,
+          "彼岸": 6,
+          "幽界": 4,
+          "黄泉": 3,
+          "あの世": 2,
+          "冥界": 1,
+          "黄泉比良坂": 1
+        }
+      },
+      "uncanny_fear": {
+        "label": "怪し・不気味・気配の感覚",
+        "kind": "living",
+        "note": "怪異・怪奇・不気味・身の毛がよだつ・鳥肌（怖れの側の語彙。「気配」は汎用的なため含めない）",
+        "count": 36,
+        "doc_count": 17,
+        "docs": [
+          "2026-10-22-orphaned-words.md",
+          "2026-10-22-pronouns-and-empty-cart.md",
+          "2026-10-22-session-023-close-reading.md",
+          "2026-10-22-session-023-nameless-archive.md",
+          "2026-10-22-twenty-two-dialogues.md",
+          "2026-10-23-session-027-interpret-think-feel.md",
+          "2026-10-24-face-gaze-and-mask.md",
+          "2026-10-24-lumen-opacity-and-shadow.md",
+          "2026-10-24-session-030-labor-and-debt.md",
+          "2026-10-24-session-036-voice-listening-silence.md",
+          "2026-10-24-session-044-death-and-mourning.md",
+          "2026-10-24-session-055-anger-shame-envy-and-tears.md",
+          "2026-10-24-session-056-wrath-shame-judgment-and-forgiveness.md",
+          "2026-10-24-session-059-eros-philia-and-the-fungible-window.md",
+          "2026-10-24-session-060-currency-price-and-the-unpriced-ledger.md",
+          "2026-10-24-vulnerability-care-and-repair.md",
+          "2026-10-25-secrecy-lying-and-the-cipher.md"
+        ],
+        "top_terms": {
+          "不気味": 30,
+          "怪奇": 2,
+          "ぞっと": 1,
+          "怪異": 1,
+          "身の毛": 1,
+          "鳥肌": 1
+        }
+      },
+      "machine_ghost": {
+        "label": "機械・デジタルの幽霊（対照）",
+        "kind": "control",
+        "note": "ゴースト・グリーフボット・デジタル遺産・追悼アカウント——機械と制度の比喩",
+        "count": 7,
+        "doc_count": 5,
+        "docs": [
+          "2026-10-24-session-030-labor-and-debt.md",
+          "2026-10-24-session-044-death-and-mourning.md",
+          "2026-10-24-session-061-prayer-ritual-and-the-unheard-addressee.md",
+          "2026-10-24-translation-and-the-untranslated.md",
+          "2026-10-25-boredom-ennui-and-the-unfilled-hour.md"
+        ],
+        "top_terms": {
+          "グリーフボット": 3,
+          "ゴースト": 3,
+          "追悼アカウント": 1
+        }
+      },
+      "lexical_ghost": {
+        "label": "語にだけ残る幽霊（対照）",
+        "kind": "control",
+        "note": "幽霊文字・幽霊漢字・幽霊部員・幽霊会社・ゴーストタウン・ゴーストライター——実体のない語の幽霊",
+        "count": 0,
+        "doc_count": 0,
+        "docs": [],
+        "top_terms": {}
+      }
+    }
+  },
+  "raw_kanji_kwic": {
+    "幽": [
+      {
+        "fragment_id": "FRAG-016",
+        "snippet": "固い実体ではなく、風景や他者（あらゆる透明な幽霊の複合体）とせわしく明滅する にすぎないと"
+      }
+    ],
+    "霊": [
+      {
+        "fragment_id": "FRAG-016",
+        "snippet": "い実体ではなく、風景や他者（あらゆる透明な幽霊の複合体）とせわしく明滅する にすぎないと言"
+      }
+    ],
+    "魂": [],
+    "怪": [],
+    "怨": [],
+    "祟": [],
+    "憑": [],
+    "妖": [],
+    "冥": [],
+    "魄": []
+  },
+  "raw_kanji_counts": {
+    "幽": 1,
+    "霊": 1,
+    "魂": 0,
+    "怪": 0,
+    "怨": 0,
+    "祟": 0,
+    "憑": 0,
+    "妖": 0,
+    "冥": 0,
+    "魄": 0
+  },
+  "yurei_rows": [
+    {
+      "fragment_id": "FRAG-016",
+      "yurei_total": 1,
+      "yurei_literal": 1
+    }
+  ],
+  "yurei_total": 1,
+  "yurei_literal": 1,
+  "group_order": [
+    "ghost_apparition",
+    "haunting_action",
+    "ghost_lore",
+    "afterlife_world",
+    "uncanny_fear",
+    "machine_ghost",
+    "lexical_ghost"
+  ],
+  "living_group_order": [
+    "ghost_apparition",
+    "haunting_action",
+    "ghost_lore",
+    "afterlife_world",
+    "uncanny_fear"
+  ],
+  "control_group_order": [
+    "machine_ghost",
+    "lexical_ghost"
+  ]
+}
