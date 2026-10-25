@@ -21,6 +21,8 @@ import ledger_io
 from abjection_audit import measure_abjection_audit
 from war_audit import measure_war_audit
 from secrecy_audit import measure_secrecy_audit
+from secret_audit import measure as measure_secret_audit
+from boredom_audit import measure_boredom_audit
 from sky_audit import measure_sky_audit
 from vegetal_audit import measure_vegetal_audit
 from currency_audit import measure_currency_audit
@@ -173,8 +175,9 @@ def _ensure_derived(
     global _DERIVED_CACHE
     with _DERIVED_LOCK:
         if _DERIVED_CACHE is not None and _DERIVED_CACHE[0] == cache_key:
-            payload.update(_DERIVED_CACHE[1])
-            return payload, _DERIVED_CACHE[2]
+            # Serve the identical payload object for unchanged ledger content
+            # (the handler only serialises it; callers must not mutate it).
+            return _DERIVED_CACHE[1], _DERIVED_CACHE[2]
 
         fragments = payload["fragments"]  # type: ignore[assignment]
         relations = payload["relations"]  # type: ignore[assignment]
@@ -214,7 +217,7 @@ def _ensure_derived(
         payload["metabolism_audit"] = derived["metabolism_audit"]
         payload["readings"] = derived["readings"]
         encoded = json.dumps(payload, ensure_ascii=False).encode("utf-8")
-        _DERIVED_CACHE = (cache_key, derived, encoded)
+        _DERIVED_CACHE = (cache_key, payload, encoded)
         return payload, encoded
 
 
