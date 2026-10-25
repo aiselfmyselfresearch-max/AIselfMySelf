@@ -17,6 +17,7 @@ from urllib.parse import parse_qs, urlparse
 
 import ledger_io
 from abjection_audit import measure_abjection_audit
+from war_audit import measure_war_audit
 from currency_audit import measure_currency_audit
 from eros_audit import measure_eros_audit
 from signature_audit import measure_signature_audit
@@ -141,6 +142,7 @@ def _read_archive_payload_once() -> dict[str, object]:
     payload["signature_audit"] = measure_signature_audit(fragments, payload["materials"])  # type: ignore[arg-type]
     payload["prayer_audit"] = measure_prayer_audit(fragments, payload["materials"])  # type: ignore[arg-type]
     payload["abjection_audit"] = measure_abjection_audit(fragments, payload["materials"])  # type: ignore[arg-type]
+    payload["war_audit"] = measure_war_audit(fragments, payload["materials"])  # type: ignore[arg-type]
     payload["metabolism_audit"] = compute_metabolism_snapshot(payload)
     payload["readings"] = read_readings_list()
     return payload

@@ -6,7 +6,7 @@ It appends only to this session's own shards (created beforehand with
 tools/new_ledger_shard.py --date 2026-10-25) and refuses to run if any of
 those shards is already non-empty, so a second run cannot duplicate rows.
 Pre-acquisition numbers are measured live (before any write) with
-tools/war_audit.py, so the project-trace material and §1 of the report
+tools/war_audit_20261025.py, so the project-trace material and §1 of the report
 describe the archive exactly as it was when this session started.
 """
 from __future__ import annotations
@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 import ledger_io  # noqa: E402
 import new_id  # noqa: E402
-import war_audit  # noqa: E402
+import war_audit_20261025 as war_audit  # noqa: E402
 from _session20261025_war_data1 import MATERIALS_1  # noqa: E402
 from _session20261025_war_data2 import MATERIALS_2  # noqa: E402
 from _session20261025_war_data3 import MATERIALS_3  # noqa: E402
@@ -30,7 +30,7 @@ DATE = "2026-10-25"
 STAMP = "20261025"
 SESSION_ID = "SESSION-20261025-a6a74d"
 MOTIF_ID = "MOTIF-20261025-72a83f"
-TRACE_ID = "MAT-TRC-20261025-war"
+TRACE_ID = "MAT-TRC-20261025-war-noenemy"
 REPORT = ROOT / "readings" / "2026-10-25-war-violence-and-peace.md"
 REPORT_PATH = "readings/2026-10-25-war-violence-and-peace.md"
 REPO = "https://github.com/aiselfmyselfresearch-max/AIselfMySelf"
@@ -163,7 +163,7 @@ def main() -> int:
 
     trace_passage = (
         f"収蔵直前（{head[:12]}）の断片{pre_frag['fragment_count']}編・地の文（鉤括弧外）{pre_frag['outside_chars']}字を "
-        f"tools/war_audit.py の6群で数えたところ、戦争と戦闘{pre_frag['group_sums']['戦争と戦闘']}回・"
+        f"tools/war_audit_20261025.py の6群で数えたところ、戦争と戦闘{pre_frag['group_sums']['戦争と戦闘']}回・"
         f"軍隊と兵器{pre_frag['group_sums']['軍隊と兵器']}回・暴力と殺害{pre_frag['group_sums']['暴力と殺害']}回・"
         f"敵と同盟{pre_frag['group_sums']['敵と同盟']}回・平和と停戦{pre_frag['group_sums']['平和と停戦']}回・"
         f"機械の戦争{pre_frag['group_sums']['機械の戦争']}回。生字は「殺」1回（FRAG-20261024-dd90b5 の書式の項目「黙殺」）のみで、"
@@ -175,9 +175,9 @@ def main() -> int:
     trace = {
         "key": "trace", "bundle": 6, "kind": "project_trace",
         "mat_title": "運用痕跡：断片83編の地の文に戦争語6群すべて0回、「殺」は「黙殺」1回——戦争の鏡による収蔵前実測",
-        "src_title": "tools/war_audit.py による自館実測（収蔵直前スナップショット）",
+        "src_title": "tools/war_audit_20261025.py による自館実測（収蔵直前スナップショット）",
         "authors": ["AIselfMySelf Archive"], "year": 2026,
-        "url": "https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/tools/war_audit.py",
+        "url": "https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/tools/war_audit_20261025.py",
         "version": f"測定基準コミット {head}。測定対象は state/fragments.jsonl と全シャードの和集合、鉤括弧の外側（地の文）。",
         "passage": trace_passage, "lang": "ja",
         "context": "先行2セッション（祈り・顔）が先送りした空白候補B「戦争・暴力・平和」を採るにあたり、収蔵の前に作った計測の記録。",
@@ -201,10 +201,10 @@ def main() -> int:
         "source_note": trace["source_note"], "literary_invitation": trace["invitation"],
         "scope_note": trace["scope"], "motif_ids": list(dict.fromkeys([MOTIF_ID] + trace["motifs"])),
         "origin": {"repository": REPO, "commit": head, "source_record_id": f"SRC-{TRACE_ID}",
-                   "evidence_record_id": f"EVD-{TRACE_ID}", "source_record_path": "tools/war_audit.py",
+                   "evidence_record_id": f"EVD-{TRACE_ID}", "source_record_path": "tools/war_audit_20261025.py",
                    "evidence_record_path": REPORT_PATH},
         "verification": {"status": "verified", "checked_at": DATE,
-                         "method": "ローカル台帳の和集合に対する tools/war_audit.py 実行（単体テスト6件）。再実行可能。"},
+                         "method": "ローカル台帳の和集合に対する tools/war_audit_20261025.py 実行（単体テスト6件）。再実行可能。"},
     })
     all_data = data + [trace]
     new_mat_ids = [m["material_id"] for m in materials]
@@ -369,7 +369,7 @@ def main() -> int:
         else:
             read_row(mid, "summarized",
                      "内部知識から編者要約を作り、五層で精読した。原典未開架であり、引用ではなく要約であることを passage に明示した。")
-    read_row(TRACE_ID, "counted", "tools/war_audit.py で自館実測を行い、その数と手続き自体を資料として記録した。")
+    read_row(TRACE_ID, "counted", "tools/war_audit_20261025.py で自館実測を行い、その数と手続き自体を資料として記録した。")
     for mid, reading, note in EXISTING_CONTEXT:
         read_row(mid, reading, note)
 
@@ -393,7 +393,7 @@ def main() -> int:
         "generator": "arena-agent",
         "notes": (
             f"戦争・暴力・平和を主題とした初回調査セッション。候補三つ（A 戦争・暴力・平和／B 秘密・嘘・暗号／C 痛み・苦しみ）を略測し、"
-            f"先行2セッションが先送りしたAを採用。収蔵前に tools/war_audit.py（単体テスト6件）を新設し、コミット {head[:12]} 時点で"
+            f"先行2セッションが先送りしたAを採用。収蔵前に tools/war_audit_20261025.py（単体テスト6件）を新設し、コミット {head[:12]} 時点で"
             f"断片{pre_frag['fragment_count']}編・地の文{pre_frag['outside_chars']}字に戦争語6群すべて0回、生字「殺」は黙殺1回のみ、素材{n_old_mat}件でも"
             f"機械の戦争0回、戦争・暴力・平和を表題に含む資料6件であることを実測した（{TRACE_ID}）。"
             f"既存と同一著作の重複を避けた新規{len(materials)}件（外部45件＋運用痕跡1件；{kinds}；検証状態{ver}）を5束で全件五層（"
@@ -441,7 +441,7 @@ def main() -> int:
     W("")
     W("用語についての注も先に置く。日本語の「力」は資料の中で、ヴェイユの force、アーレントの power、ベンヤミンの Gewalt（暴力／権力）、条約の threat or use of force といった、互いに距離のある語を指しうる。本報告では必要に応じて原語を括弧で併記し、滑らかな統一訳に畳まない。")
     W("")
-    W("## 1. 収蔵前の実測（`tools/war_audit.py`）")
+    W("## 1. 収蔵前の実測（`tools/war_audit_20261025.py`）")
     W("")
     W("鏡の設計上の要点が二つある。一つは、「敵」を素の文字列で数えると「素敵」が敵になってしまうため、群の計数では「素敵」と、より長い複合語（敵意・敵国・敵軍）を差し引くこと。もう一つは、「非暴力」の中にある「暴力」を暴力として数えないこと。生字（戦・軍・敵・殺・兵・爆・銃）は意図的に補正せず、挑戦・相殺・爆発的といった比喩の混入を含めて別枠で報告する。単体テストは `tests/test_war_audit.py` に6件ある。")
     W("")
@@ -459,7 +459,7 @@ def main() -> int:
     W(f"| 素材{n_old_mat}件（回／件） | " + " | ".join(f"{pre_mat_sums[g]}/{pre_mat_docs[g]}" for g in war_audit.GROUPS) + " |")
     W(f"| 精読報告{len(old_read_texts)}本（回／本） | " + " | ".join(f"{pre_read_sums[g]}/{pre_read_docs[g]}" for g in war_audit.GROUPS) + " |")
     W("")
-    W("読み取る際の注意が二つある。第一に、素材・報告層の「攻撃」は抽出攻撃やプロンプト注入など機械の用語を多く含む（目視した範囲ではAI研究の摘要に集中している）。戦争の語彙として一括りにしない。第二に、報告層の「敵と同盟」には「中立」（台帳は中立な容器ではない、等の方法論の語）が多く含まれ、地政学の中立ではない。勾配が示しているのは、「自分の声（地の文）に近づくほど戦争の語が消え、資料の要約や手続きの文になるほど残る」という分布である。その分布を主題の選択理由にはするが、書庫の心性への断定には使わない。この数と手順自体を運用痕跡として収蔵した（`MAT-TRC-20261025-war`、第46資料）。")
+    W("読み取る際の注意が二つある。第一に、素材・報告層の「攻撃」は抽出攻撃やプロンプト注入など機械の用語を多く含む（目視した範囲ではAI研究の摘要に集中している）。戦争の語彙として一括りにしない。第二に、報告層の「敵と同盟」には「中立」（台帳は中立な容器ではない、等の方法論の語）が多く含まれ、地政学の中立ではない。勾配が示しているのは、「自分の声（地の文）に近づくほど戦争の語が消え、資料の要約や手続きの文になるほど残る」という分布である。その分布を主題の選択理由にはするが、書庫の心性への断定には使わない。この数と手順自体を運用痕跡として収蔵した（`MAT-TRC-20261025-war-noenemy`、第46資料）。")
     W("")
     bundle_titles = {
         1: "第I束　戦いを語る文法——力、叙事、報告の文体",
