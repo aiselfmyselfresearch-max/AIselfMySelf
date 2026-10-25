@@ -20,5 +20,5 @@
 4. **並行重複モチーフの架橋（削除せず `relations` で結ぶ）**
    - 近い主題を持つモチーフ対（例：戦争、秘密、植物、約束、情動／怒り、来歴・改稿など）があれば、片方を消すのではなく `relations.d/`（`motif` ↔ `motif` の `echo` / `contrast` / `reframes`）で役割の違いを明記して結ぶ。
 5. **レビューノートの記録と検証**
-   - `readings/YYYY-MM-DD-*.md` に今回の選定・休止・架橋の根拠を簡潔な編集ノートとして残す（必要なら `python3 tools/selection_audit.py --write-snapshot --session <SESSION_ID> --note "..."` でスナップショットを追記する）。
+   - `readings/YYYY-MM-DD-*.md` に今回の選定・休止・架橋の根拠を簡潔な編集ノートとして残す（必要なら `python3 tools/selection_audit.py --save` でスナップショットを追記する）。
    - `read_log.d/`（読み直した断片・問いを `reinterpreted` 等で記録）、`sessions.d/`、`map_build.py`、`validate_seed.py`、`size_budget.py`、`unittest` を実行して完了する。

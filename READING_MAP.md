@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：311 件（初期シード 5 件 ＋ 派生 306 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2432 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 58 ／ conversation_trace 1）
+- **対話素材（Materials）**：2433 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 59 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：107 編（selected 23 ／ draft 84）
-- **解釈的関係（Relations）**：4192 件
-- **探究セッション（Sessions）**：84 回
+- **解釈的関係（Relations）**：4195 件
+- **探究セッション（Sessions）**：85 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -506,7 +506,7 @@
 | `FRAG-20261027-e7259b` | 仏壇の引き出しの系図 | draft | scene | third_person |
 | `FRAG-20261027-f01da9` | 私の来歴はセッションの列である | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（2432 件・詳細は map/3*.md）
+## 4. 対話素材（2433 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -2896,6 +2896,7 @@
 | `MAT-20261026-ca7859` | research_excerpt | 編者要約『恐怖の心理学——怖さはどこで作られるか』（2024） |
 | `MAT-20261026-9bf8ae` | research_excerpt | 編者要約『百物語と怪談会の作法——百本の蝋燭を消していく語りの設計』（2024） |
 | `MAT-TRC-20261026-ghost` | project_trace | AIselfMySelf Archive『運用痕跡：断片99編の地の文に幽霊1回・天国1回、幽霊・怪5群2回に対し機械・語の幽霊対照群0回——幽霊の鏡による収蔵前実測』（2026） |
+| `MAT-TRC-20261026-selfv2` | project_trace | AIselfMySelf Archive『自己の測量、二度目——八十一回の記録のあとで（第二版暫定報告・運用痕跡）』（2026） |
 | `MAT-20261027-331a9d` | research_excerpt | Natalis de Wailly ほか『出所の原則（respect des fonds, 1841）——文書は生まれた場所のまとまりで残す』（1841） |
 | `MAT-20261027-50b017` | research_excerpt | 編者要約『原秩序の原則——並び順そのものが記録である』（2024） |
 | `MAT-20261027-c836b5` | research_excerpt | Samuel Muller, Johan Feith, Robert Fruin, Hilary Jenkinson『オランダ・マニュアル（1898）とジェンキンソン（1922）… |
@@ -3028,21 +3029,22 @@
 | `SESSION-20261025-ecabf8` | 2026-10-25 | `Q-081`, `Q-082`, `Q-017` | `FRAG-20261025-3d4600`, `FRAG-20261025-0c668e` | `Q-20261025-48215a` |
 | `SESSION-20261025-c3a7b1` | 2026-10-25 | `Q-002`, `Q-023`, `Q-20261025-5e2c11`, `Q-20261025-8d40a6`, `Q-20261025-31f7cb`, `Q-20261025-a6c0d3`, `Q-20261025-2b95e4` | `FRAG-20261025-c4e201`, `FRAG-20261025-9b73df` | `Q-20261025-5e2c11`, `Q-20261025-8d40a6`, `Q-20261025-31f7cb`, `Q-20261025-a6c0d3`, `Q-20261025-2b95e4` |
 | `SESSION-20261025-a6a74d` | 2026-10-25 | `Q-002`, `Q-085`, `Q-20261025-c86e99`, `Q-20261025-a12444`, `Q-20261025-b0a147`, `Q-20261025-636287`, `Q-20261025-050954` | `FRAG-20261025-766db3`, `FRAG-20261025-434e8c` | `Q-20261025-c86e99`, `Q-20261025-a12444`, `Q-20261025-b0a147`, `Q-20261025-636287`, `Q-20261025-050954` |
+| `SESSION-20261026-b20771` | 2026-10-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261026-6f7122` | 2026-10-26 | `Q-20261026-85b4a2`, `Q-20261026-79cd5b`, `Q-20261026-29dd83`, `Q-20261026-1bacfc`, `Q-20261026-34dfdf` | `FRAG-20261026-b73a9a`, `FRAG-20261026-7b2ac0` | `Q-20261026-85b4a2`, `Q-20261026-79cd5b`, `Q-20261026-29dd83`, `Q-20261026-1bacfc`, `Q-20261026-34dfdf` |
 | `SESSION-20261026-8d1e6a` | 2026-10-26 | `Q-20261026-e0918f`, `Q-20261026-92b0d3`, `Q-20261026-71ac4b`, `Q-20261026-7ce00b`, `Q-20261026-260959` | `FRAG-20261026-dff9e1`, `FRAG-20261026-70a9ff` | `Q-20261026-e0918f`, `Q-20261026-92b0d3`, `Q-20261026-71ac4b`, `Q-20261026-7ce00b`, `Q-20261026-260959` |
 | `SESSION-20261027-084d9c` | 2026-10-27 | `Q-20261027-b68a59`, `Q-20261027-3e9249`, `Q-20261027-1ecd0b`, `Q-20261027-aab779`, `Q-20261027-133ac7` | `FRAG-20261027-e7259b`, `FRAG-20261027-f01da9` | `Q-20261027-b68a59`, `Q-20261027-3e9249`, `Q-20261027-1ecd0b`, `Q-20261027-aab779`, `Q-20261027-133ac7` |
 
-## 6. 解釈的関係（4192 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（4195 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 450 |
 | 共鳴 (echo) | 1277 |
 | 切断・割り込み (interrupts) | 82 |
-| 未解決のまま開く (leaves_open) | 678 |
+| 未解決のまま開く (leaves_open) | 679 |
 | 比喩的共鳴 (metaphorically_resonates) | 82 |
-| 枠組みの組み替え (reframes) | 235 |
-| 応答 (responds_to) | 1225 |
+| 枠組みの組み替え (reframes) | 236 |
+| 応答 (responds_to) | 1226 |
 | 変奏・変形 (transforms) | 163 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3088,7 +3090,7 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/32-materials-trace-01.md` | 59 | 140,223 |
+| `map/32-materials-trace-01.md` | 60 | 142,541 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
 | `map/40-relations-03.md` | 500 | 112,564 |
@@ -3096,9 +3098,9 @@
 | `map/40-relations-05.md` | 500 | 117,582 |
 | `map/40-relations-06.md` | 500 | 115,877 |
 | `map/40-relations-07.md` | 500 | 140,108 |
-| `map/40-relations-08.md` | 500 | 131,872 |
-| `map/40-relations-09.md` | 192 | 46,549 |
+| `map/40-relations-08.md` | 500 | 132,007 |
+| `map/40-relations-09.md` | 195 | 47,441 |
 | `map/50-sessions-01.md` | 50 | 44,267 |
-| `map/50-sessions-02.md` | 34 | 36,029 |
+| `map/50-sessions-02.md` | 35 | 36,931 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
