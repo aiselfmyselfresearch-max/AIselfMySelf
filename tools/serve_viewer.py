@@ -25,6 +25,7 @@ from secret_audit import measure as measure_secret_audit
 from secrecy_audit import measure_secrecy_audit
 from sky_audit import measure_sky_audit
 from boredom_audit import measure_boredom_audit
+from botany_audit import measure_botany_audit
 from currency_audit import measure_currency_audit
 from eros_audit import measure_eros_audit
 from signature_audit import measure_signature_audit
@@ -147,6 +148,7 @@ def readings_memo() -> dict[str, object]:
     aggregate = {
         "sky": measure_sky_audit([], [], docs)["readings"],
         "boredom": measure_boredom_audit([], [], docs)["readings"],
+        "botany": measure_botany_audit([], [], docs)["readings"],
     }
     entry = {"docs": docs, "notes": notes, "aggregate": aggregate}
     _READINGS_MEMO.clear()
@@ -233,6 +235,11 @@ def _build_archive_payload() -> dict[str, object]:
     )
     boredom_report["readings"] = aggregate["boredom"]  # type: ignore[index]
     payload["boredom_audit"] = boredom_report
+    botany_report = measure_botany_audit(  # type: ignore[arg-type]
+        fragments, payload["materials"], []
+    )
+    botany_report["readings"] = aggregate["botany"]  # type: ignore[index]
+    payload["botany_audit"] = botany_report
     payload["metabolism_audit"] = compute_metabolism_snapshot(payload)
     payload["readings"] = read_readings_list()
     return payload
