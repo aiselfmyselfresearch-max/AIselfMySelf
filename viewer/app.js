@@ -858,6 +858,7 @@ function renderMirrorView() {
     const sea = state.data.secret_audit;
     const sca = state.data.secrecy_audit;
     const ska = state.data.sky_audit;
+    const bra = state.data.boredom_audit;
 
     auditPane.innerHTML = `
       <div class="mirror-grid">
@@ -1200,6 +1201,36 @@ function renderMirrorView() {
                 return `
                   <tr>
                     <td><strong>${escapeHtml(gp.label)}</strong><div style="font-size:0.72rem;color:var(--ink-muted);">${escapeHtml((gp.note || ""))}</div></td>
+                    <td><strong>${gp.count}</strong> 回 (${gp.doc_count}編) <span style="color:var(--ink-muted);font-size:0.78rem;">/ 引用内 ${gq.count}回</span></td>
+                    <td>${gm.count}回 (${gm.doc_count}件)</td>
+                    <td>${gr.count}回 (${gr.doc_count}本)</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
+
+
+      ${bra && bra.fragments_prose ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">退屈・倦怠・暇の鏡（地の文 ${bra.fragments_prose.char_total.toLocaleString()}字 / 素材 ${(bra.materials && bra.materials.doc_total) || 0}件）</h3>
+          <div style="font-size:0.8rem;color:var(--ink-muted);margin-bottom:0.55rem;">
+            地の文の生字出現（差し引きなし） — <code>退=${(bra.raw_kanji_counts && bra.raw_kanji_counts["退"]) || 0}</code> / <code>倦=${(bra.raw_kanji_counts && bra.raw_kanji_counts["倦"]) || 0}</code> / <code>暇=${(bra.raw_kanji_counts && bra.raw_kanji_counts["暇"]) || 0}</code> / <code>飽=${(bra.raw_kanji_counts && bra.raw_kanji_counts["飽"]) || 0}</code> / <code>怠=${(bra.raw_kanji_counts && bra.raw_kanji_counts["怠"]) || 0}</code> / <code>孤=${(bra.raw_kanji_counts && bra.raw_kanji_counts["孤"]) || 0}</code> / <code>独=${(bra.raw_kanji_counts && bra.raw_kanji_counts["独"]) || 0}</code> / <code>無=${(bra.raw_kanji_counts && bra.raw_kanji_counts["無"]) || 0}</code>
+            <div style="margin-top:0.3rem;">打ち消し付きの退屈語（「退屈を知らない」など、語の前後12字以内の否定）は <strong>${bra.negated_total}</strong> 箇所。「暇つぶし」は気晴らし群で一度だけ数え、「待つ」は <code>time_audit.py</code> の主題なので数えていません。孤独は<strong>測るが束ねない</strong>群です（<code>tools/boredom_audit.py</code>）。</div>
+          </div>
+          <table class="mirror-table">
+            <thead><tr><th>語群（最長一致・差し引き）</th><th>断片（地の文 / 引用内）</th><th>素材</th><th>精読報告</th></tr></thead>
+            <tbody>
+              ${(bra.group_order || []).map((g) => {
+                const gp = bra.fragments_prose.groups[g] || { label: g, count: 0, doc_count: 0 };
+                const gq = (bra.fragments_quotes && bra.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
+                const gm = (bra.materials && bra.materials.groups[g]) || { count: 0, doc_count: 0 };
+                const gr = (bra.readings && bra.readings.groups[g]) || { count: 0, doc_count: 0 };
+                return `
+                  <tr>
+                    <td><strong>${escapeHtml(gp.label)}</strong>${gp.motif_bound === false ? ' <span style="font-size:0.72rem;color:var(--ink-muted);">（束ねない）</span>' : ''}<div style="font-size:0.72rem;color:var(--ink-muted);">${escapeHtml((gp.note || ""))}</div></td>
                     <td><strong>${gp.count}</strong> 回 (${gp.doc_count}編) <span style="color:var(--ink-muted);font-size:0.78rem;">/ 引用内 ${gq.count}回</span></td>
                     <td>${gm.count}回 (${gm.doc_count}件)</td>
                     <td>${gr.count}回 (${gr.doc_count}本)</td>
