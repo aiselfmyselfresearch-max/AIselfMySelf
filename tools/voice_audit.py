@@ -142,6 +142,13 @@ LABOR_DEBT_SPECS: tuple[tuple[str, str], ...] = (
     ("恩・義理・おかげ", r"恩|義理|負い目|おかげ"),
 )
 
+SCRIPTORIUM_SPECS: tuple[tuple[str, str], ...] = (
+    ("書庫・台帳・帳面・索引", r"書庫|台帳|帳面|書棚|本棚|目録|索引|書架"),
+    ("記録・欄・窓口・係・検収", r"記録|記入|空欄|記入欄|欄|窓口|係員|受付係|検収|照合|捺印|書類|伝票"),
+    ("紙・頁・余白・インク（手紙・表紙を除く）", r"(?<!手)(?<!表)(?<!壁)(?<!新聞)(?<!折り)(?<!包み)(?<!障子)紙(?!芝居|風船)|頁|ページ|余白|インク|活字|行間"),
+    ("セッション・シャード・識別子", r"セッション|シャード|スキーマ|コミット|FRAG-|MAT-|MOTIF-|JSON"),
+)
+
 NON_QUESTION_KA_SUFFIXES = (
     "のなか",
     "のほか",
@@ -413,6 +420,17 @@ def compute_voice_audit(
     direct_affect = scan_lexicon(DIRECT_AFFECT_SPECS)
     sensory_displacement = scan_lexicon(SENSORY_DISPLACEMENT_SPECS)
     labor_debt = scan_lexicon(LABOR_DEBT_SPECS)
+    scriptorium_metaphor = scan_lexicon(SCRIPTORIUM_SPECS)
+    scriptorium_unquoted_hit_ids = {
+        fid
+        for row in scriptorium_metaphor
+        for fid in row["unquoted_fragment_ids"]
+    }
+    zero_scriptorium_ids = [
+        f["fragment_id"]
+        for f in fragments
+        if f["fragment_id"] not in scriptorium_unquoted_hit_ids
+    ]
 
     return {
         "fragment_count": total,
@@ -434,6 +452,8 @@ def compute_voice_audit(
         "direct_affect": direct_affect,
         "sensory_displacement": sensory_displacement,
         "labor_debt": labor_debt,
+        "scriptorium_metaphor": scriptorium_metaphor,
+        "zero_scriptorium_fragment_ids": zero_scriptorium_ids,
     }
 
 
@@ -541,6 +561,14 @@ def main() -> int:
     print("        授受補助は、基準にした31編では3回あり、いずれも命令・依頼（〜てくれ・〜てください）で、")
     print("        恩恵の受益者は現れなかった。現在の36編では6編・7回。うち5回は命令・依頼のままで、恩恵の受益者が")
     print("        文法に現れるのは FRAG-036「あなたがこの行を読んでくれた」の一度だけである。")
+    print()
+
+    print("--- 9. 書記室・台帳メタファーの鏡（書庫の外へ出ているか） ---")
+    for row in report.get("scriptorium_metaphor", []):
+        note = f" (地の文={row['unquoted_count']}編)" if row["count"] != row["unquoted_count"] else ""
+        print(f"    {row['label']:<36s} {row['count']:2d}/{total} 編{note}")
+    zs = report.get("zero_scriptorium_fragment_ids", [])
+    print(f"    {'書記室語彙ゼロ（地の文）':<34s} {len(zs):2d}/{total} 編  [{', '.join(zs) or 'なし'}]")
     print()
     print("--- 読み方 ---")
     print("  この表は合否でも品質評価でもない（PROJECT_CHARTER.md「成功の見方」）。")

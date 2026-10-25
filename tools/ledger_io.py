@@ -224,6 +224,16 @@ def _parse_collection(
     return records, errors
 
 
+_EDITORIAL_TARGET_TO_FILENAME: dict[str, str] = {
+    "fragment": "fragments.jsonl",
+    "question": "questions.jsonl",
+}
+_EDITORIAL_VALID_STATUS: dict[str, frozenset[str]] = {
+    "fragment": frozenset({"draft", "selected", "archived"}),
+    "question": frozenset({"open", "paused", "archived"}),
+}
+
+
 def load_collections(
     specs: dict[str, tuple[Path, str]],
     *,
@@ -238,9 +248,27 @@ def load_collections(
     records per collection (insertion order: base, then shards sorted by name)
     and a list of human-readable errors.  A malformed line is retried a few
     times first, because it may be a writer's partially flushed record.
+
+    When ``fragments.jsonl`` or ``questions.jsonl`` is loaded and a sibling
+    ``editorial_decisions.jsonl`` exists in the same ``state/`` directory,
+    append-only editorial status overlays are applied in ledger order onto shallow
+    copies of matching records without mutating files on disk.
     """
     errors: list[str] = []
     last_parse_errors: list[str] = []
+    explicit_ed_names_by_dir: dict[Path, str] = {}
+    implicit_ed_bases: dict[Path, Path] = {}
+    for name, (base, _id_key) in specs.items():
+        base_path = Path(base)
+        if base_path.name == "editorial_decisions.jsonl":
+            explicit_ed_names_by_dir[base_path.parent] = name
+    for _name, (base, _id_key) in specs.items():
+        base_path = Path(base)
+        if base_path.name in ("fragments.jsonl", "questions.jsonl"):
+            ed_base = base_path.parent / "editorial_decisions.jsonl"
+            if base_path.parent not in explicit_ed_names_by_dir and ed_base.exists():
+                implicit_ed_bases[base_path.parent] = ed_base
+
     for attempt in range(retries + 1):
         files_by_collection = {
             name: [
@@ -249,8 +277,15 @@ def load_collections(
             ]
             for name, (base, _id_key) in specs.items()
         }
+        implicit_ed_files = {
+            state_dir: [
+                path for path in collection_files(ed_base)
+                if not (exclude and exclude in path.name)
+            ]
+            for state_dir, ed_base in implicit_ed_bases.items()
+        }
         all_paths: list[Path] = []
-        for files in files_by_collection.values():
+        for files in [*files_by_collection.values(), *implicit_ed_files.values()]:
             for path in files:
                 if path not in all_paths:
                     all_paths.append(path)
@@ -271,6 +306,17 @@ def load_collections(
             data[name] = records
             parse_errors.extend(collection_errors)
 
+        ed_by_dir: dict[Path, dict[str, dict[str, Any]]] = {}
+        for state_dir, ed_name in explicit_ed_names_by_dir.items():
+            ed_by_dir[state_dir] = data.get(ed_name, {})
+        for state_dir, ed_files in implicit_ed_files.items():
+            ed_records, ed_errors = _parse_collection(
+                ed_files, texts, "decision_id", root
+            )
+            ed_by_dir[state_dir] = ed_records
+            if ed_errors and attempt < retries:
+                parse_errors.extend(ed_errors)
+
         if parse_errors and attempt < retries:
             last_parse_errors = parse_errors
             time.sleep(delay)
@@ -280,6 +326,31 @@ def load_collections(
             if base not in texts:
                 errors.append(f"{display_path(base, root)}: ledger file is missing")
         errors.extend(parse_errors)
+
+        for name, (base, _id_key) in specs.items():
+            base_path = Path(base)
+            if base_path.name not in ("fragments.jsonl", "questions.jsonl"):
+                continue
+            decisions = ed_by_dir.get(base_path.parent)
+            if not decisions:
+                continue
+            records = data[name]
+            for decision in decisions.values():
+                target = decision.get("target")
+                status = decision.get("status")
+                if not isinstance(target, dict) or not isinstance(status, str):
+                    continue
+                ttype = target.get("type")
+                tid = target.get("id")
+                if (
+                    isinstance(ttype, str)
+                    and isinstance(tid, str)
+                    and _EDITORIAL_TARGET_TO_FILENAME.get(ttype) == base_path.name
+                    and status in _EDITORIAL_VALID_STATUS.get(ttype, frozenset())
+                    and tid in records
+                ):
+                    records[tid] = {**records[tid], "status": status}
+
         return data, errors
 
     # Unreachable in normal operation; keep the failure explicit if the loop

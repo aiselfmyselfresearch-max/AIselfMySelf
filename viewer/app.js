@@ -33,11 +33,17 @@ const REL_META = {
 const state = {
   data: null,
   maps: {},
+  fragmentsByMaterial: new Map(),
+  readingCache: new Map(),
   currentView: "anthology",
   selectedFragmentId: null,
   selectedGraphNode: null,
+  constellationScope: "core",
+  constellationMotifId: "",
   activeRelType: "all",
   activeMatKind: "all",
+  matSearchQuery: "",
+  matPageLimit: 80,
   activeMirrorPane: "audit",
   selectedNotebook: 0,
 };
@@ -82,6 +88,17 @@ function indexData(data) {
     relation: new Map(data.relations.map((x) => [x.relation_id, x])),
     session: new Map(data.sessions.map((x) => [x.session_id, x])),
   };
+  const byMat = new Map();
+  for (const f of data.fragments) {
+    for (const mid of f.material_ids || []) {
+      if (!byMat.has(mid)) byMat.set(mid, []);
+      byMat.get(mid).push(f);
+    }
+  }
+  state.fragmentsByMaterial = byMat;
+  if (!state.constellationMotifId && data.motifs.length > 0) {
+    state.constellationMotifId = data.motifs[0].motif_id;
+  }
   if (!state.selectedFragmentId && data.fragments.length > 0) {
     state.selectedFragmentId = data.fragments[data.fragments.length - 1].fragment_id;
   }
@@ -127,6 +144,10 @@ function jumpToQuestion(questionId) {
 
 function jumpToMaterial(materialId) {
   state.activeMatKind = "all";
+  state.matSearchQuery = materialId;
+  state.matPageLimit = 80;
+  const searchInput = document.getElementById("mat-search");
+  if (searchInput) searchInput.value = materialId;
   document.querySelectorAll("#mat-kind-group .pill-btn").forEach((b) => {
     b.classList.toggle("active", b.dataset.matKind === "all");
   });
@@ -391,120 +412,343 @@ function renderRelationFilterPills() {
   });
 }
 
+function populateConstellationMotifSelect() {
+  const sel = document.getElementById("constellation-motif");
+  if (!sel || !state.data) return;
+  sel.innerHTML = state.data.motifs
+    .map(
+      (m) =>
+        `<option value="${escapeHtml(m.motif_id)}" ${m.motif_id === state.constellationMotifId ? "selected" : ""}>${escapeHtml(m.motif_id)}: ${escapeHtml(m.label)}</option>`
+    )
+    .join("");
+}
+
+function resolveEntityKeyById(rawId) {
+  const id = String(rawId || "").trim();
+  if (!id || !state.maps) return null;
+  if (id.includes(":")) {
+    const [t, bare] = id.split(":", 2);
+    if (state.maps[t]?.has(bare)) return `${t}:${bare}`;
+  }
+  for (const t of ["fragment", "question", "motif", "material", "session"]) {
+    if (state.maps[t]?.has(id)) return `${t}:${id}`;
+  }
+  return null;
+}
+
+function placeRing(items, cx, cy, r, startAngle, spanAngle, makeNode) {
+  const count = items.length;
+  if (count === 0) return [];
+  const fullCircle = Math.abs(spanAngle - 2 * Math.PI) < 1e-4;
+  return items.map((item, idx) => {
+    const denom = fullCircle ? count : Math.max(1, count - 1);
+    const angle = count === 1 && !fullCircle ? startAngle + spanAngle / 2 : startAngle + (spanAngle * idx) / denom;
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    return makeNode(item, idx, x, y);
+  });
+}
+
 function renderConstellation() {
   const svg = document.getElementById("constellation-svg");
+  if (!svg || !state.data) return;
   const cx = 460;
   const cy = 380;
   const nodes = [];
   const nodePos = new Map();
 
-  // Inner circle: fragments
-  const frags = state.data.fragments;
-  frags.forEach((f, idx) => {
-    const angle = (2 * Math.PI * idx) / frags.length - Math.PI / 2;
-    const r = 165;
-    const x = cx + r * Math.cos(angle);
-    const y = cy + r * Math.sin(angle);
-    const node = { key: `fragment:${f.fragment_id}`, type: "fragment", id: f.fragment_id, label: f.fragment_id, sub: f.title, x, y, color: "#9b3728", radius: f.status === "selected" ? 8 : 6.2 };
-    nodes.push(node);
-    nodePos.set(node.key, node);
-  });
+  const scopeSel = document.getElementById("constellation-scope");
+  const motifSel = document.getElementById("constellation-motif");
+  if (scopeSel) scopeSel.value = state.constellationScope;
+  if (motifSel) motifSel.hidden = state.constellationScope !== "motif";
 
-  // Middle arc (left): questions
-  const qs = state.data.questions;
-  qs.forEach((q, idx) => {
-    const angle = Math.PI * 0.56 + (Math.PI * 0.88 * idx) / Math.max(1, qs.length - 1);
-    const r = 308;
-    const x = cx + r * Math.cos(angle);
-    const y = cy + r * Math.sin(angle);
-    const node = { key: `question:${q.question_id}`, type: "question", id: q.question_id, label: q.question_id, sub: q.question, x, y, color: "#8a6120", radius: getOriginKind(q) === "human_seed" ? 6.8 : 5 };
-    nodes.push(node);
-    nodePos.set(node.key, node);
-  });
-
-  // Outer arc (right): materials participating in relations
-  const relMatIds = new Set(
-    state.data.relations
-      .flatMap((r) => {
-        const { left, right } = getRelEnds(r);
-        return [left.type === "material" ? left.id : null, right.type === "material" ? right.id : null];
-      })
-      .filter(Boolean)
+  const filteredRelsByType = state.data.relations.filter(
+    (r) => state.activeRelType === "all" || r.relation_type === state.activeRelType
   );
-  const mats = state.data.materials.filter((m) => relMatIds.has(m.material_id));
-  mats.forEach((m, idx) => {
-    const angle = -Math.PI * 0.44 + (Math.PI * 0.88 * idx) / Math.max(1, mats.length - 1);
-    const r = 320;
-    const x = cx + r * Math.cos(angle);
-    const y = cy + r * Math.sin(angle);
-    const isLit = m.kind === "literary_text";
-    const isTrace = m.kind === "project_trace" || m.kind === "conversation_trace";
-    const color = isLit ? "#3b6048" : (isTrace ? "#8a6120" : "#295270");
-    const node = { key: `material:${m.material_id}`, type: "material", id: m.material_id, label: m.material_id.replace("MAT-", ""), sub: m.title, x, y, color, radius: 5.8 };
-    nodes.push(node);
-    nodePos.set(node.key, node);
-  });
 
-  // Top-most arc: sessions or motifs referenced directly in relations (e.g., REL-067 -> SESSION-019)
-  const relExtraNodes = [];
-  for (const r of state.data.relations) {
+  const addNode = (node) => {
+    if (!nodePos.has(node.key)) {
+      nodes.push(node);
+      nodePos.set(node.key, node);
+    }
+  };
+
+  if (state.constellationScope === "ego") {
+    let centerKey = state.selectedGraphNode;
+    if (!centerKey) {
+      const defFrag =
+        state.data.fragments.find((f) => f.status === "selected") || state.data.fragments[0];
+      centerKey = defFrag ? `fragment:${defFrag.fragment_id}` : null;
+      if (centerKey) state.selectedGraphNode = centerKey;
+    }
+    if (centerKey) {
+      const [cType, cId] = centerKey.split(":");
+      const cRec = state.maps[cType]?.get(cId);
+      const centerColor =
+        cType === "fragment" ? "#9b3728" : cType === "question" ? "#8a6120" : cType === "motif" ? "#5e4b8b" : "#3b6048";
+      addNode({
+        key: centerKey,
+        type: cType,
+        id: cId,
+        label: cId,
+        sub: cRec?.title || cRec?.label || cRec?.question || cId,
+        x: cx,
+        y: cy,
+        color: centerColor,
+        radius: 9.5,
+        alwaysLabel: true,
+      });
+
+      const neighborPeers = [];
+      const seenPeers = new Set([centerKey]);
+      for (const r of filteredRelsByType) {
+        const { left, right } = getRelEnds(r);
+        const lk = `${left.type}:${left.id}`;
+        const rk = `${right.type}:${right.id}`;
+        if (lk === centerKey && !seenPeers.has(rk)) {
+          seenPeers.add(rk);
+          neighborPeers.push(right);
+        } else if (rk === centerKey && !seenPeers.has(lk)) {
+          seenPeers.add(lk);
+          neighborPeers.push(left);
+        }
+      }
+      // Also include direct motif_ids / question_ids on fragment/question records
+      if (cRec) {
+        for (const mid of cRec.motif_ids || []) {
+          const k = `motif:${mid}`;
+          if (!seenPeers.has(k) && state.maps.motif.has(mid)) {
+            seenPeers.add(k);
+            neighborPeers.push({ type: "motif", id: mid });
+          }
+        }
+        for (const qid of cRec.question_ids || []) {
+          const k = `question:${qid}`;
+          if (!seenPeers.has(k) && state.maps.question.has(qid)) {
+            seenPeers.add(k);
+            neighborPeers.push({ type: "question", id: qid });
+          }
+        }
+      }
+
+      const innerPeers = neighborPeers.filter((p) => p.type !== "material").slice(0, 48);
+      const matPeers = neighborPeers.filter((p) => p.type === "material").slice(0, 48);
+
+      placeRing(innerPeers, cx, cy, 185, -Math.PI / 2, 2 * Math.PI, (p, _i, x, y) => {
+        const rec = state.maps[p.type]?.get(p.id);
+        const f = p.type === "fragment" ? rec : null;
+        return {
+          key: `${p.type}:${p.id}`,
+          type: p.type,
+          id: p.id,
+          label: p.id,
+          sub: rec?.title || rec?.label || rec?.question || p.id,
+          x,
+          y,
+          color: p.type === "fragment" ? "#9b3728" : p.type === "question" ? "#8a6120" : "#5e4b8b",
+          radius: f ? (f.status === "selected" ? 8 : 6.2) : 6.4,
+          alwaysLabel: innerPeers.length <= 36,
+        };
+      }).forEach(addNode);
+
+      placeRing(matPeers, cx, cy, 312, -Math.PI / 2, 2 * Math.PI, (p, _i, x, y) => {
+        const m = state.maps.material.get(p.id);
+        const isLit = m?.kind === "literary_text";
+        const isTrace = m?.kind === "project_trace" || m?.kind === "conversation_trace";
+        return {
+          key: `material:${p.id}`,
+          type: "material",
+          id: p.id,
+          label: p.id.replace("MAT-", ""),
+          sub: m?.title || p.id,
+          x,
+          y,
+          color: isLit ? "#3b6048" : isTrace ? "#8a6120" : "#295270",
+          radius: 5.8,
+          alwaysLabel: matPeers.length <= 32,
+        };
+      }).forEach(addNode);
+    }
+  } else if (state.constellationScope === "motif") {
+    const mid = state.constellationMotifId || state.data.motifs[0]?.motif_id;
+    const motif = state.maps.motif.get(mid);
+    if (motif) {
+      addNode({
+        key: `motif:${mid}`,
+        type: "motif",
+        id: mid,
+        label: motif.label || mid,
+        sub: motif.description || mid,
+        x: cx,
+        y: cy,
+        color: "#5e4b8b",
+        radius: 9.5,
+        alwaysLabel: true,
+      });
+      const frags = state.data.fragments.filter((f) => (f.motif_ids || []).includes(mid));
+      const qs = state.data.questions
+        .filter((q) => (q.motif_ids || []).includes(mid))
+        .slice(0, 36);
+      const matSet = new Set([
+        ...(motif.material_ids || []),
+        ...frags.flatMap((f) => f.material_ids || []),
+      ]);
+      const mats = state.data.materials.filter((m) => matSet.has(m.material_id)).slice(0, 44);
+
+      placeRing(frags, cx, cy, 138, -Math.PI / 2, 2 * Math.PI, (f, _i, x, y) => ({
+        key: `fragment:${f.fragment_id}`,
+        type: "fragment",
+        id: f.fragment_id,
+        label: f.fragment_id,
+        sub: f.title,
+        x,
+        y,
+        color: "#9b3728",
+        radius: f.status === "selected" ? 8 : 6.2,
+        alwaysLabel: true,
+      })).forEach(addNode);
+
+      placeRing(qs, cx, cy, 232, Math.PI * 0.56, Math.PI * 0.88, (q, _i, x, y) => ({
+        key: `question:${q.question_id}`,
+        type: "question",
+        id: q.question_id,
+        label: q.question_id,
+        sub: q.question,
+        x,
+        y,
+        color: "#8a6120",
+        radius: getOriginKind(q) === "human_seed" ? 6.8 : 5.2,
+        alwaysLabel: qs.length <= 28,
+      })).forEach(addNode);
+
+      placeRing(mats, cx, cy, 318, -Math.PI * 0.44, Math.PI * 0.88, (m, _i, x, y) => {
+        const isLit = m.kind === "literary_text";
+        const isTrace = m.kind === "project_trace" || m.kind === "conversation_trace";
+        return {
+          key: `material:${m.material_id}`,
+          type: "material",
+          id: m.material_id,
+          label: m.material_id.replace("MAT-", ""),
+          sub: m.title,
+          x,
+          y,
+          color: isLit ? "#3b6048" : isTrace ? "#8a6120" : "#295270",
+          radius: 5.6,
+          alwaysLabel: mats.length <= 28,
+        };
+      }).forEach(addNode);
+    }
+  } else {
+    // Default "core" skeleton constellation: all fragments + all motifs + core/seed/active questions (no 2,400-material ink blob)
+    const frags = state.data.fragments;
+    placeRing(frags, cx, cy, 158, -Math.PI / 2, 2 * Math.PI, (f, idx, x, y) => ({
+      key: `fragment:${f.fragment_id}`,
+      type: "fragment",
+      id: f.fragment_id,
+      label: f.fragment_id,
+      sub: f.title,
+      x,
+      y,
+      color: "#9b3728",
+      radius: f.status === "selected" ? 8 : 6.2,
+      alwaysLabel: f.status === "selected" || frags.length <= 36 || idx % Math.ceil(frags.length / 24) === 0,
+    })).forEach(addNode);
+
+    const motifs = state.data.motifs;
+    placeRing(motifs, cx, cy, 248, -Math.PI * 0.44, Math.PI * 0.88, (m, idx, x, y) => ({
+      key: `motif:${m.motif_id}`,
+      type: "motif",
+      id: m.motif_id,
+      label: m.label || m.motif_id,
+      sub: m.description || m.motif_id,
+      x,
+      y,
+      color: "#5e4b8b",
+      radius: 6.0,
+      alwaysLabel: motifs.length <= 30 || idx % 2 === 0,
+    })).forEach(addNode);
+
+    const qDegree = new Map();
+    for (const r of state.data.relations) {
+      const { left, right } = getRelEnds(r);
+      if (left.type === "question") qDegree.set(left.id, (qDegree.get(left.id) || 0) + 1);
+      if (right.type === "question") qDegree.set(right.id, (qDegree.get(right.id) || 0) + 1);
+    }
+    const coreQs = [...state.data.questions]
+      .filter((q) => q.status !== "paused" && q.status !== "archived")
+      .sort((a, b) => {
+        const aSeed = getOriginKind(a) === "human_seed" ? 1 : 0;
+        const bSeed = getOriginKind(b) === "human_seed" ? 1 : 0;
+        if (aSeed !== bSeed) return bSeed - aSeed;
+        return (qDegree.get(b.question_id) || 0) - (qDegree.get(a.question_id) || 0);
+      })
+      .slice(0, 48);
+
+    placeRing(coreQs, cx, cy, 314, Math.PI * 0.56, Math.PI * 0.88, (q, idx, x, y) => ({
+      key: `question:${q.question_id}`,
+      type: "question",
+      id: q.question_id,
+      label: q.question_id,
+      sub: q.question,
+      x,
+      y,
+      color: "#8a6120",
+      radius: getOriginKind(q) === "human_seed" ? 6.8 : 5.2,
+      alwaysLabel: getOriginKind(q) === "human_seed" || idx % 2 === 0,
+    })).forEach(addNode);
+  }
+
+  // Synthesize structural links in motif/ego scopes when not covered by explicit relation edges
+  const visibleEdges = [];
+  const edgePairSeen = new Set();
+  for (const r of filteredRelsByType) {
     const { left, right } = getRelEnds(r);
-    for (const end of [left, right]) {
-      const k = `${end.type}:${end.id}`;
-      if (!nodePos.has(k) && (end.type === "session" || end.type === "motif")) {
-        if (!relExtraNodes.some((e) => e.key === k)) {
-          const rec = state.maps[end.type]?.get(end.id);
-          relExtraNodes.push({
-            key: k,
-            type: end.type,
-            id: end.id,
-            label: end.id,
-            sub: end.type === "session" ? (rec?.notes || end.id) : (rec?.label || end.id),
-            color: "#5e4b8b",
-            radius: 6.4,
-          });
+    const sk = `${left.type}:${left.id}`;
+    const dk = `${right.type}:${right.id}`;
+    if (nodePos.has(sk) && nodePos.has(dk)) {
+      edgePairSeen.add(`${sk}->${dk}:${r.relation_type}`);
+      visibleEdges.push({ src: nodePos.get(sk), dst: nodePos.get(dk), relType: r.relation_type });
+    }
+  }
+  if (state.activeRelType === "all") {
+    for (const f of state.data.fragments) {
+      const fk = `fragment:${f.fragment_id}`;
+      if (!nodePos.has(fk)) continue;
+      for (const mid of f.motif_ids || []) {
+        const mk = `motif:${mid}`;
+        if (nodePos.has(mk) && !edgePairSeen.has(`${fk}->${mk}:echo`)) {
+          visibleEdges.push({ src: nodePos.get(fk), dst: nodePos.get(mk), relType: "echo" });
         }
       }
     }
   }
-  relExtraNodes.forEach((item, idx) => {
-    const angle = -Math.PI / 2 + (idx - (relExtraNodes.length - 1) / 2) * 0.16;
-    const r = 250;
-    item.x = cx + r * Math.cos(angle);
-    item.y = cy + r * Math.sin(angle);
-    nodes.push(item);
-    nodePos.set(item.key, item);
-  });
 
-  const visibleRels = state.data.relations.filter(
-    (r) => state.activeRelType === "all" || r.relation_type === state.activeRelType
-  );
-
-  const selectedKey = state.selectedGraphNode;
+  const selectedKey = state.selectedGraphNode && nodePos.has(state.selectedGraphNode)
+    ? state.selectedGraphNode
+    : null;
   const connectedKeys = new Set();
   if (selectedKey) {
     connectedKeys.add(selectedKey);
-    visibleRels.forEach((r) => {
-      const { left, right } = getRelEnds(r);
-      const fk = `${left.type}:${left.id}`;
-      const tk = `${right.type}:${right.id}`;
-      if (fk === selectedKey) connectedKeys.add(tk);
-      if (tk === selectedKey) connectedKeys.add(fk);
+    visibleEdges.forEach((e) => {
+      if (e.src.key === selectedKey) connectedKeys.add(e.dst.key);
+      if (e.dst.key === selectedKey) connectedKeys.add(e.src.key);
     });
   }
 
-  const edgesHtml = visibleRels
-    .map((r) => {
-      const { left, right } = getRelEnds(r);
-      const src = nodePos.get(`${left.type}:${left.id}`);
-      const dst = nodePos.get(`${right.type}:${right.id}`);
-      if (!src || !dst) return "";
-      const meta = REL_META[r.relation_type] || { color: "#888", dash: "" };
+  const statsEl = document.getElementById("constellation-stats");
+  if (statsEl) {
+    statsEl.textContent = `表示中: ${nodes.length} ノード / ${visibleEdges.length} 線（台帳全体: 関係 ${state.data.relations.length} 件）`;
+  }
+
+  const edgesHtml = visibleEdges
+    .map((e) => {
+      const { src, dst, relType } = e;
+      const meta = REL_META[relType] || { color: "#888", dash: "" };
       const mx = (src.x + dst.x) / 2 + (cx - (src.x + dst.x) / 2) * 0.18;
       const my = (src.y + dst.y) / 2 + (cy - (src.y + dst.y) / 2) * 0.18;
       const isHighlighted = selectedKey && (src.key === selectedKey || dst.key === selectedKey);
       const dimClass = selectedKey && !isHighlighted ? "dimmed" : "";
-      return `<path class="graph-edge ${dimClass}" d="M ${src.x.toFixed(1)} ${src.y.toFixed(1)} Q ${mx.toFixed(1)} ${my.toFixed(1)} ${dst.x.toFixed(1)} ${dst.y.toFixed(1)}" stroke="${meta.color}" stroke-width="${isHighlighted ? 2.4 : 1.15}" stroke-opacity="${isHighlighted ? 0.95 : 0.42}" ${meta.dash ? `stroke-dasharray="${meta.dash}"` : ""} />`;
+      return `<path class="graph-edge ${dimClass}" d="M ${src.x.toFixed(1)} ${src.y.toFixed(1)} Q ${mx.toFixed(1)} ${my.toFixed(1)} ${dst.x.toFixed(1)} ${dst.y.toFixed(1)}" stroke="${meta.color}" stroke-width="${isHighlighted ? 2.4 : 1.15}" stroke-opacity="${isHighlighted ? 0.95 : 0.38}" ${meta.dash ? `stroke-dasharray="${meta.dash}"` : ""} />`;
     })
     .join("");
 
@@ -512,13 +756,16 @@ function renderConstellation() {
     .map((n) => {
       const dimClass = selectedKey && !connectedKeys.has(n.key) ? "dimmed" : "";
       const isSelected = selectedKey === n.key;
+      const showLabel = isSelected || (selectedKey && connectedKeys.has(n.key)) || n.alwaysLabel;
       const textAnchor = n.x < cx - 15 ? "end" : n.x > cx + 15 ? "start" : "middle";
       const dx = n.x < cx - 15 ? -10 : n.x > cx + 15 ? 10 : 0;
       const dy = dx === 0 ? (n.y < cy ? -10 : 14) : 4;
+      const tip = `${n.id}${n.sub && n.sub !== n.id ? " — " + String(n.sub).slice(0, 70) : ""}`;
       return `
         <g class="graph-node ${dimClass}" data-node-key="${escapeHtml(n.key)}">
+          <title>${escapeHtml(tip)}</title>
           <circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${isSelected ? n.radius + 3 : n.radius}" fill="${n.color}" stroke="#ffffff" stroke-width="${isSelected ? 2.5 : 1.2}" />
-          <text x="${(n.x + dx).toFixed(1)}" y="${(n.y + dy).toFixed(1)}" text-anchor="${textAnchor}" font-size="10.5" fill="currentColor">${escapeHtml(n.label)}</text>
+          ${showLabel ? `<text x="${(n.x + dx).toFixed(1)}" y="${(n.y + dy).toFixed(1)}" text-anchor="${textAnchor}" font-size="10.2" fill="currentColor">${escapeHtml(n.label)}</text>` : ""}
         </g>
       `;
     })
@@ -578,25 +825,59 @@ function renderGraphInspector() {
     header = `<span class="badge badge-ai">探求セッション</span> <code>${escapeHtml(id)}</code>`;
     body = `<p style="font-size:0.9rem;line-height:1.75;margin-top:0.5rem;">${escapeHtml(record.notes || "")}</p>`;
     jumpBtn = `<button type="button" class="btn-ghost" data-jump-sess="${escapeHtml(id)}">セッション年譜で見る →</button>`;
+  } else if (type === "motif") {
+    header = `<span class="badge badge-mode">モチーフ</span> <code>${escapeHtml(id)}</code>`;
+    body = `<h3 class="mat-title" style="margin-top:0.5rem;">${escapeHtml(record.label || id)}</h3>
+            <p style="font-size:0.88rem;line-height:1.75;">${escapeHtml(record.description || "")}</p>`;
+    jumpBtn = `<button type="button" class="btn-ghost" data-focus-motif="${escapeHtml(id)}">このモチーフ別星座を開く →</button>`;
   }
+
+  const egoBtn =
+    state.constellationScope !== "ego"
+      ? `<button type="button" class="btn-ghost" data-focus-ego="${escapeHtml(`${type}:${id}`)}" style="margin-left:0.4rem;">近傍1ホップに絞る</button>`
+      : `<button type="button" class="btn-ghost" data-reset-core="1" style="margin-left:0.4rem;">骨格星座へ戻る</button>`;
 
   pane.innerHTML = `
     <div>${header}</div>
     ${body}
-    <div style="margin:0.85rem 0;">${jumpBtn}</div>
+    <div style="margin:0.85rem 0;display:flex;flex-wrap:wrap;gap:0.4rem;">${jumpBtn}${egoBtn}</div>
     <div class="meta-box">
       <h3>接続している関係 (${rels.length}件)</h3>
       <ul class="rel-list">
-        ${rels.map((r) => {
+        ${rels.slice(0, 60).map((r) => {
           const { left, right } = getRelEnds(r);
           const out = left.type === type && left.id === id;
           const peer = out ? right : left;
           return `<li><strong>${escapeHtml(r.relation_type)}</strong> ${out ? "→" : "←"} ${renderEntityJumpButton(peer.type, peer.id)}<div style="color:var(--ink-muted);margin-top:0.2rem;">${escapeHtml(r.note || "")}</div></li>`;
         }).join("")}
+        ${rels.length > 60 ? `<li style="color:var(--ink-muted);">…ほか ${rels.length - 60} 件の関係線</li>` : ""}
       </ul>
     </div>
   `;
   bindJumpButtons(pane);
+  pane.querySelectorAll("[data-focus-ego]").forEach((b) => {
+    b.addEventListener("click", () => {
+      state.selectedGraphNode = b.dataset.focusEgo;
+      state.constellationScope = "ego";
+      renderConstellation();
+      renderGraphInspector();
+    });
+  });
+  pane.querySelectorAll("[data-reset-core]").forEach((b) => {
+    b.addEventListener("click", () => {
+      state.constellationScope = "core";
+      renderConstellation();
+      renderGraphInspector();
+    });
+  });
+  pane.querySelectorAll("[data-focus-motif]").forEach((b) => {
+    b.addEventListener("click", () => {
+      state.constellationMotifId = b.dataset.focusMotif;
+      state.constellationScope = "motif";
+      renderConstellation();
+      renderGraphInspector();
+    });
+  });
 }
 
 /* 3. Question Lineage Tree */
@@ -623,11 +904,15 @@ function renderLineage() {
     const kids = childrenMap.get(q.question_id) || [];
     const kind = getOriginKind(q);
     const coParents = (q.previous_question_ids || []).slice(1);
+    const statusBadge = q.status && q.status !== "open"
+      ? `<span class="badge badge-draft">${escapeHtml(q.status)}</span>`
+      : "";
     return `
-      <div id="qcard-${escapeHtml(q.question_id)}" class="${isChild ? "branch-node" : "seed-card"}">
+      <div id="qcard-${escapeHtml(q.question_id)}" class="${isChild ? "branch-node" : "seed-card"}" style="${q.status === "paused" ? "opacity:0.78;" : ""}">
         <div style="display:flex;flex-wrap:wrap;gap:0.45rem;align-items:center;">
           <code>${escapeHtml(q.question_id)}</code>
           <span class="badge ${kind === "human_seed" ? "badge-lit" : "badge-ai"}">${escapeHtml(kind)}</span>
+          ${statusBadge}
           ${coParents.map((pid) => `<span class="badge badge-mode">併走親: ${escapeHtml(pid)}</span>`).join("")}
         </div>
         <div class="q-title">${escapeHtml(q.question)}</div>
@@ -648,38 +933,61 @@ function renderLineage() {
 /* 4. Materials Library */
 function renderMaterials() {
   const grid = document.getElementById("materials-grid");
-  const list = state.data.materials.filter(
-    (m) => state.activeMatKind === "all" || m.kind === state.activeMatKind
-  );
+  const q = (state.matSearchQuery || "").trim().toLowerCase();
+  const filtered = state.data.materials.filter((m) => {
+    if (state.activeMatKind !== "all" && m.kind !== state.activeMatKind) return false;
+    if (!q) return true;
+    const authors = (m.source && Array.isArray(m.source.authors) ? m.source.authors.join(" ") : "");
+    const hay = `${m.material_id} ${m.title || ""} ${authors} ${m.passage || ""} ${m.literary_invitation || ""}`.toLowerCase();
+    return hay.includes(q);
+  });
 
-  grid.innerHTML = list
-    .map((m) => {
-      const isLit = m.kind === "literary_text";
-      const isTrace = m.kind === "project_trace" || m.kind === "conversation_trace";
-      const badgeCls = isLit ? "badge-lit" : (isTrace ? "badge-trace" : "badge-ai");
-      const badgeLabel = isLit ? "哲学・文学原典" : (isTrace ? "プロジェクト痕跡" : "AIエージェント研究");
-      const usedIn = state.data.fragments.filter((f) => (f.material_ids || []).includes(m.material_id));
-      const authorLine = m.source && Array.isArray(m.source.authors) && m.source.authors.length
-        ? `${m.source.authors.join(", ")} (${m.source.year})`
-        : "";
-      return `
-        <article id="mcard-${escapeHtml(m.material_id)}" class="mat-card">
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
-            <code>${escapeHtml(m.material_id)}</code>
-            <span class="badge ${badgeCls}">${badgeLabel}</span>
-          </div>
-          <h3 class="mat-title">${escapeHtml(m.title)}</h3>
-          ${authorLine ? `<div style="font-size:0.78rem;color:var(--ink-muted);">${escapeHtml(authorLine)}</div>` : ""}
-          ${m.literary_invitation ? `<div class="mat-invitation">問いへの誘い: ${escapeHtml(m.literary_invitation)}</div>` : ""}
-          <blockquote class="mat-passage">${escapeHtml(m.passage)}</blockquote>
-          ${usedIn.length > 0 ? `<div class="tag-row" style="margin-bottom:0;">${usedIn.map((f) => renderEntityJumpButton("fragment", f.fragment_id)).join("")}</div>` : ""}
-          <div class="mat-scope">射程・編集覚書: ${escapeHtml(m.scope_note)}</div>
-        </article>
-      `;
-    })
-    .join("");
+  const visible = filtered.slice(0, state.matPageLimit);
+  const remaining = filtered.length - visible.length;
+
+  grid.innerHTML =
+    visible
+      .map((m) => {
+        const isLit = m.kind === "literary_text";
+        const isTrace = m.kind === "project_trace" || m.kind === "conversation_trace";
+        const badgeCls = isLit ? "badge-lit" : (isTrace ? "badge-trace" : "badge-ai");
+        const badgeLabel = isLit ? "哲学・文学原典" : (isTrace ? "プロジェクト痕跡" : "AIエージェント研究");
+        const usedIn = state.fragmentsByMaterial.get(m.material_id) || [];
+        const authorLine = m.source && Array.isArray(m.source.authors) && m.source.authors.length
+          ? `${m.source.authors.join(", ")} (${m.source.year})`
+          : "";
+        return `
+          <article id="mcard-${escapeHtml(m.material_id)}" class="mat-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
+              <code>${escapeHtml(m.material_id)}</code>
+              <span class="badge ${badgeCls}">${badgeLabel}</span>
+            </div>
+            <h3 class="mat-title">${escapeHtml(m.title)}</h3>
+            ${authorLine ? `<div style="font-size:0.78rem;color:var(--ink-muted);">${escapeHtml(authorLine)}</div>` : ""}
+            ${m.literary_invitation ? `<div class="mat-invitation">問いへの誘い: ${escapeHtml(m.literary_invitation)}</div>` : ""}
+            <blockquote class="mat-passage">${escapeHtml(m.passage)}</blockquote>
+            ${usedIn.length > 0 ? `<div class="tag-row" style="margin-bottom:0;">${usedIn.map((f) => renderEntityJumpButton("fragment", f.fragment_id)).join("")}</div>` : ""}
+            <div class="mat-scope">射程・編集覚書: ${escapeHtml(m.scope_note)}</div>
+          </article>
+        `;
+      })
+      .join("") +
+    (remaining > 0
+      ? `<div style="grid-column:1 / -1;text-align:center;padding:1rem 0;">
+           <button type="button" id="mat-load-more-btn" class="btn-ghost">さらに表示（残り ${remaining} 件 ／ 全 ${filtered.length} 件）</button>
+         </div>`
+      : filtered.length === 0
+      ? `<div class="empty-state" style="grid-column:1 / -1;">条件に一致する対話素材はありません。</div>`
+      : "");
 
   bindJumpButtons(grid);
+  const moreBtn = document.getElementById("mat-load-more-btn");
+  if (moreBtn) {
+    moreBtn.addEventListener("click", () => {
+      state.matPageLimit += 100;
+      renderMaterials();
+    });
+  }
 }
 
 /* 5. Sessions Timeline */
@@ -1503,6 +1811,36 @@ function renderMirrorView() {
         </table>
       </div>
 
+      ${va.scriptorium_metaphor ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">書記室・台帳メタファーと再読消化の鏡（書庫の外へ出ているか）</h3>
+          ${state.data.read_log_summary ? `
+            <div style="font-size:0.82rem;color:var(--ink-muted);margin-bottom:0.65rem;">
+              <code>read_log</code> 集計 — 総記録 <strong>${state.data.read_log_summary.total_rows}</strong> 行 ／
+              既読素材 <strong>${state.data.read_log_summary.distinct_materials_read}</strong> 件（うち2セッション以上で再読された素材 <strong>${state.data.read_log_summary.materials_reread_in_2plus_sessions}</strong> 件） ／
+              再読された断片 <strong>${state.data.read_log_summary.distinct_fragments_read}</strong> 編
+            </div>
+          ` : ""}
+          <table class="mirror-table">
+            <thead><tr><th>語彙群</th><th>出現編数</th><th>該当断片（一部）</th></tr></thead>
+            <tbody>
+              ${va.scriptorium_metaphor.map((row) => `
+                <tr>
+                  <td><strong>${escapeHtml(row.label)}</strong></td>
+                  <td>${row.count}/${va.fragment_count} 編${row.count !== row.unquoted_count ? ` <span style="color:var(--ink-muted);font-size:0.78rem;">(地の文=${row.unquoted_count}編)</span>` : ""}</td>
+                  <td>${(row.unquoted_fragment_ids || []).slice(0, 12).map((fid) => `<button type="button" class="link-pill" style="margin:0.12rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("")}${(row.unquoted_fragment_ids || []).length > 12 ? ` <span style="color:var(--ink-muted);font-size:0.78rem;">…+${row.unquoted_fragment_ids.length - 12}編</span>` : ""}</td>
+                </tr>
+              `).join("")}
+              <tr>
+                <td><strong>書記室語彙ゼロ（地の文で書庫・台帳・欄・紙等に頼らない断片）</strong></td>
+                <td><strong>${(va.zero_scriptorium_fragment_ids || []).length}/${va.fragment_count}</strong> 編</td>
+                <td>${(va.zero_scriptorium_fragment_ids || []).map((fid) => `<button type="button" class="link-pill" style="margin:0.12rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("") || "—"}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
+
       <div class="reader-pane">
         <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">編をまたいで使い回された ${va.gram_size} 文字列（全 ${va.repeated_gram_total} 種中 上位 ${(va.top_grams || []).length} 種）</h3>
         <table class="mirror-table">
@@ -1528,6 +1866,7 @@ function renderMirrorView() {
     }
     const idx = Math.min(state.selectedNotebook, notes.length - 1);
     const current = notes[idx];
+    const cachedBody = current.content || state.readingCache.get(current.filename);
     notePane.innerHTML = `
       <div class="split-layout">
         <aside class="list-pane">
@@ -1537,14 +1876,16 @@ function renderMirrorView() {
           <div class="item-list">
             ${notes.map((n, i) => `
               <button type="button" class="frag-item ${i === idx ? "selected" : ""}" data-note-idx="${i}">
-                <div class="frag-item-top"><code>${escapeHtml(n.filename)}</code></div>
+                <div class="frag-item-top"><code>${escapeHtml(n.filename)}</code>${n.chars ? ` · ${(n.chars / 1000).toFixed(1)}k字` : ""}</div>
                 <div class="frag-item-title">${escapeHtml(n.title)}</div>
               </button>
             `).join("")}
           </div>
         </aside>
         <article class="reader-pane">
-          <div class="notebook-markdown">${renderSimpleMarkdown(current.content)}</div>
+          <div id="reading-note-body" class="notebook-markdown">
+            ${cachedBody ? renderSimpleMarkdown(cachedBody) : `<div class="empty-state">ノートを読み込んでいます…</div>`}
+          </div>
         </article>
       </div>
     `;
@@ -1554,6 +1895,27 @@ function renderMirrorView() {
         renderMirrorView();
       });
     });
+    if (!cachedBody && current.filename) {
+      const targetFilename = current.filename;
+      fetch(`api/readings/${encodeURIComponent(targetFilename)}`, { cache: "no-store" })
+        .then((res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
+        .then((doc) => {
+          state.readingCache.set(targetFilename, doc.content || "");
+          const bodyEl = document.getElementById("reading-note-body");
+          if (bodyEl && notes[Math.min(state.selectedNotebook, notes.length - 1)]?.filename === targetFilename) {
+            bodyEl.innerHTML = renderSimpleMarkdown(doc.content || "");
+          }
+        })
+        .catch((err) => {
+          const bodyEl = document.getElementById("reading-note-body");
+          if (bodyEl) {
+            bodyEl.innerHTML = `<div class="empty-state">精読ノートの取得に失敗しました: ${escapeHtml(err.message)}</div>`;
+          }
+        });
+    }
   }
 }
 
@@ -1599,12 +1961,54 @@ function setupEvents() {
   document.querySelectorAll("#mat-kind-group .pill-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       state.activeMatKind = btn.dataset.matKind;
+      state.matPageLimit = 80;
       document.querySelectorAll("#mat-kind-group .pill-btn").forEach((b) => {
         b.classList.toggle("active", b === btn);
       });
       renderMaterials();
     });
   });
+
+  const matSearch = document.getElementById("mat-search");
+  if (matSearch) {
+    matSearch.addEventListener("input", () => {
+      state.matSearchQuery = matSearch.value;
+      state.matPageLimit = 80;
+      renderMaterials();
+    });
+  }
+
+  const scopeSel = document.getElementById("constellation-scope");
+  if (scopeSel) {
+    scopeSel.addEventListener("change", () => {
+      state.constellationScope = scopeSel.value;
+      renderConstellation();
+      renderGraphInspector();
+    });
+  }
+
+  const motifSel = document.getElementById("constellation-motif");
+  if (motifSel) {
+    motifSel.addEventListener("change", () => {
+      state.constellationMotifId = motifSel.value;
+      state.constellationScope = "motif";
+      renderConstellation();
+      renderGraphInspector();
+    });
+  }
+
+  const focusInput = document.getElementById("constellation-focus-input");
+  if (focusInput) {
+    focusInput.addEventListener("change", () => {
+      const resolved = resolveEntityKeyById(focusInput.value);
+      if (resolved) {
+        state.selectedGraphNode = resolved;
+        state.constellationScope = "ego";
+        renderConstellation();
+        renderGraphInspector();
+      }
+    });
+  }
 
   document.querySelectorAll("#mirror-subtab-group .pill-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -1644,6 +2048,7 @@ async function init() {
     renderStats();
     renderFragmentList();
     renderFragmentReader(state.selectedFragmentId);
+    populateConstellationMotifSelect();
     renderRelationFilterPills();
     renderLineage();
     renderMaterials();

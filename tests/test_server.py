@@ -100,6 +100,34 @@ class ServerTests(unittest.TestCase):
                 payload["metabolism_audit"]["fragment_count"],
                 expected_fragments,
             )
+            # Lightweight /api/state contract: read_log rows and full reading bodies are stripped.
+            self.assertNotIn("read_log", payload)
+            self.assertIn("read_log_summary", payload)
+            self.assertGreater(payload["read_log_summary"]["total_rows"], 0)
+            self.assertTrue(payload["readings"])
+            first_note_meta = payload["readings"][0]
+            self.assertNotIn("content", first_note_meta)
+            self.assertGreater(first_note_meta["chars"], 0)
+
+            # On-demand reading note endpoint + traversal protection.
+            status, _headers, note_body = get(port, f"/api/readings/{first_note_meta['filename']}")
+            self.assertEqual(status, 200)
+            note_doc = json.loads(note_body)
+            self.assertEqual(note_doc["filename"], first_note_meta["filename"])
+            self.assertEqual(len(note_doc["content"]), first_note_meta["chars"])
+
+            status, _headers, _body = get(port, "/api/readings/does-not-exist.md")
+            self.assertEqual(status, 404)
+            status, _headers, _body = get(port, "/api/readings/../README.md")
+            self.assertEqual(status, 404)
+            status, _headers, _body = get(port, "/api/readings/%2e%2e%2fREADME.md")
+            self.assertEqual(status, 404)
+
+            # Warm cache serves pre-encoded UTF-8 bytes without re-serialising via json.dumps.
+            with mock.patch.object(serve_viewer.json, "dumps", side_effect=AssertionError("should use cached bytes")):
+                status, _headers, cached_body = get(port, "/api/state")
+            self.assertEqual(status, 200)
+            self.assertEqual(cached_body, body)
 
             status, _headers, body = get(port, "/")
             self.assertEqual(status, 200)

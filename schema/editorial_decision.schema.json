@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "editorial_decision.schema.json",
+  "title": "Editorial Decision Entry",
+  "description": "An append-only status decision recorded during editorial review without rewriting past fragment or question shards. Later decisions targeting the same record supersede earlier ones in ledger order while preserving the full audit trail.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decision_id", "session_id", "target", "status", "reason", "created_at"],
+  "properties": {
+    "decision_id": {"type": "string", "minLength": 1},
+    "session_id": {"type": "string", "minLength": 1},
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id"],
+      "properties": {
+        "type": {"type": "string", "enum": ["fragment", "question"]},
+        "id": {"type": "string", "minLength": 1}
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "selected", "open", "paused", "archived"]
+    },
+    "reason": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "minLength": 4}
+  }
+}

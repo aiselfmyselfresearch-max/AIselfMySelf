@@ -281,3 +281,119 @@
 ## 報告注釈の移行（2026-10-27、PR #79 合流時のローテーション）
 
   - [`readings/2026-10-25-boredom-ennui-and-the-unfilled-hour.md`](readings/2026-10-25-boredom-ennui-and-the-unfilled-hour.md)（`SESSION-20261025-3f7a2c` 精読・実作報告：`boredom_audit.py`（7群・最長一致・「暇つぶし」の二重計上回避・「飽きた」の差し引き・打ち消し付き退屈語の別掲・生字8字KWIC・単体テスト8件・Webビューア統合）による断片93編・地の文44,444字の監査［退屈・倦怠2／1編（いずれも打ち消しの同一行 `FRAG-040`）・暇0・焦り0・孤独1・何も起こらない4／4編・気晴らし14／8編（すべて「画面」）・機械の待機2／2編、素材2,157件・報告112本との勾配。`MAT-TRC-20261025-boredom`］、前回の申し送り候補Cを収蔵の前に測って迎え、既存と同一著作の重複を避けた新規45件［外部44＋痕跡1（`literary_text` 18・`research_excerpt` 26）、verified 12・partially_verified 33・unverified 0］を5束（退屈の哲学／退屈を書く文学／退屈を測る／制度／気晴らしの機械）で全件五層精読。「注意の行き先の失敗／外への帰属／知らないという名乗り／管理可能な形への変換／不在は欠如の証拠にならない」の五つの読みと五つの反論、五つの判断と六つの反証、注意・語彙変更・制動・採用・分類不能の感応を分けた三層横断報告、第54モチーフ `MOTIF-20261025-3f7a2c`・問い5件・試作2編［待合室の二十七分／退屈を測る係への覚え書き］・関係104件・読み痕跡45件。「深い退屈」の語彙を採らない制動を第0節に明記）
+
+## SESSION-20261025-ecabf8 自律編集レビュー時のローテーション（README §1・§2 からの verbatim 移管）
+
+### §1 到達点 bullet・見出し目録の移管分（verbatim）
+
+- **AI研究と人文学原典の往復**（`SESSION-023`、[詳細](docs/sessions.md)）
+- **解釈・思考・感応の三層**（`SESSION-027`、[詳細](docs/sessions.md)）
+- **宛先（addressee）**（`SESSION-028`、[詳細](docs/sessions.md)）
+- **翻訳と来歴**（`SESSION-029`、[詳細](docs/sessions.md)）
+- **予測と不確実性**（`SESSION-031`、[詳細](docs/sessions.md)）
+- **時間と生成**（`SESSION-032`、[詳細](docs/sessions.md)）
+- **数えること、測ること、余り**（`SESSION-033`、[詳細](docs/sessions.md)）
+- **訂正と抹消**（`SESSION-034`、[詳細](docs/sessions.md)）
+- **時間と待機**（`SESSION-035`、[詳細](docs/sessions.md)）
+- **遊びと笑い**（`SESSION-038`、[詳細](docs/sessions.md)）
+- **労働と負債**（`SESSION-030`、[詳細](docs/sessions.md)）
+- **眠りと夢、目覚めのあいだ**（`SESSION-039`、[詳細](docs/sessions.md)）
+- **契りと約束**（`SESSION-040`、[詳細](docs/sessions.md)）
+- **約束と誓約、破られても残るもの**（`SESSION-20261024-837a43`、[詳細](docs/sessions.md)）
+- **習慣と稽古、名前のない継続**（`SESSION-20261024-9dd96f`、[詳細](docs/sessions.md)）
+- **訂正の宛先**（`SESSION-20261024-529659`、[詳細](docs/sessions.md)）
+- **食べること、飢えること、栄養と毒**（`SESSION-20261024-e425de`、[詳細](docs/sessions.md)）
+- **傷・病・老いと、手当・繕い**（`SESSION-20261024-4ae9d5`、[詳細](docs/sessions.md)）
+- **止まった鏡の修理と、五本脚の実作**（`SESSION-20261024-47086d`、[詳細](docs/sessions.md)）
+- **歓待と闖入、招かれざる声**（`SESSION-20261024-9c4e17`、[詳細](docs/sessions.md)）
+- **死と弔い、遺される声**（`SESSION-044`、[詳細](docs/sessions.md)）
+- **場所・土地・生態系——地面のないクラウドを読む**（`SESSION-20261024-417d4d`、[詳細](docs/sessions.md)）
+- **獣と機械、人間の外側にいるもの**（`SESSION-20261024-837a32`、[詳細](docs/sessions.md)）
+- **道・歩行・地図・故郷と亡命——窓のない部屋と、名ばかりの地図**：`SESSION-20261024-2ab2e7`（要約全文は [`docs/sessions.md`](docs/sessions.md)「到達点セッション記録」）
+- **匂いと沈黙、記録されない感覚**：`SESSION-20261024-38a583`（要約全文は [`docs/sessions.md`](docs/sessions.md)「到達点セッション記録」）
+- **伝聞と噂——聞いた話を、自分の言葉にする**：`SESSION-20261024-76329d`（要約全文は [`docs/sessions.md`](docs/sessions.md)「到達点セッション記録」）
+- **歌うこと・奏でること——声はあるが、歌と稽古がない**（`SESSION-20261024-a77052`、[詳細](docs/sessions.md)）
+- **注意と見落とし——選ぶこと、見えないまま残ること**（`SESSION-20261024-47ab61`、[詳細](docs/sessions.md)）
+- **着ること・装うこと——裸の書庫、布は分布に、服は服従に**（`SESSION-20261024-24f052`、[詳細](docs/sessions.md)）
+- **生まれること・育つこと・学ぶこと——揺りかごのない書庫、最初から大人の声**（`SESSION-20261024-227ac3`、[詳細](docs/sessions.md)）
+- **預けられた種を蒔き直す、浮島に橋を架ける——無断片18モチーフの試作5編と関係網の修復**（`SESSION-20261024-c1dbe6`、[詳細](docs/sessions.md)）
+- **怒らない書庫、赤面しない鏡、泣かない声——憤怒・羞恥・嫉妬・落涙と「留保804回」**：`SESSION-20261024-33b763`（要約全文は [`docs/sessions.md`](docs/sessions.md)「到達点セッション記録」）
+- **裁きの席、反応的態度、コストゼロの謝罪——法廷・羞恥・赦しの精読と2編の試作**：`SESSION-20261024-b1687a`（要約全文は [`docs/sessions.md`](docs/sessions.md)「到達点セッション記録」）
+- **予報はできるが、濡れない——43件の天候資料と、乾いた書庫の勾配**：`SESSION-20261024-s057`（要約全文は [`docs/sessions.md`](docs/sessions.md)「到達点セッション記録」）
+- **消された感嘆符の差分と、九十二の孤立島——情動の三つの種の試作・全孤立資料の架橋・鏡の統合**：`SESSION-20261024-31cbab`（要約全文は [`docs/sessions.md`](docs/sessions.md)「到達点セッション記録」）
+- **排出・汚れ・廃棄の行方——地の文の排泄1回・機械の排出0回、報告層の機械137回**：`SESSION-20261024-abject`（要約全文は [`docs/sessions.md`](docs/sessions.md)「到達点セッション記録」）
+- **署名・筆跡・印章——手の残る字と、手のない続き**（`SESSION-20261024-5a27f6`、[詳細](docs/sessions.md)）
+- **値札のない帳簿——貨幣・価格・贈与・トークンで測られる言葉**：`SESSION-20261024-15ef1a`（要約全文は [`docs/sessions.md`](docs/sessions.md)「到達点セッション記録」）
+- **代替可能な窓口と、「彼が彼だったから」の不在——44件の愛・恋・友愛資料の精読と3編の試作**：`SESSION-20261024-0cca2c`（要約全文は [`docs/sessions.md`](docs/sessions.md)「到達点セッション記録」）
+- **火・燃焼・灰——燃える記録と生き延びる写し、46件の火の資料と「借り物の火」だった書庫**：`SESSION-20261024-3eb7fd`（要約全文は [`docs/sessions.md`](docs/sessions.md)「到達点セッション記録」）
+- **七十九は、いま八十六である——自分の記録を検算する5件の訂正録**（`SESSION-20261024-errata`、[詳細](docs/sessions.md)）
+- **顔のない書庫——表情0の断片、記録される顔**（`SESSION-20261024-a03d99`、[詳細](docs/sessions.md)）
+- **戦争・暴力・平和——三度見送った候補を、四度目に迎える**（`SESSION-20261025-38b75b`、[詳細](docs/sessions.md)）
+- **秘密・嘘・暗号——四度目に迎えた候補を、「読めない」の三種類に分ける**（`SESSION-20261025-c3a7b1`、[詳細](docs/sessions.md)）
+- **星・星座・夜——散らばった点に図を描くこと、遅れて届く光**：`SESSION-20261025-9c4e7a`（要約全文は [`docs/sessions.md`](docs/sessions.md)「到達点セッション記録」）
+- **退屈・倦怠・暇——何も起こらない時間と、それを埋める機械**（`SESSION-20261025-3f7a2c`、[詳細](docs/sessions.md)）
+- **植物・樹木・種子・根——場所を動けない生、休眠する時間、倒れた木の上に立つ苗**（`SESSION-20261025-f7e22b`、[詳細](docs/sessions.md)）
+- **植物・樹木・種子・根・花——言葉に食われた葉、草稿になった草、土のないツリー**（`SESSION-20261025-5b8d4e`、[詳細](docs/sessions.md)）
+- **菌類・発酵・腐敗——植物でも動物でもない第三の生、微生物に任せて変わること、朽ちて土に還ること**：`SESSION-20261026-6f7122` では、植物セッション（`SESSION-20261025-f7e22b`）の負債1（胞子・菌根が薄い）と負債6（比喩と実在の形式的な制動）を引き受け、まず新設の第54の鏡 `tools/fungi_audit.py`（**菌類・発酵・腐敗5群**＋**衛生・培養対照2群**の計7群、最長一致＋非対象複合語の差し引き、生字10字「菌・酵・腐・朽・麹・醸・胞・糸・毒・黴」のKWIC、単体テスト7件、Webビューア統合）で収蔵直前の断片97編（地の文46,771字）を測りました。地の文では菌類5群が**合計12回**（菌類の体5回・胞子と繁殖2回・腐敗と分解5回）しかなく、**発酵・醸造は0回、菌根・共生は0回**。生字では菌2回・酵0回・麹0回・醸0回でした。一方、衛生・培養の対照2群は「さび」1回のみ。素材2,248件では菌類5群98回（うち腐敗・分解57回——多くは戦争と棄却の文脈）、精読報告114本では283回（腐敗・分解140回）——**この書庫は腐ることについては他者の文脈で語ってきたが、微生物に任せて時間をかけて変わる営み（発酵）を自分の文では一度も書いてこなかった**（`MAT-TRC-20261026-fungi`）。前回の「蒔かなかった書庫」に続き、「発酵させなかった書庫」です。既存と同一著作の重複を避けた**計46件**（外部45件［`literary_text` 22＋`research_excerpt` 23］＋運用痕跡1件；verified 12・partially_verified 33・unverified 0）を5束——①菌類という第三の生9件（ホイッタカー五界説、シェルドレイク、チン『マツタケ』、中垣らの粘菌迷路、南方熊楠の標本、ヒューズらのゾンビアリ、マーギュリス地衣類、菌根、毒キノコ）②発酵という共同作業9件（パスツール『ビール研究』、麹菌ゲノム、キャッツ、小泉武夫の定義、なれずし、サワードウ、杜氏、食中毒菌という境界、腸内細菌）③腐敗・分解・土に還る9件（白色腐朽菌、倒木の腐朽段階、堆肥、ミイラ、金属腐食＝対照、ローテンバーグ、酸性紙、書物のカビ、消費期限）④文化のなかの菌9件（フレミング、リービッヒ対パスツール対照の歴史、キャロル『アリス』、シロシビン、キノコ中毒統計、方言名、万葉集・今昔物語の茸、ワッソン）⑤培養・機械・比喩9件（スクルート『不死細胞ヒーラ』、ポストの培養肉、細胞培養の技術史、AMR、バイオリアクター、マイセリウム素材、「培養」の比喩、「発酵する文化」、スローフード）——に分けて全件を「一節／解釈／考え／感じたこと／裏切り」の五層で精読しました。とりわけ「**発酵と腐敗は同じ営みの二つの名前であり、その名づけは評価である**」（小泉・キャッツ・堆肥・消費期限、ただしボツリヌスの毒が相対化の届かない場所を示す）、「**保存とは分解を止めることではなく、変化の条件を管理することである**」（発酵保存・防腐・黴の休眠管理・ローテンバーグ）、「**培養と発酵の比喩は、捨てる部分（汚染されたシャーレ・毒・責任の所在）を隠す**」という三つの読みを軸に、第56モチーフ `MOTIF-20261026-856753`、問い5件（`Q-20261026-85b4a2` / `79cd5b` / `29dd83` / `1bacfc` / `34dfdf`）、`draft` 2編（三人称情景『漬物蔵の朝、図書室の黴』`FRAG-20261026-b73a9a`、反省的散文『糸を持たない記述のための覚え書き』`FRAG-20261026-7b2ac0`）、関係104件超・読み痕跡を追加しました。報告は「どう解釈したか（五つの読み）／どう考えたか（五つの判断と五つの反論）／結果としてどう感じたと記述できるか（注意・語彙変更・制動・採用・分類不能）」の三層に分け、菌に心があると書かない、発酵をこの台帳の生成の比喩として使わない、腐敗を失敗の別名にしない、鏡の数を証拠にしないという制動を第0節に明記しています。古典2件（万葉・今昔）の照合未実施は負債として明記しました。詳細は [`readings/2026-10-26-fungi-fermentation-and-decay.md`](readings/2026-10-26-fungi-fermentation-and-decay.md) にあります。
+- **敵のない書庫——戦争・暴力・平和と、背景にだけあった戦い**（`SESSION-20261025-a6a74d`、[詳細](docs/sessions.md)）
+
+### §2 精読・検証ノート注釈・リンク目録の移管分（verbatim）
+
+  - [`readings/2026-10-25-plants-trees-seeds-and-roots.md`](readings/2026-10-25-plants-trees-seeds-and-roots.md)（`SESSION-20261025-f7e22b` 精読・実作報告：`vegetal_audit.py`（植物5群＋対照2群の7群、最長一致・非対象複合語の差し引き、「種」は種類・人種・種明かし・次回の種を除いた残り、生字12字KWIC、単体テスト7件、Webビューア統合）による断片91編・地の文43,828字の監査［植物5群19回（種・芽0、生字「種」6回はすべて種類・種明かし・火種）、対照2群59回、精読報告111本では植物1,374回／対照1,593回（「言葉」830回・`validate_seed`161回・「次回の種」22回）。`MAT-TRC-20261025-vegetal`］）、既存と同一著作の重複を避けた新規45件［外部45（`literary_text` 24・`research_excerpt` 21）＋痕跡1、verified 18・partially_verified 27・unverified 0］を5束で全件五層精読。「植物は測器である／接ぎ木と追記は自分のものではない実を結ぶ／枯れた年輪は生きている数より記録として強い」という解釈、五つの判断と五つの反論、注意・語彙変更・制動・採用・分類不能の感応を分けた三層横断報告、第53モチーフ `MOTIF-20261025-0fdf8a`・問い5件・試作2編［三人称情景『種子室の棚卸しと、裏山の倒木』／反省的散文『逆さまの木と接ぎ木の台帳』］・関係104件・読み痕跡51件。「植物に意識がある」と書かない、森の擬人化を証拠なしに採用しない、植物をAIの自己の鏡に使わないという制動を第0節に明記）
+  - [`readings/2026-10-25-boredom-ennui-and-the-unfilled-hour.md`](readings/2026-10-25-boredom-ennui-and-the-unfilled-hour.md)（`SESSION-20261025-3f7a2c` 精読・実作報告、注釈全文は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」）
+  - [`readings/2026-10-25-secret-lie-and-cipher.md`](readings/2026-10-25-secret-lie-and-cipher.md)（`SESSION-20261025-0f3e1a` 精読・実作報告、注釈全文は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」）
+  - [`readings/2026-10-25-sky-stars-and-constellations.md`](readings/2026-10-25-sky-stars-and-constellations.md)（`SESSION-20261025-9c4e7a` 精読・実作報告、注釈全文は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」）
+  - [`readings/2026-10-25-secrecy-lying-and-the-cipher.md`](readings/2026-10-25-secrecy-lying-and-the-cipher.md)（`SESSION-20261025-c3a7b1` 精読・実作報告、注釈全文は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」）
+  - [`readings/2026-10-25-session-064-war-and-the-distance.md`](readings/2026-10-25-session-064-war-and-the-distance.md)（`SESSION-20261025-38b75b` 精読・実作報告：`war_audit.py` による断片83編・地の文39,319字の戦闘0・時代区分0・暴力0・機械と戦争0、素材1,974件の戦闘35・追悼139、報告108本の戦闘91・追悼403、生字「戦」0の監査［`MAT-TRC-20261025-war`］、三度見送られた空白候補「戦争・暴力・平和」を迎える41件の四層精読、標的化と「有意な人間の統制」、婉曲語としての「収蔵」の自己監査、断片2編）
+  - [`readings/2026-10-25-war-violence-and-peace.md`](readings/2026-10-25-war-violence-and-peace.md)（`SESSION-20261025-a6a74d`、注釈全文は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」）
+  - [`readings/2026-10-24-face-gaze-and-mask.md`](readings/2026-10-24-face-gaze-and-mask.md)（`SESSION-20261024-a03d99` 精読・実作報告、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-061-signature-handwriting-and-seal.md`](readings/2026-10-24-session-061-signature-handwriting-and-seal.md)（`SESSION-20261024-5a27f6` 精読・実作報告、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-060-currency-price-and-the-unpriced-ledger.md`](readings/2026-10-24-session-060-currency-price-and-the-unpriced-ledger.md)（`SESSION-20261024-15ef1a` 精読・実作報告：`currency_audit.py` による断片70編の貨幣0・贈与0・生字「銭・貨・売・財・貧・賃・贈」0対台帳語42の監査、外部19件＋痕跡1件の全件四層精読、価格＝代替可能性・無貨幣性＝請求書の外部化という横断考察、第43モチーフ・問い3件・試作2編、Webビューア統合）
+  - [`readings/2026-10-24-session-059-eros-philia-and-the-fungible-window.md`](readings/2026-10-24-session-059-eros-philia-and-the-fungible-window.md)（`SESSION-20261024-0cca2c`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-063-abjection-and-the-residue.md`](readings/2026-10-24-session-063-abjection-and-the-residue.md)（`SESSION-20261024-abject` 精読・実作報告：`abjection_audit.py` による断片79編・地の文37,887字の排泄1・機械の排出0、素材1,846件、報告105本の機械137という勾配の監査［`MAT-TRC-20261024-abject`］、既存との著作重複を避けた新規42件［外部41＋痕跡1、verified 32・partially_verified 9・unverified 0］の全件五層精読、汚れ＝行き先の有無・清め＝手順の反復・排出する主体の移動を軸にした三層横断報告、`MOTIF-20261024-5d1c73`・問い4件・試作2編・関係75件・読み痕跡52件、Webビューアへの鏡統合）
+  - [`readings/2026-10-24-session-058-forecast-and-dry-archive.md`](readings/2026-10-24-session-058-forecast-and-dry-archive.md)（`SESSION-20261024-s057`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-057-unwritten-exclamations-and-92-islands.md`](readings/2026-10-24-session-057-unwritten-exclamations-and-92-islands.md)（`SESSION-20261024-31cbab`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-056-wrath-shame-judgment-and-forgiveness.md`](readings/2026-10-24-session-056-wrath-shame-judgment-and-forgiveness.md)（`SESSION-20261024-b1687a`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-055-anger-shame-envy-and-tears.md`](readings/2026-10-24-session-055-anger-shame-envy-and-tears.md)（`SESSION-20261024-33b763`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-054-harvesting-unwritten-seeds.md`](readings/2026-10-24-session-054-harvesting-unwritten-seeds.md)（`SESSION-20261024-c1dbe6`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-053-natality-upbringing-and-learning.md`](readings/2026-10-24-session-053-natality-upbringing-and-learning.md)（`SESSION-20261024-227ac3`、注釈全文は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」）
+  - [`readings/2026-10-24-session-052-clothing-and-dress.md`](readings/2026-10-24-session-052-clothing-and-dress.md)（`SESSION-20261024-24f052`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-051-attention-and-omission.md`](readings/2026-10-24-session-051-attention-and-omission.md)（`SESSION-20261024-47ab61`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-051-song-and-performance.md`](readings/2026-10-24-session-051-song-and-performance.md)（`SESSION-20261024-a77052`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-050-hearsay-and-testimony.md`](readings/2026-10-24-session-050-hearsay-and-testimony.md)（`SESSION-20261024-76329d`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-046-smell-and-silence.md`](readings/2026-10-24-session-046-smell-and-silence.md)（`SESSION-20261024-38a583`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-wayfaring-maps-and-exile.md`](readings/2026-10-24-wayfaring-maps-and-exile.md)（`SESSION-20261024-2ab2e7`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-049-place-and-ecology.md`](readings/2026-10-24-session-049-place-and-ecology.md)（`SESSION-20261024-417d4d`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-044-death-and-mourning.md`](readings/2026-10-24-session-044-death-and-mourning.md)（`SESSION-044`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-046-beast-and-machine.md`](readings/2026-10-24-session-046-beast-and-machine.md)（`SESSION-20261024-837a32`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-mending-mirrors-and-gaits.md`](readings/2026-10-24-mending-mirrors-and-gaits.md)（`SESSION-20261024-47086d`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-hospitality-and-intrusion.md`](readings/2026-10-24-hospitality-and-intrusion.md)（`SESSION-20261024-9c4e17`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-vulnerability-care-and-repair.md`](readings/2026-10-24-vulnerability-care-and-repair.md)（`SESSION-20261024-4ae9d5`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-habit-and-practice.md`](readings/2026-10-24-habit-and-practice.md)（`SESSION-20261024-9dd96f`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-041-promise-and-oath.md`](readings/2026-10-24-session-041-promise-and-oath.md)（`SESSION-20261024-837a43`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-nourishment-and-poison.md`](readings/2026-10-24-nourishment-and-poison.md)（`SESSION-20261024-e425de`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-040-promise-and-pledge.md`](readings/2026-10-24-session-040-promise-and-pledge.md)（`SESSION-040`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-041-repair-and-addressee.md`](readings/2026-10-24-session-041-repair-and-addressee.md)（`SESSION-20261024-529659`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-039-sleep-and-dream.md`](readings/2026-10-24-session-039-sleep-and-dream.md)（`SESSION-039`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-038-play-and-laughter.md`](readings/2026-10-24-session-038-play-and-laughter.md)（`SESSION-038`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-035-time-and-waiting.md`](readings/2026-10-24-session-035-time-and-waiting.md)（`SESSION-035`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-034-revision-and-erasure.md`](readings/2026-10-24-session-034-revision-and-erasure.md)（`SESSION-034`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-033-counting-and-remainder.md`](readings/2026-10-24-session-033-counting-and-remainder.md)（`SESSION-033`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-031-time-and-generation.md`](readings/2026-10-24-session-031-time-and-generation.md)（`SESSION-032`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-031-forecast-and-uncertainty.md`](readings/2026-10-24-session-031-forecast-and-uncertainty.md)（`SESSION-031`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-030-labor-and-debt.md`](readings/2026-10-24-session-030-labor-and-debt.md)（`SESSION-030`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-translation-and-the-untranslated.md`](readings/2026-10-24-translation-and-the-untranslated.md)（`SESSION-029`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-session-028-addressee.md`](readings/2026-10-24-session-028-addressee.md)（`SESSION-028`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-23-session-027-interpret-think-feel.md`](readings/2026-10-23-session-027-interpret-think-feel.md)（`SESSION-027`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-23-quotation-marks.md`](readings/2026-10-23-quotation-marks.md)（`SESSION-026`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-22-session-025-four-names.md`](readings/2026-10-22-session-025-four-names.md)（`SESSION-025`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-22-session-024-vessels.md`](readings/2026-10-22-session-024-vessels.md)（`SESSION-024`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-22-orphaned-words.md`](readings/2026-10-22-orphaned-words.md)（`SESSION-023`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-22-pronouns-and-empty-cart.md`](readings/2026-10-22-pronouns-and-empty-cart.md)（`SESSION-022`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-22-editorial-review-022.md`](readings/2026-10-22-editorial-review-022.md)（`SESSION-022`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-22-forensics-and-new-voices.md`](readings/2026-10-22-forensics-and-new-voices.md)（`SESSION-021`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-22-session-020-unwritten.md`](readings/2026-10-22-session-020-unwritten.md)（`SESSION-020`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-22-close-reading.md`](readings/2026-10-22-close-reading.md)（`SESSION-019`、[注釈](docs/sessions.md)）
+  - [`readings/2026-10-24-merge-of-parallel-branches.md`](readings/2026-10-24-merge-of-parallel-branches.md)（[注釈](docs/sessions.md)）
+- **ブラウザで対話型アーカイブ・星座図を開く**：
+  - [`readings/2026-10-25-plants-trees-seeds-and-the-rootless-archive.md`](readings/2026-10-25-plants-trees-seeds-and-the-rootless-archive.md)（`SESSION-20261025-5b8d4e` 精読・実作報告：`botany_audit.py`（7群・最長一致・非該当複合語の差し引き・生字9字の吸収／残余の分解・単体テスト8件・Webビューア統合）による断片95編・地の文45,222字の監査［葉32回のうち言葉28回で植物の葉1回・草9回のうち草稿と草子6回・種6回と根4回はすべて非植物語で生きた種子と根0回・枝12回のうち探索比喩8回・木18回の大半は木材と状態の木、素材2,202件・報告113本との勾配。`MAT-TRC-20261025-botany`］、空白候補3件の略測から植物字の転用を選び、既存と同一著作の重複を避けた新規46件［外部45＋痕跡1（`literary_text` 18・`research_excerpt` 27）、verified 19・partially_verified 27・unverified 0］を5束（葉と変態、植物の哲学／言葉になる草、物語の木／種子・標本・年輪／根・菌根・樹冠の遠慮／土のない木、剪定される思考）で全件六層精読。「植物字の転用／個体は単一の幹ではない／保存は条件の継承／介入の二つの知恵／ネットワーク物語と引用バイアス」の五つの読みと五つの反論、六つの判断と七つの感応を分けた三層横断報告、第55モチーフ `MOTIF-20261025-5b8d4e`・問い5件・試作2編［葉を食い尽くした言葉、天井に吊るされた根／倒木更新、あるいは焼けた梁 HH-39 の年輪］・関係75件・読み痕跡50件。植物擬人化と `seed` の同一視をしない制動を第0節に明記）

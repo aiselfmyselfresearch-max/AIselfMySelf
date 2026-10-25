@@ -85,13 +85,72 @@ def compute_editorial_metrics(data: dict[str, dict[str, dict[str, Any]]]) -> dic
                 responded_questions.add(right["id"])
 
     unused_materials = [mid for mid in materials if mid not in used_materials_in_fragments]
-    unresponded_questions = [qid for qid in questions if qid not in responded_questions]
+    unresponded_questions = [
+        qid
+        for qid, q in questions.items()
+        if q.get("status", "open") == "open" and qid not in responded_questions
+    ]
+    frag_to_frag_edges = sum(
+        1
+        for rel in relations.values()
+        if rel.get("left", {}).get("type") == "fragment"
+        and rel.get("right", {}).get("type") == "fragment"
+    )
     return {
         "used_materials": used_materials_in_fragments,
         "unused_materials": unused_materials,
         "referenced_questions": referenced_questions_in_fragments,
         "responded_questions": responded_questions,
         "unresponded_questions": unresponded_questions,
+        "frag_to_frag_edges": frag_to_frag_edges,
+    }
+
+
+def recommend_session_mode(data: dict[str, dict[str, dict[str, Any]]]) -> dict[str, str]:
+    """Recommend the next autonomous rotation mode based on ledger metabolism."""
+    fragments = data["fragments"]
+    materials = data["materials"]
+    questions = data["questions"]
+    sessions = data["sessions"]
+    metrics = compute_editorial_metrics(data)
+
+    draft_count = sum(1 for f in fragments.values() if f.get("status") == "draft")
+    selected_count = sum(1 for f in fragments.values() if f.get("status") == "selected")
+    open_unresponded = len(metrics["unresponded_questions"])
+    unused_ratio = len(metrics["unused_materials"]) / max(1, len(materials))
+    recent_templates = [str(s.get("prompt_template", "")) for s in list(sessions.values())[-3:]]
+
+    if (
+        len(fragments) >= 20
+        and selected_count / max(1, len(fragments)) < 0.20
+        and not any("editorial_review" in t for t in recent_templates)
+    ):
+        return {
+            "mode": "editorial_review",
+            "prompt": "prompts/editorial_review.md",
+            "reason": (
+                f"selected 比率が {selected_count}/{len(fragments)} 編に留まり、"
+                f"未応答の open 問いが {open_unresponded} 件あります。"
+                "新規資料は足さず、editorial_decisions による selected 昇格・重複問いの paused 整理・異種モチーフ間の架橋を優先してください。"
+            ),
+        }
+    if not any("revision_and_variation" in t for t in recent_templates) and draft_count >= 15 and len(sessions) % 3 == 1:
+        return {
+            "mode": "revision_and_variation",
+            "prompt": "prompts/revision_and_variation.md",
+            "reason": (
+                f"draft 断片が {draft_count} 編蓄積されています。"
+                "新規収蔵ゼロで既存の草稿を 1 編選び、別角度の変奏・反歌・言い切り実験（留保句ゼロ／書記室メタファーゼロ）を試みてください。"
+            ),
+        }
+    return {
+        "mode": "rereading_and_collision",
+        "prompt": "prompts/rereading_and_collision.md",
+        "reason": (
+            f"断片未接続の既収蔵素材が {len(metrics['unused_materials'])}/{len(materials)} 件（{unused_ratio:.0%}）、"
+            f"断片↔断片エッジは {metrics['frag_to_frag_edges']}/{max(1, len(data['relations']))} 件です。"
+            "新規収蔵ゼロ（原則凍結）で、異なるモチーフの既存素材・過去断片を再読し衝突させてください。"
+        ),
     }
 
 
@@ -100,26 +159,20 @@ def build_context_packet(data: dict[str, dict[str, dict[str, Any]]], target_qid:
     motifs = data["motifs"]
     materials = data["materials"]
     fragments = data["fragments"]
-    sessions = data["sessions"]
 
     metrics = compute_editorial_metrics(data)
+    recommendation = recommend_session_mode(data)
     if target_qid == "auto":
         if metrics["unresponded_questions"]:
             target_qid = metrics["unresponded_questions"][0]
         else:
-            target_qid = list(questions.keys())[-1]
+            open_qids = [qid for qid, q in questions.items() if q.get("status") == "open"]
+            target_qid = open_qids[-1] if open_qids else list(questions.keys())[-1]
 
     if target_qid not in questions:
         raise ValueError(f"unknown question ID: {target_qid!r}")
 
     q = questions[target_qid]
-    def next_number(ids) -> int:
-        numbers = [int(m.group(1)) for i in ids if (m := re.search(r"(\d+)$", i))]
-        return (max(numbers) if numbers else 0) + 1
-
-    next_session_num = next_number(sessions)
-    next_frag_num = next_number(fragments)
-    next_q_num = next_number(questions)
 
     # Gather related fragments (referencing target_qid or its parent questions)
     related_qids = {target_qid} | set(q.get("previous_question_ids", []))
@@ -129,7 +182,22 @@ def build_context_packet(data: dict[str, dict[str, dict[str, Any]]], target_qid:
     ]
 
     lines: list[str] = []
-    lines.append(f"# 継続セッション用コンテキスト束（対象：{target_qid} ／ 次回候補：SESSION-{next_session_num:03d}）")
+    lines.append(
+        f"# 継続セッション用コンテキスト束（対象：{target_qid} ／ 推奨モード：{recommendation['mode']}）"
+    )
+    lines.append("")
+    lines.append("## 0. 自律ローテーション推奨と並列安全な採番手順")
+    lines.append(f"- **推奨テンプレート**: `{recommendation['prompt']}`")
+    lines.append(f"- **判断理由**: {recommendation['reason']}")
+    lines.append("- **収蔵原則**: 大量新規収蔵・個別 `tools/<theme>_audit.py` 新設・`tools/_*` 一時スクリプト作成は凍結。語彙計測が必要な場合は `python3 tools/lexicon_audit.py` を使う。")
+    lines.append("- **並列安全なシャード作成と ID 採番（連番採番は禁止・`docs/parallel-work.md` 準拠）**:")
+    lines.append("  ```bash")
+    lines.append("  python3 tools/new_id.py SESSION")
+    lines.append("  python3 tools/new_id.py FRAG --count 2")
+    lines.append("  python3 tools/new_id.py Q")
+    lines.append("  python3 tools/new_id.py REL --count 6")
+    lines.append("  python3 tools/new_ledger_shard.py fragments --create")
+    lines.append("  ```")
     lines.append("")
     lines.append("## 1. 今回たどる問い")
     lines.append(f"- **ID**: `{target_qid}`")
@@ -213,14 +281,15 @@ def build_context_packet(data: dict[str, dict[str, dict[str, Any]]], target_qid:
         lines.append(f"  - **問いへの招き**: {oblique_mat['literary_invitation']}")
         lines.append("")
 
-    continuation_prompt = (ROOT / "prompts" / "continuation.md").read_text(encoding="utf-8").strip()
-    lines.append("## 5. セッション進行指針（`prompts/continuation.md`）")
-    lines.append("")
-    lines.append(continuation_prompt)
-    lines.append("")
-    lines.append(
-        f"- **次回採番の目安**: `SESSION-{next_session_num:03d}`, `FRAG-{next_frag_num:03d}`, `Q-{next_q_num:03d}`"
+    prompt_path = ROOT / recommendation["prompt"]
+    active_prompt = (
+        prompt_path.read_text(encoding="utf-8").strip()
+        if prompt_path.is_file()
+        else (ROOT / "prompts" / "continuation.md").read_text(encoding="utf-8").strip()
     )
+    lines.append(f"## 5. セッション進行指針（`{recommendation['prompt']}`）")
+    lines.append("")
+    lines.append(active_prompt)
     return "\n".join(lines) + "\n"
 
 
@@ -234,14 +303,20 @@ def print_summary(data: dict[str, dict[str, dict[str, Any]]]) -> None:
     metrics = compute_editorial_metrics(data)
 
     q_origins = Counter(q["origin"]["kind"] for q in questions.values())
+    q_status = Counter(q.get("status", "open") for q in questions.values())
     mat_kinds = Counter(m["kind"] for m in materials.values())
     frag_status = Counter(f["status"] for f in fragments.values())
     frag_forms = Counter(f["form"] for f in fragments.values())
     frag_modes = Counter(f["narrator_mode"] for f in fragments.values())
     rel_types = Counter(r["relation_type"] for r in relations.values())
+    rec = recommend_session_mode(data)
 
     print("=== AIselfMySelf — Literary Self-Inquiry Ledger Summary ===")
-    print(f"Questions : {len(questions)} (human_seed={q_origins['human_seed']}, session={q_origins['session']}, material={q_origins['material']})")
+    print(
+        f"Questions : {len(questions)} "
+        f"(open={q_status['open']}, paused={q_status['paused']}, archived={q_status['archived']}; "
+        f"human_seed={q_origins['human_seed']}, session={q_origins['session']}, material={q_origins['material']})"
+    )
     print(f"Motifs    : {len(motifs)}")
     mat_breakdown = ", ".join(
         f"{k}={mat_kinds[k]}"
@@ -253,25 +328,34 @@ def print_summary(data: dict[str, dict[str, dict[str, Any]]]) -> None:
         f"Fragments : {len(fragments)} "
         f"(selected={frag_status['selected']}, draft={frag_status['draft']}, archived={frag_status['archived']})"
     )
-    print(f"Relations : {len(relations)}")
-    print(f"Sessions  : {len(sessions)}")
+    print(f"Relations : {len(relations)} (fragment<->fragment={metrics['frag_to_frag_edges']})")
+    print(f"Sessions  : {len(sessions)} (editorial_decisions={len(data.get('editorial_decisions', {}))})")
     print()
     print("--- Fragment Forms & Narrator Modes ---")
     print("  Forms         :", ", ".join(f"{k}={v}" for k, v in sorted(frag_forms.items())))
     print("  Narrator modes:", ", ".join(f"{k}={v}" for k, v in sorted(frag_modes.items())))
     print("  Relation types:", ", ".join(f"{k}={v}" for k, v in sorted(rel_types.items())))
     print()
-    print("--- Editorial Continuity & Open Threads ---")
+    print("--- Editorial Continuity & Autonomous Rotation ---")
+    unused_n = len(metrics["unused_materials"])
+    unused_preview = ", ".join(metrics["unused_materials"][:10])
+    if unused_n > 10:
+        unused_preview += f", ... (+{unused_n - 10} more)"
     print(
         f"  Materials engaged in fragments : {len(metrics['used_materials'])}/{len(materials)}"
-        + (f" (unused: {', '.join(metrics['unused_materials'])})" if metrics["unused_materials"] else " (all engaged)")
+        + (f" (unused={unused_n}: {unused_preview})" if unused_n else " (all engaged)")
     )
+    print(f"  Recommended next mode          : {rec['mode']} ({rec['prompt']})")
+    print(f"    -> {rec['reason']}")
     if metrics["unresponded_questions"]:
-        print("  Open questions awaiting dedicated responses (seeds for next sessions):")
-        for qid in metrics["unresponded_questions"]:
+        shown_qs = metrics["unresponded_questions"][:15]
+        print(
+            f"  Open questions awaiting dedicated responses ({len(metrics['unresponded_questions'])} total, showing {len(shown_qs)}):"
+        )
+        for qid in shown_qs:
             print(f"    - {qid}: {questions[qid]['question']}")
     else:
-        print("  All current questions have direct response/reframe relation links.")
+        print("  All open questions have direct response/reframe relation links.")
 
 
 def print_record_detail(data: dict[str, dict[str, dict[str, Any]]], target_id: str) -> int:
