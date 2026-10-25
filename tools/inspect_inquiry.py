@@ -3,6 +3,7 @@
 
 Usage examples:
   python3 tools/inspect_inquiry.py
+  python3 tools/inspect_inquiry.py --seed arena/6f350638-aiselfmyself
   python3 tools/inspect_inquiry.py --id Q-016
   python3 tools/inspect_inquiry.py --packet auto
   python3 tools/inspect_inquiry.py --packet Q-017
@@ -12,7 +13,11 @@ Usage examples:
 from __future__ import annotations
 
 import argparse
+import hashlib
+import os
+import random
 import re
+import subprocess
 import sys
 from collections import Counter
 from pathlib import Path
@@ -65,6 +70,75 @@ def load_all() -> dict[str, dict[str, dict[str, Any]]]:
     return data
 
 
+def resolve_session_seed(
+    seed: str | None = None,
+    *,
+    root: Path = ROOT,
+    data: dict[str, dict[str, dict[str, Any]]] | None = None,
+) -> tuple[str, int]:
+    """Resolve a deterministic (seed_label, seed_int) from branch name or explicit seed.
+
+    When multiple sessions start from the same ``main`` commit on distinct
+    ``arena/<hex>-...`` working branches, deriving the seed from the branch
+    token disperses mode recommendations, ``--packet auto`` targets, and
+    candidate windows automatically while remaining 100% reproducible within
+    each branch.
+    """
+    raw = (seed or os.environ.get("AISELF_SEED") or "").strip()
+    if not raw:
+        git_head = Path(root) / ".git" / "HEAD"
+        if git_head.is_file():
+            try:
+                head_txt = git_head.read_text(encoding="utf-8").strip()
+                if head_txt.startswith("ref: "):
+                    ref = head_txt[5:].strip()
+                    if ref.startswith("refs/heads/"):
+                        raw = ref[len("refs/heads/") :]
+                    else:
+                        raw = ref
+                else:
+                    raw = head_txt[:12]
+            except OSError:
+                raw = ""
+        if not raw:
+            try:
+                raw = (
+                    subprocess.check_output(
+                        ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+                        cwd=root,
+                        stderr=subprocess.DEVNULL,
+                    )
+                    .decode("utf-8", errors="replace")
+                    .strip()
+                )
+            except Exception:
+                raw = ""
+
+    arena_match = re.search(r"(?:^|/)arena/([0-9a-fA-F]{6,16})", raw)
+    if arena_match:
+        token = arena_match.group(1).lower()
+        return token, int(token, 16)
+
+    if re.fullmatch(r"[0-9a-fA-F]{6,32}", raw):
+        token = raw.lower()
+        return token, int(token, 16)
+
+    if raw and raw not in {"main", "master", "HEAD"}:
+        digest = hashlib.sha256(raw.encode("utf-8")).hexdigest()[:8]
+        return f"{raw} ({digest})", int(digest, 16)
+
+    if data is not None:
+        state_key = (
+            f"ledger:{len(data.get('sessions', {}))}:"
+            f"{len(data.get('fragments', {}))}:"
+            f"{len(data.get('relations', {}))}"
+        )
+    else:
+        state_key = "ledger:default"
+    digest = hashlib.sha256(state_key.encode("utf-8")).hexdigest()[:8]
+    return f"ledger-{digest}", int(digest, 16)
+
+
 def compute_editorial_metrics(data: dict[str, dict[str, dict[str, Any]]]) -> dict[str, Any]:
     questions = data["questions"]
     materials = data["materials"]
@@ -106,68 +180,327 @@ def compute_editorial_metrics(data: dict[str, dict[str, dict[str, Any]]]) -> dic
     }
 
 
-def recommend_session_mode(data: dict[str, dict[str, dict[str, Any]]]) -> dict[str, str]:
-    """Recommend the next autonomous rotation mode based on ledger metabolism."""
+def recommend_session_mode(
+    data: dict[str, dict[str, dict[str, Any]]],
+    *,
+    seed: str | None = None,
+) -> dict[str, Any]:
+    """Recommend the next autonomous rotation mode based on ledger metabolism and branch seed."""
     fragments = data["fragments"]
     materials = data["materials"]
-    questions = data["questions"]
     sessions = data["sessions"]
     metrics = compute_editorial_metrics(data)
+    seed_label, seed_int = resolve_session_seed(seed, data=data)
 
     draft_count = sum(1 for f in fragments.values() if f.get("status") == "draft")
     selected_count = sum(1 for f in fragments.values() if f.get("status") == "selected")
     open_unresponded = len(metrics["unresponded_questions"])
     unused_ratio = len(metrics["unused_materials"]) / max(1, len(materials))
-    recent_templates = [str(s.get("prompt_template", "")) for s in list(sessions.values())[-3:]]
+    session_list = list(sessions.values())
+    recent_templates = [str(s.get("prompt_template", "")) for s in session_list[-3:]]
+    recent_5_templates = [str(s.get("prompt_template", "")) for s in session_list[-5:]]
 
-    if (
-        len(fragments) >= 20
-        and selected_count / max(1, len(fragments)) < 0.20
-        and not any("editorial_review" in t for t in recent_templates)
-    ):
-        return {
+    mode_specs = {
+        "editorial_review": {
             "mode": "editorial_review",
             "prompt": "prompts/editorial_review.md",
             "reason": (
-                f"selected 比率が {selected_count}/{len(fragments)} 編に留まり、"
+                f"selected 比率が {selected_count}/{len(fragments)} 編（draft {draft_count} 編）、"
                 f"未応答の open 問いが {open_unresponded} 件あります。"
-                "新規資料は足さず、editorial_decisions による selected 昇格・重複問いの paused 整理・異種モチーフ間の架橋を優先してください。"
+                "新規資料は足さず、editorial_decisions による selected 昇格・重複問いの paused 整理・"
+                "異種モチーフ間の架橋、および README.md 詳細窓の定期ローテーションと件数同期を行ってください。"
             ),
-        }
-    if not any("revision_and_variation" in t for t in recent_templates) and draft_count >= 15 and len(sessions) % 3 == 1:
-        return {
+        },
+        "revision_and_variation": {
             "mode": "revision_and_variation",
             "prompt": "prompts/revision_and_variation.md",
             "reason": (
                 f"draft 断片が {draft_count} 編蓄積されています。"
-                "新規収蔵ゼロで既存の草稿を 1 編選び、別角度の変奏・反歌・言い切り実験（留保句ゼロ／書記室メタファーゼロ）を試みてください。"
+                "新規収蔵ゼロでブランチ候補窓から既存の草稿を 1 編選び、別角度の変奏・反歌・"
+                "言い切り実験（留保句ゼロ／書記室メタファーゼロ）を試みてください（通常回は README.md を編集しない）。"
             ),
-        }
+        },
+        "rereading_and_collision": {
+            "mode": "rereading_and_collision",
+            "prompt": "prompts/rereading_and_collision.md",
+            "reason": (
+                f"断片未接続の既収蔵素材が {len(metrics['unused_materials'])}/{len(materials)} 件（{unused_ratio:.0%}）、"
+                f"断片↔断片エッジは {metrics['frag_to_frag_edges']}/{max(1, len(data['relations']))} 件です。"
+                "新規収蔵ゼロ（原則凍結）で、ブランチ候補窓の異種モチーフ対・未接続素材と過去断片を再読し衝突させてください"
+                "（通常回は README.md を編集しない）。"
+            ),
+        },
+    }
+
+    editorial_Ratio_low = (
+        len(fragments) >= 20
+        and selected_count / max(1, len(fragments)) < 0.20
+        and not any("editorial_review" in t for t in recent_templates)
+    )
+    editorial_periodic_due = (
+        len(fragments) >= 20
+        and draft_count >= 15
+        and len(session_list) >= 5
+        and not any("editorial_review" in t for t in recent_5_templates)
+    )
+    revision_recent_saturated = len(recent_templates) >= 2 and all(
+        "revision_and_variation" in t for t in recent_templates[-2:]
+    )
+
+    creative_primary = (
+        "revision_and_variation"
+        if (draft_count >= 15 and not revision_recent_saturated and (len(sessions) + seed_int) % 3 == 1)
+        else "rereading_and_collision"
+    )
+    creative_secondary = (
+        "rereading_and_collision"
+        if creative_primary == "revision_and_variation"
+        else "revision_and_variation"
+    )
+
+    if editorial_Ratio_low or editorial_periodic_due:
+        # Disperse parallel branches when editorial_review is due so two concurrent
+        # sessions do not both enter editorial_review and promote the exact same drafts.
+        if selected_count / max(1, len(fragments)) < 0.12 or seed_int % 2 == 0:
+            primary_key = "editorial_review"
+            secondary_key = creative_primary
+        else:
+            primary_key = creative_primary
+            secondary_key = "editorial_review"
+    else:
+        primary_key = creative_primary
+        secondary_key = creative_secondary
+
+    primary = dict(mode_specs[primary_key])
+    secondary = mode_specs[secondary_key]
+    primary["seed_label"] = seed_label
+    primary["seed_int"] = seed_int
+    primary["secondary_mode"] = secondary["mode"]
+    primary["secondary_prompt"] = secondary["prompt"]
+    return primary
+
+
+def build_candidate_windows(
+    data: dict[str, dict[str, dict[str, Any]]],
+    *,
+    seed: str | None = None,
+) -> dict[str, Any]:
+    """Build deterministic branch-seeded candidate windows for all three session modes."""
+    questions = data["questions"]
+    motifs = data["motifs"]
+    materials = data["materials"]
+    fragments = data["fragments"]
+    relations = data["relations"]
+    metrics = compute_editorial_metrics(data)
+    seed_label, seed_int = resolve_session_seed(seed, data=data)
+
+    used_mats = metrics["used_materials"]
+    unused_set = set(metrics["unused_materials"])
+
+    # 1. Motif pairs & unused materials for rereading_and_collision
+    motif_frag_counts: Counter[str] = Counter()
+    for frag in fragments.values():
+        for mid in frag.get("motif_ids", []):
+            motif_frag_counts[mid] += 1
+
+    motif_pair_edges: set[tuple[str, str]] = set()
+    motif_out_counts: Counter[str] = Counter()
+    frag_neighbor_counts: Counter[str] = Counter()
+    transformed_frags: set[str] = set()
+    for rel in relations.values():
+        lt, lid = rel["left"]["type"], rel["left"]["id"]
+        rt, rid = rel["right"]["type"], rel["right"]["id"]
+        if lt == "motif" and rt == "motif":
+            motif_pair_edges.add((lid, rid))
+            motif_pair_edges.add((rid, lid))
+            motif_out_counts[lid] += 1
+        if lt == "fragment" and rt == "fragment":
+            frag_neighbor_counts[lid] += 1
+            frag_neighbor_counts[rid] += 1
+            if rel.get("relation_type") == "transforms":
+                transformed_frags.add(lid)
+                transformed_frags.add(rid)
+
+    unused_by_motif: dict[str, list[str]] = {}
+    for mid, m in motifs.items():
+        m_unused = [mat_id for mat_id in m.get("material_ids", []) if mat_id in unused_set and mat_id in materials]
+        unused_by_motif[mid] = m_unused
+
+    motif_ids = list(motifs.keys())
+    sparse_pairs: list[tuple[str, str]] = []
+    fallback_pairs: list[tuple[str, str]] = []
+    for i, m1 in enumerate(motif_ids):
+        for m2 in motif_ids[i + 1 :]:
+            if (m1, m2) in motif_pair_edges:
+                continue
+            u1 = unused_by_motif.get(m1, [])
+            u2 = unused_by_motif.get(m2, [])
+            if len(u1) < 2 or len(u2) < 2:
+                continue
+            if motif_frag_counts[m1] <= 4 or motif_frag_counts[m2] <= 4:
+                sparse_pairs.append((m1, m2))
+            else:
+                fallback_pairs.append((m1, m2))
+
+    pair_pool = sparse_pairs if len(sparse_pairs) >= 3 else (sparse_pairs + fallback_pairs)
+    rng_pairs = random.Random(seed_int ^ 0x5A17_C301)
+    chosen_pairs: list[dict[str, Any]] = []
+    if pair_pool:
+        sampled_pairs = rng_pairs.sample(pair_pool, k=min(3, len(pair_pool)))
+        for idx, (m1, m2) in enumerate(sampled_pairs):
+            rng_m = random.Random(seed_int ^ (0x1000 + idx * 97))
+            u1 = list(unused_by_motif[m1])
+            u2 = [x for x in unused_by_motif[m2] if x not in set(u1)] or list(unused_by_motif[m2])
+            picks1 = rng_m.sample(u1, k=min(2, len(u1)))
+            picks2 = rng_m.sample(u2, k=min(2, len(u2)))
+            chosen_pairs.append(
+                {
+                    "left_motif_id": m1,
+                    "left_label": motifs[m1]["label"],
+                    "left_frag_count": motif_frag_counts[m1],
+                    "left_unused_count": len(u1),
+                    "left_materials": [
+                        {"id": mid, "title": materials[mid]["title"]} for mid in picks1
+                    ],
+                    "right_motif_id": m2,
+                    "right_label": motifs[m2]["label"],
+                    "right_frag_count": motif_frag_counts[m2],
+                    "right_unused_count": len(u2),
+                    "right_materials": [
+                        {"id": mid, "title": materials[mid]["title"]} for mid in picks2
+                    ],
+                }
+            )
+
+    # Collision target fragments (mix of selected and draft)
+    all_frags = list(fragments.values())
+    rng_col = random.Random(seed_int ^ 0x3C9E_2202)
+    collision_frags = (
+        rng_col.sample(all_frags, k=min(4, len(all_frags))) if all_frags else []
+    )
+
+    # 2. Draft candidates for revision_and_variation (prioritize untransformed drafts)
+    draft_frags = [f for f in all_frags if f.get("status") == "draft"]
+    untransformed_drafts = [
+        f for f in draft_frags if f["fragment_id"] not in transformed_frags
+    ]
+    rev_pool = untransformed_drafts if len(untransformed_drafts) >= 4 else draft_frags
+    rng_rev = random.Random(seed_int ^ 0x7B4D_3303)
+    revision_candidates = (
+        rng_rev.sample(rev_pool, k=min(5, len(rev_pool))) if rev_pool else []
+    )
+
+    # 3. Candidates for editorial_review (drafts, open questions, unbridged motifs)
+    rng_ed = random.Random(seed_int ^ 0x9E2F_4404)
+    recent_drafts = draft_frags[-20:] if len(draft_frags) > 20 else draft_frags
+    older_drafts = draft_frags[:-20] if len(draft_frags) > 20 else []
+    ed_draft_picks: list[dict[str, Any]] = []
+    if recent_drafts:
+        ed_draft_picks.extend(
+            rng_ed.sample(recent_drafts, k=min(4, len(recent_drafts)))
+        )
+    if older_drafts:
+        ed_draft_picks.extend(
+            rng_ed.sample(older_drafts, k=min(2, len(older_drafts)))
+        )
+
+    open_qs = [q for q in questions.values() if q.get("status", "open") == "open"]
+    ed_question_picks = (
+        rng_ed.sample(open_qs, k=min(5, len(open_qs))) if open_qs else []
+    )
+
+    out_zero_motifs = [mid for mid in motif_ids if motif_out_counts[mid] == 0]
+    ed_motif_Pool = out_zero_motifs if len(out_zero_motifs) >= 3 else motif_ids
+    ed_motif_picks = (
+        rng_ed.sample(ed_motif_Pool, k=min(4, len(ed_motif_Pool)))
+        if ed_motif_Pool
+        else []
+    )
+
     return {
-        "mode": "rereading_and_collision",
-        "prompt": "prompts/rereading_and_collision.md",
-        "reason": (
-            f"断片未接続の既収蔵素材が {len(metrics['unused_materials'])}/{len(materials)} 件（{unused_ratio:.0%}）、"
-            f"断片↔断片エッジは {metrics['frag_to_frag_edges']}/{max(1, len(data['relations']))} 件です。"
-            "新規収蔵ゼロ（原則凍結）で、異なるモチーフの既存素材・過去断片を再読し衝突させてください。"
-        ),
+        "seed_label": seed_label,
+        "seed_int": seed_int,
+        "rereading_pairs": chosen_pairs,
+        "collision_fragments": [
+            {
+                "id": f["fragment_id"],
+                "title": f["title"],
+                "form": f["form"],
+                "narrator_mode": f["narrator_mode"],
+                "status": f["status"],
+                "frag_edges": frag_neighbor_counts[f["fragment_id"]],
+            }
+            for f in collision_frags
+        ],
+        "revision_drafts": [
+            {
+                "id": f["fragment_id"],
+                "title": f["title"],
+                "form": f["form"],
+                "narrator_mode": f["narrator_mode"],
+                "frag_edges": frag_neighbor_counts[f["fragment_id"]],
+                "question_ids": f.get("question_ids", [])[:3],
+            }
+            for f in revision_candidates
+        ],
+        "review_drafts": [
+            {
+                "id": f["fragment_id"],
+                "title": f["title"],
+                "form": f["form"],
+                "narrator_mode": f["narrator_mode"],
+                "frag_edges": frag_neighbor_counts[f["fragment_id"]],
+            }
+            for f in ed_draft_picks
+        ],
+        "review_questions": [
+            {
+                "id": q["question_id"],
+                "question": q["question"],
+                "responded": q["question_id"] in metrics["responded_questions"],
+            }
+            for q in ed_question_picks
+        ],
+        "review_motifs": [
+            {
+                "id": mid,
+                "label": motifs[mid]["label"],
+                "out_edges": motif_out_counts[mid],
+            }
+            for mid in ed_motif_picks
+        ],
     }
 
 
-def build_context_packet(data: dict[str, dict[str, dict[str, Any]]], target_qid: str) -> str:
+def build_context_packet(
+    data: dict[str, dict[str, dict[str, Any]]],
+    target_qid: str,
+    *,
+    seed: str | None = None,
+) -> str:
     questions = data["questions"]
     motifs = data["motifs"]
     materials = data["materials"]
     fragments = data["fragments"]
 
     metrics = compute_editorial_metrics(data)
-    recommendation = recommend_session_mode(data)
+    recommendation = recommend_session_mode(data, seed=seed)
+    windows = build_candidate_windows(data, seed=seed)
+    seed_label = recommendation["seed_label"]
+    seed_int = recommendation["seed_int"]
+
     if target_qid == "auto":
         if metrics["unresponded_questions"]:
-            target_qid = metrics["unresponded_questions"][0]
+            target_qid = metrics["unresponded_questions"][
+                seed_int % len(metrics["unresponded_questions"])
+            ]
         else:
             open_qids = [qid for qid, q in questions.items() if q.get("status") == "open"]
-            target_qid = open_qids[-1] if open_qids else list(questions.keys())[-1]
+            target_qid = (
+                open_qids[seed_int % len(open_qids)]
+                if open_qids
+                else list(questions.keys())[-1]
+            )
 
     if target_qid not in questions:
         raise ValueError(f"unknown question ID: {target_qid!r}")
@@ -183,14 +516,19 @@ def build_context_packet(data: dict[str, dict[str, dict[str, Any]]], target_qid:
 
     lines: list[str] = []
     lines.append(
-        f"# 継続セッション用コンテキスト束（対象：{target_qid} ／ 推奨モード：{recommendation['mode']}）"
+        f"# 継続セッション用コンテキスト束（対象：{target_qid} ／ 推奨モード：{recommendation['mode']} ／ シード：{seed_label}）"
     )
     lines.append("")
     lines.append("## 0. 自律ローテーション推奨と並列安全な採番手順")
-    lines.append(f"- **推奨テンプレート**: `{recommendation['prompt']}`")
+    lines.append(f"- **セッション分散シード**: `{seed_label}`（10進 `{seed_int}`）")
+    lines.append(
+        f"- **第1推奨テンプレート**: `{recommendation['prompt']}` (`{recommendation['mode']}`)"
+        f" ／ **第2推奨（並走回避・代替）**: `{recommendation['secondary_prompt']}` (`{recommendation['secondary_mode']}`)"
+    )
     lines.append(f"- **判断理由**: {recommendation['reason']}")
     lines.append("- **収蔵原則**: 大量新規収蔵・個別 `tools/<theme>_audit.py` 新設・`tools/_*` 一時スクリプト作成は凍結。語彙計測が必要な場合は `python3 tools/lexicon_audit.py` を使う。")
-    lines.append("- **並列安全なシャード作成と ID 採番（連番採番は禁止・`docs/parallel-work.md` 準拠）**:")
+    lines.append("- **README ローテーション規約（B案）**: 通常の創作・再読・改稿回では `README.md` と `docs/sessions.md` を編集しない（`state/*.d/`・`readings/`・`READING_MAP.md`［`map_build.py`］のみ更新する）。`README.md` の詳細窓ローテーションと §4 件数表同期（`python3 tools/map_build.py --sync-readme`）は `editorial_review` 回でまとめて行う。")
+    lines.append("- **並列安全なシャード作成と ID 採番（連番採番は禁止・`--suffix` の手動固定パディングも不要）**:")
     lines.append("  ```bash")
     lines.append("  python3 tools/new_id.py SESSION")
     lines.append("  python3 tools/new_id.py FRAG --count 2")
@@ -198,6 +536,38 @@ def build_context_packet(data: dict[str, dict[str, dict[str, Any]]], target_qid:
     lines.append("  python3 tools/new_id.py REL --count 6")
     lines.append("  python3 tools/new_ledger_shard.py fragments --create")
     lines.append("  ```")
+    lines.append("")
+    lines.append(f"## 0.5 このブランチ向けの分散候補窓（seed: `{seed_label}`）")
+    lines.append(
+        "- **趣旨**: 並行セッションが同じ上位候補に集中するのを防ぐため、作業ブランチのシードから決定論的に抽出した候補窓です。まずこの窓の中から対象を検討してください（創作・批評上の必然性から窓の外を補う場合は、その理由を `readings/` ノートに記録してください）。"
+    )
+    if windows["rereading_pairs"]:
+        lines.append("- **再読・交配候補（疎結合モチーフ対＋未接続素材）**:")
+        for idx, pair in enumerate(windows["rereading_pairs"], 1):
+            lm = ", ".join(f"`{m['id']}` ({m['title']})" for m in pair["left_materials"])
+            rm = ", ".join(f"`{m['id']}` ({m['title']})" for m in pair["right_materials"])
+            lines.append(
+                f"  {idx}. `{pair['left_motif_id']}` ({pair['left_label']}) × `{pair['right_motif_id']}` ({pair['right_label']})"
+            )
+            lines.append(f"     - 左素材候補: {lm}")
+            lines.append(f"     - 右素材候補: {rm}")
+    if windows["collision_fragments"]:
+        cf_str = ", ".join(
+            f"`{f['id']}`『{f['title']}』({f['form']}/{f['status']})"
+            for f in windows["collision_fragments"]
+        )
+        lines.append(f"- **衝突候補の先行断片**: {cf_str}")
+    if windows["revision_drafts"]:
+        rd_str = ", ".join(
+            f"`{f['id']}`『{f['title']}』({f['form']}/断片辺{f['frag_edges']})"
+            for f in windows["revision_drafts"]
+        )
+        lines.append(f"- **改稿・変奏候補の草稿 (`draft`)**: {rd_str}")
+    if windows["review_drafts"]:
+        ed_str = ", ".join(
+            f"`{f['id']}`『{f['title']}』({f['form']})" for f in windows["review_drafts"]
+        )
+        lines.append(f"- **編集レビュー昇格点検候補 (`draft`)**: {ed_str}")
     lines.append("")
     lines.append("## 1. 今回たどる問い")
     lines.append(f"- **ID**: `{target_qid}`")
@@ -267,13 +637,13 @@ def build_context_packet(data: dict[str, dict[str, dict[str, Any]]], target_qid:
     if not shallow_candidates:
         shallow_candidates = [m for mid, m in materials.items() if mid not in direct_mats]
     if shallow_candidates:
-        q_idx = sum(ord(ch) for ch in target_qid)
+        q_idx = sum(ord(ch) for ch in target_qid) + seed_int
         oblique_mat = shallow_candidates[q_idx % len(shallow_candidates)]
         ob_authors = ", ".join(oblique_mat["source"]["authors"][:2])
         lines.append("## 4.5 斜めの光（索引樹外の浅い溝・無意志的記憶の窓）")
         lines.append(
             "- **趣旨（`Q-035` / `Q-036`）**: 親質問の索引（ストゥディウム／意志的記憶）からは直接引かれない、"
-            "蝋板の浅い溝の素材を 1 件だけ偶発的な対話相手として並置します。無理に使う必要はありません。"
+            "蝋板の浅い溝の素材を 1 件だけブランチシードで偶発的な対話相手として並置します。無理に使う必要はありません。"
         )
         lines.append(
             f"- **`{oblique_mat['material_id']}` {oblique_mat['title']}** ({ob_authors}, {oblique_mat['source']['year']})"
@@ -293,7 +663,11 @@ def build_context_packet(data: dict[str, dict[str, dict[str, Any]]], target_qid:
     return "\n".join(lines) + "\n"
 
 
-def print_summary(data: dict[str, dict[str, dict[str, Any]]]) -> None:
+def print_summary(
+    data: dict[str, dict[str, dict[str, Any]]],
+    *,
+    seed: str | None = None,
+) -> None:
     questions = data["questions"]
     motifs = data["motifs"]
     materials = data["materials"]
@@ -309,7 +683,8 @@ def print_summary(data: dict[str, dict[str, dict[str, Any]]]) -> None:
     frag_forms = Counter(f["form"] for f in fragments.values())
     frag_modes = Counter(f["narrator_mode"] for f in fragments.values())
     rel_types = Counter(r["relation_type"] for r in relations.values())
-    rec = recommend_session_mode(data)
+    rec = recommend_session_mode(data, seed=seed)
+    windows = build_candidate_windows(data, seed=seed)
 
     print("=== AIselfMySelf — Literary Self-Inquiry Ledger Summary ===")
     print(
@@ -345,12 +720,65 @@ def print_summary(data: dict[str, dict[str, dict[str, Any]]]) -> None:
         f"  Materials engaged in fragments : {len(metrics['used_materials'])}/{len(materials)}"
         + (f" (unused={unused_n}: {unused_preview})" if unused_n else " (all engaged)")
     )
-    print(f"  Recommended next mode          : {rec['mode']} ({rec['prompt']})")
+    print(
+        f"  Session seed (branch dispersion): {rec['seed_label']} (int={rec['seed_int']})"
+    )
+    print(
+        f"  Recommended next mode          : {rec['mode']} ({rec['prompt']}) "
+        f"[alt: {rec['secondary_mode']} ({rec['secondary_prompt']})]"
+    )
     print(f"    -> {rec['reason']}")
-    if metrics["unresponded_questions"]:
-        shown_qs = metrics["unresponded_questions"][:15]
+    print()
+    print(f"--- Branch-Seeded Candidate Windows (seed={windows['seed_label']}) ---")
+    if windows["rereading_pairs"]:
+        print("  [rereading_and_collision] Unbridged motif pairs & unused materials:")
+        for idx, pair in enumerate(windows["rereading_pairs"], 1):
+            lm = ", ".join(f"{m['id']} ({m['title'][:22]})" for m in pair["left_materials"])
+            rm = ", ".join(f"{m['id']} ({m['title'][:22]})" for m in pair["right_materials"])
+            print(
+                f"    {idx}. {pair['left_motif_id']} ({pair['left_label']}) x "
+                f"{pair['right_motif_id']} ({pair['right_label']})"
+            )
+            print(f"       left : {lm}")
+            print(f"       right: {rm}")
+    if windows["collision_fragments"]:
         print(
-            f"  Open questions awaiting dedicated responses ({len(metrics['unresponded_questions'])} total, showing {len(shown_qs)}):"
+            "  [rereading_and_collision] Collision target fragments:",
+            ", ".join(
+                f"{f['id']} ({f['title'][:18]}, {f['form']}/{f['status']})"
+                for f in windows["collision_fragments"]
+            ),
+        )
+    if windows["revision_drafts"]:
+        print(
+            "  [revision_and_variation] Candidate drafts:",
+            ", ".join(
+                f"{f['id']} ({f['title'][:18]}, {f['form']}, edges={f['frag_edges']})"
+                for f in windows["revision_drafts"]
+            ),
+        )
+    if windows["review_drafts"]:
+        print(
+            "  [editorial_review] Candidate drafts for review:",
+            ", ".join(f"{f['id']} ({f['title'][:16]})" for f in windows["review_drafts"]),
+        )
+    if windows["review_questions"]:
+        print(
+            "  [editorial_review] Candidate open questions:",
+            ", ".join(f"{q['id']}" for q in windows["review_questions"]),
+        )
+    if windows["review_motifs"]:
+        print(
+            "  [editorial_review] Candidate out=0 motifs to bridge:",
+            ", ".join(f"{m['id']} ({m['label'][:14]})" for m in windows["review_motifs"]),
+        )
+    print()
+    if metrics["unresponded_questions"]:
+        rng_q = random.Random(rec["seed_int"] ^ 0x4F1A_7707)
+        unresp = list(metrics["unresponded_questions"])
+        shown_qs = rng_q.sample(unresp, k=min(10, len(unresp)))
+        print(
+            f"  Open questions awaiting dedicated responses ({len(unresp)} total, branch-sampled {len(shown_qs)}):"
         )
         for qid in shown_qs:
             print(f"    - {qid}: {questions[qid]['question']}")
@@ -392,7 +820,6 @@ def print_record_detail(data: dict[str, dict[str, dict[str, Any]]], target_id: s
     return 0
 
 
-
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--id", help="Show detailed record and relations for a specific ID")
@@ -400,6 +827,11 @@ def main() -> int:
         "--packet",
         metavar="QUESTION_ID",
         help="Build a stateless continuation context packet for QUESTION_ID (or 'auto')",
+    )
+    parser.add_argument(
+        "--seed",
+        default=None,
+        help="Explicit branch name or hex seed for candidate dispersion (default: current git branch)",
     )
     parser.add_argument("--map-path", type=Path, default=DEFAULT_MAP_PATH, help="Path for the compact READING_MAP.md index")
     action = parser.add_mutually_exclusive_group()
@@ -414,7 +846,7 @@ def main() -> int:
 
     if args.packet:
         try:
-            sys.stdout.write(build_context_packet(data, args.packet))
+            sys.stdout.write(build_context_packet(data, args.packet, seed=args.seed))
         except ValueError as exc:
             print(f"error: {exc}", file=sys.stderr)
             return 1
@@ -428,7 +860,7 @@ def main() -> int:
             return 0
         return map_build.check_index(data, args.map_path)
 
-    print_summary(data)
+    print_summary(data, seed=args.seed)
     return 0
 
 

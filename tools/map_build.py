@@ -28,6 +28,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -39,6 +40,7 @@ import ledger_io  # noqa: E402
 
 DEFAULT_MAP_DIR = ROOT / "map"
 DEFAULT_INDEX_PATH = ROOT / "READING_MAP.md"
+DEFAULT_README_PATH = ROOT / "README.md"
 
 # Range-partition sizes.  New records land in the tail shard; earlier shards are
 # stable, so regenerating the map after one session touches only the tail files.
@@ -581,12 +583,164 @@ def size_report(manifest: dict[str, Any]) -> None:
     print(f"  {total:>10,}  TOTAL ({len(manifest['shards'])} shards)")
 
 
+def sync_readme_counts(
+    data: dict[str, dict[str, dict[str, Any]]],
+    readme_path: Path = DEFAULT_README_PATH,
+    readings_dir: Path = ROOT / "readings",
+) -> bool:
+    """Synchronize ledger and readings counts in README.md (§1, §2, and §4 table).
+
+    Returns True if README.md was modified, False if already in sync.
+    """
+    if not readme_path.is_file():
+        return False
+
+    original = readme_path.read_text(encoding="utf-8")
+    text = original
+
+    questions = data["questions"]
+    motifs = data["motifs"]
+    materials = data["materials"]
+    fragments = data["fragments"]
+    relations = data["relations"]
+    sessions = data["sessions"]
+    read_log = data.get("read_log", {})
+    if "errata" in data:
+        errata_count = len(data["errata"])
+    else:
+        from validate_seed import load_jsonl
+
+        errata_path = readme_path.parent / "state" / "errata.jsonl"
+        if not (errata_path.exists() or errata_path.with_suffix(".d").is_dir()):
+            errata_path = ROOT / "state" / "errata.jsonl"
+        errata_count = (
+            len(load_jsonl(errata_path, "errata_id", []))
+            if errata_path.exists() or errata_path.with_suffix(".d").is_dir()
+            else 0
+        )
+    editorial_decisions = data.get("editorial_decisions", {})
+
+    q_status = Counter(q.get("status", "open") for q in questions.values())
+    q_origins = Counter(q["origin"]["kind"] for q in questions.values())
+    mat_kinds = Counter(m["kind"] for m in materials.values())
+    frag_status = Counter(f["status"] for f in fragments.values())
+    frag_modes = Counter(f["narrator_mode"] for f in fragments.values())
+    frag_to_frag = sum(
+        1
+        for r in relations.values()
+        if r.get("left", {}).get("type") == "fragment"
+        and r.get("right", {}).get("type") == "fragment"
+    )
+    readings_count = len(list(readings_dir.glob("*.md"))) if readings_dir.is_dir() else 0
+
+    # §1 session total note
+    text = re.sub(
+        r"（全\d+セッションの要約全文および見出し目録は、一字一句削らず \[`docs/sessions\.md`\]\(docs/sessions\.md\) に保管しています。上の3件が詳細窓です。）",
+        f"（全{len(sessions)}セッションの要約全文および見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。上の3件が詳細窓です。）",
+        text,
+    )
+    # §2 readings total note
+    if readings_count > 0:
+        text = re.sub(
+            r"（直近5件の詳細窓。過去全\d+本の注釈付き目録・リンク一覧は \[`docs/sessions\.md`\]\(docs/sessions\.md\)「報告注釈目録」を参照）：",
+            f"（直近5件の詳細窓。過去全{readings_count}本の注釈付き目録・リンク一覧は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」を参照）：",
+            text,
+        )
+
+    # §4 table rows
+    text = re.sub(
+        r"^\| 問い \| `state/questions\.jsonl`＋`state/questions\.d/` \| \d+ \| .* \|$",
+        (
+            f"| 問い | `state/questions.jsonl`＋`state/questions.d/` | {len(questions)} | "
+            f"開いた問い `open` {q_status['open']}件＋整理休止 `paused` {q_status['paused']}件"
+            f"（初期シード{q_origins['human_seed']}件＋セッション派生{q_origins['session']}件＋資料派生{q_origins['material']}件） |"
+        ),
+        text,
+        flags=re.MULTILINE,
+    )
+    text = re.sub(
+        r"^(\| モチーフ \| `state/motifs\.jsonl`＋`state/motifs\.d/` \| )\d+( \| .*?など)\d+(本の反復モチーフ \|)$",
+        rf"\g<1>{len(motifs)}\g<2>{len(motifs)}\g<3>",
+        text,
+        flags=re.MULTILINE,
+    )
+    text = re.sub(
+        r"^\| 素材 \| `state/materials\.jsonl`＋`state/materials\.d/` \| \d+ \| .* \|$",
+        (
+            f"| 素材 | `state/materials.jsonl`＋`state/materials.d/` | {len(materials)} | "
+            f"文学・哲学・歴史原典 {mat_kinds['literary_text']:,}件（`literary_text`）＋"
+            f"AI・認知・社会・自然科学等の研究抜粋 {mat_kinds['research_excerpt']:,}件（`research_excerpt`）＋"
+            f"プロジェクト痕跡 {mat_kinds['project_trace']:,}件（`project_trace`）＋"
+            f"初期対話痕跡 {mat_kinds['conversation_trace']:,}件（`conversation_trace`） |"
+        ),
+        text,
+        flags=re.MULTILINE,
+    )
+    text = re.sub(
+        r"^\| 断片 \| `state/fragments\.jsonl`＋`state/fragments\.d/` \| \d+ \| .* \|$",
+        (
+            f"| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | {len(fragments)} | "
+            f"全7形式・AI使用可能な全5語り手モードの創作・批評断片"
+            f"（`selected` {frag_status['selected']}編＋`draft` {frag_status['draft']}編、"
+            f"`human_narrator` {frag_modes['human_narrator']}編） |"
+        ),
+        text,
+        flags=re.MULTILINE,
+    )
+    text = re.sub(
+        r"^\| 関係 \| `state/relations\.jsonl`＋`state/relations\.d/` \| \d+ \| .* \|$",
+        (
+            f"| 関係 | `state/relations.jsonl`＋`state/relations.d/` | {len(relations)} | "
+            f"共鳴・対照・変奏・切断・枠組転換・応答・開放などの解釈的関係（うち断片↔断片 {frag_to_frag}件） |"
+        ),
+        text,
+        flags=re.MULTILINE,
+    )
+    text = re.sub(
+        r"^(\| セッション \| `state/sessions\.jsonl`＋`state/sessions\.d/` \| )\d+( \| .* \|)$",
+        rf"\g<1>{len(sessions)}\g<2>",
+        text,
+        flags=re.MULTILINE,
+    )
+    text = re.sub(
+        r"^(\| 読み痕跡 \| `state/read_log\.jsonl`＋`state/read_log\.d/` \| )\d+( \| .* \|)$",
+        rf"\g<1>{len(read_log)}\g<2>",
+        text,
+        flags=re.MULTILINE,
+    )
+    text = re.sub(
+        r"^(\| 訂正録 \| `state/errata\.jsonl`＋`state/errata\.d/` \| )\d+( \| .* \|)$",
+        rf"\g<1>{errata_count}\g<2>",
+        text,
+        flags=re.MULTILINE,
+    )
+    text = re.sub(
+        r"^(\| 編集判断 \| `state/editorial_decisions\.jsonl`＋`state/editorial_decisions\.d/` \| )\d+( \| .* \|)$",
+        rf"\g<1>{len(editorial_decisions)}\g<2>",
+        text,
+        flags=re.MULTILINE,
+    )
+
+    if text != original:
+        with ledger_io.exclusive_lock(ROOT / "state" / ".ledger.lock"):
+            ledger_io.atomic_write_text(readme_path, text)
+        print(f"SYNCED {_display(readme_path)} counts with state/ ledgers")
+        return True
+    return False
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="verify READING_MAP.md matches the ledgers")
     parser.add_argument("--report", action="store_true", help="print the shard size report")
+    parser.add_argument(
+        "--sync-readme",
+        action="store_true",
+        help="synchronize README.md §1/§2/§4 summary counts with state/ ledgers (used in editorial_review)",
+    )
     parser.add_argument("--map-dir", type=Path, default=DEFAULT_MAP_DIR)
     parser.add_argument("--index", type=Path, default=DEFAULT_INDEX_PATH)
+    parser.add_argument("--readme", type=Path, default=DEFAULT_README_PATH)
     args = parser.parse_args()
 
     from inspect_inquiry import load_all
@@ -595,6 +749,8 @@ def main() -> int:
     if args.check:
         return check_index(data, args.index)
     manifest = write_all(data, args.map_dir, args.index, quiet=args.report)
+    if args.sync_readme:
+        sync_readme_counts(data, args.readme)
     if args.report:
         size_report(manifest)
     return 0

@@ -82,9 +82,10 @@ Tier 4  CI artifact       .github/workflows/map.yml が map/ を毎回 build し
 ## 5. 運用コマンド
 
 ```sh
-python3 tools/map_build.py            # map/ と READING_MAP.md を再生成
-python3 tools/map_build.py --check    # 索引が台帳と一致するか（CI も同じ）
-python3 tools/map_build.py --report   # シャードのサイズ報告
+python3 tools/map_build.py                 # map/ と READING_MAP.md を再生成
+python3 tools/map_build.py --check         # 索引が台帳と一致するか（CI も同じ）
+python3 tools/map_build.py --report        # シャードのサイズ報告
+python3 tools/map_build.py --sync-readme   # README.md §1/§2/§4 の件数表を台帳と同期（editorial_review 回用）
 python3 tools/inspect_inquiry.py --write-map   # map_build.py への委譲（互換）
 python3 tools/inspect_inquiry.py --check-map   # 同上
 ```
@@ -110,14 +111,15 @@ READING_MAP.md の事故は「単一ファイルが全成長を吸収する」�
 
 `python3 tools/size_budget.py` が各ファイルを点検する（`--strict` は WARN も失敗）。CI（`ci.yml`）は hard 超過で停止する。リポジトリ全体は GitHub の指針（<1GB 推奨）を超えるまでは現状維持。
 
-### 7.2 README ローテーション規約
+### 7.2 README ローテーション規約（B案：編集レビュー回への集約）
 
-記憶の削除ではなく**移動**である。README は入口であり全量ではない。
+記憶の削除ではなく**移動**である。README は入口であり全量ではない。また、並行セッションが毎回 `README.md` と `docs/sessions.md` を編集して Git コンフリクトや二重移管を起こすのを防ぐため、ローテーションと件数同期は **B案（`editorial_review` 回への集約）** で運用する。
 
-1. 到達点 bullet の詳細窓は **3件**、注釈付き報告エントリの詳細窓は **5件**。
-2. 窓を入れ替えるときは、最も古いものを `docs/sessions.md` の該当節へ **一字一句変えずに**移し、README には見出し／リンクの1行を残す。
-3. `docs/sessions.md` も追記専用。既存行の書き換え・要約・圧縮をしない（訂正は新しい注記）。
-4. WARN はこの操作の合図。hard 超過は移行が済むまでマージしない。
+1. **通常回では編集しない**：通常の創作・再読・改稿回（`rereading_and_collision` / `revision_and_variation` / `acquisition`）では `README.md` と `docs/sessions.md` を変更せず、`state/*.d/`・`readings/`・`READING_MAP.md`（`python3 tools/map_build.py`）のみを更新する。
+2. **詳細窓のサイズと移管手順**：到達点 bullet の詳細窓は **3件**、注釈付き報告エントリの詳細窓は **5件**。`editorial_review` 回で窓を入れ替えるときは、押し出される古い項目を `docs/sessions.md` の該当節へ **一字一句変えずに**移す。
+3. **件数表の自動同期**：`editorial_review` 回では `python3 tools/map_build.py --sync-readme` を実行し、`README.md` §1・§2 の総数表記および §4 の件数表を台帳と `readings/` の実測値に同期する。
+4. `docs/sessions.md` も追記専用。既存行の書き換え・要約・圧縮をしない（訂正は新しい注記）。
+5. WARN はこの操作の合図。hard 超過は移行が済むまでマージしない。
 
 ### 7.3 読み痕跡 `read_log`（B3）
 

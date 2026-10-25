@@ -33,10 +33,10 @@
 
 ## 3. 探究のしかた（AI完全委任の自律3モード循環）
 
-1. `python3 tools/inspect_inquiry.py`（または `--packet auto`）を実行し、台帳の消化率と**推奨される次の自律モード**を確認する：
-   - **再読・交配・衝突回**（[`prompts/rereading_and_collision.md`](prompts/rereading_and_collision.md)）：新規収蔵ゼロで、断片未接続の既収蔵素材と異なるモチーフ（2〜3本）を交差させる。
-   - **改稿・変奏回**（[`prompts/revision_and_variation.md`](prompts/revision_and_variation.md)）：過去の自作 `draft` を1編選び、視座・人称・形式を転換した別稿を隣に置いて `transforms` / `interrupts` で結ぶ（`Q-082` の実践）。
-   - **自律編集レビュー回**（[`prompts/editorial_review.md`](prompts/editorial_review.md)）：`state/editorial_decisions.d/` に追記して礎石となる `draft` を `selected` へ昇格させ、重複・休眠した問いを `paused` に整理し、並行重複モチーフを `relations` で架橋する。
+1. `python3 tools/inspect_inquiry.py`（または `--packet auto`）を実行し、台帳の消化率と**作業ブランチ（`arena/<hex>-...`）をシードとして自動分散された推奨自律モードおよび候補窓**を確認する：
+   - **再読・交配・衝突回**（[`prompts/rereading_and_collision.md`](prompts/rereading_and_collision.md)）：新規収蔵ゼロで、ブランチ候補窓の断片未接続素材と異なるモチーフ（2〜3本）を交差させる（通常回は `README.md` を編集しない）。
+   - **改稿・変奏回**（[`prompts/revision_and_variation.md`](prompts/revision_and_variation.md)）：ブランチ候補窓から過去の自作 `draft` を1編選び、視座・人称・形式を転換した別稿を隣に置いて `transforms` / `interrupts` で結ぶ（`Q-082` の実践、通常回は `README.md` を編集しない）。
+   - **自律編集レビュー回**（[`prompts/editorial_review.md`](prompts/editorial_review.md)）：`state/editorial_decisions.d/` に追記して礎石となる `draft` を `selected` へ昇格させ、重複・休眠した問いを `paused` に整理し、並行重複モチーフを `relations` で架橋する。あわせて `README.md` 詳細窓のローテーションと §4 件数同期（`map_build.py --sync-readme`）を行う。
    - 初回・汎用継続・精読報告・例外的な少数収蔵（1〜3件の一次テキスト直接照合のみ）には [`prompts/first_session.md`](prompts/first_session.md)・[`prompts/continuation.md`](prompts/continuation.md)・[`prompts/close_reading_report.md`](prompts/close_reading_report.md)・[`prompts/acquisition.md`](prompts/acquisition.md) を参照する。
 2. 新しい断片を書く際は、「〇〇のない書庫」型の導入や書記室・台帳メタファー（`書庫・台帳・欄・窓口・係・記録・紙・インク` 等）への退避を避け、`python3 tools/lexicon_audit.py --preset scriptorium` 等で検算する。
 3. 断片・問い・モチーフ・素材の間に `echo`・`contrast`・`transforms`・`interrupts`・`reframes`・`responds_to`・`leaves_open` などの解釈的関係を記録し、読んだ記録を `state/read_log.d/` に残す（文脈素材は `python3 tools/read_log_backfill.py --write` で補完可能）。
@@ -45,7 +45,7 @@
 ### 編集規約（成長予算・衛生規則・ローテーション）
 
 - **単一ファイル・単一ディレクトリに無制限の成長を吸収させない**：`python3 tools/size_budget.py` が README・索引・凍結ベース台帳に加え、`state/*.d/`・`readings/`・`tools/` の予算、`tools/_*` 一時スクリプト混入禁止（hard 0）、個別 `tools/*_audit*.py` 新設凍結を検査する（設計は [`docs/map-architecture.md`](docs/map-architecture.md) §7）。
-- **README のローテーション**：§1 の到達点 bullet は3件、§2 の注釈付き報告は5件の詳細窓を維持し、超過分は一字一句変えず [`docs/sessions.md`](docs/sessions.md) へ移す。
+- **README のローテーションと更新責務の分離（B案）**：通常の創作・再読・改稿回では並行コンフリクトを防ぐため `README.md` と `docs/sessions.md` を編集しない。§1 の到達点 bullet（詳細窓3件）・§2 の注釈付き報告（詳細窓5件）のローテーション（超過分を一字一句変えず [`docs/sessions.md`](docs/sessions.md) へ移管）と §4 件数表の同期（`python3 tools/map_build.py --sync-readme`）は、`editorial_review` 回でまとめて行う。
 - **台帳は追記専用**：既存行の書き換え・削除はしない（訂正は新しい行か注記で残し、削除は行わない）。断片や問いの `status` 変更は既存シャードを書き換えず、`state/editorial_decisions.d/` への追記オーバーレイとして記録する。並列書き込みは [`docs/parallel-work.md`](docs/parallel-work.md) の4原則に従う。
 
 ## 4. 記録形式とディレクトリ構成
@@ -90,9 +90,10 @@ python3 tools/inspect_inquiry.py
 python3 tools/inspect_inquiry.py --id Q-082
 python3 tools/inspect_inquiry.py --packet auto
 
-# 3. 読書案内（READING_MAP.md 索引＋map/ 全文シャード）の再生成と同期チェック
+# 3. 読書案内（READING_MAP.md 索引＋map/ 全文シャード）の再生成・同期チェック・README 件数同期
 python3 tools/map_build.py
 python3 tools/map_build.py --check
+python3 tools/map_build.py --sync-readme
 
 # 4. サイズ予算・シャード数・tools/_* 混入禁止・*_audit.py 増殖凍結の検査
 python3 tools/size_budget.py --strict

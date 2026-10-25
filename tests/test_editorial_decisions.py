@@ -146,6 +146,74 @@ class EditorialDecisionTests(unittest.TestCase):
         minted = new_id.mint("ED", day="20261025", taken=set())
         self.assertRegex(minted, r"^ED-20261025-[0-9a-f]{6}$")
 
+    def test_branch_seed_dispersion_is_deterministic_and_diverges_across_branches(self) -> None:
+        import inspect_inquiry
+
+        data = inspect_inquiry.load_all()
+        label_a1, int_a1 = inspect_inquiry.resolve_session_seed(
+            "arena/6f350638-aiselfmyself", data=data
+        )
+        label_a2, int_a2 = inspect_inquiry.resolve_session_seed(
+            "arena/6f350638-aiselfmyself", data=data
+        )
+        label_b, int_b = inspect_inquiry.resolve_session_seed(
+            "arena/7d235e38-aiselfmyself", data=data
+        )
+        self.assertEqual((label_a1, int_a1), ("6f350638", 0x6F350638))
+        self.assertEqual((label_a1, int_a1), (label_a2, int_a2))
+        self.assertNotEqual(int_a1, int_b)
+
+        win_a1 = inspect_inquiry.build_candidate_windows(
+            data, seed="arena/6f350638-aiselfmyself"
+        )
+        win_a2 = inspect_inquiry.build_candidate_windows(
+            data, seed="arena/6f350638-aiselfmyself"
+        )
+        win_b = inspect_inquiry.build_candidate_windows(
+            data, seed="arena/7d235e38-aiselfmyself"
+        )
+        self.assertEqual(win_a1, win_a2)
+        self.assertNotEqual(win_a1["rereading_pairs"], win_b["rereading_pairs"])
+        self.assertNotEqual(win_a1["revision_drafts"], win_b["revision_drafts"])
+        self.assertNotEqual(win_a1["review_drafts"], win_b["review_drafts"])
+
+        pkt_a = inspect_inquiry.build_context_packet(
+            data, "auto", seed="arena/6f350638-aiselfmyself"
+        )
+        pkt_b = inspect_inquiry.build_context_packet(
+            data, "auto", seed="arena/7d235e38-aiselfmyself"
+        )
+        self.assertIn("シード：6f350638", pkt_a)
+        self.assertIn("シード：7d235e38", pkt_b)
+        self.assertNotEqual(pkt_a.splitlines()[0], pkt_b.splitlines()[0])
+
+    def test_sync_readme_counts_updates_stale_numbers_and_is_idempotent(self) -> None:
+        import inspect_inquiry
+        import map_build
+
+        data = inspect_inquiry.load_all()
+        with tempfile.TemporaryDirectory() as tmp:
+            readme_copy = Path(tmp) / "README.md"
+            original = (ROOT / "README.md").read_text(encoding="utf-8")
+            # Introduce a deliberately stale session count in §1 and §4
+            stale = original.replace(
+                f"（全{len(data['sessions'])}セッションの要約全文",
+                "（全1セッションの要約全文",
+            )
+            readme_copy.write_text(stale, encoding="utf-8")
+
+            changed = map_build.sync_readme_counts(
+                data, readme_path=readme_copy, readings_dir=ROOT / "readings"
+            )
+            self.assertTrue(changed)
+            self.assertEqual(readme_copy.read_text(encoding="utf-8"), original)
+
+            # Second run should be a no-op
+            changed_again = map_build.sync_readme_counts(
+                data, readme_path=readme_copy, readings_dir=ROOT / "readings"
+            )
+            self.assertFalse(changed_again)
+
 
 if __name__ == "__main__":
     unittest.main()
