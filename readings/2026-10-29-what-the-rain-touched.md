@@ -44,3 +44,12 @@
 開始時に `voice_audit.py` と `lexicon_audit.py` の二プリセット（`scriptorium` / `hedge`）を全体で実行した。書き終えた後は `--fragment` を指定して二編ずつ測り、地の文922字で書記室語彙0回・留保句0回・感嘆符0個・疑問符0個を実測した。`voice_audit.py` の末尾一文の分類では、二編とも「断定」に入っている。
 
 `read_log_backfill.py --check` は 2848/2848 組で通過し、補完追記は不要だった。`validate_seed.py` は PASS（fragments=114, relations=4246, sessions=89, read_log=3238）。`errata_audit.py` は新しい2行を含む25行を再集計した。索引は union から `map_build.py` で再生成する。最終検証・CI・マージの結果は PR の実行履歴を正とする。
+
+### 並行PR #86との合流注記（2026-10-29）
+
+作業中に `origin/main` が進み、改稿・変奏回を同じく推奨された並行セッション `SESSION-20261029-d3e3f8`（PR #86、孤立書簡 `FRAG-039` を墓石の情景と二声へ変奏）が先に合流した。両セッションは別断片（`FRAG-043` 対 `FRAG-039`）・別素材群（`MAT-LIT-410`–`414` 対 `MAT-TRC-013`・`MAT-LIT-380`・`MAT-LIT-363`）を扱い、問いの共有は `Q-082` のみ（両セッションが正当に応答した）。衝突は README・`docs/sessions.md`・`READING_MAP.md` の3ファイルのみで、次の通り解消した。
+
+- README 詳細窓は §1=3件（雨・空けた日付・労作歌）、§2=5件（雨・空けた日付・労作歌・残り・自律編集）を維持。うち来歴と火の注釈は両セッションが各自 `docs/sessions.md` へ verbatim 移管済みであり、移管分は二重に二箇所、削らず保存されている。
+- §4 の件数は合流後の union 実測値：断片 116（selected 23＋draft 93）、関係 4,268（断片↔断片 199）、セッション 90、読み痕跡 3,252、訂正録 25。
+- `READING_MAP.md` は合流後の台帳から `map_build.py` で再生成。
+- 合流後に全チェックを再実行し、`validate_seed.py`（questions=312 ほか）、`inspect_inquiry.py --check-map`、`size_budget.py --strict`、`read_log_backfill.py --check`（2,855/2,855）、`node --check viewer/app.js`、`unittest`（282件 OK）がすべて通過したことを確認した。
