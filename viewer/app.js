@@ -854,6 +854,7 @@ function renderMirrorView() {
     const sa = state.data.signature_audit;
     const pra = state.data.prayer_audit;
     const ma = state.data.metabolism_audit;
+    const wa = state.data.war_audit;
 
     auditPane.innerHTML = `
       <div class="mirror-grid">
@@ -1077,6 +1078,34 @@ function renderMirrorView() {
                 const gp = pra.fragments_prose.groups[g] || { label: g, count: 0, doc_count: 0, doc_ids: [] };
                 const gq = (pra.fragments_quotes && pra.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
                 const gm = (pra.materials && pra.materials.groups[g]) || { count: 0, doc_count: 0 };
+                return `
+                  <tr>
+                    <td><strong>${escapeHtml(gp.label)}</strong></td>
+                    <td><strong>${gp.count}</strong> 回 (${gp.doc_count}編) <span style="color:var(--ink-muted);font-size:0.78rem;">/ 引用内 ${gq.count}回</span></td>
+                    <td>${gm.count}回 (${gm.doc_count}件)</td>
+                    <td>${(gp.doc_ids || []).map((fid) => `<button type="button" class="link-pill" style="margin:0.1rem;" data-jump-frag="${escapeHtml(fid)}">${escapeHtml(fid)}</button>`).join("") || "—"}</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
+
+      ${wa && wa.fragments_prose ? `
+        <div class="reader-pane" style="margin-bottom:1.4rem;">
+          <h3 style="margin-top:0;font-family:'Hiragino Mincho ProN','Yu Mincho',serif;">戦争・暴力・平和の鏡（地の文 ${wa.fragments_prose.char_total.toLocaleString()}字 / 素材 ${(wa.materials && wa.materials.doc_total) || 0}件）</h3>
+          <div style="font-size:0.8rem;color:var(--ink-muted);margin-bottom:0.55rem;">
+            地の文の生字出現 — <code>戦=${(wa.raw_kanji_counts && wa.raw_kanji_counts["戦"]) || 0}</code> / <code>兵=${(wa.raw_kanji_counts && wa.raw_kanji_counts["兵"]) || 0}</code> / <code>銃=${(wa.raw_kanji_counts && wa.raw_kanji_counts["銃"]) || 0}</code> / <code>爆=${(wa.raw_kanji_counts && wa.raw_kanji_counts["爆"]) || 0}</code> / <code>殺=${(wa.raw_kanji_counts && wa.raw_kanji_counts["殺"]) || 0}</code> / <code>虐=${(wa.raw_kanji_counts && wa.raw_kanji_counts["虐"]) || 0}</code> / <code>傷=${(wa.raw_kanji_counts && wa.raw_kanji_counts["傷"]) || 0}</code> / <code>犠=${(wa.raw_kanji_counts && wa.raw_kanji_counts["犠"]) || 0}</code> / <code>慰=${(wa.raw_kanji_counts && wa.raw_kanji_counts["慰"]) || 0}</code> / <code>碑=${(wa.raw_kanji_counts && wa.raw_kanji_counts["碑"]) || 0}</code>
+            <div style="margin-top:0.3rem;">挑戦・作戦・戦略・敵対的攻撃・監視あり学習などは、この主題の語彙として差し引いています（<code>tools/war_audit.py</code>）。</div>
+          </div>
+          <table class="mirror-table">
+            <thead><tr><th>語群（非該当複合差し引き・最長一致）</th><th>断片（地の文 / 引用内）</th><th>素材</th><th>該当断片（地の文）</th></tr></thead>
+            <tbody>
+              ${(wa.group_order || []).map((g) => {
+                const gp = wa.fragments_prose.groups[g] || { label: g, count: 0, doc_count: 0, doc_ids: [] };
+                const gq = (wa.fragments_quotes && wa.fragments_quotes.groups[g]) || { count: 0, doc_count: 0 };
+                const gm = (wa.materials && wa.materials.groups[g]) || { count: 0, doc_count: 0 };
                 return `
                   <tr>
                     <td><strong>${escapeHtml(gp.label)}</strong></td>
