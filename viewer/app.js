@@ -1231,6 +1231,16 @@ function renderMirrorView() {
                 return `
                   <tr>
                     <td><strong>${escapeHtml(gp.label)}</strong><div style="font-size:0.72rem;color:var(--ink-muted);">${escapeHtml((gp.note || ""))}</div></td>
+                    <td><strong>${gp.count}</strong> 回 (${gp.doc_count}編) <span style="color:var(--ink-muted);font-size:0.78rem;">/ 引用内 ${gq.count}回</span></td>
+                    <td>${gm.count}回 (${gm.doc_count}件)</td>
+                    <td>${gr.count}回 (${gr.doc_count}本)</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
 
       ${bra && bra.fragments_prose ? `
         <div class="reader-pane" style="margin-bottom:1.4rem;">
