@@ -8,9 +8,9 @@
 - **開かれた問い（Questions）**：312 件（初期シード 5 件 ＋ 派生 307 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2433 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 59 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：114 編（selected 23 ／ draft 91）
-- **解釈的関係（Relations）**：4255 件
-- **探究セッション（Sessions）**：89 回
+- **文芸断片（Fragments）**：116 編（selected 23 ／ draft 93）
+- **解釈的関係（Relations）**：4289 件
+- **探究セッション（Sessions）**：90 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -395,7 +395,7 @@
 | `Q-20261027-aab779` | session | — | — | 生成する側の来歴——モデルの系譜、学習データの出自、収集の経路——を、台帳はどこまで書けるか。モデルカード（MAT-20261027-b4785a）とデータシート（MAT-20261027-5c8d… |
 | `Q-20261027-133ac7` | session | `Q-20261026-34dfdf` | — | 来歴は信頼の根拠か、作られうる物語か。偽系図（MAT-20261027-67681c）と和田家文書の偽書（MAT-20261027-81c3ca）は、来歴の物語そのものが捏造の対象になることを示す。… |
 
-## 3. 断片（114 編・全文は map/20-fragments-*.md）
+## 3. 断片（116 編・全文は map/20-fragments-*.md）
 
 | ID | 題 | 状態 | 形式 | 語り手 |
 |---|---|---|---|---|
@@ -513,6 +513,8 @@
 | `FRAG-20261028-c158fb` | 歌わない方がいい——畦の二声 | draft | dialogue | fictional_first_person |
 | `FRAG-20261029-1a9c55` | 朱を塗る午後、日付の空いた石 | draft | scene | third_person |
 | `FRAG-20261029-b3098d` | 空けた日を、誰が入れる——石屋の二声 | draft | dialogue | dialogue |
+| `FRAG-20261030-488cb1` | 九日目の足、買われた祖父 | draft | scene | third_person |
+| `FRAG-20261030-59664e` | 九日は売れない——厩の二声 | draft | dialogue | dialogue |
 
 ## 4. 対話素材（2433 件・詳細は map/3*.md）
 
@@ -2952,7 +2954,7 @@
 | `MAT-LIT-20261027-3c268f` | literary_text | 編者（本セッション）『この書庫の来歴を読む——台帳のコミット履歴とセッションの編年』（2026） |
 | `MAT-TRC-20261027-genealogy` | project_trace | AIselfMySelf Archive『運用痕跡：断片101編の地の文で他者のテクストの来歴は二桁、自分の歩みは1回——来歴の鏡による収蔵前実測と、書庫の編年（81セッション／… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261029-d3e3f8・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261030-562737・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3045,18 +3047,19 @@
 | `SESSION-20261027-084d9c` | 2026-10-27 | `Q-20261027-b68a59`, `Q-20261027-3e9249`, `Q-20261027-1ecd0b`, `Q-20261027-aab779`, `Q-20261027-133ac7` | `FRAG-20261027-e7259b`, `FRAG-20261027-f01da9` | `Q-20261027-b68a59`, `Q-20261027-3e9249`, `Q-20261027-1ecd0b`, `Q-20261027-aab779`, `Q-20261027-133ac7` |
 | `SESSION-20261028-5aa1b4` | 2026-10-28 | `Q-20261024-644e6e`, `Q-062`, `Q-20261024-c82d69`, `Q-20261024-ce5c54` | `FRAG-20261028-3e0579`, `FRAG-20261028-c158fb` | — |
 | `SESSION-20261029-d3e3f8` | 2026-10-29 | `Q-087`, `Q-088`, `Q-082` | `FRAG-20261029-1a9c55`, `FRAG-20261029-b3098d` | — |
+| `SESSION-20261030-562737` | 2026-10-30 | `Q-046`, `Q-20261027-1ecd0b`, `Q-20261027-133ac7`, `Q-20261024-76a4a5` | `FRAG-20261030-488cb1`, `FRAG-20261030-59664e` | — |
 
-## 6. 解釈的関係（4255 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（4289 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 457 |
-| 共鳴 (echo) | 1288 |
-| 切断・割り込み (interrupts) | 90 |
+| 対照 (contrast) | 466 |
+| 共鳴 (echo) | 1292 |
+| 切断・割り込み (interrupts) | 95 |
 | 未解決のまま開く (leaves_open) | 682 |
 | 比喩的共鳴 (metaphorically_resonates) | 82 |
-| 枠組みの組み替え (reframes) | 244 |
-| 応答 (responds_to) | 1247 |
+| 枠組みの組み替え (reframes) | 249 |
+| 応答 (responds_to) | 1258 |
 | 変奏・変形 (transforms) | 165 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3073,11 +3076,11 @@
 | `map/11-question-bodies-06.md` | 50 | 40,289 |
 | `map/11-question-bodies-07.md` | 12 | 10,261 |
 | `map/20-fragments-01.md` | 20 | 80,316 |
-| `map/20-fragments-02.md` | 20 | 92,913 |
+| `map/20-fragments-02.md` | 20 | 93,227 |
 | `map/20-fragments-03.md` | 20 | 61,172 |
-| `map/20-fragments-04.md` | 20 | 92,533 |
-| `map/20-fragments-05.md` | 20 | 91,865 |
-| `map/20-fragments-06.md` | 14 | 64,431 |
+| `map/20-fragments-04.md` | 20 | 92,805 |
+| `map/20-fragments-05.md` | 20 | 92,125 |
+| `map/20-fragments-06.md` | 16 | 85,738 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -3111,8 +3114,8 @@
 | `map/40-relations-06.md` | 500 | 115,877 |
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 131,926 |
-| `map/40-relations-09.md` | 255 | 67,529 |
+| `map/40-relations-09.md` | 289 | 78,720 |
 | `map/50-sessions-01.md` | 50 | 44,267 |
-| `map/50-sessions-02.md` | 39 | 40,548 |
+| `map/50-sessions-02.md` | 40 | 41,573 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
