@@ -188,6 +188,7 @@ class EditorialDecisionTests(unittest.TestCase):
         self.assertNotEqual(pkt_a.splitlines()[0], pkt_b.splitlines()[0])
 
     def test_sync_readme_counts_updates_stale_numbers_and_is_idempotent(self) -> None:
+        import re
         import inspect_inquiry
         import map_build
 
@@ -195,10 +196,12 @@ class EditorialDecisionTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             readme_copy = Path(tmp) / "README.md"
             original = (ROOT / "README.md").read_text(encoding="utf-8")
-            # Introduce a deliberately stale session count in §1 and §4
-            stale = original.replace(
-                f"（全{len(data['sessions'])}セッションの要約全文",
+            # Under Plan B, ROOT/README.md legitimately lags behind state/ between
+            # editorial_review sessions; force a known-stale marker regardless.
+            stale = re.sub(
+                r"（全\d+セッションの要約全文",
                 "（全1セッションの要約全文",
+                original,
             )
             readme_copy.write_text(stale, encoding="utf-8")
 
@@ -206,13 +209,19 @@ class EditorialDecisionTests(unittest.TestCase):
                 data, readme_path=readme_copy, readings_dir=ROOT / "readings"
             )
             self.assertTrue(changed)
-            self.assertEqual(readme_copy.read_text(encoding="utf-8"), original)
+            synced = readme_copy.read_text(encoding="utf-8")
+            self.assertIn(f"（全{len(data['sessions'])}セッションの要約全文", synced)
+            self.assertIn(
+                f"| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | {len(data['fragments'])} |",
+                synced,
+            )
 
-            # Second run should be a no-op
+            # Second run must be a no-op (idempotent)
             changed_again = map_build.sync_readme_counts(
                 data, readme_path=readme_copy, readings_dir=ROOT / "readings"
             )
             self.assertFalse(changed_again)
+            self.assertEqual(readme_copy.read_text(encoding="utf-8"), synced)
 
 
 if __name__ == "__main__":
