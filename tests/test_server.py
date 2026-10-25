@@ -154,6 +154,14 @@ class ServerTests(unittest.TestCase):
             pra["fragments_prose"]["groups"]["address_response"]["count"],
             pra["fragments_prose"]["groups"]["prayer_act"]["count"],
         )
+        bta = payload["botany_audit"]
+        self.assertEqual(bta["fragment_count"], len(payload["fragments"]))
+        self.assertIn("flora_organ", bta["fragments_prose"]["groups"])
+        self.assertIn("scribal_absorption", bta["fragments_prose"]["groups"])
+        self.assertGreater(
+            bta["fragments_prose"]["groups"]["scribal_absorption"]["count"],
+            bta["fragments_prose"]["groups"]["flora_organ"]["count"],
+        )
 
     def test_unreadable_ledger_returns_json_error(self) -> None:
         server, thread = start_server(ROOT)
