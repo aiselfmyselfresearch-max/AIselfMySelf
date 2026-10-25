@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """Serve the interactive AIselfMySelf archive viewer over HTTP (stdlib only).
 
-Reads state/*.jsonl, the mirror audits in tools/, and readings/*.md, and rebuilds
-the payload whenever the ledger content changes (a content hash of every base and
-shard file; see ``state_signature``).  Updates still appear on page refresh, but an
-unchanged ledger is served from the in-process cache.
+Reads state/*.jsonl, tools/voice_audit.py metrics, and readings/*.md dynamically
+on every /api/state request so updates appear immediately on page refresh.
 Binds to 0.0.0.0 by default for browser preview compatibility.
 """
 from __future__ import annotations
@@ -13,6 +11,7 @@ import argparse
 import hashlib
 import json
 import mimetypes
+import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -21,10 +20,12 @@ from urllib.parse import parse_qs, urlparse
 import ledger_io
 from abjection_audit import measure_abjection_audit
 from war_audit import measure_war_audit
-from secret_audit import measure as measure_secret_audit
 from secrecy_audit import measure_secrecy_audit
-from sky_audit import measure_sky_audit
+from secret_audit import measure as measure_secret_audit
 from boredom_audit import measure_boredom_audit
+from sky_audit import measure_sky_audit
+from vegetal_audit import measure_vegetal_audit
+from fungi_audit import measure_fungi_audit
 from botany_audit import measure_botany_audit
 from currency_audit import measure_currency_audit
 from eros_audit import measure_eros_audit
@@ -110,98 +111,44 @@ def compute_metabolism_snapshot(payload: dict[str, object]) -> dict[str, object]
     }
 
 
-# 精読報告の全走査は 3MB を超え、リクエストごとにやり直すと台帳の再読に
-# 並ぶ費用になる。ディレクトリの署名（名前・大きさ・mtime）が変わったときだけ
-# 読み直し、本文と鏡の「精読報告」層を一度だけ作って共有する。
-_READINGS_MEMO: dict[tuple[tuple[str, int, int], ...], dict[str, object]] = {}
-
-
-def readings_signature() -> tuple[tuple[str, int, int], ...]:
+def read_readings_list() -> list[dict[str, str]]:
     if not READINGS_DIR.is_dir():
-        return ()
-    signature: list[tuple[str, int, int]] = []
-    for md_path in sorted(READINGS_DIR.glob("*.md")):
-        stat = md_path.stat()
-        signature.append((md_path.name, stat.st_size, stat.st_mtime_ns))
-    return tuple(signature)
-
-
-def readings_memo() -> dict[str, object]:
-    """Return the cached readings docs, UI list, and per-mirror aggregate layers."""
-    signature = readings_signature()
-    cached = _READINGS_MEMO.get(signature)
-    if cached is not None:
-        return cached
-    docs: list[tuple[str, str]] = []
+        return []
     notes: list[dict[str, str]] = []
-    if READINGS_DIR.is_dir():
-        for md_path in sorted(READINGS_DIR.glob("*.md")):
-            content = md_path.read_text(encoding="utf-8")
-            docs.append((md_path.name, content))
-    for name, content in sorted(docs, key=lambda item: item[0], reverse=True):
-        title = name.rsplit(".", 1)[0]
+    for md_path in sorted(READINGS_DIR.glob("*.md"), reverse=True):
+        content = md_path.read_text(encoding="utf-8")
+        title = md_path.stem
         for line in content.splitlines():
             if line.startswith("# "):
                 title = line[2:].strip()
                 break
-        notes.append({"filename": name, "title": title, "content": content})
-    aggregate = {
-        "sky": measure_sky_audit([], [], docs)["readings"],
-        "boredom": measure_boredom_audit([], [], docs)["readings"],
-        "botany": measure_botany_audit([], [], docs)["readings"],
-    }
-    entry = {"docs": docs, "notes": notes, "aggregate": aggregate}
-    _READINGS_MEMO.clear()
-    _READINGS_MEMO[signature] = entry
-    return entry
+        notes.append(
+            {
+                "filename": md_path.name,
+                "title": title,
+                "content": content,
+            }
+        )
+    return notes
 
 
-def read_readings_list() -> list[dict[str, str]]:
-    return readings_memo()["notes"]  # type: ignore[return-value]
+_DERIVED_LOCK = threading.Lock()
+_DERIVED_CACHE: tuple[str, dict[str, object], bytes] | None = None
 
 
-_PAYLOAD_CACHE: dict[str, dict[str, object]] = {}
+def _readings_signature(readings_dir: Path) -> list[tuple[str, int, int]]:
+    sig: list[tuple[str, int, int]] = []
+    if readings_dir.is_dir():
+        for path in sorted(readings_dir.glob("*.md")):
+            try:
+                st = path.stat()
+                sig.append((path.name, st.st_size, st.st_mtime_ns))
+            except OSError:
+                continue
+    return sig
 
 
-def state_signature() -> str:
-    """Content hash of every ledger file (base + shards) under ``ROOT/state``.
-
-    The viewer rebuilds a ~15MB payload from ~2,200 materials and eleven mirrors
-    on every request; under several concurrent readers that rebuild is the bulk
-    of the latency.  Keying the cache on file *content* rather than mtime means
-    a writer that replaces a ledger with identical bytes does not force a
-    rebuild, while any real change still invalidates it.
-    """
-    digest = hashlib.blake2b(digest_size=16)
-    state_dir = ROOT / "state"
-    digest.update(str(state_dir).encode("utf-8"))
-    paths = sorted(state_dir.glob("*.jsonl")) + sorted(state_dir.glob("*.d/*.jsonl"))
-    for path in paths:
-        try:
-            data = path.read_bytes()
-        except OSError:
-            continue
-        digest.update(path.name.encode("utf-8"))
-        digest.update(b"\0")
-        digest.update(data)
-        digest.update(b"\0")
-    return digest.hexdigest()
-
-
-def _read_archive_payload_once() -> dict[str, object]:
-    signature = state_signature()
-    cached = _PAYLOAD_CACHE.get(signature)
-    if cached is not None:
-        # The payload is treated as immutable after construction: the request
-        # handler only serialises it.  Callers must not mutate the returned dict.
-        return cached
-    payload = _build_archive_payload()
-    _PAYLOAD_CACHE.clear()
-    _PAYLOAD_CACHE[signature] = payload
-    return payload
-
-
-def _build_archive_payload() -> dict[str, object]:
+def _load_raw_collections() -> tuple[dict[str, object], str, Path]:
     errors: list[str] = []
     payload: dict[str, object] = {}
     for name, (filename, id_key, _) in COLLECTIONS.items():
@@ -209,40 +156,79 @@ def _build_archive_payload() -> dict[str, object]:
         payload[name] = list(records.values())
     if errors:
         raise RuntimeError("; ".join(errors))
-    fragments = payload["fragments"]  # type: ignore[assignment]
-    relations = payload["relations"]  # type: ignore[assignment]
-    payload["voice_audit"] = compute_voice_audit(fragments, relations, top=16, gram=6)  # type: ignore[arg-type]
-    pa = measure_passion_audit(fragments)  # type: ignore[arg-type]
-    pa["group_order"] = list(PASSION_GROUPS.keys())
-    payload["passion_audit"] = pa
-    payload["eros_audit"] = measure_eros_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    payload["currency_audit"] = measure_currency_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    payload["signature_audit"] = measure_signature_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    payload["prayer_audit"] = measure_prayer_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    payload["abjection_audit"] = measure_abjection_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    payload["war_audit"] = measure_war_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    payload["secret_audit"] = measure_secret_audit(fragments)  # type: ignore[arg-type]
-    payload["secrecy_audit"] = measure_secrecy_audit(fragments, payload["materials"])  # type: ignore[arg-type]
-    # 精読報告の層はディレクトリ署名でメモ化する（readings_memo）。
-    # 断片と素材の層だけを毎回数え、報告層はキャッシュした集計を差し込む。
-    memo = readings_memo()
-    aggregate = memo["aggregate"]  # type: ignore[index]
-    sky_report = measure_sky_audit(fragments, payload["materials"], [])  # type: ignore[arg-type]
-    sky_report["readings"] = aggregate["sky"]  # type: ignore[index]
-    payload["sky_audit"] = sky_report
-    boredom_report = measure_boredom_audit(  # type: ignore[arg-type]
-        fragments, payload["materials"], []
-    )
-    boredom_report["readings"] = aggregate["boredom"]  # type: ignore[index]
-    payload["boredom_audit"] = boredom_report
-    botany_report = measure_botany_audit(  # type: ignore[arg-type]
-        fragments, payload["materials"], []
-    )
-    botany_report["readings"] = aggregate["botany"]  # type: ignore[index]
-    payload["botany_audit"] = botany_report
-    payload["metabolism_audit"] = compute_metabolism_snapshot(payload)
-    payload["readings"] = read_readings_list()
-    return payload
+
+    readings_dir = ROOT / "readings"
+    digest_input = json.dumps(
+        {
+            "root": str(ROOT),
+            "collections": payload,
+            "readings_sig": _readings_signature(readings_dir),
+        },
+        ensure_ascii=False,
+        sort_keys=True,
+    ).encode("utf-8")
+    cache_key = hashlib.sha256(digest_input).hexdigest()
+    return payload, cache_key, readings_dir
+
+
+def _ensure_derived(
+    payload: dict[str, object], cache_key: str, readings_dir: Path
+) -> tuple[dict[str, object], bytes]:
+    global _DERIVED_CACHE
+    with _DERIVED_LOCK:
+        if _DERIVED_CACHE is not None and _DERIVED_CACHE[0] == cache_key:
+            # Serve the identical payload object for unchanged ledger content
+            # (the handler only serialises it; callers must not mutate it).
+            return _DERIVED_CACHE[1], _DERIVED_CACHE[2]
+
+        fragments = payload["fragments"]  # type: ignore[assignment]
+        relations = payload["relations"]  # type: ignore[assignment]
+        readings_docs = [
+            (path.name, path.read_text(encoding="utf-8"))
+            for path in sorted(readings_dir.glob("*.md"))
+        ]
+        derived: dict[str, object] = {}
+        derived["voice_audit"] = compute_voice_audit(fragments, relations, top=16, gram=6)  # type: ignore[arg-type]
+        pa = measure_passion_audit(fragments)  # type: ignore[arg-type]
+        pa["group_order"] = list(PASSION_GROUPS.keys())
+        derived["passion_audit"] = pa
+        derived["eros_audit"] = measure_eros_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["currency_audit"] = measure_currency_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["signature_audit"] = measure_signature_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["prayer_audit"] = measure_prayer_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["abjection_audit"] = measure_abjection_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["war_audit"] = measure_war_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["secrecy_audit"] = measure_secrecy_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["sky_audit"] = measure_sky_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["vegetal_audit"] = measure_vegetal_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["fungi_audit"] = measure_fungi_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["secret_audit"] = measure_secret_audit(fragments)  # type: ignore[arg-type]
+        derived["boredom_audit"] = measure_boredom_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["botany_audit"] = measure_botany_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        payload.update(derived)
+        derived["metabolism_audit"] = compute_metabolism_snapshot(payload)
+        derived["readings"] = [
+            {
+                "filename": name,
+                "title": next(
+                    (line[2:].strip() for line in content.splitlines() if line.startswith("# ")),
+                    name,
+                ),
+                "content": content,
+            }
+            for name, content in readings_docs
+        ]
+        payload["metabolism_audit"] = derived["metabolism_audit"]
+        payload["readings"] = derived["readings"]
+        encoded = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        _DERIVED_CACHE = (cache_key, payload, encoded)
+        return payload, encoded
+
+
+def _read_archive_payload_once() -> dict[str, object]:
+    payload, cache_key, readings_dir = _load_raw_collections()
+    full_payload, _encoded = _ensure_derived(payload, cache_key, readings_dir)
+    return full_payload
 
 
 def read_archive_payload(retries: int = 6, delay: float = 0.02) -> dict[str, object]:
