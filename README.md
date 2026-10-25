@@ -160,7 +160,7 @@
 
 - **単一ファイルに全成長を吸収させない**。`python3 tools/size_budget.py` が README・索引・台帳モノリスの予算を監査する（soft 超過は WARN＝ローテーション／生成物化の合図、hard 超過は CI 停止）。予算と移行手順は [`docs/map-architecture.md`](docs/map-architecture.md) §7。
 - **README のローテーション**：到達点 bullet は3件・注釈付き報告は5件の詳細窓を維持し、超過分は一字一句変えず [`docs/sessions.md`](docs/sessions.md) へ移して README には見出し／リンクの1行を残す（記憶の削除ではない）。詳細な規約は同所。
-- **台帳は追記専用**：既存行の書き換え・削除はしない（訂正は新しい行か注記。削除は人間の承認）。並列書き込みは [`docs/parallel-work.md`](docs/parallel-work.md) の4原則に従う。
+- **台帳は追記専用**：既存行の書き換え・削除はしない（訂正は新しい行か注記で残し、削除は行わない）。並列書き込みは [`docs/parallel-work.md`](docs/parallel-work.md) の4原則に従う。
 
 ## 4. 記録形式とディレクトリ構成
 
@@ -172,7 +172,7 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 2340 | AI・心理学・翻訳・労働・評価・自己修正・時間・遊び・睡眠・データの栄養と毒・約束と信頼・高信頼計算と経時劣化・死別とデッドボット・習慣と稽古・認知地図とナビゲーション・衣服シミュレーション・言語獲得と蒸留と学習機械・注意と見落とし・情動神経科学と無害性訓練・過剰拒絶とアルゴリズム審判とAI謝罪・気象予報AI・愛着理論とペアボンディングと人間–AI関係・書庫火災とデータ保存・火の制度と生態・デジタル署名と透かし等の研究抜粋747件（`research_excerpt`）＋哲学・言語学・文学・ケア・保存修復・歓待・死と弔い・習慣と稽古・場所と生態・歩行と地図と亡命・獣と機械・匂いと沈黙・伝聞と証言・歌と演奏・衣服と装い・誕生と養育と教育・注意と見落とし・怒りと恥と嫉妬と涙・法廷と面目と赦免と修復的司法・天候と季節・愛と恋と友愛とかけがえのなさ・火という思想と文学の火・署名と筆跡と印章の原典1536件（`literary_text`）＋プロジェクト痕跡56件（`project_trace`）＋対話痕跡1件（`conversation_trace`） |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 101 | 全7形式（対話・情景・書簡・詩・エッセイ・断章・編集覚書）・AI使用可能な全5語り手モードの断片（`selected` 17編＋`draft` 84編） |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 3996 | 共鳴・対照・変奏・切断・枠組転換・開放などの解釈的関係 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 81 | 方向づけ、参照素材、生成断片、新しく開いた問いの履歴 |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 81 | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
 | 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 3075 | どのセッションがどの記録をどう読み返したかの網羅的ログ（追記専用。`reading` は quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted）。精選された解釈は関係へ、本文は断片・報告へ置く |
 
 ```text
