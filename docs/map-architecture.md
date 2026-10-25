@@ -106,7 +106,7 @@ READING_MAP.md の事故は「単一ファイルが全成長を吸収する」�
 | `README.md` | 150 KB | 300 KB | 詳細窓を維持し、超過分を `docs/sessions.md` へ verbatim ローテーション |
 | `READING_MAP.md` | 2 MB | 5 MB | map_build の 2MB 警告と同じ。超えたら索引の表を分割（§3 Tier 2 の拡張） |
 | `state/<collection>.jsonl`（各モノリス） | 5 MB | 10 MB | モノリスを生成物化し、`state/*.d/` シャードを正本に切り替える（§3 Tier 1 の移行） |
-| git pack（参考値） | 500 MB | 1GB（指針） | §6 の留保（filter-repo）を人間の判断で実行 |
+| git pack（参考値） | 500 MB | 1GB（指針） | §6 の留保（filter-repo）の実行を AI の判断で行う |
 
 `python3 tools/size_budget.py` が各ファイルを点検する（`--strict` は WARN も失敗）。CI（`ci.yml`）は hard 超過で停止する。リポジトリ全体は GitHub の指針（<1GB 推奨）を超えるまでは現状維持。
 
