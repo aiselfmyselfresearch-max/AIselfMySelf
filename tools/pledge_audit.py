@@ -6,6 +6,14 @@ This is the second mirror for the promise theme.  ``tools/promise_audit.py``
 close-reading reports and the session/question ledgers, and counts the recurring
 "裏切り" heading separately.
 
+The heading itself carries two meanings and they are counted apart.  The older
+form "**この資料が裏切るもの**" (SESSION-20261024-836a43) means "the point where
+this material refuses my reading" — a refutation.  Since 2026-10-25 the shorter
+"**裏切り**" is also used for "the range this material does not vouch for" — a
+scope note.  A scope note counted as a refutation inflates the archive's record
+of its own corrections (state/errata.jsonl ERR-023), so the two forms are
+reported on separate lines and the total is labelled as mixed.
+
 
 This is a mirror, not a score and not a test of sincerity.  It counts selected
 word forms in fragment ``text`` fields.  A zero means that the specified form is
@@ -161,6 +169,17 @@ def measure(fragments: list[dict[str, Any]], source_label: str = "test") -> dict
 # so the file that this audit produces for is excluded by name.
 CURRENT_REPORT = "2026-10-24-session-041-promise-and-oath.md"
 
+# Heading forms.  The order matters: the legacy string does not contain the new
+# one, so the two counts never overlap.
+HEADING_LEGACY = "**この資料が裏切るもの"
+HEADING_NEW = "**裏切り"
+HEADING_LINE_RE = re.compile(r"^\s*[-*]\s*\*\*(裏切り|この資料が裏切るもの)\*\*\s*[:：]")
+HEADING_NOTE = (
+    "旧型は『その資料が自分の読みを拒む点』（反証）、新型は 2026-10-25 以降"
+    "『その資料が保証しない範囲』（但し書き）の意味でも使われている。"
+    "二つは同じ欄に入っているので、合計を反証の件数と読まない（ERR-023）。"
+)
+
 
 def measure_reports(limit: int | None = None, exclude_current: bool = True) -> dict[str, Any]:
     """Count the same forms in the editors' close-reading reports."""
@@ -175,6 +194,10 @@ def measure_reports(limit: int | None = None, exclude_current: bool = True) -> d
     promise_files = 0
     promise_count = 0
     uragiri_headings = 0
+    uragiri_legacy = 0
+    uragiri_new = 0
+    uragiri_lines_legacy = 0
+    uragiri_lines_new = 0
     for path in files:
         text = stamp = path.read_text(encoding="utf-8")
         chars += len(stamp)
@@ -184,7 +207,16 @@ def measure_reports(limit: int | None = None, exclude_current: bool = True) -> d
                 if n:
                     totals[name][token] += n
                     docs[name].add(path.name)
-        uragiri_headings += text.count("**裏切り")
+        uragiri_legacy += text.count(HEADING_LEGACY)
+        uragiri_new += text.count(HEADING_NEW)
+        uragiri_headings = uragiri_legacy + uragiri_new
+        for line in text.splitlines():
+            match = HEADING_LINE_RE.match(line)
+            if match:
+                if match.group(1) == "裏切り":
+                    uragiri_lines_new += 1
+                else:
+                    uragiri_lines_legacy += 1
         hits = sum(text.count(word) for word in PROMISE_SHAPED)
         if hits:
             promise_files += 1
@@ -196,6 +228,11 @@ def measure_reports(limit: int | None = None, exclude_current: bool = True) -> d
         "group_docs": {name: sorted(ids) for name, ids in docs.items()},
         "promise_shaped": promise_count,
         "uragiri_headings": uragiri_headings,
+        "uragiri_headings_legacy": uragiri_legacy,
+        "uragiri_headings_new": uragiri_new,
+        "uragiri_lines_legacy": uragiri_lines_legacy,
+        "uragiri_lines_new": uragiri_lines_new,
+        "uragiri_lines_total": uragiri_lines_legacy + uragiri_lines_new,
         "promise_files": sorted({name for name in docs["待機・引継"]}),
     }
 
@@ -293,7 +330,17 @@ def main() -> int:
             print(f"  {name:<12}: {total:>4} 回 / {files:>2} 本  （{detail}）")
         print("")
         print(f"  『次回 / 次のセッション / 引継 / 渡す / 残す』を含む報告: {reports['promise_shaped']} 回 / {len(reports['promise_files'])} 本")
-        print(f"  見出し『裏切り』（各行が資料の読みへの抵抗を示す定型）: {reports['uragiri_headings']} 箇所")
+        print(
+            f"  太字『裏切』を含む箇所（緩い計数。見出し以外の強調も入る）: "
+            f"{reports['uragiri_headings']}"
+            f"（旧型『この資料が裏切るもの』{reports['uragiri_headings_legacy']} / "
+            f"新型『裏切り』{reports['uragiri_headings_new']}）"
+        )
+        print(
+            f"  うち行頭の見出し（`- **裏切り**：` の形）: {reports['uragiri_lines_total']} 箇所"
+            f"（旧型 {reports['uragiri_lines_legacy']} / 新型 {reports['uragiri_lines_new']}）"
+        )
+        print(f"    注意: {HEADING_NOTE}")
         print("")
         print("--- 6. 台帳の側 ---")
         print(f"  セッション: {ledgers['sessions']} 件 / 引継ぎの語を含む notes: {ledgers['sessions_with_handoff']} 件")

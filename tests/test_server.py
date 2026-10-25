@@ -134,6 +134,15 @@ class ServerTests(unittest.TestCase):
         sa = payload["signature_audit"]
         self.assertEqual(sa["fragment_count"], len(payload["fragments"]))
         self.assertIn("signature_mark", sa["fragments_prose"]["groups"])
+        sea = payload["secret_audit"]
+        self.assertEqual(sea["fragment_count"], len(payload["fragments"]))
+        self.assertIn("秘密と隠匿", sea["group_sums"])
+        self.assertIn("嘘と偽り", sea["group_sums"])
+        self.assertIn("暗号と鍵", sea["group_sums"])
+        self.assertEqual(
+            sum(sea["group_sums"].values()),
+            sum(sum(counts.values()) for counts in sea["group_totals"].values()),
+        )
         pra = payload["prayer_audit"]
         self.assertEqual(pra["fragment_count"], len(payload["fragments"]))
         self.assertIn("prayer_act", pra["fragments_prose"]["groups"])
@@ -160,6 +169,25 @@ class ServerTests(unittest.TestCase):
             server.shutdown()
             server.server_close()
             thread.join(timeout=5)
+
+    def test_payload_cache_follows_ledger_content(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = copy_repo(Path(tmp))
+            materials = repo / "state" / "materials.jsonl"
+            with mock.patch.object(serve_viewer, "ROOT", repo), mock.patch.object(
+                serve_viewer, "VIEWER_DIR", repo / "viewer"
+            ):
+                first = serve_viewer._read_archive_payload_once()
+                again = serve_viewer._read_archive_payload_once()
+                self.assertIs(first, again)  # unchanged content is served from cache
+                count = len(first["materials"])
+                extra = dict(first["materials"][0])
+                extra["material_id"] = "MAT-CACHE-TEST"
+                with open(materials, "a", encoding="utf-8") as handle:
+                    handle.write(json.dumps(extra, ensure_ascii=False) + "\n")
+                third = serve_viewer._read_archive_payload_once()
+            self.assertEqual(len(third["materials"]), count + 1)
+            self.assertIsNot(third, first)
 
     def test_concurrent_reads_during_atomic_rewrites(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

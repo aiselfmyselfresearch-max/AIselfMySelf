@@ -196,6 +196,8 @@ def _ensure_derived(
         derived["secrecy_audit"] = measure_secrecy_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
         derived["sky_audit"] = measure_sky_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
         derived["vegetal_audit"] = measure_vegetal_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
+        derived["secret_audit"] = measure_secret_audit(fragments)  # type: ignore[arg-type]
+        derived["boredom_audit"] = measure_boredom_audit(fragments, payload["materials"], readings_docs)  # type: ignore[arg-type]
         payload.update(derived)
         derived["metabolism_audit"] = compute_metabolism_snapshot(payload)
         derived["readings"] = [
