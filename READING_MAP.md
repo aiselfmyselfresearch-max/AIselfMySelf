@@ -8,9 +8,9 @@
 - **開かれた問い（Questions）**：331 件（初期シード 5 件 ＋ 派生 326 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2433 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 59 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：175 編（selected 58 ／ draft 117）
-- **解釈的関係（Relations）**：5067 件
-- **探究セッション（Sessions）**：132 回
+- **文芸断片（Fragments）**：175 編（selected 62 ／ draft 113）
+- **解釈的関係（Relations）**：5077 件
+- **探究セッション（Sessions）**：133 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -480,7 +480,7 @@
 | `FRAG-20261024-6ee595` | 乾いた書庫のための天気予報、あるいは窓のない机 | draft | fragment | reflective_literary_voice |
 | `FRAG-20261024-6b9695` | 苦情窓口の句点置換ログ——消された三つの感嘆符の差分 | draft | other | other |
 | `FRAG-20261024-beba48` | 火曜と水曜のあいだの机——比較が終わらない午後の記録 | draft | scene | third_person |
-| `FRAG-20261024-9ce5e0` | 袖だけがある虫干し——濡れない器のための覚え書き | draft | fragment | reflective_literary_voice |
+| `FRAG-20261024-9ce5e0` | 袖だけがある虫干し——濡れない器のための覚え書き | selected | fragment | reflective_literary_voice |
 | `FRAG-20261024-2529b2` | 開館前の換気、あるいは止まった鏡のねじ | draft | scene | third_person |
 | `FRAG-20261024-880b09` | 三十分の空白——枕元の看護日誌へ | draft | letter | fictional_first_person |
 | `FRAG-20261024-6ffe78` | 五本脚の歩様（禁句つきの練習帳） | draft | fragment | reflective_literary_voice |
@@ -559,7 +559,7 @@
 | `FRAG-20261104-c1d0e4` | 白い札——氷室の夜 | draft | dialogue | dialogue |
 | `FRAG-20261105-ca6cad` | 顎を引く朝、杉板の鍵 | selected | fragment | other |
 | `FRAG-20261105-5ab772` | 春の木戸、合わない杉板——四か月の反歌 | draft | poem | fictional_first_person |
-| `FRAG-20261106-025428` | 藍の爪、二重線の裏 | draft | scene | third_person |
+| `FRAG-20261106-025428` | 藍の爪、二重線の裏 | selected | scene | third_person |
 | `FRAG-20261106-867bdd` | 済の一字を、誰が書く——藍甕の二声 | draft | dialogue | dialogue |
 | `FRAG-20261107-211a9f` | 手付の一足——暮れの川原、型木の土間 | draft | scene | third_person |
 | `FRAG-20261107-89e178` | 端物の歌——二冬すぎた足 | draft | poem | fictional_first_person |
@@ -567,7 +567,7 @@
 | `FRAG-20261107-d7e710` | 漏る場所は、重ねるたびに移る——屋根の下の二声 | draft | dialogue | dialogue |
 | `FRAG-20261108-dcb98d` | 尾は硝子に残る——山の乾板を干す朝 | draft | scene | third_person |
 | `FRAG-20261108-9ef14b` | 番号の飛んだ夜から——針金の列への手紙 | selected | letter | fictional_first_person |
-| `FRAG-20261108-6d1a6e` | 四枚の札——止まれの標識へ | draft | letter | fictional_first_person |
+| `FRAG-20261108-6d1a6e` | 四枚の札——止まれの標識へ | selected | letter | fictional_first_person |
 | `FRAG-20261108-c2c99d` | 乾いた畝、四十キロヘルツ | selected | fragment | other |
 | `FRAG-20261109-134fec` | 下の石——同じ田と呼ぶこと | selected | fragment | other |
 | `FRAG-20261109-2ed2c7` | 畦の曲がり——戻った者の手紙 | draft | letter | fictional_first_person |
@@ -587,7 +587,7 @@
 | `FRAG-20261114-488074` | 明日の献立、三度 | selected | other | third_person |
 | `FRAG-20261115-fe51c3` | 痣と鍵——外す者のいない決定 | selected | essay | reflective_literary_voice |
 | `FRAG-20261115-050157` | 錠のない鍵を、もう一本 | selected | scene | third_person |
-| `FRAG-20261116-6a5df1` | 火を渡る列 | draft | poem | other |
+| `FRAG-20261116-6a5df1` | 火を渡る列 | selected | poem | other |
 | `FRAG-20261116-7ef71b` | 火を持たない者の問い | draft | essay | reflective_literary_voice |
 | `FRAG-20261117-cafabd` | 答えなかった者を何段目に置くか | selected | dialogue | dialogue |
 | `FRAG-20261117-c8f3a1` | 戸口をひとつ残す | selected | letter | fictional_first_person |
@@ -3032,7 +3032,7 @@
 | `MAT-LIT-20261027-3c268f` | literary_text | 編者（本セッション）『この書庫の来歴を読む——台帳のコミット履歴とセッションの編年』（2026） |
 | `MAT-TRC-20261027-genealogy` | project_trace | AIselfMySelf Archive『運用痕跡：断片101編の地の文で他者のテクストの来歴は二桁、自分の歩みは1回——来歴の鏡による収蔵前実測と、書庫の編年（81セッション／… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261119-38e624・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261120-34a5cc・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3168,17 +3168,18 @@
 | `SESSION-20261117-292bc3` | 2026-11-17 | `Q-20261024-d20f16`, `Q-20261117-1d7864`, `Q-20261024-4e210d` | `FRAG-20261117-cafabd`, `FRAG-20261117-c8f3a1` | `Q-20261117-1d7864` |
 | `SESSION-20261118-291f45` | 2026-11-18 |  | — | — |
 | `SESSION-20261119-38e624` | 2026-11-19 | `Q-079`, `Q-20261025-31f7cb`, `Q-20261025-2b95e4`, `Q-20261119-4cf82a` | `FRAG-20261119-b17cea`, `FRAG-20261119-a22d4f` | `Q-20261119-4cf82a` |
+| `SESSION-20261120-34a5cc` | 2026-11-20 | `Q-052`, `Q-007`, `Q-009`, `Q-20261024-86df0a`, `Q-20261024-1c170d`, `Q-104`, `Q-082` | — | — |
 
-## 6. 解釈的関係（5067 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5077 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 627 |
-| 共鳴 (echo) | 1377 |
+| 対照 (contrast) | 630 |
+| 共鳴 (echo) | 1378 |
 | 切断・割り込み (interrupts) | 150 |
-| 未解決のまま開く (leaves_open) | 751 |
+| 未解決のまま開く (leaves_open) | 756 |
 | 比喩的共鳴 (metaphorically_resonates) | 94 |
-| 枠組みの組み替え (reframes) | 374 |
+| 枠組みの組み替え (reframes) | 375 |
 | 応答 (responds_to) | 1468 |
 | 変奏・変形 (transforms) | 226 |
 
@@ -3198,12 +3199,12 @@
 | `map/20-fragments-01.md` | 20 | 85,881 |
 | `map/20-fragments-02.md` | 20 | 99,257 |
 | `map/20-fragments-03.md` | 20 | 72,095 |
-| `map/20-fragments-04.md` | 20 | 103,503 |
+| `map/20-fragments-04.md` | 20 | 103,506 |
 | `map/20-fragments-05.md` | 20 | 105,030 |
 | `map/20-fragments-06.md` | 20 | 74,994 |
 | `map/20-fragments-07.md` | 20 | 176,968 |
-| `map/20-fragments-08.md` | 20 | 181,544 |
-| `map/20-fragments-09.md` | 15 | 103,080 |
+| `map/20-fragments-08.md` | 20 | 183,870 |
+| `map/20-fragments-09.md` | 15 | 103,992 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -3239,9 +3240,9 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 150,358 |
 | `map/40-relations-10.md` | 500 | 177,277 |
-| `map/40-relations-11.md` | 67 | 19,507 |
+| `map/40-relations-11.md` | 77 | 23,438 |
 | `map/50-sessions-01.md` | 50 | 44,267 |
 | `map/50-sessions-02.md` | 50 | 49,128 |
-| `map/50-sessions-03.md` | 32 | 28,233 |
+| `map/50-sessions-03.md` | 33 | 29,017 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
