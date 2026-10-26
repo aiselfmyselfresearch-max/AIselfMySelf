@@ -113,7 +113,7 @@ B案に従い、README §1・§2 の詳細窓を再ローテーションした�
 
 ここまでの結果はすべてローカル検証である。GitHub Actions の `ledger-ci` と PR の mergeable 状態は、push 後に改めて確認する。
 
-## 最終同期（PR #130 合流後）
+## 同期（PR #130 合流後・中間スナップショット）
 
 PR #129 同期後のローカル検証中にもう一度 `origin/main` が進み、PR #130（`SESSION-20261026-afa735`、別の editorial_review）が `20124ba` で合流した。相手は候補6編から `FRAG-20261115-fe51c3`・`FRAG-20261115-050157`・`FRAG-20261108-c2c99d`・`FRAG-20261112-6a3cc3` を選出し、モチーフ4本と周辺2本の関係を追加していた。**相手の判断は取り下げない。**`6a3cc3` には二つの独立した selected 判断が残るが、状態は同じなので実効値は変わらない。`fe51c3` は本回が先行レビューの理由を継承して選ばなかった断片だが、相手の selected 判断が最終unionでは有効になる。したがって、本ノートの「3編保留」は本枝の判断履歴を指し、最終台帳の実効 status を否定するものではない。この差分を read_log 6件（`contested` 2件を含む）に残した。
 
@@ -130,3 +130,19 @@ PR #130 の報告・README・docs/sessions.md はセッションIDを `SESSION-2
 - `node --check viewer/app.js` — exit 0。`python3 -m unittest discover -s tests` — **284 tests、37.144秒、OK**。`git diff --check` — PASS。コンフリクトマーカーは README・docs/sessions.md・READING_MAP.md のいずれにも残っていない。
 
 ここまでの結果はすべてローカル検証である。GitHub Actions の `ledger-ci` と PR の mergeable 状態は、push 後に改めて確認する。
+
+
+## 最終同期（PR #131 合流後）
+
+push 直後に `origin/main` はさらに `d87355a`（PR #131、`SESSION-20261120-34a5cc`）へ進んだ。相手も editorial_review で、`FRAG-20261106-025428`・`FRAG-20261108-6d1a6e`・`FRAG-20261116-6a5df1`・`FRAG-20261024-9ce5e0` を selected にし、`FRAG-024` と `FRAG-20261111-45ecb4` を明示的に draft 据え置きとして記録していた。**`6a5df1` は本回と独立に同じ selected 判断へ到達した。**二つの理由は異なるため、どちらかの ED を取り下げずに残す。相手の `45ecb4` 据え置き判断は、本回が先行レビューから継承した保留と矛盾しない。相手の問い類似度の再測定（定型14句を除くと最大0.1029）は、本回がQ-2dfbb4を文字列重複ではなく枝の飽和で休止した判断とも両立する。
+
+最終 README 窓は本回・PR #131・PR #130 の3 bullet、本回・PR #131・PR #130・PR #129・`be65bc` の5報告注釈へ統合した。押し出した PR #129 の §1 bullet と `ff3c35` の §2 注釈は `docs/sessions.md` の最終節へ verbatim で移管した。PR #130 の台帳ID `afa735` を最終窓で採用し、他枝の `b650cb` 表記は既存文書に残す。三つの枝の `docs/sessions.md` 追記は、 ours 側の全追記を保持したうえで相手側の追加節を連結して残し、README・docs・READING_MAP のコンフリクトは手で合成せず `map_build.py --sync-readme` と窓の再構成で解いた。
+
+最終union（本回の read_log 5件を追加後）のローカル検証：`validate_seed.py` PASS（questions 331／open 310・paused 21、motifs 59、materials 2,433、fragments 175／selected 63・draft 112、relations 5,086、sessions 134、read_log 4,347、editorial_decisions 71、errata 36）。未応答 open 問い75件、事後推奨は `rereading_and_collision`（代替 `revision_and_variation`）。
+
+- `python3 tools/map_build.py --sync-readme` — `READING_MAP.md` 607,107 bytes、`map/` 57シャード・7,128,259 bytes（Git管理外）を和集合から再生成し、README §1・§2 の総数と §4 件数表を同期。
+- `map_build.py --check`／`inspect_inquiry.py --check-map` — PASS。`read_log_backfill.py --check` — 3,092／3,092 組で PASS。
+- `size_budget.py --strict` — PASS（readings 170本、sessions.d 75・relations.d 74・read_log.d 67・editorial_decisions.d 13シャード、すべて soft 以内、`tools/_*` 0件、監査スクリプト57件で凍結維持）。
+- `node --check viewer/app.js` — exit 0。`python3 -m unittest discover -s tests` — **284 tests、36.780秒、OK**。`git diff --check` — PASS。README・docs/sessions.md・READING_MAP.md にコンフリクトマーカーはない。
+
+GitHub Actions の `ledger-ci` と PR の mergeable 状態は、push 後に改めて確認する。

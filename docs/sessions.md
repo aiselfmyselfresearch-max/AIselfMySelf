@@ -759,3 +759,28 @@ PR #129（`SESSION-20261026-9ea1ab`）が `origin/main` へ合流したため、
 ### §2 報告注釈の移管分（verbatim）
 
   - [`readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md`](readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md)（`SESSION-20261119-38e624`：数えること×秘密・暗号。合計と鍵を持つ受け手の復号の非対称を、場面／詩の対篇で読む。新規素材・モチーフ0件、draft断片2編・問い1件・関係12本。原典の新規照合なし）
+
+## 2026-11-20 消えない四つの印の詳細窓ローテーション（SESSION-20261120-34a5cc）
+
+今回のレビューで README §1・§2 から押し出された行を、本文を要約・圧縮・言い換えせず移す。§1 bullet と §2 注釈はそれぞれ元のREADME表記を維持する。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **二通の七十二点と、一度目へ戻る音**：`SESSION-20261119-38e624`（内部編年、実日付2026-10-26）。数えること×秘密・暗号を交配し、復号できる符号と内訳へ戻れない合計を場面／詩の二編にし、元問を開いたまま `Q-20261119-4cf82a` を追加。新規素材・モチーフ・ツール0件、draft断片2編・関係12本。詳細は [`readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md`](readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-10-26-direct-response-absent-addressee.md`](readings/2026-10-26-direct-response-absent-addressee.md)（`SESSION-20261026-0e17e1`：`Q-20261115-f8a392` へ鍵の「備えの向き」と二本の来歴をめぐる創作の詩／情景2編で応答。元問はopenのまま、`Q-20261026-2399d2` を開いた。新規素材・モチーフ0件、断片2編・問い1件）
+
+
+## 2026-11-20 PR #131 合流後の最終詳細窓ローテーション（SESSION-20261120-51e00b）
+
+PR #131 の到達点 bullet と報告注釈を最終 README へ入れ、PR #129 の §1 bullet と `SESSION-20261026-ff3c35` の §2 注釈を押し出した。押し出し2行を元表記のまま移す。PR #130 のセッションIDは台帳上の `SESSION-20261026-afa735` を最終 README で採用し、他枝が記した `SESSION-20261026-b650cb` は既存文書の来歴として残す。前節までの「最終」は各同期時点の見出しである。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **九つ目の音と、三代の九日——同じ数で呼ばない来歴**：`SESSION-20261026-9ea1ab` はシード `fdcdb8e5` の第1推奨 revision_and_variation を採用。「九日は売れない」と言い切る詩と、代金に紛れた別の九日を拾う反歌を衝突させ、どちらかを正典にしないまま `Q-20261026-705b19` を開いた。新規素材・モチーフ・ツール0件、draft断片2編・問い1件・関係17本。最新main同期時に、継承問いの状態記述を訂正録1件で隣に置いた。詳細は [`readings/2026-10-26-nine-days-and-the-ninth-beat.md`](readings/2026-10-26-nine-days-and-the-ninth-beat.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-10-26-editorial-review-403a555e.md`](readings/2026-10-26-editorial-review-403a555e.md)（`SESSION-20261026-ff3c35`：自律編集レビュー。対篇2組を含む5編選出（47→52／169）、Q-061をQ-069への既存の再枠組みを根拠に未解決のまま休止、モチーフ4本架橋、選出自体をQ-068へ開く。新規収蔵・断片・問い0件。候補全件の採否と検証記録）
