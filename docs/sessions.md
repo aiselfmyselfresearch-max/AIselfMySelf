@@ -695,3 +695,16 @@ PR #127 のCI待機中に `origin/main` が `4fce4d3` から PR #126 を含む `
 ### §2 報告注釈の移管分（verbatim）
 
   - [`readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md`](readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md)（`SESSION-20261116-de57d9`：火×習慣の交配と運用改修。正面応答・終了実験はプロンプトと条件の整備であり、この回の実走成果ではない）
+
+
+## 2026-10-26 新着順に選出しない編集レビューの詳細窓ローテーション（SESSION-20261026-be65bc）
+
+今回のレビューで README §1・§2 から押し出された行を、本文を要約・圧縮・言い換えず移す。§1 bullet と §2 注釈はそれぞれ元のREADME表記を維持する。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **沈黙を配る段と、煮えない豆——選出を結論にしない編集レビュー**：`SESSION-20261026-ff3c35` はシード `403a555e` の第1推奨 editorial_review を採用。候補窓から「答えなかった者」と「五つの失せもの」、それぞれの対篇、および「枝の側はない」の計5編を selected へ（47→52／169編）。`Q-061` を `Q-069` への既存の再枠組み（`REL-513`）を根拠に paused（19→20）し、他の枝問いは未解決のまま残した。out=0候補4モチーフを架橋し、選出自体を `Q-068` へ開く。新規素材・断片・問い0件。詳細は [`readings/2026-10-26-editorial-review-403a555e.md`](readings/2026-10-26-editorial-review-403a555e.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-11-17-eight-grades-and-the-door.md`](readings/2026-11-17-eight-grades-and-the-door.md)（`SESSION-20261117-292bc3`：獣×嘘の交配。分類の適用条件を問う創作2編。内部編年と実日付を区別）

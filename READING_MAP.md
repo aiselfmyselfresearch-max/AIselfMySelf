@@ -8,9 +8,9 @@
 - **開かれた問い（Questions）**：330 件（初期シード 5 件 ＋ 派生 325 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2433 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 59 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：173 編（selected 52 ／ draft 121）
-- **解釈的関係（Relations）**：5038 件
-- **探究セッション（Sessions）**：129 回
+- **文芸断片（Fragments）**：173 編（selected 54 ／ draft 119）
+- **解釈的関係（Relations）**：5044 件
+- **探究セッション（Sessions）**：130 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -588,8 +588,8 @@
 | `FRAG-20261116-7ef71b` | 火を持たない者の問い | draft | essay | reflective_literary_voice |
 | `FRAG-20261117-cafabd` | 答えなかった者を何段目に置くか | selected | dialogue | dialogue |
 | `FRAG-20261117-c8f3a1` | 戸口をひとつ残す | selected | letter | fictional_first_person |
-| `FRAG-20261119-b17cea` | 七十二点が二度着く | draft | scene | third_person |
-| `FRAG-20261119-a22d4f` | 一度目へ戻る音 | draft | poem | other |
+| `FRAG-20261119-b17cea` | 七十二点が二度着く | selected | scene | third_person |
+| `FRAG-20261119-a22d4f` | 一度目へ戻る音 | selected | poem | other |
 
 ## 4. 対話素材（2433 件・詳細は map/3*.md）
 
@@ -3124,6 +3124,7 @@
 | `SESSION-20261026-dac040` | 2026-10-26 | `Q-20261024-5b11eb`, `Q-20261024-08551f`, `Q-082` | `FRAG-20261026-4fdbd9` | — |
 | `SESSION-20261026-948744` | 2026-10-26 | `Q-052`, `Q-20261024-5b11eb`, `Q-20261025-b05e3d`, `Q-20261025-9a37c8` | `FRAG-20261026-b0690f` | — |
 | `SESSION-20261026-8d1e6a` | 2026-10-26 | `Q-20261026-e0918f`, `Q-20261026-92b0d3`, `Q-20261026-71ac4b`, `Q-20261026-7ce00b`, `Q-20261026-260959` | `FRAG-20261026-dff9e1`, `FRAG-20261026-70a9ff` | `Q-20261026-e0918f`, `Q-20261026-92b0d3`, `Q-20261026-71ac4b`, `Q-20261026-7ce00b`, `Q-20261026-260959` |
+| `SESSION-20261026-be65bc` | 2026-10-26 | `Q-20261119-4cf82a`, `Q-20261025-5b0a63`, `Q-071`, `Q-20261024-4ebe69`, `Q-20261027-3e9249`, `Q-20261025-b4e701`, `Q-068`, `Q-082` | — | — |
 | `SESSION-20261026-04260b` | 2026-10-26 | `Q-20261027-133ac7`, `Q-20261027-3e9249` | `FRAG-20261026-042ce7`, `FRAG-20261026-0413a6` | — |
 | `SESSION-20261026-8602f1` | 2026-10-26 | `Q-062`, `Q-20261024-9ac2ce` | `FRAG-20261026-4e9822` | — |
 | `SESSION-20261026-d8a61a` | 2026-10-26 | `Q-20261024-e5b7c8`, `Q-20261024-a1e9f3`, `Q-20261024-c9dc13`, `Q-20261024-796438`, `Q-007` | — | — |
@@ -3163,16 +3164,16 @@
 | `SESSION-20261118-291f45` | 2026-11-18 |  | — | — |
 | `SESSION-20261119-38e624` | 2026-11-19 | `Q-079`, `Q-20261025-31f7cb`, `Q-20261025-2b95e4`, `Q-20261119-4cf82a` | `FRAG-20261119-b17cea`, `FRAG-20261119-a22d4f` | `Q-20261119-4cf82a` |
 
-## 6. 解釈的関係（5038 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5044 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 618 |
+| 対照 (contrast) | 621 |
 | 共鳴 (echo) | 1375 |
 | 切断・割り込み (interrupts) | 149 |
-| 未解決のまま開く (leaves_open) | 746 |
+| 未解決のまま開く (leaves_open) | 748 |
 | 比喩的共鳴 (metaphorically_resonates) | 94 |
-| 枠組みの組み替え (reframes) | 369 |
+| 枠組みの組み替え (reframes) | 370 |
 | 応答 (responds_to) | 1462 |
 | 変奏・変形 (transforms) | 225 |
 
@@ -3197,7 +3198,7 @@
 | `map/20-fragments-06.md` | 20 | 82,877 |
 | `map/20-fragments-07.md` | 20 | 181,891 |
 | `map/20-fragments-08.md` | 20 | 175,088 |
-| `map/20-fragments-09.md` | 13 | 85,315 |
+| `map/20-fragments-09.md` | 13 | 85,321 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -3231,11 +3232,11 @@
 | `map/40-relations-06.md` | 500 | 115,877 |
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
-| `map/40-relations-09.md` | 500 | 149,864 |
-| `map/40-relations-10.md` | 500 | 176,652 |
-| `map/40-relations-11.md` | 38 | 11,197 |
+| `map/40-relations-09.md` | 500 | 150,135 |
+| `map/40-relations-10.md` | 500 | 177,292 |
+| `map/40-relations-11.md` | 44 | 12,498 |
 | `map/50-sessions-01.md` | 50 | 44,267 |
-| `map/50-sessions-02.md` | 50 | 49,589 |
-| `map/50-sessions-03.md` | 29 | 25,309 |
+| `map/50-sessions-02.md` | 50 | 49,333 |
+| `map/50-sessions-03.md` | 30 | 26,334 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
