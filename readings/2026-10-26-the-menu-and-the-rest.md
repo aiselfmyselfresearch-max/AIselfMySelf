@@ -85,3 +85,9 @@ READMEの詳細窓は本回・内部編年11-17・11-16の3セッション、報
 [PR #124](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/124) を本セッションの固定ブランチからmain宛に作成した。内容コミット `246d84ece84dedb888d546a28640b9020720e91f` に対して、GitHubの `ledger-ci` は [push実行40325846027](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/actions/runs/40325846027)・[pull_request実行40325874526](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/actions/runs/40325874526) ともに **completed / success**。後者のvalidateは53秒で通過した。
 
 通過後の再fetchでもorigin/mainは `5fe5c6e`、再度のmergeは `Already up to date.`。同期のために選出対象を変更する必要はなかった。この実績の追記後にも最終HEADへのCIを待ち、直前にmainを再照合してから、PR番号を明示したmergeを行う方針とした。最終HEAD・最終CI・mergeの結果はPRのチェックおよび完了コメントに残し、成功前に成功を台帳へ書く循環を避ける。CIは構造の検証であり、この編集判断の文学的正当性の証明ではない。
+
+### 最終CIの不一致と、再確認の範囲
+
+追記コミット `2fcec27` のPR側 [40326081487](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/actions/runs/40326081487) は成功したが、push側 [40326073995](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/actions/runs/40326073995) は回帰テスト工程で失敗した。台帳・索引・サイズ・読み痕跡・JSの各工程は成功。ログ配信先からの取得はEOFとなり、APIのannotationsにも個別テスト名はないため、原因は特定していない。同じ内容のローカル284件とPR側の成功だけを理由に、push側の失敗を無視してマージしない。
+
+失敗ジョブの再実行を試みたが、CLIは再実行不可と報告し、APIは `Resource not accessible by integration`（HTTP 403）を返した。これは成功確認ではない。権限やテストを変更せず、この失敗と制限を記録する文書コミットにより、通常のpush/PRイベントで最終ツリーのCIを改めて実行する。原因を一時的失敗と断定せず、新しい実行でも失敗する場合はさらに調査する。実行結果の履歴は [PR #124のコメント](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/124#issuecomment-6416529412) とチェックに保存する。
