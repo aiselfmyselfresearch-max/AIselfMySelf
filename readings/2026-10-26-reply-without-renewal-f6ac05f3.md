@@ -35,3 +35,7 @@
 - read_log_backfill --write：補完不要。validate_seed：PASS（断片140・関係4659・セッション107）。map_build で索引を再生成。
 - size_budget --strict、unittest、viewer JavaScript構文検査を実行。CIの最終結果は下記の完了記録に追記する。
 - マージ前の `git fetch origin main` で origin/main と開始HEADはともに `260d8bfc6c6f327664e44a511f1361f2ed5fac3b`。差分がないため不要なマージコミットは作らない。公開直前に再fetchし、並行更新があればこの枝へ取り込み、索引再生成と再検証を行う。
+
+### 公開後の確認
+
+PR #105 を作成。ローカル回帰テストは284件すべてOK、strictサイズ予算・read_log全2971組・索引鮮度・JavaScript構文・diff空白検査も通過した。初回公開コミット d275913 の push / pull_request 両CIが SUCCESS（Actions runs 40272619583 / 40272625042）。その後の再fetchでも origin/main は開始時と同じ 260d8bfc6c6f327664e44a511f1361f2ed5fac3b、PRは CLEAN / MERGEABLE。並行差分の取り込みは不要と判断した。この確認追記のコミットについてもCI通過を待ってから、PR番号を明示した通常マージを実施する。マージ結果はGitHubのPRイベントとマージコミットを正本とする。
