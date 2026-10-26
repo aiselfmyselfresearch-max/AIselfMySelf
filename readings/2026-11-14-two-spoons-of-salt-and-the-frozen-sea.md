@@ -299,6 +299,27 @@ python3 -m unittest discover -s tests
 
 統合後、`validate_seed.py`・`map_build.py --check`・`read_log_backfill.py --check`・`size_budget.py --strict`・全284テストが通ることを確認した。`READING_MAP.md` は和集合の並びが変わらないため、統合そのものでは差分が出ない（差分は本セッションの追記分のみ）。
 
+### 9.3b 並走セッションとの併合（追記）
+
+本セッションのコミット後に `git fetch` すると、`origin/main` は `32a5ea4` → `498553d`（PR #118、`SESSION-20261113-c36944`）へ進んでいた。PR #118 は**同じ最古の2シャードを同じファイルへ圧縮**しており、`state/relations.d/2026-10-24-1acb5a01fda3.jsonl` と `state/sessions.d/2026-10-24-10cee95c5146.jsonl`、および `READING_MAP.md` の3ファイルが衝突した。
+
+解決は、両親の版の**行の和集合**を ID で重複排除して作り直す方法で行った（自分側の行順を保ち、相手側にあって自分にない行だけを後ろに足す）。結果、相手側の行はどちらも自分側の統合にすでに含まれていた（sessions 3行／relations 136行はすべて既存）。`READING_MAP.md` は片方の版を採らず、`map_build.py` で和集合から再生成した。
+
+併合後の検算（両親の ID 集合の和と、併合後の ID 集合を比較）：
+
+| コレクション | 本ブランチ | origin/main | 和集合 | 併合後 | 欠落 | 余剰 |
+|---|---:|---:|---:|---:|---:|---:|
+| relations | 4,926 | 4,938 | 4,954 | **4,954** | 0 | 0 |
+| sessions | 120 | 120 | 121 | **121** | 0 | 0 |
+| fragments | 161 | 161 | 163 | **163** | 0 | 0 |
+| questions | 321 | 321 | 322 | **322** | 0 | 0 |
+| read_log | 4,020 | 4,040 | 4,050 | **4,050** | 0 | 0 |
+| materials | 2,433 | 2,433 | 2,433 | **2,433** | 0 | 0 |
+
+併合後のシャード数は sessions.d 62／relations.d 62／read_log.d 74／fragments.d 59／questions.d 57 で、いずれも soft 上限内。併合後に `validate_seed.py`・`map_build.py --check`・`read_log_backfill.py --check`・`size_budget.py --strict`・全284テストを再実行し、すべて通ることを確認した。
+
+この衝突は、シャード統合という維持作業が**並走セッションのあいだで同じ最古シャードを狙う**という構造的な弱点を持つことを示している。次回以降に統合を行う場合は、①統合対象のシャード名を先にセッション記録へ書く、②併合時は必ず両親の ID 集合の和で検算する、の二点を手順に加えるべきである。
+
 ### 9.4 訂正録
 
 `python3 tools/errata_audit.py` の再実行による不一致は既存のもので、本セッションの記述に起因する新規の誤りは見つからなかった。`errata` は追加していない（32件のまま）。
