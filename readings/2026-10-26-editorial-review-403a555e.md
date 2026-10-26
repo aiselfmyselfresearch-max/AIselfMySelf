@@ -91,4 +91,26 @@
 - `node --check viewer/app.js` — exit 0、構文エラーなし。
 - `python3 -m unittest discover -s tests -v` — **284 tests、37.888秒、OK**。
 
-この記録はローカル実行の結果であり、GitHub ActionsのPRチェックが通ったことを先取りしない。PR作成後のCIと、マージ直前に再取得した `origin/main` のSHA・同期結果は、確認できたものだけを最終応答で報告する。
+この時点のローカル結果は、後から `origin/main` に取り込まれた並行セッションを含まない。GitHub ActionsのPRチェックが通ったことも先取りしない。最新main同期後の追加検証を次節に分けて記録する。
+
+## 8. 作業中に進んだ `main` の同期
+
+初回候補確認後、マージ直前の最新mainを調べたところ、開始時SHA `fd4f59347df2c44372e56e0470bbb6a90751391d` から、PR #125 のマージコミット `4fce4d38db91a5e33c5e2458c25c167a1884c66e`（親に `fc9ff069d390f4f7b8c9c1b720ab2e2629c94e60`）へ2コミット進んでいた。内容は別セッション `SESSION-20261026-0e17e1` の正面応答で、既存の問いに応答するdraft断片2編、新しいopen問い `Q-20261026-2399d2`、関係6本、読み痕跡26件が追加されていた。素材・モチーフは増えていない。
+
+そのセッション記録、報告、二つの断片、新問いを同期後に読み、今回の自分のread_logシャードへ追補4件を追記した（既存行は変更していない）。追加された「形を受け継いだ者が宛先を決める権限」の問いは `Q-061`／`Q-069` とは別枝で、Q-061の休止を正当化する応答でも撤回させる反証でもない。`MOTIF-20261024-f19932`（署名）と `MOTIF-010`（宛先）に隣接する新しい対立として記録し、並行セッションの二編は今回の選集へ便乗昇格させず draft のまま残した。
+
+同期後に `python3 tools/inspect_inquiry.py` を再実行しても第1推奨は `editorial_review` のまま。候補窓は選出済みの5編から次の6草稿へ進んでいたため、今回の採否は開始時に実際に読んだシード候補窓の決定として保持し、次窓の候補を追加選出しない。並行mainの2断片により全体の断片数は171、選出数は52（本回の5件は元の169編に対する47→52）となる。問いは329（open309／paused20）、関係5,026、セッション128、read_logは追補後4,174。
+
+`git merge origin/main` で同じ `READING_MAP.md` にだけ機械生成物の競合が出たため、内容を手編集せず `python3 tools/map_build.py --sync-readme` で和集合から再生成した。READMEの§1・§2は現在の詳細窓を保ったまま、並行mainの正面応答報告も加えた。§1から「二種類の火と、目の試練」、§2から「錠のない鍵を、もう一本」の行を各一字一句変えず `docs/sessions.md` へ移した。
+
+最新mainとREADME窓の再同期を含む全変更後のローカル検証は、以下の通り成功した。
+
+- `python3 tools/map_build.py --sync-readme` — `READING_MAP.md` 604,793 bytes、ローカルmap 57 shard／7,073,806 bytesを生成し、README件数を同期。
+- `python3 tools/validate_seed.py` — PASS。問い329（open309／paused20）、モチーフ59、素材2,433、断片171（selected52／draft119）、関係5,026、セッション128、read_log4,174、編集判断55。
+- `python3 tools/inspect_inquiry.py --check-map` — PASS。
+- `python3 tools/read_log_backfill.py --check` — PASS、session/context-material 3,083組すべてに読み痕跡あり。
+- `python3 tools/size_budget.py --strict` — PASS、全soft／hard予算内。
+- `node --check viewer/app.js` — exit 0。
+- `python3 -m unittest discover -s tests -v` — **284 tests、36.044秒、OK**。
+
+GitHub ActionsのPRチェックはまだ実行していない。PRを作成してそのCI完了を確認するまでは、mainへのこの回のマージは行わない。

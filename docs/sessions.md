@@ -669,3 +669,16 @@ README の詳細窓を §1 3件・§2 5件に保つため、本回は窓を「�
 ### §2 報告注釈の移管分（verbatim）
 
   - [`readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md`](readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md)（`SESSION-20261114-c7fbd6`：予測×食べること。命令法の申し送りと三度の黒板を構成。断片2編、新規収蔵0件）
+
+
+## 2026-10-26 最新main同期後の詳細窓ローテーション（SESSION-20261026-ff3c35）
+
+作業中に `origin/main` が PR #125 を含む `4fce4d38db91a5e33c5e2458c25c167a1884c66e` へ進み、正面応答セッションの報告・台帳が加わった。READMEの§1・§2詳細窓にその既存成果を載せ、押し出された以下の2行を元表記のまま移す。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **二種類の火と、目の試練**：`SESSION-20261116-de57d9`（内部編年）。火×習慣の再読交配と、正面応答・終了実験モードの追加、移行トリガーの整備。新モードはこの回では未実行。詳細は [`readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md`](readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-11-15-a-second-key-with-no-lock.md`](readings/2026-11-15-a-second-key-with-no-lock.md)（`SESSION-20261115-6a7862`：痣と断じるエッセイと、失われた錠への合鍵の情景へ変奏。断片2編、新規収蔵0件）
