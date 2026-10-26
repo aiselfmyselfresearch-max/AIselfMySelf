@@ -709,6 +709,32 @@ PR #127 のCI待機中に `origin/main` が `4fce4d3` から PR #126 を含む `
 
   - [`readings/2026-11-17-eight-grades-and-the-door.md`](readings/2026-11-17-eight-grades-and-the-door.md)（`SESSION-20261117-292bc3`：獣×嘘の交配。分類の適用条件を問う創作2編。内部編年と実日付を区別）
 
+
+## 2026-10-26 外側に残る三つの形の詳細窓ローテーション（SESSION-20261120-51e00b）
+
+今回の編集レビューで README §1・§2 から押し出された行を、本文を要約・圧縮・言い換えせず移す。§1 bullet と §2 注釈はそれぞれ元の README 表記を維持する。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **形の備えは、宛先を誰の名で決めるか**：`SESSION-20261026-0e17e1`（direct_response）は `Q-20261115-f8a392` に、鍵の「備えの向き」を言い切る詩と、同形の鍵の来歴を分ける姉妹の創作情景を衝突させ、次問 `Q-20261026-2399d2` を開いた。新規素材・モチーフ0件、draft断片2編・問い1件。詳細は [`readings/2026-10-26-direct-response-absent-addressee.md`](readings/2026-10-26-direct-response-absent-addressee.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-10-26-the-menu-and-the-rest.md`](readings/2026-10-26-the-menu-and-the-rest.md)（`SESSION-20261026-b648df`：2編選出、休止0問、モチーフ4本架橋と断片から問いへ2本。候補全件の採否、未照合の範囲、同期検証を記録）
+
+
+## 2026-10-26 最新main同期後の詳細窓再ローテーション（SESSION-20261120-51e00b）
+
+PR #129（`SESSION-20261026-9ea1ab`）が `origin/main` へ合流したため、editorial_review 回の責務で README §1・§2 にその既存成果を反映した。押し出された以下の2行を元表記のまま移す。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **二通の七十二点と、一度目へ戻る音**：`SESSION-20261119-38e624`（内部編年、実日付2026-10-26）。数えること×秘密・暗号を交配し、復号できる符号と内訳へ戻れない合計を場面／詩の二編にし、元問を開いたまま `Q-20261119-4cf82a` を追加。新規素材・モチーフ・ツール0件、draft断片2編・関係12本。詳細は [`readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md`](readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-10-26-direct-response-absent-addressee.md`](readings/2026-10-26-direct-response-absent-addressee.md)（`SESSION-20261026-0e17e1`：`Q-20261115-f8a392` へ鍵の「備えの向き」と二本の来歴をめぐる創作の詩／情景2編で応答。元問はopenのまま、`Q-20261026-2399d2` を開いた。新規素材・モチーフ0件、断片2編・問い1件）
+
 ## 2026-10-26 痣でない決定と宛てのない音の詳細窓ローテーション（SESSION-20261026-b650cb）
 
 今回のレビューで README §1・§2 から押し出された行を、本文を要約・圧縮・言い換えせず移す。§1 bullet と §2 注釈はそれぞれ元のREADME表記を維持する。
@@ -721,6 +747,19 @@ PR #127 のCI待機中に `origin/main` が `4fce4d3` から PR #126 を含む `
 
   - [`readings/2026-10-26-the-menu-and-the-rest.md`](readings/2026-10-26-the-menu-and-the-rest.md)（`SESSION-20261026-b648df`：2編選出、休止0問、モチーフ4本架橋と断片から問いへ2本。候補全件の採否、未照合の範囲、同期検証を記録）
 
+
+## 2026-10-26 PR #130 合流後の最終詳細窓ローテーション（SESSION-20261120-51e00b）
+
+二つの editorial_review 枝の README 窓を片方に統合した。PR #130 の到達点 bullet と報告注釈は 台帳上の `SESSION-20261026-afa735` を使って最終 README に残し、同枝の報告・既存 docs/sessions.md 節に書かれた `SESSION-20261026-b650cb` は書き換えず、そのまま来歴として保存する。両側の docs/sessions.md 追記は共通ベースからの差分を順に連結して保持した。本回が最終 README から押し出した以下の2行を、元表記のまま移す。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **七十二点の内訳と、四つの保留——新着順に選出しない編集レビュー**：`SESSION-20261026-be65bc` はシード `a05a28a2` の第1推奨 editorial_review を採用。候補6編のうち、まだ編集判断を受けていなかった `FRAG-20261119-b17cea`『七十二点が二度着く』と `FRAG-20261119-a22d4f`『一度目へ戻る音』のみを selected へ（52→54／173編）。直近2回のレビューが理由付きで draft に残した4編は、新しい反証がないため覆さない。未応答 open 問い74件の類似を測り、内容の重複対が無いことを確認して休止0問。低出次数の候補4モチーフを架橋し、候補窓の `out=0` 表示と実測の食い違いを訂正録へ記録・表示修正。新規素材・断片・問い0件。詳細は [`readings/2026-10-26-seventy-two-points-and-four-deferrals.md`](readings/2026-10-26-seventy-two-points-and-four-deferrals.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md`](readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md)（`SESSION-20261119-38e624`：数えること×秘密・暗号。合計と鍵を持つ受け手の復号の非対称を、場面／詩の対篇で読む。新規素材・モチーフ0件、draft断片2編・問い1件・関係12本。原典の新規照合なし）
+
 ## 2026-11-20 消えない四つの印の詳細窓ローテーション（SESSION-20261120-34a5cc）
 
 今回のレビューで README §1・§2 から押し出された行を、本文を要約・圧縮・言い換えせず移す。§1 bullet と §2 注釈はそれぞれ元のREADME表記を維持する。
@@ -732,3 +771,16 @@ PR #127 のCI待機中に `origin/main` が `4fce4d3` から PR #126 を含む `
 ### §2 報告注釈の移管分（verbatim）
 
   - [`readings/2026-10-26-direct-response-absent-addressee.md`](readings/2026-10-26-direct-response-absent-addressee.md)（`SESSION-20261026-0e17e1`：`Q-20261115-f8a392` へ鍵の「備えの向き」と二本の来歴をめぐる創作の詩／情景2編で応答。元問はopenのまま、`Q-20261026-2399d2` を開いた。新規素材・モチーフ0件、断片2編・問い1件）
+
+
+## 2026-11-20 PR #131 合流後の最終詳細窓ローテーション（SESSION-20261120-51e00b）
+
+PR #131 の到達点 bullet と報告注釈を最終 README へ入れ、PR #129 の §1 bullet と `SESSION-20261026-ff3c35` の §2 注釈を押し出した。押し出し2行を元表記のまま移す。PR #130 のセッションIDは台帳上の `SESSION-20261026-afa735` を最終 README で採用し、他枝が記した `SESSION-20261026-b650cb` は既存文書の来歴として残す。前節までの「最終」は各同期時点の見出しである。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **九つ目の音と、三代の九日——同じ数で呼ばない来歴**：`SESSION-20261026-9ea1ab` はシード `fdcdb8e5` の第1推奨 revision_and_variation を採用。「九日は売れない」と言い切る詩と、代金に紛れた別の九日を拾う反歌を衝突させ、どちらかを正典にしないまま `Q-20261026-705b19` を開いた。新規素材・モチーフ・ツール0件、draft断片2編・問い1件・関係17本。最新main同期時に、継承問いの状態記述を訂正録1件で隣に置いた。詳細は [`readings/2026-10-26-nine-days-and-the-ninth-beat.md`](readings/2026-10-26-nine-days-and-the-ninth-beat.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-10-26-editorial-review-403a555e.md`](readings/2026-10-26-editorial-review-403a555e.md)（`SESSION-20261026-ff3c35`：自律編集レビュー。対篇2組を含む5編選出（47→52／169）、Q-061をQ-069への既存の再枠組みを根拠に未解決のまま休止、モチーフ4本架橋、選出自体をQ-068へ開く。新規収蔵・断片・問い0件。候補全件の採否と検証記録）
