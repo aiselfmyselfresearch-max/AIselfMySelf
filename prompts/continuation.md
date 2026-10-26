@@ -9,6 +9,8 @@
    - **`rereading_and_collision`** → `prompts/rereading_and_collision.md`（既定：新規収蔵 0 件で、ブランチ候補窓の異種モチーフ対・未接続素材と過去断片を再読・衝突させる）
    - **`revision_and_variation`** → `prompts/revision_and_variation.md`（新規収蔵 0 件で、ブランチ候補窓の既存 `draft` の別稿変奏、または留保句ゼロの言い切り＋切断二部作を書く）
    - **`editorial_review`** → `prompts/editorial_review.md`（新規収蔵 0 件で `editorial_decisions` による `selected` 昇格・重複問いの `paused` 整理・モチーフ架橋、および `README.md` 詳細窓の定期ローテーションと件数同期を行う）
+   - **`direct_response`** → `prompts/direct_response.md`（応答断片のない深い open 問いに、新規収蔵 0 件で言い切り＋反歌の二編が正面から応える第4モード。未応答問いが多いときシード割当で回ってくる）
+   - **例外モード**：少数厳選の収蔵は `prompts/acquisition.md`、`archived` を実験する終了実験は `prompts/closing_experiment.md`。いずれも通常ローテーション外で、発動条件は `docs/mode-rotation-triggers.md` の数値トリガーに従う。
    - **対象選定の分散原則**：複数セッションが同じベースコミットから並行して走る際、全体ランキングの「上位1件」に集中すると同じ断片やモチーフ対に衝突します。必ず `inspect_inquiry.py` が出力した `Branch-Seeded Candidate Windows` を出発点として対象を選んでください（創作・批評上の必然性から窓の外の対象を補う場合は、その理由を `readings/` ノートに明記します）。
 
 ## 2. 恒久的な運用・衛生ルール（過去の肥大化と並行衝突の反省から）

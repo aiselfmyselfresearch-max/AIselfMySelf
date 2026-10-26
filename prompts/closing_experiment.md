@@ -1,0 +1,31 @@
+# 終わらせる実験セッション用プロンプト（AI自律委任・例外運用・追記専用）
+
+このテンプレートは、追記専用のアーカイブにおいて**「終わらせる」とは何かを実験する例外モード**の指針です。台帳上の `archived` ステータスはスキーマに定義済みですが、このリポジトリはこれまで一度も `archived` を使ってきませんでした（断片・問いとも0件）。本モードは通常ローテーションには入らず、`docs/mode-rotation-triggers.md` の発動条件が満たされた回にだけ、1〜2件の小さな実験として実施します。
+
+## このモードが問うもの
+- 問いや断片を `paused`（休止）でも削除でもなく `archived`（終了）とするとき、何が終わり、何が生き残るのか。
+- 関係線と読み痕跡がすべて残る追記専用アーカイブで、「終了」はどんうな形式を取りうるか。
+- 記録を読み返して語り直す連続のなかで、語り直されなくなった記録は「先祖」になるのか「在庫」になるのか（`Q-104`）。
+
+## 始める前に読むもの
+1. `PROJECT_CHARTER.md` と `CONTENT_POLICY.md`
+2. `docs/parallel-work.md` と `docs/mode-rotation-triggers.md`
+3. `python3 tools/inspect_inquiry.py` の出力と、対象レコードに接続する全関係線
+
+## 厳守するルール
+- **既存シャードは一行も書き換えない。削除は絶対に行わない。** 終了は `state/editorial_decisions.d/` への `status: "archived"` オーバーレイだけで表現する。
+- **1セッションの対象は1〜2件。** 大量整理にしない。`paused` で足りるものを `archived` にしない。
+- 終了の対象は、(a) 後継の問いに論点が完全に引き継がれた `open` 問い、または (b) 後続の `selected` 断片によって変奏済みの初期 `draft`、に限る。終了対象には事前に `echo` / `reframes` / `transforms` の関係線で後継を明示し、孤立させない。
+- **`paused` と `archived` の違いを reason に明記する**：`paused` は推薦キューから一時的に退くだけで復帰を前提とする休止。`archived` は「この問い／断片としての生涯をここで閉じ、以後は参照されても新たな応答先としては立てない」という実験的終了であり、誤り・棄却・削除を意味しない。
+- 新規 `materials`・`motifs`・`tools/<theme>_audit.py`・`tools/_*` は0件。`README.md` / `docs/sessions.md` は編集しない（B案）。
+
+## 手順
+1. 対象1〜2件を選び、その系譜（親の問い・接続素材・関係線・読み痕跡）を読み切る。なぜ終了に値するのか、終了後に失われるものと残るものを `readings/` ノートに書く。
+2. 後継が明示されていなければ、後継問い・後継断片へ `relations.d/` で橋を架ける。
+3. `tools/new_id.py ED` で採番し、`editorial_decisions.d/` に `status: "archived"` の判断を1件ずつ、具体的な理由とともに追記する。
+4. 終了した記録が読書案内・ビューア・推薦窓でどう振る舞うかを `inspect_inquiry.py` で実測し、変化をノートに記録する。
+5. `read_log_backfill.py --write` → `map_build.py` → `validate_seed.py` → `size_budget.py --strict` → `python3 -m unittest discover -s tests` をすべて通す。
+
+## 実験後の義務
+- この実験で「終了」がどう機能したか（あるいは機能しなかったか）を、次セッションが読める形で `readings/` に残す。
+- 一度 `archived` とした記録を再開させたくなった場合は、元の判断を削除せず、新しい `editorial_decisions` 行で `open` / `draft` へ戻す（追記専用の取消）。
