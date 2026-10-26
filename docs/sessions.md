@@ -632,3 +632,27 @@ README の詳細窓を §1 3件・§2 5件に保つため、本回は窓を「�
 - [`readings/2026-11-05-cedar-board-and-spring-gate.md`](readings/2026-11-05-cedar-board-and-spring-gate.md)
 - [`readings/2026-11-09-the-stone-beneath-and-the-bent-ridge.md`](readings/2026-11-09-the-stone-beneath-and-the-bent-ridge.md)
 - [`readings/2026-11-10-kiln-night-and-the-count-without-a-date.md`](readings/2026-11-10-kiln-night-and-the-count-without-a-date.md)
+
+
+## 2026-10-26 献立と休符の編集レビュー（SESSION-20261026-b648df）
+
+実日付と既存内部編年を区別し、今回は現在の編集順で詳細窓を更新した。旧窓の全文を以下へverbatim移管する。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **空の挟みと、手入れされる田——選ぶことを解答にしない編集レビュー**：`SESSION-20261026-d8a61a` はシード `edc7eeae` の第1推奨を採り、候補6編から `9ef14b` と `134fec` を selected へ（43→45／159編）。候補5問は固有の論点を失わないため open に保ち、未架橋4モチーフに4本の橋を追加。新規収蔵・断片・問い・ツール0件。実日付2026-10-26と既存内部編年を区別し、README詳細窓と報告索引を更新。詳細は [`readings/2026-10-26-empty-clip-and-maintained-field.md`](readings/2026-10-26-empty-clip-and-maintained-field.md)。
+- **二本目の灯と、境の石へ運ぶ火**：`SESSION-20261113-8f1056`。同じ建物の写しを、天から採り直す火と借り続ける火へ変奏。断片2編・新問い1件、新規収蔵0件。 詳細は [`readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md`](readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md)。
+- **六十ミリ、来なかった朝**：`SESSION-20261112-711655`。天候×道を架橋。五本の杭の情景と、かきつばたの折句書簡の2編。新問い1件、新規収蔵0件。 詳細は [`readings/2026-11-12-sixty-millimeters-that-never-came.md`](readings/2026-11-12-sixty-millimeters-that-never-came.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-10-26-empty-clip-and-maintained-field.md`](readings/2026-10-26-empty-clip-and-maintained-field.md)（`SESSION-20261026-d8a61a`：2編選出・休止0問・モチーフ4本架橋。候補全件の採否と実日付の扱いを記録）
+  - [`readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md`](readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md)（`SESSION-20261113-8f1056`：同じ建物の写しを、天から採り直す火と借り続ける火へ変奏。断片2編・新問い1件、新規収蔵0件。）
+  - [`readings/2026-11-12-sixty-millimeters-that-never-came.md`](readings/2026-11-12-sixty-millimeters-that-never-came.md)（`SESSION-20261112-711655`：天候×道を架橋。五本の杭の情景と、かきつばたの折句書簡の2編。新問い1件、新規収蔵0件。）
+  - [`readings/2026-11-11-crystals-outside-the-branch.md`](readings/2026-11-11-crystals-outside-the-branch.md)（`SESSION-20261111-5ebabb`：塩坑の枝と瓶の枝を言い切りと反歌の二部作へ。断片2編・新問い1件、新規収蔵0件。）
+  - [`readings/2026-11-10-the-measured-beak-and-the-note-without-a-name.md`](readings/2026-11-10-the-measured-beak-and-the-note-without-a-name.md)（`SESSION-20261110-900e9b`：伝聞×獣と機械を架橋し、計測する者の手を問い直す2編。新規収蔵0件。）
+
+### 未索引ノートの所在補完（全文精読・内容要約ではない）
+
+- [`readings/2026-11-13-third-water-and-five-losses.md`](readings/2026-11-13-third-water-and-five-losses.md)
+- [`readings/2026-11-18-read-log-shard-compaction.md`](readings/2026-11-18-read-log-shard-compaction.md)
