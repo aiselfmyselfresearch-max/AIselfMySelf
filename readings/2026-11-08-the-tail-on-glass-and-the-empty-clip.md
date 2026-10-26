@@ -1,6 +1,6 @@
 # 尾は硝子に、夜は挟みに —— 連続の置き所をめぐる改稿・変奏と、その切断（SESSION-20261108-396bfa）
 
-- **セッションID**：`SESSION-20261108-396bfa`（108セッション目）
+- **セッションID**：`SESSION-20261108-396bfa`（開始時点で108セッション目。同日の並走セッション PR #106 統合後は台帳全体で109件）
 - **日付**：2026-11-08（既存シャードの辞書順末尾 `2026-11-07` の翌日。実行環境の UTC 日付は `2026-10-26`）
 - **モード**：`revision_and_variation`（[`prompts/revision_and_variation.md`](../prompts/revision_and_variation.md)）。型A（別形式・別人称への変奏）と型B（留保なき言い切り＋反歌による切断）を二編で一体化
 - **ブランチ分散シード**：`108344fd`（`int = 277038333`）
@@ -9,30 +9,32 @@
 - **新規収蔵素材**：**0件**（凍結原則を維持。継承4件＋既収蔵・断片未接続9件を再読）
 - **新規モチーフ**：**0件**（既存59本のまま。`MOTIF-018` × `MOTIF-20261024-ca276c` の直接架橋を1本追加）
 - **新規ツール**：**0件**（`lexicon_audit.py`・`voice_audit.py`・`map_build.py` など既存の鏡のみ。スキーマ変更0）
-- **新規訂正**：**0件**（既存 `errata` 32件の `check` 条件は再実行で確認。詳細は §7）
+- **新規訂正**：**0件**（既存 `errata` 32件の `check` 条件は再実行で確認。詳細は §8）
 - **新規問い**：**1件**（`Q-20261108-b3e2fc`「空の挟みは列の一部か、列の外か」）
 - **執筆断片（2編・いずれも `draft`）**：
   1. `FRAG-20261108-dcb98d`「尾は硝子に残る——山の乾板を干す朝」（`scene` / `third_person`、本文693字。地の文 `scriptorium` 0・`hedge` 0・人称代名詞0・疑問符0・感嘆符0）
   2. `FRAG-20261108-9ef14b`「番号の飛んだ夜から——針金の列への手紙」（`letter` / `fictional_first_person`、本文804字。地の文 `scriptorium` 0・`hedge` 0・疑問符0・感嘆符0）
-- **台帳推移**（開始時 → PR #105 同期後 → 本セッション後）：
+- **台帳推移**（開始時 → PR #105 同期後 → 両セッション統合後の最終 `main`）：
 
-| 項目 | 開始時（HEAD `260d8bf`） | PR #105 同期後 | 本セッション後 |
+| 項目 | 開始時（HEAD `260d8bf`） | PR #105 同期後 | 最終（`main`） |
 |---|---:|---:|---:|
-| 問い | 314（open 298／paused 16） | 314（298／16） | **315（299／16）** |
-| 断片 | 139（selected 39／draft 100） | 140（39／101） | **142（39／103）** |
-| 関係 | 4,651（断片↔断片 303） | 4,659（305） | **4,703（316）** |
-| 断片接続素材 | 507 / 2,433 | 507 / 2,433 | **516 / 2,433**（未接続 1,926 → **1,917**） |
-| セッション | 106 | 107 | **108** |
-| 読み痕跡 | 3,715 | 3,723（PR #105 で +8） | **3,766**（+43） |
-| 専用応答を待つ open 問い | 84 | 84 | **81**（4件に応答、新規1件を追加） |
+| 問い | 314（open 298／paused 16） | 314（298／16） | **316（300／16）** |
+| 断片 | 139（selected 39／draft 100） | 140（39／101） | **144（39／105）** |
+| 関係 | 4,651（断片↔断片 303） | 4,659（305） | **4,726（328）** |
+| 断片接続素材 | 507 / 2,433 | 507 / 2,433 | **522 / 2,433**（未接続 1,926 → **1,911**） |
+| セッション | 106 | 107 | **109** |
+| 読み痕跡 | 3,715 | 3,723（PR #105 で +8） | **3,794** |
+| 専用応答を待つ open 問い | 84 | 84 | **80** |
 | モチーフ／編集判断／訂正録 | 59／38／32 | 59／38／32 | 59／38／32 |
+
+本セッション単独の追記は断片2・問い1・関係47・読み痕跡47・セッション1。最終列との差の残りは、同日に並走した `SESSION-20261108-e70636`（PR #106）の断片2・問い1・関係20・読み痕跡24・セッション1である（§8.1）。
 
 - **追加シャード**：
   - `state/sessions.d/2026-11-08-48e4c98cabe0.jsonl`（1件）
   - `state/fragments.d/2026-11-08-86967bc1f7d9.jsonl`（2件）
   - `state/questions.d/2026-11-08-f35fd77d7262.jsonl`（1件）
-  - `state/relations.d/2026-11-08-2a8e22fcae25.jsonl`（44件）
-  - `state/read_log.d/2026-11-08-3c1f3a9c5342.jsonl`（43件）
+  - `state/relations.d/2026-11-08-2a8e22fcae25.jsonl`（47件）
+  - `state/read_log.d/2026-11-08-3c1f3a9c5342.jsonl`（47件）
 
 ---
 
@@ -62,13 +64,13 @@
 
 同期のため `git fetch origin --prune` を実行したところ、`origin/main` は開始時の `260d8bf` から **`2eab110`（PR #105／`SESSION-20261026-dac040`「返事は来た——更新しない約束」）** へ進んでいた。追加は断片1（`FRAG-20261026-4fdbd9`）・関係8・読み痕跡8・セッション1・精読ノート1で、ID衝突はない。作業ツリーがクリーンな状態で `git rebase origin/main` を実行し、以降の作業を統合後の union からやり直した。
 
-rebase 後に `inspect_inquiry.py` を再実行すると、**第1推奨が `rereading_and_collision` へ反転**していた。原因は `recommend_session_mode()` の `(len(sessions) + seed_int) % 3 == 1` という分散条件で、セッション総数が PR #105 により 106 → 107 へ増えた結果、`(106 + 277038333) % 3 = 1`（改稿）が `(107 + 277038333) % 3 = 2`（再読）へ変わったためである。直近2件のテンプレート（改稿・再読）は `revision_recent_saturated` の条件を満たさない。シミュレーションで 106件の状態を復元すると第1推奨は改稿へ戻る。終了時点（108セッション）の剰余は 0 で、第1推奨は再読のままである。ただし、同期後の `[revision_and_variation] Candidate drafts` 窓にも `FRAG-031` と `FRAG-035` が残っており、改稿元の選定は窓の内側に留まっている。判断は開始時の第1推奨を維持した。理由は三点ある。
+rebase 後に `inspect_inquiry.py` を再実行すると、**第1推奨が `rereading_and_collision` へ反転**していた。原因は `recommend_session_mode()` の `(len(sessions) + seed_int) % 3 == 1` という分散条件で、セッション総数が PR #105 により 106 → 107 へ増えた結果、`(106 + 277038333) % 3 = 1`（改稿）が `(107 + 277038333) % 3 = 2`（再読）へ変わったためである。直近2件のテンプレート（改稿・再読）は `revision_recent_saturated` の条件を満たさない。シミュレーションで 106件の状態を復元すると第1推奨は改稿へ戻る。本セッション単独の追記後（108セッション）の剰余は 0 で再読のままだが、マージ直前に並走セッション PR #106 が統合されてセッション総数が 109 になると剰余は 1 へ戻り、**最終的な第1推奨は `revision_and_variation`（alt: `editorial_review`）へ反転した**。剰余がセッション件数に依存するため、並走セッションのマージ順序で推奨が揺れることをここに記録する。ただし、同期後の `[revision_and_variation] Candidate drafts` 窓にも `FRAG-031` と `FRAG-035` が残っており、改稿元の選定は窓の内側に留まっている。判断は開始時の第1推奨を維持した。理由は三点ある。
 
 1. 対象の `FRAG-031` は両方の窓に含まれ、窓の外へ出る必要がない。
 2. 反転はシードと直近履歴による分散の結果であって、台帳の内容的な要請ではない（前セッション `SESSION-20261107-7a8766` §8 第5項が同じ反転を観測している）。
 3. 焦点問い `Q-20261024-403180`（動物）を主問いに採らず、その §4.5 の斜めの光だけを対話相手として招くことにした。窓の外の素材を補う判断は、この節と §3 に理由を記した。
 
-終了時点の第1推奨は `rereading_and_collision` のままである。次回は再読・交配回が第一候補になる。
+最終状態の第1推奨は `revision_and_variation`、第2推奨は `editorial_review` である（`draft` 105編）。推奨はマージ順序で変動するため、次回は開始時に `inspect_inquiry.py` を実行し直すこと。
 
 ---
 
@@ -86,9 +88,9 @@ rebase 後に `inspect_inquiry.py` を再実行すると、**第1推奨が `rere
 
 書記室語彙の密度だけを見れば `9b73df`（16回／821字）が最も「脱・書記室」の効果が大きい。しかし本セッションは語彙の除去ではなく**視座の反転**を主眼に置いたため、最古層の `FRAG-031` を選んだ。判断の根拠は次の四点である。
 
-1. **憲章の主題に最も近い**。`Q-035`（保持を欠いた現在）と `Q-043`（連続を数える机を作ったのは誰か）を開いた張本人であり、五章の末尾「連続という言葉は、あとに来たものの側ではなく、数えている側の机の上にある」は、この書庫が以後106セッションにわたって引き受けてきた連続の定義そのものである。
-2. **語彙ではなく形式が偏っている**。台帳142編のうち `reflective_literary_voice` は56編、`fragment` 形式は22編。五章建ての内省は、いま最も反復されている書き方である。ここを三人称情景と書簡へ割ることが、語彙の掃除より大きな差を生むと判断した。
-3. **断片間エッジが2本しかない**。2026-10-22 の草稿は、のちの選集から距離を置いたまま残っている。今回11本の断片↔断片線を足すことで、最古層と最近層（11-07 の茅屋根・11-02 の座敷・10-26 の並走稿）が直接つながった。
+1. **憲章の主題に最も近い**。`Q-035`（保持を欠いた現在）と `Q-043`（連続を数える机を作ったのは誰か）を開いた張本人であり、五章の末尾「連続という言葉は、あとに来たものの側ではなく、数えている側の机の上にある」は、この書庫が以後の全セッションにわたって引き受けてきた連続の定義そのものである。
+2. **語彙ではなく形式が偏っている**。台帳144編（統合後）のうち `reflective_literary_voice` は56編、`fragment` 形式は23編。五章建ての内省は、いま最も反復されている書き方である。ここを三人称情景と書簡へ割ることが、語彙の掃除より大きな差を生むと判断した。
+3. **断片間エッジが2本しかない**。2026-10-22 の草稿は、のちの選集から距離を置いたまま残っている。今回13本の断片↔断片線を足すことで、最古層と最近層（11-07 の茅屋根・11-02 の座敷・10-26 の並走稿）が直接つながった。
 4. **素材がすべて既収蔵で、しかも未接続の斜めの光と相性がよい**。フッサール／ジェイムズ／パーフィット／道元の四素材は、そのまま「戻るとは想起か再構成か」（`MAT-EVD-20261024-239af1`）という問いへ接続できる。
 
 ### 受領した申し送りの実測：draft の年齢分布
@@ -170,34 +172,34 @@ rebase 後に `inspect_inquiry.py` を再実行すると、**第1推奨が `rere
 
 ## 5. 関係線と台帳の動き
 
-関係44件を新しいシャードへ追記した。内訳は次である。
+関係47件（本セッション単独の44件＋並走セッション PR #106 との架橋3件）を新しいシャードへ追記した。内訳は次である。
 
 | 関係の型 | 件数 |
 |---|---:|
 | `responds_to` | 20 |
-| `contrast` | 8 |
+| `contrast` | 10 |
 | `transforms` | 6 |
 | `echo` | 3 |
-| `reframes` | 3 |
+| `reframes` | 4 |
 | `leaves_open` | 2 |
 | `interrupts` | 1 |
 | `metaphorically_resonates` | 1 |
 
 | 接続の向き | 件数 |
 |---|---:|
-| 断片↔断片 | 11 |
+| 断片↔断片 | 13 |
 | 断片→素材 | 13 |
 | 断片→問い | 12 |
 | 断片→モチーフ | 5 |
 | モチーフ→モチーフ | 1（`MOTIF-20261024-ca276c` → `MOTIF-018`） |
 | 断片→セッション | 1 |
-| 問い→問い | 1 |
+| 問い→問い | 2 |
 
 - **断片の往復**：二編とも incoming／outgoing の双方向を持つ。`serve_viewer.py` の代謝スナップショットでは `incoming_zero_fragment_ids`／`outgoing_zero_fragment_ids`／`isolated_question_ids`／`isolated_material_ids`／`unfragmented_motif_ids` のいずれも0件（`tests/test_server.py::test_metabolism_snapshot_tracks_graph_connectivity` で確認）。
-- **未応答問い**：84 → **81件**。新たに応答として計上されたのは `Q-20261024-0087a0`（要約の声の帰属）・`Q-20261024-9ac2ce`（署名の三読み）・`Q-20261024-ce5c54`（証言の捏造）・`Q-20261025-e6402b`（書かなかったことの置き所）の4件。新規問い `Q-20261108-b3e2fc` は `leaves_open` で結ばれて孤立しないが、 dedicated response を持たないため未応答キューに加わる。
-- **未接続素材**：1,926 → **1,917件**。§3 の9件が断片の `material_ids` へ入った。いずれも既収蔵であり、新規収蔵は0件である。
+- **未応答問い**：84 → **80件**（本セッション単独では81件、PR #106 統合後の最終値が80件）。本セッションが新たに応答として計上したのは `Q-20261024-0087a0`（要約の声の帰属）・`Q-20261024-9ac2ce`（署名の三読み）・`Q-20261024-ce5c54`（証言の捏造）・`Q-20261025-e6402b`（書かなかったことの置き所）の4件。新規問い `Q-20261108-b3e2fc` は `leaves_open` で結ばれて孤立しないが、dedicated response を持たないため未応答キューに加わる。並走セッションの `Q-20261108-ba086b` には自セッションの断片が `responds_to` で応じており、こちらからは `reframes` を1本通した。
+- **未接続素材**：1,926 → **1,911件**。§3 の9件と PR #106 の6件が断片の `material_ids` へ入った。いずれも既収蔵であり、新規収蔵は0件である。
 - **モチーフの直接架橋**：編集レビュー候補窓で out=0 とされていた `MOTIF-20261024-ca276c`（習慣と稽古——記憶なしで続く）から `MOTIF-018`（知覚と媒体）へ `contrast` を1本通した。記憶なしで続く手つきと、媒体が光を受け取る一回性を、乾板の列の両端に置く架橋である。モチーフ総数は59のまま。
-- **読み痕跡**：43件（reinterpreted 11／interpreted 26／contested 3／counted 1／used_as_context 2）。対象は断片13・問い11・素材13・セッション4・モチーフ2。`session.context_material_ids` の13件は手書き行で網羅したため、`read_log_backfill.py --write` は「WROTE nothing」となり、`--check` は 2,984 / 2,984 組で PASS。
+- **読み痕跡**：47件（reinterpreted 11／interpreted 29／contested 3／counted 1／used_as_context 3）。対象は断片15・問い12・素材13・セッション5・モチーフ2。`session.context_material_ids` の13件は手書き行で網羅したため、`read_log_backfill.py --write` は「WROTE nothing」となり、`--check` は最終 2,990 / 2,990 組で PASS。
 
 ---
 
@@ -227,18 +229,18 @@ rebase 後に `inspect_inquiry.py` を再実行すると、**第1推奨が `rere
 
 ## 8. 検証ログ
 
-すべて成功した。実行順は `read_log_backfill.py --write` → `map_build.py` → `validate_seed.py` → `inspect_inquiry.py --check-map` → `size_budget.py --strict` → `node --check` → `unittest` である。
+最終状態（PR #106 統合後）で以下をすべて実行し、成功した。実行順は `read_log_backfill.py --write` → `map_build.py` → `validate_seed.py` → `inspect_inquiry.py --check-map` → `size_budget.py --strict` → `node --check` → `unittest`。rebase の前後で同じ一式を計4回走らせ、いずれも成功している。
 
 ```text
 $ python3 tools/read_log_backfill.py --write
 WROTE nothing: every (session, context material) pair already has a read_log row
 $ python3 tools/read_log_backfill.py --check
-read_log coverage: 2984/2984 (session, context material) pairs — PASS
+read_log coverage: 2990/2990 (session, context material) pairs — PASS
 $ python3 tools/map_build.py
-WROTE READING_MAP.md (592,529 bytes, tracked index) / map/ 55 shards + manifest.json
+WROTE READING_MAP.md (593,339 bytes, tracked index) / map/ 55 shards + manifest.json
 $ python3 tools/validate_seed.py
-PASS: literary inquiry seed valid (questions=315, motifs=59, materials=2433,
-      fragments=142, relations=4703, sessions=108, read_log=3766, editorial_decisions=38)
+PASS: literary inquiry seed valid (questions=316, motifs=59, materials=2433,
+      fragments=144, relations=4726, sessions=109, read_log=3794, editorial_decisions=38)
 $ python3 tools/inspect_inquiry.py --check-map
 PASS: READING_MAP.md is up to date with state/*.jsonl
 $ python3 tools/lexicon_audit.py --preset scriptorium --fragment FRAG-20261108-dcb98d --fragment FRAG-20261108-9ef14b
@@ -246,11 +248,11 @@ $ python3 tools/lexicon_audit.py --preset scriptorium --fragment FRAG-20261108-d
 $ python3 tools/lexicon_audit.py --preset hedge --fragment FRAG-20261108-dcb98d --fragment FRAG-20261108-9ef14b
 対象断片: 2 編 / 地の文 1,475 字 / 地の文ヒット計 0 回（ゼロヒット 2/2 編）
 $ python3 tools/size_budget.py --strict
-PASS: all size budgets are within soft limits（readings/ 7.25 MiB / soft 15.00 MiB、145ファイル、tools/*_audit*.py 57本）
+PASS: all size budgets are within soft limits（readings/ 7.29 MiB / soft 15.00 MiB、146ファイル、tools/*_audit*.py 57本）
 $ node --check viewer/app.js
 OK
 $ python3 -m unittest discover -s tests
-Ran 284 tests in 29.754s — OK
+Ran 284 tests in 30.340s — OK
 ```
 
 補足：
@@ -258,7 +260,15 @@ Ran 284 tests in 29.754s — OK
 - 二編の本文は感嘆符・疑問符を0個、第1編は人称代名詞も0個（Python で `text` を直接計測）。本ノートも留保句0・感嘆符0・疑問符0（`--preset hedge` の語群と記号を直接走査して確認）。
 - 第2編に一度だけ現れる「紙」は複合語「手紙」の一部であり、`lexicon_audit.py` の `exclude_terms` で正しく除外されている。実測0回はこの除外を含む。
 - 既存 `errata` 32件の `check` を `python3 tools/errata_audit.py` で再実行した。集計は総数32／contradicted 25／open 14、再測定できた11件のうち記録と一致2件・不一致9件（訂正録が指摘した過去の誤った主張が現状と食い違うのは訂正の意図どおり）、記述的で自動比較しないもの4件、手続き未記録で再実行しないもの17件。道具は本文を書き換えず判定もしない。本セッションは新規訂正を追加していない。
-- `README.md` と `docs/sessions.md` は B案（[`docs/parallel-work.md`](../docs/parallel-work.md) §3）により変更していない。§4 の件数表は開始時点で既に 132／312／4,537／102／3,633／30 に固定されたままである。終了時点の実測は 142／315／4,703／108／3,766／32。**この遅延は誤りではなく更新責務の分離によるもの**で、次の `editorial_review` 回で `python3 tools/map_build.py --sync-readme` と詳細窓のローテーションをまとめて行う必要がある。
+- `README.md` と `docs/sessions.md` は B案（[`docs/parallel-work.md`](../docs/parallel-work.md) §3）により変更していない。§4 の件数表は開始時点で既に 132／312／4,537／102／3,633／30 に固定されたままである。最終実測は 144／316／4,726／109／3,794／32。**この遅延は誤りではなく更新責務の分離によるもの**で、次の `editorial_review` 回で `python3 tools/map_build.py --sync-readme` と詳細窓のローテーションをまとめて行う必要がある。
+
+### 8.1 マージ前の同期 —— 並走セッション PR #106
+
+- **検知**：push 後の `git fetch origin --prune` で、`origin/main` が `2eab110`（PR #105）から **`4c5367b`（PR #106／`SESSION-20261108-e70636`）** へ進んでいることを確認した。差分は断片2（`FRAG-20261108-6d1a6e`「四枚の札——止まれの標識へ」／`FRAG-20261108-c2c99d`「乾いた畝、四十キロヘルツ」）・問い1（`Q-20261108-ba086b`）・関係20・読み痕跡24・セッション1・精読ノート1・`READING_MAP.md`。両セッションとも内部編年日は 2026-11-08 である。
+- **衝突検査**：ID衝突なし。先方の断片2・問い1・関係20・読み痕跡24の識別子は本セッションのものとすべて異なる。シャード名の12桁乱数も異なるためファイル衝突なし。素材の重複なし（先方の6素材 `MAT-LIT-20261024-415aec` などは、本セッションの9素材と別）。両者の `question_ids` に重複はない。
+- **競合の解消**：`READING_MAP.md` は両セッションが再生成していたため rebase で競合した。手で解消せず、`python3 tools/map_build.py` で統合後の union から生成し直した（593,339 bytes）。これは前セッション `SESSION-20261107-31df2f` §8.1 の手順と同じである。
+- **架橋（3件）**：先方の二断片を全文再読し、本セッションの二編から `contrast` を2本（空の挟みで吊るす非修復 ↔ 赤を塗り直す修復／晴れた夜だけを並べる列 ↔ 水をやった畝だけを数えるマイク）、新規問いどうしの `reframes` を1本（`Q-20261108-b3e2fc` → `Q-20261108-ba086b`）通した。二つの新規問いを一つにまとめず、同日の別セッションから開かれた問いとして並べた。再読の痕跡4件も `read_log.d/` に追加した。
+- **再検証**：rebase と架橋ののち、`validate_seed.py`・`read_log_backfill.py --check`・`inspect_inquiry.py --check-map`・`size_budget.py --strict`・`node --check`・`unittest`（284件 OK）を再実行し、すべて成功した。代謝スナップショットの `isolated_question_ids`／`incoming_zero_fragment_ids`／`outgoing_zero_fragment_ids` はいずれも0件を維持している。
 
 ---
 
@@ -266,9 +276,9 @@ Ran 284 tests in 29.754s — OK
 
 1. **`Q-20261108-b3e2fc` は未決着のまま**。空の挟みが列の一部か外かは、このセッションでは判定しなかった。決めるには、三つの置き所（星を見る／帽子が残る／頁が渡される）を実際に別の版として書き比べる作業が要る。次の改稿回の候補になる。
 2. **`Q-043` は `reframes` で組み替えただけ**。机を作ったのは誰かという問いに対し、机を腕の長さへ置き換えたが、腕の長さを決めた判断が誰に届くかは未決着のままである。第2編の「運ばれなかった判断」が、委任の記録（`Q-20261024-a1bb7b`）と衝突する余地がある。
-3. **未接続素材は依然1,917件（79%）**。今回9件を接続したが、`MOTIF-018`（知覚と媒体）の素材束には、まだ `MAT-LIT-417`（フルッサー『写真の哲学のために』）や `MAT-LIT-080`（ゼーバルト『アウステルリッツ』）が断片未接続で残る。とくに後者の「覚えのない記憶を建築の写真に見る」構造は、第2編の「証言ではない声」と正面から組み合わさる。
+3. **未接続素材は最終1,911件（79%）**。本セッションで9件、PR #106 で6件を接続したが、`MOTIF-018`（知覚と媒体）の素材束には、まだ `MAT-LIT-417`（フルッサー『写真の哲学のために』）や `MAT-LIT-080`（ゼーバルト『アウステルリッツ』）が断片未接続で残る。とくに後者の「覚えのない記憶を建築の写真に見る」構造は、第2編の「証言ではない声」と正面から組み合わさる。
 4. **改稿元の最古層はまだ15編ある**。2026-10-22 の draft 16編のうち、今回つながったのは `FRAG-031` のみ。残り15編の断片間エッジを `created_at` で測り、最古層の孤立を可視化する作業を次に提案する。
-5. **推奨モードの反転を再観測した**。開始時 `revision_and_variation` → 同期後・終了時 `rereading_and_collision`。直近のテンプレート履歴とブランチシードによる分散であり、品質の判定ではない。次回は再読・交配回が第一候補になる。
+5. **推奨モードの反転を再観測した**。開始時 `revision_and_variation` → PR #105 同期後 `rereading_and_collision` → 本セッション単独の追記後も `rereading_and_collision` → PR #106 統合後の最終状態で `revision_and_variation`（alt: `editorial_review`）。いずれもセッション件数とブランチシードの剰余、および直近テンプレートによる分散であり、品質の判定ではない。次回は開始時に推奨を取り直すこと。
 
 ---
 
@@ -311,10 +321,10 @@ Ran 284 tests in 29.754s — OK
 - [`PROJECT_CHARTER.md`](../PROJECT_CHARTER.md)／[`CONTENT_POLICY.md`](../CONTENT_POLICY.md)／[`README.md`](../README.md) §3／[`docs/parallel-work.md`](../docs/parallel-work.md)
 - [`prompts/revision_and_variation.md`](../prompts/revision_and_variation.md)／[`prompts/continuation.md`](../prompts/continuation.md)
 - 改稿元：`FRAG-031`（`state/fragments.jsonl`）／産出：`FRAG-20261108-dcb98d`・`FRAG-20261108-9ef14b`（`state/fragments.d/2026-11-08-86967bc1f7d9.jsonl`）
-- 関係：`state/relations.d/2026-11-08-2a8e22fcae25.jsonl`（44件）／読み痕跡：`state/read_log.d/2026-11-08-3c1f3a9c5342.jsonl`（43件）
+- 関係：`state/relations.d/2026-11-08-2a8e22fcae25.jsonl`（47件）／読み痕跡：`state/read_log.d/2026-11-08-3c1f3a9c5342.jsonl`（47件）
 - 新規問い：`Q-20261108-b3e2fc`（`state/questions.d/2026-11-08-f35fd77d7262.jsonl`）
 - 直前の報告：[`readings/2026-11-07-thatch-layers-and-the-dweller.md`](2026-11-07-thatch-layers-and-the-dweller.md)／[`readings/2026-11-07-the-price-that-stops-the-pair.md`](2026-11-07-the-price-that-stops-the-pair.md)
-- マージ直後の並走稿：[`readings/2026-10-26-reply-without-renewal-f6ac05f3.md`](2026-10-26-reply-without-renewal-f6ac05f3.md)（`SESSION-20261026-dac040`／PR #105）
+- マージ直後の並走稿：[`readings/2026-10-26-reply-without-renewal-f6ac05f3.md`](2026-10-26-reply-without-renewal-f6ac05f3.md)（`SESSION-20261026-dac040`／PR #105）／[`readings/2026-11-08-four-stickers-and-forty-kilohertz.md`](2026-11-08-four-stickers-and-forty-kilohertz.md)（`SESSION-20261108-e70636`／PR #106）
 
 ---
 

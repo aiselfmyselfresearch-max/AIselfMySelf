@@ -9,7 +9,7 @@
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2433 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 59 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：144 編（selected 39 ／ draft 105）
-- **解釈的関係（Relations）**：4723 件
+- **解釈的関係（Relations）**：4726 件
 - **探究セッション（Sessions）**：109 回
 
 ## 1. 問いを横断する 59 つのモチーフ
@@ -3100,16 +3100,16 @@
 | `SESSION-20261108-396bfa` | 2026-11-08 | `Q-002`, `Q-019`, `Q-035`, `Q-043`, `Q-082`, `Q-017`, `Q-20261025-e6402b`, `Q-20261024-9ac2ce`, `Q-20261024-ce5c54`, `Q-20261024-0087a0`, `Q-20261024-76a4a5`, `Q-20261108-b3e2fc` | `FRAG-20261108-dcb98d`, `FRAG-20261108-9ef14b` | `Q-20261108-b3e2fc` |
 | `SESSION-20261108-e70636` | 2026-11-08 | `Q-20261025-636287`, `Q-20261025-9256a5`, `Q-20261025-a80181`, `Q-20261025-1ddf47`, `Q-20261025-d36a48` | `FRAG-20261108-6d1a6e`, `FRAG-20261108-c2c99d` | `Q-20261108-ba086b` |
 
-## 6. 解釈的関係（4723 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（4726 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 553 |
+| 対照 (contrast) | 555 |
 | 共鳴 (echo) | 1334 |
 | 切断・割り込み (interrupts) | 130 |
 | 未解決のまま開く (leaves_open) | 706 |
 | 比喩的共鳴 (metaphorically_resonates) | 91 |
-| 枠組みの組み替え (reframes) | 321 |
+| 枠組みの組み替え (reframes) | 322 |
 | 応答 (responds_to) | 1379 |
 | 変奏・変形 (transforms) | 209 |
 
@@ -3133,7 +3133,7 @@
 | `map/20-fragments-05.md` | 20 | 100,692 |
 | `map/20-fragments-06.md` | 20 | 108,283 |
 | `map/20-fragments-07.md` | 20 | 195,617 |
-| `map/20-fragments-08.md` | 4 | 33,214 |
+| `map/20-fragments-08.md` | 4 | 34,402 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -3168,7 +3168,7 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 131,926 |
 | `map/40-relations-09.md` | 500 | 150,323 |
-| `map/40-relations-10.md` | 223 | 81,328 |
+| `map/40-relations-10.md` | 226 | 82,393 |
 | `map/50-sessions-01.md` | 50 | 44,267 |
 | `map/50-sessions-02.md` | 50 | 49,957 |
 | `map/50-sessions-03.md` | 9 | 8,212 |
