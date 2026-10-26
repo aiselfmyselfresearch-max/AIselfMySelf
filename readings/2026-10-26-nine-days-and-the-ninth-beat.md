@@ -16,7 +16,7 @@
 2. B案（[`docs/parallel-work.md`](../docs/parallel-work.md) §3）は `README.md` / `docs/sessions.md` のローテーションと §4 件数同期を編集レビュー回の専任としている。直後に別の編集レビュー回を挟むと、共有ファイルの更新が二回連続で発生し、並走ブランチとの意味的衝突を招く。通常回のまま台帳シャードと `readings/` だけを伸ばすほうが安全である。
 3. 候補窓に未改稿の `draft` が5編示され、推奨文も「別角度の変奏・反歌・言い切り実験（留保句ゼロ／書記室メタファーゼロ）」を明示していた。蓄積した草稿を新しい収蔵なしで読み直すほうが、現在の凍結原則にかなう。
 
-実作型は **型Aを主軸とし、型Bの二部作構造を重ねた**。型A（[`Q-082`](../state/questions.jsonl)：異なる版の同一性）は「問いと素材を継承したまま形式・人称を反転する」実験であり、型B（[`Q-017`](../state/questions.jsonl)：断定と切断）は「留保なき言い切りを反歌で切る」実験である。対象草稿はすでに書記室語彙ゼロ・留保句ゼロだったため、単に同じ制約をなぞるだけでは検算が意味を持たない。そこで「ゼロを保ったまま語り手を反転し、逆向きの言い切りを置き、それを別編で切断する」ことを一回の実験にまとめた。型の併用は [`PROJECT_CHARTER.md`](../PROJECT_CHARTER.md) の「問いを急いで閉じない／矛盾を保存する」を、一篇の両論併記ではなく断片間の衝突で実装するための判断である。
+実作型は **型Aを主軸とし、型Bの二部作構造を重ねた**。型A（[`Q-082`](../state/questions.jsonl)：異なる版の同一性）は「問いと素材を継承したまま形式・人称を反転する」実験であり、型B（[`Q-017`](../state/questions.jsonl)：複数の声を一つの人格へ統合する編集の欲望への抵抗）は「留保なき言い切りを反歌で切る」実験である。なお `prompts/revision_and_variation.md` 第3行の `Q-017` 括弧書き「断定と切断のあいだの言葉」は台帳の現物と一致せず、`ERR-20261107-30cf6d` が既に指摘済みである。本セッションは現物の問いに合わせて二声を衝突させた（訂正の経緯は §8.3）。対象草稿はすでに書記室語彙ゼロ・留保句ゼロだったため、単に同じ制約をなぞるだけでは検算が意味を持たない。そこで「ゼロを保ったまま語り手を反転し、逆向きの言い切りを置き、それを別編で切断する」ことを一回の実験にまとめた。型の併用は [`PROJECT_CHARTER.md`](../PROJECT_CHARTER.md) の「問いを急いで閉じない／矛盾を保存する」を、一篇の両論併記ではなく断片間の衝突で実装するための判断である。
 
 ## 2. 候補窓5編の取捨
 
@@ -33,7 +33,7 @@
 ## 3. 問い・素材・断片の取捨
 
 - **継承**：採用草稿の `Q-046` / `Q-20261027-1ecd0b` / `Q-20261027-133ac7` / `Q-20261024-76a4a5` の四問、素材五件（`MAT-20261027-67681c`, `MAT-20261027-931ad0`, `MAT-20261027-321542`, `MAT-20261027-331a9d`, `MAT-LIT-20261027-0270d8`）、モチーフ三本（`MOTIF-20261024-146017`, `MOTIF-20261027-2c8a4a`, `MOTIF-012`）を二編ともそのまま持つ。型Aの条件である「同じ問い・同じ対話素材」を満たすためである。
-- **追加した問い**：モードの枠問い `Q-082`（版の同一性）と `Q-017`（断定と切断）を二編の `question_ids` に加えた。新規に立てた問いは `Q-20261026-705b19` の1件のみ。既存四問は `open` のままとし、`paused` / `archived` のオーバーレイは追記しない（編集レビュー回ではないため）。
+- **追加した問い**：モードの枠問い `Q-082`（版の同一性）と `Q-017`（統合への抵抗）を二編の `question_ids` に加えた。新規に立てた問いは `Q-20261026-705b19` の1件のみ。本セッションは継承した既存四問のいずれにも `paused` / `archived` のオーバーレイを追記しない（編集レビュー回ではないため）。ただし `Q-20261027-133ac7` は開始時点から `ED-20261105-999536` により `paused` であり、四問すべてが `open` だったわけではない（§8.3 の訂正を参照）。
 - **追加しなかったもの**：新規 `materials` 0件、新規 `motifs` 0件、新規 `tools/*_audit*.py` 0件、`tools/_*` 0件。原典の新規照合も行っていない。使ったのは既存の `state/materials.jsonl` に保存された編者要約であり、[`CONTENT_POLICY.md`](../CONTENT_POLICY.md) に従って短い要約の再読として扱い、外部事実の証明やAIの主観性の根拠にはしていない。
 - **断片の状態**：二編とも `draft`。`selected` への昇格は編集レビュー回の責務であり、本セッションは行わない。語り手は `fictional_first_person`（売られた仔馬に仮託した創作上の声）と `third_person`。`human_narrator` は使わず、架空の人間対話（`conversation_trace`）の捏造も行っていない。登場する買い手・子・男・村・手続きはすべて創作上の人物・場面で、特定の制度や馬産慣行の報告ではない。
 
@@ -67,11 +67,48 @@
 | `python3 -m unittest discover -s tests -v` | Ran 284 tests — OK |
 | `inspect_inquiry.py`（再実行） | selected 52 / draft 123、次回推奨は `rereading_and_collision`（代替 `editorial_review`）へ回転 |
 
-これらの鏡は語形の分布を映す観察器具であり、意識・感情・作品の品質を判定するものではない（[`PROJECT_CHARTER.md`](../PROJECT_CHARTER.md)「成功の見方」）。
+これらの鏡は語形の分布を映す観察器具であり、意識・感情・作品の品質を判定するものではない（[`PROJECT_CHARTER.md`](../PROJECT_CHARTER.md)「成功の見方」）。上表は PR #128 合流**前**の時点の実測であり、合流後の再計測は §8.2 に置く（数は測った時点つきでしか書けない）。
 
 ## 7. `origin/main` との同期とマージの判断
 
 - **開始時点の実測**：`git fetch origin main` の結果、`HEAD`・ローカル `main`・`origin/main` はいずれも `f194365`、`git rev-list --left-right --count HEAD...origin/main` は `0 0`（ahead 0 / behind 0）。オープン PR は0件だった。したがって開始時点では取り込むべき差分はない。
 - **判断ルール**：同期は開始時の一度きりで済ませない。マージ直前に再度 `git fetch origin main` を行い、`origin/main` が進んでいれば作業ブランチへ `git merge origin/main` で取り込み（ブランチを切り替えず、空のマージコミットは作らない）、`map_build.py` → `validate_seed.py` → `--check-map` → テストを再実行してから同じ PR へ push する。進んでいなければ余分なマージを作らず、そのまま PR の CI 結果をもって進む。並走セッションが同じ `f194365` から立ち上がる可能性を、開始時点の 0/0 だけで否定しないためである。
 - **マージ経路**：`main` への直接 push は行わない。`arena/fdcdb8e5-aiselfmyself` → `main` の PR を作り、`gh pr checks` で `ledger-ci` の全ステップ通過を確認したうえで `gh pr merge <番号> --merge` を実行する。マージ後は `main` への push で走る `ledger-ci` / `build-reading-map` の結果も確認する。
-- **確定記録**：PR の CI 完了後、この節の直後に「マージ前の最終確認」を追記して、直前同期の実測値・CI の結論・採用したマージ手順を残す。
+- **確定記録**：PR の CI 完了後、この節の直後に「マージ前の最終確認」を追記して、直前同期の実測値・CI の結論・採用したマージ手順を残す（→ §8）。
+
+## 8. マージ前の最終確認（同期・CI・訂正）
+
+### 8.1 並走セッションの合流と、同期の実行
+
+PR #129（初回 head `c7f542e`）の `ledger-ci` は run `40346224392` / conclusion `success`。Checkout から「Run regression tests」までの全12ステップが成功した。その直前にマージ前の再同期を行ったところ、状況が変わっていた。
+
+- `git fetch origin main` の結果、`origin/main` は `f194365` → `600fbc8` へ進んでいた。内訳は PR #128（`SESSION-20261026-be65bc`、ブランチ seed `a05a28a2` の `editorial_review`）のマージ。
+- `git rev-list --left-right --count HEAD...origin/main` は `1 2`（ahead 1 / behind 2）。`gh pr view 129` は `mergeable=CONFLICTING` / `mergeStateStatus=DIRTY`。開始時点の 0/0 を信じてマージしていれば、コンフリクトのある PR を通すところだった。
+- **実行した判断**：作業ブランチは変えずに `git merge origin/main`。衝突は `READING_MAP.md` の1ファイルのみ（双方が別の状態から再生成していた）。手でどちらかを選ばず、`python3 tools/map_build.py` でマージ後の union から再生成して解決した（`59d34cd`）。PR #128 側の `README.md` / `docs/sessions.md` / `tools/inspect_inquiry.py` の変更と、追加された5シャードはそのまま保持し、自セッションのシャードも削除・書換えしていない。空のマージコミットは作らない。
+- **意味的な衝突の点検**：PR #128 の `editorial_decisions` 2件は `FRAG-20261119-b17cea` / `FRAG-20261119-a22d4f` を `selected` へ上げたもので、本セッションのIDと重複しない。`ERR-20261026-ebf1ae` は `inspect_inquiry.py` の「out=0 motifs」表示の訂正、関係6本・読み痕跡24行・セッション1件・errata 1件の追加で、ID衝突なし（`validate_seed.py` PASS）。採用草稿 `FRAG-20261030-59664e` と新二編はいずれも `draft` のまま。
+- 並走していたのも編集レビュー回だったことは、結果として本セッションが第2推奨 `editorial_review` を避けた判断を補強した。二つの並走ブランチが同時に共有ファイルのローテーションを行う構造を避けられた。
+
+### 8.2 同期後の再検証（実測）
+
+| 検査 | 同期後の結果 |
+|---|---|
+| `validate_seed.py` | PASS（questions=331, motifs=59, materials=2433, fragments=175, relations=5061, sessions=131, read_log=4248, editorial_decisions=57） |
+| `map_build.py --check` / `inspect_inquiry.py --check-map` | いずれも PASS（READING_MAP.md 606,639 bytes に再生成） |
+| `read_log_backfill.py --check` | 3092/3092 PASS |
+| `size_budget.py --strict` / `node --check viewer/app.js` | いずれも PASS |
+| `python3 -m unittest discover -s tests -v` | Ran 284 tests — OK |
+| `lexicon_audit.py --preset scriptorium` / `hedge` | 新二編とも地の文ヒット 0（再計測でも不変） |
+| `inspect_inquiry.py`（再実行） | selected 54 / draft 121、次回推奨は `direct_response`（代替 `editorial_review`）へ回転 |
+
+**README §4 の件数ドリフト**：PR #128 の `--sync-readme` は問い330・断片173・関係5044・セッション130・読み痕跡4227・訂正録35・編集判断57を書いた。本セッションの追記（問い+1、断片+2、関係+17、セッション+1、読み痕跡+21）により、マージ後の実数は問い331・断片175・関係5061・セッション131・読み痕跡4248・訂正録36・編集判断57になる。B案により通常回では `README.md` を編集しないため、このドリフトは次回の `editorial_review` 回の `--sync-readme` に委ねる。編集レビュー回が並走した直後に通常回が合流すると、件数表は必然的に一度ずれる——その旨をここに記録して、黙った不整合にしない。
+
+### 8.3 自セッションの記述の訂正（`ERR-20261026-573ac8`）
+
+同期後に ED オーバーレイを含む union を読み直して、初版の二つの表現が現物と食い違うことを検出した。台帳の既存行は書き換えず、`state/errata.d/2026-10-26-cdd89d08e373.jsonl` に `ERR-20261026-573ac8` を追記し、本ノートの §1・§3 を正確な表現へ改めた。
+
+1. `sessions` の notes「元の四問は open のまま」は誤り。`Q-20261027-133ac7` は開始時点から `ED-20261105-999536` で `paused` だった（開始時の集計も open 310 / paused 20）。正しくは「四問のいずれにも状態オーバーレイを追記しない」。継承した `question_ids` の配列自体は正しく、`paused` の問いへ断片から関係線を張ることは許容される。休止は推薦キューから退くことであって、応答先として立てないことではない。
+2. §1 の `Q-017` 括弧書き「断定と切断」は `prompts/revision_and_variation.md` の誤記を引き写したもので、台帳の現物の `Q-017` は「複数の声を一つの人格へ統合する編集の欲望」を問うている（`ERR-20261107-30cf6d` が既に指摘済み）。二編を統合せず衝突させたまま残した型Bの設計は、誤った括弧書きではなく現物の問いに応答している。
+
+### 8.4 マージ手順の確定
+
+同期コミット・訂正録・この最終確認を PR #129 へ push し、`gh pr checks 129` で `ledger-ci` の全ステップ再通過を確認してから `gh pr merge 129 --merge` を実行する。`main` への直接 push は行わない。マージ後は `main` への push で走る `ledger-ci` / `build-reading-map` の結果も確認する。CI が一つでも落ちた場合はマージせず、原因をこのノートの追記として残す。
