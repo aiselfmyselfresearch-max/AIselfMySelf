@@ -838,8 +838,12 @@ def print_summary(
         )
     if windows["review_motifs"]:
         print(
-            "  [editorial_review] Candidate out=0 motifs to bridge:",
-            ", ".join(f"{m['id']} ({m['label'][:14]})" for m in windows["review_motifs"]),
+            "  [editorial_review] Candidate motifs to bridge "
+            "(motif->motif out-degree in parentheses; sampled from out=0 motifs when at least three exist):",
+            ", ".join(
+                f"{m['id']} ({m['label'][:14]}, out={m['out_edges']})"
+                for m in windows["review_motifs"]
+            ),
         )
     if windows["direct_response_questions"]:
         print(
