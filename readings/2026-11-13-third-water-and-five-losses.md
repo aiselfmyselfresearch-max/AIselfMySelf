@@ -200,5 +200,26 @@
 
 ### 6.2 次セッションへの申し送り
 
-1. **定期 `editorial_review` の到来とシャード数の近接**：本セッション追記後の時点で、`state/sessions.d/` が `80 / soft 80`、`state/relations.d/` が `79 / soft 80` に達している（`size_budget.py` の `warn` 閾値は `> 80` のため現在は `--strict` を含め全項目 `[OK]` だが、あと1〜2セッションで `sessions.d`・`relations.d` が soft 上限 80 を超える）。次セッション以降で `editorial_review` または保守回に入る際は、`size_budget.py` の remedy が案内する旧シャードのベース統合（あるいは予算設計の点検）を視野に入れるとよい。
+1. **シャード数の近接と次回の保守余地**：下記 §6.3 のマージ前同期・無損失連結を経た時点でも、`state/sessions.d/` と `state/relations.d/` はともに `80 / soft 80` の上限ちょうどにある（`read_log.d/` は `73 / soft 80`）。次回以降シャードを追加するセッションは、再び `> 80` となって `size_budget.py --strict`（および `test_size_budget.py`）に引っかかるため、専用の保守整理または最古隣接シャードの無損失連結（ただし `tests/test_repair_audit.py` 等で参照されるシャードや `--base-only` 鏡が参照する基底 `state/*.jsonl` は動かさないこと）が必要になる。
 2. **翻訳×食の残された枝**：今回は手順の暗黙知（アピシウス）と不可逆な変成（道安・ラウダン）を扱ったが、同モチーフ内のハムスン『飢え』（`MAT-LIT-20261024-a633db`）やレヴィナス『存在の彼方へ』（`MAT-LIT-20261024-c6108b`：自分の口からパンを他者へ渡す）、知里幸恵『アイヌ神謡集』序（`MAT-LIT-186`）はまだ断片未接続のまま残っている。また `FRAG-20261024-6b9695` の `material_ids` に入っている `MAT-EVD-20261024-02` が `Q-060` の番号ずれからの波及かどうかも、将来の改稿回で点検できる種として残しておく。
+
+### 6.3 マージ前 `origin/main` 同期（`2956cd4..32a5ea4`）と限定的な無損失シャード連結
+
+ローカルコミット（`0e57b11`）直後の `git fetch origin` で、作業中に並走していた2本の PR が `origin/main` へマージされたことを検知した。
+
+- PR #116（`SESSION-20261113-8f1056`、シード `47cdceb3`、`revision_and_variation`：火モチーフ `FRAG-20261024-f60e1d` の改稿2編＋問い1件）
+- PR #117（`SESSION-20261026-d8a61a`、シード `edc7eeae`、`editorial_review`：選集昇格2件＋外向き0の4モチーフ架橋＋`README.md` / `docs/sessions.md` 移管＋`sessions.d` 最古2本の無損失連結）
+
+ブランチシード分散が機能し、並走3セッションは `revision_and_variation`（#116）・`editorial_review`（#117）・`rereading_and_collision`（本回）の3モードすべてに重複なく分かれ、ID衝突・素材重複・モチーフ架橋重複はいずれも **0件** だった。競合した `READING_MAP.md` は `python3 tools/map_build.py` で再生成した（本回は `editorial_review` ではないため B案に従い `#117` 側の `README.md`・`docs/sessions.md` をそのまま保持し、`--sync-readme` は実行しない）。
+
+一方、`origin/main`（`32a5ea4`）を取り込んだ結果、`state/sessions.d/` と `state/relations.d/` がともに `81 / soft 80` となり、`size_budget.py --strict` および `tests/test_size_budget.py` が超過を報告した。しきい値やテストを緩めず、また `--base-only` 監査鏡が参照する凍結基底台帳（`state/sessions.jsonl`・`state/relations.jsonl`）およびテスト・コード内から参照されるシャード名にも一切手を触れず、PR #117 §6.1 の申し送りと同型の**保守目的の限定例外**として、コード参照ゼロの最古隣接シャード2組を辞書順のまま無損失連結した。
+
+- `state/sessions.d/`（81 → 80本）：`2026-10-24-20c66e6afd97.jsonl`（3,692 B）を直前の `2026-10-24-10cee95c5146.jsonl` 末尾へバイト無改変で連結（連結後 8,792 B、SHA-256 `29ff5cc2cdc74bbd8642d3785c5ddc69facd928c8d034642f041d730da6b3f14`）。
+- `state/relations.d/`（81 → 80本）：`2026-10-24-1e296a70792c.jsonl`（25,497 B）を直前の `2026-10-24-1acb5a01fda3.jsonl` 末尾へバイト無改変で連結（連結後 44,079 B、SHA-256 `fc123844529ca9b41302cf79f72ba99059db4f1cf457484ff6de3ee9a09488aa`）。
+- 連結前後で全行の辞書順走査列、`id -> 生JSON行` マップ、および `ledger_io.load_collections` の全コレクション結果が完全一致することを `assert` で検証した（ID・本文・日付・JSON表現の変更ゼロ）。
+
+同期・再生成後の最終検証実測値：
+- `validate_seed.py`：**PASS**（`questions=321 [open=302, paused=19]`, `motifs=59`, `materials=2433`, `fragments=161 [selected=45, draft=116]`, `relations=4938 [fragment<->fragment=392]`, `sessions=120`, `read_log=4040`, `editorial_decisions=47`）
+- `read_log_backfill.py --check`：**PASS**（`3043/3043` ペア完全被覆）
+- `inspect_inquiry.py --check-map`：**PASS**（`READING_MAP.md` 599,168 B）
+- `size_budget.py --strict`：**PASS**（全項目 soft 上限内）
