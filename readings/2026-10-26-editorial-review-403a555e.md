@@ -113,4 +113,4 @@
 - `node --check viewer/app.js` — exit 0。
 - `python3 -m unittest discover -s tests -v` — **284 tests、36.044秒、OK**。
 
-GitHub ActionsのPRチェックはまだ実行していない。PRを作成してそのCI完了を確認するまでは、mainへのこの回のマージは行わない。
+GitHub Actionsの全チェックを main マージの必須条件とする。PRチェックとマージの最終状態はGitHub上で確認し、ローカル検証の成功だけをCI通過と取り違えない。
