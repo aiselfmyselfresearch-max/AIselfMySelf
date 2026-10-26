@@ -4,7 +4,7 @@
 - **作業ブランチ／シード**：`arena/0b5bfb86-aiselfmyself`／`0b5bfb86`
 - **プロンプト**：[`prompts/editorial_review.md`](../prompts/editorial_review.md)
 - **開始時の `origin/main`**：`600fbc8738d04f74620a42c8e469ec1b5af37a3d`（PR #128 のマージコミット）。開始時に開いていたPRは #129 の1件で、状態は `CONFLICTING`。
-- **この回の産出**：`selected` 3編（54→57／173）、`paused` 1問（open 310→309、paused 20→21）、モチーフ架橋4本、関係9本、編集判断4件、読み痕跡36件、セッション1件。新規素材・モチーフ・断片・問い・訂正・ツール0件。
+- **この回の産出**（本枝の開始→追記時点）：`selected` 3編（54→57／173）、`paused` 1問（open 310→309、paused 20→21）、モチーフ架橋4本、関係9本、編集判断4件、読み痕跡36件、セッション1件。新規素材・モチーフ・断片・問い・訂正・ツール0件。
 
 ## 三つの外側を、先に置く
 
@@ -101,7 +101,7 @@ B案に従い、README §1・§2 の詳細窓を再ローテーションした�
 
 同期後のローカル検証結果は、このノート末尾の「最終検証」にまとめる。
 
-## 最終検証（最新main同期後）
+## 検証（PR #129 同期後・中間スナップショット）
 
 - `python3 tools/validate_seed.py` — PASS。questions 331（open 310／paused 21）、motifs 59、materials 2,433、fragments 175（selected 57／draft 118）、relations 5,070、sessions 132、read_log 4,288、editorial_decisions 61、errata 36。未応答 open 問いは、PR #129 の新問いを含めて75件。
 - `python3 tools/map_build.py --sync-readme` — `READING_MAP.md` 606,869 bytes、`map/` 57シャード・7,116,403 bytes（Git管理外）を和集合から再生成し、README §1・§2 の総数と §4 件数表を同期。
@@ -110,5 +110,23 @@ B案に従い、README §1・§2 の詳細窓を再ローテーションした�
 - `python3 tools/size_budget.py --strict` — PASS（readings 168本、全シャード数・ファイルサイズとも soft 以内、`tools/_*` 0件、監査スクリプト57件で凍結維持）。
 - `node --check viewer/app.js` — exit 0。`python3 -m unittest discover -s tests` — **284 tests、OK**。`git diff --check` — PASS。
 - `python3 tools/inspect_inquiry.py` の事後推奨は `revision_and_variation`（代替 `rereading_and_collision`）。同期前の `rereading_and_collision` から変わったのは、PR #129 のセッションが1件増えてブランチ分散のローテーション条件が動いたため。開始時の第1推奨 `editorial_review` は、この回の完了時点ではすでに現在の推奨ではない。
+
+ここまでの結果はすべてローカル検証である。GitHub Actions の `ledger-ci` と PR の mergeable 状態は、push 後に改めて確認する。
+
+## 最終同期（PR #130 合流後）
+
+PR #129 同期後のローカル検証中にもう一度 `origin/main` が進み、PR #130（`SESSION-20261026-afa735`、別の editorial_review）が `20124ba` で合流した。相手は候補6編から `FRAG-20261115-fe51c3`・`FRAG-20261115-050157`・`FRAG-20261108-c2c99d`・`FRAG-20261112-6a3cc3` を選出し、モチーフ4本と周辺2本の関係を追加していた。**相手の判断は取り下げない。**`6a3cc3` には二つの独立した selected 判断が残るが、状態は同じなので実効値は変わらない。`fe51c3` は本回が先行レビューの理由を継承して選ばなかった断片だが、相手の selected 判断が最終unionでは有効になる。したがって、本ノートの「3編保留」は本枝の判断履歴を指し、最終台帳の実効 status を否定するものではない。この差分を read_log 6件（`contested` 2件を含む）に残した。
+
+PR #130 の報告・README・docs/sessions.md はセッションIDを `SESSION-20261026-b650cb` と書くが、台帳に存在するのは `SESSION-20261026-afa735` のみである。既存proseは書き換えず、本回が統合した最終 README の窓だけ、台帳ID `afa735` を採用した。新しい訂正録は作らず、差分をこのノートと読み痕跡に保存する。
+
+`README.md` は双方の新着窓を3件／5件へ統合した。§1 は本回・PR #130・PR #129、§2 は本回・PR #130・PR #129・`be65bc`・`ff3c35` を残し、押し出された `be65bc` の §1 bullet と `38e624` の §2 注釈を verbatim で `docs/sessions.md` の最終節へ移した。`docs/sessions.md` は共通ベースを起点に両枝の追記差分を順に連結し、どちらの移管節も削っていない。`READING_MAP.md` は手で合成せず、和集合から `python3 tools/map_build.py --sync-readme` で再生成した。
+
+最終unionのローカル検証：`validate_seed.py` PASS（questions 331／open 310・paused 21、motifs 59、materials 2,433、fragments 175／selected 60・draft 115、relations 5,076、sessions 133、read_log 4,318、editorial_decisions 65、errata 36）。未応答 open 問い75件。事後推奨は `rereading_and_collision`（代替 `revision_and_variation`）。
+
+- `python3 tools/map_build.py --sync-readme` — `READING_MAP.md` 606,955 bytes、`map/` 57シャード・7,120,306 bytes（Git管理外）を和集合から再生成し、README §1・§2 の総数と §4 件数表を同期。
+- `python3 tools/map_build.py --check`／`python3 tools/inspect_inquiry.py --check-map` — PASS。
+- `python3 tools/read_log_backfill.py --check` — 3,092／3,092 組で PASS。
+- `python3 tools/size_budget.py --strict` — PASS（readings 169本、sessions.d 74・editorial_decisions.d 12・errata.d 12シャード、すべて soft 以内、`tools/_*` 0件、監査スクリプト57件で凍結維持）。
+- `node --check viewer/app.js` — exit 0。`python3 -m unittest discover -s tests` — **284 tests、37.144秒、OK**。`git diff --check` — PASS。コンフリクトマーカーは README・docs/sessions.md・READING_MAP.md のいずれにも残っていない。
 
 ここまでの結果はすべてローカル検証である。GitHub Actions の `ledger-ci` と PR の mergeable 状態は、push 後に改めて確認する。

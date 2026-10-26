@@ -734,3 +734,28 @@ PR #129（`SESSION-20261026-9ea1ab`）が `origin/main` へ合流したため、
 ### §2 報告注釈の移管分（verbatim）
 
   - [`readings/2026-10-26-direct-response-absent-addressee.md`](readings/2026-10-26-direct-response-absent-addressee.md)（`SESSION-20261026-0e17e1`：`Q-20261115-f8a392` へ鍵の「備えの向き」と二本の来歴をめぐる創作の詩／情景2編で応答。元問はopenのまま、`Q-20261026-2399d2` を開いた。新規素材・モチーフ0件、断片2編・問い1件）
+
+## 2026-10-26 痣でない決定と宛てのない音の詳細窓ローテーション（SESSION-20261026-b650cb）
+
+今回のレビューで README §1・§2 から押し出された行を、本文を要約・圧縮・言い換えせず移す。§1 bullet と §2 注釈はそれぞれ元のREADME表記を維持する。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **形の備えは、宛先を誰の名で決めるか**：`SESSION-20261026-0e17e1`（direct_response）は `Q-20261115-f8a392` に、鍵の「備えの向き」を言い切る詩と、同形の鍵の来歴を分ける姉妹の創作情景を衝突させ、次問 `Q-20261026-2399d2` を開いた。新規素材・モチーフ0件、draft断片2編・問い1件。詳細は [`readings/2026-10-26-direct-response-absent-addressee.md`](readings/2026-10-26-direct-response-absent-addressee.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-10-26-the-menu-and-the-rest.md`](readings/2026-10-26-the-menu-and-the-rest.md)（`SESSION-20261026-b648df`：2編選出、休止0問、モチーフ4本架橋と断片から問いへ2本。候補全件の採否、未照合の範囲、同期検証を記録）
+
+
+## 2026-10-26 PR #130 合流後の最終詳細窓ローテーション（SESSION-20261120-51e00b）
+
+二つの editorial_review 枝の README 窓を片方に統合した。PR #130 の到達点 bullet と報告注釈は 台帳上の `SESSION-20261026-afa735` を使って最終 README に残し、同枝の報告・既存 docs/sessions.md 節に書かれた `SESSION-20261026-b650cb` は書き換えず、そのまま来歴として保存する。両側の docs/sessions.md 追記は共通ベースからの差分を順に連結して保持した。本回が最終 README から押し出した以下の2行を、元表記のまま移す。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **七十二点の内訳と、四つの保留——新着順に選出しない編集レビュー**：`SESSION-20261026-be65bc` はシード `a05a28a2` の第1推奨 editorial_review を採用。候補6編のうち、まだ編集判断を受けていなかった `FRAG-20261119-b17cea`『七十二点が二度着く』と `FRAG-20261119-a22d4f`『一度目へ戻る音』のみを selected へ（52→54／173編）。直近2回のレビューが理由付きで draft に残した4編は、新しい反証がないため覆さない。未応答 open 問い74件の類似を測り、内容の重複対が無いことを確認して休止0問。低出次数の候補4モチーフを架橋し、候補窓の `out=0` 表示と実測の食い違いを訂正録へ記録・表示修正。新規素材・断片・問い0件。詳細は [`readings/2026-10-26-seventy-two-points-and-four-deferrals.md`](readings/2026-10-26-seventy-two-points-and-four-deferrals.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md`](readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md)（`SESSION-20261119-38e624`：数えること×秘密・暗号。合計と鍵を持つ受け手の復号の非対称を、場面／詩の対篇で読む。新規素材・モチーフ0件、draft断片2編・問い1件・関係12本。原典の新規照合なし）
