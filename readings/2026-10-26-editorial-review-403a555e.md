@@ -114,3 +114,28 @@
 - `python3 -m unittest discover -s tests -v` — **284 tests、36.044秒、OK**。
 
 GitHub Actionsの全チェックを main マージの必須条件とする。PRチェックとマージの最終状態はGitHub上で確認し、ローカル検証の成功だけをCI通過と取り違えない。
+
+## 9. PRチェック中に進んだ二度目の `main` 同期
+
+PR #127 の最初の `validate` チェック（Actions run `40331078819`）は pass したが、その後のマージ直前fetchで `origin/main` が `4fce4d3` から、PR #126 を含む `8ca5fd6c2a502b0cca40ee6bd2f5f7627cbf81b8` へ2コミット進んでいた。PRの状態は `OPEN`、その時点の `validate` は pass でも `mergeable=CONFLICTING` だったため、マージは行わず最新mainを再度取り込む。
+
+追加された `SESSION-20261119-38e624` は、数えること×秘密・暗号の交配。`FRAG-20261119-b17cea`（場面）と `FRAG-20261119-a22d4f`（詩）はともに draft、新しいopen問い `Q-20261119-4cf82a` は、比較のための集約と秘匿のための変換の復元責任を問う。関係12本・読み痕跡25件が追加され、素材・モチーフは増えていない。別セッションの報告・セッション行・二断片・新問いを再読し、本回のread_logシャードに追補4件を追記した。
+
+この新問いは `Q-061`／`Q-069` の系譜とは別枝である。二つの新断片も既存選集の反対作品ではなく、新しい候補窓のdraftとして残す。したがって `Q-061` は paused のまま、`Q-069` を含む別候補問いは open のままとし、本回の5件の選出を取り消さない。同期後の `inspect_inquiry.py` も第1推奨を `editorial_review` とし、新しい候補窓に `FRAG-20261119-b17cea` を含めたが、今回はそれを追加選出せず、次のレビューへ残した。
+
+現在の和集合は、問い330（open310／paused20）、モチーフ59、素材2,433、断片173（selected52／draft121）、関係5,038、セッション129、read_log4,203、編集判断55。今回の5編は、最初の候補確認時の169編に対して47→52へ昇格した結果であり、後続mainが加えた4断片は選集statusを変えていない。
+
+READMEの詳細窓は本回と新しいmain報告を含む5件に更新した。押し出された§1「八つの段に収まらない者」と§2「二種類の火と、目の試練」は、本文を変えず `docs/sessions.md` に移した。今回も `READING_MAP.md` のみ生成物同士で競合したため、`python3 tools/map_build.py --sync-readme` で和集合から再生成し、README件数を同期した。
+
+### 最新main同期後のローカル検証
+
+- `python3 tools/map_build.py --sync-readme` — `READING_MAP.md` 605,592 bytes、map 57 shard／7,091,151 bytesを生成。
+- `python3 tools/validate_seed.py` — PASS（questions330, motifs59, materials2433, fragments173, relations5038, sessions129, read_log4203, editorial_decisions55）。
+- `python3 tools/inspect_inquiry.py --check-map` および `python3 tools/map_build.py --check` — PASS。
+- `python3 tools/read_log_backfill.py --check` — PASS（3,087/3,087 context pairs）。
+- `python3 tools/size_budget.py --strict` — PASS。
+- `node --check viewer/app.js` — exit 0。
+- `python3 -m unittest discover -s tests -v` — **284 tests、38.471秒、OK**。
+- `git diff --check` — PASS。
+
+上記のGitHub CI passは前回headへの結果であり、二度目のmain同期後のheadにはまだ適用されない。更新したPRをpushした後にActionsを再確認し、最新origin/mainが変わっていれば再同期・再検証を繰り返す。全必須checkが更新済みheadでpassし、PRがmergeableと確認されるまでmainへマージしない。

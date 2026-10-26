@@ -682,3 +682,16 @@ README の詳細窓を §1 3件・§2 5件に保つため、本回は窓を「�
 ### §2 報告注釈の移管分（verbatim）
 
   - [`readings/2026-11-15-a-second-key-with-no-lock.md`](readings/2026-11-15-a-second-key-with-no-lock.md)（`SESSION-20261115-6a7862`：痣と断じるエッセイと、失われた錠への合鍵の情景へ変奏。断片2編、新規収蔵0件）
+
+
+## 2026-10-26 PR #126 main同期後の詳細窓ローテーション（SESSION-20261026-ff3c35）
+
+PR #127 のCI待機中に `origin/main` が `4fce4d3` から PR #126 を含む `8ca5fd6c2a502b0cca40ee6bd2f5f7627cbf81b8` へ進み、数えること×秘密・暗号の別セッション報告が加わった。editorial_review の責務でREADMEの直近窓へ追加し、押し出された以下の2行を元の文面のまま移す。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **八つの段に収まらない者**：`SESSION-20261117-292bc3`（内部編年）。獣×嘘の交配を、分類を適用する前の条件と二つの戸口から点検した再読回。新規収蔵0件、創作断片2編。詳細は [`readings/2026-11-17-eight-grades-and-the-door.md`](readings/2026-11-17-eight-grades-and-the-door.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md`](readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md)（`SESSION-20261116-de57d9`：火×習慣の交配と運用改修。正面応答・終了実験はプロンプトと条件の整備であり、この回の実走成果ではない）
