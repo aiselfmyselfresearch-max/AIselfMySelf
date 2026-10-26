@@ -656,3 +656,16 @@ README の詳細窓を §1 3件・§2 5件に保つため、本回は窓を「�
 
 - [`readings/2026-11-13-third-water-and-five-losses.md`](readings/2026-11-13-third-water-and-five-losses.md)
 - [`readings/2026-11-18-read-log-shard-compaction.md`](readings/2026-11-18-read-log-shard-compaction.md)
+
+
+## 2026-10-26 自律編集レビュー回の詳細窓ローテーション（SESSION-20261026-ff3c35）
+
+今回のレビューでREADME §1・§2から押し出された行を、本文を要約・圧縮・言い換えせず移す。§1 bullet と §2 注釈はそれぞれ元のREADME表記を維持する。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **同じ献立と、同じ幅の休符——選出は履行の代わりにならない**：`SESSION-20261026-b648df` はシード `71a3a03c` の第1推奨から編集レビューを採り、候補6編中「明日の献立、三度」と「休符の練習」を selected へ（45→47／169編）。候補5問の代替可能性を検討して休止0問。未架橋4モチーフへの橋と、選出断片から問いへの批評的な線を計6本追加。新規収蔵・断片・問い0件。詳細は [`readings/2026-10-26-the-menu-and-the-rest.md`](readings/2026-10-26-the-menu-and-the-rest.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md`](readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md)（`SESSION-20261114-c7fbd6`：予測×食べること。命令法の申し送りと三度の黒板を構成。断片2編、新規収蔵0件）
