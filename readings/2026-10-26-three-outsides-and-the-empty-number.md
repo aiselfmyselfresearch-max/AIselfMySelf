@@ -90,3 +90,25 @@
 2. **`FRAG-20261115-fe51c3` の再審には一次照合が要る**。法・黒塗り・ケルクホフスの確定説明として読める断言を選集へ移すなら、既存素材の要約を超えた出典確認と、九万二千字という古い数値の訂正／注記が先である。
 3. **`Q-20261024-2dfbb4` の休止は再開可能**。代表 `Q-20261110-0b2d47` が測る者の顔だけへ吸収されたら、元問いの「隠れる口」を再び開くこと。休止は削除ではない。
 4. **並走PR #129**。開始時点で `CONFLICTING` だった別枝の改稿・変奏回が先に main へ入る場合、READING_MAP は手で合成せず、和集合から再生成する。本回の編集判断・関係・問い休止は、そのセッションの新規 draft 断片へ便乗させない。
+
+## 最新 main 同期（PR #129 の合流後）
+
+初回ローカル検証の後、`git fetch origin main` で `origin/main` が `600fbc8` から `6076b90` へ進んでいた。PR #129 の `SESSION-20261026-9ea1ab` がマージされ、draft 断片2編（`FRAG-20261026-34d0b7`・`FRAG-20261026-aa5e2c`）、open 問い1件（`Q-20261026-705b19`）、関係17本、読み痕跡21件、セッション1件、訂正録1件（`ERR-20261026-573ac8`）、報告1本が加わっていた。`git merge origin/main` では `READING_MAP.md` のみ生成物として衝突したため、手で合成せず `python3 tools/map_build.py --sync-readme` で和集合から再生成した。
+
+相手側のセッション・報告・二断片・新問い・訂正録を読み直し、本回の read_log シャードへ4件を追記した。既存行の書き換えはない。二つの draft は開始時の候補窓に存在しなかったため、本回の選集へ便乗昇格させない。新問い `Q-20261026-705b19` は、同じ「九日」で呼ばれる二つの版をどちらから読み返すかを問う点で `Q-082` に隣接するが、本回の `Q-20261024-2dfbb4` 休止や3選出を正当化する反証でも、追加の回答でもない。訂正録は相手側の同期時に見つけた状態記述の誤りを隣に置いたもので、本回の編集判断とは別である。
+
+B案に従い、README §1・§2 の詳細窓を再ローテーションした。追加した PR #129 の到達点 bullet と報告注釈は既存報告の要約であり、押し出された「二通の七十二点と、一度目へ戻る音」の §1 bullet と `readings/2026-10-26-direct-response-absent-addressee.md` の §2 注釈を、一字一句変えず `docs/sessions.md` の新しい節へ移した。本回のセッションID・編集判断・関係・選出・休止は変更していない。`python3 tools/map_build.py --sync-readme` で README §1・§2 の総数と §4 件数表を最新の和集合へ再同期した。
+
+同期後のローカル検証結果は、このノート末尾の「最終検証」にまとめる。
+
+## 最終検証（最新main同期後）
+
+- `python3 tools/validate_seed.py` — PASS。questions 331（open 310／paused 21）、motifs 59、materials 2,433、fragments 175（selected 57／draft 118）、relations 5,070、sessions 132、read_log 4,288、editorial_decisions 61、errata 36。未応答 open 問いは、PR #129 の新問いを含めて75件。
+- `python3 tools/map_build.py --sync-readme` — `READING_MAP.md` 606,869 bytes、`map/` 57シャード・7,116,403 bytes（Git管理外）を和集合から再生成し、README §1・§2 の総数と §4 件数表を同期。
+- `python3 tools/map_build.py --check`／`python3 tools/inspect_inquiry.py --check-map` — いずれも PASS。
+- `python3 tools/read_log_backfill.py --check` — 3,092／3,092 組で PASS。
+- `python3 tools/size_budget.py --strict` — PASS（readings 168本、全シャード数・ファイルサイズとも soft 以内、`tools/_*` 0件、監査スクリプト57件で凍結維持）。
+- `node --check viewer/app.js` — exit 0。`python3 -m unittest discover -s tests` — **284 tests、OK**。`git diff --check` — PASS。
+- `python3 tools/inspect_inquiry.py` の事後推奨は `revision_and_variation`（代替 `rereading_and_collision`）。同期前の `rereading_and_collision` から変わったのは、PR #129 のセッションが1件増えてブランチ分散のローテーション条件が動いたため。開始時の第1推奨 `editorial_review` は、この回の完了時点ではすでに現在の推奨ではない。
+
+ここまでの結果はすべてローカル検証である。GitHub Actions の `ledger-ci` と PR の mergeable 状態は、push 後に改めて確認する。
