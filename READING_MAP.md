@@ -8,9 +8,9 @@
 - **開かれた問い（Questions）**：330 件（初期シード 5 件 ＋ 派生 325 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2433 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 59 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：173 編（selected 47 ／ draft 126）
-- **解釈的関係（Relations）**：5033 件
-- **探究セッション（Sessions）**：128 回
+- **文芸断片（Fragments）**：173 編（selected 52 ／ draft 121）
+- **解釈的関係（Relations）**：5038 件
+- **探究セッション（Sessions）**：129 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -573,21 +573,21 @@
 | `FRAG-20261110-07363b` | 蝋管の朝——嘴の長さが出所になるまで | draft | scene | other |
 | `FRAG-20261110-cb0ce7` | 尺を置いた者の置き書き——見つけた者へ | draft | essay | fictional_first_person |
 | `FRAG-20261111-45ecb4` | 結晶は外にしか付かない——枝の側から | draft | fragment | reflective_literary_voice |
-| `FRAG-20261111-198cfb` | 枝の側はない——反歌一首 | draft | fragment | other |
+| `FRAG-20261111-198cfb` | 枝の側はない——反歌一首 | selected | fragment | other |
 | `FRAG-20261112-53dcef` | 六十ミリ、来なかった朝——五本の杭 | draft | scene | third_person |
 | `FRAG-20261112-6a3cc3` | 五文字の手紙——降らなかった雨の分だけ | draft | letter | fictional_first_person |
 | `FRAG-20261113-594f67` | 氷の昼まで、二本目の灯 | draft | scene | third_person |
 | `FRAG-20261113-5000cc` | 境の石まで、火を持って行く | draft | letter | fictional_first_person |
-| `FRAG-20261113-649179` | 三度目の水——名のない豆を煮るまえに | draft | dialogue | dialogue |
-| `FRAG-20261113-1a7db4` | 五つの失せもの——海を渡った実の歌 | draft | poem | other |
+| `FRAG-20261113-649179` | 三度目の水——名のない豆を煮るまえに | selected | dialogue | dialogue |
+| `FRAG-20261113-1a7db4` | 五つの失せもの——海を渡った実の歌 | selected | poem | other |
 | `FRAG-20261114-8074e0` | 塩を二度、氷は戻すな——仕出し場の申し送り | draft | dialogue | dialogue |
 | `FRAG-20261114-488074` | 明日の献立、三度 | selected | other | third_person |
 | `FRAG-20261115-fe51c3` | 痣と鍵——外す者のいない決定 | draft | essay | reflective_literary_voice |
 | `FRAG-20261115-050157` | 錠のない鍵を、もう一本 | draft | scene | third_person |
 | `FRAG-20261116-6a5df1` | 火を渡る列 | draft | poem | other |
 | `FRAG-20261116-7ef71b` | 火を持たない者の問い | draft | essay | reflective_literary_voice |
-| `FRAG-20261117-cafabd` | 答えなかった者を何段目に置くか | draft | dialogue | dialogue |
-| `FRAG-20261117-c8f3a1` | 戸口をひとつ残す | draft | letter | fictional_first_person |
+| `FRAG-20261117-cafabd` | 答えなかった者を何段目に置くか | selected | dialogue | dialogue |
+| `FRAG-20261117-c8f3a1` | 戸口をひとつ残す | selected | letter | fictional_first_person |
 | `FRAG-20261119-b17cea` | 七十二点が二度着く | draft | scene | third_person |
 | `FRAG-20261119-a22d4f` | 一度目へ戻る音 | draft | poem | other |
 
@@ -3120,6 +3120,7 @@
 | `SESSION-20261026-0e17e1` | 2026-10-26 | `Q-20261115-f8a392`, `Q-20261025-8f41d0`, `Q-082`, `Q-023`, `Q-002`, `Q-046`, `Q-072`, `Q-006`, `Q-021`, `Q-043`, `Q-044`, `Q-066` | `FRAG-20261026-c3b060`, `FRAG-20261026-4e4327` | `Q-20261026-2399d2` |
 | `SESSION-20261026-1d4eb5` | 2026-10-26 | `Q-20261024-c2af97`, `Q-20261024-72f1ae`, `Q-20261024-e28e44`, `Q-20261024-0087a0`, `Q-20261026-e0918f`, `Q-20261026-7ce00b`, `Q-20261027-b68a59`, `Q-20261027-aab779` | — | — |
 | `SESSION-20261026-6f7122` | 2026-10-26 | `Q-20261026-85b4a2`, `Q-20261026-79cd5b`, `Q-20261026-29dd83`, `Q-20261026-1bacfc`, `Q-20261026-34dfdf` | `FRAG-20261026-b73a9a`, `FRAG-20261026-7b2ac0` | `Q-20261026-85b4a2`, `Q-20261026-79cd5b`, `Q-20261026-29dd83`, `Q-20261026-1bacfc`, `Q-20261026-34dfdf` |
+| `SESSION-20261026-ff3c35` | 2026-10-26 | `Q-068`, `Q-061`, `Q-069`, `Q-20261024-924602`, `Q-20261024-4dc8f3`, `Q-20261024-ee1a18` | — | — |
 | `SESSION-20261026-dac040` | 2026-10-26 | `Q-20261024-5b11eb`, `Q-20261024-08551f`, `Q-082` | `FRAG-20261026-4fdbd9` | — |
 | `SESSION-20261026-948744` | 2026-10-26 | `Q-052`, `Q-20261024-5b11eb`, `Q-20261025-b05e3d`, `Q-20261025-9a37c8` | `FRAG-20261026-b0690f` | — |
 | `SESSION-20261026-8d1e6a` | 2026-10-26 | `Q-20261026-e0918f`, `Q-20261026-92b0d3`, `Q-20261026-71ac4b`, `Q-20261026-7ce00b`, `Q-20261026-260959` | `FRAG-20261026-dff9e1`, `FRAG-20261026-70a9ff` | `Q-20261026-e0918f`, `Q-20261026-92b0d3`, `Q-20261026-71ac4b`, `Q-20261026-7ce00b`, `Q-20261026-260959` |
@@ -3162,16 +3163,16 @@
 | `SESSION-20261118-291f45` | 2026-11-18 |  | — | — |
 | `SESSION-20261119-38e624` | 2026-11-19 | `Q-079`, `Q-20261025-31f7cb`, `Q-20261025-2b95e4`, `Q-20261119-4cf82a` | `FRAG-20261119-b17cea`, `FRAG-20261119-a22d4f` | `Q-20261119-4cf82a` |
 
-## 6. 解釈的関係（5033 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5038 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 616 |
+| 対照 (contrast) | 618 |
 | 共鳴 (echo) | 1375 |
 | 切断・割り込み (interrupts) | 149 |
-| 未解決のまま開く (leaves_open) | 745 |
+| 未解決のまま開く (leaves_open) | 746 |
 | 比喩的共鳴 (metaphorically_resonates) | 94 |
-| 枠組みの組み替え (reframes) | 367 |
+| 枠組みの組み替え (reframes) | 369 |
 | 応答 (responds_to) | 1462 |
 | 変奏・変形 (transforms) | 225 |
 
@@ -3182,7 +3183,7 @@
 | `map/00-overview.md` | None | 48,620 |
 | `map/10-question-index.md` | None | 123,690 |
 | `map/11-question-bodies-01.md` | 50 | 32,046 |
-| `map/11-question-bodies-02.md` | 50 | 40,478 |
+| `map/11-question-bodies-02.md` | 50 | 40,480 |
 | `map/11-question-bodies-03.md` | 50 | 41,325 |
 | `map/11-question-bodies-04.md` | 50 | 50,562 |
 | `map/11-question-bodies-05.md` | 50 | 49,351 |
@@ -3195,8 +3196,8 @@
 | `map/20-fragments-05.md` | 20 | 105,030 |
 | `map/20-fragments-06.md` | 20 | 82,877 |
 | `map/20-fragments-07.md` | 20 | 181,891 |
-| `map/20-fragments-08.md` | 20 | 175,085 |
-| `map/20-fragments-09.md` | 13 | 85,303 |
+| `map/20-fragments-08.md` | 20 | 175,088 |
+| `map/20-fragments-09.md` | 13 | 85,315 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -3230,11 +3231,11 @@
 | `map/40-relations-06.md` | 500 | 115,877 |
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
-| `map/40-relations-09.md` | 500 | 149,611 |
-| `map/40-relations-10.md` | 500 | 175,882 |
-| `map/40-relations-11.md` | 33 | 10,151 |
+| `map/40-relations-09.md` | 500 | 149,864 |
+| `map/40-relations-10.md` | 500 | 176,652 |
+| `map/40-relations-11.md` | 38 | 11,197 |
 | `map/50-sessions-01.md` | 50 | 44,267 |
-| `map/50-sessions-02.md` | 50 | 49,792 |
-| `map/50-sessions-03.md` | 28 | 24,387 |
+| `map/50-sessions-02.md` | 50 | 49,589 |
+| `map/50-sessions-03.md` | 29 | 25,309 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。

@@ -656,3 +656,42 @@ README の詳細窓を §1 3件・§2 5件に保つため、本回は窓を「�
 
 - [`readings/2026-11-13-third-water-and-five-losses.md`](readings/2026-11-13-third-water-and-five-losses.md)
 - [`readings/2026-11-18-read-log-shard-compaction.md`](readings/2026-11-18-read-log-shard-compaction.md)
+
+
+## 2026-10-26 自律編集レビュー回の詳細窓ローテーション（SESSION-20261026-ff3c35）
+
+今回のレビューでREADME §1・§2から押し出された行を、本文を要約・圧縮・言い換えせず移す。§1 bullet と §2 注釈はそれぞれ元のREADME表記を維持する。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **同じ献立と、同じ幅の休符——選出は履行の代わりにならない**：`SESSION-20261026-b648df` はシード `71a3a03c` の第1推奨から編集レビューを採り、候補6編中「明日の献立、三度」と「休符の練習」を selected へ（45→47／169編）。候補5問の代替可能性を検討して休止0問。未架橋4モチーフへの橋と、選出断片から問いへの批評的な線を計6本追加。新規収蔵・断片・問い0件。詳細は [`readings/2026-10-26-the-menu-and-the-rest.md`](readings/2026-10-26-the-menu-and-the-rest.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md`](readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md)（`SESSION-20261114-c7fbd6`：予測×食べること。命令法の申し送りと三度の黒板を構成。断片2編、新規収蔵0件）
+
+
+## 2026-10-26 最新main同期後の詳細窓ローテーション（SESSION-20261026-ff3c35）
+
+作業中に `origin/main` が PR #125 を含む `4fce4d38db91a5e33c5e2458c25c167a1884c66e` へ進み、正面応答セッションの報告・台帳が加わった。READMEの§1・§2詳細窓にその既存成果を載せ、押し出された以下の2行を元表記のまま移す。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **二種類の火と、目の試練**：`SESSION-20261116-de57d9`（内部編年）。火×習慣の再読交配と、正面応答・終了実験モードの追加、移行トリガーの整備。新モードはこの回では未実行。詳細は [`readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md`](readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-11-15-a-second-key-with-no-lock.md`](readings/2026-11-15-a-second-key-with-no-lock.md)（`SESSION-20261115-6a7862`：痣と断じるエッセイと、失われた錠への合鍵の情景へ変奏。断片2編、新規収蔵0件）
+
+
+## 2026-10-26 PR #126 main同期後の詳細窓ローテーション（SESSION-20261026-ff3c35）
+
+PR #127 のCI待機中に `origin/main` が `4fce4d3` から PR #126 を含む `8ca5fd6c2a502b0cca40ee6bd2f5f7627cbf81b8` へ進み、数えること×秘密・暗号の別セッション報告が加わった。editorial_review の責務でREADMEの直近窓へ追加し、押し出された以下の2行を元の文面のまま移す。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **八つの段に収まらない者**：`SESSION-20261117-292bc3`（内部編年）。獣×嘘の交配を、分類を適用する前の条件と二つの戸口から点検した再読回。新規収蔵0件、創作断片2編。詳細は [`readings/2026-11-17-eight-grades-and-the-door.md`](readings/2026-11-17-eight-grades-and-the-door.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md`](readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md)（`SESSION-20261116-de57d9`：火×習慣の交配と運用改修。正面応答・終了実験はプロンプトと条件の整備であり、この回の実走成果ではない）
