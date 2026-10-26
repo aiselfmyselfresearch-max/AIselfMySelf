@@ -708,3 +708,15 @@ PR #127 のCI待機中に `origin/main` が `4fce4d3` から PR #126 を含む `
 ### §2 報告注釈の移管分（verbatim）
 
   - [`readings/2026-11-17-eight-grades-and-the-door.md`](readings/2026-11-17-eight-grades-and-the-door.md)（`SESSION-20261117-292bc3`：獣×嘘の交配。分類の適用条件を問う創作2編。内部編年と実日付を区別）
+
+## 2026-10-26 痣でない決定と宛てのない音の詳細窓ローテーション（SESSION-20261026-b650cb）
+
+今回のレビューで README §1・§2 から押し出された行を、本文を要約・圧縮・言い換えせず移す。§1 bullet と §2 注釈はそれぞれ元のREADME表記を維持する。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **形の備えは、宛先を誰の名で決めるか**：`SESSION-20261026-0e17e1`（direct_response）は `Q-20261115-f8a392` に、鍵の「備えの向き」を言い切る詩と、同形の鍵の来歴を分ける姉妹の創作情景を衝突させ、次問 `Q-20261026-2399d2` を開いた。新規素材・モチーフ0件、draft断片2編・問い1件。詳細は [`readings/2026-10-26-direct-response-absent-addressee.md`](readings/2026-10-26-direct-response-absent-addressee.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-10-26-the-menu-and-the-rest.md`](readings/2026-10-26-the-menu-and-the-rest.md)（`SESSION-20261026-b648df`：2編選出、休止0問、モチーフ4本架橋と断片から問いへ2本。候補全件の採否、未照合の範囲、同期検証を記録）
