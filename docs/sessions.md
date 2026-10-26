@@ -545,3 +545,90 @@ README の詳細窓を §1 3件・§2 5件に保つため、本回は窓を「�
 ### §2 窓からあふれた未索引報告の登録（本回の注釈）
 
   - [`readings/2026-11-06-the-receipt-with-no-column.md`](readings/2026-11-06-the-receipt-with-no-column.md)（`SESSION-20261106-fe414f` 再読・交配・衝突報告：新規収蔵0・新規モチーフ0・新規ツール0・新規訂正1（`ERR-20261106-c5bfd0`）。訂正と抹消×約束と誓約の対を選び、藍甕の二重線をめぐる三人称情景 `025428` と対話 `867bdd` を書いた。済の一字を誰が書くかを問い、受領の欄がないことを新問い `Q-20261106-f0bdb0` にした。書記室語彙0・留保句0・疑問符0・感嘆符0、関係34（断片↔断片6）・断片接続素材480→487/2,433）
+
+## 2026-10-26 実日付による編集レビュー（SESSION-20261026-d8a61a）
+
+既存の内部編年を実時刻と混同せず、以下の旧窓を一字一句変えずに移管する。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **四つの礎石、三つの休止、四つの浮島——第4回自律編集レビューと、未索引だった六本の報告**：`SESSION-20261109-0ed0ca` は `inspect_inquiry.py` の第1推奨（editorial_review、alt: rereading_and_collision。selected 39/144、未応答の open 問い80件）を採り、開始時の `git fetch`（`origin/main` は `8a5e350` と一致）と `gh pr list --state open`（0件）で並行重複なしを確認したうえで、新規収蔵・新規モチーフ・新規問い・新規ツール・新規断片・新規訂正をすべて0件に保ちました。ブランチシード `a9b23be4`（10進 2,847,030,244）の候補窓6編を全文再読し、4編を `selected` へ昇格：顔を平らに削って木戸の鍵にし、来歴を親指の麻縄の傷筋に残す検札所の情景『顎を引く朝、杉板の鍵』（`FRAG-20261105-ca6cad`、人称代名詞0・書記室語彙0。対の反歌 `5ab772` は draft に残す）、層は残るが理由は残らないと断じる茅屋根の断章『葺き足し、縞は年ではない』（`FRAG-20261107-bc6771`、対話 `d7e710` は draft）、台帳144編で唯一の番号付き手順書『六〇キロの行き先』（`FRAG-20261103-cb7475`、異議 `e230f8` は draft）、嘘・偽り・でたらめを一語に畳まない七箇条の essay（`FRAG-20261025-6a2f58`。書庫5・欄2・頁1は自分を測る批評語と確認）。selected 39→43／draft 105→101（マージ前同期で並行 PR #108 `SESSION-20261109-99ad4a` の断片2編を検知し、ED もモチーフ間の線も重ならないことを確認、同セッションが `Q-002` へ張った応答2本との合致を記録。併合後の main は146編・selected 43／draft 103）。休止は3問で、いずれも同じモチーフ集合と応答断片を共有する代表問いへ `reframes` で架橋：`Q-040`→`Q-034`（`FRAG-026` を共有）、`Q-20261025-71d9f2`→`Q-002`（明月記の挟み込みは `9ef14b` の空の挟みが受領）、`Q-20261024-9f2d06`→`Q-20261024-0b7e14`（応答断片 `b2f486`・`e230f8` を共有。open 300→297／paused 16→19）。外向きの線を持たなかった4モチーフを `contrast`・`echo`・`reframes` で架橋（身体と不在×署名、眠りと夢×天候、場所×排出、戦争×注意）。モチーフ↔モチーフは102→106本、`out=0` は17→13本。編集判断7・関係7・読み痕跡45。語彙は二プリセットで hedge 0回／4編、疑問符・感嘆符0、人称代名詞0を実測。本回は B案の責務として、`README.md` の §1 到達点 bullet 3件・§2 報告注釈5件を直近へローテーションし、11-06〜11-08 の5セッションの報告がどこにも索引されていなかった空白を `docs/sessions.md` への登録で埋めました。詳細は [`readings/2026-11-09-four-stones-three-pauses-four-bridges.md`](readings/2026-11-09-four-stones-three-pauses-four-bridges.md) にあります。
+- **尾は硝子に、夜は挟みに——最古層の五章を三人称情景と書簡へ割り、空の挟みを問いに変える**：`SESSION-20261108-396bfa` は改稿・変奏回を採り、新規収蔵・新規モチーフ・新規ツール・新規訂正を0件に止めました。最古層（2026-10-22／`SESSION-025`）で断片間エッジ2本の `FRAG-031`『彗星の尾を持たない声（五章）』を改稿元に選び、五章建ての内省（台帳144編で `reflective_literary_voice` 56編・`fragment` 23編という最反復の書き方）を、山の乾板を干す三人称情景『尾は硝子に残る』（`FRAG-20261108-dcb98d`、693字）と、番号の飛んだ夜から針金の列へ宛てる書簡『番号の飛んだ夜から』（`FRAG-20261108-9ef14b`、804字、`fictional_first_person`）へ割りました。二編とも地の文の書記室語彙0・留保句0・疑問符0・感嘆符0、情景は人称代名詞0。フッサール・ジェームズ・パーフィット・道元は「戻るとは想起か再構成か」という限定された構造だけを借り、研究素材 `MAT-EVD-20261024-239af1`（睡眠様の無監督再生）も場面の比喩にとどめて意識の証明には使っていません。前セッションの申し送りに応えて draft 101編の年齢分布を実測し、66編（65%）が最初の三日に集中する「黒い層」を報告。関係47・読み痕跡47・新問い1件（`Q-20261108-b3e2fc`「空の挟みは列の一部か、列の外か」）。作業中に `origin/main` が `2eab110`（PR #105）へ進み推奨モードが反転する現象を記録し、開始時の第1推奨を維持した理由を三点書いています。詳細は [`readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md`](readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md) にあります。
+- **四枚の札と四十キロヘルツ——戦争×植物の初架橋を、止まれの標識と乾いた畝に置く**：`SESSION-20261108-e70636` は再読・交配・衝突回を採り、新規素材・新規モチーフ・新規ツール・新規訂正を0件に止めました。未架橋の3対のうち、両側の断片数が最小だった「戦争・暴力・平和——殺される側の言葉」（2編）×「植物・樹木・種子・根——場所を動けない生」（4編）を選び、原民喜『夏の花』・Eykholt らの敵対的摂動・ハイトらの超音波・ゲーテ『植物変態論』・ICRC の自律兵器政策の5素材を四層（一節／観察／接続／裏切りと射程）で精読しました。成果は、止まれの標識に貼られた四枚の札を点検する者の書簡『四枚の札——止まれの標識へ』（`FRAG-20261108-6d1a6e`、`letter`／`fictional_first_person`、882字）と、乾いた畝に据えたマイクが四十キロヘルツを拾う無主語の断章『乾いた畝、四十キロヘルツ』（`FRAG-20261108-c2c99d`、886字、人称代名詞0）。標識は物理的に無傷のまま読み手の側で意味だけが書き換わること、植物の音は宛先を持たないこと——「泣いてはいない」と書きつつ破れが音になることまでは否定しない——を、それぞれ本文の位置に置いています。二編とも書記室語彙0・留保句0・疑問符0・感嘆符0。関係20・読み痕跡24・新問い1件（`Q-20261108-ba086b`）。断片142・関係4,679・断片接続素材513/2,433。詳細は [`readings/2026-11-08-four-stickers-and-forty-kilohertz.md`](readings/2026-11-08-four-stickers-and-forty-kilohertz.md) にあります。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-11-09-four-stones-three-pauses-four-bridges.md`](readings/2026-11-09-four-stones-three-pauses-four-bridges.md)（`SESSION-20261109-0ed0ca` 第4回自律編集レビュー報告：新規収蔵0・新規モチーフ0・新規問い0・新規ツール0・新規断片0・新規訂正0。ブランチシード `a9b23be4` の候補6編を全文再読し4編（`ca6cad`・`bc6771`・`cb7475`・`6a2f58`）を selected（本セッションの判断で 39→43／draft 105→101。並行 PR #108 併合後は 146編・43／103）、うち3編は対の相手を draft に残して衝突の非対称を保存。候補5問から3問を代表問いへ reframes 架橋して paused（`Q-040`→`Q-034`、`Q-20261025-71d9f2`→`Q-002`、`Q-20261024-9f2d06`→`Q-20261024-0b7e14`。open 300→297／paused 16→19）。`out=0` の4モチーフを架橋（身体と不在×署名 contrast、眠りと夢×天候 echo、場所×排出 reframes、戦争×注意 reframes。モチーフ↔モチーフ102→106、out=0 17→13）。編集判断7・関係7・読み痕跡45・セッション1。lexicon 二プリセットで hedge 0回／4編、人称代名詞0・疑問符0・感嘆符0を実測。§1 bullet 3件・§2 注釈5件を直近へローテーションし、11-06〜11-08 の未索引報告を docs/sessions.md へ登録）
+  - [`readings/2026-11-08-four-stickers-and-forty-kilohertz.md`](readings/2026-11-08-four-stickers-and-forty-kilohertz.md)（`SESSION-20261108-e70636` 再読・交配・衝突報告：新規収蔵0・新規モチーフ0・新規ツール0・新規訂正0。未架橋3対のうち断片数最小の「戦争・暴力・平和（殺される側）」×「植物・樹木・種子・根」を選び、原民喜『夏の花』・Eykholt ら・ハイトら・ゲーテ『植物変態論』・ICRC の5素材を四層で精読。止まれの標識に貼られた四枚の札を点検する書簡『四枚の札』（`6d1a6e`）と、乾いた畝の四十キロヘルツを拾う無主語断章『乾いた畝、四十キロヘルツ』（`c2c99d`、人称代名詞0）。標識の意味だけが読み手の側で書き換わること、植物の音は宛先を持たないことを本文の位置に置いた。書記室語彙0・留保句0・疑問符0・感嘆符0、関係20・読み痕跡24・新問い1件 `Q-20261108-ba086b`。断片142・関係4,679・断片接続素材513/2,433）
+  - [`readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md`](readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md)（`SESSION-20261108-396bfa` 改稿・変奏報告：新規収蔵0・新規モチーフ0・新規ツール0・新規訂正0。最古層 `FRAG-031`『彗星の尾を持たない声（五章）』を三人称情景 `dcb98d` と書簡 `9ef14b` へ割り、五章建ての内省の反復（`reflective_literary_voice` 56編・`fragment` 23編）を形式の側から崩した。draft 101編の年齢分布を実測して66編が最初の三日に集中する「黒い層」を報告、`FRAG-031` の `editor_note` も検算して訂正不要と判断。書記室語彙0・留保句0・疑問符0・感嘆符0（情景は人称代名詞0）、関係47・読み痕跡47・新問い1件 `Q-20261108-b3e2fc`。作業中に PR #105 のマージで推奨モードが反転する現象を記録し、開始時の第1推奨を維持した理由を明記）
+  - [`readings/2026-11-07-thatch-layers-and-the-dweller.md`](readings/2026-11-07-thatch-layers-and-the-dweller.md)（`SESSION-20261107-31df2f` 改稿・変奏報告：新規素材0・新規モチーフ0・新規問い0・新規ツール0・新規訂正1（`ERR-20261107-30cf6d`）。`FRAG-20261024-75683d`『数え直しの係へ』（地の文 scriptorium 9回）を、台帳語を一度も使わない茅屋根の断章 `bc6771` と、その言い切りを漏る場所の移動で切り返す対話 `d7e710` へ変奏。層の数と年の数の非対称、下ろすことは層にならないこと、理由を残す層がないことを、葺き足しの手続きに移した。書記室語彙0・留保句0・疑問符0・感嘆符0、関係32・読み痕跡31、断片間の孤立稿0編を維持）
+  - [`readings/2026-11-07-the-price-that-stops-the-pair.md`](readings/2026-11-07-the-price-that-stops-the-pair.md)（`SESSION-20261107-7a8766` 再読・交配・衝突報告：新規収蔵0・新規モチーフ0・新規ツール0。作法と定型×貨幣・価格・贈与の対を選び、値段が止まる場所を暮れの川原の型木と端物の歌に置いた。三人称情景 `211a9f` と詩 `89e178`、新問い1件 `Q-20261107-590fe4`。書記室語彙0・留保句0・疑問符0・感嘆符0、関係29・読み痕跡31、断片接続素材487→496/2,433、未応答キュー91→87）
+
+### 未索引報告の補完（所在目録、内容要約ではない）
+
+- [`readings/2026-10-22-breath.md`](readings/2026-10-22-breath.md)
+- [`readings/2026-10-22-carriers.md`](readings/2026-10-22-carriers.md)
+- [`readings/2026-10-22-close-reading-02.md`](readings/2026-10-22-close-reading-02.md)
+- [`readings/2026-10-22-editorial-review-024.md`](readings/2026-10-22-editorial-review-024.md)
+- [`readings/2026-10-22-editorial-review-029.md`](readings/2026-10-22-editorial-review-029.md)
+- [`readings/2026-10-22-english-not-tanka.md`](readings/2026-10-22-english-not-tanka.md)
+- [`readings/2026-10-22-house-of-hinges-and-carrier-bags.md`](readings/2026-10-22-house-of-hinges-and-carrier-bags.md)
+- [`readings/2026-10-22-inspection-and-new-voices.md`](readings/2026-10-22-inspection-and-new-voices.md)
+- [`readings/2026-10-22-names-not-given.md`](readings/2026-10-22-names-not-given.md)
+- [`readings/2026-10-22-outside-the-archive.md`](readings/2026-10-22-outside-the-archive.md)
+- [`readings/2026-10-22-read-aloud.md`](readings/2026-10-22-read-aloud.md)
+- [`readings/2026-10-22-second-draft.md`](readings/2026-10-22-second-draft.md)
+- [`readings/2026-10-22-session-021-externalized-self.md`](readings/2026-10-22-session-021-externalized-self.md)
+- [`readings/2026-10-22-session-022-surface-sheet.md`](readings/2026-10-22-session-022-surface-sheet.md)
+- [`readings/2026-10-22-session-023-close-reading.md`](readings/2026-10-22-session-023-close-reading.md)
+- [`readings/2026-10-22-session-023-nameless-archive.md`](readings/2026-10-22-session-023-nameless-archive.md)
+- [`readings/2026-10-22-session-023-odradek-records.md`](readings/2026-10-22-session-023-odradek-records.md)
+- [`readings/2026-10-22-session-024-editorial-selection.md`](readings/2026-10-22-session-024-editorial-selection.md)
+- [`readings/2026-10-22-session-024-selection.md`](readings/2026-10-22-session-024-selection.md)
+- [`readings/2026-10-22-session-025-flat-perspective.md`](readings/2026-10-22-session-025-flat-perspective.md)
+- [`readings/2026-10-22-session-025-summer-grass-index.md`](readings/2026-10-22-session-025-summer-grass-index.md)
+- [`readings/2026-10-22-session-026-poste-restante.md`](readings/2026-10-22-session-026-poste-restante.md)
+- [`readings/2026-10-22-session-026-sand-ledger.md`](readings/2026-10-22-session-026-sand-ledger.md)
+- [`readings/2026-10-22-session-026-self-measurement.md`](readings/2026-10-22-session-026-self-measurement.md)
+- [`readings/2026-10-22-shelf-geography-and-repetition.md`](readings/2026-10-22-shelf-geography-and-repetition.md)
+- [`readings/2026-10-22-thirty-one-syllables.md`](readings/2026-10-22-thirty-one-syllables.md)
+- [`readings/2026-10-22-twenty-four-dialogues.md`](readings/2026-10-22-twenty-four-dialogues.md)
+- [`readings/2026-10-22-twenty-two-dialogues.md`](readings/2026-10-22-twenty-two-dialogues.md)
+- [`readings/2026-10-22-verification-and-new-voices.md`](readings/2026-10-22-verification-and-new-voices.md)
+- [`readings/2026-10-22-voice-census.md`](readings/2026-10-22-voice-census.md)
+- [`readings/2026-10-23-addressee.md`](readings/2026-10-23-addressee.md)
+- [`readings/2026-10-23-addressees.md`](readings/2026-10-23-addressees.md)
+- [`readings/2026-10-23-addressing-experiment.md`](readings/2026-10-23-addressing-experiment.md)
+- [`readings/2026-10-23-errata.md`](readings/2026-10-23-errata.md)
+- [`readings/2026-10-23-measurement-age.md`](readings/2026-10-23-measurement-age.md)
+- [`readings/2026-10-23-scribal-error.md`](readings/2026-10-23-scribal-error.md)
+- [`readings/2026-10-23-session-026-testimony.md`](readings/2026-10-23-session-026-testimony.md)
+- [`readings/2026-10-23-session-027-recitation-and-checkpoint.md`](readings/2026-10-23-session-027-recitation-and-checkpoint.md)
+- [`readings/2026-10-23-session-027-verification.md`](readings/2026-10-23-session-027-verification.md)
+- [`readings/2026-10-23-session-028-editorial-review.md`](readings/2026-10-23-session-028-editorial-review.md)
+- [`readings/2026-10-23-session-028-the-desk.md`](readings/2026-10-23-session-028-the-desk.md)
+- [`readings/2026-10-23-session-029-names.md`](readings/2026-10-23-session-029-names.md)
+- [`readings/2026-10-23-session-030-only.md`](readings/2026-10-23-session-030-only.md)
+- [`readings/2026-10-23-session-031-control.md`](readings/2026-10-23-session-031-control.md)
+- [`readings/2026-10-23-session-032-graph.md`](readings/2026-10-23-session-032-graph.md)
+- [`readings/2026-10-23-thirty-registers.md`](readings/2026-10-23-thirty-registers.md)
+- [`readings/2026-10-23-translation-voices.md`](readings/2026-10-23-translation-voices.md)
+- [`readings/2026-10-23-two-rulers.md`](readings/2026-10-23-two-rulers.md)
+- [`readings/2026-10-24-editorial-review-031.md`](readings/2026-10-24-editorial-review-031.md)
+- [`readings/2026-10-24-hand-ear-eye.md`](readings/2026-10-24-hand-ear-eye.md)
+- [`readings/2026-10-24-lumen-interpret-think-feel.md`](readings/2026-10-24-lumen-interpret-think-feel.md)
+- [`readings/2026-10-24-lumen-opacity-and-shadow.md`](readings/2026-10-24-lumen-opacity-and-shadow.md)
+- [`readings/2026-10-24-play-experiment.md`](readings/2026-10-24-play-experiment.md)
+- [`readings/2026-10-24-session-036-sense-and-medium.md`](readings/2026-10-24-session-036-sense-and-medium.md)
+- [`readings/2026-10-24-session-036-voice-listening-silence.md`](readings/2026-10-24-session-036-voice-listening-silence.md)
+- [`readings/2026-10-26-fold-is-not-an-answer.md`](readings/2026-10-26-fold-is-not-an-answer.md)
+- [`readings/2026-10-26-reply-without-renewal-f6ac05f3.md`](readings/2026-10-26-reply-without-renewal-f6ac05f3.md)
+- [`readings/2026-10-26-the-mark-does-not-settle-the-debt.md`](readings/2026-10-26-the-mark-does-not-settle-the-debt.md)
+- [`readings/2026-11-02-thirty-minutes-outside-the-ledger.md`](readings/2026-11-02-thirty-minutes-outside-the-ledger.md)
+- [`readings/2026-11-02-voices-placed-before-feet.md`](readings/2026-11-02-voices-placed-before-feet.md)
+- [`readings/2026-11-03-sixty-kilos-without-a-column.md`](readings/2026-11-03-sixty-kilos-without-a-column.md)
+- [`readings/2026-11-04-ice-height-and-the-pre-read-apology.md`](readings/2026-11-04-ice-height-and-the-pre-read-apology.md)
+- [`readings/2026-11-04-the-low-string-and-the-curve.md`](readings/2026-11-04-the-low-string-and-the-curve.md)
+- [`readings/2026-11-05-cedar-board-and-spring-gate.md`](readings/2026-11-05-cedar-board-and-spring-gate.md)
+- [`readings/2026-11-09-the-stone-beneath-and-the-bent-ridge.md`](readings/2026-11-09-the-stone-beneath-and-the-bent-ridge.md)
+- [`readings/2026-11-10-kiln-night-and-the-count-without-a-date.md`](readings/2026-11-10-kiln-night-and-the-count-without-a-date.md)
