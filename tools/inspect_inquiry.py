@@ -198,7 +198,6 @@ def recommend_session_mode(
     unused_ratio = len(metrics["unused_materials"]) / max(1, len(materials))
     session_list = list(sessions.values())
     recent_templates = [str(s.get("prompt_template", "")) for s in session_list[-3:]]
-    recent_5_templates = [str(s.get("prompt_template", "")) for s in session_list[-5:]]
 
     mode_specs = {
         "editorial_review": {
@@ -230,35 +229,65 @@ def recommend_session_mode(
                 "（通常回は README.md を編集しない）。"
             ),
         },
+        "direct_response": {
+            "mode": "direct_response",
+            "prompt": "prompts/direct_response.md",
+            "reason": (
+                f"応答断片のない open 問いが {open_unresponded} 件残っています。"
+                "ブランチ候補窓から深い系譜の問いを一つ選び、新規収蔵ゼロで二編の断片が正面から応え"
+                "（一編は言い切り、もう一編はその言い切りを切断）、問いを安易に閉じずに次の問いへ渡してください"
+                "（通常回は README.md を編集しない）。"
+            ),
+        },
     }
 
-    editorial_Ratio_low = (
+    # Editorial review cadence was rebalanced on 2026-11-16 (internal chronology):
+    # selected-ratio floor raised from 0.20 to 0.25, a draft/selected backlog guard
+    # was added, and the periodic window shortened from 5 to 4 sessions. Target
+    # cadence is one editorial_review roughly every 3-4 sessions. See
+    # docs/mode-rotation-triggers.md for the numeric trigger table.
+    recent_4_templates = [str(s.get("prompt_template", "")) for s in session_list[-4:]]
+    editorial_ratio_low = (
         len(fragments) >= 20
-        and selected_count / max(1, len(fragments)) < 0.20
+        and selected_count / max(1, len(fragments)) < 0.25
+        and not any("editorial_review" in t for t in recent_templates)
+    )
+    editorial_backlog = (
+        draft_count > 2.5 * max(1, selected_count)
         and not any("editorial_review" in t for t in recent_templates)
     )
     editorial_periodic_due = (
         len(fragments) >= 20
         and draft_count >= 15
         and len(session_list) >= 5
-        and not any("editorial_review" in t for t in recent_5_templates)
+        and not any("editorial_review" in t for t in recent_4_templates)
     )
     revision_recent_saturated = len(recent_templates) >= 2 and all(
         "revision_and_variation" in t for t in recent_templates[-2:]
     )
 
-    creative_primary = (
-        "revision_and_variation"
-        if (draft_count >= 15 and not revision_recent_saturated and (len(sessions) + seed_int) % 3 == 1)
-        else "rereading_and_collision"
-    )
-    creative_secondary = (
-        "rereading_and_collision"
-        if creative_primary == "revision_and_variation"
-        else "revision_and_variation"
-    )
+    # Fourth rotation mode (direct_response): when many open questions still lack
+    # a responding fragment, roughly one in five branch-seeded sessions takes a
+    # deep unresponded question and answers it head-on with two colliding fragments.
+    direct_response_due = open_unresponded >= 60
+    if direct_response_due and (len(sessions) + seed_int) % 5 == 2:
+        creative_primary = "direct_response"
+    elif (
+        draft_count >= 15
+        and not revision_recent_saturated
+        and (len(sessions) + seed_int) % 3 == 1
+    ):
+        creative_primary = "revision_and_variation"
+    else:
+        creative_primary = "rereading_and_collision"
+    if creative_primary == "revision_and_variation":
+        creative_secondary = "rereading_and_collision"
+    elif creative_primary == "direct_response":
+        creative_secondary = "rereading_and_collision"
+    else:
+        creative_secondary = "revision_and_variation"
 
-    if editorial_Ratio_low or editorial_periodic_due:
+    if editorial_ratio_low or editorial_backlog or editorial_periodic_due:
         # Disperse parallel branches when editorial_review is due so two concurrent
         # sessions do not both enter editorial_review and promote the exact same drafts.
         if selected_count / max(1, len(fragments)) < 0.12 or seed_int % 2 == 0:
@@ -417,6 +446,33 @@ def build_candidate_windows(
         else []
     )
 
+    # 4. Deep unresponded open questions for direct_response sessions.
+    #    Genealogy depth follows previous_question_ids; deep tips are where the
+    #    longest open chains wait for a head-on answering fragment.
+    def _question_depth(qid: str, memo: dict[str, int] | None = None) -> int:
+        if memo is None:
+            memo = {}
+        if qid in memo:
+            return memo[qid]
+        memo[qid] = 0  # break cycles defensively
+        parents = questions[qid].get("previous_question_ids", []) if qid in questions else []
+        depths = [_question_depth(p, memo) for p in parents if p in questions]
+        memo[qid] = 0 if not depths else 1 + max(depths)
+        return memo[qid]
+
+    depth_memo: dict[str, int] = {}
+    unresponded_open = [
+        qid
+        for qid in metrics["unresponded_questions"]
+        if questions[qid].get("status", "open") == "open"
+    ]
+    unresponded_open.sort(key=lambda qid: (-_question_depth(qid, depth_memo), qid))
+    deep_pool = unresponded_open[: max(12, len(unresponded_open) // 2)] or unresponded_open
+    rng_dr = random.Random(seed_int ^ 0xB72A_1105)
+    direct_response_picks = (
+        rng_dr.sample(deep_pool, k=min(5, len(deep_pool))) if deep_pool else []
+    )
+
     return {
         "seed_label": seed_label,
         "seed_int": seed_int,
@@ -468,6 +524,14 @@ def build_candidate_windows(
                 "out_edges": motif_out_counts[mid],
             }
             for mid in ed_motif_picks
+        ],
+        "direct_response_questions": [
+            {
+                "id": qid,
+                "question": questions[qid]["question"],
+                "depth": depth_memo.get(qid, _question_depth(qid, depth_memo)),
+            }
+            for qid in direct_response_picks
         ],
     }
 
@@ -568,6 +632,11 @@ def build_context_packet(
             f"`{f['id']}`『{f['title']}』({f['form']})" for f in windows["review_drafts"]
         )
         lines.append(f"- **編集レビュー昇格点検候補 (`draft`)**: {ed_str}")
+    if windows["direct_response_questions"]:
+        dr_str = ", ".join(
+            f"`{q['id']}`（深度{q['depth']}）" for q in windows["direct_response_questions"]
+        )
+        lines.append(f"- **正面応答候補の深い open 問い (`direct_response`)**: {dr_str}")
     lines.append("")
     lines.append("## 1. 今回たどる問い")
     lines.append(f"- **ID**: `{target_qid}`")
@@ -771,6 +840,13 @@ def print_summary(
         print(
             "  [editorial_review] Candidate out=0 motifs to bridge:",
             ", ".join(f"{m['id']} ({m['label'][:14]})" for m in windows["review_motifs"]),
+        )
+    if windows["direct_response_questions"]:
+        print(
+            "  [direct_response] Deep unresponded open questions:",
+            ", ".join(
+                f"{q['id']} (depth={q['depth']})" for q in windows["direct_response_questions"]
+            ),
         )
     print()
     if metrics["unresponded_questions"]:
