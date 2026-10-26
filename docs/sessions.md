@@ -720,3 +720,15 @@ PR #127 のCI待機中に `origin/main` が `4fce4d3` から PR #126 を含む `
 ### §2 報告注釈の移管分（verbatim）
 
   - [`readings/2026-10-26-the-menu-and-the-rest.md`](readings/2026-10-26-the-menu-and-the-rest.md)（`SESSION-20261026-b648df`：2編選出、休止0問、モチーフ4本架橋と断片から問いへ2本。候補全件の採否、未照合の範囲、同期検証を記録）
+
+## 2026-11-20 消えない四つの印の詳細窓ローテーション（SESSION-20261120-34a5cc）
+
+今回のレビューで README §1・§2 から押し出された行を、本文を要約・圧縮・言い換えせず移す。§1 bullet と §2 注釈はそれぞれ元のREADME表記を維持する。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **二通の七十二点と、一度目へ戻る音**：`SESSION-20261119-38e624`（内部編年、実日付2026-10-26）。数えること×秘密・暗号を交配し、復号できる符号と内訳へ戻れない合計を場面／詩の二編にし、元問を開いたまま `Q-20261119-4cf82a` を追加。新規素材・モチーフ・ツール0件、draft断片2編・関係12本。詳細は [`readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md`](readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-10-26-direct-response-absent-addressee.md`](readings/2026-10-26-direct-response-absent-addressee.md)（`SESSION-20261026-0e17e1`：`Q-20261115-f8a392` へ鍵の「備えの向き」と二本の来歴をめぐる創作の詩／情景2編で応答。元問はopenのまま、`Q-20261026-2399d2` を開いた。新規素材・モチーフ0件、断片2編・問い1件）
