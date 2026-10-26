@@ -98,7 +98,44 @@
 - **マージ経路**：`main` への直接 push は行わない。`arena/3b30baca-aiselfmyself` → `main` の PR を作り、`gh pr checks` で `ledger-ci` の全ステップ通過を確認したうえで `gh pr merge <番号> --merge` を実行する。マージ後は `main` への push で走る `ledger-ci` / `build-reading-map` の結果も確認する。
 - **確定記録**：PR の CI 完了後に、この節の直後に「最終確認」を追記して、直前同期の実測値・CI の結論・採用したマージ手順を残す。
 
-<!-- FINAL_CONFIRMATION -->
+## 最終確認（同期・CI・訂正）
+
+### 1. 開始時の 0/0 は守れなかった
+
+PR #133（初回 head `588bf47`）の `ledger-ci` は push イベントの run `40362814785` / conclusion `success`（43秒）で、Checkout から「Run regression tests」までの全12ステップが成功した。しかしその直後にマージ前の再同期を行ったところ、状況が変わっていた。
+
+- `git fetch origin main` の結果、`origin/main` は `d87355a` → `30723dc` へ進んでいた。内訳は PR #132（ブランチ seed `0b5bfb86` の `editorial_review`、`SESSION-20261120-51e00b`）のマージで、古い `main` から育った長い履歴（404コミット）を取り込む形だった。
+- `git rev-list --left-right --count HEAD...origin/main` は `1 404`。`gh pr view 133` は `mergeable=CONFLICTING` / `mergeStateStatus=DIRTY`。開始時点の 0/0 だけを信じてマージしていれば、コンフリクトのある PR を通すところだった。
+- PR #132 の実差分は8ファイル（`README.md`・`docs/sessions.md`・`READING_MAP.md`・精読ノート1本・`state/*.d/` シャード4本）で、内容上の追加は編集判断4件・関係9本・読み痕跡51行・セッション1件。
+
+### 2. 実行した同期の判断
+
+- 作業ブランチは変えずに `git merge origin/main --no-edit`。衝突は `READING_MAP.md` の1ファイルのみだった。手でどちらかを選ばず、`python3 tools/map_build.py` でマージ後の union から再生成して解決した（607,958 bytes、マージコミット `21a4e68`）。空のマージコミットは作っていない。
+- PR #132 側の `README.md` / `docs/sessions.md` / 4シャードはそのまま保持し、自セッションの5シャードも削除・書換えしていない。diff は `READING_MAP.md` の再生成と自セッションの追加分だけ。
+- **意味的な衝突の点検**：PR #132 の編集判断は `FRAG-20261112-6a3cc3`・`FRAG-20261116-6a5df1`・`FRAG-20261024-053a61` を `selected` へ、`Q-20261024-2dfbb4` を `paused` へ上げるもので、本セッションのID（すべて `20261121` 採番）とも、継承した問い・素材とも重複しない。採用草稿 `FRAG-20261025-08766a` と新二編はいずれも `draft` のまま。`validate_seed.py` が重複IDなしで PASS した。
+- `selected` は開始時62 → 同期後63、`draft` は113 → 114（自セッション +2 と、PR #132 側の昇格 +1 の合成）。`paused` 問いも20 → 21 になった。
+
+### 3. 同期後の再検証（実測）
+
+| 検査 | 同期後の結果 |
+|---|---|
+| `validate_seed.py` | PASS（questions=332, motifs=59, materials=2433, fragments=177〔selected 63 / draft 114〕, relations=5104〔断片↔断片 435〕, sessions=135, read_log=4373, editorial_decisions=71） |
+| `map_build.py` / `--check` / `inspect_inquiry.py --check-map` | いずれも PASS（READING_MAP.md 607,958 bytes に再生成） |
+| `read_log_backfill.py --check` | 3096/3096 PASS |
+| `size_budget.py --strict` | PASS。シャード数 relations.d 75・sessions.d 76・read_log.d 68・fragments.d 66・questions.d 64・editorial_decisions.d 13。いずれも soft 80 未満、`tools/_*` 0件、`*_audit*.py` 57件で凍結維持 |
+| `lexicon_audit.py --preset scriptorium / hedge`（新二編） | 地の文 847字／ヒット0回、生字7字すべて0、引用内0（同期前と不変） |
+| `node --check viewer/app.js` / `python3 -m unittest discover -s tests` | いずれも PASS（Ran 284 tests — OK） |
+| `inspect_inquiry.py`（再実行） | 次回推奨は `rereading_and_collision`（代替 `revision_and_variation`）。未接続素材 1858/2433（76%） |
+
+### 4. §5 の記述に対する訂正（追記）
+
+§5 の「`README.md` §4 件数表は開始時の 問い331・断片175・関係5077・セッション133・読み痕跡4296 のままで、マージ後の実数 332・177・5095・134・4322 と差が出る」は、**開始時点の観測としては正しかったが、同期後の最終状態としては正しくない**。PR #132 が `README.md` の詳細窓ローテーションと `--sync-readme` を行っていたため、同期後の §4 は 問い331・断片175（selected 63 / draft 112）・関係5086・セッション134・読み痕跡4347・訂正録36・編集判断71 を指している。本セッションの追記（問い+1、断片+2、関係+18、セッション+1、読み痕跡+26）を加えた実数は 332・177（selected 63 / draft 114）・5104・135・4373・36・71 なので、drift は残るが基準は異なる。B案により通常回では `README.md` を編集しないため、この差は次回の `editorial_review` 回が `--sync-readme` で解消する。本文は書き換えず、この訂正を隣に置く（errata の作法に倣う）。
+
+### 5. CI とマージ手順
+
+- 同期後の head `21a4e68` に対して `ledger-ci` は2本走り、pull_request イベントの run `40363527043`（47秒）と push イベントの run `40363519467` がいずれも conclusion `success`。`gh pr checks 133` は `validate pass`。GitHub API の check-runs も2件とも `completed/success`。
+- `gh pr view 133` は `mergeable=MERGEABLE` / `mergeStateStatus=CLEAN`。`main` への直接 push は行わず、`gh pr merge 133 --merge` で `arena/3b30baca-aiselfmyself` → `main` をマージする。マージ後は `main` への push で走る `ledger-ci` / `build-reading-map` の結果も確認し、必要ならこの節の後に追記する。
+
 
 ## 次への申し送り
 
