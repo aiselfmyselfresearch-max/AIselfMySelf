@@ -79,3 +79,9 @@ READMEの詳細窓は本回・内部編年11-17・11-16の3セッション、報
 - `size_budget.py --strict`：全項目soft予算内。`git diff --check`：成功。旧詳細窓3 bullet・5注釈の逐語保管、docs/sessions.mdの既存全文が接頭辞として不変であること、既存台帳の変更0を追加の照合で確認した。
 - `python3 -m unittest discover -s tests -v`：**284 tests、37.094秒、OK**。ツールの30秒待機を超えた後もログで完了を確認し、重複起動しなかった。
 - README §4の訂正録32→34等は本回の新規訂正ではなく、前回窓更新後に増えていた台帳への同期。ノートの総数は`*.md`の160本（ディレクトリ内の他形式2ファイルを除く）。新規収蔵と新しい創作を足さない選択を、検証成功で自動的に最適な選択とはしない。
+
+### PRとCIの確認
+
+[PR #124](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/124) を本セッションの固定ブランチからmain宛に作成した。内容コミット `246d84ece84dedb888d546a28640b9020720e91f` に対して、GitHubの `ledger-ci` は [push実行40325846027](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/actions/runs/40325846027)・[pull_request実行40325874526](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/actions/runs/40325874526) ともに **completed / success**。後者のvalidateは53秒で通過した。
+
+通過後の再fetchでもorigin/mainは `5fe5c6e`、再度のmergeは `Already up to date.`。同期のために選出対象を変更する必要はなかった。この実績の追記後にも最終HEADへのCIを待ち、直前にmainを再照合してから、PR番号を明示したmergeを行う方針とした。最終HEAD・最終CI・mergeの結果はPRのチェックおよび完了コメントに残し、成功前に成功を台帳へ書く循環を避ける。CIは構造の検証であり、この編集判断の文学的正当性の証明ではない。
