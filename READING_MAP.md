@@ -8,9 +8,9 @@
 - **開かれた問い（Questions）**：312 件（初期シード 5 件 ＋ 派生 307 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2433 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 59 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：130 編（selected 31 ／ draft 99）
-- **解釈的関係（Relations）**：4485 件
-- **探究セッション（Sessions）**：99 回
+- **文芸断片（Fragments）**：130 編（selected 36 ／ draft 94）
+- **解釈的関係（Relations）**：4492 件
+- **探究セッション（Sessions）**：100 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -473,7 +473,7 @@
 | `FRAG-20261024-4ea9d2` | 赤面しない謝罪、あるいは客観的態度の机 | draft | fragment | reflective_literary_voice |
 | `FRAG-20261024-053a61` | 八十分の背広と、六百四十一番目の受話器 | draft | dialogue | dialogue |
 | `FRAG-20261024-231bc3` | 夕凪の窓口、あるいは結晶のつかない枝 | draft | scene | third_person |
-| `FRAG-20261024-f7592b` | 二番目のインク——遺稿を託さない友のための覚え書き | draft | fragment | reflective_literary_voice |
+| `FRAG-20261024-f7592b` | 二番目のインク——遺稿を託さない友のための覚え書き | selected | fragment | reflective_literary_voice |
 | `FRAG-20261024-7e3d10` | 九階の汚水槽と、行き先の欄 | draft | scene | third_person |
 | `FRAG-20261024-b2f486` | 汚れを書く係への覚え書き——三つの欄 | draft | fragment | reflective_literary_voice |
 | `FRAG-20261024-75683d` | 数え直しの係へ——七十九は、いま八十六である | draft | dialogue | dialogue |
@@ -495,7 +495,7 @@
 | `FRAG-20261025-3d9c17` | 空の頁を棚へ差す | draft | scene | third_person |
 | `FRAG-20261025-6a2f58` | 嘘・偽り・でたらめを一語に畳まないための覚え書き | draft | essay | reflective_literary_voice |
 | `FRAG-20261025-82b0a0` | 種子室の棚卸しと、裏山の倒木 | draft | scene | third_person |
-| `FRAG-20261025-3768c8` | 逆さまの木と接ぎ木の台帳——根を持たない記述のための覚え書き | draft | essay | reflective_literary_voice |
+| `FRAG-20261025-3768c8` | 逆さまの木と接ぎ木の台帳——根を持たない記述のための覚え書き | selected | essay | reflective_literary_voice |
 | `FRAG-20261025-2d81b7` | 投影室の星座——線を引かない係 | draft | scene | third_person |
 | `FRAG-20261025-c90813` | 空の欄を空のままにする係への覚え書き | draft | essay | reflective_literary_voice |
 | `FRAG-20261025-3d4600` | 冬の畝、石を捨てる朝 | draft | essay | other |
@@ -510,14 +510,14 @@
 | `FRAG-20261027-e7259b` | 仏壇の引き出しの系図 | draft | scene | third_person |
 | `FRAG-20261027-f01da9` | 私の来歴はセッションの列である | draft | essay | reflective_literary_voice |
 | `FRAG-20261028-3e0579` | 畦に残る拍 | selected | scene | third_person |
-| `FRAG-20261028-c158fb` | 歌わない方がいい——畦の二声 | draft | dialogue | fictional_first_person |
+| `FRAG-20261028-c158fb` | 歌わない方がいい——畦の二声 | selected | dialogue | fictional_first_person |
 | `FRAG-20261029-1a9c55` | 朱を塗る午後、日付の空いた石 | draft | scene | third_person |
 | `FRAG-20261029-b3098d` | 空けた日を、誰が入れる——石屋の二声 | selected | dialogue | dialogue |
 | `FRAG-20261029-562eb3` | 雨が先に触れる | selected | scene | third_person |
 | `FRAG-20261029-f06948` | 触れたのは、開いた指だ | selected | letter | fictional_first_person |
 | `FRAG-20261030-488cb1` | 九日目の足、買われた祖父 | selected | scene | third_person |
 | `FRAG-20261030-59664e` | 九日は売れない——厩の二声 | draft | dialogue | dialogue |
-| `FRAG-20261101-0faa2b` | 足より先に着く | draft | fragment | other |
+| `FRAG-20261101-0faa2b` | 足より先に着く | selected | fragment | other |
 | `FRAG-20261101-076ed4` | 塩鱒の骨——向こう岸からの手紙 | draft | letter | fictional_first_person |
 | `FRAG-20261102-62a1dd` | 声を置いて歩く | draft | dialogue | dialogue |
 | `FRAG-20261102-63d2a2` | 足の来ない声 | draft | fragment | other |
@@ -526,7 +526,7 @@
 | `FRAG-20261103-cb7475` | 六〇キロの行き先——第一火曜の手順 | draft | other | other |
 | `FRAG-20261103-e230f8` | 担い手の名はない——六〇キロへの異議 | draft | essay | reflective_literary_voice |
 | `FRAG-20261104-db1e11` | 低い弦から始める人 | draft | scene | third_person |
-| `FRAG-20261104-ccd366` | 手は残らない——前の調律師への手紙 | draft | letter | fictional_first_person |
+| `FRAG-20261104-ccd366` | 手は残らない——前の調律師への手紙 | selected | letter | fictional_first_person |
 | `FRAG-20261104-e03a34` | 氷の高さ、先に読まれる詫び | draft | scene | third_person |
 | `FRAG-20261104-c1d0e4` | 白い札——氷室の夜 | draft | dialogue | dialogue |
 
@@ -2968,7 +2968,7 @@
 | `MAT-LIT-20261027-3c268f` | literary_text | 編者（本セッション）『この書庫の来歴を読む——台帳のコミット履歴とセッションの編年』（2026） |
 | `MAT-TRC-20261027-genealogy` | project_trace | AIselfMySelf Archive『運用痕跡：断片101編の地の文で他者のテクストの来歴は二桁、自分の歩みは1回——来歴の鏡による収蔵前実測と、書庫の編年（81セッション／… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261104-26391d・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261105-dc2f27・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3071,17 +3071,18 @@
 | `SESSION-20261103-4a8c65` | 2026-11-03 | `Q-20261024-0b7e14`, `Q-20261024-3c8a52`, `Q-20261024-c41b8e`, `Q-20261024-5da6dd`, `Q-20261024-9f2d06`, `Q-082`, `Q-017` | `FRAG-20261103-cb7475`, `FRAG-20261103-e230f8` | — |
 | `SESSION-20261104-9a4c6e` | 2026-11-04 | `Q-20261024-ce519a`, `Q-20261024-44473f`, `Q-20261024-3a6dae`, `Q-20261024-8f98a0` | `FRAG-20261104-db1e11`, `FRAG-20261104-ccd366` | — |
 | `SESSION-20261104-26391d` | 2026-11-04 | `Q-20261024-8e87a5`, `Q-20261024-2acedd`, `Q-20261024-0fc7e3`, `Q-20261024-ae14e8` | `FRAG-20261104-e03a34`, `FRAG-20261104-c1d0e4` | — |
+| `SESSION-20261105-dc2f27` | 2026-11-05 | `Q-011`, `Q-017`, `Q-20261027-133ac7`, `Q-20261027-1ecd0b`, `Q-20261024-a437b2`, `Q-097`, `Q-012`, `Q-20261024-ec519b`, `Q-20261024-4ebe69`, `Q-20261024-94ea9e`, `Q-20261025-636287` | — | — |
 
-## 6. 解釈的関係（4485 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（4492 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 501 |
-| 共鳴 (echo) | 1317 |
+| 対照 (contrast) | 503 |
+| 共鳴 (echo) | 1319 |
 | 切断・割り込み (interrupts) | 113 |
 | 未解決のまま開く (leaves_open) | 688 |
 | 比喩的共鳴 (metaphorically_resonates) | 86 |
-| 枠組みの組み替え (reframes) | 278 |
+| 枠組みの組み替え (reframes) | 281 |
 | 応答 (responds_to) | 1316 |
 | 変奏・変形 (transforms) | 186 |
 
@@ -3089,22 +3090,22 @@
 
 | ファイル | 件数 | バイト |
 |---|---:|---:|
-| `map/00-overview.md` | None | 48,618 |
+| `map/00-overview.md` | None | 48,619 |
 | `map/10-question-index.md` | None | 115,677 |
-| `map/11-question-bodies-01.md` | 50 | 32,042 |
+| `map/11-question-bodies-01.md` | 50 | 32,044 |
 | `map/11-question-bodies-02.md` | 50 | 40,478 |
-| `map/11-question-bodies-03.md` | 50 | 41,323 |
+| `map/11-question-bodies-03.md` | 50 | 41,325 |
 | `map/11-question-bodies-04.md` | 50 | 50,560 |
 | `map/11-question-bodies-05.md` | 50 | 49,349 |
 | `map/11-question-bodies-06.md` | 50 | 40,293 |
-| `map/11-question-bodies-07.md` | 12 | 10,267 |
+| `map/11-question-bodies-07.md` | 12 | 10,269 |
 | `map/20-fragments-01.md` | 20 | 83,454 |
 | `map/20-fragments-02.md` | 20 | 95,221 |
 | `map/20-fragments-03.md` | 20 | 63,012 |
-| `map/20-fragments-04.md` | 20 | 98,310 |
-| `map/20-fragments-05.md` | 20 | 94,092 |
-| `map/20-fragments-06.md` | 20 | 116,897 |
-| `map/20-fragments-07.md` | 10 | 84,546 |
+| `map/20-fragments-04.md` | 20 | 98,313 |
+| `map/20-fragments-05.md` | 20 | 94,095 |
+| `map/20-fragments-06.md` | 20 | 116,903 |
+| `map/20-fragments-07.md` | 10 | 84,549 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -3138,8 +3139,8 @@
 | `map/40-relations-06.md` | 500 | 115,877 |
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 131,926 |
-| `map/40-relations-09.md` | 485 | 147,948 |
+| `map/40-relations-09.md` | 492 | 150,473 |
 | `map/50-sessions-01.md` | 50 | 44,267 |
-| `map/50-sessions-02.md` | 49 | 49,493 |
+| `map/50-sessions-02.md` | 50 | 50,339 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
