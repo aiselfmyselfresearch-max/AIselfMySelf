@@ -94,7 +94,9 @@ depth が最も小さい問いを採ったことについて。depth は `previo
 
 ## 九、最新 `origin/main` との同期
 
-（この節はマージ直前の `git fetch` の結果で更新する。）
+コミット `5d1f7a4` の作成後に `git fetch origin main` を実行した。`origin/main` は分岐元と同じ **`424b916`**（PR #150 のマージコミット）のままで、`git merge-base --is-ancestor origin/main HEAD` も成立した。載せ替えは不要で、並行セッションの割り込みもなかった。
+
+同期確認後、ローカルの `validate_seed.py`・`inspect_inquiry.py --check-map`・`size_budget.py --strict`・`read_log_backfill.py --check`・`python3 -m unittest discover -s tests`（284 tests OK）・`node --check viewer/app.js` を再実行して全通過を確認した。さらに PR #151 の GitHub Actions `ledger-ci`（validate）が **pass** したことを確認してから main へマージする。マージ後に `origin/main` を再取得し、マージコミットに本セッションの記録が含まれることを確認する。
 
 ## 十、残った緊張
 
