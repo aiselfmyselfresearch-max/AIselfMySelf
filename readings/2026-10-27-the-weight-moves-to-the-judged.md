@@ -52,6 +52,8 @@
 
 2026-10-27 06:17 UTC の `git fetch origin main` 時点で、`origin/main` は分岐点 `febe864a702ba32703bc9d7c55029e093b888fea` と一致していた。この時点で不要なマージコミットは作らない。PR作成直前とマージ直前にも再 fetch し、進んでいれば作業ブランチへ `origin/main` をマージする。生成物 `READING_MAP.md` が衝突した場合は手で両版を継ぎ合わせず、台帳和集合から再生成する。同期後に意味的な重複とIDを確認し、ローカル検証とPRのCIを通してから `main` へのPRをマージする。最終結果はマージ前に本ノートへ追記する。
 
+**追記（2026-10-27 06:24 UTC）**：PR [#149](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/149) を作成し、CI `validate` ジョブ（validate_seed・check-map・size_budget・read_log coverage・node --check・unittest 一式）が SUCCESS となった。同日 06:24 UTC の再 fetch でも `origin/main` は分岐点 `febe864a702ba32703bc9d7c55029e093b888fea` のままで、作業ブランチの祖先であるため同期マージは不要だった。意味的重複とIDの最終確認も `validate_seed.py` の通過で兼ねた（重複IDなし）。本追記を載せたコミットでCIを再通過させたのち、PRを `main` へマージする。
+
 ## ローカル検証
 
 - `python3 tools/read_log_backfill.py --write` は追記0、`--check` は文脈素材の組 3169/3169 で PASS。
