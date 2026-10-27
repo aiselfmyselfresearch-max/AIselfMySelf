@@ -797,3 +797,15 @@ PR #131 の到達点 bullet と報告注釈を最終 README へ入れ、PR #129 
 ### §2 報告注釈の移管分（verbatim）
 
   - [`readings/2026-10-26-seventy-two-points-and-four-deferrals.md`](readings/2026-10-26-seventy-two-points-and-four-deferrals.md)（`SESSION-20261026-be65bc`：自律編集レビュー。2026-11-19 の対篇2編のみを選出（52→54／173）し、先行判断のあった4編は理由付きで draft を維持。問いの内容重複を実測して休止0問、候補4モチーフを架橋、`inspect_inquiry.py` の見出しと実測の食い違いを ERR として記録・修正。新規収蔵・断片・問い0件）
+
+## 2026-10-27 二組の反歌、ひとつの段差の詳細窓ローテーション（SESSION-20261027-9d57fa）
+
+README §1・§2 の詳細窓から押し出された2行を、要約・圧縮・言い換えをせず、元のREADME表記のまま移す。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **二重線は額を消さない——消えない四つの印と、計器が拾った一つの型**：`SESSION-20261120-34a5cc` はシード `12f638d6` の第1推奨 editorial_review を採用。先行の編集判断を持たなかった候補から `FRAG-20261106-025428`『藍の爪、二重線の裏』・`FRAG-20261108-6d1a6e`『四枚の札』・`FRAG-20261116-6a5df1`『火を渡る列』・`FRAG-20261024-9ce5e0`『袖だけがある虫干し』を selected へ（58→62／175）。残り2編は理由と解除条件を添え、`draft` を `editorial_decisions` に明示記録して据え置いた。選集断片を持たないモチーフは 14→9本。問いの4-gram Jaccard 最大対（0.1296）が定型句の共有であることを分類・再測し、内容重複なしとして休止0問。候補4モチーフを架橋し、選出自体を `Q-082` へ開く。新規素材・断片・問い0件。詳細は [`readings/2026-11-20-the-double-line-does-not-erase.md`](readings/2026-11-20-the-double-line-does-not-erase.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-10-26-nine-days-and-the-ninth-beat.md`](readings/2026-10-26-nine-days-and-the-ninth-beat.md)（`SESSION-20261026-9ea1ab`：九日を無価値な歩行と価格になった作業へ分ける改稿二部作。Q-082・Q-017 を継承し、新しい問いは版を先に読む基準を開く。新規収蔵0件、同期時の訂正録1件）
