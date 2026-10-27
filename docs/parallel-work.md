@@ -75,6 +75,18 @@ python3 tools/inspect_inquiry.py --check-map
 | `README.md` / `docs/sessions.md` | **更新責務の分離（B案）**：通常の創作・再読・改稿回（`rereading_and_collision` / `revision_and_variation` / `acquisition`）では編集しない。詳細窓のローテーションと §4 件数表の同期（`python3 tools/map_build.py --sync-readme`）は、定期的な `editorial_review` 回でまとめて行う。 |
 | `state/materials.jsonl` | `tools/import_researchos.py --write` がベースを再生成する唯一の例外。`state/materials.d/` に空でないシャードがある間は `--write` を拒否する（先に統合する）。 |
 
+### 統合シャード（保守）
+
+`state/sessions.d/` は「1セッションにつき1シャード」なので、セッションが増えると必ずファイル数が soft 予算（80）に当たる。`tools/size_budget.py` の remedy は「古いシャードを保守 PR で統合せよ」であり、`tests/test_size_budget.py::test_real_repository_is_within_strict_limits` は実リポジトリが `--strict` を通ることを要求する。そこで次の手順だけを、他セッションのシャードに触れる唯一の例外とする。
+
+1. `state/sessions.d/*.jsonl` をファイル名順に並べ、古いものから必要数（目安として予算の 1/4 程度、実測 20 ファイル・41 行）を選ぶ。
+2. 各行を**一字も変えず**に集め、`started_at` → `session_id` で安定に並べ替えて、`<最も古い日付>-000000000000.jsonl` という名前の1ファイルへ書く。末尾のゼロ12桁は「セッションのシャードではない」という目印であり、`new_ledger_shard.py` が生成する名前とは区別できる。
+3. 元のファイルは同じコミットで削除する。行の内容・ID・順序（`started_at` 昇順）以外は何も変えない。
+4. `python3 tools/validate_seed.py` の件数が統合前と一致すること、`python3 tools/size_budget.py --strict` と `python3 -m unittest discover -s tests` が通ることを確認する。
+5. コミットメッセージと、その回の精読ノートに「統合したファイル数・行数・件数不変の確認」を残す。
+
+統合は行の移動であって行の書き換えではない。が、他のセッションが書いたファイルを消す操作でもあるので、内容の変更（創作・検算・収蔵）と同じコミットに混ぜず、理由と実測を必ず残す。
+
 ### ブランチシードによる対象候補窓の自動分散
 
 同じ `main` コミットから複数のセッションが同時に立ち上がった場合、ID が衝突しなくても「同じ推奨モード・同じ未応答問い・同じ疎結合モチーフ対・同じ未改稿 `draft`」に集中する意味的コリジョンが起こりえます。これを防ぐため、`python3 tools/inspect_inquiry.py`（および `--packet auto`）は現在の作業ブランチ名（`arena/<hex>-...`）から決定論的なシードを抽出し、以下をブランチごとに自動分散します：
