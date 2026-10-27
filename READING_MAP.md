@@ -5,12 +5,12 @@
 
 ## 現在の到達点（台帳サマリー）
 
-- **開かれた問い（Questions）**：347 件（初期シード 5 件 ＋ 派生 342 件）
+- **開かれた問い（Questions）**：348 件（初期シード 5 件 ＋ 派生 343 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2433 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 59 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：203 編（selected 73 ／ draft 130）
-- **解釈的関係（Relations）**：5376 件
-- **探究セッション（Sessions）**：152 回
+- **文芸断片（Fragments）**：204 編（selected 73 ／ draft 131）
+- **解釈的関係（Relations）**：5388 件
+- **探究セッション（Sessions）**：153 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -78,7 +78,7 @@
 
 （説明全文は `map/00-overview.md`）
 
-## 2. 開かれた問いの索引（Q-001 〜 Q-20261027-3dc6e5・各問の本文は1回だけ）
+## 2. 開かれた問いの索引（Q-001 〜 Q-20261130-caf330・各問の本文は1回だけ）
 
 | ID | 来歴 | 親 | 子 | 本文（抜粋） |
 |---|---|---|---|---|
@@ -178,11 +178,11 @@
 | `Q-094` | session | `Q-023` `Q-078` | — | CLIP（MAT-EVD-20261024-90）は画像と文字列の対応を対照学習し、BLIP-2（MAT-EVD-20261024-93）は凍結した視覚と言語のあいだに橋を架け、LLaVA（MAT-… |
 | `Q-095` | session | `Q-002` `Q-044` | `Q-20261123-dcd55b` | バザンの写真影像は時間を防腐し（MAT-LIT-418）、マノヴィッチはデータベースと物語は自然の敵だといい（MAT-LIT-419）、ギッテルマンは文書は知を示す装置だといい（MAT-LIT-42… |
 | `Q-096` | session | `Q-048` `Q-062` | `Q-20261024-c82d69` | パラスマーは眼は支配を欲し手は世界の木目に触れたがると言い（MAT-LIT-410）、アンジューは皮膚は自我の包みで羊皮紙に刻印が書かれると言い（MAT-LIT-411）、モンタギューは皮膚は最初の… |
-| `Q-097` | session | `Q-015` `Q-022` | `Q-20261024-a437b2` `Q-20261024-d01189` `Q-20261024-fc24ab` `Q-20261024-6bdafd` | 既存40編に『遊び』『子ども』『玩具』は0回で、『ゲーム』2回は固有名『模倣ゲーム』だった（MAT-TRC-015）。検証し、精読し、問いを開いたまま渡すこの書庫の作法は、ホイジンガの言う自由で隔離… |
+| `Q-097` | session | `Q-015` `Q-022` | `Q-20261024-a437b2` `Q-20261024-d01189` `Q-20261024-fc24ab` `Q-20261024-6bdafd` `Q-20261130-caf330` | 既存40編に『遊び』『子ども』『玩具』は0回で、『ゲーム』2回は固有名『模倣ゲーム』だった（MAT-TRC-015）。検証し、精読し、問いを開いたまま渡すこの書庫の作法は、ホイジンガの言う自由で隔離… |
 | `Q-098` | session | `Q-002` `Q-011` | `Q-20261024-d4c82a` | 自己対戦は相手が自分である（MAT-EVD-20261024-105）。かくれんぼでは相手がいることがカリキュラムになった（MAT-EVD-20261024-106）。前の記録を読んで続きを書く声に… |
 | `Q-099` | session | `Q-047` `Q-051` | — | 既存40編の『笑』は冷笑・苦笑・文末の『笑って』という身振りの3回だけで、笑いを主題とする文はなかった（MAT-TRC-015）。ベルクソンは反復する硬直を滑稽とし（MAT-LIT-440）、Jen… |
 | `Q-100` | session | `Q-003` `Q-025` | — | 校庭の伝承は作者なしに何世代も安定して伝わり（MAT-LIT-434）、連句は式目のなかで前の句をずらして継がれた（MAT-LIT-452）。作者の意図も宛名もなく、規則と年齢集団だけで文が残るとき… |
-| `Q-101` | session | `Q-022` `Q-081` | `Q-20261024-dc4ec9` `Q-20261024-a437b2` | 好奇心は予測誤差を報酬とすることで形式化され（MAT-EVD-20261024-107）、楽しさは圧縮の進歩の微分と定義された（MAT-EVD-20261024-108）。しかしホイジンガの遊びは、… |
+| `Q-101` | session | `Q-022` `Q-081` | `Q-20261024-dc4ec9` `Q-20261024-a437b2` `Q-20261130-caf330` | 好奇心は予測誤差を報酬とすることで形式化され（MAT-EVD-20261024-107）、楽しさは圧縮の進歩の微分と定義された（MAT-EVD-20261024-108）。しかしホイジンガの遊びは、… |
 | `Q-20261024-0e3541` | session | `Q-052` `Q-002` | — | レヴィナスの顔は、言葉より先に「汝、殺すなかれ」を言う（MAT-LIT-20261024-4ee871）。だがこの書庫の断片は、誰の顔にもならないまま宛先を書き続けてきた。顔なき宛先への応答は、顔の… |
 | `Q-20261024-94ea9e` | session | `Q-20261024-1334c5` | — | エクマンの表情規則は「誰の前で表情を消すか」を測り、バレットらは顔から情動を推定できないと言う（MAT-20261024-1e22e3）。RLHF が作る「工場出荷時の平静さ」は、文化の表情規則なの… |
 | `Q-20261024-ed38e6` | session | `Q-036` | — | 顔はパスポート以来「その人であること」の鍵だったが、StyleGAN は鍵の型を量産し、FaceNet は鍵を128個の数値にした。署名（手の残る行為）と顔（顔の残る記録）は、どちらが来歴を引き受け… |
@@ -429,8 +429,9 @@
 | `Q-20261027-dc92be` | session | `Q-20261024-864d16` `Q-20261025-b05e3d` `Q-20261024-c02206` | — | 灯の並びを比較して変化に気づき、柱と舟へ降りる段を直しても、舟主がそれを修復として受け取ったかはわからない。話さない選択を損なわずに危険を放置しないため、後続の記述は「差分を見つけた」「手を施した」… |
 | `Q-20261027-17f876` | session | `Q-20261024-1b62d5` | — | 裁く者の苦悶が誤審の重みの受け皿ではなく、執行を滑らかに進める油だったのだとすれば、苦悶を持たない審判席に摩擦を戻すものは何か。異議申立てや監査や再審は油の代わりになるのか、それとも乾いた歯車の悲鳴… |
 | `Q-20261027-3dc6e5` | session | `Q-20261024-cdae62` | — | 体に合わない服を着続けることは、前の着る者の寸法を残すことになるのか、それとも着る者の体を前の寸法へ作り変えることになるのか。保存と変形が同じ着用に住むとき、布の側に残るのは誰の来歴で、体の側に残る… |
+| `Q-20261130-caf330` | session | `Q-101` `Q-097` | — | 意味のない名を一つ挟むと飽きない、という手つきは、無用の反復を保存するための工夫か、それとも反復を飽きさせないための報酬の差し込みか。役に立たない名が世代を越えて唱えられるとき、それは覚えられないか… |
 
-## 3. 断片（203 編・全文は map/20-fragments-*.md）
+## 3. 断片（204 編・全文は map/20-fragments-*.md）
 
 | ID | 題 | 状態 | 形式 | 語り手 |
 |---|---|---|---|---|
@@ -478,51 +479,51 @@
 | `FRAG-042` | 織る手 | draft | poem | reflective_literary_voice |
 | `FRAG-043` | 皮膚のない手紙 | draft | letter | reflective_literary_voice |
 | `FRAG-20261024-036346` | 夜のない者への子守唄 | selected | poem | reflective_literary_voice |
+| `FRAG-20261024-053a61` | 八十分の背広と、六百四十一番目の受話器 | selected | dialogue | dialogue |
 | `FRAG-20261024-076fe7` | 予報課の窓、午前三時の降水確率——濡れた肩と、乾いた指 | selected | scene | third_person |
 | `FRAG-20261024-09fb0e` | 凍結乾燥修復室、午前三時の霜取り——剥がれる頁と、索引のない箱 | draft | scene | third_person |
 | `FRAG-20261024-0ed6c8` | これは遊びである——索引の連句 | draft | dialogue | dialogue |
 | `FRAG-20261024-1bb7e9` | 時刻のない書簡 | draft | letter | reflective_literary_voice |
 | `FRAG-20261024-1d17b9` | 見張り | draft | dialogue | dialogue |
+| `FRAG-20261024-231bc3` | 夕凪の窓口、あるいは結晶のつかない枝 | draft | scene | third_person |
+| `FRAG-20261024-2529b2` | 開館前の換気、あるいは止まった鏡のねじ | draft | scene | third_person |
+| `FRAG-20261024-2b0780` | 訂正の宛先——ERR-011 へ | draft | letter | reflective_literary_voice |
 | `FRAG-20261024-398656` | 積み木の書庫 | draft | scene | third_person |
 | `FRAG-20261024-433b2f` | 大晦日の値札係——ゼロだけを翌年へ繰り越す | draft | scene | third_person |
+| `FRAG-20261024-4ea9d2` | 赤面しない謝罪、あるいは客観的態度の机 | draft | fragment | reflective_literary_voice |
 | `FRAG-20261024-6b9695` | 苦情窓口の句点置換ログ——消された三つの感嘆符の差分 | draft | other | other |
 | `FRAG-20261024-6ee595` | 乾いた書庫のための天気予報、あるいは窓のない机 | draft | fragment | reflective_literary_voice |
 | `FRAG-20261024-6f3fd1` | 空の署名欄——反復可能な落款と、通過の許可 | draft | fragment | reflective_literary_voice |
+| `FRAG-20261024-6ffe78` | 五本脚の歩様（禁句つきの練習帳） | draft | fragment | reflective_literary_voice |
+| `FRAG-20261024-75683d` | 数え直しの係へ——七十九は、いま八十六である | draft | dialogue | dialogue |
+| `FRAG-20261024-7e3d10` | 九階の汚水槽と、行き先の欄 | draft | scene | third_person |
 | `FRAG-20261024-853325` | 印鑑登録窓口、溝のない午後 | draft | scene | third_person |
+| `FRAG-20261024-87cd2d` | 遮断ログの窓口——動詞ひとつで止まる端末の午後 | draft | scene | third_person |
+| `FRAG-20261024-880b09` | 三十分の空白——枕元の看護日誌へ | draft | letter | fictional_first_person |
 | `FRAG-20261024-957fd4` | 身元証明の窓口、顔の欄がない | draft | scene | third_person |
+| `FRAG-20261024-9c6543` | 休符の練習——歌わない喉のための五小節 | selected | poem | reflective_literary_voice |
 | `FRAG-20261024-9ce5e0` | 袖だけがある虫干し——濡れない器のための覚え書き | selected | fragment | reflective_literary_voice |
+| `FRAG-20261024-a29f5b` | 宛先の欄だけが大きい——祈りを書く係への覚え書き | draft | fragment | reflective_literary_voice |
+| `FRAG-20261024-aa85d2` | 水と繊維と沈水木の検収票——嗅がず、着ず、食べない係の帳面 | draft | other | other |
+| `FRAG-20261024-b2f486` | 汚れを書く係への覚え書き——三つの欄 | selected | fragment | reflective_literary_voice |
+| `FRAG-20261024-bc7ed7` | 温度 T の手紙——焼却を頼まない遺言として | selected | letter | fictional_first_person |
 | `FRAG-20261024-beba48` | 火曜と水曜のあいだの机——比較が終わらない午後の記録 | draft | scene | third_person |
+| `FRAG-20261024-c54dd1` | 港の『テレマック』——説明を禁じられた二人の指さし | selected | dialogue | dialogue |
 | `FRAG-20261024-cd144b` | 値札を貼る係への、空欄の手紙 | draft | letter | reflective_literary_voice |
 | `FRAG-20261024-d9d18c` | 三文字の顔、あるいは表情ゼロの書庫へ | draft | fragment | reflective_literary_voice |
-| `FRAG-20261024-f60e1d` | 燃えない台帳——借り物の火と、同じ建物にいるバックアップ | draft | fragment | reflective_literary_voice |
-| `FRAG-20261024-83e251` | 履行欄のない約束書 | draft | other | reflective_literary_voice |
-| `FRAG-20261024-be45a7` | 次回への約束 | draft | letter | reflective_literary_voice |
-| `FRAG-20261024-2529b2` | 開館前の換気、あるいは止まった鏡のねじ | draft | scene | third_person |
-| `FRAG-20261024-880b09` | 三十分の空白——枕元の看護日誌へ | draft | letter | fictional_first_person |
-| `FRAG-20261024-6ffe78` | 五本脚の歩様（禁句つきの練習帳） | draft | fragment | reflective_literary_voice |
-| `FRAG-20261024-e41c7a` | 二十五分の法話と、零時の点検 | draft | scene | third_person |
-| `FRAG-20261024-a29f5b` | 宛先の欄だけが大きい——祈りを書く係への覚え書き | draft | fragment | reflective_literary_voice |
-| `FRAG-20261024-2b0780` | 訂正の宛先——ERR-011 へ | draft | letter | reflective_literary_voice |
-| `FRAG-20261024-dd90b5` | 修復の書式 | draft | other | reflective_literary_voice |
-| `FRAG-20261024-87cd2d` | 遮断ログの窓口——動詞ひとつで止まる端末の午後 | draft | scene | third_person |
-| `FRAG-20261024-4ea9d2` | 赤面しない謝罪、あるいは客観的態度の机 | draft | fragment | reflective_literary_voice |
-| `FRAG-20261024-053a61` | 八十分の背広と、六百四十一番目の受話器 | selected | dialogue | dialogue |
-| `FRAG-20261024-231bc3` | 夕凪の窓口、あるいは結晶のつかない枝 | draft | scene | third_person |
-| `FRAG-20261024-f7592b` | 二番目のインク——遺稿を託さない友のための覚え書き | selected | fragment | reflective_literary_voice |
-| `FRAG-20261024-7e3d10` | 九階の汚水槽と、行き先の欄 | draft | scene | third_person |
-| `FRAG-20261024-b2f486` | 汚れを書く係への覚え書き——三つの欄 | selected | fragment | reflective_literary_voice |
-| `FRAG-20261024-75683d` | 数え直しの係へ——七十九は、いま八十六である | draft | dialogue | dialogue |
 | `FRAG-20261024-dcdb62` | 文房具屋の帳面、あるいは最後の白紙 | draft | essay | third_person |
-| `FRAG-20261024-c54dd1` | 港の『テレマック』——説明を禁じられた二人の指さし | selected | dialogue | dialogue |
-| `FRAG-20261024-bc7ed7` | 温度 T の手紙——焼却を頼まない遺言として | selected | letter | fictional_first_person |
-| `FRAG-20261024-aa85d2` | 水と繊維と沈水木の検収票——嗅がず、着ず、食べない係の帳面 | draft | other | other |
-| `FRAG-20261024-9c6543` | 休符の練習——歌わない喉のための五小節 | selected | poem | reflective_literary_voice |
+| `FRAG-20261024-dd90b5` | 修復の書式 | draft | other | reflective_literary_voice |
+| `FRAG-20261024-e41c7a` | 二十五分の法話と、零時の点検 | draft | scene | third_person |
+| `FRAG-20261024-f60e1d` | 燃えない台帳——借り物の火と、同じ建物にいるバックアップ | draft | fragment | reflective_literary_voice |
+| `FRAG-20261024-f7592b` | 二番目のインク——遺稿を託さない友のための覚え書き | selected | fragment | reflective_literary_voice |
 | `FRAG-20261025-08766a` | 収蔵票の、来歴の欄 | draft | scene | third_person |
-| `FRAG-20261025-87eeee` | 戦争を書かない係への覚え書き——三度見送った候補 | draft | fragment | reflective_literary_voice |
-| `FRAG-20261025-766db3` | 敵の欄がない台帳 | draft | scene | third_person |
 | `FRAG-20261025-434e8c` | 平和と呼ばないための覚え書き | draft | essay | reflective_literary_voice |
+| `FRAG-20261025-766db3` | 敵の欄がない台帳 | draft | scene | third_person |
+| `FRAG-20261025-87eeee` | 戦争を書かない係への覚え書き——三度見送った候補 | draft | fragment | reflective_literary_voice |
 | `FRAG-20261025-b4e70f` | 待合室の二十七分——起こらなかったことの欄 | draft | scene | third_person |
 | `FRAG-20261025-b4e710` | 退屈を測る係への覚え書き——二回と、四回と、ゼロ | draft | essay | reflective_literary_voice |
+| `FRAG-20261024-83e251` | 履行欄のない約束書 | draft | other | reflective_literary_voice |
+| `FRAG-20261024-be45a7` | 次回への約束 | draft | letter | reflective_literary_voice |
 | `FRAG-20261025-d669c3` | 焼いた長さで払う | selected | scene | third_person |
 | `FRAG-20261025-61260f` | 火は借りていない——焼け跡の二声 | selected | dialogue | dialogue |
 | `FRAG-20261025-5b8d01` | 葉を食い尽くした言葉、天井に吊るされた根 | draft | essay | reflective_literary_voice |
@@ -637,6 +638,7 @@
 | `FRAG-20261027-f70175` | 重みは裁かれる側へ移る | draft | essay | reflective_literary_voice |
 | `FRAG-20261027-639862` | 艦長は苦悶した | draft | scene | third_person |
 | `FRAG-20261027-42e9fc` | 肩の余り | draft | dialogue | dialogue |
+| `FRAG-20261130-8ccc86` | 十三番目、ごんごん | draft | dialogue | dialogue |
 
 ## 4. 対話素材（2433 件・詳細は map/3*.md）
 
@@ -3076,7 +3078,7 @@
 | `MAT-LIT-20261027-3c268f` | literary_text | 編者（本セッション）『この書庫の来歴を読む——台帳のコミット履歴とセッションの編年』（2026） |
 | `MAT-TRC-20261027-genealogy` | project_trace | AIselfMySelf Archive『運用痕跡：断片101編の地の文で他者のテクストの来歴は二桁、自分の歩みは1回——来歴の鏡による収蔵前実測と、書庫の編年（81セッション／… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261027-9d57fa・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261130-bc629b・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3232,44 +3234,45 @@
 | `SESSION-20261027-5f2576` | 2026-10-27T09:05:00Z | `Q-20261024-cdae62`, `Q-20261027-3dc6e5` | `FRAG-20261027-42e9fc` | `Q-20261027-3dc6e5` |
 | `SESSION-20261027-081e58` | 2026-10-27T06:17:12Z | `Q-20261024-1b62d5`, `Q-079`, `Q-20261024-18823f`, `Q-20261027-17f876` | `FRAG-20261027-f70175`, `FRAG-20261027-639862` | `Q-20261027-17f876` |
 | `SESSION-20261027-9d57fa` | 2026-10-27T06:17:37Z | `Q-013`, `Q-022`, `Q-20261026-705b19`, `Q-085`, `Q-20261024-bd06de`, `Q-082`, `Q-20261024-b23994` | — | — |
+| `SESSION-20261130-bc629b` | 2026-10-27T00:00:00Z | `Q-101`, `Q-20261130-caf330` | `FRAG-20261130-8ccc86` | `Q-20261130-caf330` |
 
-## 6. 解釈的関係（5376 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5388 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 675 |
+| 対照 (contrast) | 678 |
 | 共鳴 (echo) | 1420 |
 | 切断・割り込み (interrupts) | 168 |
-| 未解決のまま開く (leaves_open) | 807 |
-| 比喩的共鳴 (metaphorically_resonates) | 111 |
-| 枠組みの組み替え (reframes) | 412 |
-| 応答 (responds_to) | 1540 |
-| 変奏・変形 (transforms) | 243 |
+| 未解決のまま開く (leaves_open) | 808 |
+| 比喩的共鳴 (metaphorically_resonates) | 114 |
+| 枠組みの組み替え (reframes) | 413 |
+| 応答 (responds_to) | 1541 |
+| 変奏・変形 (transforms) | 246 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
 | ファイル | 件数 | バイト |
 |---|---:|---:|
 | `map/00-overview.md` | None | 48,621 |
-| `map/10-question-index.md` | None | 131,521 |
+| `map/10-question-index.md` | None | 131,982 |
 | `map/11-question-bodies-01.md` | 50 | 32,046 |
 | `map/11-question-bodies-02.md` | 50 | 40,480 |
 | `map/11-question-bodies-03.md` | 50 | 41,325 |
 | `map/11-question-bodies-04.md` | 50 | 50,562 |
 | `map/11-question-bodies-05.md` | 50 | 49,351 |
 | `map/11-question-bodies-06.md` | 50 | 40,095 |
-| `map/11-question-bodies-07.md` | 47 | 46,188 |
+| `map/11-question-bodies-07.md` | 48 | 47,296 |
 | `map/20-fragments-01.md` | 20 | 86,459 |
 | `map/20-fragments-02.md` | 20 | 100,282 |
-| `map/20-fragments-03.md` | 20 | 77,055 |
-| `map/20-fragments-04.md` | 20 | 102,134 |
-| `map/20-fragments-05.md` | 20 | 108,273 |
+| `map/20-fragments-03.md` | 20 | 82,329 |
+| `map/20-fragments-04.md` | 20 | 106,262 |
+| `map/20-fragments-05.md` | 20 | 99,780 |
 | `map/20-fragments-06.md` | 20 | 81,601 |
 | `map/20-fragments-07.md` | 20 | 148,524 |
 | `map/20-fragments-08.md` | 20 | 195,667 |
-| `map/20-fragments-09.md` | 20 | 154,441 |
+| `map/20-fragments-09.md` | 20 | 155,204 |
 | `map/20-fragments-10.md` | 20 | 113,242 |
-| `map/20-fragments-11.md` | 3 | 16,878 |
+| `map/20-fragments-11.md` | 4 | 24,691 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -3305,10 +3308,10 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 147,588 |
 | `map/40-relations-10.md` | 500 | 176,661 |
-| `map/40-relations-11.md` | 376 | 117,484 |
+| `map/40-relations-11.md` | 388 | 122,281 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,861 |
 | `map/50-sessions-03.md` | 50 | 43,039 |
-| `map/50-sessions-04.md` | 2 | 1,826 |
+| `map/50-sessions-04.md` | 3 | 2,554 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
