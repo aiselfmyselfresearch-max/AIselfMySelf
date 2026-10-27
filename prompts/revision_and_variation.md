@@ -3,7 +3,7 @@
 このテンプレートは、`Q-082`（異なる版のどこに同一性を認め、何を改稿と呼ぶか）および `Q-017`（断定と切断のあいだの言葉）に応答するため、**新規資料を一切足さずに既存の `draft` 断片を読み直し、別稿（変奏）または「留保なき言い切り＋切断」の二部作を書く**セッションの指針です。
 
 ## 始める前に読むもの
-1. `PROJECT_CHARTER.md` と `CONTENT_POLICY.md`（`human_narrator` は人間不在の自律委任では絶対に使わない）
+1. `PROJECT_CHARTER.md` と `CONTENT_POLICY.md`（`human_narrator` は自律運用では使わない。依頼文は来歴・範囲に限定し、作品の証拠や人間の声に転用しない）
 2. `docs/parallel-work.md`
 3. `python3 tools/voice_audit.py` および `python3 tools/lexicon_audit.py --preset hedge`
 
