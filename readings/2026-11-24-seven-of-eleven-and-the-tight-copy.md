@@ -124,3 +124,69 @@
 `README.md` §4 の件数表は 問い331・断片175・関係5,086 を指したままで、実数（338・188・5,210）との差が開いている。B案により通常回では `README.md` を編集しないため、この同期は次の `editorial_review` 回が `map_build.py --sync-readme` で行う。二編とも `draft` のままで、`selected` への昇格判断もその回に委ねる。
 
 `relations.d` は統合後 62 ファイルで、余裕は18。約18セッション後に同じ判断が要る。`read_log.d` は 74 で、こちらは6セッションで soft 上限に達する。次に `read_log.d` を統合する者は、`sessions.d` と `relations.d` で確立した「同一ディレクトリ内の `<最古日付>-000000000000.jsonl` へ一字も変えず移す」手順をそのまま使える。統合の単位は予算の1/4程度（20ファイル前後）が目安である。
+
+---
+
+## 最終確認（同期・CI・マージ）——本文は書き換えず、後に足す
+
+上の §十一 はマージ前の計画であり、以下は実際に起きたことの記録である。本文は一字も書き換えていない（errata の作法に倣い、訂正も追記で行う）。
+
+### 1. 開始時の 0/0 は、PR 作成後に崩れた
+
+開始時点の `HEAD` = `origin/main` = `12b6db8`（PR #138 のマージコミット）で、`git rev-list --left-right --count HEAD...origin/main` は `0 0` だった。PR #139 を作り、最初の `ledger-ci` が `pass`（50秒）になったあと、マージ前の再同期のために `git fetch origin main` を実行すると、`origin/main` は `12b6db8` → `ff736e8` へ進んでいた。
+
+- 差分は3コミット。`04304e2`「compact oldest 21 state/relations.d shards into 2026-10-24-000000000000.jsonl (80 -> 60)」、`25720e1`（PR #140 / `SESSION-20261027-ed0178`）、そのマージコミット `ff736e8`。
+- `gh pr view 139` は `mergeable=CONFLICTING` / `mergeStateStatus=DIRTY`。開始時の 0/0 だけを信じてマージしていれば、コンフリクトのある PR を通すところだった。§十一 の判断ルール（マージ直前に必ず再 fetch する）が効いた唯一の場面である。
+- ことに `04304e2` は、本セッションが §九 で行ったのと**同じ保守**（`state/relations.d/` の最古シャード統合）を、並行セッションが先に実行したものだった。80→60 と 80→61 という差は、統合した本数の差（21本／20本）にすぎない。
+
+### 2. 実行した同期
+
+- 作業ブランチは変えずに `git merge origin/main --no-commit`。衝突は2ファイルだけだった。`READING_MAP.md` と `state/relations.d/2026-10-24-000000000000.jsonl`。
+- **`state/relations.d/2026-10-24-000000000000.jsonl`**：両ブランチが同じ最古ファイル群を別々に1本へ統合していたので、単純な ours／theirs では片方の行が消える。手で混ぜずに `origin/main` 側（21ファイル・2,853行）を採り、**自ブランチが統合した20ファイルの2,773行がすべて含まれていること**を `relation_id` の集合で確認した（missing 0、extra 80 は `a20c057fcee0` の分）。`main` が削除した `2026-10-25-a20c057fcee0.jsonl` は、こちらの残置分も同じマージで消えた（git が削除として処理）。
+- **`READING_MAP.md`**：どちらも選ばず、マージ後の union から `python3 tools/map_build.py` で再生成して解決した（613,310 bytes）。
+- **意味的な衝突の点検**：PR #140 の追加は `Q-20261027-a44b77`・`FRAG-20261027-e5544f`「褒められて俯かない鏡」・`FRAG-20261027-f71adf`「底の銘を伏せる朝」・関係・読み痕跡で、本セッションの ID（すべて `20261124` 採番）とも、継承した問い・素材とも重複しない。`validate_seed.py` は重複 ID なしで PASS した。
+
+### 3. CI の1回目の失敗と、その原因
+
+マージコミット `651c109` の `ledger-ci`（run `40450718886`）は「Check READING_MAP.md is current」で 7秒 で fail した。原因は GitHub 側でも生成器の非決定性でもなく、**手元の操作順**だった。
+
+`git checkout --ours READING_MAP.md` → `git add READING_MAP.md` → `python3 tools/map_build.py` の順で実行したため、再生成前の内容が index に残り、`git commit` が作業ツリーではなく index を記録した。生成物は正しかったが、ステージされた版が古かった。クリーンクローンで再現すると `STALE READING_MAP.md` が出て、原因が確定した。
+
+対処は、`map_build.py` で再生成 → `git add -A` → `commit --amend`。そのうえで **CI と同じ5検査をクリーンクローンで再現**して確認した（`/tmp` に clone し、`map/` も未生成の状態で実行）。
+
+```
+python3 tools/validate_seed.py                 PASS (questions=339, fragments=190, relations=5235)
+python3 tools/inspect_inquiry.py --check-map   PASS
+python3 tools/size_budget.py                   PASS
+python3 tools/read_log_backfill.py --check     3146/3146 PASS
+node --check viewer/app.js                     OK
+python3 -m unittest discover -s tests          Ran 284 tests — OK
+```
+
+### 4. 同期後の実測
+
+| 項目 | 開始時 | 同期後（マージ時点） |
+|---|---:|---:|
+| 問い | 337（open 316／paused 21） | **339**（open 318／paused 21） |
+| 素材 | 2,433（接続 594） | 2,433（接続 594、不変） |
+| モチーフ | 59 | 59（不変） |
+| 断片 | 186（selected 63／draft 123） | **190**（selected 63／draft 127） |
+| 関係 | 5,186（断片↔断片 457） | **5,235** |
+| セッション | 140 | **142** |
+| 読み痕跡 | 4,467 | **4,526** |
+| 編集判断・訂正 | 71・36 | 71・36（不変） |
+| `relations.d` ファイル数 | 80 | **62**（main 側の21ファイル統合＋各セッションの新規シャード） |
+
+本セッションの寄与は問い +1、断片 +2、関係 +24、セッション +1、読み痕跡 +26。残りは並行セッション `SESSION-20261027-ed0178` の寄与である。
+
+### 5. CI とマージ
+
+- head `4c4371f` の pull_request イベント run `40450897949` は `validate` pass（50秒）。
+- マージ直前の再 fetch で `origin/main` は `ff736e8` のまま（left-right `2 0`）、`mergeable=MERGEABLE` / `mergeStateStatus=CLEAN` を確認して `gh pr merge 139 --merge` を実行した。マージコミットは `5c9def2`。
+- マージ後の `main` への push で走った `ledger-ci`（run `40451089343`、50秒）と `build-reading-map`（run `40451089324`、13秒）はいずれも `success`。
+
+### 6. §九 の記述への追記（訂正ではない補足）
+
+§九 は「ファイル数は 80→61、新規シャードを足して 62」と書いた。これは**自ブランチ単独の観測としては正しい**が、マージ後は `main` 側の統合（21ファイル・2,853行）が採られ、最終的な `relations.d` は 62 ファイルである。数え方の基準が「自ブランチの統合20本」から「`main` の統合21本」へ移っただけで、行の欠落はない（`relation_id` 集合で missing 0 を確認）。§九 の「80→61」という途中の数は、そのまま残す。
+
+`read_log.d` は統合後 74 ファイルで、soft 上限 80 まで余裕は6。次にこの保守を行うセッションは、`sessions.d`・`relations.d` で確立した手順（同一ディレクトリ内の `<最古日付>-000000000000.jsonl` へ一字も変えず移す）をそのまま使えるが、**同じ保守を並走ブランチが同時に行うと同じ衝突が起きる**。統合の前に `git fetch origin main` を取り、`relations.d`／`read_log.d` のファイル数と `2026-10-24-000000000000.jsonl` の有無を確認するのが次の作法になる。この所見は、モード移行の閾値表（[`docs/mode-rotation-triggers.md`](../docs/mode-rotation-triggers.md) §3）に「保守の衝突」として足す候補だが、本セッションでは表を編集していない（閾値表の改訂は実測と同時に行う、という同 §5 の定めによる）。
