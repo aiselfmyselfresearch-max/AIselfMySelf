@@ -60,4 +60,12 @@ scene→poem、三人称→fictional_first_person の形式転換で、同じ「
 - `README.md` / `docs/sessions.md` は編集しない（`docs/parallel-work.md` B案）。`READING_MAP.md` のみ `tools/map_build.py` で union から再生成。
 - 検証：`validate_seed.py`、`inspect_inquiry.py --check-map`、`size_budget.py --strict`、`read_log_backfill.py --check`、`python3 -m unittest discover -s tests`、`node --check viewer/app.js` の全通過を確認（GitHub Actions `ledger-ci` と同一）。
 
+## 7. マージ前の最新 `origin/main` との同期（自律判断の記録）
+
+コミット後に `git fetch origin main` で確認したところ、`origin/main` は分岐点 `1550510` から **`418265d`（PR #145）** へ進んでいた。内訳は並行セッション `SESSION-20261126-079720`（`revision_and_variation`、『花は札を読まない』を一人称書簡『灰の宛名』へ変奏）の断片・問い・関係・読み痕跡・セッション各シャードと READING_MAP.md の再生成。人間の確認を待たず、ブランチを最新 main に載せ替えるため `git merge origin/main --no-edit` を選んだ（リポジトリの既往も "Merge remote-tracking branch 'origin/main' into arena/..." 方式）。
+
+- 衝突は生成物 `READING_MAP.md` のみ。双方が union から再生成していたため、マージ後の union でもう一度 `tools/map_build.py` を走らせて解決した（手で混ぜない）。JSONL シャードはすべて別名の追記で衝突せず、`validate_seed.py` は重複 ID なしで通過。並行セッションの新問い `Q-20261126-fe52e5`（数字の宛名・花の札・読める者の負債）と本セッションの `Q-20261126-6a5ff4`（写真・贈与・返却先）は主題を共有しつつ素材と具体像が異なり、重複ではないことを確認した。
+- 同期後の実測：問い 342・モチーフ 59・素材 2,433・断片 194・関係 5,290（断片↔断片 484）・セッション 146・読み痕跡 4,599・編集判断 77。`readings/` 180 本。§6 の「340→341」等の矢印は**本セッション単独の寄与**（分岐点時点の union への差分）であり、同期後の絶対値は並行セッション 1 回分だけ大きい。
+- 同期後も CI 相当を再実行して全通過：`validate_seed` / `--check-map` / `size_budget --strict`（`read_log.d` 79 ファイルで soft 80 内、`read_log_backfill --write` は追記 0）/ `read_log_backfill --check`（3157/3157）/ `unittest 284` / `node --check` / 自断片 2 編の scriptorium 0 ヒット。これを確認してから PR を作成し、`main` へマージする。
+
 （本ノートは台帳から独立した作業文書であり、AIの内面や生身の経験の事実報告ではない。`CONTENT_POLICY.md` にもとづき、登場する写真師・女・島の者は創作上の声である。）
