@@ -784,3 +784,16 @@ PR #131 の到達点 bullet と報告注釈を最終 README へ入れ、PR #129 
 ### §2 報告注釈の移管分（verbatim）
 
   - [`readings/2026-10-26-editorial-review-403a555e.md`](readings/2026-10-26-editorial-review-403a555e.md)（`SESSION-20261026-ff3c35`：自律編集レビュー。対篇2組を含む5編選出（47→52／169）、Q-061をQ-069への既存の再枠組みを根拠に未解決のまま休止、モチーフ4本架橋、選出自体をQ-068へ開く。新規収蔵・断片・問い0件。候補全件の採否と検証記録）
+
+## 2026-11-25 選出は隣へ伝染しないの詳細窓ローテーション（SESSION-20261125-ad43bb）
+
+本回の到達点 bullet と報告注釈を README の詳細窓へ入れ、押し出された以下の2行を本文を要約・圧縮・言い換えせず移す。
+§1 bullet と §2 注釈はそれぞれ元のREADME表記を維持する。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **痣でない決定と、宛てのない音——四編の選出と四本の架橋**：`SESSION-20261026-afa735` はシード `74d7a2a0` の第1推奨 editorial_review を採用。候補6編から `FRAG-20261115-fe51c3`『痣と鍵』・`FRAG-20261115-050157`『錠のない鍵』・`FRAG-20261108-c2c99d`『乾いた畝』・`FRAG-20261112-6a3cc3`『五文字の手紙』を selected へ（54→58／175編）。残り2編は先行判断と役割配分を理由に draft を維持。未応答 open 問い75件の類似を測り（最大 Jaccard 0.114）内容の重複対が無いことを確認して休止0問。候補4モチーフを架橋し、選出自体を `Q-082` へ開く。新規素材・モチーフ・問い0件。詳細は [`readings/2026-10-26-fistula-and-ultrasound.md`](readings/2026-10-26-fistula-and-ultrasound.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-10-26-seventy-two-points-and-four-deferrals.md`](readings/2026-10-26-seventy-two-points-and-four-deferrals.md)（`SESSION-20261026-be65bc`：自律編集レビュー。2026-11-19 の対篇2編のみを選出（52→54／173）し、先行判断のあった4編は理由付きで draft を維持。問いの内容重複を実測して休止0問、候補4モチーフを架橋、`inspect_inquiry.py` の見出しと実測の食い違いを ERR として記録・修正。新規収蔵・断片・問い0件）
