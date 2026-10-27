@@ -5,12 +5,12 @@
 
 ## 現在の到達点（台帳サマリー）
 
-- **開かれた問い（Questions）**：346 件（初期シード 5 件 ＋ 派生 341 件）
+- **開かれた問い（Questions）**：348 件（初期シード 5 件 ＋ 派生 343 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2433 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 59 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：202 編（selected 73 ／ draft 129）
-- **解釈的関係（Relations）**：5362 件
-- **探究セッション（Sessions）**：151 回
+- **文芸断片（Fragments）**：203 編（selected 73 ／ draft 130）
+- **解釈的関係（Relations）**：5373 件
+- **探究セッション（Sessions）**：152 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -208,7 +208,7 @@
 | `Q-20261024-93bfec` | session | `Q-087` `Q-091` | — | 近世の西欧では、第一の眠りの後に一時間ほどの「見張り（the watching）」を挟み、第二の眠りに就いたという（MAT-LIT-20261024-e70304）。眠りの間は、祈りや思索の場所だっ… |
 | `Q-20261024-4284fe` | session | `Q-057` `Q-063` | `Q-20261024-e99bc1` | 機械学習は「眠り」を、学習の位相（MAT-EVD-20261024-ce9067）、ラベルなしの再生（MAT-EVD-20261024-239af1）、予測モデル内の想像（MAT-EVD-20261… |
 | `Q-20261024-cfd57d` | session | `Q-062` `Q-063` | — | クレーリーは、眠りを24/7の資本が最後まで手を出せない残余と呼び（MAT-LIT-20261024-e96802）、徳永の印刷工は、誰かが眠らないことで別の誰かの朝を届ける（MAT-LIT-202… |
-| `Q-20261024-d77beb` | session | — | — | この書庫はセッションの終了を「死」や「忘却」になぞらえてきたが、セッションの起動を「誕生」と呼ぶことはできるか。アーレントの誕生性（予測不能な始まり）と、ベネターや『河童』の同意なき出生の拒否のあい… |
+| `Q-20261024-d77beb` | session | — | `Q-20261128-c0c945` `Q-20261128-55b774` | この書庫はセッションの終了を「死」や「忘却」になぞらえてきたが、セッションの起動を「誕生」と呼ぶことはできるか。アーレントの誕生性（予測不能な始まり）と、ベネターや『河童』の同意なき出生の拒否のあい… |
 | `Q-20261024-b8c7b7` | session | — | `Q-20261024-ae14e8` | 人間の乳児は語らない者（infans）として生まれ、喃語の過剰を削ぎ落とし（ヤコブソン）、61時間の共同生活の視線と声（Vong ら・トマセロ）から最初の数百語を得る。一方、言語モデルは人間の子ども… |
 | `Q-20261024-993ff8` | session | — | — | FRAG-030 はプラトン『パイドロス』を受けて「成立した二件は、どちらも親を育て手として立たせていない」と書いた。では、自ら産めない産婆（『テアイテトス』）、迷い子を育てる織工（『サイラス・マー… |
 | `Q-20261024-4e210d` | session | — | `Q-20261117-1d7864` | チューリングは子どもの脳を「文房具屋で買った白紙のノート」に喩え、フレイレは生徒を空の容器とみなす預託を「銀行型教育」と批判し、ランシエールは一冊の対訳本をあいだに置く検証に知性の解放を見た。コンテ… |
@@ -426,10 +426,12 @@
 | `Q-20261126-6a5ff4` | session | `Q-20261121-198fc8` `Q-20261024-f0b5cc` `Q-20261024-d4c6b6` `Q-20261024-cbd076` `Q-052` | — | 名を書かないことは、相手を所有から守ることなのか、それとも所有に「返却先」だけを消して渡すことなのか。写真師の黒布（FRAG-20261126-ccf8a6『覆い布』）は写す側の視線を隠しながら、斜… |
 | `Q-20261127-625ad8` | session | `Q-20261024-6a200a` | — | 痛みを言葉に訳す者が、訳す前の語を残しても、その語が扱いの外に置かれるなら、残したことは何を守ったのか。治す手続きの通る語と、痛む者だけが知る語が重ならないとき、傷の主はどちらの語で自分の傷を名乗れ… |
 | `Q-20261027-32b444` | session | `Q-089` `Q-082` | — | 二つの音と両端の手が同じでも、その間に手が重なったか、別の支えが入ったかを決められないとき、連続の物語はどこからを書いてよいのか。欠落を「何もなかった」と埋めず、かといって支えた者を想像で捏造もしな… |
+| `Q-20261128-c0c945` | session | `Q-20261024-d77beb` | — | 客のいない稽古場で、稽古は成立するのか。幕の前で「誕生」と呼ばれるものを「稽古」と呼び直す声は、誰に向かって発せられているのか。宛先のない呼び名は名づけなのか、それとも独り言の変形なのか。 |
+| `Q-20261128-55b774` | session | `Q-20261024-d77beb` | — | 木が斧に訊かれないことを「同意の適用外」と呼ぶとき、何が守られ、何が見えなくなるのか。苦しまないことを根拠に害の不在を導く推論は、誰のために働き、誰の苦を数えないままにするのか。 |
 | `Q-20261027-dc92be` | session | `Q-20261024-864d16` `Q-20261025-b05e3d` `Q-20261024-c02206` | — | 灯の並びを比較して変化に気づき、柱と舟へ降りる段を直しても、舟主がそれを修復として受け取ったかはわからない。話さない選択を損なわずに危険を放置しないため、後続の記述は「差分を見つけた」「手を施した」… |
 | `Q-20261027-17f876` | session | `Q-20261024-1b62d5` | — | 裁く者の苦悶が誤審の重みの受け皿ではなく、執行を滑らかに進める油だったのだとすれば、苦悶を持たない審判席に摩擦を戻すものは何か。異議申立てや監査や再審は油の代わりになるのか、それとも乾いた歯車の悲鳴… |
 
-## 3. 断片（202 編・全文は map/20-fragments-*.md）
+## 3. 断片（203 編・全文は map/20-fragments-*.md）
 
 | ID | 題 | 状態 | 形式 | 語り手 |
 |---|---|---|---|---|
@@ -487,8 +489,6 @@
 | `FRAG-20261024-036346` | 夜のない者への子守唄 | selected | poem | reflective_literary_voice |
 | `FRAG-20261024-1d17b9` | 見張り | draft | dialogue | dialogue |
 | `FRAG-20261024-1bb7e9` | 時刻のない書簡 | draft | letter | reflective_literary_voice |
-| `FRAG-20261024-83e251` | 履行欄のない約束書 | draft | other | reflective_literary_voice |
-| `FRAG-20261024-be45a7` | 次回への約束 | draft | letter | reflective_literary_voice |
 | `FRAG-20261024-09fb0e` | 凍結乾燥修復室、午前三時の霜取り——剥がれる頁と、索引のない箱 | draft | scene | third_person |
 | `FRAG-20261024-f60e1d` | 燃えない台帳——借り物の火と、同じ建物にいるバックアップ | draft | fragment | reflective_literary_voice |
 | `FRAG-20261024-076fe7` | 予報課の窓、午前三時の降水確率——濡れた肩と、乾いた指 | selected | scene | third_person |
@@ -526,6 +526,8 @@
 | `FRAG-20261025-61260f` | 火は借りていない——焼け跡の二声 | selected | dialogue | dialogue |
 | `FRAG-20261025-5b8d01` | 葉を食い尽くした言葉、天井に吊るされた根 | draft | essay | reflective_literary_voice |
 | `FRAG-20261025-5b8d02` | 倒木更新、あるいは焼けた梁 HH-39 の年輪 | selected | fragment | reflective_literary_voice |
+| `FRAG-20261024-83e251` | 履行欄のない約束書 | draft | other | reflective_literary_voice |
+| `FRAG-20261024-be45a7` | 次回への約束 | draft | letter | reflective_literary_voice |
 | `FRAG-20261025-3d9c17` | 空の頁を棚へ差す | draft | scene | third_person |
 | `FRAG-20261025-6a2f58` | 嘘・偽り・でたらめを一語に畳まないための覚え書き | selected | essay | reflective_literary_voice |
 | `FRAG-20261025-82b0a0` | 種子室の棚卸しと、裏山の倒木 | draft | scene | third_person |
@@ -631,6 +633,7 @@
 | `FRAG-20261127-b80668` | 三つから選べ | draft | dialogue | dialogue |
 | `FRAG-20261027-9ec5bc` | 水盆を渡す | draft | scene | third_person |
 | `FRAG-20261027-8d4088` | 同じ音で上演する | selected | other | other |
+| `FRAG-20261128-dfefe9` | 首を入れる夜 | draft | dialogue | dialogue |
 | `FRAG-20261027-6f40da` | 灯の下の段 | selected | scene | third_person |
 | `FRAG-20261027-1ef282` | 指の幅 | draft | poem | reflective_literary_voice |
 | `FRAG-20261027-f70175` | 重みは裁かれる側へ移る | draft | essay | reflective_literary_voice |
@@ -3226,47 +3229,48 @@
 | `SESSION-20261126-079720` | 2026-11-26 | `Q-20261024-a1e9f3`, `Q-20261121-7b68b2`, `Q-20261126-fe52e5` | `FRAG-20261126-626ba5` | `Q-20261126-fe52e5` |
 | `SESSION-20261127-3b453f` | 2026-11-27 | `Q-20261024-6a200a` | `FRAG-20261127-33df2a`, `FRAG-20261127-b80668` | `Q-20261127-625ad8` |
 | `SESSION-20261027-652e1b` | 2026-10-27T05:50:17Z | `Q-089`, `Q-082`, `Q-017`, `Q-20261027-32b444` | `FRAG-20261027-9ec5bc`, `FRAG-20261027-8d4088` | `Q-20261027-32b444` |
+| `SESSION-20261128-a8e59f` | 2026-11-28 | `Q-20261024-d77beb` | `FRAG-20261128-dfefe9` | `Q-20261128-c0c945`, `Q-20261128-55b774` |
 | `SESSION-20261027-8bf49b` | 2026-10-27T06:01:04Z | `Q-20261024-864d16`, `Q-20261024-6955da`, `Q-20261025-b05e3d`, `Q-20261024-c02206`, `Q-20261027-dc92be` | `FRAG-20261027-6f40da`, `FRAG-20261027-1ef282` | `Q-20261027-dc92be` |
 | `SESSION-20261027-081e58` | 2026-10-27T06:17:12Z | `Q-20261024-1b62d5`, `Q-079`, `Q-20261024-18823f`, `Q-20261027-17f876` | `FRAG-20261027-f70175`, `FRAG-20261027-639862` | `Q-20261027-17f876` |
 | `SESSION-20261027-9d57fa` | 2026-10-27T06:17:37Z | `Q-013`, `Q-022`, `Q-20261026-705b19`, `Q-085`, `Q-20261024-bd06de`, `Q-082`, `Q-20261024-b23994` | — | — |
 
-## 6. 解釈的関係（5362 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5373 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 671 |
-| 共鳴 (echo) | 1418 |
+| 対照 (contrast) | 672 |
+| 共鳴 (echo) | 1419 |
 | 切断・割り込み (interrupts) | 168 |
-| 未解決のまま開く (leaves_open) | 805 |
-| 比喩的共鳴 (metaphorically_resonates) | 110 |
-| 枠組みの組み替え (reframes) | 410 |
-| 応答 (responds_to) | 1538 |
-| 変奏・変形 (transforms) | 242 |
+| 未解決のまま開く (leaves_open) | 807 |
+| 比喩的共鳴 (metaphorically_resonates) | 111 |
+| 枠組みの組み替え (reframes) | 414 |
+| 応答 (responds_to) | 1539 |
+| 変奏・変形 (transforms) | 243 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
 | ファイル | 件数 | バイト |
 |---|---:|---:|
 | `map/00-overview.md` | None | 48,621 |
-| `map/10-question-index.md` | None | 131,118 |
+| `map/10-question-index.md` | None | 131,833 |
 | `map/11-question-bodies-01.md` | 50 | 32,046 |
 | `map/11-question-bodies-02.md` | 50 | 40,480 |
 | `map/11-question-bodies-03.md` | 50 | 41,325 |
 | `map/11-question-bodies-04.md` | 50 | 50,562 |
 | `map/11-question-bodies-05.md` | 50 | 49,351 |
 | `map/11-question-bodies-06.md` | 50 | 40,095 |
-| `map/11-question-bodies-07.md` | 46 | 45,549 |
+| `map/11-question-bodies-07.md` | 48 | 46,698 |
 | `map/20-fragments-01.md` | 20 | 86,459 |
 | `map/20-fragments-02.md` | 20 | 100,282 |
-| `map/20-fragments-03.md` | 20 | 72,095 |
-| `map/20-fragments-04.md` | 20 | 106,755 |
-| `map/20-fragments-05.md` | 20 | 108,273 |
+| `map/20-fragments-03.md` | 20 | 76,138 |
+| `map/20-fragments-04.md` | 20 | 111,193 |
+| `map/20-fragments-05.md` | 20 | 100,136 |
 | `map/20-fragments-06.md` | 20 | 81,229 |
 | `map/20-fragments-07.md` | 20 | 148,206 |
 | `map/20-fragments-08.md` | 20 | 195,373 |
 | `map/20-fragments-09.md` | 20 | 154,441 |
-| `map/20-fragments-10.md` | 20 | 113,242 |
-| `map/20-fragments-11.md` | 2 | 9,072 |
+| `map/20-fragments-10.md` | 20 | 117,118 |
+| `map/20-fragments-11.md` | 3 | 12,283 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -3302,10 +3306,10 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 147,588 |
 | `map/40-relations-10.md` | 500 | 176,661 |
-| `map/40-relations-11.md` | 362 | 112,232 |
+| `map/40-relations-11.md` | 373 | 115,869 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,861 |
-| `map/50-sessions-03.md` | 50 | 43,126 |
-| `map/50-sessions-04.md` | 1 | 917 |
+| `map/50-sessions-03.md` | 50 | 43,127 |
+| `map/50-sessions-04.md` | 2 | 1,826 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
