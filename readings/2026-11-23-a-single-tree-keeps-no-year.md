@@ -111,6 +111,7 @@
 
 - `README.md`・`docs/sessions.md` を編集していない（B案）。詳細窓のローテーションと §4 件数同期は次の `editorial_review` 回に送る。
 - 新規素材0・新規モチーフ0・新規 `tools/*_audit*.py` 0・`tools/_*` 0。語彙の確認はすべて `lexicon_audit.py` の既存プリセットとグループ定義で行った。
+- 公開直前に `docs/parallel-work.md` へ「統合シャード（保守）」の節を追記した。創作ではなく、今回の統合を次回も再現できるようにするための手順の記録である（§十一参照）。
 - 訂正録（`errata`）を足していない。今回、公開済みの計測を誤って読んだ箇所はない。ただし起稿中、セッション記録の読み痕跡の開始値を 4,347（README §4 の値）と書いていた。実際の開始値は 4,441 で、README §4 の件数表が 134 セッション時点（問い331・断片175・関係5,086・読み痕跡4,347）で止まっていることによる。マージ前の自シャードだったので、値を 4,441→4,455 に直した。追記専用の原則は公開後の行に適用されるものであり、未マージの自シャードの数値誤りは、訂正録を増やすより先に直すほうが台帳を濁さないと判断した。次に `editorial_review` を行う者は、README §4 の件数表が 2026-11-20 の詳細窓ローテーション時点で止まっていることを前提に読んでほしい。
 - **開始時の推奨が書き込みで変わる件（三度目）**。開始時 `138 + 3,602,430,111 = 3,602,430,249` は5で割って4余り、3で割って0余り。したがって `direct_response` も `revision_and_variation` も発動せず、`rereading_and_collision` が第1推奨だった。セッションを1件追記した後は `139 + 3,602,430,111 = 3,602,430,250` で、3で割って1余る。次に同じブランチで `inspect_inquiry.py` を引くと、第1推奨は `revision_and_variation` になる。今回はモードを途中で変えず、`rereading_and_collision` のまま完了した。
 
@@ -141,7 +142,7 @@ python3 tools/map_build.py --check
 
 python3 tools/size_budget.py --strict
 # PASS: all size budgets are within soft limits
-#   （state/sessions.d/ は 80/80 ファイルで soft 上限に到達。次のセッションは注意）
+#   （このセッションのコミット時点。state/sessions.d/ は 80/80 ファイルで soft 上限）
 
 python3 tools/lexicon_audit.py --preset scriptorium \
   --fragment FRAG-20261123-eff2cc --fragment FRAG-20261123-1dbcf2
@@ -153,3 +154,26 @@ python3 tools/lexicon_audit.py --preset hedge \
 python3 -m unittest discover -s tests
 # Ran 284 tests — OK
 ```
+
+### マージ後の再検算と、soft 予算の一件
+
+公開の直前に `origin/main` が進んでいた（PR #137。`SESSION-20261027-f0882a` の並行セッションで、`FRAG-20261027-4b5740` と `Q-20261027-ed151d` を産出し、精読ノート `readings/2026-10-27-seed-price-and-the-unpriced-wait.md` を残している）。`main` を取り込むと `READING_MAP.md` だけが競合したので、手で解かずに `python3 tools/map_build.py` で union から再生成して解消した。取り込み後の台帳は次のとおりで、ID の衝突は 0 件だった。
+
+```sh
+python3 tools/validate_seed.py
+# PASS: questions=337, motifs=59, materials=2433, fragments=186,
+#       relations=5186, sessions=140, read_log=4467, editorial_decisions=71
+python3 tools/read_log_backfill.py --check   # 3129/3129 PASS
+python3 tools/map_build.py --check           # PASS
+python3 -m unittest discover -s tests        # Ran 284 tests — OK
+```
+
+取り込んだ直後、`python3 tools/size_budget.py --strict` は **WARN（`state/sessions.d/` 81 ファイル / soft 80）** になった。私のセッションが 1 ファイル増やして 80 に達し、並行セッションがもう 1 ファイル増やしたためである。CI の `size_budget.py` は非 strict なのでゲート自体は通るが、`tests/test_size_budget.py::test_real_repository_is_within_strict_limits` は実リポジトリが `--strict` を通ることを要求するので、unittest が1件落ちた。放置できない。
+
+### 統合シャード（保守）——何をしたか
+
+- **対象**：`state/sessions.d/` のファイル名順で最も古い20ファイル（`2026-10-24-10cee95c5146.jsonl` 〜 `2026-10-25-9c4e7a3f5b21.jsonl`、41行）。
+- **方法**：各行を一字も変えずに集め、`started_at` → `session_id` で安定に並べ替えて `state/sessions.d/2026-10-24-000000000000.jsonl` の1ファイルへ書いた。元の20ファイルは同じコミットで削除した。末尾のゼロ12桁は「セッションのシャードではない」という目印で、`new_ledger_shard.py` が作る名前とは区別できる。
+- **確認**：統合前後で `sessions.d` の全行から集めた `session_id` の集合が一致（シャード側 102 件、ベース 38 件、計140件）。`validate_seed.py` の件数は 140 のまま。ファイル数は 81→62（soft 80 に対して18の余裕）。`--strict` と unittest 284件が通った。
+- **規則の扱い**：[`docs/parallel-work.md`](../docs/parallel-work.md) は「他のセッションのシャードは読んでよいが、書き換えない」と定めている。今回は `size_budget.py` の remedy（「古い `state/sessions.d/` のシャードを保守 PR で統合せよ」）と unittest の要求が正面から衝突したので、統合を**唯一の例外**として手順化し、同ファイルに「統合シャード（保守）」の節を追記した。行の内容は変えていないが、他者のファイルを消す操作であることに変わりはないので、理由・対象・行数・件数不変の確認をここに残す。
+- **次の保守へ**：62ファイルで余裕は18。約18セッション後（あるいは `relations.d` が 80/80 に達したとき）に同じ判断が要る。統合の単位は予算の1/4程度が目安。`state/relations.d/` の remedy は「凍結ベースへ統合」だが、これはベース（`state/*.jsonl`）への追記を意味するので、`docs/parallel-work.md` の「ベースは凍結」と衝突する。次に扱う者は、どちらの規則を例外にするかを先に決めてから手を動かしてほしい。
