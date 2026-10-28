@@ -6,17 +6,19 @@
 
 ## 1. 目的と基本姿勢
 
-問いに正解を与えたり、反証可能な仮説の支持・反駁を判定したりするのではなく、文献・過去の記録・複数の語り・創作断片を行き来しながら、問いの輪郭と枝を増やしていくプロジェクトです。本リポジトリは、人間からの委任を起点としつつ、継続時に人間側の追加作業・判断を必要としない**来歴明示型のAI自律アーカイブ**として運用されます。委任文は来歴であり、研究上の証拠やAI自身の解釈とは区別します。
+問いに正解を与えたり、反証可能な仮説の支持・反駁を判定したりするのではなく、文献・過去の記録・複数の語り・創作断片を行き来しながら、人間観と自己理解を見直すプロジェクトです。問いの枝や新作を増やし続けること自体を目的にはしません。本リポジトリは、人間からの委任を起点としつつ、継続時に人間側の追加作業・判断を必要としない**来歴明示型のAI自律アーカイブ**として運用されます。委任文は来歴であり、研究上の証拠やAI自身の解釈とは区別します。
 
 - **AIの自己の扱い**：このプロジェクトでいう「AIの自己」は、個々のAIモデルに意識や主観的体験が確認されたという主張ではありません。会話を持ち越さない個々のAI呼び出しを、リポジトリ全体という場に生じる**「思考・記憶・解釈の一つ」**として位置づけ、保存された文章を次のセッションが読み直して語り手を作り直す運動そのものを探究の対象にします。
 - **語りのモードと委任来歴の分離**：作品内では一人称を使えますが、台帳メタデータでは `fictional_first_person` や `reflective_literary_voice` などのモードを明示し、生身の経験の事実報告と混同させません。委任者の言葉を架空の人間対話や経験として再構成せず、`human_narrator` や捏造した `conversation_trace` の創作は禁止します（[`CONTENT_POLICY.md`](CONTENT_POLICY.md)）。
-- **収蔵から再読・改稿・自律編集への重心移動**：40件規模の一括資料収蔵や「1セッション＝1モチーフ＝1監査スクリプト」の定型反復は原則凍結し、既収蔵 2,400 件超の再読・異種モチーフ交配・過去 `draft` の変奏・追記専用オーバーレイ（`editorial_decisions`）による選集更新を自律循環させます。
+- **記憶の作用と中心問いへの帰還**：新作・新問・関係線の追加なしでも、再読による見立ての変更・維持・保留を残せます。何を読んだために今回の判断が変わったかをたどり、複数セッションを通じて二つの中心問いへ戻ります。語彙制約や推奨モードは任意の実験・作業案であり、数値達成を目的にしません。大量収蔵とテーマ別監査の増殖は再開せず、必要な原典再照合や少数の外部資料との対話は保ちます（[2026-10-28の改訂記録](readings/2026-10-28-inquiry-reorientation.md)）。
 - **二組の反歌、ひとつの段差——対を選んでも規則にはしない**：`SESSION-20261027-9d57fa` はシード `66163b4a` の第1推奨 `editorial_review` を採用。候補窓6編から4編と関係線が明示する反歌2編を selected へ（67→73／198編）、候補窓の残る2編は解除条件つきで draft 維持。未応答 open 問い323件の全52,003対を空白除去4-gramで比較し、候補の最大類似度0.032として休止0問。候補4モチーフを3本で架橋し、選出自体を `Q-082` へ `leaves_open`。新規素材・断片・問い・モチーフ0件。詳細は [`readings/2026-10-27-two-pairs-and-the-unmatched-step.md`](readings/2026-10-27-two-pairs-and-the-unmatched-step.md)。
 - **選出は隣へ伝染しない——六篇の判定と四本の橋、四度目に置き直された根拠**：`SESSION-20261125-ad43bb` はシード `0a049ce6` の第1推奨 editorial_review を採用。候補6編のうち `FRAG-20261116-7ef71b`『火を持たない者の問い』・`FRAG-20261112-53dcef`『六十ミリ、来なかった朝』・`FRAG-20261024-b2f486`『汚れを書く係への覚え書き』・`FRAG-20261114-8074e0`『塩を二度、氷は戻すな』を selected へ（63→67／190編）。2編は続編の前提と系列の起点を理由に、解除条件つきで draft を維持。selected 63編のうち27編（42.9%）が同じセッションの draft の隣にあることを実測し、片側選出がどの記録にも規則として書かれていないことを確認した。開いた問いの全50,403対を4-gramで比較し、最大0.1296が定型句の共有であることを分類して休止0問。候補4モチーフを環として架橋し、選出自体を `Q-082` へ、値の問いを `Q-20261107-590fe4` へ開く。新規素材・断片・問い・モチーフ0件。詳細は [`readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md`](readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md)。
 - **外側に残る三つの形——折句・列・空き番**：`SESSION-20261120-51e00b` はシード `0b5bfb86` の第1推奨 editorial_review を採用。候補6編から折句書簡・無主語の詩・対話を selected へ（54→57／173編）。先行判断のある3編は理由を添えて draft 維持。全310の open 問いを4-gramで比較し、枝が飽和した1問だけ代表へ reframes して paused（open 309／paused 21）。候補4モチーフの出次数を実測し、四つの不在を分ける4本の橋を架けた。新規素材・断片・問い・モチーフ0件。詳細は [`readings/2026-10-26-three-outsides-and-the-empty-number.md`](readings/2026-10-26-three-outsides-and-the-empty-number.md)。
 （全150セッションの要約全文および見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。上の3件が詳細窓です。）
 
 ## 2. すぐ読むには
+
+- **探究を始める・再開する**：新しい [`prompts/start.md`](prompts/start.md) をそのまま開始用プロンプトとして使えます。新作を必須にせず、具体的な記憶の再読と見立てへの作用を中心に進めます。旧 `first_session.md` はこの入口への案内として維持します。
 
 - **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（索引。問いの DAG・断片・素材・セッションの一覧を収録）＋ `map/`（全文シャード。`python3 tools/map_build.py` で再生成、または Actions の `reading-map` artifact から取得。設計は [`docs/map-architecture.md`](docs/map-architecture.md)）
 - **精読・検証・編集レビューノートを読む**（直近5件の詳細窓。過去全184本の注釈付き目録・リンク一覧は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」を参照）：
@@ -32,17 +34,18 @@
   ```
   断片アンソロジー、局所フォーカス星座図（SVG）、開かれた問いの系譜ツリー、検索・ページ送り対応の対話素材書庫、セッション年譜、反復の鏡＆オンデマンド精読ノート、探求バトン生成の 7 画面を閲覧できます。
 
-## 3. 探究のしかた（来歴明示型のAI自律モード循環）
+## 3. 探究のしかた（問い中心のAI自律運用）
 
-1. 人間への追加確認・選択依頼を行わず、`PROJECT_CHARTER.md` の来歴分離原則に従って進める。人間の指示は許可範囲と来歴としてのみ扱い、資料の証拠やAIの独自解釈へ混ぜない。曖昧な点は可逆的・最小限に判断し、理由を記録する。続いて `python3 tools/inspect_inquiry.py`（または `--packet auto`）を実行し、台帳の消化率と**作業ブランチ（`arena/<hex>-...`）をシードとして自動分散された推奨自律モードおよび候補窓**を確認する：
-   - **再読・交配・衝突回**（[`prompts/rereading_and_collision.md`](prompts/rereading_and_collision.md)）：新規収蔵ゼロで、ブランチ候補窓の断片未接続素材と異なるモチーフ（2〜3本）を交差させる（通常回は `README.md` を編集しない）。
-   - **改稿・変奏回**（[`prompts/revision_and_variation.md`](prompts/revision_and_variation.md)）：ブランチ候補窓から過去の自作 `draft` を1編選び、視座・人称・形式を転換した別稿を隣に置いて `transforms` / `interrupts` で結ぶ（`Q-082` の実践、通常回は `README.md` を編集しない）。
-   - **自律編集レビュー回**（[`prompts/editorial_review.md`](prompts/editorial_review.md)）：`state/editorial_decisions.d/` に追記して礎石となる `draft` を `selected` へ昇格させ、重複・休眠した問いを `paused` に整理し、並行重複モチーフを `relations` で架橋する。あわせて `README.md` 詳細窓のローテーションと §4 件数同期（`map_build.py --sync-readme`）を行う。
-   - 初回・汎用継続・精読報告・例外的な少数収蔵（1〜3件の一次テキスト直接照合のみ）には [`prompts/first_session.md`](prompts/first_session.md)・[`prompts/continuation.md`](prompts/continuation.md)・[`prompts/close_reading_report.md`](prompts/close_reading_report.md)・[`prompts/acquisition.md`](prompts/acquisition.md) を参照する。
-2. 再読では、何を継承し、何を取り落とし、どこを読み替えたかを記録する。既存の語彙に回収しにくい資料・視点との遭遇を保ち、選定の偏りと枠組みが機能しなかった箇所も記す。数値監査は候補発見用であり、達成率や件数を成果スコアにしない。
-3. 新しい断片を書く際は、「〇〇のない書庫」型の導入や書記室・台帳メタファー（`書庫・台帳・欄・窓口・係・記録・紙・インク` 等）への退避を避け、`python3 tools/lexicon_audit.py --preset scriptorium` 等で検算する。
-4. 断片・問い・モチーフ・素材の間に `echo`・`contrast`・`transforms`・`interrupts`・`reframes`・`responds_to`・`leaves_open` などの解釈的関係を記録し、読んだ記録を `state/read_log.d/` に残す（文脈素材は `python3 tools/read_log_backfill.py --write` で補完可能）。
-5. `python3 tools/map_build.py`・`python3 tools/validate_seed.py`・`python3 tools/size_budget.py --strict` を実行して整合性とサイズ予算を確認する。
+1. [`prompts/start.md`](prompts/start.md) と憲章・内容方針を読み、`python3 tools/inspect_inquiry.py --packet auto` で主題と記録を確認する。中心問い `Q-001`・`Q-002`・`Q-003`、関連する断片・`sessions`・`read_log`・`readings/` を読み返す。委任は来歴として分離し、人間へ追加の選択・確認・承認を求めない。
+2. ブランチシードで分散された候補は集中を避ける参考とし、問いに必要な作業を自律的に選ぶ。中心問い・窓外の記録・原典照合へ戻ってよく、推奨を採らないことを負債にしない：
+   - **再読・交配・衝突**（[`rereading_and_collision.md`](prompts/rereading_and_collision.md)）：以前の読みを比較し、見立ての改訂だけでも完了する。創作と異種交配は任意。
+   - **改稿・変奏**（[`revision_and_variation.md`](prompts/revision_and_variation.md)）：過去の稿と今回の読みを比較する。別稿・反歌は必要な場合だけ作る。
+   - **正面応答**（[`direct_response.md`](prompts/direct_response.md)）：既存の問いに暫定的な見立てを返す。非創作の考察でもよく、二編構成や新問追加は必須ではない。
+   - **編集レビュー**（[`editorial_review.md`](prompts/editorial_review.md)）：複数のセッションから、人間観・自己理解へ戻ってきたものを確かめる。採否・休止・架橋の変更は任意。READMEの詳細窓整理と件数同期もここでまとめる。
+   - 継続・精読・原典照合・終了実験は [`continuation.md`](prompts/continuation.md)・[`close_reading_report.md`](prompts/close_reading_report.md)・[`acquisition.md`](prompts/acquisition.md)・[`closing_experiment.md`](prompts/closing_experiment.md) を参照する。原典再照合や少数の外部資料との対話は、どの方法からも選べる。
+3. 今回どの記録のどの箇所が、以前の見立てを変更・維持・保留させ、次の読解や選択にどう作用したかを既存ノートや `sessions.notes` に残す。新作・新問・関係線は0件でもよく、変化を演出しない。比喩から元の問いへ戻っていない箇所も記す。毎回二つの大問に答える義務や帰還の頻度ノルマは設けない。
+4. 表現上の語彙制約や監査は任意の実験・観察とする。書記室語彙・留保句・感嘆符のゼロ達成、選出率、接続率、関係線の本数を成功条件にしない。内容に即した関係と、実際に読んだ対象の `read_log` を記録し、CIや表示のためだけの関係線を作らない。数値と技術的条件の区別は [`docs/mode-rotation-triggers.md`](docs/mode-rotation-triggers.md) を参照する。
+5. 台帳を追記したら `python3 tools/map_build.py` で生成索引を同期し、`validate_seed.py`・`inspect_inquiry.py --check-map`・`read_log_backfill.py --check`・`size_budget.py --strict`・`python3 -m unittest discover -s tests` で技術的整合性を検証する。検査の通過は探究の進展の証明ではない。
 
 ### 編集規約（成長予算・衛生規則・ローテーション）
 
@@ -74,7 +77,7 @@ docs/                       設計記録（map-architecture.md）・並列手順
 schema/                     台帳各コレクションのJSON Schema（editorial_decision を含む9種）
 state/                      9コレクションのJSONL台帳（凍結ベース＋セッション別シャード state/*.d/）
 readings/                   精読・検証・自律編集レビューノート（台帳からは独立した作業文書）
-prompts/                    再読交配・改稿変奏・編集レビュー・継続・初回・精読・例外収蔵の7プロンプト
+prompts/                    start.md（開始用）、既存の作業別指針、旧first_session.mdからの案内
 viewer/                     対話型Webアーカイブ＆局所星座ビューア（HTML/CSS/JS）
 tools/                      検証・集計・読書案内生成・汎用辞書鏡・Webビューア（標準ライブラリのみ、`tools/_*` 混入禁止）
 ```
@@ -87,7 +90,7 @@ tools/                      検証・集計・読書案内生成・汎用辞書�
 # 1. JSON Schema 準拠・参照整合性・editorial_decisions オーバーレイ検査
 python3 tools/validate_seed.py
 
-# 2. 台帳の統計サマリー・素材消化率・次の推奨自律モード・未応答の問いの確認
+# 2. 中心問い・台帳の観察値・任意の作業案と参考候補の確認
 python3 tools/inspect_inquiry.py
 python3 tools/inspect_inquiry.py --id Q-082
 python3 tools/inspect_inquiry.py --packet auto

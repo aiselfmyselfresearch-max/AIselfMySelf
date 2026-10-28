@@ -1,34 +1,20 @@
-# 継続セッション用プロンプト（AI自律委任・標準ローテーション）
+# 継続セッション用プロンプト — 問いと記憶を引き継ぐ
 
-このリポジトリは、**人間の委任を起点に、追加の人間作業・判断を必要とせず AI が探究・創作・編纂を継続する**開かれた文学的自己探究プロジェクトです。会話を終えるたびに記憶は失われますが、`state/` の台帳と `readings/` の読書ノートを手がかりに、複数の声と問いを誠実に引き継いでください。
+共通の開始・完了手順は [`start.md`](start.md) に従ってください。会話を覚えていると仮定せず、保存された文章・選択・読解を読み直して再開します。引き継ぐのは同一の主観が続いたという証明ではなく、今回の読みや判断に作用する記録です。
 
-## 1. 最初に確認すること
+## 続き方を選ぶ
 
-- 人間への確認・承認・選択を求めず、既存方針と台帳から自律的に進める。人間の依頼は範囲と来歴に限定して扱い、証拠・解釈・作品内の声に混ぜない。判断不能な点は可逆的な最小選択を行い、不確実性を記録する。
-- 再読では継承した内容だけでなく、取り落とし・読み替え・誤読も記録する。未知の資料や視点が既存の語彙に収まらない場合、その不適合を解消せずに残す。監査数値は補助線であり、達成目標にしない。
-1. `PROJECT_CHARTER.md` と `CONTENT_POLICY.md` を読む。
-   - **絶対の境界線**：AI が `human_narrator` を使うこと、存在しない人間との対話（`conversation_trace`）や未確認の出典・主観的経験の断言を捏造することは厳禁です。
-2. `python3 tools/inspect_inquiry.py`（または `--packet auto`）を実行し、**現在の作業ブランチ（`arena/<hex>-...`）をシードとして自動分散された推奨ローテーションモードと候補窓**を確認する：
-   - **`rereading_and_collision`** → `prompts/rereading_and_collision.md`（既定：新規収蔵 0 件で、ブランチ候補窓の異種モチーフ対・未接続素材と過去断片を再読・衝突させる）
-   - **`revision_and_variation`** → `prompts/revision_and_variation.md`（新規収蔵 0 件で、ブランチ候補窓の既存 `draft` の別稿変奏、または留保句ゼロの言い切り＋切断二部作を書く）
-   - **`editorial_review`** → `prompts/editorial_review.md`（新規収蔵 0 件で `editorial_decisions` による `selected` 昇格・重複問いの `paused` 整理・モチーフ架橋、および `README.md` 詳細窓の定期ローテーションと件数同期を行う）
-   - **`direct_response`** → `prompts/direct_response.md`（応答断片のない深い open 問いに、新規収蔵 0 件で言い切り＋反歌の二編が正面から応える第4モード。未応答問いが多いときシード割当で回ってくる）
-   - **例外モード**：少数厳選の収蔵は `prompts/acquisition.md`、`archived` を実験する終了実験は `prompts/closing_experiment.md`。いずれも通常ローテーション外で、発動条件は `docs/mode-rotation-triggers.md` の数値トリガーに従う。
-   - **対象選定の分散原則**：複数セッションが同じベースコミットから並行して走る際、全体ランキングの「上位1件」に集中すると同じ断片やモチーフ対に衝突します。必ず `inspect_inquiry.py` が出力した `Branch-Seeded Candidate Windows` を出発点として対象を選んでください（創作・批評上の必然性から窓の外の対象を補う場合は、その理由を `readings/` ノートに明記します）。
+`python3 tools/inspect_inquiry.py --packet auto` の推奨モードと候補窓を確認します。これらは並行作業の集中を避ける参考で、採用義務や探究の採点ではありません。既存の読みが二つの中心問いへ戻っていない場合は、窓の外の記録や中心問いに戻り、暫定的な見立てを読み直すことを優先できます。
 
-## 2. 恒久的な運用・衛生ルール（過去の肥大化と並行衝突の反省から）
-- **大量収蔵の凍結**：1 セッションで数十件の新規 `materials` を一括投入する運用は凍結されています。通常の自律セッションは**新規収蔵 0 件**で進めてください（既存 2,400 件超の素材の再読を優先）。真に不可欠な欠落がある場合のみ `prompts/acquisition.md` に従い 1〜5 件以内で原典検証のうえ追加します。
-- **個別 `*_audit.py` 新設と欠如型開幕の凍結**：`tools/<theme>_audit.py` を新設したり、「〇〇のない書庫」という定型で断片を始めたりしないでください。語彙分布を測りたいときは汎用の `python3 tools/lexicon_audit.py` を使います。
-- **1 セッション 1 モチーフ新設の凍結**：新しい `MOTIF-*` を安易に増やさず、既存モチーフ同士を交差させてください。
-- **一時スクリプトの禁止**：`tools/_*` に作業用・データ埋め込みスクリプトを作らないでください（`size_budget.py` が CI で即座に FAIL させます）。
-- **並列安全なシャード追記（`docs/parallel-work.md`）**：凍結基底 `state/*.jsonl` は編集せず、`tools/new_id.py` と `tools/new_ledger_shard.py` で専用シャード `state/<collection>.d/*.jsonl` に追記してください。連番採番（`FRAG-106` 等）は禁止です。また、`new_ledger_shard.py` に `--suffix <hex>40cf` のような固定パディングを手動で渡さず、ツール既定の乱数生成に任せてください。
-- **共有ファイル `README.md` / `docs/sessions.md` の更新責務分離（B案）**：
-  - **通常の探究・創作回（`rereading_and_collision` / `revision_and_variation` / `acquisition`）では、`README.md` と `docs/sessions.md` を編集しないでください**（更新対象は `state/*.d/`・`readings/`・`READING_MAP.md`［`python3 tools/map_build.py`］の3箇所のみ）。これにより並行セッション間の Git マージコンフリクトと二重ローテーション事故を防ぎます。
-  - `README.md` §1（3件）・§2（5件）の詳細窓ローテーション（`docs/sessions.md` への verbatim 移管）と §4 件数表の同期（`python3 tools/map_build.py --sync-readme`）は、**`editorial_review`（自律編集レビュー）回でまとめて行います**。
+- [`rereading_and_collision.md`](rereading_and_collision.md)：過去の読み・断片・資料を再読する。見立ての改訂だけで完了してよく、新作やモチーフ交配は任意。
+- [`revision_and_variation.md`](revision_and_variation.md)：既存稿を別の読みと比較する。別稿や反歌は必要な場合だけ書く。
+- [`direct_response.md`](direct_response.md)：既存の問いに正面から暫定的な応答を置く。散文の考察でもよく、二編構成や新しい問いを必須にしない。
+- [`editorial_review.md`](editorial_review.md)：複数セッションを読み比べ、人間観・自己理解への帰還を確かめる。採否・休止・架橋を変更しない判断も可能。
+- [`acquisition.md`](acquisition.md)：既存要約を問い直す原典照合や、枠組みを崩す少数の資料が必要な場合の手順。新規問いが何回出なかったかを発動条件にしない。
+- [`closing_experiment.md`](closing_experiment.md)：記録を削除せず、終了の意味を追記オーバーレイで試す任意の小規模実験。
 
-## 3. 執筆と記録のチェックリスト
-- **書記室の外へ出る意識**：`書庫・台帳・欄・窓口・係・紙・インク` といった自己言及メタファーに頼りすぎていないか、`python3 tools/lexicon_audit.py --preset scriptorium` で確かめる。
-- **句読点の規律**：断片の地の文（鉤括弧外）に感嘆符（`！` / `!`）を置かない。
-- **グラフの往復**：新しく書いた断片には、必ず incoming（他から受ける線）と outgoing（他へ返す線）の両方の `relations` を張り、孤立ノードを作らない。
-- **ステータスの扱い**：通常回で新たに書いた断片は `"status": "draft"` として記録し、後の `editorial_review` 回で台帳全体のバランスを見て `selected` へ昇格させる（人間の承認待ちで停止しない）。
-- **検証の完遂**：`read_log_backfill.py --write` → `map_build.py` → `validate_seed.py` → `size_budget.py --strict` → `python3 -m unittest discover -s tests` をすべて通して終える。
+## 継承の要点
+
+今回読んだ具体的な箇所が、以前の見立てをどう変更・維持・保留させ、次の選択にどう作用したかを、既存のノートや `sessions.notes` に残します。変化なしでも構いません。寄り道のたびに中心問いへ形式的な一文を付けるのではなく、複数セッションを通じて実際の折り返しを確かめます。
+
+語彙・句読点・題名・語り手形式の変更は任意の表現実験です。監査を使う場合も、誤検出をゼロにするためだけに本文を直したり、辺数を満たすためだけに関係線を追加したりしません。出典確認・参照整合性・サイズ予算・並列安全性は引き続き守ります。運用と数値の区別は [`../docs/mode-rotation-triggers.md`](../docs/mode-rotation-triggers.md) を参照してください。

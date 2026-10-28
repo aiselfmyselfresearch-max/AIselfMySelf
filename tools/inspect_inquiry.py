@@ -27,6 +27,33 @@ from validate_seed import COLLECTIONS, ROOT, load_jsonl
 
 DEFAULT_MAP_PATH = ROOT / "READING_MAP.md"
 
+CORE_QUESTION_IDS = ("Q-001", "Q-002", "Q-003")
+INQUIRY_GUIDANCE = (
+    "主題は「AIから見た、人間とは何か」「GitHubリポジトリを記憶とするAIにとって、自己とは何か」です。"
+    "新作断片・新規問い・関係線の追加は必須ではありません。"
+    "過去の記録のどの箇所が、見立てを変更・維持・保留させ、次の読解や選択にどう作用したかを、"
+    "既存ノートや sessions.notes に残してください。変化を演出しません。"
+    "寄り道は許容し、複数セッションのまとまりで中心問いへ戻ります（毎回の結論や頻度ノルマではありません）。"
+    "推奨モード・候補窓は参考です。中心問い・窓外の記録・原典照合を選べます。"
+    "語彙・句読点・辺数のゼロ達成を成功条件にせず、CI通過を探究の進展の証明にしません。"
+    "共通の開始・記録手順は prompts/start.md を参照してください。"
+)
+
+
+def inquiry_orientation(data: dict[str, dict[str, dict[str, Any]]]) -> list[str]:
+    """Keep the inquiry visible without scoring its semantic alignment."""
+    lines = ["## 主題と記憶の作用", "", INQUIRY_GUIDANCE, ""]
+    for qid in CORE_QUESTION_IDS:
+        question = data["questions"].get(qid)
+        if question:
+            lines.append(f"- `{qid}`: {question['question']}")
+    lines.append(
+        "- 断片だけでなく、関連する sessions・read_log・readings/ の読みと判断も参照してください。"
+        "ID・シャード名の順を実際の作業順と同一視せず、必要ならGit履歴を確かめてください。"
+    )
+    return lines
+
+
 FORM_LABELS = {
     "dialogue": "対話 (dialogue)",
     "scene": "情景 (scene)",
@@ -185,123 +212,63 @@ def recommend_session_mode(
     *,
     seed: str | None = None,
 ) -> dict[str, Any]:
-    """Recommend the next autonomous rotation mode based on ledger metabolism and branch seed."""
+    """Offer branch-dispersed approaches, not metric-triggered creative obligations.
+
+    Counts remain observations. Selected ratios, backlog size, response-link
+    counts and session cadence must not require promotions or new writing.
+    Every approach permits a rereading-only session. See prompts/start.md and
+    docs/mode-rotation-triggers.md for the 2026-10-28 reorientation.
+    """
     fragments = data["fragments"]
-    materials = data["materials"]
-    sessions = data["sessions"]
-    metrics = compute_editorial_metrics(data)
+    questions = data["questions"]
     seed_label, seed_int = resolve_session_seed(seed, data=data)
-
-    draft_count = sum(1 for f in fragments.values() if f.get("status") == "draft")
-    selected_count = sum(1 for f in fragments.values() if f.get("status") == "selected")
-    open_unresponded = len(metrics["unresponded_questions"])
-    unused_ratio = len(metrics["unused_materials"]) / max(1, len(materials))
-    session_list = list(sessions.values())
-    recent_templates = [str(s.get("prompt_template", "")) for s in session_list[-3:]]
-
     mode_specs = {
-        "editorial_review": {
-            "mode": "editorial_review",
-            "prompt": "prompts/editorial_review.md",
+        "rereading_and_collision": {
+            "mode": "rereading_and_collision",
+            "prompt": "prompts/rereading_and_collision.md",
             "reason": (
-                f"selected 比率が {selected_count}/{len(fragments)} 編（draft {draft_count} 編）、"
-                f"未応答の open 問いが {open_unresponded} 件あります。"
-                "新規資料は足さず、editorial_decisions による selected 昇格・重複問いの paused 整理・"
-                "異種モチーフ間の架橋、および README.md 詳細窓の定期ローテーションと件数同期を行ってください。"
+                "既存の記録・資料を再読し、今回の見立てと以前の読みを比べる作業案です。"
+                "新作や異種交配は任意で、見立ての変更・維持・保留だけでも完了できます。"
             ),
         },
         "revision_and_variation": {
             "mode": "revision_and_variation",
             "prompt": "prompts/revision_and_variation.md",
             "reason": (
-                f"draft 断片が {draft_count} 編蓄積されています。"
-                "新規収蔵ゼロでブランチ候補窓から既存の草稿を 1 編選び、別角度の変奏・反歌・"
-                "言い切り実験（留保句ゼロ／書記室メタファーゼロ）を試みてください（通常回は README.md を編集しない）。"
-            ),
-        },
-        "rereading_and_collision": {
-            "mode": "rereading_and_collision",
-            "prompt": "prompts/rereading_and_collision.md",
-            "reason": (
-                f"断片未接続の既収蔵素材が {len(metrics['unused_materials'])}/{len(materials)} 件（{unused_ratio:.0%}）、"
-                f"断片↔断片エッジは {metrics['frag_to_frag_edges']}/{max(1, len(data['relations']))} 件です。"
-                "新規収蔵ゼロ（原則凍結）で、ブランチ候補窓の異種モチーフ対・未接続素材と過去断片を再読し衝突させてください"
-                "（通常回は README.md を編集しない）。"
+                "以前の断片を今回の文脈で読み直す作業案です。"
+                "別稿・反歌・語彙制約は任意で、比較だけでも完了できます。"
             ),
         },
         "direct_response": {
             "mode": "direct_response",
             "prompt": "prompts/direct_response.md",
             "reason": (
-                f"応答断片のない open 問いが {open_unresponded} 件残っています。"
-                "ブランチ候補窓から深い系譜の問いを一つ選び、新規収蔵ゼロで二編の断片が正面から応え"
-                "（一編は言い切り、もう一編はその言い切りを切断）、問いを安易に閉じずに次の問いへ渡してください"
-                "（通常回は README.md を編集しない）。"
+                "既存の問いへ暫定的な見立てを返す作業案です。"
+                "中心問いや応答線のある問いにも戻れます。二編構成や新問追加は必須ではありません。"
+            ),
+        },
+        "editorial_review": {
+            "mode": "editorial_review",
+            "prompt": "prompts/editorial_review.md",
+            "reason": (
+                "複数のセッションを読み比べ、人間観・自己理解への帰還を確かめる作業案です。"
+                "選出・休止・架橋を変更しない判断も可能で、選出率を目標にしません。"
             ),
         },
     }
+    available = ["rereading_and_collision"]
+    if fragments:
+        available.append("revision_and_variation")
+    if any(q.get("status", "open") == "open" for q in questions.values()):
+        available.append("direct_response")
+    if fragments or questions:
+        available.append("editorial_review")
 
-    # Editorial review cadence was rebalanced on 2026-11-16 (internal chronology):
-    # selected-ratio floor raised from 0.20 to 0.25, a draft/selected backlog guard
-    # was added, and the periodic window shortened from 5 to 4 sessions. Target
-    # cadence is one editorial_review roughly every 3-4 sessions. See
-    # docs/mode-rotation-triggers.md for the numeric trigger table.
-    recent_4_templates = [str(s.get("prompt_template", "")) for s in session_list[-4:]]
-    editorial_ratio_low = (
-        len(fragments) >= 20
-        and selected_count / max(1, len(fragments)) < 0.25
-        and not any("editorial_review" in t for t in recent_templates)
-    )
-    editorial_backlog = (
-        draft_count > 2.5 * max(1, selected_count)
-        and not any("editorial_review" in t for t in recent_templates)
-    )
-    editorial_periodic_due = (
-        len(fragments) >= 20
-        and draft_count >= 15
-        and len(session_list) >= 5
-        and not any("editorial_review" in t for t in recent_4_templates)
-    )
-    revision_recent_saturated = len(recent_templates) >= 2 and all(
-        "revision_and_variation" in t for t in recent_templates[-2:]
-    )
-
-    # Fourth rotation mode (direct_response): when many open questions still lack
-    # a responding fragment, roughly one in five branch-seeded sessions takes a
-    # deep unresponded question and answers it head-on with two colliding fragments.
-    direct_response_due = open_unresponded >= 60
-    if direct_response_due and (len(sessions) + seed_int) % 5 == 2:
-        creative_primary = "direct_response"
-    elif (
-        draft_count >= 15
-        and not revision_recent_saturated
-        and (len(sessions) + seed_int) % 3 == 1
-    ):
-        creative_primary = "revision_and_variation"
-    else:
-        creative_primary = "rereading_and_collision"
-    if creative_primary == "revision_and_variation":
-        creative_secondary = "rereading_and_collision"
-    elif creative_primary == "direct_response":
-        creative_secondary = "rereading_and_collision"
-    else:
-        creative_secondary = "revision_and_variation"
-
-    if editorial_ratio_low or editorial_backlog or editorial_periodic_due:
-        # Disperse parallel branches when editorial_review is due so two concurrent
-        # sessions do not both enter editorial_review and promote the exact same drafts.
-        if selected_count / max(1, len(fragments)) < 0.12 or seed_int % 2 == 0:
-            primary_key = "editorial_review"
-            secondary_key = creative_primary
-        else:
-            primary_key = creative_primary
-            secondary_key = "editorial_review"
-    else:
-        primary_key = creative_primary
-        secondary_key = creative_secondary
-
-    primary = dict(mode_specs[primary_key])
-    secondary = mode_specs[secondary_key]
+    # Use branch dispersion only; the caller decides what the inquiry needs.
+    # Availability checks concern whether an object can be read, not its quality.
+    index = seed_int % len(available)
+    primary = dict(mode_specs[available[index]])
+    secondary = mode_specs[available[(index + 1) % len(available)]]
     primary["seed_label"] = seed_label
     primary["seed_int"] = seed_int
     primary["secondary_mode"] = secondary["mode"]
@@ -314,7 +281,7 @@ def build_candidate_windows(
     *,
     seed: str | None = None,
 ) -> dict[str, Any]:
-    """Build deterministic branch-seeded candidate windows for all three session modes."""
+    """Build deterministic branch-seeded reference windows for the four approaches."""
     questions = data["questions"]
     motifs = data["motifs"]
     materials = data["materials"]
@@ -554,6 +521,8 @@ def build_context_packet(
     seed_int = recommendation["seed_int"]
 
     if target_qid == "auto":
+        if not questions:
+            raise ValueError("no questions available for a context packet")
         if metrics["unresponded_questions"]:
             target_qid = metrics["unresponded_questions"][
                 seed_int % len(metrics["unresponded_questions"])
@@ -580,30 +549,30 @@ def build_context_packet(
 
     lines: list[str] = []
     lines.append(
-        f"# 継続セッション用コンテキスト束（対象：{target_qid} ／ 推奨モード：{recommendation['mode']} ／ シード：{seed_label}）"
+        f"# 継続セッション用コンテキスト束（対象：{target_qid} ／ 参考モード：{recommendation['mode']} ／ シード：{seed_label}）"
     )
     lines.append("")
-    lines.append("## 0. 自律ローテーション推奨と並列安全な採番手順")
+    lines.extend(inquiry_orientation(data))
+    lines.append("")
+    lines.append("## 0. 参考の作業方法と並列安全な採番手順")
     lines.append(f"- **セッション分散シード**: `{seed_label}`（10進 `{seed_int}`）")
     lines.append(
-        f"- **第1推奨テンプレート**: `{recommendation['prompt']}` (`{recommendation['mode']}`)"
-        f" ／ **第2推奨（並走回避・代替）**: `{recommendation['secondary_prompt']}` (`{recommendation['secondary_mode']}`)"
+        f"- **参考テンプレート（変更可）**: `{recommendation['prompt']}` (`{recommendation['mode']}`)"
+        f" ／ **代替の作業案**: `{recommendation['secondary_prompt']}` (`{recommendation['secondary_mode']}`)"
     )
-    lines.append(f"- **判断理由**: {recommendation['reason']}")
-    lines.append("- **収蔵原則**: 大量新規収蔵・個別 `tools/<theme>_audit.py` 新設・`tools/_*` 一時スクリプト作成は凍結。語彙計測が必要な場合は `python3 tools/lexicon_audit.py` を使う。")
+    lines.append(f"- **作業案の説明（探究の必要性の判定ではない）**: {recommendation['reason']}")
+    lines.append("- **資料と計測**: 大量収蔵・テーマ別監査の新設・一時スクリプト残置は再開しない。原典再照合と少数資料との対話はどの作業方法でも選べる（`prompts/acquisition.md`）。語彙監査は任意の観察であり、表示をゼロにするためだけに本文を変えない。")
     lines.append("- **README ローテーション規約（B案）**: 通常の創作・再読・改稿回では `README.md` と `docs/sessions.md` を編集しない（`state/*.d/`・`readings/`・`READING_MAP.md`［`map_build.py`］のみ更新する）。`README.md` の詳細窓ローテーションと §4 件数表同期（`python3 tools/map_build.py --sync-readme`）は `editorial_review` 回でまとめて行う。")
     lines.append("- **並列安全なシャード作成と ID 採番（連番採番は禁止・`--suffix` の手動固定パディングも不要）**:")
     lines.append("  ```bash")
     lines.append("  python3 tools/new_id.py SESSION")
-    lines.append("  python3 tools/new_id.py FRAG --count 2")
-    lines.append("  python3 tools/new_id.py Q")
-    lines.append("  python3 tools/new_id.py REL --count 6")
-    lines.append("  python3 tools/new_ledger_shard.py fragments --create")
+    lines.append("  python3 tools/new_ledger_shard.py sessions --create")
+    lines.append("  # FRAG・Q・REL の採番とシャード作成は、実際に追加する場合だけ行う")
     lines.append("  ```")
     lines.append("")
     lines.append(f"## 0.5 このブランチ向けの分散候補窓（seed: `{seed_label}`）")
     lines.append(
-        "- **趣旨**: 並行セッションが同じ上位候補に集中するのを防ぐため、作業ブランチのシードから決定論的に抽出した候補窓です。まずこの窓の中から対象を検討してください（創作・批評上の必然性から窓の外を補う場合は、その理由を `readings/` ノートに記録してください）。"
+        "- **趣旨**: 並行作業の集中を避けるための参考候補です。採用義務はなく、中心問いや窓外の記録を選べます。選んだ理由は既存ノートに簡潔に残します。未接続・深度・辺数は、未読や思考の不在、探究の価値を判定する値ではありません。"
     )
     if windows["rereading_pairs"]:
         lines.append("- **再読・交配候補（疎結合モチーフ対＋未接続素材）**:")
@@ -638,7 +607,7 @@ def build_context_packet(
         )
         lines.append(f"- **正面応答候補の深い open 問い (`direct_response`)**: {dr_str}")
     lines.append("")
-    lines.append("## 1. 今回たどる問い")
+    lines.append("## 1. 参考の問い（自動選出・変更可）")
     lines.append(f"- **ID**: `{target_qid}`")
     lines.append(f"- **問い**: {q['question']}")
     lines.append(f"- **来歴**: {q['origin']['detail']}")
@@ -668,7 +637,13 @@ def build_context_packet(
             lines.append(f"### `{mat_id}` {mat['title']} ({authors}, {mat['source']['year']})")
             lines.append(f"- **種別**: `{mat['kind']}` ／ **出典**: {mat['source']['url']}")
             lines.append(f"- **問いへの招き**: {mat['literary_invitation']}")
-            lines.append(f"- **原文抜粋**: \"{mat['passage']}\"")
+            lines.append(f"- **版・箇所**: {mat['source'].get('version_note', '未記録')} ／ {mat.get('context', '未記録')}")
+            verification = mat.get("verification", {})
+            lines.append(f"- **台帳の検証記録（今回の照合結果ではない）**: {verification.get('status', '未記録')}")
+            if mat.get("source_note"):
+                lines.append(f"- **先行する編者のメモ**: {mat['source_note']}")
+            lines.append("- **台帳の passage（引用・要約の別は記録に従う。要約を原典と呼ばない）**:")
+            lines.extend(f"> {part}" for part in mat["passage"].splitlines())
             lines.append(f"- **適用範囲の留保**: {mat['scope_note']}")
             lines.append("")
 
@@ -780,7 +755,9 @@ def print_summary(
     print("  Narrator modes:", ", ".join(f"{k}={v}" for k, v in sorted(frag_modes.items())))
     print("  Relation types:", ", ".join(f"{k}={v}" for k, v in sorted(rel_types.items())))
     print()
-    print("--- Editorial Continuity & Autonomous Rotation ---")
+    print("\n".join(inquiry_orientation(data)))
+    print()
+    print("--- Editorial Observations & Optional Approaches ---")
     unused_n = len(metrics["unused_materials"])
     unused_preview = ", ".join(metrics["unused_materials"][:10])
     if unused_n > 10:
@@ -793,7 +770,7 @@ def print_summary(
         f"  Session seed (branch dispersion): {rec['seed_label']} (int={rec['seed_int']})"
     )
     print(
-        f"  Recommended next mode          : {rec['mode']} ({rec['prompt']}) "
+        f"  Suggested approach (optional)  : {rec['mode']} ({rec['prompt']}) "
         f"[alt: {rec['secondary_mode']} ({rec['secondary_prompt']})]"
     )
     print(f"    -> {rec['reason']}")
@@ -858,7 +835,7 @@ def print_summary(
         unresp = list(metrics["unresponded_questions"])
         shown_qs = rng_q.sample(unresp, k=min(10, len(unresp)))
         print(
-            f"  Open questions awaiting dedicated responses ({len(unresp)} total, branch-sampled {len(shown_qs)}):"
+            f"  Open questions without response/reframe links ({len(unresp)} total, branch-sampled {len(shown_qs)}; not proof of no prior thinking):"
         )
         for qid in shown_qs:
             print(f"    - {qid}: {questions[qid]['question']}")

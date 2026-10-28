@@ -75,6 +75,8 @@ python3 tools/inspect_inquiry.py --check-map
 | `README.md` / `docs/sessions.md` | **更新責務の分離（B案）**：通常の創作・再読・改稿回（`rereading_and_collision` / `revision_and_variation` / `acquisition`）では編集しない。詳細窓のローテーションと §4 件数表の同期（`python3 tools/map_build.py --sync-readme`）は、定期的な `editorial_review` 回でまとめて行う。 |
 | `state/materials.jsonl` | `tools/import_researchos.py --write` がベースを再生成する唯一の例外。`state/materials.d/` に空でないシャードがある間は `--write` を拒否する（先に統合する）。 |
 
+この更新責務の分離は通常の探究回に対する規則です。利用者が依頼した方針・開始用プロンプト・ツールの改訂PRは、README等の関連する運用説明を同時に改めて構いません。過去の成果物・台帳の本文や注釈を遡及的に書き換えることはしません。
+
 ### 統合シャード（保守）
 
 `state/sessions.d/` は「1セッションにつき1シャード」なので、セッションが増えると必ずファイル数が soft 予算（80）に当たる。`tools/size_budget.py` の remedy は「古いシャードを保守 PR で統合せよ」であり、`tests/test_size_budget.py::test_real_repository_is_within_strict_limits` は実リポジトリが `--strict` を通ることを要求する。そこで次の手順だけを、他セッションのシャードに触れる唯一の例外とする。
@@ -91,11 +93,11 @@ python3 tools/inspect_inquiry.py --check-map
 
 同じ `main` コミットから複数のセッションが同時に立ち上がった場合、ID が衝突しなくても「同じ推奨モード・同じ未応答問い・同じ疎結合モチーフ対・同じ未改稿 `draft`」に集中する意味的コリジョンが起こりえます。これを防ぐため、`python3 tools/inspect_inquiry.py`（および `--packet auto`）は現在の作業ブランチ名（`arena/<hex>-...`）から決定論的なシードを抽出し、以下をブランチごとに自動分散します：
 
-1. **推奨モードの分散**：`editorial_review` が該当するタイミングでも、並走ブランチの双方が同時に編集レビューへ突入しないよう第1推奨と第2推奨をシードで振り分ける。通常時も `rereading_and_collision` と `revision_and_variation` をシードで分散する。
+1. **参考モードの分散**：利用可能な4つの作業方法をブランチシードで分散する。選出率・草稿比率等による強制ローテーションは行わない。どの方法でも新作なしの再読や見立ての改訂を選べる。
 2. **モード別候補窓（`Branch-Seeded Candidate Windows`）の抽出**：疎結合モチーフ対＋未接続素材、改稿候補の `draft`、編集レビュー点検候補の `draft`・`open` 問い・未架橋モチーフをブランチシードでサンプリングして提示する。
 3. **`--packet auto` と「4.5 斜めの光」の分散**：未応答の問いと偶発的並置素材もブランチシードで選択する。
 
-各セッションは、全体ランキングの上位1件に機械的に集中せず、自ブランチの候補窓を出発点として対象を選びます（批評・創作上の必然性から窓の外を補う場合は `readings/` ノートに理由を記します）。
+候補窓は参考であり、対象の選択や推奨モードの採用を強制するものではありません。中心問い、過去の暫定報告、原典等へ戻るため窓外を選べます。理由は既存ノートに簡潔に残せば足り、窓外の選択を負債にしません。新作・新問・関係線の追加なしでも、`sessions` と実際に読んだ台帳対象の `read_log` を追記できます。空の出力配列を埋めるために創作しません。
 
 `READING_MAP.md` の再生成と `import_researchos.py --write` は、排他ロック（`state/.ledger.lock`）を取り、出力を一時ファイル＋`os.replace()` で置き換えます。読者が途中のファイルを見ることはありません。`.ledger.lock` は実行時のファイルなので Git には入れません（`.gitignore` 済み）。
 
