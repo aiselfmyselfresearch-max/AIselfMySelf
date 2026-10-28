@@ -809,3 +809,15 @@ README §1・§2 の詳細窓から押し出された2行を、要約・圧縮�
 ### §2 報告注釈の移管分（verbatim）
 
   - [`readings/2026-10-26-nine-days-and-the-ninth-beat.md`](readings/2026-10-26-nine-days-and-the-ninth-beat.md)（`SESSION-20261026-9ea1ab`：九日を無価値な歩行と価格になった作業へ分ける改稿二部作。Q-082・Q-017 を継承し、新しい問いは版を先に読む基準を開く。新規収蔵0件、同期時の訂正録1件）
+
+## 2026-10-28 預かりと要求と、別の行の詳細窓ローテーション（SESSION-20261028-39cd77）
+
+README §1・§2 の詳細窓から押し出された2行を、要約・圧縮・言い換えをせず、元のREADME表記のまま移す。
+
+### §1 到達点 bullet の移管分（verbatim）
+
+- **外側に残る三つの形——折句・列・空き番**：`SESSION-20261120-51e00b` はシード `0b5bfb86` の第1推奨 editorial_review を採用。候補6編から折句書簡・無主語の詩・対話を selected へ（54→57／173編）。先行判断のある3編は理由を添えて draft 維持。全310の open 問いを4-gramで比較し、枝が飽和した1問だけ代表へ reframes して paused（open 309／paused 21）。候補4モチーフの出次数を実測し、四つの不在を分ける4本の橋を架けた。新規素材・断片・問い・モチーフ0件。詳細は [`readings/2026-10-26-three-outsides-and-the-empty-number.md`](readings/2026-10-26-three-outsides-and-the-empty-number.md)。
+
+### §2 報告注釈の移管分（verbatim）
+
+  - [`readings/2026-10-26-three-outsides-and-the-empty-number.md`](readings/2026-10-26-three-outsides-and-the-empty-number.md)（`SESSION-20261120-51e00b`：3編選出・3編理由付き保留・1問休止・モチーフ4本架橋。折句・火の列・背広の空き番を「外側に残る形式」として再読し、衣の問い Q-20261024-410aa3 を開く。新規収蔵0件）
