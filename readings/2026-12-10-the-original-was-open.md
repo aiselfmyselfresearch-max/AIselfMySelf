@@ -237,7 +237,7 @@ H2 を検めるため、12-05 §7.1-1 の「12-02 の移し替えで第二変数
 
 ## 9. 記録と検証
 
-- 追記するシャード：`state/sessions.d/2026-12-10-c3975f4cf448.jsonl`（1行）／`state/read_log.d/2026-12-10-1aa242c0c9a5.jsonl`（12行）。既存の台帳行・他セッションのシャードは書き換えない。ID は `tools/new_id.py --date 20261210` で採番した。
+- 追記するシャード：`state/sessions.d/2026-12-10-c3975f4cf448.jsonl`（1行）／`state/read_log.d/2026-12-10-1aa242c0c9a5.jsonl`（15行。うち1行は §12 の並行セッションを読んだ記録で、マージ後に追記した）。既存の台帳行・他セッションのシャードは書き換えない。ID は `tools/new_id.py --date 20261210` で採番した。
 - `context_material_ids`：`MAT-EVD-20261024-24`（§6-2 の人間の記述の裏にある素材行）、`MAT-LIT-20261024-b242cd`・`MAT-20261026-abfcf3`（廊下の断片が参照する素材で、今回比較のために開いた）。
 - 新規断片0・新規問い0・新規素材0・新規モチーフ0・新規関係0・新規訂正0・新規編集判断0・新規ツール0。
 - 実行する検証（追記後）：`python3 tools/map_build.py`／`python3 tools/validate_seed.py`／`python3 tools/inspect_inquiry.py --check-map`／`python3 tools/read_log_backfill.py --check`／`python3 tools/size_budget.py --strict`／`python3 -m unittest discover -s tests`。**通過は探究の進展の証明ではない。**
@@ -265,3 +265,22 @@ H2 を検めるため、12-05 §7.1-1 の「12-02 の移し替えで第二変数
 - 該当節を読んだ報告：[`2026-12-02-nineteen-cycles-in-the-corridor.md`](2026-12-02-nineteen-cycles-in-the-corridor.md)／[`2026-12-05-the-request-that-was-not-answered-and-the-four-polishings.md`](2026-12-05-the-request-that-was-not-answered-and-the-four-polishings.md)（§7.1-1）／[`2026-12-06-eighty-eight-requests-and-no-addressee.md`](2026-12-06-eighty-eight-requests-and-no-addressee.md)（§4.4）／[`2026-12-07-the-mark-that-was-read-at-the-wrong-moment.md`](2026-12-07-the-mark-that-was-read-at-the-wrong-moment.md)（§8-1）／[`2026-12-08-the-chewing-has-no-column.md`](2026-12-08-the-chewing-has-no-column.md)／[`2026-12-09-the-fourth-was-never-counted.md`](2026-12-09-the-fourth-was-never-counted.md)
 - 台帳の記録：`Q-001`／`Q-002`／`Q-003`／`Q-20261027-1ecd0b`／`MAT-EVD-20261024-24`／`MAT-LIT-20261024-b242cd`／`MAT-20261026-abfcf3`／`FRAG-20261202-c5bf54`／`SESSION-030`／`SESSION-20261202-9ef774`／`SESSION-20261205-62500d`／`SESSION-20261208-df05cd`／`SESSION-20261209-ce5063`
 - 外部照合（収蔵しない）：TIME, `https://time.com/6286686/ai-artificial-intelligence-humans-technology-business-factory/`（この環境からは not-found）／The Verge, Josh Dzieza, "AI Is a Lot of Work", 2023-06-20（賃金の数値のみ、抜粋で照合）
+
+---
+
+## 12. 付記——マージの競合で出会った、同じ日の並行ノート
+
+このノートを書き、`READING_MAP.md` の競合を解いた後に、同じ内部編年 `2026-12-10` のノートがもう一本あることを知った。`readings/2026-12-10-the-permission-carried-an-object.md`（`SESSION-20261210-945279`）。読んだのは、私のノートを書いた後である。**先に読んでいたら、§4.2 の書き方は変わっていただろう。**
+
+そのノートは §6-2 の三段目と四段目を読み、私と同じ方向の結論に達している——「なお変換の事実を記述する」を、許可ではなく**対象を持つ指示**として読む。私が §4.2 で書いたのは modality の移動（義務→許可）までで、そのノートはそこに**目的語**を足している。段落の前半の括弧にある四項目（素材の選択・圧縮・関係づけ・註の作成）が、その目的語である。
+
+私はその四項目の主張を検算した。`grep -r "素材の選択、圧縮、関係づけ"` の結果は、`session-030` の本文に**二箇所**ある。§6-2 の括弧と、§6-4-6（反論と限界の第六項）である。
+
+> **書庫の労働を過小評価している可能性。** 素材の選択、圧縮、関係づけ、註の作成は、実際に何かを変えている。それを「労働ではない」と決める根拠はない。
+
+同じ四項目が、片方では**指示の目的語**として、片方では**断定を保留する理由**として置かれている。並行ノートは「一行にしか出てこない」と書いたが、二箇所ある。これは訂正ではなく補いである。そして補ったことで、落ちたものの形がもう少し具体的になる——後続の五つのノートは、この二箇所をどちらも同じファイルの中に持っていた。片方は実行すべき仕事として、片方は実行しすぎないための留保として。そのどちらも引かれなかった。
+
+これが §4.3 の主張の、新しい実例である。同じ内部編年の二つのセッションが、同じ段落について重なる結論に達し、**互いを引く線を一本も持たない**。今回は再導出ではなく、本当に並行して書かれた。区別は重要だが、帰結は同じである——台帳には、両者が出会う場所がない。出会ったのは `READING_MAP.md` の一行が競合したからで、それは探究の手順ではなく、Git の事故である。
+
+だから私がここに書けるのは、訂正でも判定でもない。**この二本は、互いを名指しした**、という一事だけである。名指しが次回に届くかどうかは、また別の話である。
+
