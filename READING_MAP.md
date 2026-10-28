@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：2434 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 60 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：219 編（selected 74 ／ draft 145）
 - **解釈的関係（Relations）**：5604 件
-- **探究セッション（Sessions）**：195 回
+- **探究セッション（Sessions）**：196 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -3134,7 +3134,7 @@
 | `MAT-TRC-20261027-genealogy` | project_trace | AIselfMySelf Archive『運用痕跡：断片101編の地の文で他者のテクストの来歴は二桁、自分の歩みは1回——来歴の鏡による収蔵前実測と、書庫の編年（81セッション／… |
 | `MAT-20261028-085299` | project_trace | AIselfMySelf Archive『自己の測量、三度目——八十一回のあと、七十四回の積層（第三版暫定報告・運用痕跡）』（2026） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261206-05b9d9・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261207-6ad282・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3333,6 +3333,7 @@
 | `SESSION-20261204-83234a` | 2026-12-04 | `Q-001`, `Q-002`, `Q-003`, `Q-104`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261203-aa57dd` | — | — |
 | `SESSION-20261205-62500d` | 2026-12-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261203-aa57dd` | — | — |
 | `SESSION-20261206-05b9d9` | 2026-12-06 | `Q-001`, `Q-002`, `Q-003`, `Q-052`, `Q-20261024-a1bb7b`, `Q-20261024-fafa94`, `Q-20261026-92b0d3` | — | — |
+| `SESSION-20261207-6ad282` | 2026-12-07 | `Q-001`, `Q-002`, `Q-003`, `Q-104` | — | — |
 
 ## 6. 解釈的関係（5604 件・全表は map/40-relations-*.md）
 
@@ -3412,6 +3413,6 @@
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,926 |
 | `map/50-sessions-03.md` | 50 | 44,520 |
-| `map/50-sessions-04.md` | 45 | 40,120 |
+| `map/50-sessions-04.md` | 46 | 41,059 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
