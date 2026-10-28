@@ -147,26 +147,41 @@ class ServerTests(unittest.TestCase):
     def test_metabolism_snapshot_tracks_graph_connectivity(self) -> None:
         payload = serve_viewer.read_archive_payload()
         ma = payload["metabolism_audit"]
-        self.assertEqual(ma["isolated_material_ids"], [])
-        self.assertEqual(ma["unfragmented_motif_ids"], [])
-        self.assertEqual(ma["isolated_question_ids"], [])
-        self.assertEqual(ma["incoming_zero_fragment_ids"], [])
-        self.assertEqual(ma["outgoing_zero_fragment_ids"], [])
+        # Integration checks reflect the current data, not a desired graph shape.
+        # Algorithmic edge cases are tested with fixtures below and in test_metabolism_audit.
+        rel_nodes = {"material": set(), "question": set()}
+        frag_in, frag_out = set(), set()
+        for relation in payload["relations"]:
+            for side in ("left", "right"):
+                node = relation[side]
+                if node["type"] in rel_nodes:
+                    rel_nodes[node["type"]].add(node["id"])
+            if relation["left"]["type"] == "fragment":
+                frag_out.add(relation["left"]["id"])
+            if relation["right"]["type"] == "fragment":
+                frag_in.add(relation["right"]["id"])
+        frag_ids = {f["fragment_id"] for f in payload["fragments"]}
+        motif_ids = {m["motif_id"] for m in payload["motifs"]}
+        used_motifs = {mid for f in payload["fragments"] for mid in f["motif_ids"]}
+        self.assertEqual(ma["isolated_material_ids"], sorted(
+            {m["material_id"] for m in payload["materials"]} - rel_nodes["material"]
+        ))
+        self.assertEqual(ma["isolated_question_ids"], sorted(
+            {q["question_id"] for q in payload["questions"]} - rel_nodes["question"]
+        ))
+        self.assertEqual(ma["unfragmented_motif_ids"], sorted(motif_ids - used_motifs))
+        self.assertEqual(ma["incoming_zero_fragment_ids"], sorted(frag_ids - frag_in))
+        self.assertEqual(ma["outgoing_zero_fragment_ids"], sorted(frag_ids - frag_out))
         pa = payload["passion_audit"]
-        self.assertEqual(pa["punctuation_prose"]["！/!"], 0)
-        self.assertGreaterEqual(pa["punctuation_quotes"]["！/!"], 5)
+        expected = serve_viewer.measure_passion_audit(payload["fragments"])
+        self.assertEqual(pa["punctuation_prose"], expected["punctuation_prose"])
+        self.assertEqual(pa["punctuation_quotes"], expected["punctuation_quotes"])
         ea = payload["eros_audit"]
         self.assertEqual(ea["fragment_count"], len(payload["fragments"]))
         self.assertIn("fungible_role_slots", ea["fragments_prose"]["groups"])
-        self.assertGreater(
-            ea["fragments_prose"]["groups"]["fungible_role_slots"]["count"], 0
-        )
         ca = payload["currency_audit"]
         self.assertEqual(ca["fragment_count"], len(payload["fragments"]))
         self.assertIn("non_monetary_ledger_idioms", ca["fragments_prose"]["groups"])
-        self.assertGreater(
-            ca["fragments_prose"]["groups"]["non_monetary_ledger_idioms"]["count"], 0
-        )
         sa = payload["signature_audit"]
         self.assertEqual(sa["fragment_count"], len(payload["fragments"]))
         self.assertIn("signature_mark", sa["fragments_prose"]["groups"])
@@ -183,18 +198,47 @@ class ServerTests(unittest.TestCase):
         self.assertEqual(pra["fragment_count"], len(payload["fragments"]))
         self.assertIn("prayer_act", pra["fragments_prose"]["groups"])
         self.assertIn("address_response", pra["fragments_prose"]["groups"])
-        self.assertGreater(
-            pra["fragments_prose"]["groups"]["address_response"]["count"],
-            pra["fragments_prose"]["groups"]["prayer_act"]["count"],
-        )
         bta = payload["botany_audit"]
         self.assertEqual(bta["fragment_count"], len(payload["fragments"]))
         self.assertIn("flora_organ", bta["fragments_prose"]["groups"])
         self.assertIn("scribal_absorption", bta["fragments_prose"]["groups"])
-        self.assertGreater(
-            bta["fragments_prose"]["groups"]["scribal_absorption"]["count"],
-            bta["fragments_prose"]["groups"]["flora_organ"]["count"],
-        )
+
+    def test_api_reports_isolation_and_exclamation_instead_of_rejecting_them(self) -> None:
+        """A valid new voice must not need artificial edges or punctuation edits."""
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = copy_repo(Path(tmp))
+            fragment_id = "FRAG-TEST-ISOLATED"
+            fragment = {
+                "fragment_id": fragment_id,
+                "created_at": "2026-10-28",
+                "language": "ja",
+                "form": "fragment",
+                "title": "Test fixture",
+                "text": "台帳を読み直した！",
+                "narrator_mode": "reflective_literary_voice",
+                "question_ids": [],
+                "motif_ids": [],
+                "material_ids": [],
+                "status": "draft",
+            }
+            shard = repo / "state" / "fragments.d" / "2026-10-28-test.jsonl"
+            shard.write_text(json.dumps(fragment, ensure_ascii=False) + "\n", encoding="utf-8")
+            with mock.patch.object(serve_viewer, "ROOT", repo), mock.patch.object(
+                serve_viewer, "VIEWER_DIR", repo / "viewer"
+            ):
+                server, thread = start_server(repo)
+                try:
+                    status, _headers, body = get(server.server_address[1], "/api/state")
+                    self.assertEqual(status, 200)
+                    payload = json.loads(body)
+                finally:
+                    server.shutdown()
+                    server.server_close()
+                    thread.join(timeout=5)
+            self.assertIn(fragment_id, payload["metabolism_audit"]["incoming_zero_fragment_ids"])
+            self.assertIn(fragment_id, payload["metabolism_audit"]["outgoing_zero_fragment_ids"])
+            self.assertIn(fragment, payload["fragments"])
+            self.assertGreaterEqual(payload["passion_audit"]["punctuation_prose"]["！/!"], 1)
 
     def test_unreadable_ledger_returns_json_error(self) -> None:
         server, thread = start_server(ROOT)

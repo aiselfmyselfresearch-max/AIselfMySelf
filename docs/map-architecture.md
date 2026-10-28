@@ -102,6 +102,8 @@ READING_MAP.md の事故は「単一ファイルが全成長を吸収する」�
 
 ### 7.1 サイズ予算（`tools/size_budget.py`）
 
+以下の表は初期設計時の値です。現在の上限と保守条件の正本は `tools/size_budget.py` とその実行結果です。2026-10-28の探究方針改訂は、これらの技術予算を緩和していません。作業モードの選択・語彙・辺数は別であり、数値による探究上の発動義務は廃止しました（[`mode-rotation-triggers.md`](mode-rotation-triggers.md)）。
+
 | 対象 | soft（WARN） | hard（CI 停止） | soft 超過時の移行 |
 |---|---:|---:|---|
 | `README.md` | 150 KB | 300 KB | 詳細窓を維持し、超過分を `docs/sessions.md` へ verbatim ローテーション |

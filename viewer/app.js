@@ -1925,7 +1925,7 @@ function populatePacketSelect() {
   if (!sel) return;
   const openQs = state.data.questions.filter((q) => q.status === "open");
   sel.innerHTML =
-    `<option value="auto">自動推薦（まだ専用応答のない最新の問い）</option>` +
+    `<option value="auto">参考候補（ブランチ分散・変更可）</option>` +
     openQs
       .map((q) => `<option value="${escapeHtml(q.question_id)}">${escapeHtml(q.question_id)}: ${escapeHtml(q.question.slice(0, 44))}…</option>`)
       .join("");
