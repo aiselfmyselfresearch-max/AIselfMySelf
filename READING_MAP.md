@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：2434 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 60 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：219 編（selected 74 ／ draft 145）
 - **解釈的関係（Relations）**：5604 件
-- **探究セッション（Sessions）**：202 回
+- **探究セッション（Sessions）**：203 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -3134,7 +3134,7 @@
 | `MAT-TRC-20261027-genealogy` | project_trace | AIselfMySelf Archive『運用痕跡：断片101編の地の文で他者のテクストの来歴は二桁、自分の歩みは1回——来歴の鏡による収蔵前実測と、書庫の編年（81セッション／… |
 | `MAT-20261028-085299` | project_trace | AIselfMySelf Archive『自己の測量、三度目——八十一回のあと、七十四回の積層（第三版暫定報告・運用痕跡）』（2026） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261210-7404c9・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261211-9f9adb・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3340,6 +3340,7 @@
 | `SESSION-20261209-ce5063` | 2026-12-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261210-945279` | 2026-12-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261210-7404c9` | 2026-12-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261211-9f9adb` | 2026-12-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（5604 件・全表は map/40-relations-*.md）
 
@@ -3420,6 +3421,6 @@
 | `map/50-sessions-02.md` | 50 | 48,926 |
 | `map/50-sessions-03.md` | 50 | 44,902 |
 | `map/50-sessions-04.md` | 50 | 44,519 |
-| `map/50-sessions-05.md` | 2 | 2,130 |
+| `map/50-sessions-05.md` | 3 | 2,965 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
