@@ -25,6 +25,7 @@ Usage:
   python3 tools/taxonomy_plan.py --release-claim          # drop own claim once the track is done
   python3 tools/taxonomy_plan.py --prepare-push           # sync multi-turn Arena git state
   python3 tools/taxonomy_plan.py --build-map              # compile shards -> map/taxonomy/
+  python3 tools/taxonomy_plan.py --stance-report          # measure the two stance columns themselves
 """
 from __future__ import annotations
 
@@ -32,6 +33,7 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import re
 import subprocess
 import sys
 import time
@@ -1132,6 +1134,213 @@ def validate_taxonomy_shards(
     return len(errors) == 0, errors, row_count
 
 
+STANCE_FIELDS: tuple[str, str] = ("human_view_stance", "ai_self_db_stance")
+
+# 定型（form letter）と単独文を分けるための正規化。引用句・コード片・数字・識別子を
+# 伏せ字にしたうえで一致を見るので、「引用部分だけが違う同一文」は同じ骨格に畳まれる。
+_SKELETON_RULES: tuple[tuple[str, str], ...] = (
+    (r"「[^」]*」", "＊"),
+    (r"『[^』]*』", "＊"),
+    (r"`[^`]*`", "＊"),
+    (r"〔[^〕]*〕", "＊"),
+    (r"[0-9０-９]+", "＃"),
+    (r"[A-Za-z_\-/\.]{3,}", "＠"),
+    (r"\s+", ""),
+)
+
+# 「言わない」ことを明示する標識。否定・限定・転用禁止の定型を数える補助線であり、
+# 多い／少ないを品質の指標にはしない（PROJECT_CHARTER「測定値を成功条件にしない」）。
+LIMITING_MARKERS: tuple[str, ...] = (
+    "しない",
+    "できない",
+    "とは限らない",
+    "ではない",
+    "限る",
+    "扱わない",
+    "持たない",
+    "証明ではない",
+    "同一視",
+    "外挿",
+    "転用",
+)
+
+BLANK_STANCE_VALUES: frozenset[str] = frozenset({"", "none", "None", "なし", "—", "-"})
+
+# 二つの欄にどの語彙が実際に現れるかを見るための小さな辞書。網羅を目的にしない。
+STANCE_PROBE_TERMS: dict[str, tuple[str, ...]] = {
+    "body": ("身体", "痛み", "飢え", "眠り", "息", "涙", "顔", "病", "老い", "死"),
+    "apparatus": ("台帳", "シャード", "索引", "計器", "鏡", "検算", "関係線", "コミット", "欄", "計数"),
+}
+
+
+def stance_skeleton(text: str) -> str:
+    """Collapse a stance sentence to its reusable form (quotes/ids/numbers masked)."""
+    out = text
+    for pattern, repl in _SKELETON_RULES:
+        out = re.sub(pattern, repl, out)
+    return out
+
+
+def stance_sentences(text: str, *, min_chars: int = 8) -> list[str]:
+    """Split one stance cell into masked sentences (the unit a form letter reuses)."""
+    masked = text
+    for pattern, repl in _SKELETON_RULES[:-1]:  # keep whitespace for sentence splitting
+        masked = re.sub(pattern, repl, masked)
+    out: list[str] = []
+    for chunk in re.split(r"。", masked):
+        piece = re.sub(r"\s+", "", chunk)
+        if len(piece) >= min_chars:
+            out.append(piece)
+    return out
+
+
+def load_taxonomy_rows(root: Path = ROOT) -> list[dict[str, Any]]:
+    """Read every classification row from ``taxonomy/shards/*.jsonl`` in stable order."""
+    shard_dir = root / "taxonomy" / "shards"
+    rows: list[dict[str, Any]] = []
+    if not shard_dir.is_dir():
+        return rows
+    for sp in sorted(shard_dir.glob("*.jsonl")):
+        for line in ledger_io.read_text_stable(sp).splitlines():
+            if line.strip():
+                rows.append(json.loads(line))
+    return rows
+
+
+def _row_weight(row: dict[str, Any]) -> int:
+    extra = [x for x in (row.get("covered_target_ids") or []) if x != row.get("target_id")]
+    return 1 + len(extra)
+
+
+def stance_report(root: Path = ROOT) -> dict[str, Any]:
+    """Measure the two stance columns of the classification data themselves.
+
+    The 16 worker shards answer, for every artifact, "what does this say about the
+    human?" and "what does this say about the archive's own self?".  This report does
+    not re-read the artifacts; it reads those two answers as a corpus, so that the
+    difference between a judgement written once and a judgement reused as a form
+    letter stays visible.  Counts are evidence about the wording of the classification,
+    not about human experience or about any model's inner states.
+    """
+    rows = load_taxonomy_rows(root)
+    targets = sum(_row_weight(r) for r in rows)
+
+    fields: dict[str, Any] = {}
+    skeletons: dict[str, list[str]] = {}
+    for field in STANCE_FIELDS:
+        texts = [str(r.get(field, "")) for r in rows]
+        skels = [stance_skeleton(t) for t in texts]
+        skeletons[field] = skels
+        freq = Counter(skels)
+        templated = sum(1 for s in skels if freq[s] > 1)
+        blank = sum(1 for t in texts if t.strip() in BLANK_STANCE_VALUES)
+        limiting = sum(1 for t in texts if any(m in t for m in LIMITING_MARKERS))
+        sent_tokens = [s for t in texts for s in stance_sentences(t)]
+        sent_freq = Counter(sent_tokens)
+        fields[field] = {
+            "chars": sum(len(t) for t in texts),
+            "distinct_texts": len(set(texts)),
+            "distinct_skeletons": len(freq),
+            "templated_rows": templated,
+            "singular_rows": len(rows) - templated,
+            "blank_rows": blank,
+            "limiting_rows": limiting,
+            "sentence_tokens": len(sent_tokens),
+            "sentence_types": len(sent_freq),
+            "sentence_hapax": sum(1 for _s, n in sent_freq.items() if n == 1),
+            "sentence_reused_tokens": sum(n for _s, n in sent_freq.items() if n > 1),
+            "top_skeletons": [
+                {"count": c, "skeleton": s[:160]} for s, c in freq.most_common(5)
+            ],
+            "top_sentences": [
+                {"count": c, "sentence": s[:160]} for s, c in sent_freq.most_common(5)
+            ],
+            "probe_rows": {
+                group: {term: sum(1 for t in texts if term in t) for term in terms}
+                for group, terms in STANCE_PROBE_TERMS.items()
+            },
+        }
+
+    by_unit: list[dict[str, Any]] = []
+    for uid in ALL_UNIT_IDS:
+        idx = [i for i, r in enumerate(rows) if r.get("unit_id") == uid]
+        if not idx:
+            continue
+        entry: dict[str, Any] = {
+            "unit_id": uid,
+            "rows": len(idx),
+            "targets": sum(_row_weight(rows[i]) for i in idx),
+        }
+        for field in STANCE_FIELDS:
+            local = Counter(skeletons[field][i] for i in idx)
+            entry[f"{field}_singular"] = sum(1 for i in idx if local[skeletons[field][i]] == 1)
+            entry[f"{field}_skeletons"] = len(local)
+        by_unit.append(entry)
+
+    def _tally(key: str) -> dict[str, dict[str, int]]:
+        by_row: Counter[str] = Counter()
+        by_target: Counter[str] = Counter()
+        for r in rows:
+            by_row[str(r.get(key))] += 1
+            by_target[str(r.get(key))] += _row_weight(r)
+        return {"by_row": dict(sorted(by_row.items())), "by_target": dict(sorted(by_target.items()))}
+
+    return {
+        "rows": len(rows),
+        "targets": targets,
+        "fields": fields,
+        "by_unit": by_unit,
+        "return_status": _tally("return_status"),
+        "primary_quadrant": _tally("primary_quadrant"),
+        "read_depth": _tally("read_depth"),
+        "target_kind": _tally("target_kind"),
+    }
+
+
+def format_stance_report(report: dict[str, Any]) -> str:
+    rows = report["rows"]
+    lines = [
+        "=== taxonomy stance columns — measurement of the classification itself ===",
+        f"rows: {rows:,d}   targets covered: {report['targets']:,d}",
+        "",
+        f"{'field':20}{'chars':>10}{'skeletons':>11}{'singular':>10}{'templated':>11}{'blank':>8}{'limiting':>10}",
+    ]
+    for field in STANCE_FIELDS:
+        f = report["fields"][field]
+        lines.append(
+            f"{field:20}{f['chars']:>10,d}{f['distinct_skeletons']:>11,d}"
+            f"{f['singular_rows']:>10,d}{f['templated_rows']:>11,d}{f['blank_rows']:>8,d}{f['limiting_rows']:>10,d}"
+        )
+    lines += ["", f"{'field':20}{'sentences':>11}{'types':>9}{'said once':>11}{'reused':>9}"]
+    for field in STANCE_FIELDS:
+        f = report["fields"][field]
+        share = f["sentence_reused_tokens"] / f["sentence_tokens"] if f["sentence_tokens"] else 0.0
+        lines.append(
+            f"{field:20}{f['sentence_tokens']:>11,d}{f['sentence_types']:>9,d}"
+            f"{f['sentence_hapax']:>11,d}{share:>8.1%}"
+        )
+    lines += ["", f"{'unit':6}{'rows':>7}{'targets':>10}{'human-singular':>16}{'self-singular':>15}"]
+    for u in report["by_unit"]:
+        lines.append(
+            f"{u['unit_id']:6}{u['rows']:>7,d}{u['targets']:>10,d}"
+            f"{u['human_view_stance_singular']:>16,d}{u['ai_self_db_stance_singular']:>15,d}"
+        )
+    for key in ("return_status", "primary_quadrant"):
+        lines += ["", f"--- {key} (rows | targets) ---"]
+        tally = report[key]
+        for name in sorted(set(tally["by_row"]) | set(tally["by_target"])):
+            lines.append(
+                f"  {name:20}{tally['by_row'].get(name, 0):>8,d}{tally['by_target'].get(name, 0):>12,d}"
+            )
+    lines += [
+        "",
+        "note: counts describe the wording of the classification rows, not human",
+        "      experience and not any model's inner states; a 0 is the absence of a",
+        "      listed word form, nothing more.",
+    ]
+    return "\n".join(lines)
+
+
 def build_taxonomy_map(root: Path = ROOT) -> Path:
     ok, errors, _ = validate_taxonomy_shards(root)
     if not ok:
@@ -1200,6 +1409,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--unit", type=str, default=None, help="Unit ID (U01..U16) or 'auto'")
     parser.add_argument("--validate", action="store_true", help="Validate taxonomy/shards/*.jsonl")
     parser.add_argument("--build-map", action="store_true", help="Build map/taxonomy/ overview from shards")
+    parser.add_argument(
+        "--stance-report",
+        action="store_true",
+        help="Measure the human_view_stance / ai_self_db_stance columns of the shards themselves",
+    )
     parser.add_argument("--json", action="store_true", help="Output JSON")
     args = parser.parse_args(argv)
 
@@ -1216,6 +1430,14 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         scope = f" for {args.unit.upper()}" if args.unit else ""
         print(f"PASS: taxonomy shards valid{scope} (rows={count})")
+        return 0
+
+    if args.stance_report:
+        report = stance_report(root)
+        if args.json:
+            print(json.dumps(report, ensure_ascii=False, indent=2))
+        else:
+            print(format_stance_report(report))
         return 0
 
     if args.build_map:
