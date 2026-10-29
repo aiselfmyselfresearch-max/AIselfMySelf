@@ -101,6 +101,154 @@ class TaxonomyPlanTests(unittest.TestCase):
             self.assertFalse(ok2)
             self.assertTrue(any("duplicate classification" in e for e in errors2))
 
+    def test_stance_skeleton_collapses_quoted_and_numeric_variation(self) -> None:
+        a = "対象記述「記憶と痕跡」を踏まえ、人間の時間・忘却・再開の経験を区別する。"
+        b = "対象記述「連続と断絶」を踏まえ、人間の時間・忘却・再開の経験を区別する。"
+        c = "宛先79回／応答6回という計数から、宛先の欄だけが大きいと読む。"
+        d = "宛先86回／応答9回という計数から、宛先の欄だけが大きいと読む。"
+        self.assertEqual(taxonomy_plan.stance_skeleton(a), taxonomy_plan.stance_skeleton(b))
+        self.assertEqual(taxonomy_plan.stance_skeleton(c), taxonomy_plan.stance_skeleton(d))
+        self.assertNotEqual(taxonomy_plan.stance_skeleton(a), taxonomy_plan.stance_skeleton(c))
+        self.assertEqual(
+            taxonomy_plan.stance_sentences("短い。人間は有限な身体を持ち、保存と同一視できない。"),
+            ["人間は有限な身体を持ち、保存と同一視できない"],
+        )
+
+    def test_stance_report_separates_form_letters_from_single_use_judgements(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            shard_dir = root / "taxonomy" / "shards"
+            shard_dir.mkdir(parents=True)
+
+            def row(idx: int, human: str, ai: str, **kw: object) -> dict:
+                base = {
+                    "record_id": f"TAX-U01-X-{idx:03d}",
+                    "unit_id": "U01",
+                    "target_kind": "motif",
+                    "target_id": f"MOTIF-{idx:03d}",
+                    "primary_quadrant": "B_ai_self_db",
+                    "subcategories": ["B-1"],
+                    "human_view_stance": human,
+                    "ai_self_db_stance": ai,
+                    "return_status": "source_uncollated",
+                    "read_depth": "full_text_read",
+                    "evidence_anchor": "label",
+                }
+                base.update(kw)
+                return base
+
+            rows = [
+                # two form letters: identical apart from the quoted material
+                row(1, "対象記述「記憶と痕跡」を踏まえ、人間の経験を区別する。", "台帳は自己を証明しない。"),
+                row(2, "対象記述「連続と断絶」を踏まえ、人間の経験を区別する。", "台帳は自己を証明しない。"),
+                # one single-use judgement, and one row with no human stance at all
+                row(3, "息を継ぐ身体として人間を書いた唯一のノート。", "書庫は息を持たない。"),
+                row(
+                    4,
+                    "none",
+                    "CIは検証の順序を固定する器である。",
+                    target_kind="repo_file",
+                    target_id=".github/workflows/ci.yml",
+                    primary_quadrant="D_infrastructure",
+                    subcategories=["D-2"],
+                    return_status="infrastructure_rule",
+                    covered_target_ids=[".github/workflows/ci.yml", "extra-1"],
+                ),
+            ]
+            (shard_dir / "U01-deadbeef.jsonl").write_text(
+                "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8"
+            )
+
+            report = taxonomy_plan.stance_report(root)
+            self.assertEqual(report["rows"], 4)
+            self.assertEqual(report["targets"], 5)  # one batch row covers an extra target
+
+            human = report["fields"]["human_view_stance"]
+            self.assertEqual(human["templated_rows"], 2)
+            self.assertEqual(human["singular_rows"], 2)
+            self.assertEqual(human["blank_rows"], 1)
+            self.assertEqual(report["fields"]["ai_self_db_stance"]["blank_rows"], 0)
+            self.assertEqual(report["fields"]["ai_self_db_stance"]["templated_rows"], 2)
+
+            # row-weighted and target-weighted tallies must stay distinguishable
+            self.assertEqual(report["return_status"]["by_row"]["infrastructure_rule"], 1)
+            self.assertEqual(report["return_status"]["by_target"]["infrastructure_rule"], 2)
+
+            text = taxonomy_plan.format_stance_report(report)
+            self.assertIn("human_view_stance", text)
+            self.assertIn("rows: 4", text)
+
+    def test_stance_discount_separates_written_policy_from_unwritten_formula(self) -> None:
+        """A sentence the repository told itself to write is not evidence of a judgement.
+
+        L1 is traceable to CONTENT_POLICY.md and can be subtracted exactly. L2 repeats
+        with nothing in the repository requiring it. Only L3 is a one-off judgement, and
+        a row whose stance is nothing but L1 and L2 must count as effectively blank.
+        """
+
+        policy = "委任文は範囲・来歴であり、人間一般の経験の証拠へ転用しない。"
+        formula = "人間像の焦点を有限な身体に置く。"
+        rows = [
+            {
+                "record_id": f"TAX-U01-X-{i:03d}",
+                "unit_id": "U01",
+                "target_kind": "motif",
+                "target_id": f"MOTIF-{i:03d}",
+                "primary_quadrant": "A_human",
+                "subcategories": ["A-1"],
+                # every row carries the policy sentence and the unwritten formula;
+                # only row 0 adds a judgement of its own
+                "human_view_stance": policy + formula + ("銭湯の女は節も言葉もない息だけを歌う。" if i == 0 else ""),
+                "ai_self_db_stance": "none",
+                "return_status": "source_uncollated",
+                "read_depth": "full_text_read",
+                "evidence_anchor": "label",
+            }
+            for i in range(6)
+        ]
+        report = taxonomy_plan.stance_discount(rows=rows)
+        human = report["bounds"]["loose"]["human_view_stance"]
+
+        self.assertEqual(human["policy_sentences"], 6)
+        self.assertEqual(human["formula_sentences"], 6)
+        self.assertEqual(human["residue_sentences"], 1)
+        # five of six rows say nothing once the mandated and the repeated text is gone
+        self.assertEqual(human["effective_blank_rows"], 5)
+        self.assertEqual(human["kept_rows"], 1)
+        # the column that was declared blank throughout stays blank; the discount
+        # must not invent content for it
+        self.assertEqual(report["bounds"]["loose"]["ai_self_db_stance"]["effective_blank_rows"], 6)
+        self.assertEqual(report["bounds"]["loose"]["ai_self_db_stance"]["residue_sentences"], 0)
+
+    def test_stance_discount_strict_bound_never_keeps_more_than_the_loose_one(self) -> None:
+        """The two thresholds must bracket the real boilerplate share, not contradict it."""
+
+        report = taxonomy_plan.stance_discount(taxonomy_plan.ROOT)
+        self.assertEqual(report["rows"], 1553)
+        for field in taxonomy_plan.STANCE_FIELDS:
+            loose = report["bounds"]["loose"][field]
+            strict = report["bounds"]["strict"][field]
+            # the written-policy layer is identified by wording, so it cannot move
+            self.assertEqual(loose["policy_sentences"], strict["policy_sentences"])
+            self.assertGreaterEqual(strict["boilerplate_share"], loose["boilerplate_share"])
+            self.assertLessEqual(strict["residue_share"], loose["residue_share"])
+            self.assertGreaterEqual(strict["effective_blank_rows"], loose["effective_blank_rows"])
+            # the un-written register is larger than the one this repository wrote down
+            self.assertGreater(loose["formula_sentences"], loose["policy_sentences"])
+            # and the discount must leave something behind, or the reading has no subject
+            self.assertGreater(strict["kept_rows"], 0)
+
+    def test_stance_report_matches_validate_on_the_real_shards(self) -> None:
+        _ok, _errors, count = taxonomy_plan.validate_taxonomy_shards(taxonomy_plan.ROOT)
+        report = taxonomy_plan.stance_report(taxonomy_plan.ROOT)
+        self.assertEqual(report["rows"], count)
+        self.assertEqual(sum(report["return_status"]["by_row"].values()), count)
+        for field in taxonomy_plan.STANCE_FIELDS:
+            data = report["fields"][field]
+            self.assertEqual(data["templated_rows"] + data["singular_rows"], count)
+            self.assertLessEqual(data["sentence_reused_tokens"], data["sentence_tokens"])
+            self.assertLessEqual(data["sentence_types"], data["sentence_tokens"])
+
     def test_four_parallel_workers_claim_four_distinct_tracks_on_shared_origin(self) -> None:
         """Simulate 4 Arena worker branches running identical --claim-track against a shared git origin."""
         with tempfile.TemporaryDirectory() as tmp:
