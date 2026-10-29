@@ -1,3 +1,5 @@
+import contextlib
+import io
 import json
 import subprocess
 import sys
@@ -157,6 +159,86 @@ class TaxonomyPlanTests(unittest.TestCase):
                 self.assertEqual(res5["status"], "all_tracks_claimed_or_complete")
 
             self.assertEqual(set(claimed_tracks), {"Track-1", "Track-2", "Track-3", "Track-4"})
+
+    def test_next_unit_display_does_not_claim_track_complete_without_a_claim(self) -> None:
+        """A branch with no unit must never be described as having finished its track."""
+        blocked = {
+            "status": "all_tracks_claimed_or_complete",
+            "track_id": None,
+            "completed_units": [],
+            "pending_units": [],
+            "next_unit": None,
+            "completed_tracks": ["Track-3"],
+            "active_claims": {"Track-1": ["arena/aaaa1111-aiselfmyself"]},
+        }
+        buf = io.StringIO()
+        with mock.patch.object(taxonomy_plan, "resolve_next_unit", return_value=blocked), contextlib.redirect_stdout(buf):
+            rc = taxonomy_plan.main(["--next-unit"])
+        out = buf.getvalue()
+        self.assertEqual(rc, 0)
+        self.assertNotIn("TRACK COMPLETE", out)
+        self.assertIn("NO UNIT ASSIGNED", out)
+        self.assertIn("arena/aaaa1111-aiselfmyself", out)
+        self.assertIn("Track-3", out)
+
+        done = {
+            "status": "track_complete",
+            "track_id": "Track-3",
+            "branch_seed": "ffffffff",
+            "completed_units": ["U09", "U10", "U11", "U12"],
+            "pending_units": [],
+            "next_unit": None,
+        }
+        buf2 = io.StringIO()
+        with mock.patch.object(taxonomy_plan, "resolve_next_unit", return_value=done), contextlib.redirect_stdout(buf2):
+            rc2 = taxonomy_plan.main(["--next-unit"])
+        out2 = buf2.getvalue()
+        self.assertEqual(rc2, 0)
+        self.assertIn("NONE (TRACK COMPLETE: Track-3)", out2)
+
+    def test_release_claim_refuses_to_drop_unfinished_track(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            claims = root / "taxonomy" / "claims"
+            claims.mkdir(parents=True)
+            (claims / "Track-3-deadbeef.json").write_text(
+                json.dumps(
+                    {
+                        "track_id": "Track-3",
+                        "track_title": "x",
+                        "units": ["U09", "U10", "U11", "U12"],
+                        "branch": "arena/deadbeef-aiselfmyself",
+                        "branch_seed": "deadbeef",
+                        "claimed_at_ns": 1,
+                        "claimed_at_iso": "2026-10-29T00:00:00+00:00",
+                        "mode": "online",
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            with mock.patch.object(
+                taxonomy_plan, "current_branch_name", return_value="arena/deadbeef-aiselfmyself"
+            ), mock.patch.object(
+                taxonomy_plan, "completed_units", return_value={"U09": ["a"], "U10": ["b"]}
+            ), mock.patch.object(
+                taxonomy_plan, "_run_git", return_value=subprocess.CompletedProcess([], 0, "", "")
+            ):
+                res = taxonomy_plan.release_claim(root, require_complete=True)
+            self.assertEqual(res["status"], "claim_not_complete", res)
+            self.assertEqual(res["pending_units"], ["U11", "U12"])
+            self.assertTrue((claims / "Track-3-deadbeef.json").is_file())
+
+            with mock.patch.object(
+                taxonomy_plan, "current_branch_name", return_value="arena/deadbeef-aiselfmyself"
+            ), mock.patch.object(
+                taxonomy_plan,
+                "completed_units",
+                return_value={"U09": ["a"], "U10": ["b"], "U11": ["c"], "U12": ["d"]},
+            ), mock.patch.object(taxonomy_plan, "_run_git", return_value=subprocess.CompletedProcess([], 0, "", "")):
+                res2 = taxonomy_plan.release_claim(root, require_complete=True)
+            self.assertEqual(res2["status"], "released", res2)
+            self.assertFalse((claims / "Track-3-deadbeef.json").is_file())
 
 
 if __name__ == "__main__":

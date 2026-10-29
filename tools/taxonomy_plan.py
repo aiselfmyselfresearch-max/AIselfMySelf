@@ -22,6 +22,7 @@ Usage:
   python3 tools/taxonomy_plan.py --next-unit --auto-claim # get next pending unit in track
   python3 tools/taxonomy_plan.py --unit U02 --json        # full item manifest for U02
   python3 tools/taxonomy_plan.py --validate --unit U02    # validate schema + 100% coverage
+  python3 tools/taxonomy_plan.py --release-claim          # drop own claim once the track is done
   python3 tools/taxonomy_plan.py --prepare-push           # sync multi-turn Arena git state
   python3 tools/taxonomy_plan.py --build-map              # compile shards -> map/taxonomy/
 """
@@ -762,8 +763,12 @@ def claim_track(
             if tid not in completed_remote and not active_claims.get(tid)
         ]
         if not candidates:
+            # Distinguish "every track is genuinely finished" from "every track is
+            # simply held by another live worker". Conflating the two made callers
+            # believe their own track was complete when it was not.
+            all_finished = len(completed_remote) == len(ALL_TRACK_IDS)
             return {
-                "status": "all_tracks_claimed_or_complete",
+                "status": "all_tracks_complete" if all_finished else "all_tracks_claimed_or_complete",
                 "track_id": None,
                 "units": [],
                 "completed_tracks": sorted(completed_remote),
@@ -809,6 +814,54 @@ def claim_track(
         _run_git(root, "push", "origin", my_branch, check=False)
 
     return {"status": "claim_retry_exhausted", "track_id": None, "units": []}
+
+
+def release_claim(
+    root: Path = ROOT,
+    *,
+    require_complete: bool = True,
+) -> dict[str, Any]:
+    """Drop this branch's own Track claim so a still-free track can be claimed.
+
+    Only the claim file that belongs to the current branch seed is touched, and by
+    default only when every unit of that track is already complete, so a worker can
+    never silently abandon unfinished work. Claims inherited from ``origin/main``
+    are never modified.
+    """
+    my_branch = current_branch_name(root)
+    my_seed = branch_seed_from_name(my_branch)
+    claim = local_branch_claim(root, my_seed)
+    if claim is None:
+        return {"status": "no_claim", "track_id": None, "units": []}
+
+    done = completed_units(root)
+    pending = [u for u in claim.get("units") or [] if u not in done]
+    if require_complete and pending:
+        return {
+            "status": "claim_not_complete",
+            "track_id": claim["track_id"],
+            "units": list(claim.get("units") or []),
+            "pending_units": pending,
+        }
+
+    path = root / "taxonomy" / "claims" / f"{claim['track_id']}-{my_seed}.json"
+    if path.is_file():
+        path.unlink()
+    _run_git(root, "add", "-A", path.relative_to(root).as_posix(), check=False)
+    _run_git(
+        root,
+        "commit",
+        "-m",
+        f"chore(taxonomy): release completed {claim['track_id']} on {my_branch}",
+        check=False,
+    )
+    return {
+        "status": "released",
+        "track_id": claim["track_id"],
+        "units": list(claim.get("units") or []),
+        "completed_units": [u for u in claim.get("units") or [] if u in done],
+        "branch": my_branch,
+    }
 
 
 def resolve_next_unit(
@@ -1031,6 +1084,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--claim-track", action="store_true", help="Claim unique Track-1..4 across origin")
     parser.add_argument("--next-unit", action="store_true", help="Show next pending unit in claimed track")
     parser.add_argument("--auto-claim", action="store_true", help="Claim a track automatically if unclaimed")
+    parser.add_argument(
+        "--release-claim",
+        action="store_true",
+        help="Drop this branch's own claim (only when its track is complete) so a free track can be claimed",
+    )
+    parser.add_argument("--force", action="store_true", help="Allow --release-claim before the track is complete")
     parser.add_argument("--offline", action="store_true", help="Skip remote git fetch/push when claiming")
     parser.add_argument("--ttl-hours", type=float, default=12.0, help="Remote claim expiry in hours")
     parser.add_argument("--prepare-push", action="store_true", help="Sync multi-turn branch before git push")
@@ -1070,6 +1129,18 @@ def main(argv: list[str] | None = None) -> int:
         print(f"BUILT: {out.relative_to(root).as_posix()}")
         return 0
 
+    if args.release_claim:
+        res = release_claim(root, require_complete=not args.force)
+        if args.json:
+            print(json.dumps(res, ensure_ascii=False, indent=2))
+        else:
+            print(f"RELEASE_STATUS : {res['status']}")
+            print(f"TRACK_ID       : {res.get('track_id')}")
+            print(f"UNITS          : {', '.join(res.get('units') or [])}")
+            if res.get("pending_units"):
+                print(f"PENDING_UNITS  : {', '.join(res['pending_units'])}")
+        return 0 if res["status"] in {"released", "no_claim"} else 1
+
     if args.claim_track and not args.next_unit:
         res = claim_track(root, offline=args.offline, ttl_hours=args.ttl_hours)
         if args.json:
@@ -1088,13 +1159,29 @@ def main(argv: list[str] | None = None) -> int:
         else:
             print(f"STATUS       : {res['status']}")
             print(f"TRACK_ID     : {res.get('track_id')}")
-            print(f"COMPLETED    : {', '.join(res.get('completed_units') or []) or '(none)'}")
-            print(f"NEXT_UNIT    : {res.get('next_unit') or 'NONE (TRACK COMPLETE)'}")
+            if res.get("track_id"):
+                print(f"COMPLETED    : {', '.join(res.get('completed_units') or []) or '(none)'}")
+            else:
+                print("COMPLETED    : (no track claimed on this branch)")
+            if res.get("completed_tracks"):
+                print(f"DONE_TRACKS  : {', '.join(res['completed_tracks'])}")
+            for tid in sorted(res.get("active_claims") or {}):
+                print(f"HELD_BY      : {tid} <- {', '.join(res['active_claims'][tid])}")
             if res.get("next_unit"):
+                print(f"NEXT_UNIT    : {res['next_unit']}")
                 print(f"TITLE        : {res['title']}")
                 print(f"ITEMS / SIZE : {res['item_count']:,d} items / {res['total_chars']:,d} chars")
                 print(f"OUTPUT_SHARD : {res['output_shard']}")
                 print(f"OUTPUT_NOTE  : {res['output_note']}")
+            elif res["status"] == "track_complete":
+                print(f"NEXT_UNIT    : NONE (TRACK COMPLETE: {res.get('track_id')})")
+            elif res["status"] == "all_tracks_complete":
+                print("NEXT_UNIT    : NONE (ALL 16 UNITS COMPLETE)")
+            else:
+                print("NEXT_UNIT    : NONE (NO UNIT ASSIGNED - THIS BRANCH'S TRACK IS NOT COMPLETE)")
+                print("HINT         : every free track is held by another branch (see HELD_BY);")
+                print("               retry after that claim's TTL expires, or release a finished claim")
+                print("               with --release-claim and claim a free track again.")
         return 0
 
     units = build_units(root)
