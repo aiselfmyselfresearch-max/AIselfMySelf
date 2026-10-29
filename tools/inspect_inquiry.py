@@ -23,6 +23,8 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+import ledger_io
+
 from validate_seed import COLLECTIONS, ROOT, load_jsonl
 
 DEFAULT_MAP_PATH = ROOT / "READING_MAP.md"
@@ -508,7 +510,10 @@ def build_context_packet(
     target_qid: str,
     *,
     seed: str | None = None,
+    errata: dict[str, dict[str, Any]] | None = None,
 ) -> str:
+    if errata is None:
+        errata = load_errata()
     questions = data["questions"]
     motifs = data["motifs"]
     materials = data["materials"]
@@ -640,6 +645,13 @@ def build_context_packet(
             lines.append(f"- **版・箇所**: {mat['source'].get('version_note', '未記録')} ／ {mat.get('context', '未記録')}")
             verification = mat.get("verification", {})
             lines.append(f"- **台帳の検証記録（今回の照合結果ではない）**: {verification.get('status', '未記録')}")
+            corrections = errata_for(mat_id, errata)
+            if corrections:
+                ids = ", ".join(f"`{c.get('errata_id')}`" for c in corrections)
+                lines.append(
+                    f"- **訂正録（この記録の隣に置かれ、記録自体は書き換えていない）**: {ids}"
+                    f" — `python3 tools/inspect_inquiry.py --id {mat_id}`"
+                )
             if mat.get("source_note"):
                 lines.append(f"- **先行する編者のメモ**: {mat['source_note']}")
             lines.append("- **台帳の passage（引用・要約の別は記録に従う。要約を原典と呼ばない）**:")
@@ -667,6 +679,14 @@ def build_context_packet(
         if frag.get("editor_note"):
             lines.append("")
             lines.append(f"- **編集・校勘注記**: {frag['editor_note']}")
+        corrections = errata_for(frag["fragment_id"], errata)
+        if corrections:
+            ids = ", ".join(f"`{c.get('errata_id')}`" for c in corrections)
+            lines.append("")
+            lines.append(
+                f"- **訂正録（この記録の隣に置かれ、記録自体は書き換えていない）**: {ids}"
+                f" — `python3 tools/inspect_inquiry.py --id {frag['fragment_id']}`"
+            )
         lines.append("")
 
     # Section 4.5: Oblique light / involuntary memory window (outside the direct index tree)
@@ -843,7 +863,49 @@ def print_summary(
         print("  All open questions have direct response/reframe relation links.")
 
 
-def print_record_detail(data: dict[str, dict[str, dict[str, Any]]], target_id: str) -> int:
+def load_errata(root: Path = ROOT) -> dict[str, dict[str, Any]]:
+    """Load the errata ledger (base plus shards) so corrections can travel with the record.
+
+    Until SESSION-20261029-59e42c ``--id`` printed a record exactly as it was
+    written, plus its relations. An ``errata`` record filed beside the same
+    record was never printed, so the correction existed in the ledger and was
+    invisible at the moment a later session looked the record up. The errata
+    ledger is not part of ``COLLECTIONS`` (it is checked by its own schema in
+    ``tools/errata_audit.py``), so it is loaded separately here and never
+    written.
+    """
+    base = Path(root) / "state" / "errata.jsonl"
+    shards = base.with_suffix(".d")
+    if not base.exists() and not shards.is_dir():
+        return {}
+    errors: list[str] = []
+    records = ledger_io.load_jsonl_union(base, "errata_id", errors, root=Path(root))
+    if errors:
+        print(f"warning: errata ledger has errors: {'; '.join(errors)}", file=sys.stderr)
+    return records
+
+
+def errata_for(target_id: str, errata: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    """Return the corrections whose subject is this record, oldest first.
+
+    ``subject_id`` is the general field; ``fragment_id`` is the schema's shortcut
+    for fragment subjects. Only one hop is followed: an erratum filed against a
+    material is not shown when a fragment that cites that material is inspected.
+    """
+    hits = [
+        record
+        for record in errata.values()
+        if record.get("subject_id") == target_id or record.get("fragment_id") == target_id
+    ]
+    hits.sort(key=lambda r: (r.get("created_at", ""), r.get("errata_id", "")))
+    return hits
+
+
+def print_record_detail(
+    data: dict[str, dict[str, dict[str, Any]]],
+    target_id: str,
+    errata: dict[str, dict[str, Any]] | None = None,
+) -> int:
     found_collection = None
     found_record = None
     for cname, records in data.items():
@@ -861,6 +923,19 @@ def print_record_detail(data: dict[str, dict[str, dict[str, Any]]], target_id: s
             print(f"\n--- text ---\n{v}\n------------")
         else:
             print(f"  {k}: {v}")
+
+    corrections = errata_for(target_id, errata if errata is not None else load_errata())
+    if corrections:
+        print("\n--- Errata filed beside this record (the record itself is not rewritten) ---")
+        for record in corrections:
+            print(
+                f"  {record.get('errata_id')}: [{record.get('status')}/{record.get('verdict')}] "
+                f"{record.get('claim', '')}"
+            )
+            if record.get("corrected_by"):
+                print(f"    corrected_by: {record['corrected_by']}")
+            if record.get("measured_now"):
+                print(f"    measured_now: {record['measured_now']}")
 
     linked = [
         rel
