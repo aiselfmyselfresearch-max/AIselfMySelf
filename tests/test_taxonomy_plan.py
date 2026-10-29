@@ -238,6 +238,104 @@ class TaxonomyPlanTests(unittest.TestCase):
             # and the discount must leave something behind, or the reading has no subject
             self.assertGreater(strict["kept_rows"], 0)
 
+    def test_stance_grounding_tells_a_judgement_from_a_rare_formula(self) -> None:
+        """Frequency cannot separate a judgement from a rare formula. Looking can.
+
+        Six rows share one policy sentence. Three of them add a sentence built from the
+        vocabulary of the file they classify; three add an equally rare sentence built
+        from vocabulary that belongs to none of the files. Both extra sentences are
+        unique, so the discount in :func:`stance_discount` calls them both residue. The
+        permutation test must not.
+        """
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "taxonomy" / "shards").mkdir(parents=True)
+            (root / "readings").mkdir()
+
+            subjects = {
+                "a": "銭湯 湯気 石鹸 桶 番台 背中 湯船",
+                "b": "炭鉱 坑道 石炭 鶴嘴 粉塵 索道 竪坑",
+                "c": "製紙 楮 簀桁 漉舟 乾燥 和紙 繊維",
+            }
+            for name, words in subjects.items():
+                # every file ends with the same clause, so the shared policy sentence
+                # has a non-zero chance baseline to be compared against
+                (root / "readings" / f"{name}.md").write_text(
+                    f"# {name}\n\n" + ("。".join([words] * 6)) + "。現行模型の主観的経験の記録を人間の側に置く。",
+                    encoding="utf-8",
+                )
+
+            policy = "本記録は現行モデルの主観的経験を実証するものではない。"
+            unrelated = "量子色力学 漸近的自由 格子計算 繰込群 強結合 閉込 真空偏極"
+            rows = []
+            for idx, (name, words) in enumerate(subjects.items()):
+                # grounded: the extra sentence is made of the file's own vocabulary
+                rows.append(
+                    {
+                        "record_id": f"TAX-U09-G-{idx:03d}",
+                        "unit_id": "U09",
+                        "target_kind": "reading_note",
+                        "target_id": f"readings/{name}.md",
+                        "primary_quadrant": "A_human",
+                        "subcategories": ["A-1"],
+                        "human_view_stance": policy + words + "を人間の側に置く。",
+                        "ai_self_db_stance": "none",
+                        "return_status": "returned_to_core",
+                        "read_depth": "full_text_read",
+                        "evidence_anchor": "L1",
+                    }
+                )
+                # ungrounded: just as rare, but about nothing in any of the files
+                rows.append(
+                    {
+                        "record_id": f"TAX-U09-U-{idx:03d}",
+                        "unit_id": "U09",
+                        "target_kind": "reading_note",
+                        "target_id": f"readings/{name}.md",
+                        "primary_quadrant": "A_human",
+                        "subcategories": ["A-1"],
+                        "human_view_stance": policy + unrelated + "を人間の側に置く。",
+                        "ai_self_db_stance": "none",
+                        "return_status": "returned_to_core",
+                        "read_depth": "full_text_read",
+                        "evidence_anchor": "L1",
+                    }
+                )
+            (root / "taxonomy" / "shards" / "U09-feedface.jsonl").write_text(
+                "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8"
+            )
+
+            report = taxonomy_plan.stance_grounding(root, permutations=49)
+            groups = report["groups"]
+            residue = groups["layer|L3"]
+            policy_layer = groups["layer|L1"]
+
+            # the shared policy sentence must land at chance; if it does not, the
+            # measure is broken rather than the archive
+            self.assertLess(policy_layer["lift"], 1.5)
+            self.assertEqual(policy_layer["swept_share"], 0.0)
+            # half the residue was written while looking, half was not; pooled, it must
+            # still rise clear of chance
+            self.assertGreater(residue["lift"], 2.0)
+            self.assertGreater(residue["swept_share"], policy_layer["swept_share"])
+
+    def test_stance_grounding_is_deterministic_and_separates_layers_on_real_shards(self) -> None:
+        first = taxonomy_plan.stance_grounding(taxonomy_plan.ROOT, permutations=19)
+        second = taxonomy_plan.stance_grounding(taxonomy_plan.ROOT, permutations=19)
+        self.assertEqual(first, second)  # a fixed seed, or the numbers cannot be cited
+
+        groups = first["groups"]
+        self.assertLess(groups["layer|L1"]["lift"], 1.5)
+        self.assertLess(groups["layer|L2"]["lift"], 1.5)
+        self.assertGreater(groups["layer|L3"]["lift"], 2.0)
+        self.assertGreater(groups["layer|L3"]["swept_share"], 10 * groups["layer|L1"]["swept_share"])
+        # the session rows are the exception this test exists to keep visible: the
+        # archive's residue about its own work records sits far closer to chance than
+        # its residue about anything else it classified
+        self.assertLess(groups["layer_kind|L3|session"]["lift"], 1.6)
+        self.assertGreater(groups["layer_kind|L3|question"]["lift"], 4.0)
+
     def test_stance_report_matches_validate_on_the_real_shards(self) -> None:
         _ok, _errors, count = taxonomy_plan.validate_taxonomy_shards(taxonomy_plan.ROOT)
         report = taxonomy_plan.stance_report(taxonomy_plan.ROOT)

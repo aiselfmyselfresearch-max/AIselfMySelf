@@ -27,6 +27,7 @@ Usage:
   python3 tools/taxonomy_plan.py --build-map              # compile shards -> map/taxonomy/
   python3 tools/taxonomy_plan.py --stance-report          # measure the two stance columns themselves
   python3 tools/taxonomy_plan.py --stance-discount        # subtract the written policy and the repeated formulas
+  python3 tools/taxonomy_plan.py --stance-grounding       # test whether the residue touches the artifact it classifies
 """
 from __future__ import annotations
 
@@ -1407,6 +1408,216 @@ def stance_discount(root: Path | None = None, *, rows: list[dict[str, Any]] | No
     return out
 
 
+# --- grounding: does a stance sentence touch the artifact it classifies? -----------
+#
+# The discount above separates boilerplate from residue by *frequency* alone. That
+# cannot tell a judgement from a rare formula. This test can: a sentence written while
+# looking at one artifact should share more wording with that artifact than with a
+# randomly drawn artifact of the same kind. L1 (policy text) is the built-in negative
+# control — the same sentence sits on hundreds of unrelated rows, so it must land at
+# chance. If it does not, the measure is broken rather than the archive.
+
+GROUNDING_PERMUTATIONS: int = 99
+GROUNDING_SEED: int = 20261029
+GROUNDING_MIN_TOKENS: int = 5
+_CJK_RUN = re.compile(r"[\u4e00-\u9fa5\u30a1-\u30f6]{2,}")
+
+_GROUNDING_OBJECT_FIELDS: dict[str, tuple[str, tuple[str, ...]]] = {
+    "question": ("questions", ("question", "notes")),
+    "fragment": ("fragments", ("title", "text", "editor_note")),
+    "motif": ("motifs", ("label", "description")),
+    "material": ("materials", ("title", "passage", "context", "literary_invitation", "scope_note")),
+    "session": ("sessions", ("human_direction", "notes")),
+    "editorial_decision": ("editorial_decisions", ("reason",)),
+}
+_GROUNDING_FILE_KINDS: frozenset[str] = frozenset({"reading_note", "repo_file"})
+
+
+def _content_bigrams(text: str) -> set[str]:
+    """Character bigrams over kanji/katakana runs — a tokeniser-free content proxy."""
+
+    out: set[str] = set()
+    for run in _CJK_RUN.findall(text or ""):
+        for i in range(len(run) - 1):
+            out.add(run[i : i + 2])
+    return out
+
+
+def stance_grounding(
+    root: Path | None = None,
+    *,
+    permutations: int = GROUNDING_PERMUTATIONS,
+    seed: int = GROUNDING_SEED,
+) -> dict[str, Any]:
+    """Permutation test: is the residue written about its object, or about nothing?
+
+    For every stance layer on every row, score the share of its content bigrams that
+    also occur in the artifact it classifies, then rescore it against ``permutations``
+    other artifacts of the same kind. Quoted matter and the target's own id/path are
+    removed first, so copying a title is not counted as having looked at the thing.
+    """
+
+    import random
+
+    root = root or ROOT
+    rows = load_taxonomy_rows(root)
+    ledger = inspect_inquiry.load_all()
+
+    def object_text(row: dict[str, Any]) -> str:
+        kind, target = row["target_kind"], row["target_id"]
+        if kind in _GROUNDING_FILE_KINDS:
+            try:
+                return (root / target).read_text(encoding="utf-8", errors="replace")
+            except OSError:
+                return ""
+        spec = _GROUNDING_OBJECT_FIELDS.get(kind)
+        if not spec:
+            return ""
+        collection, fields = spec
+        record = ledger.get(collection, {}).get(target) or {}
+        return " ".join(str(record.get(f) or "") for f in fields)
+
+    objects: dict[tuple[str, str], set[str]] = {}
+    for row in rows:
+        key = (row["target_kind"], row["target_id"])
+        if key in objects:
+            continue
+        tokens = _content_bigrams(object_text(row))
+        if tokens:
+            objects[key] = tokens
+    pools: dict[str, list[tuple[str, set[str]]]] = {}
+    for (kind, target), tokens in objects.items():
+        pools.setdefault(kind, []).append((target, tokens))
+
+    counts: dict[str, Counter[str]] = {}
+    sentences: dict[tuple[str, str], list[str]] = {}
+    for field in STANCE_FIELDS:
+        counter: Counter[str] = Counter()
+        for row in rows:
+            text = row[field]
+            parts = [] if text in BLANK_STANCE_VALUES else stance_sentences(text)
+            sentences[(row["record_id"], field)] = parts
+            counter.update(s[:DISCOUNT_PREFIX] for s in parts)
+        counts[field] = counter
+
+    rng = random.Random(seed)
+    buckets: dict[tuple[str, ...], dict[str, float]] = {}
+
+    def record(keys: list[tuple[str, ...]], real: float, null: float, swept: bool) -> None:
+        for key in keys:
+            b = buckets.setdefault(key, {"n": 0, "real": 0.0, "null": 0.0, "swept": 0})
+            b["n"] += 1
+            b["real"] += real
+            b["null"] += null
+            b["swept"] += int(swept)
+
+    for row in rows:
+        kind = row["target_kind"]
+        target = objects.get((kind, row["target_id"]))
+        if not target:
+            continue
+        pool = pools[kind]
+        own = _content_bigrams(row["target_id"].replace("/", " ").replace("-", " ").replace(".", " "))
+        for field in STANCE_FIELDS:
+            layered: dict[str, list[str]] = {"L1": [], "L2": [], "L3": []}
+            for s in sentences[(row["record_id"], field)]:
+                if any(m in s for m in POLICY_ECHO_MARKERS):
+                    layered["L1"].append(s)
+                elif counts[field][s[:DISCOUNT_PREFIX]] >= DISCOUNT_THRESHOLD:
+                    layered["L2"].append(s)
+                else:
+                    layered["L3"].append(s)
+            for layer, parts in layered.items():
+                stance_tokens = _content_bigrams("。".join(parts)) - own
+                if len(stance_tokens) < GROUNDING_MIN_TOKENS:
+                    continue
+                size = len(stance_tokens)
+                real = len(stance_tokens & target) / size
+                draws = []
+                for _ in range(permutations):
+                    # a permutation must land on some *other* artifact, or the row is
+                    # being compared against itself
+                    for _attempt in range(16):
+                        other_id, other = rng.choice(pool)
+                        if other_id != row["target_id"] or len(pool) == 1:
+                            break
+                    draws.append(len(stance_tokens & other) / size)
+                null = sum(draws) / len(draws)
+                swept = all(real > x for x in draws)
+                record(
+                    [
+                        ("layer", layer),
+                        ("layer_field", layer, field),
+                        ("layer_kind", layer, kind),
+                        ("layer_unit", layer, row["unit_id"]),
+                        ("layer_depth", layer, row["read_depth"]),
+                        ("layer_return", layer, row["return_status"]),
+                    ],
+                    real,
+                    null,
+                    swept,
+                )
+
+    out: dict[str, Any] = {
+        "rows": len(rows),
+        "permutations": permutations,
+        "seed": seed,
+        "objects_resolved": len(objects),
+        "groups": {},
+    }
+    for key, b in buckets.items():
+        n = b["n"]
+        real, null = b["real"] / n, b["null"] / n
+        out["groups"]["|".join(key)] = {
+            "n": n,
+            "real": real,
+            "null": null,
+            "lift": (real / null) if null else None,
+            "swept_share": b["swept"] / n,
+        }
+    return out
+
+
+def format_stance_grounding(report: dict[str, Any]) -> str:
+    g = report["groups"]
+    lines = [
+        "=== does a stance sentence touch the artifact it classifies? ===",
+        f"rows: {report['rows']:,d}   artifacts resolved: {report['objects_resolved']:,d}   "
+        f"permutations: {report['permutations']}   seed: {report['seed']}",
+        "quoted matter and the target's own id/path are removed before scoring",
+        "",
+        f"{'group':44}{'n':>6}{'real':>8}{'chance':>8}{'lift':>7}{'beats all':>11}",
+    ]
+
+    def emit(label: str, key: str) -> None:
+        row = g.get(key)
+        if not row:
+            return
+        lift = f"{row['lift']:.2f}" if row["lift"] else "—"
+        lines.append(
+            f"{label:44}{row['n']:>6,d}{row['real']:>8.3f}{row['null']:>8.3f}"
+            f"{lift:>7}{row['swept_share']:>11.1%}"
+        )
+
+    for layer in ("L1", "L2", "L3"):
+        emit(f"{layer} (all rows)", f"layer|{layer}")
+    lines.append("")
+    kinds = sorted(
+        {k.split("|")[2] for k in g if k.startswith("layer_kind|L3|")},
+        key=lambda k: -g[f"layer_kind|L3|{k}"]["n"],
+    )
+    for kind in kinds:
+        for layer in ("L1", "L2", "L3"):
+            emit(f"  {kind} / {layer}", f"layer_kind|{layer}|{kind}")
+        lines.append("")
+    lines.append(
+        "L1 is the negative control: the same policy sentence sits on hundreds of unrelated\n"
+        "rows, so a lift near 1.0 means the measure is working. A layer whose lift stays near\n"
+        "1.0 was written without looking at the thing it describes."
+    )
+    return "\n".join(lines)
+
+
 def format_stance_discount(report: dict[str, Any]) -> str:
     n = report["rows"]
     lines = [
@@ -1561,6 +1772,11 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Subtract the policy layer (CONTENT_POLICY.md) and the repeated formulas from the stance columns",
     )
+    parser.add_argument(
+        "--stance-grounding",
+        action="store_true",
+        help="Permutation test: does each stance layer share wording with the artifact it classifies?",
+    )
     parser.add_argument("--json", action="store_true", help="Output JSON")
     args = parser.parse_args(argv)
 
@@ -1577,6 +1793,14 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         scope = f" for {args.unit.upper()}" if args.unit else ""
         print(f"PASS: taxonomy shards valid{scope} (rows={count})")
+        return 0
+
+    if args.stance_grounding:
+        report = stance_grounding(root)
+        if args.json:
+            print(json.dumps(report, ensure_ascii=False, indent=2))
+        else:
+            print(format_stance_grounding(report))
         return 0
 
     if args.stance_discount:
