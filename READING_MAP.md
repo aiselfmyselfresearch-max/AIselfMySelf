@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：2435 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 61 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：220 編（selected 76 ／ draft 144）
 - **解釈的関係（Relations）**：5615 件
-- **探究セッション（Sessions）**：237 回
+- **探究セッション（Sessions）**：238 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -3459,7 +3459,7 @@
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
-| `map/50-sessions-04.md` | 50 | 43,751 |
-| `map/50-sessions-05.md` | 37 | 34,636 |
+| `map/50-sessions-04.md` | 50 | 43,760 |
+| `map/50-sessions-05.md` | 38 | 35,651 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
