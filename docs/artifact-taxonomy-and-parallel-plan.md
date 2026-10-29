@@ -140,6 +140,21 @@
    - 2ターン目以降も同じコマンド `python3 tools/taxonomy_plan.py --next-unit --auto-claim` を叩くだけで、自ブランチの確保済みトラック内で未完了の先頭ユニット（例：`U01` → `U02` → `U03` → `U04`）が自動的に返る。
    - 4ユニットすべて完了すると `STATUS: track_complete` が返り、その時点で `python3 tools/taxonomy_plan.py --prepare-push` により Arena マルチターン環境での Git 履歴整合を取ったうえで PR 作成・マージへ進める。
 
+### 3.4 `STATUS` の読み分けと確保票の返却（`track_complete` の誤読防止）
+
+`--next-unit` が返す `STATUS` は次の 5 種類で、**待機と完了は別物**である：
+
+| `STATUS` | 意味 | 次の行動 |
+|---|---|---|
+| `ready` | 自トラックに未完了ユニットがある | `NEXT_UNIT` を分類・出力する |
+| `track_complete` | 自トラックの 4 ユニットがすべて完了 | `--prepare-push` → PR → マージ |
+| `unclaimed` | このブランチはまだトラックを確保していない | `--next-unit --auto-claim` |
+| `all_tracks_claimed_or_complete` | 空きトラックが他の稼働中ブランチの確保票で埋まっている | `HELD_BY` を確認し、TTL 失効または当該ブランチのマージを待つ |
+| `all_tracks_complete` | `origin/main` 上で 16 ユニットすべてが完了 | 作業なし |
+
+- 以前の版は `track_complete` 以外でも `NEXT_UNIT : NONE (TRACK COMPLETE)` と表示していたため、**「他ワーカーが確保中で待機」を「自トラック完了」と誤読する**恐れがあった。現在は `NONE (TRACK COMPLETE: <Track-ID>)` / `NONE (NO UNIT ASSIGNED - THIS BRANCH'S TRACK IS NOT COMPLETE)` / `NONE (ALL 16 UNITS COMPLETE)` を状態別に出力し、あわせて `DONE_TRACKS`（`origin/main` 上で完了済みのトラック）と `HELD_BY`（他ブランチが保持する確保票）を併記する。
+- 自トラックを使い切ったワーカーが、まだ完了していない別トラックへ移りたい場合は、`python3 tools/taxonomy_plan.py --release-claim` で**自ブランチの確保票だけ**を削除してから `--next-unit --auto-claim` を再実行する。自トラックに未完了ユニットが残っている場合は `claim_not_complete` として拒否され、`--force` を明示したときのみ解放される。
+
 ---
 
 ## 4. ワーカー出力仕様と統合（Map-Reduce）プロトコル
