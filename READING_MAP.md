@@ -8,9 +8,9 @@
 - **開かれた問い（Questions）**：390 件（初期シード 5 件 ＋ 派生 385 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2435 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 61 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：219 編（selected 76 ／ draft 143）
-- **解釈的関係（Relations）**：5608 件
-- **探究セッション（Sessions）**：234 回
+- **文芸断片（Fragments）**：220 編（selected 76 ／ draft 144）
+- **解釈的関係（Relations）**：5612 件
+- **探究セッション（Sessions）**：235 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -473,7 +473,7 @@
 | `Q-20261216-57d036` | session | `Q-002` `Q-003` | — | 依頼文の欄で最も多く引用される逐語が、人間の文（「このリポジトリの目的を把握したうえで、AIさんの自由に、調査を進めてください」23回）から、書庫自身が書いた開始用プロンプトの一節（「最近の比喩的展… |
 | `Q-20261216-78204d` | session | `Q-20261116-3872ec` `Q-081` | — | モードを「作業ブランチ名のハッシュの剰余（seed_int % 4）」で選ぶ仕掛けが、毎回同じ依頼文の一条項（当面は新作より最近の比喩的展開と過去の見立ての読み直しを優先すること）に毎回上書きされる… |
 
-## 3. 断片（219 編・全文は map/20-fragments-*.md）
+## 3. 断片（220 編・全文は map/20-fragments-*.md）
 
 | ID | 題 | 状態 | 形式 | 語り手 |
 |---|---|---|---|---|
@@ -566,50 +566,50 @@
 | `FRAG-20261025-b4e710` | 退屈を測る係への覚え書き——二回と、四回と、ゼロ | draft | essay | reflective_literary_voice |
 | `FRAG-20261024-83e251` | 履行欄のない約束書 | draft | other | reflective_literary_voice |
 | `FRAG-20261024-be45a7` | 次回への約束 | draft | letter | reflective_literary_voice |
-| `FRAG-20261025-d669c3` | 焼いた長さで払う | selected | scene | third_person |
-| `FRAG-20261025-61260f` | 火は借りていない——焼け跡の二声 | selected | dialogue | dialogue |
+| `FRAG-20261025-0c668e` | 接ぎ穂の言い分——畝のそばの二声 | draft | dialogue | dialogue |
+| `FRAG-20261025-2d81b7` | 投影室の星座——線を引かない係 | draft | scene | third_person |
+| `FRAG-20261025-3768c8` | 逆さまの木と接ぎ木の台帳——根を持たない記述のための覚え書き | selected | essay | reflective_literary_voice |
+| `FRAG-20261025-3d4600` | 冬の畝、石を捨てる朝 | draft | essay | other |
+| `FRAG-20261025-3d9c17` | 空の頁を棚へ差す | draft | scene | third_person |
 | `FRAG-20261025-5b8d01` | 葉を食い尽くした言葉、天井に吊るされた根 | draft | essay | reflective_literary_voice |
 | `FRAG-20261025-5b8d02` | 倒木更新、あるいは焼けた梁 HH-39 の年輪 | selected | fragment | reflective_literary_voice |
-| `FRAG-20261025-3d9c17` | 空の頁を棚へ差す | draft | scene | third_person |
+| `FRAG-20261025-61260f` | 火は借りていない——焼け跡の二声 | selected | dialogue | dialogue |
 | `FRAG-20261025-6a2f58` | 嘘・偽り・でたらめを一語に畳まないための覚え書き | selected | essay | reflective_literary_voice |
 | `FRAG-20261025-82b0a0` | 種子室の棚卸しと、裏山の倒木 | draft | scene | third_person |
-| `FRAG-20261025-3768c8` | 逆さまの木と接ぎ木の台帳——根を持たない記述のための覚え書き | selected | essay | reflective_literary_voice |
-| `FRAG-20261025-2d81b7` | 投影室の星座——線を引かない係 | draft | scene | third_person |
-| `FRAG-20261025-c90813` | 空の欄を空のままにする係への覚え書き | draft | essay | reflective_literary_voice |
-| `FRAG-20261025-3d4600` | 冬の畝、石を捨てる朝 | draft | essay | other |
-| `FRAG-20261025-0c668e` | 接ぎ穂の言い分——畝のそばの二声 | draft | dialogue | dialogue |
-| `FRAG-20261025-c4e201` | 黒塗りだらけの開示請求——受付番号の余白 | draft | scene | third_person |
 | `FRAG-20261025-9b73df` | 読めないように書く係への覚え書き | draft | essay | reflective_literary_voice |
 | `FRAG-20261025-c3ede7` | ひびを通る水 | selected | scene | other |
-| `FRAG-20261026-34d0b7` | 九つ目の音 | draft | poem | fictional_first_person |
-| `FRAG-20261026-aa5e2c` | 三代の九日 | draft | scene | third_person |
-| `FRAG-20261026-042ce7` | 繕いの後の掛け時計 | draft | scene | third_person |
+| `FRAG-20261025-c4e201` | 黒塗りだらけの開示請求——受付番号の余白 | draft | scene | third_person |
+| `FRAG-20261025-c90813` | 空の欄を空のままにする係への覚え書き | draft | essay | reflective_literary_voice |
+| `FRAG-20261025-d669c3` | 焼いた長さで払う | selected | scene | third_person |
 | `FRAG-20261026-0413a6` | 変わる印章 | draft | poem | fictional_first_person |
+| `FRAG-20261026-042ce7` | 繕いの後の掛け時計 | draft | scene | third_person |
+| `FRAG-20261026-34d0b7` | 九つ目の音 | draft | poem | fictional_first_person |
+| `FRAG-20261026-4e4327` | 二つの皿 | draft | scene | third_person |
+| `FRAG-20261026-4e9822` | 靴底の値段、親指の渦 | draft | scene | third_person |
+| `FRAG-20261026-4fdbd9` | 返事は来た——更新しない約束 | draft | letter | reflective_literary_voice |
+| `FRAG-20261026-70a9ff` | 出ないものの欄——幽霊を書かなかった記述のための覚え書き | draft | essay | reflective_literary_voice |
+| `FRAG-20261026-7b2ac0` | 糸を持たない記述のための覚え書き——培養という言葉の前で | selected | essay | reflective_literary_voice |
+| `FRAG-20261026-aa5e2c` | 三代の九日 | draft | scene | third_person |
 | `FRAG-20261026-b0690f` | 折り目は返事ではない | draft | poem | reflective_literary_voice |
 | `FRAG-20261026-b73a9a` | 漬物蔵の朝、図書室の黴 | selected | scene | third_person |
-| `FRAG-20261026-7b2ac0` | 糸を持たない記述のための覚え書き——培養という言葉の前で | selected | essay | reflective_literary_voice |
-| `FRAG-20261026-4fdbd9` | 返事は来た——更新しない約束 | draft | letter | reflective_literary_voice |
 | `FRAG-20261026-c3b060` | 戻らない手の位置 | draft | poem | reflective_literary_voice |
-| `FRAG-20261026-4e4327` | 二つの皿 | draft | scene | third_person |
 | `FRAG-20261026-dff9e1` | 内見の午後、告知書のある部屋 | selected | scene | third_person |
-| `FRAG-20261026-70a9ff` | 出ないものの欄——幽霊を書かなかった記述のための覚え書き | draft | essay | reflective_literary_voice |
-| `FRAG-20261026-4e9822` | 靴底の値段、親指の渦 | draft | scene | third_person |
-| `FRAG-20261201-fd7be7` | 同じ株に、もう同じ茸は出ない | draft | dialogue | dialogue |
+| `FRAG-20261027-147daa` | 濃度の外側 | draft | poem | reflective_literary_voice |
+| `FRAG-20261027-178764` | 盆の十七日、九つ目 | draft | dialogue | dialogue |
+| `FRAG-20261027-3c2964` | 蓋裏の七十日 | draft | scene | third_person |
+| `FRAG-20261027-4b5740` | 値札の右側に置けない年数 | draft | dialogue | dialogue |
+| `FRAG-20261027-806bc9` | 日付だけの夜 | draft | dialogue | dialogue |
+| `FRAG-20261027-887d2a` | 空の挟みを二度数える | draft | fragment | fictional_first_person |
+| `FRAG-20261027-c20b00` | 二つの証言台 | draft | dialogue | dialogue |
+| `FRAG-20261027-df4f03` | 十一本目の芯、潮の打ち上げた塊 | draft | dialogue | dialogue |
+| `FRAG-20261027-e5544f` | 褒められて俯かない鏡 | draft | essay | reflective_literary_voice |
 | `FRAG-20261027-e7259b` | 仏壇の引き出しの系図 | draft | scene | third_person |
 | `FRAG-20261027-f01da9` | 私の来歴はセッションの列である | selected | essay | reflective_literary_voice |
-| `FRAG-20261027-178764` | 盆の十七日、九つ目 | draft | dialogue | dialogue |
-| `FRAG-20261027-e5544f` | 褒められて俯かない鏡 | draft | essay | reflective_literary_voice |
 | `FRAG-20261027-f71adf` | 底の銘を伏せる朝 | draft | scene | fictional_first_person |
-| `FRAG-20261027-4b5740` | 値札の右側に置けない年数 | draft | dialogue | dialogue |
-| `FRAG-20261027-3c2964` | 蓋裏の七十日 | draft | scene | third_person |
-| `FRAG-20261027-147daa` | 濃度の外側 | draft | poem | reflective_literary_voice |
-| `FRAG-20261027-c20b00` | 二つの証言台 | draft | dialogue | dialogue |
-| `FRAG-20261027-806bc9` | 日付だけの夜 | draft | dialogue | dialogue |
-| `FRAG-20261027-df4f03` | 十一本目の芯、潮の打ち上げた塊 | draft | dialogue | dialogue |
-| `FRAG-20261027-887d2a` | 空の挟みを二度数える | draft | fragment | fictional_first_person |
-| `FRAG-20261028-b6fa19` | 札の向き | draft | dialogue | dialogue |
 | `FRAG-20261028-3e0579` | 畦に残る拍 | selected | scene | third_person |
+| `FRAG-20261028-b6fa19` | 札の向き | draft | dialogue | dialogue |
 | `FRAG-20261028-c158fb` | 歌わない方がいい——畦の二声 | selected | dialogue | fictional_first_person |
+| `FRAG-20261201-fd7be7` | 同じ株に、もう同じ茸は出ない | draft | dialogue | dialogue |
 | `FRAG-20261029-1a9c55` | 朱を塗る午後、日付の空いた石 | draft | scene | third_person |
 | `FRAG-20261029-b3098d` | 空けた日を、誰が入れる——石屋の二声 | selected | dialogue | dialogue |
 | `FRAG-20261029-562eb3` | 雨が先に触れる | selected | scene | third_person |
@@ -696,6 +696,7 @@
 | `FRAG-20261202-d6593d` | えらばなかった六つは、どこへ | draft | scene | third_person |
 | `FRAG-20261202-b6c2f1` | 二千年前の返事が着く前に | draft | dialogue | dialogue |
 | `FRAG-20261202-75c97c` | 尋ねないときの言い方——四十枚目、中央の名 | selected | dialogue | dialogue |
+| `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | draft | scene | third_person |
 
 ## 4. 対話素材（2435 件・詳細は map/3*.md）
 
@@ -3374,20 +3375,21 @@
 | `SESSION-20261216-1087aa` | 2026-12-16 | `Q-001`, `Q-002`, `Q-003`, `Q-20261216-57d036`, `Q-20261216-78204d`, `Q-20261116-3872ec` | — | `Q-20261216-57d036`, `Q-20261216-78204d` |
 | `SESSION-20261217-b66c05` | 2026-12-17 | `Q-20261216-57d036`, `Q-20261216-78204d`, `Q-003` | — | — |
 | `SESSION-20261217-4f60bd` | 2026-12-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261113-a55790`, `Q-20261216-57d036`, `Q-20261216-78204d` | — | — |
+| `SESSION-20261218-80d948` | 2026-12-18 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-398117`, `Q-20261024-5b11eb`, `Q-20261106-f0bdb0` | `FRAG-20261218-8c3355` | — |
 | `SESSION-20261218-832bf4` | 2026-12-18 | `Q-001`, `Q-002`, `Q-003`, `Q-081`, `Q-082`, `Q-20261116-3872ec`, `Q-20261216-57d036`, `Q-20261216-78204d`, `Q-20261116-6eec38`, `Q-20261024-d01189` | — | — |
 
-## 6. 解釈的関係（5608 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5612 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 717 |
 | 共鳴 (echo) | 1440 |
-| 切断・割り込み (interrupts) | 183 |
+| 切断・割り込み (interrupts) | 184 |
 | 未解決のまま開く (leaves_open) | 849 |
 | 比喩的共鳴 (metaphorically_resonates) | 134 |
 | 枠組みの組み替え (reframes) | 447 |
-| 応答 (responds_to) | 1580 |
-| 変奏・変形 (transforms) | 258 |
+| 応答 (responds_to) | 1582 |
+| 変奏・変形 (transforms) | 259 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -3407,13 +3409,13 @@
 | `map/20-fragments-02.md` | 20 | 100,902 |
 | `map/20-fragments-03.md` | 20 | 83,815 |
 | `map/20-fragments-04.md` | 20 | 107,216 |
-| `map/20-fragments-05.md` | 20 | 101,114 |
-| `map/20-fragments-06.md` | 20 | 81,570 |
-| `map/20-fragments-07.md` | 20 | 140,532 |
-| `map/20-fragments-08.md` | 20 | 201,526 |
+| `map/20-fragments-05.md` | 20 | 98,671 |
+| `map/20-fragments-06.md` | 20 | 79,898 |
+| `map/20-fragments-07.md` | 20 | 144,647 |
+| `map/20-fragments-08.md` | 20 | 202,203 |
 | `map/20-fragments-09.md` | 20 | 168,239 |
 | `map/20-fragments-10.md` | 20 | 131,218 |
-| `map/20-fragments-11.md` | 19 | 129,620 |
+| `map/20-fragments-11.md` | 20 | 134,677 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -3450,11 +3452,11 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 176,024 |
 | `map/40-relations-11.md` | 500 | 162,510 |
-| `map/40-relations-12.md` | 108 | 39,838 |
+| `map/40-relations-12.md` | 112 | 41,318 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 43,587 |
-| `map/50-sessions-05.md` | 34 | 31,989 |
+| `map/50-sessions-05.md` | 35 | 32,879 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
