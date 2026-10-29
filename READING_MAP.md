@@ -8,9 +8,9 @@
 - **開かれた問い（Questions）**：390 件（初期シード 5 件 ＋ 派生 385 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2435 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 61 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：220 編（selected 76 ／ draft 144）
+- **文芸断片（Fragments）**：220 編（selected 77 ／ draft 143）
 - **解釈的関係（Relations）**：5615 件
-- **探究セッション（Sessions）**：238 回
+- **探究セッション（Sessions）**：239 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -688,7 +688,7 @@
 | `FRAG-20261027-639862` | 艦長は苦悶した | draft | scene | third_person |
 | `FRAG-20261027-42e9fc` | 肩の余り | draft | dialogue | dialogue |
 | `FRAG-20261130-8ccc86` | 十三番目、ごんごん | draft | dialogue | dialogue |
-| `FRAG-20261130-a23912` | 立つ位置——口元は笑いにも痛みにもなる | draft | dialogue | dialogue |
+| `FRAG-20261130-a23912` | 立つ位置——口元は笑いにも痛みにもなる | selected | dialogue | dialogue |
 | `FRAG-20261201-128f80` | 葉の下の交点 | draft | dialogue | dialogue |
 | `FRAG-20261201-0c2cb9` | 四番の炉を伏せる | draft | dialogue | dialogue |
 | `FRAG-20261201-ec0ef8` | 二つ目は、合わせ終わったら割る | draft | dialogue | dialogue |
@@ -3138,7 +3138,7 @@
 | `MAT-20261028-085299` | project_trace | AIselfMySelf Archive『自己の測量、三度目——八十一回のあと、七十四回の積層（第三版暫定報告・運用痕跡）』（2026） |
 | `MAT-20261029-3c0e04` | project_trace | AIselfMySelf Archive『十六シャードの統合計測——行1,553／対象15,448、比喩滞在6件、原典未照合1,199（Reduce フェーズの運用痕跡）』（20… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261220-72373c・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261029-5f9e10・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3380,6 +3380,7 @@
 | `SESSION-20261218-80d948` | 2026-12-18 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-398117`, `Q-20261024-5b11eb`, `Q-20261106-f0bdb0` | `FRAG-20261218-8c3355` | — |
 | `SESSION-20261218-832bf4` | 2026-12-18 | `Q-001`, `Q-002`, `Q-003`, `Q-081`, `Q-082`, `Q-20261116-3872ec`, `Q-20261216-57d036`, `Q-20261216-78204d`, `Q-20261116-6eec38`, `Q-20261024-d01189` | — | — |
 | `SESSION-20261220-72373c` | 2026-12-20 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-b2f8e4`, `Q-20261027-a44b77`, `Q-20261130-25687e`, `Q-004`, `Q-007`, `Q-013` | — | — |
+| `SESSION-20261029-5f9e10` | 2026-12-20 | `Q-001`, `Q-002`, `Q-003`, `Q-20261130-25687e`, `Q-20261128-c0c945` | — | — |
 
 ## 6. 解釈的関係（5615 件・全表は map/40-relations-*.md）
 
@@ -3418,7 +3419,7 @@
 | `map/20-fragments-08.md` | 20 | 202,203 |
 | `map/20-fragments-09.md` | 20 | 168,239 |
 | `map/20-fragments-10.md` | 20 | 131,218 |
-| `map/20-fragments-11.md` | 20 | 135,100 |
+| `map/20-fragments-11.md` | 20 | 135,103 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -3460,6 +3461,6 @@
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 43,760 |
-| `map/50-sessions-05.md` | 38 | 35,651 |
+| `map/50-sessions-05.md` | 39 | 36,508 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
