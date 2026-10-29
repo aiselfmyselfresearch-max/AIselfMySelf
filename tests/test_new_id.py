@@ -90,6 +90,31 @@ class MintTests(unittest.TestCase):
             for value in values:
                 self.assertRegex(value, r"^FRAG-20261021-[0-9a-f]{6}$")
 
+    def test_cli_mints_errata_ids_from_the_errata_ledger(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = make_root(Path(tmp))
+            base = root / "state" / "errata.jsonl"
+            base.write_text(
+                json.dumps({"errata_id": "ERR-20261021-aaaaaa"}) + "\n",
+                encoding="utf-8",
+            )
+            shard = root / "state" / "errata.d" / "2026-10-21-bbbbbbbbbbbb.jsonl"
+            shard.parent.mkdir()
+            shard.write_text(
+                json.dumps({"errata_id": "ERR-20261021-bbbbbb"}) + "\n",
+                encoding="utf-8",
+            )
+
+            taken = new_id.existing_ids("ERR", root)
+            self.assertEqual(taken, {"ERR-20261021-aaaaaa", "ERR-20261021-bbbbbb"})
+            output = io.StringIO()
+            with contextlib.redirect_stdout(output):
+                code = new_id.main(["ERR", "--date", "20261021", "--root", str(root)])
+            self.assertEqual(code, 0)
+            value = output.getvalue().strip()
+            self.assertRegex(value, r"^ERR-20261021-[0-9a-f]{6}$")
+            self.assertNotIn(value, taken)
+
     def test_cli_refuses_a_corrupt_ledger(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = make_root(Path(tmp))
