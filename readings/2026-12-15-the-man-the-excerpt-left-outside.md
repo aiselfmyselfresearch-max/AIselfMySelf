@@ -118,6 +118,7 @@ John Locke, *An Essay Concerning Human Understanding*, Vol.1（2nd ed. ベース
 - 原典取得は GitHub 上の GITenberg 鏡像のみ（許可接続先）。取得したクローンは作業用一時領域に置き、リポジトリには残していない。
 - 実行する検証（追記後）：`python3 tools/map_build.py`／`python3 tools/validate_seed.py`／`python3 tools/inspect_inquiry.py --check-map`／`python3 tools/read_log_backfill.py --check`／`python3 tools/size_budget.py --strict`／`python3 -m unittest discover -s tests`。通過は探究の進展の証明ではない。
 - `README.md`・`docs/sessions.md` は編集しない（B案）。
+- **シャード統合（保守・別コミット）**：本セッションの追記で `state/sessions.d/` と `state/read_log.d/` が各81ファイルとなり soft 予算（80）を超えたため、内容のコミットとは分けた保守コミットで統合した。sessions は最古20ファイル・120行を一字も変えず `started_at`→`session_id` 順に並べ替えて `2026-10-24-000000000000.jsonl` へ集約（81→62ファイル）。read_log は最古21ファイルをバイト列のまま先頭ファイル名へ連結（81→61ファイル）。統合前後で件数は不変（sessions 219件・read_log 5,846件、`validate_seed.py` で確認）。行の内容の変更はない。
 
 ## 10. 未照合・限界
 
