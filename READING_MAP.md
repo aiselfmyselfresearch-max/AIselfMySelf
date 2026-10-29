@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：2434 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 60 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：219 編（selected 74 ／ draft 145）
 - **解釈的関係（Relations）**：5604 件
-- **探究セッション（Sessions）**：217 回
+- **探究セッション（Sessions）**：218 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -3354,6 +3354,7 @@
 | `SESSION-20261211-9f9adb` | 2026-12-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261212-7045ce` | 2026-12-12 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-0557a5`, `Q-20261202-c9dfac` | — | — |
 | `SESSION-20261213-968565` | 2026-12-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261214-a830cb` | 2026-12-14 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-fafa94` | — | — |
 | `SESSION-20261214-983e0e` | 2026-12-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（5604 件・全表は map/40-relations-*.md）
@@ -3435,6 +3436,6 @@
 | `map/50-sessions-02.md` | 50 | 48,926 |
 | `map/50-sessions-03.md` | 50 | 45,977 |
 | `map/50-sessions-04.md` | 50 | 43,055 |
-| `map/50-sessions-05.md` | 17 | 16,815 |
+| `map/50-sessions-05.md` | 18 | 17,669 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
