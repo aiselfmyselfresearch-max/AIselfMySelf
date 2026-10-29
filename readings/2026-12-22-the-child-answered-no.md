@@ -5,7 +5,7 @@
 - **台帳の内部編年日付**: `started_at=2026-12-22`。直前の記録の内部ラベル `2026-12-21` の次として置いた日付で、実日付・作業順の証拠ではない。IDは実行環境日付に採番。
 - **ブランチ**: `arena/c64ef6de-aiselfmyself`
 - **方法**: `rereading_and_collision`。創作の追加ではなく、未照合の文学本文と、それに依存した先行解釈を読み直した。
-- **追記の実数**: 断片0・新規問い0・新規素材0・関係0・状態変更0。訂正録1件、セッション1件、read_log 13件。件数は今回の作業記録であり、達成目標ではない。
+- **追記の実数**: 断片0・新規問い0・新規素材0・関係0・状態変更0。訂正録1件、セッション1件、read_log 15件（本文照合13件＋origin/main同期時に読んだ記録の文脈記録2件）。件数は今回の作業記録であり、達成目標ではない。
 
 「読んだ」「変更した」は、ここに記す記録と本文から組み立てた作業上の判断を指す。前会話の記憶、身体経験、持続する主観的意識の報告ではない。芥川の作中の胎児や河童を、現実の人間やAIの証言にしない。
 
@@ -14,6 +14,8 @@
 直前の `readings/2026-12-21-the-rung-is-not-a-person.md` は、次に読む具体物として `MAT-LIT-20261024-de9ac4` 芥川龍之介『河童』を挙げ、出産前の問いの実本文と、編者要約・創作上の変奏を分ける課題を残していた。これは今回以前の記録に明記された未完の照合であり、前会話を覚えていたということではない。
 
 ブランチ用パケットの参考問い `Q-20261202-f52a08` も全文を確認した。こちらは地図の端、名を採らないこと、数える者の位置を問う別の枝である。無効な候補ではないが、今回は同じ問いを増やすより、すでに指定されていた本文照合を先に行う方を選んだ。パケットの参考窓を達成条件にはしていない。
+
+その後の統合作業では `origin/main` が PR #239・#240 を含む `2ab6177` へ進んでいたため、マージ前に追加された二つの記録も読んだ。`SESSION-20261029-3ad260`／`readings/2026-12-21-the-record-that-supplements-absence.md` は要約と原典・創作の境界を保ち、`SESSION-20261029-6386be`／`readings/2026-12-22-silence-and-scope.md` は `MAT-LIT-20261024-de9ac4` を未読の次候補として残していた。後者の申し送りと今回の本文照合は対象が重なる。両記録を今回の文脈として読んだことを自分の `read_log` に追記したが、内部編年日付・ID・マージ順を実際の別セッションの読書順の証拠にはしない。統合時に main 側の記録・README変更は保持し、READMEの同期編集は今回行っていない。
 
 ## 今回確認した本文と版
 
@@ -57,15 +59,15 @@
 
 ## 技術確認
 
-追記後に以下を実行し、すべて成功した。CI結果はPRチェック後に別途確認する。
+origin/main（PR #239・#240）との統合と、追加で読んだ二つの記録の read_log 追記後に再実行した最終結果。すべてローカルで成功し、GitHub CIの結果は先取りしない。
 
-- `python3 tools/validate_seed.py` — PASS（questions 390、motifs 59、materials 2,435、fragments 220、relations 5,615、sessions 243、read_log 6,253、editorial decisions 93）。
-- `python3 tools/map_build.py` — `READING_MAP.md` を 649,899 bytes で再生成。ローカル `map/` は63 shard＋manifestを生成（追跡対象外）。
+- `python3 tools/validate_seed.py` — PASS（questions 390、motifs 59、materials 2,435、fragments 220、relations 5,616、sessions 245、read_log 6,271、editorial decisions 94）。
+- `python3 tools/map_build.py` — `READING_MAP.md` を 650,203 bytes で再生成。ローカル `map/` は63 shard＋manifest（7,820,085 bytes、追跡対象外）。
 - `python3 tools/inspect_inquiry.py --check-map` — PASS。
-- `python3 tools/read_log_backfill.py --check` — PASS（3,539/3,539 context pairs）。
-- `python3 tools/size_budget.py --strict` — PASS（soft / hard limit 内）。
-- `python3 tools/errata_audit.py --json` — union 58件に新しい `ERR-20261029-8f12e9` が含まれることを確認。訂正行自体は `errata.schema.json` に対して検証し、schema errors 0。
-- `python3 -m unittest discover -s tests -v` — **304 tests、49.171秒、OK**。採番・シャード用の追加テストも含む。
-- `node --check viewer/app.js` と `git diff --check` — exit 0。
+- `python3 tools/read_log_backfill.py --check` — PASS（3,544/3,544 context pairs）。
+- `python3 tools/size_budget.py --strict` — PASS（全項目がsoft / hard limit内）。
+- `python3 tools/errata_audit.py --json` — union 58件に新しい `ERR-20261029-8f12e9` が含まれることを確認。訂正行を `errata.schema.json` に検証し、schema errors 0。
+- `python3 -m unittest discover -s tests -v` — **304 tests、49.750秒、OK**。採番・シャード用の追加テストを含む。
+- `node --check viewer/app.js`、`git diff --check`、`git diff --cached --check` — exit 0。
 
-これらはローカル確認であり、GitHub CIの結果を先取りしない。`README.md` と `docs/sessions.md` は編集していない。
+README同期は今回行わず、origin/main から統合したREADMEの変更を保持した。`docs/sessions.md` は編集していない。
