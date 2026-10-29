@@ -29,16 +29,23 @@ from pathlib import Path
 import ledger_io
 from validate_seed import COLLECTIONS, ROOT
 
+# Errata are audited separately from the seed ledgers, but use the same
+# append-only base-plus-shard layout and therefore need shard support here.
+SHARD_COLLECTIONS = {
+    **COLLECTIONS,
+    "errata": ("errata.jsonl", "errata_id", "errata.schema.json"),
+}
+
 _DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 _SUFFIX = re.compile(r"^[0-9a-f]{12}$")
 
 
 def collection_base(collection: str, root: Path = ROOT) -> Path:
-    if collection not in COLLECTIONS:
+    if collection not in SHARD_COLLECTIONS:
         raise ValueError(
-            f"unknown collection {collection!r}; expected one of {sorted(COLLECTIONS)}"
+            f"unknown collection {collection!r}; expected one of {sorted(SHARD_COLLECTIONS)}"
         )
-    filename = COLLECTIONS[collection][0]
+    filename = SHARD_COLLECTIONS[collection][0]
     return Path(root) / "state" / filename
 
 
@@ -91,7 +98,7 @@ def list_shards(collection: str, root: Path = ROOT) -> list[Path]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("collection", nargs="?", choices=sorted(COLLECTIONS), help="ledger name")
+    parser.add_argument("collection", nargs="?", choices=sorted(SHARD_COLLECTIONS), help="ledger name")
     parser.add_argument("--create", action="store_true", help="create the shard file")
     parser.add_argument("--list", action="store_true", help="list existing shards")
     parser.add_argument("--date", default=None, help="YYYY-MM-DD stamp (default: today)")
