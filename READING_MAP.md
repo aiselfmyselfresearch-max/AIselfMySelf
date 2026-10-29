@@ -8,9 +8,9 @@
 - **開かれた問い（Questions）**：390 件（初期シード 5 件 ＋ 派生 385 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2435 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 61 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：219 編（selected 74 ／ draft 145）
-- **解釈的関係（Relations）**：5604 件
-- **探究セッション（Sessions）**：230 回
+- **文芸断片（Fragments）**：219 編（selected 76 ／ draft 143）
+- **解釈的関係（Relations）**：5607 件
+- **探究セッション（Sessions）**：231 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -692,10 +692,10 @@
 | `FRAG-20261201-128f80` | 葉の下の交点 | draft | dialogue | dialogue |
 | `FRAG-20261201-0c2cb9` | 四番の炉を伏せる | draft | dialogue | dialogue |
 | `FRAG-20261201-ec0ef8` | 二つ目は、合わせ終わったら割る | draft | dialogue | dialogue |
-| `FRAG-20261202-c5bf54` | 十九回転の廊下 | draft | fragment | fictional_first_person |
+| `FRAG-20261202-c5bf54` | 十九回転の廊下 | selected | fragment | fictional_first_person |
 | `FRAG-20261202-d6593d` | えらばなかった六つは、どこへ | draft | scene | third_person |
 | `FRAG-20261202-b6c2f1` | 二千年前の返事が着く前に | draft | dialogue | dialogue |
-| `FRAG-20261202-75c97c` | 尋ねないときの言い方——四十枚目、中央の名 | draft | dialogue | dialogue |
+| `FRAG-20261202-75c97c` | 尋ねないときの言い方——四十枚目、中央の名 | selected | dialogue | dialogue |
 
 ## 4. 対話素材（2435 件・詳細は map/3*.md）
 
@@ -3137,7 +3137,7 @@
 | `MAT-20261028-085299` | project_trace | AIselfMySelf Archive『自己の測量、三度目——八十一回のあと、七十四回の積層（第三版暫定報告・運用痕跡）』（2026） |
 | `MAT-20261029-3c0e04` | project_trace | AIselfMySelf Archive『十六シャードの統合計測——行1,553／対象15,448、比喩滞在6件、原典未照合1,199（Reduce フェーズの運用痕跡）』（20… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261217-4f60bd・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261218-832bf4・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3371,18 +3371,19 @@
 | `SESSION-20261216-1087aa` | 2026-12-16 | `Q-001`, `Q-002`, `Q-003`, `Q-20261216-57d036`, `Q-20261216-78204d`, `Q-20261116-3872ec` | — | `Q-20261216-57d036`, `Q-20261216-78204d` |
 | `SESSION-20261217-b66c05` | 2026-12-17 | `Q-20261216-57d036`, `Q-20261216-78204d`, `Q-003` | — | — |
 | `SESSION-20261217-4f60bd` | 2026-12-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261113-a55790`, `Q-20261216-57d036`, `Q-20261216-78204d` | — | — |
+| `SESSION-20261218-832bf4` | 2026-12-18 | `Q-001`, `Q-002`, `Q-003`, `Q-081`, `Q-082`, `Q-20261116-3872ec`, `Q-20261216-57d036`, `Q-20261216-78204d`, `Q-20261116-6eec38`, `Q-20261024-d01189` | — | — |
 
-## 6. 解釈的関係（5604 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5607 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 717 |
-| 共鳴 (echo) | 1438 |
+| 共鳴 (echo) | 1439 |
 | 切断・割り込み (interrupts) | 183 |
 | 未解決のまま開く (leaves_open) | 849 |
 | 比喩的共鳴 (metaphorically_resonates) | 134 |
 | 枠組みの組み替え (reframes) | 447 |
-| 応答 (responds_to) | 1578 |
+| 応答 (responds_to) | 1580 |
 | 変奏・変形 (transforms) | 258 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3409,7 +3410,7 @@
 | `map/20-fragments-08.md` | 20 | 201,526 |
 | `map/20-fragments-09.md` | 20 | 168,239 |
 | `map/20-fragments-10.md` | 20 | 130,458 |
-| `map/20-fragments-11.md` | 19 | 128,627 |
+| `map/20-fragments-11.md` | 19 | 129,620 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -3446,11 +3447,11 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 175,970 |
 | `map/40-relations-11.md` | 500 | 162,603 |
-| `map/40-relations-12.md` | 104 | 38,226 |
+| `map/40-relations-12.md` | 107 | 39,411 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 43,255 |
-| `map/50-sessions-05.md` | 30 | 28,537 |
+| `map/50-sessions-05.md` | 31 | 29,494 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
