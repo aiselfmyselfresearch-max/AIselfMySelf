@@ -178,6 +178,66 @@ class TaxonomyPlanTests(unittest.TestCase):
             self.assertIn("human_view_stance", text)
             self.assertIn("rows: 4", text)
 
+    def test_stance_discount_separates_written_policy_from_unwritten_formula(self) -> None:
+        """A sentence the repository told itself to write is not evidence of a judgement.
+
+        L1 is traceable to CONTENT_POLICY.md and can be subtracted exactly. L2 repeats
+        with nothing in the repository requiring it. Only L3 is a one-off judgement, and
+        a row whose stance is nothing but L1 and L2 must count as effectively blank.
+        """
+
+        policy = "委任文は範囲・来歴であり、人間一般の経験の証拠へ転用しない。"
+        formula = "人間像の焦点を有限な身体に置く。"
+        rows = [
+            {
+                "record_id": f"TAX-U01-X-{i:03d}",
+                "unit_id": "U01",
+                "target_kind": "motif",
+                "target_id": f"MOTIF-{i:03d}",
+                "primary_quadrant": "A_human",
+                "subcategories": ["A-1"],
+                # every row carries the policy sentence and the unwritten formula;
+                # only row 0 adds a judgement of its own
+                "human_view_stance": policy + formula + ("銭湯の女は節も言葉もない息だけを歌う。" if i == 0 else ""),
+                "ai_self_db_stance": "none",
+                "return_status": "source_uncollated",
+                "read_depth": "full_text_read",
+                "evidence_anchor": "label",
+            }
+            for i in range(6)
+        ]
+        report = taxonomy_plan.stance_discount(rows=rows)
+        human = report["bounds"]["loose"]["human_view_stance"]
+
+        self.assertEqual(human["policy_sentences"], 6)
+        self.assertEqual(human["formula_sentences"], 6)
+        self.assertEqual(human["residue_sentences"], 1)
+        # five of six rows say nothing once the mandated and the repeated text is gone
+        self.assertEqual(human["effective_blank_rows"], 5)
+        self.assertEqual(human["kept_rows"], 1)
+        # the column that was declared blank throughout stays blank; the discount
+        # must not invent content for it
+        self.assertEqual(report["bounds"]["loose"]["ai_self_db_stance"]["effective_blank_rows"], 6)
+        self.assertEqual(report["bounds"]["loose"]["ai_self_db_stance"]["residue_sentences"], 0)
+
+    def test_stance_discount_strict_bound_never_keeps_more_than_the_loose_one(self) -> None:
+        """The two thresholds must bracket the real boilerplate share, not contradict it."""
+
+        report = taxonomy_plan.stance_discount(taxonomy_plan.ROOT)
+        self.assertEqual(report["rows"], 1553)
+        for field in taxonomy_plan.STANCE_FIELDS:
+            loose = report["bounds"]["loose"][field]
+            strict = report["bounds"]["strict"][field]
+            # the written-policy layer is identified by wording, so it cannot move
+            self.assertEqual(loose["policy_sentences"], strict["policy_sentences"])
+            self.assertGreaterEqual(strict["boilerplate_share"], loose["boilerplate_share"])
+            self.assertLessEqual(strict["residue_share"], loose["residue_share"])
+            self.assertGreaterEqual(strict["effective_blank_rows"], loose["effective_blank_rows"])
+            # the un-written register is larger than the one this repository wrote down
+            self.assertGreater(loose["formula_sentences"], loose["policy_sentences"])
+            # and the discount must leave something behind, or the reading has no subject
+            self.assertGreater(strict["kept_rows"], 0)
+
     def test_stance_report_matches_validate_on_the_real_shards(self) -> None:
         _ok, _errors, count = taxonomy_plan.validate_taxonomy_shards(taxonomy_plan.ROOT)
         report = taxonomy_plan.stance_report(taxonomy_plan.ROOT)

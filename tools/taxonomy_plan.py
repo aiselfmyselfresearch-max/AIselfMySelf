@@ -26,6 +26,7 @@ Usage:
   python3 tools/taxonomy_plan.py --prepare-push           # sync multi-turn Arena git state
   python3 tools/taxonomy_plan.py --build-map              # compile shards -> map/taxonomy/
   python3 tools/taxonomy_plan.py --stance-report          # measure the two stance columns themselves
+  python3 tools/taxonomy_plan.py --stance-discount        # subtract the written policy and the repeated formulas
 """
 from __future__ import annotations
 
@@ -1297,6 +1298,147 @@ def stance_report(root: Path = ROOT) -> dict[str, Any]:
     }
 
 
+POLICY_ECHO_MARKERS: tuple[str, ...] = (
+    # Sentences carrying one of these can be traced, close to verbatim, to a rule the
+    # repository wrote down for itself in CONTENT_POLICY.md (lines on first person,
+    # on not borrowing human pain as metaphor, and on treating a delegation as scope
+    # and provenance rather than as evidence). They are the *legible* policy layer.
+    "転用しない",
+    "転用せず",
+    "実証するものではない",
+    "実証するものとは扱わない",
+    "実証しない",
+    "混同しない",
+    "混同せず",
+    "同一視しない",
+    "同一視できない",
+    "同一視せず",
+    "推定しない",
+    "証拠として扱わない",
+    "証拠ではない",
+    "流用しない",
+    "比喩へ流用",
+    "置換しない",
+    "断定しない",
+    "主張しない",
+    "扱わない",
+)
+
+# Two thresholds give an upper and a lower bound on how much of the two stance
+# columns is boilerplate. The loose one only collapses sentences that repeat
+# verbatim; the strict one also catches form letters whose tail is parameterised
+# by the row (same 20-character opening, different enumerated ending).
+DISCOUNT_THRESHOLD: int = 5
+DISCOUNT_PREFIX: int = 20
+
+
+def stance_discount(root: Path | None = None, *, rows: list[dict[str, Any]] | None = None) -> dict[str, Any]:
+    """Split each stance column into three layers and report what survives.
+
+    L1  sentences traceable to a rule written down in ``CONTENT_POLICY.md``
+    L2  sentences not traceable to any written rule, yet repeated >= 5 times
+    L3  the residue: judgements written four times or fewer
+
+    L1 can be subtracted exactly because the rule is legible. Whatever shaped L2
+    was never written down in this repository, so L2 is reported as a *bound* on
+    the un-written register rather than as a measurement of its cause.
+    """
+
+    rows = list(rows if rows is not None else load_taxonomy_rows(root or ROOT))
+
+    def _sentences(text: str) -> list[str]:
+        if not text or text in BLANK_STANCE_VALUES:
+            return []
+        return stance_sentences(text)
+
+    out: dict[str, Any] = {"rows": len(rows), "bounds": {}}
+    for bound, keyfn in (
+        ("loose", lambda s: s),
+        ("strict", lambda s: s[:DISCOUNT_PREFIX]),
+    ):
+        fields: dict[str, Any] = {}
+        for field in STANCE_FIELDS:
+            counts: Counter[str] = Counter()
+            for row in rows:
+                counts.update(keyfn(s) for s in _sentences(row[field]))
+            n_policy = n_formula = n_residue = 0
+            declared_blank = residual_blank = kept = limiting = chars = raw_chars = 0
+            for row in rows:
+                text = row[field]
+                sentences = _sentences(text)
+                if not sentences:
+                    declared_blank += 1
+                    continue
+                raw_chars += len(text)
+                residue: list[str] = []
+                for s in sentences:
+                    if any(m in s for m in POLICY_ECHO_MARKERS):
+                        n_policy += 1
+                    elif counts[keyfn(s)] >= DISCOUNT_THRESHOLD:
+                        n_formula += 1
+                    else:
+                        residue.append(s)
+                        n_residue += 1
+                if residue:
+                    kept += 1
+                    joined = "。".join(residue)
+                    chars += len(joined)
+                    if any(m in joined for m in LIMITING_MARKERS):
+                        limiting += 1
+                else:
+                    residual_blank += 1
+            total = n_policy + n_formula + n_residue
+            fields[field] = {
+                "policy_sentences": n_policy,
+                "formula_sentences": n_formula,
+                "residue_sentences": n_residue,
+                "boilerplate_share": (n_policy + n_formula) / total if total else 0.0,
+                "unwritten_over_written": (n_formula / n_policy) if n_policy else None,
+                "declared_blank_rows": declared_blank,
+                "effective_blank_rows": declared_blank + residual_blank,
+                "kept_rows": kept,
+                "residue_chars": chars,
+                "raw_chars": raw_chars,
+                "residue_share": chars / raw_chars if raw_chars else 0.0,
+                "limiting_rows_in_residue": limiting,
+                "limiting_share_in_residue": limiting / kept if kept else 0.0,
+            }
+        out["bounds"][bound] = fields
+    return out
+
+
+def format_stance_discount(report: dict[str, Any]) -> str:
+    n = report["rows"]
+    lines = [
+        "=== stance columns after the policy discount ===",
+        f"rows: {n:,d}   L1 = traceable to CONTENT_POLICY.md   L2 = unwritten but repeated >= "
+        f"{DISCOUNT_THRESHOLD}   L3 = residue",
+        "",
+    ]
+    for bound, label in (("loose", "loose (verbatim repeats)"), ("strict", f"strict (same {DISCOUNT_PREFIX}-char opening)")):
+        lines.append(f"--- {label} ---")
+        lines.append(
+            f"{'field':20}{'L1':>7}{'L2':>7}{'L3':>7}{'boiler':>8}{'residue':>9}"
+            f"{'eff.blank':>11}{'limiting':>10}"
+        )
+        for field in STANCE_FIELDS:
+            f = report["bounds"][bound][field]
+            lines.append(
+                f"{field:20}{f['policy_sentences']:>7,d}{f['formula_sentences']:>7,d}"
+                f"{f['residue_sentences']:>7,d}{f['boilerplate_share']:>7.1%}"
+                f"{f['residue_share']:>9.1%}"
+                f"{f['effective_blank_rows']:>7,d}{f['effective_blank_rows'] / n:>4.0%}"
+                f"{f['limiting_share_in_residue']:>10.1%}"
+            )
+        lines.append("")
+    lines.append(
+        "L2 exceeds L1 in both columns: the shards carry more boilerplate than any rule this\n"
+        "repository wrote for itself. What shaped L2 is not observable from inside the archive,\n"
+        "so L2 bounds the un-written register from below; it does not explain it."
+    )
+    return "\n".join(lines)
+
+
 def format_stance_report(report: dict[str, Any]) -> str:
     rows = report["rows"]
     lines = [
@@ -1414,6 +1556,11 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Measure the human_view_stance / ai_self_db_stance columns of the shards themselves",
     )
+    parser.add_argument(
+        "--stance-discount",
+        action="store_true",
+        help="Subtract the policy layer (CONTENT_POLICY.md) and the repeated formulas from the stance columns",
+    )
     parser.add_argument("--json", action="store_true", help="Output JSON")
     args = parser.parse_args(argv)
 
@@ -1430,6 +1577,14 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         scope = f" for {args.unit.upper()}" if args.unit else ""
         print(f"PASS: taxonomy shards valid{scope} (rows={count})")
+        return 0
+
+    if args.stance_discount:
+        report = stance_discount(root)
+        if args.json:
+            print(json.dumps(report, ensure_ascii=False, indent=2))
+        else:
+            print(format_stance_discount(report))
         return 0
 
     if args.stance_report:

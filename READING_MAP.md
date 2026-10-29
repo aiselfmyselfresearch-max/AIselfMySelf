@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：391 件（初期シード 5 件 ＋ 派生 386 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2436 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 62 ／ conversation_trace 1）
+- **対話素材（Materials）**：2437 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 63 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：220 編（selected 77 ／ draft 143）
 - **解釈的関係（Relations）**：5615 件
-- **探究セッション（Sessions）**：242 回
+- **探究セッション（Sessions）**：243 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -699,7 +699,7 @@
 | `FRAG-20261202-75c97c` | 尋ねないときの言い方——四十枚目、中央の名 | selected | dialogue | dialogue |
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | draft | scene | third_person |
 
-## 4. 対話素材（2436 件・詳細は map/3*.md）
+## 4. 対話素材（2437 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3139,6 +3139,7 @@
 | `MAT-20261028-085299` | project_trace | AIselfMySelf Archive『自己の測量、三度目——八十一回のあと、七十四回の積層（第三版暫定報告・運用痕跡）』（2026） |
 | `MAT-20261029-f3e05a` | project_trace | AIselfMySelf Archive『二つの stance 欄3,106件の計測——人間観の空欄81／自己観の空欄0、文の再利用65.7%／69.1%、帰還率は四通り（10.… |
 | `MAT-20261029-3c0e04` | project_trace | AIselfMySelf Archive『十六シャードの統合計測——行1,553／対象15,448、比喩滞在6件、原典未照合1,199（Reduce フェーズの運用痕跡）』（20… |
+| `MAT-20261029-e8ac2c` | project_trace | AIselfMySelf Archive『規約の差し引き——stance欄の68.1%／72.7%は規約か定型、実効空欄は991対955、書かれざる定型は書かれた規約の2.0〜2… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261220-6b5764・全文は map/50-sessions-*.md）
 
@@ -3311,6 +3312,7 @@
 | `SESSION-20261029-846ea0` | 2026-10-29 | `Q-001`, `Q-002`, `Q-003`, `Q-049`, `Q-20261024-8b1b80` | — | — |
 | `SESSION-20261029-164350` | 2026-10-29 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261029-326490` | 2026-10-29 | `Q-001`, `Q-002`, `Q-003`, `Q-20261113-a55790` | — | — |
+| `SESSION-20261029-35a937` | 2026-10-29 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-85a285` | — | — |
 | `SESSION-20261029-1d5265` | 2026-10-29 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-ca5828` | — | — |
 | `SESSION-20261029-82e82e` | 2026-10-29 | `Q-001`, `Q-002`, `Q-003`, `Q-082` | — | `Q-20261029-85a285` |
 | `SESSION-20261029-8ba44d` | 2026-10-29 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -3449,7 +3451,7 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/32-materials-trace-01.md` | 63 | 151,364 |
+| `map/32-materials-trace-01.md` | 64 | 154,411 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
 | `map/40-relations-03.md` | 500 | 112,564 |
@@ -3465,7 +3467,7 @@
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
-| `map/50-sessions-04.md` | 50 | 44,201 |
-| `map/50-sessions-05.md` | 42 | 39,210 |
+| `map/50-sessions-04.md` | 50 | 44,364 |
+| `map/50-sessions-05.md` | 43 | 39,976 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
