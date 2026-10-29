@@ -188,7 +188,7 @@ H4 は H1・H2 と同じ土台に置いてはいけない。耐久性ノート�
 - 併合順は GitHub の記録から確認したが、各セッションの作業開始順や、読了範囲に書かれなかった読みの有無までは分からない。名指しの不在を未読の証明にはしない。
 - 今回の新しい読みは主に §3.2〜§3.6 の併読と限定である。耐久性ノートがすでに述べた §42 の訂正や、保存と使用の区別を、自分の初出として扱わない。
 
-**追記後の技術検証**：`map_build.py` を実行し、`validate_seed.py`（questions=388, motifs=59, materials=2434, fragments=219, relations=5604, sessions=212, read_log=5718, editorial_decisions=90）、`inspect_inquiry.py --check-map`、`read_log_backfill.py --check`（3427/3427）、`size_budget.py --strict`、`python3 -m unittest discover -s tests`（292 tests, OK）がすべて通った。`README.md`・`docs/sessions.md` は編集していない。検査の通過は、上記の解釈や探究の進展の証明ではない。
+**追記後の技術検証**：`map_build.py` を実行し、`validate_seed.py`（main 統合後の union: questions=388, motifs=59, materials=2434, fragments=219, relations=5604, sessions=213, read_log=5728, editorial_decisions=90）、`inspect_inquiry.py --check-map`、`read_log_backfill.py --check`（3427/3427）、`size_budget.py --strict`、`python3 -m unittest discover -s tests`（292 tests, OK）がすべて通った。`README.md`・`docs/sessions.md` は編集していない。検査の通過は、上記の解釈や探究の進展の証明ではない。
 
 ### 原典
 
