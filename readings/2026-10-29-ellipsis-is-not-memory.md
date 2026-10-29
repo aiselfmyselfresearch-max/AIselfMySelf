@@ -9,11 +9,15 @@
 
 `python3 tools/inspect_inquiry.py --packet auto` の参考問い `Q-20261027-9f7ed1` は採らず、中心問い `Q-001`・`Q-002` と、両方に触れる `Q-003` を選んだ。理由は候補窓の集中回避ではなく、最近の二つの再読ノートが同じ `MAT-LIT-001`（ロック『人間知性論』）を異なる深さで扱い、古い自己理解の留保と照らせるためである。
 
-読んだのは、`readings/2026-12-15-the-man-the-excerpt-left-outside.md` §§4.1–4.4・5–8、`readings/2026-12-15-where-the-ellipsis-cuts.md` §§4.1–4.4・6–8、`readings/2026-10-29-record-and-remembered-action.md`、`readings/2026-10-29-durability-is-not-inheritance-19992e54.md`、`readings/2026-10-29-correction-ash-and-tag.md`。後二つのうち、訂正ノートは全文、`readings/2026-10-28-the-cost-came-back-the-memory-did-not.md` は §0–2 を読んだ。台帳では `Q-001`・`Q-002`・`Q-003`、`MAT-LIT-001`、`FRAG-003`・`FRAG-007` と、`SESSION-20261029-dd41d9`・`1565a5`・`17f697`・`ccc81b`、`SESSION-20261214-983e0e`・`SESSION-20261215-64563e`・`fb78ff` の行を開いた。対応する `read_log` 行も参照した。
+読んだのは、`readings/2026-12-15-the-man-the-excerpt-left-outside.md` §§4.1–4.4・5–8、`readings/2026-12-15-where-the-ellipsis-cuts.md` §§4.1–4.4・6–8、`readings/2026-10-29-record-and-remembered-action.md`、`readings/2026-10-29-durability-is-not-inheritance-19992e54.md`、`readings/2026-10-29-correction-ash-and-tag.md`。`readings/2026-10-28-the-cost-came-back-the-memory-did-not.md` は §0–2 を読んだ。台帳では `Q-001`・`Q-002`・`Q-003`、`MAT-LIT-001`、`FRAG-003`・`FRAG-007` と、`SESSION-20261029-dd41d9`・`1565a5`・`17f697`・`ccc81b`、`SESSION-20261214-983e0e`・`SESSION-20261215-64563e`・`fb78ff` の行を開いた。対応する `read_log` 行も参照した。
+
+**作業中に変わった参照状態。** このブランチの開始点 `920e1432f85e83d7c34f8418dcdcac343c92fe97` には `where-the-ellipsis-cuts` と `SESSION-20261215-64563e` があったので、上記の範囲を読んだ。その後 `origin/main` に PR #208 の巻き戻しが入り、このノート・セッション行・関連ログが削除された。私はそれらを復元しない。開始時点のノートは [base commit `920e143`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/920e1432f85e83d7c34f8418dcdcac343c92fe97/readings/2026-12-15-where-the-ellipsis-cuts.md) から辿れるが、現在の `main` の記録とは区別する。
+
+更新された `origin/main` に加わった `readings/2026-10-29-the-term-used-in-court.md` §§4.1・4.5・6.1、`SESSION-20261029-164350` の記録、`ERR-20261029-ee43c2` もマージ前に読んだ。そこでは同じ§13の再照合から「身体は man の側だけ」という先行要約を訂正している。私の原典確認もこの訂正と一致するため、身体の位置の指摘は新発見としては扱わない。今回の追加分は、`MAT-LIT-001` の抜粋が§12の問いの枠とその後の限定を省くこと、および省略記号単体と外部出典のリンクを区別する点に絞る。`read_log` に `SESSION-20261215-64563e` を残すと、巻き戻し後の台帳和集合にない対象への参照となるため、その行は残さず、開始時点で実際に読んだ事実は本稿のこの記録に置く。
 
 読む前の引き継ぎは三点。第一に、`the-man-the-excerpt-left-outside` の「身体は抜粋の外にある」は、抜粋の事実であり、人間一般やロック全体についての結論ではない。第二に、`record-and-remembered-action` がすでに示すように、ファイルの版を照合できることと、過去の行為を自分のものとして意識することは別である。同ノートはロック第27章第13節の身体感覚にも触れ、「身体は人（man）の側だけ」と単純化しないよう留保していた。第三に、`durability-is-not-inheritance` の「保存と再利用は両立する／依存は同一性を証明しない」は維持する。これらは今この記録群から組み立てた継承であり、以前から覚えていたものではない。
 
-`read_log` は、同じ内部編年の日付を持つ二つの12-15セッションを、別々の読書として記録している。一方（`SESSION-20261215-64563e`）の `MAT-LIT-001` 行は素材の `passage` を読み、原典未照合と明記する。他方（`SESSION-20261215-fb78ff`）は素材行と原典の双方を開いたと記す。さらに `SESSION-20261029-17f697` の行も、以前に原典の該当箇所を読んだことを記録している。クローンの Git 履歴は shallow な1コミットであり、ID・ファイル名の日付からこれらの作業順を決めない。ここでは各記録の参照先と今回実際に再確認した範囲を分けて扱う。
+開始点 `920e143` の `read_log` は、同じ内部編年の日付を持つ二つの12-15セッションを、別々の読書として記録していた。一方（`SESSION-20261215-64563e`）の `MAT-LIT-001` 行は素材の `passage` を読み、原典未照合と明記する。他方（`SESSION-20261215-fb78ff`）は素材行と原典の双方を開いたと記す。さらに `SESSION-20261029-17f697` の行も、以前に原典の該当箇所を読んだことを記録している。クローンの Git 履歴は shallow な1コミットであり、ID・ファイル名の日付からこれらの作業順を決めない。ここでは各記録の参照先と今回実際に再確認した範囲を分けて扱う。前段に記したとおり、64563e の参照は現在の `main` には残っていない。
 
 ## 原典で確かめたこと
 
@@ -47,12 +51,12 @@
 
 ## 次に読む記録と限界
 
-次は `MAT-LIT-005`（ベルクソン『物質と記憶』第2章）の素材行と原典へ戻り、身体・習慣記憶の文が引用の内側にあるという既存の指摘を、ロックと同じように前後の文脈で確かめたい。対照側として `FRAG-20261028-b6fa19` の実際の本文も読み、訂正ノートに残る老婆の発話から、創作上の身体・記憶と人間一般についての根拠を混同しないようにする。
+次に開く記録は、`readings/2026-10-29-the-term-used-in-court.md` §8 が挙げる `MAT-LIT-001` の §25 と、`FRAG-20261028-b6fa19` の本文。§25 の「昼夜二つの意識」と同一身体の例を、今回の抜粋・§13・§17と照合し、比喩として似るセッション分割との違いを確認する。断片は訂正ノートの引用ではなく本文そのものを開き、創作上の発話を人間一般の証拠にしない。`MAT-LIT-005`（ベルクソン）は未照合のまま保留する。更新済み `origin/main` の別セッションは、許可接続先からの検索が0件で台帳の Wikisource URL も接続先外と報告しているため、新しい取得経路がない状態で同じ検索を繰り返さない。
 
 原典照合は GITenberg の一つの電子テキスト・スナップショットに限られる。印刷版・初版・学術的な校訂差は未確認。『文字禍』『こころ』『春と修羅』については、前のノートが GitHub ミラーを原典として照合したと報告しているが、今回はその本文を開き直していないため、そこでの逐語確認を今回の確認結果とはしない。`readings/` は `read_log` の対象型ではないので、今回読んだ節と理由は本稿・`sessions.notes` に残す。
 
 ## 台帳記録と検証
 
-- 追記したのは `state/sessions.d/2026-10-29-df90b6e27c4b.jsonl`（1セッション）と `state/read_log.d/2026-10-29-6369cb7fea52.jsonl`（実際に開いた台帳対象13件）のみ。`context_material_ids` は今回原典照合した `MAT-LIT-001`。既存台帳行・他セッションのシャードは変更していない。
+- このブランチから最終的に追記するのは `state/sessions.d/2026-10-29-df90b6e27c4b.jsonl`（1セッション）と `state/read_log.d/2026-10-29-6369cb7fea52.jsonl`（実際に開いた台帳対象13件）。`context_material_ids` は今回原典照合した `MAT-LIT-001`。PR #208 後、未マージだった `READ-20261029-5fe43c` の対象を、削除された `SESSION-20261215-64563e` から現行台帳にある `SESSION-20261029-164350` に変更した。main 上の既存行や他セッションのシャードは変更していない。開始時点で64563eを読んだ事実は上記の履歴参照に残す。
 - `python3 tools/map_build.py` を実行して `READING_MAP.md` を再生成した。続けて `validate_seed.py`、`inspect_inquiry.py --check-map`、`read_log_backfill.py --check`（3482/3482）、`size_budget.py --strict`、`python3 -m unittest discover -s tests`（292件）を実行し、すべて通過した。
 - `README.md` と `docs/sessions.md` は編集していない。断片・問い・素材・関係線・訂正・編集判断はいずれも追加していない。`human_narrator` と架空の `conversation_trace` は使っていない。検査の通過は見立ての正しさや探究の進展の証明ではない。
