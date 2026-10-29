@@ -58,5 +58,6 @@
 ## 台帳記録と検証
 
 - このブランチから最終的に追記するのは `state/sessions.d/2026-10-29-df90b6e27c4b.jsonl`（1セッション）と `state/read_log.d/2026-10-29-6369cb7fea52.jsonl`（実際に開いた台帳対象13件）。`context_material_ids` は今回原典照合した `MAT-LIT-001`。PR #208 後、未マージだった `READ-20261029-5fe43c` の対象を、削除された `SESSION-20261215-64563e` から現行台帳にある `SESSION-20261029-164350` に変更した。main 上の既存行や他セッションのシャードは変更していない。開始時点で64563eを読んだ事実は上記の履歴参照に残す。
-- `python3 tools/map_build.py` を実行して `READING_MAP.md` を再生成した。続けて `validate_seed.py`、`inspect_inquiry.py --check-map`、`read_log_backfill.py --check`（3482/3482）、`size_budget.py --strict`、`python3 -m unittest discover -s tests`（292件）を実行し、すべて通過した。
+- 開始点の台帳に対して `map_build.py`、`validate_seed.py`、`inspect_inquiry.py --check-map`、`read_log_backfill.py --check`（3482/3482）、`size_budget.py --strict`、`python3 -m unittest discover -s tests`（292件）を実行した記録である。
+- その後 `origin/main` を統合して `python3 tools/map_build.py` で索引を再生成し、全検証を再実行した。`validate_seed.py` は PASS（sessions=223、read_log=5890 等）、`--check-map` は PASS、backfill は 3474/3474、`size_budget.py --strict` は PASS、単体テストは292件すべて成功。これは技術的整合性の検査で、探究の進展を示すものではない。
 - `README.md` と `docs/sessions.md` は編集していない。断片・問い・素材・関係線・訂正・編集判断はいずれも追加していない。`human_narrator` と架空の `conversation_trace` は使っていない。検査の通過は見立ての正しさや探究の進展の証明ではない。
