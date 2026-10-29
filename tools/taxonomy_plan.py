@@ -604,6 +604,98 @@ def _closed_unmerged_branches(root: Path) -> set[str]:
         return set()
 
 
+def units_on_ref(root: Path, ref: str = "refs/remotes/origin/main") -> set[str]:
+    """Return unit ids that already have a classification shard on ``ref``."""
+    res = _run_git(root, "ls-tree", "-r", "--name-only", ref, "--", "taxonomy/shards", check=False)
+    units: set[str] = set()
+    if res.returncode != 0:
+        return units
+    for rel in res.stdout.splitlines():
+        fname = Path(rel).name
+        if fname.endswith(".jsonl") and "-" in fname:
+            units.add(fname.split("-", 1)[0])
+    return units
+
+
+def shard_units_by_seed(root: Path, ref: str = "refs/remotes/origin/main") -> dict[str, list[str]]:
+    """Map unit id -> shard file names already merged on ``ref``."""
+    res = _run_git(root, "ls-tree", "-r", "--name-only", ref, "--", "taxonomy/shards", check=False)
+    by_unit: dict[str, list[str]] = {}
+    if res.returncode != 0:
+        return by_unit
+    for rel in res.stdout.splitlines():
+        fname = Path(rel).name
+        if not fname.endswith(".jsonl") or "-" not in fname:
+            continue
+        unit = fname.split("-", 1)[0]
+        by_unit.setdefault(unit, []).append(fname)
+    return {unit: sorted(names) for unit, names in by_unit.items()}
+
+
+def duplicate_unit_conflicts(root: Path, my_seed: str) -> list[str]:
+    """Units this branch would add although ``origin/main`` already classifies them.
+
+    A worker whose track was already finished by an earlier branch must not emit a
+    second shard for the same unit: that silently duplicates every target row and
+    breaks ``--validate`` for everyone afterwards.
+    """
+    already = shard_units_by_seed(root)
+    conflicts: list[str] = []
+    shard_dir = root / "taxonomy" / "shards"
+    if not shard_dir.is_dir():
+        return conflicts
+    for sp in sorted(shard_dir.glob(f"*-{my_seed}.jsonl")):
+        unit = sp.name.split("-", 1)[0]
+        mine = sp.name
+        existing = [n for n in already.get(unit, []) if n != mine]
+        if existing:
+            conflicts.append(
+                f"{mine}: unit {unit} is already classified on origin/main as {', '.join(existing)}"
+            )
+    return conflicts
+
+
+def prepare_push(root: Path = ROOT, *, force: bool = False) -> int:
+    """Sync the multi-turn Arena branch for push, refusing to duplicate coverage."""
+    bname = current_branch_name(root)
+    my_seed = branch_seed_from_name(bname)
+
+    ok, errors, _count = validate_taxonomy_shards(root)
+    own_errors = [e for e in errors if f"-{my_seed}.jsonl" in e]
+    other_errors = [e for e in errors if f"-{my_seed}.jsonl" not in e]
+    conflicts = duplicate_unit_conflicts(root, my_seed)
+
+    if other_errors:
+        print(
+            f"WARN: {len(other_errors)} pre-existing validation error(s) in other branches' shards "
+            "(not blocking this push)",
+            file=sys.stderr,
+        )
+
+    if (own_errors or conflicts) and not force:
+        print(
+            "ABORT: this branch would duplicate classification that already exists on origin/main",
+            file=sys.stderr,
+        )
+        for e in own_errors[:10]:
+            print(f"  dup: {e}", file=sys.stderr)
+        for c in conflicts:
+            print(f"  unit: {c}", file=sys.stderr)
+        print(
+            "HINT: drop your duplicate shard/note (the earlier claimant's classification is kept), "
+            "or pass --force to override deliberately.",
+            file=sys.stderr,
+        )
+        return 1
+
+    _run_git(root, "add", "taxonomy", check=False)
+    _run_git(root, "commit", "-m", f"feat(taxonomy): record worker outputs on {bname}", check=False)
+    if bname.startswith("arena/"):
+        sync_own_branch_for_push(root, bname)
+    print(f"READY_TO_PUSH: {bname}")
+    return 0
+
+
 def scan_remote_state(
     root: Path,
     my_branch: str,
@@ -757,10 +849,15 @@ def claim_track(
     # Online coordination with optimistic push + post-push tie-break verification
     for _attempt in range(len(ALL_TRACK_IDS)):
         completed_remote, active_claims = scan_remote_state(root, my_branch, ttl_hours=ttl_hours)
+        already_classified = units_on_ref(root)
         candidates = [
             tid
             for tid in ALL_TRACK_IDS
-            if tid not in completed_remote and not active_claims.get(tid)
+            if tid not in completed_remote
+            and not active_claims.get(tid)
+            # never claim a track whose every unit is already merged: the earlier
+            # claimant's shards are the canonical classification
+            and not all(u in already_classified for u in TRACK_DEFINITIONS[tid][1])
         ]
         if not candidates:
             # Distinguish "every track is genuinely finished" from "every track is
@@ -884,10 +981,15 @@ def resolve_next_unit(
         }
 
     done = completed_units(root)
+    # Units already merged on origin/main count as done too: re-classifying them
+    # would duplicate every target row of the earlier claimant's shard.
+    remote_done = units_on_ref(root)
+    done_units = set(done) | remote_done
     track_id = claim["track_id"]
     track_units: list[str] = list(claim["units"])
-    pending = [u for u in track_units if u not in done]
-    completed_in_track = [u for u in track_units if u in done]
+    pending = [u for u in track_units if u not in done_units]
+    completed_in_track = [u for u in track_units if u in done_units]
+    completed_on_main = [u for u in track_units if u in remote_done]
 
     if not pending:
         return {
@@ -895,6 +997,7 @@ def resolve_next_unit(
             "track_id": track_id,
             "branch_seed": my_seed,
             "completed_units": completed_in_track,
+            "completed_on_main": completed_on_main,
             "pending_units": [],
             "next_unit": None,
         }
@@ -907,6 +1010,7 @@ def resolve_next_unit(
         "track_id": track_id,
         "branch_seed": my_seed,
         "completed_units": completed_in_track,
+        "completed_on_main": completed_on_main,
         "pending_units": pending,
         "next_unit": next_uid,
         "title": target.title,
@@ -1102,13 +1206,7 @@ def main(argv: list[str] | None = None) -> int:
     root = args.root.resolve()
 
     if args.prepare_push:
-        bname = current_branch_name(root)
-        _run_git(root, "add", "taxonomy", check=False)
-        _run_git(root, "commit", "-m", f"feat(taxonomy): record worker outputs on {bname}", check=False)
-        if bname.startswith("arena/"):
-            sync_own_branch_for_push(root, bname)
-        print(f"READY_TO_PUSH: {bname}")
-        return 0
+        return prepare_push(root, force=args.force)
 
     if args.validate:
         ok, errors, count = validate_taxonomy_shards(root, unit_id=args.unit)

@@ -240,6 +240,113 @@ class TaxonomyPlanTests(unittest.TestCase):
             self.assertEqual(res2["status"], "released", res2)
             self.assertFalse((claims / "Track-3-deadbeef.json").is_file())
 
+    def test_prepare_push_aborts_on_duplicate_classification(self) -> None:
+        """A worker must not push a shard that duplicates an already merged classification."""
+        dup = (
+            "taxonomy/shards/U05-deadbeef.jsonl:1: duplicate classification for "
+            "('material', 'MAT-LIT-001') (first at taxonomy/shards/U05-12345678.jsonl:1)"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            out, err = io.StringIO(), io.StringIO()
+            with mock.patch.object(
+                taxonomy_plan, "current_branch_name", return_value="arena/deadbeef-aiselfmyself"
+            ), mock.patch.object(
+                taxonomy_plan, "validate_taxonomy_shards", return_value=(False, [dup], 1)
+            ), mock.patch.object(
+                taxonomy_plan, "duplicate_unit_conflicts", return_value=[]
+            ), mock.patch.object(
+                taxonomy_plan, "_run_git", return_value=subprocess.CompletedProcess([], 0, "", "")
+            ), contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+                rc = taxonomy_plan.main(["--prepare-push", "--root", tmp])
+            self.assertEqual(rc, 1)
+            self.assertNotIn("READY_TO_PUSH", out.getvalue())
+            self.assertIn("ABORT", err.getvalue())
+
+            out2, err2 = io.StringIO(), io.StringIO()
+            with mock.patch.object(
+                taxonomy_plan, "current_branch_name", return_value="arena/deadbeef-aiselfmyself"
+            ), mock.patch.object(
+                taxonomy_plan, "validate_taxonomy_shards", return_value=(False, [dup], 1)
+            ), mock.patch.object(
+                taxonomy_plan, "duplicate_unit_conflicts", return_value=[]
+            ), mock.patch.object(
+                taxonomy_plan, "_run_git", return_value=subprocess.CompletedProcess([], 0, "", "")
+            ), contextlib.redirect_stdout(out2), contextlib.redirect_stderr(err2):
+                rc2 = taxonomy_plan.main(["--prepare-push", "--force", "--root", tmp])
+            self.assertEqual(rc2, 0)
+            self.assertIn("READY_TO_PUSH", out2.getvalue())
+
+    def test_duplicate_unit_conflicts_detects_unit_already_on_main(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            shards = root / "taxonomy" / "shards"
+            shards.mkdir(parents=True)
+            (shards / "U05-deadbeef.jsonl").write_text("{}\n", encoding="utf-8")
+            (shards / "U06-deadbeef.jsonl").write_text("{}\n", encoding="utf-8")
+            with mock.patch.object(
+                taxonomy_plan,
+                "shard_units_by_seed",
+                return_value={"U05": ["U05-12345678.jsonl"]},
+            ):
+                conflicts = taxonomy_plan.duplicate_unit_conflicts(root, "deadbeef")
+            self.assertEqual(len(conflicts), 1, conflicts)
+            self.assertIn("U05-12345678.jsonl", conflicts[0])
+            self.assertIn("U05-deadbeef.jsonl", conflicts[0])
+
+    def test_next_unit_skips_units_already_merged_on_main(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            claims = root / "taxonomy" / "claims"
+            claims.mkdir(parents=True)
+            (claims / "Track-3-deadbeef.json").write_text(
+                json.dumps(
+                    {
+                        "track_id": "Track-3",
+                        "track_title": "x",
+                        "units": ["U09", "U10", "U11", "U12"],
+                        "branch": "arena/deadbeef-aiselfmyself",
+                        "branch_seed": "deadbeef",
+                        "claimed_at_ns": 1,
+                        "claimed_at_iso": "2026-10-29T00:00:00+00:00",
+                        "mode": "online",
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            with mock.patch.object(
+                taxonomy_plan, "current_branch_seed", return_value="deadbeef"
+            ), mock.patch.object(
+                taxonomy_plan, "completed_units", return_value={}
+            ), mock.patch.object(
+                taxonomy_plan, "units_on_ref", return_value={"U09", "U10", "U11", "U12"}
+            ):
+                res = taxonomy_plan.resolve_next_unit(root)
+            self.assertEqual(res["status"], "track_complete", res)
+            self.assertEqual(res["completed_on_main"], ["U09", "U10", "U11", "U12"])
+
+    def test_claim_track_skips_track_whose_units_are_all_merged(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "taxonomy" / "claims").mkdir(parents=True)
+            empty_claims = {tid: [] for tid in taxonomy_plan.ALL_TRACK_IDS}
+            with mock.patch.object(
+                taxonomy_plan, "current_branch_name", return_value="arena/deadbeef-aiselfmyself"
+            ), mock.patch.object(
+                taxonomy_plan, "scan_remote_state", return_value=(set(), empty_claims)
+            ), mock.patch.object(
+                taxonomy_plan, "units_on_ref", return_value={"U01", "U02", "U03", "U04"}
+            ), mock.patch.object(
+                taxonomy_plan, "_closed_unmerged_branches", return_value=set()
+            ), mock.patch.object(
+                taxonomy_plan, "_run_git", return_value=subprocess.CompletedProcess([], 0, "", "")
+            ), mock.patch.object(
+                taxonomy_plan, "sync_own_branch_for_push", return_value=None
+            ), mock.patch("time.sleep", return_value=None):
+                res = taxonomy_plan.claim_track(root, offline=False)
+            self.assertEqual(res.get("status"), "claimed", res)
+            self.assertNotEqual(res.get("track_id"), "Track-1")
+
 
 if __name__ == "__main__":
     unittest.main()
