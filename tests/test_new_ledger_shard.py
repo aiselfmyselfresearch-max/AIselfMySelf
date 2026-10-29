@@ -59,6 +59,32 @@ class ShardPathTests(unittest.TestCase):
 
 
 class ShardCliTests(unittest.TestCase):
+    def test_errata_shards_use_the_errata_base_ledger(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = make_root(Path(tmp))
+            (root / "state" / "errata.jsonl").write_text("", encoding="utf-8")
+            output = io.StringIO()
+            with contextlib.redirect_stdout(output):
+                code = new_ledger_shard.main(
+                    [
+                        "errata",
+                        "--create",
+                        "--date",
+                        "2026-10-21",
+                        "--suffix",
+                        "cccccccccccc",
+                        "--root",
+                        str(root),
+                    ]
+                )
+            self.assertEqual(code, 0)
+            path = root / output.getvalue().strip()
+            self.assertEqual(
+                path,
+                root / "state" / "errata.d" / "2026-10-21-cccccccccccc.jsonl",
+            )
+            self.assertTrue(path.is_file())
+
     def test_create_then_second_create_fails(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = make_root(Path(tmp))
