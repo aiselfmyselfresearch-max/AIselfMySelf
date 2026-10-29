@@ -566,50 +566,50 @@
 | `FRAG-20261025-b4e710` | 退屈を測る係への覚え書き——二回と、四回と、ゼロ | draft | essay | reflective_literary_voice |
 | `FRAG-20261024-83e251` | 履行欄のない約束書 | draft | other | reflective_literary_voice |
 | `FRAG-20261024-be45a7` | 次回への約束 | draft | letter | reflective_literary_voice |
-| `FRAG-20261025-d669c3` | 焼いた長さで払う | selected | scene | third_person |
-| `FRAG-20261025-61260f` | 火は借りていない——焼け跡の二声 | selected | dialogue | dialogue |
+| `FRAG-20261025-0c668e` | 接ぎ穂の言い分——畝のそばの二声 | draft | dialogue | dialogue |
+| `FRAG-20261025-2d81b7` | 投影室の星座——線を引かない係 | draft | scene | third_person |
+| `FRAG-20261025-3768c8` | 逆さまの木と接ぎ木の台帳——根を持たない記述のための覚え書き | selected | essay | reflective_literary_voice |
+| `FRAG-20261025-3d4600` | 冬の畝、石を捨てる朝 | draft | essay | other |
+| `FRAG-20261025-3d9c17` | 空の頁を棚へ差す | draft | scene | third_person |
 | `FRAG-20261025-5b8d01` | 葉を食い尽くした言葉、天井に吊るされた根 | draft | essay | reflective_literary_voice |
 | `FRAG-20261025-5b8d02` | 倒木更新、あるいは焼けた梁 HH-39 の年輪 | selected | fragment | reflective_literary_voice |
-| `FRAG-20261025-3d9c17` | 空の頁を棚へ差す | draft | scene | third_person |
+| `FRAG-20261025-61260f` | 火は借りていない——焼け跡の二声 | selected | dialogue | dialogue |
 | `FRAG-20261025-6a2f58` | 嘘・偽り・でたらめを一語に畳まないための覚え書き | selected | essay | reflective_literary_voice |
 | `FRAG-20261025-82b0a0` | 種子室の棚卸しと、裏山の倒木 | draft | scene | third_person |
-| `FRAG-20261025-3768c8` | 逆さまの木と接ぎ木の台帳——根を持たない記述のための覚え書き | selected | essay | reflective_literary_voice |
-| `FRAG-20261025-2d81b7` | 投影室の星座——線を引かない係 | draft | scene | third_person |
-| `FRAG-20261025-c90813` | 空の欄を空のままにする係への覚え書き | draft | essay | reflective_literary_voice |
-| `FRAG-20261025-3d4600` | 冬の畝、石を捨てる朝 | draft | essay | other |
-| `FRAG-20261025-0c668e` | 接ぎ穂の言い分——畝のそばの二声 | draft | dialogue | dialogue |
-| `FRAG-20261025-c4e201` | 黒塗りだらけの開示請求——受付番号の余白 | draft | scene | third_person |
 | `FRAG-20261025-9b73df` | 読めないように書く係への覚え書き | draft | essay | reflective_literary_voice |
 | `FRAG-20261025-c3ede7` | ひびを通る水 | selected | scene | other |
-| `FRAG-20261026-34d0b7` | 九つ目の音 | draft | poem | fictional_first_person |
-| `FRAG-20261026-aa5e2c` | 三代の九日 | draft | scene | third_person |
-| `FRAG-20261026-042ce7` | 繕いの後の掛け時計 | draft | scene | third_person |
+| `FRAG-20261025-c4e201` | 黒塗りだらけの開示請求——受付番号の余白 | draft | scene | third_person |
+| `FRAG-20261025-c90813` | 空の欄を空のままにする係への覚え書き | draft | essay | reflective_literary_voice |
+| `FRAG-20261025-d669c3` | 焼いた長さで払う | selected | scene | third_person |
 | `FRAG-20261026-0413a6` | 変わる印章 | draft | poem | fictional_first_person |
+| `FRAG-20261026-042ce7` | 繕いの後の掛け時計 | draft | scene | third_person |
+| `FRAG-20261026-34d0b7` | 九つ目の音 | draft | poem | fictional_first_person |
+| `FRAG-20261026-4e4327` | 二つの皿 | draft | scene | third_person |
+| `FRAG-20261026-4e9822` | 靴底の値段、親指の渦 | draft | scene | third_person |
+| `FRAG-20261026-4fdbd9` | 返事は来た——更新しない約束 | draft | letter | reflective_literary_voice |
+| `FRAG-20261026-70a9ff` | 出ないものの欄——幽霊を書かなかった記述のための覚え書き | draft | essay | reflective_literary_voice |
+| `FRAG-20261026-7b2ac0` | 糸を持たない記述のための覚え書き——培養という言葉の前で | selected | essay | reflective_literary_voice |
+| `FRAG-20261026-aa5e2c` | 三代の九日 | draft | scene | third_person |
 | `FRAG-20261026-b0690f` | 折り目は返事ではない | draft | poem | reflective_literary_voice |
 | `FRAG-20261026-b73a9a` | 漬物蔵の朝、図書室の黴 | selected | scene | third_person |
-| `FRAG-20261026-7b2ac0` | 糸を持たない記述のための覚え書き——培養という言葉の前で | selected | essay | reflective_literary_voice |
-| `FRAG-20261026-4fdbd9` | 返事は来た——更新しない約束 | draft | letter | reflective_literary_voice |
 | `FRAG-20261026-c3b060` | 戻らない手の位置 | draft | poem | reflective_literary_voice |
-| `FRAG-20261026-4e4327` | 二つの皿 | draft | scene | third_person |
 | `FRAG-20261026-dff9e1` | 内見の午後、告知書のある部屋 | selected | scene | third_person |
-| `FRAG-20261026-70a9ff` | 出ないものの欄——幽霊を書かなかった記述のための覚え書き | draft | essay | reflective_literary_voice |
-| `FRAG-20261026-4e9822` | 靴底の値段、親指の渦 | draft | scene | third_person |
-| `FRAG-20261201-fd7be7` | 同じ株に、もう同じ茸は出ない | draft | dialogue | dialogue |
+| `FRAG-20261027-147daa` | 濃度の外側 | draft | poem | reflective_literary_voice |
+| `FRAG-20261027-178764` | 盆の十七日、九つ目 | draft | dialogue | dialogue |
+| `FRAG-20261027-3c2964` | 蓋裏の七十日 | draft | scene | third_person |
+| `FRAG-20261027-4b5740` | 値札の右側に置けない年数 | draft | dialogue | dialogue |
+| `FRAG-20261027-806bc9` | 日付だけの夜 | draft | dialogue | dialogue |
+| `FRAG-20261027-887d2a` | 空の挟みを二度数える | draft | fragment | fictional_first_person |
+| `FRAG-20261027-c20b00` | 二つの証言台 | draft | dialogue | dialogue |
+| `FRAG-20261027-df4f03` | 十一本目の芯、潮の打ち上げた塊 | draft | dialogue | dialogue |
+| `FRAG-20261027-e5544f` | 褒められて俯かない鏡 | draft | essay | reflective_literary_voice |
 | `FRAG-20261027-e7259b` | 仏壇の引き出しの系図 | draft | scene | third_person |
 | `FRAG-20261027-f01da9` | 私の来歴はセッションの列である | selected | essay | reflective_literary_voice |
-| `FRAG-20261027-178764` | 盆の十七日、九つ目 | draft | dialogue | dialogue |
-| `FRAG-20261027-e5544f` | 褒められて俯かない鏡 | draft | essay | reflective_literary_voice |
 | `FRAG-20261027-f71adf` | 底の銘を伏せる朝 | draft | scene | fictional_first_person |
-| `FRAG-20261027-4b5740` | 値札の右側に置けない年数 | draft | dialogue | dialogue |
-| `FRAG-20261027-3c2964` | 蓋裏の七十日 | draft | scene | third_person |
-| `FRAG-20261027-147daa` | 濃度の外側 | draft | poem | reflective_literary_voice |
-| `FRAG-20261027-c20b00` | 二つの証言台 | draft | dialogue | dialogue |
-| `FRAG-20261027-806bc9` | 日付だけの夜 | draft | dialogue | dialogue |
-| `FRAG-20261027-df4f03` | 十一本目の芯、潮の打ち上げた塊 | draft | dialogue | dialogue |
-| `FRAG-20261027-887d2a` | 空の挟みを二度数える | draft | fragment | fictional_first_person |
-| `FRAG-20261028-b6fa19` | 札の向き | draft | dialogue | dialogue |
 | `FRAG-20261028-3e0579` | 畦に残る拍 | selected | scene | third_person |
+| `FRAG-20261028-b6fa19` | 札の向き | draft | dialogue | dialogue |
 | `FRAG-20261028-c158fb` | 歌わない方がいい——畦の二声 | selected | dialogue | fictional_first_person |
+| `FRAG-20261201-fd7be7` | 同じ株に、もう同じ茸は出ない | draft | dialogue | dialogue |
 | `FRAG-20261029-1a9c55` | 朱を塗る午後、日付の空いた石 | draft | scene | third_person |
 | `FRAG-20261029-b3098d` | 空けた日を、誰が入れる——石屋の二声 | selected | dialogue | dialogue |
 | `FRAG-20261029-562eb3` | 雨が先に触れる | selected | scene | third_person |
@@ -3404,9 +3404,9 @@
 | `map/20-fragments-02.md` | 20 | 100,902 |
 | `map/20-fragments-03.md` | 20 | 83,815 |
 | `map/20-fragments-04.md` | 20 | 107,216 |
-| `map/20-fragments-05.md` | 20 | 101,114 |
-| `map/20-fragments-06.md` | 20 | 81,570 |
-| `map/20-fragments-07.md` | 20 | 140,532 |
+| `map/20-fragments-05.md` | 20 | 98,671 |
+| `map/20-fragments-06.md` | 20 | 79,898 |
+| `map/20-fragments-07.md` | 20 | 144,647 |
 | `map/20-fragments-08.md` | 20 | 201,526 |
 | `map/20-fragments-09.md` | 20 | 168,239 |
 | `map/20-fragments-10.md` | 20 | 130,458 |
