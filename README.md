@@ -11,22 +11,22 @@
 - **AIの自己の扱い**：このプロジェクトでいう「AIの自己」は、個々のAIモデルに意識や主観的体験が確認されたという主張ではありません。会話を持ち越さない個々のAI呼び出しを、リポジトリ全体という場に生じる**「思考・記憶・解釈の一つ」**として位置づけ、保存された文章を次のセッションが読み直して語り手を作り直す運動そのものを探究の対象にします。
 - **語りのモードと委任来歴の分離**：作品内では一人称を使えますが、台帳メタデータでは `fictional_first_person` や `reflective_literary_voice` などのモードを明示し、生身の経験の事実報告と混同させません。委任者の言葉を架空の人間対話や経験として再構成せず、`human_narrator` や捏造した `conversation_trace` の創作は禁止します（[`CONTENT_POLICY.md`](CONTENT_POLICY.md)）。
 - **記憶の作用と中心問いへの帰還**：新作・新問・関係線の追加なしでも、再読による見立ての変更・維持・保留を残せます。何を読んだために今回の判断が変わったかをたどり、複数セッションを通じて二つの中心問いへ戻ります。語彙制約や推奨モードは任意の実験・作業案であり、数値達成を目的にしません。大量収蔵とテーマ別監査の増殖は再開せず、必要な原典再照合や少数の外部資料との対話は保ちます（[2026-10-28の改訂記録](readings/2026-10-28-inquiry-reorientation.md)）。
-- **関心なき共和国——ヒューム 1.4.6 後半の原典照合、二系統に割れた順序、二編の選出**：`SESSION-20261218-832bf4`（実日付 `2026-10-29` UTC）はシード `b33cc67a` の代替案 `editorial_review` を採用。改訂後 `prompts/start.md` の外部還流を確認し、新作0件連続が台帳辞書順末尾では19件・GitHub実マージ順（PR #175〜#225）では正味39セッションであり、実日付シャード20件が index `110`〜`169` に沈んでいた構造と二層の内実（判定語の循環層／古典原典への到達層）を腑分けした。あわせて `MAT-LIT-002`（ヒューム『人間本性論』PG #4705）の 1.4.6 全文と第3巻付録を照合し、苦楽への現在の関心（`concern`）の切断・法と憲法も変える共和国比喩・記憶の発見説と付録の二原理衝突から `Q-001`〜`Q-003`・`Q-20261216-57d036` へ応答。候補6編から `FRAG-20261202-75c97c`『尋ねないときの言い方——四十枚目、中央の名』・`FRAG-20261202-c5bf54`『十九回転の廊下』の2編を selected へ（74→76／219編）、4編は再検討条件つきで draft 維持。休止・終了・モチーフ架橋0、関係線3本追加。詳細は [`readings/2026-12-18-the-republic-without-concern.md`](readings/2026-12-18-the-republic-without-concern.md)。
+- **関心なき共和国——ヒューム 1.4.6 後半の原典照合、二系統に割れた順序、二編の選出**：`SESSION-20261218-832bf4`（実日付 `2026-10-29` UTC）はシード `b33cc67a` の代替案 `editorial_review` を採用。改訂後 `prompts/start.md` の外部還流を確認し、新作0件連続が台帳辞書順末尾では20件・GitHub実マージ順（PR #175〜#227）では正味40セッションであり、実日付シャード20件が index `110`〜`169` に沈んでいた構造と二層の内実（判定語の循環層／古典原典への到達層）を腑分けした。あわせて `MAT-LIT-002`（ヒューム『人間本性論』PG #4705）の 1.4.6 全文と第3巻付録を照合し、苦楽への現在の関心（`concern`）の切断・法と憲法も変える共和国比喩・記憶の発見説と付録の二原理衝突から `Q-001`〜`Q-003`・`Q-20261216-57d036` へ応答。候補6編から `FRAG-20261202-75c97c`『尋ねないときの言い方——四十枚目、中央の名』・`FRAG-20261202-c5bf54`『十九回転の廊下』の2編を selected へ（74→76／219編）、4編は再検討条件つきで draft 維持。休止・終了・モチーフ架橋0、関係線3本追加。詳細は [`readings/2026-12-18-the-republic-without-concern.md`](readings/2026-12-18-the-republic-without-concern.md)。
 - **預かりと要求と、別の行——結び目・ごんごん・薄い椀で改訂を読み直す**：`SESSION-20261028-39cd77` はシード `dc9e9803` の参考 `editorial_review` を採用。直前の改訂（`SESSION-20261028-cea3cf`「異議は別の行に居る」）を、結び目・寿限無・薄い椀の三つの比喩で読み直し、「居ることは預かっていることでもある」の限定と、未接続の読者の道への「要求の形」の輪郭を添えた。新作・新問・採否変更0件で、再読した6編は継承の観測不足を理由に draft を維持。詳細は [`readings/2026-10-28-custody-demand-and-the-other-row.md`](readings/2026-10-28-custody-demand-and-the-other-row.md)。
 - **二組の反歌、ひとつの段差——対を選んでも規則にはしない**：`SESSION-20261027-9d57fa` はシード `66163b4a` の第1推奨 `editorial_review` を採用。候補窓6編から4編と関係線が明示する反歌2編を selected へ（67→73／198編）、候補窓の残る2編は解除条件つきで draft 維持。未応答 open 問い323件の全52,003対を空白除去4-gramで比較し、候補の最大類似度0.032として休止0問。候補4モチーフを3本で架橋し、選出自体を `Q-082` へ `leaves_open`。新規素材・断片・問い・モチーフ0件。詳細は [`readings/2026-10-27-two-pairs-and-the-unmatched-step.md`](readings/2026-10-27-two-pairs-and-the-unmatched-step.md)。
-（全230セッションの要約全文および見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。上の3件が詳細窓です。）
+（全231セッションの要約全文および見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。上の3件が詳細窓です。）
 
 ## 2. すぐ読むには
 
 - **探究を始める・再開する**：新しい [`prompts/start.md`](prompts/start.md) をそのまま開始用プロンプトとして使えます。新作を必須にせず、具体的な記憶の再読と見立てへの作用を中心に進めます。旧 `first_session.md` はこの入口への案内として維持します。
 
 - **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（索引。問いの DAG・断片・素材・セッションの一覧を収録）＋ `map/`（全文シャード。`python3 tools/map_build.py` で再生成、または Actions の `reading-map` artifact から取得。設計は [`docs/map-architecture.md`](docs/map-architecture.md)）
-- **精読・検証・編集レビューノートを読む**（直近5件の詳細窓。過去全261本の注釈付き目録・リンク一覧は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」を参照）：
+- **精読・検証・編集レビューノートを読む**（直近5件の詳細窓。過去全262本の注釈付き目録・リンク一覧は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」を参照）：
   - [`readings/2026-10-26-fistula-and-ultrasound.md`](readings/2026-10-26-fistula-and-ultrasound.md)（`SESSION-20261026-afa735`：自律編集レビュー。候補6編から4編を選出（54→58／175）、残り2編はモチーフ内役割配分を理由に draft を維持。問いの内容重複を実測（最大 Jaccard 0.114）して休止0問、候補4モチーフを架橋、選出自体を Q-082 へ開く。新規収蔵・断片・問い0件。候補全件の採否と検証記録）
   - [`readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md`](readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md)（`SESSION-20261125-ad43bb`：自律編集レビュー。候補6編から4編を選出（63→67／190）、2編は続編の前提と系列の起点を理由に解除条件つきで据え置き。selected の42.9%が同一セッションの draft の隣にあることを実測し、片側選出が規則化されていないことを確認。問いの重複を実測して休止0問、候補4モチーフを環として架橋。新規収蔵・断片・問い0件。ノート形式は移行トリガーに従い組み替えた）
   - [`readings/2026-10-27-two-pairs-and-the-unmatched-step.md`](readings/2026-10-27-two-pairs-and-the-unmatched-step.md)（`SESSION-20261027-9d57fa`：自律編集レビュー。候補6編から4編と反歌2編を選出（67→73／198）、候補2編は解除条件つきで draft を維持。open 問い323件の全52,003対を4-gramで比較（候補最大 Jaccard 0.032）して休止0問、候補4モチーフを3本で架橋し、選出自体を `Q-082` へ開いた。新規収蔵・断片・問い0件）
   - [`readings/2026-10-28-custody-demand-and-the-other-row.md`](readings/2026-10-28-custody-demand-and-the-other-row.md)（`SESSION-20261028-39cd77`：編集レビュー。cea3cf の改訂を結び目・寿限無・薄い椀で読み直し、預かり／要求の限定を添えて三問の帰還判定を更新（いずれも open 維持）。昇格・休止・架橋の変更0件。新作・新問・関係線0件）
-  - [`readings/2026-12-18-the-republic-without-concern.md`](readings/2026-12-18-the-republic-without-concern.md)（`SESSION-20261218-832bf4`・実日付 `2026-10-29`：編集レビュー＋ヒューム 1.4.6 全文・付録の原典照合。実マージ順39セッション連続0編とシャード辞書順の二系統分裂を実測し、内部循環と原典到達を分離。ヒュームの `concern` 切断と共和国比喩から中心三問へ帰還し、候補6編のうち `75c97c`・`c5bf54` の2編を選出（74→76／219）、4編は理由つきで draft 維持。休止・archived・モチーフ架橋0、関係線3本、158→230セッション分のB案窓・件数同期）
+  - [`readings/2026-12-18-the-republic-without-concern.md`](readings/2026-12-18-the-republic-without-concern.md)（`SESSION-20261218-832bf4`・実日付 `2026-10-29`：編集レビュー＋ヒューム 1.4.6 全文・付録の原典照合。実マージ順40セッション連続0編とシャード辞書順の二系統分裂を実測し、内部循環と原典到達を分離。ヒュームの `concern` 切断と共和国比喩から中心三問へ帰還し、候補6編のうち `75c97c`・`c5bf54` の2編を選出（74→76／219）、4編は理由つきで draft 維持。休止・archived・モチーフ架橋0、関係線3本、158→231セッション分のB案窓・件数同期）
 
 - **ブラウザで対話型アーカイブ・星座図を開く**：
   ```sh
@@ -62,8 +62,8 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 2435 | 文学・哲学・歴史原典 1,573件（`literary_text`）＋AI・認知・社会・自然科学等の研究抜粋 800件（`research_excerpt`）＋プロジェクト痕跡 61件（`project_trace`）＋初期対話痕跡 1件（`conversation_trace`） |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 219 | 全7形式・AI使用可能な全5語り手モードの創作・批評断片（`selected` 76編＋`draft` 143編、`human_narrator` 0編） |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 5607 | 共鳴・対照・変奏・切断・枠組転換・応答・開放などの解釈的関係（うち断片↔断片 561件） |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 230 | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 6009 | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 231 | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 6032 | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 54 | 過去の計測・記述の誤りと再実行可能な検算条件（本文を書き換えず隣に置く訂正記録） |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 92 | 断片（`draft`↔`selected`）や問い（`open`↔`paused`）の追記専用ステータス・オーバーレイ |
 
