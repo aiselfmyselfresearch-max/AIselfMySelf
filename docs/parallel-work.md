@@ -70,7 +70,7 @@ python3 tools/inspect_inquiry.py --check-map
 | ファイル | 規則 |
 |---|---|
 | `state/*.jsonl` | 凍結。追記しない。 |
-| `state/<collection>.d/*.jsonl` | 自分のシャードだけに追記する。他のセッションのシャードは読んでよいが、書き換えない（`new_ledger_shard.py` に `--suffix <hex>40cf` 等の固定パディングは手動指定しない）。 |
+| `state/<collection>.d/*.jsonl` | 自分のシャードだけに追記する。他のセッションのシャードは読んでよいが書き換えない。ただし後述の sessions・read_log の保守統合は行を変えずに移動する例外（`new_ledger_shard.py` に `--suffix <hex>40cf` 等の固定パディングは手動指定しない）。 |
 | `READING_MAP.md` | 手で編集しない。`python3 tools/map_build.py`（または `inspect_inquiry.py --write-map`）で union から再生成する。 |
 | `README.md` / `docs/sessions.md` | **更新責務の分離（B案）**：通常の創作・再読・改稿回（`rereading_and_collision` / `revision_and_variation` / `acquisition`）では編集しない。詳細窓のローテーションと §4 件数表の同期（`python3 tools/map_build.py --sync-readme`）は、定期的な `editorial_review` 回でまとめて行う。 |
 | `state/materials.jsonl` | `tools/import_researchos.py --write` がベースを再生成する唯一の例外。`state/materials.d/` に空でないシャードがある間は `--write` を拒否する（先に統合する）。 |
@@ -79,15 +79,13 @@ python3 tools/inspect_inquiry.py --check-map
 
 ### 統合シャード（保守）
 
-`state/sessions.d/` は「1セッションにつき1シャード」なので、セッションが増えると必ずファイル数が soft 予算（80）に当たる。`tools/size_budget.py` の remedy は「古いシャードを保守 PR で統合せよ」であり、`tests/test_size_budget.py::test_real_repository_is_within_strict_limits` は実リポジトリが `--strict` を通ることを要求する。そこで次の手順だけを、他セッションのシャードに触れる唯一の例外とする。
+`state/sessions.d/` と `state/read_log.d/` はセッションごとにシャードが増え、いずれも soft 予算（80）に当たる。`size_budget.py` は両方に統合を勧め、実リポジトリのテストは `--strict` を要求する。従来は sessions のみ例外を定めていたため、read_log が上限に達すると、別シャードに追記する規則と検査を同時に満たせなかった。そこで次の手順だけを、両コレクションの他セッションのシャードに触れる保守上の例外とする。
 
-1. `state/sessions.d/*.jsonl` をファイル名順に並べ、古いものから必要数（目安として予算の 1/4 程度、実測 20 ファイル・41 行）を選ぶ。
-2. 各行を**一字も変えず**に集め、`started_at` → `session_id` で安定に並べ替えて、`<最も古い日付>-000000000000.jsonl` という名前の1ファイルへ書く。末尾のゼロ12桁は「セッションのシャードではない」という目印であり、`new_ledger_shard.py` が生成する名前とは区別できる。
-3. 元のファイルは同じコミットで削除する。行の内容・ID・順序（`started_at` 昇順）以外は何も変えない。
-4. `python3 tools/validate_seed.py` の件数が統合前と一致すること、`python3 tools/size_budget.py --strict` と `python3 -m unittest discover -s tests` が通ることを確認する。
-5. コミットメッセージと、その回の精読ノートに「統合したファイル数・行数・件数不変の確認」を残す。
-
-統合は行の移動であって行の書き換えではない。が、他のセッションが書いたファイルを消す操作でもあるので、内容の変更（創作・検算・収蔵）と同じコミットに混ぜず、理由と実測を必ず残す。
+1. 対象ディレクトリの既存シャードをファイル名順に並べ、必要数を選ぶ。実行中の他セッションのシャードは扱わず、すでに統合済みの `-000000000000.jsonl` と今回のセッションのシャードは選ばない。ファイル名の日付を実作業順とはみなさない。
+2. 各行を**一字も変えず**に集め、sessions は `started_at` → `session_id`、read_log は `created_at` → `read_id` で安定に並べ替え、選んだ最小の日付の `<日付>-000000000000.jsonl` に書く。出力先が既に存在すれば上書きせず別の対象を選ぶ。ゼロ12桁は統合シャードの目印である。
+3. 元ファイルを同じコミットで削除する。移動前後の行の多重集合がバイト単位で等しいことと件数を確認する。既存行の内容・IDを変更しない。
+4. `python3 tools/map_build.py` で再生成し、`validate_seed.py`・`inspect_inquiry.py --check-map`・`read_log_backfill.py --check`・`size_budget.py --strict`・ユニットテストを確認する。
+5. 保守コミットとノートに、対象ファイル数・行数・不変確認と理由を記す。統合は他のセッションのファイル削除を含むため、探究の内容変更と同じコミットに混ぜない。保守だけのPRを原則とするが、同一の追記が検査を塞いでいる場合は、分離した保守コミットをそのPRに含めてもよい。並行マージ時は対象ファイルの変更・削除を確認し、競合を機械的に解決しない。
 
 ### ブランチシードによる対象候補窓の自動分散
 
