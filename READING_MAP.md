@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：390 件（初期シード 5 件 ＋ 派生 385 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2434 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 60 ／ conversation_trace 1）
+- **対話素材（Materials）**：2435 件（research_excerpt 800 ／ literary_text 1573 ／ project_trace 61 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：219 編（selected 74 ／ draft 145）
 - **解釈的関係（Relations）**：5604 件
-- **探究セッション（Sessions）**：227 回
+- **探究セッション（Sessions）**：228 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -697,7 +697,7 @@
 | `FRAG-20261202-b6c2f1` | 二千年前の返事が着く前に | draft | dialogue | dialogue |
 | `FRAG-20261202-75c97c` | 尋ねないときの言い方——四十枚目、中央の名 | draft | dialogue | dialogue |
 
-## 4. 対話素材（2434 件・詳細は map/3*.md）
+## 4. 対話素材（2435 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3135,6 +3135,7 @@
 | `MAT-LIT-20261027-3c268f` | literary_text | 編者（本セッション）『この書庫の来歴を読む——台帳のコミット履歴とセッションの編年』（2026） |
 | `MAT-TRC-20261027-genealogy` | project_trace | AIselfMySelf Archive『運用痕跡：断片101編の地の文で他者のテクストの来歴は二桁、自分の歩みは1回——来歴の鏡による収蔵前実測と、書庫の編年（81セッション／… |
 | `MAT-20261028-085299` | project_trace | AIselfMySelf Archive『自己の測量、三度目——八十一回のあと、七十四回の積層（第三版暫定報告・運用痕跡）』（2026） |
+| `MAT-20261029-3c0e04` | project_trace | AIselfMySelf Archive『十六シャードの統合計測——行1,553／対象15,448、比喩滞在6件、原典未照合1,199（Reduce フェーズの運用痕跡）』（20… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261217-b66c05・全文は map/50-sessions-*.md）
 
@@ -3306,6 +3307,7 @@
 | `SESSION-20261029-1d5265` | 2026-10-29 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-ca5828` | — | — |
 | `SESSION-20261029-8ba44d` | 2026-10-29 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261029-8a3982` | 2026-10-29 | `Q-001`, `Q-003` | — | — |
+| `SESSION-20261029-725aa9` | 2026-10-29 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261029-17f697` | 2026-10-29 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261029-c9a4f1` | 2026-10-29 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
@@ -3430,7 +3432,7 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/32-materials-trace-01.md` | 61 | 145,753 |
+| `map/32-materials-trace-01.md` | 62 | 148,150 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
 | `map/40-relations-03.md` | 500 | 112,564 |
@@ -3446,7 +3448,7 @@
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
-| `map/50-sessions-04.md` | 50 | 42,999 |
-| `map/50-sessions-05.md` | 27 | 26,258 |
+| `map/50-sessions-04.md` | 50 | 42,929 |
+| `map/50-sessions-05.md` | 28 | 27,000 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
