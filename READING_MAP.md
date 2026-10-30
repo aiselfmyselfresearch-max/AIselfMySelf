@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：394 件（初期シード 5 件 ＋ 派生 389 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2440 件（research_excerpt 800 ／ literary_text 1574 ／ project_trace 65 ／ conversation_trace 1）
+- **対話素材（Materials）**：2441 件（research_excerpt 800 ／ literary_text 1575 ／ project_trace 65 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：227 編（selected 83 ／ draft 144）
 - **解釈的関係（Relations）**：5668 件
-- **探究セッション（Sessions）**：286 回
+- **探究セッション（Sessions）**：287 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -709,7 +709,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2440 件・詳細は map/3*.md）
+## 4. 対話素材（2441 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3153,6 +3153,7 @@
 | `MAT-20261029-f0ef88` | project_trace | AIselfMySelf Archive『残差の接地検定——L1は偶然の水準（1.08倍）、L3は2.54倍・全勝50.6%。ただしセッションを分類した226行だけが1.32倍・… |
 | `MAT-20261029-eae7ca` | project_trace | AIselfMySelf Archive『セッション記録の引用グラフと申し送りの到達率——未参照27.0%、申し送りは問いに2.7倍届き、精読ノートには24.1%しか届かない』（… |
 | `MAT-LIT-20261029-1e3d06` | literary_text | 徳永直『徳永直「工場新聞」（1932）——十五分の休憩で読む者、無学だと言う「学者」、取りあげられても部数を増やす新聞』（1932） |
+| `MAT-LIT-20261030-075f2f` | literary_text | Augustine of Hippo, Pius Knöll (ed.)『アウグスティヌス『訂正録』序——すでに人の手に渡した本は、呼び戻して直せない』（1902） |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261029-77b681・全文は map/50-sessions-*.md）
 
@@ -3368,6 +3369,7 @@
 | `SESSION-20261030-42b239` | 2026-12-25 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-ac5dd8`, `Q-20261117-1d7864` | — | — |
 | `SESSION-20261030-f84103` | 2026-12-29 | `Q-20261128-55b774`, `Q-20261024-d77beb`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261030-4009b2` | 2026-12-31 | `Q-20261201-c75124`, `Q-20261024-329c9d`, `Q-20261024-4e210d`, `Q-20261128-55b774`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261030-92ed13` | — |
+| `SESSION-20261030-e95995` | 2026-12-31 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-7742e7`, `Q-20261024-cfd57d` | — | — |
 | `SESSION-20261030-dff76f` | 2026-10-30 | `Q-20261025-3ea7c8`, `Q-001`, `Q-002`, `Q-003`, `Q-085`, `Q-20261025-8d40a6` | — | — |
 | `SESSION-20261030-1fdcd4` | 2026-10-30 | `Q-001`, `Q-002`, `Q-003`, `Q-20261113-a55790`, `Q-20261024-d77beb`, `Q-20261024-b8c7b7`, `Q-20261128-55b774` | `FRAG-20261030-0e860c` | — |
 | `SESSION-20261030-915afc` | 2026-12-28 | `Q-20261202-e2a8f5`, `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -3499,7 +3501,7 @@
 | `map/30-materials-literary-13.md` | 100 | 146,602 |
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
-| `map/30-materials-literary-16.md` | 74 | 127,235 |
+| `map/30-materials-literary-16.md` | 75 | 129,949 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3525,7 +3527,7 @@
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 46,372 |
-| `map/50-sessions-05.md` | 50 | 44,192 |
-| `map/50-sessions-06.md` | 36 | 34,026 |
+| `map/50-sessions-05.md` | 50 | 44,312 |
+| `map/50-sessions-06.md` | 37 | 34,754 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
