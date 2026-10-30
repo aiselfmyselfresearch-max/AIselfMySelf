@@ -8,9 +8,9 @@
 - **開かれた問い（Questions）**：393 件（初期シード 5 件 ＋ 派生 388 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2440 件（research_excerpt 800 ／ literary_text 1574 ／ project_trace 65 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：221 編（selected 78 ／ draft 143）
-- **解釈的関係（Relations）**：5625 件
-- **探究セッション（Sessions）**：270 回
+- **文芸断片（Fragments）**：221 編（selected 80 ／ draft 141）
+- **解釈的関係（Relations）**：5629 件
+- **探究セッション（Sessions）**：271 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -686,8 +686,8 @@
 | `FRAG-20261027-8d4088` | 同じ音で上演する | selected | other | other |
 | `FRAG-20261128-dfefe9` | 首を入れる夜 | draft | dialogue | dialogue |
 | `FRAG-20261027-6f40da` | 灯の下の段 | selected | scene | third_person |
-| `FRAG-20261027-1ef282` | 指の幅 | draft | poem | reflective_literary_voice |
-| `FRAG-20261027-f70175` | 重みは裁かれる側へ移る | draft | essay | reflective_literary_voice |
+| `FRAG-20261027-1ef282` | 指の幅 | selected | poem | reflective_literary_voice |
+| `FRAG-20261027-f70175` | 重みは裁かれる側へ移る | selected | essay | reflective_literary_voice |
 | `FRAG-20261027-639862` | 艦長は苦悶した | draft | scene | third_person |
 | `FRAG-20261027-42e9fc` | 肩の余り | draft | dialogue | dialogue |
 | `FRAG-20261130-8ccc86` | 十三番目、ごんごん | draft | dialogue | dialogue |
@@ -3344,6 +3344,7 @@
 | `SESSION-20261029-f3405d` | 2026-12-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261029-6052d4` | 2026-12-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-a95728`, `Q-20261123-dcd55b`, `Q-20261202-b0e8b3` | — | — |
 | `SESSION-20261030-7d8aa9` | 2026-12-25 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-cfd57d`, `Q-20261027-7742e7`, `Q-20261027-0a3833` | — | — |
+| `SESSION-20261030-05d603` | 2026-10-30 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-ac5dd8`, `Q-20261025-8d40a6` | — | — |
 | `SESSION-20261030-f2ca2e` | 2026-12-24 | `Q-062`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261030-5b6912` | 2026-12-25 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-6770c0`, `Q-20261027-1f2e33`, `Q-20261027-48039e`, `Q-20261027-c19dbd` | — | — |
 | `SESSION-20261030-0b401a` | 2026-12-24 | `Q-002`, `Q-003` | — | — |
@@ -3422,7 +3423,7 @@
 | `SESSION-20261029-9e3e09` | 2026-12-21 | `Q-001`, `Q-002`, `Q-003`, `Q-20261117-1d7864` | — | — |
 | `SESSION-20261029-77b681` | 2026-12-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-0a3833`, `Q-20261024-cfd57d` | `FRAG-20261029-30debd` | — |
 
-## 6. 解釈的関係（5625 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5629 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
@@ -3431,8 +3432,8 @@
 | 切断・割り込み (interrupts) | 185 |
 | 未解決のまま開く (leaves_open) | 849 |
 | 比喩的共鳴 (metaphorically_resonates) | 135 |
-| 枠組みの組み替え (reframes) | 450 |
-| 応答 (responds_to) | 1585 |
+| 枠組みの組み替え (reframes) | 453 |
+| 応答 (responds_to) | 1586 |
 | 変奏・変形 (transforms) | 260 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3459,7 +3460,7 @@
 | `map/20-fragments-08.md` | 20 | 202,203 |
 | `map/20-fragments-09.md` | 20 | 168,239 |
 | `map/20-fragments-10.md` | 20 | 131,218 |
-| `map/20-fragments-11.md` | 20 | 135,882 |
+| `map/20-fragments-11.md` | 20 | 136,832 |
 | `map/20-fragments-12.md` | 1 | 5,502 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
@@ -3495,14 +3496,14 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 176,521 |
-| `map/40-relations-11.md` | 500 | 162,047 |
-| `map/40-relations-12.md` | 125 | 46,509 |
+| `map/40-relations-10.md` | 500 | 176,709 |
+| `map/40-relations-11.md` | 500 | 162,175 |
+| `map/40-relations-12.md` | 129 | 47,754 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
-| `map/50-sessions-04.md` | 50 | 46,070 |
-| `map/50-sessions-05.md` | 50 | 44,402 |
-| `map/50-sessions-06.md` | 20 | 18,644 |
+| `map/50-sessions-04.md` | 50 | 45,985 |
+| `map/50-sessions-05.md` | 50 | 44,433 |
+| `map/50-sessions-06.md` | 21 | 19,583 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
