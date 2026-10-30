@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：394 件（初期シード 5 件 ＋ 派生 389 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2441 件（research_excerpt 800 ／ literary_text 1575 ／ project_trace 65 ／ conversation_trace 1）
+- **対話素材（Materials）**：2445 件（research_excerpt 800 ／ literary_text 1579 ／ project_trace 65 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：231 編（selected 83 ／ draft 148）
-- **解釈的関係（Relations）**：5690 件
-- **探究セッション（Sessions）**：297 回
+- **解釈的関係（Relations）**：5694 件
+- **探究セッション（Sessions）**：298 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -713,7 +713,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2441 件・詳細は map/3*.md）
+## 4. 対話素材（2445 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3157,6 +3157,10 @@
 | `MAT-20261029-f0ef88` | project_trace | AIselfMySelf Archive『残差の接地検定——L1は偶然の水準（1.08倍）、L3は2.54倍・全勝50.6%。ただしセッションを分類した226行だけが1.32倍・… |
 | `MAT-20261029-eae7ca` | project_trace | AIselfMySelf Archive『セッション記録の引用グラフと申し送りの到達率——未参照27.0%、申し送りは問いに2.7倍届き、精読ノートには24.1%しか届かない』（… |
 | `MAT-LIT-20261029-1e3d06` | literary_text | 徳永直『徳永直「工場新聞」（1932）——十五分の休憩で読む者、無学だと言う「学者」、取りあげられても部数を増やす新聞』（1932） |
+| `MAT-LIT-20261030-b7bb7d` | literary_text | Hippocrates, Émile Littré (ed.)『ヒポクラテス『関節について』——損なわれた脚に体重をかけると、健全な脚のほうが歪む』（1961） |
+| `MAT-LIT-20261030-2062ec` | literary_text | Hippocrates, Émile Littré (ed.)『ヒポクラテス『関節について』——よく養われた脚は地に着き、顧みられなかった脚は痩せる』（1961） |
+| `MAT-LIT-20261030-31528e` | literary_text | Hippocrates, Émile Littré (ed.)『ヒポクラテス『関節について』——内反足の多くは脱臼ではなく、姿勢の習慣である』（1961） |
+| `MAT-LIT-20261030-4f468a` | literary_text | Hippocrates, Émile Littré (ed.)『ヒポクラテス『関節について』——関節を戻せば死ぬ。戻さなければ、恥ずかしい跛行で生きる』（1961） |
 | `MAT-LIT-20261030-075f2f` | literary_text | Augustine of Hippo, Pius Knöll (ed.)『アウグスティヌス『訂正録』序——すでに人の手に渡した本は、呼び戻して直せない』（1902） |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261029-77b681・全文は map/50-sessions-*.md）
@@ -3375,6 +3379,7 @@
 | `SESSION-20261030-0b401a` | 2026-12-24 | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261030-417bc8` | 2026-12-31 | `Q-20261024-25c6d5`, `Q-20261201-c8f221`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261030-d7c859` | 2026-12-27 | `Q-003`, `Q-002`, `Q-001`, `Q-20261202-f52a08`, `Q-20261119-4cf82a` | — | — |
+| `SESSION-20261030-f6de8c` | 2026-12-31 | `Q-20261024-926948`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261030-d5ad0c` | 2026-12-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-5b8d05` | — | — |
 | `SESSION-20261030-100451` | 2026-12-27 | `Q-20261202-e2a8f5`, `Q-20261024-0557a5`, `Q-20261024-8d4248`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261030-42b239` | 2026-12-25 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-ac5dd8`, `Q-20261117-1d7864` | — | — |
@@ -3461,16 +3466,16 @@
 | `SESSION-20261029-9e3e09` | 2026-12-21 | `Q-001`, `Q-002`, `Q-003`, `Q-20261117-1d7864` | — | — |
 | `SESSION-20261029-77b681` | 2026-12-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-0a3833`, `Q-20261024-cfd57d` | `FRAG-20261029-30debd` | — |
 
-## 6. 解釈的関係（5690 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5694 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 735 |
+| 対照 (contrast) | 736 |
 | 共鳴 (echo) | 1449 |
-| 切断・割り込み (interrupts) | 189 |
+| 切断・割り込み (interrupts) | 190 |
 | 未解決のまま開く (leaves_open) | 850 |
 | 比喩的共鳴 (metaphorically_resonates) | 136 |
-| 枠組みの組み替え (reframes) | 467 |
+| 枠組みの組み替え (reframes) | 469 |
 | 応答 (responds_to) | 1599 |
 | 変奏・変形 (transforms) | 265 |
 
@@ -3490,7 +3495,7 @@
 | `map/11-question-bodies-08.md` | 44 | 42,307 |
 | `map/20-fragments-01.md` | 20 | 86,728 |
 | `map/20-fragments-02.md` | 20 | 101,379 |
-| `map/20-fragments-03.md` | 20 | 84,344 |
+| `map/20-fragments-03.md` | 20 | 84,744 |
 | `map/20-fragments-04.md` | 20 | 108,927 |
 | `map/20-fragments-05.md` | 20 | 98,671 |
 | `map/20-fragments-06.md` | 20 | 81,480 |
@@ -3515,7 +3520,7 @@
 | `map/30-materials-literary-13.md` | 100 | 146,602 |
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
-| `map/30-materials-literary-16.md` | 75 | 129,949 |
+| `map/30-materials-literary-16.md` | 79 | 144,777 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3534,14 +3539,14 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 181,765 |
-| `map/40-relations-11.md` | 500 | 160,633 |
-| `map/40-relations-12.md` | 190 | 68,232 |
+| `map/40-relations-10.md` | 500 | 182,200 |
+| `map/40-relations-11.md` | 500 | 160,808 |
+| `map/40-relations-12.md` | 194 | 69,356 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 46,553 |
-| `map/50-sessions-05.md` | 50 | 45,340 |
-| `map/50-sessions-06.md` | 47 | 43,285 |
+| `map/50-sessions-05.md` | 50 | 45,627 |
+| `map/50-sessions-06.md` | 48 | 44,068 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
