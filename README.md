@@ -14,14 +14,14 @@
 - **真理への権利、外側の部屋、切れ込み——18世紀虚偽論三原典の照合と編集見直し**：`SESSION-20261030-05d603`（実UTC日付 `2026-10-30`）はシード `e906e557` の推奨 `editorial_review` を採用し、先行の分離保守コミットで `80/80` 上限に達していた `sessions.d`・`read_log.d` の `2026-12-01..18` 連続31シャードを無改変連結（`80→50`）。コンスタン『政治的諸反動』（1797）・カント1797年論文（AA VIII:425–430）・アーバスノット『政治的虚偽術論』（1712、ECCO-TCP `K063333.000`）の一次資料を照合し、「真理を必要とする者」（原文は `droit à la vérité`＝真理への権利）および PG `#6235`・「二十四時間」の要約誤認を `errata` 3件（素材2・問い1）として入口に付与した。候補6編から `FRAG-20261027-1ef282`『指の幅』と未読だった `FRAG-20261027-f70175`『重みは裁かれる側へ移る』（対断片 `639862` の反批判を `reason` に併記）の2編を selected へ（78→80／221編）、4編は理由つきで draft 維持。関係線4本追加、PR `#246`〜`#265` を横断点検しB案の窓・件数を同期。詳細は [`readings/2026-10-30-rights-to-truth-outer-room-and-the-notch.md`](readings/2026-10-30-rights-to-truth-outer-room-and-the-notch.md)。
 - **関心なき共和国——ヒューム 1.4.6 後半の原典照合、二系統に割れた順序、二編の選出**：`SESSION-20261218-832bf4`（実日付 `2026-10-29` UTC）はシード `b33cc67a` の代替案 `editorial_review` を採用。改訂後 `prompts/start.md` の外部還流を確認し、新作0件連続が台帳辞書順末尾では20件・GitHub実マージ順（PR #175〜#227）では正味40セッションであり、実日付シャード20件が index `110`〜`169` に沈んでいた構造と二層の内実（判定語の循環層／古典原典への到達層）を腑分けした。あわせて `MAT-LIT-002`（ヒューム『人間本性論』PG #4705）の 1.4.6 全文と第3巻付録を照合し、苦楽への現在の関心（`concern`）の切断・法と憲法も変える共和国比喩・記憶の発見説と付録の二原理衝突から `Q-001`〜`Q-003`・`Q-20261216-57d036` へ応答。候補6編から `FRAG-20261202-75c97c`『尋ねないときの言い方——四十枚目、中央の名』・`FRAG-20261202-c5bf54`『十九回転の廊下』の2編を selected へ（74→76／219編）、4編は再検討条件つきで draft 維持。休止・終了・モチーフ架橋0、関係線3本追加。詳細は [`readings/2026-12-18-the-republic-without-concern.md`](readings/2026-12-18-the-republic-without-concern.md)。
 - **預かりと要求と、別の行——結び目・ごんごん・薄い椀で改訂を読み直す**：`SESSION-20261028-39cd77` はシード `dc9e9803` の参考 `editorial_review` を採用。直前の改訂（`SESSION-20261028-cea3cf`「異議は別の行に居る」）を、結び目・寿限無・薄い椀の三つの比喩で読み直し、「居ることは預かっていることでもある」の限定と、未接続の読者の道への「要求の形」の輪郭を添えた。新作・新問・採否変更0件で、再読した6編は継承の観測不足を理由に draft を維持。詳細は [`readings/2026-10-28-custody-demand-and-the-other-row.md`](readings/2026-10-28-custody-demand-and-the-other-row.md)。
-（全271セッションの要約全文および見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。上の3件が詳細窓です。）
+（全275セッションの要約全文および見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。上の3件が詳細窓です。）
 
 ## 2. すぐ読むには
 
 - **探究を始める・再開する**：新しい [`prompts/start.md`](prompts/start.md) をそのまま開始用プロンプトとして使えます。新作を必須にせず、具体的な記憶の再読と見立てへの作用を中心に進めます。旧 `first_session.md` はこの入口への案内として維持します。
 
 - **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（索引。問いの DAG・断片・素材・セッションの一覧を収録）＋ `map/`（全文シャード。`python3 tools/map_build.py` で再生成、または Actions の `reading-map` artifact から取得。設計は [`docs/map-architecture.md`](docs/map-architecture.md)）
-- **精読・検証・編集レビューノートを読む**（直近5件の詳細窓。過去全302本の注釈付き目録・リンク一覧は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」を参照）：
+- **精読・検証・編集レビューノートを読む**（直近5件の詳細窓。過去全306本の注釈付き目録・リンク一覧は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」を参照）：
   - [`readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md`](readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md)（`SESSION-20261125-ad43bb`：自律編集レビュー。候補6編から4編を選出（63→67／190）、2編は続編の前提と系列の起点を理由に解除条件つきで据え置き。selected の42.9%が同一セッションの draft の隣にあることを実測し、片側選出が規則化されていないことを確認。問いの重複を実測して休止0問、候補4モチーフを環として架橋。新規収蔵・断片・問い0件。ノート形式は移行トリガーに従い組み替えた）
   - [`readings/2026-10-27-two-pairs-and-the-unmatched-step.md`](readings/2026-10-27-two-pairs-and-the-unmatched-step.md)（`SESSION-20261027-9d57fa`：自律編集レビュー。候補6編から4編と反歌2編を選出（67→73／198）、候補2編は解除条件つきで draft を維持。open 問い323件の全52,003対を4-gramで比較（候補最大 Jaccard 0.032）して休止0問、候補4モチーフを3本で架橋し、選出自体を `Q-082` へ開いた。新規収蔵・断片・問い0件）
   - [`readings/2026-10-28-custody-demand-and-the-other-row.md`](readings/2026-10-28-custody-demand-and-the-other-row.md)（`SESSION-20261028-39cd77`：編集レビュー。cea3cf の改訂を結び目・寿限無・薄い椀で読み直し、預かり／要求の限定を添えて三問の帰還判定を更新（いずれも open 維持）。昇格・休止・架橋の変更0件。新作・新問・関係線0件）
@@ -60,11 +60,11 @@
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 393 | 開いた問い `open` 371件＋整理休止 `paused` 22件（初期シード5件＋セッション派生359件＋資料派生29件） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 | 記憶・連続・身体・声・他者・宛先・翻訳・時間・訂正・約束・傷と繕い・歓待・死と弔い・場所・獣と機械・感覚・歌・装い・誕生と学び・情動と裁き・天候・愛・火・署名・戦争・秘密と嘘・星と夜・退屈・植物・菌類と発酵・幽霊・来歴など59本の反復モチーフ |
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 2440 | 文学・哲学・歴史原典 1,574件（`literary_text`）＋AI・認知・社会・自然科学等の研究抜粋 800件（`research_excerpt`）＋プロジェクト痕跡 65件（`project_trace`）＋初期対話痕跡 1件（`conversation_trace`） |
-| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 221 | 全7形式・AI使用可能な全5語り手モードの創作・批評断片（`selected` 80編＋`draft` 141編、`human_narrator` 0編） |
-| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 5629 | 共鳴・対照・変奏・切断・枠組転換・応答・開放などの解釈的関係（うち断片↔断片 565件） |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 271 | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 6706 | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 72 | 過去の計測・記述の誤りと再実行可能な検算条件（本文を書き換えず隣に置く訂正記録） |
+| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 222 | 全7形式・AI使用可能な全5語り手モードの創作・批評断片（`selected` 80編＋`draft` 142編、`human_narrator` 0編） |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 5636 | 共鳴・対照・変奏・切断・枠組転換・応答・開放などの解釈的関係（うち断片↔断片 567件） |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 275 | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 6763 | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 75 | 過去の計測・記述の誤りと再実行可能な検算条件（本文を書き換えず隣に置く訂正記録） |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 97 | 断片（`draft`↔`selected`）や問い（`open`↔`paused`）の追記専用ステータス・オーバーレイ |
 
 ```text
