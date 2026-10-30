@@ -8,9 +8,9 @@
 - **開かれた問い（Questions）**：393 件（初期シード 5 件 ＋ 派生 388 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2440 件（research_excerpt 800 ／ literary_text 1574 ／ project_trace 65 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：225 編（selected 80 ／ draft 145）
-- **解釈的関係（Relations）**：5658 件
-- **探究セッション（Sessions）**：282 回
+- **文芸断片（Fragments）**：225 編（selected 83 ／ draft 142）
+- **解釈的関係（Relations）**：5661 件
+- **探究セッション（Sessions）**：283 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -688,7 +688,7 @@
 | `FRAG-20261127-b80668` | 三つから選べ | draft | dialogue | dialogue |
 | `FRAG-20261027-9ec5bc` | 水盆を渡す | draft | scene | third_person |
 | `FRAG-20261027-8d4088` | 同じ音で上演する | selected | other | other |
-| `FRAG-20261128-dfefe9` | 首を入れる夜 | draft | dialogue | dialogue |
+| `FRAG-20261128-dfefe9` | 首を入れる夜 | selected | dialogue | dialogue |
 | `FRAG-20261027-6f40da` | 灯の下の段 | selected | scene | third_person |
 | `FRAG-20261027-1ef282` | 指の幅 | selected | poem | reflective_literary_voice |
 | `FRAG-20261027-f70175` | 重みは裁かれる側へ移る | selected | essay | reflective_literary_voice |
@@ -696,14 +696,14 @@
 | `FRAG-20261027-42e9fc` | 肩の余り | draft | dialogue | dialogue |
 | `FRAG-20261130-8ccc86` | 十三番目、ごんごん | draft | dialogue | dialogue |
 | `FRAG-20261130-a23912` | 立つ位置——口元は笑いにも痛みにもなる | selected | dialogue | dialogue |
-| `FRAG-20261201-128f80` | 葉の下の交点 | draft | dialogue | dialogue |
+| `FRAG-20261201-128f80` | 葉の下の交点 | selected | dialogue | dialogue |
 | `FRAG-20261201-0c2cb9` | 四番の炉を伏せる | draft | dialogue | dialogue |
 | `FRAG-20261201-ec0ef8` | 二つ目は、合わせ終わったら割る | draft | dialogue | dialogue |
 | `FRAG-20261202-c5bf54` | 十九回転の廊下 | selected | fragment | fictional_first_person |
 | `FRAG-20261202-d6593d` | えらばなかった六つは、どこへ | draft | scene | third_person |
 | `FRAG-20261202-b6c2f1` | 二千年前の返事が着く前に | draft | dialogue | dialogue |
 | `FRAG-20261202-75c97c` | 尋ねないときの言い方——四十枚目、中央の名 | selected | dialogue | dialogue |
-| `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | draft | scene | third_person |
+| `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
 ## 4. 対話素材（2440 件・詳細は map/3*.md）
@@ -3347,6 +3347,7 @@
 | `SESSION-20261029-44fafc` | 2026-12-20 | `Q-001`, `Q-002`, `Q-003`, `Q-20261216-57d036` | — | — |
 | `SESSION-20261029-f3405d` | 2026-12-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261029-6052d4` | 2026-12-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-a95728`, `Q-20261123-dcd55b`, `Q-20261202-b0e8b3` | — | — |
+| `SESSION-20261030-3583f8` | 2026-12-31 | `Q-001`, `Q-002`, `Q-003`, `Q-20261127-625ad8`, `Q-20261024-6a200a` | — | — |
 | `SESSION-20261030-7d8aa9` | 2026-12-25 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-cfd57d`, `Q-20261027-7742e7`, `Q-20261027-0a3833` | — | — |
 | `SESSION-20261030-40fe8f` | 2026-12-31 | `Q-20261027-17f876`, `Q-20261024-1b62d5`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261030-ca9fa9` | 2026-12-31 | `Q-20261130-caf330`, `Q-101`, `Q-097`, `Q-20261025-b4e703`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261030-26a34b` | — |
@@ -3438,16 +3439,16 @@
 | `SESSION-20261029-9e3e09` | 2026-12-21 | `Q-001`, `Q-002`, `Q-003`, `Q-20261117-1d7864` | — | — |
 | `SESSION-20261029-77b681` | 2026-12-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-0a3833`, `Q-20261024-cfd57d` | `FRAG-20261029-30debd` | — |
 
-## 6. 解釈的関係（5658 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5661 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 722 |
+| 対照 (contrast) | 723 |
 | 共鳴 (echo) | 1445 |
 | 切断・割り込み (interrupts) | 188 |
 | 未解決のまま開く (leaves_open) | 850 |
 | 比喩的共鳴 (metaphorically_resonates) | 136 |
-| 枠組みの組み替え (reframes) | 462 |
+| 枠組みの組み替え (reframes) | 464 |
 | 応答 (responds_to) | 1592 |
 | 変奏・変形 (transforms) | 263 |
 
@@ -3475,8 +3476,8 @@
 | `map/20-fragments-08.md` | 20 | 190,374 |
 | `map/20-fragments-09.md` | 20 | 177,892 |
 | `map/20-fragments-10.md` | 20 | 137,657 |
-| `map/20-fragments-11.md` | 20 | 135,905 |
-| `map/20-fragments-12.md` | 5 | 33,053 |
+| `map/20-fragments-11.md` | 20 | 136,519 |
+| `map/20-fragments-12.md` | 5 | 33,056 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -3511,14 +3512,14 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 179,217 |
-| `map/40-relations-11.md` | 500 | 161,038 |
-| `map/40-relations-12.md` | 158 | 57,619 |
+| `map/40-relations-10.md` | 500 | 179,330 |
+| `map/40-relations-11.md` | 500 | 161,236 |
+| `map/40-relations-12.md` | 161 | 58,390 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
-| `map/50-sessions-04.md` | 50 | 46,266 |
-| `map/50-sessions-05.md` | 50 | 43,880 |
-| `map/50-sessions-06.md` | 32 | 30,529 |
+| `map/50-sessions-04.md` | 50 | 46,137 |
+| `map/50-sessions-05.md` | 50 | 43,781 |
+| `map/50-sessions-06.md` | 33 | 31,613 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。

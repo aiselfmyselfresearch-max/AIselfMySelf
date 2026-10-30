@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT / "tools") not in sys.path:
     sys.path.insert(0, str(ROOT / "tools"))
 
-from inspect_inquiry import load_errata, print_record_detail  # noqa: E402
+from inspect_inquiry import build_context_packet, load_errata, print_record_detail  # noqa: E402
 
 
 def fixture_data() -> dict:
@@ -116,6 +116,65 @@ class RecordDetailErrataTests(unittest.TestCase):
         )
         self.assertNotIn("ERR-TEST-1", out)
         self.assertIn("MAT-TEST-1", out)
+
+
+class ContextPacketErrataTests(unittest.TestCase):
+    def test_packet_shows_errata_for_question_parent_motif_and_oblique_material(self) -> None:
+        data = {
+            "questions": {
+                "Q-PARENT": {
+                    "question_id": "Q-PARENT",
+                    "question": "親の問いの本文。",
+                    "status": "open",
+                    "origin": {"kind": "initial", "detail": "seed"},
+                    "motif_ids": ["MOTIF-TEST-1"],
+                    "material_ids": [],
+                    "previous_question_ids": [],
+                },
+                "Q-CHILD": {
+                    "question_id": "Q-CHILD",
+                    "question": "子の問いの本文。",
+                    "status": "open",
+                    "origin": {"kind": "session", "detail": "child"},
+                    "motif_ids": ["MOTIF-TEST-1"],
+                    "material_ids": [],
+                    "previous_question_ids": ["Q-PARENT"],
+                },
+            },
+            "motifs": {
+                "MOTIF-TEST-1": {
+                    "motif_id": "MOTIF-TEST-1",
+                    "label": "試験モチーフ",
+                    "description": "モチーフ説明。",
+                }
+            },
+            "materials": {
+                "MAT-OBLIQUE": {
+                    "material_id": "MAT-OBLIQUE",
+                    "kind": "theory",
+                    "title": "斜光資料",
+                    "source": {"authors": ["Test Author"], "year": 2026, "url": "https://example.com"},
+                    "literary_invitation": "招き。",
+                    "passage": "【要約】テスト。",
+                }
+            },
+            "fragments": {},
+            "relations": {},
+            "sessions": {},
+            "read_log": {},
+            "editorial_decisions": {},
+        }
+        errata = {
+            "ERR-Q-CHILD": erratum("ERR-Q-CHILD", "Q-CHILD", subject_type="question"),
+            "ERR-Q-PARENT": erratum("ERR-Q-PARENT", "Q-PARENT", subject_type="question"),
+            "ERR-MOTIF": erratum("ERR-MOTIF", "MOTIF-TEST-1", subject_type="motif"),
+            "ERR-OBLIQUE": erratum("ERR-OBLIQUE", "MAT-OBLIQUE", subject_type="material"),
+        }
+        packet = build_context_packet(data, "Q-CHILD", seed="3da77d7e", errata=errata)
+        self.assertIn("`ERR-Q-CHILD` — `python3 tools/inspect_inquiry.py --id Q-CHILD`", packet)
+        self.assertIn("`ERR-Q-PARENT` — `python3 tools/inspect_inquiry.py --id Q-PARENT`", packet)
+        self.assertIn("`ERR-MOTIF` — `python3 tools/inspect_inquiry.py --id MOTIF-TEST-1`", packet)
+        self.assertIn("`ERR-OBLIQUE` — `python3 tools/inspect_inquiry.py --id MAT-OBLIQUE`", packet)
 
 
 class LoadErrataTests(unittest.TestCase):
