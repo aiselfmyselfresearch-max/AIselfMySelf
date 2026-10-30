@@ -3546,7 +3546,7 @@
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 46,553 |
-| `map/50-sessions-05.md` | 50 | 45,625 |
+| `map/50-sessions-05.md` | 50 | 45,627 |
 | `map/50-sessions-06.md` | 48 | 44,068 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
