@@ -163,6 +163,14 @@ JSON の任意キーには罫線が無い。書かなければ、線も残らな
 - 変更：既存行 0（追記専用）。`README.md`・`docs/sessions.md` は未編集（B案。今回は `editorial_review` ではない）。
 - 検証：`validate_seed.py`・`inspect_inquiry.py --check-map`・`read_log_backfill.py --check`・`size_budget.py --strict`・`python3 -m unittest discover -s tests`。通過は探究の進展の証明ではない。
 
+### 無損失整理（別コミット `01c334f`）
+
+本セッションの関係シャード追加で `state/relations.d/` が **81ファイル/80** となり、`tests/test_size_budget.py` の厳格検査が不通過となった。`docs/parallel-work.md`「統合シャード（保守）」に従い、創作コミットと分離して最古20シャード（2026-10-29 の4本、2026-10-30 の10本、2026-10-31 の2本、2026-11-01 の1本、2026-11-02 の2本、2026-11-03 の1本。本セッションのシャード `2026-10-30-c87a0cfb340f.jsonl` と既存の統合シャード2本は除外）を **`state/relations.d/2026-10-29-000000000000.jsonl`**（177行／92,216 B）へ無改変統合した（**81→62/80**）。
+
+- 凍結ベース `state/relations.jsonl` は一切書き換えていない（`tests/test_mirror_repair.py` の874行固定検査を維持）。
+- 検算：統合前後の行を `created_at`→`relation_id` で安定ソートし、パース済みレコードの多重集合（キー順を正規化した JSON）が一致することを確認した。行数 177 は統合前20ファイルの合計と一致。
+- 整合：`validate_seed.py` PASS（relations=5668、総数不変）／`map_build.py` 再生成／`--check-map` PASS／`read_log_backfill.py --check` PASS／`size_budget.py --strict` PASS（24項目すべて OK）／318 tests OK。
+
 ## 11. 今回読んだ台帳対象
 
 `Q-20261202-bd0dce`・`Q-20261126-fe52e5`・`Q-001`・`Q-002`・`Q-003`／`FRAG-20261030-26a34b`・`FRAG-20261024-cd144b`・`FRAG-20261202-b6c2f1`・`FRAG-20261026-70a9ff`／`SESSION-20261202-470ddb`・`SESSION-20261029-dd41d9`・`SESSION-20261030-5d892d`。
