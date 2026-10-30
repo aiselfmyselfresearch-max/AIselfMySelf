@@ -618,11 +618,25 @@ def build_context_packet(
     lines.append(f"- **来歴**: {q['origin']['detail']}")
     if q.get("notes"):
         lines.append(f"- **メモ**: {q['notes']}")
+    q_corrections = errata_for(target_qid, errata)
+    if q_corrections:
+        ids = ", ".join(f"`{c.get('errata_id')}`" for c in q_corrections)
+        lines.append(
+            f"- **訂正録（この記録の隣に置かれ、記録自体は書き換えていない）**: {ids}"
+            f" — `python3 tools/inspect_inquiry.py --id {target_qid}`"
+        )
     if q.get("previous_question_ids"):
         lines.append("- **親の問い**:")
         for pqid in q["previous_question_ids"]:
             if pqid in questions:
                 lines.append(f"  - `{pqid}`: {questions[pqid]['question']}")
+                pq_corrections = errata_for(pqid, errata)
+                if pq_corrections:
+                    ids = ", ".join(f"`{c.get('errata_id')}`" for c in pq_corrections)
+                    lines.append(
+                        f"    - **訂正録（この記録の隣に置かれ、記録自体は書き換えていない）**: {ids}"
+                        f" — `python3 tools/inspect_inquiry.py --id {pqid}`"
+                    )
     lines.append("")
 
     lines.append("## 2. 関係するモチーフ")
@@ -630,6 +644,13 @@ def build_context_packet(
         if mid in motifs:
             m = motifs[mid]
             lines.append(f"- **`{mid}` ({m['label']})**: {m['description']}")
+            m_corrections = errata_for(mid, errata)
+            if m_corrections:
+                ids = ", ".join(f"`{c.get('errata_id')}`" for c in m_corrections)
+                lines.append(
+                    f"  - **訂正録（この記録の隣に置かれ、記録自体は書き換えていない）**: {ids}"
+                    f" — `python3 tools/inspect_inquiry.py --id {mid}`"
+                )
     lines.append("")
 
     lines.append("## 3. 対話素材（結論の証拠ではなく、摩擦と比喩の種として扱う）")
@@ -713,6 +734,13 @@ def build_context_packet(
             f"- **`{oblique_mat['material_id']}` {oblique_mat['title']}** ({ob_authors}, {oblique_mat['source']['year']})"
         )
         lines.append(f"  - **問いへの招き**: {oblique_mat['literary_invitation']}")
+        ob_corrections = errata_for(oblique_mat["material_id"], errata)
+        if ob_corrections:
+            ids = ", ".join(f"`{c.get('errata_id')}`" for c in ob_corrections)
+            lines.append(
+                f"  - **訂正録（この記録の隣に置かれ、記録自体は書き換えていない）**: {ids}"
+                f" — `python3 tools/inspect_inquiry.py --id {oblique_mat['material_id']}`"
+            )
         lines.append("")
 
     prompt_path = ROOT / recommendation["prompt"]
