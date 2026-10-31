@@ -161,6 +161,25 @@ class InquiryGuidanceTests(unittest.TestCase):
             repo = Path(tmp) / "repo"
             for directory in ("state", "schema", "tools"):
                 shutil.copytree(ROOT / directory, repo / directory)
+            # read_log may target prose under readings/ (type reading_note).
+            # The real validator resolves those ids against the files, so a
+            # minimal copy must bring along just the notes actually cited.
+            read_log_files = [repo / "state" / "read_log.jsonl", *sorted((repo / "state" / "read_log.d").glob("*.jsonl"))]
+            for ledger in read_log_files:
+                if not ledger.is_file():
+                    continue
+                for line in ledger.read_text(encoding="utf-8").splitlines():
+                    if not line.strip():
+                        continue
+                    target = json.loads(line).get("target") or {}
+                    if target.get("type") != "reading_note":
+                        continue
+                    rel = str(target.get("id") or "")
+                    source = ROOT / rel
+                    dest = repo / rel
+                    if rel.startswith("readings/") and source.is_file():
+                        dest.parent.mkdir(parents=True, exist_ok=True)
+                        shutil.copyfile(source, dest)
             session = {
                 "session_id": "SESSION-TEST-REREAD",
                 "started_at": "2026-10-28",

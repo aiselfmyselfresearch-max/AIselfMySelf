@@ -118,6 +118,7 @@ def compute_read_log_summary(read_log_rows: list[dict[str, object]]) -> dict[str
     """Summarize read_log without shipping 1+ MB of per-event rows in /api/state."""
     mat_sessions: dict[str, set[str]] = {}
     frag_sessions: dict[str, set[str]] = {}
+    note_sessions: dict[str, set[str]] = {}
     reading_counts: Counter[str] = Counter()
     for row in read_log_rows:
         sid = str(row.get("session_id", ""))
@@ -132,12 +133,17 @@ def compute_read_log_summary(read_log_rows: list[dict[str, object]]) -> dict[str
                 mat_sessions.setdefault(tid, set()).add(sid)
             elif ttype == "fragment" and tid:
                 frag_sessions.setdefault(tid, set()).add(sid)
+            elif ttype == "reading_note" and tid:
+                note_sessions.setdefault(tid, set()).add(sid)
     reread_2plus = sum(1 for sids in mat_sessions.values() if len(sids) >= 2)
     return {
         "total_rows": len(read_log_rows),
         "distinct_materials_read": len(mat_sessions),
         "materials_reread_in_2plus_sessions": reread_2plus,
         "distinct_fragments_read": len(frag_sessions),
+        # Optional, non-retroactive since 2026-10-31: 0 means "no row yet",
+        # never "no reading happened" (see schema/read_log.schema.json).
+        "distinct_reading_notes_read": len(note_sessions),
         "by_reading": dict(reading_counts.most_common()),
     }
 
