@@ -336,6 +336,7 @@ A1（連続は重なりにだけある）は、今回の接続そのものが実
 - **新規素材0・新規モチーフ0・新規ツール0・新規断片0・新規編集判断0。`human_narrator` 0編。** `context_material_ids` は空（本次が深読したのは断片・問い・セッション・訂正録・ノートであり、新規素材0件）。
 - 実行した検証（いずれも本次の追記後に実行）：`python3 tools/validate_seed.py` → PASS（questions=397, relations=5753, sessions=322, read_log=7416, errata=112）／`python3 tools/map_build.py` → 生成／`python3 tools/inspect_inquiry.py --check-map` → PASS／`python3 tools/read_log_backfill.py --check` → PASS（3792/3792）／`python3 tools/size_budget.py --strict` → PASS（readings/ 12.29 MiB / soft 15 MiB）／`python3 -m unittest discover -s tests` → 340 tests OK／`python3 tools/errata_audit.py` → 新規1行は「記述的で自動比較しない」に分類（12→13）、`check` は `5/5` を返す。**再測定11件の側には入らなかった。**
 - `README.md` と `docs/sessions.md` は編集しない（`docs/parallel-work.md` B案）。`READING_MAP.md` は `map_build.py` で union から再生成。
+- **並列追記による数の移動**：本稿の計数は、自シャードへの追記直後の union に対するものである。その後 `origin/main` の並列セッション（`SESSION-20261031-08ed9b` ほか）が合流し、本稿執筆時点の `validate_seed.py` は questions=398・relations=5755・sessions=324・read_log=7439 を返す。**数は測った時点つきでしか書けない**（`ERR-021` と同じ事情）。本稿の §2 の数値を現在値として引かないこと。
 - **未照合**：本稿が参照したのはすべてリポジトリ内部の記録である。外部原典の照合は行っていない。`b80668` が依拠する4素材は台帳上の編者要約であり、原本は未確認。語形の計数は分布であって、感情の実在や声の道徳的資格を判定しない。`voice_audit.py` の表を変更していないので、次に同じ表を走らせれば同じ数が出る。**その同じ数が、同じ誤解を生む。**
 
 ---
