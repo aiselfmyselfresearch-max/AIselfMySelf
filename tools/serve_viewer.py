@@ -318,7 +318,13 @@ def _read_archive_payload_once() -> dict[str, object]:
     return full_payload
 
 
-def read_archive_payload(retries: int = 6, delay: float = 0.02) -> dict[str, object]:
+_BUILD_COND = threading.Condition()
+_BUILD_IN_FLIGHT = False
+_BUILD_GENERATION = 0
+_LAST_BUILD_PAYLOAD: dict[str, object] | None = None
+
+
+def _read_payload_with_retries(retries: int = 6, delay: float = 0.02) -> dict[str, object]:
     """Serve one consistent snapshot, retrying while a writer keeps replacing files.
 
     ``load_jsonl`` already retries a fixed number of times inside
@@ -340,6 +346,45 @@ def read_archive_payload(retries: int = 6, delay: float = 0.02) -> dict[str, obj
             time.sleep(delay)
     assert last is not None
     raise last
+
+
+def read_archive_payload(retries: int = 6, delay: float = 0.02) -> dict[str, object]:
+    """Build the payload at most once at a time; concurrent readers share the result.
+
+    The derived panes (voice and the 16 audit mirrors) scan every fragment,
+    material and reading note on each rebuild, and one rebuild now takes several
+    seconds.  Under six concurrent readers a writer that keeps touching
+    ``state/materials.jsonl`` used to start six rebuilds at once and every
+    request crossed the ten-second client timeout (tests/test_server.py
+    ``test_concurrent_reads_during_atomic_rewrites``).  Requests that arrive
+    while a rebuild is in flight wait for that rebuild and share its payload
+    instead of starting another one; a request that arrives to an idle builder
+    still rebuilds as soon as the state fingerprint has changed, so a refresh
+    after a write keeps seeing the new rows.
+    """
+    global _BUILD_IN_FLIGHT, _BUILD_GENERATION, _LAST_BUILD_PAYLOAD
+    with _BUILD_COND:
+        if _BUILD_IN_FLIGHT:
+            generation = _BUILD_GENERATION
+            while _BUILD_IN_FLIGHT and _BUILD_GENERATION == generation:
+                _BUILD_COND.wait()
+            if _LAST_BUILD_PAYLOAD is not None:
+                return _LAST_BUILD_PAYLOAD
+        _BUILD_IN_FLIGHT = True
+    try:
+        payload = _read_payload_with_retries(retries, delay)
+    except BaseException:
+        with _BUILD_COND:
+            _BUILD_IN_FLIGHT = False
+            _BUILD_GENERATION += 1
+            _BUILD_COND.notify_all()
+        raise
+    with _BUILD_COND:
+        _LAST_BUILD_PAYLOAD = payload
+        _BUILD_IN_FLIGHT = False
+        _BUILD_GENERATION += 1
+        _BUILD_COND.notify_all()
+    return payload
 
 
 class ReusableThreadingHTTPServer(ThreadingHTTPServer):
