@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：398 件（初期シード 5 件 ＋ 派生 393 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2464 件（research_excerpt 800 ／ literary_text 1596 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2469 件（research_excerpt 800 ／ literary_text 1601 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：236 編（selected 86 ／ draft 150）
 - **解釈的関係（Relations）**：5765 件
-- **探究セッション（Sessions）**：327 回
+- **探究セッション（Sessions）**：328 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -722,7 +722,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2464 件・詳細は map/3*.md）
+## 4. 対話素材（2469 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3186,6 +3186,11 @@
 | `MAT-LIT-20261031-6f0464` | literary_text | キチェ・マヤの伝承・書記の系譜（本文の編者は特定されない）『『ポポル・ヴフ／ポポル・ウフ』——トウモロコシから作られ、視界を限られる人間』（1554） |
 | `MAT-LIT-20261031-736bc2` | literary_text | 古ノルド詩の伝承（作者不詳）『『ハーヴァマール』76–77節——死後に残る名は、誰のものか』（-1000） |
 | `MAT-LIT-20261031-81c984` | literary_text | アッカド語の詩人・書記伝承（標準版の編者は特定されない）『『ギルガメシュ叙事詩』第XI書板——不死を得ず、城壁へ帰る王』（-1200） |
+| `MAT-LIT-20261031-d1e0bd` | literary_text | (anonymous, Codex Regius), Henry Adams Bellows (trans.)『『ヴォルスパー』——予言女は覚えている、草の間の黄金の板を』（12… |
+| `MAT-LIT-20261031-b9ec6d` | literary_text | (anonymous), F. Max Müller (trans.)『『チャーンドーギャ・ウパニシャッド』第六篇——塩は水に溶け、汝はそれなり』（-700） |
+| `MAT-LIT-20261031-3e078c` | literary_text | (Syriac original, embedded in the Acts of Thomas), G. R. S. Mead (trans.)『『真珠の讃歌』——忘れた者に届… |
+| `MAT-LIT-20261031-4a59da` | literary_text | (anonymous), R. T. H. Griffith (trans.)『『リグ・ヴェーダ』10.90 プルシャ・スークタ——身体を分割して世界を数える』（-1000） |
+| `MAT-LIT-20261031-8f6d55` | literary_text | (anonymous, Corpus Hermeticum), G. R. S. Mead (trans.)『『ポイマンドレス』——自然は美しい宇宙を見て、それを写した』（200） |
 | `MAT-LIT-20261031-8c2ca5` | literary_text | 世阿弥『世阿弥『至花道書』——客は二つある（見所・離見の見・體と用）』（1420） |
 | `MAT-LIT-20261031-6105da` | literary_text | Dioscorides Pedanius『ディオスコリデス『薬物誌』第一巻——名は見出しであり、衝突は項目の内側に残る』（70） |
 | `MAT-TRC-20261031-a8385a` | project_trace | AIselfMySelf（本リポジトリ運用記録）『名の三層監査——読み物の引用3,959個、台帳の注記の名、資料源の名128個』（2026） |
@@ -3434,6 +3439,7 @@
 | `SESSION-20261031-df9afe` | 2026-12-31 | `Q-20261122-02a9f6`, `Q-20261024-b23994`, `Q-20261029-85a285`, `Q-001` | `FRAG-20261031-5622a6` | — |
 | `SESSION-20261031-a74a3d` | 2026-12-31 | `Q-20261025-48215a`, `Q-002`, `Q-003`, `Q-090`, `Q-001` | — | — |
 | `SESSION-20261031-925b8f` | 2026-12-31 | `Q-20261201-f932d1`, `Q-20261024-c237b9`, `Q-20261031-acdadb`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261031-8f4434` | `Q-20261031-acdadb` |
+| `SESSION-20261031-5ecc5e` | 2026-10-31T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261031-24a2b7` | 2026-12-31 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-d4c6b6`, `Q-20261024-c3d7a5` | — | — |
 | `SESSION-20261031-464ac7` | 2026-12-31 | `Q-001`, `Q-002`, `Q-003`, `Q-049` | — | — |
 | `SESSION-20261031-5ad051` | 2026-12-31 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-76a4a5`, `Q-20261029-85a285`, `Q-20261031-0f4ef3` | — | — |
@@ -3577,7 +3583,8 @@
 | `map/30-materials-literary-13.md` | 100 | 146,602 |
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
-| `map/30-materials-literary-16.md` | 96 | 183,576 |
+| `map/30-materials-literary-16.md` | 100 | 194,908 |
+| `map/30-materials-literary-17.md` | 1 | 4,400 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3603,8 +3610,8 @@
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
-| `map/50-sessions-05.md` | 50 | 47,603 |
-| `map/50-sessions-06.md` | 50 | 43,415 |
-| `map/50-sessions-07.md` | 27 | 25,569 |
+| `map/50-sessions-05.md` | 50 | 47,712 |
+| `map/50-sessions-06.md` | 50 | 43,217 |
+| `map/50-sessions-07.md` | 28 | 26,484 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
