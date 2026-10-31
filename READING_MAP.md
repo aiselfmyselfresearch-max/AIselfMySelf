@@ -9,8 +9,8 @@
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2452 件（research_excerpt 800 ／ literary_text 1586 ／ project_trace 65 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：232 編（selected 83 ／ draft 149）
-- **解釈的関係（Relations）**：5721 件
-- **探究セッション（Sessions）**：308 回
+- **解釈的関係（Relations）**：5725 件
+- **探究セッション（Sessions）**：309 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -3410,6 +3410,7 @@
 | `SESSION-20261030-fcf987` | 2026-12-31 | `Q-20261024-ce0069`, `Q-20261024-c9dc13`, `Q-20261024-5da6dd` | `FRAG-20261030-154a66` | — |
 | `SESSION-20261031-b5454d` | 2026-12-31 | `Q-002`, `Q-003`, `Q-20261024-6bdafd`, `Q-20261027-355fc1` | — | — |
 | `SESSION-20261031-df9afe` | 2026-12-31 | `Q-20261122-02a9f6`, `Q-20261024-b23994`, `Q-20261029-85a285`, `Q-001` | `FRAG-20261031-5622a6` | — |
+| `SESSION-20261031-a74a3d` | 2026-12-31 | `Q-20261025-48215a`, `Q-002`, `Q-003`, `Q-090`, `Q-001` | — | — |
 | `SESSION-20261031-24a2b7` | 2026-12-31 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-d4c6b6`, `Q-20261024-c3d7a5` | — | — |
 | `SESSION-20261031-b430ae` | 2026-12-31 | `Q-001`, `Q-002`, `Q-003`, `Q-048`, `Q-049`, `Q-20261025-48215a` | — | — |
 | `SESSION-20261031-536138` | 2026-12-31 | `Q-20261025-48215a`, `Q-001`, `Q-002`, `Q-003`, `Q-082` | — | — |
@@ -3484,16 +3485,16 @@
 | `SESSION-20261029-9e3e09` | 2026-12-21 | `Q-001`, `Q-002`, `Q-003`, `Q-20261117-1d7864` | — | — |
 | `SESSION-20261029-77b681` | 2026-12-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-0a3833`, `Q-20261024-cfd57d` | `FRAG-20261029-30debd` | — |
 
-## 6. 解釈的関係（5721 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5725 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 747 |
+| 対照 (contrast) | 749 |
 | 共鳴 (echo) | 1453 |
 | 切断・割り込み (interrupts) | 191 |
-| 未解決のまま開く (leaves_open) | 850 |
+| 未解決のまま開く (leaves_open) | 851 |
 | 比喩的共鳴 (metaphorically_resonates) | 137 |
-| 枠組みの組み替え (reframes) | 476 |
+| 枠組みの組み替え (reframes) | 477 |
 | 応答 (responds_to) | 1601 |
 | 変奏・変形 (transforms) | 266 |
 
@@ -3517,8 +3518,8 @@
 | `map/20-fragments-04.md` | 20 | 108,927 |
 | `map/20-fragments-05.md` | 20 | 98,671 |
 | `map/20-fragments-06.md` | 20 | 81,480 |
-| `map/20-fragments-07.md` | 20 | 130,299 |
-| `map/20-fragments-08.md` | 20 | 157,040 |
+| `map/20-fragments-07.md` | 20 | 130,655 |
+| `map/20-fragments-08.md` | 20 | 157,411 |
 | `map/20-fragments-09.md` | 20 | 207,620 |
 | `map/20-fragments-10.md` | 20 | 147,131 |
 | `map/20-fragments-11.md` | 20 | 124,015 |
@@ -3557,15 +3558,15 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 185,656 |
-| `map/40-relations-11.md` | 500 | 160,745 |
-| `map/40-relations-12.md` | 221 | 76,773 |
+| `map/40-relations-10.md` | 500 | 186,122 |
+| `map/40-relations-11.md` | 500 | 160,828 |
+| `map/40-relations-12.md` | 225 | 77,880 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
-| `map/50-sessions-05.md` | 50 | 47,766 |
-| `map/50-sessions-06.md` | 50 | 45,113 |
-| `map/50-sessions-07.md` | 8 | 7,219 |
+| `map/50-sessions-05.md` | 50 | 47,870 |
+| `map/50-sessions-06.md` | 50 | 45,082 |
+| `map/50-sessions-07.md` | 9 | 8,108 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
