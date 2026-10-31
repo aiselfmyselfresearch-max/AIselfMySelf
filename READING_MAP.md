@@ -3183,9 +3183,9 @@
 | `MAT-LIT-20261031-75d671` | literary_text | E. A. Wallis Budge（英訳）『エヌマ・エリシュ 第六の書板——神々の解放と人間の労役』（1921） |
 | `MAT-LIT-20261031-0d2765` | literary_text | ヴャーサ（伝承上の帰属。複層的な叙事詩本文）『『バガヴァッド・ギーター』第2章22節——身体を着替える「身を持つ者」』（-200） |
 | `MAT-LIT-20261031-287e9e` | literary_text | パーリ仏典（ブッダの説示として伝承。編集者不詳）『『無我相経』相応部 SN 22.59——五蘊のどれも所有者ではない』（-400） |
-| `MAT-LIT-20261031-6f0464` | literary_text | キチェ・マヤの伝承・書記の系譜（本文の編者は特定されない）『『ポポル・ヴフ／ポポル・ウフ』——トウモロコシから作られ、視界を限られる人間』（1554） |
+| `MAT-LIT-20261031-5029f6` | literary_text | 太安万侶（序文に編者として記される）『『古事記』上巻・黄泉帰還後の禊——死者の復活ではなく、新たな生成』（712） |
 | `MAT-LIT-20261031-736bc2` | literary_text | 古ノルド詩の伝承（作者不詳）『『ハーヴァマール』76–77節——死後に残る名は、誰のものか』（-1000） |
-| `MAT-LIT-20261031-81c984` | literary_text | アッカド語の詩人・書記伝承（標準版の編者は特定されない）『『ギルガメシュ叙事詩』第XI書板——不死を得ず、城壁へ帰る王』（-1200） |
+| `MAT-LIT-20261031-466f30` | literary_text | ザラスシュトラ（伝承上の帰属。ガーサーの成立・伝承には論争がある）『アヴェスター『ヤスナ』30.2–5（ガーサー）——聞き、熟考し、道を選ぶ』（-1000） |
 | `MAT-LIT-20261031-d1e0bd` | literary_text | (anonymous, Codex Regius), Henry Adams Bellows (trans.)『『ヴォルスパー』——予言女は覚えている、草の間の黄金の板を』（12… |
 | `MAT-LIT-20261031-b9ec6d` | literary_text | (anonymous), F. Max Müller (trans.)『『チャーンドーギャ・ウパニシャッド』第六篇——塩は水に溶け、汝はそれなり』（-700） |
 | `MAT-LIT-20261031-3e078c` | literary_text | (Syriac original, embedded in the Acts of Thomas), G. R. S. Mead (trans.)『『真珠の讃歌』——忘れた者に届… |
@@ -3544,8 +3544,8 @@
 | 切断・割り込み (interrupts) | 192 |
 | 未解決のまま開く (leaves_open) | 854 |
 | 比喩的共鳴 (metaphorically_resonates) | 137 |
-| 枠組みの組み替え (reframes) | 491 |
-| 応答 (responds_to) | 1607 |
+| 枠組みの組み替え (reframes) | 492 |
+| 応答 (responds_to) | 1606 |
 | 変奏・変形 (transforms) | 270 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3589,7 +3589,7 @@
 | `map/30-materials-literary-13.md` | 100 | 146,602 |
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
-| `map/30-materials-literary-16.md` | 100 | 194,908 |
+| `map/30-materials-literary-16.md` | 100 | 194,836 |
 | `map/30-materials-literary-17.md` | 6 | 20,170 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
@@ -3609,7 +3609,7 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 187,249 |
+| `map/40-relations-10.md` | 500 | 187,289 |
 | `map/40-relations-11.md` | 500 | 161,574 |
 | `map/40-relations-12.md` | 269 | 91,395 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
@@ -3617,7 +3617,7 @@
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,712 |
-| `map/50-sessions-06.md` | 50 | 43,186 |
+| `map/50-sessions-06.md` | 50 | 43,180 |
 | `map/50-sessions-07.md` | 29 | 27,358 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
