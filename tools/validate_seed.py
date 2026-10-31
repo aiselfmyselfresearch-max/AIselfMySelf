@@ -29,6 +29,34 @@ COLLECTIONS = {
 }
 
 
+def is_existing_reading_note(root: Path, ref_id: object) -> bool:
+    """Return True only for a safe ``readings/<filename>.md`` id naming a real file.
+
+    Reading notes are prose files, not a JSONL collection, so a
+    ``reading_note`` read_log target cannot be resolved through
+    ``endpoint_collections``.  The id must be the repository-relative path
+    already used by ``tools/taxonomy_plan.py``; a bare filename, a path
+    traversal, or a missing file is an unknown target, exactly like an
+    unknown ledger ID.  This checks that the note exists, never that it
+    was read or endorsed.
+    """
+    if not isinstance(ref_id, str) or not ref_id.startswith("readings/"):
+        return False
+    name = ref_id[len("readings/") :]
+    if (
+        not name
+        or not name.endswith(".md")
+        or "/" in name
+        or "\\" in name
+        or ".." in name
+        or "\x00" in name
+    ):
+        return False
+    readings_dir = (root / "readings").resolve()
+    candidate = (readings_dir / name).resolve()
+    return candidate.parent == readings_dir and candidate.is_file()
+
+
 def matches_type(value: Any, expected: str) -> bool:
     if expected == "object":
         return isinstance(value, dict)
@@ -206,12 +234,22 @@ def main() -> int:
             errors.append(f"read_log:{read_id}: session_id references unknown session {session_id!r}")
         ref = record.get("target")
         if isinstance(ref, dict):
-            target = endpoint_collections.get(ref.get("type"))
-            if target is None or ref.get("id") not in target:
-                errors.append(
-                    f"read_log:{read_id}: target references unknown "
-                    f"{ref.get('type')} ID {ref.get('id')!r}"
-                )
+            if ref.get("type") == "reading_note":
+                # Prose target: resolve against readings/ on disk, not a
+                # ledger collection. Relations and editorial decisions
+                # below intentionally keep the five ledger types only.
+                if not is_existing_reading_note(ROOT, ref.get("id")):
+                    errors.append(
+                        f"read_log:{read_id}: target references unknown "
+                        f"{ref.get('type')} ID {ref.get('id')!r}"
+                    )
+            else:
+                target = endpoint_collections.get(ref.get("type"))
+                if target is None or ref.get("id") not in target:
+                    errors.append(
+                        f"read_log:{read_id}: target references unknown "
+                        f"{ref.get('type')} ID {ref.get('id')!r}"
+                    )
 
     ed_valid_status = {
         "fragment": {"draft", "selected", "archived"},

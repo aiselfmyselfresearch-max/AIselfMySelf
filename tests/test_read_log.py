@@ -73,6 +73,46 @@ class ReadLogValidationTests(unittest.TestCase):
             self.assertEqual(bad.returncode, 1)
             self.assertIn("session_id references unknown session", bad.stdout)
 
+    def test_reading_note_target_resolves_against_readings_dir(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = copy_repo(Path(tmp))
+            shard = repo / "state" / "read_log.d" / "2026-10-24-testtesttest.jsonl"
+            existing = sorted(p.name for p in (repo / "readings").glob("*.md"))
+            self.assertTrue(existing, "copied repo should carry readings/*.md")
+
+            shard.write_text(
+                json.dumps(
+                    read_row(target={"type": "reading_note", "id": f"readings/{existing[0]}"}),
+                    ensure_ascii=False,
+                    sort_keys=True,
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            ok = run(repo, "tools/validate_seed.py")
+            self.assertEqual(ok.returncode, 0, ok.stdout + ok.stderr)
+
+            for bad_id in (
+                "readings/no-such-note-20990101.md",
+                existing[0],  # bare filename without the readings/ prefix
+                "readings/../README.md",  # traversal must never resolve
+            ):
+                shard.write_text(
+                    json.dumps(
+                        read_row(target={"type": "reading_note", "id": bad_id}),
+                        ensure_ascii=False,
+                        sort_keys=True,
+                    )
+                    + "\n",
+                    encoding="utf-8",
+                )
+                bad = run(repo, "tools/validate_seed.py")
+                self.assertEqual(bad.returncode, 1, f"{bad_id!r} should fail: {bad.stdout}")
+                self.assertIn(
+                    "read_log:READ-20261024-aaaaaa: target references unknown reading_note",
+                    bad.stdout,
+                )
+
     def test_schema_rejects_unknown_reading(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             repo = copy_repo(Path(tmp))

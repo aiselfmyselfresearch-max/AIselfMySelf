@@ -1818,7 +1818,8 @@ function renderMirrorView() {
             <div style="font-size:0.82rem;color:var(--ink-muted);margin-bottom:0.65rem;">
               <code>read_log</code> 集計 — 総記録 <strong>${state.data.read_log_summary.total_rows}</strong> 行 ／
               既読素材 <strong>${state.data.read_log_summary.distinct_materials_read}</strong> 件（うち2セッション以上で再読された素材 <strong>${state.data.read_log_summary.materials_reread_in_2plus_sessions}</strong> 件） ／
-              再読された断片 <strong>${state.data.read_log_summary.distinct_fragments_read}</strong> 編
+              再読された断片 <strong>${state.data.read_log_summary.distinct_fragments_read}</strong> 編 ／
+              読んだと記録された精読ノート <strong>${state.data.read_log_summary.distinct_reading_notes_read ?? 0}</strong> 本（2026-10-31以降の任意記録・遡及なし。記録がないことは未読を意味しない）
             </div>
           ` : ""}
           <table class="mirror-table">

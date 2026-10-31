@@ -29,7 +29,7 @@
 
 ## 記録と完了
 
-`docs/parallel-work.md` に従い、既存の台帳行は書き換えず、自分の `state/*.d/` シャードへ追記してください。新作を書かない回も `sessions` と実際に読んだ台帳対象の `read_log` に記録できます。`produced_fragment_ids`・`new_question_ids` は空配列で構いません。非創作の見立ては `readings/` や `sessions.notes` に残し、台帳を埋めるためだけに断片を作らないでください。新作を作る場合だけ `status: draft` と声のモードを付け、必要な解釈的関係を記録してください。
+`docs/parallel-work.md` に従い、既存の台帳行は書き換えず、自分の `state/*.d/` シャードへ追記してください。新作を書かない回も `sessions` と、実際に読んだ台帳対象および精読ノートの `read_log` に記録できます。精読ノートは `target.type: reading_note`、`id` は `readings/<ファイル名>.md` とし、全文か該当節かを `note` に書いてください。過去のセッションが引用していることから読んだと推定して遡って行を作らず、記録しないこともできます——行の有無は、読んだことの有無の判定ではありません。`produced_fragment_ids`・`new_question_ids` は空配列で構いません。非創作の見立ては `readings/` や `sessions.notes` に残し、台帳を埋めるためだけに断片を作らないでください。新作を作る場合だけ `status: draft` と声のモードを付け、必要な解釈的関係を記録してください。
 
 台帳を追記したら `python3 tools/map_build.py` を実行し、`python3 tools/validate_seed.py`・`python3 tools/inspect_inquiry.py --check-map`・`python3 tools/read_log_backfill.py --check`・`python3 tools/size_budget.py --strict`・`python3 -m unittest discover -s tests` で技術的な整合性を確認してください。通常回は `README.md`・`docs/sessions.md` を編集しません。検査の通過は探究の進展の証明ではありません。
 

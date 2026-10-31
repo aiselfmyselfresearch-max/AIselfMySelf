@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "read_log.schema.json",
   "title": "Read Log Entry",
-  "description": "A trace that one session read one existing ledger record (material, fragment, question, motif, or session). This is the exhaustive 'who re-read what' log; curated interpretation belongs to relations, and text belongs to fragments/reports. One row per (session, target, reading) — append only, never rewritten. The reading field names what the session did with the record, not what the record means.",
+  "description": "A trace that one session read one existing ledger record (material, fragment, question, motif, or session) or one reading note under readings/. This is the exhaustive 'who re-read what' log; curated interpretation belongs to relations, and text belongs to fragments/reports. One row per (session, target, reading) — append only, never rewritten. The reading field names what the session did with the record, not what the record means. For target.type 'reading_note', target.id is the repository-relative path 'readings/<filename>.md' (the form already used by tools/taxonomy_plan.py). A reading_note row records an encounter, not endorsement; it must be written only for a note actually opened in that session (state full text or the sections read in the note field), never backfilled by inferring past reading from a later citation. The absence of a row is not evidence that a note was not read.",
   "type": "object",
   "additionalProperties": false,
   "required": ["read_id", "session_id", "target", "reading", "note", "created_at"],
@@ -14,7 +14,7 @@
       "additionalProperties": false,
       "required": ["type", "id"],
       "properties": {
-        "type": {"type": "string", "enum": ["question", "motif", "material", "fragment", "session"]},
+        "type": {"type": "string", "enum": ["question", "motif", "material", "fragment", "session", "reading_note"]},
         "id": {"type": "string", "minLength": 1}
       }
     },
