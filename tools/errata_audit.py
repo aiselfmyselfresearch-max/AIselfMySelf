@@ -174,6 +174,21 @@ def quotation_match(fragments: list[dict[str, Any]], materials: list[dict[str, A
     }
 
 
+def git_deletions_cmd(params: dict[str, Any]) -> list[str]:
+    """Build the ``git log --numstat`` command for a ``git_deletions`` check.
+
+    A claim about the repository as a whole uses ``path`` (or ``paths``) at HEAD.
+    A claim about one change also carries ``old`` and ``new``; without the range
+    the count covers the whole history and cannot reproduce the claim.
+    """
+    cmd = ["git", "log", "--numstat", "--format="]
+    if params.get("old") and params.get("new"):
+        cmd.append(f"{params['old']}..{params['new']}")
+    cmd.append("--")
+    cmd.extend(params.get("paths") or [params.get("path", "state/")])
+    return cmd
+
+
 def run_check(check: dict[str, Any], fragments: list[dict[str, Any]],
               materials: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     kind = check.get("kind")
@@ -229,7 +244,7 @@ def run_check(check: dict[str, Any], fragments: list[dict[str, Any]],
     if kind == "git_deletions":
         try:
             out = subprocess.run(
-                ["git", "log", "--numstat", "--format=", "--", params.get("path", "state/")],
+                git_deletions_cmd(params),
                 cwd=ROOT, capture_output=True, text=True, check=True,
             ).stdout
         except (OSError, subprocess.CalledProcessError) as exc:
@@ -240,7 +255,10 @@ def run_check(check: dict[str, Any], fragments: list[dict[str, Any]],
             if len(parts) == 3 and parts[0].isdigit() and parts[1].isdigit():
                 added += int(parts[0])
                 deleted += int(parts[1])
-        return {"measurable": True, "value": deleted, "detail": f"追加 {added} / 削除 {deleted}（{params.get('path', 'state/')}）"}
+        scope = " / ".join(params.get("paths") or [params.get("path", "state/")])
+        if params.get("old") and params.get("new"):
+            scope += f"（{params['old']}..{params['new']}）"
+        return {"measurable": True, "value": deleted, "detail": f"追加 {added} / 削除 {deleted}（{scope}）"}
 
     if kind == "term_occurrence_count":
         # Re-counts terms in the fragments themselves, so an errata record about
