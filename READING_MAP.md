@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：398 件（初期シード 5 件 ＋ 派生 393 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2459 件（research_excerpt 800 ／ literary_text 1591 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2464 件（research_excerpt 800 ／ literary_text 1596 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：236 編（selected 86 ／ draft 150）
-- **解釈的関係（Relations）**：5760 件
-- **探究セッション（Sessions）**：326 回
+- **解釈的関係（Relations）**：5765 件
+- **探究セッション（Sessions）**：327 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -722,7 +722,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2459 件・詳細は map/3*.md）
+## 4. 対話素材（2464 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3176,6 +3176,11 @@
 | `MAT-LIT-20261031-3a1ba4` | literary_text | 世阿弥（談話）, 元能（筆録・伝）『世阿弥『世子六十以後申楽談儀』——師の口から出た語を、別の手が書き留める』（1430） |
 | `MAT-LIT-20261031-ec6caf` | literary_text | 世阿弥『世阿弥『却来華（世子七十以後口傳）』——伝える相手がいなくなった後に、紙へ載せる』（1430） |
 | `MAT-LIT-20261031-894ed3` | literary_text | Theophrastus『テオプラストス『植物の原因』——接ぎ木は「一つの自然」か、「一つの実質と複数の始まり」か』（-300） |
+| `MAT-LIT-20261031-cea6b0` | literary_text | Ralph T. H. Griffith（英訳）『リグ・ヴェーダ 10.129——起源を知る者も知らないかもしれない』（1896） |
+| `MAT-LIT-20261031-fa4f0a` | literary_text | F. Max Müller（英訳）『カタ・ウパニシャッド I.3——乗り手と御者は同じではない』（1879） |
+| `MAT-LIT-20261031-5962bd` | literary_text | F. Max Müller（英訳）『ダンマパダ 第12章——自分を守ることと行為の帰属』（1881） |
+| `MAT-LIT-20261031-e8a0c5` | literary_text | E. A. Wallis Budge（英訳）『死者の書 第125章——否定の告白に並ぶ水と乳児』（1895） |
+| `MAT-LIT-20261031-75d671` | literary_text | E. A. Wallis Budge（英訳）『エヌマ・エリシュ 第六の書板——神々の解放と人間の労役』（1921） |
 | `MAT-LIT-20261031-0d2765` | literary_text | ヴャーサ（伝承上の帰属。複層的な叙事詩本文）『『バガヴァッド・ギーター』第2章22節——身体を着替える「身を持つ者」』（-200） |
 | `MAT-LIT-20261031-287e9e` | literary_text | パーリ仏典（ブッダの説示として伝承。編集者不詳）『『無我相経』相応部 SN 22.59——五蘊のどれも所有者ではない』（-400） |
 | `MAT-LIT-20261031-6f0464` | literary_text | キチェ・マヤの伝承・書記の系譜（本文の編者は特定されない）『『ポポル・ヴフ／ポポル・ウフ』——トウモロコシから作られ、視界を限られる人間』（1554） |
@@ -3440,6 +3445,7 @@
 | `SESSION-20261031-384bb7` | 2026-12-31 | `Q-001`, `Q-002`, `Q-003`, `Q-049`, `Q-20261031-acdadb`, `Q-20261031-0f4ef3`, `Q-20261024-4df567` | — | — |
 | `SESSION-20261031-f978ae` | 2026-12-31 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-4df567` | `FRAG-20261031-fbcfcf`, `FRAG-20261031-63cb09` | — |
 | `SESSION-20261031-83391e` | 2026-12-31 | `Q-002`, `Q-003`, `Q-20261027-7742e7` | — | — |
+| `SESSION-20261031-86a98e` | 2026-10-31 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261031-1a639f` | 2026-12-31 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-4284fe`, `Q-20261027-7742e7` | — | — |
 | `SESSION-20261031-662334` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261031-b2197e` | 2026-12-31 | `Q-002`, `Q-003`, `Q-20261116-6eec38` | — | — |
@@ -3517,7 +3523,7 @@
 | `SESSION-20261029-77b681` | 2026-12-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-0a3833`, `Q-20261024-cfd57d` | `FRAG-20261029-30debd` | — |
 | `SESSION-20270101-c78c01` | 2027-01-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261204-c7aa25`, `Q-20261203-aa57dd`, `Q-20261127-625ad8`, `Q-20270101-f2781c` | — | `Q-20270101-f2781c` |
 
-## 6. 解釈的関係（5760 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5765 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
@@ -3526,7 +3532,7 @@
 | 切断・割り込み (interrupts) | 192 |
 | 未解決のまま開く (leaves_open) | 854 |
 | 比喩的共鳴 (metaphorically_resonates) | 137 |
-| 枠組みの組み替え (reframes) | 485 |
+| 枠組みの組み替え (reframes) | 490 |
 | 応答 (responds_to) | 1607 |
 | 変奏・変形 (transforms) | 270 |
 
@@ -3571,7 +3577,7 @@
 | `map/30-materials-literary-13.md` | 100 | 146,602 |
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
-| `map/30-materials-literary-16.md` | 91 | 178,196 |
+| `map/30-materials-literary-16.md` | 96 | 183,576 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3590,15 +3596,15 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 188,171 |
-| `map/40-relations-11.md` | 500 | 161,175 |
-| `map/40-relations-12.md` | 260 | 88,371 |
+| `map/40-relations-10.md` | 500 | 187,397 |
+| `map/40-relations-11.md` | 500 | 160,991 |
+| `map/40-relations-12.md` | 265 | 90,240 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,603 |
-| `map/50-sessions-06.md` | 50 | 43,864 |
-| `map/50-sessions-07.md` | 26 | 24,683 |
+| `map/50-sessions-06.md` | 50 | 43,415 |
+| `map/50-sessions-07.md` | 27 | 25,569 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
