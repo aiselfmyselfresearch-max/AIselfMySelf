@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：398 件（初期シード 5 件 ＋ 派生 393 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2474 件（research_excerpt 800 ／ literary_text 1606 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2479 件（research_excerpt 800 ／ literary_text 1611 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：236 編（selected 86 ／ draft 150）
 - **解釈的関係（Relations）**：5769 件
-- **探究セッション（Sessions）**：329 回
+- **探究セッション（Sessions）**：330 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -722,7 +722,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2474 件・詳細は map/3*.md）
+## 4. 対話素材（2479 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3192,6 +3192,11 @@
 | `MAT-LIT-20261031-4a59da` | literary_text | (anonymous), R. T. H. Griffith (trans.)『『リグ・ヴェーダ』10.90 プルシャ・スークタ——身体を分割して世界を数える』（-1000） |
 | `MAT-LIT-20261031-8f6d55` | literary_text | (anonymous, Corpus Hermeticum), G. R. S. Mead (trans.)『『ポイマンドレス』——自然は美しい宇宙を見て、それを写した』（200） |
 | `MAT-LIT-20261031-8c2ca5` | literary_text | 世阿弥『世阿弥『至花道書』——客は二つある（見所・離見の見・體と用）』（1420） |
+| `MAT-LIT-20261031-d74801` | literary_text | 作者不詳『イナナの冥界下り』（0） |
+| `MAT-LIT-20261031-d74802` | literary_text | 作者不詳『創世記11:1–9 バベル』（0） |
+| `MAT-LIT-20261031-d74803` | literary_text | 作者不詳『クルアーン49:13 相互認識』（0） |
+| `MAT-LIT-20261031-d74804` | literary_text | 作者不詳『サッラッタ経 二本の矢』（0） |
+| `MAT-LIT-20261031-d74805` | literary_text | 作者不詳『アニの死者の書 第30B章』（0） |
 | `MAT-LIT-20261031-6105da` | literary_text | Dioscorides Pedanius『ディオスコリデス『薬物誌』第一巻——名は見出しであり、衝突は項目の内側に残る』（70） |
 | `MAT-LIT-20261031-2cb46f` | literary_text | 作者不詳（メソポタミア）, Maureen Gallery Kovacs (trans.), Andrew George (trans.)『『ギルガメシュ叙事詩』——蓋をされた銅… |
 | `MAT-LIT-20261031-a633dd` | literary_text | 作者不詳（キチェ・マヤ）, Allen J. Christenson (trans.)『『ポポル・ヴフ』——最初の人々の視力を、鏡に息を吹きかけて曇らせる』（1550） |
@@ -3461,6 +3466,7 @@
 | `SESSION-20261031-1a639f` | 2026-12-31 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-4284fe`, `Q-20261027-7742e7` | — | — |
 | `SESSION-20261031-662334` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261031-b2197e` | 2026-12-31 | `Q-002`, `Q-003`, `Q-20261116-6eec38` | — | — |
+| `SESSION-20261031-d74874` | 2027-01-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261031-27f7bf` | 2026-12-31 | `Q-001`, `Q-002`, `Q-003`, `Q-004`, `Q-005`, `Q-20261029-85a285`, `Q-20261031-0f4ef3` | — | `Q-20261031-0f4ef3` |
 | `SESSION-20261031-750b99` | 2026-12-31 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261031-cc61ff` | 2026-12-31 | `Q-20261128-c0c945`, `Q-20261024-d77beb`, `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -3590,7 +3596,7 @@
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
 | `map/30-materials-literary-16.md` | 100 | 194,836 |
-| `map/30-materials-literary-17.md` | 6 | 20,170 |
+| `map/30-materials-literary-17.md` | 11 | 25,656 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3617,7 +3623,7 @@
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,712 |
-| `map/50-sessions-06.md` | 50 | 43,180 |
-| `map/50-sessions-07.md` | 29 | 27,358 |
+| `map/50-sessions-06.md` | 50 | 42,653 |
+| `map/50-sessions-07.md` | 30 | 28,685 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
