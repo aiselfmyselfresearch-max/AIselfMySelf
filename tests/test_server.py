@@ -240,6 +240,45 @@ class ServerTests(unittest.TestCase):
             self.assertIn(fragment, payload["fragments"])
             self.assertGreaterEqual(payload["passion_audit"]["punctuation_prose"]["！/!"], 1)
 
+    def test_concurrent_state_requests_share_one_rebuild(self) -> None:
+        """Four simultaneous readers must not each rebuild the derived panes."""
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = copy_repo(Path(tmp))
+            calls: list[int] = []
+            real_build = serve_viewer._read_payload_with_retries
+
+            def slow_build(*args: object, **kwargs: object) -> dict[str, object]:
+                calls.append(1)
+                time.sleep(2.0)
+                return real_build(*args, **kwargs)  # type: ignore[arg-type]
+
+            with mock.patch.object(serve_viewer, "ROOT", repo), mock.patch.object(
+                serve_viewer, "VIEWER_DIR", repo / "viewer"
+            ), mock.patch.object(
+                serve_viewer, "_read_payload_with_retries", side_effect=slow_build
+            ):
+                server, thread = start_server(repo)
+                try:
+                    port = server.server_address[1]
+                    statuses: list[int] = []
+
+                    def hit() -> None:
+                        status, _headers, _body = get(port, "/api/state", timeout=30.0)
+                        statuses.append(status)
+
+                    readers = [threading.Thread(target=hit) for _ in range(4)]
+                    for reader_thread in readers:
+                        reader_thread.start()
+                    for reader_thread in readers:
+                        reader_thread.join()
+                finally:
+                    server.shutdown()
+                    server.server_close()
+                    thread.join(timeout=5)
+
+            self.assertEqual(statuses, [200, 200, 200, 200])
+            self.assertEqual(len(calls), 1)
+
     def test_unreadable_ledger_returns_json_error(self) -> None:
         server, thread = start_server(ROOT)
         try:
