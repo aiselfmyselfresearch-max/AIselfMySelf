@@ -177,15 +177,17 @@ PY
 
 ## 10. 技術確認
 
-以下は、このノートの記帳を終えた後に実行した結果である（数値は実行時点のもの。errata は `validate_seed.py` の出力に含まれないため、`state/errata.jsonl` と `state/errata.d/*.jsonl` の union を別に数えた）。
+以下は、このノートの記帳と `origin/main` の取り込みを終えた**最終状態**で実行した結果である（数値は実行時点のもの。errata は `validate_seed.py` の出力に含まれないため、`state/errata.jsonl` と `state/errata.d/*.jsonl` の union を別に数えた）。
 
-- `python3 tools/validate_seed.py` — PASS（questions 394、motifs 59、materials 2447、fragments 231、relations 5702、sessions 301、read_log 7147、editorial decisions 101。errata は別数で 89）。
-- `python3 tools/map_build.py` — `READING_MAP.md` を再生成（662,542 B。`map/` は 66 シャード、8,033,114 B、未追跡）。
+- `python3 tools/validate_seed.py` — PASS（questions 394、motifs 59、materials 2449、fragments 231、relations 5702、sessions 302、read_log 7157、editorial decisions 101。errata は別数で 90）。
+- `python3 tools/map_build.py` — `READING_MAP.md` を再生成（663,072 B。`map/` は 66 シャード、8,039,763 B、未追跡）。
 - `python3 tools/inspect_inquiry.py --check-map` — PASS。
-- `python3 tools/read_log_backfill.py --check` — `3724/3724` の (session, context material) 対に `read_log` 行があり、PASS。
+- `python3 tools/read_log_backfill.py --check` — `3728/3728` の (session, context material) 対に `read_log` 行があり、PASS。
 - `python3 tools/size_budget.py --strict` — PASS。
 - `python3 -m unittest discover -s tests` — `Ran 318 tests`、OK。
 
-**シャード統合の保守（同一PR内の別コミット）。** 記帳直後の `size_budget.py --strict` は、`state/sessions.d/`（81 ファイル）と `state/read_log.d/`（81 ファイル）が soft 予算 80 を超えたため FAIL した。そこで `docs/parallel-work.md` §統合シャード（保守）の手順に従い、両ディレクトリの `2026-10-30` の非統合シャードをファイル名順に 4 本ずつ選び、各行を一字も変えずに集めて `started_at`→`session_id`（sessions）／`created_at`→`read_id`（read_log）で安定に並べ替え、`2026-10-30-000000000000.jsonl`（ゼロ12桁は統合済みの目印）に書いて元の 8 ファイルを同じコミットで削除した。対象は sessions 4 ファイル・4 行、read_log 4 ファイル・45 行。移動前後の行の多重集合がバイト単位で等しいことと件数を確認し、既存行の内容・IDは変えていない。統合後は両ディレクトリとも 78 ファイルで、`map_build.py` を再生成したうえで上記6検査を通した。理由は、今回の追記そのものが検査を塞いでいたため（soft 予算の超過は内容の誤りではなくファイル数の問題であり、行を書き換えずに移動する以外の手段がない）。
+**シャード統合の保守（同一PR内の別コミット）。** 記帳直後の `size_budget.py --strict` は、`state/sessions.d/`（81 ファイル）と `state/read_log.d/`（81 ファイル）が soft 予算 80 を超えたため FAIL した。そこで `docs/parallel-work.md` §統合シャード（保守）の手順に従い、両ディレクトリの `2026-10-30` の非統合シャードをファイル名順に 4 本ずつ選び、各行を一字も変えずに集めて `started_at`→`session_id`（sessions）／`created_at`→`read_id`（read_log）で安定に並べ替え、`2026-10-30-000000000000.jsonl`（ゼロ12桁は統合済みの目印）に書いて元の 8 ファイルを同じコミットで削除した。対象は sessions 4 ファイル・4 行、read_log 4 ファイル・45 行。移動前後の行の多重集合がバイト単位で等しいことと件数を確認し、既存行の内容・IDは変えていない。理由は、今回の追記そのものが検査を塞いでいたため（soft 予算の超過は内容の誤りではなくファイル数の問題であり、行を書き換えずに移動する以外の手段がない）。
+
+**並行マージでの解決（記録として残す）。** 公開の直前に `origin/main` が進み（PR #297）、同じ `2026-10-30` の集約を、こちらの 4 本ずつより広い範囲で先に行っていた（sessions.d / read_log.d は 42 本）。競合は 3 か所——生成物 `READING_MAP.md` と、両側が新規に作った `2026-10-30-000000000000.jsonl` 2 本（add/add）——だけで、個別シャードの衝突はなかった。統合シャードは、こちらの 4 行・45 行が main 側のゼロファイルに **ID でも行内容でも完全に含まれる**ことを確認したうえで main 側を採り、`READING_MAP.md` は統合後に再生成した。行を機械的に混ぜたり、どちらかの内容を選別して消したりはしていない。統合の範囲は main 側のほうが広いので、本セッションの保守コミットは履歴には残るが、最終状態では main の集約に吸収されている。
 
 検査の通過は探究の進展の証明ではない。数値は、記録が壊れていないことの確認である。
