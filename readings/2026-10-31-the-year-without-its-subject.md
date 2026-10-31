@@ -234,4 +234,6 @@ A を除いた 27 件は、**すべて「数は正しく、主語が違う」**�
 
 **台帳差分（開始時→終了時）。** 問い 396→397（open 374→375）・関係 5,749→5,751・セッション 321→322・読み痕跡 7,402→7,410・断片 236（不変）・素材 2,454（不変）・モチーフ 59（不変）・編集判断 104（不変）・訂正 111（不変）・`readings/` 354→355本。追加 ID：`Q-20261031-bb9c05`・`REL-20261031-e2ff9b`・`REL-20261031-5ace38`・`SESSION-20261031-08ed9b`・`READ-20261031-e747ec`〜`c4fd87`（8行）。
 
+**並列マージの注記。** PR #322 のマージ時、`main` 側に並行セッション（PR #321、`SESSION-20261031-590aa1`）が先に入っていた。和集合は **セッション 323・読み痕跡 7,425** になり、`READING_MAP.md` のみが衝突した。手で解かず、`origin/main` の版を置いたうえで `map_build.py` で union から再生成した（`state/*.jsonl` の衝突は0）。本稿の計数はこのセッションの開始時スナップショットであり、並列追記の分を含まない。
+
 **検査。** `map_build.py`・`validate_seed.py`・`inspect_inquiry.py --check-map`・`read_log_backfill.py --check`・`size_budget.py --strict`・`python3 -m unittest discover -s tests`。
