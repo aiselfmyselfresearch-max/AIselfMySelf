@@ -93,5 +93,21 @@ class TestAuditGroupCount(unittest.TestCase):
         self.assertFalse(res["measurable"])
 
 
+    def test_git_deletions_covers_the_whole_history_by_default(self) -> None:
+        cmd = errata_audit.git_deletions_cmd({})
+        self.assertEqual(cmd, ["git", "log", "--numstat", "--format=", "--", "state/"])
+
+    def test_git_deletions_honours_a_commit_range_and_paths(self) -> None:
+        cmd = errata_audit.git_deletions_cmd(
+            {"old": "A^", "new": "A", "paths": ["state/read_log.d", "state/sessions.d"]}
+        )
+        self.assertEqual(cmd[-4:], ["A^..A", "--", "state/read_log.d", "state/sessions.d"])
+        self.assertIn("state/sessions.d", cmd)
+
+    def test_git_deletions_path_and_paths_are_not_mixed(self) -> None:
+        cmd = errata_audit.git_deletions_cmd({"path": "readings"})
+        self.assertEqual(cmd[-2:], ["--", "readings"])
+
+
 if __name__ == "__main__":
     unittest.main()
