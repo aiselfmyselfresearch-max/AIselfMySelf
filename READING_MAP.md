@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：398 件（初期シード 5 件 ＋ 派生 393 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2474 件（research_excerpt 800 ／ literary_text 1606 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2479 件（research_excerpt 800 ／ literary_text 1611 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：236 編（selected 86 ／ draft 150）
-- **解釈的関係（Relations）**：5769 件
-- **探究セッション（Sessions）**：329 回
+- **解釈的関係（Relations）**：5773 件
+- **探究セッション（Sessions）**：330 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -722,7 +722,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2474 件・詳細は map/3*.md）
+## 4. 対話素材（2479 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3172,6 +3172,11 @@
 | `MAT-LIT-20261030-4f468a` | literary_text | Hippocrates, Émile Littré (ed.)『ヒポクラテス『関節について』——関節を戻せば死ぬ。戻さなければ、恥ずかしい跛行で生きる』（1961） |
 | `MAT-LIT-20261030-c8363a` | literary_text | Heinrich von Kleist『ハインリヒ・フォン・クライスト「人形芝居論」（1810）——気取らない人形、重心で踊る操り手、鏡を見た若者』（1810） |
 | `MAT-LIT-20261030-075f2f` | literary_text | Augustine of Hippo, Pius Knöll (ed.)『アウグスティヌス『訂正録』序——すでに人の手に渡した本は、呼び戻して直せない』（1902） |
+| `MAT-LIT-20261031-642728` | literary_text | 作者不詳（クルアーン）, Marmaduke Pickthall (trans.)『『クルアーン』50章4・16–18節——頚動脈より近い者と、発話の前に坐る二人の記録者』（63… |
+| `MAT-LIT-20261031-08b591` | literary_text | 作者不詳（ヨブ記に帰される）『『ヨブ記』38章1–7・21節／40章1–5節（KJV）——「わたしが地の基を据えたとき、あなたはどこにいたか」』（-400） |
+| `MAT-LIT-20261031-d17e8a` | literary_text | 作者不詳（エチオピア語エノク書）, R. H. Charles (trans.)『『エノク書』12–15章——義の書記官が、代わりに書いた嘆願と、反転した仲介』（-200） |
+| `MAT-LIT-20261031-74dd77` | literary_text | 老子, 王弼 (注)『『老子』（王弼本）第一章・第二十五章——名づけられないものに、字（あざな）を与える』（-300） |
+| `MAT-LIT-20261031-3acafb` | literary_text | 作者不詳（コヘレトに帰される）『『伝道の書』12章9–14節（KJV）——書物を作ることに終わりはない、という結び』（-250） |
 | `MAT-LIT-20261031-8cb11a` | literary_text | 世阿弥『世阿弥『風姿花伝』別紙口伝——片仮名で書かれた「秘すれば花」（吉田東伍校注『世阿彌十六部集』1909）』（1418） |
 | `MAT-LIT-20261031-3a1ba4` | literary_text | 世阿弥（談話）, 元能（筆録・伝）『世阿弥『世子六十以後申楽談儀』——師の口から出た語を、別の手が書き留める』（1430） |
 | `MAT-LIT-20261031-ec6caf` | literary_text | 世阿弥『世阿弥『却来華（世子七十以後口傳）』——伝える相手がいなくなった後に、紙へ載せる』（1430） |
@@ -3466,6 +3471,7 @@
 | `SESSION-20261031-cc61ff` | 2026-12-31 | `Q-20261128-c0c945`, `Q-20261024-d77beb`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261031-24aa7a` | 2026-12-31 | `Q-20261024-4e210d`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261031-59ad48` | 2026-12-31 | `Q-20261130-25687e`, `Q-20261024-a26f22`, `Q-20261202-ac5dd8`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261031-cc634d` | — |
+| `SESSION-20261031-904d7d` | 2026-10-31 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -3535,16 +3541,16 @@
 | `SESSION-20261029-77b681` | 2026-12-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-0a3833`, `Q-20261024-cfd57d` | `FRAG-20261029-30debd` | — |
 | `SESSION-20270101-c78c01` | 2027-01-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261204-c7aa25`, `Q-20261203-aa57dd`, `Q-20261127-625ad8`, `Q-20270101-f2781c` | — | `Q-20270101-f2781c` |
 
-## 6. 解釈的関係（5769 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5773 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 757 |
+| 対照 (contrast) | 759 |
 | 共鳴 (echo) | 1461 |
-| 切断・割り込み (interrupts) | 192 |
+| 切断・割り込み (interrupts) | 193 |
 | 未解決のまま開く (leaves_open) | 854 |
 | 比喩的共鳴 (metaphorically_resonates) | 137 |
-| 枠組みの組み替え (reframes) | 492 |
+| 枠組みの組み替え (reframes) | 493 |
 | 応答 (responds_to) | 1606 |
 | 変奏・変形 (transforms) | 270 |
 
@@ -3589,8 +3595,8 @@
 | `map/30-materials-literary-13.md` | 100 | 146,602 |
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
-| `map/30-materials-literary-16.md` | 100 | 194,836 |
-| `map/30-materials-literary-17.md` | 6 | 20,170 |
+| `map/30-materials-literary-16.md` | 100 | 195,533 |
+| `map/30-materials-literary-17.md` | 11 | 35,367 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3609,15 +3615,15 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 187,289 |
-| `map/40-relations-11.md` | 500 | 161,574 |
-| `map/40-relations-12.md` | 269 | 91,395 |
+| `map/40-relations-10.md` | 500 | 187,246 |
+| `map/40-relations-11.md` | 500 | 162,024 |
+| `map/40-relations-12.md` | 273 | 92,649 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,712 |
-| `map/50-sessions-06.md` | 50 | 43,180 |
-| `map/50-sessions-07.md` | 29 | 27,358 |
+| `map/50-sessions-06.md` | 50 | 42,788 |
+| `map/50-sessions-07.md` | 30 | 28,685 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
