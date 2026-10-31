@@ -3179,7 +3179,7 @@
 | `MAT-LIT-20261031-0d2765` | literary_text | ヴャーサ（伝承上の帰属。複層的な叙事詩本文）『『バガヴァッド・ギーター』第2章22節——身体を着替える「身を持つ者」』（-200） |
 | `MAT-LIT-20261031-287e9e` | literary_text | パーリ仏典（ブッダの説示として伝承。編集者不詳）『『無我相経』相応部 SN 22.59——五蘊のどれも所有者ではない』（-400） |
 | `MAT-LIT-20261031-6f0464` | literary_text | キチェ・マヤの伝承・書記の系譜（本文の編者は特定されない）『『ポポル・ヴフ／ポポル・ウフ』——トウモロコシから作られ、視界を限られる人間』（1554） |
-| `MAT-LIT-20261031-736bc2` | literary_text | バビロニアの宗教・書記伝承（編者不詳）『『エヌーマ・エリシュ』第VI書板——神々の労働を負うために作られる人間』（-1100） |
+| `MAT-LIT-20261031-736bc2` | literary_text | 古ノルド詩の伝承（作者不詳）『『ハーヴァマール』76–77節——死後に残る名は、誰のものか』（-1000） |
 | `MAT-LIT-20261031-81c984` | literary_text | アッカド語の詩人・書記伝承（標準版の編者は特定されない）『『ギルガメシュ叙事詩』第XI書板——不死を得ず、城壁へ帰る王』（-1200） |
 | `MAT-LIT-20261031-8c2ca5` | literary_text | 世阿弥『世阿弥『至花道書』——客は二つある（見所・離見の見・體と用）』（1420） |
 | `MAT-LIT-20261031-6105da` | literary_text | Dioscorides Pedanius『ディオスコリデス『薬物誌』第一巻——名は見出しであり、衝突は項目の内側に残る』（70） |
@@ -3523,10 +3523,10 @@
 |---|---:|
 | 対照 (contrast) | 756 |
 | 共鳴 (echo) | 1459 |
-| 切断・割り込み (interrupts) | 193 |
+| 切断・割り込み (interrupts) | 192 |
 | 未解決のまま開く (leaves_open) | 854 |
 | 比喩的共鳴 (metaphorically_resonates) | 137 |
-| 枠組みの組み替え (reframes) | 484 |
+| 枠組みの組み替え (reframes) | 485 |
 | 応答 (responds_to) | 1607 |
 | 変奏・変形 (transforms) | 270 |
 
@@ -3571,7 +3571,7 @@
 | `map/30-materials-literary-13.md` | 100 | 146,602 |
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
-| `map/30-materials-literary-16.md` | 91 | 178,004 |
+| `map/30-materials-literary-16.md` | 91 | 178,196 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3590,7 +3590,7 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 188,149 |
+| `map/40-relations-10.md` | 500 | 188,171 |
 | `map/40-relations-11.md` | 500 | 161,175 |
 | `map/40-relations-12.md` | 260 | 88,371 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
@@ -3598,7 +3598,7 @@
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,603 |
-| `map/50-sessions-06.md` | 50 | 43,888 |
+| `map/50-sessions-06.md` | 50 | 43,864 |
 | `map/50-sessions-07.md` | 26 | 24,683 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
