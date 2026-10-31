@@ -397,8 +397,8 @@ grep -ril "経典" readings/*.md | wc -l
 
 ```text
 $ python3 tools/validate_seed.py
-PASS: literary inquiry seed valid (questions=398, motifs=59, materials=2464,
-      fragments=236, relations=5764, sessions=327, read_log=7467,
+PASS: literary inquiry seed valid (questions=398, motifs=59, materials=2469,
+      fragments=236, relations=5764, sessions=328, read_log=7478,
       editorial_decisions=104)
 
 $ python3 tools/inspect_inquiry.py --check-map
@@ -411,7 +411,7 @@ $ python3 tools/size_budget.py --strict
 PASS: all size budgets are within soft limits
 
 $ python3 -m unittest discover -s tests
-Ran 340 tests in 62.867s
+Ran 340 tests in 61.457s
 OK
 ```
 
