@@ -51,6 +51,11 @@ class MintTests(unittest.TestCase):
             r"^MAT-LIT-20261021-[0-9a-f]{4}$",
         )
 
+    def test_project_trace_prefix_is_available(self) -> None:
+        minted = new_id.mint("MAT-TRC", day="20261031")
+        self.assertTrue(minted.startswith("MAT-TRC-20261031-"))
+        self.assertEqual(len(minted.split("-")[-1]), 6)
+
     def test_taken_ids_are_skipped(self) -> None:
         taken = {f"FRAG-20261021-{index:06x}" for index in range(5000)}
         value = new_id.mint("FRAG", day="20261021", taken=taken)

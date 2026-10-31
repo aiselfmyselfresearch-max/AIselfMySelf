@@ -35,6 +35,8 @@ PREFIXES: dict[str, tuple[str, str]] = {
     "MOTIF": ("motifs.jsonl", "motif_id"),
     "MAT": ("materials.jsonl", "material_id"),
     "MAT-LIT": ("materials.jsonl", "material_id"),
+    "MAT-TRC": ("materials.jsonl", "material_id"),
+    "MAT-EVD": ("materials.jsonl", "material_id"),
     "FRAG": ("fragments.jsonl", "fragment_id"),
     "REL": ("relations.jsonl", "relation_id"),
     "SESSION": ("sessions.jsonl", "session_id"),
