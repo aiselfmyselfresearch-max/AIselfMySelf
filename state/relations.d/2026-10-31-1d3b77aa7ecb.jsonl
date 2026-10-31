@@ -1,0 +1,5 @@
+{"created_at": "2026-10-31", "left": {"id": "MAT-LIT-20261031-cea6b0", "type": "material"}, "note": "存在／非存在の否定から最後の知の留保へ。", "relation_id": "REL-20261031-89d980", "relation_type": "reframes", "right": {"id": "Q-002", "type": "question"}}
+{"created_at": "2026-10-31", "left": {"id": "MAT-LIT-20261031-fa4f0a", "type": "material"}, "note": "車・御者・乗客の分離と解脱への道。", "relation_id": "REL-20261031-431ff8", "relation_type": "reframes", "right": {"id": "Q-002", "type": "question"}}
+{"created_at": "2026-10-31", "left": {"id": "MAT-LIT-20261031-5962bd", "type": "material"}, "note": "自己を守ること、教える前の行為の点検。", "relation_id": "REL-20261031-f9834c", "relation_type": "reframes", "right": {"id": "Q-002", "type": "question"}}
+{"created_at": "2026-10-31", "left": {"id": "MAT-LIT-20261031-e8a0c5", "type": "material"}, "note": "否定申告の呼びかけと水・幼児・王への義務。", "relation_id": "REL-20261031-e16eb6", "relation_type": "reframes", "right": {"id": "Q-001", "type": "question"}}
+{"created_at": "2026-10-31", "left": {"id": "MAT-LIT-20261031-75d671", "type": "material"}, "note": "神の解放と人間への奉仕の移転。", "relation_id": "REL-20261031-d76560", "relation_type": "reframes", "right": {"id": "Q-001", "type": "question"}}
