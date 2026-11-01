@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：402 件（初期シード 5 件 ＋ 派生 397 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2519 件（research_excerpt 800 ／ literary_text 1651 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2524 件（research_excerpt 800 ／ literary_text 1656 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：236 編（selected 86 ／ draft 150）
-- **解釈的関係（Relations）**：5799 件
-- **探究セッション（Sessions）**：338 回
+- **解釈的関係（Relations）**：5809 件
+- **探究セッション（Sessions）**：340 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -726,7 +726,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2519 件・詳細は map/3*.md）
+## 4. 対話素材（2524 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3224,6 +3224,11 @@
 | `MAT-LIT-20261101-4772e6` | literary_text | ファリードゥッディーン・アッタール, Dick Davis & Afkham Darbandi (trans.)『アッタール『鳥の会議（マンティク・ウッ・タイール）』——集まった… |
 | `MAT-LIT-20261101-cc374c` | literary_text | 維摩詰所説経（姚秦三藏鳩摩羅什訳、大正新脩大藏經 第14巻 No.475）『『維摩詰所説経』見阿閦佛品第十二・入不二法門品第九（鳩摩羅什訳）——「汝、何れの処にか没して来りて此に… |
 | `MAT-LIT-20261101-3c844f` | literary_text | 作者不詳（ナグ・ハマディ文書 II,1／III,1／IV,1、ベルリン・コーデックス 8502,2）, Frederik Wisse (trans.)『『ヨハネのアポクリュフォン… |
+| `MAT-LIT-20261101-53144e` | literary_text | Homer, Samuel Butler (trans.)『『オデュッセイア』第11歌——母は息子を知り、なお抱けない』（1900） |
+| `MAT-LIT-20261101-2dd803` | literary_text | キチェ・マヤの伝承（作者不詳）, Adrián Recinos (trans.)『『ポポル・ヴフ』第1部第2–3章——木の人々は話し、器物は扱いを覚えている』（1947） |
+| `MAT-LIT-20261101-8985cf` | literary_text | 仏教伝承の対話篇（作者不詳）, T. W. Rhys Davids (trans.)『『ミリンダ王の問い』第2編第1章§12——念は在庫係であり、顧問である』（1890） |
+| `MAT-LIT-20261101-a95994` | literary_text | クルアーン（イスラームの啓典）, Marmaduke Pickthall (trans.)『『クルアーン』18章9–26節——洞窟の三百年と、一日かそれ以下』（1930） |
+| `MAT-LIT-20261101-e3ed69` | literary_text | ヘブライ聖書の預言書（伝承・編者不詳）, King James Version翻訳委員会『『マラキ書』3:5, 13–18、4:4–6——記憶の書の前に、互いに語る声』（1611） |
 | `MAT-LIT-20261101-695022` | literary_text | 作者不詳（中国・戦国末〜漢代）, 郭璞（注）『『山海経』南山経——像を失った caption と、五徳を書かれた鳥』（-300） |
 | `MAT-LIT-20261101-982366` | literary_text | 孔子（伝）『『易経』繋辞上伝——書は言を尽くさず、言は意を尽くさず、ゆえに象を立てる』（-300） |
 | `MAT-LIT-20261101-b9ec2d` | literary_text | 作者不詳（ウェールズ）, Lady Charlotte Guest (trans.)『『マビノギオン』ブランウェン——甦って話せない者と、八十年語る首』（1849） |
@@ -3519,8 +3524,10 @@
 | `SESSION-20261031-59ad48` | 2026-12-31 | `Q-20261130-25687e`, `Q-20261024-a26f22`, `Q-20261202-ac5dd8`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261031-cc634d` | — |
 | `SESSION-20261031-904d7d` | 2026-10-31 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-475225` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261101-4f8af7` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-c7fc74` | 2027-01-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-6c66f3` | — | `Q-20261101-6c66f3` |
 | `SESSION-20270102-c0aa1e` | 2027-01-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261101-795dd5` | 2027-01-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6`, `Q-20261101-70e889` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -3593,18 +3600,18 @@
 | `SESSION-20270103-d6690c` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6` | — | `Q-20270103-7b1ce6` |
 | `SESSION-20261101-81dab1` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-70e889` |
 
-## 6. 解釈的関係（5799 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5809 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 767 |
+| 対照 (contrast) | 770 |
 | 共鳴 (echo) | 1469 |
 | 切断・割り込み (interrupts) | 195 |
-| 未解決のまま開く (leaves_open) | 857 |
+| 未解決のまま開く (leaves_open) | 859 |
 | 比喩的共鳴 (metaphorically_resonates) | 137 |
-| 枠組みの組み替え (reframes) | 497 |
+| 枠組みの組み替え (reframes) | 501 |
 | 応答 (responds_to) | 1607 |
-| 変奏・変形 (transforms) | 270 |
+| 変奏・変形 (transforms) | 271 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -3649,7 +3656,7 @@
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
 | `map/30-materials-literary-16.md` | 100 | 198,531 |
-| `map/30-materials-literary-17.md` | 51 | 146,062 |
+| `map/30-materials-literary-17.md` | 56 | 158,481 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3668,15 +3675,15 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 186,970 |
-| `map/40-relations-11.md` | 500 | 162,588 |
-| `map/40-relations-12.md` | 299 | 103,063 |
+| `map/40-relations-10.md` | 500 | 185,933 |
+| `map/40-relations-11.md` | 500 | 163,434 |
+| `map/40-relations-12.md` | 309 | 106,229 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,665 |
-| `map/50-sessions-06.md` | 50 | 42,575 |
-| `map/50-sessions-07.md` | 38 | 36,475 |
+| `map/50-sessions-06.md` | 50 | 42,959 |
+| `map/50-sessions-07.md` | 40 | 38,128 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
