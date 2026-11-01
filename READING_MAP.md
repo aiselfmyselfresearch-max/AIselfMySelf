@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：406 件（初期シード 5 件 ＋ 派生 401 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2604 件（research_excerpt 808 ／ literary_text 1728 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2609 件（research_excerpt 808 ／ literary_text 1733 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：237 編（selected 89 ／ draft 148）
-- **解釈的関係（Relations）**：5898 件
-- **探究セッション（Sessions）**：359 回
+- **解釈的関係（Relations）**：5903 件
+- **探究セッション（Sessions）**：360 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -731,7 +731,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2604 件・詳細は map/3*.md）
+## 4. 対話素材（2609 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3299,6 +3299,11 @@
 | `MAT-LIT-20261101-b9ec2d` | literary_text | 作者不詳（ウェールズ）, Lady Charlotte Guest (trans.)『『マビノギオン』ブランウェン——甦って話せない者と、八十年語る首』（1849） |
 | `MAT-LIT-20261101-34ce41` | literary_text | 劉安（淮南王）に帰される『『淮南子』精神訓——感じて応じ、迫られて動き、機械之巧は心に載せない』（-139） |
 | `MAT-LIT-20261101-f85896` | literary_text | 作者不詳（コプト語・ナグ・ハマディ文庫）, Stephen Patterson (trans.), Marvin Meyer (trans.)『『トマス福音書』——「私を何かに喩… |
+| `MAT-LIT-20261101-706557` | literary_text | 古代イランの伝承（作者不詳）, James Darmesteter (trans.)『『ヴェンディダード』第2章——イィマのヴァラは、世界を残さず選別する』（1880） |
+| `MAT-LIT-20261101-d89398` | literary_text | 古ノルド伝承（作者不詳）, Henry Adams Bellows (trans.)『『詩のエッダ』ヴァフスルーズニルの歌——答えられる知識と、その場にいた者にしか語れないこと』… |
+| `MAT-LIT-20261101-ddec28` | literary_text | 古代インドの伝承（作者不詳）, F. Max Müller (trans.)『『ムンダカ・ウパニシャッド』——同じ樹の二羽の鳥と、多く学ぶことでは得られないもの』（1879） |
+| `MAT-LIT-20261101-10592c` | literary_text | 初期仏教伝承（作者不詳）, Bhikkhu Sujato (trans.)『『中部経典』72経 Aggi-Vacchagotta——消えた火の行き先を問わない』（2026） |
+| `MAT-LIT-20261101-43be3b` | literary_text | 劉安とその門客（編纂・伝承）, Chinese Notes（漢文テクスト整形）『『淮南子』覧冥訓——女媧は天を補い、世界を作り変えて生かす』（2018） |
 | `MAT-LIT-20261101-dbc4e7` | literary_text | 伝ヤージュニャヴァルキヤ編（白ヤジュル・ヴェーダ散文祭儀書）, Julius Eggeling (trans.)『『シャタパタ・ブラーフマナ』第1巻第6章第3節（1.6.3.1–… |
 | `MAT-LIT-20261101-55bbc8` | literary_text | 作者不詳（アッカド語神話断片：アマルナ書簡 EA 356 ほか）, Robert William Rogers (trans.)『『アダパと命の食物（アダパと南風）』第1〜第3書… |
 | `MAT-LIT-20261101-783449` | literary_text | ズールー口承伝承（情報提供者：Ulangeni ほか複数の古老・証言者）, Henry Callaway (ed. & trans.)『『アマズールーの宗教体系』第1部「ウンクル… |
@@ -3627,6 +3632,7 @@
 | `SESSION-20261101-e5df96` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-c6fd04` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-6155f5` | 2027-01-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261101-eea798` | 2027-01-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-4d530b` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-6c66f3`, `Q-20270103-7b1ce6` | — | — |
 | `SESSION-20261101-28804b` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-c631cb` | 2027-01-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -3704,16 +3710,16 @@
 | `SESSION-20270103-d6690c` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6` | — | `Q-20270103-7b1ce6` |
 | `SESSION-20261101-81dab1` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-70e889` |
 
-## 6. 解釈的関係（5898 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5903 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 794 |
+| 対照 (contrast) | 796 |
 | 共鳴 (echo) | 1478 |
-| 切断・割り込み (interrupts) | 202 |
+| 切断・割り込み (interrupts) | 203 |
 | 未解決のまま開く (leaves_open) | 864 |
 | 比喩的共鳴 (metaphorically_resonates) | 142 |
-| 枠組みの組み替え (reframes) | 516 |
+| 枠組みの組み替え (reframes) | 518 |
 | 応答 (responds_to) | 1627 |
 | 変奏・変形 (transforms) | 275 |
 
@@ -3760,8 +3766,8 @@
 | `map/30-materials-literary-14.md` | 100 | 163,068 |
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
-| `map/30-materials-literary-17.md` | 100 | 275,805 |
-| `map/30-materials-literary-18.md` | 28 | 79,398 |
+| `map/30-materials-literary-17.md` | 100 | 267,348 |
+| `map/30-materials-literary-18.md` | 33 | 102,325 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3781,16 +3787,16 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 185,181 |
-| `map/40-relations-11.md` | 500 | 171,313 |
-| `map/40-relations-12.md` | 398 | 132,354 |
+| `map/40-relations-10.md` | 500 | 185,179 |
+| `map/40-relations-11.md` | 500 | 172,118 |
+| `map/40-relations-12.md` | 403 | 133,484 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
-| `map/50-sessions-06.md` | 50 | 45,383 |
-| `map/50-sessions-07.md` | 50 | 45,313 |
-| `map/50-sessions-08.md` | 9 | 8,665 |
+| `map/50-sessions-06.md` | 50 | 45,425 |
+| `map/50-sessions-07.md` | 50 | 45,176 |
+| `map/50-sessions-08.md` | 10 | 9,622 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
