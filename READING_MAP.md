@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：403 件（初期シード 5 件 ＋ 派生 398 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2529 件（research_excerpt 800 ／ literary_text 1661 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2534 件（research_excerpt 800 ／ literary_text 1666 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：236 編（selected 86 ／ draft 150）
-- **解釈的関係（Relations）**：5816 件
-- **探究セッション（Sessions）**：342 回
+- **解釈的関係（Relations）**：5821 件
+- **探究セッション（Sessions）**：343 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -727,7 +727,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2529 件・詳細は map/3*.md）
+## 4. 対話素材（2534 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3225,6 +3225,11 @@
 | `MAT-LIT-20261101-4772e6` | literary_text | ファリードゥッディーン・アッタール, Dick Davis & Afkham Darbandi (trans.)『アッタール『鳥の会議（マンティク・ウッ・タイール）』——集まった… |
 | `MAT-LIT-20261101-cc374c` | literary_text | 維摩詰所説経（姚秦三藏鳩摩羅什訳、大正新脩大藏經 第14巻 No.475）『『維摩詰所説経』見阿閦佛品第十二・入不二法門品第九（鳩摩羅什訳）——「汝、何れの処にか没して来りて此に… |
 | `MAT-LIT-20261101-3c844f` | literary_text | 作者不詳（ナグ・ハマディ文書 II,1／III,1／IV,1、ベルリン・コーデックス 8502,2）, Frederik Wisse (trans.)『『ヨハネのアポクリュフォン… |
+| `MAT-LIT-20261101-e8e412` | literary_text | 作者不詳（クルアーン）, Marmaduke Pickthall (trans.)『『クルアーン』68章1–2節——ペンと、書かれるものに誓う』（1930） |
+| `MAT-LIT-20261101-e6bedd` | literary_text | 預言者イザヤ（伝承）, KJV 訳者不詳（1611）『イザヤ書6章——顔を覆う者と、「わたしを遣わしてください」』（1611） |
+| `MAT-LIT-20261101-62f0fa` | literary_text | 伝承／編者不詳（ウパニシャッド）, F. Max Müller（英訳）『ケーノ・ウパニシャッド第一khanda 1–2——誰の命じるままに心は走るか』（1879） |
+| `MAT-LIT-20261101-733465` | literary_text | Elias Lönnrot（編纂）, John Martin Crawford（英訳）『カレヴァーラ第50歌——去る者は歌を遺す』（1888） |
+| `MAT-LIT-20261101-6b738e` | literary_text | 伝承／編者不詳（ヨハネによる福音書）, KJV 訳者不詳（1611）『ヨハネによる福音書11章——名で呼ばれ、縛られたまま出る者』（1611） |
 | `MAT-LIT-20261101-53144e` | literary_text | Homer, Samuel Butler (trans.)『『オデュッセイア』第11歌——母は息子を知り、なお抱けない』（1900） |
 | `MAT-LIT-20261101-2dd803` | literary_text | キチェ・マヤの伝承（作者不詳）, Adrián Recinos (trans.)『『ポポル・ヴフ』第1部第2–3章——木の人々は話し、器物は扱いを覚えている』（1947） |
 | `MAT-LIT-20261101-8985cf` | literary_text | 仏教伝承の対話篇（作者不詳）, T. W. Rhys Davids (trans.)『『ミリンダ王の問い』第2編第1章§12——念は在庫係であり、顧問である』（1890） |
@@ -3531,6 +3536,7 @@
 | `SESSION-20261031-904d7d` | 2026-10-31 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-475225` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-4f8af7` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261101-5d03db` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-e5df96` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-c7fc74` | 2027-01-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-6c66f3` | — | `Q-20261101-6c66f3` |
 | `SESSION-20270102-c0aa1e` | 2027-01-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -3608,17 +3614,17 @@
 | `SESSION-20270103-d6690c` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6` | — | `Q-20270103-7b1ce6` |
 | `SESSION-20261101-81dab1` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-70e889` |
 
-## 6. 解釈的関係（5816 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5821 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 773 |
-| 共鳴 (echo) | 1470 |
+| 共鳴 (echo) | 1472 |
 | 切断・割り込み (interrupts) | 195 |
-| 未解決のまま開く (leaves_open) | 859 |
-| 比喩的共鳴 (metaphorically_resonates) | 137 |
+| 未解決のまま開く (leaves_open) | 860 |
+| 比喩的共鳴 (metaphorically_resonates) | 138 |
 | 枠組みの組み替え (reframes) | 503 |
-| 応答 (responds_to) | 1608 |
+| 応答 (responds_to) | 1609 |
 | 変奏・変形 (transforms) | 271 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3664,7 +3670,7 @@
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
 | `map/30-materials-literary-16.md` | 100 | 198,531 |
-| `map/30-materials-literary-17.md` | 61 | 178,562 |
+| `map/30-materials-literary-17.md` | 66 | 190,608 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3683,15 +3689,15 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 186,675 |
-| `map/40-relations-11.md` | 500 | 163,506 |
-| `map/40-relations-12.md` | 316 | 108,402 |
+| `map/40-relations-10.md` | 500 | 186,631 |
+| `map/40-relations-11.md` | 500 | 163,522 |
+| `map/40-relations-12.md` | 321 | 110,029 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,665 |
-| `map/50-sessions-06.md` | 50 | 43,319 |
-| `map/50-sessions-07.md` | 42 | 39,718 |
+| `map/50-sessions-06.md` | 50 | 43,565 |
+| `map/50-sessions-07.md` | 43 | 40,442 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
