@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：407 件（初期シード 5 件 ＋ 派生 402 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2619 件（research_excerpt 808 ／ literary_text 1743 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2624 件（research_excerpt 808 ／ literary_text 1748 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：237 編（selected 89 ／ draft 148）
 - **解釈的関係（Relations）**：5903 件
-- **探究セッション（Sessions）**：363 回
+- **探究セッション（Sessions）**：364 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -732,7 +732,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2619 件・詳細は map/3*.md）
+## 4. 対話素材（2624 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3275,6 +3275,11 @@
 | `MAT-LIT-20261101-7d7087` | literary_text | 鳩摩羅什（訳）『金剛般若波羅蜜経——一切有為法は夢幻泡影、我相・人相・衆生相・寿者相を離れよ』（402） |
 | `MAT-LIT-20261101-60bc6b` | literary_text | 稗田阿礼（口述）, 太安万侶（書記）『『古事記』上巻——イザナギ、黄泉の国からの逃還、禊による三貴子の誕生』（712） |
 | `MAT-LIT-20261101-c5b553` | literary_text | 無名（10世紀頃の成立と推定；匿名の冰島詩）『『詩のエッダ』ヴォルスペー——予言者女の記憶、神々の黄昏、草の中の黄金の碁盤石』（1000） |
+| `MAT-LIT-20261101-5f0bf9` | literary_text | 作者不詳（古代イラン・ゾロアスター教アヴェスター経典伝承）, James Darmesteter (trans., 1883)『アヴェスター『ハードフト・ナスク（ヤシュト第22章… |
+| `MAT-LIT-20261101-6bd985` | literary_text | チューラパンタカ（Cūḷapanthaka／周利槃特、パーリ経蔵小部『長老偈』伝承）, Bhikkhu Sujato (trans.), Jessica Walton (tran… |
+| `MAT-LIT-20261101-c09da4` | literary_text | イスラーム聖典『クルアーン』（ウスマーン標準本文）, Mohammed Marmaduke Pickthall (trans., 1930), A. J. Arberry (tr… |
+| `MAT-LIT-20261101-65a6ee` | literary_text | ムルシリ二世（Muršili II、ヒッタイト新王国期大王、前14世紀後半）および王宮書記, Sara E. Kimball, Winfred P. Lehmann & Jona… |
+| `MAT-LIT-20261101-6fe4ad` | literary_text | ディネ（ナバホ）口承儀礼伝承（Hatáli Natlói, Hatáli Nĕz, Torlino ほか口述・儀礼実演）, Washington Matthews (collec… |
 | `MAT-LIT-20261101-1d6bf8` | literary_text | （ウガリト粘土板、筆写者はイリミルクとされる）『『バアルとモート』KTU 1.5——喉しか持たない死と、不在の前に隠された代わりの世継ぎ』（-1300） |
 | `MAT-LIT-20261101-bee130` | literary_text | （ナワ語の伝承、コデックス・チマルポポカ所収）『『太陽の伝説（Leyenda de los Soles）』——砕けた骨を挽いて作られた、大きさの違う人間』（1558） |
 | `MAT-LIT-20261101-39890f` | literary_text | グル・ナーナク以下十代のグルと賛美者たち『『グル・グラント・サーヒブ』アング982——「言葉がグルであり、グルが言葉である」と、書物に移された教導権』（1604） |
@@ -3648,6 +3653,7 @@
 | `SESSION-20261101-28804b` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-c631cb` | 2027-01-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-835fff` | 2027-01-08 | `Q-003` | — | — |
+| `SESSION-20261101-d2d71c` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-c19dbd`, `Q-20261101-2ec50c` | — | — |
 | `SESSION-20261101-b350ac` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-2ec50c` |
 | `SESSION-20261101-ec0998` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-6786fd` | 2027-01-07 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-ec1314` | — | `Q-20261101-ec1314` |
@@ -3780,8 +3786,8 @@
 | `map/30-materials-literary-14.md` | 100 | 163,068 |
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
-| `map/30-materials-literary-17.md` | 100 | 257,671 |
-| `map/30-materials-literary-18.md` | 43 | 139,926 |
+| `map/30-materials-literary-17.md` | 100 | 264,576 |
+| `map/30-materials-literary-18.md` | 48 | 155,832 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3809,8 +3815,8 @@
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
-| `map/50-sessions-06.md` | 50 | 45,430 |
-| `map/50-sessions-07.md` | 50 | 45,082 |
-| `map/50-sessions-08.md` | 13 | 12,210 |
+| `map/50-sessions-06.md` | 50 | 44,909 |
+| `map/50-sessions-07.md` | 50 | 45,422 |
+| `map/50-sessions-08.md` | 14 | 13,283 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
