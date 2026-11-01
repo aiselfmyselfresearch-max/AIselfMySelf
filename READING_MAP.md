@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：405 件（初期シード 5 件 ＋ 派生 400 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2567 件（research_excerpt 808 ／ literary_text 1691 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2572 件（research_excerpt 808 ／ literary_text 1696 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：237 編（selected 89 ／ draft 148）
-- **解釈的関係（Relations）**：5862 件
-- **探究セッション（Sessions）**：351 回
+- **解釈的関係（Relations）**：5869 件
+- **探究セッション（Sessions）**：352 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -730,7 +730,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2567 件・詳細は map/3*.md）
+## 4. 対話素材（2572 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3228,6 +3228,11 @@
 | `MAT-LIT-20261101-e10c09` | literary_text | Elias Lönnrot (comp.), John Martin Crawford (trans.)『『カレワラ』第14歌末尾・第15歌――命は戻るが、言葉が欠けている』（1… |
 | `MAT-LIT-20261101-afba19` | literary_text | 古ノルド詩の伝承（作者不詳）, Henry Adams Bellows (trans.)『『詩のエッダ』グリムニールの歌――一杯の後に始まる名の目録』（1936） |
 | `MAT-LIT-20261101-6018b9` | literary_text | E. A. Wallis Budge (trans.)『ラーとイシスの神話――業績の目録は秘密の名ではなく、開示は強要でもありうる』（1912） |
+| `MAT-LIT-20261101-f4806f` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『チャーンドーギヤ・ウパニシャッド VIII.7–12——インドラは満足を持ち帰らず、三度戻る』（187… |
+| `MAT-LIT-20261101-0b3fa1` | literary_text | 太安万侶（編纂）, Basil Hall Chamberlain (trans.)『『古事記』上巻・因幡の白兎——同じ「治せ」でも、塩水と真水は逆の結果になる』（1919） |
+| `MAT-LIT-20261101-8abf16` | literary_text | 作者不詳（リグ・ヴェーダ）, Ralph T. H. Griffith (trans.)『リグ・ヴェーダ 10.10 ヤマとヤミー——同じ胎から生まれたことは、同意を意味しない』… |
+| `MAT-LIT-20261101-abb37a` | literary_text | クルアーン（アラビア語本文）, Marmaduke Pickthall (trans.)『クルアーン 80章1–16節——注意を逸らした者へ向けられる戒めと、尊ばれる葉の記録』（… |
+| `MAT-LIT-20261101-5b75de` | literary_text | マオリ伝承（複数の語り手）, George Grey (comp. and trans.)『マウイが太陽を捕らえる（Grey編訳『ポリネシア神話』）——延ばされた昼と、編集し直さ… |
 | `MAT-LIT-20261101-f36686` | literary_text | 作者不詳（ユダヤ神秘主義の初期テクスト）, W. W. Wescott (trans.)『『セーフェル・イェツィラー（形成の書）』1:1–2・1:8・2:2・2:4–5——二十二… |
 | `MAT-LIT-20261101-11ae67` | literary_text | 作者不詳（詩のエッダ）, Henry Adams Bellows (trans.)『『詩のエッダ』アルヴィースの歌（Alvíssmál）——十三の事物に六つの世界の名を与え、夜明… |
 | `MAT-LIT-20261101-4772e6` | literary_text | ファリードゥッディーン・アッタール, Dick Davis & Afkham Darbandi (trans.)『アッタール『鳥の会議（マンティク・ウッ・タイール）』——集まった… |
@@ -3586,6 +3591,7 @@
 | `SESSION-20261101-15095c` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-031383` |
 | `SESSION-20261101-2084d3` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-70e889`, `Q-20270103-7b1ce6`, `Q-20261101-9f6ad5` | — | `Q-20261101-9f6ad5` |
 | `SESSION-20261101-e5df96` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261101-c6fd04` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -3658,17 +3664,17 @@
 | `SESSION-20270103-d6690c` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6` | — | `Q-20270103-7b1ce6` |
 | `SESSION-20261101-81dab1` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-70e889` |
 
-## 6. 解釈的関係（5862 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5869 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 785 |
+| 対照 (contrast) | 787 |
 | 共鳴 (echo) | 1474 |
 | 切断・割り込み (interrupts) | 200 |
-| 未解決のまま開く (leaves_open) | 862 |
+| 未解決のまま開く (leaves_open) | 864 |
 | 比喩的共鳴 (metaphorically_resonates) | 141 |
-| 枠組みの組み替え (reframes) | 511 |
-| 応答 (responds_to) | 1614 |
+| 枠組みの組み替え (reframes) | 512 |
+| 応答 (responds_to) | 1616 |
 | 変奏・変形 (transforms) | 275 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3714,7 +3720,7 @@
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
 | `map/30-materials-literary-16.md` | 100 | 198,531 |
-| `map/30-materials-literary-17.md` | 91 | 263,641 |
+| `map/30-materials-literary-17.md` | 96 | 277,372 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3734,16 +3740,16 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 187,707 |
-| `map/40-relations-11.md` | 500 | 166,322 |
-| `map/40-relations-12.md` | 362 | 123,004 |
+| `map/40-relations-10.md` | 500 | 187,393 |
+| `map/40-relations-11.md` | 500 | 166,960 |
+| `map/40-relations-12.md` | 369 | 125,088 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,665 |
-| `map/50-sessions-06.md` | 50 | 44,296 |
-| `map/50-sessions-07.md` | 50 | 46,349 |
-| `map/50-sessions-08.md` | 1 | 1,231 |
+| `map/50-sessions-06.md` | 50 | 44,331 |
+| `map/50-sessions-07.md` | 50 | 46,065 |
+| `map/50-sessions-08.md` | 2 | 2,298 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
