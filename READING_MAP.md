@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：402 件（初期シード 5 件 ＋ 派生 397 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2524 件（research_excerpt 800 ／ literary_text 1656 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2529 件（research_excerpt 800 ／ literary_text 1661 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：236 編（selected 86 ／ draft 150）
-- **解釈的関係（Relations）**：5809 件
-- **探究セッション（Sessions）**：340 回
+- **解釈的関係（Relations）**：5814 件
+- **探究セッション（Sessions）**：341 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -726,7 +726,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2524 件・詳細は map/3*.md）
+## 4. 対話素材（2529 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3219,6 +3219,11 @@
 | `MAT-LIT-20261031-6e10e5` | literary_text | 屈原（伝）, 王逸（注）『屈原『楚辞』「天問」——「誰がそれを伝えたのか」と、女媧の身体を作ったのは誰か』（-300） |
 | `MAT-TRC-20261031-a8385a` | project_trace | AIselfMySelf（本リポジトリ運用記録）『名の三層監査——読み物の引用3,959個、台帳の注記の名、資料源の名128個』（2026） |
 | `MAT-TRC-20261031-0546d4` | project_trace | AIselfMySelf（本リポジトリ運用記録）『理由のある削除——48ファイル +657/−963、消えた20行と消えた285行』（2026） |
+| `MAT-LIT-20261101-f151ce` | literary_text | F. Max Müller (trans.)『ケーナ・ウパニシャッド（タラヴァカーラ）第1–4カンダ――機能の目録と、機能が成り立つ条件』（1879） |
+| `MAT-LIT-20261101-d08162` | literary_text | D. M. Strong (trans.), Bhikkhu Sujato (trans., comparison)『『ウダーナ』1.10 バーヒヤ経――見られたものだけ、そして… |
+| `MAT-LIT-20261101-e10c09` | literary_text | Elias Lönnrot (comp.), John Martin Crawford (trans.)『『カレワラ』第14歌末尾・第15歌――命は戻るが、言葉が欠けている』（1… |
+| `MAT-LIT-20261101-afba19` | literary_text | 古ノルド詩の伝承（作者不詳）, Henry Adams Bellows (trans.)『『詩のエッダ』グリムニールの歌――一杯の後に始まる名の目録』（1936） |
+| `MAT-LIT-20261101-6018b9` | literary_text | E. A. Wallis Budge (trans.)『ラーとイシスの神話――業績の目録は秘密の名ではなく、開示は強要でもありうる』（1912） |
 | `MAT-LIT-20261101-f36686` | literary_text | 作者不詳（ユダヤ神秘主義の初期テクスト）, W. W. Wescott (trans.)『『セーフェル・イェツィラー（形成の書）』1:1–2・1:8・2:2・2:4–5——二十二… |
 | `MAT-LIT-20261101-11ae67` | literary_text | 作者不詳（詩のエッダ）, Henry Adams Bellows (trans.)『『詩のエッダ』アルヴィースの歌（Alvíssmál）——十三の事物に六つの世界の名を与え、夜明… |
 | `MAT-LIT-20261101-4772e6` | literary_text | ファリードゥッディーン・アッタール, Dick Davis & Afkham Darbandi (trans.)『アッタール『鳥の会議（マンティク・ウッ・タイール）』——集まった… |
@@ -3493,8 +3498,8 @@
 | `SESSION-20261030-f6de8c` | 2026-12-31 | `Q-20261024-926948`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261030-fcf987` | 2026-12-31 | `Q-20261024-ce0069`, `Q-20261024-c9dc13`, `Q-20261024-5da6dd` | `FRAG-20261030-154a66` | — |
 | `SESSION-20261031-08ed9b` | 2026-12-31 | `Q-20261202-f3d9ad`, `Q-20261123-dcd55b`, `Q-20261202-b0e8b3` | — | `Q-20261031-bb9c05` |
-| `SESSION-20261031-b5454d` | 2026-12-31 | `Q-002`, `Q-003`, `Q-20261024-6bdafd`, `Q-20261027-355fc1` | — | — |
 | `SESSION-20261031-590aa1` | 2026-12-31 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-c9dfac`, `Q-20261031-0f4ef3` | — | — |
+| `SESSION-20261031-b5454d` | 2026-12-31 | `Q-002`, `Q-003`, `Q-20261024-6bdafd`, `Q-20261027-355fc1` | — | — |
 | `SESSION-20261031-df9afe` | 2026-12-31 | `Q-20261122-02a9f6`, `Q-20261024-b23994`, `Q-20261029-85a285`, `Q-001` | `FRAG-20261031-5622a6` | — |
 | `SESSION-20261031-a74a3d` | 2026-12-31 | `Q-20261025-48215a`, `Q-002`, `Q-003`, `Q-090`, `Q-001` | — | — |
 | `SESSION-20261031-925b8f` | 2026-12-31 | `Q-20261201-f932d1`, `Q-20261024-c237b9`, `Q-20261031-acdadb`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261031-8f4434` | `Q-20261031-acdadb` |
@@ -3525,6 +3530,7 @@
 | `SESSION-20261031-904d7d` | 2026-10-31 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-475225` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-4f8af7` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261101-be22d0` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-c7fc74` | 2027-01-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-6c66f3` | — | `Q-20261101-6c66f3` |
 | `SESSION-20270102-c0aa1e` | 2027-01-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-795dd5` | 2027-01-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6`, `Q-20261101-70e889` | — | — |
@@ -3600,16 +3606,16 @@
 | `SESSION-20270103-d6690c` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6` | — | `Q-20270103-7b1ce6` |
 | `SESSION-20261101-81dab1` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-70e889` |
 
-## 6. 解釈的関係（5809 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5814 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 770 |
+| 対照 (contrast) | 772 |
 | 共鳴 (echo) | 1469 |
-| 切断・割り込み (interrupts) | 195 |
+| 切断・割り込み (interrupts) | 196 |
 | 未解決のまま開く (leaves_open) | 859 |
 | 比喩的共鳴 (metaphorically_resonates) | 137 |
-| 枠組みの組み替え (reframes) | 501 |
+| 枠組みの組み替え (reframes) | 503 |
 | 応答 (responds_to) | 1607 |
 | 変奏・変形 (transforms) | 271 |
 
@@ -3656,7 +3662,7 @@
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
 | `map/30-materials-literary-16.md` | 100 | 198,531 |
-| `map/30-materials-literary-17.md` | 56 | 158,481 |
+| `map/30-materials-literary-17.md` | 61 | 172,168 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3675,15 +3681,15 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 185,933 |
-| `map/40-relations-11.md` | 500 | 163,434 |
-| `map/40-relations-12.md` | 309 | 106,229 |
+| `map/40-relations-10.md` | 500 | 186,194 |
+| `map/40-relations-11.md` | 500 | 163,468 |
+| `map/40-relations-12.md` | 314 | 107,779 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,665 |
-| `map/50-sessions-06.md` | 50 | 42,959 |
-| `map/50-sessions-07.md` | 40 | 38,128 |
+| `map/50-sessions-06.md` | 50 | 43,065 |
+| `map/50-sessions-07.md` | 41 | 38,856 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
