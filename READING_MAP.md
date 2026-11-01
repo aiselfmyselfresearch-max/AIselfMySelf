@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：404 件（初期シード 5 件 ＋ 派生 399 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2554 件（research_excerpt 805 ／ literary_text 1681 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2557 件（research_excerpt 808 ／ literary_text 1681 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：237 編（selected 89 ／ draft 148）
-- **解釈的関係（Relations）**：5851 件
-- **探究セッション（Sessions）**：348 回
+- **解釈的関係（Relations）**：5856 件
+- **探究セッション（Sessions）**：349 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -729,7 +729,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2554 件・詳細は map/3*.md）
+## 4. 対話素材（2557 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3237,6 +3237,9 @@
 | `MAT-LIT-20261101-a8dee4` | literary_text | クルアーン（スーラ17「夜の旅」）, Marmaduke Pickthall (trans.)『『クルアーン』17章13–14節・36節——首に結びつけられた書を、自分で読め』（… |
 | `MAT-LIT-20261101-5fe568` | literary_text | ミシュナ・アヴォット（父祖の倫理）, Charles Taylor (trans.)『『ピルケイ・アヴォット』3:16（テイラー版 III.25）——台帳は開かれ、手が書く』（1… |
 | `MAT-LIT-20261101-743c08` | literary_text | ダニエル書・ヨハネの黙示録（ヘブライ語聖書／新約聖書）, King James Version (1611)『『ダニエル書』7:9–10・『ヨハネの黙示録』20:11–15——書… |
+| `MAT-EVD-20261101-8efc12` | research_excerpt | University of Cambridge『ケンブリッジ大のロボット料理人「taste as you go」——食べずに塩分を測る腕（2022）』（2022） |
+| `MAT-EVD-20261101-24e1ef` | research_excerpt | Linda A. Henkel『Henkel (2014) 撮影障害効果——全体を撮ると記憶が減り、一部にズームすると減らない』（2014） |
+| `MAT-EVD-20261101-fc11d8` | research_excerpt | 環境省『環境省 食品ロス推計（令和6年度）461万トン——廃棄の定義は主体の感覚を問わない』（2026） |
 | `MAT-LIT-20261101-e8e412` | literary_text | 作者不詳（クルアーン）, Marmaduke Pickthall (trans.)『『クルアーン』68章1–2節——ペンと、書かれるものに誓う』（1930） |
 | `MAT-LIT-20261101-e6bedd` | literary_text | 預言者イザヤ（伝承）, KJV 訳者不詳（1611）『イザヤ書6章——顔を覆う者と、「わたしを遣わしてください」』（1611） |
 | `MAT-LIT-20261101-ddd8d7` | literary_text | 伝承／老子（著者归属は学説史の問題）, James Legge（英訳）『『老子』第33章——自知者明と、死而不亡者寿』（1891） |
@@ -3564,6 +3567,7 @@
 | `SESSION-20261101-3176c6` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261201-9936f8` | `FRAG-20261101-2a9128` | — |
 | `SESSION-20261101-e5df96` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-619ddc` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-049`, `Q-20261101-70e889`, `Q-20261216-57d036` | — | — |
+| `SESSION-20261101-1735c2` | 2026-11-01 | `Q-001`, `Q-003`, `Q-20261024-b23994` | — | — |
 | `SESSION-20261101-c7fc74` | 2027-01-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-6c66f3` | — | `Q-20261101-6c66f3` |
 | `SESSION-20270102-c0aa1e` | 2027-01-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-15095c` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-031383` |
@@ -3641,17 +3645,17 @@
 | `SESSION-20270103-d6690c` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6` | — | `Q-20270103-7b1ce6` |
 | `SESSION-20261101-81dab1` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-70e889` |
 
-## 6. 解釈的関係（5851 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5856 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 783 |
 | 共鳴 (echo) | 1472 |
-| 切断・割り込み (interrupts) | 198 |
+| 切断・割り込み (interrupts) | 200 |
 | 未解決のまま開く (leaves_open) | 861 |
 | 比喩的共鳴 (metaphorically_resonates) | 140 |
-| 枠組みの組み替え (reframes) | 509 |
-| 応答 (responds_to) | 1613 |
+| 枠組みの組み替え (reframes) | 511 |
+| 応答 (responds_to) | 1614 |
 | 変奏・変形 (transforms) | 275 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3679,7 +3683,7 @@
 | `map/20-fragments-08.md` | 20 | 144,629 |
 | `map/20-fragments-09.md` | 20 | 203,327 |
 | `map/20-fragments-10.md` | 20 | 164,461 |
-| `map/20-fragments-11.md` | 20 | 130,136 |
+| `map/20-fragments-11.md` | 20 | 130,980 |
 | `map/20-fragments-12.md` | 17 | 125,701 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
@@ -3706,7 +3710,7 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 5 | 14,142 |
+| `map/31-materials-research-09.md` | 8 | 22,990 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -3717,15 +3721,15 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 187,625 |
-| `map/40-relations-11.md` | 500 | 164,848 |
-| `map/40-relations-12.md` | 351 | 119,911 |
+| `map/40-relations-10.md` | 500 | 187,775 |
+| `map/40-relations-11.md` | 500 | 165,402 |
+| `map/40-relations-12.md` | 356 | 121,374 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,665 |
-| `map/50-sessions-06.md` | 50 | 43,716 |
-| `map/50-sessions-07.md` | 48 | 44,993 |
+| `map/50-sessions-06.md` | 50 | 43,947 |
+| `map/50-sessions-07.md` | 49 | 45,759 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
