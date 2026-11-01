@@ -303,6 +303,7 @@
 - `python3 tools/read_log_backfill.py --check` → PASS（4,014/4,014 の (session, context material) 組が read_log を持つ）
 - `python3 -m unittest discover -s tests` → **Ran 340 tests, OK**
 - `python3 tools/size_budget.py --strict` → **PASS**（§4 の統合保守の後。統合前は materials.d・questions.d・relations.d の3件で WARN、`--strict` は非ゼロ）
+- 件数は本稿執筆時点の union である。他セッションが同時に追記するため、同じコマンドでも数は日々変わる（本 PR を `origin/main` に統合した時点では materials=2599, sessions=358, read_log=7899 になっていた。§8 の数は**このセッションが自分の追記を終えた直後の実測**として読んでほしい）。
 - `origin/main`（PR #357 マージ後）との統合：`READING_MAP.md` は衝突したため手で継がず `map_build.py` で再生成した。`state/relations.d/2026-11-09-000000000000.jsonl` は相手側の版を採用（§4）。
 - 追加した台帳行：素材 5（`state/materials.d/2026-11-01-5ba8aef9a86e.jsonl`）・セッション 1（`2026-11-01-e3862fa752a9`）・新問い 1（`2026-11-01-efa5a71b97fc`）・読み痕跡 16（`2026-11-01-f313b3c13491`）・関係 5（`2026-11-01-edb644f11f09`）。**既存行の書き換え・削除は0。**
 - 保守コミット（内容変更とは分離）：`materials.d` の8本→1本（361行）・`questions.d` の4本→1本（12行）・`relations.d` の4本→1本（128行）を統合した（11-09 は他セッションの統合を採用）。行の多重集合と sha256 で不変を確認（§4）。
