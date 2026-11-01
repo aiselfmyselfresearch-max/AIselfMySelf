@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：408 件（初期シード 5 件 ＋ 派生 403 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2629 件（research_excerpt 808 ／ literary_text 1753 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2634 件（research_excerpt 808 ／ literary_text 1758 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：238 編（selected 92 ／ draft 146）
-- **解釈的関係（Relations）**：5919 件
-- **探究セッション（Sessions）**：366 回
+- **解釈的関係（Relations）**：5925 件
+- **探究セッション（Sessions）**：367 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -734,7 +734,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2629 件・詳細は map/3*.md）
+## 4. 対話素材（2634 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3272,6 +3272,11 @@
 | `MAT-LIT-20261101-64aa88` | literary_text | 列禦寇（伝承上の作者）, Lionel Giles（英訳）『『列子』天瑞——天が崩れると恐れた杞の人と、「積み重なり」を説く者』（1912） |
 | `MAT-LIT-20261101-875619` | literary_text | Franz Boas『『セドナ』（イヌイットの海の女主人）——切られた指が海の獣になり、獣には償いが要る』（1888） |
 | `MAT-LIT-20261101-1523c5` | literary_text | Sir George Grey（採録・英訳）『『マウイの伝説』（グレイ、1855）——死を退けようとした英雄と、笑う小鳥と、残された子ら』（1855） |
+| `MAT-LIT-20261101-ae25c0` | literary_text | 作者不詳（パフラヴィー語文献）, Martin Haug (trans.), Edward William West (coll.)『『アルダー・ウィーラーズ・ナーメ』第1〜4章… |
+| `MAT-LIT-20261101-831354` | literary_text | 作者不詳（ユカテク・マヤ）, Ralph L. Roys (trans./ed.)『『チラム・バラムの書（チュマエル本）』——象形文字からの転写、余白に積もる洗礼・売買・貸与、そ… |
+| `MAT-LIT-20261101-db2804` | literary_text | Ferdowsi（フェルドウシー / حکیم ابوالقاسم فردوسی）『フェルドウシー『シャー・ナーメ』結びの連——風雨に耐える韻律の宮殿と、蒔かれた言葉の種』（10… |
+| `MAT-LIT-20261101-50da71` | literary_text | 一然（Iryeon, 1206–1289）, wikisource 翻訳者（氏名の記載なし）『『三国遺事』王暦と紀異——欄の中に異説を置き、「私が言うには」「いずれが正しいか詳ら… |
+| `MAT-LIT-20261101-10a2a9` | literary_text | 作者不詳（古代エジプト）, Erik Hornung (trans./study, as quoted), Alexandre Piankoff (trans., as cite… |
 | `MAT-LIT-20261101-26e95b` | literary_text | 無名（シュメール伝承を、中アッシリア〜新アッシリア時代の書記がアッカド語「標準版」に編纂；伝承上シン＝レキ・ウンニニの名が関わる）『『ギルガメシュ叙事詩』第八板——エンキドゥの死… |
 | `MAT-LIT-20261101-f83bf5` | literary_text | 無名（ヤヒスト文書等の編纂；最終編成は紀元前5世紀頃）『創世記 2–3章——土から造られ、名を与え、善悪を知り、エデンを追われる人間』（-950） |
 | `MAT-LIT-20261101-7d7087` | literary_text | 鳩摩羅什（訳）『金剛般若波羅蜜経——一切有為法は夢幻泡影、我相・人相・衆生相・寿者相を離れよ』（402） |
@@ -3665,6 +3670,7 @@
 | `SESSION-20261101-ec0998` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-28ed2c` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-2ec50c`, `Q-20261024-403180`, `Q-20261024-ddf2d2`, `Q-092`, `Q-20261024-ec519b`, `Q-057`, `Q-20261024-cfd57d` | `FRAG-20261101-269418` | — |
 | `SESSION-20261101-6786fd` | 2027-01-07 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-ec1314` | — | `Q-20261101-ec1314` |
+| `SESSION-20261101-7cc8c6` | 2027-01-11 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-4ddbb4` | — | — |
 | `SESSION-20261101-10c6ef` | 2026-11-01 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
@@ -3739,18 +3745,18 @@
 | `SESSION-20261101-81dab1` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-70e889` |
 | `SESSION-20261101-eaa215` | 2027-01-10 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-50f9f7` |
 
-## 6. 解釈的関係（5919 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5925 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 800 |
-| 共鳴 (echo) | 1481 |
+| 対照 (contrast) | 803 |
+| 共鳴 (echo) | 1482 |
 | 切断・割り込み (interrupts) | 203 |
 | 未解決のまま開く (leaves_open) | 865 |
 | 比喩的共鳴 (metaphorically_resonates) | 143 |
 | 枠組みの組み替え (reframes) | 521 |
-| 応答 (responds_to) | 1629 |
-| 変奏・変形 (transforms) | 277 |
+| 応答 (responds_to) | 1630 |
+| 変奏・変形 (transforms) | 278 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -3795,8 +3801,8 @@
 | `map/30-materials-literary-14.md` | 100 | 163,068 |
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
-| `map/30-materials-literary-17.md` | 100 | 264,576 |
-| `map/30-materials-literary-18.md` | 53 | 172,089 |
+| `map/30-materials-literary-17.md` | 100 | 265,625 |
+| `map/30-materials-literary-18.md` | 58 | 187,826 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3816,16 +3822,16 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 185,004 |
-| `map/40-relations-11.md` | 500 | 172,265 |
-| `map/40-relations-12.md` | 419 | 139,616 |
+| `map/40-relations-10.md` | 500 | 185,161 |
+| `map/40-relations-11.md` | 500 | 172,367 |
+| `map/40-relations-12.md` | 425 | 141,838 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
-| `map/50-sessions-06.md` | 50 | 45,002 |
-| `map/50-sessions-07.md` | 50 | 45,140 |
-| `map/50-sessions-08.md` | 16 | 15,396 |
+| `map/50-sessions-06.md` | 50 | 45,171 |
+| `map/50-sessions-07.md` | 50 | 45,071 |
+| `map/50-sessions-08.md` | 17 | 16,315 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
