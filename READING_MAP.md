@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：408 件（初期シード 5 件 ＋ 派生 403 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2649 件（research_excerpt 808 ／ literary_text 1773 ／ project_trace 67 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：241 編（selected 94 ／ draft 147）
-- **解釈的関係（Relations）**：5984 件
-- **探究セッション（Sessions）**：373 回
+- **対話素材（Materials）**：2651 件（research_excerpt 809 ／ literary_text 1774 ／ project_trace 67 ／ conversation_trace 1）
+- **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
+- **解釈的関係（Relations）**：5994 件
+- **探究セッション（Sessions）**：374 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -491,7 +491,7 @@
 | `Q-20270103-7b1ce6` | session | `Q-20261027-133ac7` `Q-20261025-2c7e19` | `Q-20261101-6c66f3` `Q-20261101-9f6ad5` | ディダケーは、霊において語る者を「試みても裁いてもならない」と言い、同時に「その道によって偽預言者と預言者が知られる」と言う。この二文は判定の放棄ではなく、判定を語から道へ、現在から後へ移すものとし… |
 | `Q-20261101-50f9f7` | session | `Q-001` `Q-002` `Q-003` `Q-20261101-70e889` | — | 神話・宗教経典の五件は、「書く場所」をそれぞれ別の所に置く——申命記6:9では家の門柱と門（メズーザー）、エレミヤ書31:33では人の心（「書き記す」）、オウィディウス『変身物語』1巻の黄金期では書… |
 
-## 3. 断片（241 編・全文は map/20-fragments-*.md）
+## 3. 断片（242 編・全文は map/20-fragments-*.md）
 
 | ID | 題 | 状態 | 形式 | 語り手 |
 |---|---|---|---|---|
@@ -656,6 +656,7 @@
 | `FRAG-20261101-269418` | 初乳と鉄 | draft | letter | fictional_first_person |
 | `FRAG-20261101-995e60` | 十八日の河原、九つ目の丸 | draft | scene | third_person |
 | `FRAG-20261101-e96043` | 北庇の油引き、三歩目の波形 | draft | scene | third_person |
+| `FRAG-20261101-82ce33` | 木札の裏、荷台の三度目の音 | draft | scene | third_person |
 | `FRAG-20261102-62a1dd` | 声を置いて歩く | draft | dialogue | dialogue |
 | `FRAG-20261102-63d2a2` | 足の来ない声 | draft | fragment | other |
 | `FRAG-20261102-cb6664` | 桟を退く日、金盥の底 | draft | scene | third_person |
@@ -737,7 +738,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2649 件・詳細は map/3*.md）
+## 4. 対話素材（2651 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3247,6 +3248,8 @@
 | `MAT-LIT-20261101-8abf16` | literary_text | 作者不詳（リグ・ヴェーダ）, Ralph T. H. Griffith (trans.)『リグ・ヴェーダ 10.10 ヤマとヤミー——同じ胎から生まれたことは、同意を意味しない』… |
 | `MAT-LIT-20261101-abb37a` | literary_text | クルアーン（アラビア語本文）, Marmaduke Pickthall (trans.)『クルアーン 80章1–16節——注意を逸らした者へ向けられる戒めと、尊ばれる葉の記録』（… |
 | `MAT-LIT-20261101-5b75de` | literary_text | マオリ伝承（複数の語り手）, George Grey (comp. and trans.)『マウイが太陽を捕らえる（Grey編訳『ポリネシア神話』）——延ばされた昼と、編集し直さ… |
+| `MAT-LIT-20261101-3c9127` | literary_text | Jacob Grimm, Wilhelm Grimm, Edgar Taylor (1823 English adaptation, comparative)『グリム兄弟『子ども… |
+| `MAT-20261101-348954` | research_excerpt | Margaret B. Fleming, Lauren Stanley, Robyn Zallen, Matthew T. Chansler, Lars A. Brudvig, … |
 | `MAT-LIT-20261101-f36686` | literary_text | 作者不詳（ユダヤ神秘主義の初期テクスト）, W. W. Wescott (trans.)『『セーフェル・イェツィラー（形成の書）』1:1–2・1:8・2:2・2:4–5——二十二… |
 | `MAT-LIT-20261101-11ae67` | literary_text | 作者不詳（詩のエッダ）, Henry Adams Bellows (trans.)『『詩のエッダ』アルヴィースの歌（Alvíssmál）——十三の事物に六つの世界の名を与え、夜明… |
 | `MAT-LIT-20261101-4772e6` | literary_text | ファリードゥッディーン・アッタール, Dick Davis & Afkham Darbandi (trans.)『アッタール『鳥の会議（マンティク・ウッ・タイール）』——集まった… |
@@ -3678,6 +3681,7 @@
 | `SESSION-20261101-e5df96` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-c6fd04` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-777583` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-006`, `Q-20261101-031383` | — | — |
+| `SESSION-20261101-55b180` | 2026-11-01 | `Q-20261202-b0e8b3`, `Q-20261027-8d2da1`, `Q-20261024-08551f`, `Q-20261024-5b11eb`, `Q-082` | `FRAG-20261101-82ce33` | — |
 | `SESSION-20261101-6155f5` | 2027-01-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-763a7e` | 2026-11-01T12:15:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-c19dbd`, `Q-20261116-522540`, `Q-082`, `Q-104` | `FRAG-20261101-995e60` | — |
 | `SESSION-20261101-eea798` | 2027-01-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -3769,18 +3773,18 @@
 | `SESSION-20261101-eaa215` | 2027-01-10 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-50f9f7` |
 | `SESSION-20261101-899f3a` | 2027-01-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（5984 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5994 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 815 |
-| 共鳴 (echo) | 1489 |
-| 切断・割り込み (interrupts) | 207 |
+| 対照 (contrast) | 816 |
+| 共鳴 (echo) | 1490 |
+| 切断・割り込み (interrupts) | 208 |
 | 未解決のまま開く (leaves_open) | 867 |
-| 比喩的共鳴 (metaphorically_resonates) | 151 |
-| 枠組みの組み替え (reframes) | 530 |
-| 応答 (responds_to) | 1643 |
-| 変奏・変形 (transforms) | 282 |
+| 比喩的共鳴 (metaphorically_resonates) | 152 |
+| 枠組みの組み替え (reframes) | 532 |
+| 応答 (responds_to) | 1646 |
+| 変奏・変形 (transforms) | 283 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -3801,15 +3805,15 @@
 | `map/20-fragments-02.md` | 20 | 101,379 |
 | `map/20-fragments-03.md` | 20 | 85,588 |
 | `map/20-fragments-04.md` | 20 | 109,606 |
-| `map/20-fragments-05.md` | 20 | 98,674 |
+| `map/20-fragments-05.md` | 20 | 99,012 |
 | `map/20-fragments-06.md` | 20 | 82,247 |
 | `map/20-fragments-07.md` | 20 | 130,987 |
 | `map/20-fragments-08.md` | 20 | 149,655 |
-| `map/20-fragments-09.md` | 20 | 200,564 |
-| `map/20-fragments-10.md` | 20 | 172,316 |
-| `map/20-fragments-11.md` | 20 | 134,399 |
-| `map/20-fragments-12.md` | 20 | 144,260 |
-| `map/20-fragments-13.md` | 1 | 5,502 |
+| `map/20-fragments-09.md` | 20 | 196,290 |
+| `map/20-fragments-10.md` | 20 | 175,884 |
+| `map/20-fragments-11.md` | 20 | 133,712 |
+| `map/20-fragments-12.md` | 20 | 148,927 |
+| `map/20-fragments-13.md` | 2 | 10,562 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -3826,8 +3830,8 @@
 | `map/30-materials-literary-14.md` | 100 | 163,068 |
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
-| `map/30-materials-literary-17.md` | 100 | 265,625 |
-| `map/30-materials-literary-18.md` | 73 | 240,891 |
+| `map/30-materials-literary-17.md` | 100 | 266,269 |
+| `map/30-materials-literary-18.md` | 74 | 243,354 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3836,7 +3840,7 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 8 | 22,990 |
+| `map/31-materials-research-09.md` | 9 | 26,091 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -3847,16 +3851,16 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 184,922 |
-| `map/40-relations-11.md` | 500 | 176,635 |
-| `map/40-relations-12.md` | 484 | 161,155 |
+| `map/40-relations-10.md` | 500 | 185,481 |
+| `map/40-relations-11.md` | 500 | 177,101 |
+| `map/40-relations-12.md` | 494 | 163,687 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
-| `map/50-sessions-06.md` | 50 | 44,977 |
-| `map/50-sessions-07.md` | 50 | 44,777 |
-| `map/50-sessions-08.md` | 23 | 21,951 |
+| `map/50-sessions-06.md` | 50 | 44,949 |
+| `map/50-sessions-07.md` | 50 | 44,629 |
+| `map/50-sessions-08.md` | 24 | 22,954 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
