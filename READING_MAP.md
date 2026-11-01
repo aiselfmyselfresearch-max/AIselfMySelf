@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：399 件（初期シード 5 件 ＋ 派生 394 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2494 件（research_excerpt 800 ／ literary_text 1626 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2499 件（research_excerpt 800 ／ literary_text 1631 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：236 編（selected 86 ／ draft 150）
 - **解釈的関係（Relations）**：5784 件
-- **探究セッション（Sessions）**：333 回
+- **探究セッション（Sessions）**：334 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -723,7 +723,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2494 件・詳細は map/3*.md）
+## 4. 対話素材（2499 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3216,6 +3216,11 @@
 | `MAT-LIT-20261031-6e10e5` | literary_text | 屈原（伝）, 王逸（注）『屈原『楚辞』「天問」——「誰がそれを伝えたのか」と、女媧の身体を作ったのは誰か』（-300） |
 | `MAT-TRC-20261031-a8385a` | project_trace | AIselfMySelf（本リポジトリ運用記録）『名の三層監査——読み物の引用3,959個、台帳の注記の名、資料源の名128個』（2026） |
 | `MAT-TRC-20261031-0546d4` | project_trace | AIselfMySelf（本リポジトリ運用記録）『理由のある削除——48ファイル +657/−963、消えた20行と消えた285行』（2026） |
+| `MAT-LIT-20261101-92eed5` | literary_text | 伝承／編者不詳『伝道の書3章——人と獣の息と塵』（1611） |
+| `MAT-LIT-20261101-7dec5f` | literary_text | 伝承／編者不詳『老子第11章——器と空所』（1891） |
+| `MAT-LIT-20261101-9bacef` | literary_text | 伝承／編者不詳『ダンマパダ20章——教えと道を行く者』（1881） |
+| `MAT-LIT-20261101-968981` | literary_text | 伝承／編者不詳『ギルガメシュ第11書板——若返りの草と蛇』（1928） |
+| `MAT-LIT-20261101-074d66` | literary_text | 伝承／編者不詳『ポポル・ヴフ第二の書——伝言と葦』（1908） |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -3490,6 +3495,7 @@
 | `SESSION-20261031-24aa7a` | 2026-12-31 | `Q-20261024-4e210d`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261031-59ad48` | 2026-12-31 | `Q-20261130-25687e`, `Q-20261024-a26f22`, `Q-20261202-ac5dd8`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261031-cc634d` | — |
 | `SESSION-20261031-904d7d` | 2026-10-31 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261101-475225` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -3615,7 +3621,7 @@
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
 | `map/30-materials-literary-16.md` | 100 | 198,531 |
-| `map/30-materials-literary-17.md` | 26 | 68,324 |
+| `map/30-materials-literary-17.md` | 31 | 73,444 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3642,7 +3648,7 @@
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,665 |
-| `map/50-sessions-06.md` | 50 | 42,823 |
-| `map/50-sessions-07.md` | 33 | 31,443 |
+| `map/50-sessions-06.md` | 50 | 42,337 |
+| `map/50-sessions-07.md` | 34 | 32,526 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
