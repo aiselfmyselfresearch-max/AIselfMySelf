@@ -178,15 +178,16 @@ Turn 2 の編集判断 `ED-20261101-882b31` は、『灰の宛名』（`FRAG-202
 | `lexicon_audit.py --preset hedge --fragment FRAG-20261101-779f02 --kwic` | 地の文ヒット 0 回（suspension / hedge / binary すべて 0） |
 | 地の文・引用内の感嘆符・疑問符 | `！!？?` すべて 0 回 |
 | 題名『おろさない魚』のダッシュ・読点・助詞「の」 | すべて 0 回 |
-| `validate_seed.py` | PASS（questions=407, motifs=59, materials=2624, fragments=239〔selected 92 / draft 147〕, relations=5921〔断片↔断片 603〕, sessions=366, read_log=8025, editorial_decisions=115, errata=118） |
-| `inspect_inquiry.py --check-map` / `map_build.py --check` | PASS（`READING_MAP.md` 712,925 bytes） |
-| `read_log_backfill.py --check` | 4,076/4,076 PASS |
-| `size_budget.py --strict` | PASS（全項目 soft 上限以内：`materials.d` 80/80、`questions.d` 79/80、`read_log.d` 72/80、`sessions.d` 72/80、`fragments.d` 71/80、`relations.d` 68/80、`errata.d` 67/80、`editorial_decisions.d` 27/80） |
-| `python3 -m unittest discover -s tests` | 全テスト PASS |
+| `validate_seed.py` | PASS（`origin/main` PR #363 同期後：questions=408, motifs=59, materials=2629, fragments=239〔selected 92 / draft 147〕, relations=5928〔断片↔断片 603〕, sessions=367, read_log=8040, editorial_decisions=115, errata=118） |
+| `inspect_inquiry.py --check-map` / `map_build.py --check` | PASS（`READING_MAP.md` 714,622 bytes） |
+| `read_log_backfill.py --check` | 4,081/4,081 PASS |
+| `size_budget.py --strict` | PASS（全項目 soft 上限以内：`questions.d` 80/80、`read_log.d` 73/80、`sessions.d` 73/80、`fragments.d` 71/80、`materials.d` 70/80、`errata.d` 67/80、`relations.d` 55/80、`editorial_decisions.d` 27/80） |
+| `python3 -m unittest discover -s tests` | 341 tests PASS |
+| `node --check viewer/app.js` | PASS |
 
 語彙の鏡は語形の分布を映す観察器具であり、作品の品質や意識の存否を判定するものではない。
 
 ### 6.3 次への申し送り
 
-1. **シャード上限の注意（最優先の技術申し送り）**：本セッションは素材・問いを追加しなかったため `materials.d` は **80/80**、`questions.d` は **79/80** で `--strict` を通過しているが、次に新規素材を1件でも追加するセッション（または問いを2件以上追加するセッション）は、そのままでは `size_budget.py --strict` の soft 80 を超過する。素材・問いを追加する回は、PR #356（`0cb7519`）の前例または `docs/parallel-work.md` の保守統合規則の明文拡張により、`errata` 等からパス参照されていない古いシャードを先に分離コミットで統合されたい。
+1. **シャード上限の注意（`questions.d` が 80/80 到達）**：作業途中に並行マージされた PR #363（`f541002`）が `materials.d`（70/80）と `relations.d`（55/80）を統合し、本セッションが `sessions.d`（73/80）と `read_log.d`（73/80）を統合したため、この4コレクションには余裕が戻った。一方、PR #363 の質問追加により **`state/questions.d/` が `80 / soft 80` ちょうど**に達している（本セッションは新規問い 0件のため `--strict` PASS）。次に新規問いを1件でも追加するセッションは、PR #356（`0cb7519`）の前例にならい、`errata` 等からパス参照されていない古い `questions.d` シャード（例：`2026-10-28`〜`2026-10-31` 帯）を先に分離コミットで統合されたい。また `readings/` 合計サイズも `13.96 MiB / soft 15.00 MiB`（401本）に近づいている点に留意したい。
 2. **大賀ハス集群（`78744b`・`626ba5`・`b6fa19`・`b6c2f1`・`779f02`）の編集レビューに向けて**：Turn 2 の `ED-20261101-882b31` が求めていた元稿対照・概念語露出の解消・一次文献照合は、本回の `ERR-20261101-b54c0f` と `FRAG-20261101-779f02`『おろさない魚』によって出揃った。次回の `editorial_review` 回では、「ひとつの箱」の前提の上で書かれた初期稿（`78744b` / `626ba5`）と、その圧縮がほどけたあとの本作（`779f02`）や水の異議（`b6c2f1`）のどれを選集（`selected`）に迎え、どれを過程の草稿として残すかを、距離を置いて比較できる状態にある。
