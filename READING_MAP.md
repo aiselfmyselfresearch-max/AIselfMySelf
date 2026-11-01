@@ -9,7 +9,7 @@
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2629 件（research_excerpt 808 ／ literary_text 1753 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：238 編（selected 92 ／ draft 146）
-- **解釈的関係（Relations）**：5918 件
+- **解釈的関係（Relations）**：5919 件
 - **探究セッション（Sessions）**：366 回
 
 ## 1. 問いを横断する 59 つのモチーフ
@@ -3739,12 +3739,12 @@
 | `SESSION-20261101-81dab1` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-70e889` |
 | `SESSION-20261101-eaa215` | 2027-01-10 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-50f9f7` |
 
-## 6. 解釈的関係（5918 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5919 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 800 |
-| 共鳴 (echo) | 1480 |
+| 共鳴 (echo) | 1481 |
 | 切断・割り込み (interrupts) | 203 |
 | 未解決のまま開く (leaves_open) | 865 |
 | 比喩的共鳴 (metaphorically_resonates) | 143 |
@@ -3818,7 +3818,7 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,004 |
 | `map/40-relations-11.md` | 500 | 172,265 |
-| `map/40-relations-12.md` | 418 | 139,265 |
+| `map/40-relations-12.md` | 419 | 139,616 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
