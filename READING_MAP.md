@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：408 件（初期シード 5 件 ＋ 派生 403 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2649 件（research_excerpt 808 ／ literary_text 1773 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2654 件（research_excerpt 808 ／ literary_text 1778 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：241 編（selected 94 ／ draft 147）
 - **解釈的関係（Relations）**：5984 件
-- **探究セッション（Sessions）**：373 回
+- **探究セッション（Sessions）**：374 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -737,7 +737,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2649 件・詳細は map/3*.md）
+## 4. 対話素材（2654 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3365,6 +3365,11 @@
 | `MAT-LIT-20261101-498440` | literary_text | 作者不詳（福音書）, King James Version (trans.)『『ルカによる福音書』17:7–10——務めを果たしただけの者』（1611） |
 | `MAT-LIT-20261101-7667b3` | literary_text | 作者不詳（クルアーン）, Marmaduke Pickthall (trans.)『『クルアーン』78章6–14節——眠りを休みに、昼を生計に』（1930） |
 | `MAT-LIT-20261101-78cb44` | literary_text | 作者不詳（メソポタミア）, R. Campbell Thompson (trans.)『『ギルガメシュ叙事詩』第7書板——呪われた贈与と、それを守る太陽神』（1920） |
+| `MAT-LIT-20261101-taoteching-001` | literary_text | （伝・老子）『『道徳経』第一章——名づけられぬ道と、名づけられた名』（-400） |
+| `MAT-LIT-20261101-quran-24-35` | literary_text | （預言者ムハンマドへの啓示）『クルアーン第24章（ヌール）35節——光の譬え（アーヤトゥン＝ヌール）』（622） |
+| `MAT-LIT-20261101-dhammapada-12` | literary_text | （伝・釈迦の語録、パーリ仏典）『『ダンマパダ』第12章（アットヴァガ）——自己を自ら護ること』（-300） |
+| `MAT-LIT-20261101-genesis-22` | literary_text | （モーセ五書伝承）『『創世記』第22章1–19節——イサクの献げ物（アケーダ）』（-900） |
+| `MAT-LIT-20261101-matthew-5` | literary_text | （マタイ伝承）『『マタイによる福音書』第5章1–12節——山上の説教、福いの言葉』（80） |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -3695,6 +3700,7 @@
 | `SESSION-20261101-e522b0` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-099`, `Q-20261024-1334c5`, `Q-20261024-c237b9`, `Q-082` | `FRAG-20261101-e96043` | — |
 | `SESSION-20261101-7cc8c6` | 2027-01-11 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-4ddbb4` | — | — |
 | `SESSION-20261101-10c6ef` | 2026-11-01 | `Q-001`, `Q-002` | — | — |
+| `SESSION-20261101-myth-religious-five-new` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -3827,7 +3833,7 @@
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 265,625 |
-| `map/30-materials-literary-18.md` | 73 | 240,891 |
+| `map/30-materials-literary-18.md` | 78 | 253,314 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3856,7 +3862,7 @@
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,977 |
-| `map/50-sessions-07.md` | 50 | 44,777 |
-| `map/50-sessions-08.md` | 23 | 21,951 |
+| `map/50-sessions-07.md` | 50 | 44,446 |
+| `map/50-sessions-08.md` | 24 | 22,954 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
