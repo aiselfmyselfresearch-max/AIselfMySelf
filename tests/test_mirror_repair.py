@@ -37,7 +37,10 @@ class MirrorRepairTests(unittest.TestCase):
             ("voice_audit.py", lambda d: d["fragment_count"], 43),
             ("address_audit.py", lambda d: d["fragments"], 43),
             ("addressee_audit.py", lambda d: d["collections"]["fragments"]["records"], 43),
-            ("gate_audit.py", lambda d: d["materials"], 677),
+            # PR #354 merged seven rows into the frozen base (677 -> 684).
+            # The rows are not deleted (append-only); the frozen-base expectation
+            # is updated to the current base. See ERR-20261101-14a775.
+            ("gate_audit.py", lambda d: d["materials"], 684),
             ("measure_audit.py", lambda d: d["fragments"]["record_count"], 43),
             ("relation_audit.py", lambda d: d["relation_total"], 874),
             ("selection_audit.py", lambda d: d["fragment_count"], 43),
