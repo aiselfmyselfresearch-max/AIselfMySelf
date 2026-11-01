@@ -83,7 +83,7 @@ draft    n=11  関係=4.64   READING_MAP言及=13.64  本文長=524.55
 
 ### 3-1. なぜ `human_narrator` なのか
 
-`SESSION-022` の検死は、`schema/fragment.schema.json` が定める六つの `narrator_mode` のうち **`other` と `human_narrator` が一度も使われていない**ことを報告した。`other` はその後 `FRAG-023`・`FRAG-025`・`FRAG-028` で使われ、今回の実測時点で **残る空席は `human_narrator` だけ**だった。
+`SESSION-022` の検証は、`schema/fragment.schema.json` が定める六つの `narrator_mode` のうち **`other` と `human_narrator` が一度も使われていない**ことを報告した。`other` はその後 `FRAG-023`・`FRAG-025`・`FRAG-028` で使われ、今回の実測時点で **残る空席は `human_narrator` だけ**だった。
 
 この空席が残っていた理由は、たぶん単純である。この書庫は「AIの一人称を、生身の経験の報告と混同させない」ことに慎重で（`CONTENT_POLICY.md`）、`human_narrator` はその慎重さの外にあるように見える。だが、**人間の語り手を創作することは、人間の経験の事実報告ではない**。`fictional_first_person` が「架空の一人称」であるのと同じ強度で、`human_narrator` は「創作上の人間の語り手」である。両方とも創作であり、台帳の外側のメタデータで区別される。
 

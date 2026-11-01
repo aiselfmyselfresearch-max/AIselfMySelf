@@ -141,7 +141,7 @@ def quotation_match(fragments: list[dict[str, Any]], materials: list[dict[str, A
             "value": len(quotes),
             "detail": (
                 f"「」{min_len}文字以上 {len(quotes)} 箇所 / 素材と一致 {len(originals) + len(trace)}"
-                f"（うち台帳自身の検死記録 {len(trace)}）→ 原典一致 {len(originals)} / 不一致 {unmatched}"
+                f"（うち台帳自身の検証記録 {len(trace)}）→ 原典一致 {len(originals)} / 不一致 {unmatched}"
             ),
         }
 
