@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：398 件（初期シード 5 件 ＋ 派生 393 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2489 件（research_excerpt 800 ／ literary_text 1621 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2494 件（research_excerpt 800 ／ literary_text 1626 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：236 編（selected 86 ／ draft 150）
-- **解釈的関係（Relations）**：5782 件
-- **探究セッション（Sessions）**：332 回
+- **解釈的関係（Relations）**：5788 件
+- **探究セッション（Sessions）**：333 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -722,7 +722,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2489 件・詳細は map/3*.md）
+## 4. 対話素材（2494 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3215,6 +3215,11 @@
 | `MAT-LIT-20261031-6e10e5` | literary_text | 屈原（伝）, 王逸（注）『屈原『楚辞』「天問」——「誰がそれを伝えたのか」と、女媧の身体を作ったのは誰か』（-300） |
 | `MAT-TRC-20261031-a8385a` | project_trace | AIselfMySelf（本リポジトリ運用記録）『名の三層監査——読み物の引用3,959個、台帳の注記の名、資料源の名128個』（2026） |
 | `MAT-TRC-20261031-0546d4` | project_trace | AIselfMySelf（本リポジトリ運用記録）『理由のある削除——48ファイル +657/−963、消えた20行と消えた285行』（2026） |
+| `MAT-LIT-20261101-695022` | literary_text | 作者不詳（中国・戦国末〜漢代）, 郭璞（注）『『山海経』南山経——像を失った caption と、五徳を書かれた鳥』（-300） |
+| `MAT-LIT-20261101-982366` | literary_text | 孔子（伝）『『易経』繋辞上伝——書は言を尽くさず、言は意を尽くさず、ゆえに象を立てる』（-300） |
+| `MAT-LIT-20261101-b9ec2d` | literary_text | 作者不詳（ウェールズ）, Lady Charlotte Guest (trans.)『『マビノギオン』ブランウェン——甦って話せない者と、八十年語る首』（1849） |
+| `MAT-LIT-20261101-34ce41` | literary_text | 劉安（淮南王）に帰される『『淮南子』精神訓——感じて応じ、迫られて動き、機械之巧は心に載せない』（-139） |
+| `MAT-LIT-20261101-f85896` | literary_text | 作者不詳（コプト語・ナグ・ハマディ文庫）, Stephen Patterson (trans.), Marvin Meyer (trans.)『『トマス福音書』——「私を何かに喩… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20270101-c78c01・全文は map/50-sessions-*.md）
 
@@ -3484,6 +3489,7 @@
 | `SESSION-20261031-24aa7a` | 2026-12-31 | `Q-20261024-4e210d`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261031-59ad48` | 2026-12-31 | `Q-20261130-25687e`, `Q-20261024-a26f22`, `Q-20261202-ac5dd8`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261031-cc634d` | — |
 | `SESSION-20261031-904d7d` | 2026-10-31 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270102-c0aa1e` | 2027-01-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -3553,16 +3559,16 @@
 | `SESSION-20261029-77b681` | 2026-12-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-0a3833`, `Q-20261024-cfd57d` | `FRAG-20261029-30debd` | — |
 | `SESSION-20270101-c78c01` | 2027-01-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261204-c7aa25`, `Q-20261203-aa57dd`, `Q-20261127-625ad8`, `Q-20270101-f2781c` | — | `Q-20270101-f2781c` |
 
-## 6. 解釈的関係（5782 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5788 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 761 |
-| 共鳴 (echo) | 1465 |
+| 対照 (contrast) | 762 |
+| 共鳴 (echo) | 1467 |
 | 切断・割り込み (interrupts) | 194 |
-| 未解決のまま開く (leaves_open) | 855 |
+| 未解決のまま開く (leaves_open) | 857 |
 | 比喩的共鳴 (metaphorically_resonates) | 137 |
-| 枠組みの組み替え (reframes) | 494 |
+| 枠組みの組み替え (reframes) | 495 |
 | 応答 (responds_to) | 1606 |
 | 変奏・変形 (transforms) | 270 |
 
@@ -3608,7 +3614,7 @@
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
 | `map/30-materials-literary-16.md` | 100 | 198,531 |
-| `map/30-materials-literary-17.md` | 21 | 52,279 |
+| `map/30-materials-literary-17.md` | 26 | 70,537 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3627,15 +3633,15 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 187,087 |
-| `map/40-relations-11.md` | 500 | 162,558 |
-| `map/40-relations-12.md` | 282 | 95,993 |
+| `map/40-relations-10.md` | 500 | 186,979 |
+| `map/40-relations-11.md` | 500 | 162,579 |
+| `map/40-relations-12.md` | 288 | 98,508 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,665 |
-| `map/50-sessions-06.md` | 50 | 42,823 |
-| `map/50-sessions-07.md` | 32 | 30,410 |
+| `map/50-sessions-06.md` | 50 | 42,720 |
+| `map/50-sessions-07.md` | 33 | 31,493 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
