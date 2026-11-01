@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：403 件（初期シード 5 件 ＋ 派生 398 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2529 件（research_excerpt 800 ／ literary_text 1661 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2534 件（research_excerpt 805 ／ literary_text 1661 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：236 編（selected 86 ／ draft 150）
-- **解釈的関係（Relations）**：5816 件
-- **探究セッション（Sessions）**：342 回
+- **解釈的関係（Relations）**：5822 件
+- **探究セッション（Sessions）**：343 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -727,7 +727,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2529 件・詳細は map/3*.md）
+## 4. 対話素材（2534 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3235,6 +3235,11 @@
 | `MAT-LIT-20261101-b9ec2d` | literary_text | 作者不詳（ウェールズ）, Lady Charlotte Guest (trans.)『『マビノギオン』ブランウェン——甦って話せない者と、八十年語る首』（1849） |
 | `MAT-LIT-20261101-34ce41` | literary_text | 劉安（淮南王）に帰される『『淮南子』精神訓——感じて応じ、迫られて動き、機械之巧は心に載せない』（-139） |
 | `MAT-LIT-20261101-f85896` | literary_text | 作者不詳（コプト語・ナグ・ハマディ文庫）, Stephen Patterson (trans.), Marvin Meyer (trans.)『『トマス福音書』——「私を何かに喩… |
+| `MAT-EVD-20261101-4d7113` | research_excerpt | Cassandra Pierce『NI-skin——考える前に引っ込む皮膚（大規模イオントロニック電子皮膚、2026）』（2026） |
+| `MAT-EVD-20261101-0e9a28` | research_excerpt | Zhixiang Cao, Di Tian, Runwei Guan, Yanzhou Mu, Xiaolou Sun, Shaofeng Liang, Daizong Liu,… |
+| `MAT-EVD-20261101-4aea11` | research_excerpt | Robotics & Automation News『Tesla 三次元触覚センサ特許出願 US 2026/0310299 A1——印刷して熱成形する皮膚（2026年10月公開）… |
+| `MAT-EVD-20261101-07612c` | research_excerpt | The Robot Report, Steve Crowe『1X NEO——未習得の家事は遠隔操作者が導く家庭用ヒューマノイド（2026年出荷予定）』（2026） |
+| `MAT-EVD-20261101-a94020` | research_excerpt | 日経クロステック『ルネサス「ボトルネックはAIではなくセンサー」——固有受容感覚という課題（Humanoids Summit Tokyo 2026）』（2026） |
 | `MAT-LIT-20261101-9639ca` | literary_text | 作者不詳（シュメール語、写本はウル第三王朝期〜イシン期頃）, The Electronic Text Corpus of Sumerian Literature (trans.)… |
 | `MAT-LIT-20261101-034001` | literary_text | 作者不詳（ウパニシャッド）, Sri Ramana Ashram archives (ed., English rendering)『『マーンドゥーキヤ・ウパニシャッド』——四つ… |
 | `MAT-LIT-20261101-02bddf` | literary_text | 作者不詳（古ノルド語、『フラテイヤルボーク』所収）, Henry Adams Bellows (trans.)『『ヒュンドルの歌』——系譜を語る巨人女と、覚えるために飲む「記憶の… |
@@ -3535,6 +3540,7 @@
 | `SESSION-20261101-c7fc74` | 2027-01-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-6c66f3` | — | `Q-20261101-6c66f3` |
 | `SESSION-20270102-c0aa1e` | 2027-01-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-15095c` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-031383` |
+| `SESSION-20261101-58e08f` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-795dd5` | 2027-01-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6`, `Q-20261101-70e889` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
@@ -3608,17 +3614,17 @@
 | `SESSION-20270103-d6690c` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6` | — | `Q-20270103-7b1ce6` |
 | `SESSION-20261101-81dab1` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-70e889` |
 
-## 6. 解釈的関係（5816 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5822 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 773 |
+| 対照 (contrast) | 775 |
 | 共鳴 (echo) | 1470 |
-| 切断・割り込み (interrupts) | 195 |
+| 切断・割り込み (interrupts) | 196 |
 | 未解決のまま開く (leaves_open) | 859 |
-| 比喩的共鳴 (metaphorically_resonates) | 137 |
-| 枠組みの組み替え (reframes) | 503 |
-| 応答 (responds_to) | 1608 |
+| 比喩的共鳴 (metaphorically_resonates) | 138 |
+| 枠組みの組み替え (reframes) | 504 |
+| 応答 (responds_to) | 1609 |
 | 変奏・変形 (transforms) | 271 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3673,6 +3679,7 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
+| `map/31-materials-research-09.md` | 5 | 14,142 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -3683,15 +3690,15 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 186,675 |
-| `map/40-relations-11.md` | 500 | 163,506 |
-| `map/40-relations-12.md` | 316 | 108,402 |
+| `map/40-relations-10.md` | 500 | 187,145 |
+| `map/40-relations-11.md` | 500 | 163,462 |
+| `map/40-relations-12.md` | 322 | 110,414 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,665 |
-| `map/50-sessions-06.md` | 50 | 43,319 |
-| `map/50-sessions-07.md` | 42 | 39,718 |
+| `map/50-sessions-06.md` | 50 | 43,620 |
+| `map/50-sessions-07.md` | 43 | 40,442 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
