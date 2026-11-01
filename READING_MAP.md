@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：405 件（初期シード 5 件 ＋ 派生 400 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2589 件（research_excerpt 808 ／ literary_text 1713 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2594 件（research_excerpt 808 ／ literary_text 1718 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：237 編（selected 89 ／ draft 148）
 - **解釈的関係（Relations）**：5887 件
-- **探究セッション（Sessions）**：355 回
+- **探究セッション（Sessions）**：356 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -730,7 +730,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2589 件・詳細は map/3*.md）
+## 4. 対話素材（2594 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3263,6 +3263,11 @@
 | `MAT-LIT-20261101-7d7087` | literary_text | 鳩摩羅什（訳）『金剛般若波羅蜜経——一切有為法は夢幻泡影、我相・人相・衆生相・寿者相を離れよ』（402） |
 | `MAT-LIT-20261101-60bc6b` | literary_text | 稗田阿礼（口述）, 太安万侶（書記）『『古事記』上巻——イザナギ、黄泉の国からの逃還、禊による三貴子の誕生』（712） |
 | `MAT-LIT-20261101-c5b553` | literary_text | 無名（10世紀頃の成立と推定；匿名の冰島詩）『『詩のエッダ』ヴォルスペー——予言者女の記憶、神々の黄昏、草の中の黄金の碁盤石』（1000） |
+| `MAT-LIT-20261101-1d6bf8` | literary_text | （ウガリト粘土板、筆写者はイリミルクとされる）『『バアルとモート』KTU 1.5——喉しか持たない死と、不在の前に隠された代わりの世継ぎ』（-1300） |
+| `MAT-LIT-20261101-bee130` | literary_text | （ナワ語の伝承、コデックス・チマルポポカ所収）『『太陽の伝説（Leyenda de los Soles）』——砕けた骨を挽いて作られた、大きさの違う人間』（1558） |
+| `MAT-LIT-20261101-39890f` | literary_text | グル・ナーナク以下十代のグルと賛美者たち『『グル・グラント・サーヒブ』アング982——「言葉がグルであり、グルが言葉である」と、書物に移された教導権』（1604） |
+| `MAT-LIT-20261101-11292c` | literary_text | （ヨルバの口承伝承。参照は William Bascom の記録）『イファ占い——256のオドゥから、籤が選んだ一節を唱える者』（1969） |
+| `MAT-LIT-20261101-1f55f7` | literary_text | ウマースヴァーティ（帰属）『『タットヴァールタ・スートラ』5.29と七支作法——「ある観点からは、そうであり、そうでない」』（400） |
 | `MAT-LIT-20261101-3e0b62` | literary_text | 伝承（作者不詳）, King James Version 訳者たち『『ヨナ記』4章——植物を惜しむことと都市の家畜』（1611） |
 | `MAT-LIT-20261101-e4b281` | literary_text | パーリ仏教伝承, Robert Chalmers（英訳）『『ジャータカ』第12話——鹿の免責と畑の印』（1895） |
 | `MAT-LIT-20261101-e7590c` | literary_text | 伝承（作者不詳）, H. G. Evelyn-White（英訳）『『ホメロス風讃歌』デメテル讃歌——声を聞くが姿を見ない』（1914） |
@@ -3611,6 +3616,7 @@
 | `SESSION-20261101-e5df96` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-c6fd04` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-6155f5` | 2027-01-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261101-28804b` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-ec0998` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
@@ -3740,8 +3746,8 @@
 | `map/30-materials-literary-14.md` | 100 | 163,068 |
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
-| `map/30-materials-literary-17.md` | 100 | 267,490 |
-| `map/30-materials-literary-18.md` | 13 | 44,246 |
+| `map/30-materials-literary-17.md` | 100 | 269,059 |
+| `map/30-materials-literary-18.md` | 18 | 57,744 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3769,8 +3775,8 @@
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
-| `map/50-sessions-06.md` | 50 | 44,737 |
-| `map/50-sessions-07.md` | 50 | 45,625 |
-| `map/50-sessions-08.md` | 5 | 5,136 |
+| `map/50-sessions-06.md` | 50 | 44,935 |
+| `map/50-sessions-07.md` | 50 | 45,612 |
+| `map/50-sessions-08.md` | 6 | 5,976 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
