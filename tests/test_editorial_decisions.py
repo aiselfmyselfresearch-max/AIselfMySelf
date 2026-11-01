@@ -223,6 +223,114 @@ class EditorialDecisionTests(unittest.TestCase):
             self.assertFalse(changed_again)
             self.assertEqual(readme_copy.read_text(encoding="utf-8"), synced)
 
+    def test_supersedes_overrides_forward_dated_shard_and_validates_constraints(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = copy_repo(Path(tmp))
+            ed_dir = repo / "state" / "editorial_decisions.d"
+            ed_dir.mkdir(parents=True, exist_ok=True)
+
+            # Simulate an older session that wrote under a forward-dated internal
+            # chronology shard name (2026-12-30) and a newer session writing under
+            # the real UTC date (2026-11-01) that explicitly supersedes it.
+            forward_shard = ed_dir / "2026-12-30-aaaaaaaaaaaa.jsonl"
+            forward_shard.write_text(
+                json.dumps(
+                    {
+                        "decision_id": "ED-20261230-aaaaaa",
+                        "session_id": "SESSION-20261024-9dd96f",
+                        "target": {"type": "fragment", "id": "FRAG-005"},
+                        "status": "draft",
+                        "reason": "Hold in draft under forward-dated shard.",
+                        "created_at": "2026-12-30",
+                    },
+                    ensure_ascii=False,
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            real_date_shard = ed_dir / "2026-11-01-bbbbbbbbbbbb.jsonl"
+            real_date_shard.write_text(
+                json.dumps(
+                    {
+                        "decision_id": "ED-20261101-bbbbbb",
+                        "session_id": "SESSION-20261024-9dd96f",
+                        "target": {"type": "fragment", "id": "FRAG-005"},
+                        "status": "selected",
+                        "reason": "Condition met; explicitly supersede forward-dated hold.",
+                        "created_at": "2026-11-01",
+                        "supersedes": ["ED-20261230-aaaaaa"],
+                    },
+                    ensure_ascii=False,
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            ok = run(repo, "tools/validate_seed.py")
+            self.assertEqual(ok.returncode, 0, ok.stdout + ok.stderr)
+
+            frags = ledger_io.load_jsonl_union(
+                repo / "state" / "fragments.jsonl", "fragment_id", root=repo
+            )
+            self.assertEqual(frags["FRAG-005"]["status"], "selected")
+
+            # Mismatched target in supersedes must fail validation.
+            real_date_shard.write_text(
+                json.dumps(
+                    {
+                        "decision_id": "ED-20261101-bbbbbb",
+                        "session_id": "SESSION-20261024-9dd96f",
+                        "target": {"type": "fragment", "id": "FRAG-006"},
+                        "status": "selected",
+                        "reason": "Wrong target for supersedes.",
+                        "created_at": "2026-11-01",
+                        "supersedes": ["ED-20261230-aaaaaa"],
+                    },
+                    ensure_ascii=False,
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            bad_target = run(repo, "tools/validate_seed.py")
+            self.assertEqual(bad_target.returncode, 1)
+            self.assertIn("supersedes decision 'ED-20261230-aaaaaa' targets", bad_target.stdout)
+
+            # Cycle in supersedes must fail validation.
+            forward_shard.write_text(
+                json.dumps(
+                    {
+                        "decision_id": "ED-20261230-aaaaaa",
+                        "session_id": "SESSION-20261024-9dd96f",
+                        "target": {"type": "fragment", "id": "FRAG-005"},
+                        "status": "draft",
+                        "reason": "Cycle side A.",
+                        "created_at": "2026-12-30",
+                        "supersedes": ["ED-20261101-bbbbbb"],
+                    },
+                    ensure_ascii=False,
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            real_date_shard.write_text(
+                json.dumps(
+                    {
+                        "decision_id": "ED-20261101-bbbbbb",
+                        "session_id": "SESSION-20261024-9dd96f",
+                        "target": {"type": "fragment", "id": "FRAG-005"},
+                        "status": "selected",
+                        "reason": "Cycle side B.",
+                        "created_at": "2026-11-01",
+                        "supersedes": ["ED-20261230-aaaaaa"],
+                    },
+                    ensure_ascii=False,
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            bad_cycle = run(repo, "tools/validate_seed.py")
+            self.assertEqual(bad_cycle.returncode, 1)
+            self.assertIn("cycle detected in supersedes chain", bad_cycle.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()

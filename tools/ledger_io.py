@@ -51,6 +51,7 @@ from __future__ import annotations
 
 import contextlib
 import errno
+import heapq
 import json
 import os
 import stat
@@ -234,6 +235,62 @@ _EDITORIAL_VALID_STATUS: dict[str, frozenset[str]] = {
 }
 
 
+def _order_editorial_decisions(
+    decisions: dict[str, dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Order editorial decisions in ledger order while respecting ``supersedes``.
+
+    When an earlier session wrote a shard under a forward-dated internal
+    chronology prefix (e.g. ``2026-11-25-*.jsonl``) and a later real-date shard
+    (e.g. ``2026-11-01-*.jsonl``) explicitly lists that decision ID in
+    ``supersedes``, the superseded decision must be applied before the decision
+    that supersedes it so the newer decision wins.
+    """
+    items = list(decisions.items())
+    n = len(items)
+    if n <= 1:
+        return [rec for _, rec in items]
+    index_by_id = {did: idx for idx, (did, _) in enumerate(items)}
+    outgoing: list[list[int]] = [[] for _ in range(n)]
+    indegree = [0] * n
+    has_edges = False
+    for j, (did, rec) in enumerate(items):
+        sup_list = rec.get("supersedes")
+        if not isinstance(sup_list, list):
+            continue
+        rec_target = rec.get("target")
+        seen_prev: set[int] = set()
+        for sup_id in sup_list:
+            if not isinstance(sup_id, str) or sup_id == did:
+                continue
+            i = index_by_id.get(sup_id)
+            if i is None or i in seen_prev:
+                continue
+            if items[i][1].get("target") != rec_target:
+                continue
+            outgoing[i].append(j)
+            indegree[j] += 1
+            seen_prev.add(i)
+            has_edges = True
+    if not has_edges:
+        return [rec for _, rec in items]
+
+    heap = [idx for idx in range(n) if indegree[idx] == 0]
+    heapq.heapify(heap)
+    ordered_indices: list[int] = []
+    while heap:
+        cur = heapq.heappop(heap)
+        ordered_indices.append(cur)
+        for nxt in outgoing[cur]:
+            indegree[nxt] -= 1
+            if indegree[nxt] == 0:
+                heapq.heappush(heap, nxt)
+    if len(ordered_indices) < n:
+        emitted = set(ordered_indices)
+        ordered_indices.extend(idx for idx in range(n) if idx not in emitted)
+    return [items[idx][1] for idx in ordered_indices]
+
+
 def load_collections(
     specs: dict[str, tuple[Path, str]],
     *,
@@ -335,7 +392,7 @@ def load_collections(
             if not decisions:
                 continue
             records = data[name]
-            for decision in decisions.values():
+            for decision in _order_editorial_decisions(decisions):
                 target = decision.get("target")
                 status = decision.get("status")
                 if not isinstance(target, dict) or not isinstance(status, str):

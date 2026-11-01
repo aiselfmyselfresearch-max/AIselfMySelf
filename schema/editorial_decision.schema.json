@@ -23,6 +23,12 @@
       "enum": ["draft", "selected", "open", "paused", "archived"]
     },
     "reason": {"type": "string", "minLength": 1},
-    "created_at": {"type": "string", "minLength": 4}
+    "created_at": {"type": "string", "minLength": 4},
+    "supersedes": {
+      "type": "array",
+      "description": "Optional IDs of earlier editorial_decisions on the same target that this decision explicitly supersedes, even when older shards carry forward-dated internal chronology prefixes.",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    }
   }
 }
