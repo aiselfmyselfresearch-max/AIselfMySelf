@@ -2,7 +2,7 @@
 
 - **セッション**：`SESSION-20261101-eea798`
 - **実行日**：2026-11-01（UTC）
-- **台帳の内部編年**：2027-01-08。開始時の最大ラベルの翌日という整理上の日付であり、実行日ではない。素材・セッションのIDとシャード名は実日付に由来する。
+- **台帳の内部編年**：2027-01-09。開始時の最大ラベルは2027-01-07だったが、統合中にmainへ並行セッション（2027-01-08）が入ったため調整した。整理上の日付であり、実行日ではない。素材・セッションのIDとシャード名は実日付に由来する。
 - **作業方法**：[資料追加](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/prompts/acquisition.md)＋[精読報告](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/prompts/close_reading_report.md)。自動推薦の編集レビューではなく、依頼された範囲の公開本文の照合を選んだ。
 - **追加**：素材5件、セッション1件、読み痕跡17件、関係5件、本報告1件。創作断片・新規問い・新規モチーフ・ツールは追加しない。
 
@@ -25,7 +25,7 @@
 
 これらは今回初めて開いた記録から構成した出発点であって、以前から保持していた記憶ではない。ここから、**「何かが残ること」と「元のものに戻ること」を分けたい**という読みを始めた。保存・再会・学習・消滅・修復を同じ「継続」の語でまとめると、何が見えなくなるのか。
 
-開始時の素材和集合は2,599件だった。題名・出典・本文欄を検索し、下記の作品または指定箇所が未収蔵であることを確認した。追加後の素材は2,604件である。『詩のエッダ』『淮南子』の別篇は既収蔵だが、今回の詩篇・巻とは異なる。新規とは、作品名が一字も重なったことがないという意味ではなく、**今回照合した資料箇所を新しく台帳へ加える**という意味である。
+開始時の素材和集合は2,599件だった。題名・出典・本文欄を検索し、下記の作品または指定箇所が未収蔵であることを確認した。本バッチ追加後の作業基点では2,604件。main統合時は並行バッチの5件も含むため、和集合は2,609件になる。『詩のエッダ』『淮南子』の別篇は既収蔵だが、今回の詩篇・巻とは異なる。新規とは、作品名が一字も重なったことがないという意味ではなく、**今回照合した資料箇所を新しく台帳へ加える**という意味である。
 
 ### 選定と版
 
@@ -284,12 +284,12 @@ GitHubの訂正にも戻せる。誤った行を削除して過去を書き換�
 - [解釈的関係5件](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/relations.d/2026-11-01-c6a72c8fc3c2.jsonl)
 - 既存台帳行は変更しない。`README.md`と`docs/sessions.md`は通常回のB案に従い編集しない。索引は`tools/map_build.py`で和集合から再生成する。
 
-技術検証（2026-11-01、作業ブランチ）：
+技術検証（2026-11-01、main統合後の作業ブランチ。並行バッチ5件を含む和集合で確認）：
 
 - `tools/map_build.py`：`READING_MAP.md`を再生成。`map/`は追跡対象外の生成物。
-- `tools/validate_seed.py`：PASS。questions=406, motifs=59, materials=2604, fragments=237, relations=5899, sessions=359, read_log=7916, editorial_decisions=108。
+- `tools/validate_seed.py`：PASS。questions=406, motifs=59, materials=2609, fragments=237, relations=5903, sessions=360, read_log=7926, editorial_decisions=108。
 - `tools/inspect_inquiry.py --check-map`：PASS。
-- `tools/read_log_backfill.py --check`：PASS。session/context-material pairs 4032/4032。
+- `tools/read_log_backfill.py --check`：PASS。session/context-material pairs 4037/4037。
 - `tools/size_budget.py --strict`：PASS。すべてsoft limit内。
 - `python3 -m unittest discover -s tests`：340 tests、OK。
 - `node --check viewer/app.js`：PASS。
