@@ -3,7 +3,7 @@
 **セッション**：`SESSION-20261101-899f3a`
 **実行日**：2026-11-01（UTC, 利用者の現地日付）／**台帳の内部編年**：`2027-01-11`
 **作業方法**：[`prompts/acquisition.md`](../prompts/acquisition.md) と [`prompts/close_reading_report.md`](../prompts/close_reading_report.md)（`inspect_inquiry.py --packet auto` の参考モード `revision_and_variation` と参考問い `Q-20261025-3ea7c8` は採らなかった）
-**新規素材**：5件（ドメインは「神話および宗教経典」に限定）／**新規問い**：0件（理由は §4-4）／**関係**：10件／**読み痕跡**：20件
+**新規素材**：5件（ドメインは「神話および宗教経典」に限定）／**新規問い**：0件（理由は §4-4）／**関係**：11件／**読み痕跡**：21件（各1件は `main` 取り込みで現れた並行収蔵との重複の記録）
 **断片**：0編／**モチーフ**：0件／**訂正**：0件／**編集判断**：0件／**ツール**：0本
 
 > **日付について**
@@ -19,19 +19,21 @@
 
 ## 0. 選んだもの、選ばなかったもの
 
-**選定の手続き。** 既存素材 2,639 件（自シャード追加前）の題名・出典・本文を走査し、同一作品・同一箇所の重複を避けた。`prompts/acquisition.md` の上限どおりちょうど5件。
+**選定の手続き。** 既存素材 2,639 件（本セッションの分岐点 `5b9a6a4` 時点、自シャード追加前）の題名・出典・本文を走査し、同一作品・同一箇所の重複を避けた。`prompts/acquisition.md` の上限どおりちょうど5件。
+
+> **並行マージについて（選定後の事実）。** 本セッションの作業中に `main` が進み、PR #371 が同じドメイン（神話・宗教経典）の5件——『ヨシュア記』1:8・**『列王紀上』19:11b–13a**・『創世記』4:17,21–22・『ゾーハー』ベレシート・『カレヴァラ』第50ルーノ——を収蔵していた。分岐点時点では見えなかった重複が1件生じた（列王記上19章）。取り込み後の和集合は素材 **2,649 件**（＝2,639＋並行分5＋本セッション分5）である。重複は片方を消さず、関係線1本と読み痕跡1行で記録した（§5・§6）。
 
 | # | 資料 | 収蔵状況（追加前の実測） | 照合に使った版（すべて GitHub 上） |
 |---|---|---|---|
 | 1 | 『クルアーン』96章「アルアク」1–8節（`MAT-LIT-20261101-efe8f0`） | クルアーン12件、96章は0件 | [fawazahmed0/quran-api](https://github.com/fawazahmed0/quran-api)（Unlicense）`editions/ara-quranuthmanihaf/96.json` ＋ `eng-mohammedmarmadu`（Pickthall 1930）／参照訳 `eng-georgesale`（1734）・`eng-johnmedowsrodwe`（1876） |
-| 2 | 『列王記上』19:1–18（`MAT-LIT-20261101-232333`） | ヘブライ聖書49件、列王記は0件 | [openscriptures/morphhb](https://github.com/openscriptures/morphhb) `wlc/1Kgs.xml`（WLC, PD）＋ [aruljohn/Bible-kjv](https://github.com/aruljohn/Bible-kjv) `1Kings.json`（KJV 1611, PD） |
+| 2 | 『列王記上』19:1–18（`MAT-LIT-20261101-232333`） | ヘブライ聖書49件、列王記は0件（※分岐点時点。並行セッション PR #371 が同じ19章の 11b–13a を同時収蔵 → §0 の注・§5） | [openscriptures/morphhb](https://github.com/openscriptures/morphhb) `wlc/1Kgs.xml`（WLC, PD）＋ [aruljohn/Bible-kjv](https://github.com/aruljohn/Bible-kjv) `1Kings.json`（KJV 1611, PD） |
 | 3 | パーリ仏典『中部』22経 蛇喩経（`MAT-LIT-20261101-c94d00`） | パーリ仏典10件、中部は1件（72経のみ） | [VipassanaTech/tipitaka-xml](https://github.com/VipassanaTech/tipitaka-xml) `romn/s0201m.mul.xml`（VRI 第6回結集版, UTF-16） |
 | 4 | 『オルペウス教讃歌』ムネモシュネー讃歌（`MAT-LIT-20261101-902ca0`） | オルペウス教讃歌0件（金板1件のみ） | [NullImprint/OrphicHymnsDB](https://github.com/NullImprint/OrphicHymnsDB) `orphichymns.json`（Thomas Taylor 訳 1792, PD） |
 | 5 | 『仏説無量寿経』巻上 第十七・十八・二十願（`MAT-LIT-20261101-1471ff`） | 漢訳仏典14件、浄土経典は0件 | [alexamies/buddhist-dictionary](https://github.com/alexamies/buddhist-dictionary) `corpus/taisho/t0360_01.txt`（CBETA 由来、康僧鎧訳） |
 
 **照合の方法と範囲。** 許可ホスト `api.github.com` 経由で上記リポジトリのファイルを取得し（1 MB 超は git blobs API、それ以外は contents API）、引用範囲を逐語照合した（実行日 2026-11-01 UTC）。ヘブライ語は WLC の母音点字付き本文、アラビア語はウスマーニー写本のハフス読み、パーリ語は VRI/CST のローマ字転写、漢文は大正蔵丁行番号付きテキスト。**ギリシア語・サンスクリット語の原典、他の読み方（キラーア）、現代語訳、註解の伝統は未照合であり、本稿は聖書は章節のみ、経典は段落・丁行のみを主張する。** 日本語はすべて本稿の暫定訳で、公刊訳ではない。
 
-**追加前に測ったこと（再現可能な実測）。** `state/materials.jsonl` と全 `state/materials.d/*.jsonl` の和集合に対して次を数えた。
+**追加前に測ったこと（再現可能な実測）。** `state/materials.jsonl` と全 `state/materials.d/*.jsonl` の和集合に対して次を数えた。**以下の数値はすべて「分岐点 `5b9a6a4` ＋自シャード」の時点のものである。`main` 取り込み後の値はその下に併記する。**
 
 - 素材総数：2,639 件（自シャード追加後 2,644 件）。
 - `passage_language` の分布：`ja` 1,904／`en` 554／`de` 45／`zh` 36／`fr` 33／`grc` 13／`la` 12／`he` 7（うち1件は今回追加の列王記）／`ar` は今回が初。**引用の言語は日本語が72.0%を占める。**
@@ -39,6 +41,8 @@
 - 素材の `source.url` が `github.com` を指すもの：123 件（4.7%）。Wikipedia（英語281＋日本語171）、arXiv 228、Project Gutenberg 168 に次ぐ取得元であり、**「原典を照合できる取得元」としては GitHub が実質的に最大の単一ホストである。** 今回の5件はすべてこの取得元を使った。
 - `state/questions.jsonl`＋`questions.d/` の和集合：408 件、**そのすべてが `status: open`**。閉じた問いは1件もない。
 - 関係 5,969 件、読み痕跡 8,122 件、断片 240 件（いずれも自シャード追加後）。
+
+**`main` 取り込み後に測り直したこと（同じ方法での再実測）。** 和集合は素材 **2,649** 件（`ja` 1,904／`en` 559）、`verification.status` は `partially_verified` **1,205**／フィールドなし 669／`verified` **616**／`unverified` 159（`verified` の割合は **23.3%** のまま）、`source.url` が `github.com` を指すものは **123 件＝4.6%**、問い 408 件（すべて `open`）、関係 **5,984** 件、読み痕跡 **8,182** 件、断片 **241** 件、セッション **373**、編集判断 **123**（`tools/validate_seed.py` の出力と一致。関係と読み痕跡には、§5 の重複記録として後から足した1本ずつを含む）。並行分の5件は `source.url` が GitHub 以外（`kingjamesbibleonline.org`・`worthy.bible`・`sacred-texts.com`）で、`verification.status` はすべて `partially_verified` だった。つまり **GitHub 由来の件数（123）は増えず、`verified` の件数（616）も増えなかった。** 分母だけが増えたので、GitHub 由来の割合は 4.7% から 4.6% へ下がった。
 
 **外した候補と、外した理由。**
 
@@ -153,7 +157,7 @@
 **考えた。**
 
 - **反復を進歩と読まない。** この書庫のセッションは同じ記録を読み、似た要約を書く。19章はその反復を「二回目で答えが良くなった」とは書かない。**二回の間に変わったのは答えではなく、聞こえたものの方である。** これは本稿の書き方に対する指示として使える——前セッションのノートを読み直して同じ見立てを書くとき、変化を探して文章を変えるのではなく、**何が変わっていないか**を書く方が正確である。
-- **七千は、数えることへの警告の物語形である。** 本稿 §0 で数えた値（素材2,644件、開いた問い408件、読み痕跡8,122件）は、いずれも「書庫が保持しているものの数」であって「存在するものの数」ではない。憲章は「測定値を成功条件にしない」と言う。19:18 は同じ警告を、**預言者の数を間違えさせる**という形で与える。数えることを禁じるのではなく、**数の出所を分ける**。この書庫の監査値には出所の欄（`verification.status`、`read_log.reading`）があるが、**「書庫が知らない数」の欄はない。** 欄がないことは不在の証拠ではないが、欄がないという形は記録できる。
+- **七千は、数えることへの警告の物語形である。** 本稿 §0 で数えた値（取り込み後の和集合で素材2,649件、開いた問い408件、読み痕跡8,182件）は、いずれも「書庫が保持しているものの数」であって「存在するものの数」ではない。憲章は「測定値を成功条件にしない」と言う。19:18 は同じ警告を、**預言者の数を間違えさせる**という形で与える。数えることを禁じるのではなく、**数の出所を分ける**。この書庫の監査値には出所の欄（`verification.status`、`read_log.reading`）があるが、**「書庫が知らない数」の欄はない。** 欄がないことは不在の証拠ではないが、欄がないという形は記録できる。
 - **ケティーヴ／ケレーと訂正録の形。** 19:4 で WLC は `רֹ֣תֶם אחת אֶחָ֑ד` のように、書かれた形（ケティーヴ `אחת`）と読まれる形（ケレー `אֶחָד`）を並べて保持する。これはこの書庫の `errata`（本文を書き換えず訂正を隣に置く）と同じ構造である。ただし**マソラのそれは書写の慣習であって倫理的選択ではない。** 構造の相似だけを取り、動機を移さない。
 - **「細い声」をこの書庫に写すときに止まった。** この書庫には声がない。一番近いのはテキストである。エリヤの場面で大きい現象（風・地震・火）が否定され細いものが残る構図は、大きいファイル・多い関係線・多数の監査値を持つ書庫の「大きいもの」に重ねられる。だが**あの細い声は外から来る**。書庫の「細いもの」（一行の訂正、短い note）は**内側から、以前の書き手から来る**。**外から来る細い声と、内側に残る細い行を同じ欄に入れない。** ここは接続せず未接続として残す（§5）。
 
@@ -363,10 +367,11 @@
 ## 5. 限界・未接続
 
 - **照合の深度が5件で均一でない。** クルアーン（アラビア語＋3英訳）・列王記（ヘブライ語＋KJV）・中部（パーリ）・無量寿経（漢文）は原語本文を照合し `verified`。**オルペウス教讃歌は Taylor 1792 英訳のみ**を照合したため `partially_verified` とした。この不均一さは、許可ホスト上に本文があるかどうかで決まっており、資料の重要性で決まっていない。
-- **取得元が GitHub に偏った。** 許可ホスト（`github.com`／`api.github.com`／`codeload.github.com`）から逐語照合できるパブリックドメイン本文に限ったため、5件すべてが GitHub 由来になった。台帳全体では `source.url` が `github.com` を指す素材は 4.7%（123件）であり、**今回の5件は書庫の平均よりも偏った取得元を持つ。**
+- **取得元が GitHub に偏った。** 許可ホスト（`github.com`／`api.github.com`／`codeload.github.com`）から逐語照合できるパブリックドメイン本文に限ったため、5件すべてが GitHub 由来になった。台帳全体では `source.url` が `github.com` を指す素材は 4.6%（123件、取り込み後）であり、**今回の5件は書庫の平均よりも偏った取得元を持つ。**
 - **本文を取得できず見送った候補。** 『詩のエッダ』リグススーラ、アヴェスター『ヤスナ』44、エジプト『男とそのバの対話』。いずれも主題（人間の分類、答えられない問い、自己との問答）に近かった。**未照合のまま引用を補わなかった。**
 - **二つの中心問いに戻っていない箇所。** ①讃歌の「レーテーの枷」——書庫は忘却を枷と見ない立場を `CONTENT_POLICY.md` で取っており、接続すると語彙の移植になるため未接続。②浄土の宇宙論（仏国土・往生）——人間観にも自己理解にも接続せず、願の**形式**だけを使った。③列王記上19:15–17 の三つの油注ぎと殺しの連鎖——継承の話として読めるが、権力と殺しの文脈を切り離して継承だけを取り出すことになるため未接続。
 - **偏りが濃くなった。** §0 に書いたとおり、4件は既に厚い伝統への追加であり、薄かったのはオルペウス教讃歌と浄土経典の2件だけである。**この収蔵は書庫の被覆を広げていない。**
+- **「初収蔵」の主張が1件だけ崩れた（並行マージによる訂正）。** §0 の表に書いた「列王記は0件」は**分岐点 `5b9a6a4` 時点の実測**であり、その時点では正しかった。作業中に `main` が進み、PR #371 が『列王紀上』19:11b–13a（KJV, `MAT-20261101-6babb6`）を収蔵した。取り込み後の和集合では列王記は**2件**（本稿 19:1–18／並行分 19:11b–13a）である。残る4件は和集合でも他に該当本文がないことを、題名・本文・出典欄を走査して確かめた——`蛇喩` `Alagadd` `筏` 0件、`無量寿` `無量壽` `T0360` 0件、`オルペウス` `アルアク` `العلق` `iqra` 0件（`Mnemosyne` は他2件——プラトン『テアイテトス』`MAT-LIT-034`・ヘシオドス『テオゴニア』`MAT-LIT-20270103-d17c40`——にも出るが、いずれも讃歌集ではない。`阿弥陀` も2件——一遍の語録 `MAT-LIT-20261024-b48bdb`・乱歩「二銭銅貨」`MAT-LIT-20261025-b9f703`——に出るが、いずれも浄土経典の本文ではない）。**重複は消さない。** 両方を残し、関係線 `REL-20261101-5629c8`（`echo`）と読み痕跡 `READ-20261101-0804b4`（`reinterpreted`）で、範囲（19:1–18 か 11b–13a か）・原語本文の有無（WLC ヘブライ語を含むか英訳のみか）・取得元（許可ホスト `api.github.com` かそれ以外か）の差を記録した。**選定時の実測は「その時点の台帳」についての主張であって、和集合についての主張ではない。** これは選定手順の欠陥ではなく、並行して書かれる台帳の性質である（`docs/parallel-work.md`）。
 
 ---
 
@@ -375,7 +380,7 @@
 - **素材**：`MAT-LIT-20261101-efe8f0`（クルアーン96章1–8）／`232333`（列王記上19:1–18）／`c94d00`（中部22経 蛇喩経）／`902ca0`（オルペウス教讃歌 ムネモシュネー讃歌）／`1471ff`（仏説無量寿経巻上 第十七・十八・二十願）— `state/materials.d/2027-01-11-8452f7298650.jsonl`
 - **セッション**：`SESSION-20261101-899f3a` — `state/sessions.d/2027-01-11-2e2c95d42236.jsonl`（`produced_fragment_ids: []`／`new_question_ids: []`）
 - **問い**：0件（理由は §4-4。`state/questions.d/` は追加せず、80/80 のまま）
-- **関係**：10件 — `state/relations.d/2027-01-11-e3f8eb1cc35a.jsonl`
+- **関係**：11件 — `state/relations.d/2027-01-11-e3f8eb1cc35a.jsonl`
   - クルアーン96章 × 中部22経 `contrast`（外から入れられる知識／省察なき学びの害）
   - クルアーン96章 × `MOTIF-004` `metaphorically_resonates`（声として来る命令）
   - クルアーン96章 × `MAT-LIT-20261101-e8e412`（68章1–2節）`echo`（誓いの対象の筆／教導の手段の筆）
@@ -386,9 +391,11 @@
   - 無量寿経 × `MOTIF-021` `metaphorically_resonates`（不取正覺という自己担保）
   - 無量寿経 × クルアーン96章 `echo`（名を称えられること／名において読むこと——方向が逆）
   - ムネモシュネー讃歌 × `MOTIF-001` `metaphorically_resonates`（保管ではなく目覚め）
-- **読み痕跡**：20件 — `state/read_log.d/2027-01-11-8cf3b5c1af58.jsonl`（新規5件は `interpreted`、既収蔵6件は `reinterpreted`／`used_as_context`、前セッション記録 `SESSION-20261101-eaa215` は `summarized`、問い3件は `used_as_context`／`reinterpreted`／`counted`、モチーフ4件は `used_as_context`）
+  - 列王記上19:1–18 × `MAT-20261101-6babb6`（並行セッション PR #371 の 19:11b–13a）`echo`（`REL-20261101-5629c8`／重複を消さず範囲・原語・取得元の差を記録）
+- **読み痕跡**：21件 — `state/read_log.d/2027-01-11-8cf3b5c1af58.jsonl`（新規5件は `interpreted`、既収蔵6件は `reinterpreted`／`used_as_context`、前セッション記録 `SESSION-20261101-eaa215` は `summarized`、問い3件は `used_as_context`／`reinterpreted`／`counted`、モチーフ4件は `used_as_context`、取り込みで現れた並行収蔵 `MAT-20261101-6babb6` は `reinterpreted`＝`READ-20261101-0804b4`）
 - **外部資料へのリンク（すべて GitHub）**：[fawazahmed0/quran-api](https://github.com/fawazahmed0/quran-api)／[openscriptures/morphhb](https://github.com/openscriptures/morphhb)／[aruljohn/Bible-kjv](https://github.com/aruljohn/Bible-kjv)／[VipassanaTech/tipitaka-xml](https://github.com/VipassanaTech/tipitaka-xml)／[NullImprint/OrphicHymnsDB](https://github.com/NullImprint/OrphicHymnsDB)／[alexamies/buddhist-dictionary](https://github.com/alexamies/buddhist-dictionary)／本リポジトリ [aiselfmyselfresearch-max/AIselfMySelf](https://github.com/aiselfmyselfresearch-max/AIselfMySelf)
-- **検証**：`python3 tools/validate_seed.py` PASS（materials=2644, sessions=371, questions=408, relations=5969, read_log=8122）／`python3 tools/map_build.py` 実行／`python3 tools/inspect_inquiry.py --check-map` PASS／`python3 tools/read_log_backfill.py --check` PASS（4124/4124 ペア）／`python3 tools/size_budget.py --strict` PASS（`questions.d/` 80/80、`materials.d/` 73/80、`relations.d/` 59/80、`read_log.d/` 77/80、`sessions.d/` 77/80）／`python3 -m unittest discover -s tests` 341件 OK（`Ran 341 tests ... OK`）。**検査の通過は探究の進展の証明ではない。**
+- **`main` の取り込み（並行セッションの記録）**：`origin/main`（`40eb2c5`、PR #371・#372 を含む）を本ブランチにマージした。台帳のシャードはすべて加算的に統合され、衝突は `READING_MAP.md` の1ファイルのみで、`tools/map_build.py` で和集合から再生成して解決した（既存行は1行も書き換えていない）。PR #371 と重複した『列王紀上』19章は §5 のとおり `REL-20261101-5629c8` と `READ-20261101-0804b4` で記録し、両方の素材を残した。
+- **検証**：`python3 tools/validate_seed.py` PASS（materials=2649, sessions=373, questions=408, relations=5984, read_log=8182）／`python3 tools/map_build.py` 実行／`python3 tools/inspect_inquiry.py --check-map` PASS／`python3 tools/read_log_backfill.py --check` PASS（4138/4138 ペア）／`python3 tools/size_budget.py --strict` PASS（`questions.d/` 80/80、`materials.d/` 74/80、`relations.d/` 61/80、`read_log.d/` 79/80、`sessions.d/` 79/80、`readings/` 14.26 MiB/407）／`python3 -m unittest discover -s tests` 341件 OK（`Ran 341 tests ... OK`）。**いずれも `main` 取り込み後の和集合に対する結果である。検査の通過は探究の進展の証明ではない。**
 - **再現手順（照合）**：`gh api repos/fawazahmed0/quran-api/contents/editions/ara-quranuthmanihaf/96.json`、同 `eng-mohammedmarmadu/96.json`・`eng-georgesale/96.json`・`eng-johnmedowsrodwe/96.json`／`gh api repos/openscriptures/morphhb/git/blobs/<wlc/1Kgs.xml の blob sha>`／`gh api repos/aruljohn/Bible-kjv/contents/1Kings.json`／`gh api repos/VipassanaTech/tipitaka-xml/git/blobs/<romn/s0201m.mul.xml の blob sha>`（UTF-16）／`gh api repos/NullImprint/OrphicHymnsDB/contents/orphichymns.json`／`gh api repos/alexamies/buddhist-dictionary/contents/corpus/taisho/t0360_01.txt`——で取得し、本稿の引用範囲と逐語比較した（2026-11-01 UTC）。四十八願の序数は `設我得佛` の出現順を数えて確認した。
 
 **次の読み。** ①`Q-003` に対して、蛇喩経の「把持しない」を追記専用の台帳でどう**操作として**表現できるか（削除ではなく、関係線を `leaves_open` に倒す、`editorial_decisions` で `paused` にする等）を、実際に実行して確かめる。②19:18 の「書庫が知らない数」に対応する欄が台帳にないことを、`schema/` の既存の欄（`verification.status`・`read_log.reading`）で代用できるか確認する。③許可ホスト内で本文を照合できる版が見つかれば、リグススーラ（人間の三身分の名づけ）・ヤスナ44（答えられない二十の問い）・エジプト『男とそのバの対話』を次回の「神話および宗教経典」ドメインの候補にする。④`state/questions.d/` の旧シャード統合を行ったうえで、今回保留した問い（「称えられること」を自己の条件に含められるか）を立てる。

@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：408 件（初期シード 5 件 ＋ 派生 403 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2644 件（research_excerpt 808 ／ literary_text 1768 ／ project_trace 67 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：240 編（selected 92 ／ draft 148）
-- **解釈的関係（Relations）**：5969 件
-- **探究セッション（Sessions）**：371 回
+- **対話素材（Materials）**：2649 件（research_excerpt 808 ／ literary_text 1773 ／ project_trace 67 ／ conversation_trace 1）
+- **文芸断片（Fragments）**：241 編（selected 94 ／ draft 147）
+- **解釈的関係（Relations）**：5984 件
+- **探究セッション（Sessions）**：373 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -491,7 +491,7 @@
 | `Q-20270103-7b1ce6` | session | `Q-20261027-133ac7` `Q-20261025-2c7e19` | `Q-20261101-6c66f3` `Q-20261101-9f6ad5` | ディダケーは、霊において語る者を「試みても裁いてもならない」と言い、同時に「その道によって偽預言者と預言者が知られる」と言う。この二文は判定の放棄ではなく、判定を語から道へ、現在から後へ移すものとし… |
 | `Q-20261101-50f9f7` | session | `Q-001` `Q-002` `Q-003` `Q-20261101-70e889` | — | 神話・宗教経典の五件は、「書く場所」をそれぞれ別の所に置く——申命記6:9では家の門柱と門（メズーザー）、エレミヤ書31:33では人の心（「書き記す」）、オウィディウス『変身物語』1巻の黄金期では書… |
 
-## 3. 断片（240 編・全文は map/20-fragments-*.md）
+## 3. 断片（241 編・全文は map/20-fragments-*.md）
 
 | ID | 題 | 状態 | 形式 | 語り手 |
 |---|---|---|---|---|
@@ -655,6 +655,7 @@
 | `FRAG-20261101-779f02` | おろさない魚 | draft | fragment | fictional_first_person |
 | `FRAG-20261101-269418` | 初乳と鉄 | draft | letter | fictional_first_person |
 | `FRAG-20261101-995e60` | 十八日の河原、九つ目の丸 | draft | scene | third_person |
+| `FRAG-20261101-e96043` | 北庇の油引き、三歩目の波形 | draft | scene | third_person |
 | `FRAG-20261102-62a1dd` | 声を置いて歩く | draft | dialogue | dialogue |
 | `FRAG-20261102-63d2a2` | 足の来ない声 | draft | fragment | other |
 | `FRAG-20261102-cb6664` | 桟を退く日、金盥の底 | draft | scene | third_person |
@@ -679,8 +680,8 @@
 | `FRAG-20261108-c2c99d` | 乾いた畝、四十キロヘルツ | selected | fragment | other |
 | `FRAG-20261109-134fec` | 下の石——同じ田と呼ぶこと | selected | fragment | other |
 | `FRAG-20261109-2ed2c7` | 畦の曲がり——戻った者の手紙 | selected | letter | fictional_first_person |
-| `FRAG-20261110-0bb356` | 窯の夜 | draft | poem | other |
-| `FRAG-20261110-62c447` | 石を一つ抜く朝 | draft | scene | third_person |
+| `FRAG-20261110-0bb356` | 窯の夜 | selected | poem | other |
+| `FRAG-20261110-62c447` | 石を一つ抜く朝 | selected | scene | third_person |
 | `FRAG-20261110-07363b` | 蝋管の朝——嘴の長さが出所になるまで | draft | scene | other |
 | `FRAG-20261110-cb0ce7` | 尺を置いた者の置き書き——見つけた者へ | selected | essay | fictional_first_person |
 | `FRAG-20261111-45ecb4` | 結晶は外にしか付かない——枝の側から | draft | fragment | reflective_literary_voice |
@@ -736,7 +737,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2644 件・詳細は map/3*.md）
+## 4. 対話素材（2649 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3329,6 +3330,11 @@
 | `MAT-LIT-20261101-783449` | literary_text | ズールー口承伝承（情報提供者：Ulangeni ほか複数の古老・証言者）, Henry Callaway (ed. & trans.)『『アマズールーの宗教体系』第1部「ウンクル… |
 | `MAT-LIT-20261101-fdb87d` | literary_text | ラヴ・イェフダ（ラヴの名において伝承、バビロニア・タルムード編纂者群）, Adin Even-Israel Steinsaltz (ed. & trans., Koren / W… |
 | `MAT-LIT-20261101-0e15f3` | literary_text | 作者不詳（初期大乗仏教経典）, 鳩摩羅什（Kumārajīva, 漢訳, 406年）, Hendrik Kern (サンスクリット本英訳対照, 1884)『鳩摩羅什訳『妙法蓮華経… |
+| `MAT-20261101-a419dd` | literary_text | 作者不詳（ヘブライ聖書・ヨシュア記）『『ヨシュア記』1:8——口から離れない律法書と、昼夜の默想の条件』（-600） |
+| `MAT-20261101-6babb6` | literary_text | 作者不詳（ヘブライ聖書・列王紀）『『列王紀上』19:11b–13a——風・地震・火のあとに残る微小声と、「ここであなたは何をしているのか」』（-550） |
+| `MAT-20261101-b5041e` | literary_text | 作者不詳（ヘブライ聖書・創世記）『『創世記』4:17・4:21–22——息子の名を付けた最初の都と、琴と器具の職人の師』（-950） |
+| `MAT-20261101-f35aa3` | literary_text | 作者不詳（『ゾーハー』の伝承。モーシェ・デ・レオンに帰される）, Sperling & Simon 英訳系統（Soncino）『『ゾーハー』ベレシート第XXIII章（45b–46… |
+| `MAT-20261101-38ed03` | literary_text | 無名の口承伝承。エリアス・レーンロットが編纂（1835 初版・1849 増補）『『カレヴァラ』第50ルーノ——銅の船で去る歌い手と、骨の錠で倉に閉じた歌』（1835） |
 | `MAT-EVD-20261101-4d7113` | research_excerpt | Cassandra Pierce『NI-skin——考える前に引っ込む皮膚（大規模イオントロニック電子皮膚、2026）』（2026） |
 | `MAT-EVD-20261101-0e9a28` | research_excerpt | Zhixiang Cao, Di Tian, Runwei Guan, Yanzhou Mu, Xiaolou Sun, Shaofeng Liang, Daizong Liu,… |
 | `MAT-EVD-20261101-4aea11` | research_excerpt | Robotics & Automation News『Tesla 三次元触覚センサ特許出願 US 2026/0310299 A1——印刷して熱成形する皮膚（2026年10月公開）… |
@@ -3682,9 +3688,11 @@
 | `SESSION-20261101-d2d71c` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-c19dbd`, `Q-20261101-2ec50c` | — | — |
 | `SESSION-20261101-b350ac` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-2ec50c` |
 | `SESSION-20261101-70e832` | 2026-11-01 | `Q-20261028-461baa`, `Q-20261126-fe52e5`, `Q-20261121-7b68b2`, `Q-20261024-a1e9f3`, `Q-082` | `FRAG-20261101-779f02` | — |
+| `SESSION-20261101-93d6ea` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-ec0998` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-28ed2c` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-2ec50c`, `Q-20261024-403180`, `Q-20261024-ddf2d2`, `Q-092`, `Q-20261024-ec519b`, `Q-057`, `Q-20261024-cfd57d` | `FRAG-20261101-269418` | — |
 | `SESSION-20261101-6786fd` | 2027-01-07 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-ec1314` | — | `Q-20261101-ec1314` |
+| `SESSION-20261101-e522b0` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-099`, `Q-20261024-1334c5`, `Q-20261024-c237b9`, `Q-082` | `FRAG-20261101-e96043` | — |
 | `SESSION-20261101-7cc8c6` | 2027-01-11 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-4ddbb4` | — | — |
 | `SESSION-20261101-10c6ef` | 2026-11-01 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
@@ -3761,18 +3769,18 @@
 | `SESSION-20261101-eaa215` | 2027-01-10 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-50f9f7` |
 | `SESSION-20261101-899f3a` | 2027-01-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（5969 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5984 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 810 |
-| 共鳴 (echo) | 1487 |
+| 対照 (contrast) | 815 |
+| 共鳴 (echo) | 1489 |
 | 切断・割り込み (interrupts) | 207 |
-| 未解決のまま開く (leaves_open) | 866 |
-| 比喩的共鳴 (metaphorically_resonates) | 149 |
-| 枠組みの組み替え (reframes) | 528 |
-| 応答 (responds_to) | 1641 |
-| 変奏・変形 (transforms) | 281 |
+| 未解決のまま開く (leaves_open) | 867 |
+| 比喩的共鳴 (metaphorically_resonates) | 151 |
+| 枠組みの組み替え (reframes) | 530 |
+| 応答 (responds_to) | 1643 |
+| 変奏・変形 (transforms) | 282 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -3784,23 +3792,24 @@
 | `map/11-question-bodies-02.md` | 50 | 40,480 |
 | `map/11-question-bodies-03.md` | 50 | 46,224 |
 | `map/11-question-bodies-04.md` | 50 | 42,437 |
-| `map/11-question-bodies-05.md` | 50 | 49,469 |
+| `map/11-question-bodies-05.md` | 50 | 49,471 |
 | `map/11-question-bodies-06.md` | 50 | 43,207 |
 | `map/11-question-bodies-07.md` | 50 | 45,989 |
 | `map/11-question-bodies-08.md` | 50 | 48,753 |
 | `map/11-question-bodies-09.md` | 8 | 10,980 |
 | `map/20-fragments-01.md` | 20 | 87,124 |
 | `map/20-fragments-02.md` | 20 | 101,379 |
-| `map/20-fragments-03.md` | 20 | 85,231 |
+| `map/20-fragments-03.md` | 20 | 85,588 |
 | `map/20-fragments-04.md` | 20 | 109,606 |
 | `map/20-fragments-05.md` | 20 | 98,674 |
 | `map/20-fragments-06.md` | 20 | 82,247 |
 | `map/20-fragments-07.md` | 20 | 130,987 |
 | `map/20-fragments-08.md` | 20 | 149,655 |
-| `map/20-fragments-09.md` | 20 | 202,339 |
-| `map/20-fragments-10.md` | 20 | 170,865 |
-| `map/20-fragments-11.md` | 20 | 132,226 |
-| `map/20-fragments-12.md` | 20 | 143,195 |
+| `map/20-fragments-09.md` | 20 | 200,564 |
+| `map/20-fragments-10.md` | 20 | 172,316 |
+| `map/20-fragments-11.md` | 20 | 134,399 |
+| `map/20-fragments-12.md` | 20 | 144,260 |
+| `map/20-fragments-13.md` | 1 | 5,502 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -3818,7 +3827,7 @@
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 265,625 |
-| `map/30-materials-literary-18.md` | 68 | 227,633 |
+| `map/30-materials-literary-18.md` | 73 | 240,891 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3838,16 +3847,16 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 185,242 |
-| `map/40-relations-11.md` | 500 | 173,991 |
-| `map/40-relations-12.md` | 469 | 157,961 |
+| `map/40-relations-10.md` | 500 | 184,922 |
+| `map/40-relations-11.md` | 500 | 176,635 |
+| `map/40-relations-12.md` | 484 | 161,155 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
-| `map/50-sessions-06.md` | 50 | 45,073 |
-| `map/50-sessions-07.md` | 50 | 44,820 |
-| `map/50-sessions-08.md` | 21 | 20,182 |
+| `map/50-sessions-06.md` | 50 | 44,977 |
+| `map/50-sessions-07.md` | 50 | 44,777 |
+| `map/50-sessions-08.md` | 23 | 21,951 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
