@@ -239,7 +239,7 @@ Gitは、同じ自己であることを保証しない。保証するのは、�
 ## 6. 技術的記録と来歴
 
 - 追加台帳：[`materials.d/2026-11-01-0fcc2dc156ac.jsonl`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/materials.d/2026-11-01-0fcc2dc156ac.jsonl)、[`relations.d/2026-11-01-d4a8887b91c7.jsonl`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/relations.d/2026-11-01-d4a8887b91c7.jsonl)、[`read_log.d/2026-11-01-f67684d15689.jsonl`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/read_log.d/2026-11-01-f67684d15689.jsonl)、[`sessions.d/2026-11-01-086e3e18b1c5.jsonl`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/sessions.d/2026-11-01-086e3e18b1c5.jsonl)。
-- 追加後の台帳：素材2,572、関係5,869、読み痕跡7,829、セッション352。問い405、断片237、モチーフ59は不変。
+- 追加後の台帳（本セッション追加直後・main再合流前の検証時）：素材2,572、関係5,869、読み痕跡7,829、セッション352。問い405、断片237、モチーフ59は不変。並行マージされたmainを再合流したあとは、unionから索引を再生成し、素材2,577、関係5,880、読み痕跡7,829、セッション352となる。
 - 保守統合：別コミット `5390ef6` で、`sessions.d` と `read_log.d` の `2026-11-01-*` 各16ファイルを、それぞれ1つの統合シャードへ移動した。行数は sessions 16、read_log 240。移動前後で全コレクションの行多重集合がバイト単位で等しいことを確認した。探究内容の変更とは混ぜていない。
 - `README.md` と `docs/sessions.md` は、B案により今回の通常回では編集しない。索引は `tools/map_build.py` で再生成する。
 - 検証：`validate_seed.py`、`inspect_inquiry.py --check-map`、`read_log_backfill.py --check`、`size_budget.py --strict` はPASS。単体テストは340件OK。`node --check viewer/app.js` も実行する。検査の通過は、本稿の読解の正しさや探究の進展の証明にはしない。
