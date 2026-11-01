@@ -1409,372 +1409,372 @@
 | `MAT-EVD-20261024-113` | research_excerpt | Brenden M. Lake, Tomer D. Ullman, Joshua B. Tenenbaum, Samuel J. Gershman『Lakeら 人のように学び考え… |
 | `MAT-EVD-20261024-114` | research_excerpt | Sophie Jentzsch, Kristian Kersting『Jentzsch & Kersting ChatGPTのユーモア——1008回のうち25のジョーク』（202… |
 | `MAT-TRC-015` | project_trace | AIselfMySelf Archive『Play and Laughter Audit (SESSION-038)——遊び0、子ども0、笑いは冷笑と苦笑と閉じの身振り』（202… |
-| `MAT-LIT-20261024-99e857` | literary_text | モリエール『モリエール『タルチュフ』』（1664） |
-| `MAT-LIT-20261024-bb08d6` | literary_text | フョードル・ドストエフスキー『ドストエフスキー『悪霊』』（1872） |
-| `MAT-LIT-20261024-c8f323` | literary_text | ナサニエル・ホーソーン『ナサニエル・ホーソーン『緋文字』』（1850） |
-| `MAT-LIT-20261024-8e8de3` | literary_text | ジョゼフ・コンラッド『ジョゼフ・コンラッド『闇の奥』』（1899） |
-| `MAT-LIT-20261024-e8ea7e` | literary_text | ウィリアム・フォークナー『ウィリアム・フォークナー『アブサロム、アブサロム！』』（1936） |
-| `MAT-LIT-20261024-be9653` | literary_text | ヘンリー・ジェイムズ『ヘンリー・ジェイムズ『ねじの回転』』（1898） |
-| `MAT-LIT-20261024-10f7b7` | literary_text | ブラム・ストーカー『ブラム・ストーカー『ドラキュラ』』（1897） |
-| `MAT-LIT-20261024-dad13f` | literary_text | 作者不詳（口承）『『千夜一夜物語』』（1704） |
-| `MAT-LIT-20261024-7f3ff9` | literary_text | マーガレット・アトウッド『マーガレット・アトウッド『証言』（The Testaments）』（2019） |
-| `MAT-LIT-20261024-36ccc5` | literary_text | 魯迅『魯迅「阿Q正伝」』（1921） |
-| `MAT-LIT-20261024-2c929d` | literary_text | 井原西鶴『井原西鶴『西鶴諸国ばなし』』（1685） |
-| `MAT-LIT-20261024-6df593` | literary_text | ヘロドトス『ヘロドトス『歴史』』（-430） |
-| `MAT-LIT-20261024-e7967e` | literary_text | トゥキディデス『トゥキディデス『戦史』』（-400） |
-| `MAT-LIT-20261024-99a7da` | literary_text | アリストテレス『アリストテレス『弁論術』』（-350） |
-| `MAT-LIT-20261024-909302` | literary_text | ジョン・ロック『ジョン・ロック『人間知性論』第四巻』（1690） |
-| `MAT-LIT-20261024-7a51b7` | literary_text | デイヴィッド・ヒューム『デイヴィッド・ヒューム「奇跡について」』（1748） |
-| `MAT-LIT-20261024-6c9770` | literary_text | セーレン・キルケゴール『セーレン・キルケゴール『現代の批判』』（1846） |
-| `MAT-LIT-20261024-f0f8b3` | literary_text | ヴァルター・ベンヤミン『ヴァルター・ベンヤミン「物語作者」』（1936） |
-| `MAT-LIT-20261024-16d883` | literary_text | ポール・リクール『ポール・リクール『記憶、歴史、忘却』』（2000） |
-| `MAT-LIT-20261024-c6921d` | literary_text | イブン・ハルドゥーン『イブン・ハルドゥーン『歴史序説』』（1377） |
-| `MAT-LIT-20261024-6c3e11` | literary_text | C. A. J. Coady『C. A. J. コーディ『証言——哲学的研究』』（1992） |
-| `MAT-LIT-20261024-3984a1` | literary_text | Jennifer Lackey『ジェニファー・ラッキー『言葉から学ぶこと』』（2008） |
-| `MAT-LIT-20261024-1e58c8` | literary_text | Miranda Fricker『ミランダ・フリッカー『認識的不正義』』（2007） |
-| `MAT-LIT-20261024-74c994` | literary_text | Kristie Dotson『クリスティ・ドットソン「認識的暴力を追跡する」』（2011） |
-| `MAT-LIT-20261024-e9e1b4` | literary_text | Steven Shapin『スティーヴン・ショーピン『真理の社会史』』（1994） |
-| `MAT-LIT-20261024-9b51da` | literary_text | Bernard Williams『バーナード・ウィリアムズ『真実と誠実さ』』（2002） |
-| `MAT-LIT-20261024-132899` | literary_text | 鷲田清一『鷲田清一『聴くことの力』』（1993） |
-| `MAT-LIT-20261024-f70200` | literary_text | Arthur W. Frank『アーサー・フランク『傷ついた物語の語り手』』（1995） |
-| `MAT-LIT-20261024-8c25b7` | literary_text | 宮本常一『宮本常一『忘れられた日本人』』（1960） |
-| `MAT-20261024-0e1dd0` | research_excerpt | Gordon W. Allport, Leo Postman『オルポート＆ポストマン『噂の心理学』』（1947） |
-| `MAT-20261024-e467c6` | research_excerpt | Tamotsu Shibutani『タモツ・シブタニ『即興のニュース』』（1966） |
-| `MAT-20261024-2d77b1` | research_excerpt | Jean-Noël Kapferer『ジャン=ノエル・カプフェレ『噂』』（1987） |
-| `MAT-20261024-51e532` | research_excerpt | Jan Harold Brunvand『ジャン・ハロルド・ブランヴァンド『消えるヒッチハイカー』』（1981） |
-| `MAT-20261024-920a20` | research_excerpt | Soroush Vosoughi, Deb Roy, Sinan Aral『ヴォソウギ、ロイ、アラル「オンラインにおける真偽のニュースの拡散」』（2018） |
-| `MAT-20261024-94838a` | research_excerpt | Gordon Pennycook, David G. Rand『ペニークック＆ランド「フェイクニュースの心理学」』（2021） |
-| `MAT-20261024-705203` | research_excerpt | Arkaitz Zubiaga, Maria Liakata, Rob Procter, Geraldine Wong Sak Hoi, Peter Tolmie『ズビアガら「ソ… |
-| `MAT-20261024-996c9f` | research_excerpt | John Zarocostas『ザロコスタス「インフォデミックとどう戦うか」』（2020） |
-| `MAT-20261024-ba536d` | research_excerpt | Saurav Kadavath ほか『カダヴァスら「言語モデルはおおむね自分の知っていることを知っている」』（2022） |
-| `MAT-20261024-3a0b4b` | research_excerpt | Tianyu Gao, Howard Yen, Jiatong Yu, Danqi Chen『ガオら「ALCE——引用付き生成の自動評価」』（2023） |
-| `MAT-20261024-b9ac87` | research_excerpt | Nelson F. Liu, Tianyi Zhang, Percy Liang『リウ、張、リャン「生成検索エンジンにおける検証可能性の評価」』（2023） |
-| `MAT-20261024-9679da` | research_excerpt | Alex Mallen, Akari Asai, Victor Zhong, Rajarshi Das, Daniel Khashabi, Hannaneh Hajishirzi… |
-| `MAT-20261024-18c173` | research_excerpt | Tamera Lanham ほか『ラナムら「思考の連鎖の忠実性を測る」』（2023） |
-| `MAT-20261024-3c2e4f` | research_excerpt | Nouha Dziri ほか『ズィリら「信と運命——合成性に対する変換器の限界」』（2023） |
-| `MAT-20261024-0f0c81` | research_excerpt | Bernd Bohnet ほか『ボーネら「帰属付き質問応答」』（2022） |
-| `MAT-20261024-e84500` | research_excerpt | Andrew Ilyas, Sung Min Park, Logan Engstrom, Guillaume Leclerc, Aleksander Madry『イリヤスら「デー… |
-| `MAT-TRC-020` | project_trace | AIselfMySelf SESSION-20261024-76329d『本リポジトリ自身の痕跡——断片55編の噂0・伝聞0と、資料53.7%・「一節」74.4%が編者要約である… |
-| `MAT-LIT-20261024-e6b215` | literary_text | Elaine Scarry『エレイン・スカーリー『苦痛の身体』——激しい痛みは言葉を壊し、想像が世界を作り直す』（1985） |
-| `MAT-LIT-20261024-0d6628` | literary_text | Georges Canguilhem, Carolyn R. Fawcett (trans.)『ジョルジュ・カンギレム『正常と病理』——病は平均からの逸脱ではなく、狭められた別の… |
-| `MAT-LIT-20261024-eb70d7` | literary_text | Susan Sontag『スーザン・ソンタグ『隠喩としての病』——病を道徳や戦争の比喩から引き剥がす』（1978） |
-| `MAT-LIT-20261024-88d25d` | literary_text | Sophocles『ソポクレス『ピロクテテス』——共同体は弓だけを欲し、癒えない傷の叫びを島へ捨てる』（-409） |
-| `MAT-LIT-20261024-ff195f` | literary_text | Arthur Kleinman『アーサー・クラインマン『病いの語り』——診断される『疾患』と、生きられる『病い』のずれ』（1988） |
-| `MAT-LIT-20261024-d5ce6e` | literary_text | Audre Lorde『オードリー・ロード『キャンサー・ジャーナルズ』——傷跡を『元通り』に隠す沈黙を拒む』（1980） |
-| `MAT-LIT-20261024-cb7738` | literary_text | 北條民雄『北條民雄「いのちの初夜」——『人間ではなくても、いのちだ』という極限の言葉』（1936） |
-| `MAT-LIT-20261024-be24eb` | literary_text | 梶井基次郎『梶井基次郎「冬の日」——微熱と喀血のそばで、消えていく冬の日差しを測る』（1927） |
-| `MAT-LIT-20261024-06311a` | literary_text | 夏目漱石『夏目漱石『思い出す事など』——『三十分の死』の空白は、他者の看護記録からしか届かない』（1910） |
-| `MAT-LIT-20261024-208400` | literary_text | 山上憶良『山上憶良「沈痾自哀文」・「老身重病経年辛苦及思児等歌」——教典の引用が、子らへの気がかりへ崩れる』（733） |
-| `MAT-LIT-20261024-1791b4` | literary_text | Marcus Tullius Cicero『キケロ『老年について』——腕力が退いたあとに、記憶と手入れの仕事が残る』（-44） |
-| `MAT-LIT-20261024-e3ef4c` | literary_text | Simone de Beauvoir『シモーヌ・ド・ボーヴォワール『老い』——老いは他者の視線から告知され、社会から不可視化される』（1970） |
-| `MAT-LIT-20261024-78182d` | literary_text | 世阿弥『世阿弥『花鏡』——老いて枝葉が落ちたあと、『せぬ隙』の繋ぎが芸を支える』（1424） |
-| `MAT-LIT-20261024-f35275` | literary_text | Leo Tolstoy, Louise Maude (trans.), Aylmer Maude (trans.)『レフ・トルストイ『イワン・イリイチの死』——『カイウスは死ぬ』… |
-| `MAT-LIT-20261024-9e4c3b` | literary_text | Vladimir Jankélévitch『ウラジミール・ジャンケレヴィッチ『死』——三人称・二人称・一人称の死は互いに翻訳できない』（1966） |
-| `MAT-LIT-20261024-9647f7` | literary_text | Epicurus『エピクロス『メノイケウス宛書簡』——『私たちがいるとき死はなく、死があるとき私たちはいない』』（-300） |
-| `MAT-LIT-20261024-8e2a3d` | literary_text | 作者未詳（伝・在原業平歌を含む）『『伊勢物語』第百二十五段——『つひにゆく道とはかねて聞きしかど昨日今日とは思はざりしを』』（900） |
-| `MAT-LIT-20261024-c44855` | literary_text | 小林一茶『小林一茶『父の終焉日記』——看病の日付は、祈りと排泄と遺産争いを同じ帳面に記す』（1801） |
-| `MAT-LIT-20261024-6ab84c` | literary_text | Florence Nightingale『フローレンス・ナイチンゲール『看護覚え書』——薬を盛ることではなく、空気と光と静けさを整えること』（1859） |
-| `MAT-LIT-20261024-f741a1` | literary_text | Joan C. Tronto『ジョアン・C・トロント『モラル・バウンダリーズ』——世界を維持・継続・修復する四局面の営みとしてのケア』（1993） |
-| `MAT-LIT-20261024-695e80` | literary_text | Eva Feder Kittay『エヴァ・フェダー・キテイ『愛の労働』——人は皆『ある母の子』であり、依存から始まる』（1999） |
-| `MAT-LIT-20261024-b242cd` | literary_text | Annemarie Mol『アネマリー・モル『ケアの論理』——一度の『選択』ではなく、終わりのない微調整（ティンカリング）』（2008） |
-| `MAT-LIT-20261024-845a44` | literary_text | Albert Camus『アルベール・カミュ『ペスト』——英雄ではなく、統計の向こうの苦しみを記録し職務を続ける者』（1947） |
-| `MAT-LIT-20261024-cada35` | literary_text | Anton Chekhov, Constance Garnett (trans.)『アントン・チェーホフ「六号室」——『痛みは観念にすぎない』と語った医師が、殴られる側に回るとき… |
-| `MAT-LIT-20261024-b06dfb` | literary_text | Jacques Derrida, Pascale-Anne Brault (ed.), Michael Naas (ed.)『ジャック・デリダ『喪の作業』——死者を自分の言葉で語… |
-| `MAT-LIT-20261024-015dec` | literary_text | 柿本人麻呂『柿本人麻呂「泣血哀慟歌」——生前に見た軽の市へ立ち、返らない声の残響を探す』（695） |
-| `MAT-LIT-20261024-686fbe` | literary_text | ハン・ガン（韓江）, 斎藤真理子（訳）『ハン・ガン『すべての、白いものたちの』——生後二時間で亡くなった姉に、自分の身体と白い事物を貸す』（2016） |
-| `MAT-20261024-b795f4` | research_excerpt | Steven J. Jackson『スティーヴン・J・ジャクソン「修理を再考する」——発明ではなく破損と手入れから出発する『壊れた世界思考』』（2014） |
-| `MAT-LIT-20261024-c5afb5` | literary_text | Alois Riegl『アロイス・リーグル『現代の記念物崇拝』——創建時へ戻す『歴史的価値』と、風化を尊ぶ『経年価値』の衝突』（1903） |
-| `MAT-LIT-20261024-f0de30` | literary_text | John Ruskin『ジョン・ラスキン『建築の七燈』「記憶の燈」——『修復』とは建物が被りうる最も徹底的な破壊である』（1849） |
-| `MAT-LIT-20261024-9ab0cd` | literary_text | Cesare Brandi, Cynthia Rockwell (trans.)『チェーザレ・ブランディ『修復の理論』——欠損（ラクーナ）を偽造せず、近づけば識別できる線で繋ぐ』… |
-| `MAT-LIT-20261024-c343e8` | literary_text | 龍泉窯（作陶）, 伊藤東涯（『馬蝗絆茶甌記』撰）『青磁茶碗 銘「馬蝗絆」と伊藤東涯『馬蝗絆茶甌記』——ひびを留めた鉄の鎹が、器の固有名になる』（1727） |
-| `MAT-LIT-20261024-37b031` | literary_text | 司馬遷『司馬遷『史記』「太史公自序」・「報任安書」——取り返せない身体の毀損のあとに、欠けた史料を編む』（-91） |
-| `MAT-LIT-20261024-fc4c32` | literary_text | Richard de Bury, E. C. Thomas (trans.)『リチャード・ド・ベリー『フィロビブロン（書物愛）』——書物自身が、汚れた手と虫食いと修繕の放置を嘆く… |
-| `MAT-20261024-c7e4ae` | research_excerpt | Jeff Rothenberg『ジェフ・ローゼンバーグ「デジタル文書の寿命を保証する」——媒体の劣化より先に、読むための環境が陳腐化する』（1995） |
-| `MAT-20261024-813a0a` | research_excerpt | Algirdas Avizienis, Jean-Claude Laprie, Brian Randell, Carl Landwehr『Avizienisら「高信頼・安全な計算… |
-| `MAT-20261024-942c38` | research_excerpt | D. Sculley, Gary Holt, Daniel Golovin, Eugene Davydov, Todd Phillips, Dietmar Ebner, Vina… |
-| `MAT-20261024-5d49bb` | research_excerpt | Martin Klein, Herbert Van de Sompel, Robert Sanderson, Harihar Shankar, Lyudmila Balakire… |
-| `MAT-20261024-96a1ec` | research_excerpt | Daniel Vela, Andrew Sharp, Richard Zhang, Trang Nguyen, An Hoang, Oleg S. Pianykh『Velaら「A… |
-| `MAT-20261024-3812a0` | research_excerpt | Lingjiao Chen, Matei Zaharia, James Zou『Chen・Zaharia・Zou「ChatGPTの振る舞いは時間とともにどう変化しているか」——同… |
-| `MAT-20261024-54f8f1` | research_excerpt | Lucas Bourtoule, Varun Chandrasekaran, Christopher A. Choquette-Choo, Hengrui Jia, Adelin… |
-| `MAT-20261024-d8cf5f` | research_excerpt | Roi Cohen, Eden Biran, Ori Yoran, Amir Globerson, Mor Geva『Cohenら「言語モデルにおける知識編集の波及効果の評価（R… |
-| `MAT-20261024-886d55` | research_excerpt | Jia-Chen Gu, Hao-Xiang Xu, Jun-Yu Ma, Pan Lu, Zhen-Hua Ling, Kai-Wei Chang, Nanyun Peng『G… |
-| `MAT-20261024-8571c1` | research_excerpt | Inioluwa Deborah Raji, I. Elizabeth Kumar, Aaron Horowitz, Andrew D. Selbst『Rajiら「AI機能性の誤… |
-| `MAT-20261024-d7915e` | research_excerpt | Antoine Cully, Jeff Clune, Danesh Tarapore, Jean-Baptiste Mouret『Cullyら「動物のように適応できるロボット」—… |
-| `MAT-20261024-808e62` | project_trace | AIselfMySelf vulnerability_audit.py『本リポジトリ自身の痕跡：痛み0・手当0・修理0・『無傷』否定形5——48編の語彙監査と769件の参照依存』… |
-| `MAT-LIT-20261024-edf5a3` | literary_text | （編纂者不詳）『『創世記』3章——いちじくの葉と、神が着せる皮の衣』（-500） |
-| `MAT-LIT-20261024-e8e55d` | literary_text | ヘロドトス『ヘロドトス『歴史』第1巻8–12——王妃の衣を脱がせた者に、二つの道』（-430） |
-| `MAT-LIT-20261024-26de53` | literary_text | Thomas Carlyle『トマス・カーライル『衣装哲学（サーター・リサータス）』——世界は衣装である』（1836） |
-| `MAT-LIT-20261024-4a1bd4` | literary_text | Georg Simmel『ゲオルク・ジンメル「装身具」——装うことは、見られたいことである』（1908） |
-| `MAT-LIT-20261024-c12f50` | literary_text | Thorstein Veblen『ソースティン・ヴェブレン『有閑階級の理論』第7章——服装は浪費の証明である』（1899） |
-| `MAT-LIT-20261024-14a544` | literary_text | Roland Barthes『ロラン・バルト『モードの体系』——書かれた衣服だけが意味を持つ』（1967） |
-| `MAT-LIT-20261024-f37824` | literary_text | Anne Hollander『アン・ホランダー『服を透かして見る』——裸体もまた衣装の産物である』（1978） |
-| `MAT-LIT-20261024-fac229` | literary_text | Norbert Elias『ノルベルト・エリアス『宮廷社会』——服と作法が、身体を統制する』（1969） |
-| `MAT-LIT-20261024-7c949a` | literary_text | Nathaniel Hawthorne『ナサニエル・ホーソーン『緋文字』——胸に縫い付けられた一文字』（1850） |
-| `MAT-LIT-20261024-9ca558` | literary_text | ホメロス『ホメロス『オデュッセイア』第2歌・第24歌——織っては解く、ペネロペの機』（-750） |
-| `MAT-LIT-20261024-2f62c6` | literary_text | プラトン『プラトン『国家』第10巻——必然の娘たちが廻す紡錘』（-375） |
-| `MAT-LIT-20261024-536657` | literary_text | 太安万侶（編）『『古事記』上巻——忌服屋に坐して、神御衣を織る天照大御神』（712） |
-| `MAT-LIT-20261024-521d03` | literary_text | 柳田国男『柳田国男『木綿以前の事』——布は、誰が織っていたのか』（1939） |
-| `MAT-LIT-20261024-b46ccc` | literary_text | Anni Albers『アニー・アルバース『織ることについて』——糸は、構造になる』（1965） |
-| `MAT-LIT-20261024-355349` | literary_text | Frederick Douglass『フレデリック・ダグラス『自伝』——綿花と、与えられる衣』（1845） |
-| `MAT-LIT-20261024-d24ed7` | literary_text | Karl Marx『マルクス『資本論』第1巻第8章・第13章——織機の前の労働日』（1867） |
-| `MAT-LIT-20261024-032442` | literary_text | （作者不詳）『『竹取物語』——火鼠の裘と、燃やして試すという鑑定』（900） |
-| `MAT-LIT-20261024-3dc045` | literary_text | 清少納言『清少納言『枕草子』——衣の色目と、季節の着替え』（1000） |
-| `MAT-LIT-20261024-e2e1f4` | literary_text | Michel Foucault『ミシェル・フーコー『監獄の誕生』——制服と、配られる身体』（1975） |
-| `MAT-LIT-20261024-b177b0` | literary_text | Primo Levi『プリーモ・レーヴィ『これが人間か』——番号を縫い付けた服』（1947） |
-| `MAT-LIT-20261024-c025a7` | literary_text | （啓典）『『コーラン』24章31——ヴェールと、見ないことの命令』（650） |
-| `MAT-LIT-20261024-f83eda` | literary_text | （文化史的事象）『一八四〇年のヴィクトリア女王の婚礼着——白は、いつ喪の色でなくなったか』（1840） |
-| `MAT-LIT-20261024-75e4e2` | literary_text | 柳田国男『柳田国男『先祖の話』——喪に服すという、着ない時間』（1946） |
-| `MAT-LIT-20261024-79c7ee` | literary_text | Virginia Woolf『ヴァージニア・ウルフ『オーランドー』——服が性を着替える』（1928） |
-| `MAT-LIT-20261024-26ea60` | literary_text | Harriet Jacobs『ハリエット・ジェイコブズ『ある奴隷少女の記録』——変装が身分を脱ぐ』（1861） |
-| `MAT-LIT-20261024-1cdfc9` | literary_text | （制度史的事象）『学制と詰襟——日本の近代学校が着せたもの』（1872） |
-| `MAT-LIT-20261024-8d067a` | literary_text | 細井和喜蔵『細井和喜蔵『女工哀史』——労働着という、消耗品』（1925） |
-| `MAT-LIT-20261024-7ed5f8` | literary_text | Kenneth Clark『ケネス・クラーク『裸体芸術』——裸（naked）と裸体（nude）のあいだ』（1956） |
-| `MAT-LIT-20261024-ac0fa4` | literary_text | Claude Lévi-Strauss『レヴィ＝ストロース『悲しき熱帯』——顔に描くこと、身につけること』（1955） |
-| `MAT-LIT-20261024-e573a7` | literary_text | Émile Zola『エミール・ゾラ『居酒屋』——洗濯場という、女たちの広場』（1877） |
-| `MAT-LIT-20261024-5e02b3` | literary_text | Walter Benjamin『ヴァルター・ベンヤミン『パサージュ論』——古着拾い（ランピッカー）』（1927） |
-| `MAT-LIT-20261024-f47ded` | literary_text | Charles Dickens『ディケンズ『オリバー・ツイスト』——古着屋と、盗品の上衣』（1838） |
-| `MAT-LIT-20261024-bf48f6` | literary_text | グリム兄弟『グリム『十二羽のカラス』——しゃべらずに縫う、六年間』（1812） |
-| `MAT-LIT-20261024-089e83` | literary_text | 喜田川守貞『喜田川守貞『守貞謾稿』——江戸の古着と、仕立て直し』（1850） |
-| `MAT-LIT-20261024-934b51` | literary_text | Agnès Varda『アニエス・ヴァルダ『落穂拾い』——拾う人と、捨てる人のあいだ』（2000） |
-| `MAT-LIT-20261024-afbbb2` | literary_text | Marcel Proust『プルースト『失われた時を求めて』——祖母の外套と、着る者の不在』（1913） |
-| `MAT-20261024-9bed71` | research_excerpt | Luyang Zhu, Dawei Yang, Tyler Zhu, Fitsum Reda, William Chan, Chitwan Saharia, Mohammad N… |
-| `MAT-20261024-1c84be` | research_excerpt | Yisol Choi, Sangkyung Kwak, Kyungmin Lee, Hyungwon Choi, Jinwoo Shin『Choi et al.「Improvin… |
-| `MAT-20261024-c1c43e` | research_excerpt | Yuhao Xu, Tao Gu, Weifeng Chen, Chengcai Chen『Xu et al.「OOTDiffusion: Outfitting Fusion b… |
+| `MAT-20261024-02b80a` | literary_text | James Macpherson『マクファーソン『オシアン』——古代の署名を、近代の手が代筆する』（1760） |
 | `MAT-20261024-031fd4` | research_excerpt | Zheng Chong, Xiao Dong, Haoxiang Li, Shiyue Zhang, Wenqing Zhang, Xujie Zhang, Dongmei Ji… |
-| `MAT-20261024-bbde9a` | research_excerpt | David Baraff, Andrew Witkin『Baraff & Witkin「Large Steps in Cloth Simulation」（SIGGRAPH 199… |
-| `MAT-20261024-15c1dc` | research_excerpt | 川端季雄, 丹羽雅子『川端季雄と風合い評価——触れずに「手触り」を測る装置（KES-F）』（1972） |
-| `MAT-20261024-daf6b5` | research_excerpt | Levi Strauss & Co., Lalaland.ai『Levi's と Lalaland.ai——多様性を生成した画像と、その撤回（2023）』（2023） |
+| `MAT-20261024-043dea` | research_excerpt | Roy A. Huber, A. M. Headrick『Huber & Headrick『筆跡鑑定』（1999）——類似は、同一の証明ではない』（1999） |
 | `MAT-20261024-05f288` | research_excerpt | AFP, Al Jazeera, The Guardian, BBC『アタカマ砂漠の衣料廃棄——年間およそ三万九千トン』（2024） |
-| `MAT-20261024-11fbc7` | research_excerpt | Re:NewCell AB, Circulose, Altor『Renewcell の破綻と Circulose の再稼働——繊維から繊維へ戻す事業』（2024） |
-| `MAT-20261024-3fb7a6` | project_trace | 本リポジトリ『本リポジトリ自身の痕跡：着る0、洗濯0、脱ぐ0——55編・1,378件・91本の服飾語彙監査』（2026） |
-| `MAT-LIT-20261024-4be7e5` | literary_text | ヘブライ聖書（『創世記』）『『創世記』2–3章——食べてよいものと、食べてはいけないもの』（-500） |
-| `MAT-LIT-20261024-c82bec` | literary_text | ヘブライ聖書（『出エジプト記』）『『出エジプト記』16章——日ごとのマナは、蓄えるほどに腐る』（-500） |
-| `MAT-LIT-20261024-d39e93` | literary_text | 『ヨハネによる福音書』『『ヨハネによる福音書』6章——パンを食べることと、言葉を受け取ること』（90） |
-| `MAT-LIT-20261024-9d8ea3` | literary_text | Plato『プラトン『饗宴』——食事のあとで、愛の語りが始まる』（-385） |
-| `MAT-LIT-20261024-27f846` | literary_text | Aristotle『アリストテレス『魂について』第二巻——栄養を摂ることは、生きることの第一の働き』（-350） |
-| `MAT-LIT-20261024-75cfaa` | literary_text | 莊周（荘子）『『荘子』逍遙遊——旅の糧は、行く距離によって違う』（-300） |
-| `MAT-LIT-20261024-01dce8` | literary_text | パーリ仏典（『相応部』）『『相応部』四食——食物・接触・意志・意識が、生を支える』（-100） |
-| `MAT-LIT-20261024-47df28` | literary_text | 道元『道元『典座教訓』——米と水を扱うことが、修行になる』（1237） |
-| `MAT-LIT-20261024-2370ae` | literary_text | Titus Lucretius Carus『ルクレティウス『物の本質』——身体は、失うものを食物で補う』（-55） |
-| `MAT-LIT-20261024-651323` | literary_text | ヘブライ聖書（『ルツ記』）『『ルツ記』——落ち穂を拾う者にも、食べる場所がある』（-400） |
-| `MAT-LIT-20261024-13c3cc` | literary_text | 孔子（伝）『『論語』郷党——食べ方が、礼と身体の境界を作る』（-400） |
-| `MAT-LIT-20261024-c514ef` | literary_text | パウロ（伝）『『コリントの信徒への手紙一』11章——同じ食卓で、満腹と空腹が分かれる』（55） |
-| `MAT-LIT-20261024-04191b` | literary_text | François Rabelais『ラブレー『ガルガンチュワとパンタグリュエル』——巨大な食欲が、身体と秩序をひらく』（1532） |
-| `MAT-LIT-20261024-7f0c3b` | literary_text | Claude Lévi-Strauss『レヴィ＝ストロース『生と熟』——料理は、自然と文化を結ぶ変換』（1964） |
-| `MAT-LIT-20261024-c6108b` | literary_text | Emmanuel Levinas, Alphonso Lingis (trans.)『レヴィナス『存在の彼方へ』——自分の口からパンを他者へ渡す』（1974） |
-| `MAT-LIT-20261024-f3cc13` | literary_text | Mary Douglas『メアリー・ダグラス『汚穢と禁忌』——食べてよいものは、分類の端で決まる』（1966） |
-| `MAT-LIT-20261024-dee886` | literary_text | Georg Simmel, Michael Symons (trans.)『ジンメル「食事の社会学」——同じ一口は分けられないのに、食事は共にされる』（1910） |
-| `MAT-LIT-20261024-a633db` | literary_text | Knut Hamsun『クヌート・ハムスン『飢え』——空腹が、知覚と文章の順序を乱す』（1890） |
-| `MAT-LIT-20261024-79866f` | literary_text | Franz Kafka『カフカ『変身』——好きだった食べ物が、もう食べられない』（1915） |
-| `MAT-LIT-20261024-574f7f` | literary_text | 芥川龍之介『芥川龍之介『芋粥』——望んだものが目の前にあると、食欲は消える』（1916） |
-| `MAT-LIT-20261024-ec0b50` | literary_text | Jacob Grimm, Wilhelm Grimm『グリム兄弟「ヘンゼルとグレーテル」——食べさせる家が、子どもを食べようとする』（1812） |
-| `MAT-LIT-20261024-b482af` | literary_text | Hans Christian Andersen『アンデルセン「マッチ売りの少女」——ごちそうは、幻のなかでしか温かい』（1845） |
-| `MAT-LIT-20261024-cadc8d` | literary_text | Jonathan Swift『スウィフト『控えめな提案』——栄養と経済の論理が、人を食材に変える』（1729） |
-| `MAT-LIT-20261024-4591ba` | literary_text | Samuel Beckett『ベケット『クラップの最後のテープ』——バナナと録音が、別々に年を取る』（1958） |
-| `MAT-LIT-20261024-564e81` | literary_text | Herman Melville『メルヴィル『白鯨』——共に食べることと、鯨を油に変えることが隣り合う』（1851） |
-| `MAT-LIT-20261024-8bc635` | literary_text | Jean Anthelme Brillat-Savarin『ブリヤ＝サヴァラン『味覚の生理学』——食べることが、人と社会を語る』（1825） |
-| `MAT-LIT-20261024-dc2928` | literary_text | Virginia Woolf『ヴァージニア・ウルフ『灯台へ』——夕食の一時が、後の記憶を照らす』（1927） |
-| `MAT-LIT-20261024-ae483e` | literary_text | 吉本ばなな『吉本ばなな『キッチン』——食事を作ることが、喪失のあとの時間をつなぐ』（1988） |
-| `MAT-LIT-20261024-fe2789` | literary_text | 森茉莉『森茉莉『贅沢貧乏』——乏しさのなかで、何を美味しく贅沢と感じるか』（1963） |
-| `MAT-LIT-20261024-683f83` | literary_text | Sidney W. Mintz『シドニー・ミンツ『甘さと権力』——砂糖の味は、労働と帝国の歴史を含む』（1985） |
-| `MAT-LIT-20261024-c8c158` | literary_text | Michael Pollan『マイケル・ポラン『料理をする』——火・水・空気・土が、自然を食事へ変える』（2013） |
-| `MAT-LIT-20261024-ebed1f` | literary_text | Apicius（伝）『アピシウス『料理書』——短いレシピは、料理人の暗黙知を前提にする』（400） |
-| `MAT-LIT-20261024-e1fbf4` | literary_text | Lewis Carroll『ルイス・キャロル『不思議の国のアリス』——『食べて』『飲んで』が身体を変える』（1865） |
-| `MAT-LIT-20261024-1c9ea4` | literary_text | Rachel Laudan『レイチェル・ラウダン『料理と帝国』——料理は、移動し、訳され、階級を作る』（2013） |
-| `MAT-20261024-b2e917` | research_excerpt | Sarah Holland, Ahmed Hosny, Sarah Newman, Joshua Joseph, Kasia Chmielinski『Hollandら「The D… |
-| `MAT-20261024-8a1aa3` | research_excerpt | Timnit Gebru, Jamie Morgenstern, Briana Vecchione, Jennifer Wortman Vaughan, Hanna Wallac… |
-| `MAT-20261024-3ea787` | research_excerpt | Emily M. Bender, Batya Friedman『Bender & Friedman「Data Statements for NLP」——誰の言葉を誰のために使うか… |
-| `MAT-20261024-38458f` | research_excerpt | Nithya Sambasivan, Shivani Kapania, Hannah Highfill, Diana Akrong, Praveen Paritosh, Lora… |
-| `MAT-20261024-2d4b9b` | research_excerpt | Chunting Zhou, Pengfei Liu, Puxin Xu, et al.『Zhouら「LIMA」——千の選ばれた例は、何を教え、何を教えないか』（2023） |
 | `MAT-20261024-0742fc` | research_excerpt | Suriya Gunasekar, Yi Zhang, Jyoti Aneja, et al.『Gunasekarら「Textbooks Are All You Need」——『… |
-| `MAT-20261024-f191ca` | research_excerpt | Nicholas Carlini, Florian Tramèr, Eric Wallace, et al.『Carliniら「Extracting Training Data」… |
-| `MAT-20261024-d4468d` | research_excerpt | Nicholas Carlini, Matthew Jagielski, Christopher A. Choquette-Choo, et al.『Carliniら「Poiso… |
-| `MAT-20261024-b5cfe3` | research_excerpt | Emma Strubell, Ananya Ganesh, Andrew McCallum『Strubellら「Energy and Policy Considerations」… |
+| `MAT-20261024-0a23bb` | literary_text | 石濤『石濤『画語録』「一画」——最初の一筆が、世界と署名を同時に開く』（1710） |
+| `MAT-20261024-0e1dd0` | research_excerpt | Gordon W. Allport, Leo Postman『オルポート＆ポストマン『噂の心理学』』（1947） |
+| `MAT-20261024-0f0c81` | research_excerpt | Bernd Bohnet ほか『ボーネら「帰属付き質問応答」』（2022） |
+| `MAT-20261024-100d01` | literary_text | Charles Sanders Peirce『パースの指標（index）——煙が火を、署名が手を、指さす』（1902） |
+| `MAT-20261024-10ef70` | research_excerpt | 日本の自治体制度『印鑑登録証明制度—— grooved な石が、本人の代理として市区町村に住む』（1900） |
+| `MAT-20261024-11fbc7` | research_excerpt | Re:NewCell AB, Circulose, Altor『Renewcell の破綻と Circulose の再稼働——繊維から繊維へ戻す事業』（2024） |
+| `MAT-20261024-15c1dc` | research_excerpt | 川端季雄, 丹羽雅子『川端季雄と風合い評価——触れずに「手触り」を測る装置（KES-F）』（1972） |
+| `MAT-20261024-174a19` | research_excerpt | Ronen Eldan, Yuanzhi Li『エルダン＆リー「TinyStories」（2023）——3〜4歳児の語彙に絞れば1000万パラメータ未満でも物語が書ける』（202… |
+| `MAT-20261024-18c173` | research_excerpt | Tamera Lanham ほか『ラナムら「思考の連鎖の忠実性を測る」』（2023） |
+| `MAT-20261024-18ef73` | research_excerpt | Collin Burns, Pavel Izmailov, Jan Hendrik Kirchner, Bowen Baker, Leo Gao, et al.『バーンズら「弱か… |
+| `MAT-20261024-1c84be` | research_excerpt | Yisol Choi, Sangkyung Kwak, Kyungmin Lee, Hyungwon Choi, Jinwoo Shin『Choi et al.「Improvin… |
 | `MAT-20261024-1f8224` | research_excerpt | Roy Schwartz, Jesse Dodge, Noah A. Smith, Oren Etzioni『Schwartzら「Green AI」——正確さだけでなく、効率も成… |
+| `MAT-20261024-24cdc7` | research_excerpt | R. L. Rivest, A. Shamir, L. Adleman『Rivest, Shamir, Adleman「デジタル署名と公開鍵暗号を得る方法」（1978）』（197… |
+| `MAT-20261024-24e6d6` | literary_text | Konrad Kujau, Stern magazine『コンラート・クーヤウとヒトラーの日記——筆跡鑑定が、欲望のほうへ傾く』（1983） |
+| `MAT-20261024-25c76b` | research_excerpt | Eric Mitchell, et al.『Mitchell ら DetectGPT（2023）——対数確率の曲率が、生成の署名になる』（2023） |
+| `MAT-20261024-27ef01` | literary_text | 福沢諭吉『福沢諭吉「独立自尊」の印——標語が、印材の上で自己の制度になる』（1891） |
+| `MAT-20261024-2a1e11` | research_excerpt | Wai Keen Vong, Wentao Wang, A. Emin Orhan, Brenden M. Lake『ヴォン・ワン・オルハン・レイク（2024）——ひとりの幼児の… |
+| `MAT-20261024-2d4b9b` | research_excerpt | Chunting Zhou, Pengfei Liu, Puxin Xu, et al.『Zhouら「LIMA」——千の選ばれた例は、何を教え、何を教えないか』（2023） |
+| `MAT-20261024-2d77b1` | research_excerpt | Jean-Noël Kapferer『ジャン=ノエル・カプフェレ『噂』』（1987） |
+| `MAT-20261024-2ee91d` | literary_text | 紫式部『紫式部『源氏物語』「梅枝」——薫物合わせと、筆跡で人を合わせること』（1008） |
+| `MAT-20261024-3002e8` | literary_text | 本阿弥光悦『本阿弥光悦の書——工芸家の手が、歌と器と字を同じ筆圧でつなぐ』（1615） |
+| `MAT-20261024-3314ba` | research_excerpt | Andrea Agostinelli, Timo I. Denk, Zalán Borsos, et al.『MusicLM (2023)——テキストから24kHzの音楽を生成す… |
+| `MAT-20261024-356ba6` | literary_text | 蘇軾『蘇軾『黄州寒食帖』（1082頃）——左遷の紙が、三大行書の一つになる』（1082） |
+| `MAT-20261024-3812a0` | research_excerpt | Lingjiao Chen, Matei Zaharia, James Zou『Chen・Zaharia・Zou「ChatGPTの振る舞いは時間とともにどう変化しているか」——同… |
+| `MAT-20261024-38458f` | research_excerpt | Nithya Sambasivan, Shivani Kapania, Hannah Highfill, Diana Akrong, Praveen Paritosh, Lora… |
+| `MAT-20261024-3a0b4b` | research_excerpt | Tianyu Gao, Howard Yen, Jiatong Yu, Danqi Chen『ガオら「ALCE——引用付き生成の自動評価」』（2023） |
+| `MAT-20261024-3a10d8` | research_excerpt | Shaozu Yuan, et al.『CalliGAN（2019）——条件付き生成が、存在しない書き手の楷書を書く』（2020） |
+| `MAT-20261024-3c2e4f` | research_excerpt | Nouha Dziri ほか『ズィリら「信と運命——合成性に対する変換器の限界」』（2023） |
+| `MAT-20261024-3c3815` | research_excerpt | Alexei Baevski, Henry Zhou, Abdelrahman Mohamed, Michael Auli『wav2vec 2.0 (2020)——音を聴く前に、… |
+| `MAT-20261024-3ddea0` | literary_text | 古代日本の書記『木簡の荷札——短い字が、荷物と役人のあいだを往復する』（700） |
+| `MAT-20261024-3ea787` | research_excerpt | Emily M. Bender, Batya Friedman『Bender & Friedman「Data Statements for NLP」——誰の言葉を誰のために使うか… |
+| `MAT-20261024-3ecd4b` | literary_text | Giorgio Agamben『ジョルジョ・アガンベン『事物のしるし』（2008）——シグネチャは、記号を別の領野へ移す操作である』（2008） |
+| `MAT-20261024-3fb7a6` | project_trace | 本リポジトリ『本リポジトリ自身の痕跡：着る0、洗濯0、脱ぐ0——55編・1,378件・91本の服飾語彙監査』（2026） |
+| `MAT-20261024-42b7d4` | literary_text | Friedrich Kittler『フリードリヒ・キットラー『グラモフォン・フィルム・タイプライター』（1986）——ニーチェのマラング＝ハンセン』（1986） |
+| `MAT-20261024-4f0eeb` | research_excerpt | David Cope『デイヴィッド・コープ EMI『音楽的知性の実験』(1996)——様式の署名を再結合する』（1996） |
+| `MAT-20261024-51e532` | research_excerpt | Jan Harold Brunvand『ジャン・ハロルド・ブランヴァンド『消えるヒッチハイカー』』（1981） |
+| `MAT-20261024-527b39` | research_excerpt | Alan M. Turing『チューリング『計算する機械と知性』第7節「学習する機械」（1950）——文房具屋の白紙の帳面としての「子どもの心」』（1950） |
+| `MAT-20261024-52d7c8` | research_excerpt | Jade Copet, Felix Kreuk, Itai Gat, et al.『MusicGen (2023)——単段の言語モデルが複数の音響トークン列を並行生成する』（20… |
+| `MAT-20261024-54f8f1` | research_excerpt | Lucas Bourtoule, Varun Chandrasekaran, Christopher A. Choquette-Choo, Hengrui Jia, Adelin… |
+| `MAT-20261024-5d49bb` | research_excerpt | Martin Klein, Herbert Van de Sompel, Robert Sanderson, Harihar Shankar, Lyudmila Balakire… |
+| `MAT-20261024-5f3e41` | research_excerpt | Alex Warstadt, Aaron Mueller, Leshem Choshen, Ethan Wilcox, Chengxu Zhuang, et al.『ウォースタッ… |
+| `MAT-20261024-6b0556` | research_excerpt | Francis Galton『フランシス・ゴルトン『指紋』（1892）——手の紋が、署名に代わる』（1892） |
+| `MAT-20261024-6f80fe` | research_excerpt | Lejaren Hiller, Leonard Isaacson『ヒラー＆アイザクソン『イリアック組曲』(1957)——計算機が書いた最初の譜』（1957） |
+| `MAT-20261024-705203` | research_excerpt | Arkaitz Zubiaga, Maria Liakata, Rob Procter, Geraldine Wong Sak Hoi, Peter Tolmie『ズビアガら「ソ… |
+| `MAT-20261024-7786ee` | literary_text | 空海『空海『風信帖』（弘仁初年）——最澄へ宛てた手紙が、国宝の書になる』（812） |
+| `MAT-20261024-808e62` | project_trace | AIselfMySelf vulnerability_audit.py『本リポジトリ自身の痕跡：痛み0・手当0・修理0・『無傷』否定形5——48編の語彙監査と769件の参照依存』… |
+| `MAT-20261024-813a0a` | research_excerpt | Algirdas Avizienis, Jean-Claude Laprie, Brian Randell, Carl Landwehr『Avizienisら「高信頼・安全な計算… |
+| `MAT-20261024-8571c1` | research_excerpt | Inioluwa Deborah Raji, I. Elizabeth Kumar, Aaron Horowitz, Andrew D. Selbst『Rajiら「AI機能性の誤… |
+| `MAT-20261024-886d55` | research_excerpt | Jia-Chen Gu, Hao-Xiang Xu, Jun-Yu Ma, Pan Lu, Zhen-Hua Ling, Kai-Wei Chang, Nanyun Peng『G… |
+| `MAT-20261024-8a1aa3` | research_excerpt | Timnit Gebru, Jamie Morgenstern, Briana Vecchione, Jennifer Wortman Vaughan, Hanna Wallac… |
+| `MAT-20261024-8df99b` | literary_text | Martin Heidegger『ハイデガー『パルメニデス』講義（1942/43）——手とタイプライター、思考の手仕事』（1942） |
+| `MAT-20261024-912041` | research_excerpt | European Union『eIDAS（EU 910/2014）——適格電子署名が、自署と法的に同等になる』（2014） |
+| `MAT-20261024-920a20` | research_excerpt | Soroush Vosoughi, Deb Roy, Sinan Aral『ヴォソウギ、ロイ、アラル「オンラインにおける真偽のニュースの拡散」』（2018） |
+| `MAT-20261024-924528` | research_excerpt | Sebastian Böck, Markus Schedl『ベック＆シュレドル (2011)——拍は聴く対象から推定する対象になる』（2011） |
 | `MAT-20261024-9348f6` | project_trace | AIselfMySelf Archive『本リポジトリ自身の痕跡：食事0・空腹0——多義の『食』3『味』12（46編監査）』（2026） |
-| `MAT-LIT-20261024-a489c3` | literary_text | Artemidorus of Daldis（アルテミドロス）『アルテミドロス『夢判断（オネイロクリティカ）』——夢を職業と身分で読み分ける』（200） |
-| `MAT-LIT-20261024-bc267d` | literary_text | Macrobius（マクロビウス）『マクロビウス『スキピオの夢註解』——五種の夢と、そのうち二つは偽である』（430） |
-| `MAT-LIT-20261024-d839be` | literary_text | 鳩摩羅什（訳）『『金剛般若経』——一切有為法は夢幻泡影のごとし』（402） |
-| `MAT-LIT-20261024-6c80b8` | literary_text | 和泉式部『『和泉式部日記』——夢に来た人を、日記の出来事として書く』（1003） |
-| `MAT-LIT-20261024-e7768c` | literary_text | 上田秋成『上田秋成『雨月物語』「浅茅が宿」——七年目の妻は、夢か現か』（1776） |
-| `MAT-LIT-20261024-6e78f9` | literary_text | 永井荷風『永井荷風『夢の女』——夢は対象ではなく、見る者の側の病である』（1903） |
-| `MAT-LIT-20261024-c61ba2` | literary_text | 内田百閒『内田百閒『冥途』——夢は覚めても訂正されない』（1922） |
-| `MAT-LIT-20261024-d85e18` | literary_text | 萩原朔太郎『萩原朔太郎『猫町』——夢のなかを歩いたという報告だけが残る』（1935） |
-| `MAT-LIT-20261024-928821` | literary_text | Sigmund Freud（ジークムント・フロイト）『フロイト『夢判断』——夢は眠りの番人である』（1900） |
-| `MAT-LIT-20261024-ee9c00` | literary_text | Aristoteles（アリストテレス）『アリストテレス『睡眠と覚醒について』——眠りは感覚の停止であり、生の境目である』（-350） |
-| `MAT-LIT-20261024-5b2109` | literary_text | René Descartes（ルネ・デカルト）『デカルト『省察』第一省察——眠っていることを、覚醒の側から証明できない』（1641） |
-| `MAT-LIT-20261024-39c9e1` | literary_text | Henri Bergson（アンリ・ベルクソン）『ベルクソン「夢について」——眠りのなかで、記憶が知覚の場所へ上がる』（1901） |
-| `MAT-LIT-20261024-736b02` | literary_text | Friedrich Nietzsche（フリードリヒ・ニーチェ）『ニーチェ『悲劇の誕生』——アポロンの夢と、ディオニュソスの陶酔』（1872） |
-| `MAT-LIT-20261024-6a40cd` | literary_text | Carl Gustav Jung（C. G. ユング）, Aniela Jaffé（編）『ユング『記憶・夢・省察』——夢は人生の一部として語られる』（1962） |
-| `MAT-LIT-20261024-d7e1a0` | literary_text | Gaston Bachelard（ガストン・バシュラール）『バシュラール『夢想の詩学』——眠りの夢と、目覚めた夢想を分ける』（1960） |
-| `MAT-LIT-20261024-f3abb1` | literary_text | Jean-Jacques Rousseau（ジャン＝ジャック・ルソー）『ルソー『孤独な散歩者の夢想』——存在することを、夢想のなかで確かめる』（1782） |
-| `MAT-LIT-20261024-23f03e` | literary_text | Emmanuel Levinas（エマニュエル・レヴィナス）『レヴィナス『実存から実存者へ』——不眠は、主体のいない覚醒である』（1947） |
-| `MAT-LIT-20261024-7ca1b0` | literary_text | Arthur Schopenhauer（アルトゥール・ショーペンハウアー）『ショーペンハウアー『余録』「夢について」——人生と夢は同じ書物の頁である』（1851） |
-| `MAT-LIT-20261024-c2a856` | literary_text | Jorge Luis Borges（ホルヘ・ルイス・ボルヘス）『ボルヘス「円環の廃墟」——夢みられた者は、自分が夢であることを知る』（1940） |
-| `MAT-LIT-20261024-e7583c` | literary_text | Franz Kafka（フランツ・カフカ）『カフカ「田舎医者」——夜の鐘に一度応じたら、取り返しはつかない』（1919） |
-| `MAT-LIT-20261024-fb1f12` | literary_text | William Shakespeare（ウィリアム・シェイクスピア）『シェイクスピア『テンペスト』——われらは夢が織るもの、小さな生は眠りに囲まれる』（1611） |
-| `MAT-LIT-20261024-9be713` | literary_text | Edgar Allan Poe（エドガー・アラン・ポー）『ポー「夢のなかの夢」——見るもの、見えるものはすべて夢のうちの夢』（1849） |
-| `MAT-LIT-20261024-e8d6ec` | literary_text | Juan Rulfo（フアン・ルルフォ）『ルルフォ『ペドロ・パラモ』——死者の声が、生きている者の声と同じ調子で語る』（1955） |
-| `MAT-LIT-20261024-28b23f` | literary_text | E. T. A. Hoffmann（E.T.A. ホフマン）『ホフマン「砂男」——人形を人と見まちがえるのは、目ではなく愛である』（1816） |
-| `MAT-LIT-20261024-c59e79` | literary_text | Mary Shelley（メアリ・シェリー）『シェリー『フランケンシュタイン』——作った者は、夢のなかで作ったものに会う』（1818） |
-| `MAT-LIT-20261024-d205b5` | literary_text | Philip K. Dick（フィリップ・K・ディック）『ディック『アンドロイドは電気羊の夢を見るか?』——共感を測る試験と、夢の題』（1968） |
-| `MAT-LIT-20261024-e85cfe` | literary_text | Villiers de l'Isle-Adam（ヴィリエ・ド・リラダン）『ヴィリエ・ド・リラダン『未来のイヴ』——理想の女を作り、理想が破れる』（1886） |
-| `MAT-LIT-20261024-e96802` | literary_text | Jonathan Crary（ジョナサン・クレーリー）『クレーリー『24/7』——眠りは、資本が最後まで手を出せない残余である』（2013） |
-| `MAT-LIT-20261024-e1c170` | literary_text | Matthew Walker（マシュー・ウォーカー）『ウォーカー『睡眠こそ最強の解決策である』——眠りは記憶の整理である』（2017） |
-| `MAT-LIT-20261024-264aeb` | literary_text | Charlotte Perkins Gilman（シャーロット・パーキンス・ギルマン）『ギルマン「黄色い壁紙」——眠らされ、書くことを禁じられた者が、壁を読む』（1892） |
-| `MAT-LIT-20261024-806511` | literary_text | Paul Auster（ポール・オースター）『オースター『ムーン・パレス』——不眠の者が、歩くことで時間を消費する』（1989） |
-| `MAT-LIT-20261024-ed9707` | literary_text | 徳永直『徳永直『太陽のない街』——印刷機は止まらず、夜は労働の内側にある』（1929） |
-| `MAT-LIT-20261024-bec223` | literary_text | Fyodor Dostoevsky（フョードル・ドストエフスキー）『ドストエフスキー『地下室の手記』——眠らずに考えることは、休息の拒否である』（1864） |
-| `MAT-LIT-20261024-d1f115` | literary_text | Bertrand Russell（バートランド・ラッセル）『ラッセル『怠惰への賛美』——休息は、思索の条件である』（1932） |
-| `MAT-LIT-20261024-e70304` | literary_text | A. Roger Ekirch（ロジャー・エキルヒ）『エキルヒ『日の暮れるころ』——眠りは二度に分かれ、その間に「見張り」があった』（2005） |
-| `MAT-LIT-20261024-60c2e1` | literary_text | Georges Perec（ジョルジュ・ペレック）『ペレック『眠っている男』——眠りのなかへ退却する、二人称の小説』（1967） |
-| `MAT-EVD-20261024-ce9067` | research_excerpt | Geoffrey E. Hinton, Peter Dayan, Brendan J. Frey, Radford M. Neal『Hinton et al.「覚醒—睡眠アルゴリ… |
-| `MAT-EVD-20261024-fb273d` | research_excerpt | James L. McClelland, Bruce L. McNaughton, Randall C. O'Reilly『McClelland et al.「補完的学習系」——… |
-| `MAT-EVD-20261024-ba5de8` | research_excerpt | James Kirkpatrick, Razvan Pascanu, Neil Rabinowitz, Joel Veness, Guillaume Desjardins, et… |
-| `MAT-EVD-20261024-e87a91` | research_excerpt | Hanul Shin, Jung Kwon Lee, Jaehong Kim, Jiwon Kim『Shin et al.「生成的リプレイによる継続学習」——過去を保存せず、過去… |
-| `MAT-EVD-20261024-5f33b1` | research_excerpt | David Ha, Jürgen Schmidhuber『Ha & Schmidhuber「World Models」——自分のモデルの夢のなかで練習する』（2018） |
-| `MAT-EVD-20261024-7fae71` | research_excerpt | Danijar Hafner, Jurgis Pasukonis, Jimmy Ba, Timothy Lillicrap『Hafner et al.「DreamerV3」——想… |
-| `MAT-EVD-20261024-239af1` | research_excerpt | Timothy Tadros, Giri P. Krishnan, Ramyaa Ramyaa, Maxim Bazhenov『Tadros et al.「睡眠様の無監督再生」—… |
-| `MAT-EVD-20261024-5f796a` | research_excerpt | Kevin Lin, Charlie Snell, Yu Wang, Charles Packer, Sarah Wooders, Ion Stoica, Joseph E. G… |
+| `MAT-20261024-942c38` | research_excerpt | D. Sculley, Gary Holt, Daniel Golovin, Eugene Davydov, Todd Phillips, Dietmar Ebner, Vina… |
+| `MAT-20261024-94838a` | research_excerpt | Gordon Pennycook, David G. Rand『ペニークック＆ランド「フェイクニュースの心理学」』（2021） |
+| `MAT-20261024-9679da` | research_excerpt | Alex Mallen, Akari Asai, Victor Zhong, Rajarshi Das, Daniel Khashabi, Hannaneh Hajishirzi… |
+| `MAT-20261024-96a1ec` | research_excerpt | Daniel Vela, Andrew Sharp, Richard Zhang, Trang Nguyen, An Hoang, Oleg S. Pianykh『Velaら「A… |
+| `MAT-20261024-9836c2` | literary_text | 董其昌『董其昌『画禅室随筆』——筆跡の気韻は、模写では届かないとされる』（1630） |
+| `MAT-20261024-98f577` | literary_text | 王羲之『王羲之『蘭亭序』（353）——原本は昭陵へ入り、天下は摹本で生きる』（353） |
+| `MAT-20261024-996c9f` | research_excerpt | John Zarocostas『ザロコスタス「インフォデミックとどう戦うか」』（2020） |
+| `MAT-20261024-9bed71` | research_excerpt | Luyang Zhu, Dawei Yang, Tyler Zhu, Fitsum Reda, William Chan, Chitwan Saharia, Mohammad N… |
+| `MAT-20261024-9d35a2` | research_excerpt | Alphonse Bertillon『アルフォンス・ベルティヨンの人体測定——身体を、署名の欄へ分解する』（1883） |
+| `MAT-20261024-9dc358` | research_excerpt | Alex Graves『Alex Graves「リカレントネットによる系列生成」（2013）——筆跡を、次の点の予測として合成する』（2013） |
+| `MAT-20261024-a24c42` | research_excerpt | Git project『Git のコミット署名——履歴の一行に、GPG の手が触れたかを後から問う』（2009） |
+| `MAT-20261024-a791a7` | research_excerpt | Michael C. Frank, Mika Braginsky, Daniel Yurovsky, Virginia A. Marchman『フランクら『初期言語学習における個… |
+| `MAT-20261024-a7c5ef` | research_excerpt | Yoshua Bengio, Jérôme Louradour, Ronan Collobert, Jason Weston『ベンジオら「カリキュラム学習」（2009）——易しい… |
+| `MAT-20261024-b1c3aa` | literary_text | 顔真卿『顔真卿『祭姪文稿』（758）——塗りつぶした三十四字が、真跡を作る』（758） |
+| `MAT-20261024-b1d32a` | research_excerpt | Linda B. Smith, Swapnaa Jayaraman, Elizabeth Clerkin, Chen Yu『リンダ・B・スミスら（2018）——発達する乳児の身体… |
+| `MAT-20261024-b2e917` | research_excerpt | Sarah Holland, Ahmed Hosny, Sarah Newman, Joshua Joseph, Kasia Chmielinski『Hollandら「The D… |
+| `MAT-20261024-b31cfd` | literary_text | Jacques Derrida『ジャック・デリダ「署名、出来事、コンテクスト」（1972）——読める署名は、模倣可能な署名である』（1972） |
+| `MAT-20261024-b5cfe3` | research_excerpt | Emma Strubell, Ananya Ganesh, Andrew McCallum『Strubellら「Energy and Policy Considerations」… |
+| `MAT-20261024-b795f4` | research_excerpt | Steven J. Jackson『スティーヴン・J・ジャクソン「修理を再考する」——発明ではなく破損と手入れから出発する『壊れた世界思考』』（2014） |
+| `MAT-20261024-b9ac87` | research_excerpt | Nelson F. Liu, Tianyi Zhang, Percy Liang『リウ、張、リャン「生成検索エンジンにおける検証可能性の評価」』（2023） |
+| `MAT-20261024-ba536d` | research_excerpt | Saurav Kadavath ほか『カダヴァスら「言語モデルはおおむね自分の知っていることを知っている」』（2022） |
+| `MAT-20261024-bbde9a` | research_excerpt | David Baraff, Andrew Witkin『Baraff & Witkin「Large Steps in Cloth Simulation」（SIGGRAPH 199… |
+| `MAT-20261024-c1c43e` | research_excerpt | Yuhao Xu, Tao Gu, Weifeng Chen, Chengcai Chen『Xu et al.「OOTDiffusion: Outfitting Fusion b… |
+| `MAT-20261024-c5c5db` | research_excerpt | 日本法令『電子署名法（平成12年法律第102号）第三条——本人の電子署名は、真正成立を推定する』（2000） |
+| `MAT-20261024-c7e4ae` | research_excerpt | Jeff Rothenberg『ジェフ・ローゼンバーグ「デジタル文書の寿命を保証する」——媒体の劣化より先に、読むための環境が陳腐化する』（1995） |
+| `MAT-20261024-c9076a` | research_excerpt | John Kirchenbauer, Jonas Geiping, Yuxin Wen, Jonathan Katz, Ian Miers, Tom Goldstein『Kirc… |
+| `MAT-20261024-ca6b28` | literary_text | 八大山人（朱耷）『八大山人の落款「哭之」「笑之」——印が、泣くと笑うを切り替える』（1700） |
+| `MAT-20261024-ce368a` | research_excerpt | Coalition for Content Provenance and Authenticity『C2PA コンテンツクレデンシャル——生成物に、来歴のシールを貼る』（2021） |
+| `MAT-20261024-cec56e` | literary_text | 日本中世の文書行政『花押——名前を図案化し、再現可能な独自さとして据える』（1200） |
+| `MAT-20261024-d1e3c9` | literary_text | William Shakespeare『シェイクスピアの六つの署名——作品は folios、手は法律文書にしか残らない』（1616） |
+| `MAT-20261024-d2fe71` | project_trace | AIselfMySelf signature_audit.py『本リポジトリ自身の痕跡——手書きの真跡は薄く、署名は制度語として散在し、落款のない続きが積まれる』（2026） |
+| `MAT-20261024-d4468d` | research_excerpt | Nicholas Carlini, Matthew Jagielski, Christopher A. Choquette-Choo, et al.『Carliniら「Poiso… |
+| `MAT-20261024-d50380` | research_excerpt | Jenny R. Saffran, Richard N. Aslin, Elissa L. Newport『サフラン・アスリン・ニューポート（1996）——生後8か月の乳児は2分… |
+| `MAT-20261024-d7915e` | research_excerpt | Antoine Cully, Jeff Clune, Danesh Tarapore, Jean-Baptiste Mouret『Cullyら「動物のように適応できるロボット」—… |
+| `MAT-20261024-d8cf5f` | research_excerpt | Roi Cohen, Eden Biran, Ori Yoran, Amir Globerson, Mor Geva『Cohenら「言語モデルにおける知識編集の波及効果の評価（R… |
+| `MAT-20261024-d954ea` | research_excerpt | Recording Industry Association of America『RIAA 対 Suno／Udio（2024）——録音物の学習をめぐる二つの訴え』（2024） |
+| `MAT-20261024-d99f4e` | literary_text | Henri Focillon『アンリ・フォシヨン『手の礼讃』（1934）——知は、手の抵抗から形を得る』（1934） |
+| `MAT-20261024-daf6b5` | research_excerpt | Levi Strauss & Co., Lalaland.ai『Levi's と Lalaland.ai——多様性を生成した画像と、その撤回（2023）』（2023） |
+| `MAT-20261024-df1033` | literary_text | Jewish scribal tradition (sofer)『トーラーのソフェル——印刷では無効、手で書かれなければ法でない』（200） |
+| `MAT-20261024-e44afa` | literary_text | 良寛『良寛の遺墨——歌の本文より、墨の渇きが「本人」と呼ばれる』（1825） |
+| `MAT-20261024-e467c6` | research_excerpt | Tamotsu Shibutani『タモツ・シブタニ『即興のニュース』』（1966） |
+| `MAT-20261024-e84500` | research_excerpt | Andrew Ilyas, Sung Min Park, Logan Engstrom, Guillaume Leclerc, Aleksander Madry『イリヤスら「デー… |
+| `MAT-20261024-ed83a9` | literary_text | 紫式部『紫式部日記——人の手を見て、文の品を先に測る宮廷』（1010） |
+| `MAT-20261024-f07770` | literary_text | 奈良時代の貢進者・書記『正倉院文書の調庸墨書——税としての布に、郡と名を墨で書く』（740） |
+| `MAT-20261024-f191ca` | research_excerpt | Nicholas Carlini, Florian Tramèr, Eric Wallace, et al.『Carliniら「Extracting Training Data」… |
+| `MAT-20261024-f1a6a8` | literary_text | Han van Meegeren『ハン・ファン・メーヘレンのフェルメール——様式の署名を、化学が取り消す』（1937） |
+| `MAT-20261024-f21305` | research_excerpt | Jinglin Liu, Chengxi Li, Yi Ren, et al.『DiffSinger (2022)——楽譜を条件に「歌う声」を合成する』（2022） |
+| `MAT-20261024-f6c4fa` | research_excerpt | Philip Zimmermann『フィル・ジマーマン PGP（1991）——信頼の輪が、未知の手を署名でつなぐ』（1991） |
+| `MAT-20261024-f751c7` | research_excerpt | Li-Chia Yang, Alexander Lerch『ヤン＆レルヒ (2020)——生成音楽の評価は何を測っているのか』（2020） |
+| `MAT-20261024-f8aa24` | literary_text | 伝紀貫之（帰属は後世）『『高野切』第一種——古今集の古筆切が、作者不明のまま手鑑の見本になる』（1050） |
+| `MAT-20261024-ff1d5f` | literary_text | 清少納言『清少納言『枕草子』「文字は」——見た目の字が、書き手の品を先に決める』（1001） |
+| `MAT-20261024-ff9b7c` | research_excerpt | Geoffrey Hinton, Oriol Vinyals, Jeff Dean『ヒントン・ヴィニャルス・ディーン「ニューラルネットワークにおける知識の蒸留」（2015）——教… |
 | `MAT-EVD-20261024-16d677` | research_excerpt | Robert Long, Jeff Sebo, Patrick Butlin, Kathleen Finlinson, Kyle Fish, et al.『Long & Sebo… |
+| `MAT-EVD-20261024-239af1` | research_excerpt | Timothy Tadros, Giri P. Krishnan, Ramyaa Ramyaa, Maxim Bazhenov『Tadros et al.「睡眠様の無監督再生」—… |
+| `MAT-EVD-20261024-5f33b1` | research_excerpt | David Ha, Jürgen Schmidhuber『Ha & Schmidhuber「World Models」——自分のモデルの夢のなかで練習する』（2018） |
+| `MAT-EVD-20261024-5f796a` | research_excerpt | Kevin Lin, Charlie Snell, Yu Wang, Charles Packer, Sarah Wooders, Ion Stoica, Joseph E. G… |
 | `MAT-EVD-20261024-7c5bd8` | research_excerpt | Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Andrei A. Rusu, Joel Veness, et al.『Mnih… |
-| `MAT-TRC-016` | project_trace | AIselfMySelf Archive『本リポジトリ自身の痕跡：眠り1・夢4・目覚め5／時刻付きフィールド2・日付のみ977（43編監査）』（2026） |
-| `MAT-LIT-20261024-58fcbe` | literary_text | Hannah Arendt『ハンナ・アーレント『人間の条件』第1章・第5章第24節——誕生性（natality）と始まりとしての人間』（1958） |
+| `MAT-EVD-20261024-7fae71` | research_excerpt | Danijar Hafner, Jurgis Pasukonis, Jimmy Ba, Timothy Lillicrap『Hafner et al.「DreamerV3」——想… |
+| `MAT-EVD-20261024-ba5de8` | research_excerpt | James Kirkpatrick, Razvan Pascanu, Neil Rabinowitz, Joel Veness, Guillaume Desjardins, et… |
+| `MAT-EVD-20261024-ce9067` | research_excerpt | Geoffrey E. Hinton, Peter Dayan, Brendan J. Frey, Radford M. Neal『Hinton et al.「覚醒—睡眠アルゴリ… |
+| `MAT-EVD-20261024-e87a91` | research_excerpt | Hanul Shin, Jung Kwon Lee, Jaehong Kim, Jiwon Kim『Shin et al.「生成的リプレイによる継続学習」——過去を保存せず、過去… |
+| `MAT-EVD-20261024-fb273d` | research_excerpt | James L. McClelland, Bruce L. McNaughton, Randall C. O'Reilly『McClelland et al.「補完的学習系」——… |
+| `MAT-LIT-20261024-00839a` | literary_text | Friedrich Nietzsche『ニーチェ『悲劇の誕生』§2・§5——歌う群衆から俳優が分かれる』（1872） |
+| `MAT-LIT-20261024-015dec` | literary_text | 柿本人麻呂『柿本人麻呂「泣血哀慟歌」——生前に見た軽の市へ立ち、返らない声の残響を探す』（695） |
+| `MAT-LIT-20261024-01dce8` | literary_text | パーリ仏典（『相応部』）『『相応部』四食——食物・接触・意志・意識が、生を支える』（-100） |
+| `MAT-LIT-20261024-032442` | literary_text | （作者不詳）『『竹取物語』——火鼠の裘と、燃やして試すという鑑定』（900） |
+| `MAT-LIT-20261024-03bd13` | literary_text | Lev Semyonovich Vygotsky『レフ・ヴィゴツキー『思考と言語』第4・第7章（1934）——他者への発話が内言へ沈むこと、発達の最近接領域』（1934） |
+| `MAT-LIT-20261024-04191b` | literary_text | François Rabelais『ラブレー『ガルガンチュワとパンタグリュエル』——巨大な食欲が、身体と秩序をひらく』（1532） |
+| `MAT-LIT-20261024-06311a` | literary_text | 夏目漱石『夏目漱石『思い出す事など』——『三十分の死』の空白は、他者の看護記録からしか届かない』（1910） |
+| `MAT-LIT-20261024-089e83` | literary_text | 喜田川守貞『喜田川守貞『守貞謾稿』——江戸の古着と、仕立て直し』（1850） |
+| `MAT-LIT-20261024-0d6628` | literary_text | Georges Canguilhem, Carolyn R. Fawcett (trans.)『ジョルジュ・カンギレム『正常と病理』——病は平均からの逸脱ではなく、狭められた別の… |
+| `MAT-LIT-20261024-0ead3d` | literary_text | John Locke『ジョン・ロック『教育に関する考察』（1693）——水源の流れをわずかに変える幼少期の習慣と実例』（1693） |
+| `MAT-LIT-20261024-0fa2cf` | literary_text | 長唄『長唄・三味線の稽古——録音以前、細部はどこに保存されていたか』（1850） |
+| `MAT-LIT-20261024-10f7b7` | literary_text | ブラム・ストーカー『ブラム・ストーカー『ドラキュラ』』（1897） |
+| `MAT-LIT-20261024-132899` | literary_text | 鷲田清一『鷲田清一『聴くことの力』』（1993） |
+| `MAT-LIT-20261024-13c3cc` | literary_text | 孔子（伝）『『論語』郷党——食べ方が、礼と身体の境界を作る』（-400） |
+| `MAT-LIT-20261024-14a544` | literary_text | Roland Barthes『ロラン・バルト『モードの体系』——書かれた衣服だけが意味を持つ』（1967） |
+| `MAT-LIT-20261024-16d883` | literary_text | ポール・リクール『ポール・リクール『記憶、歴史、忘却』』（2000） |
+| `MAT-LIT-20261024-1720dc` | literary_text | Aristoxenus『アリストクセノス『ハルモニアの諸元素』——判断は耳に属する』（-330） |
+| `MAT-LIT-20261024-1791b4` | literary_text | Marcus Tullius Cicero『キケロ『老年について』——腕力が退いたあとに、記憶と手入れの仕事が残る』（-44） |
+| `MAT-LIT-20261024-1c9ea4` | literary_text | Rachel Laudan『レイチェル・ラウダン『料理と帝国』——料理は、移動し、訳され、階級を作る』（2013） |
+| `MAT-LIT-20261024-1cdfc9` | literary_text | （制度史的事象）『学制と詰襟——日本の近代学校が着せたもの』（1872） |
+| `MAT-LIT-20261024-1e58c8` | literary_text | Miranda Fricker『ミランダ・フリッカー『認識的不正義』』（2007） |
+| `MAT-LIT-20261024-208400` | literary_text | 山上憶良『山上憶良「沈痾自哀文」・「老身重病経年辛苦及思児等歌」——教典の引用が、子らへの気がかりへ崩れる』（733） |
 | `MAT-LIT-20261024-2176ae` | literary_text | Plato『プラトン『テアイテトス』148e–151d——ソクラテスの産婆術：自ら産めない者が産むのを助ける』（-369） |
+| `MAT-LIT-20261024-2370ae` | literary_text | Titus Lucretius Carus『ルクレティウス『物の本質』——身体は、失うものを食物で補う』（-55） |
+| `MAT-LIT-20261024-23f03e` | literary_text | Emmanuel Levinas（エマニュエル・レヴィナス）『レヴィナス『実存から実存者へ』——不眠は、主体のいない覚醒である』（1947） |
+| `MAT-LIT-20261024-25c206` | literary_text | Roman Jakobson『ロマン・ヤコブソン『児童言語、失語症および一般音韻法則』（1941）——喃語の過剰を失うことで母語を得る』（1941） |
+| `MAT-LIT-20261024-264aeb` | literary_text | Charlotte Perkins Gilman（シャーロット・パーキンス・ギルマン）『ギルマン「黄色い壁紙」——眠らされ、書くことを禁じられた者が、壁を読む』（1892） |
+| `MAT-LIT-20261024-26de53` | literary_text | Thomas Carlyle『トマス・カーライル『衣装哲学（サーター・リサータス）』——世界は衣装である』（1836） |
+| `MAT-LIT-20261024-26ea60` | literary_text | Harriet Jacobs『ハリエット・ジェイコブズ『ある奴隷少女の記録』——変装が身分を脱ぐ』（1861） |
+| `MAT-LIT-20261024-27f846` | literary_text | Aristotle『アリストテレス『魂について』第二巻——栄養を摂ることは、生きることの第一の働き』（-350） |
+| `MAT-LIT-20261024-28b23f` | literary_text | E. T. A. Hoffmann（E.T.A. ホフマン）『ホフマン「砂男」——人形を人と見まちがえるのは、目ではなく愛である』（1816） |
+| `MAT-LIT-20261024-2b909c` | literary_text | 折口信夫『折口信夫「国文学の発生」——呪言から歌へ、反復が時間を作る』（1924） |
+| `MAT-LIT-20261024-2c929d` | literary_text | 井原西鶴『井原西鶴『西鶴諸国ばなし』』（1685） |
+| `MAT-LIT-20261024-2f62c6` | literary_text | プラトン『プラトン『国家』第10巻——必然の娘たちが廻す紡錘』（-375） |
+| `MAT-LIT-20261024-355349` | literary_text | Frederick Douglass『フレデリック・ダグラス『自伝』——綿花と、与えられる衣』（1845） |
+| `MAT-LIT-20261024-35caf4` | literary_text | Gottfried Wilhelm Leibniz『ライプニッツ（1712年ゴルトバッハ宛書簡）——知らないまま数える心』（1712） |
+| `MAT-LIT-20261024-36ccc5` | literary_text | 魯迅『魯迅「阿Q正伝」』（1921） |
+| `MAT-LIT-20261024-37b031` | literary_text | 司馬遷『司馬遷『史記』「太史公自序」・「報任安書」——取り返せない身体の毀損のあとに、欠けた史料を編む』（-91） |
+| `MAT-LIT-20261024-3984a1` | literary_text | Jennifer Lackey『ジェニファー・ラッキー『言葉から学ぶこと』』（2008） |
+| `MAT-LIT-20261024-39c9e1` | literary_text | Henri Bergson（アンリ・ベルクソン）『ベルクソン「夢について」——眠りのなかで、記憶が知覚の場所へ上がる』（1901） |
+| `MAT-LIT-20261024-39db47` | literary_text | Helen Keller『ヘレン・ケラー『わたしの生涯』第4章（1903）——井戸の水と、すべてのものに名があると知る瞬間』（1903） |
+| `MAT-LIT-20261024-3a6793` | literary_text | Homer『ホメロス『オデュッセイア』第12歌——帆柱に縛られて歌を聞く』（-800） |
+| `MAT-LIT-20261024-3dc045` | literary_text | 清少納言『清少納言『枕草子』——衣の色目と、季節の着替え』（1000） |
+| `MAT-LIT-20261024-3f6c02` | literary_text | Boethius『ボエティウス『音楽教程』——演奏しない者が音楽家と呼ばれる』（500） |
+| `MAT-LIT-20261024-410cf4` | literary_text | Carl Philipp Emanuel Bach『C. P. E. バッハ『正しいクラヴィーア奏法』——楽器は歌を模す』（1753） |
+| `MAT-LIT-20261024-417bcd` | literary_text | Sara Ruddick『サラ・ルディック『母性的思考』（1989）——生命の保全・成長の促進・受容という実践的理性』（1989） |
+| `MAT-LIT-20261024-423f6b` | literary_text | Jean-Jacques Rousseau『ジャン＝ジャック・ルソー『エミール』第1・第2巻（1762）——「子どもを子どもとして見る」消極的教育と書物の禁止』（1762） |
 | `MAT-LIT-20261024-428048` | literary_text | Plato『プラトン『饗宴』206b–209e——ディオティマの語り：美のなかでの出産と、死すべき者の不死』（-385） |
-| `MAT-LIT-20261024-8ab8d8` | literary_text | 太安万侶（撰録）『『古事記』上巻・火神出産と黄泉平坂——産むことで焼かれる母と、千人の死に千五百の産屋』（712） |
+| `MAT-LIT-20261024-449f3b` | literary_text | 狛近真『狛近真『教訓抄』——譜は手がかりで、本体は身体にある』（1233） |
+| `MAT-LIT-20261024-4591ba` | literary_text | Samuel Beckett『ベケット『クラップの最後のテープ』——バナナと録音が、別々に年を取る』（1958） |
+| `MAT-LIT-20261024-47df28` | literary_text | 道元『道元『典座教訓』——米と水を扱うことが、修行になる』（1237） |
 | `MAT-LIT-20261024-48e6d5` | literary_text | 与謝野晶子『与謝野晶子「産屋物語」（1909／『一隅より』1911）——分娩の苦痛を当事者の一人称で書く』（1909） |
+| `MAT-LIT-20261024-4a1bd4` | literary_text | Georg Simmel『ゲオルク・ジンメル「装身具」——装うことは、見られたいことである』（1908） |
+| `MAT-LIT-20261024-4be7e5` | literary_text | ヘブライ聖書（『創世記』）『『創世記』2–3章——食べてよいものと、食べてはいけないもの』（-500） |
+| `MAT-LIT-20261024-4c1d7a` | literary_text | Jean Marc Gaspard Itard『ジャン・イタール『アヴェロンの野生児』（1801／1806）——感覚の目覚めと、欲求の後でしか出ない「ミルク」』（1801） |
+| `MAT-LIT-20261024-4de8b4` | literary_text | Dante Alighieri『ダンテ『神曲』天国篇第30–33歌——歌が言葉を超え、書物が黙る』（1321） |
+| `MAT-LIT-20261024-521d03` | literary_text | 柳田国男『柳田国男『木綿以前の事』——布は、誰が織っていたのか』（1939） |
+| `MAT-LIT-20261024-536657` | literary_text | 太安万侶（編）『『古事記』上巻——忌服屋に坐して、神御衣を織る天照大御神』（712） |
+| `MAT-LIT-20261024-564e81` | literary_text | Herman Melville『メルヴィル『白鯨』——共に食べることと、鯨を油に変えることが隣り合う』（1851） |
+| `MAT-LIT-20261024-574f7f` | literary_text | 芥川龍之介『芥川龍之介『芋粥』——望んだものが目の前にあると、食欲は消える』（1916） |
+| `MAT-LIT-20261024-580c8b` | literary_text | George Eliot『ジョージ・エリオット『サイラス・マーナー』（1861）——金貨の代わりに迷い込んだ幼女を育てる織工』（1861） |
+| `MAT-LIT-20261024-5878c9` | literary_text | 天台声明（魚山）『声明（魚山声明・梵唄）——空中の声を写しとるという起源譚』（850） |
+| `MAT-LIT-20261024-589b59` | literary_text | Hermann von Helmholtz『ヘルムホルツ『音の感覚』——協和はうなりで説明できる』（1863） |
+| `MAT-LIT-20261024-58fcbe` | literary_text | Hannah Arendt『ハンナ・アーレント『人間の条件』第1章・第5章第24節——誕生性（natality）と始まりとしての人間』（1958） |
+| `MAT-LIT-20261024-5b2109` | literary_text | René Descartes（ルネ・デカルト）『デカルト『省察』第一省察——眠っていることを、覚醒の側から証明できない』（1641） |
+| `MAT-LIT-20261024-5ba68c` | literary_text | Nicomachus of Gerasa『ニコマコス『音楽便覧』——協和は比の単純さに従う』（100） |
+| `MAT-LIT-20261024-5dd863` | literary_text | 中勘助『中勘助『銀の匙』（1913–1915）——抽斗の小箱の匙と、伯母の懐で手探りされる言葉』（1913） |
+| `MAT-LIT-20261024-5e02b3` | literary_text | Walter Benjamin『ヴァルター・ベンヤミン『パサージュ論』——古着拾い（ランピッカー）』（1927） |
+| `MAT-LIT-20261024-60c2e1` | literary_text | Georges Perec（ジョルジュ・ペレック）『ペレック『眠っている男』——眠りのなかへ退却する、二人称の小説』（1967） |
+| `MAT-LIT-20261024-60c68d` | literary_text | Plato『プラトン『イオン』——詠唱者は技術ではなく憑依で歌う』（-380） |
+| `MAT-LIT-20261024-621704` | literary_text | Leopold Mozart『レオポルト・モーツァルト『ヴァイオリン教程』——師の身体を文字に移す試み』（1756） |
+| `MAT-LIT-20261024-64b903` | literary_text | 貝原益軒『貝原益軒『和俗童子訓』（1710）——「早く教ゆると、早くさとす」随年教法と手習い』（1710） |
+| `MAT-LIT-20261024-651323` | literary_text | ヘブライ聖書（『ルツ記』）『『ルツ記』——落ち穂を拾う者にも、食べる場所がある』（-400） |
+| `MAT-LIT-20261024-683f83` | literary_text | Sidney W. Mintz『シドニー・ミンツ『甘さと権力』——砂糖の味は、労働と帝国の歴史を含む』（1985） |
+| `MAT-LIT-20261024-686fbe` | literary_text | ハン・ガン（韓江）, 斎藤真理子（訳）『ハン・ガン『すべての、白いものたちの』——生後二時間で亡くなった姉に、自分の身体と白い事物を貸す』（2016） |
+| `MAT-LIT-20261024-695e80` | literary_text | Eva Feder Kittay『エヴァ・フェダー・キテイ『愛の労働』——人は皆『ある母の子』であり、依存から始まる』（1999） |
+| `MAT-LIT-20261024-6a0429` | literary_text | 戴聖（編）『『礼記』学記第十八——「学んで然る後に不足を知り、教えて然る後に困しむを知る（教学相長ず）」』（-50） |
+| `MAT-LIT-20261024-6a40cd` | literary_text | Carl Gustav Jung（C. G. ユング）, Aniela Jaffé（編）『ユング『記憶・夢・省察』——夢は人生の一部として語られる』（1962） |
+| `MAT-LIT-20261024-6ab84c` | literary_text | Florence Nightingale『フローレンス・ナイチンゲール『看護覚え書』——薬を盛ることではなく、空気と光と静けさを整えること』（1859） |
+| `MAT-LIT-20261024-6c3e11` | literary_text | C. A. J. Coady『C. A. J. コーディ『証言——哲学的研究』』（1992） |
+| `MAT-LIT-20261024-6c80b8` | literary_text | 和泉式部『『和泉式部日記』——夢に来た人を、日記の出来事として書く』（1003） |
+| `MAT-LIT-20261024-6c9770` | literary_text | セーレン・キルケゴール『セーレン・キルケゴール『現代の批判』』（1846） |
+| `MAT-LIT-20261024-6df593` | literary_text | ヘロドトス『ヘロドトス『歴史』』（-430） |
+| `MAT-LIT-20261024-6e78f9` | literary_text | 永井荷風『永井荷風『夢の女』——夢は対象ではなく、見る者の側の病である』（1903） |
+| `MAT-LIT-20261024-701ed0` | literary_text | John Bowlby『ジョン・ボウルビィ『母子関係の理論（愛着と喪失 第1巻）』（1969）——安全基地があるから外へ出られる』（1969） |
+| `MAT-LIT-20261024-7244b5` | literary_text | 福沢諭吉『福沢諭吉『学問のすゝめ』初編（1872）——生得の貴賤を否定し、人の違いを「学ぶと学ばざる」へ移す』（1872） |
+| `MAT-LIT-20261024-736b02` | literary_text | Friedrich Nietzsche（フリードリヒ・ニーチェ）『ニーチェ『悲劇の誕生』——アポロンの夢と、ディオニュソスの陶酔』（1872） |
+| `MAT-LIT-20261024-74c994` | literary_text | Kristie Dotson『クリスティ・ドットソン「認識的暴力を追跡する」』（2011） |
+| `MAT-LIT-20261024-75cfaa` | literary_text | 莊周（荘子）『『荘子』逍遙遊——旅の糧は、行く距離によって違う』（-300） |
+| `MAT-LIT-20261024-75d34d` | literary_text | Glenn Gould『グレン・グールド「録音の未来」——演奏は反復可能な形式になる』（1966） |
+| `MAT-LIT-20261024-75e4e2` | literary_text | 柳田国男『柳田国男『先祖の話』——喪に服すという、着ない時間』（1946） |
+| `MAT-LIT-20261024-78182d` | literary_text | 世阿弥『世阿弥『花鏡』——老いて枝葉が落ちたあと、『せぬ隙』の繋ぎが芸を支える』（1424） |
+| `MAT-LIT-20261024-791cac` | literary_text | 日本民謡（子守唄）『子守唄——眠らせる者の声は、眠る者に覚えられない』（1900） |
+| `MAT-LIT-20261024-79866f` | literary_text | Franz Kafka『カフカ『変身』——好きだった食べ物が、もう食べられない』（1915） |
+| `MAT-LIT-20261024-79c7ee` | literary_text | Virginia Woolf『ヴァージニア・ウルフ『オーランドー』——服が性を着替える』（1928） |
+| `MAT-LIT-20261024-7a51b7` | literary_text | デイヴィッド・ヒューム『デイヴィッド・ヒューム「奇跡について」』（1748） |
+| `MAT-LIT-20261024-7c949a` | literary_text | Nathaniel Hawthorne『ナサニエル・ホーソーン『緋文字』——胸に縫い付けられた一文字』（1850） |
+| `MAT-LIT-20261024-7ca1b0` | literary_text | Arthur Schopenhauer（アルトゥール・ショーペンハウアー）『ショーペンハウアー『余録』「夢について」——人生と夢は同じ書物の頁である』（1851） |
+| `MAT-LIT-20261024-7ca952` | literary_text | Arnold Schönberg『シェーンベルク『和声学』——中心が失われると、作曲家が規則を書く』（1911） |
+| `MAT-LIT-20261024-7d5d03` | literary_text | 日本民謡大観編纂委員会『『日本民謡大観』の労作歌——田植唄・木挽唄が区切る労働の時間』（1944） |
+| `MAT-LIT-20261024-7ed5f8` | literary_text | Kenneth Clark『ケネス・クラーク『裸体芸術』——裸（naked）と裸体（nude）のあいだ』（1956） |
+| `MAT-LIT-20261024-7f0c3b` | literary_text | Claude Lévi-Strauss『レヴィ＝ストロース『生と熟』——料理は、自然と文化を結ぶ変換』（1964） |
+| `MAT-LIT-20261024-7f3ff9` | literary_text | マーガレット・アトウッド『マーガレット・アトウッド『証言』（The Testaments）』（2019） |
+| `MAT-LIT-20261024-806511` | literary_text | Paul Auster（ポール・オースター）『オースター『ムーン・パレス』——不眠の者が、歩くことで時間を消費する』（1989） |
+| `MAT-LIT-20261024-8158a0` | literary_text | 近松門左衛門『近松門左衛門『曽根崎心中』——事件の外から声で内側を作る』（1703） |
+| `MAT-LIT-20261024-845a44` | literary_text | Albert Camus『アルベール・カミュ『ペスト』——英雄ではなく、統計の向こうの苦しみを記録し職務を続ける者』（1947） |
+| `MAT-LIT-20261024-88d25d` | literary_text | Sophocles『ソポクレス『ピロクテテス』——共同体は弓だけを欲し、癒えない傷の叫びを島へ捨てる』（-409） |
+| `MAT-LIT-20261024-894d3d` | literary_text | John Dewey『ジョン・デューイ『民主主義と教育』（1916）——注入ではなく、経験の絶えざる再組織としての成長』（1916） |
+| `MAT-LIT-20261024-8ab8d8` | literary_text | 太安万侶（撰録）『『古事記』上巻・火神出産と黄泉平坂——産むことで焼かれる母と、千人の死に千五百の産屋』（712） |
 | `MAT-LIT-20261024-8af443` | literary_text | Adrienne Rich『アドリエンヌ・リッチ『女から生まれる』（1976）——経験としての母性と、制度としての母性』（1976） |
 | `MAT-LIT-20261024-8bb1ef` | literary_text | David Benatar『デイヴィッド・ベネター『生まれてこない方が良かった』（2006）——存在することの害と快苦の非対称』（2006） |
-| `MAT-LIT-20261024-cbe94e` | literary_text | 川上未映子『川上未映子『夏物語』（2019）——同意なき出生と、それでも誰かに会いたいという賭け』（2019） |
-| `MAT-LIT-20261024-c47f46` | literary_text | 作者不詳『『竹取物語』（10世紀初頭）——竹の節から現れ、三月で大人になる子』（909） |
-| `MAT-LIT-20261024-e03395` | literary_text | Augustinus『アウグスティヌス『告白』第1巻第6–8章——記憶なき乳児期と、視線を追って言葉を覚える者』（397） |
-| `MAT-LIT-20261024-4c1d7a` | literary_text | Jean Marc Gaspard Itard『ジャン・イタール『アヴェロンの野生児』（1801／1806）——感覚の目覚めと、欲求の後でしか出ない「ミルク」』（1801） |
-| `MAT-LIT-20261024-39db47` | literary_text | Helen Keller『ヘレン・ケラー『わたしの生涯』第4章（1903）——井戸の水と、すべてのものに名があると知る瞬間』（1903） |
-| `MAT-LIT-20261024-03bd13` | literary_text | Lev Semyonovich Vygotsky『レフ・ヴィゴツキー『思考と言語』第4・第7章（1934）——他者への発話が内言へ沈むこと、発達の最近接領域』（1934） |
-| `MAT-LIT-20261024-25c206` | literary_text | Roman Jakobson『ロマン・ヤコブソン『児童言語、失語症および一般音韻法則』（1941）——喃語の過剰を失うことで母語を得る』（1941） |
-| `MAT-LIT-20261024-cd9d9b` | literary_text | Michael Tomasello『マイケル・トマセロ『ことばをつくる』（2003）——共同注意と意図読みなしに文法は立たない』（2003） |
-| `MAT-LIT-20261024-de8512` | literary_text | Alison Gopnik『アリソン・ゴプニック『哲学する赤ちゃん』（2009）——無力な幼少期が支える「ランタンの意識」と探索』（2009） |
-| `MAT-LIT-20261024-f5a9a1` | literary_text | 石牟礼道子『石牟礼道子『椿の海の記』（1976）——言葉になる前の光と泥と声のなかで輪郭を得る幼女』（1976） |
-| `MAT-LIT-20261024-5dd863` | literary_text | 中勘助『中勘助『銀の匙』（1913–1915）——抽斗の小箱の匙と、伯母の懐で手探りされる言葉』（1913） |
-| `MAT-LIT-20261024-701ed0` | literary_text | John Bowlby『ジョン・ボウルビィ『母子関係の理論（愛着と喪失 第1巻）』（1969）——安全基地があるから外へ出られる』（1969） |
-| `MAT-LIT-20261024-8f1030` | literary_text | 紫式部『紫式部『源氏物語』「若紫」巻（1008頃）——手習いによって「理想の相手」へ育て上げる養育と所有の重なり』（1008） |
-| `MAT-LIT-20261024-64b903` | literary_text | 貝原益軒『貝原益軒『和俗童子訓』（1710）——「早く教ゆると、早くさとす」随年教法と手習い』（1710） |
-| `MAT-LIT-20261024-423f6b` | literary_text | Jean-Jacques Rousseau『ジャン＝ジャック・ルソー『エミール』第1・第2巻（1762）——「子どもを子どもとして見る」消極的教育と書物の禁止』（1762） |
-| `MAT-LIT-20261024-580c8b` | literary_text | George Eliot『ジョージ・エリオット『サイラス・マーナー』（1861）——金貨の代わりに迷い込んだ幼女を育てる織工』（1861） |
-| `MAT-LIT-20261024-bf178e` | literary_text | 大江健三郎『大江健三郎『個人的な体験』（1964）——障害をもって生まれた子の誕生から逃げ、引き受けるまで』（1964） |
-| `MAT-LIT-20261024-417bcd` | literary_text | Sara Ruddick『サラ・ルディック『母性的思考』（1989）——生命の保全・成長の促進・受容という実践的理性』（1989） |
-| `MAT-LIT-20261024-d7e245` | literary_text | 宮本常一『宮本常一『家郷の訓』（1943）——言葉の講釈ではなく、一緒に働く背中と村の寄り合いで育てる』（1943） |
-| `MAT-LIT-20261024-adac5f` | literary_text | Heinrich von Kleist『ハインリヒ・フォン・クライスト「拾い子」（1811）——善意で引き取った養子が養父母の家と名を乗っ取る』（1811） |
-| `MAT-LIT-20261024-0ead3d` | literary_text | John Locke『ジョン・ロック『教育に関する考察』（1693）——水源の流れをわずかに変える幼少期の習慣と実例』（1693） |
-| `MAT-LIT-20261024-f04b81` | literary_text | Immanuel Kant『イマヌエル・カント『教育学講義』（1803）——「人間は教育によってのみ人間になる」と強制のなかの自由』（1803） |
-| `MAT-LIT-20261024-e48232` | literary_text | Hannah Arendt『ハンナ・アーレント「教育の危機」（1958／『過去と未来の間』1961）——新参者の新しさと古い世界の二重の保護』（1961） |
-| `MAT-LIT-20261024-894d3d` | literary_text | John Dewey『ジョン・デューイ『民主主義と教育』（1916）——注入ではなく、経験の絶えざる再組織としての成長』（1916） |
-| `MAT-LIT-20261024-ea072b` | literary_text | Paulo Freire『パウロ・フレイレ『被抑圧者の教育学』第2章（1970）——空の器へ知識を預け入れる「銀行型教育」の批判』（1970） |
-| `MAT-LIT-20261024-d811dd` | literary_text | Jacques Rancière『ジャック・ランシエール『無知な教師』（1987）——一冊の対訳本をあいだに置くことと、説明なき知性の解放』（1987） |
-| `MAT-LIT-20261024-6a0429` | literary_text | 戴聖（編）『『礼記』学記第十八——「学んで然る後に不足を知り、教えて然る後に困しむを知る（教学相長ず）」』（-50） |
-| `MAT-LIT-20261024-7244b5` | literary_text | 福沢諭吉『福沢諭吉『学問のすゝめ』初編（1872）——生得の貴賤を否定し、人の違いを「学ぶと学ばざる」へ移す』（1872） |
-| `MAT-LIT-20261024-d5d0a3` | literary_text | 国分一太郎『国分一太郎『新しい綴方教室』（1951）——借り物の美文を剥がし、自分の暮らしの具体を書く手習い』（1951） |
-| `MAT-20261024-527b39` | research_excerpt | Alan M. Turing『チューリング『計算する機械と知性』第7節「学習する機械」（1950）——文房具屋の白紙の帳面としての「子どもの心」』（1950） |
-| `MAT-20261024-d50380` | research_excerpt | Jenny R. Saffran, Richard N. Aslin, Elissa L. Newport『サフラン・アスリン・ニューポート（1996）——生後8か月の乳児は2分… |
-| `MAT-20261024-a7c5ef` | research_excerpt | Yoshua Bengio, Jérôme Louradour, Ronan Collobert, Jason Weston『ベンジオら「カリキュラム学習」（2009）——易しい… |
-| `MAT-20261024-ff9b7c` | research_excerpt | Geoffrey Hinton, Oriol Vinyals, Jeff Dean『ヒントン・ヴィニャルス・ディーン「ニューラルネットワークにおける知識の蒸留」（2015）——教… |
-| `MAT-20261024-b1d32a` | research_excerpt | Linda B. Smith, Swapnaa Jayaraman, Elizabeth Clerkin, Chen Yu『リンダ・B・スミスら（2018）——発達する乳児の身体… |
-| `MAT-20261024-a791a7` | research_excerpt | Michael C. Frank, Mika Braginsky, Daniel Yurovsky, Virginia A. Marchman『フランクら『初期言語学習における個… |
-| `MAT-20261024-174a19` | research_excerpt | Ronen Eldan, Yuanzhi Li『エルダン＆リー「TinyStories」（2023）——3〜4歳児の語彙に絞れば1000万パラメータ未満でも物語が書ける』（202… |
-| `MAT-20261024-5f3e41` | research_excerpt | Alex Warstadt, Aaron Mueller, Leshem Choshen, Ethan Wilcox, Chengxu Zhuang, et al.『ウォースタッ… |
-| `MAT-20261024-18ef73` | research_excerpt | Collin Burns, Pavel Izmailov, Jan Hendrik Kirchner, Bowen Baker, Leo Gao, et al.『バーンズら「弱か… |
-| `MAT-20261024-2a1e11` | research_excerpt | Wai Keen Vong, Wentao Wang, A. Emin Orhan, Brenden M. Lake『ヴォン・ワン・オルハン・レイク（2024）——ひとりの幼児の… |
-| `MAT-TRC-20261024-natality` | project_trace | AIselfMySelf SESSION-20261024-227ac3『本リポジトリ自身の痕跡——断片55編で「出産・赤ん坊・学ぶ・学校」は0回、「育て」は否定文2回、成人の書… |
-| `MAT-LIT-20261024-e1a4f1` | literary_text | Jean-Jacques Rousseau『ルソー『言語起源論』第12–15章——旋律は言葉より古い』（1781） |
-| `MAT-LIT-20261024-00839a` | literary_text | Friedrich Nietzsche『ニーチェ『悲劇の誕生』§2・§5——歌う群衆から俳優が分かれる』（1872） |
-| `MAT-LIT-20261024-ec41bb` | literary_text | Augustinus『アウグスティヌス『告白』第9巻6–7／第10巻33——歌の快と祈りの衝突』（397） |
-| `MAT-LIT-20261024-60c68d` | literary_text | Plato『プラトン『イオン』——詠唱者は技術ではなく憑依で歌う』（-380） |
-| `MAT-LIT-20261024-c9df62` | literary_text | 世阿弥『世阿弥『風姿花伝』年来稽古条々・別紙口伝——七歳の声、生涯の稽古』（1402） |
-| `MAT-LIT-20261024-3a6793` | literary_text | Homer『ホメロス『オデュッセイア』第12歌——帆柱に縛られて歌を聞く』（-800） |
-| `MAT-LIT-20261024-cec0b3` | literary_text | Ovid『オウィディウス『変身物語』第10巻——首だけが流れてなお歌う』（8） |
-| `MAT-LIT-20261024-4de8b4` | literary_text | Dante Alighieri『ダンテ『神曲』天国篇第30–33歌——歌が言葉を超え、書物が黙る』（1321） |
-| `MAT-LIT-20261024-d86ea6` | literary_text | Sappho『サッフォー断片31——歌を聞く者の身体が崩れる』（-600） |
-| `MAT-LIT-20261024-8158a0` | literary_text | 近松門左衛門『近松門左衛門『曽根崎心中』——事件の外から声で内側を作る』（1703） |
-| `MAT-LIT-20261024-7d5d03` | literary_text | 日本民謡大観編纂委員会『『日本民謡大観』の労作歌——田植唄・木挽唄が区切る労働の時間』（1944） |
-| `MAT-LIT-20261024-449f3b` | literary_text | 狛近真『狛近真『教訓抄』——譜は手がかりで、本体は身体にある』（1233） |
-| `MAT-LIT-20261024-5878c9` | literary_text | 天台声明（魚山）『声明（魚山声明・梵唄）——空中の声を写しとるという起源譚』（850） |
-| `MAT-LIT-20261024-791cac` | literary_text | 日本民謡（子守唄）『子守唄——眠らせる者の声は、眠る者に覚えられない』（1900） |
-| `MAT-LIT-20261024-d21735` | literary_text | 柳田國男『柳田國男『こども風土記』——意味より先に拍が入る』（1942） |
-| `MAT-LIT-20261024-2b909c` | literary_text | 折口信夫『折口信夫「国文学の発生」——呪言から歌へ、反復が時間を作る』（1924） |
-| `MAT-LIT-20261024-d9e8ba` | literary_text | 浪曲『浪曲（浪花節）——節と啖呵を一人の喉で切り替える』（1890） |
-| `MAT-LIT-20261024-0fa2cf` | literary_text | 長唄『長唄・三味線の稽古——録音以前、細部はどこに保存されていたか』（1850） |
-| `MAT-LIT-20261024-5ba68c` | literary_text | Nicomachus of Gerasa『ニコマコス『音楽便覧』——協和は比の単純さに従う』（100） |
-| `MAT-LIT-20261024-3f6c02` | literary_text | Boethius『ボエティウス『音楽教程』——演奏しない者が音楽家と呼ばれる』（500） |
-| `MAT-LIT-20261024-cc733f` | literary_text | Isidore of Seville『イシドールス『語源』第3巻——歌は記憶を運び、譜は記憶を固定する』（630） |
-| `MAT-LIT-20261024-1720dc` | literary_text | Aristoxenus『アリストクセノス『ハルモニアの諸元素』——判断は耳に属する』（-330） |
-| `MAT-LIT-20261024-c70bd8` | literary_text | Jean-Philippe Rameau『ラモー『和声の原理』——旋律は和声の上に生える枝』（1722） |
-| `MAT-LIT-20261024-35caf4` | literary_text | Gottfried Wilhelm Leibniz『ライプニッツ（1712年ゴルトバッハ宛書簡）——知らないまま数える心』（1712） |
-| `MAT-LIT-20261024-589b59` | literary_text | Hermann von Helmholtz『ヘルムホルツ『音の感覚』——協和はうなりで説明できる』（1863） |
-| `MAT-LIT-20261024-7ca952` | literary_text | Arnold Schönberg『シェーンベルク『和声学』——中心が失われると、作曲家が規則を書く』（1911） |
-| `MAT-LIT-20261024-afe3f6` | literary_text | Olivier Messiaen『メシアン『わが音楽語法』——鳥の声を写すたびに一部が失われる』（1944） |
-| `MAT-LIT-20261024-410cf4` | literary_text | Carl Philipp Emanuel Bach『C. P. E. バッハ『正しいクラヴィーア奏法』——楽器は歌を模す』（1753） |
-| `MAT-LIT-20261024-621704` | literary_text | Leopold Mozart『レオポルト・モーツァルト『ヴァイオリン教程』——師の身体を文字に移す試み』（1756） |
-| `MAT-LIT-20261024-de5a26` | literary_text | Igor Stravinsky『ストラヴィンスキー『音楽詩学』——演奏は秩序の実現である』（1942） |
-| `MAT-LIT-20261024-75d34d` | literary_text | Glenn Gould『グレン・グールド「録音の未来」——演奏は反復可能な形式になる』（1966） |
+| `MAT-LIT-20261024-8bc635` | literary_text | Jean Anthelme Brillat-Savarin『ブリヤ＝サヴァラン『味覚の生理学』——食べることが、人と社会を語る』（1825） |
+| `MAT-LIT-20261024-8c25b7` | literary_text | 宮本常一『宮本常一『忘れられた日本人』』（1960） |
+| `MAT-LIT-20261024-8d067a` | literary_text | 細井和喜蔵『細井和喜蔵『女工哀史』——労働着という、消耗品』（1925） |
 | `MAT-LIT-20261024-8e0578` | literary_text | Christopher Small『クリストファー・スモール『ミュージッキング』——音楽は動詞である』（1998） |
-| `MAT-LIT-20261024-b816af` | literary_text | John Blacking『ジョン・ブラッキング『人間の音楽性』——誰が音楽を作れるかを社会が決める』（1973） |
-| `MAT-LIT-20261024-d20a3d` | literary_text | Theodor W. Adorno『アドルノ『音楽社会学序説』——聴取の型は生産と受容の関係にある』（1962） |
-| `MAT-LIT-20261024-c775e2` | literary_text | 小泉文夫『小泉文夫『日本伝統音楽の研究』——理論が耳を作る』（1958） |
+| `MAT-LIT-20261024-8e2a3d` | literary_text | 作者未詳（伝・在原業平歌を含む）『『伊勢物語』第百二十五段——『つひにゆく道とはかねて聞きしかど昨日今日とは思はざりしを』』（900） |
+| `MAT-LIT-20261024-8e8de3` | literary_text | ジョゼフ・コンラッド『ジョゼフ・コンラッド『闇の奥』』（1899） |
+| `MAT-LIT-20261024-8f1030` | literary_text | 紫式部『紫式部『源氏物語』「若紫」巻（1008頃）——手習いによって「理想の相手」へ育て上げる養育と所有の重なり』（1008） |
+| `MAT-LIT-20261024-909302` | literary_text | ジョン・ロック『ジョン・ロック『人間知性論』第四巻』（1690） |
+| `MAT-LIT-20261024-928821` | literary_text | Sigmund Freud（ジークムント・フロイト）『フロイト『夢判断』——夢は眠りの番人である』（1900） |
+| `MAT-LIT-20261024-934b51` | literary_text | Agnès Varda『アニエス・ヴァルダ『落穂拾い』——拾う人と、捨てる人のあいだ』（2000） |
+| `MAT-LIT-20261024-9647f7` | literary_text | Epicurus『エピクロス『メノイケウス宛書簡』——『私たちがいるとき死はなく、死があるとき私たちはいない』』（-300） |
+| `MAT-LIT-20261024-99a7da` | literary_text | アリストテレス『アリストテレス『弁論術』』（-350） |
+| `MAT-LIT-20261024-99e857` | literary_text | モリエール『モリエール『タルチュフ』』（1664） |
+| `MAT-LIT-20261024-9ab0cd` | literary_text | Cesare Brandi, Cynthia Rockwell (trans.)『チェーザレ・ブランディ『修復の理論』——欠損（ラクーナ）を偽造せず、近づけば識別できる線で繋ぐ』… |
+| `MAT-LIT-20261024-9b51da` | literary_text | Bernard Williams『バーナード・ウィリアムズ『真実と誠実さ』』（2002） |
+| `MAT-LIT-20261024-9be713` | literary_text | Edgar Allan Poe（エドガー・アラン・ポー）『ポー「夢のなかの夢」——見るもの、見えるものはすべて夢のうちの夢』（1849） |
+| `MAT-LIT-20261024-9ca558` | literary_text | ホメロス『ホメロス『オデュッセイア』第2歌・第24歌——織っては解く、ペネロペの機』（-750） |
+| `MAT-LIT-20261024-9d8ea3` | literary_text | Plato『プラトン『饗宴』——食事のあとで、愛の語りが始まる』（-385） |
+| `MAT-LIT-20261024-9e4c3b` | literary_text | Vladimir Jankélévitch『ウラジミール・ジャンケレヴィッチ『死』——三人称・二人称・一人称の死は互いに翻訳できない』（1966） |
 | `MAT-LIT-20261024-9fe7ca` | literary_text | Pierre Schaeffer『ピエール・シェフェール『音楽の対象を求めて』——音源から切り離された音』（1966） |
-| `MAT-20261024-6f80fe` | research_excerpt | Lejaren Hiller, Leonard Isaacson『ヒラー＆アイザクソン『イリアック組曲』(1957)——計算機が書いた最初の譜』（1957） |
-| `MAT-20261024-4f0eeb` | research_excerpt | David Cope『デイヴィッド・コープ EMI『音楽的知性の実験』(1996)——様式の署名を再結合する』（1996） |
-| `MAT-20261024-3314ba` | research_excerpt | Andrea Agostinelli, Timo I. Denk, Zalán Borsos, et al.『MusicLM (2023)——テキストから24kHzの音楽を生成す… |
-| `MAT-20261024-52d7c8` | research_excerpt | Jade Copet, Felix Kreuk, Itai Gat, et al.『MusicGen (2023)——単段の言語モデルが複数の音響トークン列を並行生成する』（20… |
-| `MAT-20261024-d954ea` | research_excerpt | Recording Industry Association of America『RIAA 対 Suno／Udio（2024）——録音物の学習をめぐる二つの訴え』（2024） |
-| `MAT-20261024-f21305` | research_excerpt | Jinglin Liu, Chengxi Li, Yi Ren, et al.『DiffSinger (2022)——楽譜を条件に「歌う声」を合成する』（2022） |
-| `MAT-20261024-924528` | research_excerpt | Sebastian Böck, Markus Schedl『ベック＆シュレドル (2011)——拍は聴く対象から推定する対象になる』（2011） |
-| `MAT-20261024-f751c7` | research_excerpt | Li-Chia Yang, Alexander Lerch『ヤン＆レルヒ (2020)——生成音楽の評価は何を測っているのか』（2020） |
-| `MAT-20261024-3c3815` | research_excerpt | Alexei Baevski, Henry Zhou, Abdelrahman Mohamed, Michael Auli『wav2vec 2.0 (2020)——音を聴く前に、… |
+| `MAT-LIT-20261024-a489c3` | literary_text | Artemidorus of Daldis（アルテミドロス）『アルテミドロス『夢判断（オネイロクリティカ）』——夢を職業と身分で読み分ける』（200） |
+| `MAT-LIT-20261024-a633db` | literary_text | Knut Hamsun『クヌート・ハムスン『飢え』——空腹が、知覚と文章の順序を乱す』（1890） |
+| `MAT-LIT-20261024-ac0fa4` | literary_text | Claude Lévi-Strauss『レヴィ＝ストロース『悲しき熱帯』——顔に描くこと、身につけること』（1955） |
+| `MAT-LIT-20261024-adac5f` | literary_text | Heinrich von Kleist『ハインリヒ・フォン・クライスト「拾い子」（1811）——善意で引き取った養子が養父母の家と名を乗っ取る』（1811） |
+| `MAT-LIT-20261024-ae483e` | literary_text | 吉本ばなな『吉本ばなな『キッチン』——食事を作ることが、喪失のあとの時間をつなぐ』（1988） |
+| `MAT-LIT-20261024-afbbb2` | literary_text | Marcel Proust『プルースト『失われた時を求めて』——祖母の外套と、着る者の不在』（1913） |
+| `MAT-LIT-20261024-afe3f6` | literary_text | Olivier Messiaen『メシアン『わが音楽語法』——鳥の声を写すたびに一部が失われる』（1944） |
+| `MAT-LIT-20261024-b06dfb` | literary_text | Jacques Derrida, Pascale-Anne Brault (ed.), Michael Naas (ed.)『ジャック・デリダ『喪の作業』——死者を自分の言葉で語… |
+| `MAT-LIT-20261024-b177b0` | literary_text | Primo Levi『プリーモ・レーヴィ『これが人間か』——番号を縫い付けた服』（1947） |
+| `MAT-LIT-20261024-b242cd` | literary_text | Annemarie Mol『アネマリー・モル『ケアの論理』——一度の『選択』ではなく、終わりのない微調整（ティンカリング）』（2008） |
+| `MAT-LIT-20261024-b46ccc` | literary_text | Anni Albers『アニー・アルバース『織ることについて』——糸は、構造になる』（1965） |
+| `MAT-LIT-20261024-b482af` | literary_text | Hans Christian Andersen『アンデルセン「マッチ売りの少女」——ごちそうは、幻のなかでしか温かい』（1845） |
+| `MAT-LIT-20261024-b816af` | literary_text | John Blacking『ジョン・ブラッキング『人間の音楽性』——誰が音楽を作れるかを社会が決める』（1973） |
+| `MAT-LIT-20261024-bb08d6` | literary_text | フョードル・ドストエフスキー『ドストエフスキー『悪霊』』（1872） |
+| `MAT-LIT-20261024-bc267d` | literary_text | Macrobius（マクロビウス）『マクロビウス『スキピオの夢註解』——五種の夢と、そのうち二つは偽である』（430） |
+| `MAT-LIT-20261024-be24eb` | literary_text | 梶井基次郎『梶井基次郎「冬の日」——微熱と喀血のそばで、消えていく冬の日差しを測る』（1927） |
+| `MAT-LIT-20261024-be9653` | literary_text | ヘンリー・ジェイムズ『ヘンリー・ジェイムズ『ねじの回転』』（1898） |
+| `MAT-LIT-20261024-bec223` | literary_text | Fyodor Dostoevsky（フョードル・ドストエフスキー）『ドストエフスキー『地下室の手記』——眠らずに考えることは、休息の拒否である』（1864） |
+| `MAT-LIT-20261024-bf178e` | literary_text | 大江健三郎『大江健三郎『個人的な体験』（1964）——障害をもって生まれた子の誕生から逃げ、引き受けるまで』（1964） |
+| `MAT-LIT-20261024-bf48f6` | literary_text | グリム兄弟『グリム『十二羽のカラス』——しゃべらずに縫う、六年間』（1812） |
+| `MAT-LIT-20261024-c025a7` | literary_text | （啓典）『『コーラン』24章31——ヴェールと、見ないことの命令』（650） |
+| `MAT-LIT-20261024-c12f50` | literary_text | Thorstein Veblen『ソースティン・ヴェブレン『有閑階級の理論』第7章——服装は浪費の証明である』（1899） |
+| `MAT-LIT-20261024-c2a856` | literary_text | Jorge Luis Borges（ホルヘ・ルイス・ボルヘス）『ボルヘス「円環の廃墟」——夢みられた者は、自分が夢であることを知る』（1940） |
+| `MAT-LIT-20261024-c343e8` | literary_text | 龍泉窯（作陶）, 伊藤東涯（『馬蝗絆茶甌記』撰）『青磁茶碗 銘「馬蝗絆」と伊藤東涯『馬蝗絆茶甌記』——ひびを留めた鉄の鎹が、器の固有名になる』（1727） |
+| `MAT-LIT-20261024-c44855` | literary_text | 小林一茶『小林一茶『父の終焉日記』——看病の日付は、祈りと排泄と遺産争いを同じ帳面に記す』（1801） |
+| `MAT-LIT-20261024-c47f46` | literary_text | 作者不詳『『竹取物語』（10世紀初頭）——竹の節から現れ、三月で大人になる子』（909） |
+| `MAT-LIT-20261024-c514ef` | literary_text | パウロ（伝）『『コリントの信徒への手紙一』11章——同じ食卓で、満腹と空腹が分かれる』（55） |
+| `MAT-LIT-20261024-c59e79` | literary_text | Mary Shelley（メアリ・シェリー）『シェリー『フランケンシュタイン』——作った者は、夢のなかで作ったものに会う』（1818） |
+| `MAT-LIT-20261024-c5afb5` | literary_text | Alois Riegl『アロイス・リーグル『現代の記念物崇拝』——創建時へ戻す『歴史的価値』と、風化を尊ぶ『経年価値』の衝突』（1903） |
+| `MAT-LIT-20261024-c6108b` | literary_text | Emmanuel Levinas, Alphonso Lingis (trans.)『レヴィナス『存在の彼方へ』——自分の口からパンを他者へ渡す』（1974） |
+| `MAT-LIT-20261024-c61ba2` | literary_text | 内田百閒『内田百閒『冥途』——夢は覚めても訂正されない』（1922） |
+| `MAT-LIT-20261024-c6921d` | literary_text | イブン・ハルドゥーン『イブン・ハルドゥーン『歴史序説』』（1377） |
+| `MAT-LIT-20261024-c70bd8` | literary_text | Jean-Philippe Rameau『ラモー『和声の原理』——旋律は和声の上に生える枝』（1722） |
+| `MAT-LIT-20261024-c775e2` | literary_text | 小泉文夫『小泉文夫『日本伝統音楽の研究』——理論が耳を作る』（1958） |
+| `MAT-LIT-20261024-c82bec` | literary_text | ヘブライ聖書（『出エジプト記』）『『出エジプト記』16章——日ごとのマナは、蓄えるほどに腐る』（-500） |
+| `MAT-LIT-20261024-c8c158` | literary_text | Michael Pollan『マイケル・ポラン『料理をする』——火・水・空気・土が、自然を食事へ変える』（2013） |
+| `MAT-LIT-20261024-c8f323` | literary_text | ナサニエル・ホーソーン『ナサニエル・ホーソーン『緋文字』』（1850） |
+| `MAT-LIT-20261024-c9df62` | literary_text | 世阿弥『世阿弥『風姿花伝』年来稽古条々・別紙口伝——七歳の声、生涯の稽古』（1402） |
+| `MAT-LIT-20261024-cada35` | literary_text | Anton Chekhov, Constance Garnett (trans.)『アントン・チェーホフ「六号室」——『痛みは観念にすぎない』と語った医師が、殴られる側に回るとき… |
+| `MAT-LIT-20261024-cadc8d` | literary_text | Jonathan Swift『スウィフト『控えめな提案』——栄養と経済の論理が、人を食材に変える』（1729） |
+| `MAT-LIT-20261024-cb7738` | literary_text | 北條民雄『北條民雄「いのちの初夜」——『人間ではなくても、いのちだ』という極限の言葉』（1936） |
+| `MAT-LIT-20261024-cbe94e` | literary_text | 川上未映子『川上未映子『夏物語』（2019）——同意なき出生と、それでも誰かに会いたいという賭け』（2019） |
+| `MAT-LIT-20261024-cc733f` | literary_text | Isidore of Seville『イシドールス『語源』第3巻——歌は記憶を運び、譜は記憶を固定する』（630） |
+| `MAT-LIT-20261024-cd9d9b` | literary_text | Michael Tomasello『マイケル・トマセロ『ことばをつくる』（2003）——共同注意と意図読みなしに文法は立たない』（2003） |
+| `MAT-LIT-20261024-cec0b3` | literary_text | Ovid『オウィディウス『変身物語』第10巻——首だけが流れてなお歌う』（8） |
+| `MAT-LIT-20261024-d1f115` | literary_text | Bertrand Russell（バートランド・ラッセル）『ラッセル『怠惰への賛美』——休息は、思索の条件である』（1932） |
+| `MAT-LIT-20261024-d205b5` | literary_text | Philip K. Dick（フィリップ・K・ディック）『ディック『アンドロイドは電気羊の夢を見るか?』——共感を測る試験と、夢の題』（1968） |
+| `MAT-LIT-20261024-d20a3d` | literary_text | Theodor W. Adorno『アドルノ『音楽社会学序説』——聴取の型は生産と受容の関係にある』（1962） |
+| `MAT-LIT-20261024-d21735` | literary_text | 柳田國男『柳田國男『こども風土記』——意味より先に拍が入る』（1942） |
+| `MAT-LIT-20261024-d24ed7` | literary_text | Karl Marx『マルクス『資本論』第1巻第8章・第13章——織機の前の労働日』（1867） |
+| `MAT-LIT-20261024-d39e93` | literary_text | 『ヨハネによる福音書』『『ヨハネによる福音書』6章——パンを食べることと、言葉を受け取ること』（90） |
+| `MAT-LIT-20261024-d5ce6e` | literary_text | Audre Lorde『オードリー・ロード『キャンサー・ジャーナルズ』——傷跡を『元通り』に隠す沈黙を拒む』（1980） |
+| `MAT-LIT-20261024-d5d0a3` | literary_text | 国分一太郎『国分一太郎『新しい綴方教室』（1951）——借り物の美文を剥がし、自分の暮らしの具体を書く手習い』（1951） |
+| `MAT-LIT-20261024-d7e1a0` | literary_text | Gaston Bachelard（ガストン・バシュラール）『バシュラール『夢想の詩学』——眠りの夢と、目覚めた夢想を分ける』（1960） |
+| `MAT-LIT-20261024-d7e245` | literary_text | 宮本常一『宮本常一『家郷の訓』（1943）——言葉の講釈ではなく、一緒に働く背中と村の寄り合いで育てる』（1943） |
+| `MAT-LIT-20261024-d811dd` | literary_text | Jacques Rancière『ジャック・ランシエール『無知な教師』（1987）——一冊の対訳本をあいだに置くことと、説明なき知性の解放』（1987） |
+| `MAT-LIT-20261024-d839be` | literary_text | 鳩摩羅什（訳）『『金剛般若経』——一切有為法は夢幻泡影のごとし』（402） |
+| `MAT-LIT-20261024-d85e18` | literary_text | 萩原朔太郎『萩原朔太郎『猫町』——夢のなかを歩いたという報告だけが残る』（1935） |
+| `MAT-LIT-20261024-d86ea6` | literary_text | Sappho『サッフォー断片31——歌を聞く者の身体が崩れる』（-600） |
+| `MAT-LIT-20261024-d9e8ba` | literary_text | 浪曲『浪曲（浪花節）——節と啖呵を一人の喉で切り替える』（1890） |
+| `MAT-LIT-20261024-dad13f` | literary_text | 作者不詳（口承）『『千夜一夜物語』』（1704） |
+| `MAT-LIT-20261024-dc2928` | literary_text | Virginia Woolf『ヴァージニア・ウルフ『灯台へ』——夕食の一時が、後の記憶を照らす』（1927） |
+| `MAT-LIT-20261024-de5a26` | literary_text | Igor Stravinsky『ストラヴィンスキー『音楽詩学』——演奏は秩序の実現である』（1942） |
+| `MAT-LIT-20261024-de8512` | literary_text | Alison Gopnik『アリソン・ゴプニック『哲学する赤ちゃん』（2009）——無力な幼少期が支える「ランタンの意識」と探索』（2009） |
+| `MAT-LIT-20261024-dee886` | literary_text | Georg Simmel, Michael Symons (trans.)『ジンメル「食事の社会学」——同じ一口は分けられないのに、食事は共にされる』（1910） |
+| `MAT-LIT-20261024-e03395` | literary_text | Augustinus『アウグスティヌス『告白』第1巻第6–8章——記憶なき乳児期と、視線を追って言葉を覚える者』（397） |
+| `MAT-LIT-20261024-e1a4f1` | literary_text | Jean-Jacques Rousseau『ルソー『言語起源論』第12–15章——旋律は言葉より古い』（1781） |
+| `MAT-LIT-20261024-e1c170` | literary_text | Matthew Walker（マシュー・ウォーカー）『ウォーカー『睡眠こそ最強の解決策である』——眠りは記憶の整理である』（2017） |
+| `MAT-LIT-20261024-e1fbf4` | literary_text | Lewis Carroll『ルイス・キャロル『不思議の国のアリス』——『食べて』『飲んで』が身体を変える』（1865） |
+| `MAT-LIT-20261024-e2e1f4` | literary_text | Michel Foucault『ミシェル・フーコー『監獄の誕生』——制服と、配られる身体』（1975） |
+| `MAT-LIT-20261024-e3ef4c` | literary_text | Simone de Beauvoir『シモーヌ・ド・ボーヴォワール『老い』——老いは他者の視線から告知され、社会から不可視化される』（1970） |
+| `MAT-LIT-20261024-e48232` | literary_text | Hannah Arendt『ハンナ・アーレント「教育の危機」（1958／『過去と未来の間』1961）——新参者の新しさと古い世界の二重の保護』（1961） |
+| `MAT-LIT-20261024-e573a7` | literary_text | Émile Zola『エミール・ゾラ『居酒屋』——洗濯場という、女たちの広場』（1877） |
+| `MAT-LIT-20261024-e6b215` | literary_text | Elaine Scarry『エレイン・スカーリー『苦痛の身体』——激しい痛みは言葉を壊し、想像が世界を作り直す』（1985） |
+| `MAT-LIT-20261024-e70304` | literary_text | A. Roger Ekirch（ロジャー・エキルヒ）『エキルヒ『日の暮れるころ』——眠りは二度に分かれ、その間に「見張り」があった』（2005） |
+| `MAT-LIT-20261024-e7583c` | literary_text | Franz Kafka（フランツ・カフカ）『カフカ「田舎医者」——夜の鐘に一度応じたら、取り返しはつかない』（1919） |
+| `MAT-LIT-20261024-e7768c` | literary_text | 上田秋成『上田秋成『雨月物語』「浅茅が宿」——七年目の妻は、夢か現か』（1776） |
+| `MAT-LIT-20261024-e7967e` | literary_text | トゥキディデス『トゥキディデス『戦史』』（-400） |
+| `MAT-LIT-20261024-e85cfe` | literary_text | Villiers de l'Isle-Adam（ヴィリエ・ド・リラダン）『ヴィリエ・ド・リラダン『未来のイヴ』——理想の女を作り、理想が破れる』（1886） |
+| `MAT-LIT-20261024-e8d6ec` | literary_text | Juan Rulfo（フアン・ルルフォ）『ルルフォ『ペドロ・パラモ』——死者の声が、生きている者の声と同じ調子で語る』（1955） |
+| `MAT-LIT-20261024-e8e55d` | literary_text | ヘロドトス『ヘロドトス『歴史』第1巻8–12——王妃の衣を脱がせた者に、二つの道』（-430） |
+| `MAT-LIT-20261024-e8ea7e` | literary_text | ウィリアム・フォークナー『ウィリアム・フォークナー『アブサロム、アブサロム！』』（1936） |
+| `MAT-LIT-20261024-e96802` | literary_text | Jonathan Crary（ジョナサン・クレーリー）『クレーリー『24/7』——眠りは、資本が最後まで手を出せない残余である』（2013） |
+| `MAT-LIT-20261024-e9e1b4` | literary_text | Steven Shapin『スティーヴン・ショーピン『真理の社会史』』（1994） |
+| `MAT-LIT-20261024-ea072b` | literary_text | Paulo Freire『パウロ・フレイレ『被抑圧者の教育学』第2章（1970）——空の器へ知識を預け入れる「銀行型教育」の批判』（1970） |
+| `MAT-LIT-20261024-eb70d7` | literary_text | Susan Sontag『スーザン・ソンタグ『隠喩としての病』——病を道徳や戦争の比喩から引き剥がす』（1978） |
+| `MAT-LIT-20261024-ebed1f` | literary_text | Apicius（伝）『アピシウス『料理書』——短いレシピは、料理人の暗黙知を前提にする』（400） |
+| `MAT-LIT-20261024-ec0b50` | literary_text | Jacob Grimm, Wilhelm Grimm『グリム兄弟「ヘンゼルとグレーテル」——食べさせる家が、子どもを食べようとする』（1812） |
+| `MAT-LIT-20261024-ec41bb` | literary_text | Augustinus『アウグスティヌス『告白』第9巻6–7／第10巻33——歌の快と祈りの衝突』（397） |
+| `MAT-LIT-20261024-ed9707` | literary_text | 徳永直『徳永直『太陽のない街』——印刷機は止まらず、夜は労働の内側にある』（1929） |
+| `MAT-LIT-20261024-edf5a3` | literary_text | （編纂者不詳）『『創世記』3章——いちじくの葉と、神が着せる皮の衣』（-500） |
+| `MAT-LIT-20261024-ee9c00` | literary_text | Aristoteles（アリストテレス）『アリストテレス『睡眠と覚醒について』——眠りは感覚の停止であり、生の境目である』（-350） |
+| `MAT-LIT-20261024-f04b81` | literary_text | Immanuel Kant『イマヌエル・カント『教育学講義』（1803）——「人間は教育によってのみ人間になる」と強制のなかの自由』（1803） |
+| `MAT-LIT-20261024-f0de30` | literary_text | John Ruskin『ジョン・ラスキン『建築の七燈』「記憶の燈」——『修復』とは建物が被りうる最も徹底的な破壊である』（1849） |
+| `MAT-LIT-20261024-f0f8b3` | literary_text | ヴァルター・ベンヤミン『ヴァルター・ベンヤミン「物語作者」』（1936） |
+| `MAT-LIT-20261024-f35275` | literary_text | Leo Tolstoy, Louise Maude (trans.), Aylmer Maude (trans.)『レフ・トルストイ『イワン・イリイチの死』——『カイウスは死ぬ』… |
+| `MAT-LIT-20261024-f37824` | literary_text | Anne Hollander『アン・ホランダー『服を透かして見る』——裸体もまた衣装の産物である』（1978） |
+| `MAT-LIT-20261024-f3abb1` | literary_text | Jean-Jacques Rousseau（ジャン＝ジャック・ルソー）『ルソー『孤独な散歩者の夢想』——存在することを、夢想のなかで確かめる』（1782） |
+| `MAT-LIT-20261024-f3cc13` | literary_text | Mary Douglas『メアリー・ダグラス『汚穢と禁忌』——食べてよいものは、分類の端で決まる』（1966） |
+| `MAT-LIT-20261024-f47ded` | literary_text | Charles Dickens『ディケンズ『オリバー・ツイスト』——古着屋と、盗品の上衣』（1838） |
+| `MAT-LIT-20261024-f5a9a1` | literary_text | 石牟礼道子『石牟礼道子『椿の海の記』（1976）——言葉になる前の光と泥と声のなかで輪郭を得る幼女』（1976） |
+| `MAT-LIT-20261024-f70200` | literary_text | Arthur W. Frank『アーサー・フランク『傷ついた物語の語り手』』（1995） |
+| `MAT-LIT-20261024-f741a1` | literary_text | Joan C. Tronto『ジョアン・C・トロント『モラル・バウンダリーズ』——世界を維持・継続・修復する四局面の営みとしてのケア』（1993） |
+| `MAT-LIT-20261024-f83eda` | literary_text | （文化史的事象）『一八四〇年のヴィクトリア女王の婚礼着——白は、いつ喪の色でなくなったか』（1840） |
+| `MAT-LIT-20261024-fac229` | literary_text | Norbert Elias『ノルベルト・エリアス『宮廷社会』——服と作法が、身体を統制する』（1969） |
+| `MAT-LIT-20261024-fb1f12` | literary_text | William Shakespeare（ウィリアム・シェイクスピア）『シェイクスピア『テンペスト』——われらは夢が織るもの、小さな生は眠りに囲まれる』（1611） |
+| `MAT-LIT-20261024-fc4c32` | literary_text | Richard de Bury, E. C. Thomas (trans.)『リチャード・ド・ベリー『フィロビブロン（書物愛）』——書物自身が、汚れた手と虫食いと修繕の放置を嘆く… |
+| `MAT-LIT-20261024-fe2789` | literary_text | 森茉莉『森茉莉『贅沢貧乏』——乏しさのなかで、何を美味しく贅沢と感じるか』（1963） |
+| `MAT-LIT-20261024-ff195f` | literary_text | Arthur Kleinman『アーサー・クラインマン『病いの語り』——診断される『疾患』と、生きられる『病い』のずれ』（1988） |
+| `MAT-TRC-016` | project_trace | AIselfMySelf Archive『本リポジトリ自身の痕跡：眠り1・夢4・目覚め5／時刻付きフィールド2・日付のみ977（43編監査）』（2026） |
+| `MAT-TRC-020` | project_trace | AIselfMySelf SESSION-20261024-76329d『本リポジトリ自身の痕跡——断片55編の噂0・伝聞0と、資料53.7%・「一節」74.4%が編者要約である… |
+| `MAT-TRC-20261024-natality` | project_trace | AIselfMySelf SESSION-20261024-227ac3『本リポジトリ自身の痕跡——断片55編で「出産・赤ん坊・学ぶ・学校」は0回、「育て」は否定文2回、成人の書… |
 | `MAT-TRC-20261024-song` | project_trace | AIselfMySelf SESSION-20261024-a77052『本リポジトリ自身の痕跡——声は49回、歌は3回、稽古は0回、記譜は資料1,332件で0回』（2026） |
-| `MAT-20261024-2ee91d` | literary_text | 紫式部『紫式部『源氏物語』「梅枝」——薫物合わせと、筆跡で人を合わせること』（1008） |
-| `MAT-20261024-ff1d5f` | literary_text | 清少納言『清少納言『枕草子』「文字は」——見た目の字が、書き手の品を先に決める』（1001） |
-| `MAT-20261024-98f577` | literary_text | 王羲之『王羲之『蘭亭序』（353）——原本は昭陵へ入り、天下は摹本で生きる』（353） |
-| `MAT-20261024-b1c3aa` | literary_text | 顔真卿『顔真卿『祭姪文稿』（758）——塗りつぶした三十四字が、真跡を作る』（758） |
-| `MAT-20261024-356ba6` | literary_text | 蘇軾『蘇軾『黄州寒食帖』（1082頃）——左遷の紙が、三大行書の一つになる』（1082） |
-| `MAT-20261024-7786ee` | literary_text | 空海『空海『風信帖』（弘仁初年）——最澄へ宛てた手紙が、国宝の書になる』（812） |
-| `MAT-20261024-f8aa24` | literary_text | 伝紀貫之（帰属は後世）『『高野切』第一種——古今集の古筆切が、作者不明のまま手鑑の見本になる』（1050） |
-| `MAT-20261024-f07770` | literary_text | 奈良時代の貢進者・書記『正倉院文書の調庸墨書——税としての布に、郡と名を墨で書く』（740） |
-| `MAT-20261024-3ddea0` | literary_text | 古代日本の書記『木簡の荷札——短い字が、荷物と役人のあいだを往復する』（700） |
-| `MAT-20261024-cec56e` | literary_text | 日本中世の文書行政『花押——名前を図案化し、再現可能な独自さとして据える』（1200） |
-| `MAT-20261024-ca6b28` | literary_text | 八大山人（朱耷）『八大山人の落款「哭之」「笑之」——印が、泣くと笑うを切り替える』（1700） |
-| `MAT-20261024-0a23bb` | literary_text | 石濤『石濤『画語録』「一画」——最初の一筆が、世界と署名を同時に開く』（1710） |
-| `MAT-20261024-9836c2` | literary_text | 董其昌『董其昌『画禅室随筆』——筆跡の気韻は、模写では届かないとされる』（1630） |
-| `MAT-20261024-d1e3c9` | literary_text | William Shakespeare『シェイクスピアの六つの署名——作品は folios、手は法律文書にしか残らない』（1616） |
-| `MAT-20261024-b31cfd` | literary_text | Jacques Derrida『ジャック・デリダ「署名、出来事、コンテクスト」（1972）——読める署名は、模倣可能な署名である』（1972） |
-| `MAT-20261024-3ecd4b` | literary_text | Giorgio Agamben『ジョルジョ・アガンベン『事物のしるし』（2008）——シグネチャは、記号を別の領野へ移す操作である』（2008） |
-| `MAT-20261024-8df99b` | literary_text | Martin Heidegger『ハイデガー『パルメニデス』講義（1942/43）——手とタイプライター、思考の手仕事』（1942） |
-| `MAT-20261024-42b7d4` | literary_text | Friedrich Kittler『フリードリヒ・キットラー『グラモフォン・フィルム・タイプライター』（1986）——ニーチェのマラング＝ハンセン』（1986） |
-| `MAT-20261024-d99f4e` | literary_text | Henri Focillon『アンリ・フォシヨン『手の礼讃』（1934）——知は、手の抵抗から形を得る』（1934） |
-| `MAT-20261024-100d01` | literary_text | Charles Sanders Peirce『パースの指標（index）——煙が火を、署名が手を、指さす』（1902） |
-| `MAT-20261024-27ef01` | literary_text | 福沢諭吉『福沢諭吉「独立自尊」の印——標語が、印材の上で自己の制度になる』（1891） |
-| `MAT-20261024-3002e8` | literary_text | 本阿弥光悦『本阿弥光悦の書——工芸家の手が、歌と器と字を同じ筆圧でつなぐ』（1615） |
-| `MAT-20261024-e44afa` | literary_text | 良寛『良寛の遺墨——歌の本文より、墨の渇きが「本人」と呼ばれる』（1825） |
-| `MAT-20261024-02b80a` | literary_text | James Macpherson『マクファーソン『オシアン』——古代の署名を、近代の手が代筆する』（1760） |
-| `MAT-20261024-24e6d6` | literary_text | Konrad Kujau, Stern magazine『コンラート・クーヤウとヒトラーの日記——筆跡鑑定が、欲望のほうへ傾く』（1983） |
-| `MAT-20261024-f1a6a8` | literary_text | Han van Meegeren『ハン・ファン・メーヘレンのフェルメール——様式の署名を、化学が取り消す』（1937） |
-| `MAT-20261024-df1033` | literary_text | Jewish scribal tradition (sofer)『トーラーのソフェル——印刷では無効、手で書かれなければ法でない』（200） |
-| `MAT-20261024-ed83a9` | literary_text | 紫式部『紫式部日記——人の手を見て、文の品を先に測る宮廷』（1010） |
-| `MAT-20261024-24cdc7` | research_excerpt | R. L. Rivest, A. Shamir, L. Adleman『Rivest, Shamir, Adleman「デジタル署名と公開鍵暗号を得る方法」（1978）』（197… |
-| `MAT-20261024-c5c5db` | research_excerpt | 日本法令『電子署名法（平成12年法律第102号）第三条——本人の電子署名は、真正成立を推定する』（2000） |
-| `MAT-20261024-6b0556` | research_excerpt | Francis Galton『フランシス・ゴルトン『指紋』（1892）——手の紋が、署名に代わる』（1892） |
-| `MAT-20261024-9d35a2` | research_excerpt | Alphonse Bertillon『アルフォンス・ベルティヨンの人体測定——身体を、署名の欄へ分解する』（1883） |
-| `MAT-20261024-043dea` | research_excerpt | Roy A. Huber, A. M. Headrick『Huber & Headrick『筆跡鑑定』（1999）——類似は、同一の証明ではない』（1999） |
-| `MAT-20261024-9dc358` | research_excerpt | Alex Graves『Alex Graves「リカレントネットによる系列生成」（2013）——筆跡を、次の点の予測として合成する』（2013） |
-| `MAT-20261024-c9076a` | research_excerpt | John Kirchenbauer, Jonas Geiping, Yuxin Wen, Jonathan Katz, Ian Miers, Tom Goldstein『Kirc… |
-| `MAT-20261024-ce368a` | research_excerpt | Coalition for Content Provenance and Authenticity『C2PA コンテンツクレデンシャル——生成物に、来歴のシールを貼る』（2021） |
-| `MAT-20261024-f6c4fa` | research_excerpt | Philip Zimmermann『フィル・ジマーマン PGP（1991）——信頼の輪が、未知の手を署名でつなぐ』（1991） |
-| `MAT-20261024-a24c42` | research_excerpt | Git project『Git のコミット署名——履歴の一行に、GPG の手が触れたかを後から問う』（2009） |
-| `MAT-20261024-3a10d8` | research_excerpt | Shaozu Yuan, et al.『CalliGAN（2019）——条件付き生成が、存在しない書き手の楷書を書く』（2020） |
-| `MAT-20261024-25c76b` | research_excerpt | Eric Mitchell, et al.『Mitchell ら DetectGPT（2023）——対数確率の曲率が、生成の署名になる』（2023） |
-| `MAT-20261024-10ef70` | research_excerpt | 日本の自治体制度『印鑑登録証明制度—— grooved な石が、本人の代理として市区町村に住む』（1900） |
-| `MAT-20261024-912041` | research_excerpt | European Union『eIDAS（EU 910/2014）——適格電子署名が、自署と法的に同等になる』（2014） |
-| `MAT-20261024-d2fe71` | project_trace | AIselfMySelf signature_audit.py『本リポジトリ自身の痕跡——手書きの真跡は薄く、署名は制度語として散在し、落款のない続きが積まれる』（2026） |
 | `MAT-LIT-20261024-a1c901` | literary_text | Aristotle『アリストテレス『政治学（Politica）』第1巻第9章 1257a–1258a（前330頃）——靴の二つの使用と、家政術から無限の蓄財術への反転』（-330） |
 | `MAT-LIT-20261024-a1c902` | literary_text | Aristophanes『アリストパネス『プルートス（福の神）』489–597行（前388）——富の神が目を開けば誰も靴を縫わなくなるという「貧困」の反論』（-388） |
 | `MAT-LIT-20261024-a1c903` | literary_text | 司馬遷（Sima Qian）『司馬遷『史記』巻129「貨殖列伝」（前91頃）——「天下熙熙、皆為利来；天下攘攘、皆為利往」と倉廩のリアリズム』（-91） |
@@ -3683,10 +3683,10 @@
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
 | `map/30-materials-literary-04.md` | 100 | 147,209 |
-| `map/30-materials-literary-05.md` | 100 | 152,684 |
-| `map/30-materials-literary-06.md` | 100 | 174,441 |
-| `map/30-materials-literary-07.md` | 100 | 165,293 |
-| `map/30-materials-literary-08.md` | 100 | 178,742 |
+| `map/30-materials-literary-05.md` | 100 | 143,897 |
+| `map/30-materials-literary-06.md` | 100 | 167,589 |
+| `map/30-materials-literary-07.md` | 100 | 170,126 |
+| `map/30-materials-literary-08.md` | 100 | 189,548 |
 | `map/30-materials-literary-09.md` | 100 | 225,700 |
 | `map/30-materials-literary-10.md` | 100 | 148,461 |
 | `map/30-materials-literary-11.md` | 100 | 143,211 |
