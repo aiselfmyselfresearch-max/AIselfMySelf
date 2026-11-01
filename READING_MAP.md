@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：405 件（初期シード 5 件 ＋ 派生 400 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2577 件（research_excerpt 808 ／ literary_text 1701 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2582 件（research_excerpt 808 ／ literary_text 1706 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：237 編（selected 89 ／ draft 148）
-- **解釈的関係（Relations）**：5880 件
-- **探究セッション（Sessions）**：352 回
+- **解釈的関係（Relations）**：5885 件
+- **探究セッション（Sessions）**：353 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -730,7 +730,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2577 件・詳細は map/3*.md）
+## 4. 対話素材（2582 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3246,6 +3246,11 @@
 | `MAT-EVD-20261101-8efc12` | research_excerpt | University of Cambridge『ケンブリッジ大のロボット料理人「taste as you go」——食べずに塩分を測る腕（2022）』（2022） |
 | `MAT-EVD-20261101-24e1ef` | research_excerpt | Linda A. Henkel『Henkel (2014) 撮影障害効果——全体を撮ると記憶が減り、一部にズームすると減らない』（2014） |
 | `MAT-EVD-20261101-fc11d8` | research_excerpt | 環境省『環境省 食品ロス推計（令和6年度）461万トン——廃棄の定義は主体の感覚を問わない』（2026） |
+| `MAT-LIT-20261101-3f165d` | literary_text | F. Max Müller (trans.)『タイッティリーヤ・ウパニシャッド II.2–9 / III.7–10――食物・息・心・識・歓喜と、客を帰さない規則』（1884） |
+| `MAT-LIT-20261101-b8972c` | literary_text | Zhuangzi (attrib.), James Legge (trans.)『『荘子』応帝王第七・渾沌――七竅を鑿たれて死ぬ中央の帝』（1891） |
+| `MAT-LIT-20261101-d9255a` | literary_text | Snorri Sturluson, Rasmus B. Anderson (trans.)『スノッリ『エッダ』ギュルヴァギンニング49–53――バルドルの死、乾いた涙、返る指輪』… |
+| `MAT-LIT-20261101-7d1444` | literary_text | Guru Nanak, Manmohan Singh (trans.)『ジャプジー・サーヒブ――ムール・マントル、サローカ、パウリー1–2（SGGS p.1）』（2009） |
+| `MAT-LIT-20261101-e2d4f8` | literary_text | E. W. West (trans.)『ブンダヒシュン第15章――最初の偽り、子を食む慈しみ、子を残すために取り去られた慈しみ』（1880） |
 | `MAT-LIT-20261101-26e95b` | literary_text | 無名（シュメール伝承を、中アッシリア〜新アッシリア時代の書記がアッカド語「標準版」に編纂；伝承上シン＝レキ・ウンニニの名が関わる）『『ギルガメシュ叙事詩』第八板——エンキドゥの死… |
 | `MAT-LIT-20261101-f83bf5` | literary_text | 無名（ヤヒスト文書等の編纂；最終編成は紀元前5世紀頃）『創世記 2–3章——土から造られ、名を与え、善悪を知り、エデンを追われる人間』（-950） |
 | `MAT-LIT-20261101-7d7087` | literary_text | 鳩摩羅什（訳）『金剛般若波羅蜜経——一切有為法は夢幻泡影、我相・人相・衆生相・寿者相を離れよ』（402） |
@@ -3597,6 +3602,7 @@
 | `SESSION-20261101-2084d3` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-70e889`, `Q-20270103-7b1ce6`, `Q-20261101-9f6ad5` | — | `Q-20261101-9f6ad5` |
 | `SESSION-20261101-e5df96` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-c6fd04` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261101-6155f5` | 2027-01-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -3669,16 +3675,16 @@
 | `SESSION-20270103-d6690c` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6` | — | `Q-20270103-7b1ce6` |
 | `SESSION-20261101-81dab1` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-70e889` |
 
-## 6. 解釈的関係（5880 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5885 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 788 |
-| 共鳴 (echo) | 1475 |
-| 切断・割り込み (interrupts) | 200 |
+| 対照 (contrast) | 789 |
+| 共鳴 (echo) | 1476 |
+| 切断・割り込み (interrupts) | 201 |
 | 未解決のまま開く (leaves_open) | 864 |
 | 比喩的共鳴 (metaphorically_resonates) | 141 |
-| 枠組みの組み替え (reframes) | 512 |
+| 枠組みの組み替え (reframes) | 514 |
 | 応答 (responds_to) | 1625 |
 | 変奏・変形 (transforms) | 275 |
 
@@ -3725,8 +3731,8 @@
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
 | `map/30-materials-literary-16.md` | 100 | 198,531 |
-| `map/30-materials-literary-17.md` | 100 | 283,893 |
-| `map/30-materials-literary-18.md` | 1 | 3,473 |
+| `map/30-materials-literary-17.md` | 100 | 280,272 |
+| `map/30-materials-literary-18.md` | 6 | 20,336 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3746,16 +3752,16 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 185,769 |
-| `map/40-relations-11.md` | 500 | 168,622 |
-| `map/40-relations-12.md` | 380 | 127,956 |
+| `map/40-relations-10.md` | 500 | 185,157 |
+| `map/40-relations-11.md` | 500 | 169,242 |
+| `map/40-relations-12.md` | 385 | 129,347 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,665 |
-| `map/50-sessions-06.md` | 50 | 44,331 |
-| `map/50-sessions-07.md` | 50 | 46,065 |
-| `map/50-sessions-08.md` | 2 | 2,298 |
+| `map/50-sessions-06.md` | 50 | 44,491 |
+| `map/50-sessions-07.md` | 50 | 45,859 |
+| `map/50-sessions-08.md` | 3 | 3,331 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
