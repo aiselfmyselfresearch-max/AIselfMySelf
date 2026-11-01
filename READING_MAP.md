@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：408 件（初期シード 5 件 ＋ 派生 403 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2639 件（research_excerpt 808 ／ literary_text 1763 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2644 件（research_excerpt 808 ／ literary_text 1768 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：240 編（selected 92 ／ draft 148）
-- **解釈的関係（Relations）**：5959 件
-- **探究セッション（Sessions）**：370 回
+- **解釈的関係（Relations）**：5964 件
+- **探究セッション（Sessions）**：371 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -736,7 +736,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2639 件・詳細は map/3*.md）
+## 4. 対話素材（2644 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3329,6 +3329,11 @@
 | `MAT-LIT-20261101-783449` | literary_text | ズールー口承伝承（情報提供者：Ulangeni ほか複数の古老・証言者）, Henry Callaway (ed. & trans.)『『アマズールーの宗教体系』第1部「ウンクル… |
 | `MAT-LIT-20261101-fdb87d` | literary_text | ラヴ・イェフダ（ラヴの名において伝承、バビロニア・タルムード編纂者群）, Adin Even-Israel Steinsaltz (ed. & trans., Koren / W… |
 | `MAT-LIT-20261101-0e15f3` | literary_text | 作者不詳（初期大乗仏教経典）, 鳩摩羅什（Kumārajīva, 漢訳, 406年）, Hendrik Kern (サンスクリット本英訳対照, 1884)『鳩摩羅什訳『妙法蓮華経… |
+| `MAT-20261101-a419dd` | literary_text | 作者不詳（ヘブライ聖書・ヨシュア記）『『ヨシュア記』1:8——口から離れない律法書と、昼夜の默想の条件』（-600） |
+| `MAT-20261101-6babb6` | literary_text | 作者不詳（ヘブライ聖書・列王紀）『『列王紀上』19:11b–13a——風・地震・火のあとに残る微小声と、「ここであなたは何をしているのか」』（-550） |
+| `MAT-20261101-b5041e` | literary_text | 作者不詳（ヘブライ聖書・創世記）『『創世記』4:17・4:21–22——息子の名を付けた最初の都と、琴と器具の職人の師』（-950） |
+| `MAT-20261101-f35aa3` | literary_text | 作者不詳（『ゾーハー』の伝承。モーシェ・デ・レオンに帰される）, Sperling & Simon 英訳系統（Soncino）『『ゾーハー』ベレシート第XXIII章（45b–46… |
+| `MAT-20261101-38ed03` | literary_text | 無名の口承伝承。エリアス・レーンロットが編纂（1835 初版・1849 増補）『『カレヴァラ』第50ルーノ——銅の船で去る歌い手と、骨の錠で倉に閉じた歌』（1835） |
 | `MAT-EVD-20261101-4d7113` | research_excerpt | Cassandra Pierce『NI-skin——考える前に引っ込む皮膚（大規模イオントロニック電子皮膚、2026）』（2026） |
 | `MAT-EVD-20261101-0e9a28` | research_excerpt | Zhixiang Cao, Di Tian, Runwei Guan, Yanzhou Mu, Xiaolou Sun, Shaofeng Liang, Daizong Liu,… |
 | `MAT-EVD-20261101-4aea11` | research_excerpt | Robotics & Automation News『Tesla 三次元触覚センサ特許出願 US 2026/0310299 A1——印刷して熱成形する皮膚（2026年10月公開）… |
@@ -3677,6 +3682,7 @@
 | `SESSION-20261101-d2d71c` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-c19dbd`, `Q-20261101-2ec50c` | — | — |
 | `SESSION-20261101-b350ac` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-2ec50c` |
 | `SESSION-20261101-70e832` | 2026-11-01 | `Q-20261028-461baa`, `Q-20261126-fe52e5`, `Q-20261121-7b68b2`, `Q-20261024-a1e9f3`, `Q-082` | `FRAG-20261101-779f02` | — |
+| `SESSION-20261101-93d6ea` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-ec0998` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-28ed2c` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-2ec50c`, `Q-20261024-403180`, `Q-20261024-ddf2d2`, `Q-092`, `Q-20261024-ec519b`, `Q-057`, `Q-20261024-cfd57d` | `FRAG-20261101-269418` | — |
 | `SESSION-20261101-6786fd` | 2027-01-07 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-ec1314` | — | `Q-20261101-ec1314` |
@@ -3755,15 +3761,15 @@
 | `SESSION-20261029-77b681` | 2026-12-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-0a3833`, `Q-20261024-cfd57d` | `FRAG-20261029-30debd` | — |
 | `SESSION-20261101-eaa215` | 2027-01-10 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-50f9f7` |
 
-## 6. 解釈的関係（5959 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5964 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 808 |
-| 共鳴 (echo) | 1485 |
+| 対照 (contrast) | 810 |
+| 共鳴 (echo) | 1486 |
 | 切断・割り込み (interrupts) | 207 |
 | 未解決のまま開く (leaves_open) | 866 |
-| 比喩的共鳴 (metaphorically_resonates) | 145 |
+| 比喩的共鳴 (metaphorically_resonates) | 147 |
 | 枠組みの組み替え (reframes) | 528 |
 | 応答 (responds_to) | 1639 |
 | 変奏・変形 (transforms) | 281 |
@@ -3812,7 +3818,7 @@
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 265,625 |
-| `map/30-materials-literary-18.md` | 63 | 205,755 |
+| `map/30-materials-literary-18.md` | 68 | 219,013 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3832,16 +3838,16 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 185,242 |
-| `map/40-relations-11.md` | 500 | 173,991 |
-| `map/40-relations-12.md` | 459 | 153,895 |
+| `map/40-relations-10.md` | 500 | 184,950 |
+| `map/40-relations-11.md` | 500 | 174,896 |
+| `map/40-relations-12.md` | 464 | 154,955 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
-| `map/50-sessions-06.md` | 50 | 45,073 |
-| `map/50-sessions-07.md` | 50 | 44,820 |
-| `map/50-sessions-08.md` | 20 | 19,170 |
+| `map/50-sessions-06.md` | 50 | 45,013 |
+| `map/50-sessions-07.md` | 50 | 44,849 |
+| `map/50-sessions-08.md` | 21 | 20,005 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
