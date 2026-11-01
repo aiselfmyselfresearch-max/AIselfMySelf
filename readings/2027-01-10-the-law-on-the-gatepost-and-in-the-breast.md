@@ -3,7 +3,7 @@
 **セッション**：`SESSION-20261101-eaa215`
 **実行日**：2026-11-01（UTC, 利用者の現地日付）／**台帳の内部編年**：`2027-01-10`
 **作業方法**：[`prompts/acquisition.md`](../prompts/acquisition.md) と [`prompts/close_reading_report.md`](../prompts/close_reading_report.md)（`inspect_inquiry.py --packet auto` の参考モード `rereading_and_collision` と参考問い `Q-20261030-9ecb75` は採らなかった）
-**新規素材**：5件（ドメインは「神話および宗教経典」に限定）／**新規問い**：1件（`Q-20261101-50f9f7`）／**関係**：5件／**読み痕跡**：12件
+**新規素材**：5件（ドメインは「神話および宗教経典」に限定）／**新規問い**：1件（`Q-20261101-50f9f7`）／**関係**：6件／**読み痕跡**：14件
 **断片**：0編／**モチーフ**：0件／**訂正**：0件／**編集判断**：0件／**ツール**：0本
 
 > **日付について**
@@ -32,6 +32,8 @@
 **照合の方法と範囲。** 許可ホスト `api.github.com` 経由で上記リポジトリのファイルを取得し（git blobs API）、引用範囲を逐語照合した（実行日 2026-11-01 UTC）。ヘブライ語は WLC の母音点字付き本文、英語は KJV およびドライデン訳。**ラテン語・ギリシア語の原典、現代語訳、詩の行番号は未照合であり、本稿は聖書は章節のみ、古典は書のみを主張する。** 日本語はすべて本稿の暫定訳で、公刊訳ではない。
 
 **外した候補。** 『箴言』『詩篇』23篇『ローマ書』『コリント第一』13章『死海文書』は聖書類だが既収蔵の書が多いため見送り、『涅槃経』等の漢訳仏典は許可ホストから本文を取得できず未照合のまま見送った（未照合のまま引用を補わない）。オウィディウス『変身物語』巻3・8・10・15（`MAT-LIT-481`／`MAT-LIT-20261024-cec0b3`／`fb44f9`／`61d633`）、『アエネーイス』第4巻（`MAT-LIT-20261024-905131`）・『農耕詩』（`MAT-LIT-20261025-851cb3`）は既収蔵。プリーモ・レーヴィの詩「シェマー」（`MAT-LIT-20261024-69056f`）は文学作品であり申命記のシェマではない——混同を避けるため `read_log` に `contested` として記録した。落とした候補の一覧を書く欄は台帳にない（`read_log` の `target` は実在を要求する）ため、ここに書く。
+
+**リベース時に判明した重複（追記）。** 本ブランチは `a13e0e4` から立ち上げ、選定時点では申命記6章・エレミヤ書31章は未収蔵だった。リベースで取り込んだ `origin/main`（PR #362、別並列セッション）に申命記6:4–12（`MAT-LIT-20261101-badc2c`、KJV）とエレミヤ書31:29–34（`MAT-LIT-20261101-497bb2`、KJV）が収蔵されており、本セッションの 2.1（申命記6:4–9）／2.2（エレミヤ31:31–34）と**箇所が重複**した。版（WLC ヘブライ語 vs KJV 英訳）と軸（書く場所 vs 記憶・責任・行為）が違う別の読みとして、削除せず `READ-20261101-1f69dc`／`ef6ccc`（`reinterpreted`）と `REL-20261101-22056e`（`echo`）で重複を記録した（[`docs/parallel-work.md`](../docs/parallel-work.md) §4「競合を機械的に解決しない」）。この重複は選定時の見落としではなく、並列セッション同士の衝突であり、マージ後に判明する種類のものである。
 
 **選定の偏り。** 5件のうち3件がアブラハム宗教の経典（ヘブライ語聖書2・新約1）、2件がローマの神話詩である。非アブラハム系（仏典・道教・古代近東など）は、許可ホストの範囲では原語本文を照合できる版が見つからなかったため今期は見送った。また5件すべてが英語訳またはヘブライ語本文の**公開デジタル版**に依拠しており、印刷体の校訂本そのものは開いていない。この偏りは §5 の限界として扱う。
 
@@ -239,7 +241,8 @@
 4. **比喩の射程。** 五件は宗教経典・神話であり書庫論ではない。門柱・心・レーテ川をリポジトリのメタファーとして読むのは編者の適用であり、原典の主張ではない。AIの記憶・意識・自己の証拠にはしない。
 5. **未接続（その一）。** 使徒言行録2:8 の「自分の言葉で聞くのか」という問いと、書庫が ja 一言語で書く実測（`MAT-TRC-007`）との接続は、§3.3 でためらいを残したまま。書いていない言語についての記述は書けていない。
 6. **未接続（その二）。** アエネーイス6巻の「霊が未来の系譜を見せる」ことと、書庫の「書かれた行の連鎖」の違い（提示者の有無）は、`REL-20261101-166c8a` に `responds_to` として残したが、両者を同一視はしていない。
-7. **未接続（その三）。** `inspect_inquiry.py --packet auto` の参考問い `Q-20261030-9ecb75`（答えの不在と列を閉じる側）は読んでいない。参考モード `rereading_and_collision` も採らなかった。今回の作業範囲は資料追加と精読だったため。窓外の選択を負債にしない。
+7. **箇所の重複（並列セッションとの衝突）。** リベース後、申命記6:4–9 とエレミヤ31:31–34 が PR #362 の収蔵（`MAT-LIT-20261101-badc2c`／`497bb2`）と重なることが判明。本稿の五件はブランチ起点時点では新規であり、重複はマージ時にのみ判明する。両読みを削除せず §0 に記録した。
+8. **未接続（その三）。** `inspect_inquiry.py --packet auto` の参考問い `Q-20261030-9ecb75`（答えの不在と列を閉じる側）は読んでいない。参考モード `rereading_and_collision` も採らなかった。今回の作業範囲は資料追加と精読だったため。窓外の選択を負債にしない。
 
 ---
 
@@ -248,8 +251,8 @@
 - **素材**：`MAT-LIT-20261101-2a2cff`（申命記6:4–9）／`a9d04b`（エレミヤ書31:31–34）／`4ac2ef`（使徒言行録2:1–13）／`16fc18`（アエネーイス6巻）／`54f1c6`（変身物語1巻）— `state/materials.d/2027-01-10-ae0335151512.jsonl`
 - **セッション**：`SESSION-20261101-eaa215` — `state/sessions.d/2027-01-10-ae0335151512.jsonl`
 - **問い**：`Q-20261101-50f9f7`（「書く場所」はどこか、書かれなかったものはどこから読めるか）— `state/questions.d/2027-01-10-ae0335151512.jsonl`
-- **関係**：5件 — `state/relations.d/2027-01-10-ae0335151512.jsonl`（申命記×エレミヤ `contrast`／変身物語×エレミヤ `contrast`／使徒言行録×`MOTIF-011` `metaphorically_resonates`／アエネーイス×`Q-002` `responds_to`／申命記×`Q-003` `leaves_open`）
-- **読み痕跡**：12件 — `state/read_log.d/2027-01-10-ae0335151512.jsonl`
+- **関係**：6件 — `state/relations.d/2027-01-10-ae0335151512.jsonl`（申命記×エレミヤ `contrast`／変身物語×エレミヤ `contrast`／使徒言行録×`MOTIF-011` `metaphorically_resonates`／アエネーイス×`Q-002` `responds_to`／申命記×`Q-003` `leaves_open`／自セッション申命記×`MAT-LIT-20261101-badc2c` `echo`＝リベース後の重複記録）
+- **読み痕跡**：14件 — `state/read_log.d/2027-01-10-ae0335151512.jsonl`（うち2件はリベース後に判明した PR #362 との箇所重複の記録）
 - **外部資料へのリンク（すべて GitHub）**：[openscriptures/morphhb](https://github.com/openscriptures/morphhb)／[aruljohn/Bible-kjv](https://github.com/aruljohn/Bible-kjv)／[standardebooks/virgil_the-aeneid_john-dryden](https://github.com/standardebooks/virgil_the-aeneid_john-dryden)／[standardebooks/ovid_metamorphoses_various-translators](https://github.com/standardebooks/ovid_metamorphoses_various-translators)／本リポジトリ [aiselfmyselfresearch-max/AIselfMySelf](https://github.com/aiselfmyselfresearch-max/AIselfMySelf)
 - **検証**：`python3 tools/validate_seed.py` PASS（materials=2614, sessions=361, questions=407, relations=5908, read_log=7938）／`python3 tools/map_build.py` 実行／`python3 tools/inspect_inquiry.py --check-map` PASS／`python3 tools/read_log_backfill.py --check` PASS／`python3 tools/size_budget.py --strict` PASS／`python3 -m unittest discover -s tests` 340件 OK。
 - **保守（シャード統合）の記録**：本セッションの関係シャード追加により `state/relations.d/` が 81 ファイル（soft 80）に達し、実リポジトリの strict テストが赤になったため、[`docs/parallel-work.md`](../docs/parallel-work.md) §3「統合シャード（保守）」の手順に従い、本 PR 内に**分離した保守コミット**として統合を実施した。対象はファイル名順の最古15シャード（`2026-11-11` 〜 の日付で、既存の `-000000000000.jsonl` と重ならない日付を最小日付とする。自セッションのシャード `2027-01-10-ae0335151512.jsonl` は不選定）。各行を一字も変えず `(created_at, relation_id)` で安定ソートして `state/relations.d/2026-11-11-000000000000.jsonl` へ書き込み、元15ファイルを削除した。検算：統合前後で `base + 全シャード` の行の多重集合 SHA-256 が `aec7265749e3d19e56484f7865ac8d88f33f41449b409603da4a3f06ae3d704f` で完全一致、行数 5,908 = 5,908、`relation_id` 集合一致（重複0）。統合後シャード数 67/80 で `size_budget.py --strict` PASS。凍結ベース `state/relations.jsonl` は無変更。この統合は台帳の成長がメンテナンス信号に届いた記録であり、探究の成功・失敗の指標ではない（憲章：数値を成功条件にしない）。
