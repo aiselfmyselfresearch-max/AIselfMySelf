@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：398 件（初期シード 5 件 ＋ 派生 393 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2494 件（research_excerpt 800 ／ literary_text 1626 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2499 件（research_excerpt 800 ／ literary_text 1631 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：236 編（selected 86 ／ draft 150）
 - **解釈的関係（Relations）**：5788 件
-- **探究セッション（Sessions）**：333 回
+- **探究セッション（Sessions）**：334 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -722,7 +722,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2494 件・詳細は map/3*.md）
+## 4. 対話素材（2499 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3220,6 +3220,11 @@
 | `MAT-LIT-20261101-b9ec2d` | literary_text | 作者不詳（ウェールズ）, Lady Charlotte Guest (trans.)『『マビノギオン』ブランウェン——甦って話せない者と、八十年語る首』（1849） |
 | `MAT-LIT-20261101-34ce41` | literary_text | 劉安（淮南王）に帰される『『淮南子』精神訓——感じて応じ、迫られて動き、機械之巧は心に載せない』（-139） |
 | `MAT-LIT-20261101-f85896` | literary_text | 作者不詳（コプト語・ナグ・ハマディ文庫）, Stephen Patterson (trans.), Marvin Meyer (trans.)『『トマス福音書』——「私を何かに喩… |
+| `MAT-LIT-20261101-92eed5` | literary_text | 伝承／編者不詳『伝道の書3章——人と獣の息と塵』（1611） |
+| `MAT-LIT-20261101-7dec5f` | literary_text | 伝承／編者不詳『老子第11章——器と空所』（1891） |
+| `MAT-LIT-20261101-9bacef` | literary_text | 伝承／編者不詳『ダンマパダ20章——教えと道を行く者』（1881） |
+| `MAT-LIT-20261101-968981` | literary_text | 伝承／編者不詳『ギルガメシュ第11書板——若返りの草と蛇』（1928） |
+| `MAT-LIT-20261101-074d66` | literary_text | 伝承／編者不詳『ポポル・ヴフ第二の書——伝言と葦』（1908） |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20270101-c78c01・全文は map/50-sessions-*.md）
 
@@ -3489,6 +3494,7 @@
 | `SESSION-20261031-24aa7a` | 2026-12-31 | `Q-20261024-4e210d`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261031-59ad48` | 2026-12-31 | `Q-20261130-25687e`, `Q-20261024-a26f22`, `Q-20261202-ac5dd8`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261031-cc634d` | — |
 | `SESSION-20261031-904d7d` | 2026-10-31 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261101-475225` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270102-c0aa1e` | 2027-01-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
@@ -3614,7 +3620,7 @@
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
 | `map/30-materials-literary-16.md` | 100 | 198,531 |
-| `map/30-materials-literary-17.md` | 26 | 70,537 |
+| `map/30-materials-literary-17.md` | 31 | 75,657 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3641,7 +3647,7 @@
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,665 |
-| `map/50-sessions-06.md` | 50 | 42,720 |
-| `map/50-sessions-07.md` | 33 | 31,493 |
+| `map/50-sessions-06.md` | 50 | 42,233 |
+| `map/50-sessions-07.md` | 34 | 32,577 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
