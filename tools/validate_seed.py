@@ -217,7 +217,8 @@ def main() -> int:
         "fragment": {"draft", "selected", "archived"},
         "question": {"open", "paused", "archived"},
     }
-    for decision_id, record in collections.get("editorial_decisions", {}).items():
+    ed_records = collections.get("editorial_decisions", {})
+    for decision_id, record in ed_records.items():
         session_id = record.get("session_id")
         if session_id and session_id not in sessions:
             errors.append(
@@ -238,6 +239,53 @@ def main() -> int:
                     f"editorial_decisions:{decision_id}: status {record.get('status')!r} "
                     f"is not valid for target type {ttype!r} (expected {sorted(allowed)})"
                 )
+        supersedes = record.get("supersedes")
+        if isinstance(supersedes, list):
+            for sup_id in supersedes:
+                if not isinstance(sup_id, str):
+                    continue
+                if sup_id == decision_id:
+                    errors.append(
+                        f"editorial_decisions:{decision_id}: supersedes cannot reference itself"
+                    )
+                elif sup_id not in ed_records:
+                    errors.append(
+                        f"editorial_decisions:{decision_id}: supersedes references unknown "
+                        f"editorial_decision ID {sup_id!r}"
+                    )
+                elif ed_records[sup_id].get("target") != ref:
+                    errors.append(
+                        f"editorial_decisions:{decision_id}: supersedes decision {sup_id!r} "
+                        f"targets {ed_records[sup_id].get('target')!r}, expected {ref!r}"
+                    )
+
+    ed_visit_state: dict[str, int] = {}
+    for start_id in ed_records:
+        if ed_visit_state.get(start_id, 0) != 0:
+            continue
+        stack: list[tuple[str, int]] = [(start_id, 0)]
+        ed_visit_state[start_id] = 1
+        while stack:
+            cur_id, idx = stack[-1]
+            sup_list = ed_records[cur_id].get("supersedes")
+            neighbors = [
+                s for s in (sup_list if isinstance(sup_list, list) else [])
+                if isinstance(s, str) and s in ed_records and s != cur_id
+            ]
+            if idx < len(neighbors):
+                stack[-1] = (cur_id, idx + 1)
+                nxt_id = neighbors[idx]
+                st = ed_visit_state.get(nxt_id, 0)
+                if st == 1:
+                    errors.append(
+                        f"editorial_decisions:{cur_id}: cycle detected in supersedes chain via {nxt_id!r}"
+                    )
+                elif st == 0:
+                    ed_visit_state[nxt_id] = 1
+                    stack.append((nxt_id, 0))
+            else:
+                ed_visit_state[cur_id] = 2
+                stack.pop()
     for relation_id, relation in relations.items():
         for endpoint in ("left", "right"):
             ref = relation.get(endpoint)
