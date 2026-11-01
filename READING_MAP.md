@@ -7,9 +7,9 @@
 
 - **開かれた問い（Questions）**：405 件（初期シード 5 件 ＋ 派生 400 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2567 件（research_excerpt 808 ／ literary_text 1691 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2572 件（research_excerpt 808 ／ literary_text 1696 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：237 編（selected 89 ／ draft 148）
-- **解釈的関係（Relations）**：5862 件
+- **解釈的関係（Relations）**：5873 件
 - **探究セッション（Sessions）**：351 回
 
 ## 1. 問いを横断する 59 つのモチーフ
@@ -730,7 +730,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2567 件・詳細は map/3*.md）
+## 4. 対話素材（2572 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3241,6 +3241,11 @@
 | `MAT-EVD-20261101-8efc12` | research_excerpt | University of Cambridge『ケンブリッジ大のロボット料理人「taste as you go」——食べずに塩分を測る腕（2022）』（2022） |
 | `MAT-EVD-20261101-24e1ef` | research_excerpt | Linda A. Henkel『Henkel (2014) 撮影障害効果——全体を撮ると記憶が減り、一部にズームすると減らない』（2014） |
 | `MAT-EVD-20261101-fc11d8` | research_excerpt | 環境省『環境省 食品ロス推計（令和6年度）461万トン——廃棄の定義は主体の感覚を問わない』（2026） |
+| `MAT-LIT-20261101-26e95b` | literary_text | 無名（シュメール伝承を、中アッシリア〜新アッシリア時代の書記がアッカド語「標準版」に編纂；伝承上シン＝レキ・ウンニニの名が関わる）『『ギルガメシュ叙事詩』第八板——エンキドゥの死… |
+| `MAT-LIT-20261101-f83bf5` | literary_text | 無名（ヤヒスト文書等の編纂；最終編成は紀元前5世紀頃）『創世記 2–3章——土から造られ、名を与え、善悪を知り、エデンを追われる人間』（-950） |
+| `MAT-LIT-20261101-7d7087` | literary_text | 鳩摩羅什（訳）『金剛般若波羅蜜経——一切有為法は夢幻泡影、我相・人相・衆生相・寿者相を離れよ』（402） |
+| `MAT-LIT-20261101-60bc6b` | literary_text | 稗田阿礼（口述）, 太安万侶（書記）『『古事記』上巻——イザナギ、黄泉の国からの逃還、禊による三貴子の誕生』（712） |
+| `MAT-LIT-20261101-c5b553` | literary_text | 無名（10世紀頃の成立と推定；匿名の冰島詩）『『詩のエッダ』ヴォルスペー——予言者女の記憶、神々の黄昏、草の中の黄金の碁盤石』（1000） |
 | `MAT-LIT-20261101-3e0b62` | literary_text | 伝承（作者不詳）, King James Version 訳者たち『『ヨナ記』4章——植物を惜しむことと都市の家畜』（1611） |
 | `MAT-LIT-20261101-e4b281` | literary_text | パーリ仏教伝承, Robert Chalmers（英訳）『『ジャータカ』第12話——鹿の免責と畑の印』（1895） |
 | `MAT-LIT-20261101-e7590c` | literary_text | 伝承（作者不詳）, H. G. Evelyn-White（英訳）『『ホメロス風讃歌』デメテル讃歌——声を聞くが姿を見ない』（1914） |
@@ -3658,17 +3663,17 @@
 | `SESSION-20270103-d6690c` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6` | — | `Q-20270103-7b1ce6` |
 | `SESSION-20261101-81dab1` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-70e889` |
 
-## 6. 解釈的関係（5862 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5873 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 785 |
-| 共鳴 (echo) | 1474 |
+| 対照 (contrast) | 786 |
+| 共鳴 (echo) | 1475 |
 | 切断・割り込み (interrupts) | 200 |
 | 未解決のまま開く (leaves_open) | 862 |
 | 比喩的共鳴 (metaphorically_resonates) | 141 |
 | 枠組みの組み替え (reframes) | 511 |
-| 応答 (responds_to) | 1614 |
+| 応答 (responds_to) | 1623 |
 | 変奏・変形 (transforms) | 275 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3714,7 +3719,7 @@
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
 | `map/30-materials-literary-16.md` | 100 | 198,531 |
-| `map/30-materials-literary-17.md` | 91 | 263,641 |
+| `map/30-materials-literary-17.md` | 96 | 273,590 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3734,9 +3739,9 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 187,707 |
-| `map/40-relations-11.md` | 500 | 166,322 |
-| `map/40-relations-12.md` | 362 | 123,004 |
+| `map/40-relations-10.md` | 500 | 186,285 |
+| `map/40-relations-11.md` | 500 | 167,557 |
+| `map/40-relations-12.md` | 373 | 126,097 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
