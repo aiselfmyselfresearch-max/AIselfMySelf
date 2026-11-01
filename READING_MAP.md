@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：405 件（初期シード 5 件 ＋ 派生 400 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2562 件（research_excerpt 808 ／ literary_text 1686 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2567 件（research_excerpt 808 ／ literary_text 1691 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：237 編（selected 89 ／ draft 148）
 - **解釈的関係（Relations）**：5862 件
-- **探究セッション（Sessions）**：350 回
+- **探究セッション（Sessions）**：351 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -730,7 +730,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2562 件・詳細は map/3*.md）
+## 4. 対話素材（2567 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3241,6 +3241,11 @@
 | `MAT-EVD-20261101-8efc12` | research_excerpt | University of Cambridge『ケンブリッジ大のロボット料理人「taste as you go」——食べずに塩分を測る腕（2022）』（2022） |
 | `MAT-EVD-20261101-24e1ef` | research_excerpt | Linda A. Henkel『Henkel (2014) 撮影障害効果——全体を撮ると記憶が減り、一部にズームすると減らない』（2014） |
 | `MAT-EVD-20261101-fc11d8` | research_excerpt | 環境省『環境省 食品ロス推計（令和6年度）461万トン——廃棄の定義は主体の感覚を問わない』（2026） |
+| `MAT-LIT-20261101-3e0b62` | literary_text | 伝承（作者不詳）, King James Version 訳者たち『『ヨナ記』4章——植物を惜しむことと都市の家畜』（1611） |
+| `MAT-LIT-20261101-e4b281` | literary_text | パーリ仏教伝承, Robert Chalmers（英訳）『『ジャータカ』第12話——鹿の免責と畑の印』（1895） |
+| `MAT-LIT-20261101-e7590c` | literary_text | 伝承（作者不詳）, H. G. Evelyn-White（英訳）『『ホメロス風讃歌』デメテル讃歌——声を聞くが姿を見ない』（1914） |
+| `MAT-LIT-20261101-44e381` | literary_text | パーリ仏教伝承, F. Max Müller（英訳）『『ダンマパダ』1章3–5偈——同じ被害の列挙、異なる反復』（1881） |
+| `MAT-LIT-20261101-845ad9` | literary_text | Hesiod, H. G. Evelyn-White（英訳）『ヘシオドス『仕事と日』——パンドラの贈り物と壺』（1914） |
 | `MAT-LIT-20261101-e8e412` | literary_text | 作者不詳（クルアーン）, Marmaduke Pickthall (trans.)『『クルアーン』68章1–2節——ペンと、書かれるものに誓う』（1930） |
 | `MAT-LIT-20261101-e6bedd` | literary_text | 預言者イザヤ（伝承）, KJV 訳者不詳（1611）『イザヤ書6章——顔を覆う者と、「わたしを遣わしてください」』（1611） |
 | `MAT-LIT-20261101-ddd8d7` | literary_text | 伝承／老子（著者归属は学説史の問題）, James Legge（英訳）『『老子』第33章——自知者明と、死而不亡者寿』（1891） |
@@ -3572,6 +3577,7 @@
 | `SESSION-20261101-86ba8e` | 2026-11-01 | `Q-001`, `Q-062`, `Q-065`, `Q-20261101-bb854d` | — | `Q-20261101-bb854d` |
 | `SESSION-20261101-be22d0` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-3176c6` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261201-9936f8` | `FRAG-20261101-2a9128` | — |
+| `SESSION-20261101-ddc870` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-e5df96` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-619ddc` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-049`, `Q-20261101-70e889`, `Q-20261216-57d036` | — | — |
 | `SESSION-20261101-1735c2` | 2026-11-01 | `Q-001`, `Q-003`, `Q-20261024-b23994` | — | — |
@@ -3708,7 +3714,7 @@
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
 | `map/30-materials-literary-16.md` | 100 | 198,531 |
-| `map/30-materials-literary-17.md` | 86 | 257,558 |
+| `map/30-materials-literary-17.md` | 91 | 263,641 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3736,7 +3742,8 @@
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,665 |
-| `map/50-sessions-06.md` | 50 | 44,245 |
-| `map/50-sessions-07.md` | 50 | 46,528 |
+| `map/50-sessions-06.md` | 50 | 44,296 |
+| `map/50-sessions-07.md` | 50 | 46,349 |
+| `map/50-sessions-08.md` | 1 | 1,231 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
