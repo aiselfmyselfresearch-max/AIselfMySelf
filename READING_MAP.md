@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：408 件（初期シード 5 件 ＋ 派生 403 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2644 件（research_excerpt 808 ／ literary_text 1768 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2649 件（research_excerpt 808 ／ literary_text 1773 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：241 編（selected 94 ／ draft 147）
-- **解釈的関係（Relations）**：5973 件
-- **探究セッション（Sessions）**：372 回
+- **解釈的関係（Relations）**：5984 件
+- **探究セッション（Sessions）**：373 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -737,7 +737,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2644 件・詳細は map/3*.md）
+## 4. 対話素材（2649 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3385,8 +3385,13 @@
 | `MAT-LIT-20261101-4ac2ef` | literary_text | ルカ伝承（使徒言行録）, King James Version (1611, パブリックドメイン)『『使徒言行録』2章1–13節——ペンテコステ、おのおのの言語で語る』（90） |
 | `MAT-LIT-20261101-16fc18` | literary_text | ウェルギリウス, John Dryden (trans.)『ウェルギリウス『アエネーイス』第6巻——レーテの川の忘却と、父の霊が見せる未来の系譜』（-19） |
 | `MAT-LIT-20261101-54f1c6` | literary_text | オウィディウス, John Dryden ほか18名 (trans.)『オウィディウス『変身物語』第1巻——人間の創造と、黄金期・鉄の時代』（8） |
+| `MAT-LIT-20261101-efe8f0` | literary_text | クルアーン（伝承上、預言者ムハンマドが受けた最初の啓示とされる）, fawazahmed0/quran-api（アラビア語本文・Pickthall 1930 英訳・Sale 17… |
+| `MAT-LIT-20261101-232333` | literary_text | 列王記（伝承上の編者は未詳、申命記史家の枠組みとされる）, Westminster Leningrad Codex (openscriptures/morphhb), King … |
+| `MAT-LIT-20261101-c94d00` | literary_text | パーリ三蔵（中部経典、伝承上ブッダの教説）, Chaṭṭha Saṅgāyana Tipiṭaka（VRI 第6回結集版、ローマ字転写）『パーリ仏典『中部』22経「蛇喩経（Ala… |
+| `MAT-LIT-20261101-902ca0` | literary_text | オルペウス教讃歌集（著者未詳、後2〜3世紀頃の小アジアの秘儀集団に帰せられる）, Thomas Taylor 英訳（1792）, NullImprint/OrphicHymnsD… |
+| `MAT-LIT-20261101-1471ff` | literary_text | 康僧鎧（曹魏の天竺三蔵、伝承上252年訳）, CBETA 電子佛典（2016.06, alexamies/buddhist-dictionary 所蔵テキスト）『『仏説無量寿経』… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261101-eaa215・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261101-899f3a・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3762,18 +3767,19 @@
 | `SESSION-20270103-d6690c` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6` | — | `Q-20270103-7b1ce6` |
 | `SESSION-20261029-77b681` | 2026-12-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-0a3833`, `Q-20261024-cfd57d` | `FRAG-20261029-30debd` | — |
 | `SESSION-20261101-eaa215` | 2027-01-10 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-50f9f7` |
+| `SESSION-20261101-899f3a` | 2027-01-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（5973 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5984 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 813 |
-| 共鳴 (echo) | 1486 |
+| 対照 (contrast) | 815 |
+| 共鳴 (echo) | 1489 |
 | 切断・割り込み (interrupts) | 207 |
 | 未解決のまま開く (leaves_open) | 867 |
-| 比喩的共鳴 (metaphorically_resonates) | 147 |
+| 比喩的共鳴 (metaphorically_resonates) | 151 |
 | 枠組みの組み替え (reframes) | 530 |
-| 応答 (responds_to) | 1641 |
+| 応答 (responds_to) | 1643 |
 | 変奏・変形 (transforms) | 282 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3821,7 +3827,7 @@
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 265,625 |
-| `map/30-materials-literary-18.md` | 68 | 219,013 |
+| `map/30-materials-literary-18.md` | 73 | 240,891 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3843,7 +3849,7 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 184,922 |
 | `map/40-relations-11.md` | 500 | 176,635 |
-| `map/40-relations-12.md` | 473 | 156,736 |
+| `map/40-relations-12.md` | 484 | 161,155 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -3851,6 +3857,6 @@
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,977 |
 | `map/50-sessions-07.md` | 50 | 44,777 |
-| `map/50-sessions-08.md` | 22 | 20,939 |
+| `map/50-sessions-08.md` | 23 | 21,951 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
