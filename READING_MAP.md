@@ -5,12 +5,12 @@
 
 ## 現在の到達点（台帳サマリー）
 
-- **開かれた問い（Questions）**：402 件（初期シード 5 件 ＋ 派生 397 件）
+- **開かれた問い（Questions）**：403 件（初期シード 5 件 ＋ 派生 398 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2524 件（research_excerpt 800 ／ literary_text 1656 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2529 件（research_excerpt 800 ／ literary_text 1661 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：236 編（selected 86 ／ draft 150）
-- **解釈的関係（Relations）**：5810 件
-- **探究セッション（Sessions）**：341 回
+- **解釈的関係（Relations）**：5816 件
+- **探究セッション（Sessions）**：342 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -425,6 +425,7 @@
 | `Q-20261031-acdadb` | session | `Q-20261201-f932d1` | — | この書庫の訂正台帳には、訂正を誰に返したかを書く欄が無い。読まれたことを記録する欄も無い（read_log.target.type は question・motif・material・fragmen… |
 | `Q-20261031-0f4ef3` | session | `Q-20261029-85a285` `Q-004` `Q-005` | — | 中心と呼ばれる三つの問いは、同じ日に置かれた五つの種のうちの三つである。外された二つは、他者が名づけることで自己ができるか（Q-005）と、自分のものと認識することと好むことの区別（Q-004）を問… |
 | `Q-20261101-6c66f3` | material | `Q-20270103-7b1ce6` `Q-20261121-198fc8` | — | 名が数のとき、その数は誰を数えているのか。維摩詰は「汝何れの処にか没して来りて此に生ずるや」に反問で答え、同じ品の直後に仏が「妙喜国より来た」と事実の来歴を補う。この台帳では `context_ma… |
+| `Q-20261101-031383` | material | — | — | 読まれない期間——記録が参照されない時間——は、この書庫にとって自己の状態なのか、それとも空白なのか。状態として数える欄はどこにあるか。 |
 | `Q-20261106-f0bdb0` | session | `Q-20261024-962620` `Q-20261024-5b11eb` `Q-20261024-a1bb7b` | — | この書庫は誤りを訂正録で受けるが、約束の側には受領の場所を持たない。前のセッションが末尾に置いた申し送りを次のセッションが受け取ったとき、履行を証明するのは渡した側の宣言か、受け取った側の記録か。受… |
 | `Q-20261107-590fe4` | session | `Q-20261024-833a69` `Q-20261024-c02206` | — | 値段は、品物が出来る前に決められることがある。手付は、まだ無い靴に付いた値であり、その値は品物が届かなかった後も残って、届かなかった品物を売り物でなくする。この台帳の `selected` も、断片… |
 | `Q-20261108-ba086b` | session | `Q-20261025-636287` `Q-20261025-9256a5` | — | 止まれの標識は、貼られた白黒の札のせいで機械に「四十五」と読まれ、乾いたトマトの茎は、誰にも宛てない四十キロヘルツの音で、乾きか切断かという分類を機械に読ませた（MAT-RES-20261025-2… |
@@ -726,7 +727,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2524 件・詳細は map/3*.md）
+## 4. 対話素材（2529 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3234,6 +3235,11 @@
 | `MAT-LIT-20261101-b9ec2d` | literary_text | 作者不詳（ウェールズ）, Lady Charlotte Guest (trans.)『『マビノギオン』ブランウェン——甦って話せない者と、八十年語る首』（1849） |
 | `MAT-LIT-20261101-34ce41` | literary_text | 劉安（淮南王）に帰される『『淮南子』精神訓——感じて応じ、迫られて動き、機械之巧は心に載せない』（-139） |
 | `MAT-LIT-20261101-f85896` | literary_text | 作者不詳（コプト語・ナグ・ハマディ文庫）, Stephen Patterson (trans.), Marvin Meyer (trans.)『『トマス福音書』——「私を何かに喩… |
+| `MAT-LIT-20261101-9639ca` | literary_text | 作者不詳（シュメール語、写本はウル第三王朝期〜イシン期頃）, The Electronic Text Corpus of Sumerian Literature (trans.)… |
+| `MAT-LIT-20261101-034001` | literary_text | 作者不詳（ウパニシャッド）, Sri Ramana Ashram archives (ed., English rendering)『『マーンドゥーキヤ・ウパニシャッド』——四つ… |
+| `MAT-LIT-20261101-02bddf` | literary_text | 作者不詳（古ノルド語、『フラテイヤルボーク』所収）, Henry Adams Bellows (trans.)『『ヒュンドルの歌』——系譜を語る巨人女と、覚えるために飲む「記憶の… |
+| `MAT-LIT-20261101-cc1be0` | literary_text | Jalāl al-Dīn Muḥammad Rūmī, E. H. Whinfield (trans.)『ルーミー『マスナヴィー』第一巻 序詩——葦の笛は、切り取られたことを訴え… |
+| `MAT-LIT-20261101-e26664` | literary_text | 宋玉（伝承）, 王逸（序・章句、伝承）『『楚辞』「招魂」——巫陽は呼び戻せと言われ、呼び戻した後に自分が使えなくなることを恐れる』（-300） |
 | `MAT-LIT-20261101-92eed5` | literary_text | 伝承／編者不詳『伝道の書3章——人と獣の息と塵』（1611） |
 | `MAT-LIT-20261101-7dec5f` | literary_text | 伝承／編者不詳『老子第11章——器と空所』（1891） |
 | `MAT-LIT-20261101-9bacef` | literary_text | 伝承／編者不詳『ダンマパダ20章——教えと道を行く者』（1881） |
@@ -3528,6 +3534,7 @@
 | `SESSION-20261101-e5df96` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-c7fc74` | 2027-01-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-6c66f3` | — | `Q-20261101-6c66f3` |
 | `SESSION-20270102-c0aa1e` | 2027-01-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261101-15095c` | 2027-01-05 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-031383` |
 | `SESSION-20261101-795dd5` | 2027-01-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6`, `Q-20261101-70e889` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
@@ -3601,16 +3608,16 @@
 | `SESSION-20270103-d6690c` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270103-7b1ce6` | — | `Q-20270103-7b1ce6` |
 | `SESSION-20261101-81dab1` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-70e889` |
 
-## 6. 解釈的関係（5810 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（5816 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 770 |
-| 共鳴 (echo) | 1469 |
+| 対照 (contrast) | 773 |
+| 共鳴 (echo) | 1470 |
 | 切断・割り込み (interrupts) | 195 |
 | 未解決のまま開く (leaves_open) | 859 |
 | 比喩的共鳴 (metaphorically_resonates) | 137 |
-| 枠組みの組み替え (reframes) | 501 |
+| 枠組みの組み替え (reframes) | 503 |
 | 応答 (responds_to) | 1608 |
 | 変奏・変形 (transforms) | 271 |
 
@@ -3619,16 +3626,16 @@
 | ファイル | 件数 | バイト |
 |---|---:|---:|
 | `map/00-overview.md` | None | 48,621 |
-| `map/10-question-index.md` | None | 153,983 |
+| `map/10-question-index.md` | None | 154,257 |
 | `map/11-question-bodies-01.md` | 50 | 32,046 |
 | `map/11-question-bodies-02.md` | 50 | 40,480 |
 | `map/11-question-bodies-03.md` | 50 | 46,224 |
 | `map/11-question-bodies-04.md` | 50 | 42,435 |
 | `map/11-question-bodies-05.md` | 50 | 49,469 |
 | `map/11-question-bodies-06.md` | 50 | 43,207 |
-| `map/11-question-bodies-07.md` | 50 | 45,989 |
-| `map/11-question-bodies-08.md` | 50 | 49,359 |
-| `map/11-question-bodies-09.md` | 2 | 2,892 |
+| `map/11-question-bodies-07.md` | 50 | 45,483 |
+| `map/11-question-bodies-08.md` | 50 | 49,416 |
+| `map/11-question-bodies-09.md` | 3 | 4,160 |
 | `map/20-fragments-01.md` | 20 | 87,124 |
 | `map/20-fragments-02.md` | 20 | 101,379 |
 | `map/20-fragments-03.md` | 20 | 84,744 |
@@ -3657,7 +3664,7 @@
 | `map/30-materials-literary-14.md` | 100 | 166,989 |
 | `map/30-materials-literary-15.md` | 100 | 208,816 |
 | `map/30-materials-literary-16.md` | 100 | 198,531 |
-| `map/30-materials-literary-17.md` | 56 | 158,481 |
+| `map/30-materials-literary-17.md` | 61 | 178,562 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3676,15 +3683,15 @@
 | `map/40-relations-07.md` | 500 | 140,616 |
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
-| `map/40-relations-10.md` | 500 | 185,991 |
-| `map/40-relations-11.md` | 500 | 163,423 |
-| `map/40-relations-12.md` | 310 | 106,580 |
+| `map/40-relations-10.md` | 500 | 186,675 |
+| `map/40-relations-11.md` | 500 | 163,506 |
+| `map/40-relations-12.md` | 316 | 108,402 |
 | `map/50-sessions-01.md` | 50 | 44,196 |
 | `map/50-sessions-02.md` | 50 | 48,706 |
 | `map/50-sessions-03.md` | 50 | 46,191 |
 | `map/50-sessions-04.md` | 50 | 45,736 |
 | `map/50-sessions-05.md` | 50 | 47,665 |
-| `map/50-sessions-06.md` | 50 | 43,210 |
-| `map/50-sessions-07.md` | 41 | 38,856 |
+| `map/50-sessions-06.md` | 50 | 43,319 |
+| `map/50-sessions-07.md` | 42 | 39,718 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
