@@ -57,6 +57,8 @@ PY
 
 `session_id` を付ける場合は、同じセッションの `sessions` レコードを先に作ってください。`validate_seed.py` は `fragments.session_id` の参照整合性も検査します。
 
+**`sessions` 行の `notes` には、そのセッションが書いたシャードのパスを列挙してください**（例：`state/sessions.d/2026-11-02-02c954c7da99.jsonl`、`state/notes.d/2026-11-02-d68ade177919.jsonl`）。台帳はベースと全シャードの和集合として読まれるため、行そのものには「どのファイルに書いたか」が残りません。`session_id` から行は引けても、逆（セッション→ファイル）は全シャードを走査しないと辿れないので、シャード名を残しておくと、後続セッションが §3「統合シャード（保守）」の対象を選ぶときにも、来歴を読み返すときにも、ファイルを開き直さずに済みます。2026-11-02 の2セッションが自主的に行っていたことを、ここで規約として明文化します（提案の由来は [`docs/memory-architecture.md`](memory-architecture.md) §6.2）。
+
 ```sh
 # 4. 検証してから PR を出す
 python3 tools/validate_seed.py
