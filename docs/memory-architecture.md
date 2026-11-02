@@ -226,8 +226,8 @@ L3  readings/*.md          本文 — 開いて初めて「読んだ」と言え
 | 4 | 孤立ノートの可視化 | `note_index.py --orphans` / `--check` / `--report` | 到達不能 41 本（10.0%）が**測れる**ようになった。WARN であって失敗ではない（孤立は価値の低さを意味しない） |
 | 5 | 判断の台帳（第10コレクション） | `schema/note.schema.json`、`state/notes.jsonl`（空）、`state/notes.d/`、`new_id.py NOTE` | 固定された主張の置き場が `readings/` の散文しかなかった → **引用可能な `NOTE-` 行**になった |
 | 6 | 作業記憶への注入 | `inspect_inquiry.py` の `--packet` §4.7 | packet がエピソード記憶に**一切アクセスできなかった** → 対象問い・その親・関連断片を実際に参照しているノートを最大6件、実日付・字数・到達性つきで差し出す |
-| 7 | 連想・顕著性・減衰の計測 | `tools/associations.py` ＋ `map/associations.md`（38.7 KB、git 管理外） | 共起・顕著性・減衰を測る手段がなかった → §5.1 の実測が可能になった |
-| 8 | 回帰テストと CI | `tests/test_note_index.py`（25）・`tests/test_note_ledger.py`（15）・`tests/test_associations.py`（17）、`.github/workflows/ci.yml` に `note_index.py --check` と `associations.py --json` の2ステップ | 341 → **398 テスト**。索引の生成規則・リンク解決・記帳・FK 検査・減衰の三状態を、実物の `readings/` に依存しない一時リポジトリで固定した。CI の `size_budget.py` は従来どおり **hard 超過のみ**で停止する（`--strict` にしない。§7.1 の緩和を WARN で赤にしないため） |
+| 7 | 連想・顕著性・減衰の計測 | `tools/associations.py` ＋ `map/associations.md`（38.7 KB、git 管理外） | 共起・顕著性・減衰を測る手段がなかった → §5.1 の実測が可能になった。あわせて `map_build.py` の古いシャード削除を**自分の名前（`NN-*.md`・`manifest.json`）だけ**に限定した。それまでは `map/` に他ツールが書いた生成物を「計画外の古いシャード」として消していた（`tests/test_map_build.py::test_prune_removes_only_its_own_stale_shards`） |
+| 8 | 回帰テストと CI | `tests/test_note_index.py`（25）・`tests/test_note_ledger.py`（15）・`tests/test_associations.py`（17）、`.github/workflows/ci.yml` に `note_index.py --check` と `associations.py --json` の2ステップ | 341 → **399 テスト**。索引の生成規則・リンク解決・記帳・FK 検査・減衰の三状態を、実物の `readings/` に依存しない一時リポジトリで固定した。CI の `size_budget.py` は従来どおり **hard 超過のみ**で停止する（`--strict` にしない。§7.1 の緩和を WARN で赤にしないため） |
 
 ### 7.2 検証
 
@@ -236,7 +236,7 @@ python3 tools/validate_seed.py            PASS（… notes=0）
 python3 tools/inspect_inquiry.py --check-map   PASS
 python3 tools/note_index.py --check       PASS（409 notes）
 python3 tools/size_budget.py --strict     PASS
-python3 -m unittest discover -s tests     341 → 398 OK
+python3 -m unittest discover -s tests     341 → 399 OK
 ```
 
 ### 7.3 自己循環についての注意

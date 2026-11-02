@@ -51,6 +51,10 @@ CHUNKS: dict[str, int] = {
     "relations": 500,
     "sessions": 50,
 }
+# Names this tool owns inside map/ (see the prune in write_all).  Anything else
+# in that directory belongs to another generator and is left alone.
+OWNED_SHARD_NAME = re.compile(r"^(?:\d{2}-[0-9A-Za-z._-]+\.md|manifest\.json)$")
+
 INDEX_WARN_BYTES = 2 * 1024 * 1024  # tracked index should stay small
 
 
@@ -595,9 +599,16 @@ def write_all(
 
     with ledger_io.exclusive_lock(ROOT / "state" / ".ledger.lock"):
         map_dir.mkdir(parents=True, exist_ok=True)
-        # remove shards that no longer exist in the plan (tail shrinkage / renames)
+        # Remove shards that no longer exist in the plan (tail shrinkage / renames).
+        # Only this tool's own files are eligible: every name it writes starts with
+        # a two-digit chunk prefix (00-, 10-, 11-, 20-, …, 60-) or is manifest.json.
+        # map/ is a generated directory that other generators may also write into
+        # (tools/associations.py puts associations.md here), and silently deleting
+        # their output would make two tools fight over the same directory.
         planned = {e["file"] for e in plan} | {"manifest.json"}
         for stale in sorted(map_dir.glob("*.md")) + sorted(map_dir.glob("manifest.json")):
+            if not OWNED_SHARD_NAME.match(stale.name):
+                continue
             if stale.name not in planned:
                 stale.unlink()
         for entry in plan:

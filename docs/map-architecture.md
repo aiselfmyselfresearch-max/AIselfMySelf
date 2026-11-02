@@ -107,6 +107,7 @@ python3 tools/associations.py --write-map      # map/associations.md（git管理
 
 - `map/` は git 管理外のため、clone だけでは全文がない。`--write-map` か CI artifact で取得する。
 - `--check` は追跡している索引のみを検査する（`map/` は untracked のため対象外）。
+- `map/` は `map_build.py` 専用の場所ではない。`tools/associations.py` も `map/associations.md` を書く。再生成時の古いシャード削除は `map_build.py` が**自分の名前**（2桁プレフィックスの `NN-*.md` と `manifest.json`）に対してだけ行い、他ツールの生成物は消さない。
 - 過去のコミットに残った 37MB 級の `READING_MAP.md` blob がサーバ側履歴に残っている。clone は shallow で軽いが、完全履歴を軽くしたい場合は `git filter-repo` による履歴書き換えが要る（破壊的なので既定では行わない）。
 
 ## 7. 成長予算とローテーション（A1・A2・B3）

@@ -141,6 +141,30 @@ class MapBuildTests(unittest.TestCase):
             index.write_text(index.read_text(encoding="utf-8") + "\n改ざん", encoding="utf-8")
             self.assertEqual(map_build.check_index(data, index), 1)
 
+    def test_prune_removes_only_its_own_stale_shards(self):
+        """map/ is generated, but it is not map_build's alone.
+
+        Another generator (tools/associations.py) writes map/associations.md.
+        The stale-shard prune must therefore recognise its own files by name and
+        leave anything else in the directory untouched, while still deleting a
+        shard that a shrinking plan no longer produces.
+        """
+        data = sample_data()
+        with tempfile.TemporaryDirectory() as tmp:
+            map_dir = Path(tmp) / "map"
+            index = Path(tmp) / "READING_MAP.md"
+            map_build.write_all(data, map_dir, index, quiet=True)
+
+            foreign = map_dir / "associations.md"
+            foreign.write_text("# 連想の地図（別の生成物）\n", encoding="utf-8")
+            stale = map_dir / "60-notes-99.md"  # owned name, not in the plan
+            stale.write_text("stale\n", encoding="utf-8")
+
+            map_build.write_all(data, map_dir, index, quiet=True)
+            self.assertTrue(foreign.is_file(), "another generator's output was deleted")
+            self.assertFalse(stale.exists(), "a stale shard of this tool survived")
+            self.assertEqual(map_build.check_index(data, index), 0)
+
     def test_chunks_are_respected(self):
         data = sample_data()
         plan = map_build.shard_plan(data)
