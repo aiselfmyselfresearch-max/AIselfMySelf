@@ -50,7 +50,7 @@ Usage:
   python3 tools/repair_audit.py
   python3 tools/repair_audit.py --json
   python3 tools/repair_audit.py --base-only
-  python3 tools/repair_audit.py --exclude-shard 8f21c0d4be77
+  # --exclude-shard accepts a suffix from a shard currently present in state/fragments.d/
   python3 tools/repair_audit.py --show ERR-015
 """
 from __future__ import annotations

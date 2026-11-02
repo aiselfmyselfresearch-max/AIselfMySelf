@@ -43,7 +43,7 @@ Usage:
   python3 tools/hearsay_audit.py --json
   python3 tools/hearsay_audit.py --show FRAG-032
   python3 tools/hearsay_audit.py --base-only
-  python3 tools/hearsay_audit.py --exclude-shard 5c7e2a9b4d10
+  # --exclude-shard accepts a suffix from a shard currently present in state/fragments.d/
   python3 tools/hearsay_audit.py --materials
   python3 tools/hearsay_audit.py --readings
   python3 tools/hearsay_audit.py --all
