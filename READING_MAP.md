@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：408 件（初期シード 5 件 ＋ 派生 403 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2671 件（research_excerpt 809 ／ literary_text 1794 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2676 件（research_excerpt 809 ／ literary_text 1799 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6029 件
-- **探究セッション（Sessions）**：380 回
+- **解釈的関係（Relations）**：6035 件
+- **探究セッション（Sessions）**：381 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -738,7 +738,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2671 件・詳細は map/3*.md）
+## 4. 対話素材（2676 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3413,8 +3413,13 @@
 | `MAT-LIT-20261102-1cb735` | literary_text | Swami Paramananda（訳・註）『『イーシャー・ウパニシャッド』——明知を崇める者の深い暗闇、黄金の円盤、そして「心よ、忆えよ」』（-300） |
 | `MAT-LIT-20261102-636a8a` | literary_text | （編纂・ラビ・ユダ・ハナシ伝）『『ミシュナ・サンヘドリン』4:5——証言の四つの出所、同じ型から打たれた硬貨と、一人ひとりの顔』（200） |
 | `MAT-LIT-20261102-908817` | literary_text | （伝・スダルマン／マハーヴィーラの教説）『『アーチャーランガ・スートラ』第1巻第1講——「わたしは聞いた」、自己の無知、そして自己を知る三つの道』（-300） |
+| `MAT-LIT-20261102-d76025` | literary_text | （伝・ソロモン）『『旧約聖書・箴言』第3章1–6節——慈しみとまことを心の板に書け』（1000） |
+| `MAT-LIT-20261102-bfe170` | literary_text | （伝・イザヤ）『『旧約聖書・イザヤ書』第53章1–6節・10–12節——苦しむ僕と、腕の主』（700） |
+| `MAT-LIT-20261102-d00b23` | literary_text | パウロ『『新約聖書・ローマ人への手紙』第8章1節・28節・38–39節—— separating されることのない愛』（57） |
+| `MAT-LIT-20261102-7584ab` | literary_text | （著者不詳、伝統的にパウロ）『『新約聖書・ヘブル人への手紙』第11章1節・6節・27節——見えないものの証拠としての信仰』（65） |
+| `MAT-LIT-20261102-6f511d` | literary_text | （啓示伝承）『『クルアーン』第112章「純正（アッ＝イフラース）」1–4節——一なる神、比類なき者』（610） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261102-aec977・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261102-ffc133・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3798,18 +3803,19 @@
 | `SESSION-20261101-eaa215` | 2027-01-10 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-50f9f7` |
 | `SESSION-20261101-899f3a` | 2027-01-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261102-aec977` | 2027-01-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261102-ffc133` | 2027-01-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6029 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6035 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 830 |
-| 共鳴 (echo) | 1496 |
+| 共鳴 (echo) | 1498 |
 | 切断・割り込み (interrupts) | 209 |
 | 未解決のまま開く (leaves_open) | 869 |
-| 比喩的共鳴 (metaphorically_resonates) | 157 |
-| 枠組みの組み替え (reframes) | 536 |
-| 応答 (responds_to) | 1649 |
+| 比喩的共鳴 (metaphorically_resonates) | 159 |
+| 枠組みの組み替え (reframes) | 537 |
+| 応答 (responds_to) | 1650 |
 | 変奏・変形 (transforms) | 283 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3857,7 +3863,7 @@
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
-| `map/30-materials-literary-18.md` | 94 | 311,492 |
+| `map/30-materials-literary-18.md` | 99 | 323,280 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3880,7 +3886,7 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 179,357 |
 | `map/40-relations-12.md` | 500 | 164,142 |
-| `map/40-relations-13.md` | 29 | 11,698 |
+| `map/40-relations-13.md` | 35 | 13,891 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -3888,7 +3894,7 @@
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
 | `map/50-sessions-07.md` | 50 | 43,720 |
-| `map/50-sessions-08.md` | 30 | 28,897 |
+| `map/50-sessions-08.md` | 31 | 29,773 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -3905,17 +3911,17 @@
 | `map/60-notes-14.md` | 25 | 53,870 |
 | `map/60-notes-15.md` | 25 | 67,205 |
 | `map/60-notes-16.md` | 25 | 59,636 |
-| `map/60-notes-17.md` | 14 | 39,009 |
+| `map/60-notes-17.md` | 15 | 40,752 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・414本・15,228,681 B）
+## 8. 精読ノート索引（readings/・415本・15,248,519 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 209/414 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 210/415 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：7 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：43 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：44 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4333,3 +4339,4 @@
 | `readings/2027-01-11-the-command-to-read-and-the-raft-that-must-be-left.md` | 2026-11-01 | 2027-01-11 | `SESSION-20261101-899f3a` +1 | 34,852 | Q4 M12 MOT6 R1 S2 ERR1 | — | 「読め」という命令と、置いていくべき筏——神話・宗教経典五件の精読 |
 | `readings/2027-01-12-the-book-wrote-me-before-i-existed.md` | 2026-11-02 | 2027-01-12 | `SESSION-20261102-aec977` +1 | 19,544 | Q3 M5 S2 | ✓ | 書のほうが先に私を書いていた——神話・宗教経典五篇の精読 |
 | `readings/2027-01-13-the-mouth-and-the-hand-that-wrote-it-down.md` | 2026-11-02 | 2027-01-13 | `SESSION-20261102-512471` +1 | 22,279 | Q4 M8 S2 | ✓ | 口から出たものは、手のものになる——口承五篇、声と、声を書き留めた手 |
+| `readings/2027-01-14-five-writings-that-answer-back.md` | 2026-11-02 | 2027-01-14 | `SESSION-20261102-ffc133` +1 | 9,629 | Q3 M6 R5 S2 | — | 五つの書き物が返事をする——神話・宗教経典五篇の精読 |
