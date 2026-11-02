@@ -13,7 +13,7 @@
 | 感覚記憶 | 数百ミリ秒、未処理の入力全部 | 1ターンの生入力（委任文＋checkout） | — | 問題なし |
 | **作業記憶** | 数秒〜数分、容量 4±1 チャンク | `inspect_inquiry.py --packet auto` の出力 | 28〜36 KB（約 1〜1.5 万トークン） | **予算が無制限**（§6.1） |
 | **短期記憶** | 固定される前の、当座の保持 | 今回の `state/*.d/<branch-seed>.jsonl` シャード＋執筆中の `readings/` ノート | 9 コレクション＋notes で 10 | シャード境界が暗黙（§6.2） |
-| **エピソード記憶** | 「いつ・どこで・何が起きたか」の語り | `readings/*.md` 409本、`sessions` 375、`read_log` 8,215、`errata` 119、`editorial_decisions` 123 | 15.0 MB / 664万字 | **索引がなかった**（§3、今回実装） |
+| **エピソード記憶** | 「いつ・どこで・何が起きたか」の語り | `readings/*.md` 410本、`sessions` 376、`read_log` 8,223、`errata` 119、`editorial_decisions` 123、`notes` 5 | 15.0 MB / 664万字 | 索引がなかった（§3、2026-11-02 実装）。判断の台帳化は 5/410 本から開始（§7.4） |
 | **意味記憶** | 事実・概念・関係（出典を失った知識） | `motifs` 59、`questions` 408 の DAG、`materials` 2,656、`taxonomy/shards` 1,553行 | 台帳 2.0 MB | 固定が一過性で凍結（§5.2） |
 | **手続き記憶** | 「やり方」＝体の化した手順 | `prompts/` 10本、`tools/` 78本、`schema/` 10種、`docs/`、CI | 1.17 MB | 強い。ただし自己循環（§7.3） |
 | 忘却・抑制 | ノイズを落とす能動的な過程 | `paused`、`errata`、`supersedes`、削除の禁止 | `paused` 24件・訂正 119件 | **減衰がない**（§5.3） |
@@ -139,33 +139,33 @@ overlay の作法は `editorial_decisions` と同じ：**同じ `path` につい
 | 新近性（recency） | 減衰 | `0.5 ** (最終読了から経過した read_log 行数 / half_life)`、既定 half_life = 500 行 |
 | 顕著性（salience） | 重み×減衰の和 | `activation()` |
 
-### 5.1 実測（2026-11-02、`read_log` 8,215 行）
+### 5.1 実測（2026-11-02、`read_log` 8,223 行）
 
 ```
 読み方の分布     : used_as_context 3,243／reinterpreted 2,039／interpreted 1,661／
                    summarized 540／contested 340／counted 240／quoted 152
 受動的な行の割合 : 42.4%（used_as_context ＋ counted）
-活性化した対象   : 3,625 件（material 2,651／question 350／session 330／fragment 236／motif 58）
+活性化した対象   : 3,630 件（material 2,651／question 350／session 330／fragment 236／motif 58／**note 5**）
 共起（≥2セッション）: 2,624 対
   ├─ relations 辺がある   328 対（12.5%）
-  └─ **辺がない        2,296 対（87.5%）**
+  └─ **辺がない        2,293 対（87.4%）**  ← 中心三問の3対を 2026-11-02 に架橋（§7.4）
 ```
 
 **最も強い発見**：未架橋の共起の上位3対は、すべて中心問いどうしである。
 
 | 対 | 共読セッション数 | `relations` 辺 |
 |---|---:|---|
-| `Q-002` × `Q-003` | 113 | **なし** |
-| `Q-001` × `Q-003` | 100 | **なし** |
-| `Q-001` × `Q-002` | 98 | **なし** |
+| `Q-002` × `Q-003` | 113 | ~~なし~~ → **`echo`（2026-11-02）** |
+| `Q-001` × `Q-003` | 100 | ~~なし~~ → **`leaves_open`（2026-11-02）** |
+| `Q-001` × `Q-002` | 98 | ~~なし~~ → **`reframes`（2026-11-02）** |
 
 100前後のセッションが毎回この三問を共に読みながら、三問のあいだには解釈的関係が一本も書かれていない。書庫は**振る舞いとしては**三問を一つの塊として扱っているのに、**台帳としては**それを一度も表明していない。これは「CI や表示のためだけの関係線を作らない」という規則（`prompts/start.md` §4）が正しく効いた結果でもあり、同時に、共起という証拠が関係線の判断材料として一度も使われてこなかったことを示す。
 
-減衰の側では、`selected` 断片 `FRAG-013`『無用なものを尊ぶ力』が **5,439 行前**を最後に一度も活性化されていない。荷重記録（`selected`／`held` 断片・未応答 `open` 問い）は三つの状態に分けて報告する。どれも別の状態に折り込まない（`tools/associations.py::load_bearing`）：
+減衰の側では、`selected` 断片 `FRAG-013`『無用なものを尊ぶ力』が **5,447 行前**を最後に一度も活性化されていない。荷重記録（`selected`／`held` 断片・未応答 `open` 問い）は三つの状態に分けて報告する。どれも別の状態に折り込まない（`tools/associations.py::load_bearing`）：
 
 | 状態 | 定義 | 実測 | 表示 |
 |---|---|---:|---|
-| **cold** | 読まれたことがあり、最終読了から閾値を超えて沈黙している | 上位に `Q-20261024-a9ae43`（6,415 行前）ほか | 一覧する |
+| **cold** | 読まれたことがあり、最終読了から閾値を超えて沈黙している | 上位に `Q-20261024-a9ae43`（6,423 行前）ほか | 一覧する |
 | **warm** | 読まれたことがあり、閾値の内側にある | **74 件** | 件数だけ。信号として一覧化しない |
 | **never** | `read_log` 行が一度もない | **14 件**（すべて `open`・未応答） | 件数だけ。未読は負債ではなく余白なので目録化しない |
 
@@ -187,7 +187,7 @@ overlay の作法は `editorial_decisions` と同じ：**同じ `path` につい
 
 ## 6. 作業記憶と短期記憶の設計
 
-### 6.1 作業記憶の予算（提案・未実装）
+### 6.1 作業記憶の予算（提案・未実装。§4.7 の実測は 2026-11-02 に入れた）
 
 人間の作業記憶は 4±1 チャンクで、超えた分は**取りこぼされる**のではなく**入らない**。`--packet` には現在サイズ予算がなく、素材の `passage` 全文を無制限に積み込む（実測 28〜36 KB）。提案：
 
@@ -195,7 +195,17 @@ overlay の作法は `editorial_decisions` と同じ：**同じ `path` につい
 - 予算を超えたら「載せない」のではなく「**載せなかったことを明記する**」。既存の断片窓（§4）は直近3編だけ全文を出し、窓外の編を ID 付きで列挙している。同じ作法を素材・ノートへ広げる。
 - 予算の単位はトークン近似ではなく**バイト**（決定的で再計算できる）。
 
-### 6.2 短期記憶の境界（提案・未実装）
+**2026-11-02 の実測（最初の5行を記帳したあと）**：
+
+```
+python3 tools/inspect_inquiry.py --packet Q-001
+  packet 全体 : 54,233 B
+  §4.7        :  5,769 B（packet の 10%）／ノート 6 件／claims 6 件／1 claim ≈ 395 B
+```
+
+§4.7 は6件で打ち切られているので、409本すべてが記帳されても 6件×3件×約395 B ≈ 7.1 KB で頭打ちになる。**暴れるのは §4.7 ではなく packet 全体の側**であり、予算を入れるなら全体に対してである。提案した側としての順序の訂正をここに残す（根拠：[`readings/2026-11-02-five-rows-and-three-edges.md`](../readings/2026-11-02-five-rows-and-three-edges.md) §5）。
+
+### 6.2 短期記憶の境界（提案・一部実行）
 
 「今回のシャード」が短期記憶に当たるが、その境界は暗黙である。`state/*.d/<date>-<12hex>.jsonl` は採番した瞬間に長期記憶（main へマージされる追記専用台帳）になる。人間のアナロジーで言えば、この書庫には**忘却される短期記憶が存在しない**——書いたものは全部残る。提案は「消せる作業用領域」を新設することではなく、**`sessions.notes` に今回のシャード名を必ず書く**こと（＝どの行が今回の思考かを後から特定できるようにする）である。実装は規約の一文で足りる。
 
@@ -232,12 +242,30 @@ L3  readings/*.md          本文 — 開いて初めて「読んだ」と言え
 ### 7.2 検証
 
 ```
-python3 tools/validate_seed.py            PASS（… notes=0）
+python3 tools/validate_seed.py            PASS（… relations=5997, sessions=376,
+                                            read_log=8223, notes=5）
 python3 tools/inspect_inquiry.py --check-map   PASS
 python3 tools/note_index.py --check       PASS（409 notes）
 python3 tools/size_budget.py --strict     PASS
 python3 -m unittest discover -s tests     341 → 399 OK
 ```
+
+### 7.4 続行（2026-11-02・`SESSION-20261102-f6a60b`）— Phase 1 と Phase 4 の実行
+
+基盤を合流させた同じ日に、人間の委任（「ご提案の全てを、実行してください」）で Phase 1 と Phase 4 を実行した。報告は [`readings/2026-11-02-five-rows-and-three-edges.md`](../readings/2026-11-02-five-rows-and-three-edges.md)。
+
+| 実行 | 実体 | 実測 |
+|---|---|---|
+| 最初の記帳（Phase 1） | `state/notes.d/2026-11-02-a1f63c452988.jsonl` に README 詳細窓の5本を記帳 | **notes 0 → 5 行、claims 18 件**（`reading_revised` 7・`measured_fact` 4・`method_change` 3・`handoff` 2・`reading_held` 2）。5行とも `read_depth: excerpt_and_metadata_read`（全文は読んでいない。§1 に開いた節と開かなかった節の一覧がある） |
+| `note` を指す読み痕跡 | `state/read_log.d/2026-11-02-09b5fb78e55f.jsonl` | `target.type: "note"` **0 → 5 行**（書庫で最初）。`reading` は `contested` 1・`reinterpreted` 1・`interpreted` 5・`summarized` 1。受動的な `used_as_context`／`counted` は 0 行 |
+| 中心三問の架橋（Phase 4） | `state/relations.d/2026-11-02-db0e15cdab18.jsonl` | `Q-002 reframes Q-001`・`Q-003 leaves_open Q-001`・`Q-002 echo Q-003`。三問とも `human_seed`・親なしの独立した根で、DAG はこの関係を表現していなかった。未架橋の共起 **2,296 → 2,293 対**。三問は `open` のまま（`editorial_decisions` 行なし）で、`Q-001` は元から28本の `responds_to`/`reframes` の右辺だったため「未応答の open 問い」の会計は1件も動いていない |
+| 短期記憶の境界（§6.2 の一部） | `sessions.notes` に自分の4シャード名を名指し | 提案した回自身が実行 |
+| 保守 | `state/read_log.d/` の plain シャード30本（435行）を既存統合シャードへ無改変で移動 | **81 → 51 ファイル**（soft 80 超の解消）。行の多重集合がバイト単位で等しいことを確認。規則の隙間（候補の全日付が統合済みだと「別の対象を選ぶ」が満たせない）を `docs/parallel-work.md` 手順2に追記 |
+| CI 配布物 | `.github/workflows/map.yml` に `associations.py --write-map` | artifact `reading-map` に `map/associations.md` が入るようになった |
+
+**副次的な実測**：`quadrant` は5行中4行が `AB_crossed` になり判別しなかった。対象がすべて `editorial_review` 回（設計上、中心三問へ帰還する）だったことと、4象限が成果物の種類を分ける軸でセッション報告には粗いこと、`AD`/`BD` に相当する値が enum にないことが重なったためである。enum を増やす提案ではなく、**報告単位には弱いフィールド**という実測として残す（報告 §4）。
+
+**統合の副作用**：`read_log` の和集合の順序が変わったので、減衰の「N 行前」は統合の前後で厳密には比較できない（`Q-20261024-a9ae43` 6,415 → 6,423 行前）。§5.1 の数値は統合後の値に更新済み。
 
 ### 7.3 自己循環についての注意
 
@@ -259,10 +287,10 @@ python3 -m unittest discover -s tests     341 → 399 OK
 | Phase | 内容 | 状態 |
 |---|---|---|
 | **0** | 索引・計測・スキーマの整備（§7 の 1〜7） | **完了（2026-11-02）** |
-| **1** | 次の `editorial_review` 回で、README 詳細窓の5本＋今回参照したノートを `--register` し、各1〜3行の `claims` を書く。`read_log` に `target.type: "note"` の行を初めて刻む | 未着手（次回以降の編集レビューで） |
+| **1** | 次の `editorial_review` 回で、README 詳細窓の5本＋今回参照したノートを `--register` し、各1〜3行の `claims` を書く。`read_log` に `target.type: "note"` の行を初めて刻む | **完了（2026-11-02・§7.4）**。ただし `editorial_review` 回ではなく委任による実行で、`--register` は使わず5本分を一度に書いた。残り404本は Phase 2 |
 | **2** | `taxonomy/shards/` の257行を `notes` へ移す（象限・`return_status`・`read_depth`・`evidence_anchor`）。移し方は**追記**で、`taxonomy/` は凍結された来歴として残す。150本の未分類は**一度にやらない**（前回の試みが止まった理由がそれである） | 未着手 |
-| **3** | packet の段階的読み込みと予算（§6.1）、`sessions.notes` へのシャード名記載（§6.2） | 未着手 |
-| **4** | 共起 2,296 対のうち中心三問の3対だけを対象に、`relations` 辺を張るか張らないかの**編集判断**を一度だけ行う（`associations.py` の出力を証拠として引用する）。全対を機械的に架橋しない | 未着手 |
+| **3** | packet の段階的読み込みと予算（§6.1）、`sessions.notes` へのシャード名記載（§6.2） | **一部**：シャード名記載は `SESSION-20261102-f6a60b` が実行（規約化は未着手）。packet 予算は未着手で、§6.1 に実測（§4.7 は 5,769 B／packet の10%、上限6件で頭打ち）が入った |
+| **4** | 共起 2,296 対のうち中心三問の3対だけを対象に、`relations` 辺を張るか張らないかの**編集判断**を一度だけ行う（`associations.py` の出力を証拠として引用する）。全対を機械的に架橋しない | **完了（2026-11-02・§7.4）**：3辺を張った。型と向きは三問の本文1文ずつから決め、共起は宛先として使った。`readings/2026-10-31-the-second-copy-is-only-for-checking.md` §7.2 の「関係線は読みの結論ではなく読みの材料」という保留への異議は `READ-20261102-74f494`（`contested`）に置いた |
 
 ### やらないこと
 

@@ -159,7 +159,12 @@ class InquiryGuidanceTests(unittest.TestCase):
         """The real schema and map pipeline allow completing without new works."""
         with tempfile.TemporaryDirectory() as tmp:
             repo = Path(tmp) / "repo"
-            for directory in ("state", "schema", "tools"):
+            # readings/ is part of the fixture, not decoration: state/notes.d/
+            # holds curated rows whose `path` is a foreign key into readings/, so
+            # validate_seed.py checks those files exist.  Copying only the
+            # referenced files would make this test break every time a new note
+            # row is registered.
+            for directory in ("state", "schema", "tools", "readings"):
                 shutil.copytree(ROOT / directory, repo / directory)
             session = {
                 "session_id": "SESSION-TEST-REREAD",
