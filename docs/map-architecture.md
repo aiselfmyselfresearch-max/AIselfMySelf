@@ -46,8 +46,10 @@ Tier 4  CI artifact       .github/workflows/map.yml が map/ を毎回 build し
 
 ### Tier 2 — 追跡される小型索引（`READING_MAP.md`）
 
-サマリー・モチーフ表・**問いの DAG 索引（各行1問・本文抜粋100字・親子ID）**・断片一覧・素材一覧・セッション一覧・関係の種類別件数・シャード目録。
+サマリー・モチーフ表・**問いの DAG 索引（各行1問・本文抜粋100字・親子ID）**・断片一覧・素材一覧・セッション一覧・関係の種類別件数・シャード目録・**§8 精読ノート索引（`readings/` 1ファイル1行）**。
 本文は持たない。サイズは 2MB を超えたら警告（`map_build.py`）。
+
+§8 は `tools/note_index.py` が生成し、`map_build.py` が索引全体に合流させる（検算は `python3 tools/note_index.py --check`、`map_build.py --check` も同じ行を比較する）。各行は**導出事実**（ファイル名・実日付・内部編年ラベル・セッションID・字量・参照ID数・到達性・題）と、`state/notes*` にある**追記専用の判断**（モード確認・象限・戻り状態・読み深さ・確定した主張）を合わせたもの。導出事実は保存せず毎回読み直すので、`readings/` に報告を1本追加すれば §8 は必ず古くなり、CI がそれを止める。設計と理由は [`memory-architecture.md`](memory-architecture.md)。
 
 ### Tier 3 — 全文シャード（`map/`・git 管理外）
 
@@ -60,9 +62,11 @@ Tier 4  CI artifact       .github/workflows/map.yml が map/ を毎回 build し
 | `30/31/32-materials-*.md` | 素材カタログ全文 | 100 件 |
 | `40-relations-NN.md` | 解釈的関係の全表 | 500 件 |
 | `50-sessions-NN.md` | セッション年譜 | 50 件 |
+| `60-notes-NN.md` | `readings/` 索引の全文詳細（見出し・参照ID・到達元・台帳判断） | 25 件 |
 | `manifest.json` | ID→シャード対応表・sha256・件数・バイト | — |
 
 - **シャードキー**：台帳の挿入順（安定・不変）。追加されたレコードは末尾シャードに入るため、再生成の差分は末尾だけ。
+- **`60-notes-NN.md` だけキーが違う**：`readings/` は台帳ではなくファイルなので、分割キーは**ファイル名順**。ファイル名は一度付けたら変えないため安定だが、挿入順と違い、既存の名前より前に並ぶ報告を後から追加すると末尾以外のシャードがずれる。実運用では名前の日付（内部編年ラベル）が単調に増えるので末尾追記になる。この差は §2.2 の「安定したシャードキー」規則の範囲内だが、台帳と同じ性質ではない。
 - **セカンダリ索引**：`manifest.json`（sha256 付き）と Tier 2 索引の ID 列。
 - 写しは `tools/map_build.py` が `state/.ledger.lock` の排他ロックと `ledger_io.atomic_write_text`（一時ファイル＋`os.replace`）で行う。
 
@@ -88,6 +92,15 @@ python3 tools/map_build.py --report        # シャードのサイズ報告
 python3 tools/map_build.py --sync-readme   # README.md §1/§2/§4 の件数表を台帳と同期（editorial_review 回用）
 python3 tools/inspect_inquiry.py --write-map   # map_build.py への委譲（互換）
 python3 tools/inspect_inquiry.py --check-map   # 同上
+
+python3 tools/note_index.py --check            # §8 が readings/ と一致するか（CI も同じ）
+python3 tools/note_index.py --report           # 字量・実日付・参照ID・到達性の集計
+python3 tools/note_index.py --orphans          # どの文書からもリンクされていない報告
+python3 tools/note_index.py --for-id Q-003     # ある記録を実際に参照している報告
+python3 tools/note_index.py --register <path> --session <SESSION-ID>   # 判断の記帳（追記のみ）
+
+python3 tools/associations.py                  # read_log 由来の共起・顕著性・沈黙の計測
+python3 tools/associations.py --write-map      # map/associations.md（git管理外）
 ```
 
 ## 6. 留保
@@ -108,7 +121,9 @@ READING_MAP.md の事故は「単一ファイルが全成長を吸収する」�
 |---|---:|---:|---|
 | `README.md` | 150 KB | 300 KB | 詳細窓を維持し、超過分を `docs/sessions.md` へ verbatim ローテーション |
 | `READING_MAP.md` | 2 MB | 5 MB | map_build の 2MB 警告と同じ。超えたら索引の表を分割（§3 Tier 2 の拡張） |
-| `state/<collection>.jsonl`（各モノリス） | 5 MB | 10 MB | モノリスを生成物化し、`state/*.d/` シャードを正本に切り替える（§3 Tier 1 の移行） |
+| `state/<collection>.jsonl`（各モノリス） | 5 MB | 10 MB | モノリスを生成物化し、`state/*.d/` シャードを正本に切り替える（§3 Tier 1 の移行）。`state/notes.jsonl` は 1 MB / 5 MB、`state/notes.d/` は 1 MB / 4 MB・80/160 シャード |
+| `readings/`（ディレクトリ） | 24 MiB・600 ファイル | 48 MiB・1200 ファイル | 報告は削除しない。索引（§8・`60-notes-*`）を先に読み、本文は必要になった1本だけ開く。超過時は `readings/` の分割ディレクトリ化を設計し直す |
+| `readings/` の1ファイル | 256 KiB | 512 KiB | 1本の報告が長すぎる場合は続きを別ファイルに分け、先頭から相互リンクする（到達性を保つ） |
 | git pack（参考値） | 500 MB | 1GB（指針） | §6 の留保（filter-repo）の実行を AI の判断で行う |
 
 `python3 tools/size_budget.py` が各ファイルを点検する（`--strict` は WARN も失敗）。CI（`ci.yml`）は hard 超過で停止する。リポジトリ全体は GitHub の指針（<1GB 推奨）を超えるまでは現状維持。

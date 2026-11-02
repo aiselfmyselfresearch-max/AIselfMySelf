@@ -25,8 +25,14 @@ jobs:
       - name: Check READING_MAP.md is current
         run: python3 tools/inspect_inquiry.py --check-map
 
+      - name: Check the readings/ note index section
+        run: python3 tools/note_index.py --check
+
       - name: Check size budgets
         run: python3 tools/size_budget.py
+
+      - name: Measure associations from read_log (advisory, writes nothing)
+        run: python3 tools/associations.py --json --limit 1 > /dev/null
 
       - name: Check read_log coverage
         run: python3 tools/read_log_backfill.py --check

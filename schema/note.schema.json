@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "note.schema.json",
+  "title": "Reading Note Record",
+  "description": "One curated judgment about one file in readings/ (an episodic report). This collection stores ONLY what a reader asserts: the report body stays in readings/*.md and the machine-derivable facts (byte count, H1 title, referenced ledger IDs, inbound links) are re-harvested every time by tools/note_index.py instead of being copied here, so there is exactly one source of truth per fact. Append-only: a later row for the same path supersedes the earlier one in ledger order (optionally declared via supersedes), and no existing row is ever rewritten. This is the consolidation layer that makes an episode retrievable and citable from read_log and relations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["note_id", "path", "session_id", "created_at"],
+  "properties": {
+    "note_id": {"type": "string", "minLength": 1},
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Repository-relative path of the report file, e.g. readings/2026-11-01-colostrum-and-iron.md"
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The session that recorded THIS row (not necessarily the session that wrote the report)."
+    },
+    "created_at": {"type": "string", "minLength": 4},
+    "report_session_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Optional: the session that produced the report, when it differs from session_id or is not recoverable from the file."
+    },
+    "title": {
+      "type": "string",
+      "description": "Optional curated title. Omit to use the harvested H1; set only when the H1 is missing or misleading."
+    },
+    "date_real": {
+      "type": "string",
+      "minLength": 4,
+      "description": "Optional: the real (execution-environment) date of the work, as opposed to the internal chronology label in the filename."
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "rereading_and_collision",
+        "revision_and_variation",
+        "direct_response",
+        "editorial_review",
+        "acquisition",
+        "close_reading_report",
+        "closing_experiment",
+        "continuation",
+        "first_session",
+        "start",
+        "maintenance",
+        "other"
+      ],
+      "description": "Optional working mode of the report, using prompts/ vocabulary."
+    },
+    "quadrant": {
+      "type": "string",
+      "enum": [
+        "A_human",
+        "B_ai_self_db",
+        "C_interface",
+        "D_infrastructure",
+        "AB_crossed",
+        "AC_crossed",
+        "BC_crossed",
+        "ABC_crossed"
+      ],
+      "description": "Optional: the docs/artifact-taxonomy-and-parallel-plan.md quadrant this report mainly serves."
+    },
+    "subcategories": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "return_status": {
+      "type": "string",
+      "enum": [
+        "returned_to_core",
+        "productive_detour",
+        "metaphor_unconnected",
+        "source_uncollated",
+        "infrastructure_rule"
+      ],
+      "description": "Optional: whether the report returns to the two central questions, as judged by a later reader."
+    },
+    "read_depth": {
+      "type": "string",
+      "enum": ["full_text_read", "excerpt_and_metadata_read", "metadata_and_structure_only"],
+      "description": "Optional: how much of the report the recording session actually read. Never claim an unread section as read."
+    },
+    "claims": {
+      "type": "array",
+      "description": "Durable statements consolidated out of the episode. Keep each one short and anchored to a section of the report; the argument itself stays in readings/.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["claim_id", "kind", "text"],
+        "properties": {
+          "claim_id": {"type": "string", "minLength": 1},
+          "kind": {
+            "type": "string",
+            "enum": [
+              "reading_revised",
+              "reading_maintained",
+              "reading_held",
+              "measured_fact",
+              "method_change",
+              "handoff",
+              "retraction"
+            ]
+          },
+          "text": {"type": "string", "minLength": 1},
+          "anchor": {
+            "type": "string",
+            "description": "Optional section heading or line reference inside the report, e.g. \"§4-2\"."
+          },
+          "question_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "fragment_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "material_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "motif_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+        }
+      }
+    },
+    "salience": {
+      "type": "integer",
+      "description": "Optional 0-3 editorial weight for retrieval ordering (0 = archival, 3 = load-bearing for the central questions). A recommendation, never an obligation to read."
+    },
+    "reason": {
+      "type": "string",
+      "description": "Optional: why this row was recorded now, and what it changes for the next reader."
+    },
+    "supersedes": {
+      "type": "array",
+      "description": "Optional IDs of earlier note rows about the same path that this row explicitly supersedes, for the same reason editorial_decisions carries it: internal chronology labels can sort after the real date.",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "notes": {"type": "string"}
+  }
+}

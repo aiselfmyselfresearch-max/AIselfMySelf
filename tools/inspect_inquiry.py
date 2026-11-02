@@ -21,7 +21,7 @@ import subprocess
 import sys
 from collections import Counter
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 import ledger_io
 
@@ -505,12 +505,126 @@ def build_candidate_windows(
     }
 
 
+def _one_line(text: Any, limit: int) -> str:
+    """Collapse whitespace and truncate for one index line."""
+    flat = " ".join(str(text).split())
+    return flat if len(flat) <= limit else flat[: limit - 1] + "…"
+
+
+def related_notes(
+    data: dict[str, dict[str, dict[str, Any]]],
+    target_qid: str,
+    related_fragment_ids: Iterable[str] = (),
+    *,
+    root: Path = ROOT,
+    limit: int = 6,
+) -> list[dict[str, Any]]:
+    """Rank the episodic reports in ``readings/`` that touch this question.
+
+    Retrieval by harvested reference, not by recency: a report is a candidate
+    because it actually cites the target question, one of its parents, or one of
+    the related fragments.  Ranking is a recommendation only — an unranked report
+    is not a debt (see prompts/start.md).
+    """
+    import note_index
+
+    questions = data.get("questions", {})
+    parents = set(questions.get(target_qid, {}).get("previous_question_ids", []) or [])
+    wanted = {target_qid} | parents
+    wanted_frags = set(related_fragment_ids)
+
+    view = note_index.build_view(Path(root), data)
+    scored: list[tuple[tuple[int, int, int, int, str], dict[str, Any]]] = []
+    for entry in view.values():
+        refs = entry.get("refs", {})
+        hit_questions = wanted & set(refs.get("questions", []))
+        hit_fragments = wanted_frags & set(refs.get("fragments", []))
+        if not hit_questions and not hit_fragments:
+            continue
+        direct = 1 if target_qid in refs.get("questions", []) else 0
+        claims = entry.get("curated", {}).get("claims") or []
+        claim_hits = sum(
+            1
+            for claim in claims
+            if wanted & set(claim.get("question_ids", []) or [])
+            or wanted_frags & set(claim.get("fragment_ids", []) or [])
+        )
+        salience = entry.get("curated", {}).get("salience")
+        salience = salience if isinstance(salience, int) else 0
+        key = (
+            -direct,
+            -(len(hit_questions) + len(hit_fragments) + claim_hits),
+            -salience,
+            -entry.get("ref_count", 0),
+            entry.get("chars", 0),
+            entry["path"],
+        )
+        scored.append((key, entry))
+    scored.sort(key=lambda pair: pair[0])
+    return [entry for _key, entry in scored[:limit]]
+
+
+def related_notes_lines(
+    data: dict[str, dict[str, dict[str, Any]]],
+    target_qid: str,
+    related_fragment_ids: Iterable[str] = (),
+    *,
+    root: Path = ROOT,
+) -> list[str]:
+    entries = related_notes(data, target_qid, related_fragment_ids, root=root)
+    lines = ["## 4.7 関連する精読ノート（`readings/`・エピソード記憶への入口）"]
+    lines.append(
+        "- **趣旨**: 台帳（意味記憶）に対し、`readings/` は各セッションの語り＝エピソード記憶です。"
+        "以下は**この問い・その親・関連断片を実際に参照しているノート**を、"
+        "`tools/note_index.py` が本文から読み直した参照IDで引いたものです（新しい順でも短い順でもありません）。"
+    )
+    if not entries:
+        lines.append(
+            f"- この問いを参照するノートは見つかりませんでした。全候補は "
+            f"`python3 tools/note_index.py --for-id {target_qid}`、索引は `READING_MAP.md` §8。"
+        )
+        lines.append("")
+        return lines
+    for entry in entries:
+        when = entry.get("date_real") or "実日付の記載なし"
+        label = entry.get("date_label") or "?"
+        reach = "リンクあり" if entry.get("reachable") else "孤立（grep/ファイル名のみ）"
+        lines.append(
+            f"- `{entry['path']}` — {_one_line(entry.get('title') or entry['name'], 70)}"
+        )
+        lines.append(
+            f"  - 実日付 {when}／内部編年ラベル `{label}`・{entry.get('chars', 0):,} 字・"
+            f"参照ID {entry.get('ref_count', 0)} 件・{reach}"
+            + (f"・モード `{entry['mode']}`（導出）" if entry.get("mode") else "")
+        )
+        curated = entry.get("curated") or {}
+        for field in ("quadrant", "return_status", "read_depth"):
+            if curated.get(field):
+                lines.append(f"  - **{field}（台帳判断）**: `{curated[field]}`")
+        for claim in (curated.get("claims") or [])[:3]:
+            anchor = f"（{claim['anchor']}）" if claim.get("anchor") else ""
+            lines.append(f"  - **固定された主張** `{claim.get('claim_id')}` [{claim.get('kind')}]{anchor} {_one_line(claim.get('text', ''), 160)}")
+        if entry.get("note_id"):
+            lines.append(
+                "  - 台帳行 `" + str(entry["note_id"]) + "`（`read_log` の `target.type` を `note` にしてこのノートを引用できます）"
+            )
+    lines.append(
+        "- **読み方の注意**: 上は索引であって本文ではありません。開いて読んだノートだけ "
+        "`read_log` に記帳し、読んでいないノートを既読として扱わないでください"
+        "（`CONTENT_POLICY.md`）。判断を台帳に残す場合は "
+        "`python3 tools/note_index.py --register <path> --session <SESSION-ID> --read-depth full_text_read`。"
+    )
+    lines.append("")
+    return lines
+
+
 def build_context_packet(
     data: dict[str, dict[str, dict[str, Any]]],
     target_qid: str,
     *,
     seed: str | None = None,
     errata: dict[str, dict[str, Any]] | None = None,
+    root: Path = ROOT,
 ) -> str:
     if errata is None:
         errata = load_errata()
@@ -742,6 +856,12 @@ def build_context_packet(
                 f" — `python3 tools/inspect_inquiry.py --id {oblique_mat['material_id']}`"
             )
         lines.append("")
+
+    lines.extend(
+        related_notes_lines(
+            data, target_qid, [f["fragment_id"] for f in rel_frags], root=root
+        )
+    )
 
     prompt_path = ROOT / recommendation["prompt"]
     active_prompt = (

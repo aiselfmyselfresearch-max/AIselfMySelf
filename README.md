@@ -66,6 +66,7 @@
 | 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 8161 | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 119 | 過去の計測・記述の誤りと再実行可能な検算条件（本文を書き換えず隣に置く訂正記録） |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 123 | 断片（`draft`↔`selected`）や問い（`open`↔`paused`）の追記専用ステータス・オーバーレイ |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 0 | `readings/` の報告に対する追記専用の**判断**オーバーレイ（モード確認・象限・戻り状態・読み深さ・確定した主張）。題・字量・参照ID・到達性などの**導出事実は保存せず** `tools/note_index.py` が毎回読み直し、`READING_MAP.md` §8 と `map/60-notes-*.md` に索引化する（設計は [`docs/memory-architecture.md`](docs/memory-architecture.md)） |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方
@@ -73,10 +74,10 @@ CONTENT_POLICY.md           引用・創作・AIの一人称と委任来歴の�
 MIGRATION.md                ResearchOSからの移行対象と来歴管理
 READING_MAP.md              state/ から生成される小型索引（全文は map/ にシャード生成・git管理外）
 migration/                  上流ResearchOSの選定定義（selection.json）とマニフェスト（manifest.json）
-docs/                       設計記録（map-architecture.md）・並列手順（parallel-work.md）・全文ローテーション保管庫（sessions.md）
-schema/                     台帳各コレクションのJSON Schema（editorial_decision を含む9種）
-state/                      9コレクションのJSONL台帳（凍結ベース＋セッション別シャード state/*.d/）
-readings/                   精読・検証・自律編集レビューノート（台帳からは独立した作業文書）
+docs/                       設計記録（map-architecture.md・memory-architecture.md）・並列手順（parallel-work.md）・全文ローテーション保管庫（sessions.md）
+schema/                     台帳各コレクションのJSON Schema（editorial_decision・note を含む10種）
+state/                      10コレクションのJSONL台帳（凍結ベース＋セッション別シャード state/*.d/）
+readings/                   精読・検証・自律編集レビューノート＝各セッションの語り（エピソード記憶）。正本はここで、判断は state/notes* に追記され、索引は READING_MAP.md §8 に出る
 prompts/                    start.md（開始用）、既存の作業別指針、旧first_session.mdからの案内
 viewer/                     対話型Webアーカイブ＆局所星座ビューア（HTML/CSS/JS）
 tools/                      検証・集計・読書案内生成・汎用辞書鏡・Webビューア（標準ライブラリのみ、`tools/_*` 混入禁止）
@@ -100,6 +101,14 @@ python3 tools/map_build.py
 python3 tools/map_build.py --check
 python3 tools/map_build.py --sync-readme
 
+# 3.5 readings/ 索引（READING_MAP.md §8）の検算・孤立ノートの観察・判断の記帳
+python3 tools/note_index.py --check          # §8 が最新の readings/ と一致するか
+python3 tools/note_index.py --report         # 字量・実日付・参照ID・到達性の集計
+python3 tools/note_index.py --orphans        # どの文書からもリンクされていない報告
+python3 tools/note_index.py --for-id Q-003   # ある記録を実際に参照している報告
+python3 tools/note_index.py --candidates     # 記帳候補行の下書き（書き込みません）
+python3 tools/note_index.py --register readings/2026-10-30-x.md --session SESSION-... --read-depth full_text_read
+
 # 4. サイズ予算・シャード数・tools/_* 混入禁止・*_audit.py 増殖凍結の検査
 python3 tools/size_budget.py --strict
 
@@ -120,7 +129,14 @@ python3 tools/errata_audit.py             # 訂正録 errata の検算条件（c
 python3 tools/repair_audit.py             # 訂正の対象層・宛先・連鎖の集計
 python3 tools/relation_audit.py           # 解釈的関係の型・向きの分布
 
-# 8. 上流 ResearchOS との整合性検査・全単体テストの実行
+# 8. 連想・顕著性・減衰の計測（read_log 由来。数値は推奨であって義務ではありません）
+python3 tools/associations.py                # 共起・顕著性・沈黙の総合報告
+python3 tools/associations.py --co-read      # 2セッション以上で共読された未架橋の対
+python3 tools/associations.py --salience     # 読み方の重み×減衰による活性化順位
+python3 tools/associations.py --decay        # かつて読まれ、その後沈黙している荷重記録
+python3 tools/associations.py --write-map    # map/associations.md（git管理外）
+
+# 9. 上流 ResearchOS との整合性検査・全単体テストの実行
 python3 tools/import_researchos.py --source-root /path/to/ResearchOS --check
 python3 -m unittest discover -s tests -v
 ```

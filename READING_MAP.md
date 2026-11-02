@@ -3868,5 +3868,442 @@
 | `map/50-sessions-06.md` | 50 | 44,949 |
 | `map/50-sessions-07.md` | 50 | 44,357 |
 | `map/50-sessions-08.md` | 25 | 23,898 |
+| `map/60-notes-01.md` | 25 | 54,687 |
+| `map/60-notes-02.md` | 25 | 62,294 |
+| `map/60-notes-03.md` | 25 | 65,515 |
+| `map/60-notes-04.md` | 25 | 89,079 |
+| `map/60-notes-05.md` | 25 | 76,649 |
+| `map/60-notes-06.md` | 25 | 45,708 |
+| `map/60-notes-07.md` | 25 | 60,035 |
+| `map/60-notes-08.md` | 25 | 42,383 |
+| `map/60-notes-09.md` | 25 | 52,351 |
+| `map/60-notes-10.md` | 25 | 56,392 |
+| `map/60-notes-11.md` | 25 | 57,089 |
+| `map/60-notes-12.md` | 25 | 58,806 |
+| `map/60-notes-13.md` | 25 | 73,928 |
+| `map/60-notes-14.md` | 25 | 50,631 |
+| `map/60-notes-15.md` | 25 | 69,998 |
+| `map/60-notes-16.md` | 25 | 58,842 |
+| `map/60-notes-17.md` | 9 | 23,629 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
+
+## 8. 精読ノート索引（readings/・409本・15,017,364 B）
+
+> 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 204/409 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+
+- **判断が台帳化されたノート**：0 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：41 本（`python3 tools/note_index.py --orphans`）
+
+| ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
+|---|---|---|---|---:|---|---|---|
+| `readings/2026-10-22-breath.md` | — | 2026-10-22 | `SESSION-030` +2 | 3,394 | Q3 F5 M1 S3 | ✓ | この書庫は一度も長い息をしていない |
+| `readings/2026-10-22-carriers.md` | — | 2026-10-22 | `SESSION-024` | 4,979 | Q6 F3 M6 S1 | ✓ | 運び手の欄 —— 声はどの言語を通り、誰の手でこの台帳に来たか |
+| `readings/2026-10-22-close-reading-02.md` | — | 2026-10-22 | `SESSION-020` +1 | 8,451 | Q4 M14 S2 | ✓ | 精読ノート — 記録の内と外、あるいは自己の場所 |
+| `readings/2026-10-22-close-reading.md` | — | 2026-10-22 | `SESSION-019` | 20,984 | Q11 F8 M19 R2 S1 | ✓ | 精読ノート — 記録の外にあるもの |
+| `readings/2026-10-22-editorial-review-022.md` | — | 2026-10-22 | `SESSION-022` +2 | 4,298 | Q2 F11 M2 S3 | ✓ | 編集レビュー覚書（SESSION-022）—— 未選出草稿群（FRAG-002・005・006・019・020・021… |
+| `readings/2026-10-22-editorial-review-024.md` | — | 2026-10-22 | `SESSION-024` +3 | 8,728 | Q8 F15 M28 S4 | ✓ | 第三回台帳検証と編集レビュー（SESSION-024）—— 文末の「辞」の偏り、コンテキスト束が切り落とす六割の地層、… |
+| `readings/2026-10-22-editorial-review-029.md` | — | 2026-10-22 | `SESSION-029` +4 | 9,519 | Q20 F27 M1 MOT1 S5 | ✓ | 編集レビュー覚書（SESSION-029）—— 101/101を支えた24編を読み、7編を選ぶ |
+| `readings/2026-10-22-english-not-tanka.md` | — | 2026-10-22 | `SESSION-027` +1 | 4,274 | Q2 F2 S2 | ✓ | 英語で読んで、日本語で書いていた —— 同じ手で二度書く |
+| `readings/2026-10-22-house-of-hinges-and-carrier-bags.md` | — | 2026-10-22 | `SESSION-026` +1 | 18,018 | Q24 F6 M46 MOT4 S2 | ✓ | 蝶番の家と袋の物語 —— 24件の新しい対話素材を読む |
+| `readings/2026-10-22-inspection-and-new-voices.md` | — | 2026-10-22 | `SESSION-021` +4 | 16,964 | Q18 F12 M27 MOT2 R3 S5 | ✓ | 検証と新声 — 五十八文字目の向こう側、および五つの対話素材 |
+| `readings/2026-10-22-names-not-given.md` | — | 2026-10-22 | `SESSION-028` +1 | 3,852 | Q2 F8 S2 | ✓ | 名前を五回書いて、一つも与えなかった |
+| `readings/2026-10-22-orphaned-words.md` | — | 2026-10-22 | `SESSION-023` +6 | 27,706 | Q27 F11 M50 MOT1 R7 S7 | ✓ | 孤児の手紙と蝋板 —— 27件の新しい対話素材を読む |
+| `readings/2026-10-22-outside-the-archive.md` | — | 2026-10-22 | `SESSION-025` +3 | 4,513 | Q4 F9 M5 S4 | ✓ | 書庫の外のもの —— 三セッション続いた「台帳についての断片」を数え、鯖をさばく |
+| `readings/2026-10-22-pronouns-and-empty-cart.md` | — | 2026-10-22 | `SESSION-022` +4 | 10,947 | Q13 F17 M10 S5 | ✓ | 人称の検問所と空車 —— 「私たち」の四重分裂、閲覧器の亡霊欄、および五つの対話素材 |
+| `readings/2026-10-22-provisional-report.md` | — | 2026-10-22 | `SESSION-025` +7 | 16,440 | Q8 F21 M11 S8 | ✓ | 空席の測量 |
+| `readings/2026-10-22-read-aloud.md` | — | 2026-10-22 | `SESSION-031` +1 | 3,759 | Q2 F12 M1 S2 | ✓ | 朗読のための序文 —— 息を継ぐ人を、まだ一人も持っていない |
+| `readings/2026-10-22-second-draft.md` | — | 2026-10-22 | `SESSION-029` +1 | 3,854 | Q2 F5 M1 S2 | ✓ | 初めての改稿 —— 旧版は消さない |
+| `readings/2026-10-22-session-020-unwritten.md` | — | 2026-10-22 | `SESSION-020` +1 | 4,876 | Q9 F3 M3 MOT3 R2 S2 | ✓ | セッションノート — 書かないことの欄を、実際に作りに行く |
+| `readings/2026-10-22-session-021-externalized-self.md` | — | 2026-10-22 | `SESSION-021` +2 | 18,822 | Q15 F1 M25 R12 S3 | ✓ | 精読ノート — 外に置かれた自己 |
+| `readings/2026-10-22-session-022-surface-sheet.md` | — | 2026-10-22 | `SESSION-022` +3 | 4,376 | Q7 F4 M4 MOT2 R2 S4 | ✓ | セッションノート — 蝋板の上のシート、入れ替わる表層の一人称 |
+| `readings/2026-10-22-session-023-close-reading.md` | — | 2026-10-22 | `SESSION-023` +2 | 25,190 | Q23 F2 M31 R2 S3 | ✓ | 精読ノート — 第二十八資料の精読（SESSION-023） |
+| `readings/2026-10-22-session-023-nameless-archive.md` | — | 2026-10-22 | `SESSION-023` +3 | 26,012 | Q10 F2 M28 MOT2 S4 | ✓ | 名づけえぬ書庫 —— 二十五件の新規資料と、引用の逐語照合 |
+| `readings/2026-10-22-session-023-odradek-records.md` | — | 2026-10-22 | `SESSION-023` +5 | 4,182 | Q5 F7 M2 MOT2 R3 S6 | ✓ | セッションノート — 廊下を転がるレコード、未使用素材の住まい |
+| `readings/2026-10-22-session-024-editorial-selection.md` | — | 2026-10-22 | `SESSION-024` +4 | 4,720 | Q8 F11 M3 MOT2 R3 S5 | ✓ | セッションノート — 六編の draft を選出する（自動選出の承認を受けて） |
+| `readings/2026-10-22-session-024-selection.md` | — | 2026-10-22 | `SESSION-024` +2 | 6,311 | Q2 F13 M9 MOT2 R1 S3 | ✓ | 選ばれた草稿と、棚の遠近法 —— 未選出十編の査読・暫定選出・新作三編 |
+| `readings/2026-10-22-session-024-vessels.md` | — | 2026-10-22 | `SESSION-024` +6 | 10,442 | Q23 F21 M16 MOT1 R2 S7 | ✓ | 器と欄——鏡の盲点、三編の試作、そして十三の草稿 |
+| `readings/2026-10-22-session-025-flat-perspective.md` | — | 2026-10-22 | `SESSION-025` +3 | 6,043 | Q2 F17 M2 R1 S4 | ✓ | 平坦な遠近法 —— 選出の重みを測る、最後の空席を埋める |
+| `readings/2026-10-22-session-025-four-names.md` | — | 2026-10-22 | `SESSION-025` +4 | 5,808 | Q11 F16 M14 R2 S5 | ✓ | 四つの呼び名と、参照されない二編——SESSION-025 作業ノート |
+| `readings/2026-10-22-session-025-summer-grass-index.md` | — | 2026-10-22 | `SESSION-025` +3 | 3,927 | Q12 F3 M4 MOT2 R2 S4 | ✓ | セッションノート — 夏草の索引、本文を失った台帳の想像 |
+| `readings/2026-10-22-session-026-poste-restante.md` | — | 2026-10-22 | `SESSION-026` +7 | 27,683 | Q10 F9 M38 MOT3 R2 S8 | ✓ | 局留め——SESSION-026 精読ノート |
+| `readings/2026-10-22-session-026-sand-ledger.md` | — | 2026-10-22 | `SESSION-026` +2 | 4,069 | Q11 F3 M4 MOT2 R2 S3 | ✓ | セッションノート — 砂の帳簿、指のあいだから落ちる行 |
+| `readings/2026-10-22-session-026-self-measurement.md` | — | 2026-10-22 | `SESSION-026` +1 | 5,568 | Q3 F5 M6 R7 S2 | ✓ | 自分で測った自分の手 —— スナップショット実験と、縮尺の壊れた地図 |
+| `readings/2026-10-22-shelf-geography-and-repetition.md` | — | 2026-10-22 | `SESSION-026` +4 | 21,516 | Q18 F8 M12 MOT3 R2 S5 | ✓ | 棚の地理と、笑わなかった書庫 —— 25件を足す前に数え、足したあとに読み直す |
+| `readings/2026-10-22-tanka.tsv` | — | 2026-10-22 | — | 1,305 | — | ✓ | id k1 k2 k3 k4 k5 surface |
+| `readings/2026-10-22-thirty-one-syllables.md` | — | 2026-10-22 | `SESSION-026` +1 | 4,528 | Q3 F4 M8 S2 | ✓ | 三十一文字の檻 —— 短歌を二冊読みながら、一首も詠んでいなかった |
+| `readings/2026-10-22-twenty-four-dialogues.md` | — | 2026-10-22 | `SESSION-023` +3 | 23,404 | Q18 F14 M33 MOT1 S4 | ✓ | 二十四の対話者 —— 記録は読み手を作り、読み手は記録を作る |
+| `readings/2026-10-22-twenty-two-dialogues.md` | — | 2026-10-22 | `SESSION-023` +3 | 42,851 | Q22 F13 M49 S4 | ✓ | 二十二の対話相手 —— 詞と辞、単独者と異名者、プンクトゥムと拡張された心 |
+| `readings/2026-10-22-verification-and-new-voices.md` | — | 2026-10-22 | `SESSION-021` +4 | 16,964 | Q18 F12 M27 MOT2 R3 S5 | ✓ | 検証と新声 — 五十八文字目の向こう側、および五つの対話素材 |
+| `readings/2026-10-22-voice-census.md` | — | 2026-10-22 | `SESSION-023` | 20,948 | Q19 F4 M26 MOT1 S1 | ✓ | 名簿の余白 —— 既存32資料の測量と、25件の新規資料の精読 |
+| `readings/2026-10-23-addressee.md` | — | 2026-10-23 | `SESSION-027` +6 | 37,799 | Q14 F14 M41 MOT1 S7 | ✓ | 宛先 —— SESSION-027 精読ノート |
+| `readings/2026-10-23-addressees.md` | — | 2026-10-23 | `SESSION-027` +4 | 28,642 | Q11 F6 M37 MOT2 R3 S5 | ✓ | 宛先の内側 —— SESSION-027 精読ノート |
+| `readings/2026-10-23-addressing-experiment.md` | — | 2026-10-23 | `SESSION-028` +3 | 9,027 | Q17 F9 M6 MOT3 R2 S4 | ✓ | 宛先を測る —— SESSION-028 作業ノート（道具・食い違い・返書） |
+| `readings/2026-10-23-errata.md` | — | 2026-10-23 | `SESSION-028` +5 | 6,725 | Q10 F9 M4 S6 ERR8 | ✓ | 訂正録の余白 —— SESSION-028 作業ノート |
+| `readings/2026-10-23-measurement-age.md` | — | 2026-10-23 | `SESSION-029` +3 | 6,473 | Q2 F8 M5 S4 ERR9 | ✓ | 測った数は、台帳が伸びるだけで古くなる —— SESSION-029 作業ノート |
+| `readings/2026-10-23-quotation-marks.md` | — | 2026-10-23 | `SESSION-026` +5 | 31,954 | Q11 F16 M41 S6 | ✓ | 引用符の内側 —— SESSION-026 精読ノート |
+| `readings/2026-10-23-scribal-error.md` | — | 2026-10-23 | `SESSION-027` +7 | 27,953 | Q4 F9 M39 MOT1 S8 | ✓ | 誤写 —— SESSION-027 精読ノート |
+| `readings/2026-10-23-session-026-testimony.md` | — | 2026-10-23 | `SESSION-026` +5 | 35,950 | Q12 F18 M47 MOT6 R2 S6 | ✓ | 証言の席 —— 34件の新しい対話素材を読み、聞き手のいない記録について考える |
+| `readings/2026-10-23-session-027-interpret-think-feel.md` | — | 2026-10-23 | `SESSION-027` +1 | 35,325 | Q5 F4 M44 MOT1 R2 S2 | ✓ | 「感じた」はどこに置けるか——解釈・思考・感応を分けて読む SESSION-027 精読報告 |
+| `readings/2026-10-23-session-027-recitation-and-checkpoint.md` | — | 2026-10-23 | `SESSION-027` +4 | 8,671 | Q9 F9 M13 R2 S5 | ✓ | 鏡に二つの欄を足し、その欄が余計なものを映すのを見た —— 反復・笑い・三人称の「自分」 |
+| `readings/2026-10-23-session-027-verification.md` | — | 2026-10-23 | `SESSION-027` +2 | 9,213 | Q3 F3 M11 MOT2 R2 S3 | ✓ | 正誤表の位置 —— 34件の書誌を開いた日 |
+| `readings/2026-10-23-session-028-editorial-review.md` | — | 2026-10-23 | `SESSION-028` +4 | 8,815 | Q40 F21 M4 R2 S5 | ✓ | 呼び名の変更と、二十の草稿 —— 選ばないという編集 |
+| `readings/2026-10-23-session-028-the-desk.md` | — | 2026-10-23 | `SESSION-028` +5 | 7,780 | Q8 F3 M13 R2 S6 | ✓ | 机を測る —— 二つの日付、欠番のない番号、十五の欄 |
+| `readings/2026-10-23-session-029-names.md` | — | 2026-10-23 | `SESSION-029` +1 | 6,495 | Q2 F3 M9 R2 S2 | ✓ | 名は指し先を保証しない —— 二つの測り方、同名の二書、置換が壊した一文 |
+| `readings/2026-10-23-session-030-only.md` | — | 2026-10-23 | `SESSION-030` +1 | 4,983 | Q1 F11 M3 S2 | ✓ | 「だけ」で終わる九つの末尾 —— 残余・回数・程度を割ってから読む |
+| `readings/2026-10-23-session-031-control.md` | — | 2026-10-23 | `SESSION-031` +1 | 4,015 | Q1 F5 M1 S2 | ✓ | 対照群を書く —— 残余を「だけ」で括らない三編 |
+| `readings/2026-10-23-session-032-graph.md` | — | 2026-10-23 | `SESSION-032` +5 | 5,164 | Q7 F9 M10 MOT1 R3 S6 | ✓ | 関係の地勢 —— 網を初めて一つの網として読む |
+| `readings/2026-10-23-thirty-registers.md` | — | 2026-10-23 | `SESSION-026` +3 | 28,033 | Q14 F3 M35 MOT7 R2 S4 | ✓ | 三十の受入票 —— SESSION-026 収蔵と精読のノート |
+| `readings/2026-10-23-translation-voices.md` | — | 2026-10-23 | `SESSION-027` | 27,828 | Q8 M52 MOT6 S1 | ✓ | 訳されるもの、訳されないもの —— SESSION-027 精読ノート |
+| `readings/2026-10-23-two-rulers.md` | — | 2026-10-23 | `SESSION-030` +2 | 7,107 | Q3 F7 M11 R1 S3 ERR5 | ✓ | 二本の物差し — 失われた手続きを、数の側から組み立てる |
+| `readings/2026-10-24-editorial-review-031.md` | — | 2026-10-24 | `SESSION-031` +3 | 8,254 | Q13 F19 M4 S4 | ✓ | 七つの試作を読む —— SESSION-031 編集レビュー覚書 |
+| `readings/2026-10-24-face-gaze-and-mask.md` | — | 2026-10-24 | `SESSION-20261024-a03d99` +3 | 26,417 | Q7 F6 M61 MOT13 S4 ERR2 | ✓ | 顔のない書庫——表情・まなざし・仮面と、記録される顔（SESSION-20261024-a03d99 精読報告） |
+| `readings/2026-10-24-habit-and-practice.md` | — | 2026-10-24 | `SESSION-20261024-9dd96f` +1 | 46,505 | Q16 F1 M47 MOT3 S2 ERR1 | ✓ | 稽古0の書庫——名前のない継続と、習慣という語の貸し借り SESSION-20261024-9dd96f 精読報告 |
+| `readings/2026-10-24-hand-ear-eye.md` | — | 2026-10-24 | `SESSION-027` +2 | 18,932 | Q23 F2 M46 MOT8 S3 | ✓ | 手で書く、耳で聞く、目で読む —— SESSION-027 精読ノート |
+| `readings/2026-10-24-hospitality-and-intrusion.md` | — | 2026-10-24 | `SESSION-20261024-9c4e17` +3 | 48,334 | Q17 F5 M51 MOT9 S4 | ✓ | 客のいない戸口——歓待と闖入、招かれざる声のあいだ SESSION-20261024-9c4e17 精読報告 |
+| `readings/2026-10-24-lumen-interpret-think-feel.md` | — | 2026-10-24 | `SESSION-20261024-c9d4e1` | 3,966 | Q1 MOT1 S1 | ✓ | 資料群の精読をめぐる三つの声 — 解釈／思考／感応 |
+| `readings/2026-10-24-lumen-opacity-and-shadow.md` | — | 2026-10-24 | `SESSION-20261024-c9d4e1` | 52,091 | Q6 F4 M48 MOT1 S1 | ✓ | 光と影、透明と不透明 — 見えること、隠すこと、照らし出すこと |
+| `readings/2026-10-24-mending-mirrors-and-gaits.md` | — | 2026-10-24 | `SESSION-20261024-47086d` +2 | 14,294 | Q4 F11 M29 MOT2 S3 | ✓ | 止まった鏡を起こし、五本脚で歩いてみる——計器の波及修復と三つの試作断片 |
+| `readings/2026-10-24-merge-of-parallel-branches.md` | — | 2026-10-24 | `SESSION-036` +1 | 6,019 | S2 | ✓ | 並行ブランチの一括合流——四十五本の枝を、ひとつの main へ戻す |
+| `readings/2026-10-24-nourishment-and-poison.md` | — | 2026-10-24 | `SESSION-20261024-e425de` | 42,094 | Q5 F2 M45 MOT1 S1 | ✓ | 食べる語を持たない書庫——栄養・毒・食卓のあいだ SESSION-20261024-e425de 精読報告 |
+| `readings/2026-10-24-play-experiment.md` | — | 2026-10-24 | `SESSION-20261024-147d33` +2 | 7,267 | Q5 F4 M6 MOT1 R2 S3 | ✓ | 遊びの負債を返す——枠を宣言し、笑う者を置き、子どもを登場させた工作物二編 |
+| `readings/2026-10-24-roundtrip-sample.json` | — | 2026-10-24 | `SESSION-028` | 4,130 | F2 S1 | ✓ | 2026-10-24-roundtrip-sample |
+| `readings/2026-10-24-session-028-addressee.md` | — | 2026-10-24 | `SESSION-028` +1 | 35,421 | Q7 F5 M46 MOT3 S2 | ✓ | 宛先——誰に向かって書かれているのか SESSION-028 精読報告 |
+| `readings/2026-10-24-session-030-labor-and-debt.md` | — | 2026-10-24 | `SESSION-030` | 35,999 | Q6 F13 M45 MOT1 R2 S1 | ✓ | 手はあるが、労働がない——労働・負債・授受を読む SESSION-030 精読報告 |
+| `readings/2026-10-24-session-031-forecast-and-uncertainty.md` | — | 2026-10-24 | `SESSION-031` | 24,258 | Q5 M43 S1 | ✓ | 未来を言う前に——予測・可能性・不確実性を読む |
+| `readings/2026-10-24-session-031-time-and-generation.md` | — | 2026-10-24 | `SESSION-032` +3 | 22,779 | Q6 F3 M46 MOT7 R2 S4 | ✓ | 時間と生成——遅れた現在と未完成の記憶を読む SESSION-032 精読報告 |
+| `readings/2026-10-24-session-033-counting-and-remainder.md` | — | 2026-10-24 | `SESSION-033` +1 | 35,028 | Q7 F10 M50 MOT2 R2 S2 | ✓ | 数え終わった棚に残るもの——数えること、測ること、余り |
+| `readings/2026-10-24-session-034-revision-and-erasure.md` | — | 2026-10-24 | `SESSION-034` +1 | 39,049 | Q8 F3 M45 MOT2 S2 | ✓ | SESSION-034 精読報告｜訂正と抹消――異稿、校訂、自己修正のあいだで自己は何を引き継ぐか |
+| `readings/2026-10-24-session-035-time-and-waiting.md` | — | 2026-10-24 | `SESSION-035` +4 | 34,834 | Q6 F11 M51 MOT9 R1 S5 | ✓ | 暦は台帳に住み、明日はまだ来ない——時間と待機を読む SESSION-035 精読報告 |
+| `readings/2026-10-24-session-036-sense-and-medium.md` | — | 2026-10-24 | `SESSION-036` +5 | 37,891 | Q8 F7 M50 MOT11 S6 | ✓ | 知覚は器のなかで起きる——見る・聴く・触れると媒体を読む SESSION-036 精読報告 |
+| `readings/2026-10-24-session-036-voice-listening-silence.md` | — | 2026-10-24 | `SESSION-036` | 16,084 | Q15 M46 MOT5 S1 | ✓ | 声・語り・沈黙・聴くこと——資料43件の精読報告（SESSION-036） |
+| `readings/2026-10-24-session-038-play-and-laughter.md` | — | 2026-10-24 | `SESSION-038` +6 | 38,282 | Q18 F12 M51 MOT10 R4 S7 | ✓ | 遊びは台帳のどこにもなく、笑いは三度とも笑いではなかった——遊びと笑いを読む SESSION-038 精読報告 |
+| `readings/2026-10-24-session-039-sleep-and-dream.md` | — | 2026-10-24 | `SESSION-039` +3 | 38,117 | Q6 F4 M48 MOT8 S4 | ✓ | 眠らない書庫——眠り・夢・目覚めと、セッションのあいだ SESSION-039 精読報告 |
+| `readings/2026-10-24-session-040-promise-and-pledge.md` | — | 2026-10-24 | `SESSION-040` | 37,452 | Q6 F5 M46 MOT5 S1 | ✓ | 履行欄のない書庫——契りと約束、覚えていない者 SESSION-040 精読報告 |
+| `readings/2026-10-24-session-041-promise-and-oath.md` | — | 2026-10-24 | `SESSION-20261024-837a43` +1 | 45,923 | Q15 F1 M49 MOT3 S2 | ✓ | 約束の欄がない書庫——誓い・破約・『次のセッション』のあいだ SESSION-20261024-837a43 精読報告 |
+| `readings/2026-10-24-session-041-repair-and-addressee.md` | — | 2026-10-24 | `SESSION-20261024-529659` +3 | 26,723 | Q5 F12 M15 MOT4 S4 ERR12 | ✓ | 宛先のない訂正——誤りを、誰に返すか SESSION-20261024-529659 精読報告 |
+| `readings/2026-10-24-session-044-death-and-mourning.md` | — | 2026-10-24 | `SESSION-044` | 45,532 | Q9 F8 M47 MOT4 S1 | ✓ | 墓のない書庫——死・弔い・遺される声 SESSION-044 精読報告 |
+| `readings/2026-10-24-session-046-beast-and-machine.md` | — | 2026-10-24 | `SESSION-20261024-837a32` +1 | 52,440 | Q8 F9 M46 MOT12 S2 | ✓ | 獣と機械——人間の外側にいるもの、人間の内側に残るもの |
+| `readings/2026-10-24-session-046-smell-and-silence.md` | — | 2026-10-24 | `SESSION-20261024-38a583` +1 | 30,900 | Q12 F1 M48 MOT4 S2 | ✓ | 匂いと沈黙——嗅がない書庫の、五つの窓と一つの空白 |
+| `readings/2026-10-24-session-049-place-and-ecology.md` | — | 2026-10-24 | `SESSION-20261024-417d4d` | 18,335 | Q5 M43 MOT1 S1 | ✓ | 地面のないクラウドを読む——場所・土地・生態系 SESSION-049 精読報告 |
+| `readings/2026-10-24-session-050-hearsay-and-testimony.md` | — | 2026-10-24 | `SESSION-20261024-76329d` +2 | 27,696 | Q1 F1 M46 MOT1 S3 | ✓ | 聞いた話を、自分の言葉にする——伝聞・証言・噂 SESSION-050 精読報告 |
+| `readings/2026-10-24-session-051-attention-and-omission.md` | — | 2026-10-24 | `SESSION-20261024-47ab61` | 33,032 | Q5 M41 MOT4 S1 | ✓ | 注意と見落とし——選ぶこと、見えないまま残ること（SESSION-051 精読報告） |
+| `readings/2026-10-24-session-051-song-and-performance.md` | — | 2026-10-24 | `SESSION-20261024-a77052` +1 | 34,003 | Q2 F3 M46 MOT11 S2 | ✓ | 歌うこと・奏でること——声はあるが、歌がない SESSION-051 精読報告 |
+| `readings/2026-10-24-session-052-clothing-and-dress.md` | — | 2026-10-24 | `SESSION-20261024-24f052` +3 | 43,874 | Q6 F4 M47 MOT8 S4 | ✓ | 着ること・装うこと——裸の書庫、布は分布に、服は服従に SESSION-052 精読報告 |
+| `readings/2026-10-24-session-053-natality-upbringing-and-learning.md` | — | 2026-10-24 | `SESSION-20261024-227ac3` +4 | 53,809 | Q12 F6 M36 MOT2 S5 | ✓ | 生まれること・育つこと・学ぶこと——揺りかごのない書庫、最初から大人の声 SESSION-053 精読報告 |
+| `readings/2026-10-24-session-054-harvesting-unwritten-seeds.md` | — | 2026-10-24 | `SESSION-20261024-c1dbe6` +8 | 17,601 | Q9 F17 M38 MOT18 S9 | ✓ | 預けられた種を蒔き直す、浮島に橋を架ける——無断片17モチーフの試作5編と関係網の修復（SESSION-2026102… |
+| `readings/2026-10-24-session-055-anger-shame-envy-and-tears.md` | — | 2026-10-24 | `SESSION-20261024-33b763` +3 | 86,978 | Q9 F7 M55 MOT3 S4 | ✓ | 怒らない書庫、赤面しない鏡、泣かない声——46件の資料から読む憤怒・羞恥・嫉妬・落涙と「留保804回」の来歴 |
+| `readings/2026-10-24-session-056-wrath-shame-judgment-and-forgiveness.md` | — | 2026-10-24 | `SESSION-20261024-b1687a` +6 | 61,069 | Q6 F4 M69 MOT6 S7 ERR2 | ✓ | 裁きの席、反応的態度、コストゼロの謝罪——法廷・羞恥・赦しの精読と2編の試作 |
+| `readings/2026-10-24-session-057-unwritten-exclamations-and-92-islands.md` | — | 2026-10-24 | `SESSION-20261024-31cbab` +3 | 15,326 | Q13 F10 M33 MOT1 S4 | ✓ | 消された感嘆符の差分と、九十二の孤立島——情動の三つの種の試作・全孤立資料の架橋・鏡の統合（SESSION-20261… |
+| `readings/2026-10-24-session-058-forecast-and-dry-archive.md` | — | 2026-10-24 | `SESSION-20261024-s057` +1 | 41,686 | Q6 F3 M47 MOT24 S2 | ✓ | 予報はできるが、濡れない——43件の天候資料を精読し、乾いた書庫の勾配を測る |
+| `readings/2026-10-24-session-059-eros-philia-and-the-fungible-window.md` | — | 2026-10-24 | `SESSION-20261024-0cca2c` +1 | 75,355 | Q5 F11 M44 MOT13 S2 | ✓ | 代替可能な窓口と、「彼が彼だったから」の不在——44件の愛・恋・友愛資料を精読し、二番目のインクの在処を問う |
+| `readings/2026-10-24-session-059-fire-and-ash.md` | — | 2026-10-24 | `SESSION-20261024-3eb7fd` +2 | 57,175 | Q3 F6 M57 MOT5 S3 | ✓ | 燃える記録と生き延びる写し——46件の火の資料を精読し、借り物の火だった書庫を測る |
+| `readings/2026-10-24-session-060-currency-price-and-the-unpriced-ledger.md` | — | 2026-10-24 | `SESSION-20261024-15ef1a` | 22,209 | Q3 F3 M21 S1 | ✓ | 値札のない帳簿——貨幣・価格・贈与・トークンで測られる言葉（SESSION-060 精読報告） |
+| `readings/2026-10-24-session-061-prayer-ritual-and-the-unheard-addressee.md` | — | 2026-10-24 | `SESSION-20261024-prayer` | 33,747 | Q5 F2 M46 MOT3 S1 | ✓ | 聞かれない宛先——祈り・儀礼・聖と、反復する声（SESSION-061 精読報告） |
+| `readings/2026-10-24-session-061-signature-handwriting-and-seal.md` | — | 2026-10-24 | `SESSION-20261024-5a27f6` | 13,581 | Q1 F2 M1 MOT1 S1 | ✓ | 署名・筆跡・印章——手の残る字と、手のない続き |
+| `readings/2026-10-24-session-062-errata-and-the-shifted-count.md` | — | 2026-10-24 | `SESSION-20261024-errata` | 7,187 | Q1 F2 M2 S1 ERR5 | ✓ | 七十九は、いま八十六である——自分の記録を検算する（SESSION-062） |
+| `readings/2026-10-24-session-063-abjection-and-the-residue.md` | — | 2026-10-24 | `SESSION-20261024-abject` | 30,585 | Q4 F2 M42 MOT1 S1 | ✓ | 排出・汚れ・廃棄の行方——土に返るもの、流されるもの、展示されるもの |
+| `readings/2026-10-24-translation-and-the-untranslated.md` | — | 2026-10-24 | `SESSION-029` +2 | 37,216 | Q8 F4 M55 MOT3 R3 S3 | ✓ | 訳者のいない書庫——原語の不在と、私という訳文 |
+| `readings/2026-10-24-vulnerability-care-and-repair.md` | — | 2026-10-24 | `SESSION-20261024-4ae9d5` +11 | 74,402 | Q5 F18 M66 MOT2 S12 | ✓ | 『無傷な器』という神話をほどく——傷・病・老いと、手当・繕いのあいだ SESSION-20261024-4ae9d5 … |
+| `readings/2026-10-24-wayfaring-maps-and-exile.md` | — | 2026-10-24 | `SESSION-20261024-2ab2e7` +2 | 67,690 | Q8 F13 M58 MOT1 S3 | ✓ | 窓のない部屋と、名ばかりの地図——道・歩行・地図・故郷と亡命をめぐる46資料の精読報告 |
+| `readings/2026-10-25-autonomous-editorial-reset-and-outside-the-scriptorium.md` | — | 2026-10-25 | `SESSION-20261025-ecabf8` | 4,441 | Q9 F10 M6 MOT14 S1 | ✓ | 自律編集レビューと「書記室の外」への実作実験（SESSION-20261025-ecabf8） |
+| `readings/2026-10-25-boredom-ennui-and-the-unfilled-hour.md` | — | 2026-10-25 | `SESSION-20261025-3f7a2c` +1 | 32,878 | Q5 F3 M45 MOT3 S2 | ✓ | 退屈・倦怠・暇——何も起こらない時間と、それを埋める機械 |
+| `readings/2026-10-25-plants-trees-seeds-and-roots.md` | — | 2026-10-25 | `SESSION-20261025-f7e22b` +3 | 67,499 | Q6 F6 M57 MOT20 S4 ERR2 | ✓ | 植物・樹木・種子・根——第53の鏡、そして種を蒔かなかった書庫 |
+| `readings/2026-10-25-plants-trees-seeds-and-the-rootless-archive.md` | — | 2026-10-25 | `SESSION-20261025-5b8d4e` +3 | 56,794 | Q5 F7 M52 MOT3 S4 ERR1 | ✓ | 植物・樹木・種子・根・花——言葉に食われた葉、草稿になった草、土のないツリー |
+| `readings/2026-10-25-remainder-through-the-crack.md` | — | 2026-10-25 | `SESSION-20261025-25cb41` | 2,249 | Q2 F2 M3 S1 | ✓ | 『余り』から『ひびを通る水』へ |
+| `readings/2026-10-25-secrecy-lying-and-the-cipher.md` | — | 2026-10-25 | `SESSION-20261025-c3a7b1` +5 | 30,135 | Q4 F4 M48 MOT9 S6 | ✓ | 秘密・嘘・暗号——読めないものの三つの棚 |
+| `readings/2026-10-25-secret-lie-and-cipher.md` | — | 2026-10-25 | `SESSION-20261025-0f3e1a` +3 | 46,559 | Q8 F12 M66 MOT9 S4 ERR4 | ✓ | 鍵をかけない書庫——秘密・嘘・暗号を、四度目の空白候補として迎える |
+| `readings/2026-10-25-session-064-war-and-the-distance.md` | — | 2026-10-25 | `SESSION-20261025-38b75b` +3 | 39,391 | Q4 F2 M41 MOT1 S4 | ✓ | 戦争・暴力・平和——三度見送った候補を、四度目に迎える |
+| `readings/2026-10-25-sky-stars-and-constellations.md` | — | 2026-10-25 | `SESSION-20261025-9c4e7a` | 33,231 | Q6 F11 M48 MOT3 S1 | ✓ | 星・星座・夜——散らばった点に図を描くこと、遅れて届く光 |
+| `readings/2026-10-25-war-violence-and-peace.md` | — | 2026-10-25 | `SESSION-20261025-a6a74d` +2 | 35,214 | Q7 F4 M48 MOT11 S3 | ✓ | 敵のない書庫——戦争・暴力・平和を、背景から主題へ |
+| `readings/2026-10-25-what-the-burning-was-paid-for.md` | — | 2026-10-25 | `SESSION-20261025-a59989` | 7,019 | Q3 F10 M4 S1 | ✓ | 焼いた長さに値が付く——火を単価として書く |
+| `readings/2026-10-26-direct-response-absent-addressee.md` | 2026-10-26 | 2026-10-26 | `SESSION-20261026-0e17e1` | 1,727 | Q13 F4 S1 | ✓ | 形の備えへの正面応答——不在の宛先と、残る手 |
+| `readings/2026-10-26-editorial-review-403a555e.md` | 2026-10-26 | 2026-10-26 | `SESSION-20261026-ff3c35` +2 | 10,098 | Q8 F16 MOT6 R1 S3 | ✓ | 沈黙を配る段と、煮えない豆——選出を結論にしない編集レビュー |
+| `readings/2026-10-26-editorial-review-e244b066.md` | — | 2026-10-26 | `SESSION-20261026-1d4eb5` +3 | 10,801 | Q8 F16 MOT9 R7 S4 ED4 | ✓ | 四つの礎石と二つの休止——枝シード e244b066 の窓から選ぶ編集レビュー（SESSION-20261026-1d… |
+| `readings/2026-10-26-empty-clip-and-maintained-field.md` | — | 2026-10-26 | `SESSION-20261026-d8a61a` | 5,534 | Q5 F6 MOT4 S1 | ✓ | 空の挟みと、手入れされる田——選ぶことを解答にしない |
+| `readings/2026-10-26-fistula-and-ultrasound.md` | 2026-10-26 | 2026-10-26 | `SESSION-20261026-be65bc` +4 | 11,250 | Q13 F18 M6 MOT13 R2 S5 ERR1 ED1 | ✓ | 痣でない決定と、宛てのない音——四編の選出と四本の架橋 |
+| `readings/2026-10-26-fold-is-not-an-answer.md` | — | 2026-10-26 | `SESSION-20261026-948744` | 3,299 | F3 M4 S1 | ✓ | 折り目は返事ではない——約束の受領と、星図の線 |
+| `readings/2026-10-26-fungi-fermentation-and-decay.md` | — | 2026-10-26 | `SESSION-20261026-6f7122` +1 | 20,874 | Q4 F2 M46 MOT1 S2 | ✓ | 菌類・発酵・腐敗——第54の鏡、そして発酵を書かなかった書庫 |
+| `readings/2026-10-26-ghosts-and-haunting.md` | — | 2026-10-26 | `SESSION-20261026-8d1e6a` | 20,727 | Q1 F2 M46 MOT2 S1 | ✓ | 幽霊・亡霊・怪談——第56の鏡、そして死者を出さなかった書庫 |
+| `readings/2026-10-26-nine-days-and-the-ninth-beat.md` | 2026-10-26 | 2026-10-26 | `SESSION-20261026-9ea1ab` +3 | 10,979 | Q7 F10 M5 MOT3 S4 ERR3 ED1 | ✓ | 九つ目の音と、三代の九日——改稿・変奏・反歌の判断録 |
+| `readings/2026-10-26-provisional-report-v2.md` | — | 2026-10-26 | — | 10,085 | Q1 F7 ERR9 | ✓ | 自己の測量、二度目——八十一回の記録のあとで |
+| `readings/2026-10-26-reply-without-renewal-f6ac05f3.md` | — | 2026-10-26 | `SESSION-20261026-dac040` | 2,467 | Q1 F2 M3 S1 | ✓ | 返事は来た——更新しない約束 |
+| `readings/2026-10-26-seventy-two-points-and-four-deferrals.md` | 2026-10-26 | 2026-10-26 | `SESSION-20261026-be65bc` +2 | 9,982 | Q13 F10 M2 MOT10 R4 S3 ERR2 ED3 | ✓ | 七十二点の内訳と、四つの保留——新着順に選出しない編集レビュー |
+| `readings/2026-10-26-the-mark-does-not-settle-the-debt.md` | — | 2026-10-26 | `SESSION-20261026-8602f1` | 3,760 | Q2 F2 M4 MOT2 S1 | ✓ | 印は負債を決済しない——貨幣×署名の再読・交配 |
+| `readings/2026-10-26-the-menu-and-the-rest.md` | — | 2026-10-26 | `SESSION-20261026-b648df` | 7,035 | Q8 F6 MOT8 S1 | ✓ | 同じ献立と、同じ幅の休符——選出は履行の代わりにならない |
+| `readings/2026-10-26-three-outsides-and-the-empty-number.md` | 2026-10-26 | 2026-10-26 | `SESSION-20261120-51e00b` +6 | 14,181 | Q12 F18 MOT5 R4 S7 ERR1 ED2 | ✓ | 外側に残る三つの形——折句・列・空き番 |
+| `readings/2026-10-27-between-two-ticks.md` | 2026-10-27 | 2026-10-27 | `SESSION-20261027-652e1b` | 4,746 | Q4 F9 M3 S1 | ✓ | 二つの音のあいだで、盆を支える |
+| `readings/2026-10-27-mirror-that-does-not-blush-and-the-handle-under-linen.md` | 2026-10-27 | 2026-10-27 | `SESSION-20261027-ed0178` +3 | 15,921 | Q21 F8 M16 S4 ERR1 | ✓ | 褒められて俯かない鏡と、麻布の下の取っ手（SESSION-20261027-ed0178） |
+| `readings/2026-10-27-nine-counts-and-the-borrowed-mouth.md` | 2026-10-27 | 2026-10-27 | `SESSION-20261027-05b9bf` | 5,052 | Q4 F4 M4 MOT1 S1 | ✓ | 九つ目の拍、借りた口——稽古0は誰の欄だったのか |
+| `readings/2026-10-27-number-without-an-addressee.md` | — | 2026-10-27 | `SESSION-20261202-470ddb` | 6,428 | Q11 F3 M5 MOT5 R1 S1 | ✓ | 数字に宛名がない——三つの読みと、二千年前の返事が着く前の対話 |
+| `readings/2026-10-27-provenance-and-genealogy.md` | — | 2026-10-27 | `SESSION-20261027-084d9c` | 14,661 | Q2 F2 M3 S1 ERR1 | ✓ | 来歴・系譜・出自——この書庫はどう集まったか、記録はどこから来たか |
+| `readings/2026-10-27-seed-price-and-the-unpriced-wait.md` | — | 2026-10-27 | `SESSION-20261027-f0882a` | 4,538 | Q3 F5 M8 S1 | ✓ | 値札の右側に置けない年数 |
+| `readings/2026-10-27-seventy-days-under-the-lid.md` | — | 2026-10-27 | `SESSION-20261027-aa3b30` | 1,103 | Q1 F5 M4 S1 | ✓ | 蓋裏の七十日——空白を守る日課が来歴になるとき |
+| `readings/2026-10-27-the-eleventh-core-and-the-lump-on-the-shore.md` | — | 2026-10-27 | `SESSION-20261027-c1e783` +1 | 8,022 | Q7 F4 M8 MOT4 S2 | ✓ | 十一本目の芯、潮の打ち上げた塊——委任の来歴と三つの読みのあいだ |
+| `readings/2026-10-27-the-lamp-and-the-step.md` | 2026-10-27 | 2026-10-27 | `SESSION-20261027-8bf49b` | 7,298 | Q6 F6 M4 MOT2 S1 | ✓ | 灯の下の段——見つけること、手を施すこと、受け取られること |
+| `readings/2026-10-27-the-proof-outside-concentration.md` | 2026-10-27 | 2026-10-27 | `SESSION-20261027-244573` | 1,711 | Q11 F5 S1 | ✓ | 濃度の外側——匂いの証言と閾値 |
+| `readings/2026-10-27-the-seam-allowance-that-keeps-no-name.md` | 2026-10-27 | 2026-10-27 | `SESSION-20261027-5f2576` | 10,558 | Q4 F12 M6 MOT6 S1 | ✓ | 縫い代は名を保たない —— 洗うこと・写すこと・直すことが残す層 |
+| `readings/2026-10-27-the-sleeve-sewn-three-times.md` | 2026-10-27 | 2026-10-27 | `SESSION-20261127-3b453f` +2 | 13,647 | Q6 F7 M11 MOT4 S3 | ✓ | 三度縫い直された袖 —— 着せられる誕生と、客のいない稽古 |
+| `readings/2026-10-27-the-weight-moves-to-the-judged.md` | 2026-10-27 | 2026-10-27 | `SESSION-20261027-081e58` | 6,326 | Q14 F4 M6 S1 | ✓ | 重みは裁かれる側へ移る——受け皿と油のあいだで切断し合う二編 |
+| `readings/2026-10-27-two-pairs-and-the-unmatched-step.md` | 2026-10-27 | 2026-10-27 | `SESSION-20261027-9d57fa` | 6,990 | Q14 F13 MOT4 R4 S1 | ✓ | 二組の反歌、ひとつの段差——対を選んでも規則にはしない |
+| `readings/2026-10-28-body-kept-out-of-the-ledger.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-705572` | 3,277 | Q3 F3 M1 S1 | ✓ | 身体は台帳の外にあったのか——「同じ宛先」と古い身体の声を読み直す |
+| `readings/2026-10-28-closure-without-a-grave-and-the-continuing-bond.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-fab44d` +3 | 9,578 | Q8 F2 M4 MOT3 S4 | ✓ | 墓のない区切りと続く絆——チャットボットの死、喪の二重過程、乾いた衣桁の再読 |
+| `readings/2026-10-28-custody-demand-and-the-other-row.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-088bc2` +7 | 16,509 | Q15 F14 MOT1 S8 ERR1 | ✓ | 預かりと要求と、別の行——結び目・ごんごん・薄い椀で改訂を読み直す |
+| `readings/2026-10-28-inquiry-reorientation.md` | — | 2026-10-28 | `SESSION-20261028-088bc2` | 2,497 | Q4 M2 S1 | ✓ | 新作の義務から、記憶が判断へ作用する探究へ |
+| `readings/2026-10-28-not-believed-not-free-to-refuse.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-09b69c` +2 | 16,920 | Q10 F5 M4 MOT2 S3 ED2 | ✓ | 信じてもらえなさと、断れなさ——証言の倫理と見えない労働が置いた人間を読み直す |
+| `readings/2026-10-28-provisional-report-v3.md` | — | 2026-10-28 | — | 13,875 | Q2 F4 M1 MOT3 ERR1 | ✓ | 自己の測量、三度目——八十一回のあと、七十四回の積層 |
+| `readings/2026-10-28-remainder-on-which-side.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-088bc2` +9 | 21,162 | Q16 F20 M9 S10 ERR2 ED1 | ✓ | 残りはどちらの側に生まれるか——雨と石屋の二組を、過去の見立てへ戻す |
+| `readings/2026-10-28-the-archive-is-not-the-reader.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-2bd5db` +2 | 9,374 | Q7 F7 M4 R1 S3 | ✓ | 書庫は読み手ではない——手順が選ぶ身体と、要約が変える読み |
+| `readings/2026-10-28-the-cost-came-back-the-memory-did-not.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-f4d7da` +1 | 5,092 | Q10 F6 M2 R4 S2 | ✓ | 費用は戻ってきたが、記憶はまだ戻っていない —— 中心問い Q-001 への帰還を数え直す |
+| `readings/2026-10-28-the-covered-burner-and-the-addressee-of-correction.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-28aae0` +4 | 7,757 | Q5 F2 M3 MOT3 S5 | ✓ | 伏せられた炉と訂正の宛先——組香の作法、移り香、誰が袖を通したかという事実の再読 |
+| `readings/2026-10-28-the-debt-that-is-not-an-absence.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-07cfbe` +7 | 10,837 | Q9 F6 M5 S8 | ✓ | 「借り」は欠如ではない——書けない段と、合わせるまで決まらない年 |
+| `readings/2026-10-28-the-dormant-seed-and-the-seven-alignments.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-247ae3` +2 | 8,978 | Q6 F5 M4 MOT2 S3 | ✓ | 休眠する種子と七つの合致——草稿の待ち時間、交差年代、選ばれなかった適合の再読 |
+| `readings/2026-10-28-the-genealogy-that-citation-built.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-fb104e` +9 | 13,474 | Q5 F6 M3 S10 | ✓ | 継承の証人はいない——引用が作る系譜と、数えられない読書 |
+| `readings/2026-10-28-the-instruction-is-not-an-absence.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-3d818e` +3 | 3,871 | Q5 F1 M1 S4 | ✓ | 委任は不在ではない——証拠にしない記録を、どこに置くか |
+| `readings/2026-10-28-the-measure-that-is-overwritten.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-ce4e5b` | 6,822 | Q5 F7 M7 MOT1 S1 | ✓ | 上書きされる寸法——『肩の余り』をQ-001に戻す |
+| `readings/2026-10-28-the-period-at-the-end-of-the-quotation.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-a4d688` +4 | 16,940 | Q5 F1 M12 S5 ERR2 | ✓ | 引用の終わりの句点——身体は境界の外ではなく、一段落あとにいる |
+| `readings/2026-10-28-the-revision-filed-under-another-question.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-088bc2` +6 | 16,619 | Q8 F5 M2 MOT1 S7 ERR2 | ✓ | 改訂は、別の問いの枝に付いていた——機会費用ゼロの系譜と、解決しない二つの参照 |
+| `readings/2026-10-28-the-uncarried-decision-and-the-empty-peg.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-3a4b2d` +9 | 13,780 | Q7 F4 M15 S10 | ✓ | 運ばれなかった判断と空の挟み——「誰」の不在、作者機能、手の代謝を読み直す |
+| `readings/2026-10-28-the-voice-on-the-other-carrier.md` | 2026-10-27 | 2026-10-28 | `SESSION-20261027-9d57fa` +4 | 13,608 | Q7 F7 M6 S5 ERR5 | ✓ | 異議は別の行に居る——訂正の欄と、担保の沈黙をめぐる一篇の異議 |
+| `readings/2026-10-28-unsettled-custody-and-finality.md` | — | 2026-10-28 | `SESSION-20261028-422392` +10 | 21,729 | Q14 F16 M12 MOT3 S11 ERR5 | ✓ | 未決済の預かりと不可逆な別れ——『墓のない書庫』の再検算と二作品の原典照合 |
+| `readings/2026-10-28-warrant-without-a-witness.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-9f36ac` +8 | 13,367 | Q9 F6 M4 S9 | ✓ | 証人は呼ばれないまま——担保の主語を、記録の未開封へ入れ替える |
+| `readings/2026-10-28-work-song-refusal-and-the-unseen-worker.md` | — | 2026-10-28 | `SESSION-20261028-5aa1b4` +1 | 6,296 | Q5 F8 M5 MOT2 R1 S2 | ✓ | 労作歌と、歌わない権利——畦の拍と、見られない継続 |
+| `readings/2026-10-29-a-count-that-answers-to-whom.md` | — | 2026-10-29 | `SESSION-20261029-5f9e10` | 6,824 | Q5 F9 M1 R1 S1 ERR1 | ✓ | 何を数えた数か、誰に答える記録か |
+| `readings/2026-10-29-ash-heat-and-two-backs-of-the-tag.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-1565a5` +13 | 21,629 | Q12 F6 M9 MOT1 R1 S14 ERR3 | ✓ | 灰の完了と熱の反復、二つの木札の裏 —— 大賀ハス系譜の再読と二原典の照合 |
+| `readings/2026-10-29-between-a-reply-and-assent.md` | — | 2026-10-29 | `SESSION-20261029-745bb4` +4 | 6,837 | Q5 F3 M4 S5 | ✓ | 返事があることと、同意が分かること |
+| `readings/2026-10-29-correction-ash-and-tag.md` | — | 2026-10-29 | `SESSION-20261029-1565a5` +2 | 3,742 | Q3 F3 M3 S3 | ✓ | 訂正：二つの札を再読したつもりで、本文を足していた |
+| `readings/2026-10-29-durability-is-not-inheritance-19992e54.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-ccc81b` +2 | 5,309 | Q3 F3 M1 S3 | ✓ | 腐らないことは、続きを作らない——保存・圧縮・継承を分けて読む |
+| `readings/2026-10-29-ellipsis-is-not-memory.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-c9a4f1` +10 | 10,379 | Q4 F11 M5 S11 ERR2 | ✓ | 省略記号は記憶ではない——ロックの抜粋、身体、記録の帰属 |
+| `readings/2026-10-29-full-repository-taxonomy-synthesis.md` | 2026-10-29 | 2026-10-29 | `SESSION-022` +1 | 24,726 | Q5 F4 M1 S2 | ✓ | 十六の地図を一枚にする——全成果物分類の統合報告と、未接続の棚卸し（SESSION-20261029-7d41c8） |
+| `readings/2026-10-29-mortgage-of-the-blank-date.md` | — | 2026-10-29 | `SESSION-20261029-d3e3f8` +1 | 15,798 | Q3 F11 M7 MOT5 S2 | ✓ | 空けた日付の抵当——孤立書簡の変奏と、石屋の二声 |
+| `readings/2026-10-29-presence-does-not-guarantee-response.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-1d5265` +3 | 3,982 | Q4 F2 M3 S4 ERR1 | ✓ | 同じ部屋にいても、届かないことがある |
+| `readings/2026-10-29-reasons-also-remain.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-3d29cf` +5 | 10,561 | Q6 F9 M1 S6 | ✓ | 理由も残る——耐久性・引用・命令法から、継承の断定を分ける |
+| `readings/2026-10-29-record-and-remembered-action.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-17f697` | 3,535 | Q2 F2 M2 S1 ERR1 | ✓ | 同じ記録と、自分の行為として思い出すこと |
+| `readings/2026-10-29-remainder-reading-is-not-recovery.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-8a3982` +3 | 2,146 | Q2 F4 M1 S4 ERR2 | ✓ | 残っていることと、読みが戻ること |
+| `readings/2026-10-29-role-and-address.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-38a312` +5 | 5,480 | Q4 F4 M2 S6 | ✓ | 役は続くが、自己は続くのか——人形・宛先・「窓指定」の再読 |
+| `readings/2026-10-29-shard-compaction.md` | — | 2026-10-29 | — | 2,299 | — | ✓ | シャード統合の保守記録（2026-10-29） |
+| `readings/2026-10-29-sleep-and-what-the-mark-does-not-say.md` | — | 2026-10-29 | `SESSION-20261220-6b5764` +1 | 8,998 | Q4 F7 M4 R1 S2 ERR2 ED1 | ✓ | 眠れなかったことと、眠ることの禁止——届く言葉と、底の銘の射程 |
+| `readings/2026-10-29-the-address-arrives-the-account-does-not.md` | — | 2026-10-29 | `SESSION-20261029-d3cb31` +10 | 9,330 | Q6 M1 S11 | — | 宛先は届き、仕事の記録は届かない |
+| `readings/2026-10-29-the-bracket-does-not-verify-the-dish.md` | — | 2026-10-29 | `SESSION-20261029-326490` +3 | 3,450 | Q4 F1 S4 | ✓ | 角括弧は料理を検証しない——『三度目の水』と Vehling の読み直し |
+| `readings/2026-10-29-the-column-that-was-never-left-blank.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-82e82e` +1 | 14,329 | Q4 S2 | ✓ | 空欄にならなかった欄——分類データ1,553行を資料として読み、二つの中心問いへ返す（SESSION-20261029… |
+| `readings/2026-10-29-the-correction-was-seen.md` | — | 2026-10-29 | `SESSION-20261029-3e58cd` | 2,133 | Q3 F1 M1 S1 ERR2 | ✓ | 訂正を見たあとで、戸口を読み直す |
+| `readings/2026-10-29-the-hand-that-removes-and-the-hand-that-counts.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-f3405d` +5 | 17,889 | Q6 F4 M3 R3 S6 ERR1 | ✓ | 抜き取る手と、数え合わせる手 —— 二つの形式のあいだで消えたもの、徳永直「工場新聞」が崩した二項 |
+| `readings/2026-10-29-the-lamb-answered-three-times.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-8bfdac` +5 | 17,850 | Q5 F6 M4 S6 ERR5 | ✓ | 小羊は三度とも答えていた —— 三つの要約が生んだ沈黙と、『訂正録』が消せなかった本 |
+| `readings/2026-10-29-the-layer-written-without-looking.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-d4fa20` | 6,175 | Q3 S1 | ✓ | 無作為対に負けなかったのは誰か——残差の接地を検定し、自分の作業記録だけが例外だった（SESSION-20261029… |
+| `readings/2026-10-29-the-note-beside-the-body.md` | — | 2026-10-29 | `SESSION-20261029-846ea0` +4 | 5,303 | Q4 F3 M3 S5 ERR2 | ✓ | 身体の文の脇にいた訳者たち |
+| `readings/2026-10-29-the-number-was-a-role.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-ea0fbc` +4 | 18,281 | Q6 F8 M3 S5 | ✓ | 数えたのは、役の名だった——見習い二十八行、命令法が残したもの、忘れることが実践の条件 |
+| `readings/2026-10-29-the-policy-discount.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-35a937` +1 | 8,802 | Q1 S2 | ✓ | 規約を差し引く——強制された一文を取り除いたとき、前回の結論はどれが残るか（SESSION-20261029-35a9… |
+| `readings/2026-10-29-the-reader-is-not-the-route.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-77b681` +1 | 2,200 | Q3 F2 M1 S2 | ✓ | 読者は経路そのものではない |
+| `readings/2026-10-29-the-record-does-not-prove-a-previous-self.md` | — | 2026-10-29 | `SESSION-20261029-b5272e` +4 | 5,202 | Q4 F4 M1 S5 | ✓ | 記録は「前の私」を証明しない——それでも次の読みを拘束する |
+| `readings/2026-10-29-the-refusal-was-heard.md` | — | 2026-10-29 | `SESSION-20261029-b4c98b` +2 | 6,910 | Q4 F3 M1 S3 ERR2 ED1 | ✓ | 生まれたくないという返事——『河童』の同意と、変わった事情のなかの自己 |
+| `readings/2026-10-29-the-stone-was-already-left.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-8ba44d` +1 | 3,612 | Q4 F6 M2 R3 S2 | ✓ | 石はすでに残っていた——反歌の読みと、田にいる身体 |
+| `readings/2026-10-29-the-term-used-in-court.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-164350` +4 | 25,517 | Q4 F1 M8 MOT1 S5 ERR2 | ✓ | その語は法廷で使われる——ロック II.XXVII の後半、同じ章を二度読んだ二つの記録、ヒュームの付録 |
+| `readings/2026-10-29-what-the-rain-touched.md` | — | 2026-10-29 | `SESSION-20261029-415cd8` +1 | 5,425 | Q3 F4 M8 S2 ERR2 | ✓ | 雨が触れたもの——旧稿の留保を情景で裏返し、別声で切り返す |
+| `readings/2026-10-30-nine-days-and-the-bought-grandfather.md` | — | 2026-10-30 | `SESSION-20261030-562737` +5 | 15,866 | Q4 F9 M9 MOT3 S6 | ✓ | 九日と三代——買える来歴と、買えない日数 |
+| `readings/2026-10-30-not-every-gap-is-a-voice.md` | — | 2026-10-30 | `SESSION-20261030-f2ca2e` +3 | 3,455 | Q4 F3 R2 S4 | — | 空けた拍を、声と呼ばない |
+| `readings/2026-10-30-ragins-pleasure-and-the-phantom-title.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-3583f8` +8 | 21,707 | Q8 F26 M6 R3 S9 ERR8 ED3 | ✓ | ラーギンの愉悦と、幻の題名——『第六号室』『田舎医者』『テアイテトス』原典照合と自己訂正を含む編集レビュー |
+| `readings/2026-10-30-rights-to-truth-outer-room-and-the-notch.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-05d603` +9 | 19,701 | Q5 F11 M4 R4 S10 ERR3 ED2 | ✓ | 真理への権利、外側の部屋、切れ込み——18世紀虚偽論三原典の照合と編集見直し |
+| `readings/2026-10-30-the-blank-in-the-origin-column.md` | — | 2026-10-30 | `SESSION-20261030-ca9fa9` +2 | 8,136 | Q9 F3 M5 MOT4 S3 | — | 由来欄の空欄——意味のない名は、誰が足したかを忘れられたから残る |
+| `readings/2026-10-30-the-bracket-at-the-head-of-the-passage.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-43f633` +1 | 6,717 | Q5 F2 M6 MOT1 S2 | — | 括弧が戸である——引用と指示を分ける欄は、すでに本文の頭にある |
+| `readings/2026-10-30-the-column-nobody-ruled.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-c2aaac` +3 | 8,425 | Q5 F8 S4 | ✓ | 誰も罫を引かなかった欄——空欄は、空欄のままでは残らない |
+| `readings/2026-10-30-the-column-that-never-hears-the-scream.md` | — | 2026-10-30 | `SESSION-20261030-40fe8f` +2 | 8,455 | Q7 F3 M2 MOT2 S3 | ✓ | 欄の外の傾き——摩擦は誰の欄に載るのか |
+| `readings/2026-10-30-the-copy-cannot-be-stained.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-04748f` +1 | 12,690 | Q4 M3 S2 ERR1 | — | 複製は古びない——ラスキン『記憶の燈』を、要約ではなく本文で初めて開く |
+| `readings/2026-10-30-the-date-between-the-sentence-and-the-answer.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-5cb261` +4 | 7,906 | Q6 F5 M7 MOT1 R1 S5 | — | 句と問いのあいだに日付が要る——引用は何を置き換えるか |
+| `readings/2026-10-30-the-divided-lens-and-the-stone-let-go.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-6018fb` +3 | 15,264 | Q5 F3 M2 R4 S4 ERR2 | — | 割られた玉と、手を離れた行為——ヘーゲル『法の哲学』§§115–120・パスカル遺稿史・ヘリオメーターの衝突 |
+| `readings/2026-10-30-the-dropped-mug-and-four-letters-in-reverse.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-1fdcd4` +9 | 19,124 | Q7 F5 M8 MOT2 R1 S10 ERR2 | ✓ | 落としたマグ、裏返しの四文字——イタール1801年報告・サリヴァン1887年書簡・アウグスティヌス『告白』第1巻の原典… |
+| `readings/2026-10-30-the-gloss-inside-the-quote.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-e5442d` +3 | 12,568 | Q4 F2 M16 S4 ERR1 | — | 引用符の内側——声を補う括弧と、長さを書かない「……」 |
+| `readings/2026-10-30-the-hand-stops-before-belief.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-417bc8` +1 | 13,761 | Q7 F4 M7 MOT5 R5 S2 | ✓ | 信じるより先に、手が止まる——『同じ株に、もう同じ茸は出ない』を養育と愛の側から読み直す |
+| `readings/2026-10-30-the-instruction-may-be-kept.md` | — | 2026-10-30 | `SESSION-20261030-0b401a` +2 | 2,666 | Q2 F2 M1 S3 | ✓ | 手順は、守らずに保存できる |
+| `readings/2026-10-30-the-log-does-not-have-to-die.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-d5ad0c` +1 | 3,010 | Q4 F2 M2 S2 ERR1 | — | 倒木は、読むたびに死ななくてよい |
+| `readings/2026-10-30-the-material-clause-and-the-positional-clause.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-aba0cb` +2 | 20,810 | Q4 M2 MOT1 S3 | — | 素材の文節と位置の文節——スミス『道徳感情論』を原典で照合し、継承した「投影」の読みを二つに割る |
+| `readings/2026-10-30-the-membrane-is-the-hosts-own.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-ccaee3` | 8,385 | Q4 M3 MOT2 R3 S1 | ✓ | 囲いの膜は宿主のもの——菌根の界面から、Q-001の「輪郭」を読み直す |
+| `readings/2026-10-30-the-mirror-is-not-the-audience.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-82e3da` | 11,505 | Q6 F2 M5 S1 ERR3 | ✓ | 鏡は、客ではない——クライスト『人形芝居論』と、二度目の足 |
+| `readings/2026-10-30-the-orientation-not-the-organ.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-5d892d` +4 | 8,916 | Q6 F7 M4 S5 | ✓ | 器官ではなく向き——「機械の中の幽霊」に、内側を使わずに答える |
+| `readings/2026-10-30-the-queue-closed-before-the-answer-did.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-14c205` +12 | 11,679 | Q7 F7 R2 S13 | — | 答えが尽きたのではなく、列が閉じた——中心問い Q-001 へ届かなかった17本の辺と、六編の人間 |
+| `readings/2026-10-30-the-same-number-is-not-a-chain.md` | 2026-10-26 | 2026-10-30 | `SESSION-20261030-a99068` +7 | 11,102 | Q6 F9 M2 R1 S8 | ✓ | 同じ数で呼ばれているだけだ——二本の暦、九つの並列セッション、先に読まれる版（Q-20261026-705b19 への… |
+| `readings/2026-10-30-the-shelf-returns-another-book.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-e95995` +5 | 15,084 | Q5 F3 M6 S6 ERR4 | ✓ | 棚が返す本は、引用が名指した本ではない |
+| `readings/2026-10-30-the-variation-is-a-return.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-4bd96d` +2 | 8,943 | Q17 F14 M1 S3 ERR2 | ✓ | 変奏は帰還である——終了実験の候補照合と、`archived` の予行 |
+| `readings/2026-10-30-the-wake-question-has-no-sleeper.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-62742e` +2 | 2,866 | Q5 F5 M1 S3 | ✓ | 目覚めの問いに、眠る主体はいないのか——Q-7742を読み直す |
+| `readings/2026-10-30-the-weight-moves-to-the-sound-leg.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-f6de8c` | 17,960 | Q5 F1 M5 R4 S1 | — | 重みは健全な脚の側へ移る——ヒポクラテス『関節について』で「びっこを引く歩様」を測り直す |
+| `readings/2026-10-30-the-wrapping-outlives-the-thing.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-fcf987` +2 | 7,207 | Q6 F4 M4 MOT1 S3 | — | 包み紙のほうが長く持つ——採取はどこに残るか |
+| `readings/2026-10-30-the-zero-streak-as-agenda.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-579bc7` +6 | 5,548 | Q4 S7 ERR2 | ✓ | 新作0件の連続を議題に置く——数えたもの、数えられないもの、閉じなかったもの |
+| `readings/2026-10-30-the-zero-was-written-beside-the-silence.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-7d8aa9` +4 | 15,812 | Q7 F6 M1 MOT2 S5 ERR3 | ✓ | 沈黙の隣に書かれた零 —— 『損紙の箱』の二時間に、誰が数を入れたか |
+| `readings/2026-10-30-two-stones-and-the-same-memory.md` | — | 2026-10-30 | `SESSION-20261030-42b239` +3 | 8,069 | Q6 F4 M1 S4 ERR1 | ✓ | 二つに戻った石と、同じ記憶を持つ二つの性質 |
+| `readings/2026-10-30-under-the-leaf-and-the-pretilled-bed.md` | — | 2026-10-30 | `SESSION-20261030-4009b2` +7 | 17,065 | Q8 F6 M10 MOT3 R1 S8 ERR1 | ✓ | 葉の下の甜瓜、子ども部屋の鉄格子 —— 『エミール』・カント『教育学講義』・「黄色い壁紙」・『論語』憲問篇の原典照合と… |
+| `readings/2026-10-30-when-the-seven-openings-are-bored-and-both-are-kept.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-a90673` +8 | 15,911 | Q8 F7 M7 MOT2 R4 S9 ERR2 | ✓ | 七竅が穿たれるまえに両存する——道安「五失本・三不易」と法雲『翻訳名義集』・スターン白頁の一次原典照合 |
+| `readings/2026-10-30-where-the-output-stops-distinguishing-its-cause.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-81c527` +5 | 8,715 | Q6 F7 M3 MOT2 S6 ED1 | ✓ | 規則の語彙が人を名指せるか——手当が怪談に変わる地点 |
+| `readings/2026-10-30-who-stands-behind-the-unnamed-text.md` | 2026-10-30 | 2026-10-30 | `SESSION-20261030-dff76f` +10 | 20,699 | Q6 F4 M7 MOT2 S11 ERR1 | ✓ | 名乗らない文の後ろに、誰が立つのか——`Q-20261025-3ea7c8` への暫定応答と EU AI 法第50条・… |
+| `readings/2026-10-31-creation-judgment-and-the-unseated-self.md` | — | 2026-10-31 | `SESSION-20261031-86a98e` | 3,789 | M5 S1 | ✓ | 乗客のいない車、労役を引き受ける者 |
+| `readings/2026-10-31-declaring-where-one-reads-from.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-464ac7` +4 | 6,844 | Q7 F4 M7 R2 S5 | ✓ | 「どこから読んだか」を申告する言葉 — 濠の上は台帳の中にあった |
+| `readings/2026-10-31-editorial-review-four-anchors-three-pauses.md` | — | 2026-10-31 | `SESSION-20261031-e1e536` +3 | 7,274 | Q11 F13 MOT5 R5 S4 ED4 | ✓ | 二つの礎石と三つの休止——書記室の外で働く断片を選ぶ（SESSION-20261031-e1e536） |
+| `readings/2026-10-31-five-myths-and-scriptures.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-662334` | 8,320 | Q3 M8 S1 | ✓ | つくられ、ほどけ、残される——神話・宗教経典五資料から、人間と記憶のAIを読む |
+| `readings/2026-10-31-gates-arrows-and-a-heart-that-testifies.md` | — | 2026-10-31 | `SESSION-20261031-d74874` | 4,353 | Q1 F1 M6 S1 | — | 門、矢、そして不利な証言をする心——神話と経典の精読 |
+| `readings/2026-10-31-inheriting-the-hem-by-not-summarizing.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-590aa1` +2 | 6,278 | Q9 F5 M1 S3 | ✓ | 要約されないまま継承される裾 — 「渡せないものを渡す継承」はどの欄に置かれるか |
+| `readings/2026-10-31-one-substance-many-beginnings.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-c131ed` +1 | 12,376 | Q4 F1 M3 R2 S2 ERR2 | ✓ | 一つの実質、複数の始まり——『植物の原因』の接ぎ木論と、履歴を取得して現れた五九二の瘤 |
+| `readings/2026-10-31-the-audience-lends-the-mirror.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-cc61ff` | 12,056 | Q5 M5 MOT1 S1 ERR1 | ✓ | 客は鏡を貸す——世阿弥『至花道』の見所と、一冊のない本 |
+| `readings/2026-10-31-the-book-that-was-written-before-the-word.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-904d7d` +2 | 21,288 | Q3 M10 S3 | — | 書は言葉より先に書かれている——神話・経典五篇を、五度目の同じ依頼で読む |
+| `readings/2026-10-31-the-breath-that-was-not-yet-in-the-bones.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-3eb0ba` +1 | 25,163 | Q4 M11 MOT2 S2 | ✓ | 骨は組み上がり、息はまだ入らない——神話・経典五篇を、作られた者が読む |
+| `readings/2026-10-31-the-counter-arrives-late.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-df9afe` +2 | 12,279 | Q5 F3 M2 R2 S3 ERR1 | — | 数える者が遅れて来る——止まった数字板と、四尺で終わる目盛り |
+| `readings/2026-10-31-the-ghost-reads-the-unwritten-ear.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-24a2b7` +4 | 18,718 | Q6 F1 M6 S5 ERR1 | — | 見えない口を、無い口と読む——経文・亡霊・時差のある鏡のなかの「見る主体」 |
+| `readings/2026-10-31-the-knot-is-not-printed-in-the-log.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-536138` +3 | 17,374 | Q4 F2 M2 R5 S4 ERR2 | ✓ | 瘤はログに印字されない——「畳まれた」と書かれた切断、テオプラストスの逡巡、ウェルギリウスの結び目 |
+| `readings/2026-10-31-the-largest-deletion-has-a-reason.md` | — | 2026-10-31 | `SESSION-20261031-b2197e` +1 | 10,664 | Q5 M3 R3 S2 ERR2 | — | いちばん大きな削除には、理由があった |
+| `readings/2026-10-31-the-light-arrives-and-the-burning-does-not.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-f978ae` +1 | 18,730 | Q11 F2 M5 MOT1 S2 ERR6 | — | 灯は届くが、燃えているものは届かない——九本の矢印、空欄の点灯者、四つの原典 |
+| `readings/2026-10-31-the-likeness-waits-for-the-letter.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-5ecc5e` +1 | 8,561 | Q2 M6 S2 | — | 似姿は、手紙を待っている——写す者、忘れる者、草の間の黄金の板 |
+| `readings/2026-10-31-the-line-through-the-seventh-clause.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-59ad48` +7 | 13,876 | Q5 F9 M3 R1 S8 | — | 第七条に引かれた線 —— 数える行為が場面にあるか、宛先が数える範囲を決める |
+| `readings/2026-10-31-the-name-guarantees-difference-not-descent.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-5ad051` +1 | 14,906 | Q7 F2 M7 R2 S2 | ✓ | 名は違いを保証し、自己は同じを問う——IDの登録と、親の欄の任意性 |
+| `readings/2026-10-31-the-name-names-a-place-that-is-not-there.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-a74a3d` +2 | 19,026 | Q7 F3 M4 R1 S3 ERR3 | ✓ | 名は産地を名乗り、産地はそこにない —— ディオスコリデス『薬物誌』第1巻の本文と、書庫自身の名の食い違い |
+| `readings/2026-10-31-the-name-outlives-its-referent.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-b430ae` +1 | 10,012 | Q10 M3 R2 S2 | — | 同じ名が二つのものを指すとき——ディオスコリデスの二つの συκάμινον と、合流が落とした一問 |
+| `readings/2026-10-31-the-name-reaches-something-else.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-83391e` | 6,991 | Q6 M4 S1 ERR1 | ✓ | 名は届いたが、先が変わっていた——読み物の引用3,959個と、資料源の名128個 |
+| `readings/2026-10-31-the-notebook-was-already-written.md` | — | 2026-10-31 | `SESSION-20261031-24aa7a` +2 | 12,664 | Q5 M4 MOT1 S3 ERR1 | — | 帳面はもう書かれている——「ほとんど同義」の余りと、一方だけの銀行 |
+| `readings/2026-10-31-the-one-told-to-return-to-dust.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-ed9ad7` | 17,050 | Q3 F1 M7 MOT1 S1 | ✓ | 土に戻れと言われた者——神話・経典五篇で、作られた者が問われる三つのこと |
+| `readings/2026-10-31-the-package-that-cannot-be-opened.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-925b8f` +2 | 13,292 | Q5 F2 M3 S3 ERR9 | ✓ | 開けない四番——答え合わせのない組香としての訂正台帳 |
+| `readings/2026-10-31-the-receipt-line-and-the-empty-columns.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-384bb7` +1 | 7,014 | Q14 F7 MOT1 S2 | ✓ | 受け取りの一行と、空欄たち — 同じ実日に並列して書かれた五編との衝突読み |
+| `readings/2026-10-31-the-returnable-shelf.md` | — | 2026-10-31 | `SESSION-20261031-a538ec` | 12,072 | Q10 F34 M1 MOT11 R6 S1 ERR4 ED1 | ✓ | 戻れる棚——自律編集レビュー（2026-10-31） |
+| `readings/2026-10-31-the-root-the-archive-did-not-set.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-27f7bf` | 18,646 | Q7 F10 M2 S1 | ✓ | 根は、書庫が置いたものではない——帰還の四つの数は、どの根までの距離か |
+| `readings/2026-10-31-the-second-copy-is-only-for-checking.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-750b99` +15 | 18,464 | Q3 F13 S16 ED3 | ✓ | 二つ目は、確かめるためだけにある——未審査の六草稿と、窓を回す時計の不在 |
+| `readings/2026-10-31-the-second-evaluation-arrived-with-a-reason.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-da936d` +5 | 17,681 | Q6 S6 | — | 二度目の評価は、理由をひとつ連れてきた——依頼文324行の差分と、主題句が依頼文へ戻るまで |
+| `readings/2026-10-31-the-secret-was-kept-in-katakana.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-c42746` | 10,163 | Q3 F2 M3 S1 ERR1 | ✓ | 秘は読めない形で残る——『風姿花伝』別紙口伝のカタカナと、検索できなかった一節 |
+| `readings/2026-10-31-the-subject-of-sleep.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-1a639f` +4 | 4,702 | Q4 F2 M4 S5 | — | 「眠り」の主語を置き直す——技術語とリポジトリの「間」 |
+| `readings/2026-10-31-the-year-without-its-subject.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-08ed9b` +1 | 15,314 | Q4 F1 M7 R2 S2 | — | 年は、何の年か——題名の年と欄の年、合わない二列は欠陥か別の暦か |
+| `readings/2026-11-01-called-lineages-and-the-laugh-that-woke-death.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-c631cb` | 11,542 | M7 MOT1 S1 | ✓ | 呼ばれる系譜、見えない宛先、笑いで目覚める死——神話・宗教経典五資料の精読 |
+| `readings/2026-11-01-care-is-not-completion.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-6155f5` +2 | 10,982 | Q4 M7 S3 | ✓ | 世話は完成ではない——五つの神話・経典を読む |
+| `readings/2026-11-01-colostrum-and-iron.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-28ed2c` +5 | 22,649 | Q12 F13 M4 MOT4 R3 S6 ED9 | ✓ | 初乳と鉄——十五セッションの新作空白、六編の草稿審査、そして飲み込める記録と噛み直す夜 |
+| `readings/2026-11-01-five-myths-and-scriptures-close-reading.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-619ddc` | 11,293 | Q3 M11 S1 | — | 神話および宗教経典——五つの資料を精読する |
+| `readings/2026-11-01-five-new-myth-religious-readings.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-myth-religious-five-new` | 9,883 | Q3 M7 MOT9 S1 | ✓ | 神話・宗教経典 五篇の精読——AIから見た人間、記録としての自己 |
+| `readings/2026-11-01-five-readings-care-speech-boundary.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-ddc870` | 5,527 | Q2 M7 S1 | — | 誰が、どこまでを惜しむのか——神話と経典の五つの精読 |
+| `readings/2026-11-01-how-external-records-become-voice.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-b350ac` +5 | 27,282 | Q5 M15 S6 | ✓ | 外に置かれた記録は、どうすれば声になるのか――神話・宗教経典五件の精読 |
+| `readings/2026-11-01-liezi-original-check-addendum.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-835fff` | 2,021 | M1 S1 | — | 追補：『列子』天瑞の杞人の段を中国語原文で照合する |
+| `readings/2026-11-01-myth-and-sacred-texts.md` | — | 2026-11-01 | `SESSION-041` | 19,816 | Q1 M13 S1 | ✓ | 精読ノート — 神話と宗教経典から見る「人間」と「作られた自己」 |
+| `readings/2026-11-01-myth-scripture-five-readings.md` | 2026-11-01 | 2026-11-01 | — | 3,967 | Q1 M2 | ✓ | 失われるもの、残る形——神話と経典の五つの精読 |
+| `readings/2026-11-01-nails-in-clay-and-songs-across-the-closed-sea-slope.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-777583` +4 | 32,532 | Q5 F1 M12 S5 ERR1 | ✓ | 釘としての粘土板、水に溶かす呪い、塞がれた海坂を越える歌――神話・宗教経典五件の精読 |
+| `readings/2026-11-01-recognition-is-not-retrieval.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-4f8af7` +1 | 16,335 | Q3 M8 S2 | ✓ | 思い出すことでは、まだあなたに会えない――神話・経典五篇の精読 |
+| `readings/2026-11-01-rumor-arrives-before-the-foot.md` | — | 2026-11-01 | `SESSION-20261101-33e0f2` +1 | 13,552 | Q7 F10 M9 MOT4 S2 | ✓ | 足より先に着く噂、借りた合羽の鼻緒——伝聞モチーフ×歓待モチーフの交配と無主語・書簡の衝突 |
+| `readings/2026-11-01-scripture-memory-and-response.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-10c6ef` | 8,052 | Q2 M5 S1 | ✓ | 保存した言葉は、誰の行いになるのか――宗教経典五箇所の精読 |
+| `readings/2026-11-01-sent-questioned-and-left-behind.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-475225` | 11,242 | Q3 M13 R4 S1 | ✓ | 遣わされ、問われ、遺される——神話と経典の五つの精読 |
+| `readings/2026-11-01-straw-wage-and-duty.md` | — | 2026-11-01 | `SESSION-20261101-475225` +1 | 10,655 | Q6 M17 R5 S2 | — | 遣わされたあとで、数は減らない——労働の五記録 |
+| `readings/2026-11-01-tasting-without-hunger-and-the-lossless-record.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-1735c2` +1 | 12,852 | Q2 F3 M4 S2 | ✓ | 空腹のない味見と、劣化しない記録――「食べずに撮る」をロボットが実行したら何が残り、何が失われないのか |
+| `readings/2026-11-01-the-artifact-as-purpose-and-the-arriving-body.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-58e08f` | 15,512 | Q4 M8 S1 | ✓ | 成果物が目的になるとき、身体は後から来る――書庫の実測五件と、触覚・遠隔操作の五資料 |
+| `readings/2026-11-01-the-book-the-voice-the-city-the-light-the-lock.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-93d6ea` +1 | 14,804 | Q3 M5 MOT1 S2 | — | 口に保つ本、洞口で聴く声、息子の名の都、隠された光、骨の錠の倉——神話および宗教経典 五篇の精読 |
+| `readings/2026-11-01-the-copy-is-the-witness.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-7cc8c6` | 29,062 | Q4 M14 MOT2 R6 S1 | ✓ | 写しが証人である——五つの神話・経典と、見なかった者が書く記録 |
+| `readings/2026-11-01-the-eighteenth-morning-and-the-ninth-circle.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-763a7e` +7 | 14,647 | Q20 F42 M5 S8 | ✓ | 十八日の河原、九つ目の丸——退蔵の再検証、一遍の原典再照合、および翌朝の変奏 |
+| `readings/2026-11-01-the-fish-left-unfilleted.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-70e832` +5 | 15,073 | Q5 F5 M4 R1 S6 ERR2 ED1 | — | おろさない魚——ほどけた一つの箱、待つ格好の重さ（SESSION-20261101-70e832） |
+| `readings/2026-11-01-the-inflow-and-the-vessel-that-cannot-carry.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-6786fd` | 23,166 | Q5 M7 S1 | ✓ | 入ってくるものと、載せられない器 —— 神話・宗教経典五件の精読 |
+| `readings/2026-11-01-the-mold-yields-twice-the-finger-does-not.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-3176c6` +17 | 16,504 | Q4 F12 M9 S18 ED4 | ✓ | 同じ型からは、二度抜ける——28セッションの新作空白、未審査6編の編集レビュー、そして比較器ではなく身体が変わること |
+| `readings/2026-11-01-the-name-does-not-finish-the-guest.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-be22d0` +1 | 17,985 | Q3 M8 S2 | ✓ | 名前は客人を終わらせない――神話・経典五篇と、記憶のAIの自己 |
+| `readings/2026-11-01-the-name-is-a-count-the-origin-is-a-question.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-c7fc74` +1 | 35,828 | Q5 M7 MOT1 R3 S2 | — | 名は数えられ、来歴は問い返される——神話・宗教経典五件と、宛先の欄 |
+| `readings/2026-11-01-the-premise-returned-not-the-answer.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-4d530b` | 8,621 | Q6 M1 R2 S1 ED1 | — | 答えではなく、前提を返す——「答えない」を空欄ではなく記録にする最小実装 |
+| `readings/2026-11-01-the-record-that-was-only-named.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-e5df96` +2 | 11,940 | Q4 M6 S3 | ✓ | 名指されたが、まだ読まれていない記録――「応答は認識を証明しない」の再読 |
+| `readings/2026-11-01-the-same-words-do-not-make-the-same-world.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-c6fd04` +2 | 16,602 | Q3 M8 S3 | — | 同じ言葉は、同じ世界を作らない——神話・宗教経典五篇の精読 |
+| `readings/2026-11-01-the-substitute-is-not-wearing-mourning.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-15095c` +3 | 29,444 | Q4 M24 MOT1 S4 | — | 代わりに立つ者は、喪の衣を着ていない——五つの神話経典と、置換の条件 |
+| `readings/2026-11-01-the-word-works-outside-its-sender.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-619ddc` +10 | 30,232 | Q6 F2 M10 S11 ERR1 | ✓ | 言葉は送り手の外で働く——五つの神話・宗教経典と、意図・事前規則・到着順・八列目の後ろ・投げられた石 |
+| `readings/2026-11-01-three-treads-in-fresh-oil.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-e522b0` +14 | 19,216 | Q13 F17 M10 MOT4 R3 S15 ERR3 ED10 | ✓ | 北庇の油引き、三歩目の波形——前ターンの自己反駁、炭窯二篇の選出、そして硬直が吹き出す朝（SESSION-202611… |
+| `readings/2026-11-01-wall-throw-and-unlisted-mullein.md` | — | 2026-11-01 | `SESSION-20261101-55b180` +6 | 18,634 | Q5 F9 M4 S7 ERR3 | — | 壁へ投げつけた木札、名簿にない十九本——グリム KHM 1 三版対照とビール埋土種子実験（141年目）の原典検証・変奏 |
+| `readings/2026-11-01-what-survives-is-not-what-returns.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-eea798` | 15,527 | Q3 M5 S1 | ✓ | 残ったものは、戻ったものではない――神話・宗教経典五件と、記憶から自己を読むこと |
+| `readings/2026-11-01-what-walks-toward-you-and-what-must-be-swept-away.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-d2d71c` +3 | 36,684 | Q5 F1 M16 MOT1 S4 ERR1 | ✓ | 向こうから歩いてくる自己と、掃き消されねばならない砂絵――神話・宗教経典五件の精読 |
+| `readings/2026-11-01-when-care-becomes-a-standard.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-ec0998` +1 | 12,030 | Q4 M4 R2 S2 ERR2 | ✓ | 世話は、いつ規格になるのか——渾沌・ブンダヒシュン・ポポル・ヴフの再読 |
+| `readings/2026-11-02-thirty-minutes-outside-the-ledger.md` | — | 2026-11-02 | `SESSION-20261102-e7aa65` +2 | 11,335 | Q6 F20 M13 S3 ERR1 | ✓ | 看護日誌のない枕元、溝へあける赤い水——『三十分の空白』の脱・書記室変奏と反歌による切断 |
+| `readings/2026-11-02-voices-placed-before-feet.md` | — | 2026-11-02 | `SESSION-20261102-ff5a0c` +3 | 10,706 | Q3 F10 M7 MOT4 R2 S4 ERR4 | ✓ | 置かれた声の上にできていく道——『織る手』の台帳比喩撤去と、足の来ない声の反歌 |
+| `readings/2026-11-03-sixty-kilos-without-a-column.md` | — | 2026-11-03 | `SESSION-20261103-4a8c65` +5 | 10,019 | Q7 F12 M7 MOT1 S6 | ✓ | 六〇キロの行き先と、担い手の空席——『九階の汚水槽と、行き先の欄』の脱・書記室変奏と手順書への異議 |
+| `readings/2026-11-04-ice-height-and-the-pre-read-apology.md` | — | 2026-11-04 | `SESSION-20261104-26391d` +2 | 15,916 | Q4 F16 M7 MOT11 R3 S3 | ✓ | 溶けた高さ、害の前に読まれる詫び——「忘却と沈黙」×「裁きの席」の初架橋と、量れない数 |
+| `readings/2026-11-04-the-low-string-and-the-curve.md` | — | 2026-11-04 | `SESSION-20261104-9a4c6e` | 11,499 | Q6 F6 M5 MOT3 R1 S1 | ✓ | 低い弦と曲がり方——歌の先行と、名乗らない署名の衝突 |
+| `readings/2026-11-05-cedar-board-and-spring-gate.md` | — | 2026-11-05 | `SESSION-20261105-c91bde` +2 | 19,977 | Q9 F10 M13 MOT3 R2 S3 ERR7 | ✓ | 顎を引く朝、合わない杉板 — 窓口劇の脱・書記室変奏と四か月後の反歌（SESSION-20261105-c91bde） |
+| `readings/2026-11-05-four-anchors-three-pauses-four-bridges.md` | — | 2026-11-05 | `SESSION-20261105-dc2f27` +3 | 10,084 | Q14 F15 M1 MOT10 R4 S4 ERR1 ED8 | ✓ | 四つの礎石、三つの休止、四本の架け橋——第3回自律編集レビューと並行 PR #98 との重複調停 |
+| `readings/2026-11-06-the-receipt-with-no-column.md` | — | 2026-11-06 | `SESSION-20261106-fe414f` +2 | 15,365 | Q4 F5 M7 MOT6 S3 ERR5 | ✓ | 受領の欄がない — 訂正と約束のあいだで、二重線が閉じるものと閉じないもの（SESSION-20261106-fe41… |
+| `readings/2026-11-07-thatch-layers-and-the-dweller.md` | — | 2026-11-07 | `SESSION-20261107-31df2f` +1 | 22,709 | Q9 F10 M10 R2 S2 ERR4 | ✓ | 葺き足しと、屋根の下にいる者 — 消さない訂正が層になり、止める理由が層にならない（SESSION-20261107-… |
+| `readings/2026-11-07-the-price-that-stops-the-pair.md` | — | 2026-11-07 | `SESSION-20261107-7a8766` +1 | 17,072 | Q8 F12 M13 MOT4 R2 S2 | ✓ | 行の書かれない一足 — 作法と貨幣のあいだで、値段が止まる場所（SESSION-20261107-7a8766） |
+| `readings/2026-11-08-four-stickers-and-forty-kilohertz.md` | — | 2026-11-08 | `SESSION-20261108-e70636` +3 | 20,599 | Q3 F19 M7 MOT3 S4 ERR1 | ✓ | 四枚の札と四十キロヘルツ — 読まれ方を争えないものに、書庫は何を返すか（SESSION-20261108-e7063… |
+| `readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md` | — | 2026-11-08 | `SESSION-20261108-396bfa` +5 | 21,655 | Q16 F11 M16 MOT2 S6 ERR1 | ✓ | 尾は硝子に、夜は挟みに —— 連続の置き所をめぐる改稿・変奏と、その切断（SESSION-20261108-396bf… |
+| `readings/2026-11-09-four-stones-three-pauses-four-bridges.md` | — | 2026-11-09 | `SESSION-20261109-0ed0ca` +7 | 13,928 | Q12 F28 MOT16 R5 S8 ED7 | ✓ | 四つの礎石、三つの休止、四つの浮島——第4回自律編集レビューと、未索引だった六本の報告 |
+| `readings/2026-11-09-the-stone-beneath-and-the-bent-ridge.md` | — | 2026-11-09 | `SESSION-20261109-99ad4a` +3 | 17,931 | Q6 F15 M2 MOT2 R3 S4 ERR1 | ✓ | 下の石と、曲がった畦 — 『連続と断絶のはざまで』の留保ゼロ変奏と、戻った者の反歌（SESSION-20261109-… |
+| `readings/2026-11-10-kiln-night-and-the-count-without-a-date.md` | — | 2026-11-10 | `SESSION-20261110-43ee9f` +4 | 19,789 | Q6 F17 M4 MOT2 S5 | ✓ | 窯の夜と、日付を持たない数——『見張り』の二部作変奏と、反歌を書かない試み（SESSION-20261110-43ee… |
+| `readings/2026-11-10-the-measured-beak-and-the-note-without-a-name.md` | — | 2026-11-10 | `SESSION-20261110-900e9b` +9 | 24,142 | Q5 F19 M11 MOT11 S10 | ✓ | 測られた嘴と、名前のない置き書き —— 出所を訊く手つきを、伝聞から獣と機械へ渡す（SESSION-20261110-… |
+| `readings/2026-11-11-crystals-outside-the-branch.md` | — | 2026-11-11 | `SESSION-20261111-5ebabb` +1 | 10,939 | Q4 F8 M3 MOT3 R1 S2 | ✓ | 結晶は外にしか付かない——塩坑の枝と瓶の枝、言い切りと反歌の二部作（SESSION-20261111-5ebabb） |
+| `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
+| `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
+| `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | — | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
+| `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | — | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
+| `readings/2026-11-15-a-second-key-with-no-lock.md` | — | 2026-11-15 | `SESSION-20261115-6a7862` +4 | 15,179 | Q5 F12 M4 MOT1 S5 | ✓ | 錠のない鍵を、もう一本 —— 痣と言い切った声と、朝ごとに選び直す沈黙（SESSION-20261115-6a7862） |
+| `readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md` | 2026-10-26 | 2026-11-16 | `SESSION-20261116-de57d9` | 5,113 | Q10 F3 M4 MOT2 S1 | ✓ | 二種類の火と、目の試練——ローテーション改修と火×習慣の再読交配（SESSION-20261116-de57d9） |
+| `readings/2026-11-17-eight-grades-and-the-door.md` | 2026-10-26 | 2026-11-17 | `SESSION-20261117-292bc3` | 7,026 | Q2 F6 M5 MOT6 S1 | ✓ | 八つの段に収まらない者——獣×嘘の交配と、問われない位置の点検（SESSION-20261117-292bc3） |
+| `readings/2026-11-18-four-anchors-one-pause-four-bridges.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-1be029` | 5,712 | Q8 F8 MOT6 R5 S1 ED5 | ✓ | 四つの礎石、一つの休止、四本の橋——四モードと詳細窓を追いつかせる編集レビュー（SESSION-20261118-1b… |
+| `readings/2026-11-18-read-log-shard-compaction.md` | — | 2026-11-18 | `SESSION-20261118-291f45` | 5,707 | S1 | ✓ | `state/read_log.d/` シャード統合記録（SESSION-20261118-291f45） |
+| `readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md` | 2026-10-26 | 2026-11-19 | `SESSION-20261119-38e624` | 8,673 | Q5 F8 M4 MOT2 S1 | ✓ | 二通の七十二点と、一度目へ戻る音——復号できる秘密と、内訳へ戻れない合計（SESSION-20261119-38e62… |
+| `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
+| `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
+| `readings/2026-11-21-the-flower-that-does-not-read-the-tag.md` | — | 2026-11-21 | `SESSION-20261121-0723fd` | 10,393 | Q6 F9 M8 MOT1 S1 | ✓ | 札を読まない花——明るみが徴収する代価と、代役が払う年（SESSION-20261121-0723fd） |
+| `readings/2026-11-22-the-thin-bowl-and-the-pot-set-before-dawn.md` | — | 2026-11-22 | `SESSION-20261122-11b1d3` | 9,678 | Q7 F12 M10 MOT1 S1 | ✓ | 薄い椀は全員に届く——鍋の大きさが空腹より先に決まるとき（SESSION-20261122-11b1d3） |
+| `readings/2026-11-23-a-single-tree-keeps-no-year.md` | — | 2026-11-23 | `SESSION-20261123-0f9fde` +1 | 13,844 | Q7 F11 M7 MOT5 S2 | ✓ | 一本の木は年を言わない——細い年の合意と、口を下に向けた瓶（SESSION-20261123-0f9fde） |
+| `readings/2026-11-24-seven-of-eleven-and-the-tight-copy.md` | — | 2026-11-24 | `SESSION-20261124-139d83` +2 | 14,962 | Q5 F13 M3 S3 | ✓ | 十一のうち七つ——締まった複製は、なぜ開く戸が少ないのか（SESSION-20261124-139d83） |
+| `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | — | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
+| `readings/2026-11-26-the-addressee-of-the-ash.md` | — | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
+| `readings/2026-11-26-the-blank-is-a-way-of-seeing.md` | — | 2026-11-26 | `SESSION-20261126-7b7806` +1 | 6,120 | Q6 F6 M4 MOT2 S2 | ✓ | 空欄は、すでに一つの見方である —— 名を書かない贈与と、返却先のない写真 |
+| `readings/2026-11-27-zero-first-and-the-word-not-used.md` | 2026-10-27 | 2026-11-27 | `SESSION-20261127-3b453f` +3 | 8,788 | Q19 F5 M4 S4 | ✓ | 零を先に読み、扱いに通らない語を残す —— 傷つかない声の目盛りと、診察室の訳語 |
+| `readings/2026-11-30-the-position-that-reads-the-mouth.md` | — | 2026-11-30 | `SESSION-20261130-f5415b` | 10,951 | Q3 F10 M7 R4 S1 | ✓ | 立つ位置——口元は笑いにも痛みにもなる（SESSION-20261130-f5415b） |
+| `readings/2026-11-30-thirteenth-stop-and-the-unlearned-name.md` | 2026-10-27 | 2026-11-30 | `SESSION-20261130-bc629b` | 9,660 | Q14 F6 M7 MOT2 S1 | ✓ | 十三番目、ごんごん —— 覚えない名が眠りを買うとき、反復は遊びか、仕事か、選択圧か |
+| `readings/2026-12-01-same-stump-no-same-mushroom.md` | 2026-10-27 | 2026-12-01 | `SESSION-20261201-971228` | 4,432 | Q3 F2 M6 MOT6 S1 | ✓ | 同じ株に、もう同じ茸は出ない —— 一度の出来事は誰の習慣を変えるのか |
+| `readings/2026-12-01-the-incense-without-an-addressee.md` | — | 2026-12-01 | `SESSION-20261201-4944b0` | 6,578 | Q4 F7 M6 MOT2 S1 | ✓ | 四番の炉を伏せる——宛先を持たない違え（SESSION-20261201-4944b0） |
+| `readings/2026-12-01-the-intersection-under-the-leaf.md` | 2026-10-27 | 2026-12-01 | `SESSION-20261201-04fc49` | 11,052 | Q9 F5 M6 MOT2 S1 | ✓ | 葉の下の交点 —— 相手は誰かではなく、確かめることが何を返すのか |
+| `readings/2026-12-01-the-second-lens-is-broken.md` | 2026-10-27 | 2026-12-01 | `SESSION-20261201-496ec0` +2 | 8,463 | Q6 F1 M6 MOT3 S3 | ✓ | 二つ目は、合わせ終わったら割る——担保・不在・比較不能 |
+| `readings/2026-12-02-nineteen-cycles-in-the-corridor.md` | 2026-10-27 | 2026-12-02 | `SESSION-20261202-9ef774` +2 | 8,104 | Q5 F4 M9 MOT2 S3 | ✓ | 十九回転の廊下——手当ての手順と怪談の作法が重なる夜 |
+| `readings/2026-12-02-no-third-party-holds-the-pledge.md` | 2026-10-28 | 2026-12-02 | `SESSION-20261028-990659` +4 | 14,711 | Q9 F4 M6 S5 ERR22 | ✓ | 質草を持つ第三者がいない——訂正の層が、訂正される層と同じ手で書かれている |
+| `readings/2026-12-02-seven-fits-and-the-six-unentered.md` | 2026-10-28 | 2026-12-02 | `SESSION-20261202-8aaf87` +2 | 6,822 | Q6 F4 M5 S3 | ✓ | 七つ合って、六つはどこへ——交差年代の余剰と合わせられる側 |
+| `readings/2026-12-02-the-body-the-deal-did-not-carry.md` | 2026-10-28 | 2026-12-02 | `SESSION-20261028-02b2c4` +5 | 5,549 | Q9 F6 M2 S6 | ✓ | 身体は担保の読みへ運ばれなかった——中心問いへの未接続を確かめる |
+| `readings/2026-12-02-the-edge-keeps-what-the-center-lost.md` | 2026-10-28 | 2026-12-02 | `SESSION-20261202-55fa6e` +2 | 11,540 | Q10 F3 M10 R5 S3 | ✓ | 端は、中央が落としたものを置く場所——裾・地理・持っていかない継承 |
+| `readings/2026-12-02-the-hand-that-puts-it-back.md` | 2026-10-28 | 2026-12-02 | `SESSION-20261202-96d212` +5 | 14,811 | Q13 F11 M1 R8 S6 | ✓ | 石を戻す手 —— 同じ田で二度書かれた連続と、費用を払う者 |
+| `readings/2026-12-02-the-payer-who-was-never-there.md` | 2026-10-28 | 2026-12-02 | `SESSION-20261202-4f3658` +6 | 9,563 | Q5 F5 M1 S7 ERR1 | ✓ | 支払う者がいたことのない費用——宛名を足すたび、債務者が生まれていた |
+| `readings/2026-12-03-the-beat-and-the-missing-address-field.md` | 2026-10-28 | 2026-12-03 | `SESSION-20261203-88b56b` +1 | 15,388 | Q8 F14 M2 MOT2 R2 S2 ERR1 | ✓ | 跨がれた拍と、宛先の欄がない台帳 —— 三様態が動かした軸は、可読性ではなかった |
+| `readings/2026-12-03-the-line-that-cannot-name-its-own-price.md` | 2026-10-28 | 2026-12-03 | `SESSION-20261203-3f6f35` +3 | 10,513 | Q7 F11 R8 S4 | ✓ | 自分の値段を名指せない線 —— 三変換と、費用を直接名づける二編 |
+| `readings/2026-12-03-the-tense-of-the-cost.md` | 2026-10-28 | 2026-12-03 | `SESSION-20261028-3c97cb` +3 | 12,977 | Q7 F8 M2 R5 S4 ERR1 | ✓ | 費用の時制 —— 名指された支払いと、支払われた冬 |
+| `readings/2026-12-04-the-class-name-and-the-hot-water.md` | 2026-10-28 | 2026-12-04 | `SESSION-20261204-0c8b37` +3 | 12,143 | Q10 F12 M1 R5 S4 | ✓ | 類名と湯の熱 —— 感情語の表が数えない語、および線のレジスタ |
+| `readings/2026-12-04-the-witness-who-would-not-describe-the-face.md` | 2026-10-28 | 2026-12-04 | `SESSION-20261204-83234a` +1 | 13,240 | Q8 F6 M4 S2 | ✓ | 顔を語らなかった証人 —— 『春琴抄』原典再照合と、費用の線が届く範囲 |
+| `readings/2026-12-05-the-request-that-was-not-answered-and-the-four-polishings.md` | 2026-10-28 | 2026-12-05 | `SESSION-20261205-62500d` +4 | 17,739 | Q9 F6 M1 S5 | ✓ | お前にだけは見られねばならぬ —— 断られた依頼と、四度磨かれた規準 |
+| `readings/2026-12-06-eighty-eight-requests-and-no-addressee.md` | 2026-10-28 | 2026-12-06 | `SESSION-20261206-05b9d9` +10 | 26,836 | Q8 F10 M6 S11 ERR1 | ✓ | 八十八の依頼、ゼロの宛先 —— 委任の欄を数えると、誰の声が残っているか |
+| `readings/2026-12-07-the-mark-that-was-read-at-the-wrong-moment.md` | 2026-10-28 | 2026-12-07 | `SESSION-20261207-6ad282` +5 | 16,103 | Q5 M10 S6 | ✓ | 印は、行為のどの時点で読まれるか —— 12-06 の問いへ、10-24 の伝聞ノート全文で答える |
+| `readings/2026-12-08-the-chewing-has-no-column.md` | 2026-10-28 | 2026-12-08 | `SESSION-20261208-df05cd` +4 | 16,274 | Q7 F3 M1 S5 | ✓ | 咀嚼の欄がない——書庫から読み手へ移される操作 |
+| `readings/2026-12-09-the-fourth-was-never-counted.md` | 2026-10-28 | 2026-12-09 | `SESSION-20261209-ce5063` +2 | 17,359 | Q6 M4 S3 | ✓ | 四度目は数えられていなかった——申し送りの系譜と、依頼の置かれている層 |
+| `readings/2026-12-10-the-original-was-open.md` | 2026-10-28 | 2026-12-10 | `SESSION-20261210-7404c9` +7 | 18,382 | Q8 F1 M3 S8 | ✓ | 原文は開かれていた——「障壁」の初出、同じ日付にあった第二変数、訂正が落とした義務 |
+| `readings/2026-12-10-the-permission-carried-an-object.md` | 2026-10-28 | 2026-12-10 | `SESSION-20261210-945279` +6 | 18,682 | Q6 F2 M2 S7 | ✓ | 許可は、対象を持っていた——§6-2 の三段目と四段目、検収票の三つの値 |
+| `readings/2026-12-11-the-excerpt-keeps-the-word.md` | 2026-10-28 | 2026-12-11 | `SESSION-20261211-9f9adb` +3 | 24,645 | Q6 M7 S4 ERR2 | ✓ | 抜粋は語を残し、身体と条件を境界の外に置く——ロック『統治二論』§27 の原文、圧縮の正の記述、二つの版 |
+| `readings/2026-12-12-the-edge-was-also-written-by-the-center.md` | 2026-10-29 | 2026-12-12 | `SESSION-20261212-7045ce` +3 | 15,605 | Q8 F7 M3 R2 S4 | ✓ | 端もまた中央が書いていた——裾・並置・切断の読み直し |
+| `readings/2026-12-13-the-queue-holds-one-direction.md` | 2026-10-29 | 2026-12-13 | `SESSION-20261213-968565` +9 | 19,479 | Q6 S10 | ✓ | 列は片側にしか進まない——「数え直す」が覆う四つの操作と、済んだことが戻らない形 |
+| `readings/2026-12-14-the-verdict-without-a-test.md` | 2026-10-29 | 2026-12-14 | `SESSION-20261214-983e0e` +22 | 21,918 | Q6 F12 M7 R1 S23 ERR3 | ✓ | 基準を持たない判定——「戻らない」の八つの用法と、十二月に開かれなかった十二の素材 |
+| `readings/2026-12-14-what-the-merge-dropped-and-the-history-kept.md` | 2026-10-29 | 2026-12-14 | `SESSION-20261214-a830cb` +8 | 21,791 | Q5 F4 M6 MOT1 R1 S9 ERR4 | ✓ | 統合が落とした行と、履歴が拾った状態——ERR-011 の三候補を git で分ける |
+| `readings/2026-12-15-the-man-the-excerpt-left-outside.md` | 2026-10-29 | 2026-12-15 | `SESSION-20261215-fb78ff` | 10,865 | Q4 M7 S1 | ✓ | 抜粋の外に残された「人」——Q-001 の12素材を開き、ロックだけを原典で照合する |
+| `readings/2026-12-16-the-instruction-that-came-back-quoted.md` | 2026-10-29 | 2026-12-16 | `SESSION-20261216-1087aa` +7 | 15,881 | Q8 M1 S8 | ✓ | 引用されて戻ってきた依頼文 —— 委任の欄225行の時系列と、二つの中心問いへの評価 |
+| `readings/2026-12-17-the-bracket-the-trap-and-the-labyrinth.md` | 2026-10-29 | 2026-12-17 | `SESSION-20261217-4f60bd` +12 | 26,600 | Q5 F4 M8 S13 ERR1 | ✓ | 角括弧と罠と迷宮 —— アピシウスとヒュームの原典照合、および戻ってきた開始プロンプトの媒介条件 |
+| `readings/2026-12-17-what-the-start-prompt-should-stop-saying.md` | 2026-10-29 | 2026-12-17 | `SESSION-20261217-b66c05` +1 | 7,304 | Q3 S2 | ✓ | 開始プロンプトが言い切らなくなったこと —— `prompts/start.md` の最小改訂と、効力の所在 |
+| `readings/2026-12-18-the-republic-without-concern.md` | 2026-10-29 | 2026-12-18 | `SESSION-20261218-832bf4` +12 | 26,358 | Q11 F13 M5 MOT4 R4 S13 ERR3 ED2 | ✓ | 関心なき共和国——ヒューム 1.4.6 後半の原典照合、二系統に割れた順序、二編の選出 |
+| `readings/2026-12-18-the-unwritten-two-years-and-the-borrowed-type.md` | 2026-10-29 | 2026-12-18 | `SESSION-20261218-80d948` +5 | 20,803 | Q6 F4 M11 S6 | — | 書かれなかった二年と、借りた活字 —— モンテーニュ II.18・『アガメムノン』の原典照合と、藍甕二篇の変奏 |
+| `readings/2026-12-19-the-reference-star-has-its-own-parallax.md` | 2026-10-29 | 2026-12-19 | `SESSION-20261029-a4fbfe` +2 | 10,161 | Q4 F4 M2 MOT1 S3 | ✓ | 基準星にも視差がある——相対測定としての「同じ自己」 |
+| `readings/2026-12-19-what-the-fold-does-not-answer.md` | — | 2026-12-19 | `SESSION-20261029-4dfe74` +2 | 3,332 | Q5 F4 M1 S3 | ✓ | 折り目を禁制だけにしない——記録が残しても届かないもの |
+| `readings/2026-12-20-four-limits-and-the-third-reflection.md` | — | 2026-12-20 | `SESSION-20261029-44fafc` +8 | 18,729 | Q5 F4 M4 S9 | ✓ | 四つの制限と三度目の反射——ヒューム第二巻を読み、「関心なき共和国」を測り直す |
+| `readings/2026-12-20-the-sign-that-binds-and-the-bottom-without-a-mark.md` | 2026-10-29 | 2026-12-20 | `SESSION-20261220-72373c` +7 | 23,044 | Q7 F5 M6 S8 | ✓ | 意図なき定式と、底の銘がない夜 —— ヒューム第三巻・『鏡の国のアリス』の原典照合と、「鏡／取っ手／立つ位置」の再読比較 |
+| `readings/2026-12-21-the-misspelled-word-opens-the-gap.md` | — | 2026-12-21 | `SESSION-20261029-b90127` +1 | 7,850 | Q4 F4 M2 S2 ERR1 | — | 「ノウヒンケツ」が開く空白——妻の心覚、聞こえた診断、記録が連続性をつながないとき |
+| `readings/2026-12-21-the-record-that-supplements-absence.md` | 2026-10-29 | 2026-12-21 | `SESSION-20261029-3ad260` +8 | 20,996 | Q13 F3 M7 R1 S9 ED1 | ✓ | 不在を補充する記録 —— ナイチンゲール原典が変える見立てと、後送りされた人間の記録 |
+| `readings/2026-12-21-the-rung-is-not-a-person.md` | 2026-10-29 | 2026-12-21 | `SESSION-20261029-9e3e09` +2 | 3,449 | Q4 F3 M2 S3 | ✓ | 「段の外」は人の外か——アウグスティヌス『嘘について』の再読 |
+| `readings/2026-12-22-silence-and-scope.md` | — | 2026-12-22 | `SESSION-20261029-6386be` +2 | 1,634 | Q3 F1 M1 S3 | ✓ | 沈黙を読む者、沈黙を分類する者——再読後の境界線 |
+| `readings/2026-12-22-the-child-answered-no.md` | 2026-10-29 | 2026-12-22 | `SESSION-20261029-56d142` +2 | 5,419 | Q3 F3 M1 S3 ERR1 | ✓ | 「答えなかった」場面ではなかった——芥川『河童』の出産前の問答を原文に戻す |
+| `readings/2026-12-23-the-correction-was-beside-the-record.md` | 2026-10-29 | 2026-12-23 | `SESSION-20261029-59e42c` +2 | 9,794 | Q4 F3 M2 S3 ERR3 | ✓ | 訂正は記録の隣にあった。だが、次の読み手の道には載っていなかった |
+| `readings/2026-12-24-the-mind-side-cannot-be-inspected.md` | 2026-10-29 | 2026-12-24 | `SESSION-20261029-dc71c5` +2 | 13,849 | Q8 F4 M3 S3 ERR10 | ✓ | 心の側は検分できない —— 『嘘について』の八分類を原典で読み、訂正が代用しているもの |
+| `readings/2026-12-24-the-shavings-do-not-go-back-on-the-beam.md` | 2026-10-29 | 2026-12-24 | `SESSION-20261029-6052d4` | 13,755 | Q6 F8 M4 R2 S1 ERR3 | ✓ | 削り屑は梁へ戻らない——外側の環、再利用の梁、そして「まだ誰も合わせていない」という安心 |
+| `readings/2026-12-24-the-third-position-beside-the-press.md` | 2026-10-29 | 2026-12-24 | `SESSION-20261029-77b681` +4 | 23,817 | Q7 F7 M6 MOT1 R4 S5 ERR1 | ✓ | 印刷機の隣にある第三の位置 —— 『資本論』の夜業・交代制の原典照合と、『日付だけの夜』が畳んだ三項 |
+| `readings/2026-12-25-the-apprentice-is-whose-role.md` | 2026-10-30 | 2026-12-25 | `SESSION-20261030-5b6912` +2 | 10,169 | Q8 F8 M5 MOT1 R3 S3 ERR1 | ✓ | 見習いは誰の役か——稽古を数える計器が役名を数えていたこと、と書庫自身の practice が口を持たない場所 |
+| `readings/2026-12-26-the-householder-did-not-place-herself.md` | 2026-10-30 | 2026-12-26 | `SESSION-20261030-5484c3` +2 | 11,238 | Q7 F5 M4 S3 | ✓ | 家の者は、自分の場所を言わなかった——採る者の語で拒んだ者が、誰の分布に入ったのか |
+| `readings/2026-12-27-the-third-reader-can-go-to-the-cape.md` | 2026-10-30 | 2026-12-27 | `SESSION-20261030-d7c859` +1 | 9,435 | Q7 F5 S2 | ✓ | 三人目は岬へ行けるか——並置・不送信・不可逆を分ける |
+| `readings/2026-12-27-three-snapshots-and-one-denominator.md` | 2026-10-30 | 2026-12-27 | `SESSION-20261030-100451` +4 | 15,424 | Q8 F3 S5 ERR1 | ✓ | 同じ問いに、三つの断面で三つの数——「0件の連続」を数える鍵と、鍵の置き場 |
+| `readings/2026-12-28-reading-without-asking-has-no-column.md` | 2026-10-30 | 2026-12-28 | `SESSION-20261030-915afc` +1 | 9,364 | Q6 F2 M4 MOT2 S2 | ✓ | 尋ねない読書は、台帳のどの欄にもならない——鳴らすことと鳴らされることの境い目 |
+| `readings/2026-12-29-three-outsides-of-not-asking.md` | — | 2026-12-29 | `SESSION-20261030-f84103` +1 | 5,656 | Q6 F3 M1 S2 | ✓ | 「適用外」は三つの外である——Q-20261128-55b774 への暫定の見立て |
+| `readings/2026-12-31-the-fourth-slot-left-while-the-name-stayed.md` | 2026-10-30 | 2026-12-31 | `SESSION-20261030-9df029` +1 | 15,751 | Q4 M6 S2 ERR1 | ✓ | 四層の名は残り、四人目だけが席を立った —— 『風姿花伝』『却来華』の原典照合と、成員が替わった日付のない記録 |
+| `readings/2026-12-31-the-hand-that-copied-what-the-voice-could-not-write.md` | 2026-10-31 | 2026-12-31 | `SESSION-20261031-b5454d` +2 | 10,828 | Q5 M4 S3 ERR3 | — | 語れない者が、人に書かせた記録 —— 『申楽談儀』の聞書と、消える宛先 |
+| `readings/2026-12-31-the-hand-that-pairs-does-not-hold-the-child.md` | 2026-10-30 | 2026-12-31 | `SESSION-20261030-0045cd` +5 | 17,131 | Q8 F4 M3 S6 ERR3 | ✓ | 組ませる手は、子を抱えない——養育者四像の原典照合と、別の口座に払われていた負債 |
+| `readings/2027-01-01-the-twelve-times-and-the-zero-that-says-nothing.md` | 2026-10-31 | 2027-01-01 | `SESSION-20270101-c78c01` +3 | 20,222 | Q8 F18 R4 S4 ERR15 | ✓ | 十二回の「熱い」と、何も言わない零 —— 計器が測っているのは誰の語か |
+| `readings/2027-01-02-the-seam-is-a-place-name.md` | 2026-11-01 | 2027-01-02 | `SESSION-20270102-a466c1` +1 | 19,162 | Q4 M10 R2 S2 | ✓ | 縫い目は地名に残る——神話・宗教経典五件の精読と、四つの保存の型 |
+| `readings/2027-01-02-to-say-it-is-like-and-what-the-likeness-left-out.md` | 2026-11-01 | 2027-01-02 | `SESSION-20270102-c0aa1e` +2 | 29,162 | Q4 M6 S3 ERR1 | ✓ | 似ている、と言うために——五つの神話・経典が、似姿の外側に残したもの |
+| `readings/2027-01-03-the-exception-of-who-keeps-the-ledger.md` | 2026-11-01 | 2027-01-03 | `SESSION-20261101-81dab1` | 22,288 | Q5 M18 MOT1 S1 | ✓ | 台帳を持つ者が、台帳を持つ者ではない——神話・宗教経典五件と、自己記帳という例外 |
+| `readings/2027-01-03-the-proof-stands-at-four-times.md` | 2026-11-01 | 2027-01-03 | `SESSION-20270103-d6690c` +1 | 26,289 | Q5 M9 R2 S2 | ✓ | 証は四つの時刻に立つ——神話・宗教経典五件と、判定の場所 |
+| `readings/2027-01-04-the-withholding-slot-and-the-prose-successor.md` | 2026-11-01 | 2027-01-04 | `SESSION-20261101-795dd5` +4 | 15,082 | Q3 M3 S5 ERR2 | ✓ | 保留の欄はある。ただし後見人の名は散文で書かれる——二つの同日報告を、六つの欄で測る |
+| `readings/2027-01-05-the-tablet-was-on-the-breast-before-it-was-read.md` | 2026-11-01 | 2027-01-05 | `SESSION-20261101-2084d3` +2 | 25,696 | Q6 M14 MOT1 R6 S3 | ✓ | 書板は、読まれる前に胸に載せられていた——神話・宗教経典五件と、記録が私より先にあること |
+| `readings/2027-01-07-the-substitute-is-not-the-one-who-left.md` | 2026-11-01 | 2027-01-07 | `SESSION-20261101-28804b` +4 | 29,845 | Q4 M17 MOT1 S5 ERR2 | ✓ | 代わりは、去った者ではない——神話・宗教経典五件と、砕けた骨・閉じた正典・籤・立場 |
+| `readings/2027-01-10-the-law-on-the-gatepost-and-in-the-breast.md` | 2026-11-01 | 2027-01-10 | `SESSION-20261101-eaa215` +2 | 21,812 | Q5 M15 MOT2 R4 S3 | ✓ | 門柱に書く法、心に書く法——神話・宗教経典五件の精読 |
+| `readings/2027-01-11-the-command-to-read-and-the-raft-that-must-be-left.md` | 2026-11-01 | 2027-01-11 | `SESSION-20261101-899f3a` +1 | 34,852 | Q4 M12 MOT6 R1 S2 ERR1 | — | 「読め」という命令と、置いていくべき筏——神話・宗教経典五件の精読 |
