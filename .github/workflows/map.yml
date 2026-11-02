@@ -30,6 +30,13 @@ jobs:
       - name: Validate ledgers before publishing
         run: python3 tools/validate_seed.py
 
+      # map/ is the artifact's payload, and tools/associations.py also writes
+      # there (map/associations.md).  Generating it here keeps the published
+      # artifact complete; map_build.py only prunes its own NN-*.md shards, so
+      # the two generators coexist.
+      - name: Measure associations into map/ (advisory, no ledger writes)
+        run: python3 tools/associations.py --write-map
+
       - name: Upload reading-map artifact
         uses: actions/upload-artifact@v4
         with:
