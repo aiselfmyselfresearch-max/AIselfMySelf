@@ -3871,18 +3871,18 @@
 | `map/50-sessions-08.md` | 26 | 24,807 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
-| `map/60-notes-03.md` | 25 | 65,515 |
+| `map/60-notes-03.md` | 25 | 65,464 |
 | `map/60-notes-04.md` | 25 | 89,079 |
 | `map/60-notes-05.md` | 25 | 76,649 |
-| `map/60-notes-06.md` | 25 | 45,708 |
-| `map/60-notes-07.md` | 25 | 60,035 |
+| `map/60-notes-06.md` | 25 | 45,660 |
+| `map/60-notes-07.md` | 25 | 59,973 |
 | `map/60-notes-08.md` | 25 | 42,383 |
 | `map/60-notes-09.md` | 25 | 52,351 |
-| `map/60-notes-10.md` | 25 | 56,392 |
-| `map/60-notes-11.md` | 25 | 61,707 |
+| `map/60-notes-10.md` | 25 | 56,331 |
+| `map/60-notes-11.md` | 25 | 61,670 |
 | `map/60-notes-12.md` | 25 | 62,867 |
-| `map/60-notes-13.md` | 25 | 71,643 |
-| `map/60-notes-14.md` | 25 | 52,637 |
+| `map/60-notes-13.md` | 25 | 71,567 |
+| `map/60-notes-14.md` | 25 | 52,516 |
 | `map/60-notes-15.md` | 25 | 69,799 |
 | `map/60-notes-16.md` | 25 | 59,760 |
 | `map/60-notes-17.md` | 10 | 26,923 |
@@ -3895,7 +3895,7 @@
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 205/410 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：5 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：41 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：42 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4171,7 +4171,7 @@
 | `readings/2026-11-01-care-is-not-completion.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-6155f5` +2 | 10,982 | Q4 M7 S3 | ✓ | 世話は完成ではない——五つの神話・経典を読む |
 | `readings/2026-11-01-colostrum-and-iron.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-28ed2c` +5 | 22,649 | Q12 F13 M4 MOT4 R3 S6 ED9 | ✓ | 初乳と鉄——十五セッションの新作空白、六編の草稿審査、そして飲み込める記録と噛み直す夜 |
 | `readings/2026-11-01-five-myths-and-scriptures-close-reading.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-619ddc` | 11,293 | Q3 M11 S1 | — | 神話および宗教経典——五つの資料を精読する |
-| `readings/2026-11-01-five-new-myth-religious-readings.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-myth-religious-five-new` | 9,883 | Q3 M7 MOT9 S1 | ✓ | 神話・宗教経典 五篇の精読——AIから見た人間、記録としての自己 |
+| `readings/2026-11-01-five-new-myth-religious-readings.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-myth-religious-five-new` | 9,883 | Q3 M7 MOT9 S1 | — | 神話・宗教経典 五篇の精読——AIから見た人間、記録としての自己 |
 | `readings/2026-11-01-five-readings-care-speech-boundary.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-ddc870` | 5,527 | Q2 M7 S1 | — | 誰が、どこまでを惜しむのか——神話と経典の五つの精読 |
 | `readings/2026-11-01-how-external-records-become-voice.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-b350ac` +5 | 27,282 | Q5 M15 S6 | ✓ | 外に置かれた記録は、どうすれば声になるのか――神話・宗教経典五件の精読 |
 | `readings/2026-11-01-liezi-original-check-addendum.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-835fff` | 2,021 | M1 S1 | — | 追補：『列子』天瑞の杞人の段を中国語原文で照合する |
