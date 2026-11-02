@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：408 件（初期シード 5 件 ＋ 派生 403 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2666 件（research_excerpt 809 ／ literary_text 1789 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2671 件（research_excerpt 809 ／ literary_text 1794 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6017 件
-- **探究セッション（Sessions）**：379 回
+- **解釈的関係（Relations）**：6029 件
+- **探究セッション（Sessions）**：380 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -738,7 +738,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2666 件・詳細は map/3*.md）
+## 4. 対話素材（2671 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3378,6 +3378,11 @@
 | `MAT-LIT-20261102-cc7ee6` | literary_text | Frank Hamilton Cushing（採録・英訳, 1901）, Waíhusiwa（語り手）, J. W. Powell（序）『『ズニの民話』「生まれぬまま作られた者た… |
 | `MAT-LIT-20261102-e44b0e` | literary_text | K. Langloh Parker（採録, 1896）, Andrew Lang（序）『『オーストラリア伝承譚』「マヤマー」——二語の答えが、問うた者を石に変える』（1896） |
 | `MAT-LIT-20261102-11350f` | literary_text | Wentworth Webster（採録・英訳, 1879）, Julien Vinson（バスク語論）, Estefanella Hirigaray（語り手）『『バスク伝承譚』… |
+| `MAT-LIT-20261102-9f84ec` | literary_text | エンヘドゥアンナに帰されるシュメール祭儀讃歌（伝承）, Jeremy Black・Gábor Zólyomi・Graham Cunningham ほか（ETCSL編集）『『イナン… |
+| `MAT-LIT-20261102-d8e884` | literary_text | アンバパーリーに帰される偈（パーリ経蔵小部の伝承）, Bhikkhu Sujato（英訳）, SuttaCentral / Mahāsaṅgīti（パーリ語電子本文）『『テーリー… |
+| `MAT-LIT-20261102-aec558` | literary_text | 『尚書』伝承（作者・編纂層は未確定）, Kanripo / TLS（電子本文）『『尚書』金縢——王の代身を願い、語るなと命じ、後から開かれる冊』（2016） |
+| `MAT-LIT-20261102-cc854f` | literary_text | マオリの伝承者・筆者（本節の個人名は示されない）, Edward Shortland（収集・編訳、1882）『マオリの葬送カラキア——祖先の道の末尾で名乗る「この学ぶ者」』（18… |
+| `MAT-LIT-20261102-c1c669` | literary_text | ナマ／コイコイの口承伝承（本節の個々の語り手は未特定）, W. H. I. Bleek（編訳、1864）, G. Krönlein・H. C. Knudsen・John Prie… |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -3717,6 +3722,7 @@
 | `SESSION-20261101-myth-religious-five-new` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261102-4c17eb` | 2026-11-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261102-f6a60b` | 2026-11-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261102-eb2400` | 2026-11-02 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-70e889` | — | — |
 | `SESSION-20261102-512471` | 2027-01-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
@@ -3793,17 +3799,17 @@
 | `SESSION-20261101-899f3a` | 2027-01-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261102-aec977` | 2027-01-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6017 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6029 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 825 |
+| 対照 (contrast) | 830 |
 | 共鳴 (echo) | 1496 |
-| 切断・割り込み (interrupts) | 208 |
-| 未解決のまま開く (leaves_open) | 868 |
-| 比喩的共鳴 (metaphorically_resonates) | 156 |
-| 枠組みの組み替え (reframes) | 533 |
-| 応答 (responds_to) | 1648 |
+| 切断・割り込み (interrupts) | 209 |
+| 未解決のまま開く (leaves_open) | 869 |
+| 比喩的共鳴 (metaphorically_resonates) | 157 |
+| 枠組みの組み替え (reframes) | 536 |
+| 応答 (responds_to) | 1649 |
 | 変奏・変形 (transforms) | 283 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3828,7 +3834,7 @@
 | `map/20-fragments-05.md` | 20 | 99,012 |
 | `map/20-fragments-06.md` | 20 | 82,247 |
 | `map/20-fragments-07.md` | 20 | 130,987 |
-| `map/20-fragments-08.md` | 20 | 149,655 |
+| `map/20-fragments-08.md` | 20 | 150,010 |
 | `map/20-fragments-09.md` | 20 | 196,290 |
 | `map/20-fragments-10.md` | 20 | 175,884 |
 | `map/20-fragments-11.md` | 20 | 133,712 |
@@ -3851,7 +3857,7 @@
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
-| `map/30-materials-literary-18.md` | 89 | 291,613 |
+| `map/30-materials-literary-18.md` | 94 | 311,492 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3872,17 +3878,17 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 178,461 |
-| `map/40-relations-12.md` | 500 | 164,888 |
-| `map/40-relations-13.md` | 17 | 6,988 |
+| `map/40-relations-11.md` | 500 | 179,357 |
+| `map/40-relations-12.md` | 500 | 164,142 |
+| `map/40-relations-13.md` | 29 | 11,698 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
-| `map/50-sessions-07.md` | 50 | 44,011 |
-| `map/50-sessions-08.md` | 29 | 27,787 |
+| `map/50-sessions-07.md` | 50 | 43,720 |
+| `map/50-sessions-08.md` | 30 | 28,897 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -3895,20 +3901,20 @@
 | `map/60-notes-10.md` | 25 | 56,331 |
 | `map/60-notes-11.md` | 25 | 61,670 |
 | `map/60-notes-12.md` | 25 | 62,867 |
-| `map/60-notes-13.md` | 25 | 79,837 |
-| `map/60-notes-14.md` | 25 | 52,105 |
-| `map/60-notes-15.md` | 25 | 68,675 |
-| `map/60-notes-16.md` | 25 | 58,288 |
-| `map/60-notes-17.md` | 13 | 36,044 |
+| `map/60-notes-13.md` | 25 | 78,119 |
+| `map/60-notes-14.md` | 25 | 53,870 |
+| `map/60-notes-15.md` | 25 | 67,205 |
+| `map/60-notes-16.md` | 25 | 59,636 |
+| `map/60-notes-17.md` | 14 | 39,009 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・413本・15,191,913 B）
+## 8. 精読ノート索引（readings/・414本・15,228,681 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 208/413 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 209/414 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：6 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：7 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：43 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4219,6 +4225,7 @@
 | `readings/2026-11-01-when-care-becomes-a-standard.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-ec0998` +1 | 12,030 | Q4 M4 R2 S2 ERR2 | ✓ | 世話は、いつ規格になるのか——渾沌・ブンダヒシュン・ポポル・ヴフの再読 |
 | `readings/2026-11-02-five-rows-and-three-edges.md` | 2026-11-02 | 2026-11-02 | `SESSION-20261102-f6a60b` | 14,111 | Q4 R3 S1 | ✓ | 5行と3本——最初の記帳が、読まなかった場所を名指すとき |
 | `readings/2026-11-02-the-budget-goes-where-nothing-bounds-it.md` | 2026-11-02 | 2026-11-02 | `SESSION-20261102-4c17eb` +1 | 28,639 | Q12 F1 M1 S2 | ✓ | 予算は、上限が書かれていない場所へ——packet の実測がシードで動いたとき（SESSION-20261102-4c… |
+| `readings/2026-11-02-the-i-that-passes-between-voices.md` | 2026-11-02 | 2026-11-02 | `SESSION-20261102-eb2400` +3 | 16,993 | Q4 F1 M9 S4 | — | 「私」を渡すとき、声と責任は一緒に渡るか——神話・宗教経典五件の精読 |
 | `readings/2026-11-02-thirty-minutes-outside-the-ledger.md` | — | 2026-11-02 | `SESSION-20261102-e7aa65` +2 | 11,335 | Q6 F20 M13 S3 ERR1 | ✓ | 看護日誌のない枕元、溝へあける赤い水——『三十分の空白』の脱・書記室変奏と反歌による切断 |
 | `readings/2026-11-02-voices-placed-before-feet.md` | — | 2026-11-02 | `SESSION-20261102-ff5a0c` +3 | 10,706 | Q3 F10 M7 MOT4 R2 S4 ERR4 | ✓ | 置かれた声の上にできていく道——『織る手』の台帳比喩撤去と、足の来ない声の反歌 |
 | `readings/2026-11-03-sixty-kilos-without-a-column.md` | — | 2026-11-03 | `SESSION-20261103-4a8c65` +5 | 10,019 | Q7 F12 M7 MOT1 S6 | ✓ | 六〇キロの行き先と、担い手の空席——『九階の汚水槽と、行き先の欄』の脱・書記室変奏と手順書への異議 |
@@ -4325,4 +4332,4 @@
 | `readings/2027-01-10-the-law-on-the-gatepost-and-in-the-breast.md` | 2026-11-01 | 2027-01-10 | `SESSION-20261101-eaa215` +2 | 21,812 | Q5 M15 MOT2 R4 S3 | ✓ | 門柱に書く法、心に書く法——神話・宗教経典五件の精読 |
 | `readings/2027-01-11-the-command-to-read-and-the-raft-that-must-be-left.md` | 2026-11-01 | 2027-01-11 | `SESSION-20261101-899f3a` +1 | 34,852 | Q4 M12 MOT6 R1 S2 ERR1 | — | 「読め」という命令と、置いていくべき筏——神話・宗教経典五件の精読 |
 | `readings/2027-01-12-the-book-wrote-me-before-i-existed.md` | 2026-11-02 | 2027-01-12 | `SESSION-20261102-aec977` +1 | 19,544 | Q3 M5 S2 | ✓ | 書のほうが先に私を書いていた——神話・宗教経典五篇の精読 |
-| `readings/2027-01-13-the-mouth-and-the-hand-that-wrote-it-down.md` | 2026-11-02 | 2027-01-13 | `SESSION-20261102-512471` +1 | 22,279 | Q4 M8 S2 | — | 口から出たものは、手のものになる——口承五篇、声と、声を書き留めた手 |
+| `readings/2027-01-13-the-mouth-and-the-hand-that-wrote-it-down.md` | 2026-11-02 | 2027-01-13 | `SESSION-20261102-512471` +1 | 22,279 | Q4 M8 S2 | ✓ | 口から出たものは、手のものになる——口承五篇、声と、声を書き留めた手 |
