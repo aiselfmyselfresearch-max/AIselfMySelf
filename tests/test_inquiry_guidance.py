@@ -21,8 +21,13 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from inspect_inquiry import (  # noqa: E402
     MATERIAL_SECTION_BUDGET,
+    TAIL_THRESHOLD_BYTES,
     build_context_packet,
     material_block,
+    packet_sections,
+    packet_stats,
+    percentile,
+    print_packet_stats,
     print_summary,
     recommend_session_mode,
 )
@@ -397,6 +402,204 @@ class MaterialBudgetTests(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, proc.stderr)
         self.assertIn("--material-budget", proc.stdout)
         self.assertIn(str(MATERIAL_SECTION_BUDGET), proc.stdout)
+
+
+# A packet whose section headings reproduce the real ones, including the two
+# subsections that a prefix match on "## 4." would swallow.
+STATS_PACKET = "\n".join(
+    [
+        "# 継続セッション用コンテキスト束（対象：Q-001）",
+        "",
+        "## 主題と記憶の作用",
+        "主題",
+        "",
+        "## 3. 対話素材（結論の証拠ではなく）",
+        "### `MAT-001` Source",
+        "",
+        "## 4. 先行する関連断片（一つ受け継ぎ）",
+        "### `FRAG-1` 断片",
+        "",
+        "## 4.5 斜めの光（索引樹外の浅い溝）",
+        "斜め",
+        "",
+        "## 4.7 関連する精読ノート（`readings/`）",
+        "ノート",
+        "",
+        "## 5. セッション進行指針（`prompts/direct_response.md`）",
+        "指針",
+    ]
+) + "\n"
+
+
+class PacketStatsTests(unittest.TestCase):
+    """The readout that makes MATERIAL_SECTION_BUDGET's basis re-derivable.
+
+    The budget was chosen from a measurement that lived only in a scratch
+    script, so the figures in the constant's comment could not be checked
+    again.  These pin the three things that would otherwise silently drift:
+    the percentile form (which must agree with numbers already written into
+    append-only ledger claims), the section split, and the tail threshold.
+    """
+
+    def setUp(self) -> None:
+        self._tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self._tmp.name)
+        (self.root / "readings").mkdir()
+        self.addCleanup(self._tmp.cleanup)
+
+    # --- percentile -----------------------------------------------------
+    def test_percentile_form_is_pinned_to_the_recorded_figures(self) -> None:
+        """`ordered[int(q*n)]`, clamped.  A neighbour shifts §3 p50 by 91 B.
+
+        The recorded §3 figures (p50 7,023 / p90 15,602 / p99 55,631 unbudgeted)
+        sit in append-only `notes` claims, which cannot be corrected.  Any other
+        interpolation would make this tool contradict them.
+        """
+        ordered = list(range(1, 409))  # 408 values, 1..408
+        self.assertEqual(percentile(ordered, 0.5), 205)   # int(204.0) -> index 204
+        self.assertEqual(percentile(ordered, 0.9), 368)   # int(367.2) -> index 367
+        self.assertEqual(percentile(ordered, 0.99), 404)  # int(403.9) -> index 403
+        self.assertEqual(percentile(ordered, 1.0), 408)   # clamped, not IndexError
+
+    def test_percentile_of_empty_and_single(self) -> None:
+        self.assertEqual(percentile([], 0.9), 0)
+        self.assertEqual(percentile([42], 0.5), 42)
+        self.assertEqual(percentile([42], 0.99), 42)
+
+    # --- section split --------------------------------------------------
+    def test_sections_are_keyed_by_token_not_prefix(self) -> None:
+        """§4, §4.5 and §4.7 stay separate.
+
+        `startswith("## 4.")` matches all three, which once produced an
+        inflated §4 measurement on this corpus.
+        """
+        sizes = packet_sections(STATS_PACKET)
+        for key in ("3", "4", "4.5", "4.7", "5"):
+            self.assertIn(key, sizes)
+        self.assertEqual(
+            sizes["4"],
+            len("## 4. 先行する関連断片（一つ受け継ぎ）\n### `FRAG-1` 断片\n\n".encode("utf-8")),
+        )
+        self.assertNotEqual(sizes["4"], sizes["4.5"])
+        self.assertNotEqual(sizes["4"], sizes["4.7"])
+
+    def test_section_sizes_sum_to_the_packet(self) -> None:
+        """The split charges every byte exactly once, so it cannot hide any."""
+        sizes = packet_sections(STATS_PACKET)
+        self.assertEqual(sum(sizes.values()), len(STATS_PACKET.encode("utf-8")))
+        self.assertIn("(前文)", sizes)
+        self.assertIn("主題と記憶の作用", sizes)
+
+    def test_section_sizes_sum_to_a_real_packet(self) -> None:
+        data, _ = budget_fixture(count=3)
+        packet = build_context_packet(
+            data, "Q-001", seed="00000001", errata={}, root=self.root
+        )
+        self.assertEqual(
+            sum(packet_sections(packet).values()), len(packet.encode("utf-8"))
+        )
+
+    # --- tail threshold -------------------------------------------------
+    def test_tail_threshold_is_decimal_not_binary(self) -> None:
+        """docs quote "48 KB 超" as 27 -> 1 questions; that needs 48,000.
+
+        The budgeted maximum (49,042 B on the real corpus) falls between
+        48,000 and 48 KiB, so the two thresholds disagree on a merged table.
+        """
+        self.assertEqual(TAIL_THRESHOLD_BYTES, 48_000)
+        self.assertNotEqual(TAIL_THRESHOLD_BYTES, 48 * 1024)
+
+    # --- stats ----------------------------------------------------------
+    def stats(self, data: dict, *, budget: int, limit: int = 0) -> dict:
+        return packet_stats(
+            data,
+            seed="00000001",
+            material_budget=budget,
+            errata={},
+            root=self.root,
+            limit=limit,
+        )
+
+    def test_stats_measures_both_budgeted_and_unbudgeted(self) -> None:
+        data, order = budget_fixture(count=6)
+        sizes = [block_size(data, m) for m in order]
+        st = self.stats(data, budget=sizes[0] + sizes[1])
+        self.assertEqual(st["questions"], 1)
+        self.assertFalse(st["sampled"])
+        self.assertEqual(st["seed_label"], "00000001")
+        self.assertEqual(st["budgeted"]["noted_questions"], 1)
+        self.assertEqual(st["budgeted"]["omitted_materials"], 4)
+        self.assertEqual(st["budgeted"]["omitted_max_per_question"], 4)
+        self.assertEqual(st["unbudgeted"]["noted_questions"], 0)
+        self.assertEqual(st["unbudgeted"]["omitted_materials"], 0)
+        # Unbudgeted §3 is the sum of every block; budgeted is the prefix.
+        self.assertGreater(
+            st["unbudgeted"]["section_three"]["max"],
+            st["budgeted"]["section_three"]["max"],
+        )
+
+    def test_stats_with_zero_budget_does_not_duplicate_the_pass(self) -> None:
+        data, _ = budget_fixture(count=2)
+        st = self.stats(data, budget=0)
+        self.assertIn("budgeted", st)
+        self.assertNotIn("unbudgeted", st)
+
+    def test_stats_limit_is_reported_as_a_sample(self) -> None:
+        data, _ = budget_fixture(count=2)
+        st = self.stats(data, budget=0, limit=1)
+        self.assertEqual(st["questions"], 1)
+        # One question measured out of one available is not a sample.
+        self.assertFalse(st["sampled"])
+
+    def test_readout_names_the_seed_and_disclaims_being_a_gate(self) -> None:
+        """A packet total is only comparable within one seed; §3 is not.
+
+        The readout must say so, or a later branch reads its own seed as
+        growth.  It must also stay an observation: docs/mode-rotation-triggers
+        §2 abolished numeric triggers, and this asserts nothing.
+        """
+        data, order = budget_fixture(count=6)
+        sizes = [block_size(data, m) for m in order]
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            print_packet_stats(self.stats(data, budget=sizes[0] + sizes[1]))
+        out = buf.getvalue()
+        self.assertIn("00000001", out)
+        self.assertIn("観察値", out)
+        self.assertIn("合否でも命令でもない", out)
+        self.assertIn("§3 はブランチシードで動かない", out)
+        self.assertIn("mode-rotation-triggers.md §2", out)
+        self.assertIn(f"{TAIL_THRESHOLD_BYTES:,} B 超", out)
+
+    def test_shared_note_view_is_byte_identical(self) -> None:
+        """Harvesting readings/ once instead of per packet must change nothing.
+
+        It is the difference between seconds and minutes over 408 questions, so
+        the speedup is only acceptable if the output is provably the same.
+        """
+        import note_index
+
+        data, _ = budget_fixture(count=3)
+        plain = build_context_packet(
+            data, "Q-001", seed="00000001", errata={}, root=self.root
+        )
+        view = note_index.build_view(self.root, data)
+        shared = build_context_packet(
+            data, "Q-001", seed="00000001", errata={}, root=self.root, note_view=view
+        )
+        self.assertEqual(plain, shared)
+
+    def test_cli_exposes_the_stats_flag(self) -> None:
+        proc = subprocess.run(
+            [sys.executable, "tools/inspect_inquiry.py", "--help"],
+            cwd=ROOT, capture_output=True, text=True, timeout=60,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertIn("--packet-stats", proc.stdout)
+        self.assertIn("--stats-limit", proc.stdout)
+        # The help text itself must not present the readout as a gate.
+        self.assertIn("not a gate", proc.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()
