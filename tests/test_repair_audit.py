@@ -64,8 +64,22 @@ class RepairAuditTests(unittest.TestCase):
         union = ledger_io.load_jsonl_union(root / "state" / "fragments.jsonl", "fragment_id", errors, root=root)
         self.assertEqual(errors, [])
         self.assertGreater(len(union), 43)
+        # 除外トークンは実在するシャードから選ぶ。固定の hex を埋め込むと、
+        # docs/parallel-work.md §3 の保守統合がそのシャードを吸収した瞬間に
+        # 機能は生きたままこの検査だけが落ちる（2026-11-02 実測：吸収後は
+        # 該当ファイルが消えて何も除外されなくなり、242 == 242 で失敗した）。
+        shards = sorted(p for p in (root / "state" / "fragments.d").glob("*.jsonl") if p.is_file())
+        target = next(
+            (p for p in shards if any(line.strip() for line in p.read_text(encoding="utf-8").split("\n"))),
+            None,
+        )
+        self.assertIsNotNone(target, "state/fragments.d/ に行を持つシャードが1つもない")
         excluded = ledger_io.load_jsonl_union(
-            root / "state" / "fragments.jsonl", "fragment_id", [], root=root, exclude="5c7e2a9b4d10"
+            root / "state" / "fragments.jsonl",
+            "fragment_id",
+            [],
+            root=root,
+            exclude=target.stem.rsplit("-", 1)[-1],
         )
         self.assertGreater(len(union), len(excluded))
 

@@ -33,7 +33,7 @@ Usage:
   python3 tools/promise_audit.py
   python3 tools/promise_audit.py --json
   python3 tools/promise_audit.py --base-only
-  python3 tools/promise_audit.py --exclude-shard 5c7e2a9b4d10
+  # --exclude-shard accepts a suffix from a shard currently present in state/fragments.d/
   python3 tools/promise_audit.py --show FRAG-024
 """
 from __future__ import annotations
