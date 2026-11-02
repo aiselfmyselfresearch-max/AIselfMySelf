@@ -4,7 +4,8 @@
 Covers:
   1. Individual tracked files (`README.md`, `READING_MAP.md`, frozen `state/*.jsonl`).
   2. Shard directories (`state/*.d/`): aggregate byte budgets and shard-file counts.
-  3. Auxiliary directories (`readings/`, `tools/`): total non-cache byte budgets.
+  3. Auxiliary directories (`readings/`, `tools/`): total non-cache byte budgets,
+     plus optional file-count and largest-single-file dimensions.
   4. Repository hygiene guards:
      - `tools/_*` temporary scratch scripts are strictly forbidden (hard limit 0).
      - `tools/*_audit*.py` count is capped to freeze per-theme audit proliferation
@@ -55,6 +56,14 @@ class DirBudget:
     soft_bytes: int
     hard_bytes: int
     remedy: str
+    # Optional second and third dimensions: a directory can stay inside its byte
+    # budget and still degrade, either by holding too many files to navigate or
+    # by letting one file absorb all the growth (the READING_MAP.md failure mode).
+    soft_files: int | None = None
+    hard_files: int | None = None
+    soft_file_bytes: int | None = None
+    hard_file_bytes: int | None = None
+    per_file_remedy: str = ""
 
 
 BUDGETS: tuple[Budget, ...] = (
@@ -123,6 +132,12 @@ BUDGETS: tuple[Budget, ...] = (
         soft_bytes=1 * MIB,
         hard_bytes=5 * MIB,
         remedy="Keep editorial status overlays in state/editorial_decisions.d/ shards",
+    ),
+    Budget(
+        "state/notes.jsonl",
+        soft_bytes=1 * MIB,
+        hard_bytes=5 * MIB,
+        remedy="Keep readings/ judgments in state/notes.d/ shards; store curated judgments only, never harvested facts",
     ),
 )
 
@@ -199,14 +214,41 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         hard_shards=160,
         remedy="Record concise append-only editorial decisions",
     ),
+    ShardBudget(
+        "state/notes.d",
+        soft_bytes=1 * MIB,
+        hard_bytes=4 * MIB,
+        soft_shards=80,
+        hard_shards=160,
+        remedy=(
+            "Keep one row per (report, reading); supersede instead of rewriting. "
+            "Do not copy report bodies or harvested facts into the ledger"
+        ),
+    ),
 )
 
 DIR_BUDGETS: tuple[DirBudget, ...] = (
     DirBudget(
+        # readings/ is episodic memory: append-only, never rotated out and never
+        # deleted, so its byte budget is a review point rather than a cliff.  The
+        # controls that actually keep it navigable are the other two dimensions
+        # (file count, largest single file) plus the index in READING_MAP.md §8.
         "readings",
-        soft_bytes=15 * MIB,
-        hard_bytes=30 * MIB,
-        remedy="Avoid verbose boilerplate acquisition reports; focus readings/ on close reading and editorial notes",
+        soft_bytes=24 * MIB,
+        hard_bytes=48 * MIB,
+        remedy=(
+            "Episodic reports are append-only: at the soft limit, review whether new reports repeat "
+            "boilerplate, and keep retrieval cheap by regenerating the index (python3 tools/map_build.py) "
+            "and registering curated rows (python3 tools/note_index.py --register)"
+        ),
+        soft_files=600,
+        hard_files=1200,
+        soft_file_bytes=256 * 1024,
+        hard_file_bytes=512 * 1024,
+        per_file_remedy=(
+            "One report must not absorb all the growth (the READING_MAP.md failure mode): split a long "
+            "report into a companion note and link the two, instead of appending to the largest file"
+        ),
     ),
     DirBudget(
         "tools",
@@ -324,7 +366,14 @@ def evaluate(root: Path = ROOT, budgets: tuple[Budget, ...] = BUDGETS) -> list[C
             if p.is_file() and "__pycache__" not in p.parts and not p.name.endswith(".pyc")
         ]
         total_bytes = sum(p.stat().st_size for p in files)
-        status = _status_for_pair(total_bytes, dbudget.soft_bytes, dbudget.hard_bytes)
+        status = _status_for_pair(
+            total_bytes,
+            dbudget.soft_bytes,
+            dbudget.hard_bytes,
+            len(files),
+            dbudget.soft_files,
+            dbudget.hard_files,
+        )
         results.append(
             CheckResult(
                 rel_path=f"{dbudget.rel_dir}/",
@@ -335,8 +384,28 @@ def evaluate(root: Path = ROOT, budgets: tuple[Budget, ...] = BUDGETS) -> list[C
                 status=status,
                 remedy=dbudget.remedy,
                 file_count=len(files),
+                soft_count=dbudget.soft_files,
+                hard_count=dbudget.hard_files,
             )
         )
+        if dbudget.soft_file_bytes is not None and files:
+            largest = max(files, key=lambda path: path.stat().st_size)
+            largest_bytes = largest.stat().st_size
+            results.append(
+                CheckResult(
+                    rel_path=f"{dbudget.rel_dir}/ largest file ({largest.name})",
+                    exists=True,
+                    size_bytes=largest_bytes,
+                    soft_bytes=dbudget.soft_file_bytes,
+                    hard_bytes=dbudget.hard_file_bytes or dbudget.soft_file_bytes * 2,
+                    status=_status_for_pair(
+                        largest_bytes,
+                        dbudget.soft_file_bytes,
+                        dbudget.hard_file_bytes or dbudget.soft_file_bytes * 2,
+                    ),
+                    remedy=dbudget.per_file_remedy or dbudget.remedy,
+                )
+            )
 
     # Hygiene guards inside tools/
     tools_dir = root / "tools"

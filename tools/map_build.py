@@ -51,7 +51,17 @@ CHUNKS: dict[str, int] = {
     "relations": 500,
     "sessions": 50,
 }
+# Names this tool owns inside map/ (see the prune in write_all).  Anything else
+# in that directory belongs to another generator and is left alone.
+OWNED_SHARD_NAME = re.compile(r"^(?:\d{2}-[0-9A-Za-z._-]+\.md|manifest\.json)$")
+
 INDEX_WARN_BYTES = 2 * 1024 * 1024  # tracked index should stay small
+
+
+def note_index_chunk() -> int:
+    import note_index
+
+    return note_index.NOTES_SHARD_CHUNK
 SHARD_WARN_BYTES = 2 * 1024 * 1024
 
 ORIGIN_BADGES = {
@@ -84,6 +94,18 @@ def _display(path: Path) -> str:
         return str(path.relative_to(ROOT))
     except ValueError:
         return str(path)
+
+
+def _notes_view(data: dict[str, dict[str, dict[str, Any]]], root: Path) -> dict[str, dict[str, Any]]:
+    """Harvest + curated overlay for ``readings/`` under ``root``.
+
+    ``root`` is derived from the index path, not from this checkout, so a caller
+    that builds into a temporary directory harvests that directory's (usually
+    absent) ``readings/`` and produces the same empty section every time.
+    """
+    import note_index
+
+    return note_index.build_view(Path(root), data)
 
 
 def _labels() -> tuple[dict[str, str], dict[str, str], dict[str, str]]:
@@ -318,7 +340,12 @@ def build_sessions(data: dict[str, dict[str, dict[str, Any]]], ids: list[str]) -
 # compact tracked index
 # ---------------------------------------------------------------------------
 
-def build_index(data: dict[str, dict[str, dict[str, Any]]], manifest: dict[str, Any]) -> str:
+def build_index(
+    data: dict[str, dict[str, dict[str, Any]]],
+    manifest: dict[str, Any],
+    notes_view: dict[str, dict[str, Any]] | None = None,
+    root: Path = ROOT,
+) -> str:
     questions, motifs = data["questions"], data["motifs"]
     materials, fragments = data["materials"], data["fragments"]
     relations, sessions = data["relations"], data["sessions"]
@@ -433,14 +460,29 @@ def build_index(data: dict[str, dict[str, dict[str, Any]]], manifest: dict[str, 
         "シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。"
     )
     out.append("")
+
+    if notes_view is None:
+        notes_view = _notes_view(data, Path(root))
+    out.extend(note_index_section(notes_view))
     return "\n".join(out)
+
+
+def note_index_section(notes_view: dict[str, dict[str, Any]]) -> list[str]:
+    """Tier 2 rows for the episodic reports (delegates to tools/note_index.py)."""
+    import note_index
+
+    return note_index.build_index_section(notes_view)
 
 
 # ---------------------------------------------------------------------------
 # write / check
 # ---------------------------------------------------------------------------
 
-def shard_plan(data: dict[str, dict[str, dict[str, Any]]]) -> list[dict[str, Any]]:
+def shard_plan(
+    data: dict[str, dict[str, dict[str, Any]]],
+    notes_view: dict[str, dict[str, Any]] | None = None,
+    root: Path = ROOT,
+) -> list[dict[str, Any]]:
     """Plan (filename, builder, record ids) — deterministic, tail-growable."""
     plan: list[dict[str, Any]] = []
     plan.append({"file": "00-overview.md", "kind": "overview", "ids": []})
@@ -476,11 +518,29 @@ def shard_plan(data: dict[str, dict[str, dict[str, Any]]]) -> list[dict[str, Any
     s_ids = list(data["sessions"])
     for i, chunk in enumerate(_chunked(s_ids, CHUNKS["sessions"]), 1):
         plan.append({"file": f"50-sessions-{i:02d}.md", "kind": "sessions", "ids": chunk})
+
+    if notes_view is None:
+        notes_view = _notes_view(data, Path(root))
+    plan.extend(note_index_shard_plan(notes_view))
     return plan
 
 
-def render_shard(data: dict[str, dict[str, dict[str, Any]]], entry: dict[str, Any]) -> str:
+def note_index_shard_plan(notes_view: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    import note_index
+
+    return note_index.shard_plan(notes_view)
+
+
+def render_shard(
+    data: dict[str, dict[str, dict[str, Any]]],
+    entry: dict[str, Any],
+    notes_view: dict[str, dict[str, Any]] | None = None,
+) -> str:
     kind = entry["kind"]
+    if kind == "notes":
+        import note_index
+
+        return note_index.build_note_bodies(notes_view or {}, entry["ids"])
     if kind == "overview":
         return build_overview(data)
     if kind == "question_index":
@@ -505,11 +565,13 @@ def write_all(
     *,
     quiet: bool = False,
 ) -> dict[str, Any]:
-    plan = shard_plan(data)
+    # Harvest once: the index section and the 60-notes-* shards share one view.
+    notes_view = _notes_view(data, Path(index_path).parent)
+    plan = shard_plan(data, notes_view)
     shards: list[dict[str, Any]] = []
     contents: dict[str, str] = {}
     for entry in plan:
-        text = render_shard(data, entry)
+        text = render_shard(data, entry, notes_view)
         contents[entry["file"]] = text
         encoded = text.encode("utf-8")
         shards.append({
@@ -524,21 +586,29 @@ def write_all(
 
     manifest: dict[str, Any] = {
         "generator": "tools/map_build.py",
-        "chunks": CHUNKS,
+        "chunks": {**CHUNKS, "notes": note_index_chunk()},
         "counts": {name: len(v) for name, v in data.items()},
+        "notes_files": len(notes_view),
         "shards": shards,
     }
     manifest_text = json.dumps(manifest, ensure_ascii=False, indent=1) + "\n"
-    index_text = build_index(data, manifest)
+    index_text = build_index(data, manifest, notes_view, Path(index_path).parent)
     index_bytes = len(index_text.encode("utf-8"))
     if index_bytes > INDEX_WARN_BYTES and not quiet:
         print(f"WARN: {_display(index_path)} is {index_bytes:,} bytes (> {INDEX_WARN_BYTES:,})", file=sys.stderr)
 
     with ledger_io.exclusive_lock(ROOT / "state" / ".ledger.lock"):
         map_dir.mkdir(parents=True, exist_ok=True)
-        # remove shards that no longer exist in the plan (tail shrinkage / renames)
+        # Remove shards that no longer exist in the plan (tail shrinkage / renames).
+        # Only this tool's own files are eligible: every name it writes starts with
+        # a two-digit chunk prefix (00-, 10-, 11-, 20-, …, 60-) or is manifest.json.
+        # map/ is a generated directory that other generators may also write into
+        # (tools/associations.py puts associations.md here), and silently deleting
+        # their output would make two tools fight over the same directory.
         planned = {e["file"] for e in plan} | {"manifest.json"}
         for stale in sorted(map_dir.glob("*.md")) + sorted(map_dir.glob("manifest.json")):
+            if not OWNED_SHARD_NAME.match(stale.name):
+                continue
             if stale.name not in planned:
                 stale.unlink()
         for entry in plan:
@@ -558,7 +628,7 @@ def check_index(
     index_path: Path = DEFAULT_INDEX_PATH,
 ) -> int:
     """Verify the tracked index matches the ledgers (map/ is untracked, not checked)."""
-    expected = build_index(data, {"shards": []})
+    expected = build_index(data, {"shards": []}, root=Path(index_path).parent)
     # The index embeds the shard-size table (section 7); those rows depend on
     # untracked output, so compare everything except the `map/...` table rows.
     def _stable(text: str) -> str:
@@ -619,6 +689,7 @@ def sync_readme_counts(
             else 0
         )
     editorial_decisions = data.get("editorial_decisions", {})
+    notes = data.get("notes", {})
 
     q_status = Counter(q.get("status", "open") for q in questions.values())
     q_origins = Counter(q["origin"]["kind"] for q in questions.values())
@@ -717,6 +788,14 @@ def sync_readme_counts(
     text = re.sub(
         r"^(\| 編集判断 \| `state/editorial_decisions\.jsonl`＋`state/editorial_decisions\.d/` \| )\d+( \| .* \|)$",
         rf"\g<1>{len(editorial_decisions)}\g<2>",
+        text,
+        flags=re.MULTILINE,
+    )
+    # The 役割 prose of this row is deliberately left alone: only the count moves,
+    # so the explanation cannot drift out of sync with the row it describes.
+    text = re.sub(
+        r"^(\| 精読ノート \| `state/notes\.jsonl`＋`state/notes\.d/` \| )\d+( \| .* \|)$",
+        rf"\g<1>{len(notes)}\g<2>",
         text,
         flags=re.MULTILINE,
     )

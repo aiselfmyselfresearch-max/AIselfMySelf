@@ -26,7 +26,19 @@ COLLECTIONS = {
         "decision_id",
         "editorial_decision.schema.json",
     ),
+    # Curated judgments about the episodic reports in readings/.  The report
+    # bodies stay in readings/*.md; this collection only carries what a reader
+    # asserts, so a report can be cited from read_log and relations.
+    "notes": ("notes.jsonl", "note_id", "note.schema.json"),
 }
+
+# Fields of a note claim that must point at existing ledger records.
+NOTE_CLAIM_REF_FIELDS = (
+    ("question_ids", "questions"),
+    ("fragment_ids", "fragments"),
+    ("material_ids", "materials"),
+    ("motif_ids", "motifs"),
+)
 
 
 def matches_type(value: Any, expected: str) -> bool:
@@ -192,6 +204,86 @@ def main() -> int:
             errors.append(f"fragments:{fragment_id}: session_id references unknown session {session_id!r}")
 
     read_logs = collections.get("read_log", {})
+    notes = collections.get("notes", {})
+
+    # --- notes: curated judgments about readings/*.md ---------------------
+    # The report body is the source of truth for derived facts (harvested by
+    # tools/note_index.py); here we only check that a row points at a real file,
+    # a real session, real ledger IDs, and a real earlier row it supersedes.
+    for note_id, record in notes.items():
+        for field in ("session_id", "report_session_id"):
+            value = record.get(field)
+            if isinstance(value, str) and value and value not in sessions:
+                errors.append(f"notes:{note_id}: {field} references unknown session {value!r}")
+        path = record.get("path")
+        if isinstance(path, str):
+            candidate = Path(path)
+            if candidate.is_absolute() or ".." in candidate.parts:
+                errors.append(f"notes:{note_id}: path must be repository-relative without '..': {path!r}")
+            elif not (ROOT / candidate).is_file():
+                errors.append(f"notes:{note_id}: path references a missing file {path!r}")
+        claims = record.get("claims")
+        if isinstance(claims, list):
+            seen_claims: set[str] = set()
+            for position, claim in enumerate(claims):
+                if not isinstance(claim, dict):
+                    continue  # schema validation reports the shape error
+                claim_id = claim.get("claim_id")
+                if isinstance(claim_id, str):
+                    if claim_id in seen_claims:
+                        errors.append(f"notes:{note_id}: duplicate claim_id {claim_id!r}")
+                    seen_claims.add(claim_id)
+                for field, target_name in NOTE_CLAIM_REF_FIELDS:
+                    values = claim.get(field, [])
+                    if not isinstance(values, list):
+                        continue
+                    targets = collections.get(target_name, {})
+                    for value in values:
+                        if value not in targets:
+                            errors.append(
+                                f"notes:{note_id}: claims[{position}].{field} references unknown "
+                                f"{target_name} ID {value!r}"
+                            )
+        supersedes = record.get("supersedes")
+        if isinstance(supersedes, list):
+            for sup_id in supersedes:
+                if not isinstance(sup_id, str):
+                    continue
+                if sup_id == note_id:
+                    errors.append(f"notes:{note_id}: supersedes cannot reference itself")
+                elif sup_id not in notes:
+                    errors.append(f"notes:{note_id}: supersedes references unknown note ID {sup_id!r}")
+                elif notes[sup_id].get("path") != path:
+                    errors.append(
+                        f"notes:{note_id}: supersedes note {sup_id!r} is about "
+                        f"{notes[sup_id].get('path')!r}, expected {path!r}"
+                    )
+
+    note_visit_state: dict[str, int] = {}
+    for start_id in notes:
+        if note_visit_state.get(start_id, 0) != 0:
+            continue
+        stack: list[tuple[str, int]] = [(start_id, 0)]
+        note_visit_state[start_id] = 1
+        while stack:
+            cur_id, idx = stack[-1]
+            sup_list = notes[cur_id].get("supersedes")
+            neighbors = [
+                s for s in (sup_list if isinstance(sup_list, list) else [])
+                if isinstance(s, str) and s in notes and s != cur_id
+            ]
+            if idx < len(neighbors):
+                stack[-1] = (cur_id, idx + 1)
+                nxt_id = neighbors[idx]
+                st = note_visit_state.get(nxt_id, 0)
+                if st == 1:
+                    errors.append(f"notes:{cur_id}: cycle detected in supersedes chain via {nxt_id!r}")
+                elif st == 0:
+                    note_visit_state[nxt_id] = 1
+                    stack.append((nxt_id, 0))
+            else:
+                note_visit_state[cur_id] = 2
+                stack.pop()
 
     endpoint_collections = {
         "question": questions,
@@ -199,6 +291,7 @@ def main() -> int:
         "material": materials,
         "fragment": fragments,
         "session": sessions,
+        "note": notes,
     }
     for read_id, record in read_logs.items():
         session_id = record.get("session_id")
