@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：408 件（初期シード 5 件 ＋ 派生 403 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2656 件（research_excerpt 809 ／ literary_text 1779 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2661 件（research_excerpt 809 ／ literary_text 1784 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：5997 件
-- **探究セッション（Sessions）**：377 回
+- **解釈的関係（Relations）**：6007 件
+- **探究セッション（Sessions）**：378 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -738,7 +738,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2656 件・詳細は map/3*.md）
+## 4. 対話素材（2661 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3398,8 +3398,13 @@
 | `MAT-LIT-20261101-c94d00` | literary_text | パーリ三蔵（中部経典、伝承上ブッダの教説）, Chaṭṭha Saṅgāyana Tipiṭaka（VRI 第6回結集版、ローマ字転写）『パーリ仏典『中部』22経「蛇喩経（Ala… |
 | `MAT-LIT-20261101-902ca0` | literary_text | オルペウス教讃歌集（著者未詳、後2〜3世紀頃の小アジアの秘儀集団に帰せられる）, Thomas Taylor 英訳（1792）, NullImprint/OrphicHymnsD… |
 | `MAT-LIT-20261101-1471ff` | literary_text | 康僧鎧（曹魏の天竺三蔵、伝承上252年訳）, CBETA 電子佛典（2016.06, alexamies/buddhist-dictionary 所蔵テキスト）『『仏説無量寿経』… |
+| `MAT-LIT-20261102-790914` | literary_text | （伝・ダビデ）『『詩篇』139篇——あなたの書にそのすべてが書きつけられた、まだ形のない私』（-400） |
+| `MAT-LIT-20261102-0e3889` | literary_text | （伝・ムハンマドに下された啓示）『『クルアーン』第75章（復活章）1–4・13–19節——自らを責める魂、自分に不利な証人、そして急いで読むなという戒め』（650） |
+| `MAT-LIT-20261102-1cb735` | literary_text | Swami Paramananda（訳・註）『『イーシャー・ウパニシャッド』——明知を崇める者の深い暗闇、黄金の円盤、そして「心よ、忆えよ」』（-300） |
+| `MAT-LIT-20261102-636a8a` | literary_text | （編纂・ラビ・ユダ・ハナシ伝）『『ミシュナ・サンヘドリン』4:5——証言の四つの出所、同じ型から打たれた硬貨と、一人ひとりの顔』（200） |
+| `MAT-LIT-20261102-908817` | literary_text | （伝・スダルマン／マハーヴィーラの教説）『『アーチャーランガ・スートラ』第1巻第1講——「わたしは聞いた」、自己の無知、そして自己を知る三つの道』（-300） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261101-899f3a・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261102-aec977・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3780,18 +3785,19 @@
 | `SESSION-20261029-77b681` | 2026-12-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-0a3833`, `Q-20261024-cfd57d` | `FRAG-20261029-30debd` | — |
 | `SESSION-20261101-eaa215` | 2027-01-10 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-50f9f7` |
 | `SESSION-20261101-899f3a` | 2027-01-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261102-aec977` | 2027-01-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（5997 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6007 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 816 |
-| 共鳴 (echo) | 1491 |
+| 対照 (contrast) | 819 |
+| 共鳴 (echo) | 1495 |
 | 切断・割り込み (interrupts) | 208 |
 | 未解決のまま開く (leaves_open) | 868 |
-| 比喩的共鳴 (metaphorically_resonates) | 152 |
+| 比喩的共鳴 (metaphorically_resonates) | 153 |
 | 枠組みの組み替え (reframes) | 533 |
-| 応答 (responds_to) | 1646 |
+| 応答 (responds_to) | 1648 |
 | 変奏・変形 (transforms) | 283 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3839,7 +3845,7 @@
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
-| `map/30-materials-literary-18.md` | 79 | 255,777 |
+| `map/30-materials-literary-18.md` | 84 | 271,597 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3861,7 +3867,8 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,236 |
-| `map/40-relations-12.md` | 497 | 164,652 |
+| `map/40-relations-12.md` | 500 | 165,903 |
+| `map/40-relations-13.md` | 7 | 2,895 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -3869,7 +3876,7 @@
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
 | `map/50-sessions-07.md` | 50 | 43,973 |
-| `map/50-sessions-08.md` | 27 | 25,746 |
+| `map/50-sessions-08.md` | 28 | 26,774 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -3886,17 +3893,17 @@
 | `map/60-notes-14.md` | 25 | 52,105 |
 | `map/60-notes-15.md` | 25 | 68,675 |
 | `map/60-notes-16.md` | 25 | 58,288 |
-| `map/60-notes-17.md` | 11 | 32,262 |
+| `map/60-notes-17.md` | 12 | 33,989 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・411本・15,100,787 B）
+## 8. 精読ノート索引（readings/・412本・15,142,566 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 206/411 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 207/412 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：6 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：42 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：43 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4311,3 +4318,4 @@
 | `readings/2027-01-07-the-substitute-is-not-the-one-who-left.md` | 2026-11-01 | 2027-01-07 | `SESSION-20261101-28804b` +4 | 29,845 | Q4 M17 MOT1 S5 ERR2 | ✓ | 代わりは、去った者ではない——神話・宗教経典五件と、砕けた骨・閉じた正典・籤・立場 |
 | `readings/2027-01-10-the-law-on-the-gatepost-and-in-the-breast.md` | 2026-11-01 | 2027-01-10 | `SESSION-20261101-eaa215` +2 | 21,812 | Q5 M15 MOT2 R4 S3 | ✓ | 門柱に書く法、心に書く法——神話・宗教経典五件の精読 |
 | `readings/2027-01-11-the-command-to-read-and-the-raft-that-must-be-left.md` | 2026-11-01 | 2027-01-11 | `SESSION-20261101-899f3a` +1 | 34,852 | Q4 M12 MOT6 R1 S2 ERR1 | — | 「読め」という命令と、置いていくべき筏——神話・宗教経典五件の精読 |
+| `readings/2027-01-12-the-book-wrote-me-before-i-existed.md` | 2026-11-02 | 2027-01-12 | `SESSION-20261102-aec977` +1 | 19,544 | Q3 M5 S2 | — | 書のほうが先に私を書いていた——神話・宗教経典五篇の精読 |
