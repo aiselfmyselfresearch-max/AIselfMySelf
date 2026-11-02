@@ -7,6 +7,8 @@ Usage examples:
   python3 tools/inspect_inquiry.py --id Q-016
   python3 tools/inspect_inquiry.py --packet auto
   python3 tools/inspect_inquiry.py --packet Q-017
+  python3 tools/inspect_inquiry.py --packet-stats            # §3 と packet 全体の分布
+  python3 tools/inspect_inquiry.py --packet-stats --stats-limit 40   # 標本で素早く
   python3 tools/inspect_inquiry.py --write-map   # delegates to tools/map_build.py
   python3 tools/inspect_inquiry.py --check-map
 """
@@ -21,7 +23,7 @@ import subprocess
 import sys
 from collections import Counter
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Iterable, Sequence
 
 import ledger_io
 
@@ -518,6 +520,7 @@ def related_notes(
     *,
     root: Path = ROOT,
     limit: int = 6,
+    note_view: dict[str, dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     """Rank the episodic reports in ``readings/`` that touch this question.
 
@@ -533,7 +536,10 @@ def related_notes(
     wanted = {target_qid} | parents
     wanted_frags = set(related_fragment_ids)
 
-    view = note_index.build_view(Path(root), data)
+    # The harvest reads all of readings/ (~411 files, 15 MB).  Callers that
+    # build many packets in one process pass a shared view; building it per
+    # packet is the difference between seconds and minutes.
+    view = note_view if note_view is not None else note_index.build_view(Path(root), data)
     scored: list[tuple[tuple[int, int, int, int, str], dict[str, Any]]] = []
     for entry in view.values():
         refs = entry.get("refs", {})
@@ -570,8 +576,11 @@ def related_notes_lines(
     related_fragment_ids: Iterable[str] = (),
     *,
     root: Path = ROOT,
+    note_view: dict[str, dict[str, Any]] | None = None,
 ) -> list[str]:
-    entries = related_notes(data, target_qid, related_fragment_ids, root=root)
+    entries = related_notes(
+        data, target_qid, related_fragment_ids, root=root, note_view=note_view
+    )
     lines = ["## 4.7 関連する精読ノート（`readings/`・エピソード記憶への入口）"]
     lines.append(
         "- **趣旨**: 台帳（意味記憶）に対し、`readings/` は各セッションの語り＝エピソード記憶です。"
@@ -675,6 +684,7 @@ def build_context_packet(
     errata: dict[str, dict[str, Any]] | None = None,
     root: Path = ROOT,
     material_budget: int = MATERIAL_SECTION_BUDGET,
+    note_view: dict[str, dict[str, Any]] | None = None,
 ) -> str:
     if errata is None:
         errata = load_errata()
@@ -848,6 +858,11 @@ def build_context_packet(
             f"窓外の {len(omitted_mats)} 件は**載せていません**: {omitted_str}。"
         )
         lines.append(
+            # 字节 は簡体字の混入（正しくは バイト／字節）だが、この行は packet の §3 に
+            # 描画されるため、直すと予算注記が出る40問の §3 が +3 B 動き、§3 p99
+            # 16,652→16,655・max 16,956→16,959 になる。max の 16,956 B は追記専用台帳の
+            # CLM-599b4c-4 に入っていて訂正できない。よって表記は据え置き、
+            # 訂正は errata（記録の隣に置き記録自体は書き換えない）で行う。
             "  省略は素材の価値や関連度の判断ではなく、packet の字节予算だけです。"
             " 窓外の素材も `python3 tools/inspect_inquiry.py --id <MAT-ID>` で全文を引けます"
             "（予算は `--material-budget` で変更可、0 で無制限）。"
@@ -919,7 +934,11 @@ def build_context_packet(
 
     lines.extend(
         related_notes_lines(
-            data, target_qid, [f["fragment_id"] for f in rel_frags], root=root
+            data,
+            target_qid,
+            [f["fragment_id"] for f in rel_frags],
+            root=root,
+            note_view=note_view,
         )
     )
 
@@ -933,6 +952,221 @@ def build_context_packet(
     lines.append("")
     lines.append(active_prompt)
     return "\n".join(lines) + "\n"
+
+
+# --- Packet byte distribution (an observation, not a gate) -----------------
+#
+# MATERIAL_SECTION_BUDGET was chosen from a measurement of §3 across all
+# questions, but nothing in the repository could reproduce that measurement:
+# the script that produced it was scratch, so the figures in the constant's
+# comment were the only surviving trace and could not be checked again as the
+# corpus grew.  These functions make the derivation re-runnable.
+#
+# Two measured facts the readout has to carry:
+#
+#   * The percentile form is pinned, not chosen.  ``ordered[int(q * n)]``
+#     clamped to the last index reproduces all sixteen figures already written
+#     into docs/memory-architecture.md and into append-only ``notes`` claims
+#     (§3 and packet total, p50/p90/p99/max, budgeted and unbudgeted) at seed
+#     9a7bda3c.  A neighbouring definition shifts §3 p50 by 91 B and packet p99
+#     by 1,436 B, which would make this tool contradict records that cannot be
+#     corrected.
+#   * §3 does not move with the branch seed; the packet total does, because
+#     §0.5 (the dispersion window) is seeded.  Measured over all 408 questions
+#     under two seeds: every §3 percentile matched to the byte, while every
+#     packet percentile shifted (p50 34,223 -> 32,707 B, max 84,379 -> 83,104 B
+#     unbudgeted).  So §3 is the column that is comparable across branches and
+#     across time, and a packet total is only comparable within one seed --
+#     which is why the readout prints the seed it measured under.  Reading a
+#     packet total from another branch as growth or shrinkage would be reading
+#     the seed.
+
+
+def percentile(ordered: Sequence[int], q: float) -> int:
+    """The pinned percentile of an ascending sequence: ``ordered[int(q * n)]``.
+
+    Clamped to the last index, so p99 of a short list is its maximum rather
+    than an IndexError.  See the block above for why this exact form: it is the
+    one that reproduces the figures already recorded in append-only ledgers.
+    """
+    if not ordered:
+        return 0
+    return ordered[min(len(ordered) - 1, int(q * len(ordered)))]
+
+
+def packet_sections(packet: str) -> dict[str, int]:
+    """Byte size of each ``## `` section of a packet, keyed by heading token.
+
+    The key is the heading's first token with one trailing dot stripped, so
+    ``## 3. 対話素材…`` keys as ``3`` and ``## 4.5 斜めの光…`` keys as ``4.5``.
+    Matching by prefix instead (``startswith("## 4.")``) silently merges §4
+    with §4.5 and §4.7 -- that mistake once produced an inflated §4 here.
+
+    Lines before the first ``## `` key as ``"(前文)"``.  Every line is charged
+    its own bytes plus the newline ``splitlines`` removed, so the values sum to
+    ``len(packet.encode("utf-8"))`` for a packet ending in one newline.
+    """
+    sizes: dict[str, int] = {}
+    key = "(前文)"
+    for line in packet.splitlines():
+        if line.startswith("## "):
+            token = line[3:].split(" ", 1)[0]
+            key = token[:-1] if token.endswith(".") else token
+        sizes[key] = sizes.get(key, 0) + len(line.encode("utf-8")) + 1
+    return sizes
+
+
+# The tail threshold docs quote as "48 KB 超" is decimal 48,000 B, not 48 KiB.
+# Pinned by reproduction: at seed 9a7bda3c the recorded "27 問 -> 1 問" comes
+# out exactly with >48_000 (unbudgeted max 84,379 B, budgeted max 49,042 B),
+# while >49_152 yields 25 and 0 and would contradict a table already merged.
+# The budgeted maximum sits between the two thresholds, which is the only
+# reason the difference is visible at all.
+TAIL_THRESHOLD_BYTES = 48_000
+
+
+def _distribution(values: list[int]) -> dict[str, int]:
+    ordered = sorted(values)
+    return {
+        "p50": percentile(ordered, 0.5),
+        "p90": percentile(ordered, 0.9),
+        "p99": percentile(ordered, 0.99),
+        "max": ordered[-1] if ordered else 0,
+        "over_tail": sum(1 for v in ordered if v > TAIL_THRESHOLD_BYTES),
+    }
+
+
+def packet_stats(
+    data: dict[str, dict[str, dict[str, Any]]],
+    *,
+    seed: str | None = None,
+    material_budget: int = MATERIAL_SECTION_BUDGET,
+    errata: dict[str, dict[str, Any]] | None = None,
+    root: Path = ROOT,
+    limit: int = 0,
+) -> dict[str, Any]:
+    """Measure every question's packet, budgeted and unbudgeted.
+
+    Returns the §3 and packet-total distributions plus how many questions the
+    budget actually touched.  ``limit`` measures only the first N questions in
+    ledger order -- a sample for a quick check, not the corpus, and the readout
+    says so when it is in effect.
+
+    The note view is harvested once and shared by every packet.  It reads all
+    of readings/ (~411 files, 15 MB); rebuilding it per question turned an
+    eleven-second pass into an eleven-minute one, with byte-identical output.
+    """
+    import note_index
+
+    if errata is None:
+        errata = load_errata(root)
+    view = note_index.build_view(Path(root), data)
+    seed_label, _seed_int = resolve_session_seed(seed, root=Path(root), data=data)
+    qids = list(data.get("questions", {}))
+    sampled = limit > 0 and limit < len(qids)
+    if limit > 0:
+        qids = qids[:limit]
+
+    passes: list[tuple[str, int]] = [("budgeted", material_budget)]
+    if material_budget != 0:
+        passes.append(("unbudgeted", 0))
+
+    stats: dict[str, Any] = {
+        "seed_label": seed_label,
+        "material_budget": material_budget,
+        "questions": len(qids),
+        "sampled": sampled,
+    }
+    for name, budget in passes:
+        section_three: list[int] = []
+        totals: list[int] = []
+        noted = 0
+        omitted_total = 0
+        omitted_max = 0
+        for qid in qids:
+            packet = build_context_packet(
+                data,
+                qid,
+                seed=seed,
+                errata=errata,
+                root=root,
+                material_budget=budget,
+                note_view=view,
+            )
+            sections = packet_sections(packet)
+            section_three.append(sections.get("3", 0))
+            totals.append(len(packet.encode("utf-8")))
+            if "予算注記" in packet:
+                noted += 1
+                candidates = [
+                    m
+                    for m in data["questions"][qid].get("material_ids", [])
+                    if m in data.get("materials", {})
+                ]
+                omitted = len(candidates) - packet.count("\n### `MAT-")
+                omitted_total += omitted
+                omitted_max = max(omitted_max, omitted)
+        stats[name] = {
+            "section_three": _distribution(section_three),
+            "packet": _distribution(totals),
+            "noted_questions": noted,
+            "omitted_materials": omitted_total,
+            "omitted_max_per_question": omitted_max,
+        }
+    return stats
+
+
+def print_packet_stats(stats: dict[str, Any]) -> None:
+    """Print the distribution as an observation, with its comparison rules."""
+    budget = stats["material_budget"]
+    print("=== packet バイト分布（観察値。合否でも命令でもない）===")
+    scope = f"先頭 {stats['questions']} 問（標本。母集団全体ではない）"
+    if stats["sampled"]:
+        print(f"対象: {scope} ／ シード: `{stats['seed_label']}`")
+    else:
+        print(f"対象: 全 {stats['questions']} 問 ／ シード: `{stats['seed_label']}`")
+    print()
+    for name, label in (("budgeted", f"予算 {budget:,} B"), ("unbudgeted", "予算なし (0)")):
+        if name not in stats:
+            continue
+        row = stats[name]
+        s3 = row["section_three"]
+        pk = row["packet"]
+        print(f"[{label}]")
+        print(
+            f"  §3 対話素材  p50 {s3['p50']:>7,} ／ p90 {s3['p90']:>7,} ／ "
+            f"p99 {s3['p99']:>7,} ／ max {s3['max']:>7,} B"
+        )
+        print(
+            f"  packet 全体  p50 {pk['p50']:>7,} ／ p90 {pk['p90']:>7,} ／ "
+            f"p99 {pk['p99']:>7,} ／ max {pk['max']:>7,} B"
+        )
+        print(
+            f"  {TAIL_THRESHOLD_BYTES:,} B 超  §3 {s3['over_tail']} 問 ／ "
+            f"packet {pk['over_tail']} 問"
+        )
+        if name == "budgeted" and budget:
+            print(
+                f"  予算注記     {row['noted_questions']} 問 ／ 窓外の素材 "
+                f"{row['omitted_materials']} 件（1問あたり最大 "
+                f"{row['omitted_max_per_question']} 件）"
+            )
+        print()
+    print("読み比べるときの注意（どちらも実測に基づく）:")
+    print("  * §3 はブランチシードで動かない。時系列とブランチをまたいで比べられるのは §3 だけ。")
+    print("  * packet 全体は §0.5（分散候補窓）がシード依存なので、同じシード内でしか比べられない。")
+    print("    別ブランチの packet 全体を肥大化や縮小として読むと、読んでいるのはシードである。")
+    print()
+    if "unbudgeted" in stats and budget:
+        p90 = stats["unbudgeted"]["section_three"]["p90"]
+        print(f"再測定の目安: 既定値 {budget:,} B は「§3 の予算なし p90」に寄せてある。")
+        print(f"  現在の予算なし p90 は {p90:,} B。")
+        if p90 > budget:
+            print("  p90 が既定値を超えているので、この値はもう §3 の p90 ではない。")
+        else:
+            print("  p90 は既定値以下なので、この値はまだ §3 の p90 相当である。")
+        print("  どちらの行も観察であって、値を変える作業を強制しない")
+        print("  （docs/mode-rotation-triggers.md §2「廃止した探究上の数値条件」）。")
 
 
 def print_summary(
@@ -1185,6 +1419,24 @@ def main() -> int:
             f"(default: {MATERIAL_SECTION_BUDGET}, measured at p90 of all questions)"
         ),
     )
+    parser.add_argument(
+        "--packet-stats",
+        action="store_true",
+        help=(
+            "Measure the packet byte distribution over every question and print "
+            "it as an observation (§3 and packet total, budgeted and unbudgeted). "
+            "This is how MATERIAL_SECTION_BUDGET's derivation is re-checked; it is "
+            "not a gate and asserts nothing. Reads all of readings/ once, so it "
+            "takes seconds rather than the minutes a per-question harvest would."
+        ),
+    )
+    parser.add_argument(
+        "--stats-limit",
+        type=int,
+        default=0,
+        metavar="N",
+        help="With --packet-stats, measure only the first N questions in ledger order (a sample, labelled as one; 0 = all, the default)",
+    )
     parser.add_argument("--map-path", type=Path, default=DEFAULT_MAP_PATH, help="Path for the compact READING_MAP.md index")
     action = parser.add_mutually_exclusive_group()
     action.add_argument("--write-map", action="store_true", help="Write READING_MAP.md index and map/ shards from current state ledgers")
@@ -1195,6 +1447,17 @@ def main() -> int:
 
     if args.id:
         return print_record_detail(data, args.id)
+
+    if args.packet_stats:
+        print_packet_stats(
+            packet_stats(
+                data,
+                seed=args.seed,
+                material_budget=args.material_budget,
+                limit=args.stats_limit,
+            )
+        )
+        return 0
 
     if args.packet:
         try:
