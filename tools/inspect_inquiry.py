@@ -618,6 +618,55 @@ def related_notes_lines(
     return lines
 
 
+# Working-memory budget for the one unbounded evidence section of a packet.
+#
+# Measured over all 408 questions (commit d133bbe, before this budget existed):
+#   §3 対話素材   p50  7,023 B ／ p90 15,602 B ／ p99 55,631 B ／ max 55,631 B
+#   packet 全体   p50 34,217 B ／ p90 44,009 B ／ p99 82,657 B ／ max 82,727 B
+# The tail is driven by material *count*, not by passage length: the five worst
+# questions each link 43 materials whose passages total only 6,233 B, so ~1,290 B
+# of fixed scaffold per material is what multiplies.  §4 (3-fragment window), §4.7
+# (6 notes x 3 claims) and §1/§2 (the question's own motif_ids) are already
+# bounded, which leaves §3 as the only section that grows without limit.
+#
+# 16 KiB sits just under p90, so a typical session is unaffected -- the budget
+# trims the tail instead of forcing a change on everyone (a number here is an
+# observation, not a command: docs/mode-rotation-triggers.md §2).  Omitted
+# materials are named by ID with the command to fetch them, so reachability into
+# the 2,656-material archive is preserved even when the bytes are not carried.
+MATERIAL_SECTION_BUDGET = 16_384
+
+
+def material_block(mat_id: str, mat: dict[str, Any], errata: dict[str, dict[str, Any]]) -> list[str]:
+    """Render one §3 material entry, whole.  Never split: a half-quoted passage
+    is worse than an omitted one, because it can be mistaken for the full quote
+    ("要約を原典と呼ばない")."""
+    out: list[str] = []
+    authors = ", ".join(mat["source"]["authors"][:3])
+    if len(mat["source"]["authors"]) > 3:
+        authors += " et al."
+    out.append(f"### `{mat_id}` {mat['title']} ({authors}, {mat['source']['year']})")
+    out.append(f"- **種別**: `{mat['kind']}` ／ **出典**: {mat['source']['url']}")
+    out.append(f"- **問いへの招き**: {mat['literary_invitation']}")
+    out.append(f"- **版・箇所**: {mat['source'].get('version_note', '未記録')} ／ {mat.get('context', '未記録')}")
+    verification = mat.get("verification", {})
+    out.append(f"- **台帳の検証記録（今回の照合結果ではない）**: {verification.get('status', '未記録')}")
+    corrections = errata_for(mat_id, errata)
+    if corrections:
+        ids = ", ".join(f"`{c.get('errata_id')}`" for c in corrections)
+        out.append(
+            f"- **訂正録（この記録の隣に置かれ、記録自体は書き換えていない）**: {ids}"
+            f" — `python3 tools/inspect_inquiry.py --id {mat_id}`"
+        )
+    if mat.get("source_note"):
+        out.append(f"- **先行する編者のメモ**: {mat['source_note']}")
+    out.append("- **台帳の passage（引用・要約の別は記録に従う。要約を原典と呼ばない）**:")
+    out.extend(f"> {part}" for part in mat["passage"].splitlines())
+    out.append(f"- **適用範囲の留保**: {mat['scope_note']}")
+    out.append("")
+    return out
+
+
 def build_context_packet(
     data: dict[str, dict[str, dict[str, Any]]],
     target_qid: str,
@@ -625,6 +674,7 @@ def build_context_packet(
     seed: str | None = None,
     errata: dict[str, dict[str, Any]] | None = None,
     root: Path = ROOT,
+    material_budget: int = MATERIAL_SECTION_BUDGET,
 ) -> str:
     if errata is None:
         errata = load_errata()
@@ -768,31 +818,41 @@ def build_context_packet(
     lines.append("")
 
     lines.append("## 3. 対話素材（結論の証拠ではなく、摩擦と比喩の種として扱う）")
-    for mat_id in q.get("material_ids", []):
-        if mat_id in materials:
-            mat = materials[mat_id]
-            authors = ", ".join(mat["source"]["authors"][:3])
-            if len(mat["source"]["authors"]) > 3:
-                authors += " et al."
-            lines.append(f"### `{mat_id}` {mat['title']} ({authors}, {mat['source']['year']})")
-            lines.append(f"- **種別**: `{mat['kind']}` ／ **出典**: {mat['source']['url']}")
-            lines.append(f"- **問いへの招き**: {mat['literary_invitation']}")
-            lines.append(f"- **版・箇所**: {mat['source'].get('version_note', '未記録')} ／ {mat.get('context', '未記録')}")
-            verification = mat.get("verification", {})
-            lines.append(f"- **台帳の検証記録（今回の照合結果ではない）**: {verification.get('status', '未記録')}")
-            corrections = errata_for(mat_id, errata)
-            if corrections:
-                ids = ", ".join(f"`{c.get('errata_id')}`" for c in corrections)
-                lines.append(
-                    f"- **訂正録（この記録の隣に置かれ、記録自体は書き換えていない）**: {ids}"
-                    f" — `python3 tools/inspect_inquiry.py --id {mat_id}`"
-                )
-            if mat.get("source_note"):
-                lines.append(f"- **先行する編者のメモ**: {mat['source_note']}")
-            lines.append("- **台帳の passage（引用・要約の別は記録に従う。要約を原典と呼ばない）**:")
-            lines.extend(f"> {part}" for part in mat["passage"].splitlines())
-            lines.append(f"- **適用範囲の留保**: {mat['scope_note']}")
-            lines.append("")
+    # Byte budget, ledger-order prefix.  Every material of the question is a
+    # candidate in the order the ledger records it; blocks are added whole until
+    # the next one would cross the budget, and everything from there on is named
+    # as omitted rather than silently dropped.  Strict prefix (not best-fit) so
+    # the selection stays deterministic and stays in ledger order -- a greedy
+    # fill would reorder by size and make "which materials did I see" depend on
+    # passage lengths instead of on the question's own record.
+    packet_materials = [mid for mid in q.get("material_ids", []) if mid in materials]
+    shown_mats: list[str] = []
+    omitted_mats: list[str] = []
+    used_bytes = 0
+    for idx, mat_id in enumerate(packet_materials):
+        block = material_block(mat_id, materials[mat_id], errata)
+        cost = len(("\n".join(block) + "\n").encode("utf-8"))
+        # The first material is always carried whole, even if it alone exceeds
+        # the budget: an empty §3 would hide the question's own materials.
+        if material_budget > 0 and shown_mats and used_bytes + cost > material_budget:
+            omitted_mats = packet_materials[idx:]
+            break
+        shown_mats.append(mat_id)
+        used_bytes += cost
+        lines.extend(block)
+    if omitted_mats:
+        omitted_str = ", ".join(f"`{m}`" for m in omitted_mats)
+        lines.append(
+            f"- **予算注記（§3 の上限 {material_budget:,} B）**: この問いの対話素材 "
+            f"{len(packet_materials)} 件のうち台帳順の先頭 {len(shown_mats)} 件（{used_bytes:,} B）を載せ、"
+            f"窓外の {len(omitted_mats)} 件は**載せていません**: {omitted_str}。"
+        )
+        lines.append(
+            "  省略は素材の価値や関連度の判断ではなく、packet の字节予算だけです。"
+            " 窓外の素材も `python3 tools/inspect_inquiry.py --id <MAT-ID>` で全文を引けます"
+            "（予算は `--material-budget` で変更可、0 で無制限）。"
+        )
+        lines.append("")
 
     lines.append("## 4. 先行する関連断片（一つ受け継ぎ、一つずらす／裏返す／断ち切る）")
     omitted_frags = rel_frags[:-3] if len(rel_frags) > 3 else []
@@ -1113,6 +1173,18 @@ def main() -> int:
         default=None,
         help="Explicit branch name or hex seed for candidate dispersion (default: current git branch)",
     )
+    parser.add_argument(
+        "--material-budget",
+        type=int,
+        default=MATERIAL_SECTION_BUDGET,
+        metavar="BYTES",
+        help=(
+            "Byte budget for packet §3 (対話素材).  Materials are carried whole, in "
+            "ledger order, until the next block would cross this limit; the rest are "
+            "named as omitted with the command to fetch them.  0 means unlimited "
+            f"(default: {MATERIAL_SECTION_BUDGET}, measured at p90 of all questions)"
+        ),
+    )
     parser.add_argument("--map-path", type=Path, default=DEFAULT_MAP_PATH, help="Path for the compact READING_MAP.md index")
     action = parser.add_mutually_exclusive_group()
     action.add_argument("--write-map", action="store_true", help="Write READING_MAP.md index and map/ shards from current state ledgers")
@@ -1126,7 +1198,11 @@ def main() -> int:
 
     if args.packet:
         try:
-            sys.stdout.write(build_context_packet(data, args.packet, seed=args.seed))
+            sys.stdout.write(
+                build_context_packet(
+                    data, args.packet, seed=args.seed, material_budget=args.material_budget
+                )
+            )
         except ValueError as exc:
             print(f"error: {exc}", file=sys.stderr)
             return 1

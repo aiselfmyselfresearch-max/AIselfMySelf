@@ -212,6 +212,46 @@ class ReachabilityTests(unittest.TestCase):
             view = note_index.build_view(root, sample_data(root))
             self.assertFalse(view["readings/2026-11-02-orphan.md"]["reachable"])
 
+    def test_self_mention_does_not_make_a_note_reachable(self) -> None:
+        """A report quoting *its own* path is not a route a reader can navigate from.
+
+        Same reason READING_MAP.md is excluded: a report that reproduces its own
+        path (a `mv readings/x.md /tmp/` recovery step, a self-citation) would
+        otherwise mark itself reachable and shrink the orphan count that the
+        metric exists to expose.
+        """
+        with tempfile.TemporaryDirectory() as tmp:
+            root = make_repo(Path(tmp))
+            write_note(
+                root,
+                "2026-11-02-self.md",
+                "# 自己言及\n\n再現手順:\n\n```sh\n"
+                "mv readings/2026-11-02-self.md /tmp/\n```\n",
+            )
+            view = note_index.build_view(root, sample_data(root))
+            entry = view["readings/2026-11-02-self.md"]
+            self.assertFalse(entry["reachable"])
+            self.assertEqual(entry["linked_from"], [])
+            self.assertEqual(entry["mentioned_in"], [])
+            self.assertEqual(
+                [e["path"] for e in note_index.orphans(view)],
+                ["readings/2026-11-02-self.md"],
+            )
+
+    def test_self_link_is_excluded_but_a_peer_link_still_counts(self) -> None:
+        """The exclusion is about the *source*, not about links in general."""
+        with tempfile.TemporaryDirectory() as tmp:
+            root = make_repo(Path(tmp))
+            write_note(root, "2026-11-02-self.md", "# 自分\n\n[自分](2026-11-02-self.md)\n")
+            view = note_index.build_view(root, sample_data(root))
+            self.assertFalse(view["readings/2026-11-02-self.md"]["reachable"])
+
+            write_note(root, "2026-11-02-peer.md", "# 仲間\n\n[前](2026-11-02-self.md)\n")
+            view = note_index.build_view(root, sample_data(root))
+            entry = view["readings/2026-11-02-self.md"]
+            self.assertTrue(entry["reachable"])
+            self.assertEqual(entry["linked_from"], ["readings/2026-11-02-peer.md"])
+
     def test_relative_link_from_a_peer_note_counts(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = make_repo(Path(tmp))

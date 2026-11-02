@@ -102,6 +102,12 @@ _PATH_MENTION = re.compile(r"readings/([A-Za-z0-9._-]+\.(?:md|tsv|json))")
 # Documents a reader can navigate from.  READING_MAP.md is excluded on purpose:
 # it is generated *from* this index, so counting it would make every report
 # "reachable" and hide the orphan problem it is meant to measure.
+#
+# A report quoting *its own* path is excluded for the same reason: a reader
+# standing inside a document cannot navigate to that document from it.  Reports
+# that reproduce their own path (a `mv readings/x.md /tmp/` recovery step, a
+# citation of the file they are writing) would otherwise mark themselves
+# reachable and silently shrink the orphan count they are meant to grow.
 _GENERATED_DOCS = frozenset({"READING_MAP.md"})
 
 
@@ -217,10 +223,12 @@ def inbound_links(root: Path = ROOT) -> dict[str, dict[str, Any]]:
         linked_targets: set[str] = set()
         for target in _MD_LINK_TARGET.findall(text):
             resolved = _normalise_link(source.parent, target, root)
-            if resolved is not None:
+            if resolved is not None and str(resolved) != rel_source:
                 linked_targets.add(str(resolved))
         for name in _PATH_MENTION.findall(text):
             rel = f"{NOTES_DIR_NAME}/{name}"
+            if rel == rel_source:
+                continue
             bucket = inbound.setdefault(rel, {"linked": set(), "mentioned": set()})
             if rel in linked_targets:
                 bucket["linked"].add(rel_source)
