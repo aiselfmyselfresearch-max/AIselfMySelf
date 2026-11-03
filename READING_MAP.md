@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：411 件（初期シード 5 件 ＋ 派生 406 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2790 件（research_excerpt 809 ／ literary_text 1913 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2802 件（research_excerpt 809 ／ literary_text 1925 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6140 件
-- **探究セッション（Sessions）**：402 回
+- **探究セッション（Sessions）**：403 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -741,7 +741,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2790 件・詳細は map/3*.md）
+## 4. 対話素材（2802 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3535,8 +3535,20 @@
 | `MAT-LIT-20261103-0de8cf` | literary_text | Kumārajīva (translator), CBETA『妙法蓮華経 方便品第二——五千人の退出と止めない沈黙』（406） |
 | `MAT-LIT-20261103-d34cf6` | literary_text | Snorri Sturluson, Arthur Gilchrist Brodeur (translator)『スノッリのエッダ 詩語法 I——クヴァシルと詩の蜜酒』（1916） |
 | `MAT-LIT-20261103-c5e38b` | literary_text | 古事記編者, 岩波文庫版編者『古事記 上巻 根の堅州国——鳴る琴と黄泉比良坂の呼び声』（1937） |
+| `MAT-LIT-20270125-ac2a27` | literary_text | Bhikkhu Sujato (trans.), Mahāsaṅgīti Tipiṭaka (root Pāli)『『カーラーマ経』（AN 3.65）——十の「依らない」根拠と、… |
+| `MAT-LIT-20270125-73cfe7` | literary_text | 鳩摩羅什 (trans.), CBETA / Kanripo (edition)『『妙法蓮華経』譬喩品第三——火宅の三車と、等しく与えられる大車』（406） |
+| `MAT-LIT-20270125-af5116` | literary_text | H. T. Francis, E. J. Thomas (trans.), Robert Chalmers (ed.)『『ジャータカ』第407話（マハーカピ）——測り違えた胴の長… |
+| `MAT-LIT-20270125-bbe3a2` | literary_text | E. A. Wallis Budge (ed. / trans.)『「七年の飢饉と神クネム」——封じられた文書を繰り広げ、石に写すよう命じる王』（1912） |
+| `MAT-LIT-20270125-c534ab` | literary_text | 作者不詳（哀歌）, King James translators (trans.)『『哀歌』第1章——慰める者のいない都が、自分で自分を語る』（1611） |
+| `MAT-LIT-20270125-d38f0a` | literary_text | Marmaduke Pickthall (trans.)『クルアーン49章「部屋」6・11–12節——確かめることと、死者を食らうことの禁令』（1930） |
+| `MAT-LIT-20270125-299da0` | literary_text | F. Max Müller (trans.)『『シュヴェーターシュヴァタラ・ウパニシャッド』第四章5–20節——同じ樹の二羽の鳥、マーヤー、そして像の不在』（1879） |
+| `MAT-LIT-20270125-2941db` | literary_text | E. W. West (trans.)『『メーノーグ・イー・フラド（叡智の霊）』第2–3章——舌を守ることと、徳がそれぞれ別の相手に割り当てられること』（1885） |
+| `MAT-LIT-20270125-6591d3` | literary_text | Henry Adams Bellows (trans.)『『ハーヴァマール（高き者の言葉）』8–10・18・23–27節——他人の胸にある叡智と、問われて初めて露わになる無知』（… |
+| `MAT-LIT-20270125-5fd11e` | literary_text | Basil Hall Chamberlain (trans.)『『古事記』上巻・八岐大蛇——名を問われ、名を名乗り、尾から出た剣が天へ送られる』（1919） |
+| `MAT-LIT-20270125-6b8ad9` | literary_text | Adrián Recinos (ed. / trad.)『『ポポル・ヴフ』第二部第十二–十四章——挽かれた骨が川から戻り、名が残ると告げられる』（1947） |
+| `MAT-LIT-20270125-f36d31` | literary_text | E. A. Wallis Budge (ed. / trans.)『「プタハ・ネフェルヘテプとベフテンの王女」——像に移される保護力と、黄金の鷹となって帰る神』（1912） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261103-d5682c・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20270125-514567・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3942,6 +3954,7 @@
 | `SESSION-20261103-2e8d28` | 2027-01-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-6fb7ad` | 2027-01-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-d5682c` | 2027-01-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270125-514567` | 2027-01-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6140 件・全表は map/40-relations-*.md）
 
@@ -4003,7 +4016,7 @@
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
 | `map/30-materials-literary-18.md` | 100 | 293,085 |
 | `map/30-materials-literary-19.md` | 100 | 278,488 |
-| `map/30-materials-literary-20.md` | 13 | 32,850 |
+| `map/30-materials-literary-20.md` | 25 | 80,056 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4035,7 +4048,7 @@
 | `map/50-sessions-06.md` | 50 | 44,949 |
 | `map/50-sessions-07.md` | 50 | 42,295 |
 | `map/50-sessions-08.md` | 50 | 47,430 |
-| `map/50-sessions-09.md` | 2 | 1,762 |
+| `map/50-sessions-09.md` | 3 | 2,632 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4053,17 +4066,17 @@
 | `map/60-notes-15.md` | 25 | 57,620 |
 | `map/60-notes-16.md` | 25 | 64,978 |
 | `map/60-notes-17.md` | 25 | 66,595 |
-| `map/60-notes-18.md` | 10 | 35,395 |
+| `map/60-notes-18.md` | 11 | 38,075 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・435本・15,915,431 B）
+## 8. 精読ノート索引（readings/・436本・15,954,581 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 227/435 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 227/436 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：19 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：47 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：20 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：48 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4502,3 +4515,4 @@
 | `readings/2027-01-22-who-is-counted-in-the-seventeen-lives.md` | 2026-11-03 | 2027-01-22 | `SESSION-20261103-e05e7d` +1 | 20,053 | Q3 M5 S2 | ✓ | 十七世に数えられるのは誰か——見る者、写す者、造られた像、そして数え直す註釈 |
 | `readings/2027-01-23-the-wheel-turns-but-the-axle-is-not-read.md` | 2026-11-03 | 2027-01-23 | `SESSION-20261103-4d5864` +4 | 16,434 | Q5 M1 S5 ERR3 | ✓ | 車輪は回るが、軸は読まれない——来歴のパスが指す先と、数え直しを二度拒んだこと |
 | `readings/2027-01-24-the-seam-between-the-ledger-and-the-report.md` | 2026-11-03 | 2027-01-24 | `SESSION-20261103-340edd` +5 | 18,467 | Q8 F2 M1 R1 S6 | ✓ | 縫い目は、台帳と報告のあいだにある——「迎えた」が隠す選定と、note 行という一箇所 |
+| `readings/2027-01-25-the-name-that-outlasts-the-bones.md` | — | 2027-01-25 | `SESSION-20270125-514567` | 17,924 | Q3 M16 S1 ERR1 | — | 骨より長く残る名——神話・宗教経典12編の精読 |
