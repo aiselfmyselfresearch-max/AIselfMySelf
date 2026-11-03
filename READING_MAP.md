@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：408 件（初期シード 5 件 ＋ 派生 403 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2676 件（research_excerpt 809 ／ literary_text 1799 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2681 件（research_excerpt 809 ／ literary_text 1804 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6035 件
-- **探究セッション（Sessions）**：381 回
+- **解釈的関係（Relations）**：6040 件
+- **探究セッション（Sessions）**：382 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -738,7 +738,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2676 件・詳細は map/3*.md）
+## 4. 対話素材（2681 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3383,6 +3383,11 @@
 | `MAT-LIT-20261102-aec558` | literary_text | 『尚書』伝承（作者・編纂層は未確定）, Kanripo / TLS（電子本文）『『尚書』金縢——王の代身を願い、語るなと命じ、後から開かれる冊』（2016） |
 | `MAT-LIT-20261102-cc854f` | literary_text | マオリの伝承者・筆者（本節の個人名は示されない）, Edward Shortland（収集・編訳、1882）『マオリの葬送カラキア——祖先の道の末尾で名乗る「この学ぶ者」』（18… |
 | `MAT-LIT-20261102-c1c669` | literary_text | ナマ／コイコイの口承伝承（本節の個々の語り手は未特定）, W. H. I. Bleek（編訳、1864）, G. Krönlein・H. C. Knudsen・John Prie… |
+| `MAT-LIT-20261103-089e70` | literary_text | 伝承上ヴィヤーサに帰される叙事詩『『マハーバーラタ』森林篇のヤクシャ問答——死すべき者はなぜ不死のように暮らすのか』（-300） |
+| `MAT-LIT-20261103-8d84e6` | literary_text | 創世記（伝承上モーセ五書）『『創世記』18章16–33節——ソドムをめぐり、数を下げながら問うアブラハム』（-500） |
+| `MAT-LIT-20261103-350629` | literary_text | 伝承上ヴャーサに帰される叙事詩本文『『バガヴァッド・ギーター』第6章5–6節——自己を引き上げる自己、敵となる自己』（-200） |
+| `MAT-LIT-20261103-4ff062` | literary_text | クルアーン（イスラーム伝承における啓示本文）『クルアーン第18章60–82節——ムーサーと知識を与えられた僕の同行』（622） |
+| `MAT-LIT-20261103-40efa0` | literary_text | キチェ語の伝承本文（編者・伝承者複数）『『ポポル・ヴフ』第三部のトウモロコシの人々——食物から作られ、見通しを制限される』（1550） |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -3729,6 +3734,7 @@
 | `SESSION-20261102-f6a60b` | 2026-11-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261102-eb2400` | 2026-11-02 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-70e889` | — | — |
 | `SESSION-20261102-512471` | 2027-01-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261103-e197ac` | 2027-01-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -3805,16 +3811,16 @@
 | `SESSION-20261102-aec977` | 2027-01-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261102-ffc133` | 2027-01-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6035 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6040 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 830 |
 | 共鳴 (echo) | 1498 |
 | 切断・割り込み (interrupts) | 209 |
-| 未解決のまま開く (leaves_open) | 869 |
+| 未解決のまま開く (leaves_open) | 870 |
 | 比喩的共鳴 (metaphorically_resonates) | 159 |
-| 枠組みの組み替え (reframes) | 537 |
+| 枠組みの組み替え (reframes) | 541 |
 | 応答 (responds_to) | 1650 |
 | 変奏・変形 (transforms) | 283 |
 
@@ -3863,7 +3869,8 @@
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
-| `map/30-materials-literary-18.md` | 99 | 323,280 |
+| `map/30-materials-literary-18.md` | 100 | 326,098 |
+| `map/30-materials-literary-19.md` | 4 | 9,343 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3884,17 +3891,17 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 179,357 |
-| `map/40-relations-12.md` | 500 | 164,142 |
-| `map/40-relations-13.md` | 35 | 13,891 |
+| `map/40-relations-11.md` | 500 | 179,400 |
+| `map/40-relations-12.md` | 500 | 163,969 |
+| `map/40-relations-13.md` | 40 | 15,957 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
-| `map/50-sessions-07.md` | 50 | 43,720 |
-| `map/50-sessions-08.md` | 31 | 29,773 |
+| `map/50-sessions-07.md` | 50 | 43,489 |
+| `map/50-sessions-08.md` | 32 | 30,813 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -3907,21 +3914,21 @@
 | `map/60-notes-10.md` | 25 | 56,331 |
 | `map/60-notes-11.md` | 25 | 61,670 |
 | `map/60-notes-12.md` | 25 | 62,867 |
-| `map/60-notes-13.md` | 25 | 78,119 |
-| `map/60-notes-14.md` | 25 | 53,870 |
-| `map/60-notes-15.md` | 25 | 67,205 |
-| `map/60-notes-16.md` | 25 | 59,636 |
-| `map/60-notes-17.md` | 15 | 40,752 |
+| `map/60-notes-13.md` | 25 | 76,634 |
+| `map/60-notes-14.md` | 25 | 54,898 |
+| `map/60-notes-15.md` | 25 | 67,385 |
+| `map/60-notes-16.md` | 25 | 58,673 |
+| `map/60-notes-17.md` | 16 | 43,615 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・415本・15,248,519 B）
+## 8. 精読ノート索引（readings/・416本・15,265,466 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 210/415 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 211/416 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：7 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：44 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：45 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4235,6 +4242,7 @@
 | `readings/2026-11-02-thirty-minutes-outside-the-ledger.md` | — | 2026-11-02 | `SESSION-20261102-e7aa65` +2 | 11,335 | Q6 F20 M13 S3 ERR1 | ✓ | 看護日誌のない枕元、溝へあける赤い水——『三十分の空白』の脱・書記室変奏と反歌による切断 |
 | `readings/2026-11-02-voices-placed-before-feet.md` | — | 2026-11-02 | `SESSION-20261102-ff5a0c` +3 | 10,706 | Q3 F10 M7 MOT4 R2 S4 ERR4 | ✓ | 置かれた声の上にできていく道——『織る手』の台帳比喩撤去と、足の来ない声の反歌 |
 | `readings/2026-11-03-sixty-kilos-without-a-column.md` | — | 2026-11-03 | `SESSION-20261103-4a8c65` +5 | 10,019 | Q7 F12 M7 MOT1 S6 | ✓ | 六〇キロの行き先と、担い手の空席——『九階の汚水槽と、行き先の欄』の脱・書記室変奏と手順書への異議 |
+| `readings/2026-11-03-what-remains-after-the-answer.md` | 2026-11-03 | 2026-11-03 | `SESSION-20261103-e197ac` | 6,465 | Q3 M6 S1 | — | 死を知ること、理由を知らずに読むこと——神話・宗教経典の五つの箇所を精読する |
 | `readings/2026-11-04-ice-height-and-the-pre-read-apology.md` | — | 2026-11-04 | `SESSION-20261104-26391d` +2 | 15,916 | Q4 F16 M7 MOT11 R3 S3 | ✓ | 溶けた高さ、害の前に読まれる詫び——「忘却と沈黙」×「裁きの席」の初架橋と、量れない数 |
 | `readings/2026-11-04-the-low-string-and-the-curve.md` | — | 2026-11-04 | `SESSION-20261104-9a4c6e` | 11,499 | Q6 F6 M5 MOT3 R1 S1 | ✓ | 低い弦と曲がり方——歌の先行と、名乗らない署名の衝突 |
 | `readings/2026-11-05-cedar-board-and-spring-gate.md` | — | 2026-11-05 | `SESSION-20261105-c91bde` +2 | 19,977 | Q9 F10 M13 MOT3 R2 S3 ERR7 | ✓ | 顎を引く朝、合わない杉板 — 窓口劇の脱・書記室変奏と四か月後の反歌（SESSION-20261105-c91bde） |
