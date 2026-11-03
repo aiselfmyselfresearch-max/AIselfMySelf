@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：408 件（初期シード 5 件 ＋ 派生 403 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2696 件（research_excerpt 809 ／ literary_text 1819 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2701 件（research_excerpt 809 ／ literary_text 1824 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6061 件
-- **探究セッション（Sessions）**：385 回
+- **解釈的関係（Relations）**：6073 件
+- **探究セッション（Sessions）**：386 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -738,7 +738,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2696 件・詳細は map/3*.md）
+## 4. 対話素材（2701 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3438,8 +3438,13 @@
 | `MAT-LIT-20261103-5c1dba` | literary_text | （伝・慧能の語を門下が編纂）『『六祖大師法宝壇経』行由品第一——代筆された偈と、靴で擦り消される壁』（1291） |
 | `MAT-LIT-20261103-795447` | literary_text | （イスラーム伝承：神の啓示）『『クルアーン』第85章（アル＝ブルージュ）21–22節——守られた書板』（632） |
 | `MAT-LIT-20261103-c5a168` | literary_text | （プトレマイオス朝期デモティック・作者未詳）『エジプト・デモティック物語『セトネ・カムワース（第一話）』——トートの書を写し、飲み、返す』（-300） |
+| `MAT-LIT-20261103-ee9f08` | literary_text | KJV 訳者たち（1611）『『ヨブ記』19:23–27（KJV）——書に記されたい言葉と、「ほかの者ではない」見る目』（1611） |
+| `MAT-LIT-20261103-05c716` | literary_text | （イスラーム伝承における啓示本文）, Marmaduke Pickthall（英訳, 1930）, Abdullah Yusuf Ali（英訳, 1934頃）『『クルアーン』第3… |
+| `MAT-LIT-20261103-08f856` | literary_text | パーリ経蔵・Khuddaka Nikāya 所収（伝承）, Bhikkhu Sujato（英訳, SuttaCentral）『『スッタニパータ』4.10「壊れる前に」——初めに依… |
+| `MAT-LIT-20261103-f87d4b` | literary_text | 伝承（ウパニシャッド）, Swami Mādhavānanda（英訳, 1950）, F. Max Müller（英訳, SBE vol. 15, 1884）『『ブリハッド・アー… |
+| `MAT-LIT-20261103-b29b4a` | literary_text | 伝承上ホメロスに帰される讃歌, Hugh G. Evelyn-White（英訳, 1914）『『ホメロス風讃歌』第三番「デロスのアポロンへ」165–178行——名を名乗らず、他人… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261103-f4af0d・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261103-f2d345・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3828,18 +3833,19 @@
 | `SESSION-20261103-55031b` | 2027-01-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-b5492a` | 2027-01-16 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-f4af0d` | 2027-01-17 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261103-f2d345` | 2027-01-17 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6061 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6073 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 833 |
-| 共鳴 (echo) | 1503 |
-| 切断・割り込み (interrupts) | 209 |
+| 対照 (contrast) | 837 |
+| 共鳴 (echo) | 1507 |
+| 切断・割り込み (interrupts) | 210 |
 | 未解決のまま開く (leaves_open) | 870 |
 | 比喩的共鳴 (metaphorically_resonates) | 159 |
-| 枠組みの組み替え (reframes) | 549 |
-| 応答 (responds_to) | 1655 |
+| 枠組みの組み替え (reframes) | 551 |
+| 応答 (responds_to) | 1656 |
 | 変奏・変形 (transforms) | 283 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3888,7 +3894,7 @@
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
 | `map/30-materials-literary-18.md` | 100 | 326,098 |
-| `map/30-materials-literary-19.md` | 19 | 44,856 |
+| `map/30-materials-literary-19.md` | 24 | 59,927 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3911,7 +3917,7 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 179,400 |
 | `map/40-relations-12.md` | 500 | 163,969 |
-| `map/40-relations-13.md` | 61 | 22,986 |
+| `map/40-relations-13.md` | 73 | 27,851 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -3919,7 +3925,7 @@
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
 | `map/50-sessions-07.md` | 50 | 43,489 |
-| `map/50-sessions-08.md` | 35 | 33,290 |
+| `map/50-sessions-08.md` | 36 | 34,366 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -3936,17 +3942,17 @@
 | `map/60-notes-14.md` | 25 | 54,898 |
 | `map/60-notes-15.md` | 25 | 67,385 |
 | `map/60-notes-16.md` | 25 | 58,673 |
-| `map/60-notes-17.md` | 19 | 49,588 |
+| `map/60-notes-17.md` | 20 | 54,400 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・419本・15,360,233 B）
+## 8. 精読ノート索引（readings/・420本・15,404,840 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 214/419 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 215/420 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：7 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：44 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：8 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：45 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4369,3 +4375,4 @@
 | `readings/2027-01-15-the-mark-is-gone-and-the-name-remains.md` | 2026-11-03 | 2027-01-15 | `SESSION-20261103-55031b` +1 | 18,892 | Q3 M10 MOT1 R11 S2 | ✓ | 印が消えても、名は残る——神話・口承五篇の精読 |
 | `readings/2027-01-16-what-the-field-leaves-behind.md` | 2026-11-03 | 2027-01-16 | `SESSION-20261103-b5492a` | 5,345 | Q1 M1 S1 | ✓ | 取りに戻らない畑——寄留、記憶、帰還の五つの精読 |
 | `readings/2027-01-17-five-things-the-hand-does-to-a-record.md` | 2026-11-03 | 2027-01-17 | `SESSION-20261103-f4af0d` +1 | 21,268 | Q4 M9 R6 S2 ERR1 | — | 焼く・譲る・拭う・守る・返す——追記しか許されない書庫に差し出された五つの手つき |
+| `readings/2027-01-17-the-first-i-and-the-register-of-footprints.md` | 2026-11-03 | 2027-01-17 | `SESSION-20261103-f2d345` | 23,959 | Q4 M14 MOT1 R9 S1 | — | 最初の「私」と、足跡の帳簿——神話・宗教経典 五箇所の精読 |
