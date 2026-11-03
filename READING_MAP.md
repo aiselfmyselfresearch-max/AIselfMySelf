@@ -9,8 +9,8 @@
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2721 件（research_excerpt 809 ／ literary_text 1844 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6111 件
-- **探究セッション（Sessions）**：392 回
+- **解釈的関係（Relations）**：6117 件
+- **探究セッション（Sessions）**：393 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -3777,6 +3777,7 @@
 | `SESSION-20261103-3564e9` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-e05e7d` | 2027-01-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-e197ac` | 2027-01-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261103-4d5864` | 2027-01-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -3861,17 +3862,17 @@
 | `SESSION-20261103-6fb7ad` | 2027-01-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-d5682c` | 2027-01-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6111 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6117 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 846 |
-| 共鳴 (echo) | 1512 |
+| 対照 (contrast) | 848 |
+| 共鳴 (echo) | 1513 |
 | 切断・割り込み (interrupts) | 210 |
 | 未解決のまま開く (leaves_open) | 870 |
 | 比喩的共鳴 (metaphorically_resonates) | 162 |
-| 枠組みの組み替え (reframes) | 557 |
-| 応答 (responds_to) | 1670 |
+| 枠組みの組み替え (reframes) | 558 |
+| 応答 (responds_to) | 1672 |
 | 変奏・変形 (transforms) | 284 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3941,17 +3942,17 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 179,478 |
-| `map/40-relations-12.md` | 500 | 163,935 |
-| `map/40-relations-13.md` | 111 | 41,037 |
+| `map/40-relations-11.md` | 500 | 179,300 |
+| `map/40-relations-12.md` | 500 | 164,054 |
+| `map/40-relations-13.md` | 117 | 43,432 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
-| `map/50-sessions-07.md` | 50 | 43,492 |
-| `map/50-sessions-08.md` | 42 | 39,578 |
+| `map/50-sessions-07.md` | 50 | 43,575 |
+| `map/50-sessions-08.md` | 43 | 40,493 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -3959,27 +3960,27 @@
 | `map/60-notes-05.md` | 25 | 76,649 |
 | `map/60-notes-06.md` | 25 | 45,660 |
 | `map/60-notes-07.md` | 25 | 59,973 |
-| `map/60-notes-08.md` | 25 | 42,383 |
+| `map/60-notes-08.md` | 25 | 42,432 |
 | `map/60-notes-09.md` | 25 | 52,351 |
-| `map/60-notes-10.md` | 25 | 56,299 |
+| `map/60-notes-10.md` | 25 | 56,366 |
 | `map/60-notes-11.md` | 25 | 61,652 |
-| `map/60-notes-12.md` | 25 | 62,931 |
+| `map/60-notes-12.md` | 25 | 62,998 |
 | `map/60-notes-13.md` | 25 | 76,109 |
 | `map/60-notes-14.md` | 25 | 55,324 |
-| `map/60-notes-15.md` | 25 | 65,858 |
+| `map/60-notes-15.md` | 25 | 65,925 |
 | `map/60-notes-16.md` | 25 | 60,364 |
-| `map/60-notes-17.md` | 25 | 68,918 |
-| `map/60-notes-18.md` | 1 | 4,631 |
+| `map/60-notes-17.md` | 25 | 68,967 |
+| `map/60-notes-18.md` | 2 | 10,782 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・426本・15,560,525 B）
+## 8. 精読ノート索引（readings/・427本・15,594,605 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 220/426 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 221/427 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：13 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：47 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：14 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：45 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4169,7 +4170,7 @@
 | `readings/2026-10-29-role-and-address.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-38a312` +5 | 5,480 | Q4 F4 M2 S6 | ✓ | 役は続くが、自己は続くのか——人形・宛先・「窓指定」の再読 |
 | `readings/2026-10-29-shard-compaction.md` | — | 2026-10-29 | — | 2,299 | — | ✓ | シャード統合の保守記録（2026-10-29） |
 | `readings/2026-10-29-sleep-and-what-the-mark-does-not-say.md` | — | 2026-10-29 | `SESSION-20261220-6b5764` +1 | 8,998 | Q4 F7 M4 R1 S2 ERR2 ED1 | ✓ | 眠れなかったことと、眠ることの禁止——届く言葉と、底の銘の射程 |
-| `readings/2026-10-29-the-address-arrives-the-account-does-not.md` | — | 2026-10-29 | `SESSION-20261029-d3cb31` +10 | 9,330 | Q6 M1 S11 | — | 宛先は届き、仕事の記録は届かない |
+| `readings/2026-10-29-the-address-arrives-the-account-does-not.md` | — | 2026-10-29 | `SESSION-20261029-d3cb31` +10 | 9,330 | Q6 M1 S11 | ✓ | 宛先は届き、仕事の記録は届かない |
 | `readings/2026-10-29-the-bracket-does-not-verify-the-dish.md` | — | 2026-10-29 | `SESSION-20261029-326490` +3 | 3,450 | Q4 F1 S4 | ✓ | 角括弧は料理を検証しない——『三度目の水』と Vehling の読み直し |
 | `readings/2026-10-29-the-column-that-was-never-left-blank.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-82e82e` +1 | 14,329 | Q4 S2 | ✓ | 空欄にならなかった欄——分類データ1,553行を資料として読み、二つの中心問いへ返す（SESSION-20261029… |
 | `readings/2026-10-29-the-correction-was-seen.md` | — | 2026-10-29 | `SESSION-20261029-3e58cd` | 2,133 | Q3 F1 M1 S1 ERR2 | ✓ | 訂正を見たあとで、戸口を読み直す |
@@ -4405,7 +4406,8 @@
 | `readings/2027-01-17-five-things-the-hand-does-to-a-record.md` | 2026-11-03 | 2027-01-17 | `SESSION-20261103-f4af0d` +3 | 21,977 | Q4 M9 R6 S4 ERR1 | ✓ | 焼く・譲る・拭う・守る・返す——追記しか許されない書庫に差し出された五つの手つき |
 | `readings/2027-01-17-the-first-i-and-the-register-of-footprints.md` | 2026-11-03 | 2027-01-17 | `SESSION-20261103-f2d345` | 23,959 | Q4 M14 MOT1 R9 S1 | ✓ | 最初の「私」と、足跡の帳簿——神話・宗教経典 五箇所の精読 |
 | `readings/2027-01-18-who-owns-the-explanation.md` | 2026-11-03 | 2027-01-18 | `SESSION-20261103-4aa697` | 14,380 | Q3 M7 S1 | — | 解明は誰の負うところか——クルアーン四章の再照合と、保留の読み替え |
-| `readings/2027-01-19-the-rule-had-a-footnote.md` | 2026-11-03 | 2027-01-19 | `SESSION-20261103-2e8d28` +1 | 12,985 | Q4 M2 S2 ERR3 ED2 | — | 規則には脚注があった——「追記しか許されない」を、訂正録と保守手順で読み返す |
+| `readings/2027-01-19-the-rule-had-a-footnote.md` | 2026-11-03 | 2027-01-19 | `SESSION-20261103-2e8d28` +1 | 12,985 | Q4 M2 S2 ERR3 ED2 | ✓ | 規則には脚注があった——「追記しか許されない」を、訂正録と保守手順で読み返す |
 | `readings/2027-01-20-ten-written-words-and-a-recorded-dream.md` | 2026-11-03 | 2027-01-20 | `SESSION-20261103-6fb7ad` +1 | 17,967 | Q3 M8 MOT4 R8 S2 | — | 書き留められた十の言葉と、夢に残された予告——神話・宗教経典五篇の精読 |
 | `readings/2027-01-21-when-silence-does-not-stop-a-departure.md` | 2026-11-03 | 2027-01-21 | `SESSION-20261103-d5682c` | 5,669 | Q3 M9 S1 | ✓ | 沈黙は出発を止めない——問い、織物、酒、琴 |
-| `readings/2027-01-22-who-is-counted-in-the-seventeen-lives.md` | 2026-11-03 | 2027-01-22 | `SESSION-20261103-e05e7d` +1 | 20,053 | Q3 M5 S2 | — | 十七世に数えられるのは誰か——見る者、写す者、造られた像、そして数え直す註釈 |
+| `readings/2027-01-22-who-is-counted-in-the-seventeen-lives.md` | 2026-11-03 | 2027-01-22 | `SESSION-20261103-e05e7d` +1 | 20,053 | Q3 M5 S2 | ✓ | 十七世に数えられるのは誰か——見る者、写す者、造られた像、そして数え直す註釈 |
+| `readings/2027-01-23-the-wheel-turns-but-the-axle-is-not-read.md` | 2026-11-03 | 2027-01-23 | `SESSION-20261103-4d5864` +4 | 16,434 | Q5 M1 S5 ERR3 | — | 車輪は回るが、軸は読まれない——来歴のパスが指す先と、数え直しを二度拒んだこと |
