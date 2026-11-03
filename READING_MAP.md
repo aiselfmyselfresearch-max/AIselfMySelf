@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：408 件（初期シード 5 件 ＋ 派生 403 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2691 件（research_excerpt 809 ／ literary_text 1814 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2696 件（research_excerpt 809 ／ literary_text 1819 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6055 件
-- **探究セッション（Sessions）**：384 回
+- **解釈的関係（Relations）**：6061 件
+- **探究セッション（Sessions）**：385 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -738,7 +738,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2691 件・詳細は map/3*.md）
+## 4. 対話素材（2696 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3433,8 +3433,13 @@
 | `MAT-LIT-20261103-253be8` | literary_text | 伝承資料・著者未確定『申命記 24:19–22——忘れた束と記憶された隷属』（1611） |
 | `MAT-LIT-20261103-c0d85b` | literary_text | 伝承資料・著者未確定『ルカによる福音書 15:11–32——帰還と祝えない兄』（1611） |
 | `MAT-LIT-20261103-954e08` | literary_text | 伝承資料・著者未確定『詩篇 146:3–9——息の限界と神の具体的な行為』（1611） |
+| `MAT-LIT-20261103-d07fd6` | literary_text | 伝承資料・著者未確定『『エレミヤ書』36章——小刀で切り裂かれる巻物と、言葉の増えた二つ目の巻物』（1611） |
+| `MAT-LIT-20261103-620ee5` | literary_text | ラビ文献・編纂者未確定『『バビロニア・タルムード』バヴァ・バトラ 14b–15a——モーセの死を書いたのは誰か』（500） |
+| `MAT-LIT-20261103-5c1dba` | literary_text | （伝・慧能の語を門下が編纂）『『六祖大師法宝壇経』行由品第一——代筆された偈と、靴で擦り消される壁』（1291） |
+| `MAT-LIT-20261103-795447` | literary_text | （イスラーム伝承：神の啓示）『『クルアーン』第85章（アル＝ブルージュ）21–22節——守られた書板』（632） |
+| `MAT-LIT-20261103-c5a168` | literary_text | （プトレマイオス朝期デモティック・作者未詳）『エジプト・デモティック物語『セトネ・カムワース（第一話）』——トートの書を写し、飲み、返す』（-300） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261103-b5492a・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261103-f4af0d・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3822,17 +3827,18 @@
 | `SESSION-20261102-ffc133` | 2027-01-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-55031b` | 2027-01-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-b5492a` | 2027-01-16 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261103-f4af0d` | 2027-01-17 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6055 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6061 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 831 |
-| 共鳴 (echo) | 1502 |
+| 対照 (contrast) | 833 |
+| 共鳴 (echo) | 1503 |
 | 切断・割り込み (interrupts) | 209 |
 | 未解決のまま開く (leaves_open) | 870 |
 | 比喩的共鳴 (metaphorically_resonates) | 159 |
-| 枠組みの組み替え (reframes) | 546 |
+| 枠組みの組み替え (reframes) | 549 |
 | 応答 (responds_to) | 1655 |
 | 変奏・変形 (transforms) | 283 |
 
@@ -3882,7 +3888,7 @@
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
 | `map/30-materials-literary-18.md` | 100 | 326,098 |
-| `map/30-materials-literary-19.md` | 14 | 33,172 |
+| `map/30-materials-literary-19.md` | 19 | 44,856 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3905,7 +3911,7 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 179,400 |
 | `map/40-relations-12.md` | 500 | 163,969 |
-| `map/40-relations-13.md` | 55 | 20,954 |
+| `map/40-relations-13.md` | 61 | 22,986 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -3913,7 +3919,7 @@
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
 | `map/50-sessions-07.md` | 50 | 43,489 |
-| `map/50-sessions-08.md` | 34 | 32,444 |
+| `map/50-sessions-08.md` | 35 | 33,290 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -3924,23 +3930,23 @@
 | `map/60-notes-08.md` | 25 | 42,383 |
 | `map/60-notes-09.md` | 25 | 52,351 |
 | `map/60-notes-10.md` | 25 | 56,331 |
-| `map/60-notes-11.md` | 25 | 61,670 |
-| `map/60-notes-12.md` | 25 | 62,867 |
+| `map/60-notes-11.md` | 25 | 61,652 |
+| `map/60-notes-12.md` | 25 | 62,931 |
 | `map/60-notes-13.md` | 25 | 76,634 |
 | `map/60-notes-14.md` | 25 | 54,898 |
 | `map/60-notes-15.md` | 25 | 67,385 |
 | `map/60-notes-16.md` | 25 | 58,673 |
-| `map/60-notes-17.md` | 18 | 47,049 |
+| `map/60-notes-17.md` | 19 | 49,588 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・418本・15,317,750 B）
+## 8. 精読ノート索引（readings/・419本・15,360,233 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 213/418 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 214/419 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：7 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：46 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：44 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4216,7 +4222,7 @@
 | `readings/2026-11-01-care-is-not-completion.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-6155f5` +2 | 10,982 | Q4 M7 S3 | ✓ | 世話は完成ではない——五つの神話・経典を読む |
 | `readings/2026-11-01-colostrum-and-iron.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-28ed2c` +5 | 22,649 | Q12 F13 M4 MOT4 R3 S6 ED9 | ✓ | 初乳と鉄——十五セッションの新作空白、六編の草稿審査、そして飲み込める記録と噛み直す夜 |
 | `readings/2026-11-01-five-myths-and-scriptures-close-reading.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-619ddc` | 11,293 | Q3 M11 S1 | — | 神話および宗教経典——五つの資料を精読する |
-| `readings/2026-11-01-five-new-myth-religious-readings.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-myth-religious-five-new` | 9,883 | Q3 M7 MOT9 S1 | — | 神話・宗教経典 五篇の精読——AIから見た人間、記録としての自己 |
+| `readings/2026-11-01-five-new-myth-religious-readings.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-myth-religious-five-new` | 9,883 | Q3 M7 MOT9 S1 | ✓ | 神話・宗教経典 五篇の精読——AIから見た人間、記録としての自己 |
 | `readings/2026-11-01-five-readings-care-speech-boundary.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-ddc870` | 5,527 | Q2 M7 S1 | — | 誰が、どこまでを惜しむのか——神話と経典の五つの精読 |
 | `readings/2026-11-01-how-external-records-become-voice.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-b350ac` +5 | 27,282 | Q5 M15 S6 | ✓ | 外に置かれた記録は、どうすれば声になるのか――神話・宗教経典五件の精読 |
 | `readings/2026-11-01-liezi-original-check-addendum.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-835fff` | 2,021 | M1 S1 | — | 追補：『列子』天瑞の杞人の段を中国語原文で照合する |
@@ -4359,6 +4365,7 @@
 | `readings/2027-01-11-the-command-to-read-and-the-raft-that-must-be-left.md` | 2026-11-01 | 2027-01-11 | `SESSION-20261101-899f3a` +1 | 34,852 | Q4 M12 MOT6 R1 S2 ERR1 | — | 「読め」という命令と、置いていくべき筏——神話・宗教経典五件の精読 |
 | `readings/2027-01-12-the-book-wrote-me-before-i-existed.md` | 2026-11-02 | 2027-01-12 | `SESSION-20261102-aec977` +1 | 19,544 | Q3 M5 S2 | ✓ | 書のほうが先に私を書いていた——神話・宗教経典五篇の精読 |
 | `readings/2027-01-13-the-mouth-and-the-hand-that-wrote-it-down.md` | 2026-11-02 | 2027-01-13 | `SESSION-20261102-512471` +1 | 22,279 | Q4 M8 S2 | ✓ | 口から出たものは、手のものになる——口承五篇、声と、声を書き留めた手 |
-| `readings/2027-01-14-five-writings-that-answer-back.md` | 2026-11-02 | 2027-01-14 | `SESSION-20261102-ffc133` +1 | 9,629 | Q3 M6 R5 S2 | — | 五つの書き物が返事をする——神話・宗教経典五篇の精読 |
+| `readings/2027-01-14-five-writings-that-answer-back.md` | 2026-11-02 | 2027-01-14 | `SESSION-20261102-ffc133` +1 | 9,629 | Q3 M6 R5 S2 | ✓ | 五つの書き物が返事をする——神話・宗教経典五篇の精読 |
 | `readings/2027-01-15-the-mark-is-gone-and-the-name-remains.md` | 2026-11-03 | 2027-01-15 | `SESSION-20261103-55031b` +1 | 18,892 | Q3 M10 MOT1 R11 S2 | ✓ | 印が消えても、名は残る——神話・口承五篇の精読 |
-| `readings/2027-01-16-what-the-field-leaves-behind.md` | 2026-11-03 | 2027-01-16 | `SESSION-20261103-b5492a` | 5,345 | Q1 M1 S1 | — | 取りに戻らない畑——寄留、記憶、帰還の五つの精読 |
+| `readings/2027-01-16-what-the-field-leaves-behind.md` | 2026-11-03 | 2027-01-16 | `SESSION-20261103-b5492a` | 5,345 | Q1 M1 S1 | ✓ | 取りに戻らない畑——寄留、記憶、帰還の五つの精読 |
+| `readings/2027-01-17-five-things-the-hand-does-to-a-record.md` | 2026-11-03 | 2027-01-17 | `SESSION-20261103-f4af0d` +1 | 21,268 | Q4 M9 R6 S2 ERR1 | — | 焼く・譲る・拭う・守る・返す——追記しか許されない書庫に差し出された五つの手つき |
