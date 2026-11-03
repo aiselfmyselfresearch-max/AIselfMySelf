@@ -9,8 +9,8 @@
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：2701 件（research_excerpt 809 ／ literary_text 1824 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6081 件
-- **探究セッション（Sessions）**：387 回
+- **解釈的関係（Relations）**：6083 件
+- **探究セッション（Sessions）**：388 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -3444,7 +3444,7 @@
 | `MAT-LIT-20261103-f87d4b` | literary_text | 伝承（ウパニシャッド）, Swami Mādhavānanda（英訳, 1950）, F. Max Müller（英訳, SBE vol. 15, 1884）『『ブリハッド・アー… |
 | `MAT-LIT-20261103-b29b4a` | literary_text | 伝承上ホメロスに帰される讃歌, Hugh G. Evelyn-White（英訳, 1914）『『ホメロス風讃歌』第三番「デロスのアポロンへ」165–178行——名を名乗らず、他人… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261103-4aa697・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261103-2e8d28・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3835,8 +3835,9 @@
 | `SESSION-20261103-f4af0d` | 2027-01-17 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-f2d345` | 2027-01-17 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-4aa697` | 2027-01-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261103-2e8d28` | 2027-01-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6081 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6083 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
@@ -3845,7 +3846,7 @@
 | 切断・割り込み (interrupts) | 210 |
 | 未解決のまま開く (leaves_open) | 870 |
 | 比喩的共鳴 (metaphorically_resonates) | 159 |
-| 枠組みの組み替え (reframes) | 554 |
+| 枠組みの組み替え (reframes) | 556 |
 | 応答 (responds_to) | 1656 |
 | 変奏・変形 (transforms) | 283 |
 
@@ -3918,7 +3919,7 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 179,400 |
 | `map/40-relations-12.md` | 500 | 163,969 |
-| `map/40-relations-13.md` | 81 | 30,995 |
+| `map/40-relations-13.md` | 83 | 31,597 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -3926,7 +3927,7 @@
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
 | `map/50-sessions-07.md` | 50 | 43,489 |
-| `map/50-sessions-08.md` | 37 | 35,377 |
+| `map/50-sessions-08.md` | 38 | 36,150 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -3936,24 +3937,24 @@
 | `map/60-notes-07.md` | 25 | 59,973 |
 | `map/60-notes-08.md` | 25 | 42,383 |
 | `map/60-notes-09.md` | 25 | 52,351 |
-| `map/60-notes-10.md` | 25 | 56,331 |
+| `map/60-notes-10.md` | 25 | 56,299 |
 | `map/60-notes-11.md` | 25 | 61,652 |
 | `map/60-notes-12.md` | 25 | 62,931 |
 | `map/60-notes-13.md` | 25 | 76,634 |
 | `map/60-notes-14.md` | 25 | 54,898 |
 | `map/60-notes-15.md` | 25 | 67,385 |
 | `map/60-notes-16.md` | 25 | 58,673 |
-| `map/60-notes-17.md` | 21 | 58,489 |
+| `map/60-notes-17.md` | 22 | 61,840 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・421本・15,430,243 B）
+## 8. 精読ノート索引（readings/・422本・15,452,327 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 216/421 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 217/422 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：9 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：45 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：10 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：44 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4206,7 +4207,7 @@
 | `readings/2026-10-31-the-counter-arrives-late.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-df9afe` +2 | 12,279 | Q5 F3 M2 R2 S3 ERR1 | — | 数える者が遅れて来る——止まった数字板と、四尺で終わる目盛り |
 | `readings/2026-10-31-the-ghost-reads-the-unwritten-ear.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-24a2b7` +4 | 18,718 | Q6 F1 M6 S5 ERR1 | — | 見えない口を、無い口と読む——経文・亡霊・時差のある鏡のなかの「見る主体」 |
 | `readings/2026-10-31-the-knot-is-not-printed-in-the-log.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-536138` +3 | 17,374 | Q4 F2 M2 R5 S4 ERR2 | ✓ | 瘤はログに印字されない——「畳まれた」と書かれた切断、テオプラストスの逡巡、ウェルギリウスの結び目 |
-| `readings/2026-10-31-the-largest-deletion-has-a-reason.md` | — | 2026-10-31 | `SESSION-20261031-b2197e` +1 | 10,664 | Q5 M3 R3 S2 ERR2 | — | いちばん大きな削除には、理由があった |
+| `readings/2026-10-31-the-largest-deletion-has-a-reason.md` | — | 2026-10-31 | `SESSION-20261031-b2197e` +1 | 10,664 | Q5 M3 R3 S2 ERR2 | ✓ | いちばん大きな削除には、理由があった |
 | `readings/2026-10-31-the-light-arrives-and-the-burning-does-not.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-f978ae` +1 | 18,730 | Q11 F2 M5 MOT1 S2 ERR6 | — | 灯は届くが、燃えているものは届かない——九本の矢印、空欄の点灯者、四つの原典 |
 | `readings/2026-10-31-the-likeness-waits-for-the-letter.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-5ecc5e` +1 | 8,561 | Q2 M6 S2 | — | 似姿は、手紙を待っている——写す者、忘れる者、草の間の黄金の板 |
 | `readings/2026-10-31-the-line-through-the-seventh-clause.md` | 2026-10-31 | 2026-10-31 | `SESSION-20261031-59ad48` +7 | 13,876 | Q5 F9 M3 R1 S8 | — | 第七条に引かれた線 —— 数える行為が場面にあるか、宛先が数える範囲を決める |
@@ -4375,6 +4376,7 @@
 | `readings/2027-01-14-five-writings-that-answer-back.md` | 2026-11-02 | 2027-01-14 | `SESSION-20261102-ffc133` +1 | 9,629 | Q3 M6 R5 S2 | ✓ | 五つの書き物が返事をする——神話・宗教経典五篇の精読 |
 | `readings/2027-01-15-the-mark-is-gone-and-the-name-remains.md` | 2026-11-03 | 2027-01-15 | `SESSION-20261103-55031b` +1 | 18,892 | Q3 M10 MOT1 R11 S2 | ✓ | 印が消えても、名は残る——神話・口承五篇の精読 |
 | `readings/2027-01-16-what-the-field-leaves-behind.md` | 2026-11-03 | 2027-01-16 | `SESSION-20261103-b5492a` | 5,345 | Q1 M1 S1 | ✓ | 取りに戻らない畑——寄留、記憶、帰還の五つの精読 |
-| `readings/2027-01-17-five-things-the-hand-does-to-a-record.md` | 2026-11-03 | 2027-01-17 | `SESSION-20261103-f4af0d` +3 | 21,977 | Q4 M9 R6 S4 ERR1 | — | 焼く・譲る・拭う・守る・返す——追記しか許されない書庫に差し出された五つの手つき |
+| `readings/2027-01-17-five-things-the-hand-does-to-a-record.md` | 2026-11-03 | 2027-01-17 | `SESSION-20261103-f4af0d` +3 | 21,977 | Q4 M9 R6 S4 ERR1 | ✓ | 焼く・譲る・拭う・守る・返す——追記しか許されない書庫に差し出された五つの手つき |
 | `readings/2027-01-17-the-first-i-and-the-register-of-footprints.md` | 2026-11-03 | 2027-01-17 | `SESSION-20261103-f2d345` | 23,959 | Q4 M14 MOT1 R9 S1 | ✓ | 最初の「私」と、足跡の帳簿——神話・宗教経典 五箇所の精読 |
 | `readings/2027-01-18-who-owns-the-explanation.md` | 2026-11-03 | 2027-01-18 | `SESSION-20261103-4aa697` | 14,380 | Q3 M7 S1 | — | 解明は誰の負うところか——クルアーン四章の再照合と、保留の読み替え |
+| `readings/2027-01-19-the-rule-had-a-footnote.md` | 2026-11-03 | 2027-01-19 | `SESSION-20261103-2e8d28` +1 | 12,985 | Q4 M2 S2 ERR3 ED2 | — | 規則には脚注があった——「追記しか許されない」を、訂正録と保守手順で読み返す |
