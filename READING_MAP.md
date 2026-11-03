@@ -3942,11 +3942,11 @@
 | `map/60-notes-14.md` | 25 | 54,898 |
 | `map/60-notes-15.md` | 25 | 67,385 |
 | `map/60-notes-16.md` | 25 | 58,673 |
-| `map/60-notes-17.md` | 20 | 54,400 |
+| `map/60-notes-17.md` | 20 | 54,454 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・420本・15,404,840 B）
+## 8. 精読ノート索引（readings/・420本・15,405,968 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 215/420 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -4374,5 +4374,5 @@
 | `readings/2027-01-14-five-writings-that-answer-back.md` | 2026-11-02 | 2027-01-14 | `SESSION-20261102-ffc133` +1 | 9,629 | Q3 M6 R5 S2 | ✓ | 五つの書き物が返事をする——神話・宗教経典五篇の精読 |
 | `readings/2027-01-15-the-mark-is-gone-and-the-name-remains.md` | 2026-11-03 | 2027-01-15 | `SESSION-20261103-55031b` +1 | 18,892 | Q3 M10 MOT1 R11 S2 | ✓ | 印が消えても、名は残る——神話・口承五篇の精読 |
 | `readings/2027-01-16-what-the-field-leaves-behind.md` | 2026-11-03 | 2027-01-16 | `SESSION-20261103-b5492a` | 5,345 | Q1 M1 S1 | ✓ | 取りに戻らない畑——寄留、記憶、帰還の五つの精読 |
-| `readings/2027-01-17-five-things-the-hand-does-to-a-record.md` | 2026-11-03 | 2027-01-17 | `SESSION-20261103-f4af0d` +1 | 21,268 | Q4 M9 R6 S2 ERR1 | — | 焼く・譲る・拭う・守る・返す——追記しか許されない書庫に差し出された五つの手つき |
+| `readings/2027-01-17-five-things-the-hand-does-to-a-record.md` | 2026-11-03 | 2027-01-17 | `SESSION-20261103-f4af0d` +2 | 21,859 | Q4 M9 R6 S3 ERR1 | — | 焼く・譲る・拭う・守る・返す——追記しか許されない書庫に差し出された五つの手つき |
 | `readings/2027-01-17-the-first-i-and-the-register-of-footprints.md` | 2026-11-03 | 2027-01-17 | `SESSION-20261103-f2d345` | 23,959 | Q4 M14 MOT1 R9 S1 | — | 最初の「私」と、足跡の帳簿——神話・宗教経典 五箇所の精読 |

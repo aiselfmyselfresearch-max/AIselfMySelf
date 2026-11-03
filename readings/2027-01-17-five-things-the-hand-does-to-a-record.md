@@ -18,7 +18,7 @@
 
 ## 0. 選定の手続き、選ばなかったもの、生じた偏り
 
-**手続き。** 追加前の台帳（[`validate_seed.py`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/tools/validate_seed.py) 実測 `materials=2691`）の題名・出典・`passage` を走査し、同一作品・同一箇所の重複を避けた。走査の結果、以下の語は題名に0件だった：`エレミヤ書 36`／`バヴァ・バトラ`／`六祖`・`壇経`・`慧能`・`張日用`／`85章`・`守られた書板`／`セトネ`・`カムワース`・`トート`・`ネフェルカプタハ`。既収蔵の『エレミヤ書』31章二件、『メナホート』29b、『無門関』第六則、『死者の書』第125章、『クルアーン』50章・112章はいずれも別箇所・別資料である。**作品全体が未収蔵という意味ではない。**
+**手続き。** 追加前の台帳（本ブランチ起点での [`validate_seed.py`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/tools/validate_seed.py) 実測 `materials=2691`。並行マージ後の扱いは §8）の題名・出典・`passage` を走査し、同一作品・同一箇所の重複を避けた。走査の結果、以下の語は題名に0件だった：`エレミヤ書 36`／`バヴァ・バトラ`／`六祖`・`壇経`・`慧能`・`張日用`／`85章`・`守られた書板`／`セトネ`・`カムワース`・`トート`・`ネフェルカプタハ`。既収蔵の『エレミヤ書』31章二件、『メナホート』29b、『無門関』第六則、『死者の書』第125章、『クルアーン』50章・112章はいずれも別箇所・別資料である。**作品全体が未収蔵という意味ではない。**
 
 **選定基準は三つ。** (1) 台帳の前提をずらす対話相手になること。(2) 記録に対して**手が加える操作**が本文にはっきり書かれていること。(3) 五つの異なる伝統から取ること。件数の穴埋めや、ある語が0回だから埋める収集はしていない。
 
@@ -224,5 +224,7 @@
 - 読み痕跡12行：[`state/read_log.d/2027-01-17-7a7c8c55d89e.jsonl`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/read_log.d/2027-01-17-7a7c8c55d89e.jsonl)
 - 関係6行：[`state/relations.d/2027-01-17-f223f6afd689.jsonl`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/relations.d/2027-01-17-f223f6afd689.jsonl)
 - 索引：[`READING_MAP.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/READING_MAP.md) を `tools/map_build.py` で再生成（`map/` は git 管理外）。`README.md` と [`docs/sessions.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/sessions.md) は B案により不編集。
+
+**並行マージについて。** 本セッションの起点は `a6041b3` だったが、作業中に `origin/main` が PR #389（`SESSION-20261103-f2d345`：ヨブ記19章・クルアーン36章・スッタニパータ・ブリハッド・アーラニャカ I.4・デロス讃歌の五件）で `c80aa3c` へ進んだ。資料・素材ID・シャード名・関係ID・読み痕跡ID の重複がないことを確認したうえで `origin/main` を自ブランチへ取り込んだ。`READING_MAP.md` は両側の生成結果を手で合成せず、[`docs/parallel-work.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/parallel-work.md) §4 に従い `tools/map_build.py` で union から再生成した。§0 の「追加前 2,691 行」は本ブランチ起点での実測で、取り込み後は 2,696 行、今回の5件を加えて **2,701 行**（`validate_seed.py` 実測）。五件の資料がいずれも未収蔵であるという判定は、取り込み後の五件にもう一度照らして変わらなかった。
 
 検証は `validate_seed.py`／`inspect_inquiry.py --check-map`／`read_log_backfill.py --check`／`note_index.py --check`／`size_budget.py --strict`／`python3 -m unittest discover -s tests` を実行した。検査の通過は探究の進展の証明ではない。台帳の `verification` 欄は**今回の照合結果**であり、過去の検証状態の上書きではない。委任文は `human_direction` に範囲だけを記録し、資料の記述・解釈の根拠・作品内の声には混ぜていない。
