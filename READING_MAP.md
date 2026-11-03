@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：409 件（初期シード 5 件 ＋ 派生 404 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2736 件（research_excerpt 809 ／ literary_text 1859 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2746 件（research_excerpt 809 ／ literary_text 1869 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6140 件
-- **探究セッション（Sessions）**：396 回
+- **探究セッション（Sessions）**：397 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -739,7 +739,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2736 件・詳細は map/3*.md）
+## 4. 対話素材（2746 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3389,6 +3389,16 @@
 | `MAT-LIT-20261103-aee460` | literary_text | パウロ（伝承）, KJV 1611『『ガラテヤ人への手紙』2:19–21（KJV）——「もはやわたしが生きているのではない」』（55） |
 | `MAT-LIT-20261103-d78dd4` | literary_text | 預言者アモス（伝承）, KJV 1611『『アモス書』5:21–24（KJV）—— 祭りを退け、「義が水のように」流れることを求める』（-760） |
 | `MAT-LIT-20261103-24482f` | literary_text | マヌ（伝承）, Georg Bühler訳, github.com/arunagirinathar/manu-smriti 掲載『『マヌ法典』第一章 1–9・58 —— 暗闇から… |
+| `MAT-LIT-20261103-267f56` | literary_text | 『ヒネアフオネと系譜』（2026） |
+| `MAT-LIT-20261103-f40e83` | literary_text | 『クルアーン 80:1–10』（2026） |
+| `MAT-LIT-20261103-cfa10b` | literary_text | 『アラクネの織物』（2026） |
+| `MAT-LIT-20261103-8c547e` | literary_text | 『誰でもない者の名』（2026） |
+| `MAT-LIT-20261103-1e9b87` | literary_text | 『デメテルの乳母と火』（2026） |
+| `MAT-LIT-20261103-fb1acf` | literary_text | 『古語拾遺の序』（2026） |
+| `MAT-LIT-20261103-f2b29e` | literary_text | 『キサーゴータミーと芥子種』（2026） |
+| `MAT-LIT-20261103-a9bd35` | literary_text | 『シーターの伝言』（2026） |
+| `MAT-LIT-20261103-00a224` | literary_text | 『羊と穀物の論争』（2026） |
+| `MAT-LIT-20261103-c7aba2` | literary_text | 『ティトノスの不死』（2026） |
 | `MAT-LIT-20261103-089e70` | literary_text | 伝承上ヴィヤーサに帰される叙事詩『『マハーバーラタ』森林篇のヤクシャ問答——死すべき者はなぜ不死のように暮らすのか』（-300） |
 | `MAT-LIT-20261103-8d84e6` | literary_text | 創世記（伝承上モーセ五書）『『創世記』18章16–33節——ソドムをめぐり、数を下げながら問うアブラハム』（-500） |
 | `MAT-LIT-20261103-350629` | literary_text | 伝承上ヴャーサに帰される叙事詩本文『『バガヴァッド・ギーター』第6章5–6節——自己を引き上げる自己、敵となる自己』（-200） |
@@ -3796,6 +3806,7 @@
 | `SESSION-20261103-5c8af6` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-4d5864` | 2027-01-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-5ea5dd` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270102-29c347`, `Q-20261103-32a3cd` | — | `Q-20261103-32a3cd` |
+| `SESSION-20261103-11efd2` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270102-29c347` | — | — |
 | `SESSION-20261103-340edd` | 2027-01-24 | `Q-20270102-29c347`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
@@ -3939,8 +3950,8 @@
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
-| `map/30-materials-literary-18.md` | 100 | 295,670 |
-| `map/30-materials-literary-19.md` | 59 | 170,515 |
+| `map/30-materials-literary-18.md` | 100 | 282,810 |
+| `map/30-materials-literary-19.md` | 69 | 195,778 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3970,8 +3981,8 @@
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
-| `map/50-sessions-07.md` | 50 | 43,125 |
-| `map/50-sessions-08.md` | 46 | 43,540 |
+| `map/50-sessions-07.md` | 50 | 42,831 |
+| `map/50-sessions-08.md` | 47 | 44,419 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -3984,19 +3995,19 @@
 | `map/60-notes-10.md` | 25 | 56,366 |
 | `map/60-notes-11.md` | 25 | 61,652 |
 | `map/60-notes-12.md` | 25 | 62,998 |
-| `map/60-notes-13.md` | 25 | 76,005 |
-| `map/60-notes-14.md` | 25 | 59,402 |
-| `map/60-notes-15.md` | 25 | 61,896 |
-| `map/60-notes-16.md` | 25 | 62,766 |
-| `map/60-notes-17.md` | 25 | 70,390 |
-| `map/60-notes-18.md` | 5 | 19,307 |
+| `map/60-notes-13.md` | 25 | 74,642 |
+| `map/60-notes-14.md` | 25 | 60,462 |
+| `map/60-notes-15.md` | 25 | 61,535 |
+| `map/60-notes-16.md` | 25 | 63,689 |
+| `map/60-notes-17.md` | 25 | 70,368 |
+| `map/60-notes-18.md` | 6 | 20,919 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・430本・15,693,107 B）
+## 8. 精読ノート索引（readings/・431本・15,708,442 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 223/430 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 224/431 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：16 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：46 本（`python3 tools/note_index.py --orphans`）
@@ -4314,6 +4325,7 @@
 | `readings/2026-11-02-voices-placed-before-feet.md` | — | 2026-11-02 | `SESSION-20261102-ff5a0c` +3 | 10,706 | Q3 F10 M7 MOT4 R2 S4 ERR4 | ✓ | 置かれた声の上にできていく道——『織る手』の台帳比喩撤去と、足の来ない声の反歌 |
 | `readings/2026-11-03-five-voices-on-one-and-many.md` | — | 2026-11-03 | `SESSION-20261103-3564e9` | 4,358 | Q3 M10 S1 | — | 一つと多く、誉れと生、わたしとわたしでないもの——神話・宗教経典5編の精読 |
 | `readings/2026-11-03-sixty-kilos-without-a-column.md` | — | 2026-11-03 | `SESSION-20261103-4a8c65` +5 | 10,019 | Q7 F12 M7 MOT1 S6 | ✓ | 六〇キロの行き先と、担い手の空席——『九階の汚水槽と、行き先の欄』の脱・書記室変奏と手順書への異議 |
+| `readings/2026-11-03-ten-myths-voices-and-obligations.md` | 2026-11-03 | 2026-11-03 | `SESSION-20261103-11efd2` | 6,489 | Q4 M11 S1 | — | 名を残すことと、声を返すこと——神話・宗教経典の十資料 |
 | `readings/2026-11-03-the-unanswered-addressee-and-the-borrowed-voice.md` | 2026-11-03 | 2026-11-03 | `SESSION-20261103-5ea5dd` | 18,974 | Q5 M11 S1 | — | 答えない宛先のまえで、「私」は誰に預けられるか——五つの神話・宗教経典の精読 |
 | `readings/2026-11-03-what-remains-after-the-answer.md` | 2026-11-03 | 2026-11-03 | `SESSION-20261103-e197ac` | 6,465 | Q3 M6 S1 | — | 死を知ること、理由を知らずに読むこと——神話・宗教経典の五つの箇所を精読する |
 | `readings/2026-11-03-wheels-fire-and-unreturned-words.md` | — | 2026-11-03 | `SESSION-20261103-5c8af6` | 8,357 | Q3 M11 S1 | — | 輪を転がし、火を運び、言葉を返さない——十の神話・経典を読む |
@@ -4432,4 +4444,4 @@
 | `readings/2027-01-21-when-silence-does-not-stop-a-departure.md` | 2026-11-03 | 2027-01-21 | `SESSION-20261103-d5682c` | 5,669 | Q3 M9 S1 | ✓ | 沈黙は出発を止めない——問い、織物、酒、琴 |
 | `readings/2027-01-22-who-is-counted-in-the-seventeen-lives.md` | 2026-11-03 | 2027-01-22 | `SESSION-20261103-e05e7d` +1 | 20,053 | Q3 M5 S2 | ✓ | 十七世に数えられるのは誰か——見る者、写す者、造られた像、そして数え直す註釈 |
 | `readings/2027-01-23-the-wheel-turns-but-the-axle-is-not-read.md` | 2026-11-03 | 2027-01-23 | `SESSION-20261103-4d5864` +4 | 16,434 | Q5 M1 S5 ERR3 | — | 車輪は回るが、軸は読まれない——来歴のパスが指す先と、数え直しを二度拒んだこと |
-| `readings/2027-01-24-the-seam-between-the-ledger-and-the-report.md` | 2026-11-03 | 2027-01-24 | `SESSION-20261103-340edd` +5 | 18,467 | Q8 F2 M1 R1 S6 | — | 縫い目は、台帳と報告のあいだにある——「迎えた」が隠す選定と、note 行という一箇所 |
+| `readings/2027-01-24-the-seam-between-the-ledger-and-the-report.md` | 2026-11-03 | 2027-01-24 | `SESSION-20261103-340edd` +5 | 18,467 | Q8 F2 M1 R1 S6 | ✓ | 縫い目は、台帳と報告のあいだにある——「迎えた」が隠す選定と、note 行という一箇所 |
