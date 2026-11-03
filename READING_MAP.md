@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：409 件（初期シード 5 件 ＋ 派生 404 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2726 件（research_excerpt 809 ／ literary_text 1849 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2736 件（research_excerpt 809 ／ literary_text 1859 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6140 件
-- **探究セッション（Sessions）**：395 回
+- **探究セッション（Sessions）**：396 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -739,7 +739,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2726 件・詳細は map/3*.md）
+## 4. 対話素材（2736 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3404,6 +3404,16 @@
 | `MAT-LIT-20261103-fe2c82` | literary_text | Hermes Trismegistus (attrib.), G. R. S. Mead (tr.), jonnyg23/mahabrain (mirror)『ヘルメス文書『アス… |
 | `MAT-LIT-20261103-20cd8c` | literary_text | （『デーヴィー・バーガヴァタ・プラーナ』所収）, Ursula Honegger (data entry), GRETIL『『デーヴィー・ギーター』7.2–7.17——三つの道、… |
 | `MAT-LIT-20261103-53defb` | literary_text | （伝・文昌帝君）, 朱珪 (校), 蔣予蒲 (重訂)『『陰騭文』とその註——「吾、一十七世、士大夫の身と為る」と、九生八化を数え直す註釈者』（1700） |
+| `MAT-LIT-20261103-4ce881` | literary_text | Thanissaro Bhikkhu (英訳)『中部 MN 58 アバヤ王子経——不快な言葉の時機』（1997） |
+| `MAT-LIT-20261103-e9fc51` | literary_text | Thanissaro Bhikkhu (英訳)『増支部 AN 3.15 車大工経——二つの輪』（1997） |
+| `MAT-LIT-20261103-8094b5` | literary_text | Thanissaro Bhikkhu (英訳)『相応部 SN 7.2 罵倒経——受け取らない贈り物』（1999） |
+| `MAT-LIT-20261103-2e1658` | literary_text | Thanissaro Bhikkhu (英訳)『増支部 AN 4.111 ケーシ経——語られない者』（1997） |
+| `MAT-LIT-20261103-7c80a2` | literary_text | Thanissaro Bhikkhu (英訳)『相応部 SN 35.205 ヴィーナー経——音と部品』（1998） |
+| `MAT-LIT-20261103-fc38d9` | literary_text | Thanissaro Bhikkhu (英訳)『相応部 SN 12.15 カッチャーナゴッタ経——二極と縁起』（1997） |
+| `MAT-LIT-20261103-78fae6` | literary_text | Thanissaro Bhikkhu (英訳)『増支部 AN 4.184 無畏経——病と死への四つの態度』（1997） |
+| `MAT-LIT-20261103-4dc9f6` | literary_text | Roland B. Dixon (採録・編訳)『Maidu Texts 創世譚 II——死とコヨーテの痕跡』（1912） |
+| `MAT-LIT-20261103-326f51` | literary_text | Hastin Tlo'tsi hee (Sandoval, 頁に記載の伝承者), Esdzan Hosh kige (頁に記載の語り手), Aileen O'Bryan (編)『… |
+| `MAT-LIT-20261103-1f4e94` | literary_text | Herbert Earl Wilson (著)『ヨセミテの創世譚——異議から生まれる指』（1922） |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -3783,6 +3793,7 @@
 | `SESSION-20261103-3564e9` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-e05e7d` | 2027-01-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-e197ac` | 2027-01-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261103-5c8af6` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-4d5864` | 2027-01-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-5ea5dd` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270102-29c347`, `Q-20261103-32a3cd` | — | `Q-20261103-32a3cd` |
 | `SESSION-20261103-340edd` | 2027-01-24 | `Q-20270102-29c347`, `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -3928,8 +3939,8 @@
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
-| `map/30-materials-literary-18.md` | 100 | 316,801 |
-| `map/30-materials-literary-19.md` | 49 | 136,161 |
+| `map/30-materials-literary-18.md` | 100 | 295,670 |
+| `map/30-materials-literary-19.md` | 59 | 170,515 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3959,8 +3970,8 @@
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
-| `map/50-sessions-07.md` | 50 | 43,251 |
-| `map/50-sessions-08.md` | 45 | 42,694 |
+| `map/50-sessions-07.md` | 50 | 43,125 |
+| `map/50-sessions-08.md` | 46 | 43,540 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -3973,22 +3984,22 @@
 | `map/60-notes-10.md` | 25 | 56,366 |
 | `map/60-notes-11.md` | 25 | 61,652 |
 | `map/60-notes-12.md` | 25 | 62,998 |
-| `map/60-notes-13.md` | 25 | 77,907 |
-| `map/60-notes-14.md` | 25 | 57,122 |
-| `map/60-notes-15.md` | 25 | 63,596 |
-| `map/60-notes-16.md` | 25 | 62,184 |
-| `map/60-notes-17.md` | 25 | 71,434 |
-| `map/60-notes-18.md` | 4 | 15,715 |
+| `map/60-notes-13.md` | 25 | 76,005 |
+| `map/60-notes-14.md` | 25 | 59,402 |
+| `map/60-notes-15.md` | 25 | 61,896 |
+| `map/60-notes-16.md` | 25 | 62,766 |
+| `map/60-notes-17.md` | 25 | 70,390 |
+| `map/60-notes-18.md` | 5 | 19,307 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・429本・15,673,516 B）
+## 8. 精読ノート索引（readings/・430本・15,693,107 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 223/429 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 223/430 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：16 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：45 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：46 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4305,6 +4316,7 @@
 | `readings/2026-11-03-sixty-kilos-without-a-column.md` | — | 2026-11-03 | `SESSION-20261103-4a8c65` +5 | 10,019 | Q7 F12 M7 MOT1 S6 | ✓ | 六〇キロの行き先と、担い手の空席——『九階の汚水槽と、行き先の欄』の脱・書記室変奏と手順書への異議 |
 | `readings/2026-11-03-the-unanswered-addressee-and-the-borrowed-voice.md` | 2026-11-03 | 2026-11-03 | `SESSION-20261103-5ea5dd` | 18,974 | Q5 M11 S1 | — | 答えない宛先のまえで、「私」は誰に預けられるか——五つの神話・宗教経典の精読 |
 | `readings/2026-11-03-what-remains-after-the-answer.md` | 2026-11-03 | 2026-11-03 | `SESSION-20261103-e197ac` | 6,465 | Q3 M6 S1 | — | 死を知ること、理由を知らずに読むこと——神話・宗教経典の五つの箇所を精読する |
+| `readings/2026-11-03-wheels-fire-and-unreturned-words.md` | — | 2026-11-03 | `SESSION-20261103-5c8af6` | 8,357 | Q3 M11 S1 | — | 輪を転がし、火を運び、言葉を返さない——十の神話・経典を読む |
 | `readings/2026-11-04-ice-height-and-the-pre-read-apology.md` | — | 2026-11-04 | `SESSION-20261104-26391d` +2 | 15,916 | Q4 F16 M7 MOT11 R3 S3 | ✓ | 溶けた高さ、害の前に読まれる詫び——「忘却と沈黙」×「裁きの席」の初架橋と、量れない数 |
 | `readings/2026-11-04-the-low-string-and-the-curve.md` | — | 2026-11-04 | `SESSION-20261104-9a4c6e` | 11,499 | Q6 F6 M5 MOT3 R1 S1 | ✓ | 低い弦と曲がり方——歌の先行と、名乗らない署名の衝突 |
 | `readings/2026-11-05-cedar-board-and-spring-gate.md` | — | 2026-11-05 | `SESSION-20261105-c91bde` +2 | 19,977 | Q9 F10 M13 MOT3 R2 S3 ERR7 | ✓ | 顎を引く朝、合わない杉板 — 窓口劇の脱・書記室変奏と四か月後の反歌（SESSION-20261105-c91bde） |
