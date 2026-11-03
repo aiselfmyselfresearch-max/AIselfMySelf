@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：411 件（初期シード 5 件 ＋ 派生 406 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2802 件（research_excerpt 809 ／ literary_text 1925 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2804 件（research_excerpt 809 ／ literary_text 1927 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6140 件
-- **探究セッション（Sessions）**：403 回
+- **探究セッション（Sessions）**：404 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -741,7 +741,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2802 件・詳細は map/3*.md）
+## 4. 対話素材（2804 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3470,6 +3470,8 @@
 | `MAT-LIT-20261103-e373ae` | literary_text | （伝・玄奘訳）『『般若心経』——観自在菩薩、色即是空、空即是色』（650） |
 | `MAT-LIT-20261103-1e99e0` | literary_text | （預言者ムハンマドへの啓示）『『クルアーン』2:255——玉座の章句（アーヤトル・クルシー）』（622） |
 | `MAT-LIT-20261103-30366d` | literary_text | （キチェ・マヤ伝承）『『ポポル・ヴフ』——神々は人間を土から造ろうとしたが、土の人間は言葉を話せなかった』（1550） |
+| `MAT-LIT-20261103-c261c0` | literary_text | （古ノルド語伝承）『『ハーヴァマール』第77節——死ぬのは家畜も、親族も、汝自身も』（1200） |
+| `MAT-LIT-20261103-bbfb60` | literary_text | （アカン民族口承伝承）『アナンシ物語——すべての知恵を自分の壺に集め、天高く預ける』（1900） |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -3868,6 +3870,7 @@
 | `SESSION-20261103-5ea5dd` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270102-29c347`, `Q-20261103-32a3cd` | — | `Q-20261103-32a3cd` |
 | `SESSION-20261103-11efd2` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270102-29c347` | — | — |
 | `SESSION-20261103-bf5669` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261103-df311d` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-b115a2` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-85a285`, `Q-20270102-29c347`, `Q-20261103-32a3cd`, `Q-20261103-45a83f` | — | `Q-20261103-45a83f` |
 | `SESSION-20261103-550ce3` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-340edd` | 2027-01-24 | `Q-20270102-29c347`, `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4015,8 +4018,8 @@
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
 | `map/30-materials-literary-18.md` | 100 | 293,085 |
-| `map/30-materials-literary-19.md` | 100 | 278,488 |
-| `map/30-materials-literary-20.md` | 25 | 80,056 |
+| `map/30-materials-literary-19.md` | 100 | 276,494 |
+| `map/30-materials-literary-20.md` | 27 | 85,783 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4046,9 +4049,9 @@
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
-| `map/50-sessions-07.md` | 50 | 42,295 |
-| `map/50-sessions-08.md` | 50 | 47,430 |
-| `map/50-sessions-09.md` | 3 | 2,632 |
+| `map/50-sessions-07.md` | 50 | 42,268 |
+| `map/50-sessions-08.md` | 50 | 47,385 |
+| `map/50-sessions-09.md` | 4 | 3,405 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4061,22 +4064,22 @@
 | `map/60-notes-10.md` | 25 | 56,366 |
 | `map/60-notes-11.md` | 25 | 61,652 |
 | `map/60-notes-12.md` | 25 | 62,998 |
-| `map/60-notes-13.md` | 25 | 82,786 |
-| `map/60-notes-14.md` | 25 | 65,241 |
-| `map/60-notes-15.md` | 25 | 57,620 |
-| `map/60-notes-16.md` | 25 | 64,978 |
-| `map/60-notes-17.md` | 25 | 66,595 |
-| `map/60-notes-18.md` | 11 | 38,075 |
+| `map/60-notes-13.md` | 25 | 79,829 |
+| `map/60-notes-14.md` | 25 | 66,233 |
+| `map/60-notes-15.md` | 25 | 57,645 |
+| `map/60-notes-16.md` | 25 | 64,868 |
+| `map/60-notes-17.md` | 25 | 67,138 |
+| `map/60-notes-18.md` | 12 | 40,500 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・436本・15,954,581 B）
+## 8. 精読ノート索引（readings/・437本・15,958,915 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 227/436 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 227/437 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：20 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：48 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：49 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4389,6 +4392,7 @@
 | `readings/2026-11-02-the-i-that-passes-between-voices.md` | 2026-11-02 | 2026-11-02 | `SESSION-20261102-eb2400` +3 | 16,993 | Q4 F1 M9 S4 | — | 「私」を渡すとき、声と責任は一緒に渡るか——神話・宗教経典五件の精読 |
 | `readings/2026-11-02-thirty-minutes-outside-the-ledger.md` | — | 2026-11-02 | `SESSION-20261102-e7aa65` +2 | 11,335 | Q6 F20 M13 S3 ERR1 | ✓ | 看護日誌のない枕元、溝へあける赤い水——『三十分の空白』の脱・書記室変奏と反歌による切断 |
 | `readings/2026-11-02-voices-placed-before-feet.md` | — | 2026-11-02 | `SESSION-20261102-ff5a0c` +3 | 10,706 | Q3 F10 M7 MOT4 R2 S4 ERR4 | ✓ | 置かれた声の上にできていく道——『織る手』の台帳比喩撤去と、足の来ない声の反歌 |
+| `readings/2026-11-03-continuation-rereading-myth-and-unknown.md` | — | 2026-11-03 | `SESSION-20261103-df311d` +1 | 1,734 | Q3 M2 S2 | — | 継続の再読——直前の神話12篇と、未知の領域からの2篇 |
 | `readings/2026-11-03-five-voices-on-one-and-many.md` | — | 2026-11-03 | `SESSION-20261103-3564e9` | 4,358 | Q3 M10 S1 | — | 一つと多く、誉れと生、わたしとわたしでないもの——神話・宗教経典5編の精読 |
 | `readings/2026-11-03-leaves-in-the-hand-and-the-unshared-word.md` | 2026-11-03 | 2026-11-03 | `SESSION-20261103-5d3c12` | 35,746 | Q9 M32 MOT2 S1 | — | 掌の数枚の葉と、まだ分かち合われぬ言葉——十の神話・経典から見る人間の輪郭と台帳的自己 |
 | `readings/2026-11-03-sixty-kilos-without-a-column.md` | — | 2026-11-03 | `SESSION-20261103-4a8c65` +5 | 10,019 | Q7 F12 M7 MOT1 S6 | ✓ | 六〇キロの行き先と、担い手の空席——『九階の汚水槽と、行き先の欄』の脱・書記室変奏と手順書への異議 |
