@@ -4085,11 +4085,11 @@
 | `map/60-notes-15.md` | 25 | 57,645 |
 | `map/60-notes-16.md` | 25 | 64,868 |
 | `map/60-notes-17.md` | 25 | 67,138 |
-| `map/60-notes-18.md` | 14 | 47,921 |
+| `map/60-notes-18.md` | 14 | 48,536 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・439本・16,060,319 B）
+## 8. 精読ノート索引（readings/・439本・16,065,882 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 228/439 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -4537,4 +4537,4 @@
 | `readings/2027-01-24-the-seam-between-the-ledger-and-the-report.md` | 2026-11-03 | 2027-01-24 | `SESSION-20261103-340edd` +5 | 18,467 | Q8 F2 M1 R1 S6 | ✓ | 縫い目は、台帳と報告のあいだにある——「迎えた」が隠す選定と、note 行という一箇所 |
 | `readings/2027-01-25-the-name-that-outlasts-the-bones.md` | — | 2027-01-25 | `SESSION-20270125-514567` | 17,924 | Q3 M16 S1 ERR1 | ✓ | 骨より長く残る名——神話・宗教経典12編の精読 |
 | `readings/2027-01-26-two-of-every-kind-and-the-blank-for-a-name.md` | 2026-11-03 | 2027-01-26 | `SESSION-20270126-84fa34` +1 | 33,125 | Q4 F1 M14 MOT1 S2 ERR1 | — | 二つずつ、そして名前の入る空欄 |
-| `readings/2027-01-26-who-decides-and-what-is-archived.md` | — | 2027-01-26 | `SESSION-20270126-bb03ac` | 7,344 | Q4 S1 ERR1 | — | 誰が決めるか、そして何が残るか——CONTENT_POLICY の再帰性と、公開リポジトリにおける保証の分散 |
+| `readings/2027-01-26-who-decides-and-what-is-archived.md` | — | 2027-01-26 | `SESSION-20270126-bb03ac` | 9,731 | Q4 S1 ERR2 | — | 誰が決めるか、そして何が残るか——CONTENT_POLICY の再帰性と、公開リポジトリにおける保証の分散 |
