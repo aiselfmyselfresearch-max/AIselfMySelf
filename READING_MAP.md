@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：408 件（初期シード 5 件 ＋ 派生 403 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2706 件（research_excerpt 809 ／ literary_text 1829 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2711 件（research_excerpt 809 ／ literary_text 1834 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6091 件
-- **探究セッション（Sessions）**：389 回
+- **解釈的関係（Relations）**：6101 件
+- **探究セッション（Sessions）**：390 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -738,7 +738,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2706 件・詳細は map/3*.md）
+## 4. 対話素材（2711 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3448,8 +3448,13 @@
 | `MAT-LIT-20261103-5eb07b` | literary_text | King James Bible translators (1611), Paul (traditional attribution)『『ローマ人への手紙』12章1–2節・9–1… |
 | `MAT-LIT-20261103-b83aa1` | literary_text | King James Bible translators (1611), John of Patmos (traditional attribution)『『ヨハネの黙示録』21… |
 | `MAT-LIT-20261103-1664f7` | literary_text | Unknown (Middle High German, c. 1200), George Henry Needler (trans.)『『ニーベルンゲンの歌』第一冒険「クリーム… |
+| `MAT-LIT-20261103-b76904` | literary_text | SuttaCentral, Bhikkhu Sujato『相応部 44.10 Ānandasutta——自己の問いと二度の沈黙』（0） |
+| `MAT-LIT-20261103-b4489a` | literary_text | Mādhavānanda (translator)『ブリハッド・アーラニャカ・ウパニシャッド III.8——ガールギーの問いと織物』（1950） |
+| `MAT-LIT-20261103-0de8cf` | literary_text | Kumārajīva (translator), CBETA『妙法蓮華経 方便品第二——五千人の退出と止めない沈黙』（406） |
+| `MAT-LIT-20261103-d34cf6` | literary_text | Snorri Sturluson, Arthur Gilchrist Brodeur (translator)『スノッリのエッダ 詩語法 I——クヴァシルと詩の蜜酒』（1916） |
+| `MAT-LIT-20261103-c5e38b` | literary_text | 古事記編者, 岩波文庫版編者『古事記 上巻 根の堅州国——鳴る琴と黄泉比良坂の呼び声』（1937） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261103-6fb7ad・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261103-d5682c・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -3842,18 +3847,19 @@
 | `SESSION-20261103-4aa697` | 2027-01-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-2e8d28` | 2027-01-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-6fb7ad` | 2027-01-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261103-d5682c` | 2027-01-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6091 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6101 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 841 |
-| 共鳴 (echo) | 1509 |
+| 対照 (contrast) | 844 |
+| 共鳴 (echo) | 1510 |
 | 切断・割り込み (interrupts) | 210 |
 | 未解決のまま開く (leaves_open) | 870 |
-| 比喩的共鳴 (metaphorically_resonates) | 161 |
+| 比喩的共鳴 (metaphorically_resonates) | 162 |
 | 枠組みの組み替え (reframes) | 557 |
-| 応答 (responds_to) | 1660 |
+| 応答 (responds_to) | 1665 |
 | 変奏・変形 (transforms) | 283 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -3902,7 +3908,7 @@
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
 | `map/30-materials-literary-18.md` | 100 | 326,098 |
-| `map/30-materials-literary-19.md` | 29 | 76,089 |
+| `map/30-materials-literary-19.md` | 34 | 83,388 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3925,7 +3931,7 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 179,400 |
 | `map/40-relations-12.md` | 500 | 163,969 |
-| `map/40-relations-13.md` | 91 | 34,400 |
+| `map/40-relations-13.md` | 101 | 37,055 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -3933,7 +3939,7 @@
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
 | `map/50-sessions-07.md` | 50 | 43,489 |
-| `map/50-sessions-08.md` | 39 | 37,030 |
+| `map/50-sessions-08.md` | 40 | 37,719 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -3950,17 +3956,17 @@
 | `map/60-notes-14.md` | 25 | 54,898 |
 | `map/60-notes-15.md` | 25 | 67,385 |
 | `map/60-notes-16.md` | 25 | 58,673 |
-| `map/60-notes-17.md` | 23 | 65,451 |
+| `map/60-notes-17.md` | 24 | 67,502 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・423本・15,488,730 B）
+## 8. 精読ノート索引（readings/・424本・15,501,175 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 218/423 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 219/424 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：11 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：45 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：12 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：46 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4387,3 +4393,4 @@
 | `readings/2027-01-18-who-owns-the-explanation.md` | 2026-11-03 | 2027-01-18 | `SESSION-20261103-4aa697` | 14,380 | Q3 M7 S1 | — | 解明は誰の負うところか——クルアーン四章の再照合と、保留の読み替え |
 | `readings/2027-01-19-the-rule-had-a-footnote.md` | 2026-11-03 | 2027-01-19 | `SESSION-20261103-2e8d28` +1 | 12,985 | Q4 M2 S2 ERR3 ED2 | — | 規則には脚注があった——「追記しか許されない」を、訂正録と保守手順で読み返す |
 | `readings/2027-01-20-ten-written-words-and-a-recorded-dream.md` | 2026-11-03 | 2027-01-20 | `SESSION-20261103-6fb7ad` +1 | 17,967 | Q3 M8 MOT4 R8 S2 | — | 書き留められた十の言葉と、夢に残された予告——神話・宗教経典五篇の精読 |
+| `readings/2027-01-21-when-silence-does-not-stop-a-departure.md` | 2026-11-03 | 2027-01-21 | `SESSION-20261103-d5682c` | 5,669 | Q3 M9 S1 | — | 沈黙は出発を止めない——問い、織物、酒、琴 |
