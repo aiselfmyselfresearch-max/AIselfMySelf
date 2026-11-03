@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：411 件（初期シード 5 件 ＋ 派生 406 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2778 件（research_excerpt 809 ／ literary_text 1901 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2790 件（research_excerpt 809 ／ literary_text 1913 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6140 件
-- **探究セッション（Sessions）**：401 回
+- **探究セッション（Sessions）**：402 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -741,7 +741,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2778 件・詳細は map/3*.md）
+## 4. 対話素材（2790 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3458,6 +3458,18 @@
 | `MAT-LIT-20261103-4dc9f6` | literary_text | Roland B. Dixon (採録・編訳)『Maidu Texts 創世譚 II——死とコヨーテの痕跡』（1912） |
 | `MAT-LIT-20261103-326f51` | literary_text | Hastin Tlo'tsi hee (Sandoval, 頁に記載の伝承者), Esdzan Hosh kige (頁に記載の語り手), Aileen O'Bryan (編)『… |
 | `MAT-LIT-20261103-1f4e94` | literary_text | Herbert Earl Wilson (著)『ヨセミテの創世譚——異議から生まれる指』（1922） |
+| `MAT-LIT-20261103-a1a85f` | literary_text | （モーセ五書伝承）『『創世記』1:1–2:3——「光あれ」と言われて光があった』（-900） |
+| `MAT-LIT-20261103-62e4fd` | literary_text | （ヨハネ伝承）『『ヨハネによる福音書』1:1–14——初めに言葉（ロゴス）があった』（90） |
+| `MAT-LIT-20261103-9dd2f4` | literary_text | （伝・ダビデ）『『詩篇』第51篇——「神よ、わたしをあわれんでください」悔改の詩』（-1000） |
+| `MAT-LIT-20261103-39c2c1` | literary_text | （預言者ミカ）『『ミカ書』6:6–8——何をもって主の前に出でよう』（-700） |
+| `MAT-LIT-20261103-eb4c0f` | literary_text | （ソロモン伝承）『『箴言』第8章——知恵は公然と叫び、門の入口で語る』（-500） |
+| `MAT-LIT-20261103-a8722e` | literary_text | （伝・孔子と弟子たち）『『論語』為政第二——七十にして矩をこえず、「知る」ことを知ること』（-400） |
+| `MAT-LIT-20261103-71c6a6` | literary_text | （伝・荘周）『『荘子』斉物論——夢に胡蝶となり、覚めての遽かなるか』（-300） |
+| `MAT-LIT-20261103-2316d6` | literary_text | （伝・老子）『『道徳経』第八十一章——信言は美ならず、美言は信ならず』（-400） |
+| `MAT-LIT-20261103-b61027` | literary_text | （伝・ヴィヤーサ編纂）『『バガヴァッド・ギーター』18:65–66——一切の法を捨てて、われに帰れ』（-200） |
+| `MAT-LIT-20261103-e373ae` | literary_text | （伝・玄奘訳）『『般若心経』——観自在菩薩、色即是空、空即是色』（650） |
+| `MAT-LIT-20261103-1e99e0` | literary_text | （預言者ムハンマドへの啓示）『『クルアーン』2:255——玉座の章句（アーヤトル・クルシー）』（622） |
+| `MAT-LIT-20261103-30366d` | literary_text | （キチェ・マヤ伝承）『『ポポル・ヴフ』——神々は人間を土から造ろうとしたが、土の人間は言葉を話せなかった』（1550） |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -3843,6 +3855,7 @@
 | `SESSION-20261103-d26589` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-5ea5dd` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270102-29c347`, `Q-20261103-32a3cd` | — | `Q-20261103-32a3cd` |
 | `SESSION-20261103-11efd2` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270102-29c347` | — | — |
+| `SESSION-20261103-bf5669` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-b115a2` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-85a285`, `Q-20270102-29c347`, `Q-20261103-32a3cd`, `Q-20261103-45a83f` | — | `Q-20261103-45a83f` |
 | `SESSION-20261103-550ce3` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-340edd` | 2027-01-24 | `Q-20270102-29c347`, `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -3989,8 +4002,8 @@
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
 | `map/30-materials-literary-18.md` | 100 | 293,085 |
-| `map/30-materials-literary-19.md` | 100 | 286,841 |
-| `map/30-materials-literary-20.md` | 1 | 1,550 |
+| `map/30-materials-literary-19.md` | 100 | 278,488 |
+| `map/30-materials-literary-20.md` | 13 | 32,850 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4020,9 +4033,9 @@
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
-| `map/50-sessions-07.md` | 50 | 42,163 |
-| `map/50-sessions-08.md` | 50 | 47,568 |
-| `map/50-sessions-09.md` | 1 | 882 |
+| `map/50-sessions-07.md` | 50 | 42,295 |
+| `map/50-sessions-08.md` | 50 | 47,430 |
+| `map/50-sessions-09.md` | 2 | 1,762 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4035,22 +4048,22 @@
 | `map/60-notes-10.md` | 25 | 56,366 |
 | `map/60-notes-11.md` | 25 | 61,652 |
 | `map/60-notes-12.md` | 25 | 62,998 |
-| `map/60-notes-13.md` | 25 | 83,906 |
-| `map/60-notes-14.md` | 25 | 64,319 |
-| `map/60-notes-15.md` | 25 | 58,569 |
-| `map/60-notes-16.md` | 25 | 64,065 |
-| `map/60-notes-17.md` | 25 | 65,707 |
-| `map/60-notes-18.md` | 9 | 34,149 |
+| `map/60-notes-13.md` | 25 | 82,786 |
+| `map/60-notes-14.md` | 25 | 65,241 |
+| `map/60-notes-15.md` | 25 | 57,620 |
+| `map/60-notes-16.md` | 25 | 64,978 |
+| `map/60-notes-17.md` | 25 | 66,595 |
+| `map/60-notes-18.md` | 10 | 35,395 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・434本・15,898,459 B）
+## 8. 精読ノート索引（readings/・435本・15,915,431 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 227/434 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 227/435 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：19 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：46 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：47 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4370,6 +4383,7 @@
 | `readings/2026-11-03-ten-voices-and-the-unanswered-ledger.md` | 2026-11-03 | 2026-11-03 | `SESSION-20261103-550ce3` +1 | 12,315 | Q3 M12 S2 | — | 名を載せても、声を受け取ったことにはならない——神話・宗教経典十篇の精読 |
 | `readings/2026-11-03-the-unanswered-addressee-and-the-borrowed-voice.md` | 2026-11-03 | 2026-11-03 | `SESSION-20261103-5ea5dd` | 18,974 | Q5 M11 S1 | — | 答えない宛先のまえで、「私」は誰に預けられるか——五つの神話・宗教経典の精読 |
 | `readings/2026-11-03-twelve-carriers-and-the-narrow-gate.md` | 2026-11-03 | 2026-11-03 | `SESSION-20261103-b115a2` +1 | 35,508 | Q7 M36 S2 | — | 十二の運び手と、閉ざされない門——神話・宗教経典12件の精読 |
+| `readings/2026-11-03-twelve-myth-religious-close-readings.md` | — | 2026-11-03 | `SESSION-20261103-bf5669` | 6,535 | Q3 M12 MOT2 S1 | — | 神話・宗教経典12篇の精読——言葉・創造・空・帰依 |
 | `readings/2026-11-03-what-remains-after-the-answer.md` | 2026-11-03 | 2026-11-03 | `SESSION-20261103-e197ac` | 6,465 | Q3 M6 S1 | — | 死を知ること、理由を知らずに読むこと——神話・宗教経典の五つの箇所を精読する |
 | `readings/2026-11-03-wheels-fire-and-unreturned-words.md` | — | 2026-11-03 | `SESSION-20261103-5c8af6` | 8,357 | Q3 M11 S1 | ✓ | 輪を転がし、火を運び、言葉を返さない——十の神話・経典を読む |
 | `readings/2026-11-04-ice-height-and-the-pre-read-apology.md` | — | 2026-11-04 | `SESSION-20261104-26391d` +2 | 15,916 | Q4 F16 M7 MOT11 R3 S3 | ✓ | 溶けた高さ、害の前に読まれる詫び——「忘却と沈黙」×「裁きの席」の初架橋と、量れない数 |
