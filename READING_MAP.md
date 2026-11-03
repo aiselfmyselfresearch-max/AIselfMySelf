@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：408 件（初期シード 5 件 ＋ 派生 403 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2716 件（research_excerpt 809 ／ literary_text 1839 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2721 件（research_excerpt 809 ／ literary_text 1844 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6101 件
-- **探究セッション（Sessions）**：391 回
+- **解釈的関係（Relations）**：6111 件
+- **探究セッション（Sessions）**：392 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -738,7 +738,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2716 件・詳細は map/3*.md）
+## 4. 対話素材（2721 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3393,6 +3393,11 @@
 | `MAT-LIT-20261103-350629` | literary_text | 伝承上ヴャーサに帰される叙事詩本文『『バガヴァッド・ギーター』第6章5–6節——自己を引き上げる自己、敵となる自己』（-200） |
 | `MAT-LIT-20261103-4ff062` | literary_text | クルアーン（イスラーム伝承における啓示本文）『クルアーン第18章60–82節——ムーサーと知識を与えられた僕の同行』（622） |
 | `MAT-LIT-20261103-40efa0` | literary_text | キチェ語の伝承本文（編者・伝承者複数）『『ポポル・ヴフ』第三部のトウモロコシの人々——食物から作られ、見通しを制限される』（1550） |
+| `MAT-LIT-20261103-53a3c8` | literary_text | Īśvarakṛṣṇa, GRETIL (Göttingen Register of Electronic Texts in Indian Languages)『イーシュヴァラク… |
+| `MAT-LIT-20261103-b82d46` | literary_text | Hermas, J. B. Lightfoot (ed.), jtauber/apostolic-fathers『『牧者ヘルマス』第二の幻視 2.1.3–2.4.3——「これだけ… |
+| `MAT-LIT-20261103-fe2c82` | literary_text | Hermes Trismegistus (attrib.), G. R. S. Mead (tr.), jonnyg23/mahabrain (mirror)『ヘルメス文書『アス… |
+| `MAT-LIT-20261103-20cd8c` | literary_text | （『デーヴィー・バーガヴァタ・プラーナ』所収）, Ursula Honegger (data entry), GRETIL『『デーヴィー・ギーター』7.2–7.17——三つの道、… |
+| `MAT-LIT-20261103-53defb` | literary_text | （伝・文昌帝君）, 朱珪 (校), 蔣予蒲 (重訂)『『陰騭文』とその註——「吾、一十七世、士大夫の身と為る」と、九生八化を数え直す註釈者』（1700） |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -3770,6 +3775,7 @@
 | `SESSION-20261102-eb2400` | 2026-11-02 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-70e889` | — | — |
 | `SESSION-20261102-512471` | 2027-01-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-3564e9` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261103-e05e7d` | 2027-01-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-e197ac` | 2027-01-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
@@ -3855,18 +3861,18 @@
 | `SESSION-20261103-6fb7ad` | 2027-01-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-d5682c` | 2027-01-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6101 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6111 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 844 |
-| 共鳴 (echo) | 1510 |
+| 対照 (contrast) | 846 |
+| 共鳴 (echo) | 1512 |
 | 切断・割り込み (interrupts) | 210 |
 | 未解決のまま開く (leaves_open) | 870 |
 | 比喩的共鳴 (metaphorically_resonates) | 162 |
 | 枠組みの組み替え (reframes) | 557 |
-| 応答 (responds_to) | 1665 |
-| 変奏・変形 (transforms) | 283 |
+| 応答 (responds_to) | 1670 |
+| 変奏・変形 (transforms) | 284 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -3913,8 +3919,8 @@
 | `map/30-materials-literary-15.md` | 100 | 210,817 |
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
-| `map/30-materials-literary-18.md` | 100 | 320,006 |
-| `map/30-materials-literary-19.md` | 39 | 98,662 |
+| `map/30-materials-literary-18.md` | 100 | 316,076 |
+| `map/30-materials-literary-19.md` | 44 | 118,937 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -3935,17 +3941,17 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 179,400 |
-| `map/40-relations-12.md` | 500 | 163,969 |
-| `map/40-relations-13.md` | 101 | 37,055 |
+| `map/40-relations-11.md` | 500 | 179,478 |
+| `map/40-relations-12.md` | 500 | 163,935 |
+| `map/40-relations-13.md` | 111 | 41,037 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
-| `map/50-sessions-07.md` | 50 | 43,357 |
-| `map/50-sessions-08.md` | 41 | 38,692 |
+| `map/50-sessions-07.md` | 50 | 43,492 |
+| `map/50-sessions-08.md` | 42 | 39,578 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -3962,16 +3968,17 @@
 | `map/60-notes-14.md` | 25 | 55,324 |
 | `map/60-notes-15.md` | 25 | 65,858 |
 | `map/60-notes-16.md` | 25 | 60,364 |
-| `map/60-notes-17.md` | 25 | 68,936 |
+| `map/60-notes-17.md` | 25 | 68,918 |
+| `map/60-notes-18.md` | 1 | 4,631 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・425本・15,511,818 B）
+## 8. 精読ノート索引（readings/・426本・15,560,525 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 219/425 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 220/426 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：12 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：13 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：47 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4400,4 +4407,5 @@
 | `readings/2027-01-18-who-owns-the-explanation.md` | 2026-11-03 | 2027-01-18 | `SESSION-20261103-4aa697` | 14,380 | Q3 M7 S1 | — | 解明は誰の負うところか——クルアーン四章の再照合と、保留の読み替え |
 | `readings/2027-01-19-the-rule-had-a-footnote.md` | 2026-11-03 | 2027-01-19 | `SESSION-20261103-2e8d28` +1 | 12,985 | Q4 M2 S2 ERR3 ED2 | — | 規則には脚注があった——「追記しか許されない」を、訂正録と保守手順で読み返す |
 | `readings/2027-01-20-ten-written-words-and-a-recorded-dream.md` | 2026-11-03 | 2027-01-20 | `SESSION-20261103-6fb7ad` +1 | 17,967 | Q3 M8 MOT4 R8 S2 | — | 書き留められた十の言葉と、夢に残された予告——神話・宗教経典五篇の精読 |
-| `readings/2027-01-21-when-silence-does-not-stop-a-departure.md` | 2026-11-03 | 2027-01-21 | `SESSION-20261103-d5682c` | 5,669 | Q3 M9 S1 | — | 沈黙は出発を止めない——問い、織物、酒、琴 |
+| `readings/2027-01-21-when-silence-does-not-stop-a-departure.md` | 2026-11-03 | 2027-01-21 | `SESSION-20261103-d5682c` | 5,669 | Q3 M9 S1 | ✓ | 沈黙は出発を止めない——問い、織物、酒、琴 |
+| `readings/2027-01-22-who-is-counted-in-the-seventeen-lives.md` | 2026-11-03 | 2027-01-22 | `SESSION-20261103-e05e7d` +1 | 20,053 | Q3 M5 S2 | — | 十七世に数えられるのは誰か——見る者、写す者、造られた像、そして数え直す註釈 |
