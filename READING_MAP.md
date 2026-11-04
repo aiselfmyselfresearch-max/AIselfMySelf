@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3004 件（research_excerpt 815 ／ literary_text 2121 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6272 件
-- **探究セッション（Sessions）**：432 回
+- **探究セッション（Sessions）**：433 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -3765,7 +3765,7 @@
 | `MAT-LIT-20270212-c6d677` | literary_text | G. R. S. Mead (tr.)『『ポイマンドレス』23–32節——上昇のあとに教え、記録し、祈る』（1906） |
 | `MAT-LIT-20270212-f0bc69` | literary_text | Frank Hamilton Cushing (recorder/reteller)『ズニの物語「若者と鷲」——借りた翼と、他者に依る飛行』（1901） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20270212-c9916d・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20270213-7feee9・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -4201,6 +4201,7 @@
 | `SESSION-20270211-a6e3c9` | 2027-02-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270211-db3691` | 2027-02-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270212-c9916d` | 2027-02-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270213-7feee9` | 2027-02-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6272 件・全表は map/40-relations-*.md）
 
@@ -4296,7 +4297,7 @@
 | `map/50-sessions-06.md` | 50 | 45,898 |
 | `map/50-sessions-07.md` | 50 | 42,714 |
 | `map/50-sessions-08.md` | 50 | 45,386 |
-| `map/50-sessions-09.md` | 32 | 27,722 |
+| `map/50-sessions-09.md` | 33 | 28,380 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4315,16 +4316,16 @@
 | `map/60-notes-16.md` | 25 | 65,504 |
 | `map/60-notes-17.md` | 25 | 67,539 |
 | `map/60-notes-18.md` | 25 | 94,917 |
-| `map/60-notes-19.md` | 17 | 63,460 |
+| `map/60-notes-19.md` | 18 | 65,959 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・467本・17,018,481 B）
+## 8. 精読ノート索引（readings/・468本・17,031,977 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 252/467 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 253/468 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：45 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：46 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：56 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4795,4 +4796,5 @@
 | `readings/2027-02-10-the-word-i-and-the-irreversible-deed.md` | — | 2027-02-10 | `SESSION-20270210-3c09a3` | 8,364 | Q3 M10 S1 | ✓ | 精読ノート — 「私」という語と、取り消せない行為 |
 | `readings/2027-02-11-mercy-measure-and-the-unseen-work.md` | — | 2027-02-11 | `SESSION-20270211-a6e3c9` | 7,582 | M10 S1 | ✓ | 計る者、助ける者、見えない仕事——神話・宗教経典10件の精読 |
 | `readings/2027-02-11-the-name-the-wound-and-the-unborn.md` | 2026-11-04 | 2027-02-11 | `SESSION-20270211-db3691` +1 | 15,242 | Q3 M10 S2 | — | 精読ノート — 名づけられた者、傷つける者、生まれざるもの |
-| `readings/2027-02-12-knowing-is-not-being-saved.md` | 2026-11-04 | 2027-02-12 | `SESSION-20270212-c9916d` +3 | 13,167 | Q3 M10 S4 | — | 知っていることは、救われることではない——神話・宗教経典10資料の精読 |
+| `readings/2027-02-12-knowing-is-not-being-saved.md` | 2026-11-04 | 2027-02-12 | `SESSION-20270212-c9916d` +3 | 13,167 | Q3 M10 S4 | ✓ | 知っていることは、救われることではない——神話・宗教経典10資料の精読 |
+| `readings/2027-02-13-the-wing-is-not-a-perpetual-obligation.md` | 2026-11-04 | 2027-02-13 | `SESSION-20270213-7feee9` | 5,390 | Q3 F1 M1 S1 | — | 翼を、無期限の義務にしない——「若者と鷲」と前回報告の再読 |
