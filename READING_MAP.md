@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：426 件（初期シード 5 件 ＋ 派生 421 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2984 件（research_excerpt 815 ／ literary_text 2101 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2994 件（research_excerpt 815 ／ literary_text 2111 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6272 件
-- **探究セッション（Sessions）**：430 回
+- **探究セッション（Sessions）**：431 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -756,7 +756,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2984 件・詳細は map/3*.md）
+## 4. 対話素材（2994 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3744,8 +3744,18 @@
 | `MAT-LIT-20270211-0a1b08` | literary_text | Marmaduke Pickthall (tr.)『『クルアーン』93章——守られた過去と他者への応答』（1930） |
 | `MAT-LIT-20270211-0a1b09` | literary_text | King James Version translators『『エゼキエル書』18章——父の罪と立ち返る者』（1611） |
 | `MAT-LIT-20270211-0a1b10` | literary_text | H. Kern (tr.)『『法華経』第5章——一つの雨と異なる草木』（1884） |
+| `MAT-LIT-20270212-9be9b1` | literary_text | E. A. Wallis Budge (tr.), C. J. Gadd (rev.)『『ギルガメシュ叙事詩』第XI書板——家を壊し、生の種を船に入れる』（1929） |
+| `MAT-LIT-20270212-300275` | literary_text | D. T. Suzuki (tr.), Paul Carus (tr.)『『太上感応篇』善行の勧め——隣人の得失と、報いを求めない助け』（1906） |
+| `MAT-LIT-20270212-76e0d0` | literary_text | Ralph L. Roys (tr.)『『チラム・バラムの書』チュマエル本 I——四方に割り当てられる木・食物・蜂』（1933） |
+| `MAT-LIT-20270212-c8e8e3` | literary_text | Isidor Kalisch (tr.)『『セフェル・イェツィラー』第IV章1–7節——七つであり、六つでも八つでもない』（1877） |
+| `MAT-LIT-20270212-b5f6cc` | literary_text | Marmaduke Pickthall (tr.)『『クルアーン』59章18–24節——神を忘れ、自分たちを忘れる』（1930） |
+| `MAT-LIT-20270212-74f7a4` | literary_text | F. Max Müller (tr.)『『ダンマパダ』第XXI章——害による楽しみと、見覚めた反復』（1881） |
+| `MAT-LIT-20270212-063c78` | literary_text | E. A. Wallis Budge (tr.)『『アニの死者の書』Plate IV——正しいとされた心と、食物への願い』（1895） |
+| `MAT-LIT-20270212-130f20` | literary_text | Lionel Giles (tr.)『『列子』湯問——心を取り替えると、誰の家へ帰るのか』（1912） |
+| `MAT-LIT-20270212-c6d677` | literary_text | G. R. S. Mead (tr.)『『ポイマンドレス』23–32節——上昇のあとに教え、記録し、祈る』（1906） |
+| `MAT-LIT-20270212-f0bc69` | literary_text | Frank Hamilton Cushing (recorder/reteller)『ズニの物語「若者と鷲」——借りた翼と、他者に依る飛行』（1901） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20270211-a6e3c9・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20270212-c9916d・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -4027,8 +4037,10 @@
 | `SESSION-20261101-70e832` | 2026-11-01 | `Q-20261028-461baa`, `Q-20261126-fe52e5`, `Q-20261121-7b68b2`, `Q-20261024-a1e9f3`, `Q-082` | `FRAG-20261101-779f02` | — |
 | `SESSION-20261101-777583` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-006`, `Q-20261101-031383` | — | — |
 | `SESSION-20261101-86ba8e` | 2026-11-01 | `Q-001`, `Q-062`, `Q-065`, `Q-20261101-bb854d` | — | `Q-20261101-bb854d` |
+| `SESSION-20261101-b350ac` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-2ec50c` |
 | `SESSION-20261101-be22d0` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-c6fd04` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261101-d2d71c` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-c19dbd`, `Q-20261101-2ec50c` | — | — |
 | `SESSION-20261101-763a7e` | 2026-11-01T12:15:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-c19dbd`, `Q-20261116-522540`, `Q-082`, `Q-104` | `FRAG-20261101-995e60` | — |
 | `SESSION-20270102-c0aa1e` | 2027-01-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-ddc870` | 2027-01-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4042,8 +4054,6 @@
 | `SESSION-20261101-835fff` | 2027-01-08 | `Q-003` | — | — |
 | `SESSION-20261101-c631cb` | 2027-01-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-eea798` | 2027-01-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261101-d2d71c` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-c19dbd`, `Q-20261101-2ec50c` | — | — |
-| `SESSION-20261101-b350ac` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | `Q-20261101-2ec50c` |
 | `SESSION-20261101-93d6ea` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-ec0998` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261101-28ed2c` | 2026-11-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-2ec50c`, `Q-20261024-403180`, `Q-20261024-ddf2d2`, `Q-092`, `Q-20261024-ec519b`, `Q-057`, `Q-20261024-cfd57d` | `FRAG-20261101-269418` | — |
@@ -4179,6 +4189,7 @@
 | `SESSION-20270209-f34ad1` | 2027-02-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270210-3c09a3` | 2027-02-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270211-a6e3c9` | 2027-02-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270212-c9916d` | 2027-02-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6272 件・全表は map/40-relations-*.md）
 
@@ -4242,7 +4253,7 @@
 | `map/30-materials-literary-19.md` | 100 | 254,970 |
 | `map/30-materials-literary-20.md` | 100 | 274,468 |
 | `map/30-materials-literary-21.md` | 100 | 246,789 |
-| `map/30-materials-literary-22.md` | 1 | 1,615 |
+| `map/30-materials-literary-22.md` | 11 | 19,834 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4274,7 +4285,7 @@
 | `map/50-sessions-06.md` | 50 | 45,898 |
 | `map/50-sessions-07.md` | 50 | 42,714 |
 | `map/50-sessions-08.md` | 50 | 45,386 |
-| `map/50-sessions-09.md` | 30 | 26,269 |
+| `map/50-sessions-09.md` | 31 | 26,902 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4292,17 +4303,17 @@
 | `map/60-notes-15.md` | 25 | 57,282 |
 | `map/60-notes-16.md` | 25 | 65,504 |
 | `map/60-notes-17.md` | 25 | 67,539 |
-| `map/60-notes-18.md` | 25 | 94,864 |
-| `map/60-notes-19.md` | 15 | 56,157 |
+| `map/60-notes-18.md` | 25 | 94,917 |
+| `map/60-notes-19.md` | 16 | 59,503 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・465本・16,952,753 B）
+## 8. 精読ノート索引（readings/・466本・16,983,261 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 250/465 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 251/466 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：43 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：44 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：55 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4771,4 +4782,5 @@
 | `readings/2027-02-09-the-hand-the-bowl-and-the-changing-mind.md` | 2026-11-04 | 2027-02-09 | `SESSION-20270209-f34ad1` | 8,758 | Q3 M11 S1 | ✓ | 精読ノート — 切られた手、油の鉢、移りゆく心 |
 | `readings/2027-02-09-the-substitute-who-answers.md` | 2026-11-04 | 2027-02-09 | `SESSION-20270209-94f477` | 20,453 | Q3 M14 S1 | — | 精読ノート — 他者に代わって「ここにいます」と答える者：運び手、代書、借り物の鎧、そして一字の差 |
 | `readings/2027-02-10-the-word-i-and-the-irreversible-deed.md` | — | 2027-02-10 | `SESSION-20270210-3c09a3` | 8,364 | Q3 M10 S1 | ✓ | 精読ノート — 「私」という語と、取り消せない行為 |
-| `readings/2027-02-11-mercy-measure-and-the-unseen-work.md` | — | 2027-02-11 | `SESSION-20270211-a6e3c9` | 7,582 | M10 S1 | — | 計る者、助ける者、見えない仕事——神話・宗教経典10件の精読 |
+| `readings/2027-02-11-mercy-measure-and-the-unseen-work.md` | — | 2027-02-11 | `SESSION-20270211-a6e3c9` | 7,582 | M10 S1 | ✓ | 計る者、助ける者、見えない仕事——神話・宗教経典10件の精読 |
+| `readings/2027-02-12-knowing-is-not-being-saved.md` | 2026-11-04 | 2027-02-12 | `SESSION-20270212-c9916d` +3 | 13,167 | Q3 M10 S4 | — | 知っていることは、救われることではない——神話・宗教経典10資料の精読 |
