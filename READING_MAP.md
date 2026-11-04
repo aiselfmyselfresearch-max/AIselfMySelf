@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：414 件（初期シード 5 件 ＋ 派生 409 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2834 件（research_excerpt 815 ／ literary_text 1951 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2837 件（research_excerpt 815 ／ literary_text 1954 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6155 件
-- **探究セッション（Sessions）**：411 回
+- **解釈的関係（Relations）**：6158 件
+- **探究セッション（Sessions）**：412 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -744,7 +744,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2834 件・詳細は map/3*.md）
+## 4. 対話素材（2837 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3487,6 +3487,9 @@
 | `MAT-LIT-20261103-30366d` | literary_text | （キチェ・マヤ伝承）『『ポポル・ヴフ』——神々は人間を土から造ろうとしたが、土の人間は言葉を話せなかった』（1550） |
 | `MAT-LIT-20261103-c261c0` | literary_text | （古ノルド語伝承）『『ハーヴァマール』第77節——死ぬのは家畜も、親族も、汝自身も』（1200） |
 | `MAT-LIT-20261103-bbfb60` | literary_text | （アカン民族口承伝承）『アナンシ物語——すべての知恵を自分の壺に集め、天高く預ける』（1900） |
+| `MAT-LIT-20270131-ce7a78` | literary_text | （マヌ法典）『『マヌ法典』第2巻——名に属性を書き込む規則と、声にしない名』（1886） |
+| `MAT-LIT-20270131-c099d1` | literary_text | （マヌ法典）『『マヌ法典』第8巻——証人の資格と多数決、そして霊魂という証人』（1886） |
+| `MAT-LIT-20270131-845a44` | literary_text | （創世記）『『創世記』17:5・32:27–28——名を問われ、名を与えられる』（1611） |
 | `MAT-20270128-6b2230` | research_excerpt | （Git プロジェクト）『git「ハッシュ関数の移行」——内容が名を決め、名は話し手を経て届く』（2018） |
 | `MAT-20270128-efbe6f` | research_excerpt | （transparency-dev/merkle プロジェクト）『Merkle ログのデータモデル——追記のみの列と、決して変わらない節』（2024） |
 | `MAT-20270128-de3c51` | research_excerpt | （CometBFT プロジェクト）『CometBFT ライトクライアント仕様——信頼された出発点から、+2/3 の他者へ』（2024） |
@@ -3911,6 +3914,7 @@
 | `SESSION-20261104-a59e2a` | 2027-01-27 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270130-1a462d` | 2027-01-30 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270128-0da3cd` | 2027-01-28 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
+| `SESSION-20270131-b6de43` | 2027-01-31 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20270127-fcd1ff` | 2027-01-27 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20270129-18b3f6` | 2027-01-29 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
@@ -3999,12 +4003,12 @@
 | `SESSION-20270125-514567` | 2027-01-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270126-bb03ac` | 2027-01-26 | `Q-001`, `Q-002`, `Q-003`, `Q-20270126-bdb41b` | — | `Q-20270126-bdb41b` |
 
-## 6. 解釈的関係（6155 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6158 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 858 |
-| 共鳴 (echo) | 1518 |
+| 対照 (contrast) | 860 |
+| 共鳴 (echo) | 1519 |
 | 切断・割り込み (interrupts) | 212 |
 | 未解決のまま開く (leaves_open) | 874 |
 | 比喩的共鳴 (metaphorically_resonates) | 163 |
@@ -4058,8 +4062,8 @@
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
 | `map/30-materials-literary-18.md` | 100 | 293,289 |
-| `map/30-materials-literary-19.md` | 100 | 277,566 |
-| `map/30-materials-literary-20.md` | 51 | 145,868 |
+| `map/30-materials-literary-19.md` | 100 | 272,171 |
+| `map/30-materials-literary-20.md` | 54 | 157,798 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4080,18 +4084,18 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 175,949 |
-| `map/40-relations-12.md` | 500 | 164,654 |
-| `map/40-relations-13.md` | 155 | 57,612 |
+| `map/40-relations-11.md` | 500 | 176,223 |
+| `map/40-relations-12.md` | 500 | 164,529 |
+| `map/40-relations-13.md` | 158 | 58,672 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 46,647 |
 | `map/50-sessions-06.md` | 50 | 45,898 |
-| `map/50-sessions-07.md` | 50 | 41,877 |
-| `map/50-sessions-08.md` | 50 | 47,187 |
-| `map/50-sessions-09.md` | 11 | 9,625 |
+| `map/50-sessions-07.md` | 50 | 41,715 |
+| `map/50-sessions-08.md` | 50 | 47,054 |
+| `map/50-sessions-09.md` | 12 | 10,653 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4109,16 +4113,16 @@
 | `map/60-notes-15.md` | 25 | 57,645 |
 | `map/60-notes-16.md` | 25 | 64,868 |
 | `map/60-notes-17.md` | 25 | 67,125 |
-| `map/60-notes-18.md` | 21 | 80,015 |
+| `map/60-notes-18.md` | 22 | 82,737 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・446本・16,323,350 B）
+## 8. 精読ノート索引（readings/・447本・16,343,398 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 236/446 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 237/447 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：29 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：30 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：50 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4569,3 +4573,4 @@
 | `readings/2027-01-28-three-kinds-of-checking-and-the-unverifiable-signature.md` | 2026-11-04 | 2027-01-28 | — | 8,485 | M5 | ✓ | 三つの照合——同一性・不変性・信頼と、名乗りの検証不能性 |
 | `readings/2027-01-29-writing-the-trust-root.md` | 2026-11-04 | 2027-01-29 | — | 6,050 | — | ✓ | 信頼の起点を書く——条件は、出来事でも行でもない |
 | `readings/2027-01-30-turning-the-window-and-what-it-forgets.md` | 2026-11-04 | 2027-01-30 | `SESSION-20270129-18b3f6` +2 | 5,141 | S3 | — | 窓を回す——README の詳細窓ローテーションと、選ばれることの非対称 |
+| `readings/2027-01-31-the-name-does-not-carry-the-person.md` | 2026-11-04 | 2027-01-31 | — | 9,756 | M3 | ✓ | 名は身元を運ばない——26の別名と、名を問う三つの手続き |
