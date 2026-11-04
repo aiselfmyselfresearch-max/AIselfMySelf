@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：426 件（初期シード 5 件 ＋ 派生 421 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3014 件（research_excerpt 815 ／ literary_text 2131 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3024 件（research_excerpt 815 ／ literary_text 2141 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：244 編（selected 94 ／ draft 150）
 - **解釈的関係（Relations）**：6275 件
-- **探究セッション（Sessions）**：437 回
+- **探究セッション（Sessions）**：438 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -758,7 +758,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3014 件・詳細は map/3*.md）
+## 4. 対話素材（3024 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3776,8 +3776,18 @@
 | `MAT-LIT-20270213-62a2f3` | literary_text | recorded in Australian legendary tale collections (Lang/Howitt tradition)『豪州アボリジニ伝説「大干ばつと… |
 | `MAT-LIT-20270213-d7f59e` | literary_text | R. H. Charles (ed.), from The Apocrypha and Pseudepigrapha of the Old Testament『『アダムとエヴァの… |
 | `MAT-LIT-20270213-9e8060` | literary_text | Maalam Shaihua (recorder), R. Sutherland Rattray (tr./ed.)『ラトレイ編『ハウサ民話』——死にゆく首長クルングチェと「葬儀… |
+| `MAT-LIT-20270217-7c4c52` | literary_text | Oliver Turnbull Crane (tr.)『『サマリア五書』の外にある『サマリア年代記（ヨシュアの書）』——聖書に入らなかった書を、正典としてではなく「最も敬意を払う… |
+| `MAT-LIT-20270217-a7f81d` | literary_text | R. H. Charles (ed.)『『スラヴ語アダムとエヴァの生涯』xxviii–xxxix——悪魔に「お前は私のものだ」と書いて渡す証文と、天使の姿をした悪魔を黙って見分け… |
+| `MAT-LIT-20270217-37b57e` | literary_text | Hermann Jacobi (tr.)『『カルパ・スートラ』「スタヴィラの一覧」——十一人のガナダラのうち、子孫を残したのは一人だけだったという継承の目録』（1884） |
+| `MAT-LIT-20270217-a8f79a` | literary_text | E. W. West (tr.)『『ブンダヒシュン』第一章——九千年の期限を「二人の男が喧嘩の日を取り決めるように」取り決め、アフナワルの二十一字を唱えると悪神が膝をつく』（18… |
+| `MAT-LIT-20270217-e710b6` | literary_text | Isya Joseph (tr.)『『アル＝ジルワ（啓示の書）』第一章——「私はあった、今ある、終わりはない」と言う者が、すべての神を礼拝することを禁じ、外の者たちの書は改変され… |
+| `MAT-LIT-20270217-7e89c0` | literary_text | Philip K. Hitti『ヒッティ『ドゥルーズ派の起源』付録A——名を空欄にしたまま、自分の魂に不利な証言として差し出す帰依の証書』（1924） |
+| `MAT-LIT-20270217-78583b` | literary_text | Franz Boas『ボアズ編『ティムシアン・テキスツ』第6話「洪水の物語」——鱒の口に尿を注いで笑った者が、二十日の雨のあと紋章だけを持って散らされる』（1912） |
+| `MAT-LIT-20270217-ed9ddb` | literary_text | Jeremiah Curtin『カーティン『南シベリア紀行』第IX章「シャーマンの起源」——眠っているあいだに教育され、額を打たれて倒れ、以後は「自分ではなく炎が語る」』（190… |
+| `MAT-LIT-20270217-56976e` | literary_text | Waldemar Bogoras『ボゴラス編『チュクチ神話』呪唱5——入口も窓もない鉄の家に変えて、屋根の小穴に刃を回す（「コレットの来訪に抗する呪い」）』（1910） |
+| `MAT-LIT-20270217-88fdb8` | literary_text | Zabelle C. Boyajian (comp./tr.), Moses of Khorene『モーセ・ホレナチ『アルメニア史』（5世紀）の引用として伝わるヴァハグンの誕生—… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20270216-ec15dc・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20270217-60c76d・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -4218,6 +4228,7 @@
 | `SESSION-20270214-cfc87d` | 2027-02-14 | `Q-001`, `Q-002`, `Q-003` | `FRAG-20270214-65aa8c` | — |
 | `SESSION-20270215-6e5d7d` | 2027-02-15 | `Q-001`, `Q-002`, `Q-003`, `Q-082`, `Q-20261121-198fc8` | `FRAG-20270215-7f35f3` | — |
 | `SESSION-20270216-ec15dc` | 2027-02-16 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-48039e` | — | — |
+| `SESSION-20270217-60c76d` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6275 件・全表は map/40-relations-*.md）
 
@@ -4281,7 +4292,7 @@
 | `map/30-materials-literary-19.md` | 100 | 254,970 |
 | `map/30-materials-literary-20.md` | 100 | 274,468 |
 | `map/30-materials-literary-21.md` | 100 | 252,071 |
-| `map/30-materials-literary-22.md` | 31 | 60,566 |
+| `map/30-materials-literary-22.md` | 41 | 91,222 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4313,7 +4324,7 @@
 | `map/50-sessions-06.md` | 50 | 45,898 |
 | `map/50-sessions-07.md` | 50 | 42,714 |
 | `map/50-sessions-08.md` | 50 | 45,386 |
-| `map/50-sessions-09.md` | 37 | 31,193 |
+| `map/50-sessions-09.md` | 38 | 32,192 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4332,17 +4343,17 @@
 | `map/60-notes-16.md` | 25 | 65,504 |
 | `map/60-notes-17.md` | 25 | 67,539 |
 | `map/60-notes-18.md` | 25 | 94,917 |
-| `map/60-notes-19.md` | 22 | 76,416 |
+| `map/60-notes-19.md` | 23 | 81,323 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・472本・17,105,071 B）
+## 8. 精読ノート索引（readings/・473本・17,162,367 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 257/472 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 258/473 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：50 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：57 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：51 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：58 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4818,3 +4829,4 @@
 | `readings/2027-02-14-two-pots-one-burner.md` | 2026-11-04 | 2027-02-14 | `SESSION-20270214-cfc87d` | 6,547 | Q3 F1 M1 S1 | ✓ | 二つの鍋、一つの火——支え手を一人にしないための再読と短編 |
 | `readings/2027-02-15-before-and-after-seven.md` | 2026-11-04 | 2027-02-15 | `SESSION-20270215-6e5d7d` | 6,282 | Q5 F2 S1 | — | 七時の前と後——予定を、まだ約束にしない別稿 |
 | `readings/2027-02-16-the-chain-of-entrustment-and-the-rotating-support.md` | 2026-11-04 | 2027-02-16 | `SESSION-20270216-ec15dc` +3 | 4,851 | Q4 M2 S4 | — | 委ね連ねる鎖と、交代する支え——ピラミッド文書呪文205–206とズニ神話の衝突読み |
+| `readings/2027-02-17-form-and-the-blank.md` | 2026-11-04 | 2027-02-17 | `SESSION-20270217-60c76d` +1 | 22,903 | Q3 M19 S2 | — | 書式と、その空欄——神話・経典ドメインの新規10資料の精読 |
