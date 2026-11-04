@@ -4152,11 +4152,11 @@
 | `map/60-notes-16.md` | 25 | 64,868 |
 | `map/60-notes-17.md` | 25 | 67,125 |
 | `map/60-notes-18.md` | 25 | 95,758 |
-| `map/60-notes-19.md` | 1 | 3,215 |
+| `map/60-notes-19.md` | 1 | 3,296 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・451本・16,483,266 B）
+## 8. 精読ノート索引（readings/・451本・16,484,498 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 240/451 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -4616,4 +4616,4 @@
 | `readings/2027-01-31-the-name-does-not-carry-the-person.md` | 2026-11-04 | 2027-01-31 | — | 9,756 | M3 | ✓ | 名は身元を運ばない——26の別名と、名を問う三つの手続き |
 | `readings/2027-02-01-checking-the-checker.md` | 2026-11-04 | 2027-02-01 | `SESSION-20261104-cc8e3e` | 8,203 | Q4 M1 S1 ERR2 | — | 照合の相手を確かめる——梗概9件を原典に当てて、一次資料には0件しか届かなかった |
 | `readings/2027-02-01-the-practice-was-already-written.md` | 2026-11-04 | 2027-02-01 | — | 7,506 | M4 | — | 声を減らす作法は、もう書かれていた——四つの既存素材と、欄を足さないという決定 |
-| `readings/2027-02-02-the-unwritten-doctrine-and-the-inherited-name.md` | — | 2027-02-02 | `SESSION-20270202-57d7f0` | 19,478 | Q3 M16 MOT4 S1 | — | 書かれなかった教義と、名を継ぐ者——神話・経典12件の精読 |
+| `readings/2027-02-02-the-unwritten-doctrine-and-the-inherited-name.md` | — | 2027-02-02 | `SESSION-20270202-57d7f0` +1 | 19,958 | Q3 M17 MOT4 S2 | — | 書かれなかった教義と、名を継ぐ者——神話・経典12件の精読 |
