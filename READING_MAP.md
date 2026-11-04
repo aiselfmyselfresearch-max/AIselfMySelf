@@ -4263,7 +4263,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・462本・16,865,469 B）
+## 8. 精読ノート索引（readings/・462本・16,865,468 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 249/462 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -4734,4 +4734,4 @@
 | `readings/2027-02-06-the-unsealed-book-is-not-yet-heard.md` | 2026-11-04 | 2027-02-06 | `SESSION-20270206-618df4` | 18,412 | Q3 M10 S1 | ✓ | 開かれた書は、まだ聞かれていない |
 | `readings/2027-02-07-helpful-is-not-a-guarantee.md` | 2026-11-04 | 2027-02-07 | `SESSION-20270207-bfdccc` +1 | 8,136 | Q3 M1 S2 | ✓ | 助けとなることは、保証ではない |
 | `readings/2027-02-08-the-trust-that-was-refused.md` | 2026-11-04 | 2027-02-08 | `SESSION-20270208-a2d4b6` | 23,750 | Q3 M15 S1 | ✓ | 精読ノート — 天と地が断ったものを引き受ける者：空にすること、作り直されること、応答すること |
-| `readings/2027-02-09-the-hand-the-bowl-and-the-changing-mind.md` | 2026-11-04 | 2027-02-09 | `SESSION-20270209-f34ad1` | 8,759 | Q3 M11 S1 | — | 精読ノート — 切られた手、油の鉢、移りゆく心 |
+| `readings/2027-02-09-the-hand-the-bowl-and-the-changing-mind.md` | 2026-11-04 | 2027-02-09 | `SESSION-20270209-f34ad1` | 8,758 | Q3 M11 S1 | — | 精読ノート — 切られた手、油の鉢、移りゆく心 |
