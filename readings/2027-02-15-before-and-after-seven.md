@@ -159,3 +159,14 @@ packetの参考モードは `editorial_review`、参考問いは `Q-20261121-198
 README・docs/sessionsは通常回の責務分離に従い変更しない。READING_MAPは台帳の和集合から再生成する。技術検査はID・参照・索引等の整合性を扱い、二稿のどちらを選ぶべきかを決めるものではない。
 
 **技術検査（実作業日2026-11-04）**：`map_build.py`、`validate_seed.py`、`inspect_inquiry.py --check-map`、`read_log_backfill.py --check`、`size_budget.py --strict`、`note_index.py --check`、`git diff --check`が成功。`python3 -m unittest discover -s tests`は424件成功。旧稿と同文の前半767文字、および新規断片の台帳本文と§2の掲載全文の一致も確認した。
+
+## 7. 並行マージ後の保守追記（実作業日2026-11-04）
+
+マージ前にmainへ入ったPR #441を作業ブランチへ取り込み、READING_MAPの競合を和集合から再生成して解消した。取り込みでsessions・read_logが各81ファイルとなったため、`docs/parallel-work.md` §3の例外に従い、探究本文とは分離した保守コミット `c9db15b` で旧4シャード36行を同日の統合先へ移動した。追加のオープンPRの変更パスと重ならないこと、旧suffixの参照が過去報告だけで現行手順にはないことを確認した。過去報告の旧パスは当時の保存先として変更せず、IDから同じ行をたどる。行内容・IDは変更していない。
+
+|台帳|旧suffix（2026-11-01）|移動行数|同日000000000000統合先の行数|ソート済み行列SHA-256|
+|---|---|---:|---:|---|
+|sessions|e2bd9b1cb6c7 / ef14e19862c2|2|34|`674a31d7becf119675564ba5eabb0a944e0b68622b3a7b7a58f720651c5755eb`|
+|read_log|9bfe27da20d0 / c4fb0d9aea03|34|512|`738c65803ff29e7af6f004c282d21e962371daa8a29894392e3b1c14fe72286c`|
+
+sessionsはstarted_at/session_id、read_logはcreated_at/read_idで安定ソートし、JSONを再直列化せず行を移動した。移動前後の行バイト列の多重集合が完全一致することを確認。予算を含む整合性検査を取り込み後にも再実行した。新規資料・新規問い0件、別稿1編という本回の追加範囲は変わらない。
