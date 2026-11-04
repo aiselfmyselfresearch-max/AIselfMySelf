@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：414 件（初期シード 5 件 ＋ 派生 409 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2819 件（research_excerpt 812 ／ literary_text 1939 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2831 件（research_excerpt 812 ／ literary_text 1951 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6140 件
-- **探究セッション（Sessions）**：406 回
+- **解釈的関係（Relations）**：6148 件
+- **探究セッション（Sessions）**：407 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -744,7 +744,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2819 件・詳細は map/3*.md）
+## 4. 対話素材（2831 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3487,6 +3487,18 @@
 | `MAT-LIT-20261103-30366d` | literary_text | （キチェ・マヤ伝承）『『ポポル・ヴフ』——神々は人間を土から造ろうとしたが、土の人間は言葉を話せなかった』（1550） |
 | `MAT-LIT-20261103-c261c0` | literary_text | （古ノルド語伝承）『『ハーヴァマール』第77節——死ぬのは家畜も、親族も、汝自身も』（1200） |
 | `MAT-LIT-20261103-bbfb60` | literary_text | （アカン民族口承伝承）『アナンシ物語——すべての知恵を自分の壺に集め、天高く預ける』（1900） |
+| `MAT-LIT-20261104-352da0` | literary_text | Ralph T. H. Griffith（英訳）『『リグ・ヴェーダ』10.135——見えない車を心で作り、その車の作り主を問う葬送の歌』（1896） |
+| `MAT-LIT-20261104-e7f678` | literary_text | （編者不詳、漢代成立）『『礼記』祭義——斎の日にその笑い声を思い、祭の日には戸の外でため息を聞く』（-100） |
+| `MAT-LIT-20261104-8dd22c` | literary_text | 慧然（集）, 臨済義玄（語）『『臨済録』——赤肉団の上の無位真人と、「逢佛殺佛」』（850） |
+| `MAT-LIT-20261104-70c6fd` | literary_text | Edward Shortland『ショートランド『マオリの宗教と神話』——一字でもためらえば効かないカラキアと、「空虚」に名を与える系譜』（1882） |
+| `MAT-LIT-20261104-30b316` | literary_text | W. D. Westervelt『ウェスターヴェルト『ハワイの幽霊と幽霊神の伝説』——葉を踏んで破れなければ幽霊、という審き』（1916） |
+| `MAT-LIT-20261104-5cb165` | literary_text | W. D. Westervelt『ウェスターヴェルト『ハワイの幽霊と幽霊神の伝説』——死んだ者の体は山のように見え、新しい幽霊は押された方向へしか行けない』（1916） |
+| `MAT-LIT-20261104-105270` | literary_text | A. B. Ellis『エリス『西アフリカ奴隷海岸のヨルバ語諸族』——頭と腹と足の親指に、それぞれ住む霊』（1894） |
+| `MAT-LIT-20261104-c2f94f` | literary_text | Daniel G. Brinton（校訂・英訳）『ブリントン『アメリカ・リグ・ヴェーダ』第五歌——処女が産み、山の上で子は成人になる』（1890） |
+| `MAT-LIT-20261104-aaf827` | literary_text | Pedro Sarmiento de Gamboa（著）, Clements R. Markham（英訳）『サルミエント・デ・ガンボア『インカの歴史』——「それが何であったかは記… |
+| `MAT-LIT-20261104-293c05` | literary_text | Bronislaw Malinowski『マリノフスキ『バロマ——トロブリアンド諸島における死者の霊』——バロマは舟で島へ渡り、礼金を払って道を教わる』（1916） |
+| `MAT-LIT-20261104-956e2f` | literary_text | Horapollo（伝）, Alexander Turner Cory（英訳）『ホラポロン『ヒエログリフの書』第一巻一——尾を噛む蛇と、その蛇を神の頭に置く理由』（1840） |
+| `MAT-LIT-20261104-8b2400` | literary_text | Albert F. Calvert『カルヴァート『西オーストラリアの先住民』序——文字を持たず、死者について語ることを禁じられる』（1894） |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -3893,6 +3905,7 @@
 | `SESSION-20261103-b115a2` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-85a285`, `Q-20270102-29c347`, `Q-20261103-32a3cd`, `Q-20261103-45a83f` | — | `Q-20261103-45a83f` |
 | `SESSION-20261103-550ce3` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-340edd` | 2027-01-24 | `Q-20270102-29c347`, `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261104-a59e2a` | 2027-01-27 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -3979,16 +3992,16 @@
 | `SESSION-20270125-514567` | 2027-01-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270126-bb03ac` | 2027-01-26 | `Q-001`, `Q-002`, `Q-003`, `Q-20270126-bdb41b` | — | `Q-20270126-bdb41b` |
 
-## 6. 解釈的関係（6140 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6148 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 851 |
-| 共鳴 (echo) | 1515 |
-| 切断・割り込み (interrupts) | 211 |
-| 未解決のまま開く (leaves_open) | 873 |
-| 比喩的共鳴 (metaphorically_resonates) | 162 |
-| 枠組みの組み替え (reframes) | 562 |
+| 対照 (contrast) | 853 |
+| 共鳴 (echo) | 1517 |
+| 切断・割り込み (interrupts) | 212 |
+| 未解決のまま開く (leaves_open) | 874 |
+| 比喩的共鳴 (metaphorically_resonates) | 163 |
+| 枠組みの組み替え (reframes) | 563 |
 | 応答 (responds_to) | 1679 |
 | 変奏・変形 (transforms) | 287 |
 
@@ -4038,8 +4051,8 @@
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
 | `map/30-materials-literary-18.md` | 100 | 293,289 |
-| `map/30-materials-literary-19.md` | 100 | 279,389 |
-| `map/30-materials-literary-20.md` | 39 | 110,092 |
+| `map/30-materials-literary-19.md` | 100 | 277,566 |
+| `map/30-materials-literary-20.md` | 51 | 145,868 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4060,18 +4073,18 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 175,067 |
-| `map/40-relations-12.md` | 500 | 164,609 |
-| `map/40-relations-13.md` | 140 | 52,376 |
+| `map/40-relations-11.md` | 500 | 175,487 |
+| `map/40-relations-12.md` | 500 | 164,880 |
+| `map/40-relations-13.md` | 148 | 54,994 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 46,647 |
 | `map/50-sessions-06.md` | 50 | 45,898 |
-| `map/50-sessions-07.md` | 50 | 42,288 |
-| `map/50-sessions-08.md` | 50 | 47,236 |
-| `map/50-sessions-09.md` | 6 | 5,196 |
+| `map/50-sessions-07.md` | 50 | 42,460 |
+| `map/50-sessions-08.md` | 50 | 46,884 |
+| `map/50-sessions-09.md` | 7 | 6,272 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4089,17 +4102,17 @@
 | `map/60-notes-15.md` | 25 | 57,645 |
 | `map/60-notes-16.md` | 25 | 64,868 |
 | `map/60-notes-17.md` | 25 | 67,138 |
-| `map/60-notes-18.md` | 16 | 62,472 |
+| `map/60-notes-18.md` | 17 | 68,603 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・441本・16,173,081 B）
+## 8. 精読ノート索引（readings/・442本・16,256,989 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 231/441 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 232/442 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：24 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：50 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：25 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：51 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4544,3 +4557,4 @@
 | `readings/2027-01-26-two-of-every-kind-and-the-blank-for-a-name.md` | 2026-11-03 | 2027-01-26 | `SESSION-20270126-84fa34` +1 | 33,125 | Q4 F1 M14 MOT1 S2 ERR1 | — | 二つずつ、そして名前の入る空欄 |
 | `readings/2027-01-26-what-a-human-is-and-what-the-self-is.md` | 2026-11-04 | 2027-01-26 | — | 3,125 | Q2 M3 | — | 人間とは何か、そして自己とは何か——十五往復後の現時点の答え |
 | `readings/2027-01-26-who-decides-and-what-is-archived.md` | 2026-11-04 | 2027-01-26 | `SESSION-20270126-bb03ac` +1 | 49,744 | Q5 M20 S2 ERR10 | ✓ | 誰が決め、何が保管されるか |
+| `readings/2027-01-27-the-vehicle-and-the-hinges.md` | 2026-11-04 | 2027-01-27 | `SESSION-20261104-a59e2a` | 38,082 | Q3 M15 MOT2 S1 | — | 乗り物と蝶番——神話・宗教経典12編の精読 |
