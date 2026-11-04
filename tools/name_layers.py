@@ -64,24 +64,25 @@ def defined_ids(root: Path) -> set[str]:
     for path in state_files(root):
         if not path.is_file():
             continue
-        for line in path.open(encoding="utf-8"):
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                row = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            if not isinstance(row, dict):
-                continue
-            for key, value in row.items():
-                if key.endswith("_id") and isinstance(value, str):
-                    known.add(value)
-            source = row.get("source")
-            if isinstance(source, dict):
-                source_id = source.get("source_id")
-                if isinstance(source_id, str):
-                    known.add(source_id)
+        with path.open(encoding="utf-8") as handle:
+            for line in handle:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    row = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                if not isinstance(row, dict):
+                    continue
+                for key, value in row.items():
+                    if key.endswith("_id") and isinstance(value, str):
+                        known.add(value)
+                source = row.get("source")
+                if isinstance(source, dict):
+                    source_id = source.get("source_id")
+                    if isinstance(source_id, str):
+                        known.add(source_id)
     return known
 
 
@@ -184,22 +185,23 @@ def source_collisions(root: Path) -> list[dict[str, object]]:
     for path in state_files(root, "state/materials.jsonl"):
         if not path.is_file():
             continue
-        for line in path.open(encoding="utf-8"):
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                row = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            source = row.get("source")
-            if not isinstance(source, dict):
-                continue
-            source_id = source.get("source_id")
-            if not isinstance(source_id, str):
-                continue
-            titles[source_id].add((source.get("title") or "").strip())
-            materials[source_id].add(row.get("material_id", ""))
+        with path.open(encoding="utf-8") as handle:
+            for line in handle:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    row = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                source = row.get("source")
+                if not isinstance(source, dict):
+                    continue
+                source_id = source.get("source_id")
+                if not isinstance(source_id, str):
+                    continue
+                titles[source_id].add((source.get("title") or "").strip())
+                materials[source_id].add(row.get("material_id", ""))
     return [
         {
             "source_id": source_id,
@@ -226,27 +228,28 @@ def scan_state_notes(root: Path) -> tuple[dict[str, set[str]], collections.Count
         if not path.is_file():
             continue
         label = path.name
-        for line in path.open(encoding="utf-8"):
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                row = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            if not isinstance(row, dict):
-                continue
-            owner = next(
-                (str(row[key]) for key in row if key.endswith("_id") and isinstance(row[key], str)),
-                label,
-            )
-            for key in NOTE_KEYS:
-                value = row.get(key)
-                if not isinstance(value, str):
+        with path.open(encoding="utf-8") as handle:
+            for line in handle:
+                line = line.strip()
+                if not line:
                     continue
-                for token in ID_RE.findall(value):
-                    seen[token].add(f"{label}:{owner}")
-                    counts[token] += 1
+                try:
+                    row = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                if not isinstance(row, dict):
+                    continue
+                owner = next(
+                    (str(row[key]) for key in row if key.endswith("_id") and isinstance(row[key], str)),
+                    label,
+                )
+                for key in NOTE_KEYS:
+                    value = row.get(key)
+                    if not isinstance(value, str):
+                        continue
+                    for token in ID_RE.findall(value):
+                        seen[token].add(f"{label}:{owner}")
+                        counts[token] += 1
     return dict(seen), counts
 
 
