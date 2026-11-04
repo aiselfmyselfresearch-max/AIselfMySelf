@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：426 件（初期シード 5 件 ＋ 派生 421 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2944 件（research_excerpt 815 ／ literary_text 2061 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2954 件（research_excerpt 815 ／ literary_text 2071 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6272 件
-- **探究セッション（Sessions）**：426 回
+- **探究セッション（Sessions）**：427 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -756,7 +756,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2944 件・詳細は map/3*.md）
+## 4. 対話素材（2954 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3704,8 +3704,18 @@
 | `MAT-LIT-20270208-13f6fe` | literary_text | サアディー（ムスリフ・アッディーン・サアディー・シーラーズィー、1258年完成）『サアディー『ゴレスターン（薔薇園）』第1章——バニー・アーダム（アダムの子ら）は一つの体の肢であ… |
 | `MAT-LIT-20270208-0d49d5` | literary_text | プタホテプ（伝承的帰属、古代エジプトの宰相）『『プタホテプの教訓』——心は空になり昨日を思い出せない、聞くことが心のものさしである』（-1850） |
 | `MAT-LIT-20270208-a8e814` | literary_text | ハウデノショーニー（イロコイ連邦）の口承の挨拶, John Stokes・Kanawahienton（David Benedict）による英語版、Jake Swamp（Tekar… |
+| `MAT-LIT-20270209-d44640` | literary_text | 太安万侶（編纂、712年）, Basil Hall Chamberlain（英訳、1882年）『『古事記』中巻・応神天皇条——百済から貢進された和邇吉師と『論語』十巻・『千字文』… |
+| `MAT-LIT-20270209-0a6931` | literary_text | キチェ・マヤの作者不詳の編者たち（16世紀中頃）, Allen J. Christenson（英訳、2003/2007年）『『ポポル・ヴフ』序文——「ここに我々は書く」、隠された… |
+| `MAT-LIT-20270209-5e00ef` | literary_text | パウロ（帰属は伝統的）, King James Version translators（1611年英訳）『『コリントの信徒への手紙二』3:1–6——インクではなく霊で、石の板では… |
+| `MAT-LIT-20270209-f026e3` | literary_text | クルアーン（預言者ムハンマドへの啓示とされる本文）, Marmaduke Pickthall（英訳、1930年）『『クルアーン』第55章（至仁主章）——「あなたがたの主の恩恵のど… |
+| `MAT-LIT-20270209-68376b` | literary_text | 荘周（荘子、前4世紀頃）, James Legge（英訳、1891年）『『荘子』大宗師篇——顔回の「坐忘」、肢体を堕とし聡明を黜けて大通に同ずる』（1891） |
+| `MAT-LIT-20270209-95f1f1` | literary_text | 親鸞の言行を唯円が記したとされる（鎌倉後期）, keijijin/shinran 校訂本文『親鸞『歎異抄』第九条——念仏しても踊躍歓喜の心がおろそかなのは、煩悩の所為なり』（12… |
+| `MAT-LIT-20270209-cc8380` | literary_text | 道元（1200–1253）, keijijin/dogen 校訂本文（正法眼蔵75巻本第68）『道元『正法眼蔵』大修行（第68）——百丈野狐、「不落因果」と「不昧因果」の一字』（… |
+| `MAT-LIT-20270209-60bf04` | literary_text | 古代エジプトの葬祭文（新王国以降）, E. A. Wallis Budge / P. le Page Renouf（英訳、Project Gutenberg #69566）『『死… |
+| `MAT-LIT-20270209-b7188f` | literary_text | 列禦寇に帰される（戦国〜漢、編纂は後代）, A. C. Graham（英訳、1960年）『『列子』湯問篇——偃師の作った倡者、心を取れば口は言えず、肝を取れば目は見えず』（196… |
+| `MAT-LIT-20270209-79bee3` | literary_text | 作者不詳（10世紀頃、コーデクス・レギウス所収）, Henry Adams Bellows（英訳、1923年）『『詩のエッダ』スリュムの歌（Þrymskviða）——花嫁面紗をま… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20270208-a2d4b6・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20270209-94f477・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -4135,6 +4145,7 @@
 | `SESSION-20270206-618df4` | 2027-02-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270207-bfdccc` | 2027-02-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270208-a2d4b6` | 2027-02-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270209-94f477` | 2027-02-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6272 件・全表は map/40-relations-*.md）
 
@@ -4197,7 +4208,7 @@
 | `map/30-materials-literary-18.md` | 100 | 293,289 |
 | `map/30-materials-literary-19.md` | 100 | 254,970 |
 | `map/30-materials-literary-20.md` | 100 | 274,468 |
-| `map/30-materials-literary-21.md` | 61 | 168,977 |
+| `map/30-materials-literary-21.md` | 71 | 198,097 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4229,7 +4240,7 @@
 | `map/50-sessions-06.md` | 50 | 45,898 |
 | `map/50-sessions-07.md` | 50 | 42,714 |
 | `map/50-sessions-08.md` | 50 | 45,386 |
-| `map/50-sessions-09.md` | 26 | 23,752 |
+| `map/50-sessions-09.md` | 27 | 24,600 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4247,18 +4258,18 @@
 | `map/60-notes-15.md` | 25 | 57,282 |
 | `map/60-notes-16.md` | 25 | 65,504 |
 | `map/60-notes-17.md` | 25 | 67,539 |
-| `map/60-notes-18.md` | 25 | 94,751 |
-| `map/60-notes-19.md` | 11 | 46,064 |
+| `map/60-notes-18.md` | 25 | 94,804 |
+| `map/60-notes-19.md` | 12 | 50,295 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・461本・16,844,339 B）
+## 8. 精読ノート索引（readings/・462本・16,892,721 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 248/461 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 249/462 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：41 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：54 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：42 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：55 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4723,3 +4734,4 @@
 | `readings/2027-02-06-the-unsealed-book-is-not-yet-heard.md` | 2026-11-04 | 2027-02-06 | `SESSION-20270206-618df4` | 18,412 | Q3 M10 S1 | ✓ | 開かれた書は、まだ聞かれていない |
 | `readings/2027-02-07-helpful-is-not-a-guarantee.md` | 2026-11-04 | 2027-02-07 | `SESSION-20270207-bfdccc` +1 | 8,136 | Q3 M1 S2 | ✓ | 助けとなることは、保証ではない |
 | `readings/2027-02-08-the-trust-that-was-refused.md` | 2026-11-04 | 2027-02-08 | `SESSION-20270208-a2d4b6` | 23,750 | Q3 M15 S1 | — | 精読ノート — 天と地が断ったものを引き受ける者：空にすること、作り直されること、応答すること |
+| `readings/2027-02-09-the-substitute-who-answers.md` | 2026-11-04 | 2027-02-09 | `SESSION-20270209-94f477` | 19,500 | Q3 M13 S1 | — | 精読ノート — 他者に代わって「ここにいます」と答える者：運び手、代書、花嫁、そして一字の差 |
