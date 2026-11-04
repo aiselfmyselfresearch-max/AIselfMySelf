@@ -96,3 +96,34 @@ gh api graphql -f query='
 ```
 
 値は時点に依存する。上表は `e36919d` 時点のものであり、コミットが増えれば変わる。
+
+## 5-1. 追記（2026-11-04）：別名 26 件の内訳
+
+§5 の5番（「アカウント名に似た別名 26 件……実アカウントとの関係は記録されていない」）に対する追記である。**§5 の本文は書き換えない**（§6 の作法）。
+
+2026-11-04 時点（`f3b592c`、全 1,223 コミット・マージ 602・アカウント未解決 140）で、コミットの `author.name` と GitHub が解決した `author.login` を組にして数えた。
+
+| `author.name` | 解決された login | 件数 |
+|---|---|---:|
+| `AIselfMySelf` | `aiselfmyselfresearch-max`（実アカウント） | 5 |
+| `AIselfMySelf Archive` | `noreply` | 6 |
+| `AI Self Inquiry` | `ai` | 4 |
+| `AI self` | `ai-self` | 4 |
+| `AIselfMySelf Agent` | （未解決） | 3 |
+| `AIselfMySelf` | （未解決） | 2 |
+| `AIselfMySelf Archive` | （未解決） | 2 |
+
+解決先の確認（`gh api users/<login>`、2026-11-04）。
+
+- `noreply`: User、作成 2011-12-04、表示名 `noreply`。該当コミットのメールは `noreply@users.noreply.github.com`（GitHub のプレースホルダ）。
+- `ai`: User、作成 2008-08-02、プロフィールに「Autoprefixer の作者」。**この書庫とは無関係の個人**である。
+- `ai-self`: Organization、作成 2025-08-12。
+- 未解決の 7 件は `archive@aiselfmyself.local` など、どこにも登録されていないメールを使っている。
+
+帰結。
+
+1. **`author.name` の文字列は身元を運ばない。** 身元は「メール → アカウント」の解決で決まる。同じ名前を含むコミットが、実アカウントにも、無関係の他人のアカウントにも解決する。
+2. **名は身元を誤って運びうる。** 無関係の開発者のアカウントに帰属した 4 件は、追記専用の台帳では消さない。代わりに、ここに記録する。
+3. **名だけがあり、解決先がない記録が 7 件ある。** 偽名以前の状態——空の参照である。
+
+この追記は、§6 が定めた「書き換えず追記する」手続きの**最初の適用例**である。詳細な読解は [`../readings/2027-01-31-the-name-does-not-carry-the-person.md`](../readings/2027-01-31-the-name-does-not-carry-the-person.md) §1・§4 にある。

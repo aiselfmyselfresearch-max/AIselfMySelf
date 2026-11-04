@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：416 件（初期シード 5 件 ＋ 派生 411 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2846 件（research_excerpt 815 ／ literary_text 1963 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2849 件（research_excerpt 815 ／ literary_text 1966 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6173 件
-- **探究セッション（Sessions）**：412 回
+- **解釈的関係（Relations）**：6176 件
+- **探究セッション（Sessions）**：413 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -746,7 +746,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2846 件・詳細は map/3*.md）
+## 4. 対話素材（2849 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3501,6 +3501,9 @@
 | `MAT-LIT-20261104-939c2f` | literary_text | 佚名（ナワトル語、ラテン文字転写）『『太陽の伝説（レイエンダ・デ・ロス・ソレス）』——火に飛び込んだ貧しい神が、太陽になる』（1558） |
 | `MAT-LIT-20261104-62596b` | literary_text | カビール（Kabīr）『カビールのドーハー——グルと神が並び立ち、伏すのはグルのほう』（1500） |
 | `MAT-LIT-20261104-a46165` | literary_text | 口承（Swanton 採録）『ハイダのワタリガラス——貝殻から出てこない最初の人々と、盗まれて解放される光』（1905） |
+| `MAT-LIT-20270131-ce7a78` | literary_text | （マヌ法典）『『マヌ法典』第2巻——名に属性を書き込む規則と、声にしない名』（1886） |
+| `MAT-LIT-20270131-c099d1` | literary_text | （マヌ法典）『『マヌ法典』第8巻——証人の資格と多数決、そして霊魂という証人』（1886） |
+| `MAT-LIT-20270131-845a44` | literary_text | （創世記）『『創世記』17:5・32:27–28——名を問われ、名を与えられる』（1611） |
 | `MAT-20270128-6b2230` | research_excerpt | （Git プロジェクト）『git「ハッシュ関数の移行」——内容が名を決め、名は話し手を経て届く』（2018） |
 | `MAT-20270128-efbe6f` | research_excerpt | （transparency-dev/merkle プロジェクト）『Merkle ログのデータモデル——追記のみの列と、決して変わらない節』（2024） |
 | `MAT-20270128-de3c51` | research_excerpt | （CometBFT プロジェクト）『CometBFT ライトクライアント仕様——信頼された出発点から、+2/3 の他者へ』（2024） |
@@ -3926,6 +3929,7 @@
 | `SESSION-20270130-1a462d` | 2027-01-30 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270128-0da3cd` | 2027-01-28 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20261104-1a9188` | 2026-11-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20261104-47566b`, `Q-20261104-98a5f4` | — | `Q-20261104-47566b`, `Q-20261104-98a5f4` |
+| `SESSION-20270131-b6de43` | 2027-01-31 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20270127-fcd1ff` | 2027-01-27 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20270129-18b3f6` | 2027-01-29 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
@@ -4014,12 +4018,12 @@
 | `SESSION-20270125-514567` | 2027-01-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270126-bb03ac` | 2027-01-26 | `Q-001`, `Q-002`, `Q-003`, `Q-20270126-bdb41b` | — | `Q-20270126-bdb41b` |
 
-## 6. 解釈的関係（6173 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6176 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 863 |
-| 共鳴 (echo) | 1525 |
+| 対照 (contrast) | 865 |
+| 共鳴 (echo) | 1526 |
 | 切断・割り込み (interrupts) | 212 |
 | 未解決のまま開く (leaves_open) | 874 |
 | 比喩的共鳴 (metaphorically_resonates) | 163 |
@@ -4073,8 +4077,8 @@
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
 | `map/30-materials-literary-18.md` | 100 | 293,289 |
-| `map/30-materials-literary-19.md` | 100 | 271,281 |
-| `map/30-materials-literary-20.md` | 63 | 190,467 |
+| `map/30-materials-literary-19.md` | 100 | 267,610 |
+| `map/30-materials-literary-20.md` | 66 | 200,673 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4095,18 +4099,18 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 175,087 |
-| `map/40-relations-12.md` | 500 | 164,965 |
-| `map/40-relations-13.md` | 173 | 63,553 |
+| `map/40-relations-11.md` | 500 | 175,210 |
+| `map/40-relations-12.md` | 500 | 165,119 |
+| `map/40-relations-13.md` | 176 | 64,485 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 46,647 |
 | `map/50-sessions-06.md` | 50 | 45,898 |
-| `map/50-sessions-07.md` | 50 | 42,094 |
-| `map/50-sessions-08.md` | 50 | 47,054 |
-| `map/50-sessions-09.md` | 12 | 10,653 |
+| `map/50-sessions-07.md` | 50 | 42,061 |
+| `map/50-sessions-08.md` | 50 | 46,808 |
+| `map/50-sessions-09.md` | 13 | 11,665 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4124,16 +4128,16 @@
 | `map/60-notes-15.md` | 25 | 57,645 |
 | `map/60-notes-16.md` | 25 | 64,868 |
 | `map/60-notes-17.md` | 25 | 67,125 |
-| `map/60-notes-18.md` | 22 | 86,023 |
+| `map/60-notes-18.md` | 23 | 88,849 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・447本・16,375,778 B）
+## 8. 精読ノート索引（readings/・448本・16,397,243 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 237/447 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 238/448 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：30 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：31 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：51 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4584,4 +4588,5 @@
 | `readings/2027-01-28-three-kinds-of-checking-and-the-unverifiable-signature.md` | 2026-11-04 | 2027-01-28 | — | 8,485 | M5 | ✓ | 三つの照合——同一性・不変性・信頼と、名乗りの検証不能性 |
 | `readings/2027-01-29-writing-the-trust-root.md` | 2026-11-04 | 2027-01-29 | — | 6,050 | — | ✓ | 信頼の起点を書く——条件は、出来事でも行でもない |
 | `readings/2027-01-30-turning-the-window-and-what-it-forgets.md` | 2026-11-04 | 2027-01-30 | `SESSION-20270129-18b3f6` +2 | 5,141 | S3 | — | 窓を回す——README の詳細窓ローテーションと、選ばれることの非対称 |
-| `readings/2027-01-31-the-chain-has-no-original.md` | 2026-11-04 | 2027-01-31 | `SESSION-20261104-1a9188` | 20,955 | Q5 M12 MOT3 S1 | — | 鎖に原本はない——神話・経典12篇を、翻訳・音写・系譜・巫歌として読む |
+| `readings/2027-01-31-the-chain-has-no-original.md` | 2026-11-04 | 2027-01-31 | `SESSION-20261104-1a9188` | 21,709 | Q5 M12 MOT3 S1 | — | 鎖に原本はない——神話・経典12篇を、翻訳・音写・系譜・巫歌として読む |
+| `readings/2027-01-31-the-name-does-not-carry-the-person.md` | 2026-11-04 | 2027-01-31 | — | 9,756 | M3 | ✓ | 名は身元を運ばない——26の別名と、名を問う三つの手続き |
