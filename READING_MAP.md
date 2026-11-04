@@ -7,7 +7,7 @@
 
 - **開かれた問い（Questions）**：414 件（初期シード 5 件 ＋ 派生 409 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2816 件（research_excerpt 809 ／ literary_text 1939 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2819 件（research_excerpt 812 ／ literary_text 1939 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6140 件
 - **探究セッション（Sessions）**：406 回
@@ -744,7 +744,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2816 件・詳細は map/3*.md）
+## 4. 対話素材（2819 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3564,6 +3564,9 @@
 | `MAT-LIT-20270125-5fd11e` | literary_text | Basil Hall Chamberlain (trans.)『『古事記』上巻・八岐大蛇——名を問われ、名を名乗り、尾から出た剣が天へ送られる』（1919） |
 | `MAT-LIT-20270125-6b8ad9` | literary_text | Adrián Recinos (ed. / trad.)『『ポポル・ヴフ』第二部第十二–十四章——挽かれた骨が川から戻り、名が残ると告げられる』（1947） |
 | `MAT-LIT-20270125-f36d31` | literary_text | E. A. Wallis Budge (ed. / trans.)『「プタハ・ネフェルヘテプとベフテンの王女」——像に移される保護力と、黄金の鷹となって帰る神』（1912） |
+| `MAT-EVD-20270126-81951c` | research_excerpt | （編者による調査・要約）『モントリオール議定書（1987）——有用な物質を全廃できた希少な成功例と、その九个の条件』（1987） |
+| `MAT-EVD-20270126-c4d195` | research_excerpt | （編者による調査・要約）『第二ラテラン公会議 Canon 29（1139）の石弓禁止——執行装置のない破門と、「正戦」による免除』（1139） |
+| `MAT-EVD-20270126-643177` | research_excerpt | （編者による調査・要約）『「日本は銃を捨てた」はほぼ神話である——名目遵守・実質保持・双方の面子』（1979） |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20270126-bb03ac・全文は map/50-sessions-*.md）
 
@@ -4045,7 +4048,7 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 9 | 26,091 |
+| `map/31-materials-research-09.md` | 12 | 34,101 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4086,11 +4089,11 @@
 | `map/60-notes-15.md` | 25 | 57,645 |
 | `map/60-notes-16.md` | 25 | 64,868 |
 | `map/60-notes-17.md` | 25 | 67,138 |
-| `map/60-notes-18.md` | 14 | 49,385 |
+| `map/60-notes-18.md` | 14 | 49,490 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・439本・16,125,566 B）
+## 8. 精読ノート索引（readings/・439本・16,135,681 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 228/439 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -4538,4 +4541,4 @@
 | `readings/2027-01-24-the-seam-between-the-ledger-and-the-report.md` | 2026-11-03 | 2027-01-24 | `SESSION-20261103-340edd` +5 | 18,467 | Q8 F2 M1 R1 S6 | ✓ | 縫い目は、台帳と報告のあいだにある——「迎えた」が隠す選定と、note 行という一箇所 |
 | `readings/2027-01-25-the-name-that-outlasts-the-bones.md` | — | 2027-01-25 | `SESSION-20270125-514567` | 17,924 | Q3 M16 S1 ERR1 | ✓ | 骨より長く残る名——神話・宗教経典12編の精読 |
 | `readings/2027-01-26-two-of-every-kind-and-the-blank-for-a-name.md` | 2026-11-03 | 2027-01-26 | `SESSION-20270126-84fa34` +1 | 33,125 | Q4 F1 M14 MOT1 S2 ERR1 | — | 二つずつ、そして名前の入る空欄 |
-| `readings/2027-01-26-who-decides-and-what-is-archived.md` | — | 2027-01-26 | `SESSION-20270126-bb03ac` +1 | 35,066 | Q5 M17 S2 ERR9 | — | 誰が決めるか、そして何が残るか——CONTENT_POLICY の再帰性と、公開リポジトリにおける保証の分散 |
+| `readings/2027-01-26-who-decides-and-what-is-archived.md` | — | 2027-01-26 | `SESSION-20270126-bb03ac` +1 | 39,297 | Q5 M20 S2 ERR10 | — | 誰が決めるか、そして何が残るか——CONTENT_POLICY の再帰性と、公開リポジトリにおける保証の分散 |
