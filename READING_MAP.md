@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：2914 件（research_excerpt 815 ／ literary_text 2031 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6244 件
-- **探究セッション（Sessions）**：422 回
+- **探究セッション（Sessions）**：423 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -3675,7 +3675,7 @@
 | `MAT-LIT-20270206-711cef` | literary_text | リグ・ヴェーダの詩人たち（伝承）, Ralph T. H. Griffith（1896年英訳）『『リグ・ヴェーダ』10.71——同じ目と耳を持つ友と、分かたれるヴァーチ』（189… |
 | `MAT-LIT-20270206-ba2d6e` | literary_text | Guru Nanak, Manmohan Singh（英訳）『『ジャプジー・サーヒブ』第8–11パウリ——「聞くこと」の反復と、読み・瞑想・徳へ開かれる聴取』（2009） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20270206-618df4・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20270207-bfdccc・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -4101,6 +4101,7 @@
 | `SESSION-20270126-bb03ac` | 2027-01-26 | `Q-001`, `Q-002`, `Q-003`, `Q-20270126-bdb41b` | — | `Q-20270126-bdb41b` |
 | `SESSION-20270204-e0afee` | 2027-02-04 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270206-618df4` | 2027-02-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270207-bfdccc` | 2027-02-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6244 件・全表は map/40-relations-*.md）
 
@@ -4195,7 +4196,7 @@
 | `map/50-sessions-06.md` | 50 | 45,898 |
 | `map/50-sessions-07.md` | 50 | 42,943 |
 | `map/50-sessions-08.md` | 50 | 45,612 |
-| `map/50-sessions-09.md` | 22 | 20,273 |
+| `map/50-sessions-09.md` | 23 | 21,058 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4214,16 +4215,16 @@
 | `map/60-notes-16.md` | 25 | 64,868 |
 | `map/60-notes-17.md` | 25 | 67,125 |
 | `map/60-notes-18.md` | 25 | 95,961 |
-| `map/60-notes-19.md` | 7 | 26,416 |
+| `map/60-notes-19.md` | 8 | 30,591 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・457本・16,677,566 B）
+## 8. 精読ノート索引（readings/・458本・16,694,938 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 245/457 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 246/458 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：38 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：39 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：55 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4684,4 +4685,5 @@
 | `readings/2027-02-04-the-goat-that-carried-it-away.md` | 2026-11-04 | 2027-02-04 | `SESSION-20270204-e0afee` | 11,750 | Q3 M14 MOT2 S1 | ✓ | 運び去る山羊と、読めない壁の文字——神話・宗教経典12件の精読 |
 | `readings/2027-02-04-the-world-is-written-in-parts.md` | 2026-11-04 | 2027-02-04 | `SESSION-20270204-4ab7e1` | 20,154 | S1 | — | 世界は部分に書かれる——神話・経典10篇と、読む者の自己 |
 | `readings/2027-02-05-the-record-is-not-yet-a-well.md` | 2026-11-04 | 2027-02-05 | `SESSION-20261104-45c26b` | 11,338 | Q3 M12 S1 | ✓ | 記録はまだ井戸ではない——神話・宗教経典10件の精読 |
-| `readings/2027-02-06-the-unsealed-book-is-not-yet-heard.md` | 2026-11-04 | 2027-02-06 | `SESSION-20270206-618df4` | 18,412 | Q3 M10 S1 | — | 開かれた書は、まだ聞かれていない |
+| `readings/2027-02-06-the-unsealed-book-is-not-yet-heard.md` | 2026-11-04 | 2027-02-06 | `SESSION-20270206-618df4` | 18,412 | Q3 M10 S1 | ✓ | 開かれた書は、まだ聞かれていない |
+| `readings/2027-02-07-helpful-is-not-a-guarantee.md` | 2026-11-04 | 2027-02-07 | `SESSION-20270207-bfdccc` +1 | 8,136 | Q3 M1 S2 | — | 助けとなることは、保証ではない |
