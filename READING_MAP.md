@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：426 件（初期シード 5 件 ＋ 派生 421 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2964 件（research_excerpt 815 ／ literary_text 2081 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2974 件（research_excerpt 815 ／ literary_text 2091 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6272 件
-- **探究セッション（Sessions）**：428 回
+- **探究セッション（Sessions）**：429 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -756,7 +756,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2964 件・詳細は map/3*.md）
+## 4. 対話素材（2974 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3724,8 +3724,18 @@
 | `MAT-LIT-20270210-065e5d` | literary_text | パーリ仏典（相応部）, Bhikkhu Sujato（英訳）『相応部 3.17——大きな足跡と勤勉』（0） |
 | `MAT-LIT-20270210-79aa03` | literary_text | パーリ仏典（相応部）, Bhikkhu Sujato（英訳）『相応部 3.18——よい友は半分ではなく全体』（0） |
 | `MAT-LIT-20270210-b5f070` | literary_text | パーリ仏典（相応部）, Bhikkhu Sujato（英訳）『相応部 42.8——取り消せない行為と次の行為』（0） |
+| `MAT-LIT-20270211-78c8ca` | literary_text | L. W. King（英訳）『『エヌマ・エリシュ』第五書板——迷わないための天体の配置』（1902） |
+| `MAT-LIT-20270211-7e0f81` | literary_text | Hesiod, Hugh G. Evelyn-White（英訳）『ヘシオドス『神統記』116–138行——系譜に置かれたエロースとムネーモシュネー』（1914） |
+| `MAT-LIT-20270211-e7627d` | literary_text | E. A. W. Budge（編訳）『アイのアテン賛歌——育てる太陽と、神を知る唯一の王』（1923） |
+| `MAT-LIT-20270211-799d0d` | literary_text | King James Version（英訳）『『創世記』4:1–16——「兄弟の番人か」と、地面から上がる声』（1611） |
+| `MAT-LIT-20270211-8ed0db` | literary_text | Marmaduke Pickthall（英訳）『クルアーン2:30–39——名を教えられた者と、血を流す可能性』（1930） |
+| `MAT-LIT-20270211-b2b196` | literary_text | Edwin Arnold（英訳）『『バガヴァッド・ギーター』第IV章——失われた教えと、行為の中の不執着』（1885） |
+| `MAT-LIT-20270211-13d0a7` | literary_text | 老子, James Legge（英訳）『『老子』42章——一・二・三の後に、教えを受け継ぐ「私」』（1891） |
+| `MAT-LIT-20270211-c7bac0` | literary_text | 孟子, James Legge（英訳）『『孟子』告子上（6A）1–8——水の性と、牛山に残る萌芽』（1895） |
+| `MAT-LIT-20270211-bf86c8` | literary_text | Dawsonne Melanchthon Strong（英訳）『『ウダーナ』8.1–4——生まれざるものへの言及と、依存の連鎖』（1902） |
+| `MAT-LIT-20270211-c53801` | literary_text | L. H. Mills（英訳）『『ヤスナ』45——一致しない思考と魂、聞いて選ぶ集会』（0） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20270210-3c09a3・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20270211-db3691・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -4157,6 +4167,7 @@
 | `SESSION-20270208-a2d4b6` | 2027-02-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270209-f34ad1` | 2027-02-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270210-3c09a3` | 2027-02-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270211-db3691` | 2027-02-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6272 件・全表は map/40-relations-*.md）
 
@@ -4219,7 +4230,7 @@
 | `map/30-materials-literary-18.md` | 100 | 293,289 |
 | `map/30-materials-literary-19.md` | 100 | 254,970 |
 | `map/30-materials-literary-20.md` | 100 | 274,468 |
-| `map/30-materials-literary-21.md` | 81 | 202,676 |
+| `map/30-materials-literary-21.md` | 91 | 224,782 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4251,7 +4262,7 @@
 | `map/50-sessions-06.md` | 50 | 45,898 |
 | `map/50-sessions-07.md` | 50 | 42,714 |
 | `map/50-sessions-08.md` | 50 | 45,386 |
-| `map/50-sessions-09.md` | 28 | 24,908 |
+| `map/50-sessions-09.md` | 29 | 25,728 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4270,17 +4281,17 @@
 | `map/60-notes-16.md` | 25 | 65,504 |
 | `map/60-notes-17.md` | 25 | 67,539 |
 | `map/60-notes-18.md` | 25 | 94,751 |
-| `map/60-notes-19.md` | 13 | 50,339 |
+| `map/60-notes-19.md` | 14 | 54,154 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・463本・16,884,433 B）
+## 8. 精読ノート索引（readings/・464本・16,917,198 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 249/463 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 250/464 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：42 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：54 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：43 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：55 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4747,3 +4758,4 @@
 | `readings/2027-02-08-the-trust-that-was-refused.md` | 2026-11-04 | 2027-02-08 | `SESSION-20270208-a2d4b6` | 23,750 | Q3 M15 S1 | ✓ | 精読ノート — 天と地が断ったものを引き受ける者：空にすること、作り直されること、応答すること |
 | `readings/2027-02-09-the-hand-the-bowl-and-the-changing-mind.md` | 2026-11-04 | 2027-02-09 | `SESSION-20270209-f34ad1` | 8,758 | Q3 M11 S1 | ✓ | 精読ノート — 切られた手、油の鉢、移りゆく心 |
 | `readings/2027-02-10-the-word-i-and-the-irreversible-deed.md` | — | 2027-02-10 | `SESSION-20270210-3c09a3` | 8,364 | Q3 M10 S1 | — | 精読ノート — 「私」という語と、取り消せない行為 |
+| `readings/2027-02-11-the-name-the-wound-and-the-unborn.md` | 2026-11-04 | 2027-02-11 | `SESSION-20270211-db3691` +1 | 14,005 | Q3 M10 S2 | — | 精読ノート — 名づけられた者、傷つける者、生まれざるもの |
