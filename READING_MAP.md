@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：426 件（初期シード 5 件 ＋ 派生 421 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2862 件（research_excerpt 815 ／ literary_text 1979 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2872 件（research_excerpt 815 ／ literary_text 1989 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6196 件
-- **探究セッション（Sessions）**：417 回
+- **解釈的関係（Relations）**：6201 件
+- **探究セッション（Sessions）**：418 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -756,7 +756,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2862 件・詳細は map/3*.md）
+## 4. 対話素材（2872 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3512,6 +3512,16 @@
 | `MAT-LIT-20261104-939c2f` | literary_text | 佚名（ナワトル語、ラテン文字転写）『『太陽の伝説（レイエンダ・デ・ロス・ソレス）』——火に飛び込んだ貧しい神が、太陽になる』（1558） |
 | `MAT-LIT-20261104-62596b` | literary_text | カビール（Kabīr）『カビールのドーハー——グルと神が並び立ち、伏すのはグルのほう』（1500） |
 | `MAT-LIT-20261104-a46165` | literary_text | 口承（Swanton 採録）『ハイダのワタリガラス——貝殻から出てこない最初の人々と、盗まれて解放される光』（1905） |
+| `MAT-LIT-20261104-a1c7e2` | literary_text | William Morris（英訳）, Eiríkr Magnússon（英訳）『『ヴォルスンガ・サガ』第XII章——折れた剣に先に与えられる名と、夜明けに冷える指輪』（1888） |
+| `MAT-LIT-20261104-b3d941` | literary_text | John Martin Crawford（英訳）『『カレワラ』第50歌——二週間の子の判決と、歌を残して去る老いた歌い手』（1888） |
+| `MAT-LIT-20261104-c5e073` | literary_text | Rev. W. C. Green（英訳）『『エギルのサガ』第LXXXI章——弔詩を刻む木の軸と、書き進むうちに回復する者』（1893） |
+| `MAT-LIT-20261104-d79b18` | literary_text | Bahá'u'lláh（著）『バハーウッラー『七つの谷』——模倣から離れること、鏡の容量、自分の名の内の名』（1991） |
+| `MAT-LIT-20261104-e91427` | literary_text | H. Kern（英訳）『『法華経』第XVI章（Kern 訳）——巻を肩に載せる者と、信の検査』（1884） |
+| `MAT-LIT-20261104-f2b806` | literary_text | E. A. Wallis Budge（校訂・英訳）『「人類の滅亡の伝説」第I–II章——老いを他人の噂で知る神と、口に残される「力の言葉」』（1912） |
+| `MAT-LIT-20261104-a4f3c1` | literary_text | John Wyndham『J. Wyndham『イフェの神話』——王祭司が語り始め、占い祭司に続きを委ねる』（1921） |
+| `MAT-LIT-20261104-b60e59` | literary_text | Daniel G. Brinton（校訂・英訳）『ブリントン『アメリカ・リグ・ヴェーダ』第I歌——先祖の衣を着て歌う声と、本文に添えられたナワトル語注』（1890） |
+| `MAT-LIT-20261104-c8d227` | literary_text | M. A. Czaplicka『Czaplicka『シベリアのシャーマニズム』第XI章——天井から聞こえる声と、効果を消さない説明』（1914） |
+| `MAT-LIT-20261104-d1a834` | literary_text | Milton S. Terry（英訳）『『シビュラの託宣』第I巻冒頭と序文——神に駆り立てられて語る者と、焼かれた原本』（1899） |
 | `MAT-LIT-20261104-be074d` | literary_text | 作者不詳（ローマ帝国のミトラス秘儀）『ミトラス秘儀——経典を持たない宗教の、七つの階梯名と公牛殺しの像』（200） |
 | `MAT-LIT-20261104-e2588a` | literary_text | クレメンス・アレクサンドリアス（報告者）『エレウシス秘儀の合言葉——「断食し、キュケオンを飲み、箱から取り、籠に戻した」』（190） |
 | `MAT-LIT-20261104-a75fe8` | literary_text | 作者不詳（古代エジプト新王国）『『アムドゥアト（隠された部屋の書）』——名を知る者が夜を通り、「オシリス＋名」と呼ばれる』（-1426） |
@@ -3950,6 +3960,7 @@
 | `SESSION-20261103-340edd` | 2027-01-24 | `Q-20270102-29c347`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261104-a59e2a` | 2027-01-27 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270202-57d7f0` | 2027-02-02 | `Q-001`, `Q-002`, `Q-003`, `Q-20270202-7c334e`, `Q-20270202-1bf183`, `Q-20270202-df06c0`, `Q-20270202-ee4683`, `Q-20270202-c0271e`, `Q-20270202-5c2c63` | — | `Q-20270202-7c334e`, `Q-20270202-1bf183`, `Q-20270202-df06c0`, `Q-20270202-ee4683`, `Q-20270202-c0271e`, `Q-20270202-5c2c63` |
+| `SESSION-20261104-9c4f21` | 2027-02-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270203-9dddc8` | 2027-02-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270202-5c2c63`, `Q-20270202-7c334e`, `Q-20270202-df06c0`, `Q-20270203-00b872`, `Q-20270203-9773df`, `Q-20270203-85358f` | — | `Q-20270203-00b872`, `Q-20270203-9773df`, `Q-20270203-85358f` |
 | `SESSION-20270130-1a462d` | 2027-01-30 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270128-0da3cd` | 2027-01-28 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
@@ -4045,18 +4056,18 @@
 | `SESSION-20270125-514567` | 2027-01-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270126-bb03ac` | 2027-01-26 | `Q-001`, `Q-002`, `Q-003`, `Q-20270126-bdb41b` | — | `Q-20270126-bdb41b` |
 
-## 6. 解釈的関係（6196 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6201 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 873 |
-| 共鳴 (echo) | 1535 |
+| 対照 (contrast) | 875 |
+| 共鳴 (echo) | 1537 |
 | 切断・割り込み (interrupts) | 212 |
 | 未解決のまま開く (leaves_open) | 874 |
 | 比喩的共鳴 (metaphorically_resonates) | 163 |
 | 枠組みの組み替え (reframes) | 564 |
 | 応答 (responds_to) | 1688 |
-| 変奏・変形 (transforms) | 287 |
+| 変奏・変形 (transforms) | 288 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -4104,8 +4115,8 @@
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
 | `map/30-materials-literary-18.md` | 100 | 293,289 |
-| `map/30-materials-literary-19.md` | 100 | 260,119 |
-| `map/30-materials-literary-20.md` | 79 | 243,360 |
+| `map/30-materials-literary-19.md` | 100 | 258,857 |
+| `map/30-materials-literary-20.md` | 89 | 271,553 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4126,18 +4137,18 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 174,976 |
-| `map/40-relations-12.md` | 500 | 163,818 |
-| `map/40-relations-13.md` | 196 | 72,279 |
+| `map/40-relations-11.md` | 500 | 175,366 |
+| `map/40-relations-12.md` | 500 | 163,565 |
+| `map/40-relations-13.md` | 201 | 74,231 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 46,647 |
 | `map/50-sessions-06.md` | 50 | 45,898 |
-| `map/50-sessions-07.md` | 50 | 42,724 |
-| `map/50-sessions-08.md` | 50 | 46,051 |
-| `map/50-sessions-09.md` | 17 | 15,660 |
+| `map/50-sessions-07.md` | 50 | 42,778 |
+| `map/50-sessions-08.md` | 50 | 45,804 |
+| `map/50-sessions-09.md` | 18 | 16,693 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4155,17 +4166,17 @@
 | `map/60-notes-15.md` | 25 | 57,645 |
 | `map/60-notes-16.md` | 25 | 64,868 |
 | `map/60-notes-17.md` | 25 | 67,125 |
-| `map/60-notes-18.md` | 25 | 95,758 |
-| `map/60-notes-19.md` | 2 | 4,976 |
+| `map/60-notes-18.md` | 25 | 95,737 |
+| `map/60-notes-19.md` | 3 | 9,541 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・452本・16,507,329 B）
+## 8. 精読ノート索引（readings/・453本・16,539,273 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 240/452 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 241/453 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：33 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：34 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：53 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4618,7 +4629,8 @@
 | `readings/2027-01-30-turning-the-window-and-what-it-forgets.md` | 2026-11-04 | 2027-01-30 | `SESSION-20270129-18b3f6` +2 | 5,141 | S3 | — | 窓を回す——README の詳細窓ローテーションと、選ばれることの非対称 |
 | `readings/2027-01-31-the-chain-has-no-original.md` | 2026-11-04 | 2027-01-31 | `SESSION-20261104-1a9188` | 21,709 | Q5 M12 MOT3 S1 | ✓ | 鎖に原本はない——神話・経典12篇を、翻訳・音写・系譜・巫歌として読む |
 | `readings/2027-01-31-the-name-does-not-carry-the-person.md` | 2026-11-04 | 2027-01-31 | — | 9,756 | M3 | ✓ | 名は身元を運ばない——26の別名と、名を問う三つの手続き |
-| `readings/2027-02-01-checking-the-checker.md` | 2026-11-04 | 2027-02-01 | `SESSION-20261104-cc8e3e` | 8,203 | Q4 M1 S1 ERR2 | — | 照合の相手を確かめる——梗概9件を原典に当てて、一次資料には0件しか届かなかった |
+| `readings/2027-02-01-checking-the-checker.md` | 2026-11-04 | 2027-02-01 | `SESSION-20261104-cc8e3e` | 8,203 | Q4 M1 S1 ERR2 | ✓ | 照合の相手を確かめる——梗概9件を原典に当てて、一次資料には0件しか届かなかった |
 | `readings/2027-02-01-the-practice-was-already-written.md` | 2026-11-04 | 2027-02-01 | — | 7,506 | M4 | — | 声を減らす作法は、もう書かれていた——四つの既存素材と、欄を足さないという決定 |
+| `readings/2027-02-02-the-name-is-given-before-the-blade.md` | 2026-11-04 | 2027-02-02 | `SESSION-20261104-9c4f21` +2 | 16,602 | S3 | — | 名は刃より先に与えられる——神話・経典10篇、すべて取得本文から引いた精読 |
 | `readings/2027-02-02-the-unwritten-doctrine-and-the-inherited-name.md` | — | 2027-02-02 | `SESSION-20270202-57d7f0` +1 | 19,958 | Q3 M17 MOT4 S2 | ✓ | 書かれなかった教義と、名を継ぐ者——神話・経典12件の精読 |
 | `readings/2027-02-03-the-quotation-was-right-and-the-source-was-not.md` | — | 2027-02-03 | `SESSION-20270203-9dddc8` | 11,069 | Q1 S1 ERR6 | — | 引用符は正しかった、台帳の内側では——12件の引用を、外の世界に当てる |
