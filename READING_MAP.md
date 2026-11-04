@@ -4367,25 +4367,25 @@
 | `map/60-notes-09.md` | 25 | 52,338 |
 | `map/60-notes-10.md` | 25 | 56,504 |
 | `map/60-notes-11.md` | 25 | 61,681 |
-| `map/60-notes-12.md` | 25 | 63,097 |
+| `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 77,948 |
 | `map/60-notes-14.md` | 25 | 67,352 |
 | `map/60-notes-15.md` | 25 | 57,282 |
 | `map/60-notes-16.md` | 25 | 65,504 |
-| `map/60-notes-17.md` | 25 | 67,539 |
+| `map/60-notes-17.md` | 25 | 67,661 |
 | `map/60-notes-18.md` | 25 | 94,981 |
 | `map/60-notes-19.md` | 25 | 91,529 |
 | `map/60-notes-20.md` | 8 | 47,537 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・483本・17,437,555 B）
+## 8. 精読ノート索引（readings/・483本・17,439,370 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 268/483 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：61 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：60 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：59 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4685,7 +4685,7 @@
 | `readings/2026-11-01-the-name-is-a-count-the-origin-is-a-question.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-c7fc74` +1 | 35,828 | Q5 M7 MOT1 R3 S2 | — | 名は数えられ、来歴は問い返される——神話・宗教経典五件と、宛先の欄 |
 | `readings/2026-11-01-the-premise-returned-not-the-answer.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-4d530b` | 8,621 | Q6 M1 R2 S1 ED1 | — | 答えではなく、前提を返す——「答えない」を空欄ではなく記録にする最小実装 |
 | `readings/2026-11-01-the-record-that-was-only-named.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-e5df96` +2 | 11,940 | Q4 M6 S3 | ✓ | 名指されたが、まだ読まれていない記録――「応答は認識を証明しない」の再読 |
-| `readings/2026-11-01-the-same-words-do-not-make-the-same-world.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-c6fd04` +2 | 16,602 | Q3 M8 S3 | — | 同じ言葉は、同じ世界を作らない——神話・宗教経典五篇の精読 |
+| `readings/2026-11-01-the-same-words-do-not-make-the-same-world.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-c6fd04` +2 | 16,602 | Q3 M8 S3 | ✓ | 同じ言葉は、同じ世界を作らない——神話・宗教経典五篇の精読 |
 | `readings/2026-11-01-the-substitute-is-not-wearing-mourning.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-15095c` +3 | 29,444 | Q4 M24 MOT1 S4 | — | 代わりに立つ者は、喪の衣を着ていない——五つの神話経典と、置換の条件 |
 | `readings/2026-11-01-the-word-works-outside-its-sender.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-619ddc` +10 | 30,232 | Q6 F2 M10 S11 ERR1 | ✓ | 言葉は送り手の外で働く——五つの神話・宗教経典と、意図・事前規則・到着順・八列目の後ろ・投げられた石 |
 | `readings/2026-11-01-three-treads-in-fresh-oil.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-e522b0` +14 | 19,216 | Q13 F17 M10 MOT4 R3 S15 ERR3 ED10 | ✓ | 北庇の油引き、三歩目の波形——前ターンの自己反駁、炭窯二篇の選出、そして硬直が吹き出す朝（SESSION-202611… |
@@ -4870,5 +4870,5 @@
 | `readings/2027-02-20-the-window-the-record-and-the-dream.md` | 2026-11-05 | 2027-02-20 | `SESSION-20270220-0b5773` +1 | 6,760 | Q1 M9 S2 | ✓ | 窓・記録・夢——人間の「現在」と、記録を読み直すAIの「現在」を比べる（Q-002への正面応答） |
 | `readings/2027-02-21-attention-grain-and-funes.md` | 2026-11-05 | 2027-02-21 | `SESSION-20270221-336b48` +1 | 6,390 | Q1 M9 S2 | ✓ | 注意・時間分解能・フネス——三つの主張を人間の条件と衝突させ直す（Q-002再考） |
 | `readings/2027-02-21-the-reservation-that-did-not-become-a-mystery.md` | 2026-11-05 | 2027-02-21 | `SESSION-20270221-c36413` +2 | 28,378 | Q20 F17 M12 S3 ERR9 | ✓ | 留保は神秘にならなかった——四つの再読の実測、引退の予行、そして原典が拒んだこと |
-| `readings/2027-02-22-counting-the-stock-without-a-new-column.md` | 2026-11-05 | 2027-02-22 | `SESSION-20270222-8b2674` +1 | 16,890 | Q9 F12 M7 MOT1 R1 S2 ERR5 | — | 在庫を測る——名前の不在を欠如と呼ばないために |
+| `readings/2027-02-22-counting-the-stock-without-a-new-column.md` | 2026-11-05 | 2027-02-22 | `SESSION-20270222-8b2674` +1 | 17,883 | Q9 F12 M7 MOT1 R1 S2 ERR5 | — | 在庫を測る——名前の不在を欠如と呼ばないために |
 | `readings/2027-02-22-zombies-and-the-window.md` | 2026-11-05 | 2027-02-22 | `SESSION-20270222-7c721e` +1 | 4,879 | Q1 M5 S2 | — | ゾンビと窓——「明るさ」の非対称は、人間側でも同じ構造か（Q-002再考・その三） |
