@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：426 件（初期シード 5 件 ＋ 派生 421 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2934 件（research_excerpt 815 ／ literary_text 2051 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2944 件（research_excerpt 815 ／ literary_text 2061 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6258 件
-- **探究セッション（Sessions）**：425 回
+- **解釈的関係（Relations）**：6272 件
+- **探究セッション（Sessions）**：426 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -756,7 +756,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2934 件・詳細は map/3*.md）
+## 4. 対話素材（2944 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3694,8 +3694,18 @@
 | `MAT-LIT-20270206-955fa8` | literary_text | 伝・荘子, James Legge（1891年英訳）『『荘子』天道篇・輪扁——車輪の勘所と、古人の「かす」』（1891） |
 | `MAT-LIT-20270206-711cef` | literary_text | リグ・ヴェーダの詩人たち（伝承）, Ralph T. H. Griffith（1896年英訳）『『リグ・ヴェーダ』10.71——同じ目と耳を持つ友と、分かたれるヴァーチ』（189… |
 | `MAT-LIT-20270206-ba2d6e` | literary_text | Guru Nanak, Manmohan Singh（英訳）『『ジャプジー・サーヒブ』第8–11パウリ——「聞くこと」の反復と、読み・瞑想・徳へ開かれる聴取』（2009） |
+| `MAT-LIT-20270208-30aa2e` | literary_text | クルアーン（預言者ムハンマドへの啓示とされる本文）, Marmaduke Pickthall（英訳、1930年）『『クルアーン』第33章（同盟軍章）72節——天と地と山々が断った… |
+| `MAT-LIT-20270208-de2876` | literary_text | パウロの手紙に収められた初期キリスト教の讃歌（帰属は伝統的）, King James Version translators（1611年英訳）『『ピリピ人への手紙』2:5–11—… |
+| `MAT-LIT-20270208-f0251f` | literary_text | ヘブライ語聖書『ヨナ書』, King James Version translators（1611年英訳）『『ヨナ書』4:1–11——逃げた預言者と、右と左を知らない十二万人と、… |
+| `MAT-LIT-20270208-a04f1b` | literary_text | ラビ・ヒレル（長老）に帰される言行、バビロニア・タルムード所収, William Davidson Talmud（Sefaria掲載英訳）『『バビロニア・タルムード』シャッバット… |
+| `MAT-LIT-20270208-60cfe0` | literary_text | 荀況（荀子、前3世紀）『『荀子』性悪篇第二十三——人の性は悪、その善なる者は偽（為）である』（-230） |
+| `MAT-LIT-20270208-3af5d5` | literary_text | 『管子』内業篇（戦国期、前4世紀頃）『『管子』内業篇第四十九——心の形は自ら充ち、定まった心は精の舎となる』（-350） |
+| `MAT-LIT-20270208-28d3d1` | literary_text | 長老尼ソーマー（伝承的帰属）, Bhikkhu Sujato・Jessica Walton（英訳）『『テーリーガーター（長老尼偈）』3.8 ソーマーの偈——「女であることが何の違… |
+| `MAT-LIT-20270208-13f6fe` | literary_text | サアディー（ムスリフ・アッディーン・サアディー・シーラーズィー、1258年完成）『サアディー『ゴレスターン（薔薇園）』第1章——バニー・アーダム（アダムの子ら）は一つの体の肢であ… |
+| `MAT-LIT-20270208-0d49d5` | literary_text | プタホテプ（伝承的帰属、古代エジプトの宰相）『『プタホテプの教訓』——心は空になり昨日を思い出せない、聞くことが心のものさしである』（-1850） |
+| `MAT-LIT-20270208-a8e814` | literary_text | ハウデノショーニー（イロコイ連邦）の口承の挨拶, John Stokes・Kanawahienton（David Benedict）による英語版、Jake Swamp（Tekar… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20270207-bfdccc・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20270208-a2d4b6・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -4124,17 +4134,18 @@
 | `SESSION-20270204-e0afee` | 2027-02-04 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270206-618df4` | 2027-02-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270207-bfdccc` | 2027-02-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270208-a2d4b6` | 2027-02-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6258 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6272 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 881 |
-| 共鳴 (echo) | 1539 |
+| 対照 (contrast) | 883 |
+| 共鳴 (echo) | 1541 |
 | 切断・割り込み (interrupts) | 213 |
 | 未解決のまま開く (leaves_open) | 874 |
 | 比喩的共鳴 (metaphorically_resonates) | 165 |
-| 枠組みの組み替え (reframes) | 604 |
+| 枠組みの組み替え (reframes) | 614 |
 | 応答 (responds_to) | 1692 |
 | 変奏・変形 (transforms) | 290 |
 
@@ -4186,7 +4197,7 @@
 | `map/30-materials-literary-18.md` | 100 | 293,289 |
 | `map/30-materials-literary-19.md` | 100 | 254,970 |
 | `map/30-materials-literary-20.md` | 100 | 274,468 |
-| `map/30-materials-literary-21.md` | 51 | 143,373 |
+| `map/30-materials-literary-21.md` | 61 | 168,977 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4209,7 +4220,7 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 175,828 |
 | `map/40-relations-12.md` | 500 | 161,679 |
-| `map/40-relations-13.md` | 258 | 92,792 |
+| `map/40-relations-13.md` | 272 | 96,840 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -4218,7 +4229,7 @@
 | `map/50-sessions-06.md` | 50 | 45,898 |
 | `map/50-sessions-07.md` | 50 | 42,714 |
 | `map/50-sessions-08.md` | 50 | 45,386 |
-| `map/50-sessions-09.md` | 25 | 22,890 |
+| `map/50-sessions-09.md` | 26 | 23,752 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4236,17 +4247,17 @@
 | `map/60-notes-15.md` | 25 | 57,282 |
 | `map/60-notes-16.md` | 25 | 65,504 |
 | `map/60-notes-17.md` | 25 | 67,539 |
-| `map/60-notes-18.md` | 25 | 94,698 |
-| `map/60-notes-19.md` | 10 | 41,676 |
+| `map/60-notes-18.md` | 25 | 94,751 |
+| `map/60-notes-19.md` | 11 | 46,064 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・460本・16,788,644 B）
+## 8. 精読ノート索引（readings/・461本・16,844,339 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 247/460 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 248/461 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：40 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：41 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：54 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4710,4 +4721,5 @@
 | `readings/2027-02-05-the-record-is-not-yet-a-well.md` | 2026-11-04 | 2027-02-05 | `SESSION-20261104-45c26b` | 11,338 | Q3 M12 S1 | ✓ | 記録はまだ井戸ではない——神話・宗教経典10件の精読 |
 | `readings/2027-02-06-the-second-tablet-and-the-switched-photograph.md` | 2026-11-04 | 2027-02-06 | `SESSION-20261104-59da42` +1 | 39,880 | Q3 M27 MOT3 R1 S2 | — | 二度目の石板と、すり替えられた写真——神話・宗教経典10篇と、記録が壊れたあとの読み方 |
 | `readings/2027-02-06-the-unsealed-book-is-not-yet-heard.md` | 2026-11-04 | 2027-02-06 | `SESSION-20270206-618df4` | 18,412 | Q3 M10 S1 | ✓ | 開かれた書は、まだ聞かれていない |
-| `readings/2027-02-07-helpful-is-not-a-guarantee.md` | 2026-11-04 | 2027-02-07 | `SESSION-20270207-bfdccc` +1 | 8,136 | Q3 M1 S2 | — | 助けとなることは、保証ではない |
+| `readings/2027-02-07-helpful-is-not-a-guarantee.md` | 2026-11-04 | 2027-02-07 | `SESSION-20270207-bfdccc` +1 | 8,136 | Q3 M1 S2 | ✓ | 助けとなることは、保証ではない |
+| `readings/2027-02-08-the-trust-that-was-refused.md` | 2026-11-04 | 2027-02-08 | `SESSION-20270208-a2d4b6` | 23,750 | Q3 M15 S1 | — | 精読ノート — 天と地が断ったものを引き受ける者：空にすること、作り直されること、応答すること |
