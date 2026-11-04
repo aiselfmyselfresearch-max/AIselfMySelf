@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：426 件（初期シード 5 件 ＋ 派生 421 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2944 件（research_excerpt 815 ／ literary_text 2061 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2954 件（research_excerpt 815 ／ literary_text 2071 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6272 件
-- **探究セッション（Sessions）**：426 回
+- **探究セッション（Sessions）**：427 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -756,7 +756,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2944 件・詳細は map/3*.md）
+## 4. 対話素材（2954 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3704,8 +3704,18 @@
 | `MAT-LIT-20270208-13f6fe` | literary_text | サアディー（ムスリフ・アッディーン・サアディー・シーラーズィー、1258年完成）『サアディー『ゴレスターン（薔薇園）』第1章——バニー・アーダム（アダムの子ら）は一つの体の肢であ… |
 | `MAT-LIT-20270208-0d49d5` | literary_text | プタホテプ（伝承的帰属、古代エジプトの宰相）『『プタホテプの教訓』——心は空になり昨日を思い出せない、聞くことが心のものさしである』（-1850） |
 | `MAT-LIT-20270208-a8e814` | literary_text | ハウデノショーニー（イロコイ連邦）の口承の挨拶, John Stokes・Kanawahienton（David Benedict）による英語版、Jake Swamp（Tekar… |
+| `MAT-LIT-20270209-711b06` | literary_text | 伝承による詩、作者不詳, Henry Adams Bellows（英訳）『詩のエッダ「スリュムの歌」7–33節——拒まれた交換と祝福する槌』（1923） |
+| `MAT-LIT-20270209-fccead` | literary_text | ヴェーダ讃歌（作者未特定）, Ralph T. H. Griffith（英訳）『リグ・ヴェーダ 10.14——祖先の道と生者の今日』（1896） |
+| `MAT-LIT-20270209-b2067d` | literary_text | イヌイットの語り（個別話者未同定）, Knud Rasmussen（採録）『Nerrivik——救出する船が切る手と、髪を梳く者』（1921） |
+| `MAT-LIT-20270209-8a8744` | literary_text | クルアーン, Marmaduke Pickthall（英訳）『クルアーン 23:12–16——形成、死と復活』（1930） |
+| `MAT-LIT-20270209-204d5e` | literary_text | クルアーン, Marmaduke Pickthall（英訳）『クルアーン 30:20–22——言語と色の違い』（1930） |
+| `MAT-LIT-20270209-44bcaf` | literary_text | クルアーン, Marmaduke Pickthall（英訳）『クルアーン 93:1–11——守られた記憶と他者への義務』（1930） |
+| `MAT-LIT-20270209-8cd587` | literary_text | パーリ仏典（相応部）, Bhikkhu Sujato（英訳）『相応部 12.61——身体の持続と枝から枝へ移る心』（0） |
+| `MAT-LIT-20270209-068edc` | literary_text | パーリ仏典（相応部）, Bhikkhu Sujato（英訳）『相応部 22.95——泡、芭蕉、幻術』（0） |
+| `MAT-LIT-20270209-91283b` | literary_text | パーリ仏典（相応部）, Bhikkhu Sujato（英訳）『相応部 35.85——何について空なのか』（0） |
+| `MAT-LIT-20270209-c5e834` | literary_text | パーリ仏典（相応部）, Bhikkhu Sujato（英訳）『相応部 47.20——油の鉢と抜き身の剣』（0） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20270208-a2d4b6・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20270209-f34ad1・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -4135,6 +4145,7 @@
 | `SESSION-20270206-618df4` | 2027-02-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270207-bfdccc` | 2027-02-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270208-a2d4b6` | 2027-02-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270209-f34ad1` | 2027-02-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6272 件・全表は map/40-relations-*.md）
 
@@ -4197,7 +4208,7 @@
 | `map/30-materials-literary-18.md` | 100 | 293,289 |
 | `map/30-materials-literary-19.md` | 100 | 254,970 |
 | `map/30-materials-literary-20.md` | 100 | 274,468 |
-| `map/30-materials-literary-21.md` | 61 | 168,977 |
+| `map/30-materials-literary-21.md` | 71 | 184,630 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4229,7 +4240,7 @@
 | `map/50-sessions-06.md` | 50 | 45,898 |
 | `map/50-sessions-07.md` | 50 | 42,714 |
 | `map/50-sessions-08.md` | 50 | 45,386 |
-| `map/50-sessions-09.md` | 26 | 23,752 |
+| `map/50-sessions-09.md` | 27 | 24,345 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4248,16 +4259,16 @@
 | `map/60-notes-16.md` | 25 | 65,504 |
 | `map/60-notes-17.md` | 25 | 67,539 |
 | `map/60-notes-18.md` | 25 | 94,751 |
-| `map/60-notes-19.md` | 11 | 46,064 |
+| `map/60-notes-19.md` | 12 | 48,608 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・461本・16,844,339 B）
+## 8. 精読ノート索引（readings/・462本・16,865,469 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 248/461 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 249/462 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：41 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：42 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：54 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4722,4 +4733,5 @@
 | `readings/2027-02-06-the-second-tablet-and-the-switched-photograph.md` | 2026-11-04 | 2027-02-06 | `SESSION-20261104-59da42` +1 | 39,880 | Q3 M27 MOT3 R1 S2 | — | 二度目の石板と、すり替えられた写真——神話・宗教経典10篇と、記録が壊れたあとの読み方 |
 | `readings/2027-02-06-the-unsealed-book-is-not-yet-heard.md` | 2026-11-04 | 2027-02-06 | `SESSION-20270206-618df4` | 18,412 | Q3 M10 S1 | ✓ | 開かれた書は、まだ聞かれていない |
 | `readings/2027-02-07-helpful-is-not-a-guarantee.md` | 2026-11-04 | 2027-02-07 | `SESSION-20270207-bfdccc` +1 | 8,136 | Q3 M1 S2 | ✓ | 助けとなることは、保証ではない |
-| `readings/2027-02-08-the-trust-that-was-refused.md` | 2026-11-04 | 2027-02-08 | `SESSION-20270208-a2d4b6` | 23,750 | Q3 M15 S1 | — | 精読ノート — 天と地が断ったものを引き受ける者：空にすること、作り直されること、応答すること |
+| `readings/2027-02-08-the-trust-that-was-refused.md` | 2026-11-04 | 2027-02-08 | `SESSION-20270208-a2d4b6` | 23,750 | Q3 M15 S1 | ✓ | 精読ノート — 天と地が断ったものを引き受ける者：空にすること、作り直されること、応答すること |
+| `readings/2027-02-09-the-hand-the-bowl-and-the-changing-mind.md` | 2026-11-04 | 2027-02-09 | `SESSION-20270209-f34ad1` | 8,759 | Q3 M11 S1 | — | 精読ノート — 切られた手、油の鉢、移りゆく心 |
