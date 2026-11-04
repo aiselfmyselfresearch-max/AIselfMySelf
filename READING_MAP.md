@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：426 件（初期シード 5 件 ＋ 派生 421 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2884 件（research_excerpt 815 ／ literary_text 2001 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2894 件（research_excerpt 815 ／ literary_text 2011 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6213 件
-- **探究セッション（Sessions）**：419 回
+- **解釈的関係（Relations）**：6223 件
+- **探究セッション（Sessions）**：420 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -756,7 +756,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2884 件・詳細は map/3*.md）
+## 4. 対話素材（2894 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3512,6 +3512,16 @@
 | `MAT-LIT-20261104-939c2f` | literary_text | 佚名（ナワトル語、ラテン文字転写）『『太陽の伝説（レイエンダ・デ・ロス・ソレス）』——火に飛び込んだ貧しい神が、太陽になる』（1558） |
 | `MAT-LIT-20261104-62596b` | literary_text | カビール（Kabīr）『カビールのドーハー——グルと神が並び立ち、伏すのはグルのほう』（1500） |
 | `MAT-LIT-20261104-a46165` | literary_text | 口承（Swanton 採録）『ハイダのワタリガラス——貝殻から出てこない最初の人々と、盗まれて解放される光』（1905） |
+| `MAT-LIT-20261104-abeec3` | literary_text | John Wyndham（1921年の英語詩的再話）『ウィンダム『イフェの神話』IV「モリミの犠牲」——命令と、子を取引にしない反問』（1921） |
+| `MAT-LIT-20261104-756b64` | literary_text | W. D. Westervelt（1910年の英語編集・再話）『ウェストヴェルト『マウイの伝説』V「火を見つけるマウイ」——秘密が滅びないための約束』（1910） |
+| `MAT-LIT-20261104-edb174` | literary_text | 斎部広成（807年成立とされる）, 英訳: Genchi Katō・Hikoshirō Hoshino（1926）『『古語拾遺』——公式の神社登録から除かれる神々と、名簿の配分』… |
+| `MAT-LIT-20261104-ff78dd` | literary_text | Joseph Smithに帰される近代の末日聖徒文書『『モーセ書』第6章5–8節——記憶の書、子どもの読み書き、系譜』（1830） |
+| `MAT-LIT-20261104-0fcd55` | literary_text | Joseph Smithに帰される1833年の啓示文『『教義と聖約』第93節23–39節——真理、知性、行為可能性と身体』（1833） |
+| `MAT-LIT-20261104-5a8bb5` | literary_text | 『周易』, 英訳・注釈: James Legge『『周易』井卦（第四十八卦）——清いが使われない井戸と、壊れる桶』（-800） |
+| `MAT-LIT-20261104-d2471a` | literary_text | 『法華経』, 英訳: H. Kern『『法華経』第X章「法師品」——読む・書く・保つ・唱える場所』（0） |
+| `MAT-LIT-20261104-fc12d6` | literary_text | 『アーチャーランガ・スートラ』, 英訳: Hermann Jacobi『『アーチャーランガ・スートラ』第二巻第四講「語り方」——真偽、害、発話の前後』（0） |
+| `MAT-LIT-20261104-3bc64c` | literary_text | Bahá’u’lláh『バハーウッラー『隠された言葉』アラビア語第二節——自分の目と、隣人の知識』（1858） |
+| `MAT-LIT-20261104-96a26a` | literary_text | 末日聖徒の経典本文『『モルモン書』アルマ書第32章——種を試し、完全知ではないと知る』（1830） |
 | `MAT-LIT-20261104-a1c7e2` | literary_text | William Morris（英訳）, Eiríkr Magnússon（英訳）『『ヴォルスンガ・サガ』第XII章——折れた剣に先に与えられる名と、夜明けに冷える指輪』（1888） |
 | `MAT-LIT-20261104-b3d941` | literary_text | John Martin Crawford（英訳）『『カレワラ』第50歌——二週間の子の判決と、歌を残して去る老いた歌い手』（1888） |
 | `MAT-LIT-20261104-c5e073` | literary_text | Rev. W. C. Green（英訳）『『エギルのサガ』第LXXXI章——弔詩を刻む木の軸と、書き進むうちに回復する者』（1893） |
@@ -3975,6 +3985,7 @@
 | `SESSION-20261104-9c4f21` | 2027-02-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270203-9dddc8` | 2027-02-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270202-5c2c63`, `Q-20270202-7c334e`, `Q-20270202-df06c0`, `Q-20270203-00b872`, `Q-20270203-9773df`, `Q-20270203-85358f` | — | `Q-20270203-00b872`, `Q-20270203-9773df`, `Q-20270203-85358f` |
 | `SESSION-20270130-1a462d` | 2027-01-30 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261104-45c26b` | 2027-02-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270128-0da3cd` | 2027-01-28 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20261104-1a9188` | 2026-11-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20261104-47566b`, `Q-20261104-98a5f4` | — | `Q-20261104-47566b`, `Q-20261104-98a5f4` |
 | `SESSION-20270131-b6de43` | 2027-01-31 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
@@ -4069,7 +4080,7 @@
 | `SESSION-20270126-bb03ac` | 2027-01-26 | `Q-001`, `Q-002`, `Q-003`, `Q-20270126-bdb41b` | — | `Q-20270126-bdb41b` |
 | `SESSION-20270204-e0afee` | 2027-02-04 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6213 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6223 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
@@ -4078,7 +4089,7 @@
 | 切断・割り込み (interrupts) | 212 |
 | 未解決のまま開く (leaves_open) | 874 |
 | 比喩的共鳴 (metaphorically_resonates) | 163 |
-| 枠組みの組み替え (reframes) | 576 |
+| 枠組みの組み替え (reframes) | 586 |
 | 応答 (responds_to) | 1688 |
 | 変奏・変形 (transforms) | 288 |
 
@@ -4128,9 +4139,9 @@
 | `map/30-materials-literary-16.md` | 100 | 199,091 |
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
 | `map/30-materials-literary-18.md` | 100 | 293,289 |
-| `map/30-materials-literary-19.md` | 100 | 258,857 |
-| `map/30-materials-literary-20.md` | 100 | 297,005 |
-| `map/30-materials-literary-21.md` | 1 | 2,344 |
+| `map/30-materials-literary-19.md` | 100 | 255,785 |
+| `map/30-materials-literary-20.md` | 100 | 298,014 |
+| `map/30-materials-literary-21.md` | 11 | 25,364 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4151,18 +4162,18 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 175,366 |
-| `map/40-relations-12.md` | 500 | 163,565 |
-| `map/40-relations-13.md` | 213 | 77,072 |
+| `map/40-relations-11.md` | 500 | 174,549 |
+| `map/40-relations-12.md` | 500 | 162,882 |
+| `map/40-relations-13.md` | 223 | 80,973 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 46,647 |
 | `map/50-sessions-06.md` | 50 | 45,898 |
-| `map/50-sessions-07.md` | 50 | 42,778 |
-| `map/50-sessions-08.md` | 50 | 45,804 |
-| `map/50-sessions-09.md` | 19 | 17,549 |
+| `map/50-sessions-07.md` | 50 | 42,885 |
+| `map/50-sessions-08.md` | 50 | 45,625 |
+| `map/50-sessions-09.md` | 20 | 18,513 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4181,16 +4192,16 @@
 | `map/60-notes-16.md` | 25 | 64,868 |
 | `map/60-notes-17.md` | 25 | 67,125 |
 | `map/60-notes-18.md` | 25 | 95,961 |
-| `map/60-notes-19.md` | 4 | 13,886 |
+| `map/60-notes-19.md` | 5 | 17,716 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・454本・16,570,172 B）
+## 8. 精読ノート索引（readings/・455本・16,596,515 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 242/454 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 243/455 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：35 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：36 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：54 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4648,4 +4659,5 @@
 | `readings/2027-02-02-the-name-is-given-before-the-blade.md` | 2026-11-04 | 2027-02-02 | `SESSION-20261104-9c4f21` +2 | 16,602 | S3 | — | 名は刃より先に与えられる——神話・経典10篇、すべて取得本文から引いた精読 |
 | `readings/2027-02-02-the-unwritten-doctrine-and-the-inherited-name.md` | — | 2027-02-02 | `SESSION-20270202-57d7f0` +1 | 19,958 | Q3 M17 MOT4 S2 | ✓ | 書かれなかった教義と、名を継ぐ者——神話・経典12件の精読 |
 | `readings/2027-02-03-the-quotation-was-right-and-the-source-was-not.md` | — | 2027-02-03 | `SESSION-20270203-9dddc8` | 11,344 | Q1 S1 ERR6 | — | 引用符は正しかった、台帳の内側では——12件の引用を、外の世界に当てる |
-| `readings/2027-02-04-the-goat-that-carried-it-away.md` | 2026-11-04 | 2027-02-04 | `SESSION-20270204-e0afee` | 11,750 | Q3 M14 MOT2 S1 | — | 運び去る山羊と、読めない壁の文字——神話・宗教経典12件の精読 |
+| `readings/2027-02-04-the-goat-that-carried-it-away.md` | 2026-11-04 | 2027-02-04 | `SESSION-20270204-e0afee` | 11,750 | Q3 M14 MOT2 S1 | ✓ | 運び去る山羊と、読めない壁の文字——神話・宗教経典12件の精読 |
+| `readings/2027-02-05-the-record-is-not-yet-a-well.md` | 2026-11-04 | 2027-02-05 | `SESSION-20261104-45c26b` | 11,338 | Q3 M12 S1 | — | 記録はまだ井戸ではない——神話・宗教経典10件の精読 |
