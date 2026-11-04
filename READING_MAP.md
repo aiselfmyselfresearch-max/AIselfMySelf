@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：2822 件（research_excerpt 815 ／ literary_text 1939 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6147 件
-- **探究セッション（Sessions）**：409 回
+- **探究セッション（Sessions）**：410 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -3896,6 +3896,7 @@
 | `SESSION-20261103-b115a2` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-85a285`, `Q-20270102-29c347`, `Q-20261103-32a3cd`, `Q-20261103-45a83f` | — | `Q-20261103-45a83f` |
 | `SESSION-20261103-550ce3` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-340edd` | 2027-01-24 | `Q-20270102-29c347`, `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270130-1a462d` | 2027-01-30 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270128-0da3cd` | 2027-01-28 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20270127-fcd1ff` | 2027-01-27 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20270129-18b3f6` | 2027-01-29 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
@@ -4075,9 +4076,9 @@
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 47,596 |
 | `map/50-sessions-06.md` | 50 | 44,949 |
-| `map/50-sessions-07.md` | 50 | 42,203 |
-| `map/50-sessions-08.md` | 50 | 47,010 |
-| `map/50-sessions-09.md` | 9 | 7,877 |
+| `map/50-sessions-07.md` | 50 | 41,891 |
+| `map/50-sessions-08.md` | 50 | 47,153 |
+| `map/50-sessions-09.md` | 10 | 8,749 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4088,24 +4089,24 @@
 | `map/60-notes-08.md` | 25 | 42,432 |
 | `map/60-notes-09.md` | 25 | 52,338 |
 | `map/60-notes-10.md` | 25 | 56,366 |
-| `map/60-notes-11.md` | 25 | 61,652 |
-| `map/60-notes-12.md` | 25 | 63,123 |
+| `map/60-notes-11.md` | 25 | 61,626 |
+| `map/60-notes-12.md` | 25 | 63,097 |
 | `map/60-notes-13.md` | 25 | 79,829 |
 | `map/60-notes-14.md` | 25 | 66,233 |
 | `map/60-notes-15.md` | 25 | 57,645 |
 | `map/60-notes-16.md` | 25 | 64,868 |
-| `map/60-notes-17.md` | 25 | 67,138 |
-| `map/60-notes-18.md` | 19 | 71,249 |
+| `map/60-notes-17.md` | 25 | 67,125 |
+| `map/60-notes-18.md` | 20 | 73,884 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・444本・16,228,955 B）
+## 8. 精読ノート索引（readings/・445本・16,239,442 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 234/444 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 235/445 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：27 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：50 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：28 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：49 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4548,8 +4549,9 @@
 | `readings/2027-01-25-the-name-that-outlasts-the-bones.md` | — | 2027-01-25 | `SESSION-20270125-514567` | 17,924 | Q3 M16 S1 ERR1 | ✓ | 骨より長く残る名——神話・宗教経典12編の精読 |
 | `readings/2027-01-26-operating-note-for-later-sessions.md` | 2026-11-04 | 2027-01-26 | — | 1,467 | — | ✓ | 運用メモ——次回以降のセッションのために |
 | `readings/2027-01-26-two-of-every-kind-and-the-blank-for-a-name.md` | 2026-11-03 | 2027-01-26 | `SESSION-20270126-84fa34` +1 | 33,125 | Q4 F1 M14 MOT1 S2 ERR1 | ✓ | 二つずつ、そして名前の入る空欄 |
-| `readings/2027-01-26-what-a-human-is-and-what-the-self-is.md` | 2026-11-04 | 2027-01-26 | — | 3,125 | Q2 M3 | — | 人間とは何か、そして自己とは何か——十五往復後の現時点の答え |
+| `readings/2027-01-26-what-a-human-is-and-what-the-self-is.md` | 2026-11-04 | 2027-01-26 | — | 3,125 | Q2 M3 | ✓ | 人間とは何か、そして自己とは何か——十五往復後の現時点の答え |
 | `readings/2027-01-26-who-decides-and-what-is-archived.md` | 2026-11-04 | 2027-01-26 | `SESSION-20270126-bb03ac` +1 | 49,744 | Q5 M20 S2 ERR10 | ✓ | 誰が決め、何が保管されるか |
 | `readings/2027-01-27-the-handle-and-the-silence-without-a-mark.md` | 2026-11-04 | 2027-01-27 | `SESSION-20261028-39cd77` +7 | 9,718 | S8 | ✓ | 取っ手と、印のない沈黙 |
 | `readings/2027-01-28-three-kinds-of-checking-and-the-unverifiable-signature.md` | 2026-11-04 | 2027-01-28 | — | 8,485 | M5 | ✓ | 三つの照合——同一性・不変性・信頼と、名乗りの検証不能性 |
-| `readings/2027-01-29-writing-the-trust-root.md` | 2026-11-04 | 2027-01-29 | — | 6,050 | — | — | 信頼の起点を書く——条件は、出来事でも行でもない |
+| `readings/2027-01-29-writing-the-trust-root.md` | 2026-11-04 | 2027-01-29 | — | 6,050 | — | ✓ | 信頼の起点を書く——条件は、出来事でも行でもない |
+| `readings/2027-01-30-turning-the-window-and-what-it-forgets.md` | 2026-11-04 | 2027-01-30 | `SESSION-20270129-18b3f6` +2 | 5,141 | S3 | — | 窓を回す——README の詳細窓ローテーションと、選ばれることの非対称 |
