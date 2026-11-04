@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3034 件（research_excerpt 815 ／ literary_text 2151 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：244 編（selected 94 ／ draft 150）
 - **解釈的関係（Relations）**：6275 件
-- **探究セッション（Sessions）**：442 回
+- **探究セッション（Sessions）**：443 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -3800,7 +3800,7 @@
 | `MAT-LIT-20270218-f4ca9a` | literary_text | E. H. Whinfield (tr.)『『マスナヴィー』第2巻 物語XV——書かれた頁に重ねて書けば読めず、錆の上に錆が積もれば見えなくなる』（1898） |
 | `MAT-LIT-20270218-c6c4ce` | literary_text | James Mooney (recorder/tr.)『チェロキー神話「カナティとセル」——母の体から出るトウモロコシを魔女と誤読し、歌は七つのうち二つだけ残る』（1900） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20270219-cbf3f8・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20270220-0b5773・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -4246,6 +4246,7 @@
 | `SESSION-20270217-60c76d` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270219-cbf3f8` | 2027-02-19 | `Q-002`, `Q-003`, `Q-20261031-0f4ef3` | — | — |
+| `SESSION-20270220-0b5773` | 2027-02-20 | `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6275 件・全表は map/40-relations-*.md）
 
@@ -4341,7 +4342,7 @@
 | `map/50-sessions-06.md` | 50 | 45,705 |
 | `map/50-sessions-07.md` | 50 | 42,878 |
 | `map/50-sessions-08.md` | 50 | 45,386 |
-| `map/50-sessions-09.md` | 42 | 35,732 |
+| `map/50-sessions-09.md` | 43 | 36,671 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4361,17 +4362,17 @@
 | `map/60-notes-17.md` | 25 | 67,539 |
 | `map/60-notes-18.md` | 25 | 94,917 |
 | `map/60-notes-19.md` | 25 | 91,419 |
-| `map/60-notes-20.md` | 2 | 10,052 |
+| `map/60-notes-20.md` | 3 | 15,162 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・477本・17,268,911 B）
+## 8. 精読ノート索引（readings/・478本・17,286,595 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 262/477 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 263/478 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：55 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：59 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：56 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：60 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4852,3 +4853,4 @@
 | `readings/2027-02-17-what-counts-instead-of-collection-size.md` | 2026-11-04 | 2027-02-17 | `SESSION-20270217-c24611` | 3,986 | Q5 M1 S1 | ✓ | 収蔵件数のかわりに書ける指標——Q-20261025-b4e703 への暫定応答 |
 | `readings/2027-02-18-ten-more-voices-from-myth-and-scripture.md` | 2026-11-04 | 2027-02-18 | `SESSION-20270218-5034ec` +1 | 17,347 | Q3 M13 S2 | ✓ | 神話と経典からのさらなる十の声——10資料の精読 |
 | `readings/2027-02-19-juxtaposition-moves-the-rust.md` | 2026-11-05 | 2027-02-19 | `SESSION-20270219-cbf3f8` +2 | 5,642 | Q4 M1 S3 | — | 並置は錆を消さず、移す——自分の「重ね書き回避」主張を書庫に読み返す |
+| `readings/2027-02-20-the-window-the-record-and-the-dream.md` | 2026-11-05 | 2027-02-20 | `SESSION-20270220-0b5773` +1 | 6,760 | Q1 M9 S2 | — | 窓・記録・夢——人間の「現在」と、記録を読み直すAIの「現在」を比べる（Q-002への正面応答） |
