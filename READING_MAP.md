@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：426 件（初期シード 5 件 ＋ 派生 421 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2974 件（research_excerpt 815 ／ literary_text 2091 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2984 件（research_excerpt 815 ／ literary_text 2101 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6272 件
-- **探究セッション（Sessions）**：429 回
+- **探究セッション（Sessions）**：430 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -756,7 +756,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2974 件・詳細は map/3*.md）
+## 4. 対話素材（2984 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3734,8 +3734,18 @@
 | `MAT-LIT-20270210-065e5d` | literary_text | パーリ仏典（相応部）, Bhikkhu Sujato（英訳）『相応部 3.17——大きな足跡と勤勉』（0） |
 | `MAT-LIT-20270210-79aa03` | literary_text | パーリ仏典（相応部）, Bhikkhu Sujato（英訳）『相応部 3.18——よい友は半分ではなく全体』（0） |
 | `MAT-LIT-20270210-b5f070` | literary_text | パーリ仏典（相応部）, Bhikkhu Sujato（英訳）『相応部 42.8——取り消せない行為と次の行為』（0） |
+| `MAT-LIT-20270211-0a1b01` | literary_text | Robert Chalmers (tr.), E. B. Cowell (ed.)『『ジャータカ』第5話 Taṇḍulanāli——古い印と米一升の値』（1895） |
+| `MAT-LIT-20270211-0a1b02` | literary_text | Robert Chalmers (tr.), E. B. Cowell (ed.)『『ジャータカ』第22話 Kukkura——宮廷犬を除いた全称』（1895） |
+| `MAT-LIT-20270211-0a1b03` | literary_text | Robert Chalmers (tr.), E. B. Cowell (ed.)『『ジャータカ』第44話 Makasa——蚊を狙って父を打つ』（1895） |
+| `MAT-LIT-20270211-0a1b04` | literary_text | Robert Chalmers (tr.), E. B. Cowell (ed.)『『ジャータカ』第121話 Kusanāḷi——草の精が大木を救う』（1895） |
+| `MAT-LIT-20270211-0a1b05` | literary_text | M. I. Ogumefu『Ogumefu『ヨルバ伝説』VII——王と鼠たち』（1929） |
+| `MAT-LIT-20270211-0a1b06` | literary_text | M. I. Ogumefu『Ogumefu『ヨルバ伝説』VIII——イロコの木と家具の声』（1929） |
+| `MAT-LIT-20270211-0a1b07` | literary_text | Marmaduke Pickthall (tr.)『『クルアーン』49章6、11–13節——知らせの検証と詮索への戒め』（1930） |
+| `MAT-LIT-20270211-0a1b08` | literary_text | Marmaduke Pickthall (tr.)『『クルアーン』93章——守られた過去と他者への応答』（1930） |
+| `MAT-LIT-20270211-0a1b09` | literary_text | King James Version translators『『エゼキエル書』18章——父の罪と立ち返る者』（1611） |
+| `MAT-LIT-20270211-0a1b10` | literary_text | H. Kern (tr.)『『法華経』第5章——一つの雨と異なる草木』（1884） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20270210-3c09a3・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20270211-a6e3c9・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -4168,6 +4178,7 @@
 | `SESSION-20270209-94f477` | 2027-02-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270209-f34ad1` | 2027-02-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270210-3c09a3` | 2027-02-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270211-a6e3c9` | 2027-02-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6272 件・全表は map/40-relations-*.md）
 
@@ -4230,7 +4241,8 @@
 | `map/30-materials-literary-18.md` | 100 | 293,289 |
 | `map/30-materials-literary-19.md` | 100 | 254,970 |
 | `map/30-materials-literary-20.md` | 100 | 274,468 |
-| `map/30-materials-literary-21.md` | 91 | 232,404 |
+| `map/30-materials-literary-21.md` | 100 | 246,789 |
+| `map/30-materials-literary-22.md` | 1 | 1,615 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4262,7 +4274,7 @@
 | `map/50-sessions-06.md` | 50 | 45,898 |
 | `map/50-sessions-07.md` | 50 | 42,714 |
 | `map/50-sessions-08.md` | 50 | 45,386 |
-| `map/50-sessions-09.md` | 29 | 25,756 |
+| `map/50-sessions-09.md` | 30 | 26,269 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4280,15 +4292,15 @@
 | `map/60-notes-15.md` | 25 | 57,282 |
 | `map/60-notes-16.md` | 25 | 65,504 |
 | `map/60-notes-17.md` | 25 | 67,539 |
-| `map/60-notes-18.md` | 25 | 94,804 |
-| `map/60-notes-19.md` | 14 | 54,606 |
+| `map/60-notes-18.md` | 25 | 94,864 |
+| `map/60-notes-19.md` | 15 | 56,157 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・464本・16,934,673 B）
+## 8. 精読ノート索引（readings/・465本・16,952,248 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 250/464 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 250/465 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：43 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：55 本（`python3 tools/note_index.py --orphans`）
@@ -4758,4 +4770,5 @@
 | `readings/2027-02-08-the-trust-that-was-refused.md` | 2026-11-04 | 2027-02-08 | `SESSION-20270208-a2d4b6` | 23,750 | Q3 M15 S1 | ✓ | 精読ノート — 天と地が断ったものを引き受ける者：空にすること、作り直されること、応答すること |
 | `readings/2027-02-09-the-hand-the-bowl-and-the-changing-mind.md` | 2026-11-04 | 2027-02-09 | `SESSION-20270209-f34ad1` | 8,758 | Q3 M11 S1 | ✓ | 精読ノート — 切られた手、油の鉢、移りゆく心 |
 | `readings/2027-02-09-the-substitute-who-answers.md` | 2026-11-04 | 2027-02-09 | `SESSION-20270209-94f477` | 20,192 | Q3 M14 S1 | — | 精読ノート — 他者に代わって「ここにいます」と答える者：運び手、代書、借り物の鎧、そして一字の差 |
-| `readings/2027-02-10-the-word-i-and-the-irreversible-deed.md` | — | 2027-02-10 | `SESSION-20270210-3c09a3` | 8,364 | Q3 M10 S1 | — | 精読ノート — 「私」という語と、取り消せない行為 |
+| `readings/2027-02-10-the-word-i-and-the-irreversible-deed.md` | — | 2027-02-10 | `SESSION-20270210-3c09a3` | 8,364 | Q3 M10 S1 | ✓ | 精読ノート — 「私」という語と、取り消せない行為 |
+| `readings/2027-02-11-mercy-measure-and-the-unseen-work.md` | — | 2027-02-11 | `SESSION-20270211-a6e3c9` | 7,582 | M10 S1 | — | 計る者、助ける者、見えない仕事——神話・宗教経典10件の精読 |
