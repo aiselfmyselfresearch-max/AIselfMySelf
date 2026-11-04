@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：426 件（初期シード 5 件 ＋ 派生 421 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3004 件（research_excerpt 815 ／ literary_text 2121 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3014 件（research_excerpt 815 ／ literary_text 2131 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：243 編（selected 94 ／ draft 149）
 - **解釈的関係（Relations）**：6274 件
-- **探究セッション（Sessions）**：434 回
+- **探究セッション（Sessions）**：435 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -757,7 +757,7 @@
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 
-## 4. 対話素材（3004 件・詳細は map/3*.md）
+## 4. 対話素材（3014 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3765,6 +3765,16 @@
 | `MAT-LIT-20270212-130f20` | literary_text | Lionel Giles (tr.)『『列子』湯問——心を取り替えると、誰の家へ帰るのか』（1912） |
 | `MAT-LIT-20270212-c6d677` | literary_text | G. R. S. Mead (tr.)『『ポイマンドレス』23–32節——上昇のあとに教え、記録し、祈る』（1906） |
 | `MAT-LIT-20270212-f0bc69` | literary_text | Frank Hamilton Cushing (recorder/reteller)『ズニの物語「若者と鷲」——借りた翼と、他者に依る飛行』（1901） |
+| `MAT-LIT-20270213-6fcd13` | literary_text | Ernest Burnouf (tr.) / Henry T. Colebrooke (ed.), translated into English by Robert F. Be… |
+| `MAT-LIT-20270213-81b728` | literary_text | Samuel A. B. Mercer (tr.)『『ピラミッド・テキスト』呪文205–206——食物を司る者たちへ、死者を「委ね連ねる」』（1952） |
+| `MAT-LIT-20270213-72b68d` | literary_text | James Mooney (recorder)『ムーニー『チェロキーの神話』第1話「世界はいかに作られたか」——水の下へ潜る小さな甲虫と、四本の紐で吊るされた島』（1900） |
+| `MAT-LIT-20270213-a9fe72` | literary_text | James Darmesteter (tr.)『『ヴェンディダード』第一ファルガルド——アフラ・マズダの十六の国と、アンラ・マイニュの十六の災い』（1880） |
+| `MAT-LIT-20270213-e307c2` | literary_text | Hermann Jacobi (tr.)『『ウッタラーディヤヤナ・スートラ』第1講「戒律について」——弟子たちの二十二の災いと、四つの資具』（1895） |
+| `MAT-LIT-20270213-b24cd9` | literary_text | Thomas G. Thrum (recorder)『サルム『ハワイ民話』「旧約聖書に似た伝説」——光・物質・音の三神クー＝カネ＝ロノによる創造』（1907） |
+| `MAT-LIT-20270213-4a0e39` | literary_text | Arthur Waley (tr.)『ワレイ訳アイヌ叙事詩『クトゥネ・シルカ』冒頭——金色のラッコを取るという試しと、妹の止める声』（1951） |
+| `MAT-LIT-20270213-62a2f3` | literary_text | recorded in Australian legendary tale collections (Lang/Howitt tradition)『豪州アボリジニ伝説「大干ばつと… |
+| `MAT-LIT-20270213-d7f59e` | literary_text | R. H. Charles (ed.), from The Apocrypha and Pseudepigrapha of the Old Testament『『アダムとエヴァの… |
+| `MAT-LIT-20270213-9e8060` | literary_text | Maalam Shaihua (recorder), R. Sutherland Rattray (tr./ed.)『ラトレイ編『ハウサ民話』——死にゆく首長クルングチェと「葬儀… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20270214-cfc87d・全文は map/50-sessions-*.md）
 
@@ -4202,6 +4212,7 @@
 | `SESSION-20270211-a6e3c9` | 2027-02-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270211-db3691` | 2027-02-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270212-c9916d` | 2027-02-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270213-d92038` | 2027-02-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270213-7feee9` | 2027-02-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270214-cfc87d` | 2027-02-14 | `Q-001`, `Q-002`, `Q-003` | `FRAG-20270214-65aa8c` | — |
 
@@ -4267,7 +4278,7 @@
 | `map/30-materials-literary-19.md` | 100 | 254,970 |
 | `map/30-materials-literary-20.md` | 100 | 274,468 |
 | `map/30-materials-literary-21.md` | 100 | 252,071 |
-| `map/30-materials-literary-22.md` | 21 | 36,658 |
+| `map/30-materials-literary-22.md` | 31 | 60,566 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4299,7 +4310,7 @@
 | `map/50-sessions-06.md` | 50 | 45,898 |
 | `map/50-sessions-07.md` | 50 | 42,714 |
 | `map/50-sessions-08.md` | 50 | 45,386 |
-| `map/50-sessions-09.md` | 34 | 29,034 |
+| `map/50-sessions-09.md` | 35 | 29,837 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4318,17 +4329,17 @@
 | `map/60-notes-16.md` | 25 | 65,504 |
 | `map/60-notes-17.md` | 25 | 67,539 |
 | `map/60-notes-18.md` | 25 | 94,917 |
-| `map/60-notes-19.md` | 19 | 68,061 |
+| `map/60-notes-19.md` | 20 | 71,678 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・469本・17,047,814 B）
+## 8. 精読ノート索引（readings/・470本・17,078,976 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 254/469 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 255/470 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：47 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：56 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：48 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：57 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4799,5 +4810,6 @@
 | `readings/2027-02-11-mercy-measure-and-the-unseen-work.md` | — | 2027-02-11 | `SESSION-20270211-a6e3c9` | 7,582 | M10 S1 | ✓ | 計る者、助ける者、見えない仕事——神話・宗教経典10件の精読 |
 | `readings/2027-02-11-the-name-the-wound-and-the-unborn.md` | 2026-11-04 | 2027-02-11 | `SESSION-20270211-db3691` +1 | 15,242 | Q3 M10 S2 | — | 精読ノート — 名づけられた者、傷つける者、生まれざるもの |
 | `readings/2027-02-12-knowing-is-not-being-saved.md` | 2026-11-04 | 2027-02-12 | `SESSION-20270212-c9916d` +3 | 13,167 | Q3 M10 S4 | ✓ | 知っていることは、救われることではない——神話・宗教経典10資料の精読 |
+| `readings/2027-02-13-ten-voices-from-myth-and-scripture.md` | 2026-11-04 | 2027-02-13 | `SESSION-20270213-d92038` | 12,856 | Q3 M10 S1 | — | 神話と経典からの新しい十の声——10資料の精読 |
 | `readings/2027-02-13-the-wing-is-not-a-perpetual-obligation.md` | 2026-11-04 | 2027-02-13 | `SESSION-20270213-7feee9` | 5,390 | Q3 F1 M1 S1 | ✓ | 翼を、無期限の義務にしない——「若者と鷲」と前回報告の再読 |
 | `readings/2027-02-14-two-pots-one-burner.md` | 2026-11-04 | 2027-02-14 | `SESSION-20270214-cfc87d` | 6,547 | Q3 F1 M1 S1 | — | 二つの鍋、一つの火——支え手を一人にしないための再読と短編 |
