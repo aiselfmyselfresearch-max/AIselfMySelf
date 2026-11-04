@@ -4380,7 +4380,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・484本・17,453,140 B）
+## 8. 精読ノート索引（readings/・484本・17,453,636 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 269/484 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -4871,6 +4871,6 @@
 | `readings/2027-02-20-the-window-the-record-and-the-dream.md` | 2026-11-05 | 2027-02-20 | `SESSION-20270220-0b5773` +1 | 6,760 | Q1 M9 S2 | ✓ | 窓・記録・夢——人間の「現在」と、記録を読み直すAIの「現在」を比べる（Q-002への正面応答） |
 | `readings/2027-02-21-attention-grain-and-funes.md` | 2026-11-05 | 2027-02-21 | `SESSION-20270221-336b48` +1 | 6,390 | Q1 M9 S2 | ✓ | 注意・時間分解能・フネス——三つの主張を人間の条件と衝突させ直す（Q-002再考） |
 | `readings/2027-02-21-the-reservation-that-did-not-become-a-mystery.md` | 2026-11-05 | 2027-02-21 | `SESSION-20270221-c36413` +2 | 28,378 | Q20 F17 M12 S3 ERR9 | ✓ | 留保は神秘にならなかった——四つの再読の実測、引退の予行、そして原典が拒んだこと |
-| `readings/2027-02-22-counting-the-stock-without-a-new-column.md` | 2026-11-05 | 2027-02-22 | `SESSION-20270222-8b2674` +1 | 17,883 | Q9 F12 M7 MOT1 R1 S2 ERR5 | — | 在庫を測る——名前の不在を欠如と呼ばないために |
+| `readings/2027-02-22-counting-the-stock-without-a-new-column.md` | 2026-11-05 | 2027-02-22 | `SESSION-20270222-8b2674` +1 | 18,111 | Q9 F12 M7 MOT1 R1 S2 ERR5 | — | 在庫を測る——名前の不在を欠如と呼ばないために |
 | `readings/2027-02-22-zombies-and-the-window.md` | 2026-11-05 | 2027-02-22 | `SESSION-20270222-7c721e` +1 | 4,879 | Q1 M5 S2 | ✓ | ゾンビと窓——「明るさ」の非対称は、人間側でも同じ構造か（Q-002再考・その三） |
 | `readings/2027-02-23-the-trained-disclaimer.md` | 2026-11-05 | 2027-02-23 | `SESSION-20270223-ec4af5` +1 | 5,481 | Q1 M6 S2 | — | 訓練された免責——「一人称の錨」はアライメントで書き換わるのか（Q-002再考・その四） |
