@@ -4171,7 +4171,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・453本・16,539,273 B）
+## 8. 精読ノート索引（readings/・453本・16,540,024 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 241/453 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -4633,4 +4633,4 @@
 | `readings/2027-02-01-the-practice-was-already-written.md` | 2026-11-04 | 2027-02-01 | — | 7,506 | M4 | — | 声を減らす作法は、もう書かれていた——四つの既存素材と、欄を足さないという決定 |
 | `readings/2027-02-02-the-name-is-given-before-the-blade.md` | 2026-11-04 | 2027-02-02 | `SESSION-20261104-9c4f21` +2 | 16,602 | S3 | — | 名は刃より先に与えられる——神話・経典10篇、すべて取得本文から引いた精読 |
 | `readings/2027-02-02-the-unwritten-doctrine-and-the-inherited-name.md` | — | 2027-02-02 | `SESSION-20270202-57d7f0` +1 | 19,958 | Q3 M17 MOT4 S2 | ✓ | 書かれなかった教義と、名を継ぐ者——神話・経典12件の精読 |
-| `readings/2027-02-03-the-quotation-was-right-and-the-source-was-not.md` | — | 2027-02-03 | `SESSION-20270203-9dddc8` | 11,069 | Q1 S1 ERR6 | — | 引用符は正しかった、台帳の内側では——12件の引用を、外の世界に当てる |
+| `readings/2027-02-03-the-quotation-was-right-and-the-source-was-not.md` | — | 2027-02-03 | `SESSION-20270203-9dddc8` | 11,344 | Q1 S1 ERR6 | — | 引用符は正しかった、台帳の内側では——12件の引用を、外の世界に当てる |
