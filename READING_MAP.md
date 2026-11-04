@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：426 件（初期シード 5 件 ＋ 派生 421 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2924 件（research_excerpt 815 ／ literary_text 2041 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2934 件（research_excerpt 815 ／ literary_text 2051 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
 - **解釈的関係（Relations）**：6258 件
-- **探究セッション（Sessions）**：424 回
+- **探究セッション（Sessions）**：425 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -756,7 +756,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2924 件・詳細は map/3*.md）
+## 4. 対話素材（2934 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3557,6 +3557,16 @@
 | `MAT-LIT-20270131-ce7a78` | literary_text | （マヌ法典）『『マヌ法典』第2巻——名に属性を書き込む規則と、声にしない名』（1886） |
 | `MAT-LIT-20270131-c099d1` | literary_text | （マヌ法典）『『マヌ法典』第8巻——証人の資格と多数決、そして霊魂という証人』（1886） |
 | `MAT-LIT-20270131-845a44` | literary_text | （創世記）『『創世記』17:5・32:27–28——名を問われ、名を与えられる』（1611） |
+| `MAT-LIT-20261104-b83101` | literary_text | 聖書『ルツ記』, King James Version translators『『ルツ記』2:8–12——今回の精読』（1611） |
+| `MAT-LIT-20261104-b83102` | literary_text | 聖書『ヨブ記』, King James Version translators『『ヨブ記』7:17–21——今回の精読』（1611） |
+| `MAT-LIT-20261104-b83103` | literary_text | 聖書『詩篇』, King James Version translators『『詩篇』137:1–6——今回の精読』（1611） |
+| `MAT-LIT-20261104-b83104` | literary_text | 聖書『伝道の書』, King James Version translators『『伝道の書』4:9–12——今回の精読』（1611） |
+| `MAT-LIT-20261104-b83105` | literary_text | 聖書『ルカによる福音書』, King James Version translators『『ルカによる福音書』10:30–37——今回の精読』（1611） |
+| `MAT-LIT-20261104-b83106` | literary_text | 聖書『ヨハネによる福音書』, King James Version translators『『ヨハネによる福音書』9:1–7——今回の精読』（1611） |
+| `MAT-LIT-20261104-b83107` | literary_text | 聖書『使徒言行録』, King James Version translators『『使徒言行録』17:22–28——今回の精読』（1611） |
+| `MAT-LIT-20261104-b83108` | literary_text | 聖書『ヤコブの手紙』, King James Version translators『『ヤコブの手紙』2:14–17——今回の精読』（1611） |
+| `MAT-LIT-20261104-b83109` | literary_text | 聖書『サムエル記上』, King James Version translators『『サムエル記上』3:1–10——今回の精読』（1611） |
+| `MAT-LIT-20261104-b83110` | literary_text | 聖書『サムエル記下』, King James Version translators『『サムエル記下』12:1–7——今回の精読』（1611） |
 | `MAT-20270128-6b2230` | research_excerpt | （Git プロジェクト）『git「ハッシュ関数の移行」——内容が名を決め、名は話し手を経て届く』（2018） |
 | `MAT-20270128-efbe6f` | research_excerpt | （transparency-dev/merkle プロジェクト）『Merkle ログのデータモデル——追記のみの列と、決して変わらない節』（2024） |
 | `MAT-20270128-de3c51` | research_excerpt | （CometBFT プロジェクト）『CometBFT ライトクライアント仕様——信頼された出発点から、+2/3 の他者へ』（2024） |
@@ -4019,6 +4029,7 @@
 | `SESSION-20261104-45c26b` | 2027-02-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270204-4ab7e1` | 2027-02-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20270203-85358f` | — | — |
 | `SESSION-20270128-0da3cd` | 2027-01-28 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
+| `SESSION-20261104-b831f0` | 2026-11-04 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261104-1a9188` | 2026-11-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20261104-47566b`, `Q-20261104-98a5f4` | — | `Q-20261104-47566b`, `Q-20261104-98a5f4` |
 | `SESSION-20270131-b6de43` | 2027-01-31 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20270201-a47a79` | 2027-02-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
@@ -4174,8 +4185,8 @@
 | `map/30-materials-literary-17.md` | 100 | 266,269 |
 | `map/30-materials-literary-18.md` | 100 | 293,289 |
 | `map/30-materials-literary-19.md` | 100 | 254,970 |
-| `map/30-materials-literary-20.md` | 100 | 290,073 |
-| `map/30-materials-literary-21.md` | 41 | 114,031 |
+| `map/30-materials-literary-20.md` | 100 | 274,468 |
+| `map/30-materials-literary-21.md` | 51 | 143,373 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4205,9 +4216,9 @@
 | `map/50-sessions-04.md` | 50 | 45,927 |
 | `map/50-sessions-05.md` | 50 | 46,647 |
 | `map/50-sessions-06.md` | 50 | 45,898 |
-| `map/50-sessions-07.md` | 50 | 42,885 |
-| `map/50-sessions-08.md` | 50 | 45,497 |
-| `map/50-sessions-09.md` | 24 | 21,993 |
+| `map/50-sessions-07.md` | 50 | 42,714 |
+| `map/50-sessions-08.md` | 50 | 45,386 |
+| `map/50-sessions-09.md` | 25 | 22,890 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4220,23 +4231,23 @@
 | `map/60-notes-10.md` | 25 | 56,366 |
 | `map/60-notes-11.md` | 25 | 61,626 |
 | `map/60-notes-12.md` | 25 | 63,097 |
-| `map/60-notes-13.md` | 25 | 79,829 |
-| `map/60-notes-14.md` | 25 | 66,233 |
-| `map/60-notes-15.md` | 25 | 57,717 |
-| `map/60-notes-16.md` | 25 | 64,868 |
-| `map/60-notes-17.md` | 25 | 67,125 |
-| `map/60-notes-18.md` | 25 | 96,087 |
-| `map/60-notes-19.md` | 9 | 38,509 |
+| `map/60-notes-13.md` | 25 | 77,948 |
+| `map/60-notes-14.md` | 25 | 67,352 |
+| `map/60-notes-15.md` | 25 | 57,282 |
+| `map/60-notes-16.md` | 25 | 65,504 |
+| `map/60-notes-17.md` | 25 | 67,539 |
+| `map/60-notes-18.md` | 25 | 94,698 |
+| `map/60-notes-19.md` | 10 | 41,676 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・459本・16,775,601 B）
+## 8. 精読ノート索引（readings/・460本・16,788,644 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 247/459 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 247/460 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：40 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：53 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：54 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4561,6 +4572,7 @@
 | `readings/2026-11-03-what-remains-after-the-answer.md` | 2026-11-03 | 2026-11-03 | `SESSION-20261103-e197ac` | 6,465 | Q3 M6 S1 | — | 死を知ること、理由を知らずに読むこと——神話・宗教経典の五つの箇所を精読する |
 | `readings/2026-11-03-wheels-fire-and-unreturned-words.md` | — | 2026-11-03 | `SESSION-20261103-5c8af6` | 8,357 | Q3 M11 S1 | ✓ | 輪を転がし、火を運び、言葉を返さない——十の神話・経典を読む |
 | `readings/2026-11-04-ice-height-and-the-pre-read-apology.md` | — | 2026-11-04 | `SESSION-20261104-26391d` +2 | 15,916 | Q4 F16 M7 MOT11 R3 S3 | ✓ | 溶けた高さ、害の前に読まれる詫び——「忘却と沈黙」×「裁きの席」の初架橋と、量れない数 |
+| `readings/2026-11-04-neighbour-memory-and-answerability.md` | — | 2026-11-04 | — | 5,763 | M10 | — | 隣人、記憶、応答の責任——宗教経典10資料の精読 |
 | `readings/2026-11-04-the-low-string-and-the-curve.md` | — | 2026-11-04 | `SESSION-20261104-9a4c6e` | 11,499 | Q6 F6 M5 MOT3 R1 S1 | ✓ | 低い弦と曲がり方——歌の先行と、名乗らない署名の衝突 |
 | `readings/2026-11-05-cedar-board-and-spring-gate.md` | — | 2026-11-05 | `SESSION-20261105-c91bde` +2 | 19,977 | Q9 F10 M13 MOT3 R2 S3 ERR7 | ✓ | 顎を引く朝、合わない杉板 — 窓口劇の脱・書記室変奏と四か月後の反歌（SESSION-20261105-c91bde） |
 | `readings/2026-11-05-four-anchors-three-pauses-four-bridges.md` | — | 2026-11-05 | `SESSION-20261105-dc2f27` +3 | 10,084 | Q14 F15 M1 MOT10 R4 S4 ERR1 ED8 | ✓ | 四つの礎石、三つの休止、四本の架け橋——第3回自律編集レビューと並行 PR #98 との重複調停 |
