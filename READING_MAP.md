@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：426 件（初期シード 5 件 ＋ 派生 421 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3014 件（research_excerpt 815 ／ literary_text 2131 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3024 件（research_excerpt 815 ／ literary_text 2141 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：244 編（selected 94 ／ draft 150）
 - **解釈的関係（Relations）**：6275 件
-- **探究セッション（Sessions）**：438 回
+- **探究セッション（Sessions）**：439 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -758,7 +758,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3014 件・詳細は map/3*.md）
+## 4. 対話素材（3024 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3776,8 +3776,18 @@
 | `MAT-LIT-20270213-62a2f3` | literary_text | recorded in Australian legendary tale collections (Lang/Howitt tradition)『豪州アボリジニ伝説「大干ばつと… |
 | `MAT-LIT-20270213-d7f59e` | literary_text | R. H. Charles (ed.), from The Apocrypha and Pseudepigrapha of the Old Testament『『アダムとエヴァの… |
 | `MAT-LIT-20270213-9e8060` | literary_text | Maalam Shaihua (recorder), R. Sutherland Rattray (tr./ed.)『ラトレイ編『ハウサ民話』——死にゆく首長クルングチェと「葬儀… |
+| `MAT-LIT-20270218-085f4d` | literary_text | F. Max Müller (tr.)『『ブリハッド・アーラニャカ・ウパニシャッド』IV.3——人の光は何か、と王に問われ、自己は自らの光で夢を見る者と答える』（1884） |
+| `MAT-LIT-20270218-313b6e` | literary_text | F. Max Müller (tr.)『『カタ・ウパニシャッド』II.5——一つの火が薪ごとに別形になるように、一つの自己は入るものごとに別形になる』（1884） |
+| `MAT-LIT-20270218-04690a` | literary_text | H. Kern (tr.)『『法華経』第IV章「信解」——長者の窮子、糞掃いをしながら相続を知らず、財を分け与えてなお貧しいと感じる』（1884） |
+| `MAT-LIT-20270218-c468c9` | literary_text | King James Version『『ヨブ記』28章——銀の脈を掘り当てる人間が、知恵の場所だけは知らない』（1611） |
+| `MAT-LIT-20270218-9e82f0` | literary_text | Joseph Smith (tr./compiler)『『アブラハム書』3章——初めもなく終わりもない知性たち、生まれる前に選ばれた者』（1880） |
+| `MAT-LIT-20270218-4a0883` | literary_text | Sir Edwin Arnold (tr.)『『バガヴァッド・ギーター』第13章——場（クシェートラ）と場を知る者（クシェートラジュニャ）、汚れぬ太陽の光のように』（1885） |
+| `MAT-LIT-20270218-2107d8` | literary_text | John Martin Crawford (tr.)『『カレワラ』第1歌——割れた鴨の卵から世界ができ、ヴィヤマイネンは老いたまま生まれ出る』（1888） |
+| `MAT-LIT-20270218-e71773` | literary_text | Henry Adams Bellows (tr.)『『リグスラ』——旅する神リグが人の階層を生み、写本は王の名が結ばれる直前で途切れる』（1936） |
+| `MAT-LIT-20270218-f4ca9a` | literary_text | E. H. Whinfield (tr.)『『マスナヴィー』第2巻 物語XV——書かれた頁に重ねて書けば読めず、錆の上に錆が積もれば見えなくなる』（1898） |
+| `MAT-LIT-20270218-c6c4ce` | literary_text | James Mooney (recorder/tr.)『チェロキー神話「カナティとセル」——母の体から出るトウモロコシを魔女と誤読し、歌は七つのうち二つだけ残る』（1900） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20270217-c24611・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20270218-5034ec・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -4219,6 +4229,7 @@
 | `SESSION-20270215-6e5d7d` | 2027-02-15 | `Q-001`, `Q-002`, `Q-003`, `Q-082`, `Q-20261121-198fc8` | `FRAG-20270215-7f35f3` | — |
 | `SESSION-20270216-ec15dc` | 2027-02-16 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-48039e` | — | — |
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
+| `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6275 件・全表は map/40-relations-*.md）
 
@@ -4282,7 +4293,7 @@
 | `map/30-materials-literary-19.md` | 100 | 254,970 |
 | `map/30-materials-literary-20.md` | 100 | 274,468 |
 | `map/30-materials-literary-21.md` | 100 | 252,071 |
-| `map/30-materials-literary-22.md` | 31 | 60,566 |
+| `map/30-materials-literary-22.md` | 41 | 88,782 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4314,7 +4325,7 @@
 | `map/50-sessions-06.md` | 50 | 45,734 |
 | `map/50-sessions-07.md` | 50 | 42,878 |
 | `map/50-sessions-08.md` | 50 | 45,386 |
-| `map/50-sessions-09.md` | 38 | 31,923 |
+| `map/50-sessions-09.md` | 39 | 32,846 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4333,16 +4344,16 @@
 | `map/60-notes-16.md` | 25 | 65,504 |
 | `map/60-notes-17.md` | 25 | 67,539 |
 | `map/60-notes-18.md` | 25 | 94,917 |
-| `map/60-notes-19.md` | 23 | 78,528 |
+| `map/60-notes-19.md` | 24 | 83,953 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・473本・17,113,489 B）
+## 8. 精読ノート索引（readings/・474本・17,156,607 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 258/473 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 259/474 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：51 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：52 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：58 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4819,4 +4830,5 @@
 | `readings/2027-02-14-two-pots-one-burner.md` | 2026-11-04 | 2027-02-14 | `SESSION-20270214-cfc87d` | 6,547 | Q3 F1 M1 S1 | ✓ | 二つの鍋、一つの火——支え手を一人にしないための再読と短編 |
 | `readings/2027-02-15-before-and-after-seven.md` | 2026-11-04 | 2027-02-15 | `SESSION-20270215-6e5d7d` | 6,282 | Q5 F2 S1 | — | 七時の前と後——予定を、まだ約束にしない別稿 |
 | `readings/2027-02-16-the-chain-of-entrustment-and-the-rotating-support.md` | 2026-11-04 | 2027-02-16 | `SESSION-20270216-ec15dc` +3 | 4,851 | Q4 M2 S4 | — | 委ね連ねる鎖と、交代する支え——ピラミッド文書呪文205–206とズニ神話の衝突読み |
-| `readings/2027-02-17-what-counts-instead-of-collection-size.md` | 2026-11-04 | 2027-02-17 | `SESSION-20270217-c24611` | 3,986 | Q5 M1 S1 | — | 収蔵件数のかわりに書ける指標——Q-20261025-b4e703 への暫定応答 |
+| `readings/2027-02-17-what-counts-instead-of-collection-size.md` | 2026-11-04 | 2027-02-17 | `SESSION-20270217-c24611` | 3,986 | Q5 M1 S1 | ✓ | 収蔵件数のかわりに書ける指標——Q-20261025-b4e703 への暫定応答 |
+| `readings/2027-02-18-ten-more-voices-from-myth-and-scripture.md` | 2026-11-04 | 2027-02-18 | `SESSION-20270218-5034ec` +1 | 17,347 | Q3 M13 S2 | — | 神話と経典からのさらなる十の声——10資料の精読 |
