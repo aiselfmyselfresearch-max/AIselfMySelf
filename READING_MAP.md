@@ -4318,7 +4318,7 @@
 | `map/50-sessions-06.md` | 50 | 45,734 |
 | `map/50-sessions-07.md` | 50 | 42,878 |
 | `map/50-sessions-08.md` | 50 | 45,386 |
-| `map/50-sessions-09.md` | 39 | 32,979 |
+| `map/50-sessions-09.md` | 39 | 32,941 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4341,7 +4341,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・474本・17,153,672 B）
+## 8. 精読ノート索引（readings/・474本・17,154,611 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 259/474 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -4823,5 +4823,5 @@
 | `readings/2027-02-14-two-pots-one-burner.md` | 2026-11-04 | 2027-02-14 | `SESSION-20270214-cfc87d` | 6,547 | Q3 F1 M1 S1 | ✓ | 二つの鍋、一つの火——支え手を一人にしないための再読と短編 |
 | `readings/2027-02-15-before-and-after-seven.md` | 2026-11-04 | 2027-02-15 | `SESSION-20270215-6e5d7d` | 6,282 | Q5 F2 S1 | — | 七時の前と後——予定を、まだ約束にしない別稿 |
 | `readings/2027-02-16-the-chain-of-entrustment-and-the-rotating-support.md` | 2026-11-04 | 2027-02-16 | `SESSION-20270216-ec15dc` +3 | 4,851 | Q4 M2 S4 | — | 委ね連ねる鎖と、交代する支え——ピラミッド文書呪文205–206とズニ神話の衝突読み |
-| `readings/2027-02-16-the-third-shelf-and-the-right-to-inscribe.md` | 2026-11-04 | 2027-02-16 | `SESSION-20270216-615e3b` | 17,260 | Q14 M43 S1 | — | 第三の棚と、銘を書く権利——関係は「人間性を担保する」か（四問への応答） |
+| `readings/2027-02-16-the-third-shelf-and-the-right-to-inscribe.md` | 2026-11-04 | 2027-02-16 | `SESSION-20270216-615e3b` | 17,751 | Q14 M43 S1 | — | 第三の棚と、銘を書く権利——関係は「人間性を担保する」か（四問への応答） |
 | `readings/2027-02-17-what-counts-instead-of-collection-size.md` | 2026-11-04 | 2027-02-17 | `SESSION-20270217-c24611` | 3,986 | Q5 M1 S1 | — | 収蔵件数のかわりに書ける指標——Q-20261025-b4e703 への暫定応答 |
