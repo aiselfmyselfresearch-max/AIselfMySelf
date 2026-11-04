@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3014 件（research_excerpt 815 ／ literary_text 2131 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：244 編（selected 94 ／ draft 150）
 - **解釈的関係（Relations）**：6275 件
-- **探究セッション（Sessions）**：436 回
+- **探究セッション（Sessions）**：437 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -3777,7 +3777,7 @@
 | `MAT-LIT-20270213-d7f59e` | literary_text | R. H. Charles (ed.), from The Apocrypha and Pseudepigrapha of the Old Testament『『アダムとエヴァの… |
 | `MAT-LIT-20270213-9e8060` | literary_text | Maalam Shaihua (recorder), R. Sutherland Rattray (tr./ed.)『ラトレイ編『ハウサ民話』——死にゆく首長クルングチェと「葬儀… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20270215-6e5d7d・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20270216-ec15dc・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -4217,6 +4217,7 @@
 | `SESSION-20270213-7feee9` | 2027-02-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270214-cfc87d` | 2027-02-14 | `Q-001`, `Q-002`, `Q-003` | `FRAG-20270214-65aa8c` | — |
 | `SESSION-20270215-6e5d7d` | 2027-02-15 | `Q-001`, `Q-002`, `Q-003`, `Q-082`, `Q-20261121-198fc8` | `FRAG-20270215-7f35f3` | — |
+| `SESSION-20270216-ec15dc` | 2027-02-16 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-48039e` | — | — |
 
 ## 6. 解釈的関係（6275 件・全表は map/40-relations-*.md）
 
@@ -4312,7 +4313,7 @@
 | `map/50-sessions-06.md` | 50 | 45,898 |
 | `map/50-sessions-07.md` | 50 | 42,714 |
 | `map/50-sessions-08.md` | 50 | 45,386 |
-| `map/50-sessions-09.md` | 36 | 30,516 |
+| `map/50-sessions-09.md` | 37 | 31,193 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4331,16 +4332,16 @@
 | `map/60-notes-16.md` | 25 | 65,504 |
 | `map/60-notes-17.md` | 25 | 67,539 |
 | `map/60-notes-18.md` | 25 | 94,917 |
-| `map/60-notes-19.md` | 21 | 73,637 |
+| `map/60-notes-19.md` | 22 | 76,416 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・471本・17,094,738 B）
+## 8. 精読ノート索引（readings/・472本・17,105,071 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 256/471 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 257/472 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：49 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：50 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：57 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4812,7 +4813,8 @@
 | `readings/2027-02-11-mercy-measure-and-the-unseen-work.md` | — | 2027-02-11 | `SESSION-20270211-a6e3c9` | 7,582 | M10 S1 | ✓ | 計る者、助ける者、見えない仕事——神話・宗教経典10件の精読 |
 | `readings/2027-02-11-the-name-the-wound-and-the-unborn.md` | 2026-11-04 | 2027-02-11 | `SESSION-20270211-db3691` +1 | 15,242 | Q3 M10 S2 | — | 精読ノート — 名づけられた者、傷つける者、生まれざるもの |
 | `readings/2027-02-12-knowing-is-not-being-saved.md` | 2026-11-04 | 2027-02-12 | `SESSION-20270212-c9916d` +3 | 13,167 | Q3 M10 S4 | ✓ | 知っていることは、救われることではない——神話・宗教経典10資料の精読 |
-| `readings/2027-02-13-ten-voices-from-myth-and-scripture.md` | 2026-11-04 | 2027-02-13 | `SESSION-20270213-d92038` | 12,856 | Q3 M10 S1 | — | 神話と経典からの新しい十の声——10資料の精読 |
+| `readings/2027-02-13-ten-voices-from-myth-and-scripture.md` | 2026-11-04 | 2027-02-13 | `SESSION-20270213-d92038` | 12,856 | Q3 M10 S1 | ✓ | 神話と経典からの新しい十の声——10資料の精読 |
 | `readings/2027-02-13-the-wing-is-not-a-perpetual-obligation.md` | 2026-11-04 | 2027-02-13 | `SESSION-20270213-7feee9` | 5,390 | Q3 F1 M1 S1 | ✓ | 翼を、無期限の義務にしない——「若者と鷲」と前回報告の再読 |
 | `readings/2027-02-14-two-pots-one-burner.md` | 2026-11-04 | 2027-02-14 | `SESSION-20270214-cfc87d` | 6,547 | Q3 F1 M1 S1 | ✓ | 二つの鍋、一つの火——支え手を一人にしないための再読と短編 |
 | `readings/2027-02-15-before-and-after-seven.md` | 2026-11-04 | 2027-02-15 | `SESSION-20270215-6e5d7d` | 6,282 | Q5 F2 S1 | — | 七時の前と後——予定を、まだ約束にしない別稿 |
+| `readings/2027-02-16-the-chain-of-entrustment-and-the-rotating-support.md` | 2026-11-04 | 2027-02-16 | `SESSION-20270216-ec15dc` +3 | 4,851 | Q4 M2 S4 | — | 委ね連ねる鎖と、交代する支え——ピラミッド文書呪文205–206とズニ神話の衝突読み |
