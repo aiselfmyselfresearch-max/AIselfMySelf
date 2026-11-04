@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：426 件（初期シード 5 件 ＋ 派生 421 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：2904 件（research_excerpt 815 ／ literary_text 2021 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：2914 件（research_excerpt 815 ／ literary_text 2031 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：242 編（selected 94 ／ draft 148）
-- **解釈的関係（Relations）**：6230 件
-- **探究セッション（Sessions）**：421 回
+- **解釈的関係（Relations）**：6244 件
+- **探究セッション（Sessions）**：422 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -756,7 +756,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 
-## 4. 対話素材（2904 件・詳細は map/3*.md）
+## 4. 対話素材（2914 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3664,8 +3664,18 @@
 | `MAT-LIT-20270204-700d50` | literary_text | （伝統的著者／編者不詳。経典本文）『『プラシュナ・ウパニシャッド』第六問——十六部分を持つ人は、名と形だけが残って川が海に消えるように消える』（0） |
 | `MAT-LIT-20270204-fae202` | literary_text | （伝統的著者／編者不詳。経典本文）『『ヤスナ』44章（ガーサー）——『これを汝に問う、正しく私に答えよ』と繰り返す問い手』（0） |
 | `MAT-LIT-20270204-a8c077` | literary_text | （伝統的著者／編者不詳。経典本文）『『ウダーナ』6.4——盲人たちと象、各部分が全体の名で呼ばれる』（0） |
+| `MAT-LIT-20270206-50cac5` | literary_text | ヘブライ語聖書『出エジプト記』, King James Version translators（1611年英訳）『『出エジプト記』17:8–16——書き留める記念と、消すように命… |
+| `MAT-LIT-20270206-e76484` | literary_text | ヘブライ語聖書『イザヤ書』, King James Version translators（1611年英訳）『『イザヤ書』29:9–13——封じられた書と、読めない者へ渡される書… |
+| `MAT-LIT-20270206-13466d` | literary_text | ヘブライ語聖書『エステル記』, King James Version translators（1611年英訳）『『エステル記』6:1–14——眠れない王に読まれた年代記と、遅れて… |
+| `MAT-LIT-20270206-aa78c2` | literary_text | 新約聖書『ヨハネの手紙第二』（伝承上の著者名は長老）, King James Version translators（1611年英訳）『『ヨハネの手紙第二』7–13節——紙と墨を… |
+| `MAT-LIT-20270206-c24a32` | literary_text | 新約聖書『ヨハネの黙示録』（伝・ヨハネ）, King James Version translators（1611年英訳）『『ヨハネの黙示録』22:10・18–19節——封じるな… |
+| `MAT-LIT-20270206-fc7694` | literary_text | クルアーン（イスラームの啓典）, Marmaduke Pickthall（1930年英訳）『『クルアーン』62:5——書を運ぶことと、委ねられたことを行うことの距離』（1930） |
+| `MAT-LIT-20270206-7632f2` | literary_text | パーリ仏典（初期仏教伝承）, Bhikkhu Sujato（英訳）『『中部』95経 Caṅkīsutta——真実を保つことと、真実に目覚めることの区別』（2018） |
+| `MAT-LIT-20270206-955fa8` | literary_text | 伝・荘子, James Legge（1891年英訳）『『荘子』天道篇・輪扁——車輪の勘所と、古人の「かす」』（1891） |
+| `MAT-LIT-20270206-711cef` | literary_text | リグ・ヴェーダの詩人たち（伝承）, Ralph T. H. Griffith（1896年英訳）『『リグ・ヴェーダ』10.71——同じ目と耳を持つ友と、分かたれるヴァーチ』（189… |
+| `MAT-LIT-20270206-ba2d6e` | literary_text | Guru Nanak, Manmohan Singh（英訳）『『ジャプジー・サーヒブ』第8–11パウリ——「聞くこと」の反復と、読み・瞑想・徳へ開かれる聴取』（2009） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20270204-e0afee・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20270206-618df4・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -4090,17 +4100,18 @@
 | `SESSION-20270125-514567` | 2027-01-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270126-bb03ac` | 2027-01-26 | `Q-001`, `Q-002`, `Q-003`, `Q-20270126-bdb41b` | — | `Q-20270126-bdb41b` |
 | `SESSION-20270204-e0afee` | 2027-02-04 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270206-618df4` | 2027-02-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6230 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6244 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 877 |
-| 共鳴 (echo) | 1538 |
+| 対照 (contrast) | 879 |
+| 共鳴 (echo) | 1539 |
 | 切断・割り込み (interrupts) | 212 |
 | 未解決のまま開く (leaves_open) | 874 |
-| 比喩的共鳴 (metaphorically_resonates) | 164 |
-| 枠組みの組み替え (reframes) | 588 |
+| 比喩的共鳴 (metaphorically_resonates) | 165 |
+| 枠組みの組み替え (reframes) | 598 |
 | 応答 (responds_to) | 1689 |
 | 変奏・変形 (transforms) | 288 |
 
@@ -4152,7 +4163,7 @@
 | `map/30-materials-literary-18.md` | 100 | 293,289 |
 | `map/30-materials-literary-19.md` | 100 | 255,785 |
 | `map/30-materials-literary-20.md` | 100 | 288,576 |
-| `map/30-materials-literary-21.md` | 21 | 63,299 |
+| `map/30-materials-literary-21.md` | 31 | 88,363 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4175,7 +4186,7 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 174,708 |
 | `map/40-relations-12.md` | 500 | 162,575 |
-| `map/40-relations-13.md` | 230 | 83,580 |
+| `map/40-relations-13.md` | 244 | 87,548 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -4184,7 +4195,7 @@
 | `map/50-sessions-06.md` | 50 | 45,898 |
 | `map/50-sessions-07.md` | 50 | 42,943 |
 | `map/50-sessions-08.md` | 50 | 45,612 |
-| `map/50-sessions-09.md` | 21 | 19,353 |
+| `map/50-sessions-09.md` | 22 | 20,273 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4203,16 +4214,16 @@
 | `map/60-notes-16.md` | 25 | 64,868 |
 | `map/60-notes-17.md` | 25 | 67,125 |
 | `map/60-notes-18.md` | 25 | 95,961 |
-| `map/60-notes-19.md` | 6 | 22,224 |
+| `map/60-notes-19.md` | 7 | 26,416 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・456本・16,635,076 B）
+## 8. 精読ノート索引（readings/・457本・16,677,566 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 244/456 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 245/457 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：37 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：38 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：55 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4672,4 +4683,5 @@
 | `readings/2027-02-03-the-quotation-was-right-and-the-source-was-not.md` | — | 2027-02-03 | `SESSION-20270203-9dddc8` | 11,344 | Q1 S1 ERR6 | — | 引用符は正しかった、台帳の内側では——12件の引用を、外の世界に当てる |
 | `readings/2027-02-04-the-goat-that-carried-it-away.md` | 2026-11-04 | 2027-02-04 | `SESSION-20270204-e0afee` | 11,750 | Q3 M14 MOT2 S1 | ✓ | 運び去る山羊と、読めない壁の文字——神話・宗教経典12件の精読 |
 | `readings/2027-02-04-the-world-is-written-in-parts.md` | 2026-11-04 | 2027-02-04 | `SESSION-20270204-4ab7e1` | 20,154 | S1 | — | 世界は部分に書かれる——神話・経典10篇と、読む者の自己 |
-| `readings/2027-02-05-the-record-is-not-yet-a-well.md` | 2026-11-04 | 2027-02-05 | `SESSION-20261104-45c26b` | 11,338 | Q3 M12 S1 | — | 記録はまだ井戸ではない——神話・宗教経典10件の精読 |
+| `readings/2027-02-05-the-record-is-not-yet-a-well.md` | 2026-11-04 | 2027-02-05 | `SESSION-20261104-45c26b` | 11,338 | Q3 M12 S1 | ✓ | 記録はまだ井戸ではない——神話・宗教経典10件の精読 |
+| `readings/2027-02-06-the-unsealed-book-is-not-yet-heard.md` | 2026-11-04 | 2027-02-06 | `SESSION-20270206-618df4` | 18,412 | Q3 M10 S1 | — | 開かれた書は、まだ聞かれていない |
