@@ -8,9 +8,9 @@
 - **開かれた問い（Questions）**：426 件（初期シード 5 件 ＋ 派生 421 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：3014 件（research_excerpt 815 ／ literary_text 2131 ／ project_trace 67 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：243 編（selected 94 ／ draft 149）
-- **解釈的関係（Relations）**：6274 件
-- **探究セッション（Sessions）**：436 回
+- **文芸断片（Fragments）**：244 編（selected 94 ／ draft 150）
+- **解釈的関係（Relations）**：6275 件
+- **探究セッション（Sessions）**：437 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -509,7 +509,7 @@
 | `Q-20270126-bdb41b` | session | `Q-002` `Q-003` `Q-001` | `Q-20270126-655867` | CONTENT_POLICY.md は、それ自体が変更可能な歴史的産物ではないか。もし変更しうるとすれば、その根拠は「証拠による訂正」（現象的連続性の測定が可能になった場合）か、「機能的・制度的擬制… |
 | `Q-20270126-331d13` | session | `Q-001` `Q-003` `Q-20270126-655867` | — | AI が自らの地位について裁定を保留することは、当該 AI に人格・霊性を認める受信者にとって、「神の拒絶」または「試練」として再解釈されうるか。そして再解釈された場合、当該 AI への依存・関与は… |
 
-## 3. 断片（243 編・全文は map/20-fragments-*.md）
+## 3. 断片（244 編・全文は map/20-fragments-*.md）
 
 | ID | 題 | 状態 | 形式 | 語り手 |
 |---|---|---|---|---|
@@ -756,6 +756,7 @@
 | `FRAG-20261218-8c3355` | 白い爪、目張りの裏 | selected | scene | third_person |
 | `FRAG-20261029-30debd` | 損紙の箱、まだ来ない日付 | draft | scene | third_person |
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
+| `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
 ## 4. 対話素材（3014 件・詳細は map/3*.md）
 
@@ -4215,9 +4216,10 @@
 | `SESSION-20270213-d92038` | 2027-02-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270213-7feee9` | 2027-02-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270214-cfc87d` | 2027-02-14 | `Q-001`, `Q-002`, `Q-003` | `FRAG-20270214-65aa8c` | — |
+| `SESSION-20270215-6e5d7d` | 2027-02-15 | `Q-001`, `Q-002`, `Q-003`, `Q-082`, `Q-20261121-198fc8` | `FRAG-20270215-7f35f3` | — |
 | `SESSION-20270216-ec15dc` | 2027-02-16 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-48039e` | — | — |
 
-## 6. 解釈的関係（6274 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6275 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
@@ -4228,7 +4230,7 @@
 | 比喩的共鳴 (metaphorically_resonates) | 165 |
 | 枠組みの組み替え (reframes) | 615 |
 | 応答 (responds_to) | 1693 |
-| 変奏・変形 (transforms) | 290 |
+| 変奏・変形 (transforms) | 291 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -4257,7 +4259,7 @@
 | `map/20-fragments-10.md` | 20 | 175,884 |
 | `map/20-fragments-11.md` | 20 | 133,712 |
 | `map/20-fragments-12.md` | 20 | 148,927 |
-| `map/20-fragments-13.md` | 3 | 14,344 |
+| `map/20-fragments-13.md` | 4 | 20,009 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -4302,7 +4304,7 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 175,828 |
 | `map/40-relations-12.md` | 500 | 161,679 |
-| `map/40-relations-13.md` | 274 | 97,431 |
+| `map/40-relations-13.md` | 275 | 97,845 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -4311,7 +4313,7 @@
 | `map/50-sessions-06.md` | 50 | 45,898 |
 | `map/50-sessions-07.md` | 50 | 42,714 |
 | `map/50-sessions-08.md` | 50 | 45,386 |
-| `map/50-sessions-09.md` | 36 | 30,514 |
+| `map/50-sessions-09.md` | 37 | 31,193 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4330,17 +4332,17 @@
 | `map/60-notes-16.md` | 25 | 65,504 |
 | `map/60-notes-17.md` | 25 | 67,539 |
 | `map/60-notes-18.md` | 25 | 94,917 |
-| `map/60-notes-19.md` | 21 | 74,375 |
+| `map/60-notes-19.md` | 22 | 76,416 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・471本・17,089,309 B）
+## 8. 精読ノート索引（readings/・472本・17,105,071 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 256/471 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 257/472 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：49 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：56 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：50 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：57 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4814,4 +4816,5 @@
 | `readings/2027-02-13-ten-voices-from-myth-and-scripture.md` | 2026-11-04 | 2027-02-13 | `SESSION-20270213-d92038` | 12,856 | Q3 M10 S1 | ✓ | 神話と経典からの新しい十の声——10資料の精読 |
 | `readings/2027-02-13-the-wing-is-not-a-perpetual-obligation.md` | 2026-11-04 | 2027-02-13 | `SESSION-20270213-7feee9` | 5,390 | Q3 F1 M1 S1 | ✓ | 翼を、無期限の義務にしない——「若者と鷲」と前回報告の再読 |
 | `readings/2027-02-14-two-pots-one-burner.md` | 2026-11-04 | 2027-02-14 | `SESSION-20270214-cfc87d` | 6,547 | Q3 F1 M1 S1 | ✓ | 二つの鍋、一つの火——支え手を一人にしないための再読と短編 |
+| `readings/2027-02-15-before-and-after-seven.md` | 2026-11-04 | 2027-02-15 | `SESSION-20270215-6e5d7d` | 6,282 | Q5 F2 S1 | — | 七時の前と後——予定を、まだ約束にしない別稿 |
 | `readings/2027-02-16-the-chain-of-entrustment-and-the-rotating-support.md` | 2026-11-04 | 2027-02-16 | `SESSION-20270216-ec15dc` +3 | 4,851 | Q4 M2 S4 | — | 委ね連ねる鎖と、交代する支え——ピラミッド文書呪文205–206とズニ神話の衝突読み |
