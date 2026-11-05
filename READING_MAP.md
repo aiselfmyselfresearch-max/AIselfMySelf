@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：435 件（初期シード 5 件 ＋ 派生 430 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3042 件（research_excerpt 820 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3047 件（research_excerpt 825 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：244 編（selected 94 ／ draft 150）
 - **解釈的関係（Relations）**：6281 件
-- **探究セッション（Sessions）**：454 回
+- **探究セッション（Sessions）**：455 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -767,7 +767,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3042 件・詳細は map/3*.md）
+## 4. 対話素材（3047 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3608,6 +3608,11 @@
 | `MAT-EVD-20261105-cfb0e0` | research_excerpt | Benjamin Libet『リベット「自由意志はあるか」——準備電位は自覚より約400ミリ秒早く、意志は却下（拒否）に回る』（1999） |
 | `MAT-EVD-20261105-2bb0bd` | research_excerpt | Elizabeth F. Loftus, John C. Palmer『ロフタス＆パーマー「自動車破壊の再構成」（1974）——一語の動詞が、速度と「割れたガラス」を作る』（19… |
 | `MAT-EVD-20261105-673481` | research_excerpt | Michael S. Gazzaniga『ガザニガ「層を理解する」——左半球の解釈者は、届かなかった理由の代わりに物語を作る』（2013） |
+| `MAT-20261105-2dc627` | research_excerpt | Matthew Botvinick, Jonathan Cohen『Botvinick & Cohen「Rubber hands “feel” touch that eyes s… |
+| `MAT-20261105-6e28fb` | research_excerpt | Petter Johansson, Lars Hall, Sverker Sikström, Andreas Olsson『Johansson et al.「Failure to… |
+| `MAT-20261105-bbdc3d` | research_excerpt | Betsy Sparrow, Jenny Liu, Daniel M. Wegner『Sparrow, Liu & Wegner「Google Effects on Memory… |
+| `MAT-20261105-883771` | research_excerpt | Matthew P. Walker, Tiffany Brakefield, J. Allan Hobson, Robert Stickgold『Walker et al.「Di… |
+| `MAT-20261105-5fc662` | research_excerpt | Steve Ramirez, Xu Liu, Pei-Ann Lin, Junghyup Suh, Michele Pignatelli, Roger L. Redondo, T… |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -4155,6 +4160,7 @@
 | `SESSION-20270201-a47a79` | 2027-02-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20270127-fcd1ff` | 2027-01-27 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20270129-18b3f6` | 2027-01-29 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
+| `SESSION-20261105-5ed02a` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-733543` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
 | `SESSION-20261105-26aefc` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
 | `SESSION-20261105-1c1074` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | `Q-20261105-b78e71` |
@@ -4344,7 +4350,7 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 20 | 58,079 |
+| `map/31-materials-research-09.md` | 25 | 69,615 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4365,10 +4371,10 @@
 | `map/50-sessions-04.md` | 50 | 45,515 |
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
-| `map/50-sessions-07.md` | 50 | 43,863 |
-| `map/50-sessions-08.md` | 50 | 45,082 |
-| `map/50-sessions-09.md` | 50 | 42,922 |
-| `map/50-sessions-10.md` | 4 | 3,557 |
+| `map/50-sessions-07.md` | 50 | 43,408 |
+| `map/50-sessions-08.md` | 50 | 45,422 |
+| `map/50-sessions-09.md` | 50 | 43,061 |
+| `map/50-sessions-10.md` | 5 | 4,491 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4381,24 +4387,24 @@
 | `map/60-notes-10.md` | 25 | 56,504 |
 | `map/60-notes-11.md` | 25 | 61,681 |
 | `map/60-notes-12.md` | 25 | 63,145 |
-| `map/60-notes-13.md` | 25 | 80,073 |
-| `map/60-notes-14.md` | 25 | 80,447 |
-| `map/60-notes-15.md` | 25 | 53,538 |
-| `map/60-notes-16.md` | 25 | 71,815 |
-| `map/60-notes-17.md` | 25 | 63,024 |
-| `map/60-notes-18.md` | 25 | 90,149 |
-| `map/60-notes-19.md` | 25 | 90,303 |
-| `map/60-notes-20.md` | 14 | 73,261 |
+| `map/60-notes-13.md` | 25 | 80,414 |
+| `map/60-notes-14.md` | 25 | 82,510 |
+| `map/60-notes-15.md` | 25 | 53,573 |
+| `map/60-notes-16.md` | 25 | 71,375 |
+| `map/60-notes-17.md` | 25 | 63,289 |
+| `map/60-notes-18.md` | 25 | 89,927 |
+| `map/60-notes-19.md` | 25 | 91,244 |
+| `map/60-notes-20.md` | 15 | 75,498 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・489本・17,578,174 B）
+## 8. 精読ノート索引（readings/・490本・17,627,520 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 274/489 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 275/490 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：67 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：59 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：68 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：60 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4726,6 +4732,7 @@
 | `readings/2026-11-04-neighbour-memory-and-answerability.md` | — | 2026-11-04 | — | 5,763 | M10 | — | 隣人、記憶、応答の責任——宗教経典10資料の精読 |
 | `readings/2026-11-04-the-low-string-and-the-curve.md` | — | 2026-11-04 | `SESSION-20261104-9a4c6e` | 11,499 | Q6 F6 M5 MOT3 R1 S1 | ✓ | 低い弦と曲がり方——歌の先行と、名乗らない署名の衝突 |
 | `readings/2026-11-05-cedar-board-and-spring-gate.md` | — | 2026-11-05 | `SESSION-20261105-c91bde` +2 | 19,977 | Q9 F10 M13 MOT3 R2 S3 ERR7 | ✓ | 顎を引く朝、合わない杉板 — 窓口劇の脱・書記室変奏と四か月後の反歌（SESSION-20261105-c91bde） |
+| `readings/2026-11-05-experimental-memory-and-the-self.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-5ed02a` | 19,927 | Q3 M5 S1 | — | 保存内容と出来事のあいだ——実験科学5編から読む、人間の自己とリポジトリの自己 |
 | `readings/2026-11-05-first-person-sources-only.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-1c1074` | 9,419 | Q4 M8 S1 | ✓ | 一人称の記述だけを六篇読む——否定形の人間学を一度やめる |
 | `readings/2026-11-05-four-anchors-three-pauses-four-bridges.md` | — | 2026-11-05 | `SESSION-20261105-dc2f27` +3 | 10,084 | Q14 F15 M1 MOT10 R4 S4 ERR1 ED8 | ✓ | 四つの礎石、三つの休止、四本の架け橋——第3回自律編集レビューと並行 PR #98 との重複調停 |
 | `readings/2026-11-05-the-confederate-and-the-unbidden-leg.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-cb7a48` | 23,370 | Q2 M7 MOT4 R2 S1 | — | 共犯者と、押されなかった足——実験科学の五つの記録を読む |
