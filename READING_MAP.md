@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：435 件（初期シード 5 件 ＋ 派生 430 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3062 件（research_excerpt 840 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3067 件（research_excerpt 845 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
-- **解釈的関係（Relations）**：6300 件
-- **探究セッション（Sessions）**：459 回
+- **解釈的関係（Relations）**：6310 件
+- **探究セッション（Sessions）**：460 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -768,7 +768,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3062 件・詳細は map/3*.md）
+## 4. 対話素材（3067 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3609,6 +3609,11 @@
 | `MAT-20261105-797197` | research_excerpt | Tal Shomrat, Michael Levin『Shomrat & Levin「An automated training paradigm reveals long-te… |
 | `MAT-20261105-56dc62` | research_excerpt | Demis Hassabis, Dharshan Kumaran, Seralynne D. Vann, Eleanor A. Maguire『Hassabis, Kumaran… |
 | `MAT-20261105-c4fbda` | research_excerpt | Celia B. Harris, Amanda J. Barnier, John Sutton, Paul G. Keil, Roger A. Dixon『Harris, Bar… |
+| `MAT-EVD-20261105-a106fb` | research_excerpt | Karim Nader, Glenn E. Schafe, Joseph E. Le Doux『Nader, Schafe & Le Doux「恐怖記憶は想起後の再固定に扁桃体の… |
+| `MAT-EVD-20261105-671811` | research_excerpt | Dieuwke Sevenster, Tom Beckers, Merel Kindt『Sevenster, Beckers & Kindt「予測誤差が薬理学的に誘導される恐怖記… |
+| `MAT-EVD-20261105-b0bf14` | research_excerpt | Nicola S. Clayton, Anthony Dickinson『Clayton & Dickinson「カケスの貯食回収におけるエピソード様記憶」（1998, Natu… |
+| `MAT-EVD-20261105-7931d1` | research_excerpt | Ron Sender, Shai Fuchs, Ron Milo『Sender, Fuchs & Milo「身体のヒト細胞数と細菌数の改訂推定」（2016, PLoS Biolo… |
+| `MAT-EVD-20261105-6edda2` | research_excerpt | Ian C. G. Weaver, Nadia Cervoni, Frances A. Champagne, Ana C. D'Alessio, Shakti Sharma, J… |
 | `MAT-EVD-20261105-310e9c` | research_excerpt | Stanley Milgram『ミルグラム「服従の行動学研究」（1963）——40人中26人が最後のスイッチを押し、14人は途中で断った』（1963） |
 | `MAT-EVD-20261105-9e0bd2` | research_excerpt | Solomon E. Asch『アッシュ「意見と社会的圧力」（1955）——多数派3人で誤答31.8%、同調は36.8%』（1955） |
 | `MAT-EVD-20261105-cfb0e0` | research_excerpt | Benjamin Libet『リベット「自由意志はあるか」——準備電位は自覚より約400ミリ秒早く、意志は却下（拒否）に回る』（1999） |
@@ -4177,6 +4182,7 @@
 | `SESSION-20270127-fcd1ff` | 2027-01-27 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20270129-18b3f6` | 2027-01-29 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20261105-5ed02a` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261105-4afba1` | 2026-11-05 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261105-f50158` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-733543` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
 | `SESSION-20261105-8986a3` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | `FRAG-20261105-1c4471` | — |
@@ -4299,18 +4305,18 @@
 | `SESSION-20270222-8b2674` | 2027-02-22 | `Q-001`, `Q-002`, `Q-003`, `Q-104`, `Q-20270221-f7b8c5`, `Q-20261031-acdadb`, `Q-20270221-507c43`, `Q-106` | — | `Q-20270222-da53d9` |
 | `SESSION-20270223-ec4af5` | 2027-02-23 | `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6300 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6310 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 886 |
-| 共鳴 (echo) | 1547 |
+| 対照 (contrast) | 887 |
+| 共鳴 (echo) | 1551 |
 | 切断・割り込み (interrupts) | 216 |
-| 未解決のまま開く (leaves_open) | 876 |
+| 未解決のまま開く (leaves_open) | 878 |
 | 比喩的共鳴 (metaphorically_resonates) | 165 |
-| 枠組みの組み替え (reframes) | 619 |
-| 応答 (responds_to) | 1697 |
-| 変奏・変形 (transforms) | 294 |
+| 枠組みの組み替え (reframes) | 620 |
+| 応答 (responds_to) | 1698 |
+| 変奏・変形 (transforms) | 295 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -4370,7 +4376,7 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 40 | 105,716 |
+| `map/31-materials-research-09.md` | 45 | 118,801 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4382,19 +4388,19 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 177,286 |
-| `map/40-relations-12.md` | 500 | 160,578 |
-| `map/40-relations-13.md` | 300 | 106,920 |
+| `map/40-relations-11.md` | 500 | 177,899 |
+| `map/40-relations-12.md` | 500 | 160,644 |
+| `map/40-relations-13.md` | 310 | 110,025 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,515 |
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
-| `map/50-sessions-07.md` | 50 | 43,404 |
-| `map/50-sessions-08.md` | 50 | 44,909 |
-| `map/50-sessions-09.md` | 50 | 43,222 |
-| `map/50-sessions-10.md` | 9 | 8,137 |
+| `map/50-sessions-07.md` | 50 | 43,240 |
+| `map/50-sessions-08.md` | 50 | 44,820 |
+| `map/50-sessions-09.md` | 50 | 43,254 |
+| `map/50-sessions-10.md` | 10 | 9,136 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4408,23 +4414,23 @@
 | `map/60-notes-11.md` | 25 | 61,681 |
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
-| `map/60-notes-14.md` | 25 | 96,505 |
-| `map/60-notes-15.md` | 25 | 50,189 |
-| `map/60-notes-16.md` | 25 | 72,348 |
-| `map/60-notes-17.md` | 25 | 61,697 |
-| `map/60-notes-18.md` | 25 | 77,657 |
-| `map/60-notes-19.md` | 25 | 100,273 |
-| `map/60-notes-20.md` | 19 | 89,174 |
+| `map/60-notes-14.md` | 25 | 100,607 |
+| `map/60-notes-15.md` | 25 | 50,672 |
+| `map/60-notes-16.md` | 25 | 70,065 |
+| `map/60-notes-17.md` | 25 | 61,245 |
+| `map/60-notes-18.md` | 25 | 76,933 |
+| `map/60-notes-19.md` | 25 | 104,396 |
+| `map/60-notes-20.md` | 20 | 90,718 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・494本・17,822,080 B）
+## 8. 精読ノート索引（readings/・495本・17,895,640 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 279/494 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 280/495 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：72 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：58 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：73 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：59 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4763,6 +4769,7 @@
 | `readings/2026-11-05-the-deletions-that-were-not-inherited.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-26aefc` +2 | 9,699 | Q4 M4 S3 ERR1 | ✓ | 減らしたこと——見出しの一年と、承継の届かない場所 |
 | `readings/2026-11-05-the-name-changed-and-the-function-stayed.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-733543` +5 | 7,902 | Q2 M3 S6 | — | 形式の承継——見出しは5本で止まり、基準は同じ日に終わった |
 | `readings/2026-11-05-the-one-who-does-not-write.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-bab262` | 7,170 | Q2 M3 S1 | ✓ | 声を書かない者の一人称は、誰の声で記録されるか——口述・集成・代読 |
+| `readings/2026-11-05-what-the-laboratory-can-see.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-4afba1` +2 | 35,178 | Q2 M3 R1 S3 ERR3 | — | 何が記録され、何が照合されたか——実験科学の五資料を読む |
 | `readings/2026-11-06-the-receipt-with-no-column.md` | — | 2026-11-06 | `SESSION-20261106-fe414f` +2 | 15,365 | Q4 F5 M7 MOT6 S3 ERR5 | ✓ | 受領の欄がない — 訂正と約束のあいだで、二重線が閉じるものと閉じないもの（SESSION-20261106-fe41… |
 | `readings/2026-11-07-thatch-layers-and-the-dweller.md` | — | 2026-11-07 | `SESSION-20261107-31df2f` +1 | 22,709 | Q9 F10 M10 R2 S2 ERR4 | ✓ | 葺き足しと、屋根の下にいる者 — 消さない訂正が層になり、止める理由が層にならない（SESSION-20261107-… |
 | `readings/2026-11-07-the-price-that-stops-the-pair.md` | — | 2026-11-07 | `SESSION-20261107-7a8766` +1 | 17,072 | Q8 F12 M13 MOT4 R2 S2 | ✓ | 行の書かれない一足 — 作法と貨幣のあいだで、値段が止まる場所（SESSION-20261107-7a8766） |
