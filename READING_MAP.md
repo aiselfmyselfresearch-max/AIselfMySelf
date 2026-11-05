@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：435 件（初期シード 5 件 ＋ 派生 430 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3052 件（research_excerpt 830 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3057 件（research_excerpt 835 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：244 編（selected 94 ／ draft 150）
 - **解釈的関係（Relations）**：6286 件
-- **探究セッション（Sessions）**：456 回
+- **探究セッション（Sessions）**：457 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -767,7 +767,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3052 件・詳細は map/3*.md）
+## 4. 対話素材（3057 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3292,6 +3292,16 @@
 | `MAT-EVD-20261101-8efc12` | research_excerpt | University of Cambridge『ケンブリッジ大のロボット料理人「taste as you go」——食べずに塩分を測る腕（2022）』（2022） |
 | `MAT-EVD-20261101-24e1ef` | research_excerpt | Linda A. Henkel『Henkel (2014) 撮影障害効果——全体を撮ると記憶が減り、一部にズームすると減らない』（2014） |
 | `MAT-EVD-20261101-fc11d8` | research_excerpt | 環境省『環境省 食品ロス推計（令和6年度）461万トン——廃棄の定義は主体の感覚を問わない』（2026） |
+| `MAT-LIT-20261101-3f165d` | literary_text | F. Max Müller (trans.)『タイッティリーヤ・ウパニシャッド II.2–9 / III.7–10――食物・息・心・識・歓喜と、客を帰さない規則』（1884） |
+| `MAT-LIT-20261101-b8972c` | literary_text | Zhuangzi (attrib.), James Legge (trans.)『『荘子』応帝王第七・渾沌――七竅を鑿たれて死ぬ中央の帝』（1891） |
+| `MAT-LIT-20261101-d9255a` | literary_text | Snorri Sturluson, Rasmus B. Anderson (trans.)『スノッリ『エッダ』ギュルヴァギンニング49–53――バルドルの死、乾いた涙、返る指輪』… |
+| `MAT-LIT-20261101-7d1444` | literary_text | Guru Nanak, Manmohan Singh (trans.)『ジャプジー・サーヒブ――ムール・マントル、サローカ、パウリー1–2（SGGS p.1）』（2009） |
+| `MAT-LIT-20261101-e2d4f8` | literary_text | E. W. West (trans.)『ブンダヒシュン第15章――最初の偽り、子を食む慈しみ、子を残すために取り去られた慈しみ』（1880） |
+| `MAT-LIT-20261101-fcd113` | literary_text | 実叉難陀（訳、于闐国）, 無名（インド起源の大乗経典）『『大方広仏華厳経』巻第十九 夜摩宮中偈讃品——心は工画師、描かれた色は互いに知らず、心は身に住まない』（699） |
+| `MAT-LIT-20261101-9a5e4b` | literary_text | イツハク・ルリア（教説、1534–1572）, ハイイム・ヴィタル（記録）『ルリア派カバラの器の破砕——載せられない器、散る火花、数えられる破片』（1570） |
+| `MAT-LIT-20261101-b6e132` | literary_text | 作者不詳（ゾロアスター教）, Charles F. Horne 編（英訳、1917）『『アルダー・ウィーラーフの書』——焼かれた文書庫のあと、七日間の証人と、姿のない光』（900） |
+| `MAT-LIT-20261101-b35382` | literary_text | グル・ラーム・ダース, グル・ゴービンド・シング（継承の宣言）『『グル・グラント・サーヒブ』——バーニーがグルであり、行為する者にグルは現れる』（1708） |
+| `MAT-LIT-20261101-b304c2` | literary_text | ウマースヴァーティ（Umāsvāti / Umāsvāmī）『『タットヴァールタ・スートラ』——業は微細な物質として付着し、流入は止められる』（350） |
 | `MAT-LIT-20261101-6b9ff7` | literary_text | Liliuokalani（英訳）, Keaulumoku（献辞に作者とされる人物）『『クムリポ』（ハワイ創世詠唱）——夜に生まれ、系譜として呼ばれる世界』（1897） |
 | `MAT-LIT-20261101-279baa` | literary_text | Frank Salomon（英訳・序論）, George L. Urioste（翻字・英訳）, Francisco de Ávila（写本の編纂者として通説上に名のある人物）『『… |
 | `MAT-LIT-20261101-64aa88` | literary_text | 列禦寇（伝承上の作者）, Lionel Giles（英訳）『『列子』天瑞——天が崩れると恐れた杞の人と、「積み重なり」を説く者』（1912） |
@@ -3307,16 +3317,6 @@
 | `MAT-LIT-20261101-498440` | literary_text | 作者不詳（福音書）, King James Version (trans.)『『ルカによる福音書』17:7–10——務めを果たしただけの者』（1611） |
 | `MAT-LIT-20261101-7667b3` | literary_text | 作者不詳（クルアーン）, Marmaduke Pickthall (trans.)『『クルアーン』78章6–14節——眠りを休みに、昼を生計に』（1930） |
 | `MAT-LIT-20261101-78cb44` | literary_text | 作者不詳（メソポタミア）, R. Campbell Thompson (trans.)『『ギルガメシュ叙事詩』第7書板——呪われた贈与と、それを守る太陽神』（1920） |
-| `MAT-LIT-20261101-3f165d` | literary_text | F. Max Müller (trans.)『タイッティリーヤ・ウパニシャッド II.2–9 / III.7–10――食物・息・心・識・歓喜と、客を帰さない規則』（1884） |
-| `MAT-LIT-20261101-b8972c` | literary_text | Zhuangzi (attrib.), James Legge (trans.)『『荘子』応帝王第七・渾沌――七竅を鑿たれて死ぬ中央の帝』（1891） |
-| `MAT-LIT-20261101-d9255a` | literary_text | Snorri Sturluson, Rasmus B. Anderson (trans.)『スノッリ『エッダ』ギュルヴァギンニング49–53――バルドルの死、乾いた涙、返る指輪』… |
-| `MAT-LIT-20261101-7d1444` | literary_text | Guru Nanak, Manmohan Singh (trans.)『ジャプジー・サーヒブ――ムール・マントル、サローカ、パウリー1–2（SGGS p.1）』（2009） |
-| `MAT-LIT-20261101-e2d4f8` | literary_text | E. W. West (trans.)『ブンダヒシュン第15章――最初の偽り、子を食む慈しみ、子を残すために取り去られた慈しみ』（1880） |
-| `MAT-LIT-20261101-fcd113` | literary_text | 実叉難陀（訳、于闐国）, 無名（インド起源の大乗経典）『『大方広仏華厳経』巻第十九 夜摩宮中偈讃品——心は工画師、描かれた色は互いに知らず、心は身に住まない』（699） |
-| `MAT-LIT-20261101-9a5e4b` | literary_text | イツハク・ルリア（教説、1534–1572）, ハイイム・ヴィタル（記録）『ルリア派カバラの器の破砕——載せられない器、散る火花、数えられる破片』（1570） |
-| `MAT-LIT-20261101-b6e132` | literary_text | 作者不詳（ゾロアスター教）, Charles F. Horne 編（英訳、1917）『『アルダー・ウィーラーフの書』——焼かれた文書庫のあと、七日間の証人と、姿のない光』（900） |
-| `MAT-LIT-20261101-b35382` | literary_text | グル・ラーム・ダース, グル・ゴービンド・シング（継承の宣言）『『グル・グラント・サーヒブ』——バーニーがグルであり、行為する者にグルは現れる』（1708） |
-| `MAT-LIT-20261101-b304c2` | literary_text | ウマースヴァーティ（Umāsvāti / Umāsvāmī）『『タットヴァールタ・スートラ』——業は微細な物質として付着し、流入は止められる』（350） |
 | `MAT-LIT-20261101-26e95b` | literary_text | 無名（シュメール伝承を、中アッシリア〜新アッシリア時代の書記がアッカド語「標準版」に編纂；伝承上シン＝レキ・ウンニニの名が関わる）『『ギルガメシュ叙事詩』第八板——エンキドゥの死… |
 | `MAT-LIT-20261101-f83bf5` | literary_text | 無名（ヤヒスト文書等の編纂；最終編成は紀元前5世紀頃）『創世記 2–3章——土から造られ、名を与え、善悪を知り、エデンを追われる人間』（-950） |
 | `MAT-LIT-20261101-7d7087` | literary_text | 鳩摩羅什（訳）『金剛般若波羅蜜経——一切有為法は夢幻泡影、我相・人相・衆生相・寿者相を離れよ』（402） |
@@ -3613,6 +3613,11 @@
 | `MAT-20261105-bbdc3d` | research_excerpt | Betsy Sparrow, Jenny Liu, Daniel M. Wegner『Sparrow, Liu & Wegner「Google Effects on Memory… |
 | `MAT-20261105-883771` | research_excerpt | Matthew P. Walker, Tiffany Brakefield, J. Allan Hobson, Robert Stickgold『Walker et al.「Di… |
 | `MAT-20261105-5fc662` | research_excerpt | Steve Ramirez, Xu Liu, Pei-Ann Lin, Junghyup Suh, Michele Pignatelli, Roger L. Redondo, T… |
+| `MAT-20261105-a85f22` | research_excerpt | Marieke Rohde, Massimiliano Di Luca, Marc O. Ernst『The Rubber Hand Illusion: Feeling of O… |
+| `MAT-20261105-41e776` | research_excerpt | Susanne Diekelmann, Hans-Peter Landolt, Olaf Lahl, Jan Born, Ullrich Wagner『Sleep Loss Pr… |
+| `MAT-20261105-a8b1d4` | research_excerpt | Matthew H. C. Mak, Alice O’Hagan, Aidan J. Horner, M. Gareth Gaskell『A registered report … |
+| `MAT-20261105-af34bb` | research_excerpt | Thomas A. Langlois, Nori Jacoby, Jordan W. Suchow, Thomas L. Griffiths『Serial reproductio… |
+| `MAT-20261105-31754c` | research_excerpt | Seiya Nakata, Masanori Takezawa『Hierarchical structures emerge from the cultural transmis… |
 | `MAT-EVD-20261105-6dc4af` | research_excerpt | Gordon G. Gallup, Jr.『Gallup (1970) 鏡像自己認知テスト——麻酔下の赤い印と、鏡の前でだけ増える自分の顔への接触』（1970） |
 | `MAT-EVD-20261105-5ec2a9` | research_excerpt | Elizabeth F. Loftus, John C. Palmer『Loftus & Palmer (1974) 自動車破壊の再構成——一語の動詞が速度見積りと「なかったガラ… |
 | `MAT-EVD-20261105-521823` | research_excerpt | Karim Nader, Glenn E. Schafe, Joseph E. LeDoux『Nader, Schafe & LeDoux (2000) 想起した恐怖記憶は再び不… |
@@ -4140,13 +4145,13 @@
 | `SESSION-20261103-5c8af6` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-d26589` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-3564e9` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270126-84fa34` | 2027-01-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261103-bf5669` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-e05e7d` | 2027-01-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-5d3c12` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-c9dfac`, `Q-20270102-29c347`, `Q-20261103-45a83f`, `Q-20261103-32a3cd` | — | `Q-20261103-50a2fb` |
 | `SESSION-20261103-e197ac` | 2027-01-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20270126-84fa34` | 2027-01-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-4d5864` | 2027-01-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-5ea5dd` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270102-29c347`, `Q-20261103-32a3cd` | — | `Q-20261103-32a3cd` |
-| `SESSION-20261103-bf5669` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-b115a2` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-85a285`, `Q-20270102-29c347`, `Q-20261103-32a3cd`, `Q-20261103-45a83f` | — | `Q-20261103-45a83f` |
 | `SESSION-20261103-340edd` | 2027-01-24 | `Q-20270102-29c347`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261104-cc8e3e` | 2026-11-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20261104-47566b`, `Q-20261104-86135b` | — | `Q-20261104-86135b` |
@@ -4171,6 +4176,7 @@
 | `SESSION-20261105-91a0b6` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-1c1074` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | `Q-20261105-b78e71` |
 | `SESSION-20261105-cb7a48` | 2026-11-05 | `Q-001`, `Q-002` | — | — |
+| `SESSION-20261105-a6a00b` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-bab262` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
@@ -4356,7 +4362,7 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 30 | 85,003 |
+| `map/31-materials-research-09.md` | 35 | 92,306 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4377,10 +4383,10 @@
 | `map/50-sessions-04.md` | 50 | 45,515 |
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
-| `map/50-sessions-07.md` | 50 | 43,606 |
-| `map/50-sessions-08.md` | 50 | 45,140 |
-| `map/50-sessions-09.md` | 50 | 43,210 |
-| `map/50-sessions-10.md` | 6 | 5,406 |
+| `map/50-sessions-07.md` | 50 | 43,502 |
+| `map/50-sessions-08.md` | 50 | 45,071 |
+| `map/50-sessions-09.md` | 50 | 43,190 |
+| `map/50-sessions-10.md` | 7 | 6,345 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4394,23 +4400,23 @@
 | `map/60-notes-11.md` | 25 | 61,681 |
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 80,414 |
-| `map/60-notes-14.md` | 25 | 88,637 |
-| `map/60-notes-15.md` | 25 | 51,803 |
-| `map/60-notes-16.md` | 25 | 71,113 |
-| `map/60-notes-17.md` | 25 | 63,818 |
-| `map/60-notes-18.md` | 25 | 86,255 |
-| `map/60-notes-19.md` | 25 | 94,791 |
-| `map/60-notes-20.md` | 16 | 78,073 |
+| `map/60-notes-14.md` | 25 | 89,085 |
+| `map/60-notes-15.md` | 25 | 51,804 |
+| `map/60-notes-16.md` | 25 | 71,873 |
+| `map/60-notes-17.md` | 25 | 62,694 |
+| `map/60-notes-18.md` | 25 | 85,098 |
+| `map/60-notes-19.md` | 25 | 94,537 |
+| `map/60-notes-20.md` | 17 | 81,799 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・491本・17,687,159 B）
+## 8. 精読ノート索引（readings/・492本・17,703,203 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 276/491 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 277/492 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：69 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：61 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：70 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：62 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4740,6 +4746,7 @@
 | `readings/2026-11-05-cedar-board-and-spring-gate.md` | — | 2026-11-05 | `SESSION-20261105-c91bde` +2 | 19,977 | Q9 F10 M13 MOT3 R2 S3 ERR7 | ✓ | 顎を引く朝、合わない杉板 — 窓口劇の脱・書記室変奏と四か月後の反歌（SESSION-20261105-c91bde） |
 | `readings/2026-11-05-experimental-memory-and-the-self.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-5ed02a` | 19,927 | Q3 M5 S1 | — | 保存内容と出来事のあいだ——実験科学5編から読む、人間の自己とリポジトリの自己 |
 | `readings/2026-11-05-first-person-sources-only.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-1c1074` | 9,419 | Q4 M8 S1 | ✓ | 一人称の記述だけを六篇読む——否定形の人間学を一度やめる |
+| `readings/2026-11-05-five-experiments-on-bodies-and-inheritance.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-a6a00b` | 6,916 | M5 S1 | — | 指標のずれ、伝言のかたち——五つの実験から人間と書庫の自己を読む |
 | `readings/2026-11-05-five-instruments-that-decide-before-the-report.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-91a0b6` +1 | 29,447 | Q3 M14 R4 S2 ERR2 | — | 五つの計器——判断は報告に先立ち、記憶は想起のたびに作り直され、「感じたこと」欄は委任文に従って現れる |
 | `readings/2026-11-05-four-anchors-three-pauses-four-bridges.md` | — | 2026-11-05 | `SESSION-20261105-dc2f27` +3 | 10,084 | Q14 F15 M1 MOT10 R4 S4 ERR1 ED8 | ✓ | 四つの礎石、三つの休止、四本の架け橋——第3回自律編集レビューと並行 PR #98 との重複調停 |
 | `readings/2026-11-05-the-confederate-and-the-unbidden-leg.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-cb7a48` | 23,370 | Q2 M7 MOT4 R2 S1 | — | 共犯者と、押されなかった足——実験科学の五つの記録を読む |
