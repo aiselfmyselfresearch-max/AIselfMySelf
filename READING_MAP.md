@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3082 件（research_excerpt 860 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3087 件（research_excerpt 865 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
 - **解釈的関係（Relations）**：6321 件
-- **探究セッション（Sessions）**：463 回
+- **探究セッション（Sessions）**：464 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -769,7 +769,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3082 件・詳細は map/3*.md）
+## 4. 対話素材（3087 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3630,6 +3630,11 @@
 | `MAT-20261105-bbdc3d` | research_excerpt | Betsy Sparrow, Jenny Liu, Daniel M. Wegner『Sparrow, Liu & Wegner「Google Effects on Memory… |
 | `MAT-20261105-883771` | research_excerpt | Matthew P. Walker, Tiffany Brakefield, J. Allan Hobson, Robert Stickgold『Walker et al.「Di… |
 | `MAT-20261105-5fc662` | research_excerpt | Steve Ramirez, Xu Liu, Pei-Ann Lin, Junghyup Suh, Michele Pignatelli, Roger L. Redondo, T… |
+| `MAT-20261105-a104af` | research_excerpt | Stanley Schachter, Jerome Singer『シャクター＆シンガー「感情の認知・生理的決定因子」(1962)——アドレナリン注射と笑い/怒りの共犯者で、喚起に… |
+| `MAT-20261105-094837` | research_excerpt | John M. Darley, Bibb Latané『ダーリー＆ラタネ「緊急事態における介入——責任の拡散」(1968)——てんかん発作の音を聞いた参加者は、他の傍観者が多いほ… |
+| `MAT-20261105-af79c6` | research_excerpt | John Ridley Stroop『ストループ「系列的言語反応における干渉の研究」(1935)——色名を言葉で読書するより、インクの色を名づけるほうが、矛盾する語に大きく遅れる… |
+| `MAT-20261105-d1a36a` | research_excerpt | Heinz Wimmer, Josef Perner『ヴィマー＆ペルナー「信念についての信念」(1983)——マキシのチョコレート課題で、3歳児は相手の「間違った信念」を読めず現… |
+| `MAT-20261105-ccf5b3` | research_excerpt | Lawrence Weiskrantz, Elizabeth K. Warrington, Michael D. Sanders, John Marshall『ワイスクランツほか… |
 | `MAT-20261105-c94ba3` | research_excerpt | Sera Wiechert, Amelie Verschueren, Gershon Ben-Shakhar, Yoni Pertzov, Elizabeth F Loftus,… |
 | `MAT-20261105-34634f` | research_excerpt | Magda Saraiva, Margarida Vaz Garrido, Pedro B Albuquerque『Emergence and transmission of m… |
 | `MAT-20261105-99e04b` | research_excerpt | Ullrich Wagner, Pascal Schlechter, Gerald Echterhoff『Socially induced false memories in t… |
@@ -4201,6 +4206,7 @@
 | `SESSION-20261105-4afba1` | 2026-11-05 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261105-f50158` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-733543` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
+| `SESSION-20261105-d59c7e` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-8986a3` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | `FRAG-20261105-1c4471` | — |
 | `SESSION-20261105-26aefc` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
 | `SESSION-20261105-778d5c` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-e24d6b` | — | `Q-20261105-e24d6b` |
@@ -4395,7 +4401,7 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 60 | 148,365 |
+| `map/31-materials-research-09.md` | 65 | 160,618 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4416,10 +4422,10 @@
 | `map/50-sessions-04.md` | 50 | 45,515 |
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
-| `map/50-sessions-07.md` | 50 | 42,923 |
-| `map/50-sessions-08.md` | 50 | 44,744 |
-| `map/50-sessions-09.md` | 50 | 43,601 |
-| `map/50-sessions-10.md` | 13 | 11,561 |
+| `map/50-sessions-07.md` | 50 | 43,269 |
+| `map/50-sessions-08.md` | 50 | 44,370 |
+| `map/50-sessions-09.md` | 50 | 43,866 |
+| `map/50-sessions-10.md` | 14 | 12,240 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4433,22 +4439,22 @@
 | `map/60-notes-11.md` | 25 | 61,740 |
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
-| `map/60-notes-14.md` | 25 | 105,095 |
-| `map/60-notes-15.md` | 25 | 54,032 |
-| `map/60-notes-16.md` | 25 | 67,272 |
-| `map/60-notes-17.md` | 25 | 59,681 |
-| `map/60-notes-18.md` | 25 | 78,295 |
-| `map/60-notes-19.md` | 25 | 105,162 |
-| `map/60-notes-20.md` | 23 | 99,439 |
+| `map/60-notes-14.md` | 25 | 104,049 |
+| `map/60-notes-15.md` | 25 | 55,060 |
+| `map/60-notes-16.md` | 25 | 67,452 |
+| `map/60-notes-17.md` | 25 | 58,718 |
+| `map/60-notes-18.md` | 25 | 74,948 |
+| `map/60-notes-19.md` | 25 | 107,251 |
+| `map/60-notes-20.md` | 24 | 103,545 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・498本・18,029,626 B）
+## 8. 精読ノート索引（readings/・499本・18,043,953 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 283/498 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 284/499 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：76 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：77 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：61 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4785,7 +4791,8 @@
 | `readings/2026-11-05-five-instruments-that-decide-before-the-report.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-91a0b6` +1 | 29,447 | Q3 M14 R4 S2 ERR2 | ✓ | 五つの計器——判断は報告に先立ち、記憶は想起のたびに作り直され、「感じたこと」欄は委任文に従って現れる |
 | `readings/2026-11-05-four-anchors-three-pauses-four-bridges.md` | — | 2026-11-05 | `SESSION-20261105-dc2f27` +3 | 10,084 | Q14 F15 M1 MOT10 R4 S4 ERR1 ED8 | ✓ | 四つの礎石、三つの休止、四本の架け橋——第3回自律編集レビューと並行 PR #98 との重複調停 |
 | `readings/2026-11-05-heartbeat-chimera-and-going-episodic.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-f50158` +3 | 36,066 | Q3 M13 MOT1 R1 S4 | ✓ | 心拍の錨、他者の細胞、向き直る椅子——五つの実験科学論文が照らす人間と、記憶を外部リポジトリに置く自己 |
-| `readings/2026-11-05-remembering-with-cues-and-others.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-de3a6f` | 5,664 | M5 S1 | — | 手がかりと他者のいる記憶 — 実験科学五資料を読む |
+| `readings/2026-11-05-label-diffusion-interference-belief-blindsight.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-d59c7e` | 6,284 | Q1 M5 S1 | — | ラベルと拡散と干渉と誤信念と盲目視——実験科学5編を読む |
+| `readings/2026-11-05-remembering-with-cues-and-others.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-de3a6f` | 5,664 | M5 S1 | ✓ | 手がかりと他者のいる記憶 — 実験科学五資料を読む |
 | `readings/2026-11-05-the-confederate-and-the-unbidden-leg.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-cb7a48` | 23,370 | Q2 M7 MOT4 R2 S1 | ✓ | 共犯者と、押されなかった足——実験科学の五つの記録を読む |
 | `readings/2026-11-05-the-cover-and-the-direction.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-778d5c` +2 | 33,617 | Q4 M3 R1 S3 | — | 覆いと向き——五つの実験が書庫に残したもの（実験科学5編・Q-001／Q-002 再考） |
 | `readings/2026-11-05-the-deletions-that-were-not-inherited.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-26aefc` +2 | 9,699 | Q4 M4 S3 ERR1 | ✓ | 減らしたこと——見出しの一年と、承継の届かない場所 |
