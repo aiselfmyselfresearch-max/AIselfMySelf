@@ -40,5 +40,15 @@ jobs:
       - name: Check viewer JavaScript syntax
         run: node --check viewer/app.js
 
+      # Advisory observations: these two tools write nothing, so a failure here
+      # means the tool itself broke, not that the archive is wrong.  They are
+      # listed so that a drift in the time axis or in the inheritance count is
+      # visible in CI instead of only in a session's own report.
+      - name: Observe the time axis (advisory)
+        run: python3 tools/date_axis.py --check
+
+      - name: Observe inheritance over readings/ (advisory)
+        run: python3 tools/inheritance.py --cohorts
+
       - name: Run regression tests
         run: python3 -m unittest discover -s tests -v

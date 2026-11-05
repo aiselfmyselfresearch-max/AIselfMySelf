@@ -38,10 +38,13 @@ reader can see which rule placed a row):
   1. ``notes.date_real`` for the report a session wrote (curated judgment);
   2. an explicit real-date marker inside ``sessions.notes`` / ``human_direction``
      (``実作業日 2026-11-05``, ``実行日（UTC）2026-11-04`` …);
-  3. ``started_at`` itself, *only when it is already a real date* — i.e. a
+  3. the header line of the ``readings/`` report the session wrote
+     (``**セッション**：`SESSION-...`（実日付 `2026-11-05`）``). A report is the
+     episode itself, so its own header outranks the session's free-text notes;
+  4. ``started_at`` itself, *only when it is already a real date* — i.e. a
      calendar-shaped value that is not later than today. This is what makes the
      2026-10-22..11-05 block readable without any curation at all;
-  4. otherwise: ``未記録``.
+  5. otherwise: ``未記録``.
 
 A ``started_at`` later than today is never read as a date. That single rule is
 what separates the label from the date, and it needs no list of exceptions.
@@ -78,12 +81,22 @@ _ID_DATE = re.compile(r"^[A-Z][A-Z-]*?-(\d{4})(\d{2})(\d{2})-")
 
 #: Real-date markers actually used in the archive's headers and session notes.
 #: Ordered most specific first; the first hit wins and its rule name is kept.
+_EXECUTION_DATE = re.compile(
+    r"実行環境[^0-9]{0,14}?日付[^0-9]{0,14}?(\d{4}-\d{2}-\d{2})"
+)
+
 _REAL_MARKERS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("実日付", re.compile(r"実日付[^0-9]{0,12}`?(\d{4}-\d{2}-\d{2})")),
     ("実作業日", re.compile(r"実作業日[^0-9]{0,12}`?(\d{4}-\d{2}-\d{2})")),
     ("実UTC日付", re.compile(r"実UTC日付[^0-9]{0,12}`?(\d{4}-\d{2}-\d{2})")),
     ("実行日", re.compile(r"実行日[^0-9]{0,12}`?(\d{4}-\d{2}-\d{2})")),
     ("実環境日", re.compile(r"実環境日[^0-9]{0,12}`?(\d{4}-\d{2}-\d{2})")),
+    # ``実行環境の UTC 日付は 2026-10-26`` -- the archive's own phrase for *the
+    # date the machine reported*.  It is the real date even when the header above
+    # it carries an internal label, so it is the one marker that is allowed to
+    # outrank a header 日付 line.  See ``_EXECUTION_DATE`` and the rule in
+    # :func:`session_real_date`.
+    ("実行環境日付", _EXECUTION_DATE),
 )
 
 _DATE_SHAPE = re.compile(r"^(\d{4})-(\d{2})-(\d{2})")
@@ -171,6 +184,25 @@ def marker_date(text: Any) -> tuple[str, str] | None:
     return None
 
 
+def header_marker_date(text: Any) -> tuple[str, str] | None:
+    """Like :func:`marker_date`, but never returns the execution-date marker.
+
+    The header states the report's *own* date; ``実行環境の UTC 日付`` is a
+    statement about the machine and is read separately (and labelled separately)
+    by :func:`report_body_dates`.  Keeping them apart is what stops a header that
+    carries an internal label from being read as a real date.
+    """
+    if not isinstance(text, str) or not text:
+        return None
+    for rule_name, pattern in _REAL_MARKERS:
+        if rule_name == "実行環境日付":
+            continue
+        found = pattern.search(text)
+        if found and as_date(found.group(1)):
+            return found.group(1), rule_name
+    return None
+
+
 def is_future(label: str, today: date) -> bool:
     """True when a label is later than today (so it cannot be a real date)."""
     parsed = as_date(label)
@@ -200,9 +232,56 @@ def load_notes(root: Path = ROOT) -> dict[str, dict[str, Any]]:
     return _load("notes", "note_id", root)
 
 
-# ---------------------------------------------------------------------------
-# the axis
-# ---------------------------------------------------------------------------
+#: The first kilobytes of a report are its header: title, session, mode, date.
+#: Reading more than the header would make this a report reader rather than an
+#: axis, and would put the axis at the mercy of prose written months later.
+_HEADER_BYTES = 4096
+_HEADER_LINES = 40
+
+
+def report_header_dates(root: Path = ROOT) -> dict[str, str]:
+    """``session_id -> real date`` read from the **header block** of ``readings/``.
+
+    The header block is what a report says about itself before its first
+    horizontal rule (and never more than :data:`_HEADER_LINES` lines).  Two
+    shapes exist in the archive and both are accepted:
+
+        **セッション**：`SESSION-20261028-3a4b2d`
+        **実行日**：2026-10-28（UTC …）
+
+        **セッション**：`SESSION-20261105-1c1074`（実日付 `2026-11-05`）
+
+    A header that states no real-date marker gives its session nothing -- in
+    particular a header whose 日付 line carries the **internal label** and
+    mentions the machine's date only as ``実行環境の UTC 日付`` is not read here;
+    that case falls through to :func:`report_body_dates`, which reads it and
+    labels it as coming from the body.
+    """
+    out: dict[str, str] = {}
+    readings = Path(root) / "readings"
+    if not readings.is_dir():
+        return out
+    for path in sorted(readings.glob("*.md")):
+        try:
+            with path.open("r", encoding="utf-8", errors="replace") as handle:
+                head = handle.read(_HEADER_BYTES)
+        except OSError:
+            continue
+        session_ids = _header_session_ids(head)
+        if not session_ids:
+            continue
+        real: str | None = None
+        for index, line in enumerate(head.splitlines()):
+            if index >= _HEADER_LINES or line.strip() == "---":
+                break
+            found = header_marker_date(line)
+            if found:
+                real = found[0]
+                break
+        if real:
+            out.setdefault(session_ids[0], real)
+    return out
+
 
 def curated_real_dates(notes: dict[str, dict[str, Any]]) -> dict[str, str]:
     """``report_session_id`` -> real date, from curated ``notes`` rows.
@@ -226,19 +305,41 @@ def session_real_date(
     session: dict[str, Any],
     *,
     curated: dict[str, str] | None = None,
+    header: dict[str, str] | None = None,
+    body: dict[str, dict[str, str]] | None = None,
     today: date | None = None,
 ) -> tuple[str | None, str]:
     """Best recorded real date for one session, with the rule that produced it."""
     today = today or date.today()
     curated = curated or {}
+    header = header or {}
+    body = body or {}
 
     if session_id in curated:
         return curated[session_id], "notes.date_real"
+
+    # A session that says "the execution environment's date was X" has stated the
+    # real date in as many words, and that statement outranks any header: the
+    # header of a report written during the era of internal labels carries the
+    # *label* on its 日付 line, and labels are exactly what must not be read as
+    # dates.  This marker is also why 26 sessions stopped reading as 未記録.
+    for field_name in ("notes", "human_direction"):
+        found = _EXECUTION_DATE.search(session.get(field_name) or "")
+        if found and as_date(found.group(1)):
+            return found.group(1), f"sessions.{field_name}:実行環境日付"
 
     for field_name in ("notes", "human_direction"):
         found = marker_date(session.get(field_name))
         if found:
             return found[0], f"sessions.{field_name}:{found[1]}"
+
+    if session_id in header:
+        return header[session_id], "readings.header"
+
+    if session_id in body:
+        for rule_name, value in body[session_id].items():
+            if as_date(value):
+                return value, rule_name
 
     started = session.get("started_at")
     parsed = as_date(started)
@@ -246,6 +347,64 @@ def session_real_date(
         return parsed.isoformat(), "started_at"
 
     return None, UNRECORDED
+
+
+BODY_MARKERS = ("実行環境日付",)
+
+
+def report_body_dates(root: Path = ROOT) -> dict[str, dict[str, str]]:
+    """``session_id -> {rule_name: date}`` for execution-date markers in the body.
+
+    The header is read first, so this only adds what the header could not answer.
+    In the internal-label era a report's header carries the *label* on its 日付
+    line while the machine's date is mentioned further down as
+    ``実行環境の UTC 日付は 2026-10-26``.  Of the markers that appear in bodies,
+    only that one is trusted: it is a statement about the execution environment,
+    not about the session's own place in the chronology -- which is exactly the
+    distinction this axis exists to keep.
+
+    The session is taken from the same header block as
+    :func:`report_header_dates` (a ``セッション`` line, else the first ID in the
+    header), never from the body, so a report that cites other sessions cannot
+    hand its execution date to them.
+    """
+    out: dict[str, dict[str, str]] = {}
+    readings = Path(root) / "readings"
+    if not readings.is_dir():
+        return out
+    pattern = re.compile(
+        r"実行環境[^0-9\n]{0,28}?日付[^0-9\n]{0,14}?(\d{4}-\d{2}-\d{2})"
+    )
+    for path in sorted(readings.glob("*.md")):
+        try:
+            text = path.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        if "実行環境" not in text:
+            continue
+        session_ids = _header_session_ids(text)
+        found = pattern.search(text)
+        if not session_ids or not found or not as_date(found.group(1)):
+            continue
+        out.setdefault(session_ids[0], {})["readings.body:実行環境日付"] = found.group(1)
+    return out
+
+
+def _header_session_ids(text: str) -> list[str]:
+    """Session IDs named in a report's header block (``セッション`` line first)."""
+    lines = text[:_HEADER_BYTES].splitlines()[:_HEADER_LINES]
+    fallback: list[str] = []
+    for line in lines:
+        if line.strip() == "---":
+            break
+        ids = re.findall(r"SESSION-\d{8}-[0-9a-z]+", line)
+        if not ids:
+            continue
+        if not fallback:
+            fallback = ids
+        if "セッション" in line:
+            return ids
+    return fallback
 
 
 def build_axis(
@@ -260,6 +419,8 @@ def build_axis(
     sessions = load_sessions(root) if sessions is None else sessions
     notes = load_notes(root) if notes is None else notes
     curated = curated_real_dates(notes)
+    header = report_header_dates(root)
+    body = report_body_dates(root)
 
     rows: dict[str, AxisRow] = {}
     for session_id, session in sessions.items():
@@ -267,7 +428,9 @@ def build_axis(
         row = rows.setdefault(label, AxisRow(label=label))
         row.sessions += 1
         row.session_ids.append(session_id)
-        real, source = session_real_date(session_id, session, curated=curated, today=today)
+        real, source = session_real_date(
+            session_id, session, curated=curated, header=header, body=body, today=today
+        )
         if real:
             row.real_dates[real] += 1
         row.sources[source] += 1
@@ -305,7 +468,12 @@ def axis_sort_key(label: str, axis: Iterable[AxisRow] | None = None) -> tuple:
 
 def summary(rows: list[AxisRow]) -> dict[str, Any]:
     total = sum(row.sessions for row in rows)
-    dated = sum(row.sessions for row in rows if row.real_date)
+    # Counted **per session**, not per label.  A label that covers several real
+    # dates (2026-12-31 spans 2026-10-30 and 10-31) used to send all of its
+    # sessions into "未記録", which conflated "no date recorded" with "several
+    # dates recorded on one label" -- two different holes (docs/time-axis.md §3).
+    unrecorded = sum(row.sources.get(UNRECORDED, 0) for row in rows)
+    dated = total - unrecorded
     provisional = sum(row.sessions for row in rows if row.provisional)
     sources = Counter()
     for row in rows:
@@ -316,7 +484,7 @@ def summary(rows: list[AxisRow]) -> dict[str, Any]:
         "labels": len(rows),
         "sessions": total,
         "sessions_with_real_date": dated,
-        "sessions_without_real_date": total - dated,
+        "sessions_without_real_date": unrecorded,
         "sessions_with_future_label": provisional,
         "distinct_real_days": len(real_days),
         "real_day_span": [min(real_days), max(real_days)] if real_days else [],
@@ -427,6 +595,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--json", action="store_true", help="machine-readable output")
     parser.add_argument("--anomalies", action="store_true", help="only rows whose label differs from the real date")
     parser.add_argument("--today", help="override today's date (YYYY-MM-DD) for testing")
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="print only the observation block (for CI); still never fails on drift",
+    )
     args = parser.parse_args(argv)
 
     today = as_date(args.today) if args.today else date.today()
@@ -435,6 +608,9 @@ def main(argv: list[str] | None = None) -> int:
     except (ValueError, OSError, ledger_io.LedgerBusy) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
+
+    if args.check:
+        return check(rows, today=today)
 
     if args.anomalies:
         rows = [

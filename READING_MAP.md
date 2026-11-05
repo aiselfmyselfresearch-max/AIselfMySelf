@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3037 件（research_excerpt 815 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：244 編（selected 94 ／ draft 150）
 - **解釈的関係（Relations）**：6275 件
-- **探究セッション（Sessions）**：450 回
+- **探究セッション（Sessions）**：451 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4150,6 +4150,7 @@
 | `SESSION-20270201-a47a79` | 2027-02-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20270127-fcd1ff` | 2027-01-27 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20270129-18b3f6` | 2027-01-29 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
+| `SESSION-20261105-26aefc` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
 | `SESSION-20261105-1c1074` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | `Q-20261105-b78e71` |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
@@ -4356,9 +4357,10 @@
 | `map/50-sessions-04.md` | 50 | 45,515 |
 | `map/50-sessions-05.md` | 50 | 46,402 |
 | `map/50-sessions-06.md` | 50 | 45,789 |
-| `map/50-sessions-07.md` | 50 | 43,722 |
-| `map/50-sessions-08.md` | 50 | 45,313 |
-| `map/50-sessions-09.md` | 50 | 42,741 |
+| `map/50-sessions-07.md` | 50 | 43,664 |
+| `map/50-sessions-08.md` | 50 | 45,176 |
+| `map/50-sessions-09.md` | 50 | 42,906 |
+| `map/50-sessions-10.md` | 1 | 985 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,464 |
@@ -4371,24 +4373,24 @@
 | `map/60-notes-10.md` | 25 | 56,504 |
 | `map/60-notes-11.md` | 25 | 61,681 |
 | `map/60-notes-12.md` | 25 | 63,145 |
-| `map/60-notes-13.md` | 25 | 80,038 |
-| `map/60-notes-14.md` | 25 | 67,595 |
-| `map/60-notes-15.md` | 25 | 55,487 |
-| `map/60-notes-16.md` | 25 | 68,151 |
-| `map/60-notes-17.md` | 25 | 66,254 |
-| `map/60-notes-18.md` | 25 | 93,973 |
-| `map/60-notes-19.md` | 25 | 93,244 |
-| `map/60-notes-20.md` | 10 | 55,643 |
+| `map/60-notes-13.md` | 25 | 80,020 |
+| `map/60-notes-14.md` | 25 | 71,263 |
+| `map/60-notes-15.md` | 25 | 54,284 |
+| `map/60-notes-16.md` | 25 | 70,620 |
+| `map/60-notes-17.md` | 25 | 65,211 |
+| `map/60-notes-18.md` | 25 | 93,084 |
+| `map/60-notes-19.md` | 25 | 91,218 |
+| `map/60-notes-20.md` | 11 | 60,659 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・485本・17,475,861 B）
+## 8. 精読ノート索引（readings/・486本・17,496,679 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 270/485 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 271/486 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：63 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：59 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：64 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：58 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4716,8 +4718,9 @@
 | `readings/2026-11-04-neighbour-memory-and-answerability.md` | — | 2026-11-04 | — | 5,763 | M10 | — | 隣人、記憶、応答の責任——宗教経典10資料の精読 |
 | `readings/2026-11-04-the-low-string-and-the-curve.md` | — | 2026-11-04 | `SESSION-20261104-9a4c6e` | 11,499 | Q6 F6 M5 MOT3 R1 S1 | ✓ | 低い弦と曲がり方——歌の先行と、名乗らない署名の衝突 |
 | `readings/2026-11-05-cedar-board-and-spring-gate.md` | — | 2026-11-05 | `SESSION-20261105-c91bde` +2 | 19,977 | Q9 F10 M13 MOT3 R2 S3 ERR7 | ✓ | 顎を引く朝、合わない杉板 — 窓口劇の脱・書記室変奏と四か月後の反歌（SESSION-20261105-c91bde） |
-| `readings/2026-11-05-first-person-sources-only.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-1c1074` | 9,419 | Q4 M8 S1 | — | 一人称の記述だけを六篇読む——否定形の人間学を一度やめる |
+| `readings/2026-11-05-first-person-sources-only.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-1c1074` | 9,419 | Q4 M8 S1 | ✓ | 一人称の記述だけを六篇読む——否定形の人間学を一度やめる |
 | `readings/2026-11-05-four-anchors-three-pauses-four-bridges.md` | — | 2026-11-05 | `SESSION-20261105-dc2f27` +3 | 10,084 | Q14 F15 M1 MOT10 R4 S4 ERR1 ED8 | ✓ | 四つの礎石、三つの休止、四本の架け橋——第3回自律編集レビューと並行 PR #98 との重複調停 |
+| `readings/2026-11-05-the-deletions-that-were-not-inherited.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-26aefc` +2 | 9,699 | Q4 M4 S3 ERR1 | — | 減らしたこと——見出しの一年と、承継の届かない場所 |
 | `readings/2026-11-06-the-receipt-with-no-column.md` | — | 2026-11-06 | `SESSION-20261106-fe414f` +2 | 15,365 | Q4 F5 M7 MOT6 S3 ERR5 | ✓ | 受領の欄がない — 訂正と約束のあいだで、二重線が閉じるものと閉じないもの（SESSION-20261106-fe41… |
 | `readings/2026-11-07-thatch-layers-and-the-dweller.md` | — | 2026-11-07 | `SESSION-20261107-31df2f` +1 | 22,709 | Q9 F10 M10 R2 S2 ERR4 | ✓ | 葺き足しと、屋根の下にいる者 — 消さない訂正が層になり、止める理由が層にならない（SESSION-20261107-… |
 | `readings/2026-11-07-the-price-that-stops-the-pair.md` | — | 2026-11-07 | `SESSION-20261107-7a8766` +1 | 17,072 | Q8 F12 M13 MOT4 R2 S2 | ✓ | 行の書かれない一足 — 作法と貨幣のあいだで、値段が止まる場所（SESSION-20261107-7a8766） |
@@ -4844,7 +4847,7 @@
 | `readings/2027-01-31-the-name-does-not-carry-the-person.md` | 2026-11-04 | 2027-01-31 | — | 9,756 | M3 | ✓ | 名は身元を運ばない——26の別名と、名を問う三つの手続き |
 | `readings/2027-02-01-checking-the-checker.md` | 2026-11-04 | 2027-02-01 | `SESSION-20261104-cc8e3e` | 8,203 | Q4 M1 S1 ERR2 | ✓ | 照合の相手を確かめる——梗概9件を原典に当てて、一次資料には0件しか届かなかった |
 | `readings/2027-02-01-the-practice-was-already-written.md` | 2026-11-04 | 2027-02-01 | — | 7,506 | M4 | ✓ | 声を減らす作法は、もう書かれていた——四つの既存素材と、欄を足さないという決定 |
-| `readings/2027-02-02-the-name-is-given-before-the-blade.md` | 2026-11-04 | 2027-02-02 | `SESSION-20261104-9c4f21` +2 | 16,602 | S3 | — | 名は刃より先に与えられる——神話・経典10篇、すべて取得本文から引いた精読 |
+| `readings/2027-02-02-the-name-is-given-before-the-blade.md` | 2026-11-04 | 2027-02-02 | `SESSION-20261104-9c4f21` +2 | 16,602 | S3 | ✓ | 名は刃より先に与えられる——神話・経典10篇、すべて取得本文から引いた精読 |
 | `readings/2027-02-02-the-unwritten-doctrine-and-the-inherited-name.md` | — | 2027-02-02 | `SESSION-20270202-57d7f0` +1 | 19,958 | Q3 M17 MOT4 S2 | ✓ | 書かれなかった教義と、名を継ぐ者——神話・経典12件の精読 |
 | `readings/2027-02-03-the-quotation-was-right-and-the-source-was-not.md` | — | 2027-02-03 | `SESSION-20270203-9dddc8` | 11,344 | Q1 S1 ERR6 | ✓ | 引用符は正しかった、台帳の内側では——12件の引用を、外の世界に当てる |
 | `readings/2027-02-04-the-goat-that-carried-it-away.md` | 2026-11-04 | 2027-02-04 | `SESSION-20270204-e0afee` | 11,750 | Q3 M14 MOT2 S1 | ✓ | 運び去る山羊と、読めない壁の文字——神話・宗教経典12件の精読 |

@@ -113,6 +113,84 @@ class RealDateResolutionTests(unittest.TestCase):
         self.assertEqual((real, source), (None, date_axis.UNRECORDED))
 
 
+class HeaderRuleTests(unittest.TestCase):
+    """The report header is evidence about the episode; the body is not."""
+
+    def repo(self, tmp: str, header: str, body: str = "") -> object:
+        from pathlib import Path as _Path
+
+        root = _Path(tmp) / "repo"
+        (root / "readings").mkdir(parents=True)
+        (root / "state").mkdir()
+        for name in ("sessions", "notes"):
+            (root / "state" / f"{name}.jsonl").write_text("", encoding="utf-8")
+        (root / "readings" / "r.md").write_text(header + body, encoding="utf-8")
+        return root
+
+    def test_an_inline_header_date_is_read(self) -> None:
+        import tempfile
+        from pathlib import Path as _Path
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.repo(
+                tmp,
+                "# 題\n\n**セッション**：`SESSION-20261105-aaaaaa`（実日付 `2026-11-05`）\n",
+            )
+            self.assertEqual(
+                date_axis.report_header_dates(root),
+                {"SESSION-20261105-aaaaaa": "2026-11-05"},
+            )
+
+    def test_a_two_line_header_is_read(self) -> None:
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.repo(
+                tmp,
+                "# 題\n\n**セッション**：`SESSION-20261028-bbbbbb`\n**実行日**：2026-10-28（UTC）\n",
+            )
+            self.assertEqual(
+                date_axis.report_header_dates(root),
+                {"SESSION-20261028-bbbbbb": "2026-10-28"},
+            )
+
+    def test_the_body_cannot_date_a_session(self) -> None:
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.repo(
+                tmp,
+                "# 題\n\n**セッション**：`SESSION-20261107-cccccc`\n",
+                body="\n---\n\n後日、実日付 2026-10-28 に読み直した。\n",
+            )
+            self.assertEqual(date_axis.report_header_dates(root), {})
+
+    def test_a_label_is_not_mistaken_for_a_real_date(self) -> None:
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.repo(
+                tmp,
+                "# 題 (SESSION-20261106-dddddd)\n\n- **日付**：2026-11-06（実行環境の UTC 日付は `2026-10-26`）\n",
+            )
+            self.assertEqual(date_axis.report_header_dates(root), {})
+
+    def test_summary_counts_unrecorded_sessions_not_labels(self) -> None:
+        # One label, two sessions, one of them undated: the label is dated, but
+        # one session still has no real date -- and the summary must say so.
+        sessions = {
+            "SESSION-20261231-aaaaaa": session(
+                "SESSION-20261231-aaaaaa", "2026-12-31", notes="実日付 2026-10-30。"
+            ),
+            "SESSION-20261231-bbbbbb": session("SESSION-20261231-bbbbbb", "2026-12-31"),
+        }
+        rows = date_axis.build_axis(sessions, {}, today=TODAY)
+        stats = date_axis.summary(rows)
+        self.assertEqual(stats["sessions"], 2)
+        self.assertEqual(stats["sessions_without_real_date"], 1)
+        self.assertEqual(stats["sessions_with_real_date"], 1)
+
+
 class AxisTests(unittest.TestCase):
     def build(self, sessions: dict) -> list:
         return date_axis.build_axis(sessions, {}, today=TODAY)
