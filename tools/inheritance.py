@@ -282,6 +282,7 @@ def cohorts(
                 "cohort": key,
                 "reports": len(members),
                 "notes_rows": sum(1 for row in members if row.note_ids),
+                "unmeasurable": sum(1 for row in members if not row.note_ids),
                 "chars": sum(row.chars for row in members),
                 "inherited_rows": sum(row.inherited for row in members),
                 "inheriting_reports": len(inheriting),
@@ -309,6 +310,16 @@ def summarize(rows: list[ReportRow], totals: dict[str, Any]) -> dict[str, Any]:
         "prose_cited_reports": len(prose),
         "prose_cited_rate": round(len(prose) / reports, 4) if reports else 0.0,
         "reports_with_note_row": sum(1 for row in rows if row.note_ids),
+        # The two denominators are different, and the headline rate used to hide
+        # it: a report with no ``notes`` row cannot be pointed at by
+        # ``read_log.target.type == "note"`` at all, so it is not "unread" --
+        # it is unmeasurable.  Both numbers are reported side by side.
+        "reports_without_note_row": sum(1 for row in rows if not row.note_ids),
+        "inheriting_rate_of_measurable": (
+            round(len(inheriting) / sum(1 for row in rows if row.note_ids), 4)
+            if any(row.note_ids for row in rows)
+            else 0.0
+        ),
         "notes_rows": totals.get("notes_rows"),
         "successor_sessions": len({s for row in rows for s in row.successor_sessions}),
         "unmeasured_reports": reports - len(inheriting),
@@ -332,7 +343,12 @@ def render(summary: dict[str, Any], blocks: list[dict[str, Any]], *, limit: int 
     )
     out.append(
         f"  後続に読まれた報告 {summary['inheriting_reports']} 本 "
-        f"（{summary['inheriting_rate']:.1%}）／ 未測定 {summary['unmeasured_reports']} 本"
+        f"（全 {summary['reports']} 本の {summary['inheriting_rate']:.1%}）"
+    )
+    out.append(
+        f"  継承を測れる報告 {summary['reports_with_note_row']} 本 のうち "
+        f"{summary['inheriting_rate_of_measurable']:.1%} ／ "
+        f"notes 行を持たず測れない報告 {summary['reports_without_note_row']} 本"
     )
     out.append(
         f"  別報告からリンクされた報告 {summary['prose_cited_reports']} 本 "
@@ -340,17 +356,21 @@ def render(summary: dict[str, Any], blocks: list[dict[str, Any]], *, limit: int 
     )
     out.append(f"  後続セッション数 {summary['successor_sessions']}")
     out.append("")
-    out.append("  cohort (実日付)            reports  notes  後続行  読まれた  prose辺  自読み")
+    out.append(
+        "  cohort (実日付)            reports  notes    notes0  後続行  読まれた  prose辺  自読み"
+    )
     for block in blocks:
         out.append(
             f"  {block['cohort']:<24} {block['reports']:>7} {block['notes_rows']:>6} "
-            f"{block['inherited_rows']:>7} {block['inheriting_reports']:>9} "
-            f"{block['prose_edges']:>8} {block['self_reads']:>7}"
+            f"{block['unmeasurable']:>9} {block['inherited_rows']:>7} "
+            f"{block['inheriting_reports']:>9} {block['prose_edges']:>8} {block['self_reads']:>7}"
         )
     out.append("")
     out.append(
         "  註: 後続0は「読まれていない」ではなく「誰も read_log に書かなかった」。"
         "台帳は記帳した読みしか見ない。prose辺は本文リンクで、行を残さない。"
+        "notes0 は notes 行を持たない報告で、note 型の read_log からは指せない＝未測定。"
+        "全体の率はこの分母を含むため、継承を測れる報告だけの率を併記する。"
     )
     return "\n".join(out)
 
