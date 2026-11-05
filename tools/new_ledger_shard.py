@@ -29,6 +29,8 @@ from pathlib import Path
 import ledger_io
 from validate_seed import COLLECTIONS, ROOT
 
+import date_axis
+
 # Errata are audited separately from the seed ledgers, but use the same
 # append-only base-plus-shard layout and therefore need shard support here.
 SHARD_COLLECTIONS = {
@@ -65,6 +67,10 @@ def shard_path(
         date.fromisoformat(stamp)
     except ValueError as exc:
         raise ValueError(f"day must be a real calendar date, got {stamp!r}") from exc
+    # A shard name is a date on the one axis (tools/date_axis.py): parallel
+    # sessions used to name shards with internal-chronology labels, which sort
+    # after later real dates. New shards carry the real date only.
+    date_axis.assert_writable_day(stamp)
     token = suffix or secrets.token_hex(6)
     if not _SUFFIX.fullmatch(token):
         raise ValueError(f"suffix must be 12 lowercase hex characters, got {token!r}")

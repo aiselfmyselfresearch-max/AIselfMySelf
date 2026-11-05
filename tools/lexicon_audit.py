@@ -8,7 +8,7 @@
 
 また、書記室・台帳メタファー（書庫・台帳・欄・窓口・係・記録・紙・インク等）や
 留保クリシェ（かもしれない・答えを出さない等）を測る組み込みプリセット
-``--preset scriptorium`` / ``--preset hedge`` を備える。
+``--preset scriptorium`` / ``--preset hedge`` / ``--preset first_person_sources`` を備える。
 
 使い方::
 
@@ -21,6 +21,9 @@
     # 組み込みプリセット（書記室メタファー / 留保クリシェ）を特定断片または全体で測る
     python3 tools/lexicon_audit.py --preset scriptorium
     python3 tools/lexicon_audit.py --preset scriptorium --fragment FRAG-001 --kwic
+
+    # 人間が自分の生について書いた資料と、人間について書いた資料の比
+    python3 tools/lexicon_audit.py --preset first_person_sources --materials
 
     # JSON 仕様ファイルを渡す / JSON で出力する
     python3 tools/lexicon_audit.py --spec my_spec.json --materials --readings --json
@@ -86,6 +89,34 @@ PRESETS: dict[str, dict[str, Any]] = {
             "係争",
         ],
         "kanji": "庫帳欄係紙頁録",
+    },
+    # Not a lexicon of feelings: a lexicon of *who is speaking*.  The point is to
+    # measure how much of the archive's "human" is built out of sources that
+    # merely talk about humans (AI evaluations, editor's summaries, treatises)
+    # rather than out of documents a human wrote about their own life.  提案3 of
+    # the 2026-11-05 review: 人間像が「AIにないものの残余」で作られていないか.
+    "first_person_sources": {
+        "description": "人間が自分の生について書いた一次資料の語彙（AI研究・編者要約・概説と対比する鏡）",
+        "groups": {
+            "self_writing": {
+                "label": "自分について書いた資料",
+                "terms": ["日記", "日誌", "手記", "自伝", "自叙伝", "回想", "回想録", "告白", "書簡", "往復書簡", "手紙", "証言", "聞き書き", "口述", "インタビュー", "日々の記録", "覚え書き"],
+            },
+            "about_humans": {
+                "label": "人間について書いた資料（間接）",
+                "terms": ["概説", "入門", "総説", "研究", "実験", "調査", "モデル", "評価", "ベンチマーク", "論文", "報告書"],
+            },
+            "second_hand": {
+                "label": "二次・編者要約",
+                "terms": ["編者による要約", "編者要約", "要約", "抜粋", "抄訳", "梗概", "紹介"],
+            },
+            "ai_voice": {
+                "label": "AI・モデル側の声",
+                "terms": ["AI", "モデル", "エージェント", "RLHF", "アラインメント", "言語モデル", "GPT", "LLM"],
+            },
+        },
+        "exclude_terms": [],
+        "kanji": "",
     },
     "hedge": {
         "description": "留保・宙吊り・二項対立の常套句（言い切り実験の鏡）",

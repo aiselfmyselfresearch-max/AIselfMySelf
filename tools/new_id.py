@@ -29,6 +29,8 @@ from typing import Iterable
 import ledger_io
 from validate_seed import ROOT
 
+import date_axis
+
 # prefix -> (ledger file name, ID field)
 PREFIXES: dict[str, tuple[str, str]] = {
     "Q": ("questions.jsonl", "question_id"),
@@ -80,6 +82,10 @@ def mint(
     stamp = day or date.today().strftime("%Y%m%d")
     if not re.fullmatch(r"\d{8}", stamp):
         raise ValueError(f"day must be YYYYMMDD, got {stamp!r}")
+    # The stamp is the first field any chronology reads back (tools/date_axis.py),
+    # so it must be a real date: minting tomorrow's date, or re-using an internal
+    # chronology label, would place the row outside the axis it joins.
+    date_axis.assert_writable_day(stamp)
     seen = set(taken)
     for _ in range(1000):
         candidate = f"{prefix}-{stamp}-{secrets.token_hex(hex_bytes)}"

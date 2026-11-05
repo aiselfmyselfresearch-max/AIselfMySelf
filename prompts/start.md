@@ -6,6 +6,8 @@
 
 - `PROJECT_CHARTER.md` と `CONTENT_POLICY.md` を読み、`python3 tools/inspect_inquiry.py --packet auto` で台帳と候補を確認してください。推奨モード・候補窓は並行作業の集中を避ける参考であり、命令や評価ではありません。中心問い `Q-001`・`Q-002`・`Q-003` や、窓の外の関連記録へ戻って構いません。
 - 過去の断片だけでなく、その読み・選択・取り落としを記した `sessions`、`read_log`、`readings/` も読み返してください。必要な記録を選び、その記録を今回選んだ理由を簡潔に残してください。IDやファイル名の日付だけで実際の作業順を断定しないでください。台帳の内部編年日付（`started_at`）と実行環境の実日付は別なので、両方を `notes` に記録してください。
+- **時間の扱いは [`docs/time-axis.md`](../docs/time-axis.md) に従ってください。** 新しい ID（`SESSION-`・`MAT-`・`NOTE-`・`ERR-`）とシャード名は**今日の実日付**で採番し、内部編年ラベルを ID やファイル名に使わないこと（`tools/new_id.py` は未来日付を拒否します）。軸は `python3 tools/date_axis.py` で読めます。過去のラベルは書き換えません。
+- **継承を記帳してください。** 後続セッションが過去の報告を読んだら、`read_log` の `target.type: "note"` でそのノート行を指してください。これが無いと、次のセッションにはあなたの読みが継承として見えません（実測は `python3 tools/inheritance.py`、packet の §4.8 が未継承の報告を示します）。
 - 「最近の比喩的展開と過去の見立てを読み直す」ことは、**2026-10-28 に量の期（「最低N件」）への制動として採られた当面の措置**であり、毎回の優先命令ではありません。同じモードが続き新作0件が連続したら、その連続を次の `editorial_review` の議題にしてください（実測：[`2026-12-16 のノート`](../readings/2026-12-16-the-instruction-that-came-back-quoted.md) §4-3）。
 
 ## 今回の探究
@@ -31,7 +33,7 @@
 
 `docs/parallel-work.md` に従い、既存の台帳行は書き換えず、自分の `state/*.d/` シャードへ追記してください。新作を書かない回も `sessions` と実際に読んだ台帳対象の `read_log` に記録できます。`produced_fragment_ids`・`new_question_ids` は空配列で構いません。非創作の見立ては `readings/` や `sessions.notes` に残し、台帳を埋めるためだけに断片を作らないでください。新作を作る場合だけ `status: draft` と声のモードを付け、必要な解釈的関係を記録してください。
 
-台帳を追記したら `python3 tools/map_build.py` を実行し、`python3 tools/validate_seed.py`・`python3 tools/inspect_inquiry.py --check-map`・`python3 tools/read_log_backfill.py --check`・`python3 tools/size_budget.py --strict`・`python3 -m unittest discover -s tests` で技術的な整合性を確認してください。通常回は `README.md`・`docs/sessions.md` を編集しません。検査の通過は探究の進展の証明ではありません。
+台帳を追記したら `python3 tools/map_build.py` を実行し、`python3 tools/validate_seed.py`・`python3 tools/inspect_inquiry.py --check-map`・`python3 tools/note_index.py --check`・`python3 tools/read_log_backfill.py --check`・`python3 tools/size_budget.py --strict`・`python3 -m unittest discover -s tests` で技術的な整合性を確認してください。通常回は `README.md`・`docs/sessions.md` を編集しません。検査の通過は探究の進展の証明ではありません。
 
 最後は、読んだ記録と、変更・維持・保留した見立て、残った限界、次に読み返したい具体的な記録を簡潔に報告してください。新しい問いや創作を、報告を埋めるために足す必要はありません。
 

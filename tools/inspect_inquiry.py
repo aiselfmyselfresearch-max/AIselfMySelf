@@ -9,6 +9,7 @@ Usage examples:
   python3 tools/inspect_inquiry.py --packet Q-017
   python3 tools/inspect_inquiry.py --packet-stats            # §3 と packet 全体の分布
   python3 tools/inspect_inquiry.py --packet-stats --stats-limit 40   # 標本で素早く
+  python3 tools/inspect_inquiry.py --packet auto --inheritance-window 30  # 未継承の窓を変える
   python3 tools/inspect_inquiry.py --write-map   # delegates to tools/map_build.py
   python3 tools/inspect_inquiry.py --check-map
 """
@@ -646,6 +647,140 @@ def related_notes_lines(
 MATERIAL_SECTION_BUDGET = 16_384
 
 
+# ---------------------------------------------------------------------------
+# §4.8 未継承の窓 — reports a later session could have read and did not
+# ---------------------------------------------------------------------------
+#
+# docs/memory-architecture.md §2 diagnosed the gap (411 reports, no index, no
+# retrieval path back into the episodes); tools/inheritance.py measures it.  The
+# packet is where a session chooses what to read, so the gap belongs here too.
+#
+# Two rules keep this section from becoming a scoreboard:
+#
+#   * **Read, not ranked.**  A report appears because no ``read_log`` row from a
+#     *different* session names its ``notes`` row.  Prose citations are shown but
+#     never counted as inheritance, and a report without a ``notes`` row is
+#     listed as *unmeasurable* rather than as unread.
+#   * **Cheap.**  The section reads no report bodies (only the note ledger and
+#     ``read_log``), is capped at six rows of one line each, and is placed after
+#     §4.7 so §3, §4, §4.5 and §4.7 keep their measured byte sizes exactly.
+INHERITANCE_WINDOW_DEFAULT = 30
+INHERITANCE_LIMIT = 6
+
+
+def inherited_report_paths(
+    data: dict[str, dict[str, dict[str, Any]]],
+    *,
+    root: Path = ROOT,
+) -> tuple[dict[str, dict[str, Any]], dict[str, int]]:
+    """Return ``(per-report facts, totals)`` from the ledger alone.
+
+    Deliberately not re-using :mod:`note_index`'s harvest: this runs inside every
+    packet, and §8 must stay byte-identical to what ``map_build.py`` renders.
+    Only ``notes`` (which report a row describes) and ``read_log`` (who logged a
+    reading of that row) are needed.
+    """
+    notes = data.get("notes", {})
+    read_log = data.get("read_log", {})
+    path_by_note = {
+        note_id: row["path"]
+        for note_id, row in notes.items()
+        if isinstance(row.get("path"), str)
+    }
+    author_by_path: dict[str, set[str]] = {}
+    label_by_path: dict[str, str] = {}
+    for note_id, row in notes.items():  # ledger order: later rows win
+        path = row.get("path")
+        if not isinstance(path, str):
+            continue
+        author = row.get("report_session_id") or row.get("session_id")
+        if isinstance(author, str) and author:
+            author_by_path.setdefault(path, set()).add(author)
+        if isinstance(row.get("date_real"), str):
+            label_by_path[path] = row["date_real"]
+
+    read_by_path: dict[str, set[str]] = {}
+    totals = {
+        "note_rows": len(notes),
+        "note_read_rows": 0,
+        "self_read_rows": 0,
+        "inherited_rows": 0,
+        "reports_with_notes": len({row.get("path") for row in notes.values() if isinstance(row.get("path"), str)}),
+    }
+    for record in read_log.values():
+        target = record.get("target")
+        if not isinstance(target, dict) or target.get("type") != "note":
+            continue
+        totals["note_read_rows"] += 1
+        path = path_by_note.get(target.get("id"))
+        if path is None:
+            continue
+        reader = record.get("session_id")
+        if isinstance(reader, str) and reader and reader in author_by_path.get(path, set()):
+            totals["self_read_rows"] += 1
+            continue
+        totals["inherited_rows"] += 1
+        read_by_path.setdefault(path, set()).add(reader or "?")
+
+    return (
+        {"read_by": read_by_path, "authors": author_by_path, "date_real": label_by_path},
+        totals,
+    )
+
+
+def unread_report_lines(
+    data: dict[str, dict[str, dict[str, Any]]],
+    target_qid: str,
+    *,
+    root: Path = ROOT,
+    window: int = INHERITANCE_WINDOW_DEFAULT,
+) -> list[str]:
+    """§4.8: recent reports with no ledger-visible successor, plus the totals."""
+    facts, totals = inherited_report_paths(data, root=root)
+    lines = ["## 4.8 未継承の窓（この報告を、後続のセッションはまだ一度も `read_log` で読んでいない）"]
+    lines.append(
+        "- **趣旨**: `readings/` はエピソード記憶ですが、後続がそのノート行を "
+        "`read_log`（`target.type: \"note\"`）で読んだ記録は、報告本文のリンクや README の窓より"
+        "はるかに少ない状態です（実測は `python3 tools/inheritance.py`）。"
+        "ここに並ぶのは**未測定**の報告で、未読・無価値の判定ではありません。"
+    )
+    lines.append(
+        f"- **台帳の実測**: notes 行 {totals['note_rows']} ／ note を指す読み {totals['note_read_rows']} 行"
+        f"（自セッション {totals['self_read_rows']} ／ 後続 {totals['inherited_rows']}）"
+        f"。notes 行を持たない報告はそもそも継承を測れません。"
+    )
+    candidates = sorted(
+        (
+            (path, when)
+            for path, when in facts["date_real"].items()
+            if not facts["read_by"].get(path)
+        ),
+        key=lambda pair: pair[1],
+        reverse=True,
+    )[:window]
+    if not candidates:
+        lines.append("- 窓内に未継承の報告はありません（すべて後続の `read_log` に現れています）。")
+    else:
+        lines.append(
+            f"- **直近 {len(candidates)} 本の候補**（新しい順・上から {INHERITANCE_LIMIT} 件だけ名指しします）:"
+        )
+        for path, when in candidates[:INHERITANCE_LIMIT]:
+            readers = facts["read_by"].get(path) or set()
+            state = "後続あり" if readers else "後続なし"
+            lines.append(f"  - `{path}`（実日付 {when}・{state}）")
+    lines.append(
+        "  - 読んだら `python3 tools/note_index.py --register <path> --session <SESSION-ID> "
+        "--read-depth full_text_read` でノート行を記帳し、`read_log` の `target.type` に `note` を"
+        "使ってください。記帳しないと、次のセッションには継承が見えません。"
+    )
+    lines.append(
+        "- **注意**: この節は候補であって義務ではありません。読まない選択も記録できます。"
+        "継承の実測は `python3 tools/inheritance.py --cohorts`。"
+    )
+    lines.append("")
+    return lines
+
+
 def material_block(mat_id: str, mat: dict[str, Any], errata: dict[str, dict[str, Any]]) -> list[str]:
     """Render one §3 material entry, whole.  Never split: a half-quoted passage
     is worse than an omitted one, because it can be mistaken for the full quote
@@ -685,6 +820,7 @@ def build_context_packet(
     root: Path = ROOT,
     material_budget: int = MATERIAL_SECTION_BUDGET,
     note_view: dict[str, dict[str, Any]] | None = None,
+    inheritance_window: int = INHERITANCE_WINDOW_DEFAULT,
 ) -> str:
     if errata is None:
         errata = load_errata()
@@ -939,6 +1075,14 @@ def build_context_packet(
             [f["fragment_id"] for f in rel_frags],
             root=root,
             note_view=note_view,
+        )
+    )
+    lines.extend(
+        unread_report_lines(
+            data,
+            target_qid,
+            root=root,
+            window=inheritance_window,
         )
     )
 
@@ -1420,6 +1564,17 @@ def main() -> int:
         ),
     )
     parser.add_argument(
+        "--inheritance-window",
+        type=int,
+        default=INHERITANCE_WINDOW_DEFAULT,
+        metavar="N",
+        help=(
+            "How many recent reports §4.8 draws its un-inherited window from "
+            f"(default: {INHERITANCE_WINDOW_DEFAULT}). The section names at most "
+            f"{INHERITANCE_LIMIT} paths and never changes §3/§4/§4.5/§4.7 bytes."
+        ),
+    )
+    parser.add_argument(
         "--packet-stats",
         action="store_true",
         help=(
@@ -1463,7 +1618,11 @@ def main() -> int:
         try:
             sys.stdout.write(
                 build_context_packet(
-                    data, args.packet, seed=args.seed, material_budget=args.material_budget
+                    data,
+                    args.packet,
+                    seed=args.seed,
+                    material_budget=args.material_budget,
+                    inheritance_window=args.inheritance_window,
                 )
             )
         except ValueError as exc:
