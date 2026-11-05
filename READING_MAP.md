@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3087 件（research_excerpt 865 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3092 件（research_excerpt 870 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
-- **解釈的関係（Relations）**：6321 件
-- **探究セッション（Sessions）**：464 回
+- **解釈的関係（Relations）**：6324 件
+- **探究セッション（Sessions）**：465 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -769,7 +769,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3087 件・詳細は map/3*.md）
+## 4. 対話素材（3092 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3645,6 +3645,11 @@
 | `MAT-EVD-20261105-3a6a6b` | research_excerpt | Jonathan W. Schooler, Tonya Y. Engstler-Schooler『Schooler & Engstler-Schooler「視覚記憶の言語的遮蔽」… |
 | `MAT-EVD-20261105-0c03b3` | research_excerpt | Stanley B. Klein, Judith Loftus, John F. Kihlstrom『Klein, Loftus & Kihlstrom「健忘患者の自己知識」（1… |
 | `MAT-EVD-20261105-15ae61` | research_excerpt | Lukas Berglund, Meg Tong, Max Kaufmann, Mikita Balesni, Asa Cooper Stickland, Tomasz Korb… |
+| `MAT-20261105-50d244` | research_excerpt | Jaap M. J. Murre, Joeri Dros『エビングハウスの忘却曲線の再実施——13音節×8行のリスト70本、単一被験者、節約による測度』（2015） |
+| `MAT-20261105-402dff` | research_excerpt | Aurora K. R. LePort, Shauna M. Stark, James L. McGaugh, Craig E. L. Stark『Highly Superior… |
+| `MAT-20261105-c29a02` | research_excerpt | Raquel Pinto, Pedro B. Albuquerque『宛先記憶は自己について語るほど落ちる——個人的事実と格言の比較（3実験）』（2024） |
+| `MAT-20261105-e91afc` | research_excerpt | David W. Sutterer, Edward Awh『検索練習は想起確率を上げるが精度を上げない——図形と色の混合モデル（3実験）』（2016） |
+| `MAT-20261105-9fc43c` | research_excerpt | Aumyo Hassan, Sarah J. Barber『反復頻度と錯真実効果——上昇は対数で、二度目がいちばん効く（最大27回）』（2021） |
 | `MAT-20261105-a85f22` | research_excerpt | Marieke Rohde, Massimiliano Di Luca, Marc O. Ernst『The Rubber Hand Illusion: Feeling of O… |
 | `MAT-20261105-41e776` | research_excerpt | Susanne Diekelmann, Hans-Peter Landolt, Olaf Lahl, Jan Born, Ullrich Wagner『Sleep Loss Pr… |
 | `MAT-20261105-a8b1d4` | research_excerpt | Matthew H. C. Mak, Alice O’Hagan, Aidan J. Horner, M. Gareth Gaskell『A registered report … |
@@ -4202,18 +4207,19 @@
 | `SESSION-20270201-a47a79` | 2027-02-01 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20270127-fcd1ff` | 2027-01-27 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
 | `SESSION-20270129-18b3f6` | 2027-01-29 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
-| `SESSION-20261105-5ed02a` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261105-26aefc` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
+| `SESSION-20261105-35828d` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-4afba1` | 2026-11-05 | `Q-001`, `Q-002` | — | — |
+| `SESSION-20261105-778d5c` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-e24d6b` | — | `Q-20261105-e24d6b` |
+| `SESSION-20261105-5ed02a` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-f50158` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-733543` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
 | `SESSION-20261105-d59c7e` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261105-3e200e` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-8986a3` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | `FRAG-20261105-1c4471` | — |
-| `SESSION-20261105-26aefc` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
-| `SESSION-20261105-778d5c` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-e24d6b` | — | `Q-20261105-e24d6b` |
 | `SESSION-20261105-91a0b6` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-1c1074` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | `Q-20261105-b78e71` |
 | `SESSION-20261105-cb7a48` | 2026-11-05 | `Q-001`, `Q-002` | — | — |
-| `SESSION-20261105-35828d` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-a6a00b` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-de3a6f` | 2027-02-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-bab262` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
@@ -4330,17 +4336,17 @@
 | `SESSION-20270222-8b2674` | 2027-02-22 | `Q-001`, `Q-002`, `Q-003`, `Q-104`, `Q-20270221-f7b8c5`, `Q-20261031-acdadb`, `Q-20270221-507c43`, `Q-106` | — | `Q-20270222-da53d9` |
 | `SESSION-20270223-ec4af5` | 2027-02-23 | `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6321 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6324 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 891 |
+| 対照 (contrast) | 892 |
 | 共鳴 (echo) | 1552 |
 | 切断・割り込み (interrupts) | 216 |
 | 未解決のまま開く (leaves_open) | 880 |
 | 比喩的共鳴 (metaphorically_resonates) | 165 |
-| 枠組みの組み替え (reframes) | 622 |
-| 応答 (responds_to) | 1700 |
+| 枠組みの組み替え (reframes) | 623 |
+| 応答 (responds_to) | 1701 |
 | 変奏・変形 (transforms) | 295 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -4401,7 +4407,7 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 65 | 160,618 |
+| `map/31-materials-research-09.md` | 70 | 170,537 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4413,19 +4419,19 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 178,130 |
-| `map/40-relations-12.md` | 500 | 161,899 |
-| `map/40-relations-13.md` | 321 | 112,836 |
+| `map/40-relations-11.md` | 500 | 178,359 |
+| `map/40-relations-12.md` | 500 | 162,043 |
+| `map/40-relations-13.md` | 324 | 113,710 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,515 |
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
-| `map/50-sessions-07.md` | 50 | 43,269 |
-| `map/50-sessions-08.md` | 50 | 44,370 |
-| `map/50-sessions-09.md` | 50 | 43,866 |
-| `map/50-sessions-10.md` | 14 | 12,240 |
+| `map/50-sessions-07.md` | 50 | 43,327 |
+| `map/50-sessions-08.md` | 50 | 44,207 |
+| `map/50-sessions-09.md` | 50 | 44,121 |
+| `map/50-sessions-10.md` | 15 | 12,894 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4439,23 +4445,23 @@
 | `map/60-notes-11.md` | 25 | 61,740 |
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
-| `map/60-notes-14.md` | 25 | 104,049 |
-| `map/60-notes-15.md` | 25 | 55,060 |
-| `map/60-notes-16.md` | 25 | 67,452 |
-| `map/60-notes-17.md` | 25 | 58,718 |
-| `map/60-notes-18.md` | 25 | 74,948 |
-| `map/60-notes-19.md` | 25 | 107,251 |
-| `map/60-notes-20.md` | 24 | 103,545 |
+| `map/60-notes-14.md` | 25 | 105,235 |
+| `map/60-notes-15.md` | 25 | 55,486 |
+| `map/60-notes-16.md` | 25 | 65,925 |
+| `map/60-notes-17.md` | 25 | 60,409 |
+| `map/60-notes-18.md` | 25 | 71,787 |
+| `map/60-notes-19.md` | 25 | 107,604 |
+| `map/60-notes-20.md` | 25 | 107,851 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・499本・18,043,953 B）
+## 8. 精読ノート索引（readings/・500本・18,073,139 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 284/499 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 285/500 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：77 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：61 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：78 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：62 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4798,6 +4804,7 @@
 | `readings/2026-11-05-the-deletions-that-were-not-inherited.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-26aefc` +2 | 9,699 | Q4 M4 S3 ERR1 | ✓ | 減らしたこと——見出しの一年と、承継の届かない場所 |
 | `readings/2026-11-05-the-name-changed-and-the-function-stayed.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-733543` +5 | 7,902 | Q2 M3 S6 | — | 形式の承継——見出しは5本で止まり、基準は同じ日に終わった |
 | `readings/2026-11-05-the-one-who-does-not-write.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-bab262` | 7,170 | Q2 M3 S1 | ✓ | 声を書かない者の一人称は、誰の声で記録されるか——口述・集成・代読 |
+| `readings/2026-11-05-what-is-stored-and-what-can-be-retrieved.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-3e200e` | 12,822 | M7 S1 | — | 保存されていることと、取り出せること——五つの記憶実験から、書庫の宛先と精度を読む |
 | `readings/2026-11-05-what-the-laboratory-can-see.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-4afba1` +2 | 35,178 | Q2 M3 R1 S3 ERR3 | ✓ | 何が記録され、何が照合されたか——実験科学の五資料を読む |
 | `readings/2026-11-06-the-receipt-with-no-column.md` | — | 2026-11-06 | `SESSION-20261106-fe414f` +2 | 15,365 | Q4 F5 M7 MOT6 S3 ERR5 | ✓ | 受領の欄がない — 訂正と約束のあいだで、二重線が閉じるものと閉じないもの（SESSION-20261106-fe41… |
 | `readings/2026-11-07-thatch-layers-and-the-dweller.md` | — | 2026-11-07 | `SESSION-20261107-31df2f` +1 | 22,709 | Q9 F10 M10 R2 S2 ERR4 | ✓ | 葺き足しと、屋根の下にいる者 — 消さない訂正が層になり、止める理由が層にならない（SESSION-20261107-… |
