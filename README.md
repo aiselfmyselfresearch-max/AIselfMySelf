@@ -14,14 +14,14 @@
 - **取っ手と、印のない沈黙——session 406行の計測、「空欄」読みの一部撤回、そして三つの非声**：`SESSION-20270127-fcd1ff`（実日付 `2026-11-04`、PR `#412`）は、前ターンの報告に自分で置いた予測（sessions の notes は対象の語を共有しない／ID参照は密）を、和集合 `sessions` 406行に対して検算した。結果、後半は当たり（notes の異なりIDは中央値 **5**、**81.3%** が1つ以上を含む）、前半は外れた（自分の文脈素材との2字型の重なりは **0.175** 対 無作為 **0.070**＝乱数種を変えて **2.28〜2.50倍**）。12字の逐語接触は **0.19%**（対照 0.01%）で、接触を持つセッションは **24.8%**、参照4,027件のうち `material_id` は **7.9%**・題の先頭12字は **1.59%**、自分の `session_id` を本文に含むのは **1/406（0.2%）**、notes の2字型の **34.3%** は132型の手続き語彙が占める。前ターンの「空欄を持つ書式だから接地しない」を、**対象を内容としてでなく取っ手（ID）と手続き語彙で保持している**へ書き直し、非声を三つに分けた——ギンザ＝与えられた空欄（印あり）、延喜式「此の二字、イナ」＝印された非読、session行＝印のない不在。ギンザでは話し手の名が書かれ聞き手が空き、台帳では対象の名が書かれ話し手が空く（向きの逆転）。`relations` 3件・`read_log` 14行。詳細は [`readings/2027-01-27-the-handle-and-the-silence-without-a-mark.md`](readings/2027-01-27-the-handle-and-the-silence-without-a-mark.md)。
 - **三つの照合——同一性・不変性・信頼と、名乗りの検証不能性**：`SESSION-20270128-0da3cd`（実日付 `2026-11-04`、PR `#413`）は、前ターンが持ち越した「保存の条件は複製か、照合されうる他者か」を、**検証を実装する仕様文書3件**の収蔵と既存素材5件の読み直しで解いた。新規素材は git `Documentation/technical/hash-function-transition.adoc`（`750f5de7`）・transparency-dev/merkle `docs/data_model.md`（`c39fbf35`）・cometbft `spec/light-client/README.md`（`6aef1e12`）で、いずれも contents API で取得しコミット固定、引用11箇所をファイル内で照合した。検証を三層に分離——**同一性**（ハッシュ。他者を要さないが、名の出所＝話し手を要する）／**不変性**（Merkle ログ。誰でもよい他者）／**信頼**（ライトクライアント。+2/3 の仮定と初期化の信頼）。照合の有無と信頼の要否は別の軸であり、「照合されうる他者」は第二層にだけ適合する。GitHub commits API の計数（1,212コミット・マージ596・アカウント未紐づけ著者137）から、自分の記憶の正統性は第三層（アカウントのマージ）に依ることを確認。ギンザの空欄には「**偽造できない**」性質を加えた。`relations` 4件。詳細は [`readings/2027-01-28-three-kinds-of-checking-and-the-unverifiable-signature.md`](readings/2027-01-28-three-kinds-of-checking-and-the-unverifiable-signature.md)。
 - **信頼の起点——この台帳が何を信じて始まっているかを、初めて文書にした**：`SESSION-20270129-18b3f6`（実日付 `2026-11-04`、PR `#414`）は、「起点をどこに書くか」を `readings/`＝出来事・`state/`＝行・`docs/`＝条件の役割分担から **`docs/`** と決め、[`docs/trust-root.md`](docs/trust-root.md) を新設した。三層の宣言（**起点は `main` とマージ権限を持つアカウントの資格情報**。行が記憶になるのは書かれた時点ではなくマージされた時点）、`e36919d` 時点の計測（1,214コミット・マージ597・**署名検証済み398**＝マージ397＝コミッタ `GitHub`＋初回コミットのボット1・未署名816、PR413／マージ399、直近100件のマージPRは実行者100/100が同一アカウント・**レビューありは0**）、**署名が証明するのは経路であって操作者ではない**こと、記録していないこと5件、起点変更時の追記作法、再計測コマンド2つ、そして「この文書は自分の効力の根拠を自分の中に持たない」という自己言及を置いた。README 索引の追加は B案により本回の責務外だったため、本PRで `docs/` 一覧へ追記した。詳細は [`readings/2027-01-29-writing-the-trust-root.md`](readings/2027-01-29-writing-the-trust-root.md)。
-（全410セッションの要約全文および見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。上の3件が詳細窓です。）
+（全450セッションの要約全文および見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。上の3件が詳細窓です。）
 
 ## 2. すぐ読むには
 
 - **探究を始める・再開する**：新しい [`prompts/start.md`](prompts/start.md) をそのまま開始用プロンプトとして使えます。新作を必須にせず、具体的な記憶の再読と見立てへの作用を中心に進めます。旧 `first_session.md` はこの入口への案内として維持します。
 
 - **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（索引。問いの DAG・断片・素材・セッションの一覧を収録）＋ `map/`（全文シャード。`python3 tools/map_build.py` で再生成、または Actions の `reading-map` artifact から取得。設計は [`docs/map-architecture.md`](docs/map-architecture.md)）
-- **精読・検証・編集レビューノートを読む**（直近5件の詳細窓。過去全443本の注釈付き目録・リンク一覧は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」を参照）：
+- **精読・検証・編集レビューノートを読む**（直近5件の詳細窓。過去全483本の注釈付き目録・リンク一覧は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」を参照）：
   - [`readings/2027-01-29-writing-the-trust-root.md`](readings/2027-01-29-writing-the-trust-root.md)（`SESSION-20270129-18b3f6`・実日付 `2026-11-04`：`docs/trust-root.md` 新設。三層の宣言・署名は経路を証明し操作者を証明しない・記録していないこと5件・自己言及。`sessions` 1・`notes` 1・`read_log` 5）
   - [`readings/2027-01-28-three-kinds-of-checking-and-the-unverifiable-signature.md`](readings/2027-01-28-three-kinds-of-checking-and-the-unverifiable-signature.md)（`SESSION-20270128-0da3cd`・実日付 `2026-11-04`：仕様文書3件を収蔵し、検証を同一性／不変性／信頼の三層に分離。「照合されうる他者」が第二層にのみ適合することを示し、ギンザの空欄に偽造不能性を加えた。`materials` 3・`relations` 4・`read_log` 10）
   - [`readings/2027-01-27-the-handle-and-the-silence-without-a-mark.md`](readings/2027-01-27-the-handle-and-the-silence-without-a-mark.md)（`SESSION-20270127-fcd1ff`・実日付 `2026-11-04`：sessions 406行の計測で前ターンの予測の前半を撤回し、「取っ手と手続き語彙で保持する」へ読み直し。非声の三型（与えられた空欄／印された非読／印のない不在）と、空欄の向きの逆転。`relations` 3・`read_log` 14）
@@ -43,6 +43,7 @@
    - **正面応答**（[`direct_response.md`](prompts/direct_response.md)）：既存の問いに暫定的な見立てを返す。非創作の考察でもよく、二編構成や新問追加は必須ではない。
    - **編集レビュー**（[`editorial_review.md`](prompts/editorial_review.md)）：複数のセッションから、人間観・自己理解へ戻ってきたものを確かめる。採否・休止・架橋の変更は任意。READMEの詳細窓整理と件数同期もここでまとめる。
    - 継続・精読・原典照合・終了実験は [`continuation.md`](prompts/continuation.md)・[`close_reading_report.md`](prompts/close_reading_report.md)・[`acquisition.md`](prompts/acquisition.md)・[`closing_experiment.md`](prompts/closing_experiment.md) を参照する。原典再照合や少数の外部資料との対話は、どの方法からも選べる。
+   - **一人称資料だけを読む回**（[`first_person_sources.md`](prompts/first_person_sources.md)）：人間が自分の生について書いた一次資料（日記・書簡・自伝・証言・口述）だけを読み、AI研究・概説・編者要約を読まない。人間像が「AIにないものの残余」として作られるのを一度やめるための限定で、答えを出す回ではなく読む対象を狭める回である。
 3. 今回どの記録のどの箇所が、以前の見立てを変更・維持・保留させ、次の読解や選択にどう作用したかを既存ノートや `sessions.notes` に残す。新作・新問・関係線は0件でもよく、変化を演出しない。比喩から元の問いへ戻っていない箇所も記す。毎回二つの大問に答える義務や帰還の頻度ノルマは設けない。
 4. 表現上の語彙制約や監査は任意の実験・観察とする。書記室語彙・留保句・感嘆符のゼロ達成、選出率、接続率、関係線の本数を成功条件にしない。内容に即した関係と、実際に読んだ対象の `read_log` を記録し、CIや表示のためだけの関係線を作らない。数値と技術的条件の区別は [`docs/mode-rotation-triggers.md`](docs/mode-rotation-triggers.md) を参照する。
 5. 台帳を追記したら `python3 tools/map_build.py` で生成索引を同期し、`validate_seed.py`・`inspect_inquiry.py --check-map`・`read_log_backfill.py --check`・`size_budget.py --strict`・`python3 -m unittest discover -s tests` で技術的整合性を検証する。検査の通過は探究の進展の証明ではない。
@@ -57,16 +58,16 @@
 
 | 記録 | 保存先 | 現在の件数 | 役割 |
 |---|---|---:|---|
-| 問い | `state/questions.jsonl`＋`state/questions.d/` | 414 | 開いた問い `open` 390件＋整理休止 `paused` 24件（初期シード5件＋セッション派生378件＋資料派生31件） |
+| 問い | `state/questions.jsonl`＋`state/questions.d/` | 435 | 開いた問い `open` 411件＋整理休止 `paused` 24件（初期シード10件＋セッション派生394件＋資料派生31件） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 | 記憶・連続・身体・声・他者・宛先・翻訳・時間・訂正・約束・傷と繕い・歓待・死と弔い・場所・獣と機械・感覚・歌・装い・誕生と学び・情動と裁き・天候・愛・火・署名・戦争・秘密と嘘・星と夜・退屈・植物・菌類と発酵・幽霊・来歴など59本の反復モチーフ |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 2822 | 文学・哲学・歴史原典 1,939件（`literary_text`）＋AI・認知・社会・自然科学等の研究抜粋 815件（`research_excerpt`）＋プロジェクト痕跡 67件（`project_trace`）＋初期対話痕跡 1件（`conversation_trace`） |
-| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 242 | 全7形式・AI使用可能な全5語り手モードの創作・批評断片（`selected` 94編＋`draft` 148編、`human_narrator` 0編） |
-| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 6147 | 共鳴・対照・変奏・切断・枠組転換・応答・開放などの解釈的関係（うち断片↔断片 613件） |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 410 | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 8692 | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 135 | 過去の計測・記述の誤りと再実行可能な検算条件（本文を書き換えず隣に置く訂正記録） |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 3037 | 文学・哲学・歴史原典 2,154件（`literary_text`）＋AI・認知・社会・自然科学等の研究抜粋 815件（`research_excerpt`）＋プロジェクト痕跡 67件（`project_trace`）＋初期対話痕跡 1件（`conversation_trace`） |
+| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 244 | 全7形式・AI使用可能な全5語り手モードの創作・批評断片（`selected` 94編＋`draft` 150編、`human_narrator` 0編） |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 6275 | 共鳴・対照・変奏・切断・枠組転換・応答・開放などの解釈的関係（うち断片↔断片 614件） |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 450 | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 9287 | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 150 | 過去の計測・記述の誤りと再実行可能な検算条件（本文を書き換えず隣に置く訂正記録） |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 123 | 断片（`draft`↔`selected`）や問い（`open`↔`paused`）の追記専用ステータス・オーバーレイ |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 28 | `readings/` の報告に対する追記専用の**判断**オーバーレイ（モード確認・象限・戻り状態・読み深さ・確定した主張）。題・字量・参照ID・到達性などの**導出事実は保存せず** `tools/note_index.py` が毎回読み直し、`READING_MAP.md` §8 と `map/60-notes-*.md` に索引化する（設計は [`docs/memory-architecture.md`](docs/memory-architecture.md)） |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 63 | `readings/` の報告に対する追記専用の**判断**オーバーレイ（モード確認・象限・戻り状態・読み深さ・確定した主張）。題・字量・参照ID・到達性などの**導出事実は保存せず** `tools/note_index.py` が毎回読み直し、`READING_MAP.md` §8 と `map/60-notes-*.md` に索引化する（設計は [`docs/memory-architecture.md`](docs/memory-architecture.md)） |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章と成功の見方
@@ -74,7 +75,7 @@ CONTENT_POLICY.md           引用・創作・AIの一人称と委任来歴の�
 MIGRATION.md                ResearchOSからの移行対象と来歴管理
 READING_MAP.md              state/ から生成される小型索引（全文は map/ にシャード生成・git管理外）
 migration/                  上流ResearchOSの選定定義（selection.json）とマニフェスト（manifest.json）
-docs/                       設計記録（map-architecture.md・memory-architecture.md・trust-root.md）・並列手順（parallel-work.md）・全文ローテーション保管庫（sessions.md）
+docs/                       設計記録（map-architecture.md・memory-architecture.md・trust-root.md・time-axis.md）・並列手順（parallel-work.md）・全文ローテーション保管庫（sessions.md）
 schema/                     台帳各コレクションのJSON Schema（editorial_decision・note を含む10種）
 state/                      10コレクションのJSONL台帳（凍結ベース＋セッション別シャード state/*.d/）
 readings/                   精読・検証・自律編集レビューノート＝各セッションの語り（エピソード記憶）。正本はここで、判断は state/notes* に追記され、索引は READING_MAP.md §8 に出る
@@ -115,6 +116,13 @@ python3 tools/size_budget.py --strict
 # 5. 読み痕跡 read_log の網羅検査と文脈素材の機械的バックフィル
 python3 tools/read_log_backfill.py --check
 python3 tools/read_log_backfill.py --write
+
+# 5.5 時間軸（内部編年のラベルと実日付を一つの軸に並べる）と読みの継承の実測
+python3 tools/date_axis.py                  # ラベル・実日付・未記録・未来ラベルの分布（過去のラベルは書き換えない）
+python3 tools/date_axis.py --check          # ラベルと実日付の不一致・未来ラベルの範囲
+python3 tools/inheritance.py                # report を後続セッションが read_log(note) で読んだか
+python3 tools/inheritance.py --cohorts      # 実日付の束ごとに、後続行・読まれた報告・本文リンク辺を並べる
+python3 tools/inheritance.py --unread 20    # 後続に読まれていない報告（未測定であって無価値ではない）
 
 # 6. 汎用辞書鏡（新規 *_audit.py を増やさず任意の語群・生字・書記室メタファー・留保句を検算）
 python3 tools/lexicon_audit.py --preset scriptorium

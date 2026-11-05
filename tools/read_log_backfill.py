@@ -26,6 +26,7 @@ import argparse
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -104,7 +105,26 @@ def _id_stamp(created_at: str) -> str | None:
     return "".join(match.groups()) if match else None
 
 
-def write(root: Path) -> int:
+def _row_date(started_at: object, today: date) -> str:
+    """The date to stamp on a backfilled row.
+
+    ``started_at`` is provenance, and a future one is an internal chronology
+    label rather than a date (see ``tools/date_axis.py``).  Minting an ID from it
+    would put the row on a day that has not happened, so the row is dated the day
+    the backfill actually wrote it.  What the row asserts — "this session had this
+    material in context" — is true either way; only the timestamp changes owner.
+    """
+    if isinstance(started_at, str) and started_at:
+        try:
+            if date.fromisoformat(started_at[:10]) <= today:
+                return started_at
+        except ValueError:
+            pass
+    return today.isoformat()
+
+
+def write(root: Path, today: date | None = None) -> int:
+    today = today or date.today()
     sessions, read_log = load(root)
     missing = missing_pairs(sessions, read_log)
     if not missing:
@@ -114,8 +134,7 @@ def write(root: Path) -> int:
     taken = set(read_log)
     rows: list[dict] = []
     for session_id, material_id in missing:
-        started_at = sessions[session_id].get("started_at")
-        created_at = started_at if isinstance(started_at, str) and started_at else "2026-10-24"
+        created_at = _row_date(sessions[session_id].get("started_at"), today)
         read_id = new_id.mint("READ", day=_id_stamp(created_at), taken=taken)
         taken.add(read_id)
         rows.append(
@@ -143,6 +162,7 @@ def main(argv: list[str] | None = None) -> int:
     mode.add_argument("--check", action="store_true", help="verify coverage; exit 1 on gaps")
     mode.add_argument("--write", action="store_true", help="append rows for uncovered pairs")
     parser.add_argument("--root", type=Path, default=ROOT, help="repository root (default: this checkout)")
+    parser.add_argument("--today", help="write-side reference date (default: today; tests pin it)")
     args = parser.parse_args(argv)
 
     # New collections are wired through validate_seed.COLLECTIONS.
@@ -151,9 +171,10 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     try:
+        today = date.fromisoformat(args.today) if args.today else None
         if args.check:
             return check(args.root)
-        return write(args.root)
+        return write(args.root, today=today)
     except (ValueError, OSError, ledger_io.LedgerBusy) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
