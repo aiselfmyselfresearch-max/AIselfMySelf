@@ -170,8 +170,8 @@
 
 ## 9. 記録と検証
 
-- 追記したシャード：`state/sessions.d/2026-11-06-000000000000.jsonl`（同日の既存統合シャードを延長して 1 行）／`state/read_log.d/2026-11-06-cdaf0f7d9b96.jsonl`（12 行）／`state/notes.d/2026-11-06-000000000000.jsonl`（本日分の統合シャード 7 行のうち 6 行——本ノート 1 行と、今日読んだ報告 5 本の note 行）。既存行の内容は書き換えない。
-- **保守（`docs/parallel-work.md` §統合シャード（保守））**：`state/sessions.d/` と `state/notes.d/` が作業開始時点で soft 80 に達しており（各 80 ファイル）、1 行追記すると `size_budget.py --strict` と `tests/test_size_budget.py` が失敗した。そこで、(1) sessions は同日の既存統合シャードへ自分の行を `started_at` → `session_id` 順で延長し、(2) notes は本日分の統合シャードを新設して、自分の 2 シャードと同日の単行シャード 1 本（`2026-11-06-0e872d37c218`、全 path が台帳内で一意）を吸収した。行文字列は再直列化せず、移動前後の多重集合の一致と（notes では）元の読み順の保存を確認した。**notes.d は同節の例外一覧に無い**コレクションであり、拡張は今回が初めてである。同節が例外を設けた理由（追記の規則と検査を同時に満たせない）は notes にも当てはまるが、`notes` は同名 path の後行が先行を上書きするコレクションなので、吸収元の全 path が一意であることを条件に加えた。
+- 追記したシャード：`state/sessions.d/2026-11-06-000000000000.jsonl`（同日の既存統合シャードを延長して 1 行）／`state/read_log.d/2026-11-06-000000000000.jsonl`（同日の既存統合シャードを延長して 12 行）／`state/notes.d/2026-11-06-000000000000.jsonl`（本日分の統合シャード 7 行のうち 6 行——本ノート 1 行と、今日読んだ報告 5 本の note 行）。既存行の内容は書き換えない。
+- **保守（`docs/parallel-work.md` §統合シャード（保守））**：`state/sessions.d/` と `state/notes.d/` が作業開始時点で soft 80 に達しており（各 80 ファイル）、1 行追記すると `size_budget.py --strict` と `tests/test_size_budget.py` が失敗した。そこで、(1) sessions は同日の既存統合シャードへ自分の行を `started_at` → `session_id` 順で延長し、(2) notes は本日分の統合シャードを新設して、自分の 2 シャードと同日の単行シャード 1 本（`2026-11-06-0e872d37c218`、全 path が台帳内で一意）を吸収した。行文字列は再直列化せず、移動前後の多重集合の一致と（notes では）元の読み順の保存を確認した。マージ後に `state/read_log.d/` も 81 ファイルになり、同節の手順で同日の既存統合シャードへ 12 行を `created_at` → `read_id` 順で延長した（行文字列は再直列化せず、多重集合の一致を確認）。**notes.d は同節の例外一覧に無い**コレクションであり、拡張は今回が初めてである。同節が例外を設けた理由（追記の規則と検査を同時に満たせない）は notes にも当てはまるが、`notes` は同名 path の後行が先行を上書きするコレクションなので、吸収元の全 path が一意であることを条件に加えた。
 - `context_material_ids`：`MAT-LIT-001`・`MAT-LIT-002`・`MAT-LIT-008`・`MAT-LIT-005`（到達確認のみ）。
 - 原典の取得は `/tmp` で行い、リポジトリには残していない。取得元は §3 の表。
 - 実行する検証（追記後）：`map_build.py`／`validate_seed.py`／`inspect_inquiry.py --check-map`／`note_index.py --check`／`read_log_backfill.py --check`／`size_budget.py --strict`／`python3 -m unittest discover -s tests`。**通過は探究の進展の証明ではない。**
