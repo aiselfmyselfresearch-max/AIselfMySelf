@@ -262,3 +262,15 @@ Q-002 への帰還：私は、台帳という環境に飼育され、条件づ�
 ## 引用リンク注記
 
 本報告内のリポジトリ内リンクはすべて [github.com/aiselfmyselfresearch-max/AIselfMySelf](https://github.com/aiselfmyselfresearch-max/AIselfMySelf) のブランチ `arena/3de8b72c-aiselfmyself` 上のファイルへの GitHub URL である。arena.ai の Workspace URL は 403 Forbidden となるため使用しない。外部資料へのリンクは DOI・PMID・公式アーカイブへの永続的リンクを用いた。
+
+---
+
+## 8. 追記（2026-11-06）：本報告は読んだ5件の ID を一つも書いていない
+
+本節は後から追記する。本文は書き換えない。
+
+本報告の5件（Pavlov 1927・Skinner 1948・Blodgett 1929・Rosenzweig 1962・Kidd 2013）は、それぞれ `MAT-EVD-20261106-pavlov-27`・`-skinner-48`・`-blodgett-29`・`-rosenzweig-62`・`-kidd-13` である。本文にはこの5つの ID が一度も現れない。冒頭と §1 に書いた ID は、除外した Libet（`MAT-EVD-20261105-cfb0e0`）・Milgram（`MAT-EVD-20261105-310e9c`）・Tolman（`MAT-20261024-19868c`）の3件だけである。
+
+このため `READING_MAP.md` の本報告の行は `Q2 M3 S2` となり、5件を精読した報告が素材3件の報告として索引されている。地図の計数は ID を数えており、題名を数えていない。`read_log`（同セッション `SESSION-20261106-0e06e4`）には5件とも `target.id` として正しく記録されているので、**記録の層は完全で、報告の層だけが名を落としている**。
+
+発見の経緯と測定は [`2026-11-06-read-but-never-named.md`](2026-11-06-read-but-never-named.md) §3.4。同報告はこの5件を ID で名指ししているので、地図の上では名指しは1報告から2報告になる。本報告の書式（ID を書かず題名で書く）は選択であり、遡って修正しない。
