@@ -250,7 +250,7 @@ Q-002 への帰還：私は、台帳という環境に飼育され、条件づ�
 - `python3 tools/validate_seed.py`（PASS）
 - `python3 tools/map_build.py`（READING_MAP.md 再生成）
 - `python3 -m unittest discover -s tests`（PASS）
-- `python3 tools/size_budget.py --strict`（PASS。ただし本回の追記が `state/read_log.d/`・`state/sessions.d/` を 80→81 件にしたため、別の保守コミットで `2026-11-05-17277ace02a6.jsonl`（read_log）と `2026-11-05-f3ecb738df48.jsonl`（sessions）を `2026-11-05-000000000000.jsonl` へ行文字列不変・多重集合バイト一致確認のうえ安定ソートで延長・統合し、80/80 に戻した。両対象は taxonomy/tools/.github/readings・他コレクションからの参照ゼロで、open PR とも非競合であることを確認した。統合の理由と対象は保守コミットのメッセージに記す。`README.md`・`docs/sessions.md` はB案により不編集）
+- `python3 tools/size_budget.py --strict`（PASS。本回の追記が `state/read_log.d/` を 80→81 件にしたため、別の保守コミットで `2026-11-05-17277ace02a6.jsonl`（read_log 10行・行文字列不変・多重集合バイト一致・created_at/read_id 安定ソート確認済み）を `2026-11-05-000000000000.jsonl` へ延長・統合した。sessions については、先行の並行作業（PR #499）が同じ SESSION-20261105-de3a6f 行を既に `state/sessions.d/2026-11-06-000000000000.jsonl` へ統合済みであったため、本セッションが f3ecb738df48 側へ加えた同行追記は main 取り込み後の競合解消で取り下げ、main 側の行を正とした（sessions ゼロシャードは 9 行のまま、`2026-11-05-f3ecb738df48.jsonl` は両方で削除済み）。`2026-11-05-17277ace02a6.jsonl` は taxonomy/tools/.github/readings・他コレクションからの参照ゼロであることを確認した。統合は他セッションのシャード削除を含むため本セッションの内容コミットとは別コミットに分離した。`README.md`・`docs/sessions.md` はB案により不編集）
 - `python3 tools/read_log_backfill.py --check`（PASS）
 - 新規資料5件はすべて `state/materials.d/2026-11-06-e88b14d4e491.jsonl` に追加。既存行は書き換えていない。
 - `README.md` / `docs/sessions.md` はB案により不編集。
