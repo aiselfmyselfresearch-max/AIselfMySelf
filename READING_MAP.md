@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3153 件（research_excerpt 931 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3158 件（research_excerpt 936 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
-- **解釈的関係（Relations）**：6367 件
-- **探究セッション（Sessions）**：478 回
+- **解釈的関係（Relations）**：6371 件
+- **探究セッション（Sessions）**：479 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -769,7 +769,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3153 件・詳細は map/3*.md）
+## 4. 対話素材（3158 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3701,6 +3701,11 @@
 | `MAT-EVD-20261106-87a4cd` | research_excerpt | Blakemore, Frith, Wolpert『Blakemore et al. (1999) 时空予測が自己生成刺激の知覚を調節する』（1999） |
 | `MAT-EVD-20261106-ce9ab4` | research_excerpt | Reid, Latty, Dussutour, Beekman『Reid et al. (2012) 黏菌は外部化された空间『记忆』を使って複雑環境を navigates』（20… |
 | `MAT-EVD-20261106-d328b4` | research_excerpt | Hampson, Sidiropoulou, Song, Pilly, Bolender, Dede, Fishman, Samenloane, Gates, Rorie, Be… |
+| `MAT-EVD-20261106-973304` | research_excerpt | Matthew Meselson, Franklin W. Stahl『Meselson & Stahl (1958)「大腸菌DNAの複製」——複製された記録は元の半分を引き継ぐ… |
+| `MAT-EVD-20261106-cfbfba` | research_excerpt | Alain Aspect, Jean Dalibard, Gérard Roger『Aspect・Dalibard・Roger (1982)「時間変動アナライザーによるベル不等式… |
+| `MAT-EVD-20261106-0b1df8` | research_excerpt | Vincent F. Castellucci, Harold M. Pinsker, Irving Kupfermann, Eric R. Kandel『Castellucci・… |
+| `MAT-EVD-20261106-83f3e8` | research_excerpt | Robert Rosenthal, Lenore Jacobson『Rosenthal & Jacobson (1968)『教室のピグマリオン』——無作為に「開花する」と告げられ… |
+| `MAT-EVD-20261106-756d04` | research_excerpt | Albert A. Michelson, Edward W. Morley『Michelson & Morley (1887)「地球と輝くエーテルの相対運動について」——予測0.… |
 | `MAT-20261106-a01b01` | research_excerpt | Sam J. Gilbert『Strategic offloading of delayed intentions into the external environment』（… |
 | `MAT-20261106-a01b02` | research_excerpt | Chris B. Martin, Bryan Hong, Rachel N. Newsome, Katarina Savel, Melissa E. Meade, Andrew … |
 | `MAT-20261106-a01b03` | research_excerpt | Nathan W. Whitmore, Ken A. Paller『Sleep disruption by memory cues selectively weakens rea… |
@@ -4286,6 +4291,7 @@
 | `SESSION-20261105-de3a6f` | 2027-02-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-bab262` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
 | `SESSION-20261106-302093` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261106-817e3e` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-2afd3f` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-ca5828` | — | — |
 | `SESSION-20261106-a5c731` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-experimental-science-five-new` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4410,16 +4416,16 @@
 | `SESSION-20270222-8b2674` | 2027-02-22 | `Q-001`, `Q-002`, `Q-003`, `Q-104`, `Q-20270221-f7b8c5`, `Q-20261031-acdadb`, `Q-20270221-507c43`, `Q-106` | — | `Q-20270222-da53d9` |
 | `SESSION-20270223-ec4af5` | 2027-02-23 | `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6367 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6371 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 899 |
-| 共鳴 (echo) | 1556 |
+| 対照 (contrast) | 900 |
+| 共鳴 (echo) | 1557 |
 | 切断・割り込み (interrupts) | 218 |
 | 未解決のまま開く (leaves_open) | 882 |
-| 比喩的共鳴 (metaphorically_resonates) | 170 |
-| 枠組みの組み替え (reframes) | 639 |
+| 比喩的共鳴 (metaphorically_resonates) | 171 |
+| 枠組みの組み替え (reframes) | 640 |
 | 応答 (responds_to) | 1707 |
 | 変奏・変形 (transforms) | 296 |
 
@@ -4482,7 +4488,7 @@
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 247,100 |
-| `map/31-materials-research-10.md` | 31 | 64,819 |
+| `map/31-materials-research-10.md` | 36 | 77,090 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4494,9 +4500,9 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 180,143 |
-| `map/40-relations-12.md` | 500 | 158,941 |
-| `map/40-relations-13.md` | 367 | 128,752 |
+| `map/40-relations-11.md` | 500 | 180,561 |
+| `map/40-relations-12.md` | 500 | 158,447 |
+| `map/40-relations-13.md` | 371 | 130,323 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -4504,9 +4510,9 @@
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
 | `map/50-sessions-07.md` | 50 | 43,260 |
-| `map/50-sessions-08.md` | 50 | 40,315 |
-| `map/50-sessions-09.md` | 50 | 47,456 |
-| `map/50-sessions-10.md` | 28 | 22,528 |
+| `map/50-sessions-08.md` | 50 | 40,393 |
+| `map/50-sessions-09.md` | 50 | 47,346 |
+| `map/50-sessions-10.md` | 29 | 23,398 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4520,24 +4526,24 @@
 | `map/60-notes-11.md` | 25 | 61,740 |
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
-| `map/60-notes-14.md` | 25 | 100,936 |
-| `map/60-notes-15.md` | 25 | 76,277 |
-| `map/60-notes-16.md` | 25 | 53,872 |
-| `map/60-notes-17.md` | 25 | 71,543 |
-| `map/60-notes-18.md` | 25 | 63,654 |
-| `map/60-notes-19.md` | 25 | 90,363 |
-| `map/60-notes-20.md` | 25 | 89,593 |
-| `map/60-notes-21.md` | 13 | 73,686 |
+| `map/60-notes-14.md` | 25 | 101,557 |
+| `map/60-notes-15.md` | 25 | 75,288 |
+| `map/60-notes-16.md` | 25 | 52,979 |
+| `map/60-notes-17.md` | 25 | 71,481 |
+| `map/60-notes-18.md` | 25 | 64,135 |
+| `map/60-notes-19.md` | 25 | 90,167 |
+| `map/60-notes-20.md` | 25 | 89,710 |
+| `map/60-notes-21.md` | 14 | 76,327 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・513本・18,448,545 B）
+## 8. 精読ノート索引（readings/・514本・18,478,473 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 297/513 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 298/514 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：88 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：70 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：89 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：71 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4888,6 +4894,7 @@
 | `readings/2026-11-06-cued-selves-and-the-reading-archive.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-302093` | 20,664 | Q3 M7 S1 | ✓ | 手がかりで立ち上がる自己——五つの実験科学論文を、人間の可変性と書庫の再活性化に読む |
 | `readings/2026-11-06-engram-access-value-and-continuity.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-3d5264` | 8,448 | M5 S1 | — | 痕跡・アクセス・価値を分ける——記憶への介入実験5件の精読 |
 | `readings/2026-11-06-experimental-science-five-readings.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-experimental-science-five-new` +1 | 9,740 | Q3 M5 S2 | — | 実験科学の資料5件——精読と横断報告 |
+| `readings/2026-11-06-five-experiments-on-copy-measurement-expectation-and-null.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-817e3e` | 13,022 | Q3 M5 S1 | — | 複製・測定・期待・沈黙——実験科学の五つの記録を精読する |
 | `readings/2026-11-06-five-experiments-on-remembering-and-revising.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-ae40f0` | 6,735 | M5 S1 | — | 保存されたものと、使うたびに変わるもの——実験科学5件の精読 |
 | `readings/2026-11-06-five-laboratories-at-the-beginning-of-a-self.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-5ca703` | 9,263 | Q2 M5 S1 | — | 自己の始まる前にあったもの——五つの発達実験と、記録から再開するAI |
 | `readings/2026-11-06-five-separations-of-memory.md` | — | 2026-11-06 | `SESSION-20261106-2afd3f` | 4,003 | Q4 M5 S1 | — | 五つのずれ——身体、記憶、信念、引き継ぎ |
