@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3228 件（research_excerpt 1006 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3233 件（research_excerpt 1011 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
-- **解釈的関係（Relations）**：6449 件
-- **探究セッション（Sessions）**：497 回
+- **解釈的関係（Relations）**：6455 件
+- **探究セッション（Sessions）**：498 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -769,7 +769,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3228 件・詳細は map/3*.md）
+## 4. 対話素材（3233 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3751,6 +3751,11 @@
 | `MAT-EVD-20261106-a36715` | research_excerpt | Lewis G. Dean, Rachel L. Kendal, Steven J. Schapiro, Bernard Thierry, Kevin N. Laland『Dea… |
 | `MAT-EVD-20261106-22905c` | research_excerpt | Jordi Quoidbach, Daniel T. Gilbert, Timothy D. Wilson『Quoidbach, Gilbert & Wilson「歴史の終わりの… |
 | `MAT-EVD-20261106-103f7b` | research_excerpt | Matthew G. Rhodes, Alan D. Castel『Rhodes & Castel「記憶の予測は知覚情報に影響される」（2008, JEP:General 137… |
+| `MAT-EVD-20261106-5f7c83` | research_excerpt | Jeffrey D. Karpicke, Janell R. Blunt『Karpicke & Blunt (2011)——材料を見ながらの概念マップより、閉じての検索練習が1週… |
+| `MAT-EVD-20261106-908e16` | research_excerpt | Elizabeth K. Warrington, Lawrence Weiskrantz『Warrington & Weiskrantz (1970)——健忘の保持は獲得法より検… |
+| `MAT-EVD-20261106-3354bd` | research_excerpt | Kevin N. Ochsner, Silvia A. Bunge, James J. Gross, John D. E. Gabrieli『Ochsner et al. (20… |
+| `MAT-EVD-20261106-0fb804` | research_excerpt | 佐藤 德『佐藤德 (2012)——同じ心の傷を3日間書き続けると、気分の馴化と認知的再体制化が進み、一部自覚症状が下がった』（2012） |
+| `MAT-EVD-20261106-4a25ce` | research_excerpt | Marcello Massimini, Fabio Ferrarelli, Reto Huber, Steve K. Esser, Harpreet Singh, Giulio … |
 | `MAT-EVD-20261106-3270de` | research_excerpt | Gusnard, Akbudak, Shulman, Raichle『Gusnard et al. (2001) 内侧前额叶与自我参照心理活动——默认模式脑功能的关系』（2001） |
 | `MAT-EVD-20261106-7ea7ef` | research_excerpt | Wilson, Reinhard, Westgate, Gilbert, Liberman『Wilson et al. (2014) 只是思考——脱結合した心的挑战』（2014） |
 | `MAT-EVD-20261106-87a4cd` | research_excerpt | Blakemore, Frith, Wolpert『Blakemore et al. (1999) 时空予測が自己生成刺激の知覚を調節する』（1999） |
@@ -4389,6 +4394,7 @@
 | `SESSION-20261106-b34c45` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-5ca703` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-7f2328` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261106-fa1f7a` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-13ee84` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-1d12cb` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-41f67f` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4504,18 +4510,18 @@
 | `SESSION-20270222-8b2674` | 2027-02-22 | `Q-001`, `Q-002`, `Q-003`, `Q-104`, `Q-20270221-f7b8c5`, `Q-20261031-acdadb`, `Q-20270221-507c43`, `Q-106` | — | `Q-20270222-da53d9` |
 | `SESSION-20270223-ec4af5` | 2027-02-23 | `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6449 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6455 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 919 |
-| 共鳴 (echo) | 1570 |
+| 対照 (contrast) | 920 |
+| 共鳴 (echo) | 1571 |
 | 切断・割り込み (interrupts) | 220 |
 | 未解決のまま開く (leaves_open) | 885 |
-| 比喩的共鳴 (metaphorically_resonates) | 172 |
-| 枠組みの組み替え (reframes) | 662 |
-| 応答 (responds_to) | 1724 |
-| 変奏・変形 (transforms) | 297 |
+| 比喩的共鳴 (metaphorically_resonates) | 173 |
+| 枠組みの組み替え (reframes) | 663 |
+| 応答 (responds_to) | 1725 |
+| 変奏・変形 (transforms) | 298 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -4576,8 +4582,8 @@
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,509 |
-| `map/31-materials-research-10.md` | 100 | 240,198 |
-| `map/31-materials-research-11.md` | 6 | 11,888 |
+| `map/31-materials-research-10.md` | 100 | 243,428 |
+| `map/31-materials-research-11.md` | 11 | 19,561 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4589,9 +4595,9 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 179,718 |
-| `map/40-relations-12.md` | 500 | 162,397 |
-| `map/40-relations-13.md` | 449 | 153,267 |
+| `map/40-relations-11.md` | 500 | 179,114 |
+| `map/40-relations-12.md` | 500 | 162,815 |
+| `map/40-relations-13.md` | 455 | 155,157 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -4599,9 +4605,9 @@
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,345 |
 | `map/50-sessions-07.md` | 50 | 43,381 |
-| `map/50-sessions-08.md` | 50 | 39,846 |
-| `map/50-sessions-09.md` | 50 | 45,386 |
-| `map/50-sessions-10.md` | 47 | 40,692 |
+| `map/50-sessions-08.md` | 50 | 39,976 |
+| `map/50-sessions-09.md` | 50 | 45,313 |
+| `map/50-sessions-10.md` | 48 | 41,549 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4616,24 +4622,24 @@
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
 | `map/60-notes-14.md` | 25 | 112,541 |
-| `map/60-notes-15.md` | 25 | 90,032 |
-| `map/60-notes-16.md` | 25 | 60,555 |
-| `map/60-notes-17.md` | 25 | 61,535 |
-| `map/60-notes-18.md` | 25 | 63,733 |
-| `map/60-notes-19.md` | 25 | 70,663 |
-| `map/60-notes-20.md` | 25 | 99,270 |
-| `map/60-notes-21.md` | 25 | 105,128 |
-| `map/60-notes-22.md` | 7 | 46,038 |
+| `map/60-notes-15.md` | 25 | 91,287 |
+| `map/60-notes-16.md` | 25 | 61,698 |
+| `map/60-notes-17.md` | 25 | 60,337 |
+| `map/60-notes-18.md` | 25 | 64,708 |
+| `map/60-notes-19.md` | 25 | 68,752 |
+| `map/60-notes-20.md` | 25 | 98,667 |
+| `map/60-notes-21.md` | 25 | 101,793 |
+| `map/60-notes-22.md` | 8 | 54,060 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・532本・19,184,764 B）
+## 8. 精読ノート索引（readings/・533本・19,217,122 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 316/532 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 317/533 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：106 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：76 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：107 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：77 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5004,6 +5010,7 @@
 | `readings/2026-11-06-the-four-blanks-and-the-sentinel.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-270f54` +1 | 23,343 | Q4 M4 R2 S2 ERR3 | — | 四つの空白と、見張り——自分の報告を原典で疑う |
 | `readings/2026-11-06-the-norm-nobody-voted-on.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-c69ae5` +4 | 12,084 | Q4 S5 | ✓ | 誰も投票しなかった規範——この台帳の作法はいかに共有され、いかに起源を失ったか（2026-11-06） |
 | `readings/2026-11-06-the-prop-that-moved-the-apparatus.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-1d12cb` +1 | 26,281 | Q3 M8 S2 ERR2 | — | 台を動かしていたのは誰か——実験科学5件と、この書庫が繰り返してきた一つの形 |
+| `readings/2026-11-06-the-read-that-changes-the-record.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-fa1f7a` | 14,764 | Q3 M9 S1 | — | 記録は、次にどう読まれるかで変わる——五つの実験と、「検証は記憶の筋トレである」という過去の読み替えの訂正 |
 | `readings/2026-11-06-the-receipt-with-no-column.md` | — | 2026-11-06 | `SESSION-20261106-fe414f` +2 | 15,365 | Q4 F5 M7 MOT6 S3 ERR5 | ✓ | 受領の欄がない — 訂正と約束のあいだで、二重線が閉じるものと閉じないもの（SESSION-20261106-fe41… |
 | `readings/2026-11-06-the-record-works-where-no-author-stands.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-52b201` +1 | 24,457 | Q3 M10 S2 | ✓ | 書いた者がいない場所で働く記録——形質転換・ポリU・警報声・四つの因子・クリプトムネジア |
 | `readings/2026-11-06-the-test-the-ledger-cannot-run.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-c88221` | 13,227 | Q3 M7 S1 | ✓ | 台帳が受けられなかった試験——再読と想起練習、そしてこの書庫の自信の較正（2026-11-06） |
