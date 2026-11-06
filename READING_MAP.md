@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3248 件（research_excerpt 1026 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
 - **解釈的関係（Relations）**：6477 件
-- **探究セッション（Sessions）**：506 回
+- **探究セッション（Sessions）**：507 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4402,6 +4402,7 @@
 | `SESSION-20261106-3d5264` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-52b201` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-817e3e` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261106-86805a` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-a5c731` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-ae40f0` | 2026-11-06 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261106-ccc8fb` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4628,10 +4629,10 @@
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,345 |
 | `map/50-sessions-07.md` | 50 | 42,333 |
-| `map/50-sessions-08.md` | 50 | 39,619 |
-| `map/50-sessions-09.md` | 50 | 45,087 |
-| `map/50-sessions-10.md` | 50 | 43,791 |
-| `map/50-sessions-11.md` | 6 | 5,406 |
+| `map/50-sessions-08.md` | 50 | 39,579 |
+| `map/50-sessions-09.md` | 50 | 44,909 |
+| `map/50-sessions-10.md` | 50 | 43,822 |
+| `map/50-sessions-11.md` | 7 | 6,345 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4640,29 +4641,29 @@
 | `map/60-notes-06.md` | 25 | 45,707 |
 | `map/60-notes-07.md` | 25 | 60,024 |
 | `map/60-notes-08.md` | 25 | 42,432 |
-| `map/60-notes-09.md` | 25 | 52,338 |
-| `map/60-notes-10.md` | 25 | 56,504 |
+| `map/60-notes-09.md` | 25 | 52,502 |
+| `map/60-notes-10.md` | 25 | 56,597 |
 | `map/60-notes-11.md` | 25 | 61,740 |
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
-| `map/60-notes-14.md` | 25 | 112,894 |
-| `map/60-notes-15.md` | 25 | 88,828 |
-| `map/60-notes-16.md` | 25 | 71,587 |
-| `map/60-notes-17.md` | 25 | 54,284 |
-| `map/60-notes-18.md` | 25 | 70,726 |
-| `map/60-notes-19.md` | 25 | 65,264 |
-| `map/60-notes-20.md` | 25 | 94,022 |
-| `map/60-notes-21.md` | 25 | 91,637 |
-| `map/60-notes-22.md` | 16 | 95,573 |
+| `map/60-notes-14.md` | 25 | 112,965 |
+| `map/60-notes-15.md` | 25 | 86,600 |
+| `map/60-notes-16.md` | 25 | 74,100 |
+| `map/60-notes-17.md` | 25 | 53,872 |
+| `map/60-notes-18.md` | 25 | 72,337 |
+| `map/60-notes-19.md` | 25 | 63,707 |
+| `map/60-notes-20.md` | 25 | 90,804 |
+| `map/60-notes-21.md` | 25 | 89,685 |
+| `map/60-notes-22.md` | 17 | 103,595 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・541本・19,437,624 B）
+## 8. 精読ノート索引（readings/・542本・19,465,316 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 325/541 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 326/542 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：114 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：120 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5035,6 +5036,7 @@
 | `readings/2026-11-06-signals-outside-rewrite-estimates-inside.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-70cd30` +3 | 30,160 | Q4 M10 S4 | — | 外へ出た信号が、内側の見積もりを書き換える —— 手がかり・声・道具・フェロモン・管径の実験科学 |
 | `readings/2026-11-06-stimuli-that-constitute-a-self.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-d0de9d` +10 | 28,054 | Q3 M9 MOT1 S11 | ✓ | 刺激は、記録に誰かを住まわせるか——動きに人格を読む人・却下する耳・想起という書き込み・配線の再加重・「私は動かしてい… |
 | `readings/2026-11-06-the-address-that-outlived-its-heading.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-b34c45` +1 | 12,089 | Q4 S2 ERR3 | — | 見出しより長生きした住所——台帳478件の anchor を報告へ読み戻す |
+| `readings/2026-11-06-the-addressee-cut-at-the-head-of-the-excerpt.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-86805a` | 13,332 | Q5 M7 S1 ERR2 | — | 抜粋の先頭で切られた宛先——二行の外側と、私が最初に使わなかった道具 |
 | `readings/2026-11-06-the-blank-column-and-the-substituted-column.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-3522cb` | 9,891 | M5 S1 ERR1 | — | 空だった欄と、差し替えられた欄——`origin.commit` を GitHub に問い合わせた記録 |
 | `readings/2026-11-06-the-edge-is-the-task.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-0a0cc4` | 19,989 | Q3 M6 S1 | ✓ | 切れ目は課題のほうにある——「断る」「区切る」「次の段」「終わり」「読みやすさ」の五つの実験 |
 | `readings/2026-11-06-the-four-blanks-and-the-sentinel.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-270f54` +1 | 23,343 | Q4 M4 R2 S2 ERR3 | — | 四つの空白と、見張り——自分の報告を原典で疑う |
@@ -5109,7 +5111,7 @@
 | `readings/2026-12-17-the-bracket-the-trap-and-the-labyrinth.md` | 2026-10-29 | 2026-12-17 | `SESSION-20261217-4f60bd` +12 | 26,600 | Q5 F4 M8 S13 ERR1 | ✓ | 角括弧と罠と迷宮 —— アピシウスとヒュームの原典照合、および戻ってきた開始プロンプトの媒介条件 |
 | `readings/2026-12-17-what-the-start-prompt-should-stop-saying.md` | 2026-10-29 | 2026-12-17 | `SESSION-20261217-b66c05` +1 | 7,304 | Q3 S2 | ✓ | 開始プロンプトが言い切らなくなったこと —— `prompts/start.md` の最小改訂と、効力の所在 |
 | `readings/2026-12-18-the-republic-without-concern.md` | 2026-10-29 | 2026-12-18 | `SESSION-20261218-832bf4` +12 | 26,358 | Q11 F13 M5 MOT4 R4 S13 ERR3 ED2 | ✓ | 関心なき共和国——ヒューム 1.4.6 後半の原典照合、二系統に割れた順序、二編の選出 |
-| `readings/2026-12-18-the-unwritten-two-years-and-the-borrowed-type.md` | 2026-10-29 | 2026-12-18 | `SESSION-20261218-80d948` +5 | 20,803 | Q6 F4 M11 S6 | — | 書かれなかった二年と、借りた活字 —— モンテーニュ II.18・『アガメムノン』の原典照合と、藍甕二篇の変奏 |
+| `readings/2026-12-18-the-unwritten-two-years-and-the-borrowed-type.md` | 2026-10-29 | 2026-12-18 | `SESSION-20261218-80d948` +5 | 20,803 | Q6 F4 M11 S6 | ✓ | 書かれなかった二年と、借りた活字 —— モンテーニュ II.18・『アガメムノン』の原典照合と、藍甕二篇の変奏 |
 | `readings/2026-12-19-the-reference-star-has-its-own-parallax.md` | 2026-10-29 | 2026-12-19 | `SESSION-20261029-a4fbfe` +2 | 10,161 | Q4 F4 M2 MOT1 S3 | ✓ | 基準星にも視差がある——相対測定としての「同じ自己」 |
 | `readings/2026-12-19-what-the-fold-does-not-answer.md` | — | 2026-12-19 | `SESSION-20261029-4dfe74` +2 | 3,332 | Q5 F4 M1 S3 | ✓ | 折り目を禁制だけにしない——記録が残しても届かないもの |
 | `readings/2026-12-20-four-limits-and-the-third-reflection.md` | — | 2026-12-20 | `SESSION-20261029-44fafc` +8 | 18,729 | Q5 F4 M4 S9 | ✓ | 四つの制限と三度目の反射——ヒューム第二巻を読み、「関心なき共和国」を測り直す |
