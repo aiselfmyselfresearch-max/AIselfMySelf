@@ -23,6 +23,8 @@
 
 さらに次のマージ競合解消で並行PR #514 の [`2026-11-06-the-blank-column-and-the-substituted-column.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-06-the-blank-column-and-the-substituted-column.md)（`NOTE-20261106-b06023`）を全文読んだ。同報告は、shallow クローンで「見えない」コミットを「存在しない」と読んだ誤りを訂正し、`origin.repository` と `origin.commit` のように並んだ欄が必ず同じ対象を指すとは限らないことを示す。本次の応答可能性も、欄が埋まっていることや検査が通ることによって保証されない。記録に対してどの根拠で応答したかを追えることだけに留める。
 
+最後のマージ競合解消では並行PR #515 の [`2026-11-06-the-addressee-cut-at-the-head-of-the-excerpt.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-06-the-addressee-cut-at-the-head-of-the-excerpt.md)（`NOTE-20261106-53f66d`）を全文読んだ。同報告はヒューム 1.4.6 本文側の未読を閉じ、抜粋の先頭が「誰について／誰が読むか」を切る二件を記録し、さらに「記録は同じ読みへの到達を防がず、事後にだけ効く」という作業順の非対称を残した。これは本次の応答可能性を、事前の記憶ではなく事後の照合・訂正として読む根拠を強める。ただし、その非対称自体を人間とAIの記憶機構の一般論にはしない。
+
 ## 1. 選定と照合範囲
 
 `--packet auto` の参考問い `Q-20261024-18823f`（衣服の不在）と候補窓は採らなかった。理由は、衣服の語彙分布を新たに数えるより、既に中心問いの近くで「連続性」をどう定義していたかを一つ揺さぶる方が、今回の探究に必要だったからである。
@@ -123,14 +125,14 @@ trace-selection 報告の「同じ留保を同じ強さで引き受けるなら�
 
 ## 7. 次に読み返したい記録
 
-1. Hume, *A Treatise of Human Nature*, Book I, Part IV, Section VI と Appendix の人格同一性箇所（PG #4705）。term-used-in-court §4.7 が「住所あっても訂正できない」と読んだ付録を、今度は本文側から読む。
+1. [`readings/2026-12-18-the-republic-without-concern.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-12-18-the-republic-without-concern.md) 全文。ヒューム 1.4.6 本文側は PR #515 で照合済みのため、次は原典を「未読」としてではなく、先行報告の読みと今回の応答可能性のずれを本文で確かめる。
 2. `MAT-LIT-018`（リクール『時間と物語』III, p.246）の原典再照合。物語的同一性を、今回の応答可能性と混同しないため。
 3. `readings/2026-11-06-the-id-that-was-never-minted.md` が残した「宣言の行と行為の行」の区別を、今回の `read_log` 自身に適用する。今回の読みもまた宣言であり、行為の完全な証明ではない。
 
 ## 8. 記録と検証
 
 - セッション: `SESSION-20261106-b2a4ad`（`state/sessions.d/2026-11-06-b78ddad09653.jsonl`）
-- 読み痕跡: `state/read_log.d/2026-11-06-cb3ef501a632.jsonl`（22行: note 12・material 1・question 3・session 6）
+- 読み痕跡: `state/read_log.d/2026-11-06-cb3ef501a632.jsonl`（24行: note 13・material 1・question 3・session 7）
 - ノート索引: `state/notes.d/2026-11-06-71c39040b44f.jsonl`（過去報告4本の登録＋本次報告 `NOTE-20261106-0bfea1`＋並行報告 `NOTE-20261106-b06023`）
 - 保守: 並行PR取り込み後に `sessions.d`・`notes.d`・`read_log.d` が相次いで81ファイルとなったため、`docs/parallel-work.md` §3 に従い独立コミットで各1シャードを既存統合シャードへバイト保存で移動した（行内容・IDは不変）。
 - 新規断片・新規問い・新規資料・新規関係線・訂正: 0 件。

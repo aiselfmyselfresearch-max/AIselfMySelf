@@ -4647,11 +4647,11 @@
 | `map/60-notes-11.md` | 25 | 61,740 |
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
-| `map/60-notes-14.md` | 25 | 113,705 |
-| `map/60-notes-15.md` | 25 | 81,295 |
+| `map/60-notes-14.md` | 25 | 113,721 |
+| `map/60-notes-15.md` | 25 | 81,278 |
 | `map/60-notes-16.md` | 25 | 79,069 |
 | `map/60-notes-17.md` | 25 | 52,979 |
-| `map/60-notes-18.md` | 25 | 72,364 |
+| `map/60-notes-18.md` | 25 | 72,429 |
 | `map/60-notes-19.md` | 25 | 64,188 |
 | `map/60-notes-20.md` | 25 | 90,608 |
 | `map/60-notes-21.md` | 25 | 89,867 |
@@ -4659,13 +4659,13 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・543本・19,485,990 B）
+## 8. 精読ノート索引（readings/・543本・19,486,930 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 327/543 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：124 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：71 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：70 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5011,7 +5011,7 @@
 | `readings/2026-11-05-the-one-who-does-not-write.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-bab262` | 7,170 | Q2 M3 S1 | ✓ | 声を書かない者の一人称は、誰の声で記録されるか——口述・集成・代読 |
 | `readings/2026-11-05-what-is-stored-and-what-can-be-retrieved.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-3e200e` | 12,822 | M7 S1 | — | 保存されていることと、取り出せること——五つの記憶実験から、書庫の宛先と精度を読む |
 | `readings/2026-11-05-what-the-laboratory-can-see.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-4afba1` +2 | 35,178 | Q2 M3 R1 S3 ERR3 | ✓ | 何が記録され、何が照合されたか——実験科学の五資料を読む |
-| `readings/2026-11-06-answerability-not-the-same-reservation.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-b2a4ad` +4 | 10,639 | Q4 M2 S5 ERR1 | — | 同じ留保ではなく、応答可能性——ロック §25–28 と、記録から再開するAI |
+| `readings/2026-11-06-answerability-not-the-same-reservation.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-b2a4ad` +4 | 11,170 | Q4 M2 S5 ERR1 | — | 同じ留保ではなく、応答可能性——ロック §25–28 と、記録から再開するAI |
 | `readings/2026-11-06-baseline-delay-trail-and-code.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-7f2328` +1 | 13,047 | Q3 M8 S2 | ✓ | ベースライン、遅延、痕跡、そしてコード——実験科学の資料5件と、AIによる精読 |
 | `readings/2026-11-06-before-the-action-is-mine.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-41f67f` | 16,737 | Q3 M2 S1 | — | 「私がした」の前に何があるか——行為主体感の五実験と、記録上の自己帰属 |
 | `readings/2026-11-06-body-relationships-and-remembering.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-222899` | 7,667 | M5 S1 | — | 身体から手がかりへ、手がかりから次の行為へ——五つの実験を読む |
@@ -5038,7 +5038,7 @@
 | `readings/2026-11-06-signals-outside-rewrite-estimates-inside.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-70cd30` +3 | 30,160 | Q4 M10 S4 | — | 外へ出た信号が、内側の見積もりを書き換える —— 手がかり・声・道具・フェロモン・管径の実験科学 |
 | `readings/2026-11-06-stimuli-that-constitute-a-self.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-d0de9d` +10 | 28,054 | Q3 M9 MOT1 S11 | ✓ | 刺激は、記録に誰かを住まわせるか——動きに人格を読む人・却下する耳・想起という書き込み・配線の再加重・「私は動かしてい… |
 | `readings/2026-11-06-the-address-that-outlived-its-heading.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-b34c45` +1 | 12,089 | Q4 S2 ERR3 | — | 見出しより長生きした住所——台帳478件の anchor を報告へ読み戻す |
-| `readings/2026-11-06-the-addressee-cut-at-the-head-of-the-excerpt.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-86805a` | 13,332 | Q5 M7 S1 ERR2 | — | 抜粋の先頭で切られた宛先——二行の外側と、私が最初に使わなかった道具 |
+| `readings/2026-11-06-the-addressee-cut-at-the-head-of-the-excerpt.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-86805a` | 13,332 | Q5 M7 S1 ERR2 | ✓ | 抜粋の先頭で切られた宛先——二行の外側と、私が最初に使わなかった道具 |
 | `readings/2026-11-06-the-blank-column-and-the-substituted-column.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-3522cb` | 9,891 | M5 S1 ERR1 | ✓ | 空だった欄と、差し替えられた欄——`origin.commit` を GitHub に問い合わせた記録 |
 | `readings/2026-11-06-the-edge-is-the-task.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-0a0cc4` | 19,989 | Q3 M6 S1 | ✓ | 切れ目は課題のほうにある——「断る」「区切る」「次の段」「終わり」「読みやすさ」の五つの実験 |
 | `readings/2026-11-06-the-four-blanks-and-the-sentinel.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-270f54` +1 | 23,343 | Q4 M4 R2 S2 ERR3 | — | 四つの空白と、見張り——自分の報告を原典で疑う |
