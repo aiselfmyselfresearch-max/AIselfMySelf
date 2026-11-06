@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3133 件（research_excerpt 911 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3138 件（research_excerpt 916 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
 - **解釈的関係（Relations）**：6364 件
-- **探究セッション（Sessions）**：474 回
+- **探究セッション（Sessions）**：475 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -769,7 +769,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3133 件・詳細は map/3*.md）
+## 4. 対話素材（3138 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3681,6 +3681,11 @@
 | `MAT-20261106-ae4003` | research_excerpt | Benjamin C. Storm, Sean M. Stone『Storm & Stone（2015）——保存と後続学習』（2015） |
 | `MAT-20261106-ae4004` | research_excerpt | Almut Hupbach, Rebecca Gomez, Oliver Hardt, Lynn Nadel『Hupbach et al.（2007）——再想起と新情報の混入』（… |
 | `MAT-20261106-ae4005` | research_excerpt | Lars Schwabe, Oliver T. Wolf『Schwabe & Wolf（2009）——ストレスと習慣的行動』（2009） |
+| `MAT-EVD-20261106-ef9f3f` | research_excerpt | W. B. Scoville, Brenda Milner『Scoville & Milner (1957)——新しい経験を後へ渡す経路の障害と、残る自己』（1957） |
+| `MAT-EVD-20261106-a04f99` | research_excerpt | Peter Graf, Daniel L. Schacter『Graf & Schacter (1985)——想起できないことと、新しい連合が残らないことは別』（1985） |
+| `MAT-EVD-20261106-dc021d` | research_excerpt | Nikos K. Logothetis, Jeffrey D. Schall『Logothetis & Schall (1989)——同じ網膜入力でも、知覚と神経活動は切り替わる… |
+| `MAT-EVD-20261106-67686d` | research_excerpt | Ruben P. Alvarez, Linda Johnson, Christian Grillon『Alvarez・Johnson・Grillon (2007)——消えた反応は… |
+| `MAT-EVD-20261106-5b30b5` | research_excerpt | Joseph Henrich, Jean Ensminger, Richard McElreath, Abigail Barr, Clark Barrett, Alexander… |
 | `MAT-EVD-20261106-3270de` | research_excerpt | Gusnard, Akbudak, Shulman, Raichle『Gusnard et al. (2001) 内侧前额叶与自我参照心理活动——默认模式脑功能的关系』（2001） |
 | `MAT-EVD-20261106-7ea7ef` | research_excerpt | Wilson, Reinhard, Westgate, Gilbert, Liberman『Wilson et al. (2014) 只是思考——脱結合した心的挑战』（2014） |
 | `MAT-EVD-20261106-87a4cd` | research_excerpt | Blakemore, Frith, Wolpert『Blakemore et al. (1999) 时空予測が自己生成刺激の知覚を調節する』（1999） |
@@ -4233,6 +4238,7 @@
 | `SESSION-20261103-b115a2` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-85a285`, `Q-20270102-29c347`, `Q-20261103-32a3cd`, `Q-20261103-45a83f` | — | `Q-20261103-45a83f` |
 | `SESSION-20261103-340edd` | 2027-01-24 | `Q-20270102-29c347`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261104-1a9188` | 2026-11-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20261104-47566b`, `Q-20261104-98a5f4` | — | `Q-20261104-47566b`, `Q-20261104-98a5f4` |
+| `SESSION-20261104-b831f0` | 2026-11-04 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261104-cc8e3e` | 2026-11-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20261104-47566b`, `Q-20261104-86135b` | — | `Q-20261104-86135b` |
 | `SESSION-20261104-a59e2a` | 2027-01-27 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270127-fcd1ff` | 2027-01-27 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-c8c203` | — | — |
@@ -4247,7 +4253,6 @@
 | `SESSION-20270204-4ab7e1` | 2027-02-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20270203-85358f` | — | — |
 | `SESSION-20261104-45c26b` | 2027-02-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261104-59da42` | 2027-02-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261104-b831f0` | 2026-11-04 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-26aefc` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
 | `SESSION-20261105-35828d` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-4afba1` | 2026-11-05 | `Q-001`, `Q-002` | — | — |
@@ -4269,6 +4274,7 @@
 | `SESSION-20261106-2afd3f` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-ca5828` | — | — |
 | `SESSION-20261106-a5c731` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-experimental-science-five-new` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261106-9807c6` | 2027-02-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-ae40f0` | 2026-11-06 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261106-270f54` | 2026-11-06 | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-5ca703` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4457,8 +4463,8 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 100 | 245,440 |
-| `map/31-materials-research-10.md` | 11 | 22,682 |
+| `map/31-materials-research-09.md` | 100 | 247,399 |
+| `map/31-materials-research-10.md` | 16 | 31,717 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4480,9 +4486,9 @@
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
 | `map/50-sessions-07.md` | 50 | 43,260 |
-| `map/50-sessions-08.md` | 50 | 41,062 |
-| `map/50-sessions-09.md` | 50 | 46,905 |
-| `map/50-sessions-10.md` | 24 | 19,187 |
+| `map/50-sessions-08.md` | 50 | 41,170 |
+| `map/50-sessions-09.md` | 50 | 46,966 |
+| `map/50-sessions-10.md` | 25 | 19,972 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4503,17 +4509,17 @@
 | `map/60-notes-18.md` | 25 | 67,661 |
 | `map/60-notes-19.md` | 25 | 95,469 |
 | `map/60-notes-20.md` | 25 | 91,958 |
-| `map/60-notes-21.md` | 9 | 54,263 |
+| `map/60-notes-21.md` | 10 | 58,821 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・509本・18,328,054 B）
+## 8. 精読ノート索引（readings/・510本・18,355,837 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 293/509 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 294/510 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：84 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：68 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：85 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：69 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5026,3 +5032,4 @@
 | `readings/2027-02-22-counting-the-stock-without-a-new-column.md` | 2026-11-05 | 2027-02-22 | `SESSION-20270222-8b2674` +1 | 18,111 | Q9 F12 M7 MOT1 R1 S2 ERR5 | ✓ | 在庫を測る——名前の不在を欠如と呼ばないために |
 | `readings/2027-02-22-zombies-and-the-window.md` | 2026-11-05 | 2027-02-22 | `SESSION-20270222-7c721e` +1 | 4,879 | Q1 M5 S2 | ✓ | ゾンビと窓——「明るさ」の非対称は、人間側でも同じ構造か（Q-002再考・その三） |
 | `readings/2027-02-23-the-trained-disclaimer.md` | 2026-11-05 | 2027-02-23 | `SESSION-20270223-ec4af5` +1 | 5,481 | Q1 M6 S2 | ✓ | 訓練された免責——「一人称の錨」はアライメントで書き換わるのか（Q-002再考・その四） |
+| `readings/2027-02-24-five-experiments-on-context-and-identity.md` | 2026-11-06 | 2027-02-24 | `SESSION-20261106-9807c6` | 11,293 | M5 S1 | — | 文脈は記録を消すのか、それとも読み出しを変えるのか |
