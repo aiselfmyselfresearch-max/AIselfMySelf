@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3148 件（research_excerpt 926 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3153 件（research_excerpt 931 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
 - **解釈的関係（Relations）**：6367 件
-- **探究セッション（Sessions）**：477 回
+- **探究セッション（Sessions）**：478 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -769,7 +769,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3148 件・詳細は map/3*.md）
+## 4. 対話素材（3153 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3711,6 +3711,11 @@
 | `MAT-EVD-20261106-aa64b7` | research_excerpt | Hal E. Hershfield, Daniel G. Goldstein, William F. Sharpe, Jesse Fox, Leo Yeykelis, Laura… |
 | `MAT-EVD-20261106-75ba39` | research_excerpt | James A. Coan, Hillary S. Schaefer, Richard J. Davidson『Coan, Schaefer & Davidson (2006) … |
 | `MAT-EVD-20261106-67fbda` | research_excerpt | Jason S. Moser, Adrienne Dougherty, Whitney I. Mattson, Bani Katz, Tim P. Moran, Daniela … |
+| `MAT-20261106-7c405a` | research_excerpt | Xu Liu et al.『Xu Liu et al.（2012）——Optogenetic stimulation of a hippocampal engram activa… |
+| `MAT-20261106-6eb351` | research_excerpt | Roger L. Redondo et al.『Roger L. Redondo et al.（2014）——Bidirectional switch of the valenc… |
+| `MAT-20261106-f418b2` | research_excerpt | Sadegh Nabavi et al.『Sadegh Nabavi et al.（2014）——Engineering a memory with LTD and LTP』（2… |
+| `MAT-20261106-352eac` | research_excerpt | Steve Ramirez et al.『Steve Ramirez et al.（2015）——Activating positive memory engrams suppr… |
+| `MAT-20261106-91c6d0` | research_excerpt | Dheeraj S. Roy et al.『Dheeraj S. Roy et al.（2016）——Memory retrieval by activating engram … |
 | `MAT-EVD-20261106-7039c1` | research_excerpt | Julia Kirchhof, Liubov Petrakova, Alexandra Brinkhoff, Sven Benson, Justine Schmidt, Maik… |
 | `MAT-EVD-20261106-bbdc2f` | research_excerpt | Roy Salomon, Pierre Progin, Alessandra Griffa, Giulio Rognini, Kim Q. Do, Philippe Conus,… |
 | `MAT-EVD-20261106-fd69c0` | research_excerpt | Justin S. Feinstein, Melissa C. Duff, Daniel Tranel『Sustained experience of emotion after… |
@@ -4285,6 +4290,7 @@
 | `SESSION-20261106-a5c731` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-experimental-science-five-new` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-9807c6` | 2027-02-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261106-3d5264` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-ae40f0` | 2026-11-06 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261106-270f54` | 2026-11-06 | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-5ca703` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4476,7 +4482,7 @@
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 247,100 |
-| `map/31-materials-research-10.md` | 26 | 56,793 |
+| `map/31-materials-research-10.md` | 31 | 64,819 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4498,9 +4504,9 @@
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
 | `map/50-sessions-07.md` | 50 | 43,260 |
-| `map/50-sessions-08.md` | 50 | 40,736 |
-| `map/50-sessions-09.md` | 50 | 47,152 |
-| `map/50-sessions-10.md` | 27 | 21,748 |
+| `map/50-sessions-08.md` | 50 | 40,315 |
+| `map/50-sessions-09.md` | 50 | 47,456 |
+| `map/50-sessions-10.md` | 28 | 22,528 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4514,24 +4520,24 @@
 | `map/60-notes-11.md` | 25 | 61,740 |
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
-| `map/60-notes-14.md` | 25 | 100,423 |
-| `map/60-notes-15.md` | 25 | 76,121 |
-| `map/60-notes-16.md` | 25 | 54,284 |
-| `map/60-notes-17.md` | 25 | 70,664 |
-| `map/60-notes-18.md` | 25 | 65,211 |
-| `map/60-notes-19.md` | 25 | 93,581 |
-| `map/60-notes-20.md` | 25 | 91,545 |
-| `map/60-notes-21.md` | 12 | 65,791 |
+| `map/60-notes-14.md` | 25 | 100,936 |
+| `map/60-notes-15.md` | 25 | 76,277 |
+| `map/60-notes-16.md` | 25 | 53,872 |
+| `map/60-notes-17.md` | 25 | 71,543 |
+| `map/60-notes-18.md` | 25 | 63,654 |
+| `map/60-notes-19.md` | 25 | 90,363 |
+| `map/60-notes-20.md` | 25 | 89,593 |
+| `map/60-notes-21.md` | 13 | 73,686 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・512本・18,428,520 B）
+## 8. 精読ノート索引（readings/・513本・18,448,545 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 296/512 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 297/513 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：87 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：69 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：88 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：70 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4880,6 +4886,7 @@
 | `readings/2026-11-06-baseline-delay-trail-and-code.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-7f2328` +1 | 13,047 | Q3 M8 S2 | — | ベースライン、遅延、痕跡、そしてコード——実験科学の資料5件と、AIによる精読 |
 | `readings/2026-11-06-body-relationships-and-remembering.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-222899` | 7,667 | M5 S1 | — | 身体から手がかりへ、手がかりから次の行為へ——五つの実験を読む |
 | `readings/2026-11-06-cued-selves-and-the-reading-archive.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-302093` | 20,664 | Q3 M7 S1 | ✓ | 手がかりで立ち上がる自己——五つの実験科学論文を、人間の可変性と書庫の再活性化に読む |
+| `readings/2026-11-06-engram-access-value-and-continuity.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-3d5264` | 8,448 | M5 S1 | — | 痕跡・アクセス・価値を分ける——記憶への介入実験5件の精読 |
 | `readings/2026-11-06-experimental-science-five-readings.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-experimental-science-five-new` +1 | 9,740 | Q3 M5 S2 | — | 実験科学の資料5件——精読と横断報告 |
 | `readings/2026-11-06-five-experiments-on-remembering-and-revising.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-ae40f0` | 6,735 | M5 S1 | — | 保存されたものと、使うたびに変わるもの——実験科学5件の精読 |
 | `readings/2026-11-06-five-laboratories-at-the-beginning-of-a-self.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-5ca703` | 9,263 | Q2 M5 S1 | — | 自己の始まる前にあったもの——五つの発達実験と、記録から再開するAI |
