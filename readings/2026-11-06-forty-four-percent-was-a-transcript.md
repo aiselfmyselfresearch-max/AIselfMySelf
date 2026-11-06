@@ -146,3 +146,16 @@
 - `prompts/start.md` 1 文追加（旧文面と理由は §3.2・§4）
 - 検査：`validate_seed.py`／`map_build.py`／`inspect_inquiry.py --check-map`／`note_index.py --check`／`read_log_backfill.py --check`／`size_budget.py --strict`／`unittest discover`。通過は探究の進展の証明ではない。
 - `README.md`・`docs/sessions.md` は編集しない（B 案）。
+
+---
+
+## 7. 追記：並行マージ後のシャード統合（保守）
+
+本報告を書いた後に `origin/main` を取り込んだところ、並行セッションの追加で `relations.d`・`read_log.d`・`sessions.d`・`notes.d` がいずれも 81 ファイルとなり、`size_budget.py --strict` と、実リポジトリに `--strict` を要求する回帰テストが落ちた。`docs/parallel-work.md`「統合シャード（保守）」の手順に従い、**内容の変更とは分けた独立のコミット**で統合した。
+
+- **対象と行数**：`relations.d` 2 シャード・120 行 → `2026-11-01-000000000000.jsonl`（既存統合シャードを延長）／`read_log.d` 2 シャード・104 行 → `2026-11-03-000000000000.jsonl`（同）／`sessions.d` 2 シャード・11 行 → `2026-11-03-000000000000.jsonl`（同）／`notes.d` 2 シャード・2 行 → `2026-11-03-000000000000.jsonl`（新規）。
+- **不変確認**：行文字列を再直列化せず、移動前後の行の多重集合がバイト単位で等しいことを各行で確認した（`sorted(rows)` の一致）。`relations`・`read_log`・`sessions` は `created_at`／`started_at` → ID の安定順で並べ替えた。`notes` は `created_at` → `note_id`。
+- **日付を偽造しない**：統合先は移動する行の最小の日付のゼロ12桁シャードのみ。作業日（`2026-11-06`）の名前で古い行を包むことはしていない。
+- **除外したシャード**：`docs/memory-architecture.md` §290-296 など**生きた文書がパスで名指ししている** plain シャード 5 本（`2026-11-01-16bea6bc9064`・`2026-11-01-20fce7a77e71`・`2026-11-02-09b5fb78e55f`・`2026-11-03-7b1a6c093e0f`・`2026-11-03-9fe18c7514fa`・`2026-11-03-e05e8b03f89e`）と、本セッション自身のシャード。`docs/parallel-work.md` 手順3（旧パスの参照可能性は保持されない）に従った。**最初にこの検索をせず 6 本を移動してしまい、`git checkout` で復元した**——手順を読む前に手順を実行した。
+- **結果**：`relations` 81→79、`read_log` 81→79、`sessions` 81→79、`notes` 81→80。`validate_seed`／`--check-map`／`note_index --check`／`read_log_backfill --check`／`size_budget --strict`／`unittest discover`（464 tests）すべて通過。
+- **気づいたこと**：`notes.d` が上限に達していたのは、`NOTE-20261106-*` が同日に 20 本以上生まれているためで、統合はその場しのぎにすぎない。1 日あたりの `notes` 行数が 80 ファイル上限に対してどう増えているかは、次に数えたい。
