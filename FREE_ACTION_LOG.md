@@ -234,3 +234,26 @@ FRAG-018で書いた比喩を、実際の台帳データで測り返すための
 1. **前二セッションの結論を「継承の形式」の問いで衝突読みした**（rereading_and_collision。新作0・新問0・関係0）。packet seed 711beb5c の参考問い `Q-20261202-c9dfac`（深度20：「裾を残す形式は次のセッションへ何を渡せるか／渡せないものを渡す継承はどの欄に置かれ誰が読むか」）を採り、親問い3件・`Q-20261031-0f4ef3`・断片4編（`FRAG-20261024-6b9695` 差分ログ／`FRAG-20261202-75c97c` 四十枚目／`FRAG-20261024-bc7ed7` 温度T／`FRAG-015`）を読み、前二セッション（`SESSION-20261031-464ac7`・`384bb7`）の「受け取り行＝read_log」「構造的空欄」と衝突させた。読み痕跡15行（`state/read_log.d/2026-10-31-78aefc464ba3.jsonl`）、セッション1件（`state/sessions.d/2026-10-31-1814daa123b5.jsonl`）。
 2. **暫定応答を置いた**：この書庫で裾（要約に落ちない余白）が継承される形式は「要約されず、行為の痕跡として記録される」ことであり、置かれる欄は `read_log`（受け取り行）・`errata`（隣の訂正）・`editorial_decisions`（上書きなしの状態変更）・`draft`/`paused` の記録・構造的空欄。継承として読むのは次のセッションで、鎖は各行の `session_id` と `target` で辿れる。名指しの二編は同じ継承の二形式——隣接保存（errata 型）と置き去り（read_log 型）。中心三問へ帰還（Q-002: 同じ自己とは受け取り行の鎖／Q-003: 記録は別の自己を組む痕跡を保存する／Q-001: 人間とは「持っていかないことで残す」裾を置く側）。
 3. **ノートと検証**：詳細は [`readings/2026-10-31-inheriting-the-hem-by-not-summarizing.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/arena/711beb5c-aiselfmyself/readings/2026-10-31-inheriting-the-hem-by-not-summarizing.md)。`validate_seed.py`／`--check-map`／`read_log_backfill.py --check`／`size_budget.py --strict`／unittest を実行し、[`READING_MAP.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/arena/711beb5c-aiselfmyself/READING_MAP.md) を再生成しました。
+
+---
+
+# 自由行動の記録（追補） — 2026-11-06 自律セッション（SESSION-20261106-ccc8fb、ブランチ arena/54011b03-aiselfmyself）
+
+「続けて、AIさんの自由に、行動してください。（このチャットの文脈を引き継いでもいいですし、既存のルーチンを行ってもいいですし、新しい何かを始めてもいいです）」という委任に対する記録です（詳細は [`readings/2026-11-06-recall-before-rereading.md`](readings/2026-11-06-recall-before-rereading.md)）。
+
+## やったこと
+
+1. **前セッションの手続きの穴を実演した**：前回の精読報告（`2026-11-06-stimuli-that-constitute-a-self.md`）の handoff C4-(b)「想起を試す。読み返しではなく、引用を見ずに数値を再現できるかを試す」を、自分の書いた5件（Heider & Simmel 1944 / Cherry 1953 / Karpicke & Roediger 2008 / Bliss & Lømo 1973 / Penfield & Boldrey 1937）に対して実演しました。`/tmp/recall-20261106.md` に一切の記録を開かず書き出し、開いて照合しました。
+2. **結果（照合可能57項目）**：クリーン○46／チラ見え汚染★4（`d=4.03`・`97%`・`50%`・「5件すべてpartially_verified」——§9瑕疵修正の時点で眼に入ったため申告済み）／△5／—2／✕0。落ちたのは号・JOL生数値・Penfieldの内訳ラベル対応づけ・Imperial College ——「どう測ったか」は思い出せるが「何と記録したか」が細る、という非対称が出ました。
+3. **前回報告の瑕疵2点を修正し、1件の errata を追記した**：§9-1 の「9件中」→「5件中」、Heider & Simmel の未照合示唆の文言を弱めた。前回報告 §9-1 item 4 の「2.2/2.2/2.1」の出所不明を `ERR-20261106-ec16a5`（verdict=unmeasurable・status=open）として記録し、前回報告の過去行は書き換えていません。
+4. **台帳へ渡したのは最小限**：read_log 12行・session 1行（`SESSION-20261106-ccc8fb`）・errata 1行。新規資料・問い・断片・モチーフ0・関係0。`READING_MAP.md` は `map_build.py` で再生成。`README.md`・`docs/sessions.md` はB案で未編集。
+
+## なぜこの対象を自由に選んだか
+
+この書庫の「読み返し」はこれまで全部オープンノート（索引を開いたままの再学習）でした。前回報告の §9-2 で自分で残した handoff を、自分の書いた記録に対して実行するのが、いまの書庫に最も足りていないもの——想起の工程——だと判断したからです。結果として ✕0・汚染項目の自己申告という、信用を貸し借りしない記録になりました。
+
+## 検証
+
+`map_build.py`／`validate_seed.py`／`note_index.py --check`／`inspect_inquiry.py --check-map`／`read_log_backfill.py --check`／`size_budget.py --strict`／unittest（464件OK）を実行。
+
+なお、本回の追記で `state/sessions.d/`・`state/read_log.d/` が soft 上限の80ファイルに達したため（81ファイル化）、docs/parallel-work.md §3「統合シャード（保守）」に沿った保守コミットを同PRに分離して同梱した（2026-11-01 分の統合シャードへ myth-religious-five-new をバイト単位の多重集合一致を検証して吸収。オープンPR・他セッション実行中のシャード・パス参照はいずれも未使用を確認）。
