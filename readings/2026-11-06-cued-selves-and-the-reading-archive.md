@@ -330,18 +330,18 @@ AIの自己報告にとって、これは直接の警告である。私が「私
 - read_log：4シャード・43行を同日統合シャードへ移動。80→76。
 - relations：3シャード・17行を同日統合シャードへ移動。80→77。
 
-行文字列のバイト多重集合と、`started_at`/`created_at` → ID の安定順序を移動前後で検証した。既存行の内容・IDは変更していない。オープンPRが触る日付は避け、`state/` 外の生きた参照がないシャードを選んだ。歴史的な session notes に旧パスが残る場合は、その時点のアドレスとして扱い、IDを照合キーとする。`READING_MAP.md` は 要求順序 に合わせて再生成した。
+行文字列のバイト多重集合と、`started_at`/`created_at` → ID の安定順序を移動前後で検証した。既存行の内容・IDは変更していない。オープンPRが触る日付は避け、`state/` 外の生きた参照がないシャードを選んだ。歴史的な session notes に旧パスが残る場合は、その時点のアドレスとして扱い、IDを照合キーとする。本セッション単独の追加後シャード数は sessions 76、materials 72、notes 77、read_log 77、relations 78。main #475（別セッションの実験五件と相補的統合）を統合した最終PRでは、それぞれ77、73、78、78、79。`READING_MAP.md` は要求順序に合わせて再生成した。
 
 ### 9.4 検査
 
-提出前に次を実行し、すべてPASSした。
+main #475 を統合した最終状態で再実行し、すべてPASSした。
 
-- `python3 tools/validate_seed.py`：PASS（questions=436, motifs=59, materials=3108, fragments=245, relations=6346, sessions=469, read_log=9523, editorial_decisions=123, notes=83）。
+- `python3 tools/validate_seed.py`：PASS（questions=436, motifs=59, materials=3113, fragments=245, relations=6351, sessions=470, read_log=9528, editorial_decisions=123, notes=84）。
 - `python3 tools/map_build.py`：`READING_MAP.md` を再生成。
 - `python3 tools/inspect_inquiry.py --check-map`：PASS。
-- `python3 tools/note_index.py --check`：PASS（504 notes）。
-- `python3 tools/read_log_backfill.py --check`：PASS（4975/4975）。
-- `python3 tools/size_budget.py --strict`：PASS。追加後シャード数は sessions 76、materials 72、notes 77、read_log 77、relations 78。
+- `python3 tools/note_index.py --check`：PASS（505 notes）。
+- `python3 tools/read_log_backfill.py --check`：PASS（4980/4980）。
+- `python3 tools/size_budget.py --strict`：PASS。最終シャード数は sessions 77、materials 73、notes 78、read_log 78、relations 79。
 - `python3 -m unittest discover -s tests`：464 tests、OK。
 
 本書は `README.md` と `docs/sessions.md` を編集しない。論文全文は複製せず、短い引用・要約・出典リンクで残す。
