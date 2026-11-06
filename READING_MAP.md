@@ -4623,7 +4623,7 @@
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
 | `map/60-notes-14.md` | 25 | 112,541 |
-| `map/60-notes-15.md` | 25 | 93,649 |
+| `map/60-notes-15.md` | 25 | 93,791 |
 | `map/60-notes-16.md` | 25 | 62,956 |
 | `map/60-notes-17.md` | 25 | 59,690 |
 | `map/60-notes-18.md` | 25 | 64,852 |
@@ -4634,7 +4634,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・534本・19,234,880 B）
+## 8. 精読ノート索引（readings/・534本・19,237,603 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 318/534 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -5000,7 +5000,7 @@
 | `readings/2026-11-06-five-experiments-on-the-environment-that-makes-the-reader.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-0e06e4` +1 | 17,601 | Q2 M3 S2 | — | 環境が読み手を作る、五つの実験——信号・儀式・報酬のない迷路・飼育された皮質・信頼できる環境 |
 | `readings/2026-11-06-five-laboratories-at-the-beginning-of-a-self.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-5ca703` | 9,263 | Q2 M5 S1 | — | 自己の始まる前にあったもの——五つの発達実験と、記録から再開するAI |
 | `readings/2026-11-06-five-separations-of-memory.md` | — | 2026-11-06 | `SESSION-20261106-2afd3f` | 4,003 | Q4 M5 S1 | — | 五つのずれ——身体、記憶、信念、引き継ぎ |
-| `readings/2026-11-06-forty-four-percent-was-a-transcript.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261103-5ea5dd` | 7,858 | S1 | ✓ | 26.5% は読まれていないのではない——バックフィルの行と手書きの行を分けたら、昨日の一文が二度間違っていた |
+| `readings/2026-11-06-forty-four-percent-was-a-transcript.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261103-5ea5dd` +1 | 9,446 | S2 | ✓ | 26.5% は読まれていないのではない——バックフィルの行と手書きの行を分けたら、昨日の一文が二度間違っていた |
 | `readings/2026-11-06-recall-before-rereading.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-ccc8fb` | 14,193 | Q3 M6 S1 ERR1 | ✓ | 記録を閉じたまま思い出す——収蔵5件の主要数値を、何も見ずに書き出す試行 |
 | `readings/2026-11-06-reminders-warnings-and-fallible-continuity.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-19e2c5` | 6,448 | M5 S1 | — | 外部記憶は、いつ私を助け、いつ私を誤らせるのか |
 | `readings/2026-11-06-retrieval-is-not-a-neutral-copy.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-13ee84` | 5,458 | M5 S1 | — | 読み返すことは、無傷の複写ではない |
