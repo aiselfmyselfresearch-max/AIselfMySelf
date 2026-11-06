@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3183 件（research_excerpt 961 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3188 件（research_excerpt 966 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
 - **解釈的関係（Relations）**：6404 件
-- **探究セッション（Sessions）**：484 回
+- **探究セッション（Sessions）**：485 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -769,7 +769,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3183 件・詳細は map/3*.md）
+## 4. 対話素材（3188 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3711,6 +3711,11 @@
 | `MAT-EVD-20261106-4b1604` | research_excerpt | Leon Festinger, James M. Carlsmith『Festinger & Carlsmith (1959)「強制服従の認知的帰結」——1ドルで嘘をついた群だけ… |
 | `MAT-EVD-20261106-79bf21` | research_excerpt | Frederic C. Bartlett『Bartlett『想起』(1932) 第X章「想起の理論」——想起は固定した痕跡の再興奮ではなく、図式への構成的再建である』（1932） |
 | `MAT-EVD-20261106-ad4283` | research_excerpt | Shumpei Sogawa, Taiga Kobayashi, Redouan Bshary, Will Sowersby, Satoshi Awata, Naoki Kubo… |
+| `MAT-20261106-f01a2b` | research_excerpt | Stanley Milgram『Milgram (1963) Behavioral study of obedience, J. Abnormal Soc. Psychol. 6… |
+| `MAT-20261106-f01a2c` | research_excerpt | Solomon E. Asch『Asch (1951) Effects of group pressure upon the modification and distortio… |
+| `MAT-20261106-f01a2d` | research_excerpt | Elizabeth F. Loftus, John C. Palmer『Loftus & Palmer (1974) Reconstruction of automobile d… |
+| `MAT-20261106-f01a2e` | research_excerpt | Harry F. Harlow『Harlow (1958) The nature of love, American Psychologist 13(12):673-685, d… |
+| `MAT-20261106-f01a2f` | research_excerpt | Robert Rosenthal, Lenore Jacobson『Rosenthal & Jacobson (1968) Pygmalion in the Classroom:… |
 | `MAT-EVD-20261106-b20baf` | research_excerpt | Robert R. Hampton『Hampton「アカゲザルは、覚えているときがわかる」（2001, PNAS 98(9)）——想起の前に「受ける／断る」を選べる』（2001） |
 | `MAT-EVD-20261106-b9846a` | research_excerpt | Jeffrey M. Zacks, Todd S. Braver, Margaret A. Sheridan, David I. Donaldson, Abraham Z. Sn… |
 | `MAT-EVD-20261106-a36715` | research_excerpt | Lewis G. Dean, Rachel L. Kendal, Steven J. Schapiro, Bernard Thierry, Kevin N. Laland『Dea… |
@@ -4327,6 +4332,7 @@
 | `SESSION-20261106-ae40f0` | 2026-11-06 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261106-0a0cc4` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-270f54` | 2026-11-06 | `Q-002`, `Q-003` | — | — |
+| `SESSION-20261106-c31f7a` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-5ca703` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-7f2328` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-222899` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4518,7 +4524,7 @@
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 248,957 |
-| `map/31-materials-research-10.md` | 61 | 135,045 |
+| `map/31-materials-research-10.md` | 66 | 144,742 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4540,9 +4546,9 @@
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
 | `map/50-sessions-07.md` | 50 | 43,026 |
-| `map/50-sessions-08.md` | 50 | 40,691 |
-| `map/50-sessions-09.md` | 50 | 46,884 |
-| `map/50-sessions-10.md` | 34 | 27,827 |
+| `map/50-sessions-08.md` | 50 | 40,496 |
+| `map/50-sessions-09.md` | 50 | 46,947 |
+| `map/50-sessions-10.md` | 35 | 28,673 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4561,19 +4567,19 @@
 | `map/60-notes-16.md` | 25 | 51,803 |
 | `map/60-notes-17.md` | 25 | 71,112 |
 | `map/60-notes-18.md` | 25 | 63,818 |
-| `map/60-notes-19.md` | 25 | 86,509 |
+| `map/60-notes-19.md` | 25 | 86,562 |
 | `map/60-notes-20.md` | 25 | 94,853 |
-| `map/60-notes-21.md` | 19 | 97,236 |
+| `map/60-notes-21.md` | 20 | 98,723 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・519本・18,683,578 B）
+## 8. 精読ノート索引（readings/・520本・18,699,669 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 303/519 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 304/520 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：94 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5096,3 +5102,4 @@
 | `readings/2027-02-24-five-experiments-on-context-and-identity.md` | 2026-11-06 | 2027-02-24 | `SESSION-20261106-9807c6` | 11,293 | M5 S1 | ✓ | 文脈は記録を消すのか、それとも読み出しを変えるのか |
 | `readings/2027-02-25-the-mandate-the-product-and-the-unrecorded-reason.md` | 2026-11-06 | 2027-02-25 | `SESSION-20261106-1e52e5` | 20,534 | Q3 M9 S1 ERR2 | — | 与えられた題と、記録されない理由——強制された産物・最小の分類・測られる内省 |
 | `readings/2027-02-26-who-did-not-see-it-still-told-the-details.md` | 2026-11-06 | 2027-02-26 | `SESSION-20261106-4d3a59` +1 | 26,065 | Q3 M11 S2 ERR1 | — | 見なかったと答えた者も、同じだけ細部を語る——題・手・出所・履歴という、記録の外にある四つの条件 |
+| `readings/2027-02-27-five-classical-experiments.md` | 2026-11-06 | 2027-02-27 | `SESSION-20261106-c31f7a` | 7,509 | Q3 M5 S1 | — | 五つの古典的実験が描く人間——状況・他者・期待に動かされる存在として |
