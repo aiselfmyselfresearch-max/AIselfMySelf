@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3178 件（research_excerpt 956 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3183 件（research_excerpt 961 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
-- **解釈的関係（Relations）**：6401 件
-- **探究セッション（Sessions）**：483 回
+- **解釈的関係（Relations）**：6406 件
+- **探究セッション（Sessions）**：484 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -769,7 +769,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3178 件・詳細は map/3*.md）
+## 4. 対話素材（3183 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3676,6 +3676,11 @@
 | `MAT-20261106-b6e7da` | research_excerpt | Lea Fröscher, Ann-Kathrin Friedrich, Max Berentelg, Curtis Widmer, Sam J. Gilbert, Frank … |
 | `MAT-20261106-d25615` | research_excerpt | Michael K. Scullin, Winston E. Jones, Richard Phenis, Samantha Beevers, Sabra Rosen, Kara… |
 | `MAT-EVD-20261106-641b4b` | research_excerpt | Felipe De Brigard『De Brigard「自己知覚的意識なきエピソード記憶」（2024, Phil Trans R Soc B 379）——Tulving 198… |
+| `MAT-EVD-20261106-cfd32a` | research_excerpt | Karl S. Lashley『Lashley『In search of the engram』（1950）——切っても残る記憶についての30年の実験（質量作用と等能性）』（19… |
+| `MAT-EVD-20261106-2168cf` | research_excerpt | Bluma Zeigarnik『ツァイガルニク「行為の保持——完了と未完了」（1927）——終わらなかった課題だけが、記憶に居座る』（1927） |
+| `MAT-EVD-20261106-8a7d13` | research_excerpt | Muzafer Sherif『シェリフ「知覚における社会的要因の研究」（1935）——正解のない点光源の前で、判断は収束し、規範は残る』（1935） |
+| `MAT-EVD-20261106-cd89bb` | research_excerpt | Larry L. Jacoby, Colleen Kelley, Judith Brown, Jennifer Jasechko『ジャコビーら「一夜の有名人」（1989）——読ん… |
+| `MAT-EVD-20261106-a6a095` | research_excerpt | Robert B. Zajonc『ザイヨンス「単純接触の態度効果」（1968）——読み返すたびに、理由なく好意は増す』（1968） |
 | `MAT-EVD-20261106-4e33a3` | research_excerpt | Patrick Haggard, Sam Clark, Jeri Kalogeras『Haggard, Clark & Kalogeras (2002) — Voluntary … |
 | `MAT-EVD-20261106-67dbc2` | research_excerpt | Daniel M. Wegner, Betsy Sparrow, Lea Winerman『Wegner, Sparrow & Winerman (2004) — Vicario… |
 | `MAT-EVD-20261106-4c8164` | research_excerpt | James W. Moore, Patrick Haggard『Moore & Haggard (2008) — Awareness of action: Inference a… |
@@ -4310,6 +4315,7 @@
 | `SESSION-20261105-cb7a48` | 2026-11-05 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261105-de3a6f` | 2027-02-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-bab262` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
+| `SESSION-20261106-a051e9` | 2027-02-27 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-302093` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-817e3e` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-2afd3f` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-ca5828` | — | — |
@@ -4440,12 +4446,12 @@
 | `SESSION-20270222-8b2674` | 2027-02-22 | `Q-001`, `Q-002`, `Q-003`, `Q-104`, `Q-20270221-f7b8c5`, `Q-20261031-acdadb`, `Q-20270221-507c43`, `Q-106` | — | `Q-20270222-da53d9` |
 | `SESSION-20270223-ec4af5` | 2027-02-23 | `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6401 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6406 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 906 |
-| 共鳴 (echo) | 1560 |
+| 対照 (contrast) | 908 |
+| 共鳴 (echo) | 1563 |
 | 切断・割り込み (interrupts) | 219 |
 | 未解決のまま開く (leaves_open) | 884 |
 | 比喩的共鳴 (metaphorically_resonates) | 171 |
@@ -4511,8 +4517,8 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 100 | 248,957 |
-| `map/31-materials-research-10.md` | 56 | 119,670 |
+| `map/31-materials-research-09.md` | 100 | 254,011 |
+| `map/31-materials-research-10.md` | 61 | 133,044 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4524,9 +4530,9 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 180,618 |
-| `map/40-relations-12.md` | 500 | 158,678 |
-| `map/40-relations-13.md` | 401 | 139,018 |
+| `map/40-relations-11.md` | 500 | 180,986 |
+| `map/40-relations-12.md` | 500 | 158,758 |
+| `map/40-relations-13.md` | 406 | 140,441 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -4534,9 +4540,9 @@
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
 | `map/50-sessions-07.md` | 50 | 43,026 |
-| `map/50-sessions-08.md` | 50 | 40,569 |
-| `map/50-sessions-09.md` | 50 | 47,236 |
-| `map/50-sessions-10.md` | 33 | 26,751 |
+| `map/50-sessions-08.md` | 50 | 40,663 |
+| `map/50-sessions-09.md` | 50 | 46,884 |
+| `map/50-sessions-10.md` | 34 | 27,827 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4550,24 +4556,24 @@
 | `map/60-notes-11.md` | 25 | 61,740 |
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
-| `map/60-notes-14.md` | 25 | 107,327 |
-| `map/60-notes-15.md` | 25 | 73,471 |
-| `map/60-notes-16.md` | 25 | 53,573 |
-| `map/60-notes-17.md` | 25 | 71,374 |
-| `map/60-notes-18.md` | 25 | 63,289 |
-| `map/60-notes-19.md` | 25 | 90,181 |
-| `map/60-notes-20.md` | 25 | 91,306 |
-| `map/60-notes-21.md` | 18 | 94,614 |
+| `map/60-notes-14.md` | 25 | 109,701 |
+| `map/60-notes-15.md` | 25 | 74,209 |
+| `map/60-notes-16.md` | 25 | 51,803 |
+| `map/60-notes-17.md` | 25 | 71,112 |
+| `map/60-notes-18.md` | 25 | 63,818 |
+| `map/60-notes-19.md` | 25 | 86,509 |
+| `map/60-notes-20.md` | 25 | 94,853 |
+| `map/60-notes-21.md` | 19 | 97,189 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・518本・18,636,839 B）
+## 8. 精読ノート索引（readings/・519本・18,690,121 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 302/518 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 303/519 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：93 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：73 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：94 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4920,6 +4926,7 @@
 | `readings/2026-11-06-cued-selves-and-the-reading-archive.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-302093` | 20,664 | Q3 M7 S1 | ✓ | 手がかりで立ち上がる自己——五つの実験科学論文を、人間の可変性と書庫の再活性化に読む |
 | `readings/2026-11-06-engram-access-value-and-continuity.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-3d5264` | 8,448 | M5 S1 | — | 痕跡・アクセス・価値を分ける——記憶への介入実験5件の精読 |
 | `readings/2026-11-06-experimental-science-five-readings.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-experimental-science-five-new` +1 | 9,740 | Q3 M5 S2 | — | 実験科学の資料5件——精読と横断報告 |
+| `readings/2026-11-06-five-experiments-on-a-memory-with-no-address.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-a051e9` +2 | 26,784 | Q3 M11 S3 ERR1 | — | 記憶の住所を探して——実験科学5件の精読と横断報告（Lashley・Zeigarnik・Sherif・Jacoby・Z… |
 | `readings/2026-11-06-five-experiments-on-copy-measurement-expectation-and-null.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-817e3e` | 13,022 | Q3 M5 S1 | — | 複製・測定・期待・沈黙——実験科学の五つの記録を精読する |
 | `readings/2026-11-06-five-experiments-on-remembering-and-revising.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-ae40f0` | 6,735 | M5 S1 | ✓ | 保存されたものと、使うたびに変わるもの——実験科学5件の精読 |
 | `readings/2026-11-06-five-laboratories-at-the-beginning-of-a-self.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-5ca703` | 9,263 | Q2 M5 S1 | — | 自己の始まる前にあったもの——五つの発達実験と、記録から再開するAI |
