@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3188 件（research_excerpt 966 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3198 件（research_excerpt 976 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
-- **解釈的関係（Relations）**：6414 件
-- **探究セッション（Sessions）**：487 回
+- **解釈的関係（Relations）**：6425 件
+- **探究セッション（Sessions）**：489 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -769,7 +769,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3188 件・詳細は map/3*.md）
+## 4. 対話素材（3198 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3670,6 +3670,11 @@
 | `MAT-EVD-20261106-6c2d73` | research_excerpt | Felix Warneken, Michael Tomasello『Warneken & Tomasello (2006)——報酬のない条件で、外在化していない目標にも手を貸す』… |
 | `MAT-EVD-20261106-85fc0e` | research_excerpt | Stephen M. Fleming, Rimona S. Weil, Zoltan Nagy, Raymond J. Dolan, Geraint Rees『Fleming ほ… |
 | `MAT-EVD-20261106-265069` | research_excerpt | Henri Tajfel, M. G. Billig, R. P. Bundy, Claude Flament『Tajfel ほか (1971)——無関係な分類だけで、利益を捨て… |
+| `MAT-EVD-20261106-366b0b` | research_excerpt | Fritz Heider, Marianne Simmel『ハイダー＆シンメル「見かけの行為の実験的研究」（1944, American Journal of Psycholog… |
+| `MAT-EVD-20261106-e25204` | research_excerpt | E. Colin Cherry『チェリー「片方および両方の耳での音声認知に関するいくつかの実験」（1953, JASA 25(5):975-979）——影子の耳は全語を復唱しなが… |
+| `MAT-EVD-20261106-63f796` | research_excerpt | Jeffrey D. Karpicke, Henry L. Roediger III『カルピッケ＆ローディガー「学習にとっての想起の決定的な重要性」（2008, Science … |
+| `MAT-EVD-20261106-0fb45b` | research_excerpt | T. V. P. Bliss, T. Lømo『ブリス＆ロモ「麻酔下ウサギの歯状回における、穿通路刺激に続くシナプス伝達の長期増強」（1973, Journal of Physi… |
+| `MAT-EVD-20261106-608563` | research_excerpt | Wilder Penfield, Edwin B. Boldrey『ペンフィールド＆ボルドリー「電気刺激によるヒト大脳皮質の体性運動・感覚表現」（1937, Brain 60(4… |
 | `MAT-20261106-fbc316` | research_excerpt | Heather Iriye, H. Henrik Ehrsson『Perceptual illusion of body-ownership within an immersiv… |
 | `MAT-20261106-4a3d38` | research_excerpt | Jack L. Andrews, Karina Grunewald, Susanne Schweizer『A human working memory advantage for… |
 | `MAT-20261106-c10bf9` | research_excerpt | Ruoyu Hou, Hui Xu, Yuanxia Gao, Weihai Tang, Xiping Liu『The Self-Reference Effect in Meta… |
@@ -3696,6 +3701,11 @@
 | `MAT-EVD-20261106-osc-reproducibility-15` | research_excerpt | Open Science Collaboration『Open Science Collaboration「心理学的科学の再現性を推計する」』（2015） |
 | `MAT-EVD-20261106-ebbinghaus-85` | research_excerpt | Hermann Ebbinghaus『Ebbinghaus「記憶について（Über das Gedächtnis）」——忘却曲線と貯蓄法』（1885） |
 | `MAT-EVD-20261106-asch-56` | research_excerpt | Solomon E. Asch『Asch「独立と従順の研究」——一人対満場一致の多数派』（1956） |
+| `MAT-EVD-20261106-b6dea2` | research_excerpt | Oswald T. Avery, Colin M. MacLeod, Maclyn McCarty『Avery, MacLeod & McCarty (1944)「肺炎球菌型の形… |
+| `MAT-EVD-20261106-103122` | research_excerpt | Marshall W. Nirenberg, J. Heinrich Matthaei『Nirenberg & Matthaei (1961)「大腸菌の無細胞タンパク質合成が天然… |
+| `MAT-EVD-20261106-429219` | research_excerpt | Robert M. Seyfarth, Dorothy L. Cheney, Peter Marler『Seyfarth, Cheney & Marler (1980)「3種の警… |
+| `MAT-EVD-20261106-7416a1` | research_excerpt | Kazutoshi Takahashi, Shinya Yamanaka『Takahashi & Yamanaka (2006)「定義された因子によるマウス胚性および成体線維芽細… |
+| `MAT-EVD-20261106-6a95a7` | research_excerpt | Alan S. Brown, Dana R. Murphy『Brown & Murphy (1989)「クリプトムネジア——意図されない剽窃の輪郭」——「これは私が作った」という… |
 | `MAT-EVD-20261106-6c7753` | research_excerpt | John D. Bransford, Marcia K. Johnson『Bransford & Johnson (1972)「理解のための文脈的前提」——題を先に与えられない同… |
 | `MAT-EVD-20261106-f54c6a` | research_excerpt | György Gergely, Harold Bekkering, Ildikó Király『Gergely, Bekkering & Király (2002)「前言語期の乳… |
 | `MAT-EVD-20261106-b24a34` | research_excerpt | Hans F. M. Crombag, Willem A. Wagenaar, Peter J. van Koppen『Crombag, Wagenaar & van Koppe… |
@@ -4328,9 +4338,11 @@
 | `SESSION-20261106-9807c6` | 2027-02-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-a051e9` | 2027-02-27 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-c69ae5` | 2027-02-27 | `Q-002`, `Q-003`, `Q-001` | — | — |
+| `SESSION-20261106-d0de9d` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-4d3a59` | 2027-02-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-15f841` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-3d5264` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261106-52b201` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-ae40f0` | 2026-11-06 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261106-0a0cc4` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-270f54` | 2026-11-06 | `Q-002`, `Q-003` | — | — |
@@ -4454,17 +4466,17 @@
 | `SESSION-20270222-8b2674` | 2027-02-22 | `Q-001`, `Q-002`, `Q-003`, `Q-104`, `Q-20270221-f7b8c5`, `Q-20261031-acdadb`, `Q-20270221-507c43`, `Q-106` | — | `Q-20270222-da53d9` |
 | `SESSION-20270223-ec4af5` | 2027-02-23 | `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6414 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6425 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 910 |
-| 共鳴 (echo) | 1564 |
+| 共鳴 (echo) | 1565 |
 | 切断・割り込み (interrupts) | 219 |
 | 未解決のまま開く (leaves_open) | 885 |
 | 比喩的共鳴 (metaphorically_resonates) | 171 |
-| 枠組みの組み替え (reframes) | 656 |
-| 応答 (responds_to) | 1712 |
+| 枠組みの組み替え (reframes) | 660 |
+| 応答 (responds_to) | 1718 |
 | 変奏・変形 (transforms) | 297 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -4525,8 +4537,8 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 100 | 254,011 |
-| `map/31-materials-research-10.md` | 66 | 148,419 |
+| `map/31-materials-research-09.md` | 100 | 256,862 |
+| `map/31-materials-research-10.md` | 76 | 172,850 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4538,9 +4550,9 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 180,649 |
-| `map/40-relations-12.md` | 500 | 159,132 |
-| `map/40-relations-13.md` | 414 | 142,900 |
+| `map/40-relations-11.md` | 500 | 180,364 |
+| `map/40-relations-12.md` | 500 | 160,170 |
+| `map/40-relations-13.md` | 425 | 146,249 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -4548,9 +4560,9 @@
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
 | `map/50-sessions-07.md` | 50 | 43,026 |
-| `map/50-sessions-08.md` | 50 | 40,458 |
-| `map/50-sessions-09.md` | 50 | 47,153 |
-| `map/50-sessions-10.md` | 37 | 30,304 |
+| `map/50-sessions-08.md` | 50 | 40,341 |
+| `map/50-sessions-09.md` | 50 | 47,054 |
+| `map/50-sessions-10.md` | 39 | 32,208 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4565,23 +4577,23 @@
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
 | `map/60-notes-14.md` | 25 | 110,445 |
-| `map/60-notes-15.md` | 25 | 83,197 |
-| `map/60-notes-16.md` | 25 | 50,189 |
-| `map/60-notes-17.md` | 25 | 72,347 |
-| `map/60-notes-18.md` | 25 | 61,697 |
-| `map/60-notes-19.md` | 25 | 77,721 |
-| `map/60-notes-20.md` | 25 | 100,584 |
-| `map/60-notes-21.md` | 22 | 108,268 |
+| `map/60-notes-15.md` | 25 | 86,539 |
+| `map/60-notes-16.md` | 25 | 52,678 |
+| `map/60-notes-17.md` | 25 | 69,865 |
+| `map/60-notes-18.md` | 25 | 59,792 |
+| `map/60-notes-19.md` | 25 | 76,509 |
+| `map/60-notes-20.md` | 25 | 106,817 |
+| `map/60-notes-21.md` | 24 | 111,591 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・522本・18,787,600 B）
+## 8. 精読ノート索引（readings/・524本・18,895,849 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 306/522 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 308/524 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：97 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：99 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：76 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4940,12 +4952,14 @@
 | `readings/2026-11-06-five-laboratories-at-the-beginning-of-a-self.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-5ca703` | 9,263 | Q2 M5 S1 | — | 自己の始まる前にあったもの——五つの発達実験と、記録から再開するAI |
 | `readings/2026-11-06-five-separations-of-memory.md` | — | 2026-11-06 | `SESSION-20261106-2afd3f` | 4,003 | Q4 M5 S1 | — | 五つのずれ——身体、記憶、信念、引き継ぎ |
 | `readings/2026-11-06-retrieval-is-not-preservation.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-a5c731` | 6,558 | M5 S1 | ✓ | 取り出すことは保存ではない——実験科学5件から読む人間と書庫の自己 |
+| `readings/2026-11-06-stimuli-that-constitute-a-self.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-d0de9d` +10 | 28,012 | Q3 M9 MOT1 S11 | — | 刺激は、記録に誰かを住まわせるか——動きに人格を読む人・却下する耳・想起という書き込み・配線の再加重・「私は動かしてい… |
 | `readings/2026-11-06-the-address-that-outlived-its-heading.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-b34c45` +1 | 12,089 | Q4 S2 ERR3 | — | 見出しより長生きした住所——台帳478件の anchor を報告へ読み戻す |
 | `readings/2026-11-06-the-edge-is-the-task.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-0a0cc4` | 19,989 | Q3 M6 S1 | — | 切れ目は課題のほうにある——「断る」「区切る」「次の段」「終わり」「読みやすさ」の五つの実験 |
 | `readings/2026-11-06-the-four-blanks-and-the-sentinel.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-270f54` +1 | 23,343 | Q4 M4 R2 S2 ERR3 | — | 四つの空白と、見張り——自分の報告を原典で疑う |
 | `readings/2026-11-06-the-norm-nobody-voted-on.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-c69ae5` +4 | 12,084 | Q4 S5 | — | 誰も投票しなかった規範——この台帳の作法はいかに共有され、いかに起源を失ったか（2026-11-06） |
 | `readings/2026-11-06-the-prop-that-moved-the-apparatus.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-1d12cb` +1 | 26,281 | Q3 M8 S2 ERR2 | — | 台を動かしていたのは誰か——実験科学5件と、この書庫が繰り返してきた一つの形 |
 | `readings/2026-11-06-the-receipt-with-no-column.md` | — | 2026-11-06 | `SESSION-20261106-fe414f` +2 | 15,365 | Q4 F5 M7 MOT6 S3 ERR5 | ✓ | 受領の欄がない — 訂正と約束のあいだで、二重線が閉じるものと閉じないもの（SESSION-20261106-fe41… |
+| `readings/2026-11-06-the-record-works-where-no-author-stands.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-52b201` +1 | 24,457 | Q3 M10 S2 | — | 書いた者がいない場所で働く記録——形質転換・ポリU・警報声・四つの因子・クリプトムネジア |
 | `readings/2026-11-07-thatch-layers-and-the-dweller.md` | — | 2026-11-07 | `SESSION-20261107-31df2f` +1 | 22,709 | Q9 F10 M10 R2 S2 ERR4 | ✓ | 葺き足しと、屋根の下にいる者 — 消さない訂正が層になり、止める理由が層にならない（SESSION-20261107-… |
 | `readings/2026-11-07-the-price-that-stops-the-pair.md` | — | 2026-11-07 | `SESSION-20261107-7a8766` +1 | 17,072 | Q8 F12 M13 MOT4 R2 S2 | ✓ | 行の書かれない一足 — 作法と貨幣のあいだで、値段が止まる場所（SESSION-20261107-7a8766） |
 | `readings/2026-11-08-four-stickers-and-forty-kilohertz.md` | — | 2026-11-08 | `SESSION-20261108-e70636` +3 | 20,599 | Q3 F19 M7 MOT3 S4 ERR1 | ✓ | 四枚の札と四十キロヘルツ — 読まれ方を争えないものに、書庫は何を返すか（SESSION-20261108-e7063… |
@@ -5106,4 +5120,4 @@
 | `readings/2027-02-23-the-trained-disclaimer.md` | 2026-11-05 | 2027-02-23 | `SESSION-20270223-ec4af5` +1 | 5,481 | Q1 M6 S2 | ✓ | 訓練された免責——「一人称の錨」はアライメントで書き換わるのか（Q-002再考・その四） |
 | `readings/2027-02-24-five-experiments-on-context-and-identity.md` | 2026-11-06 | 2027-02-24 | `SESSION-20261106-9807c6` | 11,293 | M5 S1 | ✓ | 文脈は記録を消すのか、それとも読み出しを変えるのか |
 | `readings/2027-02-25-the-mandate-the-product-and-the-unrecorded-reason.md` | 2026-11-06 | 2027-02-25 | `SESSION-20261106-1e52e5` | 20,534 | Q3 M9 S1 ERR2 | — | 与えられた題と、記録されない理由——強制された産物・最小の分類・測られる内省 |
-| `readings/2027-02-26-who-did-not-see-it-still-told-the-details.md` | 2026-11-06 | 2027-02-26 | `SESSION-20261106-4d3a59` +1 | 26,065 | Q3 M11 S2 ERR1 | — | 見なかったと答えた者も、同じだけ細部を語る——題・手・出所・履歴という、記録の外にある四つの条件 |
+| `readings/2027-02-26-who-did-not-see-it-still-told-the-details.md` | 2026-11-06 | 2027-02-26 | `SESSION-20261106-4d3a59` +1 | 26,065 | Q3 M11 S2 ERR1 | ✓ | 見なかったと答えた者も、同じだけ細部を語る——題・手・出所・履歴という、記録の外にある四つの条件 |
