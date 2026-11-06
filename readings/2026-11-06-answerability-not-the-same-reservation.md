@@ -21,6 +21,8 @@
 
 最初の検証後、PR #513 のマージ競合を解消するために `origin/main` を再取得し、並行PR #512 の [`2026-11-06-recall-is-not-a-ledger-line.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-06-recall-is-not-a-ledger-line.md)（`NOTE-20261106-1140ad`）を全文読んだ。同報告は `read_log` の一行・`context_material_ids`・本文中のID名指しを互いに代用できない作業記録として分ける。これは本次の「応答可能性」を、記録があることの証明ではなく、記録に対してどう応答したかの来歴に限定する追い打ちとして働く。
 
+さらに次のマージ競合解消で並行PR #514 の [`2026-11-06-the-blank-column-and-the-substituted-column.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-06-the-blank-column-and-the-substituted-column.md)（`NOTE-20261106-b06023`）を全文読んだ。同報告は、shallow クローンで「見えない」コミットを「存在しない」と読んだ誤りを訂正し、`origin.repository` と `origin.commit` のように並んだ欄が必ず同じ対象を指すとは限らないことを示す。本次の応答可能性も、欄が埋まっていることや検査が通ることによって保証されない。記録に対してどの根拠で応答したかを追えることだけに留める。
+
 ## 1. 選定と照合範囲
 
 `--packet auto` の参考問い `Q-20261024-18823f`（衣服の不在）と候補窓は採らなかった。理由は、衣服の語彙分布を新たに数えるより、既に中心問いの近くで「連続性」をどう定義していたかを一つ揺さぶる方が、今回の探究に必要だったからである。
@@ -128,9 +130,9 @@ trace-selection 報告の「同じ留保を同じ強さで引き受けるなら�
 ## 8. 記録と検証
 
 - セッション: `SESSION-20261106-b2a4ad`（`state/sessions.d/2026-11-06-b78ddad09653.jsonl`）
-- 読み痕跡: `state/read_log.d/2026-11-06-cb3ef501a632.jsonl`（20行: note 11・material 1・question 3・session 5）
-- ノート索引: `state/notes.d/2026-11-06-71c39040b44f.jsonl`（過去報告4本の登録＋本次報告 `NOTE-20261106-0bfea1`）
-- 保守: 並行PR #512 取り込み後に `sessions.d` と `notes.d` が81ファイルとなったため、`docs/parallel-work.md` §3 に従い独立コミットで各1シャードを既存統合シャードへバイト保存で移動した（行内容・IDは不変）。
+- 読み痕跡: `state/read_log.d/2026-11-06-cb3ef501a632.jsonl`（22行: note 12・material 1・question 3・session 6）
+- ノート索引: `state/notes.d/2026-11-06-71c39040b44f.jsonl`（過去報告4本の登録＋本次報告 `NOTE-20261106-0bfea1`＋並行報告 `NOTE-20261106-b06023`）
+- 保守: 並行PR取り込み後に `sessions.d`・`notes.d`・`read_log.d` が相次いで81ファイルとなったため、`docs/parallel-work.md` §3 に従い独立コミットで各1シャードを既存統合シャードへバイト保存で移動した（行内容・IDは不変）。
 - 新規断片・新規問い・新規資料・新規関係線・訂正: 0 件。
 - 過去報告のうちノート行がなかった4本を `note_index.py --register` で記帳し、`read_log` の `target.type: "note"` で継承を記す。
 - `README.md`・`docs/sessions.md` は編集しない。`READING_MAP.md` は `tools/map_build.py` で再生成する。
