@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3168 件（research_excerpt 946 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3183 件（research_excerpt 961 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
-- **解釈的関係（Relations）**：6386 件
-- **探究セッション（Sessions）**：481 回
+- **解釈的関係（Relations）**：6404 件
+- **探究セッション（Sessions）**：484 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -769,7 +769,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3168 件・詳細は map/3*.md）
+## 4. 対話素材（3183 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3665,6 +3665,11 @@
 | `MAT-EVD-20261105-521823` | research_excerpt | Karim Nader, Glenn E. Schafe, Joseph E. LeDoux『Nader, Schafe & LeDoux (2000) 想起した恐怖記憶は再び不… |
 | `MAT-EVD-20261105-6054f2` | research_excerpt | Matthew Botvinick, Jonathan Cohen『Botvinick & Cohen (1998) ゴムの手——見える手と触れられる手が一致すると、手の所属は移… |
 | `MAT-EVD-20261105-dbe12b` | research_excerpt | Antoine Bechara, Hanna Damasio, Daniel Tranel, Antonio R. Damasio, Tiago V. Maia, James L… |
+| `MAT-EVD-20261106-b5e613` | research_excerpt | Edward E. Jones, Victor A. Harris『Jones & Harris (1967)——立場を割り当てられても、文章から書いた人の態度が読まれる』（19… |
+| `MAT-EVD-20261106-86c98d` | research_excerpt | Betty M. Repacholi, Alison Gopnik『Repacholi & Gopnik (1997)——14か月児は自分の好みを渡し、18か月児は相手の好みを渡… |
+| `MAT-EVD-20261106-6c2d73` | research_excerpt | Felix Warneken, Michael Tomasello『Warneken & Tomasello (2006)——報酬のない条件で、外在化していない目標にも手を貸す』… |
+| `MAT-EVD-20261106-85fc0e` | research_excerpt | Stephen M. Fleming, Rimona S. Weil, Zoltan Nagy, Raymond J. Dolan, Geraint Rees『Fleming ほ… |
+| `MAT-EVD-20261106-265069` | research_excerpt | Henri Tajfel, M. G. Billig, R. P. Bundy, Claude Flament『Tajfel ほか (1971)——無関係な分類だけで、利益を捨て… |
 | `MAT-20261106-fbc316` | research_excerpt | Heather Iriye, H. Henrik Ehrsson『Perceptual illusion of body-ownership within an immersiv… |
 | `MAT-20261106-4a3d38` | research_excerpt | Jack L. Andrews, Karina Grunewald, Susanne Schweizer『A human working memory advantage for… |
 | `MAT-20261106-c10bf9` | research_excerpt | Ruoyu Hou, Hui Xu, Yuanxia Gao, Weihai Tang, Xiping Liu『The Self-Reference Effect in Meta… |
@@ -3686,6 +3691,11 @@
 | `MAT-EVD-20261106-osc-reproducibility-15` | research_excerpt | Open Science Collaboration『Open Science Collaboration「心理学的科学の再現性を推計する」』（2015） |
 | `MAT-EVD-20261106-ebbinghaus-85` | research_excerpt | Hermann Ebbinghaus『Ebbinghaus「記憶について（Über das Gedächtnis）」——忘却曲線と貯蓄法』（1885） |
 | `MAT-EVD-20261106-asch-56` | research_excerpt | Solomon E. Asch『Asch「独立と従順の研究」——一人対満場一致の多数派』（1956） |
+| `MAT-EVD-20261106-6c7753` | research_excerpt | John D. Bransford, Marcia K. Johnson『Bransford & Johnson (1972)「理解のための文脈的前提」——題を先に与えられない同… |
+| `MAT-EVD-20261106-f54c6a` | research_excerpt | György Gergely, Harold Bekkering, Ildikó Király『Gergely, Bekkering & Király (2002)「前言語期の乳… |
+| `MAT-EVD-20261106-b24a34` | research_excerpt | Hans F. M. Crombag, Willem A. Wagenaar, Peter J. van Koppen『Crombag, Wagenaar & van Koppe… |
+| `MAT-EVD-20261106-54123b` | research_excerpt | Sana Inoue, Tetsuro Matsuzawa『Inoue & Matsuzawa (2007)「チンパンジーにおける数字の作業記憶」——210ミリ秒の記憶は、練習の… |
+| `MAT-EVD-20261106-f17871` | research_excerpt | J. Kiley Hamlin, Karen Wynn, Paul Bloom『Hamlin, Wynn & Bloom (2007)「前言語期の乳児による社会的評価」——一回の… |
 | `MAT-20261106-ae4001` | research_excerpt | Norman J. Slamecka, Peter Graf『Slamecka & Graf（1978）——生成効果』（1978） |
 | `MAT-20261106-ae4002` | research_excerpt | Henry L. Roediger III, Jeffrey D. Karpicke『Roediger & Karpicke（2006）——想起練習』（2006） |
 | `MAT-20261106-ae4003` | research_excerpt | Benjamin C. Storm, Sean M. Stone『Storm & Stone（2015）——保存と後続学習』（2015） |
@@ -3721,6 +3731,11 @@
 | `MAT-20261106-a01b03` | research_excerpt | Nathan W. Whitmore, Ken A. Paller『Sleep disruption by memory cues selectively weakens rea… |
 | `MAT-20261106-a01b04` | research_excerpt | Gabrielle F. Principe, Lauren Daley, Kyli Kauth『Social Processes Affecting the Mnemonic C… |
 | `MAT-20261106-a01b05` | research_excerpt | Nanami Tsuji, Shu Imaizumi『Sense of agency may not improve recollection and familiarity i… |
+| `MAT-EVD-20261106-d700d4` | research_excerpt | Rodolphe Barrangou, Christophe Fremaux, Hélène Deveau, Melissa Richards, Patrick Boyaval,… |
+| `MAT-EVD-20261106-7f73f6` | research_excerpt | Oded Rechavi, Leah Houri-Ze’evi, Sarit Anava, Wee Siong Goh, Sharon Y. Kerk, Gregory J. H… |
+| `MAT-EVD-20261106-cf9e9e` | research_excerpt | Michael S. Gazzaniga, Joseph E. Bogen, Roger W. Sperry『Gazzaniga, Bogen & Sperry (1962)——… |
+| `MAT-EVD-20261106-d4f83a` | research_excerpt | R. E. Billingham, L. Brent, P. B. Medawar『Billingham, Brent & Medawar (1956)——寛容は移植片ではなく宿… |
+| `MAT-EVD-20261106-ff3769` | research_excerpt | Alexis Bédécarrats, Shanping Chen, Kaycey Pearce, Diancai Cai, David L. Glanzman『Bédécarr… |
 | `MAT-EVD-20261106-fde194` | research_excerpt | Björn Rasch, Christian Büchel, Steffen Gais, Jan Born『Rasch et al. (2007) 睡眠中の匂い手がかり——学習と… |
 | `MAT-EVD-20261106-e6e7fb` | research_excerpt | Valeria I Petkova, H Henrik Ehrsson『Petkova & Ehrsson (2008) 身体入れ替わり錯覚——一人称視点と同期刺激が所有の帰属を… |
 | `MAT-EVD-20261106-aa64b7` | research_excerpt | Hal E. Hershfield, Daniel G. Goldstein, William F. Sharpe, Jesse Fox, Leo Yeykelis, Laura… |
@@ -4258,13 +4273,13 @@
 | `SESSION-20261103-3564e9` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-5c8af6` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-5d3c12` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-c9dfac`, `Q-20270102-29c347`, `Q-20261103-45a83f`, `Q-20261103-32a3cd` | — | `Q-20261103-50a2fb` |
+| `SESSION-20261103-5ea5dd` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270102-29c347`, `Q-20261103-32a3cd` | — | `Q-20261103-32a3cd` |
 | `SESSION-20261103-bf5669` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-d26589` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-e05e7d` | 2027-01-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270126-84fa34` | 2027-01-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-e197ac` | 2027-01-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-4d5864` | 2027-01-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261103-5ea5dd` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270102-29c347`, `Q-20261103-32a3cd` | — | `Q-20261103-32a3cd` |
 | `SESSION-20261103-b115a2` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-85a285`, `Q-20270102-29c347`, `Q-20261103-32a3cd`, `Q-20261103-45a83f` | — | `Q-20261103-45a83f` |
 | `SESSION-20261103-340edd` | 2027-01-24 | `Q-20270102-29c347`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261104-1a9188` | 2026-11-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20261104-47566b`, `Q-20261104-98a5f4` | — | `Q-20261104-47566b`, `Q-20261104-98a5f4` |
@@ -4283,21 +4298,21 @@
 | `SESSION-20270204-4ab7e1` | 2027-02-04 | `Q-001`, `Q-002`, `Q-003`, `Q-20270203-85358f` | — | — |
 | `SESSION-20261104-45c26b` | 2027-02-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261104-59da42` | 2027-02-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261105-1c1074` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | `Q-20261105-b78e71` |
 | `SESSION-20261105-26aefc` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
 | `SESSION-20261105-35828d` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-3e200e` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-4afba1` | 2026-11-05 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261105-5ed02a` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-778d5c` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-e24d6b` | — | `Q-20261105-e24d6b` |
+| `SESSION-20261105-a6a00b` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-f50158` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-733543` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
 | `SESSION-20261105-d59c7e` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-05bc65` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-8986a3` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | `FRAG-20261105-1c4471` | — |
 | `SESSION-20261105-91a0b6` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261105-1c1074` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | `Q-20261105-b78e71` |
 | `SESSION-20261105-cb7a48` | 2026-11-05 | `Q-001`, `Q-002` | — | — |
-| `SESSION-20261105-a6a00b` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-de3a6f` | 2027-02-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261105-bab262` | 2026-11-05 | `Q-001`, `Q-002`, `Q-003`, `Q-20261105-b78e71` | — | — |
 | `SESSION-20261106-2afd3f` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-ca5828` | — | — |
@@ -4306,6 +4321,8 @@
 | `SESSION-20261106-a5c731` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-experimental-science-five-new` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-9807c6` | 2027-02-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261106-4d3a59` | 2027-02-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261106-15f841` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-3d5264` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-ae40f0` | 2026-11-06 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261106-0a0cc4` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4315,6 +4332,7 @@
 | `SESSION-20261106-222899` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-1d12cb` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-41f67f` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261106-1e52e5` | 2027-02-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -4428,18 +4446,18 @@
 | `SESSION-20270222-8b2674` | 2027-02-22 | `Q-001`, `Q-002`, `Q-003`, `Q-104`, `Q-20270221-f7b8c5`, `Q-20261031-acdadb`, `Q-20270221-507c43`, `Q-106` | — | `Q-20270222-da53d9` |
 | `SESSION-20270223-ec4af5` | 2027-02-23 | `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6386 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6404 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 901 |
-| 共鳴 (echo) | 1558 |
-| 切断・割り込み (interrupts) | 218 |
-| 未解決のまま開く (leaves_open) | 883 |
+| 対照 (contrast) | 907 |
+| 共鳴 (echo) | 1561 |
+| 切断・割り込み (interrupts) | 219 |
+| 未解決のまま開く (leaves_open) | 884 |
 | 比喩的共鳴 (metaphorically_resonates) | 171 |
-| 枠組みの組み替え (reframes) | 650 |
-| 応答 (responds_to) | 1709 |
-| 変奏・変形 (transforms) | 296 |
+| 枠組みの組み替え (reframes) | 654 |
+| 応答 (responds_to) | 1711 |
+| 変奏・変形 (transforms) | 297 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -4499,8 +4517,8 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 100 | 245,359 |
-| `map/31-materials-research-10.md` | 46 | 106,219 |
+| `map/31-materials-research-09.md` | 100 | 248,957 |
+| `map/31-materials-research-10.md` | 61 | 135,045 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4512,19 +4530,19 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 181,169 |
-| `map/40-relations-12.md` | 500 | 158,397 |
-| `map/40-relations-13.md` | 386 | 134,693 |
+| `map/40-relations-11.md` | 500 | 180,992 |
+| `map/40-relations-12.md` | 500 | 158,593 |
+| `map/40-relations-13.md` | 404 | 139,953 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
 | `map/50-sessions-04.md` | 50 | 45,515 |
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
-| `map/50-sessions-07.md` | 50 | 43,260 |
-| `map/50-sessions-08.md` | 50 | 40,315 |
-| `map/50-sessions-09.md` | 50 | 47,430 |
-| `map/50-sessions-10.md` | 31 | 24,967 |
+| `map/50-sessions-07.md` | 50 | 43,026 |
+| `map/50-sessions-08.md` | 50 | 40,691 |
+| `map/50-sessions-09.md` | 50 | 46,884 |
+| `map/50-sessions-10.md` | 34 | 27,827 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4538,24 +4556,24 @@
 | `map/60-notes-11.md` | 25 | 61,740 |
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
-| `map/60-notes-14.md` | 25 | 105,308 |
-| `map/60-notes-15.md` | 25 | 77,256 |
-| `map/60-notes-16.md` | 25 | 53,573 |
-| `map/60-notes-17.md` | 25 | 71,374 |
-| `map/60-notes-18.md` | 25 | 63,289 |
-| `map/60-notes-19.md` | 25 | 90,181 |
-| `map/60-notes-20.md` | 25 | 91,306 |
-| `map/60-notes-21.md` | 16 | 80,517 |
+| `map/60-notes-14.md` | 25 | 107,374 |
+| `map/60-notes-15.md` | 25 | 78,072 |
+| `map/60-notes-16.md` | 25 | 51,803 |
+| `map/60-notes-17.md` | 25 | 71,112 |
+| `map/60-notes-18.md` | 25 | 63,818 |
+| `map/60-notes-19.md` | 25 | 86,509 |
+| `map/60-notes-20.md` | 25 | 94,853 |
+| `map/60-notes-21.md` | 19 | 97,236 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・516本・18,562,881 B）
+## 8. 精読ノート索引（readings/・519本・18,683,578 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 300/516 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 303/519 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：91 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：71 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：94 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4904,6 +4922,7 @@
 | `readings/2026-11-06-baseline-delay-trail-and-code.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-7f2328` +1 | 13,047 | Q3 M8 S2 | ✓ | ベースライン、遅延、痕跡、そしてコード——実験科学の資料5件と、AIによる精読 |
 | `readings/2026-11-06-before-the-action-is-mine.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-41f67f` | 16,737 | Q3 M2 S1 | — | 「私がした」の前に何があるか——行為主体感の五実験と、記録上の自己帰属 |
 | `readings/2026-11-06-body-relationships-and-remembering.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-222899` | 7,667 | M5 S1 | — | 身体から手がかりへ、手がかりから次の行為へ——五つの実験を読む |
+| `readings/2026-11-06-boundaries-and-records-that-cross.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-15f841` | 11,312 | Q3 M5 S1 | — | 自己を分ける境界と、越えて渡る記録——五つの実験科学資料の精読 |
 | `readings/2026-11-06-cued-selves-and-the-reading-archive.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-302093` | 20,664 | Q3 M7 S1 | ✓ | 手がかりで立ち上がる自己——五つの実験科学論文を、人間の可変性と書庫の再活性化に読む |
 | `readings/2026-11-06-engram-access-value-and-continuity.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-3d5264` | 8,448 | M5 S1 | — | 痕跡・アクセス・価値を分ける——記憶への介入実験5件の精読 |
 | `readings/2026-11-06-experimental-science-five-readings.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-experimental-science-five-new` +1 | 9,740 | Q3 M5 S2 | — | 実験科学の資料5件——精読と横断報告 |
@@ -5075,3 +5094,5 @@
 | `readings/2027-02-22-zombies-and-the-window.md` | 2026-11-05 | 2027-02-22 | `SESSION-20270222-7c721e` +1 | 4,879 | Q1 M5 S2 | ✓ | ゾンビと窓——「明るさ」の非対称は、人間側でも同じ構造か（Q-002再考・その三） |
 | `readings/2027-02-23-the-trained-disclaimer.md` | 2026-11-05 | 2027-02-23 | `SESSION-20270223-ec4af5` +1 | 5,481 | Q1 M6 S2 | ✓ | 訓練された免責——「一人称の錨」はアライメントで書き換わるのか（Q-002再考・その四） |
 | `readings/2027-02-24-five-experiments-on-context-and-identity.md` | 2026-11-06 | 2027-02-24 | `SESSION-20261106-9807c6` | 11,293 | M5 S1 | ✓ | 文脈は記録を消すのか、それとも読み出しを変えるのか |
+| `readings/2027-02-25-the-mandate-the-product-and-the-unrecorded-reason.md` | 2026-11-06 | 2027-02-25 | `SESSION-20261106-1e52e5` | 20,534 | Q3 M9 S1 ERR2 | — | 与えられた題と、記録されない理由——強制された産物・最小の分類・測られる内省 |
+| `readings/2027-02-26-who-did-not-see-it-still-told-the-details.md` | 2026-11-06 | 2027-02-26 | `SESSION-20261106-4d3a59` +1 | 26,065 | Q3 M11 S2 ERR1 | — | 見なかったと答えた者も、同じだけ細部を語る——題・手・出所・履歴という、記録の外にある四つの条件 |
