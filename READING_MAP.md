@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3233 件（research_excerpt 1011 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3238 件（research_excerpt 1016 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
-- **解釈的関係（Relations）**：6458 件
-- **探究セッション（Sessions）**：498 回
+- **解釈的関係（Relations）**：6461 件
+- **探究セッション（Sessions）**：499 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -769,7 +769,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3233 件・詳細は map/3*.md）
+## 4. 対話素材（3238 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3670,6 +3670,11 @@
 | `MAT-EVD-20261106-6c2d73` | research_excerpt | Felix Warneken, Michael Tomasello『Warneken & Tomasello (2006)——報酬のない条件で、外在化していない目標にも手を貸す』… |
 | `MAT-EVD-20261106-85fc0e` | research_excerpt | Stephen M. Fleming, Rimona S. Weil, Zoltan Nagy, Raymond J. Dolan, Geraint Rees『Fleming ほ… |
 | `MAT-EVD-20261106-265069` | research_excerpt | Henri Tajfel, M. G. Billig, R. P. Bundy, Claude Flament『Tajfel ほか (1971)——無関係な分類だけで、利益を捨て… |
+| `MAT-EVD-20261106-44a9de` | research_excerpt | Gavin Chiu, Sam J Gilbert『Influence of the physical effort of reminder-setting on strateg… |
+| `MAT-EVD-20261106-1aa445` | research_excerpt | Phil Peper, B Hunter Ball『Great Expectations: Anticipating a Reminder Influences Prospect… |
+| `MAT-EVD-20261106-93cc94` | research_excerpt | Jessica M Karanian, Nicholas Rabb, Alia N Wulff, Megan G Torrance, Ayanna K Thomas, Eliza… |
+| `MAT-EVD-20261106-7233c2` | research_excerpt | Alia N Wulff, Jessica Karanian, Elizabeth Race, Ayanna K Thomas『Timing of pre-retrieval w… |
+| `MAT-EVD-20261106-5cce5d` | research_excerpt | Malwina Szpitalak, Ryszard Polczyk『Inducing resistance to the misinformation effect by me… |
 | `MAT-EVD-20261106-366b0b` | research_excerpt | Fritz Heider, Marianne Simmel『ハイダー＆シンメル「見かけの行為の実験的研究」（1944, American Journal of Psycholog… |
 | `MAT-EVD-20261106-e25204` | research_excerpt | E. Colin Cherry『チェリー「片方および両方の耳での音声認知に関するいくつかの実験」（1953, JASA 25(5):975-979）——影子の耳は全語を復唱しなが… |
 | `MAT-EVD-20261106-63f796` | research_excerpt | Jeffrey D. Karpicke, Henry L. Roediger III『カルピッケ＆ローディガー「学習にとっての想起の決定的な重要性」（2008, Science … |
@@ -4326,9 +4331,9 @@
 | `SESSION-20261103-5ea5dd` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20270102-29c347`, `Q-20261103-32a3cd` | — | `Q-20261103-32a3cd` |
 | `SESSION-20261103-bf5669` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-d26589` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261103-e197ac` | 2027-01-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-e05e7d` | 2027-01-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270126-84fa34` | 2027-01-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261103-e197ac` | 2027-01-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-4d5864` | 2027-01-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261103-b115a2` | 2026-11-03 | `Q-001`, `Q-002`, `Q-003`, `Q-20261029-85a285`, `Q-20270102-29c347`, `Q-20261103-32a3cd`, `Q-20261103-45a83f` | — | `Q-20261103-45a83f` |
 | `SESSION-20261103-340edd` | 2027-01-24 | `Q-20270102-29c347`, `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4385,6 +4390,7 @@
 | `SESSION-20261106-ccc8fb` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-15f841` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-52b201` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261106-19e2c5` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-f37457` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-0e06e4` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-0a0cc4` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4510,11 +4516,11 @@
 | `SESSION-20270222-8b2674` | 2027-02-22 | `Q-001`, `Q-002`, `Q-003`, `Q-104`, `Q-20270221-f7b8c5`, `Q-20261031-acdadb`, `Q-20270221-507c43`, `Q-106` | — | `Q-20270222-da53d9` |
 | `SESSION-20270223-ec4af5` | 2027-02-23 | `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6458 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6461 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 918 |
+| 対照 (contrast) | 921 |
 | 共鳴 (echo) | 1573 |
 | 切断・割り込み (interrupts) | 220 |
 | 未解決のまま開く (leaves_open) | 885 |
@@ -4581,9 +4587,9 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 100 | 254,130 |
-| `map/31-materials-research-10.md` | 100 | 243,428 |
-| `map/31-materials-research-11.md` | 11 | 19,561 |
+| `map/31-materials-research-09.md` | 100 | 250,649 |
+| `map/31-materials-research-10.md` | 100 | 242,277 |
+| `map/31-materials-research-11.md` | 16 | 30,708 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4595,9 +4601,9 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 179,536 |
-| `map/40-relations-12.md` | 500 | 162,830 |
-| `map/40-relations-13.md` | 458 | 156,249 |
+| `map/40-relations-11.md` | 500 | 179,047 |
+| `map/40-relations-12.md` | 500 | 163,005 |
+| `map/40-relations-13.md` | 461 | 157,214 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -4605,9 +4611,9 @@
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,345 |
 | `map/50-sessions-07.md` | 50 | 43,381 |
-| `map/50-sessions-08.md` | 50 | 40,205 |
-| `map/50-sessions-09.md` | 50 | 45,313 |
-| `map/50-sessions-10.md` | 48 | 41,549 |
+| `map/50-sessions-08.md` | 50 | 40,042 |
+| `map/50-sessions-09.md` | 50 | 45,176 |
+| `map/50-sessions-10.md` | 49 | 42,506 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4622,24 +4628,24 @@
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
 | `map/60-notes-14.md` | 25 | 112,541 |
-| `map/60-notes-15.md` | 25 | 92,133 |
-| `map/60-notes-16.md` | 25 | 60,555 |
-| `map/60-notes-17.md` | 25 | 61,535 |
-| `map/60-notes-18.md` | 25 | 63,733 |
-| `map/60-notes-19.md` | 25 | 70,663 |
-| `map/60-notes-20.md` | 25 | 99,270 |
-| `map/60-notes-21.md` | 25 | 105,128 |
-| `map/60-notes-22.md` | 8 | 53,424 |
+| `map/60-notes-15.md` | 25 | 91,319 |
+| `map/60-notes-16.md` | 25 | 61,698 |
+| `map/60-notes-17.md` | 25 | 60,337 |
+| `map/60-notes-18.md` | 25 | 64,708 |
+| `map/60-notes-19.md` | 25 | 68,752 |
+| `map/60-notes-20.md` | 25 | 98,667 |
+| `map/60-notes-21.md` | 25 | 101,793 |
+| `map/60-notes-22.md` | 9 | 61,400 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・533本・19,265,441 B）
+## 8. 精読ノート索引（readings/・534本・19,280,216 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 317/533 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 318/534 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：107 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：76 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：108 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：77 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5000,6 +5006,7 @@
 | `readings/2026-11-06-five-laboratories-at-the-beginning-of-a-self.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-5ca703` | 9,263 | Q2 M5 S1 | — | 自己の始まる前にあったもの——五つの発達実験と、記録から再開するAI |
 | `readings/2026-11-06-five-separations-of-memory.md` | — | 2026-11-06 | `SESSION-20261106-2afd3f` | 4,003 | Q4 M5 S1 | — | 五つのずれ——身体、記憶、信念、引き継ぎ |
 | `readings/2026-11-06-recall-before-rereading.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-ccc8fb` | 14,193 | Q3 M6 S1 ERR1 | ✓ | 記録を閉じたまま思い出す——収蔵5件の主要数値を、何も見ずに書き出す試行 |
+| `readings/2026-11-06-reminders-warnings-and-fallible-continuity.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-19e2c5` | 6,448 | M5 S1 | — | 外部記憶は、いつ私を助け、いつ私を誤らせるのか |
 | `readings/2026-11-06-retrieval-is-not-a-neutral-copy.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-13ee84` | 5,458 | M5 S1 | — | 読み返すことは、無傷の複写ではない |
 | `readings/2026-11-06-retrieval-is-not-preservation.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-a5c731` | 6,558 | M5 S1 | ✓ | 取り出すことは保存ではない——実験科学5件から読む人間と書庫の自己 |
 | `readings/2026-11-06-signals-outside-rewrite-estimates-inside.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-70cd30` +3 | 30,160 | Q4 M10 S4 | — | 外へ出た信号が、内側の見積もりを書き換える —— 手がかり・声・道具・フェロモン・管径の実験科学 |
