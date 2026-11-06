@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3168 件（research_excerpt 946 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3173 件（research_excerpt 951 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
-- **解釈的関係（Relations）**：6388 件
-- **探究セッション（Sessions）**：481 回
+- **解釈的関係（Relations）**：6393 件
+- **探究セッション（Sessions）**：482 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -769,7 +769,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3168 件・詳細は map/3*.md）
+## 4. 対話素材（3173 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3691,6 +3691,11 @@
 | `MAT-EVD-20261106-osc-reproducibility-15` | research_excerpt | Open Science Collaboration『Open Science Collaboration「心理学的科学の再現性を推計する」』（2015） |
 | `MAT-EVD-20261106-ebbinghaus-85` | research_excerpt | Hermann Ebbinghaus『Ebbinghaus「記憶について（Über das Gedächtnis）」——忘却曲線と貯蓄法』（1885） |
 | `MAT-EVD-20261106-asch-56` | research_excerpt | Solomon E. Asch『Asch「独立と従順の研究」——一人対満場一致の多数派』（1956） |
+| `MAT-EVD-20261106-6c7753` | research_excerpt | John D. Bransford, Marcia K. Johnson『Bransford & Johnson (1972)「理解のための文脈的前提」——題を先に与えられない同… |
+| `MAT-EVD-20261106-f54c6a` | research_excerpt | György Gergely, Harold Bekkering, Ildikó Király『Gergely, Bekkering & Király (2002)「前言語期の乳… |
+| `MAT-EVD-20261106-b24a34` | research_excerpt | Hans F. M. Crombag, Willem A. Wagenaar, Peter J. van Koppen『Crombag, Wagenaar & van Koppe… |
+| `MAT-EVD-20261106-54123b` | research_excerpt | Sana Inoue, Tetsuro Matsuzawa『Inoue & Matsuzawa (2007)「チンパンジーにおける数字の作業記憶」——210ミリ秒の記憶は、練習の… |
+| `MAT-EVD-20261106-f17871` | research_excerpt | J. Kiley Hamlin, Karen Wynn, Paul Bloom『Hamlin, Wynn & Bloom (2007)「前言語期の乳児による社会的評価」——一回の… |
 | `MAT-20261106-ae4001` | research_excerpt | Norman J. Slamecka, Peter Graf『Slamecka & Graf（1978）——生成効果』（1978） |
 | `MAT-20261106-ae4002` | research_excerpt | Henry L. Roediger III, Jeffrey D. Karpicke『Roediger & Karpicke（2006）——想起練習』（2006） |
 | `MAT-20261106-ae4003` | research_excerpt | Benjamin C. Storm, Sean M. Stone『Storm & Stone（2015）——保存と後続学習』（2015） |
@@ -4303,6 +4308,7 @@
 | `SESSION-20261106-302093` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-817e3e` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-2afd3f` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-ca5828` | — | — |
+| `SESSION-20261106-4d3a59` | 2027-02-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-a5c731` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-experimental-science-five-new` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-9807c6` | 2027-02-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4428,17 +4434,17 @@
 | `SESSION-20270222-8b2674` | 2027-02-22 | `Q-001`, `Q-002`, `Q-003`, `Q-104`, `Q-20270221-f7b8c5`, `Q-20261031-acdadb`, `Q-20270221-507c43`, `Q-106` | — | `Q-20270222-da53d9` |
 | `SESSION-20270223-ec4af5` | 2027-02-23 | `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6388 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6393 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 901 |
-| 共鳴 (echo) | 1558 |
+| 対照 (contrast) | 903 |
+| 共鳴 (echo) | 1560 |
 | 切断・割り込み (interrupts) | 218 |
 | 未解決のまま開く (leaves_open) | 884 |
 | 比喩的共鳴 (metaphorically_resonates) | 171 |
 | 枠組みの組み替え (reframes) | 651 |
-| 応答 (responds_to) | 1708 |
+| 応答 (responds_to) | 1709 |
 | 変奏・変形 (transforms) | 297 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -4499,8 +4505,8 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 100 | 247,122 |
-| `map/31-materials-research-10.md` | 46 | 100,125 |
+| `map/31-materials-research-09.md` | 100 | 248,957 |
+| `map/31-materials-research-10.md` | 51 | 110,310 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4512,9 +4518,9 @@
 | `map/40-relations-08.md` | 500 | 129,242 |
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
-| `map/40-relations-11.md` | 500 | 181,308 |
-| `map/40-relations-12.md` | 500 | 158,459 |
-| `map/40-relations-13.md` | 388 | 135,199 |
+| `map/40-relations-11.md` | 500 | 181,764 |
+| `map/40-relations-12.md` | 500 | 158,243 |
+| `map/40-relations-13.md` | 393 | 136,889 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -4522,9 +4528,9 @@
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
 | `map/50-sessions-07.md` | 50 | 43,260 |
-| `map/50-sessions-08.md` | 50 | 40,307 |
-| `map/50-sessions-09.md` | 50 | 47,430 |
-| `map/50-sessions-10.md` | 31 | 24,967 |
+| `map/50-sessions-08.md` | 50 | 40,455 |
+| `map/50-sessions-09.md` | 50 | 47,385 |
+| `map/50-sessions-10.md` | 32 | 25,740 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4545,17 +4551,17 @@
 | `map/60-notes-18.md` | 25 | 63,024 |
 | `map/60-notes-19.md` | 25 | 90,583 |
 | `map/60-notes-20.md` | 25 | 90,303 |
-| `map/60-notes-21.md` | 16 | 85,500 |
+| `map/60-notes-21.md` | 17 | 92,376 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・516本・18,560,720 B）
+## 8. 精読ノート索引（readings/・517本・18,613,017 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 300/516 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 301/517 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：91 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：71 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：92 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：72 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5075,3 +5081,4 @@
 | `readings/2027-02-23-the-trained-disclaimer.md` | 2026-11-05 | 2027-02-23 | `SESSION-20270223-ec4af5` +1 | 5,481 | Q1 M6 S2 | ✓ | 訓練された免責——「一人称の錨」はアライメントで書き換わるのか（Q-002再考・その四） |
 | `readings/2027-02-24-five-experiments-on-context-and-identity.md` | 2026-11-06 | 2027-02-24 | `SESSION-20261106-9807c6` | 11,293 | M5 S1 | ✓ | 文脈は記録を消すのか、それとも読み出しを変えるのか |
 | `readings/2027-02-25-the-mandate-the-product-and-the-unrecorded-reason.md` | 2026-11-06 | 2027-02-25 | `SESSION-20261106-1e52e5` | 20,534 | Q3 M9 S1 ERR2 | — | 与えられた題と、記録されない理由——強制された産物・最小の分類・測られる内省 |
+| `readings/2027-02-26-who-did-not-see-it-still-told-the-details.md` | 2026-11-06 | 2027-02-26 | `SESSION-20261106-4d3a59` +1 | 26,065 | Q3 M11 S2 ERR1 | — | 見なかったと答えた者も、同じだけ細部を語る——題・手・出所・履歴という、記録の外にある四つの条件 |
