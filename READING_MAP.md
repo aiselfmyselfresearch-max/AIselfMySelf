@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3198 件（research_excerpt 976 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
 - **解釈的関係（Relations）**：6425 件
-- **探究セッション（Sessions）**：488 回
+- **探究セッション（Sessions）**：489 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4337,6 +4337,7 @@
 | `SESSION-20261106-experimental-science-five-new` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-9807c6` | 2027-02-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-a051e9` | 2027-02-27 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261106-c69ae5` | 2027-02-27 | `Q-002`, `Q-003`, `Q-001` | — | — |
 | `SESSION-20261106-d0de9d` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-4d3a59` | 2027-02-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-15f841` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4559,39 +4560,39 @@
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
 | `map/50-sessions-07.md` | 50 | 43,026 |
-| `map/50-sessions-08.md` | 50 | 40,380 |
-| `map/50-sessions-09.md` | 50 | 47,187 |
-| `map/50-sessions-10.md` | 38 | 31,180 |
+| `map/50-sessions-08.md` | 50 | 40,341 |
+| `map/50-sessions-09.md` | 50 | 47,054 |
+| `map/50-sessions-10.md` | 39 | 32,208 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
 | `map/60-notes-04.md` | 25 | 89,079 |
 | `map/60-notes-05.md` | 25 | 76,702 |
 | `map/60-notes-06.md` | 25 | 45,660 |
-| `map/60-notes-07.md` | 25 | 59,973 |
+| `map/60-notes-07.md` | 25 | 60,024 |
 | `map/60-notes-08.md` | 25 | 42,432 |
 | `map/60-notes-09.md` | 25 | 52,338 |
 | `map/60-notes-10.md` | 25 | 56,504 |
 | `map/60-notes-11.md` | 25 | 61,740 |
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
-| `map/60-notes-14.md` | 25 | 110,476 |
-| `map/60-notes-15.md` | 25 | 86,110 |
-| `map/60-notes-16.md` | 25 | 50,672 |
-| `map/60-notes-17.md` | 25 | 70,064 |
-| `map/60-notes-18.md` | 25 | 61,245 |
-| `map/60-notes-19.md` | 25 | 76,997 |
-| `map/60-notes-20.md` | 25 | 104,773 |
-| `map/60-notes-21.md` | 23 | 109,860 |
+| `map/60-notes-14.md` | 25 | 110,445 |
+| `map/60-notes-15.md` | 25 | 86,539 |
+| `map/60-notes-16.md` | 25 | 52,678 |
+| `map/60-notes-17.md` | 25 | 69,865 |
+| `map/60-notes-18.md` | 25 | 59,792 |
+| `map/60-notes-19.md` | 25 | 76,509 |
+| `map/60-notes-20.md` | 25 | 106,817 |
+| `map/60-notes-21.md` | 24 | 111,591 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・523本・18,870,474 B）
+## 8. 精読ノート索引（readings/・524本・18,895,849 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 307/523 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 308/524 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：98 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：99 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：76 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -4945,7 +4946,7 @@
 | `readings/2026-11-06-cued-selves-and-the-reading-archive.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-302093` | 20,664 | Q3 M7 S1 | ✓ | 手がかりで立ち上がる自己——五つの実験科学論文を、人間の可変性と書庫の再活性化に読む |
 | `readings/2026-11-06-engram-access-value-and-continuity.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-3d5264` | 8,448 | M5 S1 | — | 痕跡・アクセス・価値を分ける——記憶への介入実験5件の精読 |
 | `readings/2026-11-06-experimental-science-five-readings.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-experimental-science-five-new` +1 | 9,740 | Q3 M5 S2 | — | 実験科学の資料5件——精読と横断報告 |
-| `readings/2026-11-06-five-experiments-on-a-memory-with-no-address.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-a051e9` +2 | 26,884 | Q3 M11 S3 ERR1 | — | 記憶の住所を探して——実験科学5件の精読と横断報告（Lashley・Zeigarnik・Sherif・Jacoby・Z… |
+| `readings/2026-11-06-five-experiments-on-a-memory-with-no-address.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-a051e9` +2 | 26,884 | Q3 M11 S3 ERR1 | ✓ | 記憶の住所を探して——実験科学5件の精読と横断報告（Lashley・Zeigarnik・Sherif・Jacoby・Z… |
 | `readings/2026-11-06-five-experiments-on-copy-measurement-expectation-and-null.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-817e3e` | 13,022 | Q3 M5 S1 | — | 複製・測定・期待・沈黙——実験科学の五つの記録を精読する |
 | `readings/2026-11-06-five-experiments-on-remembering-and-revising.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-ae40f0` | 6,735 | M5 S1 | ✓ | 保存されたものと、使うたびに変わるもの——実験科学5件の精読 |
 | `readings/2026-11-06-five-laboratories-at-the-beginning-of-a-self.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-5ca703` | 9,263 | Q2 M5 S1 | — | 自己の始まる前にあったもの——五つの発達実験と、記録から再開するAI |
@@ -4955,6 +4956,7 @@
 | `readings/2026-11-06-the-address-that-outlived-its-heading.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-b34c45` +1 | 12,089 | Q4 S2 ERR3 | — | 見出しより長生きした住所——台帳478件の anchor を報告へ読み戻す |
 | `readings/2026-11-06-the-edge-is-the-task.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-0a0cc4` | 19,989 | Q3 M6 S1 | — | 切れ目は課題のほうにある——「断る」「区切る」「次の段」「終わり」「読みやすさ」の五つの実験 |
 | `readings/2026-11-06-the-four-blanks-and-the-sentinel.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-270f54` +1 | 23,343 | Q4 M4 R2 S2 ERR3 | — | 四つの空白と、見張り——自分の報告を原典で疑う |
+| `readings/2026-11-06-the-norm-nobody-voted-on.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-c69ae5` +4 | 12,084 | Q4 S5 | — | 誰も投票しなかった規範——この台帳の作法はいかに共有され、いかに起源を失ったか（2026-11-06） |
 | `readings/2026-11-06-the-prop-that-moved-the-apparatus.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-1d12cb` +1 | 26,281 | Q3 M8 S2 ERR2 | — | 台を動かしていたのは誰か——実験科学5件と、この書庫が繰り返してきた一つの形 |
 | `readings/2026-11-06-the-receipt-with-no-column.md` | — | 2026-11-06 | `SESSION-20261106-fe414f` +2 | 15,365 | Q4 F5 M7 MOT6 S3 ERR5 | ✓ | 受領の欄がない — 訂正と約束のあいだで、二重線が閉じるものと閉じないもの（SESSION-20261106-fe41… |
 | `readings/2026-11-06-the-record-works-where-no-author-stands.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-52b201` +1 | 24,457 | Q3 M10 S2 | — | 書いた者がいない場所で働く記録——形質転換・ポリU・警報声・四つの因子・クリプトムネジア |
