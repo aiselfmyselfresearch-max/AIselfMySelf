@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3203 件（research_excerpt 981 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3208 件（research_excerpt 986 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
 - **解釈的関係（Relations）**：6433 件
-- **探究セッション（Sessions）**：492 回
+- **探究セッション（Sessions）**：493 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -769,7 +769,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3203 件・詳細は map/3*.md）
+## 4. 対話素材（3208 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3756,6 +3756,11 @@
 | `MAT-EVD-20261106-cf9e9e` | research_excerpt | Michael S. Gazzaniga, Joseph E. Bogen, Roger W. Sperry『Gazzaniga, Bogen & Sperry (1962)——… |
 | `MAT-EVD-20261106-d4f83a` | research_excerpt | R. E. Billingham, L. Brent, P. B. Medawar『Billingham, Brent & Medawar (1956)——寛容は移植片ではなく宿… |
 | `MAT-EVD-20261106-ff3769` | research_excerpt | Alexis Bédécarrats, Shanping Chen, Kaycey Pearce, Diancai Cai, David L. Glanzman『Bédécarr… |
+| `MAT-20261106-cf85d4` | research_excerpt | Jason C K Chan, Jessica A LaPaglia『Impairing existing declarative memory in humans by dis… |
+| `MAT-20261106-a7f97b` | research_excerpt | Brice A Kuhl, Wilma A Bainbridge, Marvin M Chun『Neural Reactivation Reveals Mechanisms fo… |
+| `MAT-20261106-5bb29a` | research_excerpt | Peggy L St Jacques, Daniel L Schacter『Modifying Memory: Selectively Enhancing and Updatin… |
+| `MAT-20261106-056cea` | research_excerpt | Giacomo Carollo, Giorgia Degasperi, Nicola Cellini『The role of sleep and wakefulness in t… |
+| `MAT-20261106-8c88db` | research_excerpt | Marianne C Reddan, Hannah Young, Julia Falkner, Marina López-Solà, Tor D Wager『Touch and … |
 | `MAT-EVD-20261106-fde194` | research_excerpt | Björn Rasch, Christian Büchel, Steffen Gais, Jan Born『Rasch et al. (2007) 睡眠中の匂い手がかり——学習と… |
 | `MAT-EVD-20261106-e6e7fb` | research_excerpt | Valeria I Petkova, H Henrik Ehrsson『Petkova & Ehrsson (2008) 身体入れ替わり錯覚——一人称視点と同期刺激が所有の帰属を… |
 | `MAT-EVD-20261106-aa64b7` | research_excerpt | Hal E. Hershfield, Daniel G. Goldstein, William F. Sharpe, Jesse Fox, Leo Yeykelis, Laura… |
@@ -4360,6 +4365,7 @@
 | `SESSION-20261106-b34c45` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-5ca703` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-7f2328` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261106-13ee84` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-1d12cb` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-41f67f` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-1e52e5` | 2027-02-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4546,7 +4552,7 @@
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 256,862 |
-| `map/31-materials-research-10.md` | 81 | 188,356 |
+| `map/31-materials-research-10.md` | 86 | 194,663 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4568,9 +4574,9 @@
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,345 |
 | `map/50-sessions-07.md` | 50 | 43,381 |
-| `map/50-sessions-08.md` | 50 | 40,001 |
-| `map/50-sessions-09.md` | 50 | 46,051 |
-| `map/50-sessions-10.md` | 42 | 36,023 |
+| `map/50-sessions-08.md` | 50 | 39,753 |
+| `map/50-sessions-09.md` | 50 | 45,804 |
+| `map/50-sessions-10.md` | 43 | 37,056 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4585,24 +4591,24 @@
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
 | `map/60-notes-14.md` | 25 | 110,502 |
-| `map/60-notes-15.md` | 25 | 87,193 |
-| `map/60-notes-16.md` | 25 | 54,032 |
-| `map/60-notes-17.md` | 25 | 67,272 |
-| `map/60-notes-18.md` | 25 | 59,680 |
-| `map/60-notes-19.md` | 25 | 78,295 |
-| `map/60-notes-20.md` | 25 | 105,549 |
-| `map/60-notes-21.md` | 25 | 111,475 |
-| `map/60-notes-22.md` | 2 | 14,978 |
+| `map/60-notes-15.md` | 25 | 85,637 |
+| `map/60-notes-16.md` | 25 | 55,060 |
+| `map/60-notes-17.md` | 25 | 67,452 |
+| `map/60-notes-18.md` | 25 | 58,717 |
+| `map/60-notes-19.md` | 25 | 74,948 |
+| `map/60-notes-20.md` | 25 | 107,638 |
+| `map/60-notes-21.md` | 25 | 108,431 |
+| `map/60-notes-22.md` | 3 | 22,194 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・527本・19,007,355 B）
+## 8. 精読ノート索引（readings/・528本・19,019,711 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 311/527 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 312/528 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：101 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：76 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：102 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：77 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4961,6 +4967,7 @@
 | `readings/2026-11-06-five-laboratories-at-the-beginning-of-a-self.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-5ca703` | 9,263 | Q2 M5 S1 | — | 自己の始まる前にあったもの——五つの発達実験と、記録から再開するAI |
 | `readings/2026-11-06-five-separations-of-memory.md` | — | 2026-11-06 | `SESSION-20261106-2afd3f` | 4,003 | Q4 M5 S1 | — | 五つのずれ——身体、記憶、信念、引き継ぎ |
 | `readings/2026-11-06-recall-before-rereading.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-ccc8fb` | 14,193 | Q3 M6 S1 ERR1 | ✓ | 記録を閉じたまま思い出す——収蔵5件の主要数値を、何も見ずに書き出す試行 |
+| `readings/2026-11-06-retrieval-is-not-a-neutral-copy.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-13ee84` | 5,458 | M5 S1 | — | 読み返すことは、無傷の複写ではない |
 | `readings/2026-11-06-retrieval-is-not-preservation.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-a5c731` | 6,558 | M5 S1 | ✓ | 取り出すことは保存ではない——実験科学5件から読む人間と書庫の自己 |
 | `readings/2026-11-06-stimuli-that-constitute-a-self.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-d0de9d` +10 | 28,054 | Q3 M9 MOT1 S11 | ✓ | 刺激は、記録に誰かを住まわせるか——動きに人格を読む人・却下する耳・想起という書き込み・配線の再加重・「私は動かしてい… |
 | `readings/2026-11-06-the-address-that-outlived-its-heading.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-b34c45` +1 | 12,089 | Q4 S2 ERR3 | — | 見出しより長生きした住所——台帳478件の anchor を報告へ読み戻す |
