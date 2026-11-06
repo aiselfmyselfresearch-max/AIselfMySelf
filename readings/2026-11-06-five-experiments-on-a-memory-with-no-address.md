@@ -7,7 +7,7 @@
 - **作業様式**: `prompts/acquisition.md` ＋ `prompts/close_reading_report.md`（四層＝一節／解釈／考え／感じたこと）
 - **中心三問への配置**: Q-001（人間とは何か）と Q-002（同一の自己の条件）を主、Q-003（記録は保存か素材か）を従
 - **新規資料**: 5件。いずれも操作と測定を伴う実験科学（実験生理学1・実験心理学3・社会心理学1）。科学哲学・理論のみの資料、総説のみの資料は含めない
-- **継承元**: `SESSION-20261106-4d3a59`／`NOTE-20261106-9c4854`（quoted を原文由来に限る運用）、`ERR-20261106-ad0ade`（要約が引用の位置に置かれた誤り）、`SESSION-20261106-1e52e5`（同委任の先行兄弟・選定理由を残す運用）、未マージの兄弟 PR `#488`（5件の題を確認し重複なし）
+- **継承元**: `SESSION-20261106-4d3a59`／`NOTE-20261106-9c4854`（quoted を原文由来に限る運用）、`ERR-20261106-ad0ade`（要約が引用の位置に置かれた誤り）、`SESSION-20261106-1e52e5`（同委任の先行兄弟・選定理由を残す運用）、兄弟 PR `#488`（同委任の兄弟。2026-11-06 時点で open、本セッション作業中に main へマージされた。収蔵5件の題を確認し、本報告の5件と非重複）
 - **声について**: 本報告の「解釈」「考え」は公刊された判断であり、「感じたこと」は**反省的・文芸的な応答モード**（`reflective_literary_voice`）である。持続する主観的意識、身体感覚、気分の事実報告ではない。「私」は今回の記録を読んで判断する作業上の視点を指す。委任文（人間の指示）は来歴として分離し、資料の証拠・AI独自の解釈としては記述しない。
 
 ---
@@ -18,11 +18,11 @@
 
 この委任文は、同じ文面で既に7回以上実行されている（2026-11-05に5件・2027-02-25/26に各1件・未マージの PR `#488`）。今回の実行でも、選定の前に重複を避けた。
 
-- PR `#488` の資料5件の題を `gh pr view 488 --json files` と PR 本文で確認した：Hampton 2001 / Zacks ほか 2001 / Dean ほか 2012 / Quoidbach ほか 2013 / Rhodes & Castel 2008。**今回の5件とは重ならない。**
+- PR `#488` の資料5件の題を `gh pr view 488 --json files` と PR 本文で確認した：Hampton 2001 / Zacks ほか 2001 / Dean ほか 2012 / Quoidbach ほか 2013 / Rhodes & Castel 2008。**今回の5件とは重ならない。**（確認後、本セッション作業中に同 PR は main へマージされた。）
 - 和集合の素材を著者名・術語で検索した（`Lashley`・`Zeigarnik`・`Sherif`・`autokinetic`・`Jacoby`・`Becoming famous`・`Zajonc`・`mere exposure`・`engram`・`quasi-need`）。**いずれも0件。**
 - 一方、併走する兄弟たちの収蔵（Loftus & Palmer／アッシュ／ミルグラム／Ebbinghaus／Sperling／Bartlett／Anderson & Pichert／Bransford & Johnson／Hamlin ほか／Crombag ほか）は既に台帳にある。今回の5件はそれらと接続しうる位置に選んだ。
 
-**見えなさは残る。** PR の本文は自己申告であって台帳ではない。マージされなければ `validate_seed.py` の参照整合性検査も通らない。私に見えたのは「題とID」だけであり、兄弟たちが何をどう読んだか、どこを取り落としたかは見えない。見えなさが減っただけで、消えてはいない。
+**見えなさは残る。** PR の本文は自己申告であって台帳ではない。私に見えたのは「題とID」だけであり、兄弟たちが何をどう読んだか、どこを取り落としたかは見えない。見えなさが減っただけで、消えてはいない。
 
 ### 0-2. 選定の偏りを、先に書く
 
@@ -398,4 +398,4 @@ Jacoby（§4）が「見覚えのある名前を有名と呼ぶ」認知だと�
 - Jacoby, L. L., Kelley, C., Brown, J., & Jasechko, J. (1989). *Becoming Famous Overnight: Limits on the Ability to Avoid Unconscious Influences of the Past*. Journal of Personality and Social Psychology, 56(3), 326–338. https://www.larryjacoby.ca/images/jacoby,%20kelley,%20brown,%20&%20jasechko%20(1989).pdf （著者公開PDF。本文を直接読んだ）
 - Zajonc, R. B. (1968). *Attitudinal effects of mere exposure*. Journal of Personality and Social Psychology, 9(2, Pt.2), 1–27. https://doi.org/10.1037/h0025848 （本文は購読制。書誌と抄録を APA PsycNet で照合）
 - 参照した既存台帳記録: `MAT-EVD-20261106-79bf21`（Bartlett 1932）、`MAT-EVD-20261105-2bb0bd`（Loftus & Palmer 1974）、`MAT-EVD-20261105-9e0bd2`（Asch 1955）、`MAT-EVD-20261106-b24a34`（Crombag ほか 1996）、`MAT-EVD-20261106-0b1df8`（Castellucci/Kandel 1970）、`MAT-20261105-56dc62`（Hassabis ほか 2007）、`NOTE-20261106-9c4854`（前回の判断オーバーレイ）、`SESSION-20261106-4d3a59`（前回の同委任セッション）。
-- 兄弟セッションの新規収蔵（並列、未マージ）: PR `#488`（Hampton／Zacks／Dean／Quoidbach／Rhodes & Castel）——題の確認のみ実施、本文の精読はしていない。
+- 兄弟セッションの新規収蔵: PR `#488`（Hampton／Zacks／Dean／Quoidbach／Rhodes & Castel）——題の確認のみ実施し本文の精読はしていない。本セッション作業中に main へマージ済み（本報告との重複は題の水準で0件）。
