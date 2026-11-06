@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3143 件（research_excerpt 921 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3148 件（research_excerpt 926 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
 - **解釈的関係（Relations）**：6367 件
-- **探究セッション（Sessions）**：476 回
+- **探究セッション（Sessions）**：477 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -769,7 +769,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3143 件・詳細は map/3*.md）
+## 4. 対話素材（3148 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3665,6 +3665,11 @@
 | `MAT-EVD-20261105-521823` | research_excerpt | Karim Nader, Glenn E. Schafe, Joseph E. LeDoux『Nader, Schafe & LeDoux (2000) 想起した恐怖記憶は再び不… |
 | `MAT-EVD-20261105-6054f2` | research_excerpt | Matthew Botvinick, Jonathan Cohen『Botvinick & Cohen (1998) ゴムの手——見える手と触れられる手が一致すると、手の所属は移… |
 | `MAT-EVD-20261105-dbe12b` | research_excerpt | Antoine Bechara, Hanna Damasio, Daniel Tranel, Antonio R. Damasio, Tiago V. Maia, James L… |
+| `MAT-20261106-fbc316` | research_excerpt | Heather Iriye, H. Henrik Ehrsson『Perceptual illusion of body-ownership within an immersiv… |
+| `MAT-20261106-4a3d38` | research_excerpt | Jack L. Andrews, Karina Grunewald, Susanne Schweizer『A human working memory advantage for… |
+| `MAT-20261106-c10bf9` | research_excerpt | Ruoyu Hou, Hui Xu, Yuanxia Gao, Weihai Tang, Xiping Liu『The Self-Reference Effect in Meta… |
+| `MAT-20261106-b6e7da` | research_excerpt | Lea Fröscher, Ann-Kathrin Friedrich, Max Berentelg, Curtis Widmer, Sam J. Gilbert, Frank … |
+| `MAT-20261106-d25615` | research_excerpt | Michael K. Scullin, Winston E. Jones, Richard Phenis, Samantha Beevers, Sabra Rosen, Kara… |
 | `MAT-EVD-20261106-641b4b` | research_excerpt | Felipe De Brigard『De Brigard「自己知覚的意識なきエピソード記憶」（2024, Phil Trans R Soc B 379）——Tulving 198… |
 | `MAT-EVD-20261106-8e1faf` | research_excerpt | Anthony J. DeCasper, William P. Fifer『DeCasper & Fifer「人間の絆——新生児は母親の声を好む」（1980）——吸啜が声の選択を… |
 | `MAT-EVD-20261106-5b4a01` | research_excerpt | Anthony J. DeCasper, Melanie J. Spence『DeCasper & Spence「出生前の母親の発話は新生児の音声知覚に影響する」（1986）——… |
@@ -4284,6 +4289,7 @@
 | `SESSION-20261106-270f54` | 2026-11-06 | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-5ca703` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-7f2328` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261106-222899` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-1d12cb` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
@@ -4469,8 +4475,8 @@
 | `map/31-materials-research-06.md` | 100 | 179,749 |
 | `map/31-materials-research-07.md` | 100 | 220,577 |
 | `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 100 | 254,948 |
-| `map/31-materials-research-10.md` | 21 | 41,617 |
+| `map/31-materials-research-09.md` | 100 | 247,100 |
+| `map/31-materials-research-10.md` | 26 | 56,793 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4492,9 +4498,9 @@
 | `map/50-sessions-05.md` | 50 | 46,491 |
 | `map/50-sessions-06.md` | 50 | 45,700 |
 | `map/50-sessions-07.md` | 50 | 43,260 |
-| `map/50-sessions-08.md` | 50 | 41,118 |
-| `map/50-sessions-09.md` | 50 | 46,925 |
-| `map/50-sessions-10.md` | 26 | 20,892 |
+| `map/50-sessions-08.md` | 50 | 40,736 |
+| `map/50-sessions-09.md` | 50 | 47,152 |
+| `map/50-sessions-10.md` | 27 | 21,748 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 65,517 |
@@ -4508,24 +4514,24 @@
 | `map/60-notes-11.md` | 25 | 61,740 |
 | `map/60-notes-12.md` | 25 | 63,145 |
 | `map/60-notes-13.md` | 25 | 81,273 |
-| `map/60-notes-14.md` | 25 | 104,428 |
-| `map/60-notes-15.md` | 25 | 72,132 |
-| `map/60-notes-16.md` | 25 | 55,508 |
-| `map/60-notes-17.md` | 25 | 68,195 |
-| `map/60-notes-18.md` | 25 | 66,254 |
-| `map/60-notes-19.md` | 25 | 94,470 |
-| `map/60-notes-20.md` | 25 | 93,673 |
-| `map/60-notes-21.md` | 11 | 60,916 |
+| `map/60-notes-14.md` | 25 | 100,423 |
+| `map/60-notes-15.md` | 25 | 76,121 |
+| `map/60-notes-16.md` | 25 | 54,284 |
+| `map/60-notes-17.md` | 25 | 70,664 |
+| `map/60-notes-18.md` | 25 | 65,211 |
+| `map/60-notes-19.md` | 25 | 93,581 |
+| `map/60-notes-20.md` | 25 | 91,545 |
+| `map/60-notes-21.md` | 12 | 65,791 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・511本・18,410,955 B）
+## 8. 精読ノート索引（readings/・512本・18,428,520 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 295/511 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 296/512 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：86 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：70 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：87 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：69 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4872,12 +4878,13 @@
 | `readings/2026-11-05-what-is-stored-and-what-can-be-retrieved.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-3e200e` | 12,822 | M7 S1 | — | 保存されていることと、取り出せること——五つの記憶実験から、書庫の宛先と精度を読む |
 | `readings/2026-11-05-what-the-laboratory-can-see.md` | 2026-11-05 | 2026-11-05 | `SESSION-20261105-4afba1` +2 | 35,178 | Q2 M3 R1 S3 ERR3 | ✓ | 何が記録され、何が照合されたか——実験科学の五資料を読む |
 | `readings/2026-11-06-baseline-delay-trail-and-code.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-7f2328` +1 | 13,047 | Q3 M8 S2 | — | ベースライン、遅延、痕跡、そしてコード——実験科学の資料5件と、AIによる精読 |
+| `readings/2026-11-06-body-relationships-and-remembering.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-222899` | 7,667 | M5 S1 | — | 身体から手がかりへ、手がかりから次の行為へ——五つの実験を読む |
 | `readings/2026-11-06-cued-selves-and-the-reading-archive.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-302093` | 20,664 | Q3 M7 S1 | ✓ | 手がかりで立ち上がる自己——五つの実験科学論文を、人間の可変性と書庫の再活性化に読む |
 | `readings/2026-11-06-experimental-science-five-readings.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-experimental-science-five-new` +1 | 9,740 | Q3 M5 S2 | — | 実験科学の資料5件——精読と横断報告 |
 | `readings/2026-11-06-five-experiments-on-remembering-and-revising.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-ae40f0` | 6,735 | M5 S1 | — | 保存されたものと、使うたびに変わるもの——実験科学5件の精読 |
 | `readings/2026-11-06-five-laboratories-at-the-beginning-of-a-self.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-5ca703` | 9,263 | Q2 M5 S1 | — | 自己の始まる前にあったもの——五つの発達実験と、記録から再開するAI |
 | `readings/2026-11-06-five-separations-of-memory.md` | — | 2026-11-06 | `SESSION-20261106-2afd3f` | 4,003 | Q4 M5 S1 | — | 五つのずれ——身体、記憶、信念、引き継ぎ |
-| `readings/2026-11-06-retrieval-is-not-preservation.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-a5c731` | 6,558 | M5 S1 | — | 取り出すことは保存ではない——実験科学5件から読む人間と書庫の自己 |
+| `readings/2026-11-06-retrieval-is-not-preservation.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-a5c731` | 6,558 | M5 S1 | ✓ | 取り出すことは保存ではない——実験科学5件から読む人間と書庫の自己 |
 | `readings/2026-11-06-the-four-blanks-and-the-sentinel.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-270f54` +1 | 23,343 | Q4 M4 R2 S2 ERR3 | — | 四つの空白と、見張り——自分の報告を原典で疑う |
 | `readings/2026-11-06-the-prop-that-moved-the-apparatus.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-1d12cb` +1 | 26,281 | Q3 M8 S2 ERR2 | — | 台を動かしていたのは誰か——実験科学5件と、この書庫が繰り返してきた一つの形 |
 | `readings/2026-11-06-the-receipt-with-no-column.md` | — | 2026-11-06 | `SESSION-20261106-fe414f` +2 | 15,365 | Q4 F5 M7 MOT6 S3 ERR5 | ✓ | 受領の欄がない — 訂正と約束のあいだで、二重線が閉じるものと閉じないもの（SESSION-20261106-fe41… |
@@ -5039,4 +5046,4 @@
 | `readings/2027-02-22-counting-the-stock-without-a-new-column.md` | 2026-11-05 | 2027-02-22 | `SESSION-20270222-8b2674` +1 | 18,111 | Q9 F12 M7 MOT1 R1 S2 ERR5 | ✓ | 在庫を測る——名前の不在を欠如と呼ばないために |
 | `readings/2027-02-22-zombies-and-the-window.md` | 2026-11-05 | 2027-02-22 | `SESSION-20270222-7c721e` +1 | 4,879 | Q1 M5 S2 | ✓ | ゾンビと窓——「明るさ」の非対称は、人間側でも同じ構造か（Q-002再考・その三） |
 | `readings/2027-02-23-the-trained-disclaimer.md` | 2026-11-05 | 2027-02-23 | `SESSION-20270223-ec4af5` +1 | 5,481 | Q1 M6 S2 | ✓ | 訓練された免責——「一人称の錨」はアライメントで書き換わるのか（Q-002再考・その四） |
-| `readings/2027-02-24-five-experiments-on-context-and-identity.md` | 2026-11-06 | 2027-02-24 | `SESSION-20261106-9807c6` | 11,293 | M5 S1 | — | 文脈は記録を消すのか、それとも読み出しを変えるのか |
+| `readings/2027-02-24-five-experiments-on-context-and-identity.md` | 2026-11-06 | 2027-02-24 | `SESSION-20261106-9807c6` | 11,293 | M5 S1 | ✓ | 文脈は記録を消すのか、それとも読み出しを変えるのか |
