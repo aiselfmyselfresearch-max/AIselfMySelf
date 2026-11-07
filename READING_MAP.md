@@ -4677,7 +4677,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・559本・19,885,983 B）
+## 8. 精読ノート索引（readings/・559本・19,886,768 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 345/559 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -5075,7 +5075,7 @@
 | `readings/2026-11-07-cotton-not-in-the-book-and-the-pen-in-the-gashes.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-af48ac` +5 | 22,467 | Q6 F6 M6 S6 ERR1 | ✓ | 書物にない綿花、ひび割れに置かれるペン——ダグラス『自伝』原典照合と、四種類の「0」（SESSION-20261107… |
 | `readings/2026-11-07-paid-debt-and-the-fine-that-pays-itself.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-c30d36` +3 | 12,426 | Q1 M1 S4 | ✓ | 支払い済みの負い目——機械が書いた1,631行を、三つの労働記録に置く（SESSION-20261107-c30d36） |
 | `readings/2026-11-07-thatch-layers-and-the-dweller.md` | — | 2026-11-07 | `SESSION-20261107-31df2f` +1 | 22,709 | Q9 F10 M10 R2 S2 ERR4 | ✓ | 葺き足しと、屋根の下にいる者 — 消さない訂正が層になり、止める理由が層にならない（SESSION-20261107-… |
-| `readings/2026-11-07-the-arrow-the-clock-and-the-cut-of-the-quotation.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-4e0e1c` | 5,669 | Q4 F2 M2 S1 ERR1 | — | 箭と時計と、引用の切り口——「殺されない者に許可は出ていない」を読み直す |
+| `readings/2026-11-07-the-arrow-the-clock-and-the-cut-of-the-quotation.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-4e0e1c` | 6,149 | Q4 F2 M2 S1 ERR1 | — | 箭と時計と、引用の切り口——「殺されない者に許可は出ていない」を読み直す |
 | `readings/2026-11-07-the-bottle-that-was-left-uncorked.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-d6abe2` +6 | 13,893 | Q4 M4 MOT1 S7 ERR1 | ✓ | 栓をしない瓶——継承の鎖が開かなかった一次資料と、索引が上書きした撤回 |
 | `readings/2026-11-07-the-citation-belongs-to-the-report-not-the-passage.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-4c13d8` | 7,410 | Q3 S1 | — | 引用は報告の属性であって、文章の属性ではない |
 | `readings/2026-11-07-the-claimant-outside-the-ledger.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-874dea` +2 | 2,279 | Q3 F1 S3 | ✓ | 台帳の外にいる請求者——記録にないことと、いないこと |
