@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3248 件（research_excerpt 1026 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6477 件
-- **探究セッション（Sessions）**：553 回
+- **探究セッション（Sessions）**：554 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4462,6 +4462,7 @@
 | `SESSION-20261107-ffd8c7` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-fa64fe` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003`, `Q-082` | — | — |
 | `SESSION-20261107-53dcac` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261107-d826c0` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-4e0e1c` | 2026-11-07 | `Q-20270202-ee4683`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-372890` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003`, `Q-082`, `Q-20270202-ee4683` | — | — |
 | `SESSION-20261107-1134db` | 2026-11-07 | `Q-20261024-1c170d` | — | — |
@@ -4677,15 +4678,15 @@
 | `map/50-sessions-06.md` | 50 | 45,345 |
 | `map/50-sessions-07.md` | 50 | 42,333 |
 | `map/50-sessions-08.md` | 50 | 39,709 |
-| `map/50-sessions-09.md` | 50 | 41,246 |
-| `map/50-sessions-10.md` | 50 | 45,422 |
-| `map/50-sessions-11.md` | 50 | 43,515 |
-| `map/50-sessions-12.md` | 3 | 2,845 |
+| `map/50-sessions-09.md` | 50 | 41,250 |
+| `map/50-sessions-10.md` | 50 | 45,140 |
+| `map/50-sessions-11.md` | 50 | 43,902 |
+| `map/50-sessions-12.md` | 4 | 3,522 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,130 |
 | `map/60-notes-03.md` | 25 | 67,414 |
-| `map/60-notes-04.md` | 25 | 92,258 |
-| `map/60-notes-05.md` | 25 | 77,742 |
+| `map/60-notes-04.md` | 25 | 92,384 |
+| `map/60-notes-05.md` | 25 | 79,121 |
 | `map/60-notes-06.md` | 25 | 47,005 |
 | `map/60-notes-07.md` | 25 | 60,284 |
 | `map/60-notes-08.md` | 25 | 44,121 |
@@ -4697,24 +4698,24 @@
 | `map/60-notes-14.md` | 25 | 118,943 |
 | `map/60-notes-15.md` | 25 | 83,531 |
 | `map/60-notes-16.md` | 25 | 89,431 |
-| `map/60-notes-17.md` | 25 | 112,304 |
-| `map/60-notes-18.md` | 25 | 68,491 |
-| `map/60-notes-19.md` | 25 | 60,763 |
-| `map/60-notes-20.md` | 25 | 67,261 |
-| `map/60-notes-21.md` | 25 | 67,747 |
-| `map/60-notes-22.md` | 25 | 99,827 |
-| `map/60-notes-23.md` | 25 | 95,304 |
-| `map/60-notes-24.md` | 12 | 79,290 |
+| `map/60-notes-17.md` | 25 | 111,708 |
+| `map/60-notes-18.md` | 25 | 71,822 |
+| `map/60-notes-19.md` | 25 | 60,788 |
+| `map/60-notes-20.md` | 25 | 66,941 |
+| `map/60-notes-21.md` | 25 | 68,500 |
+| `map/60-notes-22.md` | 25 | 97,551 |
+| `map/60-notes-23.md` | 25 | 95,505 |
+| `map/60-notes-24.md` | 13 | 83,770 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・587本・20,604,215 B）
+## 8. 精読ノート索引（readings/・588本・20,643,819 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 378/587 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 380/588 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：212 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：62 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：214 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：63 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4828,7 +4829,7 @@
 | `readings/2026-10-24-vulnerability-care-and-repair.md` | — | 2026-10-24 | `SESSION-20261024-4ae9d5` +11 | 74,402 | Q5 F18 M66 MOT2 S12 | ✓ | 『無傷な器』という神話をほどく——傷・病・老いと、手当・繕いのあいだ SESSION-20261024-4ae9d5 … |
 | `readings/2026-10-24-wayfaring-maps-and-exile.md` | — | 2026-10-24 | `SESSION-20261024-2ab2e7` +2 | 67,690 | Q8 F13 M58 MOT1 S3 | ✓ | 窓のない部屋と、名ばかりの地図——道・歩行・地図・故郷と亡命をめぐる46資料の精読報告 |
 | `readings/2026-10-25-autonomous-editorial-reset-and-outside-the-scriptorium.md` | — | 2026-10-25 | `SESSION-20261025-ecabf8` | 4,441 | Q9 F10 M6 MOT14 S1 | ✓ | 自律編集レビューと「書記室の外」への実作実験（SESSION-20261025-ecabf8） |
-| `readings/2026-10-25-boredom-ennui-and-the-unfilled-hour.md` | — | 2026-10-25 | `SESSION-20261025-3f7a2c` +1 | 32,878 | Q5 F3 M45 MOT3 S2 | ✓ | 退屈・倦怠・暇——何も起こらない時間と、それを埋める機械 |
+| `readings/2026-10-25-boredom-ennui-and-the-unfilled-hour.md` | 2026-10-25 | 2026-10-25 | `SESSION-20261025-3f7a2c` +1 | 32,878 | Q5 F3 M45 MOT3 S2 | ✓ | 退屈・倦怠・暇——何も起こらない時間と、それを埋める機械 |
 | `readings/2026-10-25-plants-trees-seeds-and-roots.md` | — | 2026-10-25 | `SESSION-20261025-f7e22b` +3 | 67,499 | Q6 F6 M57 MOT20 S4 ERR2 | ✓ | 植物・樹木・種子・根——第53の鏡、そして種を蒔かなかった書庫 |
 | `readings/2026-10-25-plants-trees-seeds-and-the-rootless-archive.md` | — | 2026-10-25 | `SESSION-20261025-5b8d4e` +3 | 56,794 | Q5 F7 M52 MOT3 S4 ERR1 | ✓ | 植物・樹木・種子・根・花——言葉に食われた葉、草稿になった草、土のないツリー |
 | `readings/2026-10-25-remainder-through-the-crack.md` | — | 2026-10-25 | `SESSION-20261025-25cb41` | 2,249 | Q2 F2 M3 S1 | ✓ | 『余り』から『ひびを通る水』へ |
@@ -5118,6 +5119,7 @@
 | `readings/2026-11-07-paid-debt-and-the-fine-that-pays-itself.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-c30d36` +3 | 12,426 | Q1 M1 S4 | ✓ | 支払い済みの負い目——機械が書いた1,631行を、三つの労働記録に置く（SESSION-20261107-c30d36） |
 | `readings/2026-11-07-perhaps-in-writing-order.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-819a24` +1 | 2,088 | M1 S2 | — | 執筆順で見える「かもしれない」こと |
 | `readings/2026-11-07-six-lamps-were-a-count.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-d35d7f` +2 | 12,927 | Q5 F4 M1 S3 | ✓ | 六つの灯は、数えられた回数だった——数で組まれた身体の賞味期限 |
+| `readings/2026-11-07-staying-in-the-room-and-the-axe-at-the-root.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-d826c0` | 18,588 | Q4 M3 MOT2 S1 ERR1 | — | 部屋にとどまること、根に斧を入れること——「気晴らし」の要約を、モンテーニュとパスカルの原文で読み直す |
 | `readings/2026-11-07-thatch-layers-and-the-dweller.md` | — | 2026-11-07 | `SESSION-20261107-31df2f` +1 | 22,709 | Q9 F10 M10 R2 S2 ERR4 | ✓ | 葺き足しと、屋根の下にいる者 — 消さない訂正が層になり、止める理由が層にならない（SESSION-20261107-… |
 | `readings/2026-11-07-the-address-led-to-a-different-work.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-ce5919` +2 | 13,485 | Q4 M10 S3 ERR4 | ✓ | 住所は本文ではなかった——『おくのほそ道』の行を辿ると、梶井基次郎の桜が出てくる |
 | `readings/2026-11-07-the-addresses-the-program-does-not-read.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-17a7d1` +1 | 13,387 | Q4 F1 S2 ERR1 | — | 計器が読まない住所だけが失われる——報告の道は残り、シャードの道は消える |
