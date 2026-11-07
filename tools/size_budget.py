@@ -184,7 +184,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
     ),
     ShardBudget(
         "state/sessions.d",
-        soft_bytes=2 * MIB,
+        soft_bytes=3 * MIB,
         hard_bytes=8 * MIB,
         soft_shards=80,
         hard_shards=160,

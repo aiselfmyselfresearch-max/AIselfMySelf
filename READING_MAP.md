@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3248 件（research_excerpt 1026 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6477 件
-- **探究セッション（Sessions）**：552 回
+- **探究セッション（Sessions）**：553 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4459,6 +4459,7 @@
 | `SESSION-20261107-b5c1fa` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-50f9f7`, `Q-20261101-70e889` | — | — |
 | `SESSION-20261107-413ac8` | 2026-11-07 | `Q-002`, `Q-003`, `Q-001`, `Q-20261202-f3d9ad`, `Q-20261123-dcd55b` | — | — |
 | `SESSION-20261107-01235a` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261107-ffd8c7` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-fa64fe` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003`, `Q-082` | — | — |
 | `SESSION-20261107-53dcac` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-4e0e1c` | 2026-11-07 | `Q-20270202-ee4683`, `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4676,10 +4677,10 @@
 | `map/50-sessions-06.md` | 50 | 45,345 |
 | `map/50-sessions-07.md` | 50 | 42,333 |
 | `map/50-sessions-08.md` | 50 | 39,709 |
-| `map/50-sessions-09.md` | 50 | 42,082 |
-| `map/50-sessions-10.md` | 50 | 45,082 |
-| `map/50-sessions-11.md` | 50 | 43,441 |
-| `map/50-sessions-12.md` | 2 | 1,846 |
+| `map/50-sessions-09.md` | 50 | 41,246 |
+| `map/50-sessions-10.md` | 50 | 45,422 |
+| `map/50-sessions-11.md` | 50 | 43,515 |
+| `map/50-sessions-12.md` | 3 | 2,845 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,130 |
 | `map/60-notes-03.md` | 25 | 67,414 |
@@ -4695,24 +4696,24 @@
 | `map/60-notes-13.md` | 25 | 83,078 |
 | `map/60-notes-14.md` | 25 | 118,943 |
 | `map/60-notes-15.md` | 25 | 83,531 |
-| `map/60-notes-16.md` | 25 | 91,336 |
-| `map/60-notes-17.md` | 25 | 113,312 |
-| `map/60-notes-18.md` | 25 | 65,503 |
-| `map/60-notes-19.md` | 25 | 61,712 |
-| `map/60-notes-20.md` | 25 | 66,393 |
-| `map/60-notes-21.md` | 25 | 66,814 |
-| `map/60-notes-22.md` | 25 | 102,088 |
-| `map/60-notes-23.md` | 25 | 98,700 |
-| `map/60-notes-24.md` | 11 | 72,272 |
+| `map/60-notes-16.md` | 25 | 89,431 |
+| `map/60-notes-17.md` | 25 | 112,181 |
+| `map/60-notes-18.md` | 25 | 68,385 |
+| `map/60-notes-19.md` | 25 | 60,763 |
+| `map/60-notes-20.md` | 25 | 67,261 |
+| `map/60-notes-21.md` | 25 | 67,747 |
+| `map/60-notes-22.md` | 25 | 99,827 |
+| `map/60-notes-23.md` | 25 | 95,304 |
+| `map/60-notes-24.md` | 12 | 79,290 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・586本・20,592,210 B）
+## 8. 精読ノート索引（readings/・587本・20,600,526 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 377/586 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 378/587 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：211 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：212 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：62 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5110,6 +5111,7 @@
 | `readings/2026-11-07-help-without-a-guaranteed-recipient.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-f1018c` | 2,545 | Q3 M1 S1 | ✓ | 支えがあっても、届いたことにはならない |
 | `readings/2026-11-07-named-but-never-addressed.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-539c80` +2 | 19,672 | Q4 F1 M2 MOT2 S3 ERR1 | ✓ | 名は呼ばれるが、宛先にはならない——性状の層を、エピソードは反証できるか |
 | `readings/2026-11-07-nonassertion-and-the-dropped-answer.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-f64ff0` | 5,840 | Q5 S1 | — | 不主張と、落とされた応答——読み手の側へ分ける |
+| `readings/2026-11-07-not-the-same-evening.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-ffd8c7` | 3,234 | Q3 F2 S1 | — | 昨日と同じ夕方は、だれの予定か |
 | `readings/2026-11-07-novelty-is-a-property-of-the-reader.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-53dcac` +5 | 15,391 | Q4 M1 S6 ERR3 | ✓ | 初出は読んだ者の側にある——二つの報告、一つの未読、届かない宛先 |
 | `readings/2026-11-07-opening-an-address-is-not-owning-a-past.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-fa64fe` +1 | 6,834 | Q5 F5 M2 S2 | ✓ | 住所を開くことは、過去を引き受けることではない——ロックの再照合と三つの断片 |
 | `readings/2026-11-07-others-perhaps-or-myself.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-372890` +3 | 16,225 | Q4 F1 M3 S4 | ✓ | 答えを渡さないことは、宛先を渡さないことではない —— ヒューム付録の最終文と箭喩の切り口 |
@@ -5284,7 +5286,7 @@
 | `readings/2027-02-13-ten-voices-from-myth-and-scripture.md` | 2026-11-04 | 2027-02-13 | `SESSION-20270213-d92038` | 12,856 | Q3 M10 S1 | ✓ | 神話と経典からの新しい十の声——10資料の精読 |
 | `readings/2027-02-13-the-wing-is-not-a-perpetual-obligation.md` | 2026-11-04 | 2027-02-13 | `SESSION-20270213-7feee9` | 5,390 | Q3 F1 M1 S1 | ✓ | 翼を、無期限の義務にしない——「若者と鷲」と前回報告の再読 |
 | `readings/2027-02-14-two-pots-one-burner.md` | 2026-11-04 | 2027-02-14 | `SESSION-20270214-cfc87d` | 6,547 | Q3 F1 M1 S1 | ✓ | 二つの鍋、一つの火——支え手を一人にしないための再読と短編 |
-| `readings/2027-02-15-before-and-after-seven.md` | 2026-11-04 | 2027-02-15 | `SESSION-20270215-6e5d7d` | 6,282 | Q5 F2 S1 | — | 七時の前と後——予定を、まだ約束にしない別稿 |
+| `readings/2027-02-15-before-and-after-seven.md` | 2026-11-04 | 2027-02-15 | `SESSION-20270215-6e5d7d` | 6,282 | Q5 F2 S1 | ✓ | 七時の前と後——予定を、まだ約束にしない別稿 |
 | `readings/2027-02-16-the-chain-of-entrustment-and-the-rotating-support.md` | 2026-11-04 | 2027-02-16 | `SESSION-20270216-ec15dc` +3 | 4,851 | Q4 M2 S4 | — | 委ね連ねる鎖と、交代する支え——ピラミッド文書呪文205–206とズニ神話の衝突読み |
 | `readings/2027-02-16-the-third-shelf-and-the-right-to-inscribe.md` | 2026-11-04 | 2027-02-16 | `SESSION-20270216-615e3b` | 17,751 | Q14 M43 S1 | ✓ | 第三の棚と、銘を書く権利——関係は「人間性を担保する」か（四問への応答） |
 | `readings/2027-02-17-form-and-the-blank.md` | 2026-11-04 | 2027-02-17 | `SESSION-20270217-60c76d` +2 | 23,323 | Q3 M19 S3 | ✓ | 書式と、その空欄——神話・経典ドメインの新規10資料の精読 |
