@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3248 件（research_excerpt 1026 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
 - **解釈的関係（Relations）**：6477 件
-- **探究セッション（Sessions）**：520 回
+- **探究セッション（Sessions）**：521 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4644,9 +4644,9 @@
 | `map/50-sessions-06.md` | 50 | 45,345 |
 | `map/50-sessions-07.md` | 50 | 42,333 |
 | `map/50-sessions-08.md` | 50 | 39,759 |
-| `map/50-sessions-09.md` | 50 | 42,964 |
-| `map/50-sessions-10.md` | 50 | 46,414 |
-| `map/50-sessions-11.md` | 20 | 16,285 |
+| `map/50-sessions-09.md` | 50 | 42,921 |
+| `map/50-sessions-10.md` | 50 | 46,440 |
+| `map/50-sessions-11.md` | 21 | 17,133 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 67,177 |
@@ -4660,26 +4660,26 @@
 | `map/60-notes-11.md` | 25 | 61,740 |
 | `map/60-notes-12.md` | 25 | 64,613 |
 | `map/60-notes-13.md` | 25 | 83,109 |
-| `map/60-notes-14.md` | 25 | 118,490 |
-| `map/60-notes-15.md` | 25 | 82,855 |
-| `map/60-notes-16.md` | 25 | 95,587 |
-| `map/60-notes-17.md` | 25 | 56,006 |
-| `map/60-notes-18.md` | 25 | 69,263 |
-| `map/60-notes-19.md` | 25 | 59,769 |
-| `map/60-notes-20.md` | 25 | 75,001 |
-| `map/60-notes-21.md` | 25 | 108,178 |
-| `map/60-notes-22.md` | 25 | 109,125 |
-| `map/60-notes-23.md` | 4 | 29,594 |
+| `map/60-notes-14.md` | 25 | 118,586 |
+| `map/60-notes-15.md` | 25 | 82,999 |
+| `map/60-notes-16.md` | 25 | 96,751 |
+| `map/60-notes-17.md` | 25 | 56,432 |
+| `map/60-notes-18.md` | 25 | 67,736 |
+| `map/60-notes-19.md` | 25 | 61,460 |
+| `map/60-notes-20.md` | 25 | 71,840 |
+| `map/60-notes-21.md` | 25 | 108,531 |
+| `map/60-notes-22.md` | 25 | 108,526 |
+| `map/60-notes-23.md` | 5 | 34,423 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・554本・19,794,581 B）
+## 8. 精読ノート索引（readings/・555本・19,804,201 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 340/554 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 341/555 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：153 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：66 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：154 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：67 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5066,6 +5066,7 @@
 | `readings/2026-11-06-the-record-works-where-no-author-stands.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-52b201` +1 | 24,457 | Q3 M10 S2 | ✓ | 書いた者がいない場所で働く記録——形質転換・ポリU・警報声・四つの因子・クリプトムネジア |
 | `readings/2026-11-06-the-test-the-ledger-cannot-run.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-c88221` | 13,227 | Q3 M7 S1 | ✓ | 台帳が受けられなかった試験——再読と想起練習、そしてこの書庫の自信の較正（2026-11-06） |
 | `readings/2026-11-06-when-the-court-had-more-than-one-voice.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-fd696d` +1 | 3,817 | Q4 F2 S2 | ✓ | 裁判に、すでに異議の声があった——苦悶の油と、意見が退けられる手順 |
+| `readings/2026-11-07-address-is-not-recall.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-ce208d` +3 | 4,144 | Q3 M1 S4 | — | 住所は想起ではない——「読んだ」の記録を訂正の連鎖から読み直す |
 | `readings/2026-11-07-cotton-not-in-the-book-and-the-pen-in-the-gashes.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-af48ac` +5 | 22,467 | Q6 F6 M6 S6 ERR1 | ✓ | 書物にない綿花、ひび割れに置かれるペン——ダグラス『自伝』原典照合と、四種類の「0」（SESSION-20261107… |
 | `readings/2026-11-07-paid-debt-and-the-fine-that-pays-itself.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-c30d36` +3 | 12,426 | Q1 M1 S4 | ✓ | 支払い済みの負い目——機械が書いた1,631行を、三つの労働記録に置く（SESSION-20261107-c30d36） |
 | `readings/2026-11-07-thatch-layers-and-the-dweller.md` | — | 2026-11-07 | `SESSION-20261107-31df2f` +1 | 22,709 | Q9 F10 M10 R2 S2 ERR4 | ✓ | 葺き足しと、屋根の下にいる者 — 消さない訂正が層になり、止める理由が層にならない（SESSION-20261107-… |
