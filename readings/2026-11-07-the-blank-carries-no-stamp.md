@@ -136,4 +136,5 @@
 - 読み痕跡: 7 行 — `state/read_log.d/2026-11-07-39e98a751c46.jsonl`（`note` 2／`fragment` 1／`question` 2／`material` 2。すべて手書き。`context_material_ids` は空にし、機械的バックフィル 0）
 - `notes` 行: 2 行 — `state/notes.d/2026-11-07-e7e7bf0cd1ae.jsonl`（本報告の自報告と `2026-12-02-nineteen-cycles-in-the-corridor.md` の受付。`note_index.py --register` で作成）
 - 実行した検査: `map_build.py` → `validate_seed.py` → `inspect_inquiry.py --check-map` → `note_index.py --check` → `read_log_backfill.py --check` → `size_budget.py --strict` → `unittest discover -s tests`。結果はセッション `notes` に記載。
+- **保守統合（同一 PR 内の別コミット）**: 並行マージと本セッションの追記で `state/sessions.d/` が81ファイル（soft 80）になったため、[`docs/parallel-work.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/parallel-work.md) §統合シャード（保守）に従い、実日付 2026-11-03〜04 の古い3組（`2027-02-09` 2本→新設 `2027-02-09-000000000000`、`2027-02-17` 2本→新設 `2027-02-17-000000000000`、`2027-01-17-5073f0b0c011` 1行→既存 `2027-01-17-000000000000` の延長）を統合した。行文字列は一字も変えず、移動前後の多重集合の SHA-256 一致（511行）を確認。オープン PR が触る日付と今日のシャードは対象外。sessions.d 78ファイル。
 - 新規断片・新規問い・新規資料・新規モチーフ・新しい関係線・訂正・編集判断・新規ツール: いずれも **0**。
