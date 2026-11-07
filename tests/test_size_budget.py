@@ -90,6 +90,53 @@ class SizeBudgetTests(unittest.TestCase):
             for b in size_budget.BUDGETS:
                 self.assertIn(b.rel_path, rels)
 
+    def test_sessions_dir_leaves_room_for_one_more_row(self):
+        """The repository must always be able to accept one more session row.
+
+        A session adds exactly one row to `state/sessions.d/`, so a state with
+        less headroom than one row is a state in which *no* session can pass
+        `--strict` — and it cannot be escaped by compacting shards, because
+        merging preserves every row's bytes (it only reduces the file count).
+        That is exactly what happened on 2026-11-07: 2,096,967 B against a 2 MiB
+        soft limit left 185 B, while the smallest schema-valid session row is
+        217 B.  The remedy was to rescale the budget, not to shorten every row
+        (see ERR-20261107-259d5f).  This test fails if the margin vanishes again.
+        """
+        required = {
+            "session_id", "started_at", "human_direction", "question_ids",
+            "context_material_ids", "produced_fragment_ids", "new_question_ids",
+            "prompt_template",
+        }
+        row = {
+            "session_id": "SESSION-20261107-6ffb13",
+            "started_at": "2026-11-07",
+            "human_direction": "",
+            "question_ids": [],
+            "context_material_ids": [],
+            "produced_fragment_ids": [],
+            "new_question_ids": [],
+            "prompt_template": "",
+        }
+        self.assertEqual(set(row), required)
+        minimal = len((json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n").encode())
+
+        budget = next(b for b in size_budget.SHARD_BUDGETS if b.rel_dir == "state/sessions.d")
+        shard_dir = size_budget.ROOT / budget.rel_dir
+        if not shard_dir.is_dir():
+            self.skipTest("no state/sessions.d in this checkout")
+        used = sum(p.stat().st_size for p in shard_dir.glob("*.jsonl"))
+        headroom = budget.soft_bytes - used
+
+        self.assertGreaterEqual(
+            headroom,
+            minimal,
+            f"state/sessions.d/ uses {used:,} B against a {budget.soft_bytes:,} B "
+            f"soft budget, leaving {headroom:,} B — less than one minimal session "
+            f"row ({minimal:,} B). No session can pass --strict, and shard "
+            f"compaction cannot help (it preserves bytes). Shorten rows or "
+            f"rescale the budget.",
+        )
+
     def test_real_repository_is_within_strict_limits(self):
         code, out, err = self.run_cli("--strict", "--root", str(size_budget.ROOT))
         self.assertEqual(code, 0, out + err)

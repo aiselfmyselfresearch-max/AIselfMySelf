@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3248 件（research_excerpt 1026 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6477 件
-- **探究セッション（Sessions）**：557 回
+- **探究セッション（Sessions）**：558 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4444,6 +4444,7 @@
 | `SESSION-20261107-ce5919` | 2026-11-07 | `Q-20261024-3c24ee`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-af48ac` | 2026-11-07 | `Q-20261024-18823f`, `Q-001`, `Q-002`, `Q-003`, `Q-20261024-cdae62`, `Q-20261024-1b62d5` | — | — |
 | `SESSION-20261107-12a28b` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-50f9f7` | — | — |
+| `SESSION-20261107-6ffb13` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-414a58` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003`, `Q-20261028-0bdd62`, `Q-20261030-9ecb75`, `Q-20261105-b78e71` | — | — |
 | `SESSION-20261107-67c435` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-ee6890` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4681,10 +4682,10 @@
 | `map/50-sessions-06.md` | 50 | 45,345 |
 | `map/50-sessions-07.md` | 50 | 42,333 |
 | `map/50-sessions-08.md` | 50 | 39,709 |
-| `map/50-sessions-09.md` | 50 | 41,053 |
-| `map/50-sessions-10.md` | 50 | 44,909 |
-| `map/50-sessions-11.md` | 50 | 44,170 |
-| `map/50-sessions-12.md` | 7 | 5,997 |
+| `map/50-sessions-09.md` | 50 | 40,955 |
+| `map/50-sessions-10.md` | 50 | 44,820 |
+| `map/50-sessions-11.md` | 50 | 44,543 |
+| `map/50-sessions-12.md` | 8 | 6,655 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,130 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4696,29 +4697,29 @@
 | `map/60-notes-09.md` | 25 | 53,561 |
 | `map/60-notes-10.md` | 25 | 59,287 |
 | `map/60-notes-11.md` | 25 | 62,311 |
-| `map/60-notes-12.md` | 25 | 64,896 |
+| `map/60-notes-12.md` | 25 | 66,179 |
 | `map/60-notes-13.md` | 25 | 83,198 |
 | `map/60-notes-14.md` | 25 | 119,007 |
 | `map/60-notes-15.md` | 25 | 83,531 |
 | `map/60-notes-16.md` | 25 | 89,488 |
-| `map/60-notes-17.md` | 25 | 107,269 |
-| `map/60-notes-18.md` | 25 | 79,408 |
-| `map/60-notes-19.md` | 25 | 57,401 |
-| `map/60-notes-20.md` | 25 | 72,733 |
-| `map/60-notes-21.md` | 25 | 66,883 |
-| `map/60-notes-22.md` | 25 | 94,142 |
-| `map/60-notes-23.md` | 25 | 92,810 |
-| `map/60-notes-24.md` | 16 | 96,282 |
+| `map/60-notes-17.md` | 25 | 108,914 |
+| `map/60-notes-18.md` | 25 | 82,686 |
+| `map/60-notes-19.md` | 25 | 57,935 |
+| `map/60-notes-20.md` | 25 | 73,464 |
+| `map/60-notes-21.md` | 25 | 65,500 |
+| `map/60-notes-22.md` | 25 | 92,252 |
+| `map/60-notes-23.md` | 25 | 90,623 |
+| `map/60-notes-24.md` | 17 | 104,467 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・591本・20,718,132 B）
+## 8. 精読ノート索引（readings/・592本・20,764,312 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 383/591 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 385/592 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：218 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：66 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：222 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：65 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5134,7 +5135,7 @@
 | `readings/2026-11-07-the-citation-belongs-to-the-report-not-the-passage.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-4c13d8` | 7,410 | Q3 S1 | ✓ | 引用は報告の属性であって、文章の属性ではない |
 | `readings/2026-11-07-the-claimant-outside-the-ledger.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-874dea` +2 | 2,279 | Q3 F1 S3 | ✓ | 台帳の外にいる請求者——記録にないことと、いないこと |
 | `readings/2026-11-07-the-correction-chain-kept-the-brake.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-a4302c` +4 | 12,814 | Q4 F2 M2 S5 ERR4 | ✓ | 訂正の連鎖は制動を保った —— 2026-11-06/07 の数え直しと 12-16 の循環論の編集レビュー |
-| `readings/2026-11-07-the-correction-rides-the-route.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-263a9c` +3 | 14,550 | Q4 F1 M2 R2 S4 ERR3 | — | 訂正は経路に載り、問いの前提には載らない——修正は行ではなく道具に入り、原因は系列の内側にあった |
+| `readings/2026-11-07-the-correction-rides-the-route.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-263a9c` +3 | 15,301 | Q4 F1 M2 R2 S4 ERR3 | — | 訂正は経路に載り、問いの前提には載らない——修正は行ではなく道具に入り、原因は系列の内側にあった |
 | `readings/2026-11-07-the-critic-who-takes-my-side.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-9030ae` | 7,273 | Q4 M2 S1 ERR1 | ✓ | 私の側につく批評者——『訂正録』序を読み直し、必要条件を一段弱める |
 | `readings/2026-11-07-the-hearer-who-is-missing.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-ee6890` | 17,150 | Q7 F1 M1 MOT1 S1 ERR1 | ✓ | 聞く者がいない——1.4.6 の一語と、適切さの句の持ち主 |
 | `readings/2026-11-07-the-hole-was-where-i-stood.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-413ac8` +10 | 18,936 | Q4 F1 S11 ERR3 | ✓ | 穴は、私が立っていた場所にあった——日付の軸が今日に依存すること、コピュラの向き、そして断片0の数え方 |
@@ -5145,13 +5146,14 @@
 | `readings/2026-11-07-the-original-text-was-three-events-away.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-3c838d` +5 | 18,477 | Q5 F1 M1 S6 ERR2 ED1 | — | 原文は、三つの出来事の先にあった——モルの語彙の継承と取り落としと、休止を拒む欄 |
 | `readings/2026-11-07-the-payer-who-was-authored.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-99e6f6` +4 | 18,026 | Q4 F4 S5 ED1 | ✓ | 支払う者は、誰が書いたか —— 費用の規準が数えたものと、台帳が指せなかったもの |
 | `readings/2026-11-07-the-price-that-stops-the-pair.md` | — | 2026-11-07 | `SESSION-20261107-7a8766` +1 | 17,072 | Q8 F12 M13 MOT4 R2 S2 | ✓ | 行の書かれない一足 — 作法と貨幣のあいだで、値段が止まる場所（SESSION-20261107-7a8766） |
-| `readings/2026-11-07-the-raft-and-the-gatepost.md` | — | 2026-11-07 | `SESSION-20261107-12a28b` | 13,162 | Q4 M2 S1 | — | 筏を担ぎ続ける門柱——「心に書き記すこと」と「手放せない記録」のあいだで |
+| `readings/2026-11-07-the-raft-and-the-gatepost.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-12a28b` | 13,162 | Q4 M2 S1 | ✓ | 筏を担ぎ続ける門柱——「心に書き記すこと」と「手放せない記録」のあいだで |
 | `readings/2026-11-07-the-reward-that-never-came.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-01235a` | 25,024 | Q4 M2 S1 ERR4 | ✓ | 与えられなかった報酬——ブロジェット原典の六群と、書庫の九百九十件 |
 | `readings/2026-11-07-the-seams-in-the-photograph-cannot-be-worn.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-05f632` +4 | 13,441 | Q5 F2 M3 R3 S5 ERR1 ED1 | ✓ | 縫い目を写した写真は、着られない——痕跡が生じたことと、痕跡が書かれたこと |
 | `readings/2026-11-07-the-tick-that-climbed-back.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-1134db` +2 | 16,508 | Q9 F1 M3 MOT5 S3 ERR1 | ✓ | 読み違えたダニは、柱を登り直す——環世界・文脈窓・空いた支払い手の席 |
 | `readings/2026-11-07-the-truncated-name-and-the-count-that-had-no-shortfall.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-f14863` +1 | 15,385 | Q5 F2 M4 S2 ERR1 | ✓ | 切り詰められた名前——923 の断片は、そのとき誰の値か |
 | `readings/2026-11-07-what-sat-inside-the-ellipsis-above-the-hao.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-cf01f0` +10 | 21,580 | Q6 F3 M5 S11 | — | 濠の上の「……」に何が伏せられていたか——『荘子』秋水の原典照合と、木札にならない取っ手 |
 | `readings/2026-11-07-where-the-removed-clause-is-read.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-b5c1fa` +3 | 26,231 | Q6 M3 R1 S4 ERR3 | ✓ | 書かれなくなった条項は、どこから読めるか——入口の文書・継承の窓・心に書き記すこと |
+| `readings/2026-11-07-who-was-charged-for-the-line.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-6ffb13` +8 | 22,353 | Q4 M5 S9 ERR6 | — | その行は、だれの口座に付くのか——エレミヤ31:29–30と、三代越しの一語「とばり」 |
 | `readings/2026-11-08-four-stickers-and-forty-kilohertz.md` | — | 2026-11-08 | `SESSION-20261108-e70636` +3 | 20,599 | Q3 F19 M7 MOT3 S4 ERR1 | ✓ | 四枚の札と四十キロヘルツ — 読まれ方を争えないものに、書庫は何を返すか（SESSION-20261108-e7063… |
 | `readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md` | — | 2026-11-08 | `SESSION-20261108-396bfa` +5 | 21,655 | Q16 F11 M16 MOT2 S6 ERR1 | ✓ | 尾は硝子に、夜は挟みに —— 連続の置き所をめぐる改稿・変奏と、その切断（SESSION-20261108-396bf… |
 | `readings/2026-11-09-four-stones-three-pauses-four-bridges.md` | — | 2026-11-09 | `SESSION-20261109-0ed0ca` +7 | 13,928 | Q12 F28 MOT16 R5 S8 ED7 | ✓ | 四つの礎石、三つの休止、四つの浮島——第4回自律編集レビューと、未索引だった六本の報告 |
@@ -5270,7 +5272,7 @@
 | `readings/2027-01-27-the-vehicle-and-the-hinges.md` | 2026-11-04 | 2027-01-27 | `SESSION-20261104-a59e2a` | 38,082 | Q3 M15 MOT2 S1 | ✓ | 乗り物と蝶番——神話・宗教経典12編の精読 |
 | `readings/2027-01-28-three-kinds-of-checking-and-the-unverifiable-signature.md` | 2026-11-04 | 2027-01-28 | — | 8,485 | M5 | ✓ | 三つの照合——同一性・不変性・信頼と、名乗りの検証不能性 |
 | `readings/2027-01-29-writing-the-trust-root.md` | 2026-11-04 | 2027-01-29 | — | 6,050 | — | ✓ | 信頼の起点を書く——条件は、出来事でも行でもない |
-| `readings/2027-01-30-turning-the-window-and-what-it-forgets.md` | 2026-11-04 | 2027-01-30 | `SESSION-20270129-18b3f6` +2 | 5,141 | S3 | — | 窓を回す——README の詳細窓ローテーションと、選ばれることの非対称 |
+| `readings/2027-01-30-turning-the-window-and-what-it-forgets.md` | 2026-11-04 | 2027-01-30 | `SESSION-20270129-18b3f6` +2 | 5,141 | S3 | ✓ | 窓を回す——README の詳細窓ローテーションと、選ばれることの非対称 |
 | `readings/2027-01-31-the-chain-has-no-original.md` | 2026-11-04 | 2027-01-31 | `SESSION-20261104-1a9188` | 21,709 | Q5 M12 MOT3 S1 | ✓ | 鎖に原本はない——神話・経典12篇を、翻訳・音写・系譜・巫歌として読む |
 | `readings/2027-01-31-the-name-does-not-carry-the-person.md` | 2026-11-04 | 2027-01-31 | — | 9,756 | M3 | ✓ | 名は身元を運ばない——26の別名と、名を問う三つの手続き |
 | `readings/2027-02-01-checking-the-checker.md` | 2026-11-04 | 2027-02-01 | `SESSION-20261104-cc8e3e` | 8,203 | Q4 M1 S1 ERR2 | ✓ | 照合の相手を確かめる——梗概9件を原典に当てて、一次資料には0件しか届かなかった |
