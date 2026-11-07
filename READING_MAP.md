@@ -4705,7 +4705,7 @@
 | `map/60-notes-14.md` | 25 | 119,084 |
 | `map/60-notes-15.md` | 25 | 83,653 |
 | `map/60-notes-16.md` | 25 | 87,961 |
-| `map/60-notes-17.md` | 25 | 109,360 |
+| `map/60-notes-17.md` | 25 | 109,436 |
 | `map/60-notes-18.md` | 25 | 89,809 |
 | `map/60-notes-19.md` | 25 | 57,036 |
 | `map/60-notes-20.md` | 25 | 73,948 |
@@ -4716,7 +4716,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・595本・20,833,675 B）
+## 8. 精読ノート索引（readings/・595本・20,835,104 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 389/595 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -5150,7 +5150,7 @@
 | `readings/2026-11-07-the-original-text-was-three-events-away.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-3c838d` +5 | 18,477 | Q5 F1 M1 S6 ERR2 ED1 | — | 原文は、三つの出来事の先にあった——モルの語彙の継承と取り落としと、休止を拒む欄 |
 | `readings/2026-11-07-the-payer-who-was-authored.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-99e6f6` +4 | 18,026 | Q4 F4 S5 ED1 | ✓ | 支払う者は、誰が書いたか —— 費用の規準が数えたものと、台帳が指せなかったもの |
 | `readings/2026-11-07-the-price-that-stops-the-pair.md` | — | 2026-11-07 | `SESSION-20261107-7a8766` +1 | 17,072 | Q8 F12 M13 MOT4 R2 S2 | ✓ | 行の書かれない一足 — 作法と貨幣のあいだで、値段が止まる場所（SESSION-20261107-7a8766） |
-| `readings/2026-11-07-the-quotation-that-survived-the-correction.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-c1d362` +1 | 12,741 | Q6 F5 M2 S2 ERR4 | — | 訂正を生き延びた引用——十一の鉤括弧を、固定した版で引き直す |
+| `readings/2026-11-07-the-quotation-that-survived-the-correction.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-c1d362` +1 | 13,339 | Q6 F5 M2 S2 ERR4 | — | 訂正を生き延びた引用——十一の鉤括弧を、固定した版で引き直す |
 | `readings/2026-11-07-the-raft-and-the-gatepost.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-12a28b` | 13,162 | Q4 M2 S1 | ✓ | 筏を担ぎ続ける門柱——「心に書き記すこと」と「手放せない記録」のあいだで |
 | `readings/2026-11-07-the-reward-that-never-came.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-01235a` | 25,024 | Q4 M2 S1 ERR4 | ✓ | 与えられなかった報酬——ブロジェット原典の六群と、書庫の九百九十件 |
 | `readings/2026-11-07-the-seams-in-the-photograph-cannot-be-worn.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-05f632` +4 | 13,441 | Q5 F2 M3 R3 S5 ERR1 ED1 | ✓ | 縫い目を写した写真は、着られない——痕跡が生じたことと、痕跡が書かれたこと |
