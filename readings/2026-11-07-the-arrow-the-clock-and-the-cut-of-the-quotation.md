@@ -67,3 +67,7 @@ packet（seed `f941ebcd`）が参考問いとして出したのは `Q-20270202-e
 - 原典は開けなかった。開けなかったことを、開いたように書かなかった。
 
 **次に読み返したい記録**：`MAT-LIT-20261104-b8efc6` の出典URL（到達可能な環境で、譬えの直後の段落）。[`2027-02-02-the-unwritten-doctrine-and-the-inherited-name.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2027-02-02-the-unwritten-doctrine-and-the-inherited-name.md) 第4群12（勝鬘経の「何に関して空か」）——「資する」を測る目的の不在を、「何に関して」の限定で言い直せるかを確かめるため。
+
+---
+
+**分離保守（内容とは別コミット）**：`origin/main`（PR #531）の取り込み後に `state/sessions.d/`・`state/read_log.d/` が各81ファイルとなり soft 上限80を超えたため、`docs/parallel-work.md` §3 に従い、open PR が触れていない日付を選んで統合した。`sessions.d/2026-11-05` の3シャード15行を既存 `2026-11-05-000000000000.jsonl` へ `started_at→session_id` で安定ソート統合、`read_log.d/2026-11-06` の8シャード251行を既存 `2026-11-06-000000000000.jsonl` へ `created_at→read_id` で統合。いずれも移動前後の行多重集合のバイト SHA-256 が一致（`04973be2bf77…`／`b7d055f74704…`）。ファイル数は 81→78、81→73。保守と探究の判断は混ぜない。
