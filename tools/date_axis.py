@@ -300,6 +300,25 @@ def curated_real_dates(notes: dict[str, dict[str, Any]]) -> dict[str, str]:
     return out
 
 
+def _is_readable_date(value: Any, today: date) -> bool:
+    """True when ``value`` may be read as a real date.
+
+    A calendar-shaped value **later than today** is never one.  This is the
+    single rule that separates a label from a date, and it holds for every
+    source -- not only for ``started_at``.  Until 2026-11-07 the rule was
+    applied only to ``started_at``, so one row (``SESSION-20261027-8bf49b``)
+    was read as having a real date of ``2026-11-28``: the notes said
+    ``…2026-11-28は…実行日ではない``, and the marker regex walked across the
+    ``、`` to attach the marker to the *label* the sentence was denying.
+    The archive's own docstring stated the rule for one field; it is a
+    property of the reading, so it is applied here to all of them.  A value
+    that fails this test falls through to the next source rather than being
+    returned, and a marker whose number is not readable is not used at all.
+    """
+    parsed = as_date(value)
+    return parsed is not None and parsed <= today
+
+
 def session_real_date(
     session_id: str,
     session: dict[str, Any],
@@ -309,13 +328,19 @@ def session_real_date(
     body: dict[str, dict[str, str]] | None = None,
     today: date | None = None,
 ) -> tuple[str | None, str]:
-    """Best recorded real date for one session, with the rule that produced it."""
+    """Best recorded real date for one session, with the rule that produced it.
+
+    Every rule below passes its value through :func:`_is_readable_date`.  A
+    source that names a date later than today is skipped, not trusted: the
+    archive's forward-running labels are exactly what this axis exists to stop
+    reading as dates.
+    """
     today = today or date.today()
     curated = curated or {}
     header = header or {}
     body = body or {}
 
-    if session_id in curated:
+    if _is_readable_date(curated.get(session_id), today):
         return curated[session_id], "notes.date_real"
 
     # A session that says "the execution environment's date was X" has stated the
@@ -325,26 +350,25 @@ def session_real_date(
     # dates.  This marker is also why 26 sessions stopped reading as 未記録.
     for field_name in ("notes", "human_direction"):
         found = _EXECUTION_DATE.search(session.get(field_name) or "")
-        if found and as_date(found.group(1)):
+        if found and _is_readable_date(found.group(1), today):
             return found.group(1), f"sessions.{field_name}:実行環境日付"
 
     for field_name in ("notes", "human_direction"):
         found = marker_date(session.get(field_name))
-        if found:
+        if found and _is_readable_date(found[0], today):
             return found[0], f"sessions.{field_name}:{found[1]}"
 
-    if session_id in header:
+    if _is_readable_date(header.get(session_id), today):
         return header[session_id], "readings.header"
 
     if session_id in body:
         for rule_name, value in body[session_id].items():
-            if as_date(value):
+            if _is_readable_date(value, today):
                 return value, rule_name
 
     started = session.get("started_at")
-    parsed = as_date(started)
-    if parsed is not None and parsed <= today:
-        return parsed.isoformat(), "started_at"
+    if _is_readable_date(started, today):
+        return as_date(started).isoformat(), "started_at"
 
     return None, UNRECORDED
 
@@ -494,11 +518,20 @@ def summary(rows: list[AxisRow]) -> dict[str, Any]:
     }
 
 
-def render(rows: list[AxisRow], *, limit_days: int | None = None) -> str:
-    """Human-readable axis: real date first, label second, source last."""
+def render(rows: list[AxisRow], *, limit_days: int | None = None, filtered: str | None = None) -> str:
+    """Human-readable axis: real date first, label second, source last.
+
+    ``filtered`` names the subset when the caller has already dropped rows.
+    The header line is otherwise identical for a filtered view and for the
+    whole axis, which is how ``--anomalies`` came to print ``sessions 242``
+    under a line a reader takes for the archive total (517).  The axis never
+    fails on drift, so this is the only place the difference can be said.
+    """
     stats = summary(rows)
     out: list[str] = []
     out.append("=== date axis (real date ← internal label) ===")
+    if filtered:
+        out.append(f"  ※ 絞り込み表示: {filtered}（下の件数は部分集合であって台帳全体ではない）")
     out.append(
         f"  labels {stats['labels']} ／ sessions {stats['sessions']} ／ "
         f"実日付あり {stats['sessions_with_real_date']} ／ 未記録 {stats['sessions_without_real_date']} ／ "
@@ -537,7 +570,7 @@ def render(rows: list[AxisRow], *, limit_days: int | None = None) -> str:
     return "\n".join(out)
 
 
-def check(rows: list[AxisRow], *, today: date | None = None) -> int:
+def check(rows: list[AxisRow], *, today: date | None = None, filtered: str | None = None) -> int:
     """Report, as an observation, how many labels do not equal their real date."""
     today = today or date.today()
     mismatched = [
@@ -546,6 +579,8 @@ def check(rows: list[AxisRow], *, today: date | None = None) -> int:
     ]
     future = [row for row in rows if row.provisional]
     print("=== date axis check（合否ではなく、軸のずれの観察） ===")
+    if filtered:
+        print(f"  ※ 絞り込み表示: {filtered}（以下の数は部分集合のもので、台帳全体の値ではない）")
     print(f"  ラベル総数 {len(rows)} ／ 実日付と一致 {len(rows) - len(mismatched)} ／ 不一致 {len(mismatched)}")
     print(f"  今日より未来のラベル {len(future)}")
     if future:
@@ -612,11 +647,13 @@ def main(argv: list[str] | None = None) -> int:
     if args.check:
         return check(rows, today=today)
 
+    filtered_label = None
     if args.anomalies:
         rows = [
             row for row in rows
             if row.provisional or (row.real_date and row.real_date != row.label)
         ]
+        filtered_label = "ラベルと実日付が一致しない行のみ（--anomalies）"
     if args.json:
         print(json.dumps(
             {"summary": summary(rows), "rows": [row.to_dict() for row in rows]},
@@ -624,9 +661,9 @@ def main(argv: list[str] | None = None) -> int:
             indent=1,
         ))
         return check(rows, today=today) if not args.json else 0
-    print(render(rows))
+    print(render(rows, filtered=filtered_label))
     print()
-    check(rows, today=today)
+    check(rows, today=today, filtered=filtered_label)
     return 0
 
 
