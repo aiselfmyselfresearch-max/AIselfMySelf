@@ -4675,7 +4675,7 @@
 | `map/50-sessions-06.md` | 50 | 45,345 |
 | `map/50-sessions-07.md` | 50 | 42,333 |
 | `map/50-sessions-08.md` | 50 | 39,709 |
-| `map/50-sessions-09.md` | 50 | 42,100 |
+| `map/50-sessions-09.md` | 50 | 42,090 |
 | `map/50-sessions-10.md` | 50 | 45,113 |
 | `map/50-sessions-11.md` | 50 | 43,282 |
 | `map/50-sessions-12.md` | 1 | 1,116 |
