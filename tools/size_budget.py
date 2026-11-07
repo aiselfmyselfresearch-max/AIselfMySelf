@@ -184,23 +184,26 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
     ),
     ShardBudget(
         "state/sessions.d",
-        # 2026-11-07: soft_bytes was 2 MiB. Compaction cannot lower this number:
-        # a sessions row is never dropped or shortened, and merging shards only
-        # removes one trailing newline per removed file (measured: 0 B saved for
-        # 15 one-row shards). The old remedy therefore named a remedy that could
-        # not work. The actionable constraint for this directory is the shard
-        # COUNT (parallel writers), so the count budget keeps its pressure and
-        # the byte soft limit moves up one step to stay above one ordinary
-        # session row (median 3.4 KiB). See readings/2026-11-07-the-original-text-
-        # was-three-events-away.md §9.1.
-        soft_bytes=5 * MIB // 2,
+        # 2026-11-07: this soft_bytes was 2 MiB. A parallel session (f2f9fea)
+        # raised it to 3 MiB the same day for the same symptom; an independent
+        # session measured the same wall and proposed 2.5 MiB. Keep the higher
+        # value: both sessions met the ceiling while appending a row SHORTER than
+        # the median (3,041 B vs 3,446 B), so the wall was structural, not a long
+        # row. What neither value fixes is the remedy below -- correct the reason,
+        # not only the number. Merging shards saves ~0 B (measured: 15 one-row
+        # shards moved -> 2,102,922 B before and after), because a sessions row
+        # is never dropped or shortened and only a trailing newline disappears
+        # per removed file. The actionable constraint here is the shard COUNT.
+        # See readings/2026-11-07-the-original-text-was-three-events-away.md §9.1
+        # and ERR-20261107-100f65.
+        soft_bytes=3 * MIB,
         hard_bytes=8 * MIB,
         soft_shards=80,
         hard_shards=160,
         remedy=(
-            "Merging shards saves ~0 B: this directory's soft_bytes can only be "
-            "held by writing shorter session rows. Watch soft_shards instead, "
-            "and keep notes out of the growing path if a row must be shortened"
+            "Merging shards saves ~0 B, so compaction cannot hold this byte "
+            "limit; watch soft_shards instead, and if a row must be shortened, "
+            "cut the narration before the decision"
         ),
     ),
     ShardBudget(
