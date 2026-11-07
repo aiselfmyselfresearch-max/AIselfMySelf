@@ -184,18 +184,20 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
     ),
     ShardBudget(
         "state/sessions.d",
-        # 2026-11-07: this soft_bytes was 2 MiB. A parallel session (f2f9fea)
-        # raised it to 3 MiB the same day for the same symptom; an independent
-        # session measured the same wall and proposed 2.5 MiB. Keep the higher
-        # value: both sessions met the ceiling while appending a row SHORTER than
-        # the median (3,041 B vs 3,446 B), so the wall was structural, not a long
-        # row. What neither value fixes is the remedy below -- correct the reason,
-        # not only the number. Merging shards saves ~0 B (measured: 15 one-row
-        # shards moved -> 2,102,922 B before and after), because a sessions row
-        # is never dropped or shortened and only a trailing newline disappears
-        # per removed file. The actionable constraint here is the shard COUNT.
-        # See readings/2026-11-07-the-original-text-was-three-events-away.md §9.1
-        # and ERR-20261107-100f65.
+        # 2026-11-07: this soft_bytes was 2 MiB. Two parallel sessions reached
+        # this line independently the same day and both raised it to 3 MiB:
+        # f2f9fea (see readings/2026-11-07-the-original-text-was-three-events-away.md
+        # §9.1, ERR-20261107-100f65) and this session (ERR-20261107-259d5f).
+        # Both met the ceiling while appending a row SHORTER than the median
+        # (3,041 B vs 3,446 B), so the wall was structural, not a long row.
+        # Measured at 2 MiB: 512 rows, 2,096,967 B, 185 B of headroom, against
+        # a 217 B smallest schema-valid row -- no new session could fit.
+        # Merging shards does not help: it never drops or shortens a row and
+        # saves only a trailing newline per removed file (~0 B; measured
+        # 2,102,922 B before and after moving 15 one-row shards). The
+        # actionable constraint is therefore the shard COUNT, plus shortening
+        # future rows; if a row must be shortened, cut the narration before
+        # the decision.
         soft_bytes=3 * MIB,
         hard_bytes=8 * MIB,
         soft_shards=80,
