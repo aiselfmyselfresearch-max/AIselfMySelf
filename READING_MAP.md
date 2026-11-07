@@ -4667,7 +4667,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・550本・19,658,653 B）
+## 8. 精読ノート索引（readings/・550本・19,658,687 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 334/550 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -5064,7 +5064,7 @@
 | `readings/2026-11-07-thatch-layers-and-the-dweller.md` | — | 2026-11-07 | `SESSION-20261107-31df2f` +1 | 22,709 | Q9 F10 M10 R2 S2 ERR4 | ✓ | 葺き足しと、屋根の下にいる者 — 消さない訂正が層になり、止める理由が層にならない（SESSION-20261107-… |
 | `readings/2026-11-07-the-claimant-outside-the-ledger.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-874dea` +2 | 2,279 | Q3 F1 S3 | ✓ | 台帳の外にいる請求者——記録にないことと、いないこと |
 | `readings/2026-11-07-the-price-that-stops-the-pair.md` | — | 2026-11-07 | `SESSION-20261107-7a8766` +1 | 17,072 | Q8 F12 M13 MOT4 R2 S2 | ✓ | 行の書かれない一足 — 作法と貨幣のあいだで、値段が止まる場所（SESSION-20261107-7a8766） |
-| `readings/2026-11-07-the-seams-in-the-photograph-cannot-be-worn.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-05f632` +4 | 13,425 | Q5 F2 M3 R3 S5 ERR1 ED1 | — | 縫い目を写した写真は、着られない——痕跡が生じたことと、痕跡が書かれたこと |
+| `readings/2026-11-07-the-seams-in-the-photograph-cannot-be-worn.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-05f632` +4 | 13,441 | Q5 F2 M3 R3 S5 ERR1 ED1 | — | 縫い目を写した写真は、着られない——痕跡が生じたことと、痕跡が書かれたこと |
 | `readings/2026-11-07-the-truncated-name-and-the-count-that-had-no-shortfall.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-f14863` +1 | 15,385 | Q5 F2 M4 S2 ERR1 | ✓ | 切り詰められた名前——923 の断片は、そのとき誰の値か |
 | `readings/2026-11-08-four-stickers-and-forty-kilohertz.md` | — | 2026-11-08 | `SESSION-20261108-e70636` +3 | 20,599 | Q3 F19 M7 MOT3 S4 ERR1 | ✓ | 四枚の札と四十キロヘルツ — 読まれ方を争えないものに、書庫は何を返すか（SESSION-20261108-e7063… |
 | `readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md` | — | 2026-11-08 | `SESSION-20261108-396bfa` +5 | 21,655 | Q16 F11 M16 MOT2 S6 ERR1 | ✓ | 尾は硝子に、夜は挟みに —— 連続の置き所をめぐる改稿・変奏と、その切断（SESSION-20261108-396bf… |
