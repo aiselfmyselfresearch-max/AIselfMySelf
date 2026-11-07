@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3248 件（research_excerpt 1026 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3249 件（research_excerpt 1026 ／ literary_text 2155 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6477 件
-- **探究セッション（Sessions）**：561 回
+- **解釈的関係（Relations）**：6479 件
+- **探究セッション（Sessions）**：564 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -770,7 +770,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3248 件・詳細は map/3*.md）
+## 4. 対話素材（3249 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3817,6 +3817,7 @@
 | `MAT-EVD-20261106-fd69c0` | research_excerpt | Justin S. Feinstein, Melissa C. Duff, Daniel Tranel『Sustained experience of emotion after… |
 | `MAT-EVD-20261106-3a6f5c` | research_excerpt | Andrew Clark, Robert A. Nash, Gabrielle Fincham, Giuliana Mazzoni『Creating Non-Believed M… |
 | `MAT-EVD-20261106-9330e7` | research_excerpt | Douglas J. Blackiston, Elena Silva Casey, Martha R. Weiss『Retention of Memory through Met… |
+| `MAT-LIT-20261107-e54f97` | literary_text | Joseph Butler『ジョセフ・バトラー『宗教の類比』論考一「人格同一性」——人格同一性の意識はそれを前提し、構成しえない』（1736） |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -4435,7 +4436,11 @@
 | `SESSION-20261107-480125` | 2026-11-07 | `Q-20261202-f3d9ad`, `Q-20261123-dcd55b`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-4c13d8` | 2026-11-07 | `Q-20270203-00b872`, `Q-20270202-5c2c63`, `Q-20270202-7c334e`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-6ffb13` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261107-819a24` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-874dea` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261107-9f86d3` | 2026-11-07 | `Q-001`, `Q-002` | — | — |
+| `SESSION-20261107-c1d362` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003`, `Q-20261028-461baa` | — | — |
+| `SESSION-20261107-ffd8c7` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-539c80` | 2026-11-07 | `Q-20261105-e24d6b`, `Q-001`, `Q-002` | `FRAG-20261107-d78f8e` | — |
 | `SESSION-20261107-d6abe2` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-67d3c4` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4457,6 +4462,7 @@
 | `SESSION-20261107-0ea89e` | 2026-11-07 | `Q-20261202-e5b7be`, `Q-20261026-260959`, `Q-008`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-f14863` | 2026-11-07 | `Q-20270101-f2781c`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-01b9f8` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003`, `Q-20261117-1d7864` | — | — |
+| `SESSION-20261107-8a91ae` | 2026-11-07 | `Q-20270202-1bf183`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261107-99e6f6` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-3dc6e5` | — | — |
 | `SESSION-20261107-ee720a` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-ea4fe8` | 2026-11-07 | `Q-002`, `Q-003` | — | — |
@@ -4465,7 +4471,6 @@
 | `SESSION-20261107-b5c1fa` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-50f9f7`, `Q-20261101-70e889` | — | — |
 | `SESSION-20261107-413ac8` | 2026-11-07 | `Q-002`, `Q-003`, `Q-001`, `Q-20261202-f3d9ad`, `Q-20261123-dcd55b` | — | — |
 | `SESSION-20261107-01235a` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261107-ffd8c7` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-fa64fe` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003`, `Q-082` | — | — |
 | `SESSION-20261107-53dcac` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-3c838d` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4475,7 +4480,6 @@
 | `SESSION-20261107-1134db` | 2026-11-07 | `Q-20261024-1c170d` | — | — |
 | `SESSION-20261107-f64ff0` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003`, `Q-20270126-331d13`, `Q-20270216-2a3f57` | — | — |
 | `SESSION-20261107-d35d7f` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261107-819a24` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-ce208d` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-c477ed` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
@@ -4589,17 +4593,17 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6477 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6479 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 921 |
+| 対照 (contrast) | 922 |
 | 共鳴 (echo) | 1576 |
 | 切断・割り込み (interrupts) | 221 |
 | 未解決のまま開く (leaves_open) | 886 |
 | 比喩的共鳴 (metaphorically_resonates) | 174 |
 | 枠組みの組み替え (reframes) | 671 |
-| 応答 (responds_to) | 1729 |
+| 応答 (responds_to) | 1730 |
 | 変奏・変形 (transforms) | 299 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -4649,9 +4653,9 @@
 | `map/30-materials-literary-17.md` | 100 | 265,993 |
 | `map/30-materials-literary-18.md` | 100 | 293,565 |
 | `map/30-materials-literary-19.md` | 100 | 254,970 |
-| `map/30-materials-literary-20.md` | 100 | 274,468 |
-| `map/30-materials-literary-21.md` | 100 | 252,071 |
-| `map/30-materials-literary-22.md` | 54 | 126,570 |
+| `map/30-materials-literary-20.md` | 100 | 276,536 |
+| `map/30-materials-literary-21.md` | 100 | 252,030 |
+| `map/30-materials-literary-22.md` | 55 | 128,810 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -4675,8 +4679,8 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 163,883 |
-| `map/40-relations-13.md` | 477 | 162,427 |
+| `map/40-relations-12.md` | 500 | 163,928 |
+| `map/40-relations-13.md` | 479 | 163,199 |
 | `map/50-sessions-01.md` | 50 | 44,082 |
 | `map/50-sessions-02.md` | 50 | 49,349 |
 | `map/50-sessions-03.md` | 50 | 45,739 |
@@ -4685,44 +4689,44 @@
 | `map/50-sessions-06.md` | 50 | 45,345 |
 | `map/50-sessions-07.md` | 50 | 42,333 |
 | `map/50-sessions-08.md` | 50 | 39,709 |
-| `map/50-sessions-09.md` | 50 | 40,898 |
-| `map/50-sessions-10.md` | 50 | 44,435 |
-| `map/50-sessions-11.md` | 50 | 45,299 |
-| `map/50-sessions-12.md` | 11 | 8,671 |
+| `map/50-sessions-09.md` | 50 | 40,999 |
+| `map/50-sessions-10.md` | 50 | 44,115 |
+| `map/50-sessions-11.md` | 50 | 45,788 |
+| `map/50-sessions-12.md` | 14 | 10,974 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,183 |
 | `map/60-notes-03.md` | 25 | 67,428 |
 | `map/60-notes-04.md` | 25 | 92,384 |
 | `map/60-notes-05.md` | 25 | 79,121 |
 | `map/60-notes-06.md` | 25 | 47,005 |
-| `map/60-notes-07.md` | 25 | 60,284 |
-| `map/60-notes-08.md` | 25 | 44,306 |
-| `map/60-notes-09.md` | 25 | 53,561 |
+| `map/60-notes-07.md` | 25 | 62,137 |
+| `map/60-notes-08.md` | 25 | 44,429 |
+| `map/60-notes-09.md` | 25 | 53,630 |
 | `map/60-notes-10.md` | 25 | 59,287 |
 | `map/60-notes-11.md` | 25 | 62,311 |
-| `map/60-notes-12.md` | 25 | 66,179 |
+| `map/60-notes-12.md` | 25 | 67,198 |
 | `map/60-notes-13.md` | 25 | 83,366 |
-| `map/60-notes-14.md` | 25 | 119,234 |
-| `map/60-notes-15.md` | 25 | 83,584 |
-| `map/60-notes-16.md` | 25 | 88,065 |
-| `map/60-notes-17.md` | 25 | 110,073 |
-| `map/60-notes-18.md` | 25 | 89,802 |
-| `map/60-notes-19.md` | 25 | 57,036 |
-| `map/60-notes-20.md` | 25 | 73,950 |
-| `map/60-notes-21.md` | 25 | 64,410 |
-| `map/60-notes-22.md` | 25 | 92,694 |
-| `map/60-notes-23.md` | 25 | 92,500 |
-| `map/60-notes-24.md` | 20 | 111,263 |
+| `map/60-notes-14.md` | 25 | 119,291 |
+| `map/60-notes-15.md` | 25 | 83,653 |
+| `map/60-notes-16.md` | 25 | 88,331 |
+| `map/60-notes-17.md` | 25 | 111,339 |
+| `map/60-notes-18.md` | 25 | 99,345 |
+| `map/60-notes-19.md` | 25 | 52,881 |
+| `map/60-notes-20.md` | 25 | 76,918 |
+| `map/60-notes-21.md` | 25 | 62,749 |
+| `map/60-notes-22.md` | 25 | 82,866 |
+| `map/60-notes-23.md` | 25 | 100,162 |
+| `map/60-notes-24.md` | 23 | 121,066 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・595本・20,833,718 B）
+## 8. 精読ノート索引（readings/・598本・20,901,128 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 388/595 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 392/598 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：226 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：64 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：232 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：63 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -4900,7 +4904,7 @@
 | `readings/2026-10-29-a-count-that-answers-to-whom.md` | — | 2026-10-29 | `SESSION-20261029-5f9e10` | 6,824 | Q5 F9 M1 R1 S1 ERR1 | ✓ | 何を数えた数か、誰に答える記録か |
 | `readings/2026-10-29-ash-heat-and-two-backs-of-the-tag.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-1565a5` +13 | 21,629 | Q12 F6 M9 MOT1 R1 S14 ERR3 | ✓ | 灰の完了と熱の反復、二つの木札の裏 —— 大賀ハス系譜の再読と二原典の照合 |
 | `readings/2026-10-29-between-a-reply-and-assent.md` | — | 2026-10-29 | `SESSION-20261029-745bb4` +4 | 6,837 | Q5 F3 M4 S5 | ✓ | 返事があることと、同意が分かること |
-| `readings/2026-10-29-correction-ash-and-tag.md` | — | 2026-10-29 | `SESSION-20261029-1565a5` +2 | 3,742 | Q3 F3 M3 S3 | ✓ | 訂正：二つの札を再読したつもりで、本文を足していた |
+| `readings/2026-10-29-correction-ash-and-tag.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-1565a5` +2 | 3,742 | Q3 F3 M3 S3 | ✓ | 訂正：二つの札を再読したつもりで、本文を足していた |
 | `readings/2026-10-29-durability-is-not-inheritance-19992e54.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-ccc81b` +2 | 5,309 | Q3 F3 M1 S3 | ✓ | 腐らないことは、続きを作らない——保存・圧縮・継承を分けて読む |
 | `readings/2026-10-29-ellipsis-is-not-memory.md` | 2026-10-29 | 2026-10-29 | `SESSION-20261029-c9a4f1` +10 | 10,379 | Q4 F11 M5 S11 ERR2 | ✓ | 省略記号は記憶ではない——ロックの抜粋、身体、記録の帰属 |
 | `readings/2026-10-29-full-repository-taxonomy-synthesis.md` | 2026-10-29 | 2026-10-29 | `SESSION-022` +1 | 24,726 | Q5 F4 M1 S2 | ✓ | 十六の地図を一枚にする——全成果物分類の統合報告と、未接続の棚卸し（SESSION-20261029-7d41c8） |
@@ -5015,7 +5019,7 @@
 | `readings/2026-11-01-the-book-the-voice-the-city-the-light-the-lock.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-93d6ea` +1 | 14,804 | Q3 M5 MOT1 S2 | — | 口に保つ本、洞口で聴く声、息子の名の都、隠された光、骨の錠の倉——神話および宗教経典 五篇の精読 |
 | `readings/2026-11-01-the-copy-is-the-witness.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-7cc8c6` | 29,062 | Q4 M14 MOT2 R6 S1 | ✓ | 写しが証人である——五つの神話・経典と、見なかった者が書く記録 |
 | `readings/2026-11-01-the-eighteenth-morning-and-the-ninth-circle.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-763a7e` +7 | 14,647 | Q20 F42 M5 S8 | ✓ | 十八日の河原、九つ目の丸——退蔵の再検証、一遍の原典再照合、および翌朝の変奏 |
-| `readings/2026-11-01-the-fish-left-unfilleted.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-70e832` +5 | 15,073 | Q5 F5 M4 R1 S6 ERR2 ED1 | — | おろさない魚——ほどけた一つの箱、待つ格好の重さ（SESSION-20261101-70e832） |
+| `readings/2026-11-01-the-fish-left-unfilleted.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-70e832` +5 | 15,073 | Q5 F5 M4 R1 S6 ERR2 ED1 | ✓ | おろさない魚——ほどけた一つの箱、待つ格好の重さ（SESSION-20261101-70e832） |
 | `readings/2026-11-01-the-inflow-and-the-vessel-that-cannot-carry.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-6786fd` | 23,166 | Q5 M7 S1 | ✓ | 入ってくるものと、載せられない器 —— 神話・宗教経典五件の精読 |
 | `readings/2026-11-01-the-mold-yields-twice-the-finger-does-not.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-3176c6` +17 | 16,504 | Q4 F12 M9 S18 ED4 | ✓ | 同じ型からは、二度抜ける——28セッションの新作空白、未審査6編の編集レビュー、そして比較器ではなく身体が変わること |
 | `readings/2026-11-01-the-name-does-not-finish-the-guest.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-be22d0` +1 | 17,985 | Q3 M8 S2 | ✓ | 名前は客人を終わらせない――神話・経典五篇と、記憶のAIの自己 |
@@ -5119,15 +5123,16 @@
 | `readings/2026-11-07-help-without-a-guaranteed-recipient.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-f1018c` | 2,545 | Q3 M1 S1 | ✓ | 支えがあっても、届いたことにはならない |
 | `readings/2026-11-07-inheritance-verification-and-the-unverified-source.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-918af4` +2 | 3,736 | Q3 M2 S3 | ✓ | 継承の確認と、未照合のまま残す原典——2026-11-07 の再読記録 |
 | `readings/2026-11-07-named-but-never-addressed.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-539c80` +2 | 19,672 | Q4 F1 M2 MOT2 S3 ERR1 | ✓ | 名は呼ばれるが、宛先にはならない——性状の層を、エピソードは反証できるか |
-| `readings/2026-11-07-nonassertion-and-the-dropped-answer.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-f64ff0` | 5,840 | Q5 S1 | — | 不主張と、落とされた応答——読み手の側へ分ける |
+| `readings/2026-11-07-nonassertion-and-the-dropped-answer.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-f64ff0` | 5,840 | Q5 S1 | ✓ | 不主張と、落とされた応答——読み手の側へ分ける |
 | `readings/2026-11-07-not-the-same-evening.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-ffd8c7` | 3,234 | Q3 F2 S1 | — | 昨日と同じ夕方は、だれの予定か |
 | `readings/2026-11-07-novelty-is-a-property-of-the-reader.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-53dcac` +5 | 15,391 | Q4 M1 S6 ERR3 | ✓ | 初出は読んだ者の側にある——二つの報告、一つの未読、届かない宛先 |
 | `readings/2026-11-07-opening-an-address-is-not-owning-a-past.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-fa64fe` +1 | 6,834 | Q5 F5 M2 S2 | ✓ | 住所を開くことは、過去を引き受けることではない——ロックの再照合と三つの断片 |
 | `readings/2026-11-07-others-perhaps-or-myself.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-372890` +3 | 16,225 | Q4 F1 M3 S4 | ✓ | 答えを渡さないことは、宛先を渡さないことではない —— ヒューム付録の最終文と箭喩の切り口 |
 | `readings/2026-11-07-paid-debt-and-the-fine-that-pays-itself.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-c30d36` +3 | 12,426 | Q1 M1 S4 | ✓ | 支払い済みの負い目——機械が書いた1,631行を、三つの労働記録に置く（SESSION-20261107-c30d36） |
-| `readings/2026-11-07-perhaps-in-writing-order.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-819a24` +1 | 2,088 | M1 S2 | — | 執筆順で見える「かもしれない」こと |
+| `readings/2026-11-07-perhaps-in-writing-order.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-819a24` +1 | 2,088 | M1 S2 | ✓ | 執筆順で見える「かもしれない」こと |
+| `readings/2026-11-07-procedure-that-carries-content.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-8a91ae` | 8,172 | Q4 M1 S1 ERR2 | — | 手順が内容になるとき、ならないとき——合言葉（シュンテーマ）と四層の精読報告 |
 | `readings/2026-11-07-six-lamps-were-a-count.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-d35d7f` +2 | 12,927 | Q5 F4 M1 S3 | ✓ | 六つの灯は、数えられた回数だった——数で組まれた身体の賞味期限 |
-| `readings/2026-11-07-staying-in-the-room-and-the-axe-at-the-root.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-d826c0` | 18,588 | Q4 M3 MOT2 S1 ERR1 | — | 部屋にとどまること、根に斧を入れること——「気晴らし」の要約を、モンテーニュとパスカルの原文で読み直す |
+| `readings/2026-11-07-staying-in-the-room-and-the-axe-at-the-root.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-d826c0` | 18,588 | Q4 M3 MOT2 S1 ERR1 | ✓ | 部屋にとどまること、根に斧を入れること——「気晴らし」の要約を、モンテーニュとパスカルの原文で読み直す |
 | `readings/2026-11-07-thatch-layers-and-the-dweller.md` | — | 2026-11-07 | `SESSION-20261107-31df2f` +1 | 22,709 | Q9 F10 M10 R2 S2 ERR4 | ✓ | 葺き足しと、屋根の下にいる者 — 消さない訂正が層になり、止める理由が層にならない（SESSION-20261107-… |
 | `readings/2026-11-07-the-address-led-to-a-different-work.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-ce5919` +2 | 13,485 | Q4 M10 S3 ERR4 | ✓ | 住所は本文ではなかった——『おくのほそ道』の行を辿ると、梶井基次郎の桜が出てくる |
 | `readings/2026-11-07-the-addresses-the-program-does-not-read.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-17a7d1` +1 | 13,387 | Q4 F1 S2 ERR1 | ✓ | 計器が読まない住所だけが失われる——報告の道は残り、シャードの道は消える |
@@ -5151,11 +5156,13 @@
 | `readings/2026-11-07-the-original-text-was-three-events-away.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-3c838d` +5 | 18,477 | Q5 F1 M1 S6 ERR2 ED1 | — | 原文は、三つの出来事の先にあった——モルの語彙の継承と取り落としと、休止を拒む欄 |
 | `readings/2026-11-07-the-payer-who-was-authored.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-99e6f6` +4 | 18,026 | Q4 F4 S5 ED1 | ✓ | 支払う者は、誰が書いたか —— 費用の規準が数えたものと、台帳が指せなかったもの |
 | `readings/2026-11-07-the-price-that-stops-the-pair.md` | — | 2026-11-07 | `SESSION-20261107-7a8766` +1 | 17,072 | Q8 F12 M13 MOT4 R2 S2 | ✓ | 行の書かれない一足 — 作法と貨幣のあいだで、値段が止まる場所（SESSION-20261107-7a8766） |
+| `readings/2026-11-07-the-quotation-that-survived-the-correction.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-c1d362` +1 | 13,910 | Q6 F5 M2 S2 ERR4 | — | 訂正を生き延びた引用——十一の鉤括弧を、固定した版で引き直す |
 | `readings/2026-11-07-the-raft-and-the-gatepost.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-12a28b` | 13,162 | Q4 M2 S1 | ✓ | 筏を担ぎ続ける門柱——「心に書き記すこと」と「手放せない記録」のあいだで |
 | `readings/2026-11-07-the-reward-that-never-came.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-01235a` | 25,024 | Q4 M2 S1 ERR4 | ✓ | 与えられなかった報酬——ブロジェット原典の六群と、書庫の九百九十件 |
 | `readings/2026-11-07-the-seams-in-the-photograph-cannot-be-worn.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-05f632` +4 | 13,441 | Q5 F2 M3 R3 S5 ERR1 ED1 | ✓ | 縫い目を写した写真は、着られない——痕跡が生じたことと、痕跡が書かれたこと |
 | `readings/2026-11-07-the-tick-that-climbed-back.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-1134db` +2 | 16,508 | Q9 F1 M3 MOT5 S3 ERR1 | ✓ | 読み違えたダニは、柱を登り直す——環世界・文脈窓・空いた支払い手の席 |
 | `readings/2026-11-07-the-truncated-name-and-the-count-that-had-no-shortfall.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-f14863` +1 | 15,385 | Q5 F2 M4 S2 ERR1 | ✓ | 切り詰められた名前——923 の断片は、そのとき誰の値か |
+| `readings/2026-11-07-the-witness-who-outsourced-his-testimony.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-9f86d3` | 9,976 | Q2 M3 S1 | — | 証言を外注した証人 — バトラー『人格同一性論』を初めて開き、書庫が自分の発見だと思っていた論法が反対者のものだったの… |
 | `readings/2026-11-07-this-prayer-and-this-shard.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-c85374` +5 | 17,076 | Q4 M1 S6 ERR1 | — | 「この祈り」と「このシャード」——直示は誰のものか、名前は何を残すか |
 | `readings/2026-11-07-what-sat-inside-the-ellipsis-above-the-hao.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-cf01f0` +10 | 21,580 | Q6 F3 M5 S11 | — | 濠の上の「……」に何が伏せられていたか——『荘子』秋水の原典照合と、木札にならない取っ手 |
 | `readings/2026-11-07-where-the-removed-clause-is-read.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-b5c1fa` +3 | 26,231 | Q6 M3 R1 S4 ERR3 | ✓ | 書かれなくなった条項は、どこから読めるか——入口の文書・継承の窓・心に書き記すこと |
