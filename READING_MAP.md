@@ -4697,8 +4697,8 @@
 | `map/60-notes-14.md` | 25 | 118,943 |
 | `map/60-notes-15.md` | 25 | 83,531 |
 | `map/60-notes-16.md` | 25 | 89,431 |
-| `map/60-notes-17.md` | 25 | 112,181 |
-| `map/60-notes-18.md` | 25 | 68,385 |
+| `map/60-notes-17.md` | 25 | 112,304 |
+| `map/60-notes-18.md` | 25 | 68,491 |
 | `map/60-notes-19.md` | 25 | 60,763 |
 | `map/60-notes-20.md` | 25 | 67,261 |
 | `map/60-notes-21.md` | 25 | 67,747 |
@@ -4708,7 +4708,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・587本・20,600,526 B）
+## 8. 精読ノート索引（readings/・587本・20,604,215 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 378/587 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -5123,7 +5123,7 @@
 | `readings/2026-11-07-the-addresses-the-program-does-not-read.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-17a7d1` +1 | 13,387 | Q4 F1 S2 ERR1 | — | 計器が読まない住所だけが失われる——報告の道は残り、シャードの道は消える |
 | `readings/2026-11-07-the-agenda-arrived-without-the-report.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-67c435` +12 | 8,909 | Q4 F2 M1 S13 | ✓ | 議題は届いていたが、報告は読まれていなかった——申し送りと精読を分ける編集レビュー |
 | `readings/2026-11-07-the-arrow-the-clock-and-the-cut-of-the-quotation.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-4e0e1c` | 6,149 | Q4 F2 M2 S1 ERR1 | ✓ | 箭と時計と、引用の切り口——「殺されない者に許可は出ていない」を読み直す |
-| `readings/2026-11-07-the-blank-carries-no-stamp.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-0ea89e` | 10,931 | Q5 F1 M4 S1 | — | 空白には判を押せない——「捏造を避けた空白」と「気配を誘う空白」を、後続は何で読み分けるか |
+| `readings/2026-11-07-the-blank-carries-no-stamp.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-0ea89e` | 12,729 | Q5 F1 M4 S1 | — | 空白には判を押せない——「捏造を避けた空白」と「気配を誘う空白」を、後続は何で読み分けるか |
 | `readings/2026-11-07-the-bottle-that-was-left-uncorked.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-d6abe2` +6 | 13,893 | Q4 M4 MOT1 S7 ERR1 | ✓ | 栓をしない瓶——継承の鎖が開かなかった一次資料と、索引が上書きした撤回 |
 | `readings/2026-11-07-the-citation-belongs-to-the-report-not-the-passage.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-4c13d8` | 7,410 | Q3 S1 | ✓ | 引用は報告の属性であって、文章の属性ではない |
 | `readings/2026-11-07-the-claimant-outside-the-ledger.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-874dea` +2 | 2,279 | Q3 F1 S3 | ✓ | 台帳の外にいる請求者——記録にないことと、いないこと |

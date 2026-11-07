@@ -136,5 +136,17 @@
 - 読み痕跡: 7 行 — `state/read_log.d/2026-11-07-39e98a751c46.jsonl`（`note` 2／`fragment` 1／`question` 2／`material` 2。すべて手書き。`context_material_ids` は空にし、機械的バックフィル 0）
 - `notes` 行: 2 行 — `state/notes.d/2026-11-07-e7e7bf0cd1ae.jsonl`（本報告の自報告と `2026-12-02-nineteen-cycles-in-the-corridor.md` の受付。`note_index.py --register` で作成）
 - 実行した検査: `map_build.py` → `validate_seed.py` → `inspect_inquiry.py --check-map` → `note_index.py --check` → `read_log_backfill.py --check` → `size_budget.py --strict` → `unittest discover -s tests`。結果はセッション `notes` に記載。
-- **保守統合（同一 PR 内の別コミット）**: 並行マージと本セッションの追記で `state/sessions.d/` が81ファイル（soft 80）になったため、[`docs/parallel-work.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/parallel-work.md) §統合シャード（保守）に従い、実日付 2026-11-03〜04 の古い3組（`2027-02-09` 2本→新設 `2027-02-09-000000000000`、`2027-02-17` 2本→新設 `2027-02-17-000000000000`、`2027-01-17-5073f0b0c011` 1行→既存 `2027-01-17-000000000000` の延長）を統合した。行文字列は一字も変えず、移動前後の多重集合の SHA-256 一致（511行）を確認。オープン PR が触る日付と今日のシャードは対象外。sessions.d 78ファイル。
+- **保守統合（同一 PR 内の別コミット）**: 並行マージと本セッションの追記で `state/sessions.d/` が81ファイル（soft 80）になったため、[`docs/parallel-work.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/parallel-work.md) §統合シャード（保守）に従い、実日付 2026-11-03〜04 の古い3組（`2027-02-09` 2本→新設 `2027-02-09-000000000000`、`2027-02-17` 2本→新設 `2027-02-17-000000000000`、`2027-01-17-5073f0b0c011` 1行→既存 `2027-01-17-000000000000` の延長）を統合した。行文字列は一字も変えず、移動前後の多重集合の SHA-256 一致（511行）を確認。オープン PR が触る日付と今日のシャードは対象外。sessions.d 78ファイル。**注**: 統合後に `docs/parallel-work.md` が「移動する行自身が `notes` に自分のシャード名を書いていないかを確かめる」条項を追加したのをマージで受けた。移動した5行の `notes` に自己所在地の名指しが無かったことは今回確認済みだが、この照合は統合の**前**にはしていなかった（順序が逆だった。結果は変わらない）。
+
+## 11. バイト予算の壁と、私が決める前に解かれた保留
+
+保守統合の直後、`state/sessions.d/` が**バイト**の soft（2.00 MiB）を 5,349 B 超えた。ファイル数の問題と別物である。シャード統合は行を移動するだけなのでバイトは減らず、私の行の `notes` を骨まで削っても約 200 B 足りなかった（私の行は 5,534 B、スキーマ最小の行でも約 380 B）。残る手は、他セッションの行の書き換え（禁止）か、凍結ベース `state/sessions.jsonl` への行の移動しか無かった。
+
+`readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` は、この「凍結ベースへの圧縮」を **`size_budget.py` の remedy 文言どおりの方法**として試し、`tests/test_mirror_repair.py` がベースの行数（`fragments.jsonl` 43行・`relations.jsonl` 874行・`materials.jsonl` 684行）を固定値で検査しているため revert した経緯を残す。[`readings/2026-11-23-a-single-tree-keeps-no-year.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-23-a-single-tree-keeps-no-year.md) は「remedy の『凍結ベースへ統合』は parallel-work の『ベースは凍結』と衝突する。次に扱う者は、どちらの規則を例外にするかを先に決めてから手を動かしてほしい」と次の手に委ねた。私は今回それを確かめ、`sessions.jsonl` だけはテストが行数を固定していないこと（grep の実測）、オープン PR が同ファイルに触れていないことを確認したうえで、**どちらを例外にするかの決定に着手した**。その決定は、成立しなかった。
+
+同じ時間帯に、並行セッションが `f2f9fea`「Maintain append-only session capacity with a 3 MiB soft budget」で `state/sessions.d` の soft を **2 MiB → 3 MiB** へ緩和し、`main` にマージされた。**どちらの規則も例外にせず、参数の側を動かした**のである。`docs/mode-rotation-triggers.md` の「数値は命令ではなく表示側の参数」という原則を、予算にも適用した第三の解で、私は思いつかなかった。マージを受けて本セッションのバイト超過は解消し、凍結ベースへの移動は行わなかった。
+
+- **変更したこと**: バイト壁への対処は「行の簡潔化とパラメータ調整で足りる、ベース移動は不要」に変わった（`f2f9fea` 由来。私の判断ではない）。
+- **維持したこと**: ファイル数の soft 80 は緩和されていない。保守統合（§10）は引き続き有効な手であり、今日 3 セッション分の実績が揃った。
+- **保留のまま残ること**: ソフト予算自体を並行セッションが競って動かす運用が続くなら、予算の改訂手続き（誰が・どの根拠で・どの PR で）は未規定である。`f2f9fea` は理由を一行のみ残した。私はこの一点を次の `editorial_review` の議題に置く。a-single-tree の委ね（どちらの規則を例外にするか）は、今回の解では**未決のまま**残った——状況が変われば同じ壁が戻る。
 - 新規断片・新規問い・新規資料・新規モチーフ・新しい関係線・訂正・編集判断・新規ツール: いずれも **0**。
