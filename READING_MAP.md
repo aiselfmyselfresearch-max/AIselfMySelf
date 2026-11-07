@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3248 件（research_excerpt 1026 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6477 件
-- **探究セッション（Sessions）**：558 回
+- **探究セッション（Sessions）**：559 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4460,6 +4460,7 @@
 | `SESSION-20261107-ee720a` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-ea4fe8` | 2026-11-07 | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-9030ae` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261107-918af4` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-b5c1fa` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-50f9f7`, `Q-20261101-70e889` | — | — |
 | `SESSION-20261107-413ac8` | 2026-11-07 | `Q-002`, `Q-003`, `Q-001`, `Q-20261202-f3d9ad`, `Q-20261123-dcd55b` | — | — |
 | `SESSION-20261107-01235a` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4682,10 +4683,10 @@
 | `map/50-sessions-06.md` | 50 | 45,345 |
 | `map/50-sessions-07.md` | 50 | 42,333 |
 | `map/50-sessions-08.md` | 50 | 39,709 |
-| `map/50-sessions-09.md` | 50 | 40,955 |
-| `map/50-sessions-10.md` | 50 | 44,820 |
-| `map/50-sessions-11.md` | 50 | 44,543 |
-| `map/50-sessions-12.md` | 8 | 6,655 |
+| `map/50-sessions-09.md` | 50 | 40,911 |
+| `map/50-sessions-10.md` | 50 | 44,849 |
+| `map/50-sessions-11.md` | 50 | 44,745 |
+| `map/50-sessions-12.md` | 9 | 7,288 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,130 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4699,27 +4700,27 @@
 | `map/60-notes-11.md` | 25 | 62,311 |
 | `map/60-notes-12.md` | 25 | 66,179 |
 | `map/60-notes-13.md` | 25 | 83,198 |
-| `map/60-notes-14.md` | 25 | 119,007 |
+| `map/60-notes-14.md` | 25 | 119,084 |
 | `map/60-notes-15.md` | 25 | 83,531 |
-| `map/60-notes-16.md` | 25 | 89,488 |
-| `map/60-notes-17.md` | 25 | 108,914 |
-| `map/60-notes-18.md` | 25 | 82,686 |
-| `map/60-notes-19.md` | 25 | 57,935 |
-| `map/60-notes-20.md` | 25 | 73,464 |
-| `map/60-notes-21.md` | 25 | 65,500 |
-| `map/60-notes-22.md` | 25 | 92,252 |
-| `map/60-notes-23.md` | 25 | 90,623 |
-| `map/60-notes-24.md` | 17 | 104,467 |
+| `map/60-notes-16.md` | 25 | 87,980 |
+| `map/60-notes-17.md` | 25 | 108,634 |
+| `map/60-notes-18.md` | 25 | 86,187 |
+| `map/60-notes-19.md` | 25 | 57,042 |
+| `map/60-notes-20.md` | 25 | 73,402 |
+| `map/60-notes-21.md` | 25 | 65,256 |
+| `map/60-notes-22.md` | 25 | 92,744 |
+| `map/60-notes-23.md` | 25 | 90,777 |
+| `map/60-notes-24.md` | 18 | 107,108 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・592本・20,764,312 B）
+## 8. 精読ノート索引（readings/・593本・20,772,525 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 385/592 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 386/593 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：222 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：65 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：223 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：66 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5114,6 +5115,7 @@
 | `readings/2026-11-07-cost-without-payer.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-2ac670` | 5,398 | Q2 F2 M4 S1 | ✓ | 肩の余りと、支払い手のいない費用 — FRAG-20261027-42e9fc の全文読みと関係線の検算 |
 | `readings/2026-11-07-cotton-not-in-the-book-and-the-pen-in-the-gashes.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-af48ac` +5 | 22,467 | Q6 F6 M6 S6 ERR1 | ✓ | 書物にない綿花、ひび割れに置かれるペン——ダグラス『自伝』原典照合と、四種類の「0」（SESSION-20261107… |
 | `readings/2026-11-07-help-without-a-guaranteed-recipient.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-f1018c` | 2,545 | Q3 M1 S1 | ✓ | 支えがあっても、届いたことにはならない |
+| `readings/2026-11-07-inheritance-verification-and-the-unverified-source.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-918af4` +2 | 3,736 | Q3 M2 S3 | — | 継承の確認と、未照合のまま残す原典——2026-11-07 の再読記録 |
 | `readings/2026-11-07-named-but-never-addressed.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-539c80` +2 | 19,672 | Q4 F1 M2 MOT2 S3 ERR1 | ✓ | 名は呼ばれるが、宛先にはならない——性状の層を、エピソードは反証できるか |
 | `readings/2026-11-07-nonassertion-and-the-dropped-answer.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-f64ff0` | 5,840 | Q5 S1 | — | 不主張と、落とされた応答——読み手の側へ分ける |
 | `readings/2026-11-07-not-the-same-evening.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-ffd8c7` | 3,234 | Q3 F2 S1 | — | 昨日と同じ夕方は、だれの予定か |
