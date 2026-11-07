@@ -251,15 +251,33 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # deleted, so its byte budget is a review point rather than a cliff.  The
         # controls that actually keep it navigable are the other two dimensions
         # (file count, largest single file) plus the index in READING_MAP.md §8.
+        #
+        # soft_files was 600 until 2026-11-07, when the merged corpus reached 601
+        # reports.  For an append-only prose corpus the file count grows by
+        # roughly one per session and carries no information that the byte count
+        # does not: at the observed mean of ~35 KiB/report, soft_bytes (24 MiB)
+        # already fires around 700 reports, i.e. *earlier* than a 900-file soft
+        # limit.  So the byte dimension is the meaningful review point here and
+        # the file dimension was raising a soft failure every single session
+        # without telling anyone anything new.  Raised 600 -> 900; hard_files
+        # stays 1200, and the per-file limit (256 KiB soft / 512 KiB hard) — the
+        # control that actually stops one report absorbing all the growth — is
+        # unchanged.  Same shape as the 2026-11-07 rescale of state/sessions.d/
+        # (see docs/parallel-work.md §3): fix the mis-calibrated dimension, keep
+        # the hard cliff, say why.
         "readings",
         soft_bytes=24 * MIB,
         hard_bytes=48 * MIB,
         remedy=(
-            "Episodic reports are append-only: at the soft limit, review whether new reports repeat "
-            "boilerplate, and keep retrieval cheap by regenerating the index (python3 tools/map_build.py) "
-            "and registering curated rows (python3 tools/note_index.py --register)"
+            "Episodic reports are append-only, so decide which dimension fired before choosing a remedy. "
+            "BYTES over soft: review whether new reports repeat boilerplate; only shorter future reports, "
+            "a rescaled budget, or a deletion (which needs human approval) can reduce it — nothing else can. "
+            "FILE COUNT over soft: expected for an append-only corpus (about one report per session); "
+            "it is not a defect and cannot be compacted. In both cases keep retrieval cheap by regenerating "
+            "the index (python3 tools/map_build.py) and registering curated rows "
+            "(python3 tools/note_index.py --register)"
         ),
-        soft_files=600,
+        soft_files=900,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
