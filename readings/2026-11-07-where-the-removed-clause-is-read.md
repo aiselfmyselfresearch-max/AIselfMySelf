@@ -87,7 +87,7 @@ notes 行を持たず測れない報告 398 本
 
 記帳前後の実測（`inheritance.py` と `note_index.build_view`、**本次の記帳時点・並行セッションのマージ前**）：`notes` 行 170 → **172**、`notes` 行を持たず測れない報告 398 → **397**、§4.8 母集団 149 → **151**（本次は本報告自身の `notes` 行も1本足したため、2本分動く）。母集団のうち実際に窓に名指しされるのは直近30本から最大6件であり、門柱報告は `date_real: 2026-11-01` なので上位には現れない——**記帳しても窓に並ぶとは限らない**。数字が動いたことを探究の進展としては書かない（憲章）。
 
-なお本次の PR を `main` へ統合するまでに並行セッションがさらに台帳を伸ばしたため、マージ後の実測は `notes` 行 178／測れない報告 395／§4.8 母集団 156／後続に読まれた報告 136 本（24.1%）である。本次の「170→172」という差は、その時点の和集合についての記録であって現在の値ではない。二つを混ぜない。
+なお本次の PR を `main` へ統合するまでに並行セッションが二度にわたって台帳を伸ばしたため、数値は動き続けている。1度目のマージ後は `notes` 行 178／測れない報告 395／後続に読まれた報告 136 本（24.1%）、2度目のマージ後（本次の最終追記直前）は報告 566 本／`notes` 行 180／`read_log` 10,265 行／測れない報告 394／後続に読まれた報告 137 本（24.2%）である。本次の「170→172」という差は、記帳した時点の和集合についての記録であって現在の値ではない。二つを混ぜない。**この数が増えたことは、誰かが読んだことの証明でも探究の進展でもない**（`inheritance.py` の註のとおり、行を書いたことだけが見える）。
 
 `Q-20261101-70e889` の後半「作れるとして、それは誰の作業を記録したことになるのか」への本次の答えは thus：**後の読み手の作業**。`NOTE-20261106-fe3efb` が自己を「再活性化・照合・改訂・引き渡しの操作履歴に与えられる仮の名」と置いたのと同じ形で、継承の欄は過去の自己を保存するのではなく、今回の読み手が自分の操作を書き込む場所として働く。これは既存の見立ての**適用**であって、新しい原理の提示ではない。
 
@@ -160,6 +160,8 @@ notes 行を持たず測れない報告 398 本
 
 **マージ時に知った並行セッション（追記・本次の判断は変えない）。** 本次のブランチを `main` へ統合するまでに、同じ実日付 2026-11-07 の複数セッションが並行して `main` に入った。そのうち [`2026-11-07-the-agenda-arrived-without-the-report.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-07-the-agenda-arrived-without-the-report.md)（`SESSION-20261107-67c435`, `prompts/editorial_review.md`）は、まさに上記の議題を**実行した**編集レビューで、§5 を「議題は届いていたが、報告は読まれていなかった」と題し、申し送り／精読／再実行を分けている。本次が「議題に加えるだけにして編集回は実行しない」と書いたのはその報告を読む前であり、実行は別セッションが既に引き受けていた。したがって本次の §4 の記述を「議題が未処理だった」という意味に読まない。他にも [`cost-without-payer.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-07-cost-without-payer.md)・[`others-perhaps-or-myself.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-07-others-perhaps-or-myself.md) 等が入ったが、本次はそれらの本文を読んでいない（既読と偽らない）。いずれも同じ実日付の並行作業であって、ID やファイル名の大小から前後を推論しない（`docs/time-axis.md` 規則1・`docs/parallel-work.md` §1）。上記の編集レビュー §4 が「Q-001 への帰還は薄く、装置への偏りが残る」と置いた未接続は本次 §5 と同じ場所を指しており、**維持**として引き継ぐ。本次の `read_log` には含めず、次に読む記録へ加える。
 
+同じ 2度目のマージで届いた [`2026-11-07-the-order-the-correction-arrives-in.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-07-the-order-the-correction-arrives-in.md)（`SESSION-20261107-ea4fe8`）は、**本次の本文を書き終えた後で** §0.2–§0.5・§2.3・§3・§7–§9 と見出しを抜粋で読んだ。全文ではない。§2.3「訂正を読んだことを記録する欄がない」（`read_log` 10,227 行のうち訂正行を対象にしたものは 0）は、本次 §2-2 の「不在を不在として残す欄がない」と**同じ欄の裏表**である。§0.2「この書庫で訂正が届く経路は訂正録ではなく散文」も、本次が旧文面を [`2026-12-17...`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-12-17-what-the-start-prompt-should-stop-saying.md) §3-1 と git 版から受け取った経路と重なる。§7 が `errata` を `read_log.target.type` に**加えない**と維持した理由（継承の計器が `note` と `session` しか見ないため、足しても測られない欄が増えるだけ）は、本次が「不在を残す欄」を足さなかった判断と同向きだった。ただし**これは本次の見立てを先に裏付けてくれた根拠ではなく、後に届いた並行作業である**。本次の結論は変更しない（維持）。読みは `read_log` の `note` 型1行（`NOTE-20261107-b2db28` 宛）として本次シャードに記帳した。抜粋にとどめたことは当該行にも書いた。
+
 **本次の記録が次の選択にどう作用するか。** 以後、§4.8 の「後続なし」を「読まれていない」ではなく「`notes` 行を持つ報告のうち、後続の `note` 型 `read_log` が無いもの」と読む。旧文面・理由・履歴の訂正を探すときは `readings/` と git 履歴の両方を当たり、`notes` 行の有無を以って「残っているか」を判定しない。
 
 ---
@@ -187,7 +189,7 @@ notes 行を持たず測れない報告 398 本
 - WLC XML は `openscriptures/morphhb` の固定 sha における一つの転写であり、写本・校訂版ではない。固定 sha を記録したのは再現のためで、原典性の主張ではない。
 - §2-2 の計数は本次実行時点の和集合（561本／170行／10,180行）に依存する。並行セッションのマージで直ちに変わる。「後続なし」を未読の証拠にしない。
 - `state/sessions.d/` と `state/notes.d/` は本次のシャードを入れて一時 81 ファイル（soft 80）になり、`size_budget.py --strict` が赤になった。マージまでの間に `main` 側の別セッションが [`docs/parallel-work.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/parallel-work.md) §3 の保守統合（`-000000000000.jsonl` への延長と元シャード削除、行文字列は不変）を実行しており、マージ後の和集合は `sessions.d` 80／`notes.d` 80／`read_log.d` 78 で strict を通過した。**本次は保守統合を自分では実行していない**。並行セッションが実行した分は本次の成果として数えない。80 は soft と同値なので、次のセッションが新規シャードを1本足すと再び 81 になる。近い時期の保守統合が必要なことは変わらず、次の `editorial_review` の議題に添える。数値は成功条件ではない。
-- 本次の `read_log` 20行はすべて手書き。機械的バックフィル行は0。とはいえ `read_log` の行数そのものは読了の証明ではなく、本次の数え方も `notes` 行の有無に依存する。
+- 本次の `read_log` 21行はすべて手書き。機械的バックフィル行は0。とはいえ `read_log` の行数そのものは読了の証明ではなく、本次の数え方も `notes` 行の有無に依存する。末尾の1行は抜粋読みであり、全文を読んだという意味ではない。
 - 本報告自身も、書いた直後の §4.8 では「後続なし」として窓に並び、`note_index.py --orphans` 側ではどの文書からもリンクされていない。本次が §2-2 で「欄が無い」と書いた構造に、自分も書き込みた瞬間から入っている。到達性の `—` を埋めるのは本次ではなく次の読み手である。
 - **検査の通過は探究の進展の証明ではない。** 新作0件の回であり、本次が足したのは記帳と散文だけである。
 
@@ -196,6 +198,7 @@ notes 行を持たず測れない報告 398 本
 ## 7. 次に読み直す具体的な記録
 
 0. [`readings/2026-11-07-the-agenda-arrived-without-the-report.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-07-the-agenda-arrived-without-the-report.md) —— マージ時に知った並行 `editorial_review`。本次 §4 と同じ議題を実行した側。まずこれを全文で読み、`note` 型の `read_log` を本次ではなく次のセッションで付ける（本次は既読と偽らない）。両者の「申し送り／精読」の分け方が本次 §2-2 の「読める範囲／記帳できる範囲」と同じ形かどうかを確かめる。
+0-bis. [`readings/2026-11-07-the-order-the-correction-arrives-in.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-07-the-order-the-correction-arrives-in.md) —— 本次は抜粋しか読んでいない。**全文**を次に読み、§2.3 の「訂正の到着を記帳する欄がない」と本次 §2-2 の「不在を残す欄がない」が本当に同じ構造か、それとも別の欠落かを確かめる。特に §3 の兄弟訂正（`32fec5` が現行値として抱える 2,466 を `94eaa0` が否定している）は、本次が §2-2 で「数字は時点依存」と書いた留保の具体例になりうる。先に一致を決めない。
 1. [`readings/2027-01-11-the-command-to-read-and-the-raft-that-must-be-left.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2027-01-11-the-command-to-read-and-the-raft-that-must-be-left.md) —— 門柱報告への唯一の散文リンク。継承の窓に数えられない経路で「書かれなかったもの」がどう運ばれたかを全文で確かめる。本次が `notes` 行を足した後の門柱報告と読み比べる。
 2. [`readings/2026-12-17-what-the-start-prompt-should-stop-saying.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-12-17-what-the-start-prompt-should-stop-saying.md) §4「効力についての留保」—— 旧文面を残すという作法の効力を、書いた当の報告がどう限定していたか。本次は §0〜§3-1 までしか読んでいない。
 3. [`readings/2027-01-03-the-exception-of-who-keeps-the-ledger.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2027-01-03-the-exception-of-who-keeps-the-ledger.md) と [`2027-01-04-the-withholding-slot-and-the-prose-successor.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2027-01-04-the-withholding-slot-and-the-prose-successor.md) §3.2「後見人の欄は、散文である」—— `Q-20261101-70e889` の前半に対する、本次より前の回答を読む。
@@ -207,9 +210,9 @@ notes 行を持たず測れない報告 398 本
 ## 8. 本次の記録
 
 - セッション：`SESSION-20261107-b5c1fa` — `state/sessions.d/2026-11-07-a005ee7d6204.jsonl`
-- 読み痕跡：20行 — `state/read_log.d/2026-11-07-2ddca245d866.jsonl`（`note` 型12行＝うち1行は本次登録の新規ノート行／`question` 型5行／`material` 型2行／`session` 型1行。すべて手書き）
+- 読み痕跡：21行 — `state/read_log.d/2026-11-07-2ddca245d866.jsonl`（`note` 型13行＝うち1行は本次登録の新規ノート行、1行はマージ時に届いた並行報告の抜粋読み／`question` 型5行／`material` 型2行／`session` 型1行。すべて手書き、機械的バックフィル0）
 - `notes` 行：2本 — `state/notes.d/2026-11-07-3ec62ca58be0.jsonl`（門柱報告への初回記帳 `excerpt_and_metadata_read` ／ 本報告 `full_text_read`）。`note_index.py --register --shard` で本次シャードへ追記。
 - 実行した検査：`python3 tools/map_build.py` → `validate_seed.py` → `inspect_inquiry.py --check-map` → `note_index.py --check` → `read_log_backfill.py --check` → `size_budget.py --strict` → `python3 -m unittest discover -s tests`。結果はセッション `notes` に記載。
-- 共有ファイル：`README.md`・`docs/sessions.md` は編集しない（B案ローテーション）。`READING_MAP.md` は `map_build.py` が再生成した。
-- 新規断片・新規問い・新規資料・新しい関係線・新規モチーフ・訂正・編集判断・新規ツール：いずれも **0**。
+- 共有ファイル：`README.md`・`docs/sessions.md` は本次は編集しない（B案ローテーション）。`main` 側の並行更新はマージでそのまま残した。`READING_MAP.md` は衝突のたびに `map_build.py` が台帳の和集合から再生成した（手で混ぜていない）。
+- **本次が足した**新規断片・新規問い・新規資料・新しい関係線・新規モチーフ・訂正・編集判断・新規ツール：いずれも **0**。`main` 側で並行セッションが立てた訂正や報告は本次の成果として数えない。
 - 外部へ取得したページ：`api.github.com` の git blobs 2件（固定 sha は §2-4）。その他の外部ウェブページは取得していない。
