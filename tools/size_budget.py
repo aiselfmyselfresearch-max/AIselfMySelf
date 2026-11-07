@@ -184,11 +184,18 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
     ),
     ShardBudget(
         "state/sessions.d",
-        soft_bytes=2 * MIB,
+        # 2026-11-07: soft raised 2 -> 3 MiB.  The old soft limit left 185 B of
+        # headroom at 512 rows, while the smallest schema-valid session row
+        # (required fields only, no notes) is 217 B, so no new session could
+        # pass --strict.  The previous remedy
+        # ("compact old shards") cannot help: consolidating shards preserves the
+        # total bytes of the rows it moves.  Only shortening rows (prohibited:
+        # append-only) or rescaling the budget changes the sum.
+        soft_bytes=3 * MIB,
         hard_bytes=8 * MIB,
         soft_shards=80,
         hard_shards=160,
-        remedy="Compact old state/sessions.d/ shards in a maintenance PR",
+        remedy="Shorten new session notes; the byte sum only falls when rows get shorter, not when shards merge",
     ),
     ShardBudget(
         "state/motifs.d",
