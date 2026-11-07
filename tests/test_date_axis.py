@@ -112,6 +112,47 @@ class RealDateResolutionTests(unittest.TestCase):
         )
         self.assertEqual((real, source), (None, date_axis.UNRECORDED))
 
+    def test_a_marker_is_not_attached_across_a_denied_label(self) -> None:
+        """``…2026-11-28は…実行日ではない`` must not yield 2026-11-28.
+
+        The live case (``SESSION-20261027-8bf49b``): the notes name the shard
+        label *in order to deny it*, the marker regex walks across the comma,
+        and the axis read the denied label as a real date. Note the marker is
+        denied here, not merely preceded by one -- so the value is not taken
+        and resolution falls through, rather than the marker being reused.
+        """
+        real, source = date_axis.session_real_date(
+            "SESSION-20261027-8bf49b",
+            session(
+                "SESSION-20261027-8bf49b",
+                "2026-10-27T06:01:04Z",
+                notes="日付2026-10-27は実日付、各シャード名の2026-11-28は"
+                "既存の内部編年に続く並び順ラベルであり実行日ではない。",
+            ),
+            today=date(2026, 11, 7),
+        )
+        self.assertEqual(real, "2026-10-27")
+        self.assertEqual(source, "started_at")
+
+    def test_a_future_marker_falls_through_to_the_next_source(self) -> None:
+        real, source = date_axis.session_real_date(
+            "SESSION-20261027-cccccc",
+            session("SESSION-20261027-cccccc", "2026-10-27T06:17:12Z"),
+            header={"SESSION-20261027-cccccc": "2026-10-27"},
+            today=date(2026, 11, 7),
+        )
+        self.assertEqual((real, source), ("2026-10-27", "readings.header"))
+
+    def test_a_future_curated_date_is_not_read(self) -> None:
+        """``notes.date_real`` is a judgment, but not a licence to invent a date."""
+        real, source = date_axis.session_real_date(
+            "SESSION-20261027-dddddd",
+            session("SESSION-20261027-dddddd", "2026-10-27"),
+            curated={"SESSION-20261027-dddddd": "2026-11-28"},
+            today=date(2026, 11, 7),
+        )
+        self.assertEqual((real, source), ("2026-10-27", "started_at"))
+
 
 class HeaderRuleTests(unittest.TestCase):
     """The report header is evidence about the episode; the body is not."""
@@ -297,6 +338,53 @@ class RepositoryAxisSmokeTest(unittest.TestCase):
         # The rule this file exists for: a future label is flagged, whichever
         # date "today" is, because the label lies beyond the real span.
         self.assertGreater(stats["sessions_with_future_label"], 0)
+
+    def test_no_session_is_given_a_real_date_later_than_today(self) -> None:
+        """The axis's own invariant, checked over the whole ledger.
+
+        Before 2026-11-07 the rule was applied to ``started_at`` alone, and one
+        session was read as having a real date of 2026-11-28 while today was
+        2026-11-07. A real date in the future is the exact confusion this tool
+        exists to end, so it is asserted here over every row rather than over
+        one hand-built case.
+        """
+        rows = date_axis.build_axis(today=TODAY)
+        late = [
+            (row.label, row.real_date, row.source)
+            for row in rows
+            if row.real_date and row.real_date > TODAY.isoformat()
+        ]
+        self.assertEqual(late, [])
+
+
+class AnomalyViewLabellingTests(unittest.TestCase):
+    """A filtered view must not print its own size in the whole-axis header."""
+
+    def rows(self) -> list:
+        return date_axis.build_axis(today=TODAY)
+
+    def test_an_unfiltered_render_has_no_filter_notice(self) -> None:
+        out = date_axis.render(self.rows())
+        self.assertIn("=== date axis", out)
+        self.assertNotIn("絞り込み表示", out)
+
+    def test_a_filtered_render_says_the_counts_are_a_subset(self) -> None:
+        out = date_axis.render(self.rows()[:3], filtered="テスト用の部分集合")
+        self.assertIn("絞り込み表示", out)
+        self.assertIn("部分集合", out)
+
+    def test_the_check_block_also_marks_a_filtered_view(self) -> None:
+        # ``--anomalies`` runs the same check block afterwards; it used to
+        # report the subset's label count as though it were the archive's.
+        import contextlib
+        import io
+
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            date_axis.check(self.rows()[:3], today=TODAY, filtered="テスト用の部分集合")
+        printed = buffer.getvalue()
+        self.assertIn("絞り込み表示", printed)
+        self.assertIn("部分集合", printed)
 
 
 if __name__ == "__main__":
