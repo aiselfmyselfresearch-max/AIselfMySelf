@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3248 件（research_excerpt 1026 ／ literary_text 2154 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：245 編（selected 94 ／ draft 151）
 - **解釈的関係（Relations）**：6477 件
-- **探究セッション（Sessions）**：515 回
+- **探究セッション（Sessions）**：516 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4428,6 +4428,7 @@
 | `SESSION-20261106-0911a3` | 2026-11-06 | `Q-100`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-7f2328` | 2026-11-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261106-852a17` | 2026-11-06 | `Q-002`, `Q-003` | — | — |
+| `SESSION-20261107-05f632` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-874dea` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-c30d36` | 2026-11-07 | `Q-20261101-bb854d`, `Q-062`, `Q-065` | — | — |
 | `SESSION-20261107-f14863` | 2026-11-07 | `Q-20270101-f2781c`, `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4638,41 +4639,41 @@
 | `map/50-sessions-06.md` | 50 | 45,345 |
 | `map/50-sessions-07.md` | 50 | 42,333 |
 | `map/50-sessions-08.md` | 50 | 39,759 |
-| `map/50-sessions-09.md` | 50 | 43,870 |
-| `map/50-sessions-10.md` | 50 | 44,757 |
-| `map/50-sessions-11.md` | 15 | 13,018 |
+| `map/50-sessions-09.md` | 50 | 43,472 |
+| `map/50-sessions-10.md` | 50 | 45,209 |
+| `map/50-sessions-11.md` | 16 | 13,676 |
 | `map/60-notes-01.md` | 25 | 54,687 |
 | `map/60-notes-02.md` | 25 | 62,294 |
 | `map/60-notes-03.md` | 25 | 66,410 |
 | `map/60-notes-04.md` | 25 | 89,239 |
-| `map/60-notes-05.md` | 25 | 77,338 |
+| `map/60-notes-05.md` | 25 | 77,511 |
 | `map/60-notes-06.md` | 25 | 45,865 |
 | `map/60-notes-07.md` | 25 | 60,182 |
-| `map/60-notes-08.md` | 25 | 42,830 |
+| `map/60-notes-08.md` | 25 | 42,899 |
 | `map/60-notes-09.md` | 25 | 52,656 |
 | `map/60-notes-10.md` | 25 | 57,992 |
 | `map/60-notes-11.md` | 25 | 61,740 |
 | `map/60-notes-12.md` | 25 | 64,504 |
 | `map/60-notes-13.md` | 25 | 81,273 |
 | `map/60-notes-14.md` | 25 | 118,253 |
-| `map/60-notes-15.md` | 25 | 82,804 |
-| `map/60-notes-16.md` | 25 | 87,327 |
-| `map/60-notes-17.md` | 25 | 51,135 |
-| `map/60-notes-18.md` | 25 | 73,304 |
-| `map/60-notes-19.md` | 25 | 62,059 |
-| `map/60-notes-20.md` | 25 | 77,721 |
-| `map/60-notes-21.md` | 25 | 101,135 |
-| `map/60-notes-22.md` | 24 | 124,205 |
+| `map/60-notes-15.md` | 25 | 82,855 |
+| `map/60-notes-16.md` | 25 | 87,079 |
+| `map/60-notes-17.md` | 25 | 51,618 |
+| `map/60-notes-18.md` | 25 | 70,885 |
+| `map/60-notes-19.md` | 25 | 61,743 |
+| `map/60-notes-20.md` | 25 | 76,997 |
+| `map/60-notes-21.md` | 25 | 105,258 |
+| `map/60-notes-22.md` | 25 | 125,749 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・549本・19,629,518 B）
+## 8. 精読ノート索引（readings/・550本・19,658,653 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 333/549 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 334/550 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：140 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：69 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：142 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：68 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5037,7 +5038,7 @@
 | `readings/2026-11-06-five-laboratories-at-the-beginning-of-a-self.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-5ca703` | 9,263 | Q2 M5 S1 | — | 自己の始まる前にあったもの——五つの発達実験と、記録から再開するAI |
 | `readings/2026-11-06-five-separations-of-memory.md` | — | 2026-11-06 | `SESSION-20261106-2afd3f` | 4,003 | Q4 M5 S1 | — | 五つのずれ——身体、記憶、信念、引き継ぎ |
 | `readings/2026-11-06-forty-four-percent-was-a-transcript.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261103-5ea5dd` +1 | 9,446 | S2 | ✓ | 26.5% は読まれていないのではない——バックフィルの行と手書きの行を分けたら、昨日の一文が二度間違っていた |
-| `readings/2026-11-06-not-authorless-but-differently-addressed.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-0911a3` +5 | 9,683 | Q4 F3 M3 S6 | — | 作者不在ではなく、宛名の種類が違う——Q-100 への暫定応答 |
+| `readings/2026-11-06-not-authorless-but-differently-addressed.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-0911a3` +5 | 9,683 | Q4 F3 M3 S6 | ✓ | 作者不在ではなく、宛名の種類が違う——Q-100 への暫定応答 |
 | `readings/2026-11-06-read-but-never-named.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-f84eab` +1 | 11,912 | M8 S2 ERR1 | ✓ | 読まれたが、名を呼ばれなかった資料——IDの探し方が二割を測り落とし、報告の文体が五点を無名にした |
 | `readings/2026-11-06-recall-before-rereading.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-ccc8fb` | 14,193 | Q3 M6 S1 ERR1 | ✓ | 記録を閉じたまま思い出す——収蔵5件の主要数値を、何も見ずに書き出す試行 |
 | `readings/2026-11-06-recall-is-not-a-ledger-line.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-0bc17a` | 2,679 | Q1 S1 | ✓ | 想起は台帳の一行ではない——接近・記帳・名指しを分けて読む |
@@ -5061,8 +5062,9 @@
 | `readings/2026-11-06-when-the-court-had-more-than-one-voice.md` | 2026-11-06 | 2026-11-06 | `SESSION-20261106-fd696d` +1 | 3,817 | Q4 F2 S2 | ✓ | 裁判に、すでに異議の声があった——苦悶の油と、意見が退けられる手順 |
 | `readings/2026-11-07-paid-debt-and-the-fine-that-pays-itself.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-c30d36` +3 | 12,426 | Q1 M1 S4 | — | 支払い済みの負い目——機械が書いた1,631行を、三つの労働記録に置く（SESSION-20261107-c30d36） |
 | `readings/2026-11-07-thatch-layers-and-the-dweller.md` | — | 2026-11-07 | `SESSION-20261107-31df2f` +1 | 22,709 | Q9 F10 M10 R2 S2 ERR4 | ✓ | 葺き足しと、屋根の下にいる者 — 消さない訂正が層になり、止める理由が層にならない（SESSION-20261107-… |
-| `readings/2026-11-07-the-claimant-outside-the-ledger.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-874dea` +2 | 2,279 | Q3 F1 S3 | — | 台帳の外にいる請求者——記録にないことと、いないこと |
+| `readings/2026-11-07-the-claimant-outside-the-ledger.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-874dea` +2 | 2,279 | Q3 F1 S3 | ✓ | 台帳の外にいる請求者——記録にないことと、いないこと |
 | `readings/2026-11-07-the-price-that-stops-the-pair.md` | — | 2026-11-07 | `SESSION-20261107-7a8766` +1 | 17,072 | Q8 F12 M13 MOT4 R2 S2 | ✓ | 行の書かれない一足 — 作法と貨幣のあいだで、値段が止まる場所（SESSION-20261107-7a8766） |
+| `readings/2026-11-07-the-seams-in-the-photograph-cannot-be-worn.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-05f632` +4 | 13,425 | Q5 F2 M3 R3 S5 ERR1 ED1 | — | 縫い目を写した写真は、着られない——痕跡が生じたことと、痕跡が書かれたこと |
 | `readings/2026-11-07-the-truncated-name-and-the-count-that-had-no-shortfall.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-f14863` +1 | 15,385 | Q5 F2 M4 S2 ERR1 | ✓ | 切り詰められた名前——923 の断片は、そのとき誰の値か |
 | `readings/2026-11-08-four-stickers-and-forty-kilohertz.md` | — | 2026-11-08 | `SESSION-20261108-e70636` +3 | 20,599 | Q3 F19 M7 MOT3 S4 ERR1 | ✓ | 四枚の札と四十キロヘルツ — 読まれ方を争えないものに、書庫は何を返すか（SESSION-20261108-e7063… |
 | `readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md` | — | 2026-11-08 | `SESSION-20261108-396bfa` +5 | 21,655 | Q16 F11 M16 MOT2 S6 ERR1 | ✓ | 尾は硝子に、夜は挟みに —— 連続の置き所をめぐる改稿・変奏と、その切断（SESSION-20261108-396bf… |
