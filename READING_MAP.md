@@ -4689,7 +4689,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・571本・20,193,648 B）
+## 8. 精読ノート索引（readings/・571本・20,194,278 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 357/571 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -5099,7 +5099,7 @@
 | `readings/2026-11-07-the-bottle-that-was-left-uncorked.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-d6abe2` +6 | 13,893 | Q4 M4 MOT1 S7 ERR1 | ✓ | 栓をしない瓶——継承の鎖が開かなかった一次資料と、索引が上書きした撤回 |
 | `readings/2026-11-07-the-citation-belongs-to-the-report-not-the-passage.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-4c13d8` | 7,410 | Q3 S1 | ✓ | 引用は報告の属性であって、文章の属性ではない |
 | `readings/2026-11-07-the-claimant-outside-the-ledger.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-874dea` +2 | 2,279 | Q3 F1 S3 | ✓ | 台帳の外にいる請求者——記録にないことと、いないこと |
-| `readings/2026-11-07-the-critic-who-takes-my-side.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-9030ae` | 6,943 | Q4 M2 S1 ERR1 | — | 私の側につく批評者——『訂正録』序を読み直し、必要条件を一段弱める |
+| `readings/2026-11-07-the-critic-who-takes-my-side.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-9030ae` | 7,273 | Q4 M2 S1 ERR1 | — | 私の側につく批評者——『訂正録』序を読み直し、必要条件を一段弱める |
 | `readings/2026-11-07-the-hole-was-where-i-stood.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-413ac8` +10 | 18,936 | Q4 F1 S11 ERR3 | ✓ | 穴は、私が立っていた場所にあった——日付の軸が今日に依存すること、コピュラの向き、そして断片0の数え方 |
 | `readings/2026-11-07-the-label-that-was-denied-in-the-same-sentence.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-890f1f` +3 | 12,206 | Q4 F1 M1 S4 ERR3 | — | 否定されたラベルを、計器が日付として読んでいた——2026-11-28 は、実行日ではない（SESSION-20261… |
 | `readings/2026-11-07-the-order-the-correction-arrives-in.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-ea4fe8` +3 | 14,946 | Q3 M2 S4 ERR27 | ✓ | 訂正は、どの順で届くのか——『訂正録』序の三つの条件を、この台帳の 176 行で測る |

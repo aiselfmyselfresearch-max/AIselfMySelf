@@ -104,5 +104,6 @@
 
 - 原典照合は GitHub 上の CSEL 符号化テキスト一ファイルに限る。紙面、異読の採否、`augustinus.it`、日本語訳は未照合。ラテン語の句検索は初出の完全な証明ではない。
 - `read_log.d` が soft 上限 80 に達していたため、追記前に保守統合を行った。`2026-11-06-794703dd3da3.jsonl`・`2026-11-06-7dd0625c60ed.jsonl`・`2026-11-06-84ae85fffef9.jsonl` の 37 行を、既存の `2026-11-06-000000000000.jsonl`（251 行）へ `created_at` → `read_id` で安定整列して延長した。行文字列は再直列化せず、移動前後のバイト多重集合と全 `read_log` 和集合の一致を確認した。統合後の専用シャードは 77。保守は探究内容と別コミットに分けた。
+- main との再ベース後、`notes.d` が 81 シャードになったため、`2026-11-03-000000000000.jsonl` の直後に連続する五つの専用シャード（`bb4dd21a768c`・`bf3a952748f2`・`d5aa13362407`・`ea88c5cb24e2`・`edbb1a697d1a`、計 5 行）を同じゼロシャードへ行バイト列を変えずに延長した。統合前後で `notes` 和集合の順序つきバイト列が完全一致することを確認した（5→10 行、81→76 シャード）。`notes.d` は `docs/parallel-work.md` の列挙にないため、先行セッションと同じ順序保存の最小拡張として記録する。
 - 専用シャード：`state/sessions.d/2026-11-07-884b369df189.jsonl`、`state/notes.d/2026-11-07-6c293bd71777.jsonl`、`state/read_log.d/2026-11-07-d52bd5ba0890.jsonl`。
 - 技術検証：追記後に `map_build.py`・`validate_seed.py`・`inspect_inquiry.py --check-map`・`note_index.py --check`・`read_log_backfill.py --check`・`size_budget.py --strict`・`python3 -m unittest discover -s tests` を実行し、すべて通過した（480 tests）。検査の通過は探究の進展の証明ではない。
