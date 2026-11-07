@@ -1,6 +1,0 @@
-{"read_id": "READ-20261106-cc0003", "session_id": "SESSION-20261106-13ee84", "target": {"type": "material", "id": "MAT-20261106-cf85d4"}, "reading": "interpreted", "note": "原著の指定箇所を要約し解釈。", "created_at": "2026-11-06"}
-{"read_id": "READ-20261106-ff4b18", "session_id": "SESSION-20261106-13ee84", "target": {"type": "material", "id": "MAT-20261106-a7f97b"}, "reading": "interpreted", "note": "原著の指定箇所を要約し解釈。", "created_at": "2026-11-06"}
-{"read_id": "READ-20261106-405531", "session_id": "SESSION-20261106-13ee84", "target": {"type": "material", "id": "MAT-20261106-5bb29a"}, "reading": "interpreted", "note": "原著の指定箇所を要約し解釈。", "created_at": "2026-11-06"}
-{"read_id": "READ-20261106-22c8ef", "session_id": "SESSION-20261106-13ee84", "target": {"type": "material", "id": "MAT-20261106-056cea"}, "reading": "interpreted", "note": "原著の指定箇所を要約し解釈。", "created_at": "2026-11-06"}
-{"read_id": "READ-20261106-456424", "session_id": "SESSION-20261106-13ee84", "target": {"type": "material", "id": "MAT-20261106-8c88db"}, "reading": "interpreted", "note": "原著の指定箇所を要約し解釈。", "created_at": "2026-11-06"}
-{"read_id": "READ-20261106-d413b9", "session_id": "SESSION-20261106-13ee84", "target": {"type": "note", "id": "NOTE-20261106-a16c9e"}, "reading": "reinterpreted", "note": "§1・4と引き継ぎから保存・読み出しと長期更新の検査を継承。", "created_at": "2026-11-06"}
