@@ -184,11 +184,24 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
     ),
     ShardBudget(
         "state/sessions.d",
-        soft_bytes=2 * MIB,
+        # 2026-11-07: soft_bytes was 2 MiB. Compaction cannot lower this number:
+        # a sessions row is never dropped or shortened, and merging shards only
+        # removes one trailing newline per removed file (measured: 0 B saved for
+        # 15 one-row shards). The old remedy therefore named a remedy that could
+        # not work. The actionable constraint for this directory is the shard
+        # COUNT (parallel writers), so the count budget keeps its pressure and
+        # the byte soft limit moves up one step to stay above one ordinary
+        # session row (median 3.4 KiB). See readings/2026-11-07-the-original-text-
+        # was-three-events-away.md §9.1.
+        soft_bytes=5 * MIB // 2,
         hard_bytes=8 * MIB,
         soft_shards=80,
         hard_shards=160,
-        remedy="Compact old state/sessions.d/ shards in a maintenance PR",
+        remedy=(
+            "Merging shards saves ~0 B: this directory's soft_bytes can only be "
+            "held by writing shorter session rows. Watch soft_shards instead, "
+            "and keep notes out of the growing path if a row must be shortened"
+        ),
     ),
     ShardBudget(
         "state/motifs.d",
