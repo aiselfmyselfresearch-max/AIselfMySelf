@@ -190,7 +190,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # SESSION-20261108-33d2a7 / -934457. Referenced earlier shards and
         # order-preserving consolidation were checked; see the report §14.
         # This is a scoped exception, not headroom; hard limit is unchanged.
-        soft_shards=89,
+        # 2026-11-08: 89 -> 90 for the shared materials shard of
+        # SESSION-20261108-9ec310 / -45aff1. Earlier shards carry path refs or
+        # order constraints; new rows omit shard paths. See
+        # readings/2026-11-08-ten-experiments-across-body-monitoring-and-fusion.md §14.
+        soft_shards=90,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -258,7 +262,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-08: 87 -> 88 for the shared read_log of the requested
         # two-session report. Existing candidates have path references; see
         # readings/2026-11-08-ten-experiments-on-remembering-with-support.md §14.
-        soft_shards=88,
+        # 2026-11-08: 88 -> 89 for SESSION-20261108-9ec310 / -45aff1.
+        # Existing candidates carry path refs; new rows stay concise and omit
+        # shard paths. Details:
+        # readings/2026-11-08-ten-experiments-across-body-monitoring-and-fusion.md §14.
+        soft_shards=89,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -355,7 +363,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-08: 92 -> 93 for the current two-session shard. Earlier
         # candidates carry path references; the new rows omit their own path.
         # Details: readings/2026-11-08-ten-experiments-on-remembering-with-support.md §14.
-        soft_shards=93,
+        # 2026-11-08: 93 -> 94 for SESSION-20261108-9ec310 / -45aff1. Earlier
+        # candidates carry path refs; the new rows omit shard paths. Details:
+        # readings/2026-11-08-ten-experiments-across-body-monitoring-and-fusion.md §14.
+        soft_shards=94,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -421,7 +432,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-08: 87 -> 88 for the current report's note shard. Other
         # candidates have path references; the new row omits its own path.
         # Details: readings/2026-11-08-ten-experiments-on-remembering-with-support.md §14.
-        soft_shards=88,
+        # 2026-11-08: 88 -> 89 for NOTE-20261108-6edb10. Earlier candidates
+        # carry path refs or order constraints; the new row omits shard paths.
+        # Details: readings/2026-11-08-ten-experiments-across-body-monitoring-and-fusion.md §14.
+        soft_shards=89,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
