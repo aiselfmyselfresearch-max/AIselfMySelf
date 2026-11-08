@@ -9,6 +9,15 @@ which of them is right.
 Usage:
   python3 tools/errata_audit.py
   python3 tools/errata_audit.py --json
+  python3 tools/errata_audit.py --schema
+
+``--schema`` reports how the errata rows themselves compare to
+``schema/errata.schema.json``. It is a report, not a gate: the exit status stays
+0 and no row is touched. The errata ledger is the one collection that
+``validate_seed.COLLECTIONS`` does not cover, so without this option nothing in
+the repository compares these rows to the schema written for them. Turning that
+comparison into a gate would fail on rows that already exist and may not be
+rewritten, so the mirror stays non-blocking and names the rows instead.
 """
 from __future__ import annotations
 
@@ -334,6 +343,57 @@ def recorded_number(value: str) -> str:
     return match.group(1) if match else ""
 
 
+def schema_report(errata: list[dict[str, Any]], root: Path = ROOT) -> dict[str, Any]:
+    """Compare errata rows to their own schema and report, without judging.
+
+    ``validate_seed.COLLECTIONS`` covers nine collections and errata is not one
+    of them, so these rows are the only ledger rows nothing compares to the
+    schema written for them. This returns the disagreements; it does not repair
+    them and it does not decide whether the row or the schema is wrong. Rows are
+    append-only, so a disagreement found here is material for a new errata row,
+    not an edit.
+
+    The validator is imported lazily so that the re-measurement path above keeps
+    working even if the schema file or the validator is unavailable.
+    """
+    schema_path = root / "schema" / "errata.schema.json"
+    if not schema_path.exists():
+        return {"available": False, "reason": f"missing {schema_path}", "rows": len(errata),
+                "conforming": 0, "violations": []}
+    try:
+        import validate_seed
+    except ImportError as exc:  # pragma: no cover - defensive
+        return {"available": False, "reason": str(exc), "rows": len(errata),
+                "conforming": 0, "violations": []}
+
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    violations: list[dict[str, Any]] = []
+    for record in sorted(errata, key=lambda r: r.get("errata_id", "")):
+        rid = record.get("errata_id", "(no errata_id)")
+        errors: list[str] = []
+        validate_seed.validate_value(record, schema, schema, f"errata:{rid}", errors)
+        if errors:
+            violations.append({"errata_id": rid, "errors": errors})
+    return {"available": True, "reason": "", "rows": len(errata),
+            "conforming": len(errata) - len(violations), "violations": violations}
+
+
+def print_schema_report(report: dict[str, Any]) -> None:
+    print("=== 訂正録そのもののスキーマ照合 — 報告であって関門ではありません ===")
+    if not report["available"]:
+        print(f"  照合できません: {report['reason']}")
+        return
+    print(f"  対象 {report['rows']} 行 / 適合 {report['conforming']} 行 /"
+          f" 不一致 {len(report['violations'])} 行")
+    print("  errata は validate_seed.COLLECTIONS に含まれないため、この照合は他では行われない。")
+    for row in report["violations"]:
+        print(f"  [{row['errata_id']}]")
+        for err in row["errors"]:
+            print(f"     {err}")
+    print("  行は追記専用であるため、ここでは直さない。不一致は新しい errata 行の素材になる。")
+    print("  この結果は終了コードを変えない。行が間違っているのかスキーマが古いのかは判定しない。")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Re-run the checks recorded in the errata ledger.")
     parser.add_argument("--json", action="store_true", help="emit machine-readable JSON")
@@ -341,9 +401,20 @@ def main() -> int:
                         help="read only the frozen base files (the pre-SESSION-041 behaviour)")
     parser.add_argument("--exclude-shard", metavar="SUFFIX",
                         help="ignore shards whose filename contains SUFFIX")
+    parser.add_argument("--schema", action="store_true",
+                        help="also report how the errata rows compare to schema/errata.schema.json"
+                             " (report only: never changes the exit status, never edits a row)")
     args = parser.parse_args()
 
     errata = load_jsonl("errata.jsonl", "errata_id", base_only=args.base_only, exclude=args.exclude_shard)
+
+    if args.schema:
+        report = schema_report(errata)
+        if args.json:
+            print(json.dumps(report, ensure_ascii=False, indent=1))
+        else:
+            print_schema_report(report)
+        return 0
     fragments = load_jsonl("fragments.jsonl", "fragment_id", base_only=args.base_only, exclude=args.exclude_shard)
     materials = load_jsonl("materials.jsonl", "material_id", base_only=args.base_only, exclude=args.exclude_shard)
 

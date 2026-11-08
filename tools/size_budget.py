@@ -366,7 +366,25 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-08: 93 -> 94 for SESSION-20261108-9ec310 / -45aff1. Earlier
         # candidates carry path refs; the new rows omit shard paths. Details:
         # readings/2026-11-08-ten-experiments-across-body-monitoring-and-fusion.md §14.
-        soft_shards=94,
+        # 2026-11-08 (SESSION-20261108-b94274, merging PR #601): 94 -> 93.
+        # This is the first LOWERING of this counter, and it is measured, not
+        # aspirational.  This session reversed docs/parallel-work.md §2, which
+        # had REQUIRED sessions rows to name their own shard path.  Measured
+        # cause: 71 of 72 non-consolidated shards named their own file and were
+        # therefore immovable, and 109 of 189 self-location mentions across 595
+        # rows already pointed at deleted paths -- the convention had made the
+        # majority of its own records false.
+        # Before the merge, consolidating the one movable shard
+        # (2026-11-08-46651e70f206) into 2026-11-08-000000000000.jsonl was net 0
+        # files: no same-date zero shard existed, so it only built the anchor.
+        # After merging PR #601, that anchor took two more shards whose rows
+        # omit self-location (55ad657a6699, e2c43e00dbb0; 2 rows each), both
+        # verified byte-identical to origin/main and untouched by any open PR.
+        # Actual went 95 -> 93 while this session added its own shard, so the
+        # merged union needs 93, not 94.  Row multisets verified byte-equal.
+        # Hard limit 160 unchanged.  New rows are movable now; do not raise this
+        # again without first measuring whether movable shards actually grew.
+        soft_shards=93,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
