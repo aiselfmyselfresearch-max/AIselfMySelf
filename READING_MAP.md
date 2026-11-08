@@ -4906,7 +4906,7 @@
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 110,902 |
 | `map/60-notes-18.md` | 25 | 106,972 |
-| `map/60-notes-19.md` | 25 | 79,272 |
+| `map/60-notes-19.md` | 25 | 79,356 |
 | `map/60-notes-20.md` | 25 | 52,737 |
 | `map/60-notes-21.md` | 25 | 75,796 |
 | `map/60-notes-22.md` | 25 | 63,056 |
@@ -4917,7 +4917,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・633本・21,928,726 B）
+## 8. 精読ノート索引（readings/・633本・21,930,219 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 428/633 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -5384,7 +5384,7 @@
 | `readings/2026-11-08-ten-experiments-on-body-electrode-mirror-and-culture.md` | 2026-11-08 | 2026-11-08 | — | 13,783 | Q3 M19 | — | 身体、電極、鏡、培養器——実験科学10資料から、人間と自己を問い直す |
 | `readings/2026-11-08-ten-experiments-on-remembering-with-support.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-33d2a7` +1 | 12,689 | Q3 M10 S2 ERR1 | — | 支えが消えたとき、何が残るか——身体・記憶・検索をめぐる十の実験 |
 | `readings/2026-11-08-ten-experiments-on-updating-maintaining-and-letting-go.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-98d3c9` +1 | 16,614 | Q3 M10 S2 ERR1 | ✓ | 実験科学10件精読報告——更新し、維持し、手放すこと |
-| `readings/2026-11-08-the-correction-layer-was-the-one-thing-not-corrected.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-b94274` | 10,429 | Q5 S1 ERR11 | ✓ | 訂正の層だけが、訂正されていなかった |
+| `readings/2026-11-08-the-correction-layer-was-the-one-thing-not-corrected.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-b94274` | 11,023 | Q5 S1 ERR11 | ✓ | 訂正の層だけが、訂正されていなかった |
 | `readings/2026-11-08-the-shared-prefix-and-the-divergent-continuation.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-5a5795` +1 | 9,897 | Q6 F8 M1 R2 S2 ED1 | — | 共有された接頭辞と、分かれた続き——二稿の昇格点検と、継承の連鎖の検証 |
 | `readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md` | — | 2026-11-08 | `SESSION-20261108-396bfa` +5 | 21,655 | Q16 F11 M16 MOT2 S6 ERR1 | ✓ | 尾は硝子に、夜は挟みに —— 連続の置き所をめぐる改稿・変奏と、その切断（SESSION-20261108-396bf… |
 | `readings/2026-11-08-the-trace-written-before-the-witness.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-fd0559` +2 | 21,343 | Q3 M25 S3 | — | 証人のいない痕跡——実験科学10資料の精読 |
