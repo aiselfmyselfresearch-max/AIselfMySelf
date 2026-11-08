@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3265 件（research_excerpt 1041 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3270 件（research_excerpt 1046 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6479 件
-- **探究セッション（Sessions）**：574 回
+- **探究セッション（Sessions）**：575 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -770,7 +770,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3265 件・詳細は map/3*.md）
+## 4. 対話素材（3270 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3819,6 +3819,11 @@
 | `MAT-EVD-20261106-9330e7` | research_excerpt | Douglas J. Blackiston, Elena Silva Casey, Martha R. Weiss『Retention of Memory through Met… |
 | `MAT-LIT-20261107-9837f3` | literary_text | Svetlana Alexievich, Jamey Gambrell (English trans.)『スヴェトラーナ・アレクシエーヴィチ「失われた戦いについて」ノーベル文学賞… |
 | `MAT-LIT-20261107-e54f97` | literary_text | Joseph Butler『ジョセフ・バトラー『宗教の類比』論考一「人格同一性」——人格同一性の意識はそれを前提し、構成しえない』（1736） |
+| `MAT-20261108-9035c8` | research_excerpt | Ronald J Konopka, Seymour Benzer『Clock Mutants of Drosophila melanogaster（PNAS 1971; 10.1… |
+| `MAT-20261108-8f94bc` | research_excerpt | Dawn H Loh, Shekib A Jami, Richard E Flores, Danny Truong, Cristina A Ghiani, Thomas J O’… |
+| `MAT-20261108-596f25` | research_excerpt | Alon Rubin, Nitzan Geva, Liron Sheintuch, Yaniv Ziv『Hippocampal ensemble dynamics timesta… |
+| `MAT-20261108-9456e6` | research_excerpt | Thiago S Gouvêa, Tiago Monteiro, Asma Motiwala, Sofia Soares, Christian Machens, Joseph J… |
+| `MAT-20261108-03d1da` | research_excerpt | Yan Yang, Qian Wang, Shu-Rong Wang, Yi Wang, Qian Xiao『Representation of time interval en… |
 | `MAT-EVD-20261108-8d4201` | research_excerpt | Robert Briggs, Thomas J. King『Robert Briggs（1952）——核移植：受容卵と異種核対照』（1952） |
 | `MAT-EVD-20261108-8d4202` | research_excerpt | Robert T. Paine『Robert T. Paine（1966）——ヒトデ除去：岩場の競争と間接効果』（1966） |
 | `MAT-EVD-20261108-8d4203` | research_excerpt | B. P. Abbott et al., LIGO Scientific Collaboration, Virgo Collaboration『B. P. Abbott et a… |
@@ -4508,6 +4513,7 @@
 | `SESSION-20261108-748ed5` | 2027-03-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-f57a30` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-3c24ee` | — | — |
 | `SESSION-20261108-c3a25b` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-019`, `Q-035`, `Q-043`, `Q-20261108-b3e2fc`, `Q-20261025-e6402b` | — | — |
+| `SESSION-20261108-75b9c6` | 2027-03-04 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -4692,7 +4698,7 @@
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
-| `map/31-materials-research-11.md` | 41 | 83,046 |
+| `map/31-materials-research-11.md` | 46 | 98,912 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4716,9 +4722,9 @@
 | `map/50-sessions-07.md` | 50 | 42,333 |
 | `map/50-sessions-08.md` | 50 | 39,709 |
 | `map/50-sessions-09.md` | 50 | 41,133 |
-| `map/50-sessions-10.md` | 50 | 42,324 |
-| `map/50-sessions-11.md` | 50 | 47,295 |
-| `map/50-sessions-12.md` | 24 | 19,330 |
+| `map/50-sessions-10.md` | 50 | 42,141 |
+| `map/50-sessions-11.md` | 50 | 47,533 |
+| `map/50-sessions-12.md` | 25 | 20,175 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4743,17 +4749,17 @@
 | `map/60-notes-22.md` | 25 | 74,114 |
 | `map/60-notes-23.md` | 25 | 106,999 |
 | `map/60-notes-24.md` | 25 | 107,482 |
-| `map/60-notes-25.md` | 8 | 46,449 |
+| `map/60-notes-25.md` | 9 | 51,210 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・608本・21,172,749 B）
+## 8. 精読ノート索引（readings/・609本・21,213,516 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 403/608 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 404/609 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：247 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：65 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：248 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：66 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5365,3 +5371,4 @@
 | `readings/2027-03-01-induced-or-selected.md` | 2026-11-06 | 2027-03-01 | `SESSION-20261106-6a68b8` +1 | 31,313 | Q3 M6 MOT1 S2 | ✓ | 誘導された反応か、選択された変異か——分散・複製・合成・受容野・収束 |
 | `readings/2027-03-02-conditions-of-return.md` | 2026-11-08 | 2027-03-02 | `SESSION-20261108-8d42e1` | 8,228 | M5 S1 | ✓ | 戻ってくるものの条件——核、岩場、検出器、追試、治療 |
 | `readings/2027-03-03-five-experiments-on-self-memory-and-agency.md` | 2026-11-08 | 2027-03-03 | `SESSION-20261108-748ed5` | 10,565 | Q3 M5 S1 | ✓ | 自己を測る五つの実験——選択、身体、再活性化、判断 |
+| `readings/2027-03-04-two-clocks-and-the-address-of-a-record.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-75b9c6` | 19,204 | Q3 M5 S1 | — | 二つの時計、一つの台帳——周期・位相・timestamp・住所 |
