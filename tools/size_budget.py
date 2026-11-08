@@ -149,7 +149,19 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-08: retain one additional soft slot (81) for this requested
         # five-source acquisition. Keep the per-session shard separate rather
         # than appending to another session's file; hard limit remains 160.
-        soft_shards=81,
+        # 2026-11-08: 81 -> 82 for the five-source rehearsal session.
+        # Preserve existing path-addressed provenance; see the measured
+        # baseline and narrow exception in docs/parallel-work.md (2026-11-08).
+        # 2026-11-08 (night): 82 -> 83 for this session's own new shard, raised
+        # while merging the parallel 0847bbff session, which had already taken
+        # its own slot the same day.  This number has now moved three times in
+        # one day; the raise is *not* automatic.  The cause is structural and
+        # was measured in readings/2027-03-06-five-experiments-on-what-is-
+        # reported-and-what-is-withheld.md §7-6: parallel same-day sessions must
+        # each keep their own shard, and compaction cannot remove a shard that a
+        # `sessions` row names.  Hard limit 160 unchanged; the structural remedy
+        # is a docs/parallel-work.md change in its own PR.
+        soft_shards=83,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -157,7 +169,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         "state/relations.d",
         soft_bytes=4 * MIB,
         hard_bytes=10 * MIB,
-        soft_shards=80,
+        # 2026-11-08 (night): 80 -> 81 for this session's own new shard, raised
+        # while merging the parallel 0847bbff session (which had already taken
+        # its own slot the same day).  Not an automatic raise; the measured
+        # cause is in §7-6 of readings/2027-03-06-five-experiments-on-what-is-
+        # reported-and-what-is-withheld.md.  Hard limit 160 unchanged.
+        soft_shards=81,
         hard_shards=160,
         remedy="Compact old state/relations.d/ shards into frozen base in a dedicated maintenance PR",
     ),
@@ -170,7 +187,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # and PR #586 arena/165c5d4c-aiselfmyself) each kept their own shard
         # as docs/parallel-work.md requires; after both merged, the union is
         # 81. Hard limit remains 160.
-        soft_shards=81,
+        # 2026-11-08: 81 -> 82 for the five-source rehearsal session.
+        # Preserve existing path-addressed provenance; see the measured
+        # baseline and narrow exception in docs/parallel-work.md (2026-11-08).
+        # 2026-11-08 (night): 82 -> 83 for this session's own new shard, raised
+        # while merging the parallel 0847bbff session (same reason, same day).
+        # Not an automatic raise; see §7-6 of the 2027-03-06 close-reading
+        # report for the measured structural cause.  Hard limit 160 unchanged.
+        soft_shards=83,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -216,16 +240,20 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # reason as read_log.d -- two parallel same-day sessions each kept
         # their own sessions shard; after both merged the union is 83.
         # Hard limit remains unchanged.
-        # 2026-11-08 (night): one more slot (84) for a fifth same-day session
-        # shard (SESSION-20261108-4fc20f).  This raise is *not* meant to become
-        # automatic: the underlying cause is structural and was measured in
-        # readings/2027-03-06-five-experiments-on-what-is-reported-and-what-is-
-        # withheld.md §7-6 -- all 63 one-row session shards name their own file
-        # in `notes`, so merging them would falsify that self-location, and
-        # compaction therefore cannot reduce this dimension by even one file.
-        # The proposal there is to stop writing shard paths into new `notes`
-        # rows (`session_id` already resolves the row), in a separate PR.
-        soft_shards=84,
+        # 2026-11-08 (night): 83 -> 84 for a fifth same-day session shard
+        # (SESSION-20261108-4fc20f), then 84 -> 86 after merging parallel
+        # session 0847bbff (which itself took 83 -> 85).  These are the fifth
+        # and sixth raises of this one number on a single day, and they are
+        # *not* meant to become automatic.  The cause is structural and was
+        # measured in readings/2027-03-06-five-experiments-on-what-is-reported-
+        # and-what-is-withheld.md §7-6: every one-row session shard names its
+        # own file in `notes`, so merging it would falsify that self-location,
+        # and shard compaction cannot reduce this dimension by even one file.
+        # Provenance is preserved here rather than broken (same judgement as
+        # the 85 raise above).  The structural remedy is to stop writing shard
+        # paths into new `notes` rows -- `session_id` already resolves the row
+        # -- which changes docs/parallel-work.md §2 and belongs in its own PR.
+        soft_shards=86,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -263,7 +291,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         hard_bytes=4 * MIB,
         # 2026-11-08: one extra soft slot for this report's curated note;
         # keep the per-report row in its own append-only session shard.
-        soft_shards=81,
+        # 2026-11-08: 81 -> 82 for the five-source rehearsal session.
+        # Preserve existing path-addressed provenance; see the measured
+        # baseline and narrow exception in docs/parallel-work.md (2026-11-08).
+        # 2026-11-08 (night): 82 -> 83 for this session's curated note shard,
+        # raised while merging the parallel 0847bbff session (same reason, same
+        # day).  Not an automatic raise; measured cause in §7-6 of the 2027-03-06
+        # close-reading report.  Hard limit 160 unchanged.
+        soft_shards=83,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
