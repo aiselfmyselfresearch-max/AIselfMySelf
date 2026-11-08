@@ -66,12 +66,21 @@ class SizeBudgetTests(unittest.TestCase):
             self.assertIn("FAIL", err)
 
     def test_shard_directory_count_and_bytes_are_checked(self):
+        # Derive the probe from the budget table rather than hard-coding a
+        # count.  A literal here silently stops testing anything the moment a
+        # real soft_shards limit is raised past it (e.g. the 2026-11-08
+        # sessions/materials raises), and the suite then fails for a reason
+        # that has nothing to do with the code under test.
+        budget = next(b for b in size_budget.SHARD_BUDGETS
+                      if b.rel_dir == "state/materials.d")
+        probe = budget.soft_shards + 1
+        self.assertLess(probe, budget.hard_shards)
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             make_repo(root)
             mat_d = root / "state" / "materials.d"
             mat_d.mkdir(parents=True, exist_ok=True)
-            for idx in range(85):  # > 80 soft_shards, < 160 hard_shards
+            for idx in range(probe):  # > soft_shards, < hard_shards
                 (mat_d / f"2026-10-25-{idx:012x}.jsonl").write_text("{}", encoding="utf-8")
             code, out, _ = self.run_cli("--root", str(root))
             self.assertEqual(code, 0)

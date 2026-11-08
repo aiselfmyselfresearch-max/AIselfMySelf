@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3330 件（research_excerpt 1106 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3335 件（research_excerpt 1111 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6497 件
-- **探究セッション（Sessions）**：587 回
+- **解釈的関係（Relations）**：6500 件
+- **探究セッション（Sessions）**：588 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3330 件・詳細は map/3*.md）
+## 4. 対話素材（3335 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3820,6 +3820,11 @@
 | `MAT-EVD-20261106-9330e7` | research_excerpt | Douglas J. Blackiston, Elena Silva Casey, Martha R. Weiss『Retention of Memory through Met… |
 | `MAT-LIT-20261107-9837f3` | literary_text | Svetlana Alexievich, Jamey Gambrell (English trans.)『スヴェトラーナ・アレクシエーヴィチ「失われた戦いについて」ノーベル文学賞… |
 | `MAT-LIT-20261107-e54f97` | literary_text | Joseph Butler『ジョセフ・バトラー『宗教の類比』論考一「人格同一性」——人格同一性の意識はそれを前提し、構成しえない』（1736） |
+| `MAT-EVD-20261108-824a92` | research_excerpt | Evan F. Risko, Timothy L. Dunn『Risko & Dunn（2015）「情報を世界のうちに置く」——覚える前の2文字でも、42%が紙に書いた』（201… |
+| `MAT-EVD-20261108-712da7` | research_excerpt | Mary Susan Weldon, Krystal D. Bellinger『Weldon & Bellinger（1997）「集団記憶」——三人で思い出すと、名目上の三人より… |
+| `MAT-EVD-20261108-e72e61` | research_excerpt | Jennifer M. Talarico, David C. Rubin『Talarico & Rubin（2003）「閃光記憶を特徴づけるのは一貫性ではなく確信」——9月11日… |
+| `MAT-EVD-20261108-ba4a39` | research_excerpt | Gerald Echterhoff, E. Tory Higgins, Stephan Groll『Echterhoff, Higgins & Groll（2005）「聴き手に合… |
+| `MAT-EVD-20261108-cb0ede` | research_excerpt | Asher Koriat, Morris Goldsmith『Koriat & Goldsmith（1994）「自然文脈と実験室の記憶」——正答率を上げたのは、テスト形式ではなく… |
 | `MAT-20261108-a18b34` | research_excerpt | Leon J. Kamin『ブロッキング——すでに予告している信号は、隣に提示されても学習されない（Kamin 1969）』（1969） |
 | `MAT-20261108-11373a` | research_excerpt | Harry F. Harlow『学習セットの形成——344問のあとに残るのは答えではなく問題の形（Harlow 1949）』（1949） |
 | `MAT-20261108-4bc860` | research_excerpt | Niko Tinbergen『巣は穴ではなく、穴のまわりの輪である——Bienenwolf の目印実験（Tinbergen 1932）』（1932） |
@@ -4587,6 +4592,7 @@
 | `SESSION-20261108-75b9c6` | 2027-03-04 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-74608b` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-cc7bdf` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-4fc20f` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -4698,16 +4704,16 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6497 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6500 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 926 |
+| 対照 (contrast) | 927 |
 | 共鳴 (echo) | 1582 |
-| 切断・割り込み (interrupts) | 221 |
+| 切断・割り込み (interrupts) | 222 |
 | 未解決のまま開く (leaves_open) | 886 |
 | 比喩的共鳴 (metaphorically_resonates) | 175 |
-| 枠組みの組み替え (reframes) | 676 |
+| 枠組みの組み替え (reframes) | 677 |
 | 応答 (responds_to) | 1732 |
 | 変奏・変形 (transforms) | 299 |
 
@@ -4771,8 +4777,8 @@
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
-| `map/31-materials-research-11.md` | 100 | 243,278 |
-| `map/31-materials-research-12.md` | 6 | 16,713 |
+| `map/31-materials-research-11.md` | 100 | 248,540 |
+| `map/31-materials-research-12.md` | 11 | 29,390 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4785,8 +4791,8 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 165,263 |
-| `map/40-relations-13.md` | 497 | 168,584 |
+| `map/40-relations-12.md` | 500 | 165,570 |
+| `map/40-relations-13.md` | 500 | 169,349 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -4796,9 +4802,9 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
-| `map/50-sessions-10.md` | 50 | 41,811 |
-| `map/50-sessions-11.md` | 50 | 47,054 |
-| `map/50-sessions-12.md` | 37 | 31,016 |
+| `map/50-sessions-10.md` | 50 | 41,937 |
+| `map/50-sessions-11.md` | 50 | 46,808 |
+| `map/50-sessions-12.md` | 38 | 32,028 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4812,7 +4818,7 @@
 | `map/60-notes-11.md` | 25 | 62,311 |
 | `map/60-notes-12.md` | 25 | 67,267 |
 | `map/60-notes-13.md` | 25 | 83,366 |
-| `map/60-notes-14.md` | 25 | 119,416 |
+| `map/60-notes-14.md` | 25 | 119,500 |
 | `map/60-notes-15.md` | 25 | 83,706 |
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 110,823 |
@@ -4821,19 +4827,19 @@
 | `map/60-notes-20.md` | 25 | 57,935 |
 | `map/60-notes-21.md` | 25 | 73,533 |
 | `map/60-notes-22.md` | 25 | 65,629 |
-| `map/60-notes-23.md` | 25 | 92,685 |
+| `map/60-notes-23.md` | 25 | 92,769 |
 | `map/60-notes-24.md` | 25 | 91,071 |
-| `map/60-notes-25.md` | 24 | 134,414 |
+| `map/60-notes-25.md` | 25 | 138,316 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・624本・21,583,802 B）
+## 8. 精読ノート索引（readings/・625本・21,644,194 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 419/624 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 420/625 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：257 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：68 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：258 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：69 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5459,5 +5465,6 @@
 | `readings/2027-03-04-five-experiments-on-social-memory.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-784d36` | 10,553 | Q3 M5 S1 | ✓ | 自分の過去は一人でできているか——個人的記憶、他者の痕跡、読み替えの五実験 |
 | `readings/2027-03-04-two-clocks-and-the-address-of-a-record.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-75b9c6` | 20,591 | Q3 M5 S1 | ✓ | 二つの時計、一つの台帳——周期・位相・timestamp・住所 |
 | `readings/2027-03-05-five-experiments-on-boundaries-of-self-and-memory.md` | 2026-11-08 | 2027-03-05 | `SESSION-20261108-6befc5` | 11,104 | Q3 M10 S1 | ✓ | 境界はどこで引かれるか——自己の顔、他者の痛み、頼まれていない記憶、脳のない眠りの五実験 |
+| `readings/2027-03-06-five-experiments-on-what-is-reported-and-what-is-withheld.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-4fc20f` | 29,193 | M9 R3 S1 | — | 報告は、利用可能だったものの下限である——外部化の決定、協同抑制、確信と一貫性、聴き手の同定、答えない自由の五実験 |
 | `readings/2027-03-06-the-record-keeps-the-effect-not-the-cause.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-74608b` +1 | 28,376 | Q3 M17 MOT2 S2 | ✓ | 記録は効果を残し、原因を残さない——実験科学10資料の精読（第一回・第二回） |
 | `readings/2027-03-07-ten-experiments-on-mediation-and-becoming.md` | 2026-11-08 | 2027-03-07 | `SESSION-20261108-b1a145` +1 | 17,071 | Q3 M19 S2 | — | 媒介が運ぶもの、運ばないもの——実験科学10資料の精読 |
