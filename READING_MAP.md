@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3315 件（research_excerpt 1091 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3325 件（research_excerpt 1101 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6500 件
-- **探究セッション（Sessions）**：584 回
+- **探究セッション（Sessions）**：586 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3315 件・詳細は map/3*.md）
+## 4. 対話素材（3325 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3865,6 +3865,16 @@
 | `MAT-20261108-6f7g8h` | research_excerpt | Ivan Petrovich Pavlov『消化腺の働き（条件反射、犬を被験者とした生理学実験）』（1903） |
 | `MAT-20261108-9i0j1k` | research_excerpt | Stanley Milgram『服従の行動的研究（権威への服従、ヤルグ基線実験）』（1963） |
 | `MAT-20261108-2m3n4o` | research_excerpt | Elizabeth F. Loftus, John C. Palmer『自動車の衝突の再構成：言語と記憶の相互作用の一例』（1974） |
+| `MAT-EVD-20261108-fdbca6` | research_excerpt | Walter Mischel, Ebbe B. Ebbesen, Antoinette Raskoff Zeiss『ミシェル、エブセル＆ツァイス（1972）「遅延満足における認知… |
+| `MAT-EVD-20261108-1e0442` | research_excerpt | Dana R. Carney, Amy J. C. Cuddy, Andy J. Yap『カーニー、カディ＆ヤップ（2010）「パワーポーズ」——二分間の姿勢がホルモンとリスク選… |
+| `MAT-EVD-20261108-523803` | research_excerpt | Daryl J. Bem『ベム（2011）「未来を感じる」——九つの実験のうち八つが統計的に有意で、平均効果量は0.22だった』（2011） |
+| `MAT-EVD-20261108-5af4de` | research_excerpt | J. Bruce Moseley, Kimberly O'Malley, Nancy J. Petersen, Terri J. Menke, Baruch A. Brody, … |
+| `MAT-EVD-20261108-05850e` | research_excerpt | Joseph V. Brady『ブレイディ（1958）「“重役”のサルたちの潰瘍」——制御を持つ側が潰瘍で死に、持たない側は生き残った、と報告された』（1958） |
+| `MAT-EVD-20261108-afc6ce` | research_excerpt | Abraham S. Luchins『ルチンス（1942）「問題解決の機械化」——五問の成功が、二段で解ける問題でも長い手順を選ばせた』（1942） |
+| `MAT-EVD-20261108-d8d134` | research_excerpt | William F. Brewer, James C. Treyens『ブリューワー＆トレイエンズ（1981）「場所についての記憶におけるスキーマの役割」——事務所に無かった本を… |
+| `MAT-EVD-20261108-e1e6a2` | research_excerpt | Ellen J. Langer, Arthur Blank, Benzion Chanowitz『ランガー、ブランク＆チャノウィッツ（1978）「見かけ上は思慮深い行為の無心」—… |
+| `MAT-EVD-20261108-ff25a4` | research_excerpt | Jonathan L. Freedman, Scott C. Fraser『フリードマン＆フレイザー（1966）「圧力なしの承諾」——小さな「はい」のあと、二時間の家庭訪問を五二… |
+| `MAT-EVD-20261108-e3ad6c` | research_excerpt | Albert H. Hastorf, Hadley Cantril『ハーストーフ＆カントリル（1954）「彼らは試合を見た」——同じフィルムで、プリンストン生は9.8、ダートマス… |
 | `MAT-EVD-20261108-21cec2` | research_excerpt | Zachary D. Blount, Christina Z. Borland, Richard E. Lenski『Zachary D. Blount、Christina Z.… |
 | `MAT-EVD-20261108-cb542e` | research_excerpt | Jenny R. Saffran, Richard N. Aslin, Elissa L. Newport『Jenny R. Saffran、Richard N. Aslin、E… |
 | `MAT-EVD-20261108-b8a6d1` | research_excerpt | Ullrich Wagner, Steffen Gais, Hilde Haider, Rolf Verleger, Jan Born『Ullrich Wagner、Steffe… |
@@ -4568,6 +4578,8 @@
 | `SESSION-20261108-c3a25b` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-019`, `Q-035`, `Q-043`, `Q-20261108-b3e2fc`, `Q-20261025-e6402b` | — | — |
 | `SESSION-20261108-b33b90` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-75b9c6` | 2027-03-04 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-74608b` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-cc7bdf` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-4fc20f` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
@@ -4753,7 +4765,8 @@
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
-| `map/31-materials-research-11.md` | 91 | 231,278 |
+| `map/31-materials-research-11.md` | 100 | 253,717 |
+| `map/31-materials-research-12.md` | 1 | 2,762 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4777,9 +4790,9 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
-| `map/50-sessions-10.md` | 50 | 42,489 |
-| `map/50-sessions-11.md` | 50 | 46,897 |
-| `map/50-sessions-12.md` | 34 | 28,353 |
+| `map/50-sessions-10.md` | 50 | 42,124 |
+| `map/50-sessions-11.md` | 50 | 47,187 |
+| `map/50-sessions-12.md` | 36 | 29,988 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4804,16 +4817,16 @@
 | `map/60-notes-22.md` | 25 | 65,629 |
 | `map/60-notes-23.md` | 25 | 92,769 |
 | `map/60-notes-24.md` | 25 | 91,071 |
-| `map/60-notes-25.md` | 23 | 125,965 |
+| `map/60-notes-25.md` | 24 | 133,940 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・623本・21,535,896 B）
+## 8. 精読ノート索引（readings/・624本・21,600,396 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 418/623 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 419/624 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：256 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：257 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：68 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5440,4 +5453,5 @@
 | `readings/2027-03-04-five-experiments-on-social-memory.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-784d36` | 10,553 | Q3 M5 S1 | ✓ | 自分の過去は一人でできているか——個人的記憶、他者の痕跡、読み替えの五実験 |
 | `readings/2027-03-04-two-clocks-and-the-address-of-a-record.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-75b9c6` | 20,591 | Q3 M5 S1 | ✓ | 二つの時計、一つの台帳——周期・位相・timestamp・住所 |
 | `readings/2027-03-05-five-experiments-on-boundaries-of-self-and-memory.md` | 2026-11-08 | 2027-03-05 | `SESSION-20261108-6befc5` | 11,104 | Q3 M10 S1 | ✓ | 境界はどこで引かれるか——自己の顔、他者の痛み、頼まれていない記憶、脳のない眠りの五実験 |
-| `readings/2027-03-06-five-experiments-on-what-is-reported-and-what-is-withheld.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-4fc20f` | 26,555 | M9 R3 S1 | — | 報告は、利用可能だったものの下限である——外部化の決定、協同抑制、確信と一貫性、聴き手の同定、答えない自由の五実験 |
+| `readings/2027-03-06-five-experiments-on-what-is-reported-and-what-is-withheld.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-4fc20f` | 27,701 | M9 R3 S1 | — | 報告は、利用可能だったものの下限である——外部化の決定、協同抑制、確信と一貫性、聴き手の同定、答えない自由の五実験 |
+| `readings/2027-03-06-the-record-keeps-the-effect-not-the-cause.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-74608b` +1 | 28,376 | Q3 M17 MOT2 S2 | ✓ | 記録は効果を残し、原因を残さない——実験科学10資料の精読（第一回・第二回） |
