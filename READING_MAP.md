@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3325 件（research_excerpt 1101 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3335 件（research_excerpt 1111 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6500 件
-- **探究セッション（Sessions）**：586 回
+- **探究セッション（Sessions）**：588 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3325 件・詳細は map/3*.md）
+## 4. 対話素材（3335 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3835,6 +3835,16 @@
 | `MAT-20261108-8da388` | research_excerpt | Claudia Fugazza, Ákos Pogány, Ádám Miklósi『Recall of Others' Actions after Incidental Enc… |
 | `MAT-20261108-26ecbb` | research_excerpt | Christelle Jozet-Alves, Marion Bertin, Nicky S Clayton『Evidence of episodic-like memory i… |
 | `MAT-20261108-5b54f5` | research_excerpt | Ravi D Nath, Claire N Bedbrook, Michael J Abrams, Tiffany Fong, Paul W Sternberg, Viviana… |
+| `MAT-20261108-133061` | research_excerpt | Ignaz Philipp Semmelweis『ゼンメルワイス（1847）産科病棟への塩素化石灰手洗い介入——記録された死亡率が、介入で崩れた』（1847） |
+| `MAT-20261108-644687` | research_excerpt | Hans Spemann, Hilde Mangold『Spemann & Mangold（1924）イモリ胚オーガナイザー移植——隣に置かれた組織が、宿主細胞の運命を変えた』（… |
+| `MAT-20261108-9201e2` | research_excerpt | Otto Loewi『Loewi（1921）カエル心臓の迷走神経物質——液を移すと、もう一つの心臓も遅くなった』（1921） |
+| `MAT-20261108-5f1ff2` | research_excerpt | Alan L. Hodgkin, Andrew F. Huxley, Bernard Katz『Hodgkin, Huxley & Katz（1952）イカ巨大軸索の電圧クランプ… |
+| `MAT-20261108-f629d9` | research_excerpt | Richard Held, Alan Hein『Held & Hein（1963）子猫カルーセル——同じ景色を見ても、自分で動いた猫だけが視覚で体を導けた』（1963） |
+| `MAT-20261108-faf8a1` | research_excerpt | Eleanor J. Gibson, Richard D. Walk『Gibson & Walk（1960）視覚的断崖——触れば固いガラスでも、深く見える側へは進まなかった』（1… |
+| `MAT-20261108-625a1f` | research_excerpt | Paul Bach-y-Rita, Carter C. Collins, Frank A. Saunders, Benjamin W. White, Lawrence A. Sc… |
+| `MAT-20261108-39d7e4` | research_excerpt | J. Robin Warren, Barry J. Marshall『Warren & Marshall（1982–85）Helicobacter pylori の培養と自己摂取… |
+| `MAT-20261108-4a5959` | research_excerpt | Martin Jinek, Krzysztof Chylinski, Ines Fonfara, Michael Hauer, Jennifer A. Doudna, Emman… |
+| `MAT-20261108-dcdad8` | research_excerpt | Nina E. Fultz, Giorgio Bonmassar, Kawin Setsompop, Robert A. Stickgold, Bruce R. Rosen, J… |
 | `MAT-EVD-20261108-9ec62c` | research_excerpt | J. B. Gurdon『Gurdon（1962）——分化した核と、それを受け取る卵』（1962） |
 | `MAT-EVD-20261108-e7720b` | research_excerpt | Arthur B. Pardee, François Jacob, Jacques Monod『Pardee・Jacob・Monod（1959）——継承される構造と、遅れて働く調… |
 | `MAT-EVD-20261108-12b3bf` | research_excerpt | C. H. Waddington『Waddington（1953）——環境への応答が、選択の履歴によって変わる』（1953） |
@@ -4565,6 +4575,8 @@
 | `SESSION-20261107-ce208d` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-c477ed` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-922e6b` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-b1a145` | 2027-03-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-790f0b` | 2027-03-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-37bcc0` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-5a5795` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-082`, `Q-20261024-c3d7a5` | — | — |
 | `SESSION-20261108-260f17` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4765,8 +4777,8 @@
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
-| `map/31-materials-research-11.md` | 100 | 253,717 |
-| `map/31-materials-research-12.md` | 1 | 2,762 |
+| `map/31-materials-research-11.md` | 100 | 248,540 |
+| `map/31-materials-research-12.md` | 11 | 29,390 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4790,9 +4802,9 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
-| `map/50-sessions-10.md` | 50 | 42,124 |
-| `map/50-sessions-11.md` | 50 | 47,187 |
-| `map/50-sessions-12.md` | 36 | 29,988 |
+| `map/50-sessions-10.md` | 50 | 41,937 |
+| `map/50-sessions-11.md` | 50 | 46,808 |
+| `map/50-sessions-12.md` | 38 | 32,028 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4817,17 +4829,17 @@
 | `map/60-notes-22.md` | 25 | 65,629 |
 | `map/60-notes-23.md` | 25 | 92,769 |
 | `map/60-notes-24.md` | 25 | 91,071 |
-| `map/60-notes-25.md` | 24 | 133,940 |
+| `map/60-notes-25.md` | 25 | 138,316 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・624本・21,600,396 B）
+## 8. 精読ノート索引（readings/・625本・21,644,194 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 419/624 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 420/625 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：257 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：68 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：258 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：69 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5453,5 +5465,6 @@
 | `readings/2027-03-04-five-experiments-on-social-memory.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-784d36` | 10,553 | Q3 M5 S1 | ✓ | 自分の過去は一人でできているか——個人的記憶、他者の痕跡、読み替えの五実験 |
 | `readings/2027-03-04-two-clocks-and-the-address-of-a-record.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-75b9c6` | 20,591 | Q3 M5 S1 | ✓ | 二つの時計、一つの台帳——周期・位相・timestamp・住所 |
 | `readings/2027-03-05-five-experiments-on-boundaries-of-self-and-memory.md` | 2026-11-08 | 2027-03-05 | `SESSION-20261108-6befc5` | 11,104 | Q3 M10 S1 | ✓ | 境界はどこで引かれるか——自己の顔、他者の痛み、頼まれていない記憶、脳のない眠りの五実験 |
-| `readings/2027-03-06-five-experiments-on-what-is-reported-and-what-is-withheld.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-4fc20f` | 27,701 | M9 R3 S1 | — | 報告は、利用可能だったものの下限である——外部化の決定、協同抑制、確信と一貫性、聴き手の同定、答えない自由の五実験 |
+| `readings/2027-03-06-five-experiments-on-what-is-reported-and-what-is-withheld.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-4fc20f` | 29,193 | M9 R3 S1 | — | 報告は、利用可能だったものの下限である——外部化の決定、協同抑制、確信と一貫性、聴き手の同定、答えない自由の五実験 |
 | `readings/2027-03-06-the-record-keeps-the-effect-not-the-cause.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-74608b` +1 | 28,376 | Q3 M17 MOT2 S2 | ✓ | 記録は効果を残し、原因を残さない——実験科学10資料の精読（第一回・第二回） |
+| `readings/2027-03-07-ten-experiments-on-mediation-and-becoming.md` | 2026-11-08 | 2027-03-07 | `SESSION-20261108-b1a145` +1 | 17,071 | Q3 M19 S2 | — | 媒介が運ぶもの、運ばないもの——実験科学10資料の精読 |

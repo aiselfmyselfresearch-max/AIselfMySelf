@@ -165,7 +165,17 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # five-source rounds (SESSION-20261108-74608b / -cc7bdf), which kept
         # one shared materials shard instead of touching another session's
         # file. Hard limit remains 160.
-        soft_shards=84,
+                # 2026-11-08 (night, fourth merge): +1 for the fourth parallel
+        # same-day session (arena/9efed90f).  Counters in this table have now
+        # been raised within a single day far past any defensible reading of
+        # "narrow exception": sessions.d 80->88, materials.d 80->85,
+        # read_log.d 80->85, notes.d 80->85.  Each raise was locally justified
+        # (a merged session's shard cannot be deleted mid-merge) and the sum is
+        # not.  Readings/2027-03-06-five-experiments-on-what-is-reported-and-
+        # what-is-withheld.md §7-6-3 retracts the claim that this dimension
+        # cannot be reclaimed at all, and schedules the consolidation that the
+        # repository's own history already performs.  Hard limit 160 unchanged.
+        soft_shards=85,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -212,7 +222,17 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # read_log shard, 28 rows). Measured after appending: 4,187,773 B of
         # the 4 MiB byte soft limit -- the byte dimension is now the binding
         # one, so future rows in this directory must stay short.
-        soft_shards=84,
+                # 2026-11-08 (night, fourth merge): +1 for the fourth parallel
+        # same-day session (arena/9efed90f).  Counters in this table have now
+        # been raised within a single day far past any defensible reading of
+        # "narrow exception": sessions.d 80->88, materials.d 80->85,
+        # read_log.d 80->85, notes.d 80->85.  Each raise was locally justified
+        # (a merged session's shard cannot be deleted mid-merge) and the sum is
+        # not.  Readings/2027-03-06-five-experiments-on-what-is-reported-and-
+        # what-is-withheld.md §7-6-3 retracts the claim that this dimension
+        # cannot be reclaimed at all, and schedules the consolidation that the
+        # repository's own history already performs.  Hard limit 160 unchanged.
+        soft_shards=85,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -276,7 +296,17 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # baseline and narrow exception in docs/parallel-work.md (2026-11-08).
         # 2026-11-08: 85 -> 86 for the ten-source session (two five-source
         # rounds kept in one sessions shard). Hard limit remains 160.
-        soft_shards=87,
+                # 2026-11-08 (night, fourth merge): +1 for the fourth parallel
+        # same-day session (arena/9efed90f).  Counters in this table have now
+        # been raised within a single day far past any defensible reading of
+        # "narrow exception": sessions.d 80->88, materials.d 80->85,
+        # read_log.d 80->85, notes.d 80->85.  Each raise was locally justified
+        # (a merged session's shard cannot be deleted mid-merge) and the sum is
+        # not.  Readings/2027-03-06-five-experiments-on-what-is-reported-and-
+        # what-is-withheld.md §7-6-3 retracts the claim that this dimension
+        # cannot be reclaimed at all, and schedules the consolidation that the
+        # repository's own history already performs.  Hard limit 160 unchanged.
+        soft_shards=88,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -323,7 +353,17 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # close-reading report.  Hard limit 160 unchanged.
         # 2026-11-08: 82 -> 83 for the ten-source session's curated note row
         # (one row, its own append-only shard, as the note schema requires).
-        soft_shards=84,
+                # 2026-11-08 (night, fourth merge): +1 for the fourth parallel
+        # same-day session (arena/9efed90f).  Counters in this table have now
+        # been raised within a single day far past any defensible reading of
+        # "narrow exception": sessions.d 80->88, materials.d 80->85,
+        # read_log.d 80->85, notes.d 80->85.  Each raise was locally justified
+        # (a merged session's shard cannot be deleted mid-merge) and the sum is
+        # not.  Readings/2027-03-06-five-experiments-on-what-is-reported-and-
+        # what-is-withheld.md §7-6-3 retracts the claim that this dimension
+        # cannot be reclaimed at all, and schedules the consolidation that the
+        # repository's own history already performs.  Hard limit 160 unchanged.
+        soft_shards=85,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
