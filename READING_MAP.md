@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3385 件（research_excerpt 1161 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3405 件（research_excerpt 1181 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6504 件
-- **探究セッション（Sessions）**：596 回
+- **解釈的関係（Relations）**：6510 件
+- **探究セッション（Sessions）**：600 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3385 件・詳細は map/3*.md）
+## 4. 対話素材（3405 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3835,6 +3835,16 @@
 | `MAT-EVD-20261108-2eee7e` | research_excerpt | Fergus I. M. Craik, Endel Tulving『Craik & Tulving (1975)「処理の深さと語のエピソード記憶における保持」——意味レベルで読ま… |
 | `MAT-EVD-20261108-4cbdea` | research_excerpt | Elizabeth F. Loftus, Jacqueline E. Pickrell『Loftus & Pickrell (1995)「偽の記憶の形成」——実家に確かめた偽の『… |
 | `MAT-EVD-20261108-10d9f7` | research_excerpt | Arthur S. Reber『Reber (1967)「人工文法の暗黙学習」——文法を教えられていない被験者が、新規系列を文法的／非文法的に判別した (JVLVB 6(6):8… |
+| `MAT-EVD-20261108-e2bae0` | research_excerpt | Christian Rominger, Thilo Michael Graßmann, Bernhard Weber, Andreas R. Schwerdtfeger『心拍訓練… |
+| `MAT-EVD-20261108-4ba708` | research_excerpt | Goffredina Spanò, Gloria Pizzamiglio, Cornelia McCormick, Ian A. Clark, Sara De Felice, T… |
+| `MAT-EVD-20261108-ecae39` | research_excerpt | Meichao Zhang, Boris C. Bernhardt, Xiuyi Wang, Dominika Varga, Katya Krieger-Redwood, Jes… |
+| `MAT-EVD-20261108-284158` | research_excerpt | B. Hunter Ball, Phil Peper, Matthew K. Robison『将来の意図と年齢差への支援——Reminders Eliminate Age-Rel… |
+| `MAT-EVD-20261108-f14e79` | research_excerpt | Connor Dupre, B. Hunter Ball『支援の信頼性と撤去——Let it go: How trusted reminders alter intention … |
+| `MAT-EVD-20261108-c1fd6d` | research_excerpt | Ciara M. Greene, Gillian Murphy『訂正後の虚偽記憶と追跡——Debriefing works: Successful retraction of m… |
+| `MAT-EVD-20261108-9613e7` | research_excerpt | Xuhao Shao, Chuansheng Chen, Elizabeth F. Loftus, Bi Zhu『共有された誤情報と誤記憶——Shared memories of… |
+| `MAT-EVD-20261108-6cd2d6` | research_excerpt | Daniela Sele, Marina Chugunova『人の監督と予測精度——Putting a human in the loop: Increasing uptake,… |
+| `MAT-EVD-20261108-ab5cb5` | research_excerpt | David Samuel, Lucas Charpentier, Sondre Wold『検索付き訓練から検索を外した評価——More room for language: In… |
+| `MAT-EVD-20261108-ab2cfe` | research_excerpt | Satyapriya Krishna, Kalpesh Krishna, Anhad Mohananey, Steven Schwarcz, Adam Stambler, Shy… |
 | `MAT-20261108-a18b34` | research_excerpt | Leon J. Kamin『ブロッキング——すでに予告している信号は、隣に提示されても学習されない（Kamin 1969）』（1969） |
 | `MAT-20261108-11373a` | research_excerpt | Harry F. Harlow『学習セットの形成——344問のあとに残るのは答えではなく問題の形（Harlow 1949）』（1949） |
 | `MAT-20261108-4bc860` | research_excerpt | Niko Tinbergen『巣は穴ではなく、穴のまわりの輪である——Bienenwolf の目印実験（Tinbergen 1932）』（1932） |
@@ -3930,6 +3940,16 @@
 | `MAT-20261108-926869` | research_excerpt | Xiang Mou, Daoyun Ji『Social observation enhances cross-environment activation of hippocam… |
 | `MAT-20261108-3b69f7` | research_excerpt | Mary L Phillips, Holly Anne Robinson, Lucas Pozzo-Miller『Ventral hippocampal projections … |
 | `MAT-20261108-0b759d` | research_excerpt | Asieh Zadbood, Samuel Nastase, Janice Chen, Kenneth A Norman, Uri Hasson『Neural represent… |
+| `MAT-EVD-20261108-960d7a` | research_excerpt | Loretxu Bergouignan, Lars Nyberg, H. Henrik Ehrsson『Bergouignan, Nyberg & Ehrsson (2014)—… |
+| `MAT-EVD-20261108-5f8516` | research_excerpt | Paulina Kieliba, Danielle Clode, Roni O. Maimon-Mor, Tamar R. Makin『Kieliba ほか (2021)——第6… |
+| `MAT-EVD-20261108-b731b1` | research_excerpt | Andreas Lind, Lars Hall, Björn Breidegard, Christian Balkenius, Petter Johansson『Lind ほか … |
+| `MAT-EVD-20261108-0f56eb` | research_excerpt | Stephen M. Fleming, Jihye Ryu, John G. Golfinos, Karen E. Blackmon『Fleming ほか (2014)——前頭前… |
+| `MAT-EVD-20261108-2a83c8` | research_excerpt | Thomas Andrillon, Daniel Pressnitzer, Damien Léger, Sid Kouider『Andrillon ほか (2017)——ヒトの睡… |
+| `MAT-EVD-20261108-b1ea07` | research_excerpt | Edmarie Guzmán-Vélez, Justin S. Feinstein, Daniel Tranel『Guzmán-Vélez, Feinstein & Tranel… |
+| `MAT-EVD-20261108-00fca8` | research_excerpt | Masanori Kohda, Redouan Bshary, Naoki Kubo, Satoshi Awata, Will Sowersby, Keisuke Kawasak… |
+| `MAT-EVD-20261108-a80099` | research_excerpt | Sara Zocher, Susan Schilling, Anna N. Grzyb, Vijay S. Adusumilli, Juliana Bogado Lopes, S… |
+| `MAT-EVD-20261108-a504c6` | research_excerpt | David Vogel, Audrey Dussutour『Vogel & Dussutour (2016)——脳も神経も持たない真正粘菌は、3時間の細胞融合によって学習した馴化… |
+| `MAT-EVD-20261108-558f19` | research_excerpt | Takuma Hagihara, Hiroaki Mano, Tomohiro Miura, Mitsuyasu Hasebe, Masatsugu Toyota『Hagihar… |
 | `MAT-20261108-e37691` | research_excerpt | Iraj Khalid, Orphee Morlaas, Hugo Bottemanne, Lisa Thonon, Thomas Da Costa, Philippe Foss… |
 | `MAT-20261108-8838c2` | research_excerpt | Juan Vidal-Perez, Raymond J Dolan, Rani Moran『Disinformation elicits learning biases』（202… |
 | `MAT-20261108-8e4555` | research_excerpt | Jackson Scheib, Zachary L Newman, Jacob Gable, Deano M Farinella, Mitchell Head, Savannah… |
@@ -4627,6 +4647,10 @@
 | `SESSION-20261107-922e6b` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-98d3c9` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-d235c2` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-33d2a7` | 2026-11-08T12:44:43Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-934457` | 2026-11-08T12:44:43Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-9ec310` | 2026-11-08T13:10:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20270202-1bf183` | — | — |
+| `SESSION-20261108-45aff1` | 2026-11-08T13:28:01Z | `Q-001`, `Q-002`, `Q-003`, `Q-20270202-1bf183` | — | — |
 | `SESSION-20261108-b1a145` | 2027-03-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-790f0b` | 2027-03-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-37bcc0` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4762,7 +4786,7 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6504 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6510 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
@@ -4771,8 +4795,8 @@
 | 切断・割り込み (interrupts) | 223 |
 | 未解決のまま開く (leaves_open) | 887 |
 | 比喩的共鳴 (metaphorically_resonates) | 175 |
-| 枠組みの組み替え (reframes) | 678 |
-| 応答 (responds_to) | 1732 |
+| 枠組みの組み替え (reframes) | 680 |
+| 応答 (responds_to) | 1736 |
 | 変奏・変形 (transforms) | 299 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -4835,8 +4859,8 @@
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
-| `map/31-materials-research-11.md` | 100 | 235,016 |
-| `map/31-materials-research-12.md` | 61 | 146,115 |
+| `map/31-materials-research-11.md` | 100 | 234,396 |
+| `map/31-materials-research-12.md` | 81 | 191,921 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4849,9 +4873,9 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 165,967 |
-| `map/40-relations-13.md` | 500 | 169,096 |
-| `map/40-relations-14.md` | 4 | 1,416 |
+| `map/40-relations-12.md` | 500 | 166,295 |
+| `map/40-relations-13.md` | 500 | 169,073 |
+| `map/40-relations-14.md` | 10 | 3,202 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -4861,9 +4885,9 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
-| `map/50-sessions-10.md` | 50 | 41,016 |
-| `map/50-sessions-11.md` | 50 | 45,497 |
-| `map/50-sessions-12.md` | 46 | 39,795 |
+| `map/50-sessions-10.md` | 50 | 41,238 |
+| `map/50-sessions-11.md` | 50 | 45,015 |
+| `map/50-sessions-12.md` | 50 | 43,396 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4882,24 +4906,24 @@
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 110,902 |
 | `map/60-notes-18.md` | 25 | 106,972 |
-| `map/60-notes-19.md` | 25 | 74,538 |
-| `map/60-notes-20.md` | 25 | 54,453 |
-| `map/60-notes-21.md` | 25 | 75,324 |
-| `map/60-notes-22.md` | 25 | 63,887 |
-| `map/60-notes-23.md` | 25 | 87,966 |
-| `map/60-notes-24.md` | 25 | 96,295 |
-| `map/60-notes-25.md` | 25 | 126,874 |
-| `map/60-notes-26.md` | 6 | 32,092 |
+| `map/60-notes-19.md` | 25 | 79,272 |
+| `map/60-notes-20.md` | 25 | 52,737 |
+| `map/60-notes-21.md` | 25 | 75,796 |
+| `map/60-notes-22.md` | 25 | 63,056 |
+| `map/60-notes-23.md` | 25 | 79,994 |
+| `map/60-notes-24.md` | 25 | 102,553 |
+| `map/60-notes-25.md` | 25 | 128,037 |
+| `map/60-notes-26.md` | 8 | 38,308 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・631本・21,868,327 B）
+## 8. 精読ノート索引（readings/・633本・21,928,726 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 426/631 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 428/633 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：263 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：72 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：265 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5356,9 +5380,11 @@
 | `readings/2026-11-08-source-gurdon-nuclear-transfer.md` | 2026-11-08 | 2026-11-08 | — | 1,339 | M1 | ✓ | 資料ノート：Gurdon（1962）——分化した核と、それを受け取る卵 |
 | `readings/2026-11-08-source-pardee-inducibility.md` | 2026-11-08 | 2026-11-08 | — | 1,381 | M1 | ✓ | 資料ノート：Pardee・Jacob・Monod（1959）——継承される構造と、遅れて働く調節 |
 | `readings/2026-11-08-source-waddington-assimilation.md` | 2026-11-08 | 2026-11-08 | — | 1,229 | M1 | ✓ | 資料ノート：Waddington（1953）——環境への応答が、選択の履歴によって変わる |
+| `readings/2026-11-08-ten-experiments-across-body-monitoring-and-fusion.md` | 2026-11-08 | 2026-11-08 | — | 30,467 | Q4 | — | Ten experiments across body, monitoring, and fusion |
 | `readings/2026-11-08-ten-experiments-on-body-electrode-mirror-and-culture.md` | 2026-11-08 | 2026-11-08 | — | 13,783 | Q3 M19 | — | 身体、電極、鏡、培養器——実験科学10資料から、人間と自己を問い直す |
+| `readings/2026-11-08-ten-experiments-on-remembering-with-support.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-33d2a7` +1 | 12,689 | Q3 M10 S2 ERR1 | — | 支えが消えたとき、何が残るか——身体・記憶・検索をめぐる十の実験 |
 | `readings/2026-11-08-ten-experiments-on-updating-maintaining-and-letting-go.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-98d3c9` +1 | 16,614 | Q3 M10 S2 ERR1 | ✓ | 実験科学10件精読報告——更新し、維持し、手放すこと |
-| `readings/2026-11-08-the-correction-layer-was-the-one-thing-not-corrected.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-b94274` | 10,023 | Q5 S1 ERR11 | ✓ | 訂正の層だけが、訂正されていなかった |
+| `readings/2026-11-08-the-correction-layer-was-the-one-thing-not-corrected.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-b94274` | 10,429 | Q5 S1 ERR11 | ✓ | 訂正の層だけが、訂正されていなかった |
 | `readings/2026-11-08-the-shared-prefix-and-the-divergent-continuation.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-5a5795` +1 | 9,897 | Q6 F8 M1 R2 S2 ED1 | — | 共有された接頭辞と、分かれた続き——二稿の昇格点検と、継承の連鎖の検証 |
 | `readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md` | — | 2026-11-08 | `SESSION-20261108-396bfa` +5 | 21,655 | Q16 F11 M16 MOT2 S6 ERR1 | ✓ | 尾は硝子に、夜は挟みに —— 連続の置き所をめぐる改稿・変奏と、その切断（SESSION-20261108-396bf… |
 | `readings/2026-11-08-the-trace-written-before-the-witness.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-fd0559` +2 | 21,343 | Q3 M25 S3 | — | 証人のいない痕跡——実験科学10資料の精読 |

@@ -186,7 +186,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # count was 87; merging origin/main PR #598 added one more materials
         # shard referenced by its sessions.notes, so measured actual = 88.
         # Narrow +1 merge exception; hard limit 160 unchanged.
-        soft_shards=88,
+        # 2026-11-08: 88 -> 89 for the shared materials shard of
+        # SESSION-20261108-33d2a7 / -934457. Referenced earlier shards and
+        # order-preserving consolidation were checked; see the report §14.
+        # This is a scoped exception, not headroom; hard limit is unchanged.
+        # 2026-11-08: 89 -> 90 for the shared materials shard of
+        # SESSION-20261108-9ec310 / -45aff1. Earlier shards carry path refs or
+        # order constraints; new rows omit shard paths. See
+        # readings/2026-11-08-ten-experiments-across-body-monitoring-and-fusion.md §14.
+        soft_shards=90,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -251,7 +259,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # this shard fits under it.  Same §7-6 debt, one increment further.
         # 2026-11-08 (sixth merge): measured union = 87. Byte soft is 5 MiB;
         # measured 4.21 MiB, so keep future rows short.
-        soft_shards=87,
+        # 2026-11-08: 87 -> 88 for the shared read_log of the requested
+        # two-session report. Existing candidates have path references; see
+        # readings/2026-11-08-ten-experiments-on-remembering-with-support.md §14.
+        # 2026-11-08: 88 -> 89 for SESSION-20261108-9ec310 / -45aff1.
+        # Existing candidates carry path refs; new rows stay concise and omit
+        # shard paths. Details:
+        # readings/2026-11-08-ten-experiments-across-body-monitoring-and-fusion.md §14.
+        soft_shards=89,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -345,22 +360,30 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-08 (post-merge): merging origin/main PR #598 added one more
         # sessions shard with self-location in notes; measured actual = 92.
         # Narrow +1 merge exception, not automatic.  Hard limit 160 unchanged.
-        # 2026-11-08 (SESSION-20261108-b94274): 92 -> 93, with the cause fixed
-        # rather than only the counter.  Both remedies docs/parallel-work.md
-        # asks for were attempted FIRST: the one movable sessions shard
-        # (2026-11-08-46651e70f206, 2 rows, no self-location, no references)
-        # was consolidated into 2026-11-08-000000000000.jsonl, and this
-        # session's own row omits its shard path.  Measured: that move is
-        # net 0 files, because no same-date zero shard existed yet -- it only
-        # creates the anchor that makes the NEXT same-date move net -1.
-        # Of 72 non-consolidated sessions shards, 71 name their own file in
-        # `notes`, so 71 are immovable; and 109 of 189 self-location mentions
-        # across 595 rows already point at deleted paths.  Compaction cannot
-        # reclaim this dimension while that convention stands.  This session
-        # therefore reverses docs/parallel-work.md §2 (stop writing your own
-        # shard path into `notes`; `session_id` already resolves the row), so
-        # new rows are movable and this counter should stop climbing.  Narrow
-        # +1 for this session's shard.  Hard limit 160 unchanged.
+        # 2026-11-08: 92 -> 93 for the current two-session shard. Earlier
+        # candidates carry path references; the new rows omit their own path.
+        # Details: readings/2026-11-08-ten-experiments-on-remembering-with-support.md §14.
+        # 2026-11-08: 93 -> 94 for SESSION-20261108-9ec310 / -45aff1. Earlier
+        # candidates carry path refs; the new rows omit shard paths. Details:
+        # readings/2026-11-08-ten-experiments-across-body-monitoring-and-fusion.md §14.
+        # 2026-11-08 (SESSION-20261108-b94274, merging PR #601): 94 -> 93.
+        # This is the first LOWERING of this counter, and it is measured, not
+        # aspirational.  This session reversed docs/parallel-work.md §2, which
+        # had REQUIRED sessions rows to name their own shard path.  Measured
+        # cause: 71 of 72 non-consolidated shards named their own file and were
+        # therefore immovable, and 109 of 189 self-location mentions across 595
+        # rows already pointed at deleted paths -- the convention had made the
+        # majority of its own records false.
+        # Before the merge, consolidating the one movable shard
+        # (2026-11-08-46651e70f206) into 2026-11-08-000000000000.jsonl was net 0
+        # files: no same-date zero shard existed, so it only built the anchor.
+        # After merging PR #601, that anchor took two more shards whose rows
+        # omit self-location (55ad657a6699, e2c43e00dbb0; 2 rows each), both
+        # verified byte-identical to origin/main and untouched by any open PR.
+        # Actual went 95 -> 93 while this session added its own shard, so the
+        # merged union needs 93, not 94.  Row multisets verified byte-equal.
+        # Hard limit 160 unchanged.  New rows are movable now; do not raise this
+        # again without first measuring whether movable shards actually grew.
         soft_shards=93,
         hard_shards=160,
         remedy=(
@@ -424,7 +447,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # increment further; not automatic.
         # 2026-11-08 (sixth merge): measured union = 87 (origin/main + this
         # session's curated note row in its own append-only shard).
-        soft_shards=87,
+        # 2026-11-08: 87 -> 88 for the current report's note shard. Other
+        # candidates have path references; the new row omits its own path.
+        # Details: readings/2026-11-08-ten-experiments-on-remembering-with-support.md §14.
+        # 2026-11-08: 88 -> 89 for NOTE-20261108-6edb10. Earlier candidates
+        # carry path refs or order constraints; the new row omits shard paths.
+        # Details: readings/2026-11-08-ten-experiments-across-body-monitoring-and-fusion.md §14.
+        soft_shards=89,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
