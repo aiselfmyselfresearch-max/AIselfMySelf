@@ -345,6 +345,8 @@ Bacillus系のストレス応答機構であり、真核細胞やAIの検証一�
 
 また、シャード予算のため、参照と自己所在地を実測した上で旧シャードを統合した。materials は2本、read_log は1本、notes は1本を統合済みシャードへ移動した。notes は supersede 順序を壊さないよう追記順を保った。sessions は全候補が行内 notes に自己所在地を持つため安全に統合できず、soft_shards を90から91へ1件だけ引き上げた。これは自動引き上げではなく、実測に基づく狭い例外である。
 
+完了直前の再 fetch で `origin/main` が PR #598 によりさらに進んでいたため、もう一度マージした。これにより materials と sessions がそれぞれ1本ずつ増え、read_log と notes も1本ずつ増えた。read_log と notes は追加で1本ずつ安全に統合して soft 内に戻した。materials と sessions は、増分が他セッションの `sessions.notes` から参照されているか自己所在地を持つため統合できず、materials の soft_shards を87から88へ、sessions を91から92へ、それぞれ1件だけ引き上げた。いずれもマージ相手の実測に基づく狭い例外であり、自動引き上げではない。
+
 検証は `map_build.py`、`validate_seed.py`、`inspect_inquiry.py --check-map`、`note_index.py --check`、`read_log_backfill.py --check`、`size_budget.py --strict`、`unittest` で行う。技術検証の通過は、原典照合や読解の成功の代用ではない。
 
 ## 17. 限界と次の読み

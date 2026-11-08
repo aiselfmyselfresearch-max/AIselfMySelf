@@ -193,3 +193,9 @@ python3 -m unittest discover -s tests -v
 `SESSION-20261108-98d3c9` / `SESSION-20261108-d235c2` の追記前、基点 `18b8a78` では sessions.d の実シャード数は90で soft=90 だった。今回、実験科学10件精読回のために sessions 専用シャードを1本追加し、実測91となる。materials / read_log / notes は旧シャードの安全な統合により新規1本追加後も soft 内に収めた。relations は上限ちょうどなので新規関係線は追加しない。
 
 sessions の統合候補を全件走査したところ、既存候補はすべて行内 notes に自己所在地を持ち、移動すると記述が偽になる。したがって今回は統合せず、soft_shards を90から91へ1件だけ引き上げる。hard=160、バイト予算、テスト条件は変更しない。毎回の自動引上げではない。新規 sessions 行は将来の統合負債を減らすため、自身の sessions シャードパスを行内 notes に書かない。詳細は `readings/2026-11-08-ten-experiments-on-updating-maintaining-and-letting-go.md` §16。
+
+### 2026-11-08（完了直前マージ後の実測）
+
+PR #598 をマージした直後、materials.d=88、sessions.d=92、read_log.d=88、notes.d=88 を実測した。read_log は `2026-11-07-04a635c97910.jsonl`（7行）を `2026-11-07-000000000000.jsonl` へ規定キーで整序統合し、notes は `2026-11-07-1af8bd5c0e93.jsonl`（2行）を同ゼロシャードへ追記順のまま統合して、それぞれ87へ戻した。行文字列の多重集合とID重複を検査した。
+
+materials と sessions の増分は PR #598 の専用シャードであり、`sessions.notes` から参照されるか行内自己所在地を持つため統合しなかった。やむを得ず materials soft_shards 87→88、sessions soft_shards 91→92 とした。hard は不変。これは並行マージの実測に基づく狭い例外であり、次回以降の自動引上げではない。

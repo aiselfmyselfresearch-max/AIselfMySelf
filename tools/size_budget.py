@@ -182,7 +182,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-08 (sixth merge): measured union after merging origin/main
         # and SESSION-20261108-fd0559 = 87. Two same-day sessions each kept
         # their own materials shard; neither touched the other's file.
-        soft_shards=87,
+        # 2026-11-08 (this session, post-merge): after safe consolidation the
+        # count was 87; merging origin/main PR #598 added one more materials
+        # shard referenced by its sessions.notes, so measured actual = 88.
+        # Narrow +1 merge exception; hard limit 160 unchanged.
+        soft_shards=88,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -338,7 +342,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # would falsify their own text; the new rows deliberately omit their
         # sessions-shard path to stop adding that debt.  Narrow +1 exception,
         # not automatic.  Hard limit 160 unchanged.
-        soft_shards=91,
+        # 2026-11-08 (post-merge): merging origin/main PR #598 added one more
+        # sessions shard with self-location in notes; measured actual = 92.
+        # Narrow +1 merge exception, not automatic.  Hard limit 160 unchanged.
+        soft_shards=92,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
