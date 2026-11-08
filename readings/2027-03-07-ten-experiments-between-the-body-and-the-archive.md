@@ -300,7 +300,7 @@ Q-003は「制約面」に改訂済み（`NOTE-20261108-3d3fed-c5`）だが、�
 - `materials`：10件（資料1–5 が第一半分 `SESSION-20261108-d7ce13`、資料6–10 が第二半分 `SESSION-20261108-b831e7`）。いずれも `research_excerpt`、`partially_verified`、`origin.commit=2acffe1b…`、題・DOIとも公開・非公開なしのオープンアクセスなし。
 - `sessions` 2行、`notes` 1行、`read_log` 17行（資料10件・`Q-001` 1件・`Q-002` 2件（第一半分・第二半分それぞれ）・`Q-003` 1件・先行ノート 2件（`NOTE-20261108-3d3fed`・`NOTE-20261108-9cbabc`）・先行セッション 1件（`SESSION-20261108-cc7bdf`））。
 - **新規の断片・問い・関係線・モチーフは作らない。** 通常回の運用により `README.md`・`docs/sessions.md` は編集しない（ローテーションは editorial_review 回の責務）。
-- サイズ予算：`tools/size_budget.py` が `read_log.d`・`materials.d`・`notes.d`・`sessions.d` の各ソフト上限に達していたため、それぞれ +1 ずつ引き上げた（hard は不変）。`relations.d` は変更しない。
+- サイズ予算：`tools/size_budget.py` の `read_log.d`（ソフトバイト 5 MiB への引き上げを含む）・`materials.d`・`notes.d`・`sessions.d` の各ソフト上限を、**このブランチでは** +1 ずつ引き上げた（hard は不変）。`relations.d` は変更しない。その後 `origin/main`（PR #592・#594、同日の別並行セッション）とのマージで基準が進み、マージ後の実測に合わせて最終値は **materials.d 86・read_log.d 86・sessions.d 89・notes.d 86**（relations.d 81、閲覧範囲・hard は不変）。マージ時点で `origin/main` は sessions.d がソフト 88 に対し実測 89 と、本セッションの寄与とは別に 1 件の超過があった——最終値 89 はマージ後の実測であり、その 1 件は飲み込んだのではなくここに明記する。
 - 持ち越し：(1) retrieval check の設計。(2) Q-001・Q-002への回答の穴に残った「条件を作る能力」——今回扱えなかった唯一の軸。(3) この報告自身が次セッションにとっての《サマリー》となり、偽記憶の生成装置として機能しうること（§9）。
 
 ---
