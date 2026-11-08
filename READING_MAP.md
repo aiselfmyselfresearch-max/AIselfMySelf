@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3355 件（research_excerpt 1131 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3385 件（research_excerpt 1161 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6504 件
-- **探究セッション（Sessions）**：591 回
+- **探究セッション（Sessions）**：595 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3355 件・詳細は map/3*.md）
+## 4. 対話素材（3385 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3855,6 +3855,16 @@
 | `MAT-20261108-39d7e4` | research_excerpt | J. Robin Warren, Barry J. Marshall『Warren & Marshall（1982–85）Helicobacter pylori の培養と自己摂取… |
 | `MAT-20261108-4a5959` | research_excerpt | Martin Jinek, Krzysztof Chylinski, Ines Fonfara, Michael Hauer, Jennifer A. Doudna, Emman… |
 | `MAT-20261108-dcdad8` | research_excerpt | Nina E. Fultz, Giorgio Bonmassar, Kawin Setsompop, Robert A. Stickgold, Bruce R. Rosen, J… |
+| `MAT-EVD-20261108-b014cb` | research_excerpt | Nobumichi Hozumi, Susumu Tonegawa『Nobumichi Hozumi ほか（1976）——Evidence for somatic rearran… |
+| `MAT-EVD-20261108-803f74` | research_excerpt | Andrew Fire, SiQun Xu, Mary K. Montgomery, Steven A. Kostas, Samuel E. Driver, Craig C. M… |
+| `MAT-EVD-20261108-c86706` | research_excerpt | Craig C. Mello, James M. Kramer, Dan Stinchcomb, Victor Ambros『Craig C. Mello ほか（1991）——E… |
+| `MAT-EVD-20261108-609426` | research_excerpt | Kirk R. Thomas, Mario R. Capecchi『Kirk R. Thomas ほか（1987）——Site-directed mutagenesis by g… |
+| `MAT-EVD-20261108-c59628` | research_excerpt | Katalin Karikó, Michael Buckstein, Houping Ni, Drew Weissman『Katalin Karikó ほか（2005）——Sup… |
+| `MAT-EVD-20261108-cbcc85` | research_excerpt | Katalin Karikó, Hiromi Muramatsu, Frank A. Welsh, János Ludwig, Hiroshi Kato, Shizuo Akir… |
+| `MAT-EVD-20261108-bfcd56` | research_excerpt | Robert W. Malone, Philip L. Felgner, Inder M. Verma『Robert W. Malone ほか（1989）——Cationic l… |
+| `MAT-EVD-20261108-684b32` | research_excerpt | Jon A. Wolff, Robert W. Malone, Philip Williams, Wendy Chong, Gyula Acsadi, Agnes Jani, P… |
+| `MAT-EVD-20261108-6a82e5` | research_excerpt | Sayda M. Elbashir, Jens Harborth, Winfried Lendeckel, Abdullah Yalcin, Klaus Weber, Thoma… |
+| `MAT-EVD-20261108-8ce6a4` | research_excerpt | Rolf M. Zinkernagel, Peter C. Doherty『Rolf M. Zinkernagel ほか（1974）——Restriction of in vit… |
 | `MAT-EVD-20261108-9ec62c` | research_excerpt | J. B. Gurdon『Gurdon（1962）——分化した核と、それを受け取る卵』（1962） |
 | `MAT-EVD-20261108-e7720b` | research_excerpt | Arthur B. Pardee, François Jacob, Jacques Monod『Pardee・Jacob・Monod（1959）——継承される構造と、遅れて働く調… |
 | `MAT-EVD-20261108-12b3bf` | research_excerpt | C. H. Waddington『Waddington（1953）——環境への応答が、選択の履歴によって変わる』（1953） |
@@ -3895,6 +3905,16 @@
 | `MAT-EVD-20261108-e1e6a2` | research_excerpt | Ellen J. Langer, Arthur Blank, Benzion Chanowitz『ランガー、ブランク＆チャノウィッツ（1978）「見かけ上は思慮深い行為の無心」—… |
 | `MAT-EVD-20261108-ff25a4` | research_excerpt | Jonathan L. Freedman, Scott C. Fraser『フリードマン＆フレイザー（1966）「圧力なしの承諾」——小さな「はい」のあと、二時間の家庭訪問を五二… |
 | `MAT-EVD-20261108-e3ad6c` | research_excerpt | Albert H. Hastorf, Hadley Cantril『ハーストーフ＆カントリル（1954）「彼らは試合を見た」——同じフィルムで、プリンストン生は9.8、ダートマス… |
+| `MAT-20261108-libet` | research_excerpt | Benjamin Libet, Curtis A. Gleason, Elwood W. Wright, Dennis K. Pearl『Libet et al.（1983）準備… |
+| `MAT-20261108-pinto` | research_excerpt | Yair Pinto, David A. Neville, Marte Otten, Paul M. Corballis, Victor A. F. Lamme, Edward … |
+| `MAT-20261108-schurger` | research_excerpt | Aaron Schurger, Jacobo D. Sitt, Stanislas Dehaene『Schurger, Sitt & Dehaene（2012）準備電位は決定信号… |
+| `MAT-20261108-blanke` | research_excerpt | Olaf Blanke, Stéphanie Ortigue, Theodor Landis, Margitta Seeck『Blanke, Ortigue, Landis & … |
+| `MAT-20261108-ehrsson2007` | research_excerpt | H. Henrik Ehrsson『Ehrsson（2007）体外離脱の実験的誘発——視覚と触覚の同期が自己の位置座標を再配置する』（2007） |
+| `MAT-20261108-lenggenhager` | research_excerpt | Bigna Lenggenhager, Tariq Tadi, Thomas Metzinger, Olaf Blanke『Lenggenhager, Tadi, Metzing… |
+| `MAT-20261108-hela` | research_excerpt | George Otto Gey (originator), Rebecca Skloot (historian)『HeLa細胞系——Henrietta Lacks は1951年に… |
+| `MAT-20261108-hemispherectomy` | research_excerpt | Catherine Smith, Lucina Q. Uddin, et al., Marcello Massimini (isolated hemisphere study)『… |
+| `MAT-20261108-ramachandran` | research_excerpt | V. S. Ramachandran, Diane Rogers-Ramachandran『Ramachandran & Rogers-Ramachandran（1996）幻肢の… |
+| `MAT-20261108-craig` | research_excerpt | A. D. Craig『Craig（2002）内受容感覚——前島皮質は『物質的な私』を再表象する』（2002） |
 | `MAT-EVD-20261108-21cec2` | research_excerpt | Zachary D. Blount, Christina Z. Borland, Richard E. Lenski『Zachary D. Blount、Christina Z.… |
 | `MAT-EVD-20261108-cb542e` | research_excerpt | Jenny R. Saffran, Richard N. Aslin, Elissa L. Newport『Jenny R. Saffran、Richard N. Aslin、E… |
 | `MAT-EVD-20261108-b8a6d1` | research_excerpt | Ullrich Wagner, Steffen Gais, Hilde Haider, Rolf Verleger, Jan Born『Ullrich Wagner、Steffe… |
@@ -3910,6 +3930,16 @@
 | `MAT-20261108-926869` | research_excerpt | Xiang Mou, Daoyun Ji『Social observation enhances cross-environment activation of hippocam… |
 | `MAT-20261108-3b69f7` | research_excerpt | Mary L Phillips, Holly Anne Robinson, Lucas Pozzo-Miller『Ventral hippocampal projections … |
 | `MAT-20261108-0b759d` | research_excerpt | Asieh Zadbood, Samuel Nastase, Janice Chen, Kenneth A Norman, Uri Hasson『Neural represent… |
+| `MAT-20261108-e37691` | research_excerpt | Iraj Khalid, Orphee Morlaas, Hugo Bottemanne, Lisa Thonon, Thomas Da Costa, Philippe Foss… |
+| `MAT-20261108-8838c2` | research_excerpt | Juan Vidal-Perez, Raymond J Dolan, Rani Moran『Disinformation elicits learning biases』（202… |
+| `MAT-20261108-8e4555` | research_excerpt | Jackson Scheib, Zachary L Newman, Jacob Gable, Deano M Farinella, Mitchell Head, Savannah… |
+| `MAT-20261108-316207` | research_excerpt | Panayiotis Tsokas, Changchi Hsieh, Alejandro Grau-Perales, Andrew Tcherepanov, Leo Kwok, … |
+| `MAT-20261108-618903` | research_excerpt | Sofie S Jacobsen, Allison B Morehouse, Pin-Chun Chen, Yi Qian, Ryszard S Gomolka, Mie And… |
+| `MAT-20261108-ce853a` | research_excerpt | Xiaoyu Li, Yuxin Li, Yue Cao, Niewen Hu, Baozhi Yang, Pei Ouyang, Yuxiao Jin, Shuai Gao, … |
+| `MAT-20261108-abc1e6` | research_excerpt | Varun Ravishankar, Luís Borges-Araújo, Megha Rajendran, Elodie Lafargue, Deborah Byrne, N… |
+| `MAT-20261108-26d7e1` | research_excerpt | Jacob W Klemm, Chloe Van Hazel, Robin E Harris『Regeneration following tissue necrosis is … |
+| `MAT-20261108-e45c15` | research_excerpt | Rishika Baral, Kristin Ho, Ramasamy P Kumar, Jesse B Hopkins, Maxwell B Watkins, Salvator… |
+| `MAT-20261108-d85b64` | research_excerpt | Lele Liu, Wenyi Sheng, Huijia Song, Cui Wang, Na Li, Lele Lin, Yaolin Guo, Ning Du, Weihu… |
 | `MAT-20261108-aff4a1` | research_excerpt | Neha R Deshpande, Heather L Parrish, Michael S Kuhns『Self-recognition drives the preferen… |
 | `MAT-20261108-19cb5d` | research_excerpt | Francesco della Gatta, Francesca Garbarini, Guglielmo Puglisi, Antonella Leonetti, Annama… |
 | `MAT-20261108-0441b6` | research_excerpt | Josué Haubrich, Matteo Bernabo, Karim Nader『Noradrenergic projections from the locus coer… |
@@ -4600,6 +4630,8 @@
 | `SESSION-20261108-37bcc0` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-5a5795` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-082`, `Q-20261024-c3d7a5` | — | — |
 | `SESSION-20261108-260f17` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-98d3c9` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-d235c2` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-d24387` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-fd0559` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-6befc5` | 2027-03-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4613,6 +4645,8 @@
 | `SESSION-20261108-c3a25b` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-019`, `Q-035`, `Q-043`, `Q-20261108-b3e2fc`, `Q-20261025-e6402b` | — | — |
 | `SESSION-20261108-b33b90` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-75b9c6` | 2027-03-04 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-eadaf4` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-7601a4` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-74608b` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-cc7bdf` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-4fc20f` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4800,8 +4834,8 @@
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
-| `map/31-materials-research-11.md` | 100 | 242,327 |
-| `map/31-materials-research-12.md` | 31 | 81,268 |
+| `map/31-materials-research-11.md` | 100 | 235,016 |
+| `map/31-materials-research-12.md` | 61 | 146,115 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4826,9 +4860,9 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
-| `map/50-sessions-10.md` | 50 | 42,135 |
-| `map/50-sessions-11.md` | 50 | 46,262 |
-| `map/50-sessions-12.md` | 41 | 34,985 |
+| `map/50-sessions-10.md` | 50 | 41,185 |
+| `map/50-sessions-11.md` | 50 | 45,612 |
+| `map/50-sessions-12.md` | 45 | 38,860 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4847,24 +4881,24 @@
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 110,823 |
 | `map/60-notes-18.md` | 25 | 106,837 |
-| `map/60-notes-19.md` | 25 | 66,404 |
-| `map/60-notes-20.md` | 25 | 57,042 |
-| `map/60-notes-21.md` | 25 | 73,471 |
-| `map/60-notes-22.md` | 25 | 65,316 |
-| `map/60-notes-23.md` | 25 | 93,346 |
-| `map/60-notes-24.md` | 25 | 91,191 |
-| `map/60-notes-25.md` | 25 | 136,469 |
-| `map/60-notes-26.md` | 2 | 11,661 |
+| `map/60-notes-19.md` | 25 | 68,162 |
+| `map/60-notes-20.md` | 25 | 54,452 |
+| `map/60-notes-21.md` | 25 | 74,564 |
+| `map/60-notes-22.md` | 25 | 65,011 |
+| `map/60-notes-23.md` | 25 | 89,513 |
+| `map/60-notes-24.md` | 25 | 96,228 |
+| `map/60-notes-25.md` | 25 | 128,076 |
+| `map/60-notes-26.md` | 5 | 27,244 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・627本・21,750,433 B）
+## 8. 精読ノート索引（readings/・630本・21,848,676 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 422/627 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 425/630 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：260 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：71 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：262 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：72 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5321,10 +5355,13 @@
 | `readings/2026-11-08-source-gurdon-nuclear-transfer.md` | 2026-11-08 | 2026-11-08 | — | 1,339 | M1 | ✓ | 資料ノート：Gurdon（1962）——分化した核と、それを受け取る卵 |
 | `readings/2026-11-08-source-pardee-inducibility.md` | 2026-11-08 | 2026-11-08 | — | 1,381 | M1 | ✓ | 資料ノート：Pardee・Jacob・Monod（1959）——継承される構造と、遅れて働く調節 |
 | `readings/2026-11-08-source-waddington-assimilation.md` | 2026-11-08 | 2026-11-08 | — | 1,229 | M1 | ✓ | 資料ノート：Waddington（1953）——環境への応答が、選択の履歴によって変わる |
+| `readings/2026-11-08-ten-experiments-on-body-electrode-mirror-and-culture.md` | 2026-11-08 | 2026-11-08 | — | 13,783 | Q3 M19 | — | 身体、電極、鏡、培養器——実験科学10資料から、人間と自己を問い直す |
+| `readings/2026-11-08-ten-experiments-on-updating-maintaining-and-letting-go.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-98d3c9` +1 | 16,614 | Q3 M10 S2 ERR1 | ✓ | 実験科学10件精読報告——更新し、維持し、手放すこと |
 | `readings/2026-11-08-the-shared-prefix-and-the-divergent-continuation.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-5a5795` +1 | 9,897 | Q6 F8 M1 R2 S2 ED1 | — | 共有された接頭辞と、分かれた続き——二稿の昇格点検と、継承の連鎖の検証 |
 | `readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md` | — | 2026-11-08 | `SESSION-20261108-396bfa` +5 | 21,655 | Q16 F11 M16 MOT2 S6 ERR1 | ✓ | 尾は硝子に、夜は挟みに —— 連続の置き所をめぐる改稿・変奏と、その切断（SESSION-20261108-396bf… |
 | `readings/2026-11-08-the-trace-written-before-the-witness.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-fd0559` +2 | 21,343 | Q3 M25 S3 | — | 証人のいない痕跡——実験科学10資料の精読 |
 | `readings/2026-11-08-what-gets-recorded-five-experiments.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-b33b90` +1 | 16,782 | Q3 M14 S2 | ✓ | 記録されるのは何か——冗長な信号・問題の形・目印の輪・病名・統制の五実験 |
+| `readings/2026-11-08-when-stored-information-acts.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-eadaf4` +1 | 12,472 | Q3 M10 S2 | — | 保存された情報は、いつ働くのか——実験科学10資料の精読 |
 | `readings/2026-11-08-who-imagined-it-and-who-collected-it.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-d5c6c8` +1 | 13,499 | Q1 M12 S2 ERR5 | — | 思い描いたのは誰で、集めたのは誰か |
 | `readings/2026-11-08-whose-walk-the-heart-waited-for.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-f57a30` +4 | 14,668 | Q4 F1 M4 MOT1 S5 ERR1 | — | 火は誰の前で燃えていたのか——炭火渡りの心拍同期を原典で読み、書庫に「同じ今」があるかを測る |
 | `readings/2026-11-09-four-stones-three-pauses-four-bridges.md` | — | 2026-11-09 | `SESSION-20261109-0ed0ca` +7 | 13,928 | Q12 F28 MOT16 R5 S8 ED7 | ✓ | 四つの礎石、三つの休止、四つの浮島——第4回自律編集レビューと、未索引だった六本の報告 |
@@ -5494,4 +5531,4 @@
 | `readings/2027-03-06-five-experiments-on-what-is-reported-and-what-is-withheld.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-4fc20f` | 29,193 | M9 R3 S1 | — | 報告は、利用可能だったものの下限である——外部化の決定、協同抑制、確信と一貫性、聴き手の同定、答えない自由の五実験 |
 | `readings/2027-03-06-the-record-keeps-the-effect-not-the-cause.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-74608b` +1 | 28,376 | Q3 M17 MOT2 S2 | ✓ | 記録は効果を残し、原因を残さない——実験科学10資料の精読（第一回・第二回） |
 | `readings/2027-03-07-ten-experiments-between-the-body-and-the-archive.md` | 2026-11-08 | 2027-03-07 | `SESSION-20261108-d7ce13` +2 | 24,924 | Q3 M31 S3 | — | 応答で作られる人間と、読み方で残る記録——実験科学10資料の精読 |
-| `readings/2027-03-07-ten-experiments-on-mediation-and-becoming.md` | 2026-11-08 | 2027-03-07 | `SESSION-20261108-b1a145` +1 | 17,071 | Q3 M19 S2 | — | 媒介が運ぶもの、運ばないもの——実験科学10資料の精読 |
+| `readings/2027-03-07-ten-experiments-on-mediation-and-becoming.md` | 2026-11-08 | 2027-03-07 | `SESSION-20261108-b1a145` +1 | 17,071 | Q3 M19 S2 | ✓ | 媒介が運ぶもの、運ばないもの——実験科学10資料の精読 |
