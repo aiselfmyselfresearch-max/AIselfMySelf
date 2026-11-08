@@ -216,7 +216,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # reason as read_log.d -- two parallel same-day sessions each kept
         # their own sessions shard; after both merged the union is 83.
         # Hard limit remains unchanged.
-        soft_shards=83,
+        # 2026-11-08 (night): one more slot (84) for a fifth same-day session
+        # shard (SESSION-20261108-4fc20f).  This raise is *not* meant to become
+        # automatic: the underlying cause is structural and was measured in
+        # readings/2027-03-06-five-experiments-on-what-is-reported-and-what-is-
+        # withheld.md §7-6 -- all 63 one-row session shards name their own file
+        # in `notes`, so merging them would falsify that self-location, and
+        # compaction therefore cannot reduce this dimension by even one file.
+        # The proposal there is to stop writing shard paths into new `notes`
+        # rows (`session_id` already resolves the row), in a separate PR.
+        soft_shards=84,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
