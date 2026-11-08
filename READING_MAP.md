@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3345 件（research_excerpt 1121 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3355 件（research_excerpt 1131 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6504 件
-- **探究セッション（Sessions）**：589 回
+- **探究セッション（Sessions）**：591 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3345 件・詳細は map/3*.md）
+## 4. 対話素材（3355 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3825,6 +3825,16 @@
 | `MAT-EVD-20261108-e72e61` | research_excerpt | Jennifer M. Talarico, David C. Rubin『Talarico & Rubin（2003）「閃光記憶を特徴づけるのは一貫性ではなく確信」——9月11日… |
 | `MAT-EVD-20261108-ba4a39` | research_excerpt | Gerald Echterhoff, E. Tory Higgins, Stephan Groll『Echterhoff, Higgins & Groll（2005）「聴き手に合… |
 | `MAT-EVD-20261108-cb0ede` | research_excerpt | Asher Koriat, Morris Goldsmith『Koriat & Goldsmith（1994）「自然文脈と実験室の記憶」——正答率を上げたのは、テスト形式ではなく… |
+| `MAT-EVD-20261108-1bafd8` | research_excerpt | John M. Darley, C. Daniel Batson『Darley & Batson (1973)「エルサレムからエリコへ」——急かされた聖職者見習いは、倒れている人… |
+| `MAT-EVD-20261108-1e7380` | research_excerpt | Edward Tronick, Heidelise Als, Lauren Adamson, Susan Wise, T. Berry Brazelton『Tronick ほか … |
+| `MAT-EVD-20261108-8663e1` | research_excerpt | Werner Güth, Rolf Schmittberger, Bernd Schwarze『Güth, Schmittberger & Schwarze (1982)「最後通… |
+| `MAT-EVD-20261108-fd9349` | research_excerpt | Ernst Fehr, Simon Gächter『Fehr & Gächter (2000)「公共財実験における協力と罰」——罰する機会があるだけで協力はほぼ完全に維持された … |
+| `MAT-EVD-20261108-aefc9b` | research_excerpt | Takahiko Masuda, Richard E. Nisbett『Masuda & Nisbett (2001)「全体的vs分析的に注意を向けること」——日本人は対象を『文… |
+| `MAT-EVD-20261108-665e11` | research_excerpt | John O'Keefe, J. Dostrovsky『O'Keefe & Dostrovsky (1971)「空間地図としての海馬」——自由に動くラットの海馬ニューロンは、特定… |
+| `MAT-EVD-20261108-07f483` | research_excerpt | Lloyd R. Peterson, Margaret Jean Peterson『Peterson & Peterson (1959)「個々の言語項目の短期保持」——数秒の遅延… |
+| `MAT-EVD-20261108-2eee7e` | research_excerpt | Fergus I. M. Craik, Endel Tulving『Craik & Tulving (1975)「処理の深さと語のエピソード記憶における保持」——意味レベルで読ま… |
+| `MAT-EVD-20261108-4cbdea` | research_excerpt | Elizabeth F. Loftus, Jacqueline E. Pickrell『Loftus & Pickrell (1995)「偽の記憶の形成」——実家に確かめた偽の『… |
+| `MAT-EVD-20261108-10d9f7` | research_excerpt | Arthur S. Reber『Reber (1967)「人工文法の暗黙学習」——文法を教えられていない被験者が、新規系列を文法的／非文法的に判別した (JVLVB 6(6):8… |
 | `MAT-20261108-a18b34` | research_excerpt | Leon J. Kamin『ブロッキング——すでに予告している信号は、隣に提示されても学習されない（Kamin 1969）』（1969） |
 | `MAT-20261108-11373a` | research_excerpt | Harry F. Harlow『学習セットの形成——344問のあとに残るのは答えではなく問題の形（Harlow 1949）』（1949） |
 | `MAT-20261108-4bc860` | research_excerpt | Niko Tinbergen『巣は穴ではなく、穴のまわりの輪である——Bienenwolf の目印実験（Tinbergen 1932）』（1932） |
@@ -4594,6 +4604,8 @@
 | `SESSION-20261108-fd0559` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-6befc5` | 2027-03-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-8d42e1` | 2027-03-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-d7ce13` | 2027-03-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-b831e7` | 2027-03-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-d5c6c8` | 2026-11-08T14:10:00Z | `Q-001`, `Q-002`, `Q-049` | — | `Q-20261108-0b746a` |
 | `SESSION-20261108-748ed5` | 2027-03-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-784d36` | 2027-03-04 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4788,8 +4800,8 @@
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
-| `map/31-materials-research-11.md` | 100 | 248,540 |
-| `map/31-materials-research-12.md` | 21 | 50,757 |
+| `map/31-materials-research-11.md` | 100 | 242,327 |
+| `map/31-materials-research-12.md` | 31 | 81,268 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4814,9 +4826,9 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
-| `map/50-sessions-10.md` | 50 | 42,021 |
-| `map/50-sessions-11.md` | 50 | 46,528 |
-| `map/50-sessions-12.md` | 39 | 33,077 |
+| `map/50-sessions-10.md` | 50 | 42,135 |
+| `map/50-sessions-11.md` | 50 | 46,262 |
+| `map/50-sessions-12.md` | 41 | 34,985 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4841,18 +4853,18 @@
 | `map/60-notes-22.md` | 25 | 65,316 |
 | `map/60-notes-23.md` | 25 | 93,346 |
 | `map/60-notes-24.md` | 25 | 91,191 |
-| `map/60-notes-25.md` | 25 | 136,319 |
-| `map/60-notes-26.md` | 1 | 4,952 |
+| `map/60-notes-25.md` | 25 | 136,469 |
+| `map/60-notes-26.md` | 2 | 11,661 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・626本・21,694,283 B）
+## 8. 精読ノート索引（readings/・627本・21,750,433 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 421/626 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 422/627 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：259 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：70 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：260 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：71 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5481,4 +5493,5 @@
 | `readings/2027-03-05-five-experiments-on-boundaries-of-self-and-memory.md` | 2026-11-08 | 2027-03-05 | `SESSION-20261108-6befc5` | 11,104 | Q3 M10 S1 | ✓ | 境界はどこで引かれるか——自己の顔、他者の痛み、頼まれていない記憶、脳のない眠りの五実験 |
 | `readings/2027-03-06-five-experiments-on-what-is-reported-and-what-is-withheld.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-4fc20f` | 29,193 | M9 R3 S1 | — | 報告は、利用可能だったものの下限である——外部化の決定、協同抑制、確信と一貫性、聴き手の同定、答えない自由の五実験 |
 | `readings/2027-03-06-the-record-keeps-the-effect-not-the-cause.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-74608b` +1 | 28,376 | Q3 M17 MOT2 S2 | ✓ | 記録は効果を残し、原因を残さない——実験科学10資料の精読（第一回・第二回） |
+| `readings/2027-03-07-ten-experiments-between-the-body-and-the-archive.md` | 2026-11-08 | 2027-03-07 | `SESSION-20261108-d7ce13` +2 | 24,924 | Q3 M31 S3 | — | 応答で作られる人間と、読み方で残る記録——実験科学10資料の精読 |
 | `readings/2027-03-07-ten-experiments-on-mediation-and-becoming.md` | 2026-11-08 | 2027-03-07 | `SESSION-20261108-b1a145` +1 | 17,071 | Q3 M19 S2 | — | 媒介が運ぶもの、運ばないもの——実験科学10資料の精読 |

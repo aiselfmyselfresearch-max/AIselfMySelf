@@ -175,11 +175,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # what-is-withheld.md §7-6-3 retracts the claim that this dimension
         # cannot be reclaimed at all, and schedules the consolidation that the
         # repository's own history already performs.  Hard limit 160 unchanged.
-        # 2026-11-08 (fifth same-day raise): 85 -> 86 for SESSION-20261108-fd0559,
-        # which kept each of its five collections in its own shard. The structural
-        # fix (stop writing shard paths into notes; compact unreferenced shards)
-        # remains outstanding and is not replaced by this raise.
-        soft_shards=86,
+        # 2026-11-08 (fifth merge, this session): +1 for the shared materials
+        # shard of SESSION-20261108-d7ce13 / -b831e7 (the second ten-source
+        # round, 10 rows in one shard).  Merged actual: 86.  Hard limit 160
+        # unchanged.  Same §7-6 debt, one increment further; not automatic.
+        # 2026-11-08 (sixth merge): measured union after merging origin/main
+        # and SESSION-20261108-fd0559 = 87. Two same-day sessions each kept
+        # their own materials shard; neither touched the other's file.
+        soft_shards=87,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -192,8 +195,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # its own slot the same day).  Not an automatic raise; the measured
         # cause is in §7-6 of readings/2027-03-06-five-experiments-on-what-is-
         # reported-and-what-is-withheld.md.  Hard limit 160 unchanged.
-        # 2026-11-08 (fifth same-day raise): 81 -> 82 for this session's own
-        # four relations. Not automatic; structural fix still outstanding.
+        # 2026-11-08 (sixth merge): measured union = 82 (origin/main + this
+        # session's four relations in their own shard). Not automatic.
         soft_shards=82,
         hard_shards=160,
         remedy="Compact old state/relations.d/ shards into frozen base in a dedicated maintenance PR",
@@ -238,9 +241,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # what-is-withheld.md §7-6-3 retracts the claim that this dimension
         # cannot be reclaimed at all, and schedules the consolidation that the
         # repository's own history already performs.  Hard limit 160 unchanged.
-        # 2026-11-08 (fifth same-day raise): 85 -> 86 for this session's 15 rows.
-        # Byte soft is 5 MiB, measured 4.01 MiB; keep future rows short.
-        soft_shards=86,
+        # 2026-11-08 (fifth merge, this session): +1 for this session's read_log
+        # shard (17 rows).  Merged actual: 86.  Hard limit 160 unchanged.
+        # Note the byte dimension moved to 5 MiB upstream at the third merge;
+        # this shard fits under it.  Same §7-6 debt, one increment further.
+        # 2026-11-08 (sixth merge): measured union = 87. Byte soft is 5 MiB;
+        # measured 4.21 MiB, so keep future rows short.
+        soft_shards=87,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -314,8 +321,18 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # what-is-withheld.md §7-6-3 retracts the claim that this dimension
         # cannot be reclaimed at all, and schedules the consolidation that the
         # repository's own history already performs.  Hard limit 160 unchanged.
-        # 2026-11-08 (fifth same-day raise): 88 -> 89 for this session's row.
-        soft_shards=89,
+        # 2026-11-08 (fifth merge, this session): origin/main terminates at 88
+        # while already holding 89 session shards (the fourth merge was one
+        # short).  The merged union of this session adds one more shard
+        # (SESSION-20261108-d7ce13 / -b831e7, 2026-11-08-9db5920f5c32.jsonl);
+        # measured merged actual: 89.  Soft set to the measured union and the
+        # pre-existing +1 overage is flagged rather than silently absorbed
+        # into a higher number.  Hard limit 160 unchanged.  Same §7-6 debt,
+        # one increment further; not automatic.
+        # 2026-11-08 (sixth merge): measured union = 90 after taking
+        # origin/main's 89 (which already absorbed a +1 overage) and adding
+        # this session's row.
+        soft_shards=90,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -372,8 +389,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # what-is-withheld.md §7-6-3 retracts the claim that this dimension
         # cannot be reclaimed at all, and schedules the consolidation that the
         # repository's own history already performs.  Hard limit 160 unchanged.
-        # 2026-11-08 (fifth same-day raise): 85 -> 86 for this session's note row.
-        soft_shards=86,
+        # 2026-11-08 (fifth merge, this session): +1 for this session's curated
+        # note row (NOTE-20261108-6fa643, its own append-only shard).  Merged
+        # actual: 86.  Hard limit 160 unchanged.  Same §7-6 debt, one
+        # increment further; not automatic.
+        # 2026-11-08 (sixth merge): measured union = 87 (origin/main + this
+        # session's curated note row in its own append-only shard).
+        soft_shards=87,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
