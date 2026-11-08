@@ -187,3 +187,9 @@ python3 -m unittest discover -s tests -v
 統合候補を調べるため、今回作成分と2026-11-08の同日シャード、統合済みゼロsuffixを除く既存シャードについて、readings・docs・taxonomy・state内の名前参照を走査した。sessions の候補52件は全て行内に自己所在地があり、notesの58件、read_logの50件は全て別ファイルからの参照があった。materialsには未参照候補が5件あったが、順序保全のための先頭連続範囲を自由に置換できることまでは保証しない。オープンPRの変更対象も確認したが、歴史的リンクを保つ理由は残る。
 
 既存行・旧パスを変えず今回の追記を検証可能にする最小例外として、soft_shardsを materials 81→82、read_log 81→82、notes 81→82、sessions 83→85とした。sessionsの2枠中1枠は基点での既存超過である。hard=160、バイト予算、テスト条件は変更しない。毎回の自動引上げや無制限な収蔵を許可する改訂ではない。保守統合による参照切れを回避する例外であり、技術検証の通過を原典照合の代用にしない。詳細な精読は `readings/2026-11-08-inheritance-is-not-a-saved-self.md`。
+
+## 2026-11-08：sessions.d の soft_shards 90→91（実測・狭い例外）
+
+`SESSION-20261108-98d3c9` / `SESSION-20261108-d235c2` の追記前、基点 `18b8a78` では sessions.d の実シャード数は90で soft=90 だった。今回、実験科学10件精読回のために sessions 専用シャードを1本追加し、実測91となる。materials / read_log / notes は旧シャードの安全な統合により新規1本追加後も soft 内に収めた。relations は上限ちょうどなので新規関係線は追加しない。
+
+sessions の統合候補を全件走査したところ、既存候補はすべて行内 notes に自己所在地を持ち、移動すると記述が偽になる。したがって今回は統合せず、soft_shards を90から91へ1件だけ引き上げる。hard=160、バイト予算、テスト条件は変更しない。毎回の自動引上げではない。新規 sessions 行は将来の統合負債を減らすため、自身の sessions シャードパスを行内 notes に書かない。詳細は `readings/2026-11-08-ten-experiments-on-updating-maintaining-and-letting-go.md` §16。

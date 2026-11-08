@@ -332,7 +332,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-08 (sixth merge): measured union = 90 after taking
         # origin/main's 89 (which already absorbed a +1 overage) and adding
         # this session's row.
-        soft_shards=90,
+        # 2026-11-08 (this session): measured actual = 91 after adding one
+        # sessions shard for the ten-source close-reading round.  All existing
+        # candidate shards still carry self-location in notes, so consolidation
+        # would falsify their own text; the new rows deliberately omit their
+        # sessions-shard path to stop adding that debt.  Narrow +1 exception,
+        # not automatic.  Hard limit 160 unchanged.
+        soft_shards=91,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
