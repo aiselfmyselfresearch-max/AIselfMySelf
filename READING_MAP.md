@@ -4747,7 +4747,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・608本・21,172,411 B）
+## 8. 精読ノート索引（readings/・608本・21,172,749 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 403/608 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -5364,4 +5364,4 @@
 | `readings/2027-02-28-the-abbey-and-the-editor.md` | 2026-11-06 | 2027-02-28 | `SESSION-20261106-8eac7b` +4 | 30,838 | Q3 M7 MOT1 S5 | ✓ | 書き留めた者は写した者ではない——受理・模倣・無随伴強化・瞬間の自己・語数の分解 |
 | `readings/2027-03-01-induced-or-selected.md` | 2026-11-06 | 2027-03-01 | `SESSION-20261106-6a68b8` +1 | 31,313 | Q3 M6 MOT1 S2 | ✓ | 誘導された反応か、選択された変異か——分散・複製・合成・受容野・収束 |
 | `readings/2027-03-02-conditions-of-return.md` | 2026-11-08 | 2027-03-02 | `SESSION-20261108-8d42e1` | 8,228 | M5 S1 | ✓ | 戻ってくるものの条件——核、岩場、検出器、追試、治療 |
-| `readings/2027-03-03-five-experiments-on-self-memory-and-agency.md` | 2026-11-08 | 2027-03-03 | `SESSION-20261108-748ed5` | 10,399 | Q3 M5 S1 | ✓ | 自己を測る五つの実験——選択、身体、再活性化、判断 |
+| `readings/2027-03-03-five-experiments-on-self-memory-and-agency.md` | 2026-11-08 | 2027-03-03 | `SESSION-20261108-748ed5` | 10,565 | Q3 M5 S1 | ✓ | 自己を測る五つの実験——選択、身体、再活性化、判断 |
