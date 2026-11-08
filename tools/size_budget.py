@@ -345,7 +345,23 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-08 (post-merge): merging origin/main PR #598 added one more
         # sessions shard with self-location in notes; measured actual = 92.
         # Narrow +1 merge exception, not automatic.  Hard limit 160 unchanged.
-        soft_shards=92,
+        # 2026-11-08 (SESSION-20261108-b94274): 92 -> 93, with the cause fixed
+        # rather than only the counter.  Both remedies docs/parallel-work.md
+        # asks for were attempted FIRST: the one movable sessions shard
+        # (2026-11-08-46651e70f206, 2 rows, no self-location, no references)
+        # was consolidated into 2026-11-08-000000000000.jsonl, and this
+        # session's own row omits its shard path.  Measured: that move is
+        # net 0 files, because no same-date zero shard existed yet -- it only
+        # creates the anchor that makes the NEXT same-date move net -1.
+        # Of 72 non-consolidated sessions shards, 71 name their own file in
+        # `notes`, so 71 are immovable; and 109 of 189 self-location mentions
+        # across 595 rows already point at deleted paths.  Compaction cannot
+        # reclaim this dimension while that convention stands.  This session
+        # therefore reverses docs/parallel-work.md §2 (stop writing your own
+        # shard path into `notes`; `session_id` already resolves the row), so
+        # new rows are movable and this counter should stop climbing.  Narrow
+        # +1 for this session's shard.  Hard limit 160 unchanged.
+        soft_shards=93,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
