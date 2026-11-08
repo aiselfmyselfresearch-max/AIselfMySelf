@@ -182,13 +182,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-08 (sixth merge): measured union after merging origin/main
         # and SESSION-20261108-fd0559 = 87. Two same-day sessions each kept
         # their own materials shard; neither touched the other's file.
-        # 2026-11-08: 87 -> 91: pre-existing 89 shards (including two legacy
-        # import files), one from parallel merged PR #598, and one shared shard
-        # for the current two five-paper sessions. Candidate compaction and
-        # unresolved path references are documented in
-        # readings/2026-11-08-ten-experiments-on-remembering-with-support.md
-        # §14. This buys no future slots; hard limit remains 160.
-        soft_shards=91,
+        # 2026-11-08 (this session, post-merge): after safe consolidation the
+        # count was 87; merging origin/main PR #598 added one more materials
+        # shard referenced by its sessions.notes, so measured actual = 88.
+        # Narrow +1 merge exception; hard limit 160 unchanged.
+        # 2026-11-08: 88 -> 89 for the shared materials shard of
+        # SESSION-20261108-33d2a7 / -934457. Referenced earlier shards and
+        # order-preserving consolidation were checked; see the report §14.
+        # This is a scoped exception, not headroom; hard limit is unchanged.
+        soft_shards=89,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -253,10 +255,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # this shard fits under it.  Same §7-6 debt, one increment further.
         # 2026-11-08 (sixth merge): measured union = 87. Byte soft is 5 MiB;
         # measured 4.21 MiB, so keep future rows short.
-        # 2026-11-08: 87 -> 89 for parallel PR #598 and one shared read_log
-        # shard for the current sessions. See the measured exception in
+        # 2026-11-08: 87 -> 88 for the shared read_log of the requested
+        # two-session report. Existing candidates have path references; see
         # readings/2026-11-08-ten-experiments-on-remembering-with-support.md §14.
-        soft_shards=89,
+        soft_shards=88,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -341,10 +343,19 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-08 (sixth merge): measured union = 90 after taking
         # origin/main's 89 (which already absorbed a +1 overage) and adding
         # this session's row.
-        # 2026-11-08: 90 -> 92 for the parallel PR #598 shard and the shared
-        # shard containing both current session rows. Compaction debt is in
-        # readings/2026-11-08-ten-experiments-on-remembering-with-support.md §14.
-        soft_shards=92,
+        # 2026-11-08 (this session): measured actual = 91 after adding one
+        # sessions shard for the ten-source close-reading round.  All existing
+        # candidate shards still carry self-location in notes, so consolidation
+        # would falsify their own text; the new rows deliberately omit their
+        # sessions-shard path to stop adding that debt.  Narrow +1 exception,
+        # not automatic.  Hard limit 160 unchanged.
+        # 2026-11-08 (post-merge): merging origin/main PR #598 added one more
+        # sessions shard with self-location in notes; measured actual = 92.
+        # Narrow +1 merge exception, not automatic.  Hard limit 160 unchanged.
+        # 2026-11-08: 92 -> 93 for the current two-session shard. Earlier
+        # candidates carry path references; the new rows omit their own path.
+        # Details: readings/2026-11-08-ten-experiments-on-remembering-with-support.md §14.
+        soft_shards=93,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -407,10 +418,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # increment further; not automatic.
         # 2026-11-08 (sixth merge): measured union = 87 (origin/main + this
         # session's curated note row in its own append-only shard).
-        # 2026-11-08: 87 -> 89 for parallel PR #598 and the current report's
-        # single note shard. See readings/2026-11-08-ten-experiments-on-
-        # remembering-with-support.md §14 for exception and compaction debt.
-        soft_shards=89,
+        # 2026-11-08: 87 -> 88 for the current report's note shard. Other
+        # candidates have path references; the new row omits its own path.
+        # Details: readings/2026-11-08-ten-experiments-on-remembering-with-support.md §14.
+        soft_shards=88,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "

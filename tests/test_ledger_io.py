@@ -1,7 +1,6 @@
 """Tests for the concurrency-safe ledger I/O layer (stdlib unittest only)."""
 from __future__ import annotations
 
-import hashlib
 import json
 import os
 import stat
@@ -25,63 +24,6 @@ def write_jsonl(path: Path, records: list[dict]) -> None:
         "".join(json.dumps(record, ensure_ascii=False) + "\n" for record in records),
         encoding="utf-8",
     )
-
-
-class LegacyMaterialCompatibilityTests(unittest.TestCase):
-    def test_fingerprinted_view_preserves_rows_and_source_file(self) -> None:
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            base = root / "state" / "materials.jsonl"
-            write_jsonl(base, [])
-            shard_dir = base.with_name("materials.d")
-            material = shard_dir / "old-material.jsonl"
-            sources = shard_dir / "old-sources.jsonl"
-            write_jsonl(material, [{
-                "material_id": "MAT-old", "origin": {"source_record_id": "SRC-old"},
-                "verification": "partially_verified", "passage": "unchanged claim",
-            }])
-            write_jsonl(sources, [{"source_id": "SRC-old", "material_ids": ["MAT-old"]}])
-            original = {path: path.read_bytes() for path in (material, sources)}
-            rules = {
-                material.name: (hashlib.sha256(original[material]).hexdigest(), "material"),
-                sources.name: (hashlib.sha256(original[sources]).hexdigest(), "source_only"),
-            }
-            with mock.patch.dict(ledger_io._LEGACY_MATERIAL_SHARDS, rules, clear=True):
-                data, errors = ledger_io.load_collections(
-                    {"materials": (base, "material_id")}, root=root
-                )
-                self.assertEqual(ledger_io.load_jsonl_file(sources, "material_id", root=root), {})
-                self.assertEqual(list(ledger_io.load_jsonl_file(material, "material_id", root=root)), ["MAT-old"])
-            self.assertEqual(errors, [])
-            self.assertEqual(list(data["materials"]), ["MAT-old"])
-            row = data["materials"]["MAT-old"]
-            self.assertEqual(row["origin"]["commit"], ledger_io._LEGACY_MATERIAL_COMMIT)
-            self.assertEqual(row["verification"]["status"], "partially_verified")
-            self.assertEqual(row["verification"]["checked_at"], "not-recorded")
-            self.assertEqual(row["passage"], "unchanged claim")
-            self.assertEqual({path: path.read_bytes() for path in original}, original)
-
-    def test_mismatched_hash_fails_and_normal_bad_records_are_not_exempt(self) -> None:
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            base = root / "state" / "materials.jsonl"
-            write_jsonl(base, [])
-            legacy = base.with_name("materials.d") / "old-sources.jsonl"
-            ordinary = base.with_name("materials.d") / "new-invalid.jsonl"
-            write_jsonl(legacy, [{"source_id": "SRC-changed"}])
-            write_jsonl(ordinary, [{"source_id": "SRC-unregistered"}])
-            with mock.patch.dict(ledger_io._LEGACY_MATERIAL_SHARDS,
-                                 {legacy.name: ("0" * 64, "source_only")}, clear=True):
-                data, errors = ledger_io.load_collections(
-                    {"materials": (base, "material_id")}, root=root, retries=0
-                )
-                with self.assertRaisesRegex(ValueError, "legacy material SHA-256 mismatch"):
-                    ledger_io.load_jsonl_file(legacy, "material_id", root=root)
-                with self.assertRaisesRegex(ValueError, "missing material_id"):
-                    ledger_io.load_jsonl_file(ordinary, "material_id", root=root)
-            self.assertEqual(data["materials"], {})
-            self.assertTrue(any("legacy material SHA-256 mismatch" in e for e in errors))
-            self.assertTrue(any("new-invalid.jsonl:1: missing material_id" in e for e in errors))
 
 
 class UnionLoadTests(unittest.TestCase):

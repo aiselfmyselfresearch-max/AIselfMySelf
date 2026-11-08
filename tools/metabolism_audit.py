@@ -75,14 +75,20 @@ def _material_shard_sources(state_dir: Path, *, base_only: bool) -> dict[str, st
     sources: dict[str, str] = {}
     base_path = state_dir / "materials.jsonl"
     if base_path.exists():
-        for identity in ledger_io.load_jsonl_file(base_path, "material_id", root=state_dir.parent):
-            sources[identity] = "materials.jsonl"
+        for line in base_path.read_text(encoding="utf-8").splitlines():
+            s = line.strip()
+            if s:
+                rec = json.loads(s)
+                sources[rec["material_id"]] = "materials.jsonl"
     if not base_only:
         shard_dir = state_dir / "materials.d"
         if shard_dir.is_dir():
             for shard in sorted(shard_dir.glob("*.jsonl")):
-                for identity in ledger_io.load_jsonl_file(shard, "material_id", root=state_dir.parent):
-                    sources[identity] = shard.name
+                for line in shard.read_text(encoding="utf-8").splitlines():
+                    s = line.strip()
+                    if s:
+                        rec = json.loads(s)
+                        sources[rec["material_id"]] = shard.name
     return sources
 
 

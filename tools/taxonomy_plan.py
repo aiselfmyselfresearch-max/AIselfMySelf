@@ -401,7 +401,11 @@ def build_units(root: Path = ROOT) -> list[WorkerUnit]:
     u07_items: list[UnitItem] = []
     base_mat = root / "state" / "materials.jsonl"
     if base_mat.is_file():
-        for mid in ledger_io.load_jsonl_file(base_mat, "material_id", root=root):
+        for line in ledger_io.read_text_stable(base_mat).splitlines():
+            if not line.strip():
+                continue
+            m = json.loads(line)
+            mid = m["material_id"]
             if mid not in data["materials"]:
                 continue
             m_rec = data["materials"][mid]
@@ -417,7 +421,11 @@ def build_units(root: Path = ROOT) -> list[WorkerUnit]:
     if mat_shard_dir.is_dir():
         for sp in sorted(mat_shard_dir.glob("*.jsonl")):
             bucket = u06_items if sp.name < MATERIALS_SHARD_SPLIT else u07_items
-            for mid in ledger_io.load_jsonl_file(sp, "material_id", root=root):
+            for line in ledger_io.read_text_stable(sp).splitlines():
+                if not line.strip():
+                    continue
+                m = json.loads(line)
+                mid = m["material_id"]
                 if mid in seen_mat or mid not in data["materials"]:
                     continue
                 seen_mat.add(mid)

@@ -20,15 +20,14 @@ import serve_viewer  # noqa: E402
 
 
 def ledger_record_count(root: Path, collection: str) -> int:
-    """Count canonical records, not bibliography-only lines in a legacy shard."""
-    id_fields = {"fragments": "fragment_id", "materials": "material_id"}
-    errors: list[str] = []
-    records = ledger_io.load_jsonl_union(
-        root / "state" / f"{collection}.jsonl", id_fields[collection], errors, root=root
+    """Count records the tools see: the frozen base file plus every shard."""
+    files = [root / "state" / f"{collection}.jsonl"]
+    files.extend(sorted((root / "state" / f"{collection}.d").glob("*.jsonl")))
+    return sum(
+        len([line for line in path.read_text(encoding="utf-8").splitlines() if line.strip()])
+        for path in files
+        if path.is_file()
     )
-    if errors:
-        raise AssertionError("; ".join(errors))
-    return len(records)
 
 
 def copy_repo(destination: Path) -> Path:

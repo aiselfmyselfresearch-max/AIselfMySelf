@@ -329,12 +329,7 @@ class TaxonomyPlanTests(unittest.TestCase):
         self.assertLess(groups["layer|L1"]["lift"], 1.5)
         self.assertLess(groups["layer|L2"]["lift"], 1.5)
         self.assertGreater(groups["layer|L3"]["lift"], 2.0)
-        # The real corpus is append-only and its empirical ratios are not fixed
-        # constants: a 10x cutoff failed at 9.9976x after a legacy import was
-        # made readable.  Assert a substantial separation without treating a
-        # changing observation as an exact invariant (the synthetic test above
-        # checks the mechanism against known data).
-        self.assertGreater(groups["layer|L3"]["swept_share"], 5 * groups["layer|L1"]["swept_share"])
+        self.assertGreater(groups["layer|L3"]["swept_share"], 10 * groups["layer|L1"]["swept_share"])
         # the session rows are the exception this test exists to keep visible: the
         # archive's residue about its own work records sits far closer to chance than
         # its residue about anything else it classified
