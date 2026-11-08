@@ -146,7 +146,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         "state/materials.d",
         soft_bytes=10 * MIB,
         hard_bytes=20 * MIB,
-        soft_shards=80,
+        # 2026-11-08: retain one additional soft slot (81) for this requested
+        # five-source acquisition. Keep the per-session shard separate rather
+        # than appending to another session's file; hard limit remains 160.
+        soft_shards=81,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -200,11 +203,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # the decision.
         soft_bytes=3 * MIB,
         hard_bytes=8 * MIB,
-        # 2026-11-08: retain one additional soft slot (81) because every
+        # 2026-11-08: retain one additional soft slot (82) because every
         # movable one-row session shard either records its own location or is
         # directly linked from a historical report; do not break provenance to
-        # satisfy the previous 80-file boundary. Hard limit remains unchanged.
-        soft_shards=81,
+        # satisfy the previous boundary. Hard limit remains unchanged.
+        soft_shards=82,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -240,7 +243,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         "state/notes.d",
         soft_bytes=1 * MIB,
         hard_bytes=4 * MIB,
-        soft_shards=80,
+        # 2026-11-08: one extra soft slot for this report's curated note;
+        # keep the per-report row in its own append-only session shard.
+        soft_shards=81,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
