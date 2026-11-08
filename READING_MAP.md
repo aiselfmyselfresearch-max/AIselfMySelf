@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3305 件（research_excerpt 1081 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3310 件（research_excerpt 1086 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6497 件
-- **探究セッション（Sessions）**：582 回
+- **探究セッション（Sessions）**：583 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3305 件・詳細は map/3*.md）
+## 4. 対話素材（3310 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3830,6 +3830,11 @@
 | `MAT-20261108-8da388` | research_excerpt | Claudia Fugazza, Ákos Pogány, Ádám Miklósi『Recall of Others' Actions after Incidental Enc… |
 | `MAT-20261108-26ecbb` | research_excerpt | Christelle Jozet-Alves, Marion Bertin, Nicky S Clayton『Evidence of episodic-like memory i… |
 | `MAT-20261108-5b54f5` | research_excerpt | Ravi D Nath, Claire N Bedbrook, Michael J Abrams, Tiffany Fong, Paul W Sternberg, Viviana… |
+| `MAT-EVD-20261108-9ec62c` | research_excerpt | J. B. Gurdon『Gurdon（1962）——分化した核と、それを受け取る卵』（1962） |
+| `MAT-EVD-20261108-e7720b` | research_excerpt | Arthur B. Pardee, François Jacob, Jacques Monod『Pardee・Jacob・Monod（1959）——継承される構造と、遅れて働く調… |
+| `MAT-EVD-20261108-12b3bf` | research_excerpt | C. H. Waddington『Waddington（1953）——環境への応答が、選択の履歴によって変わる』（1953） |
+| `MAT-EVD-20261108-731831` | research_excerpt | Harriet B. Creighton, Barbara McClintock『Creighton・McClintock（1931）——二つの観察経路をつなぐ』（1931） |
+| `MAT-EVD-20261108-1ce828` | research_excerpt | George W. Beadle, Edward L. Tatum『Beadle・Tatum（1941）——欠損を、環境からの補給で読み分ける』（1941） |
 | `MAT-20261108-c11c24` | research_excerpt | Angelika Kunkel, Katharina Schmidt, Helena Hartmann, Torben Strietzel, Jens-Lennart Sperz… |
 | `MAT-20261108-9cb83b` | research_excerpt | Paul A G Forbes, Gökhan Aydogan, Julia Braunstein, Boryana Todorova, Isabella C Wagner, P… |
 | `MAT-20261108-74d816` | research_excerpt | Flavio Jean Schmidig, Simon Ruch, Katharina Henke『Episodic long-term memory formation dur… |
@@ -4545,6 +4550,7 @@
 | `SESSION-20261107-ce208d` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-c477ed` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-922e6b` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-37bcc0` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-5a5795` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-082`, `Q-20261024-c3d7a5` | — | — |
 | `SESSION-20261108-260f17` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-d24387` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4741,7 +4747,7 @@
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
-| `map/31-materials-research-11.md` | 81 | 202,496 |
+| `map/31-materials-research-11.md` | 86 | 213,339 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4765,9 +4771,9 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
-| `map/50-sessions-10.md` | 50 | 42,460 |
-| `map/50-sessions-11.md` | 50 | 47,114 |
-| `map/50-sessions-12.md` | 32 | 26,405 |
+| `map/50-sessions-10.md` | 50 | 42,419 |
+| `map/50-sessions-11.md` | 50 | 46,947 |
+| `map/50-sessions-12.md` | 33 | 27,481 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4785,23 +4791,23 @@
 | `map/60-notes-15.md` | 25 | 83,706 |
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 110,823 |
-| `map/60-notes-18.md` | 25 | 112,685 |
-| `map/60-notes-19.md` | 25 | 63,807 |
-| `map/60-notes-20.md` | 25 | 61,844 |
-| `map/60-notes-21.md` | 25 | 66,803 |
-| `map/60-notes-22.md` | 25 | 68,274 |
-| `map/60-notes-23.md` | 25 | 102,601 |
-| `map/60-notes-24.md` | 25 | 99,263 |
-| `map/60-notes-25.md` | 16 | 89,223 |
+| `map/60-notes-18.md` | 25 | 106,718 |
+| `map/60-notes-19.md` | 25 | 63,185 |
+| `map/60-notes-20.md` | 25 | 57,935 |
+| `map/60-notes-21.md` | 25 | 73,533 |
+| `map/60-notes-22.md` | 25 | 65,629 |
+| `map/60-notes-23.md` | 25 | 92,685 |
+| `map/60-notes-24.md` | 25 | 91,071 |
+| `map/60-notes-25.md` | 22 | 121,478 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・616本・21,441,858 B）
+## 8. 精読ノート索引（readings/・622本・21,481,193 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 411/616 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 417/622 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：254 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：255 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：67 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5251,8 +5257,14 @@
 | `readings/2026-11-08-five-experiments-on-records-and-their-readers.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-260f17` +2 | 22,042 | Q3 M7 S3 | — | 記録の読み出し条件——記録から出発する実験、記録に立ち向かう実験、記録を再生する実験（実験科学5件の精読） |
 | `readings/2026-11-08-five-experiments-on-the-body-below-the-self.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-5a284e` +1 | 16,994 | Q3 M5 R1 S2 | — | 自己の下に住む機構——実験科学の資料5件を読む（信念・ストレス・睡眠・想像・罪悪感） |
 | `readings/2026-11-08-four-stickers-and-forty-kilohertz.md` | — | 2026-11-08 | `SESSION-20261108-e70636` +3 | 20,599 | Q3 F19 M7 MOT3 S4 ERR1 | ✓ | 四枚の札と四十キロヘルツ — 読まれ方を争えないものに、書庫は何を返すか（SESSION-20261108-e7063… |
+| `readings/2026-11-08-inheritance-is-not-a-saved-self.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-37bcc0` | 10,084 | Q3 M7 S1 | ✓ | 継承される情報は、自己そのものか——発生・調節・選択・組換え・救済の五実験を読む |
 | `readings/2026-11-08-modified-brain-unmodified-file.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-c3a25b` +4 | 8,504 | Q9 F4 M5 MOT1 S5 | — | 修飾された脳と、修飾されないファイル——乾板の間隔をジェイムズ原典で止める |
 | `readings/2026-11-08-replay-sleep-and-open-label.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-d24387` | 18,499 | Q3 M5 S1 | ✓ | 再生しても同じにはならない——偶然性、統計学習、睡眠、開示されたプラセボ、内部の物差し |
+| `readings/2026-11-08-source-beadle-tatum-biochemistry.md` | 2026-11-08 | 2026-11-08 | — | 1,284 | M1 | ✓ | 資料ノート：Beadle・Tatum（1941）——欠損を、環境からの補給で読み分ける |
+| `readings/2026-11-08-source-creighton-mcclintock-crossing.md` | 2026-11-08 | 2026-11-08 | — | 1,307 | M1 | ✓ | 資料ノート：Creighton・McClintock（1931）——二つの観察経路をつなぐ |
+| `readings/2026-11-08-source-gurdon-nuclear-transfer.md` | 2026-11-08 | 2026-11-08 | — | 1,339 | M1 | ✓ | 資料ノート：Gurdon（1962）——分化した核と、それを受け取る卵 |
+| `readings/2026-11-08-source-pardee-inducibility.md` | 2026-11-08 | 2026-11-08 | — | 1,381 | M1 | ✓ | 資料ノート：Pardee・Jacob・Monod（1959）——継承される構造と、遅れて働く調節 |
+| `readings/2026-11-08-source-waddington-assimilation.md` | 2026-11-08 | 2026-11-08 | — | 1,229 | M1 | ✓ | 資料ノート：Waddington（1953）——環境への応答が、選択の履歴によって変わる |
 | `readings/2026-11-08-the-shared-prefix-and-the-divergent-continuation.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-5a5795` +1 | 9,897 | Q6 F8 M1 R2 S2 ED1 | — | 共有された接頭辞と、分かれた続き——二稿の昇格点検と、継承の連鎖の検証 |
 | `readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md` | — | 2026-11-08 | `SESSION-20261108-396bfa` +5 | 21,655 | Q16 F11 M16 MOT2 S6 ERR1 | ✓ | 尾は硝子に、夜は挟みに —— 連続の置き所をめぐる改稿・変奏と、その切断（SESSION-20261108-396bf… |
 | `readings/2026-11-08-what-gets-recorded-five-experiments.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-b33b90` +1 | 16,782 | Q3 M14 S2 | ✓ | 記録されるのは何か——冗長な信号・問題の形・目印の輪・病名・統制の五実験 |
