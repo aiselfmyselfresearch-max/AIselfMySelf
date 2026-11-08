@@ -165,7 +165,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         "state/read_log.d",
         soft_bytes=4 * MIB,
         hard_bytes=10 * MIB,
-        soft_shards=80,
+        # 2026-11-08: retain one additional soft slot (81) because two
+        # parallel sessions on the same day (PR #585 arena/e8b72114-aiselfmyself
+        # and PR #586 arena/165c5d4c-aiselfmyself) each kept their own shard
+        # as docs/parallel-work.md requires; after both merged, the union is
+        # 81. Hard limit remains 160.
+        soft_shards=81,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -207,7 +212,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # movable one-row session shard either records its own location or is
         # directly linked from a historical report; do not break provenance to
         # satisfy the previous boundary. Hard limit remains unchanged.
-        soft_shards=82,
+        # 2026-11-08 (evening): a further one-slot raise (83) for the same
+        # reason as read_log.d -- two parallel same-day sessions each kept
+        # their own sessions shard; after both merged the union is 83.
+        # Hard limit remains unchanged.
+        soft_shards=83,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
