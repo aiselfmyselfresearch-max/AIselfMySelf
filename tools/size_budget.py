@@ -156,7 +156,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # five-source rounds (SESSION-20261108-74608b / -cc7bdf), which kept
         # one shared materials shard instead of touching another session's
         # file. Hard limit remains 160.
-        soft_shards=83,
+        # 2026-11-08: 83 -> 84 for the second ten-source round
+        # (SESSION-20261108-d7ce13 / -b831e7, one shared materials shard).
+        # Hard limit remains 160.
+        soft_shards=84,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -184,7 +187,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # read_log shard, 28 rows). Measured after appending: 4,187,773 B of
         # the 4 MiB byte soft limit -- the byte dimension is now the binding
         # one, so future rows in this directory must stay short.
-        soft_shards=83,
+        # 2026-11-08: 83 -> 84 for the second ten-source round (one read_log
+        # shard, 17 rows). Hard limit remains 160.
+        soft_shards=84,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -235,7 +240,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # baseline and narrow exception in docs/parallel-work.md (2026-11-08).
         # 2026-11-08: 85 -> 86 for the ten-source session (two five-source
         # rounds kept in one sessions shard). Hard limit remains 160.
-        soft_shards=86,
+        # 2026-11-08: 86 -> 87 for the second ten-source round (two rounds
+        # kept in one sessions shard). Hard limit remains 160.
+        soft_shards=87,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -278,7 +285,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # baseline and narrow exception in docs/parallel-work.md (2026-11-08).
         # 2026-11-08: 82 -> 83 for the ten-source session's curated note row
         # (one row, its own append-only shard, as the note schema requires).
-        soft_shards=83,
+        # 2026-11-08: 83 -> 84 for the second ten-source round's curated note
+        # row (one row, its own append-only shard). Hard limit remains 160.
+        soft_shards=84,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
