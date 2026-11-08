@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3255 件（research_excerpt 1031 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3260 件（research_excerpt 1036 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6479 件
-- **探究セッション（Sessions）**：572 回
+- **探究セッション（Sessions）**：573 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -770,7 +770,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3255 件・詳細は map/3*.md）
+## 4. 対話素材（3260 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3824,6 +3824,11 @@
 | `MAT-EVD-20261108-8d4203` | research_excerpt | B. P. Abbott et al., LIGO Scientific Collaboration, Virgo Collaboration『B. P. Abbott et a… |
 | `MAT-EVD-20261108-8d4204` | research_excerpt | Richard A. Klein et al.『Richard A. Klein et al.（2018）——多施設追試：基準と異質性』（2018） |
 | `MAT-EVD-20261108-8d4205` | research_excerpt | RECOVERY Collaborative Group『RECOVERY Collaborative Group（2021）——無作為化試験：酸素補助と治療効果』（2021） |
+| `MAT-EVD-20261108-21cec2` | research_excerpt | Zachary D. Blount, Christina Z. Borland, Richard E. Lenski『Zachary D. Blount、Christina Z.… |
+| `MAT-EVD-20261108-cb542e` | research_excerpt | Jenny R. Saffran, Richard N. Aslin, Elissa L. Newport『Jenny R. Saffran、Richard N. Aslin、E… |
+| `MAT-EVD-20261108-b8a6d1` | research_excerpt | Ullrich Wagner, Steffen Gais, Hilde Haider, Rolf Verleger, Jan Born『Ullrich Wagner、Steffe… |
+| `MAT-EVD-20261108-14ebcb` | research_excerpt | Ted J. Kaptchuk, Elizabeth Friedlander, John M. Kelley, M. Norma Sanchez, Efi Kokkotou, J… |
+| `MAT-EVD-20261108-a116ee` | research_excerpt | Torkel Hafting, Marianne Fyhn, Sturla Molden, May-Britt Moser, Edvard I. Moser『Torkel Haf… |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -4493,6 +4498,7 @@
 | `SESSION-20261107-c477ed` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-922e6b` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-5a5795` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-082`, `Q-20261024-c3d7a5` | — | — |
+| `SESSION-20261108-d24387` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-8d42e1` | 2027-03-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-f57a30` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-3c24ee` | — | — |
 | `SESSION-20261108-c3a25b` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-019`, `Q-035`, `Q-043`, `Q-20261108-b3e2fc`, `Q-20261025-e6402b` | — | — |
@@ -4680,7 +4686,7 @@
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
-| `map/31-materials-research-11.md` | 31 | 57,635 |
+| `map/31-materials-research-11.md` | 36 | 68,879 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4704,9 +4710,9 @@
 | `map/50-sessions-07.md` | 50 | 42,333 |
 | `map/50-sessions-08.md` | 50 | 39,709 |
 | `map/50-sessions-09.md` | 50 | 41,133 |
-| `map/50-sessions-10.md` | 50 | 42,342 |
-| `map/50-sessions-11.md` | 50 | 47,373 |
-| `map/50-sessions-12.md` | 22 | 17,527 |
+| `map/50-sessions-10.md` | 50 | 42,283 |
+| `map/50-sessions-11.md` | 50 | 47,208 |
+| `map/50-sessions-12.md` | 23 | 18,538 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4724,23 +4730,23 @@
 | `map/60-notes-15.md` | 25 | 83,706 |
 | `map/60-notes-16.md` | 25 | 88,383 |
 | `map/60-notes-17.md` | 25 | 110,823 |
-| `map/60-notes-18.md` | 25 | 108,830 |
-| `map/60-notes-19.md` | 25 | 57,815 |
-| `map/60-notes-20.md` | 25 | 68,217 |
-| `map/60-notes-21.md` | 25 | 63,149 |
-| `map/60-notes-22.md` | 25 | 74,173 |
-| `map/60-notes-23.md` | 25 | 109,381 |
-| `map/60-notes-24.md` | 25 | 109,614 |
-| `map/60-notes-25.md` | 6 | 36,894 |
+| `map/60-notes-18.md` | 25 | 109,421 |
+| `map/60-notes-19.md` | 25 | 59,544 |
+| `map/60-notes-20.md` | 25 | 65,817 |
+| `map/60-notes-21.md` | 25 | 65,040 |
+| `map/60-notes-22.md` | 25 | 74,114 |
+| `map/60-notes-23.md` | 25 | 106,999 |
+| `map/60-notes-24.md` | 25 | 107,482 |
+| `map/60-notes-25.md` | 7 | 43,580 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・606本・21,105,761 B）
+## 8. 精読ノート索引（readings/・607本・21,149,626 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 401/606 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 402/607 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：245 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：246 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：65 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5188,6 +5194,7 @@
 | `readings/2026-11-07-who-was-charged-for-the-line.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-6ffb13` +8 | 22,353 | Q4 M5 S9 ERR6 | ✓ | その行は、だれの口座に付くのか——エレミヤ31:29–30と、三代越しの一語「とばり」 |
 | `readings/2026-11-08-four-stickers-and-forty-kilohertz.md` | — | 2026-11-08 | `SESSION-20261108-e70636` +3 | 20,599 | Q3 F19 M7 MOT3 S4 ERR1 | ✓ | 四枚の札と四十キロヘルツ — 読まれ方を争えないものに、書庫は何を返すか（SESSION-20261108-e7063… |
 | `readings/2026-11-08-modified-brain-unmodified-file.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-c3a25b` +4 | 8,504 | Q9 F4 M5 MOT1 S5 | — | 修飾された脳と、修飾されないファイル——乾板の間隔をジェイムズ原典で止める |
+| `readings/2026-11-08-replay-sleep-and-open-label.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-d24387` | 18,499 | Q3 M5 S1 | — | 再生しても同じにはならない——偶然性、統計学習、睡眠、開示されたプラセボ、内部の物差し |
 | `readings/2026-11-08-the-shared-prefix-and-the-divergent-continuation.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-5a5795` +1 | 9,897 | Q6 F8 M1 R2 S2 ED1 | — | 共有された接頭辞と、分かれた続き——二稿の昇格点検と、継承の連鎖の検証 |
 | `readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md` | — | 2026-11-08 | `SESSION-20261108-396bfa` +5 | 21,655 | Q16 F11 M16 MOT2 S6 ERR1 | ✓ | 尾は硝子に、夜は挟みに —— 連続の置き所をめぐる改稿・変奏と、その切断（SESSION-20261108-396bf… |
 | `readings/2026-11-08-whose-walk-the-heart-waited-for.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-f57a30` +4 | 14,668 | Q4 F1 M4 MOT1 S5 ERR1 | — | 火は誰の前で燃えていたのか——炭火渡りの心拍同期を原典で読み、書庫に「同じ今」があるかを測る |
@@ -5350,4 +5357,4 @@
 | `readings/2027-02-26-who-did-not-see-it-still-told-the-details.md` | 2026-11-06 | 2027-02-26 | `SESSION-20261106-4d3a59` +1 | 26,065 | Q3 M11 S2 ERR1 | ✓ | 見なかったと答えた者も、同じだけ細部を語る——題・手・出所・履歴という、記録の外にある四つの条件 |
 | `readings/2027-02-28-the-abbey-and-the-editor.md` | 2026-11-06 | 2027-02-28 | `SESSION-20261106-8eac7b` +4 | 30,838 | Q3 M7 MOT1 S5 | ✓ | 書き留めた者は写した者ではない——受理・模倣・無随伴強化・瞬間の自己・語数の分解 |
 | `readings/2027-03-01-induced-or-selected.md` | 2026-11-06 | 2027-03-01 | `SESSION-20261106-6a68b8` +1 | 31,313 | Q3 M6 MOT1 S2 | ✓ | 誘導された反応か、選択された変異か——分散・複製・合成・受容野・収束 |
-| `readings/2027-03-02-conditions-of-return.md` | 2026-11-08 | 2027-03-02 | `SESSION-20261108-8d42e1` | 8,228 | M5 S1 | — | 戻ってくるものの条件——核、岩場、検出器、追試、治療 |
+| `readings/2027-03-02-conditions-of-return.md` | 2026-11-08 | 2027-03-02 | `SESSION-20261108-8d42e1` | 8,228 | M5 S1 | ✓ | 戻ってくるものの条件——核、岩場、検出器、追試、治療 |
