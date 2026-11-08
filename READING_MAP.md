@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3385 件（research_excerpt 1161 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6504 件
-- **探究セッション（Sessions）**：595 回
+- **探究セッション（Sessions）**：596 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4635,6 +4635,7 @@
 | `SESSION-20261108-d24387` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-fd0559` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-6befc5` | 2027-03-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-b94274` | 2026-11-08 | `Q-20270203-00b872`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-8d42e1` | 2027-03-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-d7ce13` | 2027-03-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-b831e7` | 2027-03-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4860,9 +4861,9 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
-| `map/50-sessions-10.md` | 50 | 41,185 |
-| `map/50-sessions-11.md` | 50 | 45,612 |
-| `map/50-sessions-12.md` | 45 | 38,860 |
+| `map/50-sessions-10.md` | 50 | 41,016 |
+| `map/50-sessions-11.md` | 50 | 45,497 |
+| `map/50-sessions-12.md` | 46 | 39,795 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4879,25 +4880,25 @@
 | `map/60-notes-14.md` | 25 | 119,500 |
 | `map/60-notes-15.md` | 25 | 83,706 |
 | `map/60-notes-16.md` | 25 | 88,446 |
-| `map/60-notes-17.md` | 25 | 110,823 |
-| `map/60-notes-18.md` | 25 | 106,837 |
-| `map/60-notes-19.md` | 25 | 68,162 |
-| `map/60-notes-20.md` | 25 | 54,452 |
-| `map/60-notes-21.md` | 25 | 74,564 |
-| `map/60-notes-22.md` | 25 | 65,011 |
-| `map/60-notes-23.md` | 25 | 89,513 |
-| `map/60-notes-24.md` | 25 | 96,228 |
-| `map/60-notes-25.md` | 25 | 128,076 |
-| `map/60-notes-26.md` | 5 | 27,244 |
+| `map/60-notes-17.md` | 25 | 110,902 |
+| `map/60-notes-18.md` | 25 | 106,972 |
+| `map/60-notes-19.md` | 25 | 74,538 |
+| `map/60-notes-20.md` | 25 | 54,453 |
+| `map/60-notes-21.md` | 25 | 75,324 |
+| `map/60-notes-22.md` | 25 | 63,887 |
+| `map/60-notes-23.md` | 25 | 87,966 |
+| `map/60-notes-24.md` | 25 | 96,295 |
+| `map/60-notes-25.md` | 25 | 126,874 |
+| `map/60-notes-26.md` | 6 | 32,092 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・630本・21,848,676 B）
+## 8. 精読ノート索引（readings/・631本・21,868,327 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 425/630 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 426/631 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：262 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：263 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：72 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5357,6 +5358,7 @@
 | `readings/2026-11-08-source-waddington-assimilation.md` | 2026-11-08 | 2026-11-08 | — | 1,229 | M1 | ✓ | 資料ノート：Waddington（1953）——環境への応答が、選択の履歴によって変わる |
 | `readings/2026-11-08-ten-experiments-on-body-electrode-mirror-and-culture.md` | 2026-11-08 | 2026-11-08 | — | 13,783 | Q3 M19 | — | 身体、電極、鏡、培養器——実験科学10資料から、人間と自己を問い直す |
 | `readings/2026-11-08-ten-experiments-on-updating-maintaining-and-letting-go.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-98d3c9` +1 | 16,614 | Q3 M10 S2 ERR1 | ✓ | 実験科学10件精読報告——更新し、維持し、手放すこと |
+| `readings/2026-11-08-the-correction-layer-was-the-one-thing-not-corrected.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-b94274` | 10,023 | Q5 S1 ERR11 | ✓ | 訂正の層だけが、訂正されていなかった |
 | `readings/2026-11-08-the-shared-prefix-and-the-divergent-continuation.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-5a5795` +1 | 9,897 | Q6 F8 M1 R2 S2 ED1 | — | 共有された接頭辞と、分かれた続き——二稿の昇格点検と、継承の連鎖の検証 |
 | `readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md` | — | 2026-11-08 | `SESSION-20261108-396bfa` +5 | 21,655 | Q16 F11 M16 MOT2 S6 ERR1 | ✓ | 尾は硝子に、夜は挟みに —— 連続の置き所をめぐる改稿・変奏と、その切断（SESSION-20261108-396bf… |
 | `readings/2026-11-08-the-trace-written-before-the-witness.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-fd0559` +2 | 21,343 | Q3 M25 S3 | — | 証人のいない痕跡——実験科学10資料の精読 |

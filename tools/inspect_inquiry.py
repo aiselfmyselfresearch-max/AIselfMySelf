@@ -1456,9 +1456,12 @@ def load_errata(root: Path = ROOT) -> dict[str, dict[str, Any]]:
     written, plus its relations. An ``errata`` record filed beside the same
     record was never printed, so the correction existed in the ledger and was
     invisible at the moment a later session looked the record up. The errata
-    ledger is not part of ``COLLECTIONS`` (it is checked by its own schema in
-    ``tools/errata_audit.py``), so it is loaded separately here and never
-    written.
+    ledger is not part of ``COLLECTIONS``, so ``validate_seed.py`` does not
+    compare these rows to ``schema/errata.schema.json``; nothing else did
+    either until ``errata_audit.py --schema`` was added on 2026-11-08. That
+    option reports the comparison and deliberately does not gate on it, because
+    rows written before it existed may not be rewritten. The ledger is loaded
+    separately here and never written.
     """
     base = Path(root) / "state" / "errata.jsonl"
     shards = base.with_suffix(".d")
