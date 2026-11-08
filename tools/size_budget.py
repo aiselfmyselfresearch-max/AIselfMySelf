@@ -182,7 +182,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-08 (sixth merge): measured union after merging origin/main
         # and SESSION-20261108-fd0559 = 87. Two same-day sessions each kept
         # their own materials shard; neither touched the other's file.
-        soft_shards=87,
+        # 2026-11-08: 87 -> 91: pre-existing 89 shards (including two legacy
+        # import files), one from parallel merged PR #598, and one shared shard
+        # for the current two five-paper sessions. Candidate compaction and
+        # unresolved path references are documented in
+        # readings/2026-11-08-ten-experiments-on-remembering-with-support.md
+        # §14. This buys no future slots; hard limit remains 160.
+        soft_shards=91,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -247,7 +253,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # this shard fits under it.  Same §7-6 debt, one increment further.
         # 2026-11-08 (sixth merge): measured union = 87. Byte soft is 5 MiB;
         # measured 4.21 MiB, so keep future rows short.
-        soft_shards=87,
+        # 2026-11-08: 87 -> 89 for parallel PR #598 and one shared read_log
+        # shard for the current sessions. See the measured exception in
+        # readings/2026-11-08-ten-experiments-on-remembering-with-support.md §14.
+        soft_shards=89,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -332,7 +341,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-08 (sixth merge): measured union = 90 after taking
         # origin/main's 89 (which already absorbed a +1 overage) and adding
         # this session's row.
-        soft_shards=90,
+        # 2026-11-08: 90 -> 92 for the parallel PR #598 shard and the shared
+        # shard containing both current session rows. Compaction debt is in
+        # readings/2026-11-08-ten-experiments-on-remembering-with-support.md §14.
+        soft_shards=92,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -395,7 +407,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # increment further; not automatic.
         # 2026-11-08 (sixth merge): measured union = 87 (origin/main + this
         # session's curated note row in its own append-only shard).
-        soft_shards=87,
+        # 2026-11-08: 87 -> 89 for parallel PR #598 and the current report's
+        # single note shard. See readings/2026-11-08-ten-experiments-on-
+        # remembering-with-support.md §14 for exception and compaction debt.
+        soft_shards=89,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "

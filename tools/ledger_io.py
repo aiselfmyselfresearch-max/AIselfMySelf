@@ -51,6 +51,7 @@ from __future__ import annotations
 
 import contextlib
 import errno
+import hashlib
 import heapq
 import json
 import os
@@ -185,6 +186,53 @@ def read_snapshot(paths: Iterable[Path], *, retries: int = 5, delay: float = 0.0
     raise LedgerBusy("ledger files changed while they were being read; retry after the writer finishes")
 
 
+# A historical import placed a source-only bibliography in materials.d and
+# wrote two material metadata fields in the wrong shape.  Keep both files and
+# their original addresses byte-for-byte: the following compatibility view is
+# intentionally limited to those exact paths AND contents.  Any later change
+# to either file is an error, not an invitation to silently accept bad data.
+# See docs/legacy-materials-compatibility.md for the provenance and limits.
+_LEGACY_MATERIAL_SHARDS = {
+    "2026-11-08-a7f3b2c1d4e5.jsonl": (
+        "bdfc50b5540825edd1026f72a8f2b21f5eb37dcad932b06f6692a6e2eee71ec2",
+        "material",
+    ),
+    "2026-11-08-a7f3c2d1d4e5.jsonl": (
+        "267e6eff56c5c3ae52337a3c12376d034d8012efd3b1fcce75d2fd0e75a233ad",
+        "source_only",
+    ),
+}
+_LEGACY_MATERIAL_COMMIT = "3eec82371cf7a0280da844598b7be25930d4a47b"
+
+
+def _legacy_material_kind(path: Path, text: str, id_key: str) -> str | None:
+    """Return a fingerprinted legacy treatment, or None for ordinary rows."""
+    if (
+        id_key != "material_id"
+        or path.parent.name != "materials.d"
+        or path.parent.parent.name != "state"
+        or path.name not in _LEGACY_MATERIAL_SHARDS
+    ):
+        return None
+    expected, kind = _LEGACY_MATERIAL_SHARDS[path.name]
+    actual = hashlib.sha256(text.encode("utf-8")).hexdigest()
+    return kind if actual == expected else "hash_mismatch"
+
+
+def _legacy_material_view(record: dict[str, Any]) -> dict[str, Any]:
+    """Adapt only metadata; never alter the historical row or its claims."""
+    return {
+        **record,
+        "origin": {**record["origin"], "commit": _LEGACY_MATERIAL_COMMIT},
+        "verification": {
+            "status": record["verification"],
+            "checked_at": "not-recorded",
+            "method": "旧行は状態の文字列のみで、確認日時・方法は未記録。互換表示であり再検証ではない。",
+            "note": "元の出典と確認範囲は先行報告を参照。原文・結論の正しさはこの変換では保証しない。",
+        },
+    }
+
+
 def _parse_collection(
     files: list[Path],
     texts: dict[Path, str],
@@ -197,6 +245,14 @@ def _parse_collection(
     for path in files:
         text = texts.get(path)
         if text is None:
+            continue
+        legacy_kind = _legacy_material_kind(path, text, id_key)
+        if legacy_kind == "hash_mismatch":
+            errors.append(f"{display_path(path, root)}: legacy material SHA-256 mismatch")
+            continue
+        if legacy_kind == "source_only":
+            # Bibliographic sidecar, not ten material rows.  Its contents remain
+            # at the original path and are also embedded in the material rows.
             continue
         for lineno, line in enumerate(text.splitlines(), start=1):
             if not line.strip():
@@ -220,9 +276,25 @@ def _parse_collection(
                     f"(first defined at {display_path(previous_path, root)}:{previous_line})"
                 )
                 continue
+            if legacy_kind == "material":
+                record = _legacy_material_view(record)
             records[identity] = record
             first_seen[identity] = (path, lineno)
     return records, errors
+
+
+def load_jsonl_file(path: Path, id_key: str, *, root: Path | None = None) -> dict[str, dict[str, Any]]:
+    """Load one file with the same strict rules as the collection union.
+
+    Shard-level tools need the filename as well as the rows; parsing raw lines
+    themselves would miscount the fingerprinted historical source-only file.
+    Any malformed or changed file still raises rather than being skipped.
+    """
+    text = read_text_stable(path)
+    records, errors = _parse_collection([path], {path: text}, id_key, root)
+    if errors:
+        raise ValueError("; ".join(errors))
+    return records
 
 
 _EDITORIAL_TARGET_TO_FILENAME: dict[str, str] = {
