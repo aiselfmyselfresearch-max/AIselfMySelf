@@ -149,7 +149,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-08: retain one additional soft slot (81) for this requested
         # five-source acquisition. Keep the per-session shard separate rather
         # than appending to another session's file; hard limit remains 160.
-        soft_shards=81,
+        # 2026-11-08: 81 -> 82 for the five-source rehearsal session.
+        # Preserve existing path-addressed provenance; see the measured
+        # baseline and narrow exception in docs/parallel-work.md (2026-11-08).
+        soft_shards=82,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -170,7 +173,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # and PR #586 arena/165c5d4c-aiselfmyself) each kept their own shard
         # as docs/parallel-work.md requires; after both merged, the union is
         # 81. Hard limit remains 160.
-        soft_shards=81,
+        # 2026-11-08: 81 -> 82 for the five-source rehearsal session.
+        # Preserve existing path-addressed provenance; see the measured
+        # baseline and narrow exception in docs/parallel-work.md (2026-11-08).
+        soft_shards=82,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -216,7 +222,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # reason as read_log.d -- two parallel same-day sessions each kept
         # their own sessions shard; after both merged the union is 83.
         # Hard limit remains unchanged.
-        soft_shards=83,
+        # 2026-11-08: 83 -> 85 for the five-source rehearsal session.
+        # Preserve existing path-addressed provenance; see the measured
+        # baseline and narrow exception in docs/parallel-work.md (2026-11-08).
+        soft_shards=85,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -254,7 +263,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         hard_bytes=4 * MIB,
         # 2026-11-08: one extra soft slot for this report's curated note;
         # keep the per-report row in its own append-only session shard.
-        soft_shards=81,
+        # 2026-11-08: 81 -> 82 for the five-source rehearsal session.
+        # Preserve existing path-addressed provenance; see the measured
+        # baseline and narrow exception in docs/parallel-work.md (2026-11-08).
+        soft_shards=82,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
