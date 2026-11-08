@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3405 件（research_excerpt 1181 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3415 件（research_excerpt 1191 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6510 件
-- **探究セッション（Sessions）**：600 回
+- **解釈的関係（Relations）**：6530 件
+- **探究セッション（Sessions）**：602 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3405 件・詳細は map/3*.md）
+## 4. 対話素材（3415 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3880,6 +3880,16 @@
 | `MAT-EVD-20261108-12b3bf` | research_excerpt | C. H. Waddington『Waddington（1953）——環境への応答が、選択の履歴によって変わる』（1953） |
 | `MAT-EVD-20261108-731831` | research_excerpt | Harriet B. Creighton, Barbara McClintock『Creighton・McClintock（1931）——二つの観察経路をつなぐ』（1931） |
 | `MAT-EVD-20261108-1ce828` | research_excerpt | George W. Beadle, Edward L. Tatum『Beadle・Tatum（1941）——欠損を、環境からの補給で読み分ける』（1941） |
+| `MAT-EVD-20261108-85d570` | research_excerpt | Jie Sui, Pia Rotshtein, Glyn W. Humphreys『Sui, Rotshtein & Humphreys (2013) 無意味図形への「自己」ラベ… |
+| `MAT-EVD-20261108-175d4a` | research_excerpt | Greg J. Stephens, Lauren J. Silbert, Uri Hasson『Stephens, Silbert & Hasson (2010) 発話理解を支え… |
+| `MAT-EVD-20261108-270947` | research_excerpt | Alin Coman, Ida Momennejad, Rae D. Drach, Andra Geana『Coman, Momennejad, Drach & Geana (2… |
+| `MAT-EVD-20261108-8e2a46` | research_excerpt | Simon Kirby, Hannah Cornish, Kenny Smith『Kirby, Cornish & Smith (2008) 実験室内の反復学習連鎖における体系的… |
+| `MAT-EVD-20261108-b18e93` | research_excerpt | Maria Laura Filippetti, Mark H. Johnson, Sarah Lloyd-Fox, Danica Dragovic, Teresa Farroni… |
+| `MAT-EVD-20261108-b22a86` | research_excerpt | Fumihiro Kano, Christopher Krupenye, Satoshi Hirata, Masaki Tomonaga, Josep Call『Kano, Kr… |
+| `MAT-EVD-20261108-9c8410` | research_excerpt | Inbal Ben-Ami Bartal, Jean Decety, Peggy Mason『Ben-Ami Bartal, Decety & Mason (2011) ラットに… |
+| `MAT-EVD-20261108-e8dd3f` | research_excerpt | Sylvain Alem, Clint J. Perry, Xingfu Zhu, Olli J. Loukola, Thomas Ingraham, Eirik Søvik, … |
+| `MAT-EVD-20261108-22ca8d` | research_excerpt | Johanneke Kleinnijenhuis, Jessica Quintin, Frank Preijers, Leo A. B. Joosten, Daniela C. … |
+| `MAT-EVD-20261108-8b31bd` | research_excerpt | Richard Karban, Kaori Shiojiri, Satomi Ishizaki, William C. Wetzel, Richard Y. Evans『Karb… |
 | `MAT-20261108-c11c24` | research_excerpt | Angelika Kunkel, Katharina Schmidt, Helena Hartmann, Torben Strietzel, Jens-Lennart Sperz… |
 | `MAT-20261108-9cb83b` | research_excerpt | Paul A G Forbes, Gökhan Aydogan, Julia Braunstein, Boryana Todorova, Isabella C Wagner, P… |
 | `MAT-20261108-74d816` | research_excerpt | Flavio Jean Schmidig, Simon Ruch, Katharina Henke『Episodic long-term memory formation dur… |
@@ -4651,15 +4661,17 @@
 | `SESSION-20261108-934457` | 2026-11-08T12:44:43Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-9ec310` | 2026-11-08T13:10:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20270202-1bf183` | — | — |
 | `SESSION-20261108-45aff1` | 2026-11-08T13:28:01Z | `Q-001`, `Q-002`, `Q-003`, `Q-20270202-1bf183` | — | — |
+| `SESSION-20261108-b94274` | 2026-11-08 | `Q-20270203-00b872`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-b1a145` | 2027-03-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-790f0b` | 2027-03-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-37bcc0` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-5a5795` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-082`, `Q-20261024-c3d7a5` | — | — |
 | `SESSION-20261108-260f17` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-d24387` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-73e4e2` | 2026-11-08T14:55:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-17f876` | — | — |
+| `SESSION-20261108-2f6461` | 2026-11-08T15:18:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-17f876` | — | — |
 | `SESSION-20261108-fd0559` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-6befc5` | 2027-03-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261108-b94274` | 2026-11-08 | `Q-20270203-00b872`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-8d42e1` | 2027-03-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-d7ce13` | 2027-03-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-b831e7` | 2027-03-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4786,18 +4798,18 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6510 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6530 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 927 |
-| 共鳴 (echo) | 1583 |
+| 対照 (contrast) | 932 |
+| 共鳴 (echo) | 1586 |
 | 切断・割り込み (interrupts) | 223 |
-| 未解決のまま開く (leaves_open) | 887 |
-| 比喩的共鳴 (metaphorically_resonates) | 175 |
-| 枠組みの組み替え (reframes) | 680 |
-| 応答 (responds_to) | 1736 |
-| 変奏・変形 (transforms) | 299 |
+| 未解決のまま開く (leaves_open) | 888 |
+| 比喩的共鳴 (metaphorically_resonates) | 177 |
+| 枠組みの組み替え (reframes) | 682 |
+| 応答 (responds_to) | 1741 |
+| 変奏・変形 (transforms) | 301 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -4859,8 +4871,8 @@
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
-| `map/31-materials-research-11.md` | 100 | 234,396 |
-| `map/31-materials-research-12.md` | 81 | 191,921 |
+| `map/31-materials-research-11.md` | 100 | 234,096 |
+| `map/31-materials-research-12.md` | 91 | 221,233 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4873,9 +4885,9 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 166,295 |
-| `map/40-relations-13.md` | 500 | 169,073 |
-| `map/40-relations-14.md` | 10 | 3,202 |
+| `map/40-relations-12.md` | 500 | 168,770 |
+| `map/40-relations-13.md` | 500 | 168,546 |
+| `map/40-relations-14.md` | 30 | 8,828 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -4885,9 +4897,10 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
-| `map/50-sessions-10.md` | 50 | 41,238 |
-| `map/50-sessions-11.md` | 50 | 45,015 |
-| `map/50-sessions-12.md` | 50 | 43,396 |
+| `map/50-sessions-10.md` | 50 | 41,114 |
+| `map/50-sessions-11.md` | 50 | 45,082 |
+| `map/50-sessions-12.md` | 50 | 43,441 |
+| `map/50-sessions-13.md` | 2 | 1,846 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4906,24 +4919,24 @@
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 110,902 |
 | `map/60-notes-18.md` | 25 | 106,972 |
-| `map/60-notes-19.md` | 25 | 79,578 |
-| `map/60-notes-20.md` | 25 | 52,737 |
-| `map/60-notes-21.md` | 25 | 75,796 |
-| `map/60-notes-22.md` | 25 | 63,056 |
-| `map/60-notes-23.md` | 25 | 79,994 |
-| `map/60-notes-24.md` | 25 | 102,553 |
-| `map/60-notes-25.md` | 25 | 128,037 |
-| `map/60-notes-26.md` | 8 | 38,308 |
+| `map/60-notes-19.md` | 25 | 83,020 |
+| `map/60-notes-20.md` | 25 | 53,220 |
+| `map/60-notes-21.md` | 25 | 72,924 |
+| `map/60-notes-22.md` | 25 | 63,193 |
+| `map/60-notes-23.md` | 25 | 79,270 |
+| `map/60-notes-24.md` | 25 | 106,676 |
+| `map/60-notes-25.md` | 25 | 127,046 |
+| `map/60-notes-26.md` | 9 | 40,821 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・633本・21,934,474 B）
+## 8. 精読ノート索引（readings/・634本・22,016,291 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 428/633 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 429/634 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：265 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：266 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5382,6 +5395,7 @@
 | `readings/2026-11-08-source-waddington-assimilation.md` | 2026-11-08 | 2026-11-08 | — | 1,229 | M1 | ✓ | 資料ノート：Waddington（1953）——環境への応答が、選択の履歴によって変わる |
 | `readings/2026-11-08-ten-experiments-across-body-monitoring-and-fusion.md` | 2026-11-08 | 2026-11-08 | — | 15,211 | Q4 | — | 身体・自己監視・融合をめぐる10の実験 |
 | `readings/2026-11-08-ten-experiments-on-body-electrode-mirror-and-culture.md` | 2026-11-08 | 2026-11-08 | — | 13,783 | Q3 M19 | — | 身体、電極、鏡、培養器——実験科学10資料から、人間と自己を問い直す |
+| `readings/2026-11-08-ten-experiments-on-labeling-coupling-forgetting-and-kinship.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-73e4e2` +1 | 37,542 | Q4 M4 S2 | — | ラベル、結合、忘却、血縁 ― 十の実験 |
 | `readings/2026-11-08-ten-experiments-on-remembering-with-support.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-33d2a7` +1 | 12,689 | Q3 M10 S2 ERR1 | — | 支えが消えたとき、何が残るか——身体・記憶・検索をめぐる十の実験 |
 | `readings/2026-11-08-ten-experiments-on-updating-maintaining-and-letting-go.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-98d3c9` +1 | 16,614 | Q3 M10 S2 ERR1 | ✓ | 実験科学10件精読報告——更新し、維持し、手放すこと |
 | `readings/2026-11-08-the-correction-layer-was-the-one-thing-not-corrected.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-b94274` | 11,023 | Q5 S1 ERR11 | ✓ | 訂正の層だけが、訂正されていなかった |

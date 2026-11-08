@@ -194,7 +194,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # SESSION-20261108-9ec310 / -45aff1. Earlier shards carry path refs or
         # order constraints; new rows omit shard paths. See
         # readings/2026-11-08-ten-experiments-across-body-monitoring-and-fusion.md §14.
-        soft_shards=90,
+        # 2026-11-08: 90 -> 91 for the shared materials shard of
+        # SESSION-20261108-73e4e2 / -2f6461 (requested 10-experiment acquisition).
+        # 20 of 21 existing 2026-11-08 materials shards carry inbound path refs;
+        # sessions/read_log/notes/relations were consolidated first so no other
+        # ceiling moves, and new rows omit shard paths for future compaction.
+        soft_shards=91,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
