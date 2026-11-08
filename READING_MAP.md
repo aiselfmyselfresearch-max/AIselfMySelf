@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3265 件（research_excerpt 1041 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3270 件（research_excerpt 1046 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6479 件
-- **探究セッション（Sessions）**：574 回
+- **探究セッション（Sessions）**：575 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -770,7 +770,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3265 件・詳細は map/3*.md）
+## 4. 対話素材（3270 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3824,6 +3824,11 @@
 | `MAT-EVD-20261108-8d4203` | research_excerpt | B. P. Abbott et al., LIGO Scientific Collaboration, Virgo Collaboration『B. P. Abbott et a… |
 | `MAT-EVD-20261108-8d4204` | research_excerpt | Richard A. Klein et al.『Richard A. Klein et al.（2018）——多施設追試：基準と異質性』（2018） |
 | `MAT-EVD-20261108-8d4205` | research_excerpt | RECOVERY Collaborative Group『RECOVERY Collaborative Group（2021）——無作為化試験：酸素補助と治療効果』（2021） |
+| `MAT-20261108-0e1f2a` | research_excerpt | Hermann Ebbinghaus『記憶：実験心理学への寄与（忘却曲線、無意味音節）』（1885） |
+| `MAT-20261108-3b4c5d` | research_excerpt | William Beecher Scoville, Brenda Milner『両側海馬切除後における最近の記憶喪失（H.M.症例）』（1957） |
+| `MAT-20261108-6f7g8h` | research_excerpt | Ivan Petrovich Pavlov『消化腺の働き（条件反射、犬を被験者とした生理学実験）』（1903） |
+| `MAT-20261108-9i0j1k` | research_excerpt | Stanley Milgram『服従の行動的研究（権威への服従、ヤルグ基線実験）』（1963） |
+| `MAT-20261108-2m3n4o` | research_excerpt | Elizabeth F. Loftus, John C. Palmer『自動車の衝突の再構成：言語と記憶の相互作用の一例』（1974） |
 | `MAT-EVD-20261108-21cec2` | research_excerpt | Zachary D. Blount, Christina Z. Borland, Richard E. Lenski『Zachary D. Blount、Christina Z.… |
 | `MAT-EVD-20261108-cb542e` | research_excerpt | Jenny R. Saffran, Richard N. Aslin, Elissa L. Newport『Jenny R. Saffran、Richard N. Aslin、E… |
 | `MAT-EVD-20261108-b8a6d1` | research_excerpt | Ullrich Wagner, Steffen Gais, Hilde Haider, Rolf Verleger, Jan Born『Ullrich Wagner、Steffe… |
@@ -4083,6 +4088,7 @@
 | `SESSION-037` | 2026-10-24 | `Q-002`, `Q-023`, `Q-044`, `Q-046`, `Q-048`, `Q-052`, `Q-057`, `Q-062`, `Q-063`, `Q-078`, `Q-087`, `Q-088`, `Q-089`, `Q-092`, `Q-093`, `Q-094`, `Q-095`, `Q-096` | `FRAG-041`, `FRAG-042`, `FRAG-043` | `Q-092`, `Q-093`, `Q-094`, `Q-095`, `Q-096` |
 | `SESSION-038` | 2026-10-24 | `Q-015`, `Q-020`, `Q-022`, `Q-081`, `Q-097`, `Q-098`, `Q-099`, `Q-100`, `Q-101` | — | `Q-097`, `Q-098`, `Q-099`, `Q-100`, `Q-101` |
 | `SESSION-041` | 2026-11-01 | `Q-002`, `Q-003`, `Q-020`, `Q-021`, `Q-023` | — | — |
+| `SESSION-20261108-a9b8c7` | 2026-11-08 | `Q-001`, `Q-002` | — | — |
 | `SESSION-039` | 2026-10-24 | `Q-002`, `Q-046`, `Q-057`, `Q-062`, `Q-087`, `Q-088`, `Q-089`, `Q-090`, `Q-091`, `Q-20261024-d0e002`, `Q-20261024-2d6c23`, `Q-20261024-93bfec`, `Q-20261024-4284fe`, `Q-20261024-cfd57d` | `FRAG-20261024-036346`, `FRAG-20261024-1d17b9`, `FRAG-20261024-1bb7e9` | `Q-20261024-d0e002`, `Q-20261024-2d6c23`, `Q-20261024-93bfec`, `Q-20261024-4284fe`, `Q-20261024-cfd57d` |
 | `SESSION-040` | 2026-10-24 | `Q-002`, `Q-044`, `Q-052`, `Q-062`, `Q-072`, `Q-082`, `Q-097`, `Q-101`, `Q-20261024-5b11eb`, `Q-20261024-a1bb7b`, `Q-20261024-08551f`, `Q-20261024-962620`, `Q-20261024-d01189` | `FRAG-20261024-83e251`, `FRAG-20261024-be45a7` | `Q-20261024-5b11eb`, `Q-20261024-a1bb7b`, `Q-20261024-08551f`, `Q-20261024-962620`, `Q-20261024-d01189` |
 | `SESSION-044` | 2026-10-24 | `Q-102`, `Q-103`, `Q-104`, `Q-105`, `Q-106` | — | `Q-102`, `Q-103`, `Q-104`, `Q-105`, `Q-106` |
@@ -4692,7 +4698,7 @@
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
-| `map/31-materials-research-11.md` | 41 | 83,046 |
+| `map/31-materials-research-11.md` | 46 | 92,269 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4707,18 +4713,18 @@
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 163,928 |
 | `map/40-relations-13.md` | 479 | 163,199 |
-| `map/50-sessions-01.md` | 50 | 44,082 |
-| `map/50-sessions-02.md` | 50 | 49,349 |
-| `map/50-sessions-03.md` | 50 | 45,739 |
-| `map/50-sessions-04.md` | 50 | 45,515 |
-| `map/50-sessions-05.md` | 50 | 46,491 |
-| `map/50-sessions-06.md` | 50 | 45,345 |
-| `map/50-sessions-07.md` | 50 | 42,333 |
-| `map/50-sessions-08.md` | 50 | 39,709 |
-| `map/50-sessions-09.md` | 50 | 41,133 |
-| `map/50-sessions-10.md` | 50 | 42,324 |
-| `map/50-sessions-11.md` | 50 | 47,295 |
-| `map/50-sessions-12.md` | 24 | 19,330 |
+| `map/50-sessions-01.md` | 50 | 43,630 |
+| `map/50-sessions-02.md` | 50 | 49,712 |
+| `map/50-sessions-03.md` | 50 | 45,786 |
+| `map/50-sessions-04.md` | 50 | 45,449 |
+| `map/50-sessions-05.md` | 50 | 46,370 |
+| `map/50-sessions-06.md` | 50 | 45,414 |
+| `map/50-sessions-07.md` | 50 | 42,480 |
+| `map/50-sessions-08.md` | 50 | 39,693 |
+| `map/50-sessions-09.md` | 50 | 41,187 |
+| `map/50-sessions-10.md` | 50 | 42,043 |
+| `map/50-sessions-11.md` | 50 | 47,533 |
+| `map/50-sessions-12.md` | 25 | 20,175 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4736,24 +4742,24 @@
 | `map/60-notes-15.md` | 25 | 83,706 |
 | `map/60-notes-16.md` | 25 | 88,383 |
 | `map/60-notes-17.md` | 25 | 110,823 |
-| `map/60-notes-18.md` | 25 | 109,421 |
-| `map/60-notes-19.md` | 25 | 59,544 |
-| `map/60-notes-20.md` | 25 | 65,817 |
-| `map/60-notes-21.md` | 25 | 65,040 |
-| `map/60-notes-22.md` | 25 | 74,114 |
-| `map/60-notes-23.md` | 25 | 106,999 |
-| `map/60-notes-24.md` | 25 | 107,482 |
-| `map/60-notes-25.md` | 8 | 46,449 |
+| `map/60-notes-18.md` | 25 | 107,704 |
+| `map/60-notes-19.md` | 25 | 61,824 |
+| `map/60-notes-20.md` | 25 | 64,117 |
+| `map/60-notes-21.md` | 25 | 65,556 |
+| `map/60-notes-22.md` | 25 | 73,136 |
+| `map/60-notes-23.md` | 25 | 103,060 |
+| `map/60-notes-24.md` | 25 | 110,034 |
+| `map/60-notes-25.md` | 9 | 51,675 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・608本・21,172,749 B）
+## 8. 精読ノート索引（readings/・609本・21,193,632 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 403/608 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 404/609 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：247 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：65 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：66 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5198,6 +5204,7 @@
 | `readings/2026-11-07-where-the-removed-clause-is-read.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-b5c1fa` +3 | 26,231 | Q6 M3 R1 S4 ERR3 | ✓ | 書かれなくなった条項は、どこから読めるか——入口の文書・継承の窓・心に書き記すこと |
 | `readings/2026-11-07-where-the-unread-material-returns.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-007fcb` | 14,769 | Q6 F2 M12 MOT2 S1 | ✓ | 返る先を名指す——堆肥の宛先、発酵の線、返事を書かない読み手 |
 | `readings/2026-11-07-who-was-charged-for-the-line.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-6ffb13` +8 | 22,353 | Q4 M5 S9 ERR6 | ✓ | その行は、だれの口座に付くのか——エレミヤ31:29–30と、三代越しの一語「とばり」 |
+| `readings/2026-11-08-experimental-science-close-reading.md` | 2026-11-08 | 2026-11-08 | — | 10,164 | Q2 M6 MOT7 | — | 実験科学の資料5件の精読——記憶・身体・服従・言語の記述を読む |
 | `readings/2026-11-08-four-stickers-and-forty-kilohertz.md` | — | 2026-11-08 | `SESSION-20261108-e70636` +3 | 20,599 | Q3 F19 M7 MOT3 S4 ERR1 | ✓ | 四枚の札と四十キロヘルツ — 読まれ方を争えないものに、書庫は何を返すか（SESSION-20261108-e7063… |
 | `readings/2026-11-08-modified-brain-unmodified-file.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-c3a25b` +4 | 8,504 | Q9 F4 M5 MOT1 S5 | — | 修飾された脳と、修飾されないファイル——乾板の間隔をジェイムズ原典で止める |
 | `readings/2026-11-08-replay-sleep-and-open-label.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-d24387` | 18,499 | Q3 M5 S1 | — | 再生しても同じにはならない——偶然性、統計学習、睡眠、開示されたプラセボ、内部の物差し |
