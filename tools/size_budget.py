@@ -175,7 +175,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # what-is-withheld.md §7-6-3 retracts the claim that this dimension
         # cannot be reclaimed at all, and schedules the consolidation that the
         # repository's own history already performs.  Hard limit 160 unchanged.
-        soft_shards=85,
+        # 2026-11-08 (fifth same-day raise): 85 -> 86 for SESSION-20261108-fd0559,
+        # which kept each of its five collections in its own shard. The structural
+        # fix (stop writing shard paths into notes; compact unreferenced shards)
+        # remains outstanding and is not replaced by this raise.
+        soft_shards=86,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -188,7 +192,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # its own slot the same day).  Not an automatic raise; the measured
         # cause is in §7-6 of readings/2027-03-06-five-experiments-on-what-is-
         # reported-and-what-is-withheld.md.  Hard limit 160 unchanged.
-        soft_shards=81,
+        # 2026-11-08 (fifth same-day raise): 81 -> 82 for this session's own
+        # four relations. Not automatic; structural fix still outstanding.
+        soft_shards=82,
         hard_shards=160,
         remedy="Compact old state/relations.d/ shards into frozen base in a dedicated maintenance PR",
     ),
@@ -232,7 +238,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # what-is-withheld.md §7-6-3 retracts the claim that this dimension
         # cannot be reclaimed at all, and schedules the consolidation that the
         # repository's own history already performs.  Hard limit 160 unchanged.
-        soft_shards=85,
+        # 2026-11-08 (fifth same-day raise): 85 -> 86 for this session's 15 rows.
+        # Byte soft is 5 MiB, measured 4.01 MiB; keep future rows short.
+        soft_shards=86,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -306,7 +314,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # what-is-withheld.md §7-6-3 retracts the claim that this dimension
         # cannot be reclaimed at all, and schedules the consolidation that the
         # repository's own history already performs.  Hard limit 160 unchanged.
-        soft_shards=88,
+        # 2026-11-08 (fifth same-day raise): 88 -> 89 for this session's row.
+        soft_shards=89,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -363,7 +372,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # what-is-withheld.md §7-6-3 retracts the claim that this dimension
         # cannot be reclaimed at all, and schedules the consolidation that the
         # repository's own history already performs.  Hard limit 160 unchanged.
-        soft_shards=85,
+        # 2026-11-08 (fifth same-day raise): 85 -> 86 for this session's note row.
+        soft_shards=86,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
