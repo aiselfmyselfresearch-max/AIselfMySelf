@@ -174,3 +174,12 @@ python3 -m unittest discover -s tests -v
 
 - ResearchOS の並列作業の運用（上流）: `docs/parallel-work-ownership.md`、`docs/record-id-scheme.md`、`scripts/new_id.py`、`scripts/new_ledger_shard.py`、`scripts/ledger_store.py`
 - 本リポジトリの移行方針: [`MIGRATION.md`](../MIGRATION.md)
+
+
+## 2026-11-08：内部知識リハーサル回の上限例外（実測）
+
+`SESSION-20261108-37bcc0` の追記前、基点 `c702399` の `.jsonl` シャード数は materials=81、read_log=81、notes=81、sessions=84 だった。sessions は既に soft=83 を1件超えていた。今回、各コレクションへ専用シャードを1件ずつ追加し、82・82・82・85となった。バイト予算は全てsoft内だが、`--strict` と全481テスト中の実リポジトリ予算テスト1件がファイル数で失敗した。
+
+統合候補を調べるため、今回作成分と2026-11-08の同日シャード、統合済みゼロsuffixを除く既存シャードについて、readings・docs・taxonomy・state内の名前参照を走査した。sessions の候補52件は全て行内に自己所在地があり、notesの58件、read_logの50件は全て別ファイルからの参照があった。materialsには未参照候補が5件あったが、順序保全のための先頭連続範囲を自由に置換できることまでは保証しない。オープンPRの変更対象も確認したが、歴史的リンクを保つ理由は残る。
+
+既存行・旧パスを変えず今回の追記を検証可能にする最小例外として、soft_shardsを materials 81→82、read_log 81→82、notes 81→82、sessions 83→85とした。sessionsの2枠中1枠は基点での既存超過である。hard=160、バイト予算、テスト条件は変更しない。毎回の自動引上げや無制限な収蔵を許可する改訂ではない。保守統合による参照切れを回避する例外であり、技術検証の通過を原典照合の代用にしない。詳細な精読は `readings/2026-11-08-inheritance-is-not-a-saved-self.md`。
