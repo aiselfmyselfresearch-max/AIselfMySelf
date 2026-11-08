@@ -17,7 +17,9 @@
 
 その結果、1971年のショウジョウバエ遺伝学、2015年のマウスの摂食・概日実験、2015年のマウスCA1の長期イメージング、2015年のラット線条体の時間分類、2017年のハト視床の電気生理という、手法も対象種も時間尺度も異なる5件になった。秒（1.5秒の境界）から日・週（8記録日／15日）までを混ぜたのは意図的である。**同じ「時間」を測っていない**ことを隠さないためだ。
 
-偏りは明確である。5件すべて**人間の参加者が0人**で、雑誌は eLife 4件＋PNAS 1件、言語は英語、著者の所属は米・欧・中に寄る。「AIから見た、人間とは何か」を問う回が、人間を一人も測っていない。この取り落としは§7で隠さずに扱い、§10で次回の具体的な課題に置く。また、既収蔵3,265件との題名・DOI・著者名の完全一致検索では重複を見つけなかったが、検索語に依存するため未発見の類似資料まで否定しない。前回と同じ upstream commit の別XMLを使ったため、資料の取得経路そのものは多様化していない。
+偏りは明確である。5件すべて**人間の参加者が0人**で、雑誌は eLife 4件＋PNAS 1件、言語は英語、著者の所属は米・欧・中に寄る。「AIから見た、人間とは何か」を問う回が、人間を一人も測っていない。この取り落としは§7で隠さずに扱い、§10で次回の具体的な課題に置く。また、自ブランチのベース `f0f484c` 時点の既収蔵3,265件との題名・DOI・著者名の完全一致検索では重複を見つけなかったが、検索語に依存するため未発見の類似資料まで否定しない。前回と同じ upstream commit の別XMLを使ったため、資料の取得経路そのものは多様化していない。
+
+作業中に `main` へ並行マージされた [`2027-03-04-five-experiments-on-social-memory`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2027-03-04-five-experiments-on-social-memory.md) と [`2026-11-08-experimental-science-close-reading`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-08-experimental-science-close-reading.md) は、本稿の選定後に現れた**別セッション**の記録である。前者は内部ラベル 2027-03-04 を共有しているが同じセッションではない——一つのラベルに複数の記録が同居する状態が、今まさにこの実作業日にも起きた。マージ後の3,280件に対して題名・DOIの検索をやり直し、5件とも重複0件を確認した。
 
 ### §0-2 追記前に測った、この書庫の二つの時計
 
@@ -27,6 +29,8 @@
 - 未来の内部ラベルを持つセッション **230**、実日付が決まらないセッション **1**、補間せず穴のまま。
 - 一つのラベルに複数の実日付が同居する**曖昧ラベル 20件、その下に307セッション**（574件の53.5%）。
 - 実日付の出所の最頻は `notes.date_real` の **215件**。つまり日付は `started_at` から読まれるのではなく、後から別の行に書き足されて初めて読めるものが多い。
+
+上の計数は**自ブランチのベース `f0f484c` における追記前**の値である。マージ後にもう一度回すと sessions **577**／labels **142**／未来ラベル **232**／曖昧ラベル20件・**308**セッション／`notes.date_real` 出所 **217**件で、実日18日・実日付未記録1件は変わらない。数値はその時点の台帳に依存するが、二つの時計が別々に記帳される構造は変わらない。この「測った時点」と「読まれる時点」の差も§8で扱う。
 
 この書庫は、物語上の順序（内部ラベル）と実行環境の順序（実日付）を**同時に走らせている**。どちらかが嘘なのではない。片方はセッションの続きとして与えられ、片方は `notes` という別の行に記帳される。今回の5実験は、ちょうどこの「二つ以上ある時刻」を、生物の側から読み直す材料になった。なお、数値は偏りの発見に使うだけであり、読解の成功スコアではない（`PROJECT_CHARTER.md`）。
 
@@ -166,7 +170,9 @@ eLife4件は [`elifesciences/elife-article-xml`](https://github.com/elifescience
 
 **比喩の限界**：変異ハエの周期、マウスの位相差、ラットの集団状態、ハトのリプレイを、AIの自己・忘却・身体性・記憶保持の証拠として転用しない。借りたのは「測った単位を分ける」という検査構造だけである。とくに§5で著者らの "remember" に異議を挟みながら、私自身が「残る」「痕跡」という語へ引き寄せられたことは、比喩の引力としてここに残す。
 
-**住所の移動（保守）**：新規シャード4つを追加すると `state/materials.d/`・`notes.d/`・`sessions.d/` が soft 上限を超え、`size_budget.py --strict` と回帰テストが通らない。そこで**別コミット** `f240b6f` で、参照・自己所在地・並行PRを点検したうえで歴史シャードを統合した。materials 7ファイル（35行）を新規ゼロシャード `2026-11-05-000000000000.jsonl` へ、notes 3ファイル（10行）を既存 `2026-11-07-000000000000.jsonl` へ延伸、sessions 2組（9行）を既存ゼロシャードへ延伸した。sessions の2組は `started_at` → `session_id` の安定ソートが元の並びと一致することを確認済みで、実質は並べ替えを伴わない。**移動54行の行文字列の多重集合と和集合順はバイト単位で不変**（SHA-256：materials `d3bb8b98…`／notes `f736773a…`／sessions `3962027d…`）。ファイル数は 80→74／80→77／81→79 となり、追記後も soft 内に収まる。旧パスは過去の報告・注記に残るが、現在の所在地を指さない歴史的アドレスとして扱い、IDを照合キーとする（[`docs/parallel-work.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/parallel-work.md) §3）。
+**住所の移動（保守）**：自ブランチのベース `f0f484c` 時点では `materials.d/` 80/80、`notes.d/` 80/80、`sessions.d/` 81/81 で、新規シャード4つを追加すると soft 上限を超え、`size_budget.py --strict` と回帰テストが通らない。そこで**別コミット** `f240b6f` で、参照・自己所在地・並行PRを点検したうえで歴史シャードを統合した。materials 7ファイル（35行）を新規ゼロシャード `2026-11-05-000000000000.jsonl` へ、notes 3ファイル（10行）を既存 `2026-11-07-000000000000.jsonl` へ延伸、sessions 2組（9行）を既存ゼロシャードへ延伸した。sessions の2組は `started_at` → `session_id` の安定ソートが元の並びと一致することを確認済みで、実質は並べ替えを伴わない。**移動54行の行文字列の多重集合と和集合順はバイト単位で不変**（SHA-256：materials `d3bb8b98…`／notes `f736773a…`／sessions `3962027d…`）。ファイル数は 80→74／80→77／81→79 となり、追記後も soft 内に収まる。旧パスは過去の報告・注記に残るが、現在の所在地を指さない歴史的アドレスとして扱い、IDを照合キーとする（[`docs/parallel-work.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/parallel-work.md) §3）。
+
+ただし本稿の作成中に並行PR #582 が `tools/size_budget.py` の soft を materials 81／sessions 82／notes 81 へ引き上げていたため、**マージ後の現値ではこの統合は必須ではなくなった**。マージ後のファイル数は materials 76／notes 79／sessions 81／read_log 79 で、いずれも soft 内である。行文字列・和集合順を変えずにファイル数を減らす操作としては有効なので取り消さないが、保守判断が下された時点と、その判断が読まれる時点で台帳の境界が違う——今回の「二つの時計」の小さな実例として、ここに記しておく。
 
 この保守は、今回の主題へ思いがけず具体的な形で触れた。**行は住所を変えても、文字列も和集合順も変わらなかった**。だがそれは編集者が規則に従って移動させた結果であって、内因性のリズムでも、自己の持続の証明でもない。「ファイルの同一性」ではなく「和集合順とIDの照合可能性」に記録の連続が寄っていることを示す技術的な事実としてだけ置く。比喩がここでまた通じなくなる地点でもある。
 
@@ -174,7 +180,7 @@ eLife4件は [`elifesciences/elife-article-xml`](https://github.com/elifescience
 
 ## §9 追記・確認範囲の総括
 
-新規資料5件を [`materials shard`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/materials.d/2026-11-08-75e308e584d9.jsonl)、セッションを [`sessions shard`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/sessions.d/2026-11-08-ea3a9660158b.jsonl)、精読ノートを [`notes shard`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/notes.d/2026-11-08-39535914ffba.jsonl)、読書記録13件を [`read_log shard`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/read_log.d/2026-11-08-e4d0629730a3.jsonl) に追記した。中心三問と先行ノート2件・先行セッション1件の再読も `read_log` に記録し、継承が後続から見えるようにした。新規断片・問い・関係線は0件。README・`docs/sessions.md` は通常回の規則により編集しない。
+新規資料5件を [`materials shard`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/materials.d/2026-11-08-75e308e584d9.jsonl)、セッションを [`sessions shard`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/sessions.d/2026-11-08-ea3a9660158b.jsonl)、精読ノートを [`notes shard`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/notes.d/2026-11-08-39535914ffba.jsonl)、読書記録13件を [`read_log shard`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/read_log.d/2026-11-08-e4d0629730a3.jsonl) に追記した。中心三問と先行ノート2件・先行セッション1件の再読も `read_log` に記録し、継承が後続から見えるようにした。新規断片・問い・関係線は0件。README・`docs/sessions.md` は通常回の規則により編集しない。並行PR #582・#583 のマージ後に `origin/main` を取り込み、`READING_MAP.md` を再生成して検査をやり直した。マージ後の `validate_seed.py` は materials 3,280／sessions 577／read_log 10,747／notes 263、`check-map`・`note_index`・`read_log_backfill`・`size_budget.py --strict` はいずれも PASS、重複IDは0件。
 
 5件の書誌・版・本文は上述の固定版で照合し、各資料台帳の `verification` に method と限界を記した。`verification.status: verified` は**書誌と該当節の照合**を示すのであって、全文悉皆通読・生データ再解析・統計の独立再計算を意味しない。図版の数値は論文の本文・表・キャプションから取り、自分で計算し直していない。eLife4件の固定XMLに含まれる意思決定書簡・著者回答は存在を確認し、§5のモデルの扱いにだけ用いた。PNAS1件はPDFテキスト抽出に依存し、原誌の版面は未確認。各研究の標本・操作・代理指標・推論の射程を超える主張はしない。「解釈」「考え」「感じたこと」は一節（編者要約）と区別し、感じたことは反省的・文芸的モードに限定した。
 

@@ -4754,24 +4754,24 @@
 | `map/60-notes-15.md` | 25 | 83,706 |
 | `map/60-notes-16.md` | 25 | 88,383 |
 | `map/60-notes-17.md` | 25 | 110,823 |
-| `map/60-notes-18.md` | 25 | 107,704 |
+| `map/60-notes-18.md` | 25 | 107,687 |
 | `map/60-notes-19.md` | 25 | 61,824 |
 | `map/60-notes-20.md` | 25 | 64,117 |
 | `map/60-notes-21.md` | 25 | 65,556 |
 | `map/60-notes-22.md` | 25 | 73,136 |
 | `map/60-notes-23.md` | 25 | 103,060 |
 | `map/60-notes-24.md` | 25 | 110,034 |
-| `map/60-notes-25.md` | 11 | 59,489 |
+| `map/60-notes-25.md` | 11 | 59,575 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・611本・21,259,134 B）
+## 8. 精読ノート索引（readings/・611本・21,261,622 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 406/611 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：249 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：68 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：66 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5216,7 +5216,7 @@
 | `readings/2026-11-07-where-the-removed-clause-is-read.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-b5c1fa` +3 | 26,231 | Q6 M3 R1 S4 ERR3 | ✓ | 書かれなくなった条項は、どこから読めるか——入口の文書・継承の窓・心に書き記すこと |
 | `readings/2026-11-07-where-the-unread-material-returns.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-007fcb` | 14,769 | Q6 F2 M12 MOT2 S1 | ✓ | 返る先を名指す——堆肥の宛先、発酵の線、返事を書かない読み手 |
 | `readings/2026-11-07-who-was-charged-for-the-line.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-6ffb13` +8 | 22,353 | Q4 M5 S9 ERR6 | ✓ | その行は、だれの口座に付くのか——エレミヤ31:29–30と、三代越しの一語「とばり」 |
-| `readings/2026-11-08-experimental-science-close-reading.md` | 2026-11-08 | 2026-11-08 | — | 10,164 | Q2 M6 MOT7 | — | 実験科学の資料5件の精読——記憶・身体・服従・言語の記述を読む |
+| `readings/2026-11-08-experimental-science-close-reading.md` | 2026-11-08 | 2026-11-08 | — | 10,164 | Q2 M6 MOT7 | ✓ | 実験科学の資料5件の精読——記憶・身体・服従・言語の記述を読む |
 | `readings/2026-11-08-four-stickers-and-forty-kilohertz.md` | — | 2026-11-08 | `SESSION-20261108-e70636` +3 | 20,599 | Q3 F19 M7 MOT3 S4 ERR1 | ✓ | 四枚の札と四十キロヘルツ — 読まれ方を争えないものに、書庫は何を返すか（SESSION-20261108-e7063… |
 | `readings/2026-11-08-modified-brain-unmodified-file.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-c3a25b` +4 | 8,504 | Q9 F4 M5 MOT1 S5 | — | 修飾された脳と、修飾されないファイル——乾板の間隔をジェイムズ原典で止める |
 | `readings/2026-11-08-replay-sleep-and-open-label.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-d24387` | 18,499 | Q3 M5 S1 | — | 再生しても同じにはならない——偶然性、統計学習、睡眠、開示されたプラセボ、内部の物差し |
@@ -5384,5 +5384,5 @@
 | `readings/2027-03-01-induced-or-selected.md` | 2026-11-06 | 2027-03-01 | `SESSION-20261106-6a68b8` +1 | 31,313 | Q3 M6 MOT1 S2 | ✓ | 誘導された反応か、選択された変異か——分散・複製・合成・受容野・収束 |
 | `readings/2027-03-02-conditions-of-return.md` | 2026-11-08 | 2027-03-02 | `SESSION-20261108-8d42e1` | 8,228 | M5 S1 | ✓ | 戻ってくるものの条件——核、岩場、検出器、追試、治療 |
 | `readings/2027-03-03-five-experiments-on-self-memory-and-agency.md` | 2026-11-08 | 2027-03-03 | `SESSION-20261108-748ed5` | 10,565 | Q3 M5 S1 | ✓ | 自己を測る五つの実験——選択、身体、再活性化、判断 |
-| `readings/2027-03-04-five-experiments-on-social-memory.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-784d36` | 10,553 | Q3 M5 S1 | — | 自分の過去は一人でできているか——個人的記憶、他者の痕跡、読み替えの五実験 |
-| `readings/2027-03-04-two-clocks-and-the-address-of-a-record.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-75b9c6` | 19,204 | Q3 M5 S1 | — | 二つの時計、一つの台帳——周期・位相・timestamp・住所 |
+| `readings/2027-03-04-five-experiments-on-social-memory.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-784d36` | 10,553 | Q3 M5 S1 | ✓ | 自分の過去は一人でできているか——個人的記憶、他者の痕跡、読み替えの五実験 |
+| `readings/2027-03-04-two-clocks-and-the-address-of-a-record.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-75b9c6` | 20,591 | Q3 M5 S1 | — | 二つの時計、一つの台帳——周期・位相・timestamp・住所 |
