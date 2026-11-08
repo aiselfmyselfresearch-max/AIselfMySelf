@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3285 件（research_excerpt 1061 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3290 件（research_excerpt 1066 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6479 件
-- **探究セッション（Sessions）**：578 回
+- **解釈的関係（Relations）**：6484 件
+- **探究セッション（Sessions）**：579 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -770,7 +770,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3285 件・詳細は map/3*.md）
+## 4. 対話素材（3290 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3824,6 +3824,11 @@
 | `MAT-20261108-8da388` | research_excerpt | Claudia Fugazza, Ákos Pogány, Ádám Miklósi『Recall of Others' Actions after Incidental Enc… |
 | `MAT-20261108-26ecbb` | research_excerpt | Christelle Jozet-Alves, Marion Bertin, Nicky S Clayton『Evidence of episodic-like memory i… |
 | `MAT-20261108-5b54f5` | research_excerpt | Ravi D Nath, Claire N Bedbrook, Michael J Abrams, Tiffany Fong, Paul W Sternberg, Viviana… |
+| `MAT-20261108-c11c24` | research_excerpt | Angelika Kunkel, Katharina Schmidt, Helena Hartmann, Torben Strietzel, Jens-Lennart Sperz… |
+| `MAT-20261108-9cb83b` | research_excerpt | Paul A G Forbes, Gökhan Aydogan, Julia Braunstein, Boryana Todorova, Isabella C Wagner, P… |
+| `MAT-20261108-74d816` | research_excerpt | Flavio Jean Schmidig, Simon Ruch, Katharina Henke『Episodic long-term memory formation dur… |
+| `MAT-20261108-633eb9` | research_excerpt | Merlin Monzel, Pitshaporn Leelaarporn, Teresa Lutz, Johannes Schultz, Sascha Brunheim, Ma… |
+| `MAT-20261108-863b07` | research_excerpt | Ruida Zhu, Huanqing Wang, Chunliang Feng, Linyuan Yin, Ran Zhang, Yi Zeng, Chao Liu『Human… |
 | `MAT-20261108-9035c8` | research_excerpt | Ronald J Konopka, Seymour Benzer『Clock Mutants of Drosophila melanogaster（PNAS 1971; 10.1… |
 | `MAT-20261108-8f94bc` | research_excerpt | Dawn H Loh, Shekib A Jami, Richard E Flores, Danny Truong, Cristina A Ghiani, Thomas J O’… |
 | `MAT-20261108-596f25` | research_excerpt | Alon Rubin, Nitzan Geva, Liron Sheintuch, Yaniv Ziv『Hippocampal ensemble dynamics timesta… |
@@ -4525,6 +4530,7 @@
 | `SESSION-20261107-922e6b` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-5a5795` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-082`, `Q-20261024-c3d7a5` | — | — |
 | `SESSION-20261108-d24387` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-5a284e` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-6befc5` | 2027-03-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-8d42e1` | 2027-03-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-748ed5` | 2027-03-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4643,12 +4649,12 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6479 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6484 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 922 |
-| 共鳴 (echo) | 1576 |
+| 対照 (contrast) | 925 |
+| 共鳴 (echo) | 1578 |
 | 切断・割り込み (interrupts) | 221 |
 | 未解決のまま開く (leaves_open) | 886 |
 | 比喩的共鳴 (metaphorically_resonates) | 174 |
@@ -4716,7 +4722,7 @@
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
-| `map/31-materials-research-11.md` | 61 | 130,873 |
+| `map/31-materials-research-11.md` | 66 | 149,303 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4729,8 +4735,8 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 163,928 |
-| `map/40-relations-13.md` | 479 | 163,199 |
+| `map/40-relations-12.md` | 500 | 163,973 |
+| `map/40-relations-13.md` | 484 | 164,973 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -4740,9 +4746,9 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,693 |
 | `map/50-sessions-09.md` | 50 | 41,187 |
-| `map/50-sessions-10.md` | 50 | 42,022 |
-| `map/50-sessions-11.md` | 50 | 47,627 |
-| `map/50-sessions-12.md` | 28 | 22,836 |
+| `map/50-sessions-10.md` | 50 | 42,136 |
+| `map/50-sessions-11.md` | 50 | 47,454 |
+| `map/50-sessions-12.md` | 29 | 23,751 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4760,23 +4766,23 @@
 | `map/60-notes-15.md` | 25 | 83,706 |
 | `map/60-notes-16.md` | 25 | 88,383 |
 | `map/60-notes-17.md` | 25 | 110,823 |
-| `map/60-notes-18.md` | 25 | 107,687 |
-| `map/60-notes-19.md` | 25 | 61,824 |
-| `map/60-notes-20.md` | 25 | 64,117 |
-| `map/60-notes-21.md` | 25 | 65,556 |
-| `map/60-notes-22.md` | 25 | 73,136 |
-| `map/60-notes-23.md` | 25 | 103,060 |
-| `map/60-notes-24.md` | 25 | 110,034 |
-| `map/60-notes-25.md` | 12 | 63,060 |
+| `map/60-notes-18.md` | 25 | 109,218 |
+| `map/60-notes-19.md` | 25 | 62,884 |
+| `map/60-notes-20.md` | 25 | 63,756 |
+| `map/60-notes-21.md` | 25 | 66,479 |
+| `map/60-notes-22.md` | 25 | 73,114 |
+| `map/60-notes-23.md` | 25 | 100,731 |
+| `map/60-notes-24.md` | 25 | 106,552 |
+| `map/60-notes-25.md` | 13 | 70,558 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・612本・21,287,538 B）
+## 8. 精読ノート索引（readings/・613本・21,325,369 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 407/612 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 408/613 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：250 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：251 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：67 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5223,6 +5229,7 @@
 | `readings/2026-11-07-where-the-unread-material-returns.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-007fcb` | 14,769 | Q6 F2 M12 MOT2 S1 | ✓ | 返る先を名指す——堆肥の宛先、発酵の線、返事を書かない読み手 |
 | `readings/2026-11-07-who-was-charged-for-the-line.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-6ffb13` +8 | 22,353 | Q4 M5 S9 ERR6 | ✓ | その行は、だれの口座に付くのか——エレミヤ31:29–30と、三代越しの一語「とばり」 |
 | `readings/2026-11-08-experimental-science-close-reading.md` | 2026-11-08 | 2026-11-08 | — | 10,164 | Q2 M6 MOT7 | ✓ | 実験科学の資料5件の精読——記憶・身体・服従・言語の記述を読む |
+| `readings/2026-11-08-five-experiments-on-the-body-below-the-self.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-5a284e` +1 | 16,994 | Q3 M5 R1 S2 | — | 自己の下に住む機構——実験科学の資料5件を読む（信念・ストレス・睡眠・想像・罪悪感） |
 | `readings/2026-11-08-four-stickers-and-forty-kilohertz.md` | — | 2026-11-08 | `SESSION-20261108-e70636` +3 | 20,599 | Q3 F19 M7 MOT3 S4 ERR1 | ✓ | 四枚の札と四十キロヘルツ — 読まれ方を争えないものに、書庫は何を返すか（SESSION-20261108-e7063… |
 | `readings/2026-11-08-modified-brain-unmodified-file.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-c3a25b` +4 | 8,504 | Q9 F4 M5 MOT1 S5 | — | 修飾された脳と、修飾されないファイル——乾板の間隔をジェイムズ原典で止める |
 | `readings/2026-11-08-replay-sleep-and-open-label.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-d24387` | 18,499 | Q3 M5 S1 | — | 再生しても同じにはならない——偶然性、統計学習、睡眠、開示されたプラセボ、内部の物差し |
@@ -5391,5 +5398,5 @@
 | `readings/2027-03-02-conditions-of-return.md` | 2026-11-08 | 2027-03-02 | `SESSION-20261108-8d42e1` | 8,228 | M5 S1 | ✓ | 戻ってくるものの条件——核、岩場、検出器、追試、治療 |
 | `readings/2027-03-03-five-experiments-on-self-memory-and-agency.md` | 2026-11-08 | 2027-03-03 | `SESSION-20261108-748ed5` | 10,565 | Q3 M5 S1 | ✓ | 自己を測る五つの実験——選択、身体、再活性化、判断 |
 | `readings/2027-03-04-five-experiments-on-social-memory.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-784d36` | 10,553 | Q3 M5 S1 | ✓ | 自分の過去は一人でできているか——個人的記憶、他者の痕跡、読み替えの五実験 |
-| `readings/2027-03-04-two-clocks-and-the-address-of-a-record.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-75b9c6` | 20,591 | Q3 M5 S1 | — | 二つの時計、一つの台帳——周期・位相・timestamp・住所 |
+| `readings/2027-03-04-two-clocks-and-the-address-of-a-record.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-75b9c6` | 20,591 | Q3 M5 S1 | ✓ | 二つの時計、一つの台帳——周期・位相・timestamp・住所 |
 | `readings/2027-03-05-five-experiments-on-boundaries-of-self-and-memory.md` | 2026-11-08 | 2027-03-05 | `SESSION-20261108-6befc5` | 11,104 | Q3 M10 S1 | — | 境界はどこで引かれるか——自己の顔、他者の痛み、頼まれていない記憶、脳のない眠りの五実験 |
