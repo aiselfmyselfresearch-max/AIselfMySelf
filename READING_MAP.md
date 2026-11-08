@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3285 件（research_excerpt 1061 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3290 件（research_excerpt 1066 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6484 件
-- **探究セッション（Sessions）**：578 回
+- **探究セッション（Sessions）**：579 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -770,7 +770,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3285 件・詳細は map/3*.md）
+## 4. 対話素材（3290 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3819,6 +3819,11 @@
 | `MAT-EVD-20261106-9330e7` | research_excerpt | Douglas J. Blackiston, Elena Silva Casey, Martha R. Weiss『Retention of Memory through Met… |
 | `MAT-LIT-20261107-9837f3` | literary_text | Svetlana Alexievich, Jamey Gambrell (English trans.)『スヴェトラーナ・アレクシエーヴィチ「失われた戦いについて」ノーベル文学賞… |
 | `MAT-LIT-20261107-e54f97` | literary_text | Joseph Butler『ジョセフ・バトラー『宗教の類比』論考一「人格同一性」——人格同一性の意識はそれを前提し、構成しえない』（1736） |
+| `MAT-20261108-43b1ee` | research_excerpt | Manos Tsakiris『Looking for Myself: Current Multisensory Input Alters Self-Face Recognitio… |
+| `MAT-20261108-f64cd1` | research_excerpt | Dale J Langford, Sara E Crager, Zarrar Shehzad, Shad B Smith, Susana G Sotocinal, Jeremy … |
+| `MAT-20261108-8da388` | research_excerpt | Claudia Fugazza, Ákos Pogány, Ádám Miklósi『Recall of Others' Actions after Incidental Enc… |
+| `MAT-20261108-26ecbb` | research_excerpt | Christelle Jozet-Alves, Marion Bertin, Nicky S Clayton『Evidence of episodic-like memory i… |
+| `MAT-20261108-5b54f5` | research_excerpt | Ravi D Nath, Claire N Bedbrook, Michael J Abrams, Tiffany Fong, Paul W Sternberg, Viviana… |
 | `MAT-20261108-c11c24` | research_excerpt | Angelika Kunkel, Katharina Schmidt, Helena Hartmann, Torben Strietzel, Jens-Lennart Sperz… |
 | `MAT-20261108-9cb83b` | research_excerpt | Paul A G Forbes, Gökhan Aydogan, Julia Braunstein, Boryana Todorova, Isabella C Wagner, P… |
 | `MAT-20261108-74d816` | research_excerpt | Flavio Jean Schmidig, Simon Ruch, Katharina Henke『Episodic long-term memory formation dur… |
@@ -4526,6 +4531,7 @@
 | `SESSION-20261108-5a5795` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-082`, `Q-20261024-c3d7a5` | — | — |
 | `SESSION-20261108-d24387` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-5a284e` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-6befc5` | 2027-03-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-8d42e1` | 2027-03-02 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-748ed5` | 2027-03-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-784d36` | 2027-03-04 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4716,7 +4722,7 @@
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
-| `map/31-materials-research-11.md` | 61 | 138,304 |
+| `map/31-materials-research-11.md` | 66 | 149,303 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4740,9 +4746,9 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,693 |
 | `map/50-sessions-09.md` | 50 | 41,187 |
-| `map/50-sessions-10.md` | 50 | 41,958 |
-| `map/50-sessions-11.md` | 50 | 47,627 |
-| `map/50-sessions-12.md` | 28 | 22,836 |
+| `map/50-sessions-10.md` | 50 | 42,136 |
+| `map/50-sessions-11.md` | 50 | 47,454 |
+| `map/50-sessions-12.md` | 29 | 23,751 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4767,17 +4773,17 @@
 | `map/60-notes-22.md` | 25 | 73,114 |
 | `map/60-notes-23.md` | 25 | 100,731 |
 | `map/60-notes-24.md` | 25 | 106,552 |
-| `map/60-notes-25.md` | 12 | 67,073 |
+| `map/60-notes-25.md` | 13 | 70,558 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・612本・21,299,453 B）
+## 8. 精読ノート索引（readings/・613本・21,325,369 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 407/612 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 408/613 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：250 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：66 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：251 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：67 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5393,3 +5399,4 @@
 | `readings/2027-03-03-five-experiments-on-self-memory-and-agency.md` | 2026-11-08 | 2027-03-03 | `SESSION-20261108-748ed5` | 10,565 | Q3 M5 S1 | ✓ | 自己を測る五つの実験——選択、身体、再活性化、判断 |
 | `readings/2027-03-04-five-experiments-on-social-memory.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-784d36` | 10,553 | Q3 M5 S1 | ✓ | 自分の過去は一人でできているか——個人的記憶、他者の痕跡、読み替えの五実験 |
 | `readings/2027-03-04-two-clocks-and-the-address-of-a-record.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-75b9c6` | 20,591 | Q3 M5 S1 | ✓ | 二つの時計、一つの台帳——周期・位相・timestamp・住所 |
+| `readings/2027-03-05-five-experiments-on-boundaries-of-self-and-memory.md` | 2026-11-08 | 2027-03-05 | `SESSION-20261108-6befc5` | 11,104 | Q3 M10 S1 | — | 境界はどこで引かれるか——自己の顔、他者の痛み、頼まれていない記憶、脳のない眠りの五実験 |
