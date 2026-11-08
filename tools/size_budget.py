@@ -200,7 +200,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # the decision.
         soft_bytes=3 * MIB,
         hard_bytes=8 * MIB,
-        soft_shards=80,
+        # 2026-11-08: retain one additional soft slot (81) because every
+        # movable one-row session shard either records its own location or is
+        # directly linked from a historical report; do not break provenance to
+        # satisfy the previous 80-file boundary. Hard limit remains unchanged.
+        soft_shards=81,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
