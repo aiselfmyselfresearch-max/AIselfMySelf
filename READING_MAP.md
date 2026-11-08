@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：436 件（初期シード 5 件 ＋ 派生 431 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3295 件（research_excerpt 1071 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3300 件（research_excerpt 1076 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6488 件
-- **探究セッション（Sessions）**：580 回
+- **解釈的関係（Relations）**：6491 件
+- **探究セッション（Sessions）**：581 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -770,7 +770,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3295 件・詳細は map/3*.md）
+## 4. 対話素材（3300 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3859,6 +3859,11 @@
 | `MAT-20261108-926869` | research_excerpt | Xiang Mou, Daoyun Ji『Social observation enhances cross-environment activation of hippocam… |
 | `MAT-20261108-3b69f7` | research_excerpt | Mary L Phillips, Holly Anne Robinson, Lucas Pozzo-Miller『Ventral hippocampal projections … |
 | `MAT-20261108-0b759d` | research_excerpt | Asieh Zadbood, Samuel Nastase, Janice Chen, Kenneth A Norman, Uri Hasson『Neural represent… |
+| `MAT-20261108-ef97f7` | research_excerpt | Brady Butterfield, Janet Metcalfe『Butterfield & Metcalfe「高い確信のもとでなされた誤りは、よく正される（hypercorr… |
+| `MAT-20261108-5ec3a6` | research_excerpt | Hollyn M. Johnson, Colleen M. Seifert『Johnson & Seifert「訂正が効き続けるとき——倉庫火災の説明は、否定されても因果の穴を埋… |
+| `MAT-20261108-1048a4` | research_excerpt | Lee Ross, Mark R. Lepper, Michael Hubbard『Ross, Lepper & Hubbard「資格剥奪後にも残る自己知覚——プロセス・デブリー… |
+| `MAT-20261108-b7f266` | research_excerpt | Timothy D. Wilson, Jonathan W. Schooler『Wilson & Schooler「考えすぎること——理由を分析すると、好みの質は下がる」（199… |
+| `MAT-20261108-2d237f` | research_excerpt | E. Tory Higgins, William S. Rholes『Higgins & Rholes「言うことが信じることになる——聴衆に合わせた説明は、記憶と好感を動かす」（… |
 | `MAT-20261108-aff4a1` | research_excerpt | Neha R Deshpande, Heather L Parrish, Michael S Kuhns『Self-recognition drives the preferen… |
 | `MAT-20261108-19cb5d` | research_excerpt | Francesco della Gatta, Francesca Garbarini, Guglielmo Puglisi, Antonella Leonetti, Annama… |
 | `MAT-20261108-0441b6` | research_excerpt | Josué Haubrich, Matteo Bernabo, Karim Nader『Noradrenergic projections from the locus coer… |
@@ -4534,6 +4539,7 @@
 | `SESSION-20261107-c477ed` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261107-922e6b` | 2026-11-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-5a5795` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-082`, `Q-20261024-c3d7a5` | — | — |
+| `SESSION-20261108-c4b86f` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-d24387` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-5a284e` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-6befc5` | 2027-03-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4655,17 +4661,17 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6488 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6491 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 925 |
+| 対照 (contrast) | 927 |
 | 共鳴 (echo) | 1579 |
 | 切断・割り込み (interrupts) | 221 |
 | 未解決のまま開く (leaves_open) | 886 |
 | 比喩的共鳴 (metaphorically_resonates) | 174 |
 | 枠組みの組み替え (reframes) | 673 |
-| 応答 (responds_to) | 1731 |
+| 応答 (responds_to) | 1732 |
 | 変奏・変形 (transforms) | 299 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -4728,7 +4734,7 @@
 | `map/31-materials-research-08.md` | 100 | 167,738 |
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
-| `map/31-materials-research-11.md` | 71 | 165,732 |
+| `map/31-materials-research-11.md` | 76 | 183,410 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4741,8 +4747,8 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 164,060 |
-| `map/40-relations-13.md` | 488 | 166,155 |
+| `map/40-relations-12.md` | 500 | 164,276 |
+| `map/40-relations-13.md` | 491 | 166,967 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -4752,9 +4758,9 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,693 |
 | `map/50-sessions-09.md` | 50 | 41,187 |
-| `map/50-sessions-10.md` | 50 | 42,228 |
-| `map/50-sessions-11.md` | 50 | 47,243 |
-| `map/50-sessions-12.md` | 30 | 24,690 |
+| `map/50-sessions-10.md` | 50 | 42,212 |
+| `map/50-sessions-11.md` | 50 | 47,236 |
+| `map/50-sessions-12.md` | 31 | 25,559 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4772,24 +4778,24 @@
 | `map/60-notes-15.md` | 25 | 83,706 |
 | `map/60-notes-16.md` | 25 | 88,383 |
 | `map/60-notes-17.md` | 25 | 110,823 |
-| `map/60-notes-18.md` | 25 | 110,675 |
-| `map/60-notes-19.md` | 25 | 64,027 |
-| `map/60-notes-20.md` | 25 | 62,546 |
-| `map/60-notes-21.md` | 25 | 67,466 |
-| `map/60-notes-22.md` | 25 | 71,203 |
-| `map/60-notes-23.md` | 25 | 100,128 |
-| `map/60-notes-24.md` | 25 | 102,937 |
-| `map/60-notes-25.md` | 14 | 78,725 |
+| `map/60-notes-18.md` | 25 | 114,124 |
+| `map/60-notes-19.md` | 25 | 63,877 |
+| `map/60-notes-20.md` | 25 | 62,272 |
+| `map/60-notes-21.md` | 25 | 67,548 |
+| `map/60-notes-22.md` | 25 | 69,136 |
+| `map/60-notes-23.md` | 25 | 100,290 |
+| `map/60-notes-24.md` | 25 | 102,136 |
+| `map/60-notes-25.md` | 15 | 84,074 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・614本・21,363,682 B）
+## 8. 精読ノート索引（readings/・615本・21,422,442 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 409/614 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 410/615 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：252 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：67 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：253 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：68 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5239,6 +5245,7 @@
 | `readings/2026-11-08-four-stickers-and-forty-kilohertz.md` | — | 2026-11-08 | `SESSION-20261108-e70636` +3 | 20,599 | Q3 F19 M7 MOT3 S4 ERR1 | ✓ | 四枚の札と四十キロヘルツ — 読まれ方を争えないものに、書庫は何を返すか（SESSION-20261108-e7063… |
 | `readings/2026-11-08-modified-brain-unmodified-file.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-c3a25b` +4 | 8,504 | Q9 F4 M5 MOT1 S5 | — | 修飾された脳と、修飾されないファイル——乾板の間隔をジェイムズ原典で止める |
 | `readings/2026-11-08-replay-sleep-and-open-label.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-d24387` | 18,499 | Q3 M5 S1 | — | 再生しても同じにはならない——偶然性、統計学習、睡眠、開示されたプラセボ、内部の物差し |
+| `readings/2026-11-08-the-prior-story-and-the-holes-in-the-table.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-c4b86f` | 26,847 | Q3 M10 MOT2 R3 S1 | — | 十分な説明と、同じ穴——理由を書く前に測った五つの実験、そしてこの書庫の訂正について |
 | `readings/2026-11-08-the-shared-prefix-and-the-divergent-continuation.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-5a5795` +1 | 9,897 | Q6 F8 M1 R2 S2 ED1 | — | 共有された接頭辞と、分かれた続き——二稿の昇格点検と、継承の連鎖の検証 |
 | `readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md` | — | 2026-11-08 | `SESSION-20261108-396bfa` +5 | 21,655 | Q16 F11 M16 MOT2 S6 ERR1 | ✓ | 尾は硝子に、夜は挟みに —— 連続の置き所をめぐる改稿・変奏と、その切断（SESSION-20261108-396bf… |
 | `readings/2026-11-08-what-gets-recorded-five-experiments.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-b33b90` +1 | 16,782 | Q3 M14 S2 | — | 記録されるのは何か——冗長な信号・問題の形・目印の輪・病名・統制の五実験 |

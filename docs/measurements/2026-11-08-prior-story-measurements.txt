@@ -1,0 +1,64 @@
+measurements for readings/2026-11-08-the-prior-story-and-the-holes-in-the-table.md
+session SESSION-20261108-c4b86f / real date 2026-11-08 (UTC) / read-only
+========================================================================
+NOTE on self-inclusion: readings/ is measured WITHOUT this report.
+  Including it inflates every audience count by 1, because the report
+  quotes the words it counts. Both figures are given below.
+========================================================================
+
+[7.1] audience words in readings/ (n=612, excluding self; n=613 including)
+  word          count    share   incl. self
+  次のセッション        297    48.5%   298
+  宛先             253    41.3%   254
+  利用者            209    34.2%   210
+  次の読者            54     8.8%   55
+  後の読者            14     2.3%   15
+  依頼者             16     2.6%   17
+  人間の依頼           13     2.1%   14
+  heading-level audience marker: 53/612 = 8.7%  (incl. self: 54)
+
+[7.2] confidence field in ledgers
+  schema files containing 'confidence': none
+  read_log rows whose note contains '確信': 6/10780
+  read_log rows whose note contains '不確か': 5/10780
+  read_log rows whose note contains '疑い': 17/10780
+
+[7.3] predictions written BEFORE measurement (see /tmp/preregistration.md, now deleted) vs result
+  P1 reports with a heading-level audience marker < 5%   -> 8.7%   MISS
+  P2 retraction claims with supersedes == 0              -> 1      MISS
+  P3 most common relation_type == leaves_open           -> responds_to   MISS
+     full distribution: [('responds_to', 1731), ('echo', 1579), ('contrast', 925), ('leaves_open', 886), ('reframes', 673), ('transforms', 299), ('interrupts', 221), ('metaphorically_resonates', 174)]
+  P4 literary_invitation ending in '?' < 20%            -> 1/3300  HIT
+  P5 errata subject_type=='note' == 0                    -> 0  HIT
+     but the enum has no such value: ['fragment', 'material', 'question', 'session', 'motif', 'other']
+
+[7.4] last 2 chars of literary_invitation (the question is written as 'か。', not '?')
+  'か。': 2743  (83.1%)
+  'る。': 244  (7.4%)
+  'い。': 101  (3.1%)
+  'む。': 36  (1.1%)
+  'う。': 27  (0.8%)
+
+[7.5] errata overview
+  rows: 202  (rows without a 'check' field, older format: 2 )
+  verdict: {'contradicted': 171, 'unmeasurable': 15, 'holds': 16}
+  status : {'annotated': 169, 'open': 31, 'corrected': 2}
+  check.kind: {'tail_question_count': 2, 'phrase_set_count': 3, 'phrase_in_fragments': 3, 'last_sentence_length': 1, 'manual': 161, 'narrator_mode_usage': 1, 'pronoun_absence': 2, 'quotation_match': 18, 'git_deletions': 3, 'external_source_lookup': 4, 'audit_group_count': 2}
+  measured_now non-empty: 201  median length: 185.5 chars
+  rows naming a CLASS of error: 15 / 202
+
+[7.6] alternative wording in measured_now -- VOCABULARY SCAN, NOT A SEMANTIC JUDGEMENT
+  rows with alternative-ish wording: 48 / 202
+  This number is NOT the count of corrections that fill a causal hole.
+
+[7.7] errata subject types / reports cannot be corrected
+  subject_type: {None: 10, 'material': 80, 'other': 72, 'fragment': 2, 'session': 23, 'question': 14, 'motif': 1}
+  notes rows: 266  claims: 873
+  notes with supersedes: 7
+  retraction claims: 22
+  read_log 'contested' rows on note targets: 31
+  -> reports can be disagreed with, but not corrected: errata has no 'note' subject.
+
+[§9] ledger counts at measurement time
+  PASS: literary inquiry seed valid (questions=436, motifs=59, materials=3300, fragments=246, relations=6488, sessions=580, read_log=10780, editorial_decisions=124, notes=266)
+========================================================================
