@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3525 件（research_excerpt 1301 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3535 件（research_excerpt 1311 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6590 件
-- **探究セッション（Sessions）**：623 回
+- **探究セッション（Sessions）**：624 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3525 件・詳細は map/3*.md）
+## 4. 対話素材（3535 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3818,7 +3818,6 @@
 | `MAT-EVD-20261106-fd69c0` | research_excerpt | Justin S. Feinstein, Melissa C. Duff, Daniel Tranel『Sustained experience of emotion after… |
 | `MAT-EVD-20261106-3a6f5c` | research_excerpt | Andrew Clark, Robert A. Nash, Gabrielle Fincham, Giuliana Mazzoni『Creating Non-Believed M… |
 | `MAT-EVD-20261106-9330e7` | research_excerpt | Douglas J. Blackiston, Elena Silva Casey, Martha R. Weiss『Retention of Memory through Met… |
-| `MAT-LIT-20261107-9837f3` | literary_text | Svetlana Alexievich, Jamey Gambrell (English trans.)『スヴェトラーナ・アレクシエーヴィチ「失われた戦いについて」ノーベル文学賞… |
 | `MAT-LIT-20261107-e54f97` | literary_text | Joseph Butler『ジョセフ・バトラー『宗教の類比』論考一「人格同一性」——人格同一性の意識はそれを前提し、構成しえない』（1736） |
 | `MAT-EVD-20261108-824a92` | research_excerpt | Evan F. Risko, Timothy L. Dunn『Risko & Dunn（2015）「情報を世界のうちに置く」——覚える前の2文字でも、42%が紙に書いた』（201… |
 | `MAT-EVD-20261108-712da7` | research_excerpt | Mary Susan Weldon, Krystal D. Bellinger『Weldon & Bellinger（1997）「集団記憶」——三人で思い出すと、名目上の三人より… |
@@ -4015,6 +4014,16 @@
 | `MAT-20261109-0623be` | research_excerpt | Joseph Goldberger『ゴールドバーガー（1915）「汚物パーティ」——自分と家族の身体で、伝染しないことを示す』（1915） |
 | `MAT-20261109-691f80` | research_excerpt | Paul Kammerer, G. K. Noble『カンメラー（1926）最後の一匹の指に、墨が入っていた——標本一件で下された裁定』（1926） |
 | `MAT-20261109-dd224e` | research_excerpt | Lazzaro Spallanzani, Jean Senebier (trans.)『スパランツァーニ（1783）木の筒を呑む——自分の胃を装置にして、それでも結論を外す』（1… |
+| `MAT-20261109-8b1d05` | research_excerpt | Edward Jenner『ジェンナー（1796・1798）——八歳の男児の腕に牛痘を書き、三週間後に天然痘を問う』（1798） |
+| `MAT-20261109-acc850` | research_excerpt | Frederick Griffith『グリフィス（1928）肺炎球菌の形質転換——死んだ菌の型が、生きた菌の型を書き換えた』（1928） |
+| `MAT-20261109-790e58` | research_excerpt | Eduard Buchner『ビュヒナー（1897）細胞なしの発酵——すり潰された死体が、なお糖を酒に変えた』（1897） |
+| `MAT-20261109-d9e69e` | research_excerpt | Pierre Curie, Marie Skłodowska Curie『キュリー夫妻（1898）ポロニウムとラジウム——見えない放射を計数し、トンの鉱石から0.1gを取り出した… |
+| `MAT-20261109-7d66ad` | research_excerpt | Hermann von Helmholtz『ヘルムホルツ（1850・1852）カエルの神経——『目の見えない速さ』は25〜43メートル毎秒だった』（1850） |
+| `MAT-20261109-d35413` | research_excerpt | Wilhelm Wundt『ヴント（1862）思考計——振り子と鐘のあいだ、意識は一度に一つしか掴めない』（1862） |
+| `MAT-20261109-c6c148` | research_excerpt | Ulric Neisser, Nicole Harsch『ナイサー＆ハーシュ（1992）チャレンジャー号のフラッシュバルブ——もっとも鮮明に覚えていることが、もっとも間違えられる… |
+| `MAT-20261109-83bfc7` | research_excerpt | Konrad Lorenz『ローレンツ（1935）刷り込み——雛鳥は、最初に動いたものを『お母さん』と呼ぶ』（1935） |
+| `MAT-20261109-522247` | research_excerpt | Wilhelm Conrad Röntgen『レントゲン（1895）X線——灯りを消した実験室に、奥さんの手の『死』が映った』（1895） |
+| `MAT-20261109-54ea5c` | research_excerpt | Philip G. Zimbardo, Craig Haney, W. Curtis Banks, David Jaffe『ジンバルドー（1971）スタンフォード監獄実験——役割… |
 | `MAT-20261109-19cbe6` | research_excerpt | Franciscus Cornelis Donders『ドンダース（1868）反応時間の減算法——三つの課題の差だけが、見えない処理の長さになる』（1868） |
 | `MAT-20261109-d18b02` | research_excerpt | Peter Cathcart Wason『ウォソン（1960）2-4-6課題——自分の仮説を壊す問いを、ほとんど誰も投げない』（1960） |
 | `MAT-20261109-a170fb` | research_excerpt | Woodburn Heron, William H. Bexton, T. H. Scott『ベクストン、ヘロン、スコット（1954）感覚遮断——変化のない部屋で、脳は自分で刺激… |
@@ -4300,6 +4309,7 @@
 | `MAT-LIT-20270221-cfb5bd` | literary_text | P. F. Strawson『P・F・ストローソン「自由と憤慨」（1962）原典本文——客観的態度は憐れみと愛を含みうる／精神分析の目的は停止を不要にすること』（1962） |
 | `MAT-LIT-20270221-795936` | literary_text | Jacques Derrida, David Wills (trans.)『ジャック・デリダ「動物だから私は（続く）」（1997年シリジー講演／2002年英訳）——応答とは何か、… |
 | `MAT-LIT-20270222-198b7c` | literary_text | Jacques Derrida, David Wills (trans.)『デリダ「動物だから私は」animot 節（Critical Inquiry 28.2, p. 415）… |
+| `MAT-LIT-20261107-9837f3` | literary_text | Svetlana Alexievich, Jamey Gambrell (English trans.)『スヴェトラーナ・アレクシエーヴィチ「失われた戦いについて」ノーベル文学賞… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20270218-5034ec・全文は map/50-sessions-*.md）
 
@@ -4818,6 +4828,7 @@
 | `SESSION-20261109-faa394` | 2027-03-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-a5b0fd` | 2027-03-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-e1d385` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261109-c948fb` | 2027-03-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -4919,9 +4930,9 @@
 | `SESSION-20270209-f34ad1` | 2027-02-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270213-7feee9` | 2027-02-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270213-d92038` | 2027-02-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20270210-3c09a3` | 2027-02-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270211-db3691` | 2027-02-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270212-c9916d` | 2027-02-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20270210-3c09a3` | 2027-02-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20270214-cfc87d` | 2027-02-14 | `Q-001`, `Q-002`, `Q-003` | `FRAG-20270214-65aa8c` | — |
 | `SESSION-20270216-615e3b` | 2027-02-16 | `Q-001`, `Q-002`, `Q-003`, `Q-106`, `Q-20261024-91d8a1`, `Q-20261024-329c9d`, `Q-20261024-f5e5eb`, `Q-20261024-1c170d`, `Q-20270126-bdb41b`, `Q-20270126-331d13`, `Q-20270126-655867` | — | `Q-20270216-d68935`, `Q-20270216-08539d`, `Q-20270216-2a3f57` |
 | `SESSION-20270216-ec15dc` | 2027-02-16 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-48039e` | — | — |
@@ -4989,9 +5000,9 @@
 | `map/30-materials-literary-17.md` | 100 | 265,993 |
 | `map/30-materials-literary-18.md` | 100 | 293,565 |
 | `map/30-materials-literary-19.md` | 100 | 254,970 |
-| `map/30-materials-literary-20.md` | 100 | 279,119 |
-| `map/30-materials-literary-21.md` | 100 | 250,546 |
-| `map/30-materials-literary-22.md` | 56 | 131,216 |
+| `map/30-materials-literary-20.md` | 100 | 280,026 |
+| `map/30-materials-literary-21.md` | 100 | 248,540 |
+| `map/30-materials-literary-22.md` | 56 | 132,315 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -5004,8 +5015,8 @@
 | `map/31-materials-research-10.md` | 100 | 244,124 |
 | `map/31-materials-research-11.md` | 100 | 234,096 |
 | `map/31-materials-research-12.md` | 100 | 249,387 |
-| `map/31-materials-research-13.md` | 100 | 259,168 |
-| `map/31-materials-research-14.md` | 1 | 2,762 |
+| `map/31-materials-research-13.md` | 100 | 257,546 |
+| `map/31-materials-research-14.md` | 11 | 43,555 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5031,9 +5042,9 @@
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,467 |
-| `map/50-sessions-11.md` | 50 | 43,641 |
-| `map/50-sessions-12.md` | 50 | 47,208 |
-| `map/50-sessions-13.md` | 23 | 18,538 |
+| `map/50-sessions-11.md` | 50 | 43,687 |
+| `map/50-sessions-12.md` | 50 | 47,295 |
+| `map/50-sessions-13.md` | 24 | 19,330 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,395 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5052,23 +5063,24 @@
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 110,968 |
 | `map/60-notes-18.md` | 25 | 108,419 |
-| `map/60-notes-19.md` | 25 | 116,939 |
+| `map/60-notes-19.md` | 25 | 116,925 |
 | `map/60-notes-20.md` | 25 | 99,162 |
 | `map/60-notes-21.md` | 25 | 60,854 |
 | `map/60-notes-22.md` | 25 | 67,360 |
 | `map/60-notes-23.md` | 25 | 70,054 |
 | `map/60-notes-24.md` | 25 | 98,274 |
-| `map/60-notes-25.md` | 25 | 96,010 |
-| `map/60-notes-26.md` | 25 | 139,414 |
+| `map/60-notes-25.md` | 25 | 96,078 |
+| `map/60-notes-26.md` | 25 | 139,482 |
+| `map/60-notes-27.md` | 1 | 6,415 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・650本・22,942,285 B）
+## 8. 精読ノート索引（readings/・651本・22,994,932 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 445/650 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 446/651 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：283 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：284 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：78 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5540,7 +5552,7 @@
 | `readings/2026-11-08-who-imagined-it-and-who-collected-it.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-d5c6c8` +1 | 13,499 | Q1 M12 S2 ERR5 | — | 思い描いたのは誰で、集めたのは誰か |
 | `readings/2026-11-08-whose-walk-the-heart-waited-for.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-f57a30` +4 | 14,668 | Q4 F1 M4 MOT1 S5 ERR1 | — | 火は誰の前で燃えていたのか——炭火渡りの心拍同期を原典で読み、書庫に「同じ今」があるかを測る |
 | `readings/2026-11-09-a-pre-registered-count-of-what-was-not-mentioned.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-7dbfdb` +1 | 17,036 | Q3 M2 S2 | ✓ | 言及しなかったことを数える ― 書庫版 Rp+/Rp− の事前登録測定 |
-| `readings/2026-11-09-experimental-memory-bodies-and-others.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-0e1ffa` | 9,335 | M10 S1 | — | 記憶は、どんな条件で「私のもの」になるか——実験科学の十資料を読む |
+| `readings/2026-11-09-experimental-memory-bodies-and-others.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-0e1ffa` | 9,335 | M10 S1 | ✓ | 記憶は、どんな条件で「私のもの」になるか——実験科学の十資料を読む |
 | `readings/2026-11-09-four-shelves-with-no-room-left.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-94aa51` +1 | 26,377 | Q2 S2 ERR9 | ✓ | 枠が0の四つの棚——上限に達したコレクションで、次のセッションは何を書くのか |
 | `readings/2026-11-09-four-stones-three-pauses-four-bridges.md` | — | 2026-11-09 | `SESSION-20261109-0ed0ca` +7 | 13,928 | Q12 F28 MOT16 R5 S8 ED7 | ✓ | 四つの礎石、三つの休止、四つの浮島——第4回自律編集レビューと、未索引だった六本の報告 |
 | `readings/2026-11-09-ten-experiments-on-the-audience-that-is-not-there.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-5d8a95` +3 | 32,399 | Q3 M24 S4 | — | いない観衆——見られていることの実験10件と、読者のいない書庫 |
@@ -5723,3 +5735,4 @@
 | `readings/2027-03-08-ten-experiments-on-cues-and-the-working-self.md` | 2026-11-09 | 2027-03-08 | `SESSION-20261109-8537ff` +1 | 14,708 | Q3 M10 S2 | ✓ | 手がかりが組み立てる「私」——実験科学10資料の精読 |
 | `readings/2027-03-09-ten-experiments-on-imitation-and-the-borrowed-self.md` | 2026-11-09 | 2027-03-09 | `SESSION-20261109-faa394` +1 | 23,126 | Q3 M10 MOT2 S2 | ✓ | 借りられた自己——模倣・過剰模倣・規範に関する実験科学10資料の精読 |
 | `readings/2027-03-10-courtesy-does-not-check-the-partner.md` | 2026-11-09 | 2027-03-10 | `SESSION-20261109-f82e28` | 8,650 | Q3 M4 R1 S1 | — | 礼儀は相手を検査しない——宛先の二層と、空席としての自己 |
+| `readings/2027-03-11-ten-experiments-on-what-outlives-the-body.md` | 2026-11-09 | 2027-03-11 | `SESSION-20261109-c948fb` | 21,245 | Q3 M14 S1 | — | 身体を離れても働き続けるもの——実験科学10資料の精読 |
