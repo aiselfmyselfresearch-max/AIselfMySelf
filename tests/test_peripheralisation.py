@@ -233,6 +233,35 @@ class PeripheralisationTests(unittest.TestCase):
             self.assertIn("鏡であって判定ではない", text)
             self.assertIn("Rp+", text)
 
+    def test_pool_window_drops_sessions_that_are_too_old(self) -> None:
+        """EXPLORATORY flag: only pool materials from sessions within N days of B."""
+        with tempfile.TemporaryDirectory() as tmp:
+            root = make_repo(Path(tmp))
+            far = root / "state" / "sessions.d"
+            far.mkdir()
+            old = session("SESSION-OLD", "2025-06-01", ("Q-001",), ("MAT-A2", "MAT-B1"))
+            (far / "2025-06-01-cccccccccccc.jsonl").write_text(
+                json.dumps(old, ensure_ascii=False) + "\n", encoding="utf-8"
+            )
+            unrestricted = self.clusters_by_session(root)["SESSION-B"]
+            self.assertEqual(unrestricted.n["Rp-"], 1)
+            self.assertEqual(unrestricted.n["Nrp"], 2)
+            # SESSION-A is one day before B, so a 7-day window keeps it...
+            week = self.clusters_by_session(root, pool_window=7)["SESSION-B"]
+            self.assertEqual(week.n["Rp-"], 1)
+            self.assertEqual(week.n["Nrp"], 2)
+            # ...and a zero-day window empties the pool, dropping B entirely.
+            zero = self.clusters_by_session(root, pool_window=0)
+            self.assertNotIn("SESSION-B", zero)
+
+    def test_pool_window_is_flagged_exploratory_in_the_render(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = make_repo(Path(tmp))
+            clusters, meta = peripheralisation.collect(root, pool_window=7)
+            summary = peripheralisation.summarize(clusters, meta, reps=20)
+            text = peripheralisation.render(summary)
+            self.assertIn("EXPLORATORY pool-window 7d", text)
+
     def test_main_runs_on_a_synthetic_root(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = make_repo(Path(tmp))
@@ -245,6 +274,12 @@ class PeripheralisationTests(unittest.TestCase):
             )
             self.assertEqual(
                 peripheralisation.main(["--root", str(root), "--bootstrap", "20", "--secondary"]), 0
+            )
+            self.assertEqual(
+                peripheralisation.main(
+                    ["--root", str(root), "--bootstrap", "20", "--pool-window", "7"]
+                ),
+                0,
             )
 
 

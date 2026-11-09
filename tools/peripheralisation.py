@@ -142,9 +142,18 @@ class Cluster:
 
 
 def collect(
-    root: Path = ROOT, *, outcome: str = "next_day"
+    root: Path = ROOT, *, outcome: str = "next_day", pool_window: int | None = None
 ) -> tuple[list[Cluster], dict[str, Any]]:
-    """Classify every (session, pool-material) pair and score its re-visit."""
+    """Classify every (session, pool-material) pair and score its re-visit.
+
+    ``pool_window`` restricts the pool to sessions that started at most that many
+    days before ``B``.  It was added *after* the unrestricted run, because that
+    run replaced Coman's 16-item study list with roughly 2,700 materials and the
+    base return rate fell to 0.5% -- a floor so low that no suppression could
+    show against it.  A restricted pool is the closer analogue of "the items
+    currently in play".  Results produced with it are **exploratory**, not the
+    pre-registered test in the report's §4, and must be labelled as such.
+    """
     sessions = _load("sessions", "session_id", root)
     materials = _load("materials", "material_id", root)
     read_log = _load("read_log", "read_id", root)
@@ -199,12 +208,20 @@ def collect(
         if not ctx[b] or not qids[b]:
             continue
         b_day = day[b]
+        b_date_for_pool = _to_date(b_day)
         pool: set[str] = set()
         for a in sessions:
             if day[a] >= b_day or not ctx[a]:
                 continue
-            if qids[a] & qids[b]:
-                pool.update(ctx[a])
+            if not (qids[a] & qids[b]):
+                continue
+            if pool_window is not None:
+                a_date = _to_date(day[a])
+                if not (a_date and b_date_for_pool):
+                    continue
+                if (b_date_for_pool - a_date).days > pool_window:
+                    continue
+            pool.update(ctx[a])
         if not pool:
             continue
 
@@ -251,6 +268,7 @@ def collect(
 
     meta = {
         "outcome": outcome,
+        "pool_window_days": pool_window,
         "sessions_total": len(sessions),
         "sessions_eligible": len(clusters),
         "materials_total": len(materials),
@@ -425,7 +443,9 @@ def render(summary: dict[str, Any]) -> str:
     lines = [
         "# 言及されなかった記録の再訪率 — Rp+ / Rp- / Nrp",
         "",
-        f"outcome: {meta['outcome']} ({summary['outcome_key']})",
+        f"outcome: {meta['outcome']} ({summary['outcome_key']})"
+        + (f"  [EXPLORATORY pool-window {meta['pool_window_days']}d]"
+           if meta.get("pool_window_days") else ""),
         f"対象セッション: {meta['sessions_eligible']} / {meta['sessions_total']}  "
         f"(distinct days {meta['distinct_days']})",
         f"materials: {meta['materials_total']}  "
@@ -481,6 +501,13 @@ def main(argv: list[str] | None = None) -> int:
         help="next_day = the archive's next active day (primary); any_later = every later day",
     )
     parser.add_argument(
+        "--pool-window",
+        type=int,
+        default=None,
+        metavar="DAYS",
+        help="EXPLORATORY: only pool materials from sessions within DAYS before B",
+    )
+    parser.add_argument(
         "--secondary",
         action="store_true",
         help="also count hand-written read_log rows, not just context_material_ids",
@@ -490,7 +517,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--json", action="store_true", help="machine-readable output")
     args = parser.parse_args(argv)
 
-    clusters, meta = collect(args.root, outcome=args.outcome)
+    clusters, meta = collect(args.root, outcome=args.outcome, pool_window=args.pool_window)
     key = "hit_secondary" if args.secondary else "hit"
     summary = summarize(clusters, meta, key=key, reps=args.bootstrap, seed=args.seed)
     if args.json:
