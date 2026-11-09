@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3505 件（research_excerpt 1281 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3515 件（research_excerpt 1291 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6569 件
-- **探究セッション（Sessions）**：619 回
+- **解釈的関係（Relations）**：6576 件
+- **探究セッション（Sessions）**：622 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3505 件・詳細は map/3*.md）
+## 4. 対話素材（3515 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4025,6 +4025,16 @@
 | `MAT-20261109-b7e4c9` | research_excerpt | Eleanor A. Maguire, David G. Gadian, Ingrid S. Johnsrude, Catriona D. Good, John Ashburne… |
 | `MAT-20261109-cc2a41` | research_excerpt | Monica Gagliano, Michael Renton, Martial Depczynski, Stefano Mancuso『ガリアーノほか（2014）オジギソウの馴… |
 | `MAT-20261109-dd5b18` | research_excerpt | Richard C. Anderson, James W. Pichert『アンダーソン＆ピチャート（1978）視点の転換——読めなかったはずの文が、後から読める』（1978） |
+| `MAT-20261109-f6a58b` | research_excerpt | Tanya L. Chartrand, John A. Bargh『チャートランド＆バーグ（1999）カメレオン効果——見た姿勢が、意図せず自分の姿勢になる』（1999） |
+| `MAT-20261109-3c606e` | research_excerpt | Ulf Dimberg『ディンバーグ（1982）顔の表情への顔の反応——笑顔を見た頬と、怒り顔を見た眉間』（1982） |
+| `MAT-20261109-63b1d6` | research_excerpt | Robert R. Provine『プロヴァイン（1986）あくびという定型動作と解放刺激——他者のあくびが、あくびを放出する』（1986） |
+| `MAT-20261109-ddc0d8` | research_excerpt | James M. Kilner, Yves Paulignan, Sarah-Jayne Blakemore『キルナー、ポリニャン＆ブレイクモア（2003）見た人間の腕が、自分の… |
+| `MAT-20261109-71b1d7` | research_excerpt | Malinda Carpenter, Nameera Akhtar, Michael Tomasello『カーペンター、アフタール＆トマセロ（1998）14〜18か月児は「意図的… |
+| `MAT-20261109-10c336` | research_excerpt | Andrew N. Meltzoff『メルツォフ（1995）他者の意図の理解——18か月児は失敗した試みの「意図された行為」を再演する』（1995） |
+| `MAT-20261109-0401ca` | research_excerpt | Andrew Whiten, Deborah M. Custance, Juan-Carlos Gomez, Patricia Teixidor, Kim A. Bard『ホワイ… |
+| `MAT-20261109-04be5a` | research_excerpt | Victoria Horner, Andrew Whiten『ホーナー＆ホワイテン（2005）因果が見えると、チンパンジーは結果を写し、子どもは手順を写す』（2005） |
+| `MAT-20261109-b0005c` | research_excerpt | Derek E. Lyons, Andrew G. Young, Frank C. Keil『ライアンズ、ヤング＆カイル（2007）過剰模倣の隠れた構造——意図された行為は、無関… |
+| `MAT-20261109-f1ceb3` | research_excerpt | Ben Kenward, Matilda Karlsson, Joanna Persson『ケンワード、カールソン＆ペルソン（2011）過剰模倣は因果の誤学習ではなく、規範の学習… |
 | `MAT-20261109-977538` | research_excerpt | Alan D. Baddeley, Graham J. Hitch『Baddeley & Hitch（1974）作業記憶の二重課題実験——保持しながら考える心』（1974） |
 | `MAT-20261109-c03ca7` | research_excerpt | Edward L. Deci『Deci（1971）外的報酬と内発的動機づけ——報酬後にパズルへ戻るか』（1971） |
 | `MAT-20261109-fc5abe` | research_excerpt | Harry McGurk, John MacDonald『McGurk & MacDonald（1976）視聴覚音声知覚——口の動きが聞こえを変える』（1976） |
@@ -4789,11 +4799,14 @@
 | `SESSION-20261109-5d8a95` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-e72436` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-fdecfe` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261109-f82e28` | 2027-03-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-db8222` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-0e1ffa` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-8537ff` | 2027-03-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-36f889` | 2027-03-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-658e21` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261109-faa394` | 2027-03-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261109-a5b0fd` | 2027-03-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -4905,18 +4918,18 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6569 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6576 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 943 |
-| 共鳴 (echo) | 1590 |
+| 対照 (contrast) | 945 |
+| 共鳴 (echo) | 1592 |
 | 切断・割り込み (interrupts) | 225 |
-| 未解決のまま開く (leaves_open) | 889 |
+| 未解決のまま開く (leaves_open) | 890 |
 | 比喩的共鳴 (metaphorically_resonates) | 180 |
 | 枠組みの組み替え (reframes) | 693 |
-| 応答 (responds_to) | 1746 |
-| 変奏・変形 (transforms) | 303 |
+| 応答 (responds_to) | 1747 |
+| 変奏・変形 (transforms) | 304 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -4980,7 +4993,7 @@
 | `map/31-materials-research-10.md` | 100 | 244,124 |
 | `map/31-materials-research-11.md` | 100 | 234,096 |
 | `map/31-materials-research-12.md` | 100 | 249,387 |
-| `map/31-materials-research-13.md` | 81 | 197,148 |
+| `map/31-materials-research-13.md` | 91 | 217,497 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4993,9 +5006,9 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 170,906 |
-| `map/40-relations-13.md` | 500 | 168,557 |
-| `map/40-relations-14.md` | 69 | 21,745 |
+| `map/40-relations-12.md` | 500 | 170,695 |
+| `map/40-relations-13.md` | 500 | 168,517 |
+| `map/40-relations-14.md` | 76 | 24,365 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5006,11 +5019,11 @@
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,467 |
-| `map/50-sessions-11.md` | 50 | 43,805 |
-| `map/50-sessions-12.md` | 50 | 46,599 |
-| `map/50-sessions-13.md` | 19 | 15,185 |
+| `map/50-sessions-11.md` | 50 | 43,587 |
+| `map/50-sessions-12.md` | 50 | 47,373 |
+| `map/50-sessions-13.md` | 22 | 17,527 |
 | `map/60-notes-01.md` | 25 | 57,309 |
-| `map/60-notes-02.md` | 25 | 64,333 |
+| `map/60-notes-02.md` | 25 | 64,395 |
 | `map/60-notes-03.md` | 25 | 67,428 |
 | `map/60-notes-04.md` | 25 | 92,563 |
 | `map/60-notes-05.md` | 25 | 80,051 |
@@ -5034,17 +5047,17 @@
 | `map/60-notes-23.md` | 25 | 69,244 |
 | `map/60-notes-24.md` | 25 | 100,550 |
 | `map/60-notes-25.md` | 25 | 95,809 |
-| `map/60-notes-26.md` | 22 | 124,441 |
+| `map/60-notes-26.md` | 24 | 134,861 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・647本・22,754,706 B）
+## 8. 精読ノート索引（readings/・649本・22,834,291 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 442/647 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 444/649 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：280 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：76 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：282 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：77 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5695,3 +5708,5 @@
 | `readings/2027-03-07-ten-experiments-between-the-body-and-the-archive.md` | 2026-11-08 | 2027-03-07 | `SESSION-20261108-d7ce13` +2 | 24,924 | Q3 M31 S3 | — | 応答で作られる人間と、読み方で残る記録——実験科学10資料の精読 |
 | `readings/2027-03-07-ten-experiments-on-mediation-and-becoming.md` | 2026-11-08 | 2027-03-07 | `SESSION-20261108-b1a145` +1 | 17,071 | Q3 M19 S2 | ✓ | 媒介が運ぶもの、運ばないもの——実験科学10資料の精読 |
 | `readings/2027-03-08-ten-experiments-on-cues-and-the-working-self.md` | 2026-11-09 | 2027-03-08 | `SESSION-20261109-8537ff` +1 | 14,708 | Q3 M10 S2 | ✓ | 手がかりが組み立てる「私」——実験科学10資料の精読 |
+| `readings/2027-03-09-ten-experiments-on-imitation-and-the-borrowed-self.md` | 2026-11-09 | 2027-03-09 | `SESSION-20261109-faa394` +1 | 23,126 | Q3 M10 MOT2 S2 | ✓ | 借りられた自己——模倣・過剰模倣・規範に関する実験科学10資料の精読 |
+| `readings/2027-03-10-courtesy-does-not-check-the-partner.md` | 2026-11-09 | 2027-03-10 | `SESSION-20261109-f82e28` | 8,650 | Q3 M4 R1 S1 | — | 礼儀は相手を検査しない——宛先の二層と、空席としての自己 |
