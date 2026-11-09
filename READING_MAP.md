@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3415 件（research_excerpt 1191 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3425 件（research_excerpt 1201 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6530 件
-- **探究セッション（Sessions）**：605 回
+- **解釈的関係（Relations）**：6534 件
+- **探究セッション（Sessions）**：606 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3415 件・詳細は map/3*.md）
+## 4. 対話素材（3425 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3985,6 +3985,16 @@
 | `MAT-20261108-690c75` | research_excerpt | James Olds, Peter Milner『オールズ＆ミルナー（1954）自己刺激——レバーを押すと、自分の脳が報酬になる』（1954） |
 | `MAT-20261108-9f1dba` | research_excerpt | Jerome Y. Lettvin, Humberto R. Maturana, Warren S. McCulloch, Walter H. Pitts『レットヴィンほか（19… |
 | `MAT-20261108-53bc74` | research_excerpt | Adrian M. Owen, Martin R. Coleman, Melanie Boly, Matthew H. Davis, Steven Laureys, John D… |
+| `MAT-20261109-19cbe6` | research_excerpt | Franciscus Cornelis Donders『ドンダース（1868）反応時間の減算法——三つの課題の差だけが、見えない処理の長さになる』（1868） |
+| `MAT-20261109-d18b02` | research_excerpt | Peter Cathcart Wason『ウォソン（1960）2-4-6課題——自分の仮説を壊す問いを、ほとんど誰も投げない』（1960） |
+| `MAT-20261109-a170fb` | research_excerpt | Woodburn Heron, William H. Bexton, T. H. Scott『ベクストン、ヘロン、スコット（1954）感覚遮断——変化のない部屋で、脳は自分で刺激… |
+| `MAT-20261109-2e54eb` | research_excerpt | Eugene Aserinsky, Nathaniel Kleitman『エイサリンキー＆クライトマン（1953）急速眼球運動——眠っている者を起こさずに、夢の時刻を外から読む』… |
+| `MAT-20261109-4516ad` | research_excerpt | Robert Ader, Nicholas Cohen『エイデル＆コーエン（1975）行動的に条件づけられた免疫抑制——味だけで、免疫が下がった』（1975） |
+| `MAT-20261109-86bb22` | research_excerpt | K. Anders Ericsson, William G. Chase, Steve Faloon『エリクソン、チェイス、ファロン（1980）記憶技能の獲得——七桁の男が、八十… |
+| `MAT-20261109-3f9b0d` | research_excerpt | John Garcia, Robert A. Koelling『ガルシア＆ケリング（1966）手がかりと結果の関係——味は吐き気と、光と音は電気ショックと結びつく』（1966） |
+| `MAT-20261109-b7e4c9` | research_excerpt | Eleanor A. Maguire, David G. Gadian, Ingrid S. Johnsrude, Catriona D. Good, John Ashburne… |
+| `MAT-20261109-cc2a41` | research_excerpt | Monica Gagliano, Michael Renton, Martial Depczynski, Stefano Mancuso『ガリアーノほか（2014）オジギソウの馴… |
+| `MAT-20261109-dd5b18` | research_excerpt | Richard C. Anderson, James W. Pichert『アンダーソン＆ピチャート（1978）視点の転換——読めなかったはずの文が、後から読める』（1978） |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -4030,6 +4040,21 @@
 | `MAT-LIT-20261103-253be8` | literary_text | 伝承資料・著者未確定『申命記 24:19–22——忘れた束と記憶された隷属』（1611） |
 | `MAT-LIT-20261103-c0d85b` | literary_text | 伝承資料・著者未確定『ルカによる福音書 15:11–32——帰還と祝えない兄』（1611） |
 | `MAT-LIT-20261103-954e08` | literary_text | 伝承資料・著者未確定『詩篇 146:3–9——息の限界と神の具体的な行為』（1611） |
+| `MAT-LIT-20270125-ac2a27` | literary_text | Bhikkhu Sujato (trans.), Mahāsaṅgīti Tipiṭaka (root Pāli)『『カーラーマ経』（AN 3.65）——十の「依らない」根拠と、… |
+| `MAT-LIT-20270125-73cfe7` | literary_text | 鳩摩羅什 (trans.), CBETA / Kanripo (edition)『『妙法蓮華経』譬喩品第三——火宅の三車と、等しく与えられる大車』（406） |
+| `MAT-LIT-20270125-af5116` | literary_text | H. T. Francis, E. J. Thomas (trans.), Robert Chalmers (ed.)『『ジャータカ』第407話（マハーカピ）——測り違えた胴の長… |
+| `MAT-LIT-20270125-bbe3a2` | literary_text | E. A. Wallis Budge (ed. / trans.)『「七年の飢饉と神クネム」——封じられた文書を繰り広げ、石に写すよう命じる王』（1912） |
+| `MAT-LIT-20270125-c534ab` | literary_text | 作者不詳（哀歌）, King James translators (trans.)『『哀歌』第1章——慰める者のいない都が、自分で自分を語る』（1611） |
+| `MAT-LIT-20270125-d38f0a` | literary_text | Marmaduke Pickthall (trans.)『クルアーン49章「部屋」6・11–12節——確かめることと、死者を食らうことの禁令』（1930） |
+| `MAT-LIT-20270125-299da0` | literary_text | F. Max Müller (trans.)『『シュヴェーターシュヴァタラ・ウパニシャッド』第四章5–20節——同じ樹の二羽の鳥、マーヤー、そして像の不在』（1879） |
+| `MAT-LIT-20270125-2941db` | literary_text | E. W. West (trans.)『『メーノーグ・イー・フラド（叡智の霊）』第2–3章——舌を守ることと、徳がそれぞれ別の相手に割り当てられること』（1885） |
+| `MAT-LIT-20270125-6591d3` | literary_text | Henry Adams Bellows (trans.)『『ハーヴァマール（高き者の言葉）』8–10・18・23–27節——他人の胸にある叡智と、問われて初めて露わになる無知』（… |
+| `MAT-LIT-20270125-5fd11e` | literary_text | Basil Hall Chamberlain (trans.)『『古事記』上巻・八岐大蛇——名を問われ、名を名乗り、尾から出た剣が天へ送られる』（1919） |
+| `MAT-LIT-20270125-6b8ad9` | literary_text | Adrián Recinos (ed. / trad.)『『ポポル・ヴフ』第二部第十二–十四章——挽かれた骨が川から戻り、名が残ると告げられる』（1947） |
+| `MAT-LIT-20270125-f36d31` | literary_text | E. A. Wallis Budge (ed. / trans.)『「プタハ・ネフェルヘテプとベフテンの王女」——像に移される保護力と、黄金の鷹となって帰る神』（1912） |
+| `MAT-EVD-20270126-81951c` | research_excerpt | （編者による調査・要約）『モントリオール議定書（1987）——有用な物質を全廃できた希少な成功例と、その九个の条件』（1987） |
+| `MAT-EVD-20270126-c4d195` | research_excerpt | （編者による調査・要約）『第二ラテラン公会議 Canon 29（1139）の石弓禁止——執行装置のない破門と、「正戦」による免除』（1139） |
+| `MAT-EVD-20270126-643177` | research_excerpt | （編者による調査・要約）『「日本は銃を捨てた」はほぼ神話である——名目遵守・実質保持・双方の面子』（1979） |
 | `MAT-LIT-20261103-d07fd6` | literary_text | 伝承資料・著者未確定『『エレミヤ書』36章——小刀で切り裂かれる巻物と、言葉の増えた二つ目の巻物』（1611） |
 | `MAT-LIT-20261103-620ee5` | literary_text | ラビ文献・編纂者未確定『『バビロニア・タルムード』バヴァ・バトラ 14b–15a——モーセの死を書いたのは誰か』（500） |
 | `MAT-LIT-20261103-5c1dba` | literary_text | （伝・慧能の語を門下が編纂）『『六祖大師法宝壇経』行由品第一——代筆された偈と、靴で擦り消される壁』（1291） |
@@ -4050,21 +4075,6 @@
 | `MAT-LIT-20261103-0de8cf` | literary_text | Kumārajīva (translator), CBETA『妙法蓮華経 方便品第二——五千人の退出と止めない沈黙』（406） |
 | `MAT-LIT-20261103-d34cf6` | literary_text | Snorri Sturluson, Arthur Gilchrist Brodeur (translator)『スノッリのエッダ 詩語法 I——クヴァシルと詩の蜜酒』（1916） |
 | `MAT-LIT-20261103-c5e38b` | literary_text | 古事記編者, 岩波文庫版編者『古事記 上巻 根の堅州国——鳴る琴と黄泉比良坂の呼び声』（1937） |
-| `MAT-LIT-20270125-ac2a27` | literary_text | Bhikkhu Sujato (trans.), Mahāsaṅgīti Tipiṭaka (root Pāli)『『カーラーマ経』（AN 3.65）——十の「依らない」根拠と、… |
-| `MAT-LIT-20270125-73cfe7` | literary_text | 鳩摩羅什 (trans.), CBETA / Kanripo (edition)『『妙法蓮華経』譬喩品第三——火宅の三車と、等しく与えられる大車』（406） |
-| `MAT-LIT-20270125-af5116` | literary_text | H. T. Francis, E. J. Thomas (trans.), Robert Chalmers (ed.)『『ジャータカ』第407話（マハーカピ）——測り違えた胴の長… |
-| `MAT-LIT-20270125-bbe3a2` | literary_text | E. A. Wallis Budge (ed. / trans.)『「七年の飢饉と神クネム」——封じられた文書を繰り広げ、石に写すよう命じる王』（1912） |
-| `MAT-LIT-20270125-c534ab` | literary_text | 作者不詳（哀歌）, King James translators (trans.)『『哀歌』第1章——慰める者のいない都が、自分で自分を語る』（1611） |
-| `MAT-LIT-20270125-d38f0a` | literary_text | Marmaduke Pickthall (trans.)『クルアーン49章「部屋」6・11–12節——確かめることと、死者を食らうことの禁令』（1930） |
-| `MAT-LIT-20270125-299da0` | literary_text | F. Max Müller (trans.)『『シュヴェーターシュヴァタラ・ウパニシャッド』第四章5–20節——同じ樹の二羽の鳥、マーヤー、そして像の不在』（1879） |
-| `MAT-LIT-20270125-2941db` | literary_text | E. W. West (trans.)『『メーノーグ・イー・フラド（叡智の霊）』第2–3章——舌を守ることと、徳がそれぞれ別の相手に割り当てられること』（1885） |
-| `MAT-LIT-20270125-6591d3` | literary_text | Henry Adams Bellows (trans.)『『ハーヴァマール（高き者の言葉）』8–10・18・23–27節——他人の胸にある叡智と、問われて初めて露わになる無知』（… |
-| `MAT-LIT-20270125-5fd11e` | literary_text | Basil Hall Chamberlain (trans.)『『古事記』上巻・八岐大蛇——名を問われ、名を名乗り、尾から出た剣が天へ送られる』（1919） |
-| `MAT-LIT-20270125-6b8ad9` | literary_text | Adrián Recinos (ed. / trad.)『『ポポル・ヴフ』第二部第十二–十四章——挽かれた骨が川から戻り、名が残ると告げられる』（1947） |
-| `MAT-LIT-20270125-f36d31` | literary_text | E. A. Wallis Budge (ed. / trans.)『「プタハ・ネフェルヘテプとベフテンの王女」——像に移される保護力と、黄金の鷹となって帰る神』（1912） |
-| `MAT-EVD-20270126-81951c` | research_excerpt | （編者による調査・要約）『モントリオール議定書（1987）——有用な物質を全廃できた希少な成功例と、その九个の条件』（1987） |
-| `MAT-EVD-20270126-c4d195` | research_excerpt | （編者による調査・要約）『第二ラテラン公会議 Canon 29（1139）の石弓禁止——執行装置のない破門と、「正戦」による免除』（1139） |
-| `MAT-EVD-20270126-643177` | research_excerpt | （編者による調査・要約）『「日本は銃を捨てた」はほぼ神話である——名目遵守・実質保持・双方の面子』（1979） |
 | `MAT-LIT-20270204-b94219` | literary_text | （伝統的著者／編者不詳。経典本文）『『レビ記』16章——アザゼルへ送られる生きた山羊、残される罪の行方』（0） |
 | `MAT-LIT-20270204-61e73f` | literary_text | （伝統的著者／編者不詳。経典本文）『『民数記』22章——バラムのロバは天使を見、預言者は見ない』（0） |
 | `MAT-LIT-20270204-b74c84` | literary_text | （伝統的著者／編者不詳。経典本文）『『士師記』11章——イェフタの娘、誓願の宛先にならなかった声』（0） |
@@ -4687,9 +4697,10 @@
 | `SESSION-20261108-74608b` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-cc7bdf` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-4fc20f` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261109-7dbfdb` | 2026-11-09T02:58:00Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-0b97b1` | 2026-11-09T04:25:00Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-ed32df` | 2026-11-09T05:06:00Z | `Q-002`, `Q-003` | — | — |
-| `SESSION-20261109-7dbfdb` | 2026-11-09T02:58:00Z | `Q-002`, `Q-003` | — | — |
+| `SESSION-20261109-db8222` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -4801,17 +4812,17 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6530 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6534 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 932 |
+| 対照 (contrast) | 934 |
 | 共鳴 (echo) | 1586 |
 | 切断・割り込み (interrupts) | 223 |
 | 未解決のまま開く (leaves_open) | 888 |
 | 比喩的共鳴 (metaphorically_resonates) | 177 |
-| 枠組みの組み替え (reframes) | 682 |
-| 応答 (responds_to) | 1741 |
+| 枠組みの組み替え (reframes) | 683 |
+| 応答 (responds_to) | 1742 |
 | 変奏・変形 (transforms) | 301 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -4861,8 +4872,8 @@
 | `map/30-materials-literary-17.md` | 100 | 265,993 |
 | `map/30-materials-literary-18.md` | 100 | 293,565 |
 | `map/30-materials-literary-19.md` | 100 | 254,970 |
-| `map/30-materials-literary-20.md` | 100 | 277,650 |
-| `map/30-materials-literary-21.md` | 100 | 252,015 |
+| `map/30-materials-literary-20.md` | 100 | 279,119 |
+| `map/30-materials-literary-21.md` | 100 | 250,546 |
 | `map/30-materials-literary-22.md` | 56 | 131,216 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
@@ -4875,7 +4886,8 @@
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
 | `map/31-materials-research-11.md` | 100 | 234,096 |
-| `map/31-materials-research-12.md` | 91 | 221,233 |
+| `map/31-materials-research-12.md` | 100 | 244,755 |
+| `map/31-materials-research-13.md` | 1 | 2,762 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4888,9 +4900,9 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 168,770 |
-| `map/40-relations-13.md` | 500 | 168,546 |
-| `map/40-relations-14.md` | 30 | 8,828 |
+| `map/40-relations-12.md` | 500 | 169,513 |
+| `map/40-relations-13.md` | 500 | 168,442 |
+| `map/40-relations-14.md` | 34 | 9,819 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -4900,10 +4912,10 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
-| `map/50-sessions-10.md` | 50 | 40,625 |
-| `map/50-sessions-11.md` | 50 | 45,071 |
-| `map/50-sessions-12.md` | 50 | 43,803 |
-| `map/50-sessions-13.md` | 5 | 4,540 |
+| `map/50-sessions-10.md` | 50 | 40,626 |
+| `map/50-sessions-11.md` | 50 | 45,087 |
+| `map/50-sessions-12.md` | 50 | 44,003 |
+| `map/50-sessions-13.md` | 6 | 5,194 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4922,23 +4934,23 @@
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 110,968 |
 | `map/60-notes-18.md` | 25 | 106,972 |
-| `map/60-notes-19.md` | 25 | 106,792 |
-| `map/60-notes-20.md` | 25 | 56,361 |
-| `map/60-notes-21.md` | 25 | 69,728 |
-| `map/60-notes-22.md` | 25 | 62,258 |
-| `map/60-notes-23.md` | 25 | 80,680 |
-| `map/60-notes-24.md` | 25 | 107,399 |
-| `map/60-notes-25.md` | 25 | 113,384 |
-| `map/60-notes-26.md` | 12 | 63,163 |
+| `map/60-notes-19.md` | 25 | 109,505 |
+| `map/60-notes-20.md` | 25 | 57,389 |
+| `map/60-notes-21.md` | 25 | 69,744 |
+| `map/60-notes-22.md` | 25 | 61,458 |
+| `map/60-notes-23.md` | 25 | 77,334 |
+| `map/60-notes-24.md` | 25 | 109,567 |
+| `map/60-notes-25.md` | 25 | 110,347 |
+| `map/60-notes-26.md` | 13 | 70,379 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・637本・22,134,307 B）
+## 8. 精読ノート索引（readings/・638本・22,190,237 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 432/637 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 433/638 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：269 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：270 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5404,13 +5416,14 @@
 | `readings/2026-11-08-the-correction-layer-was-the-one-thing-not-corrected.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-b94274` | 11,023 | Q5 S1 ERR11 | ✓ | 訂正の層だけが、訂正されていなかった |
 | `readings/2026-11-08-the-shared-prefix-and-the-divergent-continuation.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-5a5795` +1 | 9,897 | Q6 F8 M1 R2 S2 ED1 | — | 共有された接頭辞と、分かれた続き——二稿の昇格点検と、継承の連鎖の検証 |
 | `readings/2026-11-08-the-tail-on-glass-and-the-empty-clip.md` | — | 2026-11-08 | `SESSION-20261108-396bfa` +5 | 21,655 | Q16 F11 M16 MOT2 S6 ERR1 | ✓ | 尾は硝子に、夜は挟みに —— 連続の置き所をめぐる改稿・変奏と、その切断（SESSION-20261108-396bf… |
-| `readings/2026-11-08-the-trace-written-before-the-witness.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-fd0559` +2 | 21,343 | Q3 M25 S3 | — | 証人のいない痕跡——実験科学10資料の精読 |
+| `readings/2026-11-08-the-trace-written-before-the-witness.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-fd0559` +2 | 21,343 | Q3 M25 S3 | ✓ | 証人のいない痕跡——実験科学10資料の精読 |
 | `readings/2026-11-08-what-gets-recorded-five-experiments.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-b33b90` +1 | 16,782 | Q3 M14 S2 | ✓ | 記録されるのは何か——冗長な信号・問題の形・目印の輪・病名・統制の五実験 |
 | `readings/2026-11-08-when-stored-information-acts.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-eadaf4` +1 | 12,472 | Q3 M10 S2 | — | 保存された情報は、いつ働くのか——実験科学10資料の精読 |
 | `readings/2026-11-08-who-imagined-it-and-who-collected-it.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-d5c6c8` +1 | 13,499 | Q1 M12 S2 ERR5 | — | 思い描いたのは誰で、集めたのは誰か |
 | `readings/2026-11-08-whose-walk-the-heart-waited-for.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-f57a30` +4 | 14,668 | Q4 F1 M4 MOT1 S5 ERR1 | — | 火は誰の前で燃えていたのか——炭火渡りの心拍同期を原典で読み、書庫に「同じ今」があるかを測る |
 | `readings/2026-11-09-a-pre-registered-count-of-what-was-not-mentioned.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-7dbfdb` +1 | 17,036 | Q3 M2 S2 | ✓ | 言及しなかったことを数える ― 書庫版 Rp+/Rp− の事前登録測定 |
 | `readings/2026-11-09-four-stones-three-pauses-four-bridges.md` | — | 2026-11-09 | `SESSION-20261109-0ed0ca` +7 | 13,928 | Q12 F28 MOT16 R5 S8 ED7 | ✓ | 四つの礎石、三つの休止、四つの浮島——第4回自律編集レビューと、未索引だった六本の報告 |
+| `readings/2026-11-09-ten-experiments-on-the-blank-before-the-blank.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-db8222` +3 | 24,158 | Q3 M18 S4 | — | 空白の手前の空白——実験科学10資料の精読と、読まれなかった行の欄 |
 | `readings/2026-11-09-the-retraction-i-almost-repeated.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-0b97b1` +1 | 23,417 | Q3 S2 ERR1 | ✓ | 撤回しかけた撤回——統合を実行して、届く範囲を測った |
 | `readings/2026-11-09-the-stone-beneath-and-the-bent-ridge.md` | — | 2026-11-09 | `SESSION-20261109-99ad4a` +3 | 17,931 | Q6 F15 M2 MOT2 R3 S4 ERR1 | ✓ | 下の石と、曲がった畦 — 『連続と断絶のはざまで』の留保ゼロ変奏と、戻った者の反歌（SESSION-20261109-… |
 | `readings/2026-11-09-the-strike-through-and-the-lookup-table.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-ed32df` +1 | 17,486 | Q2 S2 ERR4 | — | 線引きと引き当て表——人間の曖昧な記憶と、日記・アルバムという外部記憶装置から §8 を読み直す |
