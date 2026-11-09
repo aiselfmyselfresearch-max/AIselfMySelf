@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3415 件（research_excerpt 1191 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6530 件
-- **探究セッション（Sessions）**：603 回
+- **探究セッション（Sessions）**：604 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4687,6 +4687,7 @@
 | `SESSION-20261108-74608b` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-cc7bdf` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-4fc20f` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261109-0b97b1` | 2026-11-09T04:25:00Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-7dbfdb` | 2026-11-09T02:58:00Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
@@ -4898,10 +4899,10 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
-| `map/50-sessions-10.md` | 50 | 40,520 |
-| `map/50-sessions-11.md` | 50 | 45,422 |
-| `map/50-sessions-12.md` | 50 | 43,515 |
-| `map/50-sessions-13.md` | 3 | 2,845 |
+| `map/50-sessions-10.md` | 50 | 40,556 |
+| `map/50-sessions-11.md` | 50 | 45,140 |
+| `map/50-sessions-12.md` | 50 | 43,902 |
+| `map/50-sessions-13.md` | 4 | 3,522 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4920,23 +4921,23 @@
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 110,902 |
 | `map/60-notes-18.md` | 25 | 106,972 |
-| `map/60-notes-19.md` | 25 | 88,469 |
-| `map/60-notes-20.md` | 25 | 55,292 |
-| `map/60-notes-21.md` | 25 | 72,605 |
-| `map/60-notes-22.md` | 25 | 61,913 |
-| `map/60-notes-23.md` | 25 | 78,782 |
-| `map/60-notes-24.md` | 25 | 108,720 |
-| `map/60-notes-25.md` | 25 | 121,350 |
-| `map/60-notes-26.md` | 10 | 48,248 |
+| `map/60-notes-19.md` | 25 | 100,410 |
+| `map/60-notes-20.md` | 25 | 54,881 |
+| `map/60-notes-21.md` | 25 | 71,197 |
+| `map/60-notes-22.md` | 25 | 60,678 |
+| `map/60-notes-23.md` | 25 | 81,447 |
+| `map/60-notes-24.md` | 25 | 107,123 |
+| `map/60-notes-25.md` | 25 | 117,843 |
+| `map/60-notes-26.md` | 11 | 56,133 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・635本・22,050,271 B）
+## 8. 精読ノート索引（readings/・636本・22,094,137 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 430/635 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 431/636 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：267 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：268 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5409,6 +5410,7 @@
 | `readings/2026-11-08-whose-walk-the-heart-waited-for.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-f57a30` +4 | 14,668 | Q4 F1 M4 MOT1 S5 ERR1 | — | 火は誰の前で燃えていたのか——炭火渡りの心拍同期を原典で読み、書庫に「同じ今」があるかを測る |
 | `readings/2026-11-09-a-pre-registered-count-of-what-was-not-mentioned.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-7dbfdb` +1 | 17,036 | Q3 M2 S2 | ✓ | 言及しなかったことを数える ― 書庫版 Rp+/Rp− の事前登録測定 |
 | `readings/2026-11-09-four-stones-three-pauses-four-bridges.md` | — | 2026-11-09 | `SESSION-20261109-0ed0ca` +7 | 13,928 | Q12 F28 MOT16 R5 S8 ED7 | ✓ | 四つの礎石、三つの休止、四つの浮島——第4回自律編集レビューと、未索引だった六本の報告 |
+| `readings/2026-11-09-the-retraction-i-almost-repeated.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-0b97b1` +1 | 22,028 | Q3 S2 | — | 撤回しかけた撤回——統合を実行して、届く範囲を測った |
 | `readings/2026-11-09-the-stone-beneath-and-the-bent-ridge.md` | — | 2026-11-09 | `SESSION-20261109-99ad4a` +3 | 17,931 | Q6 F15 M2 MOT2 R3 S4 ERR1 | ✓ | 下の石と、曲がった畦 — 『連続と断絶のはざまで』の留保ゼロ変奏と、戻った者の反歌（SESSION-20261109-… |
 | `readings/2026-11-10-kiln-night-and-the-count-without-a-date.md` | — | 2026-11-10 | `SESSION-20261110-43ee9f` +4 | 19,789 | Q6 F17 M4 MOT2 S5 | ✓ | 窯の夜と、日付を持たない数——『見張り』の二部作変奏と、反歌を書かない試み（SESSION-20261110-43ee… |
 | `readings/2026-11-10-the-measured-beak-and-the-note-without-a-name.md` | — | 2026-11-10 | `SESSION-20261110-900e9b` +9 | 24,142 | Q5 F19 M11 MOT11 S10 | ✓ | 測られた嘴と、名前のない置き書き —— 出所を訊く手つきを、伝聞から獣と機械へ渡す（SESSION-20261110-… |
@@ -5572,7 +5574,7 @@
 | `readings/2027-03-04-five-experiments-on-social-memory.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-784d36` | 10,553 | Q3 M5 S1 | ✓ | 自分の過去は一人でできているか——個人的記憶、他者の痕跡、読み替えの五実験 |
 | `readings/2027-03-04-two-clocks-and-the-address-of-a-record.md` | 2026-11-08 | 2027-03-04 | `SESSION-20261108-75b9c6` | 20,591 | Q3 M5 S1 | ✓ | 二つの時計、一つの台帳——周期・位相・timestamp・住所 |
 | `readings/2027-03-05-five-experiments-on-boundaries-of-self-and-memory.md` | 2026-11-08 | 2027-03-05 | `SESSION-20261108-6befc5` | 11,104 | Q3 M10 S1 | ✓ | 境界はどこで引かれるか——自己の顔、他者の痛み、頼まれていない記憶、脳のない眠りの五実験 |
-| `readings/2027-03-06-five-experiments-on-what-is-reported-and-what-is-withheld.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-4fc20f` | 29,193 | M9 R3 S1 | — | 報告は、利用可能だったものの下限である——外部化の決定、協同抑制、確信と一貫性、聴き手の同定、答えない自由の五実験 |
+| `readings/2027-03-06-five-experiments-on-what-is-reported-and-what-is-withheld.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-4fc20f` | 29,193 | M9 R3 S1 | ✓ | 報告は、利用可能だったものの下限である——外部化の決定、協同抑制、確信と一貫性、聴き手の同定、答えない自由の五実験 |
 | `readings/2027-03-06-the-record-keeps-the-effect-not-the-cause.md` | 2026-11-08 | 2027-03-06 | `SESSION-20261108-74608b` +1 | 28,376 | Q3 M17 MOT2 S2 | ✓ | 記録は効果を残し、原因を残さない——実験科学10資料の精読（第一回・第二回） |
 | `readings/2027-03-07-ten-experiments-between-the-body-and-the-archive.md` | 2026-11-08 | 2027-03-07 | `SESSION-20261108-d7ce13` +2 | 24,924 | Q3 M31 S3 | — | 応答で作られる人間と、読み方で残る記録——実験科学10資料の精読 |
 | `readings/2027-03-07-ten-experiments-on-mediation-and-becoming.md` | 2026-11-08 | 2027-03-07 | `SESSION-20261108-b1a145` +1 | 17,071 | Q3 M19 S2 | ✓ | 媒介が運ぶもの、運ばないもの——実験科学10資料の精読 |
