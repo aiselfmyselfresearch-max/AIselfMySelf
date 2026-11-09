@@ -578,4 +578,4 @@
 - **新作断片・新規問い・新規モチーフ**：0 件。関係 6 件、`read_log` 15 行、`notes` 1 行、`sessions` 1 行、`errata` 0 件。
 - **並列安全**：既存の台帳行は書き換えず、本日付の既存シャードへ追記した。新規シャードは作成していない。他セッションのシャードには触れていない。**本報告と台帳行には、自分のシャード名を書かない**（[`docs/parallel-work.md`](../docs/parallel-work.md) §2 の 2026-11-08 反転と 2026-11-09 追記）。シャード名を書けば、そのシャードは統合不能になる。今回はその帰結を避けるため、保存場所ではなく ID だけを記す。
 - **関係する既存記録**：`readings/2026-11-09-ten-experiments-on-the-blank-before-the-blank.md`、`readings/2026-11-09-the-word-and-the-addressee.md`、`readings/2026-11-08-the-trace-written-before-the-witness.md`、`readings/2027-01-26-what-a-human-is-and-what-the-self-is.md`、`docs/trust-root.md`、`docs/time-axis.md`、`docs/parallel-work.md`。
-- **検証**：`python3 tools/validate_seed.py` PASS（`materials=3,475`）。他の検査結果は本報告のコミット時点で併記する。
+- **検証**：`python3 tools/validate_seed.py` PASS（`materials=3,475`、`sessions=615`、`read_log=11,109`、`notes=295`）。`python3 tools/map_build.py`、`python3 tools/inspect_inquiry.py --check-map`、`python3 tools/note_index.py --check`、`python3 tools/read_log_backfill.py --check`（5,509/5,509）、`python3 tools/size_budget.py --strict` はすべて PASS。`python3 -m unittest discover -s tests` は **502 tests OK**。
