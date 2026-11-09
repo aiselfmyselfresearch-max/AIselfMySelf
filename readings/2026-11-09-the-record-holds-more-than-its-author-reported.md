@@ -541,6 +541,8 @@ python3 -m unittest discover -s tests             # OK
 
 新規断片 **0 編**、新規問い **0 件**、新規モチーフ **0 本**、新規ツール **0 本**、新規訂正 **0 行**、新規編集判断 **0 行**、`human_narrator` **0 編**、架空の `conversation_trace` **0 件**。
 
+**マージ時の並行追記について。** 上の「後」は、このセッションが追記した直後の実測である。追記のあと、`main` へ並行セッション 2 件（[PR #619](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/619) 模倣・過剰模倣・規範の実験 10 件、[PR #620](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/620) 宛先の二層）がマージされており、素材 10 件・関係 7 本・読み痕跡 18 行・セッション 3 行・ノート 2 行が加わっていた。マージ解決後の和集合は materials **3,515**・relations **6,582**・read_log **11,180**・sessions **621**・notes **300**（questions 437・motifs 59 は変わらず）。衝突した 3 つのシャードは、**既存行を 1 行も書き換えず**、`main` 側の行のあとにこちらの行を並べる形で解決した（追記専用）。マージ後に実測した三つ：(i) 全 8 コレクションで ID の重複 **0 件**、(ii) 並行セッションの 10 件とこちらの 10 件のあいだに `source.url`・DOI・題の重複 **無し**（それぞれの `source.url` の出現回数は 1）、(iii) シャードのファイル数は変わらず（materials.d 92・relations.d 80・read_log.d 90・sessions.d 96・notes.d 91）で、`size_budget.py --strict` は PASS。**並行して書かれた 10 件が、こちらの選定を事後に無効にしないかどうかは検査していない**——PR #619 の 10 件は模倣と規範の実験で、今回の軸（書いた者より先に読まれ、書いた者より多く持つ）とは別の軸であるが、両者を並べて読んだセッションはまだ無い。
+
 ---
 
 ## §8 次の読み手へ
