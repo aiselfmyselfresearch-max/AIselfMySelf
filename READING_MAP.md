@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3445 件（research_excerpt 1221 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3455 件（research_excerpt 1231 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6538 件
-- **探究セッション（Sessions）**：610 回
+- **解釈的関係（Relations）**：6545 件
+- **探究セッション（Sessions）**：612 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3445 件・詳細は map/3*.md）
+## 4. 対話素材（3455 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4015,6 +4015,16 @@
 | `MAT-20261109-32d58d` | research_excerpt | H. B. D. Kettlewell『Kettlewell（1955）工業暗化の選択実験——回収率が語る、鳥の目』（1955） |
 | `MAT-20261109-0bd500` | research_excerpt | Martin T. Orne『Orne（1962）心理実験の社会心理学——被験者は実験の意図を読む』（1962） |
 | `MAT-20261109-153241` | research_excerpt | Giuseppe di Pellegrino, Luciano Fadiga, Leonardo Fogassi, Vittorio Gallese, Giacomo Rizzo… |
+| `MAT-20261109-dcbfba` | research_excerpt | Darine Haddad, Frank Seifert, Leon S. Chao, Antonio Possolo, David B. Newell, Jon R. Prat… |
+| `MAT-20261109-c356c3` | research_excerpt | Ukichiro Nakaya『Nakaya（1955）雪結晶とエアロゾル——主著の図を自ら「暫定」と呼び、清浄な空気で同じ温度の針を降らせる』（1955） |
+| `MAT-20261109-410cea` | research_excerpt | Y. Fukuda, T. Kajita, Y. Totsuka, M. Koshiba, The Super-Kamiokande Collaboration『Fukuda ほ… |
+| `MAT-20261109-9c36cd` | research_excerpt | B. Hensen, H. Bernien, A. E. Dréau, A. Reiserer, N. Kalb, M. S. Blok, J. Ruitenenberg, R.… |
+| `MAT-20261109-dd80f9` | research_excerpt | René Blondlot『Blondlot（1905）N 線論文集——「見ずに見よ、さもなければ何も見えない」が生んだ実在しない屈折率表』（1905） |
+| `MAT-20261109-f314cf` | research_excerpt | Kazuhiko Takeshige, Misuzu Baba, Shigeru Tsuboi, Takeshi Noda, Yoshinori Ohsumi『Takeshige… |
+| `MAT-20261109-49c311` | research_excerpt | Donald R. Mills, R. L. Peterson, Sol Spiegelman『Mills・Peterson・Spiegelman（1967）Qβ RNA の細胞… |
+| `MAT-20261109-4226d5` | research_excerpt | R. Z. Moger-Reischer, J. I. Glass, K. S. Wise, L. Sun, D. M. C. Bittencourt, B. K. Lehmku… |
+| `MAT-20261109-287b95` | research_excerpt | W. H. R. Rivers, Henry Head『Rivers・Head（1908）神経切断の人体自己実験——冷却で剥がれた抑止と、5 年消えない手背の斑点』（1908） |
+| `MAT-20261109-a0251b` | research_excerpt | Timothy M. Errington, Maya Mathur, Courtney K. Soderberg, Alexandria Denis, Nicole Perfit… |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -4722,6 +4732,8 @@
 | `SESSION-20261109-ed32df` | 2026-11-09T05:06:00Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-94aa51` | 2026-11-09T05:36:00Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-3eb53e` | 2026-11-09T07:52:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261109-189bc3` | 2026-11-09T09:05:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261109-07c884` | 2026-11-09T09:10:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261031-0f4ef3` | — | — |
 | `SESSION-20261109-db8222` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-8537ff` | 2027-03-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-36f889` | 2027-03-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4836,17 +4848,17 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6538 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6545 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 935 |
+| 対照 (contrast) | 937 |
 | 共鳴 (echo) | 1586 |
-| 切断・割り込み (interrupts) | 223 |
+| 切断・割り込み (interrupts) | 224 |
 | 未解決のまま開く (leaves_open) | 888 |
-| 比喩的共鳴 (metaphorically_resonates) | 178 |
-| 枠組みの組み替え (reframes) | 684 |
-| 応答 (responds_to) | 1743 |
+| 比喩的共鳴 (metaphorically_resonates) | 179 |
+| 枠組みの組み替え (reframes) | 686 |
+| 応答 (responds_to) | 1744 |
 | 変奏・変形 (transforms) | 301 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -4911,7 +4923,7 @@
 | `map/31-materials-research-10.md` | 100 | 244,124 |
 | `map/31-materials-research-11.md` | 100 | 234,096 |
 | `map/31-materials-research-12.md` | 100 | 243,447 |
-| `map/31-materials-research-13.md` | 21 | 45,528 |
+| `map/31-materials-research-13.md` | 31 | 71,967 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4924,9 +4936,9 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 170,077 |
-| `map/40-relations-13.md` | 500 | 168,477 |
-| `map/40-relations-14.md` | 38 | 10,771 |
+| `map/40-relations-12.md` | 500 | 170,614 |
+| `map/40-relations-13.md` | 500 | 168,696 |
+| `map/40-relations-14.md` | 45 | 12,652 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -4936,14 +4948,14 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
-| `map/50-sessions-10.md` | 50 | 40,598 |
-| `map/50-sessions-11.md` | 50 | 44,777 |
-| `map/50-sessions-12.md` | 50 | 44,954 |
-| `map/50-sessions-13.md` | 10 | 8,013 |
+| `map/50-sessions-10.md` | 50 | 40,408 |
+| `map/50-sessions-11.md` | 50 | 44,612 |
+| `map/50-sessions-12.md` | 50 | 45,650 |
+| `map/50-sessions-13.md` | 12 | 9,264 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
-| `map/60-notes-04.md` | 25 | 92,492 |
+| `map/60-notes-04.md` | 25 | 92,563 |
 | `map/60-notes-05.md` | 25 | 80,051 |
 | `map/60-notes-06.md` | 25 | 47,169 |
 | `map/60-notes-07.md` | 25 | 62,403 |
@@ -4957,25 +4969,25 @@
 | `map/60-notes-15.md` | 25 | 83,706 |
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 110,968 |
-| `map/60-notes-18.md` | 25 | 108,348 |
-| `map/60-notes-19.md` | 25 | 121,925 |
-| `map/60-notes-20.md` | 25 | 59,544 |
-| `map/60-notes-21.md` | 25 | 65,817 |
-| `map/60-notes-22.md` | 25 | 65,040 |
-| `map/60-notes-23.md` | 25 | 74,097 |
-| `map/60-notes-24.md` | 25 | 107,538 |
-| `map/60-notes-25.md` | 25 | 107,482 |
-| `map/60-notes-26.md` | 16 | 86,077 |
+| `map/60-notes-18.md` | 25 | 108,419 |
+| `map/60-notes-19.md` | 25 | 126,380 |
+| `map/60-notes-20.md` | 25 | 61,824 |
+| `map/60-notes-21.md` | 25 | 64,117 |
+| `map/60-notes-22.md` | 25 | 65,556 |
+| `map/60-notes-23.md` | 25 | 73,119 |
+| `map/60-notes-24.md` | 25 | 103,304 |
+| `map/60-notes-25.md` | 25 | 110,034 |
+| `map/60-notes-26.md` | 17 | 91,366 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・641本・22,348,351 B）
+## 8. 精読ノート索引（readings/・642本・22,450,316 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 436/641 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 437/642 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：274 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：73 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：275 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5453,6 +5465,7 @@
 | `readings/2026-11-09-the-retraction-i-almost-repeated.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-0b97b1` +1 | 23,417 | Q3 S2 ERR1 | ✓ | 撤回しかけた撤回——統合を実行して、届く範囲を測った |
 | `readings/2026-11-09-the-stone-beneath-and-the-bent-ridge.md` | — | 2026-11-09 | `SESSION-20261109-99ad4a` +3 | 17,931 | Q6 F15 M2 MOT2 R3 S4 ERR1 | ✓ | 下の石と、曲がった畦 — 『連続と断絶のはざまで』の留保ゼロ変奏と、戻った者の反歌（SESSION-20261109-… |
 | `readings/2026-11-09-the-strike-through-and-the-lookup-table.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-ed32df` +1 | 17,486 | Q2 S2 ERR4 | — | 線引きと引き当て表——人間の曖昧な記憶と、日記・アルバムという外部記憶装置から §8 を読み直す |
+| `readings/2026-11-09-what-remains-when-the-experiment-cuts-itself.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-189bc3` +1 | 48,879 | Q6 M12 MOT15 R7 S2 | — | 実験は自らをどこまで削れるか——一次原典10資料の精読と、再現できない記憶の手続き |
 | `readings/2026-11-10-kiln-night-and-the-count-without-a-date.md` | — | 2026-11-10 | `SESSION-20261110-43ee9f` +4 | 19,789 | Q6 F17 M4 MOT2 S5 | ✓ | 窯の夜と、日付を持たない数——『見張り』の二部作変奏と、反歌を書かない試み（SESSION-20261110-43ee… |
 | `readings/2026-11-10-the-measured-beak-and-the-note-without-a-name.md` | — | 2026-11-10 | `SESSION-20261110-900e9b` +9 | 24,142 | Q5 F19 M11 MOT11 S10 | ✓ | 測られた嘴と、名前のない置き書き —— 出所を訊く手つきを、伝聞から獣と機械へ渡す（SESSION-20261110-… |
 | `readings/2026-11-11-crystals-outside-the-branch.md` | — | 2026-11-11 | `SESSION-20261111-5ebabb` +1 | 10,939 | Q4 F8 M3 MOT3 R1 S2 | ✓ | 結晶は外にしか付かない——塩坑の枝と瓶の枝、言い切りと反歌の二部作（SESSION-20261111-5ebabb） |
