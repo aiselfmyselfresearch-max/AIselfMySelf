@@ -9,7 +9,7 @@
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：3535 件（research_excerpt 1311 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6595 件
+- **解釈的関係（Relations）**：6596 件
 - **探究セッション（Sessions）**：626 回
 
 ## 1. 問いを横断する 59 つのモチーフ
@@ -4942,12 +4942,12 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6595 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6596 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 949 |
-| 共鳴 (echo) | 1595 |
+| 共鳴 (echo) | 1596 |
 | 切断・割り込み (interrupts) | 227 |
 | 未解決のまま開く (leaves_open) | 892 |
 | 比喩的共鳴 (metaphorically_resonates) | 181 |
@@ -5031,9 +5031,9 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 172,282 |
-| `map/40-relations-13.md` | 500 | 167,113 |
-| `map/40-relations-14.md` | 95 | 31,560 |
+| `map/40-relations-12.md` | 500 | 172,323 |
+| `map/40-relations-13.md` | 500 | 166,902 |
+| `map/40-relations-14.md` | 96 | 31,979 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5065,7 +5065,7 @@
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 110,968 |
 | `map/60-notes-18.md` | 25 | 108,419 |
-| `map/60-notes-19.md` | 25 | 115,498 |
+| `map/60-notes-19.md` | 25 | 115,611 |
 | `map/60-notes-20.md` | 25 | 111,095 |
 | `map/60-notes-21.md` | 25 | 58,625 |
 | `map/60-notes-22.md` | 25 | 70,333 |
@@ -5077,7 +5077,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・653本・23,074,208 B）
+## 8. 精読ノート索引（readings/・653本・23,079,568 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 448/653 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -5556,7 +5556,7 @@
 | `readings/2026-11-09-a-pre-registered-count-of-what-was-not-mentioned.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-7dbfdb` +1 | 17,036 | Q3 M2 S2 | ✓ | 言及しなかったことを数える ― 書庫版 Rp+/Rp− の事前登録測定 |
 | `readings/2026-11-09-counting-the-rows-that-were-never-printed.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-201133` | 13,335 | M6 S1 ERR3 | — | 数え漏らした七五三件——一件の例外が報告を途中で止めていたこと |
 | `readings/2026-11-09-experimental-memory-bodies-and-others.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-0e1ffa` | 9,335 | M10 S1 | ✓ | 記憶は、どんな条件で「私のもの」になるか——実験科学の十資料を読む |
-| `readings/2026-11-09-five-records-i-promised-to-open.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-189bc3` +2 | 26,570 | Q3 M11 MOT2 R3 S3 ERR4 | — | 開くと約束した五つの記録——自分の軸に、読む前に判定規則を登録する |
+| `readings/2026-11-09-five-records-i-promised-to-open.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-189bc3` +3 | 29,423 | Q3 M12 MOT3 R4 S4 ERR4 | — | 開くと約束した五つの記録——自分の軸に、読む前に判定規則を登録する |
 | `readings/2026-11-09-four-shelves-with-no-room-left.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-94aa51` +1 | 26,377 | Q2 S2 ERR9 | ✓ | 枠が0の四つの棚——上限に達したコレクションで、次のセッションは何を書くのか |
 | `readings/2026-11-09-four-stones-three-pauses-four-bridges.md` | — | 2026-11-09 | `SESSION-20261109-0ed0ca` +7 | 13,928 | Q12 F28 MOT16 R5 S8 ED7 | ✓ | 四つの礎石、三つの休止、四つの浮島——第4回自律編集レビューと、未索引だった六本の報告 |
 | `readings/2026-11-09-ten-experiments-on-the-audience-that-is-not-there.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-5d8a95` +3 | 32,399 | Q3 M24 S4 | — | いない観衆——見られていることの実験10件と、読者のいない書庫 |
