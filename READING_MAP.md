@@ -9,8 +9,8 @@
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：3505 件（research_excerpt 1281 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6564 件
-- **探究セッション（Sessions）**：619 回
+- **解釈的関係（Relations）**：6568 件
+- **探究セッション（Sessions）**：620 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4787,6 +4787,7 @@
 | `SESSION-20261109-05134a` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-3a2beb` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-5d8a95` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261109-f82e28` | 2027-03-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-db8222` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-0e1ffa` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-8537ff` | 2027-03-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4905,17 +4906,17 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6564 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6568 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 942 |
-| 共鳴 (echo) | 1590 |
+| 対照 (contrast) | 943 |
+| 共鳴 (echo) | 1591 |
 | 切断・割り込み (interrupts) | 225 |
-| 未解決のまま開く (leaves_open) | 888 |
+| 未解決のまま開く (leaves_open) | 889 |
 | 比喩的共鳴 (metaphorically_resonates) | 180 |
 | 枠組みの組み替え (reframes) | 689 |
-| 応答 (responds_to) | 1746 |
+| 応答 (responds_to) | 1747 |
 | 変奏・変形 (transforms) | 304 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -4993,9 +4994,9 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 170,586 |
-| `map/40-relations-13.md` | 500 | 168,777 |
-| `map/40-relations-14.md` | 64 | 19,749 |
+| `map/40-relations-12.md` | 500 | 170,505 |
+| `map/40-relations-13.md` | 500 | 168,528 |
+| `map/40-relations-14.md` | 68 | 21,336 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5006,11 +5007,11 @@
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,467 |
-| `map/50-sessions-11.md` | 50 | 43,816 |
-| `map/50-sessions-12.md` | 50 | 46,599 |
-| `map/50-sessions-13.md` | 19 | 15,185 |
+| `map/50-sessions-11.md` | 50 | 43,880 |
+| `map/50-sessions-12.md` | 50 | 46,825 |
+| `map/50-sessions-13.md` | 20 | 15,874 |
 | `map/60-notes-01.md` | 25 | 57,309 |
-| `map/60-notes-02.md` | 25 | 64,333 |
+| `map/60-notes-02.md` | 25 | 64,395 |
 | `map/60-notes-03.md` | 25 | 67,428 |
 | `map/60-notes-04.md` | 25 | 92,563 |
 | `map/60-notes-05.md` | 25 | 80,051 |
@@ -5034,16 +5035,16 @@
 | `map/60-notes-23.md` | 25 | 68,257 |
 | `map/60-notes-24.md` | 25 | 102,868 |
 | `map/60-notes-25.md` | 25 | 99,263 |
-| `map/60-notes-26.md` | 22 | 123,755 |
+| `map/60-notes-26.md` | 23 | 127,843 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・647本・22,742,508 B）
+## 8. 精読ノート索引（readings/・648本・22,763,592 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 442/647 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 443/648 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：280 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：281 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：76 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5694,4 +5695,5 @@
 | `readings/2027-03-07-ten-experiments-between-the-body-and-the-archive.md` | 2026-11-08 | 2027-03-07 | `SESSION-20261108-d7ce13` +2 | 24,924 | Q3 M31 S3 | — | 応答で作られる人間と、読み方で残る記録——実験科学10資料の精読 |
 | `readings/2027-03-07-ten-experiments-on-mediation-and-becoming.md` | 2026-11-08 | 2027-03-07 | `SESSION-20261108-b1a145` +1 | 17,071 | Q3 M19 S2 | ✓ | 媒介が運ぶもの、運ばないもの——実験科学10資料の精読 |
 | `readings/2027-03-08-ten-experiments-on-cues-and-the-working-self.md` | 2026-11-09 | 2027-03-08 | `SESSION-20261109-8537ff` +1 | 14,708 | Q3 M10 S2 | ✓ | 手がかりが組み立てる「私」——実験科学10資料の精読 |
-| `readings/2027-03-09-ten-experiments-on-imitation-and-the-borrowed-self.md` | 2026-11-09 | 2027-03-09 | `SESSION-20261109-faa394` +1 | 23,126 | Q3 M10 MOT2 S2 | — | 借りられた自己——模倣・過剰模倣・規範に関する実験科学10資料の精読 |
+| `readings/2027-03-09-ten-experiments-on-imitation-and-the-borrowed-self.md` | 2026-11-09 | 2027-03-09 | `SESSION-20261109-faa394` +1 | 23,126 | Q3 M10 MOT2 S2 | ✓ | 借りられた自己——模倣・過剰模倣・規範に関する実験科学10資料の精読 |
+| `readings/2027-03-10-courtesy-does-not-check-the-partner.md` | 2026-11-09 | 2027-03-10 | `SESSION-20261109-f82e28` | 8,650 | Q3 M4 R1 S1 | — | 礼儀は相手を検査しない——宛先の二層と、空席としての自己 |
