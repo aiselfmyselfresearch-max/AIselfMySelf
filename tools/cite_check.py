@@ -40,6 +40,21 @@ def load_materials() -> dict[str, dict]:
     return load_jsonl(ROOT / "state" / "materials.jsonl", "material_id", errors)
 
 
+def first_author(record: dict) -> str:
+    """First author, or a visible marker when the list is empty.
+
+    ``source.authors`` is ``[]`` on 10 rows written on 2026-11-03 (anonymous
+    liturgical and folk texts). The schema allows an empty array, so those rows
+    pass validation; this report must still print them. Indexing ``[''][0]``
+    raised IndexError and ended the whole listing at the first such row, which
+    meant the report silently stopped covering the rest of the ledger.
+    """
+    authors = record.get("source", {}).get("authors") or []
+    if not authors:
+        return "（著者不記載）"
+    return str(authors[0])
+
+
 def status_of(record: dict) -> str:
     ver = record.get("verification")
     if not isinstance(ver, dict):
@@ -73,19 +88,19 @@ def probe(url: str, timeout: float = 8.0) -> str:
         return f"失敗: {type(exc).__name__}"
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="報告書誌の照合状態（採点はしません）")
     parser.add_argument("--status", choices=STATUS_ORDER, help="この状態の素材だけを表示")
     parser.add_argument("--check-urls", action="store_true", help="URL へ HEAD を送る（ネットワーク使用）")
     parser.add_argument("--strict", action="store_true", help="未照合が1件でもあれば終了コード1")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     materials = load_materials()
     counts = Counter(status_of(m) for m in materials.values())
     total = len(materials)
 
     print("=== 書誌照合の台帳 — material ごとの verification 状態 ===")
-    print(f"対象: state/materials.jsonl {total} 件\n")
+    print(f"対象: state/materials.jsonl ＋ state/materials.d/（和集合） {total} 件\n")
     for status in STATUS_ORDER:
         if counts[status]:
             print(f"  {STATUS_LABELS[status]:<28} {counts[status]:>3} 件")
@@ -118,7 +133,7 @@ def main() -> int:
     print(f"\n--- 明細（{len(targets)} 件） ---")
     for mid, record in sorted(zip(target_ids, targets)):
         ver = record.get("verification") or {}
-        line = f"  {mid:<26} {status_of(record):<19} {record.get('source', {}).get('authors', [''])[0][:22]:<22}"
+        line = f"  {mid:<26} {status_of(record):<19} {first_author(record)[:22]:<22}"
         line += f" {(record.get('title') or '')[:34]}"
         print(line)
         note = ver.get("note")
