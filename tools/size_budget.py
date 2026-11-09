@@ -389,7 +389,20 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # merged union needs 93, not 94.  Row multisets verified byte-equal.
         # Hard limit 160 unchanged.  New rows are movable now; do not raise this
         # again without first measuring whether movable shards actually grew.
-        soft_shards=93,
+        # 2026-11-09 (SESSION-20261109-7dbfdb): 93 -> 94, and the measurement the
+        # previous comment asked for was done first.  Result: of 72 non-consolidated
+        # sessions shards, movable = 0 (self-location only 32, referenced only 1,
+        # both 39).  The single shard the 2026-11-08 measurement left movable is
+        # 2026-11-08-4f2efa960f21.jsonl, and it became immovable because a REPORT
+        # (readings/2026-11-08-ten-experiments-on-labeling-coupling-forgetting-and-
+        # kinship.md §16) names it -- not because a sessions row does.  The §2
+        # reversal only ever regulated sessions.notes.  docs/parallel-work.md §2 now
+        # carries the measured consequence for readings/ as well; existing prose is
+        # append-only, so that shard stays immovable.  Consolidation therefore cannot
+        # reclaim a single file here and the only remaining remedy is this ceiling.
+        # Not automatic.  Hard limit 160 unchanged.  Details:
+        # readings/2026-11-09-a-pre-registered-count-of-what-was-not-mentioned.md §8-1.
+        soft_shards=94,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "

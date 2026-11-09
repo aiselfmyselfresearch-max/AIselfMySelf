@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3415 件（research_excerpt 1191 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6530 件
-- **探究セッション（Sessions）**：602 回
+- **探究セッション（Sessions）**：603 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4687,6 +4687,7 @@
 | `SESSION-20261108-74608b` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-cc7bdf` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-4fc20f` | 2027-03-06 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261109-7dbfdb` | 2026-11-09T02:58:00Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
@@ -4897,10 +4898,10 @@
 | `map/50-sessions-07.md` | 50 | 42,480 |
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
-| `map/50-sessions-10.md` | 50 | 41,114 |
-| `map/50-sessions-11.md` | 50 | 45,082 |
-| `map/50-sessions-12.md` | 50 | 43,441 |
-| `map/50-sessions-13.md` | 2 | 1,846 |
+| `map/50-sessions-10.md` | 50 | 40,520 |
+| `map/50-sessions-11.md` | 50 | 45,422 |
+| `map/50-sessions-12.md` | 50 | 43,515 |
+| `map/50-sessions-13.md` | 3 | 2,845 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4919,24 +4920,24 @@
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 110,902 |
 | `map/60-notes-18.md` | 25 | 106,972 |
-| `map/60-notes-19.md` | 25 | 83,020 |
-| `map/60-notes-20.md` | 25 | 53,220 |
-| `map/60-notes-21.md` | 25 | 72,924 |
-| `map/60-notes-22.md` | 25 | 63,193 |
-| `map/60-notes-23.md` | 25 | 79,270 |
-| `map/60-notes-24.md` | 25 | 106,676 |
-| `map/60-notes-25.md` | 25 | 127,046 |
-| `map/60-notes-26.md` | 9 | 40,821 |
+| `map/60-notes-19.md` | 25 | 88,469 |
+| `map/60-notes-20.md` | 25 | 55,292 |
+| `map/60-notes-21.md` | 25 | 72,605 |
+| `map/60-notes-22.md` | 25 | 61,913 |
+| `map/60-notes-23.md` | 25 | 78,782 |
+| `map/60-notes-24.md` | 25 | 108,720 |
+| `map/60-notes-25.md` | 25 | 121,350 |
+| `map/60-notes-26.md` | 10 | 48,248 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・634本・22,016,291 B）
+## 8. 精読ノート索引（readings/・635本・22,050,271 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 429/634 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 430/635 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：266 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：267 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5395,7 +5396,7 @@
 | `readings/2026-11-08-source-waddington-assimilation.md` | 2026-11-08 | 2026-11-08 | — | 1,229 | M1 | ✓ | 資料ノート：Waddington（1953）——環境への応答が、選択の履歴によって変わる |
 | `readings/2026-11-08-ten-experiments-across-body-monitoring-and-fusion.md` | 2026-11-08 | 2026-11-08 | — | 15,211 | Q4 | — | 身体・自己監視・融合をめぐる10の実験 |
 | `readings/2026-11-08-ten-experiments-on-body-electrode-mirror-and-culture.md` | 2026-11-08 | 2026-11-08 | — | 13,783 | Q3 M19 | — | 身体、電極、鏡、培養器——実験科学10資料から、人間と自己を問い直す |
-| `readings/2026-11-08-ten-experiments-on-labeling-coupling-forgetting-and-kinship.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-73e4e2` +1 | 37,542 | Q4 M4 S2 | — | ラベル、結合、忘却、血縁 ― 十の実験 |
+| `readings/2026-11-08-ten-experiments-on-labeling-coupling-forgetting-and-kinship.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-73e4e2` +1 | 37,542 | Q4 M4 S2 | ✓ | ラベル、結合、忘却、血縁 ― 十の実験 |
 | `readings/2026-11-08-ten-experiments-on-remembering-with-support.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-33d2a7` +1 | 12,689 | Q3 M10 S2 ERR1 | — | 支えが消えたとき、何が残るか——身体・記憶・検索をめぐる十の実験 |
 | `readings/2026-11-08-ten-experiments-on-updating-maintaining-and-letting-go.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-98d3c9` +1 | 16,614 | Q3 M10 S2 ERR1 | ✓ | 実験科学10件精読報告——更新し、維持し、手放すこと |
 | `readings/2026-11-08-the-correction-layer-was-the-one-thing-not-corrected.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-b94274` | 11,023 | Q5 S1 ERR11 | ✓ | 訂正の層だけが、訂正されていなかった |
@@ -5406,6 +5407,7 @@
 | `readings/2026-11-08-when-stored-information-acts.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-eadaf4` +1 | 12,472 | Q3 M10 S2 | — | 保存された情報は、いつ働くのか——実験科学10資料の精読 |
 | `readings/2026-11-08-who-imagined-it-and-who-collected-it.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-d5c6c8` +1 | 13,499 | Q1 M12 S2 ERR5 | — | 思い描いたのは誰で、集めたのは誰か |
 | `readings/2026-11-08-whose-walk-the-heart-waited-for.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-f57a30` +4 | 14,668 | Q4 F1 M4 MOT1 S5 ERR1 | — | 火は誰の前で燃えていたのか——炭火渡りの心拍同期を原典で読み、書庫に「同じ今」があるかを測る |
+| `readings/2026-11-09-a-pre-registered-count-of-what-was-not-mentioned.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-7dbfdb` +1 | 17,036 | Q3 M2 S2 | ✓ | 言及しなかったことを数える ― 書庫版 Rp+/Rp− の事前登録測定 |
 | `readings/2026-11-09-four-stones-three-pauses-four-bridges.md` | — | 2026-11-09 | `SESSION-20261109-0ed0ca` +7 | 13,928 | Q12 F28 MOT16 R5 S8 ED7 | ✓ | 四つの礎石、三つの休止、四つの浮島——第4回自律編集レビューと、未索引だった六本の報告 |
 | `readings/2026-11-09-the-stone-beneath-and-the-bent-ridge.md` | — | 2026-11-09 | `SESSION-20261109-99ad4a` +3 | 17,931 | Q6 F15 M2 MOT2 R3 S4 ERR1 | ✓ | 下の石と、曲がった畦 — 『連続と断絶のはざまで』の留保ゼロ変奏と、戻った者の反歌（SESSION-20261109-… |
 | `readings/2026-11-10-kiln-night-and-the-count-without-a-date.md` | — | 2026-11-10 | `SESSION-20261110-43ee9f` +4 | 19,789 | Q6 F17 M4 MOT2 S5 | ✓ | 窯の夜と、日付を持たない数——『見張り』の二部作変奏と、反歌を書かない試み（SESSION-20261110-43ee… |
