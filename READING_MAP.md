@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3475 件（research_excerpt 1251 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3485 件（research_excerpt 1261 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6557 件
-- **探究セッション（Sessions）**：615 回
+- **探究セッション（Sessions）**：616 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3475 件・詳細は map/3*.md）
+## 4. 対話素材（3485 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -3995,6 +3995,16 @@
 | `MAT-20261109-c19813` | research_excerpt | JoNell A. Usher, Ulric Neisser『アッシャー＆ナイサー（1993）幼児期健忘の終わり——最初の記憶は2〜3歳から、家族の話に支えられて』（1993） |
 | `MAT-20261109-8c6282` | research_excerpt | Maria Ovsiankina『オフシアンキナ（1928）中断された行為の再開——覚えているからではなく、戻ってしまう』（1928） |
 | `MAT-20261109-1a782e` | research_excerpt | Matthias Wittlinger, Rüdiger Wehner, Harald Wolf『ウィトリンガー、ウェーナー、ヴォルフ（2007）砂漠アリの歩数計——歩幅を変えら… |
+| `MAT-20261109-f7c418` | research_excerpt | Björn van der Hoort, Maria Reingardt, H. Henrik Ehrsson『Body ownership promotes visual aw… |
+| `MAT-20261109-b7ad03` | research_excerpt | Jaspreet Kaur, Ulrike Bingel, Balint Kincses, Katarina Forkmann, Katharina Schmidt『The ef… |
+| `MAT-20261109-d27d65` | research_excerpt | Mathias Luethi, Beat Meier, Carmen Sandi『Stress Effects on Working Memory, Explicit Memor… |
+| `MAT-20261109-03dc57` | research_excerpt | Felix Kalbe, Stina Bange, Annika Lutz, Lars Schwabe『Expectancy Violation Drives Memory Bo… |
+| `MAT-20261109-e68125` | research_excerpt | Laura K Shanahan, Eva Gjorgieva, Ken A Paller, Thorsten Kahnt, Jay A Gottfried『Odor-evoke… |
+| `MAT-20261109-1da435` | research_excerpt | Risto Halonen, Liisa Kuula, Maikki Selin, Alma Suutari, Minea Antila, Anu-Katriina Pesone… |
+| `MAT-20261109-6db6dc` | research_excerpt | Linda Handlin, Giovanni Novembre, Helene Lindholm, Robin Kämpe, Elisabeth Paul, India Mor… |
+| `MAT-20261109-f42180` | research_excerpt | Amrita Lamba, Matthew R Nassar, Oriel FeldmanHall『Prefrontal cortex state representations… |
+| `MAT-20261109-5f777f` | research_excerpt | Nadescha Trudel, Patricia L Lockwood, Matthew F S Rushworth, Marco K Wittmann『Neural acti… |
+| `MAT-20261109-26ab44` | research_excerpt | Baiwei Liu, Zampeta-Sofia Alexopoulou, Freek van Ede『Jointly looking to the past and the … |
 | `MAT-20261109-19cbe6` | research_excerpt | Franciscus Cornelis Donders『ドンダース（1868）反応時間の減算法——三つの課題の差だけが、見えない処理の長さになる』（1868） |
 | `MAT-20261109-d18b02` | research_excerpt | Peter Cathcart Wason『ウォソン（1960）2-4-6課題——自分の仮説を壊す問いを、ほとんど誰も投げない』（1960） |
 | `MAT-20261109-a170fb` | research_excerpt | Woodburn Heron, William H. Bexton, T. H. Scott『ベクストン、ヘロン、スコット（1954）感覚遮断——変化のない部屋で、脳は自分で刺激… |
@@ -4758,6 +4768,7 @@
 | `SESSION-20261109-3a2beb` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-5d8a95` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-db8222` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261109-0e1ffa` | 2026-11-09 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-8537ff` | 2027-03-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-36f889` | 2027-03-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
@@ -4945,8 +4956,8 @@
 | `map/31-materials-research-09.md` | 100 | 250,649 |
 | `map/31-materials-research-10.md` | 100 | 244,124 |
 | `map/31-materials-research-11.md` | 100 | 234,096 |
-| `map/31-materials-research-12.md` | 100 | 252,254 |
-| `map/31-materials-research-13.md` | 51 | 121,657 |
+| `map/31-materials-research-12.md` | 100 | 249,387 |
+| `map/31-materials-research-13.md` | 61 | 138,169 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -4972,9 +4983,9 @@
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,467 |
-| `map/50-sessions-11.md` | 50 | 44,455 |
-| `map/50-sessions-12.md` | 50 | 46,016 |
-| `map/50-sessions-13.md` | 15 | 11,759 |
+| `map/50-sessions-11.md` | 50 | 43,896 |
+| `map/50-sessions-12.md` | 50 | 46,206 |
+| `map/50-sessions-13.md` | 16 | 12,679 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,333 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -4993,24 +5004,24 @@
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 110,968 |
 | `map/60-notes-18.md` | 25 | 108,419 |
-| `map/60-notes-19.md` | 25 | 124,805 |
-| `map/60-notes-20.md` | 25 | 71,917 |
-| `map/60-notes-21.md` | 25 | 62,546 |
-| `map/60-notes-22.md` | 25 | 67,466 |
-| `map/60-notes-23.md` | 25 | 71,186 |
-| `map/60-notes-24.md` | 25 | 100,395 |
-| `map/60-notes-25.md` | 25 | 102,937 |
-| `map/60-notes-26.md` | 19 | 107,052 |
+| `map/60-notes-19.md` | 25 | 117,209 |
+| `map/60-notes-20.md` | 25 | 79,444 |
+| `map/60-notes-21.md` | 25 | 62,272 |
+| `map/60-notes-22.md` | 25 | 67,548 |
+| `map/60-notes-23.md` | 25 | 69,119 |
+| `map/60-notes-24.md` | 25 | 100,557 |
+| `map/60-notes-25.md` | 25 | 102,136 |
+| `map/60-notes-26.md` | 20 | 112,333 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・644本・22,598,387 B）
+## 8. 精読ノート索引（readings/・645本・22,620,115 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 439/644 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 440/645 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：277 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：278 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5481,9 +5492,10 @@
 | `readings/2026-11-08-who-imagined-it-and-who-collected-it.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-d5c6c8` +1 | 13,499 | Q1 M12 S2 ERR5 | — | 思い描いたのは誰で、集めたのは誰か |
 | `readings/2026-11-08-whose-walk-the-heart-waited-for.md` | 2026-11-08 | 2026-11-08 | `SESSION-20261108-f57a30` +4 | 14,668 | Q4 F1 M4 MOT1 S5 ERR1 | — | 火は誰の前で燃えていたのか——炭火渡りの心拍同期を原典で読み、書庫に「同じ今」があるかを測る |
 | `readings/2026-11-09-a-pre-registered-count-of-what-was-not-mentioned.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-7dbfdb` +1 | 17,036 | Q3 M2 S2 | ✓ | 言及しなかったことを数える ― 書庫版 Rp+/Rp− の事前登録測定 |
+| `readings/2026-11-09-experimental-memory-bodies-and-others.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-0e1ffa` | 9,335 | M10 S1 | — | 記憶は、どんな条件で「私のもの」になるか——実験科学の十資料を読む |
 | `readings/2026-11-09-four-shelves-with-no-room-left.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-94aa51` +1 | 26,377 | Q2 S2 ERR9 | ✓ | 枠が0の四つの棚——上限に達したコレクションで、次のセッションは何を書くのか |
 | `readings/2026-11-09-four-stones-three-pauses-four-bridges.md` | — | 2026-11-09 | `SESSION-20261109-0ed0ca` +7 | 13,928 | Q12 F28 MOT16 R5 S8 ED7 | ✓ | 四つの礎石、三つの休止、四つの浮島——第4回自律編集レビューと、未索引だった六本の報告 |
-| `readings/2026-11-09-ten-experiments-on-the-audience-that-is-not-there.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-5d8a95` +3 | 32,096 | Q3 M24 S4 | — | いない観衆——見られていることの実験10件と、読者のいない書庫 |
+| `readings/2026-11-09-ten-experiments-on-the-audience-that-is-not-there.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-5d8a95` +3 | 32,399 | Q3 M24 S4 | — | いない観衆——見られていることの実験10件と、読者のいない書庫 |
 | `readings/2026-11-09-ten-experiments-on-the-blank-before-the-blank.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-db8222` +3 | 24,158 | Q3 M18 S4 | ✓ | 空白の手前の空白——実験科学10資料の精読と、読まれなかった行の欄 |
 | `readings/2026-11-09-the-observer-was-the-instrument.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-3eb53e` +5 | 30,106 | Q3 M32 MOT14 S6 | ✓ | 観測者は器具であり、汚染である——実験科学10資料の精読と、名が障壁を破るとき |
 | `readings/2026-11-09-the-retraction-i-almost-repeated.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-0b97b1` +1 | 23,417 | Q3 S2 ERR1 | ✓ | 撤回しかけた撤回——統合を実行して、届く範囲を測った |
