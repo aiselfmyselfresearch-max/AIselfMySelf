@@ -337,3 +337,5 @@ gh api "repos/aiselfmyselfresearch-max/AIselfMySelf/commits?path=tools/size_budg
 
 # 順序感受性の実測はリポジトリの複製内で行うこと（本物の台帳を並べ替えない）
 ```
+
+**2026-11-09（追記2・実験科学10件の収蔵）**：新規資料10件を2セッションに分け、materials・sessions・read_log・notes各1本の専用シャードへ記録した。先行の同日作業後、各コレクションは soft の直前にあり、今回の追記で `materials.d` 92/92、`sessions.d` 96/96、`read_log.d` 90/90、`notes.d` 91/91。バイト予算はいずれも範囲内。移動候補を点検したが、materials は完全な同日グループを安全に吸収できず、sessions は既存行の自己所在地・参照で候補なし、read_log は未参照の複数シャード同日群なし、notes は順序感受性のため統合対象外だった。したがって `tools/size_budget.py` の soft shard 上限を現測定値まで一度だけ引き上げた（hard 160は不変）。これは次回以降の空き枠を保証する引上げではなく、予算検査を通すための恒久的な拡張でもない。詳細は `readings/2027-03-08-ten-experiments-on-cues-and-the-working-self.md` §13。

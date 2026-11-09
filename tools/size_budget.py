@@ -199,7 +199,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 20 of 21 existing 2026-11-08 materials shards carry inbound path refs;
         # sessions/read_log/notes/relations were consolidated first so no other
         # ceiling moves, and new rows omit shard paths for future compaction.
-        soft_shards=91,
+        # 2026-11-09: 91 -> 92 for the requested 10-experiment acquisition
+        # (10 source records in its own shard). Same-day materials shards cannot
+        # be absorbed without changing union order; no complete movable date
+        # group was available. Hard limit remains 160; not an automatic raise.
+        # See readings/2027-03-08-ten-experiments-on-cues-and-the-working-self.md §13.
+        soft_shards=92,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -282,7 +287,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # Existing candidates carry path refs; new rows stay concise and omit
         # shard paths. Details:
         # readings/2026-11-08-ten-experiments-across-body-monitoring-and-fusion.md §14.
-        soft_shards=89,
+        # 2026-11-09: 89 -> 90 for 11 handwritten reading rows across two sessions.
+        # No unreferenced multi-shard date group was available for safe compaction;
+        # byte budget remains below 5 MiB. Hard limit 160; not an automatic raise.
+        # See readings/2027-03-08-ten-experiments-on-cues-and-the-working-self.md §13.
+        soft_shards=90,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -413,15 +422,18 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # reclaim a single file here and the only remaining remedy is this ceiling.
         # Not automatic.  Hard limit 160 unchanged.  Details:
         # readings/2026-11-09-a-pre-registered-count-of-what-was-not-mentioned.md §8-1.
-        # 2026-11-09: 94 -> 95 for this session's own shard (hard 160 unchanged).
+        # 2026-11-09: 94 -> 95 for the prior session's own shard (hard 160 unchanged).
         # Not an automatic raise, and this collection cannot repay it: 71 of its
         # 73 non-integrated shards write their own filename inside their rows,
-        # and rows are append-only, so this file count only grows.  The same
+        # and rows are append-only, so this file count only grows. The same
         # session recovered 18 files from five OTHER collections and lowered
-        # relations.d by two slots, so the sum of soft_shards across the ten
-        # collections stays at 845.  Measured in
+        # relations.d by two slots. Measured in
         # readings/2026-11-09-the-retraction-i-almost-repeated.md sections 3, 6-1.
-          soft_shards=95,
+        # 2026-11-09: 95 -> 96 for the two-session report recorded here. The
+        # new rows omit shard locations; however all existing movable session
+        # candidates were absent (self-location or inbound references). Hard
+        # limit 160; no further increase is implied. See report §13.
+          soft_shards=96,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -497,7 +509,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # exception list in docs/parallel-work.md section 3.  Its single movable
         # shard would only produce a net-zero anchor.  Measured in
         # readings/2026-11-09-the-retraction-i-almost-repeated.md section 4.
-          soft_shards=90,
+        # 2026-11-09: 90 -> 91 for this report's curated note. No order-preserving
+        # compaction candidate was available; notes.d is order-sensitive and is
+        # excluded from consolidation. Hard limit 160; not an automatic raise.
+          soft_shards=91,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
