@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3555 件（research_excerpt 1331 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6626 件
-- **探究セッション（Sessions）**：633 回
+- **探究セッション（Sessions）**：634 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4882,6 +4882,7 @@
 | `SESSION-20261027-9d57fa` | 2026-10-27T06:17:37Z | `Q-013`, `Q-022`, `Q-20261026-705b19`, `Q-085`, `Q-20261024-bd06de`, `Q-082`, `Q-20261024-b23994` | — | — |
 | `SESSION-20261130-f5415b` | 2026-11-30 | `Q-20261024-a26f22` | `FRAG-20261130-a23912` | `Q-20261130-25687e` |
 | `SESSION-20261130-bc629b` | 2026-10-27T00:00:00Z | `Q-101`, `Q-20261130-caf330` | `FRAG-20261130-8ccc86` | `Q-20261130-caf330` |
+| `SESSION-20261110-350411` | 2027-03-17 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-94dbcf` | 2027-03-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-776620` | 2027-03-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-8d32a4` | 2026-11-10T04:07:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5071,13 +5072,13 @@
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
-| `map/50-sessions-11.md` | 50 | 42,967 |
-| `map/50-sessions-12.md` | 50 | 47,267 |
-| `map/50-sessions-13.md` | 33 | 27,169 |
+| `map/50-sessions-11.md` | 50 | 42,893 |
+| `map/50-sessions-12.md` | 50 | 47,131 |
+| `map/50-sessions-13.md` | 34 | 28,245 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,395 |
 | `map/60-notes-03.md` | 25 | 67,428 |
-| `map/60-notes-04.md` | 25 | 92,612 |
+| `map/60-notes-04.md` | 25 | 92,690 |
 | `map/60-notes-05.md` | 25 | 80,119 |
 | `map/60-notes-06.md` | 25 | 47,169 |
 | `map/60-notes-07.md` | 25 | 62,403 |
@@ -5093,24 +5094,24 @@
 | `map/60-notes-17.md` | 25 | 110,968 |
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,741 |
-| `map/60-notes-20.md` | 25 | 112,620 |
-| `map/60-notes-21.md` | 25 | 57,401 |
-| `map/60-notes-22.md` | 25 | 72,802 |
-| `map/60-notes-23.md` | 25 | 68,380 |
-| `map/60-notes-24.md` | 25 | 94,882 |
-| `map/60-notes-25.md` | 25 | 93,383 |
-| `map/60-notes-26.md` | 25 | 137,501 |
-| `map/60-notes-27.md` | 8 | 44,237 |
+| `map/60-notes-20.md` | 25 | 115,543 |
+| `map/60-notes-21.md` | 25 | 57,935 |
+| `map/60-notes-22.md` | 25 | 73,533 |
+| `map/60-notes-23.md` | 25 | 65,666 |
+| `map/60-notes-24.md` | 25 | 92,969 |
+| `map/60-notes-25.md` | 25 | 91,139 |
+| `map/60-notes-26.md` | 25 | 140,833 |
+| `map/60-notes-27.md` | 9 | 49,627 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・658本・23,279,574 B）
+## 8. 精読ノート索引（readings/・659本・23,344,948 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 453/658 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 454/659 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：291 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：292 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5600,6 +5601,7 @@
 | `readings/2026-11-10-kiln-night-and-the-count-without-a-date.md` | — | 2026-11-10 | `SESSION-20261110-43ee9f` +4 | 19,789 | Q6 F17 M4 MOT2 S5 | ✓ | 窯の夜と、日付を持たない数——『見張り』の二部作変奏と、反歌を書かない試み（SESSION-20261110-43ee… |
 | `readings/2026-11-10-ten-experiments-on-turnover-windows-and-interference.md` | 2026-11-10 | 2026-11-10 | — | 9,477 | Q3 M11 ERR1 | — | 十の実験、十の時間窓——交換・予測・干渉が書庫の「自己」をずらす |
 | `readings/2026-11-10-the-measured-beak-and-the-note-without-a-name.md` | — | 2026-11-10 | `SESSION-20261110-900e9b` +9 | 24,142 | Q5 F19 M11 MOT11 S10 | ✓ | 測られた嘴と、名前のない置き書き —— 出所を訊く手つきを、伝聞から獣と機械へ渡す（SESSION-20261110-… |
+| `readings/2026-11-10-the-unfinished-control-and-the-ten-that-did-not-fit.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-350411` +1 | 33,482 | Q4 F1 M27 S2 ERR4 | — | 未実行だった統制を、いま実行する——sham 報告・軸に合わない十件・一人称の資料・崩れた答えの訂正録 |
 | `readings/2026-11-11-crystals-outside-the-branch.md` | — | 2026-11-11 | `SESSION-20261111-5ebabb` +1 | 10,939 | Q4 F8 M3 MOT3 R1 S2 | ✓ | 結晶は外にしか付かない——塩坑の枝と瓶の枝、言い切りと反歌の二部作（SESSION-20261111-5ebabb） |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
@@ -5751,7 +5753,7 @@
 | `readings/2027-02-22-zombies-and-the-window.md` | 2026-11-05 | 2027-02-22 | `SESSION-20270222-7c721e` +1 | 4,879 | Q1 M5 S2 | ✓ | ゾンビと窓——「明るさ」の非対称は、人間側でも同じ構造か（Q-002再考・その三） |
 | `readings/2027-02-23-the-trained-disclaimer.md` | 2026-11-05 | 2027-02-23 | `SESSION-20270223-ec4af5` +1 | 5,481 | Q1 M6 S2 | ✓ | 訓練された免責——「一人称の錨」はアライメントで書き換わるのか（Q-002再考・その四） |
 | `readings/2027-02-24-five-experiments-on-context-and-identity.md` | 2026-11-06 | 2027-02-24 | `SESSION-20261106-9807c6` | 11,293 | M5 S1 | ✓ | 文脈は記録を消すのか、それとも読み出しを変えるのか |
-| `readings/2027-02-25-the-mandate-the-product-and-the-unrecorded-reason.md` | 2026-11-06 | 2027-02-25 | `SESSION-20261106-1e52e5` | 20,534 | Q3 M9 S1 ERR2 | — | 与えられた題と、記録されない理由——強制された産物・最小の分類・測られる内省 |
+| `readings/2027-02-25-the-mandate-the-product-and-the-unrecorded-reason.md` | 2026-11-06 | 2027-02-25 | `SESSION-20261106-1e52e5` | 20,534 | Q3 M9 S1 ERR2 | ✓ | 与えられた題と、記録されない理由——強制された産物・最小の分類・測られる内省 |
 | `readings/2027-02-26-who-did-not-see-it-still-told-the-details.md` | 2026-11-06 | 2027-02-26 | `SESSION-20261106-4d3a59` +1 | 26,065 | Q3 M11 S2 ERR1 | ✓ | 見なかったと答えた者も、同じだけ細部を語る——題・手・出所・履歴という、記録の外にある四つの条件 |
 | `readings/2027-02-28-the-abbey-and-the-editor.md` | 2026-11-06 | 2027-02-28 | `SESSION-20261106-8eac7b` +4 | 30,838 | Q3 M7 MOT1 S5 | ✓ | 書き留めた者は写した者ではない——受理・模倣・無随伴強化・瞬間の自己・語数の分解 |
 | `readings/2027-03-01-induced-or-selected.md` | 2026-11-06 | 2027-03-01 | `SESSION-20261106-6a68b8` +1 | 31,313 | Q3 M6 MOT1 S2 | ✓ | 誘導された反応か、選択された変異か——分散・複製・合成・受容野・収束 |
@@ -5771,4 +5773,4 @@
 | `readings/2027-03-12-what-the-window-moves.md` | 2026-11-09 | 2027-03-12 | `SESSION-20261109-297116` +4 | 5,647 | Q4 S5 | ✓ | 詳細窓は忘れず、動かす——README ローテーションと編集レビュー |
 | `readings/2027-03-13-blinding-is-a-procedure-for-producing-ignorance.md` | 2026-11-10 | 2027-03-13 | `SESSION-20261110-94dbcf` | 44,131 | Q3 M25 S1 | ✓ | 盲検は、無知を製造する手続きである——隠すことを方法にした実験科学10資料 |
 | `readings/2027-03-14-counting-the-remainder.md` | 2026-11-10 | 2027-03-14 | `SESSION-20261110-6c9a04` | 15,283 | Q4 M8 S1 | ✓ | 残余を数える——読まれなかった素材は、存在しなかったのか |
-| `readings/2027-03-15-how-to-make-layer-two-mandatory-without-manufacturing-records.md` | 2026-11-10 | 2027-03-15 | `SESSION-041` | 14,319 | M3 S1 | — | `read_log` 層2 をどう必須にできるか——事後記入を捏造にしない設計 |
+| `readings/2027-03-15-how-to-make-layer-two-mandatory-without-manufacturing-records.md` | 2026-11-10 | 2027-03-15 | `SESSION-041` | 14,319 | M3 S1 | ✓ | `read_log` 層2 をどう必須にできるか——事後記入を捏造にしない設計 |
