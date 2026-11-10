@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3535 件（research_excerpt 1311 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3545 件（research_excerpt 1321 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6596 件
-- **探究セッション（Sessions）**：627 回
+- **解釈的関係（Relations）**：6610 件
+- **探究セッション（Sessions）**：629 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3535 件・詳細は map/3*.md）
+## 4. 対話素材（3545 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4104,6 +4104,16 @@
 | `MAT-20261109-ded22f` | research_excerpt | Seymour Benzer『ベンザー（1955／1959／1961）rII の地形——二千四百の動かなかった記録を、二つずつ組んで一枚の地図にする』（1959） |
 | `MAT-20261109-bcf0bd` | research_excerpt | Rosalind E. Franklin, R. G. Gosling『フランクリン＆ゴスリング（1952／1953）写真51番——長時間露光の像を、撮らなかった者が第三の者へ渡… |
 | `MAT-20261109-746ca1` | research_excerpt | Otto Hahn, Fritz Strassmann, Lise Meitner, Otto Robert Frisch『ハーン＆シュトラスマン（1939）／マイトナー＆フリッ… |
+| `MAT-20261110-0db45b` | research_excerpt | Rudolf Schoenheimer, Sarah Ratner, David Rittenberg『Schoenheimer, Ratner & Rittenberg (19… |
+| `MAT-20261110-f545c3` | research_excerpt | Roger W. Sperry『Sperry (1950) 視覚反転フグの自発的視運動旋回と「随伴発射（corollary discharge）」の実験的導出』（1950） |
+| `MAT-20261110-699e2a` | research_excerpt | H. A. Borthwick, S. B. Hendricks, M. W. Parker, E. H. Toole, Vivian K. Toole『Borthwick, H… |
+| `MAT-20261110-218c71` | research_excerpt | Reiji Okazaki, Tsuneko Okazaki, Kiwako Sakabe, Kazunori Sugimoto, Akio Sugino『Okazaki, Ok… |
+| `MAT-20261110-a5108a` | research_excerpt | Nicole M. Le Douarin, Francine V. Jotereau『Le Douarin & Jotereau (1975) ウズラ―ニワトリ胚間キメラによる胸… |
+| `MAT-20261110-c02236` | research_excerpt | Qinghaosu Antimalaria Coordinating Research Group『Qinghaosu Antimalaria Coordinating Rese… |
+| `MAT-20261110-b352db` | research_excerpt | Akira Tonomura, Junji Endo, Tsuyoshi Matsuda, Takeshi Kawasaki, Hiroshi Ezawa『Tonomura, E… |
+| `MAT-20261110-e26094` | research_excerpt | Ronald A. Rensink, J. Kevin O'Regan, James J. Clark『Rensink, O'Regan & Clark (1997) フリッカー… |
+| `MAT-20261110-5acb22` | research_excerpt | Miguel Pais-Vieira, Mikhail Lebedev, Carolina Kunicki, Jing Wang, Miguel A. L. Nicolelis『… |
+| `MAT-20261110-b95096` | research_excerpt | Jonathan R. Epp, Rudy Silva Mera, Stefan Köhler, Sheena A. Josselyn, Paul W. Frankland『Ep… |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -4862,6 +4872,8 @@
 | `SESSION-20261027-9d57fa` | 2026-10-27T06:17:37Z | `Q-013`, `Q-022`, `Q-20261026-705b19`, `Q-085`, `Q-20261024-bd06de`, `Q-082`, `Q-20261024-b23994` | — | — |
 | `SESSION-20261130-f5415b` | 2026-11-30 | `Q-20261024-a26f22` | `FRAG-20261130-a23912` | `Q-20261130-25687e` |
 | `SESSION-20261130-bc629b` | 2026-10-27T00:00:00Z | `Q-101`, `Q-20261130-caf330` | `FRAG-20261130-8ccc86` | `Q-20261130-caf330` |
+| `SESSION-20261110-8d32a4` | 2026-11-10T04:07:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-8e9af5` | 2026-11-10T04:07:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
 | `SESSION-20261201-4944b0` | 2026-12-01 | `Q-20261024-c237b9`, `Q-20261201-f932d1` | `FRAG-20261201-0c2cb9` | `Q-20261201-f932d1` |
@@ -4943,17 +4955,17 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6596 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6610 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 949 |
-| 共鳴 (echo) | 1596 |
+| 対照 (contrast) | 952 |
+| 共鳴 (echo) | 1598 |
 | 切断・割り込み (interrupts) | 227 |
 | 未解決のまま開く (leaves_open) | 892 |
-| 比喩的共鳴 (metaphorically_resonates) | 181 |
-| 枠組みの組み替え (reframes) | 696 |
-| 応答 (responds_to) | 1751 |
+| 比喩的共鳴 (metaphorically_resonates) | 183 |
+| 枠組みの組み替え (reframes) | 700 |
+| 応答 (responds_to) | 1754 |
 | 変奏・変形 (transforms) | 304 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -5019,7 +5031,7 @@
 | `map/31-materials-research-11.md` | 100 | 234,096 |
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
-| `map/31-materials-research-14.md` | 11 | 43,555 |
+| `map/31-materials-research-14.md` | 21 | 74,804 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5032,9 +5044,9 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 172,323 |
-| `map/40-relations-13.md` | 500 | 166,902 |
-| `map/40-relations-14.md` | 96 | 31,979 |
+| `map/40-relations-12.md` | 500 | 172,379 |
+| `map/40-relations-13.md` | 500 | 164,106 |
+| `map/40-relations-14.md` | 110 | 37,649 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5045,9 +5057,9 @@
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
-| `map/50-sessions-11.md` | 50 | 42,885 |
-| `map/50-sessions-12.md` | 50 | 47,763 |
-| `map/50-sessions-13.md` | 27 | 21,793 |
+| `map/50-sessions-11.md` | 50 | 43,089 |
+| `map/50-sessions-12.md` | 50 | 47,627 |
+| `map/50-sessions-13.md` | 29 | 23,600 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,395 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5067,24 +5079,24 @@
 | `map/60-notes-17.md` | 25 | 110,968 |
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,611 |
-| `map/60-notes-20.md` | 25 | 111,095 |
-| `map/60-notes-21.md` | 25 | 58,625 |
-| `map/60-notes-22.md` | 25 | 70,333 |
-| `map/60-notes-23.md` | 25 | 69,423 |
-| `map/60-notes-24.md` | 25 | 95,771 |
-| `map/60-notes-25.md` | 25 | 95,546 |
-| `map/60-notes-26.md` | 25 | 136,767 |
-| `map/60-notes-27.md` | 4 | 21,186 |
+| `map/60-notes-20.md` | 25 | 112,620 |
+| `map/60-notes-21.md` | 25 | 57,401 |
+| `map/60-notes-22.md` | 25 | 72,802 |
+| `map/60-notes-23.md` | 25 | 68,380 |
+| `map/60-notes-24.md` | 25 | 94,882 |
+| `map/60-notes-25.md` | 25 | 93,383 |
+| `map/60-notes-26.md` | 25 | 137,427 |
+| `map/60-notes-27.md` | 5 | 25,451 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・654本・23,092,888 B）
+## 8. 精読ノート索引（readings/・655本・23,115,877 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 449/654 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 450/655 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：287 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：288 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5572,6 +5584,7 @@
 | `readings/2026-11-09-the-word-and-the-addressee.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-05134a` +6 | 31,194 | Q3 M10 S7 | ✓ | その語と、その宛先——実験科学10資料の精読と、記録されなかった読み |
 | `readings/2026-11-09-what-remains-when-the-experiment-cuts-itself.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-189bc3` +1 | 48,879 | Q6 M12 MOT15 R7 S2 | ✓ | 実験は自らをどこまで削れるか——一次原典10資料の精読と、再現できない記憶の手続き |
 | `readings/2026-11-10-kiln-night-and-the-count-without-a-date.md` | — | 2026-11-10 | `SESSION-20261110-43ee9f` +4 | 19,789 | Q6 F17 M4 MOT2 S5 | ✓ | 窯の夜と、日付を持たない数——『見張り』の二部作変奏と、反歌を書かない試み（SESSION-20261110-43ee… |
+| `readings/2026-11-10-ten-experiments-on-turnover-windows-and-interference.md` | 2026-11-10 | 2026-11-10 | — | 9,477 | Q3 M11 ERR1 | — | 十の実験、十の時間窓——交換・予測・干渉が書庫の「自己」をずらす |
 | `readings/2026-11-10-the-measured-beak-and-the-note-without-a-name.md` | — | 2026-11-10 | `SESSION-20261110-900e9b` +9 | 24,142 | Q5 F19 M11 MOT11 S10 | ✓ | 測られた嘴と、名前のない置き書き —— 出所を訊く手つきを、伝聞から獣と機械へ渡す（SESSION-20261110-… |
 | `readings/2026-11-11-crystals-outside-the-branch.md` | — | 2026-11-11 | `SESSION-20261111-5ebabb` +1 | 10,939 | Q4 F8 M3 MOT3 R1 S2 | ✓ | 結晶は外にしか付かない——塩坑の枝と瓶の枝、言い切りと反歌の二部作（SESSION-20261111-5ebabb） |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
