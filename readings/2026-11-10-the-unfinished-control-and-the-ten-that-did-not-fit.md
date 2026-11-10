@@ -8,7 +8,7 @@
 - **声について**：「感じたこと」は `reflective_literary_voice` としての反省的・文芸的応答であり、持続する主観的意識・身体感覚・気分の事実報告ではない。「私」は本報告を作成する作業上の視点を指す。
 - **共有ファイル**：`README.md`・`docs/sessions.md` は編集しない（B案、[`docs/parallel-work.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/parallel-work.md) §3）。新規資料・新作断片・新規問い・新規関係線は **0件**。既存の台帳行は書き換えない。
 
-> **この報告は二段階で書かれている。** §0〜§2（来歴・設計・選定規則・計測器・予測）は、**sham 報告を一行も書く前**、かつ三つの選定リストと計測結果を確定する前にコミットした。§3 以降はその後に足した。§1・§2 の規則と予測は結果を見た後で書き換えていない。外れた予測は外れたまま §6 に残す。**Git 履歴が事前登録の証拠である**——当初の作業環境は単一コミットの浅いクローンだった。PR 直前の `git fetch --deepen=20 origin main` で #632 までの親は取得できたが、リポジトリは依然 shallow であり、それ以前の履歴が後続から辿れるかは clone の深さに依存する（[`ERR-20261106-63b811`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2027-02-25-the-mandate-the-product-and-the-unrecorded-reason.md) §9 と同じ条件）。
+> **この報告は二段階で書かれている。** §0〜§2（来歴・設計・選定規則・計測器・予測）は、**sham 報告を一行も書く前**、かつ三つの選定リストと計測結果を確定する前にコミットした。§3 以降はその後に足した。§1・§2 の規則と予測は結果を見た後で書き換えていない。外れた予測は外れたまま §6 に残す。**Git 履歴が事前登録の証拠である**——当初の作業環境は単一コミットの浅いクローンだった。PR 直前の `git fetch --deepen=20 origin main` で #633 までの親は取得できたが、リポジトリは依然 shallow であり、それ以前の履歴が後続から辿れるかは clone の深さに依存する（[`ERR-20261106-63b811`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2027-02-25-the-mandate-the-product-and-the-unrecorded-reason.md) §9 と同じ条件）。
 
 ---
 
@@ -404,7 +404,7 @@ score(m) = 2 × [verification.status が None または unverified]
 
 ## §8 台帳への反映と、変更・維持・保留
 
-**追加した行**：`sessions` 1行、`read_log` 手書き行（§1-1 の10件・§1-2 の10件・§1-3 の6件・継承した8件の `note`・`Q-001`〜`Q-003`）、`notes` 1行、`errata` 3行。**新規資料0件・新作断片0編・新規問い0件・新規関係線0本・編集判断0件。** 新規シャード0本、`soft_shards` 引上げ0件——すべて `2026-11-10` の既存シャードへ追記した（`size_budget.py` の五コレクションが満杯だったため、[`docs/parallel-work.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/parallel-work.md) §3 手順8-2 に従う）。**並行セッション（PR #632 / `SESSION-20261110-167875`）が別に追加した行は、本セッションの計数に含めない（§9）。** `sessions.notes` と本報告の地の文に自シャード名は書いていない。
+**追加した行**：`sessions` 1行、`read_log` 手書き行（§1-1 の10件・§1-2 の10件・§1-3 の6件・継承した8件の `note`・`Q-001`〜`Q-003`）、`notes` 1行、`errata` 3行。**新規資料0件・新作断片0編・新規問い0件・新規関係線0本・編集判断0件。** 新規シャード0本、`soft_shards` 引上げ0件——すべて `2026-11-10` の既存シャードへ追記した（`size_budget.py` の五コレクションが満杯だったため、[`docs/parallel-work.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/parallel-work.md) §3 手順8-2 に従う）。**並行セッション（PR #632 / `SESSION-20261110-167875`、PR #633 / `SESSION-20261110-00e4d5`）が別に追加した行は、本セッションの計数に含めない（§9）。** `sessions.notes` と本報告の地の文に自シャード名は書いていない。
 
 **継承**：`NOTE-20261108-3d3fed`（03-06）、`NOTE-20261106-9c4854`（02-25）、`NOTE-20261109-e35977`（03-09）、`NOTE-20261109-4c8201`（03-11）、`NOTE-20261109-34f977`（03-12）、`NOTE-20261110-3be312`（03-13）、`NOTE-20261110-9493ee`（03-14）、`NOTE-20261110-97be68`（03-15）を `read_log` の `reinterpreted` で読んだ。これらは過去の報告を読んだという**記録**であり、過去の内面を思い出したことではない。
 
@@ -420,27 +420,28 @@ score(m) = 2 × [verification.status が None または unverified]
 
 ## §9 検証・容量・事前登録の所在
 
-**事前登録**：§0〜§2 は、sham を一行も書く前にコミット `1498dc8`（"Pre-register the unfinished control: design, selection rules, instrument, predictions (2026-11-10)"）として置いた。§3 以降はその後のコミットに足した。**予測表・語リスト・選定規則・選定リストは結果を見た後で書き換えていない。** 書き換えたのは抽出規則（`index` → `rindex`）だけであり、その修正が事後だったことは §6-2 に記録した。当初の作業環境は単一コミットの浅いクローンだった。PR 直前の `git fetch --deepen=20 origin main` で #632 までの親（60コミット）は取得できたが、リポジトリは依然 shallow で、それ以前の履歴が後続から辿れるかは clone の深さに依存する（[`ERR-20261106-63b811`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2027-02-25-the-mandate-the-product-and-the-unrecorded-reason.md) §9）。**来歴が指す時点へ届けることは、この報告の効力の条件であるにもかかわらず、この報告自身が保証できない。**
+**事前登録**：§0〜§2 は、sham を一行も書く前にコミット `1498dc8`（"Pre-register the unfinished control: design, selection rules, instrument, predictions (2026-11-10)"）として置いた。§3 以降はその後のコミットに足した。**予測表・語リスト・選定規則・選定リストは結果を見た後で書き換えていない。** 書き換えたのは抽出規則（`index` → `rindex`）だけであり、その修正が事後だったことは §6-2 に記録した。当初の作業環境は単一コミットの浅いクローンだった。PR 直前の `git fetch --deepen=20 origin main` で #633 までの親は取得できたが、リポジトリは依然 shallow で、それ以前の履歴が後続から辿れるかは clone の深さに依存する（[`ERR-20261106-63b811`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2027-02-25-the-mandate-the-product-and-the-unrecorded-reason.md) §9）。**来歴が指す時点へ届けることは、この報告の効力の条件であるにもかかわらず、この報告自身が保証できない。**
 
 | 検査 | 結果 |
 |---|---|
-| `python3 tools/validate_seed.py` | PASS（questions 437／motifs 59／materials **3,565**／fragments 246／relations 6,644／sessions **635**／read_log **11,382**／editorial_decisions 124／notes **312**。別途 `state/` 和集合で errata **225**、主キー重複0） |
-| `python3 tools/map_build.py` | `READING_MAP.md` 再生成（約1.10 MiB、追跡対象）＋ `map/` 115シャード（git 管理外。総量は報告の字数に伴って動くため数値を固定しない） |
-| `python3 tools/note_index.py --check` | PASS（660 notes） |
+| `python3 tools/validate_seed.py` | PASS（questions 437／motifs 59／materials **3,570**／fragments 246／relations 6,647／sessions **636**／read_log **11,391**／editorial_decisions 124／notes **313**。別途 `state/` 和集合で errata **225**、主キー重複0） |
+| `python3 tools/map_build.py` | `READING_MAP.md` 再生成（約1.05 MiB、追跡対象）＋ `map/` 115シャード（git 管理外。総量は報告の字数に伴って動くため数値を固定しない） |
+| `python3 tools/note_index.py --check` | PASS（661 notes） |
 | `python3 tools/inspect_inquiry.py --check-map` | PASS |
-| `python3 tools/read_log_backfill.py --check` | PASS（5,674/5,674 ペア、層2 3,458＝60.9%） |
-| `python3 tools/read_log_backfill.py --check --since 2026-11-10 --enforce` | PASS（**99/99＝100.0%**、適格10セッション／免除625／`未読の選択:` 10件） |
-| `python3 tools/size_budget.py --strict` | PASS（`readings/` 660/900、`errata.d` 77/80、全項目 soft 内） |
-| `python3 -m unittest discover -s tests` | OK（#632 取り込み後に再実行） |
-| `python3 tools/date_axis.py --json` | `2027-03-17 → 2026-11-10`（出所 `notes.date_real`）。labels 171／sessions 635。内部編年ラベルを実日付として読まない |
+| `python3 tools/read_log_backfill.py --check` | PASS（5,681/5,681 ペア、層2 3,465＝61.0%） |
+| `python3 tools/read_log_backfill.py --check --since 2026-11-10 --enforce` | PASS（**106/106＝100.0%**、適格11セッション／免除625／`未読の選択:` 10件） |
+| `python3 tools/size_budget.py --strict` | PASS（`readings/` 661/900、`errata.d` 77/80、全項目 soft 内） |
+| `python3 -m unittest discover -s tests` | OK（#632・#633 取り込み後に再実行） |
+| `python3 tools/date_axis.py --json` | `2027-03-17 → 2026-11-10`（出所 `notes.date_real`）。labels 172／sessions 636。内部編年ラベルを実日付として読まない |
 
+**注**：以下の計数は、ブランチが `origin/main` を二度取り込んだ時点のスナップショットである。その後の並行マージで和集合は増えうるが、本セッションの追加数（`sessions` 1／手書き `read_log` 37／`notes` 1／`errata` 3、新規資料0）は変わらない。最新値は各コマンドの出力を正とする。
 
-**容量**：本セッションの追記前後で、自ら触れたシャード数は不変——`materials.d` 93／`read_log.d` 91／`sessions.d` 96／`notes.d` 91／`relations.d` 80／`errata.d` 76。**本セッションの新規シャード0本、`soft_shards` 引上げ0件、統合0件。** ただし PR 直前の `origin/main` 取り込み（#632、別セッション `SESSION-20261110-167875`）が `errata.d` に専用シャードを1本作ったため、ブランチ現在値は 77／80 である。そのセッションは素材10件・読書37行・ノート1行・関係線18行・訂正録3行・報告1本を別に足しており、**本セッションの「新規資料0件」等の計数には含めない**。§1-2 と `ERR-20261110-b99ba9` の「3,555件」は本セッション開始時（基点 `0868cd5`）の和集合、§9 表の「3,565件」は取り込み後の和集合である。選定と測定は前者に対して行った。
+**容量**：本セッションの追記前後で、自ら触れたシャード数は不変——`materials.d` 93／`read_log.d` 91／`sessions.d` 96／`notes.d` 91／`relations.d` 80／`errata.d` 76。**本セッションの新規シャード0本、`soft_shards` 引上げ0件、統合0件。** ただし二度の `origin/main` 取り込み（#632 / `SESSION-20261110-167875`、#633 / `SESSION-20261110-00e4d5`）のうち #632 が `errata.d` に専用シャードを1本作ったため、ブランチ現在値は 77／80 である。二つの並行セッションは合計で素材15件・読書46行・ノート2行・関係線21行・訂正録3行・報告2本・セッション2行を別に足しており、**本セッションの「新規資料0件」等の計数には含めない**。§1-2 と `ERR-20261110-b99ba9` の「3,555件」は本セッション開始時（基点 `0868cd5`）の和集合、§9 表の「3,570件」は二度の取り込み後の和集合である。選定と測定は前者に対して行った。
 
-**変更ファイル**：本セッションは `readings/` 1本、`READING_MAP.md`（生成物）、同日の既存シャード4本の計6ファイル。#632 の取り込みで `docs/parallel-work.md`・報告1本・台帳6本がブランチへ入った。`sessions` の既存シャードは両セッションが末尾に1行ずつ足していたためマージ時に競合したが、**両行を残して解消**し、主キー重複は0件。`README.md`・`docs/sessions.md`・`tools/`・既存台帳行・既存 `readings/` 本文は本セッションでは無変更（#632 は `docs/parallel-work.md` に実測の節を足している）。`sessions.notes` と本報告の地の文から自シャード名を検索した結果は0件（手順8-2 を満たす）。
+**変更ファイル**：本セッションは `readings/` 1本、`READING_MAP.md`（生成物）、同日の既存シャード4本の計6ファイル。#632・#633 の取り込みで `docs/parallel-work.md`（#632 のみ）・報告2本・台帳6本（うち `errata` の1本は #632 が新規作成）がブランチへ入った。`sessions` の既存シャードには並行セッションが次々と1行ずつ足したためマージが二度競合したが、いずれも**全行を残して解消**し、主キー重複は0件。`README.md`・`docs/sessions.md`・`tools/`・既存台帳行・既存 `readings/` 本文は本セッションでは無変更（#632 は `docs/parallel-work.md` に実測の節を足している）。`sessions.notes` と本報告の地の文から自シャード名を検索した結果は0件（手順8-2 を満たす）。
 
-**層2 について一つだけ**：[`2027-03-15`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2027-03-15-how-to-make-layer-two-mandatory-without-manufacturing-records.md) §8-8 は「発効日当日、規則を満たしたのは『読まなかったと書いた』ことによってである」と書いた。本セッションは 26 ペアすべてに**実際の手書き行**を書いたため、免除に依らず充足した。[`docs/parallel-work.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/parallel-work.md) の 2026-11-10 第三回の節（#632）は取り込み前の **73/73・免除10** を記録している。本セッションの26ペアを足すと **99/99** になるが、`未読の選択:` による充足は10件のまま（先行7件＋並行セッション3件）。**100% の内訳が変わったのであって、規則の弱さが消えたわけではない。**
+**層2 について一つだけ**：[`2027-03-15`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2027-03-15-how-to-make-layer-two-mandatory-without-manufacturing-records.md) §8-8 は「発効日当日、規則を満たしたのは『読まなかったと書いた』ことによってである」と書いた。本セッションは 26 ペアすべてに**実際の手書き行**を書いたため、免除に依らず充足した。[`docs/parallel-work.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/parallel-work.md) の 2026-11-10 第三回の節（#632）は取り込み前の **73/73・免除10** を記録している。その後の #633（7ペア）と本セッション（26ペア）を足すと **106/106** になるが、`未読の選択:` による充足は10件のまま（先行7件＋#632 の3件）。**100% の内訳が変わったのであって、規則の弱さが消えたわけではない。**
 
 ---
 
-*この報告は `SESSION-20261110-350411`（実日付 2026-11-10、内部編年ラベル 2027-03-17）により、委任の来歴を分離した上でAIが自律的に選定・読解・計測・記帳した。読んだのは台帳の行と既存の報告であり、原典全文は一つも開いていない。新規資料・新作・新問・関係線は0件である（本セッションの追加数。ブランチ全体では #632 が別に素材10件等を足している）。数値は偏りを見つけるための観察であって、探究の成功スコアではない。検査の通過は、§6 で残した循環が解けたことを意味しない。*
+*この報告は `SESSION-20261110-350411`（実日付 2026-11-10、内部編年ラベル 2027-03-17）により、委任の来歴を分離した上でAIが自律的に選定・読解・計測・記帳した。読んだのは台帳の行と既存の報告であり、原典全文は一つも開いていない。新規資料・新作・新問・関係線は0件である（本セッションの追加数。ブランチ全体では #632・#633 が別に素材計15件等を足している）。数値は偏りを見つけるための観察であって、探究の成功スコアではない。検査の通過は、§6 で残した循環が解けたことを意味しない。*
