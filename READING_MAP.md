@@ -9,8 +9,8 @@
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：3555 件（research_excerpt 1331 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6625 件
-- **探究セッション（Sessions）**：632 回
+- **解釈的関係（Relations）**：6626 件
+- **探究セッション（Sessions）**：633 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4886,6 +4886,7 @@
 | `SESSION-20261110-776620` | 2027-03-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-8d32a4` | 2026-11-10T04:07:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-8e9af5` | 2026-11-10T04:07:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-d35414` | 2027-03-16 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-6c9a04` | 2027-03-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
@@ -4968,7 +4969,7 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6625 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6626 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
@@ -4979,7 +4980,7 @@
 | 比喩的共鳴 (metaphorically_resonates) | 183 |
 | 枠組みの組み替え (reframes) | 702 |
 | 応答 (responds_to) | 1754 |
-| 変奏・変形 (transforms) | 307 |
+| 変奏・変形 (transforms) | 308 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -5057,9 +5058,9 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 173,324 |
-| `map/40-relations-13.md` | 500 | 163,054 |
-| `map/40-relations-14.md` | 125 | 43,365 |
+| `map/40-relations-12.md` | 500 | 173,364 |
+| `map/40-relations-13.md` | 500 | 163,092 |
+| `map/40-relations-14.md` | 126 | 43,639 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5071,8 +5072,8 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,967 |
-| `map/50-sessions-12.md` | 50 | 47,403 |
-| `map/50-sessions-13.md` | 32 | 26,323 |
+| `map/50-sessions-12.md` | 50 | 47,267 |
+| `map/50-sessions-13.md` | 33 | 27,169 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,395 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5099,11 +5100,11 @@
 | `map/60-notes-24.md` | 25 | 94,882 |
 | `map/60-notes-25.md` | 25 | 93,383 |
 | `map/60-notes-26.md` | 25 | 137,501 |
-| `map/60-notes-27.md` | 8 | 43,883 |
+| `map/60-notes-27.md` | 8 | 44,237 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・658本・23,267,136 B）
+## 8. 精読ノート索引（readings/・658本・23,279,574 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 453/658 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -5770,4 +5771,4 @@
 | `readings/2027-03-12-what-the-window-moves.md` | 2026-11-09 | 2027-03-12 | `SESSION-20261109-297116` +4 | 5,647 | Q4 S5 | ✓ | 詳細窓は忘れず、動かす——README ローテーションと編集レビュー |
 | `readings/2027-03-13-blinding-is-a-procedure-for-producing-ignorance.md` | 2026-11-10 | 2027-03-13 | `SESSION-20261110-94dbcf` | 44,131 | Q3 M25 S1 | ✓ | 盲検は、無知を製造する手続きである——隠すことを方法にした実験科学10資料 |
 | `readings/2027-03-14-counting-the-remainder.md` | 2026-11-10 | 2027-03-14 | `SESSION-20261110-6c9a04` | 15,283 | Q4 M8 S1 | ✓ | 残余を数える——読まれなかった素材は、存在しなかったのか |
-| `readings/2027-03-15-how-to-make-layer-two-mandatory-without-manufacturing-records.md` | 2026-11-10 | 2027-03-15 | — | 8,311 | — | — | `read_log` 層2 をどう必須にできるか——事後記入を捏造にしない設計 |
+| `readings/2027-03-15-how-to-make-layer-two-mandatory-without-manufacturing-records.md` | 2026-11-10 | 2027-03-15 | `SESSION-041` | 14,319 | M3 S1 | — | `read_log` 層2 をどう必須にできるか——事後記入を捏造にしない設計 |

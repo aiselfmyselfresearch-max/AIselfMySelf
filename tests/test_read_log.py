@@ -141,6 +141,94 @@ class BackfillTests(unittest.TestCase):
             validate = run(repo, "tools/validate_seed.py")
             self.assertEqual(validate.returncode, 0, validate.stdout + validate.stderr)
 
+    def test_since_reports_but_enforce_gates(self) -> None:
+        """--since reports layer 2 from a date; only --enforce turns it into rc=1.
+
+        A rule takes effect by adding --enforce, not by writing a date, so that
+        existing --check callers (including CI) keep their behaviour.
+        """
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = copy_repo(Path(tmp))
+            session = {
+                "session_id": "SESSION-20261110-dddddd",
+                "started_at": "2026-11-10",
+                "human_direction": "test",
+                "question_ids": [],
+                "context_material_ids": ["MAT-20261024-3c4443"],
+                "produced_fragment_ids": [],
+                "new_question_ids": [],
+                "prompt_template": "test",
+            }
+            shard = repo / "state" / "sessions.d" / "2026-11-10-dddddddddddd.jsonl"
+            shard.write_text(json.dumps(session, ensure_ascii=False) + "\n", encoding="utf-8")
+            run(repo, "tools/read_log_backfill.py", "--write")  # fill layer 1 only
+
+            plain = run(repo, "tools/read_log_backfill.py", "--check")
+            self.assertEqual(plain.returncode, 0, plain.stdout)
+            self.assertNotIn("layer2 since", plain.stdout)
+
+            reported = run(repo, "tools/read_log_backfill.py", "--check", "--since", "2026-11-10")
+            self.assertEqual(reported.returncode, 0, reported.stdout)
+            self.assertIn("layer2 since 2026-11-10", reported.stdout)
+            self.assertIn("never fails", reported.stdout)
+
+            enforced = run(
+                repo, "tools/read_log_backfill.py", "--check", "--since", "2026-11-10", "--enforce"
+            )
+            self.assertEqual(enforced.returncode, 1, enforced.stdout)
+            self.assertIn("neither a hand-written reading nor", enforced.stdout)
+
+            # Recording the choice in sessions.notes satisfies the rule.
+            row = json.loads(shard.read_text(encoding="utf-8").splitlines()[0])
+            row["notes"] = "未読の選択: MAT-20261024-3c4443"
+            shard.write_text(json.dumps(row, ensure_ascii=False) + "\n", encoding="utf-8")
+            excused = run(
+                repo, "tools/read_log_backfill.py", "--check", "--since", "2026-11-10", "--enforce"
+            )
+            self.assertEqual(excused.returncode, 0, excused.stdout)
+            self.assertIn("excused by 未読の選択:", excused.stdout)
+            # The rate is over the whole real repository, so it is not pinned to
+            # an exact count; what matters is that the test session's own pair is
+            # resolved by the note and that enforcement passes.
+            self.assertIn("layer2 since 2026-11-10:", excused.stdout)
+            self.assertIn("PASS: every eligible pair since the effective date", excused.stdout)
+
+    def test_enforce_requires_since(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = copy_repo(Path(tmp))
+            proc = run(repo, "tools/read_log_backfill.py", "--check", "--enforce")
+            self.assertEqual(proc.returncode, 2, proc.stdout + proc.stderr)
+            self.assertIn("--enforce requires --since", proc.stderr)
+
+    def test_future_session_id_date_is_not_eligible(self) -> None:
+        """A future internal label in the ID must not be treated as a real date.
+
+        Measured 2026-11-10: 102 of 632 session IDs already carry a future
+        internal-chronology label. Crediting them would turn the internal
+        chronology into a compliance record for sessions that have not happened.
+        """
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = copy_repo(Path(tmp))
+            session = {
+                "session_id": "SESSION-20990104-cccccc",
+                "started_at": "2099-01-04",
+                "human_direction": "test",
+                "question_ids": [],
+                "context_material_ids": ["MAT-20261024-3c4443"],
+                "produced_fragment_ids": [],
+                "new_question_ids": [],
+                "prompt_template": "test",
+            }
+            shard = repo / "state" / "sessions.d" / "2099-01-04-cccccccccccc.jsonl"
+            shard.write_text(json.dumps(session, ensure_ascii=False) + "\n", encoding="utf-8")
+            run(repo, "tools/read_log_backfill.py", "--write")
+
+            proc = run(
+                repo, "tools/read_log_backfill.py", "--check", "--since", "2026-11-10", "--enforce"
+            )
+            self.assertEqual(proc.returncode, 0, proc.stdout)
+            self.assertIn("exempt", proc.stdout)
+
     def test_layer2_is_reported_but_never_gates(self) -> None:
         """Layer 2 (hand-written readings) must be printed and must not change rc.
 

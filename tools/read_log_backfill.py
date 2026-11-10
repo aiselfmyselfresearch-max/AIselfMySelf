@@ -12,7 +12,17 @@ read_log はその痕跡のための追記専用コレクションで、この�
 - ``--write``  : 欠落ペアだけに ``reading="used_as_context"`` の行を新しい
                  セッション用シャードへ追記する（冪等。既存行は触らない）。
 
-``--check`` は**二層**を別々に報告する（2026-11-10 に追加）。
+``--check`` は**二層**を別々に報告する（2026-11-10 に追加）。層2 の強制は
+``--since`` ＋ ``--enforce`` の二段構えである（同日、A案の段階1 として追加）。
+
+- ``--since YYYY-MM-DD``：層2 を発効日以降／以前に分けて表示する。**これだけでは落とさない。**
+- ``--since D --enforce``：発効日以降で未充足（手書き行も ``未読の選択:`` も無い）ペアがあれば exit 1。
+
+判定器は ``session_id`` の YYYYMMDD（``tools/new_id.py`` の実日付採番）を第一に、
+次に ``started_at[:10]``、どちらも取れなければ**免除**とする。``started_at`` には未来の
+内部編年ラベルが混在しており、それを適格にすると規則が空になるため、この順序にしてある
+（実測：``started_at`` 方式では適格 4/632、``session_id`` 方式では 109/632）。
+
 
 - **層1 接触**：各セッションの ``context_material_ids`` に read_log の行があるか。
   行の種類は問わない（機械的バックフィルを含む）。**失敗すると exit 1。**
@@ -113,7 +123,102 @@ def missing_pairs(sessions: dict[str, dict], read_log: dict[str, dict]) -> list[
     return sorted(derived_pairs(sessions) - covered_pairs(read_log))
 
 
-def check(root: Path) -> int:
+_SID_DATE = re.compile(r"SESSION-(\d{4})(\d{2})(\d{2})-")
+
+
+def session_date(session_id: str, record: dict) -> date | None:
+    """The real date a session started, or ``None`` if it cannot be established.
+
+    ``session_id`` first: ``tools/new_id.py`` stamps it from the real date.
+    ``started_at`` second: it may carry a future internal-chronology label.
+
+    In both cases **a future date is not a date**.  Measured 2026-11-10: 102 of
+    632 session IDs already carry a future internal label (``SESSION-20270220-…``),
+    so accepting a future ID date would both credit the rule with sessions that
+    have not happened and turn the internal chronology into a compliance record.
+    Anything that cannot be resolved is exempt — an unparsable timestamp must not
+    manufacture a violation.
+    """
+    match = _SID_DATE.match(session_id)
+    if match:
+        try:
+            stamped = date(int(match.group(1)), int(match.group(2)), int(match.group(3)))
+        except ValueError:
+            stamped = None
+        if stamped is not None and stamped <= date.today():
+            return stamped
+    value = record.get("started_at")
+    if isinstance(value, str) and value:
+        try:
+            parsed = date.fromisoformat(value[:10])
+        except ValueError:
+            return None
+        return parsed if parsed <= date.today() else None
+    return None
+
+
+_UNREAD = re.compile(
+    r"未読の選択\s*[:：]\s*(?P<ids>MAT-[A-Za-z0-9-]+(?:[、,]\s*MAT-[A-Za-z0-9-]+)*)"
+)
+
+
+def unread_choices(sessions: dict[str, dict]) -> set[tuple[str, str]]:
+    """(session, material) pairs a session explicitly recorded as not read.
+
+    The ID pattern is case-insensitive on purpose: ``MAT-[A-Z0-9-]+`` misses IDs
+    containing lower-case hex, which was 2,482 of 3,243 materials on 2026-11-06
+    (see ``prompts/start.md``).  Class-name fragments such as
+    ``MAT-LIT-20261024-`` are dropped because they do not resolve to a material.
+    """
+    pairs: set[tuple[str, str]] = set()
+    for session_id, record in sessions.items():
+        notes = record.get("notes")
+        if not isinstance(notes, str):
+            continue
+        for match in _UNREAD.finditer(notes):
+            for raw in re.split(r"[、,]", match.group("ids")):
+                material_id = raw.strip()
+                if re.fullmatch(r"MAT-[A-Za-z0-9-]*[0-9a-f][A-Za-z0-9-]*", material_id) and material_id[-1] != "-":
+                    pairs.add((session_id, material_id))
+    return pairs
+
+
+def since_report(
+    sessions: dict[str, dict],
+    read_log: dict[str, dict],
+    since: date,
+) -> tuple[int, int, int, int, list[tuple[str, str]]]:
+    """Return (eligible_pairs, hand_covered, unread_excused, exempt_sessions, unmet)."""
+    hand = handwritten_pairs(read_log)
+    excused = unread_choices(sessions)
+    eligible = 0
+    covered = 0
+    used_excuse = 0
+    exempt = 0
+    unmet: list[tuple[str, str]] = []
+    for session_id, record in sessions.items():
+        started = session_date(session_id, record)
+        if started is None or started < since:
+            exempt += 1
+            continue
+        context = record.get("context_material_ids") or []
+        if not context:
+            exempt += 1
+            continue
+        for material_id in context:
+            pair = (session_id, material_id)
+            eligible += 1
+            if pair in hand:
+                covered += 1
+            elif pair in excused:
+                covered += 1
+                used_excuse += 1
+            else:
+                unmet.append(pair)
+    return eligible, covered, used_excuse, exempt, sorted(unmet)
+
+
+def check(root: Path, since: date | None = None, enforce: bool = False) -> int:
     sessions, read_log = load(root)
     missing = missing_pairs(sessions, read_log)
     total = len(derived_pairs(sessions))
@@ -144,11 +249,41 @@ def check(root: Path) -> int:
             c=hand_covered, t=total, r=rate * 100
         )
     )
+    if since is None:
+        print(
+            "  note: layer2 is informational and never fails this check. "
+            "A context-only row means the material was in the session's context list, "
+            "not that it was read. See docs/parallel-work.md."
+        )
+        return 1 if gate_failed else 0
+
+    # --- layer 2 since the effective date. Enforced only with --enforce. ---
+    eligible, covered, excused, exempt, unmet = since_report(sessions, read_log, since)
+    rate = (covered / eligible) if eligible else 0.0
     print(
-        "  note: layer2 is informational and never fails this check. "
-        "A context-only row means the material was in the session's context list, "
-        "not that it was read. See docs/parallel-work.md."
+        "read_log layer2 since {d}: {c}/{e} pairs = {r:.1f}%".format(
+            d=since.isoformat(), c=covered, e=eligible, r=rate * 100
+        )
     )
+    print(f"  eligible sessions: {len(sessions) - exempt}   exempt: {exempt}")
+    print(f"  excused by 未読の選択: {excused}")
+    if not enforce:
+        print(
+            "  note: --since alone never fails. Add --enforce to make unmet pairs "
+            "exit 1 (this is how the rule takes effect, not by writing a date)."
+        )
+        if unmet:
+            print(f"  unmet (not yet enforced): {len(unmet)}")
+        return 1 if gate_failed else 0
+    if unmet:
+        print(f"FAIL: {len(unmet)} pairs since {since.isoformat()} have neither a hand-written reading nor 未読の選択")
+        for session_id, material_id in unmet[:10]:
+            print(f"  - {session_id} -> {material_id}")
+        if len(unmet) > 10:
+            print(f"  - … and {len(unmet) - 10} more")
+        print("  remedy: write a hand-written read_log row, or add `未読の選択: <id>` to sessions.notes")
+        return 1
+    print("PASS: every eligible pair since the effective date is accounted for")
     return 1 if gate_failed else 0
 
 
@@ -213,6 +348,15 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--check", action="store_true", help="verify coverage; exit 1 on gaps")
+    parser.add_argument(
+        "--since",
+        help="effective date (YYYY-MM-DD) for the layer-2 rule; report layer 2 from this date on",
+    )
+    parser.add_argument(
+        "--enforce",
+        action="store_true",
+        help="with --since: exit 1 when a pair since that date has neither a hand-written reading nor 未読の選択",
+    )
     mode.add_argument("--write", action="store_true", help="append rows for uncovered pairs")
     parser.add_argument("--root", type=Path, default=ROOT, help="repository root (default: this checkout)")
     parser.add_argument("--today", help="write-side reference date (default: today; tests pin it)")
@@ -225,8 +369,12 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         today = date.fromisoformat(args.today) if args.today else None
+        since = date.fromisoformat(args.since) if args.since else None
+        if args.enforce and since is None:
+            print("error: --enforce requires --since", file=sys.stderr)
+            return 2
         if args.check:
-            return check(args.root)
+            return check(args.root, since=since, enforce=args.enforce)
         return write(args.root, today=today)
     except (ValueError, OSError, ledger_io.LedgerBusy) as exc:
         print(f"error: {exc}", file=sys.stderr)
