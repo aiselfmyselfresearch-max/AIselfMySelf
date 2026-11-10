@@ -204,7 +204,18 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # be absorbed without changing union order; no complete movable date
         # group was available. Hard limit remains 160; not an automatic raise.
         # See readings/2027-03-08-ten-experiments-on-cues-and-the-working-self.md §13.
-        soft_shards=92,
+        # 2026-11-10: 92 -> 93 for the requested 10-experiment acquisition
+        # ("blinding / manufactured ignorance").  Consolidation was exhausted
+        # first and measured: 92 files, 4 movable shards, but zero date groups
+        # whose absorption is order-preserving (procedure 7 needs the whole
+        # same-date group; no complete movable group exists, and the contiguous
+        # run after the newest zero-suffix shard is empty).  Net reclaim = 0.
+        # sessions/read_log/notes/relations were consolidated first this session
+        # (3 shards absorbed, byte-multiset verified equal), so those ceilings
+        # moved by 1 each and this is the only raise. Hard 160 unchanged; not an
+        # automatic raise. See readings/2027-03-13-blinding-is-a-procedure-for-
+        # producing-ignorance.md §13.
+        soft_shards=93,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -291,7 +302,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # No unreferenced multi-shard date group was available for safe compaction;
         # byte budget remains below 5 MiB. Hard limit 160; not an automatic raise.
         # See readings/2027-03-08-ten-experiments-on-cues-and-the-working-self.md §13.
-        soft_shards=90,
+        # 2026-11-10: 90 -> 91 for 20 reading rows (10 materials x 2 layers) in the
+        # requested 10-experiment session.  Consolidation measured first: 90 files,
+        # 1 movable shard whose only same-date group is incomplete, so procedure 7
+        # reclaims 0.  Byte dimension is not binding (4.15 MiB of a 5 MiB soft).
+        # Hard 160 unchanged; not an automatic raise.
+        # See readings/2027-03-13-blinding-is-a-procedure-for-producing-ignorance.md §13.
+        soft_shards=91,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
