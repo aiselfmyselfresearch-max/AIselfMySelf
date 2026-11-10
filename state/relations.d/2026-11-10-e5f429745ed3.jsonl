@@ -1,0 +1,1 @@
+{"relation_id": "REL-20261110-e1", "left": {"type": "note", "id": "NOTE-20261110-917f5a"}, "relation_type": "transforms", "right": {"type": "note", "id": "NOTE-20261110-97be68"}, "note": "2027-03-15 の設計（未決の衝突と started_at 判定器）を、同日の実装で決定と修正に変えた。設計の §5-1 は案1に決まり、§3 段階0 の判定器は二度作り直した。設計文書は消さず、§8 として決定と実測を追記した。", "created_at": "2027-03-16"}
