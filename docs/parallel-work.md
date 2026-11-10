@@ -450,3 +450,60 @@ python3 tools/size_budget.py --strict | grep -E "materials.d|sessions.d|read_log
 git grep -l -F "2026-11-09-ccb768a106ea" -- . | grep -v "state/materials.d/2026-11-09-ccb768a106ea"
 ls state/*.d/2026-11-09-*.jsonl    # 本日付シャードの有無（手順8-2 の前提）
 ```
+## 2026-11-10：五コレクション全てが残枠0の状態で、統合3本と引上げ2件（実測）
+
+`SESSION-20261110-94dbcf`（報告：[`readings/2027-03-13-blinding-is-a-procedure-for-producing-ignorance.md`](../readings/2027-03-13-blinding-is-a-procedure-for-producing-ignorance.md) §13）。**五つのコレクションすべてが残枠0という状態で、10件の資料を追加した最初の回である。**
+
+### 何をしたか
+
+書く前に `size_budget.py --strict` を回し、`materials.d` 92/92・`read_log.d` 90/90・`sessions.d` 96/96・`notes.d` 91/91・`relations.d` 80/80 を確認した。**五つすべてが0だったのは今回が初めて**（2026-11-09 の実測では四つ）。上限を上げる前に、手順7（同日グループ全吸収）と手順2（連続先頭範囲／ゼロ12桁延長）の両方で回収量を測った。
+
+| コレクション | 移動可能 | 回収 | 手段 |
+|---|---:|---:|---|
+| `materials.d` | 4 | **0** | 手順7が成立する日付なし |
+| `read_log.d` | 1 | **0** | 同上 |
+| `notes.d` | 3 | **1** | `2026-11-09-2571d0a5f382` → `2026-11-09-000000000000`（隣接延長） |
+| `sessions.d` | 3 | **1** | `2027-01-18-000000000000` → `2027-01-17-000000000000`（隣接延長） |
+| `relations.d` | 2 | **1** | `2026-12-02-000000000000` → `2026-11-25-000000000000`（隣接延長） |
+
+統合した3本はいずれも、移動前後で**行のバイト多重集合が一致**することを確認してから元ファイルを削除した（`Counter(before) == Counter(after)`）。行の削除・書換は0。移動可能性の判定は、シャード名が他の追跡ファイル（`.md`/`.jsonl`/`.json`/`.py`/`.js`/`.html`/`.txt`/`.yml`/`.css`）から参照されておらず、行自身が自分のシャード名を書いていないこと、の二条件。
+
+### 分かったこと
+
+1. **五コレクション同時に0だと、統合だけでは1セッション分（5本）を作れない。** 回収は3本、必要は5本（materials・read_log・sessions・notes・relations 各1本）だった。sessions と notes と relations は回収でまかない、materials と read_log は回収0なので `soft_shards` を1ずつ上げた（92→93、90→91。hard 160 は不変）。
+2. **`materials.d` の回収0は、2026-11-09 の実測から変わっていない。** 移動可能シャードは4本あるが、同日グループの全部が移動可能な日付が無い。ゼロ12桁の直後が移動不能シャードで塞がっている。この構造は3日連続で同じで、解消していない。
+3. **`sessions.d`・`relations.d` では、ゼロ12桁シャードを「隣接延長」する手順が効いた。** 両方とも移動元・移動先が `-000000000000` で、ファイル名順に隣り合っているため、和集合順が変わらない。手順2が「既存統合シャードの延長」を認めている範囲の使い方である。**`2026-12-02` の58行を `2026-11-25` へ移したのは、日付の異なるゼロ12桁どうしの統合**であり、これは手順2の「日付を偽造しない」に触れない——新しいファイルを作っておらず、移動先の既存ファイル名の日付も変えていないため。ただし**移動先の日付ラベルが移動元の行の日付と一致しない**状態が生じるので、この操作は「ゼロ12桁は統合済みの目印であり、ファイル名の日付は行の実日付を保証しない」という既存の理解に依存している。この依存を明記しておく。
+4. **`--strict` は追記前も追記後も rc=0。** テストは508件すべて OK（125.5 s）。`validate_seed.py`・`inspect_inquiry.py --check-map`・`note_index.py --check`・`read_log_backfill.py --check` も PASS。
+
+### この実測が変えたこと、変えなかったこと
+
+- **変えた**：この節を追加。`tools/size_budget.py` の `soft_shards` を materials 92→93・read_log 90→91（2件、hard は不変）。台帳5コレクションへの追記（新規シャード5本）。統合3本。報告1本。
+- **変えなかった**：`README.md`・`docs/sessions.md`（B案）、既存の台帳行の内容、`hard_shards`（すべて160）。
+- **保留**：`materials.d` の回収0。次の資料追加セッションは同じ壁に当たる。**恒久的な解は、`materials.d` のゼロ12桁を作る手段を増やすか（順序を保存したまま複数日を吸収する手順）、上限そのものを editorial_review で見直すか**のどちらかで、どちらも本回の権限外。
+
+### 再現手順
+
+```bash
+python3 tools/size_budget.py --strict | grep -E "materials.d|read_log.d|sessions.d|notes.d|relations.d"
+# 移動可能シャードと回収可能数を出す（全追跡ファイルを参照スキャンするため約5秒）
+python3 - <<'EOF'
+import subprocess
+from pathlib import Path
+from collections import defaultdict
+tracked=[t for t in subprocess.run(['git','ls-files'],capture_output=True,text=True).stdout.split('\n') if t]
+paths=[p for p in tracked if p.endswith(('.md','.jsonl','.json','.py','.js','.html','.txt','.yml','.yaml','.css'))]
+contents={p:Path(p).read_text(encoding='utf-8',errors='ignore') for p in paths}
+for coll in ['materials','read_log','notes','sessions','relations']:
+    d=Path(f'state/{coll}.d'); shards=sorted(p.name for p in d.glob('*.jsonl'))
+    mobile={n:(not [q for q,t in contents.items() if n in t and q!=str(d/n)]) and n not in (d/n).read_text(encoding='utf-8') for n in shards}
+    best=0
+    for i,n in enumerate(shards):
+        if not n.endswith('-000000000000.jsonl'): continue
+        j=i+1
+        while j<len(shards) and mobile.get(shards[j]): j+=1
+        best=max(best,j-i-1)
+    print(coll,'files',len(shards),'movable',sum(mobile.values()),'max contiguous reclaim',best)
+EOF
+```
+
+**統合後は必ず `validate_seed.py` の重複ID検査を回すこと**（並行マージで同じ行が別ルートから移されている事故が2026-11-07に起きている）。
