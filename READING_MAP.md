@@ -9,8 +9,8 @@
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：3555 件（research_excerpt 1331 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6624 件
-- **探究セッション（Sessions）**：631 回
+- **解釈的関係（Relations）**：6625 件
+- **探究セッション（Sessions）**：632 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4883,6 +4883,7 @@
 | `SESSION-20261130-f5415b` | 2026-11-30 | `Q-20261024-a26f22` | `FRAG-20261130-a23912` | `Q-20261130-25687e` |
 | `SESSION-20261130-bc629b` | 2026-10-27T00:00:00Z | `Q-101`, `Q-20261130-caf330` | `FRAG-20261130-8ccc86` | `Q-20261130-caf330` |
 | `SESSION-20261110-94dbcf` | 2027-03-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-776620` | 2027-03-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-8d32a4` | 2026-11-10T04:07:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-8e9af5` | 2026-11-10T04:07:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-6c9a04` | 2027-03-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4967,14 +4968,14 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6624 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6625 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 955 |
 | 共鳴 (echo) | 1602 |
 | 切断・割り込み (interrupts) | 228 |
-| 未解決のまま開く (leaves_open) | 893 |
+| 未解決のまま開く (leaves_open) | 894 |
 | 比喩的共鳴 (metaphorically_resonates) | 183 |
 | 枠組みの組み替え (reframes) | 702 |
 | 応答 (responds_to) | 1754 |
@@ -5056,9 +5057,9 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 173,239 |
-| `map/40-relations-13.md` | 500 | 163,077 |
-| `map/40-relations-14.md` | 124 | 43,095 |
+| `map/40-relations-12.md` | 500 | 173,324 |
+| `map/40-relations-13.md` | 500 | 163,054 |
+| `map/40-relations-14.md` | 125 | 43,365 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5069,9 +5070,9 @@
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
-| `map/50-sessions-11.md` | 50 | 43,272 |
-| `map/50-sessions-12.md` | 50 | 47,337 |
-| `map/50-sessions-13.md` | 31 | 25,454 |
+| `map/50-sessions-11.md` | 50 | 42,967 |
+| `map/50-sessions-12.md` | 50 | 47,403 |
+| `map/50-sessions-13.md` | 32 | 26,323 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,395 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5086,7 +5087,7 @@
 | `map/60-notes-12.md` | 25 | 67,333 |
 | `map/60-notes-13.md` | 25 | 83,470 |
 | `map/60-notes-14.md` | 25 | 119,501 |
-| `map/60-notes-15.md` | 25 | 83,706 |
+| `map/60-notes-15.md` | 25 | 83,731 |
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 110,968 |
 | `map/60-notes-18.md` | 25 | 108,419 |
@@ -5098,17 +5099,17 @@
 | `map/60-notes-24.md` | 25 | 94,882 |
 | `map/60-notes-25.md` | 25 | 93,383 |
 | `map/60-notes-26.md` | 25 | 137,501 |
-| `map/60-notes-27.md` | 7 | 38,735 |
+| `map/60-notes-27.md` | 8 | 43,883 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・657本・23,250,220 B）
+## 8. 精読ノート索引（readings/・658本・23,267,136 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 452/657 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 453/658 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：290 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：291 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5769,3 +5770,4 @@
 | `readings/2027-03-12-what-the-window-moves.md` | 2026-11-09 | 2027-03-12 | `SESSION-20261109-297116` +4 | 5,647 | Q4 S5 | ✓ | 詳細窓は忘れず、動かす——README ローテーションと編集レビュー |
 | `readings/2027-03-13-blinding-is-a-procedure-for-producing-ignorance.md` | 2026-11-10 | 2027-03-13 | `SESSION-20261110-94dbcf` | 44,131 | Q3 M25 S1 | ✓ | 盲検は、無知を製造する手続きである——隠すことを方法にした実験科学10資料 |
 | `readings/2027-03-14-counting-the-remainder.md` | 2026-11-10 | 2027-03-14 | `SESSION-20261110-6c9a04` | 15,283 | Q4 M8 S1 | ✓ | 残余を数える——読まれなかった素材は、存在しなかったのか |
+| `readings/2027-03-15-how-to-make-layer-two-mandatory-without-manufacturing-records.md` | 2026-11-10 | 2027-03-15 | — | 8,311 | — | — | `read_log` 層2 をどう必須にできるか——事後記入を捏造にしない設計 |

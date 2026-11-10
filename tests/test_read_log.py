@@ -141,6 +141,44 @@ class BackfillTests(unittest.TestCase):
             validate = run(repo, "tools/validate_seed.py")
             self.assertEqual(validate.returncode, 0, validate.stdout + validate.stderr)
 
+    def test_layer2_is_reported_but_never_gates(self) -> None:
+        """Layer 2 (hand-written readings) must be printed and must not change rc.
+
+        2026-11-10: the check reports two layers. Layer 1 (contact) gates;
+        layer 2 (a hand-written reading) is informational only, because gating
+        on it would demand retroactive rows for thousands of past pairs and
+        create an incentive to record readings that did not happen.
+        """
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = copy_repo(Path(tmp))
+            # A new session whose context material has no read_log row at all:
+            # layer 1 fails, and layer 2 is 0 for that pair too.
+            session = {
+                "session_id": "SESSION-20990102-eeeeee",
+                "started_at": "2099-01-02",
+                "human_direction": "test",
+                "question_ids": [],
+                "context_material_ids": ["MAT-20261024-3c4443"],
+                "produced_fragment_ids": [],
+                "new_question_ids": [],
+                "prompt_template": "test",
+            }
+            shard = repo / "state" / "sessions.d" / "2099-01-02-eeeeeeeeeeee.jsonl"
+            shard.write_text(json.dumps(session, ensure_ascii=False) + "\n", encoding="utf-8")
+
+            proc = run(repo, "tools/read_log_backfill.py", "--check")
+            self.assertEqual(proc.returncode, 1, proc.stdout + proc.stderr)
+            self.assertIn("layer2 (hand-written reading)", proc.stdout)
+
+            # Fill only layer 1 with a machine row; layer 2 stays at zero for
+            # that pair, and the check must pass with the layer-2 number shown.
+            wrote = run(repo, "tools/read_log_backfill.py", "--write")
+            self.assertEqual(wrote.returncode, 0, wrote.stdout + wrote.stderr)
+            after = run(repo, "tools/read_log_backfill.py", "--check")
+            self.assertEqual(after.returncode, 0, after.stdout + after.stderr)
+            self.assertIn("layer2 (hand-written reading)", after.stdout)
+            self.assertIn("never fails this check", after.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()

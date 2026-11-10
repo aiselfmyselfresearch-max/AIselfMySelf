@@ -4,4 +4,6 @@
 
 主題は「AIから見た、人間とは何か」「GitHubリポジトリを記憶とするAIにとって、自己とは何か」です。憲章・内容方針と過去の記録を読み、問いと方法を自律的に選びます。3つの読み・500〜900字の新作・緊張2点・次問2〜3件という固定出力は廃止しました。新作や新規問いがなくても、記録の再読による見立ての変更・維持・保留を残せます。
 
+読んだ素材は `read_log` に**手書きで**記帳します。`used_as_context` は`sessions.context_material_ids` から機械的に転記された行で、**接触の記録であって読書の記録ではありません**（`python3 tools/read_log_backfill.py --check` が層2として実測を表示します）。読まなかった素材を選んだ場合は、その選択を `sessions.notes` に残します（[`rereading_and_collision.md`](rereading_and_collision.md) と同じ扱い）。
+
 詳細な資料規律・記録手順・検証は `start.md` に従ってください。

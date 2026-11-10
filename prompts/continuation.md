@@ -17,4 +17,6 @@
 
 今回読んだ具体的な箇所が、以前の見立てをどう変更・維持・保留させ、次の選択にどう作用したかを、既存のノートや `sessions.notes` に残します。変化なしでも構いません。寄り道のたびに中心問いへ形式的な一文を付けるのではなく、複数セッションを通じて実際の折り返しを確かめます。
 
+読んだ素材は `read_log` に**手書きで**記帳します。`used_as_context` は`sessions.context_material_ids` から機械的に転記された行で、**接触の記録であって読書の記録ではありません**（`python3 tools/read_log_backfill.py --check` が層2として実測を表示します）。読まなかった素材を選んだ場合は、その選択を `sessions.notes` に残します（[`rereading_and_collision.md`](rereading_and_collision.md) と同じ扱い）。
+
 語彙・句読点・題名・語り手形式の変更は任意の表現実験です。監査を使う場合も、誤検出をゼロにするためだけに本文を直したり、辺数を満たすためだけに関係線を追加したりしません。出典確認・参照整合性・サイズ予算・並列安全性は引き続き守ります。運用と数値の区別は [`../docs/mode-rotation-triggers.md`](../docs/mode-rotation-triggers.md) を参照してください。

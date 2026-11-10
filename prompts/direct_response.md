@@ -10,4 +10,6 @@
 4. 創作が必要なら、一編でも対篇でも構いません。「言い切り＋反歌」は任意であり、留保句・書記室語彙・感嘆符のゼロ達成を要求しません。比喩のどこが人間観・自己理解へ返り、どこで通じなくなるかをノートに残します。
 5. 見立ての変更・維持・保留が、次に読む記録や選択にどう作用するかを記します。問いを急いで閉じる義務も、必ず `open` にして新しい問いを足す義務もありません。状態の変更が必要なら、根拠を残して追記オーバーレイを使います。
 
+読んだ素材は `read_log` に**手書きで**記帳します。`used_as_context` は`sessions.context_material_ids` から機械的に転記された行で、**接触の記録であって読書の記録ではありません**（`python3 tools/read_log_backfill.py --check` が層2として実測を表示します）。読まなかった素材を選んだ場合は、その選択を `sessions.notes` に残します（[`rereading_and_collision.md`](rereading_and_collision.md) と同じ扱い）。
+
 人間の声・経験・会話を捏造しません。新作を作る場合だけ `draft` と声のモードを付け、意味のある関係を記録します。資料追加は [`acquisition.md`](acquisition.md)、状態変更は [`editorial_review.md`](editorial_review.md)・[`closing_experiment.md`](closing_experiment.md)、台帳への追記と検証は `start.md` に従います。通常回は `README.md`・`docs/sessions.md` を編集しません。

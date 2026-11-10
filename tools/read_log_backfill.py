@@ -12,6 +12,18 @@ read_log はその痕跡のための追記専用コレクションで、この�
 - ``--write``  : 欠落ペアだけに ``reading="used_as_context"`` の行を新しい
                  セッション用シャードへ追記する（冪等。既存行は触らない）。
 
+``--check`` は**二層**を別々に報告する（2026-11-10 に追加）。
+
+- **層1 接触**：各セッションの ``context_material_ids`` に read_log の行があるか。
+  行の種類は問わない（機械的バックフィルを含む）。**失敗すると exit 1。**
+- **層2 読書**：同じペアに**手書き**の読み（上記6種）があるか。
+  **失敗にしない。数値として表示するだけである。**
+
+層2 を落とさないのは、落とすと 2,000 件を超える過去ペアに事後記入が要り、
+「読んでいないものに読んだと書く」誘因を作るためである（実測は
+``readings/2027-03-14-counting-the-remainder.md`` §2 と、本スクリプトの
+2026-11-10 変更の根拠）。層2 の数値は CI のログに毎回出る。
+
 手で書く読み（quoted / summarized / interpreted / reinterpreted / contested /
 counted）はこのスクリプトの対象外。手書き行が既にあるペアには何も追加しない。
 
@@ -39,6 +51,12 @@ from validate_seed import COLLECTIONS, ROOT, load_jsonl
 NOTE = (
     "機械的バックフィル：session.context_material_ids からの転記。"
     "読解の詳細は各セッションの精読報告・台帳 notes を参照"
+)
+
+#: readings that record an act of reading, as opposed to ``used_as_context``,
+#: which records only that a material was in a session's context list.
+HANDWRITTEN_READINGS = frozenset(
+    {"quoted", "summarized", "interpreted", "reinterpreted", "contested", "counted"}
 )
 
 
@@ -75,6 +93,22 @@ def covered_pairs(read_log: dict[str, dict]) -> set[tuple[str, str]]:
     return pairs
 
 
+def handwritten_pairs(read_log: dict[str, dict]) -> set[tuple[str, str]]:
+    """Pairs with at least one *hand-written* reading row (layer 2)."""
+    pairs: set[tuple[str, str]] = set()
+    for record in read_log.values():
+        if record.get("reading") not in HANDWRITTEN_READINGS:
+            continue
+        target = record.get("target")
+        if not isinstance(target, dict) or target.get("type") != "material":
+            continue
+        session_id = record.get("session_id")
+        material_id = target.get("id")
+        if isinstance(session_id, str) and isinstance(material_id, str):
+            pairs.add((session_id, material_id))
+    return pairs
+
+
 def missing_pairs(sessions: dict[str, dict], read_log: dict[str, dict]) -> list[tuple[str, str]]:
     return sorted(derived_pairs(sessions) - covered_pairs(read_log))
 
@@ -83,20 +117,39 @@ def check(root: Path) -> int:
     sessions, read_log = load(root)
     missing = missing_pairs(sessions, read_log)
     total = len(derived_pairs(sessions))
+
+    # --- layer 1: contact. This is the gate. ---
     print(
         "read_log coverage: {covered}/{total} (session, context material) pairs".format(
             covered=total - len(missing), total=total
         )
     )
+    gate_failed = bool(missing)
     if missing:
         print(f"FAIL: {len(missing)} pairs have no read_log row; run tools/read_log_backfill.py --write")
         for session_id, material_id in missing[:10]:
             print(f"  - {session_id} -> {material_id}")
         if len(missing) > 10:
             print(f"  - … and {len(missing) - 10} more")
-        return 1
-    print("PASS: every session context material has a read_log row")
-    return 0
+    else:
+        print("PASS: every session context material has a read_log row")
+
+    # --- layer 2: reading. Reported, never gated. ---
+    hand = handwritten_pairs(read_log)
+    derived = derived_pairs(sessions)
+    hand_covered = len(derived & hand)
+    rate = (hand_covered / total) if total else 0.0
+    print(
+        "read_log layer2 (hand-written reading): {c}/{t} pairs = {r:.1f}%".format(
+            c=hand_covered, t=total, r=rate * 100
+        )
+    )
+    print(
+        "  note: layer2 is informational and never fails this check. "
+        "A context-only row means the material was in the session's context list, "
+        "not that it was read. See docs/parallel-work.md."
+    )
+    return 1 if gate_failed else 0
 
 
 def _id_stamp(created_at: str) -> str | None:
