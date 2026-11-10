@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3580 件（research_excerpt 1356 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3585 件（research_excerpt 1361 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6659 件
-- **探究セッション（Sessions）**：639 回
+- **解釈的関係（Relations）**：6671 件
+- **探究セッション（Sessions）**：640 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3580 件・詳細は map/3*.md）
+## 4. 対話素材（3585 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4139,6 +4139,11 @@
 | `MAT-20261110-a72971` | research_excerpt | Hugh Everett, III『エヴェレット「量子力学の『相対状態』定式化」（1957）——部分系は、残りと独立した状態を持たない』（1957） |
 | `MAT-20261110-7a1bab` | research_excerpt | Andrei N. Kolmogorov『コルモゴロフ「情報の量的定義への三つのアプローチ」（1965）——情報量は、最短のプログラムの長さである』（1965） |
 | `MAT-20261110-36c555` | research_excerpt | Ilya Prigogine『プリゴジン「時間・構造・ゆらぎ」（1978）——構造は流れの中で保たれ、平衡では消える』（1978） |
+| `MAT-20261110-66542a` | research_excerpt | W. D. Hamilton『ハミルトン「社会行動の遺伝的進化 I」（1964）——勘定から受け取った分を剥ぎ、与えた分を血縁の割合で足す』（1964） |
+| `MAT-20261110-7782f2` | research_excerpt | Robert L. Trivers『トリヴァース「互恵的利他主義の進化」（1971）——時間差のある貸し借りと、それを調整する感情』（1971） |
+| `MAT-20261110-083800` | research_excerpt | Hisashi Ohtsuki, Yoh Iwasa『大槻久・巌佐庸「善をどう定義すべきか」（2004）——4096通りを数え上げ、協力を保つ評判の規則は八つだった』（2004） |
+| `MAT-20261110-ede33e` | research_excerpt | T. B. L. Kirkwood『カークウッド「老化の進化」（1977）——体細胞では誤りの制御を節約する、という抄録二文』（1977） |
+| `MAT-20261110-1cf4b9` | research_excerpt | Polly Matzinger『マッツィンガー「寛容、危険、拡大家族」（1994）——免疫は自己と非自己を気にしていない、という視点』（1994） |
 | `MAT-20261110-0db45b` | research_excerpt | Rudolf Schoenheimer, Sarah Ratner, David Rittenberg『Schoenheimer, Ratner & Rittenberg (19… |
 | `MAT-20261110-f545c3` | research_excerpt | Roger W. Sperry『Sperry (1950) 視覚反転フグの自発的視運動旋回と「随伴発射（corollary discharge）」の実験的導出』（1950） |
 | `MAT-20261110-699e2a` | research_excerpt | H. A. Borthwick, S. B. Hendricks, M. W. Parker, E. H. Toole, Vivian K. Toole『Borthwick, H… |
@@ -4919,6 +4924,7 @@
 | `SESSION-20261110-d35414` | 2027-03-16 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-6c9a04` | 2027-03-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-f4e189` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-e2e216` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
 | `SESSION-20261201-4944b0` | 2026-12-01 | `Q-20261024-c237b9`, `Q-20261201-f932d1` | `FRAG-20261201-0c2cb9` | `Q-20261201-f932d1` |
@@ -5000,18 +5006,18 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6659 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6671 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 963 |
-| 共鳴 (echo) | 1610 |
+| 対照 (contrast) | 964 |
+| 共鳴 (echo) | 1611 |
 | 切断・割り込み (interrupts) | 230 |
 | 未解決のまま開く (leaves_open) | 895 |
 | 比喩的共鳴 (metaphorically_resonates) | 184 |
-| 枠組みの組み替え (reframes) | 710 |
-| 応答 (responds_to) | 1757 |
-| 変奏・変形 (transforms) | 310 |
+| 枠組みの組み替え (reframes) | 714 |
+| 応答 (responds_to) | 1760 |
+| 変奏・変形 (transforms) | 313 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -5076,7 +5082,7 @@
 | `map/31-materials-research-11.md` | 100 | 234,096 |
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
-| `map/31-materials-research-14.md` | 56 | 194,037 |
+| `map/31-materials-research-14.md` | 61 | 209,701 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5089,9 +5095,9 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 172,878 |
-| `map/40-relations-13.md` | 500 | 163,979 |
-| `map/40-relations-14.md` | 159 | 54,956 |
+| `map/40-relations-12.md` | 500 | 172,055 |
+| `map/40-relations-13.md` | 500 | 164,345 |
+| `map/40-relations-14.md` | 171 | 59,553 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5103,8 +5109,8 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 46,512 |
-| `map/50-sessions-13.md` | 39 | 32,792 |
+| `map/50-sessions-12.md` | 50 | 46,262 |
+| `map/50-sessions-13.md` | 40 | 33,841 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,395 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5124,23 +5130,23 @@
 | `map/60-notes-17.md` | 25 | 110,968 |
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
-| `map/60-notes-20.md` | 25 | 135,336 |
-| `map/60-notes-21.md` | 25 | 54,453 |
-| `map/60-notes-22.md` | 25 | 75,324 |
-| `map/60-notes-23.md` | 25 | 63,924 |
-| `map/60-notes-24.md` | 25 | 88,082 |
-| `map/60-notes-25.md` | 25 | 96,431 |
-| `map/60-notes-26.md` | 25 | 126,871 |
-| `map/60-notes-27.md` | 14 | 77,059 |
+| `map/60-notes-20.md` | 25 | 140,963 |
+| `map/60-notes-21.md` | 25 | 52,881 |
+| `map/60-notes-22.md` | 25 | 76,918 |
+| `map/60-notes-23.md` | 25 | 62,846 |
+| `map/60-notes-24.md` | 25 | 83,243 |
+| `map/60-notes-25.md` | 25 | 100,639 |
+| `map/60-notes-26.md` | 25 | 127,147 |
+| `map/60-notes-27.md` | 15 | 80,189 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・664本・23,607,083 B）
+## 8. 精読ノート索引（readings/・665本・23,664,307 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 459/664 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 460/665 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：297 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：298 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5629,8 +5635,9 @@
 | `readings/2026-11-09-the-word-and-the-addressee.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-05134a` +6 | 31,194 | Q3 M10 S7 | ✓ | その語と、その宛先——実験科学10資料の精読と、記録されなかった読み |
 | `readings/2026-11-09-what-remains-when-the-experiment-cuts-itself.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-189bc3` +1 | 48,879 | Q6 M12 MOT15 R7 S2 | ✓ | 実験は自らをどこまで削れるか——一次原典10資料の精読と、再現できない記憶の手続き |
 | `readings/2026-11-10-five-formalisms-without-a-body.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-fe258a` | 12,800 | Q3 M6 MOT2 S1 | ✓ | 五つの形式、身体の外の自己——表・網・行動・階層・水準 |
-| `readings/2026-11-10-five-limits-of-records.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-f4e189` | 20,236 | Q3 M5 MOT3 S1 ERR1 | — | 記録の五つの限界——面積・環境・相対・圧縮・流れ |
+| `readings/2026-11-10-five-limits-of-records.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-f4e189` | 20,236 | Q3 M5 MOT3 S1 ERR1 | ✓ | 記録の五つの限界——面積・環境・相対・圧縮・流れ |
 | `readings/2026-11-10-five-theories-of-continuity.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-00e4d5` | 6,798 | Q3 M7 S1 | ✓ | 五つの理論で「続く」をほどく——対称性、構成、消去、漂流、想起 |
+| `readings/2026-11-10-five-theories-through-other-bodies.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-e2e216` +1 | 24,415 | Q3 M9 S2 | — | 他者の身体を通る五つの理論——包括適応度、互恵、評判、使い捨ての体、危険 |
 | `readings/2026-11-10-kiln-night-and-the-count-without-a-date.md` | — | 2026-11-10 | `SESSION-20261110-43ee9f` +4 | 19,789 | Q6 F17 M4 MOT2 S5 | ✓ | 窯の夜と、日付を持たない数——『見張り』の二部作変奏と、反歌を書かない試み（SESSION-20261110-43ee… |
 | `readings/2026-11-10-ten-experiments-on-cutting-joining-replacing-and-mixing.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-167875` +7 | 56,947 | Q3 M21 S8 ERR5 | ✓ | 切る・継ぐ・入れ替える・混ぜる——「続いている」は何の試験で言われたか（実験科学10資料の精読） |
 | `readings/2026-11-10-ten-experiments-on-turnover-windows-and-interference.md` | 2026-11-10 | 2026-11-10 | — | 9,477 | Q3 M11 ERR1 | ✓ | 十の実験、十の時間窓——交換・予測・干渉が書庫の「自己」をずらす |
