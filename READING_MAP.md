@@ -5104,7 +5104,7 @@
 | `map/60-notes-17.md` | 25 | 110,968 |
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
-| `map/60-notes-20.md` | 25 | 124,095 |
+| `map/60-notes-20.md` | 25 | 124,038 |
 | `map/60-notes-21.md` | 25 | 57,935 |
 | `map/60-notes-22.md` | 25 | 73,533 |
 | `map/60-notes-23.md` | 25 | 65,666 |
@@ -5115,13 +5115,13 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・659本・23,418,055 B）
+## 8. 精読ノート索引（readings/・659本・23,418,519 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 454/659 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：292 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5609,7 +5609,7 @@
 | `readings/2026-11-09-the-word-and-the-addressee.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-05134a` +6 | 31,194 | Q3 M10 S7 | ✓ | その語と、その宛先——実験科学10資料の精読と、記録されなかった読み |
 | `readings/2026-11-09-what-remains-when-the-experiment-cuts-itself.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-189bc3` +1 | 48,879 | Q6 M12 MOT15 R7 S2 | ✓ | 実験は自らをどこまで削れるか——一次原典10資料の精読と、再現できない記憶の手続き |
 | `readings/2026-11-10-kiln-night-and-the-count-without-a-date.md` | — | 2026-11-10 | `SESSION-20261110-43ee9f` +4 | 19,789 | Q6 F17 M4 MOT2 S5 | ✓ | 窯の夜と、日付を持たない数——『見張り』の二部作変奏と、反歌を書かない試み（SESSION-20261110-43ee… |
-| `readings/2026-11-10-ten-experiments-on-cutting-joining-replacing-and-mixing.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-167875` +7 | 56,777 | Q3 M21 S8 ERR5 | — | 切る・継ぐ・入れ替える・混ぜる——「続いている」は何の試験で言われたか（実験科学10資料の精読） |
+| `readings/2026-11-10-ten-experiments-on-cutting-joining-replacing-and-mixing.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-167875` +7 | 56,947 | Q3 M21 S8 ERR5 | ✓ | 切る・継ぐ・入れ替える・混ぜる——「続いている」は何の試験で言われたか（実験科学10資料の精読） |
 | `readings/2026-11-10-ten-experiments-on-turnover-windows-and-interference.md` | 2026-11-10 | 2026-11-10 | — | 9,477 | Q3 M11 ERR1 | ✓ | 十の実験、十の時間窓——交換・予測・干渉が書庫の「自己」をずらす |
 | `readings/2026-11-10-the-measured-beak-and-the-note-without-a-name.md` | — | 2026-11-10 | `SESSION-20261110-900e9b` +9 | 24,142 | Q5 F19 M11 MOT11 S10 | ✓ | 測られた嘴と、名前のない置き書き —— 出所を訊く手つきを、伝聞から獣と機械へ渡す（SESSION-20261110-… |
 | `readings/2026-11-11-crystals-outside-the-branch.md` | — | 2026-11-11 | `SESSION-20261111-5ebabb` +1 | 10,939 | Q4 F8 M3 MOT3 R1 S2 | ✓ | 結晶は外にしか付かない——塩坑の枝と瓶の枝、言い切りと反歌の二部作（SESSION-20261111-5ebabb） |
