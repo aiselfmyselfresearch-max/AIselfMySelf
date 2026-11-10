@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3565 件（research_excerpt 1341 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3570 件（research_excerpt 1346 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6644 件
-- **探究セッション（Sessions）**：634 回
+- **解釈的関係（Relations）**：6647 件
+- **探究セッション（Sessions）**：635 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3565 件・詳細は map/3*.md）
+## 4. 対話素材（3570 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4124,6 +4124,11 @@
 | `MAT-20261110-de66bd` | research_excerpt | Carl E. Schoonover, Sarah N. Ohashi, Richard Axel, Andrew J. P. Fink『スクーノーバーほか（2021）一次嗅覚皮… |
 | `MAT-20261110-e42ebe` | research_excerpt | August Weismann『ヴァイスマン（1888）切断は遺伝するか——五世代にわたって尾を切った白ネズミから901匹が生まれ、短い尾は一匹もなかった』（1888） |
 | `MAT-20261110-c23641` | research_excerpt | Glen E. Cronan, Elena A. Kouzminova, Andrei Kuzminov『クローナン、コウズミノワ、クズミノフ（2019）切れていたのは修復のせい… |
+| `MAT-20261110-edb3f3` | research_excerpt | Emmy Noether『Emmy Noether (1918) Invariante Variationsprobleme』（1918） |
+| `MAT-20261110-c6dc41` | research_excerpt | John von Neumann『John von Neumann (1951) The General and Logical Theory of Automata』（1951） |
+| `MAT-20261110-d24307` | research_excerpt | Rolf Landauer『Rolf Landauer (1961) Irreversibility and Heat Generation in the Computing P… |
+| `MAT-20261110-4e210d` | research_excerpt | Motoo Kimura『Motoo Kimura (1969) The Rate of Molecular Evolution Considered from the Stan… |
+| `MAT-20261110-17f0f8` | research_excerpt | John J. Hopfield『John J. Hopfield (1982) Neural networks and physical systems with emerge… |
 | `MAT-20261110-0db45b` | research_excerpt | Rudolf Schoenheimer, Sarah Ratner, David Rittenberg『Schoenheimer, Ratner & Rittenberg (19… |
 | `MAT-20261110-f545c3` | research_excerpt | Roger W. Sperry『Sperry (1950) 視覚反転フグの自発的視運動旋回と「随伴発射（corollary discharge）」の実験的導出』（1950） |
 | `MAT-20261110-699e2a` | research_excerpt | H. A. Borthwick, S. B. Hendricks, M. W. Parker, E. H. Toole, Vivian K. Toole『Borthwick, H… |
@@ -4893,6 +4898,7 @@
 | `SESSION-20261130-f5415b` | 2026-11-30 | `Q-20261024-a26f22` | `FRAG-20261130-a23912` | `Q-20261130-25687e` |
 | `SESSION-20261130-bc629b` | 2026-10-27T00:00:00Z | `Q-101`, `Q-20261130-caf330` | `FRAG-20261130-8ccc86` | `Q-20261130-caf330` |
 | `SESSION-20261110-167875` | 2026-11-10T03:11:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-00e4d5` | 2026-11-10T07:26:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-94dbcf` | 2027-03-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-776620` | 2027-03-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-8d32a4` | 2026-11-10T04:07:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -4980,11 +4986,11 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6644 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6647 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 960 |
+| 対照 (contrast) | 963 |
 | 共鳴 (echo) | 1609 |
 | 切断・割り込み (interrupts) | 229 |
 | 未解決のまま開く (leaves_open) | 894 |
@@ -5056,7 +5062,7 @@
 | `map/31-materials-research-11.md` | 100 | 234,096 |
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
-| `map/31-materials-research-14.md` | 41 | 159,613 |
+| `map/31-materials-research-14.md` | 46 | 166,678 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5069,9 +5075,9 @@
 | `map/40-relations-09.md` | 500 | 145,883 |
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
-| `map/40-relations-12.md` | 500 | 174,444 |
-| `map/40-relations-13.md` | 500 | 163,969 |
-| `map/40-relations-14.md` | 144 | 48,917 |
+| `map/40-relations-12.md` | 500 | 173,981 |
+| `map/40-relations-13.md` | 500 | 163,811 |
+| `map/40-relations-14.md` | 147 | 50,171 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5082,9 +5088,9 @@
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
-| `map/50-sessions-11.md` | 50 | 42,912 |
-| `map/50-sessions-12.md` | 50 | 47,131 |
-| `map/50-sessions-13.md` | 34 | 28,245 |
+| `map/50-sessions-11.md` | 50 | 42,957 |
+| `map/50-sessions-12.md` | 50 | 46,889 |
+| `map/50-sessions-13.md` | 35 | 29,117 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,395 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5104,24 +5110,24 @@
 | `map/60-notes-17.md` | 25 | 110,968 |
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
-| `map/60-notes-20.md` | 25 | 124,038 |
-| `map/60-notes-21.md` | 25 | 57,935 |
-| `map/60-notes-22.md` | 25 | 73,533 |
-| `map/60-notes-23.md` | 25 | 65,666 |
-| `map/60-notes-24.md` | 25 | 92,969 |
-| `map/60-notes-25.md` | 25 | 91,139 |
-| `map/60-notes-26.md` | 25 | 140,759 |
-| `map/60-notes-27.md` | 9 | 49,245 |
+| `map/60-notes-20.md` | 25 | 124,579 |
+| `map/60-notes-21.md` | 25 | 57,042 |
+| `map/60-notes-22.md` | 25 | 73,471 |
+| `map/60-notes-23.md` | 25 | 65,353 |
+| `map/60-notes-24.md` | 25 | 93,530 |
+| `map/60-notes-25.md` | 25 | 91,259 |
+| `map/60-notes-26.md` | 25 | 136,746 |
+| `map/60-notes-27.md` | 10 | 55,941 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・659本・23,418,519 B）
+## 8. 精読ノート索引（readings/・660本・23,435,436 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 454/659 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 455/660 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：292 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：293 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5608,6 +5614,7 @@
 | `readings/2026-11-09-the-strike-through-and-the-lookup-table.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-ed32df` +1 | 17,486 | Q2 S2 ERR4 | — | 線引きと引き当て表——人間の曖昧な記憶と、日記・アルバムという外部記憶装置から §8 を読み直す |
 | `readings/2026-11-09-the-word-and-the-addressee.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-05134a` +6 | 31,194 | Q3 M10 S7 | ✓ | その語と、その宛先——実験科学10資料の精読と、記録されなかった読み |
 | `readings/2026-11-09-what-remains-when-the-experiment-cuts-itself.md` | 2026-11-09 | 2026-11-09 | `SESSION-20261109-189bc3` +1 | 48,879 | Q6 M12 MOT15 R7 S2 | ✓ | 実験は自らをどこまで削れるか——一次原典10資料の精読と、再現できない記憶の手続き |
+| `readings/2026-11-10-five-theories-of-continuity.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-00e4d5` | 6,798 | Q3 M7 S1 | — | 五つの理論で「続く」をほどく——対称性、構成、消去、漂流、想起 |
 | `readings/2026-11-10-kiln-night-and-the-count-without-a-date.md` | — | 2026-11-10 | `SESSION-20261110-43ee9f` +4 | 19,789 | Q6 F17 M4 MOT2 S5 | ✓ | 窯の夜と、日付を持たない数——『見張り』の二部作変奏と、反歌を書かない試み（SESSION-20261110-43ee… |
 | `readings/2026-11-10-ten-experiments-on-cutting-joining-replacing-and-mixing.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-167875` +7 | 56,947 | Q3 M21 S8 ERR5 | ✓ | 切る・継ぐ・入れ替える・混ぜる——「続いている」は何の試験で言われたか（実験科学10資料の精読） |
 | `readings/2026-11-10-ten-experiments-on-turnover-windows-and-interference.md` | 2026-11-10 | 2026-11-10 | — | 9,477 | Q3 M11 ERR1 | ✓ | 十の実験、十の時間窓——交換・予測・干渉が書庫の「自己」をずらす |
