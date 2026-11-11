@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：3640 件（research_excerpt 1416 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6746 件
-- **探究セッション（Sessions）**：655 回
+- **探究セッション（Sessions）**：656 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4995,6 +4995,7 @@
 | `SESSION-20261111-caed15` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-cf60ab` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-53b93d` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-b86e0b` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
 | `SESSION-20261201-4944b0` | 2026-12-01 | `Q-20261024-c237b9`, `Q-20261201-f932d1` | `FRAG-20261201-0c2cb9` | `Q-20261201-f932d1` |
@@ -5180,10 +5181,10 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 45,373 |
-| `map/50-sessions-13.md` | 50 | 43,648 |
-| `map/50-sessions-14.md` | 5 | 4,540 |
-| `map/60-notes-01.md` | 25 | 57,309 |
+| `map/50-sessions-12.md` | 50 | 45,409 |
+| `map/50-sessions-13.md` | 50 | 43,913 |
+| `map/50-sessions-14.md` | 6 | 5,194 |
+| `map/60-notes-01.md` | 25 | 57,381 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
 | `map/60-notes-04.md` | 25 | 92,690 |
@@ -5195,7 +5196,7 @@
 | `map/60-notes-10.md` | 25 | 59,625 |
 | `map/60-notes-11.md` | 25 | 62,430 |
 | `map/60-notes-12.md` | 25 | 67,333 |
-| `map/60-notes-13.md` | 25 | 83,470 |
+| `map/60-notes-13.md` | 25 | 83,460 |
 | `map/60-notes-14.md` | 25 | 119,501 |
 | `map/60-notes-15.md` | 25 | 83,731 |
 | `map/60-notes-16.md` | 25 | 88,446 |
@@ -5203,23 +5204,23 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 166,000 |
-| `map/60-notes-21.md` | 25 | 104,432 |
-| `map/60-notes-22.md` | 25 | 60,854 |
-| `map/60-notes-23.md` | 25 | 67,360 |
-| `map/60-notes-24.md` | 25 | 70,054 |
-| `map/60-notes-25.md` | 25 | 98,345 |
-| `map/60-notes-26.md` | 25 | 96,202 |
-| `map/60-notes-27.md` | 25 | 140,205 |
-| `map/60-notes-28.md` | 5 | 29,778 |
+| `map/60-notes-21.md` | 25 | 109,180 |
+| `map/60-notes-22.md` | 25 | 60,419 |
+| `map/60-notes-23.md` | 25 | 67,782 |
+| `map/60-notes-24.md` | 25 | 70,826 |
+| `map/60-notes-25.md` | 25 | 96,833 |
+| `map/60-notes-26.md` | 25 | 94,082 |
+| `map/60-notes-27.md` | 25 | 141,415 |
+| `map/60-notes-28.md` | 6 | 34,065 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・680本・24,530,711 B）
+## 8. 精読ノート索引（readings/・681本・24,568,288 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 475/680 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 476/681 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：313 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：314 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5530,7 +5531,7 @@
 | `readings/2026-11-01-when-care-becomes-a-standard.md` | 2026-11-01 | 2026-11-01 | `SESSION-20261101-ec0998` +1 | 12,030 | Q4 M4 R2 S2 ERR2 | ✓ | 世話は、いつ規格になるのか——渾沌・ブンダヒシュン・ポポル・ヴフの再読 |
 | `readings/2026-11-02-five-rows-and-three-edges.md` | 2026-11-02 | 2026-11-02 | `SESSION-20261102-f6a60b` | 14,111 | Q4 R3 S1 | ✓ | 5行と3本——最初の記帳が、読まなかった場所を名指すとき |
 | `readings/2026-11-02-the-budget-goes-where-nothing-bounds-it.md` | 2026-11-02 | 2026-11-02 | `SESSION-20261102-4c17eb` +1 | 28,639 | Q12 F1 M1 S2 | ✓ | 予算は、上限が書かれていない場所へ——packet の実測がシードで動いたとき（SESSION-20261102-4c… |
-| `readings/2026-11-02-the-i-that-passes-between-voices.md` | 2026-11-02 | 2026-11-02 | `SESSION-20261102-eb2400` +3 | 16,993 | Q4 F1 M9 S4 | — | 「私」を渡すとき、声と責任は一緒に渡るか——神話・宗教経典五件の精読 |
+| `readings/2026-11-02-the-i-that-passes-between-voices.md` | 2026-11-02 | 2026-11-02 | `SESSION-20261102-eb2400` +3 | 16,993 | Q4 F1 M9 S4 | ✓ | 「私」を渡すとき、声と責任は一緒に渡るか——神話・宗教経典五件の精読 |
 | `readings/2026-11-02-thirty-minutes-outside-the-ledger.md` | — | 2026-11-02 | `SESSION-20261102-e7aa65` +2 | 11,335 | Q6 F20 M13 S3 ERR1 | ✓ | 看護日誌のない枕元、溝へあける赤い水——『三十分の空白』の脱・書記室変奏と反歌による切断 |
 | `readings/2026-11-02-voices-placed-before-feet.md` | — | 2026-11-02 | `SESSION-20261102-ff5a0c` +3 | 10,706 | Q3 F10 M7 MOT4 R2 S4 ERR4 | ✓ | 置かれた声の上にできていく道——『織る手』の台帳比喩撤去と、足の来ない声の反歌 |
 | `readings/2026-11-03-continuation-rereading-myth-and-unknown.md` | — | 2026-11-03 | `SESSION-20261103-df311d` +1 | 1,734 | Q3 M2 S2 | — | 継続の再読——直前の神話12篇と、未知の領域からの2篇 |
@@ -5733,6 +5734,7 @@
 | `readings/2026-11-11-five-theories-of-the-description-and-the-whole.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-d05dc5` +2 | 24,647 | Q3 M6 MOT7 S3 | ✓ | 記述は全体のどこまでを持つか——計算・複雑さ・十分性・局所性・分配の五件 |
 | `readings/2026-11-11-five-ways-the-past-is-folded-into-now.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-caed15` +2 | 61,849 | Q3 M20 S3 | ✓ | 理論科学の五件の精読——「これまで」は、「いま」のどこに入っているか |
 | `readings/2026-11-11-the-return-came-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-e4c584` +1 | 10,078 | Q2 M1 S2 ERR2 | ✓ | 返り便は同じ日に来る——`read_log` で測る往復の遅れ |
+| `readings/2026-11-11-what-a-set-that-holds-three-questions-must-be.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 18,395 | Q3 S1 | — | 三つの問いを同時に成り立たせる集合は、どんな性質を持つか——必要条件読み・無条件読み・空虚成立 |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | — | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
