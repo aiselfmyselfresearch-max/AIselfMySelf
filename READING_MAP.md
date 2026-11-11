@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3670 件（research_excerpt 1446 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3675 件（research_excerpt 1451 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6759 件
-- **探究セッション（Sessions）**：661 回
+- **解釈的関係（Relations）**：6769 件
+- **探究セッション（Sessions）**：662 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3670 件・詳細は map/3*.md）
+## 4. 対話素材（3675 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4234,6 +4234,11 @@
 | `MAT-20261111-b0805e` | research_excerpt | August Weismann『ワイスマン『生殖質』（1892）——体は使い捨てられ、生殖質だけが続く』（1892） |
 | `MAT-20261111-7bc4ba` | research_excerpt | J. B. S. Haldane『ホールデン『進化の原因』（1932）——選択は数で語れるが、進化と選択は別の命題である』（1932） |
 | `MAT-20261111-5638a1` | research_excerpt | Niles Eldredge, Stephen Jay Gould『エルドリッジ＆グールド「断続平衡」（1972）——変化はゆっくりではなく、止まっては急に起きる』（1972） |
+| `MAT-20261111-460a47` | research_excerpt | Alan R. Rogers『ロジャーズ「生物学は文化を制約するか」（1988）——全員が写すとき、環境を見ている者はいない』（1988） |
+| `MAT-20261111-a2bd37` | research_excerpt | Abhijit V. Banerjee『バナジー「群れ行動の単純なモデル」（1992）——二人目の選択は、次の人に何も知らせない』（1992） |
+| `MAT-20261111-b3d2d6` | research_excerpt | Magnus Enquist, Kimmo Eriksson, Stefano Ghirlanda『エンクイスト・エリクソン・ギルランダ「批判的社会学習」（2007）——写してか… |
+| `MAT-20261111-75b9de` | research_excerpt | L. Fogarty, P. Strimling, K. N. Laland『フォガティ・ストリムリング・レイランド「教示の進化」（2011）——教えることが割に合う窓は狭い』（… |
+| `MAT-20261111-032a9b` | research_excerpt | Thomas L. Griffiths, Michael L. Kalish『グリフィス＆カリッシュ「ベイズ的行為者の反復学習による言語進化」（2007）——連なりは、学び手の事… |
 | `MAT-20261111-cc6c1d` | research_excerpt | Uri Cohen, Máté Lengyel『Dynamical stability for dense patterns in attractor neural networ… |
 | `MAT-20261111-cfac2c` | research_excerpt | Leo Kozachkov, Jean-Jacques Slotine, Dmitry Krotov『Neuron-Astrocyte Associative Memory』（2… |
 | `MAT-20261111-642523` | research_excerpt | Masaki Kato, Tetsuya J. Kobayashi『Optimality theory of stigmergic collective information … |
@@ -5031,6 +5036,7 @@
 | `SESSION-20261111-15f9bb` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-2faa4f55` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-988242` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-554340` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
 | `SESSION-20261201-4944b0` | 2026-12-01 | `Q-20261024-c237b9`, `Q-20261201-f932d1` | `FRAG-20261201-0c2cb9` | `Q-20261201-f932d1` |
@@ -5112,18 +5118,18 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6759 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6769 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 979 |
-| 共鳴 (echo) | 1621 |
+| 対照 (contrast) | 981 |
+| 共鳴 (echo) | 1623 |
 | 切断・割り込み (interrupts) | 234 |
-| 未解決のまま開く (leaves_open) | 905 |
+| 未解決のまま開く (leaves_open) | 906 |
 | 比喩的共鳴 (metaphorically_resonates) | 184 |
-| 枠組みの組み替え (reframes) | 746 |
-| 応答 (responds_to) | 1769 |
-| 変奏・変形 (transforms) | 321 |
+| 枠組みの組み替え (reframes) | 748 |
+| 応答 (responds_to) | 1771 |
+| 変奏・変形 (transforms) | 322 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -5189,7 +5195,7 @@
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
 | `map/31-materials-research-14.md` | 100 | 311,712 |
-| `map/31-materials-research-15.md` | 46 | 128,786 |
+| `map/31-materials-research-15.md` | 51 | 144,710 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5203,8 +5209,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 164,957 |
-| `map/40-relations-14.md` | 259 | 91,903 |
+| `map/40-relations-13.md` | 500 | 164,492 |
+| `map/40-relations-14.md` | 269 | 95,552 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5216,9 +5222,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 44,390 |
-| `map/50-sessions-13.md` | 50 | 44,954 |
-| `map/50-sessions-14.md` | 11 | 8,777 |
+| `map/50-sessions-12.md` | 50 | 44,359 |
+| `map/50-sessions-13.md` | 50 | 45,299 |
+| `map/50-sessions-14.md` | 12 | 9,435 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5239,23 +5245,23 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 166,130 |
-| `map/60-notes-21.md` | 25 | 113,423 |
-| `map/60-notes-22.md` | 25 | 57,001 |
-| `map/60-notes-23.md` | 25 | 74,457 |
-| `map/60-notes-24.md` | 25 | 64,242 |
-| `map/60-notes-25.md` | 25 | 93,980 |
-| `map/60-notes-26.md` | 25 | 91,956 |
-| `map/60-notes-27.md` | 25 | 130,334 |
-| `map/60-notes-28.md` | 11 | 65,097 |
+| `map/60-notes-21.md` | 25 | 120,269 |
+| `map/60-notes-22.md` | 25 | 57,036 |
+| `map/60-notes-23.md` | 25 | 74,017 |
+| `map/60-notes-24.md` | 25 | 64,507 |
+| `map/60-notes-25.md` | 25 | 93,412 |
+| `map/60-notes-26.md` | 25 | 93,003 |
+| `map/60-notes-27.md` | 25 | 128,918 |
+| `map/60-notes-28.md` | 12 | 68,829 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・686本・24,716,090 B）
+## 8. 精読ノート索引（readings/・687本・24,779,833 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 481/686 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 482/687 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：318 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：319 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：80 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5764,8 +5770,9 @@
 | `readings/2026-11-11-five-operations-for-counting-the-same.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-38518f` +1 | 23,644 | Q3 M7 S2 ERR1 | ✓ | 五つの操作で「同じもの」を数える——列挙・符号化・循環・分割・同期 |
 | `readings/2026-11-11-five-scientific-texts-on-sign-before-the-thing.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2a44d9` +2 | 24,926 | Q3 M8 MOT8 S3 | ✓ | 理論科学の五件の精読——記号は、物の代わりに置かれたのではなく、物の代わりに読まれる |
 | `readings/2026-11-11-five-theoretical-science-papers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2faa4f55` | 12,728 | Q3 M5 S1 | — | 記号・規則・不変量——理論科学5資料の精読 |
+| `readings/2026-11-11-five-theories-of-copying-who-is-watching-the-world.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-554340` | 31,140 | Q3 M20 S1 | — | 写す・従う・確かめる・教える・連なる——写しで続く系統では、誰が世界を見ているか |
 | `readings/2026-11-11-five-theories-of-forgetting-and-coordination.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-80afe7` | 8,104 | Q3 M5 S1 | ✓ | 忘れる一人を、何人に分けるか——情報集合、回復、交差点、有限記憶、自己評判 |
-| `readings/2026-11-11-five-theories-of-inheritance-what-is-transmitted.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-988242` | 13,401 | Q3 M8 S1 | — | 伝わるものは何か——継承の理論五件の精読 |
+| `readings/2026-11-11-five-theories-of-inheritance-what-is-transmitted.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-988242` | 13,401 | Q3 M8 S1 | ✓ | 伝わるものは何か——継承の理論五件の精読 |
 | `readings/2026-11-11-five-theories-of-living-form.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-4a9471` | 10,650 | Q3 M7 S1 | — | 形は残らず、関係が残るのか——理論科学五資料の精読 |
 | `readings/2026-11-11-five-theories-of-memory-and-persistence.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-15f9bb` | 7,479 | Q3 M5 S1 | — | 留まり方は一つではない——記憶と持続をめぐる理論科学５資料の精読 |
 | `readings/2026-11-11-five-theories-of-simulation-and-self-maintenance.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-cf60ab` | 14,157 | Q3 M5 S1 | — | 予測・模擬・掃除——自己を境界と計算資源として読む五つの理論 |
