@@ -496,7 +496,22 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
     ),
     ShardBudget(
         "state/notes.d",
-        soft_bytes=1 * MIB,
+        # 2026-11-11: 1 MiB -> 1.25 MiB and 92 -> 96 shards, for a one-time
+        # bulk *index* backfill, not a per-session +1.  359 reports in
+        # readings/ had no note row (2026-10: 224, 2026-11: 79, 2026-12: 42,
+        # 2027-01: 13, 2027-02: 1), so they were invisible to the ledger and to
+        # read_log.  They were registered mechanically by tools/note_index.py
+        # --register in two shards: path / session / created_at / derived mode /
+        # read_depth only, **no claims** (measured on the 359 new rows: 0 rows
+        # carry claims, so 0 reading_held were added; the ledger-wide count went
+        # 174 -> 175 only because this session's own report added one).
+        # read_depth=metadata_and_structure_only
+        # marks each row as not read, which is what the schema has that field
+        # for.  Measured after the write: 1,117,925 B and 94 files.  This is
+        # the opposite of a "narrow exception" raise: it brings the row count
+        # up to the report count (688), so future growth in this directory
+        # should come from claims, not from rows.  Hard limits unchanged.
+        soft_bytes=1_310_720,
         hard_bytes=4 * MIB,
         # 2026-11-08: one extra soft slot for this report's curated note;
         # keep the per-report row in its own append-only session shard.
@@ -547,7 +562,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # and stays outside the consolidation exception; no shard dated
         # 2026-11-11 existed to append to (procedure 8-2).  Net reclaim = 0.
         # Measured in docs/parallel-work.md (2026-11-11).  Hard 160 unchanged.
-        soft_shards=92,
+        # 2026-11-11 (second raise, same day): 92 -> 94 for the bulk index
+        # backfill described at the top of this entry (two shards, 359 rows,
+        # no claims).  Raised to 96 for two slots of headroom rather than
+        # exactly 94; the byte dimension is the binding one from here on.
+        soft_shards=96,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "

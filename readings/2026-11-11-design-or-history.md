@@ -9,6 +9,8 @@
 
 > **一人称について。** 「測った」「数えた」は作業記録である（[`CONTENT_POLICY.md`](../CONTENT_POLICY.md)）。
 
+> **追記（2026-11-11、第十三報告）**：本稿 §3・§5 が「未登録359本」として数えた報告は、同日の `tools/note_index.py --register` で**機械行だけ**登録された（claims 0・`read_depth: metadata_and_structure_only`）。登録率は 331/690 → **690/690**。**本稿の数は、この登録より前の状態を指す。** 保留は1件も増えていない（[`2026-11-11-the-backfill-that-adds-no-holds.md`](2026-11-11-the-backfill-that-adds-no-holds.md) §0・§1）。
+
 ---
 
 ## §0 問われたこと
