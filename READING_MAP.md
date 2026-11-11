@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3665 件（research_excerpt 1441 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3670 件（research_excerpt 1446 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6759 件
-- **探究セッション（Sessions）**：660 回
+- **探究セッション（Sessions）**：661 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3665 件・詳細は map/3*.md）
+## 4. 対話素材（3670 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4219,6 +4219,11 @@
 | `MAT-20261111-0494e5` | research_excerpt | Dana Angluin『アングルイン「質問と反例による正則集合の学習」（1987）——状態は、訊ねた実験の表の行であり、反例が来るまでは、矛盾しない最小の機械が推測される』（1… |
 | `MAT-20261111-f9cb77` | research_excerpt | Cosma Rohilla Shalizi, James P. Crutchfield『シャリジ＆クラッチフィールド「計算力学：パターンと予測、構造と単純さ」（2001）——同じ… |
 | `MAT-20261111-6089db` | research_excerpt | Michael L. Littman, Richard S. Sutton, Satinder Singh『リットマン、サットン＆シン「状態の予測的表現」（2001）——状態は、… |
+| `MAT-20261111-6626bc` | research_excerpt | D’Arcy Wentworth Thompson『ダーシー・トンプソン『成長と形』第17章——形そのものではなく変形を比較する』（1917） |
+| `MAT-20261111-76d923` | research_excerpt | C. H. Waddington『ワディントン『遺伝子の戦略』——川としての形と溝化された発生経路』（1957） |
+| `MAT-20261111-f59ce4` | research_excerpt | Humberto R. Maturana『マトゥラーナ「生きているものの組織」——組織不変性、構造的カップリング、閉じた神経系』（1975） |
+| `MAT-20261111-c9a26e` | research_excerpt | W. Ross Ashby『アシュビー『脳の設計』第2版——必須変数と第二のフィードバックによる超安定性』（1960） |
+| `MAT-20261111-af5986` | research_excerpt | Ivo Siekmann『Siekmann「応用数学者から見たローゼン的複雑性」——作用因閉包を検証可能な仮説へ戻す』（2018） |
 | `MAT-20261111-turing36` | research_excerpt | Alan M. Turing『チューリング（1936）『計算可能な数について、エンツァイディングス問題への応用』——汎用機械と不可解性』（1936） |
 | `MAT-20261111-godel31` | research_excerpt | Kurt Gödel『ゲーデル（1931）『プリンキピア・マテマティカ及び関係系における公式未決定命題について I』——不完全性定理』（1931） |
 | `MAT-20261111-einstein05` | research_excerpt | Albert Einstein『アインシュタイン（1905）『運動する物体の電気力学』——特殊相対性理論と同時性の相対化』（1905） |
@@ -5021,6 +5026,7 @@
 | `SESSION-20261111-cf60ab` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-53b93d` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-1c501a` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-4a9471` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-794f41` | 2027-03-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-15f9bb` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-2faa4f55` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5183,7 +5189,7 @@
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
 | `map/31-materials-research-14.md` | 100 | 311,712 |
-| `map/31-materials-research-15.md` | 41 | 118,005 |
+| `map/31-materials-research-15.md` | 46 | 128,786 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5210,9 +5216,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 44,486 |
-| `map/50-sessions-13.md` | 50 | 44,823 |
-| `map/50-sessions-14.md` | 10 | 7,974 |
+| `map/50-sessions-12.md` | 50 | 44,390 |
+| `map/50-sessions-13.md` | 50 | 44,954 |
+| `map/50-sessions-14.md` | 11 | 8,777 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5233,24 +5239,24 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 166,130 |
-| `map/60-notes-21.md` | 25 | 112,695 |
-| `map/60-notes-22.md` | 25 | 57,042 |
-| `map/60-notes-23.md` | 25 | 73,471 |
-| `map/60-notes-24.md` | 25 | 65,353 |
-| `map/60-notes-25.md` | 25 | 93,584 |
-| `map/60-notes-26.md` | 25 | 91,383 |
-| `map/60-notes-27.md` | 25 | 136,820 |
-| `map/60-notes-28.md` | 10 | 56,613 |
+| `map/60-notes-21.md` | 25 | 113,423 |
+| `map/60-notes-22.md` | 25 | 57,001 |
+| `map/60-notes-23.md` | 25 | 74,457 |
+| `map/60-notes-24.md` | 25 | 64,242 |
+| `map/60-notes-25.md` | 25 | 93,980 |
+| `map/60-notes-26.md` | 25 | 91,956 |
+| `map/60-notes-27.md` | 25 | 130,334 |
+| `map/60-notes-28.md` | 11 | 65,097 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・685本・24,690,493 B）
+## 8. 精読ノート索引（readings/・686本・24,716,090 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 480/685 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 481/686 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：317 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：79 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：318 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：80 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5760,6 +5766,7 @@
 | `readings/2026-11-11-five-theoretical-science-papers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2faa4f55` | 12,728 | Q3 M5 S1 | — | 記号・規則・不変量——理論科学5資料の精読 |
 | `readings/2026-11-11-five-theories-of-forgetting-and-coordination.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-80afe7` | 8,104 | Q3 M5 S1 | ✓ | 忘れる一人を、何人に分けるか——情報集合、回復、交差点、有限記憶、自己評判 |
 | `readings/2026-11-11-five-theories-of-inheritance-what-is-transmitted.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-988242` | 13,401 | Q3 M8 S1 | — | 伝わるものは何か——継承の理論五件の精読 |
+| `readings/2026-11-11-five-theories-of-living-form.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-4a9471` | 10,650 | Q3 M7 S1 | — | 形は残らず、関係が残るのか——理論科学五資料の精読 |
 | `readings/2026-11-11-five-theories-of-memory-and-persistence.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-15f9bb` | 7,479 | Q3 M5 S1 | — | 留まり方は一つではない——記憶と持続をめぐる理論科学５資料の精読 |
 | `readings/2026-11-11-five-theories-of-simulation-and-self-maintenance.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-cf60ab` | 14,157 | Q3 M5 S1 | — | 予測・模擬・掃除——自己を境界と計算資源として読む五つの理論 |
 | `readings/2026-11-11-five-theories-of-state-what-the-future-can-tell-apart.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-53b93d` +4 | 74,047 | Q3 M16 S5 | ✓ | 五つの「状態」の理論——過去のうち、未来が見分けるものだけを運ぶ |
