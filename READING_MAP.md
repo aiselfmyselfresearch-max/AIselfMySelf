@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3660 件（research_excerpt 1436 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3665 件（research_excerpt 1441 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6759 件
-- **探究セッション（Sessions）**：659 回
+- **探究セッション（Sessions）**：660 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3660 件・詳細は map/3*.md）
+## 4. 対話素材（3665 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4169,6 +4169,11 @@
 | `MAT-20261110-e26094` | research_excerpt | Ronald A. Rensink, J. Kevin O'Regan, James J. Clark『Rensink, O'Regan & Clark (1997) フリッカー… |
 | `MAT-20261110-5acb22` | research_excerpt | Miguel Pais-Vieira, Mikhail Lebedev, Carolina Kunicki, Jing Wang, Miguel A. L. Nicolelis『… |
 | `MAT-20261110-b95096` | research_excerpt | Jonathan R. Epp, Rudy Silva Mera, Stefan Köhler, Sheena A. Josselyn, Paul W. Frankland『Ep… |
+| `MAT-20261111-f75202` | research_excerpt | Andreas Seeholzer, Moritz Deger, Wulfram Gerstner『Stability of working memory in continuo… |
+| `MAT-20261111-2383d1` | research_excerpt | Kim Sneppen, Mille A. Micheelsen, Ian B. Dodd『Ultrasensitive gene regulation by positive … |
+| `MAT-20261111-518eb3` | research_excerpt | Amogh Sood, Bin Zhang『Quantifying Epigenetic Stability with Minimum Action Paths』（2020） |
+| `MAT-20261111-beae96` | research_excerpt | Jason T. George『Optimal phenotypic adaptation in fluctuating environments』（2023） |
+| `MAT-20261111-509875` | research_excerpt | Peter G. Hufton, Yen Ting Lin, Tobias Galla『Phenotypic switching of populations of cells … |
 | `MAT-20261111-79d21e` | research_excerpt | Georg Cantor『カントール「集合論の一つの初等的問題について」（1891）——どんな一覧にも、それ自身から作られる一行が欠けている』（1891） |
 | `MAT-20261111-b6d873` | research_excerpt | Kurt Gödel『ゲーデル「プリンキピア・マテマティカおよび関連体系の形式的に決定不能な命題について I」（1931）——体系は自分の文を数で書けるが、自分の整合性は内側では… |
 | `MAT-20261111-d21c7c` | research_excerpt | Sadi Carnot『カルノー『熱の動力についての省察』（1824）——動力は熱の消費ではなく、熱い物体から冷たい物体への移動である』（1824） |
@@ -5017,6 +5022,7 @@
 | `SESSION-20261111-53b93d` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-1c501a` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-794f41` | 2027-03-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-15f9bb` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-2faa4f55` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-988242` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
@@ -5176,8 +5182,8 @@
 | `map/31-materials-research-11.md` | 100 | 234,096 |
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
-| `map/31-materials-research-14.md` | 100 | 323,628 |
-| `map/31-materials-research-15.md` | 36 | 99,230 |
+| `map/31-materials-research-14.md` | 100 | 311,712 |
+| `map/31-materials-research-15.md` | 41 | 118,005 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5204,9 +5210,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 44,643 |
-| `map/50-sessions-13.md` | 50 | 44,808 |
-| `map/50-sessions-14.md` | 9 | 7,154 |
+| `map/50-sessions-12.md` | 50 | 44,486 |
+| `map/50-sessions-13.md` | 50 | 44,823 |
+| `map/50-sessions-14.md` | 10 | 7,974 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5227,24 +5233,24 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 166,130 |
-| `map/60-notes-21.md` | 25 | 113,333 |
-| `map/60-notes-22.md` | 25 | 57,935 |
-| `map/60-notes-23.md` | 25 | 73,533 |
-| `map/60-notes-24.md` | 25 | 65,666 |
-| `map/60-notes-25.md` | 25 | 93,023 |
-| `map/60-notes-26.md` | 25 | 91,263 |
-| `map/60-notes-27.md` | 25 | 140,833 |
-| `map/60-notes-28.md` | 9 | 49,898 |
+| `map/60-notes-21.md` | 25 | 112,695 |
+| `map/60-notes-22.md` | 25 | 57,042 |
+| `map/60-notes-23.md` | 25 | 73,471 |
+| `map/60-notes-24.md` | 25 | 65,353 |
+| `map/60-notes-25.md` | 25 | 93,584 |
+| `map/60-notes-26.md` | 25 | 91,383 |
+| `map/60-notes-27.md` | 25 | 136,820 |
+| `map/60-notes-28.md` | 10 | 56,613 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・684本・24,672,968 B）
+## 8. 精読ノート索引（readings/・685本・24,690,493 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 479/684 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 480/685 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：316 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：78 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：317 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：79 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5754,6 +5760,7 @@
 | `readings/2026-11-11-five-theoretical-science-papers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2faa4f55` | 12,728 | Q3 M5 S1 | — | 記号・規則・不変量——理論科学5資料の精読 |
 | `readings/2026-11-11-five-theories-of-forgetting-and-coordination.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-80afe7` | 8,104 | Q3 M5 S1 | ✓ | 忘れる一人を、何人に分けるか——情報集合、回復、交差点、有限記憶、自己評判 |
 | `readings/2026-11-11-five-theories-of-inheritance-what-is-transmitted.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-988242` | 13,401 | Q3 M8 S1 | — | 伝わるものは何か——継承の理論五件の精読 |
+| `readings/2026-11-11-five-theories-of-memory-and-persistence.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-15f9bb` | 7,479 | Q3 M5 S1 | — | 留まり方は一つではない——記憶と持続をめぐる理論科学５資料の精読 |
 | `readings/2026-11-11-five-theories-of-simulation-and-self-maintenance.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-cf60ab` | 14,157 | Q3 M5 S1 | — | 予測・模擬・掃除——自己を境界と計算資源として読む五つの理論 |
 | `readings/2026-11-11-five-theories-of-state-what-the-future-can-tell-apart.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-53b93d` +4 | 74,047 | Q3 M16 S5 | ✓ | 五つの「状態」の理論——過去のうち、未来が見分けるものだけを運ぶ |
 | `readings/2026-11-11-five-theories-of-the-description-and-the-whole.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-d05dc5` +2 | 24,647 | Q3 M6 MOT7 S3 | ✓ | 記述は全体のどこまでを持つか——計算・複雑さ・十分性・局所性・分配の五件 |
