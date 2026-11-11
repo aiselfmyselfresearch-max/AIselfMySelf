@@ -235,7 +235,20 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-11: measured baseline already exceeds the previous soft
         # limit (except notes); preserve append-only shards and add this
         # session without compaction; see the report section 7. Hard unchanged.
-        soft_shards=98,
+        # 2026-11-11 (later session, 98 -> 99): the five new sources
+        # (Ehrenfest 1907 / Feigenbaum 1978 / Kauffman 1969 / Bak-Tang-
+        # Wiesenfeld 1987 / Blackwell & Dubins 1962) needed a materials shard.
+        # Measured before writing: materials.d was 98/98 (no slot), the only
+        # same-day materials shard is being changed by open PR #663, and the
+        # union of the other six is shared by several sessions, so procedure
+        # 8-2's conditions were not met. Consolidation recovered 0 files on
+        # this pass (every candidate is referenced or inside a same-day group).
+        # The word "dedicated" is deliberately not used: same-day materials
+        # shards are already shared by more than one session, so naming one
+        # is true only at the moment it is created. Not an automatic raise;
+        # the next session that hits this wall should measure row length and
+        # existing shard reuse before raising again. Hard 160 unchanged.
+        soft_shards=99,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),

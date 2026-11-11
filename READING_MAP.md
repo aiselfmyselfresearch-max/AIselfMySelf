@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3685 件（research_excerpt 1461 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3690 件（research_excerpt 1466 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6779 件
-- **探究セッション（Sessions）**：664 回
+- **解釈的関係（Relations）**：6783 件
+- **探究セッション（Sessions）**：665 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3685 件・詳細は map/3*.md）
+## 4. 対話素材（3690 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4169,6 +4169,11 @@
 | `MAT-20261110-e26094` | research_excerpt | Ronald A. Rensink, J. Kevin O'Regan, James J. Clark『Rensink, O'Regan & Clark (1997) フリッカー… |
 | `MAT-20261110-5acb22` | research_excerpt | Miguel Pais-Vieira, Mikhail Lebedev, Carolina Kunicki, Jing Wang, Miguel A. L. Nicolelis『… |
 | `MAT-20261110-b95096` | research_excerpt | Jonathan R. Epp, Rudy Silva Mera, Stefan Köhler, Sheena A. Josselyn, Paul W. Frankland『Ep… |
+| `MAT-20261111-c002e1` | research_excerpt | Paul Ehrenfest, Tatiana Ehrenfest『エーレンフェスト夫妻（1907）——同じ二つの壺を、行きと帰りで別の時間で測る』（1907） |
+| `MAT-20261111-9b3a80` | research_excerpt | Mitchell J. Feigenbaum『ファイゲンバウム（1978）——規則を書かない者が、規則の値を受け取る』（1978） |
+| `MAT-20261111-e46530` | research_excerpt | Stuart A. Kauffman『カウフマン（1969）——配線をでたらめにしても、行き先の数は決まる』（1969） |
+| `MAT-20261111-ed8b7b` | research_excerpt | Per Bak, Chao Tang, Kurt Wiesenfeld『バク、タン＆ヴィーゼンフェルド（1987）——調整しない系が、調整した系のところへ自分で行く』（1987） |
+| `MAT-20261111-73daa1` | research_excerpt | David Blackwell, Lester Dubins『ブラックウェル＆ドゥビンズ（1962）——別の事前を持つ二人は、同じ記録で近づく（ただし条件つき）』（1962） |
 | `MAT-20261111-f75202` | research_excerpt | Andreas Seeholzer, Moritz Deger, Wulfram Gerstner『Stability of working memory in continuo… |
 | `MAT-20261111-2383d1` | research_excerpt | Kim Sneppen, Mille A. Micheelsen, Ian B. Dodd『Ultrasensitive gene regulation by positive … |
 | `MAT-20261111-518eb3` | research_excerpt | Amogh Sood, Bin Zhang『Quantifying Epigenetic Stability with Minimum Action Paths』（2020） |
@@ -5045,6 +5050,7 @@
 | `SESSION-20261111-4a9471` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-794f41` | 2027-03-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-15f9bb` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-2006e4` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-319a84` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-2faa4f55` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-988242` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5130,16 +5136,16 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6779 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6783 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 981 |
+| 対照 (contrast) | 982 |
 | 共鳴 (echo) | 1623 |
 | 切断・割り込み (interrupts) | 235 |
-| 未解決のまま開く (leaves_open) | 907 |
+| 未解決のまま開く (leaves_open) | 908 |
 | 比喩的共鳴 (metaphorically_resonates) | 189 |
-| 枠組みの組み替え (reframes) | 751 |
+| 枠組みの組み替え (reframes) | 753 |
 | 応答 (responds_to) | 1771 |
 | 変奏・変形 (transforms) | 322 |
 
@@ -5206,8 +5212,8 @@
 | `map/31-materials-research-11.md` | 100 | 234,096 |
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
-| `map/31-materials-research-14.md` | 100 | 301,563 |
-| `map/31-materials-research-15.md` | 61 | 177,175 |
+| `map/31-materials-research-14.md` | 100 | 308,837 |
+| `map/31-materials-research-15.md` | 66 | 189,211 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5221,8 +5227,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 164,206 |
-| `map/40-relations-14.md` | 279 | 99,061 |
+| `map/40-relations-13.md` | 500 | 164,385 |
+| `map/40-relations-14.md` | 283 | 100,555 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5234,9 +5240,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 43,983 |
-| `map/50-sessions-13.md` | 50 | 45,711 |
-| `map/50-sessions-14.md` | 14 | 10,876 |
+| `map/50-sessions-12.md` | 50 | 43,975 |
+| `map/50-sessions-13.md` | 50 | 45,788 |
+| `map/50-sessions-14.md` | 15 | 11,738 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5257,24 +5263,24 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 166,130 |
-| `map/60-notes-21.md` | 25 | 127,438 |
-| `map/60-notes-22.md` | 25 | 54,453 |
-| `map/60-notes-23.md` | 25 | 75,324 |
-| `map/60-notes-24.md` | 25 | 63,924 |
-| `map/60-notes-25.md` | 25 | 88,136 |
-| `map/60-notes-26.md` | 25 | 96,555 |
-| `map/60-notes-27.md` | 25 | 126,871 |
-| `map/60-notes-28.md` | 14 | 77,257 |
+| `map/60-notes-21.md` | 25 | 132,660 |
+| `map/60-notes-22.md` | 25 | 52,881 |
+| `map/60-notes-23.md` | 25 | 76,918 |
+| `map/60-notes-24.md` | 25 | 62,846 |
+| `map/60-notes-25.md` | 25 | 83,297 |
+| `map/60-notes-26.md` | 25 | 100,763 |
+| `map/60-notes-27.md` | 25 | 127,147 |
+| `map/60-notes-28.md` | 15 | 80,387 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・689本・24,847,331 B）
+## 8. 精読ノート索引（readings/・690本・24,922,879 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 484/689 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 485/690 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：321 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：81 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：322 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：82 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5790,6 +5796,7 @@
 | `readings/2026-11-11-five-theories-of-simulation-and-self-maintenance.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-cf60ab` | 14,157 | Q3 M5 S1 | — | 予測・模擬・掃除——自己を境界と計算資源として読む五つの理論 |
 | `readings/2026-11-11-five-theories-of-state-what-the-future-can-tell-apart.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-53b93d` +4 | 74,047 | Q3 M16 S5 | ✓ | 五つの「状態」の理論——過去のうち、未来が見分けるものだけを運ぶ |
 | `readings/2026-11-11-five-theories-of-the-description-and-the-whole.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-d05dc5` +2 | 24,647 | Q3 M6 MOT7 S3 | ✓ | 記述は全体のどこまでを持つか——計算・複雑さ・十分性・局所性・分配の五件 |
+| `readings/2026-11-11-five-theories-that-need-no-tuner.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2006e4` | 33,175 | Q3 M15 S1 | — | 調整者は消えない、移るだけである——理論科学五件、調整されていない秩序と、その隠れ場所 |
 | `readings/2026-11-11-five-ways-the-past-is-folded-into-now.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-caed15` +2 | 61,849 | Q3 M20 S3 | ✓ | 理論科学の五件の精読——「これまで」は、「いま」のどこに入っているか |
 | `readings/2026-11-11-how-far-a-record-reaches-toward-itself.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-794f41` +2 | 29,367 | Q3 M14 S3 | ✓ | 記録は自分にどこまで手が届くか——理論科学五件の精読 |
 | `readings/2026-11-11-memory-that-must-be-repaired.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-c7b7fb` | 6,500 | Q3 M6 S1 | — | 残ることと、残し直すこと——理論科学５資料の精読 |
