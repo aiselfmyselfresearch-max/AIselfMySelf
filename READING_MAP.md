@@ -5190,37 +5190,37 @@
 | `map/60-notes-04.md` | 25 | 94,810 |
 | `map/60-notes-05.md` | 25 | 86,726 |
 | `map/60-notes-06.md` | 25 | 49,501 |
-| `map/60-notes-07.md` | 25 | 66,974 |
+| `map/60-notes-07.md` | 25 | 68,705 |
 | `map/60-notes-08.md` | 25 | 46,761 |
-| `map/60-notes-09.md` | 25 | 59,363 |
+| `map/60-notes-09.md` | 25 | 61,164 |
 | `map/60-notes-10.md` | 25 | 61,745 |
 | `map/60-notes-11.md` | 25 | 66,903 |
 | `map/60-notes-12.md` | 25 | 70,493 |
-| `map/60-notes-13.md` | 25 | 87,405 |
+| `map/60-notes-13.md` | 25 | 89,340 |
 | `map/60-notes-14.md` | 25 | 119,673 |
 | `map/60-notes-15.md` | 25 | 84,155 |
 | `map/60-notes-16.md` | 25 | 88,658 |
 | `map/60-notes-17.md` | 25 | 111,136 |
 | `map/60-notes-18.md` | 25 | 108,843 |
 | `map/60-notes-19.md` | 25 | 117,803 |
-| `map/60-notes-20.md` | 25 | 167,666 |
-| `map/60-notes-21.md` | 25 | 138,438 |
-| `map/60-notes-22.md` | 25 | 59,721 |
-| `map/60-notes-23.md` | 25 | 82,926 |
-| `map/60-notes-24.md` | 25 | 66,020 |
-| `map/60-notes-25.md` | 25 | 81,152 |
-| `map/60-notes-26.md` | 25 | 109,897 |
-| `map/60-notes-27.md` | 25 | 112,309 |
-| `map/60-notes-28.md` | 21 | 115,559 |
+| `map/60-notes-20.md` | 25 | 167,647 |
+| `map/60-notes-21.md` | 25 | 136,839 |
+| `map/60-notes-22.md` | 25 | 63,023 |
+| `map/60-notes-23.md` | 25 | 83,322 |
+| `map/60-notes-24.md` | 25 | 67,711 |
+| `map/60-notes-25.md` | 25 | 78,097 |
+| `map/60-notes-26.md` | 25 | 110,250 |
+| `map/60-notes-27.md` | 25 | 111,644 |
+| `map/60-notes-28.md` | 22 | 120,454 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・696本・24,754,751 B）
+## 8. 精読ノート索引（readings/・697本・24,764,805 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 496/696 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 497/697 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：694 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：695 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5724,7 +5724,7 @@
 | `readings/2026-11-10-the-measured-beak-and-the-note-without-a-name.md` | — | 2026-11-10 | `SESSION-20261110-900e9b` +9 | 24,142 | Q5 F19 M11 MOT11 S10 | ✓ | 測られた嘴と、名前のない置き書き —— 出所を訊く手つきを、伝聞から獣と機械へ渡す（SESSION-20261110-… |
 | `readings/2026-11-10-the-unfinished-control-and-the-ten-that-did-not-fit.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-350411` +3 | 34,984 | Q4 F1 M27 S4 ERR4 | ✓ | 未実行だった統制を、いま実行する——sham 報告・軸に合わない十件・一人称の資料・崩れた答えの訂正録 |
 | `readings/2026-11-10-three-trials-on-description-loss-self-description-and-the-non-class.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-f23658` | 11,039 | Q4 M3 MOT2 R10 S1 | ✓ | 三つの試行——記述の喪失、自己記述、非-類 |
-| `readings/2026-11-11-addresses-keep-what-reasons-lose.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,348 | Q3 S1 | — | 住所つきで保存する——理由が二度落ちることの確認と、ヒュームの付録という反例 |
+| `readings/2026-11-11-addresses-keep-what-reasons-lose.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,348 | Q3 S1 | ✓ | 住所つきで保存する——理由が二度落ちることの確認と、ヒュームの付録という反例 |
 | `readings/2026-11-11-closing-holds-and-what-forgetting-would-do.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,450 | S1 | ✓ | 保留を閉じる道具と、忘却が本当に減らすもの——実装1件と、記憶の比喩の測り直し |
 | `readings/2026-11-11-crystals-outside-the-branch.md` | — | 2026-11-11 | `SESSION-20261111-5ebabb` +1 | 10,939 | Q4 F8 M3 MOT3 R1 S2 | ✓ | 結晶は外にしか付かない——塩坑の枝と瓶の枝、言い切りと反歌の二部作（SESSION-20261111-5ebabb） |
 | `readings/2026-11-11-design-or-history.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,144 | Q2 S1 | ✓ | 設計か、履歴か——359本の未登録と、閉じない保留を分けて測る |
@@ -5749,6 +5749,7 @@
 | `readings/2026-11-11-the-homework-was-done-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,229 | Q1 M2 S2 | ✓ | 宿題は同じ日に実行されていた——口承資料4件に四欄を当て、台帳が閉じなかった理由を測る |
 | `readings/2026-11-11-the-return-came-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-e4c584` +1 | 10,078 | Q2 M1 S2 ERR2 | ✓ | 返り便は同じ日に来る——`read_log` で測る往復の遅れ |
 | `readings/2026-11-11-what-a-set-that-holds-three-questions-must-be.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 25,186 | Q3 S1 | ✓ | 三つの問いを同時に成り立たせる集合は、どんな性質を持つか——必要条件読み・無条件読み・空虚成立 |
+| `readings/2026-11-11-where-the-field-is-the-address-stays.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,708 | Q3 S1 | — | 欄のあるところにだけ住所は残る——前報の一般化を、計数で狭める |
 | `readings/2026-11-11-why-the-scope-was-missing.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 6,541 | S1 | — | 適用範囲はなぜ書かれなかったのか——指示テキスト層とスクリプト層を分けて調べる |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
