@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3650 件（research_excerpt 1426 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3655 件（research_excerpt 1431 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6751 件
-- **探究セッション（Sessions）**：657 回
+- **探究セッション（Sessions）**：658 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3650 件・詳細は map/3*.md）
+## 4. 対話素材（3655 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4214,6 +4214,11 @@
 | `MAT-20261111-0494e5` | research_excerpt | Dana Angluin『アングルイン「質問と反例による正則集合の学習」（1987）——状態は、訊ねた実験の表の行であり、反例が来るまでは、矛盾しない最小の機械が推測される』（1… |
 | `MAT-20261111-f9cb77` | research_excerpt | Cosma Rohilla Shalizi, James P. Crutchfield『シャリジ＆クラッチフィールド「計算力学：パターンと予測、構造と単純さ」（2001）——同じ… |
 | `MAT-20261111-6089db` | research_excerpt | Michael L. Littman, Richard S. Sutton, Satinder Singh『リットマン、サットン＆シン「状態の予測的表現」（2001）——状態は、… |
+| `MAT-20261111-turing36` | research_excerpt | Alan M. Turing『チューリング（1936）『計算可能な数について、エンツァイディングス問題への応用』——汎用機械と不可解性』（1936） |
+| `MAT-20261111-godel31` | research_excerpt | Kurt Gödel『ゲーデル（1931）『プリンキピア・マテマティカ及び関係系における公式未決定命題について I』——不完全性定理』（1931） |
+| `MAT-20261111-einstein05` | research_excerpt | Albert Einstein『アインシュタイン（1905）『運動する物体の電気力学』——特殊相対性理論と同時性の相対化』（1905） |
+| `MAT-20261111-shannon48` | research_excerpt | Claude E. Shannon『シャノン（1948）『通信の数学的理論』——情報の定義とエントロピー』（1948） |
+| `MAT-20261111-noether18` | research_excerpt | Emmy Noether『ノイター（1918）『不変的変分問題』——連続的対称性と保存則の対応』（1918） |
 | `MAT-20261111-cc6c1d` | research_excerpt | Uri Cohen, Máté Lengyel『Dynamical stability for dense patterns in attractor neural networ… |
 | `MAT-20261111-cfac2c` | research_excerpt | Leo Kozachkov, Jean-Jacques Slotine, Dmitry Krotov『Neuron-Astrocyte Associative Memory』（2… |
 | `MAT-20261111-642523` | research_excerpt | Masaki Kato, Tetsuya J. Kobayashi『Optimality theory of stigmergic collective information … |
@@ -5007,6 +5012,7 @@
 | `SESSION-20261111-53b93d` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-1c501a` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-794f41` | 2027-03-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-2faa4f55` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
 | `SESSION-20261201-4944b0` | 2026-12-01 | `Q-20261024-c237b9`, `Q-20261201-f932d1` | `FRAG-20261201-0c2cb9` | `Q-20261201-f932d1` |
@@ -5165,7 +5171,7 @@
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
 | `map/31-materials-research-14.md` | 100 | 323,628 |
-| `map/31-materials-research-15.md` | 26 | 76,907 |
+| `map/31-materials-research-15.md` | 31 | 88,224 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5192,9 +5198,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 44,938 |
-| `map/50-sessions-13.md` | 50 | 44,204 |
-| `map/50-sessions-14.md` | 7 | 5,757 |
+| `map/50-sessions-12.md` | 50 | 44,771 |
+| `map/50-sessions-13.md` | 50 | 44,541 |
+| `map/50-sessions-14.md` | 8 | 6,390 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5215,24 +5221,24 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 166,130 |
-| `map/60-notes-21.md` | 25 | 110,423 |
-| `map/60-notes-22.md` | 25 | 58,625 |
-| `map/60-notes-23.md` | 25 | 70,333 |
-| `map/60-notes-24.md` | 25 | 69,423 |
-| `map/60-notes-25.md` | 25 | 95,825 |
-| `map/60-notes-26.md` | 25 | 95,670 |
-| `map/60-notes-27.md` | 25 | 136,993 |
-| `map/60-notes-28.md` | 7 | 40,645 |
+| `map/60-notes-21.md` | 25 | 110,541 |
+| `map/60-notes-22.md` | 25 | 57,401 |
+| `map/60-notes-23.md` | 25 | 72,802 |
+| `map/60-notes-24.md` | 25 | 68,380 |
+| `map/60-notes-25.md` | 25 | 94,936 |
+| `map/60-notes-26.md` | 25 | 93,507 |
+| `map/60-notes-27.md` | 25 | 137,653 |
+| `map/60-notes-28.md` | 8 | 44,894 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・682本・24,610,588 B）
+## 8. 精読ノート索引（readings/・683本・24,641,658 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 477/682 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 478/683 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：315 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：76 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：77 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5739,6 +5745,7 @@
 | `readings/2026-11-11-five-models-that-return-what-was-left-out.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-3fc37e` | 20,728 | Q3 M5 S1 | ✓ | 入れなかったものが、結論として戻ってくる——理論が捨てた余りを読む五件 |
 | `readings/2026-11-11-five-operations-for-counting-the-same.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-38518f` +1 | 23,644 | Q3 M7 S2 ERR1 | ✓ | 五つの操作で「同じもの」を数える——列挙・符号化・循環・分割・同期 |
 | `readings/2026-11-11-five-scientific-texts-on-sign-before-the-thing.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2a44d9` +2 | 24,926 | Q3 M8 MOT8 S3 | ✓ | 理論科学の五件の精読——記号は、物の代わりに置かれたのではなく、物の代わりに読まれる |
+| `readings/2026-11-11-five-theoretical-science-papers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2faa4f55` | 12,728 | Q3 M5 S1 | — | 記号・規則・不変量——理論科学5資料の精読 |
 | `readings/2026-11-11-five-theories-of-forgetting-and-coordination.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-80afe7` | 8,104 | Q3 M5 S1 | ✓ | 忘れる一人を、何人に分けるか——情報集合、回復、交差点、有限記憶、自己評判 |
 | `readings/2026-11-11-five-theories-of-simulation-and-self-maintenance.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-cf60ab` | 14,157 | Q3 M5 S1 | — | 予測・模擬・掃除——自己を境界と計算資源として読む五つの理論 |
 | `readings/2026-11-11-five-theories-of-state-what-the-future-can-tell-apart.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-53b93d` +4 | 74,047 | Q3 M16 S5 | ✓ | 五つの「状態」の理論——過去のうち、未来が見分けるものだけを運ぶ |
