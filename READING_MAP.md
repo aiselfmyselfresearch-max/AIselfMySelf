@@ -5190,38 +5190,38 @@
 | `map/60-notes-04.md` | 25 | 92,690 |
 | `map/60-notes-05.md` | 25 | 80,119 |
 | `map/60-notes-06.md` | 25 | 47,169 |
-| `map/60-notes-07.md` | 25 | 62,475 |
+| `map/60-notes-07.md` | 25 | 62,541 |
 | `map/60-notes-08.md` | 25 | 44,429 |
-| `map/60-notes-09.md` | 25 | 53,630 |
+| `map/60-notes-09.md` | 25 | 53,688 |
 | `map/60-notes-10.md` | 25 | 59,625 |
 | `map/60-notes-11.md` | 25 | 62,430 |
-| `map/60-notes-12.md` | 25 | 67,333 |
-| `map/60-notes-13.md` | 25 | 83,525 |
-| `map/60-notes-14.md` | 25 | 119,501 |
+| `map/60-notes-12.md` | 25 | 67,399 |
+| `map/60-notes-13.md` | 25 | 83,591 |
+| `map/60-notes-14.md` | 25 | 119,567 |
 | `map/60-notes-15.md` | 25 | 83,731 |
 | `map/60-notes-16.md` | 25 | 88,446 |
 | `map/60-notes-17.md` | 25 | 111,030 |
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 166,062 |
-| `map/60-notes-21.md` | 25 | 118,395 |
-| `map/60-notes-22.md` | 25 | 57,935 |
-| `map/60-notes-23.md` | 25 | 73,533 |
-| `map/60-notes-24.md` | 25 | 65,738 |
-| `map/60-notes-25.md` | 25 | 93,095 |
-| `map/60-notes-26.md` | 25 | 91,263 |
-| `map/60-notes-27.md` | 25 | 140,833 |
-| `map/60-notes-28.md` | 9 | 49,993 |
+| `map/60-notes-21.md` | 25 | 122,085 |
+| `map/60-notes-22.md` | 25 | 57,042 |
+| `map/60-notes-23.md` | 25 | 73,529 |
+| `map/60-notes-24.md` | 25 | 65,418 |
+| `map/60-notes-25.md` | 25 | 93,728 |
+| `map/60-notes-26.md` | 25 | 91,383 |
+| `map/60-notes-27.md` | 25 | 136,820 |
+| `map/60-notes-28.md` | 10 | 56,689 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・684本・24,630,355 B）
+## 8. 精読ノート索引（readings/・685本・24,650,593 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 479/684 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 480/685 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：317 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：318 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：73 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5734,8 +5734,9 @@
 | `readings/2026-11-11-five-theories-of-the-description-and-the-whole.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-d05dc5` +2 | 24,647 | Q3 M6 MOT7 S3 | ✓ | 記述は全体のどこまでを持つか——計算・複雑さ・十分性・局所性・分配の五件 |
 | `readings/2026-11-11-five-ways-the-past-is-folded-into-now.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-caed15` +2 | 61,849 | Q3 M20 S3 | ✓ | 理論科学の五件の精読——「これまで」は、「いま」のどこに入っているか |
 | `readings/2026-11-11-identity-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 8,568 | Q2 S1 | ✓ | 同一性の一件ファイル——679報告の「同じ自己である／でない」120文を監査する |
-| `readings/2026-11-11-materiality-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 7,878 | Q1 S1 | ✓ | 素材性の一件ファイル——679報告の「素材である／でない」90文を監査する |
-| `readings/2026-11-11-q001-conditions-and-three-layers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 6,257 | Q1 M1 S1 ERR1 | — | Q-001 の条件の族と、三つの層——342の claims から「統合された見解」の形を測る |
+| `readings/2026-11-11-materiality-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 8,759 | Q1 S1 | ✓ | 素材性の一件ファイル——679報告の「素材である／でない」90文を監査する |
+| `readings/2026-11-11-preservation-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 9,383 | Q3 S1 | ✓ | 保存の一件ファイル——679報告の「自己を保存しない」59文を監査する |
+| `readings/2026-11-11-q001-conditions-and-three-layers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 6,257 | Q1 M1 S1 ERR1 | ✓ | Q-001 の条件の族と、三つの層——342の claims から「統合された見解」の形を測る |
 | `readings/2026-11-11-the-return-came-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-e4c584` +1 | 10,078 | Q2 M1 S2 ERR2 | ✓ | 返り便は同じ日に来る——`read_log` で測る往復の遅れ |
 | `readings/2026-11-11-what-a-set-that-holds-three-questions-must-be.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 25,186 | Q3 S1 | ✓ | 三つの問いを同時に成り立たせる集合は、どんな性質を持つか——必要条件読み・無条件読み・空虚成立 |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
