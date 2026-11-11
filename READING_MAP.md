@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3610 件（research_excerpt 1386 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3615 件（research_excerpt 1391 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6699 件
-- **探究セッション（Sessions）**：649 回
+- **解釈的関係（Relations）**：6705 件
+- **探究セッション（Sessions）**：650 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3610 件・詳細は map/3*.md）
+## 4. 対話素材（3615 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4179,6 +4179,11 @@
 | `MAT-20261111-bca62e` | research_excerpt | Michele Piccione, Ariel Rubinstein『Piccione & Rubinstein「不完全想起の意思決定問題」（1997）——同じに見える二つの出口… |
 | `MAT-20261111-7c1954` | research_excerpt | Andrea Wilson『Wilson「有限記憶と情報処理の偏り」（2014）——最初の情報が残る小さな記憶』（2014） |
 | `MAT-20261111-584e46` | research_excerpt | Roland Bénabou, Jean Tirole『Bénabou & Tirole「意志力と個人的規則」（2004）——行為は残り、事情は薄れる』（2004） |
+| `MAT-20261111-b17f57` | research_excerpt | Paul Adrien Maurice Dirac『Dirac「電子の量子論」（1928）——捨てる理由のない負エネルギー解が、新しい粒子の席になった』（1928） |
+| `MAT-20261111-b593aa` | research_excerpt | Edward N. Lorenz『Lorenz「決定論的非周期流」（1963）——規則は完全に書けているのに、未来は書けない』（1963） |
+| `MAT-20261111-075122` | research_excerpt | John F. Nash Jr.『Nash「n人ゲームの均衡点」（1950）——一人の最適は、他者なしには定義できない』（1950） |
+| `MAT-20261111-fa25e7` | research_excerpt | W. O. Kermack, A. G. McKendrick『Kermack & McKendrick「流行の数学的理論への寄与」（1927）——感染者の名前を捨てると、人口の… |
+| `MAT-20261111-df186c` | research_excerpt | Kenneth J. Arrow『Arrow「社会的厚生の概念における困難」（1950）／『社会的選択と個人的価値』（1951）——みんなの順序を足しても、「みんな」にはならない… |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -4959,6 +4964,7 @@
 | `SESSION-20261111-38518f` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-80afe7` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-e4c584` | 2026-11-11 | `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-3fc37e` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
 | `SESSION-20261201-4944b0` | 2026-12-01 | `Q-20261024-c237b9`, `Q-20261201-f932d1` | `FRAG-20261201-0c2cb9` | `Q-20261201-f932d1` |
@@ -5040,18 +5046,18 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6699 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6705 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 970 |
 | 共鳴 (echo) | 1614 |
-| 切断・割り込み (interrupts) | 231 |
+| 切断・割り込み (interrupts) | 233 |
 | 未解決のまま開く (leaves_open) | 898 |
 | 比喩的共鳴 (metaphorically_resonates) | 184 |
-| 枠組みの組み替え (reframes) | 722 |
+| 枠組みの組み替え (reframes) | 725 |
 | 応答 (responds_to) | 1764 |
-| 変奏・変形 (transforms) | 316 |
+| 変奏・変形 (transforms) | 317 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -5116,7 +5122,7 @@
 | `map/31-materials-research-11.md` | 100 | 234,096 |
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
-| `map/31-materials-research-14.md` | 86 | 279,664 |
+| `map/31-materials-research-14.md` | 91 | 290,537 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5130,8 +5136,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 165,313 |
-| `map/40-relations-14.md` | 199 | 69,819 |
+| `map/40-relations-13.md` | 500 | 164,946 |
+| `map/40-relations-14.md` | 205 | 71,914 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5143,8 +5149,8 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 45,472 |
-| `map/50-sessions-13.md` | 49 | 42,313 |
+| `map/50-sessions-12.md` | 50 | 45,457 |
+| `map/50-sessions-13.md` | 50 | 43,270 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5165,22 +5171,22 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 165,457 |
-| `map/60-notes-21.md` | 25 | 67,083 |
-| `map/60-notes-22.md` | 25 | 64,117 |
-| `map/60-notes-23.md` | 25 | 65,556 |
-| `map/60-notes-24.md` | 25 | 73,173 |
-| `map/60-notes-25.md` | 25 | 103,528 |
-| `map/60-notes-26.md` | 25 | 110,096 |
-| `map/60-notes-27.md` | 24 | 132,197 |
+| `map/60-notes-21.md` | 25 | 70,005 |
+| `map/60-notes-22.md` | 25 | 63,756 |
+| `map/60-notes-23.md` | 25 | 66,479 |
+| `map/60-notes-24.md` | 25 | 73,151 |
+| `map/60-notes-25.md` | 25 | 101,199 |
+| `map/60-notes-26.md` | 25 | 106,614 |
+| `map/60-notes-27.md` | 25 | 139,711 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・674本・24,063,694 B）
+## 8. 精読ノート索引（readings/・675本・24,116,155 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 469/674 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 470/675 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：307 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：308 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：77 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5685,8 +5691,9 @@
 | `readings/2026-11-10-the-unfinished-control-and-the-ten-that-did-not-fit.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-350411` +3 | 34,984 | Q4 F1 M27 S4 ERR4 | ✓ | 未実行だった統制を、いま実行する——sham 報告・軸に合わない十件・一人称の資料・崩れた答えの訂正録 |
 | `readings/2026-11-10-three-trials-on-description-loss-self-description-and-the-non-class.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-f23658` | 11,039 | Q4 M3 MOT2 R10 S1 | ✓ | 三つの試行——記述の喪失、自己記述、非-類 |
 | `readings/2026-11-11-crystals-outside-the-branch.md` | — | 2026-11-11 | `SESSION-20261111-5ebabb` +1 | 10,939 | Q4 F8 M3 MOT3 R1 S2 | ✓ | 結晶は外にしか付かない——塩坑の枝と瓶の枝、言い切りと反歌の二部作（SESSION-20261111-5ebabb） |
+| `readings/2026-11-11-five-models-that-return-what-was-left-out.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-3fc37e` | 20,728 | Q3 M5 S1 | — | 入れなかったものが、結論として戻ってくる——理論が捨てた余りを読む五件 |
 | `readings/2026-11-11-five-operations-for-counting-the-same.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-38518f` +1 | 23,644 | Q3 M7 S2 ERR1 | ✓ | 五つの操作で「同じもの」を数える——列挙・符号化・循環・分割・同期 |
-| `readings/2026-11-11-five-theories-of-forgetting-and-coordination.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-80afe7` | 8,104 | Q3 M5 S1 | — | 忘れる一人を、何人に分けるか——情報集合、回復、交差点、有限記憶、自己評判 |
+| `readings/2026-11-11-five-theories-of-forgetting-and-coordination.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-80afe7` | 8,104 | Q3 M5 S1 | ✓ | 忘れる一人を、何人に分けるか——情報集合、回復、交差点、有限記憶、自己評判 |
 | `readings/2026-11-11-the-return-came-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-e4c584` +1 | 10,078 | Q2 M1 S2 ERR2 | — | 返り便は同じ日に来る——`read_log` で測る往復の遅れ |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
