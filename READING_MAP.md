@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3700 件（research_excerpt 1476 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3705 件（research_excerpt 1481 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6789 件
-- **探究セッション（Sessions）**：667 回
+- **解釈的関係（Relations）**：6795 件
+- **探究セッション（Sessions）**：668 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3700 件・詳細は map/3*.md）
+## 4. 対話素材（3705 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4174,6 +4174,11 @@
 | `MAT-20261111-e46530` | research_excerpt | Stuart A. Kauffman『カウフマン（1969）——配線をでたらめにしても、行き先の数は決まる』（1969） |
 | `MAT-20261111-ed8b7b` | research_excerpt | Per Bak, Chao Tang, Kurt Wiesenfeld『バク、タン＆ヴィーゼンフェルド（1987）——調整しない系が、調整した系のところへ自分で行く』（1987） |
 | `MAT-20261111-73daa1` | research_excerpt | David Blackwell, Lester Dubins『ブラックウェル＆ドゥビンズ（1962）——別の事前を持つ二人は、同じ記録で近づく（ただし条件つき）』（1962） |
+| `MAT-20261111-470383` | research_excerpt | Lars Onsager『オンサーガー（1931）『不可逆過程における相反関係 I』——押す側と流れる側を入れ替えても係数が等しいのは、微視的な時間を反転しても同じ過程が数えられ… |
+| `MAT-20261111-74b599` | research_excerpt | Y. Aharonov, D. Bohm『アハラノフ＆ボーム（1959）——電子が一度も通らない場所の磁場が、電子の干渉縞を動かす。位相は一周してはじめて意味を持つ』（1959） |
+| `MAT-20261111-f7bfe1` | research_excerpt | Michael Victor Berry『ベリー（1984）——ゆっくり一周して同じ場所へ戻った系は、同じ状態へは戻らない。戻り損ねた分は、道の形だけで決まる』（1984） |
+| `MAT-20261111-994184` | research_excerpt | Kenneth G. Wilson『ウィルソン（1971）——細かい見え方を全部まとめて一つの「粗い見え方」にすると、系は決まった行き先へ流れる。臨界点とは、その流れの止まり場で… |
+| `MAT-20261111-ac580b` | research_excerpt | Niels Kaj Jerne『イェルネ（1974）——免疫系は外の敵を数えるのをやめ、自分自身の抗体を互いに見分け合う網として自分を保つ』（1974） |
 | `MAT-20261111-6119d9` | research_excerpt | Stefano Fusi, Patrick J. Drew, L. F. Abbott『Cascade Models of Synaptically Stored Memorie… |
 | `MAT-20261111-8559bb` | research_excerpt | Surya Ganguli, Dongsung Huh, Haim Sompolinsky『Memory traces in dynamical systems』（2008） |
 | `MAT-20261111-1c6c8c` | research_excerpt | Naftali Tishby, Fernando C. Pereira, William Bialek『The information bottleneck method』（20… |
@@ -5047,6 +5052,7 @@
 | `SESSION-20261110-8a6374` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-b3ed52` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-c7b7fb` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-47dff1` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-49352c` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-38518f` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-80afe7` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5148,18 +5154,18 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6789 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6795 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 984 |
-| 共鳴 (echo) | 1624 |
+| 対照 (contrast) | 985 |
+| 共鳴 (echo) | 1625 |
 | 切断・割り込み (interrupts) | 235 |
-| 未解決のまま開く (leaves_open) | 909 |
+| 未解決のまま開く (leaves_open) | 910 |
 | 比喩的共鳴 (metaphorically_resonates) | 189 |
-| 枠組みの組み替え (reframes) | 754 |
-| 応答 (responds_to) | 1772 |
-| 変奏・変形 (transforms) | 322 |
+| 枠組みの組み替え (reframes) | 755 |
+| 応答 (responds_to) | 1773 |
+| 変奏・変形 (transforms) | 323 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -5224,8 +5230,8 @@
 | `map/31-materials-research-11.md` | 100 | 234,096 |
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
-| `map/31-materials-research-14.md` | 100 | 316,574 |
-| `map/31-materials-research-15.md` | 76 | 209,383 |
+| `map/31-materials-research-14.md` | 100 | 326,281 |
+| `map/31-materials-research-15.md` | 81 | 219,209 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5239,8 +5245,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 163,838 |
-| `map/40-relations-14.md` | 289 | 103,038 |
+| `map/40-relations-13.md` | 500 | 164,175 |
+| `map/40-relations-14.md` | 295 | 105,181 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5252,9 +5258,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 43,309 |
-| `map/50-sessions-13.md` | 50 | 46,206 |
-| `map/50-sessions-14.md` | 17 | 13,443 |
+| `map/50-sessions-12.md` | 50 | 43,101 |
+| `map/50-sessions-13.md` | 50 | 46,390 |
+| `map/50-sessions-14.md` | 18 | 14,299 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5274,25 +5280,25 @@
 | `map/60-notes-17.md` | 25 | 111,030 |
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
-| `map/60-notes-20.md` | 25 | 166,130 |
-| `map/60-notes-21.md` | 25 | 140,186 |
-| `map/60-notes-22.md` | 25 | 53,220 |
-| `map/60-notes-23.md` | 25 | 72,924 |
-| `map/60-notes-24.md` | 25 | 63,230 |
-| `map/60-notes-25.md` | 25 | 79,331 |
-| `map/60-notes-26.md` | 25 | 107,045 |
-| `map/60-notes-27.md` | 25 | 127,043 |
-| `map/60-notes-28.md` | 17 | 85,995 |
+| `map/60-notes-20.md` | 25 | 169,813 |
+| `map/60-notes-21.md` | 25 | 138,599 |
+| `map/60-notes-22.md` | 25 | 55,292 |
+| `map/60-notes-23.md` | 25 | 72,605 |
+| `map/60-notes-24.md` | 25 | 61,950 |
+| `map/60-notes-25.md` | 25 | 78,836 |
+| `map/60-notes-26.md` | 25 | 109,096 |
+| `map/60-notes-27.md` | 25 | 121,347 |
+| `map/60-notes-28.md` | 18 | 93,421 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・692本・24,994,730 B）
+## 8. 精読ノート索引（readings/・693本・25,048,143 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 487/692 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 488/693 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：324 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：79 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：325 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：80 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5795,6 +5801,7 @@
 | `readings/2026-11-10-the-measured-beak-and-the-note-without-a-name.md` | — | 2026-11-10 | `SESSION-20261110-900e9b` +9 | 24,142 | Q5 F19 M11 MOT11 S10 | ✓ | 測られた嘴と、名前のない置き書き —— 出所を訊く手つきを、伝聞から獣と機械へ渡す（SESSION-20261110-… |
 | `readings/2026-11-10-the-unfinished-control-and-the-ten-that-did-not-fit.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-350411` +3 | 34,984 | Q4 F1 M27 S4 ERR4 | ✓ | 未実行だった統制を、いま実行する——sham 報告・軸に合わない十件・一人称の資料・崩れた答えの訂正録 |
 | `readings/2026-11-10-three-trials-on-description-loss-self-description-and-the-non-class.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-f23658` | 11,039 | Q4 M3 MOT2 R10 S1 | ✓ | 三つの試行——記述の喪失、自己記述、非-類 |
+| `readings/2026-11-11-a-loop-that-records-what-it-encloses.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-47dff1` | 23,034 | Q3 M8 R1 S1 | — | 一周して戻る・粗くして畳む・内側の網だけを見る——理論科学5資料の精読 |
 | `readings/2026-11-11-crystals-outside-the-branch.md` | — | 2026-11-11 | `SESSION-20261111-5ebabb` +1 | 10,939 | Q4 F8 M3 MOT3 R1 S2 | ✓ | 結晶は外にしか付かない——塩坑の枝と瓶の枝、言い切りと反歌の二部作（SESSION-20261111-5ebabb） |
 | `readings/2026-11-11-five-models-that-return-what-was-left-out.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-3fc37e` | 20,728 | Q3 M5 S1 | ✓ | 入れなかったものが、結論として戻ってくる——理論が捨てた余りを読む五件 |
 | `readings/2026-11-11-five-operations-for-counting-the-same.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-38518f` +1 | 23,644 | Q3 M7 S2 ERR1 | ✓ | 五つの操作で「同じもの」を数える——列挙・符号化・循環・分割・同期 |
@@ -5804,7 +5811,7 @@
 | `readings/2026-11-11-five-theories-of-forgetting-and-coordination.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-80afe7` | 8,104 | Q3 M5 S1 | ✓ | 忘れる一人を、何人に分けるか——情報集合、回復、交差点、有限記憶、自己評判 |
 | `readings/2026-11-11-five-theories-of-inheritance-what-is-transmitted.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-988242` | 13,401 | Q3 M8 S1 | ✓ | 伝わるものは何か——継承の理論五件の精読 |
 | `readings/2026-11-11-five-theories-of-living-form.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-4a9471` | 10,650 | Q3 M7 S1 | — | 形は残らず、関係が残るのか——理論科学五資料の精読 |
-| `readings/2026-11-11-five-theories-of-memory-access-and-drift.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-49352c` | 11,108 | Q3 M6 S1 | — | 記憶はどこで読めなくなるのか——５つの理論を読む |
+| `readings/2026-11-11-five-theories-of-memory-access-and-drift.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-49352c` | 11,261 | Q3 M6 S1 | — | 記憶はどこで読めなくなるのか——５つの理論を読む |
 | `readings/2026-11-11-five-theories-of-memory-and-persistence.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-15f9bb` | 7,479 | Q3 M5 S1 | — | 留まり方は一つではない——記憶と持続をめぐる理論科学５資料の精読 |
 | `readings/2026-11-11-five-theories-of-simulation-and-self-maintenance.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-cf60ab` | 14,157 | Q3 M5 S1 | — | 予測・模擬・掃除——自己を境界と計算資源として読む五つの理論 |
 | `readings/2026-11-11-five-theories-of-state-what-the-future-can-tell-apart.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-53b93d` +4 | 74,047 | Q3 M16 S5 | ✓ | 五つの「状態」の理論——過去のうち、未来が見分けるものだけを運ぶ |
