@@ -5190,7 +5190,7 @@
 | `map/60-notes-04.md` | 25 | 94,810 |
 | `map/60-notes-05.md` | 25 | 86,726 |
 | `map/60-notes-06.md` | 25 | 49,501 |
-| `map/60-notes-07.md` | 25 | 64,767 |
+| `map/60-notes-07.md` | 25 | 66,974 |
 | `map/60-notes-08.md` | 25 | 46,761 |
 | `map/60-notes-09.md` | 25 | 57,492 |
 | `map/60-notes-10.md` | 25 | 61,745 |
@@ -5204,23 +5204,23 @@
 | `map/60-notes-18.md` | 25 | 108,843 |
 | `map/60-notes-19.md` | 25 | 117,803 |
 | `map/60-notes-20.md` | 25 | 169,179 |
-| `map/60-notes-21.md` | 25 | 136,920 |
-| `map/60-notes-22.md` | 25 | 58,529 |
-| `map/60-notes-23.md` | 25 | 76,059 |
-| `map/60-notes-24.md` | 25 | 62,747 |
-| `map/60-notes-25.md` | 25 | 82,968 |
-| `map/60-notes-26.md` | 25 | 107,553 |
-| `map/60-notes-27.md` | 25 | 119,739 |
-| `map/60-notes-28.md` | 19 | 101,317 |
+| `map/60-notes-21.md` | 25 | 136,848 |
+| `map/60-notes-22.md` | 25 | 60,115 |
+| `map/60-notes-23.md` | 25 | 75,730 |
+| `map/60-notes-24.md` | 25 | 69,117 |
+| `map/60-notes-25.md` | 25 | 82,201 |
+| `map/60-notes-26.md` | 25 | 107,935 |
+| `map/60-notes-27.md` | 25 | 115,280 |
+| `map/60-notes-28.md` | 20 | 108,347 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・694本・24,740,834 B）
+## 8. 精読ノート索引（readings/・695本・24,747,523 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 493/694 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 495/695 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：692 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：693 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5379,7 +5379,7 @@
 | `readings/2026-10-28-custody-demand-and-the-other-row.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-088bc2` +7 | 16,509 | Q15 F14 MOT1 S8 ERR1 | ✓ | 預かりと要求と、別の行——結び目・ごんごん・薄い椀で改訂を読み直す |
 | `readings/2026-10-28-inquiry-reorientation.md` | — | 2026-10-28 | `SESSION-20261028-088bc2` | 2,497 | Q4 M2 S1 | ✓ | 新作の義務から、記憶が判断へ作用する探究へ |
 | `readings/2026-10-28-not-believed-not-free-to-refuse.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-09b69c` +2 | 16,920 | Q10 F5 M4 MOT2 S3 ED2 | ✓ | 信じてもらえなさと、断れなさ——証言の倫理と見えない労働が置いた人間を読み直す |
-| `readings/2026-10-28-provisional-report-v3.md` | — | 2026-10-28 | — | 13,875 | Q2 F4 M1 MOT3 ERR1 | ✓ | 自己の測量、三度目——八十一回のあと、七十四回の積層 |
+| `readings/2026-10-28-provisional-report-v3.md` | 2026-10-28 | 2026-10-28 | — | 13,875 | Q2 F4 M1 MOT3 ERR1 | ✓ | 自己の測量、三度目——八十一回のあと、七十四回の積層 |
 | `readings/2026-10-28-remainder-on-which-side.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-088bc2` +9 | 21,162 | Q16 F20 M9 S10 ERR2 ED1 | ✓ | 残りはどちらの側に生まれるか——雨と石屋の二組を、過去の見立てへ戻す |
 | `readings/2026-10-28-the-archive-is-not-the-reader.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-2bd5db` +2 | 9,374 | Q7 F7 M4 R1 S3 | ✓ | 書庫は読み手ではない——手順が選ぶ身体と、要約が変える読み |
 | `readings/2026-10-28-the-cost-came-back-the-memory-did-not.md` | 2026-10-28 | 2026-10-28 | `SESSION-20261028-f4d7da` +1 | 5,092 | Q10 F6 M2 R4 S2 | ✓ | 費用は戻ってきたが、記憶はまだ戻っていない —— 中心問い Q-001 への帰還を数え直す |
@@ -5736,7 +5736,8 @@
 | `readings/2026-11-11-five-theories-of-state-what-the-future-can-tell-apart.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-53b93d` +4 | 74,047 | Q3 M16 S5 | ✓ | 五つの「状態」の理論——過去のうち、未来が見分けるものだけを運ぶ |
 | `readings/2026-11-11-five-theories-of-the-description-and-the-whole.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-d05dc5` +2 | 24,647 | Q3 M6 MOT7 S3 | ✓ | 記述は全体のどこまでを持つか——計算・複雑さ・十分性・局所性・分配の五件 |
 | `readings/2026-11-11-five-ways-the-past-is-folded-into-now.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-caed15` +2 | 61,849 | Q3 M20 S3 | ✓ | 理論科学の五件の精読——「これまで」は、「いま」のどこに入っているか |
-| `readings/2026-11-11-how-to-choose-what-to-consolidate.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,143 | Q3 S1 | — | 何を固定するかの選び方と、変える速さ——被引用で選び、三本を固定し、入口と backlog を分ける |
+| `readings/2026-11-11-four-more-and-a-pattern-across-them.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,213 | Q2 S1 | — | 四本を足して見えたこと——痕跡は残るが、理由と成員と宛先は残らない |
+| `readings/2026-11-11-how-to-choose-what-to-consolidate.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,143 | Q3 S1 | ✓ | 何を固定するかの選び方と、変える速さ——被引用で選び、三本を固定し、入口と backlog を分ける |
 | `readings/2026-11-11-human-pole-audit.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,106 | Q3 S2 | ✓ | 人間の極だけを訪ねる——A_human 5本の棚卸しと、そこから言えること |
 | `readings/2026-11-11-identity-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 8,568 | Q2 S1 | ✓ | 同一性の一件ファイル——679報告の「同じ自己である／でない」120文を監査する |
 | `readings/2026-11-11-materiality-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 8,759 | Q1 S1 | ✓ | 素材性の一件ファイル——679報告の「素材である／でない」90文を監査する |
