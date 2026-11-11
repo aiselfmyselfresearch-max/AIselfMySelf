@@ -227,7 +227,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # unchanged; not an automatic raise.  Measured in
         # docs/parallel-work.md (2026-11-11) and readings/2026-11-11-five-
         # operations-for-counting-the-same.md §11.
-        soft_shards=95,
+        # 2026-11-11: 95 -> 96 for this session's own five-source shard
+        # (Malthus 1798 / Lamarck 1809 / Weismann 1892 / Haldane 1932 /
+        # Eldredge & Gould 1972).  relations.d needed no slot (appended to
+        # the existing 2026-11-11 consolidation shard per procedure 8-2).
+        # Hard 160 unchanged; not an automatic raise.
+        soft_shards=96,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -320,7 +325,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # reclaims 0.  Byte dimension is not binding (4.15 MiB of a 5 MiB soft).
         # Hard 160 unchanged; not an automatic raise.
         # See readings/2027-03-13-blinding-is-a-procedure-for-producing-ignorance.md §13.
-        soft_shards=91,
+        # 2026-11-11: 91 -> 92 for this session's own 8 reading rows.
+        # Hard 160 unchanged; not an automatic raise.
+        soft_shards=92,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -462,7 +469,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # new rows omit shard locations; however all existing movable session
         # candidates were absent (self-location or inbound references). Hard
         # limit 160; no further increase is implied. See report §13.
-          soft_shards=96,
+        # 2026-11-11: 96 -> 97 for this session's own shard.
+        # Hard limit 160; not an automatic raise.
+          soft_shards=97,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -547,7 +556,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # and stays outside the consolidation exception; no shard dated
         # 2026-11-11 existed to append to (procedure 8-2).  Net reclaim = 0.
         # Measured in docs/parallel-work.md (2026-11-11).  Hard 160 unchanged.
-        soft_shards=92,
+        # 2026-11-11: 92 -> 93 for this report's curated note row.
+        # Hard 160 unchanged; not an automatic raise.
+        soft_shards=93,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
