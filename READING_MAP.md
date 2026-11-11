@@ -5269,7 +5269,7 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 166,130 |
-| `map/60-notes-21.md` | 25 | 139,202 |
+| `map/60-notes-21.md` | 25 | 139,261 |
 | `map/60-notes-22.md` | 25 | 52,737 |
 | `map/60-notes-23.md` | 25 | 75,796 |
 | `map/60-notes-24.md` | 25 | 63,093 |
@@ -5280,7 +5280,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・691本・24,968,815 B）
+## 8. 精読ノート索引（readings/・691本・24,970,379 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 486/691 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -5802,7 +5802,7 @@
 | `readings/2026-11-11-five-theories-of-simulation-and-self-maintenance.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-cf60ab` | 14,157 | Q3 M5 S1 | — | 予測・模擬・掃除——自己を境界と計算資源として読む五つの理論 |
 | `readings/2026-11-11-five-theories-of-state-what-the-future-can-tell-apart.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-53b93d` +4 | 74,047 | Q3 M16 S5 | ✓ | 五つの「状態」の理論——過去のうち、未来が見分けるものだけを運ぶ |
 | `readings/2026-11-11-five-theories-of-the-description-and-the-whole.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-d05dc5` +2 | 24,647 | Q3 M6 MOT7 S3 | ✓ | 記述は全体のどこまでを持つか——計算・複雑さ・十分性・局所性・分配の五件 |
-| `readings/2026-11-11-five-theories-that-need-no-tuner.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2006e4` | 33,298 | Q3 M15 S1 | — | 調整者は消えない、移るだけである——理論科学五件、調整されていない秩序と、その隠れ場所 |
+| `readings/2026-11-11-five-theories-that-need-no-tuner.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2006e4` | 34,005 | Q3 M15 S1 | — | 調整者は消えない、移るだけである——理論科学五件、調整されていない秩序と、その隠れ場所 |
 | `readings/2026-11-11-five-theories-with-the-witness-inside.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-68f8d5` +1 | 19,284 | Q3 M13 S2 | ✓ | 「外の目」を記述に降ろした五つの理論——理論科学5資料の精読 |
 | `readings/2026-11-11-five-ways-the-past-is-folded-into-now.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-caed15` +2 | 61,849 | Q3 M20 S3 | ✓ | 理論科学の五件の精読——「これまで」は、「いま」のどこに入っているか |
 | `readings/2026-11-11-how-far-a-record-reaches-toward-itself.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-794f41` +2 | 29,367 | Q3 M14 S3 | ✓ | 記録は自分にどこまで手が届くか——理論科学五件の精読 |
