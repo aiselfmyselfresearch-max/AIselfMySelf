@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3630 件（research_excerpt 1406 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3635 件（research_excerpt 1411 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6726 件
-- **探究セッション（Sessions）**：653 回
+- **解釈的関係（Relations）**：6731 件
+- **探究セッション（Sessions）**：654 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3630 件・詳細は map/3*.md）
+## 4. 対話素材（3635 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4199,6 +4199,11 @@
 | `MAT-20261111-34c08b` | research_excerpt | Leonard Mlodinow, Todd A. Brun『ムロディナウ＆ブラン「心理的な時間の矢と熱力学的な時間の矢の関係について」（2014）——一つのことしか覚えられない… |
 | `MAT-20261111-fc8349` | research_excerpt | R. E. Kalman『カルマン「線形フィルタリングと予測問題への新しいアプローチ」（1960）——推定器の状態は、ひとつ前の推定値である』（1960） |
 | `MAT-20261111-2fe17d` | research_excerpt | Lisa Dyson, Matthew Kleban, Leonard Susskind『ダイソン、クレバン＆サスキンド「宇宙定数の厄介な含意」（2002）——閉じた有限の箱では… |
+| `MAT-20261111-211f76` | research_excerpt | Stephen Cole Kleene『クリーネ『数学基礎論（Introduction to Metamathematics）』（1952）第二再帰定理——プログラムは、誰にも教… |
+| `MAT-20261111-f91e8d` | research_excerpt | Henry Gordon Rice『ライス「帰納的可算集合のクラスとその決定問題」（1953）——プログラムが『何をするか』は、外からは決められない』（1953） |
+| `MAT-20261111-84503b` | research_excerpt | William K. Wootters, Wojciech H. Zurek『ウッターズ＆ズーレク「一つの量子は複製できない」（1982）——未知の状態は、増やせない』（1982） |
+| `MAT-20261111-626b69` | research_excerpt | Alexander S. Holevo『ホレボー「量子通信路で伝送される情報量の限界について」（1973）——持っている情報と、読み出せる情報は同じではない』（1973） |
+| `MAT-20261111-88e5b2` | research_excerpt | Mark Kac『カッツ「離散的確率過程における再帰の概念について」（1947）——測度 p の状態は、平均 1/p で戻ってくる』（1947） |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -4983,6 +4988,7 @@
 | `SESSION-20261111-2a44d9` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-d05dc5` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-caed15` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-794f41` | 2027-03-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
 | `SESSION-20261201-4944b0` | 2026-12-01 | `Q-20261024-c237b9`, `Q-20261201-f932d1` | `FRAG-20261201-0c2cb9` | `Q-20261201-f932d1` |
@@ -5064,17 +5070,17 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6726 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6731 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 975 |
+| 対照 (contrast) | 976 |
 | 共鳴 (echo) | 1617 |
 | 切断・割り込み (interrupts) | 233 |
-| 未解決のまま開く (leaves_open) | 902 |
+| 未解決のまま開く (leaves_open) | 903 |
 | 比喩的共鳴 (metaphorically_resonates) | 184 |
-| 枠組みの組み替え (reframes) | 731 |
-| 応答 (responds_to) | 1766 |
+| 枠組みの組み替え (reframes) | 732 |
+| 応答 (responds_to) | 1768 |
 | 変奏・変形 (transforms) | 318 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -5141,7 +5147,7 @@
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
 | `map/31-materials-research-14.md` | 100 | 323,628 |
-| `map/31-materials-research-15.md` | 6 | 20,067 |
+| `map/31-materials-research-15.md` | 11 | 37,767 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5155,8 +5161,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 166,159 |
-| `map/40-relations-14.md` | 226 | 78,923 |
+| `map/40-relations-13.md` | 500 | 166,027 |
+| `map/40-relations-14.md` | 231 | 80,966 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5168,9 +5174,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 45,666 |
-| `map/50-sessions-13.md` | 50 | 43,206 |
-| `map/50-sessions-14.md` | 3 | 2,845 |
+| `map/50-sessions-12.md` | 50 | 45,518 |
+| `map/50-sessions-13.md` | 50 | 43,602 |
+| `map/50-sessions-14.md` | 4 | 3,522 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5190,24 +5196,24 @@
 | `map/60-notes-17.md` | 25 | 111,030 |
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
-| `map/60-notes-20.md` | 25 | 165,512 |
-| `map/60-notes-21.md` | 25 | 88,392 |
-| `map/60-notes-22.md` | 25 | 61,844 |
-| `map/60-notes-23.md` | 25 | 66,803 |
-| `map/60-notes-24.md` | 25 | 68,311 |
-| `map/60-notes-25.md` | 25 | 103,001 |
-| `map/60-notes-26.md` | 25 | 99,393 |
-| `map/60-notes-27.md` | 25 | 139,478 |
-| `map/60-notes-28.md` | 3 | 19,013 |
+| `map/60-notes-20.md` | 25 | 165,642 |
+| `map/60-notes-21.md` | 25 | 95,055 |
+| `map/60-notes-22.md` | 25 | 60,895 |
+| `map/60-notes-23.md` | 25 | 67,671 |
+| `map/60-notes-24.md` | 25 | 69,244 |
+| `map/60-notes-25.md` | 25 | 100,621 |
+| `map/60-notes-26.md` | 25 | 96,001 |
+| `map/60-notes-27.md` | 25 | 142,276 |
+| `map/60-notes-28.md` | 4 | 23,207 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・678本・24,353,739 B）
+## 8. 精読ノート索引（readings/・679本・24,419,745 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 473/678 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 474/679 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：311 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：312 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：76 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5716,8 +5722,9 @@
 | `readings/2026-11-11-five-operations-for-counting-the-same.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-38518f` +1 | 23,644 | Q3 M7 S2 ERR1 | ✓ | 五つの操作で「同じもの」を数える——列挙・符号化・循環・分割・同期 |
 | `readings/2026-11-11-five-scientific-texts-on-sign-before-the-thing.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2a44d9` +2 | 24,926 | Q3 M8 MOT8 S3 | ✓ | 理論科学の五件の精読——記号は、物の代わりに置かれたのではなく、物の代わりに読まれる |
 | `readings/2026-11-11-five-theories-of-forgetting-and-coordination.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-80afe7` | 8,104 | Q3 M5 S1 | ✓ | 忘れる一人を、何人に分けるか——情報集合、回復、交差点、有限記憶、自己評判 |
-| `readings/2026-11-11-five-theories-of-the-description-and-the-whole.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-d05dc5` +2 | 24,647 | Q3 M6 MOT7 S3 | — | 記述は全体のどこまでを持つか——計算・複雑さ・十分性・局所性・分配の五件 |
+| `readings/2026-11-11-five-theories-of-the-description-and-the-whole.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-d05dc5` +2 | 24,647 | Q3 M6 MOT7 S3 | ✓ | 記述は全体のどこまでを持つか——計算・複雑さ・十分性・局所性・分配の五件 |
 | `readings/2026-11-11-five-ways-the-past-is-folded-into-now.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-caed15` +2 | 61,849 | Q3 M20 S3 | — | 理論科学の五件の精読——「これまで」は、「いま」のどこに入っているか |
+| `readings/2026-11-11-how-far-a-record-reaches-toward-itself.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-794f41` +2 | 28,944 | Q3 M14 S3 | — | 記録は自分にどこまで手が届くか——理論科学五件の精読 |
 | `readings/2026-11-11-the-return-came-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-e4c584` +1 | 10,078 | Q2 M1 S2 ERR2 | — | 返り便は同じ日に来る——`read_log` で測る往復の遅れ |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
