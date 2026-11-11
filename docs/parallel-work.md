@@ -710,3 +710,61 @@ gh pr list --state open --json number,files \
 # 規則9
 python3 tools/read_log_backfill.py --check --since 2026-11-10 --enforce
 ```
+
+## 2026-11-11（第四回）：五コレクションが同時に枠0のまま、追記だけで完了した（実測）
+
+`SESSION-20261111-2a44d9`（報告：[`readings/2026-11-11-five-scientific-texts-on-sign-before-the-thing.md`](../readings/2026-11-11-five-scientific-texts-on-sign-before-the-thing.md) §0・§10）。素材5件を追加した回である。**上限は1つも上げていない**（`tools/size_budget.py` は無変更）。**手順も足していない。**
+
+### 開始時の状態
+
+基点 `8560a21`。`--strict` の実測は `materials.d` 94/94・`read_log.d` 91/91・`notes.d` 92/92・`sessions.d` 96/96・`relations.d` 80/80。**五コレクションすべてが soft ちょうどで、残枠0**（読書行を足すコレクションとしては過去最大の同時詰まり）。`fragments.d` 32/80・`questions.d` 43/80・`motifs.d` 40/80・`errata.d` 79/80・`editorial_decisions.d` 25/80 は枠があったが、本回は断片・問い・訂正録・編集判断を作らなかったため使っていない。
+
+### 何をしたか
+
+1. **統合を1本も作らなかった。** まず隣接ゼロ12桁ペアを数えた（`materials` 1・`read_log` 12・`notes` 5・`sessions` 8・`relations` 7）。ペアがあることは枠が作れることを意味しない。前日（第三回）の実測どおり、統合の可否は「移動する行が自己所在地を書いていないこと」と「シャード名が本文から参照されていないこと」で決まる。
+2. **手順8-2（既存の統合シャードへの追記）で五つとも済ませた。** 追記先は本日付の既存シャード各1本。確かめた条件は四つ：ファイル名の日付が実日付（2026-11-11）であること、オープンPRが当該経路に触れていないこと（`gh pr list --state open --json files` で0件）、既存行の著者セッションがすべてマージ済みであること、自分の行と報告本文にシャード名を書かないこと。
+3. **追記後も `--strict` は rc=0。** ファイル数は5ディレクトリとも不変、バイトだけが増えた。
+
+| コレクション | 追記行数 | ファイル数 | 追記後のバイト |
+|---|---|---|---|
+| `materials.d` | 5 | 94 → 94 | 8.86 MB → 8.89 MB |
+| `read_log.d` | 8 | 91 → 91 | 4.49 MB → 4.51 MB |
+| `notes.d` | 1 | 92 → 92 | 899 KB → 903 KB |
+| `sessions.d` | 1 | 96 → 96 | 2.39 MB → 2.42 MB |
+| `relations.d` | 5 | 80 → 80 | 2.40 MB → 2.41 MB |
+
+### 分かったこと
+
+1. **「残枠0」は、行が書けないことを意味しない。** 手順8-2 は五コレクション同時詰まりでも機能した。1セッションが五つ全部に書く場合でも、本日付の受け皿が既にあれば足りる。**枠の引上げを既定にしない、という運用は三日連続で守られた**（第一回から第四回まで、引上げ0件）。
+2. **ただし `notes.d` は例外の外にある。** `docs/parallel-work.md` §3 は `notes.d`・`motifs.d` を「順序感受性が高い」として統合の例外に加えていない。本回の追記は既存シャードへの追記なので順序は変わっていないが、**この経路は「統合しない」ことの代替であって、統合の許可ではない。** 次に `notes.d` の枠を作る必要が生じたセッションは、統合ではなく別の手段（行を短くする・上限の見直しを editorial_review に上げる）を先に選ぶこと。
+3. **「専用シャード」という書き方は、既に同日のうちに崩れていた（実測）。** 追記先5本の追記前の行を著者セッションで数えると、`materials` は1セッション（15行）だけ、`notes`・`read_log`・`sessions` は**すでに4セッション**（`SESSION-20261111-38518f`・`-3fc37e`・`-80afe7`・`-e4c584`）の行が混在し、`relations` は256行の共有統合シャードだった。つまり第三回 §4 が「副作用」として記した事態は、本回の開始時点で**すでに常態**である。したがって「専用シャード」という語は、名指しした時点でしか正しくない。**名指しをやめるのではなく、名指しが一日もたないことを前提に読む。** なお本回は自分の行にシャード名を書いていない（手順8-2）。
+4. **バイト側はまだ余裕がある。** `read_log.d` は 4.51 MB / soft 5.00 MB、`materials.d` は 8.89 MB / soft 10.00 MB。**ファイル数の壁に先に当たり、バイトの壁には当たっていない。** 統合ではバイトは1 Bも減らないので、この順序で壁に当たることは、統合主体の運用と整合している。
+
+### この実測が変えたこと、変えなかったこと
+
+- **変えた**：この節。素材5行・読書8行・ノート1行・セッション1行・関係線5行。報告1本。
+- **変えなかった**：`tools/size_budget.py`（`soft_shards` の引上げ0件）、`hard_shards`（すべて160）、手順1〜8 と規則9 の文面、`README.md`・`docs/sessions.md`（B案）、既存の台帳行の内容。
+- **保留（提案であり、規則ではない）**：`materials.d`・`read_log.d`・`notes.d`・`sessions.d`・`relations.d` の五つが同時に 0 になる頻度が上がっている。恒久策（日付ごとのゼロ接尾辞アンカーを先に作る、`notes.d` の順序規則を定義する）は 2026-11-11 の第一回から**三回連続で `editorial_review` の議題に送られ、まだ扱われていない。** 本回も扱わない。四回目が来たら、この保留そのものを議題にする。
+
+### 再現手順
+
+```bash
+# 開始時の枠（五つとも 0 であること）
+python3 tools/size_budget.py --strict
+# 隣接ゼロ12桁ペア（枠が作れるとは限らない）
+python3 - <<'EOF'
+import glob,os
+for c in ['materials','read_log','notes','sessions','relations']:
+    n=sorted(os.path.basename(x) for x in glob.glob(f'state/{c}.d/*.jsonl'))
+    pairs=[(n[i],n[i+1]) for i in range(len(n)-1)
+           if n[i].endswith('-000000000000.jsonl') and n[i+1].endswith('-000000000000.jsonl')]
+    print(c,len(pairs),'adjacent zero-pairs')
+EOF
+# 本日付の経路に触れているオープン PR（手順8-2 の前提。0件であること）
+gh pr list --state open --json number,files \
+  --jq '.[] | select(any(.files[]; .path | test("2026-11-11"))) | .number'
+# 追記後
+python3 tools/validate_seed.py
+python3 tools/inspect_inquiry.py --check-map
+python3 tools/read_log_backfill.py --check --since 2026-11-10 --enforce
+```
