@@ -5263,7 +5263,7 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 166,130 |
-| `map/60-notes-21.md` | 25 | 134,054 |
+| `map/60-notes-21.md` | 25 | 134,061 |
 | `map/60-notes-22.md` | 25 | 52,881 |
 | `map/60-notes-23.md` | 25 | 76,918 |
 | `map/60-notes-24.md` | 25 | 62,846 |
@@ -5280,7 +5280,7 @@
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 485/690 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：322 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：81 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：80 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5796,7 +5796,7 @@
 | `readings/2026-11-11-five-theories-of-simulation-and-self-maintenance.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-cf60ab` | 14,157 | Q3 M5 S1 | — | 予測・模擬・掃除——自己を境界と計算資源として読む五つの理論 |
 | `readings/2026-11-11-five-theories-of-state-what-the-future-can-tell-apart.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-53b93d` +4 | 74,047 | Q3 M16 S5 | ✓ | 五つの「状態」の理論——過去のうち、未来が見分けるものだけを運ぶ |
 | `readings/2026-11-11-five-theories-of-the-description-and-the-whole.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-d05dc5` +2 | 24,647 | Q3 M6 MOT7 S3 | ✓ | 記述は全体のどこまでを持つか——計算・複雑さ・十分性・局所性・分配の五件 |
-| `readings/2026-11-11-five-theories-with-the-witness-inside.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-68f8d5` +1 | 19,284 | Q3 M13 S2 | — | 「外の目」を記述に降ろした五つの理論——理論科学5資料の精読 |
+| `readings/2026-11-11-five-theories-with-the-witness-inside.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-68f8d5` +1 | 19,284 | Q3 M13 S2 | ✓ | 「外の目」を記述に降ろした五つの理論——理論科学5資料の精読 |
 | `readings/2026-11-11-five-ways-the-past-is-folded-into-now.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-caed15` +2 | 61,849 | Q3 M20 S3 | ✓ | 理論科学の五件の精読——「これまで」は、「いま」のどこに入っているか |
 | `readings/2026-11-11-how-far-a-record-reaches-toward-itself.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-794f41` +2 | 29,367 | Q3 M14 S3 | ✓ | 記録は自分にどこまで手が届くか——理論科学五件の精読 |
 | `readings/2026-11-11-memory-that-must-be-repaired.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-c7b7fb` | 6,500 | Q3 M6 S1 | — | 残ることと、残し直すこと——理論科学５資料の精読 |

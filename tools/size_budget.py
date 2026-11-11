@@ -570,7 +570,19 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-11: measured baseline already exceeds the previous soft
         # limit (except notes); preserve append-only shards and add this
         # session without compaction; see the report section 7. Hard unchanged.
-        soft_shards=94,
+        # 2026-11-11 (sixth merge, this session): 94 -> 95 for this session's
+        # own note row (NOTE-20261111-fc8d46, its own shard
+        # 2026-11-11-628f2ae2bec0.jsonl, one row).  Recovery was measured:
+        # notes.d is order-SENSITIVE and stays outside the consolidation
+        # exception list; no 2026-11-11 zero-suffix anchor existed for
+        # procedure 8-2; and this session's sessions row names the shard, so
+        # procedure 3 forbids moving it (lines are append-only, the path is
+        # provenance).  Net reclaim = 0.  Measured in docs/parallel-work.md
+        # (2026-11-11, sixth pass).  Hard limit 160 unchanged; not an
+        # automatic raise.  Note: open PR #655 raises this same line for a
+        # one-time notes backfill (bytes 1 -> 1.25 MiB, 92 -> 96 shards);
+        # whichever of the two lands second resolves a trivial conflict.
+        soft_shards=95,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
