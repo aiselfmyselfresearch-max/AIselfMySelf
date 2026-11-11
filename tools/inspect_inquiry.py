@@ -614,6 +614,13 @@ def related_notes_lines(
         for claim in (curated.get("claims") or [])[:3]:
             anchor = f"（{claim['anchor']}）" if claim.get("anchor") else ""
             lines.append(f"  - **固定された主張** `{claim.get('claim_id')}` [{claim.get('kind')}]{anchor} {_one_line(claim.get('text', ''), 160)}")
+            scope = claim.get("scope")
+            if isinstance(scope, dict) and scope:
+                shown = " / ".join(
+                    f"{field}={scope[field]}" for field in ("object", "basis", "sense") if scope.get(field)
+                )
+                if shown:
+                    lines.append(f"      - 適用範囲（引用）: {_one_line(shown, 120)}")
         if entry.get("note_id"):
             lines.append(
                 "  - 台帳行 `" + str(entry["note_id"]) + "`（`read_log` の `target.type` を `note` にしてこのノートを引用できます）"

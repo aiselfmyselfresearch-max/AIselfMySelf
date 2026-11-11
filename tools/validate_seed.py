@@ -7,6 +7,7 @@ that IDs referenced across JSONL collections actually exist.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -32,6 +33,13 @@ COLLECTIONS = {
     "notes": ("notes.jsonl", "note_id", "note.schema.json"),
 }
 
+# Optional claim scope: the three distinctions a claim can be silent about.
+# Values are free text (must appear verbatim in the report) or a ledger ID, so
+# the validator never has to know the archive's vocabulary.
+NOTE_CLAIM_SCOPE_FIELDS = ("object", "basis", "sense")
+NOTE_CLAIM_SCOPE_LIMIT = 200
+LEDGER_ID_PATTERN = re.compile(r"^(Q|MAT|FRAG|MOTIF|REL|SESSION|NOTE|ED|ERR)-[0-9A-Za-z-]+$")
+
 # Fields of a note claim that must point at existing ledger records.
 NOTE_CLAIM_REF_FIELDS = (
     ("question_ids", "questions"),
@@ -39,6 +47,33 @@ NOTE_CLAIM_REF_FIELDS = (
     ("material_ids", "materials"),
     ("motif_ids", "motifs"),
 )
+
+
+def claim_scope_errors(claim: dict[str, Any], body: str) -> list[str]:
+    """Check a claim's optional ``scope`` against the report body it cites.
+
+    The scope records which object a claim speaks about, by which basis, in
+    which sense. Its values must be anchored: either a verbatim fragment of the
+    report body (so the words come from the report, not from a new vocabulary),
+    or a ledger ID (so the scope points at an existing record). An absent scope
+    is legal and means undecided.
+    """
+    scope = claim.get("scope")
+    if not isinstance(scope, dict):
+        return []
+    errors: list[str] = []
+    for field in NOTE_CLAIM_SCOPE_FIELDS:
+        value = scope.get(field)
+        if not isinstance(value, str) or not value.strip():
+            continue  # schema validation reports the shape error
+        if len(value) > NOTE_CLAIM_SCOPE_LIMIT:
+            errors.append(f"scope.{field} is too long ({len(value)} > {NOTE_CLAIM_SCOPE_LIMIT})")
+        elif value not in body and not LEDGER_ID_PATTERN.match(value):
+            errors.append(
+                f"scope.{field} must quote the report verbatim or name a ledger ID "
+                f"(quote the words, do not describe them): {value!r}"
+            )
+    return errors
 
 
 def matches_type(value: Any, expected: str) -> bool:
@@ -210,7 +245,18 @@ def main() -> int:
     # The report body is the source of truth for derived facts (harvested by
     # tools/note_index.py); here we only check that a row points at a real file,
     # a real session, real ledger IDs, and a real earlier row it supersedes.
+    report_bodies: dict[str, str] = {}
     for note_id, record in notes.items():
+        body_path = record.get("path")
+        report_body = ""
+        if isinstance(body_path, str) and body_path in report_bodies:
+            report_body = report_bodies[body_path]
+        elif isinstance(body_path, str) and (ROOT / body_path).is_file():
+            try:
+                report_body = (ROOT / body_path).read_text(encoding="utf-8")
+            except OSError:
+                report_body = ""
+            report_bodies[body_path] = report_body
         for field in ("session_id", "report_session_id"):
             value = record.get(field)
             if isinstance(value, str) and value and value not in sessions:
@@ -233,6 +279,8 @@ def main() -> int:
                     if claim_id in seen_claims:
                         errors.append(f"notes:{note_id}: duplicate claim_id {claim_id!r}")
                     seen_claims.add(claim_id)
+                for problem in claim_scope_errors(claim, report_body):
+                    errors.append(f"notes:{note_id}: claims[{position}].{problem}")
                 for field, target_name in NOTE_CLAIM_REF_FIELDS:
                     values = claim.get(field, [])
                     if not isinstance(values, list):

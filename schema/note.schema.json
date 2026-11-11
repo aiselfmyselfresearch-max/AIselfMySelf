@@ -115,7 +115,18 @@
           "question_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
           "fragment_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
           "material_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
-          "motif_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+          "motif_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "scope": {
+            "type": "object",
+            "description": "Optional. Which object, by which basis, in which sense this claim speaks. The three names are distinctions, not categories, and each value is a quotation: it must appear verbatim in the report body, or be a ledger ID. Quote the words, do not describe them (self, not \"the identity of the subject\"). An absent scope means the scope is undecided, not that the claim is universal.",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "properties": {
+              "object": {"type": "string", "minLength": 1},
+              "basis": {"type": "string", "minLength": 1},
+              "sense": {"type": "string", "minLength": 1}
+            }
+          }
         }
       }
     },
