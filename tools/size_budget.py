@@ -215,7 +215,19 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # moved by 1 each and this is the only raise. Hard 160 unchanged; not an
         # automatic raise. See readings/2027-03-13-blinding-is-a-procedure-for-
         # producing-ignorance.md §13.
-        soft_shards=93,
+        # 2026-11-11: 93 -> 94 for this session's own five-source shard
+        # (Cantor 1891 / Godel 1931 / Carnot 1824 / Boltzmann 1877 /
+        # Einstein 1905).  Recovery was measured first and is zero: 7 movable
+        # shards exist but no two of them are adjacent, and no same-date group
+        # with a zero-suffix anchor is fully movable (2026-11-06: 1 movable of
+        # 29; 2026-11-08: 1 of 22; 2026-11-10: 1 of 2).  sessions.d and
+        # read_log.d were consolidated first (1 shard each, byte-multiset
+        # verified), relations.d needed no slot (appended to the existing
+        # 2026-11-11 consolidation shard per procedure 8-2).  Hard 160
+        # unchanged; not an automatic raise.  Measured in
+        # docs/parallel-work.md (2026-11-11) and readings/2026-11-11-five-
+        # operations-for-counting-the-same.md §11.
+        soft_shards=94,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -529,7 +541,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-09: 90 -> 91 for this report's curated note. No order-preserving
         # compaction candidate was available; notes.d is order-sensitive and is
         # excluded from consolidation. Hard limit 160; not an automatic raise.
-          soft_shards=91,
+        # 2026-11-11: 91 -> 92 for this report's curated note row.  notes.d is
+        # order-SENSITIVE (reversing intra-date union order changes
+        # READING_MAP.md, map_build output, the inquiry packet and date_axis)
+        # and stays outside the consolidation exception; no shard dated
+        # 2026-11-11 existed to append to (procedure 8-2).  Net reclaim = 0.
+        # Measured in docs/parallel-work.md (2026-11-11).  Hard 160 unchanged.
+        soft_shards=92,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "

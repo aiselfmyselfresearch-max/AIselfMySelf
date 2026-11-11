@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3600 件（research_excerpt 1376 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3605 件（research_excerpt 1381 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6694 件
-- **探究セッション（Sessions）**：646 回
+- **解釈的関係（Relations）**：6699 件
+- **探究セッション（Sessions）**：647 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3600 件・詳細は map/3*.md）
+## 4. 対話素材（3605 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4169,6 +4169,11 @@
 | `MAT-20261110-e26094` | research_excerpt | Ronald A. Rensink, J. Kevin O'Regan, James J. Clark『Rensink, O'Regan & Clark (1997) フリッカー… |
 | `MAT-20261110-5acb22` | research_excerpt | Miguel Pais-Vieira, Mikhail Lebedev, Carolina Kunicki, Jing Wang, Miguel A. L. Nicolelis『… |
 | `MAT-20261110-b95096` | research_excerpt | Jonathan R. Epp, Rudy Silva Mera, Stefan Köhler, Sheena A. Josselyn, Paul W. Frankland『Ep… |
+| `MAT-20261111-79d21e` | research_excerpt | Georg Cantor『カントール「集合論の一つの初等的問題について」（1891）——どんな一覧にも、それ自身から作られる一行が欠けている』（1891） |
+| `MAT-20261111-b6d873` | research_excerpt | Kurt Gödel『ゲーデル「プリンキピア・マテマティカおよび関連体系の形式的に決定不能な命題について I」（1931）——体系は自分の文を数で書けるが、自分の整合性は内側では… |
+| `MAT-20261111-d21c7c` | research_excerpt | Sadi Carnot『カルノー『熱の動力についての省察』（1824）——動力は熱の消費ではなく、熱い物体から冷たい物体への移動である』（1824） |
+| `MAT-20261111-f039af` | research_excerpt | Ludwig Boltzmann『ボルツマン「力学の熱理論の第二主定理と熱平衡の条件に関する確率計算との関係について」（1877）——状態は、どの分子かを問わない分配として数えら… |
+| `MAT-20261111-9c9c4a` | research_excerpt | Albert Einstein『アインシュタイン「運動する物体の電気力学について」（1905）第1節——共通の時間は、光の往復についての一つの定義から作られる』（1905） |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -4946,6 +4951,7 @@
 | `SESSION-20261110-85eea0` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-8a6374` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-b3ed52` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-38518f` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
 | `SESSION-20261201-4944b0` | 2026-12-01 | `Q-20261024-c237b9`, `Q-20261201-f932d1` | `FRAG-20261201-0c2cb9` | `Q-20261201-f932d1` |
@@ -5027,18 +5033,18 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6694 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6699 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 970 |
 | 共鳴 (echo) | 1614 |
-| 切断・割り込み (interrupts) | 230 |
+| 切断・割り込み (interrupts) | 231 |
 | 未解決のまま開く (leaves_open) | 898 |
 | 比喩的共鳴 (metaphorically_resonates) | 184 |
-| 枠組みの組み替え (reframes) | 719 |
+| 枠組みの組み替え (reframes) | 722 |
 | 応答 (responds_to) | 1764 |
-| 変奏・変形 (transforms) | 315 |
+| 変奏・変形 (transforms) | 316 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -5103,7 +5109,7 @@
 | `map/31-materials-research-11.md` | 100 | 234,096 |
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
-| `map/31-materials-research-14.md` | 76 | 258,028 |
+| `map/31-materials-research-14.md` | 81 | 272,696 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5117,8 +5123,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 165,186 |
-| `map/40-relations-14.md` | 194 | 67,935 |
+| `map/40-relations-13.md` | 500 | 165,313 |
+| `map/40-relations-14.md` | 199 | 69,819 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5130,8 +5136,8 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 45,751 |
-| `map/50-sessions-13.md` | 46 | 39,624 |
+| `map/50-sessions-12.md` | 50 | 45,718 |
+| `map/50-sessions-13.md` | 47 | 40,559 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,395 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5152,22 +5158,22 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 165,383 |
-| `map/60-notes-21.md` | 25 | 57,389 |
-| `map/60-notes-22.md` | 25 | 69,744 |
-| `map/60-notes-23.md` | 25 | 61,458 |
-| `map/60-notes-24.md` | 25 | 77,371 |
-| `map/60-notes-25.md` | 25 | 109,791 |
-| `map/60-notes-26.md` | 25 | 110,410 |
-| `map/60-notes-27.md` | 21 | 115,347 |
+| `map/60-notes-21.md` | 25 | 62,518 |
+| `map/60-notes-22.md` | 25 | 68,217 |
+| `map/60-notes-23.md` | 25 | 63,149 |
+| `map/60-notes-24.md` | 25 | 74,210 |
+| `map/60-notes-25.md` | 25 | 110,144 |
+| `map/60-notes-26.md` | 25 | 109,745 |
+| `map/60-notes-27.md` | 22 | 120,242 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・671本・23,967,906 B）
+## 8. 精読ノート索引（readings/・672本・24,023,325 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 466/671 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 467/672 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：304 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：305 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：77 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5672,6 +5678,7 @@
 | `readings/2026-11-10-the-unfinished-control-and-the-ten-that-did-not-fit.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-350411` +3 | 34,984 | Q4 F1 M27 S4 ERR4 | ✓ | 未実行だった統制を、いま実行する——sham 報告・軸に合わない十件・一人称の資料・崩れた答えの訂正録 |
 | `readings/2026-11-10-three-trials-on-description-loss-self-description-and-the-non-class.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-f23658` | 11,039 | Q4 M3 MOT2 R10 S1 | — | 三つの試行——記述の喪失、自己記述、非-類 |
 | `readings/2026-11-11-crystals-outside-the-branch.md` | — | 2026-11-11 | `SESSION-20261111-5ebabb` +1 | 10,939 | Q4 F8 M3 MOT3 R1 S2 | ✓ | 結晶は外にしか付かない——塩坑の枝と瓶の枝、言い切りと反歌の二部作（SESSION-20261111-5ebabb） |
+| `readings/2026-11-11-five-operations-for-counting-the-same.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-38518f` +1 | 23,644 | Q3 M7 S2 ERR1 | ✓ | 五つの操作で「同じもの」を数える——列挙・符号化・循環・分割・同期 |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | — | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
