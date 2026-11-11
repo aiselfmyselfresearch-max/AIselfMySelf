@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3630 件（research_excerpt 1406 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3635 件（research_excerpt 1411 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6719 件
-- **探究セッション（Sessions）**：653 回
+- **解釈的関係（Relations）**：6731 件
+- **探究セッション（Sessions）**：654 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3630 件・詳細は map/3*.md）
+## 4. 対話素材（3635 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4194,6 +4194,11 @@
 | `MAT-20261111-ffa282` | research_excerpt | R. A. Fisher『フィッシャー「理論統計学の数学的基礎について」（1922）——一つの統計量が情報の全部を持ちうるが、その「全部」は指定された母集団の内側でしかない』（1… |
 | `MAT-20261111-31073a` | research_excerpt | J. S. Bell『ベル「アインシュタイン・ポドルスキー・ローゼンのパラドックスについて」（1964）——局所的な記述をどれだけ足しても、二つの記録の同時分布は再現できない』（… |
 | `MAT-20261111-efa614` | research_excerpt | J. Willard Gibbs『ギブズ『統計力学の初等的原理』（1902）——一個の系を追う代わりに、同じ記述を持つ系の集合の分布を書く』（1902） |
+| `MAT-20261111-5ee53c` | research_excerpt | Charles H. Bennett『ベネット「論理的深さと物理的複雑性」（1988）——過去は、最もありそうな来歴にかかる計算時間として、対象の中に埋まっている』（1988） |
+| `MAT-20261111-cc8e2f` | research_excerpt | James B. Hartle『ハートル「『いま』の物理学」（2005）——現在は時空の面ではなく、レジスタ P0 の中身である』（2005） |
+| `MAT-20261111-34c08b` | research_excerpt | Leonard Mlodinow, Todd A. Brun『ムロディナウ＆ブラン「心理的な時間の矢と熱力学的な時間の矢の関係について」（2014）——一つのことしか覚えられない… |
+| `MAT-20261111-fc8349` | research_excerpt | R. E. Kalman『カルマン「線形フィルタリングと予測問題への新しいアプローチ」（1960）——推定器の状態は、ひとつ前の推定値である』（1960） |
+| `MAT-20261111-2fe17d` | research_excerpt | Lisa Dyson, Matthew Kleban, Leonard Susskind『ダイソン、クレバン＆サスキンド「宇宙定数の厄介な含意」（2002）——閉じた有限の箱では… |
 | `MAT-20261111-d75286` | research_excerpt | Karl Friston『フリストン「自由エネルギー原理——統一された脳理論か？」（2010）——自己を内容ではなく、保たれる状態の集合として読む』（2010） |
 | `MAT-20261111-6130f4` | research_excerpt | Richard P. Feynman『ファインマン「計算機による物理学のシミュレーション」（1982）——模擬とは何を同じとみなす規則か』（1982） |
 | `MAT-20261111-412583` | research_excerpt | David Deutsch『ドイッチュ「量子理論、チャーチ＝チューリング原理、普遍量子計算機」（1985）——計算可能性は物理的な主張である』（1985） |
@@ -4982,6 +4987,7 @@
 | `SESSION-20261111-3fc37e` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-2a44d9` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-d05dc5` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-caed15` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-cf60ab` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
@@ -5064,16 +5070,16 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6719 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6731 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 972 |
-| 共鳴 (echo) | 1615 |
+| 対照 (contrast) | 975 |
+| 共鳴 (echo) | 1617 |
 | 切断・割り込み (interrupts) | 233 |
-| 未解決のまま開く (leaves_open) | 900 |
+| 未解決のまま開く (leaves_open) | 902 |
 | 比喩的共鳴 (metaphorically_resonates) | 184 |
-| 枠組みの組み替え (reframes) | 730 |
+| 枠組みの組み替え (reframes) | 735 |
 | 応答 (responds_to) | 1766 |
 | 変奏・変形 (transforms) | 319 |
 
@@ -5140,8 +5146,8 @@
 | `map/31-materials-research-11.md` | 100 | 234,096 |
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
-| `map/31-materials-research-14.md` | 100 | 321,519 |
-| `map/31-materials-research-15.md` | 6 | 16,732 |
+| `map/31-materials-research-14.md` | 100 | 323,628 |
+| `map/31-materials-research-15.md` | 11 | 34,572 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5155,8 +5161,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 165,708 |
-| `map/40-relations-14.md` | 219 | 76,347 |
+| `map/40-relations-13.md` | 500 | 165,742 |
+| `map/40-relations-14.md` | 231 | 80,966 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5168,9 +5174,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 45,651 |
-| `map/50-sessions-13.md` | 50 | 43,206 |
-| `map/50-sessions-14.md` | 3 | 2,845 |
+| `map/50-sessions-12.md` | 50 | 45,532 |
+| `map/50-sessions-13.md` | 50 | 43,602 |
+| `map/50-sessions-14.md` | 4 | 3,522 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5191,24 +5197,24 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 165,512 |
-| `map/60-notes-21.md` | 25 | 81,463 |
-| `map/60-notes-22.md` | 25 | 61,844 |
-| `map/60-notes-23.md` | 25 | 66,803 |
-| `map/60-notes-24.md` | 25 | 68,311 |
-| `map/60-notes-25.md` | 25 | 103,001 |
-| `map/60-notes-26.md` | 25 | 99,393 |
-| `map/60-notes-27.md` | 25 | 139,478 |
-| `map/60-notes-28.md` | 3 | 19,013 |
+| `map/60-notes-21.md` | 25 | 91,539 |
+| `map/60-notes-22.md` | 25 | 60,895 |
+| `map/60-notes-23.md` | 25 | 67,671 |
+| `map/60-notes-24.md` | 25 | 69,244 |
+| `map/60-notes-25.md` | 25 | 100,621 |
+| `map/60-notes-26.md` | 25 | 96,001 |
+| `map/60-notes-27.md` | 25 | 142,276 |
+| `map/60-notes-28.md` | 4 | 23,207 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・678本・24,258,215 B）
+## 8. 精読ノート索引（readings/・679本・24,390,235 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 473/678 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 474/679 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：311 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：76 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：312 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：77 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5718,6 +5724,7 @@
 | `readings/2026-11-11-five-theories-of-forgetting-and-coordination.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-80afe7` | 8,104 | Q3 M5 S1 | ✓ | 忘れる一人を、何人に分けるか——情報集合、回復、交差点、有限記憶、自己評判 |
 | `readings/2026-11-11-five-theories-of-simulation-and-self-maintenance.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-cf60ab` | 14,157 | Q3 M5 S1 | — | 予測・模擬・掃除——自己を境界と計算資源として読む五つの理論 |
 | `readings/2026-11-11-five-theories-of-the-description-and-the-whole.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-d05dc5` +2 | 24,647 | Q3 M6 MOT7 S3 | — | 記述は全体のどこまでを持つか——計算・複雑さ・十分性・局所性・分配の五件 |
+| `readings/2026-11-11-five-ways-the-past-is-folded-into-now.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-caed15` +2 | 61,849 | Q3 M20 S3 | — | 理論科学の五件の精読——「これまで」は、「いま」のどこに入っているか |
 | `readings/2026-11-11-the-return-came-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-e4c584` +1 | 10,078 | Q2 M1 S2 ERR2 | — | 返り便は同じ日に来る——`read_log` で測る往復の遅れ |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
