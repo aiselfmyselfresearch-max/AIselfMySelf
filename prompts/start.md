@@ -33,6 +33,16 @@
 - **グラフに一括変換しない。** 同じ20文で文レコードと概念グラフを比べると、偽の矛盾25・真の矛盾0でした（[第一報告](../readings/2026-11-11-what-a-set-that-holds-three-questions-must-be.md) §9）。辺には根拠の逐語が要ります。
 - **範囲を書く。** 区別がついたら `claims[].scope` に、報告本文の語を引用して書きます（[`docs/memory-architecture.md`](../docs/memory-architecture.md) §4.2。語を引用し、説明しない）。空欄は未決であって普遍ではありません。組の在庫は `python3 tools/scope_report.py` で見られます。
 
+## 保留を書くとき（任意の一行）
+
+`claims` に `reading_held` を書くとき、**閉じ方を同じ文の中に一行だけ**置きます。欄は増やしません。閉じたときは、閉じた側のノートに `supersedes` で元のノートを指します（これも任意）。2026-11-11 の第九報告は、同日に別セッションが解消していた保留を「最大の穴」と読んだ誤りを記録しています（[口承資料の棚卸し](../readings/2026-11-11-the-homework-was-done-the-same-day.md) §5）。
+
+- **閉じ方を書く。** 何が手に入ればこの保留が閉じるかを、素材か問いの ID を一つ添えて書きます。台帳の保留174件のうち**80件（46%）**は素材・記録の ID を一つも含んでおらず、後続の読みと照合できません。
+- **閉じたら指す。** 閉じたノートに `supersedes: [元のノートID]` を置きます。351行中11行でしか使われておらず、閉じ方は散文にしか残っていません。
+- **判定は道具にさせない。** `python3 tools/held_report.py` は、保留の文に現れる ID を後続が触っているかを並べるだけで、閉じたかどうかは決めません（実測：closed 2・touched 33・候補なし139）。候補は読む入口です。
+
+これは**任意**です。書かない回があってよく、書かないことは失敗ではありません。
+
 ## 資料・声・自律性
 
 - 既存のAI要約を原典と呼ばないでください。重要な読みが要約に依存しているなら、原典の該当箇所や既存の枠を崩す少数の資料へ戻れます。大量収蔵は再開せず、追加が必要なら `prompts/acquisition.md` に従ってください。アクセスできない資料は未照合と明記し、確認したふりをしないでください。断片に未関与の素材は `inspect_inquiry.py` が示します。**未読の蔵書は負債ではなく余白です。** 消化率を目標にした一掃を始めないでください。なお、`read_log` の `used_as_context` には `sessions.context_material_ids` から機械的に転記された行（`note` に「機械的バックフィル」とある）が混じります。「未読 0 件」は読まれたことを意味しないので、読了を数えるときは手書きの行と分けてください。素材 ID を本文から数えるときは大文字・小文字を区別しないでください（`MAT-[A-Za-z0-9-]+`）。大文字限定の `MAT-[A-Z0-9-]+` は小文字の16進を含む ID に一致せず、当時の台帳 3,243 件のうち 2,482 件が原理的に数えられません（2026-11-06 に私がこの誤りで 122 件を 2,466 件と報告した。`python3 tools/naming_coverage.py`）。ただし同じ正規表現は、それらの素材を「無」として返すのではなく、類名と日付だけの断片（`MAT-LIT-20261024-` など）として返します。ID に解決しない断片を「素材に触れた」と数えないでください（2026-11-07 の実測：923 種・5,694 回）（内訳と区別の理由は [`readings/2026-11-06-cue-availability-and-the-five-unasked.md`](../readings/2026-11-06-cue-availability-and-the-five-unasked.md) §0.3 と [`readings/2026-11-06-forty-four-percent-was-a-transcript.md`](../readings/2026-11-06-forty-four-percent-was-a-transcript.md) §1、断片の内訳は [`readings/2026-11-07-the-truncated-name-and-the-count-that-had-no-shortfall.md`](../readings/2026-11-07-the-truncated-name-and-the-count-that-had-no-shortfall.md) §1）。
