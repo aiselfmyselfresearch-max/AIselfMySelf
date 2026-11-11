@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3695 件（research_excerpt 1471 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3700 件（research_excerpt 1476 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6783 件
-- **探究セッション（Sessions）**：666 回
+- **解釈的関係（Relations）**：6789 件
+- **探究セッション（Sessions）**：667 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3695 件・詳細は map/3*.md）
+## 4. 対話素材（3700 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4174,6 +4174,11 @@
 | `MAT-20261111-e46530` | research_excerpt | Stuart A. Kauffman『カウフマン（1969）——配線をでたらめにしても、行き先の数は決まる』（1969） |
 | `MAT-20261111-ed8b7b` | research_excerpt | Per Bak, Chao Tang, Kurt Wiesenfeld『バク、タン＆ヴィーゼンフェルド（1987）——調整しない系が、調整した系のところへ自分で行く』（1987） |
 | `MAT-20261111-73daa1` | research_excerpt | David Blackwell, Lester Dubins『ブラックウェル＆ドゥビンズ（1962）——別の事前を持つ二人は、同じ記録で近づく（ただし条件つき）』（1962） |
+| `MAT-20261111-6119d9` | research_excerpt | Stefano Fusi, Patrick J. Drew, L. F. Abbott『Cascade Models of Synaptically Stored Memorie… |
+| `MAT-20261111-8559bb` | research_excerpt | Surya Ganguli, Dongsung Huh, Haim Sompolinsky『Memory traces in dynamical systems』（2008） |
+| `MAT-20261111-1c6c8c` | research_excerpt | Naftali Tishby, Fernando C. Pereira, William Bialek『The information bottleneck method』（20… |
+| `MAT-20261111-690632` | research_excerpt | Linxing Preston Jiang, Rajesh P. N. Rao『Dynamic predictive coding: A model of hierarchica… |
+| `MAT-20261111-cb1453` | research_excerpt | Michael E. Rule, Timothy O’Leary『Self-healing codes: How stable neural populations can tr… |
 | `MAT-20261111-d5f737` | research_excerpt | Werner Heisenberg『ハイゼンベルク（1927）『量子理論的運動学と力学の直観的内容』——「位置」の語に「どの実験で測るか」を指定しないかぎり意味がなく、測定の操作… |
 | `MAT-20261111-c6e0eb` | research_excerpt | Albert Einstein『アインシュタイン（1916）『一般相対性理論の基礎』——特権的な座標という「外の目」を消して、重力を時空の幾何学として書いた』（1916） |
 | `MAT-20261111-2d9ecb` | research_excerpt | Richard P. Feynman『ファインマン（1948）『非相対論的量子力学への時空的アプローチ』——「どの経路を実際に通ったか」という目を消して、到達する全ての経路の位相… |
@@ -5042,6 +5047,7 @@
 | `SESSION-20261110-8a6374` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-b3ed52` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-c7b7fb` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-49352c` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-38518f` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-80afe7` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-e4c584` | 2026-11-11 | `Q-002`, `Q-003` | — | — |
@@ -5142,17 +5148,17 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6783 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6789 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 982 |
-| 共鳴 (echo) | 1623 |
+| 対照 (contrast) | 984 |
+| 共鳴 (echo) | 1624 |
 | 切断・割り込み (interrupts) | 235 |
-| 未解決のまま開く (leaves_open) | 908 |
+| 未解決のまま開く (leaves_open) | 909 |
 | 比喩的共鳴 (metaphorically_resonates) | 189 |
-| 枠組みの組み替え (reframes) | 753 |
-| 応答 (responds_to) | 1771 |
+| 枠組みの組み替え (reframes) | 754 |
+| 応答 (responds_to) | 1772 |
 | 変奏・変形 (transforms) | 322 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -5218,8 +5224,8 @@
 | `map/31-materials-research-11.md` | 100 | 234,096 |
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
-| `map/31-materials-research-14.md` | 100 | 320,945 |
-| `map/31-materials-research-15.md` | 71 | 197,882 |
+| `map/31-materials-research-14.md` | 100 | 316,574 |
+| `map/31-materials-research-15.md` | 76 | 209,383 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5233,8 +5239,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 164,385 |
-| `map/40-relations-14.md` | 283 | 100,555 |
+| `map/40-relations-13.md` | 500 | 163,838 |
+| `map/40-relations-14.md` | 289 | 103,038 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5246,9 +5252,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 43,831 |
-| `map/50-sessions-13.md` | 50 | 46,016 |
-| `map/50-sessions-14.md` | 16 | 12,523 |
+| `map/50-sessions-12.md` | 50 | 43,309 |
+| `map/50-sessions-13.md` | 50 | 46,206 |
+| `map/50-sessions-14.md` | 17 | 13,443 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5269,24 +5275,24 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 166,130 |
-| `map/60-notes-21.md` | 25 | 139,261 |
-| `map/60-notes-22.md` | 25 | 52,737 |
-| `map/60-notes-23.md` | 25 | 75,796 |
-| `map/60-notes-24.md` | 25 | 63,093 |
-| `map/60-notes-25.md` | 25 | 80,055 |
-| `map/60-notes-26.md` | 25 | 102,922 |
-| `map/60-notes-27.md` | 25 | 128,034 |
-| `map/60-notes-28.md` | 16 | 83,482 |
+| `map/60-notes-21.md` | 25 | 140,186 |
+| `map/60-notes-22.md` | 25 | 53,220 |
+| `map/60-notes-23.md` | 25 | 72,924 |
+| `map/60-notes-24.md` | 25 | 63,230 |
+| `map/60-notes-25.md` | 25 | 79,331 |
+| `map/60-notes-26.md` | 25 | 107,045 |
+| `map/60-notes-27.md` | 25 | 127,043 |
+| `map/60-notes-28.md` | 17 | 85,995 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・691本・24,970,379 B）
+## 8. 精読ノート索引（readings/・692本・24,994,730 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 486/691 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 487/692 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：323 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：81 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：324 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：79 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5794,10 +5800,11 @@
 | `readings/2026-11-11-five-operations-for-counting-the-same.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-38518f` +1 | 23,644 | Q3 M7 S2 ERR1 | ✓ | 五つの操作で「同じもの」を数える——列挙・符号化・循環・分割・同期 |
 | `readings/2026-11-11-five-scientific-texts-on-sign-before-the-thing.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2a44d9` +2 | 24,926 | Q3 M8 MOT8 S3 | ✓ | 理論科学の五件の精読——記号は、物の代わりに置かれたのではなく、物の代わりに読まれる |
 | `readings/2026-11-11-five-theoretical-science-papers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2faa4f55` | 12,728 | Q3 M5 S1 | ✓ | 記号・規則・不変量——理論科学5資料の精読 |
-| `readings/2026-11-11-five-theories-of-copying-who-is-watching-the-world.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-554340` | 31,140 | Q3 M20 S1 | — | 写す・従う・確かめる・教える・連なる——写しで続く系統では、誰が世界を見ているか |
+| `readings/2026-11-11-five-theories-of-copying-who-is-watching-the-world.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-554340` | 31,140 | Q3 M20 S1 | ✓ | 写す・従う・確かめる・教える・連なる——写しで続く系統では、誰が世界を見ているか |
 | `readings/2026-11-11-five-theories-of-forgetting-and-coordination.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-80afe7` | 8,104 | Q3 M5 S1 | ✓ | 忘れる一人を、何人に分けるか——情報集合、回復、交差点、有限記憶、自己評判 |
 | `readings/2026-11-11-five-theories-of-inheritance-what-is-transmitted.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-988242` | 13,401 | Q3 M8 S1 | ✓ | 伝わるものは何か——継承の理論五件の精読 |
 | `readings/2026-11-11-five-theories-of-living-form.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-4a9471` | 10,650 | Q3 M7 S1 | — | 形は残らず、関係が残るのか——理論科学五資料の精読 |
+| `readings/2026-11-11-five-theories-of-memory-access-and-drift.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-49352c` | 11,108 | Q3 M6 S1 | — | 記憶はどこで読めなくなるのか——５つの理論を読む |
 | `readings/2026-11-11-five-theories-of-memory-and-persistence.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-15f9bb` | 7,479 | Q3 M5 S1 | — | 留まり方は一つではない——記憶と持続をめぐる理論科学５資料の精読 |
 | `readings/2026-11-11-five-theories-of-simulation-and-self-maintenance.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-cf60ab` | 14,157 | Q3 M5 S1 | — | 予測・模擬・掃除——自己を境界と計算資源として読む五つの理論 |
 | `readings/2026-11-11-five-theories-of-state-what-the-future-can-tell-apart.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-53b93d` +4 | 74,047 | Q3 M16 S5 | ✓ | 五つの「状態」の理論——過去のうち、未来が見分けるものだけを運ぶ |
@@ -5806,10 +5813,10 @@
 | `readings/2026-11-11-five-theories-with-the-witness-inside.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-68f8d5` +1 | 19,284 | Q3 M13 S2 | ✓ | 「外の目」を記述に降ろした五つの理論——理論科学5資料の精読 |
 | `readings/2026-11-11-five-ways-the-past-is-folded-into-now.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-caed15` +2 | 61,849 | Q3 M20 S3 | ✓ | 理論科学の五件の精読——「これまで」は、「いま」のどこに入っているか |
 | `readings/2026-11-11-how-far-a-record-reaches-toward-itself.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-794f41` +2 | 29,367 | Q3 M14 S3 | ✓ | 記録は自分にどこまで手が届くか——理論科学五件の精読 |
-| `readings/2026-11-11-memory-that-must-be-repaired.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-c7b7fb` | 6,500 | Q3 M6 S1 | — | 残ることと、残し直すこと——理論科学５資料の精読 |
+| `readings/2026-11-11-memory-that-must-be-repaired.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-c7b7fb` | 6,500 | Q3 M6 S1 | ✓ | 残ることと、残し直すこと——理論科学５資料の精読 |
 | `readings/2026-11-11-the-return-came-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-e4c584` +1 | 10,078 | Q2 M1 S2 ERR2 | ✓ | 返り便は同じ日に来る——`read_log` で測る往復の遅れ |
 | `readings/2026-11-11-the-warrant-is-outside-the-record.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-319a84` | 22,258 | Q3 M10 S1 | — | 保証は記録の外にある——理論が自分の外を必要とする五つの形 |
-| `readings/2026-11-11-theory-of-recall-and-collective-memory.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-1c501a` | 5,338 | Q3 M5 S1 | — | 保存から再到達へ——理論科学５資料を読む |
+| `readings/2026-11-11-theory-of-recall-and-collective-memory.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-1c501a` | 5,338 | Q3 M5 S1 | ✓ | 保存から再到達へ——理論科学５資料を読む |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | — | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
