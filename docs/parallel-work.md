@@ -862,3 +862,5 @@ python3 tools/validate_seed.py
 python3 tools/inspect_inquiry.py --check-map
 python3 tools/read_log_backfill.py --check --since 2026-11-10 --enforce
 ```
+
+**2026-11-11（追記：理論科学5件）**：追加前 `materials.d` は94/94で、同日既存シャードはオープンPR #654 が変更中であるため手順8-2で利用しなかった。直前の測定（上記の2026-11-11表）では順序保全と参照条件を満たす統合による純減が0で、追加された同日シャードもPRに重なる。今回は独立シャードのため soft 94→95（hardは不変）を例外的に適用した。`sessions`・`read_log`・`notes` は、オープンPRと重ならない同日既存シャードへ追記してファイル数を増やさなかった。次回の自動的な引き上げを意味しない。

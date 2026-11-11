@@ -227,7 +227,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # unchanged; not an automatic raise.  Measured in
         # docs/parallel-work.md (2026-11-11) and readings/2026-11-11-five-
         # operations-for-counting-the-same.md §11.
-        soft_shards=94,
+        soft_shards=95,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
