@@ -5204,24 +5204,24 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 117,379 |
 | `map/60-notes-20.md` | 25 | 166,062 |
-| `map/60-notes-21.md` | 25 | 133,032 |
-| `map/60-notes-22.md` | 25 | 52,881 |
-| `map/60-notes-23.md` | 25 | 76,918 |
-| `map/60-notes-24.md` | 25 | 62,970 |
-| `map/60-notes-25.md` | 25 | 83,440 |
-| `map/60-notes-26.md` | 25 | 102,556 |
-| `map/60-notes-27.md` | 25 | 127,147 |
-| `map/60-notes-28.md` | 15 | 80,473 |
+| `map/60-notes-21.md` | 25 | 135,283 |
+| `map/60-notes-22.md` | 25 | 52,737 |
+| `map/60-notes-23.md` | 25 | 75,796 |
+| `map/60-notes-24.md` | 25 | 63,217 |
+| `map/60-notes-25.md` | 25 | 80,198 |
+| `map/60-notes-26.md` | 25 | 104,715 |
+| `map/60-notes-27.md` | 25 | 128,034 |
+| `map/60-notes-28.md` | 16 | 83,559 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・690本・24,701,434 B）
+## 8. 精読ノート索引（readings/・691本・24,711,160 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 489/690 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 490/691 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：329 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：74 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：330 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5725,6 +5725,7 @@
 | `readings/2026-11-10-the-unfinished-control-and-the-ten-that-did-not-fit.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-350411` +3 | 34,984 | Q4 F1 M27 S4 ERR4 | ✓ | 未実行だった統制を、いま実行する——sham 報告・軸に合わない十件・一人称の資料・崩れた答えの訂正録 |
 | `readings/2026-11-10-three-trials-on-description-loss-self-description-and-the-non-class.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-f23658` | 11,039 | Q4 M3 MOT2 R10 S1 | ✓ | 三つの試行——記述の喪失、自己記述、非-類 |
 | `readings/2026-11-11-crystals-outside-the-branch.md` | — | 2026-11-11 | `SESSION-20261111-5ebabb` +1 | 10,939 | Q4 F8 M3 MOT3 R1 S2 | ✓ | 結晶は外にしか付かない——塩坑の枝と瓶の枝、言い切りと反歌の二部作（SESSION-20261111-5ebabb） |
+| `readings/2026-11-11-design-or-history.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,812 | Q2 S1 | — | 設計か、履歴か——359本の未登録と、閉じない保留を分けて測る |
 | `readings/2026-11-11-filling-the-registration-gap.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,743 | Q1 S1 | — | 台帳の穴を埋める——未登録7本の遡及登録と、`A_human` が5本から9本になったこと |
 | `readings/2026-11-11-five-models-that-return-what-was-left-out.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-3fc37e` | 20,728 | Q3 M5 S1 | ✓ | 入れなかったものが、結論として戻ってくる——理論が捨てた余りを読む五件 |
 | `readings/2026-11-11-five-operations-for-counting-the-same.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-38518f` +1 | 23,644 | Q3 M7 S2 ERR1 | ✓ | 五つの操作で「同じもの」を数える——列挙・符号化・循環・分割・同期 |
