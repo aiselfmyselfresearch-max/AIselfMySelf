@@ -573,7 +573,22 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
     ),
     ShardBudget(
         "state/notes.d",
-        soft_bytes=1 * MIB,
+        # 2026-11-12 (SESSION-20261112-05a5cc): 1.00 -> 1.25 MiB soft_bytes.
+        # Measured: notes.d was 1,045,677 B against a 1,048,576 B soft line
+        # (2,899 B of headroom); this session's curated note row (3,166 B) took
+        # it to 1,048,843 B, i.e. 267 B over. The shard dimension is untouched
+        # (this row was appended to the existing 2026-11-12 shard, so
+        # soft_shards stays 98). notes.d is order-SENSITIVE (reversing the
+        # intra-date union order changes READING_MAP.md, map_build output, the
+        # inquiry packet and date_axis) and stays outside the consolidation
+        # exception list, so bytes are the ONLY dimension that can absorb a new
+        # row -- net reclaim = 0. Shrinking the row instead was rejected: the
+        # row lives in a shard that also carries two other sessions' rows, and
+        # lines are append-only (the path is provenance). Hard 4 MiB unchanged
+        # and still at ~25% usage. This value matches the notes.d byte raise
+        # already proposed by open PR #655 (1 -> 1.25 MiB), so whichever of the
+        # two lands second resolves a trivial conflict. Not an automatic raise.
+        soft_bytes=int(1.25 * MIB),
         hard_bytes=4 * MIB,
         # 2026-11-08: one extra soft slot for this report's curated note;
         # keep the per-report row in its own append-only session shard.
