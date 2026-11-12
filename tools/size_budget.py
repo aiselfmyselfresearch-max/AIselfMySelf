@@ -80,12 +80,6 @@ BUDGETS: tuple[Budget, ...] = (
         remedy="Tighten excerpts in tools/map_build.py (build_index); full bodies belong in untracked map/",
     ),
     Budget(
-        "BELIEF_MAP.md",
-        soft_bytes=512 * 1024,
-        hard_bytes=2 * MIB,
-        remedy="Keep BELIEF_MAP.md focused on active/refuted hypothesis distributions via tools/belief_state.py --write-map",
-    ),
-    Budget(
         "state/materials.jsonl",
         soft_bytes=10 * MIB,
         hard_bytes=25 * MIB,
@@ -144,18 +138,6 @@ BUDGETS: tuple[Budget, ...] = (
         soft_bytes=1 * MIB,
         hard_bytes=5 * MIB,
         remedy="Keep readings/ judgments in state/notes.d/ shards; store curated judgments only, never harvested facts",
-    ),
-    Budget(
-        "state/hypotheses.jsonl",
-        soft_bytes=1 * MIB,
-        hard_bytes=5 * MIB,
-        remedy="Write new hypothesis rows to state/hypotheses.d/ shards",
-    ),
-    Budget(
-        "state/evaluations.jsonl",
-        soft_bytes=2 * MIB,
-        hard_bytes=8 * MIB,
-        remedy="Write new evaluation events to state/evaluations.d/ shards",
     ),
 )
 
@@ -245,6 +227,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # unchanged; not an automatic raise.  Measured in
         # docs/parallel-work.md (2026-11-11) and readings/2026-11-11-five-
         # operations-for-counting-the-same.md §11.
+        # 2026-11-12 (SESSION-20261112-2bbcac): 94 -> 95 for this session's
+        # requested seven-source theoretical-science shard.  Procedure 7/8
+        # measured first on parent 985e331: 6 mobile shards exist across the
+        # directory, zero adjacent mobile pairs, zero complete mobile date
+        # groups (net reclaim = 0), and the 2026-11-10 mobile candidate was
+        # already consolidated/deleted on origin/main (d6c211d).  notes.d uses
+        # its free slot (94/96 -> 95/96).  Hard 160 unchanged; not automatic.
+        # Measured in docs/parallel-work.md (2026-11-12).
         # 2026-11-11: 95 -> 96 for this session's own five-source shard
         # (Malthus 1798 / Lamarck 1809 / Weismann 1892 / Haldane 1932 /
         # Eldredge & Gould 1972).  relations.d needed no slot (appended to
@@ -292,7 +282,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # source records require a new materials shard. Existing same-day records
         # remain in their originating shards; this session uses its own append-only
         # shard. Hard 160 unchanged; one-slot exception, not an automatic raise.
-        soft_shards=102,
+                # 2026-11-12 (SESSION-20261112-fc2fbc, 103 -> 104): main was merged first
+        # (only 2 text conflicts), removing PR #655's 859-row notes block and its
+        # read_log block; the merged union measured 9,722,660 B and 103 files, one
+        # over the inherited soft 102, and this session's own seven-source shard
+        # made it 104.  Consolidation was not attempted: procedure 8-2 forbids
+        # appending a seven-source acquisition to another session's rows, and no
+        # complete mobile date group exists.  Hard 160 unchanged; not automatic.
+        soft_shards=104,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -318,11 +315,20 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # than 80 and their rows are append-only.  Measured in
         # readings/2026-11-09-the-retraction-i-almost-repeated.md section 6-1.
         # Hard limit 160 unchanged.
+        # 2026-11-12 (SESSION-20261112-2bbcac): 80 -> 81 for this session's
+        # seven relations in their own 2026-11-12 shard.  Procedure 7 measured
+        # net reclaim = 0 on parent 985e331 (and 2026-11-10 mobile shards were
+        # already consolidated on origin/main d6c211d); no 2026-11-12 zero
+        # shard existed on parent.  Hard 160 unchanged; see docs/parallel-work.md.
           # 2026-11-12 (SESSION-20261112-a9607b, 80 -> 81): eight relations for the
           # five theoretical-science sources needed a relations shard. Measured:
           # relations.d was 80/80 (no slot), no 2026-11-12 relations shard existed
           # for procedure 8-2. Hard 160 unchanged; not an automatic raise.
-          soft_shards=81,
+                  # 2026-11-12 (SESSION-20261112-fc2fbc, 82 -> 83): twelve relations in
+          # this session's own 2026-11-12 shard, after the main merge.  Net
+          # reclaim = 0 measured (no complete mobile date group).  Hard 160
+          # unchanged; not an automatic raise.
+        soft_shards=83,
         hard_shards=160,
         remedy="Compact old state/relations.d/ shards into frozen base in a dedicated maintenance PR",
     ),
@@ -389,6 +395,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # reclaims 0.  Byte dimension is not binding (4.15 MiB of a 5 MiB soft).
         # Hard 160 unchanged; not an automatic raise.
         # See readings/2027-03-13-blinding-is-a-procedure-for-producing-ignorance.md §13.
+        # 2026-11-12 (SESSION-20261112-2bbcac): 91 -> 92 for 15 reading rows in
+        # their own 2026-11-12 shard.  Procedure 7 measured net reclaim = 0 on
+        # parent 985e331, and 2026-11-10 mobile candidates were already absorbed
+        # on origin/main (d6c211d).  Byte budget remains well under 5 MiB.
+        # Hard 160 unchanged; see docs/parallel-work.md (2026-11-12).
         # 2026-11-11: 91 -> 92 for this session's own 8 reading rows.
         # Hard 160 unchanged; not an automatic raise.
         # 2026-11-11: measured baseline already exceeds the previous soft
@@ -403,7 +414,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (SESSION-20261112-db6077, 95 -> 96): eleven handwritten
         # read_log rows require this session's shard. Hard 160 unchanged; one-slot
         # exception, not an automatic raise.
-        soft_shards=96,
+                # 2026-11-12 (SESSION-20261112-fc2fbc, 97 -> 98): thirteen handwritten
+        # read_log rows (7 materials + 6 inherited notes) in their own
+        # 2026-11-12 shard, after the main merge.  Byte dimension not binding
+        # (4.78 MiB of a 5 MiB soft).  Hard 160 unchanged; not an automatic raise.
+        soft_shards=98,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -545,6 +560,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # new rows omit shard locations; however all existing movable session
         # candidates were absent (self-location or inbound references). Hard
         # limit 160; no further increase is implied. See report §13.
+        # 2026-11-12 (SESSION-20261112-2bbcac): 96 -> 97 for this session's
+        # single-row 2026-11-12 shard (omitting shard path for future
+        # compaction).  Procedure 7 measured net reclaim = 0 on parent 985e331,
+        # and 2026-11-10 mobile candidates were already consolidated on
+        # origin/main (d6c211d).  Hard 160 unchanged; see docs/parallel-work.md.
         # 2026-11-11: 96 -> 97 for this session's own shard.
         # Hard limit 160; not an automatic raise.
           # 2026-11-11: measured baseline already exceeds the previous soft
@@ -557,7 +577,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (SESSION-20261112-db6077, 100 -> 101): one session row
         # requires a new shard. Hard 160 unchanged; one-slot exception, not an
         # automatic raise.
-        soft_shards=101,
+                  # 2026-11-12 (SESSION-20261112-fc2fbc, 102 -> 103): one session row for
+        # the merged seven-source close reading.  Merging shards saves ~0 B, so
+        # only the shard count can absorb it.  Hard 160 unchanged; not an
+        # automatic raise.
+        soft_shards=103,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -577,7 +601,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         "state/errata.d",
         soft_bytes=1 * MIB,
         hard_bytes=4 * MIB,
-        soft_shards=80,
+        soft_shards=81,
         hard_shards=160,
         remedy="Keep errata shards concise",
     ),
@@ -591,6 +615,35 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
     ),
     ShardBudget(
         "state/notes.d",
+        # 2026-11-11: 1 MiB -> 1.25 MiB and 92 -> 96 shards, for a one-time
+        # bulk *index* backfill, not a per-session +1.  359 reports in
+        # readings/ had no note row (2026-10: 224, 2026-11: 79, 2026-12: 42,
+        # 2027-01: 13, 2027-02: 1), so they were invisible to the ledger and to
+        # read_log.  They were registered mechanically by tools/note_index.py
+        # --register in two shards: path / session / created_at / derived mode /
+        # read_depth only, **no claims** (measured on the 359 new rows: 0 rows
+        # carry claims, so 0 reading_held were added; the ledger-wide count went
+        # 174 -> 175 only because this session's own report added one).
+        # read_depth=metadata_and_structure_only
+        # marks each row as not read, which is what the schema has that field
+        # for.  Measured after the write: 1,117,925 B and 94 files.  This is
+        # the opposite of a "narrow exception" raise: it brings the row count
+        # up to the report count (688), so future growth in this directory
+        # should come from claims, not from rows.  Hard limits unchanged.
+        # 2026-11-12: 1.25 MiB -> 2 MiB, a measured raise for the claims
+        # backlog, not a per-session +1.  Rows existed but carried no claims
+        # (392 of 703 report paths); curating them is what this directory was
+        # raised for in the first place.  Measured density of the first batch
+        # (12 notes, 32 claims, hand-written, excerpt-read): 15,786 B, i.e.
+        # ~1.3 KB per note.  The remaining 380 path backlog at that density is
+        # ~500 KB, so the projected total is ~1.82 MiB -- under this new soft
+        # line and well under the untouched 4 MiB hard line.  Two related
+        # measurements are in readings/2026-11-11-how-many-reports-fit-in-one-
+        # turn.md: a mechanical extractor was run over all 392 unfixed reports
+        # first (615 candidate claims, 88.8% with no Q-001/2/3 in their
+        # section, 8.9% opening on procedure), and it was rejected as a way to
+        # fill this directory.  Shard count unchanged (94 of soft 96): the
+        # batch appends to the existing 2026-11-11 curated shard.
         # 2026-11-12 (SESSION-20261112-05a5cc): 1.00 -> 1.25 MiB soft_bytes.
         # Measured: notes.d was 1,045,677 B against a 1,048,576 B soft line
         # (2,899 B of headroom); this session's curated note row (3,166 B) took
@@ -606,7 +659,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # and still at ~25% usage. This value matches the notes.d byte raise
         # already proposed by open PR #655 (1 -> 1.25 MiB), so whichever of the
         # two lands second resolves a trivial conflict. Not an automatic raise.
-        soft_bytes=int(1.25 * MIB),
+        soft_bytes=int(2.25 * MIB),
         hard_bytes=4 * MIB,
         # 2026-11-08: one extra soft slot for this report's curated note;
         # keep the per-report row in its own append-only session shard.
@@ -657,6 +710,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # and stays outside the consolidation exception; no shard dated
         # 2026-11-11 existed to append to (procedure 8-2).  Net reclaim = 0.
         # Measured in docs/parallel-work.md (2026-11-11).  Hard 160 unchanged.
+        # 2026-11-11 (second raise, same day): 92 -> 94 for the bulk index
+        # backfill described at the top of this entry (two shards, 359 rows,
+        # no claims).  Raised to 96 for two slots of headroom rather than
+        # exactly 94; the byte dimension is the binding one from here on.
         # 2026-11-11: 92 -> 93 for this report's curated note row.
         # Hard 160 unchanged; not an automatic raise.
         # 2026-11-11: measured baseline already exceeds the previous soft
@@ -692,28 +749,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (SESSION-20261112-db6077, 97 -> 98): one curated note row
         # requires this session's shard. notes.d is order-sensitive and excluded
         # from consolidation; hard 160 unchanged; one-slot exception only.
-        soft_shards=98,
+        soft_shards=102,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
             "Do not copy report bodies or harvested facts into the ledger"
         ),
-    ),
-    ShardBudget(
-        "state/hypotheses.d",
-        soft_bytes=2 * MIB,
-        hard_bytes=8 * MIB,
-        soft_shards=80,
-        hard_shards=160,
-        remedy="Consolidate older date-stamped hypothesis shards via state/shard_aliases.json",
-    ),
-    ShardBudget(
-        "state/evaluations.d",
-        soft_bytes=4 * MIB,
-        hard_bytes=12 * MIB,
-        soft_shards=80,
-        hard_shards=160,
-        remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
 )
 
@@ -737,6 +778,12 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # unchanged.  Same shape as the 2026-11-07 rescale of state/sessions.d/
         # (see docs/parallel-work.md §3): fix the mis-calibrated dimension, keep
         # the hard cliff, say why.
+        # 2026-11-12: 24 -> 25 MiB measured rescale after readings/ reached
+        # 25,164,417 B (1,407 B below 24 MiB), matching origin/main's 25 MiB
+        # calibration. Reports are append-only (deletion requires human
+        # approval and shard compaction reclaims 0 B), so a 7-source
+        # four-layer close-reading report cannot physically fit in 1,407 B.
+        # Hard 48 MiB, file counts, and per-file limits remain unchanged.
         # 2026-11-12: 24 -> 25 MiB after the union of two already-merged
         # parallel reports and this report reached 25,174,612 B, only 8,788 B
         # past the old review point. Reports are append-only; shard consolidation

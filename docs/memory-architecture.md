@@ -128,7 +128,40 @@ overlay の作法は `editorial_decisions` と同じ：**同じ `path` につい
 
 **エピソード（語り）→ 意味（主張）への固定**がこの欄で行われる。抜き出せないノートは `return_status: "metaphor_unconnected"` として残す＝固定されなかった記憶の記録であり、削除ではない。
 
-### 4.2 ノート行の三つの歯止め（2026-11-12）
+### 4.2 `claims[].scope` — 主張が「何について」言っているかを引用で残す
+
+2026-11-11 の三つの dossier（[`readings/2026-11-11-materiality-dossier-across-679-reports.md`](../readings/2026-11-11-materiality-dossier-across-679-reports.md)・[`…preservation-dossier…`](../readings/2026-11-11-preservation-dossier-across-679-reports.md)・[`…identity-dossier…`](../readings/2026-11-11-identity-dossier-across-679-reports.md)）で分かったことは一つに尽きる。**この台帳の主張は、何についての主張かを書いていない。** 素材性の族では否定16件のうち12件が「単なる／無害な」の否定であり、保存の族では否定59件のうち約40件が同じ前提の反復で、同一性の族では否定18件のすべてが「基準Xでは足りない」だった。対立に見えるものの大半は、対象・基準・意味の層が違うだけである。**その違いを書く欄が、`claims` には無かった**（`additionalProperties: false`）。
+
+そこで任意欄を一つ足した。値は**引用**である。
+
+```json
+{"claim_id": "…", "kind": "reading_revised", "text": "…", "anchor": "§4",
+ "scope": {"object": "自己", "basis": "保存", "sense": "宛先"}}
+```
+
+| 欄 | 何を書くか | 規則 |
+|---|---|---|
+| `object` | 何についての主張か | 報告本文に**逐語で現れる語**、または台帳 ID |
+| `basis` | 何を基準にした判定か | 同上 |
+| `sense` | どの層・どの意味か | 同上 |
+
+規則は一つだけである。**語を引用する。説明しない。** 「自己」と書く（「主体の同一性という次元」とは書かない）。報告本文にその語が無いなら、まだ報告がその区別を言葉にしていないということなので、先に報告へ書く。この規則は `tools/validate_seed.py` が検査する（`claim_scope_errors`）。列挙型にしないのは、**語彙を先に固定すると、その固定自体が答えを決めてしまう**からで、三つの欄名（対象・基準・意味）は区別の名前であって分類の名前ではない。
+
+- **空欄は「未決」であって「普遍」ではない。** 既存 1,319 claims はすべて空欄のままでよく、遡って埋めない。埋めるのは、他の主張と区別する必要が出たときだけである。 手続き（文を単位にし、否定を全数読み、残渣を定義して残す）は [`prompts/start.md`](../prompts/start.md) の「述語の監査」に置いた。
+- `tools/scope_report.py` が、同じ `question_id` を持ち語が重なる主張の組を、`scope` の有無つきで並べる。**この道具は矛盾を判定しない**——否定の検出は日本語の主張文では当てにならず（文全体でも述語位置でも試したが、明らかに同意している組が上位に来た）、道具にできるのは「同じ問いの二文を並べ、どちらが何について言ったかを表示する」ことまでである。
+
+### 4.3 `reading_held` は現在形ではない — 閉じ方を一行、閉じたら `supersedes`
+
+`reading_held` は「その時点で判断しなかった」ことの記録であって、「今も未解決である」ことの記録ではない。台帳には**閉じたことを指す欄が無い**——ノート間のポインタは `supersedes` だけで、351行中11行（3.1%）でしか使われていない。だから古びた保留が現在形のまま残り、次の読み手がそれを未解決の穴として読む。2026-11-11 の第九報告は、その誤りを自分で起こした記録である（同日に別セッションが宿題を実行していた）。
+
+欄は増やさない。代わりに、書くときの一行と、読み取り専用の道具を置く。
+
+- **閉じ方を一行。** `reading_held` を書くとき、**何が手に入れば閉じるか**を同じ `text` の中に、素材か問いの ID を一つ添えて書く。実測（`tools/held_report.py`）：保留174件のうち**80件（46%）**は素材・記録の ID を一つも含まず、後続の読みと機械的に照合できない。
+- **閉じたら指す。** 閉じたノートに `supersedes: [元のノートID]` を置く。`validate_seed` は実在と非循環だけを見るので、置かなければ誰も気づかない。
+- **判定は道具にさせない。** `python3 tools/held_report.py` は、保留の文に現れる ID を後続のノートや `read_log` が触っているかを並べるだけである（実測：closed 2・touched 33・候補なし139）。**候補は読む入口であって、閉じたという判定ではない。** 極性の機械判定は日本語の主張では二度失敗している（`tools/scope_report.py` の docstring と同じ理由）。
+- **任意である。** 書かない回があってよい。これは数値ゲートでも CI の条件でもない（§8「やらないこと」）。
+
+### 4.4 ノート行の三つの歯止め（2026-11-12、マージ時に 4.2 から改番）
 
 ノートは「読んだ報告についての判断」であって、報告の登録簿ではない。`tools/note_index.py` の索引は報告本文から機械的に作られるので、**ノート行の無い報告も索引には載っている。ノートの無い報告は負債ではない。**
 
@@ -422,24 +455,3 @@ python3 tools/inspect_inquiry.py --packet-stats --stats-limit 40   # 標本で�
 ```
 
 `readings/` にノートを追加したら `python3 tools/map_build.py` を実行する（§8 が陳腐化すると CI の `--check-map` と `note_index.py --check` が落ちる）。これは台帳を追記したときに既存の規約として行っていることと同じで、新しい負担ではない。
-
----
-
-## 2026-11-12 拡張：信念状態レイヤ（`hypotheses` / `evaluations` / `BELIEF_MAP.md`）と100%ノート配線
-
-エピソード記憶（`readings/`＋`notes`）と手続き痕跡（`read_log`）の上に、中心三問 `Q-001`〜`Q-003`（および関連問い）に対する**条件付き仮説分布の継続的更新**を担う第5の記憶層を追加した。
-
-1. **条件付き仮説台帳（`state/hypotheses.jsonl`＋`state/hypotheses.d/`）**：
-   - 各 `HYP-*` は無条件の一般命題ではなく、明示的な適用条件 `scope_conditions`（1件以上）と具体的な反証・射程限定条件 `exclusion_clause`、親仮説との系譜操作 `lineage_op`（`root` / `refines` / `splits` / `synthesizes` / `reopens`）を持つ。
-2. **類型付き評価台帳（`state/evaluations.jsonl`＋`state/evaluations.d/`）**：
-   - 各 `EVL-*` は特定の仮説に対し、競合仮説 `compared_against_hypothesis_ids` との対照の下で検証結果 `verdict`（`supports` / `narrows_scope` / `refutes_unconditioned` / `subsumes` / `inconclusive`）と証拠型 `evidence_type`（`primary_source_collision` / `reproducible_script` / `cross_session_audit` / `fragment_thought_experiment`）を記録する。
-3. **決定論的信念マップ（[`BELIEF_MAP.md`](../BELIEF_MAP.md) / `tools/belief_state.py`）**：
-   - 証拠多様性と独立セッション数に応じた減衰付き対数オッズ更新により、各問いの有効仮説事後確率 $P_t(H \mid \mathcal{D}_t)$、不確実性 $u(H)$、事前一様分布からの情報利得 $D_{\mathrm{KL}}(P_t \parallel P_0)$、および最大期待情報利得（EIG）対立ペアを算出する。
-   - `state/errata*` で訂正対象となった素材・断片・ノートに依存する仮説には自動的に `errata_flags` が伝播し、再検証対象として可視化される。
-4. **100% `readings/` → `notes` 配線と時系列正規化**：
-   - 未登録だった366本の過去報告を `index_backfill: true` の構造索引スタブとして一括配線し、以後の新規報告には同一セッション内での `NOTE-*` 登録を CI（`tools/learning_metrics.py --check`）で義務化した。
-   - 前倒し内部編年シャード171本は `tools/date_axis.py` が解決した実日付シャード50本へ1行も変えずにバイト統合し、`state/shard_aliases.json` で旧パス参照を透過解決する。
-5. **作業記憶パケット（`tools/inspect_inquiry.py`）の強化**：
-   - `§0.2` に中心三問の事後分布と割り当てロール（`Proposer` 25% / `Adversarial Tester` 50% / `Consolidator` 25%）を提示。
-   - `--packet auto` の75%を中心三問（情報利得余地の高い順）へ、25%を派生問いへ配分。
-   - `§3` はシードに依存しない関連度順（仮説根拠素材→問い直結素材→モチーフ共有素材）、`§4.7` は①未解決反証・競合仮説ノート、②中心三問の交差検証ノート、③休眠ノート発掘の3層層化抽出で構築する。

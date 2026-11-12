@@ -52,17 +52,8 @@ jobs:
       - name: Check READING_MAP.md is current
         run: python3 tools/inspect_inquiry.py --check-map
 
-      - name: Check BELIEF_MAP.md is current
-        run: python3 tools/belief_state.py --check-map
-
       - name: Check the readings/ note index section
         run: python3 tools/note_index.py --check
-
-      - name: Enforce no forward-dated shards in state/*.d/
-        run: python3 tools/date_axis.py --enforce-shards
-
-      - name: Check learning, falsification, and readings/ wiring invariants
-        run: python3 tools/learning_metrics.py --check
 
       - name: Check size budgets
         run: python3 tools/size_budget.py

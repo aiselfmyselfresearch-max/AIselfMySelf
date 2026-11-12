@@ -46,8 +46,6 @@ PREFIXES: dict[str, tuple[str, str]] = {
     "ED": ("editorial_decisions.jsonl", "decision_id"),
     "ERR": ("errata.jsonl", "errata_id"),
     "NOTE": ("notes.jsonl", "note_id"),
-    "HYP": ("hypotheses.jsonl", "hypothesis_id"),
-    "EVL": ("evaluations.jsonl", "evaluation_id"),
 }
 
 _ID_SUFFIX = re.compile(r"^[0-9a-f]+$")

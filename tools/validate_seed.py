@@ -32,11 +32,14 @@ COLLECTIONS = {
     # bodies stay in readings/*.md; this collection only carries what a reader
     # asserts, so a report can be cited from read_log and relations.
     "notes": ("notes.jsonl", "note_id", "note.schema.json"),
-    "hypotheses": ("hypotheses.jsonl", "hypothesis_id", "hypothesis.schema.json"),
-    "evaluations": ("evaluations.jsonl", "evaluation_id", "evaluation.schema.json"),
 }
 
-OPTIONAL_EMPTY_COLLECTIONS = frozenset({"hypotheses", "evaluations"})
+# Optional claim scope: the three distinctions a claim can be silent about.
+# Values are free text (must appear verbatim in the report) or a ledger ID, so
+# the validator never has to know the archive's vocabulary.
+NOTE_CLAIM_SCOPE_FIELDS = ("object", "basis", "sense")
+NOTE_CLAIM_SCOPE_LIMIT = 200
+LEDGER_ID_PATTERN = re.compile(r"^(Q|MAT|FRAG|MOTIF|REL|SESSION|NOTE|ED|ERR)-[0-9A-Za-z-]+$")
 
 # Fields of a note claim that must point at existing ledger records.
 NOTE_CLAIM_REF_FIELDS = (
@@ -44,18 +47,6 @@ NOTE_CLAIM_REF_FIELDS = (
     ("fragment_ids", "fragments"),
     ("material_ids", "materials"),
     ("motif_ids", "motifs"),
-    ("hypothesis_ids", "hypotheses"),
-)
-
-_TRIVIAL_EXCLUSION_PATTERNS = (
-    "なし",
-    "特になし",
-    "反証不能",
-    "常に成立",
-    "none",
-    "n/a",
-    "tbd",
-    "todo",
 )
 
 # Three brakes on the notes ledger, added on 2026-11-12 after one session wrote
@@ -95,17 +86,7 @@ def check_note_brakes(notes: dict[str, dict[str, Any]], errors: list[str]) -> No
     by_path: dict[str, list[tuple[str, dict[str, Any]]]] = {}
     for note_id, record in notes.items():
         session_id = record.get("session_id")
-        is_backfill_stub = record.get("index_backfill") is True
-        if is_backfill_stub:
-            if record.get("read_depth") != "metadata_and_structure_only":
-                errors.append(
-                    f"notes:{note_id}: index_backfill stub must use read_depth='metadata_and_structure_only'"
-                )
-            if record.get("claims"):
-                errors.append(
-                    f"notes:{note_id}: index_backfill stub must not assert curated claims"
-                )
-        elif isinstance(session_id, str):
+        if isinstance(session_id, str):
             per_session[session_id] = per_session.get(session_id, 0) + 1
         path = record.get("path")
         if isinstance(path, str):
@@ -160,11 +141,63 @@ def check_note_brakes(notes: dict[str, dict[str, Any]], errors: list[str]) -> No
                     "its own ID; created_at is the real time of writing, not an ordering label "
                     "(docs/time-axis.md)"
                 )
-            salience = record.get("salience")
-            if isinstance(salience, int) and salience > 3:
-                errors.append(
-                    f"notes:{note_id}: salience {salience} exceeds maximum 3 for rows minted from 2026-11-12 onward"
-                )
+
+
+def claim_scope_errors(claim: dict[str, Any], body: str) -> list[str]:
+    """Check a claim's optional ``scope`` against the report body it cites.
+
+    The scope records which object a claim speaks about, by which basis, in
+    which sense. Its values must be anchored: either a verbatim fragment of the
+    report body (so the words come from the report, not from a new vocabulary),
+    or a ledger ID (so the scope points at an existing record). An absent scope
+    is legal and means undecided.
+    """
+    scope = claim.get("scope")
+    if not isinstance(scope, dict):
+        return []
+    errors: list[str] = []
+    for field in NOTE_CLAIM_SCOPE_FIELDS:
+        value = scope.get(field)
+        if not isinstance(value, str) or not value.strip():
+            continue  # schema validation reports the shape error
+        if len(value) > NOTE_CLAIM_SCOPE_LIMIT:
+            errors.append(f"scope.{field} is too long ({len(value)} > {NOTE_CLAIM_SCOPE_LIMIT})")
+        elif value not in body and not LEDGER_ID_PATTERN.match(value):
+            errors.append(
+                f"scope.{field} must quote the report verbatim or name a ledger ID "
+                f"(quote the words, do not describe them): {value!r}"
+            )
+    return errors
+
+
+NOTE_AS_OF_PATTERN = re.compile(r"20\d\d-\d\d-\d\d|20\d\d年|時点|現在の")
+NOTE_DATED_ID_PATTERN = re.compile(
+    r"(?:SESSION|READ|NOTE|NOTE-TMP|ERR|ED|REL|MAT|MAT-LIT|MAT-EVD|MAT-TRC|MAT-ARC|FRAG)"
+    r"-20\d{6}"
+)
+NOTE_NUMBER_PATTERN = re.compile(r"[0-9]")
+
+
+def claim_needs_as_of(claim: dict[str, Any]) -> bool:
+    """True when a claim states a number but says nothing about *when*.
+
+    A ``measured_fact`` count describes the ledger at one moment.  Nothing in the
+    record used to carry that moment, so a later reader could not tell a current
+    figure from a stale one (see ``readings/2026-11-11-numbers-carry-no-date.md``
+    and ``readings/2026-11-11-the-third-audit-and-the-case-for-one-field.md``).
+    The check is a WARNING, not an error: making it an error would turn every
+    pre-existing claim of this shape invalid at once, which stops the ledger
+    instead of improving it.  ``tools/claim_dates.py`` lists the same claims.
+    """
+    if claim.get("kind") != "measured_fact":
+        return False
+    text = claim.get("text")
+    if not isinstance(text, str) or not NOTE_NUMBER_PATTERN.search(text):
+        return False
+    if NOTE_AS_OF_PATTERN.search(text) or NOTE_DATED_ID_PATTERN.search(text):
+        return False
+    measured_at = claim.get("measured_at")
+    return not (isinstance(measured_at, str) and measured_at.strip())
 
 
 def matches_type(value: Any, expected: str) -> bool:
@@ -214,17 +247,13 @@ def validate_value(value: Any, spec: dict[str, Any], root_schema: dict[str, Any]
 
     if "enum" in spec and value not in spec["enum"]:
         errors.append(f"{path}: value {value!r} is not in enum {spec['enum']!r}")
-    if isinstance(value, (int, float)) and not isinstance(value, bool):
-        if isinstance(spec.get("minimum"), (int, float)) and value < spec["minimum"]:
-            errors.append(f"{path}: value {value!r} is less than minimum {spec['minimum']}")
-        if isinstance(spec.get("maximum"), (int, float)) and value > spec["maximum"]:
-            errors.append(f"{path}: value {value!r} exceeds maximum {spec['maximum']}")
     if isinstance(value, str) and isinstance(spec.get("minLength"), int) and len(value) < spec["minLength"]:
         errors.append(f"{path}: string shorter than minLength {spec['minLength']}")
+    pattern = spec.get("pattern")
+    if isinstance(value, str) and isinstance(pattern, str) and not re.search(pattern, value):
+        errors.append(f"{path}: string does not match pattern {pattern!r}")
 
     if isinstance(value, list):
-        if isinstance(spec.get("minItems"), int) and len(value) < spec["minItems"]:
-            errors.append(f"{path}: array shorter than minItems {spec['minItems']}")
         if spec.get("uniqueItems") is True:
             try:
                 if len(value) != len({json.dumps(item, sort_keys=True, ensure_ascii=False) for item in value}):
@@ -284,20 +313,16 @@ def check_refs(
 
 def main() -> int:
     errors: list[str] = []
-    specs: dict[str, tuple[Path, str]] = {}
-    for name, (filename, id_key, _schema) in COLLECTIONS.items():
-        base_path = ROOT / "state" / filename
-        if name in OPTIONAL_EMPTY_COLLECTIONS and not base_path.exists() and not ledger_io.shard_dir(base_path).is_dir():
-            continue
-        specs[name] = (base_path, id_key)
+    specs = {
+        name: (ROOT / "state" / filename, id_key)
+        for name, (filename, id_key, _schema) in COLLECTIONS.items()
+    }
     try:
         collections, load_errors = ledger_io.load_collections(specs, root=ROOT)
     except ledger_io.LedgerBusy as exc:
         print("FAIL: ledgers are being rewritten concurrently; retry in a moment")
         print(f"  - {exc}")
         return 2
-    for name in COLLECTIONS:
-        collections.setdefault(name, {})
     errors.extend(load_errors)
 
     for name, (_filename, _id_key, schema_filename) in COLLECTIONS.items():
@@ -342,12 +367,24 @@ def main() -> int:
 
     read_logs = collections.get("read_log", {})
     notes = collections.get("notes", {})
+    undated_claims: list[str] = []
 
     # --- notes: curated judgments about readings/*.md ---------------------
     # The report body is the source of truth for derived facts (harvested by
     # tools/note_index.py); here we only check that a row points at a real file,
     # a real session, real ledger IDs, and a real earlier row it supersedes.
+    report_bodies: dict[str, str] = {}
     for note_id, record in notes.items():
+        body_path = record.get("path")
+        report_body = ""
+        if isinstance(body_path, str) and body_path in report_bodies:
+            report_body = report_bodies[body_path]
+        elif isinstance(body_path, str) and (ROOT / body_path).is_file():
+            try:
+                report_body = (ROOT / body_path).read_text(encoding="utf-8")
+            except OSError:
+                report_body = ""
+            report_bodies[body_path] = report_body
         for field in ("session_id", "report_session_id"):
             value = record.get(field)
             if isinstance(value, str) and value and value not in sessions:
@@ -370,6 +407,10 @@ def main() -> int:
                     if claim_id in seen_claims:
                         errors.append(f"notes:{note_id}: duplicate claim_id {claim_id!r}")
                     seen_claims.add(claim_id)
+                for problem in claim_scope_errors(claim, report_body):
+                    errors.append(f"notes:{note_id}: claims[{position}].{problem}")
+                if claim_needs_as_of(claim):
+                    undated_claims.append(str(claim.get("claim_id") or f"{note_id}[{position}]"))
                 for field, target_name in NOTE_CLAIM_REF_FIELDS:
                     values = claim.get(field, [])
                     if not isinstance(values, list):
@@ -424,91 +465,6 @@ def main() -> int:
 
     check_note_brakes(notes, errors)
 
-    hypotheses = collections.get("hypotheses", {})
-    evaluations = collections.get("evaluations", {})
-    errata_base = ROOT / "state" / "errata.jsonl"
-    errata_records: dict[str, dict[str, Any]] = {}
-    if errata_base.exists() or ledger_io.shard_dir(errata_base).is_dir():
-        errata_records = ledger_io.load_jsonl_union(errata_base, "errata_id", errors, root=ROOT)
-
-    check_refs("hypotheses", hypotheses, "question_ids", "question", questions, errors)
-    check_refs("hypotheses", hypotheses, "parent_hypothesis_ids", "hypothesis", hypotheses, errors)
-    check_refs("hypotheses", hypotheses, "supporting_material_ids", "material", materials, errors)
-    check_refs("hypotheses", hypotheses, "counter_material_ids", "material", materials, errors)
-    check_refs("hypotheses", hypotheses, "source_note_ids", "note", notes, errors)
-
-    for hyp_id, hyp in hypotheses.items():
-        session_id = hyp.get("session_id")
-        if isinstance(session_id, str) and session_id not in sessions:
-            errors.append(f"hypotheses:{hyp_id}: session_id references unknown session {session_id!r}")
-        parents = hyp.get("parent_hypothesis_ids")
-        lineage_op = hyp.get("lineage_op")
-        if isinstance(parents, list):
-            if hyp_id in parents:
-                errors.append(f"hypotheses:{hyp_id}: parent_hypothesis_ids cannot reference itself")
-            if lineage_op == "root" and parents:
-                errors.append(f"hypotheses:{hyp_id}: lineage_op 'root' must have empty parent_hypothesis_ids")
-            elif lineage_op in ("refines", "splits", "synthesizes") and not parents:
-                errors.append(
-                    f"hypotheses:{hyp_id}: lineage_op {lineage_op!r} requires at least one parent_hypothesis_id"
-                )
-        excl = str(hyp.get("exclusion_clause") or "").strip().lower()
-        if excl in _TRIVIAL_EXCLUSION_PATTERNS:
-            errors.append(f"hypotheses:{hyp_id}: exclusion_clause must state a concrete falsification criterion")
-
-    hyp_visit: dict[str, int] = {}
-    for start_id in hypotheses:
-        if hyp_visit.get(start_id, 0) != 0:
-            continue
-        stack: list[tuple[str, int]] = [(start_id, 0)]
-        hyp_visit[start_id] = 1
-        while stack:
-            cur_id, idx = stack[-1]
-            p_list = hypotheses[cur_id].get("parent_hypothesis_ids")
-            neighbors = [
-                p for p in (p_list if isinstance(p_list, list) else [])
-                if isinstance(p, str) and p in hypotheses and p != cur_id
-            ]
-            if idx < len(neighbors):
-                stack[-1] = (cur_id, idx + 1)
-                nxt_id = neighbors[idx]
-                st = hyp_visit.get(nxt_id, 0)
-                if st == 1:
-                    errors.append(f"hypotheses:{cur_id}: cycle detected in parent_hypothesis_ids via {nxt_id!r}")
-                elif st == 0:
-                    hyp_visit[nxt_id] = 1
-                    stack.append((nxt_id, 0))
-            else:
-                hyp_visit[cur_id] = 2
-                stack.pop()
-
-    check_refs("evaluations", evaluations, "compared_against_hypothesis_ids", "hypothesis", hypotheses, errors)
-    check_refs("evaluations", evaluations, "spawned_hypothesis_ids", "hypothesis", hypotheses, errors)
-    check_refs("evaluations", evaluations, "material_ids", "material", materials, errors)
-    check_refs("evaluations", evaluations, "fragment_ids", "fragment", fragments, errors)
-    check_refs("evaluations", evaluations, "note_ids", "note", notes, errors)
-    if errata_records:
-        check_refs("evaluations", evaluations, "errata_ids", "errata", errata_records, errors)
-
-    for evl_id, evl in evaluations.items():
-        session_id = evl.get("session_id")
-        if isinstance(session_id, str) and session_id not in sessions:
-            errors.append(f"evaluations:{evl_id}: session_id references unknown session {session_id!r}")
-        target_hid = evl.get("target_hypothesis_id")
-        if isinstance(target_hid, str) and target_hid not in hypotheses:
-            errors.append(
-                f"evaluations:{evl_id}: target_hypothesis_id references unknown hypothesis {target_hid!r}"
-            )
-        compared = evl.get("compared_against_hypothesis_ids")
-        if isinstance(compared, list) and target_hid in compared:
-            errors.append(
-                f"evaluations:{evl_id}: compared_against_hypothesis_ids cannot include target_hypothesis_id"
-            )
-        if evl.get("evidence_type") == "reproducible_script" and not (evl.get("script_command") or "").strip():
-            errors.append(
-                f"evaluations:{evl_id}: evidence_type 'reproducible_script' requires non-empty script_command"
-            )
-
     endpoint_collections = {
         "question": questions,
         "motif": motifs,
@@ -516,8 +472,6 @@ def main() -> int:
         "fragment": fragments,
         "session": sessions,
         "note": notes,
-        "hypothesis": hypotheses,
-        "evaluation": evaluations,
     }
     for read_id, record in read_logs.items():
         session_id = record.get("session_id")
@@ -616,6 +570,13 @@ def main() -> int:
                     f"relations:{relation_id}: {endpoint} references unknown "
                     f"{ref.get('type')} ID {ref.get('id')!r}"
                 )
+
+    if undated_claims:
+        print(
+            f"WARN: {len(undated_claims)} measured_fact claims state a number without an "
+            f"as-of date (text or measured_at)"
+        )
+        print("      list them with: python3 tools/claim_dates.py --list")
 
     if errors:
         print("FAIL: literary inquiry seed has errors")

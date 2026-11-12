@@ -20,7 +20,7 @@
       "additionalProperties": false,
       "required": ["type", "id"],
       "properties": {
-        "type": {"type": "string", "enum": ["question", "motif", "material", "fragment", "session", "note", "hypothesis", "evaluation"]},
+        "type": {"type": "string", "enum": ["question", "motif", "material", "fragment", "session", "note"]},
         "id": {"type": "string", "minLength": 1}
       }
     }

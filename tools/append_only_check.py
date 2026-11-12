@@ -77,8 +77,6 @@ COLLECTIONS: dict[str, str] = {
     "editorial_decisions": "decision_id",
     "notes": "note_id",
     "errata": "errata_id",
-    "hypotheses": "hypothesis_id",
-    "evaluations": "evaluation_id",
 }
 
 Lines = dict[str, "collections.Counter[bytes]"]

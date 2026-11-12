@@ -28,11 +28,6 @@
         "question",
         "session",
         "motif",
-        "note",
-        "hypothesis",
-        "evaluation",
-        "report",
-        "tool",
         "other"
       ]
     },

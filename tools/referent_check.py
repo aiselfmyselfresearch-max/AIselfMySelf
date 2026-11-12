@@ -62,12 +62,9 @@ ID_KEYS: dict[str, str] = {
     "motifs": "motif_id",
     "editorial_decisions": "decision_id",
     "errata": "errata_id",
-    "notes": "note_id",
-    "hypotheses": "hypothesis_id",
-    "evaluations": "evaluation_id",
 }
 
-TEXT_KEYS = ("question", "text", "title", "proposition", "summary", "claim", "note", "notes")
+TEXT_KEYS = ("question", "text", "title", "claim", "note", "notes", "summary")
 
 # Fields that carry a row's identity, as opposed to its annotations.  A row whose
 # ID survives while these change is not the same record edited; it is another
@@ -84,9 +81,6 @@ IDENTITY_KEYS: dict[str, tuple[str, ...]] = {
     "motifs": ("label", "name", "title"),
     "editorial_decisions": ("decision", "subject_id", "decision_type"),
     "errata": ("claim", "subject_id"),
-    "notes": ("path", "session_id"),
-    "hypotheses": ("proposition", "question_ids"),
-    "evaluations": ("target_hypothesis_id", "verdict", "summary"),
 }
 
 

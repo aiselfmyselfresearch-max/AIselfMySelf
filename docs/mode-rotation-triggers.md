@@ -38,17 +38,3 @@
 スキーマ、ID重複防止、参照先の存在、出典区分、追記専用、並列安全性、生成索引の同期、アクセス保護、サイズ・ファイル数予算は維持する。`size_budget.py` の上限に近づいた場合は既存の保守手順に従い、台帳の内容を変えずに統合する。
 
 CIはこれらの技術的整合性と計算の正しさを検証する。実コーパスの語彙・句読点・関係網が特定の形であることは合格条件にしない。観察値が変わっても正しく報告できることをテストする。技術検査の通過は、探究の進展の証明ではない。
-
-## 5. 2026-11-12 改訂：期待情報利得（EIG）ルーティングと3探求ロール
-
-`--packet auto` と信念更新ループは以下の規律で動作する。
-
-- **中心三問への75%集中配分**：`--packet auto` はシード決定論的に75%の確率で中心三問（`Q-001`・`Q-002`・`Q-003` のうち期待情報利得 EIG／エントロピー余地が高い問い）を選び、残り25%で未検証の派生問いを選ぶ。問いの無制限な枝分かれよりも、中心三問における条件付き仮説の検証・射程限定を優先する。
-- **3つの探求ロール（`tools/belief_state.py::assign_inquiry_role`）**：
-  - `Adversarial Tester`（50%枠・[`prompts/role_adversarial_tester.md`](../prompts/role_adversarial_tester.md)）：上位対立仮説ペアを一次資料・再現スクリプト・境界思考実験に衝突させ、反証または射程限定（`narrows_scope` / `refutes_unconditioned`）を行う。
-  - `Proposer`（25%枠・[`prompts/role_proposer.md`](../prompts/role_proposer.md)）：未カバーの境界条件に対して適用条件と反証条件を備えた子仮説（`refines` / `splits`）を提案する。
-  - `Consolidator`（25%枠・[`prompts/role_consolidator.md`](../prompts/role_consolidator.md)）：未継承報告（`§4.8`）の精読登録、重複仮説の統合（`synthesizes` / `subsumes`）、訂正フラグ付き仮説の再検証を行う。
-- **学習・配線・時系列のCI不変条件**：
-  - `tools/belief_state.py --check-map`：`BELIEF_MAP.md` が台帳と一致していること。
-  - `tools/date_axis.py --enforce-shards`：`state/*.d/` に実日付より未来のシャード名が存在しないこと。
-  - `tools/learning_metrics.py --check`：`readings/*.md` の `notes` 配線率100%、棄却済み仮説の無条件復活0件、対立仮説比較付きの非確証評価が機能していること。

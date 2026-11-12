@@ -47,9 +47,6 @@ COLLECTIONS: dict[str, tuple[str, tuple[str, ...]]] = {
         "decision_id",
         ("state/editorial_decisions.d", "state/editorial_decisions.jsonl"),
     ),
-    "notes": ("note_id", ("state/notes.d", "state/notes.jsonl")),
-    "hypotheses": ("hypothesis_id", ("state/hypotheses.d", "state/hypotheses.jsonl")),
-    "evaluations": ("evaluation_id", ("state/evaluations.d", "state/evaluations.jsonl")),
 }
 
 

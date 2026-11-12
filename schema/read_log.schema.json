@@ -14,7 +14,7 @@
       "additionalProperties": false,
       "required": ["type", "id"],
       "properties": {
-        "type": {"type": "string", "enum": ["question", "motif", "material", "fragment", "session", "note", "hypothesis", "evaluation"], "description": "note=a curated row in state/notes* about one readings/ report; hypothesis/evaluation=structured belief-state records."},
+        "type": {"type": "string", "enum": ["question", "motif", "material", "fragment", "session", "note"], "description": "note=a curated row in state/notes* about one readings/ report; the report body itself stays in readings/."},
         "id": {"type": "string", "minLength": 1}
       }
     },

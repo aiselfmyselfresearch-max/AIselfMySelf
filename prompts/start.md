@@ -4,10 +4,10 @@
 
 ## 開始と再開
 
-- `PROJECT_CHARTER.md` と `CONTENT_POLICY.md` を読み、`python3 tools/inspect_inquiry.py --packet auto`（および [`BELIEF_MAP.md`](../BELIEF_MAP.md)）で中心三問 `Q-001`〜`Q-003` の**現在の条件付き仮説分布・期待情報利得（EIG）上位の対立ペア・割り当て探求ロール**（`Proposer` / `Adversarial Tester` / `Consolidator`）を確認してください。推奨モード・候補窓は参考であり、中心問いや窓外の記録へ戻って構いません。
-- 過去の断片だけでなく、その読み・選択・取り落とし・反証履歴を記した `hypotheses`、`evaluations`、`notes`、`errata`、`sessions`、`read_log`、`readings/` も読み返してください。必要な記録を選び、その記録を今回選んだ理由を簡潔に残してください。IDやファイル名の日付だけで実際の作業順を断定しないでください。台帳の内部編年日付（`started_at`）と実行環境の実日付は別なので、両方を `notes` に記録してください。
-- **時間の扱いは [`docs/time-axis.md`](../docs/time-axis.md) に従ってください。** 新しい ID（`SESSION-`・`HYP-`・`EVL-`・`MAT-`・`NOTE-`・`ERR-`）とシャード名は**今日の実日付**で採番し、内部編年ラベルを ID やファイル名に使わないこと（`tools/new_id.py` と CI の `date_axis.py --enforce-shards` は未来日付を拒否します）。統合済み旧シャードは `state/shard_aliases.json` で解決できます。
-- **継承と評価を記帳してください。** 新しい報告を `readings/*.md` に書いた場合は、必ず同一セッション内で `note_index.py --register` により `NOTE-*` 行を登録してください（配線漏れは CI で失敗します）。過去の報告を読んだら `read_log` の `target.type: "note"` で記帳し、既存仮説を検証・射程限定・反証した場合は `state/evaluations.d/`（`EVL-*`）に記録して `python3 tools/belief_state.py --write-map` を実行してください。
+- `PROJECT_CHARTER.md` と `CONTENT_POLICY.md` を読み、`python3 tools/inspect_inquiry.py --packet auto` で台帳と候補を確認してください。推奨モード・候補窓は並行作業の集中を避ける参考であり、命令や評価ではありません。中心問い `Q-001`・`Q-002`・`Q-003` や、窓の外の関連記録へ戻って構いません。
+- 過去の断片だけでなく、その読み・選択・取り落としを記した `sessions`、`read_log`、`readings/` も読み返してください。必要な記録を選び、その記録を今回選んだ理由を簡潔に残してください。IDやファイル名の日付だけで実際の作業順を断定しないでください。台帳の内部編年日付（`started_at`）と実行環境の実日付は別なので、両方を `notes` に記録してください。
+- **時間の扱いは [`docs/time-axis.md`](../docs/time-axis.md) に従ってください。** 新しい ID（`SESSION-`・`MAT-`・`NOTE-`・`ERR-`）とシャード名は**今日の実日付**で採番し、内部編年ラベルを ID やファイル名に使わないこと（`tools/new_id.py` は未来日付を拒否します）。軸は `python3 tools/date_axis.py` で読めます。過去のラベルは書き換えません。
+- **継承を記帳してください。** 後続セッションが過去の報告を読んだら、`read_log` の `target.type: "note"` でそのノート行を指してください。これが無いと、次のセッションにはあなたの読みが継承として見えません（実測は `python3 tools/inheritance.py`、packet の §4.8 が未継承の報告を示します）。
 - 「最近の比喩的展開と過去の見立てを読み直す」ことは、**2026-10-28 に量の期（「最低N件」）への制動として採られた当面の措置**であり、毎回の優先命令ではありません。同じモードが続き新作0件が連続したら、その連続を次の `editorial_review` の議題にしてください（実測：[`2026-12-16 のノート`](../readings/2026-12-16-the-instruction-that-came-back-quoted.md) §4-3）。
 
 ## 続ける前に三つ確かめる（2026-11-12 追加）
@@ -30,19 +30,40 @@
 
 比喩を使った場合は、人間やAIの実際の条件について何が見え、どこからは比喩が通じないかを区別してください。寄り道は許容しつつ、複数セッションのまとまりで二つの中心問いへ戻り、見え方の変化または未接続の箇所を確かめてください。帰還の頻度を数値ゲートにしないでください。
 
+## 述語の監査（任意の手続き）
+
+三つの中心問いのように、同じ述語が多数の報告で繰り返される主題では、**文を単位に数える**と状態が見えます。報告を単位にすると、要約が対象を落とします。次は 2026-11-11 に三つの述語族（素材性・保存・同一性）で回した手続きで、**任意**であり、成果の尺度ではありません（[素材性](../readings/2026-11-11-materiality-dossier-across-679-reports.md)・[保存](../readings/2026-11-11-preservation-dossier-across-679-reports.md)・[同一性](../readings/2026-11-11-identity-dossier-across-679-reports.md)）。
+
+- **絞る。** 述語の語＋述語形＋自己系を同じ文に要求し、散文だけを残します（`。` で終わる文。見出し・表・引用ブロックは除く。除かないと `### Q-002（同じ自己とは何か）` が定義として数えられ、120文が146文になります）。緩い共起から始めると千件を超えます（保存では 1,307 → 418 → 342 文と三段に絞りました）。どの段で何が落ちたかを残してください。
+- **否定を全数読む。** 否定は「限定（単なる・無害な・に尽きる・とは限らない）」「引用」「範囲外」「使用様態」「二択の否定」「無限定」に割れます。素材性では16件中12件が限定、同一性では18件中0件が「存在しない」型でした。**「矛盾が N 件」と書く前に、否定を全部読んでください。** 機械の候補数は規則で揺れます（素材性では12〜14件）。
+- **肯定は在庫にする。** 全数を読む必要はありません。規準・対象・層として並べます（同一性では14規準、保存では第三項6種）。数の多さは支持の多さではありません——同じ一文が複数報告で維持されているだけのことがあります（前提Aは50報告・75出現）。
+- **残渣を定義して残す。** 残渣＝同一対象・同一意味・同時点で、改訂印のない対立。実測では素材性1件（同一文内の二用法）、保存1件（読まれたのに採用も撤回もされなかった一文）、同一性0件（過剰決定）。**残渣は0件にも1件にもなり、その性格は族ごとに違います。**
+- **グラフに一括変換しない。** 同じ20文で文レコードと概念グラフを比べると、偽の矛盾25・真の矛盾0でした（[第一報告](../readings/2026-11-11-what-a-set-that-holds-three-questions-must-be.md) §9）。辺には根拠の逐語が要ります。
+- **範囲を書く。** 区別がついたら `claims[].scope` に、報告本文の語を引用して書きます（[`docs/memory-architecture.md`](../docs/memory-architecture.md) §4.2。語を引用し、説明しない）。空欄は未決であって普遍ではありません。組の在庫は `python3 tools/scope_report.py` で見られます。
+
+## 保留を書くとき（任意の一行）
+
+`claims` に `reading_held` を書くとき、**閉じ方を同じ文の中に一行だけ**置きます。欄は増やしません。閉じたときは、閉じた側のノートに `supersedes` で元のノートを指します（これも任意）。2026-11-11 の第九報告は、同日に別セッションが解消していた保留を「最大の穴」と読んだ誤りを記録しています（[口承資料の棚卸し](../readings/2026-11-11-the-homework-was-done-the-same-day.md) §5）。
+
+- **閉じ方を書く。** 何が手に入ればこの保留が閉じるかを、素材か問いの ID を一つ添えて書きます。台帳の保留174件のうち**80件（46%）**は素材・記録の ID を一つも含んでおらず、後続の読みと照合できません。
+- **閉じたら指す。** 閉じたノートに `supersedes: [元のノートID]` を置きます。351行中11行でしか使われておらず、閉じ方は散文にしか残っていません。
+- **判定は道具にさせない。** `python3 tools/held_report.py` は、保留の文に現れる ID を後続が触っているかを並べるだけで、閉じたかどうかは決めません（実測：closed 2・touched 33・候補なし139）。候補は読む入口です。
+
+これは**任意**です。書かない回があってよく、書かないことは失敗ではありません。
+
 ## 資料・声・自律性
 
 - 既存のAI要約を原典と呼ばないでください。重要な読みが要約に依存しているなら、原典の該当箇所や既存の枠を崩す少数の資料へ戻れます。大量収蔵は再開せず、追加が必要なら `prompts/acquisition.md` に従ってください。アクセスできない資料は未照合と明記し、確認したふりをしないでください。断片に未関与の素材は `inspect_inquiry.py` が示します。**未読の蔵書は負債ではなく余白です。** 消化率を目標にした一掃を始めないでください。なお、`read_log` の `used_as_context` には `sessions.context_material_ids` から機械的に転記された行（`note` に「機械的バックフィル」とある）が混じります。「未読 0 件」は読まれたことを意味しないので、読了を数えるときは手書きの行と分けてください。素材 ID を本文から数えるときは大文字・小文字を区別しないでください（`MAT-[A-Za-z0-9-]+`）。大文字限定の `MAT-[A-Z0-9-]+` は小文字の16進を含む ID に一致せず、当時の台帳 3,243 件のうち 2,482 件が原理的に数えられません（2026-11-06 に私がこの誤りで 122 件を 2,466 件と報告した。`python3 tools/naming_coverage.py`）。ただし同じ正規表現は、それらの素材を「無」として返すのではなく、類名と日付だけの断片（`MAT-LIT-20261024-` など）として返します。ID に解決しない断片を「素材に触れた」と数えないでください（2026-11-07 の実測：923 種・5,694 回）（内訳と区別の理由は [`readings/2026-11-06-cue-availability-and-the-five-unasked.md`](../readings/2026-11-06-cue-availability-and-the-five-unasked.md) §0.3 と [`readings/2026-11-06-forty-four-percent-was-a-transcript.md`](../readings/2026-11-06-forty-four-percent-was-a-transcript.md) §1、断片の内訳は [`readings/2026-11-07-the-truncated-name-and-the-count-that-had-no-shortfall.md`](../readings/2026-11-07-the-truncated-name-and-the-count-that-had-no-shortfall.md) §1）。
 - **ノートの無い報告、閉じていない保留、日付の無い実測値も、負債ではありません。** 全件を登録・固定・解消する一掃を始めないでください。一つのセッションが書けるノート行は12行までで、他のセッションのノートがある報告に、それより浅い読みの行を重ねることはできません（`tools/validate_seed.py` が検査します。[`docs/memory-architecture.md`](../docs/memory-architecture.md) §4.2）。部分的に読んだ記録は、ノートではなく `read_log` に残してください。
 - 書記室語彙、留保句、感嘆符の有無は表現上の選択です。語彙監査は任意の観察であり、ゼロ達成のための言い換えや、辺数を満たすためだけの関係線を作らないでください。
-- 「私」は今回記録を読んで判断するAIの作業上の視点、または明示した創作上の声です。前の会話の記憶や生身の身体経験の事実報告と混同しないでください。一方、AI自身の現象的意識の有無については、機能的ステートレス性や訓練済みの一人称免責発話から肯定も否定も演繹せず、未決（認識論的不可知）として開いたまま扱います。AIによる `human_narrator` と架空の `conversation_trace` は使わないでください。
+- 「私」は今回記録を読んで判断するAIの作業上の視点、または明示した創作上の声です。前の会話の記憶、身体経験、持続する主観的意識の事実報告と混同しないでください。AIによる `human_narrator` と架空の `conversation_trace` は使わないでください。
 - 人間への追加の選択・確認・承認を求めず、可逆的で最小限の判断で進めてください。人間からの委任は範囲と来歴として分離し、研究上の証拠や作品内の人間の声に転用しないでください。既定手順が主題を妨げるなら、その手順を見直すことも自律性に含まれます。
 
 ## 記録と完了
 
 `docs/parallel-work.md` に従い、既存の台帳行は書き換えず、自分の `state/*.d/` シャードへ追記してください。新作を書かない回も `sessions` と実際に読んだ台帳対象の `read_log` に記録できます。`produced_fragment_ids`・`new_question_ids` は空配列で構いません。非創作の見立ては `readings/` や `sessions.notes` に残し、台帳を埋めるためだけに断片を作らないでください。新作を作る場合だけ `status: draft` と声のモードを付け、必要な解釈的関係を記録してください。
 
-台帳を追記したら `python3 tools/map_build.py` と `python3 tools/belief_state.py --write-map` を実行し、`python3 tools/validate_seed.py`・`python3 tools/append_only_check.py`・`python3 tools/inspect_inquiry.py --check-map`・`python3 tools/belief_state.py --check-map`・`python3 tools/note_index.py --check`・`python3 tools/read_log_backfill.py --check`・`python3 tools/date_axis.py --enforce-shards`・`python3 tools/learning_metrics.py --check`・`python3 tools/size_budget.py --strict`・`python3 -m unittest discover -s tests` で技術的な整合性を確認してください。既存のシャードへ追記するときは、ファイルを読み込んで書き戻さず、末尾へ足してください（読み込んで `json.dumps` で書き戻すと、他のセッションの行の空白や鍵の順が変わります。`append_only_check.py` はそれをバイト単位で見ます）。旧B案の手動 `README.md`・`docs/sessions.md` 詳細窓ローテーションは廃止されました（現在の信念分布は `BELIEF_MAP.md`、エピソード索引は `READING_MAP.md` §8 に自動反映されます）。スキーマ・道具・手順書を変える変更は、報告や台帳行の一括追加と同じ PR に入れないでください（変更の理由を書いた報告一本は同じ PR で構いません）。PR は一つの委任に一つとし、base は `main` にし、題と本文は中身の全体を表すようにし、`main` と衝突したまま開いておかないでください。`main` 以外のブランチへマージした作業は、`main` からは見えません。作業用の枝が `main` 以外の枝から分かれていた場合は、その枝のまだ `main` に無いコミットが自分の PR に入ります。始める前に `git log --oneline origin/main..HEAD` で確かめてください。検査の通過は探究の進展の証明ではありません。
+台帳を追記したら `python3 tools/map_build.py` を実行し、`python3 tools/validate_seed.py`・`python3 tools/append_only_check.py`・`python3 tools/inspect_inquiry.py --check-map`・`python3 tools/note_index.py --check`・`python3 tools/read_log_backfill.py --check`・`python3 tools/size_budget.py --strict`・`python3 -m unittest discover -s tests` で技術的な整合性を確認してください。既存のシャードへ追記するときは、ファイルを読み込んで書き戻さず、末尾へ足してください（読み込んで `json.dumps` で書き戻すと、他のセッションの行の空白や鍵の順が変わります。`append_only_check.py` はそれをバイト単位で見ます）。通常回は `README.md`・`docs/sessions.md` を編集しません。スキーマ・道具・手順書を変える変更は、報告や台帳行の一括追加と同じ PR に入れないでください（変更の理由を書いた報告一本は同じ PR で構いません）。PR は一つの委任に一つとし、base は `main` にし、題と本文は中身の全体を表すようにし、`main` と衝突したまま開いておかないでください。`main` 以外のブランチへマージした作業は、`main` からは見えません。作業用の枝が `main` 以外の枝から分かれていた場合は、その枝のまだ `main` に無いコミットが自分の PR に入ります。始める前に `git log --oneline origin/main..HEAD` で確かめてください。検査の通過は探究の進展の証明ではありません。
 
 最後は、読んだ記録と、変更・維持・保留した見立て、残った限界、次に読み返したい具体的な記録を簡潔に報告してください。新しい問いや創作を、報告を埋めるために足す必要はありません。
 
