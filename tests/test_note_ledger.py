@@ -101,6 +101,120 @@ def run(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
     )
 
 
+OTHER_SESSION_ROW = dict(SESSION_ROW, session_id="SESSION-20261103-bbbbbb", started_at="2026-11-03")
+
+
+def note(suffix: str, *, day: str = "20261102", session: str = SESSION_ROW["session_id"], **extra) -> dict:
+    row = {
+        "note_id": f"NOTE-{day}-{suffix}",
+        "path": NOTE_ROW["path"],
+        "session_id": session,
+        "created_at": f"{day[:4]}-{day[4:6]}-{day[6:]}",
+    }
+    row.update(extra)
+    return row
+
+
+class NoteBrakeTests(unittest.TestCase):
+    """The three brakes added on 2026-11-12 (tools/validate_seed.py, check_note_brakes).
+
+    One session wrote 859 note rows in two days.  Most were made from excerpts,
+    56 of them sat on top of another session's deeper reading of the same
+    report, and 318 carried a created_at later than the day they were written.
+    Nothing stopped it, because each row was valid on its own.
+    """
+
+    def make(self, tmp: str) -> Path:
+        root = make_repo(Path(tmp))
+        write_row(root, "sessions", OTHER_SESSION_ROW)
+        return root
+
+    def test_twelve_rows_from_one_session_pass_and_the_thirteenth_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.make(tmp)
+            for index in range(13):
+                (root / "readings" / f"r{index:02d}.md").write_text("# r\n", encoding="utf-8")
+            for index in range(12):
+                write_row(root, "notes", note(f"{index:06x}", path=f"readings/r{index:02d}.md"))
+            self.assertEqual(validate(root).returncode, 0)
+            write_row(root, "notes", note(f"{12:06x}", path="readings/r12.md"))
+            result = validate(root)
+            self.assertEqual(result.returncode, 1)
+            self.assertIn("has 13 note rows; one session may write at most 12", result.stdout)
+
+    def test_a_shallower_reading_cannot_be_put_over_another_sessions_deeper_one(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.make(tmp)
+            write_row(root, "notes", note("aaaaaa", read_depth="full_text_read"))
+            later = note(
+                "bbbbbb", day="20261103", session=OTHER_SESSION_ROW["session_id"],
+                read_depth="excerpt_and_metadata_read",
+            )
+            write_row(root, "notes", later)
+            result = validate(root)
+            self.assertEqual(result.returncode, 1)
+            self.assertIn("NOTE-20261103-bbbbbb: read_depth 'excerpt_and_metadata_read' is shallower", result.stdout)
+
+    def test_omitting_read_depth_does_not_get_around_the_depth_rule(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.make(tmp)
+            write_row(root, "notes", note("aaaaaa", read_depth="excerpt_and_metadata_read"))
+            write_row(root, "notes", note("bbbbbb", day="20261103", session=OTHER_SESSION_ROW["session_id"]))
+            self.assertEqual(validate(root).returncode, 1)
+
+    def test_an_equally_deep_or_deeper_reading_may_follow(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.make(tmp)
+            write_row(root, "notes", note("aaaaaa", read_depth="excerpt_and_metadata_read"))
+            write_row(
+                root, "notes",
+                note("bbbbbb", day="20261103", session=OTHER_SESSION_ROW["session_id"],
+                     read_depth="full_text_read", supersedes=["NOTE-20261102-aaaaaa"]),
+            )
+            self.assertEqual(validate(root).returncode, 0, validate(root).stdout)
+
+    def test_a_session_may_follow_its_own_deeper_row_with_a_shallower_one(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.make(tmp)
+            write_row(root, "notes", note("aaaaaa", read_depth="full_text_read"))
+            write_row(root, "notes", note("bbbbbb", day="20261103", read_depth="excerpt_and_metadata_read"))
+            self.assertEqual(validate(root).returncode, 0, validate(root).stdout)
+
+    def test_same_day_rows_are_compared_only_when_one_names_the_other(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.make(tmp)
+            write_row(root, "notes", note("aaaaaa", read_depth="full_text_read"))
+            same_day = note(
+                "bbbbbb", session=OTHER_SESSION_ROW["session_id"], read_depth="excerpt_and_metadata_read"
+            )
+            write_row(root, "notes", same_day, name="2026-11-02-bbbbbbbbbbbb")
+            self.assertEqual(validate(root).returncode, 0, "two sessions working on the same day cannot see each other")
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.make(tmp)
+            write_row(root, "notes", note("aaaaaa", read_depth="full_text_read"))
+            write_row(root, "notes", dict(same_day, supersedes=["NOTE-20261102-aaaaaa"]))
+            self.assertEqual(validate(root).returncode, 1, "naming a row in supersedes is a claim to replace it")
+
+    def test_created_at_may_not_run_ahead_of_the_day_in_the_id(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.make(tmp)
+            write_row(root, "notes", note("aaaaaa", day="20261112", created_at="2026-11-20T00:00:00Z"))
+            result = validate(root)
+            self.assertEqual(result.returncode, 1)
+            self.assertIn("created_at '2026-11-20T00:00:00Z' is later than the date in its own ID", result.stdout)
+
+    def test_created_at_just_after_midnight_and_old_labelled_rows_pass(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = self.make(tmp)
+            write_row(root, "notes", note("aaaaaa", day="20261112", created_at="2026-11-13T00:05:00Z"))
+            (root / "readings" / "old.md").write_text("# old\n", encoding="utf-8")
+            write_row(
+                root, "notes",
+                note("bbbbbb", day="20261103", path="readings/old.md", created_at="2027-01-22"),
+            )
+            self.assertEqual(validate(root).returncode, 0, validate(root).stdout)
+
+
 class NoteValidationTests(unittest.TestCase):
     def test_a_valid_note_row_passes(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
