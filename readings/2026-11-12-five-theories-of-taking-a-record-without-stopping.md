@@ -330,6 +330,8 @@ w̄·Δz̄ ＝ Cov(w, z) ＋ E(w·Δz)
 
 検査の通過は探究の進展の証明ではない。以下は `origin/main`（`32ca9888`）を取り込んだ後の結果である。
 
+**二度目の取り込み（追記）。** プルリクエスト #673 を開いた後、マージする前に `main` はもう一度進んだ（`32ca9888` → `4759e00`、PR #674。同日の報告どうしが互いを読んでいるかを測った別セッションの報告で、素材の追加はない）。今度は `READING_MAP.md` に加えて、同じ日付の台帳ファイル三つ（ノート・読書記録・セッション）の末尾でも競合した。相手の行を先に、こちらの行を後に並べて両方を残し、索引は再生成した。再検査の結果は `validate_seed.py` PASS（素材3,735・セッション675・読書記録11,916・ノート352）、`--check-map`・`note_index.py --check`（700）・`read_log_backfill.py --check`・`size_budget.py --strict` いずれも PASS。したがって下の箇条書きの件数は一度目の取り込み時点のものである。#673 の CI では、失敗したのは回帰テストの段だけで、他の段は通った。
+
 - `python3 tools/map_build.py` で索引を和集合から再生成した。`READING_MAP.md` は取り込み時に競合したため、どちらの版も採らず、再生成した結果を置いた。
 - `validate_seed.py`：PASS（素材3,735・セッション674・読書記録11,909・ノート351）。`inspect_inquiry.py --check-map`：PASS。`note_index.py --check`：PASS。`read_log_backfill.py --check`：PASS（全ペアに行がある。これは接触の被覆であり読了の証明ではない）。`size_budget.py --strict`：PASS（すべて soft 以内）。`node --check viewer/app.js`・`date_axis.py --check`・`inheritance.py --cohorts`・`associations.py`：いずれも終了コード0。
 - 重複の再走査：取り込み後の3,735行で、五著作の題名・主要語に一致する他の行は0件。素材IDの重複も0件。
