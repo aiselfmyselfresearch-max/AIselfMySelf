@@ -5184,11 +5184,11 @@
 | `map/50-sessions-12.md` | 50 | 45,409 |
 | `map/50-sessions-13.md` | 50 | 43,913 |
 | `map/50-sessions-14.md` | 6 | 5,194 |
-| `map/60-notes-01.md` | 25 | 65,854 |
-| `map/60-notes-02.md` | 25 | 72,110 |
-| `map/60-notes-03.md` | 25 | 71,609 |
-| `map/60-notes-04.md` | 25 | 95,832 |
-| `map/60-notes-05.md` | 25 | 86,726 |
+| `map/60-notes-01.md` | 25 | 66,557 |
+| `map/60-notes-02.md` | 25 | 72,704 |
+| `map/60-notes-03.md` | 25 | 72,926 |
+| `map/60-notes-04.md` | 25 | 98,349 |
+| `map/60-notes-05.md` | 25 | 89,321 |
 | `map/60-notes-06.md` | 25 | 52,287 |
 | `map/60-notes-07.md` | 25 | 94,863 |
 | `map/60-notes-08.md` | 25 | 71,590 |
@@ -5205,24 +5205,24 @@
 | `map/60-notes-19.md` | 25 | 122,223 |
 | `map/60-notes-20.md` | 25 | 169,695 |
 | `map/60-notes-21.md` | 25 | 128,352 |
-| `map/60-notes-22.md` | 25 | 88,310 |
-| `map/60-notes-23.md` | 25 | 61,751 |
-| `map/60-notes-24.md` | 25 | 112,614 |
-| `map/60-notes-25.md` | 25 | 88,713 |
-| `map/60-notes-26.md` | 25 | 97,577 |
-| `map/60-notes-27.md` | 25 | 106,513 |
-| `map/60-notes-28.md` | 25 | 128,034 |
-| `map/60-notes-29.md` | 16 | 83,559 |
+| `map/60-notes-22.md` | 25 | 88,069 |
+| `map/60-notes-23.md` | 25 | 60,593 |
+| `map/60-notes-24.md` | 25 | 109,994 |
+| `map/60-notes-25.md` | 25 | 90,345 |
+| `map/60-notes-26.md` | 25 | 96,853 |
+| `map/60-notes-27.md` | 25 | 108,843 |
+| `map/60-notes-28.md` | 25 | 128,836 |
+| `map/60-notes-29.md` | 17 | 86,072 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・716本・24,941,064 B）
+## 8. 精読ノート索引（readings/・717本・24,947,640 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 516/716 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 517/717 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：714 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：85 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：715 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：86 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5760,6 +5760,7 @@
 | `readings/2026-11-11-the-ellipsis-is-not-an-address.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,035 | Q3 M4 S2 | ✓ | 省略符は住所にならない——558の継ぎ目と、それを説明する4行 |
 | `readings/2026-11-11-the-field-that-caught-its-author.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,134 | Q3 S1 | — | 欄を足した回、計器は最初に自分を捕まえた——`measured_at` の実装 |
 | `readings/2026-11-11-the-homework-was-done-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,229 | Q1 M2 S2 | ✓ | 宿題は同じ日に実行されていた——口承資料4件に四欄を当て、台帳が閉じなかった理由を測る |
+| `readings/2026-11-11-the-margin-and-the-floor.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,880 | Q1 F1 S1 | — | 裾と床——1点台の12本と、三つの問いに一度も触れない179本 |
 | `readings/2026-11-11-the-mark-is-almost-always-there.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,190 | Q3 S2 | ✓ | 印はほぼ全部置かれている——系譜380節のうち61節は一度も読まれていない |
 | `readings/2026-11-11-the-report-is-the-least-read-layer.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,836 | Q2 S1 | ✓ | 報告は、いちばん読まれていない——`notes` 809行を `read_log` の側から数える |
 | `readings/2026-11-11-the-return-came-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-e4c584` +1 | 10,078 | Q2 M1 S2 ERR2 | ✓ | 返り便は同じ日に来る——`read_log` で測る往復の遅れ |
