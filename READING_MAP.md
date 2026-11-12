@@ -5188,8 +5188,8 @@
 | `map/60-notes-02.md` | 25 | 86,660 |
 | `map/60-notes-03.md` | 25 | 88,317 |
 | `map/60-notes-04.md` | 25 | 115,011 |
-| `map/60-notes-05.md` | 25 | 101,753 |
-| `map/60-notes-06.md` | 25 | 52,891 |
+| `map/60-notes-05.md` | 25 | 105,275 |
+| `map/60-notes-06.md` | 25 | 59,779 |
 | `map/60-notes-07.md` | 25 | 94,863 |
 | `map/60-notes-08.md` | 25 | 71,590 |
 | `map/60-notes-09.md` | 25 | 85,800 |
@@ -5205,24 +5205,25 @@
 | `map/60-notes-19.md` | 25 | 123,013 |
 | `map/60-notes-20.md` | 25 | 169,695 |
 | `map/60-notes-21.md` | 25 | 124,760 |
-| `map/60-notes-22.md` | 25 | 80,597 |
-| `map/60-notes-23.md` | 25 | 71,429 |
-| `map/60-notes-24.md` | 25 | 94,438 |
-| `map/60-notes-25.md` | 25 | 95,787 |
-| `map/60-notes-26.md` | 25 | 95,554 |
-| `map/60-notes-27.md` | 25 | 107,104 |
-| `map/60-notes-28.md` | 25 | 109,301 |
-| `map/60-notes-29.md` | 25 | 139,855 |
+| `map/60-notes-22.md` | 25 | 79,146 |
+| `map/60-notes-23.md` | 25 | 73,329 |
+| `map/60-notes-24.md` | 25 | 91,508 |
+| `map/60-notes-25.md` | 25 | 97,112 |
+| `map/60-notes-26.md` | 25 | 95,131 |
+| `map/60-notes-27.md` | 25 | 106,433 |
+| `map/60-notes-28.md` | 25 | 105,754 |
+| `map/60-notes-29.md` | 25 | 142,632 |
+| `map/60-notes-30.md` | 1 | 5,647 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・725本・24,995,802 B）
+## 8. 精読ノート索引（readings/・726本・25,001,694 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 525/725 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 526/726 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：723 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：94 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：724 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：95 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5753,6 +5754,7 @@
 | `readings/2026-11-11-preservation-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 9,383 | Q3 S1 | ✓ | 保存の一件ファイル——679報告の「自己を保存しない」59文を監査する |
 | `readings/2026-11-11-putting-the-predicate-audit-into-the-prompt.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,073 | S1 | — | 述語の監査を手順書に入れる——旧文面と理由 |
 | `readings/2026-11-11-q001-conditions-and-three-layers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 6,257 | Q1 M1 S1 ERR1 | ✓ | Q-001 の条件の族と、三つの層——342の claims から「統合された見解」の形を測る |
+| `readings/2026-11-11-selected-means-two-things.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,909 | S1 | — | `selected` は17編か、94編か——同じ語が二つの層で違う数を指し、どちらの数え方にも警告が出ない |
 | `readings/2026-11-11-seven-verbs-and-one-wrong-row-count.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,895 | Q2 S1 ERR1 | — | 読んだと書ける動詞は七つ——前回の「欄なし240行」を撤回する |
 | `readings/2026-11-11-six-answers-cannot-share-one-relation.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,315 | Q3 F1 S1 | ✓ | 六つの答えを一つの関係に課すと矛盾する——`Q-002` の形式判定と、層別に読めば両立すること |
 | `readings/2026-11-11-the-answer-updated-in-one-page.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,581 | Q3 S1 | — | 回答の更新版——依頼文への答えを一頁に置き、計数で一つ足す |
