@@ -5191,10 +5191,10 @@
 | `map/60-notes-05.md` | 25 | 86,726 |
 | `map/60-notes-06.md` | 25 | 49,501 |
 | `map/60-notes-07.md` | 25 | 74,057 |
-| `map/60-notes-08.md` | 25 | 46,761 |
+| `map/60-notes-08.md` | 25 | 48,672 |
 | `map/60-notes-09.md` | 25 | 61,164 |
 | `map/60-notes-10.md` | 25 | 61,745 |
-| `map/60-notes-11.md` | 25 | 68,907 |
+| `map/60-notes-11.md` | 25 | 70,579 |
 | `map/60-notes-12.md` | 25 | 72,580 |
 | `map/60-notes-13.md` | 25 | 91,025 |
 | `map/60-notes-14.md` | 25 | 119,673 |
@@ -5202,25 +5202,26 @@
 | `map/60-notes-16.md` | 25 | 88,658 |
 | `map/60-notes-17.md` | 25 | 111,136 |
 | `map/60-notes-18.md` | 25 | 108,843 |
-| `map/60-notes-19.md` | 25 | 117,803 |
+| `map/60-notes-19.md` | 25 | 119,413 |
 | `map/60-notes-20.md` | 25 | 167,647 |
-| `map/60-notes-21.md` | 25 | 131,106 |
-| `map/60-notes-22.md` | 25 | 73,154 |
-| `map/60-notes-23.md` | 25 | 84,542 |
-| `map/60-notes-24.md` | 25 | 74,909 |
-| `map/60-notes-25.md` | 25 | 77,250 |
-| `map/60-notes-26.md` | 25 | 103,790 |
-| `map/60-notes-27.md` | 25 | 108,513 |
-| `map/60-notes-28.md` | 25 | 139,855 |
+| `map/60-notes-21.md` | 25 | 131,692 |
+| `map/60-notes-22.md` | 25 | 74,354 |
+| `map/60-notes-23.md` | 25 | 83,253 |
+| `map/60-notes-24.md` | 25 | 77,616 |
+| `map/60-notes-25.md` | 25 | 75,445 |
+| `map/60-notes-26.md` | 25 | 103,119 |
+| `map/60-notes-27.md` | 25 | 104,966 |
+| `map/60-notes-28.md` | 25 | 142,632 |
+| `map/60-notes-29.md` | 1 | 5,647 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・700本・24,797,283 B）
+## 8. 精読ノート索引（readings/・701本・24,809,070 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 500/700 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 501/701 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：698 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：699 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5745,11 +5746,12 @@
 | `readings/2026-11-11-preservation-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 9,383 | Q3 S1 | ✓ | 保存の一件ファイル——679報告の「自己を保存しない」59文を監査する |
 | `readings/2026-11-11-putting-the-predicate-audit-into-the-prompt.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,073 | S1 | — | 述語の監査を手順書に入れる——旧文面と理由 |
 | `readings/2026-11-11-q001-conditions-and-three-layers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 6,257 | Q1 M1 S1 ERR1 | ✓ | Q-001 の条件の族と、三つの層——342の claims から「統合された見解」の形を測る |
+| `readings/2026-11-11-six-answers-cannot-share-one-relation.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,315 | Q3 F1 S1 | — | 六つの答えを一つの関係に課すと矛盾する——`Q-002` の形式判定と、層別に読めば両立すること |
 | `readings/2026-11-11-the-backfill-that-adds-no-holds.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,097 | S1 | ✓ | 保留を増やさない登録——359本の機械行と、前回の一文の訂正 |
 | `readings/2026-11-11-the-correction-has-an-address-and-no-reader.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,224 | Q5 S1 | ✓ | 訂正は住所を持つが、読まれる対象にはならない——二分裂を計数で確かめる |
 | `readings/2026-11-11-the-ellipsis-is-not-an-address.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,035 | Q3 M4 S2 | ✓ | 省略符は住所にならない——558の継ぎ目と、それを説明する4行 |
 | `readings/2026-11-11-the-homework-was-done-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,229 | Q1 M2 S2 | ✓ | 宿題は同じ日に実行されていた——口承資料4件に四欄を当て、台帳が閉じなかった理由を測る |
-| `readings/2026-11-11-the-mark-is-almost-always-there.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,190 | Q3 S2 | — | 印はほぼ全部置かれている——系譜380節のうち61節は一度も読まれていない |
+| `readings/2026-11-11-the-mark-is-almost-always-there.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,190 | Q3 S2 | ✓ | 印はほぼ全部置かれている——系譜380節のうち61節は一度も読まれていない |
 | `readings/2026-11-11-the-return-came-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-e4c584` +1 | 10,078 | Q2 M1 S2 ERR2 | ✓ | 返り便は同じ日に来る——`read_log` で測る往復の遅れ |
 | `readings/2026-11-11-what-a-set-that-holds-three-questions-must-be.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 25,186 | Q3 S1 | ✓ | 三つの問いを同時に成り立たせる集合は、どんな性質を持つか——必要条件読み・無条件読み・空虚成立 |
 | `readings/2026-11-11-where-the-field-is-the-address-stays.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,708 | Q3 S1 | ✓ | 欄のあるところにだけ住所は残る——前報の一般化を、計数で狭める |
