@@ -709,8 +709,15 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # cannot reduce this dimension, and deleting prior reports requires human
         # approval. The 1 MiB step is a measured review-point rescale, not an
         # automatic allowance; hard 48 MiB and per-file limits remain unchanged.
+        # 2026-11-12 (second step, SESSION-20261112-ad86d2/6b1cd6): 25 -> 26 MiB.
+        # Twelve more reports landed the same day; the measured total before this
+        # session's report was 26,179,928 B, leaving only 34,472 B under the 25 MiB
+        # review point, so the next single report could not be written at all.
+        # Measured after adding it: 26,255,056 B (+75,128). Same reasoning as the
+        # step above: append-only corpus, no consolidation possible, deletion needs
+        # human approval. hard 48 MiB and the 256 KiB per-file limit are unchanged.
         "readings",
-        soft_bytes=25 * MIB,
+        soft_bytes=26 * MIB,
         hard_bytes=48 * MIB,
         remedy=(
             "Episodic reports are append-only, so decide which dimension fired before choosing a remedy. "

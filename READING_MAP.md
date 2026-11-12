@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3819 件（research_excerpt 1595 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3826 件（research_excerpt 1602 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
-- **解釈的関係（Relations）**：6914 件
-- **探究セッション（Sessions）**：695 回
+- **解釈的関係（Relations）**：6921 件
+- **探究セッション（Sessions）**：697 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3819 件・詳細は map/3*.md）
+## 4. 対話素材（3826 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4347,6 +4347,13 @@
 | `MAT-20261112-cf0ee8` | research_excerpt | Hermann Weyl『ワイル「重力と電気」（1918）とアインシュタインの追記——経路に依って長さが変わるなら、同じ線を出す原子は存在しない』（1918） |
 | `MAT-20261112-9eca5f` | research_excerpt | Hirotugu Akaike『赤池弘次「統計的モデル同定の新しい見方」（1974）——真のモデルを当てるのではなく、次の標本への当てはまりで選ぶ。足した母数の数だけ、二倍して引… |
 | `MAT-20261112-741098` | research_excerpt | Thomas C. Schelling『シェリング「分居の動的モデル」（1971）——集まりの模様から、一人ひとりの動機は読み取れない』（1971） |
+| `MAT-20261112-250d7d` | research_excerpt | Wolfgang Pauli『パウリ（1925）「原子における電子群の閉殻とスペクトルの複雑構造との関係について」——同じ四つの数の席には、二人は座れない』（1925） |
+| `MAT-20261112-b47ce8` | research_excerpt | Max Born『ボルン（1926）「衝突過程の量子力学について」——状態は、起きることの絵ではなく、結果の頻度の規則である』（1926） |
+| `MAT-20261112-ad7607` | research_excerpt | Andrew M. Gleason『グリーソン（1957）「ヒルベルト空間の閉部分空間上の測度」——問いの族が十分に豊かなら、答えが状態を決める』（1957） |
+| `MAT-20261112-92c1aa` | research_excerpt | Robin Milner, David Park『ミルナー（1980）CCS／パーク（1981）双模倣——どんな実験でも区別できないとき、二つの系は同じである』（1980） |
+| `MAT-20261112-50b0be` | research_excerpt | Samuel Eilenberg, Saunders Mac Lane『アイレンバーグ＆マックレーン（1945）「自然同値の一般理論」——「同じ」は等号ではなく、すべての写像と可… |
+| `MAT-20261112-5ac27f` | research_excerpt | Solomon Kullback, Richard A. Leibler『カルバック＆ライブラー（1951）「情報と十分性について」——見分ける費用は、どちらの世界にいるかで変わ… |
+| `MAT-20261112-86f37d` | research_excerpt | Carl Friedrich Gauss『ガウス（1828）「曲面の一般研究」——外から見なくても、曲がり方は測れる』（1828） |
 | `MAT-20261112-2c50de` | research_excerpt | W. Ross Ashby『W. Ross Ashby「Principles of the Self-Organizing Dynamic System」(1947)』（1947） |
 | `MAT-20261112-6f0ac6` | research_excerpt | Heinz von Foerster『Heinz von Foerster「On Self-Organizing Systems and Their Environments」(… |
 | `MAT-20261112-619c83` | research_excerpt | Robert Rosen『Robert Rosen「A Relational Theory of Biological Systems」(1958)』（1958） |
@@ -5203,6 +5210,8 @@
 | `SESSION-20261112-6a1c10` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-4cd40a` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-bd0dce` | `FRAG-20261112-725d9b` | — |
 | `SESSION-20261112-ebb435` | 2026-11-12T12:45:00Z |  | — | — |
+| `SESSION-20261112-ad86d2` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-6b1cd6` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-2f4264` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-12563d` | 2026-11-12T05:54:53Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-05a5cc` | 2026-11-12T06:25:04Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5296,16 +5305,16 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6914 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6921 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 1000 |
 | 共鳴 (echo) | 1638 |
-| 切断・割り込み (interrupts) | 236 |
+| 切断・割り込み (interrupts) | 237 |
 | 未解決のまま開く (leaves_open) | 917 |
 | 比喩的共鳴 (metaphorically_resonates) | 191 |
-| 枠組みの組み替え (reframes) | 800 |
+| 枠組みの組み替え (reframes) | 806 |
 | 応答 (responds_to) | 1798 |
 | 変奏・変形 (transforms) | 334 |
 
@@ -5374,7 +5383,8 @@
 | `map/31-materials-research-13.md` | 100 | 257,546 |
 | `map/31-materials-research-14.md` | 100 | 326,281 |
 | `map/31-materials-research-15.md` | 100 | 263,218 |
-| `map/31-materials-research-16.md` | 95 | 214,838 |
+| `map/31-materials-research-16.md` | 100 | 229,331 |
+| `map/31-materials-research-17.md` | 2 | 5,355 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5388,8 +5398,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 165,398 |
-| `map/40-relations-14.md` | 414 | 142,900 |
+| `map/40-relations-13.md` | 500 | 165,343 |
+| `map/40-relations-14.md` | 421 | 145,204 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5402,8 +5412,8 @@
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,895 |
 | `map/50-sessions-12.md` | 50 | 42,122 |
-| `map/50-sessions-13.md` | 50 | 45,401 |
-| `map/50-sessions-14.md` | 45 | 38,784 |
+| `map/50-sessions-13.md` | 50 | 45,544 |
+| `map/50-sessions-14.md` | 47 | 40,559 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5425,24 +5435,24 @@
 | `map/60-notes-19.md` | 25 | 116,103 |
 | `map/60-notes-20.md` | 25 | 169,935 |
 | `map/60-notes-21.md` | 25 | 144,306 |
-| `map/60-notes-22.md` | 25 | 125,763 |
-| `map/60-notes-23.md` | 25 | 56,361 |
-| `map/60-notes-24.md` | 25 | 69,728 |
-| `map/60-notes-25.md` | 25 | 62,295 |
-| `map/60-notes-26.md` | 25 | 80,680 |
-| `map/60-notes-27.md` | 25 | 108,035 |
-| `map/60-notes-28.md` | 25 | 113,512 |
-| `map/60-notes-29.md` | 20 | 108,581 |
+| `map/60-notes-22.md` | 25 | 128,268 |
+| `map/60-notes-23.md` | 25 | 60,331 |
+| `map/60-notes-24.md` | 25 | 69,744 |
+| `map/60-notes-25.md` | 25 | 61,458 |
+| `map/60-notes-26.md` | 25 | 77,371 |
+| `map/60-notes-27.md` | 25 | 109,997 |
+| `map/60-notes-28.md` | 25 | 110,541 |
+| `map/60-notes-29.md` | 21 | 115,793 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・720本・26,179,928 B）
+## 8. 精読ノート索引（readings/・721本・26,255,056 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 515/720 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 516/721 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：354 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：77 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：355 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：78 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5990,6 +6000,7 @@
 | `readings/2026-11-12-seven-theories-of-memory-and-continuity.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-5c8581` +1 | 7,626 | Q1 M8 S2 | — | 同じであることを、どの模型が数えるのか——理論科学７件の精読 |
 | `readings/2026-11-12-seven-theories-of-self-maintenance-and-records.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-db6077` | 11,218 | Q3 M7 S1 | — | 自己は保存物か、維持される関係か——七つの理論科学を記憶の書庫から読む |
 | `readings/2026-11-12-seven-theories-of-which-differences-may-be-ignored.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-86172c` +3 | 63,449 | Q5 M9 S4 ERR1 | ✓ | どの違いを無視してよいか——七つの理論と、437対の履歴 |
+| `readings/2026-11-12-seven-ways-of-not-telling-apart.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ad86d2` +5 | 34,670 | Q3 M28 S6 | — | 区別しないと決めた範囲が、自己になる——理論科学七件を、ラベル・統計・問い・観測・自然性・符号・内在から読む |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
 | `readings/2026-11-12-the-denominator-that-was-dropped-when-the-rule-was-copied.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261110-167875` +4 | 14,026 | Q2 M2 S5 ERR3 | ✓ | 規約に写されるときに落ちた分母——「未読の選択」の一日と、ただ一度の書き換え |
 | `readings/2026-11-12-the-scale-is-outside-the-record.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-e72a97` +2 | 32,490 | Q3 M3 S3 ERR3 | ✓ | 尺度は記録の外にある——理論科学七件の精読 |
