@@ -5184,14 +5184,14 @@
 | `map/50-sessions-12.md` | 50 | 45,409 |
 | `map/50-sessions-13.md` | 50 | 43,913 |
 | `map/50-sessions-14.md` | 6 | 5,194 |
-| `map/60-notes-01.md` | 25 | 59,713 |
+| `map/60-notes-01.md` | 25 | 61,755 |
 | `map/60-notes-02.md` | 25 | 69,477 |
 | `map/60-notes-03.md` | 25 | 70,769 |
 | `map/60-notes-04.md` | 25 | 95,832 |
 | `map/60-notes-05.md` | 25 | 86,726 |
 | `map/60-notes-06.md` | 25 | 50,782 |
-| `map/60-notes-07.md` | 25 | 92,229 |
-| `map/60-notes-08.md` | 25 | 61,599 |
+| `map/60-notes-07.md` | 25 | 93,145 |
+| `map/60-notes-08.md` | 25 | 64,871 |
 | `map/60-notes-09.md` | 25 | 79,418 |
 | `map/60-notes-10.md` | 25 | 74,408 |
 | `map/60-notes-11.md` | 25 | 81,860 |
@@ -5201,28 +5201,28 @@
 | `map/60-notes-15.md` | 25 | 89,627 |
 | `map/60-notes-16.md` | 25 | 92,415 |
 | `map/60-notes-17.md` | 25 | 115,671 |
-| `map/60-notes-18.md` | 25 | 108,843 |
+| `map/60-notes-18.md` | 25 | 109,892 |
 | `map/60-notes-19.md` | 25 | 121,281 |
 | `map/60-notes-20.md` | 25 | 168,718 |
-| `map/60-notes-21.md` | 25 | 128,488 |
-| `map/60-notes-22.md` | 25 | 84,643 |
-| `map/60-notes-23.md` | 25 | 65,954 |
-| `map/60-notes-24.md` | 25 | 111,155 |
-| `map/60-notes-25.md` | 25 | 80,704 |
-| `map/60-notes-26.md` | 25 | 106,085 |
-| `map/60-notes-27.md` | 25 | 94,902 |
-| `map/60-notes-28.md` | 25 | 128,918 |
-| `map/60-notes-29.md` | 12 | 68,905 |
+| `map/60-notes-21.md` | 25 | 128,352 |
+| `map/60-notes-22.md` | 25 | 86,435 |
+| `map/60-notes-23.md` | 25 | 64,511 |
+| `map/60-notes-24.md` | 25 | 112,022 |
+| `map/60-notes-25.md` | 25 | 83,743 |
+| `map/60-notes-26.md` | 25 | 103,469 |
+| `map/60-notes-27.md` | 25 | 98,308 |
+| `map/60-notes-28.md` | 25 | 128,073 |
+| `map/60-notes-29.md` | 13 | 72,495 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・712本・24,911,332 B）
+## 8. 精読ノート索引（readings/・713本・24,919,084 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 512/712 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 513/713 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：710 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：81 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：711 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：82 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5747,6 +5747,7 @@
 | `readings/2026-11-11-human-pole-audit.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,106 | Q3 S2 | ✓ | 人間の極だけを訪ねる——A_human 5本の棚卸しと、そこから言えること |
 | `readings/2026-11-11-identity-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 8,568 | Q2 S1 | ✓ | 同一性の一件ファイル——679報告の「同じ自己である／でない」120文を監査する |
 | `readings/2026-11-11-materiality-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 8,759 | Q1 S1 | ✓ | 素材性の一件ファイル——679報告の「素材である／でない」90文を監査する |
+| `readings/2026-11-11-numbers-carry-no-date.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,650 | Q2 S1 ERR1 | — | 数は時点を持たない——measured_fact 435件のうち、日付を書いていない336件 |
 | `readings/2026-11-11-preservation-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 9,383 | Q3 S1 | ✓ | 保存の一件ファイル——679報告の「自己を保存しない」59文を監査する |
 | `readings/2026-11-11-putting-the-predicate-audit-into-the-prompt.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,073 | S1 | — | 述語の監査を手順書に入れる——旧文面と理由 |
 | `readings/2026-11-11-q001-conditions-and-three-layers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 6,257 | Q1 M1 S1 ERR1 | ✓ | Q-001 の条件の族と、三つの層——342の claims から「統合された見解」の形を測る |
