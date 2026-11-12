@@ -5184,45 +5184,45 @@
 | `map/50-sessions-12.md` | 50 | 45,409 |
 | `map/50-sessions-13.md` | 50 | 43,913 |
 | `map/50-sessions-14.md` | 6 | 5,194 |
-| `map/60-notes-01.md` | 25 | 66,557 |
+| `map/60-notes-01.md` | 25 | 68,560 |
 | `map/60-notes-02.md` | 25 | 72,704 |
 | `map/60-notes-03.md` | 25 | 72,926 |
 | `map/60-notes-04.md` | 25 | 98,349 |
 | `map/60-notes-05.md` | 25 | 89,321 |
-| `map/60-notes-06.md` | 25 | 52,287 |
+| `map/60-notes-06.md` | 25 | 52,891 |
 | `map/60-notes-07.md` | 25 | 94,863 |
 | `map/60-notes-08.md` | 25 | 71,590 |
 | `map/60-notes-09.md` | 25 | 85,800 |
-| `map/60-notes-10.md` | 25 | 83,308 |
-| `map/60-notes-11.md` | 25 | 86,132 |
-| `map/60-notes-12.md` | 25 | 90,266 |
+| `map/60-notes-10.md` | 25 | 84,096 |
+| `map/60-notes-11.md` | 25 | 87,005 |
+| `map/60-notes-12.md` | 25 | 91,755 |
 | `map/60-notes-13.md` | 25 | 100,292 |
-| `map/60-notes-14.md` | 25 | 120,726 |
-| `map/60-notes-15.md` | 25 | 90,651 |
+| `map/60-notes-14.md` | 25 | 121,260 |
+| `map/60-notes-15.md` | 25 | 91,394 |
 | `map/60-notes-16.md` | 25 | 96,209 |
 | `map/60-notes-17.md` | 25 | 118,990 |
 | `map/60-notes-18.md` | 25 | 110,698 |
-| `map/60-notes-19.md` | 25 | 122,223 |
+| `map/60-notes-19.md` | 25 | 123,013 |
 | `map/60-notes-20.md` | 25 | 169,695 |
 | `map/60-notes-21.md` | 25 | 128,352 |
-| `map/60-notes-22.md` | 25 | 88,069 |
-| `map/60-notes-23.md` | 25 | 60,593 |
-| `map/60-notes-24.md` | 25 | 109,994 |
-| `map/60-notes-25.md` | 25 | 90,345 |
-| `map/60-notes-26.md` | 25 | 96,853 |
-| `map/60-notes-27.md` | 25 | 108,843 |
-| `map/60-notes-28.md` | 25 | 128,836 |
-| `map/60-notes-29.md` | 17 | 86,072 |
+| `map/60-notes-22.md` | 25 | 86,833 |
+| `map/60-notes-23.md` | 25 | 62,665 |
+| `map/60-notes-24.md` | 25 | 109,675 |
+| `map/60-notes-25.md` | 25 | 88,330 |
+| `map/60-notes-26.md` | 25 | 97,896 |
+| `map/60-notes-27.md` | 25 | 110,000 |
+| `map/60-notes-28.md` | 25 | 124,034 |
+| `map/60-notes-29.md` | 18 | 93,498 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・717本・24,947,640 B）
+## 8. 精読ノート索引（readings/・718本・24,953,389 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 517/717 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 518/718 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：715 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：86 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：716 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：87 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5768,6 +5768,7 @@
 | `readings/2026-11-11-the-same-question-answers-differently-by-column.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,426 | Q4 S1 | — | 同じ問いに、二つの入口は別の答えを返す——437の問いを `relations` と `read_log` で数える |
 | `readings/2026-11-11-the-third-audit-and-the-case-for-one-field.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,906 | Q3 S1 | — | 三回測って、運用は自分の手元でだけ効いた——`measured_at` 欄の提案 |
 | `readings/2026-11-11-three-instruments-three-numbers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,430 | Q2 S1 | — | 計器を三つにすると、同じ報告が三つの数になる——`read_log`・相互リンク・`relations` で数え直す |
+| `readings/2026-11-11-three-rounds-and-the-one-who-wrote-it.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,663 | Q7 S1 | — | 三回目の計測——欄を使ったのは、欄を書いた者だけだった |
 | `readings/2026-11-11-three-types-of-answer-and-two-empty-sets.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,026 | Q3 S1 | ✓ | 答えは三つの型に割れ、二つはほぼ空である——`Q-001` の形式判定 |
 | `readings/2026-11-11-what-a-set-that-holds-three-questions-must-be.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 25,186 | Q3 S1 | ✓ | 三つの問いを同時に成り立たせる集合は、どんな性質を持つか——必要条件読み・無条件読み・空虚成立 |
 | `readings/2026-11-11-where-the-field-is-the-address-stays.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,708 | Q3 S1 | ✓ | 欄のあるところにだけ住所は残る——前報の一般化を、計数で狭める |
