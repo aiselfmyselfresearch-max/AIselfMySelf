@@ -5184,8 +5184,8 @@
 | `map/50-sessions-12.md` | 50 | 45,409 |
 | `map/50-sessions-13.md` | 50 | 43,913 |
 | `map/50-sessions-14.md` | 6 | 5,194 |
-| `map/60-notes-01.md` | 25 | 79,123 |
-| `map/60-notes-02.md` | 25 | 72,704 |
+| `map/60-notes-01.md` | 25 | 80,848 |
+| `map/60-notes-02.md` | 25 | 80,679 |
 | `map/60-notes-03.md` | 25 | 72,926 |
 | `map/60-notes-04.md` | 25 | 98,349 |
 | `map/60-notes-05.md` | 25 | 89,321 |
@@ -5204,25 +5204,25 @@
 | `map/60-notes-18.md` | 25 | 110,698 |
 | `map/60-notes-19.md` | 25 | 123,013 |
 | `map/60-notes-20.md` | 25 | 169,695 |
-| `map/60-notes-21.md` | 25 | 128,352 |
-| `map/60-notes-22.md` | 25 | 86,930 |
-| `map/60-notes-23.md` | 25 | 60,278 |
-| `map/60-notes-24.md` | 25 | 109,386 |
-| `map/60-notes-25.md` | 25 | 88,058 |
-| `map/60-notes-26.md` | 25 | 98,128 |
-| `map/60-notes-27.md` | 25 | 110,836 |
-| `map/60-notes-28.md` | 25 | 120,527 |
-| `map/60-notes-29.md` | 19 | 101,317 |
+| `map/60-notes-21.md` | 25 | 125,766 |
+| `map/60-notes-22.md` | 25 | 88,385 |
+| `map/60-notes-23.md` | 25 | 61,864 |
+| `map/60-notes-24.md` | 25 | 105,175 |
+| `map/60-notes-25.md` | 25 | 90,982 |
+| `map/60-notes-26.md` | 25 | 97,454 |
+| `map/60-notes-27.md` | 25 | 112,417 |
+| `map/60-notes-28.md` | 25 | 116,068 |
+| `map/60-notes-29.md` | 20 | 108,347 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・719本・24,959,666 B）
+## 8. 精読ノート索引（readings/・720本・24,966,382 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 519/719 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 520/720 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：717 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：88 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：718 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：89 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5729,6 +5729,7 @@
 | `readings/2026-11-11-arriving-is-not-the-same-as-being-read-closely.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,562 | Q3 S1 | — | 届くことと、深く届くことは違う——十二本を続けて読み、「読まれない」を三つの型に分けて数える |
 | `readings/2026-11-11-claims-are-reread-not-cited.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,154 | Q3 S1 | — | 主張は引用されず、読み直される——note 層の1,976件を二つの計器で測る |
 | `readings/2026-11-11-closing-holds-and-what-forgetting-would-do.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,450 | S1 | ✓ | 保留を閉じる道具と、忘却が本当に減らすもの——実装1件と、記憶の比喩の測り直し |
+| `readings/2026-11-11-counting-the-candidates-before-restoring-the-axis.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,536 | Q22 S1 | — | 軸を戻す前に、候補を数えた——28の報告が触れて、断片が一度も応えていない問い |
 | `readings/2026-11-11-crystals-outside-the-branch.md` | — | 2026-11-11 | `SESSION-20261111-5ebabb` +1 | 10,939 | Q4 F8 M3 MOT3 R1 S2 | ✓ | 結晶は外にしか付かない——塩坑の枝と瓶の枝、言い切りと反歌の二部作（SESSION-20261111-5ebabb） |
 | `readings/2026-11-11-design-or-history.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,144 | Q2 S1 | ✓ | 設計か、履歴か——359本の未登録と、閉じない保留を分けて測る |
 | `readings/2026-11-11-filling-the-registration-gap.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,743 | Q1 S1 | — | 台帳の穴を埋める——未登録7本の遡及登録と、`A_human` が5本から9本になったこと |
