@@ -19,8 +19,9 @@ the check that prose could not provide.  It reports; it never edits.
 What counts as a date
 ---------------------
 An ISO date (``2026-11-11``), a Japanese year (``2026年``), the words 時点 /
-現在の, or a ledger ID that carries its own date stamp (``SESSION-20261110-…``,
-``READ-20261031-…``, ``MAT-LIT-20261024-…``).  Anything else is reported.  The
+現在の, a ledger ID that carries its own date stamp (``SESSION-20261110-…``,
+``READ-20261031-…``, ``MAT-LIT-20261024-…``), or a non-empty ``measured_at``
+field on the claim (added 2026-11-11; see ``schema/note.schema.json``).  Anything else is reported.  The
 detector is a regex, so the reported rate is an upper bound: relative wording
 (「先月」「前回」) is not recognised.
 
@@ -89,6 +90,9 @@ def undated_claims(
                 continue
             counts["numbered"] += 1
             if DATE_PATTERN.search(text) or DATED_ID_PATTERN.search(text):
+                continue
+            measured_at = claim.get("measured_at")
+            if isinstance(measured_at, str) and measured_at.strip():
                 continue
             counts["undated"] += 1
             undated.append((note, claim))

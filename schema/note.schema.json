@@ -5,9 +5,17 @@
   "description": "One curated judgment about one file in readings/ (an episodic report). This collection stores ONLY what a reader asserts: the report body stays in readings/*.md and the machine-derivable facts (byte count, H1 title, referenced ledger IDs, inbound links) are re-harvested every time by tools/note_index.py instead of being copied here, so there is exactly one source of truth per fact. Append-only: a later row for the same path supersedes the earlier one in ledger order (optionally declared via supersedes), and no existing row is ever rewritten. This is the consolidation layer that makes an episode retrievable and citable from read_log and relations.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["note_id", "path", "session_id", "created_at"],
+  "required": [
+    "note_id",
+    "path",
+    "session_id",
+    "created_at"
+  ],
   "properties": {
-    "note_id": {"type": "string", "minLength": 1},
+    "note_id": {
+      "type": "string",
+      "minLength": 1
+    },
     "path": {
       "type": "string",
       "minLength": 1,
@@ -18,7 +26,10 @@
       "minLength": 1,
       "description": "The session that recorded THIS row (not necessarily the session that wrote the report)."
     },
-    "created_at": {"type": "string", "minLength": 4},
+    "created_at": {
+      "type": "string",
+      "minLength": 4
+    },
     "report_session_id": {
       "type": "string",
       "minLength": 1,
@@ -67,7 +78,10 @@
     },
     "subcategories": {
       "type": "array",
-      "items": {"type": "string", "minLength": 1},
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
       "uniqueItems": true
     },
     "return_status": {
@@ -83,7 +97,11 @@
     },
     "read_depth": {
       "type": "string",
-      "enum": ["full_text_read", "excerpt_and_metadata_read", "metadata_and_structure_only"],
+      "enum": [
+        "full_text_read",
+        "excerpt_and_metadata_read",
+        "metadata_and_structure_only"
+      ],
       "description": "Optional: how much of the report the recording session actually read. Never claim an unread section as read."
     },
     "claims": {
@@ -92,9 +110,16 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["claim_id", "kind", "text"],
+        "required": [
+          "claim_id",
+          "kind",
+          "text"
+        ],
         "properties": {
-          "claim_id": {"type": "string", "minLength": 1},
+          "claim_id": {
+            "type": "string",
+            "minLength": 1
+          },
           "kind": {
             "type": "string",
             "enum": [
@@ -107,25 +132,70 @@
               "retraction"
             ]
           },
-          "text": {"type": "string", "minLength": 1},
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
           "anchor": {
             "type": "string",
             "description": "Optional section heading or line reference inside the report, e.g. \"§4-2\"."
           },
-          "question_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
-          "fragment_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
-          "material_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
-          "motif_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "question_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "fragment_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "material_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "motif_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
           "scope": {
             "type": "object",
             "description": "Optional. Which object, by which basis, in which sense this claim speaks. The three names are distinctions, not categories, and each value is a quotation: it must appear verbatim in the report body, or be a ledger ID. Quote the words, do not describe them (self, not \"the identity of the subject\"). An absent scope means the scope is undecided, not that the claim is universal.",
             "additionalProperties": false,
             "minProperties": 1,
             "properties": {
-              "object": {"type": "string", "minLength": 1},
-              "basis": {"type": "string", "minLength": 1},
-              "sense": {"type": "string", "minLength": 1}
+              "object": {
+                "type": "string",
+                "minLength": 1
+              },
+              "basis": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sense": {
+                "type": "string",
+                "minLength": 1
+              }
             }
+          },
+          "measured_at": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+            "description": "Optional. The date (YYYY-MM-DD) at which the numbers in a `measured_fact` claim were measured, when that differs from the note's created_at or is not stated in the claim text. A count describes the ledger at one moment; without this field a later reader cannot tell a current figure from a stale one (readings/2026-11-11-numbers-carry-no-date.md, readings/2026-11-11-the-third-audit-and-the-case-for-one-field.md). Absent means the as-of date is unknown, not that the claim is timeless."
           }
         }
       }
@@ -141,9 +211,14 @@
     "supersedes": {
       "type": "array",
       "description": "Optional IDs of earlier note rows about the same path that this row explicitly supersedes, for the same reason editorial_decisions carries it: internal chronology labels can sort after the real date.",
-      "items": {"type": "string", "minLength": 1},
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
       "uniqueItems": true
     },
-    "notes": {"type": "string"}
+    "notes": {
+      "type": "string"
+    }
   }
 }

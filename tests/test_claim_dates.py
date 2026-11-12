@@ -72,6 +72,11 @@ class UndatedClaimTests(unittest.TestCase):
         _, counts = claim_dates.undated_claims(notes)
         self.assertEqual(counts["numbered"], 0)
 
+    def test_measured_at_field_counts_as_dated(self) -> None:
+        notes = [note("NOTE-1", "2026-11-11", [dict(claim("c1", "measured_fact", "6,746 本"), measured_at="2026-11-11")])]
+        _, counts = claim_dates.undated_claims(notes)
+        self.assertEqual(counts["undated"], 0)
+
     def test_since_filters_older_notes(self) -> None:
         notes = [
             note("NOTE-1", "2026-11-10", [claim("c1", "measured_fact", "6,111 本")]),
@@ -107,3 +112,82 @@ class RunnerTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SchemaFieldTests(unittest.TestCase):
+    """``measured_at`` is an optional claim field; absent means "as-of unknown"."""
+
+    def setUp(self) -> None:
+        import json
+
+        self.json = json
+        self.schema = json.loads((ROOT / "schema" / "note.schema.json").read_text(encoding="utf-8"))
+
+    def _record(self, claim: dict) -> dict:
+        return {
+            "note_id": "NOTE-20261102-aaaaaa",
+            "path": "readings/2026-11-02-oil.md",
+            "session_id": "SESSION-20261102-aaaaaa",
+            "created_at": "2026-11-02",
+            "claims": [claim],
+        }
+
+    def test_claim_with_measured_at_is_valid(self) -> None:
+        import validate_seed
+
+        claim = {
+            "claim_id": "NOTE-20261102-aaaaaa-c1",
+            "kind": "measured_fact",
+            "text": "関係線は 6,746 本",
+            "measured_at": "2026-11-11",
+        }
+        errors: list[str] = []
+        validate_seed.validate_value(self._record(claim), self.schema, self.schema, "notes:X", errors)
+        self.assertEqual(errors, [])
+
+    def test_measured_at_rejects_non_date_shape(self) -> None:
+        import validate_seed
+
+        claim = {
+            "claim_id": "NOTE-20261102-aaaaaa-c1",
+            "kind": "measured_fact",
+            "text": "関係線は 6,746 本",
+            "measured_at": "last week",
+        }
+        errors: list[str] = []
+        validate_seed.validate_value(self._record(claim), self.schema, self.schema, "notes:X", errors)
+        self.assertTrue(errors)
+
+
+class ValidationWarningTests(unittest.TestCase):
+    def test_claim_needs_as_of_flags_bare_number(self) -> None:
+        import validate_seed
+
+        self.assertTrue(
+            validate_seed.claim_needs_as_of({"kind": "measured_fact", "text": "関係線は 6,746 本"})
+        )
+
+    def test_claim_needs_as_of_accepts_date_in_text(self) -> None:
+        import validate_seed
+
+        self.assertFalse(
+            validate_seed.claim_needs_as_of(
+                {"kind": "measured_fact", "text": "2026-11-11 時点で 6,746 本"}
+            )
+        )
+
+    def test_claim_needs_as_of_accepts_measured_at_field(self) -> None:
+        import validate_seed
+
+        self.assertFalse(
+            validate_seed.claim_needs_as_of(
+                {"kind": "measured_fact", "text": "6,746 本", "measured_at": "2026-11-11"}
+            )
+        )
+
+    def test_claim_needs_as_of_ignores_other_kinds(self) -> None:
+        import validate_seed
+
+        self.assertFalse(
+            validate_seed.claim_needs_as_of({"kind": "reading_revised", "text": "6,746 本"})
+        )

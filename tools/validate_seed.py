@@ -76,6 +76,36 @@ def claim_scope_errors(claim: dict[str, Any], body: str) -> list[str]:
     return errors
 
 
+NOTE_AS_OF_PATTERN = re.compile(r"20\d\d-\d\d-\d\d|20\d\d年|時点|現在の")
+NOTE_DATED_ID_PATTERN = re.compile(
+    r"(?:SESSION|READ|NOTE|NOTE-TMP|ERR|ED|REL|MAT|MAT-LIT|MAT-EVD|MAT-TRC|MAT-ARC|FRAG)"
+    r"-20\d{6}"
+)
+NOTE_NUMBER_PATTERN = re.compile(r"[0-9]")
+
+
+def claim_needs_as_of(claim: dict[str, Any]) -> bool:
+    """True when a claim states a number but says nothing about *when*.
+
+    A ``measured_fact`` count describes the ledger at one moment.  Nothing in the
+    record used to carry that moment, so a later reader could not tell a current
+    figure from a stale one (see ``readings/2026-11-11-numbers-carry-no-date.md``
+    and ``readings/2026-11-11-the-third-audit-and-the-case-for-one-field.md``).
+    The check is a WARNING, not an error: making it an error would turn every
+    pre-existing claim of this shape invalid at once, which stops the ledger
+    instead of improving it.  ``tools/claim_dates.py`` lists the same claims.
+    """
+    if claim.get("kind") != "measured_fact":
+        return False
+    text = claim.get("text")
+    if not isinstance(text, str) or not NOTE_NUMBER_PATTERN.search(text):
+        return False
+    if NOTE_AS_OF_PATTERN.search(text) or NOTE_DATED_ID_PATTERN.search(text):
+        return False
+    measured_at = claim.get("measured_at")
+    return not (isinstance(measured_at, str) and measured_at.strip())
+
+
 def matches_type(value: Any, expected: str) -> bool:
     if expected == "object":
         return isinstance(value, dict)
@@ -125,6 +155,9 @@ def validate_value(value: Any, spec: dict[str, Any], root_schema: dict[str, Any]
         errors.append(f"{path}: value {value!r} is not in enum {spec['enum']!r}")
     if isinstance(value, str) and isinstance(spec.get("minLength"), int) and len(value) < spec["minLength"]:
         errors.append(f"{path}: string shorter than minLength {spec['minLength']}")
+    pattern = spec.get("pattern")
+    if isinstance(value, str) and isinstance(pattern, str) and not re.search(pattern, value):
+        errors.append(f"{path}: string does not match pattern {pattern!r}")
 
     if isinstance(value, list):
         if spec.get("uniqueItems") is True:
@@ -240,6 +273,7 @@ def main() -> int:
 
     read_logs = collections.get("read_log", {})
     notes = collections.get("notes", {})
+    undated_claims: list[str] = []
 
     # --- notes: curated judgments about readings/*.md ---------------------
     # The report body is the source of truth for derived facts (harvested by
@@ -281,6 +315,8 @@ def main() -> int:
                     seen_claims.add(claim_id)
                 for problem in claim_scope_errors(claim, report_body):
                     errors.append(f"notes:{note_id}: claims[{position}].{problem}")
+                if claim_needs_as_of(claim):
+                    undated_claims.append(str(claim.get("claim_id") or f"{note_id}[{position}]"))
                 for field, target_name in NOTE_CLAIM_REF_FIELDS:
                     values = claim.get(field, [])
                     if not isinstance(values, list):
@@ -438,6 +474,13 @@ def main() -> int:
                     f"relations:{relation_id}: {endpoint} references unknown "
                     f"{ref.get('type')} ID {ref.get('id')!r}"
                 )
+
+    if undated_claims:
+        print(
+            f"WARN: {len(undated_claims)} measured_fact claims state a number without an "
+            f"as-of date (text or measured_at)"
+        )
+        print("      list them with: python3 tools/claim_dates.py --list")
 
     if errors:
         print("FAIL: literary inquiry seed has errors")
