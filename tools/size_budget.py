@@ -274,15 +274,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # source records require a new materials shard. Existing same-day records
         # remain in their originating shards; this session uses its own append-only
         # shard. Hard 160 unchanged; one-slot exception, not an automatic raise.
-        # 2026-11-12 (merge of origin/main acdd7b6 into the PR #655 lineage):
-        # measured union = 106 files, all of them main's (the lineage adds no
-        # materials shard).  origin/main alone already measures 106 against the
-        # soft 102 written above: four parallel sessions each took "one slot"
-        # from the same base and the four slots were never summed.  This line
-        # records that measurement so that --strict can again tell a new
-        # overflow from an inherited one; it creates no headroom.  Hard 160
-        # unchanged; not an automatic raise.
-        soft_shards=106,
+        soft_shards=102,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -312,11 +304,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
           # five theoretical-science sources needed a relations shard. Measured:
           # relations.d was 80/80 (no slot), no 2026-11-12 relations shard existed
           # for procedure 8-2. Hard 160 unchanged; not an automatic raise.
-          # 2026-11-12 (merge of origin/main acdd7b6 into the PR #655 lineage):
-          # measured union = 82 files, all of them main's.  origin/main alone
-          # already measures 82 against the soft 81 above.  Recorded, no
-          # headroom; hard 160 unchanged; not an automatic raise.
-          soft_shards=82,
+          soft_shards=81,
         hard_shards=160,
         remedy="Compact old state/relations.d/ shards into frozen base in a dedicated maintenance PR",
     ),
@@ -397,12 +385,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (SESSION-20261112-db6077, 95 -> 96): eleven handwritten
         # read_log rows require this session's shard. Hard 160 unchanged; one-slot
         # exception, not an automatic raise.
-        # 2026-11-12 (merge of origin/main acdd7b6 into the PR #655 lineage):
-        # measured union = 100 files, all of them main's (the lineage only
-        # appended to an existing shard).  origin/main alone already measures
-        # 100 against the soft 96 above.  Recorded, no headroom; hard 160
-        # unchanged; not an automatic raise.
-        soft_shards=100,
+        soft_shards=96,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -556,12 +539,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (SESSION-20261112-db6077, 100 -> 101): one session row
         # requires a new shard. Hard 160 unchanged; one-slot exception, not an
         # automatic raise.
-        # 2026-11-12 (merge of origin/main acdd7b6 into the PR #655 lineage):
-        # measured union = 105 files, all of them main's (the lineage only
-        # appended one row to an existing shard).  origin/main alone already
-        # measures 105 against the soft 101 above.  Recorded, no headroom;
-        # hard 160 unchanged; not an automatic raise.
-        soft_shards=105,
+        soft_shards=101,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -755,7 +733,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # consolidation exception list, so the count cannot be reclaimed in a
         # merge.  Set to the measured union, no headroom; not an automatic
         # raise.  Hard 160 unchanged.
-        soft_shards=104,
+        # 2026-11-12 (second merge, origin/main 670ce2f): 104 -> 100.  PR #691
+        # compacted four notes shards on main (102 -> 98, back inside main's
+        # own soft 98), so the union is now 98 + 2 = 100.  The four one-slot
+        # raises this branch had recorded for materials.d / relations.d /
+        # read_log.d / sessions.d in the first merge are withdrawn for the
+        # same reason: after #691 the union fits main's own values (102 / 81 /
+        # 96 / 101), and those entries are back to main's text.
+        soft_shards=100,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
@@ -798,6 +783,8 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # the same reason (append-only, nothing to compact); what the review
         # point should be reviewing is left to an editorial_review turn.  Hard
         # 48 MiB and per-file limits unchanged.
+        # (After the second merge, origin/main 670ce2f: 26,639,394 B in 772
+        # files.  Main alone is inside 25 MiB; the excess is this lineage.)
         "readings",
         soft_bytes=26 * MIB,
         hard_bytes=48 * MIB,
