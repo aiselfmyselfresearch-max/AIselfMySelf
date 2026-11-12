@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3725 件（research_excerpt 1501 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3730 件（research_excerpt 1506 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6829 件
-- **探究セッション（Sessions）**：672 回
+- **解釈的関係（Relations）**：6835 件
+- **探究セッション（Sessions）**：673 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3725 件・詳細は map/3*.md）
+## 4. 対話素材（3730 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4274,6 +4274,11 @@
 | `MAT-20261111-642523` | research_excerpt | Masaki Kato, Tetsuya J. Kobayashi『Optimality theory of stigmergic collective information … |
 | `MAT-20261111-217560` | research_excerpt | Yi Ren, Shangmin Guo, Linlu Qiu, Bailin Wang, Danica J. Sutherland『Language Model Evoluti… |
 | `MAT-20261111-646a81` | research_excerpt | Ashutosh Tripathi, Jörn Dunkel, Dominic J. Skinner『Collective is different: Information e… |
+| `MAT-20261112-93a67a` | research_excerpt | Felix Klein『クライン（1872）『新しい幾何学研究の比較考察（エルランゲン・プログラム）』——幾何学とは、変換群の下で変わらないものの理論である』（1872） |
+| `MAT-20261112-c00c62` | research_excerpt | Stephen A. Cook『クック（1971）「定理証明手続きの複雑さ」——多項式時間で互いに還元できるとき、二つの問題は同じ難しさを持つ』（1971） |
+| `MAT-20261112-cf5be2` | research_excerpt | Jorma Rissanen『リサネン（1978）「最短記述によるモデリング」——モデルとは、データをいちばん短く書き直せる規則である』（1978） |
+| `MAT-20261112-04bf75` | research_excerpt | Karen Spärck Jones『スペルク・ジョーンズ（1972）「語の特異性の統計的解釈と検索への応用」——語の重みは、その語が何文書に現れるかで決まる』（1972） |
+| `MAT-20261112-2698f9` | research_excerpt | Alfred J. Lotka『ロトカ（1925）『物理的生物学の要素』——種は自前の増殖率を持たず、他の種の数と組になった率としてだけある』（1925） |
 | `MAT-20261112-091d20` | research_excerpt | James Clerk Maxwell『マクスウェル（1865）『電磁場の動力学的理論』——場は物質の性質ではなく、物質のあいだに広がる状態として書かれる』（1865） |
 | `MAT-20261112-3761d9` | research_excerpt | Erwin Schrödinger『シュレーディンガー（1926）『原子と分子の力学の波動理論』——波動関数は位置ではなく、可能性の広がりとして進化する』（1926） |
 | `MAT-20261112-5d4e43` | research_excerpt | Henri Poincaré『ポアンカレ（1890）『三体問題と力学の方程式について』——有限の相空間では、系は初期状態にいくらでも近く戻る』（1890） |
@@ -5097,6 +5102,7 @@
 | `SESSION-20261112-bb95a0` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-9c5290` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-7c4478` | 2026-11-12T03:21:53Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-2f4264` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
 | `SESSION-20261201-4944b0` | 2026-12-01 | `Q-20261024-c237b9`, `Q-20261201-f932d1` | `FRAG-20261201-0c2cb9` | `Q-20261201-f932d1` |
@@ -5178,17 +5184,17 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6829 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6835 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 988 |
-| 共鳴 (echo) | 1629 |
+| 対照 (contrast) | 989 |
+| 共鳴 (echo) | 1630 |
 | 切断・割り込み (interrupts) | 235 |
 | 未解決のまま開く (leaves_open) | 910 |
 | 比喩的共鳴 (metaphorically_resonates) | 189 |
-| 枠組みの組み替え (reframes) | 770 |
-| 応答 (responds_to) | 1781 |
+| 枠組みの組み替え (reframes) | 773 |
+| 応答 (responds_to) | 1782 |
 | 変奏・変形 (transforms) | 327 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -5255,8 +5261,8 @@
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
 | `map/31-materials-research-14.md` | 100 | 326,281 |
-| `map/31-materials-research-15.md` | 100 | 263,863 |
-| `map/31-materials-research-16.md` | 1 | 2,762 |
+| `map/31-materials-research-15.md` | 100 | 267,537 |
+| `map/31-materials-research-16.md` | 6 | 15,731 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5270,8 +5276,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 163,248 |
-| `map/40-relations-14.md` | 329 | 115,291 |
+| `map/40-relations-13.md` | 500 | 163,416 |
+| `map/40-relations-14.md` | 335 | 117,217 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5283,9 +5289,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,895 |
-| `map/50-sessions-12.md` | 50 | 42,606 |
-| `map/50-sessions-13.md` | 50 | 46,819 |
-| `map/50-sessions-14.md` | 22 | 17,518 |
+| `map/50-sessions-12.md` | 50 | 42,260 |
+| `map/50-sessions-13.md` | 50 | 47,373 |
+| `map/50-sessions-14.md` | 23 | 18,291 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5306,24 +5312,24 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 169,791 |
-| `map/60-notes-21.md` | 25 | 142,181 |
-| `map/60-notes-22.md` | 25 | 60,682 |
-| `map/60-notes-23.md` | 25 | 68,217 |
-| `map/60-notes-24.md` | 25 | 63,149 |
-| `map/60-notes-25.md` | 25 | 74,210 |
-| `map/60-notes-26.md` | 25 | 110,163 |
-| `map/60-notes-27.md` | 25 | 109,745 |
-| `map/60-notes-28.md` | 22 | 120,513 |
+| `map/60-notes-21.md` | 25 | 143,381 |
+| `map/60-notes-22.md` | 25 | 63,111 |
+| `map/60-notes-23.md` | 25 | 65,817 |
+| `map/60-notes-24.md` | 25 | 65,040 |
+| `map/60-notes-25.md` | 25 | 74,151 |
+| `map/60-notes-26.md` | 25 | 107,781 |
+| `map/60-notes-27.md` | 25 | 107,544 |
+| `map/60-notes-28.md` | 23 | 127,242 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・697本・25,205,986 B）
+## 8. 精読ノート索引（readings/・698本・25,268,296 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 492/697 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 493/698 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：329 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：80 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：330 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：81 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5851,6 +5857,7 @@
 | `readings/2026-11-11-theory-of-recall-and-collective-memory.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-1c501a` | 5,338 | Q3 M5 S1 | ✓ | 保存から再到達へ——理論科学５資料を読む |
 | `readings/2026-11-12-five-costs-of-acting-from-a-trace.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-9c5290` +1 | 17,586 | Q3 M16 S2 ERR1 | — | 痕跡から動くための五つの代価——モデル・情報・精度・祖先・決定を分けて読む |
 | `readings/2026-11-12-five-theoretical-sciences-on-field-wave-return-measure-and-duplication.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-a9607b` | 14,807 | Q3 M13 R8 S1 | ✓ | 場・波動・回帰・測度・複製——理論科学五件の精読 |
+| `readings/2026-11-12-five-theories-of-identity-under-transformation.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-2f4264` +1 | 26,479 | Q3 M7 S2 | — | 変換の下で何が残るか——群・還元・圧縮・頻度・連立の五理論 |
 | `readings/2026-11-12-five-theories-of-observation-memory-and-open-ends.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-7c4478` +1 | 13,837 | Q3 M7 S2 | — | 同じ自己を支える条件は、何によって決まるか——観測・記憶・目的・相互作用の五理論 |
 | `readings/2026-11-12-five-theories-that-do-not-erase-the-error.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-bb95a0` +1 | 24,925 | Q4 M12 S2 | — | 誤りを消さない五つの理論——距離・余白・頻度・欠損・来歴 |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
