@@ -37,6 +37,9 @@ jobs:
       - name: Measure associations into map/ (advisory, no ledger writes)
         run: python3 tools/associations.py --write-map
 
+      - name: Render posterior belief state into map/
+        run: python3 tools/belief_state.py --write-map && git checkout -- BELIEF_MAP.md
+
       - name: Upload reading-map artifact
         uses: actions/upload-artifact@v4
         with:

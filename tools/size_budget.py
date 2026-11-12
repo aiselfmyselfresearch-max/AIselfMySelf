@@ -80,6 +80,12 @@ BUDGETS: tuple[Budget, ...] = (
         remedy="Tighten excerpts in tools/map_build.py (build_index); full bodies belong in untracked map/",
     ),
     Budget(
+        "BELIEF_MAP.md",
+        soft_bytes=512 * 1024,
+        hard_bytes=2 * MIB,
+        remedy="Keep BELIEF_MAP.md focused on active/refuted hypothesis distributions via tools/belief_state.py --write-map",
+    ),
+    Budget(
         "state/materials.jsonl",
         soft_bytes=10 * MIB,
         hard_bytes=25 * MIB,
@@ -138,6 +144,18 @@ BUDGETS: tuple[Budget, ...] = (
         soft_bytes=1 * MIB,
         hard_bytes=5 * MIB,
         remedy="Keep readings/ judgments in state/notes.d/ shards; store curated judgments only, never harvested facts",
+    ),
+    Budget(
+        "state/hypotheses.jsonl",
+        soft_bytes=1 * MIB,
+        hard_bytes=5 * MIB,
+        remedy="Write new hypothesis rows to state/hypotheses.d/ shards",
+    ),
+    Budget(
+        "state/evaluations.jsonl",
+        soft_bytes=2 * MIB,
+        hard_bytes=8 * MIB,
+        remedy="Write new evaluation events to state/evaluations.d/ shards",
     ),
 )
 
@@ -680,6 +698,22 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
             "Keep one row per (report, reading); supersede instead of rewriting. "
             "Do not copy report bodies or harvested facts into the ledger"
         ),
+    ),
+    ShardBudget(
+        "state/hypotheses.d",
+        soft_bytes=2 * MIB,
+        hard_bytes=8 * MIB,
+        soft_shards=80,
+        hard_shards=160,
+        remedy="Consolidate older date-stamped hypothesis shards via state/shard_aliases.json",
+    ),
+    ShardBudget(
+        "state/evaluations.d",
+        soft_bytes=4 * MIB,
+        hard_bytes=12 * MIB,
+        soft_shards=80,
+        hard_shards=160,
+        remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
 )
 
