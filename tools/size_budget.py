@@ -248,6 +248,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # is true only at the moment it is created. Not an automatic raise;
         # the next session that hits this wall should measure row length and
         # existing shard reuse before raising again. Hard 160 unchanged.
+        # 2026-11-12: 99 -> 100 for this session's five-source theoretical
+        # science acquisition.  Consolidation was exhausted first: sessions.d,
+        # read_log.d, and relations.d each reclaimed 1 shard on unreferenced
+        # 2026-11-10 files (byte-multiset verified; zero overlap with open PRs).
+        # In materials.d (99/99), only 3 strictly unreferenced shards exist
+        # (indices 64, 66, 68), none adjacent, no same-date group fully movable,
+        # and zero 2026-11-12 shards exist for procedure 8-2 -> net reclaim 0.
+        # Hard 160 unchanged; not an automatic raise (see docs/parallel-work.md).
         # 2026-11-12 (SESSION-20261112-a9607b, 99 -> 100): five theoretical-science
         # sources (Maxwell 1865 / Schrodinger 1926 / Poincare 1890 / Kolmogorov 1933 /
         # Banach-Tarski 1924) needed a materials shard. Measured before writing:
@@ -616,6 +624,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # automatic raise.  Note: open PR #655 raises this same line for a
         # one-time notes backfill (bytes 1 -> 1.25 MiB, 92 -> 96 shards);
         # whichever of the two lands second resolves a trivial conflict.
+        # 2026-11-12: 95 -> 96 for this session's curated note row (1 row).
+        # notes.d remains excluded from consolidation (order-sensitive) and no
+        # 2026-11-12 shard existed for procedure 8-2 -> net reclaim 0.
+        # Hard 160 unchanged; not an automatic raise (see docs/parallel-work.md).
         # 2026-11-12 (SESSION-20261112-a9607b, 95 -> 96): one curated note row
         # for the close-reading report needed a notes shard. Measured: notes.d
         # was 95/95 (no slot), notes.d is order-SENSITIVE and stays outside
@@ -650,8 +662,14 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # unchanged.  Same shape as the 2026-11-07 rescale of state/sessions.d/
         # (see docs/parallel-work.md §3): fix the mis-calibrated dimension, keep
         # the hard cliff, say why.
+        # 2026-11-12: 24 -> 25 MiB after the union of two already-merged
+        # parallel reports and this report reached 25,174,612 B, only 8,788 B
+        # past the old review point. Reports are append-only; shard consolidation
+        # cannot reduce this dimension, and deleting prior reports requires human
+        # approval. The 1 MiB step is a measured review-point rescale, not an
+        # automatic allowance; hard 48 MiB and per-file limits remain unchanged.
         "readings",
-        soft_bytes=24 * MIB,
+        soft_bytes=25 * MIB,
         hard_bytes=48 * MIB,
         remedy=(
             "Episodic reports are append-only, so decide which dimension fired before choosing a remedy. "
