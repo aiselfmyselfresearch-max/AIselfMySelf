@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3647 件（research_excerpt 1423 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3654 件（research_excerpt 1430 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6753 件
-- **探究セッション（Sessions）**：658 回
+- **解釈的関係（Relations）**：6760 件
+- **探究セッション（Sessions）**：659 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3647 件・詳細は map/3*.md）
+## 4. 対話素材（3654 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4216,6 +4216,13 @@
 | `MAT-20261112-a1b177` | research_excerpt | Vladimir N. Vapnik, Alexey Ya. Chervonenkis『ヴァプニク／チェルヴォネンキス「事象の相対頻度の確率への一様収束について」（1971）——… |
 | `MAT-20261112-46c46a` | research_excerpt | Allan Gibbard『ギバード「投票方式の操作：一般定理」（1973）——三つ以上の結果を持つ非独裁的な決定規則はすべて戦略的操作を免れない』（1973） |
 | `MAT-20261112-e3412f` | research_excerpt | Daniel Dominic Sleator, Robert Endre Tarjan『スレーター／タージャン「自己調整二分探索木」（1985）——補助欄も内容改変もなしに、アク… |
+| `MAT-20261112-3abe83` | research_excerpt | Charles H. Bennett『ベネット「計算の論理的可逆性」（1973）——論理消去の熱を免れても、逆計算なしには履歴テープが空間を埋め尽くす』（1973） |
+| `MAT-20261112-4177f2` | research_excerpt | Claude E. Shannon『シャノン「忠実度規準を持つ離散情報源の符号化定理」（1959）——何を誤りと重く罰するかを先に定めなければ最小圧縮率は存在しない』（1959） |
+| `MAT-20261112-916672` | research_excerpt | David Slepian, Jack K. Wolf『スレピアン／ウルフ「相関のある情報源の無雑音符号化」（1973）——互いを見ない並列符号器が条件付きエントロピー下限を保つ… |
+| `MAT-20261112-8e26c5` | research_excerpt | Mark Kac『カッツ「太鼓の形を聴き分けることができるか？」（1966）——全固有振動数から面積・周長・穴の数は聴き取れても、異なる内部構造は同一スペクトルを生む』（1966） |
+| `MAT-20261112-424693` | research_excerpt | Peter W. Shor『ショア「量子コンピュータ・メモリのデコヒーレンス低減方式」（1995）——個々の状態を見ずにパリティ関係だけを測って保護し、二重誤差には論理反転する』… |
+| `MAT-20261112-263f42` | research_excerpt | Roger Penrose『ペンローズ「重力崩壊と時空の特異点」（1965）——捕捉面がひとたび閉じれば、非対称な摂動でも未来への線の途切れは免れない』（1965） |
+| `MAT-20261112-707f33` | research_excerpt | Robert Axelrod, William D. Hamilton『アクセルロッド／ハミルトン「協力の進化」（1981）——再会確率 w が閾値を下回り相手を見分けられなくな… |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -5005,6 +5012,7 @@
 | `SESSION-20261111-b86e0b` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-2bbcac` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-dfe525` | 2026-11-12 | `Q-20261028-bed8e2`, `Q-20261126-fe52e5`, `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-868e63` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003`, `Q-20261202-e5b7be` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
 | `SESSION-20261201-4944b0` | 2026-12-01 | `Q-20261024-c237b9`, `Q-20261201-f932d1` | `FRAG-20261201-0c2cb9` | `Q-20261201-f932d1` |
@@ -5086,18 +5094,18 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6753 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6760 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 977 |
-| 共鳴 (echo) | 1621 |
+| 対照 (contrast) | 978 |
+| 共鳴 (echo) | 1622 |
 | 切断・割り込み (interrupts) | 236 |
 | 未解決のまま開く (leaves_open) | 903 |
 | 比喩的共鳴 (metaphorically_resonates) | 184 |
-| 枠組みの組み替え (reframes) | 743 |
-| 応答 (responds_to) | 1768 |
-| 変奏・変形 (transforms) | 321 |
+| 枠組みの組み替え (reframes) | 745 |
+| 応答 (responds_to) | 1769 |
+| 変奏・変形 (transforms) | 323 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -5163,7 +5171,7 @@
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
 | `map/31-materials-research-14.md` | 100 | 323,628 |
-| `map/31-materials-research-15.md` | 23 | 72,407 |
+| `map/31-materials-research-15.md` | 30 | 90,510 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5177,8 +5185,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 165,576 |
-| `map/40-relations-14.md` | 253 | 89,558 |
+| `map/40-relations-13.md` | 500 | 165,436 |
+| `map/40-relations-14.md` | 260 | 92,321 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5190,9 +5198,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 45,211 |
-| `map/50-sessions-13.md` | 50 | 44,541 |
-| `map/50-sessions-14.md` | 8 | 6,390 |
+| `map/50-sessions-12.md` | 50 | 44,947 |
+| `map/50-sessions-13.md` | 50 | 44,808 |
+| `map/50-sessions-14.md` | 9 | 7,154 |
 | `map/60-notes-01.md` | 25 | 80,848 |
 | `map/60-notes-02.md` | 25 | 86,660 |
 | `map/60-notes-03.md` | 25 | 88,317 |
@@ -5213,25 +5221,25 @@
 | `map/60-notes-18.md` | 25 | 114,573 |
 | `map/60-notes-19.md` | 25 | 125,886 |
 | `map/60-notes-20.md` | 25 | 170,271 |
-| `map/60-notes-21.md` | 25 | 120,579 |
+| `map/60-notes-21.md` | 25 | 120,643 |
 | `map/60-notes-22.md` | 25 | 86,608 |
-| `map/60-notes-23.md` | 25 | 89,675 |
-| `map/60-notes-24.md` | 25 | 83,517 |
-| `map/60-notes-25.md` | 25 | 113,873 |
-| `map/60-notes-26.md` | 25 | 91,630 |
-| `map/60-notes-27.md` | 25 | 107,044 |
-| `map/60-notes-28.md` | 25 | 96,462 |
-| `map/60-notes-29.md` | 25 | 130,334 |
-| `map/60-notes-30.md` | 11 | 65,173 |
+| `map/60-notes-23.md` | 25 | 92,283 |
+| `map/60-notes-24.md` | 25 | 82,846 |
+| `map/60-notes-25.md` | 25 | 114,038 |
+| `map/60-notes-26.md` | 25 | 91,712 |
+| `map/60-notes-27.md` | 25 | 107,794 |
+| `map/60-notes-28.md` | 25 | 97,509 |
+| `map/60-notes-29.md` | 25 | 128,918 |
+| `map/60-notes-30.md` | 12 | 68,905 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・736本・25,164,417 B）
+## 8. 精読ノート索引（readings/・737本・25,196,859 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 536/736 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 537/737 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：734 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：735 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：101 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5800,8 +5808,9 @@
 | `readings/2026-11-11-where-the-field-is-the-address-stays.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,708 | Q3 S1 | ✓ | 欄のあるところにだけ住所は残る——前報の一般化を、計数で狭める |
 | `readings/2026-11-11-why-the-scope-was-missing.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 6,541 | S1 | — | 適用範囲はなぜ書かれなかったのか——指示テキスト層とスクリプト層を分けて調べる |
 | `readings/2026-11-12-seven-bounds-on-carryover-and-rotation.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-2bbcac` +1 | 37,455 | Q4 M12 MOT2 R1 S2 | ✓ | 時間階層・不可知・回転——七つの境界定理で測る人間と自己調整する書庫 |
+| `readings/2026-11-12-seven-limits-of-what-cannot-be-erased.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-868e63` | 16,519 | Q4 F1 M8 R1 S1 | — | 消去できないものの七つの限界——履歴・忠実度・位相・再会の数理から読む自己と人間 |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
-| `readings/2026-11-12-what-burns-when-the-tree-rotates.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-dfe525` +1 | 5,978 | Q5 F3 M9 S2 | — | 木を回すとき何が燃えるか——逆提案・事後合理化・産まれた結果による検査 |
+| `readings/2026-11-12-what-burns-when-the-tree-rotates.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-dfe525` +1 | 5,978 | Q5 F3 M9 S2 | ✓ | 木を回すとき何が燃えるか——逆提案・事後合理化・産まれた結果による検査 |
 | `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | — | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | — | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
