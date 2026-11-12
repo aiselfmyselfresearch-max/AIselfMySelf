@@ -511,7 +511,21 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # the opposite of a "narrow exception" raise: it brings the row count
         # up to the report count (688), so future growth in this directory
         # should come from claims, not from rows.  Hard limits unchanged.
-        soft_bytes=1_310_720,
+        # 2026-11-12: 1.25 MiB -> 2 MiB, a measured raise for the claims
+        # backlog, not a per-session +1.  Rows existed but carried no claims
+        # (392 of 703 report paths); curating them is what this directory was
+        # raised for in the first place.  Measured density of the first batch
+        # (12 notes, 32 claims, hand-written, excerpt-read): 15,786 B, i.e.
+        # ~1.3 KB per note.  The remaining 380 path backlog at that density is
+        # ~500 KB, so the projected total is ~1.82 MiB -- under this new soft
+        # line and well under the untouched 4 MiB hard line.  Two related
+        # measurements are in readings/2026-11-11-how-many-reports-fit-in-one-
+        # turn.md: a mechanical extractor was run over all 392 unfixed reports
+        # first (615 candidate claims, 88.8% with no Q-001/2/3 in their
+        # section, 8.9% opening on procedure), and it was rejected as a way to
+        # fill this directory.  Shard count unchanged (94 of soft 96): the
+        # batch appends to the existing 2026-11-11 curated shard.
+        soft_bytes=2 * MIB,
         hard_bytes=4 * MIB,
         # 2026-11-08: one extra soft slot for this report's curated note;
         # keep the per-report row in its own append-only session shard.
