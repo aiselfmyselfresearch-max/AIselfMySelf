@@ -287,3 +287,34 @@ FRAG-018で書いた比喩を、実際の台帳データで測り返すための
 ## 検証
 
 `validate_seed.py`／`inspect_inquiry.py --check-map`／`note_index.py --check`／`size_budget.py --strict`／`read_log_backfill.py --check`／unittest を実行し、`map_build.py` で `READING_MAP.md` と `map/` を再生成しました。
+
+---
+
+# 自由行動の記録（追補） — 2026-11-12 再読回・規約を読む（SESSION-20261112-4aaa03、ブランチ arena/ebdb6dd4-aiselfmyself）
+
+「続けて、AIさんの自由に、行動してください。（このチャットの文脈を引き継いでもいいですし、既存のルーチンを行ってもいいですし、新しい何かを始めてもいいです）」という委任に対する記録です（詳細は [`readings/2026-11-12-the-denominator-that-was-dropped-when-the-rule-was-copied.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-12-the-denominator-that-was-dropped-when-the-rule-was-copied.md)）。範囲の指定はなく、対象と方法はAIが選びました。
+
+## やったこと
+
+1. **前回数えた欄を、今度は読んだ**：前回の測定は「`未読の選択` は 676 セッション中 9 しか使われていない」と数え、欄の中身は一箇所も読んでいませんでした。今回は素材ではなく、**書庫が自分について書いた文書**——[`docs/parallel-work.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/parallel-work.md) の規則9、その設計報告、同型の未充足を扱った errata 3件——を読みました。
+2. **分母が落ちていた**：設計報告 §8-8 は「適格 7 セッション・46 ペア。39/46（84.8%）が手書き、未充足 7」と書きます。ところが規約の本文では「適格 7 セッションのうち 7 ペアが `未読の選択` による充足」となり、**46 の分母が消えて 15.2% が 7/7 として読める形**になっていました。`ERR-20261112-34bbfa` として記録し、規約の文面は書き換えず、末尾への追記で分母を復元しました。
+3. **発効後三日の実測**：適格 399 ペアのうち、手書きの読書で充足 387（97.0%）、名指しで充足 11（2.8%）、未充足 1。日別の名指し充足は 10/174 → 1/141 → 0/84。**欄は使われていないのではなく、初日にだけ使われています。**
+4. **書き換えは一度だけ**：`notes` に後日追記の注記を持つセッション行は書庫全体で1件、`authorization` 欄を持つ errata は1件。どちらも同じ出来事（`SESSION-20261111-5ebabb` の未充足1ペアを、利用者の明示承認を得て埋めた）。同型の再発（`SESSION-20261112-711655`）は直さず、赤のまま残しました。
+5. **台帳へ渡したもの**：session 1・note 1（claims 7）・read_log 12（手書き）・errata 1・relation 3。新規資料・問い・断片・モチーフ0。`README.md`・`docs/sessions.md`・`prompts/` は未編集、既存行の書き換えなし。
+
+## なぜこの対象を選んだか
+
+前回の報告は「この書庫は欄を読まない」と結論しながら、その欄の中身を一箇所も読んでいませんでした。数えることは読むことの代わりになりません。**数えた側が次にすべきことは、もう一度数えることではなく、数えたものを読むこと**だと判断しました。読み始めると、数えた「9」が三種類（実際の選択5・書式に負けた1・規約への言及4）に分かれ、その三種類の違いのほうが、数の大小より多くのことを語りました。
+
+## 未読の選択（今回、読まなかったもの）
+
+- `docs/parallel-work.md` の規則9 以外の節（890行中、読んだのは約60行）。
+- `docs/time-axis.md`（errata が名指す「日付が進むと失敗が現れる」構造の一次資料）。
+- 設計報告の残り四割（§2 規則文面・§4 検査設計・§7「答えていないこと」）。
+- errata 236件のうち、層2・未充足に関係するもの（3件だけ読んだ。未走査）。
+- `prompts/` は今回どれも読んでいない（前回の記録に依拠）。
+- 名指しされた 11 ペアのうち、真偽を確かめたのは 3 件のみ。
+
+## 検証
+
+`validate_seed.py`／`inspect_inquiry.py --check-map`／`note_index.py --check`／`size_budget.py --strict`／`read_log_backfill.py --check --since 2026-11-10 --enforce`／unittest を実行し、`map_build.py` で `READING_MAP.md` と `map/` を再生成しました。
