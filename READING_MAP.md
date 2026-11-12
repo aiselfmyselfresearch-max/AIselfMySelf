@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3742 件（research_excerpt 1518 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3749 件（research_excerpt 1525 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6846 件
-- **探究セッション（Sessions）**：676 回
+- **解釈的関係（Relations）**：6859 件
+- **探究セッション（Sessions）**：678 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3742 件・詳細は map/3*.md）
+## 4. 対話素材（3749 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4304,6 +4304,13 @@
 | `MAT-20261112-52e5d4` | research_excerpt | Don N. Page, William K. Wootters『ペイジ＆ウッターズ「進化なき進化」（1983）——観測者を全部含む閉じた系は定常でよく、変化は内部の時計の読みと… |
 | `MAT-20261112-9f6212` | research_excerpt | Francis H. C. Crick『クリック「タンパク質合成について」（1958）と「分子生物学のセントラルドグマ」（1970）——配列の情報は、タンパク質に入ったら出てこな… |
 | `MAT-20261112-8b85b9` | research_excerpt | George R. Price『プライス「選択と共分散」（1970）——変化は、どれが多く写されたかと、写しが元とどれだけ違うかに、帳簿の上で分かれる』（1970） |
+| `MAT-20261112-4e0cb9` | research_excerpt | Sewall Wright『ライト（1921）「相関と因果」——相関は経路の合成にすぎず、経路図はデータの外から与えられる』（1921） |
+| `MAT-20261112-3016d6` | research_excerpt | Trygve Haavelmo『ハーヴェルモ（1943）「連立方程式系の統計的含意」——同じ同時分布のままでは、どの式が需要でどれが供給かは決まらない』（1943） |
+| `MAT-20261112-bd6a94` | research_excerpt | Clive W. J. Granger『グレンジャー（1969）「計量モデルとクロス・スペクトル法による因果関係の研究」——因果とは、他のすべての情報を除いたときに予測が良くなる… |
+| `MAT-20261112-fd445f` | research_excerpt | Donald B. Rubin『ルービン（1974）「無作為化研究と非無作為化研究における治療効果の推定」——一つの単位について観測できる潜在的結果は、一つだけである』（1974） |
+| `MAT-20261112-d1a6bb` | research_excerpt | Leslie Lamport『ランポート（1978）「時間、時計、分散システムにおける事象の順序」——因果順序は部分順序であり、全順序は時計という取り決めで足される』（1978） |
+| `MAT-20261112-c648a1` | research_excerpt | Paul W. Holland『ホランド（1986）「統計学と因果推論」——操作なしに因果なし。原因は属性ではなく、単位が受ける経験である』（1986） |
+| `MAT-20261112-bc86b6` | research_excerpt | Jin Tian, Judea Pearl『ティアン＆パール（2002）「因果効果の一般的識別条件」——介入しなくても効果が計算できるかどうかは、グラフの形が決める』（2002） |
 | `MAT-20261112-164bea` | research_excerpt | E. F. Codd『コッド「大規模共有データバンクのための関係モデル」（1970）——並び・索引・たどり道が変わっても、使う側は変わらずにいられること』（1970） |
 | `MAT-20261112-505188` | research_excerpt | Maurice P. Herlihy, Jeannette M. Wing『ハーリヒ＆ウィング「線形化可能性」（1990）——重なり合った操作の履歴を、一本の順番として読んでよい… |
 | `MAT-20261112-beb48b` | research_excerpt | T. C. Koopmans, O. Reiersøl『コープマンス＆レイエルスル「構造的特性の識別」（1950）——同じ分布を生む構造どうしは、いくら観測しても区別できない』（… |
@@ -5116,6 +5123,8 @@
 | `SESSION-20261112-7c4478` | 2026-11-12T03:21:53Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-b914b3` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-115c6d` | 2026-11-12T03:38:12Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-242577` | 2026-11-12T04:07:26Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-d567e5` | 2026-11-12T05:12:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-86172c` | 2026-11-12T04:32:10Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-2f4264` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
@@ -5199,17 +5208,17 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6846 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6859 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 990 |
-| 共鳴 (echo) | 1632 |
+| 対照 (contrast) | 991 |
+| 共鳴 (echo) | 1634 |
 | 切断・割り込み (interrupts) | 235 |
-| 未解決のまま開く (leaves_open) | 912 |
+| 未解決のまま開く (leaves_open) | 913 |
 | 比喩的共鳴 (metaphorically_resonates) | 189 |
-| 枠組みの組み替え (reframes) | 775 |
-| 応答 (responds_to) | 1785 |
+| 枠組みの組み替え (reframes) | 781 |
+| 応答 (responds_to) | 1788 |
 | 変奏・変形 (transforms) | 328 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -5277,7 +5286,7 @@
 | `map/31-materials-research-13.md` | 100 | 257,546 |
 | `map/31-materials-research-14.md` | 100 | 326,281 |
 | `map/31-materials-research-15.md` | 100 | 267,537 |
-| `map/31-materials-research-16.md` | 18 | 58,477 |
+| `map/31-materials-research-16.md` | 25 | 77,001 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5291,8 +5300,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 163,499 |
-| `map/40-relations-14.md` | 346 | 120,989 |
+| `map/40-relations-13.md` | 500 | 163,635 |
+| `map/40-relations-14.md` | 359 | 125,564 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5304,9 +5313,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,895 |
-| `map/50-sessions-12.md` | 50 | 42,208 |
-| `map/50-sessions-13.md` | 50 | 47,533 |
-| `map/50-sessions-14.md` | 26 | 20,939 |
+| `map/50-sessions-12.md` | 50 | 42,073 |
+| `map/50-sessions-13.md` | 50 | 47,589 |
+| `map/50-sessions-14.md` | 28 | 22,727 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5328,23 +5337,23 @@
 | `map/60-notes-19.md` | 25 | 115,981 |
 | `map/60-notes-20.md` | 25 | 169,868 |
 | `map/60-notes-21.md` | 25 | 143,366 |
-| `map/60-notes-22.md` | 25 | 76,835 |
-| `map/60-notes-23.md` | 25 | 62,546 |
-| `map/60-notes-24.md` | 25 | 67,466 |
-| `map/60-notes-25.md` | 25 | 71,240 |
-| `map/60-notes-26.md` | 25 | 100,547 |
-| `map/60-notes-27.md` | 25 | 103,067 |
-| `map/60-notes-28.md` | 25 | 142,623 |
-| `map/60-notes-29.md` | 1 | 5,715 |
+| `map/60-notes-22.md` | 25 | 84,986 |
+| `map/60-notes-23.md` | 25 | 61,844 |
+| `map/60-notes-24.md` | 25 | 66,803 |
+| `map/60-notes-25.md` | 25 | 68,311 |
+| `map/60-notes-26.md` | 25 | 103,020 |
+| `map/60-notes-27.md` | 25 | 99,393 |
+| `map/60-notes-28.md` | 25 | 139,613 |
+| `map/60-notes-29.md` | 3 | 19,081 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・701本・25,468,249 B）
+## 8. 精読ノート索引（readings/・703本・25,590,646 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 496/701 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 498/703 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：333 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：335 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：78 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5878,8 +5887,10 @@
 | `readings/2026-11-12-five-theories-of-observation-memory-and-open-ends.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-7c4478` +1 | 13,837 | Q3 M7 S2 | ✓ | 同じ自己を支える条件は、何によって決まるか——観測・記憶・目的・相互作用の五理論 |
 | `readings/2026-11-12-five-theories-of-taking-a-record-without-stopping.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-115c6d` +1 | 30,063 | Q3 M10 R1 S2 | ✓ | 止めずに写す——標本・断面・時計・翻訳・選択の五理論 |
 | `readings/2026-11-12-five-theories-that-do-not-erase-the-error.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-bb95a0` +1 | 24,925 | Q4 M12 S2 | ✓ | 誤りを消さない五つの理論——距離・余白・頻度・欠損・来歴 |
-| `readings/2026-11-12-seven-theories-of-which-differences-may-be-ignored.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-86172c` +1 | 61,602 | Q5 M9 S2 | — | どの違いを無視してよいか——七つの理論と、437対の履歴 |
+| `readings/2026-11-12-seven-theories-of-cause-without-an-intervention.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-242577` | 34,341 | Q3 M11 S1 | ✓ | 介入なしに、どこまで因果が読めるか——経路・連立・予測・反事実・順序・操作・識別の七理論 |
+| `readings/2026-11-12-seven-theories-of-which-differences-may-be-ignored.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-86172c` +3 | 63,449 | Q5 M9 S4 ERR1 | — | どの違いを無視してよいか——七つの理論と、437対の履歴 |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
+| `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
 | `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | — | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | — | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
