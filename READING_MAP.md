@@ -5184,13 +5184,13 @@
 | `map/50-sessions-12.md` | 50 | 45,409 |
 | `map/50-sessions-13.md` | 50 | 43,913 |
 | `map/50-sessions-14.md` | 6 | 5,194 |
-| `map/60-notes-01.md` | 25 | 61,755 |
-| `map/60-notes-02.md` | 25 | 69,477 |
-| `map/60-notes-03.md` | 25 | 70,769 |
+| `map/60-notes-01.md` | 25 | 62,518 |
+| `map/60-notes-02.md` | 25 | 71,310 |
+| `map/60-notes-03.md` | 25 | 71,609 |
 | `map/60-notes-04.md` | 25 | 95,832 |
 | `map/60-notes-05.md` | 25 | 86,726 |
-| `map/60-notes-06.md` | 25 | 50,782 |
-| `map/60-notes-07.md` | 25 | 93,145 |
+| `map/60-notes-06.md` | 25 | 51,556 |
+| `map/60-notes-07.md` | 25 | 93,885 |
 | `map/60-notes-08.md` | 25 | 66,848 |
 | `map/60-notes-09.md` | 25 | 81,512 |
 | `map/60-notes-10.md` | 25 | 75,218 |
@@ -5203,14 +5203,14 @@
 | `map/60-notes-17.md` | 25 | 116,436 |
 | `map/60-notes-18.md` | 25 | 110,698 |
 | `map/60-notes-19.md` | 25 | 121,281 |
-| `map/60-notes-20.md` | 25 | 168,718 |
+| `map/60-notes-20.md` | 25 | 169,695 |
 | `map/60-notes-21.md` | 25 | 128,352 |
 | `map/60-notes-22.md` | 25 | 87,191 |
-| `map/60-notes-23.md` | 25 | 63,477 |
+| `map/60-notes-23.md` | 25 | 64,376 |
 | `map/60-notes-24.md` | 25 | 112,814 |
-| `map/60-notes-25.md` | 25 | 83,622 |
+| `map/60-notes-25.md` | 25 | 86,171 |
 | `map/60-notes-26.md` | 25 | 101,949 |
-| `map/60-notes-27.md` | 25 | 98,454 |
+| `map/60-notes-27.md` | 25 | 99,358 |
 | `map/60-notes-28.md` | 25 | 126,871 |
 | `map/60-notes-29.md` | 14 | 77,343 |
 
