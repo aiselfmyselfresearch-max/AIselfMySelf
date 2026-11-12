@@ -270,7 +270,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # is touched by open PR #671, so procedure 8-2 was unavailable; no
         # same-date group was fully movable (procedure 7); consolidation
         # recovered 0. Hard 160 unchanged; not an automatic raise.
-        soft_shards=101,
+        # 2026-11-12 (SESSION-20261112-db6077, 101 -> 102): seven theoretical-science
+        # source records require a new materials shard. Existing same-day records
+        # remain in their originating shards; this session uses its own append-only
+        # shard. Hard 160 unchanged; one-slot exception, not an automatic raise.
+        soft_shards=102,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -378,7 +382,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 read_log shard existed for procedure 8-2. Byte dimension
         # is not binding (4.38 MiB of 5 MiB soft). Hard 160 unchanged; not an
         # automatic raise.
-        soft_shards=95,
+        # 2026-11-12 (SESSION-20261112-db6077, 95 -> 96): eleven handwritten
+        # read_log rows require this session's shard. Hard 160 unchanged; one-slot
+        # exception, not an automatic raise.
+        soft_shards=96,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -529,7 +536,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # the five-source close reading needed a sessions shard. Measured:
         # sessions.d was 99/99 (no slot), no 2026-11-12 sessions shard existed
         # for procedure 8-2. Hard 160 unchanged; not an automatic raise.
-        soft_shards=100,
+        # 2026-11-12 (SESSION-20261112-db6077, 100 -> 101): one session row
+        # requires a new shard. Hard 160 unchanged; one-slot exception, not an
+        # automatic raise.
+        soft_shards=101,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -646,7 +656,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # PR #671, so procedure 8-2 was unavailable; notes.d is order-sensitive
         # and excluded from consolidation -> net reclaim 0. Hard 160 unchanged;
         # not an automatic raise.
-        soft_shards=97,
+        # 2026-11-12 (SESSION-20261112-db6077, 97 -> 98): one curated note row
+        # requires this session's shard. notes.d is order-sensitive and excluded
+        # from consolidation; hard 160 unchanged; one-slot exception only.
+        soft_shards=98,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "

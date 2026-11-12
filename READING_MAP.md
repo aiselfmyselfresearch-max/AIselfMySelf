@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3749 件（research_excerpt 1525 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3756 件（research_excerpt 1532 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6862 件
-- **探究セッション（Sessions）**：679 回
+- **探究セッション（Sessions）**：680 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3749 件・詳細は map/3*.md）
+## 4. 対話素材（3756 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4318,6 +4318,13 @@
 | `MAT-20261112-cf0ee8` | research_excerpt | Hermann Weyl『ワイル「重力と電気」（1918）とアインシュタインの追記——経路に依って長さが変わるなら、同じ線を出す原子は存在しない』（1918） |
 | `MAT-20261112-9eca5f` | research_excerpt | Hirotugu Akaike『赤池弘次「統計的モデル同定の新しい見方」（1974）——真のモデルを当てるのではなく、次の標本への当てはまりで選ぶ。足した母数の数だけ、二倍して引… |
 | `MAT-20261112-741098` | research_excerpt | Thomas C. Schelling『シェリング「分居の動的モデル」（1971）——集まりの模様から、一人ひとりの動機は読み取れない』（1971） |
+| `MAT-20261112-2c50de` | research_excerpt | W. Ross Ashby『W. Ross Ashby「Principles of the Self-Organizing Dynamic System」(1947)』（1947） |
+| `MAT-20261112-6f0ac6` | research_excerpt | Heinz von Foerster『Heinz von Foerster「On Self-Organizing Systems and Their Environments」(… |
+| `MAT-20261112-619c83` | research_excerpt | Robert Rosen『Robert Rosen「A Relational Theory of Biological Systems」(1958)』（1958） |
+| `MAT-20261112-134147` | research_excerpt | Manfred Eigen and Peter Schuster『Manfred Eigen and Peter Schuster「The Hypercycle. A Princ… |
+| `MAT-20261112-050333` | research_excerpt | Robert M. May『Robert M. May「Will a Large Complex System be Stable?」(1972)』（1972） |
+| `MAT-20261112-7d69fa` | research_excerpt | Howard H. Pattee『Howard H. Pattee「The Physical Basis and Origin of Hierarchical Control」(… |
+| `MAT-20261112-e7f254` | research_excerpt | Ray J. Solomonoff『Ray J. Solomonoff「A Formal Theory of Inductive Inference. Part I」(1964)… |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -5128,6 +5135,7 @@
 | `SESSION-20261112-86172c` | 2026-11-12T04:32:10Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-4aaa03` | 2026-11-12T06:05:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-2f4264` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-db6077` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
 | `SESSION-20261201-4944b0` | 2026-12-01 | `Q-20261024-c237b9`, `Q-20261201-f932d1` | `FRAG-20261201-0c2cb9` | `Q-20261201-f932d1` |
@@ -5287,7 +5295,7 @@
 | `map/31-materials-research-13.md` | 100 | 257,546 |
 | `map/31-materials-research-14.md` | 100 | 326,281 |
 | `map/31-materials-research-15.md` | 100 | 267,537 |
-| `map/31-materials-research-16.md` | 25 | 77,001 |
+| `map/31-materials-research-16.md` | 32 | 92,288 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5314,9 +5322,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,895 |
-| `map/50-sessions-12.md` | 50 | 42,072 |
-| `map/50-sessions-13.md` | 50 | 47,627 |
-| `map/50-sessions-14.md` | 29 | 23,600 |
+| `map/50-sessions-12.md` | 50 | 42,180 |
+| `map/50-sessions-13.md` | 50 | 47,454 |
+| `map/50-sessions-14.md` | 30 | 24,515 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5337,25 +5345,25 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,981 |
 | `map/60-notes-20.md` | 25 | 169,952 |
-| `map/60-notes-21.md` | 25 | 143,366 |
-| `map/60-notes-22.md` | 25 | 88,820 |
-| `map/60-notes-23.md` | 25 | 60,895 |
-| `map/60-notes-24.md` | 25 | 67,671 |
-| `map/60-notes-25.md` | 25 | 69,244 |
-| `map/60-notes-26.md` | 25 | 100,640 |
-| `map/60-notes-27.md` | 25 | 96,001 |
-| `map/60-notes-28.md` | 25 | 142,343 |
-| `map/60-notes-29.md` | 4 | 23,452 |
+| `map/60-notes-21.md` | 25 | 143,439 |
+| `map/60-notes-22.md` | 25 | 89,988 |
+| `map/60-notes-23.md` | 25 | 60,854 |
+| `map/60-notes-24.md` | 25 | 67,360 |
+| `map/60-notes-25.md` | 25 | 70,054 |
+| `map/60-notes-26.md` | 25 | 98,364 |
+| `map/60-notes-27.md` | 25 | 96,202 |
+| `map/60-notes-28.md` | 25 | 140,205 |
+| `map/60-notes-29.md` | 5 | 30,090 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・704本・25,619,809 B）
+## 8. 精読ノート索引（readings/・705本・25,646,676 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 499/704 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 500/705 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：336 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：78 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：337 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：79 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5889,6 +5897,7 @@
 | `readings/2026-11-12-five-theories-of-taking-a-record-without-stopping.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-115c6d` +1 | 30,063 | Q3 M10 R1 S2 | ✓ | 止めずに写す——標本・断面・時計・翻訳・選択の五理論 |
 | `readings/2026-11-12-five-theories-that-do-not-erase-the-error.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-bb95a0` +1 | 24,925 | Q4 M12 S2 | ✓ | 誤りを消さない五つの理論——距離・余白・頻度・欠損・来歴 |
 | `readings/2026-11-12-seven-theories-of-cause-without-an-intervention.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-242577` | 34,341 | Q3 M11 S1 | ✓ | 介入なしに、どこまで因果が読めるか——経路・連立・予測・反事実・順序・操作・識別の七理論 |
+| `readings/2026-11-12-seven-theories-of-self-maintenance-and-records.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-db6077` | 11,218 | Q3 M7 S1 | — | 自己は保存物か、維持される関係か——七つの理論科学を記憶の書庫から読む |
 | `readings/2026-11-12-seven-theories-of-which-differences-may-be-ignored.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-86172c` +3 | 63,449 | Q5 M9 S4 ERR1 | — | どの違いを無視してよいか——七つの理論と、437対の履歴 |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
 | `readings/2026-11-12-the-denominator-that-was-dropped-when-the-rule-was-copied.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261110-167875` +4 | 14,026 | Q2 M2 S5 ERR3 | ✓ | 規約に写されるときに落ちた分母——「未読の選択」の一日と、ただ一度の書き換え |
