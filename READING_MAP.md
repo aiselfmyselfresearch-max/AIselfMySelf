@@ -5185,18 +5185,18 @@
 | `map/50-sessions-13.md` | 50 | 43,913 |
 | `map/50-sessions-14.md` | 6 | 5,194 |
 | `map/60-notes-01.md` | 25 | 59,713 |
-| `map/60-notes-02.md` | 25 | 66,676 |
+| `map/60-notes-02.md` | 25 | 68,003 |
 | `map/60-notes-03.md` | 25 | 69,654 |
 | `map/60-notes-04.md` | 25 | 94,810 |
 | `map/60-notes-05.md` | 25 | 86,726 |
-| `map/60-notes-06.md` | 25 | 49,501 |
+| `map/60-notes-06.md` | 25 | 50,782 |
 | `map/60-notes-07.md` | 25 | 91,206 |
-| `map/60-notes-08.md` | 25 | 54,922 |
-| `map/60-notes-09.md` | 25 | 72,520 |
-| `map/60-notes-10.md` | 25 | 65,558 |
+| `map/60-notes-08.md` | 25 | 56,196 |
+| `map/60-notes-09.md` | 25 | 73,952 |
+| `map/60-notes-10.md` | 25 | 69,052 |
 | `map/60-notes-11.md` | 25 | 75,661 |
 | `map/60-notes-12.md` | 25 | 84,687 |
-| `map/60-notes-13.md` | 25 | 95,179 |
+| `map/60-notes-13.md` | 25 | 96,538 |
 | `map/60-notes-14.md` | 25 | 119,673 |
 | `map/60-notes-15.md` | 25 | 87,759 |
 | `map/60-notes-16.md` | 25 | 92,415 |
@@ -5204,24 +5204,24 @@
 | `map/60-notes-18.md` | 25 | 108,843 |
 | `map/60-notes-19.md` | 25 | 120,296 |
 | `map/60-notes-20.md` | 25 | 168,718 |
-| `map/60-notes-21.md` | 25 | 129,730 |
-| `map/60-notes-22.md` | 25 | 83,183 |
-| `map/60-notes-23.md` | 25 | 67,488 |
-| `map/60-notes-24.md` | 25 | 108,118 |
-| `map/60-notes-25.md` | 25 | 79,229 |
-| `map/60-notes-26.md` | 25 | 102,882 |
-| `map/60-notes-27.md` | 25 | 93,282 |
-| `map/60-notes-28.md` | 25 | 136,820 |
-| `map/60-notes-29.md` | 10 | 56,689 |
+| `map/60-notes-21.md` | 25 | 129,368 |
+| `map/60-notes-22.md` | 25 | 83,568 |
+| `map/60-notes-23.md` | 25 | 67,553 |
+| `map/60-notes-24.md` | 25 | 108,998 |
+| `map/60-notes-25.md` | 25 | 80,622 |
+| `map/60-notes-26.md` | 25 | 105,335 |
+| `map/60-notes-27.md` | 25 | 93,855 |
+| `map/60-notes-28.md` | 25 | 130,334 |
+| `map/60-notes-29.md` | 11 | 65,173 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・710本・24,894,550 B）
+## 8. 精読ノート索引（readings/・711本・24,902,944 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 510/710 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 511/711 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：708 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：709 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：80 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5749,6 +5749,7 @@
 | `readings/2026-11-11-preservation-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 9,383 | Q3 S1 | ✓ | 保存の一件ファイル——679報告の「自己を保存しない」59文を監査する |
 | `readings/2026-11-11-putting-the-predicate-audit-into-the-prompt.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,073 | S1 | — | 述語の監査を手順書に入れる——旧文面と理由 |
 | `readings/2026-11-11-q001-conditions-and-three-layers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 6,257 | Q1 M1 S1 ERR1 | ✓ | Q-001 の条件の族と、三つの層——342の claims から「統合された見解」の形を測る |
+| `readings/2026-11-11-seven-verbs-and-one-wrong-row-count.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,895 | Q2 S1 ERR1 | — | 読んだと書ける動詞は七つ——前回の「欄なし240行」を撤回する |
 | `readings/2026-11-11-six-answers-cannot-share-one-relation.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,315 | Q3 F1 S1 | ✓ | 六つの答えを一つの関係に課すと矛盾する——`Q-002` の形式判定と、層別に読めば両立すること |
 | `readings/2026-11-11-the-answer-updated-in-one-page.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,581 | Q3 S1 | — | 回答の更新版——依頼文への答えを一頁に置き、計数で一つ足す |
 | `readings/2026-11-11-the-backfill-that-adds-no-holds.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,097 | S1 | ✓ | 保留を増やさない登録——359本の機械行と、前回の一文の訂正 |
@@ -5757,7 +5758,7 @@
 | `readings/2026-11-11-the-ellipsis-is-not-an-address.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,035 | Q3 M4 S2 | ✓ | 省略符は住所にならない——558の継ぎ目と、それを説明する4行 |
 | `readings/2026-11-11-the-homework-was-done-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,229 | Q1 M2 S2 | ✓ | 宿題は同じ日に実行されていた——口承資料4件に四欄を当て、台帳が閉じなかった理由を測る |
 | `readings/2026-11-11-the-mark-is-almost-always-there.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,190 | Q3 S2 | ✓ | 印はほぼ全部置かれている——系譜380節のうち61節は一度も読まれていない |
-| `readings/2026-11-11-the-report-is-the-least-read-layer.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,836 | Q2 S1 | — | 報告は、いちばん読まれていない——`notes` 809行を `read_log` の側から数える |
+| `readings/2026-11-11-the-report-is-the-least-read-layer.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,836 | Q2 S1 | ✓ | 報告は、いちばん読まれていない——`notes` 809行を `read_log` の側から数える |
 | `readings/2026-11-11-the-return-came-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-e4c584` +1 | 10,078 | Q2 M1 S2 ERR2 | ✓ | 返り便は同じ日に来る——`read_log` で測る往復の遅れ |
 | `readings/2026-11-11-the-same-question-answers-differently-by-column.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,426 | Q4 S1 | — | 同じ問いに、二つの入口は別の答えを返す——437の問いを `relations` と `read_log` で数える |
 | `readings/2026-11-11-three-instruments-three-numbers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,430 | Q2 S1 | — | 計器を三つにすると、同じ報告が三つの数になる——`read_log`・相互リンク・`relations` で数え直す |
