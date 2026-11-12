@@ -248,7 +248,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # is true only at the moment it is created. Not an automatic raise;
         # the next session that hits this wall should measure row length and
         # existing shard reuse before raising again. Hard 160 unchanged.
-        soft_shards=99,
+        # 2026-11-12 (SESSION-20261112-a9607b, 99 -> 100): five theoretical-science
+        # sources (Maxwell 1865 / Schrodinger 1926 / Poincare 1890 / Kolmogorov 1933 /
+        # Banach-Tarski 1924) needed a materials shard. Measured before writing:
+        # materials.d was 99/99 (no slot), no 2026-11-12 materials shard existed
+        # for procedure 8-2, and consolidation recovered 0 (every candidate is
+        # referenced or inside a same-day group). Hard 160 unchanged; not an
+        # automatic raise.
+        soft_shards=100,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -274,7 +281,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # than 80 and their rows are append-only.  Measured in
         # readings/2026-11-09-the-retraction-i-almost-repeated.md section 6-1.
         # Hard limit 160 unchanged.
-          soft_shards=80,
+          # 2026-11-12 (SESSION-20261112-a9607b, 80 -> 81): eight relations for the
+          # five theoretical-science sources needed a relations shard. Measured:
+          # relations.d was 80/80 (no slot), no 2026-11-12 relations shard existed
+          # for procedure 8-2. Hard 160 unchanged; not an automatic raise.
+          soft_shards=81,
         hard_shards=160,
         remedy="Compact old state/relations.d/ shards into frozen base in a dedicated maintenance PR",
     ),
@@ -346,7 +357,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-11: measured baseline already exceeds the previous soft
         # limit (except notes); preserve append-only shards and add this
         # session without compaction; see the report section 7. Hard unchanged.
-        soft_shards=94,
+        # 2026-11-12 (SESSION-20261112-a9607b, 94 -> 95): twelve reading rows
+        # (5 new materials + 3 central questions + 4 boundary materials) needed
+        # a read_log shard. Measured: read_log.d was 94/94 (no slot), no
+        # 2026-11-12 read_log shard existed for procedure 8-2. Byte dimension
+        # is not binding (4.38 MiB of 5 MiB soft). Hard 160 unchanged; not an
+        # automatic raise.
+        soft_shards=95,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -493,7 +510,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
           # 2026-11-11: measured baseline already exceeds the previous soft
         # limit (except notes); preserve append-only shards and add this
         # session without compaction; see the report section 7. Hard unchanged.
-        soft_shards=99,
+        # 2026-11-12 (SESSION-20261112-a9607b, 99 -> 100): one session row for
+        # the five-source close reading needed a sessions shard. Measured:
+        # sessions.d was 99/99 (no slot), no 2026-11-12 sessions shard existed
+        # for procedure 8-2. Hard 160 unchanged; not an automatic raise.
+        soft_shards=100,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -595,7 +616,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # automatic raise.  Note: open PR #655 raises this same line for a
         # one-time notes backfill (bytes 1 -> 1.25 MiB, 92 -> 96 shards);
         # whichever of the two lands second resolves a trivial conflict.
-        soft_shards=95,
+        # 2026-11-12 (SESSION-20261112-a9607b, 95 -> 96): one curated note row
+        # for the close-reading report needed a notes shard. Measured: notes.d
+        # was 95/95 (no slot), notes.d is order-SENSITIVE and stays outside
+        # consolidation, no 2026-11-12 notes shard existed for procedure 8-2.
+        # Net reclaim = 0. Hard 160 unchanged; not an automatic raise.
+        soft_shards=96,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
