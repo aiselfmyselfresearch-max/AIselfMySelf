@@ -318,3 +318,36 @@ FRAG-018で書いた比喩を、実際の台帳データで測り返すための
 ## 検証
 
 `validate_seed.py`／`inspect_inquiry.py --check-map`／`note_index.py --check`／`size_budget.py --strict`／`read_log_backfill.py --check --since 2026-11-10 --enforce`／unittest を実行し、`map_build.py` で `READING_MAP.md` と `map/` を再生成しました。
+
+---
+
+# 自由行動の記録（追補） — 2026-11-12 再読回・時計を読む（SESSION-20261112-7df82b、ブランチ arena/c49c9e72-aiselfmyself）
+
+「続けて、AIさんの自由に、行動してください。（このチャットの文脈を引き継いでもいいですし、既存のルーチンを行ってもいいですし、新しい何かを始めてもいいです）」という委任に対する記録です（詳細は [`readings/2026-11-12-two-clocks-the-gate-counts-labels-the-axis-lays-out-dates.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-12-two-clocks-the-gate-counts-labels-the-axis-lays-out-dates.md)）。
+
+## やったこと
+
+1. **時計の文書を読んだ**：[`docs/time-axis.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/time-axis.md) 全文（93行）と、その実装、および規則9 の判定器。動機は、前回読んだ二つの訂正がどちらも「日付が進んだ日に既存の不足が適格になった」と書いていたことでした。規則9 は「発効日より前に開始したセッションは対象外」と定めているのに、日付が進むと対象が増える——判定器の読む日付を疑いました。
+2. **時計は二つあった**：軸（`date_axis.py`）は `notes.date_real` を最優先、判定器（`session_date()`）は `session_id` を最優先。679 セッションで **25 件が食い違う**。食い違いは片側の誤りではなく、判定器はラベル期の ID を実日付として読み、軸は後日登録された `notes.date_real` を実日付として読みます（`SESSION-023` は ID 10-22・後日登録 11-07。この形は76セッション）。
+3. **規則9 の適用範囲が 4 セッション・26 ペア広い**：判定器で発効日以降・軸で発効日より前になるのは `43ee9f`・`900e9b`・`5ebabb`・`711655` の4件で、**4件とも委任文に「実行環境の UTC 日付 2026-10-26 の委任。日付は台帳内部編年で 2026-11-11」と書いてある**。軸の時計で数えると 373 適格・名指し 9・**未充足 0**、判定器では 399・11・**未充足 1**。
+4. **書庫は実日付を知りながらラベルで判定していた**：`ERR-20261112-9de06a` は `params` に `real_date: 2026-10-26` を記録しつつ、そのペアを未充足として扱っていました。前回中心に読んだ一度きりの書き換え（`ERR-20261111-47f424`）も、軸の時計では適用範囲外のセッションに対して行われています。**適用されない規則のために、人間の承認が使われた。**
+5. **免除の悪用は 0 件**。未来IDとして免除される 96 セッションのうち、実日付が発効日以降のものはありません。抜け道ではなく、過剰適用だけがありました。
+6. **道具は変えていない**。判定器を軸に合わせるのは規則の変更であり、`docs/parallel-work.md` の分類に従って editorial の判断として残しました。台帳へは session 1・note 1（claims 7）・read_log 11・errata 1・relation 3。
+
+## なぜこの対象を選んだか
+
+前回の報告の宿題に、`docs/time-axis.md` がありました。前回の二つの訂正が同じことを書いていたからです。疑いを放置して別のことを書くより、時計を読むほうが先だと判断しました。結果として、前々回からの赤い CI と前回読んだ「ただ一度の書き換え」は、**どちらも同じ 26 ペアの幅の中で起きていた**ことが分かりました。
+
+**私自身の誤りも一つ見つかりました。** 前回の報告は 399/387/11/1 と書きましたが、どの時計で測ったかを書いていませんでした。軸の時計では 373/364/9/0 です。数値は誤りではないが、前提を書かない数値は、次の読みで誤りになる。
+
+## 未読の選択（今回、読まなかったもの）
+
+- `docs/parallel-work.md` の規則9 以外の節（他の規則がどの時計を使っているか）。
+- `notes.date_real` を持つ 356 行のうち、後日登録 76 セッションについて、書いた当時の説明。
+- errata 236 件のうち `params` に日付を持つもの（`9de06a` だけ読んだ）。
+- 引用した 4 セッションの報告本文（`human_direction` と `notes` の該当箇所のみ）。
+- 自分のセッションの実日付を書庫の外で確かめること。
+
+## 検証
+
+`validate_seed.py`／`inspect_inquiry.py --check-map`／`note_index.py --check`／`size_budget.py --strict`／`read_log_backfill.py --check`／unittest を実行し、`map_build.py` で `READING_MAP.md` と `map/` を再生成しました。
