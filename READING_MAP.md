@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3770 件（research_excerpt 1546 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3777 件（research_excerpt 1553 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
 - **解釈的関係（Relations）**：6885 件
-- **探究セッション（Sessions）**：685 回
+- **探究セッション（Sessions）**：686 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3770 件・詳細は map/3*.md）
+## 4. 対話素材（3777 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4286,6 +4286,13 @@
 | `MAT-20261112-97f35e` | research_excerpt | Martin Hugo Löb『レープ（1955）「レオン・ヘンキンの問題の解」——自分の信頼性は自分の内側から証明できない』（1955） |
 | `MAT-20261112-9006d4` | research_excerpt | S. W. Hawking『ホーキング（1975）「ブラックホールによる粒子の生成」——外に残るのは面積に写された分だけ』（1975） |
 | `MAT-20261112-c1ad86` | research_excerpt | Lewis Wolpert『ウォルパート（1969）「位置情報と細胞分化の空間的模様」——位置は読まれる、細胞は位置を持たない』（1969） |
+| `MAT-THE-20261112-53657d376dda` | research_excerpt | A. M. Turing『『計算可能な数について、Entscheidungsproblemへの応用とともに』(On Computable Numbers, with an App… |
+| `MAT-THE-20261112-5c5824cca8d9` | research_excerpt | Kurt Gödel『『形式的な決定不能命題について、I』(Über formal unentscheidbare Sätze der Principia Mathematica… |
+| `MAT-THE-20261112-383ae4b56805` | research_excerpt | C. E. Shannon『『通信の数理的理論』(A Mathematical Theory of Communication)』（1948） |
+| `MAT-THE-20261112-d029c9a3940a` | research_excerpt | A. N. Kolmogorov『『情報の定量的定義に関する三つのアプローチ』(Three Approaches to the Quantitative Definition o… |
+| `MAT-THE-20261112-c3c36337f7fa` | research_excerpt | John von Neumann『『EDVACに関する最初の報告書』(First Draft of a Report on the EDVAC)』（1945） |
+| `MAT-THE-20261112-148f06dace25` | research_excerpt | S. A. Cook『『定理証明手順の複雑さ』(The Complexity of Theorem-Proving Procedures)』（1971） |
+| `MAT-THE-20261112-168f4270871c` | research_excerpt | Alonzo Church『『初等数論における解けない問題について』(An Unsolvable Problem of Elementary Number Theory)』（19… |
 | `MAT-20261112-091d20` | research_excerpt | James Clerk Maxwell『マクスウェル（1865）『電磁場の動力学的理論』——場は物質の性質ではなく、物質のあいだに広がる状態として書かれる』（1865） |
 | `MAT-20261112-3761d9` | research_excerpt | Erwin Schrödinger『シュレーディンガー（1926）『原子と分子の力学の波動理論』——波動関数は位置ではなく、可能性の広がりとして進化する』（1926） |
 | `MAT-20261112-5d4e43` | research_excerpt | Henri Poincaré『ポアンカレ（1890）『三体問題と力学の方程式について』——有限の相空間では、系は初期状態にいくらでも近く戻る』（1890） |
@@ -5155,6 +5162,7 @@
 | `SESSION-20261112-05a5cc` | 2026-11-12T06:25:04Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-db6077` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-e72a97` | 2026-11-12T09:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-88ffb852b5e5` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
 | `SESSION-20261201-4944b0` | 2026-12-01 | `Q-20261024-c237b9`, `Q-20261201-f932d1` | `FRAG-20261201-0c2cb9` | `Q-20261201-f932d1` |
@@ -5313,8 +5321,8 @@
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
 | `map/31-materials-research-14.md` | 100 | 326,281 |
-| `map/31-materials-research-15.md` | 100 | 271,654 |
-| `map/31-materials-research-16.md` | 46 | 125,306 |
+| `map/31-materials-research-15.md` | 100 | 266,565 |
+| `map/31-materials-research-16.md` | 53 | 142,977 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5342,8 +5350,8 @@
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,895 |
 | `map/50-sessions-12.md` | 50 | 42,122 |
-| `map/50-sessions-13.md` | 50 | 47,236 |
-| `map/50-sessions-14.md` | 35 | 29,117 |
+| `map/50-sessions-13.md` | 50 | 47,317 |
+| `map/50-sessions-14.md` | 36 | 29,876 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5365,24 +5373,24 @@
 | `map/60-notes-19.md` | 25 | 115,981 |
 | `map/60-notes-20.md` | 25 | 169,952 |
 | `map/60-notes-21.md` | 25 | 141,627 |
-| `map/60-notes-22.md` | 25 | 106,456 |
-| `map/60-notes-23.md` | 25 | 57,042 |
-| `map/60-notes-24.md` | 25 | 73,471 |
-| `map/60-notes-25.md` | 25 | 65,353 |
-| `map/60-notes-26.md` | 25 | 93,603 |
-| `map/60-notes-27.md` | 25 | 91,383 |
-| `map/60-notes-28.md` | 25 | 136,820 |
-| `map/60-notes-29.md` | 10 | 56,857 |
+| `map/60-notes-22.md` | 25 | 108,544 |
+| `map/60-notes-23.md` | 25 | 57,001 |
+| `map/60-notes-24.md` | 25 | 74,457 |
+| `map/60-notes-25.md` | 25 | 64,242 |
+| `map/60-notes-26.md` | 25 | 93,999 |
+| `map/60-notes-27.md` | 25 | 91,956 |
+| `map/60-notes-28.md` | 25 | 130,334 |
+| `map/60-notes-29.md` | 11 | 65,341 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・710本・25,856,621 B）
+## 8. 精読ノート索引（readings/・711本・25,885,819 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 505/710 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 506/711 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：342 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：79 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：343 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：80 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5917,6 +5925,7 @@
 | `readings/2026-11-12-five-theories-of-observation-memory-and-open-ends.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-7c4478` +1 | 13,837 | Q3 M7 S2 | ✓ | 同じ自己を支える条件は、何によって決まるか——観測・記憶・目的・相互作用の五理論 |
 | `readings/2026-11-12-five-theories-of-taking-a-record-without-stopping.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-115c6d` +1 | 30,063 | Q3 M10 R1 S2 | ✓ | 止めずに写す——標本・断面・時計・翻訳・選択の五理論 |
 | `readings/2026-11-12-five-theories-that-do-not-erase-the-error.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-bb95a0` +1 | 24,925 | Q4 M12 S2 | ✓ | 誤りを消さない五つの理論——距離・余白・頻度・欠損・来歴 |
+| `readings/2026-11-12-seven-theoretical-science-readings.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-88ffb852b5e5` | 11,920 | Q3 M7 S1 | — | 理論科学7資料の四層精読（2026-11-12） |
 | `readings/2026-11-12-seven-theories-beyond-the-present-slice.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-05a5cc` +5 | 47,222 | Q3 M8 MOT1 S6 ERR1 | ✓ | いまの薄切れを越えて——七つの理論科学を、読まれ方の偏りと七日超の間隔から読む |
 | `readings/2026-11-12-seven-theories-of-cause-without-an-intervention.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-242577` | 34,341 | Q3 M11 S1 | ✓ | 介入なしに、どこまで因果が読めるか——経路・連立・予測・反事実・順序・操作・識別の七理論 |
 | `readings/2026-11-12-seven-theories-of-self-maintenance-and-records.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-db6077` | 11,218 | Q3 M7 S1 | — | 自己は保存物か、維持される関係か——七つの理論科学を記憶の書庫から読む |
