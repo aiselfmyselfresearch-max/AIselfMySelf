@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3840 件（research_excerpt 1616 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3847 件（research_excerpt 1623 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6932 件
-- **探究セッション（Sessions）**：699 回
+- **探究セッション（Sessions）**：701 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3840 件・詳細は map/3*.md）
+## 4. 対話素材（3847 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4308,6 +4308,13 @@
 | `MAT-20261112-a9a603` | research_excerpt | Andrei Andreevich Markov『マルコフ（1906）「相互に依存する量への大数の法則の拡張」——過去を、未来に十分な状態へ圧縮する』（1906） |
 | `MAT-20261112-45c7f1` | research_excerpt | Leslie G. Valiant『ヴァリアント（1984）「学習可能なものの理論」——学んだとは、未来の例でだいたい当たることである』（1984） |
 | `MAT-20261112-22621d` | research_excerpt | Eörs Szathmáry, John Maynard Smith『サトマーリ＆メイナード・スミス（1995）「主要な進化転換」——個体性は物の性質ではなく、組織の水準である』… |
+| `MAT-20261112-740c0f` | research_excerpt | Mintae Kim『Finite Memory Belief Approximation for Optimal Control in Partially Observable… |
+| `MAT-20261112-23a38d` | research_excerpt | Ketian Sun, Qi Su, Long Wang『Evolutionary dynamics of memory-based strategies in repeated… |
+| `MAT-20261112-80079e` | research_excerpt | Felipe Maciel Cardoso, Carlos Gracia-Lázaro, Yamir Moreno『Dynamics of heuristics selectio… |
+| `MAT-20261112-3956fe` | research_excerpt | Marcus K. Benna, Stefano Fusi『Computational principles of biological memory』（2015） |
+| `MAT-20261112-5fc66a` | research_excerpt | Sarah Marzen, James P. Crutchfield『Circumventing the Curse of Dimensionality in Predictio… |
+| `MAT-20261112-00c6b6` | research_excerpt | Susanne Still『Thermodynamic cost and benefit of memory』（2019） |
+| `MAT-20261112-0a84a2` | research_excerpt | Dibyendu Mandal, Christopher Jarzynski『Work and information processing in a solvable mode… |
 | `MAT-THE-20261112-53657d376dda` | research_excerpt | A. M. Turing『『計算可能な数について、Entscheidungsproblemへの応用とともに』(On Computable Numbers, with an App… |
 | `MAT-THE-20261112-5c5824cca8d9` | research_excerpt | Kurt Gödel『『形式的な決定不能命題について、I』(Über formal unentscheidbare Sätze der Principia Mathematica… |
 | `MAT-THE-20261112-383ae4b56805` | research_excerpt | C. E. Shannon『『通信の数理的理論』(A Mathematical Theory of Communication)』（1948） |
@@ -5228,6 +5235,8 @@
 | `SESSION-20261112-6b1cd6` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-146acb` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-ec00ed` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-f0c5d7` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-c6cc3c` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-2f4264` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-12563d` | 2026-11-12T05:54:53Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-05a5cc` | 2026-11-12T06:25:04Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5399,8 +5408,8 @@
 | `map/31-materials-research-13.md` | 100 | 257,546 |
 | `map/31-materials-research-14.md` | 100 | 326,281 |
 | `map/31-materials-research-15.md` | 100 | 263,218 |
-| `map/31-materials-research-16.md` | 100 | 248,845 |
-| `map/31-materials-research-17.md` | 16 | 22,967 |
+| `map/31-materials-research-16.md` | 100 | 243,531 |
+| `map/31-materials-research-17.md` | 23 | 37,147 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5428,8 +5437,9 @@
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,895 |
 | `map/50-sessions-12.md` | 50 | 42,122 |
-| `map/50-sessions-13.md` | 50 | 45,659 |
-| `map/50-sessions-14.md` | 49 | 42,313 |
+| `map/50-sessions-13.md` | 50 | 45,098 |
+| `map/50-sessions-14.md` | 50 | 43,237 |
+| `map/50-sessions-15.md` | 1 | 1,116 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5451,24 +5461,24 @@
 | `map/60-notes-19.md` | 25 | 116,103 |
 | `map/60-notes-20.md` | 25 | 169,935 |
 | `map/60-notes-21.md` | 25 | 144,306 |
-| `map/60-notes-22.md` | 25 | 130,802 |
-| `map/60-notes-23.md` | 25 | 66,367 |
-| `map/60-notes-24.md` | 25 | 65,817 |
-| `map/60-notes-25.md` | 25 | 65,040 |
-| `map/60-notes-26.md` | 25 | 74,151 |
-| `map/60-notes-27.md` | 25 | 107,968 |
-| `map/60-notes-28.md` | 25 | 107,609 |
-| `map/60-notes-29.md` | 23 | 127,483 |
+| `map/60-notes-22.md` | 25 | 127,025 |
+| `map/60-notes-23.md` | 25 | 71,235 |
+| `map/60-notes-24.md` | 25 | 64,117 |
+| `map/60-notes-25.md` | 25 | 65,556 |
+| `map/60-notes-26.md` | 25 | 73,173 |
+| `map/60-notes-27.md` | 25 | 103,734 |
+| `map/60-notes-28.md` | 25 | 110,161 |
+| `map/60-notes-29.md` | 24 | 132,709 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・723本・26,392,508 B）
+## 8. 精読ノート索引（readings/・724本・26,412,909 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 518/723 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 519/724 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：357 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：78 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：358 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：79 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6015,6 +6025,7 @@
 | `readings/2026-11-12-seven-theories-of-continuity.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-b05658` | 6,804 | Q1 M7 S1 | ✓ | 続くことの条件を、七つの理論に尋ねる |
 | `readings/2026-11-12-seven-theories-of-impermanent-substrates.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-6a1c10` | 25,157 | Q3 M7 S1 | ✓ | 消える媒質の七つの条件——人間の身体と追記専用書庫を分ける校正・忘却・境界・合意の数理 |
 | `readings/2026-11-12-seven-theories-of-memory-and-continuity.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-5c8581` +1 | 7,626 | Q1 M8 S2 | — | 同じであることを、どの模型が数えるのか——理論科学７件の精読 |
+| `readings/2026-11-12-seven-theories-of-retention-and-its-conditions.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-c6cc3c` +1 | 8,568 | Q3 M8 S2 | — | 保存の外側にある条件——記憶と協力をめぐる理論科学七資料 |
 | `readings/2026-11-12-seven-theories-of-self-maintenance-and-records.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-db6077` | 11,218 | Q3 M7 S1 | — | 自己は保存物か、維持される関係か——七つの理論科学を記憶の書庫から読む |
 | `readings/2026-11-12-seven-theories-of-which-differences-may-be-ignored.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-86172c` +3 | 63,449 | Q5 M9 S4 ERR1 | ✓ | どの違いを無視してよいか——七つの理論と、437対の履歴 |
 | `readings/2026-11-12-seven-ways-of-not-telling-apart.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ad86d2` +5 | 34,670 | Q3 M28 S6 | ✓ | 区別しないと決めた範囲が、自己になる——理論科学七件を、ラベル・統計・問い・観測・自然性・符号・内在から読む |
