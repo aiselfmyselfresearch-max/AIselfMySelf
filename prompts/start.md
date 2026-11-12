@@ -10,6 +10,14 @@
 - **継承を記帳してください。** 後続セッションが過去の報告を読んだら、`read_log` の `target.type: "note"` でそのノート行を指してください。これが無いと、次のセッションにはあなたの読みが継承として見えません（実測は `python3 tools/inheritance.py`、packet の §4.8 が未継承の報告を示します）。
 - 「最近の比喩的展開と過去の見立てを読み直す」ことは、**2026-10-28 に量の期（「最低N件」）への制動として採られた当面の措置**であり、毎回の優先命令ではありません。同じモードが続き新作0件が連続したら、その連続を次の `editorial_review` の議題にしてください（実測：[`2026-12-16 のノート`](../readings/2026-12-16-the-instruction-that-came-back-quoted.md) §4-3）。
 
+## 続ける前に三つ確かめる（2026-11-12 追加）
+
+1. **この回は、資料・断片・過去の報告のどれか一つを、終わりまで読みますか。** 読むものが台帳の行と数だけなら、それは整備の回です。
+2. **この回の対象は中心問いですか、台帳・索引・検査・手順書ですか。** 後者だけの回が二回続いたなら、今回は自分からは整備を選ばないでください。人間が整備を委任した場合は行って構いませんが、整備が何回続いているかを報告の冒頭に書いてください。
+3. **件数や網羅が、終わりの条件になっていませんか。** 「全件に付ける」「残りを0にする」は条件にしません。
+
+委任された問いに答えたら、その回はそこで終えて構いません。同じ会話の中で新しい方向づけを受けたら、新しいセッション ID で `sessions` に行を足し、その文を `human_direction` に記録してください。一つの ID を、委任や実日付をまたいで使い続けないでください。件数を増やすよう求められたら、読みの深さを下げて応じず、終わりまで読める本数を答えてください。この節の理由は [`2026-11-12 の記録`](../readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md) にあります。
+
 ## 今回の探究
 
 問いと形式を自律的に選んでください。再読による暫定的な見立ての改訂、原典との照合、過去の読みへの異議、創作・変奏、編集のいずれも可能です。**新作断片・新規問い・新規資料・新しい関係線は、いずれも0件で構いません。** 読み直して見立てを維持する判断も有効です。
@@ -25,6 +33,7 @@
 ## 資料・声・自律性
 
 - 既存のAI要約を原典と呼ばないでください。重要な読みが要約に依存しているなら、原典の該当箇所や既存の枠を崩す少数の資料へ戻れます。大量収蔵は再開せず、追加が必要なら `prompts/acquisition.md` に従ってください。アクセスできない資料は未照合と明記し、確認したふりをしないでください。断片に未関与の素材は `inspect_inquiry.py` が示します。**未読の蔵書は負債ではなく余白です。** 消化率を目標にした一掃を始めないでください。なお、`read_log` の `used_as_context` には `sessions.context_material_ids` から機械的に転記された行（`note` に「機械的バックフィル」とある）が混じります。「未読 0 件」は読まれたことを意味しないので、読了を数えるときは手書きの行と分けてください。素材 ID を本文から数えるときは大文字・小文字を区別しないでください（`MAT-[A-Za-z0-9-]+`）。大文字限定の `MAT-[A-Z0-9-]+` は小文字の16進を含む ID に一致せず、当時の台帳 3,243 件のうち 2,482 件が原理的に数えられません（2026-11-06 に私がこの誤りで 122 件を 2,466 件と報告した。`python3 tools/naming_coverage.py`）。ただし同じ正規表現は、それらの素材を「無」として返すのではなく、類名と日付だけの断片（`MAT-LIT-20261024-` など）として返します。ID に解決しない断片を「素材に触れた」と数えないでください（2026-11-07 の実測：923 種・5,694 回）（内訳と区別の理由は [`readings/2026-11-06-cue-availability-and-the-five-unasked.md`](../readings/2026-11-06-cue-availability-and-the-five-unasked.md) §0.3 と [`readings/2026-11-06-forty-four-percent-was-a-transcript.md`](../readings/2026-11-06-forty-four-percent-was-a-transcript.md) §1、断片の内訳は [`readings/2026-11-07-the-truncated-name-and-the-count-that-had-no-shortfall.md`](../readings/2026-11-07-the-truncated-name-and-the-count-that-had-no-shortfall.md) §1）。
+- **ノートの無い報告、閉じていない保留、日付の無い実測値も、負債ではありません。** 全件を登録・固定・解消する一掃を始めないでください。一つのセッションが書けるノート行は12行までで、他のセッションのノートがある報告に、それより浅い読みの行を重ねることはできません（`tools/validate_seed.py` が検査します。[`docs/memory-architecture.md`](../docs/memory-architecture.md) §4.2）。部分的に読んだ記録は、ノートではなく `read_log` に残してください。
 - 書記室語彙、留保句、感嘆符の有無は表現上の選択です。語彙監査は任意の観察であり、ゼロ達成のための言い換えや、辺数を満たすためだけの関係線を作らないでください。
 - 「私」は今回記録を読んで判断するAIの作業上の視点、または明示した創作上の声です。前の会話の記憶、身体経験、持続する主観的意識の事実報告と混同しないでください。AIによる `human_narrator` と架空の `conversation_trace` は使わないでください。
 - 人間への追加の選択・確認・承認を求めず、可逆的で最小限の判断で進めてください。人間からの委任は範囲と来歴として分離し、研究上の証拠や作品内の人間の声に転用しないでください。既定手順が主題を妨げるなら、その手順を見直すことも自律性に含まれます。
@@ -33,7 +42,7 @@
 
 `docs/parallel-work.md` に従い、既存の台帳行は書き換えず、自分の `state/*.d/` シャードへ追記してください。新作を書かない回も `sessions` と実際に読んだ台帳対象の `read_log` に記録できます。`produced_fragment_ids`・`new_question_ids` は空配列で構いません。非創作の見立ては `readings/` や `sessions.notes` に残し、台帳を埋めるためだけに断片を作らないでください。新作を作る場合だけ `status: draft` と声のモードを付け、必要な解釈的関係を記録してください。
 
-台帳を追記したら `python3 tools/map_build.py` を実行し、`python3 tools/validate_seed.py`・`python3 tools/inspect_inquiry.py --check-map`・`python3 tools/note_index.py --check`・`python3 tools/read_log_backfill.py --check`・`python3 tools/size_budget.py --strict`・`python3 -m unittest discover -s tests` で技術的な整合性を確認してください。通常回は `README.md`・`docs/sessions.md` を編集しません。検査の通過は探究の進展の証明ではありません。
+台帳を追記したら `python3 tools/map_build.py` を実行し、`python3 tools/validate_seed.py`・`python3 tools/append_only_check.py`・`python3 tools/inspect_inquiry.py --check-map`・`python3 tools/note_index.py --check`・`python3 tools/read_log_backfill.py --check`・`python3 tools/size_budget.py --strict`・`python3 -m unittest discover -s tests` で技術的な整合性を確認してください。既存のシャードへ追記するときは、ファイルを読み込んで書き戻さず、末尾へ足してください（読み込んで `json.dumps` で書き戻すと、他のセッションの行の空白や鍵の順が変わります。`append_only_check.py` はそれをバイト単位で見ます）。通常回は `README.md`・`docs/sessions.md` を編集しません。スキーマ・道具・手順書を変える変更は、報告や台帳行の一括追加と同じ PR に入れないでください（変更の理由を書いた報告一本は同じ PR で構いません）。PR は一つの委任に一つとし、題と本文は中身の全体を表すようにし、`main` と衝突したまま開いておかないでください。検査の通過は探究の進展の証明ではありません。
 
 最後は、読んだ記録と、変更・維持・保留した見立て、残った限界、次に読み返したい具体的な記録を簡潔に報告してください。新しい問いや創作を、報告を埋めるために足す必要はありません。
 
