@@ -6,6 +6,7 @@ that IDs referenced across JSONL collections actually exist.
 """
 from __future__ import annotations
 
+import datetime
 import json
 import re
 from pathlib import Path
@@ -47,6 +48,99 @@ NOTE_CLAIM_REF_FIELDS = (
     ("material_ids", "materials"),
     ("motif_ids", "motifs"),
 )
+
+# Three brakes on the notes ledger, added on 2026-11-12 after one session wrote
+# 859 note rows in two days (PR #655, closed without merging).  They are set so
+# that ordinary work never meets them: on that date the most note rows any one
+# session had written was 8, and no row on main broke the other two rules.
+# docs/memory-architecture.md §4.2 and
+# readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md give the reasons.
+NOTE_ROWS_PER_SESSION = 12
+NOTE_DEPTH_RANK = {
+    "metadata_and_structure_only": 1,
+    "excerpt_and_metadata_read": 2,
+    "full_text_read": 3,
+}
+# Rows minted before this day carry internal chronology labels in created_at
+# (34 of them on 2026-11-12); they are history and are not checked.
+NOTE_CREATED_AT_RULE_FROM = "20261112"
+_ID_STAMP = re.compile(r"^[A-Z]+(?:-[A-Z]+)*-(\d{8})-")
+
+
+def id_stamp(record_id: Any) -> str | None:
+    """Return the YYYYMMDD stamp inside a ledger ID, or None when it has none."""
+    match = _ID_STAMP.match(record_id) if isinstance(record_id, str) else None
+    return match.group(1) if match else None
+
+
+def _as_day(stamp: str) -> datetime.date | None:
+    try:
+        return datetime.date(int(stamp[:4]), int(stamp[4:6]), int(stamp[6:8]))
+    except ValueError:
+        return None
+
+
+def check_note_brakes(notes: dict[str, dict[str, Any]], errors: list[str]) -> None:
+    """Apply the three brakes: rows per session, reading depth, created_at."""
+    per_session: dict[str, int] = {}
+    by_path: dict[str, list[tuple[str, dict[str, Any]]]] = {}
+    for note_id, record in notes.items():
+        session_id = record.get("session_id")
+        if isinstance(session_id, str):
+            per_session[session_id] = per_session.get(session_id, 0) + 1
+        path = record.get("path")
+        if isinstance(path, str):
+            by_path.setdefault(path, []).append((note_id, record))
+
+    # 1. One session writes a bounded number of note rows.  A note is a judgment
+    #    about a report that was read; registering every report is not one.
+    for session_id, count in sorted(per_session.items()):
+        if count > NOTE_ROWS_PER_SESSION:
+            errors.append(
+                f"notes: session {session_id} has {count} note rows; one session may write at most "
+                f"{NOTE_ROWS_PER_SESSION}. Covering every report is not a goal (PROJECT_CHARTER.md); "
+                "a report without a note row is not a debt."
+            )
+
+    for note_id, record in notes.items():
+        stamp = id_stamp(note_id)
+
+        # 2. A row may not put a shallower reading over a deeper one that another
+        #    session recorded earlier about the same report.
+        path = record.get("path")
+        session_id = record.get("session_id")
+        superseded = record.get("supersedes")
+        superseded_ids = set(superseded) if isinstance(superseded, list) else set()
+        deepest_rank, deepest_id = 0, None
+        for other_id, other in by_path.get(path, []) if isinstance(path, str) else []:
+            if other_id == note_id or other.get("session_id") == session_id:
+                continue
+            other_stamp = id_stamp(other_id)
+            earlier = stamp is not None and other_stamp is not None and other_stamp < stamp
+            if not earlier and other_id not in superseded_ids:
+                continue
+            rank = NOTE_DEPTH_RANK.get(other.get("read_depth"), 0)
+            if rank > deepest_rank:
+                deepest_rank, deepest_id = rank, other_id
+        if deepest_id is not None and NOTE_DEPTH_RANK.get(record.get("read_depth"), 0) < deepest_rank:
+            errors.append(
+                f"notes:{note_id}: read_depth {record.get('read_depth')!r} is shallower than "
+                f"{notes[deepest_id].get('read_depth')!r} in {deepest_id}, which another session wrote "
+                "about the same report; read the report at least as deeply, or record the partial "
+                "reading in read_log instead of a note row"
+            )
+
+        # 3. created_at is the real time of writing, not an ordering label.
+        if stamp is not None and stamp >= NOTE_CREATED_AT_RULE_FROM:
+            minted = _as_day(stamp)
+            digits = re.sub(r"\D", "", str(record.get("created_at") or ""))[:8]
+            written = _as_day(digits) if len(digits) == 8 else None
+            if minted and written and written > minted + datetime.timedelta(days=1):
+                errors.append(
+                    f"notes:{note_id}: created_at {record.get('created_at')!r} is later than the date in "
+                    "its own ID; created_at is the real time of writing, not an ordering label "
+                    "(docs/time-axis.md)"
+                )
 
 
 def claim_scope_errors(claim: dict[str, Any], body: str) -> list[str]:
@@ -368,6 +462,8 @@ def main() -> int:
             else:
                 note_visit_state[cur_id] = 2
                 stack.pop()
+
+    check_note_brakes(notes, errors)
 
     endpoint_collections = {
         "question": questions,
