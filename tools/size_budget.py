@@ -632,8 +632,14 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # unchanged.  Same shape as the 2026-11-07 rescale of state/sessions.d/
         # (see docs/parallel-work.md §3): fix the mis-calibrated dimension, keep
         # the hard cliff, say why.
+        # 2026-11-12: 24 -> 25 MiB measured rescale after readings/ reached
+        # 25,164,417 B (1,407 B below 24 MiB), matching origin/main's 25 MiB
+        # calibration. Reports are append-only (deletion requires human
+        # approval and shard compaction reclaims 0 B), so a 7-source
+        # four-layer close-reading report cannot physically fit in 1,407 B.
+        # Hard 48 MiB, file counts, and per-file limits remain unchanged.
         "readings",
-        soft_bytes=24 * MIB,
+        soft_bytes=25 * MIB,
         hard_bytes=48 * MIB,
         remedy=(
             "Episodic reports are append-only, so decide which dimension fired before choosing a remedy. "
