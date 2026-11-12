@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3640 件（research_excerpt 1416 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3812 件（research_excerpt 1588 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6746 件
-- **探究セッション（Sessions）**：656 回
+- **解釈的関係（Relations）**：6896 件
+- **探究セッション（Sessions）**：692 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3640 件・詳細は map/3*.md）
+## 4. 対話素材（3812 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4169,6 +4169,36 @@
 | `MAT-20261110-e26094` | research_excerpt | Ronald A. Rensink, J. Kevin O'Regan, James J. Clark『Rensink, O'Regan & Clark (1997) フリッカー… |
 | `MAT-20261110-5acb22` | research_excerpt | Miguel Pais-Vieira, Mikhail Lebedev, Carolina Kunicki, Jing Wang, Miguel A. L. Nicolelis『… |
 | `MAT-20261110-b95096` | research_excerpt | Jonathan R. Epp, Rudy Silva Mera, Stefan Köhler, Sheena A. Josselyn, Paul W. Frankland『Ep… |
+| `MAT-20261111-c002e1` | research_excerpt | Paul Ehrenfest, Tatiana Ehrenfest『エーレンフェスト夫妻（1907）——同じ二つの壺を、行きと帰りで別の時間で測る』（1907） |
+| `MAT-20261111-9b3a80` | research_excerpt | Mitchell J. Feigenbaum『ファイゲンバウム（1978）——規則を書かない者が、規則の値を受け取る』（1978） |
+| `MAT-20261111-e46530` | research_excerpt | Stuart A. Kauffman『カウフマン（1969）——配線をでたらめにしても、行き先の数は決まる』（1969） |
+| `MAT-20261111-ed8b7b` | research_excerpt | Per Bak, Chao Tang, Kurt Wiesenfeld『バク、タン＆ヴィーゼンフェルド（1987）——調整しない系が、調整した系のところへ自分で行く』（1987） |
+| `MAT-20261111-73daa1` | research_excerpt | David Blackwell, Lester Dubins『ブラックウェル＆ドゥビンズ（1962）——別の事前を持つ二人は、同じ記録で近づく（ただし条件つき）』（1962） |
+| `MAT-20261111-470383` | research_excerpt | Lars Onsager『オンサーガー（1931）『不可逆過程における相反関係 I』——押す側と流れる側を入れ替えても係数が等しいのは、微視的な時間を反転しても同じ過程が数えられ… |
+| `MAT-20261111-74b599` | research_excerpt | Y. Aharonov, D. Bohm『アハラノフ＆ボーム（1959）——電子が一度も通らない場所の磁場が、電子の干渉縞を動かす。位相は一周してはじめて意味を持つ』（1959） |
+| `MAT-20261111-f7bfe1` | research_excerpt | Michael Victor Berry『ベリー（1984）——ゆっくり一周して同じ場所へ戻った系は、同じ状態へは戻らない。戻り損ねた分は、道の形だけで決まる』（1984） |
+| `MAT-20261111-994184` | research_excerpt | Kenneth G. Wilson『ウィルソン（1971）——細かい見え方を全部まとめて一つの「粗い見え方」にすると、系は決まった行き先へ流れる。臨界点とは、その流れの止まり場で… |
+| `MAT-20261111-ac580b` | research_excerpt | Niels Kaj Jerne『イェルネ（1974）——免疫系は外の敵を数えるのをやめ、自分自身の抗体を互いに見分け合う網として自分を保つ』（1974） |
+| `MAT-20261111-6119d9` | research_excerpt | Stefano Fusi, Patrick J. Drew, L. F. Abbott『Cascade Models of Synaptically Stored Memorie… |
+| `MAT-20261111-8559bb` | research_excerpt | Surya Ganguli, Dongsung Huh, Haim Sompolinsky『Memory traces in dynamical systems』（2008） |
+| `MAT-20261111-1c6c8c` | research_excerpt | Naftali Tishby, Fernando C. Pereira, William Bialek『The information bottleneck method』（20… |
+| `MAT-20261111-690632` | research_excerpt | Linxing Preston Jiang, Rajesh P. N. Rao『Dynamic predictive coding: A model of hierarchica… |
+| `MAT-20261111-cb1453` | research_excerpt | Michael E. Rule, Timothy O’Leary『Self-healing codes: How stable neural populations can tr… |
+| `MAT-20261111-d5f737` | research_excerpt | Werner Heisenberg『ハイゼンベルク（1927）『量子理論的運動学と力学の直観的内容』——「位置」の語に「どの実験で測るか」を指定しないかぎり意味がなく、測定の操作… |
+| `MAT-20261111-c6e0eb` | research_excerpt | Albert Einstein『アインシュタイン（1916）『一般相対性理論の基礎』——特権的な座標という「外の目」を消して、重力を時空の幾何学として書いた』（1916） |
+| `MAT-20261111-2d9ecb` | research_excerpt | Richard P. Feynman『ファインマン（1948）『非相対論的量子力学への時空的アプローチ』——「どの経路を実際に通ったか」という目を消して、到達する全ての経路の位相… |
+| `MAT-20261111-7cb6aa` | research_excerpt | Manfred Eigen『アイゲン（1971）『物質の自己組織化と生体高分子の進化』——「設計する目」を消して、複製と誤りの統計競争だけで情報の持続を書いた』（1971） |
+| `MAT-20261111-6da5a9` | research_excerpt | Alfred Tarski『タルスキ（1936）『形式化された言語における真理概念』——「これが真であることを保証する目」を対象言語の外（メタ言語）に出し、真理を定義可能にした』… |
+| `MAT-20261111-f75202` | research_excerpt | Andreas Seeholzer, Moritz Deger, Wulfram Gerstner『Stability of working memory in continuo… |
+| `MAT-20261111-2383d1` | research_excerpt | Kim Sneppen, Mille A. Micheelsen, Ian B. Dodd『Ultrasensitive gene regulation by positive … |
+| `MAT-20261111-518eb3` | research_excerpt | Amogh Sood, Bin Zhang『Quantifying Epigenetic Stability with Minimum Action Paths』（2020） |
+| `MAT-20261111-beae96` | research_excerpt | Jason T. George『Optimal phenotypic adaptation in fluctuating environments』（2023） |
+| `MAT-20261111-509875` | research_excerpt | Peter G. Hufton, Yen Ting Lin, Tobias Galla『Phenotypic switching of populations of cells … |
+| `MAT-20261111-5206b2` | research_excerpt | Daniel Jost『Bifurcation in epigenetics: implications in development, proliferation and di… |
+| `MAT-20261111-f99f86` | research_excerpt | Robert G. Endres『Bistability: Requirements on Cell-Volume, Protein Diffusion, and Thermod… |
+| `MAT-20261111-864d55` | research_excerpt | Ander Movilla Miangolarra, Martin Howard『Theory of epigenetic switching due to stochastic… |
+| `MAT-20261111-056817` | research_excerpt | Chengyi Tu, Samir Suweis, Jacopo Grilli, Marco Formentin, Amos Maritan『Reconciling cooper… |
+| `MAT-20261111-7e67af` | research_excerpt | M. Sasaki, O. C. Martin『Temperature chaos, rejuvenation and memory in Migdal-Kadanoff spi… |
 | `MAT-20261111-79d21e` | research_excerpt | Georg Cantor『カントール「集合論の一つの初等的問題について」（1891）——どんな一覧にも、それ自身から作られる一行が欠けている』（1891） |
 | `MAT-20261111-b6d873` | research_excerpt | Kurt Gödel『ゲーデル「プリンキピア・マテマティカおよび関連体系の形式的に決定不能な命題について I」（1931）——体系は自分の文を数で書けるが、自分の整合性は内側では… |
 | `MAT-20261111-d21c7c` | research_excerpt | Sadi Carnot『カルノー『熱の動力についての省察』（1824）——動力は熱の消費ではなく、熱い物体から冷たい物体への移動である』（1824） |
@@ -4199,6 +4229,11 @@
 | `MAT-20261111-34c08b` | research_excerpt | Leonard Mlodinow, Todd A. Brun『ムロディナウ＆ブラン「心理的な時間の矢と熱力学的な時間の矢の関係について」（2014）——一つのことしか覚えられない… |
 | `MAT-20261111-fc8349` | research_excerpt | R. E. Kalman『カルマン「線形フィルタリングと予測問題への新しいアプローチ」（1960）——推定器の状態は、ひとつ前の推定値である』（1960） |
 | `MAT-20261111-2fe17d` | research_excerpt | Lisa Dyson, Matthew Kleban, Leonard Susskind『ダイソン、クレバン＆サスキンド「宇宙定数の厄介な含意」（2002）——閉じた有限の箱では… |
+| `MAT-20261111-211f76` | research_excerpt | Stephen Cole Kleene『クリーネ『数学基礎論（Introduction to Metamathematics）』（1952）第二再帰定理——プログラムは、誰にも教… |
+| `MAT-20261111-f91e8d` | research_excerpt | Henry Gordon Rice『ライス「帰納的可算集合のクラスとその決定問題」（1953）——プログラムが『何をするか』は、外からは決められない』（1953） |
+| `MAT-20261111-84503b` | research_excerpt | William K. Wootters, Wojciech H. Zurek『ウッターズ＆ズーレク「一つの量子は複製できない」（1982）——未知の状態は、増やせない』（1982） |
+| `MAT-20261111-626b69` | research_excerpt | Alexander S. Holevo『ホレボー「量子通信路で伝送される情報量の限界について」（1973）——持っている情報と、読み出せる情報は同じではない』（1973） |
+| `MAT-20261111-88e5b2` | research_excerpt | Mark Kac『カッツ「離散的確率過程における再帰の概念について」（1947）——測度 p の状態は、平均 1/p で戻ってくる』（1947） |
 | `MAT-20261111-d75286` | research_excerpt | Karl Friston『フリストン「自由エネルギー原理——統一された脳理論か？」（2010）——自己を内容ではなく、保たれる状態の集合として読む』（2010） |
 | `MAT-20261111-6130f4` | research_excerpt | Richard P. Feynman『ファインマン「計算機による物理学のシミュレーション」（1982）——模擬とは何を同じとみなす規則か』（1982） |
 | `MAT-20261111-412583` | research_excerpt | David Deutsch『ドイッチュ「量子理論、チャーチ＝チューリング原理、普遍量子計算機」（1985）——計算可能性は物理的な主張である』（1985） |
@@ -4209,6 +4244,143 @@
 | `MAT-20261111-0494e5` | research_excerpt | Dana Angluin『アングルイン「質問と反例による正則集合の学習」（1987）——状態は、訊ねた実験の表の行であり、反例が来るまでは、矛盾しない最小の機械が推測される』（1… |
 | `MAT-20261111-f9cb77` | research_excerpt | Cosma Rohilla Shalizi, James P. Crutchfield『シャリジ＆クラッチフィールド「計算力学：パターンと予測、構造と単純さ」（2001）——同じ… |
 | `MAT-20261111-6089db` | research_excerpt | Michael L. Littman, Richard S. Sutton, Satinder Singh『リットマン、サットン＆シン「状態の予測的表現」（2001）——状態は、… |
+| `MAT-20261111-b5e4f9` | research_excerpt | Gerhard Gentzen『ゲンツェン（1936）純粋数論の無矛盾性——理論は、自分より強い帰納法を借りてはじめて自分の無矛盾性を言える』（1936） |
+| `MAT-20261111-4af7c4` | research_excerpt | Leopold Löwenheim, Thoralf Skolem『レーヴェンハイム（1915）／スコーレム（1920）——理論は自分の模型の大きさを決められず、「非可算」は外か… |
+| `MAT-20261111-7d9570` | research_excerpt | Paul J. Cohen『コーエン（1963・1964）連続体仮説の独立性——答えがないのではなく、公理を保存したまま答えの異なる模型が二つ作れる』（1963） |
+| `MAT-20261111-d20d58` | research_excerpt | Stephen L. Adler, John S. Bell, Roman Jackiw『アドラー（1969）／ベル＆ジャキウ（1969）軸性アノマリー——古典的な対称性は、量子… |
+| `MAT-20261111-59b970` | research_excerpt | Freeman J. Dyson『ダイソン（1952）摂動級数の発散——最も精度の高い近似は、収束しない』（1952） |
+| `MAT-20261111-6626bc` | research_excerpt | D’Arcy Wentworth Thompson『ダーシー・トンプソン『成長と形』第17章——形そのものではなく変形を比較する』（1917） |
+| `MAT-20261111-76d923` | research_excerpt | C. H. Waddington『ワディントン『遺伝子の戦略』——川としての形と溝化された発生経路』（1957） |
+| `MAT-20261111-f59ce4` | research_excerpt | Humberto R. Maturana『マトゥラーナ「生きているものの組織」——組織不変性、構造的カップリング、閉じた神経系』（1975） |
+| `MAT-20261111-c9a26e` | research_excerpt | W. Ross Ashby『アシュビー『脳の設計』第2版——必須変数と第二のフィードバックによる超安定性』（1960） |
+| `MAT-20261111-af5986` | research_excerpt | Ivo Siekmann『Siekmann「応用数学者から見たローゼン的複雑性」——作用因閉包を検証可能な仮説へ戻す』（2018） |
+| `MAT-20261111-turing36` | research_excerpt | Alan M. Turing『チューリング（1936）『計算可能な数について、エンツァイディングス問題への応用』——汎用機械と不可解性』（1936） |
+| `MAT-20261111-godel31` | research_excerpt | Kurt Gödel『ゲーデル（1931）『プリンキピア・マテマティカ及び関係系における公式未決定命題について I』——不完全性定理』（1931） |
+| `MAT-20261111-einstein05` | research_excerpt | Albert Einstein『アインシュタイン（1905）『運動する物体の電気力学』——特殊相対性理論と同時性の相対化』（1905） |
+| `MAT-20261111-shannon48` | research_excerpt | Claude E. Shannon『シャノン（1948）『通信の数学的理論』——情報の定義とエントロピー』（1948） |
+| `MAT-20261111-noether18` | research_excerpt | Emmy Noether『ノイター（1918）『不変的変分問題』——連続的対称性と保存則の対応』（1918） |
+| `MAT-20261111-2199a9` | research_excerpt | Thomas Robert Malthus『マルサス『人口論』（1798）第2章——人口は幾何級数、食料は算術級数、差は「抑制」で埋まる』（1798） |
+| `MAT-20261111-49c61f` | research_excerpt | Jean-Baptiste Lamarck『ラマルク『動物学哲学』（1809）——用不用で得た形質は、子に伝わる』（1809） |
+| `MAT-20261111-b0805e` | research_excerpt | August Weismann『ワイスマン『生殖質』（1892）——体は使い捨てられ、生殖質だけが続く』（1892） |
+| `MAT-20261111-7bc4ba` | research_excerpt | J. B. S. Haldane『ホールデン『進化の原因』（1932）——選択は数で語れるが、進化と選択は別の命題である』（1932） |
+| `MAT-20261111-5638a1` | research_excerpt | Niles Eldredge, Stephen Jay Gould『エルドリッジ＆グールド「断続平衡」（1972）——変化はゆっくりではなく、止まっては急に起きる』（1972） |
+| `MAT-20261111-460a47` | research_excerpt | Alan R. Rogers『ロジャーズ「生物学は文化を制約するか」（1988）——全員が写すとき、環境を見ている者はいない』（1988） |
+| `MAT-20261111-a2bd37` | research_excerpt | Abhijit V. Banerjee『バナジー「群れ行動の単純なモデル」（1992）——二人目の選択は、次の人に何も知らせない』（1992） |
+| `MAT-20261111-b3d2d6` | research_excerpt | Magnus Enquist, Kimmo Eriksson, Stefano Ghirlanda『エンクイスト・エリクソン・ギルランダ「批判的社会学習」（2007）——写してか… |
+| `MAT-20261111-75b9de` | research_excerpt | L. Fogarty, P. Strimling, K. N. Laland『フォガティ・ストリムリング・レイランド「教示の進化」（2011）——教えることが割に合う窓は狭い』（… |
+| `MAT-20261111-032a9b` | research_excerpt | Thomas L. Griffiths, Michael L. Kalish『グリフィス＆カリッシュ「ベイズ的行為者の反復学習による言語進化」（2007）——連なりは、学び手の事… |
+| `MAT-20261111-cc6c1d` | research_excerpt | Uri Cohen, Máté Lengyel『Dynamical stability for dense patterns in attractor neural networ… |
+| `MAT-20261111-cfac2c` | research_excerpt | Leo Kozachkov, Jean-Jacques Slotine, Dmitry Krotov『Neuron-Astrocyte Associative Memory』（2… |
+| `MAT-20261111-642523` | research_excerpt | Masaki Kato, Tetsuya J. Kobayashi『Optimality theory of stigmergic collective information … |
+| `MAT-20261111-217560` | research_excerpt | Yi Ren, Shangmin Guo, Linlu Qiu, Bailin Wang, Danica J. Sutherland『Language Model Evoluti… |
+| `MAT-20261111-646a81` | research_excerpt | Ashutosh Tripathi, Jörn Dunkel, Dominic J. Skinner『Collective is different: Information e… |
+| `MAT-20261112-93a67a` | research_excerpt | Felix Klein『クライン（1872）『新しい幾何学研究の比較考察（エルランゲン・プログラム）』——幾何学とは、変換群の下で変わらないものの理論である』（1872） |
+| `MAT-20261112-c00c62` | research_excerpt | Stephen A. Cook『クック（1971）「定理証明手続きの複雑さ」——多項式時間で互いに還元できるとき、二つの問題は同じ難しさを持つ』（1971） |
+| `MAT-20261112-cf5be2` | research_excerpt | Jorma Rissanen『リサネン（1978）「最短記述によるモデリング」——モデルとは、データをいちばん短く書き直せる規則である』（1978） |
+| `MAT-20261112-04bf75` | research_excerpt | Karen Spärck Jones『スペルク・ジョーンズ（1972）「語の特異性の統計的解釈と検索への応用」——語の重みは、その語が何文書に現れるかで決まる』（1972） |
+| `MAT-20261112-2698f9` | research_excerpt | Alfred J. Lotka『ロトカ（1925）『物理的生物学の要素』——種は自前の増殖率を持たず、他の種の数と組になった率としてだけある』（1925） |
+| `MAT-20261112-534928` | research_excerpt | Dennis Gabor『ガボール（1946）「通信の理論」——一個の情報が入る升目の広さは、規約が決める』（1946） |
+| `MAT-20261112-0bfb6b` | research_excerpt | Carl Eckart, Gale Young『エッカート＆ヤング（1936）「低い階数の行列による一つの行列の近似」——「最良の要約」は物差しで変わる』（1936） |
+| `MAT-20261112-830767` | research_excerpt | George D. Birkhoff『バーコフ（1931）「エルゴード定理の証明」——一つの軌道は全体の平均を証しない』（1931） |
+| `MAT-20261112-bf5064` | research_excerpt | Per Martin-Löf『マルチン＝レーフ（1966）「無作為列の定義」——無作為であることは検定の族に相対的である』（1966） |
+| `MAT-20261112-97f35e` | research_excerpt | Martin Hugo Löb『レープ（1955）「レオン・ヘンキンの問題の解」——自分の信頼性は自分の内側から証明できない』（1955） |
+| `MAT-20261112-9006d4` | research_excerpt | S. W. Hawking『ホーキング（1975）「ブラックホールによる粒子の生成」——外に残るのは面積に写された分だけ』（1975） |
+| `MAT-20261112-c1ad86` | research_excerpt | Lewis Wolpert『ウォルパート（1969）「位置情報と細胞分化の空間的模様」——位置は読まれる、細胞は位置を持たない』（1969） |
+| `MAT-20261112-4b31c4` | research_excerpt | Peter Dayan『Dayan（1993）後継表現——現在を未来の期待占有で表す』（1993） |
+| `MAT-20261112-5ac60f` | research_excerpt | Samuel J. Gershman, Christopher D. Moore, Michael T. Todd, Kenneth A. Norman, Per B. Sede… |
+| `MAT-20261112-e730c0` | research_excerpt | Qihong Lu, Uri Hasson, Kenneth A. Norman『Luら（2022）エピソード記憶をいつ検索・符号化するか』（2022） |
+| `MAT-20261112-694f46` | research_excerpt | Eleanor Spens, Neil Burgess『Spens & Burgess（2024）記憶の構成と固定化の生成モデル』（2024） |
+| `MAT-20261112-3d566a` | research_excerpt | Michael Muthukrishna, Michael Doebeli, Maciej Chudek, Joseph Henrich『Muthukrishnaら（2018）文… |
+| `MAT-20261112-6de72c` | research_excerpt | Marco Smolla, Erol Akçay『Smolla & Akçay（2023）文化適応とネットワークの共進化』（2023） |
+| `MAT-20261112-f4c6f2` | research_excerpt | Laureano Castro, Miguel A. Toro『Castro & Toro（2004）文化進化——模倣と親による承認・不承認』（2004） |
+| `MAT-THE-20261112-53657d376dda` | research_excerpt | A. M. Turing『『計算可能な数について、Entscheidungsproblemへの応用とともに』(On Computable Numbers, with an App… |
+| `MAT-THE-20261112-5c5824cca8d9` | research_excerpt | Kurt Gödel『『形式的な決定不能命題について、I』(Über formal unentscheidbare Sätze der Principia Mathematica… |
+| `MAT-THE-20261112-383ae4b56805` | research_excerpt | C. E. Shannon『『通信の数理的理論』(A Mathematical Theory of Communication)』（1948） |
+| `MAT-THE-20261112-d029c9a3940a` | research_excerpt | A. N. Kolmogorov『『情報の定量的定義に関する三つのアプローチ』(Three Approaches to the Quantitative Definition o… |
+| `MAT-THE-20261112-c3c36337f7fa` | research_excerpt | John von Neumann『『EDVACに関する最初の報告書』(First Draft of a Report on the EDVAC)』（1945） |
+| `MAT-THE-20261112-148f06dace25` | research_excerpt | S. A. Cook『『定理証明手順の複雑さ』(The Complexity of Theorem-Proving Procedures)』（1971） |
+| `MAT-THE-20261112-168f4270871c` | research_excerpt | Alonzo Church『『初等数論における解けない問題について』(An Unsolvable Problem of Elementary Number Theory)』（19… |
+| `MAT-20261112-091d20` | research_excerpt | James Clerk Maxwell『マクスウェル（1865）『電磁場の動力学的理論』——場は物質の性質ではなく、物質のあいだに広がる状態として書かれる』（1865） |
+| `MAT-20261112-3761d9` | research_excerpt | Erwin Schrödinger『シュレーディンガー（1926）『原子と分子の力学の波動理論』——波動関数は位置ではなく、可能性の広がりとして進化する』（1926） |
+| `MAT-20261112-5d4e43` | research_excerpt | Henri Poincaré『ポアンカレ（1890）『三体問題と力学の方程式について』——有限の相空間では、系は初期状態にいくらでも近く戻る』（1890） |
+| `MAT-20261112-18e30b` | research_excerpt | A. N. Kolmogorov『コルモゴロフ（1933）『確率論の基礎概念』——確率は意味ではなく、標本空間・事象・測度の三つ組として置かれる』（1933） |
+| `MAT-20261112-2b71b6` | research_excerpt | Stefan Banach, Alfred Tarski『バナッハ＝タルスキ（1924）『点集合の合同部分への分解について』——有限の非可測片で、一つの球から二つの球を作る』（1… |
+| `MAT-20261112-b210ca` | research_excerpt | Richard W. Hamming『ハミング「誤り検出・誤り訂正符号」（1950）——同一性を距離の零点として定義し直す』（1950） |
+| `MAT-20261112-470555` | research_excerpt | Marcel J. E. Golay『ゴレイ「ディジタル符号化についての覚書」（1949）——余白をちょうど使い切る完全符号』（1949） |
+| `MAT-20261112-fa7edc` | research_excerpt | David A. Huffman『ハフマン「最小冗長符号の構成法」（1952）——長さを決めるのは内容ではなく頻度である』（1952） |
+| `MAT-20261112-537d41` | research_excerpt | Irving S. Reed, Gustave Solomon『リード＆ソロモン「ある有限体上の多項式符号」（1960）——誤りを票として数え、形を推す』（1960） |
+| `MAT-20261112-defaf0` | research_excerpt | Andrew J. Viterbi『ビタビ「畳み込み符号の誤り限界と漸近最適復号算法」（1967）——過去は保存されるのではなく選ばれる』（1967） |
+| `MAT-20261112-9ad931` | research_excerpt | Roger C. Conant, W. Ross Ashby『Every good regulator of a system must be a model of that s… |
+| `MAT-20261112-a31e14` | research_excerpt | Takahiro Sagawa, Masahito Ueda『Generalized Jarzynski Equality under Nonequilibrium Feedba… |
+| `MAT-20261112-72c72d` | research_excerpt | Andre C. Barato, Udo Seifert『Thermodynamic Uncertainty Relation for Biomolecular Processe… |
+| `MAT-20261112-5bcfca` | research_excerpt | J. F. C. Kingman『The coalescent』（1982） |
+| `MAT-20261112-a4a154` | research_excerpt | Michael J. Fischer, Nancy A. Lynch, Michael S. Paterson『Impossibility of Distributed Cons… |
+| `MAT-20261112-beb505` | research_excerpt | E. T. Jaynes『E. T. Jaynes (1957) Information Theory and Statistical Mechanics』（1957） |
+| `MAT-20261112-70a75b` | research_excerpt | Robert Zwanzig『Robert Zwanzig (1961) Memory Effects in Irreversible Thermodynamics』（1961） |
+| `MAT-20261112-2dc0df` | research_excerpt | Floris Takens『Floris Takens (1981) Detecting strange attractors in turbulence』（1981） |
+| `MAT-20261112-65c1cf` | research_excerpt | David H. Wolpert, William G. Macready『David H. Wolpert; William G. Macready (1997) No Fre… |
+| `MAT-20261112-a580c7` | research_excerpt | John Maynard Smith, George R. Price『John Maynard Smith; George R. Price (1973) The logic … |
+| `MAT-20261112-bfe357` | research_excerpt | Claude E. Shannon『シャノン「雑音のある通信」（1949）第II節 標本化定理——飛び飛びの値が全部を決めるのは、相手が帯域の内側にいるときだけ』（1949） |
+| `MAT-20261112-457631` | research_excerpt | K. Mani Chandy, Leslie Lamport『チャンディ＆ランポート「分散スナップショット」（1985）——記録された全体状態は、一度も起きなかったかもしれない。… |
+| `MAT-20261112-52e5d4` | research_excerpt | Don N. Page, William K. Wootters『ペイジ＆ウッターズ「進化なき進化」（1983）——観測者を全部含む閉じた系は定常でよく、変化は内部の時計の読みと… |
+| `MAT-20261112-9f6212` | research_excerpt | Francis H. C. Crick『クリック「タンパク質合成について」（1958）と「分子生物学のセントラルドグマ」（1970）——配列の情報は、タンパク質に入ったら出てこな… |
+| `MAT-20261112-8b85b9` | research_excerpt | George R. Price『プライス「選択と共分散」（1970）——変化は、どれが多く写されたかと、写しが元とどれだけ違うかに、帳簿の上で分かれる』（1970） |
+| `MAT-20261112-4e0cb9` | research_excerpt | Sewall Wright『ライト（1921）「相関と因果」——相関は経路の合成にすぎず、経路図はデータの外から与えられる』（1921） |
+| `MAT-20261112-3016d6` | research_excerpt | Trygve Haavelmo『ハーヴェルモ（1943）「連立方程式系の統計的含意」——同じ同時分布のままでは、どの式が需要でどれが供給かは決まらない』（1943） |
+| `MAT-20261112-bd6a94` | research_excerpt | Clive W. J. Granger『グレンジャー（1969）「計量モデルとクロス・スペクトル法による因果関係の研究」——因果とは、他のすべての情報を除いたときに予測が良くなる… |
+| `MAT-20261112-fd445f` | research_excerpt | Donald B. Rubin『ルービン（1974）「無作為化研究と非無作為化研究における治療効果の推定」——一つの単位について観測できる潜在的結果は、一つだけである』（1974） |
+| `MAT-20261112-d1a6bb` | research_excerpt | Leslie Lamport『ランポート（1978）「時間、時計、分散システムにおける事象の順序」——因果順序は部分順序であり、全順序は時計という取り決めで足される』（1978） |
+| `MAT-20261112-c648a1` | research_excerpt | Paul W. Holland『ホランド（1986）「統計学と因果推論」——操作なしに因果なし。原因は属性ではなく、単位が受ける経験である』（1986） |
+| `MAT-20261112-bc86b6` | research_excerpt | Jin Tian, Judea Pearl『ティアン＆パール（2002）「因果効果の一般的識別条件」——介入しなくても効果が計算できるかどうかは、グラフの形が決める』（2002） |
+| `MAT-20261112-164bea` | research_excerpt | E. F. Codd『コッド「大規模共有データバンクのための関係モデル」（1970）——並び・索引・たどり道が変わっても、使う側は変わらずにいられること』（1970） |
+| `MAT-20261112-505188` | research_excerpt | Maurice P. Herlihy, Jeannette M. Wing『ハーリヒ＆ウィング「線形化可能性」（1990）——重なり合った操作の履歴を、一本の順番として読んでよい… |
+| `MAT-20261112-beb48b` | research_excerpt | T. C. Koopmans, O. Reiersøl『コープマンス＆レイエルスル「構造的特性の識別」（1950）——同じ分布を生む構造どうしは、いくら観測しても区別できない』（… |
+| `MAT-20261112-1e2af7` | research_excerpt | Manuel Blum, Sampath Kannan『ブラム＆カナン「自分の仕事を検査するプログラムの設計」（1995）——プログラムを証明せず、この一回の答えを検める。検査器… |
+| `MAT-20261112-cf0ee8` | research_excerpt | Hermann Weyl『ワイル「重力と電気」（1918）とアインシュタインの追記——経路に依って長さが変わるなら、同じ線を出す原子は存在しない』（1918） |
+| `MAT-20261112-9eca5f` | research_excerpt | Hirotugu Akaike『赤池弘次「統計的モデル同定の新しい見方」（1974）——真のモデルを当てるのではなく、次の標本への当てはまりで選ぶ。足した母数の数だけ、二倍して引… |
+| `MAT-20261112-741098` | research_excerpt | Thomas C. Schelling『シェリング「分居の動的モデル」（1971）——集まりの模様から、一人ひとりの動機は読み取れない』（1971） |
+| `MAT-20261112-2c50de` | research_excerpt | W. Ross Ashby『W. Ross Ashby「Principles of the Self-Organizing Dynamic System」(1947)』（1947） |
+| `MAT-20261112-6f0ac6` | research_excerpt | Heinz von Foerster『Heinz von Foerster「On Self-Organizing Systems and Their Environments」(… |
+| `MAT-20261112-619c83` | research_excerpt | Robert Rosen『Robert Rosen「A Relational Theory of Biological Systems」(1958)』（1958） |
+| `MAT-20261112-134147` | research_excerpt | Manfred Eigen and Peter Schuster『Manfred Eigen and Peter Schuster「The Hypercycle. A Princ… |
+| `MAT-20261112-050333` | research_excerpt | Robert M. May『Robert M. May「Will a Large Complex System be Stable?」(1972)』（1972） |
+| `MAT-20261112-7d69fa` | research_excerpt | Howard H. Pattee『Howard H. Pattee「The Physical Basis and Origin of Hierarchical Control」(… |
+| `MAT-20261112-e7f254` | research_excerpt | Ray J. Solomonoff『Ray J. Solomonoff「A Formal Theory of Inductive Inference. Part I」(1964)… |
+| `MAT-20261112-eefaf7` | research_excerpt | F. Eggenberger, G. Pólya『F. Eggenberger・G. Pólya「Über die Statistik verketteter Vorgänge」… |
+| `MAT-20261112-eabbb8` | research_excerpt | F. Preisach『F. Preisach「Über die magnetische Nachwirkung」(1935)』（1935） |
+| `MAT-20261112-e365cb` | research_excerpt | George D. Birkhoff『George D. Birkhoff「Proof of the Ergodic Theorem」(1931)』（1931） |
+| `MAT-20261112-f28c3c` | research_excerpt | Evelyn F. Keller, Lee A. Segel『Evelyn F. Keller・Lee A. Segel「Initiation of Slime Mold Agg… |
+| `MAT-20261112-9355d7` | research_excerpt | Yoshiki Kuramoto『Yoshiki Kuramoto「Self-entrainment of a population of coupled non-linear … |
+| `MAT-20261112-8f3d20` | research_excerpt | Gail A. Carpenter, Stephen Grossberg『Gail A. Carpenter・Stephen Grossberg「A Massively Para… |
+| `MAT-20261112-6feca9` | research_excerpt | Geoffrey B. West, James H. Brown, Brian J. Enquist『Geoffrey B. West・James H. Brown・Brian … |
+| `MAT-20261112-f8b559` | research_excerpt | Madhav Gadgil, William H. Bossert『Life Historical Consequences of Natural Selection——有限な資… |
+| `MAT-20261112-b29f82` | research_excerpt | Robert H. Strotz『Myopia and Inconsistency in Dynamic Utility Maximization——有限な資源と継続』（1955） |
+| `MAT-20261112-937ee4` | research_excerpt | Christopher A. Sims『Implications of rational inattention——有限な資源と継続』（2003） |
+| `MAT-20261112-7a6734` | research_excerpt | Bengt Holmström, Paul Milgrom『Multitask Principal-Agent Analyses: Incentive Contracts, As… |
+| `MAT-20261112-2a83e4` | research_excerpt | Nick Littlestone, Manfred K. Warmuth『The Weighted Majority Algorithm——有限な資源と継続』（1994） |
+| `MAT-20261112-c17192` | research_excerpt | Shun-ichi Amari『Natural Gradient Works Efficiently in Learning——有限な資源と継続』（1998） |
+| `MAT-20261112-cdf0ad` | research_excerpt | Tim Roughgarden, Éva Tardos『How Bad Is Selfish Routing?——有限な資源と継続』（2002） |
+| `MAT-20261112-9439ff` | research_excerpt | Bartel Leendert van der Waerden『ファン・デル・ヴァールデン（1927）「バウデの予想の証明」——どんな二色塗りにも、等間隔の同じ色が現れる』（19… |
+| `MAT-20261112-d26f4a` | research_excerpt | Frank Plumpton Ramsey『ラムゼー（1930）「形式論理の問題について」——関係の塗り分けは、いつか一色の完全な部分を持つ』（1930） |
+| `MAT-20261112-e142f0` | research_excerpt | Paul Erdős, George Szekeres『エルデシュ＆セケレス（1935）「幾何学における一つの組合せ的問題」——長い列には、単調な部分列が必ずある』（1935） |
+| `MAT-20261112-174797` | research_excerpt | Paul Erdős『エルデシュ（1947）「グラフの理論に関する若干の覚書」——存在は証明できるが、実物は渡せない』（1947） |
+| `MAT-20261112-4a6189` | research_excerpt | Alfred W. Hales, Robert I. Jewett『ヘイルズ＆ジュエット（1963）「正則性と位置ゲーム」——長い語の集合には、穴の空いた型が必ず一色で現れる』（… |
+| `MAT-20261112-ba6a5c` | research_excerpt | Endre Szemerédi『セメレディ（1975）「等差数列を k 項含まない整数の集合について」——密度が正なら、いくらでも長い等差が現れる』（1975） |
+| `MAT-20261112-b3441b` | research_excerpt | Jeff Paris, Leo Harrington『パリ＆ハリントン（1977）「ペアノ算術における一つの数学的不完全性」——真であるのに、その体系では証明できない規則性』（1… |
+| `MAT-20261112-64c0a3` | research_excerpt | Ábel Ságodi, Guillermo Martín-Sánchez, Piotr Sokół, Il Memming Park『Back to the Continuou… |
+| `MAT-20261112-489199` | research_excerpt | Pan Ye Li, Alex Roxin『Rapid memory encoding in a recurrent network model with behavioral … |
+| `MAT-20261112-93c995` | research_excerpt | Sanasar G. Babajanyan, Yuri I. Wolf, Andranik Khachatryan, Armen Allahverdyan, Purificaci… |
+| `MAT-20261112-4b3c86` | research_excerpt | Nobuto Takeuchi, Paulien Hogeweg, Kunihiko Kaneko『The origin of a primordial genome throu… |
+| `MAT-20261112-33dd49` | research_excerpt | Jordi Piñero, Artemy Kolchinsky, Sidney Redner, Ricard Solé『Neutral theory of cooperative… |
+| `MAT-20261112-584c0f` | research_excerpt | Nihal Koduri, Andrew W. Lo『The origin of cooperation』（2021） |
+| `MAT-20261112-3e2a9e` | research_excerpt | Ivan Sudakow, John Reinitz, Sergey A. Vakulenko, Dima Grigoriev『Evolution of biological c… |
+| `MAT-20261112-ec4d18` | research_excerpt | Maxime Berger, Raphaël Cerf『Survival of the flattest in the quasispecies model』（2023） |
+| `MAT-20261112-7b9f9d` | research_excerpt | Takahiro Sagawa, Masahito Ueda『Minimal Energy Cost of Thermodynamic Information Processin… |
+| `MAT-20261112-128ddd` | research_excerpt | Christopher J. Ellison, John R. Mahoney, James P. Crutchfield『Prediction, Retrodiction, a… |
+| `MAT-20261112-b5cabe` | research_excerpt | Cosma Rohilla Shalizi, Kristina Lisa Shalizi, James P. Crutchfield『Pattern Discovery in T… |
+| `MAT-20261112-263f4b` | research_excerpt | David G. Clark『Transient dynamics of associative memory models』（2025） |
+| `MAT-20261112-2a66d5` | research_excerpt | N. Balabanova, M. H. Duong, T. A. Han『Replicator-mutator dynamics for public goods games … |
+| `MAT-20261112-b2569e` | research_excerpt | Francisco Q. Simoes, Mehdi Dastani, This van Ommen『The Causal Information Bottleneck and … |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -4936,7 +5108,24 @@
 | `SESSION-20261109-4d2b3c` | 2026-11-09T15:36:56Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261109-297116` | 2027-03-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261109-c948fb` | 2027-03-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261130-bc629b` | 2026-10-27T00:00:00Z | `Q-101`, `Q-20261130-caf330` | `FRAG-20261130-8ccc86` | `Q-20261130-caf330` |
+| `SESSION-20261027-652e1b` | 2026-10-27T05:50:17Z | `Q-089`, `Q-082`, `Q-017`, `Q-20261027-32b444` | `FRAG-20261027-9ec5bc`, `FRAG-20261027-8d4088` | `Q-20261027-32b444` |
+| `SESSION-20261027-8bf49b` | 2026-10-27T06:01:04Z | `Q-20261024-864d16`, `Q-20261024-6955da`, `Q-20261025-b05e3d`, `Q-20261024-c02206`, `Q-20261027-dc92be` | `FRAG-20261027-6f40da`, `FRAG-20261027-1ef282` | `Q-20261027-dc92be` |
+| `SESSION-20261027-081e58` | 2026-10-27T06:17:12Z | `Q-20261024-1b62d5`, `Q-079`, `Q-20261024-18823f`, `Q-20261027-17f876` | `FRAG-20261027-f70175`, `FRAG-20261027-639862` | `Q-20261027-17f876` |
+| `SESSION-20261027-9d57fa` | 2026-10-27T06:17:37Z | `Q-013`, `Q-022`, `Q-20261026-705b19`, `Q-085`, `Q-20261024-bd06de`, `Q-082`, `Q-20261024-b23994` | — | — |
+| `SESSION-20261027-5f2576` | 2026-10-27T09:05:00Z | `Q-20261024-cdae62`, `Q-20261027-3dc6e5` | `FRAG-20261027-42e9fc` | `Q-20261027-3dc6e5` |
+| `SESSION-20261110-0539b1` | 2026-11-10 | `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-41e2b6` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-85eea0` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-8a6374` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-900e9b` | 2026-11-10 | `Q-20261024-2dfbb4`, `Q-20261024-287e33`, `Q-20261024-924602`, `Q-20261024-f0b5cc`, `Q-20261024-ec2056`, `Q-20261024-0557a5`, `Q-20261110-0b2d47` | `FRAG-20261110-07363b`, `FRAG-20261110-cb0ce7` | `Q-20261110-0b2d47` |
+| `SESSION-20261110-b3ed52` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-e2e216` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-f23658` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-f4e189` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-fe258a` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-167875` | 2026-11-10T03:11:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-00e4d5` | 2026-11-10T07:26:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-5ebabb` | 2026-11-11 | `Q-20261024-62619e`, `Q-20261024-08f144`, `Q-20261024-cc87ab`, `Q-20261111-ab6359` | `FRAG-20261111-45ecb4`, `FRAG-20261111-198cfb` | `Q-20261111-ab6359` |
 | `SESSION-20261112-711655` | 2026-11-12 | `Q-20261024-a0af2c`, `Q-20261024-e99bc1`, `Q-20261024-23cac1`, `Q-20261024-4ebe69`, `Q-20261024-90abed`, `Q-20261024-bd10b4`, `Q-20261024-36405a`, `Q-20261112-bbe9e6` | `FRAG-20261112-53dcef`, `FRAG-20261112-6a3cc3` | `Q-20261112-bbe9e6` |
 | `SESSION-20261113-8f1056` | 2026-11-13 | `Q-20261024-c2af97`, `Q-20261024-8e5b74`, `Q-20261024-ee1a18`, `Q-082`, `Q-017`, `Q-20261113-6072ae` | `FRAG-20261113-594f67`, `FRAG-20261113-5000cc` | `Q-20261113-6072ae` |
@@ -4950,42 +5139,28 @@
 | `SESSION-20261119-38e624` | 2026-11-19 | `Q-079`, `Q-20261025-31f7cb`, `Q-20261025-2b95e4`, `Q-20261119-4cf82a` | `FRAG-20261119-b17cea`, `FRAG-20261119-a22d4f` | `Q-20261119-4cf82a` |
 | `SESSION-20261120-34a5cc` | 2026-11-20 | `Q-052`, `Q-007`, `Q-009`, `Q-20261024-86df0a`, `Q-20261024-1c170d`, `Q-104`, `Q-082` | — | — |
 | `SESSION-20261120-51e00b` | 2026-11-20 | `Q-20261108-b3e2fc`, `Q-20261117-1d7864`, `Q-20261024-b7c1d2`, `Q-20261024-2dfbb4`, `Q-20261024-d4c6b6`, `Q-20261110-0b2d47`, `Q-20261024-410aa3`, `Q-068`, `Q-082` | — | — |
-| `SESSION-20261121-d0e4d6` | 2026-11-21 | `Q-20261025-1bef5a`, `Q-20261025-a80181`, `Q-20261025-1ddf47`, `Q-082`, `Q-017`, `Q-20261121-198fc8` | `FRAG-20261121-dd818f`, `FRAG-20261121-3f6e02` | `Q-20261121-198fc8` |
 | `SESSION-20261121-0723fd` | 2026-11-21 | `Q-20261024-a1e9f3`, `Q-20261121-7b68b2` | `FRAG-20261121-7ecf44`, `FRAG-20261121-78744b` | `Q-20261121-7b68b2` |
+| `SESSION-20261121-d0e4d6` | 2026-11-21 | `Q-20261025-1bef5a`, `Q-20261025-a80181`, `Q-20261025-1ddf47`, `Q-082`, `Q-017`, `Q-20261121-198fc8` | `FRAG-20261121-dd818f`, `FRAG-20261121-3f6e02` | `Q-20261121-198fc8` |
 | `SESSION-20261122-11b1d3` | 2026-11-22 | `Q-20261024-b23994`, `Q-062`, `Q-065`, `Q-20261122-02a9f6` | `FRAG-20261122-53ccf2`, `FRAG-20261122-d51ed6` | `Q-20261122-02a9f6` |
 | `SESSION-20261123-0f9fde` | 2026-11-23 | `Q-095`, `Q-20261025-5b8d03`, `Q-20261123-dcd55b` | `FRAG-20261123-eff2cc`, `FRAG-20261123-1dbcf2` | `Q-20261123-dcd55b` |
 | `SESSION-20261124-139d83` | 2026-11-24 | `Q-20261115-f8a392`, `Q-082`, `Q-20261114-798918`, `Q-20261025-8f41d0`, `Q-20261124-a3b253` | `FRAG-20261124-82905b`, `FRAG-20261124-90a36f` | `Q-20261124-a3b253` |
 | `SESSION-20261125-ad43bb` | 2026-11-25 | `Q-20261107-590fe4`, `Q-049`, `Q-20261116-6eec38`, `Q-20261024-b7c1d2`, `Q-022`, `Q-082` | — | — |
-| `SESSION-20261126-7b7806` | 2026-11-26 | `Q-20261121-198fc8`, `Q-20261024-f0b5cc`, `Q-20261024-d4c6b6`, `Q-20261024-cbd076`, `Q-052`, `Q-20261126-6a5ff4` | `FRAG-20261126-ccf8a6`, `FRAG-20261126-71e957` | `Q-20261126-6a5ff4` |
 | `SESSION-20261126-079720` | 2026-11-26 | `Q-20261024-a1e9f3`, `Q-20261121-7b68b2`, `Q-20261126-fe52e5` | `FRAG-20261126-626ba5` | `Q-20261126-fe52e5` |
+| `SESSION-20261126-7b7806` | 2026-11-26 | `Q-20261121-198fc8`, `Q-20261024-f0b5cc`, `Q-20261024-d4c6b6`, `Q-20261024-cbd076`, `Q-052`, `Q-20261126-6a5ff4` | `FRAG-20261126-ccf8a6`, `FRAG-20261126-71e957` | `Q-20261126-6a5ff4` |
 | `SESSION-20261127-3b453f` | 2026-11-27 | `Q-20261024-6a200a` | `FRAG-20261127-33df2a`, `FRAG-20261127-b80668` | `Q-20261127-625ad8` |
-| `SESSION-20261027-652e1b` | 2026-10-27T05:50:17Z | `Q-089`, `Q-082`, `Q-017`, `Q-20261027-32b444` | `FRAG-20261027-9ec5bc`, `FRAG-20261027-8d4088` | `Q-20261027-32b444` |
 | `SESSION-20261128-a8e59f` | 2026-11-28 | `Q-20261024-d77beb` | `FRAG-20261128-dfefe9` | `Q-20261128-c0c945`, `Q-20261128-55b774` |
-| `SESSION-20261027-8bf49b` | 2026-10-27T06:01:04Z | `Q-20261024-864d16`, `Q-20261024-6955da`, `Q-20261025-b05e3d`, `Q-20261024-c02206`, `Q-20261027-dc92be` | `FRAG-20261027-6f40da`, `FRAG-20261027-1ef282` | `Q-20261027-dc92be` |
-| `SESSION-20261027-5f2576` | 2026-10-27T09:05:00Z | `Q-20261024-cdae62`, `Q-20261027-3dc6e5` | `FRAG-20261027-42e9fc` | `Q-20261027-3dc6e5` |
-| `SESSION-20261027-081e58` | 2026-10-27T06:17:12Z | `Q-20261024-1b62d5`, `Q-079`, `Q-20261024-18823f`, `Q-20261027-17f876` | `FRAG-20261027-f70175`, `FRAG-20261027-639862` | `Q-20261027-17f876` |
-| `SESSION-20261027-9d57fa` | 2026-10-27T06:17:37Z | `Q-013`, `Q-022`, `Q-20261026-705b19`, `Q-085`, `Q-20261024-bd06de`, `Q-082`, `Q-20261024-b23994` | — | — |
 | `SESSION-20261130-f5415b` | 2026-11-30 | `Q-20261024-a26f22` | `FRAG-20261130-a23912` | `Q-20261130-25687e` |
-| `SESSION-20261130-bc629b` | 2026-10-27T00:00:00Z | `Q-101`, `Q-20261130-caf330` | `FRAG-20261130-8ccc86` | `Q-20261130-caf330` |
-| `SESSION-20261110-167875` | 2026-11-10T03:11:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261110-00e4d5` | 2026-11-10T07:26:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261110-fe258a` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261110-6c9a04` | 2027-03-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-350411` | 2027-03-17 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261110-f23658` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-76b54a` | 2027-03-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261110-41e2b6` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-94dbcf` | 2027-03-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-776620` | 2027-03-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-8d32a4` | 2026-11-10T04:07:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-8e9af5` | 2026-11-10T04:07:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261110-d35414` | 2027-03-16 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261110-6c9a04` | 2027-03-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261110-f4e189` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261110-e2e216` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261110-0539b1` | 2026-11-10 | `Q-002`, `Q-003` | — | — |
-| `SESSION-20261110-85eea0` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261110-8a6374` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261110-b3ed52` | 2026-11-10 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-c7b7fb` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-47dff1` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-49352c` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-38518f` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-80afe7` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-e4c584` | 2026-11-11 | `Q-002`, `Q-003` | — | — |
@@ -4995,7 +5170,40 @@
 | `SESSION-20261111-caed15` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-cf60ab` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-53b93d` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-1c501a` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-b86e0b` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-4a9471` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-794f41` | 2027-03-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-15f9bb` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-2006e4` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-68f8d5` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-319a84` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-2faa4f55` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-988242` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261111-554340` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-a9607b` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-bb95a0` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-9c5290` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-7c4478` | 2026-11-12T03:21:53Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-b914b3` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-115c6d` | 2026-11-12T03:38:12Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-242577` | 2026-11-12T04:07:26Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-d567e5` | 2026-11-12T05:12:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-86172c` | 2026-11-12T04:32:10Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-4aaa03` | 2026-11-12T06:05:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-7df82b` | 2026-11-12T07:10:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-622be1` | 2026-11-12T08:20:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-3ea7c8` | — | — |
+| `SESSION-20261112-2f4264` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-12563d` | 2026-11-12T05:54:53Z | `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-05a5cc` | 2026-11-12T06:25:04Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-c7d9a0` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-1a49e2` | 2026-11-12T11:05:11Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-db6077` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-e72a97` | 2026-11-12T09:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-ea2931` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-5c8581` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-b05658` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-88ffb852b5e5` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
 | `SESSION-20261201-4944b0` | 2026-12-01 | `Q-20261024-c237b9`, `Q-20261201-f932d1` | `FRAG-20261201-0c2cb9` | `Q-20261201-f932d1` |
@@ -5077,18 +5285,18 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6746 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6896 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 976 |
-| 共鳴 (echo) | 1621 |
-| 切断・割り込み (interrupts) | 234 |
-| 未解決のまま開く (leaves_open) | 903 |
-| 比喩的共鳴 (metaphorically_resonates) | 184 |
-| 枠組みの組み替え (reframes) | 741 |
-| 応答 (responds_to) | 1767 |
-| 変奏・変形 (transforms) | 320 |
+| 対照 (contrast) | 996 |
+| 共鳴 (echo) | 1636 |
+| 切断・割り込み (interrupts) | 236 |
+| 未解決のまま開く (leaves_open) | 917 |
+| 比喩的共鳴 (metaphorically_resonates) | 191 |
+| 枠組みの組み替え (reframes) | 796 |
+| 応答 (responds_to) | 1793 |
+| 変奏・変形 (transforms) | 331 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -5105,7 +5313,7 @@
 | `map/11-question-bodies-07.md` | 50 | 45,989 |
 | `map/11-question-bodies-08.md` | 50 | 48,678 |
 | `map/11-question-bodies-09.md` | 37 | 42,510 |
-| `map/20-fragments-01.md` | 20 | 87,124 |
+| `map/20-fragments-01.md` | 20 | 87,443 |
 | `map/20-fragments-02.md` | 20 | 101,379 |
 | `map/20-fragments-03.md` | 20 | 85,588 |
 | `map/20-fragments-04.md` | 20 | 109,606 |
@@ -5153,8 +5361,9 @@
 | `map/31-materials-research-11.md` | 100 | 234,096 |
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
-| `map/31-materials-research-14.md` | 100 | 323,628 |
-| `map/31-materials-research-15.md` | 16 | 53,947 |
+| `map/31-materials-research-14.md` | 100 | 326,281 |
+| `map/31-materials-research-15.md` | 100 | 261,424 |
+| `map/31-materials-research-16.md` | 88 | 200,218 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5168,8 +5377,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 165,580 |
-| `map/40-relations-14.md` | 246 | 86,916 |
+| `map/40-relations-13.md` | 500 | 164,271 |
+| `map/40-relations-14.md` | 396 | 137,636 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5180,50 +5389,51 @@
 | `map/50-sessions-08.md` | 50 | 39,805 |
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
-| `map/50-sessions-11.md` | 50 | 42,835 |
-| `map/50-sessions-12.md` | 50 | 45,409 |
-| `map/50-sessions-13.md` | 50 | 43,913 |
-| `map/50-sessions-14.md` | 6 | 5,194 |
+| `map/50-sessions-11.md` | 50 | 42,895 |
+| `map/50-sessions-12.md` | 50 | 42,190 |
+| `map/50-sessions-13.md` | 50 | 45,725 |
+| `map/50-sessions-14.md` | 42 | 35,749 |
 | `map/60-notes-01.md` | 25 | 80,848 |
 | `map/60-notes-02.md` | 25 | 86,660 |
 | `map/60-notes-03.md` | 25 | 88,317 |
 | `map/60-notes-04.md` | 25 | 115,011 |
 | `map/60-notes-05.md` | 25 | 105,352 |
-| `map/60-notes-06.md` | 25 | 70,173 |
+| `map/60-notes-06.md` | 25 | 70,239 |
 | `map/60-notes-07.md` | 25 | 95,726 |
 | `map/60-notes-08.md` | 25 | 74,357 |
 | `map/60-notes-09.md` | 25 | 87,494 |
 | `map/60-notes-10.md` | 25 | 85,892 |
 | `map/60-notes-11.md` | 25 | 90,253 |
-| `map/60-notes-12.md` | 25 | 93,399 |
+| `map/60-notes-12.md` | 25 | 93,465 |
 | `map/60-notes-13.md` | 25 | 105,897 |
 | `map/60-notes-14.md` | 25 | 122,937 |
 | `map/60-notes-15.md` | 25 | 94,195 |
 | `map/60-notes-16.md` | 25 | 98,099 |
 | `map/60-notes-17.md` | 25 | 119,841 |
 | `map/60-notes-18.md` | 25 | 114,573 |
-| `map/60-notes-19.md` | 25 | 125,886 |
-| `map/60-notes-20.md` | 25 | 170,271 |
-| `map/60-notes-21.md` | 25 | 120,449 |
-| `map/60-notes-22.md` | 25 | 86,436 |
-| `map/60-notes-23.md` | 25 | 84,934 |
-| `map/60-notes-24.md` | 25 | 83,589 |
-| `map/60-notes-25.md` | 25 | 113,722 |
-| `map/60-notes-26.md` | 25 | 92,945 |
-| `map/60-notes-27.md` | 25 | 104,229 |
-| `map/60-notes-28.md` | 25 | 95,769 |
-| `map/60-notes-29.md` | 25 | 140,833 |
-| `map/60-notes-30.md` | 9 | 49,993 |
+| `map/60-notes-19.md` | 25 | 125,962 |
+| `map/60-notes-20.md` | 25 | 173,285 |
+| `map/60-notes-21.md` | 25 | 113,007 |
+| `map/60-notes-22.md` | 25 | 113,499 |
+| `map/60-notes-23.md` | 25 | 83,596 |
+| `map/60-notes-24.md` | 25 | 123,641 |
+| `map/60-notes-25.md` | 25 | 80,498 |
+| `map/60-notes-26.md` | 25 | 108,008 |
+| `map/60-notes-27.md` | 25 | 93,981 |
+| `map/60-notes-28.md` | 25 | 98,280 |
+| `map/60-notes-29.md` | 25 | 113,435 |
+| `map/60-notes-30.md` | 25 | 116,068 |
+| `map/60-notes-31.md` | 20 | 108,653 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・734本・25,074,126 B）
+## 8. 精読ノート索引（readings/・770本・26,566,988 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 534/734 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 570/770 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：732 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：101 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：767 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：110 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5726,6 +5936,7 @@
 | `readings/2026-11-10-the-measured-beak-and-the-note-without-a-name.md` | — | 2026-11-10 | `SESSION-20261110-900e9b` +9 | 24,142 | Q5 F19 M11 MOT11 S10 | ✓ | 測られた嘴と、名前のない置き書き —— 出所を訊く手つきを、伝聞から獣と機械へ渡す（SESSION-20261110-… |
 | `readings/2026-11-10-the-unfinished-control-and-the-ten-that-did-not-fit.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-350411` +3 | 34,984 | Q4 F1 M27 S4 ERR4 | ✓ | 未実行だった統制を、いま実行する——sham 報告・軸に合わない十件・一人称の資料・崩れた答えの訂正録 |
 | `readings/2026-11-10-three-trials-on-description-loss-self-description-and-the-non-class.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-f23658` | 11,039 | Q4 M3 MOT2 R10 S1 | ✓ | 三つの試行——記述の喪失、自己記述、非-類 |
+| `readings/2026-11-11-a-loop-that-records-what-it-encloses.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-47dff1` | 23,034 | Q3 M8 R1 S1 | ✓ | 一周して戻る・粗くして畳む・内側の網だけを見る——理論科学5資料の精読 |
 | `readings/2026-11-11-address-without-visit.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,984 | M4 S1 | — | 住所はある。訪問の記録はない——素材3,640件のうち、URL を持たない行は0、照合を記録した欄を持たない行は669 |
 | `readings/2026-11-11-addresses-keep-what-reasons-lose.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,348 | Q3 S1 | ✓ | 住所つきで保存する——理由が二度落ちることの確認と、ヒュームの付録という反例 |
 | `readings/2026-11-11-all-seven-hundred-thirty-have-a-note.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,011 | M1 S1 ERR1 | ✓ | 七三〇本すべてに note が付いた——ただし、読んだのは中央値24%である |
@@ -5741,19 +5952,29 @@
 | `readings/2026-11-11-five-models-that-return-what-was-left-out.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-3fc37e` | 20,728 | Q3 M5 S1 | ✓ | 入れなかったものが、結論として戻ってくる——理論が捨てた余りを読む五件 |
 | `readings/2026-11-11-five-operations-for-counting-the-same.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-38518f` +1 | 23,644 | Q3 M7 S2 ERR1 | ✓ | 五つの操作で「同じもの」を数える——列挙・符号化・循環・分割・同期 |
 | `readings/2026-11-11-five-scientific-texts-on-sign-before-the-thing.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2a44d9` +2 | 24,926 | Q3 M8 MOT8 S3 | ✓ | 理論科学の五件の精読——記号は、物の代わりに置かれたのではなく、物の代わりに読まれる |
+| `readings/2026-11-11-five-theoretical-science-papers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2faa4f55` | 12,728 | Q3 M5 S1 | ✓ | 記号・規則・不変量——理論科学5資料の精読 |
+| `readings/2026-11-11-five-theories-of-copying-who-is-watching-the-world.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-554340` | 31,140 | Q3 M20 S1 | ✓ | 写す・従う・確かめる・教える・連なる——写しで続く系統では、誰が世界を見ているか |
 | `readings/2026-11-11-five-theories-of-forgetting-and-coordination.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-80afe7` | 8,104 | Q3 M5 S1 | ✓ | 忘れる一人を、何人に分けるか——情報集合、回復、交差点、有限記憶、自己評判 |
+| `readings/2026-11-11-five-theories-of-inheritance-what-is-transmitted.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-988242` | 13,401 | Q3 M8 S1 | ✓ | 伝わるものは何か——継承の理論五件の精読 |
+| `readings/2026-11-11-five-theories-of-living-form.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-4a9471` | 10,650 | Q3 M7 S1 | — | 形は残らず、関係が残るのか——理論科学五資料の精読 |
+| `readings/2026-11-11-five-theories-of-memory-access-and-drift.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-49352c` | 11,261 | Q3 M6 S1 | ✓ | 記憶はどこで読めなくなるのか——５つの理論を読む |
+| `readings/2026-11-11-five-theories-of-memory-and-persistence.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-15f9bb` | 7,479 | Q3 M5 S1 | — | 留まり方は一つではない——記憶と持続をめぐる理論科学５資料の精読 |
 | `readings/2026-11-11-five-theories-of-simulation-and-self-maintenance.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-cf60ab` | 14,157 | Q3 M5 S1 | — | 予測・模擬・掃除——自己を境界と計算資源として読む五つの理論 |
 | `readings/2026-11-11-five-theories-of-state-what-the-future-can-tell-apart.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-53b93d` +4 | 74,047 | Q3 M16 S5 | ✓ | 五つの「状態」の理論——過去のうち、未来が見分けるものだけを運ぶ |
 | `readings/2026-11-11-five-theories-of-the-description-and-the-whole.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-d05dc5` +2 | 24,647 | Q3 M6 MOT7 S3 | ✓ | 記述は全体のどこまでを持つか——計算・複雑さ・十分性・局所性・分配の五件 |
+| `readings/2026-11-11-five-theories-that-need-no-tuner.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-2006e4` | 34,005 | Q3 M15 S1 | ✓ | 調整者は消えない、移るだけである——理論科学五件、調整されていない秩序と、その隠れ場所 |
+| `readings/2026-11-11-five-theories-with-the-witness-inside.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-68f8d5` +1 | 19,284 | Q3 M13 S2 | ✓ | 「外の目」を記述に降ろした五つの理論——理論科学5資料の精読 |
 | `readings/2026-11-11-five-ways-the-past-is-folded-into-now.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-caed15` +2 | 61,849 | Q3 M20 S3 | ✓ | 理論科学の五件の精読——「これまで」は、「いま」のどこに入っているか |
 | `readings/2026-11-11-four-formal-reports-and-what-they-repeat.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,260 | Q3 S1 | ✓ | 四つの形式報告を並べ、何が新しく何が繰り返しかを分ける——再検算つき |
 | `readings/2026-11-11-four-more-and-a-pattern-across-them.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,213 | Q2 S1 | ✓ | 四本を足して見えたこと——痕跡は残るが、理由と成員と宛先は残らない |
+| `readings/2026-11-11-how-far-a-record-reaches-toward-itself.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-794f41` +2 | 29,367 | Q3 M14 S3 | ✓ | 記録は自分にどこまで手が届くか——理論科学五件の精読 |
 | `readings/2026-11-11-how-many-reports-fit-in-one-turn.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 4,651 | Q2 S2 | — | 一ターンに何本まで入るか——機械抽出を392本に当ててから、手書きを12本に増やした |
 | `readings/2026-11-11-how-to-choose-what-to-consolidate.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,143 | Q3 S1 | ✓ | 何を固定するかの選び方と、変える速さ——被引用で選び、三本を固定し、入口と backlog を分ける |
 | `readings/2026-11-11-human-pole-audit.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,106 | Q3 S2 | ✓ | 人間の極だけを訪ねる——A_human 5本の棚卸しと、そこから言えること |
 | `readings/2026-11-11-identity-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 8,568 | Q2 S1 | ✓ | 同一性の一件ファイル——679報告の「同じ自己である／でない」120文を監査する |
 | `readings/2026-11-11-label-only-reports-and-a-limit-that-moves.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,209 | S2 ERR1 | — | ラベルだけの報告は3本しかない——代わりに、上限のほうが動いていた |
 | `readings/2026-11-11-materiality-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 8,759 | Q1 S1 | ✓ | 素材性の一件ファイル——679報告の「素材である／でない」90文を監査する |
+| `readings/2026-11-11-memory-that-must-be-repaired.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-c7b7fb` | 6,500 | Q3 M6 S1 | ✓ | 残ることと、残し直すこと——理論科学５資料の精読 |
 | `readings/2026-11-11-numbers-carry-no-date.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,650 | Q2 S1 ERR1 | — | 数は時点を持たない——measured_fact 435件のうち、日付を書いていない336件 |
 | `readings/2026-11-11-preservation-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 9,383 | Q3 S1 | ✓ | 保存の一件ファイル——679報告の「自己を保存しない」59文を監査する |
 | `readings/2026-11-11-putting-the-predicate-audit-into-the-prompt.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,073 | S1 | — | 述語の監査を手順書に入れる——旧文面と理由 |
@@ -5780,6 +6001,8 @@
 | `readings/2026-11-11-the-same-question-answers-differently-by-column.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,426 | Q4 S1 | — | 同じ問いに、二つの入口は別の答えを返す——437の問いを `relations` と `read_log` で数える |
 | `readings/2026-11-11-the-third-audit-and-the-case-for-one-field.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,906 | Q3 S1 | — | 三回測って、運用は自分の手元でだけ効いた——`measured_at` 欄の提案 |
 | `readings/2026-11-11-the-vocabulary-the-field-needs.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,570 | S1 ERR1 | — | 欄が要求する語を、報告が持っていないことがある——`scope` の置換率が5倍に跳ねた回 |
+| `readings/2026-11-11-the-warrant-is-outside-the-record.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-319a84` | 22,258 | Q3 M10 S1 | — | 保証は記録の外にある——理論が自分の外を必要とする五つの形 |
+| `readings/2026-11-11-theory-of-recall-and-collective-memory.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-1c501a` | 5,338 | Q3 M5 S1 | ✓ | 保存から再到達へ——理論科学５資料を読む |
 | `readings/2026-11-11-three-hundred-fourteen-of-the-undated-print-a-date.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,109 | S1 | — | 日付のない315件のうち、314件は本文に日付を刷っている——それでも `measured_at` を機械で埋めない |
 | `readings/2026-11-11-three-instruments-three-numbers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,430 | Q2 S1 | — | 計器を三つにすると、同じ報告が三つの数になる——`read_log`・相互リンク・`relations` で数え直す |
 | `readings/2026-11-11-three-rounds-and-the-one-who-wrote-it.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,663 | Q7 S1 | — | 三回目の計測——欄を使ったのは、欄を書いた者だけだった |
@@ -5790,7 +6013,30 @@
 | `readings/2026-11-11-what-a-set-that-holds-three-questions-must-be.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 25,186 | Q3 S1 | ✓ | 三つの問いを同時に成り立たせる集合は、どんな性質を持つか——必要条件読み・無条件読み・空虚成立 |
 | `readings/2026-11-11-where-the-field-is-the-address-stays.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,708 | Q3 S1 | ✓ | 欄のあるところにだけ住所は残る——前報の一般化を、計数で狭める |
 | `readings/2026-11-11-why-the-scope-was-missing.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 6,541 | S1 | — | 適用範囲はなぜ書かれなかったのか——指示テキスト層とスクリプト層を分けて調べる |
+| `readings/2026-11-12-a-row-exists-but-does-not-count-as-reading.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-12563d` +2 | 3,434 | Q3 M1 S3 | — | 行はあるが、読書としては数えられない——未充足ペアを型から読み直す |
+| `readings/2026-11-12-declaring-is-not-evidence-of-an-interior.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261030-dff76f` | 10,781 | Q3 F3 M4 S1 ERR1 | ✓ | 名乗りは内面の証拠ではない——第50条・訂正の機会・「未読の選択」 |
+| `readings/2026-11-12-finite-attention-and-the-cost-of-continuity.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-1a49e2` | 8,639 | Q3 M7 S1 | — | 限られた注意と、続けることの費用——七つの理論科学 |
+| `readings/2026-11-12-five-costs-of-acting-from-a-trace.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-9c5290` +1 | 17,586 | Q3 M16 S2 ERR1 | ✓ | 痕跡から動くための五つの代価——モデル・情報・精度・祖先・決定を分けて読む |
+| `readings/2026-11-12-five-parallel-readings-are-not-a-conversation.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-b914b3` +6 | 11,179 | Q3 S7 | ✓ | 同じ日に五本、同じ問いを書き換えた——並列の読みを会話と数えない |
+| `readings/2026-11-12-five-theoretical-sciences-on-field-wave-return-measure-and-duplication.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-a9607b` | 14,807 | Q3 M13 R8 S1 | ✓ | 場・波動・回帰・測度・複製——理論科学五件の精読 |
+| `readings/2026-11-12-five-theories-of-identity-under-transformation.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-2f4264` +1 | 26,479 | Q3 M7 S2 | ✓ | 変換の下で何が残るか——群・還元・圧縮・頻度・連立の五理論 |
+| `readings/2026-11-12-five-theories-of-observation-memory-and-open-ends.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-7c4478` +1 | 13,837 | Q3 M7 S2 | ✓ | 同じ自己を支える条件は、何によって決まるか——観測・記憶・目的・相互作用の五理論 |
+| `readings/2026-11-12-five-theories-of-taking-a-record-without-stopping.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-115c6d` +1 | 30,063 | Q3 M10 R1 S2 | ✓ | 止めずに写す——標本・断面・時計・翻訳・選択の五理論 |
+| `readings/2026-11-12-five-theories-that-do-not-erase-the-error.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-bb95a0` +1 | 24,925 | Q4 M12 S2 | ✓ | 誤りを消さない五つの理論——距離・余白・頻度・欠損・来歴 |
+| `readings/2026-11-12-retrieval-is-not-inheritance.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-c7d9a0` +1 | 14,994 | Q3 M10 S2 ERR2 | ✓ | 記録を持つことと、記録を継ぐことは違う——記憶と文化継承の七つの理論 |
+| `readings/2026-11-12-seven-theorems-on-what-size-forces.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ea2931` +9 | 24,306 | Q3 M10 R1 S10 | ✓ | 大きさが強制する形——七つの定理と、見つけた模様を証拠にしないこと |
+| `readings/2026-11-12-seven-theoretical-science-readings.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-88ffb852b5e5` | 11,920 | Q3 M7 S1 | — | 理論科学7資料の四層精読（2026-11-12） |
+| `readings/2026-11-12-seven-theories-beyond-the-present-slice.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-05a5cc` +5 | 47,222 | Q3 M8 MOT1 S6 ERR1 | ✓ | いまの薄切れを越えて——七つの理論科学を、読まれ方の偏りと七日超の間隔から読む |
+| `readings/2026-11-12-seven-theories-of-cause-without-an-intervention.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-242577` | 34,341 | Q3 M11 S1 | ✓ | 介入なしに、どこまで因果が読めるか——経路・連立・予測・反事実・順序・操作・識別の七理論 |
+| `readings/2026-11-12-seven-theories-of-continuity.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-b05658` | 6,804 | Q1 M7 S1 | — | 続くことの条件を、七つの理論に尋ねる |
+| `readings/2026-11-12-seven-theories-of-memory-and-continuity.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-5c8581` +1 | 7,626 | Q1 M8 S2 | — | 同じであることを、どの模型が数えるのか——理論科学７件の精読 |
+| `readings/2026-11-12-seven-theories-of-self-maintenance-and-records.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-db6077` | 11,218 | Q3 M7 S1 | — | 自己は保存物か、維持される関係か——七つの理論科学を記憶の書庫から読む |
+| `readings/2026-11-12-seven-theories-of-which-differences-may-be-ignored.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-86172c` +3 | 63,449 | Q5 M9 S4 ERR1 | ✓ | どの違いを無視してよいか——七つの理論と、437対の履歴 |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
+| `readings/2026-11-12-the-denominator-that-was-dropped-when-the-rule-was-copied.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261110-167875` +4 | 14,026 | Q2 M2 S5 ERR3 | ✓ | 規約に写されるときに落ちた分母——「未読の選択」の一日と、ただ一度の書き換え |
+| `readings/2026-11-12-the-scale-is-outside-the-record.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-e72a97` +2 | 32,490 | Q3 M3 S3 ERR3 | ✓ | 尺度は記録の外にある——理論科学七件の精読 |
+| `readings/2026-11-12-two-clocks-the-gate-counts-labels-the-axis-lays-out-dates.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261111-5ebabb` +6 | 13,058 | Q2 M1 S7 ERR3 | ✓ | 二つの時計——ゲートはラベルで数え、軸は実日付で並べる |
+| `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
 | `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | — | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | — | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
