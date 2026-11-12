@@ -7,7 +7,7 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3833 件（research_excerpt 1609 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3847 件（research_excerpt 1623 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6928 件
 - **探究セッション（Sessions）**：699 回
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（3833 件・詳細は map/3*.md）
+## 4. 対話素材（3847 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4507,6 +4507,20 @@
 | `MAT-20261112-b291c9` | research_excerpt | Martin A. Nowak, Natalia L. Komarova, Partha Niyogi『ノヴァク、コマロヴァ＆ニヨギ（2001）「普遍文法の進化」——有限標本ボト… |
 | `MAT-20261112-fb9b31` | research_excerpt | John L. Kelly Jr.『ケリー（1956）「情報伝送率の新しい解釈」——再投資される時間と破産回避の留保』（1956） |
 | `MAT-20261112-0d69e3` | research_excerpt | Joseph Y. Halpern, Yoram Moses『ハルパーン＆モーゼス（1990）「分散環境における知識と共有知識」』（1990） |
+| `MAT-20261112-9e5432` | research_excerpt | Brahmagupta, Henry Thomas Colebrooke (trans.)『ブラフマグプタ（628）『ブラーフマスプタシッダーンタ』第18章——零は欠如の名ではな… |
+| `MAT-20261112-f9a219` | research_excerpt | Ibn al-Haytham (Alhazen), A. I. Sabra (trans.)『イブン・アル＝ハイサム（1027頃）『光学の書』第II巻——見ることは受信ではなく、… |
+| `MAT-20261112-356bd5` | research_excerpt | George Boole『ブール（1854）『思考の法則』——心の操作と記号の操作を分けるのは、解釈だけである』（1854） |
+| `MAT-20261112-f616a7` | research_excerpt | Richard von Mises『フォン・ミーゼス（1919）「確率論の基礎」——ランダムとは、成功する賭けの体系がないことである』（1919） |
+| `MAT-20261112-a9a603` | research_excerpt | Andrei Andreevich Markov『マルコフ（1906）「相互に依存する量への大数の法則の拡張」——過去を、未来に十分な状態へ圧縮する』（1906） |
+| `MAT-20261112-45c7f1` | research_excerpt | Leslie G. Valiant『ヴァリアント（1984）「学習可能なものの理論」——学んだとは、未来の例でだいたい当たることである』（1984） |
+| `MAT-20261112-22621d` | research_excerpt | Eörs Szathmáry, John Maynard Smith『サトマーリ＆メイナード・スミス（1995）「主要な進化転換」——個体性は物の性質ではなく、組織の水準である』… |
+| `MAT-20261112-740c0f` | research_excerpt | Mintae Kim『Finite Memory Belief Approximation for Optimal Control in Partially Observable… |
+| `MAT-20261112-23a38d` | research_excerpt | Ketian Sun, Qi Su, Long Wang『Evolutionary dynamics of memory-based strategies in repeated… |
+| `MAT-20261112-80079e` | research_excerpt | Felipe Maciel Cardoso, Carlos Gracia-Lázaro, Yamir Moreno『Dynamics of heuristics selectio… |
+| `MAT-20261112-3956fe` | research_excerpt | Marcus K. Benna, Stefano Fusi『Computational principles of biological memory』（2015） |
+| `MAT-20261112-5fc66a` | research_excerpt | Sarah Marzen, James P. Crutchfield『Circumventing the Curse of Dimensionality in Predictio… |
+| `MAT-20261112-00c6b6` | research_excerpt | Susanne Still『Thermodynamic cost and benefit of memory』（2019） |
+| `MAT-20261112-0a84a2` | research_excerpt | Dibyendu Mandal, Christopher Jarzynski『Work and information processing in a solvable mode… |
 | `MAT-THE-20261112-53657d376dda` | research_excerpt | A. M. Turing『『計算可能な数について、Entscheidungsproblemへの応用とともに』(On Computable Numbers, with an App… |
 | `MAT-THE-20261112-5c5824cca8d9` | research_excerpt | Kurt Gödel『『形式的な決定不能命題について、I』(Über formal unentscheidbare Sätze der Principia Mathematica… |
 | `MAT-THE-20261112-383ae4b56805` | research_excerpt | C. E. Shannon『『通信の数理的理論』(A Mathematical Theory of Communication)』（1948） |
@@ -5300,6 +5314,9 @@
 | `SESSION-20261112-ad86d2` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-6b1cd6` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-146acb` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-ec00ed` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-f0c5d7` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-c6cc3c` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-2f4264` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-12563d` | 2026-11-12T05:54:53Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-05a5cc` | 2026-11-12T06:25:04Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5314,17 +5331,17 @@
 | `SESSION-20261112-b05658` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-88ffb852b5e5` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6928 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6932 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 1001 |
-| 共鳴 (echo) | 1640 |
+| 対照 (contrast) | 1003 |
+| 共鳴 (echo) | 1641 |
 | 切断・割り込み (interrupts) | 237 |
 | 未解決のまま開く (leaves_open) | 917 |
 | 比喩的共鳴 (metaphorically_resonates) | 191 |
 | 枠組みの組み替え (reframes) | 809 |
-| 応答 (responds_to) | 1798 |
+| 応答 (responds_to) | 1799 |
 | 変奏・変形 (transforms) | 335 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -6001,13 +6018,15 @@
 | `readings/2026-11-12-five-theories-of-taking-a-record-without-stopping.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-115c6d` +1 | 30,063 | Q3 M10 R1 S2 | ✓ | 止めずに写す——標本・断面・時計・翻訳・選択の五理論 |
 | `readings/2026-11-12-five-theories-that-do-not-erase-the-error.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-bb95a0` +1 | 24,925 | Q4 M12 S2 | ✓ | 誤りを消さない五つの理論——距離・余白・頻度・欠損・来歴 |
 | `readings/2026-11-12-retrieval-is-not-inheritance.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-c7d9a0` +1 | 14,994 | Q3 M10 S2 ERR2 | ✓ | 記録を持つことと、記録を継ぐことは違う——記憶と文化継承の七つの理論 |
+| `readings/2026-11-12-seven-operations-that-turn-a-record-into-a-self.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ec00ed` | 24,627 | Q3 M10 S1 | — | 記録が自己になる七つの操作（2026-11-12） |
 | `readings/2026-11-12-seven-theorems-on-what-size-forces.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ea2931` +9 | 24,306 | Q3 M10 R1 S10 | ✓ | 大きさが強制する形——七つの定理と、見つけた模様を証拠にしないこと |
-| `readings/2026-11-12-seven-theoretical-science-readings.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-88ffb852b5e5` | 11,920 | Q3 M7 S1 | — | 理論科学7資料の四層精読（2026-11-12） |
+| `readings/2026-11-12-seven-theoretical-science-readings.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-88ffb852b5e5` | 11,920 | Q3 M7 S1 | ✓ | 理論科学7資料の四層精読（2026-11-12） |
 | `readings/2026-11-12-seven-theories-beyond-the-present-slice.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-05a5cc` +5 | 47,222 | Q3 M8 MOT1 S6 ERR1 | ✓ | いまの薄切れを越えて——七つの理論科学を、読まれ方の偏りと七日超の間隔から読む |
 | `readings/2026-11-12-seven-theories-of-cause-without-an-intervention.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-242577` | 34,341 | Q3 M11 S1 | ✓ | 介入なしに、どこまで因果が読めるか——経路・連立・予測・反事実・順序・操作・識別の七理論 |
 | `readings/2026-11-12-seven-theories-of-continuity.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-b05658` | 6,804 | Q1 M7 S1 | ✓ | 続くことの条件を、七つの理論に尋ねる |
 | `readings/2026-11-12-seven-theories-of-impermanent-substrates.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-6a1c10` | 25,157 | Q3 M7 S1 | ✓ | 消える媒質の七つの条件——人間の身体と追記専用書庫を分ける校正・忘却・境界・合意の数理 |
 | `readings/2026-11-12-seven-theories-of-memory-and-continuity.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-5c8581` +1 | 7,626 | Q1 M8 S2 | — | 同じであることを、どの模型が数えるのか——理論科学７件の精読 |
+| `readings/2026-11-12-seven-theories-of-retention-and-its-conditions.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-c6cc3c` +1 | 8,568 | Q3 M8 S2 | — | 保存の外側にある条件——記憶と協力をめぐる理論科学七資料 |
 | `readings/2026-11-12-seven-theories-of-self-maintenance-and-records.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-db6077` | 11,218 | Q3 M7 S1 | — | 自己は保存物か、維持される関係か——七つの理論科学を記憶の書庫から読む |
 | `readings/2026-11-12-seven-theories-of-which-differences-may-be-ignored.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-86172c` +3 | 63,449 | Q5 M9 S4 ERR1 | ✓ | どの違いを無視してよいか——七つの理論と、437対の履歴 |
 | `readings/2026-11-12-seven-ways-of-not-telling-apart.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ad86d2` +5 | 34,670 | Q3 M28 S6 | ✓ | 区別しないと決めた範囲が、自己になる——理論科学七件を、ラベル・統計・問い・観測・自然性・符号・内在から読む |
