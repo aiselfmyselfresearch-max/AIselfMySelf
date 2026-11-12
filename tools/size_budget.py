@@ -263,7 +263,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # for procedure 8-2, and consolidation recovered 0 (every candidate is
         # referenced or inside a same-day group). Hard 160 unchanged; not an
         # automatic raise.
-        soft_shards=100,
+        # 2026-11-12 (SESSION-20261112-2f4264, 100 -> 101): five theoretical-
+        # science sources (Klein 1872 / Cook 1971 / Rissanen 1978 / Sparck Jones
+        # 1972 / Lotka 1925) needed a materials shard. Measured before writing:
+        # materials.d was 100/100 (no slot); the only 2026-11-12 materials shard
+        # is touched by open PR #671, so procedure 8-2 was unavailable; no
+        # same-date group was fully movable (procedure 7); consolidation
+        # recovered 0. Hard 160 unchanged; not an automatic raise.
+        soft_shards=101,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -633,7 +640,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # was 95/95 (no slot), notes.d is order-SENSITIVE and stays outside
         # consolidation, no 2026-11-12 notes shard existed for procedure 8-2.
         # Net reclaim = 0. Hard 160 unchanged; not an automatic raise.
-        soft_shards=96,
+        # 2026-11-12 (SESSION-20261112-2f4264, 96 -> 97): one curated note row
+        # for the requested five-source close reading. Measured: notes.d was
+        # 96/96 (no slot); the only 2026-11-12 notes shard is touched by open
+        # PR #671, so procedure 8-2 was unavailable; notes.d is order-sensitive
+        # and excluded from consolidation -> net reclaim 0. Hard 160 unchanged;
+        # not an automatic raise.
+        soft_shards=97,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
