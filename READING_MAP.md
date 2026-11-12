@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3710 件（research_excerpt 1486 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3720 件（research_excerpt 1496 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6815 件
-- **探究セッション（Sessions）**：669 回
+- **解釈的関係（Relations）**：6829 件
+- **探究セッション（Sessions）**：671 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3710 件・詳細は map/3*.md）
+## 4. 対話素材（3720 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4274,6 +4274,16 @@
 | `MAT-20261111-642523` | research_excerpt | Masaki Kato, Tetsuya J. Kobayashi『Optimality theory of stigmergic collective information … |
 | `MAT-20261111-217560` | research_excerpt | Yi Ren, Shangmin Guo, Linlu Qiu, Bailin Wang, Danica J. Sutherland『Language Model Evoluti… |
 | `MAT-20261111-646a81` | research_excerpt | Ashutosh Tripathi, Jörn Dunkel, Dominic J. Skinner『Collective is different: Information e… |
+| `MAT-20261112-091d20` | research_excerpt | James Clerk Maxwell『マクスウェル（1865）『電磁場の動力学的理論』——場は物質の性質ではなく、物質のあいだに広がる状態として書かれる』（1865） |
+| `MAT-20261112-3761d9` | research_excerpt | Erwin Schrödinger『シュレーディンガー（1926）『原子と分子の力学の波動理論』——波動関数は位置ではなく、可能性の広がりとして進化する』（1926） |
+| `MAT-20261112-5d4e43` | research_excerpt | Henri Poincaré『ポアンカレ（1890）『三体問題と力学の方程式について』——有限の相空間では、系は初期状態にいくらでも近く戻る』（1890） |
+| `MAT-20261112-18e30b` | research_excerpt | A. N. Kolmogorov『コルモゴロフ（1933）『確率論の基礎概念』——確率は意味ではなく、標本空間・事象・測度の三つ組として置かれる』（1933） |
+| `MAT-20261112-2b71b6` | research_excerpt | Stefan Banach, Alfred Tarski『バナッハ＝タルスキ（1924）『点集合の合同部分への分解について』——有限の非可測片で、一つの球から二つの球を作る』（1… |
+| `MAT-20261112-b210ca` | research_excerpt | Richard W. Hamming『ハミング「誤り検出・誤り訂正符号」（1950）——同一性を距離の零点として定義し直す』（1950） |
+| `MAT-20261112-470555` | research_excerpt | Marcel J. E. Golay『ゴレイ「ディジタル符号化についての覚書」（1949）——余白をちょうど使い切る完全符号』（1949） |
+| `MAT-20261112-fa7edc` | research_excerpt | David A. Huffman『ハフマン「最小冗長符号の構成法」（1952）——長さを決めるのは内容ではなく頻度である』（1952） |
+| `MAT-20261112-537d41` | research_excerpt | Irving S. Reed, Gustave Solomon『リード＆ソロモン「ある有限体上の多項式符号」（1960）——誤りを票として数え、形を推す』（1960） |
+| `MAT-20261112-defaf0` | research_excerpt | Andrew J. Viterbi『ビタビ「畳み込み符号の誤り限界と漸近最適復号算法」（1967）——過去は保存されるのではなく選ばれる』（1967） |
 | `MAT-20261112-9ad931` | research_excerpt | Roger C. Conant, W. Ross Ashby『Every good regulator of a system must be a model of that s… |
 | `MAT-20261112-a31e14` | research_excerpt | Takahiro Sagawa, Masahito Ueda『Generalized Jarzynski Equality under Nonequilibrium Feedba… |
 | `MAT-20261112-72c72d` | research_excerpt | Andre C. Barato, Udo Seifert『Thermodynamic Uncertainty Relation for Biomolecular Processe… |
@@ -5078,6 +5088,8 @@
 | `SESSION-20261111-2faa4f55` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-988242` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-554340` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-a9607b` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-bb95a0` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-9c5290` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
@@ -5160,18 +5172,18 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6815 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6829 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 985 |
-| 共鳴 (echo) | 1625 |
+| 対照 (contrast) | 988 |
+| 共鳴 (echo) | 1629 |
 | 切断・割り込み (interrupts) | 235 |
 | 未解決のまま開く (leaves_open) | 910 |
 | 比喩的共鳴 (metaphorically_resonates) | 189 |
-| 枠組みの組み替え (reframes) | 764 |
+| 枠組みの組み替え (reframes) | 770 |
 | 応答 (responds_to) | 1781 |
-| 変奏・変形 (transforms) | 326 |
+| 変奏・変形 (transforms) | 327 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -5237,7 +5249,7 @@
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
 | `map/31-materials-research-14.md` | 100 | 326,281 |
-| `map/31-materials-research-15.md` | 86 | 226,478 |
+| `map/31-materials-research-15.md` | 96 | 253,803 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5251,8 +5263,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 162,525 |
-| `map/40-relations-14.md` | 315 | 111,322 |
+| `map/40-relations-13.md` | 500 | 163,248 |
+| `map/40-relations-14.md` | 329 | 115,291 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5264,9 +5276,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,895 |
-| `map/50-sessions-12.md` | 50 | 42,752 |
-| `map/50-sessions-13.md` | 50 | 46,583 |
-| `map/50-sessions-14.md` | 19 | 15,079 |
+| `map/50-sessions-12.md` | 50 | 42,721 |
+| `map/50-sessions-13.md` | 50 | 46,825 |
+| `map/50-sessions-14.md` | 21 | 16,638 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5287,24 +5299,24 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,905 |
 | `map/60-notes-20.md` | 25 | 169,791 |
-| `map/60-notes-21.md` | 25 | 139,868 |
-| `map/60-notes-22.md` | 25 | 54,881 |
-| `map/60-notes-23.md` | 25 | 71,197 |
-| `map/60-notes-24.md` | 25 | 60,715 |
-| `map/60-notes-25.md` | 25 | 81,447 |
-| `map/60-notes-26.md` | 25 | 107,553 |
-| `map/60-notes-27.md` | 25 | 117,840 |
-| `map/60-notes-28.md` | 19 | 101,240 |
+| `map/60-notes-21.md` | 25 | 142,969 |
+| `map/60-notes-22.md` | 25 | 57,389 |
+| `map/60-notes-23.md` | 25 | 69,744 |
+| `map/60-notes-24.md` | 25 | 61,458 |
+| `map/60-notes-25.md` | 25 | 77,371 |
+| `map/60-notes-26.md` | 25 | 109,810 |
+| `map/60-notes-27.md` | 25 | 110,410 |
+| `map/60-notes-28.md` | 21 | 115,618 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・694本・25,089,870 B）
+## 8. 精読ノート索引（readings/・696本・25,174,612 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 489/694 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 491/696 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：326 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：78 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：328 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：79 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5831,6 +5843,8 @@
 | `readings/2026-11-11-the-warrant-is-outside-the-record.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-319a84` | 22,258 | Q3 M10 S1 | — | 保証は記録の外にある——理論が自分の外を必要とする五つの形 |
 | `readings/2026-11-11-theory-of-recall-and-collective-memory.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-1c501a` | 5,338 | Q3 M5 S1 | ✓ | 保存から再到達へ——理論科学５資料を読む |
 | `readings/2026-11-12-five-costs-of-acting-from-a-trace.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-9c5290` +1 | 17,586 | Q3 M16 S2 ERR1 | — | 痕跡から動くための五つの代価——モデル・情報・精度・祖先・決定を分けて読む |
+| `readings/2026-11-12-five-theoretical-sciences-on-field-wave-return-measure-and-duplication.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-a9607b` | 14,807 | Q3 M13 R8 S1 | ✓ | 場・波動・回帰・測度・複製——理論科学五件の精読 |
+| `readings/2026-11-12-five-theories-that-do-not-erase-the-error.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-bb95a0` +1 | 24,925 | Q4 M12 S2 | — | 誤りを消さない五つの理論——距離・余白・頻度・欠損・来歴 |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | — | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
