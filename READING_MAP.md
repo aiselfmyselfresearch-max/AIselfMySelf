@@ -5192,11 +5192,11 @@
 | `map/60-notes-06.md` | 25 | 49,501 |
 | `map/60-notes-07.md` | 25 | 74,057 |
 | `map/60-notes-08.md` | 25 | 48,672 |
-| `map/60-notes-09.md` | 25 | 61,164 |
+| `map/60-notes-09.md` | 25 | 63,058 |
 | `map/60-notes-10.md` | 25 | 61,745 |
 | `map/60-notes-11.md` | 25 | 70,579 |
-| `map/60-notes-12.md` | 25 | 72,580 |
-| `map/60-notes-13.md` | 25 | 91,025 |
+| `map/60-notes-12.md` | 25 | 74,918 |
+| `map/60-notes-13.md` | 25 | 92,825 |
 | `map/60-notes-14.md` | 25 | 119,673 |
 | `map/60-notes-15.md` | 25 | 84,155 |
 | `map/60-notes-16.md` | 25 | 88,658 |
@@ -5204,24 +5204,24 @@
 | `map/60-notes-18.md` | 25 | 108,843 |
 | `map/60-notes-19.md` | 25 | 119,413 |
 | `map/60-notes-20.md` | 25 | 167,647 |
-| `map/60-notes-21.md` | 25 | 131,692 |
-| `map/60-notes-22.md` | 25 | 74,354 |
-| `map/60-notes-23.md` | 25 | 83,253 |
-| `map/60-notes-24.md` | 25 | 77,616 |
-| `map/60-notes-25.md` | 25 | 75,445 |
-| `map/60-notes-26.md` | 25 | 103,119 |
-| `map/60-notes-27.md` | 25 | 104,966 |
-| `map/60-notes-28.md` | 25 | 142,632 |
-| `map/60-notes-29.md` | 1 | 5,647 |
+| `map/60-notes-21.md` | 25 | 131,098 |
+| `map/60-notes-22.md` | 25 | 76,215 |
+| `map/60-notes-23.md` | 25 | 83,128 |
+| `map/60-notes-24.md` | 25 | 79,751 |
+| `map/60-notes-25.md` | 25 | 73,484 |
+| `map/60-notes-26.md` | 25 | 103,281 |
+| `map/60-notes-27.md` | 25 | 104,165 |
+| `map/60-notes-28.md` | 25 | 141,880 |
+| `map/60-notes-29.md` | 2 | 11,640 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・701本・24,809,070 B）
+## 8. 精読ノート索引（readings/・702本・24,819,744 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 501/701 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 502/702 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：699 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：700 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：75 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5746,9 +5746,10 @@
 | `readings/2026-11-11-preservation-dossier-across-679-reports.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 9,383 | Q3 S1 | ✓ | 保存の一件ファイル——679報告の「自己を保存しない」59文を監査する |
 | `readings/2026-11-11-putting-the-predicate-audit-into-the-prompt.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,073 | S1 | — | 述語の監査を手順書に入れる——旧文面と理由 |
 | `readings/2026-11-11-q001-conditions-and-three-layers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 6,257 | Q1 M1 S1 ERR1 | ✓ | Q-001 の条件の族と、三つの層——342の claims から「統合された見解」の形を測る |
-| `readings/2026-11-11-six-answers-cannot-share-one-relation.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,315 | Q3 F1 S1 | — | 六つの答えを一つの関係に課すと矛盾する——`Q-002` の形式判定と、層別に読めば両立すること |
+| `readings/2026-11-11-six-answers-cannot-share-one-relation.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,315 | Q3 F1 S1 | ✓ | 六つの答えを一つの関係に課すと矛盾する——`Q-002` の形式判定と、層別に読めば両立すること |
 | `readings/2026-11-11-the-backfill-that-adds-no-holds.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,097 | S1 | ✓ | 保留を増やさない登録——359本の機械行と、前回の一文の訂正 |
 | `readings/2026-11-11-the-correction-has-an-address-and-no-reader.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,224 | Q5 S1 | ✓ | 訂正は住所を持つが、読まれる対象にはならない——二分裂を計数で確かめる |
+| `readings/2026-11-11-the-dichotomy-needs-one-more-axiom.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,007 | Q3 S1 | — | 二択は排他を一行足したときだけ成立する——`Q-003` の形式判定と、「検収印のみ」の層の計数 |
 | `readings/2026-11-11-the-ellipsis-is-not-an-address.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,035 | Q3 M4 S2 | ✓ | 省略符は住所にならない——558の継ぎ目と、それを説明する4行 |
 | `readings/2026-11-11-the-homework-was-done-the-same-day.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,229 | Q1 M2 S2 | ✓ | 宿題は同じ日に実行されていた——口承資料4件に四欄を当て、台帳が閉じなかった理由を測る |
 | `readings/2026-11-11-the-mark-is-almost-always-there.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` +1 | 5,190 | Q3 S2 | ✓ | 印はほぼ全部置かれている——系譜380節のうち61節は一度も読まれていない |
