@@ -9,8 +9,8 @@
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：3847 件（research_excerpt 1623 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
-- **解釈的関係（Relations）**：6928 件
-- **探究セッション（Sessions）**：699 回
+- **解釈的関係（Relations）**：6932 件
+- **探究セッション（Sessions）**：702 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -5409,8 +5409,8 @@
 | `map/31-materials-research-13.md` | 100 | 252,084 |
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
-| `map/31-materials-research-16.md` | 100 | 244,236 |
-| `map/31-materials-research-17.md` | 9 | 10,439 |
+| `map/31-materials-research-16.md` | 100 | 245,753 |
+| `map/31-materials-research-17.md` | 23 | 34,087 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5425,7 +5425,7 @@
 | `map/40-relations-11.md` | 500 | 185,779 |
 | `map/40-relations-12.md` | 500 | 176,838 |
 | `map/40-relations-13.md` | 500 | 172,292 |
-| `map/40-relations-14.md` | 428 | 137,951 |
+| `map/40-relations-14.md` | 432 | 139,274 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5439,7 +5439,8 @@
 | `map/50-sessions-11.md` | 50 | 40,875 |
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
-| `map/50-sessions-14.md` | 49 | 41,702 |
+| `map/50-sessions-14.md` | 50 | 42,678 |
+| `map/50-sessions-15.md` | 2 | 1,507 |
 | `map/60-notes-01.md` | 25 | 63,953 |
 | `map/60-notes-02.md` | 25 | 71,094 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5461,24 +5462,24 @@
 | `map/60-notes-19.md` | 25 | 117,585 |
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
-| `map/60-notes-22.md` | 25 | 132,487 |
-| `map/60-notes-23.md` | 25 | 72,049 |
-| `map/60-notes-24.md` | 25 | 72,019 |
-| `map/60-notes-25.md` | 25 | 69,788 |
-| `map/60-notes-26.md` | 25 | 78,878 |
-| `map/60-notes-27.md` | 25 | 108,286 |
-| `map/60-notes-28.md` | 25 | 108,213 |
-| `map/60-notes-29.md` | 23 | 127,518 |
+| `map/60-notes-22.md` | 25 | 126,682 |
+| `map/60-notes-23.md` | 25 | 80,991 |
+| `map/60-notes-24.md` | 25 | 69,958 |
+| `map/60-notes-25.md` | 25 | 71,227 |
+| `map/60-notes-26.md` | 25 | 78,173 |
+| `map/60-notes-27.md` | 25 | 102,018 |
+| `map/60-notes-28.md` | 25 | 107,283 |
+| `map/60-notes-29.md` | 25 | 140,190 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・723本・26,346,023 B）
+## 8. 精読ノート索引（readings/・725本・26,423,225 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 702/723 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 704/725 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：723 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：79 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：725 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：80 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
