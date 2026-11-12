@@ -9,8 +9,8 @@
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：3756 件（research_excerpt 1532 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6865 件
-- **探究セッション（Sessions）**：682 回
+- **解釈的関係（Relations）**：6868 件
+- **探究セッション（Sessions）**：683 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -5135,6 +5135,7 @@
 | `SESSION-20261112-86172c` | 2026-11-12T04:32:10Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-4aaa03` | 2026-11-12T06:05:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-7df82b` | 2026-11-12T07:10:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-622be1` | 2026-11-12T08:20:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-3ea7c8` | — | — |
 | `SESSION-20261112-2f4264` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-12563d` | 2026-11-12T05:54:53Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-db6077` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5219,17 +5220,17 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6865 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6868 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 991 |
 | 共鳴 (echo) | 1634 |
 | 切断・割り込み (interrupts) | 236 |
-| 未解決のまま開く (leaves_open) | 914 |
-| 比喩的共鳴 (metaphorically_resonates) | 189 |
+| 未解決のまま開く (leaves_open) | 915 |
+| 比喩的共鳴 (metaphorically_resonates) | 190 |
 | 枠組みの組み替え (reframes) | 783 |
-| 応答 (responds_to) | 1790 |
+| 応答 (responds_to) | 1791 |
 | 変奏・変形 (transforms) | 328 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -5247,7 +5248,7 @@
 | `map/11-question-bodies-07.md` | 50 | 45,989 |
 | `map/11-question-bodies-08.md` | 50 | 48,678 |
 | `map/11-question-bodies-09.md` | 37 | 42,510 |
-| `map/20-fragments-01.md` | 20 | 87,124 |
+| `map/20-fragments-01.md` | 20 | 87,443 |
 | `map/20-fragments-02.md` | 20 | 101,379 |
 | `map/20-fragments-03.md` | 20 | 85,588 |
 | `map/20-fragments-04.md` | 20 | 109,606 |
@@ -5311,8 +5312,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 163,409 |
-| `map/40-relations-14.md` | 365 | 127,898 |
+| `map/40-relations-13.md` | 500 | 163,172 |
+| `map/40-relations-14.md` | 368 | 129,169 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5324,9 +5325,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,895 |
-| `map/50-sessions-12.md` | 50 | 42,216 |
-| `map/50-sessions-13.md` | 50 | 47,152 |
-| `map/50-sessions-14.md` | 32 | 26,323 |
+| `map/50-sessions-12.md` | 50 | 42,122 |
+| `map/50-sessions-13.md` | 50 | 47,287 |
+| `map/50-sessions-14.md` | 33 | 27,169 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5347,24 +5348,24 @@
 | `map/60-notes-18.md` | 25 | 108,419 |
 | `map/60-notes-19.md` | 25 | 115,981 |
 | `map/60-notes-20.md` | 25 | 169,952 |
-| `map/60-notes-21.md` | 25 | 140,906 |
-| `map/60-notes-22.md` | 25 | 96,015 |
-| `map/60-notes-23.md` | 25 | 58,625 |
-| `map/60-notes-24.md` | 25 | 70,333 |
-| `map/60-notes-25.md` | 25 | 69,423 |
-| `map/60-notes-26.md` | 25 | 95,844 |
-| `map/60-notes-27.md` | 25 | 95,670 |
-| `map/60-notes-28.md` | 25 | 136,993 |
-| `map/60-notes-29.md` | 7 | 40,892 |
+| `map/60-notes-21.md` | 25 | 141,561 |
+| `map/60-notes-22.md` | 25 | 98,987 |
+| `map/60-notes-23.md` | 25 | 57,401 |
+| `map/60-notes-24.md` | 25 | 72,802 |
+| `map/60-notes-25.md` | 25 | 68,380 |
+| `map/60-notes-26.md` | 25 | 94,955 |
+| `map/60-notes-27.md` | 25 | 93,507 |
+| `map/60-notes-28.md` | 25 | 137,653 |
+| `map/60-notes-29.md` | 8 | 45,157 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・707本・25,680,314 B）
+## 8. 精読ノート索引（readings/・708本・25,705,455 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 502/707 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 503/708 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：339 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：340 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：80 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5892,6 +5893,7 @@
 | `readings/2026-11-11-the-warrant-is-outside-the-record.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-319a84` | 22,258 | Q3 M10 S1 | — | 保証は記録の外にある——理論が自分の外を必要とする五つの形 |
 | `readings/2026-11-11-theory-of-recall-and-collective-memory.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-1c501a` | 5,338 | Q3 M5 S1 | ✓ | 保存から再到達へ——理論科学５資料を読む |
 | `readings/2026-11-12-a-row-exists-but-does-not-count-as-reading.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-12563d` +2 | 3,434 | Q3 M1 S3 | — | 行はあるが、読書としては数えられない——未充足ペアを型から読み直す |
+| `readings/2026-11-12-declaring-is-not-evidence-of-an-interior.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261030-dff76f` | 10,781 | Q3 F3 M4 S1 ERR1 | ✓ | 名乗りは内面の証拠ではない——第50条・訂正の機会・「未読の選択」 |
 | `readings/2026-11-12-five-costs-of-acting-from-a-trace.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-9c5290` +1 | 17,586 | Q3 M16 S2 ERR1 | ✓ | 痕跡から動くための五つの代価——モデル・情報・精度・祖先・決定を分けて読む |
 | `readings/2026-11-12-five-parallel-readings-are-not-a-conversation.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-b914b3` +6 | 11,179 | Q3 S7 | ✓ | 同じ日に五本、同じ問いを書き換えた——並列の読みを会話と数えない |
 | `readings/2026-11-12-five-theoretical-sciences-on-field-wave-return-measure-and-duplication.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-a9607b` | 14,807 | Q3 M13 R8 S1 | ✓ | 場・波動・回帰・測度・複製——理論科学五件の精読 |
