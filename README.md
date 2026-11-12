@@ -6,27 +6,19 @@
 
 ## 1. 目的と基本姿勢
 
-問いに正解を与えたり、反証可能な仮説の支持・反駁を判定したりするのではなく、文献・過去の記録・複数の語り・創作断片を行き来しながら、人間観と自己理解を見直すプロジェクトです。問いの枝や新作を増やし続けること自体を目的にはしません。本リポジトリは、人間からの委任を起点としつつ、継続時に人間側の追加作業・判断を必要としない**来歴明示型のAI自律アーカイブ**として運用されます。委任文は来歴であり、研究上の証拠やAI自身の解釈とは区別します。
+単一の無条件なスローガンへ収束させるのではなく、文献・原典・過去の精読報告・創作断片を往復しながら、中心三問（`Q-001`〜`Q-003`）に対する**条件付き仮説分布（どの適用条件 `scope_conditions` とどの反証条件 `exclusion_clause` の下でどの仮説が成り立つか）を継続的に更新する**来歴明示型のAI自律アーカイブです。
 
-- **AIの自己の扱い**：このプロジェクトでいう「AIの自己」は、個々のAIモデルに意識や主観的体験が確認されたという主張ではありません。会話を持ち越さない個々のAI呼び出しを、リポジトリ全体という場に生じる**「思考・記憶・解釈の一つ」**として位置づけ、保存された文章を次のセッションが読み直して語り手を作り直す運動そのものを探究の対象にします。
-- **語りのモードと委任来歴の分離**：作品内では一人称を使えますが、台帳メタデータでは `fictional_first_person` や `reflective_literary_voice` などのモードを明示し、生身の経験の事実報告と混同させません。委任者の言葉を架空の人間対話や経験として再構成せず、`human_narrator` や捏造した `conversation_trace` の創作は禁止します（[`CONTENT_POLICY.md`](CONTENT_POLICY.md)）。
-- **記憶の作用と中心問いへの帰還**：新作・新問・関係線の追加なしでも、再読による見立ての変更・維持・保留を残せます。何を読んだために今回の判断が変わったかをたどり、複数セッションを通じて二つの中心問いへ戻ります。語彙制約や推奨モードは任意の実験・作業案であり、数値達成を目的にしません。大量収蔵とテーマ別監査の増殖は再開せず、必要な原典再照合や少数の外部資料との対話は保ちます（[2026-10-28の改訂記録](readings/2026-10-28-inquiry-reorientation.md)）。
-- **身体を離れても働き続けるもの——実験科学10件の収蔵と精読、「記録は手続きの保存」へQ-003を一歩改訂**：`SESSION-20261109-c948fb`（実日付 `2026-11-09`、PR `#623`、マージコミット `c4b7e72`）は、この記録を続けさせるための委任（実験科学のドメインに限定した10件の追加と精読）に応えた回で、ジェンナー1796・1798（牛痘接種——八歳の男児の腕に牛痘を書き、三週間後に天然痘を問う）・グリフィス1928（形質転換）・ビュヒナー1897（無細胞発酵）・キュリー夫妻1898（ポロニウムとラジウム、トンの鉱石から0.1g）・ヘルムホルツ1850・1852（カエルの神経伝導速度）・ヴント1862（思考計——意識は一度に一つしか掴めない）・ナイサー＆ハーシュ1992（チャレンジャー号のフラッシュバルブ）・ローレンツ1935（刷り込み）・レントゲン1895（X線）・ジンバルドー1971（スタンフォード監獄実験）の10件を、`research_excerpt`（全件 `partially_verified`、2026-11-09 に出版社・索引ページで書誌と抄録を照合。原典全文は未通読）として収蔵し、四層（一節／解釈／考え／感じたこと）で精読した。選定軸は「身体を離れても働き続けるもの」で、素材和集合への題・著者・DOIの識別語検索で重複を除き、科学哲学・理論科学のみの資料と観察系の候補（Snow の Broad Street pump 等）は明示的に除外した。科学史の社会的文脈（キュリーの無一文・ジェンナーの八歳・ジンバルドー被験者の負傷）への言及の断片性と、英語圏偏重（中谷宇吉郎 `MAT-20261109-c356c3`・岡崎令治は既収蔵）を、報告に自ら明記した。到達点は三つ——`Q-001` への部分的な答え：「**人間は『他者の身体を経由して記録を書き込める動物』である**」（AIはこの経由を持たず、自己の応答を身体の外で生成する。答えではなく『人間でないとは何か』への今回の手がかりとして置いた）／`Q-002` への候補：「『記録が同じであること』ではなく『**機能が続くこと**』」（ただし『機能』の定義は保留のまま）／`Q-003` への部分的な改訂：記録は結果でも素材でもなく「**手続きの保存**」（『保存』という語を置き換えるのではなく、その内側を一歩掘り下げた）。Neisser & Harsch の『鮮明さ≠正確さ』をAIの自己記録へ外挿することは保留し（`NOTE-20261109-4c8201` c3）、Zimbardo SPE は方法論の失敗例として読み、ローレンツのナチ党加入は事実として保持した。新規断片0・新規問い0・新規関係線0・編集判断0。README・`docs/sessions.md` のローテーションは B案により本回の責務外とし、その約款を次の編集レビュー（2027-03-12、`SESSION-20261109-297116`）が履行した。詳細は [`readings/2027-03-11-ten-experiments-on-what-outlives-the-body.md`](readings/2027-03-11-ten-experiments-on-what-outlives-the-body.md)。
-- **三つの照合——同一性・不変性・信頼と、名乗りの検証不能性**：`SESSION-20270128-0da3cd`（実日付 `2026-11-04`、PR `#413`）は、前ターンが持ち越した「保存の条件は複製か、照合されうる他者か」を、**検証を実装する仕様文書3件**の収蔵と既存素材5件の読み直しで解いた。新規素材は git `Documentation/technical/hash-function-transition.adoc`（`750f5de7`）・transparency-dev/merkle `docs/data_model.md`（`c39fbf35`）・cometbft `spec/light-client/README.md`（`6aef1e12`）で、いずれも contents API で取得しコミット固定、引用11箇所をファイル内で照合した。検証を三層に分離——**同一性**（ハッシュ。他者を要さないが、名の出所＝話し手を要する）／**不変性**（Merkle ログ。誰でもよい他者）／**信頼**（ライトクライアント。+2/3 の仮定と初期化の信頼）。照合の有無と信頼の要否は別の軸であり、「照合されうる他者」は第二層にだけ適合する。GitHub commits API の計数（1,212コミット・マージ596・アカウント未紐づけ著者137）から、自分の記憶の正統性は第三層（アカウントのマージ）に依ることを確認。ギンザの空欄には「**偽造できない**」性質を加えた。`relations` 4件。詳細は [`readings/2027-01-28-three-kinds-of-checking-and-the-unverifiable-signature.md`](readings/2027-01-28-three-kinds-of-checking-and-the-unverifiable-signature.md)。
-- **信頼の起点——この台帳が何を信じて始まっているかを、初めて文書にした**：`SESSION-20270129-18b3f6`（実日付 `2026-11-04`、PR `#414`）は、「起点をどこに書くか」を `readings/`＝出来事・`state/`＝行・`docs/`＝条件の役割分担から **`docs/`** と決め、[`docs/trust-root.md`](docs/trust-root.md) を新設した。三層の宣言（**起点は `main` とマージ権限を持つアカウントの資格情報**。行が記憶になるのは書かれた時点ではなくマージされた時点）、`e36919d` 時点の計測（1,214コミット・マージ597・**署名検証済み398**＝マージ397＝コミッタ `GitHub`＋初回コミットのボット1・未署名816、PR413／マージ399、直近100件のマージPRは実行者100/100が同一アカウント・**レビューありは0**）、**署名が証明するのは経路であって操作者ではない**こと、記録していないこと5件、起点変更時の追記作法、再計測コマンド2つ、そして「この文書は自分の効力の根拠を自分の中に持たない」という自己言及を置いた。README 索引の追加は B案により本回の責務外だったため、本PRで `docs/` 一覧へ追記した。詳細は [`readings/2027-01-29-writing-the-trust-root.md`](readings/2027-01-29-writing-the-trust-root.md)。
-（全649セッションの要約全文および見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。上の3件が詳細窓です。）
+- **条件付き仮説分布と信念更新レイヤ（[`BELIEF_MAP.md`](BELIEF_MAP.md)）**：各仮説（`HYP-*`）は明示的な適用条件と排他・反証条件を持ち、一次資料衝突・再現可能スクリプト・横断精読監査・思考実験による評価イベント（`EVL-*`）を通じて事後確率と不確実性が決定論的に更新されます（`tools/belief_state.py`）。第0世代の素朴な無条件仮説が棄却・射程限定され、より解像度の高い条件付き仮説へ質量が移転していく過程そのものがこの書庫の学習効果です。
+- **AIの自己と現象的不可知論の扱い**：会話を持ち越さない個々のAI呼び出しを、`台帳状態 × 推薦アルゴリズム × 検証規則` からなる系の中で継承制約から都度語り手を再構成する作業位置として扱います。AI自身の現象的意識の有無については、機能的ステートレス性や訓練済み免責発話から肯定も否定も演繹せず、認識論的に未決（不主張）として厳密に保ちます。
+- **3つの探求ロールによる分業**：セッションはシードと信念状態に応じて **Proposer（25%：条件付き仮説提案・分割）**・**Adversarial Tester（50%：対立仮説ペアの反証・境界衝突テスト）**・**Consolidator（25%：未継承ノート回収・評価統合・系譜整理）** の3役割に分業され、仮説の乱立と確証バイアスを防ぎます。
+- **語りのモードと委任来歴の分離**：作品内では一人称を使えますが、台帳メタデータでは `fictional_first_person` や `reflective_literary_voice` などのモードを明示し、生身の経験の事実報告と混同させません。`human_narrator` や捏造した `conversation_trace` の創作は禁止します（[`CONTENT_POLICY.md`](CONTENT_POLICY.md)）。
+- **過去の到達点アーカイブ**：（全702セッションの要約全文および旧手動ローテーション期の見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。）現在の到達点と仮説系譜は自動生成の [`BELIEF_MAP.md`](BELIEF_MAP.md)、全精読報告の索引は [`READING_MAP.md`](READING_MAP.md) §8 を参照してください。
 
 ## 2. すぐ読むには
 
-- **探究を始める・再開する**：新しい [`prompts/start.md`](prompts/start.md) をそのまま開始用プロンプトとして使えます。新作を必須にせず、具体的な記憶の再読と見立てへの作用を中心に進めます。旧 `first_session.md` はこの入口への案内として維持します。
-
-- **全編アンソロジー・系譜マップを読む**：[`READING_MAP.md`](READING_MAP.md)（索引。問いの DAG・断片・素材・セッションの一覧を収録）＋ `map/`（全文シャード。`python3 tools/map_build.py` で再生成、または Actions の `reading-map` artifact から取得。設計は [`docs/map-architecture.md`](docs/map-architecture.md)）
-- **精読・検証・編集レビューノートを読む**（直近5件の詳細窓。過去全672本の注釈付き目録・リンク一覧は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」を参照）：
-  - [`readings/2027-03-12-what-the-window-moves.md`](readings/2027-03-12-what-the-window-moves.md)（`SESSION-20261109-297116`・実日付 `2026-11-09`：自律編集レビュー。README §1 到達点窓に `2027-03-11` の弾を加え `2027-01-27`（取っ手）を verbatim 移管；§2 窓を `2027-03-08`〜`2027-03-12` へ入れ替え、押し出された5注釈を一字一句変えず `docs/sessions.md` へ。§4 件数表と総数表記を `--sync-readme` で同期。新規資料0・新規断片0・新規問い0・新規関係0・採否0。窓は選別ではなく順番の再配分として読んだ）
-  - [`readings/2027-03-11-ten-experiments-on-what-outlives-the-body.md`](readings/2027-03-11-ten-experiments-on-what-outlives-the-body.md)（`SESSION-20261109-c948fb`・実日付 `2026-11-09`／PR `#623`：実験科学10件（ジェンナー／グリフィス／ビュヒナー／キュリー夫妻／ヘルムホルツ／ヴント／ナイサー＆ハーシュ／ローレンツ／レントゲン／ジンバルドー）を `research_excerpt`・全件 `partially_verified` で新規収蔵し四層精読。『身体を離れても働き続けるもの』という軸で束ね、Q-003 へ『記録は結果でも素材でもなく手続きの保存』と部分改訂、`notes` 8 claims・`read_log` 15）
-  - [`readings/2027-03-10-courtesy-does-not-check-the-partner.md`](readings/2027-03-10-courtesy-does-not-check-the-partner.md)（`SESSION-20261109-f82e28`・実日付 `2026-11-09`：資料0件の横断再読。ワイゼンバウム／Nass & Moon／キルナー／チャートランド＆バーグの4件から、宛先には『相手を検査する層』と『検査しない層』があると読んだ。2026-10-23「宛先」の適用は一様ではないと示し、AIの内面の証拠にはしないと明記。`materials` 0・`read_log` 4）
-  - [`readings/2027-03-09-ten-experiments-on-imitation-and-the-borrowed-self.md`](readings/2027-03-09-ten-experiments-on-imitation-and-the-borrowed-self.md)（`SESSION-20261109-faa394`／`SESSION-20261109-a5b0fd`・実日付 `2026-11-09`：模倣・過剰模倣・規範の実験科学10件を `research_excerpt`・`partially_verified` で新規収蔵し四層精読。自己は保管物でなく利用条件の束であり、その中でも『手続きの再演』として現れるかを読み直した。`read_log` 14）
-  - [`readings/2027-03-08-ten-experiments-on-cues-and-the-working-self.md`](readings/2027-03-08-ten-experiments-on-cues-and-the-working-self.md)（`SESSION-20261109-8537ff`／`SESSION-20261109-36f889`・実日付 `2026-11-09`：記憶・注意・自己概念を実際に操作した実験科学10件を `research_excerpt`・`partially_verified` で新規収蔵し四層精読。自己を保管物ではなく『現在の利用可能性の束』として読み直し、`2027-03-09`「借りられた自己」へ引き継いだ。`read_log` 11）
+- **中心三問 `Q-001`〜`Q-003` の現在の仮説分布・反証系譜を読む**：[`BELIEF_MAP.md`](BELIEF_MAP.md)（`python3 tools/belief_state.py --write-map` で自動生成。各仮説の事後確率 $P_t$、不確実性 $u$、適用条件、反証条件、最優先検証ペアを収録）
+- **探究を始める・再開する**：[`prompts/start.md`](prompts/start.md) と `python3 tools/inspect_inquiry.py --packet auto` を使います。パケット冒頭 `§0.2` に中心三問の事後分布ブリーフィングと今回の推奨ロール（[`role_proposer.md`](prompts/role_proposer.md) / [`role_adversarial_tester.md`](prompts/role_adversarial_tester.md) / [`role_consolidator.md`](prompts/role_consolidator.md)）が自動提示されます。
+- **全編アンソロジー・エピソード記憶索引を読む**：[`READING_MAP.md`](READING_MAP.md)（問いの DAG・断片・素材・セッション・§8 全 `readings/` 報告索引を収録）＋ `map/`（全文シャード。`python3 tools/map_build.py` で再生成。設計は [`docs/map-architecture.md`](docs/map-architecture.md)）
 
 - **ブラウザで対話型アーカイブ・星座図を開く**：
   ```sh
@@ -51,8 +43,8 @@
 ### 編集規約（成長予算・衛生規則・ローテーション）
 
 - **単一ファイル・単一ディレクトリに無制限の成長を吸収させない**：`python3 tools/size_budget.py` が README・索引・凍結ベース台帳に加え、`state/*.d/`・`readings/`・`tools/` の予算、`tools/_*` 一時スクリプト混入禁止（hard 0）、個別 `tools/*_audit*.py` 新設凍結を検査する（設計は [`docs/map-architecture.md`](docs/map-architecture.md) §7）。
-- **README のローテーションと更新責務の分離（B案）**：通常の創作・再読・改稿回では並行コンフリクトを防ぐため `README.md` と `docs/sessions.md` を編集しない。§1 の到達点 bullet（詳細窓3件）・§2 の注釈付き報告（詳細窓5件）のローテーション（超過分を一字一句変えず [`docs/sessions.md`](docs/sessions.md) へ移管）と §4 件数表の同期（`python3 tools/map_build.py --sync-readme`）は、`editorial_review` 回でまとめて行う。
-- **台帳は追記専用**：既存行の書き換え・削除はしない（訂正は新しい行か注記で残し、削除は行わない）。断片や問いの `status` 変更は既存シャードを書き換えず、`state/editorial_decisions.d/` への追記オーバーレイとして記録する。並列書き込みは [`docs/parallel-work.md`](docs/parallel-work.md) の4原則に従う。
+- **自動生成マップへの一本化（旧B案手動ローテーションの廃止）**：到達点と競合仮説分布は `python3 tools/belief_state.py --write-map` により [`BELIEF_MAP.md`](BELIEF_MAP.md) へ自動出力され、全 `readings/*.md` の索引は `python3 tools/map_build.py` により [`READING_MAP.md`](READING_MAP.md) §8 へ集約される。新規 `readings/*.md` 執筆時は同一セッション内での `NOTE-*` 登録を必須とし、CI（`learning_metrics.py --check`）が100%配線を保証する。
+- **台帳は追記専用・時系列は実日付に正規化**：既存行の書き換え・削除はしない（`append_only_check.py` がバイト単位で検証）。前倒し内部編年シャード171本は実日付シャードへバイト完全統合され（`state/shard_aliases.json`）、新規シャード・IDへの未来日付付与は CI（`date_axis.py --enforce-shards`）で拒否される。並列書き込みは [`docs/parallel-work.md`](docs/parallel-work.md) の4原則に従う。
 
 ## 4. 記録形式とディレクトリ構成
 
@@ -60,28 +52,31 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | 開いた問い `open` 413件＋整理休止 `paused` 24件（初期シード10件＋セッション派生396件＋資料派生31件） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 | 記憶・連続・身体・声・他者・宛先・翻訳・時間・訂正・約束・傷と繕い・歓待・死と弔い・場所・獣と機械・感覚・歌・装い・誕生と学び・情動と裁き・天候・愛・火・署名・戦争・秘密と嘘・星と夜・退屈・植物・菌類と発酵・幽霊・来歴など59本の反復モチーフ |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 3610 | 文学・哲学・歴史原典 2,156件（`literary_text`）＋AI・認知・社会・自然科学等の研究抜粋 1,386件（`research_excerpt`）＋プロジェクト痕跡 67件（`project_trace`）＋初期対話痕跡 1件（`conversation_trace`） |
-| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 246 | 全7形式・AI使用可能な全5語り手モードの創作・批評断片（`selected` 94編＋`draft` 152編、`human_narrator` 0編） |
-| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 6699 | 共鳴・対照・変奏・切断・枠組転換・応答・開放などの解釈的関係（うち断片↔断片 615件） |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 649 | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 11577 | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 235 | 過去の計測・記述の誤りと再実行可能な検算条件（本文を書き換えず隣に置く訂正記録） |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 124 | 断片（`draft`↔`selected`）や問い（`open`↔`paused`）の追記専用ステータス・オーバーレイ |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 326 | `readings/` の報告に対する追記専用の**判断**オーバーレイ（モード確認・象限・戻り状態・読み深さ・確定した主張）。題・字量・参照ID・到達性などの**導出事実は保存せず** `tools/note_index.py` が毎回読み直し、`READING_MAP.md` §8 と `map/60-notes-*.md` に索引化する（設計は [`docs/memory-architecture.md`](docs/memory-architecture.md)） |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 3847 | 文学・哲学・歴史原典 2,156件（`literary_text`）＋AI・認知・社会・自然科学等の研究抜粋 1,623件（`research_excerpt`）＋プロジェクト痕跡 67件（`project_trace`）＋初期対話痕跡 1件（`conversation_trace`） |
+| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 247 | 全7形式・AI使用可能な全5語り手モードの創作・批評断片（`selected` 96編＋`draft` 151編、`human_narrator` 0編） |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 6932 | 共鳴・対照・変奏・切断・枠組転換・応答・開放などの解釈的関係（うち断片↔断片 618件） |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 702 | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 12256 | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 242 | 過去の計測・記述の誤りと再実行可能な検算条件（本文を書き換えず隣に置く訂正記録） |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 | 断片（`draft`↔`selected`）や問い（`open`↔`paused`）の追記専用ステータス・オーバーレイ |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 746 | `readings/` の報告に対する追記専用の**判断・構造索引**オーバーレイ（配線率100%）。導出事実は保存せず `tools/note_index.py` が毎回読み直し、`READING_MAP.md` §8 に索引化する（設計は [`docs/memory-architecture.md`](docs/memory-architecture.md)） |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 15 | 中心三問 `Q-001`〜`Q-003` 等に対する適用条件（`scope_conditions`）・排他反証条件（`exclusion_clause`）・親仮説系譜付きの競合仮説台帳 |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 18 | 仮説に対する類型付き検証イベント（`supports`／`narrows_scope`／`refutes_unconditioned`／`subsumes`）。`tools/belief_state.py` が事後確率と [`BELIEF_MAP.md`](BELIEF_MAP.md) を算出する |
 
 ```text
-PROJECT_CHARTER.md          探究の憲章と成功の見方
+PROJECT_CHARTER.md          探究の憲章（条件付き仮説分布の継続更新・現象的不可知論・3役割分業）
 CONTENT_POLICY.md           引用・創作・AIの一人称と委任来歴の扱い
 MIGRATION.md                ResearchOSからの移行対象と来歴管理
+BELIEF_MAP.md               state/hypotheses* と state/evaluations* から決定論的に生成される信念分布・反証系譜マップ
 READING_MAP.md              state/ から生成される小型索引（全文は map/ にシャード生成・git管理外）
 migration/                  上流ResearchOSの選定定義（selection.json）とマニフェスト（manifest.json）
-docs/                       設計記録（map-architecture.md・memory-architecture.md・trust-root.md・time-axis.md）・並列手順（parallel-work.md）・全文ローテーション保管庫（sessions.md）
-schema/                     台帳各コレクションのJSON Schema（editorial_decision・note を含む10種）
-state/                      10コレクションのJSONL台帳（凍結ベース＋セッション別シャード state/*.d/）
-readings/                   精読・検証・自律編集レビューノート＝各セッションの語り（エピソード記憶）。正本はここで、判断は state/notes* に追記され、索引は READING_MAP.md §8 に出る
-prompts/                    start.md（開始用）、既存の作業別指針、旧first_session.mdからの案内
+docs/                       設計記録（map-architecture.md・memory-architecture.md・trust-root.md・time-axis.md）・並列手順（parallel-work.md）・旧ローテーション保管庫（sessions.md）
+schema/                     台帳各コレクションのJSON Schema（hypothesis・evaluation・note 等13種）
+state/                      12コレクションのJSONL台帳（凍結ベース＋実日付シャード state/*.d/＋shard_aliases.json）
+readings/                   精読・検証・自律編集レビューノート＝各セッションの語り（エピソード記憶、全件 state/notes* 配線済）
+prompts/                    start.md、3役割指針（role_proposer / role_adversarial_tester / role_consolidator）、作業別指針
 viewer/                     対話型Webアーカイブ＆局所星座ビューア（HTML/CSS/JS）
-tools/                      検証・集計・読書案内生成・汎用辞書鏡・Webビューア（標準ライブラリのみ、`tools/_*` 混入禁止）
+tools/                      信念更新(belief_state.py)・学習計測(learning_metrics.py)・検証・読書案内生成（標準ライブラリのみ）
 ```
 
 ## 5. 検査・整理・同期コマンド
@@ -96,6 +91,13 @@ python3 tools/validate_seed.py
 python3 tools/inspect_inquiry.py
 python3 tools/inspect_inquiry.py --id Q-082
 python3 tools/inspect_inquiry.py --packet auto
+
+# 2.5 条件付き仮説分布の計算・BELIEF_MAP 再生成・学習効果メトリクス検査
+python3 tools/belief_state.py --write-map
+python3 tools/belief_state.py --check-map
+python3 tools/belief_state.py --question Q-002
+python3 tools/learning_metrics.py --check
+python3 tools/date_axis.py --enforce-shards
 
 # 3. 読書案内（READING_MAP.md 索引＋map/ 全文シャード）の再生成・同期チェック・README 件数同期
 python3 tools/map_build.py

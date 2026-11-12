@@ -78,6 +78,24 @@ class _Unstable(Exception):
 
 
 _SHARD_SUFFIX = ".d"
+SHARD_ALIASES_FILENAME = "shard_aliases.json"
+
+
+def resolve_shard_alias(path_str: str, root: Path | None = None) -> dict[str, Any] | None:
+    """Resolve a consolidated legacy forward-dated shard path via state/shard_aliases.json."""
+    base_root = Path(root) if root is not None else Path(__file__).resolve().parents[1]
+    alias_path = base_root / "state" / SHARD_ALIASES_FILENAME
+    if not alias_path.is_file():
+        return None
+    try:
+        payload = json.loads(alias_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    aliases = payload.get("aliases") if isinstance(payload, dict) else None
+    if not isinstance(aliases, dict):
+        return None
+    norm = path_str.strip().lstrip("./")
+    return aliases.get(norm)
 
 
 def collection_files(base: Path) -> list[Path]:

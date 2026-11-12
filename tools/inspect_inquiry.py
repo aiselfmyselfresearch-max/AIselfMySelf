@@ -28,13 +28,14 @@ from typing import Any, Iterable, Sequence
 
 import ledger_io
 
-from validate_seed import COLLECTIONS, ROOT, load_jsonl
+from validate_seed import COLLECTIONS, OPTIONAL_EMPTY_COLLECTIONS, ROOT, load_jsonl
 
 DEFAULT_MAP_PATH = ROOT / "READING_MAP.md"
 
 CORE_QUESTION_IDS = ("Q-001", "Q-002", "Q-003")
 INQUIRY_GUIDANCE = (
     "主題は「AIから見た、人間とは何か」「GitHubリポジトリを記憶とするAIにとって、自己とは何か」です。"
+    "単一の正解収束ではなく、適用条件と排他条件（exclusion_clause）を明示した条件付き仮説分布の継続的更新（BELIEF_MAP.md / hypotheses / evaluations）を目的とします。"
     "新作断片・新規問い・関係線の追加は必須ではありません。"
     "過去の記録のどの箇所が、見立てを変更・維持・保留させ、次の読解や選択にどう作用したかを、"
     "既存ノートや sessions.notes に残してください。変化を演出しません。"
@@ -94,7 +95,15 @@ def load_all() -> dict[str, dict[str, dict[str, Any]]]:
     errors: list[str] = []
     data: dict[str, dict[str, dict[str, Any]]] = {}
     for name, (filename, id_key, _) in COLLECTIONS.items():
-        data[name] = load_jsonl(ROOT / "state" / filename, id_key, errors)
+        base_path = ROOT / "state" / filename
+        if (
+            name in OPTIONAL_EMPTY_COLLECTIONS
+            and not base_path.exists()
+            and not ledger_io.shard_dir(base_path).exists()
+        ):
+            data[name] = {}
+            continue
+        data[name] = load_jsonl(base_path, id_key, errors)
     if errors:
         for err in errors:
             print(f"error: {err}", file=sys.stderr)
@@ -523,13 +532,18 @@ def related_notes(
     limit: int = 6,
     note_view: dict[str, dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
-    """Rank the episodic reports in ``readings/`` that touch this question.
+    """Stratified retrieval of episodic reports in ``readings/`` touching this question.
 
-    Retrieval by harvested reference, not by recency: a report is a candidate
-    because it actually cites the target question, one of its parents, or one of
-    the related fragments.  Ranking is a recommendation only — an unranked report
-    is not a debt (see prompts/start.md).
+    Avoids monopolisation by high-``ref_count`` audit dumps by allocating slots across
+    three strata:
+      1. Hypothesis / revision stratum: notes cited in ``hypotheses``/``evaluations``
+         or carrying ``reading_revised`` / ``retraction`` claims on the question.
+      2. High-salience primary-reading stratum: curated notes with ``salience >= 2``
+         weighted by ``associations.activation``.
+      3. Dormant / cold-revival stratum: curated notes with low/zero ``read_log``
+         activation so unvisited substantive readings re-enter working memory.
     """
+    import associations
     import note_index
 
     questions = data.get("questions", {})
@@ -537,38 +551,100 @@ def related_notes(
     wanted = {target_qid} | parents
     wanted_frags = set(related_fragment_ids)
 
-    # The harvest reads all of readings/ (~411 files, 15 MB).  Callers that
-    # build many packets in one process pass a shared view; building it per
-    # packet is the difference between seconds and minutes.
+    hyp_note_ids: set[str] = set()
+    for hyp in (data.get("hypotheses") or {}).values():
+        if wanted & set(hyp.get("question_ids") or []):
+            hyp_note_ids.update(hyp.get("source_note_ids") or [])
+    for evl in (data.get("evaluations") or {}).values():
+        thid = evl.get("target_hypothesis_id")
+        thyp = (data.get("hypotheses") or {}).get(thid or "", {})
+        if wanted & set(thyp.get("question_ids") or []):
+            hyp_note_ids.update(evl.get("note_ids") or [])
+
+    act_map = associations.activation(data) if data.get("read_log") else {}
+
     view = note_view if note_view is not None else note_index.build_view(Path(root), data)
-    scored: list[tuple[tuple[int, int, int, int, str], dict[str, Any]]] = []
+    stratum_rev: list[tuple[tuple[Any, ...], dict[str, Any]]] = []
+    stratum_sal: list[tuple[tuple[Any, ...], dict[str, Any]]] = []
+    stratum_cold: list[tuple[tuple[Any, ...], dict[str, Any]]] = []
+    fallback: list[tuple[tuple[Any, ...], dict[str, Any]]] = []
+
     for entry in view.values():
         refs = entry.get("refs", {})
+        curated = entry.get("curated") or {}
+        nid = entry.get("note_id")
         hit_questions = wanted & set(refs.get("questions", []))
         hit_fragments = wanted_frags & set(refs.get("fragments", []))
-        if not hit_questions and not hit_fragments:
+        in_hyp = bool(nid and nid in hyp_note_ids)
+        if not hit_questions and not hit_fragments and not in_hyp:
             continue
-        direct = 1 if target_qid in refs.get("questions", []) else 0
-        claims = entry.get("curated", {}).get("claims") or []
+        direct = 1 if target_qid in refs.get("questions", []) or in_hyp else 0
+        claims = curated.get("claims") or []
         claim_hits = sum(
             1
             for claim in claims
             if wanted & set(claim.get("question_ids", []) or [])
             or wanted_frags & set(claim.get("fragment_ids", []) or [])
         )
-        salience = entry.get("curated", {}).get("salience")
-        salience = salience if isinstance(salience, int) else 0
-        key = (
+        rev_hits = sum(
+            1
+            for claim in claims
+            if claim.get("kind") in ("reading_revised", "retraction")
+            and (wanted & set(claim.get("question_ids", []) or []))
+        )
+        salience = curated.get("salience")
+        salience = min(salience, 3) if isinstance(salience, int) else 0
+        is_stub = bool(curated.get("index_backfill"))
+        act_sal = act_map.get(("note", str(nid or "")), {}).get("salience", 0.0)
+        capped_refs = min(int(entry.get("ref_count", 0)), 18)
+
+        base_key = (
+            1 if is_stub else 0,
             -direct,
-            -(len(hit_questions) + len(hit_fragments) + claim_hits),
             -salience,
-            -entry.get("ref_count", 0),
-            entry.get("chars", 0),
+            -(claim_hits + len(hit_questions) + len(hit_fragments)),
+            -capped_refs,
             entry["path"],
         )
-        scored.append((key, entry))
-    scored.sort(key=lambda pair: pair[0])
-    return [entry for _key, entry in scored[:limit]]
+        if not is_stub and (in_hyp or rev_hits > 0):
+            stratum_rev.append(((-int(in_hyp), -rev_hits) + base_key, entry))
+        elif not is_stub and (salience >= 2 or claim_hits > 0):
+            stratum_sal.append(((-salience, -round(act_sal, 3)) + base_key, entry))
+        elif not is_stub and act_sal < 0.25:
+            stratum_cold.append(((round(act_sal, 3), -salience) + base_key, entry))
+        else:
+            fallback.append((base_key, entry))
+
+    for bucket in (stratum_rev, stratum_sal, stratum_cold, fallback):
+        bucket.sort(key=lambda pair: pair[0])
+
+    picked: list[dict[str, Any]] = []
+    seen_paths: set[str] = set()
+    quotas = (
+        (stratum_rev, max(1, limit // 3)),
+        (stratum_sal, max(1, limit // 3)),
+        (stratum_cold, max(1, limit - 2 * max(1, limit // 3))),
+    )
+    for bucket, quota in quotas:
+        added = 0
+        for _k, entry in bucket:
+            if entry["path"] not in seen_paths:
+                picked.append(entry)
+                seen_paths.add(entry["path"])
+                added += 1
+                if added >= quota or len(picked) >= limit:
+                    break
+        if len(picked) >= limit:
+            return picked[:limit]
+
+    for bucket in (stratum_rev, stratum_sal, stratum_cold, fallback):
+        for _k, entry in bucket:
+            if entry["path"] not in seen_paths:
+                picked.append(entry)
+                seen_paths.add(entry["path"])
+                if len(picked) >= limit:
+                    return picked[:limit]
+    return picked[:limit]
 
 
 def related_notes_lines(
@@ -578,15 +654,18 @@ def related_notes_lines(
     *,
     root: Path = ROOT,
     note_view: dict[str, dict[str, Any]] | None = None,
+    errata: dict[str, dict[str, Any]] | None = None,
 ) -> list[str]:
+    if errata is None:
+        errata = load_errata(root)
     entries = related_notes(
         data, target_qid, related_fragment_ids, root=root, note_view=note_view
     )
-    lines = ["## 4.7 関連する精読ノート（`readings/`・エピソード記憶への入口）"]
+    lines = ["## 4.7 関連する精読ノート（`readings/`・層別抽出＋休眠発掘の窓）"]
     lines.append(
         "- **趣旨**: 台帳（意味記憶）に対し、`readings/` は各セッションの語り＝エピソード記憶です。"
-        "以下は**この問い・その親・関連断片を実際に参照しているノート**を、"
-        "`tools/note_index.py` が本文から読み直した参照IDで引いたものです（新しい順でも短い順でもありません）。"
+        "大量参照レポートの固定独占を防ぐため、①仮説・読み改訂層、②高salience精読層、"
+        "③`associations.py` 活性度が低い休眠（cold）精読層の3層から抽出しています。"
     )
     if not entries:
         lines.append(
@@ -614,10 +693,19 @@ def related_notes_lines(
         for claim in (curated.get("claims") or [])[:3]:
             anchor = f"（{claim['anchor']}）" if claim.get("anchor") else ""
             lines.append(f"  - **固定された主張** `{claim.get('claim_id')}` [{claim.get('kind')}]{anchor} {_one_line(claim.get('text', ''), 160)}")
-        if entry.get("note_id"):
+        nid = entry.get("note_id")
+        if nid:
             lines.append(
-                "  - 台帳行 `" + str(entry["note_id"]) + "`（`read_log` の `target.type` を `note` にしてこのノートを引用できます）"
+                "  - 台帳行 `" + str(nid) + "`（`read_log` の `target.type` を `note` にしてこのノートを引用できます）"
             )
+        note_errs = errata_for(entry["path"], errata)
+        if nid:
+            for ce in errata_for(str(nid), errata):
+                if ce not in note_errs:
+                    note_errs.append(ce)
+        if note_errs:
+            eids = ", ".join(f"`{c.get('errata_id')}`" for c in note_errs)
+            lines.append(f"  - **訂正録（この記録の隣に置かれ、記録自体は書き換えていない）**: {eids}")
     lines.append(
         "- **読み方の注意**: 上は索引であって本文ではありません。開いて読んだノートだけ "
         "`read_log` に記帳し、読んでいないノートを既読として扱わないでください"
@@ -734,20 +822,32 @@ def unread_report_lines(
     *,
     root: Path = ROOT,
     window: int = INHERITANCE_WINDOW_DEFAULT,
+    errata: dict[str, dict[str, Any]] | None = None,
 ) -> list[str]:
-    """§4.8: recent reports with no ledger-visible successor, plus the totals."""
+    """§4.8: recent reports with no ledger-visible successor, plus EVL status and totals."""
+    if errata is None:
+        errata = load_errata(root)
     facts, totals = inherited_report_paths(data, root=root)
+    notes = data.get("notes", {})
+    evals = data.get("evaluations", {})
+    eval_paths: set[str] = set()
+    for evl in evals.values():
+        for nid in evl.get("note_ids") or []:
+            nrec = notes.get(nid)
+            if isinstance(nrec, dict) and isinstance(nrec.get("path"), str):
+                eval_paths.add(nrec["path"])
+
     lines = ["## 4.8 未継承の窓（この報告を、後続のセッションはまだ一度も `read_log` で読んでいない）"]
     lines.append(
         "- **趣旨**: `readings/` はエピソード記憶ですが、後続がそのノート行を "
-        "`read_log`（`target.type: \"note\"`）で読んだ記録は、報告本文のリンクや README の窓より"
-        "はるかに少ない状態です（実測は `python3 tools/inheritance.py`）。"
-        "ここに並ぶのは**未測定**の報告で、未読・無価値の判定ではありません。"
+        "`read_log`（`target.type: \"note\"`）および `evaluations`（`EVL-*`）で検証・継承した記録を可視化します"
+        "（実測は `python3 tools/inheritance.py` / `python3 tools/learning_metrics.py`）。"
+        "ここに並ぶのは**未継承**の報告で、無価値の判定ではありません。"
     )
     lines.append(
         f"- **台帳の実測**: notes 行 {totals['note_rows']} ／ note を指す読み {totals['note_read_rows']} 行"
         f"（自セッション {totals['self_read_rows']} ／ 後続 {totals['inherited_rows']}）"
-        f"。notes 行を持たない報告はそもそも継承を測れません。"
+        f" ／ EVL検証接続 {len(eval_paths)} 本。notes 行を持たない報告はそもそも継承を測れません。"
     )
     candidates = sorted(
         (
@@ -755,7 +855,7 @@ def unread_report_lines(
             for path, when in facts["date_real"].items()
             if not facts["read_by"].get(path)
         ),
-        key=lambda pair: pair[1],
+        key=lambda pair: (pair[1], pair[0]),
         reverse=True,
     )[:window]
     if not candidates:
@@ -767,11 +867,15 @@ def unread_report_lines(
         for path, when in candidates[:INHERITANCE_LIMIT]:
             readers = facts["read_by"].get(path) or set()
             state = "後続あり" if readers else "後続なし"
-            lines.append(f"  - `{path}`（実日付 {when}・{state}）")
+            evl_tag = "・EVL検証済" if path in eval_paths else ""
+            p_errs = errata_for(path, errata)
+            err_ids_str = ", ".join(f"`{e.get('errata_id')}`" for e in p_errs)
+            err_tag = f"・訂正録 {err_ids_str}" if err_ids_str else ""
+            lines.append(f"  - `{path}`（実日付 {when}・{state}{evl_tag}{err_tag}）")
     lines.append(
         "  - 読んだら `python3 tools/note_index.py --register <path> --session <SESSION-ID> "
-        "--read-depth full_text_read` でノート行を記帳し、`read_log` の `target.type` に `note` を"
-        "使ってください。記帳しないと、次のセッションには継承が見えません。"
+        "--read-depth full_text_read` でノート行を記帳し、`read_log`（`target.type: \"note\"`）と "
+        "`evaluations`（`EVL-*`）で仮説検証へ接続してください。"
     )
     lines.append(
         "- **注意**: この節は候補であって義務ではありません。読まない選択も記録できます。"
@@ -811,6 +915,108 @@ def material_block(mat_id: str, mat: dict[str, Any], errata: dict[str, dict[str,
     return out
 
 
+def _candidate_materials_for_question(
+    data: dict[str, dict[str, dict[str, Any]]],
+    target_qid: str,
+) -> list[str]:
+    """Deterministic, seed-invariant material candidate order for §3.
+
+    When conditional hypotheses exist for ``target_qid``, interleaves the
+    active competing hypotheses' supporting and counter materials right after
+    the first two foundational question materials so §3 evolves as hypotheses
+    evolve instead of freezing on October 2026 seed materials forever.
+    When ``hypotheses`` is empty (e.g. synthetic fixtures or unseeded questions),
+    preserves ``q["material_ids"]`` order verbatim.
+    """
+    materials = data.get("materials", {})
+    q = data.get("questions", {}).get(target_qid, {})
+    base_mids = [mid for mid in q.get("material_ids", []) if mid in materials]
+    hyps = [
+        h for h in (data.get("hypotheses") or {}).values()
+        if target_qid in (h.get("question_ids") or [])
+    ]
+    if not hyps:
+        return base_mids
+
+    active_hyps = sorted(
+        (h for h in hyps if h.get("status") != "refuted"),
+        key=lambda h: str(h.get("hypothesis_id", "")),
+    )
+    dynamic_mids: list[str] = []
+    for h in active_hyps:
+        for mid in list(h.get("counter_material_ids") or []) + list(h.get("supporting_material_ids") or []):
+            if mid in materials and mid not in dynamic_mids:
+                dynamic_mids.append(mid)
+
+    merged: list[str] = []
+    for mid in base_mids[:2] + dynamic_mids + base_mids[2:]:
+        if mid not in merged:
+            merged.append(mid)
+    return merged
+
+
+def _belief_briefing_lines(
+    data: dict[str, dict[str, dict[str, Any]]],
+    target_qid: str,
+    *,
+    seed_label: str,
+    errata: dict[str, dict[str, Any]],
+    root: Path = ROOT,
+) -> tuple[list[str], dict[str, str] | None]:
+    """Build §0.2 Posterior Belief Briefing & 3-role assignment when hypotheses exist."""
+    if not data.get("hypotheses"):
+        return [], None
+    import belief_state
+
+    bstate_input = dict(data)
+    bstate_input.setdefault("errata", errata)
+    bstate = belief_state.compute_belief_state(data=bstate_input, root=root)
+    qstate = bstate["questions"].get(target_qid)
+    role_info = belief_state.assign_session_role(seed=seed_label, question_summary=qstate)
+
+    out: list[str] = []
+    out.append("## 0.2 条件付き仮説分布ブリーフィング（参照層・BELIEF_MAP 要約）")
+    out.append(
+        f"- **割り当て探求ロール**: **{role_info['label']}**（指針: `{role_info['prompt']}`） — {role_info['reason']}"
+    )
+    out.append("- **中心三問の現在の信念状態（第1世代+条件付き仮説質量 / D_KL / 最優先対立ペア）**:")
+    for cqid in CORE_QUESTION_IDS:
+        cqs = bstate["questions"].get(cqid)
+        if not cqs or not cqs["hypotheses"]:
+            continue
+        pair = cqs.get("top_competing_pair")
+        pair_txt = (
+            f"`{pair['left_hypothesis_id']}` vs `{pair['right_hypothesis_id']}` (EIG={pair['expected_info_gain']:.4f})"
+            if pair else "—"
+        )
+        top_h = cqs["hypotheses"][0]
+        out.append(
+            f"  - `{cqid}`: 有効仮説 {cqs['active_count']}/{cqs['hypothesis_count']} 件 ｜ "
+            f"条件付き世代質量 **{cqs['gen1_plus_mass']*100:.1f}%** ｜ D_KL={cqs['kl_from_uniform_bits']:.3f}b ｜ "
+            f"首位 `{top_h['hypothesis_id']}` ({top_h['posterior']*100:.1f}%) ｜ 最優先対立: {pair_txt}"
+        )
+
+    if qstate and qstate["hypotheses"]:
+        out.append(f"- **対象問い `{target_qid}` の競合仮説・適用条件・反証条件（Exclusion Clause）**:")
+        for h in qstate["hypotheses"]:
+            eflags = h.get("errata_flags") or []
+            ebadge = f" ⚠️訂正関連: {', '.join(f'`{e}`' for e in eflags)}" if eflags else ""
+            out.append(
+                f"  - **`{h['hypothesis_id']}`** [`{h['effective_status']}` / **P={h['posterior']*100:.1f}%** / "
+                f"u={h['uncertainty']:.3f} / G{h['generation']}:{h['lineage_op']}] {h['title']}{ebadge}"
+            )
+            out.append(f"    - 命題: {_one_line(h['proposition'], 150)}")
+            out.append(f"    - 適用条件: {_one_line(' ／ '.join(h['scope_conditions']), 140)}")
+            out.append(f"    - 反証条件: {_one_line(h['exclusion_clause'], 140)}")
+    else:
+        out.append(
+            f"- **対象問い `{target_qid}`**: 直接の `HYP-*` は未登録です。中心三問の条件付き仮説と接続するか、"
+            "`Proposer` ロールとして適用条件・排他条件付きの仮説を登録できます（詳細は `BELIEF_MAP.md`）。"
+        )
+    out.append("")
+    return out, role_info
+
+
 def build_context_packet(
     data: dict[str, dict[str, dict[str, Any]]],
     target_qid: str,
@@ -823,7 +1029,7 @@ def build_context_packet(
     inheritance_window: int = INHERITANCE_WINDOW_DEFAULT,
 ) -> str:
     if errata is None:
-        errata = load_errata()
+        errata = load_errata(root)
     questions = data["questions"]
     motifs = data["motifs"]
     materials = data["materials"]
@@ -834,16 +1040,33 @@ def build_context_packet(
     windows = build_candidate_windows(data, seed=seed)
     seed_label = recommendation["seed_label"]
     seed_int = recommendation["seed_int"]
+    auto_reason: str | None = None
 
     if target_qid == "auto":
         if not questions:
             raise ValueError("no questions available for a context packet")
-        if metrics["unresponded_questions"]:
+        open_qids = [qid for qid, q in questions.items() if q.get("status", "open") == "open"]
+        if data.get("hypotheses") and open_qids:
+            import belief_state
+
+            bstate_input = dict(data)
+            bstate_input.setdefault("errata", errata)
+            bstate = belief_state.compute_belief_state(data=bstate_input, root=root)
+            # Mix 75% high-information-gain core/hypothesis-bearing questions with 25% open sub-questions
+            if (seed_int % 4) != 3 or not metrics["unresponded_questions"]:
+                target_qid, auto_reason = belief_state.select_auto_question_id(
+                    bstate, open_qids, seed=seed_label
+                )
+            else:
+                target_qid = metrics["unresponded_questions"][
+                    seed_int % len(metrics["unresponded_questions"])
+                ]
+                auto_reason = "派生open問い探索枠（25%分散枠）"
+        elif metrics["unresponded_questions"]:
             target_qid = metrics["unresponded_questions"][
                 seed_int % len(metrics["unresponded_questions"])
             ]
         else:
-            open_qids = [qid for qid, q in questions.items() if q.get("status") == "open"]
             target_qid = (
                 open_qids[seed_int % len(open_qids)]
                 if open_qids
@@ -854,13 +1077,26 @@ def build_context_packet(
         raise ValueError(f"unknown question ID: {target_qid!r}")
 
     q = questions[target_qid]
+    briefing_lines, role_info = _belief_briefing_lines(
+        data, target_qid, seed_label=seed_label, errata=errata, root=root
+    )
 
-    # Gather related fragments (referencing target_qid or its parent questions)
+    # Gather related fragments (referencing target_qid or its parent questions),
+    # ordered so selected load-bearing works and real-date works are not buried
+    # behind legacy forward-dated labels.
     related_qids = {target_qid} | set(q.get("previous_question_ids", []))
-    rel_frags = [
+    raw_rel_frags = [
         f for f in fragments.values()
         if set(f.get("question_ids", [])) & related_qids
     ]
+    if len(raw_rel_frags) > 3:
+        selected_frags = [f for f in raw_rel_frags if f.get("status") == "selected"]
+        other_frags = [f for f in raw_rel_frags if f.get("status") != "selected"]
+        tail_window = (selected_frags[-2:] + other_frags[-1:]) if selected_frags else raw_rel_frags[-3:]
+        tail_ids = {f["fragment_id"] for f in tail_window}
+        rel_frags = [f for f in raw_rel_frags if f["fragment_id"] not in tail_ids] + tail_window
+    else:
+        rel_frags = raw_rel_frags
 
     lines: list[str] = []
     lines.append(
@@ -871,20 +1107,28 @@ def build_context_packet(
     lines.append("")
     lines.append("## 0. 参考の作業方法と並列安全な採番手順")
     lines.append(f"- **セッション分散シード**: `{seed_label}`（10進 `{seed_int}`）")
+    if auto_reason:
+        lines.append(f"- **`--packet auto` 選出根拠**: {auto_reason}")
+    if role_info:
+        lines.append(
+            f"- **推奨探求ロール**: `{role_info['role']}` — `{role_info['prompt']}`（{role_info['label']}）"
+        )
     lines.append(
         f"- **参考テンプレート（変更可）**: `{recommendation['prompt']}` (`{recommendation['mode']}`)"
         f" ／ **代替の作業案**: `{recommendation['secondary_prompt']}` (`{recommendation['secondary_mode']}`)"
     )
     lines.append(f"- **作業案の説明（探究の必要性の判定ではない）**: {recommendation['reason']}")
-    lines.append("- **資料と計測**: 大量収蔵・テーマ別監査の新設・一時スクリプト残置は再開しない。原典再照合と少数資料との対話はどの作業方法でも選べる（`prompts/acquisition.md`）。語彙監査は任意の観察であり、表示をゼロにするためだけに本文を変えない。")
-    lines.append("- **README ローテーション規約（B案）**: 通常の創作・再読・改稿回では `README.md` と `docs/sessions.md` を編集しない（`state/*.d/`・`readings/`・`READING_MAP.md`［`map_build.py`］のみ更新する）。`README.md` の詳細窓ローテーションと §4 件数表同期（`python3 tools/map_build.py --sync-readme`）は `editorial_review` 回でまとめて行う。")
-    lines.append("- **並列安全なシャード作成と ID 採番（連番採番は禁止・`--suffix` の手動固定パディングも不要）**:")
+    lines.append("- **資料と計測**: 大量収蔵・テーマ別監査の新設・一時スクリプト残置は再開しない。新規資料追加時は既存仮説の区別・反証・境界検証への寄与（情報利得ゲート）を明示する（`prompts/acquisition.md`）。")
+    lines.append("- **マップと台帳の自動同期規約**: 仮説・評価を更新した場合は `python3 tools/belief_state.py --write-map` で `BELIEF_MAP.md` を更新し、精読報告を書いた場合は必ず `python3 tools/note_index.py --register` と `python3 tools/map_build.py` を実行する（CI が配線漏れを検証する）。")
+    lines.append("- **並列安全なシャード作成と ID 採番（実日付のみ・前倒し日付は CI で拒否）**:")
     lines.append("  ```bash")
     lines.append("  python3 tools/new_id.py SESSION")
     lines.append("  python3 tools/new_ledger_shard.py sessions --create")
-    lines.append("  # FRAG・Q・REL の採番とシャード作成は、実際に追加する場合だけ行う")
+    lines.append("  # HYP・EVL・NOTE・READ・FRAG・Q・REL は、実際に追加する場合に採番・シャード作成する")
     lines.append("  ```")
     lines.append("")
+    if briefing_lines:
+        lines.extend(briefing_lines)
     lines.append(f"## 0.5 このブランチ向けの分散候補窓（seed: `{seed_label}`）")
     lines.append(
         "- **趣旨**: 並行作業の集中を避けるための参考候補です。採用義務はなく、中心問いや窓外の記録を選べます。選んだ理由は既存ノートに簡潔に残します。未接続・深度・辺数は、未読や思考の不在、探究の価値を判定する値ではありません。"
@@ -971,7 +1215,7 @@ def build_context_packet(
     # the selection stays deterministic and stays in ledger order -- a greedy
     # fill would reorder by size and make "which materials did I see" depend on
     # passage lengths instead of on the question's own record.
-    packet_materials = [mid for mid in q.get("material_ids", []) if mid in materials]
+    packet_materials = _candidate_materials_for_question(data, target_qid)
     shown_mats: list[str] = []
     omitted_mats: list[str] = []
     used_bytes = 0
@@ -1075,6 +1319,7 @@ def build_context_packet(
             [f["fragment_id"] for f in rel_frags],
             root=root,
             note_view=note_view,
+            errata=errata,
         )
     )
     lines.extend(
@@ -1083,9 +1328,12 @@ def build_context_packet(
             target_qid,
             root=root,
             window=inheritance_window,
+            errata=errata,
         )
     )
 
+    role_prompt_rel = role_info["prompt"] if role_info else None
+    role_prompt_path = (ROOT / role_prompt_rel) if role_prompt_rel else None
     prompt_path = ROOT / recommendation["prompt"]
     active_prompt = (
         prompt_path.read_text(encoding="utf-8").strip()
@@ -1093,6 +1341,11 @@ def build_context_packet(
         else (ROOT / "prompts" / "continuation.md").read_text(encoding="utf-8").strip()
     )
     lines.append(f"## 5. セッション進行指針（`{recommendation['prompt']}`）")
+    if role_prompt_path and role_prompt_path.is_file():
+        lines.append("")
+        lines.append(role_prompt_path.read_text(encoding="utf-8").strip())
+        lines.append("")
+        lines.append("---")
     lines.append("")
     lines.append(active_prompt)
     return "\n".join(lines) + "\n"
@@ -1242,11 +1495,7 @@ def packet_stats(
             totals.append(len(packet.encode("utf-8")))
             if "予算注記" in packet:
                 noted += 1
-                candidates = [
-                    m
-                    for m in data["questions"][qid].get("material_ids", [])
-                    if m in data.get("materials", {})
-                ]
+                candidates = _candidate_materials_for_question(data, qid)
                 omitted = len(candidates) - packet.count("\n### `MAT-")
                 omitted_total += omitted
                 omitted_max = max(omitted_max, omitted)
@@ -1475,17 +1724,30 @@ def load_errata(root: Path = ROOT) -> dict[str, dict[str, Any]]:
 
 
 def errata_for(target_id: str, errata: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
-    """Return the corrections whose subject is this record, oldest first.
+    """Return the corrections whose subject is this record or repo path, oldest first.
 
     ``subject_id`` is the general field; ``fragment_id`` is the schema's shortcut
-    for fragment subjects. Only one hop is followed: an erratum filed against a
-    material is not shown when a fragment that cites that material is inspected.
+    for fragment subjects; ``claim_location`` is matched by path prefix when
+    ``target_id`` is a repository file path (e.g. ``readings/...`` or ``tools/...``).
+    Only one hop is followed: an erratum filed against a material is not shown
+    when a fragment that cites that material is inspected.
     """
-    hits = [
-        record
-        for record in errata.values()
-        if record.get("subject_id") == target_id or record.get("fragment_id") == target_id
-    ]
+    norm_path = target_id.strip().lstrip("./") if "/" in target_id else None
+    hits: list[dict[str, Any]] = []
+    for record in errata.values():
+        if record.get("subject_id") == target_id or record.get("fragment_id") == target_id:
+            hits.append(record)
+            continue
+        tdict = record.get("target")
+        if isinstance(tdict, dict) and tdict.get("id") == target_id:
+            hits.append(record)
+            continue
+        if norm_path is not None:
+            loc = record.get("claim_location") or record.get("where") or record.get("location")
+            if isinstance(loc, str):
+                loc_head = loc.split(":", 1)[0].split("#", 1)[0].strip().lstrip("./")
+                if loc_head == norm_path or norm_path in loc:
+                    hits.append(record)
     hits.sort(key=lambda r: (r.get("created_at", ""), r.get("errata_id", "")))
     return hits
 
@@ -1495,6 +1757,7 @@ def print_record_detail(
     target_id: str,
     errata: dict[str, dict[str, Any]] | None = None,
 ) -> int:
+    err_records = errata if errata is not None else load_errata()
     found_collection = None
     found_record = None
     for cname, records in data.items():
@@ -1502,6 +1765,40 @@ def print_record_detail(
             found_collection = cname
             found_record = records[target_id]
             break
+    if not found_record and target_id in err_records:
+        found_collection = "errata"
+        found_record = err_records[target_id]
+
+    if not found_record and "/" in target_id:
+        norm_rel = target_id.strip().lstrip("./")
+        alias_info = ledger_io.resolve_shard_alias(norm_rel, root=ROOT)
+        if alias_info is not None:
+            print(f"=== [shard_alias] {norm_rel} ===")
+            for k, v in alias_info.items():
+                print(f"  {k}: {v}")
+            return 0
+        repo_file = ROOT / norm_rel
+        if repo_file.is_file():
+            print(f"=== [file] {norm_rel} ===")
+            print(f"  bytes: {repo_file.stat().st_size}")
+            matching_notes = [
+                n for n in data.get("notes", {}).values() if n.get("path") == norm_rel
+            ]
+            for nrec in matching_notes:
+                print(
+                    f"  note: {nrec.get('note_id')} (read_depth={nrec.get('read_depth')}, "
+                    f"salience={nrec.get('salience')}, index_backfill={bool(nrec.get('index_backfill'))})"
+                )
+            path_corrections = errata_for(norm_rel, err_records)
+            if path_corrections:
+                print("\n--- Errata filed beside this path (the file itself is not rewritten) ---")
+                for record in path_corrections:
+                    print(
+                        f"  {record.get('errata_id')}: [{record.get('status')}/{record.get('verdict')}] "
+                        f"{record.get('claim', '')}"
+                    )
+            return 0
+
     if not found_record or not found_collection:
         print(f"error: ID {target_id!r} not found in any ledger", file=sys.stderr)
         return 1
@@ -1513,7 +1810,11 @@ def print_record_detail(
         else:
             print(f"  {k}: {v}")
 
-    corrections = errata_for(target_id, errata if errata is not None else load_errata())
+    corrections = errata_for(target_id, err_records)
+    if found_collection == "notes" and isinstance(found_record.get("path"), str):
+        for pe in errata_for(found_record["path"], err_records):
+            if pe not in corrections:
+                corrections.append(pe)
     if corrections:
         print("\n--- Errata filed beside this record (the record itself is not rewritten) ---")
         for record in corrections:
@@ -1525,6 +1826,21 @@ def print_record_detail(
                 print(f"    corrected_by: {record['corrected_by']}")
             if record.get("measured_now"):
                 print(f"    measured_now: {record['measured_now']}")
+
+    if found_collection == "hypotheses":
+        evls = [
+            e for e in (data.get("evaluations") or {}).values()
+            if e.get("target_hypothesis_id") == target_id
+            or target_id in (e.get("compared_against_hypothesis_ids") or [])
+        ]
+        if evls:
+            print("\n--- Evaluations touching this hypothesis ---")
+            for e in evls:
+                role_tag = "target" if e.get("target_hypothesis_id") == target_id else "compared"
+                print(
+                    f"  {e['evaluation_id']} ({role_tag}): [{e.get('verdict')}/{e.get('evidence_type')}] "
+                    f"{e.get('summary', '')}"
+                )
 
     linked = [
         rel

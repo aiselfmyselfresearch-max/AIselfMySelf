@@ -129,23 +129,34 @@ _SID_DATE = re.compile(r"SESSION-(\d{4})(\d{2})(\d{2})-")
 def session_date(session_id: str, record: dict) -> date | None:
     """The real date a session started, or ``None`` if it cannot be established.
 
-    ``session_id`` first: ``tools/new_id.py`` stamps it from the real date.
-    ``started_at`` second: it may carry a future internal-chronology label.
-
-    In both cases **a future date is not a date**.  Measured 2026-11-10: 102 of
-    632 session IDs already carry a future internal label (``SESSION-20270220-…``),
-    so accepting a future ID date would both credit the rule with sessions that
-    have not happened and turn the internal chronology into a compliance record.
-    Anything that cannot be resolved is exempt — an unparsable timestamp must not
-    manufacture a violation.
+    Unified with ``tools/date_axis.py``: explicit execution-date markers in
+    ``notes`` / ``human_direction`` (e.g. ``実行環境の UTC 日付 2026-10-26``) win
+    over internal-chronology labels in ``session_id`` or ``started_at``.
+    In all cases **a future date (> today) is not a real date** and remains exempt.
     """
+    import date_axis
+
+    today = date.today()
+    for field_name in ("notes", "human_direction"):
+        text = record.get(field_name) or ""
+        found_exec = date_axis._EXECUTION_DATE.search(text)
+        if found_exec:
+            parsed_exec = date_axis.as_date(found_exec.group(1))
+            if parsed_exec is not None and parsed_exec <= today:
+                return parsed_exec
+        found_marker = date_axis.marker_date(text)
+        if found_marker:
+            parsed_marker = date_axis.as_date(found_marker[0])
+            if parsed_marker is not None and parsed_marker <= today:
+                return parsed_marker
+
     match = _SID_DATE.match(session_id)
     if match:
         try:
             stamped = date(int(match.group(1)), int(match.group(2)), int(match.group(3)))
         except ValueError:
             stamped = None
-        if stamped is not None and stamped <= date.today():
+        if stamped is not None and stamped <= today:
             return stamped
     value = record.get("started_at")
     if isinstance(value, str) and value:
@@ -153,7 +164,7 @@ def session_date(session_id: str, record: dict) -> date | None:
             parsed = date.fromisoformat(value[:10])
         except ValueError:
             return None
-        return parsed if parsed <= date.today() else None
+        return parsed if parsed <= today else None
     return None
 
 
