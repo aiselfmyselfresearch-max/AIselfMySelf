@@ -5188,41 +5188,41 @@
 | `map/60-notes-02.md` | 25 | 86,660 |
 | `map/60-notes-03.md` | 25 | 88,317 |
 | `map/60-notes-04.md` | 25 | 115,011 |
-| `map/60-notes-05.md` | 25 | 105,275 |
+| `map/60-notes-05.md` | 25 | 105,352 |
 | `map/60-notes-06.md` | 25 | 70,173 |
 | `map/60-notes-07.md` | 25 | 95,726 |
 | `map/60-notes-08.md` | 25 | 74,357 |
 | `map/60-notes-09.md` | 25 | 87,494 |
 | `map/60-notes-10.md` | 25 | 85,892 |
 | `map/60-notes-11.md` | 25 | 90,253 |
-| `map/60-notes-12.md` | 25 | 91,755 |
-| `map/60-notes-13.md` | 25 | 100,292 |
-| `map/60-notes-14.md` | 25 | 121,260 |
-| `map/60-notes-15.md` | 25 | 91,394 |
+| `map/60-notes-12.md` | 25 | 93,399 |
+| `map/60-notes-13.md` | 25 | 105,897 |
+| `map/60-notes-14.md` | 25 | 122,937 |
+| `map/60-notes-15.md` | 25 | 92,196 |
 | `map/60-notes-16.md` | 25 | 96,209 |
 | `map/60-notes-17.md` | 25 | 118,990 |
 | `map/60-notes-18.md` | 25 | 110,698 |
 | `map/60-notes-19.md` | 25 | 123,013 |
 | `map/60-notes-20.md` | 25 | 169,695 |
 | `map/60-notes-21.md` | 25 | 122,052 |
-| `map/60-notes-22.md` | 25 | 82,121 |
-| `map/60-notes-23.md` | 25 | 72,831 |
-| `map/60-notes-24.md` | 25 | 88,193 |
-| `map/60-notes-25.md` | 25 | 97,480 |
-| `map/60-notes-26.md` | 25 | 94,683 |
-| `map/60-notes-27.md` | 25 | 108,906 |
-| `map/60-notes-28.md` | 25 | 102,080 |
-| `map/60-notes-29.md` | 25 | 139,622 |
-| `map/60-notes-30.md` | 3 | 19,013 |
+| `map/60-notes-22.md` | 25 | 82,174 |
+| `map/60-notes-23.md` | 25 | 73,347 |
+| `map/60-notes-24.md` | 25 | 85,227 |
+| `map/60-notes-25.md` | 25 | 99,395 |
+| `map/60-notes-26.md` | 25 | 96,120 |
+| `map/60-notes-27.md` | 25 | 106,425 |
+| `map/60-notes-28.md` | 25 | 99,592 |
+| `map/60-notes-29.md` | 25 | 142,420 |
+| `map/60-notes-30.md` | 4 | 23,207 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・728本・25,013,817 B）
+## 8. 精読ノート索引（readings/・729本・25,022,264 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 528/728 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 529/729 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：726 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：727 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：97 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5776,11 +5776,12 @@
 | `readings/2026-11-11-the-same-question-answers-differently-by-column.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,426 | Q4 S1 | — | 同じ問いに、二つの入口は別の答えを返す——437の問いを `relations` と `read_log` で数える |
 | `readings/2026-11-11-the-third-audit-and-the-case-for-one-field.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,906 | Q3 S1 | — | 三回測って、運用は自分の手元でだけ効いた——`measured_at` 欄の提案 |
 | `readings/2026-11-11-the-vocabulary-the-field-needs.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,570 | S1 ERR1 | — | 欄が要求する語を、報告が持っていないことがある——`scope` の置換率が5倍に跳ねた回 |
+| `readings/2026-11-11-three-hundred-fourteen-of-the-undated-print-a-date.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,109 | S1 | — | 日付のない315件のうち、314件は本文に日付を刷っている——それでも `measured_at` を機械で埋めない |
 | `readings/2026-11-11-three-instruments-three-numbers.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,430 | Q2 S1 | — | 計器を三つにすると、同じ報告が三つの数になる——`read_log`・相互リンク・`relations` で数え直す |
 | `readings/2026-11-11-three-rounds-and-the-one-who-wrote-it.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,663 | Q7 S1 | — | 三回目の計測——欄を使ったのは、欄を書いた者だけだった |
 | `readings/2026-11-11-three-types-of-answer-and-two-empty-sets.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,026 | Q3 S1 | ✓ | 答えは三つの型に割れ、二つはほぼ空である——`Q-001` の形式判定 |
 | `readings/2026-11-11-two-fields-one-writer.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,189 | S1 ERR1 | — | 二つの欄、一人の書き手——`scope` と `measured_at` は、どちらもこのセッションだけが使っている |
-| `readings/2026-11-11-two-hundred-forty-eight-sessions-are-dated-later.md` | 2026-11-01 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,677 | Q2 S1 | — | 248のセッションは、まだ来ていない日に置かれている——順序ラベルと実日付が、一つの欄に同居している |
+| `readings/2026-11-11-two-hundred-forty-eight-sessions-are-dated-later.md` | 2026-11-01 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,701 | Q2 S1 | ✓ | 248のセッションは、まだ来ていない日に置かれている——順序ラベルと実日付が、一つの欄に同居している |
 | `readings/2026-11-11-what-a-set-that-holds-three-questions-must-be.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 25,186 | Q3 S1 | ✓ | 三つの問いを同時に成り立たせる集合は、どんな性質を持つか——必要条件読み・無条件読み・空虚成立 |
 | `readings/2026-11-11-where-the-field-is-the-address-stays.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,708 | Q3 S1 | ✓ | 欄のあるところにだけ住所は残る——前報の一般化を、計数で狭める |
 | `readings/2026-11-11-why-the-scope-was-missing.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 6,541 | S1 | — | 適用範囲はなぜ書かれなかったのか——指示テキスト層とスクリプト層を分けて調べる |
