@@ -227,7 +227,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # unchanged; not an automatic raise.  Measured in
         # docs/parallel-work.md (2026-11-11) and readings/2026-11-11-five-
         # operations-for-counting-the-same.md §11.
-        soft_shards=94,
+        # 2026-11-12 (SESSION-20261112-2bbcac): 94 -> 95 for this session's
+        # requested seven-source theoretical-science shard.  Procedure 7/8
+        # measured first on parent 985e331: 6 mobile shards exist across the
+        # directory, zero adjacent mobile pairs, zero complete mobile date
+        # groups (net reclaim = 0), and the 2026-11-10 mobile candidate was
+        # already consolidated/deleted on origin/main (d6c211d).  notes.d uses
+        # its free slot (94/96 -> 95/96).  Hard 160 unchanged; not automatic.
+        # Measured in docs/parallel-work.md (2026-11-12).
+        soft_shards=95,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -253,7 +261,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # than 80 and their rows are append-only.  Measured in
         # readings/2026-11-09-the-retraction-i-almost-repeated.md section 6-1.
         # Hard limit 160 unchanged.
-          soft_shards=80,
+        # 2026-11-12 (SESSION-20261112-2bbcac): 80 -> 81 for this session's
+        # seven relations in their own 2026-11-12 shard.  Procedure 7 measured
+        # net reclaim = 0 on parent 985e331 (and 2026-11-10 mobile shards were
+        # already consolidated on origin/main d6c211d); no 2026-11-12 zero
+        # shard existed on parent.  Hard 160 unchanged; see docs/parallel-work.md.
+          soft_shards=81,
         hard_shards=160,
         remedy="Compact old state/relations.d/ shards into frozen base in a dedicated maintenance PR",
     ),
@@ -320,7 +333,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # reclaims 0.  Byte dimension is not binding (4.15 MiB of a 5 MiB soft).
         # Hard 160 unchanged; not an automatic raise.
         # See readings/2027-03-13-blinding-is-a-procedure-for-producing-ignorance.md §13.
-        soft_shards=91,
+        # 2026-11-12 (SESSION-20261112-2bbcac): 91 -> 92 for 15 reading rows in
+        # their own 2026-11-12 shard.  Procedure 7 measured net reclaim = 0 on
+        # parent 985e331, and 2026-11-10 mobile candidates were already absorbed
+        # on origin/main (d6c211d).  Byte budget remains well under 5 MiB.
+        # Hard 160 unchanged; see docs/parallel-work.md (2026-11-12).
+        soft_shards=92,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -462,7 +480,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # new rows omit shard locations; however all existing movable session
         # candidates were absent (self-location or inbound references). Hard
         # limit 160; no further increase is implied. See report §13.
-          soft_shards=96,
+        # 2026-11-12 (SESSION-20261112-2bbcac): 96 -> 97 for this session's
+        # single-row 2026-11-12 shard (omitting shard path for future
+        # compaction).  Procedure 7 measured net reclaim = 0 on parent 985e331,
+        # and 2026-11-10 mobile candidates were already consolidated on
+        # origin/main (d6c211d).  Hard 160 unchanged; see docs/parallel-work.md.
+          soft_shards=97,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
