@@ -248,7 +248,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # is true only at the moment it is created. Not an automatic raise;
         # the next session that hits this wall should measure row length and
         # existing shard reuse before raising again. Hard 160 unchanged.
-        soft_shards=99,
+        # 2026-11-12: 99 -> 100 for this session's five-source theoretical
+        # science acquisition.  Consolidation was exhausted first: sessions.d,
+        # read_log.d, and relations.d each reclaimed 1 shard on unreferenced
+        # 2026-11-10 files (byte-multiset verified; zero overlap with open PRs).
+        # In materials.d (99/99), only 3 strictly unreferenced shards exist
+        # (indices 64, 66, 68), none adjacent, no same-date group fully movable,
+        # and zero 2026-11-12 shards exist for procedure 8-2 -> net reclaim 0.
+        # Hard 160 unchanged; not an automatic raise (see docs/parallel-work.md).
+        soft_shards=100,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -595,7 +603,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # automatic raise.  Note: open PR #655 raises this same line for a
         # one-time notes backfill (bytes 1 -> 1.25 MiB, 92 -> 96 shards);
         # whichever of the two lands second resolves a trivial conflict.
-        soft_shards=95,
+        # 2026-11-12: 95 -> 96 for this session's curated note row (1 row).
+        # notes.d remains excluded from consolidation (order-sensitive) and no
+        # 2026-11-12 shard existed for procedure 8-2 -> net reclaim 0.
+        # Hard 160 unchanged; not an automatic raise (see docs/parallel-work.md).
+        soft_shards=96,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
