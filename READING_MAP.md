@@ -5204,25 +5204,25 @@
 | `map/60-notes-18.md` | 25 | 114,573 |
 | `map/60-notes-19.md` | 25 | 125,886 |
 | `map/60-notes-20.md` | 25 | 170,271 |
-| `map/60-notes-21.md` | 25 | 120,405 |
-| `map/60-notes-22.md` | 25 | 85,878 |
-| `map/60-notes-23.md` | 25 | 84,674 |
-| `map/60-notes-24.md` | 25 | 84,888 |
-| `map/60-notes-25.md` | 25 | 112,152 |
-| `map/60-notes-26.md` | 25 | 94,665 |
-| `map/60-notes-27.md` | 25 | 106,142 |
-| `map/60-notes-28.md` | 25 | 98,013 |
-| `map/60-notes-29.md` | 25 | 137,653 |
-| `map/60-notes-30.md` | 8 | 44,989 |
+| `map/60-notes-21.md` | 25 | 120,449 |
+| `map/60-notes-22.md` | 25 | 86,436 |
+| `map/60-notes-23.md` | 25 | 84,934 |
+| `map/60-notes-24.md` | 25 | 83,589 |
+| `map/60-notes-25.md` | 25 | 113,722 |
+| `map/60-notes-26.md` | 25 | 92,945 |
+| `map/60-notes-27.md` | 25 | 104,229 |
+| `map/60-notes-28.md` | 25 | 95,769 |
+| `map/60-notes-29.md` | 25 | 140,833 |
+| `map/60-notes-30.md` | 9 | 49,993 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・733本・25,059,404 B）
+## 8. 精読ノート索引（readings/・734本・25,074,126 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 533/733 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 534/734 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：731 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：732 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：101 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5728,7 +5728,7 @@
 | `readings/2026-11-10-three-trials-on-description-loss-self-description-and-the-non-class.md` | 2026-11-10 | 2026-11-10 | `SESSION-20261110-f23658` | 11,039 | Q4 M3 MOT2 R10 S1 | ✓ | 三つの試行——記述の喪失、自己記述、非-類 |
 | `readings/2026-11-11-address-without-visit.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,984 | M4 S1 | — | 住所はある。訪問の記録はない——素材3,640件のうち、URL を持たない行は0、照合を記録した欄を持たない行は669 |
 | `readings/2026-11-11-addresses-keep-what-reasons-lose.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,348 | Q3 S1 | ✓ | 住所つきで保存する——理由が二度落ちることの確認と、ヒュームの付録という反例 |
-| `readings/2026-11-11-all-seven-hundred-thirty-have-a-note.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,011 | M1 S1 ERR1 | — | 七三〇本すべてに note が付いた——ただし、読んだのは中央値24%である |
+| `readings/2026-11-11-all-seven-hundred-thirty-have-a-note.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,011 | M1 S1 ERR1 | ✓ | 七三〇本すべてに note が付いた——ただし、読んだのは中央値24%である |
 | `readings/2026-11-11-arriving-is-not-the-same-as-being-read-closely.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,562 | Q3 S1 | — | 届くことと、深く届くことは違う——十二本を続けて読み、「読まれない」を三つの型に分けて数える |
 | `readings/2026-11-11-blank-is-allowed.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,900 | S1 ERR1 | — | 空の `scope` は、最初から許されていた——私は二十回、空を使わずに語を寄せた |
 | `readings/2026-11-11-claims-are-reread-not-cited.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,154 | Q3 S1 | — | 主張は引用されず、読み直される——note 層の1,976件を二つの計器で測る |
@@ -5761,6 +5761,7 @@
 | `readings/2026-11-11-selected-means-two-things.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,909 | S1 | — | `selected` は17編か、94編か——同じ語が二つの層で違う数を指し、どちらの数え方にも警告が出ない |
 | `readings/2026-11-11-seven-verbs-and-one-wrong-row-count.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,895 | Q2 S1 ERR1 | — | 読んだと書ける動詞は七つ——前回の「欄なし240行」を撤回する |
 | `readings/2026-11-11-six-answers-cannot-share-one-relation.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,315 | Q3 F1 S1 | ✓ | 六つの答えを一つの関係に課すと矛盾する——`Q-002` の形式判定と、層別に読めば両立すること |
+| `readings/2026-11-11-the-anchors-say-more-than-the-label.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 7,069 | S1 | — | 見出しの語より、錨の位置——率の達成のあとで、ドリフトを測り直し、二つの申し送りを分析する |
 | `readings/2026-11-11-the-answer-updated-in-one-page.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,581 | Q3 S1 | — | 回答の更新版——依頼文への答えを一頁に置き、計数で一つ足す |
 | `readings/2026-11-11-the-axis-i-chose-was-measured-wrong.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,056 | Q6 F1 S1 | — | 軸に選んだ問いの言及は、その問いの話ではなかった |
 | `readings/2026-11-11-the-axis-removed.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,791 | Q11 S1 | — | 軸を外した回——参照先は3から20に増え、同じ問いを二度読むことはなくなった |
