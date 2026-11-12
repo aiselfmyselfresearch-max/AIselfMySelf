@@ -19,6 +19,18 @@ jobs:
           # is the merge result and its first parent is the base branch.
           fetch-depth: 2
 
+      # Work merged into a branch other than main is invisible from main.  On
+      # 2026-11-12 two sessions' pull requests (#693, #695) were merged into the
+      # branch of PR #655 after that pull request had been closed unmerged.
+      - name: Check that the pull request targets main
+        if: github.event_name == 'pull_request' && github.base_ref != 'main'
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          echo "This pull request targets '$BASE_REF', not main."
+          echo "Rows and reports merged there will not reach main. Retarget the pull request to main."
+          exit 1
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
