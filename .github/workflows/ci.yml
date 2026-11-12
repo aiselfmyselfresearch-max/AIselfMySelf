@@ -13,6 +13,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Two commits, so that the first parent is available to the
+          # append-only step below.  On a pull request the checked-out commit
+          # is the merge result and its first parent is the base branch.
+          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -21,6 +26,16 @@ jobs:
 
       - name: Validate ledgers (base + shards)
         run: python3 tools/validate_seed.py
+
+      # Every other step parses a row before looking at it, so a re-serialised
+      # or edited row passes them.  This one compares bytes: each ledger line of
+      # the base must still be present.  It runs where the base is main (pull
+      # requests, and pushes to main); a branch may still fix rows of its own
+      # that have not reached main.  There is no override: when a human has
+      # approved changing a row, this step stays red and lists what changes.
+      - name: Check that no ledger line on the base was rewritten or removed
+        if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+        run: python3 tools/append_only_check.py --base HEAD^1
 
       - name: Check READING_MAP.md is current
         run: python3 tools/inspect_inquiry.py --check-map
