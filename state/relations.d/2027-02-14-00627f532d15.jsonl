@@ -1,2 +1,0 @@
-{"relation_id": "REL-20270214-8de142", "left": {"type": "fragment", "id": "FRAG-20270214-65aa8c"}, "relation_type": "responds_to", "right": {"type": "material", "id": "MAT-LIT-20270212-f0bc69"}, "note": "狩れることと食べられることの非一致に応答し、育てた大根と調理条件の非一致を別舞台の独立創作に置く。原典の代替や実証でない。", "created_at": "2027-02-14"}
-{"relation_id": "REL-20270214-4e49f4", "left": {"type": "note", "id": "NOTE-20270214-d59363"}, "relation_type": "reframes", "right": {"type": "note", "id": "NOTE-20270213-c64621"}, "note": "前回の必要／義務／終了の区別を維持し、二者の支援交代から複数の仕事・条件・予定の調整へ焦点をずらす。", "created_at": "2027-02-14"}

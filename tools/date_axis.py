@@ -622,6 +622,20 @@ def assert_writable_day(day: str, *, today: date | None = None) -> str:
     return parsed.isoformat()
 
 
+def forward_dated_shards(root: Path = ROOT, *, today: date | None = None) -> list[str]:
+    """Return repo-relative paths of any state/*.d/*.jsonl shard whose date prefix exceeds today."""
+    today = today or date.today()
+    state_dir = Path(root) / "state"
+    if not state_dir.is_dir():
+        return []
+    offenders: list[str] = []
+    for shard in sorted(state_dir.glob("*.d/*.jsonl")):
+        parsed = as_date(shard.name[:10])
+        if parsed is not None and parsed > today:
+            offenders.append(shard.relative_to(Path(root)).as_posix())
+    return offenders
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         description="One ordered time axis for the archive (labels are not rewritten)."
@@ -635,9 +649,24 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="print only the observation block (for CI); still never fails on drift",
     )
+    parser.add_argument(
+        "--enforce-shards",
+        action="store_true",
+        help="fail (exit 1) if any state/*.d/*.jsonl shard filename carries a future date prefix",
+    )
     args = parser.parse_args(argv)
 
     today = as_date(args.today) if args.today else date.today()
+    if args.enforce_shards:
+        offenders = forward_dated_shards(args.root, today=today)
+        if offenders:
+            print(f"FAIL: {len(offenders)} forward-dated shard(s) exceed {today.isoformat()}:", file=sys.stderr)
+            for rel in offenders:
+                print(f"  - {rel}", file=sys.stderr)
+            return 1
+        print(f"PASS: 0 forward-dated shards in state/*.d/ (today={today.isoformat()})")
+        if not args.check and not args.json and not args.anomalies:
+            return 0
     try:
         rows = build_axis(root=args.root, today=today)
     except (ValueError, OSError, ledger_io.LedgerBusy) as exc:

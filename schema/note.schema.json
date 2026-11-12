@@ -115,13 +115,20 @@
           "question_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
           "fragment_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
           "material_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
-          "motif_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+          "motif_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "hypothesis_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
         }
       }
     },
     "salience": {
       "type": "integer",
-      "description": "Optional 0-3 editorial weight for retrieval ordering (0 = archival, 3 = load-bearing for the central questions). A recommendation, never an obligation to read."
+      "minimum": 0,
+      "maximum": 4,
+      "description": "Optional 0-3 editorial weight for retrieval ordering (0 = archival, 3 = load-bearing for the central questions; legacy 4 allowed only on rows minted before 2026-11-12). A recommendation, never an obligation to read."
+    },
+    "index_backfill": {
+      "type": "boolean",
+      "description": "True only on automated structural index stubs ensuring 100% readings/ citability without claiming a curated deep reading."
     },
     "reason": {
       "type": "string",

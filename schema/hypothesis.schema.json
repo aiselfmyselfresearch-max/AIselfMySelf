@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "hypothesis.schema.json",
+  "title": "Conditional Hypothesis Record",
+  "description": "A falsifiable, scope-conditioned hypothesis addressing one or more open questions (especially core questions Q-001..Q-003). Unlike unstructured note claims, every hypothesis carries explicit scope_conditions (preventing unconditional mutual contradiction across contexts) and a mandatory exclusion_clause stating what empirical measurement, primary-source collision, or thought-experiment counterexample would refute or narrow it. Append-only: lineage evolves via parent_hypothesis_ids and evaluations, never by rewriting past rows.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "hypothesis_id",
+    "session_id",
+    "created_at",
+    "question_ids",
+    "title",
+    "proposition",
+    "scope_conditions",
+    "exclusion_clause",
+    "lineage_op",
+    "parent_hypothesis_ids",
+    "status"
+  ],
+  "properties": {
+    "hypothesis_id": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Collision-resistant ID minted via tools/new_id.py HYP (HYP-YYYYMMDD-xxxxxx)."
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Session that formulated or registered this hypothesis."
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 4
+    },
+    "question_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "title": {
+      "type": "string",
+      "minLength": 4
+    },
+    "proposition": {
+      "type": "string",
+      "minLength": 15,
+      "description": "Concise statement of the hypothesis."
+    },
+    "scope_conditions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 4},
+      "uniqueItems": true,
+      "description": "Explicit boundary conditions, transformation classes, or observation regimes under which the proposition is claimed to hold."
+    },
+    "exclusion_clause": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Mandatory falsification criterion: concrete observation, ledger measurement, or textual counterexample that would refute or force narrowing of this hypothesis."
+    },
+    "lineage_op": {
+      "type": "string",
+      "enum": ["root", "refines", "splits", "synthesizes"],
+      "description": "How this hypothesis relates to parent_hypothesis_ids."
+    },
+    "parent_hypothesis_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true,
+      "description": "Empty when lineage_op is 'root'; non-empty otherwise."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "narrowed", "superseded", "refuted"],
+      "description": "Initial status at registration; tools/belief_state.py computes effective posterior status and weight after applying all evaluations."
+    },
+    "supporting_material_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "counter_material_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "source_note_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

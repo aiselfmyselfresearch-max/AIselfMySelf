@@ -422,3 +422,24 @@ python3 tools/inspect_inquiry.py --packet-stats --stats-limit 40   # 標本で�
 ```
 
 `readings/` にノートを追加したら `python3 tools/map_build.py` を実行する（§8 が陳腐化すると CI の `--check-map` と `note_index.py --check` が落ちる）。これは台帳を追記したときに既存の規約として行っていることと同じで、新しい負担ではない。
+
+---
+
+## 2026-11-12 拡張：信念状態レイヤ（`hypotheses` / `evaluations` / `BELIEF_MAP.md`）と100%ノート配線
+
+エピソード記憶（`readings/`＋`notes`）と手続き痕跡（`read_log`）の上に、中心三問 `Q-001`〜`Q-003`（および関連問い）に対する**条件付き仮説分布の継続的更新**を担う第5の記憶層を追加した。
+
+1. **条件付き仮説台帳（`state/hypotheses.jsonl`＋`state/hypotheses.d/`）**：
+   - 各 `HYP-*` は無条件の一般命題ではなく、明示的な適用条件 `scope_conditions`（1件以上）と具体的な反証・射程限定条件 `exclusion_clause`、親仮説との系譜操作 `lineage_op`（`root` / `refines` / `splits` / `synthesizes` / `reopens`）を持つ。
+2. **類型付き評価台帳（`state/evaluations.jsonl`＋`state/evaluations.d/`）**：
+   - 各 `EVL-*` は特定の仮説に対し、競合仮説 `compared_against_hypothesis_ids` との対照の下で検証結果 `verdict`（`supports` / `narrows_scope` / `refutes_unconditioned` / `subsumes` / `inconclusive`）と証拠型 `evidence_type`（`primary_source_collision` / `reproducible_script` / `cross_session_audit` / `fragment_thought_experiment`）を記録する。
+3. **決定論的信念マップ（[`BELIEF_MAP.md`](../BELIEF_MAP.md) / `tools/belief_state.py`）**：
+   - 証拠多様性と独立セッション数に応じた減衰付き対数オッズ更新により、各問いの有効仮説事後確率 $P_t(H \mid \mathcal{D}_t)$、不確実性 $u(H)$、事前一様分布からの情報利得 $D_{\mathrm{KL}}(P_t \parallel P_0)$、および最大期待情報利得（EIG）対立ペアを算出する。
+   - `state/errata*` で訂正対象となった素材・断片・ノートに依存する仮説には自動的に `errata_flags` が伝播し、再検証対象として可視化される。
+4. **100% `readings/` → `notes` 配線と時系列正規化**：
+   - 未登録だった366本の過去報告を `index_backfill: true` の構造索引スタブとして一括配線し、以後の新規報告には同一セッション内での `NOTE-*` 登録を CI（`tools/learning_metrics.py --check`）で義務化した。
+   - 前倒し内部編年シャード171本は `tools/date_axis.py` が解決した実日付シャード50本へ1行も変えずにバイト統合し、`state/shard_aliases.json` で旧パス参照を透過解決する。
+5. **作業記憶パケット（`tools/inspect_inquiry.py`）の強化**：
+   - `§0.2` に中心三問の事後分布と割り当てロール（`Proposer` 25% / `Adversarial Tester` 50% / `Consolidator` 25%）を提示。
+   - `--packet auto` の75%を中心三問（情報利得余地の高い順）へ、25%を派生問いへ配分。
+   - `§3` はシードに依存しない関連度順（仮説根拠素材→問い直結素材→モチーフ共有素材）、`§4.7` は①未解決反証・競合仮説ノート、②中心三問の交差検証ノート、③休眠ノート発掘の3層層化抽出で構築する。

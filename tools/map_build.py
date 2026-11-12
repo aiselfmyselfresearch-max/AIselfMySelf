@@ -690,6 +690,8 @@ def sync_readme_counts(
         )
     editorial_decisions = data.get("editorial_decisions", {})
     notes = data.get("notes", {})
+    hypotheses = data.get("hypotheses", {})
+    evaluations = data.get("evaluations", {})
 
     q_status = Counter(q.get("status", "open") for q in questions.values())
     q_origins = Counter(q["origin"]["kind"] for q in questions.values())
@@ -706,8 +708,8 @@ def sync_readme_counts(
 
     # §1 session total note
     text = re.sub(
-        r"（全\d+セッションの要約全文および見出し目録は、一字一句削らず \[`docs/sessions\.md`\]\(docs/sessions\.md\) に保管しています。上の3件が詳細窓です。）",
-        f"（全{len(sessions)}セッションの要約全文および見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。上の3件が詳細窓です。）",
+        r"（全\d+セッションの要約全文([^）]*)）",
+        rf"（全{len(sessions)}セッションの要約全文\g<1>）",
         text,
     )
     # §2 readings total note
@@ -796,6 +798,18 @@ def sync_readme_counts(
     text = re.sub(
         r"^(\| 精読ノート \| `state/notes\.jsonl`＋`state/notes\.d/` \| )\d+( \| .* \|)$",
         rf"\g<1>{len(notes)}\g<2>",
+        text,
+        flags=re.MULTILINE,
+    )
+    text = re.sub(
+        r"^(\| 条件付き仮説 \| `state/hypotheses\.jsonl`＋`state/hypotheses\.d/` \| )\d+( \| .* \|)$",
+        rf"\g<1>{len(hypotheses)}\g<2>",
+        text,
+        flags=re.MULTILINE,
+    )
+    text = re.sub(
+        r"^(\| 仮説評価 \| `state/evaluations\.jsonl`＋`state/evaluations\.d/` \| )\d+( \| .* \|)$",
+        rf"\g<1>{len(evaluations)}\g<2>",
         text,
         flags=re.MULTILINE,
     )

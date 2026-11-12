@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "evaluation.schema.json",
+  "title": "Hypothesis Evaluation Event",
+  "description": "A directed, typed belief-update event testing an existing hypothesis (target_hypothesis_id) against reproducible measurements, primary-source collisions, cross-session audits, or boundary thought experiments. Used by tools/belief_state.py to compute posterior hypothesis distributions P_t(H|Q), epistemic uncertainty, and mass transfer from refuted/narrowed parents to scoped child hypotheses.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evaluation_id",
+    "session_id",
+    "created_at",
+    "target_hypothesis_id",
+    "verdict",
+    "evidence_type",
+    "summary",
+    "compared_against_hypothesis_ids"
+  ],
+  "properties": {
+    "evaluation_id": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Collision-resistant ID minted via tools/new_id.py EVL (EVL-YYYYMMDD-xxxxxx)."
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 4
+    },
+    "target_hypothesis_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "supports",
+        "narrows_scope",
+        "refutes_unconditioned",
+        "subsumes"
+      ]
+    },
+    "evidence_type": {
+      "type": "string",
+      "enum": [
+        "reproducible_script",
+        "primary_source_collision",
+        "cross_session_audit",
+        "fragment_thought_experiment"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 20
+    },
+    "compared_against_hypothesis_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true,
+      "description": "Competing hypotheses tested alongside target_hypothesis_id to prevent single-hypothesis confirmation bias."
+    },
+    "spawned_hypothesis_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true,
+      "description": "Scoped or synthesized child hypotheses receiving probability mass when verdict is narrows_scope, refutes_unconditioned, or subsumes."
+    },
+    "material_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "fragment_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "note_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "errata_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "script_command": {
+      "type": "string",
+      "description": "Optional reproducible command verifying a measured verdict."
+    }
+  }
+}

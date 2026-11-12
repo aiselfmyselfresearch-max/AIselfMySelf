@@ -188,7 +188,29 @@ def activation(
     chronology labels with real execution dates, so a day count would be a
     fiction, while the row order is exactly the order in which sessions wrote.
     """
-    rows = list(data.get("read_log", {}).values())
+    raw_rows = list(data.get("read_log", {}).values())
+    sessions_map = data.get("sessions") or {}
+    if sessions_map:
+        import date_axis
+
+        curated = date_axis.curated_real_dates(data.get("notes") or {})
+        sess_dates: dict[str, str] = {}
+        for sid, srec in sessions_map.items():
+            real_d, _src = date_axis.session_real_date(sid, srec, curated=curated)
+            if real_d:
+                sess_dates[sid] = real_d
+        if sess_dates:
+            rows = [
+                row
+                for _ord, row in sorted(
+                    enumerate(raw_rows),
+                    key=lambda pair: (sess_dates.get(str(pair[1].get("session_id", "")), "0000-00-00"), pair[0]),
+                )
+            ]
+        else:
+            rows = raw_rows
+    else:
+        rows = raw_rows
     total = len(rows)
     allowed = ACTIVE_READINGS | (PASSIVE_READINGS if include_passive else set())
     acc: dict[tuple[str, str], dict[str, Any]] = {}
