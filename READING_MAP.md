@@ -9,8 +9,8 @@
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：3742 件（research_excerpt 1518 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6848 件
-- **探究セッション（Sessions）**：676 回
+- **解釈的関係（Relations）**：6851 件
+- **探究セッション（Sessions）**：677 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -5117,6 +5117,7 @@
 | `SESSION-20261112-b914b3` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-115c6d` | 2026-11-12T03:38:12Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-242577` | 2026-11-12T04:07:26Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-d567e5` | 2026-11-12T05:12:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-2f4264` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
@@ -5199,17 +5200,17 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6848 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6851 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
 | 対照 (contrast) | 990 |
 | 共鳴 (echo) | 1632 |
 | 切断・割り込み (interrupts) | 235 |
-| 未解決のまま開く (leaves_open) | 911 |
+| 未解決のまま開く (leaves_open) | 912 |
 | 比喩的共鳴 (metaphorically_resonates) | 189 |
-| 枠組みの組み替え (reframes) | 779 |
-| 応答 (responds_to) | 1785 |
+| 枠組みの組み替え (reframes) | 780 |
+| 応答 (responds_to) | 1786 |
 | 変奏・変形 (transforms) | 327 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -5291,8 +5292,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 163,840 |
-| `map/40-relations-14.md` | 348 | 121,571 |
+| `map/40-relations-13.md` | 500 | 163,787 |
+| `map/40-relations-14.md` | 351 | 122,572 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5304,9 +5305,9 @@
 | `map/50-sessions-09.md` | 50 | 40,883 |
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,895 |
-| `map/50-sessions-12.md` | 50 | 42,160 |
-| `map/50-sessions-13.md` | 50 | 47,533 |
-| `map/50-sessions-14.md` | 26 | 20,939 |
+| `map/50-sessions-12.md` | 50 | 41,916 |
+| `map/50-sessions-13.md` | 50 | 47,763 |
+| `map/50-sessions-14.md` | 27 | 21,793 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5328,24 +5329,24 @@
 | `map/60-notes-19.md` | 25 | 115,981 |
 | `map/60-notes-20.md` | 25 | 169,791 |
 | `map/60-notes-21.md` | 25 | 143,294 |
-| `map/60-notes-22.md` | 25 | 76,494 |
-| `map/60-notes-23.md` | 25 | 62,546 |
-| `map/60-notes-24.md` | 25 | 67,466 |
-| `map/60-notes-25.md` | 25 | 71,240 |
-| `map/60-notes-26.md` | 25 | 100,547 |
-| `map/60-notes-27.md` | 25 | 103,067 |
-| `map/60-notes-28.md` | 25 | 142,623 |
-| `map/60-notes-29.md` | 1 | 5,715 |
+| `map/60-notes-22.md` | 25 | 80,064 |
+| `map/60-notes-23.md` | 25 | 62,272 |
+| `map/60-notes-24.md` | 25 | 67,548 |
+| `map/60-notes-25.md` | 25 | 69,173 |
+| `map/60-notes-26.md` | 25 | 100,709 |
+| `map/60-notes-27.md` | 25 | 102,266 |
+| `map/60-notes-28.md` | 25 | 141,871 |
+| `map/60-notes-29.md` | 2 | 11,708 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・701本・25,438,200 B）
+## 8. 精読ノート索引（readings/・702本・25,474,376 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 496/701 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 497/702 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：333 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：80 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：334 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：79 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -5878,8 +5879,9 @@
 | `readings/2026-11-12-five-theories-of-observation-memory-and-open-ends.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-7c4478` +1 | 13,837 | Q3 M7 S2 | ✓ | 同じ自己を支える条件は、何によって決まるか——観測・記憶・目的・相互作用の五理論 |
 | `readings/2026-11-12-five-theories-of-taking-a-record-without-stopping.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-115c6d` +1 | 30,063 | Q3 M10 R1 S2 | — | 止めずに写す——標本・断面・時計・翻訳・選択の五理論 |
 | `readings/2026-11-12-five-theories-that-do-not-erase-the-error.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-bb95a0` +1 | 24,925 | Q4 M12 S2 | ✓ | 誤りを消さない五つの理論——距離・余白・頻度・欠損・来歴 |
-| `readings/2026-11-12-seven-theories-of-cause-without-an-intervention.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-242577` | 34,341 | Q3 M11 S1 | — | 介入なしに、どこまで因果が読めるか——経路・連立・予測・反事実・順序・操作・識別の七理論 |
+| `readings/2026-11-12-seven-theories-of-cause-without-an-intervention.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-242577` | 34,341 | Q3 M11 S1 | ✓ | 介入なしに、どこまで因果が読めるか——経路・連立・予測・反事実・順序・操作・識別の七理論 |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
+| `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
 | `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | — | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | — | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
