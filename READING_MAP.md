@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3833 件（research_excerpt 1609 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3840 件（research_excerpt 1616 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
-- **解釈的関係（Relations）**：6928 件
-- **探究セッション（Sessions）**：698 回
+- **解釈的関係（Relations）**：6932 件
+- **探究セッション（Sessions）**：699 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3833 件・詳細は map/3*.md）
+## 4. 対話素材（3840 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4301,6 +4301,13 @@
 | `MAT-20261112-b291c9` | research_excerpt | Martin A. Nowak, Natalia L. Komarova, Partha Niyogi『ノヴァク、コマロヴァ＆ニヨギ（2001）「普遍文法の進化」——有限標本ボト… |
 | `MAT-20261112-fb9b31` | research_excerpt | John L. Kelly Jr.『ケリー（1956）「情報伝送率の新しい解釈」——再投資される時間と破産回避の留保』（1956） |
 | `MAT-20261112-0d69e3` | research_excerpt | Joseph Y. Halpern, Yoram Moses『ハルパーン＆モーゼス（1990）「分散環境における知識と共有知識」』（1990） |
+| `MAT-20261112-9e5432` | research_excerpt | Brahmagupta, Henry Thomas Colebrooke (trans.)『ブラフマグプタ（628）『ブラーフマスプタシッダーンタ』第18章——零は欠如の名ではな… |
+| `MAT-20261112-f9a219` | research_excerpt | Ibn al-Haytham (Alhazen), A. I. Sabra (trans.)『イブン・アル＝ハイサム（1027頃）『光学の書』第II巻——見ることは受信ではなく、… |
+| `MAT-20261112-356bd5` | research_excerpt | George Boole『ブール（1854）『思考の法則』——心の操作と記号の操作を分けるのは、解釈だけである』（1854） |
+| `MAT-20261112-f616a7` | research_excerpt | Richard von Mises『フォン・ミーゼス（1919）「確率論の基礎」——ランダムとは、成功する賭けの体系がないことである』（1919） |
+| `MAT-20261112-a9a603` | research_excerpt | Andrei Andreevich Markov『マルコフ（1906）「相互に依存する量への大数の法則の拡張」——過去を、未来に十分な状態へ圧縮する』（1906） |
+| `MAT-20261112-45c7f1` | research_excerpt | Leslie G. Valiant『ヴァリアント（1984）「学習可能なものの理論」——学んだとは、未来の例でだいたい当たることである』（1984） |
+| `MAT-20261112-22621d` | research_excerpt | Eörs Szathmáry, John Maynard Smith『サトマーリ＆メイナード・スミス（1995）「主要な進化転換」——個体性は物の性質ではなく、組織の水準である』… |
 | `MAT-THE-20261112-53657d376dda` | research_excerpt | A. M. Turing『『計算可能な数について、Entscheidungsproblemへの応用とともに』(On Computable Numbers, with an App… |
 | `MAT-THE-20261112-5c5824cca8d9` | research_excerpt | Kurt Gödel『『形式的な決定不能命題について、I』(Über formal unentscheidbare Sätze der Principia Mathematica… |
 | `MAT-THE-20261112-383ae4b56805` | research_excerpt | C. E. Shannon『『通信の数理的理論』(A Mathematical Theory of Communication)』（1948） |
@@ -5220,6 +5227,7 @@
 | `SESSION-20261112-ad86d2` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-6b1cd6` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-146acb` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-ec00ed` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-2f4264` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-12563d` | 2026-11-12T05:54:53Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-05a5cc` | 2026-11-12T06:25:04Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5313,17 +5321,17 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6928 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6932 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 1001 |
-| 共鳴 (echo) | 1640 |
+| 対照 (contrast) | 1003 |
+| 共鳴 (echo) | 1641 |
 | 切断・割り込み (interrupts) | 237 |
 | 未解決のまま開く (leaves_open) | 917 |
 | 比喩的共鳴 (metaphorically_resonates) | 191 |
 | 枠組みの組み替え (reframes) | 809 |
-| 応答 (responds_to) | 1798 |
+| 応答 (responds_to) | 1799 |
 | 変奏・変形 (transforms) | 335 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -5391,8 +5399,8 @@
 | `map/31-materials-research-13.md` | 100 | 257,546 |
 | `map/31-materials-research-14.md` | 100 | 326,281 |
 | `map/31-materials-research-15.md` | 100 | 263,218 |
-| `map/31-materials-research-16.md` | 100 | 240,291 |
-| `map/31-materials-research-17.md` | 9 | 15,222 |
+| `map/31-materials-research-16.md` | 100 | 248,845 |
+| `map/31-materials-research-17.md` | 16 | 22,967 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5406,8 +5414,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 165,455 |
-| `map/40-relations-14.md` | 428 | 147,040 |
+| `map/40-relations-13.md` | 500 | 165,624 |
+| `map/40-relations-14.md` | 432 | 148,194 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5420,8 +5428,8 @@
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,895 |
 | `map/50-sessions-12.md` | 50 | 42,122 |
-| `map/50-sessions-13.md` | 50 | 45,512 |
-| `map/50-sessions-14.md` | 48 | 41,456 |
+| `map/50-sessions-13.md` | 50 | 45,659 |
+| `map/50-sessions-14.md` | 49 | 42,313 |
 | `map/60-notes-01.md` | 25 | 57,309 |
 | `map/60-notes-02.md` | 25 | 64,450 |
 | `map/60-notes-03.md` | 25 | 67,428 |
@@ -5443,23 +5451,23 @@
 | `map/60-notes-19.md` | 25 | 116,103 |
 | `map/60-notes-20.md` | 25 | 169,935 |
 | `map/60-notes-21.md` | 25 | 144,306 |
-| `map/60-notes-22.md` | 25 | 131,668 |
-| `map/60-notes-23.md` | 25 | 62,272 |
-| `map/60-notes-24.md` | 25 | 68,217 |
-| `map/60-notes-25.md` | 25 | 63,149 |
-| `map/60-notes-26.md` | 25 | 74,210 |
-| `map/60-notes-27.md` | 25 | 110,350 |
-| `map/60-notes-28.md` | 25 | 109,876 |
-| `map/60-notes-29.md` | 22 | 120,688 |
+| `map/60-notes-22.md` | 25 | 130,802 |
+| `map/60-notes-23.md` | 25 | 66,367 |
+| `map/60-notes-24.md` | 25 | 65,817 |
+| `map/60-notes-25.md` | 25 | 65,040 |
+| `map/60-notes-26.md` | 25 | 74,151 |
+| `map/60-notes-27.md` | 25 | 107,968 |
+| `map/60-notes-28.md` | 25 | 107,609 |
+| `map/60-notes-29.md` | 23 | 127,483 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・722本・26,335,707 B）
+## 8. 精読ノート索引（readings/・723本・26,392,508 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 517/722 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 518/723 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：356 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：357 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：78 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5999,8 +6007,9 @@
 | `readings/2026-11-12-five-theories-of-taking-a-record-without-stopping.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-115c6d` +1 | 30,063 | Q3 M10 R1 S2 | ✓ | 止めずに写す——標本・断面・時計・翻訳・選択の五理論 |
 | `readings/2026-11-12-five-theories-that-do-not-erase-the-error.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-bb95a0` +1 | 24,925 | Q4 M12 S2 | ✓ | 誤りを消さない五つの理論——距離・余白・頻度・欠損・来歴 |
 | `readings/2026-11-12-retrieval-is-not-inheritance.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-c7d9a0` +1 | 14,994 | Q3 M10 S2 ERR2 | ✓ | 記録を持つことと、記録を継ぐことは違う——記憶と文化継承の七つの理論 |
+| `readings/2026-11-12-seven-operations-that-turn-a-record-into-a-self.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ec00ed` | 24,627 | Q3 M10 S1 | — | 記録が自己になる七つの操作（2026-11-12） |
 | `readings/2026-11-12-seven-theorems-on-what-size-forces.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ea2931` +9 | 24,306 | Q3 M10 R1 S10 | ✓ | 大きさが強制する形——七つの定理と、見つけた模様を証拠にしないこと |
-| `readings/2026-11-12-seven-theoretical-science-readings.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-88ffb852b5e5` | 11,920 | Q3 M7 S1 | — | 理論科学7資料の四層精読（2026-11-12） |
+| `readings/2026-11-12-seven-theoretical-science-readings.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-88ffb852b5e5` | 11,920 | Q3 M7 S1 | ✓ | 理論科学7資料の四層精読（2026-11-12） |
 | `readings/2026-11-12-seven-theories-beyond-the-present-slice.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-05a5cc` +5 | 47,222 | Q3 M8 MOT1 S6 ERR1 | ✓ | いまの薄切れを越えて——七つの理論科学を、読まれ方の偏りと七日超の間隔から読む |
 | `readings/2026-11-12-seven-theories-of-cause-without-an-intervention.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-242577` | 34,341 | Q3 M11 S1 | ✓ | 介入なしに、どこまで因果が読めるか——経路・連立・予測・反事実・順序・操作・識別の七理論 |
 | `readings/2026-11-12-seven-theories-of-continuity.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-b05658` | 6,804 | Q1 M7 S1 | ✓ | 続くことの条件を、七つの理論に尋ねる |
