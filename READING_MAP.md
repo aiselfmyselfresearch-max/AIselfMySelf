@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3640 件（research_excerpt 1416 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3647 件（research_excerpt 1423 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：246 編（selected 94 ／ draft 152）
-- **解釈的関係（Relations）**：6746 件
-- **探究セッション（Sessions）**：656 回
+- **解釈的関係（Relations）**：6753 件
+- **探究セッション（Sessions）**：657 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -771,7 +771,7 @@
 | `FRAG-20270214-65aa8c` | 二つの鍋、一つの火 | draft | scene | third_person |
 | `FRAG-20270215-7f35f3` | 七時の前と後 | draft | scene | third_person |
 
-## 4. 対話素材（3640 件・詳細は map/3*.md）
+## 4. 対話素材（3647 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4209,6 +4209,13 @@
 | `MAT-20261111-0494e5` | research_excerpt | Dana Angluin『アングルイン「質問と反例による正則集合の学習」（1987）——状態は、訊ねた実験の表の行であり、反例が来るまでは、矛盾しない最小の機械が推測される』（1… |
 | `MAT-20261111-f9cb77` | research_excerpt | Cosma Rohilla Shalizi, James P. Crutchfield『シャリジ＆クラッチフィールド「計算力学：パターンと予測、構造と単純さ」（2001）——同じ… |
 | `MAT-20261111-6089db` | research_excerpt | Michael L. Littman, Richard S. Sutton, Satinder Singh『リットマン、サットン＆シン「状態の予測的表現」（2001）——状態は、… |
+| `MAT-20261112-9b18c0` | research_excerpt | Juris Hartmanis, Richard E. Stearns『ハルトマニス／スターンズ「アルゴリズムの計算複雑性について」（1965）——定数倍の加速では複雑性クラスは… |
+| `MAT-20261112-5eca50` | research_excerpt | Edward F. Moore『ムーア「順序機械に関する思考実験」（1956）——全状態対が区別可能でも、問う行為が状態を合流させれば初期状態は決定できない』（1956） |
+| `MAT-20261112-b990c3` | research_excerpt | David Gale, Lloyd S. Shapley『ゲール／シャプレー「大学入学と結婚の安定性」（1962）——遅延受諾は安定だが、常に提案側に最良・受入側に最悪の極点へ収… |
+| `MAT-20261112-b86811` | research_excerpt | Simon Kochen, Ernst P. Specker『コッヘン／シュペッカー「量子力学における隠れた変数の問題」（1967）——重なり合う直交文脈を一枚の真理値表には貼れ… |
+| `MAT-20261112-a1b177` | research_excerpt | Vladimir N. Vapnik, Alexey Ya. Chervonenkis『ヴァプニク／チェルヴォネンキス「事象の相対頻度の確率への一様収束について」（1971）——… |
+| `MAT-20261112-46c46a` | research_excerpt | Allan Gibbard『ギバード「投票方式の操作：一般定理」（1973）——三つ以上の結果を持つ非独裁的な決定規則はすべて戦略的操作を免れない』（1973） |
+| `MAT-20261112-e3412f` | research_excerpt | Daniel Dominic Sleator, Robert Endre Tarjan『スレーター／タージャン「自己調整二分探索木」（1985）——補助欄も内容改変もなしに、アク… |
 | `MAT-LIT-20270102-6803b8` | literary_text | 作者不詳（古ノルド語）, Henry Adams Bellows (trans.)『『詩のエッダ』ハヴァマール——「我を我に」と、どれも知らぬ根』（1270） |
 | `MAT-LIT-20270102-ebd12e` | literary_text | 作者不詳（ウパニシャッド）, F. Max Müller (trans.)『『ブリハッド・アーラニャカ・ウパニシャッド』第二篇第四ブラーフマナ——家を出る者が遺すもの、水に溶けた… |
 | `MAT-LIT-20270102-e556f6` | literary_text | 作者不詳（ミシュナ）『『ピルケイ・アヴォット（父祖の倫理）』第一章——「受け取って渡した」の連鎖と、トーラーの垣』（220） |
@@ -4996,6 +5003,7 @@
 | `SESSION-20261111-cf60ab` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-53b93d` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261111-b86e0b` | 2026-11-11 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261112-2bbcac` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261201-04fc49` | 2026-10-27T00:00:00Z | `Q-098`, `Q-20261201-c75124` | `FRAG-20261201-128f80` | `Q-20261201-c75124` |
 | `SESSION-20261201-496ec0` | 2026-12-01 | `Q-20261024-7f8692`, `Q-20261024-da923e`, `Q-20261024-08c515`, `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` | `FRAG-20261201-ec0ef8` | `Q-20261201-6e51e9`, `Q-20261201-9936f8`, `Q-20261201-eae169` |
 | `SESSION-20261201-4944b0` | 2026-12-01 | `Q-20261024-c237b9`, `Q-20261201-f932d1` | `FRAG-20261201-0c2cb9` | `Q-20261201-f932d1` |
@@ -5077,18 +5085,18 @@
 | `SESSION-20270217-c24611` | 2027-02-17 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20270218-5034ec` | 2027-02-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6746 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6753 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 976 |
+| 対照 (contrast) | 977 |
 | 共鳴 (echo) | 1621 |
-| 切断・割り込み (interrupts) | 234 |
+| 切断・割り込み (interrupts) | 236 |
 | 未解決のまま開く (leaves_open) | 903 |
 | 比喩的共鳴 (metaphorically_resonates) | 184 |
-| 枠組みの組み替え (reframes) | 741 |
-| 応答 (responds_to) | 1767 |
-| 変奏・変形 (transforms) | 320 |
+| 枠組みの組み替え (reframes) | 743 |
+| 応答 (responds_to) | 1768 |
+| 変奏・変形 (transforms) | 321 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -5154,7 +5162,7 @@
 | `map/31-materials-research-12.md` | 100 | 249,387 |
 | `map/31-materials-research-13.md` | 100 | 257,546 |
 | `map/31-materials-research-14.md` | 100 | 323,628 |
-| `map/31-materials-research-15.md` | 16 | 53,947 |
+| `map/31-materials-research-15.md` | 23 | 72,407 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5168,8 +5176,8 @@
 | `map/40-relations-10.md` | 500 | 185,481 |
 | `map/40-relations-11.md` | 500 | 177,339 |
 | `map/40-relations-12.md` | 500 | 171,243 |
-| `map/40-relations-13.md` | 500 | 165,580 |
-| `map/40-relations-14.md` | 246 | 86,916 |
+| `map/40-relations-13.md` | 500 | 165,576 |
+| `map/40-relations-14.md` | 253 | 89,558 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5182,8 +5190,8 @@
 | `map/50-sessions-10.md` | 50 | 40,633 |
 | `map/50-sessions-11.md` | 50 | 42,835 |
 | `map/50-sessions-12.md` | 50 | 45,409 |
-| `map/50-sessions-13.md` | 50 | 43,913 |
-| `map/50-sessions-14.md` | 6 | 5,194 |
+| `map/50-sessions-13.md` | 50 | 44,204 |
+| `map/50-sessions-14.md` | 7 | 5,757 |
 | `map/60-notes-01.md` | 25 | 80,848 |
 | `map/60-notes-02.md` | 25 | 86,660 |
 | `map/60-notes-03.md` | 25 | 88,317 |
@@ -5204,25 +5212,25 @@
 | `map/60-notes-18.md` | 25 | 114,573 |
 | `map/60-notes-19.md` | 25 | 125,886 |
 | `map/60-notes-20.md` | 25 | 170,271 |
-| `map/60-notes-21.md` | 25 | 120,449 |
-| `map/60-notes-22.md` | 25 | 86,436 |
-| `map/60-notes-23.md` | 25 | 84,934 |
-| `map/60-notes-24.md` | 25 | 83,589 |
-| `map/60-notes-25.md` | 25 | 113,722 |
-| `map/60-notes-26.md` | 25 | 92,945 |
-| `map/60-notes-27.md` | 25 | 104,229 |
-| `map/60-notes-28.md` | 25 | 95,769 |
-| `map/60-notes-29.md` | 25 | 140,833 |
-| `map/60-notes-30.md` | 9 | 49,993 |
+| `map/60-notes-21.md` | 25 | 120,579 |
+| `map/60-notes-22.md` | 25 | 86,549 |
+| `map/60-notes-23.md` | 25 | 88,992 |
+| `map/60-notes-24.md` | 25 | 82,522 |
+| `map/60-notes-25.md` | 25 | 113,833 |
+| `map/60-notes-26.md` | 25 | 92,829 |
+| `map/60-notes-27.md` | 25 | 105,614 |
+| `map/60-notes-28.md` | 25 | 95,889 |
+| `map/60-notes-29.md` | 25 | 136,820 |
+| `map/60-notes-30.md` | 10 | 56,689 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・734本・25,074,126 B）
+## 8. 精読ノート索引（readings/・735本・25,152,718 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 534/734 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 535/735 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：732 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：733 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：101 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -5761,7 +5769,7 @@
 | `readings/2026-11-11-selected-means-two-things.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,909 | S1 | — | `selected` は17編か、94編か——同じ語が二つの層で違う数を指し、どちらの数え方にも警告が出ない |
 | `readings/2026-11-11-seven-verbs-and-one-wrong-row-count.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,895 | Q2 S1 ERR1 | — | 読んだと書ける動詞は七つ——前回の「欄なし240行」を撤回する |
 | `readings/2026-11-11-six-answers-cannot-share-one-relation.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 5,315 | Q3 F1 S1 | ✓ | 六つの答えを一つの関係に課すと矛盾する——`Q-002` の形式判定と、層別に読めば両立すること |
-| `readings/2026-11-11-the-anchors-say-more-than-the-label.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 7,069 | S1 | — | 見出しの語より、錨の位置——率の達成のあとで、ドリフトを測り直し、二つの申し送りを分析する |
+| `readings/2026-11-11-the-anchors-say-more-than-the-label.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 7,069 | S1 | ✓ | 見出しの語より、錨の位置——率の達成のあとで、ドリフトを測り直し、二つの申し送りを分析する |
 | `readings/2026-11-11-the-answer-updated-in-one-page.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,581 | Q3 S1 | — | 回答の更新版——依頼文への答えを一頁に置き、計数で一つ足す |
 | `readings/2026-11-11-the-axis-i-chose-was-measured-wrong.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 3,056 | Q6 F1 S1 | — | 軸に選んだ問いの言及は、その問いの話ではなかった |
 | `readings/2026-11-11-the-axis-removed.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 2,791 | Q11 S1 | — | 軸を外した回——参照先は3から20に増え、同じ問いを二度読むことはなくなった |
@@ -5790,6 +5798,7 @@
 | `readings/2026-11-11-what-a-set-that-holds-three-questions-must-be.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 25,186 | Q3 S1 | ✓ | 三つの問いを同時に成り立たせる集合は、どんな性質を持つか——必要条件読み・無条件読み・空虚成立 |
 | `readings/2026-11-11-where-the-field-is-the-address-stays.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 4,708 | Q3 S1 | ✓ | 欄のあるところにだけ住所は残る——前報の一般化を、計数で狭める |
 | `readings/2026-11-11-why-the-scope-was-missing.md` | 2026-11-11 | 2026-11-11 | `SESSION-20261111-b86e0b` | 6,541 | S1 | — | 適用範囲はなぜ書かれなかったのか——指示テキスト層とスクリプト層を分けて調べる |
+| `readings/2026-11-12-seven-bounds-on-carryover-and-rotation.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-2bbcac` +1 | 37,455 | Q4 M12 MOT2 R1 S2 | — | 時間階層・不可知・回転——七つの境界定理で測る人間と自己調整する書庫 |
 | `readings/2026-11-12-sixty-millimeters-that-never-came.md` | — | 2026-11-12 | `SESSION-20261112-711655` +3 | 23,936 | Q8 F10 M10 MOT6 R1 S4 | ✓ | 六十ミリ、来なかった朝——五本の杭と折句の手紙、天候×道の初架橋（SESSION-20261112-711655） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | — | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | — | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
