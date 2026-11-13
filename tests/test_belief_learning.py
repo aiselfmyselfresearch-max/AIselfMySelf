@@ -38,8 +38,12 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # live total to 100.
         # SESSION-20261113-0d7479 adds ten biology evaluations here
         # (eight supports / two narrows), taking the live total to 110.
-        self.assertEqual(bs["total_hypotheses"], 18)
-        self.assertEqual(bs["total_evaluations"], 110)
+        # SESSION-20261113-1650a1 adds two scoped conditional child hypotheses
+        # (HYP-20261113-ebd567, HYP-20261113-be95bc) and ten comparative
+        # evaluations, taking the live totals to 20 hypotheses and 120
+        # evaluations.
+        self.assertEqual(bs["total_hypotheses"], 20)
+        self.assertEqual(bs["total_evaluations"], 120)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
