@@ -17,6 +17,8 @@
 
 **読んだが今回は採らなかったもの。** Blum 1967 "A Machine-Independent Theory of the Complexity of Recursive Functions"（JACM 14(2):322–336）の本文を読んだ。函数の複雑さは機械のクラスに依存して一意に定まらず、しかも「どんなプログラムにも、それより桁違いに速い別のプログラムがある」函数が存在する（speed-up theorem）。今回の十件と重なる主題であり、次回の候補として残す。採らなかった理由は、十件という明示された件数を超えないためであって、重要度が低いためではない。読んだ事実を記録だけしておく。
 
+**並行セッションとの衝突（2026-11-13 追記）。** この報告の PR を作った直後に main が進み、別セッション（`SESSION-20261113-478cfe`）が同日に十件を追加した報告 [`写し・転送・境界をめぐる理論科学十資料`](2026-11-13-ten-theories-of-copying-transfer-and-boundary.md) が入っていた。こちらの走査は main `b8a5d74` を基点にしていたため、その十件を候補として照合していない。突き合わせた結果、Kanerva は同じ著者の同じ 1993 年章（相手は `MAT-20261113-bd1849`）で重複した。相手側は「PDF全文は未取得、検索索引で冒頭と §3.2 のみ」と明記しており、こちらは同じ PDF の §3.1–3.2 と 1989 年技術報告を読んでいる。両方を残し、`ERR-20261113-87c924` で重複の事実と読んだ範囲の差を記録した。統合や片方の削除はしない——どちらも別の仮説ペアを識別するために登録された行であり、重複は選定の誤りではなく走査の基点のずれである。他の九件は題名・著者で照合し、重なりは無かった。この確認は題名と著者の水準であり、本文の読解が独立であることの証明ではない。
+
 **重複の走査。** 追加前の素材和集合 3,892 行（`state/materials.jsonl` ＋ `state/materials.d/*.jsonl`、2026-11-13 04:5xZ 頃の作業ツリー）を、`tools/ledger_io.load_jsonl_union` で読み、全行を小文字化した JSON 文字列に対して次の語で走査した：`blum (1967`、`machine-independent`、`speed-up theorem`、`effective complexity`、`gell-mann`、`kanerva`、`introduction to cybernetics`、`kripke`、`hutter`、`chollet`、`gödel machine`、`sivak`、`thermodynamics of prediction`、`zurek 2009`。十件の候補に該当した行は 0。`blum` は 1 行（`MAT-20261112-1e2af7`、Blum & Kannan 1995）に当たったが別論文であり、上記のとおり今回は採らなかった。`zurek` を含む既存行は Zurek 1981・1982 と Wootters–Zurek 1982 で、2009 年の Quantum Darwinism は無かった。著者名の表記揺れ・共著者の別表記の網羅は保証しない。
 
 ---
