@@ -28,7 +28,7 @@ class BeliefStateAndLearningTests(unittest.TestCase):
     def test_live_belief_posteriors_and_map_sync(self):
         bs = belief_state.compute_belief_state(self.live_data)
         self.assertEqual(bs["total_hypotheses"], 15)
-        self.assertEqual(bs["total_evaluations"], 18)
+        self.assertEqual(bs["total_evaluations"], 25)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
