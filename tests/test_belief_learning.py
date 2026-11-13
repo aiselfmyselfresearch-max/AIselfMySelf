@@ -27,9 +27,11 @@ class BeliefStateAndLearningTests(unittest.TestCase):
 
     def test_live_belief_posteriors_and_map_sync(self):
         bs = belief_state.compute_belief_state(self.live_data)
-        self.assertEqual(bs["total_hypotheses"], 15)
-        # SESSION-20261113-ed8a61 adds one cross-session audit evaluation.
-        self.assertEqual(bs["total_evaluations"], 31)
+        # Live-ledger counts are pinned so ledger changes cannot pass unnoticed.
+        # SESSION-20261113-494ed9 adds one synthesis hypothesis and four
+        # evaluations; SESSION-20261113-ed8a61 adds one cross-session audit.
+        self.assertEqual(bs["total_hypotheses"], 16)
+        self.assertEqual(bs["total_evaluations"], 35)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
@@ -37,7 +39,14 @@ class BeliefStateAndLearningTests(unittest.TestCase):
             self.assertGreater(q_state["gen1_plus_mass"], 0.90, qid)
             self.assertIsNotNone(q_state["top_competing_pair"], qid)
             total_p = sum(row["posterior"] for row in q_state["hypotheses"])
-            self.assertAlmostEqual(total_p, 1.0, places=5)
+            # Each posterior is rounded to 4 decimal places before it reaches
+            # this list, so the sum of n hypotheses can drift by up to
+            # n * 5e-5.  With n = 6 that is 3e-4, which is larger than
+            # `places=5` allows.  This checks that the distribution is
+            # normalised to the rounding, not to an impossible exact 1.0.
+            self.assertAlmostEqual(
+                total_p, 1.0, delta=5e-5 * len(q_state["hypotheses"]) + 1e-9, msg=qid
+            )
 
         # Errata flags propagate automatically onto Q-001 hypotheses citing corrected materials
         q1_by_id = {row["hypothesis_id"]: row for row in bs["questions"]["Q-001"]["hypotheses"]}
@@ -46,6 +55,23 @@ class BeliefStateAndLearningTests(unittest.TestCase):
 
         ok, msg = belief_state.check_belief_map(ROOT)
         self.assertTrue(ok, msg)
+
+    def test_unverified_evaluations_keep_errata_flags_and_refutation(self):
+        belief_data = belief_state.load_belief_ledgers(ROOT)
+        bs = belief_state.compute_belief_state(belief_data)
+        q2 = {h["hypothesis_id"]: h for h in bs["questions"]["Q-002"]["hypotheses"]}
+        cases = (
+            ("MAT-20261113-c03554", "EVL-20261113-cec5a8", "ERR-20261113-fc0a12", "HYP-20261112-afd1a5"),
+            ("MAT-20261113-1695e0", "EVL-20261113-439690", "ERR-20261113-bad8ab", "HYP-20261112-16929d"),
+        )
+        for material_id, evaluation_id, errata_id, hypothesis_id in cases:
+            with self.subTest(evaluation_id=evaluation_id):
+                self.assertEqual(self.live_data["materials"][material_id]["verification"]["status"], "unverified")
+                self.assertEqual(self.live_data["evaluations"][evaluation_id]["evidence_type"], "primary_source_collision")
+                self.assertEqual(belief_data["errata"][errata_id]["subject_id"], evaluation_id)
+                self.assertIn(errata_id, q2[hypothesis_id]["errata_flags"])
+        q3 = {h["hypothesis_id"]: h for h in bs["questions"]["Q-003"]["hypotheses"]}
+        self.assertEqual(q3["HYP-20261112-1273f1"]["effective_status"], "refuted")
 
     def test_role_allocation_ratios_are_balanced(self):
         counts = {"proposer": 0, "adversarial_tester": 0, "consolidator": 0}
