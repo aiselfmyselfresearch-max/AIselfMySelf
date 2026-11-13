@@ -30,9 +30,12 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # Live-ledger counts are pinned so ledger changes cannot pass unnoticed.
         # origin/main 44a5407 carries 16 hypotheses / 37 evaluations;
         # SESSION-20261113-ed8a61 adds one cross-session audit evaluation;
-        # SESSION-20261113-478cfe adds one thought-experiment evaluation.
-        self.assertEqual(bs["total_hypotheses"], 16)
-        self.assertEqual(bs["total_evaluations"], 39)
+        # SESSION-20261113-478cfe adds one thought-experiment evaluation;
+        # SESSION-20261113-21d8c8 adds the competing pair
+        # HYP-20261113-e90d84 / HYP-20261113-34b501, five evaluations, and one
+        # cross-session audit evaluation after the parallel session was merged.
+        self.assertEqual(bs["total_hypotheses"], 18)
+        self.assertEqual(bs["total_evaluations"], 45)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
