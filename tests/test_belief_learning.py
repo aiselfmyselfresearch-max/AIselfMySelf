@@ -87,7 +87,8 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # which readings/2026-11-13-what-decides-which-line-is-read.md discloses
         # and which limits what these four rows can be taken to prove.
         self.assertEqual(bs["total_hypotheses"], 20)
-        self.assertEqual(bs["total_evaluations"], 157)
+        # Evaluations are append-only; later inquiry sessions may add more.
+        self.assertGreaterEqual(bs["total_evaluations"], 157)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
