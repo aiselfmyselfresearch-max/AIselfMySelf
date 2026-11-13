@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3882 件（research_excerpt 1658 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3892 件（research_excerpt 1668 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6969 件
-- **探究セッション（Sessions）**：707 回
+- **探究セッション（Sessions）**：708 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（3882 件・詳細は map/3*.md）
+## 4. 対話素材（3892 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4658,8 +4658,18 @@
 | `MAT-20261113-89503d` | research_excerpt | Wim Hordijk, Mike Steel『Detecting autocatalytic, self-sustaining sets in chemical reactio… |
 | `MAT-20261113-d71f87` | research_excerpt | Christopher G. Langton『Self-reproduction in cellular automata』（1984） |
 | `MAT-20261113-b90228` | research_excerpt | Tibor Gánti『Organization of chemical reactions into dividing and metabolizing units: the … |
+| `MAT-20261113-28519e` | research_excerpt | Dharshan Kumaran, James L. McClelland『Generalization Through the Recurrent Interaction of… |
+| `MAT-20261113-1f2f91` | research_excerpt | Rajesh P. N. Rao, Dana H. Ballard『Predictive coding in the visual cortex: a functional in… |
+| `MAT-20261113-ce82cd` | research_excerpt | Samuel J. Gershman, Marie-H. Monfils, Kenneth A. Norman, Yael Niv『The computational natur… |
+| `MAT-20261113-d06c15` | research_excerpt | Joe Henrich, Robert Boyd『The Evolution of Conformist Transmission and the Emergence of Be… |
+| `MAT-20261113-4f57fa` | research_excerpt | Robert Axelrod, William D. Hamilton『The Evolution of Cooperation』（1981） |
+| `MAT-20261113-3fa37d` | research_excerpt | Brian D. Ziebart, Andrew L. Maas, J. Andrew Bagnell, Anind K. Dey『Maximum Entropy Inverse… |
+| `MAT-20261113-cec2f7` | research_excerpt | Richard S. Sutton『Dyna, an Integrated Architecture for Learning, Planning, and Reacting』（… |
+| `MAT-20261113-f39776` | research_excerpt | Yael Niv, Nathaniel D. Daw, Daphna Joel, Peter Dayan『Tonic dopamine: opportunity costs an… |
+| `MAT-20261113-04dac4` | research_excerpt | David Blackwell『Equivalent Comparisons of Experiments』（1953） |
+| `MAT-20261113-563f3b` | research_excerpt | Eric L. Charnov『Optimal foraging, the marginal value theorem』（1976） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261113-bb5da7・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261113-ed8a61・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -5370,6 +5380,7 @@
 | `SESSION-20261113-431f47` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-03d44c` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-bb5da7` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-ed8a61` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6969 件・全表は map/40-relations-*.md）
 
@@ -5450,7 +5461,7 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 58 | 100,692 |
+| `map/31-materials-research-17.md` | 68 | 118,798 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5480,7 +5491,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 7 | 5,427 |
+| `map/50-sessions-15.md` | 8 | 6,111 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5503,24 +5514,24 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 87,698 |
-| `map/60-notes-24.md` | 25 | 66,487 |
-| `map/60-notes-25.md` | 25 | 72,403 |
-| `map/60-notes-26.md` | 25 | 75,666 |
-| `map/60-notes-27.md` | 25 | 99,754 |
-| `map/60-notes-28.md` | 25 | 96,871 |
-| `map/60-notes-29.md` | 25 | 140,292 |
-| `map/60-notes-30.md` | 5 | 30,170 |
+| `map/60-notes-23.md` | 25 | 88,543 |
+| `map/60-notes-24.md` | 25 | 66,059 |
+| `map/60-notes-25.md` | 25 | 73,120 |
+| `map/60-notes-26.md` | 25 | 75,999 |
+| `map/60-notes-27.md` | 25 | 98,537 |
+| `map/60-notes-28.md` | 25 | 94,751 |
+| `map/60-notes-29.md` | 25 | 141,423 |
+| `map/60-notes-30.md` | 6 | 34,392 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・730本・26,620,593 B）
+## 8. 精読ノート索引（readings/・731本・26,654,130 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 709/730 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 710/731 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：730 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：83 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：731 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：82 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6080,10 +6091,11 @@
 | `readings/2026-11-12-two-clocks-the-gate-counts-labels-the-axis-lays-out-dates.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261111-5ebabb` +6 | 13,058 | Q2 M1 S7 ERR3 | ✓ | 二つの時計——ゲートはラベルで数え、軸は実日付で並べる |
 | `readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ebb435` | 6,680 | Q1 S1 | ✓ | PR #655 がしたことと、いま止めるもの——閉じた枝の概要と再発防止 |
 | `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
-| `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | — | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
+| `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | ✓ | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
 | `readings/2026-11-13-seven-theories-of-boundary-and-self-description.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-431f47` | 24,671 | Q3 M7 R1 S1 ERR3 | — | 境界と自己記述の七理論——自己を「保存された実体」ではなく「何を閉じ、どこまで語れるか」で問い直す |
+| `readings/2026-11-13-ten-theories-of-memory-cost-and-other-people.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-ed8a61` | 15,125 | Q3 M12 S1 ERR2 | — | 記録の外にある条件——記憶・費用・他者をめぐる理論科学十資料 |
 | `readings/2026-11-13-the-class-of-allowed-transformations.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-494ed9` +1 | 32,414 | Q3 M16 S2 | — | 許された変換のクラス——七つの理論科学と、「戻れない」の意味を分ける |
-| `readings/2026-11-13-theoretical-science-seven-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-03d44c` +1 | 15,332 | Q3 M7 S2 | — | 理論科学七資料の四層精読と横断報告（2026-11-13） |
+| `readings/2026-11-13-theoretical-science-seven-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-03d44c` +1 | 15,332 | Q3 M7 S2 | ✓ | 理論科学七資料の四層精読と横断報告（2026-11-13） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |

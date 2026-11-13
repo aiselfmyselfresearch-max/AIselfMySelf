@@ -27,13 +27,11 @@ class BeliefStateAndLearningTests(unittest.TestCase):
 
     def test_live_belief_posteriors_and_map_sync(self):
         bs = belief_state.compute_belief_state(self.live_data)
-        # Live-ledger counts.  These are deliberately pinned so a ledger change
-        # cannot pass unnoticed; bump them in the same commit as the ledger rows
-        # they describe.  Bumped 2026-11-13 after concurrent theoretical-science
-        # sessions: origin/main d6e33df carries 16 hypotheses / 34 evaluations,
-        # and SESSION-20261113-431f47 adds three evaluations without a hypothesis.
+        # Live-ledger counts are pinned so ledger changes cannot pass unnoticed.
+        # origin/main 44a5407 carries 16 hypotheses / 37 evaluations;
+        # SESSION-20261113-ed8a61 adds one cross-session audit evaluation.
         self.assertEqual(bs["total_hypotheses"], 16)
-        self.assertEqual(bs["total_evaluations"], 37)
+        self.assertEqual(bs["total_evaluations"], 38)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
@@ -56,6 +54,23 @@ class BeliefStateAndLearningTests(unittest.TestCase):
 
         ok, msg = belief_state.check_belief_map(ROOT)
         self.assertTrue(ok, msg)
+
+    def test_unverified_evaluations_keep_errata_flags_and_refutation(self):
+        belief_data = belief_state.load_belief_ledgers(ROOT)
+        bs = belief_state.compute_belief_state(belief_data)
+        q2 = {h["hypothesis_id"]: h for h in bs["questions"]["Q-002"]["hypotheses"]}
+        cases = (
+            ("MAT-20261113-c03554", "EVL-20261113-cec5a8", "ERR-20261113-fc0a12", "HYP-20261112-afd1a5"),
+            ("MAT-20261113-1695e0", "EVL-20261113-439690", "ERR-20261113-bad8ab", "HYP-20261112-16929d"),
+        )
+        for material_id, evaluation_id, errata_id, hypothesis_id in cases:
+            with self.subTest(evaluation_id=evaluation_id):
+                self.assertEqual(self.live_data["materials"][material_id]["verification"]["status"], "unverified")
+                self.assertEqual(self.live_data["evaluations"][evaluation_id]["evidence_type"], "primary_source_collision")
+                self.assertEqual(belief_data["errata"][errata_id]["subject_id"], evaluation_id)
+                self.assertIn(errata_id, q2[hypothesis_id]["errata_flags"])
+        q3 = {h["hypothesis_id"]: h for h in bs["questions"]["Q-003"]["hypotheses"]}
+        self.assertEqual(q3["HYP-20261112-1273f1"]["effective_status"], "refuted")
 
     def test_role_allocation_ratios_are_balanced(self):
         counts = {"proposer": 0, "adversarial_tester": 0, "consolidator": 0}
