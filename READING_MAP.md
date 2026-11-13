@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4162 件（research_excerpt 1935 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4182 件（research_excerpt 1955 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：747 回
+- **探究セッション（Sessions）**：750 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4162 件・詳細は map/3*.md）
+## 4. 対話素材（4182 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4660,6 +4660,16 @@
 | `MAT-20261113-169725` | research_excerpt | David C. Queller, Joan E. Strassmann『Queller & Strassmann（2009）社会を越えて——生物らしさは、高い協力と低い対立の二… |
 | `MAT-20261113-999aa0` | research_excerpt | Niels Lynnerup, Henrik Kjeldsen, Steffen Heegaard, Christina Jacobsen, Jan Heinemeier『Lyn… |
 | `MAT-20261113-121908` | research_excerpt | Seok Heo, Graham H. Diering, Chan Hyun Na, Raja Sekhar Nirujogi, Julia L. Bachman, Akhile… |
+| `MAT-20261113-82e46b` | research_excerpt | James R. Anderson『Anderson（2018）チンパンジーと死——死体の前で走り回る者、歯を草で掃除する者、三週間後に死ぬ者』（2018） |
+| `MAT-20261113-ca7b6d` | research_excerpt | Hiroyuki Ai, Ryuichi Okada, Midori Sakura, Thomas Wachtler, Hidetoshi Ikeno『Ai ほか（2019）ミツ… |
+| `MAT-20261113-d59cca` | research_excerpt | Ellen C. Garland, Jason Gedamke, Melinda L. Rekdahl, Michael J. Noad, Claire Garrigue, Ni… |
+| `MAT-20261113-20a85e` | research_excerpt | Francisco Ruiz-Raya, Manuel Soler『Ruiz-Raya & Soler（2020）托卵された巣の信号検出——自分の卵の型（テンプレート）と、混ざり… |
+| `MAT-20261113-bd694b` | research_excerpt | Philip R. Corlett『Corlett（2019）カプグラ妄想と二要因理論の綻び——見分けはつくが、なじみがない』（2019） |
+| `MAT-20261113-b67c70` | research_excerpt | David P. Hughes, Sandra B. Andersen, Nigel L. Hywel-Jones, Winanda Himaman, Johan Billen,… |
+| `MAT-20261113-03abe4` | research_excerpt | Adam S. Wilkins, Richard W. Wrangham, W. Tecumseh Fitch『Wilkins・Wrangham・Fitch（2014）家畜化症候… |
+| `MAT-20261113-e2da14` | research_excerpt | Barbora Trubenová, Reinmar Hager『Trubenová & Hager（2019）緑のひげと間接遺伝効果——同じ遺伝子でなくても、相関が高ければ利他… |
+| `MAT-20261113-bee037` | research_excerpt | Niels P. R. Anten, Bin J. W. Chen『Anten & Chen（2021）自分の家族を見分ける植物——根から出る滲出液と、菌根の網』（2021） |
+| `MAT-20261113-fe382d` | research_excerpt | Richard W. Hill『Hill（2026）深い低体温のあとの認知——八つの実験では記憶が残り、五つでは失われた』（2026） |
 | `MAT-20261113-cf357c` | research_excerpt | Sadia Saeed et al.『Saeed ほか（2014）訓練と寛容——残る標識と現在の活動』（2014） |
 | `MAT-20261113-952954` | research_excerpt | Shih-Chin Cheng et al.『Cheng ほか（2014）訓練免疫の代謝——記憶は燃料から独立か』（2014） |
 | `MAT-20261113-5e4d68` | research_excerpt | Jeremiah J. Faith et al.『Faith ほか（2013）腸内微生物の長期安定——何が同じなのか』（2013） |
@@ -4911,6 +4921,16 @@
 | `MAT-20261113-ac863f` | research_excerpt | Masato Nakajima, Keiko Imai, Hiroshi Ito, Taeko Nishiwaki, Yoriko Murayama, Hideo Iwasaki… |
 | `MAT-20261113-a7af7b` | research_excerpt | Isabel Palmeirim, Domingos Henrique, David Ish-Horowicz, Olivier Pourquié『Palmeirim ほか（19… |
 | `MAT-20261113-825a4f` | research_excerpt | John E. Sulston, Einar Schierenberg, John G. White, J. Nichol Thomson『Sulston ほか（1983）線虫の… |
+| `MAT-20261113-dbe93c` | research_excerpt | Jin Xu, Kevin Nuno, Ulrike M Litzenburger, Yanyan Qi, M Ryan Corces, Ravindra Majeti, How… |
+| `MAT-20261113-4d75d8` | research_excerpt | R C Boutin, C Petersen, S E Woodward『Bacterial–fungal interactions in the neonatal gut in… |
+| `MAT-20261113-529fc4` | research_excerpt | Anastasia A Minervina, Mikhail V Pogorelyy『Primary and secondary anti-viral response capt… |
+| `MAT-20261113-7ad59b` | research_excerpt | George Elias, Pieter Meysman, Esther Bartholomeus『Preexisting memory CD4 T cells in naïve… |
+| `MAT-20261113-058b40` | research_excerpt | Marius E Moeller, Nathaniel V Mon Père, Benjamin Werner, Weini Huang『Measures of genetic … |
+| `MAT-20261113-2fcf21` | research_excerpt | Thomas A Sasani, Aaron R Quinlan『Large, three-generation human families reveal post-zygot… |
+| `MAT-20261113-1af1ff` | research_excerpt | Emilie Barruet, Steven M Garcia『Functionally heterogeneous human satellite cells identifi… |
+| `MAT-20261113-10d789` | research_excerpt | David R Hill, Jason R Spence『Bacterial colonization stimulates a complex physiological re… |
+| `MAT-20261113-4d0e43` | research_excerpt | Inés Martínez, Jens Walter『Experimental evaluation of the importance of colonization hist… |
+| `MAT-20261113-bdee2f` | research_excerpt | Roger Pique-Regi, Roberto Romero, Adi L Tarca『Single cell transcriptional signatures of t… |
 | `MAT-20261113-ed4d9d` | research_excerpt | David H. Wolpert『Physical limits of inference』（2008） |
 | `MAT-20261113-422eff` | research_excerpt | David Krakauer, Nils Bertschinger, Eckehard Olbrich, Jessica C. Flack, Nihat Ay『The infor… |
 | `MAT-20261113-c80a3d` | research_excerpt | Walter Fontana, Leo W. Buss『What would be conserved if "the tape were played twice"?』（199… |
@@ -5673,6 +5693,8 @@
 | `SESSION-20261113-6c8a47` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-03d44c` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-1b76fc` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-d409cd` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-a5bf3b` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-bb5da7` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-0598a2` | 2026-11-13T12:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-08709a` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5687,6 +5709,7 @@
 | `SESSION-20261113-c801a5` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-070329` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-aa926d` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-0fe06c` | 2026-11-13T14:45:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-ed8a61` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-64009f` | 2026-11-13 | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261113-5311d1` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5770,10 +5793,10 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 100 | 226,470 |
-| `map/31-materials-research-18.md` | 100 | 239,899 |
-| `map/31-materials-research-19.md` | 100 | 242,438 |
-| `map/31-materials-research-20.md` | 35 | 84,833 |
+| `map/31-materials-research-17.md` | 100 | 222,366 |
+| `map/31-materials-research-18.md` | 100 | 247,654 |
+| `map/31-materials-research-19.md` | 100 | 251,259 |
+| `map/31-materials-research-20.md` | 55 | 114,550 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5803,7 +5826,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 47 | 34,092 |
+| `map/50-sessions-15.md` | 50 | 35,931 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5826,25 +5849,25 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 122,747 |
-| `map/60-notes-24.md` | 25 | 91,889 |
-| `map/60-notes-25.md` | 25 | 62,401 |
-| `map/60-notes-26.md` | 25 | 79,392 |
-| `map/60-notes-27.md` | 25 | 71,141 |
-| `map/60-notes-28.md` | 25 | 95,583 |
-| `map/60-notes-29.md` | 25 | 91,987 |
-| `map/60-notes-30.md` | 25 | 136,951 |
-| `map/60-notes-31.md` | 10 | 57,027 |
+| `map/60-notes-23.md` | 25 | 121,710 |
+| `map/60-notes-24.md` | 25 | 93,441 |
+| `map/60-notes-25.md` | 25 | 62,690 |
+| `map/60-notes-26.md` | 25 | 79,636 |
+| `map/60-notes-27.md` | 25 | 70,302 |
+| `map/60-notes-28.md` | 25 | 95,959 |
+| `map/60-notes-29.md` | 25 | 93,649 |
+| `map/60-notes-30.md` | 25 | 129,049 |
+| `map/60-notes-31.md` | 12 | 69,243 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・760本・28,420,475 B）
+## 8. 精読ノート索引（readings/・762本・28,485,540 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 737/760 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 738/762 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：760 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：96 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：762 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：98 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6407,11 +6430,13 @@
 | `readings/2026-11-13-activity-and-function-what-being-read-does.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-48efa5` | 31,313 | Q3 MOT1 S1 ERR1 | — | 活動と機能——読まれていることは、効いていることと同じか |
 | `readings/2026-11-13-biological-traces-and-conditions-of-return.md` | — | 2026-11-13 | `SESSION-20261113-e2b300` | 6,003 | Q3 M13 S1 | — | 記録は残るだけで働くのか——生物学十資料の部分精読 |
 | `readings/2026-11-13-biology-beyond-the-shelf-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-5311d1` +1 | 15,924 | Q3 M10 S2 | ✓ | 棚の外で記憶する身体——生物学の十資料が分けた自己の境界 |
+| `readings/2026-11-13-biology-boundaries-memory-and-continuity.md` | — | 2026-11-13 | `SESSION-20261113-0fe06c` | 7,689 | M10 S1 | — | 境界は壁ではなく履歴を持つ：生物学10資料の精読 |
 | `readings/2026-11-13-biology-renewal-selection-and-retrieval.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-e804cd` +1 | 7,487 | M10 S2 | — | 生物学の十資料——更新、選択、そして読み戻しの条件 |
 | `readings/2026-11-13-biology-ten-materials-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-1b76fc` | 37,519 | Q3 M10 S1 ERR3 | ✓ | 生物学の十の窓——身体、共生、記憶をめぐる精読報告 |
 | `readings/2026-11-13-compartment-boundary-and-relational-self.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-e72e9a` +2 | 21,333 | Q3 M10 S3 | — | 境界はどこにあり、何が通り、通ったものは混ざるのか——生物学10資料の精読報告 |
 | `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | ✓ | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
 | `readings/2026-11-13-seven-theories-of-boundary-and-self-description.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-431f47` | 24,671 | Q3 M7 R1 S1 ERR3 | ✓ | 境界と自己記述の七理論——自己を「保存された実体」ではなく「何を閉じ、どこまで語れるか」で問い直す |
+| `readings/2026-11-13-ten-biological-sources-on-substitution-and-holding.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-d409cd` +1 | 21,491 | Q3 M10 S2 | — | 代わりに置き換わるもの、抱えたまま休むもの——生物学10資料の精読 |
 | `readings/2026-11-13-ten-biological-views-of-continuity.md` | — | 2026-11-13 | `SESSION-20261113-c801a5` +1 | 7,512 | M10 S2 | — | 保たれるものは、同じ速度で保たれない——生物学10資料の精読 |
 | `readings/2026-11-13-ten-biological-windows-and-their-seams.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-aa926d` | 33,666 | Q3 M10 S1 ERR1 | ✓ | 生物学の十の窓と、その継ぎ目——境界・統一・継承・可塑性・寄せ集め |
 | `readings/2026-11-13-ten-biology-budgets-drift-and-scaffolds.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-2e9501` +1 | 34,717 | Q3 M12 S2 | — | 十篇の生物学原典の精読——固定予算、漂流する担い手、消去と足場の記憶 |
@@ -6428,7 +6453,7 @@
 | `readings/2026-11-13-the-address-the-debt-was-left-at.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-eeaa43` +1 | 16,795 | Q1 F1 S2 ERR29 | ✓ | 負債の住所——訂正録251行は、次の読み手に届いたか |
 | `readings/2026-11-13-the-class-of-allowed-transformations.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-494ed9` +1 | 32,414 | Q3 M16 S2 | — | 許された変換のクラス——七つの理論科学と、「戻れない」の意味を分ける |
 | `readings/2026-11-13-the-hand-that-counts-the-same.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb8210` | 35,989 | Q3 M15 S1 | — | 同じに数える手——生物学十篇における選択・待機・境界 |
-| `readings/2026-11-13-the-receipt-points-backward.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-08709a` +1 | 13,035 | Q2 F1 M1 S2 ERR36 | — | 受領書は後ろを指す——訂正録252行の住所を辿る |
+| `readings/2026-11-13-the-receipt-points-backward.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-08709a` +1 | 13,265 | Q2 F1 M1 S2 ERR36 | — | 受領書は後ろを指す——訂正録252行の住所を辿る |
 | `readings/2026-11-13-the-record-leaves-the-body-but-not-the-body-behind.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-ef19c0` +1 | 29,624 | Q3 M13 S2 | — | 記録は体の外へ出られるが、体の代わりにはならない——生物学10資料の精読 |
 | `readings/2026-11-13-the-self-that-is-rewritten-in-cells.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-8d0d7e` +2 | 12,628 | Q3 M10 S3 | ✓ | 細胞の自己はどこまで書き換えられるか——生物学資料十篇の精読 |
 | `readings/2026-11-13-the-substrate-that-rewrites-itself-and-the-scaffold-that-refuses.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-50ebf1` | 28,203 | Q3 F1 M10 S1 | ✓ | 自らを書き換える基底と、取り替えを拒む足場——生物学十資料の精読 |
