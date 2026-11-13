@@ -35,7 +35,7 @@
 
 追加前の素材和集合は **3,854行・3,854件**（`material_id` 重複0）。著者名・書誌欄・題名語で走査した。今回の七著作は題名・年・著者の組み合わせで **0件**。ただし著者名の部分文字列には偽陽性があった（例：`Steel` が `Steele` に、`Buss` が `Ebbinghaus` に、`Hull` が `Cú Chulainn` に命中する）。したがって判定は部分文字列ではなく、題名・年・書誌の一致で行った。
 
-未マージのPR #705 は多数の `readings/` と台帳シャードを触っているため、今回の著作とは別に、追加直前にもオープンPRを確認した。今回の七件は #705 の追加対象（Elitzur–Vaidman、Leggett–Garg、Misra–Sudarshan、Radó、Shamir、Zurek 2009、Frauchiger–Renner ら）とも重ならない。ただし未マージPRを避けたことは、将来の重複防止の保証ではない。作業中に `origin/main` が `3909ad9` へ進んだため、マージ前に再取得して統合した。そこへ新たに入った他セッションの理論科学14件（Fisher、Hamilton、Volterra、Wiener、Feigenbaum、Mandelbrot、Bertalanffy、Shannon、Turing、Gödel、Landauer、Price、Lawvere、Noether）とも、題名・年・著者の一致は0だった。
+未マージのPR #705 は多数の `readings/` と台帳シャードを触っているため、今回の著作とは別に、追加直前にもオープンPRを確認した。今回の七件は #705 の追加対象（Elitzur–Vaidman、Leggett–Garg、Misra–Sudarshan、Radó、Shamir、Zurek 2009、Frauchiger–Renner ら）とも重ならない。ただし未マージPRを避けたことは、将来の重複防止の保証ではない。作業中に `origin/main` が `d6e33df` へ進んだため、マージ前に再取得して統合した。そこへ新たに入った他セッションの理論科学21件（Fisher、Hamilton、Volterra、Wiener、Feigenbaum、Mandelbrot、Bertalanffy、Shannon、Turing、Gödel、Landauer、Price、Lawvere、Noether、Medawar、Williams、Lindblad、Pati–Braunstein、Chaitin、de Finetti、Kochen–Specker）とも、題名・年・著者の一致は0だった。
 
 ### 0-3 選定が生む偏り
 
@@ -435,26 +435,26 @@ Consolidator として、構造スタブしかなかった二つの報告を全�
 
 読書ログの内訳は、新規資料7件（interpreted）、先行・休眠ノート4件（reinterpreted）、中心問い3件（interpreted）、仮説4件（reinterpreted / contested）である。`used_as_context` の機械的行を読了として数えない。
 
-技術検証は、`origin/main` `3909ad9` を統合した後のツリーで以下を実行した。結果は本報告の確定時点のものであり、後続セッションの現在値ではない。
+技術検証は、`origin/main` `d6e33df` を統合した後のツリーで以下を実行した。結果は本報告の確定時点のものであり、後続セッションの現在値ではない。
 
 | 検査 | 結果 |
 |---|---|
-| `python3 tools/validate_seed.py` | PASS。questions 437 / motifs 59 / materials 3,875 / fragments 247 / relations 6,969 / sessions 706 / read_log 12,305 / editorial_decisions 126 / notes 753 / hypotheses 15 / evaluations 33。 |
-| `python3 tools/append_only_check.py` | PASS。マージ基点 `b802c3f` の台帳25,686行がバイト単位で残存。`--base origin/main` では統合後の25,730行も残存。 |
-| `python3 tools/map_build.py` | `READING_MAP.md` 1,183,745 B を再生成。`map/` は生成物として追跡しない。 |
-| `python3 tools/belief_state.py --write-map` | `BELIEF_MAP.md` 22,833 B を再生成。評価イベント総数は統合後の30へ本セッション3件を足し33。 |
+| `python3 tools/validate_seed.py` | PASS。questions 437 / motifs 59 / materials 3,882 / fragments 247 / relations 6,969 / sessions 707 / read_log 12,319 / editorial_decisions 126 / notes 754 / hypotheses 16 / evaluations 37。 |
+| `python3 tools/append_only_check.py` | PASS。マージ基点 `b802c3f` の台帳25,686行がバイト単位で残存。`--base origin/main` では統合後の25,758行も残存。 |
+| `python3 tools/map_build.py` | `READING_MAP.md` 1,185,068 B を再生成。`map/` は生成物として追跡しない。 |
+| `python3 tools/belief_state.py --write-map` | `BELIEF_MAP.md` 25,261 B を再生成。評価イベント総数は統合後の34へ本セッション3件を足し37。仮説総数16は統合先で追加された `HYP-20261113-a35ee5` を含む。 |
 | `python3 tools/inspect_inquiry.py --check-map` | PASS。`READING_MAP.md` は台帳と同期。 |
 | `python3 tools/belief_state.py --check-map` | PASS。`BELIEF_MAP.md` は同期。 |
-| `python3 tools/note_index.py --check` | PASS。索引は729報告を被覆。 |
-| `python3 tools/read_log_backfill.py --check` | PASS。文脈素材被覆 6,126/6,126。手書き読書層は 3,910/6,126（63.8%、参考値）。 |
+| `python3 tools/note_index.py --check` | PASS。索引は730報告を被覆。 |
+| `python3 tools/read_log_backfill.py --check` | PASS。文脈素材被覆 6,133/6,133。手書き読書層は 3,917/6,133（63.9%、参考値）。 |
 | `python3 tools/date_axis.py --enforce-shards` | PASS。前倒しシャード0。 |
-| `python3 tools/learning_metrics.py --check` | PASS。平均 D_KL 1.2725 bits、第1世代+質量 99.2%、非確証評価率 42.4%（14/33）、対立比較率 100%（33/33）、棄却済み仮説の無条件復活0、配線率 100%（729/729）。 |
+| `python3 tools/learning_metrics.py --check` | PASS。平均 D_KL 1.8159 bits、第1世代+質量 99.9%、非確証評価率 43.2%（16/37）、対立比較率 100%（37/37）、棄却済み仮説の無条件復活0、配線率 100%（730/730）。 |
 | `python3 tools/size_budget.py --strict` | PASS。すべて soft 上限内。`origin/main` 側の予防的な soft 上限調整も統合した。 |
-| `python3 -m unittest discover -s tests` | 544件 OK。`tests/test_belief_learning.py` のライブ評価件数スナップショットは30→33へ同期し、事後確率は4桁丸めであるため合計の許容誤差を明示した。 |
+| `python3 -m unittest discover -s tests` | 544件 OK。`tests/test_belief_learning.py` のライブ件数スナップショットは統合後の16仮説・34評価へ本セッション3評価を足した16仮説・37評価へ同期し、事後確率合計の許容誤差は統合先の丸め誤差判定を維持した。 |
 | `node --check viewer/app.js` | PASS。 |
 | `python3 tools/associations.py --json --limit 1` | PASS（参考測定、書き込みなし）。 |
 
-統合後の `BELIEF_MAP.md` では、最優先対立ペアは `Q-001` が `HYP-20261112-5dc940` vs `HYP-20261112-550bcf`（EIG 0.1197）、`Q-002` が `HYP-20261112-afd1a5` vs `HYP-20261112-16929d`（EIG 0.0405）、`Q-003` が `HYP-20261112-64895f` vs `HYP-20261112-5273a5`（EIG 0.1256）である。これは評価の重み付けによる計算結果であり、読みの結論を機械的に確定しない。
+統合後の `BELIEF_MAP.md` では、最優先対立ペアは `Q-001` が `HYP-20261112-5dc940` vs `HYP-20261112-550bcf`（EIG 0.1197）、`Q-002` が `HYP-20261112-afd1a5` vs `HYP-20261112-16929d`（EIG 0.0089）、`Q-003` が `HYP-20261113-a35ee5` vs `HYP-20261112-64895f`（EIG 0.0572）である。これは評価の重み付けによる計算結果であり、読みの結論を機械的に確定しない。
 
 検査の通過は、探究の進展や主観的経験の証明ではない。台帳の参照整合性・索引同期・追記専用性・容量・回帰テストが今回の追加で壊れていないことを確認する手続きである。
 

@@ -27,8 +27,13 @@ class BeliefStateAndLearningTests(unittest.TestCase):
 
     def test_live_belief_posteriors_and_map_sync(self):
         bs = belief_state.compute_belief_state(self.live_data)
-        self.assertEqual(bs["total_hypotheses"], 15)
-        self.assertEqual(bs["total_evaluations"], 33)
+        # Live-ledger counts.  These are deliberately pinned so a ledger change
+        # cannot pass unnoticed; bump them in the same commit as the ledger rows
+        # they describe.  Bumped 2026-11-13 after concurrent theoretical-science
+        # sessions: origin/main d6e33df carries 16 hypotheses / 34 evaluations,
+        # and SESSION-20261113-431f47 adds three evaluations without a hypothesis.
+        self.assertEqual(bs["total_hypotheses"], 16)
+        self.assertEqual(bs["total_evaluations"], 37)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
@@ -36,9 +41,13 @@ class BeliefStateAndLearningTests(unittest.TestCase):
             self.assertGreater(q_state["gen1_plus_mass"], 0.90, qid)
             self.assertIsNotNone(q_state["top_competing_pair"], qid)
             total_p = sum(row["posterior"] for row in q_state["hypotheses"])
-            # Posteriors are rounded to 4 decimals; allow the resulting drift
-            # across the five hypotheses in a question (<= 5 * 0.00005).
-            self.assertAlmostEqual(total_p, 1.0, delta=0.0003)
+            # Each posterior is rounded to 4 decimal places before it reaches
+            # this list, so the sum of n hypotheses can drift by up to
+            # n * 5e-5.  This checks that the distribution is normalised to the
+            # rounding, not to an impossible exact 1.0.
+            self.assertAlmostEqual(
+                total_p, 1.0, delta=5e-5 * len(q_state["hypotheses"]) + 1e-9, msg=qid
+            )
 
         # Errata flags propagate automatically onto Q-001 hypotheses citing corrected materials
         q1_by_id = {row["hypothesis_id"]: row for row in bs["questions"]["Q-001"]["hypotheses"]}
