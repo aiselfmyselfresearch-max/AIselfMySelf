@@ -32,8 +32,12 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # SESSION-20261113-f556b8 adds six primary-source-collision evaluations
         # across Q-001..Q-003 (EVL-20261113-606754, -5acbff, -f50572,
         # -2c6d36, -17a2fd, -9e41a6), taking the live total to 91.
+        # SESSION-20261113-6c8a47 adds nine evaluations from ten further
+        # biology sources: three primary-source collisions and six fragment
+        # thought experiments (EVL-20261113-f6a99f ... -06b38d), taking the
+        # live total to 100.
         self.assertEqual(bs["total_hypotheses"], 18)
-        self.assertEqual(bs["total_evaluations"], 91)
+        self.assertEqual(bs["total_evaluations"], 100)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
