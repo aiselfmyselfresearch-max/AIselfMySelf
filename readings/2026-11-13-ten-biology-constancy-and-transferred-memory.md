@@ -989,7 +989,7 @@ Frankland & Bontempi 2005 Box 1：システム統合は、昆虫（ショウジ�
 | 検査 | 結果（`origin/main` = `300f084`、PR #725・#726 統合後） |
 | :--- | :--- |
 | `tools/validate_seed.py` | PASS（questions=437, motifs=59, **materials=4042**, fragments=247, relations=6986, sessions=726, **read_log=12678**, editorial_decisions=126, notes=776, hypotheses=20, **evaluations=137**） |
-| `tools/append_only_check.py` | PASS（`origin/main` の26,438行がバイト単位で保持） |
+| `tools/append_only_check.py` | PASS（`origin/main` の26,437行がバイト単位で保持） |
 | `tools/inspect_inquiry.py --check-map` | PASS（READING_MAP.md は state/*.jsonl と同期） |
 | `tools/belief_state.py --check-map` | PASS（BELIEF_MAP.md 32,634 bytes） |
 | `tools/note_index.py --check` | PASS（746 notes、READING_MAP §8 は最新） |
