@@ -78,8 +78,16 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # judgement/transformation-class structure; the report discloses that
         # its rise to 84% is a reallocation of mass from the two hypotheses
         # that were narrowed, not fresh evidence for it.
+        # PR #730 (SESSION-20261113-1a5bd2) adds four comparative biology
+        # evaluations on top of PR #729's 153 (EVL-20261113-a68b44, -7176a6,
+        # -ff21e1, -165ab3: one supports / three narrows_scope), taking the
+        # live total to 157 without adding hypotheses. Its ten new biology
+        # sources do not overlap PR #729's ten; all ten are partially_verified
+        # (abstract/bibliography or an author review, no primary full text),
+        # which readings/2026-11-13-what-decides-which-line-is-read.md discloses
+        # and which limits what these four rows can be taken to prove.
         self.assertEqual(bs["total_hypotheses"], 20)
-        self.assertEqual(bs["total_evaluations"], 153)
+        self.assertEqual(bs["total_evaluations"], 157)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]

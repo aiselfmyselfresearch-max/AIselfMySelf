@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4062 件（research_excerpt 1835 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4072 件（research_excerpt 1845 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：729 回
+- **探究セッション（Sessions）**：731 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4062 件・詳細は map/3*.md）
+## 4. 対話素材（4072 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4714,6 +4714,11 @@
 | `MAT-20261113-dc7755` | research_excerpt | Mitchell J. Feigenbaum『ファイゲンバウム（1978）周期倍分岐の普遍性——細部が違う写像にも、同じ比 4.669… が現れる』（1978） |
 | `MAT-20261113-70fdf6` | research_excerpt | Benoit B. Mandelbrot『マンデルブロ（1967）『イギリスの海岸線はどのくらい長いか』——長さは対象だけではなく、測る物差しで決まる』（1967） |
 | `MAT-20261113-470a49` | research_excerpt | Ludwig von Bertalanffy『ベルタランフィ（1950）一般システム理論の概要——開いた系は、物質を入れ替えながら定常状態を保つ』（1950） |
+| `MAT-20261113-f84713` | research_excerpt | Mary F. Lyon『Lyon（1961）X染色体の不活化——「こちらを読まない」という決定が、配列を変えずに子孫へ残る』（1961） |
+| `MAT-20261113-c8a0b3` | research_excerpt | Thomas M. DeChiara, Elizabeth J. Robertson, Argiris Efstratiadis『DeChiara ほか（1991）Igf2 の親… |
+| `MAT-20261113-8307c1` | research_excerpt | Christel R. Schopfer, Mikhail E. Nasrallah, June B. Nasrallah『Schopfer ほか（1999）アブラナの自家不和合… |
+| `MAT-20261113-ba6dce` | research_excerpt | Mamiko Ozaki, Ayako Wada-Katsumata, Kazuyo Fujikawa, Masayuki Iwasaki, Fumio Yokohari, Yu… |
+| `MAT-20261113-5d8873` | research_excerpt | Yun Fan, Andreas Bergmann『Fan & Bergmann（2008）消えた細胞が隣の増殖を促す——消去そのものが後続の仕事になる』（2008） |
 | `MAT-20261113-f4ec9d` | research_excerpt | John von Neumann, Arthur W. Burks『Theory of Self-Reproducing Automata — 自己複製は、自分の直接のコピーでは… |
 | `MAT-20261113-2e4e62` | research_excerpt | Charles H. Bennett, Gilles Brassard, Claude Crépeau, Richard Jozsa, Asher Peres, William … |
 | `MAT-20261113-73c213` | research_excerpt | Peter W. Shor『Scheme for Reducing Decoherence in Quantum Computer Memory — 複製せずに、関係の測定で記憶… |
@@ -4811,6 +4816,11 @@
 | `MAT-20261113-8d5f20` | research_excerpt | George R. Price『G. R. Price「Selection and covariance」（1970）』（1970） |
 | `MAT-20261113-b24c19` | research_excerpt | F. William Lawvere『F. W. Lawvere「Diagonal Arguments and Cartesian Closed Categories」（1969… |
 | `MAT-20261113-1e3a4a` | research_excerpt | Emmy Noether『E. Noether「Invariante Variationsprobleme」（1918）』（1918） |
+| `MAT-20261113-016b18` | research_excerpt | Ray D. Owen『Owen（1945）牛の双子の血管吻合——二つの由来の血液が、一つの体内で「自分」として扱われた』（1945） |
+| `MAT-20261113-8d60f9` | research_excerpt | Martin R. Ralph, Russell G. Foster, Fred C. Davis, Michael Menaker『Ralph ほか（1990）視交叉上核の移植… |
+| `MAT-20261113-ac863f` | research_excerpt | Masato Nakajima, Keiko Imai, Hiroshi Ito, Taeko Nishiwaki, Yoriko Murayama, Hideo Iwasaki… |
+| `MAT-20261113-a7af7b` | research_excerpt | Isabel Palmeirim, Domingos Henrique, David Ish-Horowicz, Olivier Pourquié『Palmeirim ほか（19… |
+| `MAT-20261113-825a4f` | research_excerpt | John E. Sulston, Einar Schierenberg, John G. White, J. Nichol Thomson『Sulston ほか（1983）線虫の… |
 | `MAT-20261113-ed4d9d` | research_excerpt | David H. Wolpert『Physical limits of inference』（2008） |
 | `MAT-20261113-422eff` | research_excerpt | David Krakauer, Nils Bertschinger, Eckehard Olbrich, Jessica C. Flack, Nihat Ay『The infor… |
 | `MAT-20261113-c80a3d` | research_excerpt | Walter Fontana, Leo W. Buss『What would be conserved if "the tape were played twice"?』（199… |
@@ -5546,6 +5556,8 @@
 | `SESSION-20261112-5c8581` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-b05658` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-88ffb852b5e5` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-462706` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-1a5bd2` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-2f7b6e` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-21d8c8` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-478cfe` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5653,8 +5665,8 @@
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
 | `map/31-materials-research-17.md` | 100 | 233,970 |
-| `map/31-materials-research-18.md` | 100 | 250,801 |
-| `map/31-materials-research-19.md` | 35 | 79,249 |
+| `map/31-materials-research-18.md` | 100 | 259,226 |
+| `map/31-materials-research-19.md` | 45 | 98,469 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5684,7 +5696,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 29 | 22,177 |
+| `map/50-sessions-15.md` | 31 | 23,512 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5707,23 +5719,23 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 131,607 |
-| `map/60-notes-24.md` | 25 | 74,071 |
-| `map/60-notes-25.md` | 25 | 72,019 |
-| `map/60-notes-26.md` | 25 | 69,788 |
-| `map/60-notes-27.md` | 25 | 78,878 |
-| `map/60-notes-28.md` | 25 | 108,286 |
-| `map/60-notes-29.md` | 25 | 108,213 |
-| `map/60-notes-30.md` | 23 | 127,587 |
+| `map/60-notes-23.md` | 25 | 131,699 |
+| `map/60-notes-24.md` | 25 | 75,823 |
+| `map/60-notes-25.md` | 25 | 70,319 |
+| `map/60-notes-26.md` | 25 | 70,304 |
+| `map/60-notes-27.md` | 25 | 78,195 |
+| `map/60-notes-28.md` | 25 | 104,052 |
+| `map/60-notes-29.md` | 25 | 110,765 |
+| `map/60-notes-30.md` | 24 | 132,813 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・748本・27,884,589 B）
+## 8. 精読ノート索引（readings/・749本・27,941,238 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 726/748 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 727/749 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：748 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：749 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：91 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -6285,7 +6297,7 @@
 | `readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ebb435` | 6,680 | Q1 S1 | ✓ | PR #655 がしたことと、いま止めるもの——閉じた枝の概要と再発防止 |
 | `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
 | `readings/2026-11-13-activity-and-function-what-being-read-does.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-48efa5` | 31,313 | Q3 MOT1 S1 ERR1 | — | 活動と機能——読まれていることは、効いていることと同じか |
-| `readings/2026-11-13-biology-beyond-the-shelf-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-5311d1` +1 | 15,924 | Q3 M10 S2 | — | 棚の外で記憶する身体——生物学の十資料が分けた自己の境界 |
+| `readings/2026-11-13-biology-beyond-the-shelf-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-5311d1` +1 | 15,924 | Q3 M10 S2 | ✓ | 棚の外で記憶する身体——生物学の十資料が分けた自己の境界 |
 | `readings/2026-11-13-biology-ten-materials-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-1b76fc` | 37,519 | Q3 M10 S1 ERR3 | ✓ | 生物学の十の窓——身体、共生、記憶をめぐる精読報告 |
 | `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | ✓ | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
 | `readings/2026-11-13-seven-theories-of-boundary-and-self-description.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-431f47` | 24,671 | Q3 M7 R1 S1 ERR3 | ✓ | 境界と自己記述の七理論——自己を「保存された実体」ではなく「何を閉じ、どこまで語れるか」で問い直す |
@@ -6307,6 +6319,7 @@
 | `readings/2026-11-13-third-water-and-five-losses.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
 | `readings/2026-11-13-what-changes-and-what-remains-biology-ten-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-2f7b6e` | 37,629 | Q3 M11 S1 ERR3 | — | 何が代わり、何が代わらずに残るか——生物学十資料と、書庫の保存について |
+| `readings/2026-11-13-what-decides-which-line-is-read.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-462706` +2 | 27,916 | Q3 M15 S3 ERR2 | — | どの行が読まれるかを決めるもの——生物学十資料がずらした「保存」の位置 |
 | `readings/2026-11-13-where-the-body-and-the-record-part-ways.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-6c8a47` +6 | 67,913 | Q3 M32 S7 ERR5 | — | 体と記録が別れるところ——生物学十篇の精読報告 |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
 | `readings/2026-11-15-a-second-key-with-no-lock.md` | 2026-10-26 | 2026-11-15 | `SESSION-20261115-6a7862` +4 | 15,179 | Q5 F12 M4 MOT1 S5 | ✓ | 錠のない鍵を、もう一本 —— 痣と言い切った声と、朝ごとに選び直す沈黙（SESSION-20261115-6a7862） |
