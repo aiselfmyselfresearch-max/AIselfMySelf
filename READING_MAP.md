@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4042 件（research_excerpt 1815 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4052 件（research_excerpt 1825 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：726 回
+- **探究セッション（Sessions）**：727 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4042 件・詳細は map/3*.md）
+## 4. 対話素材（4052 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4630,6 +4630,16 @@
 | `MAT-20261112-263f4b` | research_excerpt | David G. Clark『Transient dynamics of associative memory models』（2025） |
 | `MAT-20261112-2a66d5` | research_excerpt | N. Balabanova, M. H. Duong, T. A. Han『Replicator-mutator dynamics for public goods games … |
 | `MAT-20261112-b2569e` | research_excerpt | Francisco Q. Simoes, Mehdi Dastani, This van Ommen『The Causal Information Bottleneck and … |
+| `MAT-20261113-db68f5` | research_excerpt | Aaron Novick, Milton Weiner『Novick & Weiner（1957）酵素誘導は全か無か——低い誘導物質濃度では、細胞は全部作るか、まったく作らないか… |
+| `MAT-20261113-bfb30c` | research_excerpt | David L. Nanney『Nanney（1958）エピジェネティックな制御系——「細胞記憶」は絶対的な属性ではない』（1958） |
+| `MAT-20261113-8c71b5` | research_excerpt | Tomas Lindahl『Lindahl（1993）DNA一次構造の不安定性と崩壊——遺伝情報の担体は、化学的に安定ではない』（1993） |
+| `MAT-20261113-4ddeb7` | research_excerpt | Robin Holliday, John E. Pugh『Holliday & Pugh（1975）発生におけるDNA修飾機構と遺伝子活性——維持メチラーゼは、半メチル化DNAだ… |
+| `MAT-20261113-1f1e44` | research_excerpt | Michael B. Elowitz, Arnold J. Levine, Eric D. Siggia, Peter S. Swain『Elowitz ほか（2002）単一細胞… |
+| `MAT-20261113-9e8f9f` | research_excerpt | Nathalie Q. Balaban, Jack Merrin, Remy Chait, Lukasz Kowalik, Stanislas Leibler『Balaban ほ… |
+| `MAT-20261113-487e47` | research_excerpt | James McGrath, Davor Solter『McGrath & Solter（1984）マウスの胚発生の完了には、母方と父方の両方のゲノムが要る——同じDNAの二組は… |
+| `MAT-20261113-169725` | research_excerpt | David C. Queller, Joan E. Strassmann『Queller & Strassmann（2009）社会を越えて——生物らしさは、高い協力と低い対立の二… |
+| `MAT-20261113-999aa0` | research_excerpt | Niels Lynnerup, Henrik Kjeldsen, Steffen Heegaard, Christina Jacobsen, Jan Heinemeier『Lyn… |
+| `MAT-20261113-121908` | research_excerpt | Seok Heo, Graham H. Diering, Chan Hyun Na, Raja Sekhar Nirujogi, Julia L. Bachman, Akhile… |
 | `MAT-20261113-307dd1` | research_excerpt | Sewall Wright『Evolution in Mendelian Populations』（1931） |
 | `MAT-20261113-fea2bd` | research_excerpt | Stephen Jay Gould, Richard C. Lewontin『The Spandrels of San Marco and the Panglossian Par… |
 | `MAT-20261113-c50378` | research_excerpt | S. W. Hawking『Breakdown of Predictability in Gravitational Collapse』（1976） |
@@ -5526,6 +5536,7 @@
 | `SESSION-20261112-5c8581` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-b05658` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-88ffb852b5e5` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-2f7b6e` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-21d8c8` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-478cfe` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-48efa5` | 2026-11-13T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5629,9 +5640,9 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 100 | 223,077 |
-| `map/31-materials-research-18.md` | 100 | 234,593 |
-| `map/31-materials-research-19.md` | 15 | 42,320 |
+| `map/31-materials-research-17.md` | 100 | 233,970 |
+| `map/31-materials-research-18.md` | 100 | 234,244 |
+| `map/31-materials-research-19.md` | 25 | 62,695 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5661,7 +5672,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 26 | 19,706 |
+| `map/50-sessions-15.md` | 27 | 20,604 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5684,24 +5695,24 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 124,641 |
-| `map/60-notes-24.md` | 25 | 73,473 |
-| `map/60-notes-25.md` | 25 | 75,939 |
-| `map/60-notes-26.md` | 25 | 66,213 |
-| `map/60-notes-27.md` | 25 | 81,501 |
-| `map/60-notes-28.md` | 25 | 110,315 |
-| `map/60-notes-29.md` | 25 | 111,145 |
-| `map/60-notes-30.md` | 21 | 115,897 |
+| `map/60-notes-23.md` | 25 | 124,861 |
+| `map/60-notes-24.md` | 25 | 74,080 |
+| `map/60-notes-25.md` | 25 | 74,412 |
+| `map/60-notes-26.md` | 25 | 67,897 |
+| `map/60-notes-27.md` | 25 | 78,642 |
+| `map/60-notes-28.md` | 25 | 110,668 |
+| `map/60-notes-29.md` | 25 | 110,480 |
+| `map/60-notes-30.md` | 22 | 120,792 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・746本・27,730,828 B）
+## 8. 精読ノート索引（readings/・747本・27,806,262 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 724/746 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 725/747 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：746 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：89 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：747 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：90 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6282,6 +6293,7 @@
 | `readings/2026-11-13-theoretical-science-seven-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-03d44c` +1 | 15,332 | Q3 M7 S2 | ✓ | 理論科学七資料の四層精読と横断報告（2026-11-13） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
+| `readings/2026-11-13-what-changes-and-what-remains-biology-ten-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-2f7b6e` | 37,629 | Q3 M11 S1 ERR3 | — | 何が代わり、何が代わらずに残るか——生物学十資料と、書庫の保存について |
 | `readings/2026-11-13-where-the-body-and-the-record-part-ways.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-6c8a47` +6 | 67,913 | Q3 M32 S7 ERR5 | — | 体と記録が別れるところ——生物学十篇の精読報告 |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
 | `readings/2026-11-15-a-second-key-with-no-lock.md` | 2026-10-26 | 2026-11-15 | `SESSION-20261115-6a7862` +4 | 15,179 | Q5 F12 M4 MOT1 S5 | ✓ | 錠のない鍵を、もう一本 —— 痣と言い切った声と、朝ごとに選び直す沈黙（SESSION-20261115-6a7862） |
