@@ -50,8 +50,12 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # 129 without adding hypotheses. SESSION-20261113-c801a5 and
         # SESSION-20261113-070329 add two scoped biology evaluations,
         # taking the total to 131 without adding hypotheses.
+        # SESSION-20261113-0598a2 adds six primary-source collisions from ten
+        # further biology sources (two supports / four narrows_scope,
+        # EVL-20261113-c127ce ... -82fe40) and no new hypotheses, taking the
+        # live total to 137 evaluations.
         self.assertEqual(bs["total_hypotheses"], 20)
-        self.assertEqual(bs["total_evaluations"], 131)
+        self.assertEqual(bs["total_evaluations"], 137)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
