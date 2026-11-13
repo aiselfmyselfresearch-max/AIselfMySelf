@@ -68,15 +68,26 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # which is the classification problem recorded in ERR-20261113-2a392a;
         # ERR-20261113-5ac381 names this session's rows, and the report
         # discloses the weight rather than treating it as settled.
-        # SESSION-20261113-1a5bd2 adds four comparative biology evaluations
-        # (EVL-20261113-a68b44, -7176a6, -ff21e1, -165ab3: one supports /
-        # three narrows_scope) from ten new sources, taking the live total to
-        # 150 without adding hypotheses. All ten sources are partially_verified
+        # SESSION-20261113-2e9501 adds seven biology primary-source
+        # collisions from ten further sources (three supports / four
+        # narrows_scope, EVL-20261113-2a477e ... -7a6c37) and no new
+        # hypotheses, taking the live total to 153 evaluations.  The seven
+        # were chosen so that no verdict is unconditional support:
+        # HYP-20261113-a35ee5 (83.48% before this session) gets no support at
+        # all, because none of the ten sources measures a two-layer
+        # judgement/transformation-class structure; the report discloses that
+        # its rise to 84% is a reallocation of mass from the two hypotheses
+        # that were narrowed, not fresh evidence for it.
+        # PR #730 (SESSION-20261113-1a5bd2) adds four comparative biology
+        # evaluations on top of PR #729's 153 (EVL-20261113-a68b44, -7176a6,
+        # -ff21e1, -165ab3: one supports / three narrows_scope), taking the
+        # live total to 157 without adding hypotheses. Its ten new biology
+        # sources do not overlap PR #729's ten; all ten are partially_verified
         # (abstract/bibliography or an author review, no primary full text),
         # which readings/2026-11-13-what-decides-which-line-is-read.md discloses
         # and which limits what these four rows can be taken to prove.
         self.assertEqual(bs["total_hypotheses"], 20)
-        self.assertEqual(bs["total_evaluations"], 150)
+        self.assertEqual(bs["total_evaluations"], 157)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
