@@ -68,8 +68,18 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # which is the classification problem recorded in ERR-20261113-2a392a;
         # ERR-20261113-5ac381 names this session's rows, and the report
         # discloses the weight rather than treating it as settled.
+        # SESSION-20261113-2e9501 adds seven biology primary-source
+        # collisions from ten further sources (three supports / four
+        # narrows_scope, EVL-20261113-2a477e ... -7a6c37) and no new
+        # hypotheses, taking the live total to 153 evaluations.  The seven
+        # were chosen so that no verdict is unconditional support:
+        # HYP-20261113-a35ee5 (83.48% before this session) gets no support at
+        # all, because none of the ten sources measures a two-layer
+        # judgement/transformation-class structure; the report discloses that
+        # its rise to 84% is a reallocation of mass from the two hypotheses
+        # that were narrowed, not fresh evidence for it.
         self.assertEqual(bs["total_hypotheses"], 20)
-        self.assertEqual(bs["total_evaluations"], 146)
+        self.assertEqual(bs["total_evaluations"], 153)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
