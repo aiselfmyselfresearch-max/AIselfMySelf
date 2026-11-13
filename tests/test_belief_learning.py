@@ -42,7 +42,14 @@ class BeliefStateAndLearningTests(unittest.TestCase):
             self.assertGreater(q_state["gen1_plus_mass"], 0.90, qid)
             self.assertIsNotNone(q_state["top_competing_pair"], qid)
             total_p = sum(row["posterior"] for row in q_state["hypotheses"])
-            self.assertAlmostEqual(total_p, 1.0, places=5)
+            # Each posterior is rounded to 4 decimal places before it reaches
+            # this list, so the sum of n hypotheses can drift by up to
+            # n * 5e-5.  With n = 6 that is 3e-4, which is larger than
+            # `places=5` allows.  This checks that the distribution is
+            # normalised to the rounding, not to an impossible exact 1.0.
+            self.assertAlmostEqual(
+                total_p, 1.0, delta=5e-5 * len(q_state["hypotheses"]) + 1e-9, msg=qid
+            )
 
         # Errata flags propagate automatically onto Q-001 hypotheses citing corrected materials
         q1_by_id = {row["hypothesis_id"]: row for row in bs["questions"]["Q-001"]["hypotheses"]}
