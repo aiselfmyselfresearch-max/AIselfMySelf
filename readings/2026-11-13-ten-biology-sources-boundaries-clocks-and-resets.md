@@ -478,7 +478,8 @@ Reddien (2018) は、`Q-002` の **`HYP-20261112-ba8bff`（87.1%：名義的負�
 | `Q-002` | `ba8bff` **87.1% → 62.9%** ／ `16929d` **11.2% → 32.3%** ／ `afd1a5` **1.2% → 3.6%** | 0.645 → **1.209 bits** | 1.677 → **1.113 bits** | `ba8bff` vs `16929d` (`0.0872`) |
 | `Q-003` | `a35ee5` **87.8% → 65.1%** ／ `6e910a` **9.6% → 28.2%** ／ `64895f` **1.9% → 5.5%** ／ `e90d84` **0.5% → 0.4%** | 0.659 → **1.242 bits** | 2.341 → **1.758 bits** | `a35ee5` vs `6e910a` (`0.0956`) |
 
-- **全体指標**: `EVL` 総数 `75 → 81`（`supports` 40 / `narrows_scope` 35 / `refutes_unconditioned` 5 / `subsumes` 1）、非確証評価率 `48.0% → 50.6% (41/81)`、対立比較率 `100.0% (81/81)`、棄却済み仮説の復活 `0件`、`readings/` 配線率 `100.0% (738/738)`、`read_log` 第2層（手書き精読率）`64.3% → 64.4% (4002/6218)`、次回優先順位は `Q-003 → Q-001 → Q-002` へ移行した。
+- **全体指標（作業開始時点 `origin/main` `e970bef` 基準）**: `EVL` 総数 `75 → 81`（`supports` 40 / `narrows_scope` 35 / `refutes_unconditioned` 5 / `subsumes` 1）、非確証評価率 `48.0% → 50.6% (41/81)`、対立比較率 `100.0% (81/81)`、棄却済み仮説の復活 `0件`、`readings/` 配線率 `100.0% (738/738)`、`read_log` 第2層（手書き精読率）`64.3% → 64.4% (4002/6218)`、次回優先順位は `Q-003 → Q-001 → Q-002` へ移行した。
+- **PR #719 統合後の最終台帳状態（`origin/main` `4103d6d1` 取り込み後 `EVL = 85 → 91`）**: 統合後に先行報告 `PR #719`（`SESSION-20261113-aa926d`、別著10編・重複0件・評価10件）を取り込んだ結果、全体の確定事後確率は `Q-001`: `550bcf` **52.9%** / `46456a` **39.3%** / `5dc940` **6.2%**（`H = 1.367 bits`, `D_KL = 0.954 bits`, `EIG = 0.0858`）、`Q-002`: `16929d` **62.7%** / `ba8bff` **28.9%** / `afd1a5` **5.5%**（`H = 1.343 bits`, `D_KL = 0.979 bits`, `EIG = 0.0724`）、`Q-003`: `a35ee5` **91.6%** / `6e910a` **3.8%** / `64895f` **3.8%** / `e90d84` **0.2%**（`H = 0.542 bits`, `D_KL = 2.458 bits`, `EIG = 0.0214`）となり、平均 `D_KL = 1.4636 bits`、非確証評価率 `52.8% (48/91)`、次回最優先は `Q-001 → Q-002 → Q-003` に着地した。
 
 ---
 
@@ -503,16 +504,15 @@ Reddien (2018) は、`Q-002` の **`HYP-20261112-ba8bff`（87.1%：名義的負�
 
 ### §15-3. CI・テスト検証結果（実測記録）
 
-以下の `.github/workflows/ci.yml` 全検査および単体回帰テストを実行し、全項目 **PASS** を確認した：
+以下の `.github/workflows/ci.yml` 全検査および単体回帰テストを実行し、全項目 **PASS** を確認した（上段は作業開始時 `origin/main` `e970bef` 基準 `EVL=81` での 545 件全通時、下段は `PR #719` マージ後 `origin/main` `4103d6d1` 取り込み後の最終台帳 `EVL=91` での検証実測値）：
 
-- `python3 tools/validate_seed.py`: `PASS`（`questions=437, motifs=59, materials=3962, fragments=247, relations=6974, sessions=716, read_log=12487, editorial_decisions=126, notes=764, hypotheses=18, evaluations=81`）
-- `python3 tools/append_only_check.py --base origin/main`: `PASS`（`origin/main` の 26,066 台帳行がバイト単位で完全保存）
-- `python3 tools/inspect_inquiry.py --check-map`: `PASS`（`READING_MAP.md` 同期確認）
-- `python3 tools/belief_state.py --check-map`: `PASS`（`BELIEF_MAP.md` 29,299 bytes 同期確認）
-- `python3 tools/note_index.py --check`: `PASS`（`738 notes` すべて索引配線済み）
-- `python3 tools/date_axis.py --enforce-shards`: `PASS`（前倒しシャード `0 本`）
-- `python3 tools/learning_metrics.py --check`: `PASS`（非確証評価率 `50.6%`、対立比較率 `100.0%`、復活 `0件`、配線率 `100.0%`）
-- `python3 tools/size_budget.py --strict`: `PASS`（全ディレクトリ・ファイルが soft 上限内）
-- `python3 tools/read_log_backfill.py --check`: `PASS`（カバレッジ `6218/6218`、手書き第2層 `64.4%`）
-- `node --check viewer/app.js` および `associations.py` / `date_axis.py --check` / `inheritance.py --cohorts`: いずれも終了コード `0`
-- `python3 -m unittest discover -s tests -v`: **`Ran 545 tests in 163.853s — OK`**（`tests/test_belief_learning.py` の `EVL` 総数ピンを 75 → 81 へ更新後、全件合格）
+- **作業基準 `e970bef` (`EVL=81`) での全件実行**:
+  - `validate_seed.py`: `PASS`（`questions=437, motifs=59, materials=3962, fragments=247, relations=6974, sessions=716, read_log=12487, editorial_decisions=126, notes=764, hypotheses=18, evaluations=81`）
+  - `python3 -m unittest discover -s tests -v`: **`Ran 545 tests in 163.853s — OK`**（`EVL` ピン 75 → 81）
+- **`PR #719` 統合後（最終提出状態 `EVL=91`）の検証**:
+  - `python3 tools/validate_seed.py`: `PASS`（`questions=437, motifs=59, materials=3972, fragments=247, relations=6974, sessions=717, read_log=12515, editorial_decisions=126, notes=766, hypotheses=18, evaluations=91`）
+  - `python3 tools/append_only_check.py --base origin/main`: `PASS`（`origin/main` の 26,118 台帳行がバイト単位で完全保存）
+  - `python3 tools/belief_state.py --check-map`: `PASS`（`BELIEF_MAP.md` 29,339 bytes 同期確認）
+  - `python3 tools/learning_metrics.py --check`: `PASS`（平均 `D_KL=1.4636 bits`、非確証評価率 `52.8% (48/91)`、対立比較率 `100.0% (91/91)`、復活 `0件`、配線率 `100.0% (739/739)`）
+  - `python3 tools/note_index.py --check` / `tools/size_budget.py --strict` / `tools/read_log_backfill.py --check`: いずれも **PASS**（`739 notes` 全配線、全サイズ予算 soft 上限内、`read_log` カバレッジ `6228/6228`・手書き第2層 `64.4%`）
+  - `tests/test_belief_learning.py` の `EVL` 総数ピンを `85 → 91` へ更新し、`READING_MAP.md` 再構築後の最終全検査および回帰テスト一式を通過させて確定した。

@@ -28,17 +28,12 @@ class BeliefStateAndLearningTests(unittest.TestCase):
     def test_live_belief_posteriors_and_map_sync(self):
         bs = belief_state.compute_belief_state(self.live_data)
         # Live-ledger counts are pinned so ledger changes cannot pass unnoticed.
-        # origin/main 080882d carries 18 hypotheses / 65 evaluations.
-        # SESSION-20261113-894a80 (merged as PR #717) adds six
-        # primary-source collision evaluations.
-        # SESSION-20261113-dd3200 (PR #718) adds four primary-source-collision
-        # evaluations from the ten biology sources read on 2026-11-13
-        # (EVL-20261113-21fc7d, -38b986, -895a84, -26cb17).
+        # PR #719 (SESSION-20261113-aa926d) raised evaluations from 75 to 85.
         # SESSION-20261113-f556b8 adds six primary-source-collision evaluations
         # across Q-001..Q-003 (EVL-20261113-606754, -5acbff, -f50572,
-        # -2c6d36, -17a2fd, -9e41a6).
+        # -2c6d36, -17a2fd, -9e41a6), taking the live total to 91.
         self.assertEqual(bs["total_hypotheses"], 18)
-        self.assertEqual(bs["total_evaluations"], 81)
+        self.assertEqual(bs["total_evaluations"], 91)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
