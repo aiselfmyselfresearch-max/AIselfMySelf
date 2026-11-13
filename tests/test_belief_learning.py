@@ -35,8 +35,9 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # HYP-20261113-e90d84 / HYP-20261113-34b501, five evaluations, and one
         # cross-session audit evaluation after the parallel session was merged.
         # SESSION-20261113-734222 adds ten thought-experiment evaluations.
+        # SESSION-20261113-1b76fc (this branch) adds ten primary-source-collision evaluations (biology).
         self.assertEqual(bs["total_hypotheses"], 18)
-        self.assertEqual(bs["total_evaluations"], 55)
+        self.assertEqual(bs["total_evaluations"], 65)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]

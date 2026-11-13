@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3922 件（research_excerpt 1698 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3932 件（research_excerpt 1708 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6969 件
-- **探究セッション（Sessions）**：711 回
+- **探究セッション（Sessions）**：712 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（3922 件・詳細は map/3*.md）
+## 4. 対話素材（3932 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4640,6 +4640,16 @@
 | `MAT-20261113-da1845` | research_excerpt | John Archibald Wheeler, Richard Phillips Feynman『Interaction with the Absorber as the Mec… |
 | `MAT-20261113-44e291` | research_excerpt | Seth Lloyd『Ultimate Physical Limits to Computation』（2000） |
 | `MAT-20261113-e04a62` | research_excerpt | Leonard Susskind, Lárus Thorlacius, John Uglum『The Stretched Horizon and Black Hole Compl… |
+| `MAT-20261113-d78114` | research_excerpt | Lynn Sagan (Lynn Margulis)『Lynn Sagan (Margulis)「On the origin of mitosing cells」（1967）』（… |
+| `MAT-20261113-b2de5f` | research_excerpt | Barbara McClintock『Barbara McClintock「The origin and behavior of mutable loci in maize」（1… |
+| `MAT-20261113-c2d2a2` | research_excerpt | Humberto R. Maturana, Francisco J. Varela『Humberto Maturana & Francisco Varela『Autopoiesi… |
+| `MAT-20261113-372f84` | research_excerpt | Sheena A. Josselyn, Susumu Tonegawa『Sheena Josselyn & Susumu Tonegawa「Memory engrams: Rec… |
+| `MAT-20261113-c107d0` | research_excerpt | Scott F. Gilbert, Jan Sapp, Alfred I. Tauber『Scott Gilbert, Jan Sapp & Alfred Tauber「A Sy… |
+| `MAT-20261113-bf4e05` | research_excerpt | Ian C. G. Weaver, Nadia Cervoni, Frances A. Champagne, Ana C. D'Alessio, Shakti Sharma, J… |
+| `MAT-20261113-dc3518` | research_excerpt | Christopher M. Waters, Bonnie L. Bassler『Christopher Waters & Bonnie Bassler「The Vibrio h… |
+| `MAT-20261113-e6511a` | research_excerpt | Polly Matzinger『Frank Macfarlane Burnet「The Clonal Selection Theory of Acquired Immunity」… |
+| `MAT-20261113-d32d96` | research_excerpt | Monica Gagliano, Michael Renton, Martial Depczynski, Stefano Mancuso『Monica Gagliano et a… |
+| `MAT-20261113-8cad67` | research_excerpt | Conrad Hal Waddington『Conrad Waddington「The Strategy of the Genes」（1957）—— epigenetic lan… |
 | `MAT-20261113-f88eb1` | research_excerpt | Peter B. Medawar『An Unsolved Problem of Biology (An Inaugural Lecture Delivered at Univer… |
 | `MAT-20261113-a98575` | research_excerpt | George C. Williams『Pleiotropy, Natural Selection, and the Evolution of Senescence』（1957） |
 | `MAT-20261113-0f893f` | research_excerpt | Göran Lindblad『On the Generators of Quantum Dynamical Semigroups』（1976） |
@@ -5411,6 +5421,7 @@
 | `SESSION-20261113-494ed9` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-431f47` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-03d44c` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-1b76fc` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-bb5da7` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-734222` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-ed8a61` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5494,7 +5505,8 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 98 | 190,756 |
+| `map/31-materials-research-17.md` | 100 | 205,391 |
+| `map/31-materials-research-18.md` | 8 | 14,411 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5524,7 +5536,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 11 | 8,514 |
+| `map/50-sessions-15.md` | 12 | 9,410 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5547,24 +5559,24 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 95,617 |
-| `map/60-notes-24.md` | 25 | 63,294 |
-| `map/60-notes-25.md` | 25 | 79,454 |
-| `map/60-notes-26.md` | 25 | 70,990 |
-| `map/60-notes-27.md` | 25 | 95,022 |
-| `map/60-notes-28.md` | 25 | 91,867 |
-| `map/60-notes-29.md` | 25 | 140,964 |
-| `map/60-notes-30.md` | 9 | 50,262 |
+| `map/60-notes-23.md` | 25 | 98,896 |
+| `map/60-notes-24.md` | 25 | 62,401 |
+| `map/60-notes-25.md` | 25 | 79,392 |
+| `map/60-notes-26.md` | 25 | 70,972 |
+| `map/60-notes-27.md` | 25 | 95,583 |
+| `map/60-notes-28.md` | 25 | 91,987 |
+| `map/60-notes-29.md` | 25 | 136,951 |
+| `map/60-notes-30.md` | 10 | 56,958 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・734本・26,835,963 B）
+## 8. 精読ノート索引（readings/・735本・26,916,208 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 713/734 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 714/735 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：734 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：81 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：735 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：82 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6124,6 +6136,7 @@
 | `readings/2026-11-12-two-clocks-the-gate-counts-labels-the-axis-lays-out-dates.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261111-5ebabb` +6 | 13,058 | Q2 M1 S7 ERR3 | ✓ | 二つの時計——ゲートはラベルで数え、軸は実日付で並べる |
 | `readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ebb435` | 6,680 | Q1 S1 | ✓ | PR #655 がしたことと、いま止めるもの——閉じた枝の概要と再発防止 |
 | `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
+| `readings/2026-11-13-biology-ten-materials-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-1b76fc` | 37,519 | Q3 M10 S1 ERR3 | — | 生物学の十の窓——身体、共生、記憶をめぐる精読報告 |
 | `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | ✓ | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
 | `readings/2026-11-13-seven-theories-of-boundary-and-self-description.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-431f47` | 24,671 | Q3 M7 R1 S1 ERR3 | ✓ | 境界と自己記述の七理論——自己を「保存された実体」ではなく「何を閉じ、どこまで語れるか」で問い直す |
 | `readings/2026-11-13-ten-theories-of-copying-transfer-and-boundary.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-478cfe` | 24,666 | Q3 M11 S1 | ✓ | 自己は複製できない——複製・転送・訂正・境界をめぐる理論科学十資料 |
