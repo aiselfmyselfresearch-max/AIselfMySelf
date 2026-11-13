@@ -48,8 +48,21 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # evaluations. PR #725 adds three biology-scoped evaluations
         # (EVL-20261113-9dfeb9, -584c93, -3675e0), bringing the live total to
         # 129 without adding hypotheses.
+        # SESSION-20261113-2f7b6e adds nine biology evaluations here.
+        # The first draft held seven (one support / one refutation / five
+        # narrows; EVL-20261113-7d74b5, -60b755, -05b67c, -addf7c, -e35311,
+        # -6becc2, -5b2bcb), all pointing the same way; two of the ten
+        # materials (McGrath & Solter 1984, Balaban et al. 2004) had no
+        # evaluation at all, and both readings argue the opposite direction.
+        # That asymmetry pushed Q-002 below the kl_from_uniform and
+        # gen1_plus_mass gates (0.255 / 0.844), which this test caught.
+        # EVL-20261113-10b28f and -eb86cf record the two missing readings,
+        # taking the live total to 138 without adding hypotheses.  Six of the
+        # nine cite sources read only to abstract/secondary-quotation depth,
+        # which is the classification problem recorded in ERR-20261113-2a392a;
+        # the report discloses it rather than treating the weight as settled.
         self.assertEqual(bs["total_hypotheses"], 20)
-        self.assertEqual(bs["total_evaluations"], 129)
+        self.assertEqual(bs["total_evaluations"], 138)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
