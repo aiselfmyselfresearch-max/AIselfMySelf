@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3854 件（research_excerpt 1630 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3861 件（research_excerpt 1637 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6965 件
-- **探究セッション（Sessions）**：703 回
+- **探究セッション（Sessions）**：704 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（3854 件・詳細は map/3*.md）
+## 4. 対話素材（3861 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4630,8 +4630,15 @@
 | `MAT-20261112-263f4b` | research_excerpt | David G. Clark『Transient dynamics of associative memory models』（2025） |
 | `MAT-20261112-2a66d5` | research_excerpt | N. Balabanova, M. H. Duong, T. A. Han『Replicator-mutator dynamics for public goods games … |
 | `MAT-20261112-b2569e` | research_excerpt | Francisco Q. Simoes, Mehdi Dastani, This van Ommen『The Causal Information Bottleneck and … |
+| `MAT-20261113-c03554` | research_excerpt | C. E. Shannon『C. E. Shannon「A Mathematical Theory of Communication」（1948）』（1948） |
+| `MAT-20261113-1695e0` | research_excerpt | A. M. Turing『A. M. Turing「On Computable Numbers, with an Application to the Entscheidungs… |
+| `MAT-20261113-40ae51` | research_excerpt | Kurt Godel『K. Godel「Uber formal unentscheidbare Satze der Principia Mathematica und verwa… |
+| `MAT-20261113-fcf5e5` | research_excerpt | Rolf Landauer『R. Landauer「Irreversibility and Heat Generation in the Computing Process」（1… |
+| `MAT-20261113-8d5f20` | research_excerpt | George R. Price『G. R. Price「Selection and covariance」（1970）』（1970） |
+| `MAT-20261113-b24c19` | research_excerpt | F. William Lawvere『F. W. Lawvere「Diagonal Arguments and Cartesian Closed Categories」（1969… |
+| `MAT-20261113-1e3a4a` | research_excerpt | Emmy Noether『E. Noether「Invariante Variationsprobleme」（1918）』（1918） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261112-88ffb852b5e5・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261113-03d44c・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -5338,6 +5345,7 @@
 | `SESSION-20261112-5c8581` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-b05658` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-88ffb852b5e5` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-03d44c` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6965 件・全表は map/40-relations-*.md）
 
@@ -5418,7 +5426,7 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 30 | 46,451 |
+| `map/31-materials-research-17.md` | 37 | 57,241 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5448,7 +5456,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 3 | 2,035 |
+| `map/50-sessions-15.md` | 4 | 2,896 |
 | `map/60-notes-01.md` | 25 | 63,953 |
 | `map/60-notes-02.md` | 25 | 71,094 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5471,24 +5479,24 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,243 |
-| `map/60-notes-23.md` | 25 | 84,720 |
-| `map/60-notes-24.md` | 25 | 68,755 |
-| `map/60-notes-25.md` | 25 | 72,214 |
-| `map/60-notes-26.md` | 25 | 76,557 |
-| `map/60-notes-27.md` | 25 | 101,347 |
-| `map/60-notes-28.md` | 25 | 103,736 |
-| `map/60-notes-29.md` | 25 | 142,790 |
-| `map/60-notes-30.md` | 1 | 5,824 |
+| `map/60-notes-23.md` | 25 | 84,024 |
+| `map/60-notes-24.md` | 25 | 68,186 |
+| `map/60-notes-25.md` | 25 | 72,296 |
+| `map/60-notes-26.md` | 25 | 74,785 |
+| `map/60-notes-27.md` | 25 | 101,509 |
+| `map/60-notes-28.md` | 25 | 102,935 |
+| `map/60-notes-29.md` | 25 | 142,038 |
+| `map/60-notes-30.md` | 2 | 11,817 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・726本・26,450,385 B）
+## 8. 精読ノート索引（readings/・727本・26,471,209 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 705/726 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 706/727 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：726 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：79 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：727 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：80 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6048,6 +6056,7 @@
 | `readings/2026-11-12-two-clocks-the-gate-counts-labels-the-axis-lays-out-dates.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261111-5ebabb` +6 | 13,058 | Q2 M1 S7 ERR3 | ✓ | 二つの時計——ゲートはラベルで数え、軸は実日付で並べる |
 | `readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ebb435` | 6,680 | Q1 S1 | ✓ | PR #655 がしたことと、いま止めるもの——閉じた枝の概要と再発防止 |
 | `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
+| `readings/2026-11-13-theoretical-science-seven-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-03d44c` | 11,595 | Q3 M7 S1 | — | 精読ノート — 理論科学の七つの資料（情報論・計算論・論理学・情報熱力学・理論進化論・圏論・対称性定理） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
