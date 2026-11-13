@@ -162,7 +162,10 @@ BUDGETS: tuple[Budget, ...] = (
 SHARD_BUDGETS: tuple[ShardBudget, ...] = (
     ShardBudget(
         "state/materials.d",
-        soft_bytes=10 * MIB,
+        # 2026-11-12 (human-authorized preventive rescaling for monitoring window):
+        # soft_bytes 10 -> 12 MiB (measured 9.26 MiB) and soft_shards 102 -> 120
+        # (measured 80 after PR #703 forward-shard consolidation); hard 20 MiB / 160 unchanged.
+        soft_bytes=12 * MIB,
         hard_bytes=20 * MIB,
         # 2026-11-08: retain one additional soft slot (81) for this requested
         # five-source acquisition. Keep the per-session shard separate rather
@@ -292,7 +295,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # source records require a new materials shard. Existing same-day records
         # remain in their originating shards; this session uses its own append-only
         # shard. Hard 160 unchanged; one-slot exception, not an automatic raise.
-        soft_shards=102,
+        soft_shards=120,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -322,7 +325,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
           # five theoretical-science sources needed a relations shard. Measured:
           # relations.d was 80/80 (no slot), no 2026-11-12 relations shard existed
           # for procedure 8-2. Hard 160 unchanged; not an automatic raise.
-          soft_shards=81,
+          # 2026-11-12 (human-authorized preventive rescaling for monitoring window):
+          # soft_shards 81 -> 110 (measured 64 after PR #703); hard 160 unchanged.
+          soft_shards=110,
         hard_shards=160,
         remedy="Compact old state/relations.d/ shards into frozen base in a dedicated maintenance PR",
     ),
@@ -338,7 +343,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # append-only row) is not available mid-merge.  Flagged in the
         # 2027-03-06 report as debt with a named first action: compact the
         # oldest read_log shards before the next acquisition session.
-        soft_bytes=5 * MIB,
+        # 2026-11-12 (human-authorized preventive rescaling for monitoring window):
+        # soft_bytes 5 -> 6.5 MiB (measured 4.55 MiB) and soft_shards 96 -> 130
+        # (measured 94, leaving only 2 slots before --strict failure); hard 10 MiB / 160 unchanged.
+        soft_bytes=int(6.5 * MIB),
         hard_bytes=10 * MIB,
         # 2026-11-08: retain one additional soft slot (81) because two
         # parallel sessions on the same day (PR #585 arena/e8b72114-aiselfmyself
@@ -403,7 +411,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (SESSION-20261112-db6077, 95 -> 96): eleven handwritten
         # read_log rows require this session's shard. Hard 160 unchanged; one-slot
         # exception, not an automatic raise.
-        soft_shards=96,
+        soft_shards=130,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -439,7 +447,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # actionable constraint is therefore the shard COUNT, plus shortening
         # future rows; if a row must be shortened, cut the narration before
         # the decision.
-        soft_bytes=3 * MIB,
+        # 2026-11-12 (human-authorized preventive rescaling for monitoring window):
+        # soft_bytes 3 -> 4 MiB (measured 2.44 MiB) and soft_shards 101 -> 135
+        # (measured 95, leaving 40 per-session slots); hard 8 MiB / 160 unchanged.
+        soft_bytes=4 * MIB,
         hard_bytes=8 * MIB,
         # 2026-11-08: retain one additional soft slot (82) because every
         # movable one-row session shard either records its own location or is
@@ -557,7 +568,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (SESSION-20261112-db6077, 100 -> 101): one session row
         # requires a new shard. Hard 160 unchanged; one-slot exception, not an
         # automatic raise.
-        soft_shards=101,
+        soft_shards=135,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -577,7 +588,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         "state/errata.d",
         soft_bytes=1 * MIB,
         hard_bytes=4 * MIB,
-        soft_shards=80,
+        # 2026-11-12 (human-authorized preventive rescaling for monitoring window):
+        # soft_shards 80 -> 110 (measured 73, ensuring Adversarial Tester / Consolidator
+        # sessions are never deterred from recording errata); hard 160 unchanged.
+        soft_shards=110,
         hard_shards=160,
         remedy="Keep errata shards concise",
     ),
@@ -606,7 +620,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # and still at ~25% usage. This value matches the notes.d byte raise
         # already proposed by open PR #655 (1 -> 1.25 MiB), so whichever of the
         # two lands second resolves a trivial conflict. Not an automatic raise.
-        soft_bytes=int(1.25 * MIB),
+        # 2026-11-12 (human-authorized preventive rescaling for monitoring window):
+        # soft_bytes 1.25 -> 2.00 MiB (measured 1.23 MiB after 100% 726-report wiring,
+        # leaving <19 KiB before --strict failure) and soft_shards 98 -> 130 (measured 86).
+        # Every new report in readings/ is now required by CI to register a NOTE-* row;
+        # hard 4 MiB / 160 unchanged.
+        soft_bytes=2 * MIB,
         hard_bytes=4 * MIB,
         # 2026-11-08: one extra soft slot for this report's curated note;
         # keep the per-report row in its own append-only session shard.
@@ -692,7 +711,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (SESSION-20261112-db6077, 97 -> 98): one curated note row
         # requires this session's shard. notes.d is order-sensitive and excluded
         # from consolidation; hard 160 unchanged; one-slot exception only.
-        soft_shards=98,
+        soft_shards=130,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
@@ -750,8 +769,13 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # Measured after adding it: 26,255,056 B (+75,128). Same reasoning as the
         # step above: append-only corpus, no consolidation possible, deletion needs
         # human approval. hard 48 MiB and the 256 KiB per-file limit are unchanged.
+        # 2026-11-12 (human-authorized preventive rescaling for monitoring window):
+        # soft_bytes 26 -> 32 MiB (measured 25.23 MiB across 726 reports, leaving
+        # 0.77 MiB). Gives ~190 reports of clean monitoring headroom while keeping
+        # hard 48 MiB, soft_files 900 / hard_files 1200, and the 256 KiB / 512 KiB
+        # per-report caps unchanged.
         "readings",
-        soft_bytes=26 * MIB,
+        soft_bytes=32 * MIB,
         hard_bytes=48 * MIB,
         remedy=(
             "Episodic reports are append-only, so decide which dimension fired before choosing a remedy. "
