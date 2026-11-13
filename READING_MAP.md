@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3875 件（research_excerpt 1651 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3882 件（research_excerpt 1658 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
-- **解釈的関係（Relations）**：6965 件
-- **探究セッション（Sessions）**：706 回
+- **解釈的関係（Relations）**：6969 件
+- **探究セッション（Sessions）**：707 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（3875 件・詳細は map/3*.md）
+## 4. 対話素材（3882 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4651,6 +4651,13 @@
 | `MAT-20261113-8d5f20` | research_excerpt | George R. Price『G. R. Price「Selection and covariance」（1970）』（1970） |
 | `MAT-20261113-b24c19` | research_excerpt | F. William Lawvere『F. W. Lawvere「Diagonal Arguments and Cartesian Closed Categories」（1969… |
 | `MAT-20261113-1e3a4a` | research_excerpt | Emmy Noether『E. Noether「Invariante Variationsprobleme」（1918）』（1918） |
+| `MAT-20261113-ed4d9d` | research_excerpt | David H. Wolpert『Physical limits of inference』（2008） |
+| `MAT-20261113-422eff` | research_excerpt | David Krakauer, Nils Bertschinger, Eckehard Olbrich, Jessica C. Flack, Nihat Ay『The infor… |
+| `MAT-20261113-c80a3d` | research_excerpt | Walter Fontana, Leo W. Buss『What would be conserved if "the tape were played twice"?』（199… |
+| `MAT-20261113-7f4dd3` | research_excerpt | Maël Montévil, Matteo Mossio『Biological organisation as closure of constraints』（2015） |
+| `MAT-20261113-89503d` | research_excerpt | Wim Hordijk, Mike Steel『Detecting autocatalytic, self-sustaining sets in chemical reactio… |
+| `MAT-20261113-d71f87` | research_excerpt | Christopher G. Langton『Self-reproduction in cellular automata』（1984） |
+| `MAT-20261113-b90228` | research_excerpt | Tibor Gánti『Organization of chemical reactions into dividing and metabolizing units: the … |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261113-bb5da7・全文は map/50-sessions-*.md）
 
@@ -5360,19 +5367,20 @@
 | `SESSION-20261112-b05658` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-88ffb852b5e5` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-494ed9` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-431f47` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-03d44c` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-bb5da7` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6965 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6969 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 1005 |
+| 対照 (contrast) | 1006 |
 | 共鳴 (echo) | 1657 |
 | 切断・割り込み (interrupts) | 239 |
-| 未解決のまま開く (leaves_open) | 917 |
+| 未解決のまま開く (leaves_open) | 919 |
 | 比喩的共鳴 (metaphorically_resonates) | 196 |
-| 枠組みの組み替え (reframes) | 810 |
+| 枠組みの組み替え (reframes) | 811 |
 | 応答 (responds_to) | 1804 |
 | 変奏・変形 (transforms) | 337 |
 
@@ -5442,7 +5450,7 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 51 | 84,941 |
+| `map/31-materials-research-17.md` | 58 | 100,692 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5457,7 +5465,7 @@
 | `map/40-relations-11.md` | 500 | 185,779 |
 | `map/40-relations-12.md` | 500 | 176,838 |
 | `map/40-relations-13.md` | 500 | 172,292 |
-| `map/40-relations-14.md` | 465 | 146,681 |
+| `map/40-relations-14.md` | 469 | 147,860 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5472,9 +5480,9 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 6 | 4,594 |
-| `map/60-notes-01.md` | 25 | 63,953 |
-| `map/60-notes-02.md` | 25 | 71,094 |
+| `map/50-sessions-15.md` | 7 | 5,427 |
+| `map/60-notes-01.md` | 25 | 65,182 |
+| `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
 | `map/60-notes-04.md` | 25 | 98,730 |
 | `map/60-notes-05.md` | 25 | 86,138 |
@@ -5495,24 +5503,24 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 86,799 |
-| `map/60-notes-24.md` | 25 | 66,521 |
-| `map/60-notes-25.md` | 25 | 72,419 |
-| `map/60-notes-26.md` | 25 | 75,151 |
-| `map/60-notes-27.md` | 25 | 101,735 |
-| `map/60-notes-28.md` | 25 | 96,670 |
-| `map/60-notes-29.md` | 25 | 142,437 |
-| `map/60-notes-30.md` | 4 | 23,525 |
+| `map/60-notes-23.md` | 25 | 87,698 |
+| `map/60-notes-24.md` | 25 | 66,487 |
+| `map/60-notes-25.md` | 25 | 72,403 |
+| `map/60-notes-26.md` | 25 | 75,666 |
+| `map/60-notes-27.md` | 25 | 99,754 |
+| `map/60-notes-28.md` | 25 | 96,871 |
+| `map/60-notes-29.md` | 25 | 140,292 |
+| `map/60-notes-30.md` | 5 | 30,170 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・729本・26,566,030 B）
+## 8. 精読ノート索引（readings/・730本・26,620,593 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 708/729 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 709/730 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：729 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：82 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：730 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：83 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6073,6 +6081,7 @@
 | `readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ebb435` | 6,680 | Q1 S1 | ✓ | PR #655 がしたことと、いま止めるもの——閉じた枝の概要と再発防止 |
 | `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
 | `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | — | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
+| `readings/2026-11-13-seven-theories-of-boundary-and-self-description.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-431f47` | 24,671 | Q3 M7 R1 S1 ERR3 | — | 境界と自己記述の七理論——自己を「保存された実体」ではなく「何を閉じ、どこまで語れるか」で問い直す |
 | `readings/2026-11-13-the-class-of-allowed-transformations.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-494ed9` +1 | 32,414 | Q3 M16 S2 | — | 許された変換のクラス——七つの理論科学と、「戻れない」の意味を分ける |
 | `readings/2026-11-13-theoretical-science-seven-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-03d44c` +1 | 15,332 | Q3 M7 S2 | — | 理論科学七資料の四層精読と横断報告（2026-11-13） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |

@@ -29,12 +29,11 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         bs = belief_state.compute_belief_state(self.live_data)
         # Live-ledger counts.  These are deliberately pinned so a ledger change
         # cannot pass unnoticed; bump them in the same commit as the ledger rows
-        # they describe.  Bumped 2026-11-13 after three concurrent sessions each
-        # added a theoretical-science set on the same day: SESSION-20261113-494ed9
-        # (one synthesis hypothesis HYP-20261113-a35ee5, four evaluations) and two
-        # parallel SESSION-20261113-* (seven and five evaluations).
+        # they describe.  Bumped 2026-11-13 after concurrent theoretical-science
+        # sessions: origin/main d6e33df carries 16 hypotheses / 34 evaluations,
+        # and SESSION-20261113-431f47 adds three evaluations without a hypothesis.
         self.assertEqual(bs["total_hypotheses"], 16)
-        self.assertEqual(bs["total_evaluations"], 34)
+        self.assertEqual(bs["total_evaluations"], 37)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
@@ -44,9 +43,8 @@ class BeliefStateAndLearningTests(unittest.TestCase):
             total_p = sum(row["posterior"] for row in q_state["hypotheses"])
             # Each posterior is rounded to 4 decimal places before it reaches
             # this list, so the sum of n hypotheses can drift by up to
-            # n * 5e-5.  With n = 6 that is 3e-4, which is larger than
-            # `places=5` allows.  This checks that the distribution is
-            # normalised to the rounding, not to an impossible exact 1.0.
+            # n * 5e-5.  This checks that the distribution is normalised to the
+            # rounding, not to an impossible exact 1.0.
             self.assertAlmostEqual(
                 total_p, 1.0, delta=5e-5 * len(q_state["hypotheses"]) + 1e-9, msg=qid
             )
