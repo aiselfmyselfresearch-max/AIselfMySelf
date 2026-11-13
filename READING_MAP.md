@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4032 件（research_excerpt 1805 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4052 件（research_excerpt 1825 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：724 回
+- **探究セッション（Sessions）**：727 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4032 件・詳細は map/3*.md）
+## 4. 対話素材（4052 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4744,6 +4744,16 @@
 | `MAT-20261113-610b45` | research_excerpt | Peter W Reddien『The cellular and molecular basis for planarian regeneration』（2018） |
 | `MAT-20261113-f77e57` | research_excerpt | Giulio Tononi, Chiara Cirelli『Sleep and synaptic down-selection』（2019） |
 | `MAT-20261113-96e859` | research_excerpt | Leah Houri-Zeevi, Guy Korem, Omer Sheftel, Itamar Faigenbloom, Itai Toker, Yael Dagan, Li… |
+| `MAT-20261113-b2d5e4` | research_excerpt | Claude Bernard『Claude Bernard (1878) Leçons sur les phénomènes de la vie, t. I — 内部環境の固定性… |
+| `MAT-20261113-40812a` | research_excerpt | Walter Bradford Cannon『Walter B. Cannon (1929) Physiological Reviews — 恒常性は、それを保とうとする機構が作… |
+| `MAT-20261113-e213b7` | research_excerpt | Ernst Mayr『Ernst Mayr (1961) Science — 至近原因と究極原因、開放されたプログラムと反応規準』（1961） |
+| `MAT-20261113-aec601` | research_excerpt | Pierre-Paul Grassé『Pierre-Paul Grassé (1959) Insectes Sociaux — スティグマージー：労働者は自分の仕事を指揮しない』… |
+| `MAT-20261113-409843` | research_excerpt | Guy Theraulaz, Eric Bonabeau『Theraulaz & Bonabeau (1999) Artificial Life — スティグマージーの短い歴史と… |
+| `MAT-20261113-c06feb` | research_excerpt | Reed Halfmann, Susan Lindquist『Halfmann & Lindquist (2010) Science — 極端な表観遺伝学：プリオンと環境獲得形質… |
+| `MAT-20261113-fd52c4` | research_excerpt | Richard M. Amasino『Richard Amasino (2004) Plant Cell — 春化、開花能力、そして冬の記憶』（2004） |
+| `MAT-20261113-832bcb` | research_excerpt | Binyamin Hochner, Tal Shomrat, Graziano Fiorito『Hochner, Shomrat & Fiorito (2006) Biologi… |
+| `MAT-20261113-5fda27` | research_excerpt | Matthew A. Wilson, Bruce L. McNaughton『Wilson & McNaughton (1994) Science — 睡眠中の海馬アンサンブル記… |
+| `MAT-20261113-2e8595` | research_excerpt | Paul W. Frankland, Bruno Bontempi『Frankland & Bontempi (2005) Nature Reviews Neuroscience… |
 | `MAT-20261113-1891f2` | research_excerpt | Erez Sela, Liat Friedman, Hadar Schaefer, Shulamit Michael, Tomasz Stulfi, Barbara Meyer,… |
 | `MAT-20261113-49ea99` | research_excerpt | Christopher W. Kuzawa, Harry T. Chugani, M. J. Grossman, Kristina Kazlauskas, Chet C. She… |
 | `MAT-20261113-ad42d1` | research_excerpt | Sam J. Sober, Michael S. Brainard『Sober & Brainard (2009) Nat Neurosci — Adult songbirds … |
@@ -4774,6 +4784,16 @@
 | `MAT-20261113-52c879` | research_excerpt | Walter NG『Are non-protein coding RNAs junk or treasure? An attempt to explain and reconci… |
 | `MAT-20261113-0963fe` | research_excerpt | Camellato BR, Brosh R, Ashe HJ, Maurano MT, Boeke JD『Synthetic reversed sequences reveal … |
 | `MAT-20261113-73e4a1` | research_excerpt | Cooper HB, Rojas López KE, Schiavinato D, Black MA, Gardner PP『Genomic indicators of gene… |
+| `MAT-20261113-808605` | research_excerpt | Bergmann, Spalding, Frisén『Adult Neurogenesis in Humans』（2015） |
+| `MAT-20261113-9e732a` | research_excerpt | Perl, Kushner, Buchholz『Significant Human β-Cell Turnover Is Limited to the First Three D… |
+| `MAT-20261113-91531e` | research_excerpt | Smith, Gallagher, Wong『Defining a stem cell hierarchy in the intestine: markers, caveats … |
+| `MAT-20261113-604079` | research_excerpt | Gordon, Joo, Powell『Neonatal DNA methylation profile in human twins is specified by a com… |
+| `MAT-20261113-7ae2d7` | research_excerpt | Shah, McRae, Marioni『Genetic and environmental exposures constrain epigenetic drift over … |
+| `MAT-20261113-189cd9` | research_excerpt | Coombs, Zehir, Devlin『Therapy-related clonal hematopoiesis in patients with non-hematolog… |
+| `MAT-20261113-5435ea` | research_excerpt | Duvarci, Nader『Characterization of Fear Memory Reconsolidation』（2004） |
+| `MAT-20261113-7bf7a9` | research_excerpt | Berger, Bitterman, Azzam『The Human Microbiota: The Rise of an “Empire”』（2015） |
+| `MAT-20261113-0fdfde` | research_excerpt | Chan, Nelson『Microchimerism in the human brain: More questions than answers』（2013） |
+| `MAT-20261113-94ec6d` | research_excerpt | Bergström, McCarthy, Hui『Insights into human genetic variation and population history fro… |
 | `MAT-20261113-c03554` | research_excerpt | C. E. Shannon『C. E. Shannon「A Mathematical Theory of Communication」（1948）』（1948） |
 | `MAT-20261113-1695e0` | research_excerpt | A. M. Turing『A. M. Turing「On Computable Numbers, with an Application to the Entscheidungs… |
 | `MAT-20261113-40ae51` | research_excerpt | Kurt Godel『K. Godel「Uber formal unentscheidbare Satze der Principia Mathematica und verwa… |
@@ -5528,11 +5548,14 @@
 | `SESSION-20261113-03d44c` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-1b76fc` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-bb5da7` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-0598a2` | 2026-11-13T12:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-dd3200` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-f556b8` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-894a80` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-1650a1` | 2026-11-13T00:00:00+09:00 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-734222` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-c801a5` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-070329` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-aa926d` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-ed8a61` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-64009f` | 2026-11-13 | `Q-001`, `Q-003` | — | — |
@@ -5618,8 +5641,8 @@
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
 | `map/31-materials-research-17.md` | 100 | 233,970 |
-| `map/31-materials-research-18.md` | 100 | 231,389 |
-| `map/31-materials-research-19.md` | 5 | 16,879 |
+| `map/31-materials-research-18.md` | 100 | 234,244 |
+| `map/31-materials-research-19.md` | 25 | 62,695 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5649,7 +5672,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 24 | 19,026 |
+| `map/50-sessions-15.md` | 27 | 20,604 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5672,24 +5695,24 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 117,671 |
-| `map/60-notes-24.md` | 25 | 71,810 |
-| `map/60-notes-25.md` | 25 | 75,628 |
-| `map/60-notes-26.md` | 25 | 67,345 |
-| `map/60-notes-27.md` | 25 | 84,515 |
-| `map/60-notes-28.md` | 25 | 108,353 |
-| `map/60-notes-29.md` | 25 | 114,116 |
-| `map/60-notes-30.md` | 20 | 108,685 |
+| `map/60-notes-23.md` | 25 | 124,861 |
+| `map/60-notes-24.md` | 25 | 74,080 |
+| `map/60-notes-25.md` | 25 | 74,412 |
+| `map/60-notes-26.md` | 25 | 67,897 |
+| `map/60-notes-27.md` | 25 | 78,642 |
+| `map/60-notes-28.md` | 25 | 110,668 |
+| `map/60-notes-29.md` | 25 | 110,480 |
+| `map/60-notes-30.md` | 22 | 120,792 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・745本・27,630,264 B）
+## 8. 精読ノート索引（readings/・747本・27,806,262 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 724/745 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 725/747 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：745 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：88 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：747 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：90 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6254,8 +6277,10 @@
 | `readings/2026-11-13-biology-ten-materials-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-1b76fc` | 37,519 | Q3 M10 S1 ERR3 | ✓ | 生物学の十の窓——身体、共生、記憶をめぐる精読報告 |
 | `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | ✓ | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
 | `readings/2026-11-13-seven-theories-of-boundary-and-self-description.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-431f47` | 24,671 | Q3 M7 R1 S1 ERR3 | ✓ | 境界と自己記述の七理論——自己を「保存された実体」ではなく「何を閉じ、どこまで語れるか」で問い直す |
+| `readings/2026-11-13-ten-biological-views-of-continuity.md` | — | 2026-11-13 | `SESSION-20261113-c801a5` +1 | 7,512 | M10 S2 | — | 保たれるものは、同じ速度で保たれない——生物学10資料の精読 |
 | `readings/2026-11-13-ten-biological-windows-and-their-seams.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-aa926d` | 33,666 | Q3 M10 S1 ERR1 | ✓ | 生物学の十の窓と、その継ぎ目——境界・統一・継承・可塑性・寄せ集め |
 | `readings/2026-11-13-ten-biology-codes-kinship-and-maintenance.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-0d7479` | 32,771 | Q3 M10 S1 ERR1 | — | 生物学十資料——コード、親族、そして維持の精読報告 |
+| `readings/2026-11-13-ten-biology-constancy-and-transferred-memory.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-0598a2` +3 | 79,134 | Q3 M19 S4 | — | 十篇の生物学資料の精読——一定性の定義史と、痕跡が移る場所 |
 | `readings/2026-11-13-ten-biology-sources-boundaries-clocks-and-resets.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-f556b8` +1 | 47,348 | Q3 M11 R5 S2 ERR3 | ✓ | 止まる線虫、老いない水母、乗り換えられる地図——生物学一次文献十編の全文精読と仮説衝突 |
 | `readings/2026-11-13-ten-biology-sources-cut-rewritten-and-entrusted.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-dd3200` | 30,668 | Q3 M16 MOT1 S1 | ✓ | 削られ、書き換えられ、外へ預けられる——自己の境界をめぐる生物学十資料 |
 | `readings/2026-11-13-ten-mechanistic-biology-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-1650a1` | 14,955 | Q3 M10 S1 | — | 十篇の生物学一次資料の精読——記録、書き換え、刷新、時限標識 |
@@ -6268,7 +6293,7 @@
 | `readings/2026-11-13-theoretical-science-seven-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-03d44c` +1 | 15,332 | Q3 M7 S2 | ✓ | 理論科学七資料の四層精読と横断報告（2026-11-13） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
-| `readings/2026-11-13-what-changes-and-what-remains-biology-ten-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-2f7b6e` | 36,910 | Q3 M11 S1 ERR3 | — | 何が代わり、何が代わらずに残るか——生物学十資料と、書庫の保存について |
+| `readings/2026-11-13-what-changes-and-what-remains-biology-ten-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-2f7b6e` | 37,629 | Q3 M11 S1 ERR3 | — | 何が代わり、何が代わらずに残るか——生物学十資料と、書庫の保存について |
 | `readings/2026-11-13-where-the-body-and-the-record-part-ways.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-6c8a47` +6 | 67,913 | Q3 M32 S7 ERR5 | — | 体と記録が別れるところ——生物学十篇の精読報告 |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
 | `readings/2026-11-15-a-second-key-with-no-lock.md` | 2026-10-26 | 2026-11-15 | `SESSION-20261115-6a7862` +4 | 15,179 | Q5 F12 M4 MOT1 S5 | ✓ | 錠のない鍵を、もう一本 —— 痣と言い切った声と、朝ごとに選び直す沈黙（SESSION-20261115-6a7862） |
