@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：4182 件（research_excerpt 1955 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：750 回
+- **探究セッション（Sessions）**：751 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -5696,6 +5696,7 @@
 | `SESSION-20261113-d409cd` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-a5bf3b` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-bb5da7` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-64394c` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-0598a2` | 2026-11-13T12:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-08709a` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-dd3200` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5826,7 +5827,8 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 50 | 35,931 |
+| `map/50-sessions-15.md` | 50 | 35,887 |
+| `map/50-sessions-16.md` | 1 | 966 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5835,7 +5837,7 @@
 | `map/60-notes-06.md` | 25 | 53,866 |
 | `map/60-notes-07.md` | 25 | 68,627 |
 | `map/60-notes-08.md` | 25 | 50,975 |
-| `map/60-notes-09.md` | 25 | 59,867 |
+| `map/60-notes-09.md` | 25 | 59,935 |
 | `map/60-notes-10.md` | 25 | 65,560 |
 | `map/60-notes-11.md` | 25 | 69,899 |
 | `map/60-notes-12.md` | 25 | 73,018 |
@@ -5844,29 +5846,29 @@
 | `map/60-notes-15.md` | 25 | 84,918 |
 | `map/60-notes-16.md` | 25 | 89,694 |
 | `map/60-notes-17.md` | 25 | 111,391 |
-| `map/60-notes-18.md` | 25 | 109,597 |
+| `map/60-notes-18.md` | 25 | 109,665 |
 | `map/60-notes-19.md` | 25 | 117,585 |
-| `map/60-notes-20.md` | 25 | 170,841 |
+| `map/60-notes-20.md` | 25 | 170,909 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 121,710 |
-| `map/60-notes-24.md` | 25 | 93,441 |
-| `map/60-notes-25.md` | 25 | 62,690 |
-| `map/60-notes-26.md` | 25 | 79,636 |
-| `map/60-notes-27.md` | 25 | 70,302 |
-| `map/60-notes-28.md` | 25 | 95,959 |
-| `map/60-notes-29.md` | 25 | 93,649 |
-| `map/60-notes-30.md` | 25 | 129,049 |
-| `map/60-notes-31.md` | 12 | 69,243 |
+| `map/60-notes-24.md` | 25 | 95,485 |
+| `map/60-notes-25.md` | 25 | 60,476 |
+| `map/60-notes-26.md` | 25 | 79,949 |
+| `map/60-notes-27.md` | 25 | 70,859 |
+| `map/60-notes-28.md` | 25 | 92,663 |
+| `map/60-notes-29.md` | 25 | 97,055 |
+| `map/60-notes-30.md` | 25 | 128,204 |
+| `map/60-notes-31.md` | 13 | 72,833 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・762本・28,485,540 B）
+## 8. 精読ノート索引（readings/・763本・28,499,490 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 738/762 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 739/763 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：762 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：763 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：98 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -6452,8 +6454,9 @@
 | `readings/2026-11-13-ten-theories-of-the-shape-of-a-limit.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-21d8c8` +1 | 22,335 | Q3 M12 S2 ERR1 | ✓ | 限界の形——十の理論科学が、保存の代わりに置いたもの |
 | `readings/2026-11-13-the-address-the-debt-was-left-at.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-eeaa43` +1 | 16,795 | Q1 F1 S2 ERR29 | ✓ | 負債の住所——訂正録251行は、次の読み手に届いたか |
 | `readings/2026-11-13-the-class-of-allowed-transformations.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-494ed9` +1 | 32,414 | Q3 M16 S2 | — | 許された変換のクラス——七つの理論科学と、「戻れない」の意味を分ける |
+| `readings/2026-11-13-the-correction-that-had-to-be-found-twice.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261030-4bd96d` +1 | 7,559 | Q2 F1 M3 S2 ERR15 | — | 訂正は二度見つけられる — 前方の辺を持たない26行と、その次の読み |
 | `readings/2026-11-13-the-hand-that-counts-the-same.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb8210` | 35,989 | Q3 M15 S1 | — | 同じに数える手——生物学十篇における選択・待機・境界 |
-| `readings/2026-11-13-the-receipt-points-backward.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-08709a` +1 | 13,265 | Q2 F1 M1 S2 ERR36 | — | 受領書は後ろを指す——訂正録252行の住所を辿る |
+| `readings/2026-11-13-the-receipt-points-backward.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-08709a` +1 | 13,265 | Q2 F1 M1 S2 ERR36 | ✓ | 受領書は後ろを指す——訂正録252行の住所を辿る |
 | `readings/2026-11-13-the-record-leaves-the-body-but-not-the-body-behind.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-ef19c0` +1 | 29,624 | Q3 M13 S2 | — | 記録は体の外へ出られるが、体の代わりにはならない——生物学10資料の精読 |
 | `readings/2026-11-13-the-self-that-is-rewritten-in-cells.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-8d0d7e` +2 | 12,628 | Q3 M10 S3 | ✓ | 細胞の自己はどこまで書き換えられるか——生物学資料十篇の精読 |
 | `readings/2026-11-13-the-substrate-that-rewrites-itself-and-the-scaffold-that-refuses.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-50ebf1` | 28,203 | Q3 F1 M10 S1 | ✓ | 自らを書き換える基底と、取り替えを拒む足場——生物学十資料の精読 |
