@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3952 件（research_excerpt 1728 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3962 件（research_excerpt 1738 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6969 件
-- **探究セッション（Sessions）**：715 回
+- **探究セッション（Sessions）**：716 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（3952 件・詳細は map/3*.md）
+## 4. 対話素材（3962 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4670,6 +4670,16 @@
 | `MAT-20261113-4143c7` | research_excerpt | Barbara J. Grosz, Candace L. Sidner『Attention, Intentions, and the Structure of Discourse… |
 | `MAT-20261113-358525` | research_excerpt | Melanie Mitchell, James P. Crutchfield, Peter T. Hraber『Dynamics, Computation, and the 'E… |
 | `MAT-20261113-c234b1` | research_excerpt | Masafumi Oizumi, Larissa Albantakis, Giulio Tononi『From the Phenomenology to the Mechanis… |
+| `MAT-20261113-c006f3` | research_excerpt | Michael Levin『The Computational Boundary of a “Self”: Developmental Bioelectricity Drives… |
+| `MAT-20261113-ca2c58` | research_excerpt | Karl Friston『Life as we know it』（2013） |
+| `MAT-20261113-9114b5` | research_excerpt | Anil K. Seth『Interoceptive inference, emotion, and the embodied self』（2013） |
+| `MAT-20261113-e6510a` | research_excerpt | Roger W. Sperry『Hemisphere deconnection and unity in conscious awareness』（1968） |
+| `MAT-20261113-4cbd1c` | research_excerpt | Michael S. Gazzaniga『Cerebral specialization and interhemispheric communication: Does the… |
+| `MAT-20261113-2604b4` | research_excerpt | Eva Jablonka『The evolutionary implications of epigenetic inheritance』（2017） |
+| `MAT-20261113-9986e6` | research_excerpt | Mary Jane West-Eberhard『Phenotypic Plasticity and the Origins of Diversity』（1989） |
+| `MAT-20261113-bcb85f` | research_excerpt | Marc Kirschner, John Gerhart『Evolvability』（1998） |
+| `MAT-20261113-d8e065` | research_excerpt | François Jacob『Evolution and Tinkering』（1977） |
+| `MAT-20261113-e5c034` | research_excerpt | Carl R. Woese『A New Biology for a New Century』（2004） |
 | `MAT-20261113-f88eb1` | research_excerpt | Peter B. Medawar『An Unsolved Problem of Biology (An Inaugural Lecture Delivered at Univer… |
 | `MAT-20261113-a98575` | research_excerpt | George C. Williams『Pleiotropy, Natural Selection, and the Evolution of Senescence』（1957） |
 | `MAT-20261113-0f893f` | research_excerpt | Göran Lindblad『On the Generators of Quantum Dynamical Semigroups』（1976） |
@@ -5447,6 +5457,7 @@
 | `SESSION-20261113-dd3200` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-894a80` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-734222` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-aa926d` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-ed8a61` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6969 件・全表は map/40-relations-*.md）
@@ -5528,8 +5539,8 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 100 | 216,662 |
-| `map/31-materials-research-18.md` | 28 | 54,502 |
+| `map/31-materials-research-17.md` | 100 | 220,964 |
+| `map/31-materials-research-18.md` | 38 | 76,679 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5559,7 +5570,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 15 | 11,860 |
+| `map/50-sessions-15.md` | 16 | 12,617 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5582,23 +5593,23 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 101,461 |
-| `map/60-notes-24.md` | 25 | 62,690 |
-| `map/60-notes-25.md` | 25 | 79,636 |
-| `map/60-notes-26.md` | 25 | 70,133 |
-| `map/60-notes-27.md` | 25 | 95,959 |
-| `map/60-notes-28.md` | 25 | 93,649 |
-| `map/60-notes-29.md` | 25 | 129,049 |
-| `map/60-notes-30.md` | 12 | 69,174 |
+| `map/60-notes-23.md` | 25 | 106,642 |
+| `map/60-notes-24.md` | 25 | 60,408 |
+| `map/60-notes-25.md` | 25 | 79,881 |
+| `map/60-notes-26.md` | 25 | 70,681 |
+| `map/60-notes-27.md` | 25 | 92,604 |
+| `map/60-notes-28.md` | 25 | 97,055 |
+| `map/60-notes-29.md` | 25 | 128,204 |
+| `map/60-notes-30.md` | 13 | 72,764 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・737本・27,031,965 B）
+## 8. 精読ノート索引（readings/・738本・27,106,929 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 716/737 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 717/738 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：737 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：738 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：84 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -6159,9 +6170,10 @@
 | `readings/2026-11-12-two-clocks-the-gate-counts-labels-the-axis-lays-out-dates.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261111-5ebabb` +6 | 13,058 | Q2 M1 S7 ERR3 | ✓ | 二つの時計——ゲートはラベルで数え、軸は実日付で並べる |
 | `readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ebb435` | 6,680 | Q1 S1 | ✓ | PR #655 がしたことと、いま止めるもの——閉じた枝の概要と再発防止 |
 | `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
-| `readings/2026-11-13-biology-ten-materials-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-1b76fc` | 37,519 | Q3 M10 S1 ERR3 | — | 生物学の十の窓——身体、共生、記憶をめぐる精読報告 |
+| `readings/2026-11-13-biology-ten-materials-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-1b76fc` | 37,519 | Q3 M10 S1 ERR3 | ✓ | 生物学の十の窓——身体、共生、記憶をめぐる精読報告 |
 | `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | ✓ | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
 | `readings/2026-11-13-seven-theories-of-boundary-and-self-description.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-431f47` | 24,671 | Q3 M7 R1 S1 ERR3 | ✓ | 境界と自己記述の七理論——自己を「保存された実体」ではなく「何を閉じ、どこまで語れるか」で問い直す |
+| `readings/2026-11-13-ten-biological-windows-and-their-seams.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-aa926d` | 33,666 | Q3 M10 S1 ERR1 | — | 生物学の十の窓と、その継ぎ目——境界・統一・継承・可塑性・寄せ集め |
 | `readings/2026-11-13-ten-biology-sources-cut-rewritten-and-entrusted.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-dd3200` | 30,668 | Q3 M16 MOT1 S1 | — | 削られ、書き換えられ、外へ預けられる——自己の境界をめぐる生物学十資料 |
 | `readings/2026-11-13-ten-theories-of-boundary-membership-and-intrinsic-causation.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-2162b1` +1 | 22,612 | Q3 M14 S2 | — | 境界・所属・内在的因果——理論科学十資料の四層精読 |
 | `readings/2026-11-13-ten-theories-of-copying-transfer-and-boundary.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-478cfe` | 24,666 | Q3 M11 S1 | ✓ | 自己は複製できない——複製・転送・訂正・境界をめぐる理論科学十資料 |
