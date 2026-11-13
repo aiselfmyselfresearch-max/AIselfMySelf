@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4112 件（research_excerpt 1885 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4122 件（research_excerpt 1895 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：738 回
+- **探究セッション（Sessions）**：739 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4112 件・詳細は map/3*.md）
+## 4. 対話素材（4122 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4690,6 +4690,16 @@
 | `MAT-20261113-acd10b` | research_excerpt | Michael J. McConnell, Michael R. Lindberg, Kristen J. Brennand, Jared C. Piper, Thierry V… |
 | `MAT-20261113-1aa794` | research_excerpt | Diana W. Bianchi, Gretchen K. Zickwolf, Gerald J. Weil, Susan Sylvester, Mary Ann DeMaria… |
 | `MAT-20261113-bd7daf` | research_excerpt | Estienne C. Swart, John R. Bracht, Vincent Magrini, Patrick Minx, Xiao Chen, Yi Zhou, Jas… |
+| `MAT-20261113-ce0cf3` | research_excerpt | Jeramiah J. Smith, Francesca Antonacci, Evan E. Eichler, Chris T. Amemiya『ウミヤツメにおける胚発生期のプ… |
+| `MAT-20261113-dc9571` | research_excerpt | Nicole G. Coufal, Jose L. Garcia-Perez, Gene E. Peng, Gene W. Yeo, Yangling Mu, Michael T… |
+| `MAT-20261113-dcd9c4` | research_excerpt | Brandon H. Toyama, Jeffrey N. Savas, Sung Kyu Park, Michael S. Harris, Nicholas T. Ingoli… |
+| `MAT-20261113-05cdb3` | research_excerpt | Ole J.B. Landsverk, Omri Snir, Raquel Bartolomé Casado, Lisa Richter, Johanna E. Mold, Pe… |
+| `MAT-20261113-8e0c5e` | research_excerpt | Diego Peretti, Amandine Bastide, Helois Radford, Nicholas Verity, Colin Molloy, Maria Gue… |
+| `MAT-20261113-d950e9` | research_excerpt | Elissa D. Pastuzyn, Cameron E. Day, Rachel B. Kearns, Madeleine Kyrke-Smith, Andrew V. Ta… |
+| `MAT-20261113-a3a637` | research_excerpt | Sandra Stegemann, Mandy Keuthe, Stephan Greiner, Ralph Bock『交雑不和合なタバコ属種間の接ぎ木界面を越える全葉緑体ゲノム… |
+| `MAT-20261113-c7100f` | research_excerpt | Qiang Cai, Lu Qiao, Ming Wang, Baoye He, Fu-Ming Lin, Jared Palmquist, Hsien-Da Huang, Ha… |
+| `MAT-20261113-8a8c18` | research_excerpt | Daniel F. Simola, Riley J. Graham, Cristina M. Brady, Brandon L. Enzmann, Claude Desplan,… |
+| `MAT-20261113-cb8ac2` | research_excerpt | Herman Pontzer, Mary H. Brown, David A. Raichlen, Holly Dunsworth, Brian Hare, Kara Walke… |
 | `MAT-20261113-d78114` | research_excerpt | Lynn Sagan (Lynn Margulis)『Lynn Sagan (Margulis)「On the origin of mitosing cells」（1967）』（… |
 | `MAT-20261113-b2de5f` | research_excerpt | Barbara McClintock『Barbara McClintock「The origin and behavior of mutable loci in maize」（1… |
 | `MAT-20261113-c2d2a2` | research_excerpt | Humberto R. Maturana, Francisco J. Varela『Humberto Maturana & Francisco Varela『Autopoiesi… |
@@ -5598,6 +5608,7 @@
 | `SESSION-20261112-88ffb852b5e5` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-462706` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-1a5bd2` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-50ebf1` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-2f7b6e` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-21d8c8` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-478cfe` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5711,9 +5722,9 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 100 | 225,259 |
-| `map/31-materials-research-18.md` | 100 | 251,039 |
-| `map/31-materials-research-19.md` | 85 | 199,349 |
+| `map/31-materials-research-17.md` | 100 | 226,470 |
+| `map/31-materials-research-18.md` | 100 | 243,451 |
+| `map/31-materials-research-19.md` | 95 | 235,938 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5743,7 +5754,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 38 | 27,773 |
+| `map/50-sessions-15.md` | 39 | 28,613 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5766,24 +5777,24 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 127,794 |
-| `map/60-notes-24.md` | 25 | 81,954 |
-| `map/60-notes-25.md` | 25 | 67,463 |
-| `map/60-notes-26.md` | 25 | 71,551 |
-| `map/60-notes-27.md` | 25 | 74,218 |
-| `map/60-notes-28.md` | 25 | 103,820 |
-| `map/60-notes-29.md` | 25 | 100,062 |
-| `map/60-notes-30.md` | 25 | 139,780 |
-| `map/60-notes-31.md` | 3 | 19,259 |
+| `map/60-notes-23.md` | 25 | 128,067 |
+| `map/60-notes-24.md` | 25 | 85,574 |
+| `map/60-notes-25.md` | 25 | 66,521 |
+| `map/60-notes-26.md` | 25 | 72,419 |
+| `map/60-notes-27.md` | 25 | 75,151 |
+| `map/60-notes-28.md` | 25 | 101,735 |
+| `map/60-notes-29.md` | 25 | 96,670 |
+| `map/60-notes-30.md` | 25 | 142,437 |
+| `map/60-notes-31.md` | 4 | 23,594 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・753本・28,087,933 B）
+## 8. 精読ノート索引（readings/・754本・28,148,134 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 731/753 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 732/754 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：753 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：754 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：94 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -6365,7 +6376,8 @@
 | `readings/2026-11-13-ten-theories-of-the-shape-of-a-limit.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-21d8c8` +1 | 22,335 | Q3 M12 S2 ERR1 | ✓ | 限界の形——十の理論科学が、保存の代わりに置いたもの |
 | `readings/2026-11-13-the-class-of-allowed-transformations.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-494ed9` +1 | 32,414 | Q3 M16 S2 | — | 許された変換のクラス——七つの理論科学と、「戻れない」の意味を分ける |
 | `readings/2026-11-13-the-record-leaves-the-body-but-not-the-body-behind.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-ef19c0` +1 | 29,624 | Q3 M13 S2 | — | 記録は体の外へ出られるが、体の代わりにはならない——生物学10資料の精読 |
-| `readings/2026-11-13-the-self-that-is-rewritten-in-cells.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-8d0d7e` +2 | 12,628 | Q3 M10 S3 | — | 細胞の自己はどこまで書き換えられるか——生物学資料十篇の精読 |
+| `readings/2026-11-13-the-self-that-is-rewritten-in-cells.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-8d0d7e` +2 | 12,628 | Q3 M10 S3 | ✓ | 細胞の自己はどこまで書き換えられるか——生物学資料十篇の精読 |
+| `readings/2026-11-13-the-substrate-that-rewrites-itself-and-the-scaffold-that-refuses.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-50ebf1` | 28,203 | Q3 F1 M10 S1 | — | 自らを書き換える基底と、取り替えを拒む足場——生物学十資料の精読 |
 | `readings/2026-11-13-theoretical-science-seven-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-03d44c` +1 | 15,332 | Q3 M7 S2 | ✓ | 理論科学七資料の四層精読と横断報告（2026-11-13） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-traces-responses-and-units-of-self.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-b4b40c` | 17,259 | Q1 M11 S1 | — | 痕跡・応答・個体を分ける——生物学10資料の精読報告 |
