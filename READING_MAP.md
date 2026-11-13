@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4142 件（research_excerpt 1915 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4152 件（research_excerpt 1925 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：741 回
+- **探究セッション（Sessions）**：742 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4142 件・詳細は map/3*.md）
+## 4. 対話素材（4152 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4819,6 +4819,16 @@
 | `MAT-20261113-610b45` | research_excerpt | Peter W Reddien『The cellular and molecular basis for planarian regeneration』（2018） |
 | `MAT-20261113-f77e57` | research_excerpt | Giulio Tononi, Chiara Cirelli『Sleep and synaptic down-selection』（2019） |
 | `MAT-20261113-96e859` | research_excerpt | Leah Houri-Zeevi, Guy Korem, Omer Sheftel, Itamar Faigenbloom, Itai Toker, Yael Dagan, Li… |
+| `MAT-20261113-4b9a6a` | research_excerpt | Boisseau et al.『Habituation in non-neural organisms: evidence from slime moulds』（2016） |
+| `MAT-20261113-473557` | research_excerpt | Boussard et al.『Memory inception and preservation in slime moulds: the quest for a common… |
+| `MAT-20261113-c3c9c2` | research_excerpt | Choe, Millar & Rust『Chemical signals associated with life inhibit necrophoresis in Argent… |
+| `MAT-20261113-37fa0f` | research_excerpt | Jones & Lennon『Dormancy contributes to the maintenance of microbial diversity』（2010） |
+| `MAT-20261113-300294` | research_excerpt | Stegemann et al.『Horizontal transfer of chloroplast genomes between plant species』（2012） |
+| `MAT-20261113-6030e2` | research_excerpt | Japyassú & Laland『Extended spider cognition』（2017） |
+| `MAT-20261113-9a1394` | research_excerpt | Czaczkes et al.『Synergy between social and private information increases foraging efficie… |
+| `MAT-20261113-6e92e0` | research_excerpt | Kesäniemi et al.『Corpse management of the invasive Argentine ant inhibits growth of patho… |
+| `MAT-20261113-64016c` | research_excerpt | Kaplan & Radic『Neutrophil extracellular traps (NETs): Double-edged swords of innate immun… |
+| `MAT-20261113-f8484a` | research_excerpt | Mojica et al.『Intervening sequences of regularly spaced prokaryotic repeats derive from f… |
 | `MAT-20261113-b2d5e4` | research_excerpt | Claude Bernard『Claude Bernard (1878) Leçons sur les phénomènes de la vie, t. I — 内部環境の固定性… |
 | `MAT-20261113-40812a` | research_excerpt | Walter Bradford Cannon『Walter B. Cannon (1929) Physiological Reviews — 恒常性は、それを保とうとする機構が作… |
 | `MAT-20261113-e213b7` | research_excerpt | Ernst Mayr『Ernst Mayr (1961) Science — 至近原因と究極原因、開放されたプログラムと反応規準』（1961） |
@@ -5656,6 +5666,7 @@
 | `SESSION-20261113-894a80` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-e804cd` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-022c63` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-e2b300` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-1650a1` | 2026-11-13T00:00:00+09:00 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-734222` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-c801a5` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5746,8 +5757,8 @@
 | `map/31-materials-research-16.md` | 100 | 246,482 |
 | `map/31-materials-research-17.md` | 100 | 226,470 |
 | `map/31-materials-research-18.md` | 100 | 238,764 |
-| `map/31-materials-research-19.md` | 100 | 250,677 |
-| `map/31-materials-research-20.md` | 15 | 42,320 |
+| `map/31-materials-research-19.md` | 100 | 244,210 |
+| `map/31-materials-research-20.md` | 25 | 62,695 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5777,7 +5788,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 41 | 30,068 |
+| `map/50-sessions-15.md` | 42 | 30,590 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5800,25 +5811,25 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 128,046 |
-| `map/60-notes-24.md` | 25 | 86,416 |
-| `map/60-notes-25.md` | 25 | 66,059 |
-| `map/60-notes-26.md` | 25 | 73,120 |
-| `map/60-notes-27.md` | 25 | 75,999 |
-| `map/60-notes-28.md` | 25 | 98,537 |
-| `map/60-notes-29.md` | 25 | 94,751 |
-| `map/60-notes-30.md` | 25 | 141,423 |
-| `map/60-notes-31.md` | 6 | 34,461 |
+| `map/60-notes-23.md` | 25 | 124,346 |
+| `map/60-notes-24.md` | 25 | 89,395 |
+| `map/60-notes-25.md` | 25 | 64,272 |
+| `map/60-notes-26.md` | 25 | 75,966 |
+| `map/60-notes-27.md` | 25 | 74,740 |
+| `map/60-notes-28.md` | 25 | 97,529 |
+| `map/60-notes-29.md` | 25 | 96,274 |
+| `map/60-notes-30.md` | 25 | 137,131 |
+| `map/60-notes-31.md` | 7 | 41,055 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・756本・28,302,092 B）
+## 8. 精読ノート索引（readings/・757本・28,314,509 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 734/756 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 734/757 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：756 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：93 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：757 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：94 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6379,6 +6390,7 @@
 | `readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ebb435` | 6,680 | Q1 S1 | ✓ | PR #655 がしたことと、いま止めるもの——閉じた枝の概要と再発防止 |
 | `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
 | `readings/2026-11-13-activity-and-function-what-being-read-does.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-48efa5` | 31,313 | Q3 MOT1 S1 ERR1 | — | 活動と機能——読まれていることは、効いていることと同じか |
+| `readings/2026-11-13-biological-traces-and-conditions-of-return.md` | — | 2026-11-13 | `SESSION-20261113-e2b300` | 6,003 | Q3 M13 S1 | — | 記録は残るだけで働くのか——生物学十資料の部分精読 |
 | `readings/2026-11-13-biology-beyond-the-shelf-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-5311d1` +1 | 15,924 | Q3 M10 S2 | ✓ | 棚の外で記憶する身体——生物学の十資料が分けた自己の境界 |
 | `readings/2026-11-13-biology-renewal-selection-and-retrieval.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-e804cd` +1 | 7,487 | M10 S2 | — | 生物学の十資料——更新、選択、そして読み戻しの条件 |
 | `readings/2026-11-13-biology-ten-materials-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-1b76fc` | 37,519 | Q3 M10 S1 ERR3 | ✓ | 生物学の十の窓——身体、共生、記憶をめぐる精読報告 |
