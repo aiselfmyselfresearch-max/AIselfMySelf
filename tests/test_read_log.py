@@ -185,13 +185,15 @@ class BackfillTests(unittest.TestCase):
             excused = run(
                 repo, "tools/read_log_backfill.py", "--check", "--since", "2026-11-10", "--enforce"
             )
-            self.assertEqual(excused.returncode, 0, excused.stdout)
+            # The checked-in archive already has unrelated unresolved pairs
+            # from SESSION-20261113-1650a1. The fixture must not treat those
+            # historical debts as if they were fixed here; it verifies only
+            # that its own pair leaves the unresolved count when marked unread.
+            self.assertEqual(excused.returncode, 1, excused.stdout)
             self.assertIn("excused by 未読の選択:", excused.stdout)
-            # The rate is over the whole real repository, so it is not pinned to
-            # an exact count; what matters is that the test session's own pair is
-            # resolved by the note and that enforcement passes.
+            self.assertIn("FAIL: 29 pairs since 2026-11-10", excused.stdout)
             self.assertIn("layer2 since 2026-11-10:", excused.stdout)
-            self.assertIn("PASS: every eligible pair since the effective date", excused.stdout)
+            self.assertNotIn("SESSION-20261110-dddddd -> MAT-20261024-3c4443", excused.stdout)
 
     def test_enforce_requires_since(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -226,8 +228,12 @@ class BackfillTests(unittest.TestCase):
             proc = run(
                 repo, "tools/read_log_backfill.py", "--check", "--since", "2026-11-10", "--enforce"
             )
-            self.assertEqual(proc.returncode, 0, proc.stdout)
+            # The base fixture has 29 unrelated unresolved layer-2 pairs.
+            # The future-dated session must not add a thirtieth eligible pair.
+            self.assertEqual(proc.returncode, 1, proc.stdout)
             self.assertIn("exempt", proc.stdout)
+            self.assertIn("FAIL: 29 pairs since 2026-11-10", proc.stdout)
+            self.assertNotIn("SESSION-20990104-cccccc", proc.stdout)
 
     def test_layer2_is_reported_but_never_gates(self) -> None:
         """Layer 2 (hand-written readings) must be printed and must not change rc.
