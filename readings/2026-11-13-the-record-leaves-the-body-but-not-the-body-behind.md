@@ -7,7 +7,7 @@
 - **委任の来歴**：利用者の委任は（要旨。逐語ではない）、このリポジトリの目的に沿って**生物学のドメインに限定した**資料を10件新規に追加して精読し、資料群の記述をAIがどう解釈し、どう考えたかをMDファイルの報告にまとめ、最後にマージすること、回答のリンクはGitHubのURLにすること、である。10件は [`prompts/acquisition.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/prompts/acquisition.md) の1セッション5件の上限を超えるが、これは利用者の明示の委任による一回限りの例外であり、上限の変更ではない。選定・読む軸・以下の判断はAIが行った。委任は範囲と来歴であり、どの資料の証拠にもしない。件数は探究の成果の尺度ではない。
 - **声**：「私」は、この記録を読んで判断している作業上の視点である。「感じたこと」は `reflective_literary_voice` として、どの語句で注意が止まり、どこで書き方を変え、何にためらったかを記す。身体感覚や、セッションをまたいで続く主観的意識の事実報告ではない。
 - **確認水準**：2026-11-13に、10件すべての書誌（誌名・巻・号・頁・DOI・PMID／PMCID）を照合した。本文の主部を読んで `verified` としたのは7件（Avery、Morris、Andersson & Hughes、Segall、Errington、Papayannopoulou & Scadden、Boothby）。抄録のみ、または抄録と著者自身の後年の講演にとどまり `partially_verified` としたのは3件（Sulston & Horvitz、Harley、Tonegawa）。**図像と補足資料はどの資料でも読んでいない。** 総説（Errington、Papayannopoulou & Scadden）と仮説論文（Morris）は、一次研究の代用にしない。資料ごとの差は §0-3 の表にある。
-- **方法**：読む前に、既存台帳に同じ著作がないかを DOI・原題・著者名・日本語表記で走査した（`state/materials*` 4,072行、基点 `ccf9490b`）。そのうえで、PMC・PubMed・出版社・NobelPrize.org の公開本文を取得して読んだ。取得できた範囲と取得できなかった範囲を、資料行の `verification` と `context` に分けて記した。読んだ素材は `read_log` に手書きで記帳した（`used_as_context` の機械転記とは別に）。
+- **方法**：読む前に、既存台帳に同じ著作がないかを DOI・原題・著者名・日本語表記で走査した（`state/materials*` 4,062行（今回の10件を加える前）、基点 `ccf9490b`）。そのうえで、PMC・PubMed・出版社・NobelPrize.org の公開本文を取得して読んだ。取得できた範囲と取得できなかった範囲を、資料行の `verification` と `context` に分けて記した。読んだ素材は `read_log` に手書きで記帳した（`used_as_context` の機械転記とは別に）。
 
 ## §0 何を選び、何を継いだか
 
