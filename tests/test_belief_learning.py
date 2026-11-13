@@ -47,13 +47,15 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # evaluations, taking the live totals to 20 hypotheses and 126
         # evaluations. PR #725 adds three biology-scoped evaluations
         # (EVL-20261113-9dfeb9, -584c93, -3675e0), bringing the live total to
-        # 129 without adding hypotheses.
+        # 129 without adding hypotheses. SESSION-20261113-c801a5 and
+        # SESSION-20261113-070329 add two scoped biology evaluations,
+        # taking the total to 131 without adding hypotheses.
         # SESSION-20261113-0598a2 adds six primary-source collisions from ten
         # further biology sources (two supports / four narrows_scope,
         # EVL-20261113-c127ce ... -82fe40) and no new hypotheses, taking the
-        # live total to 135 evaluations.
+        # live total to 137 evaluations.
         self.assertEqual(bs["total_hypotheses"], 20)
-        self.assertEqual(bs["total_evaluations"], 135)
+        self.assertEqual(bs["total_evaluations"], 137)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
