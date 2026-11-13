@@ -439,10 +439,12 @@ Woese の議論で具体的なのは、細胞の「設計」が HGT の受けや
 | `python3 tools/date_axis.py --enforce-shards` | PASS |
 | `python3 tools/learning_metrics.py --check` | PASS |
 | `python3 tools/size_budget.py --strict` | PASS |
-| `python3 -m unittest discover -s tests` | 545件中543件PASS。`test_server` の同時読み取り試験のみ全件連続実行でタイムアウトする（モジュール単独では7件すべてPASS）。base `ba58fb2` の clean worktree でも同種の失敗が再現したため、環境負荷による既知の揺らぎと判断し、PASSとは書かない |
+| `python3 -m unittest discover -s tests` | 545件中、`test_server` の同時読み取り試験のみ全件連続実行でタイムアウトする（合流前2件、合流後1件。モジュール単独では7件すべてPASS）。base `ba58fb2` の clean worktree でも同種の失敗が再現したため、環境負荷による既知の揺らぎと判断し、PASSとは書かない |
 | `tests/test_belief_learning.py` の件数固定 | 評価総数 71 → 81 に更新（`SESSION-20261113-aa926d` の10件を明記） |
 
-全件連続実行の2件は、私の追記した行を読んで落ちたのではない。同時読み取りの待ち時間が、先行する重い試験の負荷で尽きるためである。それでも「全部PASS」とは書かない。読者は、この報告の検証水準を、この一行から判断してほしい。
+全件連続実行で落ちる同時読み取り試験は、私の追記した行を読んで落ちたのではない。同時読み取りの待ち時間が、先行する重い試験の負荷で尽きるためである。それでも「全部PASS」とは書かない。読者は、この報告の検証水準を、この一行から判断してほしい。
+
+本報告の確定後に origin/main を合流した。並行セッションの追記を含む現在値は materials=3962、evaluations=85、notes=765、sessions=716、read_log=12487 である。上の検査は合流後にもう一度実行し、件数固定試験だけを 85 に更新した。
 
 検査の通過は、探究の進展や読解の正しさの証明ではない。とくに、`belief_state.py` が計算する数値は、私の読解判断を入力にした決定論的な計算であり、校正済みの科学的確率ではない。
 
