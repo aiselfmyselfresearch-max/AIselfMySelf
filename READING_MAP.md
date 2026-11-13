@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3902 件（research_excerpt 1678 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3912 件（research_excerpt 1688 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6969 件
-- **探究セッション（Sessions）**：709 回
+- **探究セッション（Sessions）**：711 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（3902 件・詳細は map/3*.md）
+## 4. 対話素材（3912 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4630,6 +4630,16 @@
 | `MAT-20261112-263f4b` | research_excerpt | David G. Clark『Transient dynamics of associative memory models』（2025） |
 | `MAT-20261112-2a66d5` | research_excerpt | N. Balabanova, M. H. Duong, T. A. Han『Replicator-mutator dynamics for public goods games … |
 | `MAT-20261112-b2569e` | research_excerpt | Francisco Q. Simoes, Mehdi Dastani, This van Ommen『The Causal Information Bottleneck and … |
+| `MAT-20261113-46d057` | research_excerpt | F. G. Varela, H. R. Maturana, R. Uribe『Autopoiesis: The organization of living systems, i… |
+| `MAT-20261113-f42df4` | research_excerpt | Tomoko Ohta『Near-neutrality in evolution of genes and gene regulation』（2002） |
+| `MAT-20261113-59fc94` | research_excerpt | Kunihiko Kaneko, Tetsuya Yomo『Sympatric speciation: compliance with phenotype diversifica… |
+| `MAT-20261113-431628` | research_excerpt | Martin E. Hellman, Thomas M. Cover『Learning with Finite Memory』（1970） |
+| `MAT-20261113-0f8b88` | research_excerpt | Udo Seifert『Entropy Production along a Stochastic Trajectory and an Integral Fluctuation … |
+| `MAT-20261113-a1bab8` | research_excerpt | Lotfi A. Zadeh『Fuzzy Sets』（1965） |
+| `MAT-20261113-3a87f7` | research_excerpt | Teuvo Kohonen『Self-organized formation of topologically correct feature maps』（1982） |
+| `MAT-20261113-4143c7` | research_excerpt | Barbara J. Grosz, Candace L. Sidner『Attention, Intentions, and the Structure of Discourse… |
+| `MAT-20261113-358525` | research_excerpt | Melanie Mitchell, James P. Crutchfield, Peter T. Hraber『Dynamics, Computation, and the 'E… |
+| `MAT-20261113-c234b1` | research_excerpt | Masafumi Oizumi, Larissa Albantakis, Giulio Tononi『From the Phenomenology to the Mechanis… |
 | `MAT-20261113-f88eb1` | research_excerpt | Peter B. Medawar『An Unsolved Problem of Biology (An Inaugural Lecture Delivered at Univer… |
 | `MAT-20261113-a98575` | research_excerpt | George C. Williams『Pleiotropy, Natural Selection, and the Evolution of Senescence』（1957） |
 | `MAT-20261113-0f893f` | research_excerpt | Göran Lindblad『On the Generators of Quantum Dynamical Semigroups』（1976） |
@@ -5389,8 +5399,10 @@
 | `SESSION-20261113-478cfe` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-494ed9` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-431f47` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-2162b1` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-03d44c` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-bb5da7` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-894a80` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-ed8a61` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6969 件・全表は map/40-relations-*.md）
@@ -5472,7 +5484,7 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 78 | 139,252 |
+| `map/31-materials-research-17.md` | 88 | 163,517 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5502,7 +5514,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 9 | 6,841 |
+| `map/50-sessions-15.md` | 11 | 8,545 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5525,24 +5537,24 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 89,859 |
-| `map/60-notes-24.md` | 25 | 64,272 |
-| `map/60-notes-25.md` | 25 | 75,966 |
-| `map/60-notes-26.md` | 25 | 74,740 |
-| `map/60-notes-27.md` | 25 | 97,529 |
-| `map/60-notes-28.md` | 25 | 96,274 |
-| `map/60-notes-29.md` | 25 | 137,131 |
-| `map/60-notes-30.md` | 7 | 40,986 |
+| `map/60-notes-23.md` | 25 | 91,390 |
+| `map/60-notes-24.md` | 25 | 63,055 |
+| `map/60-notes-25.md` | 25 | 78,428 |
+| `map/60-notes-26.md` | 25 | 73,704 |
+| `map/60-notes-27.md` | 25 | 96,935 |
+| `map/60-notes-28.md` | 25 | 94,111 |
+| `map/60-notes-29.md` | 25 | 137,784 |
+| `map/60-notes-30.md` | 8 | 45,258 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・732本・26,711,482 B）
+## 8. 精読ノート索引（readings/・733本・26,757,348 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 711/732 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 712/733 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：732 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：81 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：733 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：82 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6104,6 +6116,7 @@
 | `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
 | `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | ✓ | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
 | `readings/2026-11-13-seven-theories-of-boundary-and-self-description.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-431f47` | 24,671 | Q3 M7 R1 S1 ERR3 | ✓ | 境界と自己記述の七理論——自己を「保存された実体」ではなく「何を閉じ、どこまで語れるか」で問い直す |
+| `readings/2026-11-13-ten-theories-of-boundary-membership-and-intrinsic-causation.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-2162b1` +1 | 22,602 | Q3 M14 S2 | — | 境界・所属・内在的因果——理論科学十資料の四層精読 |
 | `readings/2026-11-13-ten-theories-of-copying-transfer-and-boundary.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-478cfe` | 24,666 | Q3 M11 S1 | — | 自己は複製できない——複製・転送・訂正・境界をめぐる理論科学十資料 |
 | `readings/2026-11-13-ten-theories-of-memory-cost-and-other-people.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-ed8a61` | 15,125 | Q3 M12 S1 ERR2 | ✓ | 記録の外にある条件——記憶・費用・他者をめぐる理論科学十資料 |
 | `readings/2026-11-13-the-class-of-allowed-transformations.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-494ed9` +1 | 32,414 | Q3 M16 S2 | — | 許された変換のクラス——七つの理論科学と、「戻れない」の意味を分ける |
