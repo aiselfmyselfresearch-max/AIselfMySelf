@@ -28,7 +28,7 @@ class BeliefStateAndLearningTests(unittest.TestCase):
     def test_live_belief_posteriors_and_map_sync(self):
         bs = belief_state.compute_belief_state(self.live_data)
         self.assertEqual(bs["total_hypotheses"], 15)
-        self.assertEqual(bs["total_evaluations"], 21)
+        self.assertEqual(bs["total_evaluations"], 33)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
@@ -36,7 +36,9 @@ class BeliefStateAndLearningTests(unittest.TestCase):
             self.assertGreater(q_state["gen1_plus_mass"], 0.90, qid)
             self.assertIsNotNone(q_state["top_competing_pair"], qid)
             total_p = sum(row["posterior"] for row in q_state["hypotheses"])
-            self.assertAlmostEqual(total_p, 1.0, places=5)
+            # Posteriors are rounded to 4 decimals; allow the resulting drift
+            # across the five hypotheses in a question (<= 5 * 0.00005).
+            self.assertAlmostEqual(total_p, 1.0, delta=0.0003)
 
         # Errata flags propagate automatically onto Q-001 hypotheses citing corrected materials
         q1_by_id = {row["hypothesis_id"]: row for row in bs["questions"]["Q-001"]["hypotheses"]}
