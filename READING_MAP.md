@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3912 件（research_excerpt 1688 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3942 件（research_excerpt 1718 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6969 件
-- **探究セッション（Sessions）**：711 回
+- **探究セッション（Sessions）**：714 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（3912 件・詳細は map/3*.md）
+## 4. 対話素材（3942 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4630,6 +4630,26 @@
 | `MAT-20261112-263f4b` | research_excerpt | David G. Clark『Transient dynamics of associative memory models』（2025） |
 | `MAT-20261112-2a66d5` | research_excerpt | N. Balabanova, M. H. Duong, T. A. Han『Replicator-mutator dynamics for public goods games … |
 | `MAT-20261112-b2569e` | research_excerpt | Francisco Q. Simoes, Mehdi Dastani, This van Ommen『The Causal Information Bottleneck and … |
+| `MAT-20261113-307dd1` | research_excerpt | Sewall Wright『Evolution in Mendelian Populations』（1931） |
+| `MAT-20261113-fea2bd` | research_excerpt | Stephen Jay Gould, Richard C. Lewontin『The Spandrels of San Marco and the Panglossian Par… |
+| `MAT-20261113-c50378` | research_excerpt | S. W. Hawking『Breakdown of Predictability in Gravitational Collapse』（1976） |
+| `MAT-20261113-9abb08` | research_excerpt | Charles H. Bennett『Logical Reversibility of Computation』（1973） |
+| `MAT-20261113-a88b20` | research_excerpt | Wojciech H. Zurek『Decoherence, einselection, and the quantum origins of the classical』（20… |
+| `MAT-20261113-080f87` | research_excerpt | Murray Gell-Mann, James B. Hartle『Quantum Mechanics in the Light of Quantum Cosmology』（19… |
+| `MAT-20261113-7cfefa` | research_excerpt | Bryce S. DeWitt『Quantum Theory of Gravity. I. The Canonical Theory』（1967） |
+| `MAT-20261113-da1845` | research_excerpt | John Archibald Wheeler, Richard Phillips Feynman『Interaction with the Absorber as the Mec… |
+| `MAT-20261113-44e291` | research_excerpt | Seth Lloyd『Ultimate Physical Limits to Computation』（2000） |
+| `MAT-20261113-e04a62` | research_excerpt | Leonard Susskind, Lárus Thorlacius, John Uglum『The Stretched Horizon and Black Hole Compl… |
+| `MAT-20261113-d78114` | research_excerpt | Lynn Sagan (Lynn Margulis)『Lynn Sagan (Margulis)「On the origin of mitosing cells」（1967）』（… |
+| `MAT-20261113-b2de5f` | research_excerpt | Barbara McClintock『Barbara McClintock「The origin and behavior of mutable loci in maize」（1… |
+| `MAT-20261113-c2d2a2` | research_excerpt | Humberto R. Maturana, Francisco J. Varela『Humberto Maturana & Francisco Varela『Autopoiesi… |
+| `MAT-20261113-372f84` | research_excerpt | Sheena A. Josselyn, Susumu Tonegawa『Sheena Josselyn & Susumu Tonegawa「Memory engrams: Rec… |
+| `MAT-20261113-c107d0` | research_excerpt | Scott F. Gilbert, Jan Sapp, Alfred I. Tauber『Scott Gilbert, Jan Sapp & Alfred Tauber「A Sy… |
+| `MAT-20261113-bf4e05` | research_excerpt | Ian C. G. Weaver, Nadia Cervoni, Frances A. Champagne, Ana C. D'Alessio, Shakti Sharma, J… |
+| `MAT-20261113-dc3518` | research_excerpt | Christopher M. Waters, Bonnie L. Bassler『Christopher Waters & Bonnie Bassler「The Vibrio h… |
+| `MAT-20261113-e6511a` | research_excerpt | Polly Matzinger『Frank Macfarlane Burnet「The Clonal Selection Theory of Acquired Immunity」… |
+| `MAT-20261113-d32d96` | research_excerpt | Monica Gagliano, Michael Renton, Martial Depczynski, Stefano Mancuso『Monica Gagliano et a… |
+| `MAT-20261113-8cad67` | research_excerpt | Conrad Hal Waddington『Conrad Waddington「The Strategy of the Genes」（1957）—— epigenetic lan… |
 | `MAT-20261113-46d057` | research_excerpt | F. G. Varela, H. R. Maturana, R. Uribe『Autopoiesis: The organization of living systems, i… |
 | `MAT-20261113-f42df4` | research_excerpt | Tomoko Ohta『Near-neutrality in evolution of genes and gene regulation』（2002） |
 | `MAT-20261113-59fc94` | research_excerpt | Kunihiko Kaneko, Tetsuya Yomo『Sympatric speciation: compliance with phenotype diversifica… |
@@ -4664,6 +4684,16 @@
 | `MAT-20261113-c6f090` | research_excerpt | Gerard 't Hooft『Dimensional Reduction in Quantum Gravity — 体積の情報は、境界の面に載る』（1993） |
 | `MAT-20261113-968a72` | research_excerpt | Don N. Page『Information in Black Hole Radiation — 情報は失われないが、遅く、広く散らばって出てくる』（1993） |
 | `MAT-20261113-0542f0` | research_excerpt | Ahmed Almheiri, Donald Marolf, Joseph Polchinski, James Sully『Black Holes: Complementarit… |
+| `MAT-20261113-6db529` | research_excerpt | Susanne Still, David A. Sivak, Anthony J. Bell, Gavin E. Crooks『Thermodynamics of Predict… |
+| `MAT-20261113-4abaca` | research_excerpt | Seth Lloyd『Ultimate physical limits to computation』（2000） |
+| `MAT-20261113-4a13f7` | research_excerpt | Wojciech Hubert Zurek『Quantum Darwinism』（2009） |
+| `MAT-20261113-894813` | research_excerpt | Shane Legg, Marcus Hutter『Universal Intelligence: A Definition of Machine Intelligence』（2… |
+| `MAT-20261113-dfb04e` | research_excerpt | François Chollet『On the Measure of Intelligence』（2019） |
+| `MAT-20261113-71506c` | research_excerpt | Jürgen Schmidhuber『Gödel Machines: Self-Referential Universal Problem Solvers Making Prov… |
+| `MAT-20261113-27857b` | research_excerpt | Saul Kripke『Outline of a Theory of Truth』（1975） |
+| `MAT-20261113-5feedd` | research_excerpt | Pentti Kanerva『Sparse Distributed Memory』（1988） |
+| `MAT-20261113-f7d463` | research_excerpt | Noson S. Yanofsky『A Universal Approach to Self-Referential Paradoxes, Incompleteness and … |
+| `MAT-20261113-1cae70` | research_excerpt | Scott Aaronson『Why Philosophers Should Care About Computational Complexity』（2011） |
 | `MAT-20261113-c03554` | research_excerpt | C. E. Shannon『C. E. Shannon「A Mathematical Theory of Communication」（1948）』（1948） |
 | `MAT-20261113-1695e0` | research_excerpt | A. M. Turing『A. M. Turing「On Computable Numbers, with an Application to the Entscheidungs… |
 | `MAT-20261113-40ae51` | research_excerpt | Kurt Godel『K. Godel「Uber formal unentscheidbare Satze der Principia Mathematica und verwa… |
@@ -5396,13 +5426,16 @@
 | `SESSION-20261112-5c8581` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-b05658` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261112-88ffb852b5e5` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-21d8c8` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-478cfe` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-494ed9` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-431f47` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-2162b1` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-03d44c` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-1b76fc` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-bb5da7` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-894a80` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-734222` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-ed8a61` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6969 件・全表は map/40-relations-*.md）
@@ -5484,7 +5517,8 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 88 | 163,517 |
+| `map/31-materials-research-17.md` | 100 | 208,773 |
+| `map/31-materials-research-18.md` | 18 | 35,294 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5514,7 +5548,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 11 | 8,545 |
+| `map/50-sessions-15.md` | 14 | 11,114 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5537,24 +5571,24 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 91,390 |
-| `map/60-notes-24.md` | 25 | 63,055 |
-| `map/60-notes-25.md` | 25 | 78,428 |
-| `map/60-notes-26.md` | 25 | 73,704 |
-| `map/60-notes-27.md` | 25 | 96,935 |
-| `map/60-notes-28.md` | 25 | 94,111 |
-| `map/60-notes-29.md` | 25 | 137,784 |
-| `map/60-notes-30.md` | 8 | 45,258 |
+| `map/60-notes-23.md` | 25 | 99,629 |
+| `map/60-notes-24.md` | 25 | 62,655 |
+| `map/60-notes-25.md` | 25 | 80,076 |
+| `map/60-notes-26.md` | 25 | 69,868 |
+| `map/60-notes-27.md` | 25 | 96,287 |
+| `map/60-notes-28.md` | 25 | 92,547 |
+| `map/60-notes-29.md` | 25 | 130,465 |
+| `map/60-notes-30.md` | 11 | 65,442 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・733本・26,757,348 B）
+## 8. 精読ノート索引（readings/・736本・26,962,082 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 712/733 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 715/736 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：733 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：82 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：736 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：83 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6114,11 +6148,14 @@
 | `readings/2026-11-12-two-clocks-the-gate-counts-labels-the-axis-lays-out-dates.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261111-5ebabb` +6 | 13,058 | Q2 M1 S7 ERR3 | ✓ | 二つの時計——ゲートはラベルで数え、軸は実日付で並べる |
 | `readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ebb435` | 6,680 | Q1 S1 | ✓ | PR #655 がしたことと、いま止めるもの——閉じた枝の概要と再発防止 |
 | `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
+| `readings/2026-11-13-biology-ten-materials-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-1b76fc` | 37,519 | Q3 M10 S1 ERR3 | — | 生物学の十の窓——身体、共生、記憶をめぐる精読報告 |
 | `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | ✓ | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
 | `readings/2026-11-13-seven-theories-of-boundary-and-self-description.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-431f47` | 24,671 | Q3 M7 R1 S1 ERR3 | ✓ | 境界と自己記述の七理論——自己を「保存された実体」ではなく「何を閉じ、どこまで語れるか」で問い直す |
-| `readings/2026-11-13-ten-theories-of-boundary-membership-and-intrinsic-causation.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-2162b1` +1 | 22,602 | Q3 M14 S2 | — | 境界・所属・内在的因果——理論科学十資料の四層精読 |
-| `readings/2026-11-13-ten-theories-of-copying-transfer-and-boundary.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-478cfe` | 24,666 | Q3 M11 S1 | — | 自己は複製できない——複製・転送・訂正・境界をめぐる理論科学十資料 |
+| `readings/2026-11-13-ten-theories-of-boundary-membership-and-intrinsic-causation.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-2162b1` +1 | 22,612 | Q3 M14 S2 | — | 境界・所属・内在的因果——理論科学十資料の四層精読 |
+| `readings/2026-11-13-ten-theories-of-copying-transfer-and-boundary.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-478cfe` | 24,666 | Q3 M11 S1 | ✓ | 自己は複製できない——複製・転送・訂正・境界をめぐる理論科学十資料 |
 | `readings/2026-11-13-ten-theories-of-memory-cost-and-other-people.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-ed8a61` | 15,125 | Q3 M12 S1 ERR2 | ✓ | 記録の外にある条件——記憶・費用・他者をめぐる理論科学十資料 |
+| `readings/2026-11-13-ten-theories-of-records-time-and-limits.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-734222` +1 | 33,584 | Q3 M14 MOT1 S2 ERR1 | — | 記録は有限で、完結せず、分割され、読み返されて終わる——理論科学十資料 |
+| `readings/2026-11-13-ten-theories-of-the-shape-of-a-limit.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-21d8c8` +1 | 22,335 | Q3 M12 S2 ERR1 | ✓ | 限界の形——十の理論科学が、保存の代わりに置いたもの |
 | `readings/2026-11-13-the-class-of-allowed-transformations.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-494ed9` +1 | 32,414 | Q3 M16 S2 | — | 許された変換のクラス——七つの理論科学と、「戻れない」の意味を分ける |
 | `readings/2026-11-13-theoretical-science-seven-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-03d44c` +1 | 15,332 | Q3 M7 S2 | ✓ | 理論科学七資料の四層精読と横断報告（2026-11-13） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
