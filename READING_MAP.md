@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4182 件（research_excerpt 1955 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4192 件（research_excerpt 1965 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：751 回
+- **探究セッション（Sessions）**：754 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4182 件・詳細は map/3*.md）
+## 4. 対話素材（4192 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4958,6 +4958,16 @@
 | `MAT-20261113-548dd8` | research_excerpt | Douglas S. Stoner, Baruch Rinkevich, Irving L. Weissman『Stoner・Rinkevich・Weissman（1999）キメ… |
 | `MAT-20261113-59acaa` | research_excerpt | Svetlana Yashina, Stanislav Gubin, Stanislav Maksimovich, Alexandra Yashina, Edith Gakhov… |
 | `MAT-20261113-2aa6df` | research_excerpt | Frederic Mery, Tadeusz J. Kawecki『Mery & Kawecki（2005）ショウジョウバエの長期記憶の費用——固める記憶を作らされたハエは、乾燥… |
+| `MAT-20261113-d88eab` | research_excerpt | Hans Jonas『Hans Jonas『The Phenomenon of Life: Toward a Philosophical Biology』（生命の現象——哲学的生… |
+| `MAT-20261113-8af178` | research_excerpt | Georges Canguilhem『Georges Canguilhem『The Normal and the Pathological』（正常と病理）』（1966） |
+| `MAT-20261113-d81584` | research_excerpt | Thomas Pradeu『Thomas Pradeu『The Limits of the Self: Immunology and Biological Identity』（自… |
+| `MAT-20261113-5ba181` | research_excerpt | Robert Rosen『Robert Rosen『Life Itself: A Comprehensive Inquiry into the Nature, Origin, a… |
+| `MAT-20261113-09f208` | research_excerpt | Susan Oyama『Susan Oyama『The Ontogeny of Information: Developmental Systems and Evolution』… |
+| `MAT-20261113-f9ac1b` | research_excerpt | Eva Jablonka, Marion J. Lamb『Eva Jablonka & Marion J. Lamb『Evolution in Four Dimensions: … |
+| `MAT-20261113-c64f00` | research_excerpt | John Maynard Smith, Eörs Szathmáry『John Maynard Smith & Eörs Szathmáry『The Major Transiti… |
+| `MAT-20261113-1aface` | research_excerpt | Sarah Blaffer Hrdy『Sarah Blaffer Hrdy『Mothers and Others: The Evolutionary Origins of Mut… |
+| `MAT-20261113-c8acae` | research_excerpt | Michael Polanyi『Michael Polanyi「Life's Irreducible Structure」（生命の不可還元な構造）』（1968） |
+| `MAT-20261113-e92c8a` | research_excerpt | Justine Karst, Melanie D. Jones, Jason D. Hoeksema『Justine Karst, Melanie D. Jones & Jaso… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261113-5311d1・全文は map/50-sessions-*.md）
 
@@ -5700,6 +5710,9 @@
 | `SESSION-20261113-0598a2` | 2026-11-13T12:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-08709a` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-dd3200` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-e1bf15` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-738a4f` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-9aa846` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-f556b8` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-894a80` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-e804cd` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5797,7 +5810,7 @@
 | `map/31-materials-research-17.md` | 100 | 222,366 |
 | `map/31-materials-research-18.md` | 100 | 247,654 |
 | `map/31-materials-research-19.md` | 100 | 251,259 |
-| `map/31-materials-research-20.md` | 55 | 114,550 |
+| `map/31-materials-research-20.md` | 65 | 138,520 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5827,8 +5840,8 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 50 | 35,887 |
-| `map/50-sessions-16.md` | 1 | 966 |
+| `map/50-sessions-15.md` | 50 | 36,017 |
+| `map/50-sessions-16.md` | 4 | 2,835 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5851,25 +5864,25 @@
 | `map/60-notes-20.md` | 25 | 170,909 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 121,710 |
-| `map/60-notes-24.md` | 25 | 95,485 |
-| `map/60-notes-25.md` | 25 | 60,476 |
-| `map/60-notes-26.md` | 25 | 79,949 |
-| `map/60-notes-27.md` | 25 | 70,859 |
-| `map/60-notes-28.md` | 25 | 92,663 |
-| `map/60-notes-29.md` | 25 | 97,055 |
-| `map/60-notes-30.md` | 25 | 128,204 |
-| `map/60-notes-31.md` | 13 | 72,833 |
+| `map/60-notes-23.md` | 25 | 122,244 |
+| `map/60-notes-24.md` | 25 | 97,279 |
+| `map/60-notes-25.md` | 25 | 60,477 |
+| `map/60-notes-26.md` | 25 | 80,702 |
+| `map/60-notes-27.md` | 25 | 69,742 |
+| `map/60-notes-28.md` | 25 | 91,332 |
+| `map/60-notes-29.md` | 25 | 97,201 |
+| `map/60-notes-30.md` | 25 | 127,002 |
+| `map/60-notes-31.md` | 14 | 77,681 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・763本・28,499,490 B）
+## 8. 精読ノート索引（readings/・764本・28,585,786 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 739/763 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 740/764 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：763 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：98 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：764 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：99 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6446,6 +6459,7 @@
 | `readings/2026-11-13-ten-biology-constancy-and-transferred-memory.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-0598a2` +3 | 79,134 | Q3 M19 S4 | — | 十篇の生物学資料の精読——一定性の定義史と、痕跡が移る場所 |
 | `readings/2026-11-13-ten-biology-sources-boundaries-clocks-and-resets.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-f556b8` +1 | 47,348 | Q3 M11 R5 S2 ERR3 | ✓ | 止まる線虫、老いない水母、乗り換えられる地図——生物学一次文献十編の全文精読と仮説衝突 |
 | `readings/2026-11-13-ten-biology-sources-cut-rewritten-and-entrusted.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-dd3200` | 30,668 | Q3 M16 MOT1 S1 | ✓ | 削られ、書き換えられ、外へ預けられる——自己の境界をめぐる生物学十資料 |
+| `readings/2026-11-13-ten-biology-sources-on-selves-records-and-levels.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-e1bf15` +2 | 39,744 | Q3 M16 S3 | — | 生物学は「自己」をどこに置くか——十の資料を、代謝・境界・記録・レベルのあいだで読む |
 | `readings/2026-11-13-ten-mechanistic-biology-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-1650a1` | 14,955 | Q3 M10 S1 | ✓ | 十篇の生物学一次資料の精読——記録、書き換え、刷新、時限標識 |
 | `readings/2026-11-13-ten-theories-of-boundary-membership-and-intrinsic-causation.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-2162b1` +1 | 22,612 | Q3 M14 S2 | — | 境界・所属・内在的因果——理論科学十資料の四層精読 |
 | `readings/2026-11-13-ten-theories-of-copying-transfer-and-boundary.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-478cfe` | 24,666 | Q3 M11 S1 | ✓ | 自己は複製できない——複製・転送・訂正・境界をめぐる理論科学十資料 |
