@@ -95,8 +95,8 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # and the report (§11-2) records both Q-002 hypotheses as narrowed
         # rather than letting an analogy support one of them.
         # SESSION-20261113-e72e9a adds ten biology primary-source readings and
-        # ten evaluations (EVL-20261113-5dcd06 ... -0efe65: two supports /
-        # two narrows_scope on the archive's own hypotheses, six mixed), and
+        # ten evaluations (EVL-20261113-5dcd06 ... -0efe65: six
+        # narrows_scope / four supports), and
         # for the first time in this batch registers two child hypotheses:
         # HYP-20261113-20fa8c (refines be95bc) and HYP-20261113-ccc1d8
         # (splits a35ee5).  Both take a single parent, following the
