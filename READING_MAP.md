@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3952 件（research_excerpt 1728 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3962 件（research_excerpt 1738 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
-- **解釈的関係（Relations）**：6969 件
-- **探究セッション（Sessions）**：715 回
+- **解釈的関係（Relations）**：6974 件
+- **探究セッション（Sessions）**：716 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（3952 件・詳細は map/3*.md）
+## 4. 対話素材（3962 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4694,6 +4694,16 @@
 | `MAT-20261113-c6f090` | research_excerpt | Gerard 't Hooft『Dimensional Reduction in Quantum Gravity — 体積の情報は、境界の面に載る』（1993） |
 | `MAT-20261113-968a72` | research_excerpt | Don N. Page『Information in Black Hole Radiation — 情報は失われないが、遅く、広く散らばって出てくる』（1993） |
 | `MAT-20261113-0542f0` | research_excerpt | Ahmed Almheiri, Donald Marolf, Joseph Polchinski, James Sully『Black Holes: Complementarit… |
+| `MAT-20261113-a5fa43` | research_excerpt | James J Cox, Frank Reimann, Adeline K Nicholas, Gemma Thornton, Emma Roberts, Kelly Sprin… |
+| `MAT-20261113-6d230c` | research_excerpt | Anastasia Shatilovich, Vamshidhar R Gade, Martin Pippel, Tarja T Hoffmeyer, Alexei V Tche… |
+| `MAT-20261113-35f0f8` | research_excerpt | Ralf Schaible, Alexander Scheuerlein, Maciej J Dańko, Jutta Gampe, Daniel E Martínez, Jam… |
+| `MAT-20261113-e9396a` | research_excerpt | Steve Horvath『DNA methylation age of human tissues and cell types』（2013） |
+| `MAT-20261113-934e26` | research_excerpt | Iñigo Martincorena, Joanna C Fowler, Agnieszka Wabik, Andrew R J Lawson, Federico Abascal… |
+| `MAT-20261113-fe6334` | research_excerpt | Cécile Lavialle, Guillaume Cornelis, Anne Dupressoir, Christian Esnault, Odile Heidmann, … |
+| `MAT-20261113-5acc2b` | research_excerpt | Owen M Gilbert, Kevin R Foster, Natasha J Mehdiabadi, Joan E Strassmann, David C Queller『… |
+| `MAT-20261113-610b45` | research_excerpt | Peter W Reddien『The cellular and molecular basis for planarian regeneration』（2018） |
+| `MAT-20261113-f77e57` | research_excerpt | Giulio Tononi, Chiara Cirelli『Sleep and synaptic down-selection』（2019） |
+| `MAT-20261113-96e859` | research_excerpt | Leah Houri-Zeevi, Guy Korem, Omer Sheftel, Itamar Faigenbloom, Itai Toker, Yael Dagan, Li… |
 | `MAT-20261113-6db529` | research_excerpt | Susanne Still, David A. Sivak, Anthony J. Bell, Gavin E. Crooks『Thermodynamics of Predict… |
 | `MAT-20261113-4abaca` | research_excerpt | Seth Lloyd『Ultimate physical limits to computation』（2000） |
 | `MAT-20261113-4a13f7` | research_excerpt | Wojciech Hubert Zurek『Quantum Darwinism』（2009） |
@@ -5445,21 +5455,22 @@
 | `SESSION-20261113-1b76fc` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-bb5da7` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-dd3200` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-f556b8` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-894a80` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-734222` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-ed8a61` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6969 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6974 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 1006 |
+| 対照 (contrast) | 1008 |
 | 共鳴 (echo) | 1657 |
-| 切断・割り込み (interrupts) | 239 |
+| 切断・割り込み (interrupts) | 240 |
 | 未解決のまま開く (leaves_open) | 919 |
 | 比喩的共鳴 (metaphorically_resonates) | 196 |
-| 枠組みの組み替え (reframes) | 811 |
-| 応答 (responds_to) | 1804 |
+| 枠組みの組み替え (reframes) | 812 |
+| 応答 (responds_to) | 1805 |
 | 変奏・変形 (transforms) | 337 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -5528,8 +5539,8 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 100 | 216,662 |
-| `map/31-materials-research-18.md` | 28 | 54,502 |
+| `map/31-materials-research-17.md` | 100 | 220,795 |
+| `map/31-materials-research-18.md` | 38 | 81,325 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5544,7 +5555,7 @@
 | `map/40-relations-11.md` | 500 | 185,779 |
 | `map/40-relations-12.md` | 500 | 176,838 |
 | `map/40-relations-13.md` | 500 | 172,292 |
-| `map/40-relations-14.md` | 469 | 147,860 |
+| `map/40-relations-14.md` | 474 | 149,574 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5559,7 +5570,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 15 | 11,860 |
+| `map/50-sessions-15.md` | 16 | 12,531 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5582,24 +5593,24 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 101,461 |
-| `map/60-notes-24.md` | 25 | 62,690 |
-| `map/60-notes-25.md` | 25 | 79,636 |
-| `map/60-notes-26.md` | 25 | 70,133 |
-| `map/60-notes-27.md` | 25 | 95,959 |
-| `map/60-notes-28.md` | 25 | 93,649 |
-| `map/60-notes-29.md` | 25 | 129,049 |
-| `map/60-notes-30.md` | 12 | 69,174 |
+| `map/60-notes-23.md` | 25 | 106,551 |
+| `map/60-notes-24.md` | 25 | 60,408 |
+| `map/60-notes-25.md` | 25 | 79,881 |
+| `map/60-notes-26.md` | 25 | 70,681 |
+| `map/60-notes-27.md` | 25 | 92,604 |
+| `map/60-notes-28.md` | 25 | 97,055 |
+| `map/60-notes-29.md` | 25 | 128,204 |
+| `map/60-notes-30.md` | 13 | 72,764 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・737本・27,031,965 B）
+## 8. 精読ノート索引（readings/・738本・27,124,619 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 716/737 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 717/738 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：737 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：84 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：738 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：83 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6159,10 +6170,11 @@
 | `readings/2026-11-12-two-clocks-the-gate-counts-labels-the-axis-lays-out-dates.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261111-5ebabb` +6 | 13,058 | Q2 M1 S7 ERR3 | ✓ | 二つの時計——ゲートはラベルで数え、軸は実日付で並べる |
 | `readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ebb435` | 6,680 | Q1 S1 | ✓ | PR #655 がしたことと、いま止めるもの——閉じた枝の概要と再発防止 |
 | `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
-| `readings/2026-11-13-biology-ten-materials-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-1b76fc` | 37,519 | Q3 M10 S1 ERR3 | — | 生物学の十の窓——身体、共生、記憶をめぐる精読報告 |
+| `readings/2026-11-13-biology-ten-materials-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-1b76fc` | 37,519 | Q3 M10 S1 ERR3 | ✓ | 生物学の十の窓——身体、共生、記憶をめぐる精読報告 |
 | `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | ✓ | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
 | `readings/2026-11-13-seven-theories-of-boundary-and-self-description.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-431f47` | 24,671 | Q3 M7 R1 S1 ERR3 | ✓ | 境界と自己記述の七理論——自己を「保存された実体」ではなく「何を閉じ、どこまで語れるか」で問い直す |
-| `readings/2026-11-13-ten-biology-sources-cut-rewritten-and-entrusted.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-dd3200` | 30,668 | Q3 M16 MOT1 S1 | — | 削られ、書き換えられ、外へ預けられる——自己の境界をめぐる生物学十資料 |
+| `readings/2026-11-13-ten-biology-sources-boundaries-clocks-and-resets.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-f556b8` | 46,439 | Q3 M11 R5 S1 ERR3 | — | 止まる線虫、老いない水母、乗り換えられる地図——生物学一次文献十編の全文精読と仮説衝突 |
+| `readings/2026-11-13-ten-biology-sources-cut-rewritten-and-entrusted.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-dd3200` | 30,668 | Q3 M16 MOT1 S1 | ✓ | 削られ、書き換えられ、外へ預けられる——自己の境界をめぐる生物学十資料 |
 | `readings/2026-11-13-ten-theories-of-boundary-membership-and-intrinsic-causation.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-2162b1` +1 | 22,612 | Q3 M14 S2 | — | 境界・所属・内在的因果——理論科学十資料の四層精読 |
 | `readings/2026-11-13-ten-theories-of-copying-transfer-and-boundary.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-478cfe` | 24,666 | Q3 M11 S1 | ✓ | 自己は複製できない——複製・転送・訂正・境界をめぐる理論科学十資料 |
 | `readings/2026-11-13-ten-theories-of-memory-cost-and-other-people.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-ed8a61` | 15,125 | Q3 M12 S1 ERR2 | ✓ | 記録の外にある条件——記憶・費用・他者をめぐる理論科学十資料 |
