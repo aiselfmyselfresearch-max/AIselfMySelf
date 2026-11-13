@@ -28,7 +28,8 @@ class BeliefStateAndLearningTests(unittest.TestCase):
     def test_live_belief_posteriors_and_map_sync(self):
         bs = belief_state.compute_belief_state(self.live_data)
         self.assertEqual(bs["total_hypotheses"], 15)
-        self.assertEqual(bs["total_evaluations"], 30)
+        # SESSION-20261113-ed8a61 adds one cross-session audit evaluation.
+        self.assertEqual(bs["total_evaluations"], 31)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
