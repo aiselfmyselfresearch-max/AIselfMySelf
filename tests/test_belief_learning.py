@@ -68,8 +68,15 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # which is the classification problem recorded in ERR-20261113-2a392a;
         # ERR-20261113-5ac381 names this session's rows, and the report
         # discloses the weight rather than treating it as settled.
+        # SESSION-20261113-1a5bd2 adds four comparative biology evaluations
+        # (EVL-20261113-a68b44, -7176a6, -ff21e1, -165ab3: one supports /
+        # three narrows_scope) from ten new sources, taking the live total to
+        # 150 without adding hypotheses. All ten sources are partially_verified
+        # (abstract/bibliography or an author review, no primary full text),
+        # which readings/2026-11-13-what-decides-which-line-is-read.md discloses
+        # and which limits what these four rows can be taken to prove.
         self.assertEqual(bs["total_hypotheses"], 20)
-        self.assertEqual(bs["total_evaluations"], 146)
+        self.assertEqual(bs["total_evaluations"], 150)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
