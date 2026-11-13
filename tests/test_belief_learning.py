@@ -36,16 +36,18 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # biology sources: three primary-source collisions and six fragment
         # thought experiments (EVL-20261113-f6a99f ... -06b38d), taking the
         # live total to 100.
-        # SESSION-20261113-0d7479 adds ten biology evaluations here
-        # (eight supports / two narrows), taking the live total to 110.
         # SESSION-20261113-48efa5 adds six biology evaluations here
         # (one support / five narrows), taking the live total to 116.
         # The first draft of EVL-20261113-e7d58d read HYP-20261112-afd1a5
         # as an inheritance claim it is not, and its refutes_unconditioned
         # verdict tripped the dead-hypothesis revival gate; ERR-20261113-764a04
         # records the misreading and the verdict was changed to narrows_scope.
-        self.assertEqual(bs["total_hypotheses"], 18)
-        self.assertEqual(bs["total_evaluations"], 116)
+        # SESSION-20261113-1650a1 adds two scoped conditional child hypotheses
+        # (HYP-20261113-ebd567, HYP-20261113-be95bc) and ten comparative
+        # evaluations, taking the live totals to 20 hypotheses and 126
+        # evaluations.
+        self.assertEqual(bs["total_hypotheses"], 20)
+        self.assertEqual(bs["total_evaluations"], 126)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
