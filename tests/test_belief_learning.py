@@ -130,7 +130,10 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # origin/main added two hypotheses in shard 2026-11-13-b51b15accc7f
         # (HYP-20261113-20fa8c, HYP-20261113-ccc1d8, SESSION-20261113-3b32da1ac5fc)
         # before this branch merged, so the combined live total is 23.
-        self.assertEqual(bs["total_hypotheses"], 23)
+        # SESSION-20261113-d8950c adds two scoped child hypotheses from ten
+        # biology full-text readings (HYP-20261113-977052 refines ba8bff;
+        # HYP-20261113-3a106a splits 20fa8c), taking the live total to 25.
+        self.assertEqual(bs["total_hypotheses"], 25)
         # Evaluations are append-only; later inquiry sessions may add more.
         self.assertGreaterEqual(bs["total_evaluations"], 161)
         for qid in ("Q-001", "Q-002", "Q-003"):
