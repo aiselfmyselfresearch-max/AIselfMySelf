@@ -28,10 +28,10 @@ class BeliefStateAndLearningTests(unittest.TestCase):
     def test_live_belief_posteriors_and_map_sync(self):
         bs = belief_state.compute_belief_state(self.live_data)
         # Live-ledger counts are pinned so ledger changes cannot pass unnoticed.
-        # SESSION-20261113-494ed9 adds one synthesis hypothesis and four
-        # evaluations; SESSION-20261113-ed8a61 adds one cross-session audit.
+        # origin/main 44a5407 carries 16 hypotheses / 37 evaluations;
+        # SESSION-20261113-ed8a61 adds one cross-session audit evaluation.
         self.assertEqual(bs["total_hypotheses"], 16)
-        self.assertEqual(bs["total_evaluations"], 35)
+        self.assertEqual(bs["total_evaluations"], 38)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
@@ -41,9 +41,8 @@ class BeliefStateAndLearningTests(unittest.TestCase):
             total_p = sum(row["posterior"] for row in q_state["hypotheses"])
             # Each posterior is rounded to 4 decimal places before it reaches
             # this list, so the sum of n hypotheses can drift by up to
-            # n * 5e-5.  With n = 6 that is 3e-4, which is larger than
-            # `places=5` allows.  This checks that the distribution is
-            # normalised to the rounding, not to an impossible exact 1.0.
+            # n * 5e-5.  This checks that the distribution is normalised to the
+            # rounding, not to an impossible exact 1.0.
             self.assertAlmostEqual(
                 total_p, 1.0, delta=5e-5 * len(q_state["hypotheses"]) + 1e-9, msg=qid
             )
