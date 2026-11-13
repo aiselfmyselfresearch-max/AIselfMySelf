@@ -31,9 +31,11 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # Live-ledger counts are pinned so ledger changes cannot pass unnoticed.
         # origin/main (PR #717) carries 18 hypotheses / 75 evaluations;
         # SESSION-20261113-aa926d adds ten biology evaluations here
-        # (three supports / seven narrows), taking the live total to 85.
+        # (three supports / seven narrows), taking the live total to 85;
+        # SESSION-20261113-0d7479 adds ten biology evaluations here
+        # (eight supports / two narrows), taking the live total to 95.
         self.assertEqual(bs["total_hypotheses"], 18)
-        self.assertEqual(bs["total_evaluations"], 85)
+        self.assertEqual(bs["total_evaluations"], 95)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
