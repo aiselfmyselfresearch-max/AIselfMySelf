@@ -86,9 +86,16 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # (abstract/bibliography or an author review, no primary full text),
         # which readings/2026-11-13-what-decides-which-line-is-read.md discloses
         # and which limits what these four rows can be taken to prove.
+        # SESSION-20261113-ef19c0 adds four biology-scoped evaluations
+        # (EVL-20261113-7ddfcb, -346e22, -c49807, -7becc6; four
+        # narrows_scope) and no new hypotheses, taking the live total to
+        # 161. All four are fragment_thought_experiment: the biological
+        # sources do not directly measure the archive's identity layers,
+        # and the report (§11-2) records both Q-002 hypotheses as narrowed
+        # rather than letting an analogy support one of them.
         self.assertEqual(bs["total_hypotheses"], 20)
         # Evaluations are append-only; later inquiry sessions may add more.
-        self.assertGreaterEqual(bs["total_evaluations"], 157)
+        self.assertGreaterEqual(bs["total_evaluations"], 161)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
