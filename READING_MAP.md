@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3868 件（research_excerpt 1644 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3875 件（research_excerpt 1651 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6965 件
-- **探究セッション（Sessions）**：705 回
+- **探究セッション（Sessions）**：706 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（3868 件・詳細は map/3*.md）
+## 4. 対話素材（3875 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4637,6 +4637,13 @@
 | `MAT-20261113-704a53` | research_excerpt | Gregory J. Chaitin『On the Length of Programs for Computing Finite Binary Sequences』（1966） |
 | `MAT-20261113-0d79e2` | research_excerpt | Bruno de Finetti『La prévision : ses lois logiques, ses sources subjectives』（1937） |
 | `MAT-20261113-ed9163` | research_excerpt | Simon Kochen, Ernst P. Specker『The Problem of Hidden Variables in Quantum Mechanics』（1967） |
+| `MAT-20261113-f7d050` | research_excerpt | R. A. Fisher『フィッシャー（1930）『自然選択の遺伝学的理論』——適応度の増加率は、その時点の遺伝的分散に等しい』（1930） |
+| `MAT-20261113-ed9b54` | research_excerpt | W. D. Hamilton『ハミルトン（1964）『社会的行動の遺伝的進化』——利他は、近縁度で割引かれた便益が費用を超えるとき広がる』（1964） |
+| `MAT-20261113-55179c` | research_excerpt | Vito Volterra『ヴォルテラ（1926）捕食者–被食者方程式——二つの集団は、互いの増減を介してのみ周期を保つ』（1926） |
+| `MAT-20261113-71d429` | research_excerpt | Norbert Wiener『ウィーナー（1948）『サイバネティックス』——制御とは、結果を戻して次の行為を直すことである』（1948） |
+| `MAT-20261113-dc7755` | research_excerpt | Mitchell J. Feigenbaum『ファイゲンバウム（1978）周期倍分岐の普遍性——細部が違う写像にも、同じ比 4.669… が現れる』（1978） |
+| `MAT-20261113-70fdf6` | research_excerpt | Benoit B. Mandelbrot『マンデルブロ（1967）『イギリスの海岸線はどのくらい長いか』——長さは対象だけではなく、測る物差しで決まる』（1967） |
+| `MAT-20261113-470a49` | research_excerpt | Ludwig von Bertalanffy『ベルタランフィ（1950）一般システム理論の概要——開いた系は、物質を入れ替えながら定常状態を保つ』（1950） |
 | `MAT-20261113-c03554` | research_excerpt | C. E. Shannon『C. E. Shannon「A Mathematical Theory of Communication」（1948）』（1948） |
 | `MAT-20261113-1695e0` | research_excerpt | A. M. Turing『A. M. Turing「On Computable Numbers, with an Application to the Entscheidungs… |
 | `MAT-20261113-40ae51` | research_excerpt | Kurt Godel『K. Godel「Uber formal unentscheidbare Satze der Principia Mathematica und verwa… |
@@ -4645,7 +4652,7 @@
 | `MAT-20261113-b24c19` | research_excerpt | F. William Lawvere『F. W. Lawvere「Diagonal Arguments and Cartesian Closed Categories」（1969… |
 | `MAT-20261113-1e3a4a` | research_excerpt | Emmy Noether『E. Noether「Invariante Variationsprobleme」（1918）』（1918） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261113-03d44c・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261113-bb5da7・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -5354,6 +5361,7 @@
 | `SESSION-20261112-88ffb852b5e5` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-494ed9` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-03d44c` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-bb5da7` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6965 件・全表は map/40-relations-*.md）
 
@@ -5434,7 +5442,7 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 44 | 71,782 |
+| `map/31-materials-research-17.md` | 51 | 84,941 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5464,7 +5472,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 5 | 3,870 |
+| `map/50-sessions-15.md` | 6 | 4,594 |
 | `map/60-notes-01.md` | 25 | 63,953 |
 | `map/60-notes-02.md` | 25 | 71,094 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5487,24 +5495,24 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 87,636 |
-| `map/60-notes-24.md` | 25 | 67,463 |
-| `map/60-notes-25.md` | 25 | 71,551 |
-| `map/60-notes-26.md` | 25 | 74,218 |
-| `map/60-notes-27.md` | 25 | 103,820 |
-| `map/60-notes-28.md` | 25 | 100,062 |
-| `map/60-notes-29.md` | 25 | 139,780 |
-| `map/60-notes-30.md` | 3 | 19,190 |
+| `map/60-notes-23.md` | 25 | 86,799 |
+| `map/60-notes-24.md` | 25 | 66,521 |
+| `map/60-notes-25.md` | 25 | 72,419 |
+| `map/60-notes-26.md` | 25 | 75,151 |
+| `map/60-notes-27.md` | 25 | 101,735 |
+| `map/60-notes-28.md` | 25 | 96,670 |
+| `map/60-notes-29.md` | 25 | 142,437 |
+| `map/60-notes-30.md` | 4 | 23,525 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・728本・26,549,876 B）
+## 8. 精読ノート索引（readings/・729本・26,566,030 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 707/728 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 708/729 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：728 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：80 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：729 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：82 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6064,8 +6072,9 @@
 | `readings/2026-11-12-two-clocks-the-gate-counts-labels-the-axis-lays-out-dates.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261111-5ebabb` +6 | 13,058 | Q2 M1 S7 ERR3 | ✓ | 二つの時計——ゲートはラベルで数え、軸は実日付で並べる |
 | `readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-ebb435` | 6,680 | Q1 S1 | ✓ | PR #655 がしたことと、いま止めるもの——閉じた枝の概要と再発防止 |
 | `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
-| `readings/2026-11-13-the-class-of-allowed-transformations.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-494ed9` +1 | 32,592 | Q3 M16 S2 | — | 許された変換のクラス——七つの理論科学と、「戻れない」の意味を分ける |
-| `readings/2026-11-13-theoretical-science-seven-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-03d44c` +1 | 15,332 | Q3 M7 S2 | ✓ | 理論科学七資料の四層精読と横断報告（2026-11-13） |
+| `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | — | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
+| `readings/2026-11-13-the-class-of-allowed-transformations.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-494ed9` +1 | 32,414 | Q3 M16 S2 | — | 許された変換のクラス——七つの理論科学と、「戻れない」の意味を分ける |
+| `readings/2026-11-13-theoretical-science-seven-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-03d44c` +1 | 15,332 | Q3 M7 S2 | — | 理論科学七資料の四層精読と横断報告（2026-11-13） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-two-lamps-and-the-fire-carried-to-the-stone.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-8f1056` +3 | 16,623 | Q9 F15 M5 S4 ERR5 | ✓ | 二本目の灯と、境の石まで運ばれる火 —— 同じ建物の写しを、借り続ける火へ変奏し、切断する（SESSION-20261… |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |

@@ -27,14 +27,14 @@ class BeliefStateAndLearningTests(unittest.TestCase):
 
     def test_live_belief_posteriors_and_map_sync(self):
         bs = belief_state.compute_belief_state(self.live_data)
-        # Live-ledger counts.  Bumped 2026-11-13: two sessions added the same
-        # day -- SESSION-20261113-494ed9 (one synthesis hypothesis
-        # HYP-20261113-a35ee5, four evaluations) and the parallel
-        # SESSION-20261113-* (seven evaluations).  These counts are deliberately
-        # pinned so a ledger change cannot pass unnoticed; bump them in the same
-        # commit as the ledger rows they describe.
+        # Live-ledger counts.  These are deliberately pinned so a ledger change
+        # cannot pass unnoticed; bump them in the same commit as the ledger rows
+        # they describe.  Bumped 2026-11-13 after three concurrent sessions each
+        # added a theoretical-science set on the same day: SESSION-20261113-494ed9
+        # (one synthesis hypothesis HYP-20261113-a35ee5, four evaluations) and two
+        # parallel SESSION-20261113-* (seven and five evaluations).
         self.assertEqual(bs["total_hypotheses"], 16)
-        self.assertEqual(bs["total_evaluations"], 29)
+        self.assertEqual(bs["total_evaluations"], 34)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
