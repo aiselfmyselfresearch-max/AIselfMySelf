@@ -46,8 +46,12 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # (HYP-20261113-ebd567, HYP-20261113-be95bc) and ten comparative
         # evaluations, taking the live totals to 20 hypotheses and 126
         # evaluations.
+        # SESSION-20261113-0598a2 adds six primary-source collisions from ten
+        # further biology sources (two supports / four narrows_scope,
+        # EVL-20261113-c127ce ... -82fe40) and no new hypotheses, taking the
+        # live total to 132 evaluations.
         self.assertEqual(bs["total_hypotheses"], 20)
-        self.assertEqual(bs["total_evaluations"], 126)
+        self.assertEqual(bs["total_evaluations"], 132)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
