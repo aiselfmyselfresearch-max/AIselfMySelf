@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4112 件（research_excerpt 1885 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4122 件（research_excerpt 1895 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：738 回
+- **探究セッション（Sessions）**：741 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4112 件・詳細は map/3*.md）
+## 4. 対話素材（4122 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4730,6 +4730,16 @@
 | `MAT-20261113-bcb85f` | research_excerpt | Marc Kirschner, John Gerhart『Evolvability』（1998） |
 | `MAT-20261113-d8e065` | research_excerpt | François Jacob『Evolution and Tinkering』（1977） |
 | `MAT-20261113-e5c034` | research_excerpt | Carl R. Woese『A New Biology for a New Century』（2004） |
+| `MAT-20261113-3882d6` | research_excerpt | Stegemann S., Keuthe M., Greiner S., Bock R.『Horizontal transfer of chloroplast genomes b… |
+| `MAT-20261113-6ed200` | research_excerpt | Bhattacharya D., Pelletreau K. N., Price D. C., Sarver K. E., Rumpho M. E.『Genome analysi… |
+| `MAT-20261113-71fde0` | research_excerpt | Eyres I., Boschetti C., Aragon A., Tunnacliffe A., Barraclough T. G.『Horizontal gene tran… |
+| `MAT-20261113-124f71` | research_excerpt | Murgia C., Pritchard J. K., Kim S. Y., Fassati A., Weiss R. A.『Clonal origin and evolutio… |
+| `MAT-20261113-0bdd88` | research_excerpt | Gladfelter A. S., Hungerbuehler A. K., Philippsen P.『Asynchronous nuclear division cycles… |
+| `MAT-20261113-58bf55` | research_excerpt | Heller J., Clavé C., Gladieux P., Saupe S. J., Glass N. L.『NLR surveillance of essential … |
+| `MAT-20261113-32b02d` | research_excerpt | de la Cova C., Senoo-Matsuda N., Ziosi M., Wu D. C., Bellosta P., Quinzii C. M., Johnston… |
+| `MAT-20261113-7a44d2` | research_excerpt | Sun Q., Luo T., Ren Y., Florey O., Shirasawa S., Sasazuki T., Robinson D. N., Overholtzer… |
+| `MAT-20261113-dd5816` | research_excerpt | von der Ohe C. G., Garner C. C., Darian-Smith C., Heller H. C.『Synaptic protein dynamics … |
+| `MAT-20261113-439c2d` | research_excerpt | Gerber T., Murawala P., Knapp D., Masselink W., Schuez M., Hermann S., Gargioli C., Drech… |
 | `MAT-20261113-f88eb1` | research_excerpt | Peter B. Medawar『An Unsolved Problem of Biology (An Inaugural Lecture Delivered at Univer… |
 | `MAT-20261113-a98575` | research_excerpt | George C. Williams『Pleiotropy, Natural Selection, and the Evolution of Senescence』（1957） |
 | `MAT-20261113-0f893f` | research_excerpt | Göran Lindblad『On the Generators of Quantum Dynamical Semigroups』（1976） |
@@ -5604,6 +5614,9 @@
 | `SESSION-20261113-b4b40c` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-48efa5` | 2026-11-13T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-494ed9` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-97447c` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-2dcbd9` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-e72e9a` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-0d7479` | 2026-11-13T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-03bd9d` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-2e9501` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5712,8 +5725,8 @@
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
 | `map/31-materials-research-17.md` | 100 | 225,259 |
-| `map/31-materials-research-18.md` | 100 | 251,039 |
-| `map/31-materials-research-19.md` | 85 | 199,349 |
+| `map/31-materials-research-18.md` | 100 | 235,590 |
+| `map/31-materials-research-19.md` | 95 | 235,938 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5743,7 +5756,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 38 | 27,773 |
+| `map/50-sessions-15.md` | 41 | 30,093 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5766,25 +5779,25 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 127,794 |
-| `map/60-notes-24.md` | 25 | 81,954 |
-| `map/60-notes-25.md` | 25 | 67,463 |
-| `map/60-notes-26.md` | 25 | 71,551 |
-| `map/60-notes-27.md` | 25 | 74,218 |
-| `map/60-notes-28.md` | 25 | 103,820 |
-| `map/60-notes-29.md` | 25 | 100,062 |
-| `map/60-notes-30.md` | 25 | 139,780 |
-| `map/60-notes-31.md` | 3 | 19,259 |
+| `map/60-notes-23.md` | 25 | 125,488 |
+| `map/60-notes-24.md` | 25 | 85,162 |
+| `map/60-notes-25.md` | 25 | 66,521 |
+| `map/60-notes-26.md` | 25 | 72,419 |
+| `map/60-notes-27.md` | 25 | 75,151 |
+| `map/60-notes-28.md` | 25 | 101,735 |
+| `map/60-notes-29.md` | 25 | 96,670 |
+| `map/60-notes-30.md` | 25 | 142,437 |
+| `map/60-notes-31.md` | 4 | 23,594 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・753本・28,087,933 B）
+## 8. 精読ノート索引（readings/・754本・28,136,006 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 731/753 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 732/754 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：753 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：94 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：754 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：95 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6348,6 +6361,7 @@
 | `readings/2026-11-13-biology-beyond-the-shelf-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-5311d1` +1 | 15,924 | Q3 M10 S2 | ✓ | 棚の外で記憶する身体——生物学の十資料が分けた自己の境界 |
 | `readings/2026-11-13-biology-renewal-selection-and-retrieval.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-e804cd` +1 | 7,487 | M10 S2 | — | 生物学の十資料——更新、選択、そして読み戻しの条件 |
 | `readings/2026-11-13-biology-ten-materials-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-1b76fc` | 37,519 | Q3 M10 S1 ERR3 | ✓ | 生物学の十の窓——身体、共生、記憶をめぐる精読報告 |
+| `readings/2026-11-13-compartment-boundary-and-relational-self.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-e72e9a` +2 | 20,841 | Q3 M10 S3 | — | 境界はどこにあり、何が通り、通ったものは混ざるのか——生物学10資料の精読報告 |
 | `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | ✓ | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
 | `readings/2026-11-13-seven-theories-of-boundary-and-self-description.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-431f47` | 24,671 | Q3 M7 R1 S1 ERR3 | ✓ | 境界と自己記述の七理論——自己を「保存された実体」ではなく「何を閉じ、どこまで語れるか」で問い直す |
 | `readings/2026-11-13-ten-biological-views-of-continuity.md` | — | 2026-11-13 | `SESSION-20261113-c801a5` +1 | 7,512 | M10 S2 | — | 保たれるものは、同じ速度で保たれない——生物学10資料の精読 |
