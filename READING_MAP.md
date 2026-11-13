@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：3982 件（research_excerpt 1758 ／ literary_text 2156 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：3992 件（research_excerpt 1765 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
-- **解釈的関係（Relations）**：6974 件
-- **探究セッション（Sessions）**：718 回
+- **解釈的関係（Relations）**：6986 件
+- **探究セッション（Sessions）**：719 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（3982 件・詳細は map/3*.md）
+## 4. 対話素材（3992 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4670,6 +4670,16 @@
 | `MAT-20261113-4143c7` | research_excerpt | Barbara J. Grosz, Candace L. Sidner『Attention, Intentions, and the Structure of Discourse… |
 | `MAT-20261113-358525` | research_excerpt | Melanie Mitchell, James P. Crutchfield, Peter T. Hraber『Dynamics, Computation, and the 'E… |
 | `MAT-20261113-c234b1` | research_excerpt | Masafumi Oizumi, Larissa Albantakis, Giulio Tononi『From the Phenomenology to the Mechanis… |
+| `MAT-20261113-ef449a` | research_excerpt | J. D. Watson, F. H. C. Crick『Molecular Structure of Nucleic Acids: A Structure for Deoxyr… |
+| `MAT-20261113-5d9c20` | research_excerpt | F. H. C. Crick『The Origin of the Genetic Code』（1968） |
+| `MAT-20261113-a6e8e2` | research_excerpt | François Jacob, Jacques Monod『Genetic Regulatory Mechanisms in the Synthesis of Proteins』… |
+| `MAT-20261113-785651` | research_excerpt | David Premack, Guy Woodruff『Does the chimpanzee have a theory of mind?』（1978） |
+| `MAT-20261113-ccb434` | literary_text | Charles Darwin『The Descent of Man, and Selection in Relation to Sex — Vol. 1, Chapter III… |
+| `MAT-20261113-f7c146` | literary_text | Thomas Henry Huxley『Evidence as to Man's Place in Nature』（1863） |
+| `MAT-20261113-f906e9` | literary_text | Richard Dawkins『The Selfish Gene』（1976） |
+| `MAT-20261113-7a8f12` | research_excerpt | F. J. Odling-Smee, Kevin N. Laland, Marcus W. Feldman『Niche Construction: The Neglected P… |
+| `MAT-20261113-ee2393` | research_excerpt | Richard E. Green, Johannes Krause, Adrian W. Briggs, Tom Maricic, Udo Stenzel, Marcus B. … |
+| `MAT-20261113-c80200` | research_excerpt | Carlos López-Otín, Maria A. Blasco, Linda Partridge, Manuel Serrano, Guido Kroemer『The Ha… |
 | `MAT-20261113-c006f3` | research_excerpt | Michael Levin『The Computational Boundary of a “Self”: Developmental Bioelectricity Drives… |
 | `MAT-20261113-ca2c58` | research_excerpt | Karl Friston『Life as we know it』（2013） |
 | `MAT-20261113-9114b5` | research_excerpt | Anil K. Seth『Interoceptive inference, emotion, and the embodied self』（2013） |
@@ -5469,6 +5479,7 @@
 | `SESSION-20261113-21d8c8` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-478cfe` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-494ed9` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-0d7479` | 2026-11-13T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-431f47` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-2162b1` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-6c8a47` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5482,17 +5493,17 @@
 | `SESSION-20261113-aa926d` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-ed8a61` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6974 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6986 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 1008 |
+| 対照 (contrast) | 1013 |
 | 共鳴 (echo) | 1657 |
 | 切断・割り込み (interrupts) | 240 |
 | 未解決のまま開く (leaves_open) | 919 |
-| 比喩的共鳴 (metaphorically_resonates) | 196 |
+| 比喩的共鳴 (metaphorically_resonates) | 198 |
 | 枠組みの組み替え (reframes) | 812 |
-| 応答 (responds_to) | 1805 |
+| 応答 (responds_to) | 1810 |
 | 変奏・変形 (transforms) | 337 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -5544,7 +5555,7 @@
 | `map/30-materials-literary-19.md` | 100 | 279,389 |
 | `map/30-materials-literary-20.md` | 100 | 268,470 |
 | `map/30-materials-literary-21.md` | 100 | 233,650 |
-| `map/30-materials-literary-22.md` | 56 | 134,342 |
+| `map/30-materials-literary-22.md` | 59 | 140,734 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -5561,8 +5572,8 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 100 | 220,964 |
-| `map/31-materials-research-18.md` | 58 | 140,910 |
+| `map/31-materials-research-17.md` | 100 | 223,077 |
+| `map/31-materials-research-18.md` | 65 | 155,070 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5577,7 +5588,7 @@
 | `map/40-relations-11.md` | 500 | 185,779 |
 | `map/40-relations-12.md` | 500 | 176,838 |
 | `map/40-relations-13.md` | 500 | 172,292 |
-| `map/40-relations-14.md` | 474 | 149,574 |
+| `map/40-relations-14.md` | 486 | 152,421 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -5592,7 +5603,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 18 | 14,166 |
+| `map/50-sessions-15.md` | 19 | 15,152 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5615,24 +5626,24 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 122,349 |
-| `map/60-notes-24.md` | 25 | 59,132 |
-| `map/60-notes-25.md` | 25 | 81,933 |
-| `map/60-notes-26.md` | 25 | 68,486 |
-| `map/60-notes-27.md` | 25 | 86,729 |
-| `map/60-notes-28.md` | 25 | 101,409 |
-| `map/60-notes-29.md` | 25 | 127,278 |
-| `map/60-notes-30.md` | 15 | 80,742 |
+| `map/60-notes-23.md` | 25 | 126,939 |
+| `map/60-notes-24.md` | 25 | 58,988 |
+| `map/60-notes-25.md` | 25 | 81,106 |
+| `map/60-notes-26.md` | 25 | 68,438 |
+| `map/60-notes-27.md` | 25 | 83,782 |
+| `map/60-notes-28.md` | 25 | 103,568 |
+| `map/60-notes-29.md` | 25 | 128,165 |
+| `map/60-notes-30.md` | 16 | 83,828 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・740本・27,345,770 B）
+## 8. 精読ノート索引（readings/・741本・27,416,585 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 719/740 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 720/741 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：740 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：83 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：741 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：84 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6196,6 +6207,7 @@
 | `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | ✓ | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
 | `readings/2026-11-13-seven-theories-of-boundary-and-self-description.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-431f47` | 24,671 | Q3 M7 R1 S1 ERR3 | ✓ | 境界と自己記述の七理論——自己を「保存された実体」ではなく「何を閉じ、どこまで語れるか」で問い直す |
 | `readings/2026-11-13-ten-biological-windows-and-their-seams.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-aa926d` | 33,666 | Q3 M10 S1 ERR1 | ✓ | 生物学の十の窓と、その継ぎ目——境界・統一・継承・可塑性・寄せ集め |
+| `readings/2026-11-13-ten-biology-codes-kinship-and-maintenance.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-0d7479` | 32,771 | Q3 M10 S1 ERR1 | — | 生物学十資料——コード、親族、そして維持の精読報告 |
 | `readings/2026-11-13-ten-biology-sources-boundaries-clocks-and-resets.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-f556b8` +1 | 47,348 | Q3 M11 R5 S2 ERR3 | ✓ | 止まる線虫、老いない水母、乗り換えられる地図——生物学一次文献十編の全文精読と仮説衝突 |
 | `readings/2026-11-13-ten-biology-sources-cut-rewritten-and-entrusted.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-dd3200` | 30,668 | Q3 M16 MOT1 S1 | ✓ | 削られ、書き換えられ、外へ預けられる——自己の境界をめぐる生物学十資料 |
 | `readings/2026-11-13-ten-theories-of-boundary-membership-and-intrinsic-causation.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-2162b1` +1 | 22,612 | Q3 M14 S2 | — | 境界・所属・内在的因果——理論科学十資料の四層精読 |
