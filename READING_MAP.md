@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4082 件（research_excerpt 1855 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4092 件（research_excerpt 1865 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：732 回
+- **探究セッション（Sessions）**：734 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4082 件・詳細は map/3*.md）
+## 4. 対話素材（4092 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4630,6 +4630,16 @@
 | `MAT-20261112-263f4b` | research_excerpt | David G. Clark『Transient dynamics of associative memory models』（2025） |
 | `MAT-20261112-2a66d5` | research_excerpt | N. Balabanova, M. H. Duong, T. A. Han『Replicator-mutator dynamics for public goods games … |
 | `MAT-20261112-b2569e` | research_excerpt | Francisco Q. Simoes, Mehdi Dastani, This van Ommen『The Causal Information Bottleneck and … |
+| `MAT-20261113-539a1c` | research_excerpt | Spalding et al.『Dynamics of fat cell turnover in humans』（2008） |
+| `MAT-20261113-879890` | research_excerpt | Heinke et al.『Diploid hepatocytes drive physiological liver renewal in adult humans』（2022） |
+| `MAT-20261113-a56cca` | research_excerpt | Réu et al.『The Lifespan and Turnover of Microglia in the Human Brain』（2017） |
+| `MAT-20261113-4eae21` | research_excerpt | Ayyaz et al.『Single-cell transcriptomes of the regenerating intestine reveal a revival st… |
+| `MAT-20261113-3e04a0` | research_excerpt | Zhou et al.『Longitudinal profiling of the microbiome at four body sites reveals core stab… |
+| `MAT-20261113-dd10d4` | research_excerpt | Lundberg et al.『Human microbiota-transplanted C57BL/6 mice and offspring display reduced … |
+| `MAT-20261113-6d0cc0` | research_excerpt | Winters et al.『On the dynamic nature of the engram: evidence for circuit-level reorganiza… |
+| `MAT-20261113-110b18` | research_excerpt | Grella et al.『Reactivating hippocampal-mediated memories during reconsolidation to disrup… |
+| `MAT-20261113-539e68` | research_excerpt | Mitchell et al.『Clonal dynamics of haematopoiesis across the human lifespan』（2022） |
+| `MAT-20261113-276efa` | research_excerpt | Zink et al.『Clonal hematopoiesis, with and without candidate driver mutations, is common … |
 | `MAT-20261113-658a0d` | research_excerpt | Oswald T. Avery, Colin M. MacLeod, Maclyn McCarty『Avery・MacLeod・McCarty（1944）形質転換を起こす物質の化… |
 | `MAT-20261113-e6262f` | research_excerpt | J. E. Sulston, H. R. Horvitz『Sulston & Horvitz（1977）線虫の胚発生後の細胞系譜——どの細胞になるかは、どこから来たかでほぼ決まる… |
 | `MAT-20261113-0a4faa` | research_excerpt | C. B. Harley, A. B. Futcher, C. W. Greider『Harley・Futcher・Greider（1990）ヒト線維芽細胞のテロメアは加齢で短く… |
@@ -5587,6 +5597,8 @@
 | `SESSION-20261113-dd3200` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-f556b8` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-894a80` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-e804cd` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-022c63` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-1650a1` | 2026-11-13T00:00:00+09:00 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-734222` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-c801a5` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5675,9 +5687,9 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 100 | 236,600 |
-| `map/31-materials-research-18.md` | 100 | 260,863 |
-| `map/31-materials-research-19.md` | 55 | 121,151 |
+| `map/31-materials-research-17.md` | 100 | 226,765 |
+| `map/31-materials-research-18.md` | 100 | 258,287 |
+| `map/31-materials-research-19.md` | 65 | 148,054 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5707,7 +5719,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 32 | 24,446 |
+| `map/50-sessions-15.md` | 34 | 25,345 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5730,24 +5742,25 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 131,699 |
-| `map/60-notes-24.md` | 25 | 77,418 |
-| `map/60-notes-25.md` | 25 | 69,958 |
-| `map/60-notes-26.md` | 25 | 71,227 |
-| `map/60-notes-27.md` | 25 | 78,173 |
-| `map/60-notes-28.md` | 25 | 102,018 |
-| `map/60-notes-29.md` | 25 | 107,283 |
-| `map/60-notes-30.md` | 25 | 140,259 |
+| `map/60-notes-23.md` | 25 | 127,794 |
+| `map/60-notes-24.md` | 25 | 81,189 |
+| `map/60-notes-25.md` | 25 | 68,755 |
+| `map/60-notes-26.md` | 25 | 72,214 |
+| `map/60-notes-27.md` | 25 | 76,557 |
+| `map/60-notes-28.md` | 25 | 101,347 |
+| `map/60-notes-29.md` | 25 | 103,736 |
+| `map/60-notes-30.md` | 25 | 142,859 |
+| `map/60-notes-31.md` | 1 | 5,824 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・750本・28,001,695 B）
+## 8. 精読ノート索引（readings/・751本・28,017,414 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 728/750 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 729/751 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：750 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：92 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：751 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：93 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6309,6 +6322,7 @@
 | `readings/2026-11-12-where-the-unread-arm-is-kept.md` | 2026-11-12 | 2026-11-12 | `SESSION-20261112-d567e5` | 16,672 | Q3 S1 | ✓ | 読まなかった腕は、どこに置かれるか——699報告・676セッション・11,935行の実測 |
 | `readings/2026-11-13-activity-and-function-what-being-read-does.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-48efa5` | 31,313 | Q3 MOT1 S1 ERR1 | — | 活動と機能——読まれていることは、効いていることと同じか |
 | `readings/2026-11-13-biology-beyond-the-shelf-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-5311d1` +1 | 15,924 | Q3 M10 S2 | ✓ | 棚の外で記憶する身体——生物学の十資料が分けた自己の境界 |
+| `readings/2026-11-13-biology-renewal-selection-and-retrieval.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-e804cd` +1 | 7,487 | M10 S2 | — | 生物学の十資料——更新、選択、そして読み戻しの条件 |
 | `readings/2026-11-13-biology-ten-materials-close-reading.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-1b76fc` | 37,519 | Q3 M10 S1 ERR3 | ✓ | 生物学の十の窓——身体、共生、記憶をめぐる精読報告 |
 | `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | ✓ | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
 | `readings/2026-11-13-seven-theories-of-boundary-and-self-description.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-431f47` | 24,671 | Q3 M7 R1 S1 ERR3 | ✓ | 境界と自己記述の七理論——自己を「保存された実体」ではなく「何を閉じ、どこまで語れるか」で問い直す |

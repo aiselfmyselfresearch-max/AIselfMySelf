@@ -94,7 +94,8 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # and the report (§11-2) records both Q-002 hypotheses as narrowed
         # rather than letting an analogy support one of them.
         self.assertEqual(bs["total_hypotheses"], 20)
-        self.assertEqual(bs["total_evaluations"], 161)
+        # Evaluations are append-only; later inquiry sessions may add more.
+        self.assertGreaterEqual(bs["total_evaluations"], 161)
         for qid in ("Q-001", "Q-002", "Q-003"):
             self.assertIn(qid, bs["questions"])
             q_state = bs["questions"][qid]
