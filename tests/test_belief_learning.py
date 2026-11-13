@@ -112,7 +112,25 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # revival gate still reads 0 because these are narrows, not supports.
         # readings/2026-11-13-what-is-kept-when-the-carrier-dies.md §12-4
         # records that side effect and the first-draft error it exposed.
-        self.assertEqual(bs["total_hypotheses"], 22)
+        # SESSION-20261113-a5bf3b closes the reading of ten biology sources
+        # (materials MAT-20261113-82e46b..fe382d) with four evaluations
+        # (EVL-20261113-800cad, -0e1b45, -177c8e, -e31f6e; all narrows_scope)
+        # and one new hypothesis, HYP-20261113-17ea95 (lineage_op=refines,
+        # parent HYP-20261113-34b501), taking the live total to 21.
+        # EVL-20261113-177c8e first read as refutes_unconditioned on 34b501;
+        # the revival gate rejected it because two earlier supports already
+        # exist on that target, so the evaluation was rewritten as a narrow
+        # plus a spawned successor. Without the successor, 34b501's
+        # unconditioned form would still be standing after a source that
+        # shows action changing without any change to the decision centre
+        # (Hughes et al. 2011, brain and muscle uninvaded; the mandibular
+        # muscle atrophies and the ant simply cannot open its jaw).
+        # readings/2026-11-13-ten-biological-sources-on-substitution-and-holding.md
+        # §追記の範囲と未決 records the rewrite and the reasoning openly.
+        # origin/main added two hypotheses in shard 2026-11-13-b51b15accc7f
+        # (HYP-20261113-20fa8c, HYP-20261113-ccc1d8, SESSION-20261113-3b32da1ac5fc)
+        # before this branch merged, so the combined live total is 23.
+        self.assertEqual(bs["total_hypotheses"], 23)
         # Evaluations are append-only; later inquiry sessions may add more.
         self.assertGreaterEqual(bs["total_evaluations"], 161)
         for qid in ("Q-001", "Q-002", "Q-003"):

@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4172 件（research_excerpt 1945 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4182 件（research_excerpt 1955 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：747 回
+- **探究セッション（Sessions）**：749 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4172 件・詳細は map/3*.md）
+## 4. 対話素材（4182 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4660,6 +4660,16 @@
 | `MAT-20261113-169725` | research_excerpt | David C. Queller, Joan E. Strassmann『Queller & Strassmann（2009）社会を越えて——生物らしさは、高い協力と低い対立の二… |
 | `MAT-20261113-999aa0` | research_excerpt | Niels Lynnerup, Henrik Kjeldsen, Steffen Heegaard, Christina Jacobsen, Jan Heinemeier『Lyn… |
 | `MAT-20261113-121908` | research_excerpt | Seok Heo, Graham H. Diering, Chan Hyun Na, Raja Sekhar Nirujogi, Julia L. Bachman, Akhile… |
+| `MAT-20261113-82e46b` | research_excerpt | James R. Anderson『Anderson（2018）チンパンジーと死——死体の前で走り回る者、歯を草で掃除する者、三週間後に死ぬ者』（2018） |
+| `MAT-20261113-ca7b6d` | research_excerpt | Hiroyuki Ai, Ryuichi Okada, Midori Sakura, Thomas Wachtler, Hidetoshi Ikeno『Ai ほか（2019）ミツ… |
+| `MAT-20261113-d59cca` | research_excerpt | Ellen C. Garland, Jason Gedamke, Melinda L. Rekdahl, Michael J. Noad, Claire Garrigue, Ni… |
+| `MAT-20261113-20a85e` | research_excerpt | Francisco Ruiz-Raya, Manuel Soler『Ruiz-Raya & Soler（2020）托卵された巣の信号検出——自分の卵の型（テンプレート）と、混ざり… |
+| `MAT-20261113-bd694b` | research_excerpt | Philip R. Corlett『Corlett（2019）カプグラ妄想と二要因理論の綻び——見分けはつくが、なじみがない』（2019） |
+| `MAT-20261113-b67c70` | research_excerpt | David P. Hughes, Sandra B. Andersen, Nigel L. Hywel-Jones, Winanda Himaman, Johan Billen,… |
+| `MAT-20261113-03abe4` | research_excerpt | Adam S. Wilkins, Richard W. Wrangham, W. Tecumseh Fitch『Wilkins・Wrangham・Fitch（2014）家畜化症候… |
+| `MAT-20261113-e2da14` | research_excerpt | Barbora Trubenová, Reinmar Hager『Trubenová & Hager（2019）緑のひげと間接遺伝効果——同じ遺伝子でなくても、相関が高ければ利他… |
+| `MAT-20261113-bee037` | research_excerpt | Niels P. R. Anten, Bin J. W. Chen『Anten & Chen（2021）自分の家族を見分ける植物——根から出る滲出液と、菌根の網』（2021） |
+| `MAT-20261113-fe382d` | research_excerpt | Richard W. Hill『Hill（2026）深い低体温のあとの認知——八つの実験では記憶が残り、五つでは失われた』（2026） |
 | `MAT-20261113-cf357c` | research_excerpt | Sadia Saeed et al.『Saeed ほか（2014）訓練と寛容——残る標識と現在の活動』（2014） |
 | `MAT-20261113-952954` | research_excerpt | Shih-Chin Cheng et al.『Cheng ほか（2014）訓練免疫の代謝——記憶は燃料から独立か』（2014） |
 | `MAT-20261113-5e4d68` | research_excerpt | Jeremiah J. Faith et al.『Faith ほか（2013）腸内微生物の長期安定——何が同じなのか』（2013） |
@@ -5683,6 +5693,8 @@
 | `SESSION-20261113-6c8a47` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-03d44c` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-1b76fc` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-d409cd` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-a5bf3b` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-bb5da7` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-0598a2` | 2026-11-13T12:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-dd3200` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5780,10 +5792,10 @@
 | `map/31-materials-research-14.md` | 100 | 334,031 |
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 100 | 226,470 |
-| `map/31-materials-research-18.md` | 100 | 239,899 |
-| `map/31-materials-research-19.md` | 100 | 242,438 |
-| `map/31-materials-research-20.md` | 45 | 100,914 |
+| `map/31-materials-research-17.md` | 100 | 222,366 |
+| `map/31-materials-research-18.md` | 100 | 247,654 |
+| `map/31-materials-research-19.md` | 100 | 251,259 |
+| `map/31-materials-research-20.md` | 55 | 114,550 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5813,7 +5825,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 47 | 34,010 |
+| `map/50-sessions-15.md` | 49 | 35,345 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5836,25 +5848,25 @@
 | `map/60-notes-20.md` | 25 | 170,841 |
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 121,436 |
-| `map/60-notes-24.md` | 25 | 93,248 |
-| `map/60-notes-25.md` | 25 | 62,401 |
-| `map/60-notes-26.md` | 25 | 79,392 |
-| `map/60-notes-27.md` | 25 | 71,141 |
-| `map/60-notes-28.md` | 25 | 95,583 |
-| `map/60-notes-29.md` | 25 | 91,987 |
-| `map/60-notes-30.md` | 25 | 136,951 |
-| `map/60-notes-31.md` | 10 | 57,027 |
+| `map/60-notes-23.md` | 25 | 121,710 |
+| `map/60-notes-24.md` | 25 | 93,887 |
+| `map/60-notes-25.md` | 25 | 62,655 |
+| `map/60-notes-26.md` | 25 | 80,076 |
+| `map/60-notes-27.md` | 25 | 70,037 |
+| `map/60-notes-28.md` | 25 | 96,287 |
+| `map/60-notes-29.md` | 25 | 92,547 |
+| `map/60-notes-30.md` | 25 | 130,465 |
+| `map/60-notes-31.md` | 11 | 65,511 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・760本・28,414,446 B）
+## 8. 精読ノート索引（readings/・761本・28,460,612 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 736/760 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 737/761 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：760 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：97 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：761 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：98 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6423,6 +6435,7 @@
 | `readings/2026-11-13-compartment-boundary-and-relational-self.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-e72e9a` +2 | 21,333 | Q3 M10 S3 | — | 境界はどこにあり、何が通り、通ったものは混ざるのか——生物学10資料の精読報告 |
 | `readings/2026-11-13-seven-theoretical-sciences-on-variance-feedback-and-scale.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb5da7` | 6,670 | Q3 M7 S1 | ✓ | ばらつき・近縁・回路・物差し——理論科学七資料の精読 |
 | `readings/2026-11-13-seven-theories-of-boundary-and-self-description.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-431f47` | 24,671 | Q3 M7 R1 S1 ERR3 | ✓ | 境界と自己記述の七理論——自己を「保存された実体」ではなく「何を閉じ、どこまで語れるか」で問い直す |
+| `readings/2026-11-13-ten-biological-sources-on-substitution-and-holding.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-d409cd` +1 | 21,491 | Q3 M10 S2 | — | 代わりに置き換わるもの、抱えたまま休むもの——生物学10資料の精読 |
 | `readings/2026-11-13-ten-biological-views-of-continuity.md` | — | 2026-11-13 | `SESSION-20261113-c801a5` +1 | 7,512 | M10 S2 | — | 保たれるものは、同じ速度で保たれない——生物学10資料の精読 |
 | `readings/2026-11-13-ten-biological-windows-and-their-seams.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-aa926d` | 33,666 | Q3 M10 S1 ERR1 | ✓ | 生物学の十の窓と、その継ぎ目——境界・統一・継承・可塑性・寄せ集め |
 | `readings/2026-11-13-ten-biology-budgets-drift-and-scaffolds.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-2e9501` +1 | 34,717 | Q3 M12 S2 | — | 十篇の生物学原典の精読——固定予算、漂流する担い手、消去と足場の記憶 |
