@@ -46,6 +46,8 @@
 
 `origin/main`（`0859eba6`）を取り込んだ時点で、`state/materials.jsonl` と `state/materials.d/*.jsonl` を合わせて総行数 **4,015行**（うち空行3行、実データ **4,012行**）あった。実データ全行の `material_id`／年／標題／著者を小文字化した索引を作り、候補の著者名・原題・邦題・主題語を機械照合した。**新規10件と既存4,012行の重複は0件**である。追加後の実測は rows 4,022 / unique 4,022 / 重複ID 0（`state/materials.d/` の一部シャードに空行が3行ある）。
 
+**マージ後の再点検**。本ブランチを `origin/main`（PR #725 まで）と統合した時点で素材台帳は総行数 **4,035行／実データ 4,032行**になった。PR #725 が同日追加した10件（プラナリア再生の筋細胞指令、炎症記憶による表皮幹細胞の感作、腸の炎症記憶、胎児マイクロキメリズム、ゼブラフィッシュ迷走神経の位置記憶、体細胞モザイクのクローン分布、CRISPR座の拡張、*C. elegans* の small RNA による回避学習の世代間伝達、レチノイン酸分解と位置同一性、AIRE と自己耐性）に対し、標題正規化と著者+年の両索引で再照合した結果、**本回10件との衝突は0件**である。主題は隣接している（獲得形質の継承、記憶の所在）が、同一文献は無い。台帳の `material_id` は 4,032 件すべて一意（重複ID 0）。
+
 選定過程で落とした候補と、その理由：
 
 | 落とした候補 | 理由 |
@@ -869,6 +871,25 @@ Frankland & Bontempi 2005 Box 1：システム統合は、昆虫（ショウジ�
 
 第三に、`Q-003` は動かそうとしても動かない。a35ee5 が 98.5% を占め、事後エントロピーは 0.143 bits。ここに評価を足すのは、分布を変えるためではなく記録を残すためだけになる。§12 で a35ee5 への新規支持を足さなかったのはこのためであり、その判断は再生成後の数値を見ても変わらない。
 
+**マージ後に数値が変わった（重要）**
+
+上表は `0859eba6` の上に本セッションの6件だけを載せて測った値である。作業中に PR #725 が `main` に入り、`EVL-20261113-9dfeb9`／`-584c93`／`-3675e0` の3件と10件の素材が追加された。統合後に `belief_state.py --write-map` を再実行した実測は次のとおりで、**上表のいくつかの結論は維持されない**。
+
+| 指標 | 上表（マージ前測定） | マージ後の live 値 |
+| :--- | :---: | :---: |
+| 評価イベント総数 | 132 | **135**（129 → 135 が本セッションの増分） |
+| 情報利得の優先順位 | Q-001 → Q-002 → Q-003 | **Q-002 → Q-001 → Q-003** |
+| `Q-001` 事後エントロピー / D_KL | 1.588 / 0.734 bits | **1.345 / 0.978 bits** |
+| `Q-001` 最大 EIG ペア | 550bcf vs 46456a (0.0567) | **550bcf vs 46456a (0.0756)** |
+| `Q-001` 事後確率（上位3） | 550bcf 41.2 / 46456a 38.9 / 5dc940 18.8 % | **550bcf 48.0 / 46456a 45.3 / 5dc940 5.5 %** |
+| `Q-002` 事後エントロピー / D_KL | 1.218 / 1.104 bits | **1.837 / 0.485 bits** |
+| `Q-002` 事後確率（上位3） | 16929d 73.7 / afd1a5 12.5 / ba8bff 11.2 % | **16929d 41.3 / afd1a5 27.8 / ba8bff 25.0 %** |
+| `Q-003` 事後エントロピー | 0.143 bits | **0.520 bits**（a35ee5 **92.5%**、be95bc 4.0%） |
+
+したがって、上の「第二の判断」——**1件の `narrows_scope` が全体の優先順位を Q-001 に移した**——は、**マージ後の live 状態では成立していない**。優先順位は Q-002 に戻り、`Q-002` の 16929d は 73.7% ではなく 41.3% である。PR #725 の3件が同じ仮説群に質量を戻したためと読める。これは、私の「移動量が証拠の重さに比べて過大だ」という第一の判断を**強める**方向に効いている：分布は、私が見ていた数値のうちのいくつかが別のセッションの3行で書き換わるほど敏感である。1行あたりの影響がこれほど大きい状態を「信念」と呼ぶのは強く、**その場かぎりの集計**と呼ぶほうが正確だろう。第一の判断（ドメイン差を重みづけが区別しない）と第三の判断（`Q-003` は動かそうとしても動かない——ただし a35ee5 は 98.5% → 92.5% へ下がり、be95bc が 4.0% へ上がったので、「動かない」も厳密には維持されない）は、この訂正を込めて引き継ぐ。
+
+数値の扱いについての教訓：**同日に並行セッションが走るこのリポジトリでは、`BELIEF_MAP.md` の数値を報告本文に固定値として書くことは、書いた瞬間に古くなりうる**。上表を消さずに残すのは、私の測定が実際に何を見ていたかを後の読者が検証できるようにするためである（消せば「最初から 135 だった」ように読めてしまう）。
+
 `python3 tools/map_build.py` と `python3 tools/map_build.py --sync-readme` で `READING_MAP.md`・`README.md` を再生成した。本報告は `NOTE-20261113-39e5fb` として `notes` に登録し、`note_index.py --register` が生成した最小行 `NOTE-20261113-498466` を `supersedes` で明示的に上書きした。
 
 ---
@@ -952,25 +973,28 @@ Frankland & Bontempi 2005 Box 1：システム統合は、昆虫（ショウジ�
 
 **引き継ぐ債務（本セッションが作ったものではない）**
 
-`origin/main`（`0859eba6`）を worktree に展開して実測したところ、層2ゲートは**本回の変更前から29ペア未充足で失敗していた**。29ペアはすべて `SESSION-20261113-1650a1`（PR #724）の `context_material_ids` であり、手書きの読みも `未読の選択:` の記述も無い。したがって `tests/test_read_log.py` の2つの強制テスト（`test_since_reports_but_enforce_gates`、`test_future_session_id_date_is_not_eligible`）は main で既に失敗しており、本回の追加後も同じ29ペアのままである（本セッションの寄与は0）。
+`origin/main`（`0859eba6`）を worktree に展開して実測したところ、層2ゲートは**本回の変更前から29ペア未充足で失敗していた**。29ペアはすべて `SESSION-20261113-1650a1`（PR #724）の `context_material_ids` であり、手書きの読みも `未読の選択:` の記述も無い。本ブランチ単独では、この29ペアのために `tests/test_read_log.py` の2つの強制テスト（`test_since_reports_but_enforce_gates`、`test_future_session_id_date_is_not_eligible`）が失敗していた。`origin/main` 側の `84bcc45` が期待値を更新していたため、統合後はテストは通る。しかし `--enforce` の rc=1 と29ペアという**実測は変わらない**——テストが通るようになったのはゲートが満たされたからではなく、テスト側の期待が現状に合わせられたからである。この区別を残しておく。
 
 他セッションの未充足ペアについて、私が代わりに読みを書いたり `未読の選択:` を追記したりはしなかった。前者は読んでいないものを他セッション名義で「読んだ」と書くことになり、後者は他セッションの記録行の書き換えになる。どちらも `prompts/start.md` と `docs/parallel-work.md` の追記専用原則に反する。**この29ペアは PR #724 のセッション（またはそれを引き継ぐセッション）の債務として残す。**
 
 **本PRで触ったテスト**
 
-`tests/test_belief_learning.py` の `total_evaluations` の期待値を 126 → 132 に更新した（本回の6件の `EVL-*` 行による実測値）。既存のコメント様式に従い、`SESSION-20261113-0598a2` が6件の primary_source_collision（supports 2件／narrows_scope 4件）を足し、新しい仮説は追加しなかったことを注記した。スキーマ（`schema/*.json`）とツール（`tools/*.py`）には触れていない。
+`tests/test_belief_learning.py` の `total_evaluations` の期待値を更新した。単独ブランチでは 126 → 132 だったが、`origin/main`（PR #725）を取り込んだ結果、同ファイルは 129 を期待するようになっており、**衝突を解消して 135**（= 129 + 本セッションの6件）とした。既存のコメント様式に従い、`SESSION-20261113-0598a2` が6件の primary_source_collision（supports 2件／narrows_scope 4件）を足し、新しい仮説は追加しなかったことを注記した。スキーマ（`schema/*.json`）とツール（`tools/*.py`）には触れていない。`tests/test_read_log.py` は `origin/main` 側の変更をそのまま採用した（私は触っていない）。
 
 **検証スイートの実測**（本PRのコミット前）
 
-| 検査 | 結果 |
+| 検査 | 結果（`origin/main` = `05edcec` 統合後） |
 | :--- | :--- |
-| `tools/validate_seed.py` | PASS（questions=437, motifs=59, materials=4022, fragments=247, relations=6986, sessions=722, read_log=12658, notes=774, hypotheses=20, evaluations=132） |
-| `tools/append_only_check.py` | PASS（`origin/main` の26,386行がバイト単位で保持） |
+| `tools/validate_seed.py` | PASS（questions=437, motifs=59, **materials=4032**, fragments=247, relations=6986, sessions=724, **read_log=12668**, editorial_decisions=126, notes=775, hypotheses=20, **evaluations=135**） |
+| `tools/append_only_check.py` | PASS（マージ基底 `0859eba6` の26,386行がバイト単位で保持） |
 | `tools/inspect_inquiry.py --check-map` | PASS（READING_MAP.md は state/*.jsonl と同期） |
-| `tools/belief_state.py --check-map` | PASS（BELIEF_MAP.md 32,676 bytes） |
-| `tools/note_index.py --check` | PASS（744 notes、READING_MAP §8 は最新） |
-| `tools/read_log_backfill.py --check` | PASS（層1: 6,319/6,319 ペア）。層2（参考値）: 全体 64.5%、2026-11-10以降 96.1% |
+| `tools/belief_state.py --check-map` | PASS（BELIEF_MAP.md 32,673 bytes） |
+| `tools/note_index.py --check` | PASS（745 notes、READING_MAP §8 は最新） |
+| `tools/read_log_backfill.py --check` | PASS（層1: 6,329/6,329 ペア）。層2（参考値）: 全体 64.5% = 4,084/6,329、2026-11-10以降 96.2% = 725/754 |
+| `tools/read_log_backfill.py --check --since 2026-11-10 --enforce` | rc=1（29ペア未充足）。**すべて `SESSION-20261113-1650a1` 由来で、本セッションの寄与は0件**（`grep -c SESSION-20261113-0598a2` = 0） |
 | `tools/date_axis.py --enforce-shards` | PASS（前倒しシャード0本、today=2026-11-13） |
-| `tools/learning_metrics.py --check` | PASS（非確証評価率 49.2% = 65/132、対立比較率 100.0%、棄却済み仮説の復活 0件、readings 配線率 100.0%） |
+| `tools/learning_metrics.py --check` | PASS（非確証評価率 **50.4% = 68/135**、対立比較率 100.0% = 135/135、棄却済み仮説の復活 0件、readings 配線率 100.0% = 745/745、D_KL平均 1.4213 bits、第1世代+質量 97.6%） |
 | `tools/size_budget.py --strict` | PASS（全項目がソフトリミット内） |
-| `python3 -m unittest discover -s tests` | 545件中 **2件失敗**。いずれも上記の層2ゲート（PR #724 の29ペア）による既存の失敗であり、本セッションの寄与は0件 |
+| `python3 -m unittest discover -s tests` | **Ran 545 tests — OK**（rc=0） |
+
+**unittest について**。マージ前は545件中2件（`test_read_log.py` の `test_since_reports_but_enforce_gates` と `test_future_session_id_date_is_not_eligible`）が失敗していた。原因は上記の層2ゲート（PR #724 の29ペア）である。`origin/main` 側の `84bcc45`「Update ledger regression expectations」がこの期待値を吸収しており、統合後は**545件すべてが通る**。つまり失敗は私の追加が原因ではなく、`main` 側の更新で解消した。**負荷依存のフレーク（記録）**。全545件を通しで走らせた5回のうち2回、`test_server.ServerTests.test_concurrent_reads_during_atomic_rewrites` が `TimeoutError('timed out')` を並べて失敗した。残り3回（うち1回は統合後の完全実行）は `Ran 545 tests — OK` であり、**単体で3回連続実行すると3回とも OK**（各約11秒）である。このテストはリポジトリ全体を一時ディレクトリへ複製し、ローカルHTTPサーバを立て、書き込みスレッドと読み取りスレッドを並走させながら `/api/state` を既定10秒のタイムアウトで叩く。したがって失敗は (a) サンドボックスのCPU負荷（545件を直列に走らせた直後）と (b) `/api/state` が返す台帳の大きさ——素材4,032行・read_log 12,668行——の両方に敏感である。(b) は毎セッション増えるので、**このフレークの発生確率は台帳の成長とともに上がる**。私の10件が確率を上げた可能性は否定しない。ただし本セッションの行が原因で決定論的に失敗するものではなく（単体では通る）、テスト側の変更は台帳追加と同じPRに混ぜない原則に従い、ここでは**触らずに記録だけ残す**。対処するなら `timeout=10.0` の引き上げか、`copy_repo` の対象を縮小する方向だろう。
