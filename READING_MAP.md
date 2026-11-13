@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4102 件（research_excerpt 1875 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4112 件（research_excerpt 1885 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：735 回
+- **探究セッション（Sessions）**：738 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4102 件・詳細は map/3*.md）
+## 4. 対話素材（4112 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4737,6 +4737,16 @@
 | `MAT-20261113-704a53` | research_excerpt | Gregory J. Chaitin『On the Length of Programs for Computing Finite Binary Sequences』（1966） |
 | `MAT-20261113-0d79e2` | research_excerpt | Bruno de Finetti『La prévision : ses lois logiques, ses sources subjectives』（1937） |
 | `MAT-20261113-ed9163` | research_excerpt | Simon Kochen, Ernst P. Specker『The Problem of Hidden Variables in Quantum Mechanics』（1967） |
+| `MAT-20261113-4d4277` | research_excerpt | J. B. Gurdon『The Developmental Capacity of Nuclei taken from Intestinal Epithelium Cells … |
+| `MAT-20261113-78304b` | research_excerpt | Kazutoshi Takahashi, Shinya Yamanaka『Induction of pluripotent stem cells from mouse embry… |
+| `MAT-20261113-0c0eab` | research_excerpt | Mario F. Fraga, Esteban Ballestar, Maria F. Paz, Santiago Ropero, Fernando Setién, Maria … |
+| `MAT-20261113-f1af1b` | research_excerpt | K. Kim, A. Doi, B. Wen, K. Ng, R. Zhao, P. Cahan, J. Kim, M. J. Aryee, H. Ji, L. I. R. Eh… |
+| `MAT-20261113-4fa949` | research_excerpt | Eva Bianconi, Allison Piovesan, Federica Facchin, Alina Beraudi, Raffaella Casadei, Flavi… |
+| `MAT-20261113-f67b7c` | research_excerpt | Christopher C. Goodnow, Jeffrey Crosbie, S. Adelstein, T. B. Lavoie, S. J. Smith-Gill, R.… |
+| `MAT-20261113-e5a722` | research_excerpt | Charles A. Janeway Jr.『The immune system evolved to discriminate infectious nonself from … |
+| `MAT-20261113-64f8f0` | research_excerpt | Polly Matzinger『Tolerance, danger, and the extended family』（1994） |
+| `MAT-20261113-f2b008` | research_excerpt | Colleen M. Lau, Nicholas M. Adams, Clair D. Geary, Orr-El Weizman, Moritz Rapp, Yuri Prit… |
+| `MAT-20261113-89f30e` | research_excerpt | Roger L. Redondo, Joshua Kim, Autumn L. Arons, Steve Ramirez, Xu Liu, Susumu Tonegawa『Bid… |
 | `MAT-20261113-f7d050` | research_excerpt | R. A. Fisher『フィッシャー（1930）『自然選択の遺伝学的理論』——適応度の増加率は、その時点の遺伝的分散に等しい』（1930） |
 | `MAT-20261113-ed9b54` | research_excerpt | W. D. Hamilton『ハミルトン（1964）『社会的行動の遺伝的進化』——利他は、近縁度で割引かれた便益が費用を超えるとき広がる』（1964） |
 | `MAT-20261113-55179c` | research_excerpt | Vito Volterra『ヴォルテラ（1926）捕食者–被食者方程式——二つの集団は、互いの増減を介してのみ周期を保つ』（1926） |
@@ -5600,6 +5610,9 @@
 | `SESSION-20261113-431f47` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-2162b1` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-ef19c0` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-8d0d7e` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-981559` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-f122ae` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-6c8a47` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-03d44c` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-1b76fc` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5699,8 +5712,8 @@
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
 | `map/31-materials-research-17.md` | 100 | 225,259 |
-| `map/31-materials-research-18.md` | 100 | 260,722 |
-| `map/31-materials-research-19.md` | 75 | 169,884 |
+| `map/31-materials-research-18.md` | 100 | 251,039 |
+| `map/31-materials-research-19.md` | 85 | 199,349 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5730,7 +5743,7 @@
 | `map/50-sessions-12.md` | 50 | 42,341 |
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
-| `map/50-sessions-15.md` | 35 | 26,034 |
+| `map/50-sessions-15.md` | 38 | 27,773 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5754,24 +5767,24 @@
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 127,794 |
-| `map/60-notes-24.md` | 25 | 81,140 |
-| `map/60-notes-25.md` | 25 | 68,186 |
-| `map/60-notes-26.md` | 25 | 72,296 |
-| `map/60-notes-27.md` | 25 | 74,785 |
-| `map/60-notes-28.md` | 25 | 101,509 |
-| `map/60-notes-29.md` | 25 | 102,935 |
-| `map/60-notes-30.md` | 25 | 142,038 |
-| `map/60-notes-31.md` | 2 | 11,886 |
+| `map/60-notes-24.md` | 25 | 81,954 |
+| `map/60-notes-25.md` | 25 | 67,463 |
+| `map/60-notes-26.md` | 25 | 71,551 |
+| `map/60-notes-27.md` | 25 | 74,218 |
+| `map/60-notes-28.md` | 25 | 103,820 |
+| `map/60-notes-29.md` | 25 | 100,062 |
+| `map/60-notes-30.md` | 25 | 139,780 |
+| `map/60-notes-31.md` | 3 | 19,259 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・752本・28,058,356 B）
+## 8. 精読ノート索引（readings/・753本・28,087,933 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 730/752 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 731/753 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：752 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：93 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：753 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：94 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6352,6 +6365,7 @@
 | `readings/2026-11-13-ten-theories-of-the-shape-of-a-limit.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-21d8c8` +1 | 22,335 | Q3 M12 S2 ERR1 | ✓ | 限界の形——十の理論科学が、保存の代わりに置いたもの |
 | `readings/2026-11-13-the-class-of-allowed-transformations.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-494ed9` +1 | 32,414 | Q3 M16 S2 | — | 許された変換のクラス——七つの理論科学と、「戻れない」の意味を分ける |
 | `readings/2026-11-13-the-record-leaves-the-body-but-not-the-body-behind.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-ef19c0` +1 | 29,624 | Q3 M13 S2 | — | 記録は体の外へ出られるが、体の代わりにはならない——生物学10資料の精読 |
+| `readings/2026-11-13-the-self-that-is-rewritten-in-cells.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-8d0d7e` +2 | 12,628 | Q3 M10 S3 | — | 細胞の自己はどこまで書き換えられるか——生物学資料十篇の精読 |
 | `readings/2026-11-13-theoretical-science-seven-sources.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-03d44c` +1 | 15,332 | Q3 M7 S2 | ✓ | 理論科学七資料の四層精読と横断報告（2026-11-13） |
 | `readings/2026-11-13-third-water-and-five-losses.md` | 2026-10-26 | 2026-11-13 | `SESSION-20261113-c36944` +6 | 20,309 | Q5 F8 M21 MOT5 S7 ERR3 | ✓ | 三度目の水と、五つの失せもの——翻訳×食の初架橋と、番号の食い違う二つの荷札（SESSION-20261113-c36… |
 | `readings/2026-11-13-traces-responses-and-units-of-self.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-b4b40c` | 17,259 | Q1 M11 S1 | — | 痕跡・応答・個体を分ける——生物学10資料の精読報告 |
