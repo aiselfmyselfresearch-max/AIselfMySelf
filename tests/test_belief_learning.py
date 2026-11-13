@@ -103,6 +103,15 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # 2026-11-13 measurement that dual-parent splits over-accumulate
         # boost transfer.  The count therefore moves from 20 to 22; the
         # evaluation bound stays a lower bound.
+        # SESSION-20261113-910748 adds six biology evaluations from ten
+        # further sources (EVL-20261113-88e210, -d441c6, -80e646, -1e7c10,
+        # -155f42, -da1b05; five narrows_scope / one supports) and no new
+        # hypotheses, taking the live total to 182. Narrowing both leading
+        # Q-002 hypotheses at once moved mass to the refuted Gen-0 ones
+        # (dc25dc 9.8% -> 25.3%, 3bfb7e 5.7% -> 14.8%); the dead-hypothesis
+        # revival gate still reads 0 because these are narrows, not supports.
+        # readings/2026-11-13-what-is-kept-when-the-carrier-dies.md §12-4
+        # records that side effect and the first-draft error it exposed.
         self.assertEqual(bs["total_hypotheses"], 22)
         # Evaluations are append-only; later inquiry sessions may add more.
         self.assertGreaterEqual(bs["total_evaluations"], 161)
