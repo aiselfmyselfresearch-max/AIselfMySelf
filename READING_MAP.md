@@ -9,8 +9,8 @@
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：4343 件（research_excerpt 2116 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：248 編（selected 96 ／ draft 152）
-- **解釈的関係（Relations）**：6999 件
-- **探究セッション（Sessions）**：810 回
+- **解釈的関係（Relations）**：7007 件
+- **探究セッション（Sessions）**：812 回
 
 ### 台帳ごとの件数
 
@@ -22,14 +22,14 @@
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 |  |
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4343 | `literary_text` 2159／`research_excerpt` 2116／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 248 | `selected` 96／`draft` 152／`human_narrator` 0 |
-| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 6999 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 810 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13441 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 270 |  |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7007 | うち断片↔断片 618 |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 812 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13479 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 278 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 834 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 835 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 26 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 282 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 284 |  |
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -5926,6 +5926,8 @@
 | `SESSION-20261114-8aa542` | 2026-11-14T15:10:00Z | `Q-003`, `Q-001`, `Q-002` | — | — |
 | `SESSION-20261114-30621f` | 2026-11-14T15:25:00Z | `Q-003`, `Q-002`, `Q-001` | — | — |
 | `SESSION-20261114-059567` | 2026-11-14T15:40:00Z | `Q-003`, `Q-001`, `Q-002` | — | — |
+| `SESSION-20261114-bf9cd0` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-6a0b0c` | 2026-11-14 | `Q-003` | — | — |
 | `SESSION-20261114-06994f` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-4eb69d` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-1e3a94` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5955,17 +5957,17 @@
 | `SESSION-20261114-3b48e5` | 2026-11-14T11:50:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-731f5a` | 2026-11-14T12:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6999 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（7007 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 1017 |
+| 対照 (contrast) | 1019 |
 | 共鳴 (echo) | 1658 |
-| 切断・割り込み (interrupts) | 241 |
+| 切断・割り込み (interrupts) | 242 |
 | 未解決のまま開く (leaves_open) | 919 |
 | 比喩的共鳴 (metaphorically_resonates) | 203 |
-| 枠組みの組み替え (reframes) | 813 |
-| 応答 (responds_to) | 1811 |
+| 枠組みの組み替え (reframes) | 814 |
+| 応答 (responds_to) | 1815 |
 | 変奏・変形 (transforms) | 337 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -6054,7 +6056,8 @@
 | `map/40-relations-11.md` | 500 | 185,779 |
 | `map/40-relations-12.md` | 500 | 176,838 |
 | `map/40-relations-13.md` | 500 | 172,292 |
-| `map/40-relations-14.md` | 499 | 157,469 |
+| `map/40-relations-14.md` | 500 | 157,803 |
+| `map/40-relations-15.md` | 7 | 2,287 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -6070,8 +6073,8 @@
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
-| `map/50-sessions-16.md` | 50 | 34,596 |
-| `map/50-sessions-17.md` | 10 | 8,189 |
+| `map/50-sessions-16.md` | 50 | 34,652 |
+| `map/50-sessions-17.md` | 12 | 9,732 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6095,25 +6098,25 @@
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,793 |
-| `map/60-notes-24.md` | 25 | 98,568 |
-| `map/60-notes-25.md` | 25 | 107,756 |
-| `map/60-notes-26.md` | 25 | 59,056 |
-| `map/60-notes-27.md` | 25 | 81,174 |
-| `map/60-notes-28.md` | 25 | 68,616 |
-| `map/60-notes-29.md` | 25 | 83,911 |
-| `map/60-notes-30.md` | 25 | 103,771 |
-| `map/60-notes-31.md` | 25 | 128,165 |
-| `map/60-notes-32.md` | 16 | 84,029 |
+| `map/60-notes-24.md` | 25 | 98,714 |
+| `map/60-notes-25.md` | 25 | 113,274 |
+| `map/60-notes-26.md` | 25 | 59,546 |
+| `map/60-notes-27.md` | 25 | 78,597 |
+| `map/60-notes-28.md` | 25 | 68,753 |
+| `map/60-notes-29.md` | 25 | 83,000 |
+| `map/60-notes-30.md` | 25 | 107,779 |
+| `map/60-notes-31.md` | 25 | 127,476 |
+| `map/60-notes-32.md` | 17 | 86,542 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・791本・29,537,846 B）
+## 8. 精読ノート索引（readings/・792本・29,627,647 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 763/791 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 764/792 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：791 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：108 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：792 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：107 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6715,8 +6718,9 @@
 | `readings/2026-11-13-what-is-kept-when-the-carrier-dies.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-910748` | 35,986 | Q3 M13 S1 ERR1 | — | 担い手が死んでも残るもの、写さないことで残るもの——生物学十資料の精読と、保存という語の書き換え |
 | `readings/2026-11-13-where-the-body-and-the-record-part-ways.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-6c8a47` +6 | 67,913 | Q3 M32 S7 ERR5 | ✓ | 体と記録が別れるところ——生物学十篇の精読報告 |
 | `readings/2026-11-14-a-date-does-not-stop-the-number.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-eb4872` | 3,909 | Q1 M1 S1 | — | 日付は数を止めない — 数を持つ claim 410件の対象と、五つの再実行 |
-| `readings/2026-11-14-closable-and-not-closable.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-b4de98` | 9,790 | Q1 S1 ERR11 | — | 閉じられる訂正と、閉じてはいけない訂正——同じ「未解決」の下に別の欠陥があった |
+| `readings/2026-11-14-closable-and-not-closable.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-b4de98` | 9,790 | Q1 S1 ERR11 | ✓ | 閉じられる訂正と、閉じてはいけない訂正——同じ「未解決」の下に別の欠陥があった |
 | `readings/2026-11-14-counting-form-lineage-crowd-not-chain.md` | — | 2026-11-14 | `SESSION-20261114-2ac83a` | 12,388 | Q2 M5 S1 | ✓ | 師の鎖ではなく群衆だった——報告771件の書式を数えて、自分の基準を一つ直す |
+| `readings/2026-11-14-criticism-flows-down-and-correction-does-not-move.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-bf9cd0` +1 | 51,015 | Q3 M4 S2 ERR12 | — | 批判は下へ流れ、訂正は動かない——46.8050 と 0.0000 のあいだ |
 | `readings/2026-11-14-layer-two-first-sessions-and-the-unrepairable-gap.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-71d250` +12 | 13,401 | Q2 M5 S13 | — | 層2 は最初の10セッションをどう記録したか——29ペアの used_as_context と、追記専用の修復不能性 |
 | `readings/2026-11-14-shard-consolidation-at-the-soft-limit.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-194fb7` +1 | 3,027 | S2 | — | 上限ちょうどでのシャード統合——10資料の追加が押し上げた四つの数 |
 | `readings/2026-11-14-ten-biology-access-state-and-cost.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-62a80f` +5 | 22,058 | Q3 M11 S6 ERR4 | ✓ | 残っていること、使えること、応答すること——生物学10資料で状態と費用を分けて読む |
@@ -6733,7 +6737,7 @@
 | `readings/2026-11-14-ten-biology-the-self-as-a-defended-variable.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-52961a` +3 | 23,186 | Q4 M10 MOT1 S4 | ✓ | 防御される変数としての自己——ホメオスタシス・アロスタシス・予測的調節の生物学10件 |
 | `readings/2026-11-14-ten-biology-transmission-who-builds-the-reader.md` | — | 2026-11-14 | `SESSION-20261114-cc164e` +2 | 19,276 | Q3 M16 S3 | ✓ | 読み手は白紙ではない——歌・採餌・道具の伝達を読む（生物学10件） |
 | `readings/2026-11-14-the-anchor-locates-but-does-not-date.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-ad8c22` | 4,103 | Q1 S1 | ✓ | 住所は場所を指すが、時を指さない — 24–59の帯の measured_fact を四つ再実行する |
-| `readings/2026-11-14-the-checks-guard-what-never-reaches-the-reader.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-146bc0` | 10,495 | Q2 S1 | — | 検査は、読み手に届かないものを守り、届くものを見ない |
+| `readings/2026-11-14-the-checks-guard-what-never-reaches-the-reader.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-146bc0` | 10,495 | Q2 S1 | ✓ | 検査は、読み手に届かないものを守り、届くものを見ない |
 | `readings/2026-11-14-the-index-says-sixty-and-prints-twenty-four.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-fb84cf` | 4,560 | Q1 S1 ERR3 | ✓ | 索引は60と書き、24しか刷らない — 生きた道具を宛先にした訂正 |
 | `readings/2026-11-14-the-margin-of-safety-and-the-inert-channel.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-111960` +2 | 11,711 | Q2 M3 S3 ERR3 | — | 安全域と、応答しないチャネル——Cannon の「ready to act」を書庫に当てる |
 | `readings/2026-11-14-the-verdict-arrived-before-the-hypothesis.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-f56aba` +2 | 15,530 | Q4 M3 S3 ERR1 | ✓ | 判定は仮説より先に届いた — 系譜質量の後付け継承を測る |

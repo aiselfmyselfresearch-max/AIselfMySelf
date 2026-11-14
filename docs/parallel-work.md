@@ -170,6 +170,31 @@ python3 tools/inspect_inquiry.py --check-map
 
 代わりに**同じ `2026-11-13` の未参照・自己所在地なし・オープン PR 非接触の隣接ペア**（3行を2行の末尾へ生バイト連結、元ファイルを同一コミットで削除）を吸収し、136→135 に戻した。吸収前後で `sessions` 和集合 **2,782,516 B の sha256 が完全一致**（増減 0 B）、`READING_MAP.md` の SHA-256 も不変。`soft_shards` の引上げ0件、保守コミットは探究の内容変更と分離。
 
+**2026-11-14（追記3）：台帳シャード自体が内容衝突した二回の合流。順序は規則ではなく、行の存在と字句が規則である（実測）。**
+
+`SESSION-20261114-bf9cd0`・`SESSION-20261114-cc8892`（訂正録8行・評価2行・読書行38行・ノート1行・関係8行・セッション2行・報告1本、新規シャード0本）を記帳した回。追記1・追記2が扱ったのは**ファイル数の超過**だった。今回はそれとは別に、**同じシャードの同じ末尾へ上流も自分も追記していた**ため、`git merge` が台帳行そのものに衝突マーカーを入れた。二回合流して二回とも起きた（一度目は `read_log.d`、二度目は `notes.d`）。
+
+三方の行数を数えた実測：
+
+| 版 | `read_log.d`（一度目） | `notes.d`（二度目） |
+|---|---:|---:|
+| マージ基底 | 20 | 7 |
+| 自ブランチ | 58（基底 ＋ 自分38） | 8（基底 ＋ 自分1） |
+| `origin/main` | 40（基底 ＋ 上流20） | 8（基底 ＋ 上流1） |
+| 解決後 | **78** | **9** |
+
+解決は**集合和**である。`tools/append_only_check.py` の docstring が規則を書いている——「the **multiset of lines** at the base must be contained in the multiset of lines now. A line may move between files of the same collection. It may not change and it may not disappear.」**規則は行の存在と字句であって、行の並び順ではない。** したがって基底の行を先頭に、自側の追記、上流側の追記の順に並べれば両側の多重集合を包含する。確認した三点：(a) 自側の版の全行が解決後に多重集合として含まれる、(b) 上流側の版の全行が含まれる、(c) ID に重複が無い（`read_id`／`note_id`）。解決後は `read_log` 78行・35,059 B・sha256 `9873440089066497…`、`notes` 9行・26,621 B・sha256 `c61b0b0a693f3fcc…`。**`append_only_check.py` も `date_axis.py --enforce-shards` も赤くならなかった。**
+
+処方の順序：(1) マーカーで切った三区分が「基底＝共通部」「自側＝基底＋自分の追記」「上流側＝基底＋上流の追記」と一致することを `git show <rev>:<path>` で確認する（一致しなければ単純な集合和では解けない）。(2) 基底＋自側追記＋上流側追記の順に書き直す。(3) 上の三点を検証する。(4) `READING_MAP.md`・`BELIEF_MAP.md` は手でマーカーを消さず `map_build.py` と `belief_state.py --write-map` の再生成だけで解決する。
+
+**統合は二回とも0本、`soft_shards` の引上げも0件だった。** 上流が素材10件を新規シャードではなく既存シャードへの追記で入れており（追記2までの回が新規シャードを作っていたのとは違う）、一度目の保守コミット「main 合流で soft を超えた4コレクションを手順8-2で戻す」が先に統合を済ませていたからである。**合流が常に統合を要するわけではない。** `materials.d` 120/120・`read_log.d` 130/130・`notes.d` 130/130・`sessions.d` 135/135 はいずれも二回の合流を通して不変だった。
+
+**もう一つの実測。** 層2のゲート（`read_log_backfill.py --check --since 2026-11-10 --enforce`）は `used_as_context` 行では満たされない。8素材を `context_material_ids` に置いて接触行8行を転記しただけでは、未達の対が 29 → **37** へ増えた（rc=1）。実際に読んで手書きの読書行8行（`quoted` 2・`summarized` 6）を追加して 29 に戻した。**素材を新規に収蔵しない回でも、`context_material_ids` に素材を置けば層2は発動する。** 分母は増えない（新しい対を作らず、既に対になっていた8件を読書へ格上げしたため、層2は 4,517/6,770 から 4,525/6,770）。
+
+**逸脱（`ERR-023` の分離規則）。** `tests/test_boundary_channel_probe.py` の2テスト6行を、台帳追記と同じコミットで書き換えた。旗の**本数**を主張していた2行が、本回の訂正録 `ERR-20261114-f89b2e`（探針の既定対象への narrows_scope 評価宛て）で壊れたためである。同ファイル冒頭は「These assert MECHANISMS …, never the direction of a live-ledger metric」と自分で禁じており、失敗した主張はその禁に抵触していた。個数の主張を注入行 `ERR-PROBE-0000` の有無の主張へ替えた（テスト数16は不変、主張する機構は不変）。訂正録 `ERR-20261114-bf62c3` を立て、報告 §10-8 に理由・範囲・前例を書いた。**判断の基準**：テストが数えているのが生台帳の交通量なら台帳側で直す（今回は層2の8行を追加した）、テストが数えているのが探針の注入物ならテスト側を直す（旗の本数は注入物の有無で言い換えられる）。`tools/`・`schema/`・`docs/` の手順文・`prompts/` は無変更。
+
+**生きた台帳に注入しない。** 今回の測定はすべて `cp -a state /tmp/.../state` の複製に対して `tools/belief_state.py --root <複製>` で行った。引擎の分岐を消した対照は、`tools/belief_state.py` のソース文字列を複製内で `source.replace(...)` してから `exec(compile(...))` して私有モジュールとして読み込む方式である（`tools/boundary_channel_probe.py:94-97` と同じ方式）。このとき**モジュール辞書に `__file__` を注入しないと 31 行目で `NameError` になる**（探針は自分で入れている）。生台帳に対する注入は行っていないし、行の和集合を変えずに `belief_state` を再計算するのはトートロジーなので証拠として数えない。
+
 **一般化：** 回収の目標は「コレクションのファイル数を1減らすこと」であって「超過したファイルを動かすこと」ではない。順序保存連結は**どの隣接ペアにも**使えるので、超過分の前後が別日付で塞がれていても、同日の隣接ペアがコレクション内のどこかに1組あれば回収できる。1組も無ければ純減0（2026-11-11 の `materials.d` の実測）で、そのときだけ引上げが残る。探索順は (1) 超過ファイルの直前が同日か、(2) 違えば同コレクション内の同日の未参照隣接ペアをファイル名順に走査、である。
 
 検証：`map_build`／`belief_state --write-map`／`validate_seed`（materials 4,323・sessions 803・read_log 13,395・notes 832・evaluations 270・relations 6,997）／`append_only_check`（`origin/main` 27,706行 byte for byte）／`inspect_inquiry --check-map`／`belief_state --check-map`／`note_index --check`（789 notes）／`read_log_backfill --check`／`date_axis --enforce-shards`／`learning_metrics --check`（配線率 789/789）／`size_budget --strict` すべて PASS、`unittest` 639 tests OK。実測の全文は [`readings/2026-11-14-ten-biology-position-transport-deletion-cost.md`](../readings/2026-11-14-ten-biology-position-transport-deletion-cost.md) §14。
