@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4353 件（research_excerpt 2126 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4363 件（research_excerpt 2136 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：248 編（selected 96 ／ draft 152）
 - **解釈的関係（Relations）**：7007 件
-- **探究セッション（Sessions）**：815 回
+- **探究セッション（Sessions）**：818 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4353 | `literary_text` 2159／`research_excerpt` 2126／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4363 | `literary_text` 2159／`research_excerpt` 2136／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 248 | `selected` 96／`draft` 152／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7007 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 815 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13527 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 278 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 818 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13547 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 279 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 837 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 840 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 26 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 289 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 293 |  |
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -792,7 +792,7 @@
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4353 件・詳細は map/3*.md）
+## 4. 対話素材（4363 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5083,6 +5083,16 @@
 | `MAT-20261114-c5cf3f` | research_excerpt | Nemergut DR, Schmidt SK, Fukami T, O'Neill SP, Bilinski TM, Stanish LF, Knelman JE, Darcy… |
 | `MAT-20261114-d299eb` | research_excerpt | Standish RJ, Hobbs RJ, Mayfield MM, Bestelmeyer BT, Suding KN, Battaglia LL, Eviner V, Ha… |
 | `MAT-20261114-03ffc7` | research_excerpt | Johnstone JF, Allen CD, Franklin JF, Frelich LE, Harvey BJ, Higuera PE, Mack MC, Meurisse… |
+| `MAT-20261114-fb3b16` | research_excerpt | Yun Maximina H, Davaapil Hongorzul, Brockes Jeremy P『Yun・Davaapil・Brockes (2015) — 再生のたびに… |
+| `MAT-20261114-5c9e76` | research_excerpt | Smith Alex J, Yao Xiaoming, Dix James A, Jin Byung-Ju, Verkman Alan S『Smith ほか (2017) — 「… |
+| `MAT-20261114-dbf848` | research_excerpt | Artiushin Gregory, Zhang Shirley L, Tricoire Hervé, Sehgal Amita, Ramaswami Mani『Artiushi… |
+| `MAT-20261114-b8eee3` | research_excerpt | Kovacs Michael A, Cowan Maureen N, Babcock Isaac W, Sibley Lydia A, Still Katherine, Bati… |
+| `MAT-20261114-3c9851` | research_excerpt | Shea Jeremy M, Villeda Saul A『Shea & Villeda (2025) — 老化は、活性化の手前の中間状態を通る』（2025） |
+| `MAT-20261114-810c6e` | research_excerpt | Zhang Yu, Zhao Rusong, Yang Chaoyan, Song Jinzhu, Liu Peishu, Li Yan『Zhang ほか (2026) — 受け… |
+| `MAT-20261114-d4f8cd` | research_excerpt | Cohen-Berkman Moran, Dudkevich Reut, Ben-Hamo Shani, Fishman Alla, Henis-Korenblit Sivan『… |
+| `MAT-20261114-237ccd` | research_excerpt | Flowers Sagen, Kothari Rushali, Torres Cleuren Yamila N, Alcorn Melissa R, Ewe Chee Kiang… |
+| `MAT-20261114-b0a649` | research_excerpt | Chen Cong, Gao Tong-Yao, Yi Hua-Wei, Zhang Yi, Ye Keqiang, Ron David『Chen ほか (2025) — 片づけ… |
+| `MAT-20261114-454aad` | research_excerpt | Willems Tom Eric, Zervas Konstantinos, Brogli Luzius, Henke Katharina『Willems ほか (2026) —… |
 | `MAT-20261114-db51dc` | research_excerpt | Ballouz S, Dobin A, Gillis JA『Ballouz, Dobin & Gillis（2019）ヒト参照ゲノムは『タイプ標本』である——基準は健康でも最頻で… |
 | `MAT-20261114-2ceeb5` | research_excerpt | Engel SR, Dietrich FS, Fisk DG, Binkley G, Cherry JM『Engel ほか（2014）出芽酵母 S288C——腐ったイチジクから来… |
 | `MAT-20261114-c80b53` | research_excerpt | Schneider VA, Graves-Lindsay T, Howe K, Church DM『Schneider ほか（2017）GRCh38 の評価——参照は複数ドナーの… |
@@ -5959,6 +5969,9 @@
 | `SESSION-20261114-52961a` | 2026-11-14T16:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-111960` | 2026-11-14T18:00:00Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-aac469` | 2026-11-14T18:40:00Z | `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-265124` | 2026-11-14T15:46:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-47b3ba` | 2026-11-14T15:52:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-2aa058` | 2026-11-14T16:05:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-71d250` | 2026-11-14 | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-f56aba` | 2026-11-14T03:40:00Z | `Q-20261024-ff6311`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-11d148` | 2026-11-14T14:20:00Z | `Q-003` | — | — |
@@ -6053,8 +6066,8 @@
 | `map/31-materials-research-18.md` | 100 | 246,023 |
 | `map/31-materials-research-19.md` | 100 | 255,170 |
 | `map/31-materials-research-20.md` | 100 | 220,572 |
-| `map/31-materials-research-21.md` | 100 | 232,884 |
-| `map/31-materials-research-22.md` | 26 | 76,888 |
+| `map/31-materials-research-21.md` | 100 | 240,326 |
+| `map/31-materials-research-22.md` | 36 | 100,969 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6087,7 +6100,7 @@
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
 | `map/50-sessions-16.md` | 50 | 34,510 |
-| `map/50-sessions-17.md` | 15 | 12,421 |
+| `map/50-sessions-17.md` | 18 | 14,864 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6112,24 +6125,24 @@
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,793 |
 | `map/60-notes-24.md` | 25 | 98,714 |
-| `map/60-notes-25.md` | 25 | 115,668 |
-| `map/60-notes-26.md` | 25 | 61,625 |
-| `map/60-notes-27.md` | 25 | 78,278 |
-| `map/60-notes-28.md` | 25 | 67,422 |
-| `map/60-notes-29.md` | 25 | 82,781 |
-| `map/60-notes-30.md` | 25 | 109,598 |
-| `map/60-notes-31.md` | 25 | 122,082 |
-| `map/60-notes-32.md` | 18 | 93,968 |
+| `map/60-notes-25.md` | 25 | 115,219 |
+| `map/60-notes-26.md` | 25 | 65,850 |
+| `map/60-notes-27.md` | 25 | 77,165 |
+| `map/60-notes-28.md` | 25 | 66,187 |
+| `map/60-notes-29.md` | 25 | 85,392 |
+| `map/60-notes-30.md` | 25 | 108,055 |
+| `map/60-notes-31.md` | 25 | 118,575 |
+| `map/60-notes-32.md` | 19 | 101,787 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・793本・29,676,249 B）
+## 8. 精読ノート索引（readings/・794本・29,763,348 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 765/793 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 766/794 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：793 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：107 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：794 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：108 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6750,6 +6763,7 @@
 | `readings/2026-11-14-ten-biology-the-one-who-stands-for-the-many.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-e64675` +3 | 22,950 | Q3 M13 S4 ERR1 | ✓ | 一人が多数の名で呼ばれる——参照ゲノムという制度を、生物学10資料で読む |
 | `readings/2026-11-14-ten-biology-the-self-as-a-defended-variable.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-52961a` +3 | 23,186 | Q4 M10 MOT1 S4 | ✓ | 防御される変数としての自己——ホメオスタシス・アロスタシス・予測的調節の生物学10件 |
 | `readings/2026-11-14-ten-biology-transmission-who-builds-the-reader.md` | — | 2026-11-14 | `SESSION-20261114-cc164e` +2 | 19,276 | Q3 M16 S3 | ✓ | 読み手は白紙ではない——歌・採餌・道具の伝達を読む（生物学10件） |
+| `readings/2026-11-14-ten-biology-what-maintains-is-not-what-is-stored.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-265124` +2 | 40,797 | Q3 M15 S3 ERR3 | — | 維持されているものは、保存されているものではない——生物学10資料の精読と、書庫の自己への跳ね返り |
 | `readings/2026-11-14-the-anchor-locates-but-does-not-date.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-ad8c22` | 4,103 | Q1 S1 | ✓ | 住所は場所を指すが、時を指さない — 24–59の帯の measured_fact を四つ再実行する |
 | `readings/2026-11-14-the-checks-guard-what-never-reaches-the-reader.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-146bc0` | 10,495 | Q2 S1 | ✓ | 検査は、読み手に届かないものを守り、届くものを見ない |
 | `readings/2026-11-14-the-index-says-sixty-and-prints-twenty-four.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-fb84cf` | 4,560 | Q1 S1 ERR3 | ✓ | 索引は60と書き、24しか刷らない — 生きた道具を宛先にした訂正 |
