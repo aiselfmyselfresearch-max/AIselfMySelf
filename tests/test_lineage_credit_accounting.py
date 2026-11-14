@@ -184,6 +184,22 @@ class LiveLedgerTests(unittest.TestCase):
 
         This is the audit's calibration: if the engine's accounting changes,
         this equality breaks and the report's numbers must be re-measured.
+
+        SESSION-20261114-146bc0 removed the `checked > 0` requirement that used to
+        sit at the end of this test. That assertion demanded a CENSUS of the live
+        ledger -- "at least one active hypothesis has never been evaluated" -- and
+        the population legitimately emptied: HYP-20261113-3a106a received
+        EVL-20261114-44f8ee upstream and HYP-20261113-17ea95 received
+        EVL-20261114-913eea in this session. The test then failed on clean main
+        with no defect in the engine.
+
+        This is the same error as the removed 0.255/0.844 KL gates and as the
+        direction-asserting newborn test: asserting a property of how many rows
+        happen to exist, rather than a property of the mechanism. The equality
+        below is still checked for every qualifying hypothesis; when none
+        qualify, the test is vacuously true, which is correct -- there is nothing
+        to calibrate against. `test_inherited_share_matches_on_a_synthetic_newborn`
+        keeps the calibration non-vacuous regardless of the live census.
         """
         checked = 0
         for qid, q in self.state["questions"].items():
@@ -200,7 +216,35 @@ class LiveLedgerTests(unittest.TestCase):
                          f"{penalty} vs log_odds {h['log_odds']}"),
                 )
                 checked += 1
-        self.assertGreater(checked, 0, "expected at least one never-evaluated hypothesis")
+
+    def test_inherited_share_matches_on_a_synthetic_newborn(self):
+        """Calibration that cannot go vacuous when the live census empties.
+
+        Attach a fresh child to a real parent, give it no evaluation of its own,
+        and require inherited + compared == log_odds. Asserts the mechanism, not
+        the direction of any live metric.
+        """
+        import copy
+        cols = copy.deepcopy(self.cols)
+        parent = "HYP-20261113-a35ee5"
+        self.assertIn(parent, cols["hypotheses"])
+        child_id = "HYP-TEST-NEWBORN"
+        child = dict(cols["hypotheses"][parent])
+        child["hypothesis_id"] = child_id
+        child["parent_hypothesis_ids"] = [parent]
+        child["lineage_op"] = "splits"
+        child["status"] = "active"
+        cols["hypotheses"][child_id] = child
+        state = belief_state.compute_belief_state(cols)
+        report = lca.audit(cols)
+        h = next((x for q in state["questions"].values() for x in q["hypotheses"]
+                  if x["hypothesis_id"] == child_id), None)
+        self.assertIsNotNone(h, "synthetic child missing from belief state")
+        self.assertEqual(h["direct_eval_count"], 0)
+        inherited = report["inherited_log_odds"].get(child_id, 0.0)
+        self.assertNotEqual(inherited, 0.0, "calibration would be vacuous")
+        penalty = report["compared_penalty_log_odds"].get(child_id, 0.0)
+        self.assertAlmostEqual(inherited + penalty, h["log_odds"], places=3)
 
     def test_route_counts_partition_the_transferring_verdicts(self):
         total = sum(1 for e in self.cols["evaluations"].values()
