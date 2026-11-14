@@ -8,9 +8,9 @@
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：4313 件（research_excerpt 2086 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
-- **解釈的関係（Relations）**：6987 件
-- **探究セッション（Sessions）**：800 回
+- **文芸断片（Fragments）**：248 編（selected 96 ／ draft 152）
+- **解釈的関係（Relations）**：6989 件
+- **探究セッション（Sessions）**：801 回
 
 ### 台帳ごとの件数
 
@@ -21,9 +21,9 @@
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 |  |
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4313 | `literary_text` 2159／`research_excerpt` 2086／`project_trace` 67／`conversation_trace` 1 |
-| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 247 | `selected` 96／`draft` 151／`human_narrator` 0 |
-| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 6987 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 800 |  |
+| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 248 | `selected` 96／`draft` 152／`human_narrator` 0 |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 6989 | うち断片↔断片 618 |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 801 |  |
 | 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13345 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 270 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
@@ -539,7 +539,7 @@
 | `Q-20270222-da53d9` | session | `Q-104` `Q-106` `Q-20270221-507c43` | — | 終了実験の条件②を「後継の選出日以降の読みが0件」から「他セッションによる非counted読みが0件」へ改めるか。改めると監査の計数行に対して指標が不変になり、断片6件（すべて draft、後継関係… |
 | `Q-20261108-0b746a` | session | `Q-049` `Q-050` | — | この書庫は、収蔵した資料の「所在」（URL・DOI）を、どの程度まで検査しているのか。直前のセッションで、要約は正しいがDOIが別の論文を指す一行が見つかった。verification.status… |
 
-## 3. 断片（247 編・全文は map/20-fragments-*.md）
+## 3. 断片（248 編・全文は map/20-fragments-*.md）
 
 | ID | 題 | 状態 | 形式 | 語り手 |
 |---|---|---|---|---|
@@ -790,6 +790,7 @@
 | `FRAG-20261105-1c4471` | 赤い灯を消したあとで、塩を足す | draft | scene | third_person |
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
+| `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 
 ## 4. 対話素材（4313 件・詳細は map/3*.md）
 
@@ -5870,6 +5871,7 @@
 | `SESSION-20261113-ed8a61` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-64009f` | 2026-11-13 | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261113-5311d1` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-3fa48b` | 2026-11-14T10:55:00Z | `Q-001`, `Q-003` | `FRAG-20261114-ecb83e` | — |
 | `SESSION-20261114-e64675` | 2026-11-14T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-451ff3` | 2026-11-14T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-626677` | 2026-11-14T03:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5914,15 +5916,15 @@
 | `SESSION-20261114-b4de98` | 2026-11-14T08:50:00Z | `Q-003` | — | — |
 | `SESSION-20261114-be9b65` | 2026-11-14T10:20:00Z | `Q-001`, `Q-003` | — | — |
 
-## 6. 解釈的関係（6987 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（6989 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 1013 |
+| 対照 (contrast) | 1014 |
 | 共鳴 (echo) | 1657 |
 | 切断・割り込み (interrupts) | 240 |
 | 未解決のまま開く (leaves_open) | 919 |
-| 比喩的共鳴 (metaphorically_resonates) | 199 |
+| 比喩的共鳴 (metaphorically_resonates) | 200 |
 | 枠組みの組み替え (reframes) | 812 |
 | 応答 (responds_to) | 1810 |
 | 変奏・変形 (transforms) | 337 |
@@ -5954,7 +5956,7 @@
 | `map/20-fragments-10.md` | 20 | 176,165 |
 | `map/20-fragments-11.md` | 20 | 134,059 |
 | `map/20-fragments-12.md` | 20 | 148,927 |
-| `map/20-fragments-13.md` | 7 | 34,367 |
+| `map/20-fragments-13.md` | 8 | 36,896 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -6012,7 +6014,7 @@
 | `map/40-relations-11.md` | 500 | 185,779 |
 | `map/40-relations-12.md` | 500 | 176,838 |
 | `map/40-relations-13.md` | 500 | 172,292 |
-| `map/40-relations-14.md` | 487 | 152,797 |
+| `map/40-relations-14.md` | 489 | 153,381 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -6028,7 +6030,8 @@
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
-| `map/50-sessions-16.md` | 50 | 34,748 |
+| `map/50-sessions-16.md` | 50 | 34,657 |
+| `map/50-sessions-17.md` | 1 | 827 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
