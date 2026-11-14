@@ -6110,7 +6110,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・792本・29,623,099 B）
+## 8. 精読ノート索引（readings/・792本・29,626,851 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 764/792 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -6720,7 +6720,7 @@
 | `readings/2026-11-14-a-date-does-not-stop-the-number.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-eb4872` | 3,909 | Q1 M1 S1 | — | 日付は数を止めない — 数を持つ claim 410件の対象と、五つの再実行 |
 | `readings/2026-11-14-closable-and-not-closable.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-b4de98` | 9,790 | Q1 S1 ERR11 | ✓ | 閉じられる訂正と、閉じてはいけない訂正——同じ「未解決」の下に別の欠陥があった |
 | `readings/2026-11-14-counting-form-lineage-crowd-not-chain.md` | — | 2026-11-14 | `SESSION-20261114-2ac83a` | 12,388 | Q2 M5 S1 | ✓ | 師の鎖ではなく群衆だった——報告771件の書式を数えて、自分の基準を一つ直す |
-| `readings/2026-11-14-criticism-flows-down-and-correction-does-not-move.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-bf9cd0` +1 | 48,373 | Q3 M4 S2 ERR12 | — | 批判は下へ流れ、訂正は動かない——46.8050 と 0.0000 のあいだ |
+| `readings/2026-11-14-criticism-flows-down-and-correction-does-not-move.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-bf9cd0` +1 | 50,662 | Q3 M4 S2 ERR12 | — | 批判は下へ流れ、訂正は動かない——46.8050 と 0.0000 のあいだ |
 | `readings/2026-11-14-layer-two-first-sessions-and-the-unrepairable-gap.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-71d250` +12 | 13,401 | Q2 M5 S13 | — | 層2 は最初の10セッションをどう記録したか——29ペアの used_as_context と、追記専用の修復不能性 |
 | `readings/2026-11-14-shard-consolidation-at-the-soft-limit.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-194fb7` +1 | 3,027 | S2 | — | 上限ちょうどでのシャード統合——10資料の追加が押し上げた四つの数 |
 | `readings/2026-11-14-ten-biology-access-state-and-cost.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-62a80f` +5 | 22,058 | Q3 M11 S6 ERR4 | ✓ | 残っていること、使えること、応答すること——生物学10資料で状態と費用を分けて読む |
