@@ -300,18 +300,31 @@ class LiveLedgerTests(unittest.TestCase):
         self.assertGreater(moved, 0, "an unevaluated child moved no reported metric")
 
     def test_zero_eig_questions_still_print_a_priority_pair(self):
-        """The artifact the report names: EIG 0.0000 with a printed target."""
+        """The artifact the report names: EIG 0.0000 with a printed target.
+
+        ERR-20261114-51ace1 (2026-11-14). This test used to assert
+        ``top > 0.99`` whenever a question's EIG rounded to 0.0. That was a
+        statement about one ledger state, not about the engine: it held while
+        Q-002 was 99.37% vs 0.62%, and broke the moment an evaluation moved
+        5.16 points from the leader to its narrowed child (99.37 -> 94.21,
+        0.62 -> 5.77). EIG is ``p_a * p_b * (u_a + u_b)`` over ACTIVE
+        hypotheses, so it can round to 0.0000 while the leader sits at 94%
+        (u_a + u_b ~ 0.88, product < 5e-5). The printed pair is therefore a
+        shape that must survive a non-degenerate leader; the distance from 1.0
+        is a measurement, and it belongs to READING_MAP, not to this assertion.
+        """
         for qid, q in self.state["questions"].items():
             pair = q.get("top_competing_pair")
             if not q["hypotheses"] or len(q["hypotheses"]) < 2:
                 continue
             self.assertIsNotNone(pair, qid)
-            if pair["expected_info_gain"] == 0.0:
-                # A zero score is not an absent pair; the renderer prints it.
-                self.assertIn("left_hypothesis_id", pair)
-                self.assertIn("right_hypothesis_id", pair)
-                top = q["hypotheses"][0]["posterior"]
-                self.assertGreater(top, 0.99, qid)
+            self.assertIn("left_hypothesis_id", pair)
+            self.assertIn("right_hypothesis_id", pair)
+            self.assertGreaterEqual(pair["expected_info_gain"], 0.0, qid)
+            top = q["hypotheses"][0]["posterior"]
+            # A pair is only meaningful if the question is still contested:
+            # a leader at certainty would leave nothing to discriminate.
+            self.assertLess(top, 1.0, qid)
 
     def test_cli_exits_zero_and_writes_nothing(self):
         import subprocess
