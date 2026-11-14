@@ -89,7 +89,7 @@ Tier 4  CI artifact       .github/workflows/map.yml が map/ を毎回 build し
 python3 tools/map_build.py                 # map/ と READING_MAP.md を再生成
 python3 tools/map_build.py --check         # 索引が台帳と一致するか（CI も同じ）
 python3 tools/map_build.py --report        # シャードのサイズ報告
-python3 tools/map_build.py --sync-readme   # README.md §1/§2/§4 の件数表を台帳と同期（editorial_review 回用）
+python3 tools/map_build.py --check-readme  # README.md に台帳の件数が書かれていないことを検査（件数は READING_MAP.md に生成される）
 python3 tools/inspect_inquiry.py --write-map   # map_build.py への委譲（互換）
 python3 tools/inspect_inquiry.py --check-map   # 同上
 
@@ -135,7 +135,7 @@ READING_MAP.md の事故は「単一ファイルが全成長を吸収する」�
 
 1. **通常回では編集しない**：通常の創作・再読・改稿回（`rereading_and_collision` / `revision_and_variation` / `acquisition`）では `README.md` と `docs/sessions.md` を変更せず、`state/*.d/`・`readings/`・`READING_MAP.md`（`python3 tools/map_build.py`）のみを更新する。
 2. **詳細窓のサイズと移管手順**：到達点 bullet の詳細窓は **3件**、注釈付き報告エントリの詳細窓は **5件**。`editorial_review` 回で窓を入れ替えるときは、押し出される古い項目を `docs/sessions.md` の該当節へ **一字一句変えずに**移す。
-3. **件数表の自動同期**：`editorial_review` 回では `python3 tools/map_build.py --sync-readme` を実行し、`README.md` §1・§2 の総数表記および §4 の件数表を台帳と `readings/` の実測値に同期する。
+3. **件数は生成物だけが持つ（2026-11-14 改訂）**：台帳ごとの件数と内訳は、`python3 tools/map_build.py` が `READING_MAP.md`「台帳ごとの件数」に毎回生成する。`README.md` は件数を持たない。旧方式（`editorial_review` 回に `--sync-readme` で README の数字を書き換える）は、同期の合間に README が古くなり、同期を全ブランチで行えば並行 PR が同じ行で衝突するため廃止した。`READING_MAP.md` は全セッションが再生成し CI が `--check` で照合するので、件数は自動的に台帳と一致する。README への数字の再混入は `python3 tools/map_build.py --check-readme` と回帰テスト（`tests/test_editorial_decisions.py`）が止める。`--sync-readme` は `--check-readme` の別名として残してある。
 4. `docs/sessions.md` も追記専用。既存行の書き換え・要約・圧縮をしない（訂正は新しい注記）。
 5. WARN はこの操作の合図。hard 超過は移行が済むまでマージしない。
 

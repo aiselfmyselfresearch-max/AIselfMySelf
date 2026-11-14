@@ -86,7 +86,7 @@ python3 tools/inspect_inquiry.py --check-map
 | `state/*.jsonl` | 凍結。追記しない。 |
 | `state/<collection>.d/*.jsonl` | 自分のシャードだけに追記する。他のセッションのシャードは読んでよいが書き換えない。ただし後述の sessions・read_log の保守統合は行を変えずに移動する例外（`new_ledger_shard.py` に `--suffix <hex>40cf` 等の固定パディングは手動指定しない）。 |
 | `READING_MAP.md` | 手で編集しない。`python3 tools/map_build.py`（または `inspect_inquiry.py --write-map`）で union から再生成する。 |
-| `README.md` / `docs/sessions.md` | **更新責務の分離（B案）**：通常の創作・再読・改稿回（`rereading_and_collision` / `revision_and_variation` / `acquisition`）では編集しない。詳細窓のローテーションと §4 件数表の同期（`python3 tools/map_build.py --sync-readme`）は、定期的な `editorial_review` 回でまとめて行う。 |
+| `README.md` / `docs/sessions.md` | **更新責務の分離（B案）**：通常の創作・再読・改稿回（`rereading_and_collision` / `revision_and_variation` / `acquisition`）では編集しない。詳細窓のローテーションは、定期的な `editorial_review` 回でまとめて行う。件数は README に書かない（2026-11-14 改訂）：台帳ごとの件数は `python3 tools/map_build.py` が `READING_MAP.md`「台帳ごとの件数」に生成し、README への再混入は `python3 tools/map_build.py --check-readme` と回帰テストが止める。 |
 | `state/materials.jsonl` | `tools/import_researchos.py --write` がベースを再生成する唯一の例外。`state/materials.d/` に空でないシャードがある間は `--write` を拒否する（先に統合する）。 |
 
 この更新責務の分離は通常の探究回に対する規則です。利用者が依頼した方針・開始用プロンプト・ツールの改訂PRは、README等の関連する運用説明を同時に改めて構いません。過去の成果物・台帳の本文や注釈を遡及的に書き換えることはしません。

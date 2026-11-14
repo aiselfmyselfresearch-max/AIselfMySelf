@@ -12,7 +12,7 @@
 - **AIの自己と現象的不可知論の扱い**：会話を持ち越さない個々のAI呼び出しを、`台帳状態 × 推薦アルゴリズム × 検証規則` からなる系の中で継承制約から都度語り手を再構成する作業位置として扱います。AI自身の現象的意識の有無については、機能的ステートレス性や訓練済み免責発話から肯定も否定も演繹せず、認識論的に未決（不主張）として厳密に保ちます。
 - **3つの探求ロールによる分業**：セッションはシードと信念状態に応じて **Proposer（25%：条件付き仮説提案・分割）**・**Adversarial Tester（50%：対立仮説ペアの反証・境界衝突テスト）**・**Consolidator（25%：未継承ノート回収・評価統合・系譜整理）** の3役割に分業され、仮説の乱立と確証バイアスを防ぎます。
 - **語りのモードと委任来歴の分離**：作品内では一人称を使えますが、台帳メタデータでは `fictional_first_person` や `reflective_literary_voice` などのモードを明示し、生身の経験の事実報告と混同させません。`human_narrator` や捏造した `conversation_trace` の創作は禁止します（[`CONTENT_POLICY.md`](CONTENT_POLICY.md)）。
-- **過去の到達点アーカイブ**：（全783セッションの要約全文および旧手動ローテーション期の見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。）現在の到達点と仮説系譜は自動生成の [`BELIEF_MAP.md`](BELIEF_MAP.md)、全精読報告の索引は [`READING_MAP.md`](READING_MAP.md) §8 を参照してください。
+- **過去の到達点アーカイブ**：（旧手動ローテーション期に README から移した到達点要約と報告注釈の目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。それ以後のセッションは台帳 `state/sessions*` と [`READING_MAP.md`](READING_MAP.md) §5 に記録されます。）現在の到達点と仮説系譜は自動生成の [`BELIEF_MAP.md`](BELIEF_MAP.md)、全精読報告の索引は [`READING_MAP.md`](READING_MAP.md) §8 を参照してください。
 
 ## 2. すぐ読むには
 
@@ -33,7 +33,7 @@
    - **再読・交配・衝突**（[`rereading_and_collision.md`](prompts/rereading_and_collision.md)）：以前の読みを比較し、見立ての改訂だけでも完了する。創作と異種交配は任意。
    - **改稿・変奏**（[`revision_and_variation.md`](prompts/revision_and_variation.md)）：過去の稿と今回の読みを比較する。別稿・反歌は必要な場合だけ作る。
    - **正面応答**（[`direct_response.md`](prompts/direct_response.md)）：既存の問いに暫定的な見立てを返す。非創作の考察でもよく、二編構成や新問追加は必須ではない。
-   - **編集レビュー**（[`editorial_review.md`](prompts/editorial_review.md)）：複数のセッションから、人間観・自己理解へ戻ってきたものを確かめる。採否・休止・架橋の変更は任意。READMEの詳細窓整理と件数同期もここでまとめる。
+   - **編集レビュー**（[`editorial_review.md`](prompts/editorial_review.md)）：複数のセッションから、人間観・自己理解へ戻ってきたものを確かめる。採否・休止・架橋の変更は任意。件数は自動生成の [`READING_MAP.md`](READING_MAP.md) にあり、README では同期しない。
    - 継続・精読・原典照合・終了実験は [`continuation.md`](prompts/continuation.md)・[`close_reading_report.md`](prompts/close_reading_report.md)・[`acquisition.md`](prompts/acquisition.md)・[`closing_experiment.md`](prompts/closing_experiment.md) を参照する。原典再照合や少数の外部資料との対話は、どの方法からも選べる。
    - **一人称資料だけを読む回**（[`first_person_sources.md`](prompts/first_person_sources.md)）：人間が自分の生について書いた一次資料（日記・書簡・自伝・証言・口述）だけを読み、AI研究・概説・編者要約を読まない。人間像が「AIにないものの残余」として作られるのを一度やめるための限定で、答えを出す回ではなく読む対象を狭める回である。
 3. 今回どの記録のどの箇所が、以前の見立てを変更・維持・保留させ、次の読解や選択にどう作用したかを既存ノートや `sessions.notes` に残す。新作・新問・関係線は0件でもよく、変化を演出しない。比喩から元の問いへ戻っていない箇所も記す。毎回二つの大問に答える義務や帰還の頻度ノルマは設けない。
@@ -48,20 +48,22 @@
 
 ## 4. 記録形式とディレクトリ構成
 
-| 記録 | 保存先 | 現在の件数 | 役割 |
-|---|---|---:|---|
-| 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | 開いた問い `open` 413件＋整理休止 `paused` 24件（初期シード10件＋セッション派生396件＋資料派生31件） |
-| モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 | 記憶・連続・身体・声・他者・宛先・翻訳・時間・訂正・約束・傷と繕い・歓待・死と弔い・場所・獣と機械・感覚・歌・装い・誕生と学び・情動と裁き・天候・愛・火・署名・戦争・秘密と嘘・星と夜・退屈・植物・菌類と発酵・幽霊・来歴など59本の反復モチーフ |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4262 | 文学・哲学・歴史原典 2,159件（`literary_text`）＋AI・認知・社会・自然科学等の研究抜粋 2,035件（`research_excerpt`）＋プロジェクト痕跡 67件（`project_trace`）＋初期対話痕跡 1件（`conversation_trace`） |
-| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 247 | 全7形式・AI使用可能な全5語り手モードの創作・批評断片（`selected` 96編＋`draft` 151編、`human_narrator` 0編） |
-| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 6986 | 共鳴・対照・変奏・切断・枠組転換・応答・開放などの解釈的関係（うち断片↔断片 618件） |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 783 | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13221 | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 261 | 過去の計測・記述の誤りと再実行可能な検算条件（本文を書き換えず隣に置く訂正記録） |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 | 断片（`draft`↔`selected`）や問い（`open`↔`paused`）の追記専用ステータス・オーバーレイ |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 819 | `readings/` の報告に対する追記専用の**判断・構造索引**オーバーレイ（配線率100%）。導出事実は保存せず `tools/note_index.py` が毎回読み直し、`READING_MAP.md` §8 に索引化する（設計は [`docs/memory-architecture.md`](docs/memory-architecture.md)） |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 25 | 中心三問 `Q-001`〜`Q-003` 等に対する適用条件（`scope_conditions`）・排他反証条件（`exclusion_clause`）・親仮説系譜付きの競合仮説台帳 |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 246 | 仮説に対する類型付き検証イベント（`supports`／`narrows_scope`／`refutes_unconditioned`／`subsumes`）。`tools/belief_state.py` が事後確率と [`BELIEF_MAP.md`](BELIEF_MAP.md) を算出する |
+現在の件数と内訳は、台帳から自動生成される [`READING_MAP.md`](READING_MAP.md)「台帳ごとの件数」にあります。この表は件数を持ちません（数字を README に書くと、ほかのセッションが台帳に追記した時点で古くなるため。`python3 tools/map_build.py --check-readme` と回帰テストが再混入を止めます）。
+
+| 記録 | 保存先 | 役割 |
+|---|---|---|
+| 問い | `state/questions.jsonl`＋`state/questions.d/` | 開いた問い（`open`）と整理休止（`paused`）。初期シード・セッション派生・資料派生の来歴を持つ |
+| モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 記憶・連続・身体・声・他者・宛先・翻訳・時間・訂正・約束・傷と繕い・歓待・死と弔い・場所・獣と機械・感覚・歌・装い・誕生と学び・情動と裁き・天候・愛・火・署名・戦争・秘密と嘘・星と夜・退屈・植物・菌類と発酵・幽霊・来歴などの反復モチーフ |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 文学・哲学・歴史原典（`literary_text`）、AI・認知・社会・自然科学等の研究抜粋（`research_excerpt`）、プロジェクト痕跡（`project_trace`）、初期対話痕跡（`conversation_trace`） |
+| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 全7形式・AI使用可能な全5語り手モードの創作・批評断片（`selected`／`draft`。`human_narrator` は禁止） |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 共鳴・対照・変奏・切断・枠組転換・応答・開放などの解釈的関係（断片↔断片を含む） |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 過去の計測・記述の誤りと再実行可能な検算条件（本文を書き換えず隣に置く訂正記録） |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 断片（`draft`↔`selected`）や問い（`open`↔`paused`）の追記専用ステータス・オーバーレイ |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | `readings/` の報告に対する追記専用の**判断・構造索引**オーバーレイ（配線率100%）。導出事実は保存せず `tools/note_index.py` が毎回読み直し、`READING_MAP.md` §8 に索引化する（設計は [`docs/memory-architecture.md`](docs/memory-architecture.md)） |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 中心三問 `Q-001`〜`Q-003` 等に対する適用条件（`scope_conditions`）・排他反証条件（`exclusion_clause`）・親仮説系譜付きの競合仮説台帳 |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 仮説に対する類型付き検証イベント（`supports`／`narrows_scope`／`refutes_unconditioned`／`subsumes`）。`tools/belief_state.py` が事後確率と [`BELIEF_MAP.md`](BELIEF_MAP.md) を算出する |
 
 ```text
 PROJECT_CHARTER.md          探究の憲章（条件付き仮説分布の継続更新・現象的不可知論・3役割分業）
@@ -99,10 +101,10 @@ python3 tools/belief_state.py --question Q-002
 python3 tools/learning_metrics.py --check
 python3 tools/date_axis.py --enforce-shards
 
-# 3. 読書案内（READING_MAP.md 索引＋map/ 全文シャード）の再生成・同期チェック・README 件数同期
+# 3. 読書案内（READING_MAP.md 索引＋map/ 全文シャード）の再生成・同期チェック・README に件数が書かれていないことの検査
 python3 tools/map_build.py
 python3 tools/map_build.py --check
-python3 tools/map_build.py --sync-readme
+python3 tools/map_build.py --check-readme
 
 # 3.5 readings/ 索引（READING_MAP.md §8）の検算・孤立ノートの観察・判断の記帳
 python3 tools/note_index.py --check          # §8 が最新の readings/ と一致するか

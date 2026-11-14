@@ -5,12 +5,31 @@
 
 ## 現在の到達点（台帳サマリー）
 
-- **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
+- **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：59 件
 - **対話素材（Materials）**：4272 件（research_excerpt 2045 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
 - **探究セッション（Sessions）**：787 回
+
+### 台帳ごとの件数
+
+この表は台帳から毎回生成されます。`README.md` は件数を持たず、ここを参照します（各台帳の役割は [`README.md`](README.md) §4）。
+
+| 記録 | 保存先 | 件数 | 内訳 |
+|---|---|---:|---|
+| 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
+| モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 |  |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4272 | `literary_text` 2159／`research_excerpt` 2045／`project_trace` 67／`conversation_trace` 1 |
+| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 247 | `selected` 96／`draft` 151／`human_narrator` 0 |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 6986 | うち断片↔断片 618 |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 787 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13243 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 262 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 822 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 25 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 250 |  |
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -5858,7 +5877,7 @@
 
 | ファイル | 件数 | バイト |
 |---|---:|---:|
-| `map/00-overview.md` | None | 48,623 |
+| `map/00-overview.md` | None | 48,624 |
 | `map/10-question-index.md` | None | 169,133 |
 | `map/11-question-bodies-01.md` | 50 | 32,046 |
 | `map/11-question-bodies-02.md` | 50 | 40,480 |
