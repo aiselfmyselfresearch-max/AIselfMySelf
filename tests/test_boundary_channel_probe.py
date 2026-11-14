@@ -59,19 +59,40 @@ class BoundaryChannelProbeTests(unittest.TestCase):
         self.assertEqual(len(jf), 1)
         self.assertEqual(bf, [])
 
-    def test_direct_penalty_ignores_verdict_and_status(self):
-        """A retracted correction, and one that says the claim HELD, cost the same.
+    def test_direct_penalty_now_reads_verdict_and_status(self):
+        """The engine reads verdict/status; this test used to assert that it did not.
 
-        This is a defect, not a feature. It is asserted so that a future fix to the
-        engine trips this test and forces the fix to be recorded rather than silent.
+        SESSION-20261114-11d148 measured the old uniformity and filed it as
+        ERR-20261114-9a6fb1. The previous version of this test asserted the defect
+        on purpose ("so that a future fix trips this test and forces the fix to be
+        recorded rather than silent"). It tripped. This is that record.
+
+        A correction costs weight only while it still asserts an error: verdict
+        `contradicted` and status not `withdrawn`. A withdrawn correction, one whose
+        check found the claim HELD, and one that could not be measured remain
+        visible in errata_flags but no longer move the belief.
         """
-        seen = set()
         for verdict in ("contradicted", "holds", "unmeasurable"):
             for status in ("open", "annotated", "withdrawn"):
-                d, _ = self._delta(probe.errata_row(TARGET, "hypothesis",
-                                                    verdict=verdict, status=status))
-                seen.add(round(d, 6))
-        self.assertEqual(len(seen), 1, "engine began reading verdict/status; record the change")
+                with self.subTest(verdict=verdict, status=status):
+                    d, flags = self._delta(probe.errata_row(TARGET, "hypothesis",
+                                                            verdict=verdict, status=status))
+                    should_pay = verdict == "contradicted" and status != "withdrawn"
+                    if should_pay:
+                        self.assertLess(d, 0.0)
+                    else:
+                        self.assertEqual(d, 0.0)
+                    # Visibility is not gated: every row stays flagged.
+                    self.assertEqual(len(flags), 1)
+
+    def test_unknown_status_does_not_escape_the_penalty(self):
+        """Two legacy rows carry status `corrected`, outside the schema enum.
+
+        An unrecognised status must not become a way to dodge the weight: only the
+        explicitly named `withdrawn` discounts a live contradiction.
+        """
+        d, _ = self._delta(probe.errata_row(TARGET, "hypothesis", status="corrected"))
+        self.assertLess(d, 0.0)
 
     def test_penalty_scales_with_row_count_not_distinct_claims(self):
         base_h = probe._hyp(self.base, QUESTION, TARGET)
@@ -118,9 +139,23 @@ class BoundaryChannelProbeTests(unittest.TestCase):
         kls = {round(v["kl_bits"], 4) for v in arm.values()}
         self.assertGreater(len(kls), 1, "verdict mix had no effect on the distribution")
 
-    def test_content_arm_is_uniform_because_the_branch_is_blind(self):
-        vals = {round(v["d_log_odds"], 6) for v in self.res["arms"]["content"].values()}
-        self.assertEqual(len(vals), 1)
+    def test_content_arm_now_separates_live_from_spent_corrections(self):
+        """Content used to be invisible to the penalty; now verdict/status matter.
+
+        Renamed from test_content_arm_is_uniform_because_the_branch_is_blind, which
+        asserted the defect. The arm holds the address fixed and varies only the
+        judgement, so it is exactly the measurement that shows the fix works.
+        """
+        arm = self.res["arms"]["content"]
+        vals = {round(v["d_log_odds"], 6) for v in arm.values()}
+        self.assertGreater(len(vals), 1, "verdict/status still ignored by the penalty")
+        for label, val in arm.items():
+            with self.subTest(arm=label):
+                live = label in ("contradicted_open", "contradicted_annotated")
+                if live:
+                    self.assertLess(val["d_log_odds"], 0.0)
+                else:
+                    self.assertEqual(val["d_log_odds"], 0.0)
 
     def test_direct_branch_is_latent_on_the_live_ledger(self):
         d = self.res["direct_penalty_branch"]

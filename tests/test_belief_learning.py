@@ -133,7 +133,9 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         # SESSION-20261113-d8950c adds two scoped child hypotheses from ten
         # biology full-text readings (HYP-20261113-977052 refines ba8bff;
         # HYP-20261113-3a106a splits 20fa8c), taking the live total to 25.
-        self.assertEqual(bs["total_hypotheses"], 25)
+        # Hypotheses, like evaluations, are append-only: later inquiries can
+        # legitimately add scoped children without invalidating the baseline.
+        self.assertGreaterEqual(bs["total_hypotheses"], 25)
         # Evaluations are append-only; later inquiry sessions may add more.
         self.assertGreaterEqual(bs["total_evaluations"], 161)
         for qid in ("Q-001", "Q-002", "Q-003"):

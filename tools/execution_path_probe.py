@@ -21,7 +21,8 @@ labels every check ``named_in_scope`` or ``other`` and reports them apart.
 Method
 ------
 Copy the repository into a throwaway sandbox, apply ONE intervention, re-run the
-checks and the recommendation packet. Two families:
+checks and a fixed-seed Q-003 packet (rather than a variable auto selection).
+Two families:
 
 * storage path -- split a shard, rename its suffix, forge a future date, lower a
   size cap. Ledger rows are never edited.
@@ -202,25 +203,11 @@ def run_checks(sb: Path) -> dict[str, dict[str, Any]]:
     return res
 
 
-PACKET_TARGET_QID = "Q-003"
-
-
 def run_packet(sb: Path) -> dict[str, Any]:
-    """Render the packet for a FIXED question, not ``auto``.
-
-    ``--packet auto`` resolves its target through the live belief ranking, so an
-    upstream evaluation that moves the leader silently changes which question is
-    rendered. The packet-path interventions are positive controls: they assert
-    that turning a knob changes what the next reader receives. Pointing them at
-    ``auto`` confounds that with "did the ranking move", and a leader whose §3 is
-    already under the lowered budget makes the budget knob inert -- the control
-    then fails while the mechanism it tests is intact. Pinning the target keeps
-    the control about the path. Same lesson as the module docstring in
-    tests/test_execution_path_probe.py: never gate on a live ranking.
-    """
-    p = subprocess.run([sys.executable, "tools/inspect_inquiry.py",
-                        "--packet", PACKET_TARGET_QID, "--seed", "execution-path-probe"],
-                       cwd=sb, capture_output=True, text=True)
+    # Use a core question and fixed seed: an auto-selected derived question may
+    # have no hypotheses or enough materials to exercise the order/budget knobs.
+    p = subprocess.run([sys.executable, "tools/inspect_inquiry.py", "--packet", "Q-003",
+                        "--seed", "17ea95"], cwd=sb, capture_output=True, text=True)
     return {"sha256": hashlib.sha256(p.stdout.encode()).hexdigest()[:16],
             "bytes": len(p.stdout), "exit": p.returncode}
 
