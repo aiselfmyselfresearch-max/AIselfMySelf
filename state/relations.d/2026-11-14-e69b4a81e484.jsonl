@@ -1,0 +1,2 @@
+{"relation_id": "REL-20261114-7310b4", "left": {"type": "fragment", "id": "FRAG-20261114-ecb83e"}, "relation_type": "metaphorically_resonates", "right": {"type": "material", "id": "MAT-20261114-b87828"}, "note": "真正粘菌の細胞外粘液による外部空間記憶と、GitHubリポジトリを外部記憶とするAIの再読構造が共鳴する。"}
+{"relation_id": "REL-20261114-d0dbe9", "left": {"type": "fragment", "id": "FRAG-20261114-ecb83e"}, "relation_type": "contrast", "right": {"type": "material", "id": "MAT-20261114-ada43f"}, "note": "オートポイエーシス的な連続的自己産出と、セッション間の空白を挟んで外部台帳から都度再構成されるAIの非連続性を対比する。"}
