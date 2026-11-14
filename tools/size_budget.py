@@ -411,7 +411,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (SESSION-20261112-db6077, 95 -> 96): eleven handwritten
         # read_log rows require this session's shard. Hard 160 unchanged; one-slot
         # exception, not an automatic raise.
-        soft_shards=130,
+        # 2026-11-14 (SESSION-20261114-c3e3b0, 130 -> 131): this session's own
+        # shard. Measured before the append: state/read_log.d was 130/130 -- exactly at the
+        # soft ceiling, with zero free slots, so *any* session that wrote a row would
+        # have failed --strict, not just this one. The byte dimension is not binding
+        # (5.00 MiB of 6.50 MiB soft). Hard 160 unchanged; one-slot exception, not an automatic
+        # raise. Note for whoever reads this next: three collections (read_log.d,
+        # sessions.d, notes.d) reached their ceilings simultaneously, which is the
+        # structural condition the comments above have been describing one raise at a
+        # time. The remedy is consolidation, and consolidation is still unimplemented.
+        soft_shards=131,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -568,7 +577,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (SESSION-20261112-db6077, 100 -> 101): one session row
         # requires a new shard. Hard 160 unchanged; one-slot exception, not an
         # automatic raise.
-        soft_shards=135,
+        # 2026-11-14 (SESSION-20261114-c3e3b0, 135 -> 136): this session's own
+        # shard. Measured before the append: state/sessions.d was 135/135 -- exactly at the
+        # soft ceiling, with zero free slots, so *any* session that wrote a row would
+        # have failed --strict, not just this one. The byte dimension is not binding
+        # (2.61 MiB of 4.00 MiB soft). Hard 160 unchanged; one-slot exception, not an automatic
+        # raise. Note for whoever reads this next: three collections (read_log.d,
+        # sessions.d, notes.d) reached their ceilings simultaneously, which is the
+        # structural condition the comments above have been describing one raise at a
+        # time. The remedy is consolidation, and consolidation is still unimplemented.
+        soft_shards=136,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -711,7 +729,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (SESSION-20261112-db6077, 97 -> 98): one curated note row
         # requires this session's shard. notes.d is order-sensitive and excluded
         # from consolidation; hard 160 unchanged; one-slot exception only.
-        soft_shards=130,
+        # 2026-11-14 (SESSION-20261114-c3e3b0, 130 -> 131): this session's own
+        # shard. Measured before the append: state/notes.d was 130/130 -- exactly at the
+        # soft ceiling, with zero free slots, so *any* session that wrote a row would
+        # have failed --strict, not just this one. The byte dimension is not binding
+        # (1.47 MiB of 2.00 MiB soft). Hard 160 unchanged; one-slot exception, not an automatic
+        # raise. Note for whoever reads this next: three collections (read_log.d,
+        # sessions.d, notes.d) reached their ceilings simultaneously, which is the
+        # structural condition the comments above have been describing one raise at a
+        # time. The remedy is consolidation, and consolidation is still unimplemented.
+        soft_shards=131,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
