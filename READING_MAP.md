@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4303 件（research_excerpt 2076 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4313 件（research_excerpt 2086 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6987 件
-- **探究セッション（Sessions）**：799 回
+- **探究セッション（Sessions）**：802 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4303 | `literary_text` 2159／`research_excerpt` 2076／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4313 | `literary_text` 2159／`research_excerpt` 2086／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 247 | `selected` 96／`draft` 151／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 6987 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 799 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13335 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 802 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13355 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 270 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 829 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 830 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 26 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 266 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 272 |  |
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -791,7 +791,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4303 件・詳細は map/3*.md）
+## 4. 対話素材（4313 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5098,6 +5098,16 @@
 | `MAT-20261114-9fd94e` | research_excerpt | Zhang Y, Proenca R, Maffei M, Barone M, Leopold L, Friedman JM『Zhang et al. (1994) レプチンの位… |
 | `MAT-20261114-5a1346` | research_excerpt | Kennedy GC『Kennedy (1953) lipostasis仮説——脂肪貯蔵をほぼ一定に保つという防御される水準』（1953） |
 | `MAT-20261114-4f303b` | research_excerpt | Bechtel W, Bich L『Bechtel & Bich (2025) ホメオスタシスの広い理解の再発見——セットポイントはCannonの定義に含まれていなかった』（20… |
+| `MAT-20261114-b959cd` | research_excerpt | Raff MC『Social controls on cell survival and cell death』（1992） |
+| `MAT-20261114-ca315e` | research_excerpt | Barres BA, Hart IK, Coles HS, Burne JF, Voyvodic JT, Richardson WD, Raff MC『Cell death an… |
+| `MAT-20261114-473532` | research_excerpt | Vaux DL, Cory S, Adams JM『Bcl-2 gene promotes haemopoietic cell survival and cooperates w… |
+| `MAT-20261114-bb77bf` | research_excerpt | Frisch SM, Francis H『Disruption of epithelial cell-matrix interactions induces apoptosis』… |
+| `MAT-20261114-6969d3` | research_excerpt | Fadok VA, Voelker DR, Campbell PA, Cohen JJ, Bratton DL, Henson PM『Exposure of phosphatid… |
+| `MAT-20261114-f025dd` | research_excerpt | Elliott MR, Chekeni FB, Trampont PC, Lazarowski ER, Kadl A, Walk SF, Park D, Woodson RI, … |
+| `MAT-20261114-ef1346` | research_excerpt | Chera S, Ghila L, Dobretz K, Wenger Y, Bauer C, Buzgariu W, Martinou JC, Galliot B『Apopto… |
+| `MAT-20261114-36cc15` | research_excerpt | Li F, Huang Q, Chen J, Peng Y, Roop DR, Bedford JS, Li CY『Apoptotic cells activate the "p… |
+| `MAT-20261114-4cb06d` | research_excerpt | Tang HL, Tang HM, Mak KH, Hu S, Wang SS, Wong KM, Wong CS, Wu HY, Law HT, Liu K, Talbot C… |
+| `MAT-20261114-7d059f` | research_excerpt | Sun G, Guzman E, Balasanyan V, Conner CM, Wong K, Zhou HR, Kosik KS, Montell DJ『A molecul… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261114-b4de98・全文は map/50-sessions-*.md）
 
@@ -5869,6 +5879,9 @@
 | `SESSION-20261114-9bdfdc` | 2026-11-14T12:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-1c2153` | 2026-11-14T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-a4a400` | 2026-11-14T00:00:00Z | `Q-003`, `Q-001`, `Q-002` | — | — |
+| `SESSION-20261114-cf7d23` | 2026-11-14 | `Q-001`, `Q-003` | — | — |
+| `SESSION-20261114-1053fe` | 2026-11-14 | `Q-001`, `Q-003` | — | — |
+| `SESSION-20261114-1fa38d` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-fb84cf` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-ad8c22` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-eb4872` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5986,7 +5999,7 @@
 | `map/31-materials-research-18.md` | 100 | 246,023 |
 | `map/31-materials-research-19.md` | 100 | 255,170 |
 | `map/31-materials-research-20.md` | 100 | 220,572 |
-| `map/31-materials-research-21.md` | 76 | 174,447 |
+| `map/31-materials-research-21.md` | 86 | 195,854 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6017,7 +6030,8 @@
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
-| `map/50-sessions-16.md` | 49 | 34,114 |
+| `map/50-sessions-16.md` | 50 | 34,723 |
+| `map/50-sessions-17.md` | 2 | 1,885 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6042,24 +6056,24 @@
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,793 |
 | `map/60-notes-24.md` | 25 | 98,568 |
-| `map/60-notes-25.md` | 25 | 94,793 |
-| `map/60-notes-26.md` | 25 | 62,758 |
-| `map/60-notes-27.md` | 25 | 79,704 |
-| `map/60-notes-28.md` | 25 | 70,370 |
-| `map/60-notes-29.md` | 25 | 96,163 |
-| `map/60-notes-30.md` | 25 | 93,718 |
-| `map/60-notes-31.md` | 25 | 129,049 |
-| `map/60-notes-32.md` | 12 | 69,375 |
+| `map/60-notes-25.md` | 25 | 98,344 |
+| `map/60-notes-26.md` | 25 | 60,476 |
+| `map/60-notes-27.md` | 25 | 79,949 |
+| `map/60-notes-28.md` | 25 | 70,859 |
+| `map/60-notes-29.md` | 25 | 92,867 |
+| `map/60-notes-30.md` | 25 | 97,124 |
+| `map/60-notes-31.md` | 25 | 128,204 |
+| `map/60-notes-32.md` | 13 | 72,965 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・787本・29,321,874 B）
+## 8. 精読ノート索引（readings/・788本・29,366,317 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 759/787 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 760/788 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：787 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：105 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：788 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：106 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6667,6 +6681,7 @@
 | `readings/2026-11-14-shard-consolidation-at-the-soft-limit.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-194fb7` +1 | 3,027 | S2 | — | 上限ちょうどでのシャード統合——10資料の追加が押し上げた四つの数 |
 | `readings/2026-11-14-ten-biology-access-state-and-cost.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-62a80f` +5 | 22,058 | Q3 M11 S6 ERR4 | ✓ | 残っていること、使えること、応答すること——生物学10資料で状態と費用を分けて読む |
 | `readings/2026-11-14-ten-biology-conditions-for-continuity.md` | — | 2026-11-14 | `SESSION-20261114-9bdfdc` +2 | 8,676 | Q3 M10 S3 | — | 続くための条件——身体・記憶・選択的再開をめぐる生物学10篇 |
+| `readings/2026-11-14-ten-biology-death-licensed-and-death-at-work.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-cf7d23` +2 | 20,985 | Q4 M12 S3 | — | 死は許可され、死は働く——生物学十資料精読報告 |
 | `readings/2026-11-14-ten-biology-legacy-memory-and-what-survives-the-cut.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-1c2153` +1 | 23,306 | Q3 M11 S2 | — | 書庫自身を測る——legacy_probe.py の四測定と、その限界 |
 | `readings/2026-11-14-ten-biology-microbial-boundaries-and-individuality.md` | — | 2026-11-14 | `SESSION-20261114-651ac3` +2 | 9,570 | Q3 M10 S3 | — | 人間の境界はどこにあるか——微生物、移動する細胞、個人差を読む |
 | `readings/2026-11-14-ten-biology-self-recognition-chimerism-and-erasure.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-8aa542` +2 | 36,941 | Q3 M10 S3 | ✓ | 自己回避と自他識別、キメラと同調、消去される記憶——生物学10資料の精読報告 |
