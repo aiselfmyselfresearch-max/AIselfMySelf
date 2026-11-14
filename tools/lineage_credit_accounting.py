@@ -254,6 +254,20 @@ def counterfactual(cols: dict[str, dict[str, dict[str, Any]]],
         hids = [h["hypothesis_id"] for h in q["hypotheses"]]
         if not hids:
             continue
+        denied_here = {h: round(v, 4) for h, v in deny.items() if h in hids}
+        if not denied_here:
+            before_summary = question_summary(before, qid)
+            out[qid] = {
+                "before": before_summary,
+                "after": {
+                    "kl_from_uniform_bits": before_summary["kl_from_uniform_bits"],
+                    "gen1_plus_mass": before_summary["gen1_plus_mass"],
+                    "top_hypothesis_id": before_summary["top_hypothesis_id"],
+                    "top_posterior": before_summary["top_posterior"],
+                },
+                "denied_log_odds": {},
+            }
+            continue
         adj = {h["hypothesis_id"]: h["log_odds"] - deny.get(h["hypothesis_id"], 0.0)
                for h in q["hypotheses"]}
         max_l = max(adj.values())
@@ -272,7 +286,7 @@ def counterfactual(cols: dict[str, dict[str, dict[str, Any]]],
                 "top_hypothesis_id": max(post, key=lambda h: post[h]),
                 "top_posterior": round(max(post.values()), 4),
             },
-            "denied_log_odds": {h: round(v, 4) for h, v in deny.items() if h in hids},
+            "denied_log_odds": denied_here,
         }
     return out
 
