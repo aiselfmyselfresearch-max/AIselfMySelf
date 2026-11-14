@@ -84,6 +84,41 @@ class Layer2AuditTests(unittest.TestCase):
         )
         second = {row["session_id"]: row for row in rows}["SESSION-20261110-bbbbbb"]
         self.assertEqual((second["excused"], second["unmet"]), (2, 0))
+        self.assertEqual((second["unread_excused"], second["declined"]), (2, 0))
+
+    def test_declined_rows_are_counted_separately_from_unread_notes(self) -> None:
+        self.read_log["READ-20261110-000004"] = {
+            **read(
+                "READ-20261110-000004",
+                "SESSION-20261110-bbbbbb",
+                self.m3,
+                "declined",
+            ),
+            "recorded_by_session_id": "SESSION-20261110-aaaaaa",
+        }
+        rows = layer2_accounting.audit_records(
+            self.sessions, self.read_log, date(2026, 11, 10)
+        )
+        second = {row["session_id"]: row for row in rows}["SESSION-20261110-bbbbbb"]
+        self.assertEqual(
+            (second["excused"], second["unread_excused"], second["declined"], second["unmet"]),
+            (1, 0, 1, 1),
+        )
+        summary = layer2_accounting.summarize(rows)
+        self.assertEqual(summary["declined_pairs"], 1)
+        self.assertEqual(summary["unread_excused_pairs"], 0)
+
+    def test_declined_does_not_excuse_a_missing_layer_one_row(self) -> None:
+        self.read_log["READ-20261110-000004"] = read(
+            "READ-20261110-000004", "SESSION-20261110-bbbbbb", self.m4, "declined"
+        )
+        rows = layer2_accounting.audit_records(
+            self.sessions, self.read_log, date(2026, 11, 10)
+        )
+        second = {row["session_id"]: row for row in rows}["SESSION-20261110-bbbbbb"]
+        # Layer 2 counts the decline as an answer, but the audit still reports
+        # that the pair had no contact row at all.
+        self.assertEqual((second["declined"], second["no_contact_row"]), (1, 1))
 
     def test_rows_are_ordered_by_date_then_session_id(self) -> None:
         self.sessions["SESSION-20261109-cccccc"] = session(
