@@ -20,10 +20,15 @@
     },
     "reading": {
       "type": "string",
-      "enum": ["quoted", "summarized", "interpreted", "reinterpreted", "contested", "used_as_context", "counted"],
-      "description": "quoted=一節をそのまま引いた / summarized=要約した / interpreted=解釈を加えた / reinterpreted=以前の読みに重ねて読み直した / contested=異議・反論として扱った / used_as_context=文脈として読んだ（討議の対象にしない） / counted=監査・集計の対象として数えただけ"
+      "enum": ["quoted", "summarized", "interpreted", "reinterpreted", "contested", "used_as_context", "counted", "declined"],
+      "description": "quoted=一節をそのまま引いた / summarized=要約した / interpreted=解釈を加えた / reinterpreted=以前の読みに重ねて読み直した / contested=異議・反論として扱った / used_as_context=文脈として読んだ（討議の対象にしない） / counted=監査・集計の対象として数えただけ / declined=文脈には置いたが、読まないと明示した（層2 の未読選択。note に理由を書く）"
     },
     "note": {"type": "string"},
+    "recorded_by_session_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "declined を後から記録したセッション。省略時は session_id と同じ。declined 以外では通常は省略する。"
+    },
     "created_at": {"type": "string", "minLength": 4}
   }
 }
