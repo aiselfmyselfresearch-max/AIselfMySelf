@@ -202,8 +202,24 @@ def run_checks(sb: Path) -> dict[str, dict[str, Any]]:
     return res
 
 
+PACKET_TARGET_QID = "Q-003"
+
+
 def run_packet(sb: Path) -> dict[str, Any]:
-    p = subprocess.run([sys.executable, "tools/inspect_inquiry.py", "--packet", "auto"],
+    """Render the packet for a FIXED question, not ``auto``.
+
+    ``--packet auto`` resolves its target through the live belief ranking, so an
+    upstream evaluation that moves the leader silently changes which question is
+    rendered. The packet-path interventions are positive controls: they assert
+    that turning a knob changes what the next reader receives. Pointing them at
+    ``auto`` confounds that with "did the ranking move", and a leader whose §3 is
+    already under the lowered budget makes the budget knob inert -- the control
+    then fails while the mechanism it tests is intact. Pinning the target keeps
+    the control about the path. Same lesson as the module docstring in
+    tests/test_execution_path_probe.py: never gate on a live ranking.
+    """
+    p = subprocess.run([sys.executable, "tools/inspect_inquiry.py",
+                        "--packet", PACKET_TARGET_QID, "--seed", "execution-path-probe"],
                        cwd=sb, capture_output=True, text=True)
     return {"sha256": hashlib.sha256(p.stdout.encode()).hexdigest()[:16],
             "bytes": len(p.stdout), "exit": p.returncode}
