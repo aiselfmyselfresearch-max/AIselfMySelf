@@ -21,7 +21,8 @@ labels every check ``named_in_scope`` or ``other`` and reports them apart.
 Method
 ------
 Copy the repository into a throwaway sandbox, apply ONE intervention, re-run the
-checks and the recommendation packet. Two families:
+checks and a fixed-seed Q-003 packet (rather than a variable auto selection).
+Two families:
 
 * storage path -- split a shard, rename its suffix, forge a future date, lower a
   size cap. Ledger rows are never edited.
@@ -203,8 +204,10 @@ def run_checks(sb: Path) -> dict[str, dict[str, Any]]:
 
 
 def run_packet(sb: Path) -> dict[str, Any]:
-    p = subprocess.run([sys.executable, "tools/inspect_inquiry.py", "--packet", "auto"],
-                       cwd=sb, capture_output=True, text=True)
+    # Use a core question and fixed seed: an auto-selected derived question may
+    # have no hypotheses or enough materials to exercise the order/budget knobs.
+    p = subprocess.run([sys.executable, "tools/inspect_inquiry.py", "--packet", "Q-003",
+                        "--seed", "17ea95"], cwd=sb, capture_output=True, text=True)
     return {"sha256": hashlib.sha256(p.stdout.encode()).hexdigest()[:16],
             "bytes": len(p.stdout), "exit": p.returncode}
 
