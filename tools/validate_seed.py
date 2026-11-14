@@ -265,6 +265,57 @@ def load_jsonl(path: Path, id_key: str, errors: list[str]) -> dict[str, dict[str
     return ledger_io.load_jsonl_union(path, id_key, errors, root=ROOT)
 
 
+ERRATA_ID_PREFIXES = {
+    "hypothesis": "HYP-",
+    "material": "MAT-",
+    "note": "NOTE-",
+    "question": "Q-",
+    "session": "SESSION-",
+    "evaluation": "EVL-",
+    "fragment": "FRAG-",
+    "motif": "MOTIF-",
+}
+_LEDGER_ID_RE = re.compile(r"^(?:HYP|MAT|NOTE|Q|SESSION|EVL|FRAG|MOTIF)-")
+
+
+def check_errata_addressee_labels(
+    errata: dict[str, dict[str, Any]], errors: list[str]
+) -> None:
+    """Require ``subject_type`` to agree with the address it is attached to.
+
+    ``belief_state.build_errata_index`` routes on the address, not on this label,
+    and that is deliberate: IDs and repo paths are self-identifying, so routing on
+    the declared type would let a mislabelled row escape its own address. The cost
+    of that choice was that the label could lie unchecked -- ``subject_type=tool``
+    pointing at a hypothesis paid the full penalty, while ``subject_type=hypothesis``
+    pointing at a file path was silently inert. Both were accepted by every check.
+
+    This makes the label mean what it says without giving it routing power.
+    ``other`` and ``report`` are exempt as declared escape hatches, except that they
+    must not be used to disguise a ledger ID (use the specific type for that).
+    Composite addresses are allowed: a row may name several targets in one string,
+    so the check asks whether *some* token carries the right prefix.
+    """
+    for errata_id, record in sorted(errata.items()):
+        subject_type = record.get("subject_type")
+        subject_id = record.get("subject_id")
+        if not isinstance(subject_type, str) or not isinstance(subject_id, str) or not subject_id:
+            continue
+        expected = ERRATA_ID_PREFIXES.get(subject_type)
+        if expected is not None:
+            tokens = re.split(r"[\s/,;]+", subject_id)
+            if not any(tok.startswith(expected) for tok in tokens):
+                errors.append(
+                    f"errata:{errata_id}: subject_type={subject_type!r} but subject_id "
+                    f"{subject_id!r} carries no {expected} address"
+                )
+        elif subject_type in ("tool", "report") and _LEDGER_ID_RE.match(subject_id):
+            errors.append(
+                f"errata:{errata_id}: subject_type={subject_type!r} but subject_id "
+                f"{subject_id!r} is a ledger ID; use the matching subject_type"
+            )
+
+
 def check_refs(
     collection_name: str,
     records: dict[str, dict[str, Any]],
@@ -489,6 +540,7 @@ def main() -> int:
     check_refs("evaluations", evaluations, "note_ids", "note", notes, errors)
     if errata_records:
         check_refs("evaluations", evaluations, "errata_ids", "errata", errata_records, errors)
+        check_errata_addressee_labels(errata_records, errors)
 
     for evl_id, evl in evaluations.items():
         session_id = evl.get("session_id")

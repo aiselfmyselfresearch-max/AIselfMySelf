@@ -436,6 +436,8 @@ python3 tools/inspect_inquiry.py --packet-stats --stats-limit 40   # 標本で�
 3. **決定論的信念マップ（[`BELIEF_MAP.md`](../BELIEF_MAP.md) / `tools/belief_state.py`）**：
    - 証拠多様性と独立セッション数に応じた減衰付き対数オッズ更新により、各問いの有効仮説事後確率 $P_t(H \mid \mathcal{D}_t)$、不確実性 $u(H)$、事前一様分布からの情報利得 $D_{\mathrm{KL}}(P_t \parallel P_0)$、および最大期待情報利得（EIG）対立ペアを算出する。
    - `state/errata*` で訂正対象となった素材・断片・ノートに依存する仮説には自動的に `errata_flags` が伝播し、再検証対象として可視化される。
+   - **訂正の宛先と重みは別の規則で決まる**（`tools/belief_state.py`）。宛先は `subject_id` / `fragment_id` / `target.id` の**アドレス欄**が決め、`subject_type` は経路選択に使わない。台帳IDとリポジトリパスは自己同定的であり、ラベルで経路を選ぶとラベルを誤った行が自分の宛先から逃げてしまうためである。ラベルの側は `tools/validate_seed.py` の `check_errata_addressee_labels` が**アドレスとの整合**を検査する（`tool` と書きながら `HYP-*` を指す行は CI で落ちる）。散文欄 `claim_location` は「主張がどこに書かれていたか」であって宛先ではないため、アドレス欄をまったく持たない旧行の**フォールバック**としてのみ読む。
+   - 仮説に直接向けられた訂正は対数オッズを **−0.60 × 件数** 動かすが、その重みを払うのは**いまも誤りを主張している行だけ**、すなわち `verdict=contradicted` かつ `status != withdrawn` の行に限る。撤回された訂正、検査した結果主張が**成立した**（`holds`）行、測定不能（`unmeasurable`）の行は `errata_flags` に残り可視のまま、重みは動かさない。可視性と重みは別の問いだからである。enum 外の `status`（旧行の `corrected`）は既知の撤回ではないので、免除には使えない。
 4. **100% `readings/` → `notes` 配線と時系列正規化**：
    - 未登録だった366本の過去報告を `index_backfill: true` の構造索引スタブとして一括配線し、以後の新規報告には同一セッション内での `NOTE-*` 登録を CI（`tools/learning_metrics.py --check`）で義務化した。
    - 前倒し内部編年シャード171本は `tools/date_axis.py` が解決した実日付シャード50本へ1行も変えずにバイト統合し、`state/shard_aliases.json` で旧パス参照を透過解決する。

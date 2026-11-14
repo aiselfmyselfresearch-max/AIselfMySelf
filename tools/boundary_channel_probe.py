@@ -226,10 +226,20 @@ def run(target: str = DEFAULT_TARGET, question: str = QUESTION,
         "live_hypotheses_with_a_direct_errata_row": len(direct),
         "live_hypothesis_count": len(cols["hypotheses"]),
         "live_errata_rows": len(cols["errata"]),
-        "reads_verdict": False,
-        "reads_status": False,
-        "comment": "The -0.60 branch is latent: no live hypothesis carries a direct "
-                   "errata row, and the branch filters on neither verdict nor status.",
+        # Measured, not hardcoded: these used to be literal False, which went stale
+        # the moment the engine was fixed. Derive them from the content arm so the
+        # probe cannot report a property the engine no longer has.
+        "reads_verdict": len({
+            round(v["d_log_odds"], 6) for k, v in out["arms"]["content"].items()
+            if k in ("contradicted_open", "holds_open", "unmeasurable_open")
+        }) > 1,
+        "reads_status": len({
+            round(v["d_log_odds"], 6) for k, v in out["arms"]["content"].items()
+            if k in ("contradicted_open", "contradicted_withdrawn")
+        }) > 1,
+        "comment": "The -0.60 branch is latent on the live ledger: no live hypothesis "
+                   "carries a direct errata row. Whether the branch reads verdict and "
+                   "status is measured from the content arm above, not asserted here.",
     }
     return out
 

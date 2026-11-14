@@ -71,8 +71,46 @@ def load_belief_ledgers(root: Path = ROOT) -> dict[str, dict[str, dict[str, Any]
     return cols
 
 
+def errata_is_live_correction(rec: dict[str, Any]) -> bool:
+    """True when a correction still asserts an unresolved error.
+
+    The weight penalty must not be paid by a hypothesis whose correction was
+    withdrawn, nor by one where the check ran and the claim HELD (no error was
+    found), nor by one that could not be measured at all. Visibility is a
+    separate question: ``errata_flags`` still lists every row, because knowing
+    that a claim was checked -- or that a correction was retracted -- is useful
+    to the next reader. Only the weight is gated here.
+
+    Before this was added, ``log_odds[hid] -= 0.60 * len(direct_errs)`` counted
+    every row carrying an ``errata_id``, so a retracted correction and a
+    correction recording "the claim held" cost exactly as much as a live one
+    (measured: -0.6000 for all nine verdict x status combinations). That defect
+    was filed as ERR-20261114-9a6fb1 and is what this function closes.
+
+    ``status`` values outside the schema enum are treated as live rather than
+    silently discounted: two legacy rows carry ``corrected``, and an unknown
+    label must not become a way to escape the penalty.
+    """
+    if rec.get("status") == "withdrawn":
+        return False
+    return rec.get("verdict") == "contradicted"
+
+
 def build_errata_index(errata: dict[str, dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
-    """Map any target ID or repo path -> list of errata records targeting it (1-hop)."""
+    """Map any target ID or repo path -> list of errata records targeting it (1-hop).
+
+    Address fields (``subject_id``, ``fragment_id``, ``target.id``) are authoritative.
+    The prose location fields (``claim_location``, ``where``, ``location``) say
+    *where a claim was written*, not *what the correction is addressed to*, so they
+    are consulted only as a fallback for rows that carry no address at all.
+
+    They used to be indexed unconditionally, which let a correction addressed to a
+    tool penalise a hypothesis merely because its ``claim_location`` happened to be
+    that hypothesis's ID. ``subject_type`` is deliberately still not read here:
+    ledger IDs and repo paths are self-identifying, and routing on the declared
+    label would let a mislabelled row escape its own address. The label is checked
+    for consistency by ``validate_seed.py`` instead.
+    """
     by_target: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for _eid, rec in sorted(errata.items()):
         keys: list[str] = []
@@ -83,13 +121,16 @@ def build_errata_index(errata: dict[str, dict[str, Any]]) -> dict[str, list[dict
             val = rec.get(kname)
             if isinstance(val, str) and val:
                 keys.append(val)
-        for loc_key in ("claim_location", "where", "location"):
-            loc = rec.get(loc_key)
-            if isinstance(loc, str) and loc:
-                keys.append(loc)
-                head = loc.split(":", 1)[0].split("#", 1)[0].strip()
-                if head:
-                    keys.append(head)
+        if not keys:
+            # No explicit address: fall back to the prose location so that older
+            # rows written before subject_id existed stay reachable.
+            for loc_key in ("claim_location", "where", "location"):
+                loc = rec.get(loc_key)
+                if isinstance(loc, str) and loc:
+                    keys.append(loc)
+                    head = loc.split(":", 1)[0].split("#", 1)[0].strip()
+                    if head:
+                        keys.append(head)
         for k in keys:
             if rec not in by_target[k]:
                 by_target[k].append(rec)
@@ -296,8 +337,15 @@ def compute_belief_state(
                 eid = erec.get("errata_id")
                 if isinstance(eid, str) and eid not in direct_errs and eid not in hop_errs:
                     hop_errs.append(eid)
-        if direct_errs:
-            log_odds[hid] -= 0.60 * len(direct_errs)
+        # Only corrections that still assert an error cost weight. A withdrawn
+        # correction, one whose check found the claim HELD, and one that could not
+        # be measured stay visible in errata_flags but do not move the belief.
+        penalising = [
+            e["errata_id"] for e in errata_by_target.get(hid, [])
+            if "errata_id" in e and errata_is_live_correction(e)
+        ]
+        if penalising:
+            log_odds[hid] -= 0.60 * len(penalising)
         all_flags = direct_errs + hop_errs
         if all_flags:
             hyp_errata[hid] = all_flags
