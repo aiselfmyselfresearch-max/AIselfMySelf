@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4333 件（research_excerpt 2106 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4343 件（research_excerpt 2116 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：248 編（selected 96 ／ draft 152）
 - **解釈的関係（Relations）**：7007 件
-- **探究セッション（Sessions）**：809 回
+- **探究セッション（Sessions）**：812 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4333 | `literary_text` 2159／`research_excerpt` 2106／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4343 | `literary_text` 2159／`research_excerpt` 2116／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 248 | `selected` 96／`draft` 152／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7007 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 809 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13453 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 812 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13479 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 278 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 834 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 835 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 26 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 278 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 284 |  |
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -792,7 +792,7 @@
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4333 件・詳細は map/3*.md）
+## 4. 対話素材（4343 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5129,8 +5129,18 @@
 | `MAT-20261114-f591b5` | research_excerpt | Crisp A, Boschetti C, Perry M, Tunnacliffe A, Micklem G『Crisp ほか（2015）動物ゲノムにおける遺伝子の水平伝播：ヒ… |
 | `MAT-20261114-ada43f` | research_excerpt | Maturana HR, Varela FJ『Maturana & Varela（1980）オートポイエーシス：生命とは自己を産出し続ける閉じたネットワークである』（1980） |
 | `MAT-20261114-2fe654` | research_excerpt | Sagan L『Sagan [Margulis]（1967）細胞内共生説：真核細胞はかつて別々だった生物の統合体である』（1967） |
+| `MAT-20261114-1a0b2e` | research_excerpt | Decaestecker E, Gaba S, Raeymaekers JAM, Stoks R, Van Kerckhoven L, Ebert D, De Meester L… |
+| `MAT-20261114-993fd4` | research_excerpt | van der Valk T, Pečnerová P, Díez-del-Molino D, Bergström A, Oppenheimer J, Hartmann S, e… |
+| `MAT-20261114-dd896e` | research_excerpt | Rajakumar R, San Mauro D, Dijkstra MB, Huang MH, Wheeler DE, Hiou-Tim F, Khila A, Cournoy… |
+| `MAT-20261114-c42a43` | research_excerpt | Angel A, Song J, Dean C, Howard M『Angel, Song, Dean & Howard (2011) 冬の記憶をデジタルに数える——FLC の双… |
+| `MAT-20261114-0bdae0` | research_excerpt | Anstey ML, Rogers SM, Ott SR, Burrows M, Simpson SJ『Anstey, Rogers, Ott, Burrows & Simpso… |
+| `MAT-20261114-cdff6d` | research_excerpt | Hubel DH, Wiesel TN『Hubel & Wiesel (1970) 片眼縫合の感受性期——同じ遮断が、週齢によって皮質を書き換えるか何も書き換えないか』（1970） |
+| `MAT-20261114-5bc593` | research_excerpt | Gibson EM, Purger D, Mount CW, Goldstein AK, Lin GL, Wood LS, et al., Monje M『Gibson et a… |
+| `MAT-20261114-52a778` | research_excerpt | Florio M, Albert M, Taverna E, Namba T, Brandl H, Lewitus E, et al., Huttner WB『Florio et… |
+| `MAT-20261114-89c350` | research_excerpt | de Vanssay A, Bougé AL, Boivin A, Hermant C, Teysset L, Delmarre V, Antoniewski C, Ronsse… |
+| `MAT-20261114-48db2a` | research_excerpt | Kong A, Frigge ML, Masson G, Besenbacher S, Sulem P, Magnusson G, et al., Stefansson K『Ko… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261114-be9b65・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261114-731f5a・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -5943,6 +5953,9 @@
 | `SESSION-20261114-999065` | 2026-11-14T06:40:00Z | `Q-20261101-9f6ad5`, `Q-003` | — | — |
 | `SESSION-20261114-b4de98` | 2026-11-14T08:50:00Z | `Q-003` | — | — |
 | `SESSION-20261114-be9b65` | 2026-11-14T10:20:00Z | `Q-001`, `Q-003` | — | — |
+| `SESSION-20261114-084e4d` | 2026-11-14T11:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-3b48e5` | 2026-11-14T11:50:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-731f5a` | 2026-11-14T12:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7007 件・全表は map/40-relations-*.md）
 
@@ -6028,7 +6041,7 @@
 | `map/31-materials-research-19.md` | 100 | 255,170 |
 | `map/31-materials-research-20.md` | 100 | 220,572 |
 | `map/31-materials-research-21.md` | 100 | 232,884 |
-| `map/31-materials-research-22.md` | 6 | 9,037 |
+| `map/31-materials-research-22.md` | 16 | 41,224 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6061,7 +6074,7 @@
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
 | `map/50-sessions-16.md` | 50 | 34,652 |
-| `map/50-sessions-17.md` | 9 | 7,271 |
+| `map/50-sessions-17.md` | 12 | 9,732 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6086,24 +6099,24 @@
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,793 |
 | `map/60-notes-24.md` | 25 | 98,714 |
-| `map/60-notes-25.md` | 25 | 110,190 |
-| `map/60-notes-26.md` | 25 | 59,056 |
-| `map/60-notes-27.md` | 25 | 81,174 |
-| `map/60-notes-28.md` | 25 | 68,616 |
-| `map/60-notes-29.md` | 25 | 83,911 |
-| `map/60-notes-30.md` | 25 | 103,771 |
-| `map/60-notes-31.md` | 25 | 128,165 |
-| `map/60-notes-32.md` | 16 | 84,029 |
+| `map/60-notes-25.md` | 25 | 113,274 |
+| `map/60-notes-26.md` | 25 | 59,546 |
+| `map/60-notes-27.md` | 25 | 78,597 |
+| `map/60-notes-28.md` | 25 | 68,753 |
+| `map/60-notes-29.md` | 25 | 83,000 |
+| `map/60-notes-30.md` | 25 | 107,779 |
+| `map/60-notes-31.md` | 25 | 127,476 |
+| `map/60-notes-32.md` | 17 | 86,542 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・791本・29,570,095 B）
+## 8. 精読ノート索引（readings/・792本・29,623,099 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 763/791 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 764/792 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：791 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：106 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：792 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：107 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6714,6 +6727,7 @@
 | `readings/2026-11-14-ten-biology-boundary-chimerism-and-external-memory.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-be9b65` | 3,855 | Q2 M10 S1 | — | 精読報告：生物学10件の追加と解釈——「境界のキメラとしての人間」と「外部記憶を読み返すAIの自己」 |
 | `readings/2026-11-14-ten-biology-conditions-for-continuity.md` | — | 2026-11-14 | `SESSION-20261114-9bdfdc` +2 | 8,676 | Q3 M10 S3 | — | 続くための条件——身体・記憶・選択的再開をめぐる生物学10篇 |
 | `readings/2026-11-14-ten-biology-death-licensed-and-death-at-work.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-cf7d23` +2 | 20,985 | Q4 M12 S3 | — | 死は許可され、死は働く——生物学十資料精読報告 |
+| `readings/2026-11-14-ten-biology-dormant-records-and-the-return-path.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-084e4d` +2 | 23,230 | Q3 M14 MOT1 S3 | — | 眠っている記録と、呼び戻す道——生物学十資料の精読（2026-11-14） |
 | `readings/2026-11-14-ten-biology-legacy-memory-and-what-survives-the-cut.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-1c2153` +1 | 23,306 | Q3 M11 S2 | — | 書庫自身を測る——legacy_probe.py の四測定と、その限界 |
 | `readings/2026-11-14-ten-biology-microbial-boundaries-and-individuality.md` | — | 2026-11-14 | `SESSION-20261114-651ac3` +2 | 9,570 | Q3 M10 S3 | — | 人間の境界はどこにあるか——微生物、移動する細胞、個人差を読む |
 | `readings/2026-11-14-ten-biology-position-transport-deletion-cost.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-33eef6` +2 | 54,891 | Q3 F1 M22 R2 S3 ERR1 | ✓ | 並ぶこと、渡ること、消えること、かかること——生物学10資料で位置・運搬・削除・費用を分けて読む |
