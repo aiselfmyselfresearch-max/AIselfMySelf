@@ -76,8 +76,11 @@ def audit_records(
     mirrors ``read_log_backfill.since_report`` so the totals agree.
     """
     hand = read_log_backfill.handwritten_pairs(read_log)
-    excused = read_log_backfill.unread_choices(sessions)
+    unread = read_log_backfill.unread_choices(sessions)
+    declined = read_log_backfill.declined_pairs(read_log)
+    excused = unread | declined
     context_only = context_only_pairs(read_log)
+    contact = read_log_backfill.covered_pairs(read_log)
     rows: list[dict[str, Any]] = []
     for session_id, record in sessions.items():
         started = read_log_backfill.session_date(session_id, record)
@@ -91,9 +94,15 @@ def audit_records(
         if not context:
             continue
         hand_pairs = [m for m in context if (session_id, m) in hand]
-        excused_pairs = [
-            m for m in context if (session_id, m) not in hand and (session_id, m) in excused
+        unread_pairs_here = [
+            m for m in context if (session_id, m) not in hand and (session_id, m) in unread
         ]
+        declined_pairs_here = [
+            m
+            for m in context
+            if (session_id, m) not in hand and (session_id, m) not in unread and (session_id, m) in declined
+        ]
+        excused_pairs = unread_pairs_here + declined_pairs_here
         unmet_pairs = [
             m
             for m in context
@@ -105,6 +114,9 @@ def audit_records(
         unmet_without_row = [
             m for m in unmet_pairs if (session_id, m) not in context_only
         ]
+        # A decline answers layer 2, but a pair with no contact row is still a
+        # layer-1 gap.  Count it separately so the audit does not hide it.
+        no_contact_row = [m for m in context if (session_id, m) not in contact]
         rows.append(
             {
                 "date": started.isoformat(),
@@ -112,9 +124,13 @@ def audit_records(
                 "context": len(context),
                 "handwritten": len(hand_pairs),
                 "excused": len(excused_pairs),
+                "unread_excused": len(unread_pairs_here),
+                "declined": len(declined_pairs_here),
                 "unmet": len(unmet_pairs),
                 "context_only": len(context_only_pairs_here),
                 "unmet_without_row": len(unmet_without_row),
+                "no_contact_row": len(no_contact_row),
+                "no_contact_material_ids": no_contact_row,
                 "unmet_material_ids": unmet_pairs,
                 "notes_excerpt": str(record.get("notes") or "")[:140],
             }
@@ -135,9 +151,12 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "total_pairs": total_pairs,
         "handwritten_pairs": handwritten,
         "excused_pairs": excused,
+        "unread_excused_pairs": sum(row["unread_excused"] for row in rows),
+        "declined_pairs": sum(row["declined"] for row in rows),
         "unmet_pairs": unmet,
         "context_only_pairs": sum(row["context_only"] for row in rows),
         "unmet_without_row_pairs": sum(row["unmet_without_row"] for row in rows),
+        "no_contact_row_pairs": sum(row["no_contact_row"] for row in rows),
         "accounted_rate": round((handwritten + excused) / total_pairs, 4)
         if total_pairs
         else 0.0,
@@ -152,25 +171,27 @@ def render(rows: list[dict[str, Any]], summary: dict[str, Any], top: int) -> str
     lines.append("=== layer 2 per-session audit ===")
     lines.append(
         "eligible sessions: {s} / pairs: {p} / hand-written: {h} / "
-        "未読の選択: {e} / unmet: {u} (context-only: {c}, no row: {n}) / accounted: {r:.1f}%".format(
+        "未読の選択: {e} / declined: {de} / unmet: {u} (context-only: {c}, no row: {n}, no contact: {nc}) / accounted: {r:.1f}%".format(
             s=summary["eligible_sessions"],
             p=summary["total_pairs"],
             h=summary["handwritten_pairs"],
-            e=summary["excused_pairs"],
+            e=summary["unread_excused_pairs"],
+            de=summary["declined_pairs"],
             u=summary["unmet_pairs"],
             c=summary["context_only_pairs"],
             n=summary["unmet_without_row_pairs"],
+            nc=summary["no_contact_row_pairs"],
             r=summary["accounted_rate"] * 100,
         )
     )
     lines.append("")
     lines.append("-- first 10 eligible sessions (by date, then session_id) --")
-    lines.append("date        session                    ctx  hand  exc  unmet")
+    lines.append("date        session                    ctx  hand  unread  decl  unmet")
     for row in summary["first_ten"]:
         lines.append(
-            "{d}  {s:24s} {c:4d}  {h:4d}  {e:3d}  {u:4d}".format(
+            "{d}  {s:24s} {c:4d}  {h:4d}  {e:6d}  {de:4d}  {u:5d}".format(
                 d=row["date"], s=row["session_id"], c=row["context"],
-                h=row["handwritten"], e=row["excused"], u=row["unmet"],
+                h=row["handwritten"], e=row["unread_excused"], de=row["declined"], u=row["unmet"],
             )
         )
     lines.append("")
@@ -178,15 +199,15 @@ def render(rows: list[dict[str, Any]], summary: dict[str, Any], top: int) -> str
     if not summary["sessions_with_unmet"]:
         lines.append("(none)")
     else:
-        lines.append("date        session                    ctx  hand  exc  unmet")
+        lines.append("date        session                    ctx  hand  unread  decl  unmet")
         for row in rows:
             if row["unmet"]:
                 lines.append(
-                    "{d}  {s:24s} {c:4d}  {h:4d}  {e:3d}  {u:4d}  "
+                    "{d}  {s:24s} {c:4d}  {h:4d}  {e:6d}  {de:4d}  {u:5d}  "
                     "(context-only {co}, no row {nr})".format(
                         d=row["date"], s=row["session_id"], c=row["context"],
-                        h=row["handwritten"], e=row["excused"], u=row["unmet"],
-                        co=row["context_only"], nr=row["unmet_without_row"],
+                        h=row["handwritten"], e=row["unread_excused"], de=row["declined"],
+                        u=row["unmet"], co=row["context_only"], nr=row["unmet_without_row"],
                     )
                 )
                 for material_id in row["unmet_material_ids"][:5]:
@@ -195,12 +216,12 @@ def render(rows: list[dict[str, Any]], summary: dict[str, Any], top: int) -> str
                     lines.append(f"    - … and {len(row['unmet_material_ids']) - 5} more")
     lines.append("")
     lines.append(f"-- largest contexts (top {top}) --")
-    lines.append("date        session                    ctx  hand  exc  unmet")
+    lines.append("date        session                    ctx  hand  unread  decl  unmet")
     for row in summary["largest_context"][:top]:
         lines.append(
-            "{d}  {s:24s} {c:4d}  {h:4d}  {e:3d}  {u:4d}".format(
+            "{d}  {s:24s} {c:4d}  {h:4d}  {e:6d}  {de:4d}  {u:5d}".format(
                 d=row["date"], s=row["session_id"], c=row["context"],
-                h=row["handwritten"], e=row["excused"], u=row["unmet"],
+                h=row["handwritten"], e=row["unread_excused"], de=row["declined"], u=row["unmet"],
             )
         )
     return "\n".join(lines)

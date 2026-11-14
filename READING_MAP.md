@@ -5882,7 +5882,7 @@
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,636 |
-| `map/60-notes-24.md` | 25 | 98,617 |
+| `map/60-notes-24.md` | 25 | 98,823 |
 | `map/60-notes-25.md` | 25 | 61,220 |
 | `map/60-notes-26.md` | 25 | 77,165 |
 | `map/60-notes-27.md` | 25 | 66,187 |
@@ -5893,7 +5893,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・769本・28,684,200 B）
+## 8. 精読ノート索引（readings/・769本・28,688,569 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 745/769 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -6501,7 +6501,7 @@
 | `readings/2026-11-13-what-is-kept-when-the-carrier-dies.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-910748` | 35,986 | Q3 M13 S1 ERR1 | — | 担い手が死んでも残るもの、写さないことで残るもの——生物学十資料の精読と、保存という語の書き換え |
 | `readings/2026-11-13-where-the-body-and-the-record-part-ways.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-6c8a47` +6 | 67,913 | Q3 M32 S7 ERR5 | ✓ | 体と記録が別れるところ——生物学十篇の精読報告 |
 | `readings/2026-11-14-a-date-does-not-stop-the-number.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-eb4872` | 3,909 | Q1 M1 S1 | — | 日付は数を止めない — 数を持つ claim 410件の対象と、五つの再実行 |
-| `readings/2026-11-14-layer-two-first-sessions-and-the-unrepairable-gap.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-71d250` +12 | 11,070 | Q2 M5 S13 | — | 層2 は最初の10セッションをどう記録したか——29ペアの used_as_context と、追記専用の修復不能性 |
+| `readings/2026-11-14-layer-two-first-sessions-and-the-unrepairable-gap.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-71d250` +12 | 13,401 | Q2 M5 S13 | — | 層2 は最初の10セッションをどう記録したか——29ペアの used_as_context と、追記専用の修復不能性 |
 | `readings/2026-11-14-the-anchor-locates-but-does-not-date.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-ad8c22` | 4,103 | Q1 S1 | ✓ | 住所は場所を指すが、時を指さない — 24–59の帯の measured_fact を四つ再実行する |
 | `readings/2026-11-14-the-index-says-sixty-and-prints-twenty-four.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-fb84cf` | 4,560 | Q1 S1 ERR3 | ✓ | 索引は60と書き、24しか刷らない — 生きた道具を宛先にした訂正 |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
