@@ -6067,7 +6067,7 @@
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,793 |
 | `map/60-notes-24.md` | 25 | 98,568 |
-| `map/60-notes-25.md` | 25 | 100,879 |
+| `map/60-notes-25.md` | 25 | 100,823 |
 | `map/60-notes-26.md` | 25 | 60,477 |
 | `map/60-notes-27.md` | 25 | 80,702 |
 | `map/60-notes-28.md` | 25 | 69,742 |
@@ -6078,13 +6078,13 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・789本・29,427,593 B）
+## 8. 精読ノート索引（readings/・789本・29,436,160 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 761/789 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：789 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：107 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：106 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6695,7 +6695,7 @@
 | `readings/2026-11-14-ten-biology-conditions-for-continuity.md` | — | 2026-11-14 | `SESSION-20261114-9bdfdc` +2 | 8,676 | Q3 M10 S3 | — | 続くための条件——身体・記憶・選択的再開をめぐる生物学10篇 |
 | `readings/2026-11-14-ten-biology-legacy-memory-and-what-survives-the-cut.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-1c2153` +1 | 23,306 | Q3 M11 S2 | — | 書庫自身を測る——legacy_probe.py の四測定と、その限界 |
 | `readings/2026-11-14-ten-biology-microbial-boundaries-and-individuality.md` | — | 2026-11-14 | `SESSION-20261114-651ac3` +2 | 9,570 | Q3 M10 S3 | — | 人間の境界はどこにあるか——微生物、移動する細胞、個人差を読む |
-| `readings/2026-11-14-ten-biology-position-transport-deletion-cost.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-33eef6` +2 | 48,056 | Q3 M22 R2 S3 ERR1 | — | 並ぶこと、渡ること、消えること、かかること——生物学10資料で位置・運搬・削除・費用を分けて読む |
+| `readings/2026-11-14-ten-biology-position-transport-deletion-cost.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-33eef6` +2 | 52,609 | Q3 M22 R2 S3 ERR1 | ✓ | 並ぶこと、渡ること、消えること、かかること——生物学10資料で位置・運搬・削除・費用を分けて読む |
 | `readings/2026-11-14-ten-biology-self-recognition-chimerism-and-erasure.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-8aa542` +2 | 36,941 | Q3 M10 S3 | ✓ | 自己回避と自他識別、キメラと同調、消去される記憶——生物学10資料の精読報告 |
 | `readings/2026-11-14-ten-biology-suspension-time-boundary.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-06994f` +2 | 19,262 | Q3 M12 S3 | ✓ | 止まる・合わせる・区切る——生物学の十の資料を、休眠・時刻・境界で読む |
 | `readings/2026-11-14-ten-biology-the-one-who-stands-for-the-many.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-e64675` +3 | 22,950 | Q3 M13 S4 ERR1 | ✓ | 一人が多数の名で呼ばれる——参照ゲノムという制度を、生物学10資料で読む |
