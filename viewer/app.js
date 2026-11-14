@@ -70,7 +70,12 @@ async function fetchArchive() {
   for (const endpoint of ["api/state", "data.json"]) {
     try {
       const res = await fetch(endpoint, { cache: "no-store" });
-      if (res.ok) return await res.json();
+      if (res.ok) {
+        // The viewer serves the last snapshot while a rebuild runs; say so
+        // rather than showing a page that silently lags the files on disk.
+        state.snapshotStale = res.headers.get("X-Archive-Snapshot") === "stale";
+        return await res.json();
+      }
     } catch (_) {
       // Fall through to next endpoint
     }
@@ -2046,6 +2051,16 @@ async function init() {
     const data = await fetchArchive();
     indexData(data);
     renderStats();
+    if (state.snapshotStale) {
+      const strip = document.getElementById("stats-strip");
+      if (strip) {
+        const note = document.createElement("span");
+        note.className = "badge badge-draft";
+        note.title = "サーバーは前回のスナップショットを返しました。再構築はバックグラウンドで進行中です。";
+        note.textContent = "スナップショット更新中";
+        strip.appendChild(note);
+      }
+    }
     renderFragmentList();
     renderFragmentReader(state.selectedFragmentId);
     populateConstellationMotifSelect();

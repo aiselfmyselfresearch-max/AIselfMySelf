@@ -4,6 +4,26 @@
 Reads state/*.jsonl, tools/voice_audit.py metrics, and readings/*.md dynamically
 on every /api/state request so updates appear immediately on page refresh.
 Binds to 0.0.0.0 by default for browser preview compatibility.
+
+Snapshot model (2026-11-14)
+---------------------------
+One rebuild of ``/api/state`` builds the 17 derived panes over every fragment,
+material and reading note and takes ~7 s on a slow machine (measured in a
+sandbox: 8.4 s cold, 0.03 s warm).  A reader therefore used to block for the
+whole rebuild whenever any ledger file changed, and a client with a ten-second
+deadline timed out while still being served correct data.
+
+A request now serves the most recent snapshot immediately and a single
+background thread refreshes it.  The response says which of the two it is:
+
+* ``X-Archive-Snapshot: fresh``   — the snapshot matches the files on disk now;
+* ``X-Archive-Snapshot: stale``   — a rebuild is running; this body is the
+  previous snapshot, and ``X-Archive-Snapshot-Age-Ms`` says how old it is.
+
+``/api/state?fresh=1`` waits for the rebuild and answers fresh.  Nothing about
+the payload changes: it is the same dict, serialised once and reused.  The
+staleness is bounded by one rebuild, and a client that cannot tolerate it asks
+for ``fresh=1``.
 """
 from __future__ import annotations
 
@@ -348,20 +368,66 @@ def _read_payload_with_retries(retries: int = 6, delay: float = 0.02) -> dict[st
     raise last
 
 
-def read_archive_payload(retries: int = 6, delay: float = 0.02) -> dict[str, object]:
-    """Build the payload at most once at a time; concurrent readers share the result.
+_SNAPSHOT_LOCK = threading.Lock()
+_SNAPSHOT: (
+    tuple[
+        str,
+        tuple[tuple[str, int, int, int], ...] | None,
+        dict[str, object],
+        bytes,
+        float,
+    ]
+    | None
+) = None
+_REFRESH_LOCK = threading.Lock()
+_REFRESH_RUNNING = False
+_SERVE_STATE = threading.local()
 
-    The derived panes (voice and the 16 audit mirrors) scan every fragment,
-    material and reading note on each rebuild, and one rebuild now takes several
-    seconds.  Under six concurrent readers a writer that keeps touching
-    ``state/materials.jsonl`` used to start six rebuilds at once and every
-    request crossed the ten-second client timeout (tests/test_server.py
-    ``test_concurrent_reads_during_atomic_rewrites``).  Requests that arrive
-    while a rebuild is in flight wait for that rebuild and share its payload
-    instead of starting another one; a request that arrives to an idle builder
-    still rebuilds as soon as the state fingerprint has changed, so a refresh
-    after a write keeps seeing the new rows.
+# How many times a cold build may be retried while a writer keeps replacing
+# ledger files.  Warm requests never enter this path.
+_BUILD_RETRIES = 6
+_BUILD_RETRY_DELAY = 0.02
+
+
+def _current_signature() -> tuple[tuple[str, int, int, int], ...] | None:
+    try:
+        return _repo_stat_signature(ROOT)
+    except OSError:
+        return None
+
+
+def current_snapshot() -> tuple[
+    str,
+    tuple[tuple[str, int, int, int], ...] | None,
+    dict[str, object],
+    bytes,
+    float,
+] | None:
+    """Return (root, signature, payload, pre-encoded bytes, built_at) or None.
+
+    ``root`` is part of the key so that a snapshot built for one repository is
+    never served for another one (the tests point ``ROOT`` at temporary copies).
     """
+    with _SNAPSHOT_LOCK:
+        return _SNAPSHOT
+
+
+def _store_snapshot(
+    signature: tuple[tuple[str, int, int, int], ...] | None,
+    payload: dict[str, object],
+) -> None:
+    global _SNAPSHOT
+    with _DERIVED_LOCK:
+        if _DERIVED_CACHE is not None and _DERIVED_CACHE[1] is payload:
+            encoded = _DERIVED_CACHE[2]
+        else:
+            encoded = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    with _SNAPSHOT_LOCK:
+        _SNAPSHOT = (str(ROOT), signature, payload, encoded, time.time())
+
+
+def _build_payload(retries: int, delay: float) -> dict[str, object]:
+    """Build at most once at a time; concurrent cold readers share the result."""
     global _BUILD_IN_FLIGHT, _BUILD_GENERATION, _LAST_BUILD_PAYLOAD
     with _BUILD_COND:
         if _BUILD_IN_FLIGHT:
@@ -385,6 +451,107 @@ def read_archive_payload(retries: int = 6, delay: float = 0.02) -> dict[str, obj
         _BUILD_GENERATION += 1
         _BUILD_COND.notify_all()
     return payload
+
+
+def _refresh_once(retries: int, delay: float) -> None:
+    global _REFRESH_RUNNING
+    try:
+        read_archive_payload(retries, delay, fresh=True)
+    except Exception as exc:  # a failed refresh must not kill the server
+        print(f"[viewer] background snapshot refresh failed: {exc}", flush=True)
+    finally:
+        with _REFRESH_LOCK:
+            _REFRESH_RUNNING = False
+
+
+def _kick_refresh(retries: int = _BUILD_RETRIES, delay: float = _BUILD_RETRY_DELAY) -> None:
+    """Start one background rebuild, or leave the one already running alone."""
+    global _REFRESH_RUNNING
+    with _REFRESH_LOCK:
+        if _REFRESH_RUNNING:
+            return
+        _REFRESH_RUNNING = True
+    thread = threading.Thread(
+        target=_refresh_once,
+        args=(retries, delay),
+        name="archive-snapshot-refresh",
+        daemon=True,
+    )
+    thread.start()
+
+
+def refresh_in_flight() -> bool:
+    with _REFRESH_LOCK:
+        return _REFRESH_RUNNING
+
+
+def read_archive_payload(
+    retries: int = _BUILD_RETRIES, delay: float = _BUILD_RETRY_DELAY, fresh: bool = False
+) -> dict[str, object]:
+    """Serve the newest snapshot; rebuild in the background unless ``fresh`` is asked.
+
+    One rebuild of the derived panes takes ~7 s on a slow machine.  Asking every
+    request to pay it made a client with a ten-second deadline time out while the
+    server was computing correct data, and six readers during one atomic rewrite
+    paid it six times over.  Now:
+
+    * a snapshot that matches the files on disk is returned as it is;
+    * a snapshot that no longer matches is returned unchanged, and exactly one
+      background thread rebuilds it (``X-Archive-Snapshot: stale`` says so);
+    * ``fresh=True`` (``/api/state?fresh=1``) waits for the rebuild and returns
+      the new snapshot, which is what a reader asks for when it must see rows it
+      has just written;
+    * only the very first request, when no snapshot exists yet, builds in the
+      request thread.
+
+    The payload dict and its serialised bytes are shared, never mutated.
+    """
+    signature = _current_signature()
+    snapshot = current_snapshot()
+    if snapshot is not None:
+        snapshot_root, snapshot_signature, payload, _encoded, built_at = snapshot
+        if snapshot_root != str(ROOT):
+            snapshot = None
+    if snapshot is not None:
+        if signature is not None and snapshot_signature == signature:
+            _SERVE_STATE.stale = False
+            _SERVE_STATE.age_ms = int((time.time() - built_at) * 1000)
+            return payload
+        if not fresh:
+            _SERVE_STATE.stale = True
+            _SERVE_STATE.age_ms = int((time.time() - built_at) * 1000)
+            _kick_refresh(retries, delay)
+            return payload
+
+    payload = _build_payload(retries, delay)
+    post_signature = _current_signature()
+    _store_snapshot(post_signature, payload)
+    # If the files changed while the build ran, the body we are about to send no
+    # longer matches them; say so instead of calling it fresh.
+    stale = signature is not None and post_signature is not None and signature != post_signature
+    _SERVE_STATE.stale = stale
+    _SERVE_STATE.age_ms = 0
+    if stale:
+        _kick_refresh(retries, delay)
+    return payload
+
+
+def served_snapshot_headers() -> dict[str, str]:
+    """Headers describing the snapshot this request was answered from."""
+    stale = bool(getattr(_SERVE_STATE, "stale", False))
+    age_ms = int(getattr(_SERVE_STATE, "age_ms", 0))
+    return {
+        "X-Archive-Snapshot": "stale" if stale else "fresh",
+        "X-Archive-Snapshot-Age-Ms": str(age_ms),
+    }
+
+
+def warm_snapshot() -> None:
+    """Build the first snapshot without a request (called by ``main``)."""
+    try:
+        read_archive_payload()
+    except Exception as exc:  # warming is best effort; a request will retry
+        print(f"[viewer] warm-up build skipped: {exc}", flush=True)
 
 
 class ReusableThreadingHTTPServer(ThreadingHTTPServer):
@@ -446,8 +613,9 @@ class ArchiveRequestHandler(BaseHTTPRequestHandler):
             return
 
         if route in ("/api/state", "/data.json"):
+            want_fresh = (parse_qs(parsed.query).get("fresh") or ["0"])[0] not in ("0", "", "false")
             try:
-                payload = read_archive_payload()
+                payload = read_archive_payload(fresh=want_fresh)
                 with _DERIVED_LOCK:
                     if _DERIVED_CACHE is not None and _DERIVED_CACHE[1] is payload:
                         body = _DERIVED_CACHE[2]
@@ -466,6 +634,8 @@ class ArchiveRequestHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(body)))
+            for header, value in served_snapshot_headers().items():
+                self.send_header(header, value)
             self.send_cors_and_embed_headers()
             self.end_headers()
             self.wfile.write(body)
@@ -508,6 +678,9 @@ def main() -> int:
     args = parser.parse_args()
 
     server = ReusableThreadingHTTPServer((args.host, args.port), ArchiveRequestHandler)
+    # Build the first snapshot off the request path so the first page load does
+    # not pay the ~7 s rebuild.  Requests that arrive earlier wait for it.
+    threading.Thread(target=warm_snapshot, name="archive-warm-up", daemon=True).start()
     print(f"Serving AIselfMySelf archive viewer at http://{args.host}:{args.port}/", flush=True)
     try:
         server.serve_forever()

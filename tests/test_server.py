@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import http.client
 import json
+import os
 import shutil
 import sys
 import tempfile
@@ -52,7 +53,17 @@ def start_server(repo: Path) -> tuple[serve_viewer.ReusableThreadingHTTPServer, 
     return server, thread
 
 
-def get(port: int, path: str, timeout: float = 10.0) -> tuple[int, dict[str, str], bytes]:
+# One rebuild of the derived panes takes ~7 s on a slow machine (measured in a
+# sandbox: 8.4 s cold, 0.03 s warm).  The deadline below is a liveness bound for
+# the test, not a latency assertion: what the server promises is that a warm
+# request is answered from a snapshot immediately, and that promise is asserted
+# directly in ``test_stale_snapshot_is_served_while_a_refresh_runs``.
+CLIENT_TIMEOUT = float(os.environ.get("ARCHIVE_TEST_TIMEOUT", "120"))
+
+
+def get(port: int, path: str, timeout: float | None = None) -> tuple[int, dict[str, str], bytes]:
+    if timeout is None:
+        timeout = CLIENT_TIMEOUT
     connection = http.client.HTTPConnection("127.0.0.1", port, timeout=timeout)
     try:
         connection.request("GET", path)
@@ -315,6 +326,55 @@ class ServerTests(unittest.TestCase):
                 third = serve_viewer._read_archive_payload_once()
             self.assertEqual(len(third["materials"]), count + 1)
             self.assertIsNot(third, first)
+
+    def test_stale_snapshot_is_served_while_a_refresh_runs(self) -> None:
+        """A warm request is answered from the snapshot; the rebuild happens behind it."""
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = copy_repo(Path(tmp))
+            materials = repo / "state" / "materials.jsonl"
+            real_build = serve_viewer._read_payload_with_retries
+
+            def slow_build(*args: object, **kwargs: object) -> dict[str, object]:
+                time.sleep(1.5)
+                return real_build(*args, **kwargs)  # type: ignore[arg-type]
+
+            with mock.patch.object(serve_viewer, "ROOT", repo), mock.patch.object(
+                serve_viewer, "VIEWER_DIR", repo / "viewer"
+            ), mock.patch.object(
+                serve_viewer, "_read_payload_with_retries", side_effect=slow_build
+            ):
+                server, thread = start_server(repo)
+                try:
+                    port = server.server_address[1]
+                    status, headers, body = get(port, "/api/state")
+                    self.assertEqual(status, 200)
+                    self.assertEqual(headers.get("X-Archive-Snapshot"), "fresh")
+                    baseline = len(json.loads(body)["materials"])
+
+                    extra = dict(json.loads(body)["materials"][0])
+                    extra["material_id"] = "MAT-STALE-TEST"
+                    with open(materials, "a", encoding="utf-8") as handle:
+                        handle.write(json.dumps(extra, ensure_ascii=False) + "\n")
+
+                    started = time.monotonic()
+                    status, headers, body = get(port, "/api/state")
+                    elapsed = time.monotonic() - started
+                    self.assertEqual(status, 200)
+                    # The body is the previous snapshot, labelled as such, and it
+                    # is returned without waiting for the rebuild.
+                    self.assertEqual(headers.get("X-Archive-Snapshot"), "stale")
+                    self.assertEqual(len(json.loads(body)["materials"]), baseline)
+                    self.assertLess(elapsed, 1.0)
+
+                    # A reader that must see its own rows asks for a fresh build.
+                    status, headers, body = get(port, "/api/state?fresh=1")
+                    self.assertEqual(status, 200)
+                    self.assertEqual(headers.get("X-Archive-Snapshot"), "fresh")
+                    self.assertEqual(len(json.loads(body)["materials"]), baseline + 1)
+                finally:
+                    server.shutdown()
+                    server.server_close()
+                    thread.join(timeout=5)
 
     def test_concurrent_reads_during_atomic_rewrites(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
