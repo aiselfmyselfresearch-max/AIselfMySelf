@@ -709,4 +709,26 @@ python3 -m unittest discover -s tests     → Ran 639 tests … OK
 
 本PRは [**#778**](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/778)（base `main`）。コミットは探究の内容（資料10件・台帳・この報告）と保守（四コレクションの順序保存連結）に分離してある。
 
+---
+
+## §15 二度目の合流：main がさらに動き、日付をまたぐ連結が使えなかった（2026-11-14）
+
+### 15-1 何が起きたか
+
+§14 の保守を終えて PR #778 を出すと、`mergeable: CONFLICTING` になった。`main` が再び進み、**PR #777**（粘菌の外部記憶とアウトポイエーシスについての反省的断片 `FRAG-20261114-ecb83e` の追加ほか）がマージされていた。#777 は `fragments.d`・`relations.d`・`sessions.d` に**同日の新規シャードを1本ずつ**作っており、合流後は `sessions.d` が再び **136/135**（超過はファイル数の次元のみ、バイトは 2.58 MiB／soft 4.00 MiB）になった。競合したのは今回も生成物 `READING_MAP.md` の1ファイルだけで、`map_build.py` の再生成のみで解決した。
+
+### 15-2 使えなかった処方と、使った処方
+
+§14 の処方（超過した新規シャードを、ファイル名順でその直前のシャードの末尾へ連結する）をそのまま当てようとすると、**直前のファイルが別日付**だった。そこに連結すれば 2026-11-14 の行が 2026-11-13 の名前を持つファイルに入る。手順2の「**日付を偽造しない**」に抵触し、`date_axis.py --enforce-shards` の前倒し検査にも掛かる。順序保存と日付一致は、この配置では同時に満たせない。
+
+そこで対象を変えた。**同じ 2026-11-13 の、未参照・自己所在地なし・オープン PR 非接触の隣接ペア**（3行のシャードを2行のシャードの末尾へ連結）を選び、`sessions.d` を 136 → **135** に戻した。吸収前後で `sessions` 和集合 **2,782,516 B の sha256 が完全一致**（増減 0 B）、`READING_MAP.md` の SHA-256 も不変。`soft_shards` の引上げは0件。探究の内容変更とは別の保守コミットに分離した。
+
+**手続き上の発見。** 「超過したファイルそのものを動かす」必要はない。必要なのは**コレクションのファイル数を1減らすこと**であり、順序保存連結はどの隣接ペアに対しても使える。したがって超過分のファイルの前後が別日付で塞がれていても、**同じ日付の隣接ペアがコレクション内のどこかに1組あれば**回収できる。逆に、隣接ペアが1組もなければ（2026-11-11 の `materials.d` の実測がそうだった）純減0であり、そのときは引上げ以外の選択肢がない。
+
+### 15-3 二度の合流の後の確定値
+
+和集合（`tools/validate_seed.py`）：**materials 4,323・fragments 248・relations 6,999・sessions 804・read_log 13,395・notes 832・evaluations 270・hypotheses 26・questions 437・motifs 59・editorial_decisions 126**。`readings/` 789本。`append_only_check.py` は `origin/main`（`433f30e`）の **27,710行**が byte for byte 現存することを確認。`note_index --check`（789 notes）／`inspect_inquiry --check-map`／`belief_state --check-map`（`BELIEF_MAP.md` 44,626 B、#777 は評価行を追加していないので §13-2 の事後確率は不変）／`read_log_backfill --check`／`date_axis --enforce-shards`（前倒し0本）／`learning_metrics --check`（配線率 789/789＝100.0%）／`size_budget --strict`（全項目 soft 以内）——すべて PASS。`python3 -m unittest discover -s tests` は **Ran 639 tests … OK**。
+
+二度の合流のあいだに、私の10件・3セッション・50 read_log 行・2ノート・4評価・10関係・1報告の**行は1行も変わっていない**。変わったのは保存場所（4＋1本のシャードが隣接シャードの末尾へ移った）と、生成物の再計算だけである。§4 で読んだ「運び手は荷と無関係である」が、この報告自身の保存形式について成り立っている。
+
 

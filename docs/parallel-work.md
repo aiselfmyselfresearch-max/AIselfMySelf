@@ -162,6 +162,16 @@ python3 tools/inspect_inquiry.py --check-map
 
 **`notes.d` を連結したことについて。** `notes.d` は統合の例外リストに無い。除外理由の「順序感受性が高い」は手順2の**並べ替え方式**（`notes` には順序キーが未定義）に対する実測であり、今回の方式は並べ替えず和集合バイト列が sha256 で一致するので差は観測不能である。代替は (a) `soft_shards` 130→131（道具の変更＝`ERR-023` で別PR、その間 strict テストは失敗）、(b) 何もしない（失敗したままマージ）の二つで、どちらも検査を通さない。(c) 不変を測ったうえで連結し、逸脱であることを報告 §14-3 に記録する、を選んだ。**恒久策（`notes.d` の順序規則を定義するか、例外リストの除外理由を方式別に書き分けるか）は `editorial_review` の議題であり、本セッションでは実施していない。** 次に「main の合流で同日の新規シャードが複数コレクションに入る」セッションは、同じ四連結をそのまま使える。吸収元と吸収先が隣接していることだけを条件に選び、和集合の sha256 で確認すること。
 
+**2026-11-14（追記2）：二度目の合流で `sessions.d` が再び超過した。超過ファイルの直前が別日付のとき、同日の隣接ペアを別に探す（測定）。**
+
+同じセッションが PR を出した直後に `origin/main`（PR #777）が `fragments.d`・`relations.d`・`sessions.d` へ同日の新規シャードを1本ずつ追加したため、合流後 `sessions.d` が **136/135** になった（超過はファイル数のみ、バイト 2.58 MiB／soft 4.00 MiB）。競合は `READING_MAP.md` の1ファイルで、再生成のみで解決した。
+
+追記1の処方（超過した新規シャードをファイル名順の直前シャード末尾へ連結）は**この配置では使えない**。直前のファイルが別日付（`2026-11-13`）で、そこへ `2026-11-14` の行を入れると手順2の「日付を偽造しない」に抵触し、`date_axis.py --enforce-shards` の前倒し検査にも掛かる。**順序保存と日付一致は、隣接ペアが日付をまたぐときには両立しない。**
+
+代わりに**同じ `2026-11-13` の未参照・自己所在地なし・オープン PR 非接触の隣接ペア**（3行を2行の末尾へ生バイト連結、元ファイルを同一コミットで削除）を吸収し、136→135 に戻した。吸収前後で `sessions` 和集合 **2,782,516 B の sha256 が完全一致**（増減 0 B）、`READING_MAP.md` の SHA-256 も不変。`soft_shards` の引上げ0件、保守コミットは探究の内容変更と分離。
+
+**一般化：** 回収の目標は「コレクションのファイル数を1減らすこと」であって「超過したファイルを動かすこと」ではない。順序保存連結は**どの隣接ペアにも**使えるので、超過分の前後が別日付で塞がれていても、同日の隣接ペアがコレクション内のどこかに1組あれば回収できる。1組も無ければ純減0（2026-11-11 の `materials.d` の実測）で、そのときだけ引上げが残る。探索順は (1) 超過ファイルの直前が同日か、(2) 違えば同コレクション内の同日の未参照隣接ペアをファイル名順に走査、である。
+
 検証：`map_build`／`belief_state --write-map`／`validate_seed`（materials 4,323・sessions 803・read_log 13,395・notes 832・evaluations 270・relations 6,997）／`append_only_check`（`origin/main` 27,706行 byte for byte）／`inspect_inquiry --check-map`／`belief_state --check-map`／`note_index --check`（789 notes）／`read_log_backfill --check`／`date_axis --enforce-shards`／`learning_metrics --check`（配線率 789/789）／`size_budget --strict` すべて PASS、`unittest` 639 tests OK。実測の全文は [`readings/2026-11-14-ten-biology-position-transport-deletion-cost.md`](../readings/2026-11-14-ten-biology-position-transport-deletion-cost.md) §14。
 
 **2026-11-11：残り枠0の五コレクションを、回収できる分だけ回収した（測定）。**
