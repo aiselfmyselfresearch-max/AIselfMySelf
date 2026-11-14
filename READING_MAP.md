@@ -23,11 +23,11 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4272 | `literary_text` 2159／`research_excerpt` 2045／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 247 | `selected` 96／`draft` 151／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 6986 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 787 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13243 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 262 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 788 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13248 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 264 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 822 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 823 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 25 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 250 |  |
 
