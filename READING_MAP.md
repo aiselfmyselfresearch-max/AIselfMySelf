@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4323 件（research_excerpt 2096 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4333 件（research_excerpt 2106 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：248 編（selected 96 ／ draft 152）
 - **解釈的関係（Relations）**：6999 件
-- **探究セッション（Sessions）**：804 回
+- **探究セッション（Sessions）**：807 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4323 | `literary_text` 2159／`research_excerpt` 2096／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4333 | `literary_text` 2159／`research_excerpt` 2106／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 248 | `selected` 96／`draft` 152／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 6999 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 804 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13395 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 807 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13415 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 270 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 832 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 833 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 26 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 270 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 276 |  |
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -792,7 +792,7 @@
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4323 件・詳細は map/3*.md）
+## 4. 対話素材（4333 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5099,6 +5099,16 @@
 | `MAT-20261114-9fd94e` | research_excerpt | Zhang Y, Proenca R, Maffei M, Barone M, Leopold L, Friedman JM『Zhang et al. (1994) レプチンの位… |
 | `MAT-20261114-5a1346` | research_excerpt | Kennedy GC『Kennedy (1953) lipostasis仮説——脂肪貯蔵をほぼ一定に保つという防御される水準』（1953） |
 | `MAT-20261114-4f303b` | research_excerpt | Bechtel W, Bich L『Bechtel & Bich (2025) ホメオスタシスの広い理解の再発見——セットポイントはCannonの定義に含まれていなかった』（20… |
+| `MAT-20261114-b959cd` | research_excerpt | Raff MC『Social controls on cell survival and cell death』（1992） |
+| `MAT-20261114-ca315e` | research_excerpt | Barres BA, Hart IK, Coles HS, Burne JF, Voyvodic JT, Richardson WD, Raff MC『Cell death an… |
+| `MAT-20261114-473532` | research_excerpt | Vaux DL, Cory S, Adams JM『Bcl-2 gene promotes haemopoietic cell survival and cooperates w… |
+| `MAT-20261114-bb77bf` | research_excerpt | Frisch SM, Francis H『Disruption of epithelial cell-matrix interactions induces apoptosis』… |
+| `MAT-20261114-6969d3` | research_excerpt | Fadok VA, Voelker DR, Campbell PA, Cohen JJ, Bratton DL, Henson PM『Exposure of phosphatid… |
+| `MAT-20261114-f025dd` | research_excerpt | Elliott MR, Chekeni FB, Trampont PC, Lazarowski ER, Kadl A, Walk SF, Park D, Woodson RI, … |
+| `MAT-20261114-ef1346` | research_excerpt | Chera S, Ghila L, Dobretz K, Wenger Y, Bauer C, Buzgariu W, Martinou JC, Galliot B『Apopto… |
+| `MAT-20261114-36cc15` | research_excerpt | Li F, Huang Q, Chen J, Peng Y, Roop DR, Bedford JS, Li CY『Apoptotic cells activate the "p… |
+| `MAT-20261114-4cb06d` | research_excerpt | Tang HL, Tang HM, Mak KH, Hu S, Wang SS, Wong KM, Wong CS, Wu HY, Law HT, Liu K, Talbot C… |
+| `MAT-20261114-7d059f` | research_excerpt | Sun G, Guzman E, Balasanyan V, Conner CM, Wong K, Zhou HR, Kosik KS, Montell DJ『A molecul… |
 | `MAT-20261114-b1516f` | research_excerpt | Duboule D, Dollé P『Duboule & Dollé（1989）マウス Hox クラスターの並び——記録の物理的位置が、体のどこで読まれるかを決める』（1989） |
 | `MAT-20261114-6604f6` | research_excerpt | Berry MJ, Banu L, Chen YY, Mandel SJ, Kieffer JD, Harney JW, Larsen PR『Berry ほか（1991）UGA … |
 | `MAT-20261114-e5b29c` | research_excerpt | Kruger K, Grabowski PJ, Zaug AJ, Sands J, Gottschling DE, Cech TR『Kruger ほか（1982）自分自身を切り出… |
@@ -5891,6 +5901,9 @@
 | `SESSION-20261114-9bdfdc` | 2026-11-14T12:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-1c2153` | 2026-11-14T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-a4a400` | 2026-11-14T00:00:00Z | `Q-003`, `Q-001`, `Q-002` | — | — |
+| `SESSION-20261114-cf7d23` | 2026-11-14 | `Q-001`, `Q-003` | — | — |
+| `SESSION-20261114-1053fe` | 2026-11-14 | `Q-001`, `Q-003` | — | — |
+| `SESSION-20261114-1fa38d` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-33eef6` | 2026-11-14T10:41:12Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-4bccd1` | 2026-11-14T10:47:30Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-7f9352` | 2026-11-14T10:55:48Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -6012,7 +6025,8 @@
 | `map/31-materials-research-18.md` | 100 | 246,023 |
 | `map/31-materials-research-19.md` | 100 | 255,170 |
 | `map/31-materials-research-20.md` | 100 | 220,572 |
-| `map/31-materials-research-21.md` | 96 | 220,469 |
+| `map/31-materials-research-21.md` | 100 | 232,884 |
+| `map/31-materials-research-22.md` | 6 | 9,037 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6043,8 +6057,8 @@
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
-| `map/50-sessions-16.md` | 50 | 34,682 |
-| `map/50-sessions-17.md` | 4 | 3,341 |
+| `map/50-sessions-16.md` | 50 | 34,596 |
+| `map/50-sessions-17.md` | 7 | 5,728 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6069,24 +6083,24 @@
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,793 |
 | `map/60-notes-24.md` | 25 | 98,568 |
-| `map/60-notes-25.md` | 25 | 100,869 |
-| `map/60-notes-26.md` | 25 | 60,477 |
-| `map/60-notes-27.md` | 25 | 80,702 |
-| `map/60-notes-28.md` | 25 | 69,742 |
-| `map/60-notes-29.md` | 25 | 91,472 |
-| `map/60-notes-30.md` | 25 | 97,334 |
-| `map/60-notes-31.md` | 25 | 127,002 |
-| `map/60-notes-32.md` | 14 | 77,813 |
+| `map/60-notes-25.md` | 25 | 103,746 |
+| `map/60-notes-26.md` | 25 | 59,200 |
+| `map/60-notes-27.md` | 25 | 82,001 |
+| `map/60-notes-28.md` | 25 | 68,664 |
+| `map/60-notes-29.md` | 25 | 86,858 |
+| `map/60-notes-30.md` | 25 | 101,612 |
+| `map/60-notes-31.md` | 25 | 127,278 |
+| `map/60-notes-32.md` | 15 | 80,943 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・789本・29,440,399 B）
+## 8. 精読ノート索引（readings/・790本・29,484,842 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 761/789 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 762/790 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：789 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：106 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：790 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：107 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6695,6 +6709,7 @@
 | `readings/2026-11-14-ten-biology-access-state-and-cost.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-62a80f` +5 | 22,058 | Q3 M11 S6 ERR4 | ✓ | 残っていること、使えること、応答すること——生物学10資料で状態と費用を分けて読む |
 | `readings/2026-11-14-ten-biology-boundary-chimerism-and-external-memory.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-be9b65` | 3,855 | Q2 M10 S1 | — | 精読報告：生物学10件の追加と解釈——「境界のキメラとしての人間」と「外部記憶を読み返すAIの自己」 |
 | `readings/2026-11-14-ten-biology-conditions-for-continuity.md` | — | 2026-11-14 | `SESSION-20261114-9bdfdc` +2 | 8,676 | Q3 M10 S3 | — | 続くための条件——身体・記憶・選択的再開をめぐる生物学10篇 |
+| `readings/2026-11-14-ten-biology-death-licensed-and-death-at-work.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-cf7d23` +2 | 20,985 | Q4 M12 S3 | — | 死は許可され、死は働く——生物学十資料精読報告 |
 | `readings/2026-11-14-ten-biology-legacy-memory-and-what-survives-the-cut.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-1c2153` +1 | 23,306 | Q3 M11 S2 | — | 書庫自身を測る——legacy_probe.py の四測定と、その限界 |
 | `readings/2026-11-14-ten-biology-microbial-boundaries-and-individuality.md` | — | 2026-11-14 | `SESSION-20261114-651ac3` +2 | 9,570 | Q3 M10 S3 | — | 人間の境界はどこにあるか——微生物、移動する細胞、個人差を読む |
 | `readings/2026-11-14-ten-biology-position-transport-deletion-cost.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-33eef6` +2 | 54,891 | Q3 F1 M22 R2 S3 ERR1 | ✓ | 並ぶこと、渡ること、消えること、かかること——生物学10資料で位置・運搬・削除・費用を分けて読む |
