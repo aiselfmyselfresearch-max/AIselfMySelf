@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：4262 件（research_excerpt 2035 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：781 回
+- **探究セッション（Sessions）**：782 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -5821,6 +5821,7 @@
 | `SESSION-20261114-cc164e` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-24b1f0` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-9e4bde` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-2ac83a` | 2026-11-14 | `Q-002`, `Q-001` | — | — |
 | `SESSION-20261114-71d250` | 2026-11-14 | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-f56aba` | 2026-11-14T03:40:00Z | `Q-20261024-ff6311`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-11d148` | 2026-11-14T14:20:00Z | `Q-003` | — | — |
@@ -5939,7 +5940,7 @@
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
-| `map/50-sessions-16.md` | 31 | 21,531 |
+| `map/50-sessions-16.md` | 32 | 22,258 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5963,25 +5964,25 @@
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,751 |
-| `map/60-notes-24.md` | 25 | 100,215 |
-| `map/60-notes-25.md` | 25 | 75,617 |
-| `map/60-notes-26.md` | 25 | 68,254 |
-| `map/60-notes-27.md` | 25 | 72,491 |
-| `map/60-notes-28.md` | 25 | 74,895 |
-| `map/60-notes-29.md` | 25 | 101,649 |
-| `map/60-notes-30.md` | 25 | 102,935 |
-| `map/60-notes-31.md` | 25 | 142,038 |
-| `map/60-notes-32.md` | 2 | 12,018 |
+| `map/60-notes-24.md` | 25 | 99,170 |
+| `map/60-notes-25.md` | 25 | 76,803 |
+| `map/60-notes-26.md` | 25 | 67,531 |
+| `map/60-notes-27.md` | 25 | 71,746 |
+| `map/60-notes-28.md` | 25 | 74,328 |
+| `map/60-notes-29.md` | 25 | 104,024 |
+| `map/60-notes-30.md` | 25 | 100,062 |
+| `map/60-notes-31.md` | 25 | 139,780 |
+| `map/60-notes-32.md` | 3 | 19,391 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・777本・29,031,083 B）
+## 8. 精読ノート索引（readings/・778本・29,054,722 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 751/777 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 751/778 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：777 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：102 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：778 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：103 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6583,6 +6584,7 @@
 | `readings/2026-11-13-what-is-kept-when-the-carrier-dies.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-910748` | 35,986 | Q3 M13 S1 ERR1 | — | 担い手が死んでも残るもの、写さないことで残るもの——生物学十資料の精読と、保存という語の書き換え |
 | `readings/2026-11-13-where-the-body-and-the-record-part-ways.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-6c8a47` +6 | 67,913 | Q3 M32 S7 ERR5 | ✓ | 体と記録が別れるところ——生物学十篇の精読報告 |
 | `readings/2026-11-14-a-date-does-not-stop-the-number.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-eb4872` | 3,909 | Q1 M1 S1 | — | 日付は数を止めない — 数を持つ claim 410件の対象と、五つの再実行 |
+| `readings/2026-11-14-counting-form-lineage-crowd-not-chain.md` | — | 2026-11-14 | `SESSION-20261114-2ac83a` | 12,388 | Q2 M5 S1 | — | 師の鎖ではなく群衆だった——報告771件の書式を数えて、自分の基準を一つ直す |
 | `readings/2026-11-14-layer-two-first-sessions-and-the-unrepairable-gap.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-71d250` +12 | 13,401 | Q2 M5 S13 | — | 層2 は最初の10セッションをどう記録したか——29ペアの used_as_context と、追記専用の修復不能性 |
 | `readings/2026-11-14-ten-biology-access-state-and-cost.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-62a80f` +5 | 22,058 | Q3 M11 S6 ERR4 | ✓ | 残っていること、使えること、応答すること——生物学10資料で状態と費用を分けて読む |
 | `readings/2026-11-14-ten-biology-microbial-boundaries-and-individuality.md` | — | 2026-11-14 | `SESSION-20261114-651ac3` +2 | 9,570 | Q3 M10 S3 | — | 人間の境界はどこにあるか——微生物、移動する細胞、個人差を読む |
