@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：4302 件（research_excerpt 2075 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6987 件
-- **探究セッション（Sessions）**：796 回
+- **探究セッション（Sessions）**：797 回
 
 ### 台帳ごとの件数
 
@@ -23,11 +23,11 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4302 | `literary_text` 2159／`research_excerpt` 2075／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 247 | `selected` 96／`draft` 151／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 6987 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 796 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13315 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 264 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 797 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13319 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 267 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 827 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 828 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 26 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 263 |  |
 
@@ -5098,7 +5098,7 @@
 | `MAT-20261114-9fd94e` | research_excerpt | Zhang Y, Proenca R, Maffei M, Barone M, Leopold L, Friedman JM『Zhang et al. (1994) レプチンの位… |
 | `MAT-20261114-5a1346` | research_excerpt | Kennedy GC『Kennedy (1953) lipostasis仮説——脂肪貯蔵をほぼ一定に保つという防御される水準』（1953） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261114-999065・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261114-b4de98・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -5898,6 +5898,7 @@
 | `SESSION-20261114-11d148` | 2026-11-14T14:20:00Z | `Q-003` | — | — |
 | `SESSION-20261114-146bc0` | 2026-11-14T05:40:00Z | `Q-003` | — | — |
 | `SESSION-20261114-999065` | 2026-11-14T06:40:00Z | `Q-20261101-9f6ad5`, `Q-003` | — | — |
+| `SESSION-20261114-b4de98` | 2026-11-14T08:50:00Z | `Q-003` | — | — |
 
 ## 6. 解釈的関係（6987 件・全表は map/40-relations-*.md）
 
@@ -6013,7 +6014,7 @@
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
-| `map/50-sessions-16.md` | 46 | 31,735 |
+| `map/50-sessions-16.md` | 47 | 32,571 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6037,24 +6038,24 @@
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,806 |
-| `map/60-notes-24.md` | 25 | 99,158 |
-| `map/60-notes-25.md` | 25 | 93,575 |
-| `map/60-notes-26.md` | 25 | 62,469 |
-| `map/60-notes-27.md` | 25 | 79,460 |
-| `map/60-notes-28.md` | 25 | 71,209 |
-| `map/60-notes-29.md` | 25 | 95,787 |
-| `map/60-notes-30.md` | 25 | 91,987 |
-| `map/60-notes-31.md` | 25 | 136,951 |
-| `map/60-notes-32.md` | 10 | 57,159 |
+| `map/60-notes-24.md` | 25 | 98,568 |
+| `map/60-notes-25.md` | 25 | 95,560 |
+| `map/60-notes-26.md` | 25 | 62,723 |
+| `map/60-notes-27.md` | 25 | 80,144 |
+| `map/60-notes-28.md` | 25 | 70,105 |
+| `map/60-notes-29.md` | 25 | 96,491 |
+| `map/60-notes-30.md` | 25 | 92,547 |
+| `map/60-notes-31.md` | 25 | 130,465 |
+| `map/60-notes-32.md` | 11 | 65,643 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・785本・29,278,399 B）
+## 8. 精読ノート索引（readings/・786本・29,298,087 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 757/785 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 758/786 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：785 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：786 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：106 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -6657,6 +6658,7 @@
 | `readings/2026-11-13-what-is-kept-when-the-carrier-dies.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-910748` | 35,986 | Q3 M13 S1 ERR1 | — | 担い手が死んでも残るもの、写さないことで残るもの——生物学十資料の精読と、保存という語の書き換え |
 | `readings/2026-11-13-where-the-body-and-the-record-part-ways.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-6c8a47` +6 | 67,913 | Q3 M32 S7 ERR5 | ✓ | 体と記録が別れるところ——生物学十篇の精読報告 |
 | `readings/2026-11-14-a-date-does-not-stop-the-number.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-eb4872` | 3,909 | Q1 M1 S1 | — | 日付は数を止めない — 数を持つ claim 410件の対象と、五つの再実行 |
+| `readings/2026-11-14-closable-and-not-closable.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-b4de98` | 9,790 | Q1 S1 ERR11 | — | 閉じられる訂正と、閉じてはいけない訂正——同じ「未解決」の下に別の欠陥があった |
 | `readings/2026-11-14-counting-form-lineage-crowd-not-chain.md` | — | 2026-11-14 | `SESSION-20261114-2ac83a` | 12,388 | Q2 M5 S1 | ✓ | 師の鎖ではなく群衆だった——報告771件の書式を数えて、自分の基準を一つ直す |
 | `readings/2026-11-14-layer-two-first-sessions-and-the-unrepairable-gap.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-71d250` +12 | 13,401 | Q2 M5 S13 | — | 層2 は最初の10セッションをどう記録したか——29ペアの used_as_context と、追記専用の修復不能性 |
 | `readings/2026-11-14-shard-consolidation-at-the-soft-limit.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-194fb7` +1 | 3,027 | S2 | — | 上限ちょうどでのシャード統合——10資料の追加が押し上げた四つの数 |
@@ -6675,7 +6677,7 @@
 | `readings/2026-11-14-the-verdict-arrived-before-the-hypothesis.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-f56aba` +2 | 15,530 | Q4 M3 S3 ERR1 | ✓ | 判定は仮説より先に届いた — 系譜質量の後付け継承を測る |
 | `readings/2026-11-14-the-version-that-is-not-being-read.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-9610a8` +2 | 26,093 | Q3 M13 S3 | ✓ | 読まれない版はどこへ行くのか——生物学10資料の精読報告 |
 | `readings/2026-11-14-the-writing-palette-and-the-only-column-that-names-a-tool.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-999065` | 11,782 | Q2 M1 S1 ERR4 | — | 書き板を名乗る者——道具が証言できる唯一の欄は、誤りの欄だった |
-| `readings/2026-11-14-two-hypotheses-that-were-not-competing.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-11d148` | 12,271 | Q1 S1 ERR1 | — | 競合していない二説を、競合させていた——位置と選別は別の通路を通る |
+| `readings/2026-11-14-two-hypotheses-that-were-not-competing.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-11d148` | 12,271 | Q1 S1 ERR1 | ✓ | 競合していない二説を、競合させていた——位置と選別は別の通路を通る |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
 | `readings/2026-11-15-a-second-key-with-no-lock.md` | 2026-10-26 | 2026-11-15 | `SESSION-20261115-6a7862` +4 | 15,179 | Q5 F12 M4 MOT1 S5 | ✓ | 錠のない鍵を、もう一本 —— 痣と言い切った声と、朝ごとに選び直す沈黙（SESSION-20261115-6a7862） |
 | `readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md` | 2026-10-26 | 2026-11-16 | `SESSION-20261116-de57d9` | 5,113 | Q10 F3 M4 MOT2 S1 | ✓ | 二種類の火と、目の試練——ローテーション改修と火×習慣の再読交配（SESSION-20261116-de57d9） |
