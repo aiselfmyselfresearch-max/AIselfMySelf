@@ -28,6 +28,11 @@ import boundary_channel_probe as probe  # noqa: E402
 
 TARGET = "HYP-20261113-ccc1d8"
 QUESTION = "Q-003"
+#: The one synthetic correction the probe injects. Assertions about the 1-hop
+#: channel must be made through this ID: the flag LISTS are read off the live
+#: ledger, so their length moves whenever a real erratum is addressed to
+#: anything TARGET depends on.
+PROBE_ERRATA_ID = "ERR-PROBE-0000"
 
 
 class BoundaryChannelProbeTests(unittest.TestCase):
@@ -139,14 +144,26 @@ class BoundaryChannelProbeTests(unittest.TestCase):
         for tag, per_rule in arm.items():
             deltas = {round(v["d_log_odds"], 6) for v in per_rule.values()}
             self.assertEqual(deltas, {0.0}, f"{tag}: 1-hop altered log-odds")
+        # Flags are counted on the LIVE ledger plus one injection, so assert the
+        # injected row's presence, never a total. A real erratum addressed to any
+        # evaluation, material or source note of TARGET adds one more flag and
+        # must not break a test about the mechanism. See ERR-20261114-bf62c3.
         sup = arm["via_supports_evaluation"]
-        self.assertEqual(sup["closed"]["errata_flags"], [])
-        self.assertEqual(len(sup["current"]["errata_flags"]), 1)
+        self.assertNotIn(PROBE_ERRATA_ID, sup["closed"]["errata_flags"])
+        self.assertIn(PROBE_ERRATA_ID, sup["current"]["errata_flags"])
 
     def test_widening_the_rule_admits_a_narrowing_evaluation(self):
+        """A correction addressed to a narrowing evaluation is admitted only by
+        the widened rule. Asserted through the injected row, not through a flag
+        count: ``ERR-20261114-f89b2e`` is a real correction addressed to
+        ``EVL-20261114-3abc38``, a narrows_scope evaluation of TARGET, so the
+        widened rule now returns two flags where it used to return one. The
+        mechanism is unchanged; the live ledger is not empty.
+        """
         nar = self.res["arms"]["rule_powered"]["via_narrows_evaluation"]
-        self.assertEqual(nar["current"]["errata_flags"], [])
-        self.assertEqual(len(nar["widened"]["errata_flags"]), 1)
+        self.assertNotIn(PROBE_ERRATA_ID, nar["closed"]["errata_flags"])
+        self.assertNotIn(PROBE_ERRATA_ID, nar["current"]["errata_flags"])
+        self.assertIn(PROBE_ERRATA_ID, nar["widened"]["errata_flags"])
 
     def test_mix_arm_holds_row_count_fixed(self):
         arm = self.res["arms"]["mix"]
