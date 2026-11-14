@@ -5073,11 +5073,6 @@
 | `MAT-20261114-ffa514` | research_excerpt | Scheffer M, Carpenter S, Foley JA, Folke C, Walker B『Catastrophic Shifts in Ecosystems』（2… |
 | `MAT-20261114-416aeb` | research_excerpt | Carpenter S, Walker B, Anderies JM, Abel N『From Metaphor to Measurement: Resilience of Wh… |
 | `MAT-20261114-3dd2f0` | research_excerpt | Elmqvist T, Folke C, Nystrom M, Peterson G, Bengtsson J, Walker B, Norberg J『Response Div… |
-| `MAT-20261114-1a0b2e` | research_excerpt | Decaestecker E, Gaba S, Raeymaekers JAM, Stoks R, Van Kerckhoven L, Ebert D, De Meester L… |
-| `MAT-20261114-993fd4` | research_excerpt | van der Valk T, Pečnerová P, Díez-del-Molino D, Bergström A, Oppenheimer J, Hartmann S, e… |
-| `MAT-20261114-dd896e` | research_excerpt | Rajakumar R, San Mauro D, Dijkstra MB, Huang MH, Wheeler DE, Hiou-Tim F, Khila A, Cournoy… |
-| `MAT-20261114-c42a43` | research_excerpt | Angel A, Song J, Dean C, Howard M『Angel, Song, Dean & Howard (2011) 冬の記憶をデジタルに数える——FLC の双… |
-| `MAT-20261114-0bdae0` | research_excerpt | Anstey ML, Rogers SM, Ott SR, Burrows M, Simpson SJ『Anstey, Rogers, Ott, Burrows & Simpso… |
 | `MAT-20261114-590dfd` | research_excerpt | Aganezov S, Yan SM, Soto DC, McCoy RC, Schatz MC『Aganezov ほか（2022）完全な参照は『普遍的に』改善する——3,202… |
 | `MAT-20261114-84aeb3` | research_excerpt | Kaminow B, Ballouz S, Gillis J, Dobin A『Kaminow ほか（2022）合意ゲノム——93%は11人に由来し、多数派の配列に替えると写像誤… |
 | `MAT-20261114-9f9c33` | research_excerpt | Byrska-Bishop M, Evani US, Zhao X, Zody MC『Byrska-Bishop ほか（2022）1kGP拡張——3,202検体・602 trio… |
@@ -5088,11 +5083,6 @@
 | `MAT-20261114-c5cf3f` | research_excerpt | Nemergut DR, Schmidt SK, Fukami T, O'Neill SP, Bilinski TM, Stanish LF, Knelman JE, Darcy… |
 | `MAT-20261114-d299eb` | research_excerpt | Standish RJ, Hobbs RJ, Mayfield MM, Bestelmeyer BT, Suding KN, Battaglia LL, Eviner V, Ha… |
 | `MAT-20261114-03ffc7` | research_excerpt | Johnstone JF, Allen CD, Franklin JF, Frelich LE, Harvey BJ, Higuera PE, Mack MC, Meurisse… |
-| `MAT-20261114-cdff6d` | research_excerpt | Hubel DH, Wiesel TN『Hubel & Wiesel (1970) 片眼縫合の感受性期——同じ遮断が、週齢によって皮質を書き換えるか何も書き換えないか』（1970） |
-| `MAT-20261114-5bc593` | research_excerpt | Gibson EM, Purger D, Mount CW, Goldstein AK, Lin GL, Wood LS, et al., Monje M『Gibson et a… |
-| `MAT-20261114-52a778` | research_excerpt | Florio M, Albert M, Taverna E, Namba T, Brandl H, Lewitus E, et al., Huttner WB『Florio et… |
-| `MAT-20261114-89c350` | research_excerpt | de Vanssay A, Bougé AL, Boivin A, Hermant C, Teysset L, Delmarre V, Antoniewski C, Ronsse… |
-| `MAT-20261114-48db2a` | research_excerpt | Kong A, Frigge ML, Masson G, Besenbacher S, Sulem P, Magnusson G, et al., Stefansson K『Ko… |
 | `MAT-20261114-db51dc` | research_excerpt | Ballouz S, Dobin A, Gillis JA『Ballouz, Dobin & Gillis（2019）ヒト参照ゲノムは『タイプ標本』である——基準は健康でも最頻で… |
 | `MAT-20261114-2ceeb5` | research_excerpt | Engel SR, Dietrich FS, Fisk DG, Binkley G, Cherry JM『Engel ほか（2014）出芽酵母 S288C——腐ったイチジクから来… |
 | `MAT-20261114-c80b53` | research_excerpt | Schneider VA, Graves-Lindsay T, Howe K, Church DM『Schneider ほか（2017）GRCh38 の評価——参照は複数ドナーの… |
@@ -5139,6 +5129,16 @@
 | `MAT-20261114-f591b5` | research_excerpt | Crisp A, Boschetti C, Perry M, Tunnacliffe A, Micklem G『Crisp ほか（2015）動物ゲノムにおける遺伝子の水平伝播：ヒ… |
 | `MAT-20261114-ada43f` | research_excerpt | Maturana HR, Varela FJ『Maturana & Varela（1980）オートポイエーシス：生命とは自己を産出し続ける閉じたネットワークである』（1980） |
 | `MAT-20261114-2fe654` | research_excerpt | Sagan L『Sagan [Margulis]（1967）細胞内共生説：真核細胞はかつて別々だった生物の統合体である』（1967） |
+| `MAT-20261114-1a0b2e` | research_excerpt | Decaestecker E, Gaba S, Raeymaekers JAM, Stoks R, Van Kerckhoven L, Ebert D, De Meester L… |
+| `MAT-20261114-993fd4` | research_excerpt | van der Valk T, Pečnerová P, Díez-del-Molino D, Bergström A, Oppenheimer J, Hartmann S, e… |
+| `MAT-20261114-dd896e` | research_excerpt | Rajakumar R, San Mauro D, Dijkstra MB, Huang MH, Wheeler DE, Hiou-Tim F, Khila A, Cournoy… |
+| `MAT-20261114-c42a43` | research_excerpt | Angel A, Song J, Dean C, Howard M『Angel, Song, Dean & Howard (2011) 冬の記憶をデジタルに数える——FLC の双… |
+| `MAT-20261114-0bdae0` | research_excerpt | Anstey ML, Rogers SM, Ott SR, Burrows M, Simpson SJ『Anstey, Rogers, Ott, Burrows & Simpso… |
+| `MAT-20261114-cdff6d` | research_excerpt | Hubel DH, Wiesel TN『Hubel & Wiesel (1970) 片眼縫合の感受性期——同じ遮断が、週齢によって皮質を書き換えるか何も書き換えないか』（1970） |
+| `MAT-20261114-5bc593` | research_excerpt | Gibson EM, Purger D, Mount CW, Goldstein AK, Lin GL, Wood LS, et al., Monje M『Gibson et a… |
+| `MAT-20261114-52a778` | research_excerpt | Florio M, Albert M, Taverna E, Namba T, Brandl H, Lewitus E, et al., Huttner WB『Florio et… |
+| `MAT-20261114-89c350` | research_excerpt | de Vanssay A, Bougé AL, Boivin A, Hermant C, Teysset L, Delmarre V, Antoniewski C, Ronsse… |
+| `MAT-20261114-48db2a` | research_excerpt | Kong A, Frigge ML, Masson G, Besenbacher S, Sulem P, Magnusson G, et al., Stefansson K『Ko… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261114-731f5a・全文は map/50-sessions-*.md）
 
@@ -5902,8 +5902,6 @@
 | `SESSION-20261113-64009f` | 2026-11-13 | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261113-5311d1` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-3fa48b` | 2026-11-14T10:55:00Z | `Q-001`, `Q-003` | `FRAG-20261114-ecb83e` | — |
-| `SESSION-20261114-3b48e5` | 2026-11-14T11:50:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261114-084e4d` | 2026-11-14T11:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-e64675` | 2026-11-14T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-451ff3` | 2026-11-14T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-626677` | 2026-11-14T03:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5953,6 +5951,8 @@
 | `SESSION-20261114-999065` | 2026-11-14T06:40:00Z | `Q-20261101-9f6ad5`, `Q-003` | — | — |
 | `SESSION-20261114-b4de98` | 2026-11-14T08:50:00Z | `Q-003` | — | — |
 | `SESSION-20261114-be9b65` | 2026-11-14T10:20:00Z | `Q-001`, `Q-003` | — | — |
+| `SESSION-20261114-084e4d` | 2026-11-14T11:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-3b48e5` | 2026-11-14T11:50:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-731f5a` | 2026-11-14T12:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6999 件・全表は map/40-relations-*.md）
@@ -6038,8 +6038,8 @@
 | `map/31-materials-research-18.md` | 100 | 246,023 |
 | `map/31-materials-research-19.md` | 100 | 255,170 |
 | `map/31-materials-research-20.md` | 100 | 220,572 |
-| `map/31-materials-research-21.md` | 100 | 240,990 |
-| `map/31-materials-research-22.md` | 16 | 33,118 |
+| `map/31-materials-research-21.md` | 100 | 232,884 |
+| `map/31-materials-research-22.md` | 16 | 41,224 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6070,8 +6070,8 @@
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
-| `map/50-sessions-16.md` | 50 | 34,745 |
-| `map/50-sessions-17.md` | 10 | 8,040 |
+| `map/50-sessions-16.md` | 50 | 34,596 |
+| `map/50-sessions-17.md` | 10 | 8,189 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6096,7 +6096,7 @@
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,793 |
 | `map/60-notes-24.md` | 25 | 98,568 |
-| `map/60-notes-25.md` | 25 | 107,667 |
+| `map/60-notes-25.md` | 25 | 107,756 |
 | `map/60-notes-26.md` | 25 | 59,056 |
 | `map/60-notes-27.md` | 25 | 81,174 |
 | `map/60-notes-28.md` | 25 | 68,616 |
@@ -6107,7 +6107,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・791本・29,535,977 B）
+## 8. 精読ノート索引（readings/・791本・29,537,846 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 763/791 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -6723,7 +6723,7 @@
 | `readings/2026-11-14-ten-biology-boundary-chimerism-and-external-memory.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-be9b65` | 3,855 | Q2 M10 S1 | — | 精読報告：生物学10件の追加と解釈——「境界のキメラとしての人間」と「外部記憶を読み返すAIの自己」 |
 | `readings/2026-11-14-ten-biology-conditions-for-continuity.md` | — | 2026-11-14 | `SESSION-20261114-9bdfdc` +2 | 8,676 | Q3 M10 S3 | — | 続くための条件——身体・記憶・選択的再開をめぐる生物学10篇 |
 | `readings/2026-11-14-ten-biology-death-licensed-and-death-at-work.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-cf7d23` +2 | 20,985 | Q4 M12 S3 | — | 死は許可され、死は働く——生物学十資料精読報告 |
-| `readings/2026-11-14-ten-biology-dormant-records-and-the-return-path.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-084e4d` +2 | 22,285 | Q3 M14 MOT1 S3 | — | 眠っている記録と、呼び戻す道——生物学十資料の精読（2026-11-14） |
+| `readings/2026-11-14-ten-biology-dormant-records-and-the-return-path.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-084e4d` +2 | 23,230 | Q3 M14 MOT1 S3 | — | 眠っている記録と、呼び戻す道——生物学十資料の精読（2026-11-14） |
 | `readings/2026-11-14-ten-biology-legacy-memory-and-what-survives-the-cut.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-1c2153` +1 | 23,306 | Q3 M11 S2 | — | 書庫自身を測る——legacy_probe.py の四測定と、その限界 |
 | `readings/2026-11-14-ten-biology-microbial-boundaries-and-individuality.md` | — | 2026-11-14 | `SESSION-20261114-651ac3` +2 | 9,570 | Q3 M10 S3 | — | 人間の境界はどこにあるか——微生物、移動する細胞、個人差を読む |
 | `readings/2026-11-14-ten-biology-position-transport-deletion-cost.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-33eef6` +2 | 54,891 | Q3 F1 M22 R2 S3 ERR1 | ✓ | 並ぶこと、渡ること、消えること、かかること——生物学10資料で位置・運搬・削除・費用を分けて読む |
