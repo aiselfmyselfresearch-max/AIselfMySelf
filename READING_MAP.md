@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4232 件（research_excerpt 2005 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4242 件（research_excerpt 2015 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：771 回
+- **探究セッション（Sessions）**：774 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4232 件・詳細は map/3*.md）
+## 4. 対話素材（4242 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4998,6 +4998,16 @@
 | `MAT-20261114-4bd277` | research_excerpt | Clyde A Hutchison III, Ray-Yuan Chuang, Vladimir N Noskov, Nacyra Assad-Garcia, Thomas J … |
 | `MAT-20261114-a9ce31` | research_excerpt | Robert Kucharski, Joanna Maleszka, Sylvain Foret, Ryszard Maleszka『Kucharski ほか（2008）ミツバチ… |
 | `MAT-20261114-a62e81` | research_excerpt | Katherine G Akers, Alonso Martinez-Canabal, Leonardo Restivo, Adelina P Yiu, Antonietta D… |
+| `MAT-20261114-84f400` | research_excerpt | Rees T, Bosch T, Douglas AE『Rees, Bosch & Douglas (2018) マイクロバイオームと人間——機能的な共生関係』（2018） |
+| `MAT-20261114-c7ff7b` | research_excerpt | Parke EC, Calcott B, O’Malley MA『Parke, Calcott & O’Malley (2018) マイクロバイオームと「自己」への慎重論』（20… |
+| `MAT-20261114-e27cc5` | research_excerpt | Hutter S, Bauer G, Bachem A, Fischer A, Hinterleitner R, et al.『Hutter et al. (2015) 生物学的… |
+| `MAT-20261114-2a4030` | research_excerpt | Ronai I, Pradeu T, Bosch TCG, Gilbert SF, et al.『Ronai et al. (2020) マイクロバイオータと個体性をめぐる学際的… |
+| `MAT-20261114-c98ccc` | research_excerpt | Whitney AR, Diehn M, Popper SJ, Alizadeh AA, Boldrick JC, Relman DA, Brown PO『Whitney et … |
+| `MAT-20261114-c363aa` | research_excerpt | Nelson JL『Nelson (2012) 自己の他者性——健康と疾患におけるマイクロキメリズム』（2012） |
+| `MAT-20261114-072377` | research_excerpt | Dawe GS, Tan XW, Xiao ZC『Dawe, Tan & Xiao (2007) 赤ちゃんから母親への細胞移動』（2007） |
+| `MAT-20261114-cd7fce` | research_excerpt | Thompson EE, Brusko TM, Jin Y, Evans MD, Tisler CJ, Hartert TV, et al.『Thompson et al. (2… |
+| `MAT-20261114-f441ac` | research_excerpt | McFall-Ngai M, Hadfield MG, Bosch TCG, Carey HV, Domazet-Lošo T, Douglas AE, et al.『McFal… |
+| `MAT-20261114-c518bd` | research_excerpt | Meadow JF, Altrichter AE, Batachari S, Green JL, Knight R, Kleyer H, et al.『Meadow et al.… |
 | `MAT-20261114-b3c3f7` | research_excerpt | Bahar Rahsepar, Jacob F Norman, Jad Noueihed, Benjamin Lahner, Melanie H Quick, Kevin Gha… |
 | `MAT-20261114-20b306` | research_excerpt | James D O'Leary, Rasmus Bruckner, Livia Autore, Tomás J Ryan『O'Leary et al. (05112024) — … |
 | `MAT-20261114-0934c4` | research_excerpt | Emily N Truckenbrod, Kristina S Burrack, Todd P Knutson, Henrique Borges da Silva, Kathar… |
@@ -5779,6 +5789,9 @@
 | `SESSION-20261114-06994f` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-4eb69d` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-1e3a94` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-651ac3` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-bedfe9` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-2241c8` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-62a80f` | 2026-11-14T03:55:34+00:00 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-4d7712` | 2026-11-14T03:55:34+00:00 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-917510` | 2026-11-14T04:11:42Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5867,8 +5880,8 @@
 | `map/31-materials-research-17.md` | 100 | 222,366 |
 | `map/31-materials-research-18.md` | 100 | 246,023 |
 | `map/31-materials-research-19.md` | 100 | 255,170 |
-| `map/31-materials-research-20.md` | 100 | 222,791 |
-| `map/31-materials-research-21.md` | 5 | 11,334 |
+| `map/31-materials-research-20.md` | 100 | 220,572 |
+| `map/31-materials-research-21.md` | 15 | 32,389 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5899,7 +5912,7 @@
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
-| `map/50-sessions-16.md` | 21 | 14,788 |
+| `map/50-sessions-16.md` | 24 | 16,121 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5923,24 +5936,24 @@
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,614 |
-| `map/60-notes-24.md` | 25 | 100,058 |
-| `map/60-notes-25.md` | 25 | 66,542 |
-| `map/60-notes-26.md` | 25 | 72,087 |
-| `map/60-notes-27.md` | 25 | 69,983 |
-| `map/60-notes-28.md` | 25 | 78,988 |
-| `map/60-notes-29.md` | 25 | 108,426 |
-| `map/60-notes-30.md` | 25 | 108,213 |
-| `map/60-notes-31.md` | 23 | 127,719 |
+| `map/60-notes-24.md` | 25 | 100,220 |
+| `map/60-notes-25.md` | 25 | 68,100 |
+| `map/60-notes-26.md` | 25 | 70,387 |
+| `map/60-notes-27.md` | 25 | 70,499 |
+| `map/60-notes-28.md` | 25 | 78,305 |
+| `map/60-notes-29.md` | 25 | 104,192 |
+| `map/60-notes-30.md` | 25 | 110,765 |
+| `map/60-notes-31.md` | 24 | 132,945 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・773本・28,858,875 B）
+## 8. 精読ノート索引（readings/・774本・28,882,912 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 749/773 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 749/774 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：773 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：102 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：774 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：103 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6543,7 +6556,8 @@
 | `readings/2026-11-13-where-the-body-and-the-record-part-ways.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-6c8a47` +6 | 67,913 | Q3 M32 S7 ERR5 | ✓ | 体と記録が別れるところ——生物学十篇の精読報告 |
 | `readings/2026-11-14-a-date-does-not-stop-the-number.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-eb4872` | 3,909 | Q1 M1 S1 | — | 日付は数を止めない — 数を持つ claim 410件の対象と、五つの再実行 |
 | `readings/2026-11-14-layer-two-first-sessions-and-the-unrepairable-gap.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-71d250` +12 | 13,401 | Q2 M5 S13 | — | 層2 は最初の10セッションをどう記録したか——29ペアの used_as_context と、追記専用の修復不能性 |
-| `readings/2026-11-14-ten-biology-access-state-and-cost.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-62a80f` +2 | 21,312 | Q3 M11 S3 ERR4 | — | 残っていること、使えること、応答すること——生物学10資料で状態と費用を分けて読む |
+| `readings/2026-11-14-ten-biology-access-state-and-cost.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-62a80f` +5 | 22,058 | Q3 M11 S6 ERR4 | — | 残っていること、使えること、応答すること——生物学10資料で状態と費用を分けて読む |
+| `readings/2026-11-14-ten-biology-microbial-boundaries-and-individuality.md` | — | 2026-11-14 | `SESSION-20261114-651ac3` +2 | 9,570 | Q3 M10 S3 | — | 人間の境界はどこにあるか——微生物、移動する細胞、個人差を読む |
 | `readings/2026-11-14-ten-biology-suspension-time-boundary.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-06994f` +2 | 19,262 | Q3 M12 S3 | ✓ | 止まる・合わせる・区切る——生物学の十の資料を、休眠・時刻・境界で読む |
 | `readings/2026-11-14-the-anchor-locates-but-does-not-date.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-ad8c22` | 4,103 | Q1 S1 | ✓ | 住所は場所を指すが、時を指さない — 24–59の帯の measured_fact を四つ再実行する |
 | `readings/2026-11-14-the-index-says-sixty-and-prints-twenty-four.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-fb84cf` | 4,560 | Q1 S1 ERR3 | ✓ | 索引は60と書き、24しか刷らない — 生きた道具を宛先にした訂正 |
