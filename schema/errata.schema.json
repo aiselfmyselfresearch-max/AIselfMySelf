@@ -97,6 +97,15 @@
     "corrected_by": {
       "type": "string"
     },
+    "duplicate_of": {
+      "type": "array",
+      "description": "Optional IDs of earlier errata rows that assert the SAME claim against the same addressee, reworded. The engine cannot judge whether two differently-worded Japanese claims are the same claim, and guessing would merge genuinely distinct corrections, so a restatement declares itself here. Exact repeats (same addressee, same claim text after whitespace/NFKC normalisation) are collapsed without a declaration. A group of rows about one claim costs one penalty, not one per row; the group still costs if any member is a live correction, so this field cannot be used to escape a penalty. Visibility is unaffected: every row stays in errata_flags.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
     "note": {
       "type": "string"
     },

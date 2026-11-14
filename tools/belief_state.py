@@ -19,7 +19,9 @@ import argparse
 import hashlib
 import json
 import math
+import re
 import sys
+import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -94,6 +96,88 @@ def errata_is_live_correction(rec: dict[str, Any]) -> bool:
     if rec.get("status") == "withdrawn":
         return False
     return rec.get("verdict") == "contradicted"
+
+
+def _errata_claim_key(rec: dict[str, Any]) -> str:
+    """Normalised claim text, for collapsing exact restatements of one claim."""
+    text = unicodedata.normalize("NFKC", str(rec.get("claim") or ""))
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def distinct_errata_claims(
+    recs: list[dict[str, Any]], all_errata: dict[str, dict[str, Any]] | None = None
+) -> list[list[dict[str, Any]]]:
+    """Group rows that assert one claim, so one claim costs one penalty.
+
+    ``log_odds[hid] -= 0.60 * len(direct_errs)`` used to charge per *row*. The same
+    claim filed twice -- which happens when concurrent sessions each measure the
+    same defect, as ``ERR-20261107-100f65`` and ``ERR-20261107-259d5f`` do for
+    ``tools/size_budget.py`` -- therefore cost twice, and a claim could be weighted
+    down by copying it. The row count measured how many times someone wrote, not
+    how many independent checks the addressee failed. This is the errata analogue
+    of the asymmetry recorded in
+    ``readings/2026-11-14-two-hypotheses-that-were-not-competing.md`` §6-1, where
+    splitting one finding into two evaluation rows doubled its effect.
+
+    Two rows are one claim when either:
+
+    * they share an addressee and their claim text is equal after NFKC and
+      whitespace normalisation (an exact repeat needs no declaration), or
+    * one declares the other in ``duplicate_of`` (a reworded restatement).
+
+    The second path is explicit because the engine cannot decide whether two
+    differently-worded Japanese claims are the same claim. Fuzzy matching would
+    merge the three *distinct* Blodgett corrections on one material
+    (``ERR-20261107-ed8184`` / ``-4ee0ec`` / ``-3aca22``), which must keep costing
+    three. Guessing is therefore not attempted; the writer declares, and the
+    declaration is auditable in the ledger.
+
+    Grouping is by union so a chain A <- B <- C collapses to one group. Rows are
+    grouped per addressee, never across addressees: the same sentence filed
+    against two different hypotheses is two claims about two subjects.
+    """
+    parent: dict[int, int] = {}
+
+    def find(i: int) -> int:
+        parent.setdefault(i, i)
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    def union(i: int, j: int) -> None:
+        ri, rj = find(i), find(j)
+        if ri != rj:
+            parent[max(ri, rj)] = min(ri, rj)
+
+    by_id: dict[str, int] = {}
+    for i, rec in enumerate(recs):
+        find(i)
+        eid = rec.get("errata_id")
+        if isinstance(eid, str):
+            by_id[eid] = i
+
+    seen_text: dict[str, int] = {}
+    for i, rec in enumerate(recs):
+        key = _errata_claim_key(rec)
+        if key:
+            if key in seen_text:
+                union(seen_text[key], i)
+            else:
+                seen_text[key] = i
+
+    # A declaration may name a row addressed elsewhere in the ledger; resolve it
+    # only when that row is part of this addressee's group, so a declaration
+    # cannot pull an unrelated addressee's rows into this penalty.
+    for i, rec in enumerate(recs):
+        for other in rec.get("duplicate_of") or []:
+            if isinstance(other, str) and other in by_id:
+                union(by_id[other], i)
+
+    groups: dict[int, list[dict[str, Any]]] = {}
+    for i, rec in enumerate(recs):
+        groups.setdefault(find(i), []).append(rec)
+    return [groups[k] for k in sorted(groups)]
 
 
 def build_errata_index(errata: dict[str, dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
@@ -340,9 +424,15 @@ def compute_belief_state(
         # Only corrections that still assert an error cost weight. A withdrawn
         # correction, one whose check found the claim HELD, and one that could not
         # be measured stay visible in errata_flags but do not move the belief.
+        # One claim costs one penalty, however many rows restate it. Rows are
+        # grouped before the verdict/status gate so that a live correction and a
+        # withdrawn restatement of the SAME claim collapse to one group, and the
+        # group still costs because one member is live. Filtering first would let
+        # a withdrawn duplicate silently split off and be counted separately.
+        claim_groups = distinct_errata_claims(errata_by_target.get(hid, []))
         penalising = [
-            e["errata_id"] for e in errata_by_target.get(hid, [])
-            if "errata_id" in e and errata_is_live_correction(e)
+            g for g in claim_groups
+            if any("errata_id" in e and errata_is_live_correction(e) for e in g)
         ]
         if penalising:
             log_odds[hid] -= 0.60 * len(penalising)

@@ -94,19 +94,43 @@ class BoundaryChannelProbeTests(unittest.TestCase):
         d, _ = self._delta(probe.errata_row(TARGET, "hypothesis", status="corrected"))
         self.assertLess(d, 0.0)
 
-    def test_penalty_scales_with_row_count_not_distinct_claims(self):
+    def test_penalty_scales_with_distinct_claims_not_row_count(self):
+        """One claim costs one penalty; k distinct claims cost k.
+
+        Renamed from test_penalty_scales_with_row_count_not_distinct_claims, which
+        asserted that k *identical* rows cost k x one row. That was the defect: the
+        weight measured how many times a claim was written down, so copying a row
+        deepened the penalty. It is the errata analogue of the evaluation asymmetry
+        recorded in readings/2026-11-14-two-hypotheses-that-were-not-competing.md
+        §6-1. The old assertion tripped when the engine was fixed; this is the
+        record of that change, not a silenced guard.
+        """
         base_h = probe._hyp(self.base, QUESTION, TARGET)
         one_row, _ = self._delta(probe.errata_row(TARGET, "hypothesis"))
         self.assertLess(one_row, 0.0)
         for k in (1, 2, 3):
-            c = copy.deepcopy(self.cols)
-            for i in range(k):
-                c["errata"][f"ERR-PROBE-{i}"] = probe.errata_row(
-                    TARGET, "hypothesis", errata_id=f"ERR-PROBE-{i}")
-            h = probe._hyp(bs.compute_belief_state(c), QUESTION, TARGET)
-            d = h["log_odds"] - base_h["log_odds"]
-            self.assertAlmostEqual(d, k * one_row, places=6,
-                                   msg=f"{k} identical rows should cost {k}x one row")
+            with self.subTest(identical_rows=k):
+                c = copy.deepcopy(self.cols)
+                for i in range(k):
+                    c["errata"][f"ERR-PROBE-{i}"] = probe.errata_row(
+                        TARGET, "hypothesis", errata_id=f"ERR-PROBE-{i}")
+                h = probe._hyp(bs.compute_belief_state(c), QUESTION, TARGET)
+                d = h["log_odds"] - base_h["log_odds"]
+                self.assertAlmostEqual(d, one_row, places=6,
+                                       msg=f"{k} identical rows are one claim, not {k}")
+                self.assertEqual(len(h["errata_flags"]), k,
+                                 "every row must stay visible even when collapsed")
+        for k in (1, 2, 3):
+            with self.subTest(distinct_claims=k):
+                c = copy.deepcopy(self.cols)
+                for i in range(k):
+                    c["errata"][f"ERR-PROBE-{i}"] = probe.errata_row(
+                        TARGET, "hypothesis", errata_id=f"ERR-PROBE-{i}",
+                        claim=f"独立した検定 {i}。異なる主張。")
+                h = probe._hyp(bs.compute_belief_state(c), QUESTION, TARGET)
+                d = h["log_odds"] - base_h["log_odds"]
+                self.assertAlmostEqual(d, k * one_row, places=6,
+                                       msg=f"{k} distinct claims should cost {k}x one row")
 
     def test_one_hop_channel_changes_visibility_never_weight(self):
         """Across all three admission rules, log-odds is identical; only flags move."""
