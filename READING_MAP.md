@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：4272 件（research_excerpt 2045 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：787 回
+- **探究セッション（Sessions）**：788 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -5049,7 +5049,7 @@
 | `MAT-20261114-f60f3d` | research_excerpt | Nurk S, Koren S, Rhie A, Phillippy AM『Nurk ほか（2022）完全なヒトゲノム配列——20年間隠れていた8%と、参照になった胞状奇胎』（2… |
 | `MAT-20261114-43465c` | research_excerpt | Rhie A, Nurk S, Cechova M, Makova KD, Phillippy AM『Rhie ほか（2023）Y染色体の完全配列——参照にあった30.8 Mbの… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261114-146bc0・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261114-999065・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -5840,6 +5840,7 @@
 | `SESSION-20261114-f56aba` | 2026-11-14T03:40:00Z | `Q-20261024-ff6311`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-11d148` | 2026-11-14T14:20:00Z | `Q-003` | — | — |
 | `SESSION-20261114-146bc0` | 2026-11-14T05:40:00Z | `Q-003` | — | — |
+| `SESSION-20261114-999065` | 2026-11-14T06:40:00Z | `Q-20261101-9f6ad5`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6986 件・全表は map/40-relations-*.md）
 
@@ -5955,7 +5956,7 @@
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
-| `map/50-sessions-16.md` | 37 | 26,093 |
+| `map/50-sessions-16.md` | 38 | 26,949 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5980,24 +5981,24 @@
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,806 |
 | `map/60-notes-24.md` | 25 | 99,158 |
-| `map/60-notes-25.md` | 25 | 82,259 |
-| `map/60-notes-26.md` | 25 | 66,127 |
-| `map/60-notes-27.md` | 25 | 73,256 |
-| `map/60-notes-28.md` | 25 | 76,168 |
-| `map/60-notes-29.md` | 25 | 98,741 |
-| `map/60-notes-30.md` | 25 | 94,751 |
-| `map/60-notes-31.md` | 25 | 141,423 |
-| `map/60-notes-32.md` | 6 | 34,593 |
+| `map/60-notes-25.md` | 25 | 89,386 |
+| `map/60-notes-26.md` | 25 | 64,340 |
+| `map/60-notes-27.md` | 25 | 76,102 |
+| `map/60-notes-28.md` | 25 | 74,909 |
+| `map/60-notes-29.md` | 25 | 97,733 |
+| `map/60-notes-30.md` | 25 | 96,274 |
+| `map/60-notes-31.md` | 25 | 137,131 |
+| `map/60-notes-32.md` | 7 | 41,187 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・781本・29,133,668 B）
+## 8. 精読ノート索引（readings/・782本・29,159,475 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 754/781 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 755/782 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：781 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：102 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：782 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：103 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6613,6 +6614,7 @@
 | `readings/2026-11-14-the-index-says-sixty-and-prints-twenty-four.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-fb84cf` | 4,560 | Q1 S1 ERR3 | ✓ | 索引は60と書き、24しか刷らない — 生きた道具を宛先にした訂正 |
 | `readings/2026-11-14-the-verdict-arrived-before-the-hypothesis.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-f56aba` +2 | 15,530 | Q4 M3 S3 ERR1 | ✓ | 判定は仮説より先に届いた — 系譜質量の後付け継承を測る |
 | `readings/2026-11-14-the-version-that-is-not-being-read.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-9610a8` +2 | 26,093 | Q3 M13 S3 | ✓ | 読まれない版はどこへ行くのか——生物学10資料の精読報告 |
+| `readings/2026-11-14-the-writing-palette-and-the-only-column-that-names-a-tool.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-999065` | 11,782 | Q2 M1 S1 ERR4 | — | 書き板を名乗る者——道具が証言できる唯一の欄は、誤りの欄だった |
 | `readings/2026-11-14-two-hypotheses-that-were-not-competing.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-11d148` | 12,271 | Q1 S1 ERR1 | — | 競合していない二説を、競合させていた——位置と選別は別の通路を通る |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
 | `readings/2026-11-15-a-second-key-with-no-lock.md` | 2026-10-26 | 2026-11-15 | `SESSION-20261115-6a7862` +4 | 15,179 | Q5 F12 M4 MOT1 S5 | ✓ | 錠のない鍵を、もう一本 —— 痣と言い切った声と、朝ごとに選び直す沈黙（SESSION-20261115-6a7862） |
