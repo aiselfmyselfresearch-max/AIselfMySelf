@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4202 件（research_excerpt 1975 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4212 件（research_excerpt 1985 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：761 回
+- **探究セッション（Sessions）**：764 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4202 件・詳細は map/3*.md）
+## 4. 対話素材（4212 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -4978,6 +4978,16 @@
 | `MAT-20261113-1aface` | research_excerpt | Sarah Blaffer Hrdy『Sarah Blaffer Hrdy『Mothers and Others: The Evolutionary Origins of Mut… |
 | `MAT-20261113-c8acae` | research_excerpt | Michael Polanyi『Michael Polanyi「Life's Irreducible Structure」（生命の不可還元な構造）』（1968） |
 | `MAT-20261113-e92c8a` | research_excerpt | Justine Karst, Melanie D. Jones, Jason D. Hoeksema『Justine Karst, Melanie D. Jones & Jaso… |
+| `MAT-20261114-a483e4` | research_excerpt | Marcella D Cervantes, Eileen P Hamilton, Jie Xiong, Michael J Lawson, Dongxia Yuan, Micha… |
+| `MAT-20261114-0539f9` | research_excerpt | Györgyi Csankovszki, András Nagy, Rudolf Jaenisch『Csankovszki, Nagy & Jaenisch（2001）Xist … |
+| `MAT-20261114-4a4ae7` | research_excerpt | Marjan W van der Woude, Andreas J Bäumler『van der Woude & Bäumler（2004）細菌の相変異——314 bp の反転… |
+| `MAT-20261114-a64686` | research_excerpt | Raul Mostoslavsky, Nandita Singh, Toyoaki Tenzen, Maya Goldmit, Chana Gabay, Sharon Elizu… |
+| `MAT-20261114-629e32` | research_excerpt | Adenauer G Casali, Olivia Gosseries, Mario Rosanova, Melanie Boly, Silvia Sarasso, Karina… |
+| `MAT-20261114-bc60c9` | research_excerpt | Els van Nood, Anne Vrieze, Max Nieuwdorp, Susana Fuentes, Erwin G Zoetendal, Willem M de … |
+| `MAT-20261114-b9a89d` | research_excerpt | Eunju Kang, Jun Wu, Nuria Marti Gutierrez, Amy Koski, Rebecca Tippner-Hedges, Karen Agaro… |
+| `MAT-20261114-4bd277` | research_excerpt | Clyde A Hutchison III, Ray-Yuan Chuang, Vladimir N Noskov, Nacyra Assad-Garcia, Thomas J … |
+| `MAT-20261114-a9ce31` | research_excerpt | Robert Kucharski, Joanna Maleszka, Sylvain Foret, Ryszard Maleszka『Kucharski ほか（2008）ミツバチ… |
+| `MAT-20261114-a62e81` | research_excerpt | Katherine G Akers, Alonso Martinez-Canabal, Leonardo Restivo, Adelina P Yiu, Antonietta D… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261114-71d250・全文は map/50-sessions-*.md）
 
@@ -5743,6 +5753,9 @@
 | `SESSION-20261114-fb84cf` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-ad8c22` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-eb4872` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-457669` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-272cfd` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-9610a8` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-71d250` | 2026-11-14 | `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6986 件・全表は map/40-relations-*.md）
@@ -5827,7 +5840,7 @@
 | `map/31-materials-research-17.md` | 100 | 222,366 |
 | `map/31-materials-research-18.md` | 100 | 246,023 |
 | `map/31-materials-research-19.md` | 100 | 255,170 |
-| `map/31-materials-research-20.md` | 75 | 161,202 |
+| `map/31-materials-research-20.md` | 85 | 193,303 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5858,7 +5871,7 @@
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 36,197 |
-| `map/50-sessions-16.md` | 11 | 7,472 |
+| `map/50-sessions-16.md` | 14 | 9,859 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5883,23 +5896,23 @@
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,636 |
 | `map/60-notes-24.md` | 25 | 98,823 |
-| `map/60-notes-25.md` | 25 | 61,220 |
-| `map/60-notes-26.md` | 25 | 77,165 |
-| `map/60-notes-27.md` | 25 | 66,187 |
-| `map/60-notes-28.md` | 25 | 85,392 |
-| `map/60-notes-29.md` | 25 | 107,922 |
-| `map/60-notes-30.md` | 25 | 118,575 |
-| `map/60-notes-31.md` | 19 | 101,787 |
+| `map/60-notes-25.md` | 25 | 62,876 |
+| `map/60-notes-26.md` | 25 | 75,764 |
+| `map/60-notes-27.md` | 25 | 67,472 |
+| `map/60-notes-28.md` | 25 | 84,625 |
+| `map/60-notes-29.md` | 25 | 108,493 |
+| `map/60-notes-30.md` | 25 | 114,116 |
+| `map/60-notes-31.md` | 20 | 108,817 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・769本・28,688,569 B）
+## 8. 精読ノート索引（readings/・770本・28,747,335 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 745/769 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 746/770 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：769 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：101 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：770 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：102 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6504,6 +6517,7 @@
 | `readings/2026-11-14-layer-two-first-sessions-and-the-unrepairable-gap.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-71d250` +12 | 13,401 | Q2 M5 S13 | — | 層2 は最初の10セッションをどう記録したか——29ペアの used_as_context と、追記専用の修復不能性 |
 | `readings/2026-11-14-the-anchor-locates-but-does-not-date.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-ad8c22` | 4,103 | Q1 S1 | ✓ | 住所は場所を指すが、時を指さない — 24–59の帯の measured_fact を四つ再実行する |
 | `readings/2026-11-14-the-index-says-sixty-and-prints-twenty-four.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-fb84cf` | 4,560 | Q1 S1 ERR3 | ✓ | 索引は60と書き、24しか刷らない — 生きた道具を宛先にした訂正 |
+| `readings/2026-11-14-the-version-that-is-not-being-read.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-9610a8` +2 | 24,896 | Q3 M13 S3 | — | 読まれない版はどこへ行くのか——生物学10資料の精読報告 |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
 | `readings/2026-11-15-a-second-key-with-no-lock.md` | 2026-10-26 | 2026-11-15 | `SESSION-20261115-6a7862` +4 | 15,179 | Q5 F12 M4 MOT1 S5 | ✓ | 錠のない鍵を、もう一本 —— 痣と言い切った声と、朝ごとに選び直す沈黙（SESSION-20261115-6a7862） |
 | `readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md` | 2026-10-26 | 2026-11-16 | `SESSION-20261116-de57d9` | 5,113 | Q10 F3 M4 MOT2 S1 | ✓ | 二種類の火と、目の試練——ローテーション改修と火×習慣の再読交配（SESSION-20261116-de57d9） |
