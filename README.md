@@ -13,9 +13,9 @@
 - **3つの探求ロールによる分業**：セッションはシードと信念状態に応じて **Proposer（25%：条件付き仮説提案・分割）**・**Adversarial Tester（50%：対立仮説ペアの反証・境界衝突テスト）**・**Consolidator（25%：未継承ノート回収・評価統合・系譜整理）** の3役割に分業され、仮説の乱立と確証バイアスを防ぎます。
 - **語りのモードと委任来歴の分離**：作品内では一人称を使えますが、台帳メタデータでは `fictional_first_person` や `reflective_literary_voice` などのモードを明示し、生身の経験の事実報告と混同させません。`human_narrator` や捏造した `conversation_trace` の創作は禁止します（[`CONTENT_POLICY.md`](CONTENT_POLICY.md)）。
 <<<<<<< HEAD
-- **過去の到達点アーカイブ**：（全759セッションの要約全文および旧手動ローテーション期の見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。）現在の到達点と仮説系譜は自動生成の [`BELIEF_MAP.md`](BELIEF_MAP.md)、全精読報告の索引は [`READING_MAP.md`](READING_MAP.md) §8 を参照してください。
+- **過去の到達点アーカイブ**：（全760セッションの要約全文および旧手動ローテーション期の見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。）現在の到達点と仮説系譜は自動生成の [`BELIEF_MAP.md`](BELIEF_MAP.md)、全精読報告の索引は [`READING_MAP.md`](READING_MAP.md) §8 を参照してください。
 =======
-- **過去の到達点アーカイブ**：（全759セッションの要約全文および旧手動ローテーション期の見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。）現在の到達点と仮説系譜は自動生成の [`BELIEF_MAP.md`](BELIEF_MAP.md)、全精読報告の索引は [`READING_MAP.md`](READING_MAP.md) §8 を参照してください。
+- **過去の到達点アーカイブ**：（全760セッションの要約全文および旧手動ローテーション期の見出し目録は、一字一句削らず [`docs/sessions.md`](docs/sessions.md) に保管しています。）現在の到達点と仮説系譜は自動生成の [`BELIEF_MAP.md`](BELIEF_MAP.md)、全精読報告の索引は [`READING_MAP.md`](READING_MAP.md) §8 を参照してください。
 >>>>>>> origin/main
 
 ## 2. すぐ読むには
@@ -60,19 +60,19 @@
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 247 | 全7形式・AI使用可能な全5語り手モードの創作・批評断片（`selected` 96編＋`draft` 151編、`human_narrator` 0編） |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 6986 | 共鳴・対照・変奏・切断・枠組転換・応答・開放などの解釈的関係（うち断片↔断片 618件） |
 <<<<<<< HEAD
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 759 | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 12988 | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 760 | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 12991 | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 255 | 過去の計測・記述の誤りと再実行可能な検算条件（本文を書き換えず隣に置く訂正記録） |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 | 断片（`draft`↔`selected`）や問い（`open`↔`paused`）の追記専用ステータス・オーバーレイ |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 799 | `readings/` の報告に対する追記専用の**判断・構造索引**オーバーレイ（配線率100%）。導出事実は保存せず `tools/note_index.py` が毎回読み直し、`READING_MAP.md` §8 に索引化する（設計は [`docs/memory-architecture.md`](docs/memory-architecture.md)） |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 800 | `readings/` の報告に対する追記専用の**判断・構造索引**オーバーレイ（配線率100%）。導出事実は保存せず `tools/note_index.py` が毎回読み直し、`READING_MAP.md` §8 に索引化する（設計は [`docs/memory-architecture.md`](docs/memory-architecture.md)） |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 25 | 中心三問 `Q-001`〜`Q-003` 等に対する適用条件（`scope_conditions`）・排他反証条件（`exclusion_clause`）・親仮説系譜付きの競合仮説台帳 |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 218 | 仮説に対する類型付き検証イベント（`supports`／`narrows_scope`／`refutes_unconditioned`／`subsumes`）。`tools/belief_state.py` が事後確率と [`BELIEF_MAP.md`](BELIEF_MAP.md) を算出する |
 =======
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 759 | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 12988 | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 760 | 委任の文面、参照素材、生成断片、新しく開いた問いの履歴 |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 12991 | どのセッションがどの記録をどう読み返したかの追記専用ログ（quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted） |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 255 | 過去の計測・記述の誤りと再実行可能な検算条件（本文を書き換えず隣に置く訂正記録） |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 | 断片（`draft`↔`selected`）や問い（`open`↔`paused`）の追記専用ステータス・オーバーレイ |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 799 | `readings/` の報告に対する追記専用の**判断・構造索引**オーバーレイ（配線率100%）。導出事実は保存せず `tools/note_index.py` が毎回読み直し、`READING_MAP.md` §8 に索引化する（設計は [`docs/memory-architecture.md`](docs/memory-architecture.md)） |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 800 | `readings/` の報告に対する追記専用の**判断・構造索引**オーバーレイ（配線率100%）。導出事実は保存せず `tools/note_index.py` が毎回読み直し、`READING_MAP.md` §8 に索引化する（設計は [`docs/memory-architecture.md`](docs/memory-architecture.md)） |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 25 | 中心三問 `Q-001`〜`Q-003` 等に対する適用条件（`scope_conditions`）・排他反証条件（`exclusion_clause`）・親仮説系譜付きの競合仮説台帳 |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 218 | 仮説に対する類型付き検証イベント（`supports`／`narrows_scope`／`refutes_unconditioned`／`subsumes`）。`tools/belief_state.py` が事後確率と [`BELIEF_MAP.md`](BELIEF_MAP.md) を算出する |
 >>>>>>> origin/main
