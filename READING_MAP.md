@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 5 件 ＋ 派生 432 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4242 件（research_excerpt 2015 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4252 件（research_excerpt 2025 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：775 回
+- **探究セッション（Sessions）**：778 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -772,7 +772,7 @@
 | `FRAG-20261107-d78f8e` | その場で払う人 | draft | scene | third_person |
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 
-## 4. 対話素材（4242 件・詳細は map/3*.md）
+## 4. 対話素材（4252 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5018,6 +5018,16 @@
 | `MAT-20261114-a6f2ee` | research_excerpt | Tamar Frankovits, Prakash Varkey Cherian, Yarden Yesharim, Simon Dobler, Omri Wurtzel『Fra… |
 | `MAT-20261114-0fe43a` | research_excerpt | Mounir El Maï, Marta Marzullo, Inês Pimenta de Castro, Miguel Godinho Ferreira『Maï et al.… |
 | `MAT-20261114-2337c6` | research_excerpt | Daniel Gradeci, Anna Bove, Giulia Vallardi, Alan R Lowe, Shiladitya Banerjee, Guillaume C… |
+| `MAT-20261114-d93e94` | research_excerpt | Feher O, Wang H, Saar S, Mitra PP, Tchernichovski O『Fehér ほか（2009）孤立個体の歌は三〜四世代で野生型へ戻る——写し… |
+| `MAT-20261114-9e62b1` | research_excerpt | Aplin LM, Farine DR, Morand-Ferron J, Cockburn A, Thornton A, Sheldon BC『Aplin ほか（2015）等価… |
+| `MAT-20261114-b3e5b9` | research_excerpt | Sasaki T, Biro D『Sasaki & Biro（2017）相方を入れ替える鳩の鎖は、固定ペアより近道になる——累積は入れ替わりから生じる』（2017） |
+| `MAT-20261114-5a4e91` | research_excerpt | Krützen M, Mann J, Heithaus MR, Connor RC, Bejder L, Sherwin WB『Krützen ほか（2005）海綿を使うイルカは… |
+| `MAT-20261114-5a1ad9` | research_excerpt | Dias BG, Ressler KJ『Dias & Ressler（2014）父が条件づけられた匂いに、子と孫が敏い——渡ったのは恐れではなく感度と測られた』（2014） |
+| `MAT-20261114-6c4e5f` | research_excerpt | Slagsvold T, Wiebe KL『Slagsvold & Wiebe（2007）里子のカラ類は、育ての種の採り方を一生続ける——試行錯誤では元に戻らなかった』（2007） |
+| `MAT-20261114-4c6c15` | research_excerpt | Musgrave S, et al.『Musgrave ほか（2020）道具の受け渡しは課題が複雑な集団で多い——頼まれる前に渡した例は両集団とも0件』（2020） |
+| `MAT-20261114-e66d21` | research_excerpt | Bandini E, Tennie C『Bandini & Tennie（2020）道具使用の型は写されず、各個体が作り直す——社会的学習は頻度を調整するという立場』（2020） |
+| `MAT-20261114-cebca2` | research_excerpt | Thornton A, Clutton-Brock T『Thornton & Clutton-Brock（2011）見ているだけでは足りない技能と、死んだ獲物から始まる稽古——野… |
+| `MAT-20261114-4e2a49` | research_excerpt | Prat Y, Azoulay L, Dor R, Yovel Y『Prat ほか（2017）母がそばにいても、子は群衆の録音に寄る——コウモリの方言は特定の師なしに作られる』（… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261114-11d148・全文は map/50-sessions-*.md）
 
@@ -5795,6 +5805,9 @@
 | `SESSION-20261114-62a80f` | 2026-11-14T03:55:34+00:00 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-4d7712` | 2026-11-14T03:55:34+00:00 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-917510` | 2026-11-14T04:11:42Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-cc164e` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-24b1f0` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-9e4bde` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-71d250` | 2026-11-14 | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-f56aba` | 2026-11-14T03:40:00Z | `Q-20261024-ff6311`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-11d148` | 2026-11-14T14:20:00Z | `Q-003` | — | — |
@@ -5882,7 +5895,7 @@
 | `map/31-materials-research-18.md` | 100 | 246,023 |
 | `map/31-materials-research-19.md` | 100 | 255,170 |
 | `map/31-materials-research-20.md` | 100 | 220,572 |
-| `map/31-materials-research-21.md` | 15 | 32,389 |
+| `map/31-materials-research-21.md` | 25 | 59,192 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -5913,7 +5926,7 @@
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
-| `map/50-sessions-16.md` | 25 | 16,954 |
+| `map/50-sessions-16.md` | 28 | 19,693 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5938,23 +5951,24 @@
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,597 |
 | `map/60-notes-24.md` | 25 | 100,220 |
-| `map/60-notes-25.md` | 25 | 72,803 |
-| `map/60-notes-26.md` | 25 | 70,026 |
-| `map/60-notes-27.md` | 25 | 71,422 |
-| `map/60-notes-28.md` | 25 | 78,283 |
-| `map/60-notes-29.md` | 25 | 102,158 |
-| `map/60-notes-30.md` | 25 | 107,283 |
-| `map/60-notes-31.md` | 25 | 140,391 |
+| `map/60-notes-25.md` | 25 | 74,219 |
+| `map/60-notes-26.md` | 25 | 68,823 |
+| `map/60-notes-27.md` | 25 | 72,409 |
+| `map/60-notes-28.md` | 25 | 76,667 |
+| `map/60-notes-29.md` | 25 | 101,487 |
+| `map/60-notes-30.md` | 25 | 103,736 |
+| `map/60-notes-31.md` | 25 | 142,859 |
+| `map/60-notes-32.md` | 1 | 5,956 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・775本・28,907,131 B）
+## 8. 精読ノート索引（readings/・776本・28,954,704 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 750/775 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 750/776 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：775 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：103 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：776 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：104 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6560,11 +6574,12 @@
 | `readings/2026-11-14-ten-biology-access-state-and-cost.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-62a80f` +5 | 22,058 | Q3 M11 S6 ERR4 | — | 残っていること、使えること、応答すること——生物学10資料で状態と費用を分けて読む |
 | `readings/2026-11-14-ten-biology-microbial-boundaries-and-individuality.md` | — | 2026-11-14 | `SESSION-20261114-651ac3` +2 | 9,570 | Q3 M10 S3 | — | 人間の境界はどこにあるか——微生物、移動する細胞、個人差を読む |
 | `readings/2026-11-14-ten-biology-suspension-time-boundary.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-06994f` +2 | 19,262 | Q3 M12 S3 | ✓ | 止まる・合わせる・区切る——生物学の十の資料を、休眠・時刻・境界で読む |
+| `readings/2026-11-14-ten-biology-transmission-who-builds-the-reader.md` | — | 2026-11-14 | `SESSION-20261114-cc164e` +2 | 19,276 | Q3 M16 S3 | — | 読み手は白紙ではない——歌・採餌・道具の伝達を読む（生物学10件） |
 | `readings/2026-11-14-the-anchor-locates-but-does-not-date.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-ad8c22` | 4,103 | Q1 S1 | ✓ | 住所は場所を指すが、時を指さない — 24–59の帯の measured_fact を四つ再実行する |
 | `readings/2026-11-14-the-index-says-sixty-and-prints-twenty-four.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-fb84cf` | 4,560 | Q1 S1 ERR3 | ✓ | 索引は60と書き、24しか刷らない — 生きた道具を宛先にした訂正 |
 | `readings/2026-11-14-the-verdict-arrived-before-the-hypothesis.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-f56aba` +2 | 15,530 | Q4 M3 S3 ERR1 | ✓ | 判定は仮説より先に届いた — 系譜質量の後付け継承を測る |
 | `readings/2026-11-14-the-version-that-is-not-being-read.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-9610a8` +2 | 26,093 | Q3 M13 S3 | — | 読まれない版はどこへ行くのか——生物学10資料の精読報告 |
-| `readings/2026-11-14-two-hypotheses-that-were-not-competing.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-11d148` | 11,867 | Q1 S1 ERR1 | — | 競合していない二説を、競合させていた——位置と選別は別の通路を通る |
+| `readings/2026-11-14-two-hypotheses-that-were-not-competing.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-11d148` | 12,271 | Q1 S1 ERR1 | — | 競合していない二説を、競合させていた——位置と選別は別の通路を通る |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
 | `readings/2026-11-15-a-second-key-with-no-lock.md` | 2026-10-26 | 2026-11-15 | `SESSION-20261115-6a7862` +4 | 15,179 | Q5 F12 M4 MOT1 S5 | ✓ | 錠のない鍵を、もう一本 —— 痣と言い切った声と、朝ごとに選び直す沈黙（SESSION-20261115-6a7862） |
 | `readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md` | 2026-10-26 | 2026-11-16 | `SESSION-20261116-de57d9` | 5,113 | Q10 F3 M4 MOT2 S1 | ✓ | 二種類の火と、目の試練——ローテーション改修と火×習慣の再読交配（SESSION-20261116-de57d9） |
