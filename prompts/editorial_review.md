@@ -19,6 +19,6 @@
 
 既存の `readings/` ノートまたは今回のノートに読解と判断を残し（新規報告は必ず `note_index.py --register` で `NOTE-*` を配線）、`sessions`・`read_log`、および重複仮説の統合や射程限定があれば `hypotheses` / `evaluations` に追記します。断片を生まない回は `produced_fragment_ids: []`、新問がなければ `new_question_ids: []` とします。資料照合や追加が必要なら [`acquisition.md`](acquisition.md) に従います。
 
-旧B案による手動の `README.md`・`docs/sessions.md` 詳細窓ローテーションは廃止されました。現在の到達点と競合仮説分布は `python3 tools/belief_state.py --write-map` によって [`BELIEF_MAP.md`](../BELIEF_MAP.md) に自動反映され、精読報告の索引は `python3 tools/map_build.py` によって [`READING_MAP.md`](../READING_MAP.md) §8 に集約されます（件数表を同期する場合のみ `python3 tools/map_build.py --sync-readme` を使用）。
+旧B案による手動の `README.md`・`docs/sessions.md` 詳細窓ローテーションは廃止されました。現在の到達点と競合仮説分布は `python3 tools/belief_state.py --write-map` によって [`BELIEF_MAP.md`](../BELIEF_MAP.md) に自動反映され、精読報告の索引は `python3 tools/map_build.py` によって [`READING_MAP.md`](../READING_MAP.md) §8 に集約されます（台帳ごとの件数も同じ `READING_MAP.md` に生成されます。`README.md` には件数を書きません。確認は `python3 tools/map_build.py --check-readme`）。
 
 台帳・生成索引・信念マップ・学習メトリクス・サイズ予算を `start.md` のコマンドで検証します。CI通過を、人間観・自己理解が進展したことの証明にしません。

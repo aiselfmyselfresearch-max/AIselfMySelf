@@ -187,41 +187,64 @@ class EditorialDecisionTests(unittest.TestCase):
         self.assertIn("シード：7d235e38", pkt_b)
         self.assertNotEqual(pkt_a.splitlines()[0], pkt_b.splitlines()[0])
 
-    def test_sync_readme_counts_updates_stale_numbers_and_is_idempotent(self) -> None:
-        import re
+    def test_readme_carries_no_ledger_counts(self) -> None:
+        # Counts used to be copied into README.md by `--sync-readme`.  They went
+        # stale between syncs, and syncing from every branch made parallel pull
+        # requests collide.  README.md now defers to the generated READING_MAP.md.
+        import map_build
+
+        text = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertEqual(map_build.readme_volatile_counts(text), [])
+        self.assertIn("台帳ごとの件数", text)
+        for marker in ("<<<<<<< ", ">>>>>>> "):
+            self.assertFalse(
+                any(line.startswith(marker) for line in text.splitlines()),
+                f"README.md contains an unresolved merge conflict marker {marker!r}",
+            )
+
+    def test_readme_count_detector_catches_reintroduced_numbers(self) -> None:
+        import map_build
+
+        clean = (
+            "| 記録 | 保存先 | 役割 |\n"
+            "| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 研究抜粋（`research_excerpt`） |\n"
+            "中心三問 `Q-001`〜`Q-003`、12コレクション、2026-11-14。\n"
+        )
+        self.assertEqual(map_build.readme_volatile_counts(clean), [])
+        for stale in (
+            "| 記録 | 保存先 | 現在の件数 | 役割 |",
+            "| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4202 | 研究抜粋 |",
+            "| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 研究抜粋 1,975件 |",
+            "（全761セッションの要約全文を保管）",
+            "（直近5件の詳細窓。過去全700本の注釈付き目録）",
+        ):
+            self.assertEqual(len(map_build.readme_volatile_counts(clean + stale + "\n")), 1, stale)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            readme_copy = Path(tmp) / "README.md"
+            readme_copy.write_text(clean, encoding="utf-8")
+            self.assertEqual(map_build.check_readme(readme_copy), 0)
+            readme_copy.write_text(clean + "全761セッション\n", encoding="utf-8")
+            self.assertEqual(map_build.check_readme(readme_copy), 1)
+
+    def test_generated_index_carries_the_count_table_for_every_ledger(self) -> None:
         import inspect_inquiry
         import map_build
 
         data = inspect_inquiry.load_all()
-        with tempfile.TemporaryDirectory() as tmp:
-            readme_copy = Path(tmp) / "README.md"
-            original = (ROOT / "README.md").read_text(encoding="utf-8")
-            # Under Plan B, ROOT/README.md legitimately lags behind state/ between
-            # editorial_review sessions; force a known-stale marker regardless.
-            stale = re.sub(
-                r"（全\d+セッションの要約全文",
-                "（全1セッションの要約全文",
-                original,
-            )
-            readme_copy.write_text(stale, encoding="utf-8")
-
-            changed = map_build.sync_readme_counts(
-                data, readme_path=readme_copy, readings_dir=ROOT / "readings"
-            )
-            self.assertTrue(changed)
-            synced = readme_copy.read_text(encoding="utf-8")
-            self.assertIn(f"（全{len(data['sessions'])}セッションの要約全文", synced)
+        table = "\n".join(map_build.ledger_count_table(data))
+        for name in (
+            "questions", "motifs", "materials", "fragments", "relations", "sessions",
+            "read_log", "errata", "editorial_decisions", "notes", "hypotheses", "evaluations",
+        ):
+            self.assertIn(f"`state/{name}.jsonl`＋`state/{name}.d/`", table)
+        for name in ("materials", "sessions", "read_log", "notes", "evaluations"):
             self.assertIn(
-                f"| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | {len(data['fragments'])} |",
-                synced,
+                f"| `state/{name}.jsonl`＋`state/{name}.d/` | {len(data[name])} |", table
             )
-
-            # Second run must be a no-op (idempotent)
-            changed_again = map_build.sync_readme_counts(
-                data, readme_path=readme_copy, readings_dir=ROOT / "readings"
-            )
-            self.assertFalse(changed_again)
-            self.assertEqual(readme_copy.read_text(encoding="utf-8"), synced)
+        # The committed index is the generated one, so the table in it is current.
+        index = (ROOT / "READING_MAP.md").read_text(encoding="utf-8")
+        self.assertIn(table, index)
 
     def test_supersedes_overrides_forward_dated_shard_and_validates_constraints(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

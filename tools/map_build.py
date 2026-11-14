@@ -137,13 +137,14 @@ def build_overview(data: dict[str, dict[str, dict[str, Any]]]) -> str:
     materials, fragments = data["materials"], data["fragments"]
     relations, sessions = data["relations"], data["sessions"]
     mat_kinds = Counter(m["kind"] for m in materials.values())
+    seed_questions = sum(1 for q in questions.values() if q.get("origin", {}).get("kind") == "human_seed")
     frag_status = Counter(f["status"] for f in fragments.values())
     rel_kinds = Counter(r["relation_type"] for r in relations.values())
 
     out: list[str] = ["# 00. 総覧（overview）", ""]
     out.append("## 台帳サマリー")
     out.append("")
-    out.append(f"- **開かれた問い（Questions）**：{len(questions)} 件（初期シード 5 件 ＋ 派生 {len(questions) - 5} 件）")
+    out.append(f"- **開かれた問い（Questions）**：{len(questions)} 件（初期シード {seed_questions} 件 ＋ 派生 {len(questions) - seed_questions} 件）")
     out.append(f"- **モチーフ（Motifs）**：{len(motifs)} 件")
     out.append(
         f"- **対話素材（Materials）**：{len(materials)} 件"
@@ -351,6 +352,7 @@ def build_index(
     relations, sessions = data["relations"], data["sessions"]
     children, _roots = question_graph(questions)
     mat_kinds = Counter(m["kind"] for m in materials.values())
+    seed_questions = sum(1 for q in questions.values() if q.get("origin", {}).get("kind") == "human_seed")
     frag_status = Counter(f["status"] for f in fragments.values())
     rel_kinds = Counter(r["relation_type"] for r in relations.values())
     form_labels, _, rel_labels = _labels()
@@ -369,7 +371,7 @@ def build_index(
     out.append("")
     out.append("## 現在の到達点（台帳サマリー）")
     out.append("")
-    out.append(f"- **開かれた問い（Questions）**：{len(questions)} 件（初期シード 5 件 ＋ 派生 {len(questions) - 5} 件）")
+    out.append(f"- **開かれた問い（Questions）**：{len(questions)} 件（初期シード {seed_questions} 件 ＋ 派生 {len(questions) - seed_questions} 件）")
     out.append(f"- **モチーフ（Motifs）**：{len(motifs)} 件")
     out.append(
         f"- **対話素材（Materials）**：{len(materials)} 件"
@@ -383,6 +385,7 @@ def build_index(
     out.append(f"- **解釈的関係（Relations）**：{len(relations)} 件")
     out.append(f"- **探究セッション（Sessions）**：{len(sessions)} 回")
     out.append("")
+    out.extend(ledger_count_table(data, root))
 
     out.append(f"## 1. 問いを横断する {len(motifs)} つのモチーフ")
     out.append("")
@@ -653,173 +656,123 @@ def size_report(manifest: dict[str, Any]) -> None:
     print(f"  {total:>10,}  TOTAL ({len(manifest['shards'])} shards)")
 
 
-def sync_readme_counts(
-    data: dict[str, dict[str, dict[str, Any]]],
-    readme_path: Path = DEFAULT_README_PATH,
-    readings_dir: Path = ROOT / "readings",
-) -> bool:
-    """Synchronize ledger and readings counts in README.md (§1, §2, and §4 table).
+def _errata_count(root: Path) -> int:
+    from validate_seed import load_jsonl
 
-    Returns True if README.md was modified, False if already in sync.
+    errata_path = root / "state" / "errata.jsonl"
+    if not (errata_path.exists() or errata_path.with_suffix(".d").is_dir()):
+        return 0
+    return len(load_jsonl(errata_path, "errata_id", []))
+
+
+def ledger_count_table(data: dict[str, dict[str, dict[str, Any]]], root: Path = ROOT) -> list[str]:
+    """The per-ledger count table, rendered from the ledgers themselves.
+
+    This is the only place where ledger counts are written down.  README.md used
+    to carry the same table by hand; it lagged behind state/ between
+    editorial_review sessions, and syncing it from every branch made parallel
+    pull requests collide on the same lines.  The table now lives in the
+    generated READING_MAP.md, which every session already regenerates and CI
+    already verifies (`map_build.py --check`), so it cannot drift.
     """
-    if not readme_path.is_file():
-        return False
-
-    original = readme_path.read_text(encoding="utf-8")
-    text = original
-
-    questions = data["questions"]
-    motifs = data["motifs"]
-    materials = data["materials"]
-    fragments = data["fragments"]
-    relations = data["relations"]
-    sessions = data["sessions"]
-    read_log = data.get("read_log", {})
-    if "errata" in data:
-        errata_count = len(data["errata"])
-    else:
-        from validate_seed import load_jsonl
-
-        errata_path = readme_path.parent / "state" / "errata.jsonl"
-        if not (errata_path.exists() or errata_path.with_suffix(".d").is_dir()):
-            errata_path = ROOT / "state" / "errata.jsonl"
-        errata_count = (
-            len(load_jsonl(errata_path, "errata_id", []))
-            if errata_path.exists() or errata_path.with_suffix(".d").is_dir()
-            else 0
-        )
-    editorial_decisions = data.get("editorial_decisions", {})
-    notes = data.get("notes", {})
-    hypotheses = data.get("hypotheses", {})
-    evaluations = data.get("evaluations", {})
-
+    questions, materials = data["questions"], data["materials"]
+    fragments, relations = data["fragments"], data["relations"]
     q_status = Counter(q.get("status", "open") for q in questions.values())
-    q_origins = Counter(q["origin"]["kind"] for q in questions.values())
+    q_origins = Counter(q.get("origin", {}).get("kind", "unknown") for q in questions.values())
     mat_kinds = Counter(m["kind"] for m in materials.values())
     frag_status = Counter(f["status"] for f in fragments.values())
-    frag_modes = Counter(f["narrator_mode"] for f in fragments.values())
+    frag_modes = Counter(f.get("narrator_mode") for f in fragments.values())
     frag_to_frag = sum(
         1
         for r in relations.values()
-        if r.get("left", {}).get("type") == "fragment"
-        and r.get("right", {}).get("type") == "fragment"
+        if r.get("left", {}).get("type") == "fragment" and r.get("right", {}).get("type") == "fragment"
     )
-    readings_count = len(list(readings_dir.glob("*.md"))) if readings_dir.is_dir() else 0
+    errata_count = len(data["errata"]) if "errata" in data else _errata_count(root)
+    rows = [
+        (
+            "問い",
+            "questions",
+            len(questions),
+            f"`open` {q_status['open']}／`paused` {q_status['paused']}"
+            f"（初期シード {q_origins['human_seed']}／セッション派生 {q_origins['session']}／資料派生 {q_origins['material']}）",
+        ),
+        ("モチーフ", "motifs", len(data["motifs"]), ""),
+        (
+            "素材",
+            "materials",
+            len(materials),
+            f"`literary_text` {mat_kinds['literary_text']}／`research_excerpt` {mat_kinds['research_excerpt']}"
+            f"／`project_trace` {mat_kinds['project_trace']}／`conversation_trace` {mat_kinds['conversation_trace']}",
+        ),
+        (
+            "断片",
+            "fragments",
+            len(fragments),
+            f"`selected` {frag_status['selected']}／`draft` {frag_status['draft']}"
+            f"／`human_narrator` {frag_modes['human_narrator']}",
+        ),
+        ("関係", "relations", len(relations), f"うち断片↔断片 {frag_to_frag}"),
+        ("セッション", "sessions", len(data["sessions"]), ""),
+        ("読み痕跡", "read_log", len(data.get("read_log", {})), ""),
+        ("訂正録", "errata", errata_count, ""),
+        ("編集判断", "editorial_decisions", len(data.get("editorial_decisions", {})), ""),
+        ("精読ノート", "notes", len(data.get("notes", {})), ""),
+        ("条件付き仮説", "hypotheses", len(data.get("hypotheses", {})), ""),
+        ("仮説評価", "evaluations", len(data.get("evaluations", {})), ""),
+    ]
+    out = [
+        "### 台帳ごとの件数",
+        "",
+        "この表は台帳から毎回生成されます。`README.md` は件数を持たず、ここを参照します"
+        "（各台帳の役割は [`README.md`](README.md) §4）。",
+        "",
+        "| 記録 | 保存先 | 件数 | 内訳 |",
+        "|---|---|---:|---|",
+    ]
+    for label, name, count, detail in rows:
+        out.append(f"| {label} | `state/{name}.jsonl`＋`state/{name}.d/` | {count} | {detail} |")
+    out.append("")
+    return out
 
-    # §1 session total note
-    text = re.sub(
-        r"（全\d+セッションの要約全文([^）]*)）",
-        rf"（全{len(sessions)}セッションの要約全文\g<1>）",
-        text,
-    )
-    # §2 readings total note
-    if readings_count > 0:
-        text = re.sub(
-            r"（直近5件の詳細窓。過去全\d+本の注釈付き目録・リンク一覧は \[`docs/sessions\.md`\]\(docs/sessions\.md\)「報告注釈目録」を参照）：",
-            f"（直近5件の詳細窓。過去全{readings_count}本の注釈付き目録・リンク一覧は [`docs/sessions.md`](docs/sessions.md)「報告注釈目録」を参照）：",
-            text,
+
+# Shapes that mean "a ledger count was written into README.md by hand".  Each of
+# them was once kept current by `--sync-readme`; none may come back, because a
+# number in README.md is stale as soon as another session appends a row.
+_README_VOLATILE_PATTERNS: tuple[tuple[str, str], ...] = (
+    (r"^\|.*現在の件数.*\|$", "台帳表に「現在の件数」列がある"),
+    (r"^\| [^|]+ \| `state/[a-z_]+\.jsonl`[^|]*\| *[\d,]+ *\|", "台帳表の行に件数のセルがある"),
+    (r"^\| [^|]+ \| `state/[a-z_]+\.jsonl`.*[\d,]+ ?(件|編|本)", "台帳表の行の説明に件数がある"),
+    (r"全[\d,]+セッション", "セッション総数が書かれている"),
+    (r"過去全[\d,]+本", "報告の総数が書かれている"),
+)
+
+
+def readme_volatile_counts(text: str) -> list[str]:
+    """Return one message per README line that hard-codes a ledger count."""
+    found: list[str] = []
+    for number, line in enumerate(text.splitlines(), start=1):
+        for pattern, why in _README_VOLATILE_PATTERNS:
+            if re.search(pattern, line):
+                found.append(f"README.md:{number}: {why}: {_one_line(line, 80)}")
+                break
+    return found
+
+
+def check_readme(readme_path: Path = DEFAULT_README_PATH) -> int:
+    if not readme_path.is_file():
+        print(f"PASS: {_display(readme_path)} does not exist; nothing to check")
+        return 0
+    found = readme_volatile_counts(readme_path.read_text(encoding="utf-8"))
+    if found:
+        for message in found:
+            print(message)
+        print(
+            f"FAIL: {_display(readme_path)} hard-codes {len(found)} ledger count(s). "
+            "Remove the numbers; counts live in READING_MAP.md「台帳ごとの件数」, which is generated."
         )
-
-    # §4 table rows
-    text = re.sub(
-        r"^\| 問い \| `state/questions\.jsonl`＋`state/questions\.d/` \| \d+ \| .* \|$",
-        (
-            f"| 問い | `state/questions.jsonl`＋`state/questions.d/` | {len(questions)} | "
-            f"開いた問い `open` {q_status['open']}件＋整理休止 `paused` {q_status['paused']}件"
-            f"（初期シード{q_origins['human_seed']}件＋セッション派生{q_origins['session']}件＋資料派生{q_origins['material']}件） |"
-        ),
-        text,
-        flags=re.MULTILINE,
-    )
-    text = re.sub(
-        r"^(\| モチーフ \| `state/motifs\.jsonl`＋`state/motifs\.d/` \| )\d+( \| .*?など)\d+(本の反復モチーフ \|)$",
-        rf"\g<1>{len(motifs)}\g<2>{len(motifs)}\g<3>",
-        text,
-        flags=re.MULTILINE,
-    )
-    text = re.sub(
-        r"^\| 素材 \| `state/materials\.jsonl`＋`state/materials\.d/` \| \d+ \| .* \|$",
-        (
-            f"| 素材 | `state/materials.jsonl`＋`state/materials.d/` | {len(materials)} | "
-            f"文学・哲学・歴史原典 {mat_kinds['literary_text']:,}件（`literary_text`）＋"
-            f"AI・認知・社会・自然科学等の研究抜粋 {mat_kinds['research_excerpt']:,}件（`research_excerpt`）＋"
-            f"プロジェクト痕跡 {mat_kinds['project_trace']:,}件（`project_trace`）＋"
-            f"初期対話痕跡 {mat_kinds['conversation_trace']:,}件（`conversation_trace`） |"
-        ),
-        text,
-        flags=re.MULTILINE,
-    )
-    text = re.sub(
-        r"^\| 断片 \| `state/fragments\.jsonl`＋`state/fragments\.d/` \| \d+ \| .* \|$",
-        (
-            f"| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | {len(fragments)} | "
-            f"全7形式・AI使用可能な全5語り手モードの創作・批評断片"
-            f"（`selected` {frag_status['selected']}編＋`draft` {frag_status['draft']}編、"
-            f"`human_narrator` {frag_modes['human_narrator']}編） |"
-        ),
-        text,
-        flags=re.MULTILINE,
-    )
-    text = re.sub(
-        r"^\| 関係 \| `state/relations\.jsonl`＋`state/relations\.d/` \| \d+ \| .* \|$",
-        (
-            f"| 関係 | `state/relations.jsonl`＋`state/relations.d/` | {len(relations)} | "
-            f"共鳴・対照・変奏・切断・枠組転換・応答・開放などの解釈的関係（うち断片↔断片 {frag_to_frag}件） |"
-        ),
-        text,
-        flags=re.MULTILINE,
-    )
-    text = re.sub(
-        r"^(\| セッション \| `state/sessions\.jsonl`＋`state/sessions\.d/` \| )\d+( \| .* \|)$",
-        rf"\g<1>{len(sessions)}\g<2>",
-        text,
-        flags=re.MULTILINE,
-    )
-    text = re.sub(
-        r"^(\| 読み痕跡 \| `state/read_log\.jsonl`＋`state/read_log\.d/` \| )\d+( \| .* \|)$",
-        rf"\g<1>{len(read_log)}\g<2>",
-        text,
-        flags=re.MULTILINE,
-    )
-    text = re.sub(
-        r"^(\| 訂正録 \| `state/errata\.jsonl`＋`state/errata\.d/` \| )\d+( \| .* \|)$",
-        rf"\g<1>{errata_count}\g<2>",
-        text,
-        flags=re.MULTILINE,
-    )
-    text = re.sub(
-        r"^(\| 編集判断 \| `state/editorial_decisions\.jsonl`＋`state/editorial_decisions\.d/` \| )\d+( \| .* \|)$",
-        rf"\g<1>{len(editorial_decisions)}\g<2>",
-        text,
-        flags=re.MULTILINE,
-    )
-    # The 役割 prose of this row is deliberately left alone: only the count moves,
-    # so the explanation cannot drift out of sync with the row it describes.
-    text = re.sub(
-        r"^(\| 精読ノート \| `state/notes\.jsonl`＋`state/notes\.d/` \| )\d+( \| .* \|)$",
-        rf"\g<1>{len(notes)}\g<2>",
-        text,
-        flags=re.MULTILINE,
-    )
-    text = re.sub(
-        r"^(\| 条件付き仮説 \| `state/hypotheses\.jsonl`＋`state/hypotheses\.d/` \| )\d+( \| .* \|)$",
-        rf"\g<1>{len(hypotheses)}\g<2>",
-        text,
-        flags=re.MULTILINE,
-    )
-    text = re.sub(
-        r"^(\| 仮説評価 \| `state/evaluations\.jsonl`＋`state/evaluations\.d/` \| )\d+( \| .* \|)$",
-        rf"\g<1>{len(evaluations)}\g<2>",
-        text,
-        flags=re.MULTILINE,
-    )
-
-    if text != original:
-        with ledger_io.exclusive_lock(ROOT / "state" / ".ledger.lock"):
-            ledger_io.atomic_write_text(readme_path, text)
-        print(f"SYNCED {_display(readme_path)} counts with state/ ledgers")
-        return True
-    return False
+        return 1
+    print(f"PASS: {_display(readme_path)} carries no ledger counts (they are generated into READING_MAP.md)")
+    return 0
 
 
 def main() -> int:
@@ -829,12 +782,25 @@ def main() -> int:
     parser.add_argument(
         "--sync-readme",
         action="store_true",
-        help="synchronize README.md §1/§2/§4 summary counts with state/ ledgers (used in editorial_review)",
+        help="retired: README.md no longer carries counts. Kept as an alias of --check-readme",
+    )
+    parser.add_argument(
+        "--check-readme",
+        action="store_true",
+        help="verify README.md hard-codes no ledger counts (they are generated into READING_MAP.md)",
     )
     parser.add_argument("--map-dir", type=Path, default=DEFAULT_MAP_DIR)
     parser.add_argument("--index", type=Path, default=DEFAULT_INDEX_PATH)
     parser.add_argument("--readme", type=Path, default=DEFAULT_README_PATH)
     args = parser.parse_args()
+
+    if args.sync_readme:
+        print(
+            "NOTE: --sync-readme is retired. README.md no longer carries ledger counts; "
+            "they are generated into READING_MAP.md「台帳ごとの件数」. Running --check-readme instead."
+        )
+    if args.sync_readme or args.check_readme:
+        return check_readme(args.readme)
 
     from inspect_inquiry import load_all
 
@@ -842,8 +808,6 @@ def main() -> int:
     if args.check:
         return check_index(data, args.index)
     manifest = write_all(data, args.map_dir, args.index, quiet=args.report)
-    if args.sync_readme:
-        sync_readme_counts(data, args.readme)
     if args.report:
         size_report(manifest)
     return 0
