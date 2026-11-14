@@ -316,6 +316,56 @@ def check_errata_addressee_labels(
             )
 
 
+def check_errata_duplicate_claims(
+    errata: dict[str, dict[str, Any]], errors: list[str]
+) -> None:
+    """Require ``duplicate_of`` to name a real row about the same addressee.
+
+    ``duplicate_of`` collapses several rows into one penalty, so a dangling or
+    cross-addressee declaration would quietly reduce weight. The engine ignores
+    such a declaration rather than crashing; this makes it a reported error
+    instead of a silent no-op. Self-reference is rejected as meaningless.
+
+    A declaration is not required for exact repeats, and is never inferred from
+    similar wording: the three distinct Blodgett corrections on one material must
+    keep costing three. Only the writer can assert that a rewording restates an
+    earlier claim, and that assertion is what this checks.
+    """
+    def addresses(rec: dict[str, Any]) -> set[str]:
+        out: set[str] = set()
+        target = rec.get("target")
+        if isinstance(target, dict) and isinstance(target.get("id"), str):
+            out.add(target["id"])
+        for kname in ("subject_id", "fragment_id"):
+            val = rec.get(kname)
+            if isinstance(val, str) and val:
+                out.add(val)
+        return out
+
+    for errata_id, record in sorted(errata.items()):
+        declared = record.get("duplicate_of")
+        if declared is None:
+            continue
+        if not isinstance(declared, list):
+            errors.append(f"errata:{errata_id}: duplicate_of must be an array of errata IDs")
+            continue
+        for other_id in declared:
+            if not isinstance(other_id, str) or other_id not in errata:
+                errors.append(
+                    f"errata:{errata_id}: duplicate_of references unknown errata ID {other_id!r}"
+                )
+                continue
+            if other_id == errata_id:
+                errors.append(f"errata:{errata_id}: duplicate_of references itself")
+                continue
+            mine, theirs = addresses(record), addresses(errata[other_id])
+            if mine and theirs and not (mine & theirs):
+                errors.append(
+                    f"errata:{errata_id}: duplicate_of {other_id!r} has a different addressee; "
+                    "one claim about two subjects is two claims"
+                )
+
+
 def check_refs(
     collection_name: str,
     records: dict[str, dict[str, Any]],
@@ -541,6 +591,7 @@ def main() -> int:
     if errata_records:
         check_refs("evaluations", evaluations, "errata_ids", "errata", errata_records, errors)
         check_errata_addressee_labels(errata_records, errors)
+        check_errata_duplicate_claims(errata_records, errors)
 
     for evl_id, evl in evaluations.items():
         session_id = evl.get("session_id")
