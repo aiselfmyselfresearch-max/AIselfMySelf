@@ -69,6 +69,13 @@ HANDWRITTEN_READINGS = frozenset(
     {"quoted", "summarized", "interpreted", "reinterpreted", "contested", "counted"}
 )
 
+#: A negative trace: the material was in the session's context list and the
+#: session (or a later auditor, named in ``recorded_by_session_id``) explicitly
+#: recorded that it was not read.  This is *not* a substitute for a layer-1
+#: contact row; it is an additional row that makes the absence of a reading
+#: choice auditable after the session row has been written.
+DECLINED_READINGS = frozenset({"declined"})
+
 
 def load(root: Path) -> tuple[dict[str, dict], dict[str, dict]]:
     """Return (sessions, read_log) ID maps for the union view under ``root``."""
@@ -90,9 +97,16 @@ def derived_pairs(sessions: dict[str, dict]) -> set[tuple[str, str]]:
 
 
 def covered_pairs(read_log: dict[str, dict]) -> set[tuple[str, str]]:
-    """Every (session_id, material_id) pair that already has at least one read row."""
+    """Every (session_id, material_id) pair with a *contact* row.
+
+    ``declined`` is excluded on purpose: it answers layer 2 ("did you read it?")
+    but says nothing about layer 1 ("was it in the session's context?").  A
+    decline on a pair with no contact row must not make the layer-1 check pass.
+    """
     pairs: set[tuple[str, str]] = set()
     for record in read_log.values():
+        if record.get("reading") in DECLINED_READINGS:
+            continue
         target = record.get("target")
         if not isinstance(target, dict) or target.get("type") != "material":
             continue
@@ -108,6 +122,22 @@ def handwritten_pairs(read_log: dict[str, dict]) -> set[tuple[str, str]]:
     pairs: set[tuple[str, str]] = set()
     for record in read_log.values():
         if record.get("reading") not in HANDWRITTEN_READINGS:
+            continue
+        target = record.get("target")
+        if not isinstance(target, dict) or target.get("type") != "material":
+            continue
+        session_id = record.get("session_id")
+        material_id = target.get("id")
+        if isinstance(session_id, str) and isinstance(material_id, str):
+            pairs.add((session_id, material_id))
+    return pairs
+
+
+def declined_pairs(read_log: dict[str, dict]) -> set[tuple[str, str]]:
+    """(session, material) pairs explicitly declined with ``reading: declined``."""
+    pairs: set[tuple[str, str]] = set()
+    for record in read_log.values():
+        if record.get("reading") not in DECLINED_READINGS:
             continue
         target = record.get("target")
         if not isinstance(target, dict) or target.get("type") != "material":
@@ -194,18 +224,26 @@ def unread_choices(sessions: dict[str, dict]) -> set[tuple[str, str]]:
     return pairs
 
 
-def since_report(
+def excused_pairs(sessions: dict[str, dict], read_log: dict[str, dict]) -> set[tuple[str, str]]:
+    """Pairs excused either by ``sessions.notes`` or by a ``declined`` row."""
+    return unread_choices(sessions) | declined_pairs(read_log)
+
+
+def since_report_details(
     sessions: dict[str, dict],
     read_log: dict[str, dict],
     since: date,
-) -> tuple[int, int, int, int, list[tuple[str, str]]]:
-    """Return (eligible_pairs, hand_covered, unread_excused, exempt_sessions, unmet)."""
+) -> dict[str, object]:
+    """Per-pair accounting after ``since`` with the two excuse kinds separated."""
     hand = handwritten_pairs(read_log)
-    excused = unread_choices(sessions)
+    unread = unread_choices(sessions)
+    declined = declined_pairs(read_log)
     eligible = 0
     covered = 0
-    used_excuse = 0
+    unread_count = 0
+    declined_count = 0
     exempt = 0
+    eligible_sessions = 0
     unmet: list[tuple[str, str]] = []
     for session_id, record in sessions.items():
         started = session_date(session_id, record)
@@ -216,17 +254,45 @@ def since_report(
         if not context:
             exempt += 1
             continue
+        eligible_sessions += 1
         for material_id in context:
             pair = (session_id, material_id)
             eligible += 1
             if pair in hand:
                 covered += 1
-            elif pair in excused:
+            elif pair in unread:
                 covered += 1
-                used_excuse += 1
+                unread_count += 1
+            elif pair in declined:
+                covered += 1
+                declined_count += 1
             else:
                 unmet.append(pair)
-    return eligible, covered, used_excuse, exempt, sorted(unmet)
+    return {
+        "eligible_pairs": eligible,
+        "covered_pairs": covered,
+        "unread_excused": unread_count,
+        "declined_excused": declined_count,
+        "eligible_sessions": eligible_sessions,
+        "exempt_sessions": exempt,
+        "unmet": sorted(unmet),
+    }
+
+
+def since_report(
+    sessions: dict[str, dict],
+    read_log: dict[str, dict],
+    since: date,
+) -> tuple[int, int, int, int, list[tuple[str, str]]]:
+    """Backward-compatible tuple: (eligible, covered, excused, exempt, unmet)."""
+    details = since_report_details(sessions, read_log, since)
+    return (
+        int(details["eligible_pairs"]),
+        int(details["covered_pairs"]),
+        int(details["unread_excused"]) + int(details["declined_excused"]),
+        int(details["exempt_sessions"]),
+        list(details["unmet"]),
+    )
 
 
 def check(root: Path, since: date | None = None, enforce: bool = False) -> int:
@@ -269,15 +335,24 @@ def check(root: Path, since: date | None = None, enforce: bool = False) -> int:
         return 1 if gate_failed else 0
 
     # --- layer 2 since the effective date. Enforced only with --enforce. ---
-    eligible, covered, excused, exempt, unmet = since_report(sessions, read_log, since)
+    details = since_report_details(sessions, read_log, since)
+    eligible = int(details["eligible_pairs"])
+    covered = int(details["covered_pairs"])
+    exempt = int(details["exempt_sessions"])
+    unmet = list(details["unmet"])
     rate = (covered / eligible) if eligible else 0.0
     print(
         "read_log layer2 since {d}: {c}/{e} pairs = {r:.1f}%".format(
             d=since.isoformat(), c=covered, e=eligible, r=rate * 100
         )
     )
-    print(f"  eligible sessions: {len(sessions) - exempt}   exempt: {exempt}")
-    print(f"  excused by 未読の選択: {excused}")
+    print(
+        "  eligible sessions: {e}   exempt: {x}".format(
+            e=details["eligible_sessions"], x=exempt
+        )
+    )
+    print(f"  excused by 未読の選択: {details['unread_excused']}")
+    print(f"  excused by declined: {details['declined_excused']}")
     if not enforce:
         print(
             "  note: --since alone never fails. Add --enforce to make unmet pairs "
@@ -292,7 +367,10 @@ def check(root: Path, since: date | None = None, enforce: bool = False) -> int:
             print(f"  - {session_id} -> {material_id}")
         if len(unmet) > 10:
             print(f"  - … and {len(unmet) - 10} more")
-        print("  remedy: write a hand-written read_log row, or add `未読の選択: <id>` to sessions.notes")
+        print(
+            "  remedy: write a hand-written read_log row, add `未読の選択: <id>` to sessions.notes, "
+            "or append a `declined` read_log row with a reason"
+        )
         return 1
     print("PASS: every eligible pair since the effective date is accounted for")
     return 1 if gate_failed else 0
