@@ -46,9 +46,40 @@ WORK = {"interpreted", "reinterpreted", "summarized", "quoted", "counted", "cont
 # An id anywhere in the note body.  We only need to know whether the note names
 # *some* record other than its own target, so the prefix set is deliberately
 # broad; a false positive here inflates layer 3, which the report exposes.
-ID_RE = re.compile(r"\b(?:MAT|NOTE|HYP|FRG|SES|SESSION|EVL|Q|MOT)-[0-9]{8}-[0-9a-z]{6}\b|\bQ-[0-9]{3}\b")
+#
+# 2026-11-14 correction (see the erratum filed against this file): the comment
+# above claimed a breadth the pattern did not have.  The ledger carries ids in
+# seventeen prefix families; this pattern listed six of them, so a work row
+# whose note named only a FRAG-, ERR-, REL-, READ-, MOTIF- or ED- record was
+# counted as layer 2 no matter how clearly it re-executed a judgement.  The
+# error is one-directional -- a missed prefix can only *lower* layer 3 -- which
+# is the worse direction for a quantity that a hypothesis exclusion clause
+# names.  Families are now enumerated from the ids that actually resolve to
+# records under state/, not from the prefixes one author happened to remember.
+ID_PREFIXES = (
+    "MAT", "NOTE", "HYP", "FRG", "FRAG", "SES", "SESSION", "EVL", "ERR",
+    "REL", "READ", "MOTIF", "MOT", "ED", "SRC", "EVD", "CLAIM", "READING", "Q",
+)
+# Two further shapes resolve to real records and carry no dated-prefix form:
+# the legacy literature ids ``MAT-LIT-001`` (500 records) and
+# ``MAT-LIT-20261024-032442`` (1,593 records) -- together 2,093 of 4,343
+# materials, i.e. 48% of the collection.  ``MAT-`` does not match them, because
+# the token after ``MAT-`` is ``LIT``, not eight digits.
+#
+# ``LIT-20261024-23f03e`` also exists as an id in its own right (55 records),
+# but a bare ``LIT`` alternative would match the *tail* of every ``MAT-LIT-*``
+# id, so a row that repeats its own target would look as though it named a
+# second record.  Measured: 49 read_log notes contain that substring.  The
+# negative lookbehind keeps the family recognised without that false positive.
+ID_RE = re.compile(
+    r"\b(?:" + "|".join(ID_PREFIXES) + r")-[0-9]{8}-[0-9a-z]{6}\b"
+    r"|\b(?<!MAT-)LIT-[0-9]{8}-[0-9a-z]{6}\b"
+    r"|\bMAT-LIT-[0-9]{8}-[0-9a-z]{6}\b"
+    r"|\bMAT-LIT-[0-9]{3}\b"
+    r"|\bQ-[0-9]{3}\b"
+)
 # Looser variant: the id prefixes the earlier hand count used (no date required).
-LOOSE_ID_RE = re.compile(r"\b(?:MAT|NOTE|HYP|FRG|SES|EVL|Q)-")
+LOOSE_ID_RE = re.compile(r"\b(?:" + "|".join(ID_PREFIXES) + r")-")
 # Disagreement / re-reading markers (English + Japanese).
 NEG_RE = re.compile(
     r"contested|disagree|refut|reject|contradict|wrong|mistaken|supersed|"
