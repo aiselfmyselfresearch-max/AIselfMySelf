@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：4202 件（research_excerpt 1975 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：247 編（selected 96 ／ draft 151）
 - **解釈的関係（Relations）**：6986 件
-- **探究セッション（Sessions）**：757 回
+- **探究セッション（Sessions）**：758 回
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -4979,7 +4979,7 @@
 | `MAT-20261113-c8acae` | research_excerpt | Michael Polanyi『Michael Polanyi「Life's Irreducible Structure」（生命の不可還元な構造）』（1968） |
 | `MAT-20261113-e92c8a` | research_excerpt | Justine Karst, Melanie D. Jones, Jason D. Hoeksema『Justine Karst, Melanie D. Jones & Jaso… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261113-5311d1・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261114-71d250・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -5688,8 +5688,8 @@
 | `SESSION-20261112-88ffb852b5e5` | 2026-11-12 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-462706` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-1a5bd2` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261113-50ebf1` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-2f7b6e` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261113-50ebf1` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-21d8c8` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-bb8210` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-478cfe` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5740,6 +5740,7 @@
 | `SESSION-20261113-ed8a61` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261113-64009f` | 2026-11-13 | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261113-5311d1` | 2026-11-13 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-71d250` | 2026-11-14 | `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（6986 件・全表は map/40-relations-*.md）
 
@@ -5854,7 +5855,7 @@
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 36,197 |
-| `map/50-sessions-16.md` | 7 | 4,204 |
+| `map/50-sessions-16.md` | 8 | 4,989 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -5878,24 +5879,24 @@
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,636 |
-| `map/60-notes-24.md` | 25 | 98,281 |
-| `map/60-notes-25.md` | 25 | 59,200 |
-| `map/60-notes-26.md` | 25 | 82,001 |
-| `map/60-notes-27.md` | 25 | 68,664 |
-| `map/60-notes-28.md` | 25 | 86,788 |
-| `map/60-notes-29.md` | 25 | 101,409 |
-| `map/60-notes-30.md` | 25 | 127,278 |
-| `map/60-notes-31.md` | 15 | 80,811 |
+| `map/60-notes-24.md` | 25 | 100,958 |
+| `map/60-notes-25.md` | 25 | 59,056 |
+| `map/60-notes-26.md` | 25 | 81,174 |
+| `map/60-notes-27.md` | 25 | 68,616 |
+| `map/60-notes-28.md` | 25 | 83,841 |
+| `map/60-notes-29.md` | 25 | 103,568 |
+| `map/60-notes-30.md` | 25 | 128,165 |
+| `map/60-notes-31.md` | 16 | 84,029 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・765本・28,637,443 B）
+## 8. 精読ノート索引（readings/・766本・28,658,936 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 741/765 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 742/766 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：765 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：100 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：766 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：101 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6496,6 +6497,7 @@
 | `readings/2026-11-13-what-decides-which-line-is-read.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-462706` +2 | 27,916 | Q3 M15 S3 ERR2 | — | どの行が読まれるかを決めるもの——生物学十資料がずらした「保存」の位置 |
 | `readings/2026-11-13-what-is-kept-when-the-carrier-dies.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-910748` | 35,986 | Q3 M13 S1 ERR1 | — | 担い手が死んでも残るもの、写さないことで残るもの——生物学十資料の精読と、保存という語の書き換え |
 | `readings/2026-11-13-where-the-body-and-the-record-part-ways.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-6c8a47` +6 | 67,913 | Q3 M32 S7 ERR5 | ✓ | 体と記録が別れるところ——生物学十篇の精読報告 |
+| `readings/2026-11-14-layer-two-first-sessions-and-the-unrepairable-gap.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-71d250` +12 | 11,070 | Q2 M5 S13 | — | 層2 は最初の10セッションをどう記録したか——29ペアの used_as_context と、追記専用の修復不能性 |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
 | `readings/2026-11-15-a-second-key-with-no-lock.md` | 2026-10-26 | 2026-11-15 | `SESSION-20261115-6a7862` +4 | 15,179 | Q5 F12 M4 MOT1 S5 | ✓ | 錠のない鍵を、もう一本 —— 痣と言い切った声と、朝ごとに選び直す沈黙（SESSION-20261115-6a7862） |
 | `readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md` | 2026-10-26 | 2026-11-16 | `SESSION-20261116-de57d9` | 5,113 | Q10 F3 M4 MOT2 S1 | ✓ | 二種類の火と、目の試練——ローテーション改修と火×習慣の再読交配（SESSION-20261116-de57d9） |
