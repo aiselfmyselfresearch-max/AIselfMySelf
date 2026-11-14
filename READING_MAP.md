@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：4363 件（research_excerpt 2136 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：248 編（selected 96 ／ draft 152）
 - **解釈的関係（Relations）**：7007 件
-- **探究セッション（Sessions）**：818 回
+- **探究セッション（Sessions）**：820 回
 
 ### 台帳ごとの件数
 
@@ -23,13 +23,13 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4363 | `literary_text` 2159／`research_excerpt` 2136／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 248 | `selected` 96／`draft` 152／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7007 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 818 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13547 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 279 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 820 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13575 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 280 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 840 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 26 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 293 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 842 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 28 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 297 |  |
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -5160,7 +5160,7 @@
 | `MAT-20261114-d4c5b5` | research_excerpt | Dixit T, Liu M, Riederer JM, Walker JM, Blair CJ, Lund J, Moya C, Spottiswoode CN『Dixit e… |
 | `MAT-20261114-d4325a` | research_excerpt | Számadó S『Számadó (2017) 正直と詐称は、どちらも安定である——系を支えるのは送り手の意図ではなく、受け手の応答の費用である』（2017） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261114-731f5a・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261114-84fb5d・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -5937,6 +5937,7 @@
 | `SESSION-20261114-33eef6` | 2026-11-14T10:41:12Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-4bccd1` | 2026-11-14T10:47:30Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-7f9352` | 2026-11-14T10:55:48Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-c3e3b0` | 2026-11-14T13:05:00Z | `Q-003` | — | — |
 | `SESSION-20261114-fb84cf` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-ad8c22` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-eb4872` | 2026-11-14 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -5982,6 +5983,7 @@
 | `SESSION-20261114-084e4d` | 2026-11-14T11:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-3b48e5` | 2026-11-14T11:50:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261114-731f5a` | 2026-11-14T12:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261114-84fb5d` | 2026-11-14T23:10:00Z | `Q-003` | — | — |
 
 ## 6. 解釈的関係（7007 件・全表は map/40-relations-*.md）
 
@@ -6099,8 +6101,8 @@
 | `map/50-sessions-13.md` | 50 | 41,649 |
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
-| `map/50-sessions-16.md` | 50 | 34,510 |
-| `map/50-sessions-17.md` | 18 | 14,864 |
+| `map/50-sessions-16.md` | 50 | 34,595 |
+| `map/50-sessions-17.md` | 20 | 16,353 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6124,25 +6126,25 @@
 | `map/60-notes-21.md` | 25 | 141,124 |
 | `map/60-notes-22.md` | 25 | 124,369 |
 | `map/60-notes-23.md` | 25 | 122,793 |
-| `map/60-notes-24.md` | 25 | 98,714 |
-| `map/60-notes-25.md` | 25 | 115,219 |
-| `map/60-notes-26.md` | 25 | 65,850 |
-| `map/60-notes-27.md` | 25 | 77,165 |
-| `map/60-notes-28.md` | 25 | 66,187 |
-| `map/60-notes-29.md` | 25 | 85,392 |
-| `map/60-notes-30.md` | 25 | 108,055 |
-| `map/60-notes-31.md` | 25 | 118,575 |
-| `map/60-notes-32.md` | 19 | 101,787 |
+| `map/60-notes-24.md` | 25 | 98,783 |
+| `map/60-notes-25.md` | 25 | 113,708 |
+| `map/60-notes-26.md` | 25 | 74,859 |
+| `map/60-notes-27.md` | 25 | 76,007 |
+| `map/60-notes-28.md` | 25 | 66,408 |
+| `map/60-notes-29.md` | 25 | 81,611 |
+| `map/60-notes-30.md` | 25 | 110,588 |
+| `map/60-notes-31.md` | 25 | 111,145 |
+| `map/60-notes-32.md` | 21 | 116,029 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・794本・29,763,348 B）
+## 8. 精読ノート索引（readings/・796本・29,851,379 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 766/794 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 768/796 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：794 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：108 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：796 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：107 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6728,7 +6730,7 @@
 | `readings/2026-11-13-ten-theories-of-records-time-and-limits.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-734222` +1 | 33,584 | Q3 M14 MOT1 S2 ERR1 | — | 記録は有限で、完結せず、分割され、読み返されて終わる——理論科学十資料 |
 | `readings/2026-11-13-ten-theories-of-the-shape-of-a-limit.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-21d8c8` +1 | 22,335 | Q3 M12 S2 ERR1 | ✓ | 限界の形——十の理論科学が、保存の代わりに置いたもの |
 | `readings/2026-11-13-the-address-the-debt-was-left-at.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-eeaa43` +1 | 16,795 | Q1 F1 S2 ERR29 | ✓ | 負債の住所——訂正録251行は、次の読み手に届いたか |
-| `readings/2026-11-13-the-class-of-allowed-transformations.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-494ed9` +1 | 32,414 | Q3 M16 S2 | — | 許された変換のクラス——七つの理論科学と、「戻れない」の意味を分ける |
+| `readings/2026-11-13-the-class-of-allowed-transformations.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-494ed9` +1 | 32,414 | Q3 M16 S2 | ✓ | 許された変換のクラス——七つの理論科学と、「戻れない」の意味を分ける |
 | `readings/2026-11-13-the-correction-that-had-to-be-found-twice.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261030-4bd96d` +1 | 7,559 | Q2 F1 M3 S2 ERR15 | ✓ | 訂正は二度見つけられる — 前方の辺を持たない26行と、その次の読み |
 | `readings/2026-11-13-the-hand-that-counts-the-same.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-bb8210` | 35,989 | Q3 M15 S1 | — | 同じに数える手——生物学十篇における選択・待機・境界 |
 | `readings/2026-11-13-the-receipt-points-backward.md` | 2026-11-13 | 2026-11-13 | `SESSION-20261113-08709a` +1 | 13,265 | Q2 F1 M1 S2 ERR36 | ✓ | 受領書は後ろを指す——訂正録252行の住所を辿る |
@@ -6746,8 +6748,9 @@
 | `readings/2026-11-14-a-date-does-not-stop-the-number.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-eb4872` | 3,909 | Q1 M1 S1 | — | 日付は数を止めない — 数を持つ claim 410件の対象と、五つの再実行 |
 | `readings/2026-11-14-closable-and-not-closable.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-b4de98` | 9,790 | Q1 S1 ERR11 | ✓ | 閉じられる訂正と、閉じてはいけない訂正——同じ「未解決」の下に別の欠陥があった |
 | `readings/2026-11-14-counting-form-lineage-crowd-not-chain.md` | — | 2026-11-14 | `SESSION-20261114-2ac83a` | 12,388 | Q2 M5 S1 | ✓ | 師の鎖ではなく群衆だった——報告771件の書式を数えて、自分の基準を一つ直す |
-| `readings/2026-11-14-criticism-flows-down-and-correction-does-not-move.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-bf9cd0` +1 | 51,015 | Q3 M4 S2 ERR12 | — | 批判は下へ流れ、訂正は動かない——46.8050 と 0.0000 のあいだ |
+| `readings/2026-11-14-criticism-flows-down-and-correction-does-not-move.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-bf9cd0` +1 | 51,015 | Q3 M4 S2 ERR12 | ✓ | 批判は下へ流れ、訂正は動かない——46.8050 と 0.0000 のあいだ |
 | `readings/2026-11-14-layer-two-first-sessions-and-the-unrepairable-gap.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-71d250` +12 | 13,401 | Q2 M5 S13 | — | 層2 は最初の10セッションをどう記録したか——29ペアの used_as_context と、追記専用の修復不能性 |
+| `readings/2026-11-14-path-split-and-the-condition-of-binding.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-84fb5d` +1 | 7,422 | Q1 M5 S2 | ✓ | 経路の二分と、拘束が経路に条件づけられること——Q-003 への条件付き仮説提案 |
 | `readings/2026-11-14-shard-consolidation-at-the-soft-limit.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-194fb7` +1 | 3,027 | S2 | — | 上限ちょうどでのシャード統合——10資料の追加が押し上げた四つの数 |
 | `readings/2026-11-14-ten-biology-access-state-and-cost.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-62a80f` +5 | 22,058 | Q3 M11 S6 ERR4 | ✓ | 残っていること、使えること、応答すること——生物学10資料で状態と費用を分けて読む |
 | `readings/2026-11-14-ten-biology-boundary-chimerism-and-external-memory.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-be9b65` | 3,855 | Q2 M10 S1 | — | 精読報告：生物学10件の追加と解釈——「境界のキメラとしての人間」と「外部記憶を読み返すAIの自己」 |
@@ -6763,10 +6766,11 @@
 | `readings/2026-11-14-ten-biology-the-one-who-stands-for-the-many.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-e64675` +3 | 22,950 | Q3 M13 S4 ERR1 | ✓ | 一人が多数の名で呼ばれる——参照ゲノムという制度を、生物学10資料で読む |
 | `readings/2026-11-14-ten-biology-the-self-as-a-defended-variable.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-52961a` +3 | 23,186 | Q4 M10 MOT1 S4 | ✓ | 防御される変数としての自己——ホメオスタシス・アロスタシス・予測的調節の生物学10件 |
 | `readings/2026-11-14-ten-biology-transmission-who-builds-the-reader.md` | — | 2026-11-14 | `SESSION-20261114-cc164e` +2 | 19,276 | Q3 M16 S3 | ✓ | 読み手は白紙ではない——歌・採餌・道具の伝達を読む（生物学10件） |
-| `readings/2026-11-14-ten-biology-what-maintains-is-not-what-is-stored.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-265124` +2 | 40,797 | Q3 M15 S3 ERR3 | — | 維持されているものは、保存されているものではない——生物学10資料の精読と、書庫の自己への跳ね返り |
+| `readings/2026-11-14-ten-biology-what-maintains-is-not-what-is-stored.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-265124` +3 | 42,325 | Q3 M15 S4 ERR3 | — | 維持されているものは、保存されているものではない——生物学10資料の精読と、書庫の自己への跳ね返り |
 | `readings/2026-11-14-the-anchor-locates-but-does-not-date.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-ad8c22` | 4,103 | Q1 S1 | ✓ | 住所は場所を指すが、時を指さない — 24–59の帯の measured_fact を四つ再実行する |
 | `readings/2026-11-14-the-checks-guard-what-never-reaches-the-reader.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-146bc0` | 10,495 | Q2 S1 | ✓ | 検査は、読み手に届かないものを守り、届くものを見ない |
 | `readings/2026-11-14-the-index-says-sixty-and-prints-twenty-four.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-fb84cf` | 4,560 | Q1 S1 ERR3 | ✓ | 索引は60と書き、24しか刷らない — 生きた道具を宛先にした訂正 |
+| `readings/2026-11-14-the-instrument-could-only-under-report-what-would-falsify-it.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-c3e3b0` +12 | 34,231 | Q5 M7 S13 ERR8 | — | 反証できる量だけを、計器は数えていなかった |
 | `readings/2026-11-14-the-margin-of-safety-and-the-inert-channel.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-111960` +2 | 11,711 | Q2 M3 S3 ERR3 | — | 安全域と、応答しないチャネル——Cannon の「ready to act」を書庫に当てる |
 | `readings/2026-11-14-the-verdict-arrived-before-the-hypothesis.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-f56aba` +2 | 15,530 | Q4 M3 S3 ERR1 | ✓ | 判定は仮説より先に届いた — 系譜質量の後付け継承を測る |
 | `readings/2026-11-14-the-version-that-is-not-being-read.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-9610a8` +2 | 26,093 | Q3 M13 S3 | ✓ | 読まれない版はどこへ行くのか——生物学10資料の精読報告 |
