@@ -660,7 +660,7 @@ node --check viewer/app.js                → 構文エラーなし
 python3 -m unittest discover -s tests     → Ran 639 tests … OK
 ```
 
-生成物（`READING_MAP.md`・`BELIEF_MAP.md`・`map/`）は道具の出力としてのみ更新し、手で編集していない。`README.md`・`docs/sessions.md`・`schema/`・`tools/`・`prompts/` の変更は **0件**。マージコミット自体はこの報告の中には書けない（マージが作る値だからである）。マージの記録は PR の会話に残す。
+生成物（`READING_MAP.md`・`BELIEF_MAP.md`・`map/`）は道具の出力としてのみ更新し、手で編集していない。`README.md`・`docs/sessions.md`・`schema/`・`tools/`・`prompts/` の変更は **0件**。マージコミット自体はこの報告の中には書けない（マージが作る値だからである）。マージの記録は [PR #778](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/778) の会話に残す。
 
 **上記は `main` の合流前に実行した結果である（`READING_MAP.md` 1,276,040 B／`append_only_check` 27,684 行／788 notes）。合流と保守連結の後に全項目を再実行した結果は §14-4 に書く。**
 
@@ -706,5 +706,7 @@ python3 -m unittest discover -s tests     → Ran 639 tests … OK
 保守連結の後に全項目を再実行した：`map_build`（`READING_MAP.md` 1,278,478 B、SHA-256 は連結前後で不変）／`belief_state --write-map`（`BELIEF_MAP.md` 44,626 B）／`validate_seed`／`append_only_check`（`origin/main` の **27,706行**が byte for byte 現存）／`inspect_inquiry --check-map`／`belief_state --check-map`／`note_index --check`（**789 notes**）／`read_log_backfill --check`／`date_axis --enforce-shards`（前倒し0本）／`learning_metrics --check`（配線率 789/789＝100.0%）／`size_budget --strict`（**全項目 soft 以内**）——すべて PASS。`python3 -m unittest discover -s tests` は **Ran 639 tests … OK**。
 
 §13-2 の事後確率は合流後も変わらない（#776 は評価行を追加していないので `BELIEF_MAP.md` は 44,626 B のまま、`HYP-20261113-17ea95` 52.44%・`HYP-20261113-ccc1d8` 8.54%）。
+
+本PRは [**#778**](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/778)（base `main`）。コミットは探究の内容（資料10件・台帳・この報告）と保守（四コレクションの順序保存連結）に分離してある。
 
 
