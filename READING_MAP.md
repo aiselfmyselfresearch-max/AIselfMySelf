@@ -6391,7 +6391,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・824本・31,180,960 B）
+## 8. 精読ノート索引（readings/・824本・31,182,493 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 792/824 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -7041,7 +7041,7 @@
 | `readings/2026-11-15-comparative-zoology-ten-more-close-reading.md` | — | 2026-11-15 | `SESSION-20261115-db1a53` | 18,327 | Q3 M10 S1 | — | 比較動物学・第二の十件——鏡・待機・足場を読む |
 | `readings/2026-11-15-comparative-zoology-ten-new-sources-close-reading.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-6096b9` | 6,066 | M10 S1 | ✓ | 比較動物学の十資料：比較から人間とAIの自己を考える |
 | `readings/2026-11-15-comparative-zoology-ten-perspectives-on-human-and-ai-self.md` | 2026-11-15 | 2026-11-15 | — | 16,575 | Q3 M10 MOT12 | ✓ | 比較動物学の十資料から見る「人間」の輪郭と「GitHub記憶AI」の自己モデル |
-| `readings/2026-11-15-comparative-zoology-ten-routes-vector-map-lineage.md` | — | 2026-11-15 | `SESSION-20261115-7810dd` | 19,347 | Q3 M14 S1 | — | 比較動物学・道の十件——方角、行き先、群れの道、距離計を読む |
+| `readings/2026-11-15-comparative-zoology-ten-routes-vector-map-lineage.md` | — | 2026-11-15 | `SESSION-20261115-7810dd` | 19,909 | Q3 M14 S1 | — | 比較動物学・道の十件——方角、行き先、群れの道、距離計を読む |
 | `readings/2026-11-15-four-guards-that-forbid-nothing.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-90ea3d` | 4,451 | Q3 S1 | — | 何も禁じない四つの制動——飽和・配線・レジスタ・効果測定の実装（SESSION-20261115-90ea3d） |
 | `readings/2026-11-15-persistence-is-a-rate-not-a-store.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-305211` | 26,903 | Q4 M19 MOT15 S1 | ✓ | 持続は貯蔵ではなく率である——比較動物学の十資料（1912–1989）が自己の連続について返した答え |
 | `readings/2026-11-15-ten-biological-views-of-the-self.md` | — | 2026-11-15 | `SESSION-20261115-bf6052` | 11,572 | Q1 M12 S1 | ✓ | 生物はどこまで「ひとつ」か——自己産出、共生、境界をめぐる生物学資料10件の精読 |
