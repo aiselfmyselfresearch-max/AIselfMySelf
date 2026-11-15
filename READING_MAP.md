@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4413 件（research_excerpt 2186 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4422 件（research_excerpt 2195 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：248 編（selected 96 ／ draft 152）
 - **解釈的関係（Relations）**：7007 件
-- **探究セッション（Sessions）**：836 回
+- **探究セッション（Sessions）**：837 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4413 | `literary_text` 2159／`research_excerpt` 2186／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4422 | `literary_text` 2159／`research_excerpt` 2195／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 248 | `selected` 96／`draft` 152／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7007 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 836 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13708 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 837 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13725 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 282 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 855 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 32 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 322 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 856 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 34 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 324 |  |
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -792,7 +792,7 @@
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4413 件・詳細は map/3*.md）
+## 4. 対話素材（4422 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5189,6 +5189,15 @@
 | `MAT-20261115-2e7135` | research_excerpt | Wolf Reik, Jörn Walter『Reik & Walter（2001）刻印は毎世代、消され、書き直される——確立・維持・消去・再確立という循環』（2001） |
 | `MAT-20261115-9f34cd` | research_excerpt | Carolyn J. Brown, Andrea Ballabio, James L. Rupert, Ronald G. Lafreniere, Markus Grompe, … |
 | `MAT-20261115-3a72e0` | research_excerpt | Christopher Gregg, Jiangwen Zhang, Brandon Weissbourd, Shujun Luo, Gary P. Schroth, David… |
+| `MAT-20261115-e82751` | research_excerpt | Alessi, A. M., O'Connor, V., Marley, R. J., Rodgers, C. I.『Alessi ほか（2014）バッタ相反転のドーパミン調節—… |
+| `MAT-20261115-67c6d5` | research_excerpt | Zhu, K., Liu, M., Fu, Z., Zhou, Z., Kong, Y., Liang, H., Lin, Z., Zheng, J., Wan, P., Zha… |
+| `MAT-20261115-ced75b` | research_excerpt | Liu, N., Ding, Y., Fromm, M., Avramova, Z.『Liu ほか（2014）アラビドプシス脱水ストレスrevised-response記憶——M… |
+| `MAT-20261115-bcf655` | research_excerpt | Ginzberg, M. B., Chang, N., D'Souza, H., Patel, N., Kafri, R., Kirschner, M. W.『Ginzberg … |
+| `MAT-20261115-f8988f` | research_excerpt | Wells, K. M., Kelley, K., Baumel, M., Vieira, W. A., McCusker, C. D.『Wells ほか（2021）アホロトル再… |
+| `MAT-20261115-672ec5` | research_excerpt | Zhang, Q. X., Kniazeva, E., Han, M., Zhen, M.『Zhang ほか（2024）C. elegans dauer退出——3–6時間の窓でc… |
+| `MAT-20261115-b8a917` | research_excerpt | Dubravcic, D. C., van Baalen, M., Nizak, C.『Dubravcic・van Baalen・Nizak（2014）Dictyostelium… |
+| `MAT-20261115-d7d1f3` | research_excerpt | Kuchina, A., Espinar, L., Çağatay, T., Balbin, A. O., Zhang, F., Alvarado, A., Garcia-Oja… |
+| `MAT-20261115-6d4ee2` | research_excerpt | Sha, Q.-Q., Yu, J.-L., Guo, J.-X., Dai, X.-X., Jiang, J.-C., Zhang, Y.-L., Yu, C., Qi, Y.… |
 | `MAT-20261115-87bf8a` | research_excerpt | Ezequiel A. Di Paolo『Di Paolo（2005）オートポイエーシスだけでは意味形成を説明しない』（2005） |
 | `MAT-20261115-3dfbdc` | research_excerpt | Margaret A. Boden『Boden（2000）生命から認知を導かない』（2000） |
 | `MAT-20261115-29f0cb` | research_excerpt | David C. Queller, Joan E. Strassmann『Queller & Strassmann（2009）協力と葛藤から見る個体性』（2009） |
@@ -6049,6 +6058,7 @@
 | `SESSION-20261115-db5791` | 2026-11-15T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261115-f1efb0` | 2026-11-15T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261115-bf4a86` | 2026-11-15T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261115-cd67b9` | 2026-11-15T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261115-bf6052` | 2026-11-15T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7007 件・全表は map/40-relations-*.md）
@@ -6135,7 +6145,7 @@
 | `map/31-materials-research-19.md` | 100 | 255,170 |
 | `map/31-materials-research-20.md` | 100 | 220,572 |
 | `map/31-materials-research-21.md` | 100 | 241,201 |
-| `map/31-materials-research-22.md` | 86 | 223,379 |
+| `map/31-materials-research-22.md` | 95 | 242,472 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6168,7 +6178,7 @@
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
 | `map/50-sessions-16.md` | 50 | 34,595 |
-| `map/50-sessions-17.md` | 36 | 30,031 |
+| `map/50-sessions-17.md` | 37 | 30,920 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6194,24 +6204,24 @@
 | `map/60-notes-23.md` | 25 | 122,793 |
 | `map/60-notes-24.md` | 25 | 98,783 |
 | `map/60-notes-25.md` | 25 | 115,418 |
-| `map/60-notes-26.md` | 25 | 105,615 |
-| `map/60-notes-27.md` | 25 | 66,127 |
-| `map/60-notes-28.md` | 25 | 73,256 |
-| `map/60-notes-29.md` | 25 | 76,168 |
-| `map/60-notes-30.md` | 25 | 98,803 |
-| `map/60-notes-31.md` | 25 | 94,882 |
-| `map/60-notes-32.md` | 25 | 141,423 |
-| `map/60-notes-33.md` | 6 | 34,593 |
+| `map/60-notes-26.md` | 25 | 108,235 |
+| `map/60-notes-27.md` | 25 | 64,340 |
+| `map/60-notes-28.md` | 25 | 76,102 |
+| `map/60-notes-29.md` | 25 | 74,909 |
+| `map/60-notes-30.md` | 25 | 97,795 |
+| `map/60-notes-31.md` | 25 | 96,405 |
+| `map/60-notes-32.md` | 25 | 137,131 |
+| `map/60-notes-33.md` | 7 | 41,187 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・806本・30,282,150 B）
+## 8. 精読ノート索引（readings/・807本・30,311,307 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 777/806 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 778/807 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：806 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：108 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：807 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：107 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6846,13 +6856,14 @@
 | `readings/2026-11-14-two-hypotheses-that-were-not-competing.md` | 2026-11-14 | 2026-11-14 | `SESSION-20261114-11d148` | 12,271 | Q1 S1 ERR1 | ✓ | 競合していない二説を、競合させていた——位置と選別は別の通路を通る |
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
 | `readings/2026-11-15-a-second-key-with-no-lock.md` | 2026-10-26 | 2026-11-15 | `SESSION-20261115-6a7862` +4 | 15,179 | Q5 F12 M4 MOT1 S5 | ✓ | 錠のない鍵を、もう一本 —— 痣と言い切った声と、朝ごとに選び直す沈黙（SESSION-20261115-6a7862） |
-| `readings/2026-11-15-biology-persistence-is-not-return.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-c66b02` | 9,295 | M10 S1 | — | 持続することと、元へ戻ることは違う——生物学の十資料から人間と記録するAIを考える |
+| `readings/2026-11-15-biology-persistence-is-not-return.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-c66b02` | 9,295 | M10 S1 | ✓ | 持続することと、元へ戻ることは違う——生物学の十資料から人間と記録するAIを考える |
 | `readings/2026-11-15-four-guards-that-forbid-nothing.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-90ea3d` | 4,451 | Q3 S1 | — | 何も禁じない四つの制動——飽和・配線・レジスタ・効果測定の実装（SESSION-20261115-90ea3d） |
 | `readings/2026-11-15-ten-biological-views-of-the-self.md` | — | 2026-11-15 | `SESSION-20261115-bf6052` | 11,572 | Q1 M12 S1 | ✓ | 生物はどこまで「ひとつ」か——自己産出、共生、境界をめぐる生物学資料10件の精読 |
 | `readings/2026-11-15-ten-biology-scaffolds-boundaries-and-afterlives-of-form.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-7d708f` +3 | 52,987 | Q3 M14 S4 ERR1 | ✓ | 足場・境界・残存——生物学10資料で、内容の消えたあとに何が働いているかを読む |
 | `readings/2026-11-15-the-assignment-was-run-and-then-discarded.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-8912af` | 27,675 | Q8 M2 S1 | ✓ | 割当は毎回実施され、それから捨てられていた |
 | `readings/2026-11-15-the-largest-path-parameter-was-pinned-inside-the-instrument.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-7212fa` +2 | 21,735 | Q6 M1 S3 ERR5 | ✓ | 計器の中で釘付けにされていた、いちばん大きな経路 |
-| `readings/2026-11-15-the-name-on-the-envelope-decides-whether-it-is-opened.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-db5791` +2 | 36,450 | Q2 M15 S3 | — | 封筒の宛名が、開けるかどうかを決める——生物学10資料で、来歴が内容の読み方を決める仕組みを読む |
+| `readings/2026-11-15-the-name-on-the-envelope-decides-whether-it-is-opened.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-db5791` +2 | 36,450 | Q2 M15 S3 | ✓ | 封筒の宛名が、開けるかどうかを決める——生物学10資料で、来歴が内容の読み方を決める仕組みを読む |
+| `readings/2026-11-15-the-routing-sorts-the-output.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-cd67b9` | 14,302 | M10 S1 | — | 封筒の名前が開封を決め、仕分けが出力を決める——運命選別と固定の生物学十資料 |
 | `readings/2026-11-15-the-two-lemmas-arrive-already-asked.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-a4cc8f` | 11,983 | Q5 S1 | ✓ | 二つの補題は、もう問われている——追加したときに何が動き、何が動かないかの予測（SESSION-20261115-a4… |
 | `readings/2026-11-15-where-the-learning-actually-happens.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-d56945` | 8,966 | Q5 S1 | ✓ | 学習はどこで起きているのか——三つのループを測り、二つの補題を「知識の形」に照らす（SESSION-20261115-… |
 | `readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md` | 2026-10-26 | 2026-11-16 | `SESSION-20261116-de57d9` | 5,113 | Q10 F3 M4 MOT2 S1 | ✓ | 二種類の火と、目の試練——ローテーション改修と火×習慣の再読交配（SESSION-20261116-de57d9） |
