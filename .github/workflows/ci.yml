@@ -49,6 +49,9 @@ jobs:
         if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
         run: python3 tools/append_only_check.py --base HEAD^1
 
+      - name: Check that readings/ prose bodies exist
+        run: python3 tools/readings_integrity_check.py
+
       - name: Check READING_MAP.md is current
         run: python3 tools/inspect_inquiry.py --check-map
 
@@ -90,6 +93,9 @@ jobs:
         run: |
           python3 tools/claim_wiring.py --limit 5
           python3 tools/addition_effect.py --since 2026-11-01 --cohort 7 --limit 3
+
+      - name: Report errata rows that disagree with their own schema (advisory)
+        run: python3 tools/errata_audit.py --schema
 
       - name: Observe the time axis (advisory)
         run: python3 tools/date_axis.py --check
