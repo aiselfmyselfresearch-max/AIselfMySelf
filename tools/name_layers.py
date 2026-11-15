@@ -41,11 +41,19 @@ from typing import Iterable, Iterator
 
 ROOT = Path(__file__).resolve().parents[1]
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import ledger_ids  # noqa: E402
+
 # Prefixes are ordered longest-first so that ``MAT-LIT-…`` is not read as ``MAT-…``.
-ID_RE = re.compile(
-    r"\b(?:FRAG|Q|MAT-LIT|MAT-TRC|MAT-EVD|MAT|REL|SESSION|MOTIF|ERR|READ|ED|EVD|SRC)"
-    r"-[0-9A-Za-z]+(?:-[0-9A-Za-z]+)*\b"
-)
+# 2026-11-15: this pattern carried its own fourteen-family list, which omitted
+# NOTE, HYP, EVL, CLAIM and READING. This tool resolves the ids that readings/*.md
+# cites in running prose, so a citation of a note, a hypothesis or an evaluation
+# was never resolved -- and therefore never reported as lost or unknown. The
+# omission was one-directional in the same way preservation_layers' was: the
+# checker saw fewer citations than the prose contains. The family list now comes
+# from tools/ledger_ids.py, pinned against the live ledger by
+# tests/test_instrument_coverage.py.
+ID_RE = ledger_ids.PROSE_ID_RE
 DATE_ONLY_RE = re.compile(r"^[A-Z-]+-\d{8}$")
 RANDOM_RE = re.compile(r"^[A-Z-]+-\d{8}-[0-9a-f]{6}$")
 SEQUENTIAL_RE = re.compile(r"^[A-Z-]+-\d{1,6}$")
