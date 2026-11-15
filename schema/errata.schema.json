@@ -31,6 +31,8 @@
         "note",
         "hypothesis",
         "evaluation",
+        "erratum",
+        "editorial_decision",
         "report",
         "tool",
         "other"

@@ -14,6 +14,10 @@
     "context_material_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
     "produced_fragment_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
     "new_question_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "dispersal_seed": {"type": "string", "description": "The seed this session was dispersed under (arena branch label or its hex form), copied from the packet's assignment receipt. Optional so that the rows written before 2026-11-15 stay valid: of 828 sessions only 74 (8.9%) record a seed anywhere, and they do it in prose. Without this field the archive runs a randomized assignment every session and then discards the assignment, so no path-to-judgment question can be joined at scale."},
+    "assigned_role": {"type": "string", "enum": ["proposer", "adversarial_tester", "consolidator"], "description": "The inquiry role belief_state.assign_session_role gave this seed. A pure function of the seed: measured over 437 questions x 18 seeds = 7,866 cells with zero content overrides. Only 35 of 828 sessions (4.2%) record it in prose."},
+    "offered_target_question_id": {"type": "string", "description": "The question the packet offered as its target (--packet auto resolves it from the seed; measured to differ across seeds, changing which question is answered at all). Kept apart from question_ids, which is what the session chose to work on: the difference between the two is the only place a path effect on direction is observable."},
+    "offered_reference_mode": {"type": "string", "description": "The reference mode the packet offered. Kept apart from prompt_template, which is what the session actually used."},
     "prompt_template": {"type": "string"},
     "generator": {"type": "string", "description": "Model/tool label if known; omit if unknown."},
     "notes": {"type": "string"}

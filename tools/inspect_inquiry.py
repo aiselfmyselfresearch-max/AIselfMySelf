@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 import os
 import random
 import re
@@ -1041,6 +1042,113 @@ def _belief_briefing_lines(
     return out, role_info
 
 
+def _resolve_auto_target(
+    data: dict[str, dict[str, dict[str, Any]]],
+    metrics: dict[str, Any],
+    *,
+    seed_label: str,
+    seed_int: int,
+    errata: dict[str, dict[str, Any]] | None = None,
+    root: Path = ROOT,
+) -> tuple[str, str | None]:
+    """Pick the question an ``--packet auto`` reader is pointed at.
+
+    Extracted from build_context_packet on 2026-11-15 so that the assignment can
+    be reported without rendering a 35 KiB packet. The seed decides this: over 24
+    seeds it produced 6 distinct targets, and swapping the target is something no
+    rendering knob (window, limit, budget, ordering) can do.
+    """
+    questions = data["questions"]
+    if not questions:
+        raise ValueError("no questions available for a context packet")
+    open_qids = [qid for qid, q in questions.items() if q.get("status", "open") == "open"]
+    if data.get("hypotheses") and open_qids:
+        import belief_state
+
+        bstate_input = dict(data)
+        bstate_input.setdefault("errata", errata if errata is not None else load_errata(root))
+        bstate = belief_state.compute_belief_state(data=bstate_input, root=root)
+        # Mix 75% high-information-gain core/hypothesis-bearing questions with 25% open sub-questions
+        if (seed_int % 4) != 3 or not metrics["unresponded_questions"]:
+            return belief_state.select_auto_question_id(bstate, open_qids, seed=seed_label)
+        return (
+            metrics["unresponded_questions"][seed_int % len(metrics["unresponded_questions"])],
+            "派生open問い探索枠（25%分散枠）",
+        )
+    if metrics["unresponded_questions"]:
+        return (
+            metrics["unresponded_questions"][seed_int % len(metrics["unresponded_questions"])],
+            None,
+        )
+    return (open_qids[seed_int % len(open_qids)] if open_qids else list(questions.keys())[-1], None)
+
+
+def describe_assignment(
+    data: dict[str, dict[str, dict[str, Any]]],
+    target_qid: str = "auto",
+    *,
+    seed: str | None = None,
+    errata: dict[str, dict[str, Any]] | None = None,
+    root: Path = ROOT,
+) -> dict[str, Any]:
+    """The packet's assignment receipt: what the seed decided before anyone chose.
+
+    Why this exists. The archive runs a randomized assignment every session --
+    the dispersal seed picks the role, the target question and the reference mode,
+    and the role is a pure function of the seed (measured over 437 questions x 18
+    seeds = 7,866 cells with zero content overrides). It then threw the assignment
+    away: schema/session.schema.json had no field for it, and of 828 sessions only
+    74 (8.9%) mention a seed in prose and 35 (4.2%) a role. That is why every
+    path-to-judgment question in this archive -- HYP-20261113-17ea95's limb (a),
+    HYP-20261114-0396ce's controlled comparison -- has been scored as "needs
+    subsequent sessions" and then could not be joined: the treatment was never
+    recorded next to the outcome.
+
+    ``session_row_fields`` is exactly the four optional session-schema fields, so
+    a session can paste the receipt into its row without retyping it. Usage::
+
+        python3 tools/inspect_inquiry.py --assignment-json
+        python3 tools/inspect_inquiry.py --assignment-json --packet Q-003 --seed 36c0e21c
+    """
+    import belief_state
+
+    if errata is None:
+        errata = load_errata(root)
+    metrics = compute_editorial_metrics(data)
+    recommendation = recommend_session_mode(data, seed=seed)
+    seed_label = recommendation["seed_label"]
+    seed_int = recommendation["seed_int"]
+    auto_reason: str | None = None
+    offered = target_qid
+    if target_qid == "auto":
+        offered, auto_reason = _resolve_auto_target(
+            data, metrics, seed_label=seed_label, seed_int=seed_int,
+            errata=errata, root=root,
+        )
+    bstate_input = dict(data)
+    bstate_input.setdefault("errata", errata)
+    bstate = belief_state.compute_belief_state(data=bstate_input, root=root)
+    role_info = belief_state.assign_session_role(
+        seed=seed_label, question_summary=bstate["questions"].get(offered)
+    )
+    receipt = {
+        "dispersal_seed": seed_label,
+        "assigned_role": role_info["role"],
+        "offered_target_question_id": offered,
+        "offered_reference_mode": recommendation["mode"],
+    }
+    return {
+        **receipt,
+        "seed_int": seed_int,
+        "assigned_role_label": role_info["label"],
+        "assigned_role_prompt": role_info["prompt"],
+        "assigned_role_reason": role_info["reason"],
+        "target_was_auto": target_qid == "auto",
+        "auto_selection_reason": auto_reason,
+        "session_row_fields": receipt,
+    }
+
+
 def build_context_packet(
     data: dict[str, dict[str, dict[str, Any]]],
     target_qid: str,
@@ -1067,35 +1175,10 @@ def build_context_packet(
     auto_reason: str | None = None
 
     if target_qid == "auto":
-        if not questions:
-            raise ValueError("no questions available for a context packet")
-        open_qids = [qid for qid, q in questions.items() if q.get("status", "open") == "open"]
-        if data.get("hypotheses") and open_qids:
-            import belief_state
-
-            bstate_input = dict(data)
-            bstate_input.setdefault("errata", errata)
-            bstate = belief_state.compute_belief_state(data=bstate_input, root=root)
-            # Mix 75% high-information-gain core/hypothesis-bearing questions with 25% open sub-questions
-            if (seed_int % 4) != 3 or not metrics["unresponded_questions"]:
-                target_qid, auto_reason = belief_state.select_auto_question_id(
-                    bstate, open_qids, seed=seed_label
-                )
-            else:
-                target_qid = metrics["unresponded_questions"][
-                    seed_int % len(metrics["unresponded_questions"])
-                ]
-                auto_reason = "派生open問い探索枠（25%分散枠）"
-        elif metrics["unresponded_questions"]:
-            target_qid = metrics["unresponded_questions"][
-                seed_int % len(metrics["unresponded_questions"])
-            ]
-        else:
-            target_qid = (
-                open_qids[seed_int % len(open_qids)]
-                if open_qids
-                else list(questions.keys())[-1]
-            )
+        target_qid, auto_reason = _resolve_auto_target(
+            data, metrics, seed_label=seed_label, seed_int=seed_int,
+            errata=errata, root=root,
+        )
 
     if target_qid not in questions:
         raise ValueError(f"unknown question ID: {target_qid!r}")
@@ -1890,6 +1973,19 @@ def main() -> int:
         help="Build a stateless continuation context packet for QUESTION_ID (or 'auto')",
     )
     parser.add_argument(
+        "--assignment-json",
+        action="store_true",
+        help=(
+            "Print only the assignment receipt as JSON: the dispersal seed and the "
+            "role, target question and reference mode it decided, plus "
+            "session_row_fields -- exactly the four optional schema/session.schema.json "
+            "fields a session should paste into its own row. The archive has always "
+            "run this assignment and never recorded it (74 of 828 sessions mention a "
+            "seed in prose), which is why no path-to-judgment question could be "
+            "joined at scale. Honors --packet and --seed; does not render the packet."
+        ),
+    )
+    parser.add_argument(
         "--seed",
         default=None,
         help="Explicit branch name or hex seed for candidate dispersion (default: current git branch)",
@@ -1955,6 +2051,15 @@ def main() -> int:
                 limit=args.stats_limit,
             )
         )
+        return 0
+
+    if args.assignment_json:
+        try:
+            receipt = describe_assignment(data, args.packet or "auto", seed=args.seed)
+        except ValueError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 1
+        print(json.dumps(receipt, ensure_ascii=False, indent=1))
         return 0
 
     if args.packet:

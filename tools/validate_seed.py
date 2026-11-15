@@ -12,6 +12,7 @@ import re
 from pathlib import Path
 from typing import Any
 
+import ledger_ids
 import ledger_io
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -354,8 +355,17 @@ ERRATA_ID_PREFIXES = {
     "evaluation": "EVL-",
     "fragment": "FRAG-",
     "motif": "MOTIF-",
+    # 2026-11-15: eleven errata whose subject is another erratum had to say
+    # subject_type="other", because this enum and the one in
+    # schema/errata.schema.json had no name for it.
+    "erratum": "ERR-",
+    "editorial_decision": "ED-",
 }
-_LEDGER_ID_RE = re.compile(r"^(?:HYP|MAT|NOTE|Q|SESSION|EVL|FRAG|MOTIF)-")
+# 2026-11-15: this guard listed eight families while the ledger carries twenty,
+# so subject_type="tool" with subject_id="ERR-..." passed silently. The family
+# list now comes from tools/ledger_ids.py. Measured before the change: zero of
+# the 282 existing errata rows are newly flagged, so nothing had to be rewritten.
+_LEDGER_ID_RE = re.compile(r"^(?:" + "|".join(ledger_ids.ALL_PREFIXES) + r")-")
 
 
 def check_errata_addressee_labels(
@@ -703,6 +713,12 @@ def main() -> int:
         "note": notes,
         "hypothesis": hypotheses,
         "evaluation": evaluations,
+        # 2026-11-15: errata and editorial decisions became addressable. Before
+        # this, 282 errata could not be the target of any of the 13,656 read_log
+        # rows or 7,007 relations, so "corrections are never read" and "reading a
+        # correction cannot be written down" were the same observation.
+        "erratum": errata_records,
+        "editorial_decision": collections.get("editorial_decisions", {}),
     }
     for read_id, record in read_logs.items():
         session_id = record.get("session_id")

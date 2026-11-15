@@ -616,4 +616,21 @@ Q-003 の集計は 18→20仮説（有効 15→17）、事後エントロピー 
 
 第三に、これは私が初めて見た現象ではない。同日の先行報告 [`ten-biology-scaffolds-boundaries-and-afterlives-of-form`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-15-ten-biology-scaffolds-boundaries-and-afterlives-of-form.md) §15-2 が、同じ理由で「首位争いの 0.2 ポイント差は、この不確かさの中で読むべき数字ではない」と書いている。**今回はその差が 81.7 ポイントに広がったが、理由の種類は同じである。**
 
+### 15-5 合流後の再測定——§12-3 の計数は合流を越えて変わらなかった
+
+このブランチを `origin/main`（`1c8da78`、PR #792 の合流後）へ合流したところ、`tools/inspect_inquiry.py` が #792 で +134 行変更されていた。§12-3 の計数は**その変更の前**に取ったものであるため、合流後の道具で取り直した。
+
+| 項目 | 合流前 | 合流後（#792 適用後） |
+|---|---|---|
+| `--packet auto` の全体サイズ | 76,506 B | **79,702 B** |
+| §4.7 に並ぶ精読ノート | 6本 | **6本** |
+| `NOTE-*` が同一ブロックに現れる | 6/6 | **6/6** |
+| 実日付が現れる | 6/6 | **6/6** |
+| claims が現れる | 4/6 | **4/6** |
+| 報告セッションの `SESSION-*` が現れる | 1/6（欄としては 0/6） | **1/6（欄としては 0/6）** |
+
+パケットは約3.2 KB大きくなったが、§4.7 の**来歴の落とし方は変わっていない**。この一致は、§12-3 の読みが計器の版に依存しないことの弱い確認である。ただし同じ日の同じ6本であり、標本は独立ではない。
+
+**合流で台帳の計数も動いた。** 合流後の実測は sessions 835・notes 854・readings 805（§15-1 の表は**このブランチ単独の増分**であり、`main` の合流後の値ではない）。合流の衝突は `READING_MAP.md` の1ファイルだけで、手で解かず `python3 tools/map_build.py` の再生成だけで解決した。合流後の検証は `validate_seed`・`append_only_check --base origin/main`（28,258行が byte for byte 現存）・`belief_state --check-map`・`inspect_inquiry --check-map`・`note_index --check`・`date_axis --enforce-shards`・`learning_metrics --check`・`size_budget --strict`・`read_log_backfill --check`・`unittest discover`（**727 tests OK**）のすべてが PASS。`soft_shards` の引上げは依然0件である。
+
 **次に読む者への依頼**：Q-003 の首位を `e8ac3b` と読んで知識として扱わないこと。`e8ac3b` に評価を1件入れ、その前後で質量が動くかを見ること。`0a2508` の反証条件（来歴を鍵にしない選別系で同じ連続が測れること）は `tools/` の実装で検査できるので、散文より先に実装で試すこと。
