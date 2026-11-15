@@ -511,7 +511,7 @@ python3 -m unittest tests.test_pair_honesty tests.test_readings_integrity_check 
 
 - 10 ゲートすべて PASS（新ゲート `readings_integrity_check.py` を含む）
 - `python3 -m unittest discover -s tests` → **Ran 758 tests … OK**（上流はテストを足していない）
-- `append_only_check`：`origin/main` の全行がバイト単位で現存（PASS）。`--parents` は第一親 `4eb071b` の **28,411 行**すべての現存を報告
+- `append_only_check`：マージコミット `ad47bbc` で双方向に PASS——第一親（自分の `c9df70b`）の **28,423 行**、第二親（`origin/main` = `300a06a`）の **28,437 行**、どちらも「すべてバイト単位で現存」。既定の `--base origin/main` も同じ 28,437 行で PASS
 - 台帳：questions 437／materials **4,433**／sessions **841**／read_log **13,780**／notes **859**／hypotheses **35**／evaluations **336**／errata 288
 - errata スキーマ鏡：**適合 275／不一致 13 行**（上流は errata を足していないので §5.3 と同じ。自分の2件は適合側に入っている）
 - `readings/`：**808 本**の `.md`・30,487,552 B・最小 2,392 B・中央値 29,987 B・note 行 859 件が 808 本を指す・孤児 0・違反 0。配線率 100.0%（**810/810**、`.md` 808＋データ2）
