@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4423 件（research_excerpt 2196 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4433 件（research_excerpt 2206 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：248 編（selected 96 ／ draft 152）
 - **解釈的関係（Relations）**：7007 件
-- **探究セッション（Sessions）**：840 回
+- **探究セッション（Sessions）**：841 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4423 | `literary_text` 2159／`research_excerpt` 2196／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4433 | `literary_text` 2159／`research_excerpt` 2206／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 248 | `selected` 96／`draft` 152／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7007 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 840 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13770 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 841 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13780 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 288 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 858 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 33 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 334 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 859 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 35 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 336 |  |
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -792,7 +792,7 @@
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4423 件・詳細は map/3*.md）
+## 4. 対話素材（4433 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5169,6 +5169,16 @@
 | `MAT-20261114-88f7e7` | research_excerpt | Maquitico Y, Coronado J, Luna A, Vergara A, Cordero C『Maquitico et al. (2024) 誘惑の成功率は9.8%… |
 | `MAT-20261114-d4c5b5` | research_excerpt | Dixit T, Liu M, Riederer JM, Walker JM, Blair CJ, Lund J, Moya C, Spottiswoode CN『Dixit e… |
 | `MAT-20261114-d4325a` | research_excerpt | Számadó S『Számadó (2017) 正直と詐称は、どちらも安定である——系を支えるのは送り手の意図ではなく、受け手の応答の費用である』（2017） |
+| `MAT-20261115-57cdcb` | research_excerpt | Charles Darwin『ダーウィン『植物性土壌の形成——ミミズの作用による』（1881）——記憶を持たない穴掘りが、数百年かけて地表を一枚ずつ積み替える』（1881） |
+| `MAT-20261115-e0f6c9` | research_excerpt | Clive G. Jones, John H. Lawton, Moshe Shachak『ジョーンズ、ロートン＆シャチャク（1994）「生物は生態系の工学者である」——ヒトは「… |
+| `MAT-20261115-4cbdd7` | research_excerpt | Carl R. Woese, George E. Fox『ウーズ＆フォックス（1977）「原核生物という区分の系統構造」——二分割に見えていたものが、三分割だった。分類の枠が問い… |
+| `MAT-20261115-4045cb` | research_excerpt | Eugene Aserinsky, Nathaniel Kleitman『アセリンスキー＆クライトマン（1953）——夢は、起こされた者にだけ、あったことになる』（1953） |
+| `MAT-20261115-0e2fdf` | research_excerpt | Robert M. Macnab, D. E. Koshland, Jr.『マクナブ＆コシュランド（1972）——地図を持たない細菌は、三秒前との差だけで進む向きを決める』（19… |
+| `MAT-20261115-544a52` | research_excerpt | Dmitry K. Belyaev『ベリャーエフ（1979）「家畜化の要因としての不安定化選択」——怖がらなくなっただけで、耳が垂れ、尾が巻き、脳が縮む』（1979） |
+| `MAT-20261115-69b278` | research_excerpt | Adolf Portmann『ポートマン（1941）「霊長類の妊娠期間とヒトの妊娠の長さ」——ヒトは約21か月ぶんの発達を、産後の一年に体外で続ける』（1941） |
+| `MAT-20261115-bae1a7` | research_excerpt | Barry Bogin『ボギン（1997）「ヒトの子ども期の進化仮説」——噛めない歯と小さな胃が、他者を必要とする設計図になっている』（1997） |
+| `MAT-20261115-ca8fce` | research_excerpt | Hillard Kaplan, Kim Hill, Jane B. Lancaster, A. Magdalena Hurtado『カプラン、ヒル、ランカスター＆フルタード（20… |
+| `MAT-20261115-1892df` | research_excerpt | R. I. M. Dunbar『ダンバー（1992）「新皮質の大きさが霊長類の群れの大きさを制約する」——数えきれなくなったとき、群れは自己でなくなる』（1992） |
 | `MAT-20261115-fcefd0` | research_excerpt | Kirsty L. Spalding, Olaf Bergmann, Kasper Alkass, Samuel Bernard, M. Salehpour, Jonas Fri… |
 | `MAT-20261115-ee8190` | research_excerpt | Mireia Valles-Colomer, Nicola Segata『The person-to-person transmission landscape of the g… |
 | `MAT-20261115-463b65` | research_excerpt | Francisco G. Osorio, Rutger van Boxtel『Somatic Mutations Reveal Lineage Relationships and… |
@@ -6063,6 +6073,7 @@
 | `SESSION-20261115-c4b11c` | 2026-11-15T12:00:00Z | `Q-003` | — | — |
 | `SESSION-20261115-bf6052` | 2026-11-15T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261115-e7ee43` | 2026-11-15T07:38:38Z | `Q-003`, `Q-20261116-3872ec` | — | — |
+| `SESSION-20261115-5a6b15` | 2026-11-15T09:58:52Z | `Q-003`, `Q-001`, `Q-002` | — | — |
 | `SESSION-20261115-5896bd` | 2026-11-15T10:32:20Z | `Q-003` | — | — |
 
 ## 6. 解釈的関係（7007 件・全表は map/40-relations-*.md）
@@ -6149,7 +6160,8 @@
 | `map/31-materials-research-19.md` | 100 | 255,170 |
 | `map/31-materials-research-20.md` | 100 | 220,572 |
 | `map/31-materials-research-21.md` | 100 | 241,201 |
-| `map/31-materials-research-22.md` | 96 | 253,262 |
+| `map/31-materials-research-22.md` | 100 | 258,730 |
+| `map/31-materials-research-23.md` | 6 | 21,497 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6182,7 +6194,7 @@
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
 | `map/50-sessions-16.md` | 50 | 34,595 |
-| `map/50-sessions-17.md` | 40 | 33,047 |
+| `map/50-sessions-17.md` | 41 | 34,059 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6208,24 +6220,24 @@
 | `map/60-notes-23.md` | 25 | 122,793 |
 | `map/60-notes-24.md` | 25 | 98,783 |
 | `map/60-notes-25.md` | 25 | 115,491 |
-| `map/60-notes-26.md` | 25 | 123,384 |
-| `map/60-notes-27.md` | 25 | 63,362 |
-| `map/60-notes-28.md` | 25 | 79,590 |
-| `map/60-notes-29.md` | 25 | 71,159 |
-| `map/60-notes-30.md` | 25 | 95,288 |
-| `map/60-notes-31.md` | 25 | 91,936 |
-| `map/60-notes-32.md` | 25 | 141,026 |
-| `map/60-notes-33.md` | 9 | 50,463 |
+| `map/60-notes-26.md` | 25 | 126,519 |
+| `map/60-notes-27.md` | 25 | 62,469 |
+| `map/60-notes-28.md` | 25 | 79,460 |
+| `map/60-notes-29.md` | 25 | 71,209 |
+| `map/60-notes-30.md` | 25 | 95,849 |
+| `map/60-notes-31.md` | 25 | 92,056 |
+| `map/60-notes-32.md` | 25 | 137,013 |
+| `map/60-notes-33.md` | 10 | 57,159 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・809本・30,466,673 B）
+## 8. 精読ノート索引（readings/・810本・30,507,805 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 780/809 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 781/810 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：809 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：110 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：810 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：111 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6869,7 +6881,8 @@
 | `readings/2026-11-15-the-largest-path-parameter-was-pinned-inside-the-instrument.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-7212fa` +2 | 21,735 | Q6 M1 S3 ERR5 | ✓ | 計器の中で釘付けにされていた、いちばん大きな経路 |
 | `readings/2026-11-15-the-most-informative-pair-was-not-a-disagreement.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-e7ee43` +6 | 49,906 | Q6 S7 ERR12 | ✓ | 最も情報量が多いと選ばれた対は、対立していなかった |
 | `readings/2026-11-15-the-name-on-the-envelope-decides-whether-it-is-opened.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-db5791` +2 | 36,450 | Q2 M15 S3 | — | 封筒の宛名が、開けるかどうかを決める——生物学10資料で、来歴が内容の読み方を決める仕組みを読む |
-| `readings/2026-11-15-the-remedy-in-the-failure-message-laundered-the-erasure.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-5896bd` | 25,401 | Q4 S1 ERR15 | — | 失敗メッセージの中の救済策が、消去を洗浄した |
+| `readings/2026-11-15-the-remedy-in-the-failure-message-laundered-the-erasure.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-5896bd` +1 | 31,461 | Q4 S2 ERR15 | — | 失敗メッセージの中の救済策が、消去を洗浄した |
+| `readings/2026-11-15-the-self-is-a-time-constant-not-an-archive.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-5a6b15` | 14,462 | Q3 M19 S1 ERR1 | — | 自己は書庫の分量ではなく、比較を開いておく装置の時定数で決まる |
 | `readings/2026-11-15-the-two-lemmas-arrive-already-asked.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-a4cc8f` | 11,983 | Q5 S1 | ✓ | 二つの補題は、もう問われている——追加したときに何が動き、何が動かないかの予測（SESSION-20261115-a4… |
 | `readings/2026-11-15-where-the-learning-actually-happens.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-d56945` | 8,966 | Q5 S1 | ✓ | 学習はどこで起きているのか——三つのループを測り、二つの補題を「知識の形」に照らす（SESSION-20261115-… |
 | `readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md` | 2026-10-26 | 2026-11-16 | `SESSION-20261116-de57d9` | 5,113 | Q10 F3 M4 MOT2 S1 | ✓ | 二種類の火と、目の試練——ローテーション改修と火×習慣の再読交配（SESSION-20261116-de57d9） |
