@@ -227,10 +227,11 @@ class ReferenceClosureTests(unittest.TestCase):
         self.assertEqual(list(enum), list(ledger_ids.reference_types()))
 
     def test_erratum_and_editorial_decision_are_addressable(self):
-        """282 errata received 21 structured inbound references in total and none
-        from 13,656 read_log rows, because no reference type named them. 'Errata
-        are never read' and 'reading an erratum cannot be written down' were the
-        same observation."""
+        """282 errata received 23 structured inbound references in total (19
+        distinct errata, across 14 evaluation rows) and none from 13,673 read_log
+        rows, because no reference type named them -- while 170 of those rows name
+        an erratum in prose. 'Errata are never read' and 'reading an erratum
+        cannot be written down' were the same observation."""
         types = ledger_ids.reference_types()
         self.assertIn("erratum", types)
         self.assertIn("editorial_decision", types)

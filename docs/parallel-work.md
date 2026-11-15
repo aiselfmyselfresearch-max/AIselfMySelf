@@ -199,6 +199,22 @@ python3 tools/inspect_inquiry.py --check-map
 
 検証：`map_build`／`belief_state --write-map`／`validate_seed`（materials 4,323・sessions 803・read_log 13,395・notes 832・evaluations 270・relations 6,997）／`append_only_check`（`origin/main` 27,706行 byte for byte）／`inspect_inquiry --check-map`／`belief_state --check-map`／`note_index --check`（789 notes）／`read_log_backfill --check`／`date_axis --enforce-shards`／`learning_metrics --check`（配線率 789/789）／`size_budget --strict` すべて PASS、`unittest` 639 tests OK。実測の全文は [`readings/2026-11-14-ten-biology-position-transport-deletion-cost.md`](../readings/2026-11-14-ten-biology-position-transport-deletion-cost.md) §14。
 
+**2026-11-15：`origin/main` の合流で `notes.d` が超過した。手順8-2で戻し、`soft_shards` の引上げは0件（測定）。**
+
+`SESSION-20261115-8912af`（設計変更の回。報告は `readings/2026-11-15-the-assignment-was-run-and-then-discarded.md`）がノート1行・セッション1行を追記した。追記直後の実測は `notes.d` 132/131（超過）・`sessions.d` 136/136（余裕0）・`read_log.d` 130/131・`materials.d` 116/120 で、`size_budget.py --strict` は `notes.d` のファイル数次元のみで FAIL した（バイトは 1.52 MiB / soft 2.00 MiB で余裕）。
+
+原因は合流した `origin/main`（PR #789）が notes・read_log・sessions に同日シャードを2本ずつ作っていたことである。**書く前の時点ですでに `notes.d` は 131/131 で余裕0だった**ので、ノート行を書くどのセッションも新規シャードを作った瞬間に超過する状態だった。
+
+処方は手順8-2。自分の notes 行と sessions 行を、**ファイル名順で直前の同日シャードの末尾へ、行文字列を一字も変えずに生バイト追記**し、自分のシャードを同じコミットで削除した。直前のシャードを選ぶのは和集合のバイト列を保存するためである（`ledger_io` の読み順は base → ファイル名順のシャードなので、自分のファイル名が後に来る場合は直前シャード末尾への移動が和集合を不変にする）。
+
+- **検証：和集合の sha256 が移動前後で完全一致。** `notes` `c81b8c0e2bdd85e4`（1,595,325 B・851行）、`sessions` `c50540d6ecdcfed0`（2,844,296 B・831行）。順序つき ID 列（`note_id`／`session_id`）も完全一致。
+- 三条件を確認した：オープン PR 7本（#705・#591・#492・#400・#319・#308・#304）のどちらも追記先経路に触れていない／既存行の著者セッションはすべてマージ済み／シャード名を行にも報告の地の文にも書いていない。`notes.d` では同じ `path` を指す既存行が無いことを確認し、`supersedes` は使っていない。
+- 結果：`notes.d` **131/131**・`sessions.d` **135/136**・`read_log.d` 130/131・`materials.d` 116/120。**`soft_shards` の引上げは0件、統合も0本。**
+
+`notes.d` は順序感受性が高く統合の例外リストに入らないので、**手順8-2 が唯一の回収手段**だった。合流後に `--strict` と 9ゲートを再実行してすべて PASS、全テスト685件 OK。
+
+**この回が `size_budget.py --reclaim` を追加した回でもある。** 合流**前**の測定では `read_log.d` 128/131・`sessions.d` 133/136・`materials.d` 116/120 が「余裕3〜4」として並び、`hypotheses.d` 8/80・`fragments.d` 10/80 など余裕40〜72の五つ（2026-11-12 に人間が承認した予防的再調整）と明確に分かれて見えた。**余裕3と書いたコレクションは、合流した瞬間に余裕0になった。** `--reclaim` は終了ステータスを変えない（情報提供のみ）ので、上げっぱなしの天井を緑のゲートを赤くせずに見られる。次にノート行を書くセッションは `notes.d` が 131/131 なので、**必ず `ls state/notes.d | grep <今日>` を先に見ること。**
+
 **2026-11-11：残り枠0の五コレクションを、回収できる分だけ回収した（測定）。**
 
 作業開始時の実測は `materials.d` 93/93・`sessions.d` 96/96・`read_log.d` 91/91・`notes.d` 91/91・`relations.d` 80/80 で、5コレクションすべて残り枠が0だった。資料5件の収蔵は、5コレクション全部に1本ずつ行を要する。回収を先に測った。
