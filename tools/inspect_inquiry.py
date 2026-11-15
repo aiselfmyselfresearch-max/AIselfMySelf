@@ -982,7 +982,7 @@ def _belief_briefing_lines(
     out.append(
         f"- **割り当て探求ロール**: **{role_info['label']}**（指針: `{role_info['prompt']}`） — {role_info['reason']}"
     )
-    out.append("- **中心三問の現在の信念状態（第1世代+条件付き仮説質量 / D_KL / 最優先対立ペア）**:")
+    out.append("- **中心三問の現在の信念状態（第1世代+条件付き仮説質量 / D_KL / 最優先検証ペア）**:")
     for cqid in CORE_QUESTION_IDS:
         cqs = bstate["questions"].get(cqid)
         if not cqs or not cqs["hypotheses"]:
@@ -990,13 +990,13 @@ def _belief_briefing_lines(
         pair = cqs.get("top_competing_pair")
         pair_txt = (
             f"`{pair['left_hypothesis_id']}` vs `{pair['right_hypothesis_id']}` (EIG={pair['expected_info_gain']:.4f})"
-            if pair else "—"
+            if pair else "推薦なし（候補に直接評価済みの仮説が2件未満）"
         )
         top_h = cqs["hypotheses"][0]
         out.append(
             f"  - `{cqid}`: 有効仮説 {cqs['active_count']}/{cqs['hypothesis_count']} 件 ｜ "
             f"条件付き世代質量 **{cqs['gen1_plus_mass']*100:.1f}%** ｜ D_KL={cqs['kl_from_uniform_bits']:.3f}b ｜ "
-            f"首位 `{top_h['hypothesis_id']}` ({top_h['posterior']*100:.1f}%) ｜ 最優先対立: {pair_txt}"
+            f"首位 `{top_h['hypothesis_id']}` ({top_h['posterior']*100:.1f}%) ｜ 最優先検証: {pair_txt}"
         )
 
     sat = bstate.get("saturation") or {}
