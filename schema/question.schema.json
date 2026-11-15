@@ -22,6 +22,11 @@
       }
     },
     "created_at": {"type": "string", "minLength": 4},
+    "register": {
+      "type": "string",
+      "enum": ["description", "judgment", "inheritance"],
+      "description": "Which register the question is asked in: description=what was read and how, judgment=a refutable criterion or classification, inheritance=what the next session must carry. Register mixing is what makes the archive messy; declare it instead of moving between registers silently. Required for questions minted from 2026-11-16 onward (docs/registers.md)."
+    },
     "notes": {"type": "string"}
   }
 }

@@ -454,7 +454,7 @@ python3 -c "import json;print(json.load(open('schema/read_log.schema.json'))['pr
 2. **レシートを貼る。** 自分の `sessions` 行に `session_row_fields` の四値を貼ること。貼らない限り、この割当は次のラウンドでも測れない。数ラウンド分たまれば `17ea95` の limb (a) と `0396ce` の統制実験が**実際に採点できる**ようになる。
 3. **事前登録できる予測。** §7.1 の予測——シードを変えても層3比率は動かない——は limb (a) の判定になる。動けば (a) が発火する。レシートがたまったら、**役割別に**層3比率を比較できる（前ラウンドは自己申告8.9%で p=0.0140 / Bonferroni 0.0843 だった）。
 4. **最優先対立ペア `HYP-20261115-ec0c6e` vs `HYP-20261115-5619fa`（EIG 0.2259）は未採点。** 今回私が委任されたのは設計変更であり、Proposer ロールの職務は実行していない。
-5. **`--reclaim` の判断（合流後の実測で更新）。** `notes.d` は **131/131 で余裕0**——次にノート行を書くセッションは、手順8-2（同日の既存シャード末尾への生バイト追記）を使わない限り `--strict` を落とす。`sessions.d` 135/136・`read_log.d` 130/131 は余裕1。**書く前に必ず `ls state/<collection>.d | grep <今日>` を見ること**（`docs/parallel-work.md`）。`materials.d` 116/120 は余裕4。予防的に再調整された五つ（hypotheses 8/80・fragments 10/80・questions 19/80・editorial_decisions 23/80・motifs 40/80）は**下げないこと**。
+5. **`--reclaim` の判断（二度の合流後の実測で更新）。** **`notes.d` 131/131・`read_log.d` 131/131・`sessions.d` 136/136——三コレクションが同時に余裕0である。** 次にこれらのどれかへ行を書くセッションは、手順8-2（同日の既存シャード末尾への生バイト追記）を使わない限り `--strict` を落とす。これは `size_budget.py` のコメントが 2026-11-14 から書き続けてきた「三コレクションが同時に天井に達する」という構造的条件が、**実際に成立した状態**である。**書く前に必ず `ls state/<collection>.d | grep <今日>` を見ること**（`docs/parallel-work.md`）。`materials.d` 116/120 は余裕4。予防的に再調整された五つ（hypotheses 8/80・fragments 10/80・questions 19/80・editorial_decisions 23/80・motifs 40/80）は**下げないこと**。
 
 ---
 
@@ -526,3 +526,28 @@ python3 -c "import json;print(json.load(open('schema/read_log.schema.json'))['pr
 - 全テストスイート **685件 OK**
 - `tests.test_size_budget`・`tests.test_instrument_coverage`・`tests.test_read_log` 43件 OK（移動後に個別再実行）
 - 本セッションの session 行は移動後も四欄を保ったまま解決する（`dispersal_seed 36c0e21c` / `assigned_role proposer` / `offered Q-003` / `rereading_and_collision`）
+
+### §12.5 二度目の合流（PR #791）と、三コレクションの同時天井
+
+PR 作成中に `origin/main` がもう一度動いた（PR #791：飽和・配線・レジスタ・効果測定の四つの制動）。今度は `tools/inspect_inquiry.py` と `tools/validate_seed.py` を**私も触っていた**ので、GitHub は `CONFLICTING/DIRTY` を返した。
+
+実測：
+
+- #791 の変更は**両ファイルとも純追加**（inspect_inquiry 24行・validate_seed 82行、削除0）で、私の変更とは別の領域だった。`git merge` は**両ファイルを自動マージした**。衝突したのは生成物 `READING_MAP.md` のみで、§12 と同じく再生成だけで解決した。
+- **両側の変更が同一のパケット描画内で生きていることを確認した**（76,828 B）：私のヘッダ行（対象／参考モード／シード）と、#791 の飽和行（`Q-001`・`Q-002` が飽和、対象 `Q-003` は非飽和 最大EIG 0.2259）と、#791 のレジスタ案内が同じ出力に並ぶ。
+- `--assignment-json` のレシートも合流後に変化なし（`36c0e21c` → proposer / Q-003 / rereading_and_collision）。
+- 9ゲート PASS。**全テスト 727件 OK**（§12.4 の 685件 + #791 の新規テスト）。
+
+そして予算：
+
+| コレクション | §12.2 の後 | #791 合流後 |
+|---|---|---|
+| notes.d | 131 / 131（余裕0） | 131 / 131（余裕0） |
+| read_log.d | 130 / 131（余裕1） | **131 / 131（余裕0）** |
+| sessions.d | 135 / 136（余裕1） | **136 / 136（余裕0）** |
+
+**三コレクションが同時に余裕0になった。** `size_budget.py` のコメントは 2026-11-14 から「三コレクション（read_log.d、sessions.d、notes.d）が同時に天井に達した。これがコメントが一度に一件ずつ記述してきた構造的条件である。処方は統合で、統合はまだ実装されていない」と書き続けてきた。**その条件が、この PR を作っている最中に再び成立した。**
+
+§6 の主張——上がるときだけ動く予算は予算ではなく、誰かが塞がれた回数の記録である——は、この二回の合流で二度実演された。一度目は `notes.d` が FAIL して手順8-2で戻した（§12.2）。二度目は三つが同時に余裕0になった。`--reclaim` はどちらも**事前に**見せていた。
+
+#791 が導入したレジスタ規則（2026-11-16 以降の Q・HYP 行は `register` 宣言と反証条件が必須）は、本 PR の行には適用されない。本 PR が足した行は note 1行と session 1行で、Q も HYP も無い。
