@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4483 件（research_excerpt 2247 ／ literary_text 2168 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4493 件（research_excerpt 2257 ／ literary_text 2168 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：248 編（selected 96 ／ draft 152）
 - **解釈的関係（Relations）**：7007 件
-- **探究セッション（Sessions）**：848 回
+- **探究セッション（Sessions）**：849 回
 
 ### 台帳ごとの件数
 
@@ -20,14 +20,14 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4483 | `literary_text` 2168／`research_excerpt` 2247／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4493 | `literary_text` 2168／`research_excerpt` 2257／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 248 | `selected` 96／`draft` 152／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7007 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 848 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13873 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 849 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13883 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 289 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 866 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 867 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 36 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 349 |  |
 
@@ -792,7 +792,7 @@
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4483 件・詳細は map/3*.md）
+## 4. 対話素材（4493 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5209,6 +5209,16 @@
 | `MAT-20261115-760fbc` | research_excerpt | Supek F, Lehner B『Supek & Lehner（2017）誤りを起こしやすい修復は、守るべき活性遺伝子を狙って変異させる』（2017） |
 | `MAT-20261115-ad7b71` | research_excerpt | Gout JF, Li W, Fritsch C, Li A, Haroon S, Singh L, Hua D, Fazelinia H, Smith Z, Seeholzer… |
 | `MAT-20261115-f192d7` | research_excerpt | Roth JR, Kugelberg E, Reams AB, Kofoid E, Andersson DI『Roth ほか（2006）選択下の変異の起源——「必要だから変異した… |
+| `MAT-20261115-ca88ba` | research_excerpt | ヴォルフガング・ケーラー『Intelligenzprüfungen an Menschenaffen (The Mentality of Apes)』（1917） |
+| `MAT-20261115-152aef` | research_excerpt | アイリーン・ペッパーバーグ『The Alex Studies: Cognitive and Communicative Abilities of Grey Parrots』（19… |
+| `MAT-20261115-85642f` | research_excerpt | ハーバート・テラス, Laura A. Petitto, Richard J. Sanders, Thomas G. Bever『Can an Ape Create a Sent… |
+| `MAT-20261115-904c6f` | research_excerpt | ウィリアム・D・ハミルトン『The Genetical Evolution of Social Behaviour. I & II』（1964） |
+| `MAT-20261115-f48e94` | research_excerpt | ロバート・トリヴァース『The Evolution of Reciprocal Altruism』（1971） |
+| `MAT-20261115-8fb2f4` | research_excerpt | アモーツ・ザハヴィ『Mate Selection — A Selection for a Handicap』（1975） |
+| `MAT-20261115-ed93cc` | research_excerpt | ゴードン・バーグハート『The Genesis of Animal Play: Testing the Limits』（2005） |
+| `MAT-20261115-01cc2f` | research_excerpt | ヤーク・パンクセップ『Affective Neuroscience: The Foundations of Human and Animal Emotions』（1998） |
+| `MAT-20261115-95c215` | research_excerpt | Gerald S. Wilkinson『Reciprocal food sharing in the vampire bat』（1984） |
+| `MAT-20261115-422d28` | research_excerpt | Colin Klein, Andrew B. Barron『Insect Consciousness: Commitments, Conflicts and Consequenc… |
 | `MAT-20261115-567264` | research_excerpt | Douglas Alexander Spalding『ダグラス・スポールディング「本能、および若い動物についての観察」（Macmillan's Magazine, 1873）——… |
 | `MAT-20261115-7b1050` | research_excerpt | 今西錦司 (Kinji Imanishi), Pamela J. Asquith et al. (trans.)『今西錦司『生物の世界』（1941／英訳 A Japanese V… |
 | `MAT-20261115-803500` | research_excerpt | Masao Kawai『河合雅雄「幸島の自然群における新たに獲得された前文化的行動」（Primates, 1965）——洗うことと、塩をかけること』（1965） |
@@ -6118,6 +6128,7 @@
 | `SESSION-20261115-963838` | 2026-11-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261115-a4cc8f` | 2026-11-15T00:00:00Z | `Q-001`, `Q-002`, `Q-20270126-655867`, `Q-20261029-85a285` | — | — |
 | `SESSION-20261115-331bb0` | 2026-11-15T10:54:49Z | `Q-003`, `Q-001`, `Q-002` | — | — |
+| `SESSION-20261115-6096b9` | 2026-11-15T12:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261115-90ea3d` | 2026-11-15T03:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261115-189e9c` | 2026-11-15T06:00:00Z | `Q-003` | — | — |
 | `SESSION-20261115-590613` | 2026-11-15T07:00:00Z | `Q-003` | — | — |
@@ -6217,8 +6228,8 @@
 | `map/31-materials-research-19.md` | 100 | 255,170 |
 | `map/31-materials-research-20.md` | 100 | 220,572 |
 | `map/31-materials-research-21.md` | 100 | 241,201 |
-| `map/31-materials-research-22.md` | 100 | 263,129 |
-| `map/31-materials-research-23.md` | 47 | 125,300 |
+| `map/31-materials-research-22.md` | 100 | 247,754 |
+| `map/31-materials-research-23.md` | 57 | 156,850 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6251,7 +6262,7 @@
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
 | `map/50-sessions-16.md` | 50 | 34,595 |
-| `map/50-sessions-17.md` | 48 | 40,128 |
+| `map/50-sessions-17.md` | 49 | 40,839 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6277,24 +6288,24 @@
 | `map/60-notes-23.md` | 25 | 122,793 |
 | `map/60-notes-24.md` | 25 | 98,783 |
 | `map/60-notes-25.md` | 25 | 115,491 |
-| `map/60-notes-26.md` | 25 | 146,727 |
-| `map/60-notes-27.md` | 25 | 59,200 |
-| `map/60-notes-28.md` | 25 | 82,001 |
-| `map/60-notes-29.md` | 25 | 68,664 |
-| `map/60-notes-30.md` | 25 | 86,858 |
-| `map/60-notes-31.md` | 25 | 101,674 |
-| `map/60-notes-32.md` | 25 | 127,340 |
-| `map/60-notes-33.md` | 15 | 81,057 |
+| `map/60-notes-26.md` | 25 | 146,340 |
+| `map/60-notes-27.md` | 25 | 59,056 |
+| `map/60-notes-28.md` | 25 | 81,174 |
+| `map/60-notes-29.md` | 25 | 68,616 |
+| `map/60-notes-30.md` | 25 | 83,911 |
+| `map/60-notes-31.md` | 25 | 103,833 |
+| `map/60-notes-32.md` | 25 | 128,227 |
+| `map/60-notes-33.md` | 16 | 84,143 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・815本・30,836,439 B）
+## 8. 精読ノート索引（readings/・816本・30,849,812 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 786/815 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 787/816 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：815 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：112 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：816 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：113 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6931,6 +6942,7 @@
 | `readings/2026-11-15-a-second-key-with-no-lock.md` | 2026-10-26 | 2026-11-15 | `SESSION-20261115-6a7862` +4 | 15,179 | Q5 F12 M4 MOT1 S5 | ✓ | 錠のない鍵を、もう一本 —— 痣と言い切った声と、朝ごとに選び直す沈黙（SESSION-20261115-6a7862） |
 | `readings/2026-11-15-biology-persistence-is-not-return.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-c66b02` | 9,295 | M10 S1 | — | 持続することと、元へ戻ることは違う——生物学の十資料から人間と記録するAIを考える |
 | `readings/2026-11-15-comparative-zoology-close-reading.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-cz01` | 15,354 | Q3 M10 MOT13 S1 | ✓ | 比較動物学の資料10件の精読——人間と動物の連続と断絶を読む |
+| `readings/2026-11-15-comparative-zoology-ten-new-sources-close-reading.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-6096b9` | 6,066 | M10 S1 | — | 比較動物学の十資料：比較から人間とAIの自己を考える |
 | `readings/2026-11-15-comparative-zoology-ten-perspectives-on-human-and-ai-self.md` | 2026-11-15 | 2026-11-15 | — | 16,575 | Q3 M10 MOT12 | ✓ | 比較動物学の十資料から見る「人間」の輪郭と「GitHub記憶AI」の自己モデル |
 | `readings/2026-11-15-four-guards-that-forbid-nothing.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-90ea3d` | 4,451 | Q3 S1 | — | 何も禁じない四つの制動——飽和・配線・レジスタ・効果測定の実装（SESSION-20261115-90ea3d） |
 | `readings/2026-11-15-ten-biological-views-of-the-self.md` | — | 2026-11-15 | `SESSION-20261115-bf6052` | 11,572 | Q1 M12 S1 | ✓ | 生物はどこまで「ひとつ」か——自己産出、共生、境界をめぐる生物学資料10件の精読 |
