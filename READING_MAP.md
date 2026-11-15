@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4523 件（research_excerpt 2287 ／ literary_text 2168 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4533 件（research_excerpt 2297 ／ literary_text 2168 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：248 編（selected 96 ／ draft 152）
 - **解釈的関係（Relations）**：7007 件
-- **探究セッション（Sessions）**：852 回
+- **探究セッション（Sessions）**：853 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4523 | `literary_text` 2168／`research_excerpt` 2287／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4533 | `literary_text` 2168／`research_excerpt` 2297／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 248 | `selected` 96／`draft` 152／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7007 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 852 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13928 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 853 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13939 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 289 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 870 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 872 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 37 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 361 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 363 |  |
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -792,7 +792,7 @@
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4523 件・詳細は map/3*.md）
+## 4. 対話素材（4533 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5279,6 +5279,16 @@
 | `MAT-20261115-57e926` | research_excerpt | Uwe Frey, Richard G. M. Morris『Frey & Morris（1997）シナプスのタグは後から捕捉される』（1997） |
 | `MAT-20261115-beb61c` | research_excerpt | Chao Wang, Dingchen Li, Brian Knoblich, Min-Ho Kweon, Timothy M. O'Connor, Yingyue Huang,… |
 | `MAT-20261115-fea196` | research_excerpt | Fallon Durant, Emilie Morokuma, Christopher Fields, Jesse Murillo, Daniel L. Adams, Dany … |
+| `MAT-20261115-ec77e8` | research_excerpt | Pierre Belon（ピエール・ベルオン）『ベルオン『鳥の自然史』（1555）——鳥と人の骨格を並べ、同一の文字で相同骨を印した比較解剖の始まり』（1555） |
+| `MAT-20261115-a51596` | research_excerpt | Marcello Malpighi（マルテロ・マルピギー）『マルピギー『卵の中の雛の形成について』（1673）——顕微鏡で見た雛の発生と、その記録が先成論の証拠に使われた経緯』（… |
+| `MAT-20261115-09312b` | research_excerpt | Caspar Friedrich Wolff（カスパル・フリードリヒ・ヴォルフ）『ヴォルフ『生成論』（1759）——器官が無差別の組織から徐々に形をとる後成論と、胚葉の原型』（1… |
+| `MAT-20261115-936994` | research_excerpt | Charles Bonnet（シャルル・ボネ）『ボネ『哲学的再生論』（1768–1769）——先成した芽が世代ごとに内包され、開発は既にあるものの展開であるとする立場』（1769） |
+| `MAT-20261115-16ebe3` | research_excerpt | Johann Friedrich Blumenbach（ヨハン・フリードリヒ・ブルーメンバッハ）『ブルーメンバッハ『形成衝動について』（1781）——形をとり、保ち、損なわれたと… |
+| `MAT-20261115-0ce2bd` | research_excerpt | Christian Heinrich Pander（クリスティアン・ハインリヒ・パンダー）『パンダー『卵の中の雛の発生史への貢献』（1817）——胚葉の三層の発見』（1817） |
+| `MAT-20261115-edadee` | research_excerpt | Johann Friedrich Meckel（ヨハン・フリードリヒ・メッケル）『メッケル『病理解剖学手册』（1812）——個体発生が動物の連鎖を並行的に経るという平行説と、発育… |
+| `MAT-20261115-66d37f` | research_excerpt | Élie Metchnikoff（エリー・メチュニコフ／イリヤ・メチニコフ）『メチュニコフ、1882年の食作用の発見——ウニ幼生に刺した刺に集まる細胞と、比較免疫学の始まり』（1… |
+| `MAT-20261115-9f61e7` | research_excerpt | Korbinian Brodmann（コルビニアン・ブロートマン）『ブロートマン『大脳皮質の比較局在学』（1909）——60種余りの哺乳類の細胞構築を比較して脳の共通設計図とその… |
+| `MAT-20261115-8f4e17` | research_excerpt | Jonathan M. W. Slack, Peter W. H. Holland, Jonathan F. Graham『スラック、ホランド、グラハム「動物型と系統型段階」（1… |
 | `MAT-20261115-0dc469` | research_excerpt | Erin S Gloag, Lynne Turnbull, Alan Huang, Pascal Vallotton, Huabin Wang, Laura M Nolan, L… |
 | `MAT-20261115-383494` | research_excerpt | Munehiro Asally, Mark Kittisopikul, Pau Rué, Yingjie Du, Zhenxing Hu, Tolga Çağatay, Andr… |
 | `MAT-20261115-6e86a3` | research_excerpt | Yu Fukasawa, Melanie Savoury, Lynne Boddy『Fukasawa, Savoury & Boddy（2020）木材腐朽担子菌菌糸体ネットワーク… |
@@ -5320,7 +5330,7 @@
 | `MAT-20261115-60bac9` | research_excerpt | Fernando Nottebohm『フェルナンド・ノテボーム「すべての季節のための脳」（1981）——歌の核は季節ごとに縮み、再生し、学び直す』（1981） |
 | `MAT-20261115-c8c254` | research_excerpt | Irenäus Eibl-Eibesfeldt『イレナウス・アイブル＝アイベスフェルト『人間の動物行動学』（1989）——人間を比較行動学の対象として、直角レンズで撮る』（198… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261115-305211・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261115-961c2e・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -6176,6 +6186,7 @@
 | `SESSION-20261115-5a6b15` | 2026-11-15T09:58:52Z | `Q-003`, `Q-001`, `Q-002` | — | — |
 | `SESSION-20261115-5896bd` | 2026-11-15T10:32:20Z | `Q-003` | — | — |
 | `SESSION-20261115-305211` | 2026-11-15T13:15:00Z | `Q-003`, `Q-002`, `Q-001` | — | — |
+| `SESSION-20261115-961c2e` | 2026-11-15T16:10:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7007 件・全表は map/40-relations-*.md）
 
@@ -6262,7 +6273,7 @@
 | `map/31-materials-research-20.md` | 100 | 220,572 |
 | `map/31-materials-research-21.md` | 100 | 241,201 |
 | `map/31-materials-research-22.md` | 100 | 248,129 |
-| `map/31-materials-research-23.md` | 87 | 231,505 |
+| `map/31-materials-research-23.md` | 97 | 254,079 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6296,7 +6307,7 @@
 | `map/50-sessions-15.md` | 50 | 35,907 |
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,839 |
-| `map/50-sessions-18.md` | 2 | 1,696 |
+| `map/50-sessions-18.md` | 3 | 2,737 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6322,24 +6333,24 @@
 | `map/60-notes-23.md` | 25 | 122,793 |
 | `map/60-notes-24.md` | 25 | 98,783 |
 | `map/60-notes-25.md` | 25 | 115,491 |
-| `map/60-notes-26.md` | 25 | 149,463 |
-| `map/60-notes-27.md` | 25 | 65,590 |
-| `map/60-notes-28.md` | 25 | 77,165 |
-| `map/60-notes-29.md` | 25 | 66,187 |
-| `map/60-notes-30.md` | 25 | 85,392 |
-| `map/60-notes-31.md` | 25 | 108,117 |
-| `map/60-notes-32.md` | 25 | 118,637 |
-| `map/60-notes-33.md` | 19 | 101,901 |
+| `map/60-notes-26.md` | 25 | 150,552 |
+| `map/60-notes-27.md` | 25 | 68,301 |
+| `map/60-notes-28.md` | 25 | 75,764 |
+| `map/60-notes-29.md` | 25 | 67,472 |
+| `map/60-notes-30.md` | 25 | 84,625 |
+| `map/60-notes-31.md` | 25 | 108,688 |
+| `map/60-notes-32.md` | 25 | 114,178 |
+| `map/60-notes-33.md` | 20 | 108,931 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・819本・31,004,314 B）
+## 8. 精読ノート索引（readings/・820本・31,037,000 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 789/819 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 790/820 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：819 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：112 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：820 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：113 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6975,6 +6986,7 @@
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
 | `readings/2026-11-15-a-second-key-with-no-lock.md` | 2026-10-26 | 2026-11-15 | `SESSION-20261115-6a7862` +4 | 15,179 | Q5 F12 M4 MOT1 S5 | ✓ | 錠のない鍵を、もう一本 —— 痣と言い切った声と、朝ごとに選び直す沈黙（SESSION-20261115-6a7862） |
 | `readings/2026-11-15-biology-persistence-is-not-return.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-c66b02` | 9,295 | M10 S1 | — | 持続することと、元へ戻ることは違う——生物学の十資料から人間と記録するAIを考える |
+| `readings/2026-11-15-comparative-zoology-and-the-scaffold-of-a-self.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-961c2e` +1 | 14,045 | Q3 M10 S2 | — | 比較動物学が語る自己——型枠、相同、そして一度だけ開く窓 |
 | `readings/2026-11-15-comparative-zoology-close-reading.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-cz01` | 15,354 | Q3 M10 MOT13 S1 | ✓ | 比較動物学の資料10件の精読——人間と動物の連続と断絶を読む |
 | `readings/2026-11-15-comparative-zoology-ten-classics-close-reading.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-699933` | 24,310 | Q3 M19 S1 | — | 境界・対比・機構——比較動物学の十資料（1876–1983）が「人間とは何か」と「記録するAIの自己とは何か」に返した… |
 | `readings/2026-11-15-comparative-zoology-ten-more-close-reading.md` | — | 2026-11-15 | `SESSION-20261115-db1a53` | 18,327 | Q3 M10 S1 | — | 比較動物学・第二の十件——鏡・待機・足場を読む |
