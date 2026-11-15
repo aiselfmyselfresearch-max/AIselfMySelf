@@ -456,6 +456,47 @@ def check_errata_duplicate_claims(
                 )
 
 
+def errata_schema_advisory(errata: dict[str, dict[str, Any]], root: Path = ROOT) -> str | None:
+    """One advisory line: how many errata rows disagree with their own schema.
+
+    ``errata`` is not in ``COLLECTIONS``, so ``schema/errata.schema.json`` is
+    never loaded by this gate -- errata rows are the only ledger rows nothing
+    here compares to the schema written for them.  The comparison itself has
+    existed since 2026-11-08 as ``tools/errata_audit.py --schema`` ("a report,
+    not a gate"), but that tool is in no workflow, so the number reached only a
+    session that happened to run it.  Measured 2026-11-15: 286 rows, 273
+    conforming, **13 rows carrying 17 disagreements** -- 6 rows whose
+    ``check.kind`` is not in the enum (``external_source_lookup`` x4,
+    ``audit_group_count`` x2), 4 with an ``unexpected field 'session_id'``, 2
+    with ``status: "corrected"`` (the enum is open/annotated/withdrawn), 2
+    missing ``claim_location`` and ``check``, 1 missing ``created_at``.
+
+    This reuses that validator instead of writing a second one, and it never
+    changes the exit status: turning a disagreement into a failure would demand
+    13 correction rows for rows that are append-only, and deciding whether the
+    row or the schema is wrong is ``editorial_review``'s call, not a gate's.
+    """
+    if not errata:
+        return None
+    try:
+        import errata_audit
+    except Exception:  # pragma: no cover - advisory only, never break the gate
+        return None
+    try:
+        report = errata_audit.schema_report(list(errata.values()), root=root)
+    except Exception:  # pragma: no cover
+        return None
+    if not report.get("available"):
+        return None
+    bad = len(report.get("violations") or [])
+    return (
+        f"INFO: errata schema (advisory, never a failure): {report.get('conforming', 0)}/"
+        f"{report.get('rows', 0)} rows conform to schema/errata.schema.json, {bad} row(s) disagree; "
+        f"errata is not in COLLECTIONS, so this gate does not enforce it -- "
+        f"run `python3 tools/errata_audit.py --schema` for the list"
+    )
+
+
 def check_refs(
     collection_name: str,
     records: dict[str, dict[str, Any]],
@@ -680,6 +721,7 @@ def main() -> int:
     check_refs("evaluations", evaluations, "material_ids", "material", materials, errors)
     check_refs("evaluations", evaluations, "fragment_ids", "fragment", fragments, errors)
     check_refs("evaluations", evaluations, "note_ids", "note", notes, errors)
+    errata_advisory = errata_schema_advisory(errata_records)
     if errata_records:
         check_refs("evaluations", evaluations, "errata_ids", "errata", errata_records, errors)
         check_errata_addressee_labels(errata_records, errors)
@@ -822,10 +864,14 @@ def main() -> int:
         print("FAIL: literary inquiry seed has errors")
         for error in errors:
             print("  - " + error)
+        if errata_advisory:
+            print(errata_advisory)
         return 1
 
     counts = ", ".join(f"{name}={len(records)}" for name, records in collections.items())
     print(f"PASS: literary inquiry seed valid ({counts})")
+    if errata_advisory:
+        print(errata_advisory)
     return 0
 
 
