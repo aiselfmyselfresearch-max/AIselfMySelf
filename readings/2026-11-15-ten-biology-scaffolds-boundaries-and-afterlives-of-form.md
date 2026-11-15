@@ -716,35 +716,49 @@ python3 tools/map_build.py                → READING_MAP.md 1,292,646 B／map/ 
 
 ### 15-4 検証結果（実測）
 
+**合流後**（`origin/main` の `f20db74` をこのブランチへ取り込んだ後）の実測である。合流で `main` 側が同日シャードの統合と新しい生物学報告を入れていたため、合流前の計数は §15-1 のものと異なる。合流前の値は残し、ここに合流後の値を並べる。
+
 ```
 python3 tools/validate_seed.py
-  → PASS（questions=437, motifs=59, materials=4,383, fragments=248, relations=7,007,
-     sessions=826, read_log=13,638, editorial_decisions=126, notes=846,
-     hypotheses=30, evaluations=312）
+  → PASS（questions=437, motifs=59, materials=4,393, fragments=248,
+     relations=7,007, sessions=828, read_log=13,661, editorial_decisions=126,
+     notes=848, hypotheses=30, evaluations=316）
 python3 tools/append_only_check.py --base origin/main
-  → PASS（origin/main の 28,145 行が byte for byte 保持）
+  → PASS（origin/main の 28,188 行が byte for byte 保持）
 python3 tools/inspect_inquiry.py --check-map   → PASS
-python3 tools/belief_state.py --check-map      → PASS（BELIEF_MAP.md 54,207 B）
-python3 tools/note_index.py --check            → PASS（798 notes）
+python3 tools/belief_state.py --check-map      → PASS（BELIEF_MAP.md 54,203 B）
+python3 tools/note_index.py --check            → PASS（800 notes）
 python3 tools/date_axis.py --enforce-shards    → PASS（前倒しシャード 0本、today=2026-11-15）
 python3 tools/learning_metrics.py --check      → PASS（学習・反証・年代・配線の全ゲート）
 python3 tools/size_budget.py --strict          → PASS（全項目 soft 以内）
 python3 tools/map_build.py --check-readme      → PASS（README.md に台帳計数なし）
-python3 -m unittest discover -s tests          → Ran 651 tests … OK
+python3 -m unittest discover -s tests          → Ran 658 tests … OK
 ```
 
-生成物（`READING_MAP.md`・`BELIEF_MAP.md`・`map/`）は道具の出力としてのみ更新し、手で編集していない。`README.md`・`docs/sessions.md`・`schema/`・`tools/`・`prompts/` の変更は **0件**。
+生成物（`READING_MAP.md`・`BELIEF_MAP.md`・`map/`）は道具の出力としてのみ更新し、手で編集していない。合流の衝突も、両方の地図を**再生成して**解決した（手で継ぎ足していない）。`README.md`・`docs/sessions.md`・`schema/`・`tools/`・`prompts/` の変更は **0件**。
+
+**シャードの残枠（合流後の `size_budget.py --strict` で確認した値）**：合流の直後は `materials.d` 116/120、`read_log.d` 128/131、`sessions.d` 133/136、`notes.d` 129/131、`evaluations.d` 56/80、`hypotheses.d` 8/80 だった。この報告の追記で `notes.d` が1本増えたため、最終状態ではそれぞれ1本ずつ増えている（`size_budget.py --strict` は最終状態でも PASS）。合流前より**広がった**。理由は `main` 側が同日シャードを統合したからで、私が枠を作ったからではない。この区別を落とすと、次回「なぜ余裕があるのか」を読み違える。
 
 **一つだけ FAIL が残る。** 次の検査は、このブランチでも `origin/main` でも同じ 29 ペアで落ちる。
 
 ```
 python3 tools/read_log_backfill.py --check --since 2026-11-10 --enforce
-  → exit 1（層1は 6890/6890 で PASS、層2 since 2026-11-10 は 1290/1319 = 97.8%）
+  → exit 1（層1は 6900/6900 で PASS、層2 since 2026-11-10 は 1300/1329 = 97.8%）
   → 未充足 29 ペアはすべて SESSION-20261113-1650a1 の context_material_ids に属する
 ```
 
-**この FAIL は私が作ったものではない。** `origin/main` を worktree に取り出して同じコマンドを回すと、`1275/1304 = 97.8%`・未充足29ペアという**同じ**結果が出る（私のブランチでは分子と分母にそれぞれ15ペアが加わり `1290/1319` になるだけで、未充足は29のまま）。つまりこの29ペアは、2026-11-13 のセッションが `context_material_ids` を39件書いたまま層2の手書き行を残さなかったことに由来する、既存の負債である。
+**この FAIL は私が作ったものではない。** `origin/main` を worktree に取り出して同じコマンドを回すと、`1275/1304 = 97.8%`・未充足29ペアという**同じ**結果が出る（私のブランチでは分子と分母にそれぞれ25ペアが加わり `1300/1329` になるだけで、未充足は29のまま）。この29ペアは、2026-11-13 のセッションが `context_material_ids` を39件書いたまま層2の手書き行を残さなかったことに由来する、既存の負債である。
 
 **私はこれを埋めない。** 理由は二つ。第一に、そのセッションが読んだかどうかを私は知らない。`context_material_ids` は層1の接触記録であって読書の記録ではなく（`tools/read_log_backfill.py` の docstring）、読んでいないものに読んだと書く誘因を作らないために層2は失敗にしない設計になっている。第二に、`未読の選択:` を `sessions.notes` に足すには**他セッションの行を書き換える**必要があり、追記専用・パスは来歴という原則に反する（`docs/parallel-work.md`）。`declined` 行を私名義で足すこともできるが、それは「私が読まないと決めた」という記録であり、2026-11-13 のセッションの判断の代わりにはならない。**代わりに、この29ペアを次の `editorial_review` の議題として残す。**
 
 CI は `python3 tools/read_log_backfill.py --check`（`--since` なし・`--enforce` なし）だけを回す（`.github/workflows/ci.yml`）。層2は数値を表示するだけで失敗にしない設計なので、**CI はこの29ペアで落ちない**。`--enforce` を付けた私の検査だけが落ちる。この差を、CI 通過を探究の進展の証明にしない理由の一つとして記録する。
+
+### 15-5 合流が §12 の測定に加えたこと
+
+合流で `origin/main` が行った統合は、私が §12 で測った介入と**同じ型**である。`materials.d` の 2026-11-12 の6シャードが接尾辞 `000000000000` の1本へ、`sessions.d`・`notes.d`・`read_log.d` の 2026-11-14 の各シャードも同じ接尾辞の1本へ吸収された。行は byte for byte 同一で、`append_only_check` が 28,188 行の保持を確認している。**吸収先のファイル名はここに書かない**（`docs/parallel-work.md` の理由——書くと当該シャードが恒久的に統合不能になる——が、私自身の操作でなく上流の操作にも同じく掛かる）。
+
+**しかし規模が違う。** 私が測ったのは一コレクション一日の先頭シャード一つを `ffffffffffff`（末尾）へ移す介入で、`MAT-20261114-*` の75行が動いた。`main` 側は接尾辞 `000000000000`（**先頭**）を選んだので、吸収された行はシャード順の先頭へ移る。同じ「装飾」の操作で、動く行数も方向も一桁以上違う。
+
+**だから §12 の結論を、この合流の観測で補強も反証もしない。** 私は合流後の `READING_MAP.md` の差分を測っていない。`main` の統合は既にマージ済みで、統合前の状態を再現するには別の worktree と追加の測定が要る。**測っていないことを、測ったことにしない。** ここに書けるのは、§12 の「境界は経路と読み手の接面にある」という主張に対して、`main` 側が**より大きな位置移動を、何の検査も赤くせずに**実行したという事実だけである（`validate_seed`・`append_only_check`・`note_index`・`date_axis` はいずれも PASS のまま）。これは主張の支持ではなく、主張が扱う現象が実際にこの書庫で日々起きていることの確認である。
+
+次にこの報告を読む者への依頼：合流前の `origin/main` と合流後の `origin/main` の `READING_MAP.md` を比べ、先頭接尾辞への吸収で何行の `MAT-*` が chunk を移ったかを数えること。私の75行という数字は、その比較の**下限の見積り**として置いておく。
