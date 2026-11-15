@@ -631,6 +631,8 @@ Q-003 の集計は 18→20仮説（有効 15→17）、事後エントロピー 
 
 パケットは約3.2 KB大きくなったが、§4.7 の**来歴の落とし方は変わっていない**。この一致は、§12-3 の読みが計器の版に依存しないことの弱い確認である。ただし同じ日の同じ6本であり、標本は独立ではない。
 
-**合流で台帳の計数も動いた。** 合流後の実測は sessions 835・notes 854・readings 805（§15-1 の表は**このブランチ単独の増分**であり、`main` の合流後の値ではない）。合流の衝突は `READING_MAP.md` の1ファイルだけで、手で解かず `python3 tools/map_build.py` の再生成だけで解決した。合流後の検証は `validate_seed`・`append_only_check --base origin/main`（28,258行が byte for byte 現存）・`belief_state --check-map`・`inspect_inquiry --check-map`・`note_index --check`・`date_axis --enforce-shards`・`learning_metrics --check`・`size_budget --strict`・`read_log_backfill --check`・`unittest discover`（**727 tests OK**）のすべてが PASS。`soft_shards` の引上げは依然0件である。
+**合流で台帳の計数も動いた。** このブランチは `origin/main` を**二度**合流した（#792 の合流後 `1c8da78`、#794 の合流後 `bcef3f5a`）。§15-1 の表は**このブランチ単独の増分**であり、合流後の値ではない。二度目の合流後の実測は materials 4,413・sessions 836・read_log 13,708・notes 855・hypotheses 32・evaluations 322（`main` 側の追加を含む）。
+
+衝突は一度目が `READING_MAP.md` の1ファイル、二度目が `READING_MAP.md` と `BELIEF_MAP.md` の2ファイルで、**いずれも手で解かず再生成だけで解決**した（`map_build.py`／`belief_state.py --write-map`）。生成物に手を入れると、次の再生成で消えるだけでなく、その間だけ地図が台帳と食い違う。二度目の合流後の検証は `validate_seed`・`append_only_check --base origin/main`（**28,282行**が byte for byte 現存）・`belief_state --check-map`・`inspect_inquiry --check-map`・`note_index --check`（806 notes）・`date_axis --enforce-shards`・`learning_metrics --check`・`size_budget --strict`・`read_log_backfill --check`・`unittest discover`（一度目の合流後 **727 tests OK**）のすべてが PASS。`soft_shards` の引上げは依然0件である。
 
 **次に読む者への依頼**：Q-003 の首位を `e8ac3b` と読んで知識として扱わないこと。`e8ac3b` に評価を1件入れ、その前後で質量が動くかを見ること。`0a2508` の反証条件（来歴を鍵にしない選別系で同じ連続が測れること）は `tools/` の実装で検査できるので、散文より先に実装で試すこと。
