@@ -93,6 +93,11 @@
     },
     "notes": {
       "type": "string"
+    },
+    "register": {
+      "type": "string",
+      "enum": ["description", "judgment", "inheritance"],
+      "description": "Which register the hypothesis is written in: description=what was read and how, judgment=a refutable criterion with scope and exclusion conditions, inheritance=what the next session must carry. Declare it instead of moving between registers silently. Required for hypotheses minted from 2026-11-16 onward (docs/registers.md)."
     }
   }
 }

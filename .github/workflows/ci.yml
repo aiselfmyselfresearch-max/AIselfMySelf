@@ -80,6 +80,17 @@ jobs:
       # means the tool itself broke, not that the archive is wrong.  They are
       # listed so that a drift in the time axis or in the inheritance count is
       # visible in CI instead of only in a session's own report.
+      # Rule checks added 2026-11-15 (docs/registers.md).  --check is the gate
+      # (validate_seed enforces the same rule); the reports below write nothing
+      # and are printed so that the wiring ratio stays visible in CI.
+      - name: Check claim wiring rule (docs/registers.md §2)
+        run: python3 tools/claim_wiring.py --check
+
+      - name: Report claim wiring and addition effect (advisory)
+        run: |
+          python3 tools/claim_wiring.py --limit 5
+          python3 tools/addition_effect.py --since 2026-11-01 --cohort 7 --limit 3
+
       - name: Observe the time axis (advisory)
         run: python3 tools/date_axis.py --check
 

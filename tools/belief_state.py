@@ -31,6 +31,15 @@ import ledger_io
 ROOT = Path(__file__).resolve().parents[1]
 CORE_QUESTIONS: tuple[str, ...] = ("Q-001", "Q-002", "Q-003")
 
+# A core question whose best competing pair carries less than this much expected
+# information gain has nothing left for the selector to pick: the posterior is
+# concentrated enough that another reading would not move it.
+# 2026-11-15: Q-001 0.0067 and Q-002 0.0000 (Q-003 0.2259) were already under
+# this line. The threshold gates *selection*, not belief: it never changes a
+# posterior, and it never forbids adding a hypothesis. It only says what to do
+# next when the distribution has stopped choosing.
+SATURATION_EIG_THRESHOLD = 0.02
+
 EVIDENCE_WEIGHTS: dict[str, float] = {
     "reproducible_script": 1.35,
     "primary_source_collision": 1.20,
@@ -584,12 +593,14 @@ def compute_belief_state(
         key=lambda item: (-item["priority_score"], item["question_id"]),
     )
 
-    return {
+    state = {
         "total_hypotheses": len(hypotheses),
         "total_evaluations": len(evaluations),
         "core_priority_ranking": [q["question_id"] for q in ranked_core],
         "questions": question_states,
     }
+    state["saturation"] = saturation_snapshot(state)
+    return state
 
 
 def select_auto_question_id(
@@ -629,6 +640,40 @@ def select_auto_question_id(
     scored.sort(key=lambda item: (-item[0], item[1]))
     best = scored[0]
     return best[1], best[2]
+
+
+def saturation_snapshot(
+    state: dict[str, Any],
+    *,
+    threshold: float = SATURATION_EIG_THRESHOLD,
+    question_ids: tuple[str, ...] = CORE_QUESTIONS,
+) -> dict[str, Any]:
+    """Report which core questions have stopped selecting (not stopped believing).
+
+    A question is *saturated* when its best competing pair's EIG is below
+    ``threshold``. Saturation is a statement about the selector: another
+    root hypothesis would restore entropy, but that entropy is not knowledge
+    (readings/2026-11-15-where-the-learning-actually-happens.md §5).
+    """
+    rows: list[dict[str, Any]] = []
+    for qid in question_ids:
+        qstate = state["questions"].get(qid)
+        if not qstate or not qstate.get("hypotheses"):
+            continue
+        pair = qstate.get("top_competing_pair") or {}
+        eig = float(pair.get("expected_info_gain") or 0.0)
+        rows.append({
+            "question_id": qid,
+            "top_eig": round(eig, 4),
+            "top_posterior": round(float(qstate["hypotheses"][0].get("posterior") or 0.0), 4),
+            "active_count": qstate.get("active_count", 0),
+            "saturated": eig < threshold,
+        })
+    return {
+        "threshold": threshold,
+        "questions": rows,
+        "saturated_question_ids": [row["question_id"] for row in rows if row["saturated"]],
+    }
 
 
 def render_belief_map_markdown(state: dict[str, Any]) -> str:

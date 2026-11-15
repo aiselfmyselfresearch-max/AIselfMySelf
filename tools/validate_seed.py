@@ -73,6 +73,18 @@ NOTE_DEPTH_RANK = {
 # Rows minted before this day carry internal chronology labels in created_at
 # (34 of them on 2026-11-12); they are history and are not checked.
 NOTE_CREATED_AT_RULE_FROM = "20261112"
+# Two rules added on 2026-11-15 from readings/2026-11-15-where-the-learning-actually-happens.md.
+# (a) A claim that says a reading was revised must name the hypothesis it revised,
+#     or say plainly that no hypothesis was involved.  Until this date only 194 of
+#     1,984 claims named a hypothesis, so the meaning layer and the belief layer
+#     grew apart (9.8% wiring).
+# (b) A new Q/HYP must declare its register (description / judgment / inheritance).
+#     The failure mode the archive guards against is not the number of rows but a
+#     judgment moving between registers without saying so.
+CLAIM_WIRING_RULE_FROM = "20261116"
+REGISTER_RULE_FROM = "20261116"
+CLAIM_WIRING_KINDS = ("reading_revised", "retraction")
+REGISTER_VALUES = ("description", "judgment", "inheritance")
 _ID_STAMP = re.compile(r"^[A-Z]+(?:-[A-Z]+)*-(\d{8})-")
 
 
@@ -87,6 +99,74 @@ def _as_day(stamp: str) -> datetime.date | None:
         return datetime.date(int(stamp[:4]), int(stamp[4:6]), int(stamp[6:8]))
     except ValueError:
         return None
+
+
+def _is_new_row(record_id: Any, cutoff: str, *, today: datetime.date | None = None) -> bool:
+    """True when the row's ID carries a real date at or after ``cutoff``.
+
+    Legacy rows carry internal chronology labels in their IDs (some are in 2027),
+    so a bare ``>= cutoff`` test would fail rows that were written long ago.  The
+    upper bound (today) keeps those labels out; new shards are already refused by
+    ``tools/date_axis.py --enforce-shards`` when they are forward-dated.
+    """
+    stamp = id_stamp(record_id)
+    if not stamp or stamp < cutoff:
+        return False
+    today_stamp = (today or datetime.date.today()).strftime("%Y%m%d")
+    return stamp <= today_stamp
+
+
+def check_claim_wiring(
+    notes: dict[str, dict[str, Any]],
+    errors: list[str],
+    *,
+    today: datetime.date | None = None,
+) -> None:
+    """A claim that revises a reading must name a hypothesis or say it names none.
+
+    Rows minted before ``CLAIM_WIRING_RULE_FROM`` are history and are not checked.
+    """
+    for note_id, record in sorted(notes.items()):
+        if not _is_new_row(note_id, CLAIM_WIRING_RULE_FROM, today=today):
+            continue
+        claims = record.get("claims")
+        if not isinstance(claims, list):
+            continue
+        for position, claim in enumerate(claims):
+            if not isinstance(claim, dict):
+                continue
+            if claim.get("kind") not in CLAIM_WIRING_KINDS:
+                continue
+            wired = claim.get("hypothesis_ids") or []
+            if wired or claim.get("no_hypothesis") is True:
+                continue
+            errors.append(
+                f"notes:{note_id}: claims[{position}] has kind {claim.get('kind')!r} but names no "
+                "hypothesis. Add hypothesis_ids, or set no_hypothesis=true when no registered "
+                "hypothesis was revised (docs/registers.md)"
+            )
+
+
+def check_registers(
+    collections: dict[str, dict[str, dict[str, Any]]],
+    errors: list[str],
+    *,
+    today: datetime.date | None = None,
+) -> None:
+    """New questions and hypotheses must declare which register they are written in."""
+    for collection in ("questions", "hypotheses"):
+        for record_id, record in sorted(collections.get(collection, {}).items()):
+            if not _is_new_row(record_id, REGISTER_RULE_FROM, today=today):
+                continue
+            register = record.get("register")
+            if register in REGISTER_VALUES:
+                continue
+            shown = "missing" if register is None else repr(register)
+            errors.append(
+                f"{collection}:{record_id}: register is {shown}; declare one of "
+                f"{', '.join(REGISTER_VALUES)} (docs/registers.md). description=what was read, "
+                "judgment=a refutable criterion, inheritance=what the next session carries."
+            )
 
 
 def check_note_brakes(notes: dict[str, dict[str, Any]], errors: list[str]) -> None:
@@ -524,6 +604,8 @@ def main() -> int:
                 stack.pop()
 
     check_note_brakes(notes, errors)
+    check_claim_wiring(notes, errors)
+    check_registers(collections, errors)
 
     hypotheses = collections.get("hypotheses", {})
     evaluations = collections.get("evaluations", {})

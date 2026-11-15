@@ -42,6 +42,8 @@ INQUIRY_GUIDANCE = (
     "寄り道は許容し、複数セッションのまとまりで中心問いへ戻ります（毎回の結論や頻度ノルマではありません）。"
     "推奨モード・候補窓は参考です。中心問い・窓外の記録・原典照合を選べます。"
     "語彙・句読点・辺数のゼロ達成を成功条件にせず、CI通過を探究の進展の証明にしません。"
+    "台帳に足す行はレジスタ（記述=description／判定=judgment／継承=inheritance）を `register` として宣言し、"
+    "判定は反証条件とセットで置きます（2026-11-16 以降の Q・HYP で必須。docs/registers.md）。"
     "共通の開始・記録手順は prompts/start.md を参照してください。"
 )
 
@@ -994,6 +996,28 @@ def _belief_briefing_lines(
             f"  - `{cqid}`: 有効仮説 {cqs['active_count']}/{cqs['hypothesis_count']} 件 ｜ "
             f"条件付き世代質量 **{cqs['gen1_plus_mass']*100:.1f}%** ｜ D_KL={cqs['kl_from_uniform_bits']:.3f}b ｜ "
             f"首位 `{top_h['hypothesis_id']}` ({top_h['posterior']*100:.1f}%) ｜ 最優先対立: {pair_txt}"
+        )
+
+    sat = bstate.get("saturation") or {}
+    if sat.get("saturated_question_ids"):
+        open_errata = sum(1 for rec in errata.values() if rec.get("status") == "open")
+        saturated = "、".join(f"`{qid}`" for qid in sat["saturated_question_ids"])
+        threshold = sat.get("threshold", 0.0)
+        by_qid = {row.get("question_id"): row for row in sat.get("questions") or []}
+        target_row = by_qid.get(target_qid)
+        if target_row and not target_row.get("saturated"):
+            scope = (
+                f"対象の `{target_qid}` は非飽和（最大EIG {target_row.get('top_eig', 0.0):.4f}）で、"
+                "選別はまだ効いています。"
+            )
+        else:
+            scope = "これらの問いでは、次の読書を分布から選べません。"
+        out.append(
+            f"- **飽和（最大EIG < {threshold:.2f}）**: {saturated}。{scope}"
+            "**新しい根仮説を足してEIGを回復させないでください**——回復するのは選択器の燃料であり、知識ではありません"
+            "（`readings/2026-11-15-where-the-learning-actually-happens.md` §5）。"
+            f"行き先は (a) 未解決 `errata` **{open_errata}件**、(b) claim→評価の配線を伴う再読、"
+            "(c) 新規資料（`prompts/acquisition.md` の情報利得ゲート）のいずれかです。"
         )
 
     if qstate and qstate["hypotheses"]:
