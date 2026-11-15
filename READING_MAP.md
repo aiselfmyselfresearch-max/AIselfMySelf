@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4443 件（research_excerpt 2216 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4453 件（research_excerpt 2226 ／ literary_text 2159 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：248 編（selected 96 ／ draft 152）
 - **解釈的関係（Relations）**：7007 件
-- **探究セッション（Sessions）**：844 回
+- **探究セッション（Sessions）**：845 回
 
 ### 台帳ごとの件数
 
@@ -20,14 +20,14 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4443 | `literary_text` 2159／`research_excerpt` 2216／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4453 | `literary_text` 2159／`research_excerpt` 2226／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 248 | `selected` 96／`draft` 152／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7007 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 844 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13806 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 845 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13816 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 288 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 860 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 861 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 36 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 341 |  |
 
@@ -792,7 +792,7 @@
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4443 件・詳細は map/3*.md）
+## 4. 対話素材（4453 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5169,6 +5169,16 @@
 | `MAT-20261114-88f7e7` | research_excerpt | Maquitico Y, Coronado J, Luna A, Vergara A, Cordero C『Maquitico et al. (2024) 誘惑の成功率は9.8%… |
 | `MAT-20261114-d4c5b5` | research_excerpt | Dixit T, Liu M, Riederer JM, Walker JM, Blair CJ, Lund J, Moya C, Spottiswoode CN『Dixit e… |
 | `MAT-20261114-d4325a` | research_excerpt | Számadó S『Számadó (2017) 正直と詐称は、どちらも安定である——系を支えるのは送り手の意図ではなく、受け手の応答の費用である』（2017） |
+| `MAT-20261115-a1b2c3` | research_excerpt | アリストテレス『アリストテレス『動物誌』（Historia Animalium）——動物を比較分類し、「人間とは何か」を動物の中に置く』（-350） |
+| `MAT-20261115-d4e5f6` | research_excerpt | Charles Darwin『チャールズ・ダーウィン『人間と動物における感情の表現』（1872）——感情の表現を人間と動物で比較する』（1872） |
+| `MAT-20261115-778899` | research_excerpt | Jakob von Uexküll『ヤーコプ・フォン・ユースキュル『動物と人間の環世界への案内』（1934）——各動物は固有の環世界（Umwelt）に生きる』（1934） |
+| `MAT-20261115-aabbcc` | research_excerpt | Konrad Lorenz『コンラート・ロレンツ『ソロモン王の指輪』（1949）——動物と「話す」人間、印刻と本能』（1949） |
+| `MAT-20261115-dd1122` | research_excerpt | Nikolaas Tinbergen『ニコラース・ティンベルゲン『本能の研究』（The Study of Instinct, 1951）——行動を四つの問いで説く』（1951） |
+| `MAT-20261115-334455` | research_excerpt | Karl von Frisch『カール・フォン・フリッシュ『ミツバチのダンス言語と方向感覚』（1967）——蜜蜂は距離と方向を踊りで伝える』（1967） |
+| `MAT-20261115-667788` | research_excerpt | Jane Goodall, Hugo van Lawick『ジェーン・グドール『ヒトと類人猿のあいだで』（In the Shadow of Man, 1971）——ゴンベのチンパ… |
+| `MAT-20261115-99aabb` | research_excerpt | Donald R. Griffin『ドナルド・R・グリフィン『動物の認識は疑問か』（The Question of Animal Awareness, 1976）——動物に意識は… |
+| `MAT-20261115-ccddee` | research_excerpt | C. Lloyd Morgan『C. ロイド・モーガン『比較心理学入門』（An Introduction to Comparative Psychology, 1894）——モー… |
+| `MAT-20261115-ff1122` | research_excerpt | Edward O. Wilson『E. O. ウィルソン『社会生物学：新しい統合』（Sociobiology: The New Synthesis, 1975）——社会行動を進化… |
 | `MAT-20261115-57cdcb` | research_excerpt | Charles Darwin『ダーウィン『植物性土壌の形成——ミミズの作用による』（1881）——記憶を持たない穴掘りが、数百年かけて地表を一枚ずつ積み替える』（1881） |
 | `MAT-20261115-e0f6c9` | research_excerpt | Clive G. Jones, John H. Lawton, Moshe Shachak『ジョーンズ、ロートン＆シャチャク（1994）「生物は生態系の工学者である」——ヒトは「… |
 | `MAT-20261115-4cbdd7` | research_excerpt | Carl R. Woese, George E. Fox『ウーズ＆フォックス（1977）「原核生物という区分の系統構造」——二分割に見えていたものが、三分割だった。分類の枠が問い… |
@@ -6069,6 +6079,7 @@
 | `SESSION-20261114-b5dc79d2d087` | 2026-11-14T15:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261115-d56945` | 2026-11-15T01:00:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20270126-655867`, `Q-20261029-85a285` | — | — |
 | `SESSION-20261115-c66b02` | 2026-11-15T07:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261115-cz01` | 2026-11-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261115-7d708f` | 2026-11-15T04:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261115-e53368` | 2026-11-15T04:47:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261115-c8e88f` | 2026-11-15T05:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -6173,8 +6184,8 @@
 | `map/31-materials-research-19.md` | 100 | 255,170 |
 | `map/31-materials-research-20.md` | 100 | 220,572 |
 | `map/31-materials-research-21.md` | 100 | 241,201 |
-| `map/31-materials-research-22.md` | 100 | 252,760 |
-| `map/31-materials-research-23.md` | 16 | 48,004 |
+| `map/31-materials-research-22.md` | 100 | 253,377 |
+| `map/31-materials-research-23.md` | 26 | 66,051 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6207,7 +6218,7 @@
 | `map/50-sessions-14.md` | 50 | 42,981 |
 | `map/50-sessions-15.md` | 50 | 35,907 |
 | `map/50-sessions-16.md` | 50 | 34,595 |
-| `map/50-sessions-17.md` | 44 | 36,311 |
+| `map/50-sessions-17.md` | 45 | 37,248 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6233,24 +6244,24 @@
 | `map/60-notes-23.md` | 25 | 122,793 |
 | `map/60-notes-24.md` | 25 | 98,783 |
 | `map/60-notes-25.md` | 25 | 115,491 |
-| `map/60-notes-26.md` | 25 | 128,189 |
-| `map/60-notes-27.md` | 25 | 62,723 |
-| `map/60-notes-28.md` | 25 | 80,144 |
-| `map/60-notes-29.md` | 25 | 70,105 |
-| `map/60-notes-30.md` | 25 | 96,553 |
-| `map/60-notes-31.md` | 25 | 92,616 |
-| `map/60-notes-32.md` | 25 | 130,527 |
-| `map/60-notes-33.md` | 11 | 65,643 |
+| `map/60-notes-26.md` | 25 | 128,606 |
+| `map/60-notes-27.md` | 25 | 62,758 |
+| `map/60-notes-28.md` | 25 | 79,704 |
+| `map/60-notes-29.md` | 25 | 70,370 |
+| `map/60-notes-30.md` | 25 | 96,225 |
+| `map/60-notes-31.md` | 25 | 93,718 |
+| `map/60-notes-32.md` | 25 | 129,111 |
+| `map/60-notes-33.md` | 12 | 69,375 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・811本・30,564,801 B）
+## 8. 精読ノート索引（readings/・812本・30,599,115 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 782/811 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 783/812 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：811 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：111 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：812 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：112 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -6886,6 +6897,7 @@
 | `readings/2026-11-14-two-spoons-of-salt-and-the-frozen-sea.md` | 2026-10-26 | 2026-11-14 | `SESSION-20261114-c7fbd6` +4 | 19,099 | Q6 F10 M5 MOT8 R1 S5 | ✓ | 塩を二度、氷は戻すな —— 命令法で書かれた明日と、三度書かれた同じ字（SESSION-20261114-c7fbd6） |
 | `readings/2026-11-15-a-second-key-with-no-lock.md` | 2026-10-26 | 2026-11-15 | `SESSION-20261115-6a7862` +4 | 15,179 | Q5 F12 M4 MOT1 S5 | ✓ | 錠のない鍵を、もう一本 —— 痣と言い切った声と、朝ごとに選び直す沈黙（SESSION-20261115-6a7862） |
 | `readings/2026-11-15-biology-persistence-is-not-return.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-c66b02` | 9,295 | M10 S1 | — | 持続することと、元へ戻ることは違う——生物学の十資料から人間と記録するAIを考える |
+| `readings/2026-11-15-comparative-zoology-close-reading.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-cz01` | 15,354 | Q3 M10 MOT13 S1 | — | 比較動物学の資料10件の精読——人間と動物の連続と断絶を読む |
 | `readings/2026-11-15-four-guards-that-forbid-nothing.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-90ea3d` | 4,451 | Q3 S1 | — | 何も禁じない四つの制動——飽和・配線・レジスタ・効果測定の実装（SESSION-20261115-90ea3d） |
 | `readings/2026-11-15-ten-biological-views-of-the-self.md` | — | 2026-11-15 | `SESSION-20261115-bf6052` | 11,572 | Q1 M12 S1 | ✓ | 生物はどこまで「ひとつ」か——自己産出、共生、境界をめぐる生物学資料10件の精読 |
 | `readings/2026-11-15-ten-biology-scaffolds-boundaries-and-afterlives-of-form.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-7d708f` +3 | 52,987 | Q3 M14 S4 ERR1 | ✓ | 足場・境界・残存——生物学10資料で、内容の消えたあとに何が働いているかを読む |
