@@ -62,6 +62,11 @@ PAIR_EIG_FORMULA = "posterior_left × posterior_right × (uncertainty_left + unc
 # now read this, so they cannot drift apart again.
 HYPOTHESIS_LESS_CORE_PRIORITY = 2.50
 
+# Provisional heuristic, not an empirically calibrated evidence weight. Counting
+# named comparisons as independent sources overstates repeated mentions; this
+# bounded-rate term uses the requested raw count with diminishing increments.
+COMPARISON_TOUCH_WEIGHT = 0.5
+
 
 def pair_lineage_relation(ha: dict[str, Any], hb: dict[str, Any]) -> str:
     """Classify a pair by the lineage the ledger records, not by its meaning.
@@ -446,7 +451,6 @@ def compute_belief_state(
         indep_sources[target_id].add(f"{ev_type}:{source_key}")
         for cid in compared:
             compared_touches[cid] += 1
-            indep_sources[cid].add(f"cmp:{ev_type}:{source_key}")
 
         spawned = [
             shid for shid in (evl.get("spawned_hypothesis_ids") or [])
@@ -582,7 +586,7 @@ def compute_belief_state(
 
             n_indep = len(indep_sources.get(hid, set()))
             adv_count = adversarial_touches[hid]
-            raw_u = (1.0 / math.sqrt(1.0 + n_indep)) * (1.25 if adv_count == 0 else 1.0)
+            raw_u = (1.0 / math.sqrt(1.0 + n_indep + COMPARISON_TOUCH_WEIGHT * math.log2(1 + compared_touches[hid]))) * (1.25 if adv_count == 0 else 1.0)
             uncertainty = round(min(1.0, max(0.05, raw_u)), 4)
 
             hyp_entries.append({
@@ -603,13 +607,8 @@ def compute_belief_state(
                 "uncertainty": uncertainty,
                 "direct_eval_count": len(direct_evals),
                 "adversarial_eval_count": adv_count,
-                # 2026-11-15: `compared_touches` was incremented at L380 and read
-                # nowhere in the repository, so "how often was this hypothesis
-                # named as somebody else's comparison" -- the only natural record
-                # of an orthogonal pair being written into
-                # `compared_against_hypothesis_ids` -- was computed and discarded.
-                # Unlike `adversarial_eval_count` it changes no arithmetic; it is
-                # reported so the naming is visible.
+                # Explicit weak, diminishing uncertainty contribution; not a
+                # direct evaluation and not evidence for the posterior.
                 "compared_touch_count": compared_touches[hid],
                 "verdict_counts": dict(verdicts),
                 "supporting_material_ids": hyp.get("supporting_material_ids", []),
@@ -635,6 +634,10 @@ def compute_belief_state(
         for i in range(len(candidates)):
             for j in range(i + 1, len(candidates)):
                 ha, hb = candidates[i], candidates[j]
+                # Never recommend an unexamined side. Absence is reported,
+                # rather than silently falling back to the problematic pair.
+                if not ha["direct_eval_count"] or not hb["direct_eval_count"]:
+                    continue
                 ig_score = ha["posterior"] * hb["posterior"] * (ha["uncertainty"] + hb["uncertainty"])
                 if ig_score > best_score:
                     best_score = ig_score
@@ -722,7 +725,7 @@ def select_auto_question_id(
                     + ")"
                 )
             else:
-                pair_txt = "単一仮説検証"
+                pair_txt = ("単一仮説検証（対の推薦なし）" if qs["hypothesis_count"] == 1 else "推薦なし（候補に直接評価済みの仮説が2件未満）")
             # Two numbers share this sentence and can move in opposite directions:
             # `score` comes from the question's entropy, `EIG` from the product of
             # two posteriors.  On 2026-11-15 scoring one pair moved them apart
@@ -765,7 +768,10 @@ def saturation_snapshot(
         qstate = state["questions"].get(qid)
         if not qstate or not qstate.get("hypotheses"):
             continue
-        pair = qstate.get("top_competing_pair") or {}
+        pair = qstate.get("top_competing_pair")
+        # No eligible pair is missing information, not zero EIG or saturation.
+        if pair is None:
+            continue
         eig = float(pair.get("expected_info_gain") or 0.0)
         rows.append({
             "question_id": qid,
@@ -788,6 +794,9 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
         "",
         "> 本ファイルは `python3 tools/belief_state.py --write-map` により `state/hypotheses*` と `state/evaluations*` から決定論的に生成される。",
         "> 手作業で編集せず、仮説の追加・分割・反証・射程限定を台帳シャードに記録した上で再生成すること。",
+        "",
+        "> 不確実性は暫定指標: `u = clamp((1 + 直接の独立出所数 + 0.5×log2(1+比較回数))^(-1/2) × 反証系補正, 0.05, 1)`。比較の重複を独立出所として二重計上しない。",
+        "> 対の候補は両側が直接評価済みのもののみ。該当がなければ推薦なし（飽和とは別）。",
         "",
         "## 概要指標",
         "",
@@ -829,7 +838,7 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
         if pair:
             relation = PAIR_RELATION_LABELS.get(pair.get("lineage_relation")) or "不明"
             lines.append(
-                f"- **最優先検証ターゲット（最大期待情報利得 EIG={pair['expected_info_gain']:.4f}）**: "
+                f"- **最優先検証ターゲット（両側直接評価済みの候補中の最大 EIG={pair['expected_info_gain']:.4f}）**: "
                 f"`{pair['left_hypothesis_id']}`（{pair['left_title']}） vs "
                 f"`{pair['right_hypothesis_id']}`（{pair['right_title']}）"
             )
@@ -847,9 +856,13 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
             if pair.get("examined_only_by_supports"):
                 lines.append(
                     "  - ⚠️ **両側とも `supports` 以外の判定を受けたことがない。** `supports` には log_odds を下げる項が無いので、"
-                    "この対をもう一度 `supports` すると EIG は上がる（実測 +30.6%）。競合する親子の対はそのぶん遠ざかる。"
+                    "この対をもう一度 `supports` すると EIG が上がることがある（実例 +30.6%。常に上がるわけではない）。競合する親子の対はそのぶん遠ざかる。"
                     "採点する前に、この二つが本当に競合するかを先に確かめること。"
                 )
+            lines.append("")
+
+        else:
+            lines.append("- **推薦なし**: 候補中に直接評価済みの仮説が2件未満。未評価の仮説を確認してください。")
             lines.append("")
 
         lines.extend([
