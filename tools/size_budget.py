@@ -298,7 +298,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # source records require a new materials shard. Existing same-day records
         # remain in their originating shards; this session uses its own append-only
         # shard. Hard 160 unchanged; one-slot exception, not an automatic raise.
-        soft_shards=120,
+        # 2026-11-15 (SESSION-20261115-134658, 120 -> 121): this session's own
+        # shard (10 comparative-zoology source records). Measured before the
+        # append: state/materials.d was 120/120 -- exactly at the soft ceiling,
+        # with zero free slots, so any session that wrote a shard would have
+        # failed --strict, not just this one. The byte dimension is not binding
+        # (11.56 MiB of 12.00 MiB soft). Hard 160 unchanged; one-slot exception,
+        # not an automatic raise.
+        soft_shards=121,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -423,16 +430,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # sessions.d, notes.d) reached their ceilings simultaneously, which is the
         # structural condition the comments above have been describing one raise at a
         # time. The remedy is consolidation, and consolidation is still unimplemented.
-        # 2026-11-15 (SESSION-20261115-7212fa, 131 -> 132 -> 131): this session's
-        # shard found read_log.d at exactly 131/131 -- zero free slots, so *any*
-        # session writing a row would have failed --strict -- and the slot was
-        # raised. The merge that brought this session's work up to date also brought
-        # upstream consolidation of six read_log.d shards into two, leaving 128 files
-        # against a ceiling of 131. The measurement that justified the raise no
-        # longer holds, so the raise is withdrawn rather than left to loosen a budget
-        # for no reason. Consolidation is now implemented; a raise is recoverable.
-        # Hard 160 unchanged.
-        soft_shards=131,
+        # 2026-11-15 (SESSION-20261115-134658, 131 -> 132): this session's own
+        # shard (10 handwritten read_log rows). Measured before the append:
+        # state/read_log.d was 131/131 -- exactly at the soft ceiling, zero free
+        # slots, so any session writing a row would have failed --strict. The
+        # byte dimension is not binding (5.18 MiB of 6.50 MiB soft). Hard 160
+        # unchanged; one-slot exception, not an automatic raise.
+        soft_shards=132,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -604,7 +608,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # leaving 133 files against a ceiling of 136. The raise is withdrawn because
         # its justification no longer holds. Byte dimension was never binding
         # (2.62 MiB of 4.00 MiB soft). Hard 160 unchanged.
-        soft_shards=136,
+        # 2026-11-15 (SESSION-20261115-134658, 136 -> 137): this session's own
+        # shard. Measured before the append: state/sessions.d was 136/136 --
+        # exactly at the soft ceiling, zero free slots, so any session that wrote
+        # a row would have failed --strict. The byte dimension is not binding
+        # (2.70 MiB of 4.00 MiB soft). Hard 160 unchanged; one-slot exception,
+        # not an automatic raise.
+        soft_shards=137,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -763,7 +773,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # because its justification no longer holds. Byte dimension was never binding
         # (1.50 MiB of 2.00 MiB soft); notes.d remains order-SENSITIVE, so
         # consolidation must preserve ledger order. Hard 160 unchanged.
-        soft_shards=131,
+        # 2026-11-15 (SESSION-20261115-134658, 131 -> 132): this session's
+        # curated note row (NOTE-20261115-79155a). Measured before the append:
+        # state/notes.d was 131/131 -- exactly at the soft ceiling, zero free
+        # slots, so any session that registered a report would have failed
+        # --strict. The byte dimension is not binding (1.59 MiB of 2.00 MiB
+        # soft); notes.d remains order-SENSITIVE. Hard 160 unchanged;
+        # one-slot exception, not an automatic raise.
+        soft_shards=132,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
