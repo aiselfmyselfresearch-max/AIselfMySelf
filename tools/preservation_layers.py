@@ -38,6 +38,7 @@ from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import ledger_ids  # noqa: E402
 import ledger_io  # noqa: E402
 
 EXPOSURE = {"used_as_context", "absorbed", "received"}
@@ -56,10 +57,20 @@ WORK = {"interpreted", "reinterpreted", "summarized", "quoted", "counted", "cont
 # is the worse direction for a quantity that a hypothesis exclusion clause
 # names.  Families are now enumerated from the ids that actually resolve to
 # records under state/, not from the prefixes one author happened to remember.
-ID_PREFIXES = (
-    "MAT", "NOTE", "HYP", "FRG", "FRAG", "SES", "SESSION", "EVL", "ERR",
-    "REL", "READ", "MOTIF", "MOT", "ED", "SRC", "EVD", "CLAIM", "READING", "Q",
-)
+ID_PREFIXES = tuple(p for p in ledger_ids.ALL_PREFIXES if p != "LIT")
+# 2026-11-15: the list above was hand-maintained, and the 2026-11-14 correction
+# that raised it from 6 families to 19 was itself a hand enumeration -- it still
+# omitted MAT-TRC, which resolves to 417 live records. Same direction, same
+# consequence: a work row naming only a MAT-TRC record was counted as layer 2.
+# The prefixes now come from tools/ledger_ids.py, and
+# tests/test_instrument_coverage.py compares that module against the families
+# actually present under state/, so a family can no longer be missed by whoever
+# happens to be editing this file.
+#
+# ``LIT`` is excluded from this alternation on purpose and matched by the guarded
+# alternative below: without the (?<!MAT-) lookbehind it would match the *tail* of
+# every MAT-LIT-* id (measured: 49 read_log notes), so a row repeating its own
+# target would look as though it named a second record.
 # Two further shapes resolve to real records and carry no dated-prefix form:
 # the legacy literature ids ``MAT-LIT-001`` (500 records) and
 # ``MAT-LIT-20261024-032442`` (1,593 records) -- together 2,093 of 4,343

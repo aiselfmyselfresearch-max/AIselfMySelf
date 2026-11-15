@@ -27,6 +27,7 @@ import json
 import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 MIB = 1024 * 1024
@@ -1079,12 +1080,61 @@ def print_report(results: list[CheckResult]) -> None:
             print(f"            remedy: {item.remedy}")
 
 
+RECLAIM_SLACK = 3
+
+
+def reclaim_candidates(root: Path = ROOT, slack: int = RECLAIM_SLACK) -> list[dict[str, Any]]:
+    """Shard budgets whose soft_shards ceiling is now higher than it needs to be.
+
+    Why this exists. ``soft_shards`` has only ever moved in one direction. A
+    session that finds its collection at exactly the ceiling raises it by one and
+    writes a dated comment saying the raise is not recoverable, because
+    consolidation was unimplemented and a shard named by a sessions row cannot be
+    deleted. Consolidation has since landed (2026-11-15, PR #787 folded six
+    read_log shards into two, six sessions into two, five notes into two, seven
+    materials into two), so a raise IS recoverable now -- but nothing looked
+    back. Three raises made on 2026-11-15 had to be withdrawn by hand in the merge
+    that brought the consolidation in, because the measurement that justified them
+    ("131/131, zero free slots") had stopped being true.
+
+    A budget that only ratchets up is not a budget, it is a record of every
+    occasion anyone was blocked. This reports the slack so the ceiling can come
+    back down. It is informational and never changes the exit status: reclaiming
+    is a judgement about how much headroom the next session needs, not a failure.
+    """
+    out: list[dict[str, Any]] = []
+    for sbudget in SHARD_BUDGETS:
+        sdir = root / sbudget.rel_dir
+        if not sdir.is_dir():
+            continue
+        count = len(list(sdir.glob("*.jsonl")))
+        free = sbudget.soft_shards - count
+        if free >= slack:
+            out.append({
+                "rel_dir": f"{sbudget.rel_dir}/",
+                "shards": count,
+                "soft_shards": sbudget.soft_shards,
+                "free_slots": free,
+                "could_lower_to": count + 1,
+            })
+    return sorted(out, key=lambda r: -r["free_slots"])
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--strict",
         action="store_true",
         help="exit non-zero when soft budgets are exceeded (default: warn only)",
+    )
+    parser.add_argument(
+        "--reclaim",
+        action="store_true",
+        help=(
+            f"list shard budgets with at least {RECLAIM_SLACK} free slots, i.e. "
+            "ceilings that a past session raised and consolidation has since made "
+            "unnecessary. Informational: never changes the exit status."
+        ),
     )
     parser.add_argument(
         "--json",
@@ -1098,6 +1148,25 @@ def main(argv: list[str] | None = None) -> int:
         help="repository root to inspect (for tests)",
     )
     args = parser.parse_args(argv)
+
+    if args.reclaim:
+        cands = reclaim_candidates(args.root)
+        if args.json:
+            print(json.dumps(cands, ensure_ascii=False, indent=2))
+            return 0
+        if not cands:
+            print(f"no shard budget has {RECLAIM_SLACK}+ free slots; nothing to reclaim")
+        else:
+            print(f"shard ceilings with {RECLAIM_SLACK}+ free slots -- a past session raised these,")
+            print("and consolidation has since made the raise unnecessary:")
+            for c in cands:
+                print(f"  {c['rel_dir']:26s} shards={c['shards']:4d} soft_shards={c['soft_shards']:4d}"
+                      f" free={c['free_slots']:+3d}  could lower to {c['could_lower_to']}")
+            print("")
+            print("Lowering is a judgement, not an obligation: the next session needs")
+            print("one free slot for its own shard, and a collection sitting exactly at")
+            print("its ceiling blocks every session that writes to it.")
+        return 0
 
     results = evaluate(args.root)
     if args.json:

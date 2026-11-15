@@ -123,7 +123,14 @@ def compute_learning_metrics(
         target = r.get("target") or {}
         ttype = target.get("type")
         reading = r.get("reading")
-        if ttype in ("note", "hypothesis", "evaluation", "session"):
+        # 2026-11-15: "erratum" joined the reference enum, and reading a
+        # correction is the most re-execution-like reading there is -- it is a
+        # judgment the archive made about its own judgment. Counting it here is a
+        # deliberate change of gate semantics, authorized by the human on
+        # 2026-11-15, not a side effect of widening an enum. It changes no current
+        # number: zero read_log rows targeted an erratum before today, because
+        # none could.
+        if ttype in ("note", "hypothesis", "evaluation", "session", "erratum"):
             prior_memory_reads[sid] += 1
         if reading in ("reinterpreted", "contested"):
             active_reinterp_reads[sid] += 1

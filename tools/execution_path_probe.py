@@ -72,6 +72,14 @@ from typing import Any, Callable
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# The hypothesis this probe was built to test. Named explicitly so that
+# tests/test_instrument_coverage.py can read that hypothesis's scope_conditions,
+# extract the checks it names, and assert that every one of them is in CHECKS
+# below and labelled named_in_scope. Before 2026-11-15 the subject was only
+# implied by the docstring, so when CHECKS omitted append_only_check -- one of the
+# three checks the docstring itself listed -- nothing could notice.
+SUBJECT_HYPOTHESIS = "HYP-20261113-17ea95"
+
 # taxonomy/ is required: note_index counts inbound links from taxonomy/notes/*.md.
 COPY_DIRS = ("state", "tools", "schema", "docs", "prompts", "readings", "taxonomy")
 
