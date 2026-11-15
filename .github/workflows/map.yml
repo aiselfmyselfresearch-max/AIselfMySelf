@@ -24,9 +24,6 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Build sharded reading map
-        run: python3 tools/map_build.py --report
-
       - name: Validate ledgers before publishing
         run: python3 tools/validate_seed.py
 
@@ -37,8 +34,16 @@ jobs:
       - name: Measure associations into map/ (advisory, no ledger writes)
         run: python3 tools/associations.py --write-map
 
+      # Order matters: map_build.py's index embeds a mention graph that
+      # note_index builds over every root *.md, BELIEF_MAP.md included, so
+      # belief_state must run first (measured digests: tools/map_build.py
+      # docstring; readings/2026-11-15-the-remedy-in-the-failure-message-
+      # laundered-the-erasure.md §4).
       - name: Render posterior belief state into map/
         run: python3 tools/belief_state.py --write-map && git checkout -- BELIEF_MAP.md
+
+      - name: Build sharded reading map
+        run: python3 tools/map_build.py --report
 
       - name: Upload reading-map artifact
         uses: actions/upload-artifact@v4

@@ -12,6 +12,11 @@ Usage:
   python3 tools/belief_state.py --json
   python3 tools/belief_state.py --write-map
   python3 tools/belief_state.py --check-map
+
+Generation order: run this tool's --write-map BEFORE tools/map_build.py.
+READING_MAP.md's inbound-mention graph is built over every root *.md, which
+includes the generated BELIEF_MAP.md, so the reverse order is not a fixed point
+(measured digests and the map_build-side warning: tools/map_build.py docstring).
 """
 from __future__ import annotations
 
@@ -30,6 +35,69 @@ import ledger_io
 
 ROOT = Path(__file__).resolve().parents[1]
 CORE_QUESTIONS: tuple[str, ...] = ("Q-001", "Q-002", "Q-003")
+
+# 2026-11-15: the pair a reader is handed is the maximum of
+# ``posterior_a * posterior_b * (uncertainty_a + uncertainty_b)``.  That product
+# never asks whether the two hypotheses contradict each other, so a session was
+# handed two orthogonal hypotheses as 「最優先対立対」, scored them, and the score
+# went *up* (0.2259 -> 0.2951) because ``supports`` has no downward term --
+# while the genuinely competing parent/child pairs fell 73%.  Measured in
+# readings/2026-11-15-the-most-informative-pair-was-not-a-disagreement.md
+# sections 4.1-4.5.  The arithmetic is not changed here (every posterior in the
+# ledger was produced by it); the pair is now reported with what *is* known
+# about it: the recorded lineage relation, and whether either side has ever been
+# examined by anything other than ``supports``.
+PAIR_RELATION_LABELS: dict[str, str] = {
+    "parent_child_left_is_parent": "親子（左が親）",
+    "parent_child_right_is_parent": "親子（右が親）",
+    "sibling": "同親の兄弟",
+    "unrelated": "系譜関係なし",
+}
+PAIR_EIG_FORMULA = "posterior_left × posterior_right × (uncertainty_left + uncertainty_right)"
+
+# One constant, two call sites, because they disagreed.  `compute_belief_state`
+# advertised 2.0 for a core question with no hypotheses while
+# `select_auto_question_id` scored the same question as 2.50 + jitter, so a
+# reader of `--json` ranked it below the tool that actually assigns it.  Both
+# now read this, so they cannot drift apart again.
+HYPOTHESIS_LESS_CORE_PRIORITY = 2.50
+
+
+def pair_lineage_relation(ha: dict[str, Any], hb: dict[str, Any]) -> str:
+    """Classify a pair by the lineage the ledger records, not by its meaning.
+
+    Only ``parent_hypothesis_ids`` is consulted.  Whether two propositions
+    actually contradict each other is not decidable from the ledger, and this
+    function does not pretend otherwise -- ``unrelated`` means "no recorded
+    lineage edge", which is what made an orthogonal pair look like a contest.
+    """
+    a, b = ha["hypothesis_id"], hb["hypothesis_id"]
+    a_parents = set(ha.get("parent_hypothesis_ids") or [])
+    b_parents = set(hb.get("parent_hypothesis_ids") or [])
+    if b in a_parents:
+        return "parent_child_right_is_parent"
+    if a in b_parents:
+        return "parent_child_left_is_parent"
+    if a_parents and b_parents and (a_parents & b_parents):
+        return "sibling"
+    return "unrelated"
+
+
+def pair_examined_only_by_supports(ha: dict[str, Any], hb: dict[str, Any]) -> bool:
+    """True when neither side has ever been touched by a non-``supports`` verdict.
+
+    This is the ratchet condition: ``supports`` adds ``delta`` to the target and
+    subtracts ``0.20 * delta`` from each compared hypothesis, and nothing in the
+    verdict arithmetic lowers a hypothesis that is only ever supported.  Scoring
+    such a pair again raises its own EIG (measured: +30.6%).
+    """
+    for h in (ha, hb):
+        if h.get("adversarial_eval_count"):
+            return False
+        verdicts = set(h.get("verdict_counts") or {})
+        if verdicts and not verdicts <= {"supports"}:
+            return False
+    return True
 
 # A core question whose best competing pair carries less than this much expected
 # information gain has nothing left for the selector to pick: the posterior is
@@ -470,7 +538,16 @@ def compute_belief_state(
                 "gen0_mass": 0.0,
                 "gen1_plus_mass": 0.0,
                 "mean_active_uncertainty": 1.0,
-                "priority_score": 2.0,
+                # 2026-11-15: this default disagreed with the selector.
+                # `select_auto_question_id` never reads `priority_score` for a
+                # question with no hypotheses -- it scores a hypothesis-less core
+                # question as 2.50 + jitter -- so the state advertised 2.0 while
+                # the selector used 2.50.  A reader of `--json` would have ranked
+                # the question differently from the tool that actually assigns it.
+                # Dormant today (all three core questions carry hypotheses), which
+                # is exactly why it went unnoticed.  Aligned with the selector; no
+                # assignment changes.
+                "priority_score": HYPOTHESIS_LESS_CORE_PRIORITY,
                 "top_competing_pair": None,
                 "hypotheses": [],
             }
@@ -526,6 +603,14 @@ def compute_belief_state(
                 "uncertainty": uncertainty,
                 "direct_eval_count": len(direct_evals),
                 "adversarial_eval_count": adv_count,
+                # 2026-11-15: `compared_touches` was incremented at L380 and read
+                # nowhere in the repository, so "how often was this hypothesis
+                # named as somebody else's comparison" -- the only natural record
+                # of an orthogonal pair being written into
+                # `compared_against_hypothesis_ids` -- was computed and discarded.
+                # Unlike `adversarial_eval_count` it changes no arithmetic; it is
+                # reported so the naming is visible.
+                "compared_touch_count": compared_touches[hid],
                 "verdict_counts": dict(verdicts),
                 "supporting_material_ids": hyp.get("supporting_material_ids", []),
                 "counter_material_ids": hyp.get("counter_material_ids", []),
@@ -559,6 +644,13 @@ def compute_belief_state(
                         "right_hypothesis_id": hb["hypothesis_id"],
                         "right_title": hb["title"],
                         "expected_info_gain": round(ig_score, 4),
+                        "formula": PAIR_EIG_FORMULA,
+                        "left_posterior": ha["posterior"],
+                        "right_posterior": hb["posterior"],
+                        "left_uncertainty": ha["uncertainty"],
+                        "right_uncertainty": hb["uncertainty"],
+                        "lineage_relation": pair_lineage_relation(ha, hb),
+                        "examined_only_by_supports": pair_examined_only_by_supports(ha, hb),
                     }
 
         # Active-only entropy measures unresolved competition among live scoped hypotheses
@@ -621,17 +713,30 @@ def select_auto_question_id(
         if qs and qs["hypothesis_count"] > 0:
             score = float(qs["priority_score"]) + (0.35 if qid in CORE_QUESTIONS else 0.0) + jitter
             pair = qs.get("top_competing_pair")
-            pair_txt = (
-                f"{pair['left_hypothesis_id']} vs {pair['right_hypothesis_id']} (EIG={pair['expected_info_gain']:.4f})"
-                if pair else "単一仮説検証"
-            )
+            if pair:
+                relation = PAIR_RELATION_LABELS.get(pair.get("lineage_relation")) or "不明"
+                pair_txt = (
+                    f"{pair['left_hypothesis_id']} vs {pair['right_hypothesis_id']} "
+                    f"(EIG={pair['expected_info_gain']:.4f}, 系譜={relation}"
+                    + (", 両側 supports のみ" if pair.get("examined_only_by_supports") else "")
+                    + ")"
+                )
+            else:
+                pair_txt = "単一仮説検証"
+            # Two numbers share this sentence and can move in opposite directions:
+            # `score` comes from the question's entropy, `EIG` from the product of
+            # two posteriors.  On 2026-11-15 scoring one pair moved them apart
+            # (score 2.952 -> 2.262 while EIG 0.2259 -> 0.2951), so both formulas
+            # are named here instead of leaving "情報利得" to cover two quantities.
             reason = (
-                f"情報利得優先選出 (score={score:.3f}, active_H={qs['active_entropy_bits']:.3f}b, "
-                f"mean_u={qs['mean_active_uncertainty']:.3f}, 最優先対立対: {pair_txt})"
+                f"情報利得優先選出 (score={score:.3f}=active_H+0.8·mean_u+1/√(1+評価数)+中核0.35+乱数, "
+                f"active_H={qs['active_entropy_bits']:.3f}b, "
+                f"mean_u={qs['mean_active_uncertainty']:.3f}, "
+                f"最優先検証対: {pair_txt}; EIG=p_a×p_b×(u_a+u_b) で両立性は検査しない)"
             )
             scored.append((score, qid, reason))
         elif qid in CORE_QUESTIONS:
-            score = 2.50 + jitter
+            score = HYPOTHESIS_LESS_CORE_PRIORITY + jitter
             scored.append((score, qid, f"中核問い未定式化優先 (score={score:.3f})"))
         else:
             score = 0.40 + jitter
@@ -690,15 +795,19 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
         f"- 評価イベント総数 (`EVL-*`): **{state['total_evaluations']}**",
         f"- 次回探求の情報利得優先順位: **{' → '.join(state['core_priority_ranking'])}**",
         "",
-        "| 問い | 仮説数 (有効) | 第0世代質量 (素朴基底) | 第1世代+質量 (条件付き) | 事後エントロピー | D_KL(P_t || P_0) | 平均不確実性 u | 最優先対立ペア (EIG) |",
+        "| 問い | 仮説数 (有効) | 第0世代質量 (素朴基底) | 第1世代+質量 (条件付き) | 事後エントロピー | D_KL(P_t || P_0) | 平均不確実性 u | 最優先検証ペア (EIG=p_a×p_b×(u_a+u_b)) |",
         "| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
     ]
     for qid, qs in state["questions"].items():
         pair = qs.get("top_competing_pair")
-        pair_cell = (
-            f"`{pair['left_hypothesis_id']}` vs `{pair['right_hypothesis_id']}` ({pair['expected_info_gain']:.4f})"
-            if pair else "—"
-        )
+        if pair:
+            relation = PAIR_RELATION_LABELS.get(pair.get("lineage_relation")) or "不明"
+            pair_cell = (
+                f"`{pair['left_hypothesis_id']}` vs `{pair['right_hypothesis_id']}` "
+                f"({pair['expected_info_gain']:.4f}, {relation})"
+            )
+        else:
+            pair_cell = "—"
         lines.append(
             f"| `{qid}` | {qs['hypothesis_count']} ({qs['active_count']}) | "
             f"{qs['gen0_mass'] * 100:.1f}% | **{qs['gen1_plus_mass'] * 100:.1f}%** | "
@@ -718,11 +827,29 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
 
         pair = qs.get("top_competing_pair")
         if pair:
+            relation = PAIR_RELATION_LABELS.get(pair.get("lineage_relation")) or "不明"
             lines.append(
                 f"- **最優先検証ターゲット（最大期待情報利得 EIG={pair['expected_info_gain']:.4f}）**: "
                 f"`{pair['left_hypothesis_id']}`（{pair['left_title']}） vs "
                 f"`{pair['right_hypothesis_id']}`（{pair['right_title']}）"
             )
+            lines.append(
+                f"  - 式: `{pair.get('formula', PAIR_EIG_FORMULA)}` = "
+                f"{pair.get('left_posterior', 0.0):.4f} × {pair.get('right_posterior', 0.0):.4f} × "
+                f"({pair.get('left_uncertainty', 0.0):.4f} + {pair.get('right_uncertainty', 0.0):.4f})"
+                f" ｜ 記録された系譜関係: **{relation or '不明'}**"
+            )
+            lines.append(
+                "  - この式は両立性を検査しない。二つの命題が互いを否定するかどうかは台帳から判定できず、"
+                "「対立」ではなく「次に検証する組」である。系譜関係が無い場合は、両立する二つの仮説が"
+                "並置されているだけの可能性がある（実測例: readings/2026-11-15-the-most-informative-pair-was-not-a-disagreement.md §4）。"
+            )
+            if pair.get("examined_only_by_supports"):
+                lines.append(
+                    "  - ⚠️ **両側とも `supports` 以外の判定を受けたことがない。** `supports` には log_odds を下げる項が無いので、"
+                    "この対をもう一度 `supports` すると EIG は上がる（実測 +30.6%）。競合する親子の対はそのぶん遠ざかる。"
+                    "採点する前に、この二つが本当に競合するかを先に確かめること。"
+                )
             lines.append("")
 
         lines.extend([

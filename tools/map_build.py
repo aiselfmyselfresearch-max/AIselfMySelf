@@ -18,6 +18,24 @@ chunked by record count (range partitioning); ``map/manifest.json`` is the
 secondary index (id -> shard) and carries a sha256 per shard.  Writes are
 atomic (``ledger_io.atomic_write_text``) under the shared ledger lock.
 
+Order of generation matters
+---------------------------
+READING_MAP.md's inbound-mention graph is computed by ``note_index`` over every
+``*.md`` at the repository root (``note_index.py:159``), which includes the
+*generated* ``BELIEF_MAP.md``.  So the two generators are not independent: run
+
+    python3 tools/belief_state.py --write-map   # first
+    python3 tools/map_build.py                  # second
+
+In the reverse order the pair is not a fixed point.  Measured on 2026-11-15 with
+one report cited from BELIEF_MAP.md's pair annotation: map_build-first produced
+READING_MAP.md ``3bf142a476e57f2e`` and left both ``inspect_inquiry.py
+--check-map`` and ``note_index.py --check`` reporting STALE on a tree whose
+content was correct (the cited note lost its ``✓`` and the orphan count read 110
+instead of 109); belief_state-first produced ``3633316ca0512410`` and both
+checks PASS.  ``main`` therefore warns when BELIEF_MAP.md is stale.  The warning
+goes to stderr and never changes the exit status.
+
 Usage:
   python3 tools/map_build.py            # write map/ shards + READING_MAP.md index
   python3 tools/map_build.py --check    # verify READING_MAP.md matches the ledgers
@@ -775,6 +793,36 @@ def check_readme(readme_path: Path = DEFAULT_README_PATH) -> int:
     return 0
 
 
+def belief_map_order_warning(root: Path = ROOT) -> str | None:
+    """Return a warning when BELIEF_MAP.md is stale, i.e. this build would read it stale.
+
+    ``note_index`` scans every root ``*.md`` -- including the generated
+    BELIEF_MAP.md -- to decide which notes are mentioned and therefore
+    reachable.  Building READING_MAP.md from a stale BELIEF_MAP.md yields an
+    index that its own ``--check-map`` then rejects, and the rejection message
+    ("run map_build.py") sends the operator around the same loop again.  See the
+    module docstring for the measured pair of digests.
+    """
+    try:
+        import belief_state
+    except Exception:  # pragma: no cover - belief_state is a sibling module
+        return None
+    if not (root / "BELIEF_MAP.md").is_file():
+        return None
+    try:
+        ok, _msg = belief_state.check_belief_map(root)
+    except Exception:  # pragma: no cover - never fail a build over a warning
+        return None
+    if ok:
+        return None
+    return (
+        "WARNING: BELIEF_MAP.md is stale. READING_MAP.md's mention graph is built over "
+        "root *.md including BELIEF_MAP.md, so run "
+        "`python3 tools/belief_state.py --write-map` FIRST, then re-run map_build.py; "
+        "otherwise --check-map will report STALE on a correct tree."
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="verify READING_MAP.md matches the ledgers")
@@ -807,6 +855,9 @@ def main() -> int:
     data = load_all()
     if args.check:
         return check_index(data, args.index)
+    warn = belief_map_order_warning()
+    if warn:
+        print(warn, file=sys.stderr)
     manifest = write_all(data, args.map_dir, args.index, quiet=args.report)
     if args.report:
         size_report(manifest)
