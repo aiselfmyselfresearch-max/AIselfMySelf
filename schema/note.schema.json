@@ -116,7 +116,11 @@
           "fragment_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
           "material_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
           "motif_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
-          "hypothesis_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+          "hypothesis_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "no_hypothesis": {
+            "type": "boolean",
+            "description": "Set true only when a reading_revised/retraction claim revises no registered hypothesis (for example, a reading that changes how a source is cited). Required from 2026-11-16 onward together with hypothesis_ids: a claim that says a judgment changed must say which hypothesis changed, or say plainly that none was involved. See docs/registers.md."
+          }
         }
       }
     },
