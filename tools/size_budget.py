@@ -8,8 +8,10 @@ Covers:
      plus optional file-count and largest-single-file dimensions.
   4. Repository hygiene guards:
      - `tools/_*` temporary scratch scripts are strictly forbidden (hard limit 0).
-     - `tools/*_audit*.py` count is capped to freeze per-theme audit proliferation
-       in favour of the dictionary-driven `tools/lexicon_audit.py`.
+     - `tools/*_audit*.py` count approximates per-theme audit proliferation.
+       Explicitly reviewed archive-wide gates are exempt from this count; the
+       filename glob is not a semantic classifier and cannot enforce a freeze
+       against scripts named without "audit". Review new scripts by purpose.
 
 Default mode exits 0 on soft warnings and 1 on hard-limit violations (including
 any `tools/_*` scratch script).  Pass ``--strict`` to treat soft warnings as
@@ -855,6 +857,10 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
 
 AUDIT_SCRIPT_SOFT_COUNT = 57
 AUDIT_SCRIPT_HARD_COUNT = 60
+# Exact, reviewable exceptions: only archive-wide integrity gates, not themed
+# audits. Kept explicit so a descriptive name does not spend the theme budget.
+# No automatic semantic classification is claimed.
+CORPUS_GATE_EXEMPTIONS = frozenset({"readings_integrity_audit.py"})
 
 
 @dataclass
@@ -1033,7 +1039,7 @@ def evaluate(root: Path = ROOT, budgets: tuple[Budget, ...] = BUDGETS) -> list[C
             )
         )
 
-        audit_files = sorted(p for p in tools_dir.glob("*_audit*.py") if p.is_file())
+        audit_files = sorted(p for p in tools_dir.glob("*_audit*.py") if p.is_file() and p.name not in CORPUS_GATE_EXEMPTIONS)
         audit_bytes = sum(p.stat().st_size for p in audit_files)
         audit_count = len(audit_files)
         audit_status = _status_for_pair(
@@ -1047,7 +1053,7 @@ def evaluate(root: Path = ROOT, budgets: tuple[Budget, ...] = BUDGETS) -> list[C
                 soft_bytes=2 * MIB,
                 hard_bytes=5 * MIB,
                 status=audit_status,
-                remedy="Per-theme *_audit.py creation is frozen; pass dictionaries to tools/lexicon_audit.py instead",
+                remedy="Per-theme audit creation is frozen; review scripts by purpose regardless of name. Archive-wide gate exemptions are explicit in CORPUS_GATE_EXEMPTIONS; use tools/lexicon_audit.py for themes",
                 file_count=audit_count,
                 soft_count=AUDIT_SCRIPT_SOFT_COUNT,
                 hard_count=AUDIT_SCRIPT_HARD_COUNT,
