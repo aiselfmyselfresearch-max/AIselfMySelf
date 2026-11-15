@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -29,6 +30,15 @@ def run(repo: Path, *args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         [sys.executable, *args], cwd=repo, capture_output=True, text=True, timeout=300
     )
+
+
+def unresolved_count(output: str) -> int:
+    match = re.search(r"FAIL: (\d+) pairs since \S+ have neither", output)
+    if match:
+        return int(match.group(1))
+    if "PASS: every eligible pair since the effective date is accounted for" in output:
+        return 0
+    raise AssertionError(f"missing layer-2 enforcement result: {output}")
 
 
 def read_row(**overrides: object) -> dict:
@@ -149,6 +159,8 @@ class BackfillTests(unittest.TestCase):
         """
         with tempfile.TemporaryDirectory() as tmp:
             repo = copy_repo(Path(tmp))
+            baseline = run(repo, "tools/read_log_backfill.py", "--check", "--since", "2026-11-10", "--enforce")
+            baseline_count = unresolved_count(baseline.stdout)
             session = {
                 "session_id": "SESSION-20261110-dddddd",
                 "started_at": "2026-11-10",
@@ -176,7 +188,7 @@ class BackfillTests(unittest.TestCase):
                 repo, "tools/read_log_backfill.py", "--check", "--since", "2026-11-10", "--enforce"
             )
             self.assertEqual(enforced.returncode, 1, enforced.stdout)
-            self.assertIn("neither a hand-written reading nor", enforced.stdout)
+            self.assertEqual(unresolved_count(enforced.stdout), baseline_count + 1)
 
             # Recording the choice in sessions.notes satisfies the rule.
             row = json.loads(shard.read_text(encoding="utf-8").splitlines()[0])
@@ -185,13 +197,11 @@ class BackfillTests(unittest.TestCase):
             excused = run(
                 repo, "tools/read_log_backfill.py", "--check", "--since", "2026-11-10", "--enforce"
             )
-            # The checked-in archive already has unrelated unresolved pairs
-            # from SESSION-20261113-1650a1. The fixture must not treat those
-            # historical debts as if they were fixed here; it verifies only
-            # that its own pair leaves the unresolved count when marked unread.
-            self.assertEqual(excused.returncode, 1, excused.stdout)
+            # Existing archive debts can change; the fixture must restore the
+            # measured baseline, not assume a particular historical count.
+            self.assertEqual(excused.returncode, baseline.returncode, excused.stdout)
             self.assertIn("excused by 未読の選択:", excused.stdout)
-            self.assertIn("FAIL: 29 pairs since 2026-11-10", excused.stdout)
+            self.assertEqual(unresolved_count(excused.stdout), baseline_count)
             self.assertIn("layer2 since 2026-11-10:", excused.stdout)
             self.assertNotIn("SESSION-20261110-dddddd -> MAT-20261024-3c4443", excused.stdout)
 
@@ -211,6 +221,8 @@ class BackfillTests(unittest.TestCase):
         """
         with tempfile.TemporaryDirectory() as tmp:
             repo = copy_repo(Path(tmp))
+            baseline = run(repo, "tools/read_log_backfill.py", "--check", "--since", "2026-11-10", "--enforce")
+            baseline_count = unresolved_count(baseline.stdout)
             session = {
                 "session_id": "SESSION-20990104-cccccc",
                 "started_at": "2099-01-04",
@@ -228,11 +240,11 @@ class BackfillTests(unittest.TestCase):
             proc = run(
                 repo, "tools/read_log_backfill.py", "--check", "--since", "2026-11-10", "--enforce"
             )
-            # The base fixture has 29 unrelated unresolved layer-2 pairs.
-            # The future-dated session must not add a thirtieth eligible pair.
-            self.assertEqual(proc.returncode, 1, proc.stdout)
+            # A future-dated session must not add an eligible pair to the
+            # current archive's measured baseline, whatever its debt count.
+            self.assertEqual(proc.returncode, baseline.returncode, proc.stdout)
             self.assertIn("exempt", proc.stdout)
-            self.assertIn("FAIL: 29 pairs since 2026-11-10", proc.stdout)
+            self.assertEqual(unresolved_count(proc.stdout), baseline_count)
             self.assertNotIn("SESSION-20990104-cccccc", proc.stdout)
 
     def test_layer2_is_reported_but_never_gates(self) -> None:
