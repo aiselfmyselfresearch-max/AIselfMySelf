@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：4503 件（research_excerpt 2267 ／ literary_text 2168 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：248 編（selected 96 ／ draft 152）
 - **解釈的関係（Relations）**：7007 件
-- **探究セッション（Sessions）**：850 回
+- **探究セッション（Sessions）**：851 回
 
 ### 台帳ごとの件数
 
@@ -23,11 +23,11 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4503 | `literary_text` 2168／`research_excerpt` 2267／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 248 | `selected` 96／`draft` 152／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7007 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 850 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13903 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 289 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 851 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 13913 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 302 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 868 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 869 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 37 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 356 |  |
 
@@ -5300,7 +5300,7 @@
 | `MAT-20261115-60bac9` | research_excerpt | Fernando Nottebohm『フェルナンド・ノテボーム「すべての季節のための脳」（1981）——歌の核は季節ごとに縮み、再生し、学び直す』（1981） |
 | `MAT-20261115-c8c254` | research_excerpt | Irenäus Eibl-Eibesfeldt『イレナウス・アイブル＝アイベスフェルト『人間の動物行動学』（1989）——人間を比較行動学の対象として、直角レンズで撮る』（198… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261115-305211・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261115-010761・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -6154,6 +6154,7 @@
 | `SESSION-20261115-5a6b15` | 2026-11-15T09:58:52Z | `Q-003`, `Q-001`, `Q-002` | — | — |
 | `SESSION-20261115-5896bd` | 2026-11-15T10:32:20Z | `Q-003` | — | — |
 | `SESSION-20261115-305211` | 2026-11-15T13:15:00Z | `Q-003`, `Q-002`, `Q-001` | — | — |
+| `SESSION-20261115-010761` | 2026-11-15T13:05:00Z | `Q-003` | — | — |
 
 ## 6. 解釈的関係（7007 件・全表は map/40-relations-*.md）
 
@@ -6274,6 +6275,7 @@
 | `map/50-sessions-15.md` | 50 | 35,907 |
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,638 |
+| `map/50-sessions-18.md` | 1 | 836 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6299,23 +6301,23 @@
 | `map/60-notes-23.md` | 25 | 122,793 |
 | `map/60-notes-24.md` | 25 | 98,783 |
 | `map/60-notes-25.md` | 25 | 115,491 |
-| `map/60-notes-26.md` | 25 | 150,339 |
-| `map/60-notes-27.md` | 25 | 60,765 |
-| `map/60-notes-28.md` | 25 | 78,597 |
-| `map/60-notes-29.md` | 25 | 68,753 |
-| `map/60-notes-30.md` | 25 | 83,000 |
-| `map/60-notes-31.md` | 25 | 107,841 |
-| `map/60-notes-32.md` | 25 | 127,538 |
-| `map/60-notes-33.md` | 17 | 86,656 |
+| `map/60-notes-26.md` | 25 | 157,294 |
+| `map/60-notes-27.md` | 25 | 63,194 |
+| `map/60-notes-28.md` | 25 | 78,278 |
+| `map/60-notes-29.md` | 25 | 67,422 |
+| `map/60-notes-30.md` | 25 | 82,781 |
+| `map/60-notes-31.md` | 25 | 109,660 |
+| `map/60-notes-32.md` | 25 | 122,144 |
+| `map/60-notes-33.md` | 18 | 94,082 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・817本・30,913,312 B）
+## 8. 精読ノート索引（readings/・818本・30,970,732 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 788/817 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 789/818 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：817 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：818 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：111 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -6965,8 +6967,9 @@
 | `readings/2026-11-15-the-largest-path-parameter-was-pinned-inside-the-instrument.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-7212fa` +2 | 21,735 | Q6 M1 S3 ERR5 | ✓ | 計器の中で釘付けにされていた、いちばん大きな経路 |
 | `readings/2026-11-15-the-most-informative-pair-was-not-a-disagreement.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-e7ee43` +6 | 49,906 | Q6 S7 ERR12 | ✓ | 最も情報量が多いと選ばれた対は、対立していなかった |
 | `readings/2026-11-15-the-name-on-the-envelope-decides-whether-it-is-opened.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-db5791` +2 | 36,450 | Q2 M15 S3 | — | 封筒の宛名が、開けるかどうかを決める——生物学10資料で、来歴が内容の読み方を決める仕組みを読む |
+| `readings/2026-11-15-the-name-the-budget-chose.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261107-890f1f` +8 | 29,754 | Q4 S9 ERR26 | — | 予算に選ばされた名前——PR #800 の引き継ぎ6件の処置と、§10-6..10 の調査 |
 | `readings/2026-11-15-the-observer-was-the-instrument.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-dee0ea` | 22,365 | Q3 M14 S1 | ✓ | 観察者が装置だった——比較動物学10資料で、自分の見え方を差し引く |
-| `readings/2026-11-15-the-remedy-in-the-failure-message-laundered-the-erasure.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-5896bd` +2 | 35,362 | Q4 S3 ERR15 | — | 失敗メッセージの中の救済策が、消去を洗浄した |
+| `readings/2026-11-15-the-remedy-in-the-failure-message-laundered-the-erasure.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-5896bd` +2 | 35,362 | Q4 S3 ERR15 | ✓ | 失敗メッセージの中の救済策が、消去を洗浄した |
 | `readings/2026-11-15-the-same-content-is-not-the-same-self.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-189e9c` +4 | 25,138 | Q3 M10 S5 ERR1 | — | 同じ内容でも、来歴が違えば同じ自己ではない——生物学10資料で「自己識別は内容の照合か、来歴の照合か」を読む |
 | `readings/2026-11-15-the-self-is-a-time-constant-not-an-archive.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-5a6b15` | 14,462 | Q3 M19 S1 ERR1 | ✓ | 自己は書庫の分量ではなく、比較を開いておく装置の時定数で決まる |
 | `readings/2026-11-15-the-two-lemmas-arrive-already-asked.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-a4cc8f` | 11,983 | Q5 S1 | ✓ | 二つの補題は、もう問われている——追加したときに何が動き、何が動かないかの予測（SESSION-20261115-a4… |

@@ -88,6 +88,49 @@ class SizeBudgetTests(unittest.TestCase):
             strict_code, _, _ = self.run_cli("--strict", "--root", str(root))
             self.assertEqual(strict_code, 1)
 
+    def _populate_frozen_audits(self, root: Path) -> None:
+        tools_dir = root / "tools"
+        tools_dir.mkdir(parents=True, exist_ok=True)
+        for name in sorted(size_budget.AUDIT_FROZEN_PER_THEME):
+            (tools_dir / name).write_text("# frozen per-theme audit stub\n", encoding="utf-8")
+
+    def test_an_unregistered_audit_fails_even_below_the_count_budget(self):
+        """A new per-theme audit may not arrive by name choice (2026-11-15 §2.5)."""
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            make_repo(root)
+            self._populate_frozen_audits(root)
+            (root / "tools" / "sleepiness_audit.py").write_text("# x\n", encoding="utf-8")
+            code, out, err = self.run_cli("--root", str(root))
+            self.assertEqual(code, 1)
+            self.assertIn("sleepiness_audit.py", out)
+            self.assertIn("FAIL", err)
+
+    def test_a_retired_roster_entry_warns_until_the_roster_is_edited(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            make_repo(root)
+            self._populate_frozen_audits(root)
+            victim = sorted(size_budget.AUDIT_FROZEN_PER_THEME)[0]
+            (root / "tools" / victim).unlink()
+            code, out, _ = self.run_cli("--root", str(root))
+            self.assertEqual(code, 0, out)  # soft: warns only
+            self.assertIn("retired roster entries", out)
+            self.assertIn(victim, out)
+            strict_code, _, strict_err = self.run_cli("--strict", "--root", str(root))
+            self.assertEqual(strict_code, 1)
+            self.assertIn("--strict", strict_err)
+
+    def test_a_fully_rostered_tools_tree_passes_in_strict_mode(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            make_repo(root)
+            self._populate_frozen_audits(root)
+            code, out, _ = self.run_cli("--strict", "--root", str(root))
+            self.assertEqual(code, 0, out)
+            self.assertIn("freeze", out)
+            self.assertIn(f"57 / soft", out)
+
     def test_json_output_is_well_formed(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

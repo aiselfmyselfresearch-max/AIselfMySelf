@@ -25,6 +25,7 @@ These tests pin the software behaviour of the correction, never a live number:
 from __future__ import annotations
 
 import json
+import math
 import sys
 import tempfile
 import unittest
@@ -275,6 +276,134 @@ class HypothesisLessPriorityTests(unittest.TestCase):
         self.assertIn('"priority_score": HYPOTHESIS_LESS_CORE_PRIORITY', source)
         self.assertIn("score = HYPOTHESIS_LESS_CORE_PRIORITY + jitter", source)
         self.assertNotIn('"priority_score": 2.0', source)
+
+
+def _hyp_row(hid: str, *, parents=(), qid: str = "Q-QA", created: str = "2026-11-10T00:00:00Z"):
+    return {
+        "hypothesis_id": hid,
+        "session_id": "SESSION-TEST",
+        "created_at": created,
+        "question_ids": [qid],
+        "title": hid,
+        "proposition": hid,
+        "scope_conditions": ["test"],
+        "exclusion_clause": "test",
+        "lineage_op": "refines" if parents else "root",
+        "parent_hypothesis_ids": list(parents),
+        "status": "active",
+    }
+
+
+def _evl_row(eid: str, target: str, *, compared=(), created: str = "2026-11-10T01:00:00Z",
+             verdict: str = "supports", evidence: str = "reproducible_script"):
+    return {
+        "evaluation_id": eid,
+        "session_id": "SESSION-TEST",
+        "created_at": created,
+        "target_hypothesis_id": target,
+        "verdict": verdict,
+        "evidence_type": evidence,
+        "summary": "synthetic evaluation for the compared-touch wiring test",
+        "compared_against_hypothesis_ids": list(compared),
+    }
+
+
+def _cols(hyps, evls, qid: str = "Q-QA"):
+    return {
+        "questions": {qid: {"question_id": qid, "question": "問い。"}},
+        "hypotheses": {h["hypothesis_id"]: h for h in hyps},
+        "evaluations": {e["evaluation_id"]: e for e in evls},
+        "errata": {},
+    }
+
+
+class ComparedTouchWiringTests(unittest.TestCase):
+    """2026-11-15: compared_touch_count is wired into uncertainty, damped."""
+
+    def test_compared_touches_lower_uncertainty_below_the_unevaluated_default(self):
+        hyps = [_hyp_row("HYP-A"), _hyp_row("HYP-B"), _hyp_row("HYP-C")]
+        evls = [
+            _evl_row("EVL-1", "HYP-A", compared=["HYP-B"], created="2026-11-10T01:00:00Z"),
+            _evl_row("EVL-2", "HYP-A", compared=["HYP-B"], created="2026-11-11T01:00:00Z"),
+        ]
+        state = belief_state.compute_belief_state(_cols(hyps, evls))
+        entries = {h["hypothesis_id"]: h for h in state["questions"]["Q-QA"]["hypotheses"]}
+
+        # HYP-C: never evaluated, never named. adv == 0, so the 1.25x cap applies.
+        self.assertEqual(entries["HYP-C"]["uncertainty"], 1.0)
+        self.assertEqual(entries["HYP-C"]["compared_touch_count"], 0)
+
+        # HYP-B: named twice, never examined itself. A comparison during a
+        # supports evaluation is also an adversarial touch on the rival
+        # (-0.20*delta/n), so the 1.25x "never examined" multiplier does not
+        # apply; the damped comparison term is what moves the value:
+        # 1.0 / sqrt(1 + 0.5 * 2) = 0.7071.
+        expected_b = round(1.0 / math.sqrt(1.0 + 0.5 * 2), 4)
+        self.assertEqual(entries["HYP-B"]["compared_touch_count"], 2)
+        self.assertEqual(entries["HYP-B"]["adversarial_eval_count"], 2)
+        self.assertEqual(entries["HYP-B"]["uncertainty"], expected_b)
+        self.assertLess(entries["HYP-B"]["uncertainty"], entries["HYP-C"]["uncertainty"])
+
+        # HYP-A: examined twice from two sources, nobody's named rival.
+        expected_a = round(1.25 / math.sqrt(1.0 + 2), 4)
+        self.assertEqual(entries["HYP-A"]["uncertainty"], expected_a)
+
+    def test_a_naming_is_weaker_than_an_examination(self):
+        """A rival named in a supports evaluation (adv touch + one naming) keeps higher uncertainty than the same rival directly examined with one narrows_scope."""
+        hyps = [_hyp_row("HYP-SRC"), _hyp_row("HYP-NAMED"), _hyp_row("HYP-EXAMINED")]
+        evls = [
+            _evl_row("EVL-1", "HYP-SRC", compared=["HYP-NAMED"]),
+            _evl_row("EVL-2", "HYP-EXAMINED", verdict="narrows_scope"),
+        ]
+        state = belief_state.compute_belief_state(_cols(hyps, evls))
+        entries = {h["hypothesis_id"]: h for h in state["questions"]["Q-QA"]["hypotheses"]}
+        # NAMED: 1 comparison -> adv 1; 1.0 / sqrt(1 + 0.5 * 1) = 0.8165
+        self.assertEqual(entries["HYP-NAMED"]["uncertainty"], round(1.0 / math.sqrt(1.5), 4))
+        # EXAMINED: no comparison; adv 1 (narrows_scope); 1.0 / sqrt(1 + 1) = 0.7071
+        self.assertEqual(entries["HYP-EXAMINED"]["uncertainty"], round(1.0 / math.sqrt(2.0), 4))
+        self.assertGreater(entries["HYP-NAMED"]["uncertainty"], entries["HYP-EXAMINED"]["uncertainty"])
+        self.assertEqual(belief_state.COMPARISON_TOUCH_WEIGHT, 0.5)
+
+
+class EvaluatedPairPreferenceTests(unittest.TestCase):
+    """2026-11-15: a pair with an unevaluated side is never preferred as the top pair."""
+
+    def test_both_evaluated_pair_wins_over_higher_uncertainty_newborn_pair(self):
+        hyps = [_hyp_row("HYP-A"), _hyp_row("HYP-B"), _hyp_row("HYP-C")]
+        evls = [
+            _evl_row("EVL-1", "HYP-A"),
+            _evl_row("EVL-2", "HYP-C"),
+        ]
+        state = belief_state.compute_belief_state(_cols(hyps, evls))
+        pair = state["questions"]["Q-QA"]["top_competing_pair"]
+        ids = {pair["left_hypothesis_id"], pair["right_hypothesis_id"]}
+        self.assertEqual(ids, {"HYP-A", "HYP-C"})
+        self.assertFalse(pair["contains_unevaluated"])
+        self.assertEqual(pair["left_direct_eval_count"] + pair["right_direct_eval_count"], 2)
+
+    def test_all_unevaluated_pool_falls_back_and_says_so(self):
+        hyps = [_hyp_row("HYP-A"), _hyp_row("HYP-B")]
+        state = belief_state.compute_belief_state(_cols(hyps, []))
+        pair = state["questions"]["Q-QA"]["top_competing_pair"]
+        self.assertTrue(pair["contains_unevaluated"])
+        self.assertIn("selection_note", pair)
+        self.assertIn("直接評価0件", pair["selection_note"])
+
+    def test_unevaluated_side_is_marked_in_the_rendered_map(self):
+        hyps = [_hyp_row("HYP-A"), _hyp_row("HYP-B")]
+        state = belief_state.compute_belief_state(_cols(hyps, []))
+        pair = state["questions"]["Q-QA"]["top_competing_pair"]
+        text = belief_state.render_belief_map_markdown(state)
+        self.assertIn("少なくとも一方が直接評価0件", text)
+        self.assertIn("直接評価0件の仮説を含む対しか候補に残らなかった", text)
+
+    def test_the_receipt_marks_a_pair_with_an_unevaluated_side(self):
+        a, b = hyp("HYP-A", verdicts={"supports": 1}), hyp("HYP-B")
+        pair = pair_of(a, b, eig=0.5, left_direct_eval_count=0, right_direct_eval_count=0,
+                       contains_unevaluated=True)
+        state = state_with(pair, [a, b])
+        _qid, reason = belief_state.select_auto_question_id(state, ["Q-001"])
+        self.assertIn("直接評価0件を含む", reason)
 
 
 if __name__ == "__main__":

@@ -55,6 +55,18 @@ A PASS from this tool means "the prose exists and has a heading". It does not
 mean the prose is guarded against being *changed* -- see the report above, and
 `readings/2026-11-15-the-assignment-was-run-and-then-discarded.md`.
 
+Name note (2026-11-15)
+----------------------
+The file is named ``readings_integrity_check.py``, not ``readings_audit.py``.
+The name was originally chosen to dodge the ``tools/*_audit*.py`` freeze, not
+because of what the tool is: this is a **corpus gate**, a CI-enforced invariant
+of the archive, in the class of ``append_only_check.py`` and
+``validate_seed.py``, not a per-theme audit of the class frozen in
+``tools/size_budget.py``.  The freeze is now an explicit roster
+(``AUDIT_FROZEN_PER_THEME``): only a deliberate edit there admits an audit,
+and corpus gates do not carry an ``audit`` name at all.  The dodged name made
+no difference to what this file does; the mechanism now matches the policy.
+
 Usage
 -----
   python3 tools/readings_integrity_check.py

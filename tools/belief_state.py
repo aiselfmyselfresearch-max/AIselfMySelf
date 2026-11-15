@@ -62,6 +62,18 @@ PAIR_EIG_FORMULA = "posterior_left × posterior_right × (uncertainty_left + unc
 # now read this, so they cannot drift apart again.
 HYPOTHESIS_LESS_CORE_PRIORITY = 2.50
 
+# Provisional fixed value, flagged 2026-11-15.  A comparison *names* a
+# hypothesis; it does not *examine* it.  Until today the ledger recorded
+# comparisons twice -- `compared_touch_count` was incremented and discarded,
+# and a `cmp:` entry in `indep_sources` credited each named rival with one
+# full independent source inside the sqrt of the uncertainty denominator.
+# The wiring is now explicit (uncertainty reads the count) and damped: each
+# naming counts as half an independent examination.  0.5 is a design
+# judgement, not a measurement; `editorial_review` may move it, and moving it
+# re-opens every past posterior.  (This value in particular is the kind of
+# provisional fixed value that §2.5's naming incident taught to declare.)
+COMPARISON_TOUCH_WEIGHT = 0.5
+
 
 def pair_lineage_relation(ha: dict[str, Any], hb: dict[str, Any]) -> str:
     """Classify a pair by the lineage the ledger records, not by its meaning.
@@ -445,8 +457,10 @@ def compute_belief_state(
         evals_by_hyp[target_id].append(evl)
         indep_sources[target_id].add(f"{ev_type}:{source_key}")
         for cid in compared:
+            # A comparison names a rival without examining it.  It is counted
+            # (and damped) inside the uncertainty denominator via
+            # COMPARISON_TOUCH_WEIGHT, not credited as a full source here.
             compared_touches[cid] += 1
-            indep_sources[cid].add(f"cmp:{ev_type}:{source_key}")
 
         spawned = [
             shid for shid in (evl.get("spawned_hypothesis_ids") or [])
@@ -580,9 +594,16 @@ def compute_belief_state(
             else:
                 eff_status = "active"
 
+            # 2026-11-15: compared touches are wired into uncertainty, at
+            # COMPARISON_TOUCH_WEIGHT of an independent source per naming.
+            # `indep_sources` now holds examinations only; the named-rival
+            # signal travels through the count explicit and damped.
             n_indep = len(indep_sources.get(hid, set()))
+            cmp_touches = compared_touches[hid]
             adv_count = adversarial_touches[hid]
-            raw_u = (1.0 / math.sqrt(1.0 + n_indep)) * (1.25 if adv_count == 0 else 1.0)
+            raw_u = (
+                1.0 / math.sqrt(1.0 + n_indep + COMPARISON_TOUCH_WEIGHT * cmp_touches)
+            ) * (1.25 if adv_count == 0 else 1.0)
             uncertainty = round(min(1.0, max(0.05, raw_u)), 4)
 
             hyp_entries.append({
@@ -603,13 +624,12 @@ def compute_belief_state(
                 "uncertainty": uncertainty,
                 "direct_eval_count": len(direct_evals),
                 "adversarial_eval_count": adv_count,
-                # 2026-11-15: `compared_touches` was incremented at L380 and read
-                # nowhere in the repository, so "how often was this hypothesis
-                # named as somebody else's comparison" -- the only natural record
-                # of an orthogonal pair being written into
-                # `compared_against_hypothesis_ids` -- was computed and discarded.
-                # Unlike `adversarial_eval_count` it changes no arithmetic; it is
-                # reported so the naming is visible.
+                # 2026-11-15: `compared_touches` used to be incremented and
+                # read nowhere, then credited as full sources inside
+                # `indep_sources`.  It is now the explicit, damped input to the
+                # uncertainty denominator (COMPARISON_TOUCH_WEIGHT), on top of
+                # being reported.  Naming a rival is weak evidence that the
+                # rival is on the table; it is not an examination of it.
                 "compared_touch_count": compared_touches[hid],
                 "verdict_counts": dict(verdicts),
                 "supporting_material_ids": hyp.get("supporting_material_ids", []),
@@ -629,29 +649,64 @@ def compute_belief_state(
             else 1.0
         )
 
-        best_pair: dict[str, Any] | None = None
+        # 2026-11-15: the engine's top pair had become two directly
+        # unevaluated newborns (both direct_eval_count == 0, u == 0.8839) and
+        # stayed #1 because unevaluated hypotheses carry the highest
+        # uncertainty.  A pair with an unevaluated side is now never
+        # *preferred*: pairs where both sides carry at least one direct
+        # evaluation are ranked first, and only if no such pair exists does
+        # the search fall back to unrestricted -- in which case the pair is
+        # marked `contains_unevaluated` and gets a `selection_note`, so the
+        # reader is told why the win is provisional.
         candidates = active_entries if len(active_entries) >= 2 else hyp_entries
-        best_score = -1.0
-        for i in range(len(candidates)):
-            for j in range(i + 1, len(candidates)):
-                ha, hb = candidates[i], candidates[j]
-                ig_score = ha["posterior"] * hb["posterior"] * (ha["uncertainty"] + hb["uncertainty"])
-                if ig_score > best_score:
-                    best_score = ig_score
-                    best_pair = {
-                        "left_hypothesis_id": ha["hypothesis_id"],
-                        "left_title": ha["title"],
-                        "right_hypothesis_id": hb["hypothesis_id"],
-                        "right_title": hb["title"],
-                        "expected_info_gain": round(ig_score, 4),
-                        "formula": PAIR_EIG_FORMULA,
-                        "left_posterior": ha["posterior"],
-                        "right_posterior": hb["posterior"],
-                        "left_uncertainty": ha["uncertainty"],
-                        "right_uncertainty": hb["uncertainty"],
-                        "lineage_relation": pair_lineage_relation(ha, hb),
-                        "examined_only_by_supports": pair_examined_only_by_supports(ha, hb),
-                    }
+
+        def _pair_payload(ha: dict[str, Any], hb: dict[str, Any], ig_score: float) -> dict[str, Any]:
+            return {
+                "left_hypothesis_id": ha["hypothesis_id"],
+                "left_title": ha["title"],
+                "right_hypothesis_id": hb["hypothesis_id"],
+                "right_title": hb["title"],
+                "expected_info_gain": round(ig_score, 4),
+                "formula": PAIR_EIG_FORMULA,
+                "left_posterior": ha["posterior"],
+                "right_posterior": hb["posterior"],
+                "left_uncertainty": ha["uncertainty"],
+                "right_uncertainty": hb["uncertainty"],
+                "left_direct_eval_count": ha["direct_eval_count"],
+                "right_direct_eval_count": hb["direct_eval_count"],
+                "contains_unevaluated": bool(
+                    ha["direct_eval_count"] == 0 or hb["direct_eval_count"] == 0
+                ),
+                "lineage_relation": pair_lineage_relation(ha, hb),
+                "examined_only_by_supports": pair_examined_only_by_supports(ha, hb),
+            }
+
+        def _best_pair(pool: list[dict[str, Any]], *, both_evaluated: bool) -> dict[str, Any] | None:
+            best: dict[str, Any] | None = None
+            best_score = -1.0
+            for i in range(len(pool)):
+                for j in range(i + 1, len(pool)):
+                    ha, hb = pool[i], pool[j]
+                    if both_evaluated:
+                        if ha["direct_eval_count"] == 0 or hb["direct_eval_count"] == 0:
+                            continue
+                    ig_score = ha["posterior"] * hb["posterior"] * (
+                        ha["uncertainty"] + hb["uncertainty"]
+                    )
+                    if ig_score > best_score:
+                        best_score = ig_score
+                        best = _pair_payload(ha, hb, ig_score)
+            return best
+
+        best_pair = _best_pair(candidates, both_evaluated=True)
+        if best_pair is None:
+            best_pair = _best_pair(candidates, both_evaluated=False)
+            if best_pair is not None:
+                best_pair["selection_note"] = (
+                    "直接評価0件の仮説を含む対しか候補に残らなかったため、この対が一位である。"
+                    "不確実性の項が最大になるのは新生児だからで、対立の記録とは独立に決まっている。"
+                    "採点の前に、直接評価のある隣の対を検討したかどうかを確認すること。"
+                )
 
         # Active-only entropy measures unresolved competition among live scoped hypotheses
         active_mass = sum(h["posterior"] for h in active_entries) or 1.0
@@ -719,6 +774,7 @@ def select_auto_question_id(
                     f"{pair['left_hypothesis_id']} vs {pair['right_hypothesis_id']} "
                     f"(EIG={pair['expected_info_gain']:.4f}, 系譜={relation}"
                     + (", 両側 supports のみ" if pair.get("examined_only_by_supports") else "")
+                    + (", 直接評価0件を含む" if pair.get("contains_unevaluated") else "")
                     + ")"
                 )
             else:
@@ -839,6 +895,16 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
                 f"({pair.get('left_uncertainty', 0.0):.4f} + {pair.get('right_uncertainty', 0.0):.4f})"
                 f" ｜ 記録された系譜関係: **{relation or '不明'}**"
             )
+            lines.append(
+                f"  - 直接評価数: 左 {pair.get('left_direct_eval_count', '不明')} / 右 "
+                f"{pair.get('right_direct_eval_count', '不明')}"
+                + (
+                    "　⚠️ **少なくとも一方が直接評価0件**"
+                    if pair.get("contains_unevaluated") else ""
+                )
+            )
+            if pair.get("selection_note"):
+                lines.append(f"  - ⚠️ {pair['selection_note']}")
             lines.append(
                 "  - この式は両立性を検査しない。二つの命題が互いを否定するかどうかは台帳から判定できず、"
                 "「対立」ではなく「次に検証する組」である。系譜関係が無い場合は、両立する二つの仮説が"

@@ -9,7 +9,14 @@ Covers:
   4. Repository hygiene guards:
      - `tools/_*` temporary scratch scripts are strictly forbidden (hard limit 0).
      - `tools/*_audit*.py` count is capped to freeze per-theme audit proliferation
-       in favour of the dictionary-driven `tools/lexicon_audit.py`.
+       in favour of the dictionary-driven `tools/lexicon_audit.py`.  The frozen
+       set is an explicit roster (``AUDIT_FROZEN_PER_THEME``), not merely the
+       filename glob: a file matching the glob that is not on the roster fails
+       even below the count budget, so adding a per-theme audit is a deliberate
+       edit in review, never a name choice.  Corpus gates (``append_only_check.py``,
+       ``readings_integrity_check.py``, ...) are a different class and carry no
+       ``audit`` name at all; naming a gate ``*_audit*.py`` to dodge nothing is
+       as wrong as naming a gate around the glob once was.
 
 Default mode exits 0 on soft warnings and 1 on hard-limit violations (including
 any `tools/_*` scratch script).  Pass ``--strict`` to treat soft warnings as
@@ -856,6 +863,88 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
 AUDIT_SCRIPT_SOFT_COUNT = 57
 AUDIT_SCRIPT_HARD_COUNT = 60
 
+# The frozen per-theme audits, as an explicit decision rather than a filename
+# accident.  The freeze used to be nothing but the ``*_audit*.py`` glob, which
+# is a pattern, not the policy: a per-theme audit could dodge it by name, and a
+# corpus gate that deserved no place on it was still forced into a name chosen
+# to dodge it (``readings_integrity_check.py``, 2026-11-15 §2.5 of
+# readings/2026-11-15-the-remedy-in-the-failure-message-laundered-the-erasure.md).
+#
+# Rules enforced against this roster in ``build_results``:
+#   * a file matching the glob that is NOT on the roster fails the freeze check,
+#     whatever the total count is -- a new per-theme audit is a deliberate edit
+#     to this list, reviewed as such, not a naming choice;
+#   * a roster entry with no file on disk is reported as a soft warning until
+#     the stale name is removed here -- retiring proliferation is good and the
+#     roster must not drift silently either;
+#   * corpus gates are NOT on the roster and must not match the glob at all:
+#     ``append_only_check.py``, ``readings_integrity_check.py`` and friends are
+#     CI-enforced invariants of the archive, not per-theme checks.
+#
+# ``errata_audit.py`` and ``lexicon_audit.py`` are on the roster: they are
+# audits of the ledger/of dictionaries respectively, frozen as they were.
+AUDIT_FROZEN_PER_THEME = frozenset(
+    {
+        "abjection_audit.py",
+        "address_audit.py",
+        "addressee_audit.py",
+        "bestial_audit.py",
+        "boredom_audit.py",
+        "botany_audit.py",
+        "clothing_audit.py",
+        "currency_audit.py",
+        "drift_audit.py",
+        "eros_audit.py",
+        "errata_audit.py",
+        "face_audit.py",
+        "fire_audit.py",
+        "fungi_audit.py",
+        "gate_audit.py",
+        "genealogy_audit.py",
+        "ghost_audit.py",
+        "habit_audit.py",
+        "hearsay_audit.py",
+        "hospitality_audit.py",
+        "lexicon_audit.py",
+        "light_shadow_audit.py",
+        "measure_audit.py",
+        "metabolism_audit.py",
+        "mortality_audit.py",
+        "music_audit.py",
+        "natality_audit.py",
+        "nourishment_audit.py",
+        "olfactory_audit.py",
+        "passion_audit.py",
+        "play_audit.py",
+        "pledge_audit.py",
+        "prayer_audit.py",
+        "promise_audit.py",
+        "provenance_audit.py",
+        "relation_audit.py",
+        "repair_audit.py",
+        "revision_audit.py",
+        "roundtrip_audit.py",
+        "secrecy_audit.py",
+        "secret_audit.py",
+        "selection_audit.py",
+        "sense_audit.py",
+        "signature_audit.py",
+        "sky_audit.py",
+        "sleep_audit.py",
+        "time_audit.py",
+        "translation_audit.py",
+        "uncertainty_audit.py",
+        "vegetal_audit.py",
+        "voice_audit.py",
+        "vulnerability_audit.py",
+        "war_audit.py",
+        "war_audit_20261025.py",
+        "wayfaring_audit.py",
+        "weather_audit.py",
+        "wrath_audit.py",
+    }
+)
+
 
 @dataclass
 class CheckResult:
@@ -1036,9 +1125,31 @@ def evaluate(root: Path = ROOT, budgets: tuple[Budget, ...] = BUDGETS) -> list[C
         audit_files = sorted(p for p in tools_dir.glob("*_audit*.py") if p.is_file())
         audit_bytes = sum(p.stat().st_size for p in audit_files)
         audit_count = len(audit_files)
-        audit_status = _status_for_pair(
-            0, 0, 0, audit_count, AUDIT_SCRIPT_SOFT_COUNT, AUDIT_SCRIPT_HARD_COUNT
+        unregistered = sorted(
+            p.name for p in audit_files if p.name not in AUDIT_FROZEN_PER_THEME
         )
+        if unregistered:
+            audit_status = "fail"
+            audit_remedy = (
+                "Unregistered *_audit*.py script(s): "
+                + ", ".join(unregistered[:5])
+                + ("..." if len(unregistered) > 5 else "")
+                + ". The freeze is an explicit roster, not a name choice: "
+                  "pass dictionaries to tools/lexicon_audit.py, or add the file "
+                  "to AUDIT_FROZEN_PER_THEME in tools/size_budget.py with the "
+                  "reason in the same PR. A corpus gate must not carry an 'audit' "
+                  "name at all -- name it like append_only_check.py (see "
+                  "readings_integrity_check.py)"
+            )
+        else:
+            audit_status = _status_for_pair(
+                0, 0, 0, audit_count, AUDIT_SCRIPT_SOFT_COUNT, AUDIT_SCRIPT_HARD_COUNT
+            )
+            audit_remedy = (
+                "Per-theme *_audit.py creation is frozen; pass dictionaries to "
+                "tools/lexicon_audit.py instead (frozen roster: "
+                "AUDIT_FROZEN_PER_THEME in tools/size_budget.py)"
+            )
         results.append(
             CheckResult(
                 rel_path="tools/*_audit*.py (freeze)",
@@ -1047,12 +1158,39 @@ def evaluate(root: Path = ROOT, budgets: tuple[Budget, ...] = BUDGETS) -> list[C
                 soft_bytes=2 * MIB,
                 hard_bytes=5 * MIB,
                 status=audit_status,
-                remedy="Per-theme *_audit.py creation is frozen; pass dictionaries to tools/lexicon_audit.py instead",
+                remedy=audit_remedy,
                 file_count=audit_count,
                 soft_count=AUDIT_SCRIPT_SOFT_COUNT,
                 hard_count=AUDIT_SCRIPT_HARD_COUNT,
             )
         )
+
+        # A tools/ directory with no audit files at all is a synthetic fixture
+        # (the test-suite builds minimal repos), not a repository that retired
+        # its whole frozen set; the roster comparison is meaningful only once at
+        # least one audit file is on disk.
+        retired = sorted(AUDIT_FROZEN_PER_THEME - {p.name for p in audit_files})
+        if retired and audit_files:
+            results.append(
+                CheckResult(
+                    rel_path="tools/*_audit*.py (retired roster entries)",
+                    exists=True,
+                    size_bytes=0,
+                    soft_bytes=0,
+                    hard_bytes=0,
+                    status="warn",
+                    remedy=(
+                        "Remove retired entries from AUDIT_FROZEN_PER_THEME in "
+                        "tools/size_budget.py (retiring per-theme audits is "
+                        "welcome; the roster must say so): "
+                        + ", ".join(retired[:5])
+                        + ("..." if len(retired) > 5 else "")
+                    ),
+                    file_count=len(retired),
+                    soft_count=0,
+                    hard_count=0,
+                )
+            )
 
     return results
 
