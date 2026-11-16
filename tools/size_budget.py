@@ -638,14 +638,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # session row would have failed --strict. The byte dimension is not
         # binding (2.70 MiB of 4.00 MiB soft before; 2.71 MiB after). Hard 160
         # unchanged; one-slot exception, not an automatic raise.
-        # 2026-11-16 (merge of PR #822 into main with arena/b99a823d, 138 -> 139):
-        # the merge combined two same-day parallel sessions shards
-        # (2026-11-16-c05be9d0b58d.jsonl and the #822 session shard), taking the
-        # measured file count to 139 while origin/main alone already measured
-        # 139 (already over 138) before this branch merged. Byte dimension is
-        # not binding (2.73 MiB of 4.00 MiB soft). Hard 160 unchanged; this is
-        # the union of two parallel one-slot exceptions, not an automatic raise.
-        soft_shards=139,
+        soft_shards=138,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -835,16 +828,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # notes.d file count after combining this branch with origin/main was
         # measured at 134 (both same-day curated note shards present). Recorded
         # here because the previous line documents only one of the two raises.
-        # 2026-11-16 (merge of PR #822 into main with arena/b99a823d, 134 -> 145):
-        # origin/main alone already measured 145 files against this 134 ceiling
-        # before this branch merged, i.e. the gate was already red on main. The
-        # merge adds no note shard of its own (NOTE-20261116-166581 went into the
-        # existing 2026-11-16-b34e751c2294.jsonl). Raising to 145 restores the
-        # gate to its measured value; it does not create a new slot. This is the
-        # third raise of this line in one day, which is the signal that same-day
-        # parallel note shards now need the alias-merge path rather than another
-        # exception. Hard 160 unchanged.
-        soft_shards=145,
+        soft_shards=134,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
