@@ -36,11 +36,12 @@ Two limits, stated so the numbers are not read as more than they are:
     wrong about what the rows are.
 
 Usage:
-    python3 tools/witness_count.py              # all three counts
+    python3 tools/witness_count.py              # all counts (materials + hypotheses)
     python3 tools/witness_count.py --works      # rows vs distinct works
     python3 tools/witness_count.py --witnesses  # witnesses per work
     python3 tools/witness_count.py --naming     # naming scheme vs survival
-    python3 tools/witness_count.py --passages    # are same-URL rows duplicates?
+    python3 tools/witness_count.py --passages   # are same-URL rows duplicates?
+    python3 tools/witness_count.py --hypotheses # hypothesis EVL_sess / RL_sess / single-witness audit
     python3 tools/witness_count.py --json       # machine-readable
 """
 from __future__ import annotations
@@ -159,6 +160,22 @@ def witnesses_by_material(read_log: list[dict]) -> dict[str, set[str]]:
         sid = r.get("session_id")
         if mid and sid:
             out[mid].add(sid)
+    return out
+
+
+def witnesses_by_hypothesis(read_log: list[dict]) -> dict[str, set[str]]:
+    """Sessions with a *hand-written* read of each hypothesis (excludes mechanical backfills)."""
+    out: dict[str, set[str]] = defaultdict(set)
+    for r in read_log:
+        target = r.get("target") or {}
+        if not isinstance(target, dict) or target.get("type") != "hypothesis":
+            continue
+        if MECHANICAL_MARK in (r.get("note") or ""):
+            continue
+        hid = target.get("id")
+        sid = r.get("session_id")
+        if hid and sid:
+            out[hid].add(sid)
     return out
 
 
@@ -284,6 +301,86 @@ def report_passages(materials: list[dict], *, out) -> dict:
     return {"pairs": pairs, "identical": same, "different": diff}
 
 
+def report_hypotheses(root: Path, *, out) -> dict:
+    """Report independent witnessing sessions (EVL_sess & hand-written RL_sess) per hypothesis."""
+    tools_dir = str(Path(__file__).resolve().parent)
+    if tools_dir not in sys.path:
+        sys.path.insert(0, tools_dir)
+    import belief_state
+
+    state = belief_state.compute_belief_state(root=root)
+    rows: list[dict[str, object]] = []
+    single_witness_high_mass: list[str] = []
+    self_eval_only: list[str] = []
+    unexamined_active: list[str] = []
+
+    for qid, qs in state["questions"].items():
+        for hid in qs.get("unexamined_active_hypothesis_ids") or []:
+            unexamined_active.append(f"{qid}:{hid}")
+        for h in qs["hypotheses"]:
+            item = {
+                "question_id": qid,
+                "hypothesis_id": h["hypothesis_id"],
+                "effective_status": h["effective_status"],
+                "posterior": h["posterior"],
+                "direct_eval_count": h["direct_eval_count"],
+                "verified_direct_eval_count": h.get("verified_direct_eval_count", 0),
+                "psc_all_verified_count": h.get("psc_all_verified_count", 0),
+                "psc_eval_count": h.get("psc_eval_count", 0),
+                "witness_eval_session_count": h.get("witness_eval_session_count", 0),
+                "witness_read_session_count": h.get("witness_read_session_count", 0),
+                "same_session_eval_count": h.get("same_session_eval_count", 0),
+                "cross_session_eval_count": h.get("cross_session_eval_count", 0),
+                "low_witness_high_mass": bool(h.get("low_witness_high_mass")),
+                "self_evaluated_only": bool(h.get("self_evaluated_only")),
+            }
+            rows.append(item)
+            if item["low_witness_high_mass"]:
+                single_witness_high_mass.append(f"{qid}:{h['hypothesis_id']}")
+            if item["self_evaluated_only"]:
+                self_eval_only.append(f"{qid}:{h['hypothesis_id']}")
+
+    out(f"hypotheses audited                   : {len(rows)}")
+    out(
+        f"single-witness high-mass (P>=5%,EVL<=1): {len(single_witness_high_mass)}"
+        + (f"  ({', '.join(single_witness_high_mass)})" if single_witness_high_mass else "")
+    )
+    out(
+        f"self-evaluated only (cross_sess==0)  : {len(self_eval_only)}"
+        + (f"  ({', '.join(self_eval_only)})" if self_eval_only else "")
+    )
+    out(
+        f"unexamined active hypotheses         : {len(unexamined_active)}"
+        + (f"  ({', '.join(unexamined_active)})" if unexamined_active else "")
+    )
+    if rows:
+        out("")
+        out(f"{'Q':<6} {'HYP':<20} {'P%':>5} {'EVL_s':>5} {'RL_s':>4} {'ver/dir':>7} {'same/x':>6} flags")
+        for item in sorted(rows, key=lambda r: (str(r["question_id"]), -float(r["posterior"]), str(r["hypothesis_id"]))):
+            flags: list[str] = []
+            if item["low_witness_high_mass"]:
+                flags.append("SINGLE_WITNESS")
+            if item["self_evaluated_only"]:
+                flags.append("SELF_ONLY")
+            if item["direct_eval_count"] == 0 and item["effective_status"] == "active":
+                flags.append("UNEXAMINED")
+            out(
+                f"{str(item['question_id']):<6} {str(item['hypothesis_id']):<20} "
+                f"{float(item['posterior']) * 100:5.1f} {int(item['witness_eval_session_count']):>5} "
+                f"{int(item['witness_read_session_count']):>4} "
+                f"{int(item['verified_direct_eval_count']):>3}/{int(item['direct_eval_count']):<3} "
+                f"{int(item['same_session_eval_count']):>2}/{int(item['cross_session_eval_count']):<3} "
+                f"{','.join(flags)}"
+            )
+    return {
+        "total_hypotheses": len(rows),
+        "single_witness_high_mass": single_witness_high_mass,
+        "self_evaluated_only": self_eval_only,
+        "unexamined_active": unexamined_active,
+        "hypotheses": rows,
+    }
+
+
 # ---------------------------------------------------------------- main
 
 
@@ -295,6 +392,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--witnesses", action="store_true")
     ap.add_argument("--naming", action="store_true")
     ap.add_argument("--passages", action="store_true")
+    ap.add_argument("--hypotheses", action="store_true")
     ap.add_argument("--json", action="store_true", help="machine-readable output")
     ap.add_argument("--root", default=str(ROOT))
     args = ap.parse_args(argv)
@@ -303,11 +401,11 @@ def main(argv: list[str] | None = None) -> int:
 
     materials = load_rows("materials", "material_id")
     read_log = load_rows("read_log", "read_id")
-    if not materials:
+    if not materials and not args.hypotheses:
         print("no materials found", file=sys.stderr)
         return 1
 
-    every = not (args.works or args.witnesses or args.naming or args.passages)
+    every = not (args.works or args.witnesses or args.naming or args.passages or args.hypotheses)
     payload: dict[str, object] = {}
     lines: list[str] = []
 
@@ -341,6 +439,12 @@ def main(argv: list[str] | None = None) -> int:
         if not args.json:
             out("--- 4. are same-URL rows duplicates? ---")
         payload["passages"] = report_passages(materials, out=out)
+        if not args.json:
+            out("")
+    if every or args.hypotheses:
+        if not args.json:
+            out("--- 5. hypothesis witnesses (EVL_sess vs hand-written RL_sess) ---")
+        payload["hypotheses"] = report_hypotheses(ROOT, out=out)
 
     if args.json:
         print(json.dumps(payload, ensure_ascii=False, indent=1))
