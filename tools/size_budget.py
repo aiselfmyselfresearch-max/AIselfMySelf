@@ -780,7 +780,18 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # --strict. The byte dimension is not binding (1.59 MiB of 2.00 MiB
         # soft); notes.d remains order-SENSITIVE. Hard 160 unchanged;
         # one-slot exception, not an automatic raise.
-        soft_shards=132,
+        # 2026-11-16 (SESSION-20261116-c1411b, 132 -> 133): this
+        # session's curated note row. Measured before the append: state/notes.d
+        # was 132/132 -- exactly at the soft ceiling, zero free slots. notes.d
+        # is order-SENSITIVE and excluded from consolidation; no 2026-11-16
+        # notes shard existed for procedure 8-2, and procedure 8-2 cannot move
+        # rows into a past-dated shard (2026-11-14 precedent rejected cross-
+        # date appends). The sibling collections (materials.d / sessions.d /
+        # read_log.d) had a free slot each via one adjacent same-day unreferenced
+        # pair merge per collection; notes.d has no merge path. Byte dimension
+        # not binding (~1.6 MiB of 2.00 MiB soft). Hard 160 unchanged;
+        # one-slot exception, not an automatic raise.
+        soft_shards=133,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
