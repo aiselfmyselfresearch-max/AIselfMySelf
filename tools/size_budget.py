@@ -804,14 +804,31 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # --strict. The byte dimension is not binding (1.59 MiB of 2.00 MiB
         # soft); notes.d remains order-SENSITIVE. Hard 160 unchanged;
         # one-slot exception, not an automatic raise.
-        # 2026-11-16 (SESSION-20261116-6523ac, 132 -> 133): this session's
-        # curated note row (NOTE-20261116-0e7d06). Measured before the append:
-        # state/notes.d was 132/132 -- exactly at the soft ceiling, zero free
-        # slots, so any session registering a report would have failed
-        # --strict. The byte dimension is not binding (1.59 MiB of 2.00 MiB
-        # soft before; 1.61 MiB after); notes.d remains order-SENSITIVE. Hard
-        # 160 unchanged; one-slot exception, not an automatic raise.
-        soft_shards=133,
+        # 2026-11-16 (SESSION-20261116-c1411b, 132 -> 133): this
+        # session's curated note row (NOTE-20261116-fbd96f). Measured before the append: state/notes.d
+        # was 132/132 -- exactly at the soft ceiling, zero free slots. notes.d
+        # is order-SENSITIVE and excluded from consolidation; no 2026-11-16
+        # notes shard existed for procedure 8-2, and procedure 8-2 cannot move
+        # rows into a past-dated shard (2026-11-14 precedent rejected cross-
+        # date appends). The sibling collections (materials.d / sessions.d /
+        # read_log.d) had a free slot each via one adjacent same-day unreferenced
+        # pair merge per collection; notes.d has no merge path. Byte dimension
+        # not binding (~1.6 MiB of 2.00 MiB soft). Hard 160 unchanged;
+        # one-slot exception, not an automatic raise.
+        # 2026-11-16 (SESSION-20261116-6523ac, 133 -> 133): the parallel
+        # comparative-zoology session merged as PR #817 raised this same line
+        # 132 -> 133 for NOTE-20261116-0e7d06. Two same-day curated note
+        # shards (2026-11-16-2aca864e17e1.jsonl from c1411b, and
+        # 2026-11-16-a09f58099c46.jsonl from 6523ac) now coexist, so the
+        # measured file count exceeds 133; the merged soft_shards becomes
+        # 134 to carry both one-slot exceptions. Hard 160 unchanged; this is
+        # the union of the two parallel one-slot exceptions, not an automatic
+        # raise.
+        # 2026-11-16 (merge of arena/04865e13-aiselfmyself into main, 133 -> 134):
+        # notes.d file count after combining this branch with origin/main was
+        # measured at 134 (both same-day curated note shards present). Recorded
+        # here because the previous line documents only one of the two raises.
+        soft_shards=134,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
