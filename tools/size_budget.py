@@ -168,7 +168,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (human-authorized preventive rescaling for monitoring window):
         # soft_bytes 10 -> 12 MiB (measured 9.26 MiB) and soft_shards 102 -> 120
         # (measured 80 after PR #703 forward-shard consolidation); hard 20 MiB / 160 unchanged.
-        soft_bytes=12 * MIB,
+        # 2026-11-16 (SESSION-20261116-7499cc, post-merge): soft_bytes 12 -> 13 MiB.
+        # Measured on the merged union (origin/main 4bb6b6ed + this session's 10-row
+        # shard 2026-11-16-5feb89fd33cb.jsonl): 12,598,114 B = 12.014 MiB. The 12 MiB
+        # soft was already at 12,555,607 B (27,305 B headroom) on origin/main before
+        # this session's rows — same-day parallel 10-source waves (PR #826 / #828 /
+        # #829) consumed the remaining headroom, so any 10-source acquisition round
+        # (40-70 KB) structurally crosses it. Scoped, not an automatic raise; hard
+        # 20 MiB unchanged. See readings/2026-11-16-ten-comparative-zoology-scaffolds-
+        # and-reinstatement.md (台帳保守) and NOTE-20261116-24075a supersession.
+        soft_bytes=13 * MIB,
         hard_bytes=20 * MIB,
         # 2026-11-08: retain one additional soft slot (81) for this requested
         # five-source acquisition. Keep the per-session shard separate rather

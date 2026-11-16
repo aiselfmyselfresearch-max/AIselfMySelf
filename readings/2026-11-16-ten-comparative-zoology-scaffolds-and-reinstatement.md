@@ -188,6 +188,10 @@
 - notes.d の統合先：`2026-11-02-000000000000.jsonl`（最古12本を連結、そのうち2番目〜12番目の11ファイルを削除）。
 - 凍結ベース `state/materials.jsonl`・`state/notes.jsonl` は変更なし。連結はファイル名順・行順のままバイト無改変であり、`base + 全シャード` の連結バイト列の SHA-256 が統合前後で完全一致することを確認した（台帳の内容変更なし）。`append_only_check.py` は origin/main の全 ledger 行の逐次バイト存在を検証し、本統合はその整合を維持する。
 
+**マージ時の発見1（重複の来歴）**：origin/main を取り込むと、並走セッション（PR #828、SESSION-20261116-de0488 系）が本日既に **Allee（1931）『Animal Aggregations』** を MAT-20261116-1c319c として収蔵していたことが分かった（本セッションの MAT-20261116-385373 と同一著作）。双方の重複走査は同じ base（3ab535f8 時点の4,663行）に対して行われたもので、並走の衝突は走査では防げない。台帳の追記専用の制約上、どちらの行も削除できないため、両レコードは併存し、**記録の重複（レコード2件・著作1件）** として残す。両レコードの焦点は異なる（本レコード：undercrowding／帰属位置への接続、MAT-20261116-385373 の source_note 参照。並走レコード：「社会」の下限の語的判定）ため、情報利得の重複は部分的である。レコードレベルの統合（重複レコードの統合は Consolidator ロールの中核業務）は将来の保守セッションへ引き継ぐ。本報告の §2.4 の読み（アリー）は MAT-20261116-385373 の一節に基づき、並走レコードの内容に依存していない。
+
+**マージ時の発見2（バイト予算）**：マージ後の和集合で `state/materials.d/` の総バイトは 12,598,114 B（12.014 MiB）となり、soft 12 MiB（12,582,912 B）を 15,202 B 超過した。検算すると、origin/main（4bb6b6ed）はマージ前から 12,555,607 B（headroom 27,305 B）であり、本日並走した 10 件バッチ各波（PR #826／#828／#829、計20件）が余剰を消費していた——**10 件収蔵（約40–70 KB）は構造的に soft を超える**。行削除・改変は追記専用制約で不可であり、シャード統合もバイト総量は減らさないため、本マージでは `tools/size_budget.py` の materials.d `soft_bytes` を 12 → 13 MiB へ、同ファイルの soft_shards 増幅と同一形式で記録されたスコープ例外として引き上げた（hard 20 MiB 不変・「not an automatic raise」）。来歴はコード内コメント、本節、および NOTE 行の claims に記録する。
+
 ## 6. リンク（GitHub）
 
 - 本報告：[readings/2026-11-16-ten-comparative-zoology-scaffolds-and-reinstatement.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-16-ten-comparative-zoology-scaffolds-and-reinstatement.md)
