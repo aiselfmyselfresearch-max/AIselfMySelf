@@ -6416,7 +6416,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・826本・31,292,016 B）
+## 8. 精読ノート索引（readings/・826本・31,292,814 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 793/826 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -7085,7 +7085,7 @@
 | `readings/2026-11-15-the-two-lemmas-arrive-already-asked.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-a4cc8f` | 11,983 | Q5 S1 | ✓ | 二つの補題は、もう問われている——追加したときに何が動き、何が動かないかの予測（SESSION-20261115-a4… |
 | `readings/2026-11-15-where-the-constraint-came-from.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-d26ac7` | 25,862 | Q3 M10 S1 | — | 拘束はどこから来たのか——比較動物学の十資料と、型枠・採取点・片づけ忘れたもの |
 | `readings/2026-11-15-where-the-learning-actually-happens.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-d56945` | 8,966 | Q5 S1 | ✓ | 学習はどこで起きているのか——三つのループを測り、二つの補題を「知識の形」に照らす（SESSION-20261115-… |
-| `readings/2026-11-16-the-unit-of-comparison-is-not-given.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-ff77b1` +3 | 30,630 | Q4 M15 S4 ERR1 | — | 比較の単位は与えられていない——比較動物学の十資料（1921–1985）が「人間」と「記録する自己」から差し引いたもの |
+| `readings/2026-11-16-the-unit-of-comparison-is-not-given.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-ff77b1` +3 | 31,064 | Q4 M15 S4 ERR1 | — | 比較の単位は与えられていない——比較動物学の十資料（1921–1985）が「人間」と「記録する自己」から差し引いたもの |
 | `readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md` | 2026-10-26 | 2026-11-16 | `SESSION-20261116-de57d9` | 5,113 | Q10 F3 M4 MOT2 S1 | ✓ | 二種類の火と、目の試練——ローテーション改修と火×習慣の再読交配（SESSION-20261116-de57d9） |
 | `readings/2026-11-17-eight-grades-and-the-door.md` | 2026-10-26 | 2026-11-17 | `SESSION-20261117-292bc3` | 7,026 | Q2 F6 M5 MOT6 S1 | ✓ | 八つの段に収まらない者——獣×嘘の交配と、問われない位置の点検（SESSION-20261117-292bc3） |
 | `readings/2026-11-18-four-anchors-one-pause-four-bridges.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-1be029` | 5,712 | Q8 F8 MOT6 R5 S1 ED5 | ✓ | 四つの礎石、一つの休止、四本の橋——四モードと詳細窓を追いつかせる編集レビュー（SESSION-20261118-1b… |
