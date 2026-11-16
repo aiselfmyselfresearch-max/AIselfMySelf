@@ -965,6 +965,7 @@ def _belief_briefing_lines(
     seed_label: str,
     errata: dict[str, dict[str, Any]],
     root: Path = ROOT,
+    pair_policy: str = "eig",
 ) -> tuple[list[str], dict[str, str] | None]:
     """Build §0.2 Posterior Belief Briefing & 3-role assignment when hypotheses exist."""
     if not data.get("hypotheses"):
@@ -974,6 +975,18 @@ def _belief_briefing_lines(
     bstate_input = dict(data)
     bstate_input.setdefault("errata", errata)
     bstate = belief_state.compute_belief_state(data=bstate_input, root=root)
+    # 2026-11-16 (P-4): the default offer is the highest-EIG pair, which
+    # structurally prefers pairs that contain the leader -- and those are the
+    # pairs the archive has separated most often. `--pair-policy least_separated`
+    # offers the pair that has been separated fewest times instead, restricted to
+    # hypotheses with real mass. The default is unchanged, so the packet is
+    # byte-identical unless the policy is asked for explicitly.
+    if pair_policy == "least_separated":
+        alt_pair = belief_state.select_least_separated_pair(
+            bstate, bstate_input.get("evaluations") or {}, target_qid
+        )
+        if alt_pair:
+            bstate["questions"][target_qid]["top_competing_pair"] = alt_pair
     qstate = bstate["questions"].get(target_qid)
     role_info = belief_state.assign_session_role(seed=seed_label, question_summary=qstate)
 
@@ -988,6 +1001,20 @@ def _belief_briefing_lines(
         if not cqs or not cqs["hypotheses"]:
             continue
         pair = cqs.get("top_competing_pair")
+        if pair and pair.get("policy") == "least_separated":
+            pair_detail = (
+                f"未分離優先: 分離{pair.get('separations', 0)}回, "
+                f"P={pair.get('left_posterior', 0.0)*100:.1f}%/{pair.get('right_posterior', 0.0)*100:.1f}%"
+            )
+            if "pair_mass_sum" in pair:
+                pair_detail += f", 合算={pair['pair_mass_sum']*100:.1f}%"
+            pair_txt = f"`{pair['left_hypothesis_id']}` vs `{pair['right_hypothesis_id']}` ({pair_detail})"
+            out.append(
+                f"  - `{cqid}`: 有効仮説 {cqs['active_count']}/{cqs['hypothesis_count']} 件 ｜ "
+                f"条件付き世代質量 **{cqs['gen1_plus_mass']*100:.1f}%** ｜ D_KL={cqs['kl_from_uniform_bits']:.3f}b ｜ "
+                f"首位 `{cqs['hypotheses'][0]['hypothesis_id']}` ({cqs['hypotheses'][0]['posterior']*100:.1f}%) ｜ 最優先検証: {pair_txt}"
+            )
+            continue
         if pair:
             pair_detail = f"EIG={pair['expected_info_gain']:.4f}"
             if "pair_mass_sum" in pair:
@@ -1212,6 +1239,7 @@ def build_context_packet(
     material_budget: int = MATERIAL_SECTION_BUDGET,
     note_view: dict[str, dict[str, Any]] | None = None,
     inheritance_window: int = INHERITANCE_WINDOW_DEFAULT,
+    pair_policy: str = "eig",
 ) -> str:
     if errata is None:
         errata = load_errata(root)
@@ -1238,7 +1266,8 @@ def build_context_packet(
 
     q = questions[target_qid]
     briefing_lines, role_info = _belief_briefing_lines(
-        data, target_qid, seed_label=seed_label, errata=errata, root=root
+        data, target_qid, seed_label=seed_label, errata=errata, root=root,
+        pair_policy=pair_policy,
     )
 
     # Gather related fragments (referencing target_qid or its parent questions),
@@ -2044,6 +2073,18 @@ def main() -> int:
         help="Explicit branch name or hex seed for candidate dispersion (default: current git branch)",
     )
     parser.add_argument(
+        "--pair-policy",
+        choices=("eig", "least_separated"),
+        default="eig",
+        help=(
+            "Which pair the packet offers as the next test. 'eig' (default) is the existing "
+            "rule: p_a*p_b*(u_a+u_b), which prefers pairs carrying mass on both sides and so "
+            "structurally prefers pairs containing the leader. 'least_separated' offers the "
+            "pair the archive has separated fewest times among hypotheses with P>=1%%, i.e. the "
+            "pairs the archive has never put against each other. Default output is unchanged."
+        ),
+    )
+    parser.add_argument(
         "--material-budget",
         type=int,
         default=MATERIAL_SECTION_BUDGET,
@@ -2124,6 +2165,7 @@ def main() -> int:
                     seed=args.seed,
                     material_budget=args.material_budget,
                     inheritance_window=args.inheritance_window,
+                    pair_policy=args.pair_policy,
                 )
             )
         except ValueError as exc:

@@ -496,8 +496,23 @@ def compute_belief_state(
     data: dict[str, dict[str, dict[str, Any]]] | None = None,
     *,
     root: Path = ROOT,
+    pair_level_repeat: bool = False,
 ) -> dict[str, Any]:
-    """Compute posterior distributions, uncertainties, lineage shifts, and next-test targets."""
+    """Compute posterior distributions, uncertainties, lineage shifts, and next-test targets.
+
+    ``pair_level_repeat`` selects the *basis* for the repetition discount:
+
+    - ``False`` (default, historical): ``repeat_key = (target, verdict, session)``.
+      Repeating the same target/verdict from another session pays full weight.
+    - ``True``: ``repeat_key = (target, verdict, comparison set)``. The pair, not
+      the session, is the unit, so ten sessions separating the same pair in the
+      same direction pay ``1/sqrt(10)`` in total.
+
+    The default is unchanged so that every historical posterior stays
+    reproducible. ``BELIEF_MAP.md`` shows both bases side by side
+    (``P`` and ``P_sep``); the gap between them is the repetition effect
+    measured in ``readings/2026-11-16-stable-words-do-not-make-progress.md`` §3.
+    """
     cols = data if data is not None else load_belief_ledgers(root)
     questions = cols.get("questions", {})
     hypotheses = cols.get("hypotheses", {})
@@ -537,6 +552,25 @@ def compute_belief_state(
     errata_by_target = build_errata_index(errata)
     depths = _generation_depths(hypotheses)
 
+    # 2026-11-16 (P-6): a correction can name an evaluation row as its subject.
+    # Until now such a correction only raised a flag on the hypothesis, so
+    # correcting one's own over-claim punished the hypothesis the row supported
+    # (readings/2026-11-16-one-row-outweighs-ten-sources.md §3-4). A record that
+    # says ``weight_effect: "void_row"`` withdraws that row's weight instead.
+    # No historical record carries the field, so no historical posterior moves.
+    voided_evaluation_ids: set[str] = set()
+    for erec in errata.values():
+        if erec.get("weight_effect") != "void_row":
+            continue
+        if erec.get("subject_type") != "evaluation":
+            continue
+        if not errata_is_live_correction(erec):
+            continue
+        subject = erec.get("subject_id")
+        if isinstance(subject, str) and subject:
+            voided_evaluation_ids.add(subject)
+    voided_evaluations: list[dict[str, str]] = []
+
     children_by_parent: dict[str, list[str]] = defaultdict(list)
     q_to_hyps: dict[str, list[str]] = defaultdict(list)
     for hid, hyp in sorted(hypotheses.items()):
@@ -564,6 +598,11 @@ def compute_belief_state(
     adversarial_touches: Counter[str] = Counter()
     repeat_tracker: Counter[tuple[str, str, str]] = Counter()
     indep_sources: dict[str, set[str]] = defaultdict(set)
+    separation_partners: dict[str, set[str]] = defaultdict(set)
+    separation_first_seen: dict[tuple[str, tuple[str, ...]], str] = {}
+    last_new_separation: dict[str, str] = {}
+    novelty_total = 0
+    novelty_new = 0
 
     for evl_id, evl in sorted(evaluations.items()):
         target_id = evl.get("target_hypothesis_id")
@@ -573,10 +612,25 @@ def compute_belief_state(
         ev_type = str(evl.get("evidence_type") or "cross_session_audit")
         base_w = EVIDENCE_WEIGHTS.get(ev_type, 1.0)
 
+        if evl_id in voided_evaluation_ids:
+            # The row stays visible in counts and flags; only its weight is
+            # withdrawn. It must not discount (or be discounted by) sibling rows.
+            evals_by_hyp[target_id].append(evl)
+            voided_evaluations.append(
+                {"evaluation_id": evl_id, "target_hypothesis_id": target_id}
+            )
+            continue
+
         sid = str(evl.get("session_id") or "")
         mat_sig = ",".join(sorted(evl.get("material_ids") or []))
         source_key = mat_sig or ",".join(sorted(evl.get("note_ids") or [])) or evl_id
-        repeat_key = (target_id, verdict, sid or source_key)
+        compared_key = ",".join(
+            sorted(c for c in (evl.get("compared_against_hypothesis_ids") or []) if isinstance(c, str))
+        )
+        if pair_level_repeat:
+            repeat_key = (target_id, verdict, compared_key or sid or source_key)
+        else:
+            repeat_key = (target_id, verdict, sid or source_key)
         repeat_tracker[repeat_key] += 1
         k_rep = repeat_tracker[repeat_key]
         indep_discount = 1.0 / math.sqrt(k_rep)
@@ -597,8 +651,35 @@ def compute_belief_state(
             shid for shid in (evl.get("spawned_hypothesis_ids") or [])
             if isinstance(shid, str) and shid in hypotheses and shid != target_id
         ]
+        # 2026-11-16 (P-5): ``spawned_hypothesis_ids`` means "hypotheses this row
+        # created". Narrowing a child so that its *parent* inherits the remaining
+        # scope is a different operation, and naming the parent in ``spawned``
+        # made a field whose name says "created" pay the parent 0.75*delta
+        # (readings/2026-11-16-the-two-rows-that-funded-the-leader.md §5: one
+        # such naming was worth 22.12 pp of the Q-003 leader). The new field
+        # names the operation; the union keeps existing rows working.
+        for shid in evl.get("scope_inherited_by_hypothesis_ids") or []:
+            if isinstance(shid, str) and shid in hypotheses and shid != target_id and shid not in spawned:
+                spawned.append(shid)
         if not spawned:
             spawned = children_by_parent.get(target_id, [])
+
+        # Separation bookkeeping for the audit columns (never changes weights).
+        if target_id not in separation_partners:
+            separation_partners[target_id] = set()
+        for cid in compared:
+            separation_partners[target_id].add(cid)
+            separation_partners.setdefault(cid, set()).add(target_id)
+        sig = (target_id, tuple(sorted(compared)))
+        day = str(evl.get("created_at") or "")[:10]
+        novelty_total += 1
+        if sig not in separation_first_seen:
+            separation_first_seen[sig] = day
+            novelty_new += 1
+        for hid_in_pair in (target_id, *compared):
+            prior_day = last_new_separation.get(hid_in_pair, "")
+            if day > prior_day:
+                last_new_separation[hid_in_pair] = day
 
         if verdict == "supports":
             log_odds[target_id] += delta
@@ -810,6 +891,12 @@ def compute_belief_state(
                 "psc_zero_verified_count": psc_classes["zero_verified"],
                 "witness_eval_session_count": len(eval_sessions),
                 "witness_read_session_count": len(read_sessions),
+                # 2026-11-16 (P-7): how many distinct rivals this hypothesis has
+                # actually been separated against, and when a separation
+                # involving it was last *new*. The witness count above counts
+                # sessions that evaluated it; these count the pairs it has met.
+                "independent_separation_count": len(separation_partners.get(hid, set())),
+                "last_new_separation_date": last_new_separation.get(hid, ""),
                 "same_session_eval_count": same_sess_count,
                 "cross_session_eval_count": cross_sess_count,
                 "low_witness_high_mass": low_witness_high_mass,
@@ -903,9 +990,131 @@ def compute_belief_state(
         "core_priority_ranking": [q["question_id"] for q in ranked_core],
         "provenance_verification": provenance_verification,
         "questions": question_states,
+        # 2026-11-16 (P-7): the archive's own novelty rate, so that a stable
+        # posterior cannot be mistaken for a busy one. A row is "new" when its
+        # (target, comparison set) signature has not appeared before.
+        "separation_novelty": {
+            "rows": novelty_total,
+            "new_pairs": novelty_new,
+            "share": round(novelty_new / novelty_total, 4) if novelty_total else 0.0,
+        },
+        # 2026-11-16 (P-6): rows whose weight a live correction withdrew.
+        "voided_evaluations": voided_evaluations,
+        "posterior_basis": "pair" if pair_level_repeat else "session",
     }
     state["saturation"] = saturation_snapshot(state)
+
+    if not pair_level_repeat:
+        # P-3: the same ledger under a pair-level repetition discount. Reported
+        # beside P, never substituted for it, so that every historical number
+        # stays reproducible and the difference is itself the measurement.
+        alt = compute_belief_state(
+            data=cols, root=Path(root), pair_level_repeat=True
+        )
+        for qid, qs in state["questions"].items():
+            alt_q = (alt.get("questions") or {}).get(qid) or {}
+            alt_p = {
+                h["hypothesis_id"]: h["posterior"] for h in alt_q.get("hypotheses") or []
+            }
+            for h in qs.get("hypotheses") or []:
+                alt_value = alt_p.get(h["hypothesis_id"])
+                if alt_value is None:
+                    continue
+                h["pair_basis_posterior"] = round(alt_value, 4)
+                h["pair_basis_delta_pp"] = round((alt_value - h["posterior"]) * 100, 2)
+        state["pair_basis_summary"] = {
+            "total_evaluations": alt.get("total_evaluations"),
+            "separation_novelty": alt.get("separation_novelty"),
+        }
     return state
+
+
+def separation_counts(
+    evaluations: dict[str, dict[str, Any]],
+) -> tuple[Counter, dict[tuple[str, str], str]]:
+    """Rows that separated each unordered hypothesis pair, and when last.
+
+    A "separation" is any row that names both sides -- ``target`` and one member
+    of ``compared_against_hypothesis_ids``. It does not have to be adversarial:
+    a ``supports`` row that names a rival still puts the two against each other.
+    """
+    counts: Counter = Counter()
+    last: dict[tuple[str, str], str] = {}
+    for evl in evaluations.values():
+        target = evl.get("target_hypothesis_id")
+        if not isinstance(target, str) or not target:
+            continue
+        for other in evl.get("compared_against_hypothesis_ids") or []:
+            if not isinstance(other, str) or not other or other == target:
+                continue
+            key = tuple(sorted((target, other)))
+            counts[key] += 1
+            day = str(evl.get("created_at") or "")[:10]
+            if day > last.get(key, ""):
+                last[key] = day
+    return counts, last
+
+
+def select_least_separated_pair(
+    state: dict[str, Any],
+    evaluations: dict[str, dict[str, Any]],
+    question_id: str,
+    *,
+    min_posterior: float = 0.01,
+) -> dict[str, Any] | None:
+    """The eligible pair the question has separated fewest times.
+
+    The EIG rule prefers pairs that carry mass on both sides, which structurally
+    prefers pairs containing the leader -- and those are usually the pairs the
+    archive has separated most often. This selector inverts the criterion: it
+    offers the pair that has been tested least, restricted to hypotheses with at
+    least ``min_posterior`` so that an already-eliminated hypothesis (0.0%) does
+    not win by being untouched.
+
+    Returns ``None`` when fewer than two hypotheses qualify. The returned dict
+    carries the same keys as ``top_competing_pair`` plus ``policy``,
+    ``separations`` and ``last_separated``.
+    """
+    qstate = (state.get("questions") or {}).get(question_id) or {}
+    entries = [h for h in (qstate.get("hypotheses") or []) if h.get("effective_status") == "active"]
+    eligible = [h for h in entries if float(h.get("posterior") or 0.0) >= min_posterior]
+    if len(eligible) < 2:
+        return None
+    counts, last = separation_counts(evaluations)
+    best: tuple[int, float, str, str, dict[str, Any], dict[str, Any]] | None = None
+    for i in range(len(eligible)):
+        for j in range(i + 1, len(eligible)):
+            ha, hb = eligible[i], eligible[j]
+            key = tuple(sorted((ha["hypothesis_id"], hb["hypothesis_id"])))
+            separations = counts.get(key, 0)
+            mass = min(float(ha.get("posterior") or 0.0), float(hb.get("posterior") or 0.0))
+            rank = (separations, -mass, key[0], key[1])
+            if best is None or rank < best[:4]:
+                best = (*rank, ha, hb)
+    if best is None:
+        return None
+    separations, _, _, _, ha, hb = best
+    key = tuple(sorted((ha["hypothesis_id"], hb["hypothesis_id"])))
+    ig = float(ha.get("posterior", 0.0)) * float(hb.get("posterior", 0.0)) * (
+        float(ha.get("uncertainty", 0.0)) + float(hb.get("uncertainty", 0.0))
+    )
+    return {
+        "left_hypothesis_id": ha["hypothesis_id"],
+        "left_title": ha.get("title", ""),
+        "right_hypothesis_id": hb["hypothesis_id"],
+        "right_title": hb.get("title", ""),
+        "left_posterior": round(float(ha.get("posterior", 0.0)), 4),
+        "right_posterior": round(float(hb.get("posterior", 0.0)), 4),
+        "left_uncertainty": round(float(ha.get("uncertainty", 0.0)), 4),
+        "right_uncertainty": round(float(hb.get("uncertainty", 0.0)), 4),
+        "expected_info_gain": round(ig, 4),
+        "lineage_relation": pair_lineage_relation(ha, hb),
+        "pair_mass_sum": pair_mass_sum(ha, hb),
+        "separations": separations,
+        "last_separated": last.get(key, ""),
+        "policy": "least_separated",
+        "min_posterior": min_posterior,
+    }
 
 
 def select_auto_question_id(
@@ -1019,6 +1228,8 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
         "> 対の候補は両側が直接評価済みのもののみ。該当がなければ推薦なし（飽和とは別）。未評価の有効仮説がある場合は別途明示する。",
         "> 照合済列: `全verified素材評価(+再現スクリプト評価S)/全直接評価` と `primary_source_collision` 全照合率（`verification.status` の可視化であり、過去評価の事後確率式は変更しない）。",
         "> 証人列: `EVL_sess / RL_sess`（直接評価の独立セッション数 / 機械的バックフィルを除く手書き `read_log` 読了セッション数）。`P≥5%` かつ `EVL_sess≤1` に単一証人警告を付す。",
+        "> 対単位割引列 (`P_sep`): 反復割引の単位をセッションから比較集合へ替えた場合の事後確率。`P` は現行（セッション単位）の値で、履歴の再現性のため既定は変えない。**両者の差が「同じ対を同じ向きに繰り返したこと」の寄与**である（`readings/2026-11-16-stable-words-do-not-make-progress.md` §3）。",
+        "> 独立分離列: その仮説が実際に突き合わされた相手の数と、その仮説が関与する分離が最後に「新規」だった日。証人列が「何セッションが評価したか」を数えるのに対し、こちらは「何と突き合わせたか」を数える。",
         "",
         "## 概要指標",
         "",
@@ -1026,6 +1237,19 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
         f"- 評価イベント総数 (`EVL-*`): **{state['total_evaluations']}**",
         f"- 次回探求の情報利得優先順位: **{' → '.join(state['core_priority_ranking'])}**",
     ]
+    nov = state.get("separation_novelty") or {}
+    if nov.get("rows"):
+        lines.append(
+            f"- 分離の新規性: {nov['rows']} 行中 **{nov['new_pairs']} 行 ({nov['share'] * 100:.1f}%)** が新しい (target, 比較集合) 対。"
+            "残りは既出の対の再分離であり、`P_sep` では `1/sqrt(m_pair)` でしか増えない。"
+        )
+    voided = state.get("voided_evaluations") or []
+    if voided:
+        lines.append(
+            f"- 訂正により重みを撤回された評価行: **{len(voided)}** 件（"
+            + "、".join(f"`{v['evaluation_id']}`" for v in voided[:5])
+            + "）。行は残り、事後分布からだけ外れる。"
+        )
     prov = state.get("provenance_verification") or {}
     if prov.get("psc_total", 0) > 0:
         lines.append(
@@ -1126,8 +1350,8 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
         lines.append("")
 
         lines.extend([
-            "| 順位 | ID | 状態 | 世代/系譜 | 事後確率 P_t | 不確実性 u | 評価数 (反証系) | 照合済 (PSC全照合) | 証人 (EVL/読) | 仮説タイトル |",
-            "| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
+            "| 順位 | ID | 状態 | 世代/系譜 | 事後確率 P_t | P_sep (対単位割引) | 不確実性 u | 独立分離 (最終新規) | 評価数 (反証系) | 照合済 (PSC全照合) | 証人 (EVL/読) | 仮説タイトル |",
+            "| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
         ])
         for idx, h in enumerate(qs["hypotheses"], start=1):
             parents = ", ".join(f"`{p}`" for p in h["parent_hypothesis_ids"]) or "—"
@@ -1148,10 +1372,17 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
                     wit_cell += " ⚠️自己評価のみ"
             else:
                 wit_cell = "—"
+            if "pair_basis_posterior" in h:
+                sep_cell = f"{h['pair_basis_posterior'] * 100:.1f}% ({h.get('pair_basis_delta_pp', 0.0):+.1f}pp)"
+            else:
+                sep_cell = "—"
+            sep_audit = f"{h.get('independent_separation_count', 0)} ("
+            sep_audit += (h.get("last_new_separation_date") or "なし") + ")"
             lines.append(
                 f"| {idx} | `{h['hypothesis_id']}` | `{h['effective_status']}` | "
                 f"G{h['generation']}:{h['lineage_op']} ({parents}) | "
-                f"**{h['posterior'] * 100:.1f}%** | {h['uncertainty']:.3f} | "
+                f"**{h['posterior'] * 100:.1f}%** | {sep_cell} | {h['uncertainty']:.3f} | "
+                f"{sep_audit} | "
                 f"{h['direct_eval_count']} ({h['adversarial_eval_count']}) | "
                 f"{ver_cell} | {wit_cell} | {h['title']} |"
             )
@@ -1200,6 +1431,16 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
                     f"手書き読了={h.get('witness_read_session_count', 0)}"
                     f" ｜ 同一/異セッション評価={h.get('same_session_eval_count', 0)}/{h.get('cross_session_eval_count', 0)}"
                 )
+                sep_note = (
+                    f" ｜ 独立分離={h.get('independent_separation_count', 0)} 相手"
+                    f"（最終新規 {h.get('last_new_separation_date') or 'なし'}）"
+                )
+                if "pair_basis_posterior" in h:
+                    sep_note += (
+                        f" ｜ 対単位割引 basis: P_sep={h['pair_basis_posterior'] * 100:.1f}%"
+                        f"（{h.get('pair_basis_delta_pp', 0.0):+.1f}pp）"
+                    )
+                lines.append(f"  - **分離監査**: {sep_note.lstrip(' ｜ ')}")
             mats = ", ".join(f"`{m}`" for m in h["supporting_material_ids"][:5]) or "なし"
             cmats = ", ".join(f"`{m}`" for m in h["counter_material_ids"][:5]) or "なし"
             notes_s = ", ".join(f"`{n}`" for n in h["source_note_ids"][:5]) or "なし"
