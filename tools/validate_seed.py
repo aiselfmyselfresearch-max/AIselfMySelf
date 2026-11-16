@@ -515,6 +515,49 @@ def errata_schema_advisory(errata: dict[str, dict[str, Any]], root: Path = ROOT)
     )
 
 
+def psc_verification_advisory(
+    evaluations: dict[str, dict[str, Any]],
+    materials: dict[str, dict[str, Any]],
+) -> str | None:
+    """One advisory line: material verification backing of primary_source_collision rows.
+
+    Measured 2026-11-16 (readings/2026-11-16-what-crosses-the-unheld-interval.md §3):
+    206/313 (65.8%) of historical ``primary_source_collision`` rows cite zero
+    materials with ``verification.status == "verified"`` while receiving the
+    full 1.20 evidence weight. Because historical rows are append-only, this
+    mirror reports the ratio without failing the gate.
+    """
+    all_v = mixed_v = zero_v = no_mat = 0
+    for evl in evaluations.values():
+        if evl.get("evidence_type") != "primary_source_collision":
+            continue
+        mids = [m for m in (evl.get("material_ids") or []) if isinstance(m, str) and m]
+        if not mids:
+            no_mat += 1
+            continue
+        vc = sum(
+            1
+            for mid in mids
+            if ((materials.get(mid) or {}).get("verification") or {}).get("status") == "verified"
+        )
+        if vc == len(mids):
+            all_v += 1
+        elif vc > 0:
+            mixed_v += 1
+        else:
+            zero_v += 1
+    total = all_v + mixed_v + zero_v + no_mat
+    if not total:
+        return None
+    pct = (all_v / total) * 100.0
+    extra = f", {no_mat} with no material_ids" if no_mat else ""
+    return (
+        f"INFO: primary_source_collision verification (advisory, never a failure): "
+        f"{all_v}/{total} ({pct:.1f}%) all-verified, {mixed_v} mixed, {zero_v} zero-verified{extra}; "
+        f"see BELIEF_MAP.md for per-hypothesis verification backing"
+    )
+
+
 def check_refs(
     collection_name: str,
     records: dict[str, dict[str, Any]],
@@ -740,6 +783,7 @@ def main() -> int:
     check_refs("evaluations", evaluations, "fragment_ids", "fragment", fragments, errors)
     check_refs("evaluations", evaluations, "note_ids", "note", notes, errors)
     errata_advisory = errata_schema_advisory(errata_records)
+    psc_advisory = psc_verification_advisory(evaluations, materials)
     if errata_records:
         check_refs("evaluations", evaluations, "errata_ids", "errata", errata_records, errors)
         check_errata_addressee_labels(errata_records, errors)
@@ -884,12 +928,16 @@ def main() -> int:
             print("  - " + error)
         if errata_advisory:
             print(errata_advisory)
+        if psc_advisory:
+            print(psc_advisory)
         return 1
 
     counts = ", ".join(f"{name}={len(records)}" for name, records in collections.items())
     print(f"PASS: literary inquiry seed valid ({counts})")
     if errata_advisory:
         print(errata_advisory)
+    if psc_advisory:
+        print(psc_advisory)
     return 0
 
 

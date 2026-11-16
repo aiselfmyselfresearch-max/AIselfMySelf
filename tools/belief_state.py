@@ -104,6 +104,105 @@ def pair_examined_only_by_supports(ha: dict[str, Any], hb: dict[str, Any]) -> bo
             return False
     return True
 
+
+# Combined posterior mass threshold below which a top competing pair remains
+# unsaturated and vulnerable to the mutual-`supports` EIG ratchet even after
+# both sides have received adversarial verdicts.
+# Measured 2026-11-16 (readings/2026-11-16-what-crosses-the-unheld-interval.md §2.2):
+#   - `pair_examined_only_by_supports` fired on 0/221 live pairs;
+#   - yet mutual `supports` inflated EIG on unsaturated pairs:
+#     Q-003 (67.4% mass): +109.5% live in PR #830 (+50.6% counterfactual);
+#     Q-001 (86.7% mass): +17.0%;
+#   - and reversed only on saturated Q-002 (98.6% mass): -5.8%.
+UNSATURATED_PAIR_MASS_THRESHOLD = 0.90
+
+# Minimum posterior mass at which a single independent witnessing session
+# (`witness_eval_session_count <= 1`) is flagged as a single-witness illusion
+# (readings/2026-11-16-what-crosses-the-unheld-interval.md §5.2, §7-3).
+LOW_WITNESS_POSTERIOR_THRESHOLD = 0.05
+
+# Shared mechanical-backfill marker used by tools/witness_count.py so
+# hand-written read_log witnesses exclude mechanical context backfills.
+MECHANICAL_READ_LOG_MARK = "バックフィル"
+
+
+def pair_mass_sum(ha: dict[str, Any], hb: dict[str, Any]) -> float:
+    """Return the combined posterior mass of a candidate pair (rounded to 4 dp)."""
+    return round(float(ha.get("posterior", 0.0)) + float(hb.get("posterior", 0.0)), 4)
+
+
+def pair_has_unsaturated_supports_ratchet(
+    ha: dict[str, Any],
+    hb: dict[str, Any],
+    *,
+    threshold: float = UNSATURATED_PAIR_MASS_THRESHOLD,
+) -> bool:
+    """True when a pair's combined posterior mass leaves room for EIG inflation.
+
+    When ``p_a + p_b < threshold``, adding ``supports`` to both sides drains
+    mass from the remaining hypotheses and can inflate ``p_a * p_b * (u_a + u_b)``
+    even if both sides already have adversarial verdicts.
+    """
+    combined = round(float(ha.get("posterior", 0.0)) + float(hb.get("posterior", 0.0)), 6)
+    return combined < threshold
+
+
+def classify_evaluation_verification(
+    evl: dict[str, Any],
+    materials: dict[str, dict[str, Any]],
+) -> str:
+    """Classify an evaluation's material-verification backing (audit only).
+
+    Does not alter historical log-odds weights. Returns one of:
+    - ``script_verified``: reproducible_script with non-empty script_command
+    - ``all_verified``: cites >=1 material and every cited material has verification.status == "verified"
+    - ``mixed_verified``: cites >=2 materials, some verified and some not
+    - ``zero_verified``: cites >=1 material and none has verification.status == "verified"
+    - ``no_materials``: non-script evaluation citing no material_ids
+    """
+    if evl.get("evidence_type") == "reproducible_script" and (evl.get("script_command") or "").strip():
+        return "script_verified"
+    mids = [m for m in (evl.get("material_ids") or []) if isinstance(m, str) and m]
+    if not mids:
+        return "no_materials"
+    verified_count = sum(
+        1
+        for mid in mids
+        if ((materials.get(mid) or {}).get("verification") or {}).get("status") == "verified"
+    )
+    if verified_count == len(mids):
+        return "all_verified"
+    if verified_count > 0:
+        return "mixed_verified"
+    return "zero_verified"
+
+
+def hypothesis_read_witnesses(
+    read_log: dict[str, dict[str, Any]] | list[dict[str, Any]] | None,
+) -> dict[str, set[str]]:
+    """Return distinct sessions with a hand-written read_log entry per hypothesis.
+
+    Excludes rows whose note contains ``MECHANICAL_READ_LOG_MARK`` (mechanical
+    context backfills), matching ``tools/witness_count.py``.
+    """
+    out: dict[str, set[str]] = defaultdict(set)
+    if not read_log:
+        return out
+    rows = read_log.values() if isinstance(read_log, dict) else read_log
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        target = row.get("target")
+        if not isinstance(target, dict) or target.get("type") != "hypothesis":
+            continue
+        if MECHANICAL_READ_LOG_MARK in (row.get("note") or ""):
+            continue
+        hid = target.get("id")
+        sid = row.get("session_id")
+        if isinstance(hid, str) and hid and isinstance(sid, str) and sid:
+            out[hid].add(sid)
+    return out
+
 # A core question whose best competing pair carries less than this much expected
 # information gain has nothing left for the selector to pick: the posterior is
 # concentrated enough that another reading would not move it.
@@ -129,7 +228,7 @@ ROLE_LABELS_JA: dict[str, str] = {
 
 
 def load_belief_ledgers(root: Path = ROOT) -> dict[str, dict[str, dict[str, Any]]]:
-    """Load questions, hypotheses, evaluations, notes, materials, fragments, sessions, errata."""
+    """Load questions, hypotheses, evaluations, notes, materials, fragments, sessions, errata, and hypothesis read_log."""
     root = Path(root)
     specs = {
         "questions": (root / "state" / "questions.jsonl", "question_id"),
@@ -152,6 +251,25 @@ def load_belief_ledgers(root: Path = ROOT) -> dict[str, dict[str, dict[str, Any]
         raise ValueError("ledger errors:\n  - " + "\n  - ".join(errors[:10]))
     for name in optional:
         cols.setdefault(name, {})
+
+    # Keep only hypothesis-targeted read_log rows so deepcopy callers (e.g.
+    # boundary_channel_probe, lineage_credit_accounting) stay fast while
+    # compute_belief_state still gets exact hand-written hypothesis witnesses.
+    read_log_base = root / "state" / "read_log.jsonl"
+    if read_log_base.exists() or ledger_io.shard_dir(read_log_base).is_dir():
+        rl_cols, rl_errors = ledger_io.load_collections(
+            {"read_log": (read_log_base, "read_id")}, root=root
+        )
+        if rl_errors:
+            raise ValueError("ledger errors:\n  - " + "\n  - ".join(rl_errors[:10]))
+        cols["hypothesis_read_log"] = {
+            rid: rec
+            for rid, rec in rl_cols.get("read_log", {}).items()
+            if isinstance(rec.get("target"), dict)
+            and rec["target"].get("type") == "hypothesis"
+        }
+    else:
+        cols["hypothesis_read_log"] = {}
     return cols
 
 
@@ -384,6 +502,11 @@ def compute_belief_state(
     questions = cols.get("questions", {})
     hypotheses = cols.get("hypotheses", {})
     evaluations = cols.get("evaluations", {})
+    materials = cols.get("materials") or {}
+    read_log_source = (
+        cols["read_log"] if "read_log" in cols else cols.get("hypothesis_read_log", {})
+    )
+    read_witnesses_by_hyp = hypothesis_read_witnesses(read_log_source)
     errata = cols.get("errata")
     if errata is None:
         errata_base = Path(root) / "state" / "errata.jsonl"
@@ -392,6 +515,24 @@ def compute_belief_state(
             errata = sub_cols.get("errata", {})
         else:
             errata = {}
+
+    psc_global_counts: Counter[str] = Counter()
+    for evl in evaluations.values():
+        if evl.get("evidence_type") == "primary_source_collision":
+            psc_global_counts[classify_evaluation_verification(evl, materials)] += 1
+    psc_global_total = sum(psc_global_counts.values())
+    provenance_verification = {
+        "psc_total": psc_global_total,
+        "psc_all_verified": psc_global_counts["all_verified"],
+        "psc_mixed_verified": psc_global_counts["mixed_verified"],
+        "psc_zero_verified": psc_global_counts["zero_verified"],
+        "psc_no_materials": psc_global_counts["no_materials"],
+        "psc_all_verified_ratio": (
+            round(psc_global_counts["all_verified"] / psc_global_total, 4)
+            if psc_global_total
+            else 0.0
+        ),
+    }
 
     errata_by_target = build_errata_index(errata)
     depths = _generation_depths(hypotheses)
@@ -553,6 +694,7 @@ def compute_belief_state(
                 # assignment changes.
                 "priority_score": HYPOTHESIS_LESS_CORE_PRIORITY,
                 "top_competing_pair": None,
+                "unexamined_active_hypothesis_ids": [],
                 "hypotheses": [],
             }
             continue
@@ -589,6 +731,54 @@ def compute_belief_state(
             raw_u = (1.0 / math.sqrt(1.0 + n_indep + COMPARISON_TOUCH_WEIGHT * math.log2(1 + compared_touches[hid]))) * (1.25 if adv_count == 0 else 1.0)
             uncertainty = round(min(1.0, max(0.05, raw_u)), 4)
 
+            # Audit metrics (do not alter historical posterior arithmetic):
+            # - material verification backing (NOTE-20261116-7d62c1 §3, §7-2)
+            # - independent witnessing sessions & hand-written read_log (§5.2, §7-3)
+            # - same-session vs cross-session evaluation split (§4)
+            ver_classes = Counter(
+                classify_evaluation_verification(e, materials) for e in direct_evals
+            )
+            verified_mat_count = ver_classes["all_verified"]
+            script_eval_count = ver_classes["script_verified"]
+            verified_direct_count = verified_mat_count + script_eval_count
+            psc_evals = [
+                e for e in direct_evals if e.get("evidence_type") == "primary_source_collision"
+            ]
+            psc_classes = Counter(
+                classify_evaluation_verification(e, materials) for e in psc_evals
+            )
+            eval_sessions = {
+                e["session_id"]
+                for e in direct_evals
+                if isinstance(e.get("session_id"), str) and e["session_id"]
+            }
+            read_sessions = read_witnesses_by_hyp.get(hid, set())
+            hyp_session = hyp.get("session_id")
+            same_sess_count = sum(
+                1
+                for e in direct_evals
+                if isinstance(hyp_session, str)
+                and hyp_session
+                and e.get("session_id") == hyp_session
+            )
+            cross_sess_count = sum(
+                1
+                for e in direct_evals
+                if isinstance(hyp_session, str)
+                and hyp_session
+                and isinstance(e.get("session_id"), str)
+                and e.get("session_id")
+                and e.get("session_id") != hyp_session
+            )
+            rounded_posterior = round(posteriors[hid], 4)
+            low_witness_high_mass = bool(
+                rounded_posterior >= LOW_WITNESS_POSTERIOR_THRESHOLD
+                and len(eval_sessions) <= 1
+            )
+            self_evaluated_only = bool(
+                len(direct_evals) > 0 and same_sess_count > 0 and cross_sess_count == 0
+            )
+
             hyp_entries.append({
                 "hypothesis_id": hid,
                 "title": hyp.get("title", ""),
@@ -603,7 +793,7 @@ def compute_belief_state(
                 "effective_status": eff_status,
                 "log_odds": round(log_odds[hid], 4),
                 "prior": round(uniform_p, 4),
-                "posterior": round(posteriors[hid], 4),
+                "posterior": rounded_posterior,
                 "uncertainty": uncertainty,
                 "direct_eval_count": len(direct_evals),
                 "adversarial_eval_count": adv_count,
@@ -611,6 +801,19 @@ def compute_belief_state(
                 # direct evaluation and not evidence for the posterior.
                 "compared_touch_count": compared_touches[hid],
                 "verdict_counts": dict(verdicts),
+                "verified_material_eval_count": verified_mat_count,
+                "script_eval_count": script_eval_count,
+                "verified_direct_eval_count": verified_direct_count,
+                "psc_eval_count": len(psc_evals),
+                "psc_all_verified_count": psc_classes["all_verified"],
+                "psc_mixed_verified_count": psc_classes["mixed_verified"],
+                "psc_zero_verified_count": psc_classes["zero_verified"],
+                "witness_eval_session_count": len(eval_sessions),
+                "witness_read_session_count": len(read_sessions),
+                "same_session_eval_count": same_sess_count,
+                "cross_session_eval_count": cross_sess_count,
+                "low_witness_high_mass": low_witness_high_mass,
+                "self_evaluated_only": self_evaluated_only,
                 "supporting_material_ids": hyp.get("supporting_material_ids", []),
                 "counter_material_ids": hyp.get("counter_material_ids", []),
                 "source_note_ids": hyp.get("source_note_ids", []),
@@ -622,6 +825,9 @@ def compute_belief_state(
         gen1_mass = sum(h["posterior"] for h in hyp_entries if h["generation"] >= 1)
 
         active_entries = [h for h in hyp_entries if h["effective_status"] == "active"]
+        unexamined_active_ids = [
+            h["hypothesis_id"] for h in active_entries if h["direct_eval_count"] == 0
+        ]
         mean_u = (
             sum(h["uncertainty"] for h in active_entries) / len(active_entries)
             if active_entries
@@ -652,8 +858,10 @@ def compute_belief_state(
                         "right_posterior": hb["posterior"],
                         "left_uncertainty": ha["uncertainty"],
                         "right_uncertainty": hb["uncertainty"],
+                        "pair_mass_sum": pair_mass_sum(ha, hb),
                         "lineage_relation": pair_lineage_relation(ha, hb),
                         "examined_only_by_supports": pair_examined_only_by_supports(ha, hb),
+                        "unsaturated_supports_ratchet": pair_has_unsaturated_supports_ratchet(ha, hb),
                     }
 
         # Active-only entropy measures unresolved competition among live scoped hypotheses
@@ -680,6 +888,7 @@ def compute_belief_state(
             "total_evaluations": total_evals_q,
             "priority_score": round(priority, 4),
             "top_competing_pair": best_pair,
+            "unexamined_active_hypothesis_ids": unexamined_active_ids,
             "hypotheses": hyp_entries,
         }
 
@@ -692,6 +901,7 @@ def compute_belief_state(
         "total_hypotheses": len(hypotheses),
         "total_evaluations": len(evaluations),
         "core_priority_ranking": [q["question_id"] for q in ranked_core],
+        "provenance_verification": provenance_verification,
         "questions": question_states,
     }
     state["saturation"] = saturation_snapshot(state)
@@ -718,14 +928,24 @@ def select_auto_question_id(
             pair = qs.get("top_competing_pair")
             if pair:
                 relation = PAIR_RELATION_LABELS.get(pair.get("lineage_relation")) or "不明"
+                pair_parts = [
+                    f"EIG={pair['expected_info_gain']:.4f}",
+                    f"系譜={relation}",
+                ]
+                if "pair_mass_sum" in pair:
+                    pair_parts.append(f"合算={pair['pair_mass_sum'] * 100:.1f}%")
+                if pair.get("examined_only_by_supports"):
+                    pair_parts.append("両側 supports のみ")
+                if pair.get("unsaturated_supports_ratchet"):
+                    pair_parts.append("未飽和ラチェット注意")
                 pair_txt = (
                     f"{pair['left_hypothesis_id']} vs {pair['right_hypothesis_id']} "
-                    f"(EIG={pair['expected_info_gain']:.4f}, 系譜={relation}"
-                    + (", 両側 supports のみ" if pair.get("examined_only_by_supports") else "")
-                    + ")"
+                    f"({', '.join(pair_parts)})"
                 )
             else:
                 pair_txt = ("単一仮説検証（対の推薦なし）" if qs["hypothesis_count"] == 1 else "推薦なし（候補に直接評価済みの仮説が2件未満）")
+            unexamined = qs.get("unexamined_active_hypothesis_ids") or []
+            unexamined_txt = f"; 未評価有効仮説={len(unexamined)}件" if unexamined else ""
             # Two numbers share this sentence and can move in opposite directions:
             # `score` comes from the question's entropy, `EIG` from the product of
             # two posteriors.  On 2026-11-15 scoring one pair moved them apart
@@ -735,7 +955,7 @@ def select_auto_question_id(
                 f"情報利得優先選出 (score={score:.3f}=active_H+0.8·mean_u+1/√(1+評価数)+中核0.35+乱数, "
                 f"active_H={qs['active_entropy_bits']:.3f}b, "
                 f"mean_u={qs['mean_active_uncertainty']:.3f}, "
-                f"最優先検証対: {pair_txt}; EIG=p_a×p_b×(u_a+u_b) で両立性は検査しない)"
+                f"最優先検証対: {pair_txt}; EIG=p_a×p_b×(u_a+u_b) で両立性は検査しない{unexamined_txt})"
             )
             scored.append((score, qid, reason))
         elif qid in CORE_QUESTIONS:
@@ -792,28 +1012,47 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
     lines: list[str] = [
         "# BELIEF_MAP — 条件付き仮説分布と反証系譜マップ",
         "",
-        "> 本ファイルは `python3 tools/belief_state.py --write-map` により `state/hypotheses*` と `state/evaluations*` から決定論的に生成される。",
+        "> 本ファイルは `python3 tools/belief_state.py --write-map` により `state/hypotheses*`・`state/evaluations*`・`state/materials*`・`state/read_log*` から決定論的に生成される。",
         "> 手作業で編集せず、仮説の追加・分割・反証・射程限定を台帳シャードに記録した上で再生成すること。",
         "",
         "> 不確実性は暫定指標: `u = clamp((1 + 直接の独立出所数 + 0.5×log2(1+比較回数))^(-1/2) × 反証系補正, 0.05, 1)`。比較の重複を独立出所として二重計上しない。",
-        "> 対の候補は両側が直接評価済みのもののみ。該当がなければ推薦なし（飽和とは別）。",
+        "> 対の候補は両側が直接評価済みのもののみ。該当がなければ推薦なし（飽和とは別）。未評価の有効仮説がある場合は別途明示する。",
+        "> 照合済列: `全verified素材評価(+再現スクリプト評価S)/全直接評価` と `primary_source_collision` 全照合率（`verification.status` の可視化であり、過去評価の事後確率式は変更しない）。",
+        "> 証人列: `EVL_sess / RL_sess`（直接評価の独立セッション数 / 機械的バックフィルを除く手書き `read_log` 読了セッション数）。`P≥5%` かつ `EVL_sess≤1` に単一証人警告を付す。",
         "",
         "## 概要指標",
         "",
         f"- 登録仮説総数 (`HYP-*`): **{state['total_hypotheses']}**",
         f"- 評価イベント総数 (`EVL-*`): **{state['total_evaluations']}**",
         f"- 次回探求の情報利得優先順位: **{' → '.join(state['core_priority_ranking'])}**",
+    ]
+    prov = state.get("provenance_verification") or {}
+    if prov.get("psc_total", 0) > 0:
+        lines.append(
+            f"- `primary_source_collision` 素材照合監査: "
+            f"全素材 `verified` **{prov['psc_all_verified']}/{prov['psc_total']} "
+            f"({prov.get('psc_all_verified_ratio', 0.0) * 100:.1f}%)** ｜ "
+            f"一部照合 **{prov.get('psc_mixed_verified', 0)}** ｜ "
+            f"未照合のみ **{prov.get('psc_zero_verified', 0)}**"
+        )
+    lines.extend([
         "",
         "| 問い | 仮説数 (有効) | 第0世代質量 (素朴基底) | 第1世代+質量 (条件付き) | 事後エントロピー | D_KL(P_t || P_0) | 平均不確実性 u | 最優先検証ペア (EIG=p_a×p_b×(u_a+u_b)) |",
         "| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
-    ]
+    ])
     for qid, qs in state["questions"].items():
         pair = qs.get("top_competing_pair")
         if pair:
             relation = PAIR_RELATION_LABELS.get(pair.get("lineage_relation")) or "不明"
+            pair_meta = [f"{pair['expected_info_gain']:.4f}", relation]
+            if "pair_mass_sum" in pair:
+                mass_label = f"合算{pair['pair_mass_sum'] * 100:.1f}%"
+                if pair.get("unsaturated_supports_ratchet"):
+                    mass_label += " ⚠️未飽和"
+                pair_meta.append(mass_label)
             pair_cell = (
                 f"`{pair['left_hypothesis_id']}` vs `{pair['right_hypothesis_id']}` "
-                f"({pair['expected_info_gain']:.4f}, {relation})"
+                f"({', '.join(pair_meta)})"
             )
         else:
             pair_cell = "—"
@@ -842,56 +1081,125 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
                 f"`{pair['left_hypothesis_id']}`（{pair['left_title']}） vs "
                 f"`{pair['right_hypothesis_id']}`（{pair['right_title']}）"
             )
+            mass_suffix = (
+                f" ｜ 合算占有率: **{pair['pair_mass_sum'] * 100:.1f}%**"
+                if "pair_mass_sum" in pair
+                else ""
+            )
             lines.append(
                 f"  - 式: `{pair.get('formula', PAIR_EIG_FORMULA)}` = "
                 f"{pair.get('left_posterior', 0.0):.4f} × {pair.get('right_posterior', 0.0):.4f} × "
                 f"({pair.get('left_uncertainty', 0.0):.4f} + {pair.get('right_uncertainty', 0.0):.4f})"
-                f" ｜ 記録された系譜関係: **{relation or '不明'}**"
+                f" ｜ 記録された系譜関係: **{relation or '不明'}**{mass_suffix}"
             )
             lines.append(
                 "  - この式は両立性を検査しない。二つの命題が互いを否定するかどうかは台帳から判定できず、"
                 "「対立」ではなく「次に検証する組」である。系譜関係が無い場合は、両立する二つの仮説が"
                 "並置されているだけの可能性がある（実測例: readings/2026-11-15-the-most-informative-pair-was-not-a-disagreement.md §4）。"
             )
+            if pair.get("unsaturated_supports_ratchet"):
+                pmass = pair.get("pair_mass_sum", pair.get("left_posterior", 0.0) + pair.get("right_posterior", 0.0))
+                lines.append(
+                    f"  - ⚠️ **未飽和上位対ラチェット注意（合算占有率 {pmass * 100:.1f}% < "
+                    f"{UNSATURATED_PAIR_MASS_THRESHOLD * 100:.0f}%）。** "
+                    "両側にすでに反証系評価があっても、残余仮説から質量が流入する余地があるため、"
+                    "両側へ `supports` を追加すると EIG が膨張しうる（PR #830 実測 +109.5%、"
+                    "`readings/2026-11-16-what-crosses-the-unheld-interval.md` §2.2）。"
+                    "両立性と排他条件を確かめずに両側 `supports` を積まないこと。"
+                )
             if pair.get("examined_only_by_supports"):
                 lines.append(
                     "  - ⚠️ **両側とも `supports` 以外の判定を受けたことがない。** `supports` には log_odds を下げる項が無いので、"
                     "この対をもう一度 `supports` すると EIG が上がることがある（実例 +30.6%。常に上がるわけではない）。競合する親子の対はそのぶん遠ざかる。"
                     "採点する前に、この二つが本当に競合するかを先に確かめること。"
                 )
-            lines.append("")
-
         else:
             lines.append("- **推薦なし**: 候補中に直接評価済みの仮説が2件未満。未評価の仮説を確認してください。")
-            lines.append("")
+
+        unexamined = qs.get("unexamined_active_hypothesis_ids") or []
+        if unexamined:
+            unex_list = "、".join(f"`{hid}`" for hid in unexamined)
+            lines.append(
+                f"- ⚠️ **未評価の有効仮説（ペア推薦から除外中）**: {unex_list}"
+                "（直接評価 0 件。無補助 root 仮説は下端から浮上しにくいため、初回検証を優先検討すること）"
+            )
+        lines.append("")
 
         lines.extend([
-            "| 順位 | ID | 状態 | 世代/系譜 | 事後確率 P_t | 不確実性 u | 評価数 (反証系) | 仮説タイトル |",
-            "| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :--- |",
+            "| 順位 | ID | 状態 | 世代/系譜 | 事後確率 P_t | 不確実性 u | 評価数 (反証系) | 照合済 (PSC全照合) | 証人 (EVL/読) | 仮説タイトル |",
+            "| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
         ])
         for idx, h in enumerate(qs["hypotheses"], start=1):
             parents = ", ".join(f"`{p}`" for p in h["parent_hypothesis_ids"]) or "—"
+            if "verified_material_eval_count" in h:
+                mat_v = h["verified_material_eval_count"]
+                scr_v = h.get("script_eval_count", 0)
+                tot_d = h["direct_eval_count"]
+                ver_cell = f"{mat_v}+{scr_v}S/{tot_d}" if scr_v else f"{mat_v}/{tot_d}"
+                if h.get("psc_eval_count", 0) > 0:
+                    ver_cell += f" (PSC {h.get('psc_all_verified_count', 0)}/{h['psc_eval_count']})"
+            else:
+                ver_cell = "—"
+            if "witness_eval_session_count" in h:
+                wit_cell = f"{h['witness_eval_session_count']} / {h.get('witness_read_session_count', 0)}"
+                if h.get("low_witness_high_mass"):
+                    wit_cell += " ⚠️単一証人"
+                if h.get("self_evaluated_only"):
+                    wit_cell += " ⚠️自己評価のみ"
+            else:
+                wit_cell = "—"
             lines.append(
                 f"| {idx} | `{h['hypothesis_id']}` | `{h['effective_status']}` | "
                 f"G{h['generation']}:{h['lineage_op']} ({parents}) | "
                 f"**{h['posterior'] * 100:.1f}%** | {h['uncertainty']:.3f} | "
-                f"{h['direct_eval_count']} ({h['adversarial_eval_count']}) | {h['title']} |"
+                f"{h['direct_eval_count']} ({h['adversarial_eval_count']}) | "
+                f"{ver_cell} | {wit_cell} | {h['title']} |"
             )
 
         lines.append("")
         lines.append("### 条件付き命題・適用条件・反証条件（Exclusion Clause）")
         lines.append("")
         for h in qs["hypotheses"]:
-            err_badge = (
-                f" ⚠️ **関連訂正あり**: {', '.join(f'`{e}`' for e in h['errata_flags'])}"
-                if h["errata_flags"] else ""
-            )
+            badges: list[str] = []
+            if h.get("errata_flags"):
+                badges.append(
+                    f"⚠️ **関連訂正あり**: {', '.join(f'`{e}`' for e in h['errata_flags'])}"
+                )
+            if h.get("low_witness_high_mass"):
+                badges.append(
+                    f"⚠️ **単一証人高質量** (EVL={h.get('witness_eval_session_count', 0)}, "
+                    f"読了={h.get('witness_read_session_count', 0)})"
+                )
+            if h.get("self_evaluated_only"):
+                badges.append(
+                    f"⚠️ **自己評価のみ** (同一={h.get('same_session_eval_count', 0)}, 異セッション=0)"
+                )
+            if (
+                h.get("psc_eval_count", 0) > 0
+                and h.get("psc_all_verified_count", 0) == 0
+                and h.get("psc_zero_verified_count", 0) > 0
+            ):
+                badges.append(
+                    f"⚠️ **PSC未照合のみ** ({h['psc_zero_verified_count']}/{h['psc_eval_count']})"
+                )
+            badge_str = (" " + " ".join(badges)) if badges else ""
             lines.append(
-                f"- **`{h['hypothesis_id']}` [{h['effective_status']} / P={h['posterior'] * 100:.1f}% / u={h['uncertainty']:.3f}] {h['title']}**{err_badge}"
+                f"- **`{h['hypothesis_id']}` [{h['effective_status']} / P={h['posterior'] * 100:.1f}% / u={h['uncertainty']:.3f}] {h['title']}**{badge_str}"
             )
             lines.append(f"  - **命題**: {h['proposition']}")
             lines.append(f"  - **適用条件 (`scope_conditions`)**: {' ／ '.join(h['scope_conditions'])}")
             lines.append(f"  - **反証・限定条件 (`exclusion_clause`)**: {h['exclusion_clause']}")
+            if "verified_direct_eval_count" in h and "witness_eval_session_count" in h:
+                lines.append(
+                    f"  - **監査メタ**: 照合済直接評価={h['verified_direct_eval_count']}/{h['direct_eval_count']}"
+                    f"（全verified素材={h.get('verified_material_eval_count', 0)}, "
+                    f"再現スクリプト={h.get('script_eval_count', 0)}, "
+                    f"PSC全照合={h.get('psc_all_verified_count', 0)}/{h.get('psc_eval_count', 0)}, "
+                    f"PSC未照合のみ={h.get('psc_zero_verified_count', 0)}）"
+                    f" ｜ 証人セッション: EVL={h['witness_eval_session_count']} / "
+                    f"手書き読了={h.get('witness_read_session_count', 0)}"
+                    f" ｜ 同一/異セッション評価={h.get('same_session_eval_count', 0)}/{h.get('cross_session_eval_count', 0)}"
+                )
             mats = ", ".join(f"`{m}`" for m in h["supporting_material_ids"][:5]) or "なし"
             cmats = ", ".join(f"`{m}`" for m in h["counter_material_ids"][:5]) or "なし"
             notes_s = ", ".join(f"`{n}`" for n in h["source_note_ids"][:5]) or "なし"
