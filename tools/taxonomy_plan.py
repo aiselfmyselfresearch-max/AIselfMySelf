@@ -106,6 +106,8 @@ MOTIF_SUBCLUSTERS: dict[str, tuple[str, list[str]]] = {
             "MOTIF-20261025-0fdf8a",
             "MOTIF-20261026-856753",
             "MOTIF-20261026-45293e",
+            "MOTIF-20261116-b6c0a3",
+            "MOTIF-20261116-b6c0a2",
         ],
     ),
     "B-1": (
@@ -126,6 +128,7 @@ MOTIF_SUBCLUSTERS: dict[str, tuple[str, list[str]]] = {
             "MOTIF-008",
             "MOTIF-20261024-86d366",
             "MOTIF-20261024-c9d4e1",
+            "MOTIF-20261116-b6c0a1",
         ],
     ),
     "B-3": (
@@ -134,6 +137,7 @@ MOTIF_SUBCLUSTERS: dict[str, tuple[str, list[str]]] = {
             "MOTIF-016",
             "MOTIF-20261024-d2999b",
             "MOTIF-20261027-2c8a4a",
+            "MOTIF-20261116-b6c0a4",
         ],
     ),
     "C-1": (
