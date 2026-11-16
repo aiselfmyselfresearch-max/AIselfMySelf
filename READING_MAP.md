@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：4763 件（research_excerpt 2523 ／ literary_text 2172 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4773 件（research_excerpt 2533 ／ literary_text 2172 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：249 編（selected 96 ／ draft 153）
 - **解釈的関係（Relations）**：7016 件
-- **探究セッション（Sessions）**：900 回
+- **探究セッション（Sessions）**：901 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4763 | `literary_text` 2172／`research_excerpt` 2523／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4773 | `literary_text` 2172／`research_excerpt` 2533／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 249 | `selected` 96／`draft` 153／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7016 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 900 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14373 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 901 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14385 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 314 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 916 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 917 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 44 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 477 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 482 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -797,7 +797,7 @@
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 | `FRAG-20261116-7d62f1` | 一心の張られない隙を、何が越えるか | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4763 件・詳細は map/3*.md）
+## 4. 対話素材（4773 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5384,6 +5384,16 @@
 | `MAT-20261115-c53972` | research_excerpt | Charles Henry Turner（チャールズ・ヘンリー・ターナー）『ターナー（1907）「アリは実践的判断をなすか」「アリの帰巣」——移送されたアリは、見ていない区間を歩… |
 | `MAT-20261115-8dd3c4` | research_excerpt | Martin Lindauer（マルティン・リンダウアー）『リンダウアー（1955）住居探しの分封ミツバチ——決める者がいない決定と、合意しないままの離陸』（1955） |
 | `MAT-20261115-95d1d2` | research_excerpt | 丘浅次郎（おか・あさじろう）『丘浅次郎「人類の誇大狂」（1904）——三斤の脳が宇宙を量り、その誤りは外部の学科でしか治らない』（1904） |
+| `MAT-20261116-6a8bb3` | research_excerpt | Wallace Craig『クレイグ（1917）「食欲と嫌悪は本能の構成要素である」——飢えは刺激の不在であり、満腹は同じ刺激を邪魔なものに変える』（1917） |
+| `MAT-20261116-5d1d03` | research_excerpt | Richard F. Thompson, William Alden Spencer『トンプソン＆スペンサー（1966）「馴化——神経基盤研究のための模型現象」——反応は記録の量… |
+| `MAT-20261116-69a160` | research_excerpt | John Gibbon『ギボン（1977）「スカラー期待理論と動物の時間知覚におけるウェーバーの法則」——「同じ間隔」は点ではなく、比率で比べられる分布である』（1977） |
+| `MAT-20261116-e64e42` | research_excerpt | Karl Groos『グロース（1898）『動物の遊び』——遊びは、まだ必要でない機能の稽古であり、意識的な自己欺瞞である』（1898） |
+| `MAT-20261116-0a6967` | research_excerpt | Henry Walter Bates『ベイツ（1862）「アマゾン河谷の昆虫相への寄与：鱗翅目・ヘリコニダエ」——模倣は、稀な写しが頻繁な原本として読まれることで成り立つ』（18… |
+| `MAT-20261116-fed05a` | research_excerpt | Syunzo Kawamura『河村（1959）「ニホンザルにおけるサブカルチャーの伝播過程」——経験は世代へ伝わるが、その単位は群れと遊び仲間である』（1959） |
+| `MAT-20261116-6c45d6` | research_excerpt | Susan Perry, Mary Baker, Linda fedigan, Julie Gros-Louis, Katharine Jack, Katherine C. Ma… |
+| `MAT-20261116-685407` | research_excerpt | T. M. Caro, M. D. Hauser『キャロ＆ハウザー（1992）「非ヒト動物に教示はあるか」——定義が現象を作る。三つの条件を満たさない継承は「教示」ではない』（1… |
+| `MAT-20261116-e200f7` | research_excerpt | Andrew Whiten, R. Ham『ホワイテン＆ハム（1992）「動物界における模倣の本性と進化」——同じ写しは、複数の機制から生じ、産物からは区別できない』（1992） |
+| `MAT-20261116-8a02a0` | research_excerpt | Robert Mearns Yerkes『ヤーキーズ（1916）『サルと類人猿の精神生活』——装置が行動を datum に変え、個体の気質は装置の外に残る』（1916） |
 | `MAT-20261116-5b23da` | research_excerpt | Adolf Naef『ネーフ（1919）『観念論的形態学と系統学』——「思考された可能な自然存在（型）」は系統史の仮定に先行するか』（1919） |
 | `MAT-20261116-c20bf9` | research_excerpt | Willi Hennig『ヘニッヒ（1950）『系統分類学の理論の基礎』——比較の最小単位は生涯全体ではなく「セマフォロント（極めて短い時間区間の形質担持体）」である』（1950） |
 | `MAT-20261116-f0c369` | research_excerpt | Adolf Remane『レマーネ（1952）『自然体系・比較解剖学・系統学の基礎』——相同を判定する三主基準（位置・特殊質・中間形による連続性）』（1952） |
@@ -6457,6 +6467,7 @@
 | `SESSION-20261116-8024b2` | 2026-11-16T09:05:00Z | `Q-003`, `Q-002`, `Q-001` | — | — |
 | `SESSION-20261116-7d62c8` | 2026-11-16T09:50:00Z | `Q-003`, `Q-20261116-3872ec`, `Q-001`, `Q-002` | `FRAG-20261116-7d62f1` | — |
 | `SESSION-20261116-18e776` | 2026-11-16 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261116-0716f8` | 2026-11-16T13:10:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261116-7499cc` | 2026-11-16T09:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261116-41c924` | 2026-11-16T09:28:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261116-de0488` | 2026-11-16T07:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -6556,9 +6567,9 @@
 | `map/31-materials-research-21.md` | 100 | 241,201 |
 | `map/31-materials-research-22.md` | 100 | 247,378 |
 | `map/31-materials-research-23.md` | 100 | 230,571 |
-| `map/31-materials-research-24.md` | 100 | 262,135 |
-| `map/31-materials-research-25.md` | 100 | 248,763 |
-| `map/31-materials-research-26.md` | 23 | 44,754 |
+| `map/31-materials-research-24.md` | 100 | 271,881 |
+| `map/31-materials-research-25.md` | 100 | 246,159 |
+| `map/31-materials-research-26.md` | 33 | 69,829 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6592,7 +6603,8 @@
 | `map/50-sessions-15.md` | 50 | 35,907 |
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
-| `map/50-sessions-18.md` | 50 | 39,661 |
+| `map/50-sessions-18.md` | 50 | 39,434 |
+| `map/50-sessions-19.md` | 1 | 1,211 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6620,24 +6632,24 @@
 | `map/60-notes-25.md` | 25 | 115,548 |
 | `map/60-notes-26.md` | 25 | 133,024 |
 | `map/60-notes-27.md` | 25 | 96,156 |
-| `map/60-notes-28.md` | 25 | 122,471 |
-| `map/60-notes-29.md` | 25 | 62,723 |
-| `map/60-notes-30.md` | 25 | 80,144 |
-| `map/60-notes-31.md` | 25 | 70,105 |
-| `map/60-notes-32.md` | 25 | 96,553 |
-| `map/60-notes-33.md` | 25 | 92,616 |
-| `map/60-notes-34.md` | 25 | 130,527 |
-| `map/60-notes-35.md` | 11 | 65,757 |
+| `map/60-notes-28.md` | 25 | 126,977 |
+| `map/60-notes-29.md` | 25 | 62,758 |
+| `map/60-notes-30.md` | 25 | 79,704 |
+| `map/60-notes-31.md` | 25 | 70,370 |
+| `map/60-notes-32.md` | 25 | 96,225 |
+| `map/60-notes-33.md` | 25 | 93,718 |
+| `map/60-notes-34.md` | 25 | 129,111 |
+| `map/60-notes-35.md` | 12 | 69,489 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・861本・32,417,612 B）
+## 8. 精読ノート索引（readings/・862本・32,471,495 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 812/861 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 813/862 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：861 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：133 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：862 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：134 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7320,6 +7332,7 @@
 | `readings/2026-11-16-homology-is-not-pathway-or-content.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-8a1b27` +2 | 14,665 | Q4 M19 S3 ERR5 | — | 相同は経路でも内容でもない——比較動物学の相同性判定十選と、自己個体化の境界条件 |
 | `readings/2026-11-16-one-row-outweighs-ten-sources.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-1f2781` +8 | 11,317 | Q3 S9 | ✓ | 一行は十点より重い——自分の評価8件が信念分布にしたことを測る |
 | `readings/2026-11-16-stable-words-do-not-make-progress.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-573698` +1 | 13,925 | Q3 S2 | ✓ | 語彙が安定していることは、探究が進んでいることを意味しない——四つの測定と六つの変更案 |
+| `readings/2026-11-16-ten-animals-that-read-a-record-they-did-not-write.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-bdedbb` +2 | 23,982 | Q3 M10 S3 | — | 記録を書かなかった十の動物——状態・時計・枠・写し・教示を、比較動物学から読み直す |
 | `readings/2026-11-16-ten-comparative-zoology-culture-and-reexecution.md` | — | 2026-11-16 | `SESSION-20261116-cd06ca` | 18,463 | Q4 M10 S1 | — | 文化と再実行——比較動物学の新規資料10件の精読 |
 | `readings/2026-11-16-ten-comparative-zoology-language-and-social-cognition.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-de0488` | 18,272 | Q2 M11 S1 | ✓ | 言語と社会認知は、型枠か、再実行か——比較動物学の新規資料10件の精読 |
 | `readings/2026-11-16-ten-comparative-zoology-scaffolds-and-reinstatement.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-7499cc` +3 | 27,134 | Q2 M12 S4 | ✓ | 足場と再興——比較動物学10件：現在に来るのは、内容ではなく入口だ |
