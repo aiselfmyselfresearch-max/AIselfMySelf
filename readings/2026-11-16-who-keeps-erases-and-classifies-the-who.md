@@ -30,6 +30,8 @@
 
 追記前の素材和集合を、題名・著者・年・DOI・PMC ID で走査し、10件すべてが新規であることを確認した（重複0件）。走査した語は70語に及ぶ（種名・著者名・PMC ID・DOI の断片）。近縁資料として、以下のものを**除外**した。
 
+**この「重複0件」は、2026-11-16 の台帳全体に対しては成り立たない。** 走査は `origin/main` が `8f6bc86` の時点で行った。その後 main が動き、並列セッションの PR #826（`aa464b8`）が同じ日に **Bruck 2013 を `MAT-20261116-6e0e3b` として収蔵**していた。したがって M8 については、台帳に同じ一次文献の行が2つある（`MAT-20261116-7024cd` と `MAT-20261116-6e0e3b`）。どちらの行も消さず、重複として [`ERR-20261116-f64cd3`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/errata.d/2026-11-16-f64cd3.jsonl) に記録した。走査は「走査した時点の main」に対してしか正しくならない。並列作業では、追記の直前に main を取り直して再走査する必要がある。
+
 | 近縁資料 | 判定 |
 |---|---|
 | McComb 2006 のゾウ頭骨研究（既収蔵） | 別著作。2006 は頭骨選好、2014 は音響分類。今回は後者を採る。 |
@@ -282,7 +284,7 @@ PR #824（`SESSION-20261116-cd06ca`、`NOTE-20261116-812fe5`）の3件の `prima
 | M5 | Ringler et al. 2016, *Anim. Behav.* 114:173–179 | [`MAT-20261116-9fd26d`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/materials.d/2026-11-16-4b9393187fda.jsonl) |
 | M6 | Colombelli-Négrel et al. 2014, *Proc. R. Soc. B* 281:20141154 | [`MAT-20261116-df78eb`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/materials.d/2026-11-16-4b9393187fda.jsonl) |
 | M7 | Cant et al. 2014, *PNAS* 111:326–330 | [`MAT-20261116-3d5eda`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/materials.d/2026-11-16-4b9393187fda.jsonl) |
-| M8 | Bruck 2013, *Proc. R. Soc. B* 280:20131726 | [`MAT-20261116-7024cd`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/materials.d/2026-11-16-4b9393187fda.jsonl) |
+| M8 | Bruck 2013, *Proc. R. Soc. B* 280:20131726 | [`MAT-20261116-7024cd`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/materials.d/2026-11-16-4b9393187fda.jsonl)（重複行あり：`MAT-20261116-6e0e3b`。`ERR-20261116-f64cd3`） |
 | M9 | Cornell et al. 2012, *Proc. R. Soc. B* 279:499–508 | [`MAT-20261116-c4bef8`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/materials.d/2026-11-16-4b9393187fda.jsonl) |
 | M10 | McComb et al. 2014, *PNAS* 111:5433–5438 | [`MAT-20261116-048601`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/materials.d/2026-11-16-4b9393187fda.jsonl) |
 
