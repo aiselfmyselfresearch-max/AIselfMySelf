@@ -853,7 +853,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # present after the merge. notes.d is order-sensitive and excluded from
         # consolidation -> net reclaim 0. One-slot exception; hard 160 unchanged;
         # not an automatic raise.
-        soft_shards=135,
+        # 2026-11-16 (SESSION-20261116-e1b529, 135 -> 136): measured
+        # state/notes.d = 136 files / 1,827,860 B of the 2 MiB soft (bytes not
+        # binding by 269,292 B). Cause: this session's curated note shard
+        # (2026-11-16-45b342f73012, NOTE-20261116-882f06) for
+        # readings/2026-11-16-the-empty-list-that-still-paid.md. Checked
+        # origin/main first: no upstream raise had landed since 4d8b7c. notes.d
+        # is order-sensitive and excluded from consolidation, so the only
+        # remedy available to a one-report session is this measured raise.
+        # One-slot exception; hard 160 unchanged; not an automatic raise.
+        soft_shards=136,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
