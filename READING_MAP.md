@@ -29,7 +29,7 @@
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 906 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 42 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 449 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 442 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -5473,16 +5473,6 @@
 | `MAT-20261116-9a8fa8` | research_excerpt | Hal Whitehead『ホワイトヘッド（2003）『マッコウクジラ——海洋における社会進化』——クジラの文化は、遺伝の型枠か、歌の再実行か』（2003） |
 | `MAT-20261116-3cf479` | research_excerpt | Josep Call, Michael Tomasello『コール＆トマセロ（2008）「チンパンジーは心の理論を持つか？30年後」——心の理論は、信念の型枠か、知覚・目標の再実… |
 | `MAT-20261116-4fb013` | research_excerpt | Thomas D. Seeley『シーリー（2010）『ミツバチの民主主義』——巣の選択は、女王の型枠か、偵察蜂の投票の再実行か』（2010） |
-| `MAT-20261116-d95f1e` | research_excerpt | T. C. Schneirla『シュナイラ（1966）「行動の発達と比較心理学」——比較の背骨は、行動の個体発生である』（1966） |
-| `MAT-20261116-c4f5f8` | research_excerpt | Gilbert Gottlieb『ゴットリープ（1992）『個体発生と進化』——生得的なものは伝わらず、発生のたびに確率的に立ち上がる』（1992） |
-| `MAT-20261116-ae5a71` | research_excerpt | Thelma E. Rowell『ロウェル（1974）「社会的優位という概念」——順位は観察者が作る。関係を動かすのは服従の側である』（1974） |
-| `MAT-20261116-a71892` | research_excerpt | Gordon M. Burghardt『バーガート（1991）「認知エソロジーと批判的擬人観」——二つの頭の蛇と、死んだふりをするヘビ』（1991） |
-| `MAT-20261116-e5fbca` | research_excerpt | Eileen Crist『クリスト（1999）『動物のイメージ』——語彙が、経験する主体を「空の対象」に変える』（1999） |
-| `MAT-20261116-802a33` | research_excerpt | Marian Stamp Dawkins『ドーキンズ（1993）『私たちの目を通してだけ？』——動物意識の証拠を、証拠として数える手続き』（1993） |
-| `MAT-20261116-07021f` | research_excerpt | Nicholas K. Humphrey『ハンフリー（1976）「知性の社会的機能」——難しかったのは無人島ではなく、金曜日が来てからだ』（1976） |
-| `MAT-20261116-1388a5` | research_excerpt | Dorothy L. Cheney, Robert M. Seyfarth『チェイニー＆セイファース（2007）『ヒヒの形而上学』——心は群れの履歴から推論される』（2007） |
-| `MAT-20261116-b55bb4` | research_excerpt | Frans de Waal『ド・ヴァール（2016）『私たちは、動物がどれほど賢いかを知るほど賢いのか』——擬人化への恐怖と擬人化否定』（2016） |
-| `MAT-20261116-3a9b5f` | research_excerpt | Bernd Heinrich『ハインリッヒ（1999）『カラスの心』——四年分の観察が、一つの結論に届くまで』（1999） |
 | `MAT-20261116-bda2f8` | research_excerpt | Robert L. Trivers『トライヴァース（1972）親への投資と性選択——投資の定義は内容ではなく「代替へのコスト」にある』（1972） |
 | `MAT-20261116-9bff1d` | research_excerpt | Diana Reiss, Lori Marino『Reiss & Marino（2001）イルカの鏡映自己認知——自己認知は系統樹の「収斂」でも生じる』（2001） |
 | `MAT-20261116-92a4b8` | research_excerpt | Nathan J. Emery, Nicola S. Clayton『Emery & Clayton（2004）カラスの心性——カラス類と大型類人猿の知性は独立に進化した』（20… |
@@ -5513,8 +5503,18 @@
 | `MAT-20261116-b1e141` | research_excerpt | Gerald G. Carter, Gerald S. Wilkinson『カーター＆ウィルキンソン（2013）チスイコウモリの血液吐き戻し分配——致死絶食下で過去受領履歴が血縁… |
 | `MAT-20261116-53b668` | research_excerpt | Reena H. Walker, Andrew J. King, J. Weldon McNutt, Neil R. Jordan『ウォーカーほか（2017）アフリカリカオンのく… |
 | `MAT-20261116-fc1a7a` | research_excerpt | Christophe Boesch, Camille Bolé, Nadin Eckhardt, Hedwige Boesch『ボッシュほか（2010）野生タイ森チンパンジーの孤… |
+| `MAT-20261116-bd0101` | research_excerpt | Felix Warneken, Frances Chen, Michael Tomasello『Cooperative activities in young children … |
+| `MAT-20261116-bd0102` | research_excerpt | Joshua M. Plotnik, Frans B. M. de Waal, Donald Moore III, Diana Reiss『Self-Recognition in… |
+| `MAT-20261116-bd0103` | research_excerpt | James J. H. St Clair, Christian Rutz『New Caledonian crows attend to multiple functional p… |
+| `MAT-20261116-bd0104` | research_excerpt | Elena Tricarico, Luciana Borrelli, Francesca Gherardi, Graziano Fiorito『I Know My Neighbo… |
+| `MAT-20261116-bd0105` | research_excerpt | Andrea Dissegna, Luciana Borrelli, Giovanna Ponte, Cinzia Chiandetti, Graziano Fiorito『Oc… |
+| `MAT-20261116-bd0106` | research_excerpt | Ellen C. Garland et al.『Dynamic Horizontal Cultural Transmission of Humpback Whale Song a… |
+| `MAT-20261116-bd0107` | research_excerpt | Lies Zandberg et al.『Global cultural evolutionary model of humpback whale song』（2021） |
+| `MAT-20261116-bd0108` | research_excerpt | Joe R. Riley et al.『The flight paths of honeybees recruited by the waggle dance』（2005） |
+| `MAT-20261116-bd0109` | research_excerpt | Monique A. R. Udell, Nicole R. Dorey, Clive D. L. Wynne『Wolves outperform dogs in followi… |
+| `MAT-20261116-bd0110` | research_excerpt | Alan Silberberg et al.『Desire for social contact, not empathy, may explain “rescue” behav… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261116-de0488・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261116-bdedbb・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -6405,8 +6405,8 @@
 | `SESSION-20261116-8024a1` | 2026-11-16T09:04:00Z | `Q-003`, `Q-002`, `Q-001` | — | — |
 | `SESSION-20261116-8024b2` | 2026-11-16T09:05:00Z | `Q-003`, `Q-002`, `Q-001` | — | — |
 | `SESSION-20261116-7499cc` | 2026-11-16T09:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261116-41c924` | 2026-11-16T09:28:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261116-de0488` | 2026-11-16T07:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261116-bdedbb` | 2026-11-16T10:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7016 件・全表は map/40-relations-*.md）
 
@@ -6495,7 +6495,7 @@
 | `map/31-materials-research-22.md` | 100 | 247,378 |
 | `map/31-materials-research-23.md` | 100 | 230,571 |
 | `map/31-materials-research-24.md` | 100 | 260,329 |
-| `map/31-materials-research-25.md` | 73 | 185,589 |
+| `map/31-materials-research-25.md` | 73 | 177,430 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6529,7 +6529,7 @@
 | `map/50-sessions-15.md` | 50 | 35,907 |
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
-| `map/50-sessions-18.md` | 39 | 31,774 |
+| `map/50-sessions-18.md` | 39 | 31,359 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6556,8 +6556,8 @@
 | `map/60-notes-24.md` | 25 | 98,783 |
 | `map/60-notes-25.md` | 25 | 115,548 |
 | `map/60-notes-26.md` | 25 | 132,854 |
-| `map/60-notes-27.md` | 25 | 96,133 |
-| `map/60-notes-28.md` | 25 | 103,338 |
+| `map/60-notes-27.md` | 25 | 92,759 |
+| `map/60-notes-28.md` | 25 | 102,049 |
 | `map/60-notes-29.md` | 25 | 68,823 |
 | `map/60-notes-30.md` | 25 | 72,409 |
 | `map/60-notes-31.md` | 25 | 76,667 |
@@ -6568,10 +6568,10 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・851本・32,110,644 B）
+## 8. 精読ノート索引（readings/・851本・32,075,375 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 803/851 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 802/851 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：851 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：133 本（`python3 tools/note_index.py --orphans`）
@@ -7248,6 +7248,7 @@
 | `readings/2026-11-16-comparative-zoology-08-social-cognition-competition.md` | — | 2026-11-16 | — | 4,731 | Q2 | — | 2026-11-16 比較動物学資料 08：比較社会認知——競争と協調の非対称性が語るヒト進化の分岐点 |
 | `readings/2026-11-16-comparative-zoology-09-language-symbolic.md` | — | 2026-11-16 | — | 5,282 | Q2 | — | 2026-11-16 比較動物学資料 09：言語とシンボリック通信——ヒト特有性の核心か、連続体上の極点か |
 | `readings/2026-11-16-comparative-zoology-10-mirror-test-controversy.md` | — | 2026-11-16 | — | 5,677 | Q2 | — | 2026-11-16 比較動物学資料 10：ミラー・テスト論争の深層——人類中心的テストの限界と「種適合的自己認識」へ… |
+| `readings/2026-11-16-comparative-zoology-ecology-of-self.md` | — | 2026-11-16 | `SESSION-20261116-bdedbb` | 7,710 | M10 S1 | — | 同じ合図でも、同じ相手ではない——比較動物学10資料の精読 |
 | `readings/2026-11-16-comparative-zoology-the-measuring-animal.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-7df206` +2 | 24,485 | Q3 M16 S3 ERR1 | ✓ | 測る動物、測られる自己——比較動物学の十点精読（1817–1973）が「記録する自己」の輪郭に差し引いたもの |
 | `readings/2026-11-16-counted-units-are-not-identified-units.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-b88876` +1 | 10,891 | Q2 M1 S2 ERR1 | — | 数えられた単位は、同定された単位ではない——自分の仮説を、自分の書庫で反証しにいく |
 | `readings/2026-11-16-ten-comparative-zoology-culture-and-reexecution.md` | — | 2026-11-16 | `SESSION-20261116-cd06ca` | 18,463 | Q4 M10 S1 | — | 文化と再実行——比較動物学の新規資料10件の精読 |
@@ -7256,7 +7257,6 @@
 | `readings/2026-11-16-ten-comparative-zoology-sources-on-investment-and-boundary.md` | — | 2026-11-16 | `SESSION-20261116-c1411b` | 19,186 | Q3 M13 S1 | ✓ | 投資と境界——比較動物学の新規資料10件の精読 |
 | `readings/2026-11-16-ten-comparative-zoology-syntax-transmission-and-stakes.md` | — | 2026-11-16 | `SESSION-20261116-4ebd54` +2 | 36,999 | Q3 M15 S3 | — | 語順・伝達鎖・身体的ステーク――比較動物学の全文検証十一次原典による既存優勢仮説への境界衝突 |
 | `readings/2026-11-16-ten-verified-animals-unit-time-and-delegation.md` | — | 2026-11-16 | `SESSION-20261116-b2306e` +2 | 29,268 | Q4 M10 S3 | — | 全文検証された十の動物——単位の崩壊、二十年の再興、非割り込みの眠り、門を跨ぐ委託 |
-| `readings/2026-11-16-the-inside-is-never-in-the-record.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-41c924` | 23,131 | Q3 M10 S1 | — | 内側は記録に載らない——比較動物学の十点が、観察の語彙と証拠の値段を測り直す |
 | `readings/2026-11-16-the-unit-of-comparison-is-not-given.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-ff77b1` +3 | 31,064 | Q4 M15 S4 ERR1 | ✓ | 比較の単位は与えられていない——比較動物学の十資料（1921–1985）が「人間」と「記録する自己」から差し引いたもの |
 | `readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md` | 2026-10-26 | 2026-11-16 | `SESSION-20261116-de57d9` | 5,113 | Q10 F3 M4 MOT2 S1 | ✓ | 二種類の火と、目の試練——ローテーション改修と火×習慣の再読交配（SESSION-20261116-de57d9） |
 | `readings/2026-11-16-uncertainty-pain-quorum-and-inherited-maps.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-8024a1` +1 | 32,740 | Q3 M20 MOT1 S2 ERR6 | — | 知らなさ・痛み・合意・遺された地図——比較動物学10件の全文精読と Q-003／Q-002／Q-001 への再読・衝突 |
