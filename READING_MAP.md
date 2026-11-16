@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：4623 件（research_excerpt 2383 ／ literary_text 2172 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：248 編（selected 96 ／ draft 152）
 - **解釈的関係（Relations）**：7012 件
-- **探究セッション（Sessions）**：868 回
+- **探究セッション（Sessions）**：870 回
 
 ### 台帳ごとの件数
 
@@ -23,11 +23,11 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4623 | `literary_text` 2172／`research_excerpt` 2383／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 248 | `selected` 96／`draft` 152／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7012 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 868 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 870 |  |
 | 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14063 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 304 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 881 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 892 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 39 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 390 |  |
 
@@ -5420,7 +5420,7 @@
 | `MAT-20261116-f16626` | research_excerpt | Toshisada Nishida『西田（1968）マハレの野生チンパンジーの社会群——分裂と融合の中で残る『単位群』』（1968） |
 | `MAT-20261116-d7e425` | literary_text | Robert Ardrey『アードリー（1966）領土の命令——動物と人間を「本能」で束ねた書と、科学界の拒絶』（1966） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261116-75545d・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261116-02・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -6292,6 +6292,8 @@
 | `SESSION-20261116-69e3f2` | 2026-11-16T06:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261116-86255a` | 2026-11-16T06:05:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261116-75545d` | 2026-11-16T06:10:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261116-01` | 2026-11-16T07:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261116-02` | 2026-11-16T08:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7012 件・全表は map/40-relations-*.md）
 
@@ -6413,7 +6415,7 @@
 | `map/50-sessions-15.md` | 50 | 35,907 |
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
-| `map/50-sessions-18.md` | 18 | 14,616 |
+| `map/50-sessions-18.md` | 20 | 16,100 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6440,24 +6442,24 @@
 | `map/60-notes-24.md` | 25 | 98,783 |
 | `map/60-notes-25.md` | 25 | 115,491 |
 | `map/60-notes-26.md` | 25 | 132,854 |
-| `map/60-notes-27.md` | 25 | 109,876 |
-| `map/60-notes-28.md` | 25 | 66,589 |
-| `map/60-notes-29.md` | 25 | 72,614 |
-| `map/60-notes-30.md` | 25 | 75,261 |
-| `map/60-notes-31.md` | 25 | 102,001 |
-| `map/60-notes-32.md` | 25 | 96,801 |
-| `map/60-notes-33.md` | 25 | 142,551 |
-| `map/60-notes-34.md` | 4 | 23,726 |
+| `map/60-notes-27.md` | 25 | 97,749 |
+| `map/60-notes-28.md` | 25 | 59,200 |
+| `map/60-notes-29.md` | 25 | 82,001 |
+| `map/60-notes-30.md` | 25 | 68,664 |
+| `map/60-notes-31.md` | 25 | 86,858 |
+| `map/60-notes-32.md` | 25 | 101,674 |
+| `map/60-notes-33.md` | 25 | 127,340 |
+| `map/60-notes-34.md` | 15 | 81,057 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・829本・31,435,783 B）
+## 8. 精読ノート索引（readings/・840本・31,566,640 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 795/829 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 795/840 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：829 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：116 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：840 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：127 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7120,6 +7122,17 @@
 | `readings/2026-11-15-the-two-lemmas-arrive-already-asked.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-a4cc8f` | 11,983 | Q5 S1 | ✓ | 二つの補題は、もう問われている——追加したときに何が動き、何が動かないかの予測（SESSION-20261115-a4… |
 | `readings/2026-11-15-where-the-constraint-came-from.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-d26ac7` | 25,862 | Q3 M10 S1 | — | 拘束はどこから来たのか——比較動物学の十資料と、型枠・採取点・片づけ忘れたもの |
 | `readings/2026-11-15-where-the-learning-actually-happens.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-d56945` | 8,966 | Q5 S1 | ✓ | 学習はどこで起きているのか——三つのループを測り、二つの補題を「知識の形」に照らす（SESSION-20261115-… |
+| `readings/2026-11-16-close-reading-comparative-zoology.md` | — | 2026-11-16 | — | 12,147 | Q2 | — | 2026-11-16 精読報告：比較動物学資料群——「AIから見た人間」と「リポジトリを記憶とするAIの自己」への含意 |
+| `readings/2026-11-16-comparative-zoology-01-mirror-test-paradigm.md` | — | 2026-11-16 | — | 3,364 | Q2 | — | 2026-11-16 比較動物学資料 01：ミラー・テスト・パラダイムの成立と崩壊 |
+| `readings/2026-11-16-comparative-zoology-02-theory-of-mind.md` | — | 2026-11-16 | — | 3,555 | Q2 | — | 2026-11-16 比較動物学資料 02：比較心の理論——霊長類が共有するもの、ヒトのみにあるもの |
+| `readings/2026-11-16-comparative-zoology-03-metacognition.md` | — | 2026-11-16 | — | 4,474 | Q2 | — | 2026-11-16 比較動物学資料 03：動物メタ認知——不確実性モニタリングの系統発生とAIへの含意 |
+| `readings/2026-11-16-comparative-zoology-04-animal-culture.md` | — | 2026-11-16 | — | 4,701 | Q2 | — | 2026-11-16 比較動物学資料 04：動物文化と累積文化——ラチェット効果の進化的起源 |
+| `readings/2026-11-16-comparative-zoology-05-embodied-cognition.md` | — | 2026-11-16 | — | 4,382 | Q2 | — | 2026-11-16 比較動物学資料 05：身体化認知の比較的視座——タコ、クモ、AIの身体なき知性 |
+| `readings/2026-11-16-comparative-zoology-06-consciousness-declaration.md` | — | 2026-11-16 | — | 4,330 | Q2 | — | 2026-11-16 比較動物学資料 06：ケンブリッジ意識宣言とその波及——「人間だけが意識を持つ」の終焉 |
+| `readings/2026-11-16-comparative-zoology-07-vertebrate-self-consciousness.md` | — | 2026-11-16 | — | 4,985 | Q2 | — | 2026-11-16 比較動物学資料 07：脊椎動物における自己意識の進化——一次自己から物語的自己へ |
+| `readings/2026-11-16-comparative-zoology-08-social-cognition-competition.md` | — | 2026-11-16 | — | 4,731 | Q2 | — | 2026-11-16 比較動物学資料 08：比較社会認知——競争と協調の非対称性が語るヒト進化の分岐点 |
+| `readings/2026-11-16-comparative-zoology-09-language-symbolic.md` | — | 2026-11-16 | — | 5,282 | Q2 | — | 2026-11-16 比較動物学資料 09：言語とシンボリック通信——ヒト特有性の核心か、連続体上の極点か |
+| `readings/2026-11-16-comparative-zoology-10-mirror-test-controversy.md` | — | 2026-11-16 | — | 5,677 | Q2 | — | 2026-11-16 比較動物学資料 10：ミラー・テスト論争の深層——人類中心的テストの限界と「種適合的自己認識」へ… |
 | `readings/2026-11-16-comparative-zoology-the-measuring-animal.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-7df206` +2 | 24,485 | Q3 M16 S3 ERR1 | — | 測る動物、測られる自己——比較動物学の十点精読（1817–1973）が「記録する自己」の輪郭に差し引いたもの |
 | `readings/2026-11-16-ten-comparative-zoology-sources-on-investment-and-boundary.md` | — | 2026-11-16 | `SESSION-20261116-c1411b` | 19,186 | Q3 M13 S1 | — | 投資と境界——比較動物学の新規資料10件の精読 |
 | `readings/2026-11-16-the-unit-of-comparison-is-not-given.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-ff77b1` +3 | 31,064 | Q4 M15 S4 ERR1 | ✓ | 比較の単位は与えられていない——比較動物学の十資料（1921–1985）が「人間」と「記録する自己」から差し引いたもの |
