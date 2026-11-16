@@ -988,15 +988,40 @@ def _belief_briefing_lines(
         if not cqs or not cqs["hypotheses"]:
             continue
         pair = cqs.get("top_competing_pair")
-        pair_txt = (
-            f"`{pair['left_hypothesis_id']}` vs `{pair['right_hypothesis_id']}` (EIG={pair['expected_info_gain']:.4f})"
-            if pair else "推薦なし（候補に直接評価済みの仮説が2件未満）"
+        if pair:
+            pair_detail = f"EIG={pair['expected_info_gain']:.4f}"
+            if "pair_mass_sum" in pair:
+                pair_detail += f", 合算={pair['pair_mass_sum']*100:.1f}%"
+            if pair.get("unsaturated_supports_ratchet"):
+                pair_detail += " ⚠️未飽和ラチェット注意"
+            pair_txt = (
+                f"`{pair['left_hypothesis_id']}` vs `{pair['right_hypothesis_id']}` ({pair_detail})"
+            )
+        else:
+            pair_txt = "推薦なし（候補に直接評価済みの仮説が2件未満）"
+        unex_c = cqs.get("unexamined_active_hypothesis_ids") or []
+        unex_txt = (
+            f" ｜ ⚠️未評価有効仮説: {', '.join(f'`{u}`' for u in unex_c)}"
+            if unex_c
+            else ""
         )
         top_h = cqs["hypotheses"][0]
         out.append(
             f"  - `{cqid}`: 有効仮説 {cqs['active_count']}/{cqs['hypothesis_count']} 件 ｜ "
             f"条件付き世代質量 **{cqs['gen1_plus_mass']*100:.1f}%** ｜ D_KL={cqs['kl_from_uniform_bits']:.3f}b ｜ "
-            f"首位 `{top_h['hypothesis_id']}` ({top_h['posterior']*100:.1f}%) ｜ 最優先検証: {pair_txt}"
+            f"首位 `{top_h['hypothesis_id']}` ({top_h['posterior']*100:.1f}%) ｜ 最優先検証: {pair_txt}{unex_txt}"
+        )
+
+    prov = bstate.get("provenance_verification") or {}
+    if prov.get("psc_total", 0) > 0:
+        out.append(
+            f"- **素材照合監査（`primary_source_collision`）**: "
+            f"全素材 `verified` **{prov['psc_all_verified']}/{prov['psc_total']} "
+            f"({prov.get('psc_all_verified_ratio', 0.0)*100:.1f}%)** ｜ "
+            f"一部照合 **{prov.get('psc_mixed_verified', 0)}** ｜ "
+            f"未照合のみ **{prov.get('psc_zero_verified', 0)}**。"
+            "新規の `primary_source_collision` は原則として `verification.status == \"verified\"` の資料を根拠とし、"
+            "未照合資料に依存する場合は `fragment_thought_experiment` 等と区別して明記すること。"
         )
 
     sat = bstate.get("saturation") or {}
@@ -1022,13 +1047,41 @@ def _belief_briefing_lines(
         )
 
     if qstate and qstate["hypotheses"]:
+        unex_target = qstate.get("unexamined_active_hypothesis_ids") or []
+        if unex_target:
+            out.append(
+                f"- ⚠️ **対象問い `{target_qid}` の未評価有効仮説（ペア推薦から除外中）**: "
+                + "、".join(f"`{u}`" for u in unex_target)
+                + "（直接評価0件。初回検証を優先検討すること）"
+            )
         out.append(f"- **対象問い `{target_qid}` の競合仮説・適用条件・反証条件（Exclusion Clause）**:")
         for h in qstate["hypotheses"]:
             eflags = h.get("errata_flags") or []
-            ebadge = f" ⚠️訂正関連: {', '.join(f'`{e}`' for e in eflags)}" if eflags else ""
+            badges: list[str] = []
+            if eflags:
+                badges.append(f"⚠️訂正関連: {', '.join(f'`{e}`' for e in eflags)}")
+            if h.get("low_witness_high_mass"):
+                badges.append(
+                    f"⚠️単一証人(EVL={h.get('witness_eval_session_count', 0)},読={h.get('witness_read_session_count', 0)})"
+                )
+            if h.get("self_evaluated_only"):
+                badges.append("⚠️自己評価のみ")
+            if (
+                h.get("psc_eval_count", 0) > 0
+                and h.get("psc_all_verified_count", 0) == 0
+                and h.get("psc_zero_verified_count", 0) > 0
+            ):
+                badges.append(f"⚠️PSC未照合のみ({h['psc_zero_verified_count']}/{h['psc_eval_count']})")
+            ebadge = (" " + " ".join(badges)) if badges else ""
+            audit_meta = ""
+            if "verified_direct_eval_count" in h and "witness_eval_session_count" in h:
+                audit_meta = (
+                    f" / 照合={h['verified_direct_eval_count']}/{h['direct_eval_count']}"
+                    f" / 証人EVL={h['witness_eval_session_count']},読={h.get('witness_read_session_count', 0)}"
+                )
             out.append(
                 f"  - **`{h['hypothesis_id']}`** [`{h['effective_status']}` / **P={h['posterior']*100:.1f}%** / "
-                f"u={h['uncertainty']:.3f} / G{h['generation']}:{h['lineage_op']}] {h['title']}{ebadge}"
+                f"u={h['uncertainty']:.3f} / G{h['generation']}:{h['lineage_op']}{audit_meta}] {h['title']}{ebadge}"
             )
             out.append(f"    - 命題: {_one_line(h['proposition'], 150)}")
             out.append(f"    - 適用条件: {_one_line(' ／ '.join(h['scope_conditions']), 140)}")
