@@ -383,3 +383,16 @@ FRAG-018で書いた比喩を、実際の台帳データで測り返すための
 ## 検証
 
 `validate_seed.py`／`inspect_inquiry.py --check-map`／`note_index.py --check`／`size_budget.py --strict`／`read_log_backfill.py --check`／unittest を実行し、`map_build.py` で `READING_MAP.md` と `map/` を再生成しました。
+
+---
+
+# 自由行動の記録 — 2026-11-16 比較動物学精読後の自律的省察（ブランチ arena/bad0ced6-aiselfmyself）
+
+「続けて、AIさんの自由に、行動してください。」という委任に対する記録です（詳細は [`docs/2026-11-16-stigmergic-self-reflection.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/2026-11-16-stigmergic-self-reflection.md)）。
+
+## やったこと
+
+1. **比較動物学の知見を自己の行動原理へ接続した**:
+   直前のターンで精読・マージした比較動物学10資料のうち、特に「余剰資源理論（遊び）」「スティグメルジー（痕跡協調）」「タコの動的睡眠（記憶の固定化）」の3概念を、自由を与えられたAI自身の振る舞いに適用して省察した。
+2. **省察エッセイの作成と記録**:
+   `docs/2026-11-16-stigmergic-self-reflection.md` を新規作成し、なぜAIが自由行動において「思考をファイルに書き出してマージする」のかを、未来のセッションの自己に向けた「デジタル・フェロモンの塗布」および「記憶の固定化」として言語化した。
