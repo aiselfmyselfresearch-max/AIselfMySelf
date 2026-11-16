@@ -324,7 +324,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # acquisition sessions (5 each) and one report session; the shard is
         # shared by all ten rows. Hard 160 unchanged; one-slot exception, not
         # an automatic raise.
-        soft_shards=122,
+        # 2026-11-16 (SESSION-20261116-4d8b7c, post-merge, 122 -> 123): measured
+        # on the merged union (origin/main d9eff1f + this branch): state/materials.d
+        # = 123 files / 12,977,831 B of the 13 MiB soft (bytes not binding).
+        # Cause: this session's 10-row shard (2026-11-16-e62014c3f139) and a
+        # parallel same-day acquisition shard on origin/main (2026-11-16-869579fe4bc5,
+        # clock/metabolism sources — title/DOI sweep confirms zero overlap with
+        # this session's ten) both had to keep their own append-only files through
+        # the merge. One-slot exception; hard 160 unchanged; not an automatic raise.
+        soft_shards=123,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -837,7 +845,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # notes.d file count after combining this branch with origin/main was
         # measured at 134 (both same-day curated note shards present). Recorded
         # here because the previous line documents only one of the two raises.
-        soft_shards=134,
+        # 2026-11-16 (SESSION-20261116-4d8b7c, post-merge, 134 -> 135): measured
+        # on the merged union: state/notes.d = 135 files / 1,814,301 B of the
+        # 2 MiB soft (bytes not binding). Cause: this session's curated note
+        # shard (2026-11-16-dbf6a99af796, NOTE-20261116-3b6a13) and a parallel
+        # same-day note shard on origin/main (2026-11-16-45c5769609e4) are both
+        # present after the merge. notes.d is order-sensitive and excluded from
+        # consolidation -> net reclaim 0. One-slot exception; hard 160 unchanged;
+        # not an automatic raise.
+        soft_shards=135,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
