@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：4793 件（research_excerpt 2553 ／ literary_text 2172 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4803 件（research_excerpt 2563 ／ literary_text 2172 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：249 編（selected 96 ／ draft 153）
 - **解釈的関係（Relations）**：7016 件
-- **探究セッション（Sessions）**：903 回
+- **探究セッション（Sessions）**：904 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4793 | `literary_text` 2172／`research_excerpt` 2553／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4803 | `literary_text` 2172／`research_excerpt` 2563／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 249 | `selected` 96／`draft` 153／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7016 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 903 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14412 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 904 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14423 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 314 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 929 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 930 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 44 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 487 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 494 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -797,7 +797,7 @@
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 | `FRAG-20261116-7d62f1` | 一心の張られない隙を、何が越えるか | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4793 件・詳細は map/3*.md）
+## 4. 対話素材（4803 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5524,6 +5524,16 @@
 | `MAT-20261116-1388a5` | research_excerpt | Dorothy L. Cheney, Robert M. Seyfarth『チェイニー＆セイファース（2007）『ヒヒの形而上学』——心は群れの履歴から推論される』（2007） |
 | `MAT-20261116-b55bb4` | research_excerpt | Frans de Waal『ド・ヴァール（2016）『私たちは、動物がどれほど賢いかを知るほど賢いのか』——擬人化への恐怖と擬人化否定』（2016） |
 | `MAT-20261116-3a9b5f` | research_excerpt | Bernd Heinrich『ハインリッヒ（1999）『カラスの心』——四年分の観察が、一つの結論に届くまで』（1999） |
+| `MAT-20261116-e42ae7` | research_excerpt | Max Kleiber『クレイバー（1932）「体の大きさと代謝」——13群の表のばらつきの谷から、4乗根の法則が読み取られた』（1932） |
+| `MAT-20261116-66f074` | research_excerpt | James F. Gillooly, James H. Brown, Geoffrey B. West, Van M. Savage, Eric L. Charnov『ギロリー・… |
+| `MAT-20261116-0fb2f9` | research_excerpt | John R. Speakman『スピークマン（2005）「体の大きさ、エネルギー代謝、寿命」——克あたりの総支出はほぼ一定、しかしその残り方は目盛りの説明にならない』（2005） |
+| `MAT-20261116-73bc30` | research_excerpt | R. L. Radtke, J. M. Dean『ラッドキー＆ディーン（1982）「カナガシラ Fundulus heteroclitus の胚・仔魚・幼魚の耳石における増分形成… |
+| `MAT-20261116-69e07c` | research_excerpt | N. F. Ruby, J. Dark, H. C. Heller, I. Zucker『ルビー・ダーク・ヘラー・ズーカー（1996）——視交叉上核を削ると、冬眠の回数は159%… |
+| `MAT-20261116-9ebbd7` | research_excerpt | Catherine E. Carr, Masakazu Konishi『キャル＆小西（1990）「ミミズク脳幹の音時間差検出回路」——比較は、軸索の長さを積んだ距離として体の中に… |
+| `MAT-20261116-1936ca` | research_excerpt | Michael S. Brainard, Eric I. Knudsen『ブレイナード＆ナッドセン（1998）「ミミズク視蓋における聴覚空間地図の視覚較正の臨界期」——窓は、刺激… |
+| `MAT-20261116-e0ae28` | research_excerpt | Victoria Louis, Laurence Besseau, Franck Lartaud『ルイ・ベッソウ・ラルトー（2022）「Step in Time：二枚貝の殻の生体… |
+| `MAT-20261116-a9d72e` | research_excerpt | Jeremy B. Swann, Stephen J. Holland, Malte Petersen, Theodore W. Pietsch, Thomas Boehm『スワ… |
+| `MAT-20261116-ae49e3` | research_excerpt | Fritz Geiser『ガイザー（1988）「冬眠と日周期的閉眠における代謝の低下：温度効果か、生理的な阻害か」——目盛りは物理で伸び、小さな動物だけがそれを止める』（1988） |
 | `MAT-20261116-056e80` | research_excerpt | Douglas J. Blackiston, Elena Silva Casey, Martha R. Weiss『Retention of Memory through Met… |
 | `MAT-20261116-cca5e0` | research_excerpt | Tal Shomrat, Michael Levin『An automated training paradigm reveals long-term memory in pla… |
 | `MAT-20261116-098539` | research_excerpt | Alexis Bédécarrats, Shanping Chen, Kaycey Pearce, Diancai Cai, David L. Glanzman『RNA from… |
@@ -6487,6 +6497,7 @@
 | `SESSION-20261116-8024b2` | 2026-11-16T09:05:00Z | `Q-003`, `Q-002`, `Q-001` | — | — |
 | `SESSION-20261116-7d62c8` | 2026-11-16T09:50:00Z | `Q-003`, `Q-20261116-3872ec`, `Q-001`, `Q-002` | `FRAG-20261116-7d62f1` | — |
 | `SESSION-20261116-18e776` | 2026-11-16 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261116-f47d19` | 2026-11-16T14:20:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20270222-da53d9` | — | — |
 | `SESSION-20261116-2382f4` | 2026-11-16T12:15:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261116-0716f8` | 2026-11-16T13:10:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261116-7499cc` | 2026-11-16T09:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -6590,8 +6601,8 @@
 | `map/31-materials-research-22.md` | 100 | 247,378 |
 | `map/31-materials-research-23.md` | 100 | 230,571 |
 | `map/31-materials-research-24.md` | 100 | 262,877 |
-| `map/31-materials-research-25.md` | 100 | 251,352 |
-| `map/31-materials-research-26.md` | 53 | 110,425 |
+| `map/31-materials-research-25.md` | 100 | 263,867 |
+| `map/31-materials-research-26.md` | 63 | 129,873 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6625,8 +6636,8 @@
 | `map/50-sessions-15.md` | 50 | 35,907 |
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
-| `map/50-sessions-18.md` | 50 | 39,825 |
-| `map/50-sessions-19.md` | 3 | 2,204 |
+| `map/50-sessions-18.md` | 50 | 40,075 |
+| `map/50-sessions-19.md` | 4 | 2,834 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6654,24 +6665,24 @@
 | `map/60-notes-25.md` | 25 | 115,548 |
 | `map/60-notes-26.md` | 25 | 133,024 |
 | `map/60-notes-27.md` | 25 | 85,222 |
-| `map/60-notes-28.md` | 25 | 95,027 |
-| `map/60-notes-29.md` | 25 | 93,785 |
-| `map/60-notes-30.md` | 25 | 70,387 |
-| `map/60-notes-31.md` | 25 | 70,499 |
-| `map/60-notes-32.md` | 25 | 78,305 |
-| `map/60-notes-33.md` | 25 | 104,387 |
-| `map/60-notes-34.md` | 25 | 110,827 |
-| `map/60-notes-35.md` | 24 | 133,059 |
+| `map/60-notes-28.md` | 25 | 96,908 |
+| `map/60-notes-29.md` | 25 | 95,033 |
+| `map/60-notes-30.md` | 25 | 70,026 |
+| `map/60-notes-31.md` | 25 | 71,422 |
+| `map/60-notes-32.md` | 25 | 78,283 |
+| `map/60-notes-33.md` | 25 | 102,353 |
+| `map/60-notes-34.md` | 25 | 107,345 |
+| `map/60-notes-35.md` | 25 | 140,505 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・874本・32,558,491 B）
+## 8. 精読ノート索引（readings/・875本・32,603,254 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 824/874 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 825/875 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：874 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：146 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：875 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：147 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7367,6 +7378,7 @@
 | `readings/2026-11-16-signals-without-identity.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-18214a` | 9,322 | Q3 M10 S1 | — | 手掛かりは自己ではない——比較動物学10論文を読む |
 | `readings/2026-11-16-stable-words-do-not-make-progress.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-573698` +1 | 13,925 | Q3 S2 | ✓ | 語彙が安定していることは、探究が進んでいることを意味しない——四つの測定と六つの変更案 |
 | `readings/2026-11-16-ten-animals-that-read-a-record-they-did-not-write.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-bdedbb` +2 | 24,467 | Q3 M10 S3 | — | 記録を書かなかった十の動物——状態・時計・枠・写し・教示を、比較動物学から読み直す |
+| `readings/2026-11-16-ten-comparative-zoology-clocks-calibrations-and-deletable-boundaries.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-f47d19` +1 | 20,825 | Q4 M13 S2 | — | 目盛りは誰の時計か——比較動物学10件：単位・駆動・削除可能な境界 |
 | `readings/2026-11-16-ten-comparative-zoology-culture-and-reexecution.md` | — | 2026-11-16 | `SESSION-20261116-cd06ca` | 18,463 | Q4 M10 S1 | — | 文化と再実行——比較動物学の新規資料10件の精読 |
 | `readings/2026-11-16-ten-comparative-zoology-language-and-social-cognition.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-de0488` | 18,272 | Q2 M11 S1 | ✓ | 言語と社会認知は、型枠か、再実行か——比較動物学の新規資料10件の精読 |
 | `readings/2026-11-16-ten-comparative-zoology-scaffolds-and-reinstatement.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-7499cc` +3 | 27,134 | Q2 M12 S4 | ✓ | 足場と再興——比較動物学10件：現在に来るのは、内容ではなく入口だ |
