@@ -119,6 +119,7 @@ def attribute(
     target: str,
     question_id: str,
     top: int = 8,
+    by_row: bool = False,
 ) -> dict[str, Any]:
     """Which session's rows hold up one hypothesis? Drop each session in turn.
 
@@ -137,16 +138,28 @@ def attribute(
         )
         if touched:
             by_session.setdefault(str(rec.get("session_id")), []).append(eid)
+    groups: dict[str, list[str]] = dict(by_session)
+    if by_row:
+        # one group per row, labelled by its own id, so a session's two rows
+        # (one narrowing the rival, one supporting the target) stop being
+        # reported as a single anonymous drop.
+        groups = {
+            eid: [eid]
+            for eids in by_session.values()
+            for eid in eids
+        }
     rows = []
-    for session_id, eids in by_session.items():
+    for label, eids in groups.items():
         selected = {eid: evaluations[eid] for eid in eids}
         state = bs.compute_belief_state(data=_with_rows(data, selected, None))
         value = posterior_map(state, question_id).get(target, 0.0)
         rows.append({
-            "session_id": session_id,
+            "session_id": label,
             "rows": len(eids),
             "without": round(value, 4),
             "drop_pp": round((start - value) * 100, 3),
+            "verdict": (evaluations[label].get("verdict") if by_row else None),
+            "target": (evaluations[label].get("target_hypothesis_id") if by_row else None),
         })
     rows.sort(key=lambda r: (-r["drop_pp"], r["session_id"]))
     return {
@@ -333,6 +346,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--question", default="Q-003", help="question for --supports-scan / --attribute (default Q-003)")
     parser.add_argument("--retarget", metavar="HYP-ID", help="re-file every selected row against one hypothesis")
     parser.add_argument("--attribute", metavar="HYP-ID", help="per-session drop when that session's rows are removed")
+    parser.add_argument("--by-row", action="store_true", help="with --attribute: one group per row instead of per session")
     parser.add_argument("--json", action="store_true", help="machine-readable output")
     parser.add_argument("--root", default=str(ROOT), help="checkout to read (default: this one)")
     args = parser.parse_args(argv)
@@ -341,14 +355,17 @@ def main(argv: list[str] | None = None) -> int:
     if args.supports_scan:
         report = supports_scan(data, args.supports_scan, args.question)
     elif args.attribute:
-        report = attribute(data, args.attribute, args.question)
+        report = attribute(data, args.attribute, args.question, by_row=args.by_row)
         if args.json:
             print(json.dumps(report, ensure_ascii=False, indent=1, sort_keys=True))
             return 0
         print("=== attribution: %s on %s ===" % (report["target"], report["question_id"]))
         print("baseline P=%.4f over %d touching sessions" % (report["baseline"], report["sessions"]))
         for row in report["top"]:
-            print("  %-26s %2d row(s)  drop %+7.3f pp" % (row["session_id"], row["rows"], row["drop_pp"]))
+            extra = ""
+            if row.get("target"):
+                extra = "  [%s on %s]" % (row.get("verdict"), row.get("target"))
+            print("  %-30s %2d row(s)  drop %+7.3f pp%s" % (row["session_id"], row["rows"], row["drop_pp"], extra))
         print("dropping every touching row at once: %+0.3f pp -> P=%.4f"
               % (-report["total_drop_if_all_removed_pp"], report["baseline"] - report["total_drop_if_all_removed_pp"] / 100))
         return 0
