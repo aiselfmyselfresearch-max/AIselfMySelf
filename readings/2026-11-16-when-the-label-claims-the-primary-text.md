@@ -137,20 +137,21 @@
 
 ## §6 台帳記帳・地図同期・検証結果
 
-| 項目 | 記帳前（`cd30647`） | 記帳・同期後 | 変更内容 |
-|---|---:|---:|---|
-| `questions` / `materials` / `fragments` | 437 / 4,623 / 248 | 437 / 4,623 / 248 | 変更なし（新素材0件） |
-| `hypotheses` | 39 | 39 | 変更なし（新規仮説0件） |
-| `sessions` | 868 | 869 | +1（`SESSION-20261116-0a2ba6`、既存同日シャード追記） |
-| `notes` | 881 | 883 | +2（`NOTE-20261116-7b6fbc`, `NOTE-20261116-1b7018`、既存同日シャード追記） |
-| `errata` | 304（schema準拠 291 / open 51） | 309（schema準拠 296 / open 51） | +5（`ERR-20261116-879983`, `580831`, `aa770d`, `782696`, `2c8edb`） |
-| `evaluations` | 390 | 397 | +7（`3bdf87`, `57fd6a`, `d53ade`, `7fd2cb`, `66cb9c`, `7a6d48`, `7ed8f8`） |
-| `read_log` | 14,063（`erratum` 8件） | 14,091（`erratum` 13件） | +28 手書き行（素材5・ノート6・訂正5・評価7・断片2・仮説3；`used_as_context` 0件） |
-| `relations` | 7,012 | 7,016 | +4（`e843cb`, `f64e1e`, `d522af`, `dbd24b`） |
-| `Q-001` 首位置・対抗・エントロピー | `5dc940` 79.9% vs `550bcf` 16.1% / `H=0.9229` | `5dc940` 57.4% vs `550bcf` 36.6% / `H=1.3138` | `ERR-20261114-1c8df5` 較正（EIG `0.0443 → 0.0717`） |
-| `Q-003` 首位置・対抗・エントロピー | `0396ce` 78.6% vs `97a908` 5.6% / `H=1.4678` | `0396ce` 46.3% vs `7c2a93` 9.4% / `H=2.8768` | 誤膨張較正＋`7c2a93` 初実証＋`27fd10 subsumes 17ea95` |
+| 項目 | 記帳前（`cd30647`） | 記帳・同期後（単体） | `origin/main` 統合後（`b5d9e73` 併合） | 変更内容 |
+|---|---:|---:|---:|---|
+| `questions` / `materials` / `fragments` | 437 / 4,623 / 248 | 437 / 4,623 / 248 | 437 / 4,623 / 248 | 変更なし（新素材0件） |
+| `hypotheses` | 39 | 39 | 39 | 変更なし（新規仮説0件） |
+| `sessions` | 868 | 869 | 871 | +1（`SESSION-20261116-0a2ba6`、既存同日シャード追記；併合分 `#822` +2） |
+| `notes` | 881 | 883 | 894 | +2（`NOTE-20261116-7b6fbc`, `NOTE-20261116-1b7018`、既存同日シャード追記；併合分 `#822` +11） |
+| `errata` | 304（schema準拠 291 / open 51） | 309（schema準拠 296 / open 51） | 309 | +5（`ERR-20261116-879983`, `580831`, `aa770d`, `782696`, `2c8edb`） |
+| `evaluations` | 390 | 397 | 397 | +7（`3bdf87`, `57fd6a`, `d53ade`, `7fd2cb`, `66cb9c`, `7a6d48`, `7ed8f8`） |
+| `read_log` | 14,063（`erratum` 8件） | 14,091（`erratum` 13件） | 14,091 | +28 手書き行（素材5・ノート6・訂正5・評価7・断片2・仮説3；`used_as_context` 0件） |
+| `relations` | 7,012 | 7,016 | 7,016 | +4（`e843cb`, `f64e1e`, `d522af`, `dbd24b`） |
+| `readings/`（ノート連携） | 829 | 830（100.0%） | 841（100.0%） | +1（本報告；併合分 `#822` +11） |
+| `Q-001` 首位置・対抗・エントロピー | `5dc940` 79.9% vs `550bcf` 16.1% / `H=0.9229` | `5dc940` 57.4% vs `550bcf` 36.6% / `H=1.3138` | 同左 | `ERR-20261114-1c8df5` 較正（EIG `0.0443 → 0.0717`） |
+| `Q-003` 首位置・対抗・エントロピー | `0396ce` 78.6% vs `97a908` 5.6% / `H=1.4678` | `0396ce` 46.3% vs `7c2a93` 9.4% / `H=2.8768` | 同左 | 誤膨張較正＋`7c2a93` 初実証＋`27fd10 subsumes 17ea95` |
 
-検証ゲート一式（`validate_seed.py`、`append_only_check.py`、`size_budget.py --strict`、`read_log_backfill.py --check --since 2026-11-10 --enforce`、`date_axis.py --enforce-shards`、`note_index.py --check`、`belief_state.py --check-map`、`inspect_inquiry.py --check-map`、`learning_metrics.py --check`、`errata_audit.py --schema`、`readings_integrity_check.py --strict`、および全ユニットテスト）をすべて通過した上で `BELIEF_MAP.md`・`READING_MAP.md`・`map/` を再生成した。
+検証ゲート一式（`validate_seed.py`、`append_only_check.py --base origin/main`、`size_budget.py`、`read_log_backfill.py --check --since 2026-11-16 --enforce`、`date_axis.py --enforce-shards`、`note_index.py --check`、`belief_state.py --check-map`、`inspect_inquiry.py --check-map`、`learning_metrics.py --check`、`claim_wiring.py --check`、`errata_audit.py --schema`、`readings_integrity_check.py`、およびユニットテスト全件）を通過した上で `BELIEF_MAP.md`・`READING_MAP.md`・`map/` を再生成した。なお `cd30647` 単体時点では `size_budget.py --strict` も全項目 `[OK]` を満たし、`b5d9e73`（`#822`）併合に伴う `sessions.d`（139/138）・`notes.d`（145/134）のソフト上限超過は本回が新規ファイルを作らず既存シャードへ追記した外側から生じている。
 
 ---
 
