@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：59 件
-- **対話素材（Materials）**：4583 件（research_excerpt 2347 ／ literary_text 2168 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4593 件（research_excerpt 2357 ／ literary_text 2168 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：248 編（selected 96 ／ draft 152）
 - **解釈的関係（Relations）**：7012 件
-- **探究セッション（Sessions）**：860 回
+- **探究セッション（Sessions）**：863 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 59 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4583 | `literary_text` 2168／`research_excerpt` 2347／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4593 | `literary_text` 2168／`research_excerpt` 2357／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 248 | `selected` 96／`draft` 152／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7012 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 860 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14001 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 302 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 863 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14022 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 303 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 877 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 878 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 37 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 372 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 376 |  |
 
 ## 1. 問いを横断する 59 つのモチーフ
 
@@ -792,7 +792,7 @@
 | `FRAG-20261112-725d9b` | 抜けない罫、二番目の日付印 | draft | scene | third_person |
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4583 件・詳細は map/3*.md）
+## 4. 対話素材（4593 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5379,8 +5379,18 @@
 | `MAT-20261115-c53972` | research_excerpt | Charles Henry Turner（チャールズ・ヘンリー・ターナー）『ターナー（1907）「アリは実践的判断をなすか」「アリの帰巣」——移送されたアリは、見ていない区間を歩… |
 | `MAT-20261115-8dd3c4` | research_excerpt | Martin Lindauer（マルティン・リンダウアー）『リンダウアー（1955）住居探しの分封ミツバチ——決める者がいない決定と、合意しないままの離陸』（1955） |
 | `MAT-20261115-95d1d2` | research_excerpt | 丘浅次郎（おか・あさじろう）『丘浅次郎「人類の誇大狂」（1904）——三斤の脳が宇宙を量り、その誤りは外部の学科でしか治らない』（1904） |
+| `MAT-20261116-c5a552` | research_excerpt | Frank A. Beach『ビーチ（1950）「スナークはブージャムだった」——比較心理学が狩っていた一匹の白ラット』（1950） |
+| `MAT-20261116-1331f4` | research_excerpt | William Hodos, C. B. G. Campbell『ホドス＆キャンベル（1969）「スカラ・ナトゥラエ——比較心理学に理論がない理由」——階段は系統樹ではない』（1… |
+| `MAT-20261116-92523b` | research_excerpt | M. E. Bitterman『ビターマン（1965）「学習の系統差」——魚とラットは、同じ課題で逆の勾配を描く』（1965） |
+| `MAT-20261116-7c95df` | research_excerpt | Euan M. Macphail『マクフェイル（1982）『脊椎動物の脳と知能』——「違いはない」という帰無仮説』（1982） |
+| `MAT-20261116-52d2a4` | research_excerpt | Joseph Felsenstein『フェルゼンシュタイン（1985）「系統樹と比較法」——種は独立の標本ではない』（1985） |
+| `MAT-20261116-ac5704` | research_excerpt | R. J. Herrnstein, Donald H. Loveland, Cynthia Cable『ハーンスタイン、ラヴランド＆ケーブル（1976）「ハトにおける自然概念」—… |
+| `MAT-20261116-54848a` | research_excerpt | Shigeru Watanabe, Junko Sakamoto, Masumi Wakita『渡辺・坂本・脇田（1995）「ハトによるモネとピカソの絵画の弁別」——画家の様式が… |
+| `MAT-20261116-7f4951` | research_excerpt | Zing-Yang Kuo『郭任遠（1921）「心理学における本能の放棄」——本能という語は、説明を止める』（1921） |
+| `MAT-20261116-4dcead` | research_excerpt | Daniel S. Lehrman『リァマン（1953）「ローレンツの本能理論への批判」——「生得的」は発達の説明ではない』（1953） |
+| `MAT-20261116-bb03fe` | research_excerpt | Adolf Portmann『ポートマン（1948）『動物の形態』——自己提示は、自己保存と同じほど基本的である』（1948） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261115-69305d・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261116-6523ac・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -6244,6 +6254,9 @@
 | `SESSION-20261115-961c2e` | 2026-11-15T16:10:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261115-118dac` | 2026-11-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261115-69305d` | 2026-11-15 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261116-ff77b1` | 2026-11-16T03:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261116-207d50` | 2026-11-16T03:45:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261116-6523ac` | 2026-11-16T03:50:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7012 件・全表は map/40-relations-*.md）
 
@@ -6331,7 +6344,7 @@
 | `map/31-materials-research-21.md` | 100 | 241,201 |
 | `map/31-materials-research-22.md` | 100 | 247,378 |
 | `map/31-materials-research-23.md` | 100 | 230,571 |
-| `map/31-materials-research-24.md` | 47 | 129,365 |
+| `map/31-materials-research-24.md` | 57 | 160,366 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6365,7 +6378,7 @@
 | `map/50-sessions-15.md` | 50 | 35,907 |
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
-| `map/50-sessions-18.md` | 10 | 7,966 |
+| `map/50-sessions-18.md` | 13 | 10,379 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6392,23 +6405,24 @@
 | `map/60-notes-24.md` | 25 | 98,783 |
 | `map/60-notes-25.md` | 25 | 115,491 |
 | `map/60-notes-26.md` | 25 | 132,713 |
-| `map/60-notes-27.md` | 25 | 96,240 |
-| `map/60-notes-28.md` | 25 | 70,026 |
-| `map/60-notes-29.md` | 25 | 71,422 |
-| `map/60-notes-30.md` | 25 | 78,283 |
-| `map/60-notes-31.md` | 25 | 102,353 |
-| `map/60-notes-32.md` | 25 | 107,345 |
-| `map/60-notes-33.md` | 25 | 140,505 |
+| `map/60-notes-27.md` | 25 | 99,955 |
+| `map/60-notes-28.md` | 25 | 68,823 |
+| `map/60-notes-29.md` | 25 | 72,409 |
+| `map/60-notes-30.md` | 25 | 76,667 |
+| `map/60-notes-31.md` | 25 | 101,682 |
+| `map/60-notes-32.md` | 25 | 103,798 |
+| `map/60-notes-33.md` | 25 | 142,973 |
+| `map/60-notes-34.md` | 1 | 5,956 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・825本・31,232,231 B）
+## 8. 精読ノート索引（readings/・826本・31,292,814 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 792/825 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 793/826 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：825 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：113 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：826 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：114 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7071,6 +7085,7 @@
 | `readings/2026-11-15-the-two-lemmas-arrive-already-asked.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-a4cc8f` | 11,983 | Q5 S1 | ✓ | 二つの補題は、もう問われている——追加したときに何が動き、何が動かないかの予測（SESSION-20261115-a4… |
 | `readings/2026-11-15-where-the-constraint-came-from.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-d26ac7` | 25,862 | Q3 M10 S1 | — | 拘束はどこから来たのか——比較動物学の十資料と、型枠・採取点・片づけ忘れたもの |
 | `readings/2026-11-15-where-the-learning-actually-happens.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-d56945` | 8,966 | Q5 S1 | ✓ | 学習はどこで起きているのか——三つのループを測り、二つの補題を「知識の形」に照らす（SESSION-20261115-… |
+| `readings/2026-11-16-the-unit-of-comparison-is-not-given.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-ff77b1` +3 | 31,064 | Q4 M15 S4 ERR1 | — | 比較の単位は与えられていない——比較動物学の十資料（1921–1985）が「人間」と「記録する自己」から差し引いたもの |
 | `readings/2026-11-16-two-fires-and-the-ordeal-of-eyes.md` | 2026-10-26 | 2026-11-16 | `SESSION-20261116-de57d9` | 5,113 | Q10 F3 M4 MOT2 S1 | ✓ | 二種類の火と、目の試練——ローテーション改修と火×習慣の再読交配（SESSION-20261116-de57d9） |
 | `readings/2026-11-17-eight-grades-and-the-door.md` | 2026-10-26 | 2026-11-17 | `SESSION-20261117-292bc3` | 7,026 | Q2 F6 M5 MOT6 S1 | ✓ | 八つの段に収まらない者——獣×嘘の交配と、問われない位置の点検（SESSION-20261117-292bc3） |
 | `readings/2026-11-18-four-anchors-one-pause-four-bridges.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-1be029` | 5,712 | Q8 F8 MOT6 R5 S1 ED5 | ✓ | 四つの礎石、一つの休止、四本の橋——四モードと詳細窓を追いつかせる編集レビュー（SESSION-20261118-1b… |
