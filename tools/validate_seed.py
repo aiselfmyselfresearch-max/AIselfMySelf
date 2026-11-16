@@ -558,6 +558,52 @@ def psc_verification_advisory(
     )
 
 
+PSC_NEW_ROW_ADVISORY_CUTOFF = "2026-11-16"
+
+
+def psc_new_row_advisory(
+    evaluations: dict[str, dict[str, Any]],
+    materials: dict[str, dict[str, Any]],
+    *,
+    cutoff: str = PSC_NEW_ROW_ADVISORY_CUTOFF,
+) -> str | None:
+    """Name the *new* primary_source_collision rows that cite nothing fully read.
+
+    The aggregate ratio above hides the row being written right now: an author
+    reads "27.7% all-verified" and cannot tell whether their own row is one of
+    the 216. This lists rows filed on or after ``cutoff`` whose cited materials
+    are all non-``verified``, so that the label and its backing are visible at
+    filing time (P-2 in readings/2026-11-16-stable-words-do-not-make-progress.md).
+    Advisory only: it never fails the gate, and it never changes a weight.
+    """
+    flagged: list[str] = []
+    for eid, evl in evaluations.items():
+        if evl.get("evidence_type") != "primary_source_collision":
+            continue
+        stamp = str(evl.get("created_at") or "")[:10]
+        if stamp and stamp < cutoff:
+            continue
+        mids = [m for m in (evl.get("material_ids") or []) if isinstance(m, str) and m]
+        if not mids:
+            flagged.append(f"{eid}(no material_ids)")
+            continue
+        if all(
+            ((materials.get(mid) or {}).get("verification") or {}).get("status") != "verified"
+            for mid in mids
+        ):
+            flagged.append(eid)
+    if not flagged:
+        return None
+    shown = ", ".join(flagged[:8]) + (", …" if len(flagged) > 8 else "")
+    return (
+        f"INFO: primary_source_collision rows filed since {cutoff} with no fully-verified "
+        f"material (advisory): {len(flagged)} row(s) — {shown}. "
+        "The label claims a collision of primary texts; the material ledger says the "
+        "texts were not read in full. Say which you did (reading depth lives in the "
+        "materials' verification.status, not in a new label)."
+    )
+
+
 def check_refs(
     collection_name: str,
     records: dict[str, dict[str, Any]],
@@ -779,11 +825,39 @@ def main() -> int:
 
     check_refs("evaluations", evaluations, "compared_against_hypothesis_ids", "hypothesis", hypotheses, errors)
     check_refs("evaluations", evaluations, "spawned_hypothesis_ids", "hypothesis", hypotheses, errors)
+    # 2026-11-16 (P-5): "narrowing the child hands the remaining scope to the
+    # parent" got its own field. It must point at real hypotheses, and never at
+    # the row's own target.
+    check_refs(
+        "evaluations",
+        evaluations,
+        "scope_inherited_by_hypothesis_ids",
+        "hypothesis",
+        hypotheses,
+        errors,
+    )
     check_refs("evaluations", evaluations, "material_ids", "material", materials, errors)
     check_refs("evaluations", evaluations, "fragment_ids", "fragment", fragments, errors)
     check_refs("evaluations", evaluations, "note_ids", "note", notes, errors)
     errata_advisory = errata_schema_advisory(errata_records)
     psc_advisory = psc_verification_advisory(evaluations, materials)
+    psc_new_advisory = psc_new_row_advisory(evaluations, materials)
+    # 2026-11-16 (P-6): a correction may withdraw a row's weight. The field is
+    # only meaningful when the correction names an evaluation that exists.
+    for err_id, erec in errata_records.items():
+        if erec.get("weight_effect") != "void_row":
+            continue
+        if erec.get("subject_type") != "evaluation":
+            errors.append(
+                f"errata:{err_id}: weight_effect 'void_row' requires subject_type 'evaluation' "
+                f"(got {erec.get('subject_type')!r})"
+            )
+            continue
+        subject = erec.get("subject_id")
+        if not isinstance(subject, str) or subject not in evaluations:
+            errors.append(
+                f"errata:{err_id}: weight_effect 'void_row' names unknown evaluation {subject!r}"
+            )
     if errata_records:
         check_refs("evaluations", evaluations, "errata_ids", "errata", errata_records, errors)
         check_errata_addressee_labels(errata_records, errors)
@@ -797,6 +871,12 @@ def main() -> int:
         if isinstance(target_hid, str) and target_hid not in hypotheses:
             errors.append(
                 f"evaluations:{evl_id}: target_hypothesis_id references unknown hypothesis {target_hid!r}"
+            )
+        inherited = evl.get("scope_inherited_by_hypothesis_ids")
+        if isinstance(inherited, list) and target_hid in inherited:
+            errors.append(
+                f"evaluations:{evl_id}: scope_inherited_by_hypothesis_ids cannot include "
+                "target_hypothesis_id (the target is narrowed; the inheritor receives the remainder)"
             )
         compared = evl.get("compared_against_hypothesis_ids")
         if isinstance(compared, list) and target_hid in compared:
@@ -930,6 +1010,8 @@ def main() -> int:
             print(errata_advisory)
         if psc_advisory:
             print(psc_advisory)
+        if psc_new_advisory:
+            print(psc_new_advisory)
         return 1
 
     counts = ", ".join(f"{name}={len(records)}" for name, records in collections.items())
@@ -938,6 +1020,8 @@ def main() -> int:
         print(errata_advisory)
     if psc_advisory:
         print(psc_advisory)
+    if psc_new_advisory:
+        print(psc_new_advisory)
     return 0
 
 

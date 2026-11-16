@@ -57,39 +57,66 @@
     },
     "compared_against_hypothesis_ids": {
       "type": "array",
-      "items": {"type": "string", "minLength": 1},
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
       "uniqueItems": true,
       "description": "Competing hypotheses tested alongside target_hypothesis_id to prevent single-hypothesis confirmation bias."
     },
     "spawned_hypothesis_ids": {
       "type": "array",
-      "items": {"type": "string", "minLength": 1},
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
       "uniqueItems": true,
       "description": "Scoped or synthesized child hypotheses receiving probability mass when verdict is narrows_scope, refutes_unconditioned, or subsumes."
     },
     "material_ids": {
       "type": "array",
-      "items": {"type": "string", "minLength": 1},
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
       "uniqueItems": true
     },
     "fragment_ids": {
       "type": "array",
-      "items": {"type": "string", "minLength": 1},
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
       "uniqueItems": true
     },
     "note_ids": {
       "type": "array",
-      "items": {"type": "string", "minLength": 1},
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
       "uniqueItems": true
     },
     "errata_ids": {
       "type": "array",
-      "items": {"type": "string", "minLength": 1},
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
       "uniqueItems": true
     },
     "script_command": {
       "type": "string",
       "description": "Optional reproducible command verifying a measured verdict."
+    },
+    "scope_inherited_by_hypothesis_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "description": "Hypotheses that inherit the remaining scope when this row narrows or refutes the target (2026-11-16, P-5). Until now such a parent had to be named in spawned_hypothesis_ids, a field whose name means 'created'; the engine pays it +0.75*delta on narrows_scope and +0.95*delta on refutes_unconditioned, exactly as it does for spawned. Naming the operation here leaves the arithmetic identical and the record readable."
     }
   }
 }
