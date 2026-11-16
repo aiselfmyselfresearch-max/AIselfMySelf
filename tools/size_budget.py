@@ -305,7 +305,17 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # failed --strict, not just this one. The byte dimension is not binding
         # (11.56 MiB of 12.00 MiB soft). Hard 160 unchanged; one-slot exception,
         # not an automatic raise.
-        soft_shards=121,
+        # 2026-11-16 (SESSION-20261116-ff77b1, 121 -> 122): this acquisition
+        # session's own shard (10 comparative-zoology source records). Measured
+        # before the append: state/materials.d was 121/121 -- exactly at the
+        # soft ceiling, zero free slots, so any session writing a shard would
+        # have failed --strict, not just this one. The byte dimension is not
+        # binding (11.64 MiB of 12.00 MiB soft before; 11.68 MiB after). The
+        # 10-item scope came from the human delegation and is split across two
+        # acquisition sessions (5 each) and one report session; the shard is
+        # shared by all ten rows. Hard 160 unchanged; one-slot exception, not
+        # an automatic raise.
+        soft_shards=122,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -436,7 +446,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # slots, so any session writing a row would have failed --strict. The
         # byte dimension is not binding (5.18 MiB of 6.50 MiB soft). Hard 160
         # unchanged; one-slot exception, not an automatic raise.
-        soft_shards=132,
+        # 2026-11-16 (SESSION-20261116-6523ac, 132 -> 133): this session's
+        # handwritten read_log rows (10 materials + 10 cross-cutting re-reads +
+        # 1 prior report). Measured before the append: state/read_log.d was
+        # 132/132 -- exactly at the soft ceiling, zero free slots, so any
+        # session writing a row would have failed --strict. The byte dimension
+        # is not binding (5.18 MiB of 6.50 MiB soft before; 5.21 MiB after).
+        # Hard 160 unchanged; one-slot exception, not an automatic raise.
+        soft_shards=133,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -614,7 +631,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # a row would have failed --strict. The byte dimension is not binding
         # (2.70 MiB of 4.00 MiB soft). Hard 160 unchanged; one-slot exception,
         # not an automatic raise.
-        soft_shards=137,
+        # 2026-11-16 (SESSION-20261116-ff77b1/207d50/6523ac, 137 -> 138):
+        # the three sessions of this acquisition and report required one shared
+        # sessions shard. Measured before the append: state/sessions.d was
+        # 137/137 -- exactly at the soft ceiling, zero free slots, so any
+        # session row would have failed --strict. The byte dimension is not
+        # binding (2.70 MiB of 4.00 MiB soft before; 2.71 MiB after). Hard 160
+        # unchanged; one-slot exception, not an automatic raise.
+        soft_shards=138,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -781,7 +805,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # soft); notes.d remains order-SENSITIVE. Hard 160 unchanged;
         # one-slot exception, not an automatic raise.
         # 2026-11-16 (SESSION-20261116-c1411b, 132 -> 133): this
-        # session's curated note row. Measured before the append: state/notes.d
+        # session's curated note row (NOTE-20261116-fbd96f). Measured before the append: state/notes.d
         # was 132/132 -- exactly at the soft ceiling, zero free slots. notes.d
         # is order-SENSITIVE and excluded from consolidation; no 2026-11-16
         # notes shard existed for procedure 8-2, and procedure 8-2 cannot move
@@ -791,7 +815,20 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # pair merge per collection; notes.d has no merge path. Byte dimension
         # not binding (~1.6 MiB of 2.00 MiB soft). Hard 160 unchanged;
         # one-slot exception, not an automatic raise.
-        soft_shards=133,
+        # 2026-11-16 (SESSION-20261116-6523ac, 133 -> 133): the parallel
+        # comparative-zoology session merged as PR #817 raised this same line
+        # 132 -> 133 for NOTE-20261116-0e7d06. Two same-day curated note
+        # shards (2026-11-16-2aca864e17e1.jsonl from c1411b, and
+        # 2026-11-16-a09f58099c46.jsonl from 6523ac) now coexist, so the
+        # measured file count exceeds 133; the merged soft_shards becomes
+        # 134 to carry both one-slot exceptions. Hard 160 unchanged; this is
+        # the union of the two parallel one-slot exceptions, not an automatic
+        # raise.
+        # 2026-11-16 (merge of arena/04865e13-aiselfmyself into main, 133 -> 134):
+        # notes.d file count after combining this branch with origin/main was
+        # measured at 134 (both same-day curated note shards present). Recorded
+        # here because the previous line documents only one of the two raises.
+        soft_shards=134,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "

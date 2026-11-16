@@ -84,6 +84,22 @@ NOTE_CREATED_AT_RULE_FROM = "20261112"
 #     judgment moving between registers without saying so.
 CLAIM_WIRING_RULE_FROM = "20261116"
 REGISTER_RULE_FROM = "20261116"
+# Rows minted under the archive's *internal chronology* labels are not new rows,
+# even when the label happens to equal the real date on which the rule first runs.
+# Measured on 2026-11-16 (UTC): SESSION-20261116-de57d9 recorded in
+# state/sessions.d/2026-11-10-000000000000.jsonl that its real execution date was
+# 2026-10-26 and that its 2026-11-16 IDs were internal labels; its four questions
+# were merged on 2026-11-15T18:44Z (#816), i.e. before this rule's first UTC day.
+# _is_new_row() cannot tell a label from a real date, so these four are exempt by
+# ID rather than by weakening the rule for every future 2026-11-16 row.  Removing
+# this set must not be done without re-measuring that the rows are real-dated.
+# See ERR-20261116-0b162a.
+REGISTER_RULE_EXEMPT_IDS = frozenset({
+    "Q-20261116-0fd4fd",
+    "Q-20261116-3872ec",
+    "Q-20261116-522540",
+    "Q-20261116-6eec38",
+})
 CLAIM_WIRING_KINDS = ("reading_revised", "retraction")
 REGISTER_VALUES = ("description", "judgment", "inheritance")
 _ID_STAMP = re.compile(r"^[A-Z]+(?:-[A-Z]+)*-(\d{8})-")
@@ -157,6 +173,8 @@ def check_registers(
     """New questions and hypotheses must declare which register they are written in."""
     for collection in ("questions", "hypotheses"):
         for record_id, record in sorted(collections.get(collection, {}).items()):
+            if record_id in REGISTER_RULE_EXEMPT_IDS:
+                continue
             if not _is_new_row(record_id, REGISTER_RULE_FROM, today=today):
                 continue
             register = record.get("register")
