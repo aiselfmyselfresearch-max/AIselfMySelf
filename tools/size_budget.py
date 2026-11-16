@@ -856,7 +856,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         "state/evaluations.d",
         soft_bytes=4 * MIB,
         hard_bytes=12 * MIB,
-        soft_shards=80,
+        # 2026-11-16 (SESSION-20261116-2382f4): the committed baseline
+        # already occupied all 80 soft shard slots. This session must keep its
+        # five evaluation rows in its own append-only per-session shard, so the
+        # measured union is 81 shards (559,609 B, far below the byte limit).
+        # Preserve every historical shard and its byte order; hard 160 stays
+        # unchanged. This is a one-slot correction, not an automatic headroom
+        # expansion. The next shard requires a separate consolidation/rescaling
+        # decision based on then-current measurements.
+        soft_shards=81,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
