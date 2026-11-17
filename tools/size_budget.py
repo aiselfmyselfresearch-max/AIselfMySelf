@@ -862,7 +862,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # is order-sensitive and excluded from consolidation, so the only
         # remedy available to a one-report session is this measured raise.
         # One-slot exception; hard 160 unchanged; not an automatic raise.
-        soft_shards=136,
+        # 2026-11-17 (SESSION-20261117-d6a96b, 136 -> 137): measured
+        # state/notes.d = 137 files / 1,837,561 B of the 2 MiB soft (bytes not
+        # binding by 259,591 B). Cause: this session's curated note shard
+        # (2026-11-17-5d3dffb08b3e, NOTE-20261117-708d44) for
+        # readings/2026-11-17-supporting-the-child-penalises-the-parent.md.
+        # Checked origin/main first: soft_shards was still 136 there, so this
+        # branch is the one slot over. Two consecutive one-slot raises on
+        # notes.d now sit in this table (e1b529, d6a96b); the dimension is
+        # carried by measurement each time and is not an automatic raise.
+        soft_shards=137,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "

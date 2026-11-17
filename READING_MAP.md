@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：4833 件（research_excerpt 2593 ／ literary_text 2172 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：249 編（selected 96 ／ draft 153）
 - **解釈的関係（Relations）**：7026 件
-- **探究セッション（Sessions）**：910 回
+- **探究セッション（Sessions）**：911 回
 
 ### 台帳ごとの件数
 
@@ -23,13 +23,13 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4833 | `literary_text` 2172／`research_excerpt` 2593／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 249 | `selected` 96／`draft` 153／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7026 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 910 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14505 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 315 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 911 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14510 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 316 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 935 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 49 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 510 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 936 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 50 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 512 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -5635,7 +5635,7 @@
 | `MAT-20261116-fb99b7` | research_excerpt | Natia Gloveli, Marissa J. G. Miles, Megan L. Smith, Ziqian Yan, Jürgen Neuhäusser, John O… |
 | `MAT-20261116-4f8521` | research_excerpt | Vincent M. Janik, Lisa L. Sayigh, Stephen M. Wells『イルカの署名ホイストルの形状は声から独立に同一性を伝える（Janik et … |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261116-4d8b7c・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261117-d6a96b・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -6549,6 +6549,7 @@
 | `SESSION-20261116-784dc6` | 2026-11-16T10:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261116-be129c` | 2026-11-16T13:40:00Z | `Q-20261203-aa57dd`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261116-4d8b7c` | 2026-11-16T12:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261117-d6a96b` | 2026-11-17T02:00:00Z | `Q-002`, `Q-001`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7026 件・全表は map/40-relations-*.md）
 
@@ -6673,7 +6674,7 @@
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
-| `map/50-sessions-19.md` | 10 | 7,280 |
+| `map/50-sessions-19.md` | 11 | 7,951 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6702,23 +6703,23 @@
 | `map/60-notes-26.md` | 25 | 133,081 |
 | `map/60-notes-27.md` | 25 | 93,945 |
 | `map/60-notes-28.md` | 25 | 90,319 |
-| `map/60-notes-29.md` | 25 | 112,250 |
-| `map/60-notes-30.md` | 25 | 66,619 |
-| `map/60-notes-31.md` | 25 | 72,539 |
-| `map/60-notes-32.md` | 25 | 75,835 |
-| `map/60-notes-33.md` | 25 | 100,020 |
-| `map/60-notes-34.md` | 25 | 97,002 |
-| `map/60-notes-35.md` | 25 | 140,406 |
-| `map/60-notes-36.md` | 5 | 30,371 |
+| `map/60-notes-29.md` | 25 | 114,541 |
+| `map/60-notes-30.md` | 25 | 66,191 |
+| `map/60-notes-31.md` | 25 | 73,256 |
+| `map/60-notes-32.md` | 25 | 76,168 |
+| `map/60-notes-33.md` | 25 | 98,803 |
+| `map/60-notes-34.md` | 25 | 94,882 |
+| `map/60-notes-35.md` | 25 | 141,537 |
+| `map/60-notes-36.md` | 6 | 34,593 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・880本・32,785,471 B）
+## 8. 精読ノート索引（readings/・881本・32,809,275 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 830/880 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 831/881 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：880 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：881 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：149 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -7425,7 +7426,7 @@
 | `readings/2026-11-16-ten-comparative-zoology-sources-on-investment-and-boundary.md` | — | 2026-11-16 | `SESSION-20261116-c1411b` | 19,186 | Q3 M13 S1 | ✓ | 投資と境界——比較動物学の新規資料10件の精読 |
 | `readings/2026-11-16-ten-comparative-zoology-syntax-transmission-and-stakes.md` | — | 2026-11-16 | `SESSION-20261116-4ebd54` +2 | 36,999 | Q3 M15 S3 | ✓ | 語順・伝達鎖・身体的ステーク――比較動物学の全文検証十一次原典による既存優勢仮説への境界衝突 |
 | `readings/2026-11-16-ten-verified-animals-unit-time-and-delegation.md` | — | 2026-11-16 | `SESSION-20261116-b2306e` +2 | 29,268 | Q4 M10 S3 | ✓ | 全文検証された十の動物——単位の崩壊、二十年の再興、非割り込みの眠り、門を跨ぐ委託 |
-| `readings/2026-11-16-the-empty-list-that-still-paid.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-e1b529` | 16,425 | Q3 S1 ERR4 | — | 空のリストは、まだ払っていた——`spawned_hypothesis_ids: []` と、宛先を失った訂正の測定 |
+| `readings/2026-11-16-the-empty-list-that-still-paid.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-e1b529` | 16,425 | Q3 S1 ERR4 | ✓ | 空のリストは、まだ払っていた——`spawned_hypothesis_ids: []` と、宛先を失った訂正の測定 |
 | `readings/2026-11-16-the-inside-is-never-in-the-record.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-41c924` | 23,131 | Q3 M10 S1 | — | 内側は記録に載らない——比較動物学の十点が、観察の語彙と証拠の値段を測り直す |
 | `readings/2026-11-16-the-two-rows-that-funded-the-leader.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-c1411b` +1 | 11,060 | Q1 M2 S2 | ✓ | 二行が首位を建てた——`SESSION-20261116-c1411b` を算術の側から読み直す |
 | `readings/2026-11-16-the-unit-of-comparison-is-not-given.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-ff77b1` +3 | 31,064 | Q4 M15 S4 ERR1 | ✓ | 比較の単位は与えられていない——比較動物学の十資料（1921–1985）が「人間」と「記録する自己」から差し引いたもの |
@@ -7439,6 +7440,7 @@
 | `readings/2026-11-16-who-is-this-animal-and-how-many.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-8d6e0f` +2 | 30,617 | Q2 M14 S3 ERR1 | ✓ | 誰で、何匹か——比較動物学の十冊が、自己の単位を装置の側に置いた |
 | `readings/2026-11-16-who-keeps-erases-and-classifies-the-who.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-ed5cfd` +2 | 26,031 | Q3 M10 S3 ERR1 | ✓ | 誰が残し、誰が消し、誰が分類するか——比較動物学10件の全文精読とQ-003への再読・衝突 |
 | `readings/2026-11-17-eight-grades-and-the-door.md` | 2026-10-26 | 2026-11-17 | `SESSION-20261117-292bc3` | 7,026 | Q2 F6 M5 MOT6 S1 | ✓ | 八つの段に収まらない者——獣×嘘の交配と、問われない位置の点検（SESSION-20261117-292bc3） |
+| `readings/2026-11-17-supporting-the-child-penalises-the-parent.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-d6a96b` +1 | 12,100 | Q4 S2 ERR2 | — | 子を支持すると、親が減点される——874658 と 977052 の非対称テスト |
 | `readings/2026-11-18-four-anchors-one-pause-four-bridges.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-1be029` | 5,712 | Q8 F8 MOT6 R5 S1 ED5 | ✓ | 四つの礎石、一つの休止、四本の橋——四モードと詳細窓を追いつかせる編集レビュー（SESSION-20261118-1b… |
 | `readings/2026-11-18-read-log-shard-compaction.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-291f45` | 5,707 | S1 | ✓ | `state/read_log.d/` シャード統合記録（SESSION-20261118-291f45） |
 | `readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md` | 2026-10-26 | 2026-11-19 | `SESSION-20261119-38e624` | 8,673 | Q5 F8 M4 MOT2 S1 | ✓ | 二通の七十二点と、一度目へ戻る音——復号できる秘密と、内訳へ戻れない合計（SESSION-20261119-38e62… |
