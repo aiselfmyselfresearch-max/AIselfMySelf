@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：4853 件（research_excerpt 2613 ／ literary_text 2172 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4863 件（research_excerpt 2623 ／ literary_text 2172 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：249 編（selected 96 ／ draft 153）
 - **解釈的関係（Relations）**：7026 件
-- **探究セッション（Sessions）**：915 回
+- **探究セッション（Sessions）**：916 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4853 | `literary_text` 2172／`research_excerpt` 2613／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4863 | `literary_text` 2172／`research_excerpt` 2623／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 249 | `selected` 96／`draft` 153／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7026 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 915 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14532 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 916 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14542 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 319 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 958 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 969 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 51 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 517 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 518 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -797,7 +797,7 @@
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 | `FRAG-20261116-7d62f1` | 一心の張られない隙を、何が越えるか | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4853 件・詳細は map/3*.md）
+## 4. 対話素材（4863 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5654,8 +5654,18 @@
 | `MAT-20261117-2468075fd247` | research_excerpt | Masao Kawai『Kawai (1965) コシマ島ニホンザルの自然群における新たに獲得された前文化的行動』（1965） |
 | `MAT-20261117-2ec0545d7510` | research_excerpt | Robert M. Seyfarth, Dorothy L. Cheney, Peter R. Marler『Seyfarth, Cheney & Marler (1980) ヴ… |
 | `MAT-20261117-70e7013e4058` | research_excerpt | Nicola S. Clayton, Anthony Dickinson『Clayton & Dickinson (1998) スクラブジェイのキャッシュ回収におけるエピソード様… |
+| `MAT-20261117-0d32eb` | research_excerpt | Lynne U. Sneddon, Victoria A. Braithwaite, Michael J. Gentle『Sneddon, Braithwaite & Gentl… |
+| `MAT-20261117-28d297` | research_excerpt | James D. Rose, Robert Arlinghaus, Steven J. Cooke, Bruce K. Diggles, Wolfgang Sawynok, Ed… |
+| `MAT-20261117-349fdf` | research_excerpt | Brian Key『Key (2016)——魚は痛みを感じない』（2016） |
+| `MAT-20261117-8f5dd8` | research_excerpt | Robert W. Elwood『Elwood (2019)——反射と痛みを分ける甲殻類の基準』（2019） |
+| `MAT-20261117-f281f3` | research_excerpt | Robyn J. Crook, Edgar T. Walters『Crook & Walters (2011)——軟体動物の侵害受容と痛み様状態』（2011） |
+| `MAT-20261117-c525cb` | research_excerpt | G. Gregory Neely『Neely et al. (2010)——ショウジョウバエの熱侵害受容と保存された痛み遺伝子』（2010） |
+| `MAT-20261117-128904` | research_excerpt | M. J. Gentle『Gentle (1992)——鳥の痛み』（1992） |
+| `MAT-20261117-721953` | research_excerpt | Patrick Bateson『Bateson (1991)——動物の痛み評価の基準』（1991） |
+| `MAT-20261117-0cec6f` | research_excerpt | Jaak Panksepp『Panksepp (2005)——情動的意識：動物と人間の核心的感情』（2005） |
+| `MAT-20261117-1b3cee` | research_excerpt | Helen Proctor『Proctor (2012)——動物の感受性：現在地と行く先』（2012） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261117-7a44ad・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261117-f0d068・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -6574,6 +6584,7 @@
 | `SESSION-20261117-84aa15` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-d6a96b` | 2026-11-17T02:00:00Z | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-7a44ad` | 2026-11-17T02:40:00Z | `Q-003`, `Q-002`, `Q-001` | — | — |
+| `SESSION-20261117-f0d068` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7026 件・全表は map/40-relations-*.md）
 
@@ -6664,7 +6675,7 @@
 | `map/31-materials-research-24.md` | 100 | 258,649 |
 | `map/31-materials-research-25.md` | 100 | 260,339 |
 | `map/31-materials-research-26.md` | 100 | 235,203 |
-| `map/31-materials-research-27.md` | 13 | 27,860 |
+| `map/31-materials-research-27.md` | 23 | 47,126 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6699,7 +6710,7 @@
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
-| `map/50-sessions-19.md` | 15 | 10,831 |
+| `map/50-sessions-19.md` | 16 | 11,654 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6729,24 +6740,24 @@
 | `map/60-notes-27.md` | 25 | 93,945 |
 | `map/60-notes-28.md` | 25 | 90,319 |
 | `map/60-notes-29.md` | 25 | 99,551 |
-| `map/60-notes-30.md` | 25 | 57,246 |
-| `map/60-notes-31.md` | 25 | 66,653 |
-| `map/60-notes-32.md` | 25 | 72,614 |
-| `map/60-notes-33.md` | 25 | 75,261 |
-| `map/60-notes-34.md` | 25 | 102,001 |
-| `map/60-notes-35.md` | 25 | 96,801 |
-| `map/60-notes-36.md` | 25 | 142,551 |
-| `map/60-notes-37.md` | 4 | 23,726 |
+| `map/60-notes-30.md` | 25 | 43,503 |
+| `map/60-notes-31.md` | 25 | 61,480 |
+| `map/60-notes-32.md` | 25 | 82,065 |
+| `map/60-notes-33.md` | 25 | 68,664 |
+| `map/60-notes-34.md` | 25 | 86,858 |
+| `map/60-notes-35.md` | 25 | 101,674 |
+| `map/60-notes-36.md` | 25 | 127,340 |
+| `map/60-notes-37.md` | 15 | 81,057 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・904本・32,919,293 B）
+## 8. 精読ノート索引（readings/・915本・32,962,587 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 854/904 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 865/915 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：903 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：162 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：914 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：173 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7484,6 +7495,17 @@
 | `readings/2026-11-17-comparative-zoology-honeybee-dance.md` | 2026-11-17 | 2026-11-17 | — | 1,577 | M1 | — | 比較動物学資料：ミツバチの舞踊言語と方向感覚（Karl von Frisch, 1967） |
 | `readings/2026-11-17-comparative-zoology-macaque-potato-washing.md` | 2026-11-17 | 2026-11-17 | — | 1,538 | M1 | — | 比較動物学資料：コシマ島ニホンザルのサツマイモ洗い（Kawai, 1965） |
 | `readings/2026-11-17-comparative-zoology-magpie-msr.md` | 2026-11-17 | 2026-11-17 | — | 1,832 | M1 | — | 比較動物学資料：カササギの鏡像自己認識（Prior et al., 2008） |
+| `readings/2026-11-17-comparative-zoology-pain-01-fish-nociceptors-sneddon.md` | 2026-11-17 | 2026-11-17 | — | 1,056 | M1 | — | 比較動物学資料 pain-01：魚の侵害受容体と「不快」の兆候（Sneddon et al. 2003） |
+| `readings/2026-11-17-comparative-zoology-pain-02-fish-pain-rose.md` | 2026-11-17 | 2026-11-17 | — | 925 | M1 | — | 比較動物学資料 pain-02：魚は本当に痛みを感じるか（Rose et al. 2014） |
+| `readings/2026-11-17-comparative-zoology-pain-03-fish-no-pain-key.md` | 2026-11-17 | 2026-11-17 | — | 794 | M1 | — | 比較動物学資料 pain-03：魚は痛みを感じない（Key 2016） |
+| `readings/2026-11-17-comparative-zoology-pain-04-crustacean-pain-elwood.md` | 2026-11-17 | 2026-11-17 | — | 1,032 | M1 | — | 比較動物学資料 pain-04：反射と痛みを分ける甲殻類の基準（Elwood 2019） |
+| `readings/2026-11-17-comparative-zoology-pain-05-mollusc-nociception-crook-walters.md` | 2026-11-17 | 2026-11-17 | — | 1,089 | M1 | — | 比較動物学資料 pain-05：軟体動物の侵害受容と痛み様状態（Crook & Walters 2011） |
+| `readings/2026-11-17-comparative-zoology-pain-06-drosophila-heat-nociception-neely.md` | 2026-11-17 | 2026-11-17 | — | 1,049 | M1 | — | 比較動物学資料 pain-06：ショウジョウバエの熱侵害受容と保存された痛み遺伝子（Neely et al. 2010） |
+| `readings/2026-11-17-comparative-zoology-pain-07-bird-pain-gentle.md` | 2026-11-17 | 2026-11-17 | — | 880 | M1 | — | 比較動物学資料 pain-07：鳥の痛み（Gentle 1992） |
+| `readings/2026-11-17-comparative-zoology-pain-08-pain-assessment-bateson.md` | 2026-11-17 | 2026-11-17 | — | 1,000 | M1 | — | 比較動物学資料 pain-08：動物の痛み評価の基準（Bateson 1991） |
+| `readings/2026-11-17-comparative-zoology-pain-09-affective-consciousness-panksepp.md` | 2026-11-17 | 2026-11-17 | — | 1,039 | M1 | — | 比較動物学資料 pain-09：情動的意識——動物と人間の核心的感情（Panksepp 2005） |
+| `readings/2026-11-17-comparative-zoology-pain-10-sentience-proctor.md` | 2026-11-17 | 2026-11-17 | — | 822 | M1 | — | 比較動物学資料 pain-10：動物の感受性——現在地と行く先（Proctor 2012） |
+| `readings/2026-11-17-comparative-zoology-pain-affect-close-reading.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-f0d068` | 9,053 | Q2 S1 | — | 比較動物学・痛みと情動10資料の精読——「感じる」と呼ぶ前に、何を測ったか |
 | `readings/2026-11-17-comparative-zoology-rat-helping.md` | 2026-11-17 | 2026-11-17 | — | 1,707 | M1 | — | 比較動物学資料：閉じ込められた仲間を助けるラット（Bartal, Decety & Mason, 2011） |
 | `readings/2026-11-17-comparative-zoology-scrub-jay-episodic-memory.md` | 2026-11-17 | 2026-11-17 | — | 1,538 | M1 | — | 比較動物学資料：スクラブジェイのキャッシュ回収におけるエピソード様記憶（Clayton & Dickinson, 19… |
 | `readings/2026-11-17-comparative-zoology-vervet-alarm-calls.md` | 2026-11-17 | 2026-11-17 | — | 1,795 | M1 | — | 比較動物学資料：ヴェルベット猿の捕食者別警報呼声（Seyfarth, Cheney & Marler, 1980） |
