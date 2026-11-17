@@ -244,39 +244,60 @@ def run(target: str = DEFAULT_TARGET, question: str = QUESTION,
     return out
 
 
+#: Section headings, in the order the full report prints them. ``render`` walks
+#: this table instead of indexing the arms by name: ``--arm`` filters the result
+#: down to one arm, and an indexed lookup crashed on the other three
+#: (``KeyError: 'position'``). Recorded as ERR-20261117-* and fixed here.
+ARM_HEADINGS = {
+    "position": "ARM position -- same content, different address",
+    "content": "ARM content -- same address, different content",
+    "rule_powered": "ARM rule (powered) -- only the admission predicate changes",
+    "mix": "ARM mix -- row count/targets/positions fixed, verdict mix varies",
+}
+
+
 def render(res: dict[str, Any]) -> str:
+    """Render whatever arms ``res`` carries. Prints a full report when all four
+    are present and a single-arm report when ``--arm`` filtered the result."""
     lines = [f"target={res['target']} question={res['question']}", ""]
-    pos = res["arms"]["position"]
-    lines.append("ARM position -- same content, different address")
-    for k, v in pos.items():
-        if v.get("present"):
-            lines.append(f"  {k:28s} dlog_odds={v['d_log_odds']:+.4f} "
-                         f"flags={len(v['errata_flags'])}")
-    lines.append("")
-    lines.append("ARM content -- same address, different content")
-    for k, v in res["arms"]["content"].items():
-        if v.get("present"):
-            lines.append(f"  {k:28s} dlog_odds={v['d_log_odds']:+.4f}")
-    lines.append("")
-    lines.append("ARM rule (powered) -- only the admission predicate changes")
-    for tag, per in res["arms"]["rule_powered"].items():
-        lines.append(f"  {tag}")
-        for ch, v in per.items():
-            if v.get("present"):
-                lines.append(f"      {ch:8s} dlog_odds={v['d_log_odds']:+.4f} "
+    arms = res.get("arms") or {}
+    for name, heading in ARM_HEADINGS.items():
+        if name not in arms:
+            continue
+        lines.append(heading)
+        arm = arms[name]
+        if name == "rule_powered":
+            for tag, per in arm.items():
+                lines.append(f"  {tag}")
+                for ch, v in per.items():
+                    if v.get("present"):
+                        lines.append(f"      {ch:8s} dlog_odds={v['d_log_odds']:+.4f} "
+                                     f"flags={len(v['errata_flags'])}")
+            lines.append("")
+            continue
+        for k, v in arm.items():
+            if not v.get("present"):
+                continue
+            if name == "mix":
+                lines.append(f"  {k:28s} dlog_odds={v['d_log_odds']:+.4f} "
+                             f"KL={v['kl_bits']:.4f} P={v['d_posterior']:+.4f}")
+            elif name == "position":
+                lines.append(f"  {k:28s} dlog_odds={v['d_log_odds']:+.4f} "
                              f"flags={len(v['errata_flags'])}")
-    lines.append("")
-    lines.append("ARM mix -- row count/targets/positions fixed, verdict mix varies")
-    for k, v in res["arms"]["mix"].items():
-        if v.get("present"):
-            lines.append(f"  {k:28s} dlog_odds={v['d_log_odds']:+.4f} "
-                         f"KL={v['kl_bits']:.4f} P={v['d_posterior']:+.4f}")
-    lines.append("")
-    d = res["direct_penalty_branch"]
-    lines.append(f"direct -0.60 branch: {d['live_hypotheses_with_a_direct_errata_row']}"
-                 f"/{d['live_hypothesis_count']} hypotheses reachable, "
-                 f"{d['live_errata_rows']} errata rows live")
-    return "\n".join(lines)
+            else:
+                lines.append(f"  {k:28s} dlog_odds={v['d_log_odds']:+.4f}")
+        lines.append("")
+    if arms and set(arms) != set(ARM_HEADINGS):
+        missing = [n for n in ARM_HEADINGS if n not in arms]
+        lines.append(f"(single-arm run: {', '.join(arms)}; omitted "
+                     f"{', '.join(missing)} -- rerun without --arm for the full report)")
+        lines.append("")
+    d = res.get("direct_penalty_branch")
+    if d:
+        lines.append(f"direct -0.60 branch: {d['live_hypotheses_with_a_direct_errata_row']}"
+                     f"/{d['live_hypothesis_count']} hypotheses reachable, "
+                     f"{d['live_errata_rows']} errata rows live")
+    return "\n".join(lines).rstrip()
 
 
 def main(argv: list[str] | None = None) -> int:

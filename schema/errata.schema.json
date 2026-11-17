@@ -1,131 +1,133 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "errata.schema.json",
-  "title": "Errata Record",
-  "description": "A dated record of a claim held in a fragment, a material, or another ledger record, that no longer matches measurement. The record is not rewritten; the judgement is kept beside it, with the check that produced it. Modelled on Augustine's Retractationes and on retraction notices in publishing, not on silent correction.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "errata_id",
-    "claim",
-    "claim_location",
-    "check",
-    "verdict",
-    "status",
-    "created_at",
-    "note"
-  ],
-  "properties": {
-    "errata_id": {
-      "type": "string",
-      "minLength": 1
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "errata.schema.json",
+ "title": "Errata Record",
+ "description": "A dated record of a claim held in a fragment, a material, or another ledger record, that no longer matches measurement. The record is not rewritten; the judgement is kept beside it, with the check that produced it. Modelled on Augustine's Retractationes and on retraction notices in publishing, not on silent correction.",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "errata_id",
+  "claim",
+  "claim_location",
+  "check",
+  "verdict",
+  "status",
+  "created_at",
+  "note"
+ ],
+ "properties": {
+  "errata_id": {
+   "type": "string",
+   "minLength": 1
+  },
+  "subject_type": {
+   "type": "string",
+   "enum": [
+    "fragment",
+    "material",
+    "question",
+    "session",
+    "motif",
+    "note",
+    "hypothesis",
+    "evaluation",
+    "erratum",
+    "editorial_decision",
+    "report",
+    "tool",
+    "other"
+   ]
+  },
+  "subject_id": {
+   "type": "string",
+   "minLength": 1
+  },
+  "claim": {
+   "type": "string",
+   "minLength": 1
+  },
+  "claim_location": {
+   "type": "string",
+   "minLength": 1
+  },
+  "check": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "kind"
+   ],
+   "properties": {
+    "kind": {
+     "type": "string",
+     "enum": [
+      "tail_question_count",
+      "phrase_set_count",
+      "phrase_in_fragments",
+      "last_sentence_length",
+      "narrator_mode_usage",
+      "pronoun_absence",
+      "quotation_match",
+      "git_deletions",
+      "manual"
+     ]
     },
-    "subject_type": {
-      "type": "string",
-      "enum": [
-        "fragment",
-        "material",
-        "question",
-        "session",
-        "motif",
-        "note",
-        "hypothesis",
-        "evaluation",
-        "erratum",
-        "editorial_decision",
-        "report",
-        "tool",
-        "other"
-      ]
-    },
-    "subject_id": {
-      "type": "string",
-      "minLength": 1
-    },
-    "claim": {
-      "type": "string",
-      "minLength": 1
-    },
-    "claim_location": {
-      "type": "string",
-      "minLength": 1
-    },
-    "check": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "kind"
-      ],
-      "properties": {
-        "kind": {
-          "type": "string",
-          "enum": [
-            "tail_question_count",
-            "phrase_set_count",
-            "phrase_in_fragments",
-            "last_sentence_length",
-            "narrator_mode_usage",
-            "pronoun_absence",
-            "quotation_match",
-            "git_deletions",
-            "manual"
-          ]
-        },
-        "params": {
-          "type": "object",
-          "description": "All inputs needed to re-run the check. A check with unrecorded inputs is not reproducible and should be classified unmeasurable."
-        }
-      }
-    },
-    "verdict": {
-      "type": "string",
-      "enum": [
-        "holds",
-        "contradicted",
-        "unmeasurable"
-      ]
-    },
-    "status": {
-      "type": "string",
-      "enum": [
-        "open",
-        "annotated",
-        "withdrawn"
-      ]
-    },
-    "measured_now": {
-      "type": "string"
-    },
-    "corrected_by": {
-      "type": "string"
-    },
-    "duplicate_of": {
-      "type": "array",
-      "description": "Optional IDs of earlier errata rows that assert the SAME claim against the same addressee, reworded. The engine cannot judge whether two differently-worded Japanese claims are the same claim, and guessing would merge genuinely distinct corrections, so a restatement declares itself here. Exact repeats (same addressee, same claim text after whitespace/NFKC normalisation) are collapsed without a declaration. A group of rows about one claim costs one penalty, not one per row; the group still costs if any member is a live correction, so this field cannot be used to escape a penalty. Visibility is unaffected: every row stays in errata_flags.",
-      "items": {
-        "type": "string",
-        "minLength": 1
-      },
-      "uniqueItems": true
-    },
-    "note": {
-      "type": "string"
-    },
-    "created_at": {
-      "type": "string"
-    },
-    "fragment_id": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Shortcut for subject_type='fragment'. Use either this or subject_id, not both."
-    },
-    "weight_effect": {
-      "type": "string",
-      "enum": [
-        "flag",
-        "void_row"
-      ],
-      "description": "What a live correction does to the belief state (2026-11-16, P-6). 'flag' (default when omitted) only surfaces the correction. 'void_row' withdraws the weight of the evaluation row named by subject_id, which requires subject_type == 'evaluation'; the row stays in the ledger and in counts, but no longer moves any posterior. This exists so that correcting one's own over-claim punishes the row, not the hypothesis the row supported."
+    "params": {
+     "type": "object",
+     "description": "All inputs needed to re-run the check. A check with unrecorded inputs is not reproducible and should be classified unmeasurable."
     }
+   }
+  },
+  "verdict": {
+   "type": "string",
+   "enum": [
+    "holds",
+    "contradicted",
+    "unmeasurable"
+   ]
+  },
+  "status": {
+   "type": "string",
+   "enum": [
+    "open",
+    "annotated",
+    "withdrawn",
+    "corrected"
+   ],
+   "description": "A written value, not an edited one: rows are append-only, so `open` stays `open` even after a later session corrects it. `corrected` is the DERIVED reading of a row whose `corrected_by` is set (tools/errata_audit.py --derived-status); it is in the enum so that the derived value has a name the schema knows, and so that the rows that already write it are not treated as typos. Readers who need the effective state should derive it rather than rely on the written field."
+  },
+  "measured_now": {
+   "type": "string"
+  },
+  "corrected_by": {
+   "type": "string"
+  },
+  "duplicate_of": {
+   "type": "array",
+   "description": "Optional IDs of earlier errata rows that assert the SAME claim against the same addressee, reworded. The engine cannot judge whether two differently-worded Japanese claims are the same claim, and guessing would merge genuinely distinct corrections, so a restatement declares itself here. Exact repeats (same addressee, same claim text after whitespace/NFKC normalisation) are collapsed without a declaration. A group of rows about one claim costs one penalty, not one per row; the group still costs if any member is a live correction, so this field cannot be used to escape a penalty. Visibility is unaffected: every row stays in errata_flags.",
+   "items": {
+    "type": "string",
+    "minLength": 1
+   },
+   "uniqueItems": true
+  },
+  "note": {
+   "type": "string"
+  },
+  "created_at": {
+   "type": "string"
+  },
+  "fragment_id": {
+   "type": "string",
+   "minLength": 1,
+   "description": "Shortcut for subject_type='fragment'. Use either this or subject_id, not both."
+  },
+  "weight_effect": {
+   "type": "string",
+   "enum": [
+    "flag",
+    "void_row"
+   ],
+   "description": "What a live correction does to the belief state (2026-11-16, P-6). 'flag' (default when omitted) only surfaces the correction. 'void_row' withdraws the weight of the evaluation row named by subject_id, which requires subject_type == 'evaluation'; the row stays in the ledger and in counts, but no longer moves any posterior. This exists so that correcting one's own over-claim punishes the row, not the hypothesis the row supported."
   }
+ }
 }
