@@ -384,6 +384,90 @@ def report_hypotheses(root: Path, *, out) -> dict:
 # ---------------------------------------------------------------- main
 
 
+
+READ_ID_RE = re.compile(r"READ-\d{8}-[0-9a-f]{6}")
+CONTEST_NAMING_RE = re.compile(r"READ-\d{8}-[0-9a-f]{6}|異議|反論|contest|前回|以前|§|「|主張")
+# A later reading *answers* a contest only if it names the contest itself: the
+# contested READ id, or an explicit word for disagreeing.  Quotation marks and
+# section references are deliberately excluded here; they made the count rise
+# from 98 to 265 without any reading changing.
+CONTEST_ANSWER_RE = re.compile(r"異議|反論|contest|問い直|疑いを|却下|斥け")
+
+
+def _is_mechanical(row: dict) -> bool:
+    return str(row.get("note") or "").startswith("機械的")
+
+
+def report_contests(read_log: list[dict], *, out) -> dict:
+    """How often the archive contests its own records, and whether the contest lands.
+
+    A ``contested`` row is a reading with a sign: it says the record was read
+    against itself.  Three things are counted, because they come apart: how
+    many readings are contests; how many contests name the claim they contest
+    (a READ-* id is the only machine-readable address the ledger has); and how
+    many are *answered* — followed, in another session, by a reading whose note
+    names the contest.  Nothing here judges whether a contest was right.
+    """
+    hand = [r for r in read_log if not _is_mechanical(r)]
+    contests = [r for r in hand if r.get("reading") == "contested"]
+    by_type = Counter(_target_type_of(r) for r in contests)
+
+    citing = [r for r in contests if READ_ID_RE.search(str(r.get("note") or ""))]
+    naming = [r for r in contests if CONTEST_NAMING_RE.search(str(r.get("note") or ""))]
+    any_citing = [r for r in hand if READ_ID_RE.search(str(r.get("note") or ""))]
+
+    rows_by_target: dict[tuple[str, str], list[dict]] = {}
+    for row in hand:
+        target = row.get("target") or {}
+        if not isinstance(target, dict) or not target.get("id"):
+            continue
+        rows_by_target.setdefault((str(target.get("type")), str(target["id"])), []).append(row)
+
+    followed = answered = 0
+    for rows in rows_by_target.values():
+        rows = sorted(rows, key=lambda r: str(r.get("created_at") or ""))
+        for i, row in enumerate(rows):
+            if row.get("reading") != "contested":
+                continue
+            later = [x for x in rows[i + 1:] if x.get("session_id") != row.get("session_id")]
+            if later:
+                followed += 1
+                rid = str(row.get("read_id") or "")
+                if any((rid and rid in str(x.get("note") or "")) or
+                       CONTEST_ANSWER_RE.search(str(x.get("note") or "")) for x in later):
+                    answered += 1
+
+    out(f"hand-written readings           : {len(hand)}")
+    out(f"contested readings              : {len(contests)}"
+        f"  ({len(contests) / max(len(hand), 1) * 100:.1f}% of hand-written)")
+    out("  by target type: " + ", ".join(f"{k}={v}" for k, v in by_type.most_common()))
+    out(f"contest names what it contests   : {len(naming)} / {len(contests)}"
+        f"  ({len(naming) / max(len(contests), 1) * 100:.1f}%)")
+    out(f"contest cites a READ-* id        : {len(citing)} / {len(contests)}"
+        f"  ({len(citing) / max(len(contests), 1) * 100:.1f}%)")
+    out(f"rows anywhere citing a READ-* id : {len(any_citing)} / {len(hand)}"
+        f"  ({len(any_citing) / max(len(hand), 1) * 100:.1f}%)")
+    out(f"contest followed by another session's reading : {followed} / {len(contests)}"
+        f"  ({followed / max(len(contests), 1) * 100:.1f}%)")
+    out(f"contest named by that later reading           : {answered} / {len(contests)}"
+        f"  ({answered / max(len(contests), 1) * 100:.1f}%)")
+    out("  註: 「名指す」は註の語彙（READ id・異議・前回・§・引用）で判定した近似的な数。")
+    return {
+        "handwritten": len(hand),
+        "contested": len(contests),
+        "by_target_type": dict(by_type),
+        "naming": len(naming),
+        "citing_read_id": len(citing),
+        "any_citing_read_id": len(any_citing),
+        "followed": followed,
+        "answered": answered,
+    }
+
+
+def _target_type_of(row: dict) -> str:
+    target = row.get("target") or {}
+    return str(target.get("type") or "(none)") if isinstance(target, dict) else "(none)"
+
 def main(argv: list[str] | None = None) -> int:
     global ROOT
     ap = argparse.ArgumentParser(description=__doc__,
@@ -393,6 +477,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--naming", action="store_true")
     ap.add_argument("--passages", action="store_true")
     ap.add_argument("--hypotheses", action="store_true")
+    ap.add_argument("--contests", action="store_true",
+                    help="how often readings contest their target, and whether the contest is "
+                         "addressed or answered (report only)")
     ap.add_argument("--json", action="store_true", help="machine-readable output")
     ap.add_argument("--root", default=str(ROOT))
     args = ap.parse_args(argv)
@@ -405,7 +492,8 @@ def main(argv: list[str] | None = None) -> int:
         print("no materials found", file=sys.stderr)
         return 1
 
-    every = not (args.works or args.witnesses or args.naming or args.passages or args.hypotheses)
+    every = not (args.works or args.witnesses or args.naming or args.passages
+                 or args.hypotheses or args.contests)
     payload: dict[str, object] = {}
     lines: list[str] = []
 
@@ -421,6 +509,12 @@ def main(argv: list[str] | None = None) -> int:
         if not args.json:
             out("--- 1. works vs rows ---")
         payload["works"] = report_works(materials, out=out)
+        if not args.json:
+            out("")
+    if args.contests:
+        if not args.json:
+            out("--- 異議は、届いているか ---")
+        payload["contests"] = report_contests(read_log, out=out)
         if not args.json:
             out("")
     if every or args.witnesses:
