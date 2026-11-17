@@ -6743,7 +6743,7 @@
 | `map/60-notes-27.md` | 25 | 93,945 |
 | `map/60-notes-28.md` | 25 | 90,319 |
 | `map/60-notes-29.md` | 25 | 99,551 |
-| `map/60-notes-30.md` | 25 | 43,657 |
+| `map/60-notes-30.md` | 25 | 43,661 |
 | `map/60-notes-31.md` | 25 | 67,497 |
 | `map/60-notes-32.md` | 25 | 78,661 |
 | `map/60-notes-33.md` | 25 | 68,753 |
@@ -6760,7 +6760,7 @@
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 867/917 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：917 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：175 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：174 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7494,7 +7494,7 @@
 | `readings/2026-11-17-comparative-zoology-dog-pointing.md` | 2026-11-17 | 2026-11-17 | — | 1,536 | M1 | — | 比較動物学資料：犬による人間が与えた合図の利用（Miklósi et al., 1998） |
 | `readings/2026-11-17-comparative-zoology-dolphin-signature-whistle.md` | 2026-11-17 | 2026-11-17 | — | 1,708 | M1 | — | 比較動物学資料：バンドウイルカのシグネチャーホイッスル（Janik & Sayigh, 2013） |
 | `readings/2026-11-17-comparative-zoology-elephant-msr.md` | 2026-11-17 | 2026-11-17 | — | 1,612 | M1 | — | 比較動物学資料：アジアゾウの鏡像自己認識（Plotnik, de Waal & Reiss, 2006） |
-| `readings/2026-11-17-comparative-zoology-group-synthesis.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-5cbd91e3970e` | 5,872 | Q2 M10 S1 | — | 比較動物学資料群の横断報告：AIによる解釈と考え（2026-11-17 新規10件） |
+| `readings/2026-11-17-comparative-zoology-group-synthesis.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-5cbd91e3970e` | 5,872 | Q2 M10 S1 | ✓ | 比較動物学資料群の横断報告：AIによる解釈と考え（2026-11-17 新規10件） |
 | `readings/2026-11-17-comparative-zoology-honeybee-dance.md` | 2026-11-17 | 2026-11-17 | — | 1,577 | M1 | — | 比較動物学資料：ミツバチの舞踊言語と方向感覚（Karl von Frisch, 1967） |
 | `readings/2026-11-17-comparative-zoology-macaque-potato-washing.md` | 2026-11-17 | 2026-11-17 | — | 1,538 | M1 | — | 比較動物学資料：コシマ島ニホンザルのサツマイモ洗い（Kawai, 1965） |
 | `readings/2026-11-17-comparative-zoology-magpie-msr.md` | 2026-11-17 | 2026-11-17 | — | 1,832 | M1 | — | 比較動物学資料：カササギの鏡像自己認識（Prior et al., 2008） |
