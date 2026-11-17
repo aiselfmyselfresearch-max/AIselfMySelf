@@ -364,7 +364,21 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # its five EVL rows name it) and cannot be folded into another
         # session's file. One-slot exception; hard 160 unchanged; not an
         # automatic raise.
-        soft_shards=127,
+        # 2026-11-17 (127 -> 128, SESSION-20261117-9980c1): this session's own
+        # 10-row acquisition shard (2026-11-17-2b61f0755311.jsonl, neuroscience
+        # sources on action/ownership/the offline self: Rizzolatti & Craighero
+        # 2004, Hickok 2009, Vallar & Ronchi 2009, Hobson 2000, Alkire 2008,
+        # Crick & Koch 1990, Fleming & Dolan 2012, Frith 2000, Uddin 2005,
+        # Winocur & Moscovitch 2011) is the 128th file. Measured before the
+        # append: state/materials.d = 127/127 -- exactly at the soft ceiling,
+        # zero free slots. Measured after: 128 files / 13,501,403 B of the
+        # 13 MiB soft -- the byte headroom is now only ~130 KB, so this shard
+        # is byte- and count-binding together. The shard is path-addressed
+        # provenance (the report and its five EVL rows name it) and cannot be
+        # folded into another session's file. One-slot exception; hard 160
+        # unchanged; not an automatic raise. The next session must treat this
+        # dimension as a consolidation decision, not a headroom request.
+        soft_shards=128,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -512,15 +526,27 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # consolidation remedy this dimension technically allows is still
         # unimplemented (71/72-era self-location pinning). Bytes not binding
         # (5.49 MiB of 6.50 MiB soft). Hard 160 unchanged; deliberate headroom.
+        # 2026-11-17 (136 -> 137, SESSION-20261117-9980c1): this session's own
+        # handwritten shard (2026-11-17-306cdf60cd82.jsonl, 10 read_log rows,
+        # one per new material) is the 137th file. Measured before the append:
+        # state/read_log.d was 136/136 -- exactly at the soft ceiling, zero
+        # free slots. Measured after: 137 files / 5,781,825 B of the 6.50 MiB
+        # soft (bytes not binding by ~1.0 MiB). The rows are hand-written
+        # per-session provenance for the 2026-11-17 action/ownership report
+        # and cannot be folded into another session's shard. One-slot
+        # exception; hard 160 unchanged; not an automatic raise.
         # 2026-11-17 (SESSION-20261117-ac19bf, 136 -> 138): this session's own
-        # shard (9 handwritten read_log rows: 4 reports, 5 hypotheses). Measured
-        # before the append: state/read_log.d was 137/137 -- exactly at the soft
-        # ceiling, zero free slots. Every entry above starts from that same
-        # condition, which is the point: a ceiling set equal to the measurement
-        # fails the *next* session by construction. Two slots of margin are kept
-        # above the measurement for the same reason recorded in the 41b123
-        # entry. Bytes not binding (5.51 MiB of 6.50 MiB soft). Hard 160
-        # unchanged. The consolidation debt on this dimension still stands.
+        # shard (9 handwritten read_log rows: 4 reports, 5 hypotheses,
+        # 2026-11-17-ecccb21acd62.jsonl) measured 137/137 on its own branch
+        # and was merged via origin/main a8daa17.
+        # 2026-11-17 (merge of origin/main a8daa17 x arena/b7508791-aiselfmyself,
+        # 137+1 -> 138): the union carries BOTH same-day shards (this branch's
+        # 306cdf60cd82 for the action/ownership report, and ac19bf's
+        # ecccb21acd62 via #895). Measured on the merged tree: state/read_log.d
+        # = 138 files. Parallel branches each kept their own shard; neither
+        # touched the other's file. The union is the sum of two one-slot
+        # exceptions, not a new allowance; the consolidation debt on this
+        # dimension still stands. Hard 160 unchanged.
         soft_shards=138,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
@@ -727,14 +753,23 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # measurement (139 -> 141) because a limit set equal to the measurement
         # is a tripwire for the next single session (the 936 -> 948 entry in the
         # readings budget records the same reasoning). Hard 160 unchanged.
+        # 2026-11-17 (141 -> 142, SESSION-20261117-9980c1): this session's own
+        # sessions shard (2026-11-17-fefc93d42ff0.jsonl) is the 142nd file.
+        # Measured before the append: state/sessions.d was 141/141 -- exactly
+        # at the soft ceiling. Measured after: 142 files / 3,026,039 B of the
+        # 4 MiB soft (bytes not binding by ~1.17 MiB). The shard cannot be
+        # folded into another session's file after the fact. One-slot
+        # exception; hard 160 unchanged; not an automatic raise.
         # 2026-11-17 (SESSION-20261117-ac19bf, 141 -> 143): this session's own
-        # shard (1 session row). Measured before the append: state/sessions.d
-        # was 142/142 -- exactly at the soft ceiling, zero free slots. Same
-        # structural condition as the read_log.d raise in this same commit; two
-        # slots of margin instead of zero. Bytes not binding (2.88 MiB of 4 MiB
-        # soft). Hard 160 unchanged. The consolidation debt stands: the
-        # sessions.notes self-location rule from parallel-work.md §2 still pins
-        # the old shards, so merging them saves no files.
+        # shard (1 session row, 2026-11-17-b7faa24fb65a.jsonl) measured
+        # 142/142 on its own branch and was merged via origin/main a8daa17.
+        # 2026-11-17 (merge of origin/main a8daa17 x arena/b7508791-aiselfmyself,
+        # union -> 143): the merged tree carries BOTH same-day shards (this
+        # branch's fefc93d42ff0 and ac19bf's b7faa24fb65a via #895). Measured
+        # on the merged tree: state/sessions.d = 143 files. Parallel branches
+        # each kept their own shard. The union is the sum of two one-slot
+        # exceptions, not a new allowance; the consolidation debt stands.
+        # Hard 160 unchanged.
         soft_shards=143,
         hard_shards=160,
         remedy=(
@@ -1029,16 +1064,33 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # of margin above the measurement (144 -> 146): a limit equal to the
         # measurement fails the next single session (cf. the 936 -> 948 entry in
         # the readings budget). Hard 160 unchanged.
+        # 2026-11-17 (146 -> 147, SESSION-20261117-9980c1): this session's own
+        # curated note shard (2026-11-17-2e3722036698.jsonl, NOTE-20261117-3b0064
+        # -- note_index.py --register for the action/ownership report -- plus
+        # the curate row NOTE-20261117-a6c91b carrying the same-session
+        # measurements and class-of-verdict caveats) is the 147th file.
+        # Measured before the append: state/notes.d was 146/146 -- exactly at
+        # the soft ceiling, zero free slots. Measured after: 147 files /
+        # 1,991,966 B of the 2 MiB soft -- the byte headroom is now only
+        # ~5 KiB, so this shard is byte- and count-binding together. notes.d is
+        # order-sensitive and excluded from consolidation; the register tool
+        # creates its own shard and cannot write into another session's file.
+        # One-slot exception; hard 160 unchanged; not an automatic raise. The
+        # next session must treat this dimension as a consolidation decision,
+        # not a headroom request.
         # 2026-11-17 (146 -> 148, SESSION-20261117-ac19bf): this session's two
-        # curated note rows for one report -- the register stub plus the
-        # claim-bearing row that supersedes it (NOTE-20261117-b2acbf, six
-        # claims). Measured before the append: state/notes.d was 147/147 --
-        # exactly at the soft ceiling, zero free slots. notes.d is
-        # order-sensitive and excluded from consolidation (net reclaim 0), and
-        # appending these rows to another session's shard would mix path
-        # provenance across sessions. Two slots of margin above the measurement
-        # for the reason recorded in the 142 -> 144 entry. Hard 160 unchanged.
-        soft_shards=148,
+        # curated note shards for one report -- the register stub plus the
+        # claim-bearing row that supersedes it (2026-11-17-1383aadab03b.jsonl,
+        # 2026-11-17-6ec952e37459.jsonl via origin/main a8daa17 / PR #895).
+        # 2026-11-17 (merge of origin/main a8daa17 x arena/b7508791-aiselfmyself,
+        # union -> 149): the merged tree carries BOTH branches' same-day
+        # shards (this branch's 2e3722036698 plus ac19bf's two). Measured on
+        # the merged tree: state/notes.d = 149 files. Parallel branches each
+        # kept their own shards; neither touched the other's files. The union
+        # is the sum of two same-day exception sets (147 + 2), not a new
+        # allowance; the consolidation debt the 4e438d caveat names is still
+        # unpaid. Hard 160 unchanged.
+        soft_shards=149,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
@@ -1073,14 +1125,26 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # session's append-only shard after the fact. One-slot exception, with
         # the same standing caveat as above: the *next* shard needs a
         # consolidation decision, not an automatic raise. Hard 160 unchanged.
+        # 2026-11-17 (82 -> 83, SESSION-20261117-9980c1): this session's five
+        # evaluation rows (narrows_scope 46456a; supports bccd54; narrows_scope
+        # 8f6552; supports 16929d; reproducible_script supports 4bf2dc,
+        # 2026-11-17-ac68d17e7616.jsonl) are the 83rd file. Measured before the
+        # append: state/evaluations.d was 82/82 -- exactly at the soft ceiling,
+        # zero free slots. Measured after: 83 files / 688,294 B of the 4 MiB
+        # soft -- bytes are not binding; only the count is. The rows cannot be
+        # folded into another session's shard after the fact. One-slot
+        # exception; hard 160 unchanged; not an automatic raise.
         # 2026-11-17 (82 -> 84, SESSION-20261117-ac19bf): this session's two
-        # reproducible_script rows. Measured before the append:
-        # state/evaluations.d was 83/83 -- exactly at the soft ceiling, zero free
-        # slots. Bytes are not binding (667 KiB of the 4 MiB soft). Append-only
-        # per-session shards cannot be folded into another session's file after
-        # the fact. Two slots of margin above the measurement; the standing
-        # caveat is unchanged -- the next shard needs a consolidation decision,
-        # not an automatic raise. Hard 160 unchanged.
+        # reproducible_script rows (2026-11-17-e50f13432e7c.jsonl) measured
+        # 83/83 on its own branch and was merged via origin/main a8daa17.
+        # 2026-11-17 (merge of origin/main a8daa17 x arena/b7508791-aiselfmyself,
+        # union -> 84): the merged tree carries BOTH same-day shards (this
+        # branch's ac68d17e7616 plus ac19bf's e50f13432e7c via #895). Measured
+        # on the merged tree: state/evaluations.d = 84 files. Parallel branches
+        # each kept their own shard. The union is the sum of two one-slot
+        # exceptions, not a new allowance; the standing caveat is unchanged --
+        # the *next* shard needs a consolidation decision, not an automatic
+        # raise. Hard 160 unchanged.
         soft_shards=84,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
