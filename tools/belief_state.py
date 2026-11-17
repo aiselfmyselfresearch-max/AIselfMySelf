@@ -497,8 +497,9 @@ def compute_belief_state(
     *,
     root: Path = ROOT,
     pair_level_repeat: bool = False,
+    heir_credit: bool = True,
 ) -> dict[str, Any]:
-    """Compute posterior distributions, uncertainties, lineage shifts, and next-test targets.
+    """Compute posterior distributions, uncertainties, lineage shifts, and next-tests.
 
     ``pair_level_repeat`` selects the *basis* for the repetition discount:
 
@@ -512,6 +513,24 @@ def compute_belief_state(
     reproducible. ``BELIEF_MAP.md`` shows both bases side by side
     (``P`` and ``P_sep``); the gap between them is the repetition effect
     measured in ``readings/2026-11-16-stable-words-do-not-make-progress.md`` §3.
+
+    ``heir_credit`` (added 2026-11-17, default ``True`` = present arithmetic)
+    controls the third of three write-side readings of a single field. A row
+    that narrows or refutes a hypothesis pays its children a boost
+    (``0.75*delta`` / ``0.95*delta`` divided by the number of children, and
+    ``0.80*delta`` to the parents under ``subsumes``). When a row names no
+    ``spawned_hypothesis_ids`` and no ``scope_inherited_by_hypothesis_ids``,
+    the engine falls back to every hypothesis whose
+    ``parent_hypothesis_ids`` contains the target. ``False`` drops that
+    fallback, keeping only names the row itself wrote.
+
+    This exists because ``compared_against_hypothesis_ids`` and the lineage
+    fallback intersect: 34 rows name as their comparison partner a hypothesis
+    that is, by lineage, their target's child. In those rows the field means
+    "this was my opponent" and simultaneously triggers "this is my heir", so
+    naming an opponent *raises* it. ``heir_credit=False`` is the only way to
+    separate the two readings without editing rows
+    (readings/2026-11-17-the-prose-is-right-and-the-mechanism-is-wrong.md §4).
     """
     cols = data if data is not None else load_belief_ledgers(root)
     questions = cols.get("questions", {})
@@ -661,7 +680,10 @@ def compute_belief_state(
         for shid in evl.get("scope_inherited_by_hypothesis_ids") or []:
             if isinstance(shid, str) and shid in hypotheses and shid != target_id and shid not in spawned:
                 spawned.append(shid)
-        if not spawned:
+        if not spawned and heir_credit:
+            # The fallback is the reason a named opponent can be paid as an heir:
+            # see the ``heir_credit`` note in the docstring. ``heir_credit=False``
+            # keeps only names this row wrote itself.
             spawned = children_by_parent.get(target_id, [])
 
         # Separation bookkeeping for the audit columns (never changes weights).

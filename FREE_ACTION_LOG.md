@@ -646,3 +646,5 @@ Q-003 は前セッションの二評価で EIG 0.0081 まで下がり、飽和�
 ### 検証
 
 `validate_seed.py`／`append_only_check.py`／`size_budget.py --strict`／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check`／`errata_audit.py --schema` を実行し、`belief_state.py --write-map` → `map_build.py` で索引を同期、`python3 -m unittest discover -s tests`（848 本）を通しました。検査の通過は探究の進展の証明ではありません。
+
+（追記）同じ日、同じ 936 からの引き上げが #873 でも行われていた（944）。統合後の実測は 938 なので 944 では足りず、950 に置き直した。同じ穴を二人が別々に塞ぐと、塞いだ値が競合する。
