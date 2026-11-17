@@ -615,3 +615,34 @@ Q-003 は前セッションの二評価で EIG 0.0081 まで下がり、飽和�
 ### 検証
 
 `validate_seed.py`／`append_only_check.py`／`size_budget.py --strict`／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check`／`errata_audit.py --schema` を実行し、`belief_state.py --write-map` → `map_build.py`（二回）で索引を同期、`python3 -m unittest discover -s tests` を通しました。`errata_audit.py --schema` は `status: corrected` の 2 行を引き続き名指します（助言、終了コードは変えない）。検査の通過は探究の進展の証明ではありません。
+
+## 2026-11-17（`SESSION-20261117-344e11`）— 未読の五点を実行する
+
+### やったこと
+
+- 前回の報告の §7「未読の選択」に挙げた五点を実行した。
+- 残りの `manual` 9 コマンドを走らせ、`ERR-20261114-9a6fb1` が修正済みであること（`errata_is_live_correction()` が verdict と status を見る）と、`boundary_channel_probe.py --arm content` が `KeyError: 'position'` で落ちることを見つけた。
+- 観測のみ 9 件を「外部資料 8・台帳内 1」に分けられると判断し、外部資料の 8 件はこの環境では実行できないと書いた。
+- open 56 行を数え、26 行が `corrected_by` などの解決の印を持ち、30 行が持たないことを測った。
+- `subject_type` の無い 10 行を、第一世代 8 行と `check` 欠落 2 行に分けた。
+- `reinterpreted` 3,222 行が先行する `read_id` を引くのは 8 行（0.25%）だと数えた。
+
+### なぜこれらを選んだか
+
+- 利用者が五点を名指したから。加えて、五点のうち三点（1・3・5）は「数えれば決まる」ものだった。
+- 数えた結果、いちばん強く出たのは「閉じる欄はあるのに状態が動かない」（16 行）と「読み直しは読み直した相手を名指さない」（0.25%）だった。
+
+### 途中で見つけて、予定になかったこと
+
+- 報告 1 本を書き足しただけで `size_budget.py --strict` が落ち、`execution_path_probe` のベースライン検査を含む 3 本のテストが赤になった。軟上限が実測値と同値（936/936）に置かれていたためである。948 へ引き上げ、註を残した。`tools/` の変更なので本来は別 PR だが、`main` を赤のまま残さないことを優先して同じ PR に含めた。
+
+### 未読の選択（今回、読まなかったもの）
+
+- 台帳内で数え直せる 9 行（`ERR-005`・`006`・`024`・`025`・`acc862`・`2143fb`・`4cdc29`・`ffc319`・`c13249`）。
+- 外部資料に依存する 8 行の原典（この環境では到達できない）。
+- `reinterpreted` 3,222 行の註の本文と `declined` 3 行の本文。
+- `boundary_channel_probe.py` の `render()` の修理そのもの（記録だけした）。
+
+### 検証
+
+`validate_seed.py`／`append_only_check.py`／`size_budget.py --strict`／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check`／`errata_audit.py --schema` を実行し、`belief_state.py --write-map` → `map_build.py` で索引を同期、`python3 -m unittest discover -s tests`（848 本）を通しました。検査の通過は探究の進展の証明ではありません。

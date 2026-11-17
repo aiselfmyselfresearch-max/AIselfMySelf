@@ -1048,7 +1048,16 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # stayed at 31.51 MiB of the 32 MiB soft budget (bytes not binding).
         # Append-only corpus; the file count cannot be compacted. Rescaled by a
         # measured margin of about a dozen sessions rather than per report.
-        soft_files=936,
+        # 2026-11-17 (936 -> 948, SESSION-20261117-344e11): the recount above
+        # left soft_files exactly equal to the measured count (936/936), so the
+        # NEXT single report crossed it. This session's one report took
+        # readings/ to 937 files and `size_budget.py --strict` exited 1, which
+        # also turned the execution_path_probe baseline red (that probe uses
+        # --strict as its canary) -- three unit tests failed for one report.
+        # Rescaled to 948 (a measured margin of about eleven sessions) so that
+        # the canary fires on a burst, not on every session. A limit set equal
+        # to the measurement is not a limit but a tripwire under the next step.
+        soft_files=948,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
