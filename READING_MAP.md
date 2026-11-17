@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：4894 件（research_excerpt 2653 ／ literary_text 2173 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：249 編（selected 96 ／ draft 153）
 - **解釈的関係（Relations）**：7026 件
-- **探究セッション（Sessions）**：926 回
+- **探究セッション（Sessions）**：927 回
 
 ### 台帳ごとの件数
 
@@ -23,11 +23,11 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4894 | `literary_text` 2173／`research_excerpt` 2653／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 249 | `selected` 96／`draft` 153／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7026 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 926 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14593 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 321 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 927 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14599 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 325 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 990 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 991 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 51 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 527 |  |
 
@@ -6621,6 +6621,7 @@
 | `SESSION-20261117-6c0b22` | 2026-11-17T00:30:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-84aa15` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-b44ba9` | 2026-11-17T04:51:46Z | `Q-003` | — | — |
+| `SESSION-20261117-3619f6` | 2026-11-17T08:10:00Z | `Q-002` | — | — |
 | `SESSION-20261117-b41c01` | 2026-11-17T07:20:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-b41c02` | 2026-11-17T07:21:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-d6a96b` | 2026-11-17T02:00:00Z | `Q-002`, `Q-001`, `Q-003` | — | — |
@@ -6751,7 +6752,7 @@
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
-| `map/50-sessions-19.md` | 26 | 18,873 |
+| `map/50-sessions-19.md` | 27 | 19,520 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -6782,23 +6783,23 @@
 | `map/60-notes-28.md` | 25 | 90,303 |
 | `map/60-notes-29.md` | 25 | 95,298 |
 | `map/60-notes-30.md` | 25 | 39,020 |
-| `map/60-notes-31.md` | 25 | 72,083 |
-| `map/60-notes-32.md` | 25 | 63,187 |
-| `map/60-notes-33.md` | 25 | 78,564 |
-| `map/60-notes-34.md` | 25 | 73,873 |
-| `map/60-notes-35.md` | 25 | 97,201 |
-| `map/60-notes-36.md` | 25 | 94,242 |
-| `map/60-notes-37.md` | 25 | 137,898 |
-| `map/60-notes-38.md` | 8 | 45,459 |
+| `map/60-notes-31.md` | 25 | 74,239 |
+| `map/60-notes-32.md` | 25 | 63,426 |
+| `map/60-notes-33.md` | 25 | 79,590 |
+| `map/60-notes-34.md` | 25 | 71,159 |
+| `map/60-notes-35.md` | 25 | 95,288 |
+| `map/60-notes-36.md` | 25 | 91,936 |
+| `map/60-notes-37.md` | 25 | 141,140 |
+| `map/60-notes-38.md` | 9 | 50,463 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・933本・33,164,236 B）
+## 8. 精読ノート索引（readings/・934本・33,177,037 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 873/933 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 874/934 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：933 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：934 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：176 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -7564,6 +7565,7 @@
 | `readings/2026-11-17-comparative-zoology-scrub-jay-episodic-memory.md` | 2026-11-17 | 2026-11-17 | — | 1,538 | M1 | — | 比較動物学資料：スクラブジェイのキャッシュ回収におけるエピソード様記憶（Clayton & Dickinson, 19… |
 | `readings/2026-11-17-comparative-zoology-vervet-alarm-calls.md` | 2026-11-17 | 2026-11-17 | — | 1,795 | M1 | — | 比較動物学資料：ヴェルベット猿の捕食者別警報呼声（Seyfarth, Cheney & Marler, 1980） |
 | `readings/2026-11-17-eight-grades-and-the-door.md` | 2026-10-26 | 2026-11-17 | `SESSION-20261117-292bc3` | 7,026 | Q2 F6 M5 MOT6 S1 | ✓ | 八つの段に収まらない者——獣×嘘の交配と、問われない位置の点検（SESSION-20261117-292bc3） |
+| `readings/2026-11-17-four-unread-things-read.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261107-890f1f` +1 | 6,729 | Q1 F1 S2 ERR11 | ✓ | 未読の四つを読む——open 55、`corrected` の 2 行、FRAG-016 の履歴、異議 609 の本文 |
 | `readings/2026-11-17-supporting-the-child-penalises-the-parent.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-d6a96b` +1 | 12,100 | Q4 S2 ERR2 | — | 子を支持すると、親が減点される——874658 と 977052 の非対称テスト |
 | `readings/2026-11-17-the-built-structure-and-the-boundary-of-self.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-233ece` +1 | 28,287 | Q3 M21 S2 | — | 建てられた構造の外側に、自己の境界はない——比較動物学10資料（動物建築・社会免疫・生態系エンジニア）を精読する（SE… |
 | `readings/2026-11-17-the-contest-nobody-answers.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-dc351b` | 5,668 | Q3 S1 ERR2 | ✓ | 誰も答えない異議——異議は 4.7%、宛先は 0.7%、返答は 8.9%（SESSION-20261117-dc351… |
