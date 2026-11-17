@@ -346,7 +346,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # soft (bytes not binding by 529,288 B). The shard must stay its own
         # append-only file -> net reclaim 0. One-slot exception; hard 160
         # unchanged; not an automatic raise.
-        soft_shards=125,
+        # 2026-11-17 (125 -> 126, SESSION-20261117-233ece): this session's own
+        # 10-row acquisition shard (2026-11-17-dc1ffa45c6dc.jsonl, comparative
+        # zoology / animal-built structures) is the 126th file. Measured on the
+        # merged union (origin/main 6667195 + this branch): state/materials.d =
+        # 126 files / 13,211,276 B of the 13 MiB soft (bytes not binding by
+        # 420,212 B). The shard is path-addressed provenance and cannot be
+        # folded into another session's file after the merge. One-slot
+        # exception; hard 160 unchanged; not an automatic raise.
+        soft_shards=126,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -908,7 +916,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 236,842 B). notes.d is order-sensitive and excluded from
         # consolidation -> net reclaim 0. One-slot exception; hard 160
         # unchanged; not an automatic raise.
-        soft_shards=140,
+        # 2026-11-17 (140 -> 141, SESSION-20261117-233ece): this session's own
+        # curated note shard (2026-11-17-ae024c97264e.jsonl, NOTE-20261117-515f39)
+        # is the 141st file. Measured on the merged union: state/notes.d =
+        # 141 files / 1,895,130 B of the 2 MiB soft (bytes not binding by
+        # 202,022 B). notes.d is order-sensitive and excluded from consolidation
+        # -> net reclaim 0. One-slot exception; hard 160 unchanged; not an
+        # automatic raise.
+        soft_shards=141,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
