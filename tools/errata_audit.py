@@ -394,6 +394,143 @@ def print_schema_report(report: dict[str, Any]) -> None:
     print("  この結果は終了コードを変えない。行が間違っているのかスキーマが古いのかは判定しない。")
 
 
+
+def _as_date(value: str) -> "date | None":
+    """Parse an ISO date or timestamp; return None when absent or malformed."""
+    import datetime as _dt
+    text = (value or "").strip()
+    if not re.match(r"^\d{4}-\d{2}-\d{2}", text):
+        return None
+    try:
+        return _dt.date.fromisoformat(text[:10])
+    except ValueError:
+        return None
+
+
+def obligation_report(errata: list[dict[str, Any]], read_log: list[dict[str, Any]],
+                      as_of: str = "") -> dict[str, Any]:
+    """Measure the two sides of the errata relation: settlement and return.
+
+    The errata ledger records a judgement (``verdict``) and, sometimes, the
+    report that settled it (``corrected_by``).  It does not record a return to
+    the condemned record.  This function measures both intervals from the rows
+    that do exist and counts how often a reading row points back at an
+    erratum.  It judges nothing: an unrecorded return is not an absent one.
+    """
+    import datetime as _dt
+    import statistics
+
+    reads: dict[str, list[Any]] = {}
+    pointing = 0
+    for row in read_log:
+        target = row.get("target") or {}
+        if not isinstance(target, dict):
+            continue
+        tid = target.get("id") or ""
+        when = _as_date(row.get("created_at") or "")
+        if str(tid).startswith("ERR-") or target.get("type") in {"errata", "erratum"}:
+            pointing += 1
+        if tid and when:
+            reads.setdefault(tid, []).append(when)
+
+    condemned = [e for e in errata
+                 if e.get("verdict") == "contradicted" and _as_date(e.get("created_at") or "")]
+    correction_gaps: list[int] = []
+    unpaid: list[dict[str, Any]] = []
+    undated = 0
+    for row in condemned:
+        created = _as_date(row.get("created_at") or "")
+        recorded = (row.get("corrected_by") or "").strip()
+        match = re.search(r"(\d{4}-\d{2}-\d{2})", recorded)
+        settled = _as_date(match.group(1)) if match else None
+        if not recorded:
+            unpaid.append(row)
+        elif settled is None:
+            undated += 1
+        else:
+            correction_gaps.append((settled - created).days)
+
+    by_type: dict[str, dict[str, Any]] = {}
+    reread_gaps: list[int] = []
+    for row in condemned:
+        created = _as_date(row.get("created_at") or "")
+        subject = str(row.get("subject_id") or "")
+        later = sorted(d for d in reads.get(subject, []) if d > created)
+        kind = str(row.get("subject_type") or "(none)")
+        slot = by_type.setdefault(kind, {"condemned": 0, "reread": 0})
+        slot["condemned"] += 1
+        if later:
+            slot["reread"] += 1
+            reread_gaps.append((later[0] - created).days)
+
+    reference = _as_date(as_of) or max(
+        (_as_date(e.get("created_at") or "") for e in errata if _as_date(e.get("created_at") or "")),
+        default=None)
+    ages = sorted((reference - _as_date(e.get("created_at") or "")).days
+                  for e in unpaid if reference and _as_date(e.get("created_at") or ""))
+
+    def summarise(gaps: list[int]) -> dict[str, Any]:
+        return {
+            "n": len(gaps),
+            "median": statistics.median(gaps) if gaps else None,
+            "mean": round(statistics.fmean(gaps), 1) if gaps else None,
+            "at_or_before_zero": sum(1 for g in gaps if g <= 0),
+            "within_3d": sum(1 for g in gaps if 1 <= g <= 3),
+            "beyond_3d": sum(1 for g in gaps if g > 3),
+        }
+
+    return {
+        "as_of": reference.isoformat() if reference else "",
+        "errata_total": len(errata),
+        "verdicts": {v: sum(1 for e in errata if e.get("verdict") == v)
+                     for v in ("contradicted", "holds", "unmeasurable")},
+        "status": {s: sum(1 for e in errata if e.get("status") == s)
+                   for s in ("annotated", "open", "corrected", "withdrawn")},
+        "condemned_with_date": len(condemned),
+        "settled_recorded": len(condemned) - len(unpaid),
+        "settled_dated": len(correction_gaps),
+        "settled_undated": undated,
+        "settlement_gap_days": summarise(correction_gaps),
+        "unpaid": {
+            "count": len(unpaid),
+            "median_age_days": statistics.median(ages) if ages else None,
+            "open_rows": sum(1 for e in unpaid if e.get("status") == "open"),
+        },
+        "reread_of_condemned": {
+            "condemned": sum(s["condemned"] for s in by_type.values()),
+            "reread": sum(s["reread"] for s in by_type.values()),
+            "gap_days": summarise(reread_gaps),
+            "by_subject_type": by_type,
+        },
+        "read_rows_pointing_at_errata": pointing,
+        "read_log_rows": len(read_log),
+    }
+
+
+def print_obligation_report(report: dict[str, Any]) -> None:
+    print("=== 訂正の二つの側——決済までの間隔と、断罪した記録への帰還 ===")
+    print(f"  基準日 {report['as_of']} / 訂正録 {report['errata_total']} 行"
+          f"（判定 {report['verdicts']} / 状態 {report['status']}）")
+    settled = report["settlement_gap_days"]
+    print(f"  決済の記録あり {report['settled_recorded']} / 断罪 {report['condemned_with_date']} 行"
+          f"（うち日付を名指す {report['settled_dated']}、日付なし {report['settled_undated']}）")
+    print(f"  日付つき決済の間隔：中央値 {settled['median']} 日、0日以下 {settled['at_or_before_zero']}、"
+          f"1〜3日 {settled['within_3d']}、4日以上 {settled['beyond_3d']}")
+    unpaid = report["unpaid"]
+    print(f"  決済の記録なし {unpaid['count']} 行（うち status=open {unpaid['open_rows']}）"
+          f"：基準日までの経過日数の中央値 {unpaid['median_age_days']} 日")
+    back = report["reread_of_condemned"]
+    gap = back["gap_days"]
+    print(f"  断罪された対象の再読 {back['reread']} / {back['condemned']} 行"
+          f"（初回再読までの中央値 {gap['median']} 日、n={gap['n']}）")
+    for kind, slot in sorted(back["by_subject_type"].items(), key=lambda kv: -kv[1]["condemned"]):
+        rate = 100.0 * slot["reread"] / slot["condemned"] if slot["condemned"] else 0.0
+        print(f"      {kind:<12} {slot['reread']:>4} / {slot['condemned']:>4}  ({rate:5.1f}%)")
+    print(f"  読みの行のうち ERR-* を指すもの {report['read_rows_pointing_at_errata']} /"
+          f" {report['read_log_rows']} 行")
+    print("  決済は同一セッション内で閉じ、帰還は記録上どこにも接続されない。"
+          " この非対称は欠落の証明ではない（未記録の帰還は、帰還がなかったことではない）。")
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Re-run the checks recorded in the errata ledger.")
     parser.add_argument("--json", action="store_true", help="emit machine-readable JSON")
@@ -401,6 +538,11 @@ def main() -> int:
                         help="read only the frozen base files (the pre-SESSION-041 behaviour)")
     parser.add_argument("--exclude-shard", metavar="SUFFIX",
                         help="ignore shards whose filename contains SUFFIX")
+    parser.add_argument("--obligation", action="store_true",
+                        help="report the two sides of the errata relation: settlement interval and"
+                             " return to the condemned record (report only)")
+    parser.add_argument("--as-of", metavar="YYYY-MM-DD", default="",
+                        help="reference date for ages in --obligation (default: latest errata date)")
     parser.add_argument("--schema", action="store_true",
                         help="also report how the errata rows compare to schema/errata.schema.json"
                              " (report only: never changes the exit status, never edits a row)")
@@ -408,6 +550,15 @@ def main() -> int:
 
     errata = load_jsonl("errata.jsonl", "errata_id", base_only=args.base_only, exclude=args.exclude_shard)
 
+    if args.obligation:
+        read_log = load_jsonl("read_log.jsonl", "read_id", base_only=args.base_only,
+                              exclude=args.exclude_shard)
+        report = obligation_report(errata, read_log, as_of=args.as_of)
+        if args.json:
+            print(json.dumps(report, ensure_ascii=False, indent=1))
+        else:
+            print_obligation_report(report)
+        return 0
     if args.schema:
         report = schema_report(errata)
         if args.json:

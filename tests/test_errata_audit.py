@@ -185,3 +185,60 @@ class TestSchemaReport(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestObligationReport(unittest.TestCase):
+    """Pins the two-sided measurement added for SESSION-20261117 (--obligation).
+
+    The report counts how the errata ledger's settlement side and its return
+    side are recorded; it does not claim that an unrecorded return did not
+    happen.  These tests fix the counting rules, not a conclusion.
+    """
+
+    ERRATA = [
+        {"errata_id": "ERR-1", "verdict": "contradicted", "status": "annotated",
+         "created_at": "2026-01-01T00:00:00Z", "subject_type": "material",
+         "subject_id": "MAT-1", "corrected_by": "readings/2026-01-01-a.md"},
+        {"errata_id": "ERR-2", "verdict": "contradicted", "status": "open",
+         "created_at": "2026-01-01T00:00:00Z", "subject_type": "other",
+         "subject_id": "CLM-2", "corrected_by": ""},
+        {"errata_id": "ERR-3", "verdict": "contradicted", "status": "annotated",
+         "created_at": "2026-01-02T00:00:00Z", "subject_type": "question",
+         "subject_id": "Q-3", "corrected_by": "SESSION-abc"},
+        {"errata_id": "ERR-4", "verdict": "holds", "status": "annotated",
+         "created_at": "2026-01-02T00:00:00Z", "corrected_by": ""},
+    ]
+    READ_LOG = [
+        {"read_id": "READ-1", "target": {"type": "material", "id": "MAT-1"},
+         "created_at": "2026-01-10T00:00:00Z"},
+        {"read_id": "READ-2", "target": {"type": "errata", "id": "ERR-2"},
+         "created_at": "2026-01-11T00:00:00Z"},
+    ]
+
+    def report(self):
+        return errata_audit.obligation_report(self.ERRATA, self.READ_LOG, as_of="2026-02-01")
+
+    def test_settlement_sides_are_counted_separately(self) -> None:
+        report = self.report()
+        self.assertEqual(report["condemned_with_date"], 3)
+        self.assertEqual(report["settled_recorded"], 2)
+        self.assertEqual(report["settled_dated"], 1)
+        self.assertEqual(report["settled_undated"], 1)
+        self.assertEqual(report["unpaid"]["count"], 1)
+        self.assertEqual(report["unpaid"]["open_rows"], 1)
+
+    def test_same_day_settlement_is_zero_not_missing(self) -> None:
+        gaps = self.report()["settlement_gap_days"]
+        self.assertEqual(gaps["n"], 1)
+        self.assertEqual(gaps["median"], 0)
+        self.assertEqual(gaps["at_or_before_zero"], 1)
+
+    def test_return_is_counted_only_when_strictly_later(self) -> None:
+        back = self.report()["reread_of_condemned"]
+        self.assertEqual(back["condemned"], 3)
+        self.assertEqual(back["reread"], 1)
+        self.assertEqual(back["gap_days"]["median"], 9)
+        self.assertEqual(back["by_subject_type"]["material"]["reread"], 1)
+
+    def test_read_rows_pointing_at_errata_are_counted(self) -> None:
+        self.assertEqual(self.report()["read_rows_pointing_at_errata"], 1)
