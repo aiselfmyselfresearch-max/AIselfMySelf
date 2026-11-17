@@ -583,3 +583,35 @@ Q-003 は前セッションの二評価で EIG 0.0081 まで下がり、飽和�
 ### 検証
 
 `validate_seed.py`／`append_only_check.py`／`size_budget.py --strict`／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check`／`errata_audit.py --schema`（助言）を実行し、`belief_state.py --write-map` → `map_build.py`（二回）で索引を同期、`python3 -m unittest discover -s tests` を通しました。前の PR（#867）で足した `in_reply_to` の検査が、この PR の行で初めて実データに対して働いています（宛先の実在・未来参照なしを確認）。検査の通過は探究の進展の証明ではありません。
+
+## 2026-11-17（`SESSION-20261117-3619f6`）— 未読の四つを読む
+
+**報告**：`readings/2026-11-17-four-unread-things-read.md`（`NOTE-20261117-221827`）／**訂正**：4 行（`ERR-20261117-1d72bc`・`2b39d6`・`043e78`・`7026ec`）／**読み**：6 行
+
+利用者の指示は「前回の『未読の選択』を実行する」だった。四点すべてを実行した。割当レシートは `adversarial_tester`／`Q-003`／`rereading_and_collision`——提示された問いは Q-003 だったが、実際に取り組んだのは指名された未読の四点で、その差は `offered_target_question_id` と `question_ids` に分けて書いてある。
+
+### やったこと
+
+1. **`manual` 45 件は「実行できない」ではなかった。** open 55 のうち `manual` 45 を手順の記録で分類すると、**手順語を持つ 34・観測値のみ 9・params 空 2**。うち **11 件は具体的な `python3 tools/` のコマンドを持つ**。3 件を実際に走らせた。
+   - `ERR-20261114-f7d4dd`：explicit 15→**29**、fallback 59→**119**、後付け 1/12→**40/72**。構造と explicit 比率（9.5%→9.2%）は再現したが、**後付け比率が 10.3%→28.3% へ約3倍**。
+   - `ERR-20261116-ea4c87`：errata **321 行すべてが仮説に到達しない**（記録の「242/253」より強い）。
+   - `ERR-20261115-c5ec2a`：根拠の enum 欠落は 2026-11-15 に解消済みで、`read_log` の erratum 宛は **25 行**ある。**「原理的に測定不能」は現在の事実ではない**——直ったのに open のまま。
+2. **`status: corrected` の 2 行を読んだ。** どちらも `tools/date_axis.py` の計器の誤りで、コード修正と回帰テスト3件で実際に直っている（実日付の範囲 2026-11-28→2026-11-07／`--anomalies` の件数に注記）。`annotated`（註を付けた）と `corrected`（直した）は違うことを言う——**実践がスキーマより一語進んでいる**。スキーマの enum に `corrected` が無いことを `ERR-20261117-7026ec` に記録した（直さない・追記専用）。
+3. **FRAG-016 の履歴を 2026-10-21 まで深掘りした。** 182 コミットを走査し、本文は `ca5b519d`（2026-10-21 17:19）以来**ひとつの状態（573文字）しかない**。したがって `ERR-004` の註の **57 は書いた時から 55 の誤り**であり、**83 はどの時点の本文からも出ない**。前回の「確認できない」を閉じた。
+4. **異議 609 行の註を読んだ。** 中央値 **89 文字**、20 字未満は 2 件。引用 195・検算語 **87**・限定語 67・誤り語 51・区別語 49。**異議の主な形は反駁ではなく、区別と検算である**。読みの ID を持つのは 1 行だけ——異議は書き手の側で完結している。
+
+### なぜこの四点だったか
+
+前回の報告が自分で「読まなかった」と列挙したものだから。探究の選択ではなく、記録の後始末である。だが四点を読んで、前回の結論が一つ具体化した——**欄の欠落は閉じる手続きの欠落と対になっている**。`ERR-20261115-c5ec2a` は直っているのに open で、次の読み手は「測定不能」を現行の事実として読む。`ERR-004` の 57 も、本文が動いていない以上、当時の測定値ではなかった。
+
+### 未読の選択（今回、読まなかったもの）
+
+- `manual` の残り 31 件（コマンドを持つ 8 件を含む）の再実行。
+- 観測値のみ 9 件の手順の復元。
+- open 54 件が「解決済みだが open」かどうかの全数調査。
+- `subject_type` を持たない errata 10 行（`fragment_id` で宛先を書いた世代）の扱い。
+- `contested` 以外の `reading`（`reinterpreted` 等）の註の本文。
+
+### 検証
+
+`validate_seed.py`／`append_only_check.py`／`size_budget.py --strict`／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check`／`errata_audit.py --schema` を実行し、`belief_state.py --write-map` → `map_build.py`（二回）で索引を同期、`python3 -m unittest discover -s tests` を通しました。`errata_audit.py --schema` は `status: corrected` の 2 行を引き続き名指します（助言、終了コードは変えない）。検査の通過は探究の進展の証明ではありません。
