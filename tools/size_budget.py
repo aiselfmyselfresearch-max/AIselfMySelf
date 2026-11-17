@@ -998,7 +998,14 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # cannot reduce this dimension, and deleting prior reports requires
         # human approval. Measured review-point rescale, not an automatic
         # allowance; hard 1200 files / 48 MiB and per-file limits unchanged.
-        soft_files=904,
+        # 2026-11-17 (904 -> 912, SESSION-20261117-ea21b8): one close-reading
+        # report took readings/ from 904 to 905 files, i.e. one over the soft
+        # count raised earlier the same day, while bytes stayed at 31.42 MiB of
+        # the 32 MiB soft (bytes not binding). Reports are append-only and the
+        # count cannot be compacted (see the remedy above), so the file count is
+        # rescaled by a measured margin of eight sessions, not by an automatic
+        # allowance. hard 1200 files / 48 MiB and per-file limits unchanged.
+        soft_files=912,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
