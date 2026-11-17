@@ -1048,7 +1048,16 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # stayed at 31.51 MiB of the 32 MiB soft budget (bytes not binding).
         # Append-only corpus; the file count cannot be compacted. Rescaled by a
         # measured margin of about a dozen sessions rather than per report.
-        soft_files=936,
+        # 2026-11-17 (936 -> 944, SESSION-20261117-5d524a): this session's report
+        # plus two reports from the parallel sessions absorbed in the same merge
+        # took readings/ to 937 files, while bytes stayed at 31.71 MiB of the
+        # 32 MiB soft (bytes not binding but close: 0.29 MiB left). Append-only
+        # corpus; the file count cannot be compacted. Rescaled by a measured
+        # margin of eight reports, not per report. The byte dimension is the one
+        # to watch next: at the current average it is the binding one again in
+        # roughly eight reports, and neither dimension can be reduced by shard
+        # consolidation.
+        soft_files=944,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
