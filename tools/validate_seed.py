@@ -99,6 +99,12 @@ REGISTER_RULE_EXEMPT_IDS = frozenset({
     "Q-20261116-3872ec",
     "Q-20261116-522540",
     "Q-20261116-6eec38",
+    # Minted by a parallel session during the one day (2026-11-16) when the
+    # upper bound above still hid the row, so the gate let it through without a
+    # register.  The next day the same row fails, and an append-only row cannot
+    # be given the field afterwards.  Exempted by ID rather than by widening the
+    # window, which would hide every future same-day row too.
+    "Q-20261117-1d7864",
 })
 CLAIM_WIRING_KINDS = ("reading_revised", "retraction")
 REGISTER_VALUES = ("description", "judgment", "inheritance")
