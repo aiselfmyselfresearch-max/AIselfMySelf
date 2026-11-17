@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：4974 件（research_excerpt 2733 ／ literary_text 2173 ／ project_trace 67 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：250 編（selected 96 ／ draft 154）
-- **解釈的関係（Relations）**：7029 件
-- **探究セッション（Sessions）**：952 回
+- **対話素材（Materials）**：4978 件（research_excerpt 2733 ／ literary_text 2177 ／ project_trace 67 ／ conversation_trace 1）
+- **文芸断片（Fragments）**：251 編（selected 96 ／ draft 155）
+- **解釈的関係（Relations）**：7035 件
+- **探究セッション（Sessions）**：953 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4974 | `literary_text` 2173／`research_excerpt` 2733／`project_trace` 67／`conversation_trace` 1 |
-| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 250 | `selected` 96／`draft` 154／`human_narrator` 0 |
-| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7029 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 952 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14766 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 351 |  |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4978 | `literary_text` 2177／`research_excerpt` 2733／`project_trace` 67／`conversation_trace` 1 |
+| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 251 | `selected` 96／`draft` 155／`human_narrator` 0 |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7035 | うち断片↔断片 618 |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 953 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14792 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 352 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1018 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1019 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 54 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 558 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 567 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -543,7 +543,7 @@
 | `Q-20270222-da53d9` | session | `Q-104` `Q-106` `Q-20270221-507c43` | — | 終了実験の条件②を「後継の選出日以降の読みが0件」から「他セッションによる非counted読みが0件」へ改めるか。改めると監査の計数行に対して指標が不変になり、断片6件（すべて draft、後継関係… |
 | `Q-20261108-0b746a` | session | `Q-049` `Q-050` | — | この書庫は、収蔵した資料の「所在」（URL・DOI）を、どの程度まで検査しているのか。直前のセッションで、要約は正しいがDOIが別の論文を指す一行が見つかった。verification.status… |
 
-## 3. 断片（250 編・全文は map/20-fragments-*.md）
+## 3. 断片（251 編・全文は map/20-fragments-*.md）
 
 | ID | 題 | 状態 | 形式 | 語り手 |
 |---|---|---|---|---|
@@ -797,8 +797,9 @@
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 | `FRAG-20261116-7d62f1` | 一心の張られない隙を、何が越えるか | draft | essay | reflective_literary_voice |
 | `FRAG-20261117-55b108` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
+| `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4974 件・詳細は map/3*.md）
+## 4. 対話素材（4978 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5766,6 +5767,10 @@
 | `MAT-20261117-7f76ff` | research_excerpt | Alain Morin, Jayson Michaud『Self-awareness and the left inferior frontal gyrus: inner spe… |
 | `MAT-20261117-58e55a` | research_excerpt | Randy L. Buckner, Daniel C. Carroll『Self-projection and the brain (2007)——過去の想起・未来の想像・他者の… |
 | `MAT-20261117-051622` | research_excerpt | Stanley B. Klein, Cynthia E. Gangi『The multiplicity of self: neuropsychological evidence … |
+| `MAT-LIT-20261117-41f15a` | literary_text | Friedrich Nietzsche『森鷗外『遺言三種』— 拇印による抹消と書式上の帰属位置』（1887） |
+| `MAT-LIT-20261117-1030e4` | literary_text | Friedrich Nietzsche『正岡子規『病牀六尺』— 躓きの15日と擦り抜けた紙』（1887） |
+| `MAT-LIT-20261117-ab9c68` | literary_text | Friedrich Nietzsche『Montaigne『Essais』II.6「De l'exercitation」— 骨格としての自己記述』（1887） |
+| `MAT-LIT-20261117-9c51ae` | literary_text | Friedrich Nietzsche『与謝野晶子『産屋物語』— 生殖を唯一の標準にしない』（1887） |
 | `MAT-20261117-0d32eb` | research_excerpt | Lynne U. Sneddon, Victoria A. Braithwaite, Michael J. Gentle『Sneddon, Braithwaite & Gentl… |
 | `MAT-20261117-28d297` | research_excerpt | James D. Rose, Robert Arlinghaus, Steven J. Cooke, Bruce K. Diggles, Wolfgang Sawynok, Ed… |
 | `MAT-20261117-349fdf` | research_excerpt | Brian Key『Key (2016)——魚は痛みを感じない』（2016） |
@@ -6732,9 +6737,10 @@
 | `SESSION-20261117-1ee122` | 2026-11-17T15:31:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-d6a96b` | 2026-11-17T02:00:00Z | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-7a44ad` | 2026-11-17T02:40:00Z | `Q-003`, `Q-002`, `Q-001` | — | — |
+| `SESSION-20261117-f0ff37` | 2026-11-17T16:25:12Z | `Q-003`, `Q-002`, `Q-001` | `FRAG-20261117-cd430d` | — |
 | `SESSION-20261117-f0d068` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
 
-## 6. 解釈的関係（7029 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（7035 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
@@ -6744,7 +6750,7 @@
 | 未解決のまま開く (leaves_open) | 922 |
 | 比喩的共鳴 (metaphorically_resonates) | 203 |
 | 枠組みの組み替え (reframes) | 817 |
-| 応答 (responds_to) | 1821 |
+| 応答 (responds_to) | 1827 |
 | 変奏・変形 (transforms) | 339 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
@@ -6774,7 +6780,7 @@
 | `map/20-fragments-10.md` | 20 | 176,165 |
 | `map/20-fragments-11.md` | 20 | 134,059 |
 | `map/20-fragments-12.md` | 20 | 148,927 |
-| `map/20-fragments-13.md` | 10 | 43,811 |
+| `map/20-fragments-13.md` | 11 | 46,589 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
@@ -6796,7 +6802,7 @@
 | `map/30-materials-literary-19.md` | 100 | 279,389 |
 | `map/30-materials-literary-20.md` | 100 | 268,470 |
 | `map/30-materials-literary-21.md` | 100 | 233,650 |
-| `map/30-materials-literary-22.md` | 73 | 195,309 |
+| `map/30-materials-literary-22.md` | 77 | 202,358 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 166,172 |
 | `map/31-materials-research-03.md` | 100 | 173,086 |
@@ -6840,7 +6846,7 @@
 | `map/40-relations-12.md` | 500 | 176,838 |
 | `map/40-relations-13.md` | 500 | 172,292 |
 | `map/40-relations-14.md` | 500 | 157,803 |
-| `map/40-relations-15.md` | 29 | 10,489 |
+| `map/40-relations-15.md` | 35 | 12,520 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -6860,7 +6866,7 @@
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,729 |
-| `map/50-sessions-20.md` | 2 | 1,676 |
+| `map/50-sessions-20.md` | 3 | 2,306 |
 | `map/60-notes-01.md` | 25 | 65,235 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -6892,23 +6898,23 @@
 | `map/60-notes-29.md` | 25 | 96,667 |
 | `map/60-notes-30.md` | 25 | 38,599 |
 | `map/60-notes-31.md` | 25 | 78,984 |
-| `map/60-notes-32.md` | 25 | 96,849 |
-| `map/60-notes-33.md` | 25 | 66,619 |
-| `map/60-notes-34.md` | 25 | 72,517 |
-| `map/60-notes-35.md` | 25 | 75,835 |
-| `map/60-notes-36.md` | 25 | 100,136 |
-| `map/60-notes-37.md` | 25 | 97,002 |
-| `map/60-notes-38.md` | 25 | 140,406 |
-| `map/60-notes-39.md` | 6 | 35,053 |
+| `map/60-notes-32.md` | 25 | 96,635 |
+| `map/60-notes-33.md` | 25 | 66,191 |
+| `map/60-notes-34.md` | 25 | 73,234 |
+| `map/60-notes-35.md` | 25 | 76,168 |
+| `map/60-notes-36.md` | 25 | 98,919 |
+| `map/60-notes-37.md` | 25 | 94,882 |
+| `map/60-notes-38.md` | 25 | 141,537 |
+| `map/60-notes-39.md` | 7 | 39,275 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・956本・33,704,153 B）
+## 8. 精読ノート索引（readings/・957本・33,711,352 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 894/956 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 895/957 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：956 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：957 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：176 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -7698,6 +7704,7 @@
 | `readings/2026-11-17-the-mapping-was-never-lost.md` | 2026-11-17 | 2026-11-17 | — | 8,746 | Q4 F1 M6 ERR10 | — | 対応表は失われていなかった——未読五点のうち四点を実行し、二つの「再測定不能」を再現可能にした |
 | `readings/2026-11-17-the-prose-is-right-and-the-mechanism-is-wrong.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-5d524a` | 11,280 | Q3 S1 ERR2 | ✓ | 本文は正しく、機構が違う——比較相手欄に書かれた一文は、engine に一度も読まれない |
 | `readings/2026-11-17-the-render-the-status-and-the-mirror.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261025-0f3e1a` +1 | 9,257 | Q2 F1 M1 S2 ERR9 | — | 三点を順に実行する——落ちる描画・導出できない status・GitHub の鏡で届いた外部照合 |
+| `readings/2026-11-17-the-thumbprint-the-window-and-the-second-reader.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-f0ff37` | 3,877 | Q3 M5 S1 ERR1 | ✓ | 拇印・窓・第二の読み手 |
 | `readings/2026-11-17-two-corrections-carried-out-by-hand.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-dc351b` | 6,654 | Q1 F7 S1 ERR2 | ✓ | 手で実行した二つの訂正——`ERR-004` と `ERR-010`（と、届いた異議への返答） |
 | `readings/2026-11-17-two-fields-a-return-address-and-a-receipt.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-2bd020` | 5,835 | Q2 S1 ERR2 | ✓ | 二つの欄——宛先を足し、割り当てを必須にした（SESSION-20261117-2bd020） |
 | `readings/2026-11-17-what-merge-selects-and-what-it-does-not.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-d0a7c4` +2 | 6,931 | Q4 S3 | ✓ | マージが選ぶものと、選ばないもの——閉じた枝を読んだ三回目の回 |
