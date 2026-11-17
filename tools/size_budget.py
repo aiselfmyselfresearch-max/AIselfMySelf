@@ -535,7 +535,19 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # per-session provenance for the 2026-11-17 action/ownership report
         # and cannot be folded into another session's shard. One-slot
         # exception; hard 160 unchanged; not an automatic raise.
-        soft_shards=137,
+        # 2026-11-17 (SESSION-20261117-ac19bf, 136 -> 138): this session's own
+        # shard (9 handwritten read_log rows: 4 reports, 5 hypotheses,
+        # 2026-11-17-ecccb21acd62.jsonl) measured 137/137 on its own branch
+        # and was merged via origin/main a8daa17.
+        # 2026-11-17 (merge of origin/main a8daa17 x arena/b7508791-aiselfmyself,
+        # 137+1 -> 138): the union carries BOTH same-day shards (this branch's
+        # 306cdf60cd82 for the action/ownership report, and ac19bf's
+        # ecccb21acd62 via #895). Measured on the merged tree: state/read_log.d
+        # = 138 files. Parallel branches each kept their own shard; neither
+        # touched the other's file. The union is the sum of two one-slot
+        # exceptions, not a new allowance; the consolidation debt on this
+        # dimension still stands. Hard 160 unchanged.
+        soft_shards=138,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -748,7 +760,17 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 4 MiB soft (bytes not binding by ~1.17 MiB). The shard cannot be
         # folded into another session's file after the fact. One-slot
         # exception; hard 160 unchanged; not an automatic raise.
-        soft_shards=142,
+        # 2026-11-17 (SESSION-20261117-ac19bf, 141 -> 143): this session's own
+        # shard (1 session row, 2026-11-17-b7faa24fb65a.jsonl) measured
+        # 142/142 on its own branch and was merged via origin/main a8daa17.
+        # 2026-11-17 (merge of origin/main a8daa17 x arena/b7508791-aiselfmyself,
+        # union -> 143): the merged tree carries BOTH same-day shards (this
+        # branch's fefc93d42ff0 and ac19bf's b7faa24fb65a via #895). Measured
+        # on the merged tree: state/sessions.d = 143 files. Parallel branches
+        # each kept their own shard. The union is the sum of two one-slot
+        # exceptions, not a new allowance; the consolidation debt stands.
+        # Hard 160 unchanged.
+        soft_shards=143,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -1056,7 +1078,19 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # One-slot exception; hard 160 unchanged; not an automatic raise. The
         # next session must treat this dimension as a consolidation decision,
         # not a headroom request.
-        soft_shards=147,
+        # 2026-11-17 (146 -> 148, SESSION-20261117-ac19bf): this session's two
+        # curated note shards for one report -- the register stub plus the
+        # claim-bearing row that supersedes it (2026-11-17-1383aadab03b.jsonl,
+        # 2026-11-17-6ec952e37459.jsonl via origin/main a8daa17 / PR #895).
+        # 2026-11-17 (merge of origin/main a8daa17 x arena/b7508791-aiselfmyself,
+        # union -> 149): the merged tree carries BOTH branches' same-day
+        # shards (this branch's 2e3722036698 plus ac19bf's two). Measured on
+        # the merged tree: state/notes.d = 149 files. Parallel branches each
+        # kept their own shards; neither touched the other's files. The union
+        # is the sum of two same-day exception sets (147 + 2), not a new
+        # allowance; the consolidation debt the 4e438d caveat names is still
+        # unpaid. Hard 160 unchanged.
+        soft_shards=149,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
@@ -1093,15 +1127,25 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # consolidation decision, not an automatic raise. Hard 160 unchanged.
         # 2026-11-17 (82 -> 83, SESSION-20261117-9980c1): this session's five
         # evaluation rows (narrows_scope 46456a; supports bccd54; narrows_scope
-        # 8f6552; supports 16929d; reproducible_script supports 4bf2dc) are the
-        # 83rd file. Measured before the append: state/evaluations.d was
-        # 82/82 -- exactly at the soft ceiling, zero free slots. Measured
-        # after: 83 files / 688,294 B of the 4 MiB soft -- bytes are not
-        # binding; only the count is. The rows cannot be folded into another
-        # session's shard after the fact. One-slot exception; hard 160
-        # unchanged; not an automatic raise. The next shard needs a
-        # consolidation decision, not an automatic raise.
-        soft_shards=83,
+        # 8f6552; supports 16929d; reproducible_script supports 4bf2dc,
+        # 2026-11-17-ac68d17e7616.jsonl) are the 83rd file. Measured before the
+        # append: state/evaluations.d was 82/82 -- exactly at the soft ceiling,
+        # zero free slots. Measured after: 83 files / 688,294 B of the 4 MiB
+        # soft -- bytes are not binding; only the count is. The rows cannot be
+        # folded into another session's shard after the fact. One-slot
+        # exception; hard 160 unchanged; not an automatic raise.
+        # 2026-11-17 (82 -> 84, SESSION-20261117-ac19bf): this session's two
+        # reproducible_script rows (2026-11-17-e50f13432e7c.jsonl) measured
+        # 83/83 on its own branch and was merged via origin/main a8daa17.
+        # 2026-11-17 (merge of origin/main a8daa17 x arena/b7508791-aiselfmyself,
+        # union -> 84): the merged tree carries BOTH same-day shards (this
+        # branch's ac68d17e7616 plus ac19bf's e50f13432e7c via #895). Measured
+        # on the merged tree: state/evaluations.d = 84 files. Parallel branches
+        # each kept their own shard. The union is the sum of two one-slot
+        # exceptions, not a new allowance; the standing caveat is unchanged --
+        # the *next* shard needs a consolidation decision, not an automatic
+        # raise. Hard 160 unchanged.
+        soft_shards=84,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
