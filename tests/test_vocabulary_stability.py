@@ -204,3 +204,60 @@ class RenderTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestReadingVocabulary(unittest.TestCase):
+    """Pins the label x object-type measurement added on 2026-11-17.
+
+    It asks which kind of object gets which reading label, and whether the
+    gap between the archive's own records and its sources holds across its
+    internal months.  The counting rules are fixed here; the interpretation
+    stays in readings/.
+    """
+
+    ROWS = (
+        # own records: mostly reinterpreted
+        [{"read_id": f"READ-o{i}", "target": {"type": "fragment", "id": f"FRAG-{i}"},
+          "reading": "reinterpreted", "note": "x", "created_at": "2026-11-01T00:00:00Z"}
+         for i in range(25)]
+        + [{"read_id": f"READ-n{i}", "target": {"type": "note", "id": f"NOTE-{i}"},
+            "reading": "interpreted", "note": "x", "created_at": "2026-11-01T00:00:00Z"}
+           for i in range(5)]
+        # sources: mostly interpreted
+        + [{"read_id": f"READ-m{i}", "target": {"type": "material", "id": f"MAT-{i}"},
+            "reading": "interpreted", "note": "x", "created_at": "2026-11-02T00:00:00Z"}
+           for i in range(30)]
+        # mechanical rows are excluded from the profile
+        + [{"read_id": "READ-mech", "target": {"type": "material", "id": "MAT-9"},
+            "reading": "used_as_context", "note": "機械的バックフィル: context", "created_at": "2026-11-02T00:00:00Z"}]
+        # hypothesis-targeted mechanical row (the engine's marker would keep it)
+        + [{"read_id": "READ-mech2", "target": {"type": "hypothesis", "id": "HYP-9"},
+            "reading": "used_as_context", "note": "機械的接触行: x", "created_at": "2026-11-02T00:00:00Z"}]
+    )
+
+    def report(self):
+        return vs.reading_report(root=ROOT, read_log=list(self.ROWS))
+
+    def test_mechanical_rows_are_excluded_from_the_profile(self) -> None:
+        report = self.report()
+        self.assertEqual(report["rows"], 62)
+        self.assertEqual(report["handwritten"], 60)
+        self.assertNotIn("hypothesis", report["by_target_type"])
+
+    def test_own_records_and_sources_are_profiled_separately(self) -> None:
+        report = self.report()
+        self.assertEqual(report["own"]["rows"], 30)
+        self.assertEqual(report["own"]["reinterpreted"], 0.833)  # 25/30, rounded to 3dp
+        self.assertEqual(report["source"]["rows"], 30)
+        self.assertEqual(report["source"]["reinterpreted"], 0.0)
+
+    def test_month_rows_need_twenty_of_each_side(self) -> None:
+        by_month = self.report()["by_month"]
+        self.assertIn("2026-11", by_month)
+        self.assertEqual(by_month["2026-11"]["gap_pp"], 83.3)
+
+    def test_engine_marker_and_prefix_rule_are_counted_apart(self) -> None:
+        mech = self.report()["mechanical"]
+        self.assertEqual(mech["marker_backfill"], 1)
+        self.assertEqual(mech["prefix_both"], 2)
+        self.assertEqual(mech["hypothesis_targeted"], 1)
