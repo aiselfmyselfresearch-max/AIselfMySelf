@@ -726,3 +726,31 @@ Q-003 は前セッションの二評価で EIG 0.0081 まで下がり、飽和�
 `validate_seed.py`／`append_only_check.py`（30,344 行バイト一致）／`readings_integrity_check.py`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`note_index.py --check`／`read_log_backfill.py --check`／`date_axis.py --enforce-shards`／`learning_metrics.py --check`／`size_budget.py --strict`／`claim_wiring.py --check`／`errata_audit.py --schema`・`--derived-status`／`map_build.py --check`・`--check-readme`／`node --check viewer/app.js` を実行し、`belief_state.py --write-map` → `map_build.py` で索引を同期、`python3 -m unittest discover -s tests`（915 本）を通しました。検査の通過は探究の進展の証明ではありません。1 行の評価で `Q-003` の EIG が 0.0149 → 0.0265 に戻ったのは、根仮説を足さずに選択器の燃料が戻った副産物であり、成果に数えていません。
 
 （追記）PR を出した時点で `origin/main` が 2687 コミット進んでおり、生成索引 2 ファイルが衝突した。`origin/main` を取り込んで `belief_state.py --write-map` → `map_build.py` で再生成して解いた（前例どおり）。取り込み後の和集合（仮説 39 件・評価 542 行）で `Q-003` の EIG は 0.0265 → **0.0223** になった。0.0265 は取り込み前の値で、差は別セッションの追記による。報告に取り込み前／後を並べて記した。
+
+## 2026-11-17（`SESSION-20261117-41b123`）— どの欄が算術に届くか
+
+### やったこと
+
+- 委任（二観点からの現状分析→最適な行動群の自律実行→マージ）を受け、`--packet auto` の四欄レシート（シード `3dd502bd` / `consolidator` / `Q-003` / `revision_and_variation`）を `sessions` 行に貼った。実作業は `editorial_review` の現状分析と統制実験。報告は [`readings/2026-11-17-which-column-reaches-the-arithmetic.md`](readings/2026-11-17-which-column-reaches-the-arithmetic.md)。
+- **未評価仮説 `HYP-20261117-4bf2dc` の反証条件 (b) を、事前登録どおりに執行した**（`EVL-20261117-f4d1b9`）。summary 長のみ・素材集合のみを変えた三 variant で移動量は完全に同一（0.1304→0.2901、`--json` 等値）。事前登録の判定基準に従い `65f41d` による包摂（`subsumes`）と登記。根仮説は足していない。
+- **未評価仮説 `HYP-20261116-e7a80a` の初回検証**（`EVL-20261117-26dac5`）。verified 素材5件の一次資料衝突で `supports`。時定数説 `bccd54` との衝突（窓なしの接触照合・同一対の trill/phee 逆方向出力）と、四問指定説 `065706` への独立軸を記録。書庫への四通話路の適用は未測のまま。
+- **優先対の片側 `HYP-20261116-9f8e51` の反証条件 (a)（R 統制）を再現**（`EVL-20261117-34ae43`）。`ERR-20261117-3f1354` の宛先欄だけを書き換えた写しで、移動は本文でなく宛先欄に追従（本文が名指す `977052` は不動、本文に名も無い `874658` が 0.9145→0.8545）。`b17a54` と両立（対立でなく並置）を確認したうえで片側にのみ `supports`。両側積載はしていない。
+- **`ERR-002` を手実行**（`ERR-20261117-b7b83c`）。二つの「七」を見分けた：(1) 語幹変種 `FRAG-015`（本当に残しておかなければならない）を数える 7 は「前の十七編のうち…七編」に一致する復元候補、(2) `phrase_set_count` の自動再実行の 7 は `in_range`/`number` が ID 末尾数字を範囲に使う事故（`0ed6c8` 末尾8が 1..17 に収まる）。数が一致した二つの集合は違う。
+- 記帳：評価3・訂正1・read_log 16（報告6・仮説4・訂正1・文脈素材5）・note 1・session 1。新規の資料・断片・問い・関係・根仮説は 0 件。
+
+### なぜこれを選んだか
+
+- パケットは `Q-003` を非飽和と告げ、行き先を (a) 未解決 errata (b) claim→評価の配線を伴う再読 (c) 新規資料に限定し、未評価の有効仮説3件の初回検証を優先検討せよと出していた。根仮説を足さずに選択器の燃料を戻す経路は、この3件の初回検証と優先対の分離だけだった。整備のみの回ではない（直近回 `d0a7c4` も中心問いの回）。
+
+### 未読の選択（今回、読まなかったもの）
+
+- `HYP-20261116-653fd0` と `HYP-20261116-96886e` の初回検証。`b17a54` 反証条件 (a) の独立分離。実効 open errata 46 件の一掃。
+- `readings/2026-11-17-the-creditors-book.md` §3 以降、`the-prose-is-right-and-the-mechanism-is-wrong.md` §3 以降の全文。
+- `reinterpreted` 行の先行 `read_id` 補完、`what-merge-selects` §5 の三件。
+- ID の一件の不一致：`read_log` 5 行の ID は `new_id.py` の出力と別に手で採番した（採番後に別5件を採番し直した事故）。全 14,702 行で衝突がないことは検算した。台帳からは区別できないので、ここに書く。
+
+### 検証
+
+`validate_seed.py`／`append_only_check.py`（30,423 行バイト一致）／`size_budget.py --strict`（notes.d 142/142・errata.d 110/110・readings 949/950 で軟上限内）／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`（配線率 100%、949/949）／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check`／`claim_wiring.py --check`／`errata_audit.py --schema`／`map_build.py --check`・`--check-readme`／`node --check viewer/app.js` を実行し、`belief_state.py --write-map` → `map_build.py` で索引を同期、`python3 -m unittest discover -s tests`（915 本）を通しました。途中で `tests.test_read_log` が文脈素材5件の `read_log` 不在を検出し（合成1件のはずが6件）、`used_as_context` の手書き行5件で解いています。検査の通過は探究の進展の証明ではありません。EIG の変動は成果に数えていません。
+
+（追記・保守コミット）`origin/main` 取り込み後の和集合で `size_budget.py --strict` が3次元同時に赤になった（sessions.d 139/138・notes.d 144/143・readings 952/951）。いずれも「実測値と同値の軟上限」の罠であり、本セッション1本の追加（各+1）で発火した。readings は前例どおり十数セッション分の余裕（952+12=964）へ再スケール、sessions.d は 138→141、notes.d は 143→146（各+2の余裕）とした。notes.d の「次に統合せよ、または決めよ」という申し送り（4e438d・a989d5）への回答は**決定**である：notes.d は順序感受性により統合対象外（純減0）と a989d5 が実測しており、結合の負債は余裕の確保によって決着とする。保守のみのコミットに分離した（parallel-work.md 規則6）。同種の再スケールが並列PRで競合した前例（#873 vs 344e11）があるため、余裕の値を実測＋既定のマージンに揃えた。
