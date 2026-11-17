@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：4934 件（research_excerpt 2693 ／ literary_text 2173 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4944 件（research_excerpt 2703 ／ literary_text 2173 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：250 編（selected 96 ／ draft 154）
 - **解釈的関係（Relations）**：7029 件
-- **探究セッション（Sessions）**：945 回
+- **探究セッション（Sessions）**：946 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4934 | `literary_text` 2173／`research_excerpt` 2693／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4944 | `literary_text` 2173／`research_excerpt` 2703／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 250 | `selected` 96／`draft` 154／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7029 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 945 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14689 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 946 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14699 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 350 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1008 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1009 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 54 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 545 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 546 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -798,7 +798,7 @@
 | `FRAG-20261116-7d62f1` | 一心の張られない隙を、何が越えるか | draft | essay | reflective_literary_voice |
 | `FRAG-20261117-55b108` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4934 件・詳細は map/3*.md）
+## 4. 対話素材（4944 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5645,6 +5645,16 @@
 | `MAT-20261117-486222` | research_excerpt | IIT-Concerned, Stephen M. Fleming, Karen Yan, Martijn E. Wokke, Michal Wierzchon, Michał … |
 | `MAT-20261117-bce95b` | research_excerpt | Naotsugu Tsuchiya, Melanie Wilke, Stefan Frässle, Victor A. F. Lamme『Tsuchiya, Wilke, Frä… |
 | `MAT-20261117-980856` | research_excerpt | Stanislas Dehaene, Hakwan Lau, Sid Kouider『Dehaene, Lau & Kouider (2017)「意識とは何か、機械は持ちうるか」… |
+| `MAT-EVD-20261117-72928b` | research_excerpt | Helder F Araujo, Jonas Kaplan, Hanna Damasio, Antonio Damasio『Neural correlates of differ… |
+| `MAT-EVD-20261117-539e52` | research_excerpt | Eleanor A Maguire, Faraneh Vargha-Khadem, Demis Hassabis『Imagining fictitious and future … |
+| `MAT-EVD-20261117-ea5227` | research_excerpt | Donna Kwan, Carl F Craver, Leonard Green, Joel Myerson, Pascal Boyer, R Shayna Rosenbaum『… |
+| `MAT-EVD-20261117-91e205` | research_excerpt | Jennifer S Rabin, Nicole Carson, Asaf Gilboa, Donald T Stuss, R Shayna Rosenbaum『Imaginin… |
+| `MAT-EVD-20261117-97c37c` | research_excerpt | Roy Salomon, Roberta Ronchi, Jonathan Dönz, Olaf Blanke『The Insula Mediates Access to Awa… |
+| `MAT-EVD-20261117-134b56` | research_excerpt | Yusuke Haruki, Kenji Ogawa『Cardiac and Gastric Interoceptive Awareness Have Distinct Neur… |
+| `MAT-EVD-20261117-8f6f3d` | research_excerpt | Mariana Babo-Rebelo, Nicolai Wolpert, Claude Adam, Dominique Hasboun, Catherine Tallon-Ba… |
+| `MAT-EVD-20261117-5cf98e` | research_excerpt | Yair Pinto, Maria-Chiara Villa, Sabrina Siliquini, Edward H F de Haan『Visual integration … |
+| `MAT-EVD-20261117-666ddc` | research_excerpt | Bapun Giri, Utku Kaya, Kourosh Maboudi, Ted Abel, Kamran Diba『Sleep loss diminishes hippo… |
+| `MAT-EVD-20261117-0a967e` | research_excerpt | Emmett J Thompson, Lars B Rollik, Marcus Stephenson-Jones『Replay of procedural memory is … |
 | `MAT-20261117-cc8a01` | research_excerpt | Mike Hansell, Graeme D. Ruxton『Setting tool use within the context of animal construction… |
 | `MAT-20261117-cc8a02` | research_excerpt | Lauren M. Guillette, Susan D. Healy『Nest building, the forgotten behaviour (2015)——人間の道具だ… |
 | `MAT-20261117-cc8a03` | research_excerpt | Patrick T. Walsh, Mike Hansell, Wendy D. Borello, Susan D. Healy『Repeatability of nest mo… |
@@ -6666,6 +6676,7 @@
 | `SESSION-20261117-2bd020` | 2026-11-17T06:05:00Z | `Q-002`, `Q-001` | — | — |
 | `SESSION-20261117-5cbd91e3970e` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-5d524a` | 2026-11-17T09:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261117-eafad5` | 2026-11-17 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261117-6c0a11` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-ff04c3` | 2026-11-17 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261117-d0e79a` | 2026-11-17 | `Q-001`, `Q-002` | — | — |
@@ -6776,7 +6787,8 @@
 | `map/31-materials-research-24.md` | 100 | 258,649 |
 | `map/31-materials-research-25.md` | 100 | 260,339 |
 | `map/31-materials-research-26.md` | 100 | 239,489 |
-| `map/31-materials-research-27.md` | 93 | 191,883 |
+| `map/31-materials-research-27.md` | 100 | 201,725 |
+| `map/31-materials-research-28.md` | 3 | 5,865 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6811,7 +6823,7 @@
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
-| `map/50-sessions-19.md` | 45 | 31,874 |
+| `map/50-sessions-19.md` | 46 | 32,262 |
 | `map/60-notes-01.md` | 25 | 65,235 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -6842,24 +6854,24 @@
 | `map/60-notes-28.md` | 25 | 90,381 |
 | `map/60-notes-29.md` | 25 | 96,563 |
 | `map/60-notes-30.md` | 25 | 38,599 |
-| `map/60-notes-31.md` | 25 | 83,107 |
-| `map/60-notes-32.md` | 25 | 77,849 |
-| `map/60-notes-33.md` | 25 | 70,451 |
-| `map/60-notes-34.md` | 25 | 70,477 |
-| `map/60-notes-35.md` | 25 | 78,305 |
-| `map/60-notes-36.md` | 25 | 104,503 |
-| `map/60-notes-37.md` | 25 | 110,827 |
-| `map/60-notes-38.md` | 24 | 133,059 |
+| `map/60-notes-31.md` | 25 | 79,077 |
+| `map/60-notes-32.md` | 25 | 81,202 |
+| `map/60-notes-33.md` | 25 | 70,090 |
+| `map/60-notes-34.md` | 25 | 71,400 |
+| `map/60-notes-35.md` | 25 | 78,283 |
+| `map/60-notes-36.md` | 25 | 102,469 |
+| `map/60-notes-37.md` | 25 | 107,345 |
+| `map/60-notes-38.md` | 25 | 140,505 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・949本・33,491,874 B）
+## 8. 精読ノート索引（readings/・950本・33,507,059 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 888/949 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 888/950 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：949 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：177 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：950 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：178 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7629,6 +7641,7 @@
 | `readings/2026-11-17-five-handovers-measured-and-one-that-cannot-be-implemented.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-caffaa` | 12,479 | Q3 S1 | — | 五つの申し送りを、一つずつ測って返した——三つの基軸と、順序という実装できない修正 |
 | `readings/2026-11-17-five-unread-things-executed.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261112-fccf73` | 8,483 | Q3 S1 ERR14 | — | 未読の五つを実行する——残りのコマンド・観測のみ 9 件・open 56 の全数・宛先なし 10 行・conteste… |
 | `readings/2026-11-17-four-unread-things-read.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261107-890f1f` +1 | 6,729 | Q1 F1 S2 ERR11 | ✓ | 未読の四つを読む——open 55、`corrected` の 2 行、FRAG-016 の履歴、異議 609 の本文 |
+| `readings/2026-11-17-neuroscience-dissociation-and-inheritance.md` | — | 2026-11-17 | — | 6,886 | Q1 M10 | — | 脳神経科学10資料精読：解離する自己と、記録を引き受ける手続き |
 | `readings/2026-11-17-neuroscience-memory-and-the-self.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-1ef68b` | 10,268 | M10 S1 | ✓ | 記憶は保存だけでは働かない——脳神経学10資料の精読と、人間・AIの自己 |
 | `readings/2026-11-17-neuroscience-memory-self-continuity.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-ff04c3` +1 | 7,327 | M12 S2 | ✓ | 脳神経学10資料の精読：保存、再構成、身体、更新のあいだ |
 | `readings/2026-11-17-neuroscience-trace-and-interpreter.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-80eea8` +1 | 14,000 | Q3 M11 S2 | — | 脳神経学の10資料を読む——痕跡は状態に従い、自己は解釈する |
