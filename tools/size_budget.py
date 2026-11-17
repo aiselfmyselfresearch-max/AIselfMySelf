@@ -1005,7 +1005,13 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # count cannot be compacted (see the remedy above), so the file count is
         # rescaled by a measured margin of eight sessions, not by an automatic
         # allowance. hard 1200 files / 48 MiB and per-file limits unchanged.
-        soft_files=912,
+        # 2026-11-17 (912 -> 924, SESSION-20261117-d504d3): reports from parallel
+        # sessions took readings/ from 905 to 917 files while bytes stayed at
+        # 31.48 MiB of the 32 MiB soft budget (bytes not binding). Reports are
+        # append-only and the count cannot be compacted; the review point is
+        # rescaled by a measured margin of about a dozen sessions. Previous
+        # rescale the same day: 904 -> 912 (SESSION-20261117-ea21b8).
+        soft_files=924,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

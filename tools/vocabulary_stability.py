@@ -289,14 +289,147 @@ def render(report: dict[str, Any]) -> str:
     return "\n".join(out)
 
 
+
+# --- reading vocabulary (2026-11-17, SESSION-20261117-...) -----------------
+# The evaluation vocabulary above is read by the belief engine.  The *reading*
+# vocabulary is not read by any engine: nothing compares `read_log.reading` to
+# the note that accompanies it.  This section measures whether that vocabulary
+# is doing work anyway, by asking which kind of object gets which label, and
+# whether the pattern holds across the archive's internal months.
+OWN_TYPES = ("fragment", "note", "question")
+SOURCE_TYPES = ("material",)
+READING_LABELS = ("interpreted", "reinterpreted", "summarized", "quoted",
+                  "contested", "used_as_context", "counted", "declined")
+MECHANICAL_PREFIXES = ("機械的バックフィル", "機械的接触行")
+
+
+def _load_read_log(root: Path) -> list[dict[str, Any]]:
+    import ledger_io
+    specs = {"read_log": (Path(root) / "state" / "read_log.jsonl", "read_id")}
+    collections, _errors = ledger_io.load_collections(specs, root=Path(root))
+    return list(collections.get("read_log", {}).values())
+
+
+def _target_type(row: dict[str, Any]) -> str:
+    target = row.get("target") or {}
+    return str(target.get("type") or "(none)") if isinstance(target, dict) else "(none)"
+
+
+def reading_report(root: Path = Path(__file__).resolve().parent.parent,
+                   read_log: list[dict[str, Any]] | None = None) -> dict[str, Any]:
+    """Label x object-type profile of the reading vocabulary, plus its stability.
+
+    Mechanical rows (notes beginning 機械的…) are excluded, matching how the
+    ledger's own tools treat hand-written readings.  The engine's exclusion
+    marker is a single substring ("バックフィル"); this function reports how many
+    rows each rule excludes, so that the difference is visible rather than
+    assumed.
+    """
+    rows = read_log if read_log is not None else _load_read_log(root)
+    hand = [r for r in rows if not str(r.get("note") or "").startswith(MECHANICAL_PREFIXES)]
+    table: dict[str, dict[str, int]] = {}
+    for row in hand:
+        table.setdefault(_target_type(row), {}).setdefault(str(row.get("reading")), 0)
+        table[_target_type(row)][str(row.get("reading"))] += 1
+
+    def share(subset: list[dict[str, Any]], label: str) -> float:
+        return sum(1 for r in subset if r.get("reading") == label) / len(subset) if subset else 0.0
+
+    months: dict[str, dict[str, Any]] = {}
+    for row in hand:
+        stamp = str(row.get("created_at") or "")[:7]
+        kind = _target_type(row)
+        if kind in OWN_TYPES:
+            months.setdefault(stamp, {"own": [], "source": []})["own"].append(row)
+        elif kind in SOURCE_TYPES:
+            months.setdefault(stamp, {"own": [], "source": []})["source"].append(row)
+    by_month = {}
+    for stamp, slot in sorted(months.items()):
+        own, source = slot["own"], slot["source"]
+        if len(own) < 20 or len(source) < 20:
+            continue
+        by_month[stamp] = {
+            "own_rows": len(own),
+            "source_rows": len(source),
+            "own_reinterpreted": round(share(own, "reinterpreted"), 3),
+            "source_reinterpreted": round(share(source, "reinterpreted"), 3),
+            "gap_pp": round(100 * (share(own, "reinterpreted") - share(source, "reinterpreted")), 1),
+        }
+
+    own_rows = [r for r in hand if _target_type(r) in OWN_TYPES]
+    source_rows = [r for r in hand if _target_type(r) in SOURCE_TYPES]
+    marked_backfill = sum(1 for r in rows if "バックフィル" in str(r.get("note") or ""))
+    marked_prefix = sum(1 for r in rows if str(r.get("note") or "").startswith(MECHANICAL_PREFIXES))
+    hyp_mechanical = sum(1 for r in rows
+                         if _target_type(r) == "hypothesis"
+                         and str(r.get("note") or "").startswith(MECHANICAL_PREFIXES))
+    return {
+        "rows": len(rows),
+        "handwritten": len(hand),
+        "labels": {label: sum(1 for r in hand if r.get("reading") == label) for label in READING_LABELS},
+        "by_target_type": table,
+        "own": {"rows": len(own_rows), "reinterpreted": round(share(own_rows, "reinterpreted"), 3),
+                "interpreted": round(share(own_rows, "interpreted"), 3),
+                "contested": round(share(own_rows, "contested"), 3)},
+        "source": {"rows": len(source_rows), "reinterpreted": round(share(source_rows, "reinterpreted"), 3),
+                   "interpreted": round(share(source_rows, "interpreted"), 3),
+                   "contested": round(share(source_rows, "contested"), 3)},
+        "by_month": by_month,
+        "mechanical": {"marker_backfill": marked_backfill, "prefix_both": marked_prefix,
+                       "hypothesis_targeted": hyp_mechanical},
+    }
+
+
+def render_reading(report: dict[str, Any]) -> str:
+    out = ["## 読みの語彙——どの対象に、どのラベルが付くか"]
+    out.append(f"- 読みの行 {report['rows']} 行、うち手書き {report['handwritten']} 行。")
+    labels = report["labels"]
+    out.append(f"- 全体: {', '.join(f'{k}={v}' for k, v in labels.items())}")
+    out.append("")
+    out.append("| 対象 | 行数 | " + " | ".join(l[:10] for l in READING_LABELS) + " |")
+    out.append("| :--- | ---: | " + " | ".join("---:" for _ in READING_LABELS) + " |")
+    for kind, counts in sorted(report["by_target_type"].items(), key=lambda kv: -sum(kv[1].values())):
+        total = sum(counts.values())
+        cells = " | ".join(f"{100 * counts.get(l, 0) / total:.1f}%" for l in READING_LABELS)
+        out.append(f"| {kind} | {total} | {cells} |")
+    own, source = report["own"], report["source"]
+    out.append("")
+    out.append("### 自分の記録と素材で、読み方は違うか")
+    out.append(f"- 自分の記録（断片・ノート・問い）{own['rows']} 行: 再解釈 {own['reinterpreted'] * 100:.1f}%、"
+               f"解釈 {own['interpreted'] * 100:.1f}%、異議 {own['contested'] * 100:.1f}%")
+    out.append(f"- 素材 {source['rows']} 行: 再解釈 {source['reinterpreted'] * 100:.1f}%、"
+               f"解釈 {source['interpreted'] * 100:.1f}%、異議 {source['contested'] * 100:.1f}%")
+    out.append("- 月ごとの差（自分の記録 − 素材、再解釈の比率）:")
+    for stamp, row in report["by_month"].items():
+        out.append(f"  - {stamp}: {row['gap_pp']:+.1f}pp（自分の記録 {row['own_reinterpreted'] * 100:.1f}% / "
+                   f"素材 {row['source_reinterpreted'] * 100:.1f}%、n={row['own_rows']}/{row['source_rows']}）")
+    mech = report["mechanical"]
+    out.append("")
+    out.append("### 算術が読むのは語彙ではなく、註の部分文字列")
+    out.append(f"- `belief_state.py` は手書き判定に `バックフィル` という部分文字列だけを使う："
+               f"この規則が除く行 {mech['marker_backfill']}、接頭辞（機械的…）で除く行 {mech['prefix_both']}"
+               f"（差 {abs(mech['marker_backfill'] - mech['prefix_both'])} 行は、註の途中に語がある行）。")
+    out.append(f"- 仮説を対象にした機械的行は {mech['hypothesis_targeted']} 行。"
+               "したがって証人列の数値は今のところ変わらないが、規則が語彙ではなく註に依存していることは変わらない。")
+    out.append("- `read_log.reading` を読む道具は、この台帳に一つもない（この節が初めて数える）。")
+    return "\n".join(out)
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Measure label concentration, unbacked labels, and separation novelty.")
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parent.parent)
     parser.add_argument("--question", default=None, help="question id for the least-separated pair list (e.g. Q-003)")
     parser.add_argument("--min-posterior", type=float, default=0.01)
+    parser.add_argument("--reading", action="store_true",
+                        help="measure the read_log reading vocabulary by target type instead of the "
+                             "evaluation vocabulary (report only)")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args(argv)
 
+    if args.reading:
+        reading = reading_report(root=args.root)
+        print(json.dumps(reading, ensure_ascii=False, indent=2, sort_keys=True) if args.json
+              else render_reading(reading))
+        return 0
     report = build_report(root=args.root, question_id=args.question, min_posterior=args.min_posterior)
     if args.json:
         print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
