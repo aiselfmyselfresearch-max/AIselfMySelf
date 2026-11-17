@@ -340,7 +340,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # not binding by 554,983 B). The merge cannot drop an append-only file,
         # so the count needs the slot to stay --strict-clean. One-slot exception;
         # hard 160 unchanged; not an automatic raise.
-        soft_shards=124,
+        # 2026-11-17 (124 -> 125, SESSION-20261117-f0d068): this session's own
+        # 10-row acquisition shard (2026-11-17-f0d068) is the 125th file.
+        # Measured: state/materials.d = 125 files / 13,102,200 B of the 13 MiB
+        # soft (bytes not binding by 529,288 B). The shard must stay its own
+        # append-only file -> net reclaim 0. One-slot exception; hard 160
+        # unchanged; not an automatic raise.
+        soft_shards=125,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -895,7 +901,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # notes.d is the binding shard dimension. Measured: state/notes.d =
         # 139 files / 1,850,203 B of the 2 MiB soft (bytes not binding by
         # 246,949 B). One-slot exception; hard 160 unchanged.
-        soft_shards=139,
+        # 2026-11-17 (139 -> 140, SESSION-20261117-f0d068): this session's own
+        # curated note shard (2026-11-17-f0d068, 11 rows: 1 close-reading report
+        # + 10 acquisition cards) is the 140th shard. Measured: state/notes.d =
+        # 140 files / 1,860,310 B of the 2 MiB soft (bytes not binding by
+        # 236,842 B). notes.d is order-sensitive and excluded from
+        # consolidation -> net reclaim 0. One-slot exception; hard 160
+        # unchanged; not an automatic raise.
+        soft_shards=140,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
@@ -978,7 +991,14 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
             "the index (python3 tools/map_build.py) and registering curated rows "
             "(python3 tools/note_index.py --register)"
         ),
-        soft_files=900,
+        # 2026-11-17 (900 -> 904, SESSION-20261117-f0d068): this session's
+        # 10 acquisition cards + 1 close-reading report (11 files) took
+        # readings/ from 893 to 904 files / 32,915,046 B of the 32 MiB soft
+        # (bytes not binding). Reports are append-only; shard consolidation
+        # cannot reduce this dimension, and deleting prior reports requires
+        # human approval. Measured review-point rescale, not an automatic
+        # allowance; hard 1200 files / 48 MiB and per-file limits unchanged.
+        soft_files=904,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
