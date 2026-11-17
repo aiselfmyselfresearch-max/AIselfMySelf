@@ -1,0 +1,11 @@
+{
+  "read_id": "READ-20261117-0d735a",
+  "session_id": "SESSION-20261117-01ade8",
+  "target": {
+    "type": "material",
+    "id": "MAT-20261117-a1d39d"
+  },
+  "reading": "interpreted",
+  "note": "Lamme (2006)のステージ3/4区別をシャード内索引と全検索の区別として解釈。",
+  "created_at": "2026"
+}

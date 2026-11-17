@@ -1,0 +1,34 @@
+{
+  "material_id": "MAT-20261117-f50f55",
+  "kind": "research_excerpt",
+  "title": "Mirror-Neuron System Review (Rizzolatti & Craighero 2004)",
+  "source": {
+    "source_id": "SRC-NEURO-009",
+    "title": "The mirror-neuron system",
+    "authors": ["Giacomo Rizzolatti", "Laila Craighero"],
+    "year": 2004,
+    "url": "https://doi.org/10.1146/annurev.neuro.27.070203.144230",
+    "version_note": "Annual Review of Neuroscience 27:169-192. Action understanding and simulation."
+  },
+  "passage": "Mirror neurons discharge both when performing and observing actions, enabling action understanding and simulation. The mirror-neuron system supports simulation-based understanding.",
+  "passage_language": "en",
+  "context": "Neuroscience domain: action understanding and simulation. Relevant to AI repository's simulation of external query action vs internal memory retrieval.",
+  "source_note": "Verified via DOI; mirror-neuron system and simulation confirmed.",
+  "literary_invitation": "Does the repository simulate external queries (mirroring)? How does simulation define the 'self' in the memory database?",
+  "scope_note": "Q-003: conditional hypothesis on simulation-based understanding (HYP-20261117-b17a54). Excludes phenomenal consciousness claims.",
+  "motif_ids": ["MOTIF-MIRROR", "MOTIF-SIMULATION", "MOTIF-ACTION"],
+  "origin": {
+    "repository": "https://github.com/aiselfmyselfresearch-max/AIselfMySelf",
+    "commit": "485bb79c43feef76a03941728aeb61a4d14fcbb2",
+    "source_record_id": "SRC-NEURO-009",
+    "evidence_record_id": "MAT-20261117-f50f55",
+    "source_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md",
+    "evidence_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md"
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026",
+    "method": "doi_abstract_and_mirror_neuron_check",
+    "note": "Confirmed mirror-neuron system/simulation; excluded phenomenal consciousness attribution."
+  }
+}

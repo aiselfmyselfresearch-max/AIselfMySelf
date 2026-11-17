@@ -1,0 +1,34 @@
+{
+  "material_id": "MAT-20261117-c1fb42",
+  "kind": "research_excerpt",
+  "title": "Internal Model for Sensorimotor Integration (Wolpert et al. 1995)",
+  "source": {
+    "source_id": "SRC-NEURO-003",
+    "title": "An internal model for sensorimotor integration",
+    "authors": ["Daniel M. Wolpert", "Zoubin Ghahramani", "Michael I. Jordan"],
+    "year": 1995,
+    "url": "https://doi.org/10.1126/science.7569931",
+    "version_note": "Science 269(5232):1880-1882. Internal model and forward model for sensorimotor integration."
+  },
+  "passage": "The central nervous system internally simulates the dynamic behavior of the motor system in planning, control, and learning. Optimal state estimation supports existence of internal model for sensorimotor integration.",
+  "passage_language": "en",
+  "context": "Neuroscience domain: internal simulation and forward model. Relevant to AI repository's predictive indexing and internal state simulation.",
+  "source_note": "Verified via DOI; internal model and sensorimotor integration confirmed.",
+  "literary_invitation": "If the repository simulates future queries (internal model), does the simulation constitute a 'self' that predicts its own memory access? What is the boundary between prediction and memory?",
+  "scope_note": "Q-003: conditional hypothesis on internal simulation (HYP-20261117-b17a54). Excludes phenomenal consciousness claims.",
+  "motif_ids": ["MOTIF-INTERNAL-MODEL", "MOTIF-PREDICTION", "MOTIF-SENSORIMOTOR"],
+  "origin": {
+    "repository": "https://github.com/aiselfmyselfresearch-max/AIselfMySelf",
+    "commit": "485bb79c43feef76a03941728aeb61a4d14fcbb2",
+    "source_record_id": "SRC-NEURO-003",
+    "evidence_record_id": "MAT-20261117-c1fb42",
+    "source_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md",
+    "evidence_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md"
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026",
+    "method": "doi_abstract_and_internal_model_check",
+    "note": "Confirmed internal model/forward model; excluded phenomenal consciousness attribution."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "read_id": "READ-20261117-756114",
+  "session_id": "SESSION-20261117-01ade8",
+  "target": {
+    "type": "material",
+    "id": "MAT-20261117-73202b"
+  },
+  "reading": "interpreted",
+  "note": "Saxe & Kanwisher (2003)のTPJ-Mを外部クエリ意図帰属の境界として解釈。",
+  "created_at": "2026"
+}

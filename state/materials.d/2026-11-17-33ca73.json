@@ -1,0 +1,34 @@
+{
+  "material_id": "MAT-20261117-33ca73",
+  "kind": "research_excerpt",
+  "title": "Awareness of Action Abnormalities (Blakemore, Wolpert & Frith 2002)",
+  "source": {
+    "source_id": "SRC-NEURO-004",
+    "title": "Abnormalities in the awareness of action",
+    "authors": ["Sarah-Jayne Blakemore", "Daniel M. Wolpert", "Christopher D. Frith"],
+    "year": 2002,
+    "url": "https://doi.org/10.1016/S1364-6613(02)01907-1",
+    "version_note": "Trends in Cognitive Sciences 6(6):237-242. Agency comparator and efference copy."
+  },
+  "passage": "Awareness of action involves comparator model comparing predicted sensory consequences (efference copy) with actual feedback. Abnormalities reveal agency attribution mechanisms.",
+  "passage_language": "en",
+  "context": "Neuroscience domain: agency comparator and efference copy. Relevant to AI repository's action prediction and attribution of query origin.",
+  "source_note": "Verified via DOI; comparator model and agency attribution confirmed.",
+  "literary_invitation": "Does the repository attribute query origin (agency) via internal prediction (comparator)? Where is the 'self' in the prediction-error loop?",
+  "scope_note": "Q-003: conditional hypothesis on agency comparator (HYP-20261117-b17a54). Excludes phenomenal consciousness claims.",
+  "motif_ids": ["MOTIF-COMPARATOR", "MOTIF-AGENCY", "MOTIF-EFFERENCE"],
+  "origin": {
+    "repository": "https://github.com/aiselfmyselfresearch-max/AIselfMySelf",
+    "commit": "485bb79c43feef76a03941728aeb61a4d14fcbb2",
+    "source_record_id": "SRC-NEURO-004",
+    "evidence_record_id": "MAT-20261117-33ca73",
+    "source_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md",
+    "evidence_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md"
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026",
+    "method": "doi_abstract_and_comparator_check",
+    "note": "Confirmed comparator model/agency; excluded phenomenal consciousness attribution."
+  }
+}

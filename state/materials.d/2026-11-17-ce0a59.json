@@ -1,0 +1,34 @@
+{
+  "material_id": "MAT-20261117-ce0a59",
+  "kind": "research_excerpt",
+  "title": "Attention Schema Theory (Graziano 2020)",
+  "source": {
+    "source_id": "SRC-NEURO-005",
+    "title": "Consciousness and the attention schema: Why it has to be right",
+    "authors": ["Michael S.A. Graziano"],
+    "year": 2020,
+    "url": "https://doi.org/10.1080/02643294.2020.1761782",
+    "version_note": "Cognitive Neuropsychology 37(3-4):224-233. Attention schema as schematic control."
+  },
+  "passage": "Attention schema theory posits that the brain constructs a schematic model of attention (attention schema) to control and predict attention. This schematic model serves as self-model for attention control.",
+  "passage_language": "en",
+  "context": "Neuroscience domain: attention schema as self-model. Relevant to AI repository's attention/query focus control and schematic model.",
+  "source_note": "Verified via DOI; attention schema and schematic control confirmed.",
+  "literary_invitation": "If the repository's query focus is an attention schema, does the schematic control define the 'self' of the repository? How does the schema relate to memory retrieval?",
+  "scope_note": "Q-003: conditional hypothesis on attention schema (HYP-20261117-b17a54). Excludes phenomenal consciousness claims.",
+  "motif_ids": ["MOTIF-ATTENTION-SCHEMA", "MOTIF-SELF-MODEL", "MOTIF-CONTROL"],
+  "origin": {
+    "repository": "https://github.com/aiselfmyselfresearch-max/AIselfMySelf",
+    "commit": "485bb79c43feef76a03941728aeb61a4d14fcbb2",
+    "source_record_id": "SRC-NEURO-005",
+    "evidence_record_id": "MAT-20261117-ce0a59",
+    "source_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md",
+    "evidence_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md"
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026",
+    "method": "doi_abstract_and_attention_schema_check",
+    "note": "Confirmed attention schema/self-model; excluded phenomenal consciousness attribution."
+  }
+}

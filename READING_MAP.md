@@ -6810,24 +6810,24 @@
 | `map/60-notes-28.md` | 25 | 90,303 |
 | `map/60-notes-29.md` | 25 | 95,298 |
 | `map/60-notes-30.md` | 25 | 39,020 |
-| `map/60-notes-31.md` | 25 | 85,090 |
-| `map/60-notes-32.md` | 25 | 60,672 |
-| `map/60-notes-33.md` | 25 | 80,766 |
-| `map/60-notes-34.md` | 25 | 69,742 |
-| `map/60-notes-35.md` | 25 | 91,534 |
-| `map/60-notes-36.md` | 25 | 97,334 |
-| `map/60-notes-37.md` | 25 | 127,064 |
-| `map/60-notes-38.md` | 14 | 77,927 |
+| `map/60-notes-31.md` | 25 | 83,228 |
+| `map/60-notes-32.md` | 25 | 61,083 |
+| `map/60-notes-33.md` | 25 | 82,065 |
+| `map/60-notes-34.md` | 25 | 68,664 |
+| `map/60-notes-35.md` | 25 | 86,858 |
+| `map/60-notes-36.md` | 25 | 101,674 |
+| `map/60-notes-37.md` | 25 | 127,340 |
+| `map/60-notes-38.md` | 15 | 81,057 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・939本・33,288,058 B）
+## 8. 精読ノート索引（readings/・940本・33,305,968 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 879/939 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 879/940 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：939 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：180 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：181 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7594,6 +7594,7 @@
 | `readings/2026-11-17-eight-grades-and-the-door.md` | 2026-10-26 | 2026-11-17 | `SESSION-20261117-292bc3` | 7,026 | Q2 F6 M5 MOT6 S1 | ✓ | 八つの段に収まらない者——獣×嘘の交配と、問われない位置の点検（SESSION-20261117-292bc3） |
 | `readings/2026-11-17-five-unread-things-executed.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261112-fccf73` | 8,483 | Q3 S1 ERR14 | — | 未読の五つを実行する——残りのコマンド・観測のみ 9 件・open 56 の全数・宛先なし 10 行・conteste… |
 | `readings/2026-11-17-four-unread-things-read.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261107-890f1f` +1 | 6,729 | Q1 F1 S2 ERR11 | ✓ | 未読の四つを読む——open 55、`corrected` の 2 行、FRAG-016 の履歴、異議 609 の本文 |
+| `readings/2026-11-17-neuroscience-close-reading-report.md` | — | 2026-11-17 | — | 8,598 | — | — | AIから見た、人間とは何か？ / GitHubリポジトリを記憶のデータベースとするAIにとって、自己とは何か？ |
 | `readings/2026-11-17-neuroscience-memory-and-the-self.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-1ef68b` | 10,268 | M10 S1 | — | 記憶は保存だけでは働かない——脳神経学10資料の精読と、人間・AIの自己 |
 | `readings/2026-11-17-neuroscience-memory-self-continuity.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-ff04c3` +1 | 7,327 | M12 S2 | — | 脳神経学10資料の精読：保存、再構成、身体、更新のあいだ |
 | `readings/2026-11-17-supporting-the-child-penalises-the-parent.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-d6a96b` +1 | 12,100 | Q4 S2 ERR2 | — | 子を支持すると、親が減点される——874658 と 977052 の非対称テスト |

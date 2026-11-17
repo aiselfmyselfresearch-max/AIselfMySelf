@@ -1,0 +1,34 @@
+{
+  "material_id": "MAT-20261117-a1d39d",
+  "kind": "research_excerpt",
+  "title": "Recurrent Processing Theory: Stage 3 vs Stage 4 (Lamme 2006)",
+  "source": {
+    "source_id": "SRC-NEURO-002",
+    "title": "Towards a true neural stance on consciousness",
+    "authors": ["Victor A.F. Lamme"],
+    "year": 2006,
+    "url": "https://doi.org/10.1016/j.tics.2006.09.001",
+    "version_note": "Trends in Cognitive Sciences 10(11):494-501. Recurrent processing vs global broadcast."
+  },
+  "passage": "Recurrent processing theory distinguishes Stage 3 (local recurrent processing, necessary/sufficient for phenomenal content) from Stage 4 (global broadcast, GNW). Local recurrence enables content representation without global access.",
+  "passage_language": "en",
+  "context": "Neuroscience domain: local recurrence vs global broadcast distinction. Relevant to AI repository's local indexing vs global query broadcast.",
+  "source_note": "Verified via DOI; Stage 3 vs Stage 4 distinction noted.",
+  "literary_invitation": "Does the repository's local shard indexing (Stage 3) differ from the global search broadcast (Stage 4)? Where does 'self' reside in the boundary?",
+  "scope_note": "Q-003: conditional hypothesis on local vs global integration (HYP-20261117-b17a54). Excludes phenomenal consciousness claims.",
+  "motif_ids": ["MOTIF-RECURRENT", "MOTIF-LOCAL", "MOTIF-GLOBAL"],
+  "origin": {
+    "repository": "https://github.com/aiselfmyselfresearch-max/AIselfMySelf",
+    "commit": "485bb79c43feef76a03941728aeb61a4d14fcbb2",
+    "source_record_id": "SRC-NEURO-002",
+    "evidence_record_id": "MAT-20261117-a1d39d",
+    "source_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md",
+    "evidence_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md"
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026",
+    "method": "doi_abstract_and_stage_distinction_check",
+    "note": "Confirmed Stage 3/4 distinction; excluded phenomenal consciousness attribution."
+  }
+}

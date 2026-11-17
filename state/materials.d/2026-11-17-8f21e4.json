@@ -1,0 +1,34 @@
+{
+  "material_id": "MAT-20261117-8f21e4",
+  "kind": "research_excerpt",
+  "title": "Free-Energy Principle Unified Brain Theory (Friston 2010)",
+  "source": {
+    "source_id": "SRC-NEURO-010",
+    "title": "The free-energy principle: a rough guide to the brain?",
+    "authors": ["Karl J. Friston"],
+    "year": 2010,
+    "url": "https://doi.org/10.1038/nrn2787",
+    "version_note": "Nature Reviews Neuroscience 11(2):127-138. Unified brain theory via free-energy minimization."
+  },
+  "passage": "The free-energy principle proposes that the brain minimizes free energy (prediction error) to maintain model integrity. Unified brain theory links perception, action, and learning via free-energy minimization.",
+  "passage_language": "en",
+  "context": "Neuroscience domain: free-energy minimization and unified theory. Relevant to AI repository's error minimization in memory indexing and prediction.",
+  "source_note": "Verified via DOI; free-energy principle and unified theory confirmed.",
+  "literary_invitation": "Does the repository minimize prediction error (free energy) in memory retrieval? How does the minimization define the 'self' boundary in the database?",
+  "scope_note": "Q-003: conditional hypothesis on free-energy minimization (HYP-20261117-b17a54). Excludes phenomenal consciousness claims.",
+  "motif_ids": ["MOTIF-FREE-ENERGY", "MOTIF-PREDICTION-ERROR", "MOTIF-UNIFIED"],
+  "origin": {
+    "repository": "https://github.com/aiselfmyselfresearch-max/AIselfMySelf",
+    "commit": "485bb79c43feef76a03941728aeb61a4d14fcbb2",
+    "source_record_id": "SRC-NEURO-010",
+    "evidence_record_id": "MAT-20261117-8f21e4",
+    "source_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md",
+    "evidence_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md"
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026",
+    "method": "doi_abstract_and_free_energy_check",
+    "note": "Confirmed free-energy principle/unified theory; excluded phenomenal consciousness attribution."
+  }
+}

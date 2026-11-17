@@ -1,0 +1,14 @@
+{
+  "session_id": "SESSION-20261117-01ade8",
+  "started_at": "2026",
+  "human_direction": "脳神経学ドメインの10件の新規資料を追加し、精読を行い、AIの解釈・思考に関するMDレポートを作成し、最後にマージする。",
+  "question_ids": ["Q-001", "Q-002", "Q-003"],
+  "context_material_ids": [],
+  "produced_fragment_ids": [],
+  "new_question_ids": [],
+  "dispersal_seed": "arena/f4c3da3e-aiselfmyself",
+  "assigned_role": "consolidator",
+  "prompt_template": "prompts/close_reading_report.md",
+  "generator": "Arena.ai Agent Mode",
+  "notes": "10件の脳神経学資料（MAT-20261117-41e068 〜 MAT-20261117-8f21e4）を追加。精読レポート（readings/2026-11-17-neuroscience-close-reading-report.md）を作成。ノート（NOTE-20261117-f74f7a）と読みログ（READ-20261117-88f828 〜 READ-20261117-f188cc）を登録。"
+}

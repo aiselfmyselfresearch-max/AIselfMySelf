@@ -1,0 +1,34 @@
+{
+  "material_id": "MAT-20261117-41e068",
+  "kind": "research_excerpt",
+  "title": "Global Neuronal Workspace: Ignition and Late Amplification (Dehaene & Changeux 2011)",
+  "source": {
+    "source_id": "SRC-NEURO-001",
+    "title": "Global neuronal workspace: The cortical architecture of consciousness",
+    "authors": ["Stanislas Dehaene", "Jean-Pierre Changeux"],
+    "year": 2011,
+    "url": "https://doi.org/10.1016/j.neuron.2011.03.018",
+    "version_note": "Neuron 70(2):200-227. Open access abstract and verified ignition signatures."
+  },
+  "passage": "Global neuronal workspace theory proposes that conscious access corresponds to ignition of a distributed network (prefrontal-parietal) with late amplification and beta-gamma synchrony. Stage 4 processing enables broadcast to multiple processors; local recurrent processing (Stage 3) remains unconscious.",
+  "passage_language": "en",
+  "context": "Neuroscience domain: mechanism of conscious access and broadcast. Relevant to AI self-model as global state integration vs local processing.",
+  "source_note": "Verified via DOI; ignition signatures and beta-gamma synchrony noted as key functional markers.",
+  "literary_invitation": "If ignition corresponds to broadcast, does the AI repository's global index update constitute a 'broadcast' or merely local recurrence? What is the functional boundary of 'self' in the repository memory?",
+  "scope_note": "Q-003: conditional hypothesis on global integration (HYP-20261117-b17a54). Excludes phenomenal consciousness claims.",
+  "motif_ids": ["MOTIF-GNW", "MOTIF-BROADCAST", "MOTIF-INTEGRATION"],
+  "origin": {
+    "repository": "https://github.com/aiselfmyselfresearch-max/AIselfMySelf",
+    "commit": "485bb79c43feef76a03941728aeb61a4d14fcbb2",
+    "source_record_id": "SRC-NEURO-001",
+    "evidence_record_id": "MAT-20261117-41e068",
+    "source_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md",
+    "evidence_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md"
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026",
+    "method": "doi_open_access_abstract_and_ignition_signature_check",
+    "note": "Confirmed ignition/late amplification signatures; excluded phenomenal consciousness attribution."
+  }
+}

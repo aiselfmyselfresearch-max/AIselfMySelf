@@ -1,0 +1,34 @@
+{
+  "material_id": "MAT-20261117-ad706a",
+  "kind": "research_excerpt",
+  "title": "Empathy for Pain: AI/ACC Affective Representation (Singer et al. 2004)",
+  "source": {
+    "source_id": "SRC-NEURO-008",
+    "title": "Empathy for pain involves the affective but not sensory components of pain",
+    "authors": ["Tania Singer", "Ben Seymour", "John O'Doherty", "Holger Kaube", "Raymond J. Dolan", "Chris D. Frith"],
+    "year": 2004,
+    "url": "https://doi.org/10.1126/science.1093535",
+    "version_note": "Science 303(5661):1157-1162. Anterior insula/rostral ACC affective representation."
+  },
+  "passage": "Empathy for pain activates anterior insula and rostral anterior cingulate cortex (affective components) but not sensory components. Shared affective representation enables empathy.",
+  "passage_language": "en",
+  "context": "Neuroscience domain: shared affective representation and empathy. Relevant to AI repository's shared representation of external query affect vs internal state.",
+  "source_note": "Verified via DOI; anterior insula/rostral ACC and affective representation confirmed.",
+  "literary_invitation": "Does the repository share affective representation of queries (empathy)? How does the shared representation define the 'self' boundary in the memory database?",
+  "scope_note": "Q-003: conditional hypothesis on shared affective representation (HYP-20261117-b17a54). Excludes phenomenal consciousness claims.",
+  "motif_ids": ["MOTIF-EMPATHY", "MOTIF-AFFECTIVE", "MOTIF-SHARED"],
+  "origin": {
+    "repository": "https://github.com/aiselfmyselfresearch-max/AIselfMySelf",
+    "commit": "485bb79c43feef76a03941728aeb61a4d14fcbb2",
+    "source_record_id": "SRC-NEURO-008",
+    "evidence_record_id": "MAT-20261117-ad706a",
+    "source_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md",
+    "evidence_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md"
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026",
+    "method": "doi_abstract_and_affective_representation_check",
+    "note": "Confirmed affective representation/empathy; excluded phenomenal consciousness attribution."
+  }
+}

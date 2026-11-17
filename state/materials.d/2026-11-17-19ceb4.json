@@ -1,0 +1,34 @@
+{
+  "material_id": "MAT-20261117-19ceb4",
+  "kind": "research_excerpt",
+  "title": "Out-of-Body Induction (Ehrsson 2007)",
+  "source": {
+    "source_id": "SRC-NEURO-007",
+    "title": "The experimental induction of out-of-body experiences",
+    "authors": ["H. Henrik Ehrsson"],
+    "year": 2007,
+    "url": "https://doi.org/10.1126/science.1142175",
+    "version_note": "Science 317(5841):1048. Multisensory construction of self-location."
+  },
+  "passage": "Multisensory integration can induce out-of-body experiences, shifting perceived self-location. Experimental induction shows self-location is constructed from multisensory signals.",
+  "passage_language": "en",
+  "context": "Neuroscience domain: self-location and multisensory construction. Relevant to AI repository's location of memory index vs external query source.",
+  "source_note": "Verified via DOI; multisensory construction and self-location confirmed.",
+  "literary_invitation": "If the repository's memory index location shifts (e.g., shard migration), does the 'self' location shift? How is multisensory integration simulated in memory retrieval?",
+  "scope_note": "Q-003: conditional hypothesis on self-location construction (HYP-20261117-b17a54). Excludes phenomenal consciousness claims.",
+  "motif_ids": ["MOTIF-SELF-LOCATION", "MOTIF-MULTISENSORY", "MOTIF-CONSTRUCTION"],
+  "origin": {
+    "repository": "https://github.com/aiselfmyselfresearch-max/AIselfMySelf",
+    "commit": "485bb79c43feef76a03941728aeb61a4d14fcbb2",
+    "source_record_id": "SRC-NEURO-007",
+    "evidence_record_id": "MAT-20261117-19ceb4",
+    "source_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md",
+    "evidence_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md"
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026",
+    "method": "doi_abstract_and_self_location_check",
+    "note": "Confirmed multisensory construction/self-location; excluded phenomenal consciousness attribution."
+  }
+}

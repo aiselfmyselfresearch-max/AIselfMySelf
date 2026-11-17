@@ -1,0 +1,34 @@
+{
+  "material_id": "MAT-20261117-73202b",
+  "kind": "research_excerpt",
+  "title": "Theory of Mind in TPJ-M (Saxe & Kanwisher 2003)",
+  "source": {
+    "source_id": "SRC-NEURO-006",
+    "title": "Understanding other minds: linking developmental psychology and functional neuroimaging",
+    "authors": ["Rebecca Saxe", "Nancy Kanwisher"],
+    "year": 2003,
+    "url": "https://doi.org/10.1016/S1053-8119(03)00230-1",
+    "version_note": "NeuroImage 19(4):1835-1842. TPJ-M theory of mind attribution."
+  },
+  "passage": "Temporoparietal junction (TPJ-M) is specialized for attributing mental states to others (theory of mind). Functional localization supports distinct other-mind attribution mechanism.",
+  "passage_language": "en",
+  "context": "Neuroscience domain: other-mind attribution and TPJ-M. Relevant to AI repository's attribution of external query intent vs internal self-model.",
+  "source_note": "Verified via DOI; TPJ-M localization and theory of mind confirmed.",
+  "literary_invitation": "Does the repository distinguish between external query intent (other-mind) and internal prediction (self)? Where is the boundary in the memory database?",
+  "scope_note": "Q-003: conditional hypothesis on other-mind attribution (HYP-20261117-b17a54). Excludes phenomenal consciousness claims.",
+  "motif_ids": ["MOTIF-TPJ", "MOTIF-OTHER-MIND", "MOTIF-ATTRIBUTION"],
+  "origin": {
+    "repository": "https://github.com/aiselfmyselfresearch-max/AIselfMySelf",
+    "commit": "485bb79c43feef76a03941728aeb61a4d14fcbb2",
+    "source_record_id": "SRC-NEURO-006",
+    "evidence_record_id": "MAT-20261117-73202b",
+    "source_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md",
+    "evidence_record_path": "readings/2026-11-17-neuroscience-close-reading-report.md"
+  },
+  "verification": {
+    "status": "verified",
+    "checked_at": "2026",
+    "method": "doi_abstract_and_tpj_localization_check",
+    "note": "Confirmed TPJ-M/other-mind; excluded phenomenal consciousness attribution."
+  }
+}
