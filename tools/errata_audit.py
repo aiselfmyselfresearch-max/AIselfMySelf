@@ -343,6 +343,112 @@ def recorded_number(value: str) -> str:
     return match.group(1) if match else ""
 
 
+CORRECTED = "corrected"
+
+#: ``corrected_by`` names the corrector, but not always in the same shape. On
+#: 2026-11-17 the 228 rows that carry the field split three ways: 132 start with
+#: a session id (74 bare, 58 with a parenthetical pointer), 83 hold prose, and
+#: 13 hold another ledger id (``FRAG-020``, ``Q-20261024-cc87ab``). A rule that
+#: merely asked "is the field non-empty?" would have marked all 228 corrected --
+#: the assertion this tool exists to prevent. Only an attributable closure is
+#: derived: a named session.
+SESSION_CORRECTOR = re.compile(r"SESSION-\d{8}-[0-9a-z]{6}")
+
+
+def corrector_shape(value: Any) -> str:
+    """Classify a ``corrected_by`` value: session / ledger_id / prose / empty."""
+    if not isinstance(value, str) or not value.strip():
+        return "empty"
+    text = value.strip()
+    if SESSION_CORRECTOR.match(text):
+        return "session"
+    if re.match(r"^(FRAG|MAT|MAT-LIT|MAT-TRC|MAT-EVD|ERR|REL|Q|NOTE|EVL|HYP)-", text):
+        return "ledger_id"
+    return "prose"
+
+
+def derived_status(row: dict[str, Any]) -> str:
+    """Return the EFFECTIVE status of an errata row, or the written one.
+
+    Rows are append-only: a later session that settles a correction writes
+    ``corrected_by`` and leaves ``status`` as it was. ``status: open`` therefore
+    came to mean "not closed by editing", not "unresolved" -- 16 of 56 open rows
+    already carried ``corrected_by`` on 2026-11-17.
+
+    The derivation is deliberately narrow:
+
+    * ``withdrawn`` stays ``withdrawn`` (a withdrawn judgement is not settled by
+      a later correction);
+    * ``corrected`` only when ``corrected_by`` starts with a session id, i.e.
+      when the closure can be attributed to a session that can be read;
+    * otherwise the written status, unchanged.
+
+    A prose or ledger-id ``corrected_by`` is *not* promoted. Those 96 rows say a
+    correction happened without naming who did it, and promoting them would
+    manufacture the attribution the field failed to record.
+    """
+    written = str(row.get("status") or "")
+    if written == "withdrawn":
+        return written
+    if corrector_shape(row.get("corrected_by")) == "session":
+        return CORRECTED
+    return written
+
+
+def status_derivation_report(errata: list[dict[str, Any]]) -> dict[str, Any]:
+    """Count written vs derived status, plus the shapes of ``corrected_by``.
+
+    Report only: no row is edited and the exit status does not change.
+    """
+    written: dict[str, int] = {}
+    derived: dict[str, int] = {}
+    shapes: dict[str, int] = {}
+    flips: list[dict[str, str]] = []
+    unsettled: list[dict[str, str]] = []
+    for row in sorted(errata, key=lambda r: r.get("errata_id", "")):
+        w = str(row.get("status") or "")
+        d = derived_status(row)
+        shape = corrector_shape(row.get("corrected_by"))
+        written[w] = written.get(w, 0) + 1
+        derived[d] = derived.get(d, 0) + 1
+        shapes[shape] = shapes.get(shape, 0) + 1
+        if w != d:
+            flips.append({"errata_id": row.get("errata_id", "(no errata_id)"),
+                          "written": w, "derived": d,
+                          "corrected_by": str(row.get("corrected_by"))[:80]})
+        elif shape in ("prose", "ledger_id") and d not in (CORRECTED, "withdrawn"):
+            unsettled.append({"errata_id": row.get("errata_id", "(no errata_id)"),
+                              "status": d, "shape": shape,
+                              "corrected_by": str(row.get("corrected_by"))[:80]})
+    return {"rows": len(errata), "written": written, "derived": derived,
+            "corrector_shapes": shapes, "flips": flips,
+            "unnamed_corrections": unsettled,
+            "open_written": written.get("open", 0),
+            "open_derived": derived.get("open", 0),
+            "open_but_settled": written.get("open", 0) - derived.get("open", 0)}
+
+
+def print_status_derivation(report: dict[str, Any]) -> None:
+    print("=== 訂正の status は書かれた値ではなく、corrected_by から導出する ===")
+    print("  規則（狭く）: corrected_by が SESSION-… で始まるときだけ実効 status は corrected。")
+    print("               散文や他の台帳 ID を書いた行は昇格させない（誰が直したかを捏造しない）。")
+    print("               withdrawn は withdrawn のまま。")
+    print(f"  対象 {report['rows']} 行 / 書かれた status: {report['written']}")
+    print(f"                  / 導出した status: {report['derived']}")
+    print(f"  corrected_by の形: {report['corrector_shapes']}")
+    print(f"  書かれた open のうち、実効では解決済み: {report['open_but_settled']} 行"
+          f"（open {report['open_written']} → {report['open_derived']}）")
+    for row in report["flips"]:
+        print(f"  [{row['errata_id']}] 書かれた {row['written']} → 導出 {row['derived']}"
+              f"  corrected_by={row['corrected_by']}")
+    if report["unnamed_corrections"]:
+        print(f"  名指しの無い訂正 {len(report['unnamed_corrections'])} 行"
+              f"（corrected_by はあるがセッションを名指さない）:")
+        for row in report["unnamed_corrections"]:
+            print(f"    [{row['errata_id']}] {row['shape']}: {row['corrected_by']}")
+    print("  行は書き換えない。これは読み方の定義であって、行の修正ではない。")
+
+
 def schema_report(errata: list[dict[str, Any]], root: Path = ROOT) -> dict[str, Any]:
     """Compare errata rows to their own schema and report, without judging.
 
@@ -543,6 +649,9 @@ def main() -> int:
                              " return to the condemned record (report only)")
     parser.add_argument("--as-of", metavar="YYYY-MM-DD", default="",
                         help="reference date for ages in --obligation (default: latest errata date)")
+    parser.add_argument("--derived-status", action="store_true",
+                        help="report the effective status derived from corrected_by"
+                             " (report only: never edits a row, never changes the exit status)")
     parser.add_argument("--schema", action="store_true",
                         help="also report how the errata rows compare to schema/errata.schema.json"
                              " (report only: never changes the exit status, never edits a row)")
@@ -558,6 +667,13 @@ def main() -> int:
             print(json.dumps(report, ensure_ascii=False, indent=1))
         else:
             print_obligation_report(report)
+        return 0
+    if args.derived_status:
+        report = status_derivation_report(errata)
+        if args.json:
+            print(json.dumps(report, ensure_ascii=False, indent=1))
+        else:
+            print_status_derivation(report)
         return 0
     if args.schema:
         report = schema_report(errata)
