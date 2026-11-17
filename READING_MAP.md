@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：4904 件（research_excerpt 2663 ／ literary_text 2173 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：249 編（selected 96 ／ draft 153）
 - **解釈的関係（Relations）**：7026 件
-- **探究セッション（Sessions）**：930 回
+- **探究セッション（Sessions）**：931 回
 
 ### 台帳ごとの件数
 
@@ -23,9 +23,9 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4904 | `literary_text` 2173／`research_excerpt` 2663／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 249 | `selected` 96／`draft` 153／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7026 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 930 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14616 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 326 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 931 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14622 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 328 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 993 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 52 |  |
@@ -6622,6 +6622,7 @@
 | `SESSION-20261116-4d8b7c` | 2026-11-16T12:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261117-dc351b` | 2026-11-17T05:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261117-ea21b8` | 2026-11-17T02:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261117-2bbdd6` | 2026-11-17 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261117-233ece` | 2026-11-17T04:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261117-026cc9` | 2026-11-17 | `Q-003` | — | — |
 | `SESSION-20261117-d504d3` | 2026-11-17T03:30:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -6765,7 +6766,7 @@
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
-| `map/50-sessions-19.md` | 30 | 20,979 |
+| `map/50-sessions-19.md` | 31 | 21,615 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
