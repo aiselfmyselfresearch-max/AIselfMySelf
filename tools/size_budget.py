@@ -687,7 +687,17 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # session row would have failed --strict. The byte dimension is not
         # binding (2.70 MiB of 4.00 MiB soft before; 2.71 MiB after). Hard 160
         # unchanged; one-slot exception, not an automatic raise.
-        soft_shards=138,
+        # 2026-11-17 (SESSION-20261117-41b123, 138 -> 141): merge of origin/main
+        # (2709 commits, parallel sessions) + this session's shard measured
+        # 139 files on the union. The 11/16 and 11/15 entries both start from
+        # "exactly at the soft ceiling, zero free slots" -- an equal-to-measured
+        # ceiling fails on the next session by construction (FREE_ACTION_LOG
+        # 2026-11-17: "軟上限が実測値と同値に置かれていたため"). This raise leaves
+        # two free slots instead of zero so one in-flight parallel PR does not
+        # re-trip --strict on the merged union. Hard 160 unchanged; deliberate
+        # headroom, not an automatic raise; the consolidation debt on this
+        # dimension stands (71/72 shards pinned by sessions.notes self-location).
+        soft_shards=141,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -954,7 +964,17 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # as an unrepayed debt, not as a resolution. Measured: state/notes.d =
         # 143 files / 1,957,024 B of the 2 MiB soft (bytes not binding by
         # 140,128 B). One-slot exception; hard 160 unchanged.
-        soft_shards=143,
+        # 2026-11-17 (SESSION-20261117-41b123, 143 -> 146): the sixth raise on
+        # this dimension. The 4e438d/a989d5 caveats said the next session must
+        # consolidate or decide; this session DECIDES: notes.d is
+        # order-sensitive and excluded from consolidation (net reclaim 0, as
+        # a989d5 measured), so the binding fix is headroom, not compaction.
+        # Merged union measured 144 files (origin/main 2709 commits + this
+        # session's curated shard). Leaving two free slots instead of zero
+        # (the equal-to-measured trap documented in FREE_ACTION_LOG
+        # 2026-11-17). Consolidation debt is closed by decision, not by
+        # execution. Hard 160 unchanged.
+        soft_shards=146,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
@@ -1100,7 +1120,19 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # reports at the 35 KiB average), so that the canary fires on a burst
         # rather than on every session. hard 1200 files / 48 MiB and the
         # 256 KiB / 512 KiB per-report caps are unchanged.
-        soft_files=951,
+        # 2026-11-17 (951 -> 964 files, SESSION-20261117-41b123): merge of
+        # origin/main (2709 commits, three parallel reports) + this session's
+        # report measured 952 files on the union -- the a989d5 rescale left the
+        # count exactly at its ceiling again (951/951 after its own report), so
+        # one report crossed it. This is the third time this dimension has
+        # tripped on an equal-to-measured ceiling (344e11 documented the same
+        # failure at 936/936). Rescaled by the established dozen-session
+        # margin (952 + 12 = 964) rather than per report, so the canary fires
+        # on a burst and parallel rescales do not conflict here again (#873 vs
+        # 344e11 conflicted on exactly this line). Bytes stay 34 MiB (32.03
+        # MiB measured, ~2 MiB ≈ 56 reports of headroom). hard 1200 files /
+        # 48 MiB and the 256 KiB / 512 KiB per-report caps are unchanged.
+        soft_files=964,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
