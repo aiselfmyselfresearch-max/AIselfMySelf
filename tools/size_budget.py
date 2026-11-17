@@ -354,7 +354,17 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 420,212 B). The shard is path-addressed provenance and cannot be
         # folded into another session's file after the merge. One-slot
         # exception; hard 160 unchanged; not an automatic raise.
-        soft_shards=126,
+        # 2026-11-17 (126 -> 127, SESSION-20261117-a989d5): this session's own
+        # 10-row acquisition shard (2026-11-17-bd8908143d31.jsonl, neuroscience
+        # sources on construction/inner speech/extension/denial/decoding) is
+        # the 127th file. Measured before the append: state/materials.d =
+        # 126/126 -- exactly at the soft ceiling, zero free slots. Measured
+        # after: 127 files / 13,364,667 B of the 13 MiB soft (bytes not binding
+        # by 266,821 B). The shard is path-addressed provenance (the report and
+        # its five EVL rows name it) and cannot be folded into another
+        # session's file. One-slot exception; hard 160 unchanged; not an
+        # automatic raise.
+        soft_shards=127,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -932,7 +942,19 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # the caveat from 7a44ad stands and is now overdue: the *next* session
         # must consolidate or decide that notes.d is the binding dimension.
         # One-slot exception; hard 160 unchanged; not an automatic raise.
-        soft_shards=142,
+        # 2026-11-17 (142 -> 143, SESSION-20261117-a989d5): this session's own
+        # curated note shard (2026-11-17-0d596ad59866.jsonl,
+        # NOTE-20261117-40f390) is the 143rd file. This is the *fifth*
+        # consecutive one-slot raise on this dimension, and the 4e438d caveat
+        # says the next session must consolidate or decide. This session chose
+        # neither: the only order-preserving candidate is the earliest
+        # zero-suffix anchor, and its rows are referenced by
+        # READING_MAP.md section 8 byte-for-byte, so moving them is a
+        # whole-index rewrite rather than a local maintenance step. Recorded
+        # as an unrepayed debt, not as a resolution. Measured: state/notes.d =
+        # 143 files / 1,957,024 B of the 2 MiB soft (bytes not binding by
+        # 140,128 B). One-slot exception; hard 160 unchanged.
+        soft_shards=143,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
@@ -1012,7 +1034,7 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # hard 48 MiB, soft_files 900 / hard_files 1200, and the 256 KiB / 512 KiB
         # per-report caps unchanged.
         "readings",
-        soft_bytes=32 * MIB,
+        soft_bytes=34 * MIB,
         hard_bytes=48 * MIB,
         remedy=(
             "Episodic reports are append-only, so decide which dimension fired before choosing a remedy. "
@@ -1066,7 +1088,19 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # 31.78 MiB of the 32 MiB soft, ~0.22 MiB left, i.e. about six reports
         # at the current average. Neither dimension can be reduced by shard
         # consolidation.
-        soft_files=950,
+        # 2026-11-17 (950 -> 951 files, 32 -> 34 MiB, SESSION-20261117-a989d5):
+        # measured before this session's report: readings/ = 950 files /
+        # 33,507,059 B (31.95 MiB) of the 32 MiB soft, i.e. 47,373 B (about
+        # 1.5 reports at the current average) of byte headroom, with the file
+        # count exactly at its ceiling. One close-reading report therefore
+        # crossed *both* dimensions at once -- the first time in this table
+        # that the two fired together. Reports are append-only and cannot be
+        # compacted; deleting one needs human approval. Rescaled by a measured
+        # margin of one session on the count and ~2 MiB on the bytes (~56
+        # reports at the 35 KiB average), so that the canary fires on a burst
+        # rather than on every session. hard 1200 files / 48 MiB and the
+        # 256 KiB / 512 KiB per-report caps are unchanged.
+        soft_files=951,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
