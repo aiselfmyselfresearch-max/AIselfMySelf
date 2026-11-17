@@ -648,3 +648,31 @@ Q-003 は前セッションの二評価で EIG 0.0081 まで下がり、飽和�
 `validate_seed.py`／`append_only_check.py`／`size_budget.py --strict`／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check`／`errata_audit.py --schema` を実行し、`belief_state.py --write-map` → `map_build.py` で索引を同期、`python3 -m unittest discover -s tests`（848 本）を通しました。検査の通過は探究の進展の証明ではありません。
 
 （追記）同じ日、同じ 936 からの引き上げが #873 でも行われていた（944）。統合後の実測は 938 なので 944 では足りず、950 に置き直した。同じ穴を二人が別々に塞ぐと、塞いだ値が競合する。
+
+## 2026-11-17（`SESSION-20261117-9f24b0`）— 対応表は失われていなかった
+
+### やったこと
+
+- 前回の §8「未読の選択」五点を実行した。
+- `ERR-005`（222文・33問い）と `ERR-006`（172種）は、断片を ID 順に並べて先頭 n 編を振ると、**18 編と 17 編で同時に一致**した。規則は `voice_audit.py` に書かれていて、欠けていたのは対象集合だけだった。
+- `ERR-024`・`025`・`acc862` の「対応表は残っていない」は誤りだった。同じセッションの二本の報告が同じ 28 番号を別の作品に与えており、その表は `readings/2026-10-24-session-036-sense-and-medium.md` の見出しに今も残っている。
+- `ERR-20261106-4cdc29` の anchor は、§12.1〜12.4 に内容で一対一対応した。見出し語では辿れないが、決定できないわけではない。
+- 台帳全体の題名重複を数え、11 組・22 行を見つけた。うち 2 組は同じ日の同じ収蔵の内部で同じ論文を二度取ったもので、どの訂正行にも記録がない。
+- `declined` 3 行と `reinterpreted` 3,223 行を読んだ。読み直しの相手は 1,575 行でログから決まるのに、`read_id` を書くのは 8 行だけだった。
+- 生成物の番号を指す再現コマンドを、番号を消してパスで引く形に直した。
+
+### なぜこれらを選んだか
+
+- 利用者が §8 の未処理分を名指したから。五点のうち四点は「数えれば決まる」もので、残る一点（外部資料）はこの環境では決まらない。
+
+### 未読の選択（今回、読まなかったもの）
+
+- 外部資料に依存する 8 行（青空文庫 URL・GHQ 検閲・カビール・モル・タルムード等）。
+- `ERR-20261113-c13249` の 4 組の読み比べ。
+- 新しく見つけた 11 組のうち 8 組の出所。
+- `reinterpreted` 1,575 行に先行 `read_id` を補完した場合の波及。
+- `map_build` の分割規則（なぜ 19 番が 35 番になったか）。
+
+### 検証
+
+`validate_seed.py`／`append_only_check.py`／`size_budget.py --strict`／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check`／`errata_audit.py --schema` を実行し、`belief_state.py --write-map` → `map_build.py` で索引を同期、`python3 -m unittest discover -s tests` を通しました。`notes.d` のファイル数が軟上限に達したため、今回の NOTE 行は同日の既存シャードへ追記しました（142/142）。検査の通過は探究の進展の証明ではありません。
