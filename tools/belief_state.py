@@ -498,6 +498,7 @@ def compute_belief_state(
     root: Path = ROOT,
     pair_level_repeat: bool = False,
     heir_credit: bool = True,
+    narrowing_partner_share: bool = False,
 ) -> dict[str, Any]:
     """Compute posterior distributions, uncertainties, lineage shifts, and next-tests.
 
@@ -531,6 +532,20 @@ def compute_belief_state(
     naming an opponent *raises* it. ``heir_credit=False`` is the only way to
     separate the two readings without editing rows
     (readings/2026-11-17-the-prose-is-right-and-the-mechanism-is-wrong.md §4).
+
+    ``narrowing_partner_share`` (added 2026-11-18, default ``False`` = present
+    arithmetic) is a second knob of the same kind. At present only the
+    ``supports`` branch deducts the hypotheses this row named; a
+    ``narrows_scope`` row reads its partner list solely as a switch that lifts
+    the 0.65 discount. ``True`` applies the same ``0.20 * delta / len(compared)``
+    deduction to a narrowing row, using the same ``delta`` the target is charged
+    with.
+
+    It exists so the question "should narrowing deduct its partners?" can be
+    measured rather than argued. **It is not a proposal**: the two answers move
+    different rows in opposite directions, and this session's report
+    (readings/2026-11-18-the-three-debts-and-the-one-that-bends.md §3) records
+    the measurement and leaves the decision to editorial_review.
     """
     cols = data if data is not None else load_belief_ledgers(root)
     questions = cols.get("questions", {})
@@ -713,6 +728,11 @@ def compute_belief_state(
         elif verdict == "narrows_scope":
             log_odds[target_id] -= 1.15 * delta
             adversarial_touches[target_id] += 1
+            if narrowing_partner_share and compared:
+                nshare = (0.20 * delta) / len(compared)
+                for cid in compared:
+                    log_odds[cid] -= nshare
+                    adversarial_touches[cid] += 1
             if spawned:
                 boost = (0.75 * delta) / len(spawned)
                 for shid in spawned:
@@ -1031,7 +1051,8 @@ def compute_belief_state(
         # beside P, never substituted for it, so that every historical number
         # stays reproducible and the difference is itself the measurement.
         alt = compute_belief_state(
-            data=cols, root=Path(root), pair_level_repeat=True
+            data=cols, root=Path(root), pair_level_repeat=True,
+            narrowing_partner_share=narrowing_partner_share,
         )
         for qid, qs in state["questions"].items():
             alt_q = (alt.get("questions") or {}).get(qid) or {}
@@ -1048,6 +1069,29 @@ def compute_belief_state(
             "total_evaluations": alt.get("total_evaluations"),
             "separation_novelty": alt.get("separation_novelty"),
         }
+
+    if heir_credit and not pair_level_repeat:
+        # 2026-11-18 (P-8): the same ledger with the *lineage fallback* off. The
+        # fallback pays a narrowing row's children even when the row named none,
+        # which means a hypothesis can hold mass because of a judgement about its
+        # parent (readings/2026-11-17-the-prose-is-right-and-the-mechanism-is-
+        # wrong.md §2-§3). Reported as a third basis beside P and P_sep, exactly
+        # like P_sep: default unchanged, so every historical posterior stays
+        # reproducible and the gap is the measurement.
+        no_lin = compute_belief_state(
+            data=cols, root=Path(root), heir_credit=False,
+            pair_level_repeat=pair_level_repeat,
+            narrowing_partner_share=narrowing_partner_share,
+        )
+        for qid, qs in state["questions"].items():
+            alt_q = (no_lin.get("questions") or {}).get(qid) or {}
+            alt_p = {h["hypothesis_id"]: h["posterior"] for h in alt_q.get("hypotheses") or []}
+            for h in qs.get("hypotheses") or []:
+                alt_value = alt_p.get(h["hypothesis_id"])
+                if alt_value is None:
+                    continue
+                h["no_lineage_posterior"] = round(alt_value, 4)
+                h["no_lineage_delta_pp"] = round((alt_value - h["posterior"]) * 100, 2)
     return state
 
 
@@ -1251,6 +1295,7 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
         "> 照合済列: `全verified素材評価(+再現スクリプト評価S)/全直接評価` と `primary_source_collision` 全照合率（`verification.status` の可視化であり、過去評価の事後確率式は変更しない）。",
         "> 証人列: `EVL_sess / RL_sess`（直接評価の独立セッション数 / 機械的バックフィルを除く手書き `read_log` 読了セッション数）。`P≥5%` かつ `EVL_sess≤1` に単一証人警告を付す。",
         "> 対単位割引列 (`P_sep`): 反復割引の単位をセッションから比較集合へ替えた場合の事後確率。`P` は現行（セッション単位）の値で、履歴の再現性のため既定は変えない。**両者の差が「同じ対を同じ向きに繰り返したこと」の寄与**である（`readings/2026-11-16-stable-words-do-not-make-progress.md` §3）。",
+        "> 系譜移流なし列 (`P_lin`): 系譜の引き直し（`spawned` が空のとき engine が親の子を読む）を止めた場合の事後確率。`P` との差が「**その仮説自身への判定ではなく、その親への判定から流れてきた質量**」である（`readings/2026-11-17-the-prose-is-right-and-the-mechanism-is-wrong.md` §3）。既定は引き直しを含む側で、これは併記のみ。",
         "> 独立分離列: その仮説が実際に突き合わされた相手の数と、その仮説が関与する分離が最後に「新規」だった日。証人列が「何セッションが評価したか」を数えるのに対し、こちらは「何と突き合わせたか」を数える。",
         "",
         "## 概要指標",
@@ -1372,7 +1417,7 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
         lines.append("")
 
         lines.extend([
-            "| 順位 | ID | 状態 | 世代/系譜 | 事後確率 P_t | P_sep (対単位割引) | 不確実性 u | 独立分離 (最終新規) | 評価数 (反証系) | 照合済 (PSC全照合) | 証人 (EVL/読) | 仮説タイトル |",
+            "| 順位 | ID | 状態 | 世代/系譜 | 事後確率 P_t | P_sep (対単位割引) | P_lin (系譜移流なし) | 不確実性 u | 独立分離 (最終新規) | 評価数 (反証系) | 照合済 (PSC全照合) | 証人 (EVL/読) | 仮説タイトル |",
             "| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
         ])
         for idx, h in enumerate(qs["hypotheses"], start=1):
@@ -1398,12 +1443,16 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
                 sep_cell = f"{h['pair_basis_posterior'] * 100:.1f}% ({h.get('pair_basis_delta_pp', 0.0):+.1f}pp)"
             else:
                 sep_cell = "—"
+            if "no_lineage_posterior" in h:
+                lin_cell = f"{h['no_lineage_posterior'] * 100:.1f}% ({h.get('no_lineage_delta_pp', 0.0):+.1f}pp)"
+            else:
+                lin_cell = "—"
             sep_audit = f"{h.get('independent_separation_count', 0)} ("
             sep_audit += (h.get("last_new_separation_date") or "なし") + ")"
             lines.append(
                 f"| {idx} | `{h['hypothesis_id']}` | `{h['effective_status']}` | "
                 f"G{h['generation']}:{h['lineage_op']} ({parents}) | "
-                f"**{h['posterior'] * 100:.1f}%** | {sep_cell} | {h['uncertainty']:.3f} | "
+                f"**{h['posterior'] * 100:.1f}%** | {sep_cell} | {lin_cell} | {h['uncertainty']:.3f} | "
                 f"{sep_audit} | "
                 f"{h['direct_eval_count']} ({h['adversarial_eval_count']}) | "
                 f"{ver_cell} | {wit_cell} | {h['title']} |"
@@ -1461,6 +1510,11 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
                     sep_note += (
                         f" ｜ 対単位割引 basis: P_sep={h['pair_basis_posterior'] * 100:.1f}%"
                         f"（{h.get('pair_basis_delta_pp', 0.0):+.1f}pp）"
+                    )
+                if "no_lineage_posterior" in h:
+                    sep_note += (
+                        f" ｜ 系譜移流なし basis: P_lin={h['no_lineage_posterior'] * 100:.1f}%"
+                        f"（{h.get('no_lineage_delta_pp', 0.0):+.1f}pp）"
                     )
                 lines.append(f"  - **分離監査**: {sep_note.lstrip(' ｜ ')}")
             mats = ", ".join(f"`{m}`" for m in h["supporting_material_ids"][:5]) or "なし"

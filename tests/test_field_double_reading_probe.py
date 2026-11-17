@@ -173,6 +173,16 @@ class ProbeShapeSyntheticTests(unittest.TestCase):
         self.assertEqual(res["partner_effect_by_verdict"]["narrows_scope"]
                          ["rows_where_the_partner_moved"], 0)
 
+    def test_quick_mode_says_what_it_skipped(self):
+        # A --quick run must not print an empty table as if it were a measured
+        # zero (the failure the flag was added to avoid).
+        cols = _ledger(with_e1=False)
+        cols["evaluations"]["E-2"] = _evl("E-2", "H-P", ["H-C"])
+        res = probe.summarize(copy.deepcopy(cols), per_row=False)
+        self.assertTrue(res["per_row_sections_skipped"])
+        text = probe.render(res, show=1)
+        self.assertIn("SKIPPED (--quick)", text)
+
     def test_render_does_not_overclaim(self):
         cols = _ledger(with_e1=False)
         cols["evaluations"]["E-2"] = _evl("E-2", "H-P", ["H-C"])

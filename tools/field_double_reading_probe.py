@@ -61,6 +61,19 @@ Usage::
     python3 tools/field_double_reading_probe.py
     python3 tools/field_double_reading_probe.py --json
     python3 tools/field_double_reading_probe.py --rows 40
+    python3 tools/field_double_reading_probe.py --quick   # ~1s instead of ~92s
+
+``--quick`` skips the two sections built from one-engine-pass-per-row: the
+per-verdict partner sweep (~310 passes, one per row with partners) and the 68
+single-row heir counterfactuals. Overlap counts and the aggregate need three
+passes in total and are kept (~1 s). The rendered output says which sections
+were skipped rather than printing zeros, so a quick run cannot be mistaken for a
+measurement of nothing.
+
+Timing, measured 2026-11-18 on this checkout: one engine pass is 0.20 s, so the
+full sweep is ~380 passes ≈ 92 s (the figure in the 2026-11-17 report, 63 s, was
+taken on a smaller ledger and a faster machine). Run the full sweep when the
+per-row numbers are the product; use ``--quick`` for a daily look and in tests.
 
 Exit status is always 0: this is a measuring instrument, not a gate.
 """
@@ -217,10 +230,10 @@ def per_row_effects(cols: dict[str, Any], rows: list[dict[str, Any]]) -> list[di
     return out
 
 
-def summarize(cols: dict[str, Any]) -> dict[str, Any]:
+def summarize(cols: dict[str, Any], per_row: bool = True) -> dict[str, Any]:
     hyps = cols["hypotheses"]
     overlap = heir_overlap(cols, heir_credit=True)
-    effects = per_row_effects(cols, overlap["rows"])
+    effects = per_row_effects(cols, overlap["rows"]) if per_row else []
     heir_sum: dict[str, float] = collections.defaultdict(float)
     for eff in effects:
         for d in eff["deltas"].values():
@@ -232,7 +245,7 @@ def summarize(cols: dict[str, Any]) -> dict[str, Any]:
     ratio = round(1.0 / 0.65, 6)
     only_heir = [r for r in overlap["rows"] if r["names_only_the_heir"]]
     filing_effect = []
-    for row in only_heir:
+    for row in (only_heir if per_row else []):
         eid = row["evaluation_id"]
         # "as filed" vs "this row had no comparison partner at all"
         clipped = copy.deepcopy(cols)
@@ -280,7 +293,8 @@ def summarize(cols: dict[str, Any]) -> dict[str, Any]:
     return {
         "evaluation_rows": sum(1 for e in cols["evaluations"].values()
                                if e.get("target_hypothesis_id") in hyps),
-        "partner_effect_by_verdict": partner_effect_by_verdict(cols),
+        "per_row_sections_skipped": not per_row,
+        "partner_effect_by_verdict": partner_effect_by_verdict(cols) if per_row else {},
         "heir_overlap": {k: v for k, v in overlap.items() if k != "rows"},
         "heir_effect_sum_by_verdict": {k: round(v, 6) for k, v in heir_sum.items()},
         "comp_factor_ratio": ratio,
@@ -293,7 +307,9 @@ def summarize(cols: dict[str, Any]) -> dict[str, Any]:
 def render(result: dict[str, Any], show: int = 12) -> str:
     lines = ["=== field double-reading probe ===", ""]
     lines.append("WHAT NAMING A PARTNER DOES TO THAT PARTNER (rows with exactly one)")
-    lines.append(f"  {'verdict':22s} {'rows':>5s} {'moved':>6s} {'sum d':>9s}  sign")
+    if result.get("per_row_sections_skipped"):
+        lines.append("  SKIPPED (--quick): this table costs one engine pass per row")
+        lines.append(f"  {'verdict':22s} {'rows':>5s} {'moved':>6s} {'sum d':>9s}  sign")
     for verdict in VERDICTS:
         s = result["partner_effect_by_verdict"].get(verdict)
         if not s:
@@ -330,6 +346,8 @@ def render(result: dict[str, Any], show: int = 12) -> str:
     lines.append("  読み方: どちらの数も「正しい」値ではない。台帳に、この二つの読みを")
     lines.append("  区別する欄が無いということが測られている。")
     shown = 0
+    if result.get("per_row_sections_skipped"):
+        lines.append("PER-ROW EFFECTS: SKIPPED (--quick)")
     for eff in result["per_row"]:
         if shown >= show:
             lines.append("  ... (see --json for all rows)")
@@ -343,9 +361,9 @@ def render(result: dict[str, Any], show: int = 12) -> str:
     return "\n".join(lines)
 
 
-def run(root: Path | str = ROOT) -> dict[str, Any]:
+def run(root: Path | str = ROOT, per_row: bool = True) -> dict[str, Any]:
     cols = bs.load_belief_ledgers(Path(root))
-    return summarize(cols)
+    return summarize(cols, per_row=per_row)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -353,8 +371,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--json", action="store_true")
     parser.add_argument("--rows", type=int, default=12)
+    parser.add_argument("--quick", action="store_true",
+                        help="skip both per-row sections (~1s instead of ~92s)")
     args = parser.parse_args(argv)
-    result = run(args.root)
+    result = run(args.root, per_row=not args.quick)
     print(json.dumps(result, ensure_ascii=False, indent=1) if args.json
           else render(result, args.rows))
     return 0

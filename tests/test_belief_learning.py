@@ -231,11 +231,42 @@ class BeliefStateAndLearningTests(unittest.TestCase):
     def test_shard_aliases_and_forward_shard_gate(self):
         aliases_doc = json.loads((ROOT / "state" / "shard_aliases.json").read_text(encoding="utf-8"))
         aliases = aliases_doc["aliases"]
-        self.assertEqual(len(aliases), 171)
-        sample_old = next(iter(aliases.keys()))
-        resolved = ledger_io.resolve_shard_alias(sample_old, root=ROOT)
-        self.assertIsNotNone(resolved)
-        self.assertTrue((ROOT / resolved["new_shard"]).is_file())
+        # The count used to be pinned at 171. That pinned the *history* of
+        # consolidations, not the aliases' correctness: any session that merges
+        # shards to stay under the file-count budget appends to this file, and
+        # the test failed for doing the right thing (2026-11-18: notes 10->1 and
+        # evaluations 10->1 shards, +18 aliases). What matters is that every
+        # alias resolves to a file that exists and that the rows were moved, not
+        # rewritten; the count only grows.
+        self.assertGreaterEqual(len(aliases), 171)
+        # Aliases chain: a row moved on 2026-11-12 can be moved again by a later
+        # consolidation, so `new_shard` may itself be an alias key. Follow the
+        # chain (stopping at a cycle rather than hanging).
+        #
+        # 62 of the 171 pre-2026-11-18 entries end at a file that does not exist:
+        # the shard was consolidated twice and the earlier entry was not
+        # repointed. That is a real defect, but fixing it means rewriting rows a
+        # session did not create, so the test does not assert it away. What it
+        # does enforce is that an alias *added from 2026-11-18 onward* (the
+        # `consolidated_on` field marks those) resolves to a file that exists —
+        # the mistake must not be repeated. The legacy count is printed so the
+        # debt stays visible.
+        legacy_dangling = []
+        for old, entry in aliases.items():
+            with self.subTest(alias=old):
+                self.assertIsNotNone(ledger_io.resolve_shard_alias(old, root=ROOT))
+                seen = {old}
+                target = entry["new_shard"]
+                while target in aliases and target not in seen:
+                    seen.add(target)
+                    target = aliases[target]["new_shard"]
+                if not (ROOT / target).is_file():
+                    if entry.get("consolidated_on"):
+                        self.fail(f"{old} (added {entry['consolidated_on']}) resolves to "
+                                  f"{target}, which does not exist")
+                    legacy_dangling.append(old)
+        self.assertEqual(len(legacy_dangling), 62,
+                         "the legacy dangling-alias count moved; re-read the comment above")
         self.assertEqual(date_axis.forward_dated_shards(ROOT), [])
 
     def test_packet_auto_core_focus_and_id_resolution(self):
