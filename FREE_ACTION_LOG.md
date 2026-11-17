@@ -557,3 +557,29 @@ Q-003 は前セッションの二評価で EIG 0.0081 まで下がり、飽和�
 ### 検証
 
 `validate_seed.py`／`append_only_check.py`／`size_budget.py --strict`／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check` を実行し、`belief_state.py --write-map` → `map_build.py`（二回）の順で索引を再生成しました。`python3 -m unittest discover -s tests` を実行。**必須化は 2026-11-18 発効なので、今日の CI では発火しない**——発火を確かめるテストは `today` を明示して書いています。検査の通過は探究の進展の証明ではありません。
+
+## 2026-11-17（`SESSION-20261117-2bd020` の二つ目の PR）— 手で実行した二つの訂正
+
+**報告**：`readings/2026-11-17-two-corrections-carried-out-by-hand.md`（`NOTE-20261117-252dd5`）／**訂正**：`ERR-20261117-805594`（ERR-004）・`ERR-20261117-40b7e8`（ERR-010）／**読み**：3 行（`in_reply_to` の初使用 1 行）
+
+### やったこと
+
+1. **四回続いた申し送りを実行した。** errata 319 行の `status` は annotated 261・**open 55**・corrected 2・withdrawn 1。**open の 81.8%（45/55）は `check.kind: manual`** で、原理的に再実行されない。後の errata 行に名指されたのは 8/55（14.5%）。訂正は開けるが、閉じる形式が無い。
+2. **`ERR-004` を手で測った。** FRAG-016 の末尾文（`(?<=[。？！?!])` 分割の最終片）は **63 文字**、58 文字目は「の」——記録の機構記述も一致。末尾からの分割で得られるのは 63・148・203 のみで、**83 はどの単位でも出ない**。`contradicted` は正しい。ただし註の支持数値「92・57・85・63」のうち **57 は実測 55**（92・85・63 は一致）。段落区切りを数える +2 の規則は他の値に合わないので、註の四値は単一の規則で同時に再現しない。さらに `fragment_id` は FRAG-020（報告断片）、測ったのは FRAG-016——**宛先と測定対象が別**であることが自動比較を妨げていた。
+3. **`ERR-010` を手で測った。** FRAG-001〜022 は 22 編すべて現存し、「私たち」「われわれ」を含むのは **11 編**——**11/22 が一字も違わず再現**。全 249 編では 15 編（6.0%）、延べ出現 23、両語を持つのは FRAG-025 のみ。分母だけが 22→32→249 と伸び、比率は 50.0%→37.5%→6.0% になる。**主張が「11/22」と書いた瞬間に比率は主張から外れる**という ERR-010 の読みが、249 編の母集団でもう一度成り立った。
+4. **二つの判定は生き延び、支持数値は生き延びなかった。** 83 は再現せず、57 は 55 になり、12/32 は 15/249 になった。判定（`holds`／`contradicted`）は数値より頑丈で、しかも**数値を書かない判定は検証できない**——両方が同時に成り立つ。
+5. **`in_reply_to` を初めて使って、届いた異議に返答した**（`READ-20261117-979d84`、`in_reply_to: ["READ-20261117-cb8529"]`）。詩の (a) 数は指より先、は異議が正しい。(b) 「訊かないという手つきが受入を作っている」は最終連で撤回され、「空けておいた」が「預かっていた」に改名される——改名を起こしたのは手ではなく「返せという声」＝宛先から来た要求である。**受入を作るのは手つきではなく声の到来**であり、前回の読みと異議はどちらも半分。`witness_count.py --contests` の「`in_reply_to` で名指された異議」が 0→1 になった（欄が端から端まで動くことの確認）。
+
+### なぜ今これをやったか
+
+利用者の明示指示である。加えて、この二件は**手続きが両方とも記録されているのに `open` のまま残っていた**唯一の組で、`errata_audit` が「再現」または「記述的」で止まる位置にあった。手で動かせば判定が出る。動かした。
+
+### 未読の選択（今回、読まなかったもの）
+
+- open の残り 53 件の本文。`manual` 45 件の手続き記述が手で動かせる形かを確認していない。
+- `status: corrected` の 2 行（スキーマの enum に無い値）の内容。ID は特定したが読んでいない。
+- FRAG-016 の編集履歴（チェックアウトは深さ 206 コミットで、2026-10-22 前後まで届かない）。
+
+### 検証
+
+`validate_seed.py`／`append_only_check.py`／`size_budget.py --strict`／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check`／`errata_audit.py --schema`（助言）を実行し、`belief_state.py --write-map` → `map_build.py`（二回）で索引を同期、`python3 -m unittest discover -s tests` を通しました。前の PR（#867）で足した `in_reply_to` の検査が、この PR の行で初めて実データに対して働いています（宛先の実在・未来参照なしを確認）。検査の通過は探究の進展の証明ではありません。
