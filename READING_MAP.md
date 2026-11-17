@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：4874 件（research_excerpt 2633 ／ literary_text 2173 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4884 件（research_excerpt 2643 ／ literary_text 2173 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：249 編（selected 96 ／ draft 153）
 - **解釈的関係（Relations）**：7026 件
-- **探究セッション（Sessions）**：918 回
+- **探究セッション（Sessions）**：921 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4874 | `literary_text` 2173／`research_excerpt` 2633／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4884 | `literary_text` 2173／`research_excerpt` 2643／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 249 | `selected` 96／`draft` 153／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7026 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 918 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14561 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 921 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14572 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 319 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 971 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 986 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 51 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 523 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 525 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -797,7 +797,7 @@
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 | `FRAG-20261116-7d62f1` | 一心の張られない隙を、何が越えるか | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4874 件・詳細は map/3*.md）
+## 4. 対話素材（4884 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5634,6 +5634,16 @@
 | `MAT-20261116-f7604b` | research_excerpt | Jonathan Krause, Matthias Schulze, Christopher Schuster『アーチャーフィッシュの高速決定の再プログラミングと抽象的汎化（Kr… |
 | `MAT-20261116-fb99b7` | research_excerpt | Natia Gloveli, Marissa J. G. Miles, Megan L. Smith, Ziqian Yan, Jürgen Neuhäusser, John O… |
 | `MAT-20261116-4f8521` | research_excerpt | Vincent M. Janik, Lisa L. Sayigh, Stephen M. Wells『イルカの署名ホイストルの形状は声から独立に同一性を伝える（Janik et … |
+| `MAT-20261117-cc8a01` | research_excerpt | Mike Hansell, Graeme D. Ruxton『Setting tool use within the context of animal construction… |
+| `MAT-20261117-cc8a02` | research_excerpt | Lauren M. Guillette, Susan D. Healy『Nest building, the forgotten behaviour (2015)——人間の道具だ… |
+| `MAT-20261117-cc8a03` | research_excerpt | Patrick T. Walsh, Mike Hansell, Wendy D. Borello, Susan D. Healy『Repeatability of nest mo… |
+| `MAT-20261117-cc8a04` | research_excerpt | Alexis J. Breen, Clémence C. Bonneaud, Susan D. Healy, Lauren M. Guillette『Social learnin… |
+| `MAT-20261117-cc8a05` | research_excerpt | Jackie Chappell, Alex Kacelnik『Tool selectivity in a non-primate, the New Caledonian crow… |
+| `MAT-20261117-cc8a06` | research_excerpt | Joanna H. Wimpenny, Alex A. S. Weir, Lisa Clayton, Christian Rutz, Alex Kacelnik『Cognitiv… |
+| `MAT-20261117-cc8a07` | research_excerpt | S. Schloemer, T. Hörren, A. W. Lorenz, et al.『The macroinvertebrate fauna of maintained a… |
+| `MAT-20261117-cc8a08` | research_excerpt | Takao Sasaki, Stephen C. Pratt『Ants learn to rely on more informative attributes during d… |
+| `MAT-20261117-cc8a09` | research_excerpt | Andrea Perna, Guy Theraulaz『When social behaviour is moulded in clay: on growth and form … |
+| `MAT-20261117-cc8a10` | research_excerpt | D. Charles Deeming『Nest construction in mammals: a review of the patterns of construction… |
 | `MAT-20261117-7a1c16` | research_excerpt | Larissa Conradt, Timothy J. Roper『Consensus decision making in animals (2005)——「合意」を単一の投票… |
 | `MAT-20261117-6f1cad` | research_excerpt | Iain D. Couzin, Jens Krause, Nigel R. Franks, Simon A. Levin『Effective leadership and dec… |
 | `MAT-20261117-fde79e` | research_excerpt | Michele Ballerini, Nicola Cabibbo, Raffaele Candelier, Andrea Cavagna, Eugenio Cisbani, I… |
@@ -6593,7 +6603,10 @@
 | `SESSION-20261117-ea21b8` | 2026-11-17T02:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261117-233ece` | 2026-11-17T04:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261117-026cc9` | 2026-11-17 | `Q-003` | — | — |
+| `SESSION-20261117-d504d3` | 2026-11-17T03:30:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261117-5cbd91e3970e` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
+| `SESSION-20261117-6c0a11` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
+| `SESSION-20261117-6c0b22` | 2026-11-17T00:30:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-84aa15` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-d6a96b` | 2026-11-17T02:00:00Z | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-7a44ad` | 2026-11-17T02:40:00Z | `Q-003`, `Q-002`, `Q-001` | — | — |
@@ -6687,8 +6700,8 @@
 | `map/31-materials-research-23.md` | 100 | 230,571 |
 | `map/31-materials-research-24.md` | 100 | 258,649 |
 | `map/31-materials-research-25.md` | 100 | 260,339 |
-| `map/31-materials-research-26.md` | 100 | 235,203 |
-| `map/31-materials-research-27.md` | 33 | 76,865 |
+| `map/31-materials-research-26.md` | 100 | 234,412 |
+| `map/31-materials-research-27.md` | 43 | 101,550 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6723,7 +6736,7 @@
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
-| `map/50-sessions-19.md` | 18 | 13,345 |
+| `map/50-sessions-19.md` | 21 | 15,644 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -6739,7 +6752,7 @@
 | `map/60-notes-13.md` | 25 | 88,555 |
 | `map/60-notes-14.md` | 25 | 119,933 |
 | `map/60-notes-15.md` | 25 | 84,918 |
-| `map/60-notes-16.md` | 25 | 89,739 |
+| `map/60-notes-16.md` | 25 | 89,787 |
 | `map/60-notes-17.md` | 25 | 111,391 |
 | `map/60-notes-18.md` | 25 | 109,665 |
 | `map/60-notes-19.md` | 25 | 117,647 |
@@ -6752,25 +6765,26 @@
 | `map/60-notes-26.md` | 25 | 133,081 |
 | `map/60-notes-27.md` | 25 | 93,945 |
 | `map/60-notes-28.md` | 25 | 90,319 |
-| `map/60-notes-29.md` | 25 | 99,551 |
-| `map/60-notes-30.md` | 25 | 43,503 |
-| `map/60-notes-31.md` | 25 | 70,778 |
-| `map/60-notes-32.md` | 25 | 78,661 |
-| `map/60-notes-33.md` | 25 | 68,753 |
-| `map/60-notes-34.md` | 25 | 83,000 |
-| `map/60-notes-35.md` | 25 | 107,841 |
-| `map/60-notes-36.md` | 25 | 127,538 |
-| `map/60-notes-37.md` | 17 | 86,656 |
+| `map/60-notes-29.md` | 25 | 95,298 |
+| `map/60-notes-30.md` | 25 | 38,328 |
+| `map/60-notes-31.md` | 25 | 69,957 |
+| `map/60-notes-32.md` | 25 | 66,653 |
+| `map/60-notes-33.md` | 25 | 72,614 |
+| `map/60-notes-34.md` | 25 | 75,261 |
+| `map/60-notes-35.md` | 25 | 102,001 |
+| `map/60-notes-36.md` | 25 | 96,801 |
+| `map/60-notes-37.md` | 25 | 142,551 |
+| `map/60-notes-38.md` | 4 | 23,726 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・917本・33,053,042 B）
+## 8. 精読ノート索引（readings/・929本・33,106,218 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 867/917 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 869/929 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：916 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：175 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：929 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：176 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7489,6 +7503,16 @@
 | `readings/2026-11-16-where-one-individual-ends.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-784dc6` +1 | 19,446 | Q4 M10 S2 | ✓ | 一匹はどこで終わるか——比較動物学10資料を読み、自己の単位を数える装置について考えた |
 | `readings/2026-11-16-who-is-this-animal-and-how-many.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-8d6e0f` +2 | 30,617 | Q2 M14 S3 ERR1 | ✓ | 誰で、何匹か——比較動物学の十冊が、自己の単位を装置の側に置いた |
 | `readings/2026-11-16-who-keeps-erases-and-classifies-the-who.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-ed5cfd` +2 | 26,031 | Q3 M10 S3 ERR1 | ✓ | 誰が残し、誰が消し、誰が分類するか——比較動物学10件の全文精読とQ-003への再読・衝突 |
+| `readings/2026-11-17-animal-construction-01-hansell-ruxton.md` | — | 2026-11-17 | — | 788 | M1 | ✓ | 比較動物学資料 01：Setting tool use within the context of animal co… |
+| `readings/2026-11-17-animal-construction-02-guillette-healy.md` | — | 2026-11-17 | — | 703 | M1 | ✓ | 比較動物学資料 02：Nest building, the forgotten behaviour |
+| `readings/2026-11-17-animal-construction-03-weaver-repeatability.md` | — | 2026-11-17 | — | 839 | M1 | ✓ | 比較動物学資料 03：Repeatability of nest morphology in African weav… |
+| `readings/2026-11-17-animal-construction-04-zebra-finch-artifact.md` | — | 2026-11-17 | — | 842 | M1 | ✓ | 比較動物学資料 04：Social learning about construction behaviour via… |
+| `readings/2026-11-17-animal-construction-05-crow-tool-selectivity.md` | — | 2026-11-17 | — | 824 | M1 | ✓ | 比較動物学資料 05：Tool selectivity in a non-primate, the New Caled… |
+| `readings/2026-11-17-animal-construction-06-crow-sequential-tools.md` | — | 2026-11-17 | — | 921 | M1 | ✓ | 比較動物学資料 06：Cognitive Processes Associated with Sequential T… |
+| `readings/2026-11-17-animal-construction-07-beaver-dam-effects.md` | — | 2026-11-17 | — | 680 | M1 | ✓ | 比較動物学資料 07：維持された／放棄されたビーバーダムの無脊椎動物群集 |
+| `readings/2026-11-17-animal-construction-08-ant-nest-experience.md` | — | 2026-11-17 | — | 839 | M1 | ✓ | 比較動物学資料 08：Ants learn to rely on more informative attribute… |
+| `readings/2026-11-17-animal-construction-09-insect-nest-self-organization.md` | — | 2026-11-17 | — | 852 | M1 | ✓ | 比較動物学資料 09：When social behaviour is moulded in clay: on gro… |
+| `readings/2026-11-17-animal-construction-10-mammal-nest-functions.md` | — | 2026-11-17 | — | 906 | M1 | ✓ | 比較動物学資料 10：Nest construction in mammals: a review of the pa… |
 | `readings/2026-11-17-comparative-zoology-01-consensus-conradt-roper.md` | 2026-11-17 | 2026-11-17 | — | 794 | M1 | ✓ | 比較動物学資料 01：動物における合意形成の分類 |
 | `readings/2026-11-17-comparative-zoology-02-leadership-couzin-et-al.md` | 2026-11-17 | 2026-11-17 | — | 857 | M1 | ✓ | 比較動物学資料 02：移動中の動物集団におけるリーダーシップと意思決定 |
 | `readings/2026-11-17-comparative-zoology-03-starling-topological-neighbors-ballerini.md` | 2026-11-17 | 2026-11-17 | — | 1,140 | M1 | ✓ | 比較動物学資料 03：ムクドリ群れの相互作用は距離ではなく近傍順位に依存する |
@@ -7501,10 +7525,11 @@
 | `readings/2026-11-17-comparative-zoology-10-insect-superorganism-sasaki-pratt.md` | 2026-11-17 | 2026-11-17 | — | 1,015 | M1 | ✓ | 比較動物学資料 10：超個体の心理学：昆虫社会の集団意思決定 |
 | `readings/2026-11-17-comparative-zoology-chimpanzee-culture.md` | 2026-11-17 | 2026-11-17 | — | 1,574 | M1 | — | 比較動物学資料：チンパンジーの文化（Whiten et al., 1999） |
 | `readings/2026-11-17-comparative-zoology-collective-decisions-close-reading.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-84aa15` | 9,496 | Q1 M10 S1 | — | 比較動物学・集団意思決定10資料の精読——「私たち」は誰の記憶で動くか |
+| `readings/2026-11-17-comparative-zoology-construction-close-reading.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-6c0a11` +1 | 9,082 | Q2 S2 | — | 動物は何を外へ作るか——巣・道具・痕跡から人間とAIの自己を読み直す |
 | `readings/2026-11-17-comparative-zoology-dog-pointing.md` | 2026-11-17 | 2026-11-17 | — | 1,536 | M1 | — | 比較動物学資料：犬による人間が与えた合図の利用（Miklósi et al., 1998） |
 | `readings/2026-11-17-comparative-zoology-dolphin-signature-whistle.md` | 2026-11-17 | 2026-11-17 | — | 1,708 | M1 | — | 比較動物学資料：バンドウイルカのシグネチャーホイッスル（Janik & Sayigh, 2013） |
 | `readings/2026-11-17-comparative-zoology-elephant-msr.md` | 2026-11-17 | 2026-11-17 | — | 1,612 | M1 | — | 比較動物学資料：アジアゾウの鏡像自己認識（Plotnik, de Waal & Reiss, 2006） |
-| `readings/2026-11-17-comparative-zoology-group-synthesis.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-5cbd91e3970e` | 5,872 | Q2 M10 S1 | — | 比較動物学資料群の横断報告：AIによる解釈と考え（2026-11-17 新規10件） |
+| `readings/2026-11-17-comparative-zoology-group-synthesis.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-5cbd91e3970e` | 5,872 | Q2 M10 S1 | ✓ | 比較動物学資料群の横断報告：AIによる解釈と考え（2026-11-17 新規10件） |
 | `readings/2026-11-17-comparative-zoology-honeybee-dance.md` | 2026-11-17 | 2026-11-17 | — | 1,577 | M1 | — | 比較動物学資料：ミツバチの舞踊言語と方向感覚（Karl von Frisch, 1967） |
 | `readings/2026-11-17-comparative-zoology-macaque-potato-washing.md` | 2026-11-17 | 2026-11-17 | — | 1,538 | M1 | — | 比較動物学資料：コシマ島ニホンザルのサツマイモ洗い（Kawai, 1965） |
 | `readings/2026-11-17-comparative-zoology-magpie-msr.md` | 2026-11-17 | 2026-11-17 | — | 1,832 | M1 | — | 比較動物学資料：カササギの鏡像自己認識（Prior et al., 2008） |
@@ -7527,6 +7552,7 @@
 | `readings/2026-11-17-the-built-structure-and-the-boundary-of-self.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-233ece` +1 | 28,287 | Q3 M21 S2 | — | 建てられた構造の外側に、自己の境界はない——比較動物学10資料（動物建築・社会免疫・生態系エンジニア）を精読する（SE… |
 | `readings/2026-11-17-the-correction-was-rerun-addressed-to-another-hypothesis.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-7a44ad` +2 | 13,154 | Q4 S3 ERR17 | — | 訂正は再実行された。別の仮説に宛てて——訂正の再実行が誰を動かすか |
 | `readings/2026-11-17-the-creditors-book.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-ea21b8` | 13,134 | Q5 M5 S1 ERR2 | — | 債権者の帳面——未決済と未払いはどう違うか。ニーチェ第二論文を原典で読み、訂正録の二つの側を測る（SESSION-20… |
+| `readings/2026-11-17-the-knots-on-the-wall.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-d504d3` | 7,528 | Q4 F1 S1 ERR2 | — | 壁の十一の結び目——書庫は自分の記録をどう読み直すか（SESSION-20261117-d504d3） |
 | `readings/2026-11-18-four-anchors-one-pause-four-bridges.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-1be029` | 5,712 | Q8 F8 MOT6 R5 S1 ED5 | ✓ | 四つの礎石、一つの休止、四本の橋——四モードと詳細窓を追いつかせる編集レビュー（SESSION-20261118-1b… |
 | `readings/2026-11-18-read-log-shard-compaction.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-291f45` | 5,707 | S1 | ✓ | `state/read_log.d/` シャード統合記録（SESSION-20261118-291f45） |
 | `readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md` | 2026-10-26 | 2026-11-19 | `SESSION-20261119-38e624` | 8,673 | Q5 F8 M4 MOT2 S1 | ✓ | 二通の七十二点と、一度目へ戻る音——復号できる秘密と、内訳へ戻れない合計（SESSION-20261119-38e62… |
