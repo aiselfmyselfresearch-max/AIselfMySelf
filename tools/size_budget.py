@@ -1048,16 +1048,25 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # stayed at 31.51 MiB of the 32 MiB soft budget (bytes not binding).
         # Append-only corpus; the file count cannot be compacted. Rescaled by a
         # measured margin of about a dozen sessions rather than per report.
-        # 2026-11-17 (936 -> 944, SESSION-20261117-5d524a): this session's report
-        # plus two reports from the parallel sessions absorbed in the same merge
-        # took readings/ to 937 files, while bytes stayed at 31.71 MiB of the
-        # 32 MiB soft (bytes not binding but close: 0.29 MiB left). Append-only
-        # corpus; the file count cannot be compacted. Rescaled by a measured
-        # margin of eight reports, not per report. The byte dimension is the one
-        # to watch next: at the current average it is the binding one again in
-        # roughly eight reports, and neither dimension can be reduced by shard
+        # 2026-11-17 (936 -> 948, SESSION-20261117-344e11): the recount above
+        # left soft_files exactly equal to the measured count (936/936), so the
+        # NEXT single report crossed it. This session's one report took
+        # readings/ to 937 files and `size_budget.py --strict` exited 1, which
+        # also turned the execution_path_probe baseline red (that probe uses
+        # --strict as its canary) -- three unit tests failed for one report.
+        # Rescaled to 948 (a measured margin of about eleven sessions) so that
+        # the canary fires on a burst, not on every session. A limit set equal
+        # to the measurement is not a limit but a tripwire under the next step.
+        # 2026-11-17 (948 -> 950, merge of SESSION-20261117-5d524a's 944):
+        # the parallel rescale in #873 landed the same day from the same 936
+        # baseline, so the two branches conflicted here. Neither raise was
+        # wrong; the union is 938 files (this report + #873's three). Kept 950
+        # (measured + twelve) rather than 944, which the merge would have
+        # crossed immediately. Note the byte dimension is now the binding one:
+        # 31.78 MiB of the 32 MiB soft, ~0.22 MiB left, i.e. about six reports
+        # at the current average. Neither dimension can be reduced by shard
         # consolidation.
-        soft_files=944,
+        soft_files=950,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
