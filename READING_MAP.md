@@ -6823,7 +6823,7 @@
 | `map/60-notes-28.md` | 25 | 90,303 |
 | `map/60-notes-29.md` | 25 | 95,298 |
 | `map/60-notes-30.md` | 25 | 39,020 |
-| `map/60-notes-31.md` | 25 | 88,389 |
+| `map/60-notes-31.md` | 25 | 88,396 |
 | `map/60-notes-32.md` | 25 | 66,597 |
 | `map/60-notes-33.md` | 25 | 78,661 |
 | `map/60-notes-34.md` | 25 | 68,753 |
@@ -6840,7 +6840,7 @@
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 882/942 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：942 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：180 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：179 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7604,7 +7604,7 @@
 | `readings/2026-11-17-comparative-zoology-rat-helping.md` | 2026-11-17 | 2026-11-17 | — | 1,707 | M1 | — | 比較動物学資料：閉じ込められた仲間を助けるラット（Bartal, Decety & Mason, 2011） |
 | `readings/2026-11-17-comparative-zoology-scrub-jay-episodic-memory.md` | 2026-11-17 | 2026-11-17 | — | 1,538 | M1 | — | 比較動物学資料：スクラブジェイのキャッシュ回収におけるエピソード様記憶（Clayton & Dickinson, 19… |
 | `readings/2026-11-17-comparative-zoology-vervet-alarm-calls.md` | 2026-11-17 | 2026-11-17 | — | 1,795 | M1 | — | 比較動物学資料：ヴェルベット猿の捕食者別警報呼声（Seyfarth, Cheney & Marler, 1980） |
-| `readings/2026-11-17-consciousness-theories-and-the-adversarial-window.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-28770c` | 25,419 | Q2 M10 S1 ERR1 | — | 意識の理論と敵対的窓——決着しなかった対決を、決定的な算術で読む |
+| `readings/2026-11-17-consciousness-theories-and-the-adversarial-window.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-28770c` | 25,419 | Q2 M10 S1 ERR1 | ✓ | 意識の理論と敵対的窓——決着しなかった対決を、決定的な算術で読む |
 | `readings/2026-11-17-eight-grades-and-the-door.md` | 2026-10-26 | 2026-11-17 | `SESSION-20261117-292bc3` | 7,026 | Q2 F6 M5 MOT6 S1 | ✓ | 八つの段に収まらない者——獣×嘘の交配と、問われない位置の点検（SESSION-20261117-292bc3） |
 | `readings/2026-11-17-five-handovers-measured-and-one-that-cannot-be-implemented.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-caffaa` | 12,479 | Q3 S1 | — | 五つの申し送りを、一つずつ測って返した——三つの基軸と、順序という実装できない修正 |
 | `readings/2026-11-17-five-unread-things-executed.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261112-fccf73` | 8,483 | Q3 S1 ERR14 | — | 未読の五つを実行する——残りのコマンド・観測のみ 9 件・open 56 の全数・宛先なし 10 行・conteste… |
