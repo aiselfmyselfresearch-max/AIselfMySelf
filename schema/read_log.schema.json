@@ -29,6 +29,12 @@
       "minLength": 1,
       "description": "declined を後から記録したセッション。省略時は session_id と同じ。declined 以外では通常は省略する。"
     },
+    "in_reply_to": {
+      "type": "array",
+      "description": "The earlier read_log rows this reading answers, contests, or revises — the addresses of the reply, not its subject. `target` says what was read; this says which reading the row is written against. Until 2026-11-17 the ledger had no such field, and the consequence is measurable (witness_count.py --contests, 2026-11-17): of 608 contested rows only 4 name the contested reading by ID (0.7%), and only 8.9% of contests are named by any later reading. Omit for a first reading that addresses no earlier reading; an empty list is also allowed and means the same.",
+      "items": {"type": "string", "pattern": "^READ-[0-9]{8}-[0-9a-f]{6}$", "minLength": 1},
+      "uniqueItems": true
+    },
     "created_at": {"type": "string", "minLength": 4}
   }
 }

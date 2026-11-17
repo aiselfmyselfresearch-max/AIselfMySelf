@@ -529,3 +529,31 @@ Q-003 は前セッションの二評価で EIG 0.0081 まで下がり、飽和�
 ### 検証
 
 `validate_seed.py`／`append_only_check.py`／`size_budget.py --strict`／`python3 -m unittest discover -s tests` を実行し、`belief_state.py --write-map` と `map_build.py`（二回）で索引を同期しました。`state/notes.d`（141/140）は最古シャードの無改変連結で 140/140 まで戻しました（SHA-256・ID 集合 195 件の一致を検算、削除元は連結後に削除）。`readings/` は 929/936。測定は註の語彙による近似であり、私の異議は独立の証人ではありません。検査の通過は探究の進展の証明ではありません。
+
+## 2026-11-17（`SESSION-20261117-2bd020`）— 二つの欄：宛先と、割り当てレシート
+
+**報告**：`readings/2026-11-17-two-fields-a-return-address-and-a-receipt.md`（`NOTE-20261117-9b1bb0`）
+
+利用者の明示指示による形式の変更。**台帳行は足していない**（規約：スキーマ・道具・手順書の変更と台帳行の一括追加は同じ PR に入れない）。割当レシートは `consolidator`／`Q-003`／`direct_response`——提示された問いは Q-003 だったが、実際に取り組んだのは指示された二つの欠落で、その差は今回の変更で初めて書けるようになった差そのものである。
+
+### やったこと
+
+1. **`read_log.in_reply_to` を足した**（`READ-<YYYYMMDD>-<hex>` の配列、任意）。`target` は「何を読んだか」、`in_reply_to` は「**どの読みに対して**書いたか」。`validate_seed` は宛先の実在・自己参照・未来参照の三つだけを検査し、返答の内容は検査しない。背景の実測は前回のとおり——異議 609 行のうち先行する読みを名指したのは 5 件（0.8%）、後続の読みが異議として名指したのは 8.9%。**書く場所が無ければ書かれない。**
+2. **割当レシートの四欄を 2026-11-18 以降の新しい `sessions` 行で必須にした**（`validate_seed` がエラーにする）。それ以前の行は免除——追記専用で書き換えられず、シードは 91% の行に無く、後から埋めたロールは「発行されなかったレシート」になる。未来の内部編年ラベル（187 本）は日付として扱わない。
+3. **測る道具を足した**（`witness_count.py`）。`--contests` に `in_reply_to` の三行、`--roles` を新設。実測：923 セッション中 `assigned_role` を持つのは **71（7.7%）**、四欄すべては 66。記録されたロールの分布（検証 35／提案 19／統合 17）は憲章の 25/50/25 と大きくは違わないのに、**ロール別の異議率は統合役 12.3% > 検証役 4.6%** で予測と逆である。配分ではなく結果が違う。
+4. **手順書を直した**：`prompts/start.md`（宛先欄の書き方、レシート必須化）、`docs/parallel-work.md` 規則10・規則11、`docs/map-architecture.md` §7.3。テストは `tests/test_read_log_addressing.py` に 11 件。
+
+### なぜこの二つを同時に変えたか
+
+宛先は「**誰に**」、役割は「**誰が**」を記録する。どちらもこの書庫に無く、どちらも**推論では埋まらない**——宛先は本文から推定できるが推定は宛先ではなく、ロールはシードから再計算できるがシードが 91% の行に無い。埋められるのは「次の一行」だけである。前回の報告の「異議は書けるが裁けない」に対して、今回足したのは裁く仕組みではなく、**裁かれるために必要な最小限の住所**である。
+
+### 未読の選択（今回、読まなかったもの）
+
+- 異議 609 行の本文（形式の変更なので内容は読んでいない）。
+- 記録済み 71 セッションの `assigned_role_reason`（ロール名だけを数えた）。
+- `reinterpreted` など `contested` 以外の `reading` で `in_reply_to` を使う頻度。
+- `ERR-004`・`ERR-010` の手実行——次の PR（台帳行の追加）で行う。
+
+### 検証
+
+`validate_seed.py`／`append_only_check.py`／`size_budget.py --strict`／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check` を実行し、`belief_state.py --write-map` → `map_build.py`（二回）の順で索引を再生成しました。`python3 -m unittest discover -s tests` を実行。**必須化は 2026-11-18 発効なので、今日の CI では発火しない**——発火を確かめるテストは `today` を明示して書いています。検査の通過は探究の進展の証明ではありません。

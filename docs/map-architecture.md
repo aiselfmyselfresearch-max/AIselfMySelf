@@ -144,6 +144,7 @@ READING_MAP.md の事故は「単一ファイルが全成長を吸収する」�
 台帳は「何を集めたか」（素材）と「どう解釈したか」（関係）を持つが、「どの記録を・どのセッションが・どう読み返したか」の網羅的痕跡を持たなかった。`state/read_log.jsonl` はそれを記録する追記専用コレクションで、「記録を読み返して続きを語る AI」の**読み返し**そのものを測定可能にする。
 
 - 各行は (session, target, reading, note)。`reading` は quoted／summarized／interpreted／reinterpreted／contested／used_as_context／counted。
+- **2026-11-17 追加：`in_reply_to`**（任意）。`target` が「何を読んだか」なら、こちらは「**どの読みに対して**書いたか」で、`READ-<YYYYMMDD>-<hex>` の配列。欄が無かったために、この台帳の異議は宛先を持てなかった——609 の異議のうち先行する読みを名指したのは 5 件（0.8%）で、後続の読みが異議として名指したのは 8.9% だけだった（`witness_count.py --contests`）。`validate_seed.py` は宛先の実在・自己参照・未来参照だけを検査し、返答の内容は検査しない。[`docs/parallel-work.md`](parallel-work.md) 規則11。
 - 精選された解釈は関係へ、本文は断片・報告へ置く（read_log は痕跡の索引であり、解釈の置き場ではない）。
 - `tools/read_log_backfill.py` が確定できる部分（各セッションの `context_material_ids`）を機械的に転記し、`--check` で網羅を CI が検査する。
 - 書案内（`READING_MAP.md`／`map/`）への収録はまだ行わない。読み返しの索引が必要になった時点で `map_build.py` に表を追加する。
