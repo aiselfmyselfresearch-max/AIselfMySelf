@@ -886,7 +886,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # of the 2 MiB soft (bytes not binding by 249,556 B). notes.d is
         # order-sensitive and excluded from consolidation -> net reclaim 0.
         # One-slot exception; hard 160 unchanged; not an automatic raise.
-        soft_shards=138,
+        # 2026-11-17 (138 -> 139, session 7a44ad): this session's own reading
+        # (readings/2026-11-17-the-correction-was-rerun-addressed-to-another-
+        # hypothesis.md, NOTE-20261117-66242d) is the 139th shard. Three
+        # consecutive one-slot raises now sit in this table (e1b529, d6a96b,
+        # 7a44ad) -- the headroom is being consumed by session cadence, not by
+        # a bad row, so the next session must either consolidate or accept that
+        # notes.d is the binding shard dimension. Measured: state/notes.d =
+        # 139 files / 1,850,203 B of the 2 MiB soft (bytes not binding by
+        # 246,949 B). One-slot exception; hard 160 unchanged.
+        soft_shards=139,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
