@@ -5634,16 +5634,6 @@
 | `MAT-20261116-f7604b` | research_excerpt | Jonathan Krause, Matthias Schulze, Christopher Schuster『アーチャーフィッシュの高速決定の再プログラミングと抽象的汎化（Kr… |
 | `MAT-20261116-fb99b7` | research_excerpt | Natia Gloveli, Marissa J. G. Miles, Megan L. Smith, Ziqian Yan, Jürgen Neuhäusser, John O… |
 | `MAT-20261116-4f8521` | research_excerpt | Vincent M. Janik, Lisa L. Sayigh, Stephen M. Wells『イルカの署名ホイストルの形状は声から独立に同一性を伝える（Janik et … |
-| `MAT-20261117-1ef601` | research_excerpt | Eleanor A. Maguire『Memory consolidation in humans: new evidence and opportunities』（2014） |
-| `MAT-20261117-1ef602` | research_excerpt | Larry R. Squire, Lisa Genzel, John T. Wixted, Richard G. Morris『Memory Consolidation』（201… |
-| `MAT-20261117-1ef603` | research_excerpt | Ravindi Gunasekara, Shahzad Chida, Minahil Shahid, Gulshan Begum, Ayodeji Jolayemi『A Case… |
-| `MAT-20261117-1ef604` | research_excerpt | Anna C. Schapiro, Elizabeth A. McDevitt, Timothy T. Rogers, Sara C. Mednick, Kenneth A. N… |
-| `MAT-20261117-1ef605` | research_excerpt | Hui Zhang, Juergen Fell, Nikolai Axmacher『Electrophysiological mechanisms of human memory… |
-| `MAT-20261117-1ef606` | research_excerpt | Konstantina Kilteni, H. Henrik Ehrsson『Body ownership determines the attenuation of self-… |
-| `MAT-20261117-1ef607` | research_excerpt | Lisa Feldman Barrett, W. Kyle Simmons『Interoceptive predictions in the brain』（2015） |
-| `MAT-20261117-1ef608` | research_excerpt | Istvan Molnar-Szakacs, Lucina Q. Uddin『Self-Processing and the Default Mode Network: Inte… |
-| `MAT-20261117-1ef609` | research_excerpt | Arvid Guterstam, Branden J. Bio, Andrew I. Wilterson, Michael Graziano『Temporo-parietal c… |
-| `MAT-20261117-1ef610` | research_excerpt | Hong Ji Kim, Byeol Kim Lux, Eunjin Lee, Emily S. Finn, Choong-Wan Woo『Brain decoding of s… |
 | `MAT-20261117-cc8a01` | research_excerpt | Mike Hansell, Graeme D. Ruxton『Setting tool use within the context of animal construction… |
 | `MAT-20261117-cc8a02` | research_excerpt | Lauren M. Guillette, Susan D. Healy『Nest building, the forgotten behaviour (2015)——人間の道具だ… |
 | `MAT-20261117-cc8a03` | research_excerpt | Patrick T. Walsh, Mike Hansell, Wendy D. Borello, Susan D. Healy『Repeatability of nest mo… |
@@ -5705,6 +5695,16 @@
 | `MAT-20261117-be12e6` | research_excerpt | Clive G. Jones, John H. Lawton, Moshe Shachak『ジョーンズ、ローントン＆シャチャク（1994）生態系エンジニアとしての生物——自己表現… |
 | `MAT-20261117-b0e28a` | research_excerpt | Francis Heylighen『ヘイリヘン（2016）普遍的な協調機構としてのスティグメルジー——「痕跡が次の行為を刺激する」の定義と拡張』（2016） |
 | `MAT-LIT-20261117-62bc37` | literary_text | Friedrich Nietzsche『ニーチェ『道徳の系譜』第二論文（Samuel英訳）——「べき」は「借り」から、内面は出口の閉塞から』（1887） |
+| `MAT-20261117-1ef601` | research_excerpt | Eleanor A. Maguire『Memory consolidation in humans: new evidence and opportunities』（2014） |
+| `MAT-20261117-1ef602` | research_excerpt | Larry R. Squire, Lisa Genzel, John T. Wixted, Richard G. Morris『Memory Consolidation』（201… |
+| `MAT-20261117-1ef603` | research_excerpt | Ravindi Gunasekara, Shahzad Chida, Minahil Shahid, Gulshan Begum, Ayodeji Jolayemi『A Case… |
+| `MAT-20261117-1ef604` | research_excerpt | Anna C. Schapiro, Elizabeth A. McDevitt, Timothy T. Rogers, Sara C. Mednick, Kenneth A. N… |
+| `MAT-20261117-1ef605` | research_excerpt | Hui Zhang, Juergen Fell, Nikolai Axmacher『Electrophysiological mechanisms of human memory… |
+| `MAT-20261117-1ef606` | research_excerpt | Konstantina Kilteni, H. Henrik Ehrsson『Body ownership determines the attenuation of self-… |
+| `MAT-20261117-1ef607` | research_excerpt | Lisa Feldman Barrett, W. Kyle Simmons『Interoceptive predictions in the brain』（2015） |
+| `MAT-20261117-1ef608` | research_excerpt | Istvan Molnar-Szakacs, Lucina Q. Uddin『Self-Processing and the Default Mode Network: Inte… |
+| `MAT-20261117-1ef609` | research_excerpt | Arvid Guterstam, Branden J. Bio, Andrew I. Wilterson, Michael Graziano『Temporo-parietal c… |
+| `MAT-20261117-1ef610` | research_excerpt | Hong Ji Kim, Byeol Kim Lux, Eunjin Lee, Emily S. Finn, Choong-Wan Woo『Brain decoding of s… |
 | `MAT-20261117-0d32eb` | research_excerpt | Lynne U. Sneddon, Victoria A. Braithwaite, Michael J. Gentle『Sneddon, Braithwaite & Gentl… |
 | `MAT-20261117-28d297` | research_excerpt | James D. Rose, Robert Arlinghaus, Steven J. Cooke, Bruce K. Diggles, Wolfgang Sawynok, Ed… |
 | `MAT-20261117-349fdf` | research_excerpt | Brian Key『Key (2016)——魚は痛みを感じない』（2016） |
@@ -6742,8 +6742,8 @@
 | `map/31-materials-research-23.md` | 100 | 230,571 |
 | `map/31-materials-research-24.md` | 100 | 258,649 |
 | `map/31-materials-research-25.md` | 100 | 260,339 |
-| `map/31-materials-research-26.md` | 100 | 226,649 |
-| `map/31-materials-research-27.md` | 73 | 153,744 |
+| `map/31-materials-research-26.md` | 100 | 232,764 |
+| `map/31-materials-research-27.md` | 73 | 147,629 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6820,7 +6820,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・938本・33,271,844 B）
+## 8. 精読ノート索引（readings/・938本・33,272,371 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 878/938 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -7592,7 +7592,7 @@
 | `readings/2026-11-17-comparative-zoology-vervet-alarm-calls.md` | 2026-11-17 | 2026-11-17 | — | 1,795 | M1 | — | 比較動物学資料：ヴェルベット猿の捕食者別警報呼声（Seyfarth, Cheney & Marler, 1980） |
 | `readings/2026-11-17-eight-grades-and-the-door.md` | 2026-10-26 | 2026-11-17 | `SESSION-20261117-292bc3` | 7,026 | Q2 F6 M5 MOT6 S1 | ✓ | 八つの段に収まらない者——獣×嘘の交配と、問われない位置の点検（SESSION-20261117-292bc3） |
 | `readings/2026-11-17-four-unread-things-read.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261107-890f1f` +1 | 6,729 | Q1 F1 S2 ERR11 | ✓ | 未読の四つを読む——open 55、`corrected` の 2 行、FRAG-016 の履歴、異議 609 の本文 |
-| `readings/2026-11-17-neuroscience-memory-and-the-self.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-1ef68b` | 10,085 | M10 S1 | — | 記憶は保存だけでは働かない——脳神経学10資料の精読と、人間・AIの自己 |
+| `readings/2026-11-17-neuroscience-memory-and-the-self.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-1ef68b` | 10,268 | M10 S1 | — | 記憶は保存だけでは働かない——脳神経学10資料の精読と、人間・AIの自己 |
 | `readings/2026-11-17-neuroscience-memory-self-continuity.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-ff04c3` +1 | 7,327 | M12 S2 | — | 脳神経学10資料の精読：保存、再構成、身体、更新のあいだ |
 | `readings/2026-11-17-supporting-the-child-penalises-the-parent.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-d6a96b` +1 | 12,100 | Q4 S2 ERR2 | — | 子を支持すると、親が減点される——874658 と 977052 の非対称テスト |
 | `readings/2026-11-17-the-built-structure-and-the-boundary-of-self.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-233ece` +1 | 28,287 | Q3 M21 S2 | — | 建てられた構造の外側に、自己の境界はない——比較動物学10資料（動物建築・社会免疫・生態系エンジニア）を精読する（SE… |
