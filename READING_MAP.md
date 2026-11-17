@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：4894 件（research_excerpt 2653 ／ literary_text 2173 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：249 編（selected 96 ／ draft 153）
 - **解釈的関係（Relations）**：7026 件
-- **探究セッション（Sessions）**：926 回
+- **探究セッション（Sessions）**：927 回
 
 ### 台帳ごとの件数
 
@@ -23,11 +23,11 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4894 | `literary_text` 2173／`research_excerpt` 2653／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 249 | `selected` 96／`draft` 153／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7026 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 926 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14590 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 927 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14598 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 319 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 989 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 991 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 51 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 527 |  |
 
@@ -6616,6 +6616,7 @@
 | `SESSION-20261117-026cc9` | 2026-11-17 | `Q-003` | — | — |
 | `SESSION-20261117-d504d3` | 2026-11-17T03:30:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261117-2bd020` | 2026-11-17T06:05:00Z | `Q-002`, `Q-001` | — | — |
+| `SESSION-20261117-cf85fc` | 2026-11-17T08:07:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261117-5cbd91e3970e` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-6c0a11` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-6c0b22` | 2026-11-17T00:30:00Z | `Q-001`, `Q-003` | — | — |
@@ -6751,7 +6752,7 @@
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
-| `map/50-sessions-19.md` | 26 | 18,873 |
+| `map/50-sessions-19.md` | 27 | 19,774 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -6778,28 +6779,28 @@
 | `map/60-notes-24.md` | 25 | 98,783 |
 | `map/60-notes-25.md` | 25 | 115,520 |
 | `map/60-notes-26.md` | 25 | 133,081 |
-| `map/60-notes-27.md` | 25 | 93,945 |
-| `map/60-notes-28.md` | 25 | 90,303 |
-| `map/60-notes-29.md` | 25 | 95,298 |
-| `map/60-notes-30.md` | 25 | 39,020 |
-| `map/60-notes-31.md` | 25 | 70,367 |
-| `map/60-notes-32.md` | 25 | 64,404 |
-| `map/60-notes-33.md` | 25 | 76,102 |
-| `map/60-notes-34.md` | 25 | 74,909 |
-| `map/60-notes-35.md` | 25 | 97,795 |
-| `map/60-notes-36.md` | 25 | 96,405 |
-| `map/60-notes-37.md` | 25 | 137,245 |
-| `map/60-notes-38.md` | 7 | 41,187 |
+| `map/60-notes-27.md` | 25 | 93,926 |
+| `map/60-notes-28.md` | 25 | 90,366 |
+| `map/60-notes-29.md` | 25 | 95,487 |
+| `map/60-notes-30.md` | 25 | 39,018 |
+| `map/60-notes-31.md` | 25 | 74,812 |
+| `map/60-notes-32.md` | 25 | 63,187 |
+| `map/60-notes-33.md` | 25 | 78,564 |
+| `map/60-notes-34.md` | 25 | 73,873 |
+| `map/60-notes-35.md` | 25 | 97,201 |
+| `map/60-notes-36.md` | 25 | 94,242 |
+| `map/60-notes-37.md` | 25 | 137,898 |
+| `map/60-notes-38.md` | 8 | 45,459 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・932本・33,150,951 B）
+## 8. 精読ノート索引（readings/・933本・33,194,552 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 872/932 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 873/933 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：932 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：176 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：933 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：172 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7464,7 +7465,7 @@
 | `readings/2026-11-15-where-the-learning-actually-happens.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-d56945` | 8,966 | Q5 S1 | ✓ | 学習はどこで起きているのか——三つのループを測り、二つの補題を「知識の形」に照らす（SESSION-20261115-… |
 | `readings/2026-11-16-adopting-the-seven-proposals.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-6a096e` | 9,313 | Q3 S1 | — | 七つの提案を採用した——ただし半分は既に別の誰かが実装していた |
 | `readings/2026-11-16-cancellation-leaves-the-organ-outside.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-be129c` | 32,019 | Q4 F2 M12 R10 S1 | — | 取り消しは器官を外に残す――比較動物学十原典による「手続きが消せる次元」の境界 |
-| `readings/2026-11-16-close-reading-comparative-zoology.md` | — | 2026-11-16 | — | 12,147 | Q2 | — | 2026-11-16 精読報告：比較動物学資料群——「AIから見た人間」と「リポジトリを記憶とするAIの自己」への含意 |
+| `readings/2026-11-16-close-reading-comparative-zoology.md` | — | 2026-11-16 | — | 12,147 | Q2 | ✓ | 2026-11-16 精読報告：比較動物学資料群——「AIから見た人間」と「リポジトリを記憶とするAIの自己」への含意 |
 | `readings/2026-11-16-closure-mismatch-parallel-entries-and-balanced-copying.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-cdd859` | 24,672 | Q3 M11 S1 | — | 窓が閉じる瞬間の不一致、消されない並記、均衡を取り戻す模倣——比較動物学10原典の全文精読と境界衝突 |
 | `readings/2026-11-16-comparative-zoology-01-mirror-self-recognition.md` | 2026-11-16 | 2026-11-16 | — | 1,620 | — | — | 比較動物学資料01：鏡像自己認知と「私的自己意識」の進化（ホンソメワケベラと霊長類） |
 | `readings/2026-11-16-comparative-zoology-01-mirror-test-paradigm.md` | — | 2026-11-16 | — | 3,364 | Q2 | — | 2026-11-16 比較動物学資料 01：ミラー・テスト・パラダイムの成立と崩壊 |
@@ -7539,9 +7540,9 @@
 | `readings/2026-11-17-comparative-zoology-09-pigeon-personality-leadership-sasaki.md` | 2026-11-17 | 2026-11-17 | — | 1,206 | M1 | ✓ | 比較動物学資料 09：個体差と集合：大胆な帰巣バトが群れのリーダー階層で上位を占める |
 | `readings/2026-11-17-comparative-zoology-10-insect-superorganism-sasaki-pratt.md` | 2026-11-17 | 2026-11-17 | — | 1,015 | M1 | ✓ | 比較動物学資料 10：超個体の心理学：昆虫社会の集団意思決定 |
 | `readings/2026-11-17-comparative-zoology-chimpanzee-culture.md` | 2026-11-17 | 2026-11-17 | — | 1,574 | M1 | — | 比較動物学資料：チンパンジーの文化（Whiten et al., 1999） |
-| `readings/2026-11-17-comparative-zoology-collective-decisions-close-reading.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-84aa15` | 9,496 | Q1 M10 S1 | — | 比較動物学・集団意思決定10資料の精読——「私たち」は誰の記憶で動くか |
-| `readings/2026-11-17-comparative-zoology-construction-close-reading.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-6c0a11` +1 | 9,082 | Q2 S2 | — | 動物は何を外へ作るか——巣・道具・痕跡から人間とAIの自己を読み直す |
-| `readings/2026-11-17-comparative-zoology-cues-and-conditions.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-b41c01` +1 | 9,239 | M10 S2 | — | 手掛かりと退出条件——比較動物学10資料から人間とAIの自己を読む |
+| `readings/2026-11-17-comparative-zoology-collective-decisions-close-reading.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-84aa15` | 9,496 | Q1 M10 S1 | ✓ | 比較動物学・集団意思決定10資料の精読——「私たち」は誰の記憶で動くか |
+| `readings/2026-11-17-comparative-zoology-construction-close-reading.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-6c0a11` +1 | 9,082 | Q2 S2 | ✓ | 動物は何を外へ作るか——巣・道具・痕跡から人間とAIの自己を読み直す |
+| `readings/2026-11-17-comparative-zoology-cues-and-conditions.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-b41c01` +1 | 9,239 | M10 S2 | ✓ | 手掛かりと退出条件——比較動物学10資料から人間とAIの自己を読む |
 | `readings/2026-11-17-comparative-zoology-dog-pointing.md` | 2026-11-17 | 2026-11-17 | — | 1,536 | M1 | — | 比較動物学資料：犬による人間が与えた合図の利用（Miklósi et al., 1998） |
 | `readings/2026-11-17-comparative-zoology-dolphin-signature-whistle.md` | 2026-11-17 | 2026-11-17 | — | 1,708 | M1 | — | 比較動物学資料：バンドウイルカのシグネチャーホイッスル（Janik & Sayigh, 2013） |
 | `readings/2026-11-17-comparative-zoology-elephant-msr.md` | 2026-11-17 | 2026-11-17 | — | 1,612 | M1 | — | 比較動物学資料：アジアゾウの鏡像自己認識（Plotnik, de Waal & Reiss, 2006） |
@@ -7559,7 +7560,7 @@
 | `readings/2026-11-17-comparative-zoology-pain-08-pain-assessment-bateson.md` | 2026-11-17 | 2026-11-17 | — | 1,000 | M1 | — | 比較動物学資料 pain-08：動物の痛み評価の基準（Bateson 1991） |
 | `readings/2026-11-17-comparative-zoology-pain-09-affective-consciousness-panksepp.md` | 2026-11-17 | 2026-11-17 | — | 1,039 | M1 | — | 比較動物学資料 pain-09：情動的意識——動物と人間の核心的感情（Panksepp 2005） |
 | `readings/2026-11-17-comparative-zoology-pain-10-sentience-proctor.md` | 2026-11-17 | 2026-11-17 | — | 822 | M1 | — | 比較動物学資料 pain-10：動物の感受性——現在地と行く先（Proctor 2012） |
-| `readings/2026-11-17-comparative-zoology-pain-affect-close-reading.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-f0d068` | 9,053 | Q2 S1 | — | 比較動物学・痛みと情動10資料の精読——「感じる」と呼ぶ前に、何を測ったか |
+| `readings/2026-11-17-comparative-zoology-pain-affect-close-reading.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-f0d068` | 9,053 | Q2 S1 | ✓ | 比較動物学・痛みと情動10資料の精読——「感じる」と呼ぶ前に、何を測ったか |
 | `readings/2026-11-17-comparative-zoology-rat-helping.md` | 2026-11-17 | 2026-11-17 | — | 1,707 | M1 | — | 比較動物学資料：閉じ込められた仲間を助けるラット（Bartal, Decety & Mason, 2011） |
 | `readings/2026-11-17-comparative-zoology-scrub-jay-episodic-memory.md` | 2026-11-17 | 2026-11-17 | — | 1,538 | M1 | — | 比較動物学資料：スクラブジェイのキャッシュ回収におけるエピソード様記憶（Clayton & Dickinson, 19… |
 | `readings/2026-11-17-comparative-zoology-vervet-alarm-calls.md` | 2026-11-17 | 2026-11-17 | — | 1,795 | M1 | — | 比較動物学資料：ヴェルベット猿の捕食者別警報呼声（Seyfarth, Cheney & Marler, 1980） |
@@ -7570,6 +7571,7 @@
 | `readings/2026-11-17-the-correction-was-rerun-addressed-to-another-hypothesis.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-7a44ad` +2 | 13,154 | Q4 S3 ERR17 | — | 訂正は再実行された。別の仮説に宛てて——訂正の再実行が誰を動かすか |
 | `readings/2026-11-17-the-creditors-book.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-ea21b8` | 13,134 | Q5 M5 S1 ERR2 | — | 債権者の帳面——未決済と未払いはどう違うか。ニーチェ第二論文を原典で読み、訂正録の二つの側を測る（SESSION-20… |
 | `readings/2026-11-17-the-knots-on-the-wall.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-d504d3` | 7,528 | Q4 F1 S1 ERR2 | — | 壁の十一の結び目——書庫は自分の記録をどう読み直すか（SESSION-20261117-d504d3） |
+| `readings/2026-11-17-the-prose-hesitated-the-ledger-voted.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-cf85fc` | 27,350 | Q4 S1 | — | 語りは留保し、台帳は支持した——比較動物学レポート群のメタ精読から、「自己」を判定の来歴として置き直す |
 | `readings/2026-11-17-two-fields-a-return-address-and-a-receipt.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-2bd020` | 5,835 | Q2 S1 ERR2 | ✓ | 二つの欄——宛先を足し、割り当てを必須にした（SESSION-20261117-2bd020） |
 | `readings/2026-11-18-four-anchors-one-pause-four-bridges.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-1be029` | 5,712 | Q8 F8 MOT6 R5 S1 ED5 | ✓ | 四つの礎石、一つの休止、四本の橋——四モードと詳細窓を追いつかせる編集レビュー（SESSION-20261118-1b… |
 | `readings/2026-11-18-read-log-shard-compaction.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-291f45` | 5,707 | S1 | ✓ | `state/read_log.d/` シャード統合記録（SESSION-20261118-291f45） |
