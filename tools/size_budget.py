@@ -364,7 +364,21 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # its five EVL rows name it) and cannot be folded into another
         # session's file. One-slot exception; hard 160 unchanged; not an
         # automatic raise.
-        soft_shards=127,
+        # 2026-11-17 (127 -> 128, SESSION-20261117-9980c1): this session's own
+        # 10-row acquisition shard (2026-11-17-2b61f0755311.jsonl, neuroscience
+        # sources on action/ownership/the offline self: Rizzolatti & Craighero
+        # 2004, Hickok 2009, Vallar & Ronchi 2009, Hobson 2000, Alkire 2008,
+        # Crick & Koch 1990, Fleming & Dolan 2012, Frith 2000, Uddin 2005,
+        # Winocur & Moscovitch 2011) is the 128th file. Measured before the
+        # append: state/materials.d = 127/127 -- exactly at the soft ceiling,
+        # zero free slots. Measured after: 128 files / 13,501,403 B of the
+        # 13 MiB soft -- the byte headroom is now only ~130 KB, so this shard
+        # is byte- and count-binding together. The shard is path-addressed
+        # provenance (the report and its five EVL rows name it) and cannot be
+        # folded into another session's file. One-slot exception; hard 160
+        # unchanged; not an automatic raise. The next session must treat this
+        # dimension as a consolidation decision, not a headroom request.
+        soft_shards=128,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -512,7 +526,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # consolidation remedy this dimension technically allows is still
         # unimplemented (71/72-era self-location pinning). Bytes not binding
         # (5.49 MiB of 6.50 MiB soft). Hard 160 unchanged; deliberate headroom.
-        soft_shards=136,
+        # 2026-11-17 (136 -> 137, SESSION-20261117-9980c1): this session's own
+        # handwritten shard (2026-11-17-306cdf60cd82.jsonl, 10 read_log rows,
+        # one per new material) is the 137th file. Measured before the append:
+        # state/read_log.d was 136/136 -- exactly at the soft ceiling, zero
+        # free slots. Measured after: 137 files / 5,781,825 B of the 6.50 MiB
+        # soft (bytes not binding by ~1.0 MiB). The rows are hand-written
+        # per-session provenance for the 2026-11-17 action/ownership report
+        # and cannot be folded into another session's shard. One-slot
+        # exception; hard 160 unchanged; not an automatic raise.
+        soft_shards=137,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -718,7 +741,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # measurement (139 -> 141) because a limit set equal to the measurement
         # is a tripwire for the next single session (the 936 -> 948 entry in the
         # readings budget records the same reasoning). Hard 160 unchanged.
-        soft_shards=141,
+        # 2026-11-17 (141 -> 142, SESSION-20261117-9980c1): this session's own
+        # sessions shard (2026-11-17-fefc93d42ff0.jsonl) is the 142nd file.
+        # Measured before the append: state/sessions.d was 141/141 -- exactly
+        # at the soft ceiling. Measured after: 142 files / 3,026,039 B of the
+        # 4 MiB soft (bytes not binding by ~1.17 MiB). The shard cannot be
+        # folded into another session's file after the fact. One-slot
+        # exception; hard 160 unchanged; not an automatic raise.
+        soft_shards=142,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -1012,7 +1042,21 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # of margin above the measurement (144 -> 146): a limit equal to the
         # measurement fails the next single session (cf. the 936 -> 948 entry in
         # the readings budget). Hard 160 unchanged.
-        soft_shards=146,
+        # 2026-11-17 (146 -> 147, SESSION-20261117-9980c1): this session's own
+        # curated note shard (2026-11-17-2e3722036698.jsonl, NOTE-20261117-3b0064
+        # -- note_index.py --register for the action/ownership report -- plus
+        # the curate row NOTE-20261117-a6c91b carrying the same-session
+        # measurements and class-of-verdict caveats) is the 147th file.
+        # Measured before the append: state/notes.d was 146/146 -- exactly at
+        # the soft ceiling, zero free slots. Measured after: 147 files /
+        # 1,991,966 B of the 2 MiB soft -- the byte headroom is now only
+        # ~5 KiB, so this shard is byte- and count-binding together. notes.d is
+        # order-sensitive and excluded from consolidation; the register tool
+        # creates its own shard and cannot write into another session's file.
+        # One-slot exception; hard 160 unchanged; not an automatic raise. The
+        # next session must treat this dimension as a consolidation decision,
+        # not a headroom request.
+        soft_shards=147,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
@@ -1047,7 +1091,17 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # session's append-only shard after the fact. One-slot exception, with
         # the same standing caveat as above: the *next* shard needs a
         # consolidation decision, not an automatic raise. Hard 160 unchanged.
-        soft_shards=82,
+        # 2026-11-17 (82 -> 83, SESSION-20261117-9980c1): this session's five
+        # evaluation rows (narrows_scope 46456a; supports bccd54; narrows_scope
+        # 8f6552; supports 16929d; reproducible_script supports 4bf2dc) are the
+        # 83rd file. Measured before the append: state/evaluations.d was
+        # 82/82 -- exactly at the soft ceiling, zero free slots. Measured
+        # after: 83 files / 688,294 B of the 4 MiB soft -- bytes are not
+        # binding; only the count is. The rows cannot be folded into another
+        # session's shard after the fact. One-slot exception; hard 160
+        # unchanged; not an automatic raise. The next shard needs a
+        # consolidation decision, not an automatic raise.
+        soft_shards=83,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
