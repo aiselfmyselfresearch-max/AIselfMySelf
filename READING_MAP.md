@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：4884 件（research_excerpt 2643 ／ literary_text 2173 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：249 編（selected 96 ／ draft 153）
 - **解釈的関係（Relations）**：7026 件
-- **探究セッション（Sessions）**：921 回
+- **探究セッション（Sessions）**：922 回
 
 ### 台帳ごとの件数
 
@@ -23,8 +23,8 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4884 | `literary_text` 2173／`research_excerpt` 2643／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 249 | `selected` 96／`draft` 153／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7026 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 921 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14572 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 922 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14578 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 319 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 986 |  |
@@ -6608,6 +6608,7 @@
 | `SESSION-20261117-6c0a11` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-6c0b22` | 2026-11-17T00:30:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-84aa15` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
+| `SESSION-20261117-b44ba9` | 2026-11-17T04:51:46Z | `Q-003` | — | — |
 | `SESSION-20261117-d6a96b` | 2026-11-17T02:00:00Z | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-7a44ad` | 2026-11-17T02:40:00Z | `Q-003`, `Q-002`, `Q-001` | — | — |
 | `SESSION-20261117-f0d068` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
@@ -6736,7 +6737,7 @@
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
-| `map/50-sessions-19.md` | 21 | 15,644 |
+| `map/50-sessions-19.md` | 22 | 16,303 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
