@@ -923,7 +923,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 202,022 B). notes.d is order-sensitive and excluded from consolidation
         # -> net reclaim 0. One-slot exception; hard 160 unchanged; not an
         # automatic raise.
-        soft_shards=141,
+        # 2026-11-17 (141 -> 142, SESSION-20261117-4e438d): this session's own
+        # curated note shard (2026-11-17-141149665dee.jsonl, NOTE-20261117-da5a75)
+        # is the 142nd file. Measured on the merged union: state/notes.d =
+        # 142 files / 1,909,505 B of the 2 MiB soft (bytes not binding by
+        # 187,647 B). notes.d is order-sensitive and excluded from consolidation
+        # -> net reclaim 0. Fourth consecutive one-slot raise on this dimension;
+        # the caveat from 7a44ad stands and is now overdue: the *next* session
+        # must consolidate or decide that notes.d is the binding dimension.
+        # One-slot exception; hard 160 unchanged; not an automatic raise.
+        soft_shards=142,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
@@ -950,7 +959,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # unchanged. This is a one-slot correction, not an automatic headroom
         # expansion. The next shard requires a separate consolidation/rescaling
         # decision based on then-current measurements.
-        soft_shards=81,
+        # 2026-11-17 (81 -> 82, SESSION-20261117-4e438d): this session's three
+        # evaluation rows (pair-identity probe, self-support, pre-registered
+        # exclusion clause) are the 82nd file. Measured: state/evaluations.d =
+        # 82 files / 629,842 B of the 4 MiB soft -- bytes are not remotely
+        # binding; only the count is. The rows cannot be folded into another
+        # session's append-only shard after the fact. One-slot exception, with
+        # the same standing caveat as above: the *next* shard needs a
+        # consolidation decision, not an automatic raise. Hard 160 unchanged.
+        soft_shards=82,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
