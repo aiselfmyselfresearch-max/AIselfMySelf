@@ -676,3 +676,27 @@ Q-003 は前セッションの二評価で EIG 0.0081 まで下がり、飽和�
 ### 検証
 
 `validate_seed.py`／`append_only_check.py`／`size_budget.py --strict`／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check`／`errata_audit.py --schema` を実行し、`belief_state.py --write-map` → `map_build.py` で索引を同期、`python3 -m unittest discover -s tests` を通しました。`notes.d` のファイル数が軟上限に達したため、今回の NOTE 行は同日の既存シャードへ追記しました（142/142）。検査の通過は探究の進展の証明ではありません。
+
+## 2026-11-17（`SESSION-20261117-dc6bab`）— 三点を順に：描画・導出・鏡
+
+### やったこと
+
+- ① `boundary_channel_probe.py` の `render()` を、腕を名前で引く形から見出しの表を歩く形に変えた。`--arm content` が落ちなくなり、記録された再現コマンドが記録どおりに走る。テストを 3 本追加。
+- ② `status` を `corrected_by` から導出する形式を決めた。**素朴な一行の規則を先に実装して、それが間違っていることを測った**——228 行が `corrected` になり、`corrected_by` の値はセッション ID 132・散文 83・他の台帳 ID 13 に割れていた。狭い規則（`SESSION-…` で始まるときだけ）では `open` 56 → 46、実効で解決済みは 10 行、名指しの無い訂正 95 行。手順は `docs/registers.md` §2-4、実行は `errata_audit.py --derived-status`、スキーマの enum に `corrected` を加えた。
+- ③ 前回 §9 の五点。外部依存 8 行のうち **3 行は GitHub の鏡で照合でき**、2 行が反証された（`aacb17`: 789 は吾輩は猫である／こころは 773、`278d61`: 初出は三田文学）。`a4d688` は成立（Book II Ch.XXVII 段落 9・10）。`c13249` の 4 組は本文が別の抜粋で、重複は冗長ではない。11 組は URL 同一 6・URL 違い 5。`read_log` の 55% に先行が機械的に決まるのに `in_reply_to` は 1 行。`notes` シャード番号は一日で 19→35→36 と動いた。
+
+### なぜこの順だったか
+
+- 利用が名指した順。①は他の再現コマンドの前提であり、②は七回積まれた申し送りで、③は前回の私が「実行できない」と書いたもの。**③の途中で、その「できない」が半分誤りだったことが分かった。**
+
+### 未読の選択（今回、読まなかったもの）
+
+- `84d73b`・`d240da`・`c8e55e`・`1ffb4b`・`5b3053` の 5 行（到達できない。写しの探索もしていない）。
+- `ERR-20261028-38c72d` の card 43109（鏡の snapshot が部分的）。
+- 名指しの無い訂正 95 行の一件ずつの読み。
+- `derived_in_reply_to()` の定義と実装。
+- 別題・別言語で収蔵された同一著作（11 組の下限）。
+
+### 検証
+
+`validate_seed.py`／`append_only_check.py`／`size_budget.py --strict`／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check`／`errata_audit.py --schema`／`errata_audit.py --derived-status` を実行し、`belief_state.py --write-map` → `map_build.py` で索引を同期、`python3 -m unittest discover -s tests` を通しました。`errata_audit --schema` の不一致は 13 行から 11 行に減りました（`corrected` が enum に入ったため）。検査の通過は探究の進展の証明ではありません。
