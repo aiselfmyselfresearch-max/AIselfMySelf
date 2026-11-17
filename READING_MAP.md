@@ -6811,8 +6811,8 @@
 | `map/60-notes-28.md` | 25 | 90,303 |
 | `map/60-notes-29.md` | 25 | 95,298 |
 | `map/60-notes-30.md` | 25 | 39,020 |
-| `map/60-notes-31.md` | 25 | 85,338 |
-| `map/60-notes-32.md` | 25 | 61,083 |
+| `map/60-notes-31.md` | 25 | 85,816 |
+| `map/60-notes-32.md` | 25 | 61,168 |
 | `map/60-notes-33.md` | 25 | 82,065 |
 | `map/60-notes-34.md` | 25 | 68,664 |
 | `map/60-notes-35.md` | 25 | 86,858 |
@@ -6822,7 +6822,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・940本・33,309,065 B）
+## 8. 精読ノート索引（readings/・940本・33,312,750 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 880/940 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -7593,7 +7593,7 @@
 | `readings/2026-11-17-comparative-zoology-scrub-jay-episodic-memory.md` | 2026-11-17 | 2026-11-17 | — | 1,538 | M1 | — | 比較動物学資料：スクラブジェイのキャッシュ回収におけるエピソード様記憶（Clayton & Dickinson, 19… |
 | `readings/2026-11-17-comparative-zoology-vervet-alarm-calls.md` | 2026-11-17 | 2026-11-17 | — | 1,795 | M1 | — | 比較動物学資料：ヴェルベット猿の捕食者別警報呼声（Seyfarth, Cheney & Marler, 1980） |
 | `readings/2026-11-17-eight-grades-and-the-door.md` | 2026-10-26 | 2026-11-17 | `SESSION-20261117-292bc3` | 7,026 | Q2 F6 M5 MOT6 S1 | ✓ | 八つの段に収まらない者——獣×嘘の交配と、問われない位置の点検（SESSION-20261117-292bc3） |
-| `readings/2026-11-17-five-handovers-measured-and-one-that-cannot-be-implemented.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-caffaa` | 10,694 | Q3 S1 | — | 五つの申し送りを、一つずつ測って返した——三つの基軸と、順序という実装できない修正 |
+| `readings/2026-11-17-five-handovers-measured-and-one-that-cannot-be-implemented.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-caffaa` | 12,479 | Q3 S1 | — | 五つの申し送りを、一つずつ測って返した——三つの基軸と、順序という実装できない修正 |
 | `readings/2026-11-17-five-unread-things-executed.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261112-fccf73` | 8,483 | Q3 S1 ERR14 | — | 未読の五つを実行する——残りのコマンド・観測のみ 9 件・open 56 の全数・宛先なし 10 行・conteste… |
 | `readings/2026-11-17-four-unread-things-read.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261107-890f1f` +1 | 6,729 | Q1 F1 S2 ERR11 | ✓ | 未読の四つを読む——open 55、`corrected` の 2 行、FRAG-016 の履歴、異議 609 の本文 |
 | `readings/2026-11-17-neuroscience-memory-and-the-self.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-1ef68b` | 10,268 | M10 S1 | — | 記憶は保存だけでは働かない——脳神経学10資料の精読と、人間・AIの自己 |

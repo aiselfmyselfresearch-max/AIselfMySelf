@@ -176,6 +176,78 @@
       "row_count": 2,
       "sha256": "30d156bb62b7e8f29d6ed0f92e6e12890edf089b0cd8648638d84d79ef03c607"
     },
+    "state/evaluations.d/2026-11-13-5c17b6c1.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-12-43b20cd59240.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-13",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/evaluations.d/2026-11-13-77189336205a.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-12-43b20cd59240.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-13",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/evaluations.d/2026-11-13-7e4cbe90a989.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-12-43b20cd59240.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-13",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/evaluations.d/2026-11-13-7ed4a20aab6d.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-12-43b20cd59240.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-13",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/evaluations.d/2026-11-13-896092679e7d.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-12-43b20cd59240.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-13",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/evaluations.d/2026-11-13-93ba065113c4.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-12-43b20cd59240.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-13",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/evaluations.d/2026-11-13-9561354d7645.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-12-43b20cd59240.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-13",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/evaluations.d/2026-11-13-9f02bfa13d42.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-12-43b20cd59240.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-13",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/evaluations.d/2026-11-13-a717da934ed8.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-12-43b20cd59240.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-13",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
     "state/fragments.d/2026-11-16-452027db7580.jsonl": {
       "new_shard": "state/fragments.d/2026-10-26-f00000d2a96e.jsonl",
       "real_date": "2026-10-26",
@@ -679,6 +751,78 @@
       "line_end": 4,
       "row_count": 2,
       "sha256": "daf93763a5752822329c2bab7258df66222d189c5f7b5d0d5c5fa5fb4a863154"
+    },
+    "state/notes.d/2026-11-07-b6a4068b95d7.jsonl": {
+      "new_shard": "state/notes.d/2026-11-02-000000000000.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-07",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/notes.d/2026-11-07-b708763af2b3.jsonl": {
+      "new_shard": "state/notes.d/2026-11-02-000000000000.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-07",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/notes.d/2026-11-07-bd734b171a3f.jsonl": {
+      "new_shard": "state/notes.d/2026-11-02-000000000000.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-07",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/notes.d/2026-11-07-bec478cd9223.jsonl": {
+      "new_shard": "state/notes.d/2026-11-02-000000000000.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-07",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/notes.d/2026-11-07-cdc0bd62b635.jsonl": {
+      "new_shard": "state/notes.d/2026-11-02-000000000000.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-07",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/notes.d/2026-11-07-d2cef352a021.jsonl": {
+      "new_shard": "state/notes.d/2026-11-02-000000000000.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-07",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/notes.d/2026-11-07-d8dc56eb8c8d.jsonl": {
+      "new_shard": "state/notes.d/2026-11-02-000000000000.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-07",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/notes.d/2026-11-07-d97e3ddda417.jsonl": {
+      "new_shard": "state/notes.d/2026-11-02-000000000000.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-07",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
+    },
+    "state/notes.d/2026-11-07-d9beaf822898.jsonl": {
+      "new_shard": "state/notes.d/2026-11-02-000000000000.jsonl",
+      "real_date": "2026-11-18",
+      "original_label_date": "2026-11-07",
+      "row_count": null,
+      "consolidated_on": "2026-11-18",
+      "note": "byte-for-byte concatenation into the lexicographically first shard; rows not rewritten"
     },
     "state/notes.d/2027-01-17-25cdc7aae1f9.jsonl": {
       "new_shard": "state/notes.d/2026-11-03-f000003fab22.jsonl",
