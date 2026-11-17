@@ -107,6 +107,24 @@ REGISTER_RULE_EXEMPT_IDS = frozenset({
     "Q-20261117-1d7864",
 })
 CLAIM_WIRING_KINDS = ("reading_revised", "retraction")
+READ_ID_RE = re.compile(r"^READ-\d{8}-[0-9a-f]{6}$")
+
+#: Sessions minted on or after this day must carry the assignment receipt.
+#: The receipt exists since 2026-11-15 (``inspect_inquiry.py --assignment-json``)
+#: but was optional, and optional meant unrecorded: of 920 sessions only 69
+#: (7.5%) carry ``assigned_role``. The charter's 25/50/25 role split cannot be
+#: checked against a ledger that does not record the treatment, so from this
+#: date the four fields are required on new session rows and their absence is
+#: an error rather than a note. Rows minted earlier are exempt: they cannot be
+#: rewritten, and back-dating a role would manufacture a receipt that was never
+#: issued (the role is a function of the seed, and 91% of old rows record none).
+ROLE_RECEIPT_REQUIRED_FROM = "20261118"
+ROLE_RECEIPT_FIELDS = (
+    "dispersal_seed",
+    "assigned_role",
+    "offered_target_question_id",
+    "offered_reference_mode",
+)
 REGISTER_VALUES = ("description", "judgment", "inheritance")
 _ID_STAMP = re.compile(r"^[A-Z]+(?:-[A-Z]+)*-(\d{8})-")
 
@@ -610,6 +628,88 @@ def psc_new_row_advisory(
     )
 
 
+def check_read_log_addressing(
+    read_logs: dict[str, dict[str, Any]], errors: list[str]
+) -> None:
+    """A reply must name a reading that exists, is not itself, and is already written.
+
+    ``in_reply_to`` (2026-11-17) is the address of a reply: ``target`` says what
+    was read, ``in_reply_to`` says which earlier reading the row answers. The
+    field is optional, so every row written before it stays valid; what the gate
+    refuses is an address that points nowhere, points at itself, or points
+    forward in time. It does not check that a claimed reply is really a reply —
+    that is a reading question, not a schema one.
+    """
+    for read_id, record in read_logs.items():
+        addresses = record.get("in_reply_to")
+        if addresses is None:
+            continue
+        if not isinstance(addresses, list):
+            continue  # the schema reports the shape error
+        for address in addresses:
+            if not isinstance(address, str) or not address:
+                continue  # ditto
+            if not READ_ID_RE.match(address):
+                errors.append(
+                    f"read_log:{read_id}: in_reply_to entry {address!r} is not a "
+                    "READ-<YYYYMMDD>-<hex> id"
+                )
+                continue
+            if address == read_id:
+                errors.append(f"read_log:{read_id}: in_reply_to names the row itself")
+                continue
+            if address not in read_logs:
+                errors.append(
+                    f"read_log:{read_id}: in_reply_to references unknown reading {address!r}"
+                )
+                continue
+            own_stamp = id_stamp(read_id)
+            other_stamp = id_stamp(address)
+            if own_stamp and other_stamp and other_stamp > own_stamp:
+                errors.append(
+                    f"read_log:{read_id}: in_reply_to references {address!r}, which is "
+                    "dated later; a reading can answer only one already written"
+                )
+
+
+def check_role_receipts(
+    sessions: dict[str, dict[str, Any]],
+    errors: list[str],
+    *,
+    cutoff: str = ROLE_RECEIPT_REQUIRED_FROM,
+    today: datetime.date | None = None,
+) -> None:
+    """Refuse a new session row that does not carry the assignment it was given.
+
+    The archive decides a role, a target question and a reference mode from the
+    dispersal seed every session, and used to discard all three: 69 of 920
+    sessions (7.5%) record ``assigned_role``, and among those the measured
+    contested-reading rate is *inverted* against the charter (consolidator 12.7%,
+    adversarial_tester 4.3% — ``witness_count.py --roles``). A distribution that
+    is never written down cannot be checked, corrected, or argued with, so from
+    ``cutoff`` a session row without the four receipt fields is an error. Rows
+    before the cutoff are exempt because they cannot be rewritten (append-only)
+    and because the seed is not recorded for 91% of them: a role filled in
+    afterwards would be a manufactured receipt, not a recovered one.
+    """
+    for session_id, record in sessions.items():
+        if not _is_new_row(session_id, cutoff, today=today):
+            continue
+        missing = [
+            field for field in ROLE_RECEIPT_FIELDS
+            if not str(record.get(field) or "").strip()
+        ]
+        if missing:
+            errors.append(
+                f"sessions:{session_id}: missing assignment receipt field(s) "
+                f"{', '.join(missing)}; the seed decided the role, the target question "
+                "and the reference mode before the session chose anything, and an "
+                "unrecorded treatment cannot be joined to its outcome. Run "
+                "`python3 tools/inspect_inquiry.py --assignment-json` and paste its "
+                "session_row_fields into the row (docs/parallel-work.md 規則10)"
+            )
+
+
 def check_refs(
     collection_name: str,
     records: dict[str, dict[str, Any]],
@@ -922,6 +1022,9 @@ def main() -> int:
                     f"read_log:{read_id}: target references unknown "
                     f"{ref.get('type')} ID {ref.get('id')!r}"
                 )
+
+    check_read_log_addressing(read_logs, errors)
+    check_role_receipts(sessions, errors)
 
     ed_valid_status = {
         "fragment": {"draft", "selected", "archived"},

@@ -50,6 +50,7 @@ import argparse
 import glob
 import json
 import re
+import datetime
 import statistics
 import sys
 from collections import Counter, defaultdict
@@ -423,7 +424,10 @@ def report_contests(read_log: list[dict], *, out) -> dict:
             continue
         rows_by_target.setdefault((str(target.get("type")), str(target["id"])), []).append(row)
 
-    followed = answered = 0
+    addressed = [r for r in contests if r.get("in_reply_to")]
+    field_cited = [r for r in hand if r.get("in_reply_to")]
+
+    followed = answered = answered_by_field = 0
     for rows in rows_by_target.values():
         rows = sorted(rows, key=lambda r: str(r.get("created_at") or ""))
         for i, row in enumerate(rows):
@@ -436,6 +440,8 @@ def report_contests(read_log: list[dict], *, out) -> dict:
                 if any((rid and rid in str(x.get("note") or "")) or
                        CONTEST_ANSWER_RE.search(str(x.get("note") or "")) for x in later):
                     answered += 1
+                if rid and any(rid in (x.get("in_reply_to") or []) for x in later):
+                    answered_by_field += 1
 
     out(f"hand-written readings           : {len(hand)}")
     out(f"contested readings              : {len(contests)}"
@@ -447,11 +453,18 @@ def report_contests(read_log: list[dict], *, out) -> dict:
         f"  ({len(citing) / max(len(contests), 1) * 100:.1f}%)")
     out(f"rows anywhere citing a READ-* id : {len(any_citing)} / {len(hand)}"
         f"  ({len(any_citing) / max(len(hand), 1) * 100:.1f}%)")
+    out(f"contest addressed via in_reply_to           : {len(addressed)} / {len(contests)}"
+        f"  ({len(addressed) / max(len(contests), 1) * 100:.1f}%)")
+    out(f"any hand row addressed via in_reply_to      : {len(field_cited)} / {len(hand)}"
+        f"  ({len(field_cited) / max(len(hand), 1) * 100:.1f}%)")
     out(f"contest followed by another session's reading : {followed} / {len(contests)}"
         f"  ({followed / max(len(contests), 1) * 100:.1f}%)")
     out(f"contest named by that later reading           : {answered} / {len(contests)}"
         f"  ({answered / max(len(contests), 1) * 100:.1f}%)")
+    out(f"contest answered through in_reply_to          : {answered_by_field} / {len(contests)}"
+        f"  ({answered_by_field / max(len(contests), 1) * 100:.1f}%)")
     out("  註: 「名指す」は註の語彙（READ id・異議・前回・§・引用）で判定した近似的な数。")
+    out("  註: in_reply_to は 2026-11-17 に足した欄なので、それ以前の行は 0 件で正しい。")
     return {
         "handwritten": len(hand),
         "contested": len(contests),
@@ -459,14 +472,100 @@ def report_contests(read_log: list[dict], *, out) -> dict:
         "naming": len(naming),
         "citing_read_id": len(citing),
         "any_citing_read_id": len(any_citing),
+        "addressed_by_field": len(addressed),
+        "any_addressed_by_field": len(field_cited),
         "followed": followed,
         "answered": answered,
+        "answered_by_field": answered_by_field,
     }
 
 
 def _target_type_of(row: dict) -> str:
     target = row.get("target") or {}
     return str(target.get("type") or "(none)") if isinstance(target, dict) else "(none)"
+
+
+ROLE_FIELDS = ("dispersal_seed", "assigned_role", "offered_target_question_id",
+               "offered_reference_mode")
+
+
+def report_roles(sessions: list[dict], read_log: list[dict], *, out) -> dict:
+    """Who was told to do what, and did the ledger keep the receipt?
+
+    The charter splits inquiry into proposer 25 / adversarial tester 50 /
+    consolidator 25. The ledger can only check that split if session rows carry
+    ``assigned_role``, which they mostly do not. Two numbers are printed: the
+    coverage of the receipt (all sessions, and only those minted since the
+    receipt became required on 2026-11-18) and the contested-reading rate inside
+    each role. The second is the one that matters: if the role label did not
+    predict anything, recording it would be decoration.
+    """
+    roles: dict[str, int] = Counter()
+    contested: dict[str, int] = Counter()
+    rows_by_role: dict[str, int] = Counter()
+    missing_recent: list[str] = []
+    session_ids = {s.get("session_id") for s in sessions}
+    by_session = {s.get("session_id"): s for s in sessions}
+
+    for session in sessions:
+        role = str(session.get("assigned_role") or "")
+        if role:
+            roles[role] += 1
+
+    for row in read_log:
+        if str(row.get("note") or "").startswith("機械的"):
+            continue
+        session = by_session.get(row.get("session_id")) or {}
+        role = str(session.get("assigned_role") or "(no role recorded)")
+        rows_by_role[role] += 1
+        if row.get("reading") == "contested":
+            contested[role] += 1
+
+    # Only real dates count. 187 session IDs carry internal chronology labels
+    # in 2026-12..2027 and are exempt everywhere else in the repository
+    # (tools/date_axis.py, validate_seed._is_new_row), so they are exempt here:
+    # a forward label must never turn into a compliance failure.
+    today_stamp = datetime.date.today().strftime("%Y%m%d")
+    for session in sessions:
+        sid = str(session.get("session_id") or "")
+        match = re.search(r"(\d{8})", sid)
+        stamp = match.group(1) if match else ""
+        if "20261118" <= stamp <= today_stamp:
+            gaps = [f for f in ROLE_FIELDS if not str(session.get(f) or "").strip()]
+            if gaps:
+                missing_recent.append(sid)
+
+    total = len(session_ids)
+    with_role = sum(roles.values())
+    out(f"sessions                        : {total}")
+    out(f"assigned_role recorded          : {with_role}"
+        f"  ({with_role / max(total, 1) * 100:.1f}%)")
+    out(f"all four receipt fields         : "
+        f"{sum(1 for s in sessions if all(str(s.get(f) or '').strip() for f in ROLE_FIELDS))}")
+    if roles:
+        out("  recorded roles: " + ", ".join(f"{k}={v}" for k, v in roles.most_common()))
+        out("  charter split : proposer 25% / adversarial_tester 50% / consolidator 25%")
+        out("")
+        out("contested share of hand-written readings, by the role of the reading session:")
+        for role, n in rows_by_role.most_common():
+            out(f"  {role:<20} {contested[role]:>4} / {n:>5}  "
+                f"({contested[role] / max(n, 1) * 100:5.1f}%)")
+    out("")
+    if missing_recent:
+        out(f"new session rows (2026-11-18+) missing a receipt: {len(missing_recent)}")
+        for sid in missing_recent[:5]:
+            out(f"  - {sid}")
+    else:
+        out("new session rows (2026-11-18+) missing a receipt: 0 "
+            "(validate_seed now refuses them)")
+    return {
+        "sessions": total,
+        "with_role": with_role,
+        "roles": dict(roles),
+        "readings_by_role": dict(rows_by_role),
+        "contested_by_role": dict(contested),
+        "missing_receipts_recent": missing_recent,
+    }
 
 def main(argv: list[str] | None = None) -> int:
     global ROOT
@@ -477,6 +576,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--naming", action="store_true")
     ap.add_argument("--passages", action="store_true")
     ap.add_argument("--hypotheses", action="store_true")
+    ap.add_argument("--roles", action="store_true",
+                    help="how many session rows record the assignment receipt, and whether "
+                         "the recorded role predicts anything (report only)")
     ap.add_argument("--contests", action="store_true",
                     help="how often readings contest their target, and whether the contest is "
                          "addressed or answered (report only)")
@@ -493,7 +595,7 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     every = not (args.works or args.witnesses or args.naming or args.passages
-                 or args.hypotheses or args.contests)
+                 or args.hypotheses or args.contests or args.roles)
     payload: dict[str, object] = {}
     lines: list[str] = []
 
@@ -509,6 +611,12 @@ def main(argv: list[str] | None = None) -> int:
         if not args.json:
             out("--- 1. works vs rows ---")
         payload["works"] = report_works(materials, out=out)
+        if not args.json:
+            out("")
+    if args.roles:
+        if not args.json:
+            out("--- 割り当ては、記録されたか ---")
+        payload["roles"] = report_roles(load_rows("sessions", "session_id"), read_log, out=out)
         if not args.json:
             out("")
     if args.contests:
