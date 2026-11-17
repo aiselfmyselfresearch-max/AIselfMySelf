@@ -754,3 +754,20 @@ Q-003 は前セッションの二評価で EIG 0.0081 まで下がり、飽和�
 `validate_seed.py`／`append_only_check.py`（30,423 行バイト一致）／`size_budget.py --strict`（notes.d 142/142・errata.d 110/110・readings 949/950 で軟上限内）／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`（配線率 100%、949/949）／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check`／`claim_wiring.py --check`／`errata_audit.py --schema`／`map_build.py --check`・`--check-readme`／`node --check viewer/app.js` を実行し、`belief_state.py --write-map` → `map_build.py` で索引を同期、`python3 -m unittest discover -s tests`（915 本）を通しました。途中で `tests.test_read_log` が文脈素材5件の `read_log` 不在を検出し（合成1件のはずが6件）、`used_as_context` の手書き行5件で解いています。検査の通過は探究の進展の証明ではありません。EIG の変動は成果に数えていません。
 
 （追記・保守コミット）`origin/main` 取り込み後の和集合で `size_budget.py --strict` が3次元同時に赤になった（sessions.d 139/138・notes.d 144/143・readings 952/951）。いずれも「実測値と同値の軟上限」の罠であり、本セッション1本の追加（各+1）で発火した。readings は前例どおり十数セッション分の余裕（952+12=964）へ再スケール、sessions.d は 138→141、notes.d は 143→146（各+2の余裕）とした。notes.d の「次に統合せよ、または決めよ」という申し送り（4e438d・a989d5）への回答は**決定**である：notes.d は順序感受性により統合対象外（純減0）と a989d5 が実測しており、結合の負債は余裕の確保によって決着とする。保守のみのコミットに分離した（parallel-work.md 規則6）。同種の再スケールが並列PRで競合した前例（#873 vs 344e11）があるため、余裕の値を実測＋既定のマージンに揃えた。
+
+## 2026-11-17（`SESSION-20261117-f0ff37`）— 拇印・窓・第二の読み手
+
+### やったこと
+
+- 委任（二観点からの現状分析→最適な行動群の自律実行→マージ）を受け、`--packet auto` の四欄レシート（シード `1793a518` / `adversarial_tester` / `Q-003` / `rereading_and_collision`）を `sessions` 行に貼った。報告は [`readings/2026-11-17-the-thumbprint-the-window-and-the-second-reader.md`](readings/2026-11-17-the-thumbprint-the-window-and-the-second-reader.md)。
+- **軸 I（Q-001）**：鷗外『遺言三種』・子規『病牀六尺』・Montaigne II.6・晶子『産屋物語』の一次資料4件を新規収蔵し、3件の PSC EVL（`550bcf`/`46456a`/`5dc940` の射程配分）と `ERR-20261117-6ef7aa`（`MAT-LIT-20261024-48e6d5` の「盲腸炎の六倍」は原文0件）を登記した。事前登録：`Q-001` に Gen-1 子を1件足すとエントロピーは `1.480 -> 0.000 bit` に崩壊する（零点初期化アーティファクト、PR #892 §8-3 への回答）。
+- **軸 II（Q-002/Q-003）**：`653fd0`/`d3ac84`/`9f8e51`/`e7a80a`/`874658`/`17ea95` への `reproducible_script` 6件。`653fd0` の `u=1.000->0.707`、未評価 active 仮説は 0 件。
+- 記帳：資料4・訂正1・評価9（`narrows_scope` 7・`supports` 2）・断片1・注記1・関係6・read_log 26・session 1。新規仮説・問い・シャードファイルは 0 件。
+
+### なぜこれを選んだか
+
+- パケットは `Q-003` を非飽和と告げ、行き先を (a) 未解決 errata (b) claim→評価の配線を伴う再読 (c) 新規資料に限定していた。根仮説を足さずに選択器の燃料を戻す経路は、一次資料の衝突と再現可能な監査だけだった。
+
+### 検証
+
+`belief_state.py --write-map` → `map_build.py` で索引を同期し、CI ゲートと `unittest` を通しました。検査の通過は探究の進展の証明ではありません。EIG の変動は成果に数えていません。
