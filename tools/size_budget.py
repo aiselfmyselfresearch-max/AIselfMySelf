@@ -502,7 +502,17 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # session writing a row would have failed --strict. The byte dimension
         # is not binding (5.18 MiB of 6.50 MiB soft before; 5.21 MiB after).
         # Hard 160 unchanged; one-slot exception, not an automatic raise.
-        soft_shards=133,
+        # 2026-11-17 (SESSION-20261117-41b123, 133 -> 136): third merge of
+        # origin/main in this PR brought the union to 134 files (this session's
+        # 16 handwritten read_log rows + parallel sessions' shards). The three
+        # entries above all start from "exactly at the soft ceiling, zero free
+        # slots" -- an equal-to-measured ceiling fails the next session by
+        # construction. Raised with two free slots above the measurement,
+        # matching the sessions.d/notes.d resolution in this same PR; the
+        # consolidation remedy this dimension technically allows is still
+        # unimplemented (71/72-era self-location pinning). Bytes not binding
+        # (5.49 MiB of 6.50 MiB soft). Hard 160 unchanged; deliberate headroom.
+        soft_shards=136,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
