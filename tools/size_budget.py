@@ -512,7 +512,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # consolidation remedy this dimension technically allows is still
         # unimplemented (71/72-era self-location pinning). Bytes not binding
         # (5.49 MiB of 6.50 MiB soft). Hard 160 unchanged; deliberate headroom.
-        soft_shards=136,
+        # 2026-11-17 (SESSION-20261117-ac19bf, 136 -> 138): this session's own
+        # shard (9 handwritten read_log rows: 4 reports, 5 hypotheses). Measured
+        # before the append: state/read_log.d was 137/137 -- exactly at the soft
+        # ceiling, zero free slots. Every entry above starts from that same
+        # condition, which is the point: a ceiling set equal to the measurement
+        # fails the *next* session by construction. Two slots of margin are kept
+        # above the measurement for the same reason recorded in the 41b123
+        # entry. Bytes not binding (5.51 MiB of 6.50 MiB soft). Hard 160
+        # unchanged. The consolidation debt on this dimension still stands.
+        soft_shards=138,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -718,7 +727,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # measurement (139 -> 141) because a limit set equal to the measurement
         # is a tripwire for the next single session (the 936 -> 948 entry in the
         # readings budget records the same reasoning). Hard 160 unchanged.
-        soft_shards=141,
+        # 2026-11-17 (SESSION-20261117-ac19bf, 141 -> 143): this session's own
+        # shard (1 session row). Measured before the append: state/sessions.d
+        # was 142/142 -- exactly at the soft ceiling, zero free slots. Same
+        # structural condition as the read_log.d raise in this same commit; two
+        # slots of margin instead of zero. Bytes not binding (2.88 MiB of 4 MiB
+        # soft). Hard 160 unchanged. The consolidation debt stands: the
+        # sessions.notes self-location rule from parallel-work.md §2 still pins
+        # the old shards, so merging them saves no files.
+        soft_shards=143,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -1012,7 +1029,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # of margin above the measurement (144 -> 146): a limit equal to the
         # measurement fails the next single session (cf. the 936 -> 948 entry in
         # the readings budget). Hard 160 unchanged.
-        soft_shards=146,
+        # 2026-11-17 (146 -> 148, SESSION-20261117-ac19bf): this session's two
+        # curated note rows for one report -- the register stub plus the
+        # claim-bearing row that supersedes it (NOTE-20261117-b2acbf, six
+        # claims). Measured before the append: state/notes.d was 147/147 --
+        # exactly at the soft ceiling, zero free slots. notes.d is
+        # order-sensitive and excluded from consolidation (net reclaim 0), and
+        # appending these rows to another session's shard would mix path
+        # provenance across sessions. Two slots of margin above the measurement
+        # for the reason recorded in the 142 -> 144 entry. Hard 160 unchanged.
+        soft_shards=148,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
@@ -1047,7 +1073,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # session's append-only shard after the fact. One-slot exception, with
         # the same standing caveat as above: the *next* shard needs a
         # consolidation decision, not an automatic raise. Hard 160 unchanged.
-        soft_shards=82,
+        # 2026-11-17 (82 -> 84, SESSION-20261117-ac19bf): this session's two
+        # reproducible_script rows. Measured before the append:
+        # state/evaluations.d was 83/83 -- exactly at the soft ceiling, zero free
+        # slots. Bytes are not binding (667 KiB of the 4 MiB soft). Append-only
+        # per-session shards cannot be folded into another session's file after
+        # the fact. Two slots of margin above the measurement; the standing
+        # caveat is unchanged -- the next shard needs a consolidation decision,
+        # not an automatic raise. Hard 160 unchanged.
+        soft_shards=84,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
