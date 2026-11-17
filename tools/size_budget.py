@@ -697,6 +697,17 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # re-trip --strict on the merged union. Hard 160 unchanged; deliberate
         # headroom, not an automatic raise; the consolidation debt on this
         # dimension stands (71/72 shards pinned by sessions.notes self-location).
+        # 2026-11-17 (138 -> 139, merge of SESSION-20261117-abff10 and
+        # SESSION-20261117-a989d5): the merge of origin/main a7ecca5 (PR #889)
+        # added a further same-day sessions shard (2026-11-17-285e6dc70c25) on
+        # top of this branch's own (2026-11-17-abff10). Measured on the merged
+        # union: state/sessions.d = 139 files / 3,012,374 B of the 4 MiB soft
+        # (bytes not binding by 1.18 MiB). Parallel branches each kept their own
+        # shard; neither touched the other's file. Union of two one-slot
+        # exceptions, not a new allowance. Two slots of margin are kept above the
+        # measurement (139 -> 141) because a limit set equal to the measurement
+        # is a tripwire for the next single session (the 936 -> 948 entry in the
+        # readings budget records the same reasoning). Hard 160 unchanged.
         soft_shards=141,
         hard_shards=160,
         remedy=(
@@ -974,6 +985,23 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # (the equal-to-measured trap documented in FREE_ACTION_LOG
         # 2026-11-17). Consolidation debt is closed by decision, not by
         # execution. Hard 160 unchanged.
+        # 2026-11-17 (142 -> 144, merge of SESSION-20261117-abff10 and
+        # SESSION-20261117-a989d5): both same-day sessions raised this line
+        # 142 -> 143 for their own curated note shard, independently. The
+        # merged union carries BOTH rows, so the measured count is 144 (not 143):
+        # state/notes.d = 144 files / 1,971,599 B of the 2 MiB soft (bytes not
+        # binding by 125,553 B). abff10's cause: 2026-11-17-caf6e1 (NOTE-caf6e1
+        # plus the register stub it supersedes) for
+        # readings/2026-11-17-what-the-brain-calls-self-is-a-way-of-processing.md.
+        # a989d5's cause: 2026-11-17-0d596ad59866 (NOTE-20261117-40f390).
+        # notes.d is order-sensitive and excluded from consolidation -> net
+        # reclaim 0; appending either row to another session's shard was
+        # rejected because it mixes path provenance across sessions. This is the
+        # union of two parallel one-slot exceptions, not a new allowance; the
+        # consolidation debt the 4e438d caveat names is still unpaid. Two slots
+        # of margin above the measurement (144 -> 146): a limit equal to the
+        # measurement fails the next single session (cf. the 936 -> 948 entry in
+        # the readings budget). Hard 160 unchanged.
         soft_shards=146,
         hard_shards=160,
         remedy=(
@@ -1132,6 +1160,24 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # 344e11 conflicted on exactly this line). Bytes stay 34 MiB (32.03
         # MiB measured, ~2 MiB ≈ 56 reports of headroom). hard 1200 files /
         # 48 MiB and the 256 KiB / 512 KiB per-report caps are unchanged.
+        # 2026-11-17 (merge conflict resolution, 41b123 x abff10): the two
+        # branches raised this line independently (964 and 956 from the same
+        # 950 baseline); both entries are kept above and the union takes the
+        # larger ceiling, 964. Neither raise was wrong; the values differed
+        # only in the margin convention (dozen-session vs +four).
+        # 2026-11-17 (950 -> 956, merge of SESSION-20261117-abff10 and
+        # SESSION-20261117-a989d5): two branches raised this line from the same
+        # 950 baseline the same day (952 and 951 files respectively) and one of
+        # them also raised soft_bytes 32 -> 34 MiB. The merged union measures
+        # 952 files / 33,612,263 B (32.05 MiB of the 34 MiB soft, 1.95 MiB of
+        # headroom). Neither raise was wrong; taken alone each would now be
+        # exactly equal to the measurement, which is a tripwire rather than a
+        # limit (see the 2026-11-17 936 -> 948 entry), so the union is set to
+        # 956 files (measured + four) and the byte soft stays at the 34 MiB the
+        # other branch measured. Reports are append-only and cannot be
+        # compacted; the readings/ directory split named in the remedy above is
+        # still unimplemented. hard 1200 files / 48 MiB and the 256 KiB / 512 KiB
+        # per-report caps are unchanged.
         soft_files=964,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
