@@ -141,11 +141,21 @@ class TestSchemaReport(unittest.TestCase):
         self.assertEqual(report["violations"], [])
 
     def test_unknown_status_is_named_without_raising(self) -> None:
-        report = errata_audit.schema_report([self._row(status="corrected")])
+        # `corrected` joined the enum on 2026-11-17 (it is the DERIVED reading of
+        # a row whose corrected_by names a session), so this test now uses a
+        # value nobody derives.
+        report = errata_audit.schema_report([self._row(status="resolved")])
         self.assertEqual(report["conforming"], 0)
         self.assertEqual(len(report["violations"]), 1)
         self.assertEqual(report["violations"][0]["errata_id"], "ERR-TEST-0001")
         self.assertIn("status", report["violations"][0]["errors"][0])
+
+    def test_corrected_status_is_now_part_of_the_schema(self) -> None:
+        """The derived value has to be a name the schema knows, or every reader
+        that materialises it is a violator."""
+        report = errata_audit.schema_report(
+            [self._row(status="corrected", corrected_by="SESSION-20261107-890f1f")])
+        self.assertEqual(report["violations"], [])
 
     def test_missing_required_field_and_extra_field_are_both_reported(self) -> None:
         row = self._row(session_id="SESSION-20261108-000000")
@@ -242,3 +252,70 @@ class TestObligationReport(unittest.TestCase):
 
     def test_read_rows_pointing_at_errata_are_counted(self) -> None:
         self.assertEqual(self.report()["read_rows_pointing_at_errata"], 1)
+
+
+class TestDerivedStatus(unittest.TestCase):
+    """ERR-20261117: the effective status is a reading of `corrected_by`, not an edit.
+
+    The rule has to be narrow. On the live ledger 228 rows carry `corrected_by`
+    in three shapes (session / prose / another ledger id), and a naive
+    "non-empty means corrected" would mark all of them -- manufacturing the
+    attribution most of them never recorded.
+    """
+
+    def test_named_session_closes_the_row(self) -> None:
+        for value in ("SESSION-20261107-890f1f",
+                      "SESSION-20261028-3e9656（readings/2026-10-28-x.md §3）"):
+            self.assertEqual(errata_audit.corrector_shape(value), "session")
+            self.assertEqual(
+                errata_audit.derived_status({"status": "open", "corrected_by": value}),
+                "corrected")
+
+    def test_prose_and_ledger_ids_are_not_promoted(self) -> None:
+        for value, shape in (("FRAG-020", "ledger_id"),
+                             ("台帳の既存行は書き換えず、本訂正録を隣に置く", "prose")):
+            self.assertEqual(errata_audit.corrector_shape(value), shape)
+            self.assertEqual(
+                errata_audit.derived_status({"status": "open", "corrected_by": value}), "open")
+
+    def test_withdrawn_is_terminal(self) -> None:
+        self.assertEqual(
+            errata_audit.derived_status({"status": "withdrawn",
+                                         "corrected_by": "SESSION-20261107-890f1f"}),
+            "withdrawn")
+
+    def test_absent_field_keeps_the_written_status(self) -> None:
+        self.assertEqual(errata_audit.corrector_shape(""), "empty")
+        self.assertEqual(errata_audit.derived_status({"status": "annotated"}), "annotated")
+
+    def test_report_on_the_live_ledger_is_internally_consistent(self) -> None:
+        rows = errata_audit.load_jsonl("errata.jsonl", "errata_id")
+        report = errata_audit.status_derivation_report(rows)
+        self.assertEqual(sum(report["written"].values()), report["rows"])
+        self.assertEqual(sum(report["derived"].values()), report["rows"])
+        self.assertEqual(sum(report["corrector_shapes"].values()), report["rows"])
+        # Deriving can only move rows out of `open`, never into it.
+        self.assertLessEqual(report["open_derived"], report["open_written"])
+        self.assertEqual(report["open_but_settled"],
+                         report["open_written"] - report["open_derived"])
+        for row in report["flips"]:
+            self.assertEqual(row["derived"], "corrected")
+            self.assertNotEqual(row["written"], "corrected")
+
+    def test_rows_are_not_mutated_by_the_report(self) -> None:
+        rows = [{"errata_id": "ERR-X", "status": "open",
+                 "corrected_by": "SESSION-20261107-890f1f"}]
+        snapshot = [dict(r) for r in rows]
+        errata_audit.status_derivation_report(rows)
+        self.assertEqual(rows, snapshot)
+
+    def test_cli_reports_without_failing(self) -> None:
+        import json as _json
+        import subprocess
+        p = subprocess.run([sys.executable, str(ROOT / "tools" / "errata_audit.py"),
+                            "--derived-status", "--json"],
+                           capture_output=True, text=True, cwd=str(ROOT))
+        self.assertEqual(p.returncode, 0, p.stderr)
+        data = _json.loads(p.stdout)
+        self.assertIn("corrector_shapes", data)
+        self.assertIn("open_derived", data)

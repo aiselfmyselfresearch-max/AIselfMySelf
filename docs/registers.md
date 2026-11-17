@@ -40,6 +40,30 @@ claim のうち仮説を名指すものは **9.8%**（194件）しかなかっ�
 {"claim_id": "CLM-…", "kind": "reading_revised", "text": "引用の頁を直した", "no_hypothesis": true}
 ```
 
+### 2-4. 訂正の `status` は導出する（2026-11-17）
+
+`errata` の `status` は**書かれた値**であって、**実効の状態**ではない。行は追記専用なので、
+後のセッションが訂正を決着させても `status: open` は `open` のまま残る。決着は `corrected_by` に書かれる。
+
+そこで、読み手は `status` ではなく次の規則で実効状態を導出する（`tools/errata_audit.py`）。
+
+```sh
+python3 tools/errata_audit.py --derived-status        # 件数と、書かれた値と導出値が食い違う行
+python3 tools/errata_audit.py --derived-status --json
+```
+
+1. `withdrawn` は `withdrawn` のまま（撤回された判定は、後の訂正で「解決」しない）。
+2. `corrected_by` が `SESSION-…` で始まるときだけ `corrected`（**誰が直したかを名指せる訂正だけ**を決着とみなす）。
+3. それ以外は書かれた `status` をそのまま読む。
+
+**3 を 2 に混ぜない理由は実測にある。** 2026-11-17 時点で `corrected_by` を持つ 228 行の値は三つの形に割れる——
+セッション ID が 132（素の 74・括弧付き 58）、散文が 83、他の台帳 ID が 13（`FRAG-020`、`Q-20261024-cc87ab` など）。
+「空でなければ corrected」という一行の規則は 228 行すべてを決着とみなし、**誰が直したかを書いていない 96 行に、
+書かれていない帰属を捏造する**。狭い規則では、書かれた `open` 56 行のうち実効で解決済みなのは 10 行である。
+
+`status` の列挙には `corrected` を加えた（`schema/errata.schema.json`）。導出値に名前が無いと、
+それを書き出した読み手が全員スキーマ違反になるためである。**行の `status` を書き換えることはない。**
+
 ## 3. 測る道具
 
 | 道具 | 何を出すか | ゲートか |

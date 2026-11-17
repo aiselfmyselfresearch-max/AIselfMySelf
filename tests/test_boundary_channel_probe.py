@@ -235,6 +235,38 @@ class BoundaryChannelProbeTests(unittest.TestCase):
         data = json.loads(p.stdout)
         self.assertIn("position", data["arms"])
 
+    def test_render_of_a_single_arm_does_not_index_the_others(self):
+        """ERR-20261117: --arm content used to die in render() on KeyError 'position'.
+
+        A filtered result carries one arm and no ``direct_penalty_branch``; the
+        renderer must print that arm and skip the rest rather than look them up.
+        """
+        only = {"target": TARGET, "question": QUESTION,
+                "arms": {"content": self.res["arms"]["content"]}}
+        text = probe.render(only)
+        self.assertIn(probe.ARM_HEADINGS["content"], text)
+        for name, heading in probe.ARM_HEADINGS.items():
+            if name != "content":
+                self.assertNotIn(heading, text)
+        self.assertNotIn("direct -0.60 branch", text)
+        self.assertIn("single-arm run", text)
+
+    def test_render_of_every_arm_still_prints_all_headings(self):
+        text = probe.render(self.res)
+        for heading in probe.ARM_HEADINGS.values():
+            self.assertIn(heading, text)
+        self.assertIn("direct -0.60 branch", text)
+        self.assertNotIn("single-arm run", text)
+
+    def test_cli_with_arm_and_without_json_exits_zero(self):
+        """The reproduce command recorded in ERR-20261114-9a6fb1 must run as written."""
+        p = subprocess.run([sys.executable, str(ROOT / "tools" / "boundary_channel_probe.py"),
+                            "--arm", "content"],
+                           capture_output=True, text=True, cwd=str(ROOT))
+        self.assertEqual(p.returncode, 0, p.stderr)
+        self.assertIn("ARM content", p.stdout)
+        self.assertNotIn("Traceback", p.stderr)
+
     def test_guard_fires_if_the_engine_line_changes(self):
         with self.assertRaises(RuntimeError):
             probe._with_rule("current", "# engine rewritten\n")
