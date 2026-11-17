@@ -5645,16 +5645,6 @@
 | `MAT-20261117-486222` | research_excerpt | IIT-Concerned, Stephen M. Fleming, Karen Yan, Martijn E. Wokke, Michal Wierzchon, Michał … |
 | `MAT-20261117-bce95b` | research_excerpt | Naotsugu Tsuchiya, Melanie Wilke, Stefan Frässle, Victor A. F. Lamme『Tsuchiya, Wilke, Frä… |
 | `MAT-20261117-980856` | research_excerpt | Stanislas Dehaene, Hakwan Lau, Sid Kouider『Dehaene, Lau & Kouider (2017)「意識とは何か、機械は持ちうるか」… |
-| `MAT-EVD-20261117-72928b` | research_excerpt | Helder F Araujo, Jonas Kaplan, Hanna Damasio, Antonio Damasio『Neural correlates of differ… |
-| `MAT-EVD-20261117-539e52` | research_excerpt | Eleanor A Maguire, Faraneh Vargha-Khadem, Demis Hassabis『Imagining fictitious and future … |
-| `MAT-EVD-20261117-ea5227` | research_excerpt | Donna Kwan, Carl F Craver, Leonard Green, Joel Myerson, Pascal Boyer, R Shayna Rosenbaum『… |
-| `MAT-EVD-20261117-91e205` | research_excerpt | Jennifer S Rabin, Nicole Carson, Asaf Gilboa, Donald T Stuss, R Shayna Rosenbaum『Imaginin… |
-| `MAT-EVD-20261117-97c37c` | research_excerpt | Roy Salomon, Roberta Ronchi, Jonathan Dönz, Olaf Blanke『The Insula Mediates Access to Awa… |
-| `MAT-EVD-20261117-134b56` | research_excerpt | Yusuke Haruki, Kenji Ogawa『Cardiac and Gastric Interoceptive Awareness Have Distinct Neur… |
-| `MAT-EVD-20261117-8f6f3d` | research_excerpt | Mariana Babo-Rebelo, Nicolai Wolpert, Claude Adam, Dominique Hasboun, Catherine Tallon-Ba… |
-| `MAT-EVD-20261117-5cf98e` | research_excerpt | Yair Pinto, Maria-Chiara Villa, Sabrina Siliquini, Edward H F de Haan『Visual integration … |
-| `MAT-EVD-20261117-666ddc` | research_excerpt | Bapun Giri, Utku Kaya, Kourosh Maboudi, Ted Abel, Kamran Diba『Sleep loss diminishes hippo… |
-| `MAT-EVD-20261117-0a967e` | research_excerpt | Emmett J Thompson, Lars B Rollik, Marcus Stephenson-Jones『Replay of procedural memory is … |
 | `MAT-20261117-cc8a01` | research_excerpt | Mike Hansell, Graeme D. Ruxton『Setting tool use within the context of animal construction… |
 | `MAT-20261117-cc8a02` | research_excerpt | Lauren M. Guillette, Susan D. Healy『Nest building, the forgotten behaviour (2015)——人間の道具だ… |
 | `MAT-20261117-cc8a03` | research_excerpt | Patrick T. Walsh, Mike Hansell, Wendy D. Borello, Susan D. Healy『Repeatability of nest mo… |
@@ -5736,6 +5726,16 @@
 | `MAT-20261117-1ef608` | research_excerpt | Istvan Molnar-Szakacs, Lucina Q. Uddin『Self-Processing and the Default Mode Network: Inte… |
 | `MAT-20261117-1ef609` | research_excerpt | Arvid Guterstam, Branden J. Bio, Andrew I. Wilterson, Michael Graziano『Temporo-parietal c… |
 | `MAT-20261117-1ef610` | research_excerpt | Hong Ji Kim, Byeol Kim Lux, Eunjin Lee, Emily S. Finn, Choong-Wan Woo『Brain decoding of s… |
+| `MAT-EVD-20261117-72928b` | research_excerpt | Helder F Araujo, Jonas Kaplan, Hanna Damasio, Antonio Damasio『Neural correlates of differ… |
+| `MAT-EVD-20261117-539e52` | research_excerpt | Eleanor A Maguire, Faraneh Vargha-Khadem, Demis Hassabis『Imagining fictitious and future … |
+| `MAT-EVD-20261117-ea5227` | research_excerpt | Donna Kwan, Carl F Craver, Leonard Green, Joel Myerson, Pascal Boyer, R Shayna Rosenbaum『… |
+| `MAT-EVD-20261117-91e205` | research_excerpt | Jennifer S Rabin, Nicole Carson, Asaf Gilboa, Donald T Stuss, R Shayna Rosenbaum『Imaginin… |
+| `MAT-EVD-20261117-97c37c` | research_excerpt | Roy Salomon, Roberta Ronchi, Jonathan Dönz, Olaf Blanke『The Insula Mediates Access to Awa… |
+| `MAT-EVD-20261117-134b56` | research_excerpt | Yusuke Haruki, Kenji Ogawa『Cardiac and Gastric Interoceptive Awareness Have Distinct Neur… |
+| `MAT-EVD-20261117-8f6f3d` | research_excerpt | Mariana Babo-Rebelo, Nicolai Wolpert, Claude Adam, Dominique Hasboun, Catherine Tallon-Ba… |
+| `MAT-EVD-20261117-5cf98e` | research_excerpt | Yair Pinto, Maria-Chiara Villa, Sabrina Siliquini, Edward H F de Haan『Visual integration … |
+| `MAT-EVD-20261117-666ddc` | research_excerpt | Bapun Giri, Utku Kaya, Kourosh Maboudi, Ted Abel, Kamran Diba『Sleep loss diminishes hippo… |
+| `MAT-EVD-20261117-0a967e` | research_excerpt | Emmett J Thompson, Lars B Rollik, Marcus Stephenson-Jones『Replay of procedural memory is … |
 | `MAT-20261117-0d32eb` | research_excerpt | Lynne U. Sneddon, Victoria A. Braithwaite, Michael J. Gentle『Sneddon, Braithwaite & Gentl… |
 | `MAT-20261117-28d297` | research_excerpt | James D. Rose, Robert Arlinghaus, Steven J. Cooke, Bruce K. Diggles, Wolfgang Sawynok, Ed… |
 | `MAT-20261117-349fdf` | research_excerpt | Brian Key『Key (2016)——魚は痛みを感じない』（2016） |
