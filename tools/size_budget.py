@@ -332,7 +332,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # clock/metabolism sources — title/DOI sweep confirms zero overlap with
         # this session's ten) both had to keep their own append-only files through
         # the merge. One-slot exception; hard 160 unchanged; not an automatic raise.
-        soft_shards=123,
+        # 2026-11-17 (merge of origin/main 5134301 into arena/e3568ceb, 123 -> 124):
+        # this branch writes no material rows; the extra file is upstream's
+        # acquisition shard from PR #854 ("ten comparative zoology sources on
+        # collective decision-making"). Measured on the merged union:
+        # state/materials.d = 124 files / 13,076,505 B of the 13 MiB soft (bytes
+        # not binding by 554,983 B). The merge cannot drop an append-only file,
+        # so the count needs the slot to stay --strict-clean. One-slot exception;
+        # hard 160 unchanged; not an automatic raise.
+        soft_shards=124,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -871,7 +879,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # branch is the one slot over. Two consecutive one-slot raises on
         # notes.d now sit in this table (e1b529, d6a96b); the dimension is
         # carried by measurement each time and is not an automatic raise.
-        soft_shards=137,
+        # 2026-11-17 (merge of origin/main 5134301, 137 -> 138): the merge brought
+        # one further upstream notes shard (PR #854's acquisition session) on top
+        # of this branch's own (2026-11-17-5d3dffb08b3e, NOTE-20261117-708d44).
+        # Measured on the merged union: state/notes.d = 138 files / 1,847,596 B
+        # of the 2 MiB soft (bytes not binding by 249,556 B). notes.d is
+        # order-sensitive and excluded from consolidation -> net reclaim 0.
+        # One-slot exception; hard 160 unchanged; not an automatic raise.
+        soft_shards=138,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "

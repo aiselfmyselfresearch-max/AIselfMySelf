@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：4833 件（research_excerpt 2593 ／ literary_text 2172 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：4843 件（research_excerpt 2603 ／ literary_text 2172 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：249 編（selected 96 ／ draft 153）
 - **解釈的関係（Relations）**：7026 件
-- **探究セッション（Sessions）**：911 回
+- **探究セッション（Sessions）**：912 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4833 | `literary_text` 2172／`research_excerpt` 2593／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4843 | `literary_text` 2172／`research_excerpt` 2603／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 249 | `selected` 96／`draft` 153／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7026 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 911 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14510 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 912 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14520 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 316 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 936 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 947 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 50 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 512 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 513 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -797,7 +797,7 @@
 | `FRAG-20261114-ecb83e` | 粘液の軌跡と、呼び出しのあいだの空白 | draft | essay | reflective_literary_voice |
 | `FRAG-20261116-7d62f1` | 一心の張られない隙を、何が越えるか | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（4833 件・詳細は map/3*.md）
+## 4. 対話素材（4843 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5634,6 +5634,16 @@
 | `MAT-20261116-f7604b` | research_excerpt | Jonathan Krause, Matthias Schulze, Christopher Schuster『アーチャーフィッシュの高速決定の再プログラミングと抽象的汎化（Kr… |
 | `MAT-20261116-fb99b7` | research_excerpt | Natia Gloveli, Marissa J. G. Miles, Megan L. Smith, Ziqian Yan, Jürgen Neuhäusser, John O… |
 | `MAT-20261116-4f8521` | research_excerpt | Vincent M. Janik, Lisa L. Sayigh, Stephen M. Wells『イルカの署名ホイストルの形状は声から独立に同一性を伝える（Janik et … |
+| `MAT-20261117-7a1c16` | research_excerpt | Larissa Conradt, Timothy J. Roper『Consensus decision making in animals (2005)——「合意」を単一の投票… |
+| `MAT-20261117-6f1cad` | research_excerpt | Iain D. Couzin, Jens Krause, Nigel R. Franks, Simon A. Levin『Effective leadership and dec… |
+| `MAT-20261117-fde79e` | research_excerpt | Michele Ballerini, Nicola Cabibbo, Raffaele Candelier, Andrea Cavagna, Eugenio Cisbani, I… |
+| `MAT-20261117-ee40be` | research_excerpt | Máté Nagy, Zsuzsa Ákos, Dora Biro, Tamás Vicsek『Hierarchical group dynamics in pigeon flo… |
+| `MAT-20261117-b3556d` | research_excerpt | James E. Herbert-Read, Andrea Perna, Richard P. Mann, Timothy M. Schaerf, David J. T. Sum… |
+| `MAT-20261117-75df8b` | research_excerpt | Ashley J. W. Ward, James E. Herbert-Read, David J. T. Sumpter, Jens Krause『Fast and accur… |
+| `MAT-20261117-88200d` | research_excerpt | Ariana Strandburg-Peshkin, Damien R. Farine, Iain D. Couzin, Margaret C. Crofoot『Shared d… |
+| `MAT-20261117-ab24ef` | research_excerpt | Takao Sasaki, Dora Biro『Cumulative culture can emerge from collective intelligence in ani… |
+| `MAT-20261117-2a2d92` | research_excerpt | Takao Sasaki, Richard P. Mann, Katherine N. Warren, Tristian Herbert, Tara Wilson, Dora B… |
+| `MAT-20261117-0a2e0e` | research_excerpt | Takao Sasaki, Stephen C. Pratt『The Psychology of Superorganisms: Collective Decision Maki… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261117-d6a96b・全文は map/50-sessions-*.md）
 
@@ -6549,6 +6559,7 @@
 | `SESSION-20261116-784dc6` | 2026-11-16T10:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261116-be129c` | 2026-11-16T13:40:00Z | `Q-20261203-aa57dd`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261116-4d8b7c` | 2026-11-16T12:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261117-84aa15` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-d6a96b` | 2026-11-17T02:00:00Z | `Q-002`, `Q-001`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7026 件・全表は map/40-relations-*.md）
@@ -6639,7 +6650,8 @@
 | `map/31-materials-research-23.md` | 100 | 230,571 |
 | `map/31-materials-research-24.md` | 100 | 258,649 |
 | `map/31-materials-research-25.md` | 100 | 260,339 |
-| `map/31-materials-research-26.md` | 93 | 217,911 |
+| `map/31-materials-research-26.md` | 100 | 235,203 |
+| `map/31-materials-research-27.md` | 3 | 7,768 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6674,7 +6686,7 @@
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
-| `map/50-sessions-19.md` | 11 | 7,951 |
+| `map/50-sessions-19.md` | 12 | 8,814 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6703,24 +6715,24 @@
 | `map/60-notes-26.md` | 25 | 133,081 |
 | `map/60-notes-27.md` | 25 | 93,945 |
 | `map/60-notes-28.md` | 25 | 90,319 |
-| `map/60-notes-29.md` | 25 | 114,541 |
-| `map/60-notes-30.md` | 25 | 66,191 |
-| `map/60-notes-31.md` | 25 | 73,256 |
-| `map/60-notes-32.md` | 25 | 76,168 |
-| `map/60-notes-33.md` | 25 | 98,803 |
-| `map/60-notes-34.md` | 25 | 94,882 |
-| `map/60-notes-35.md` | 25 | 141,537 |
-| `map/60-notes-36.md` | 6 | 34,593 |
+| `map/60-notes-29.md` | 25 | 99,551 |
+| `map/60-notes-30.md` | 25 | 63,895 |
+| `map/60-notes-31.md` | 25 | 78,661 |
+| `map/60-notes-32.md` | 25 | 68,753 |
+| `map/60-notes-33.md` | 25 | 83,000 |
+| `map/60-notes-34.md` | 25 | 107,841 |
+| `map/60-notes-35.md` | 25 | 127,538 |
+| `map/60-notes-36.md` | 17 | 86,656 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・881本・32,809,275 B）
+## 8. 精読ノート索引（readings/・892本・32,847,048 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 831/881 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 842/892 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：881 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：149 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：892 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：150 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7439,6 +7451,17 @@
 | `readings/2026-11-16-where-one-individual-ends.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-784dc6` +1 | 19,446 | Q4 M10 S2 | ✓ | 一匹はどこで終わるか——比較動物学10資料を読み、自己の単位を数える装置について考えた |
 | `readings/2026-11-16-who-is-this-animal-and-how-many.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-8d6e0f` +2 | 30,617 | Q2 M14 S3 ERR1 | ✓ | 誰で、何匹か——比較動物学の十冊が、自己の単位を装置の側に置いた |
 | `readings/2026-11-16-who-keeps-erases-and-classifies-the-who.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-ed5cfd` +2 | 26,031 | Q3 M10 S3 ERR1 | ✓ | 誰が残し、誰が消し、誰が分類するか——比較動物学10件の全文精読とQ-003への再読・衝突 |
+| `readings/2026-11-17-comparative-zoology-01-consensus-conradt-roper.md` | 2026-11-17 | 2026-11-17 | — | 794 | M1 | ✓ | 比較動物学資料 01：動物における合意形成の分類 |
+| `readings/2026-11-17-comparative-zoology-02-leadership-couzin-et-al.md` | 2026-11-17 | 2026-11-17 | — | 857 | M1 | ✓ | 比較動物学資料 02：移動中の動物集団におけるリーダーシップと意思決定 |
+| `readings/2026-11-17-comparative-zoology-03-starling-topological-neighbors-ballerini.md` | 2026-11-17 | 2026-11-17 | — | 1,140 | M1 | ✓ | 比較動物学資料 03：ムクドリ群れの相互作用は距離ではなく近傍順位に依存する |
+| `readings/2026-11-17-comparative-zoology-04-pigeon-hierarchy-nagy.md` | 2026-11-17 | 2026-11-17 | — | 799 | M1 | ✓ | 比較動物学資料 04：ハト群飛における階層的なリーダー・フォロワー関係 |
+| `readings/2026-11-17-comparative-zoology-05-mosquitofish-rules-herbert-read.md` | 2026-11-17 | 2026-11-17 | — | 934 | M1 | ✓ | 比較動物学資料 05：カダヤシの群れ行動を生む相互作用規則の推定 |
+| `readings/2026-11-17-comparative-zoology-06-fish-vigilance-ward.md` | 2026-11-17 | 2026-11-17 | — | 953 | M1 | ✓ | 比較動物学資料 06：魚群における集団警戒が意思決定を速く正確にする |
+| `readings/2026-11-17-comparative-zoology-07-baboon-shared-decisions-strandburg-peshkin.md` | 2026-11-17 | 2026-11-17 | — | 932 | M1 | ✓ | 比較動物学資料 07：野生ヒヒの集団移動を駆動する共有意思決定 |
+| `readings/2026-11-17-comparative-zoology-08-pigeon-collective-culture-sasaki-biro.md` | 2026-11-17 | 2026-11-17 | — | 885 | M1 | ✓ | 比較動物学資料 08：動物群の集合知から累積文化が生じうる |
+| `readings/2026-11-17-comparative-zoology-09-pigeon-personality-leadership-sasaki.md` | 2026-11-17 | 2026-11-17 | — | 1,206 | M1 | ✓ | 比較動物学資料 09：個体差と集合：大胆な帰巣バトが群れのリーダー階層で上位を占める |
+| `readings/2026-11-17-comparative-zoology-10-insect-superorganism-sasaki-pratt.md` | 2026-11-17 | 2026-11-17 | — | 1,015 | M1 | ✓ | 比較動物学資料 10：超個体の心理学：昆虫社会の集団意思決定 |
+| `readings/2026-11-17-comparative-zoology-collective-decisions-close-reading.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-84aa15` | 9,496 | Q1 M10 S1 | — | 比較動物学・集団意思決定10資料の精読——「私たち」は誰の記憶で動くか |
 | `readings/2026-11-17-eight-grades-and-the-door.md` | 2026-10-26 | 2026-11-17 | `SESSION-20261117-292bc3` | 7,026 | Q2 F6 M5 MOT6 S1 | ✓ | 八つの段に収まらない者——獣×嘘の交配と、問われない位置の点検（SESSION-20261117-292bc3） |
 | `readings/2026-11-17-supporting-the-child-penalises-the-parent.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-d6a96b` +1 | 12,100 | Q4 S2 ERR2 | — | 子を支持すると、親が減点される——874658 と 977052 の非対称テスト |
 | `readings/2026-11-18-four-anchors-one-pause-four-bridges.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-1be029` | 5,712 | Q8 F8 MOT6 R5 S1 ED5 | ✓ | 四つの礎石、一つの休止、四本の橋——四モードと詳細窓を追いつかせる編集レビュー（SESSION-20261118-1b… |
