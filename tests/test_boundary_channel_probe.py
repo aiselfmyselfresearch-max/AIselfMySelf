@@ -198,9 +198,18 @@ class BoundaryChannelProbeTests(unittest.TestCase):
                 else:
                     self.assertEqual(val["d_log_odds"], 0.0)
 
-    def test_direct_branch_is_latent_on_the_live_ledger(self):
+    # 2026-11-17: the direct -0.60 branch is no longer latent. One correction
+    # (ERR-20261117-77cd20 -> HYP-20261116-ac0712) is addressed to a hypothesis
+    # on purpose, so that the first firing is observed rather than inferred
+    # (readings/2026-11-17-the-comparison-column-does-not-compare.md §7, §10-6).
+    # Pinning the count keeps the property measured: a second direct address
+    # still fails here.
+    LIVE_DIRECT_PENALTY_HYPOTHESES = 1
+
+    def test_direct_branch_reach_is_pinned_on_the_live_ledger(self):
         d = self.res["direct_penalty_branch"]
-        self.assertEqual(d["live_hypotheses_with_a_direct_errata_row"], 0)
+        self.assertEqual(d["live_hypotheses_with_a_direct_errata_row"],
+                         self.LIVE_DIRECT_PENALTY_HYPOTHESES)
         self.assertGreater(d["live_errata_rows"], 0)
 
     def test_probe_writes_nothing(self):

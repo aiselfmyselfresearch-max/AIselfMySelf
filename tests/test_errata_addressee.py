@@ -144,12 +144,21 @@ class ErrataWeightTests(unittest.TestCase):
         self.assertNotIn("HYP-OTHER", idx)
         self.assertNotIn("HYP-OTHER2", idx)
 
-    def test_live_penalty_branch_is_still_latent(self):
-        # Mechanism guard, not a metric: if a future row addresses a hypothesis
-        # directly, this fails and the live map must be re-measured deliberately.
+    # 2026-11-17: the branch fired for the first time. ERR-20261117-77cd20 is
+    # addressed to a hypothesis (HYP-20261116-ac0712) on purpose: §7 of
+    # readings/2026-11-17-the-comparison-column-does-not-compare.md measured
+    # that the direct -0.60 branch had never received an address, and filed one
+    # so that the first live firing could be observed rather than assumed.
+    # The guard is kept and narrowed: the *set* is pinned, so any further
+    # hypothesis-addressed correction still fails this test and still forces a
+    # deliberate re-measurement of the live map.
+    LIVE_DIRECT_ERRATA_ADDRESSEES = frozenset({"HYP-20261116-ac0712"})
+
+    def test_live_penalty_branch_addresses_only_the_declared_hypotheses(self):
         idx = bs.build_errata_index(self.cols["errata"])
-        direct = [h for h in self.cols["hypotheses"] if idx.get(h)]
-        self.assertEqual(direct, [], "a live hypothesis now carries a direct errata row")
+        direct = sorted(h for h in self.cols["hypotheses"] if idx.get(h))
+        self.assertEqual(direct, sorted(self.LIVE_DIRECT_ERRATA_ADDRESSEES),
+                         "a hypothesis beyond the declared set now carries a direct errata row")
 
     def test_tests_do_not_write_to_the_ledger(self):
         before = {p: p.read_bytes() for p in (ROOT / "state").glob("errata.d/*.jsonl")}
