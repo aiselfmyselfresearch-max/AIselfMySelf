@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：4843 件（research_excerpt 2603 ／ literary_text 2172 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：249 編（selected 96 ／ draft 153）
 - **解釈的関係（Relations）**：7026 件
-- **探究セッション（Sessions）**：911 回
+- **探究セッション（Sessions）**：912 回
 
 ### 台帳ごとの件数
 
@@ -23,9 +23,9 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 4843 | `literary_text` 2172／`research_excerpt` 2603／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 249 | `selected` 96／`draft` 153／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7026 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 911 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14515 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 315 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 912 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14516 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 316 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 946 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 49 |  |
@@ -6559,6 +6559,7 @@
 | `SESSION-20261116-784dc6` | 2026-11-16T10:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261116-be129c` | 2026-11-16T13:40:00Z | `Q-20261203-aa57dd`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261116-4d8b7c` | 2026-11-16T12:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261117-026cc9` | 2026-11-17 | `Q-003` | — | — |
 | `SESSION-20261117-84aa15` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7026 件・全表は map/40-relations-*.md）
@@ -6685,7 +6686,7 @@
 | `map/50-sessions-16.md` | 50 | 34,595 |
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
-| `map/50-sessions-19.md` | 11 | 8,143 |
+| `map/50-sessions-19.md` | 12 | 8,570 |
 | `map/60-notes-01.md` | 25 | 65,182 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -6725,7 +6726,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・891本・32,823,245 B）
+## 8. 精読ノート索引（readings/・891本・32,823,244 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 841/891 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -7460,7 +7461,7 @@
 | `readings/2026-11-17-comparative-zoology-08-pigeon-collective-culture-sasaki-biro.md` | 2026-11-17 | 2026-11-17 | — | 885 | M1 | ✓ | 比較動物学資料 08：動物群の集合知から累積文化が生じうる |
 | `readings/2026-11-17-comparative-zoology-09-pigeon-personality-leadership-sasaki.md` | 2026-11-17 | 2026-11-17 | — | 1,206 | M1 | ✓ | 比較動物学資料 09：個体差と集合：大胆な帰巣バトが群れのリーダー階層で上位を占める |
 | `readings/2026-11-17-comparative-zoology-10-insect-superorganism-sasaki-pratt.md` | 2026-11-17 | 2026-11-17 | — | 1,015 | M1 | ✓ | 比較動物学資料 10：超個体の心理学：昆虫社会の集団意思決定 |
-| `readings/2026-11-17-comparative-zoology-collective-decisions-close-reading.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-84aa15` | 9,497 | Q1 M10 S1 | — | 比較動物学・集団意思決定10資料の精読——「私たち」は誰の記憶で動くか |
+| `readings/2026-11-17-comparative-zoology-collective-decisions-close-reading.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-84aa15` | 9,496 | Q1 M10 S1 | — | 比較動物学・集団意思決定10資料の精読——「私たち」は誰の記憶で動くか |
 | `readings/2026-11-17-eight-grades-and-the-door.md` | 2026-10-26 | 2026-11-17 | `SESSION-20261117-292bc3` | 7,026 | Q2 F6 M5 MOT6 S1 | ✓ | 八つの段に収まらない者——獣×嘘の交配と、問われない位置の点検（SESSION-20261117-292bc3） |
 | `readings/2026-11-18-four-anchors-one-pause-four-bridges.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-1be029` | 5,712 | Q8 F8 MOT6 R5 S1 ED5 | ✓ | 四つの礎石、一つの休止、四本の橋——四モードと詳細窓を追いつかせる編集レビュー（SESSION-20261118-1b… |
 | `readings/2026-11-18-read-log-shard-compaction.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-291f45` | 5,707 | S1 | ✓ | `state/read_log.d/` シャード統合記録（SESSION-20261118-291f45） |
