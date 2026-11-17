@@ -156,10 +156,16 @@ class DuplicateClaimWeightTests(unittest.TestCase):
         self.assertEqual(len(groups), 1)
         self.assertEqual(rows, before, "grouping must not mutate its input")
 
-    def test_live_penalty_branch_is_still_latent(self):
+    # 2026-11-17: see tests/test_errata_addressee.py for why the branch is no
+    # longer empty. ERR-20261117-77cd20 was filed deliberately; the set below
+    # pins it so that any *further* direct address still breaks this guard.
+    LIVE_DIRECT_ERRATA_ADDRESSEES = frozenset({"HYP-20261116-ac0712"})
+
+    def test_live_penalty_branch_addresses_only_the_declared_hypotheses(self):
         idx = bs.build_errata_index(self.cols["errata"])
-        direct = [h for h in self.cols["hypotheses"] if idx.get(h)]
-        self.assertEqual(direct, [], "a live hypothesis now carries a direct errata row")
+        direct = sorted(h for h in self.cols["hypotheses"] if idx.get(h))
+        self.assertEqual(direct, sorted(self.LIVE_DIRECT_ERRATA_ADDRESSEES),
+                         "a hypothesis beyond the declared set now carries a direct errata row")
 
     def test_tests_do_not_write_to_the_ledger(self):
         before = {p: p.read_bytes() for p in (ROOT / "state").glob("errata.d/*.jsonl")}

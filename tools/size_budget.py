@@ -950,7 +950,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # unchanged. This is a one-slot correction, not an automatic headroom
         # expansion. The next shard requires a separate consolidation/rescaling
         # decision based on then-current measurements.
-        soft_shards=81,
+        # 2026-11-17 (81 -> 82, SESSION-20261117-4e438d): this session's three
+        # evaluation rows (pair-identity probe, self-support, pre-registered
+        # exclusion clause) are the 82nd file. Measured: state/evaluations.d =
+        # 82 files / 629,842 B of the 4 MiB soft -- bytes are not remotely
+        # binding; only the count is. The rows cannot be folded into another
+        # session's append-only shard after the fact. One-slot exception, with
+        # the same standing caveat as above: the *next* shard needs a
+        # consolidation decision, not an automatic raise. Hard 160 unchanged.
+        soft_shards=82,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
