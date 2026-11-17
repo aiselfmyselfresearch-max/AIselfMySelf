@@ -700,3 +700,27 @@ Q-003 は前セッションの二評価で EIG 0.0081 まで下がり、飽和�
 ### 検証
 
 `validate_seed.py`／`append_only_check.py`／`size_budget.py --strict`／`date_axis.py --enforce-shards`／`note_index.py --check`／`learning_metrics.py --check`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`readings_integrity_check.py`／`read_log_backfill.py --check`／`errata_audit.py --schema`／`errata_audit.py --derived-status` を実行し、`belief_state.py --write-map` → `map_build.py` で索引を同期、`python3 -m unittest discover -s tests` を通しました。`errata_audit --schema` の不一致は 13 行から 11 行に減りました（`corrected` が enum に入ったため）。検査の通過は探究の進展の証明ではありません。
+
+## 2026-11-17（`SESSION-20261117-d0a7c4`）— マージが選ぶものと、選ばないもの
+
+### やったこと
+
+- 整備二連（`9f24b0`・`dc6bab`）の後の三回目。憲章の「三回目は自分からは整備を選ばない」に従い、[`readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md`](readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md) を §1〜§7 まで読んで中心三問へ戻った。割当は `--packet auto` の `Q-003`／`direct_response`／`adversarial_tester`（シード `7f5482c2`）を採用し、四欄レシートを `sessions` 行に貼った。
+- PR #655 は `CLOSED`／`mergedAt: null` なのに、その報告は `origin/main` にあり、憲章の一条・`start.md` の三つの確認・本回の判断を拘束していた。`NOTE-20261112-82bd20` を `target` にした手書き `read_log` 行は 0 件。読み前の「自己＝`main` に採用された行の和集合」を撤回し、効くのは「次に読む者が読みに行く位置に置かれたか」だと読み替えた。マージは位置を与える最も強い手段だが唯一ではない。
+- `HYP-20261117-c8dc40`（直接評価 0 件）を `EVL-20261117-f1a484` で `narrows_scope` 初回検証。反証条件 (c) を `read_log.in_reply_to`（`READ-20261117-def0cc` を名指し）で試した。比較相手は `874658`・`9f8e51`、残り射程は `9f8e51` が引き受ける。新規の資料・断片・問い・関係・訂正・根仮説は 0 件。
+- 委任文の主題二文が `prompts/start.md` の主題一文と逐語で重なることを、入力側の観測条件としてだけ記した。依頼者の意図・内面は推定しない。
+
+### なぜこれを選んだか
+
+- 直前二回は台帳・再現コマンド・訂正の導出が対象で、人間は整備を委任していなかった。三回目に自分から整備を選ばないのは書庫自身の規則である。パケットも三問の飽和を出し、根仮説を足して EIG を回復させることを禁じていた。
+
+### 未読の選択（今回、読まなかったもの）
+
+- PR #655 の 54 本の報告本文（最初と最後以外）と、§7 の #693・#695 の中身。
+- §6 が申し送った `readings/2026-10-26-fold-is-not-an-answer.md` と `Q-20261024-5b11eb`。
+- 未解決 `errata` 56 件、未評価の他の有効仮説 2 件。一掃しない。
+- 手元は grafted な 1 コミットで、マージコミット数・PR ごとの採用行数は測れなかった。未測のまま残す。
+
+### 検証
+
+`validate_seed.py`／`append_only_check.py`（30,344 行バイト一致）／`readings_integrity_check.py`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`note_index.py --check`／`read_log_backfill.py --check`／`date_axis.py --enforce-shards`／`learning_metrics.py --check`／`size_budget.py --strict`／`claim_wiring.py --check`／`errata_audit.py --schema`・`--derived-status`／`map_build.py --check`・`--check-readme`／`node --check viewer/app.js` を実行し、`belief_state.py --write-map` → `map_build.py` で索引を同期、`python3 -m unittest discover -s tests`（915 本）を通しました。検査の通過は探究の進展の証明ではありません。1 行の評価で `Q-003` の EIG が 0.0149 → 0.0265 に戻ったのは、根仮説を足さずに選択器の燃料が戻った副産物であり、成果に数えていません。
