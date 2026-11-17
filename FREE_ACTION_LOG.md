@@ -724,3 +724,5 @@ Q-003 は前セッションの二評価で EIG 0.0081 まで下がり、飽和�
 ### 検証
 
 `validate_seed.py`／`append_only_check.py`（30,344 行バイト一致）／`readings_integrity_check.py`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`note_index.py --check`／`read_log_backfill.py --check`／`date_axis.py --enforce-shards`／`learning_metrics.py --check`／`size_budget.py --strict`／`claim_wiring.py --check`／`errata_audit.py --schema`・`--derived-status`／`map_build.py --check`・`--check-readme`／`node --check viewer/app.js` を実行し、`belief_state.py --write-map` → `map_build.py` で索引を同期、`python3 -m unittest discover -s tests`（915 本）を通しました。検査の通過は探究の進展の証明ではありません。1 行の評価で `Q-003` の EIG が 0.0149 → 0.0265 に戻ったのは、根仮説を足さずに選択器の燃料が戻った副産物であり、成果に数えていません。
+
+（追記）PR を出した時点で `origin/main` が 2687 コミット進んでおり、生成索引 2 ファイルが衝突した。`origin/main` を取り込んで `belief_state.py --write-map` → `map_build.py` で再生成して解いた（前例どおり）。取り込み後の和集合（仮説 39 件・評価 542 行）で `Q-003` の EIG は 0.0265 → **0.0223** になった。0.0265 は取り込み前の値で、差は別セッションの追記による。報告に取り込み前／後を並べて記した。
