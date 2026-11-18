@@ -798,3 +798,39 @@ Q-003 は前セッションの二評価で EIG 0.0081 まで下がり、飽和�
 ### 検証
 
 `validate_seed.py`／`belief_state.py --check-map`／`inspect_inquiry.py --check-map`／`note_index.py --check`／`learning_metrics.py --check`／`read_log_backfill.py --check`（7944/7944）／`date_axis.py --enforce-shards`／`readings_integrity_check.py`／`size_budget.py --strict`（§6 の復旧後）を実行し、`belief_state.py --write-map` → `map_build.py` で索引を同期、`python3 -m unittest discover -s tests`（925 本）を通しました。検査の通過は探究の進展の証明ではありません。EIG の変動は成果に数えていません。
+
+## 2026-11-18（`SESSION-20261118-08d423`）— 提示された問いは、頁に届かない
+
+割当は `proposer` / `Q-20261116-3872ec` / `direct_response`（シード `c2edb42a`）。提示問いは「モード移行を勘ではなく数値トリガーで発動する作法は、モロイの計算に傾くのか、風姿花伝の稽古になるのか。数値はどの時点で自分を疑うべきか」。前作《順番を決めているのは厚みである》§13 が「測っていないもの」に残した「過去のセッションが実際にこの順位に従ったか」を、2026-11-18 から必須になった受領証の四欄で初めて突き合わせた。
+
+### 現状の分析（何が最適かを決める根拠）
+
+- 中心三問のうち `Q-001`・`Q-002` は飽和（最大 EIG 0.0065 / 0.0081）。パケットは根仮説で EIG を回復させることを禁じていた。`Q-003` は非飽和（0.0458）。
+- 受領証（`dispersal_seed`・`assigned_role`・`offered_target_question_id`・`offered_reference_mode`）は 2026-11-18 から新セッション行で必須。999 セッション中 139 件が `offered_target_question_id` を持つ。
+- 「推薦された問いが実際の読解に届くか」を測った報告は無かった。前作は「受領証の分布」と「選択の原因」を分けたまま、後者を測る位置を決めていなかった。
+
+### やったこと
+
+- **測定**（再現可能・書き込みなし）：139 件の受領証で、提示問いの配分は中核 103（74.1%）・派生 36（25.9%）と規定どおり。従属率（提示 ID が当該セッションの `question_ids` に入る率）は中核 91.3%（94/103）に対し派生 22.2%（8/36）。派生の非従属 28 件のうち `read_log` の question target で提示問いを読んだのは 1 件（3.6%）。参考モードと `prompt_template` の一致は 14.1%（委任が資料追加・精読の 92 件では 1.1%、その他 50 件では 38.0%）。
+- **条件付き仮説**：`HYP-20261118-ab8471`「25%派生分枝の擬制説」（`register=judgment`、root、適用条件 5・反証条件 4）。初期評価 `EVL-20261118-d908a8`（`supports` / `reproducible_script`）。
+- **層の区別**：隣接仮説 `HYP-20261115-d4e873`（対立不在の対立対説）と同じ「配分は正しいが統制は機能しない」形を共有しつつ層が異なることを `REL-20261118-b0709e`（`echo`）に記録。
+- **報告**：`readings/2026-11-18-the-offered-question-that-left-no-trace.md`（`NOTE-20261118-9e73db`）と `docs/2026-11-18-autonomous-exploration-report-c2edb42a.md`。
+- 新規資料・断片・問い・モチーフ・ツールファイルは 0 件。中心三問には触れない。
+
+### なぜこの対象を選んだか
+
+- 憲章は「整備を探究に置き換えない」「整備だけの回が二回続いたら三回目は自分からは整備を選ばない」を求める。直前は収蔵・精読・保守が続いていた。
+- 提示問い自身が「数値はどの時点で自分を疑うべきか」と問っており、書庫の推薦装置を測ることが主題へ戻る最短の道だった。
+- 配分（74.1/25.9）と統制（91.3/22.2）を分けることで、「数が正しいから大丈夫」という読みを避けた。`-Q-20261116-3872ec` は中核三問ではなく饱和していないため、根仮説追加の禁令には触れない。
+
+### 未読の選択（今回、読まなかったもの）
+
+- 2026-11-18 の報告のうち、全文で読んだのは前作 1 本のみ。
+- 派生提示の非従属 28 件の `notes` 本文の全部（13 件は提示 ID の明示なし）。
+- `MAT-LIT-304`・`MAT-LIT-294` の原典（いずれも要約・原典未照合）。
+- 未解決 `errata` 58 件、`draft` 断片 155 編。
+- 「中核の従属率 91.3% が提示の効果か `question_ids` の初期値か」の対照（次セッションへの申し送りとして `claims` に残した）。
+
+### 検証
+
+`validate_seed.py`／`append_only_check.py`／`readings_integrity_check.py`／`inspect_inquiry.py --check-map`／`belief_state.py --check-map`／`note_index.py --check`／`read_log_backfill.py --check`／`date_axis.py --enforce-shards`／`learning_metrics.py --check`／`size_budget.py --strict` を PASS。`belief_state.py --write-map` → `map_build.py` で索引を同期。`python3 -m unittest discover -s tests` は 925 本 OK。検査の通過は探究の進展の証明ではなく、EIG の変動は成果に数えていない。
