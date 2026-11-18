@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5154 件（research_excerpt 2907 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5164 件（research_excerpt 2917 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：251 編（selected 96 ／ draft 155）
 - **解釈的関係（Relations）**：7035 件
-- **探究セッション（Sessions）**：986 回
+- **探究セッション（Sessions）**：988 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5154 | `literary_text` 2179／`research_excerpt` 2907／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5164 | `literary_text` 2179／`research_excerpt` 2917／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 251 | `selected` 96／`draft` 155／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7035 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 986 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15243 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 988 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15262 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 366 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1063 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1064 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 62 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 646 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 647 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -799,7 +799,7 @@
 | `FRAG-20261117-55b108` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5154 件・詳細は map/3*.md）
+## 4. 対話素材（5164 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5915,6 +5915,16 @@
 | `MAT-20261118-20d279` | research_excerpt | Alexandra Ernst, David Stawarczyk, Arnaud D’Argembeau『過去についての性格の言葉と、未来についての目標の言葉（Ernst ほか… |
 | `MAT-20261118-8703b3` | research_excerpt | Matthew D. Grilli, Mieke Verfaellie『性格や役割の根拠として挙がる事実と、一回の出来事（Grilli & Verfaellie）』（2015） |
 | `MAT-20261118-c7c241` | research_excerpt | Aubrey A. Wank, Anna Robertson, Sean C. Thayer, Mieke Verfaellie, Steven Z. Rapcsak, Matt… |
+| `MAT-20261118-268161` | research_excerpt | Antonio Elia Forte, Octave Etard, Tobias Reichenbach『同じ話者の朗読で、注意条件の振幅比を取る』（2017） |
+| `MAT-20261118-c637a3` | research_excerpt | Thomas J. Stoll, Nathan D. Vandjelovic, Melissa J. Polonenko, Nadja R. S. Li, Adrian K. C… |
+| `MAT-20261118-326c15` | research_excerpt | Christian Brodbeck, Alex Jiao, L. Elliot Hong, Jonathan Z. Simon『聞き流した話者の音の立ち上がりにも遅れた応答があ… |
+| `MAT-20261118-c8ea09` | research_excerpt | Paz Har-shai Yahav, Elana Zion Golumbic『課題に無関係な耳で、音節周期と句周期を分ける』（2021） |
+| `MAT-20261118-e30020` | research_excerpt | Bruno L Giordano, Robin A A Ince, Joachim Gross, Philippe G Schyns, Stefano Panzeri, Chri… |
+| `MAT-20261118-5309d7` | research_excerpt | Ediz Sohoglu, Matthew H Davis『先に見た文字で、音響的な細部の効き方が逆を向く』（2020） |
+| `MAT-20261118-016c0a` | research_excerpt | Connie Cheung, Liberty S Hamilton, Keith Johnson, Edward F Chang『同じ運動皮質で、聞く音節と発する音節のまとまりが… |
+| `MAT-20261118-497a64` | research_excerpt | Thomas J Whitford, Bradley N Jack, Daniel Pearson, Oren Griffiths, David Luque, Anthony W… |
+| `MAT-20261118-d866ae` | research_excerpt | Edward F Chang, Caroline A Niziolek, Robert T Knight, Srikantan S Nagarajan, John F Houde… |
+| `MAT-20261118-711092` | research_excerpt | Muge Ozker, Leyao Yu, Patricia Dugan, Werner Doyle, Daniel Friedman, Orrin Devinsky, Adee… |
 | `MAT-20261118-cfa80c` | research_excerpt | Aya Ben-Yakov, Richard N. Henson『Ben-Yakov & Henson（2018）：観察者が数えた出来事境界』（2018） |
 | `MAT-20261118-a127cb` | research_excerpt | Jie Zheng, Andrea G. P. Schjetnan, Mar Yebra, Bernard A. Gomes, Clayton P. Mosher, Suneil… |
 | `MAT-20261118-0b4be2` | research_excerpt | Brendan I. Cohn-Sheehy, Angelique I. Delarazan, Zachariah M. Reagh, Jordan E. Crivelli-De… |
@@ -5958,7 +5968,7 @@
 | `MAT-20261118-0a34eb` | research_excerpt | Matthias Stangl, Uros Topalovic, Cory S. Inman, Sonja Hiller, Diane Villaroman, Zahra M. … |
 | `MAT-20261118-11c75a` | research_excerpt | Dorit Kliemann, Ralph Adolphs, J. Michael Tyszka, Bruce Fischl, B. T. Thomas Yeo, Remya N… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261118-c3c7af・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261118-a03369・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -6948,6 +6958,8 @@
 | `SESSION-20261118-816968` | 2026-11-18 | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261118-030239` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-c3c7af` | 2026-11-18T09:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261118-0d63dd` | 2026-11-18T09:50:03Z | `Q-001`, `Q-002` | — | — |
+| `SESSION-20261118-a03369` | 2026-11-18T09:53:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7035 件・全表は map/40-relations-*.md）
 
@@ -7040,8 +7052,8 @@
 | `map/31-materials-research-26.md` | 100 | 236,163 |
 | `map/31-materials-research-27.md` | 100 | 221,141 |
 | `map/31-materials-research-28.md` | 100 | 209,251 |
-| `map/31-materials-research-29.md` | 100 | 248,634 |
-| `map/31-materials-research-30.md` | 7 | 29,643 |
+| `map/31-materials-research-29.md` | 100 | 241,545 |
+| `map/31-materials-research-30.md` | 17 | 54,624 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7077,11 +7089,11 @@
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
-| `map/50-sessions-20.md` | 36 | 29,277 |
+| `map/50-sessions-20.md` | 38 | 31,003 |
 | `map/60-notes-01.md` | 25 | 65,235 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
-| `map/60-notes-04.md` | 25 | 99,111 |
+| `map/60-notes-04.md` | 25 | 99,170 |
 | `map/60-notes-05.md` | 25 | 86,138 |
 | `map/60-notes-06.md` | 25 | 54,055 |
 | `map/60-notes-07.md` | 25 | 69,226 |
@@ -7110,24 +7122,24 @@
 | `map/60-notes-30.md` | 25 | 38,599 |
 | `map/60-notes-31.md` | 25 | 77,380 |
 | `map/60-notes-32.md` | 25 | 122,141 |
-| `map/60-notes-33.md` | 25 | 125,608 |
-| `map/60-notes-34.md` | 25 | 62,787 |
-| `map/60-notes-35.md` | 25 | 80,144 |
-| `map/60-notes-36.md` | 25 | 70,083 |
-| `map/60-notes-37.md` | 25 | 96,669 |
-| `map/60-notes-38.md` | 25 | 92,616 |
-| `map/60-notes-39.md` | 25 | 130,643 |
-| `map/60-notes-40.md` | 12 | 70,722 |
+| `map/60-notes-33.md` | 25 | 127,270 |
+| `map/60-notes-34.md` | 25 | 62,758 |
+| `map/60-notes-35.md` | 25 | 79,768 |
+| `map/60-notes-36.md` | 25 | 70,348 |
+| `map/60-notes-37.md` | 25 | 96,341 |
+| `map/60-notes-38.md` | 25 | 93,718 |
+| `map/60-notes-39.md` | 25 | 129,227 |
+| `map/60-notes-40.md` | 13 | 74,454 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・987本・35,014,811 B）
+## 8. 精読ノート索引（readings/・988本・35,040,717 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 924/987 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 925/988 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：987 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：178 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：988 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：179 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7955,6 +7967,7 @@
 | `readings/2026-11-18-when-it-became-possible-to-tell.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-2d24ad` | 14,873 | Q5 M4 R1 S1 ERR1 ED1 | ✓ | 「話さない理由」がなくなったあと――ダグラスの三つの自伝と、返事を宛てられない過去 |
 | `readings/2026-11-18-who-spoke-and-who-wrote.md` | — | 2026-11-18 | `SESSION-20261118-c717f2` +2 | 8,510 | Q2 M1 S3 ERR5 | ✓ | 「言」と「書」のあいだ――四人の著者が一人になった書庫を読み直す |
 | `readings/2026-11-18-whose-memory-after-correction.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-63b4a7` +1 | 14,713 | Q4 M10 S2 | ✓ | 「私が見た」を、何が支えるか――出典・確信・訂正をめぐる神経科学10篇 |
+| `readings/2026-11-18-whose-voice-and-which-comparison.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-0d63dd` +1 | 11,342 | Q3 M11 R1 S2 | — | 同じ声を、何と聞き比べたか――聴覚と発話の神経科学10件から |
 | `readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md` | 2026-10-26 | 2026-11-19 | `SESSION-20261119-38e624` | 8,673 | Q5 F8 M4 MOT2 S1 | ✓ | 二通の七十二点と、一度目へ戻る音——復号できる秘密と、内訳へ戻れない合計（SESSION-20261119-38e62… |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
