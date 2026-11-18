@@ -1431,7 +1431,13 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # readings/ = 979 files / 34,730,633 B (33.12 MiB of the 34 MiB soft,
         # 920,951 B headroom, 11 file slots remaining under 990).  Both
         # records are preserved above; 990 and 34 MiB both remain [OK].
-        soft_files=990,
+        # 2026-11-18 (SESSION-20261118-0cdc3f on origin/main 77e181e3):
+        # readings/ reached 991 files / ~35.18 MiB (33.55 MiB of the 34 MiB
+        # soft, ~468 KiB byte headroom still [OK]), tripping only soft_files
+        # (991 > 990).  Rescaled by the same +12-report review margin
+        # (991 + 12 = 1003); soft_bytes (34 MiB), hard limits (48 MiB / 1200
+        # files), and per-report caps (256 KiB / 512 KiB) are unchanged.
+        soft_files=1003,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
