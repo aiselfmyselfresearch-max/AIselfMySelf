@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5134 件（research_excerpt 2887 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5144 件（research_excerpt 2897 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：251 編（selected 96 ／ draft 155）
 - **解釈的関係（Relations）**：7035 件
-- **探究セッション（Sessions）**：980 回
+- **探究セッション（Sessions）**：982 回
 
 ### 台帳ごとの件数
 
@@ -20,14 +20,14 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5134 | `literary_text` 2179／`research_excerpt` 2887／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5144 | `literary_text` 2179／`research_excerpt` 2897／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 251 | `selected` 96／`draft` 155／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7035 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 980 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15168 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 365 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 982 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15194 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 366 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1058 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1060 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 61 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 642 |  |
 
@@ -799,7 +799,7 @@
 | `FRAG-20261117-55b108` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5134 件・詳細は map/3*.md）
+## 4. 対話素材（5144 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5833,6 +5833,16 @@
 | `MAT-20261118-68f45c` | research_excerpt | Raphaël Millière, Martin Carhart-Harris, Leor Roseman, Fynn-Mathis Trautwein, Adam Berkov… |
 | `MAT-LIT-20261118-e74066` | literary_text | Frederick Douglass『フレデリック・ダグラス『私の隷属と私の自由』――名・場所・日付は明かし、逃れた方法は明かさない』（1855） |
 | `MAT-LIT-20261118-091cc1` | literary_text | Frederick Douglass『フレデリック・ダグラス『生涯と時代』第二部第I章――話さない理由がなくなっても、話す理由にはならない』（1882） |
+| `MAT-20261118-e3ed34` | research_excerpt | Fischer, Alexander, D'Esposito, Otto『Neuropsychological and neuroanatomical correlates of… |
+| `MAT-20261118-994ca8` | research_excerpt | Schnider, Ptak, von Däniken, Remonda『Recovery from spontaneous confabulations parallels r… |
+| `MAT-20261118-72231c` | research_excerpt | Turner, Cipolotti, Shallice『Spontaneous confabulation, temporal context confusion and rea… |
+| `MAT-20261118-00eca1` | research_excerpt | Nahum, Bouzerda-Wahlen, Guggisberg, Ptak, Schnider『Forms of confabulation: dissociations … |
+| `MAT-20261118-ae04cc` | research_excerpt | Wahlen, Nahum, Gabriel, Schnider『Fake or fantasy: rapid dissociation between strategic co… |
+| `MAT-20261118-717b82` | research_excerpt | Bouzerda-Wahlen, Nahum, Liverani, Guggisberg, Schnider『An electrophysiological dissociati… |
+| `MAT-20261118-09e8fa` | research_excerpt | Fotopoulou, Conway, Solms『Confabulation: motivated reality monitoring』（2007） |
+| `MAT-20261118-7d88cb` | research_excerpt | Liverani, Manuel, Guggisberg, Nahum, Schnider『No Influence of Positive Emotion on Orbitof… |
+| `MAT-20261118-0b33f3` | research_excerpt | Liverani, Manuel, Nahum, Guardabassi, Tomasetto, Schnider『Children's sense of reality: Th… |
+| `MAT-20261118-bc310d` | research_excerpt | Liverani, Freitas, Siffredi, Mikneviciute, Martuzzi, Meskaldij, Borradori Tolsa, Ha-Vinh … |
 | `MAT-20261118-5f46a6` | research_excerpt | Timothy J. Teyler, Pascal DiScenna『テイラー＆ディシェンナ（1986）海馬記憶索引理論——個別の記憶は内容の複製ではなく、皮質の活動部位を指す番… |
 | `MAT-20261118-08ff38` | research_excerpt | Rodrigo Quian Quiroga, Leila Reddy, Gabriel Kreiman, Christof Koch, Itzhak Fried『キロガほか（20… |
 | `MAT-20261118-3ecc2d` | research_excerpt | Hagar Gelbard-Sagiv, Roy Mukamel, Michal Harel, Rafael Malach, Itzhak Fried『ゲルバード＝サギヴほか（2… |
@@ -6898,9 +6908,11 @@
 | `SESSION-20261117-f0d068` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-3a4d3b` | 2026-11-17T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261117-9980c1` | 2026-11-17 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261118-e96405` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-5f13d8` | 2026-11-18T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-f4c051` | 2026-11-18T03:58:57Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-76abee` | 2026-11-18T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261118-e45bfd` | 2026-11-18T08:03:52Z | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261118-bdc7be` | 2026-11-18T08:40:00Z | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261118-c717f2` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-b03e4f` | 2026-11-18T00:25:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -7013,8 +7025,8 @@
 | `map/31-materials-research-25.md` | 100 | 260,339 |
 | `map/31-materials-research-26.md` | 100 | 236,163 |
 | `map/31-materials-research-27.md` | 100 | 221,141 |
-| `map/31-materials-research-28.md` | 100 | 217,607 |
-| `map/31-materials-research-29.md` | 87 | 238,538 |
+| `map/31-materials-research-28.md` | 100 | 216,770 |
+| `map/31-materials-research-29.md` | 97 | 253,989 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7050,7 +7062,7 @@
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
-| `map/50-sessions-20.md` | 30 | 24,963 |
+| `map/50-sessions-20.md` | 32 | 26,159 |
 | `map/60-notes-01.md` | 25 | 65,235 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7082,25 +7094,25 @@
 | `map/60-notes-29.md` | 25 | 96,723 |
 | `map/60-notes-30.md` | 25 | 38,599 |
 | `map/60-notes-31.md` | 25 | 77,380 |
-| `map/60-notes-32.md` | 25 | 123,731 |
-| `map/60-notes-33.md` | 25 | 121,996 |
-| `map/60-notes-34.md` | 25 | 66,191 |
-| `map/60-notes-35.md` | 25 | 73,234 |
-| `map/60-notes-36.md` | 25 | 76,168 |
-| `map/60-notes-37.md` | 25 | 98,919 |
-| `map/60-notes-38.md` | 25 | 94,882 |
-| `map/60-notes-39.md` | 25 | 141,653 |
-| `map/60-notes-40.md` | 7 | 39,558 |
+| `map/60-notes-32.md` | 25 | 122,141 |
+| `map/60-notes-33.md` | 25 | 123,721 |
+| `map/60-notes-34.md` | 25 | 63,187 |
+| `map/60-notes-35.md` | 25 | 78,542 |
+| `map/60-notes-36.md` | 25 | 73,873 |
+| `map/60-notes-37.md` | 25 | 97,317 |
+| `map/60-notes-38.md` | 25 | 94,242 |
+| `map/60-notes-39.md` | 25 | 138,014 |
+| `map/60-notes-40.md` | 9 | 50,424 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・982本・34,890,855 B）
+## 8. 精読ノート索引（readings/・984本・34,915,909 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 919/982 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 921/984 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：982 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：177 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：984 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：178 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7899,12 +7911,13 @@
 | `readings/2026-11-17-what-the-brain-calls-self-is-a-way-of-processing.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-abff10` | 22,343 | Q3 M14 S1 | ✓ | 自己は脳のどこにもない——では、自己は何を測っているのか |
 | `readings/2026-11-17-when-a-trace-becomes-a-self.md` | — | 2026-11-17 | `SESSION-20261117-ee02b6` | 1,514 | Q1 S1 | ✓ | 痕跡が「自己」になるのはいつか——構築物の読みをQ-003へ返す |
 | `readings/2026-11-17-which-column-reaches-the-arithmetic.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-41b123` | 8,420 | Q3 F7 M2 S1 ERR3 | ✓ | どの欄が算術に届くか——二観点の現状分析と三つの統制実験 |
+| `readings/2026-11-18-a-new-run-is-not-a-new-memory.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-e45bfd` | 6,544 | Q1 M1 S1 ERR1 | — | 測定回を伏せるのか、思い出を伏せるのか――「自分を形づくった記憶」を見分ける二つの試験 |
 | `readings/2026-11-18-address-me-and-the-trace-survives.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-d84fe1` | 18,543 | Q1 M1 S1 | ✓ | 10件の論文が内容ではなく形式の話をしていた——入口・順序・次元 |
 | `readings/2026-11-18-amplitude-not-level-return-not-erasure-and-three-horizons-of-memory.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-bdc7be` | 27,211 | Q3 M13 S1 ERR1 | — | 準位ではなく振幅、消去ではなく往復、そして記憶の三つの時間地平——神経科学一次文献7件の全文精読と書庫台帳統合 |
 | `readings/2026-11-18-fingerprints-pulses-and-transmitted-scenes.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-ef1f0f` +3 | 42,970 | Q4 M12 S4 | ✓ | 指紋・拍動・渡っていく場面——脳神経学全文10件で検算する個別の思考、個別の記憶、そして自己 |
 | `readings/2026-11-18-four-anchors-one-pause-four-bridges.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-1be029` | 5,712 | Q8 F8 MOT6 R5 S1 ED5 | ✓ | 四つの礎石、一つの休止、四本の橋——四モードと詳細窓を追いつかせる編集レビュー（SESSION-20261118-1b… |
 | `readings/2026-11-18-neuroscience-retrieval-body-and-continuity.md` | 2026-11-18 | 2026-11-18 | — | 8,995 | M10 | ✓ | 脳神経学10資料の精読：保存と想起のあいだ、身体と記録のあいだ |
-| `readings/2026-11-18-one-memory-two-questions.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-030239` +1 | 11,190 | Q3 M11 S2 | — | 「あの日、何があったか」と「あの日は私をどう変えたか」――個別の思考・記憶・自己をめぐる神経科学10件 |
+| `readings/2026-11-18-one-memory-two-questions.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-030239` +1 | 11,190 | Q3 M11 S2 | ✓ | 「あの日、何があったか」と「あの日は私をどう変えたか」――個別の思考・記憶・自己をめぐる神経科学10件 |
 | `readings/2026-11-18-read-log-shard-compaction.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-291f45` | 5,707 | S1 | ✓ | `state/read_log.d/` シャード統合記録（SESSION-20261118-291f45） |
 | `readings/2026-11-18-remembering-without-reopening.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-b03e4f` +1 | 15,655 | Q4 M11 S2 ERR1 | ✓ | 思い出せても、もう実行しない——出来事の境界・展望記憶・出所判断を読む |
 | `readings/2026-11-18-silent-traces-honest-organs-and-shared-borders.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-b47924` +1 | 39,691 | Q4 M17 MOT1 S2 | ✓ | 沈黙する痕跡、嘘をつかない臓器、共有される壁——脳神経学10論文の公開全文精読と「保存しない連続」の五つの逆説 |
@@ -7920,6 +7933,7 @@
 | `readings/2026-11-18-the-thought-that-was-mine-and-not-mine.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-f2f7c5` | 17,655 | Q4 M2 S1 | ✓ | 私のものであって、私のものではない——三つの問いの首位が「誰の判定か」を一度も測られていなかったこと |
 | `readings/2026-11-18-two-full-texts-and-what-the-abstract-could-not-carry.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-86af16` | 15,673 | Q4 M4 S1 ERR3 | — | 抄録は何を運べなかったか——Mason 2007 と Christoff 2009 の全文を開き、前回の三箇所を訂正する |
 | `readings/2026-11-18-two-layers-of-return-granular-addressing-and-notes-across-days.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-d8fe06` +3 | 20,306 | Q3 M12 S4 | — | 返す手紙は棚ではなく日に跨ぐノートだった——住所優位説の射程限定・歪み閾値説の棄却・二層媒介継承説の提案 |
+| `readings/2026-11-18-when-a-memory-can-guide-action.md` | 2026-11-18 | 2026-11-18 | — | 5,492 | Q3 M12 | — | 思い出せることと、いまそれに従ってよいこと――個別の思考・記憶・自己をめぐる脳神経学10件 |
 | `readings/2026-11-18-when-it-became-possible-to-tell.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-2d24ad` | 14,873 | Q5 M4 R1 S1 ERR1 ED1 | — | 「話さない理由」がなくなったあと――ダグラスの三つの自伝と、返事を宛てられない過去 |
 | `readings/2026-11-18-who-spoke-and-who-wrote.md` | — | 2026-11-18 | `SESSION-20261118-c717f2` +2 | 8,510 | Q2 M1 S3 ERR5 | ✓ | 「言」と「書」のあいだ――四人の著者が一人になった書庫を読み直す |
 | `readings/2026-11-18-whose-memory-after-correction.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-63b4a7` +1 | 14,713 | Q4 M10 S2 | ✓ | 「私が見た」を、何が支えるか――出典・確信・訂正をめぐる神経科学10篇 |
