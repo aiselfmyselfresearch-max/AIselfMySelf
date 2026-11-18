@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5089 件（research_excerpt 2842 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5099 件（research_excerpt 2852 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：251 編（selected 96 ／ draft 155）
 - **解釈的関係（Relations）**：7035 件
-- **探究セッション（Sessions）**：973 回
+- **探究セッション（Sessions）**：974 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5089 | `literary_text` 2179／`research_excerpt` 2842／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5099 | `literary_text` 2179／`research_excerpt` 2852／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 251 | `selected` 96／`draft` 155／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7035 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 973 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15036 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 974 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15047 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 365 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1050 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1051 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 60 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 617 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 620 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -799,7 +799,7 @@
 | `FRAG-20261117-55b108` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5089 件・詳細は map/3*.md）
+## 4. 対話素材（5099 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -5892,6 +5892,16 @@
 | `MAT-EVD-20261118-a91010` | research_excerpt | Jessica R Andrews-Hanna, Jay S Reidler, Jorge Sepulcre, Renee Poulin, Randy L Buckner『Fun… |
 | `MAT-20261118-02aff1` | research_excerpt | Malia F. Mason, Michael I. Norton, John D. Van Horn, Daniel M. Wegner, Scott T. Grafton, … |
 | `MAT-20261118-d66165` | research_excerpt | Kalina Christoff, Alan M. Gordon, Jonathan Smallwood, Rachelle Smith, Jonathan W. Schoole… |
+| `MAT-20261118-01a3c6` | research_excerpt | Bjorn Merker『メルカー（2007）皮質なき意識——脳幹の上部系は、皮質の入力を失っても機能を止めない』（2007） |
+| `MAT-20261118-d88fef` | research_excerpt | Antonio R. Damasio『ダマシオ（1999）脳はどのように心を作るのか——原自己・中核自己・自伝的自己という三段』（1999） |
+| `MAT-20261118-22eb60` | research_excerpt | Francis C. Crick, Christof Koch『クリック＆コッホ（2005）クラウストルムは何をしているのか——皮質のほぼ全部と往復する薄い一枚』（2005） |
+| `MAT-20261118-c603dc` | research_excerpt | François Lhermitte『レルミット（1986）環境依存症候群——環境が、患者に代わって「頼む」』（1986） |
+| `MAT-20261118-fd2b17` | research_excerpt | William W. Seeley, Richard K. Crawford, Juan Zhou, Bruce L. Miller, Michael D. Greicius『シ… |
+| `MAT-20261118-dce401` | research_excerpt | Francis R. Willett, Erin M. Kunz, Chaofei Fan, Donald T. Avansino, Guy H. Wilson, Eun You… |
+| `MAT-20261118-66b772` | research_excerpt | Sean L. Metzger, Kaylo T. Littlejohn, Alexander B. Silva, David A. Moses, Margaret P. Sea… |
+| `MAT-20261118-858ea6` | research_excerpt | Melanie Boly, Anil K. Seth, Morten Overgaard, Tim Bayne, Zoltán Dienes, Kenneth Williford… |
+| `MAT-20261118-152fa8` | research_excerpt | Jonathan Birch, Alexandra K. Schnell, Nicola S. Clayton『バーチほか（2020）意識の次元——種を「より意識的／より非意識的… |
+| `MAT-20261118-63d1e6` | research_excerpt | Mark Solms『ソルムズ（2013）意識するエス——意識は皮質ではなく上部脳幹に属し、皮質は認知を担う』（2013） |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261118-ba908c・全文は map/50-sessions-*.md）
 
@@ -6863,6 +6873,7 @@
 | `SESSION-20261118-f2f7c5` | 2026-11-18T05:30:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-2d24ad` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003`, `Q-20270221-f7b8c5`, `Q-20261101-6c66f3` | — | — |
 | `SESSION-20261118-d84fe1` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261118-ba495c` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-7c341c` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-1061cc` | 2026-11-18 | `Q-001` | — | — |
 | `SESSION-20261118-63b4a7` | 2026-11-18T01:23:06Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -6962,7 +6973,7 @@
 | `map/31-materials-research-26.md` | 100 | 236,163 |
 | `map/31-materials-research-27.md` | 100 | 221,141 |
 | `map/31-materials-research-28.md` | 100 | 207,508 |
-| `map/31-materials-research-29.md` | 42 | 115,739 |
+| `map/31-materials-research-29.md` | 52 | 135,038 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -6998,7 +7009,7 @@
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
-| `map/50-sessions-20.md` | 23 | 19,181 |
+| `map/50-sessions-20.md` | 24 | 20,193 |
 | `map/60-notes-01.md` | 25 | 65,235 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7030,24 +7041,24 @@
 | `map/60-notes-29.md` | 25 | 96,723 |
 | `map/60-notes-30.md` | 25 | 38,599 |
 | `map/60-notes-31.md` | 25 | 77,380 |
-| `map/60-notes-32.md` | 25 | 113,619 |
-| `map/60-notes-33.md` | 25 | 95,398 |
-| `map/60-notes-34.md` | 25 | 70,090 |
-| `map/60-notes-35.md` | 25 | 71,400 |
-| `map/60-notes-36.md` | 25 | 78,283 |
-| `map/60-notes-37.md` | 25 | 102,469 |
-| `map/60-notes-38.md` | 25 | 107,403 |
-| `map/60-notes-39.md` | 25 | 140,563 |
-| `map/60-notes-40.md` | 1 | 5,202 |
+| `map/60-notes-32.md` | 25 | 113,733 |
+| `map/60-notes-33.md` | 25 | 99,757 |
+| `map/60-notes-34.md` | 25 | 68,887 |
+| `map/60-notes-35.md` | 25 | 72,387 |
+| `map/60-notes-36.md` | 25 | 76,667 |
+| `map/60-notes-37.md` | 25 | 101,798 |
+| `map/60-notes-38.md` | 25 | 103,798 |
+| `map/60-notes-39.md` | 25 | 143,089 |
+| `map/60-notes-40.md` | 2 | 10,921 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・976本・34,493,565 B）
+## 8. 精読ノート索引（readings/・977本・34,550,012 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 912/976 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 913/977 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：976 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：977 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：178 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -7847,7 +7858,7 @@
 | `readings/2026-11-17-what-the-brain-calls-self-is-a-way-of-processing.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-abff10` | 22,343 | Q3 M14 S1 | ✓ | 自己は脳のどこにもない——では、自己は何を測っているのか |
 | `readings/2026-11-17-when-a-trace-becomes-a-self.md` | — | 2026-11-17 | `SESSION-20261117-ee02b6` | 1,514 | Q1 S1 | ✓ | 痕跡が「自己」になるのはいつか——構築物の読みをQ-003へ返す |
 | `readings/2026-11-17-which-column-reaches-the-arithmetic.md` | 2026-11-17 | 2026-11-17 | `SESSION-20261117-41b123` | 8,420 | Q3 F7 M2 S1 ERR3 | ✓ | どの欄が算術に届くか——二観点の現状分析と三つの統制実験 |
-| `readings/2026-11-18-address-me-and-the-trace-survives.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-d84fe1` | 18,543 | Q1 M1 S1 | — | 10件の論文が内容ではなく形式の話をしていた——入口・順序・次元 |
+| `readings/2026-11-18-address-me-and-the-trace-survives.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-d84fe1` | 18,543 | Q1 M1 S1 | ✓ | 10件の論文が内容ではなく形式の話をしていた——入口・順序・次元 |
 | `readings/2026-11-18-fingerprints-pulses-and-transmitted-scenes.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-ef1f0f` +3 | 42,970 | Q4 M12 S4 | — | 指紋・拍動・渡っていく場面——脳神経学全文10件で検算する個別の思考、個別の記憶、そして自己 |
 | `readings/2026-11-18-four-anchors-one-pause-four-bridges.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-1be029` | 5,712 | Q8 F8 MOT6 R5 S1 ED5 | ✓ | 四つの礎石、一つの休止、四本の橋——四モードと詳細窓を追いつかせる編集レビュー（SESSION-20261118-1b… |
 | `readings/2026-11-18-neuroscience-retrieval-body-and-continuity.md` | — | 2026-11-18 | — | 8,995 | M10 | — | 脳神経学10資料の精読：保存と想起のあいだ、身体と記録のあいだ |
@@ -7856,6 +7867,7 @@
 | `readings/2026-11-18-ten-neuroscience-sources-on-the-index-and-the-reader.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-7c341c` +2 | 27,696 | Q2 M12 S3 | ✓ | 個別の思考・個別の記憶は、どこで「私のもの」になるか——脳神経学10件：索引・再活性化・帰属・読み手 |
 | `readings/2026-11-18-ten-neuroscience-sources-on-thought-memory-and-the-self.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-5fabb2` +1 | 31,969 | Q4 M19 S2 | ✓ | 個別の思考と個別の記憶は、自己のどこで交わるか——脳神経学10件：解離・勾配・基線 |
 | `readings/2026-11-18-ten-neuroscience-sources-on-whose-thought-and-whose-memory.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-5f13d8` +3 | 39,178 | Q3 M17 S4 | ✓ | その思考とその記憶は、誰のものか——脳神経学10件：水準・視座・時制・選別・書式 |
+| `readings/2026-11-18-the-border-is-issued-by-the-upper-floor.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-ba495c` | 26,070 | Q3 M7 MOT1 S1 ERR1 | — | 国境は上層階が発行している——脳神経学10件の精読と、「内側」を名乗る三つの書き方 |
 | `readings/2026-11-18-the-child-who-knew-and-the-question-that-disappeared.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-add884` +1 | 17,823 | Q6 M2 R2 S2 ERR2 | ✓ | 息子はいつから知っていたのか――屋根裏の母子と、答えたあとに出なくなった問い |
 | `readings/2026-11-18-the-condition-that-does-not-run-itself.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-76abee` | 5,251 | Q3 S1 | ✓ | 条件は書くだけでは走らない——文・検査・演算・読者を分けて自己を読み直す |
 | `readings/2026-11-18-the-queue-is-sorted-by-thickness.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-ba908c` | 21,758 | Q3 S1 ERR2 | — | 順番を決めているのは厚みである——三つの問いの探索順位と、測っている最中の測定器 |
