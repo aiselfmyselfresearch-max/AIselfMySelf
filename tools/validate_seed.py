@@ -119,6 +119,13 @@ READ_ID_RE = re.compile(r"^READ-\d{8}-[0-9a-f]{6}$")
 #: rewritten, and back-dating a role would manufacture a receipt that was never
 #: issued (the role is a function of the seed, and 91% of old rows record none).
 ROLE_RECEIPT_REQUIRED_FROM = "20261118"
+# Frozen from the 2026-11-17 20:07 UTC main tree (10b5088): session IDs
+# already present there whose internal stamp is >= the cutoff. Unlike the
+# moving "today" upper bound, this still distinguishes old and new rows when
+# the wall clock catches up. Never infer an exemption from a row's own prose.
+PRE_RECEIPT_SESSION_IDS = frozenset(
+    Path(__file__).with_name("pre_receipt_session_ids.txt").read_text().splitlines()
+)
 ROLE_RECEIPT_FIELDS = (
     "dispersal_seed",
     "assigned_role",
@@ -693,7 +700,7 @@ def check_role_receipts(
     afterwards would be a manufactured receipt, not a recovered one.
     """
     for session_id, record in sessions.items():
-        if not _is_new_row(session_id, cutoff, today=today):
+        if session_id in PRE_RECEIPT_SESSION_IDS or not _is_new_row(session_id, cutoff, today=today):
             continue
         missing = [
             field for field in ROLE_RECEIPT_FIELDS

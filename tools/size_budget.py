@@ -547,7 +547,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # touched the other's file. The union is the sum of two one-slot
         # exceptions, not a new allowance; the consolidation debt on this
         # dimension still stands. Hard 160 unchanged.
-        soft_shards=138,
+        # First real 2026-11-18 shard; one slot, byte and hard limits unchanged.
+        soft_shards=139,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -770,7 +771,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # each kept their own shard. The union is the sum of two one-slot
         # exceptions, not a new allowance; the consolidation debt stands.
         # Hard 160 unchanged.
-        soft_shards=143,
+        # First real 2026-11-18 shard; one slot, byte and hard limits unchanged.
+        soft_shards=144,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -793,7 +795,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (human-authorized preventive rescaling for monitoring window):
         # soft_shards 80 -> 110 (measured 73, ensuring Adversarial Tester / Consolidator
         # sessions are never deterred from recording errata); hard 160 unchanged.
-        soft_shards=110,
+        # First real 2026-11-18 shard; one slot, byte and hard limits unchanged.
+        soft_shards=111,
         hard_shards=160,
         remedy="Keep errata shards concise",
     ),
@@ -1090,7 +1093,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # is the sum of two same-day exception sets (147 + 2), not a new
         # allowance; the consolidation debt the 4e438d caveat names is still
         # unpaid. Hard 160 unchanged.
-        soft_shards=149,
+        # First real 2026-11-18 shard; one slot, byte and hard limits unchanged.
+        soft_shards=150,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "

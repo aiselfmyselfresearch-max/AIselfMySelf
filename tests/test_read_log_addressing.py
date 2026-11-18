@@ -150,6 +150,18 @@ class RoleReceiptTests(unittest.TestCase):
         self.assertIn("offered_reference_mode", errors[0])
         self.assertNotIn("dispersal_seed", errors[0])
 
+    def test_old_internal_dates_do_not_become_new_receipts(self) -> None:
+        # On Oct 26 these two sessions used Nov 18 as an internal label.
+        # A later writer using the same date must still supply a receipt.
+        old = ["SESSION-20261118-1be029", "SESSION-20261118-291f45"]
+        new = "SESSION-20261118-ffffff"
+        errors: list[str] = []
+        validate_seed.check_role_receipts(
+            {sid: {} for sid in [*old, new]}, errors, today=datetime.date(2027, 12, 31)
+        )
+        self.assertEqual(len(errors), 1)
+        self.assertIn(new, errors[0])
+
     def test_a_complete_receipt_passes(self) -> None:
         errors: list[str] = []
         record = {"session_id": "SESSION-20261118-abcdef", **self.RECEIPT}
