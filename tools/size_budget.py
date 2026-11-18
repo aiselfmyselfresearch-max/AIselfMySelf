@@ -406,7 +406,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # unreferenced pair remains that could be folded without touching
         # path-addressed provenance. One-slot exception; hard 160 unchanged;
         # the consolidation debt stands and is not discharged here.
-soft_shards=130,
+        # 2026-11-18 (merge of origin/main d4e8979 / PR #921, 130 -> 131):
+        # upstream PR #921 added 2026-11-18-68410b3e4522.jsonl without bumping
+        # soft_shards; SESSION-20261118-bdc7be added 0 new shards. Measured
+        # union = 131 files; hard 160 unchanged.
+        soft_shards=131,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -587,7 +591,10 @@ soft_shards=130,
         # hypothesis reads). The hypothesis rows change witness_read_session_count
         # only; EVL-20261118-3e1cca measures the SHA-256 before/after. Third real
         # 11-18 read_log shard. One-slot exception; consolidation debt stands.
-soft_shards=141,
+        # 2026-11-18 (merge of origin/main d4e8979 / PR #921, 141 -> 142):
+        # upstream PR #921 added 2026-11-18-99172fec448e.jsonl; SESSION-20261118-bdc7be
+        # added 0 new shards. Measured union = 142 files; hard 160 unchanged.
+        soft_shards=142,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -820,7 +827,10 @@ soft_shards=141,
         # (2026-11-18-4e0ca2292c25.jsonl) with the 10-source cap override, the
         # duplicate scan, the prior same-delegation sessions and the SHA-256
         # measurements. Third real 11-18 session shard. One-slot exception.
-soft_shards=146,
+        # 2026-11-18 (merge of origin/main d4e8979 / PR #921, 146 -> 147):
+        # upstream PR #921 added 2026-11-18-1a75e85e842d.jsonl; SESSION-20261118-bdc7be
+        # added 0 new shards. Measured union = 147 files; hard 160 unchanged.
+        soft_shards=147,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -1179,7 +1189,10 @@ soft_shards=146,
         # evaluations.d were each folded byte-identically on this branch).
         # Bytes on the merged tree remain the near-binding dimension.
         # One-slot exception; hard 160 unchanged; the 4e438d debt is still unpaid.
-soft_shards=153,
+        # 2026-11-18 (merge of origin/main d4e8979 / PR #921, 153 -> 154):
+        # upstream PR #921 added 2026-11-18-7995e950c4eb.jsonl; SESSION-20261118-bdc7be
+        # added 0 new shards. Measured union = 154 files; hard 160 unchanged.
+        soft_shards=154,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
