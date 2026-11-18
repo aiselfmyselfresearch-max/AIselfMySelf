@@ -9,8 +9,8 @@
 - **モチーフ（Motifs）**：63 件
 - **対話素材（Materials）**：5204 件（research_excerpt 2957 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：251 編（selected 96 ／ draft 155）
-- **解釈的関係（Relations）**：7042 件
-- **探究セッション（Sessions）**：995 回
+- **解釈的関係（Relations）**：7043 件
+- **探究セッション（Sessions）**：996 回
 
 ### 台帳ごとの件数
 
@@ -22,14 +22,14 @@
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5204 | `literary_text` 2179／`research_excerpt` 2957／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 251 | `selected` 96／`draft` 155／`human_narrator` 0 |
-| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7042 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 995 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15370 |  |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7043 | うち断片↔断片 618 |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 996 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15383 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 367 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1071 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 63 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 663 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1072 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 65 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 665 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -6968,6 +6968,7 @@
 | `SESSION-20261117-f0d068` | 2026-11-17T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261117-3a4d3b` | 2026-11-17T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261117-9980c1` | 2026-11-17 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261118-a79fcb` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-e96405` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-f21935` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-e332ba` | — | — |
 | `SESSION-20261118-5f13d8` | 2026-11-18T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -7008,11 +7009,11 @@
 | `SESSION-20261118-327b3d` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-014945` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（7042 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（7043 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 1027 |
+| 対照 (contrast) | 1028 |
 | 共鳴 (echo) | 1660 |
 | 切断・割り込み (interrupts) | 244 |
 | 未解決のまま開く (leaves_open) | 922 |
@@ -7116,7 +7117,7 @@
 | `map/40-relations-12.md` | 500 | 176,838 |
 | `map/40-relations-13.md` | 500 | 172,292 |
 | `map/40-relations-14.md` | 500 | 157,803 |
-| `map/40-relations-15.md` | 42 | 14,836 |
+| `map/40-relations-15.md` | 43 | 15,217 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -7136,7 +7137,7 @@
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
-| `map/50-sessions-20.md` | 45 | 36,574 |
+| `map/50-sessions-20.md` | 46 | 37,486 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7159,7 +7160,7 @@
 | `map/60-notes-20.md` | 25 | 171,065 |
 | `map/60-notes-21.md` | 25 | 141,170 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 123,165 |
+| `map/60-notes-23.md` | 25 | 123,222 |
 | `map/60-notes-24.md` | 25 | 98,765 |
 | `map/60-notes-25.md` | 25 | 115,667 |
 | `map/60-notes-26.md` | 25 | 133,360 |
@@ -7169,24 +7170,24 @@
 | `map/60-notes-30.md` | 25 | 38,599 |
 | `map/60-notes-31.md` | 25 | 77,441 |
 | `map/60-notes-32.md` | 25 | 125,893 |
-| `map/60-notes-33.md` | 25 | 126,018 |
-| `map/60-notes-34.md` | 25 | 72,129 |
-| `map/60-notes-35.md` | 25 | 77,229 |
-| `map/60-notes-36.md` | 25 | 66,165 |
-| `map/60-notes-37.md` | 25 | 85,392 |
-| `map/60-notes-38.md` | 25 | 108,233 |
-| `map/60-notes-39.md` | 25 | 118,753 |
-| `map/60-notes-40.md` | 20 | 106,866 |
+| `map/60-notes-33.md` | 25 | 121,204 |
+| `map/60-notes-34.md` | 25 | 78,844 |
+| `map/60-notes-35.md` | 25 | 75,828 |
+| `map/60-notes-36.md` | 25 | 67,450 |
+| `map/60-notes-37.md` | 25 | 84,625 |
+| `map/60-notes-38.md` | 25 | 108,804 |
+| `map/60-notes-39.md` | 25 | 114,294 |
+| `map/60-notes-40.md` | 21 | 113,896 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・995本・35,343,804 B）
+## 8. 精読ノート索引（readings/・996本・35,376,449 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 931/995 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 932/996 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：995 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：181 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：996 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：180 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8005,11 +8006,12 @@
 | `readings/2026-11-18-ten-neuroscience-sources-on-the-index-and-the-reader.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-7c341c` +2 | 27,696 | Q2 M12 S3 | ✓ | 個別の思考・個別の記憶は、どこで「私のもの」になるか——脳神経学10件：索引・再活性化・帰属・読み手 |
 | `readings/2026-11-18-ten-neuroscience-sources-on-thought-memory-and-the-self.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-5fabb2` +1 | 31,969 | Q4 M19 S2 | ✓ | 個別の思考と個別の記憶は、自己のどこで交わるか——脳神経学10件：解離・勾配・基線 |
 | `readings/2026-11-18-ten-neuroscience-sources-on-whose-thought-and-whose-memory.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-5f13d8` +3 | 39,178 | Q3 M17 S4 | ✓ | その思考とその記憶は、誰のものか——脳神経学10件：水準・視座・時制・選別・書式 |
+| `readings/2026-11-18-the-addressee-is-one-row-above.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-a79fcb` +1 | 16,065 | Q5 R1 S2 | ✓ | 宛先は一行上にある——一つの log_odds が三つの softmax に入るとき |
 | `readings/2026-11-18-the-border-is-issued-by-the-upper-floor.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-ba495c` | 26,070 | Q3 M7 MOT1 S1 ERR1 | ✓ | 国境は上層階が発行している——脳神経学10件の精読と、「内側」を名乗る三つの書き方 |
 | `readings/2026-11-18-the-child-who-knew-and-the-question-that-disappeared.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-add884` +1 | 17,823 | Q6 M2 R2 S2 ERR2 | ✓ | 息子はいつから知っていたのか――屋根裏の母子と、答えたあとに出なくなった問い |
 | `readings/2026-11-18-the-condition-that-does-not-run-itself.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-76abee` | 5,251 | Q3 S1 | ✓ | 条件は書くだけでは走らない——文・検査・演算・読者を分けて自己を読み直す |
 | `readings/2026-11-18-the-flower-does-not-name-the-water.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-475f3e` +2 | 15,776 | Q4 M6 S3 ERR2 | — | 花の香りは、水の名を教えない——ケラー、プルースト、書庫の再読 |
-| `readings/2026-11-18-the-queue-is-sorted-by-thickness.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-ba908c` | 21,758 | Q3 S1 ERR2 | — | 順番を決めているのは厚みである——三つの問いの探索順位と、測っている最中の測定器 |
+| `readings/2026-11-18-the-queue-is-sorted-by-thickness.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-ba908c` | 21,758 | Q3 S1 ERR2 | ✓ | 順番を決めているのは厚みである——三つの問いの探索順位と、測っている最中の測定器 |
 | `readings/2026-11-18-the-story-and-the-signature.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-f21935` | 19,694 | Q4 F2 M1 S1 | ✓ | 「私が書いた」と「私から始まった」のあいだ——ケラーの回想と、書庫で読者が著者に数えられるとき |
 | `readings/2026-11-18-the-stream-is-not-the-sediment.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-f4c051` | 19,004 | Q1 M5 S1 | ✓ | 思考の流れは、書庫のどこにあるのか——認知科学5件：書くこと・外部化・証言・順序 |
 | `readings/2026-11-18-the-thought-that-was-mine-and-not-mine.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-f2f7c5` | 17,655 | Q4 M2 S1 | ✓ | 私のものであって、私のものではない——三つの問いの首位が「誰の判定か」を一度も測られていなかったこと |
