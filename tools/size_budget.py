@@ -1431,7 +1431,16 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # readings/ = 979 files / 34,730,633 B (33.12 MiB of the 34 MiB soft,
         # 920,951 B headroom, 11 file slots remaining under 990).  Both
         # records are preserved above; 990 and 34 MiB both remain [OK].
-        soft_files=990,
+        # 2026-11-18 (SESSION-20261118-81ff91, after merging origin/main 77e181e3):
+        # PR #927 brought readings/ to 990/990 and this session's report took it
+        # to 991 files / ~35,168 KiB (33.54 MiB of the 34 MiB soft, ~483 KiB
+        # byte headroom remaining), firing only the file-count soft limit while
+        # all 12 state/*.d/ directories stayed [OK] (+0 new shards via Procedure
+        # 8-2).  Rescaled soft_files by the same +12 review margin (990 -> 1002);
+        # soft_bytes (34 MiB), hard_files (1200), hard_bytes (48 MiB), and the
+        # 256 KiB / 512 KiB per-file caps are unchanged.  See §4.2 of
+        # readings/2026-11-18-five-broken-bridges-and-the-gate-on-the-receiving-side.md.
+        soft_files=1002,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
