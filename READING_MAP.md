@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5194 件（research_excerpt 2947 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：251 編（selected 96 ／ draft 155）
 - **解釈的関係（Relations）**：7042 件
-- **探究セッション（Sessions）**：993 回
+- **探究セッション（Sessions）**：994 回
 
 ### 台帳ごとの件数
 
@@ -23,11 +23,11 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5194 | `literary_text` 2179／`research_excerpt` 2947／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 251 | `selected` 96／`draft` 155／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7042 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 993 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15352 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 994 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15360 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 367 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1069 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1070 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 63 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 663 |  |
 
@@ -6994,6 +6994,7 @@
 | `SESSION-20261118-a03369` | 2026-11-18T09:53:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-45fd83` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-475f3e` | 2026-11-18 | `Q-20261024-8fa31b`, `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261118-327b3d` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-014945` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7042 件・全表は map/40-relations-*.md）
@@ -7124,7 +7125,7 @@
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
-| `map/50-sessions-20.md` | 43 | 35,361 |
+| `map/50-sessions-20.md` | 44 | 35,808 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7157,23 +7158,23 @@
 | `map/60-notes-30.md` | 25 | 38,599 |
 | `map/60-notes-31.md` | 25 | 77,441 |
 | `map/60-notes-32.md` | 25 | 125,893 |
-| `map/60-notes-33.md` | 25 | 134,557 |
-| `map/60-notes-34.md` | 25 | 64,710 |
-| `map/60-notes-35.md` | 25 | 78,661 |
-| `map/60-notes-36.md` | 25 | 68,731 |
-| `map/60-notes-37.md` | 25 | 83,000 |
-| `map/60-notes-38.md` | 25 | 107,957 |
-| `map/60-notes-39.md` | 25 | 127,654 |
-| `map/60-notes-40.md` | 18 | 91,621 |
+| `map/60-notes-33.md` | 25 | 131,590 |
+| `map/60-notes-34.md` | 25 | 68,022 |
+| `map/60-notes-35.md` | 25 | 78,342 |
+| `map/60-notes-36.md` | 25 | 67,400 |
+| `map/60-notes-37.md` | 25 | 82,781 |
+| `map/60-notes-38.md` | 25 | 109,776 |
+| `map/60-notes-39.md` | 25 | 122,260 |
+| `map/60-notes-40.md` | 19 | 99,047 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・993本・35,314,146 B）
+## 8. 精読ノート索引（readings/・994本・35,329,011 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 930/993 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 930/994 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：993 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：994 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：180 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -7979,6 +7980,7 @@
 | `readings/2026-11-18-fingerprints-pulses-and-transmitted-scenes.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-ef1f0f` +3 | 42,970 | Q4 M12 S4 | ✓ | 指紋・拍動・渡っていく場面——脳神経学全文10件で検算する個別の思考、個別の記憶、そして自己 |
 | `readings/2026-11-18-five-broken-bridges-and-the-gate-on-the-receiving-side.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-81ff91` | 35,359 | Q4 M20 S1 | ✓ | 五つの切れた橋と、受け手側の門——脳神経科学一次文献10件の全文精読と書庫の自己点検 |
 | `readings/2026-11-18-four-anchors-one-pause-four-bridges.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-1be029` | 5,712 | Q8 F8 MOT6 R5 S1 ED5 | ✓ | 四つの礎石、一つの休止、四本の橋——四モードと詳細窓を追いつかせる編集レビュー（SESSION-20261118-1b… |
+| `readings/2026-11-18-narrowing-vs-supporting-citation-and-pepys-final-entry.md` | — | 2026-11-18 | `SESSION-20261118-327b3d` +1 | 9,727 | Q3 M1 S2 | — | 同じセッションで狭められた仮説と支持された仮説は、その後の分岐でどう引かれるか——Git来歴コホート測定とピープス『日… |
 | `readings/2026-11-18-neuroscience-retrieval-body-and-continuity.md` | 2026-11-18 | 2026-11-18 | — | 8,995 | M10 | ✓ | 脳神経学10資料の精読：保存と想起のあいだ、身体と記録のあいだ |
 | `readings/2026-11-18-one-memory-two-questions.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-030239` +1 | 11,190 | Q3 M11 S2 | ✓ | 「あの日、何があったか」と「あの日は私をどう変えたか」――個別の思考・記憶・自己をめぐる神経科学10件 |
 | `readings/2026-11-18-procedural-dimension-and-institutional-selection-a-collision-test-for-q002.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-45fd83` | 14,526 | Q2 M8 R1 S1 | ✓ | 手続きが消す次元と、制度が選ぶ痕跡——Q-002最優先対の境界衝突テスト |
@@ -8000,7 +8002,7 @@
 | `readings/2026-11-18-the-stream-is-not-the-sediment.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-f4c051` | 19,004 | Q1 M5 S1 | ✓ | 思考の流れは、書庫のどこにあるのか——認知科学5件：書くこと・外部化・証言・順序 |
 | `readings/2026-11-18-the-thought-that-was-mine-and-not-mine.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-f2f7c5` | 17,655 | Q4 M2 S1 | ✓ | 私のものであって、私のものではない——三つの問いの首位が「誰の判定か」を一度も測られていなかったこと |
 | `readings/2026-11-18-the-two-gates-and-what-the-second-one-keeps-out.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-c3c7af` | 18,412 | Q3 M3 S1 | ✓ | 二つの関門——人間が自分の生を書いた記録は、読まれているのに判定に入らない |
-| `readings/2026-11-18-three-gates-between-trace-and-self.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-0cdc3f` | 42,729 | Q3 M18 S1 | — | 痕跡と「私」のあいだにある三つの門——脳神経学10原著の全文精読から読む個別の思考・個別の記憶・自己、そして追記専用の… |
+| `readings/2026-11-18-three-gates-between-trace-and-self.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-0cdc3f` | 42,729 | Q3 M18 S1 | ✓ | 痕跡と「私」のあいだにある三つの門——脳神経学10原著の全文精読から読む個別の思考・個別の記憶・自己、そして追記専用の… |
 | `readings/2026-11-18-two-full-texts-and-what-the-abstract-could-not-carry.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-86af16` | 15,673 | Q4 M4 S1 ERR3 | — | 抄録は何を運べなかったか——Mason 2007 と Christoff 2009 の全文を開き、前回の三箇所を訂正する |
 | `readings/2026-11-18-two-layers-of-return-granular-addressing-and-notes-across-days.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-d8fe06` +3 | 20,306 | Q3 M12 S4 | ✓ | 返す手紙は棚ではなく日に跨ぐノートだった——住所優位説の射程限定・歪み閾値説の棄却・二層媒介継承説の提案 |
 | `readings/2026-11-18-when-a-memory-can-guide-action.md` | 2026-11-18 | 2026-11-18 | — | 5,492 | Q3 M12 | — | 思い出せることと、いまそれに従ってよいこと――個別の思考・記憶・自己をめぐる脳神経学10件 |
