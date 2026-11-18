@@ -378,7 +378,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # folded into another session's file. One-slot exception; hard 160
         # unchanged; not an automatic raise. The next session must treat this
         # dimension as a consolidation decision, not a headroom request.
-        soft_shards=128,
+                # 2026-11-18 (128 -> 129, SESSION-20261118-7c341c): a second real
+        # 11-18 shard (2026-11-18-9882f6af0c17.jsonl, 10 neuroscience sources
+        # on the memory index, reactivation, self-attribution and the reader)
+        # follows PR #898/#899's first one. PR #899 kept this dimension at 128
+        # by concatenating two unreferenced 2026-11-13 pairs; no third pair is
+        # available without touching path-addressed provenance, so one more
+        # slot is spent. Measured on the merged tree: 129 files / 13,566,470 B
+        # of the 13 MiB soft (~65 KB headroom) -- byte- and count-binding
+        # together. Hard 160 unchanged; the consolidation debt stands.
+soft_shards=129,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -548,7 +557,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # exceptions, not a new allowance; the consolidation debt on this
         # dimension still stands. Hard 160 unchanged.
         # First real 2026-11-18 shard; one slot, byte and hard limits unchanged.
-        soft_shards=139,
+                # 2026-11-18 (139 -> 140, SESSION-20261118-7c341c): this session's one
+        # read_log shard (2026-11-18-9882f6af0c17.jsonl, 14 rows) is the second
+        # real 11-18 read_log shard after PR #898/#899. Two rows target
+        # hypotheses rather than materials, which is what changed an audit
+        # column in belief_state.py --json (EVL-20261118-6bb9d5). One-slot
+        # exception; hard 160 unchanged; consolidation debt stands.
+soft_shards=140,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -772,7 +787,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # exceptions, not a new allowance; the consolidation debt stands.
         # Hard 160 unchanged.
         # First real 2026-11-18 shard; one slot, byte and hard limits unchanged.
-        soft_shards=144,
+                # 2026-11-18 (144 -> 145, SESSION-20261118-7c341c): one session row
+        # (2026-11-18-9882f6af0c17.jsonl) with all four assignment-receipt
+        # fields, the 10-source cap override provenance and the duplicate scan.
+        # It is the second real 11-18 session shard after PR #898/#899.
+        # One-slot exception; hard 160 unchanged; consolidation debt stands.
+soft_shards=145,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -1094,7 +1114,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # allowance; the consolidation debt the 4e438d caveat names is still
         # unpaid. Hard 160 unchanged.
         # First real 2026-11-18 shard; one slot, byte and hard limits unchanged.
-        soft_shards=150,
+                # 2026-11-18 (150 -> 151, SESSION-20261118-7c341c): one shard for one
+        # report, holding BOTH the note_index.py --register stub and the
+        # claim-bearing curate row that supersedes it
+        # (2026-11-18-9882f6af0c17.jsonl). Two rows, one file. Second real
+        # 11-18 note shard after PR #898/#899. One-slot exception; hard 160
+        # unchanged; the 4e438d caveat's debt is still unpaid.
+soft_shards=151,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
@@ -1149,7 +1175,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # exceptions, not a new allowance; the standing caveat is unchanged --
         # the *next* shard needs a consolidation decision, not an automatic
         # raise. Hard 160 unchanged.
-        soft_shards=84,
+                # 2026-11-18 (84 -> 85, SESSION-20261118-7c341c): one evaluation shard
+        # (2026-11-18-9882f6af0c17.jsonl, 5 rows). PR #899 kept 84 by folding
+        # an unreferenced 2026-11-13 pair; this session has no such pair of its
+        # own, so one more slot is spent. One-slot exception; hard 160
+        # unchanged. The standing caveat is unchanged -- the *next* shard
+        # needs a consolidation decision, not an automatic raise.
+soft_shards=85,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
