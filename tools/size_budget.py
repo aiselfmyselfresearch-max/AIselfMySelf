@@ -1148,11 +1148,32 @@ soft_shards=146,
         # (2026-11-18-9882f6af0c17.jsonl). Two rows, one file. Second real
         # 11-18 note shard after PR #898/#899. One-slot exception; hard 160
         # unchanged; the 4e438d caveat's debt is still unpaid.
+        # 2026-11-18 (151 -> 152, SESSION-20261118-d84fe1): one shard for one
+        # report (readings/2026-11-18-address-me-and-the-trace-survives.md,
+        # 3 notes + 6 evaluations + 20 read_log rows all in this one shard).
+        # Measured before the append: state/notes.d = 152 files / 2,038,220 B
+        # of the 2 MiB soft; the byte dimension is the near-binding one here
+        # (58,932 B of headroom, about 19 typical curated rows) and is
+        # unchanged by this raise. notes.d is order-sensitive and excluded
+        # from the consolidation exception, so net reclaim is 0: the sibling
+        # collections that DID have a same-day unreferenced pair (materials.d,
+        # read_log.d, sessions.d, evaluations.d) were each folded
+        # byte-identically this session instead of raising them.
+        # One-slot exception; hard 160 unchanged; the 4e438d debt is still unpaid.
         # 2026-11-18 (151 -> 152, SESSION-20261118-5f13d8): one notes shard
         # (2026-11-18-2ddb300e1e88.jsonl) holding the base stub and the
         # claim-bearing curate row that supersedes it. Two rows, one file.
         # Third real 11-18 note shard; one-slot exception, debt stands.
-soft_shards=152,
+        # 2026-11-18 (merge 152 x 152, union -> 153): both branches wrote ONE
+        # slot for the SAME ceiling (151 -> 152), so the merged tree carries
+        # both sessions' shards at 153 files, one over the union of the two
+        # exceptions. This is the measured union, not a third allowance:
+        # neither branch could have known about the other, and the sibling
+        # dimensions are unaffected (materials.d / read_log.d / sessions.d /
+        # evaluations.d were each folded byte-identically on this branch).
+        # Bytes on the merged tree remain the near-binding dimension.
+        # One-slot exception; hard 160 unchanged; the 4e438d debt is still unpaid.
+soft_shards=153,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
