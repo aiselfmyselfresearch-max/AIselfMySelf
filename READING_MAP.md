@@ -9,8 +9,8 @@
 - **モチーフ（Motifs）**：63 件
 - **対話素材（Materials）**：5164 件（research_excerpt 2917 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：251 編（selected 96 ／ draft 155）
-- **解釈的関係（Relations）**：7035 件
-- **探究セッション（Sessions）**：988 回
+- **解釈的関係（Relations）**：7036 件
+- **探究セッション（Sessions）**：989 回
 
 ### 台帳ごとの件数
 
@@ -22,14 +22,14 @@
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5164 | `literary_text` 2179／`research_excerpt` 2917／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 251 | `selected` 96／`draft` 155／`human_narrator` 0 |
-| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7035 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 988 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15262 |  |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7036 | うち断片↔断片 618 |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 989 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15272 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 366 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1064 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1065 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 62 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 647 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 649 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -5968,7 +5968,7 @@
 | `MAT-20261118-0a34eb` | research_excerpt | Matthias Stangl, Uros Topalovic, Cory S. Inman, Sonja Hiller, Diane Villaroman, Zahra M. … |
 | `MAT-20261118-11c75a` | research_excerpt | Dorit Kliemann, Ralph Adolphs, J. Michael Tyszka, Bruce Fischl, B. T. Thomas Yeo, Remya N… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261118-a03369・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261118-45fd83・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -6960,12 +6960,13 @@
 | `SESSION-20261118-c3c7af` | 2026-11-18T09:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-0d63dd` | 2026-11-18T09:50:03Z | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261118-a03369` | 2026-11-18T09:53:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261118-45fd83` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（7035 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（7036 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
-| 対照 (contrast) | 1023 |
+| 対照 (contrast) | 1024 |
 | 共鳴 (echo) | 1660 |
 | 切断・割り込み (interrupts) | 244 |
 | 未解決のまま開く (leaves_open) | 922 |
@@ -7069,7 +7070,7 @@
 | `map/40-relations-12.md` | 500 | 176,838 |
 | `map/40-relations-13.md` | 500 | 172,292 |
 | `map/40-relations-14.md` | 500 | 157,803 |
-| `map/40-relations-15.md` | 35 | 12,520 |
+| `map/40-relations-15.md` | 36 | 12,895 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -7089,7 +7090,7 @@
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
-| `map/50-sessions-20.md` | 38 | 31,003 |
+| `map/50-sessions-20.md` | 39 | 31,739 |
 | `map/60-notes-01.md` | 25 | 65,235 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7116,29 +7117,29 @@
 | `map/60-notes-24.md` | 25 | 98,765 |
 | `map/60-notes-25.md` | 25 | 115,667 |
 | `map/60-notes-26.md` | 25 | 133,360 |
-| `map/60-notes-27.md` | 25 | 94,263 |
+| `map/60-notes-27.md` | 25 | 94,356 |
 | `map/60-notes-28.md` | 25 | 90,432 |
 | `map/60-notes-29.md` | 25 | 96,723 |
 | `map/60-notes-30.md` | 25 | 38,599 |
 | `map/60-notes-31.md` | 25 | 77,380 |
 | `map/60-notes-32.md` | 25 | 122,141 |
-| `map/60-notes-33.md` | 25 | 127,270 |
-| `map/60-notes-34.md` | 25 | 62,758 |
-| `map/60-notes-35.md` | 25 | 79,768 |
-| `map/60-notes-36.md` | 25 | 70,348 |
-| `map/60-notes-37.md` | 25 | 96,341 |
-| `map/60-notes-38.md` | 25 | 93,718 |
-| `map/60-notes-39.md` | 25 | 129,227 |
-| `map/60-notes-40.md` | 13 | 74,454 |
+| `map/60-notes-33.md` | 25 | 127,041 |
+| `map/60-notes-34.md` | 25 | 63,578 |
+| `map/60-notes-35.md` | 25 | 80,013 |
+| `map/60-notes-36.md` | 25 | 70,837 |
+| `map/60-notes-37.md` | 25 | 93,045 |
+| `map/60-notes-38.md` | 25 | 97,124 |
+| `map/60-notes-39.md` | 25 | 128,382 |
+| `map/60-notes-40.md` | 14 | 78,044 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・988本・35,040,717 B）
+## 8. 精読ノート索引（readings/・989本・35,070,285 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 925/988 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 926/989 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：988 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：989 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：179 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -7945,6 +7946,7 @@
 | `readings/2026-11-18-four-anchors-one-pause-four-bridges.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-1be029` | 5,712 | Q8 F8 MOT6 R5 S1 ED5 | ✓ | 四つの礎石、一つの休止、四本の橋——四モードと詳細窓を追いつかせる編集レビュー（SESSION-20261118-1b… |
 | `readings/2026-11-18-neuroscience-retrieval-body-and-continuity.md` | 2026-11-18 | 2026-11-18 | — | 8,995 | M10 | ✓ | 脳神経学10資料の精読：保存と想起のあいだ、身体と記録のあいだ |
 | `readings/2026-11-18-one-memory-two-questions.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-030239` +1 | 11,190 | Q3 M11 S2 | ✓ | 「あの日、何があったか」と「あの日は私をどう変えたか」――個別の思考・記憶・自己をめぐる神経科学10件 |
+| `readings/2026-11-18-procedural-dimension-and-institutional-selection-a-collision-test-for-q002.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-45fd83` | 14,526 | Q2 M8 R1 S1 | ✓ | 手続きが消す次元と、制度が選ぶ痕跡——Q-002最優先対の境界衝突テスト |
 | `readings/2026-11-18-read-log-shard-compaction.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-291f45` | 5,707 | S1 | ✓ | `state/read_log.d/` シャード統合記録（SESSION-20261118-291f45） |
 | `readings/2026-11-18-remembering-is-not-endorsing.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-c408f8` +1 | 10,994 | Q3 M10 S2 | — | 「覚えている」と「自分はそうだ」は違う――個々の思考・記憶と自己をめぐる神経科学10件 |
 | `readings/2026-11-18-remembering-without-reopening.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-b03e4f` +1 | 15,655 | Q4 M11 S2 ERR1 | ✓ | 思い出せても、もう実行しない——出来事の境界・展望記憶・出所判断を読む |
