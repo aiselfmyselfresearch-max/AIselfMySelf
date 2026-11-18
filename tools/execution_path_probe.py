@@ -236,9 +236,12 @@ def iv_budget(sb: Path) -> str:
 
 
 def iv_order(sb: Path) -> str:
-    _patch(sb, "tools/inspect_inquiry.py",
-           'key=lambda h: str(h.get("hypothesis_id", "")),\n    )\n    dynamic_mids',
-           'key=lambda h: str(h.get("hypothesis_id", "")),\n        reverse=True,\n    )\n    dynamic_mids')
+    _patch(
+        sb,
+        "tools/inspect_inquiry.py",
+        'key=lambda h: gated_rank.get(str(h.get("hypothesis_id", "")), (1, 0.0, str(h.get("hypothesis_id", "")))),\n    )',
+        'key=lambda h: gated_rank.get(str(h.get("hypothesis_id", "")), (1, 0.0, str(h.get("hypothesis_id", "")))),\n        reverse=True,\n    )',
+    )
     return "reverse the active-hypothesis ordering"
 
 
