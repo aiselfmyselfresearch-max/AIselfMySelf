@@ -135,6 +135,56 @@ ROLE_RECEIPT_FIELDS = (
 REGISTER_VALUES = ("description", "judgment", "inheritance")
 _ID_STAMP = re.compile(r"^[A-Z]+(?:-[A-Z]+)*-(\d{8})-")
 
+#: Three-Gates forward-dated write rules (2026-11-18, readings/2026-11-18-three-gates-between-trace-and-self.md §4):
+#: (1) New primary_source_collision rows must cite >=1 material with effective verification.status == 'verified'
+#:     (directly or via an append-only editorial_decisions material overlay).
+#: (2) New materials must not duplicate an existing record's canonical DOI, PMID, or PMCID;
+#:     re-read or upgrade the existing MAT-* via editorial_decisions instead.
+#: (3) New narrows_scope / refutes_unconditioned evaluations without explicit successor routing
+#:     must not list a direct child of target_hypothesis_id in compared_against_hypothesis_ids.
+#: Rows minted before this date stay valid without rewrite (append-only invariant).
+THREE_GATES_RULE_FROM = "20261119"
+SUPPRESS_RETRIEVAL_SUBJECT_TYPES = ("material", "fragment", "note", "hypothesis")
+_DOI_RE = re.compile(r"(?:doi\.org/|doi:\s*|^)(10\.\d{4,9}/[^\s\"'<>?#]+)", re.IGNORECASE)
+_PMID_RE = re.compile(r"(?:pubmed\.ncbi\.nlm\.nih\.gov/|pmid[:\s]*)(\d{5,10})(?:\b|/)", re.IGNORECASE)
+_PMCID_RE = re.compile(r"\b(PMC\d{5,10})\b", re.IGNORECASE)
+
+
+def extract_material_identifiers(record: dict[str, Any]) -> dict[str, str]:
+    """Extract canonical external identifiers (doi, pmid, pmcid) from a material row.
+
+    Inspects ``source.url`` and ``source.source_id`` only (never ``passage`` or
+    ``scope_note``, which legitimately cite related papers). Used by both the
+    forward-dated duplicate gate and ``tools/three_gates.py --check-source``.
+    """
+    src = record.get("source")
+    if not isinstance(src, dict):
+        return {}
+    url = str(src.get("url") or "").strip()
+    sid = str(src.get("source_id") or "").strip()
+    out: dict[str, str] = {}
+    for text in (url, sid):
+        if not text:
+            continue
+        if "doi" not in out:
+            dm = _DOI_RE.search(text)
+            if dm:
+                doi = dm.group(1).rstrip(".,;:)/]}>").lower()
+                for suffix in ("/full", "/abstract", "/pdf", "/fulltext", "/meta"):
+                    if doi.endswith(suffix) and "/" in doi[: -len(suffix)]:
+                        doi = doi[: -len(suffix)]
+                if doi:
+                    out["doi"] = doi
+        if "pmid" not in out:
+            pm = _PMID_RE.search(text)
+            if pm:
+                out["pmid"] = pm.group(1)
+        if "pmcid" not in out:
+            cm = _PMCID_RE.search(text)
+            if cm:
+                out["pmcid"] = cm.group(1).upper()
+    return out
+
 
 def id_stamp(record_id: Any) -> str | None:
     """Return the YYYYMMDD stamp inside a ledger ID, or None when it has none."""
@@ -717,6 +767,137 @@ def check_role_receipts(
             )
 
 
+def check_psc_verification_gate(
+    evaluations: dict[str, dict[str, Any]],
+    materials: dict[str, dict[str, Any]],
+    errors: list[str],
+    *,
+    cutoff: str = THREE_GATES_RULE_FROM,
+    today: datetime.date | None = None,
+) -> None:
+    """Gate 3 (reality monitoring): refuse new zero-verified primary_source_collision rows.
+
+    Historical rows minted before ``cutoff`` remain untouched and are reported by
+    ``psc_verification_advisory`` instead.  An existing non-verified material that
+    a session reads in full can be upgraded in place via an append-only
+    ``editorial_decisions`` row with ``target.type == "material"`` and
+    ``status == "verified"`` before filing the collision row.
+    """
+    for eid, evl in evaluations.items():
+        if evl.get("evidence_type") != "primary_source_collision":
+            continue
+        if not _is_new_row(eid, cutoff, today=today):
+            continue
+        mids = [m for m in (evl.get("material_ids") or []) if isinstance(m, str) and m]
+        if not mids:
+            errors.append(
+                f"evaluations:{eid}: primary_source_collision minted on/after {cutoff} "
+                "must cite at least one material_id with verification.status == 'verified' "
+                "(use 'cross_session_audit' or 'fragment_thought_experiment' when no primary text is collided)"
+            )
+            continue
+        has_verified = any(
+            ((materials.get(mid) or {}).get("verification") or {}).get("status") == "verified"
+            for mid in mids
+        )
+        if not has_verified:
+            errors.append(
+                f"evaluations:{eid}: primary_source_collision minted on/after {cutoff} cites "
+                f"no verified material ({', '.join(mids)}); verify at least one primary text "
+                "(or append an editorial_decisions material verification overlay) or record "
+                "evidence_type as 'fragment_thought_experiment' / 'cross_session_audit'"
+            )
+
+
+def check_material_duplicate_identifiers(
+    materials: dict[str, dict[str, Any]],
+    errors: list[str],
+    *,
+    cutoff: str = THREE_GATES_RULE_FROM,
+    today: datetime.date | None = None,
+) -> None:
+    """Gate 3 (external grounding): refuse new materials that duplicate an archived DOI/PMID/PMCID.
+
+    Legacy duplicates filed before ``cutoff`` (and legacy ``MAT-LIT-2027*`` internal
+    chronology stamps) are preserved as history.  New acquisitions must check
+    ``python3 tools/three_gates.py --check-source`` and cite or upgrade the existing
+    ``MAT-*`` record rather than minting a second copy of the same primary source.
+    """
+    first_seen: dict[tuple[str, str], str] = {}
+    for mid, record in materials.items():
+        idents = extract_material_identifiers(record)
+        if not idents:
+            continue
+        is_legacy_chronology = isinstance(mid, str) and mid.startswith("MAT-LIT-2027")
+        enforce = (not is_legacy_chronology) and _is_new_row(mid, cutoff, today=today)
+        reported = False
+        for kind in ("doi", "pmcid", "pmid"):
+            val = idents.get(kind)
+            if not val:
+                continue
+            key = (kind, val)
+            prev = first_seen.get(key)
+            if prev is None:
+                first_seen[key] = mid
+            elif enforce and not reported and prev != mid:
+                errors.append(
+                    f"materials:{mid}: duplicate {kind.upper()} {val!r} already archived as "
+                    f"{prev!r}; cite {prev!r} directly (and append an editorial_decisions "
+                    "material verification overlay if you newly verified its full text) — "
+                    "check beforehand with `python3 tools/three_gates.py --check-source`"
+                )
+                reported = True
+
+
+def check_evaluation_descendant_collision(
+    evaluations: dict[str, dict[str, Any]],
+    hypotheses: dict[str, dict[str, Any]],
+    errors: list[str],
+    *,
+    cutoff: str = THREE_GATES_RULE_FROM,
+    today: datetime.date | None = None,
+) -> None:
+    """Gate 2 (lineage routing hygiene): refuse ambiguous narrowing against an own direct child.
+
+    When a ``narrows_scope`` or ``refutes_unconditioned`` evaluation leaves both
+    ``spawned_hypothesis_ids`` and ``scope_inherited_by_hypothesis_ids`` empty, the
+    historical belief engine falls back to every active direct child of the target —
+    turning a hypothesis named as ``compared_against`` into an undeclared beneficiary.
+    On/after ``cutoff``, declare explicit ``scope_inherited_by_hypothesis_ids`` /
+    ``spawned_hypothesis_ids`` when a child inherits the narrowed scope, or compare
+    against a non-child rival.
+    """
+    direct_children: dict[str, set[str]] = {}
+    for hid, hyp in hypotheses.items():
+        for pid in hyp.get("parent_hypothesis_ids") or ():
+            if isinstance(pid, str) and pid in hypotheses:
+                direct_children.setdefault(pid, set()).add(hid)
+    for eid, evl in evaluations.items():
+        if evl.get("verdict") not in ("narrows_scope", "refutes_unconditioned"):
+            continue
+        if not _is_new_row(eid, cutoff, today=today):
+            continue
+        if evl.get("spawned_hypothesis_ids") or evl.get("scope_inherited_by_hypothesis_ids"):
+            continue
+        target_hid = evl.get("target_hypothesis_id")
+        if not isinstance(target_hid, str):
+            continue
+        children = direct_children.get(target_hid)
+        if not children:
+            continue
+        compared = [
+            cid for cid in (evl.get("compared_against_hypothesis_ids") or ())
+            if isinstance(cid, str) and cid in children
+        ]
+        if compared:
+            errors.append(
+                f"evaluations:{eid}: {evl.get('verdict')} on {target_hid!r} lists its direct "
+                f"child(ren) {compared} in compared_against_hypothesis_ids without explicit "
+                "scope_inherited_by_hypothesis_ids or spawned_hypothesis_ids; declare the "
+                "inheritor explicitly or compare against a non-child rival"
+            )
+
+
 def check_refs(
     collection_name: str,
     records: dict[str, dict[str, Any]],
@@ -955,22 +1136,51 @@ def main() -> int:
     errata_advisory = errata_schema_advisory(errata_records)
     psc_advisory = psc_verification_advisory(evaluations, materials)
     psc_new_advisory = psc_new_row_advisory(evaluations, materials)
-    # 2026-11-16 (P-6): a correction may withdraw a row's weight. The field is
-    # only meaningful when the correction names an evaluation that exists.
+    # 2026-11-16 (P-6): a correction may withdraw an evaluation row's weight.
+    # 2026-11-18 (Gate 2): 'suppress_retrieval' dampens retrieval of a contradicted
+    # material/fragment/note/hypothesis without erasing the ledger record.
+    suppress_collections = {
+        "material": materials,
+        "fragment": fragments,
+        "note": notes,
+        "hypothesis": hypotheses,
+    }
     for err_id, erec in errata_records.items():
-        if erec.get("weight_effect") != "void_row":
-            continue
-        if erec.get("subject_type") != "evaluation":
-            errors.append(
-                f"errata:{err_id}: weight_effect 'void_row' requires subject_type 'evaluation' "
-                f"(got {erec.get('subject_type')!r})"
-            )
-            continue
-        subject = erec.get("subject_id")
-        if not isinstance(subject, str) or subject not in evaluations:
-            errors.append(
-                f"errata:{err_id}: weight_effect 'void_row' names unknown evaluation {subject!r}"
-            )
+        weff = erec.get("weight_effect")
+        if weff == "void_row":
+            if erec.get("subject_type") != "evaluation":
+                errors.append(
+                    f"errata:{err_id}: weight_effect 'void_row' requires subject_type 'evaluation' "
+                    f"(got {erec.get('subject_type')!r})"
+                )
+                continue
+            subject = erec.get("subject_id")
+            if not isinstance(subject, str) or subject not in evaluations:
+                errors.append(
+                    f"errata:{err_id}: weight_effect 'void_row' names unknown evaluation {subject!r}"
+                )
+        elif weff == "suppress_retrieval":
+            stype = erec.get("subject_type")
+            subject = erec.get("subject_id")
+            if stype is None and isinstance(erec.get("fragment_id"), str):
+                stype = "fragment"
+                subject = erec.get("fragment_id")
+            if stype not in suppress_collections:
+                errors.append(
+                    f"errata:{err_id}: weight_effect 'suppress_retrieval' requires subject_type in "
+                    f"{list(SUPPRESS_RETRIEVAL_SUBJECT_TYPES)} (got {stype!r})"
+                )
+                continue
+            if not isinstance(subject, str) or subject not in suppress_collections[stype]:
+                errors.append(
+                    f"errata:{err_id}: weight_effect 'suppress_retrieval' names unknown "
+                    f"{stype} {subject!r}"
+                )
+            if erec.get("verdict") != "contradicted":
+                errors.append(
+                    f"errata:{err_id}: weight_effect 'suppress_retrieval' requires verdict "
+                    f"'contradicted' (got {erec.get('verdict')!r})"
+                )
     if errata_records:
         check_refs("evaluations", evaluations, "errata_ids", "errata", errata_records, errors)
         check_errata_addressee_labels(errata_records, errors)
@@ -1032,10 +1242,14 @@ def main() -> int:
 
     check_read_log_addressing(read_logs, errors)
     check_role_receipts(sessions, errors)
+    check_psc_verification_gate(evaluations, materials, errors)
+    check_material_duplicate_identifiers(materials, errors)
+    check_evaluation_descendant_collision(evaluations, hypotheses, errors)
 
     ed_valid_status = {
         "fragment": {"draft", "selected", "archived"},
         "question": {"open", "paused", "archived"},
+        "material": {"verified", "partially_verified", "unverified", "corrected"},
     }
     ed_records = collections.get("editorial_decisions", {})
     for decision_id, record in ed_records.items():
@@ -1058,6 +1272,18 @@ def main() -> int:
                 errors.append(
                     f"editorial_decisions:{decision_id}: status {record.get('status')!r} "
                     f"is not valid for target type {ttype!r} (expected {sorted(allowed)})"
+                )
+            vmethod = record.get("verification_method")
+            if ttype == "material" and record.get("status") == "verified":
+                if not isinstance(vmethod, str) or len(vmethod.strip()) < 8:
+                    errors.append(
+                        f"editorial_decisions:{decision_id}: material status 'verified' requires "
+                        "non-empty verification_method (>= 8 chars) stating how the primary text was checked"
+                    )
+            elif ttype != "material" and vmethod is not None:
+                errors.append(
+                    f"editorial_decisions:{decision_id}: verification_method is only valid for "
+                    f"target type 'material' (got {ttype!r})"
                 )
         supersedes = record.get("supersedes")
         if isinstance(supersedes, list):

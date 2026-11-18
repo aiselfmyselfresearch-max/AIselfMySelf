@@ -534,6 +534,7 @@ def related_notes(
     root: Path = ROOT,
     limit: int = 6,
     note_view: dict[str, dict[str, Any]] | None = None,
+    errata: dict[str, dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     """Stratified retrieval of episodic reports in ``readings/`` touching this question.
 
@@ -564,13 +565,19 @@ def related_notes(
         if wanted & set(thyp.get("question_ids") or []):
             hyp_note_ids.update(evl.get("note_ids") or [])
 
-    act_map = associations.activation(data) if data.get("read_log") else {}
+    act_map = (
+        associations.inhibited_activation(data, errata=errata)
+        if data.get("read_log")
+        else {}
+    )
+    inhib_map = associations.receiver_inhibition(data, errata=errata)
 
     view = note_view if note_view is not None else note_index.build_view(Path(root), data)
     stratum_rev: list[tuple[tuple[Any, ...], dict[str, Any]]] = []
     stratum_sal: list[tuple[tuple[Any, ...], dict[str, Any]]] = []
     stratum_cold: list[tuple[tuple[Any, ...], dict[str, Any]]] = []
     fallback: list[tuple[tuple[Any, ...], dict[str, Any]]] = []
+    suppressed_tail: list[tuple[tuple[Any, ...], dict[str, Any]]] = []
 
     for entry in view.values():
         refs = entry.get("refs", {})
@@ -598,27 +605,35 @@ def related_notes(
         salience = curated.get("salience")
         salience = min(salience, 3) if isinstance(salience, int) else 0
         is_stub = bool(curated.get("index_backfill"))
-        act_sal = act_map.get(("note", str(nid or "")), {}).get("salience", 0.0)
+        note_key = ("note", str(nid or ""))
+        act_entry = act_map.get(note_key, {})
+        act_sal = float(act_entry.get("inhibited_salience", act_entry.get("salience", 0.0)))
+        inhib_entry = inhib_map.get(note_key) or {}
+        is_suppressed = bool(inhib_entry.get("suppressed"))
+        gain = float(inhib_entry.get("gaba_gain", 1.0))
+        eff_curated_sal = round(salience * gain, 3)
         capped_refs = min(int(entry.get("ref_count", 0)), 18)
 
         base_key = (
             1 if is_stub else 0,
             -direct,
-            -salience,
+            -eff_curated_sal,
             -(claim_hits + len(hit_questions) + len(hit_fragments)),
             -capped_refs,
             entry["path"],
         )
-        if not is_stub and (in_hyp or rev_hits > 0):
-            stratum_rev.append(((-int(in_hyp), -rev_hits) + base_key, entry))
+        if is_suppressed:
+            suppressed_tail.append((base_key, entry))
+        elif not is_stub and (in_hyp or rev_hits > 0):
+            stratum_rev.append(((-int(in_hyp), -round(rev_hits * gain, 3)) + base_key, entry))
         elif not is_stub and (salience >= 2 or claim_hits > 0):
-            stratum_sal.append(((-salience, -round(act_sal, 3)) + base_key, entry))
+            stratum_sal.append(((-eff_curated_sal, -round(act_sal, 3)) + base_key, entry))
         elif not is_stub and act_sal < 0.25:
-            stratum_cold.append(((round(act_sal, 3), -salience) + base_key, entry))
+            stratum_cold.append(((round(act_sal, 3), -eff_curated_sal) + base_key, entry))
         else:
             fallback.append((base_key, entry))
 
-    for bucket in (stratum_rev, stratum_sal, stratum_cold, fallback):
+    for bucket in (stratum_rev, stratum_sal, stratum_cold, fallback, suppressed_tail):
         bucket.sort(key=lambda pair: pair[0])
 
     picked: list[dict[str, Any]] = []
@@ -662,7 +677,7 @@ def related_notes_lines(
     if errata is None:
         errata = load_errata(root)
     entries = related_notes(
-        data, target_qid, related_fragment_ids, root=root, note_view=note_view
+        data, target_qid, related_fragment_ids, root=root, note_view=note_view, errata=errata
     )
     lines = ["## 4.7 関連する精読ノート（`readings/`・層別抽出＋休眠発掘の窓）"]
     lines.append(
@@ -909,6 +924,10 @@ def material_block(mat_id: str, mat: dict[str, Any], errata: dict[str, dict[str,
             f"- **訂正録（この記録の隣に置かれ、記録自体は書き換えていない）**: {ids}"
             f" — `python3 tools/inspect_inquiry.py --id {mat_id}`"
         )
+        if _is_retrieval_suppressed("material", mat_id, errata):
+            out.append(
+                "- **第二門・受容側抑制（`suppress_retrieval`）**: 反証済み訂正により通常パケットの上位候補から減衰中（記録本文は不変）。"
+            )
     if mat.get("source_note"):
         out.append(f"- **先行する編者のメモ**: {mat['source_note']}")
     out.append("- **台帳の passage（引用・要約の別は記録に従う。要約を原典と呼ばない）**:")
@@ -918,19 +937,153 @@ def material_block(mat_id: str, mat: dict[str, Any], errata: dict[str, dict[str,
     return out
 
 
+def _is_retrieval_suppressed(target_type: str, target_id: str, errata: dict[str, dict[str, Any]]) -> bool:
+    for rec in errata.values():
+        if rec.get("weight_effect") != "suppress_retrieval" or rec.get("verdict") != "contradicted":
+            continue
+        if rec.get("status") == "withdrawn":
+            continue
+        st = rec.get("subject_type")
+        sid = rec.get("subject_id")
+        if st is None and isinstance(rec.get("fragment_id"), str):
+            st, sid = "fragment", rec.get("fragment_id")
+        if st == target_type and sid == target_id:
+            return True
+    return False
+
+
+def _has_live_contradicted_erratum(target_id: str, errata: dict[str, dict[str, Any]]) -> bool:
+    for rec in errata_for(target_id, errata):
+        if rec.get("verdict") == "contradicted" and rec.get("status") != "withdrawn":
+            return True
+    return False
+
+
+def closed_loop_lines(
+    data: dict[str, dict[str, dict[str, Any]]],
+    target_qid: str,
+    *,
+    shown_material_ids: Iterable[str] = (),
+    shown_fragment_ids: Iterable[str] = (),
+    errata: dict[str, dict[str, Any]] | None = None,
+    limit: int = 5,
+) -> list[str]:
+    """Build §4.6 Gate-1 closed-loop pattern-completion candidates (Horner et al. 2015)."""
+    if not data.get("read_log") and not data.get("relations"):
+        return []
+    import associations
+
+    err_map = errata if errata is not None else {}
+    cues: list[tuple[str, str]] = [("question", target_qid)]
+    for fid in list(shown_fragment_ids)[-3:]:
+        cues.append(("fragment", fid))
+    hyps = [
+        h for h in (data.get("hypotheses") or {}).values()
+        if target_qid in (h.get("question_ids") or []) and h.get("status") != "refuted"
+    ]
+    if hyps:
+        import belief_state
+
+        bs_in = dict(data)
+        bs_in.setdefault("errata", err_map)
+        qs = belief_state.compute_belief_state(data=bs_in).get("questions", {}).get(target_qid, {})
+        ranked_h = sorted(
+            qs.get("hypotheses") or [],
+            key=lambda h: -float(h.get("gated_posterior", h.get("posterior", 0.0))),
+        )
+        for h in ranked_h[:4]:
+            if h.get("effective_status") != "refuted":
+                cues.append(("hypothesis", h["hypothesis_id"]))
+    for mid in list(shown_material_ids)[:4]:
+        cues.append(("material", mid))
+    if len(cues) < 2:
+        return []
+
+    excluded = {target_qid} | set(shown_material_ids) | set(shown_fragment_ids)
+    raw_comps = associations.closed_loop_completions(
+        data,
+        cues,
+        errata=err_map,
+        allowed_types=frozenset({"material", "fragment", "note", "hypothesis"}),
+        exclude_ids=excluded,
+        limit=max(limit * 6, 30),
+    )
+    if not raw_comps:
+        return []
+    # Cap at 2 entries per record type so holistic completion spans materials,
+    # notes, hypotheses, and fragments instead of crowding into a single type.
+    comps: list[dict[str, Any]] = []
+    type_counts: Counter[str] = Counter()
+    overflow: list[dict[str, Any]] = []
+    for item in raw_comps:
+        tt = item["target"]["type"]
+        if type_counts[tt] < 2:
+            comps.append(item)
+            type_counts[tt] += 1
+            if len(comps) >= limit:
+                break
+        else:
+            overflow.append(item)
+    for item in overflow:
+        if len(comps) >= limit:
+            break
+        comps.append(item)
+
+    def _label(ttype: str, tid: str) -> str:
+        if ttype == "material":
+            m = (data.get("materials") or {}).get(tid) or {}
+            vst = ((m.get("verification") or {}).get("status")) or "unrecorded"
+            return f"{_one_line(m.get('title', ''), 52)} [`{vst}`]"
+        if ttype == "fragment":
+            return _one_line(((data.get("fragments") or {}).get(tid) or {}).get("title", ""), 55)
+        if ttype == "note":
+            n = (data.get("notes") or {}).get(tid) or {}
+            return _one_line(n.get("path", ""), 60)
+        if ttype == "hypothesis":
+            return _one_line(((data.get("hypotheses") or {}).get(tid) or {}).get("title", ""), 55)
+        return ""
+
+    out = [
+        "## 4.6 第一門：閉ループ補完候補（A–B–C–A の未提示第三要素・参考）",
+        "- **趣旨**: 対象問い・現在の競合仮説・先行断片のうち2要素以上と同時に結ばれ、かつ手がかり同士も結ばれている"
+        "閉ループ三角形の第三要素（§3・§4 未掲載、受容側抑制適用済）です。全候補は "
+        f"`python3 tools/associations.py --complete {target_qid} <ID>`。",
+    ]
+    for item in comps:
+        t = item["target"]
+        wp = item["witness_pairs"][0] if item.get("witness_pairs") else None
+        via = (
+            f"（閉ループ {item['closed_loops']}個、例: `{wp['left']['id']}` × `{wp['right']['id']}`）"
+            if wp
+            else f"（閉ループ {item['closed_loops']}個）"
+        )
+        desc = _label(t["type"], t["id"])
+        desc_s = f" — {desc}" if desc else ""
+        gain_s = f" [抑制gain={item['gaba_gain']:.2f}]" if item.get("gaba_gain", 1.0) < 0.99 else ""
+        out.append(f"- `{t['type']}:{t['id']}`{desc_s} {via}{gain_s}")
+    out.append("")
+    return out
+
+
 def _candidate_materials_for_question(
     data: dict[str, dict[str, dict[str, Any]]],
     target_qid: str,
+    *,
+    errata: dict[str, dict[str, Any]] | None = None,
 ) -> list[str]:
-    """Deterministic, seed-invariant material candidate order for §3.
+    """Deterministic, seed-invariant material candidate order for §3 (Gates 1–3).
 
-    When conditional hypotheses exist for ``target_qid``, interleaves the
-    active competing hypotheses' supporting and counter materials right after
-    the first two foundational question materials so §3 evolves as hypotheses
-    evolve instead of freezing on October 2026 seed materials forever.
-    When ``hypotheses`` is empty (e.g. synthetic fixtures or unseeded questions),
-    preserves ``q["material_ids"]`` order verbatim.
+    * When ``hypotheses`` is empty, preserves ``q["material_ids"]`` ledger order
+      for all non-suppressed items, moving only items with a live
+      ``weight_effect == "suppress_retrieval"`` erratum to the tail.
+    * When conditional hypotheses exist for ``target_qid``, ranks active
+      non-refuted hypotheses by their receiver-gated posterior ``P_gate`` (so
+      currently competing hypotheses surface their primary evidence first rather
+      than freezing on early alphabetical IDs), prefers ``verification.status ==
+      "verified"`` materials, and demotes items carrying live contradicted errata
+      or ``suppress_retrieval`` without removing archive reachability.
     """
+    err_map = errata if errata is not None else {}
     materials = data.get("materials", {})
     q = data.get("questions", {}).get(target_qid, {})
     base_mids = [mid for mid in q.get("material_ids", []) if mid in materials]
@@ -939,20 +1092,67 @@ def _candidate_materials_for_question(
         if target_qid in (h.get("question_ids") or [])
     ]
     if not hyps:
-        return base_mids
+        if not err_map:
+            return base_mids
+        keep = [m for m in base_mids if not _is_retrieval_suppressed("material", m, err_map)]
+        demoted = [m for m in base_mids if _is_retrieval_suppressed("material", m, err_map)]
+        return keep + demoted
+
+    import belief_state
+
+    bs_in = dict(data)
+    bs_in.setdefault("errata", err_map)
+    qs = belief_state.compute_belief_state(data=bs_in).get("questions", {}).get(target_qid, {})
+    gated_rank: dict[str, tuple[int, float, str]] = {}
+    for h in qs.get("hypotheses") or []:
+        hid = h["hypothesis_id"]
+        inhibited_tier = 1 if h.get("inhibition_state") in (
+            "refuted_inhibited", "superseded_inhibited", "orphan_over_narrowed"
+        ) else 0
+        gp = float(h.get("gated_posterior", h.get("posterior", 0.0)))
+        gated_rank[hid] = (inhibited_tier, -gp, hid)
 
     active_hyps = sorted(
-        (h for h in hyps if h.get("status") != "refuted"),
-        key=lambda h: str(h.get("hypothesis_id", "")),
+        (
+            h for h in hyps
+            if h.get("status") != "refuted"
+            and (qs.get("hypotheses") is None or gated_rank.get(h["hypothesis_id"], (0, 0.0, ""))[0] <= 1)
+        ),
+        key=lambda h: gated_rank.get(str(h.get("hypothesis_id", "")), (1, 0.0, str(h.get("hypothesis_id", "")))),
     )
-    dynamic_mids: list[str] = []
-    for h in active_hyps:
+    # Interleave up to 3 materials per competing hypothesis in the primary pass
+    # so one hypothesis with 10 sources cannot crowd its rival out of the 16 KiB
+    # §3 working-memory budget (Gate 1 × Gate 3 active comparison detail).
+    first_seen_rank: dict[str, tuple[int, int]] = {}
+    for h_idx, h in enumerate(active_hyps):
+        if any(
+            eh["hypothesis_id"] == h.get("hypothesis_id") and eh.get("effective_status") == "refuted"
+            for eh in (qs.get("hypotheses") or [])
+        ):
+            continue
+        local_slot = 0
         for mid in list(h.get("counter_material_ids") or []) + list(h.get("supporting_material_ids") or []):
-            if mid in materials and mid not in dynamic_mids:
-                dynamic_mids.append(mid)
+            if mid in materials and mid not in first_seen_rank:
+                wave = 0 if local_slot < 3 else 1
+                first_seen_rank[mid] = (wave, h_idx)
+                local_slot += 1
+
+    def _mat_priority(mid: str) -> tuple[int, int, int, int, int, str]:
+        sup = 1 if _is_retrieval_suppressed("material", mid, err_map) else 0
+        live_err = 1 if _has_live_contradicted_erratum(mid, err_map) else 0
+        vstat = ((materials[mid].get("verification") or {}).get("status")) or ""
+        ver_tier = 0 if vstat == "verified" else (1 if vstat == "corrected" else (2 if vstat == "partially_verified" else 3))
+        wave, h_idx = first_seen_rank[mid]
+        return (sup, live_err, ver_tier, wave, h_idx, mid)
+
+    dynamic_mids = sorted(first_seen_rank, key=_mat_priority)
+    clean_base = [m for m in base_mids if not _is_retrieval_suppressed("material", m, err_map)]
+    sup_base = [m for m in base_mids if _is_retrieval_suppressed("material", m, err_map)]
+    clean_dyn = [m for m in dynamic_mids if not _is_retrieval_suppressed("material", m, err_map)]
+    sup_dyn = [m for m in dynamic_mids if _is_retrieval_suppressed("material", m, err_map)]
 
     merged: list[str] = []
-    for mid in base_mids[:2] + dynamic_mids + base_mids[2:]:
+    for mid in clean_base[:2] + clean_dyn + clean_base[2:] + sup_dyn + sup_base:
         if mid not in merged:
             merged.append(mid)
     return merged
@@ -987,6 +1187,13 @@ def _belief_briefing_lines(
         )
         if alt_pair:
             bstate["questions"][target_qid]["top_competing_pair"] = alt_pair
+    elif pair_policy == "gated":
+        for pqid in list(bstate.get("questions") or ()):
+            gpair = belief_state.select_gated_pair(
+                bstate, bstate_input.get("evaluations") or {}, pqid
+            )
+            if gpair:
+                bstate["questions"][pqid]["top_competing_pair"] = gpair
     qstate = bstate["questions"].get(target_qid)
     role_info = belief_state.assign_session_role(seed=seed_label, question_summary=qstate)
 
@@ -1013,6 +1220,23 @@ def _belief_briefing_lines(
                 f"  - `{cqid}`: 有効仮説 {cqs['active_count']}/{cqs['hypothesis_count']} 件 ｜ "
                 f"条件付き世代質量 **{cqs['gen1_plus_mass']*100:.1f}%** ｜ D_KL={cqs['kl_from_uniform_bits']:.3f}b ｜ "
                 f"首位 `{cqs['hypotheses'][0]['hypothesis_id']}` ({cqs['hypotheses'][0]['posterior']*100:.1f}%) ｜ 最優先検証: {pair_txt}"
+            )
+            continue
+        if pair and pair.get("policy") == "gated":
+            pair_detail = (
+                f"三門制御P_gate: EIG_gate={pair['expected_info_gain']:.4f}, "
+                f"P_gate={pair.get('left_posterior', 0.0)*100:.1f}%/{pair.get('right_posterior', 0.0)*100:.1f}%, "
+                f"分離{pair.get('separations', 0)}回"
+            )
+            pair_txt = f"`{pair['left_hypothesis_id']}` vs `{pair['right_hypothesis_id']}` ({pair_detail})"
+            g_top = max(
+                cqs["hypotheses"],
+                key=lambda h: float(h.get("gated_posterior", h.get("posterior", 0.0))),
+            )
+            out.append(
+                f"  - `{cqid}`: 有効仮説 {cqs['active_count']}/{cqs['hypothesis_count']} 件 ｜ "
+                f"H_gate={cqs.get('gated_entropy_bits', 0.0):.3f}b ｜ "
+                f"P_gate首位 `{g_top['hypothesis_id']}` ({g_top.get('gated_posterior', 0.0)*100:.1f}%) ｜ 最優先検証: {pair_txt}"
             )
             continue
         if pair:
@@ -1070,8 +1294,32 @@ def _belief_briefing_lines(
             "**新しい根仮説を足してEIGを回復させないでください**——回復するのは選択器の燃料であり、知識ではありません"
             "（`readings/2026-11-15-where-the-learning-actually-happens.md` §5）。"
             f"行き先は (a) 未解決 `errata` **{open_errata}件**、(b) claim→評価の配線を伴う再読、"
-            "(c) 新規資料（`prompts/acquisition.md` の情報利得ゲート）のいずれかです。"
+            "(c) 新規資料（`prompts/acquisition.md` の情報利得ゲート）、"
+            "(d) 後付け移流・未照合PSCを抑制した三門制御対（`--pair-policy gated`）の検証です。"
         )
+
+    if qstate and qstate.get("gated_top_pair") and pair_policy != "gated":
+        gp = qstate["gated_top_pair"]
+        out.append(
+            f"- **三門制御基底（`P_gate`）推奨検証対（`--pair-policy gated`）**: "
+            f"`{gp['left_hypothesis_id']}` (P_gate={gp['left_posterior']*100:.1f}%) vs "
+            f"`{gp['right_hypothesis_id']}` (P_gate={gp['right_posterior']*100:.1f}%) "
+            f"[EIG_gate={gp['expected_info_gain']:.4f}, 既分離={gp.get('separations', 0)}回, "
+            f"H_gate={qstate.get('gated_entropy_bits', 0.0):.3f}b]"
+        )
+    if qstate and qstate.get("orphan_over_narrowed_ids"):
+        oids = qstate["orphan_over_narrowed_ids"]
+        shown_o = "、".join(f"`{oid}`" for oid in oids[:5])
+        more_o = f" ほか{len(oids) - 5}件" if len(oids) > 5 else ""
+        out.append(
+            f"- **第二門・過限定かつ子仮説未分化（`orphan_over_narrowed`: {len(oids)}件）**: "
+            f"{shown_o}{more_o}（Proposer/Consolidator は無条件根の追加より条件付き子仮説への射程引き渡しを優先検討）"
+        )
+    out.append(
+        "- **三門・二系統案内**: DN-A（場面・原典復元）=`§3・§4・§4.6・§4.7` ／ "
+        "DN-B（現在状態・他回応答監査）=`§0.2・§4.8・read_log.in_reply_to` ／ "
+        "PCS（現実識別・収蔵前重複/昇格照合）=`python3 tools/three_gates.py --check-source`・`--upgrade-candidates`。"
+    )
 
     if qstate and qstate["hypotheses"]:
         unex_target = qstate.get("unexamined_active_hypothesis_ids") or []
@@ -1106,8 +1354,21 @@ def _belief_briefing_lines(
                     f" / 照合={h['verified_direct_eval_count']}/{h['direct_eval_count']}"
                     f" / 証人EVL={h['witness_eval_session_count']},読={h.get('witness_read_session_count', 0)}"
                 )
+            gate_meta = (
+                f" / P_gate={h['gated_posterior']*100:.1f}%"
+                if "gated_posterior" in h
+                else ""
+            )
+            inh_st = h.get("inhibition_state")
+            if inh_st == "orphan_over_narrowed":
+                badges.append("🔸過限定・子仮説0")
+            elif inh_st == "superseded_inhibited":
+                badges.append("🔹継承済抑制")
+            if h.get("retrieval_suppressed"):
+                badges.append("🔇想起抑制")
+            ebadge = (" " + " ".join(badges)) if badges else ""
             out.append(
-                f"  - **`{h['hypothesis_id']}`** [`{h['effective_status']}` / **P={h['posterior']*100:.1f}%** / "
+                f"  - **`{h['hypothesis_id']}`** [`{h['effective_status']}` / **P={h['posterior']*100:.1f}%**{gate_meta} / "
                 f"u={h['uncertainty']:.3f} / G{h['generation']}:{h['lineage_op']}{audit_meta}] {h['title']}{ebadge}"
             )
             out.append(f"    - 命題: {_one_line(h['proposition'], 150)}")
@@ -1404,7 +1665,7 @@ def build_context_packet(
     # the selection stays deterministic and stays in ledger order -- a greedy
     # fill would reorder by size and make "which materials did I see" depend on
     # passage lengths instead of on the question's own record.
-    packet_materials = _candidate_materials_for_question(data, target_qid)
+    packet_materials = _candidate_materials_for_question(data, target_qid, errata=errata)
     shown_mats: list[str] = []
     omitted_mats: list[str] = []
     used_bytes = 0
@@ -1501,6 +1762,15 @@ def build_context_packet(
             )
         lines.append("")
 
+    lines.extend(
+        closed_loop_lines(
+            data,
+            target_qid,
+            shown_material_ids=shown_mats,
+            shown_fragment_ids=[f["fragment_id"] for f in rel_frags[-3:]],
+            errata=errata,
+        )
+    )
     lines.extend(
         related_notes_lines(
             data,
@@ -2074,14 +2344,14 @@ def main() -> int:
     )
     parser.add_argument(
         "--pair-policy",
-        choices=("eig", "least_separated"),
+        choices=("eig", "least_separated", "gated"),
         default="eig",
         help=(
-            "Which pair the packet offers as the next test. 'eig' (default) is the existing "
-            "rule: p_a*p_b*(u_a+u_b), which prefers pairs carrying mass on both sides and so "
-            "structurally prefers pairs containing the leader. 'least_separated' offers the "
-            "pair the archive has separated fewest times among hypotheses with P>=1%%, i.e. the "
-            "pairs the archive has never put against each other. Default output is unchanged."
+            "Which pair the packet offers as the next test. 'eig' (default) is historical "
+            "p_a*p_b*(u_a+u_b); 'least_separated' offers the least-tested active pair with "
+            "P>=1%%; 'gated' uses the Three-Gates receiver-gated basis P_gate (blocking "
+            "post-dated and opponent-as-heir fallback credit, weighting PSC by verification, "
+            "and discounting pair repeats and self-only supports)."
         ),
     )
     parser.add_argument(

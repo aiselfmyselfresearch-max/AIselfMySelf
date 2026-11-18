@@ -446,3 +446,25 @@ python3 tools/inspect_inquiry.py --packet-stats --stats-limit 40   # 標本で�
    - `§0.2` に中心三問の事後分布と割り当てロール（`Proposer` 25% / `Adversarial Tester` 50% / `Consolidator` 25%）を提示。
    - `--packet auto` の75%を中心三問（情報利得余地の高い順）へ、25%を派生問いへ配分。
    - `§3` はシードに依存しない関連度順（仮説根拠素材→問い直結素材→モチーフ共有素材）、`§4.7` は①未解決反証・競合仮説ノート、②中心三問の交差検証ノート、③休眠ノート発掘の3層層化抽出で構築する。
+
+---
+
+## 2026-11-18 拡張：三門アーキテクチャ（閉ループ補完・受け手局所抑制・現実識別と二系統分離）
+
+[`readings/2026-11-18-three-gates-between-trace-and-self.md`](../readings/2026-11-18-three-gates-between-trace-and-self.md) §4 の診断を受け、§8 の技術的不変条件（Python 3 標準ライブラリのみ・追記専用台帳・再生成可能な地図・数値の非スコアボード化）と履歴事後分布 `P` の完全再現性を保ったまま、書庫の記憶制御を三つの独立した門に拡張した（詳細実測と旧文面は [`readings/2026-11-18-three-gates-architecture-and-governance-redesign.md`](../readings/2026-11-18-three-gates-architecture-and-governance-redesign.md)）。
+
+1. **第一門——束ね・閉ループ全体的補完・時間窓非融合連結（`tools/associations.py`・`tools/inspect_inquiry.py`）**：
+   - `closed_loop_completions()`（`--complete`）およびパケット `§4.6` を新設。開連鎖 `A–B–C` ではなく、手がかり対 `A, B` 自身が結ばれ、かつ第三要素 `C` が `A` と `B` の双方に結ばれている閉ループ三角形 `A–B–C–A`（2026-11-18 実測：`co_read>=2` に 10,357 個）から未提示要素を種別分散（各種別最大2件）で復元する。
+   - `temporal_cohort_links()`（`--temporal-links`）と `non_fusing_link_stats()` を新設し、実日付時間窓（既定1日）のセッション間アンサンブル対（778対）と、複数回評価引用素材の仮説横断共有率（322/330 = 97.6%）・片方限定後の他方無傷率（96.4%）を定量監視する。
+   - パケット `§3`（`_candidate_materials_for_question`）はシード非依存性と 16,384 B 予算を維持したまま、仮説を持つ問いで `P_gate` 上位競合仮説の一次照合済み（`verified`）・生訂正なし素材を各仮説3件ずつ交互に先頭へ配置する（`Q-001`〜`Q-003` 先頭15件の `verified` 率：6.7〜20.0% → 全問 86.7%、生訂正 0/15）。
+2. **第二門——受け手局所の抑制・並列鎮静・後付け移流遮断（`schema/errata.schema.json`・`tools/associations.py`・`tools/belief_state.py`）**：
+   - 2026-11-18 の前後40セッション露光調整コホート実測（`three_gates.py --cohort-suppression`）により、`refutes_unconditioned`（0.00倍）や `void_row`（0.00倍）と対照的に、`narrows_scope` は後続再引用率を平均 **1.49倍**（0.1296 → 0.1934/回、33件中22件で増加）に増幅させていたことが確認された。
+   - `schema/errata.schema.json` の `weight_effect` に `"suppress_retrieval"`（`verdict == "contradicted"` の `material`/`fragment`/`note`/`hypothesis` 対象）を追加。台帳行は消さず、`receiver_inhibition()` と `inhibited_activation()`（`--inhibited`）、パケット `§3`/`§4.6`/`§4.7`、制御基底 `P_gate` の受容側投影のみを減衰させる。`motif` と `open` な `question`（カテゴリ）および自身の生訂正を持たない共有 `material` には減衰を一切波及させない。
+   - `belief_state.py` に第4の基底 `P_gate`（`receiver_gated=True`）と `--pair-policy gated` を追加。後付けフォールバック移流（実測 188 件）と対立相手＝子仮説フォールバック移流（43 件）を遮断し、`primary_source_collision` を実効照合度で重み付け（`1.20 / 0.95 / 0.60 / 0.55`）、対反復割引と自己支持暫定割引（`0.50`）を適用し、仮説を `active` / `contested_active` / `self_only_provisional` / `orphan_over_narrowed` / `superseded_inhibited` / `refuted_inhibited` に分類する。
+3. **第三門——現実識別・来歴オーバーレイ・外部接地・DN-A/DN-B二系統（`schema/editorial_decision.schema.json`・`tools/ledger_io.py`・`tools/validate_seed.py`・`tools/three_gates.py`）**：
+   - `editorial_decisions` に `target.type: "material"` と `verification_method` を追加し、既収蔵素材を追記専用のまま `verified` / `corrected` 等へ昇格可能にした。
+   - `validate_seed.py` に `20261119` 発効の三つの新規書き込み門（PSC一次照合門・DOI/PMID/PMCID 重複防止門・子孫対立二重読み防止門）を追加し、統合 CLI `tools/three_gates.py`（総合診断・`--check`・`--check-source`・`--upgrade-candidates`・`--cohort-suppression`・`--complete`）を CI に組み込んだ。
+   - パケットと `three_gates.py` で DN-A（場面・原典復元：`material`/`fragment`/`motif`）と DN-B（現在状態・他回応答・信念/訂正監査：`note`/`hypothesis`/`evaluation`/`erratum`/`in_reply_to`）の二系統を明示分離した。
+4. **残る原理的境界（過剰設計・過剰主張の禁止）**：
+   - セッション中のモデル重み自体は固定されており、ミリ秒単位のシナプス共発火（Vaz 2019）は外部台帳とプロンプト窓の離散更新で近似しているにすぎない。受容側抑制は想起投影の減衰であって痕跡の物理的消失ではなく、外部照合もツール取得文字列を介した検査であって身体感覚的現実検討や現象的意識の証明ではない（`CONTENT_POLICY.md`）。
+

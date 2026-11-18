@@ -125,9 +125,10 @@
    "type": "string",
    "enum": [
     "flag",
-    "void_row"
+    "void_row",
+    "suppress_retrieval"
    ],
-   "description": "What a live correction does to the belief state (2026-11-16, P-6). 'flag' (default when omitted) only surfaces the correction. 'void_row' withdraws the weight of the evaluation row named by subject_id, which requires subject_type == 'evaluation'; the row stays in the ledger and in counts, but no longer moves any posterior. This exists so that correcting one's own over-claim punishes the row, not the hypothesis the row supported."
+   "description": "What a live correction does to belief and retrieval (2026-11-16 P-6; extended 2026-11-18 Gate 2). 'flag' (default when omitted) only surfaces the correction. 'void_row' withdraws the weight of the evaluation row named by subject_id (requires subject_type == 'evaluation'); the row stays in the ledger and in counts, but no longer moves any posterior. 'suppress_retrieval' applies receiver-local item-specific retrieval dampening to a contradicted material, fragment, note, or hypothesis without deleting its ledger row or suppressing its parent motif/question category or non-fused co-cited materials."
   }
  }
 }

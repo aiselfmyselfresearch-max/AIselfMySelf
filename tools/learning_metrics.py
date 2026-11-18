@@ -201,11 +201,35 @@ def compute_learning_metrics(
     fwd_shards = date_axis.forward_dated_shards(root, today=today)
     map_ok, map_msg = belief_state.check_belief_map(root)
 
+    sat_q = [q["question_id"] for q in (bstate.get("saturation", {}).get("questions") or []) if q.get("saturated")]
+    gsat_q = [q["question_id"] for q in (bstate.get("gated_saturation", {}).get("questions") or []) if q.get("saturated")]
+    gated_entropies = [
+        float(bstate["questions"][q].get("gated_entropy_bits", 0.0))
+        for q in belief_state.CORE_QUESTIONS
+        if q in bstate["questions"]
+    ]
+    orphan_ids = sorted({
+        hid
+        for qs in bstate["questions"].values()
+        for hid in (qs.get("orphan_over_narrowed_ids") or [])
+    })
+    prov = bstate.get("provenance_verification") or {}
+
     return {
         "belief_divergence": {
             "mean_kl_bits": round(sum(kl_values) / max(1, len(kl_values)), 4),
             "mean_gen1_plus_mass": round(sum(gen1_shares) / max(1, len(gen1_shares)), 4),
             "core_questions": core_summaries,
+        },
+        "three_gates": {
+            "historical_saturated_questions": sat_q,
+            "gated_saturated_questions": gsat_q,
+            "mean_gated_entropy_bits": round(sum(gated_entropies) / max(1, len(gated_entropies)), 4),
+            "orphan_over_narrowed_count": len(orphan_ids),
+            "orphan_over_narrowed_ids": orphan_ids,
+            "psc_all_verified_ratio": float(prov.get("psc_all_verified_ratio", 0.0)),
+            "psc_all_verified": int(prov.get("psc_all_verified", 0)),
+            "psc_total": int(prov.get("psc_total", 0)),
         },
         "memory_conditioning": {
             "k0_curated_sessions": len(k0_sessions),
@@ -302,6 +326,14 @@ def render_report(metrics: dict[str, Any]) -> str:
         f"({wc['registered_reports']}/{wc['total_reports']}) / 前倒しシャード = {len(wc['forward_dated_shards'])} 本 / "
         f"BELIEF_MAP同期 = {'OK' if wc['belief_map_current'] else 'NG'}",
     ]
+    tg = metrics.get("three_gates")
+    if tg:
+        lines.append(
+            f"6. 三門制御健全性 (観測値): 飽和問い P={len(tg['historical_saturated_questions'])}/3 → "
+            f"P_gate={len(tg['gated_saturated_questions'])}/3 (平均H_gate={tg['mean_gated_entropy_bits']:.3f}b) / "
+            f"過限定孤児={tg['orphan_over_narrowed_count']}件 / "
+            f"PSC全照合={tg['psc_all_verified_ratio']*100:.1f}% ({tg['psc_all_verified']}/{tg['psc_total']})"
+        )
     return "\n".join(lines)
 
 

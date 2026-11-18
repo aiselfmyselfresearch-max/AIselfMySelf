@@ -85,6 +85,38 @@ python3 tools/errata_audit.py --derived-status --json
 パケットは代わりに、(a) 未解決 `errata`、(b) claim→評価の配線を伴う再読、(c) 新規資料、を提示する。
 **禁止ではない。既定から外すだけである。**
 
+## 4.5 三門アーキテクチャの追記専用オーバーレイと新規書き込み門（2026-11-18 追加）
+
+[`readings/2026-11-18-three-gates-between-trace-and-self.md`](../readings/2026-11-18-three-gates-between-trace-and-self.md) §4 の診断と
+2026-11-18 の実測（[`readings/2026-11-18-three-gates-architecture-and-governance-redesign.md`](../readings/2026-11-18-three-gates-architecture-and-governance-redesign.md)）に基づき、
+既存台帳行のバイト不変性と履歴事後分布 `P` の再現性を保ったまま、次のオーバーレイと書き込み門を併用する。
+
+1. **素材照合状態の追記専用オーバーレイ（第三門・`editorial_decisions`）**：
+   - `target.type == "material"` に対して `status`（`verified` / `partially_verified` / `unverified` / `corrected`）と
+     `verification_method`（`status == "verified"` のとき8文字以上で必須）を追記できる。
+   - `tools/ledger_io.py` が読込時に `supersedes` 順序付きで `materials[id]["verification"]` へ透過適用し、
+     `state/materials*` の過去シャードを1バイトも書き換えずに一次全文再照合の成果を全ツールへ反映する。
+2. **項目固有の受容側想起抑制（第二門・`errata.weight_effect: "suppress_retrieval"`）**：
+   - `verdict == "contradicted"` かつ `status != "withdrawn"` の訂正が、`material` / `fragment` / `note` / `hypothesis` を
+     名指して `weight_effect: "suppress_retrieval"` を宣言すると、本文と直接参照（`--id`）を残したまま、
+     `associations.py --inhibited`・パケット `§3`・`§4.6`・`§4.7`・制御基底 `P_gate` における想起優先度を局所的に減衰させる。
+   - カテゴリ（`motif`・`open` な `question`）および同じ素材を別文脈で引用する他仮説には抑制を波及させない（項目固有抑制・消去非共有）。
+3. **三門制御基底 `P_gate` と推奨対 `--pair-policy gated`（第二門・第三門）**：
+   - 履歴基準系 `P`・`P_sep`・`P_lin` の隣に、(a) 後付けおよび対立相手＝子仮説への暗黙フォールバック移流の遮断、
+     (b) `primary_source_collision` の実効照合度に応じた重み調整（`all_verified=1.20` / `mixed_verified=0.95` / `zero_verified=0.60` / `no_materials=0.55`）、
+     (c) 対反復割引と提案回自己支持の暫定割引（`0.50`）、(d) `suppress_retrieval` 減衰を同時適用した `P_gate` を算出し、
+     `orphan_over_narrowed`（`narrows_scope > supports` かつ子仮説 0 件）と `superseded_inhibited` を識別する。
+   - 2026-11-18 実測で、履歴 `P` では `Q-001`（`EIG=0.0020`）・`Q-002`（`EIG=0.0015`）の2問が後付け移流により飽和していたのに対し、
+     `P_gate` では3問すべてが非飽和（`Q-001 H_gate=1.625b`, `Q-002 H_gate=3.056b`, `Q-003 H_gate=0.992b`）に回復した。
+4. **2026-11-19（`THREE_GATES_RULE_FROM`）以降の新規書き込み門（`validate_seed.py` / `three_gates.py --check`）**：
+   - **PSC一次照合門**：新規 `primary_source_collision` 行は少なくとも1件の実効 `verified` 素材を引用しなければならない
+     （未照合素材のみの検討は `fragment_thought_experiment` または `cross_session_audit` で記帳する）。
+   - **識別子重複防止門**：新規 `MAT-*` 行は既存行と同一の正規化 DOI・PMID・PMCID を重複登録できない
+     （収蔵前に `python3 tools/three_gates.py --check-source` を実行し、既存 `MAT-*` の引用または照合オーバーレイ昇格を行う）。
+   - **子孫対立二重読み防止門**：明示的な継承先（`spawned_hypothesis_ids` / `scope_inherited_by_hypothesis_ids`）を書かない
+     新規 `narrows_scope` / `refutes_unconditioned` 行は、`target_hypothesis_id` の直接の子仮説を `compared_against_hypothesis_ids` に入れられない。
+   - 2026-11-19 より前の既存行は追記専用の履歴として全件免除する。
+
 ## 5. この文書自身について
 
 この文書は書庫が書いた手順であり、人間の指示でも原典でもない。規則の数値（0.02、9.8% など）は

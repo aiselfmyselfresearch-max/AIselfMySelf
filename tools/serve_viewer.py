@@ -570,9 +570,15 @@ class ArchiveRequestHandler(BaseHTTPRequestHandler):
         if route == "/api/packet":
             qs = parse_qs(parsed.query)
             qid = (qs.get("question_id") or ["auto"])[0]
+            policy = (qs.get("pair_policy") or ["eig"])[0]
+            if policy not in ("eig", "least_separated", "gated"):
+                policy = "eig"
             try:
-                packet_text = build_context_packet(load_all(), qid)
-                body = json.dumps({"question_id": qid, "packet": packet_text}, ensure_ascii=False).encode("utf-8")
+                packet_text = build_context_packet(load_all(), qid, pair_policy=policy)
+                body = json.dumps(
+                    {"question_id": qid, "pair_policy": policy, "packet": packet_text},
+                    ensure_ascii=False,
+                ).encode("utf-8")
             except Exception as exc:
                 err_body = json.dumps({"error": str(exc)}, ensure_ascii=False).encode("utf-8")
                 self.send_response(400)

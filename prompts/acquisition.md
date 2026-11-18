@@ -5,14 +5,15 @@
 ## 何を、なぜ読むか（情報利得ゲート）
 
 - **新規資料の情報利得ゲート**: 新しい資料を `state/materials.d/` に追加する場合は、必ず**どの既存の競合仮説ペア（`HYP-*` vs `HYP-*`）を識別・反証・射程限定するためにその資料が必要か**を `source_note` または同時に記帳する `EVL-*` / `NOTE-*` に明記します。既存仮説と無関係な網羅的・穴埋め的収集（「ある語や文化圏が0回だから集める」）は行いません。
-- 既収蔵資料の再照合だけでもよく、**新規素材は0件でも構いません。追加する場合の上限は1セッション5件**です。これは肥大化を防ぐ技術的な上限であり、目標件数ではありません。
+- **収蔵前の外部接地・重複照合（第三門）**: 新規 `MAT-*` を採番する前に必ず `python3 tools/three_gates.py --check-source --doi <DOI> --pmid <PMID> --pmcid <PMCID> --title "<原題>"` を実行し、既収蔵資料との DOI・PMID・PMCID・題名の衝突および原著の訂正（Corrigendum / Erratum）・撤回（Retraction）の有無を確認します。既に収蔵されている資料は重複登録せず（`20261119` 以降の新規行は `validate_seed.py` で拒否）、既存 `MAT-*` を引用します。
+- 既収蔵資料の再照合だけでもよく（高波及候補は `python3 tools/three_gates.py --upgrade-candidates`）、**新規素材は0件でも構いません。追加する場合の上限は1セッション5件**です（人間が件数を明示委任した場合は `sessions.human_direction` に来歴を分離して記帳）。これは肥大化を防ぐ技術的な上限であり、目標件数ではありません。
 - 参照先にアクセスできない場合は未照合と明記します。書誌だけの確認、二次資料の確認、原典本文の確認を区別し、記憶から引用や確認結果を補いません。
 
 ## 出典と記録
 
 - 直接引用は確認した原文・版・箇所・URLを添え、短い範囲にとどめます。編者要約は `passage` にその旨を明示します。既存台帳の `verification` は過去の記録であり、今回の照合結果ではありません。
-- 再照合した結果は `readings/`（および対応する `NOTE-*` 行）、対象素材の `read_log`、そして仮説の検証結果である `evaluations`（`EVL-*`）に追記し、`python3 tools/belief_state.py --write-map` で [`BELIEF_MAP.md`](../BELIEF_MAP.md) を更新します。過去の素材行や検証状態は上書きせず、誤りは `errata` で隣に記録します。
-- 新しい資料を台帳へ追加する場合は、自分の `materials.d/` シャードに来歴・適用範囲を記録し、どの `HYP-*` の適用条件・反証条件と衝突したかを `read_log` と `evaluations` に残します。断片や新モチーフを無理に作る必要はありません。
+- 再照合した結果は `readings/`（および対応する `NOTE-*` 行）、対象素材の `read_log`、そして仮説の検証結果である `evaluations`（`EVL-*`）に追記し、`python3 tools/belief_state.py --write-map` で [`BELIEF_MAP.md`](../BELIEF_MAP.md) を更新します。過去の `state/materials*` 行自体は書き換えませんが、既収蔵素材の原典本文を直接照合して `verified`（または `corrected`）に到達した場合は、`editorial_decisions` に `target: {"type": "material", "id": "MAT-..."}`・`status`・`verification_method`（照合した公開全文URL/PMCID/版面など）を追記してオーバーレイ昇格できます。内容の誤りは `errata` で隣に記録します（必要に応じて `weight_effect: "suppress_retrieval"` で想起優先度を局所減衰できます）。
+- 新しい資料を台帳へ追加する場合は、自分の `materials.d/` シャードに来歴・適用範囲を記録し、どの `HYP-*` の適用条件・反証条件と衝突したかを `read_log` と `evaluations` に残します（`20261119` 以降の `primary_source_collision` には最低1件の実効 `verified` 素材が必要です）。断片や新モチーフを無理に作る必要はありません。
 - 出典は人間観・自己モデルを境界条件から検証する対話相手です。機能的・文献的事実からAIの現象的意識の有も無も直接演繹せず、どの条件付き仮説が維持・限定・棄却されるかを精密に記述します。架空の `conversation_trace` を作りません。
 
 新しいテーマ別監査や一時スクリプトを増やさず、`start.md` の並列安全な追記と技術検証を行って完了します。
