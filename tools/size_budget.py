@@ -1386,7 +1386,14 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # Only count tripped --strict. Historical reports cannot be compacted;
         # use the preceding 12-report review margin, not a per-merge increase.
         # Leave the 34 MiB soft, all hard limits and the per-file caps unchanged.
-        soft_files=977,
+        # 2026-11-18 (977 -> 990, SESSION-20261118-b47924): after #914 merged,
+        # readings/ reached 977/977 files (34,550,012 B, 32.95 MiB of 34 MiB),
+        # so adding one report takes the count to 978 and trips --strict on
+        # file count alone. Historical reports are append-only and cannot be
+        # compacted; apply the same 12-report review margin (978 + 12 = 990).
+        # Leave soft_bytes (34 MiB), hard limits (1200 / 48 MiB), per-file caps
+        # (256 KiB / 512 KiB), and all state/*.d budgets untouched.
+        soft_files=990,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
