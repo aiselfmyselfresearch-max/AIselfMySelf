@@ -12,6 +12,7 @@ Usage:
   python3 tools/belief_state.py --json
   python3 tools/belief_state.py --write-map
   python3 tools/belief_state.py --check-map
+  python3 tools/belief_state.py --addressee-audit   # 問いをまたぐ質量（宛先の復元）。書き込みなし
 
 Generation order: run this tool's --write-map BEFORE tools/map_build.py.
 READING_MAP.md's inbound-mention graph is built over every root *.md, which
@@ -1530,6 +1531,261 @@ def saturation_snapshot(
     }
 
 
+# ---------------------------------------------------------------------------
+# Cross-question mass (addressee audit).
+#
+# The engine keeps ONE ``log_odds`` per hypothesis and turns it into several
+# per-question distributions by a softmax over the hypotheses registered to
+# each question.  An evaluation row carries ``target_hypothesis_id``,
+# ``compared_against_hypothesis_ids``, ``material_ids`` and ``note_ids`` — and
+# no question field (``schema/evaluation.schema.json`` has none).  So a reading
+# addressed to one question moves every question that hypothesis is registered
+# to, and the ledger cannot say otherwise at the row that spends the weight.
+#
+# The addressee is not simply missing: ``sessions.offered_target_question_id``
+# records which question the session was handed, one row above.  This audit
+# measures two things and changes no weight:
+#
+#   1. how many evaluation rows can be attributed to a single core question by
+#      that row above (``receipt`` -> ``session_questions`` -> ``target_question``),
+#      and how many cannot (``none``);
+#   2. what each core question's distribution looks like when an evaluation is
+#      counted ONLY for the question it is addressed to (+ the unaddressed
+#      rows), compared with the present arithmetic that counts it everywhere.
+#
+# Measured 2026-11-18 on the live ledger: Q-001/Q-002 overlap (sum of the
+# per-hypothesis minimum) 0.977 under the present arithmetic and 0.2512 under
+# the question-scoped counterfactual.  The pair of central questions that this
+# archive exists to keep apart is 97.7% the same distribution, and 72.6 points
+# of that identity is produced by spending evidence addressed to one question
+# inside the other.  Reading: readings/2026-11-18-the-addressee-is-one-row-
+# above.md.  This is a measurement, not a proposal to change the arithmetic.
+# ---------------------------------------------------------------------------
+
+ADDRESSEE_RULE_LABELS: dict[str, str] = {
+    "receipt": "セッション・レシートの offered_target_question_id",
+    "session_questions": "セッションの question_ids が中核問い1件",
+    "target_question": "対象仮説の question_ids が中核問い1件",
+    "none": "宛先を復元できない",
+}
+
+
+def evaluation_addressee(
+    evl: dict[str, Any],
+    sessions: dict[str, dict[str, Any]],
+    hypotheses: dict[str, dict[str, Any]],
+    *,
+    question_ids: tuple[str, ...] = CORE_QUESTIONS,
+) -> tuple[str | None, str]:
+    """Return ``(core question id or None, rule)`` for one evaluation row.
+
+    The cascade is deliberately narrow-to-wide and is named in the output, so a
+    reader can see how much of the attribution rests on the session receipt and
+    how much on a single-question target.  ``None`` means the row names no core
+    question at any level; it is counted for every question, as it is today.
+    """
+    core = set(question_ids)
+    session = sessions.get(str(evl.get("session_id") or "")) or {}
+    receipt = session.get("offered_target_question_id")
+    if receipt in core:
+        return receipt, "receipt"
+    named = [q for q in (session.get("question_ids") or []) if q in core]
+    if len(named) == 1:
+        return named[0], "session_questions"
+    target = hypotheses.get(str(evl.get("target_hypothesis_id") or "")) or {}
+    own = [q for q in (target.get("question_ids") or []) if q in core]
+    if len(own) == 1:
+        return own[0], "target_question"
+    return None, "none"
+
+
+def _question_posterior_map(state: dict[str, Any], qid: str) -> dict[str, float]:
+    qstate = (state.get("questions") or {}).get(qid) or {}
+    return {
+        h["hypothesis_id"]: float(h.get("posterior") or 0.0)
+        for h in qstate.get("hypotheses") or []
+    }
+
+
+def _distribution_overlap(a: dict[str, float], b: dict[str, float]) -> float:
+    """Sum of the per-hypothesis minimum: 1.0 = identical, 0.0 = disjoint."""
+    return round(sum(min(a.get(k, 0.0), b.get(k, 0.0)) for k in set(a) | set(b)), 4)
+
+
+def _top_rows(dist: dict[str, float], limit: int = 3) -> list[dict[str, Any]]:
+    return [
+        {"hypothesis_id": hid, "posterior": round(p, 4)}
+        for hid, p in sorted(dist.items(), key=lambda item: (-item[1], item[0]))[:limit]
+        if p > 0.0
+    ]
+
+
+def addressee_audit(
+    data: dict[str, dict[str, dict[str, Any]]] | None = None,
+    *,
+    root: Path = ROOT,
+    question_ids: tuple[str, ...] = CORE_QUESTIONS,
+) -> dict[str, Any]:
+    """Measure how much of each question's mass comes from evidence addressed elsewhere.
+
+    Returns counts, per-question tops, and pairwise overlaps under two bases:
+    ``present`` (the engine's arithmetic, unchanged) and ``question_scoped``
+    (an evaluation counts only for the question it is addressed to, plus the
+    rows whose addressee cannot be recovered).  Nothing is written.
+    """
+    cols = data if data is not None else load_belief_ledgers(root)
+    sessions = cols.get("sessions") or {}
+    hypotheses = cols.get("hypotheses") or {}
+    evaluations = cols.get("evaluations") or {}
+
+    rule_counts: Counter[str] = Counter()
+    by_question: Counter[str] = Counter()
+    addressee: dict[str, str | None] = {}
+    for eid, evl in evaluations.items():
+        qid, rule = evaluation_addressee(
+            evl, sessions, hypotheses, question_ids=question_ids
+        )
+        addressee[eid] = qid
+        rule_counts[rule] += 1
+        by_question[qid or "unaddressed"] += 1
+
+    present_state = compute_belief_state(data=cols, root=Path(root))
+    present = {qid: _question_posterior_map(present_state, qid) for qid in question_ids}
+
+    scoped: dict[str, dict[str, float]] = {}
+    for qid in question_ids:
+        sub = dict(cols)
+        sub["evaluations"] = {
+            eid: evl
+            for eid, evl in evaluations.items()
+            if addressee[eid] in (None, qid)
+        }
+        scoped_state = compute_belief_state(data=sub, root=Path(root))
+        scoped[qid] = _question_posterior_map(scoped_state, qid)
+
+    pairs = [
+        (a, b)
+        for i, a in enumerate(question_ids)
+        for b in question_ids[i + 1:]
+    ]
+    multi_ids = {
+        hid
+        for hid, hyp in hypotheses.items()
+        if len([q for q in (hyp.get("question_ids") or []) if q in question_ids]) > 1
+    }
+    all_core = sorted(
+        hid
+        for hid, hyp in hypotheses.items()
+        if len([q for q in (hyp.get("question_ids") or []) if q in question_ids]) == len(question_ids)
+    )
+
+    return {
+        "core_questions": list(question_ids),
+        "evaluations": len(evaluations),
+        "sessions": len(sessions),
+        "sessions_with_receipt": sum(
+            1 for s in sessions.values() if s.get("offered_target_question_id") in set(question_ids)
+        ),
+        "addressee_rule_counts": dict(rule_counts),
+        "addressee_rule_labels": ADDRESSEE_RULE_LABELS,
+        "evaluations_by_addressee": dict(by_question),
+        "hypotheses": {
+            "total": len(hypotheses),
+            "multi_question": len(multi_ids),
+            "multi_question_ids": sorted(multi_ids),
+            "all_core_question_ids": all_core,
+            "mass_on_multi_question_rows": {
+                qid: {
+                    "share": round(sum(p for hid, p in present[qid].items() if hid in multi_ids), 4),
+                    "rows": sum(1 for hid in present[qid] if hid in multi_ids),
+                    "total_rows": len(present[qid]),
+                }
+                for qid in question_ids
+            },
+            "rows_under_one_tenth_percent": {
+                qid: sum(1 for p in present[qid].values() if p < 0.001)
+                for qid in question_ids
+            },
+        },
+        "present": {
+            "top": {qid: _top_rows(present[qid]) for qid in question_ids},
+            "overlap": {
+                f"{a}|{b}": _distribution_overlap(present[a], present[b])
+                for a, b in pairs
+            },
+        },
+        "question_scoped": {
+            "top": {qid: _top_rows(scoped[qid]) for qid in question_ids},
+            "overlap": {
+                f"{a}|{b}": _distribution_overlap(scoped[a], scoped[b])
+                for a, b in pairs
+            },
+            "evaluations_used": {
+                qid: sum(1 for qid2 in addressee.values() if qid2 in (None, qid))
+                for qid in question_ids
+            },
+        },
+        "scope_rule": (
+            "question_scoped は、評価行を「セッション・レシート→セッションの"
+            "question_ids→対象仮説の question_ids」の順で中核問い1件に帰属し、"
+            "その問いに宛てられた行と宛先不明の行だけを数える。帰属規則は"
+            "複数ありうる（note_ids・material_ids 側から復元する規則は未実装）。"
+        ),
+        "writes": False,
+    }
+
+
+def render_addressee_audit_markdown(audit: dict[str, Any]) -> str:
+    """Render the addressee audit as plain text (no file is written)."""
+    lines: list[str] = [
+        "# 宛先監査 — 一つの log_odds が複数の softmax に入るとき",
+        "",
+        f"- 評価行: {audit['evaluations']} ／ セッション: {audit['sessions']} ／ "
+        f"レシートに中核問いを持つセッション: {audit['sessions_with_receipt']}",
+        "- 評価行に問いの欄はない（`schema/evaluation.schema.json`）。宛先は一行上から復元する。",
+        "",
+        "| 復元規則 | 行数 |",
+        "| :--- | ---: |",
+    ]
+    for rule, count in sorted(audit["addressee_rule_counts"].items(), key=lambda kv: -kv[1]):
+        lines.append(f"| {audit['addressee_rule_labels'].get(rule, rule)} (`{rule}`) | {count} |")
+    lines.append("")
+    lines.append("| 問い | 宛てられた評価行 |")
+    lines.append("| :--- | ---: |")
+    for qid, count in sorted(audit["evaluations_by_addressee"].items()):
+        lines.append(f"| `{qid}` | {count} |")
+    hyp = audit["hypotheses"]
+    lines.extend([
+        "",
+        f"- 仮説 {hyp['total']} 件のうち複数の中核問いに登録: **{hyp['multi_question']}** 件",
+        f"- 三つすべてに登録: **{len(hyp['all_core_question_ids'])}** 件（"
+        + "、".join(f"`{h}`" for h in hyp["all_core_question_ids"]) + "）",
+        "",
+        "| 問い | 複数問い行が占める質量 | 行数 | 0.1% 未満の有効行 |",
+        "| :--- | ---: | ---: | ---: |",
+    ])
+    for qid in audit["core_questions"]:
+        m = hyp["mass_on_multi_question_rows"][qid]
+        lines.append(
+            f"| `{qid}` | {m['share'] * 100:.1f}% | {m['rows']}/{m['total_rows']} | "
+            f"{hyp['rows_under_one_tenth_percent'][qid]} |"
+        )
+    for basis, label in (("present", "現行の算術"), ("question_scoped", "宛先で割った場合")):
+        lines.extend(["", f"## {label}", "", "| 問い | 上位3件 |", "| :--- | :--- |"])
+        for qid in audit["core_questions"]:
+            top = " / ".join(
+                f"`{row['hypothesis_id']}` {row['posterior'] * 100:.1f}%"
+                for row in audit[basis]["top"][qid]
+            )
+            lines.append(f"| `{qid}` | {top} |")
+        lines.append("")
+        for pair, value in audit[basis]["overlap"].items():
+            a, b = pair.split("|")
+            lines.append(f"- 重なり `{a}` × `{b}`: **{value}**")
+    lines.extend(["", f"- 規則: {audit['scope_rule']}", "- 本監査は何も書き込まない（`writes: false`）。"])
+    return "\n".join(lines)
+
+
 def render_belief_map_markdown(state: dict[str, Any]) -> str:
     """Render deterministic tracked BELIEF_MAP.md."""
     lines: list[str] = [
@@ -1841,7 +2097,20 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--json", action="store_true", help="output full JSON belief state")
     parser.add_argument("--write-map", action="store_true", help="write BELIEF_MAP.md and map/belief_state.md")
     parser.add_argument("--check-map", action="store_true", help="verify BELIEF_MAP.md is current")
+    parser.add_argument(
+        "--addressee-audit",
+        action="store_true",
+        help="measure cross-question mass (which question each evaluation is addressed to); writes nothing",
+    )
     args = parser.parse_args(argv)
+
+    if args.addressee_audit:
+        audit = addressee_audit(root=args.root)
+        if args.json:
+            print(json.dumps(audit, ensure_ascii=False, indent=2))
+        else:
+            print(render_addressee_audit_markdown(audit))
+        return 0
 
     if args.write_map:
         tracked, _untracked = write_belief_maps(args.root)
