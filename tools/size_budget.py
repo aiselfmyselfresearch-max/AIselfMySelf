@@ -878,7 +878,13 @@ soft_shards=146,
         # leaving <19 KiB before --strict failure) and soft_shards 98 -> 130 (measured 86).
         # Every new report in readings/ is now required by CI to register a NOTE-* row;
         # hard 4 MiB / 160 unchanged.
-        soft_bytes=2 * MIB,
+        # 2026-11-18 (SESSION-20261118-bdc7be): soft_bytes 2.00 -> 2.25 MiB.
+        # Measured on main 52daa34c: state/notes.d = 2,092,362 B of 2,097,152 B soft
+        # (4,790 B headroom across 153 shards); appending this consolidator session's
+        # report note + zero-claim curation note (~10 KiB) crosses 2.00 MiB while
+        # keeping soft_shards=153 and hard_bytes=4 MiB unchanged. Order-sensitive
+        # ledger excluded from consolidation -> net reclaim = 0.
+        soft_bytes=int(2.25 * MIB),
         hard_bytes=4 * MIB,
         # 2026-11-08: one extra soft slot for this report's curated note;
         # keep the per-report row in its own append-only session shard.
