@@ -1406,6 +1406,12 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # 48 MiB and the 256 KiB / 512 KiB per-report caps are unchanged.
         # See readings/2026-11-18-ten-neuroscience-sources-on-detail-and-
         # self-coming-apart.md §5.6 (台帳保守).
+        # 2026-11-18 (merge of origin/main 845f16a5 x SESSION-20261118-d8fe06):
+        # both branches independently raised 977 -> 990 from the same b32e161
+        # baseline (+12 review margin).  Measured on the merged union:
+        # readings/ = 979 files / 34,730,633 B (33.12 MiB of the 34 MiB soft,
+        # 920,951 B headroom, 11 file slots remaining under 990).  Both
+        # records are preserved above; 990 and 34 MiB both remain [OK].
         soft_files=990,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
