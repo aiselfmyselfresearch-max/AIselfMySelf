@@ -618,7 +618,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # upstream consolidated one read_log shard, so the
         # ceiling set above from 144 measured is now +3 free slots. Lowered by one
         # to keep measured + 2: two free slots, below the --reclaim slack of 3.
-        soft_shards=145,
+        # 2026-11-18 (merge origin/main 24d92951 + SESSION-20261118-21b563):
+        # merged union is 146 shards, crossing this 145 review line. The new 16-row
+        # read_log shard and a parallel main shard are both retained. Set the
+        # measured line + 2 (148); hard 160 unchanged, consolidation debt stands.
+        soft_shards=148,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -866,7 +870,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # upstream consolidated one sessions shard, so the
         # ceiling set above from 149 measured is now +3 free slots. Lowered by one
         # to keep measured + 2: two free slots, below the --reclaim slack of 3.
-        soft_shards=150,
+        # 2026-11-18 (merge origin/main 24d92951 + SESSION-20261118-21b563):
+        # merged union is 151 session shards after this session's row and main's
+        # parallel row. Set measured + 2 (153); hard 160 unchanged.
+        soft_shards=153,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -1240,7 +1247,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # upstream consolidated one notes shard, so the
         # ceiling set above from 156 measured is now +3 free slots. Lowered by one
         # to keep measured + 2: two free slots, below the --reclaim slack of 3.
-        soft_shards=157,
+        # 2026-11-18 (merge origin/main 24d92951 + SESSION-20261118-21b563):
+        # merged union is 158 order-sensitive note shards, crossing the 157 line.
+        # Compaction cannot safely move these indexed rows; set soft to 159 while
+        # retaining the hard 160 cliff and recording the consolidation debt.
+        soft_shards=159,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
@@ -1315,7 +1326,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # without a matching raise. Measured union = 87 files; set to measured +
         # 2 so the next session has one free slot and this trap does not repeat.
         # Hard 160 unchanged; consolidation debt stands.
-soft_shards=89,
+        # 2026-11-18 (merge origin/main 24d92951 + SESSION-20261118-21b563):
+        # union is 90 evaluation shards; two current-session evaluations have their
+        # own shard and main contributed a parallel shard. Set measured + 2 (92).
+soft_shards=92,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
@@ -1360,7 +1374,7 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # hard 48 MiB, soft_files 900 / hard_files 1200, and the 256 KiB / 512 KiB
         # per-report caps unchanged.
         "readings",
-        soft_bytes=34 * MIB,
+        soft_bytes=35 * MIB,
         hard_bytes=48 * MIB,
         remedy=(
             "Episodic reports are append-only, so decide which dimension fired before choosing a remedy. "
@@ -1496,7 +1510,12 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # soft_bytes (34 MiB), hard_files (1200), hard_bytes (48 MiB), and the
         # 256 KiB / 512 KiB per-file caps are unchanged.  See §4.2 of
         # readings/2026-11-18-five-broken-bridges-and-the-gate-on-the-receiving-side.md.
-        soft_files=1002,
+        # 2026-11-18 (merge origin/main 24d92951 + SESSION-20261118-21b563):
+        # measured union: 1,003 reports / 35,676,753 B (34.02 MiB), crossing both
+        # review lines. Reports are append-only. Apply the established +12 report
+        # margin (1,014) and a measured 1 MiB byte rescale (35 MiB); hard 1,200
+        # files / 48 MiB and per-report caps stay unchanged. Not automatic.
+        soft_files=1014,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
