@@ -67,6 +67,9 @@ jobs:
       - name: Check learning, falsification, and readings/ wiring invariants
         run: python3 tools/learning_metrics.py --check
 
+      - name: Check Three-Gates memory, inhibition, and reality-monitoring invariants
+        run: python3 tools/three_gates.py --check
+
       - name: Check size budgets
         run: python3 tools/size_budget.py
 

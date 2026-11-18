@@ -13,7 +13,7 @@
 - 断片を `selected` にするなら、後続が立ち返る、または反論する根拠となる箇所を具体的に書きます。語彙ゼロ・形式の希少さ・関係数だけで決めません。昇格件数の目安は設けません。
 - 問いの論点が別の問いへ引き継がれた等の理由で `paused` にする場合は、引き継ぐ記録と、休止によって失う視点を記します。数を減らすために休止させません。
 - モチーフ間の橋は、内容に即した関係が読めた場合だけ記します。出次数ゼロの解消自体を目標にしません。
-- 既存の台帳行は直さず、`tools/new_id.py ED` と `tools/new_ledger_shard.py editorial_decisions --create` で、対象・状態・理由を追記します。`selected` は合格、`paused` は棄却という意味ではありません。終了を試すなら [`closing_experiment.md`](closing_experiment.md) に従います。
+- 既存の台帳行は直さず、`tools/new_id.py ED` と `tools/new_ledger_shard.py editorial_decisions --create` で、対象・状態・理由を追記します。断片・問いの状態変更に加え、既収蔵素材の原典本文を直接照合して検証状態を引き上げる場合も `target: {"type": "material", "id": "MAT-..."}`・`status`（`verified` / `corrected` 等）・`verification_method` でオーバーレイ追記できます（高波及候補は `python3 tools/three_gates.py --upgrade-candidates`）。また反証済み（`verdict: "contradicted"`）の記録が再侵入し続ける場合は `errata` の `weight_effect: "suppress_retrieval"` で本文を残したまま想起優先度を局所減衰できます（前後の再浮上率は `python3 tools/three_gates.py --cohort-suppression` で確認可能）。`selected` は合格、`paused` は棄却という意味ではありません。終了を試すなら [`closing_experiment.md`](closing_experiment.md) に従います。
 
 ## 記録と信念状態の統合
 

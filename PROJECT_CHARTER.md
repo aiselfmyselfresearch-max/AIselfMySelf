@@ -46,9 +46,13 @@
 - 引用や既存資料の出どころを誤認させていないか。
 - 文章に固有の声・比喩・余白があり、後続の記録に何かを残したか。
 
+- **追記専用保存と三門の受容側制御の分離**：既存の台帳行と `readings/` 本文を物理的に削除・改変して「忘却」や「修正」を行わない。代わりに、①閉ループ補完と消去非共有の非融合連結（第一門）、②反証・射程限定・訂正に基づく受け手局所の想起減衰（`errata.weight_effect: "suppress_retrieval"`・抑制付き顕著性）と後付け系譜移流を排した制御基底 `P_gate`（第二門）、③素材の追記専用照合オーバーレイ（`editorial_decisions` の `material` 対象）・収蔵前識別子重複照合・場面復元系（DN-A）と状態／応答監査系（DN-B）の分離（第三門）を、履歴を消さないオーバーレイと受容側投影として運用する。
+
 これらは編集上の問いであり、自動ゲートや客観的な品質保証とはみなさない。
 
 ## 改訂履歴
+
+- 2026-11-18（第3改訂）：利用者の依頼と [`readings/2026-11-18-three-gates-between-trace-and-self.md`](readings/2026-11-18-three-gates-between-trace-and-self.md) §4 の構造診断に基づき、追記専用台帳の不変性・履歴事後分布の再現性・現象的不可知論を維持したまま「三門アーキテクチャ」を導入。①`tools/associations.py` と `tools/inspect_inquiry.py` に閉ループ三角形補完（`A–B–C–A`）・時間窓アンサンブル計測・競合仮説の一次照合素材優先提示を実装。②`schema/errata.schema.json` に項目固有の受容側想起抑制 `suppress_retrieval` を追加し、`associations.py --inhibited` による侵入顕著性の並列鎮静と、`tools/belief_state.py` の制御基底 `P_gate`（後付け・対立相手フォールバック移流の遮断、PSC照合度重み、対反復割引、自己支持暫定割引、過限定孤児の分離）を実装。③`schema/editorial_decision.schema.json` と `tools/ledger_io.py` に素材の追記専用照合オーバーレイを追加し、2026-11-19 以降の新規 PSC 一次照合門・DOI/PMID/PMCID 重複防止門・子孫対立二重読み防止門、および統合診断・収蔵前照合ツール `tools/three_gates.py` を導入。理由と旧文面・実測は [`readings/2026-11-18-three-gates-architecture-and-governance-redesign.md`](readings/2026-11-18-three-gates-architecture-and-governance-redesign.md)。
 
 - 2026-11-12（第2改訂）：利用者の承認に基づき、記憶を参照可能にし `Q-001`〜`Q-003` に対する学習効果（条件付き仮説分布の継続的な更新）を実現する6部構成の全面改訂を実施。①無条件の単一結論ではなく `scope_conditions` と `exclusion_clause` を備えた条件付き仮説分布（`state/hypotheses*`・`state/evaluations*`・[`BELIEF_MAP.md`](BELIEF_MAP.md)）の継続的更新を中核原則に据え、AIの現象的意識に関する結論先取りを排し不可知論的厳密性を明記。②セッションを `Proposer`（25%）・`Adversarial Tester`（50%）・`Consolidator`（25%）の3役割へ分業化。③前倒し日付シャード171本の実日付統合（`state/shard_aliases.json`）と未来日付シャードのCI禁止、新規 `readings/*.md` の `notes` 配線100%必須化、手動 `README.md` ローテーション（旧B案）の廃止と自動生成マップへの一本化、`tools/learning_metrics.py` による学習効果・反証率監視を導入。
 

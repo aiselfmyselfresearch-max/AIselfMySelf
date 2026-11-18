@@ -68,6 +68,74 @@ HYPOTHESIS_LESS_CORE_PRIORITY = 2.50
 # bounded-rate term uses the requested raw count with diminishing increments.
 COMPARISON_TOUCH_WEIGHT = 0.5
 
+# 2026-11-18 (Three-Gates architecture, Gate 2 + Gate 3):
+# Receiver-gated posterior basis ``P_gate`` (computed alongside historical ``P``,
+# ``P_sep``, and ``P_lin`` without moving any historical posterior):
+#   1. Reality-monitoring PSC weighting (Garrison et al. 2015): scales
+#      ``primary_source_collision`` by effective material verification status.
+#   2. Chronological & non-rival heir transfer: blocks retroactive fallback credit
+#      into children minted on days strictly later than the evaluation day and
+#      blocks fallback credit into hypotheses the row itself named as opponents.
+#   3. Pair-level repetition discount + provisional self-support discount (0.50).
+#   4. Receiver-local suppression for live ``weight_effect: "suppress_retrieval"``
+#      errata targeting a hypothesis.
+PSC_GATED_WEIGHTS: dict[str, float] = {
+    "all_verified": 1.20,
+    "mixed_verified": 0.95,
+    "zero_verified": 0.60,
+    "no_materials": 0.55,
+}
+SELF_SUPPORT_GATED_DISCOUNT = 0.50
+SUPPRESS_RETRIEVAL_HYP_PENALTY = 1.20
+INHIBITION_STATE_LABELS: dict[str, str] = {
+    "refuted_inhibited": "棄却・抑制",
+    "superseded_inhibited": "継承済・抑制",
+    "orphan_over_narrowed": "過限定・子仮説未分化",
+    "self_only_provisional": "暫定（未検証/自己評価のみ）",
+    "contested_active": "競合中（反証系あり）",
+    "active": "稼働中",
+}
+_REC_ISO_DAY_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})")
+_REC_ID_DAY_RE = re.compile(r"^[A-Z]+(?:-[A-Z]+)*-(\d{4})(\d{2})(\d{2})-")
+
+
+def _record_iso_day(record: dict[str, Any], fallback_id: str = "") -> str:
+    """Best-effort YYYY-MM-DD day stamp from ``created_at`` or ID prefix."""
+    created = str(record.get("created_at") or "").strip()
+    m = _REC_ISO_DAY_RE.match(created)
+    if m:
+        return m.group(1)
+    im = _REC_ID_DAY_RE.match(fallback_id)
+    if im:
+        return f"{im.group(1)}-{im.group(2)}-{im.group(3)}"
+    return ""
+
+
+def _derive_inhibition_state(
+    entry: dict[str, Any],
+    *,
+    gated_log_odds: float,
+    retrieval_suppressed: bool,
+) -> str:
+    """Classify a hypothesis's receiver-local inhibitory status (Gate 2)."""
+    eff = entry.get("effective_status")
+    vc = entry.get("verdict_counts") or {}
+    nar = int(vc.get("narrows_scope", 0))
+    sup = int(vc.get("supports", 0))
+    ref = int(vc.get("refutes_unconditioned", 0))
+    children = entry.get("children_hypothesis_ids") or []
+    if eff == "refuted" or retrieval_suppressed:
+        return "refuted_inhibited"
+    if eff in ("superseded", "subsumed"):
+        return "superseded_inhibited"
+    if nar >= 3 and nar > sup and gated_log_odds <= 0.0:
+        return "superseded_inhibited" if children else "orphan_over_narrowed"
+    if entry.get("direct_eval_count", 0) == 0 or entry.get("self_evaluated_only"):
+        return "self_only_provisional"
+    if (nar + ref) > 0 or eff == "narrowed":
+        return "contested_active"
+    return "active"
+
 
 def pair_lineage_relation(ha: dict[str, Any], hb: dict[str, Any]) -> str:
     """Classify a pair by the lineage the ledger records, not by its meaning.
@@ -500,6 +568,7 @@ def compute_belief_state(
     pair_level_repeat: bool = False,
     heir_credit: bool = True,
     narrowing_partner_share: bool = False,
+    receiver_gated: bool = False,
 ) -> dict[str, Any]:
     """Compute posterior distributions, uncertainties, lineage shifts, and next-tests.
 
@@ -594,21 +663,26 @@ def compute_belief_state(
     # says ``weight_effect: "void_row"`` withdraws that row's weight instead.
     # No historical record carries the field, so no historical posterior moves.
     voided_evaluation_ids: set[str] = set()
+    suppressed_hypothesis_ids: set[str] = set()
     for erec in errata.values():
-        if erec.get("weight_effect") != "void_row":
-            continue
-        if erec.get("subject_type") != "evaluation":
-            continue
-        if not errata_is_live_correction(erec):
-            continue
-        subject = erec.get("subject_id")
-        if isinstance(subject, str) and subject:
-            voided_evaluation_ids.add(subject)
+        weff = erec.get("weight_effect")
+        if weff == "void_row" and erec.get("subject_type") == "evaluation":
+            if errata_is_live_correction(erec):
+                subject = erec.get("subject_id")
+                if isinstance(subject, str) and subject:
+                    voided_evaluation_ids.add(subject)
+        elif weff == "suppress_retrieval" and erec.get("subject_type") == "hypothesis":
+            if errata_is_live_correction(erec):
+                subject = erec.get("subject_id")
+                if isinstance(subject, str) and subject:
+                    suppressed_hypothesis_ids.add(subject)
     voided_evaluations: list[dict[str, str]] = []
 
     children_by_parent: dict[str, list[str]] = defaultdict(list)
     q_to_hyps: dict[str, list[str]] = defaultdict(list)
+    hyp_iso_days: dict[str, str] = {}
     for hid, hyp in sorted(hypotheses.items()):
+        hyp_iso_days[hid] = _record_iso_day(hyp, hid)
         for pid in hyp.get("parent_hypothesis_ids") or []:
             if isinstance(pid, str) and pid in hypotheses:
                 children_by_parent[pid].append(hid)
@@ -627,10 +701,14 @@ def compute_belief_state(
             log_odds[hid] -= 0.35
         elif init_status == "superseded":
             log_odds[hid] -= 0.60
+        if receiver_gated and hid in suppressed_hypothesis_ids:
+            log_odds[hid] -= SUPPRESS_RETRIEVAL_HYP_PENALTY
 
     evals_by_hyp: dict[str, list[dict[str, Any]]] = defaultdict(list)
     compared_touches: Counter[str] = Counter()
     adversarial_touches: Counter[str] = Counter()
+    postdated_heir_transfers: Counter[str] = Counter()
+    rival_heir_transfers: Counter[str] = Counter()
     repeat_tracker: Counter[tuple[str, str, str]] = Counter()
     indep_sources: dict[str, set[str]] = defaultdict(set)
     separation_partners: dict[str, set[str]] = defaultdict(set)
@@ -645,7 +723,11 @@ def compute_belief_state(
             continue
         verdict = str(evl.get("verdict") or "supports")
         ev_type = str(evl.get("evidence_type") or "cross_session_audit")
-        base_w = EVIDENCE_WEIGHTS.get(ev_type, 1.0)
+        if receiver_gated and ev_type == "primary_source_collision":
+            vcls = classify_evaluation_verification(evl, materials)
+            base_w = PSC_GATED_WEIGHTS.get(vcls, EVIDENCE_WEIGHTS["primary_source_collision"])
+        else:
+            base_w = EVIDENCE_WEIGHTS.get(ev_type, 1.0)
 
         if evl_id in voided_evaluation_ids:
             # The row stays visible in counts and flags; only its weight is
@@ -662,7 +744,7 @@ def compute_belief_state(
         compared_key = ",".join(
             sorted(c for c in (evl.get("compared_against_hypothesis_ids") or []) if isinstance(c, str))
         )
-        if pair_level_repeat:
+        if pair_level_repeat or receiver_gated:
             repeat_key = (target_id, verdict, compared_key or sid or source_key)
         else:
             repeat_key = (target_id, verdict, sid or source_key)
@@ -675,7 +757,12 @@ def compute_belief_state(
             if isinstance(cid, str) and cid in hypotheses and cid != target_id
         ]
         comp_factor = 1.0 if compared else 0.65
-        delta = base_w * indep_discount * comp_factor
+        self_factor = 1.0
+        if receiver_gated and verdict == "supports":
+            hyp_sid = str(hypotheses[target_id].get("session_id") or "")
+            if sid and hyp_sid and sid == hyp_sid:
+                self_factor = SELF_SUPPORT_GATED_DISCOUNT
+        delta = base_w * indep_discount * comp_factor * self_factor
 
         evals_by_hyp[target_id].append(evl)
         indep_sources[target_id].add(f"{ev_type}:{source_key}")
@@ -696,11 +783,41 @@ def compute_belief_state(
         for shid in evl.get("scope_inherited_by_hypothesis_ids") or []:
             if isinstance(shid, str) and shid in hypotheses and shid != target_id and shid not in spawned:
                 spawned.append(shid)
+        evl_day = _record_iso_day(evl, evl_id)
         if not spawned and heir_credit:
-            # The fallback is the reason a named opponent can be paid as an heir:
-            # see the ``heir_credit`` note in the docstring. ``heir_credit=False``
-            # keeps only names this row wrote itself.
-            spawned = children_by_parent.get(target_id, [])
+            raw_children = children_by_parent.get(target_id, [])
+            compared_set = set(compared)
+
+            def _is_postdated_fallback(ch_id: str) -> bool:
+                c_day = hyp_iso_days.get(ch_id, "")
+                if not (evl_day and c_day):
+                    return False
+                if c_day > evl_day:
+                    return True
+                if c_day == evl_day:
+                    c_sid = str(hypotheses[ch_id].get("session_id") or "")
+                    # Same-day cross-session fallback without explicit naming cannot
+                    # prove the child existed when the evaluator wrote the row.
+                    return bool(sid and c_sid and sid != c_sid)
+                return False
+
+            if verdict in ("narrows_scope", "refutes_unconditioned"):
+                for ch in raw_children:
+                    if _is_postdated_fallback(ch):
+                        postdated_heir_transfers[ch] += 1
+                    if ch in compared_set:
+                        rival_heir_transfers[ch] += 1
+            if receiver_gated:
+                # Gate 2: fallback scope inheritance flows only to children that
+                # already existed before the evaluation (strict prior day, or
+                # same-day same-session) AND were not named as compared_against rivals.
+                spawned = [
+                    ch
+                    for ch in raw_children
+                    if ch not in compared_set and not _is_postdated_fallback(ch)
+                ]
+            else:
+                spawned = raw_children
 
         # Separation bookkeeping for the audit columns (never changes weights).
         if target_id not in separation_partners:
@@ -1043,11 +1160,21 @@ def compute_belief_state(
         },
         # 2026-11-16 (P-6): rows whose weight a live correction withdrew.
         "voided_evaluations": voided_evaluations,
-        "posterior_basis": "pair" if pair_level_repeat else "session",
+        "posterior_basis": (
+            "gated" if receiver_gated else ("pair" if pair_level_repeat else "session")
+        ),
     }
     state["saturation"] = saturation_snapshot(state)
 
-    if not pair_level_repeat:
+    # Record structural retroactive/rival transfer counts on every entry.
+    for qs in state["questions"].values():
+        for h in qs.get("hypotheses") or []:
+            hid = h["hypothesis_id"]
+            h["postdated_heir_transfers"] = int(postdated_heir_transfers.get(hid, 0))
+            h["rival_heir_transfers"] = int(rival_heir_transfers.get(hid, 0))
+            h["retrieval_suppressed"] = hid in suppressed_hypothesis_ids
+
+    if not pair_level_repeat and not receiver_gated:
         # P-3: the same ledger under a pair-level repetition discount. Reported
         # beside P, never substituted for it, so that every historical number
         # stays reproducible and the difference is itself the measurement.
@@ -1071,14 +1198,8 @@ def compute_belief_state(
             "separation_novelty": alt.get("separation_novelty"),
         }
 
-    if heir_credit and not pair_level_repeat:
-        # 2026-11-18 (P-8): the same ledger with the *lineage fallback* off. The
-        # fallback pays a narrowing row's children even when the row named none,
-        # which means a hypothesis can hold mass because of a judgement about its
-        # parent (readings/2026-11-17-the-prose-is-right-and-the-mechanism-is-
-        # wrong.md §2-§3). Reported as a third basis beside P and P_sep, exactly
-        # like P_sep: default unchanged, so every historical posterior stays
-        # reproducible and the gap is the measurement.
+    if heir_credit and not pair_level_repeat and not receiver_gated:
+        # 2026-11-18 (P-8): the same ledger with the *lineage fallback* off.
         no_lin = compute_belief_state(
             data=cols, root=Path(root), heir_credit=False,
             pair_level_repeat=pair_level_repeat,
@@ -1093,6 +1214,56 @@ def compute_belief_state(
                     continue
                 h["no_lineage_posterior"] = round(alt_value, 4)
                 h["no_lineage_delta_pp"] = round((alt_value - h["posterior"]) * 100, 2)
+
+        # 2026-11-18 (Three-Gates: P_gate): receiver-gated basis blocking post-dated
+        # and opponent-as-heir fallback transfers, weighting PSC rows by effective
+        # verification status, discounting pair repeats and self-only supports, and
+        # classifying each hypothesis's receiver-local inhibition state.
+        gated = compute_belief_state(
+            data=cols, root=Path(root), receiver_gated=True,
+            narrowing_partner_share=narrowing_partner_share,
+        )
+        for qid, qs in state["questions"].items():
+            gq = (gated.get("questions") or {}).get(qid) or {}
+            g_by_id = {h["hypothesis_id"]: h for h in gq.get("hypotheses") or []}
+            for h in qs.get("hypotheses") or []:
+                gh = g_by_id.get(h["hypothesis_id"])
+                if gh is None:
+                    continue
+                gp = float(gh["posterior"])
+                gl = float(gh["log_odds"])
+                h["gated_posterior"] = round(gp, 4)
+                h["gated_log_odds"] = round(gl, 4)
+                h["gated_delta_pp"] = round((gp - h["posterior"]) * 100, 2)
+                h["inhibition_state"] = _derive_inhibition_state(
+                    h,
+                    gated_log_odds=gl,
+                    retrieval_suppressed=bool(h.get("retrieval_suppressed")),
+                )
+            orphans = sorted(
+                (
+                    h for h in (qs.get("hypotheses") or [])
+                    if h.get("inhibition_state") == "orphan_over_narrowed"
+                ),
+                key=lambda item: (
+                    -int((item.get("verdict_counts") or {}).get("narrows_scope", 0)),
+                    item["hypothesis_id"],
+                ),
+            )
+            qs["gated_entropy_bits"] = gq.get("entropy_bits", 0.0)
+            qs["gated_active_entropy_bits"] = gq.get("active_entropy_bits", 0.0)
+            qs["gated_kl_from_uniform_bits"] = gq.get("kl_from_uniform_bits", 0.0)
+            qs["orphan_over_narrowed_ids"] = [h["hypothesis_id"] for h in orphans]
+            qs["gated_top_pair"] = select_gated_pair(state, evaluations, qid)
+        state["gated_saturation"] = gated.get("saturation", {})
+    else:
+        for qs in state["questions"].values():
+            for h in qs.get("hypotheses") or []:
+                h["inhibition_state"] = _derive_inhibition_state(
+                    h,
+                    gated_log_odds=float(h.get("log_odds", 0.0)),
+                    retrieval_suppressed=bool(h.get("retrieval_suppressed")),
+                )
     return state
 
 
@@ -1182,6 +1353,83 @@ def select_least_separated_pair(
         "policy": "least_separated",
         "min_posterior": min_posterior,
     }
+
+
+def select_gated_pair(
+    state: dict[str, Any],
+    evaluations: dict[str, dict[str, Any]],
+    question_id: str,
+) -> dict[str, Any] | None:
+    """Select the next competing pair under the receiver-gated basis ``P_gate``.
+
+    Unlike default EIG on historical ``P`` (which collapses when a newborn child
+    absorbs post-dated fallback transfers from its parent), ``P_gate`` blocks
+    retroactive and opponent-as-heir fallback credit, scales PSC weight by
+    effective material verification, and excludes inhibited
+    (``refuted_inhibited`` / ``superseded_inhibited``) hypotheses.  Includes a
+    mild novelty factor ``1 / (1 + 0.15 * separations)`` so repeatedly tested
+    pairs yield to comparably informative fresh separations.
+    """
+    qstate = (state.get("questions") or {}).get(question_id) or {}
+    excluded_states = {"refuted_inhibited", "superseded_inhibited", "orphan_over_narrowed"}
+    eligible = [
+        h
+        for h in (qstate.get("hypotheses") or [])
+        if h.get("effective_status") == "active"
+        and h.get("direct_eval_count", 0) > 0
+        and h.get("inhibition_state") not in excluded_states
+    ]
+    if len(eligible) < 2:
+        eligible = [
+            h
+            for h in (qstate.get("hypotheses") or [])
+            if h.get("effective_status") == "active"
+            and h.get("direct_eval_count", 0) > 0
+            and not h.get("retrieval_suppressed")
+        ]
+    if len(eligible) < 2:
+        return None
+    counts, last = separation_counts(evaluations)
+    best_score = -1.0
+    best_pair: dict[str, Any] | None = None
+    for i in range(len(eligible)):
+        for j in range(i + 1, len(eligible)):
+            ha, hb = eligible[i], eligible[j]
+            ga = float(ha.get("gated_posterior", ha.get("posterior", 0.0)))
+            gb = float(hb.get("gated_posterior", hb.get("posterior", 0.0)))
+            ua = float(ha.get("uncertainty", 0.0))
+            ub = float(hb.get("uncertainty", 0.0))
+            raw_gig = ga * gb * (ua + ub)
+            key = tuple(sorted((ha["hypothesis_id"], hb["hypothesis_id"])))
+            seps = counts.get(key, 0)
+            scored = raw_gig / (1.0 + 0.15 * seps)
+            if scored > best_score:
+                best_score = scored
+                ordered = (ha, hb) if ga >= gb else (hb, ha)
+                la, rb = ordered
+                lga = float(la.get("gated_posterior", la.get("posterior", 0.0)))
+                rgb = float(rb.get("gated_posterior", rb.get("posterior", 0.0)))
+                best_pair = {
+                    "left_hypothesis_id": la["hypothesis_id"],
+                    "left_title": la.get("title", ""),
+                    "right_hypothesis_id": rb["hypothesis_id"],
+                    "right_title": rb.get("title", ""),
+                    "left_posterior": round(lga, 4),
+                    "right_posterior": round(rgb, 4),
+                    "left_historical_posterior": round(float(la.get("posterior", 0.0)), 4),
+                    "right_historical_posterior": round(float(rb.get("posterior", 0.0)), 4),
+                    "left_uncertainty": round(float(la.get("uncertainty", 0.0)), 4),
+                    "right_uncertainty": round(float(rb.get("uncertainty", 0.0)), 4),
+                    "expected_info_gain": round(raw_gig, 4),
+                    "novelty_adjusted_eig": round(scored, 4),
+                    "formula": "p_gate_a*p_gate_b*(u_a+u_b)/(1+0.15*sep)",
+                    "lineage_relation": pair_lineage_relation(la, rb),
+                    "pair_mass_sum": round(lga + rgb, 4),
+                    "separations": seps,
+                    "last_separated": last.get(key, ""),
+                    "policy": "gated",
+                }
+    return best_pair
 
 
 def select_auto_question_id(
@@ -1670,11 +1918,29 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
                 f"- ⚠️ **未評価の有効仮説（ペア推薦から除外中）**: {unex_list}"
                 "（直接評価 0 件。無補助 root 仮説は下端から浮上しにくいため、初回検証を優先検討すること）"
             )
+        gpair = qs.get("gated_top_pair")
+        if gpair:
+            grel = PAIR_RELATION_LABELS.get(gpair.get("lineage_relation")) or "不明"
+            lines.append(
+                f"- **三門制御基底（`P_gate`）推奨検証対（`--pair-policy gated`, EIG_gate={gpair['expected_info_gain']:.4f}）**: "
+                f"`{gpair['left_hypothesis_id']}`（P_gate={gpair['left_posterior']*100:.1f}%） vs "
+                f"`{gpair['right_hypothesis_id']}`（P_gate={gpair['right_posterior']*100:.1f}%）"
+                f" ｜ 系譜: {grel} ｜ 既分離: {gpair.get('separations', 0)}回"
+                "（後付け・対立相手フォールバック移流遮断＋PSC照合度重み＋対反復割引＋自己支持暫定割引）"
+            )
+        orphans = qs.get("orphan_over_narrowed_ids") or []
+        if orphans:
+            orp_list = "、".join(f"`{hid}`" for hid in orphans[:6])
+            more = f" ほか{len(orphans) - 6}件" if len(orphans) > 6 else ""
+            lines.append(
+                f"- **第二門・子仮説未分化の過限定仮説（`orphan_over_narrowed`: {len(orphans)}件）**: "
+                f"{orp_list}{more}（`narrows_scope` が `supports` を上回り子仮説 0 件。Proposer/Consolidator の条件付き継承候補）"
+            )
         lines.append("")
 
         lines.extend([
-            "| 順位 | ID | 状態 | 世代/系譜 | 事後確率 P_t | P_sep (対単位割引) | P_lin (系譜移流なし) | 不確実性 u | 独立分離 (最終新規) | 評価数 (反証系) | 照合済 (PSC全照合) | 証人 (EVL/読) | 仮説タイトル |",
-            "| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
+            "| 順位 | ID | 状態 (抑制区分) | 世代/系譜 | 事後確率 P_t | P_sep (対単位割引) | P_lin (系譜移流なし) | P_gate (三門制御) | 不確実性 u | 独立分離 (最終新規) | 評価数 (反証系) | 照合済 (PSC全照合) | 証人 (EVL/読) | 仮説タイトル |",
+            "| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
         ])
         for idx, h in enumerate(qs["hypotheses"], start=1):
             parents = ", ".join(f"`{p}`" for p in h["parent_hypothesis_ids"]) or "—"
@@ -1703,12 +1969,22 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
                 lin_cell = f"{h['no_lineage_posterior'] * 100:.1f}% ({h.get('no_lineage_delta_pp', 0.0):+.1f}pp)"
             else:
                 lin_cell = "—"
+            if "gated_posterior" in h:
+                gate_cell = f"**{h['gated_posterior'] * 100:.1f}%** ({h.get('gated_delta_pp', 0.0):+.1f}pp)"
+            else:
+                gate_cell = "—"
+            inh_st = h.get("inhibition_state", "")
+            status_cell = f"`{h['effective_status']}`"
+            if inh_st in ("orphan_over_narrowed", "superseded_inhibited", "self_only_provisional"):
+                status_cell += f" ({INHIBITION_STATE_LABELS[inh_st]})"
+            elif h.get("retrieval_suppressed"):
+                status_cell += " (想起抑制)"
             sep_audit = f"{h.get('independent_separation_count', 0)} ("
             sep_audit += (h.get("last_new_separation_date") or "なし") + ")"
             lines.append(
-                f"| {idx} | `{h['hypothesis_id']}` | `{h['effective_status']}` | "
+                f"| {idx} | `{h['hypothesis_id']}` | {status_cell} | "
                 f"G{h['generation']}:{h['lineage_op']} ({parents}) | "
-                f"**{h['posterior'] * 100:.1f}%** | {sep_cell} | {lin_cell} | {h['uncertainty']:.3f} | "
+                f"**{h['posterior'] * 100:.1f}%** | {sep_cell} | {lin_cell} | {gate_cell} | {h['uncertainty']:.3f} | "
                 f"{sep_audit} | "
                 f"{h['direct_eval_count']} ({h['adversarial_eval_count']}) | "
                 f"{ver_cell} | {wit_cell} | {h['title']} |"
@@ -1813,6 +2089,11 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT, help="repository root")
     parser.add_argument("--question", help="inspect a single question ID (e.g. Q-002)")
+    parser.add_argument(
+        "--gated",
+        action="store_true",
+        help="compute under the Three-Gates receiver-gated basis (P_gate)",
+    )
     parser.add_argument("--json", action="store_true", help="output full JSON belief state")
     parser.add_argument("--write-map", action="store_true", help="write BELIEF_MAP.md and map/belief_state.md")
     parser.add_argument("--check-map", action="store_true", help="verify BELIEF_MAP.md is current")
@@ -1843,7 +2124,7 @@ def main(argv: list[str] | None = None) -> int:
         print(msg, file=stream)
         return 0 if ok else 1
 
-    state = compute_belief_state(root=args.root)
+    state = compute_belief_state(root=args.root, receiver_gated=args.gated)
     if args.question:
         qs = state["questions"].get(args.question)
         if qs is None:

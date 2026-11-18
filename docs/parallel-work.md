@@ -1057,3 +1057,11 @@ python3 tools/read_log_backfill.py --check --since 2026-11-10 --enforce
 手順1〜2の「連続した先頭範囲」方式は届かなかった（先頭側の未参照シャードが 2026-11-06 の1本のみで、そこへ後続を連結すると和集合順が変わる）。手順8-4（枠を作れない）に対して、手順7の**同日グループ全吸収**の条件が一つだけ成立した：`2026-11-13` の37本のうち32本が未参照で、そのうち隣接ペア `...-3d190284cd6e`（5行）と `...-3f725dce7092`（5行）が両方とも未参照・自己所在地なし・オープン PR 非接触であった。後者10行を前者の末尾へ行文字列を一字も変えずに連結し、元ファイルを同一コミットで削除した。
 
 **実測：和集合 13,315,162 B の sha256 が連結前後で完全一致（`ab3468bb9feef1ca`）、順序つき `material_id` 列 4,240件が完全一致、distinct 4,240、`READING_MAP.md` の SHA-256 も不変（`b546dd2dbb5942f0`）。`soft_shards` の引上げは0件。** 削除したファイル名は `taxonomy`・`tools`・`sessions.notes`・`readings/`・`docs/` から未被参照であり、移動行自身も自己所在地を書いていなかった。保守は探究の内容変更と同じPRに含めたが、コミットは分離した（手順6の但し書き「同一の追記が検査を塞いでいる場合」に該当）。**`materials.d` は残り枠0に戻ったので、次の資料取得セッションは書く前に `--strict` を見て、まず同日グループの候補を探すこと。**
+
+### 規則12：三門の収蔵前重複照合・素材照合オーバーレイ・受容側抑制（2026-11-18 追加、新規書き込み門は 2026-11-19 発効）
+
+1. **収蔵前の識別子重複照合（`three_gates.py --check-source`）**：新規 `MAT-*` を採番する前に `python3 tools/three_gates.py --check-source --doi <DOI> --pmid <PMID> --pmcid <PMCID> --title "<題名>"` を実行する。既存 `MAT-*` と DOI・PMID・PMCID が一致した場合は重複登録せず（`20261119` 以降の新規行は `validate_seed.py` でエラー）、既存 `MAT-*` を直接引用する。
+2. **既収蔵素材の追記専用照合オーバーレイ（`editorial_decisions`）**：既収蔵の非 `verified` 素材を原典全文で再照合した場合は、`state/materials*` を書き換えず、`editorial_decisions` に `target: {"type": "material", "id": "MAT-..."}`・`status: "verified"`（または `"corrected"` 等）・`verification_method`（照合した公開全文URL/PMCID/版面など8文字以上）を追記する。`ledger_io.py` が読込時に `supersedes` 順序付きで全ツールへ透過適用する。優先候補は `python3 tools/three_gates.py --upgrade-candidates` で確認できる。
+3. **PSC一次照合門と子孫対立二重読み防止門（`20261119` 発効）**：`20261119` 以降に採番する `primary_source_collision` 評価行は、少なくとも1件の実効 `verified` 素材を `material_ids` に含める。また、明示的な `spawned_hypothesis_ids` / `scope_inherited_by_hypothesis_ids` を持たない `narrows_scope` / `refutes_unconditioned` 行は、`target_hypothesis_id` の直接の子仮説を `compared_against_hypothesis_ids` に入れない（継承させるなら継承欄に明記し、対立させるなら非子孫の対立仮説を選ぶ）。
+4. **項目固有の受容側想起抑制（`errata.weight_effect: "suppress_retrieval"`）**：反証済み（`verdict: "contradicted"`）の誤りを含む `material` / `fragment` / `note` / `hypothesis` がパケットや顕著性上位へ再侵入し続ける場合は、行を削除せず `errata` に `weight_effect: "suppress_retrieval"` を追記する（撤回は `status: "withdrawn"`）。根拠と実測は `readings/2026-11-18-three-gates-architecture-and-governance-redesign.md`。
+
