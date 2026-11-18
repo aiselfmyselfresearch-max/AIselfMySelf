@@ -3,12 +3,27 @@
 
 Why this tool exists
 --------------------
-`belief_state.compute_belief_state` routes the child-side share of a
-``narrows_scope`` / ``refutes_unconditioned`` verdict like this (L249-254)::
+`belief_state.compute_belief_state` routes the heir-side share of a
+``narrows_scope`` / ``refutes_unconditioned`` verdict like this (L684-702)::
 
     spawned = [s for s in (evl.get("spawned_hypothesis_ids") or []) if ...]
-    if not spawned:
+    for shid in evl.get("scope_inherited_by_hypothesis_ids") or []:
+        if ... and shid not in spawned:
+            spawned.append(shid)          # the engine pays the UNION (P-5)
+    if not spawned and heir_credit:
         spawned = children_by_parent.get(target_id, [])
+
+then pays ``0.75 * delta`` (narrows) or ``0.95 * delta`` (refutes) divided by
+the number of heirs.  This mirror reads the same union and reports which of the
+two fields paid each heir (``credit_field``).
+
+Known blind spot, not mirrored: ``subsumes`` pays the *target* ``+0.85*delta``
+and each of its parents ``-0.80*delta`` (belief_state L747-752).  That parent
+penalty is a third way an unevaluated hypothesis can hold log-odds it never
+earned, and ``inherited_log_odds`` + ``compared_penalty_log_odds`` does not
+cover it.  No live row has yet put a never-evaluated parent in that position;
+if one does, the calibration equality in
+``tests/test_lineage_credit_accounting.py`` will break here first.
 
 ``children_by_parent`` is built from the hypotheses that exist **now**. An
 evaluation that named no children therefore credits whichever children the
@@ -23,8 +38,10 @@ entropy was 0.0001 bits, and every pair's expected information gain rounded to
 
 What this tool reports
 ----------------------
-1. How many narrowing/refuting verdicts name their children explicitly, how
-   many fall back to the live parent-child index, and how many credit nobody.
+1. How many narrowing/refuting verdicts name their heirs explicitly
+   (``routes["explicit"]`` = ``spawned_hypothesis_ids``,
+   ``routes["scope"]`` = ``scope_inherited_by_hypothesis_ids`` only), how many
+   fall back to the live parent-child index, and how many credit nobody.
 2. Which fallback credits are **post-dated**: the child's `created_at` is later
    than the evaluation's. Two orderings are reported because the ledger mixes
    granularity (145 of 218 evaluations carry a date without a time):
@@ -174,8 +191,29 @@ def audit(cols: dict[str, dict[str, dict[str, Any]]]) -> dict[str, Any]:
             s for s in (evl.get("spawned_hypothesis_ids") or [])
             if isinstance(s, str) and s in hypotheses and s != target
         ]
-        routed = explicit or children.get(target, [])
-        route = "explicit" if explicit else ("fallback" if routed else "no_child")
+        # 2026-11-18: the engine pays the **union** of the two heir fields
+        # (belief_state L684-698; ``scope_inherited_by_hypothesis_ids`` was
+        # added 2026-11-16 as P-5 so that "narrowing a child whose *parent*
+        # keeps the remaining scope" would not be recorded in a field whose
+        # name says "created").  This mirror read only ``spawned`` from
+        # 2026-11-14 until today, so every scope-heir credit was missing from
+        # ``inherited_log_odds``.  It stayed invisible while every named heir
+        # also had a direct evaluation of its own; the first row to name a
+        # never-evaluated heir (EVL-20261118-fdc642 -> HYP-20261118-f413b3)
+        # showed the gap as log_odds sitting 0.75*delta above the audited
+        # share.  Both fields are read now, and ``credit_field`` below says
+        # which one paid -- the reason the engine keeps two names is that a
+        # reader can then read the arithmetic.
+        scope = [
+            s for s in (evl.get("scope_inherited_by_hypothesis_ids") or [])
+            if isinstance(s, str) and s in hypotheses and s != target
+            and s not in explicit
+        ]
+        named = explicit + scope
+        routed = named or children.get(target, [])
+        route = ("explicit" if explicit else
+                 "scope" if scope else
+                 "fallback" if routed else "no_child")
         routes[route] += 1
         if not routed:
             continue
@@ -196,6 +234,9 @@ def audit(cols: dict[str, dict[str, dict[str, Any]]]) -> dict[str, Any]:
                 "child_hypothesis_id": cid,
                 "verdict": verdict,
                 "route": route,
+                "credit_field": ("spawned_hypothesis_ids" if cid in explicit else
+                                 "scope_inherited_by_hypothesis_ids" if cid in scope else
+                                 "lineage_fallback"),
                 "evaluation_created_at": evl.get("created_at"),
                 "child_created_at": hypotheses[cid].get("created_at"),
                 "log_odds_share": round(share, 6),
@@ -340,7 +381,14 @@ def render(report: dict[str, Any], state: dict[str, Any],
     total = sum(r.values())
     lines.append(
         f"  射程限定・反証の評価 {total} 件: 明示 {r.get('explicit', 0)} ／ "
+        f"射程継承のみ {r.get('scope', 0)} ／ "
         f"フォールバック {r.get('fallback', 0)} ／ 子なし {r.get('no_child', 0)}"
+    )
+    lines.append(
+        "  ※ 「明示」は `spawned_hypothesis_ids` を名指した行、「射程継承のみ」は "
+        "`scope_inherited_by_hypothesis_ids` だけを名指した行。engine は両者の和に "
+        "0.75δ（反証は 0.95δ）を相続人の数で割って払う（belief_state L684-702・L736-745）。"
+        "四つの数の和が件数に一致しなければ、この鏡が engine の経路を取りこぼしている。"
     )
     lines.append(
         f"  子への移転 {len(report['transfers'])} 件: "

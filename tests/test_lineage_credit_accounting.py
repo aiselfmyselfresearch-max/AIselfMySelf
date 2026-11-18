@@ -40,7 +40,7 @@ def _hyp(hid, parents=(), created="2026-11-10T00:00:00Z", qid="Q-QA"):
 
 
 def _evl(eid, target, created="2026-11-10T00:00:00Z", spawned=None,
-         verdict="narrows_scope", evidence="reproducible_script"):
+         verdict="narrows_scope", evidence="reproducible_script", scope_heir=None):
     row = {
         "evaluation_id": eid,
         "session_id": "SESSION-TEST",
@@ -53,6 +53,8 @@ def _evl(eid, target, created="2026-11-10T00:00:00Z", spawned=None,
     }
     if spawned is not None:
         row["spawned_hypothesis_ids"] = list(spawned)
+    if scope_heir is not None:
+        row["scope_inherited_by_hypothesis_ids"] = list(scope_heir)
     return row
 
 
@@ -106,6 +108,120 @@ class SyntheticLineageTests(unittest.TestCase):
         # The audit reports it, but does not call it a fallback artifact.
         self.assertEqual(report["postdated_strict_pairs"], [])
         self.assertEqual(report["transfers"][0]["route"], "explicit")
+
+    def test_scope_inheritance_is_mirrored_as_inherited_credit(self):
+        """`scope_inherited_by_hypothesis_ids` pays the heir exactly like `spawned`.
+
+        belief_state L684-698 credits the **union** of the two heir fields
+        (P-5, 2026-11-16).  This mirror read only `spawned` from 2026-11-14
+        until 2026-11-18, so a never-evaluated heir named through the *scope*
+        field held 0.75*delta of log-odds the audit could not account for, and
+        `test_inherited_share_explains_unevaluated_hypotheses_log_odds` broke on
+        the live ledger (Q-002/HYP-20261118-f413b3, EVL-20261118-fdc642).  The
+        heir here is the target's parent -- the case P-5 was written for -- and
+        is deliberately not a lineage child of the target, so the fallback
+        cannot supply the credit either.
+        """
+        cols = {
+            "questions": {"Q-QA": {"question_id": "Q-QA", "question": "test"}},
+            "hypotheses": {
+                "HYP-P": _hyp("HYP-P"),
+                "HYP-C": _hyp("HYP-C", parents=["HYP-P"], created="2026-11-12T09:00:00Z"),
+            },
+            "evaluations": {
+                "EVL-1": _evl("EVL-1", "HYP-C", created="2026-11-13T09:00:00Z",
+                              scope_heir=["HYP-P"]),
+            },
+            "errata": {},
+        }
+        state = belief_state.compute_belief_state(cols)
+        heir = next(h for h in state["questions"]["Q-QA"]["hypotheses"]
+                    if h["hypothesis_id"] == "HYP-P")
+        self.assertEqual(heir["direct_eval_count"], 0)
+        self.assertGreater(heir["log_odds"], 0.0)
+
+        report = lca.audit(cols)
+        self.assertEqual(report["routes"], {"scope": 1})
+        self.assertEqual(report["transfers"][0]["credit_field"],
+                         "scope_inherited_by_hypothesis_ids")
+        # The audited share must equal what the engine actually added.
+        self.assertAlmostEqual(report["inherited_log_odds"]["HYP-P"],
+                               heir["log_odds"], places=4)
+        self.assertAlmostEqual(
+            report["inherited_log_odds"]["HYP-P"]
+            + report["compared_penalty_log_odds"].get("HYP-P", 0.0),
+            heir["log_odds"], places=4,
+        )
+        # A name the row wrote itself is not a fallback artifact -- not even
+        # though this heir *predates* the evaluation, which is the normal order
+        # for a parent that keeps the remaining scope.
+        self.assertEqual(report["postdated_strict_pairs"], [])
+        self.assertEqual(report["postdated_day_pairs"], [])
+
+    def test_the_two_heir_fields_split_one_share(self):
+        """The engine divides 0.75*delta by the size of the union, not per field.
+
+        Naming one heir in each field must not pay two shares; it must pay one
+        share split in two, and `credit_field` must still say which field named
+        which heir -- the reason the engine keeps two names at all.
+        """
+        cols = {
+            "questions": {"Q-QA": {"question_id": "Q-QA", "question": "test"}},
+            "hypotheses": {
+                "HYP-P": _hyp("HYP-P"),
+                "HYP-C1": _hyp("HYP-C1", parents=["HYP-P"], created="2026-11-12T00:00:00Z"),
+                "HYP-C2": _hyp("HYP-C2", parents=["HYP-P"], created="2026-11-12T00:00:00Z"),
+            },
+            "evaluations": {
+                "EVL-1": _evl("EVL-1", "HYP-P", spawned=["HYP-C1"],
+                              scope_heir=["HYP-C2"]),
+            },
+            "errata": {},
+        }
+        report = lca.audit(cols)
+        self.assertEqual(report["routes"], {"explicit": 1})
+        fields = {t["child_hypothesis_id"]: t["credit_field"] for t in report["transfers"]}
+        self.assertEqual(fields, {"HYP-C1": "spawned_hypothesis_ids",
+                                  "HYP-C2": "scope_inherited_by_hypothesis_ids"})
+        self.assertAlmostEqual(report["inherited_log_odds"]["HYP-C1"],
+                               report["inherited_log_odds"]["HYP-C2"], places=6)
+        state = belief_state.compute_belief_state(cols)
+        for hid in ("HYP-C1", "HYP-C2"):
+            heir = next(x for x in state["questions"]["Q-QA"]["hypotheses"]
+                        if x["hypothesis_id"] == hid)
+            self.assertEqual(heir["direct_eval_count"], 0)
+            self.assertAlmostEqual(report["inherited_log_odds"][hid],
+                                   heir["log_odds"], places=4)
+
+    def test_render_shows_every_route_it_counts(self):
+        """A route the mirror counts must also appear in the printed line.
+
+        `routes` summed to the transferring-verdict total (that is
+        `test_route_counts_partition_the_transferring_verdicts`) while the
+        display listed only three of the labels, so rows routed by
+        `scope_inherited_by_hypothesis_ids` alone were counted and not shown.
+        The mirror's own output is what a reader calibrates against; a counted
+        route that is not displayed is the same defect as a route that is not
+        counted.
+        """
+        cols = {
+            "questions": {"Q-QA": {"question_id": "Q-QA", "question": "test"}},
+            "hypotheses": {
+                "HYP-P": _hyp("HYP-P"),
+                "HYP-C": _hyp("HYP-C", parents=["HYP-P"]),
+            },
+            "evaluations": {
+                "EVL-1": _evl("EVL-1", "HYP-C", scope_heir=["HYP-P"]),
+            },
+            "errata": {},
+        }
+        report = lca.audit(cols)
+        state = belief_state.compute_belief_state(cols)
+        text = lca.render(report, state, None, None, None)
+        line = next(l for l in text.splitlines() if "射程限定・反証の評価" in l)
+        for label in ("明示", "射程継承のみ", "フォールバック", "子なし"):
+            self.assertIn(label, line)
+        self.assertIn("射程継承のみ 1", line)
 
     def test_date_only_stamps_are_bounded_not_asserted(self):
         """Same-day, time-less rows: the two orderings must disagree."""
