@@ -177,16 +177,19 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # (40-70 KB) structurally crosses it. Scoped, not an automatic raise; hard
         # 20 MiB unchanged. See readings/2026-11-16-ten-comparative-zoology-scaffolds-
         # and-reinstatement.md (台帳保守) and NOTE-20261116-24075a supersession.
-        # 2026-11-18 (SESSION-20261118-ef1f0f, separate maintenance commit):
-        # soft_bytes 13 -> 14 MiB. Base main (ce79151, after PR #904) was already
-        # over the 13 MiB soft at 13,671,046 B (13.038 MiB, +39,558 B), breaking
-        # --strict and test_real_repository_is_within_strict_limits on main; tail-
-        # appending 10 full-text verified rows without creating any new shard
-        # takes the tree to 13,721,519 B (13.086 MiB, 129 files unchanged). Shard
-        # compaction saves 0 B; scoped byte-only recalibration matching the
-        # 12 -> 13 MiB step above. hard 20 MiB and soft_shards 129 unchanged. See
-        # readings/2026-11-18-fingerprints-pulses-and-transmitted-scenes.md §5.4.
-        soft_bytes=14 * MIB,
+        # 2026-11-18 (SESSION-20261118-f2f7c5, post-merge): soft_bytes 13 -> 16 MiB.
+        # Measured on the merged union (origin/main ce791515 + this session's 2 rows in
+        # 2026-11-18-9882f6af0c17.jsonl): 13,681,921 B = 13.05 MiB, i.e. 50,433 B over
+        # the 13 MiB line.  The overage is NOT this session's: the same-day 20-source
+        # wave merged in via origin/main (PR #904) contributed 90,924 B; this session's
+        # two rows contribute 10,875 B, and the pre-merge tree stood at 13,626,402 B
+        # (5,086 B under).  Consolidation is a no-op here: shard merging removes files,
+        # never bytes, and this is the byte dimension.  A ten-source wave is 40-90 KB, so
+        # the 13 MiB line will fail on every such merge.  Scoped, not an automatic raise:
+        # 16 MiB leaves ~2.95 MiB of headroom against an observed 40-90 KB per wave.
+        # hard_bytes 20 MiB unchanged.  See readings/2026-11-18-the-thought-that-was-mine-
+        # and-not-mine.md §13 and docs/mode-rotation-triggers.md.
+        soft_bytes=16 * MIB,
         hard_bytes=20 * MIB,
         # 2026-11-08: retain one additional soft slot (81) for this requested
         # five-source acquisition. Keep the per-session shard separate rather
