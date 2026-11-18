@@ -307,13 +307,27 @@ class BeliefStateAndLearningTests(unittest.TestCase):
         core_competitive = any(
             scores.get(q, 0.0) >= top_any for q in ("Q-001", "Q-002", "Q-003")
         )
+        # 2026-11-18 (SESSION-20261118-7c341c): ``core_competitive`` only says
+        # a core question *leads*; the router also adds a uniform jitter in
+        # [0, 0.12) to every candidate. A core question that trails the leader
+        # by less than 0.12 therefore still wins some of the 80 picks. A new
+        # Q-003 hypothesis (HYP-20261118-43dd06, the memory-index/reader report)
+        # moved Q-003 from below the jitter window to 1.2733 against a top score
+        # of 1.3000, and this test's old ``assertEqual(core_hits, 0)`` failed
+        # at 27/80. That was a latent bug in the assertion, not in the router:
+        # the very next loop already allows any pick within top_any - 0.12.
+        # Keep the discrimination gate, but ask for a *mix* when the core is
+        # merely within jitter range, and still demand zero when it is truly
+        # out of range. Data changes; discrimination must not silently vanish.
+        core_within_jitter = any(
+            scores.get(q, 0.0) >= top_any - 0.12 for q in ("Q-001", "Q-002", "Q-003")
+        )
         if core_competitive:
             # Original gate: ~75% routing to Q-001..Q-003 when the core is viable.
             self.assertGreaterEqual(core_hits, 45)
         else:
-            # Core saturated/outscoreable: the router must pick outside the core,
-            # and every pick must sit inside the jitter window of the top scorer.
-            self.assertEqual(core_hits, 0)
+            # Core saturated/outscoreable: every pick must sit inside the jitter
+            # window of the top scorer.
             for i in range(80):
                 qid, _ = belief_state.select_auto_question_id(
                     bs, open_qids, seed=f"pkt-seed-{i}"
@@ -323,6 +337,13 @@ class BeliefStateAndLearningTests(unittest.TestCase):
                     top_any - 0.12,
                     f"pick {qid} falls outside the jitter window of the top score",
                 )
+            if core_within_jitter:
+                # A near-tied core question must be able to win, but must not
+                # dominate: the leader is still a non-core question.
+                self.assertGreater(core_hits, 0)
+                self.assertLess(core_hits, 80)
+            else:
+                self.assertEqual(core_hits, 0)
 
         pkt_q2 = inspect_inquiry.build_context_packet(self.live_data, "Q-002", seed="fixed-a")
         pkt_q2_b = inspect_inquiry.build_context_packet(self.live_data, "Q-002", seed="fixed-b")
