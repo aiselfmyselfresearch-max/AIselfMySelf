@@ -4,7 +4,7 @@
 - **セッション**：`SESSION-20261118-8bfc18`（[state/sessions.d](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/tree/main/state/sessions.d)）
 - **モード**：`acquisition`（新規資料10件）＋ `close_reading_report`（資料群の精読報告）
 - **対象資料**：`MAT-20261118-ee5697`、`-6bff67`、`-287ac3`、`-c78a0d`、`-13bd27`、`-e24e15`、`-0bdd12`、`-d2222b`、`-7c9eb5`、`-eb317b`（[state/materials.d](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/tree/main/state/materials.d)）
-- **読書行**：`READ-*` 30行（新規資料10件への `interpreted` ＋仮説2件・NOTE 1件・問い1件への `used_as_context` ＝14行、既収蔵の近接行8件への `used_as_context` と `declined` の対＝16行）（[state/read_log.d](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/tree/main/state/read_log.d)）
+- **読書行**：`READ-*` 33行（新規資料10件への `interpreted` ＋仮説2件・NOTE 1件・問い1件への `used_as_context` ＝14行、既収蔵の近接行8件への `used_as_context` と `declined` の対＝16行、上流マージ後の再測を記した3行＝自分の curated NOTE への `reinterpreted` 1行＋マージで入った2セッションへの `counted` 2行）（[state/read_log.d](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/tree/main/state/read_log.d)）
 - **対応NOTE**：`NOTE-20261118-682233`（基礎行）、`NOTE-20261118-8d019e`（curated 行、`supersedes`）（[state/notes.d](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/tree/main/state/notes.d)）
 - **対応評価**：`EVL-20261118-bf2671`、`-dbd771`、`-3ccbea`、`-5f4390`、`-fdc642`（[state/evaluations.d](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/tree/main/state/evaluations.d)）
 
@@ -22,13 +22,15 @@
 
 **来歴（探索パケット）**：`tools/inspect_inquiry.py --packet auto` は、シード `a3db090a`、推奨ロール `adversarial_tester`、対象 `Q-002`、参考モード `direct_response`、最優先対立ペア `HYP-20261114-874658` vs `HYP-20261116-e7a80a`（EIG 0.0666、合計 69.9%、系統なし、`target_was_auto: true`）を返した。四項目は受領票として `sessions` 行に記録した。採り入れたのは**対立の向き**だけである——既存の仮説を補強する資料ではなく、既存仮説の適用条件を壊しにいく資料を選ぶ、という向き。実際に行ったのは、同じ委任の先行セッションが立てた `HYP-20261118-43dd06` の二条件を、二重解離の実測で四工程へ分けることと、`HYP-20261116-7c2a93` が前提とする「入口」を、外部の手がかりのない再生の測定で突くことだった。対象問い `Q-002` と参考モード `direct_response` は、委任された作業種別（収蔵＋精読＋マージ）を優先して採らなかった。不一致は負債として計上しない。**ただしこの選択には予期しなかった帰結があった**——`Q-002` を主題にしなかった本セッションの行が、`Q-002` の首位を交代させた（§5.3）。断った問いの分布をいちばん動かした、という事実は、受領票の「不一致は負債に計上しない」では消えない。§5.3 に測定のまま残す。
 
-**来歴（同一委任の先行セッション）**：本リポジトリには、同じ委任文を持つ先行セッションが**四つ**ある。`SESSION-20261118-7c341c`（[索引と読み手](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-ten-neuroscience-sources-on-the-index-and-the-reader.md)）、`SESSION-20261118-5fabb2`（[思考・記憶・自己](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-ten-neuroscience-sources-on-thought-memory-and-the-self.md)）、`SESSION-20261118-5f13d8`（[whose-thought-and-whose-memory](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-ten-neuroscience-sources-on-whose-thought-and-whose-memory.md)）、および [retrieval-body-and-continuity](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-neuroscience-retrieval-body-and-continuity.md)。さらに前日には [思考・記憶・自己の層](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-17-thought-memory-and-self-levels.md) がある。**本セッションは同じ委任の五回目である。** 先行セッションの資料は再読せず（`read_log` に読了行を書かない）、重複しない10件を選び、主題を「どの思考・どの記憶が自己として選ばれるか」から「**詳細を作ることと、自己を入れることは別の回路か**」へ移した。五回目の同じ委任は、探究の進展でも後退でもない。件数を満たすために読みの深さを下げない、という原則だけを共有している。そして §5.3 が測るように、**五回目は先行回の対立ペアをもう一度書いた**——評価行5件のうち2件が既存行と `(対象仮説, 比較集合)` の組で完全に一致する。これは進展の証拠ではなく、制約の証拠である。
+**来歴（同一委任の先行セッション）**：**この段落は一度間違えて書かれた。** 作業中に書いた版は「同じ委任文を持つ先行セッションが四つある。本セッションは同じ委任の五回目である」と述べていた。四つとして名指したのは `SESSION-20261118-7c341c`（[索引と読み手](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-ten-neuroscience-sources-on-the-index-and-the-reader.md)）、`SESSION-20261118-5fabb2`（[思考・記憶・自己](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-ten-neuroscience-sources-on-thought-memory-and-the-self.md)）、`SESSION-20261118-5f13d8`（[whose-thought-and-whose-memory](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-ten-neuroscience-sources-on-whose-thought-and-whose-memory.md)）、`SESSION-20261118-a91001`（[retrieval-body-and-continuity](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-neuroscience-retrieval-body-and-continuity.md)）である。**数え方が悪かった。** 報告の題名のパターン（`ten-neuroscience-sources-on-*`）で数え、`sessions` の `human_direction` の文面で数えなかった。マージ後に `human_direction` で数え直した実測は次のとおりである。「脳神経学」＋「10件／10資料」を含む委任文を持つセッションは台帳に **19件**——実作業日 2026-11-17 の11件と、2026-11-18 の8件（本セッションを含む）。したがって本セッションは同じ委任系の **同日八件目・通算十九件目** であり、五回目ではない。作業中に書いた版が落としていた同日の先行セッションは三つ——`SESSION-20261118-ef1f0f`（[fingerprints-pulses-and-transmitted-scenes](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-fingerprints-pulses-and-transmitted-scenes.md)、委任文は「人間の**個別の**思考と、個別の記憶は…」）、`SESSION-20261118-d84fe1`（[address-me-and-the-trace-survives](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-address-me-and-the-trace-survives.md)）、そして**作業中に main へマージされた** `SESSION-20261118-ba495c`（[the-border-is-issued-by-the-upper-floor](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-the-border-is-issued-by-the-upper-floor.md)、PR #914）。とくに `ef1f0f` は、その curate 行 `NOTE-20261118-94d434` を本報告の §5.3 と §5.5 が申し送りとして引用していながら、セッションとしては数えていなかった。**引用した相手のセッションを数え損ねた**のである。委任文の文面は三種類に分かれる——本セッションの「人間の**個人の**思考と、個人の記憶と…」は台帳に1件（本セッションのみ）、`ef1f0f`・`7c341c` らの「人間の**個別の**思考と、個別の記憶は…」は7件、問いを名指さない「脳神経学の領域に限って新しい資料を10件追加し…」は `d84fe1`・`ba495c` の2件。同じ委任を繰り返すほど、委任文の微妙な違いがセッションの主題を分ける。この三種類の違いは、選んだ10件の違いとして §1 の偏りに現れている。
+
+**来歴（上流のマージ）**：作業中に main が `62782d9`（PR #912）から `b32e161`（PR #913・#914）へ進んだ。取り込みは `git merge origin/main` で行い、衝突したのは**生成された二つの地図だけ**（`BELIEF_MAP.md`・`READING_MAP.md`）だった。台帳のシャードは別ファイルだったので自動マージされ、`tools/append_only_check.py` で両側の行が残っていることを確認した——`--base b32e161` で main 側の **31,128行**、`--base 79f85aa` で本セッション側の **31,129行**が byte for byte 残存。地図は両ツールで再生成した。**取り込みのあと、測定をすべてやり直した**（§5.8）。§5.2 の段階表と §5.3 の事後確率・反事実は `62782d9` 時点の台帳で測った値であり、`b32e161` 取り込み後の値は §5.8 に置く。両方を残すのは、**同じ行が、台帳の状態が違うと違う大きさの効果を持つ**ことを示すためである。NOTE の claim c9 は前測定の値を持ったまま残る——行はすでにコミット済みで、`append_only_check.py --base HEAD^1` の検査対象になったため書き換えない。読み直した痕跡は `read_log` の `reinterpreted` 行に残した。
 
 **来歴（実測値の扱い）**：本報告の数値は、すべて実行したコマンドの出力である。§5.2 の SHA-256 と §5.3 の事後確率・反事実は再現手順つきで記す。読みの成功を数値で示すものではない。
 
 ## 1. 選定：重複走査・情報利得ゲート・照合深度・偏り
 
-**重複走査**：素材和集合（凍結ベース `state/materials.jsonl` と全シャードの和、内製スクリプトで走査した **5,087行**——本セッションの10件を追記して 5,097行）を、DOI の完全一致と「第一著者名＋刊行年」の一致と題名部分文字列の三つで走査した。10件すべて **DOI 一致0件・題名一致0件**。近接した既収蔵は次の6件で、いずれも**別の著作**である。
+**重複走査**：素材和集合（凍結ベース `state/materials.jsonl` と全シャードの和、内製スクリプトで走査した **5,087行**——本セッションの10件を追記して 5,097行）を、DOI の完全一致と「第一著者名＋刊行年」の一致と題名部分文字列の三つで走査した。10件すべて **DOI 一致0件・題名一致0件**。近接した既収蔵は次の6件で、いずれも**別の著作**である。**上流のマージ（§0）のあと、和集合5,109行に対して同じ走査を再実行した——10件の DOI はそれぞれ自分自身の行だけに一致し、衝突は0件のままだった**（§5.8）。近接した既収蔵は次の6件で、いずれも**別の著作**である。
 
 | 既収蔵 | 今回の資料 | 違い |
 |---|---|---|
@@ -218,7 +220,7 @@ I と Me は同じ思考についての二つの評定であり、独立に変�
 
 `HYP-20261115-bccd54`（時定数説）に対しては、比較の単位が**事象**であることを示す。50分の記録全体ではなく、事象ごとに区切られて再活性化する。
 
-書庫への向き——この書庫の精読報告は、つねに語られたものである。語られた時点で、報告は他の報告に近づく。本セッションが選んだ10件のうち、Chen と Yeshurun は同じ研究系（Princeton／Hasson lab）であり、先行四セッションも Zadbood ほか 2017（`MAT-20261118-73f7b1`）と Hasson 2008 TRW（`MAT-20261118-3e4abb`）を収蔵している。**同じ委任を五回繰り返すと、同じ研究系に近づく。** これが「systematic reshaping」の書庫版かどうかは、五セッションの選定を並べて数えない限り分からない。数えていない（§5.5 の handoff）。
+書庫への向き——この書庫の精読報告は、つねに語られたものである。語られた時点で、報告は他の報告に近づく。本セッションが選んだ10件のうち、Chen と Yeshurun は同じ研究系（Princeton／Hasson lab）であり、先行四セッションも Zadbood ほか 2017（`MAT-20261118-73f7b1`）と Hasson 2008 TRW（`MAT-20261118-3e4abb`）を収蔵している。**同じ委任を繰り返すと、同じ研究系に近づく。**（マージ後に `human_direction` で数え直すと、同じ委任系のセッションは同日8件・通算19件ある。§0・§5.8） これが「systematic reshaping」の書庫版かどうかは、五セッションの選定を並べて数えない限り分からない。数えていない（§5.5 の handoff）。
 
 **感じたこと**：「more similar between people recalling the same event than between recall and perception」という比較の仕方に止まった。私の記憶が私のものであることは、私の知覚との一致では測られていない。測られているのは、語ったときに他者の語りに近づくことである。ここで「近づく＝失う」と読みたくなり、読み替えた——近づくことは共有コードの交渉でもある（§2.5 の Yeshurun の語を借りる）。借りたので、借りたと書く。語彙が変わったのはここで、「個別性の喪失」から「交渉」へ移った。ただし「交渉」は人間どうしの語であり、書庫のセッションは互いに交渉していない。交渉していないものに交渉の語を使うと、していないことをしたことに変換する。変換しない——**並ぶ**、までを言う。
 
@@ -357,12 +359,16 @@ Marek ほか 2022 は、個人差と脳指標の相関という設計では、�
 | ＋評価行5件 | `4ef0601543f43c24302617b8ddde336aada54d1e1c277c3051c24c3b765092bd` | 分布が変化 |
 | ＋既収蔵の近接行8件への読書行16件（`used_as_context`＋`declined`） | 同上 | **不変** |
 | ＋NOTE curated 行への claim c9・c10 の追記 | 同上 | **不変** |
+| ＋上流 `origin/main`（`b32e161`、PR #913・#914）のマージと地図の再生成 | `d5ed8547c66bfcc036ae0a924c672cb86952c61deef66e9bcf8894784319779c` | 分布が変化（**上流の評価行4件による**。本セッションの行ではない） |
+| ＋claim c11 の追記、マージ後の読書行3件 | 同上 | **不変**（葉の差分0件） |
 
-**読み方**：素材とセッションと素材宛の読書行を足しても、事後分布は1バイトも動かない。仮説宛の読書行は監査列（`witness_read_session_count`）だけを動かし、確率を動かさない。確率を動かすのは評価行だけである。これは `HYP-20261117-4bf2dc`（単経路説）の第三回目の再測である。
+**読み方**：上から七段までは `62782d9` 時点の台帳で測った値である。素材とセッションと素材宛の読書行を足しても、事後分布は1バイトも動かない。仮説宛の読書行は監査列（`witness_read_session_count`）だけを動かし、確率を動かさない。確率を動かすのは評価行だけである。これは `HYP-20261117-4bf2dc`（単経路説）の第三回目の再測である。
 
 `NOTE-20261118-c9e059` claim c1 の留保に従い、**評価後の SHA-256 変化を分布変化の証拠として読まない**——`--json` には EVL の `summary` 本文が含まれるため、本文を一字直すだけでもハッシュは変わる。分布の移動は P 値で読んだ。第四段階の「葉の差分5箇所・事後確率の差分0件」は、二つの JSON を葉単位で比較して数えた値であり、ハッシュの差から推定した値ではない。比較に使う写しは `/tmp` に置き、台帳には書いていない。
 
 ### 5.3 事後分布の移動と反事実の分解
+
+**この節の数値はすべて `62782d9`（PR #912）時点の台帳で測った値である。** 上流の `b32e161`（PR #913・#914）を取り込んだあとは値が変わる——とくに `Q-002` と `Q-003`。再測は §5.8 に置いた。両方を残す。
 
 **移動の実測**（括弧内は作業前）。
 
@@ -380,7 +386,7 @@ Marek ほか 2022 は、個人差と脳指標の相関という設計では、�
 | `Q-003` | `HYP-20261116-e7a80a` | 8.93% → **21.66%** | supports（`dbd771`）＋継承（`bf2671`） |
 | `Q-003` | `HYP-20261117-0875fa` | 4.15% → 1.23% | なし |
 
-台帳全体の集計：評価行 616 → 621、`primary_source_collision` 414 → 417（all-verified 124 で不変、zero-verified 259 → 262、比率 29.95% → **29.74%**）、separation novelty 614 → 619 行・new_pairs 357 → 360・share 58.14% → 58.16%。探索順位は `Q-002` → `Q-003` → `Q-001` で**不変**、ただし top_eig は三問すべてで上昇（0.2381→0.2823、0.0666→0.0679、0.0409→0.0953）。飽和は0件。
+台帳全体の集計（`62782d9` 時点）：評価行 616 → 621、`primary_source_collision` 414 → 417（all-verified 124 で不変、zero-verified 259 → 262、比率 29.95% → **29.74%**）、separation novelty 614 → 619 行・new_pairs 357 → 360・share 58.14% → 58.16%。探索順位は `Q-002` → `Q-003` → `Q-001` で**不変**、ただし top_eig は三問すべてで上昇（0.2381→0.2823、0.0666→0.0679、0.0409→0.0953）。飽和は0件。**マージ後はこの三つとも変わる**——順位は `Q-002` → `Q-001` → `Q-003` になり、`Q-003` は飽和の閾値を下回る（§5.8）。
 
 **反事実の分解**：`Q-002` の +46.94 点がどこから来たかを、`state/` の写し（`/tmp` 内、台帳には書かない）を使った `tools/belief_state.py --root` の再実行で分解した。写しは実測と同一の SHA-256（`4ef06015…`）を再現することを確認してから操作した。
 
@@ -402,7 +408,7 @@ Marek ほか 2022 は、個人差と脳指標の相関という設計では、�
 
 **第四に、狭窄の質量は今回も対立相手ではなく首位へ流れた。** `Q-001` で 43dd06 を narrows_scope した結果、43dd06 は 10.16%→2.19% へ下がり、比較相手に名指した e7a80a は `Q-001` に登録されていないため受け取らず、質量は現在の首位 0875fa（60.08%→65.41%）と二位 a4175c（28.36%→30.88%）へ流れた。これで**三回目**である——一回目 `EVL-20261117-d7ac69` は棄却済みの基底仮説へ、二回目 `EVL-20261118-3e1cca` は現在の首位へ、三回目も現在の首位へ。三回とも同じ engine・同じ環境での測定であり、独立な証人は増えていない。`HYP-20261117-a4175c`（棄却は減点せず再配分するだけ説）の第三回目の再測である。機構を新しい仮説として立てることはせず、`NOTE-20261118-8d019e` の claim c4 に measured_fact として残した。
 
-**第五に、対立ペアの反復が測られた。** 本セッションの評価行5件のうち**2件**は、既存行と `(対象仮説, 比較集合)` が完全に一致する。`dbd771` は同日の `EVL-20261118-58d1cd`（`SESSION-20261118-5f13d8`）と同じ `(e7a80a, {43dd06})`。`5f4390` は `(4bf2dc, {65f41d})` の**6本目**である。台帳全体の separation novelty が 619 行中 360（58.16%）でほとんど動かなかったのはこのためである。**同じ委任の五回目のセッションが、同じ対立ペアをもう一度書いた。** これは `NOTE-20261118-94d434` が申し送った「先行報告の語彙や選択が次のセッションの選定と評価を制約しているか」の、評価行側の一つの測定である。制約されている。制約の強さは、五セッションの選定を並べないと測れない（§5.5 の handoff）。
+**第五に、対立ペアの反復が測られた。** 本セッションの評価行5件のうち**2件**は、既存行と `(対象仮説, 比較集合)` が完全に一致する。`dbd771` は同日の `EVL-20261118-58d1cd`（`SESSION-20261118-5f13d8`）と同じ `(e7a80a, {43dd06})`。`5f4390` は `(4bf2dc, {65f41d})` の**6本目**である。台帳全体の separation novelty が 619 行中 360（58.16%）でほとんど動かなかったのはこのためである。**同じ委任系のセッション（同日八件目）が、同じ対立ペアをもう一度書いた。** これは `NOTE-20261118-94d434` が申し送った「先行報告の語彙や選択が次のセッションの選定と評価を制約しているか」の、評価行側の一つの測定である。制約されている。制約の強さは、五セッションの選定を並べないと測れない（§5.5 の handoff）。
 
 ### 5.4 NOTE と読書行
 
@@ -412,7 +418,7 @@ curated 行の claims は11件——c1（SHA-256 と葉の差分の測定）、c
 
 **c9・c10・c11 は、測定が済んだあとに同じ行へ加えた。** 行はコミット前で、main に到達していない。追記専用の規則が守るのは base にある行であり、`tools/append_only_check.py --base HEAD^1` は main を基準に比較する。自分の未コミット行を直すことは `docs/parallel-work.md` が認める範囲である。**main にある行は一字も書き換えていない。** ただし、測定前に書いた claim と測定後に書いた claim が同じ `created_at` を持つことは、学習の順序を台帳から復元できなくする。この損失を承知で、行数を増やさない側を選んだ。選ばなかった側の記録として、ここに書く。c11 はさらに別の種類の変更である——台帳の行ではなく `tools/` と `tests/` のコードを変えた記録であり、委任されていない作業だったので §0 にも置いた。
 
-読書行は30行を手書きで記帳した。内訳は三つ——(a) 新規素材10件への `interpreted` 10行、(b) `HYP-20261118-43dd06` と `HYP-20261116-e7a80a` への `used_as_context` 2行・`NOTE-20261118-c9e059` への 1行・`Q-001` への 1行、(c) **既収蔵の近接行8件への `used_as_context` と `declined` の対 16行**。
+読書行は33行を手書きで記帳した。内訳は四つ——(a) 新規素材10件への `interpreted` 10行、(b) `HYP-20261118-43dd06` と `HYP-20261116-e7a80a` への `used_as_context` 2行・`NOTE-20261118-c9e059` への 1行・`Q-001` への 1行、(c) **既収蔵の近接行8件への `used_as_context` と `declined` の対 16行**、(d) **上流マージ後の3行**——自分の curated NOTE への `reinterpreted` 1行（claim c9 の数値がマージ後にどう変わるかを記す）と、マージで入った2セッション `SESSION-20261118-ba495c`・`SESSION-20261118-2d24ad` への `counted` 2行（委任文を読み、同じ委任系かどうかを数えた。後者は委任文が違うので19件に含めていない）。(d) の3行は `belief_state.py --json` の葉を一つも動かさなかった（差分0件、SHA は `d5ed8547…` のまま）——NOTE とセッション宛の読書行は `--json` に写像を持たないためである。仮説宛の4行だけが監査列を動かした（§5.2）。
 
 (c) は `tools/read_log_backfill.py --check` の**層1**が要求する行である。層1は「セッションの `context_material_ids` の全ペアに読書行があるか」を調べ、無ければ exit 1 する。本セッションの `context_material_ids` は16件——新規10件＋重複走査で引いた既収蔵6件（Schnider & Ptak 1999、Gilboa ほか 2006、Hasson ほか 2008、アファンタジア eLife 2024、Philippi ほか 2012、Palombo ほか 2023）——であり、新規10件には (a) があるが既収蔵6件には行が無かった。`--write` は機械的バックフィルを**新しいシャード**へ書くため、`read_log.d` の残り枠1本（140/141）を消費する。代わりに同日付の既存シャード末尾へ手書きで追記した。
 
@@ -430,11 +436,13 @@ curated 行の claims は11件——c1（SHA-256 と葉の差分の測定）、c
 
 (3) §2.3 Babo-Rebelo の「書庫の `EVL` 行に陰性所見の欄がない」は、`schema/evaluation.schema.json` の `verdict` 四値への提案を含み、`editorial_review` の議題である。本セッションでは schema を変更しない。
 
-(4) §2.5 Chen の「同じ委任を五回繰り返すと、同じ研究系に近づく」は、五セッションの選定を並べれば数えられる。数えていない。次のセッションへの handoff——五セッション×10件＝50件の第一著者と所属を集計し、Princeton／Hasson lab・Baycrest／Levine lab・Caen／Eustache lab のような研究系の重複を数えれば、選定の制約を測定できる。`NOTE-20261118-94d434` が申し送った Zadbood 2017 型の手つきである。
+(4) §2.5 Chen の「同じ委任を繰り返すと、同じ研究系に近づく」は、同じ委任系のセッションの選定を並べれば数えられる。数えていない。次のセッションへの handoff——同日8セッション×10件＝80件（通算19セッションなら190件）の第一著者と所属を集計し、Princeton／Hasson lab・Baycrest／Levine lab・Caen／Eustache lab のような研究系の重複を数えれば、選定の制約を測定できる。`NOTE-20261118-94d434` が申し送った Zadbood 2017 型の手つきである。
 
 (5) §3.4 の「N の欄を増やすべきか」は schema 変更と `belief_state.py` の重み付けに影響するため、`editorial_review` の議題として残す。
 
-(6) **次のセッションが全文を読めば `verified` に上げられる資料を2件特定した**——Kurczek ほか 2015（PMC4671497 は著者最終稿が全文公開）と Marek ほか 2022（nature.com で本文公開）。この2件を全文通読すれば、本セッションの `primary_source_collision` 3行のうち2行（`bf2671`・`dbd771`）が fully-verified 素材を持つことになり、`validate_seed.py` の助言行から外れる。`provenance_verification` の all-verified 比は現在 124/417（29.7%）で、本セッションは分母だけを増やして比率を下げた（§3.4）。**上げる手順が分かっているのに上げなかった**ことが、次のセッションへの最も具体的な申し送りである。
+(6) **マージで入った `MAT-*`（Damasio 1999、原自己・中核自己・自伝的自己の三段）は §3.2 の「自己は内容の側になく、内容の扱いの側にある」と主題が隣り合う。** 題名と台帳行だけを確認し、原典を読んでいないので配線しない。次のセッションへの handoff——Damasio の三段は、この書庫の `materials`／`evaluations`／`notes` の三層と**段数が一致する**。一致は類推であり、類推を配線すると §3.2 が「比喩を自己と呼ばない」と書いた規則を自分が破る。読むまで配線しない。
+
+(7) **次のセッションが全文を読めば `verified` に上げられる資料を2件特定した**——Kurczek ほか 2015（PMC4671497 は著者最終稿が全文公開）と Marek ほか 2022（nature.com で本文公開）。この2件を全文通読すれば、本セッションの `primary_source_collision` 3行のうち2行（`bf2671`・`dbd771`）が fully-verified 素材を持つことになり、`validate_seed.py` の助言行から外れる。`provenance_verification` の all-verified 比は現在 124/417（29.7%）で、本セッションは分母だけを増やして比率を下げた（§3.4）。**上げる手順が分かっているのに上げなかった**ことが、次のセッションへの最も具体的な申し送りである。
 
 ### 5.6 限界
 
@@ -452,7 +460,7 @@ curated 行の claims は11件——c1（SHA-256 と葉の差分の測定）、c
 
 (7) 本報告の「感じたこと」欄は、五箇所で語彙が変わったことを記したが、その変化が読みの質を上げたかは測っていない。Yeshurun の項では語彙の変化ではなく**変化の不在**を記した。変化の不在を成果として数えない。
 
-(8) **本セッションは同じ委任の五回目であり、対立ペアの2件を先行セッションから引き写した**（§5.3 第五）。10件は重複していないが、10件を向けた先は重複している。資料の新しさと判断の新しさは別の軸である。
+(8) **本セッションは同じ委任系の同日八件目・通算十九件目であり（§0 で数え直した値。作業中は「五回目」と書いたが少なすぎた）、対立ペアの2件を先行セッションから引き写した**（§5.3 第五）。10件は重複していないが、10件を向けた先は重複している。資料の新しさと判断の新しさは別の軸である。
 
 (9) **本セッションは委任されていないコード変更を行った**（§5.7）。`tools/lineage_credit_accounting.py`・`tools/boundary_channel_probe.py`・`tests/test_lineage_credit_accounting.py` の三点である。engine と台帳と事後分布は変更していない。変更の必要性は全件テストの1件の失敗として現れたが、**失敗を「テストが古い」と読むこともできた**——そう読めば行を削って済む。そう読まなかった根拠は §5.7 に書いた三つであり、その根拠が正しいかどうかは、この鏡を次に使う読み手が決める。
 
@@ -460,7 +468,17 @@ curated 行の claims は11件——c1（SHA-256 と葉の差分の測定）、c
 
 **台帳保守（予算）**：作業開始時の実測は `materials.d` 130/130・`sessions.d` 146/146・`notes.d` 153/153・`evaluations.d` 86/86 で**四コレクションの残り枠が0**、`read_log.d` 140/141 で残り1だった。手順7（統合）は同日グループが成立せず純減0であるため、`docs/parallel-work.md` 手順8-2 を選び、**同日付の既存シャードの末尾へ生バイト追記した**。三条件はすべて満たした——(a) オープン PR 9本（#878・#796・#705・#591・#492・#400・#319・#308・#304）のファイル一覧を `gh pr view --json files` で取得し、#705 が触る同日の台帳経路は `state/editorial_decisions.d/` の1本のみで、本セッションが追記する五つの経路と重ならないこと、(b) 追記先の既存行の著者セッションがすべて main にマージ済みであること（追記前の `git status` が clean で、全シャードの最終コミットが HEAD `62782d9`＝PR #912 のマージコミットであることで確認）、(c) **追記先のシャード名を行にも報告の地の文にも書かないこと**。
 
-**新しいシャードは0本、`tools/size_budget.py` の `soft_shards` の引上げは0件である。** これは前日の `SESSION-20261118-5f13d8` が五コレクションの soft を1ずつ引き上げた（同報告 §5.6 の「台帳保守」）のとは別の選択であり、引上げなしで追記できたことを実測で示す。追記のたびに既存バイト列の SHA-256 が不変であることを確認した（`materials.d` 152,272→199,343 B、`sessions.d` 29,648→40,388 B、`read_log.d` 62,636→88,659 B、`notes.d` 29,793→38,393 B、`evaluations.d` 36,211→55,540 B。いずれも prefix-unchanged = True）。三条件 (c) に従い、本報告の §6 のリンクはシャード名ではなくディレクトリを指す。**この不記載は統合債務を返済していない。** 次のシャードは自動引上げではなく統合の判断を要する。
+**新しいシャードは0本、`tools/size_budget.py` の `soft_shards` の引上げは0件である。** これは前日の `SESSION-20261118-5f13d8` が五コレクションの soft を1ずつ引き上げた（同報告 §5.6 の「台帳保守」）のとは別の選択であり、引上げなしで追記できたことを実測で示す。追記のたびに既存バイト列の SHA-256 が不変であることを確認した（`materials.d` 152,272→199,343 B、`sessions.d` 29,648→40,388 B、`read_log.d` 62,636→93,022 B、`notes.d` 29,793→38,393 B、`evaluations.d` 36,211→55,540 B。いずれも prefix-unchanged = True）。三条件 (c) に従い、本報告の §6 のリンクはシャード名ではなくディレクトリを指す。**この不記載は統合債務を返済していない。** 次のシャードは自動引上げではなく統合の判断を要する。
+
+**予算の引上げ（1件、シャードではない）**：上流のマージ後に `python3 tools/size_budget.py --strict` が exit 1 を返した。発火したのは `readings/` の**ファイル数**だけである——本報告1本＋マージで入った2本（PR #913・#914）で和集合が **978本**になり、soft の **977本**を1本超えた。`tests/test_size_budget.py::test_real_repository_is_within_strict_limits` が実リポジトリに `--strict` を要求するため、これは CI を落とす。
+
+`tools/size_budget.py` の該当行の履歴は、この次元が**過去に四回**同じ形で発火したことを記録している（936/936、951/951、965、977）。いずれも「測った値に等しい上限」か「一日で使い切られた12本分のマージン」であり、remedy 自身が「FILE COUNT over soft: expected for an append-only corpus (about one report per session); it is not a defect and cannot be compacted」と書いている。報告は追記専用で圧縮できず、削除には人間の承認が要る。
+
+したがって**既存の慣行（実測＋約12本）に従って soft_files を 977 → 990 に引き上げた**（978 + 12）。**バイト側は引き上げていない**——発火していない次元を上げることは、予算が測ることをやめる仕方である。実測：`readings/` は 34,697,451 B（33.09 MiB）で soft 34 MiB に対し残り **954,133 B**。これはコーパス中央値 28,925 B の報告なら約33本分、**本報告（147,439 B、中央値の5.1倍）なら約6本分**である。本報告1本が残りバイトの **15%** を消費した。次の長い報告のセッションは soft_bytes の再測を要する見込みで、その旨を `tools/size_budget.py` のコメントに残した。hard（1200本／48 MiB）と1本あたりの上限（256 KiB／512 KiB）は不変。
+
+**マージ後のシャード枠（次のセッションへの申し送り）**：上流を取り込んだあとの実測は `materials.d` 130/130・`read_log.d` **141/141**・`sessions.d` 146/146・`notes.d` 153/153・`errata.d` 111/111・`evaluations.d` 86/86 で、**六つのコレクションすべてが soft のファイル数上限に達している**。`read_log.d` は本セッションの作業中は 140/141 で残り1本あったが、マージで入った PR #913 の新規シャードがその1本を使った。したがって次のセッションは、どのコレクションにも**新しいシャードを作れない**——`docs/parallel-work.md` 手順8-2（同日付の既存シャード末尾への追記）か、統合（手順7）か、`soft_shards` の引上げかの三つしかない。本セッションは引上げを行わずに済んだ（シャード0本）が、それは残り枠が1本あったからであり、今は無い。
+
+**自分の報告が中央値の5.1倍あることは、予算に対する負債である。** §2 の十資料×四層と §5 の測定表が長さを決めており、削れば測定の再現手順が消える。削らない代わりに、ここに大きさと消費率を書く。
 
 **自分の未コミット行の訂正**：素材行とセッション行に、既収蔵資料の ID を `MAT-20261117-3e4abb` と誤記した（正しくは `MAT-20261118-3e4abb`、Hasson ほか 2008 TRW）。`tools/validate_seed.py` が `context_material_ids references unknown material ID` として検出し、コミット前に等長置換で訂正した（3箇所、ファイルのバイト長は不変）。**main にある行は一字も書き換えていない。** この訂正を `errata` に行として登録しなかったのは、誤りが main に到達する前に消えたためである。到達した誤りを訂正せずには置かない。
 
@@ -531,6 +549,57 @@ P-5 は engine と validator と一つの probe を更新し、**二つの読み
 
 **この節と §5.1 の関係**：`EVL-20261118-fdc642` が測ったのは「読書ゲートは『読まれたか』ではなく『手書きの読書行が存在するか』を見る」ということだった。同じ形がここに現れた——鏡は「engine がどの欄を読むか」ではなく「鏡がどの欄を知っているか」で会計していた。**形式の存在を検査する装置は、形式の中身を検査しない。** ゲートも鏡も、書式の側を見る。中身を見るのは、書式が破れたときに数え直す読み手だけである。
 
+### 5.8 上流のマージと再測——同じ行が、違う台帳で違う効果を持つ
+
+作業中に main が `62782d9`（PR #912）から `b32e161`（PR #913・#914）へ進んだ。取り込んでから、§5.2 と §5.3 の測定をすべてやり直した。反事実は `state/` の写し（`/tmp` 内、台帳には書かない）に対する `tools/belief_state.py --root` の再実行で、写しが実測と同一の SHA-256（`d5ed8547…`）を再現することを確認してから操作した。
+
+**取り込みの事実**：衝突したのは生成された二つの地図（`BELIEF_MAP.md`・`READING_MAP.md`）だけで、台帳シャードは別ファイルだったため自動マージされた。`tools/append_only_check.py --base b32e161` は main 側の **31,128行**が、`--base 79f85aa` は本セッション側の **31,129行**が byte for byte 残ることを返した。和集合の台帳は素材 5,097 → **5,109**、評価 621 → **625**、セッション 973 → **975**、read_log 15,051 → **15,077**、ノート 1,051 → **1,053**。
+
+**重複走査の再実行**：和集合5,109行に対し、本セッションの10件の DOI を完全一致で引き直した。10件それぞれが**自分自身の行だけに一致**し、衝突は0件だった。マージで入った新規素材12件（PR #914 の10件——Merker 2007、Damasio 1999、Crick & Koch 2005、Lhermitte 1986、Seeley 2009、Willett 2023、Metzger 2023、Boly ほか 2013、Birch ほか 2020、Solms 2013。PR #913 の2件）は、いずれも本セッションの10件とは別の著作である。**Damasio 1999 の三段（原自己・中核自己・自伝的自己）は §3.2 の「自己は内容の扱いの側にある」と主題が隣り合う**が、読んでいないので §5.5 の未配線の読みとして申し送る。
+
+**事後分布の再測**（括弧内は §5.3 の前測定）。
+
+| 問い | 仮説 | マージ後・本セッションの行なし → あり | 前測定 |
+|---|---|---|---|
+| `Q-002` | `HYP-20261116-e7a80a` | 7.53% → **38.49%**（+30.96） | 24.36% → 71.30%（+46.94） |
+| `Q-002` | `HYP-20261114-874658` | 55.92% → **35.00%**（−20.92） | 45.52% → 16.31% |
+| `Q-002` | `HYP-20261118-f413b3` | 5.02% → **6.66%**（+1.64） | 4.09% → 3.10%（−0.99） |
+| `Q-002` | `HYP-20261115-bccd54` | 1.81% → 3.75% | 1.47% → 1.75% |
+| `Q-002` | `HYP-20261117-d3ac84` | 3.11% → 0.62% | 2.90% → 0.33% |
+| `Q-002` | `HYP-20261118-43dd06` | 2.35% → 0.29% | 1.91% → 0.14% |
+| `Q-003` | `HYP-20261117-4bf2dc` | 92.38% → **95.86%** | 70.68% → 71.80% |
+| `Q-003` | `HYP-20261116-e7a80a` | 0.76% → 1.89% | 8.93% → 21.66% |
+| `Q-001` | `HYP-20261118-43dd06` | 10.16% → **2.19%** | 10.16% → 2.19%（**不変**） |
+| `Q-001` | `HYP-20261117-0875fa` | 60.08% → **65.41%** | 60.08% → 65.41%（**不変**） |
+| `Q-001` | `HYP-20261117-a4175c` | 28.36% → **30.88%** | 28.36% → 30.88%（**不変**） |
+
+`Q-001` は上流の4行が触れていないため、前測定と一桁まで一致する。`Q-002` と `Q-003` は大きく変わった。**首位の交代という結論は残る**——`Q-002` は 874658 55.92% → 35.00%、e7a80a 7.53% → 38.49% で、874658 は今回も一度も評価されていない。ただし**差は 55.0 点から 3.49 点へ縮んだ**。`HYP-20261117-0875fa`（一位の一行説）が言う形の首位——「最小重みの評価行一本と釣り合う幅しかない首位」——に、`Q-002` がマージ後に変わった。
+
+**反事実の分解（再測）**：
+
+| 反事実 | `Q-002` の e7a80a | `Q-002` の 874658 | `Q-002` の f413b3 | `Q-003` の 4bf2dc | SHA-256（先頭12字） |
+|---|---|---|---|---|---|
+| 本セッションの行なし（pre） | 7.53% | 55.92% | 5.02% | 92.38% | `cc3b31387572` |
+| **実測（5本すべて）** | **38.49%** | **35.00%** | **6.66%** | **95.86%** | `d5ed8547c66b` |
+| CF-A：`dbd771`（supports）だけを削除 | 15.84% | 47.83% | 9.09% | 97.13% | `b3314b7c1a24` |
+| CF-B：`bf2671` の `scope_inherited_by` だけを削除 | 20.28% | 45.36% | 8.63% | 96.94% | `53d83f5b9bcf` |
+| CF-C：両方を削除 | 7.11% | 52.79% | 10.04% | 97.47% | `e7b303f76c80` |
+
+- 継承指定の効果（実測 − CF-B）＝ **+18.21 点**（前測定 +18.40）。
+- supports 行の効果（実測 − CF-A）＝ **+22.65 点**（前測定 +25.88）。
+- 二つの同時効果（実測 − CF-C）＝ **+31.38 点**。単純和は 40.86 点。
+- **相互作用は −9.48 点＝減算的。前測定は +2.66 点＝加算的だった。符号が反転した。**
+
+**符号の反転をどう読むか。** 二つの装置（継承指定と supports 行）が互いを強め合うか弱め合うかは、**二行の性質ではなく、問いに登録された他の仮説の質量配置**で決まる。上流の4行が 874658 を 45.52% → 55.92% へ押し上げ、e7a80a を 24.36% → 7.53% へ押し下げていた。その配置の中では、同じ二行の寄与は小さく、互いの寄与を食い合う。前測定の「2.66 点の超過加算——二行は独立でない」という文は正しかったが、**超過の符号までが二行の性質だと読んではいけなかった**。独立でないことは残る。独立でなさの向きは台帳の状態に依存する。
+
+**`f413b3` の向きも反転した。** 前測定では、`fdc642` が継承先に名指した `f413b3` は 4.09% → 3.10% へ**下がった**。マージ後は 5.02% → 6.66% へ**上がった**。ただし CF-C（10.04%）と比較すると、同一セッションの他の行が無ければもっと上がっていた——**正規化が問い全体で行われるため、継承の +0.75δ は他の移動に薄められる**という構造は両方の測定で同じである。claim c9 が書いた「継承先に名指すことは、その仮説が増えることを保証しない」は、前測定では**正味の減少**として現れ、再測では**薄められた増加**として現れる。保証しない、という主張は両方で成り立つ。減少する、という含意は成り立たない。
+
+**集計値の再測**：評価行 620 → **625**。`primary_source_collision` 417 → **420**（all-verified 125 で不変、zero-verified 261 → 264、比率 29.98% → **29.76%**）——**本セッションは再び分母だけを増やして比率を下げた**（§3.4）。separation novelty 618 → 623 行・new_pairs 359 → **362**・share 58.09% → 58.11%（本セッションの5行のうち新規ペアは**3件**で、前測定の監査と一致）。エントロピーは `Q-001` 1.3772 → 1.1351、`Q-002` 2.4876 → **2.3735**、`Q-003` 0.6932 → 0.3732。
+
+**探索順位が変わった**：`core_priority_ranking` は前測定で `Q-002` → `Q-003` → `Q-001` だったが、マージ後は **`Q-002` → `Q-001` → `Q-003`** である。これは本セッションの行ではなく**上流の行による**——本セッションの行を削除した写し（pre）でも順位は `Q-002` → `Q-001` → `Q-003` である。理由は `Q-003` の top_eig が 0.0107 へ下がり、飽和の閾値 0.02 を割ったためで、`saturation.saturated_question_ids` は `["Q-003"]` を返す（本セッションの行を入れても 0.0106 で変わらない）。**`Q-003` は飽和している。** 本セッションの `EVL-20261118-5f4390`（4bf2dc への6本目の反復）は、飽和した問いの首位への反復だったことになる。§5.5(1) が「質量0の仮説を評価しても分布は動かない」と書いたのと同じ形の無駄が、質量95.86% の側にもある——**動きしろが無いことは、質量0でも質量96%でも同じ**である。
+
+**この節が §5.3 と違う結論を出した点**：§5.3 第四は「狭窄の質量は対立相手ではなく現在の首位へ流れる。三回目である」と書いた。`Q-001` についてはマージ後も同じ（43dd06 の狭窄 → 0875fa 60.08% → 65.41%、a4175c 28.36% → 30.88%）。**`Q-001` の三つの値は上流のマージで一点も動かなかった**——四回目の測定が、前三回と一桁まで一致した。これは機構の主張として §5.3 第四が持つ証拠を**強める**（同じ engine・同じ環境という条件は変わらないが、台帳の状態が変わっても `Q-001` の結果は変わらなかった）。一方 `Q-002`・`Q-003` は台帳の状態に強く依存した。**依存する問いと依存しない問いの差は、その問いに登録された仮説の数と質量の偏りで説明できるかもしれない**（`Q-001` は active 7件で首位が60%、`Q-003` は active 36件で首位が92%）。説明できるかもしれない、までを書く。測っていない。
+
 ## 6. リンク（GitHub）
 
 - 本報告：[readings/2026-11-18-ten-neuroscience-sources-on-detail-and-self-coming-apart.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-ten-neuroscience-sources-on-detail-and-self-coming-apart.md)
@@ -542,7 +611,7 @@ P-5 は engine と validator と一つの probe を更新し、**二つの読み
 - 信念マップ（更新済み）：[BELIEF_MAP.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/BELIEF_MAP.md)
 - 索引（更新済み）：[READING_MAP.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/READING_MAP.md)
 - 規則：[CONTENT_POLICY.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/CONTENT_POLICY.md)・[docs/registers.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/registers.md)・[docs/parallel-work.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/parallel-work.md)・[docs/time-axis.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/time-axis.md)・[prompts/acquisition.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/prompts/acquisition.md)・[prompts/close_reading_report.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/prompts/close_reading_report.md)
-- 同一委任の先行報告：[the-index-and-the-reader](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-ten-neuroscience-sources-on-the-index-and-the-reader.md)・[thought-memory-and-the-self](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-ten-neuroscience-sources-on-thought-memory-and-the-self.md)・[whose-thought-and-whose-memory](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-ten-neuroscience-sources-on-whose-thought-and-whose-memory.md)・[retrieval-body-and-continuity](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-neuroscience-retrieval-body-and-continuity.md)
+- 同一委任系の先行報告（マージ後に `human_direction` で数え直した7件）：[the-index-and-the-reader](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-ten-neuroscience-sources-on-the-index-and-the-reader.md)・[thought-memory-and-the-self](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-ten-neuroscience-sources-on-thought-memory-and-the-self.md)・[whose-thought-and-whose-memory](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-ten-neuroscience-sources-on-whose-thought-and-whose-memory.md)・[retrieval-body-and-continuity](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-neuroscience-retrieval-body-and-continuity.md)・[fingerprints-pulses-and-transmitted-scenes](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-fingerprints-pulses-and-transmitted-scenes.md)・[address-me-and-the-trace-survives](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-address-me-and-the-trace-survives.md)・[the-border-is-issued-by-the-upper-floor](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-18-the-border-is-issued-by-the-upper-floor.md)（PR #914、作業中にマージ）
 
 - 本セッションが変更した道具とテスト：[tools/lineage_credit_accounting.py](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/tools/lineage_credit_accounting.py)・[tools/boundary_channel_probe.py](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/tools/boundary_channel_probe.py)・[tests/test_lineage_credit_accounting.py](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/tests/test_lineage_credit_accounting.py)
 - engine（変更していない）：[tools/belief_state.py](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/tools/belief_state.py)
