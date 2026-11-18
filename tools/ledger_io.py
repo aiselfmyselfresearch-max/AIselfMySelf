@@ -246,11 +246,44 @@ def _parse_collection(
 _EDITORIAL_TARGET_TO_FILENAME: dict[str, str] = {
     "fragment": "fragments.jsonl",
     "question": "questions.jsonl",
+    "material": "materials.jsonl",
 }
 _EDITORIAL_VALID_STATUS: dict[str, frozenset[str]] = {
     "fragment": frozenset({"draft", "selected", "archived"}),
     "question": frozenset({"open", "paused", "archived"}),
+    "material": frozenset({"verified", "partially_verified", "unverified", "corrected"}),
 }
+
+
+def _apply_editorial_overlay(
+    record: dict[str, Any], decision: dict[str, Any], target_type: str, status: str
+) -> dict[str, Any]:
+    """Return a shallow-copied record carrying an append-only editorial overlay.
+
+    Fragment and question decisions replace ``status``.  Material decisions
+    (Gate 3, 2026-11-18) replace ``verification.status`` and record the check
+    timestamp, method, and decision provenance without rewriting any shard in
+    ``state/materials*`` or adding non-schema keys.
+    """
+    if target_type != "material":
+        return {**record, "status": status}
+    prev_v = record.get("verification")
+    new_v: dict[str, Any] = dict(prev_v) if isinstance(prev_v, dict) else {}
+    new_v["status"] = status
+    checked_at = decision.get("created_at")
+    if isinstance(checked_at, str) and checked_at.strip():
+        new_v["checked_at"] = checked_at.strip()
+    method = decision.get("verification_method")
+    if isinstance(method, str) and method.strip():
+        new_v["method"] = method.strip()
+    elif not isinstance(new_v.get("method"), str) or not new_v.get("method", "").strip():
+        new_v["method"] = "editorial_decision overlay"
+    reason = decision.get("reason")
+    did = decision.get("decision_id")
+    if isinstance(reason, str) and reason.strip():
+        tag = f"[overlay {did}] " if isinstance(did, str) and did else ""
+        new_v["note"] = f"{tag}{reason.strip()}"
+    return {**record, "verification": new_v}
 
 
 def _order_editorial_decisions(
@@ -324,24 +357,28 @@ def load_collections(
     and a list of human-readable errors.  A malformed line is retried a few
     times first, because it may be a writer's partially flushed record.
 
-    When ``fragments.jsonl`` or ``questions.jsonl`` is loaded and a sibling
-    ``editorial_decisions.jsonl`` exists in the same ``state/`` directory,
-    append-only editorial status overlays are applied in ledger order onto shallow
-    copies of matching records without mutating files on disk.
+    When ``fragments.jsonl``, ``questions.jsonl``, or ``materials.jsonl`` is
+    loaded and a sibling ``editorial_decisions.jsonl`` (or shard directory)
+    exists in the same ``state/`` directory, append-only editorial status and
+    verification overlays are applied in ledger order onto shallow copies of
+    matching records without mutating files on disk.
     """
     errors: list[str] = []
     last_parse_errors: list[str] = []
     explicit_ed_names_by_dir: dict[Path, str] = {}
     implicit_ed_bases: dict[Path, Path] = {}
+    overlay_filenames = frozenset(_EDITORIAL_TARGET_TO_FILENAME.values())
     for name, (base, _id_key) in specs.items():
         base_path = Path(base)
         if base_path.name == "editorial_decisions.jsonl":
             explicit_ed_names_by_dir[base_path.parent] = name
     for _name, (base, _id_key) in specs.items():
         base_path = Path(base)
-        if base_path.name in ("fragments.jsonl", "questions.jsonl"):
+        if base_path.name in overlay_filenames:
             ed_base = base_path.parent / "editorial_decisions.jsonl"
-            if base_path.parent not in explicit_ed_names_by_dir and ed_base.exists():
+            if base_path.parent not in explicit_ed_names_by_dir and (
+                ed_base.exists() or shard_dir(ed_base).is_dir()
+            ):
                 implicit_ed_bases[base_path.parent] = ed_base
 
     for attempt in range(retries + 1):
@@ -404,7 +441,7 @@ def load_collections(
 
         for name, (base, _id_key) in specs.items():
             base_path = Path(base)
-            if base_path.name not in ("fragments.jsonl", "questions.jsonl"):
+            if base_path.name not in overlay_filenames:
                 continue
             decisions = ed_by_dir.get(base_path.parent)
             if not decisions:
@@ -424,7 +461,9 @@ def load_collections(
                     and status in _EDITORIAL_VALID_STATUS.get(ttype, frozenset())
                     and tid in records
                 ):
-                    records[tid] = {**records[tid], "status": status}
+                    records[tid] = _apply_editorial_overlay(
+                        records[tid], decision, ttype, status
+                    )
 
         return data, errors
 
