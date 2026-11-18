@@ -119,29 +119,19 @@ READ_ID_RE = re.compile(r"^READ-\d{8}-[0-9a-f]{6}$")
 #: rewritten, and back-dating a role would manufacture a receipt that was never
 #: issued (the role is a function of the seed, and 91% of old rows record none).
 ROLE_RECEIPT_REQUIRED_FROM = "20261118"
+# Frozen from the 2026-11-17 20:07 UTC main tree (10b5088): session IDs
+# already present there whose internal stamp is >= the cutoff. Unlike the
+# moving "today" upper bound, this still distinguishes old and new rows when
+# the wall clock catches up. Never infer an exemption from a row's own prose.
+PRE_RECEIPT_SESSION_IDS = frozenset(
+    Path(__file__).with_name("pre_receipt_session_ids.txt").read_text().splitlines()
+)
 ROLE_RECEIPT_FIELDS = (
     "dispersal_seed",
     "assigned_role",
     "offered_target_question_id",
     "offered_reference_mode",
 )
-# 2026-11-18 (UTC): the first day this cutoff takes effect, two append-only rows
-# in state/sessions.d/2026-11-10-000000000000.jsonl carry the *internal
-# chronology label* 2026-11-18 while their notes record the real execution date
-# 2026-10-26 (three weeks before the receipt was introduced). ``_is_new_row``
-# cannot tell a label from a real date, and the upper bound that hides 2027
-# labels cannot hide a label equal to today, so the gate classified both as new
-# and refused a receipt they never received.  Exempt them by ID instead of
-# widening the window (which would also hide every future same-day row) or
-# rewriting append-only rows (which would manufacture a receipt).  This is the
-# same repair as REGISTER_RULE_EXEMPT_IDS above; see
-# readings/2026-11-18-ten-neuroscience-sources-on-the-index-and-the-reader.md
-# 5.4.  The exemption is not transferable: any other SESSION-20261118-* still
-# needs all four fields, and this session's own row carries them.
-ROLE_RECEIPT_LEGACY_EXEMPT_IDS = frozenset({
-    "SESSION-20261118-1be029",
-    "SESSION-20261118-291f45",
-})
 REGISTER_VALUES = ("description", "judgment", "inheritance")
 _ID_STAMP = re.compile(r"^[A-Z]+(?:-[A-Z]+)*-(\d{8})-")
 
@@ -707,16 +697,10 @@ def check_role_receipts(
     ``cutoff`` a session row without the four receipt fields is an error. Rows
     before the cutoff are exempt because they cannot be rewritten (append-only)
     and because the seed is not recorded for 91% of them: a role filled in
-    afterwards would be a manufactured receipt, not a recovered one. Two legacy
-    rows whose 20261118 IDs are internal-chronology labels are additionally
-    exempted by ID (``ROLE_RECEIPT_LEGACY_EXEMPT_IDS``): their real work date is
-    2026-10-26, so asking them for a 2026-11-18 receipt is a date-axis error,
-    not a compliance gap.
+    afterwards would be a manufactured receipt, not a recovered one.
     """
     for session_id, record in sessions.items():
-        if session_id in ROLE_RECEIPT_LEGACY_EXEMPT_IDS:
-            continue
-        if not _is_new_row(session_id, cutoff, today=today):
+        if session_id in PRE_RECEIPT_SESSION_IDS or not _is_new_row(session_id, cutoff, today=today):
             continue
         missing = [
             field for field in ROLE_RECEIPT_FIELDS

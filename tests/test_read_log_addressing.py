@@ -150,6 +150,18 @@ class RoleReceiptTests(unittest.TestCase):
         self.assertIn("offered_reference_mode", errors[0])
         self.assertNotIn("dispersal_seed", errors[0])
 
+    def test_old_internal_dates_do_not_become_new_receipts(self) -> None:
+        # On Oct 26 these two sessions used Nov 18 as an internal label.
+        # A later writer using the same date must still supply a receipt.
+        old = ["SESSION-20261118-1be029", "SESSION-20261118-291f45"]
+        new = "SESSION-20261118-ffffff"
+        errors: list[str] = []
+        validate_seed.check_role_receipts(
+            {sid: {} for sid in [*old, new]}, errors, today=datetime.date(2027, 12, 31)
+        )
+        self.assertEqual(len(errors), 1)
+        self.assertIn(new, errors[0])
+
     def test_a_complete_receipt_passes(self) -> None:
         errors: list[str] = []
         record = {"session_id": "SESSION-20261118-abcdef", **self.RECEIPT}
@@ -195,9 +207,15 @@ class RoleReceiptTests(unittest.TestCase):
         self.assertEqual(len(errors), 1)
         self.assertIn(new, errors[0])
         self.assertNotIn(legacy, errors[0])
-        self.assertIn(legacy, validate_seed.ROLE_RECEIPT_LEGACY_EXEMPT_IDS)
+        # The merged tree freezes the whole pre-rule ID set from the 2026-11-17
+        # main tree (PR #898); the two rows above must be in it, and this
+        # session's own ID must not be.
+        self.assertIn(legacy, validate_seed.PRE_RECEIPT_SESSION_IDS)
         self.assertIn(
-            "SESSION-20261118-291f45", validate_seed.ROLE_RECEIPT_LEGACY_EXEMPT_IDS
+            "SESSION-20261118-291f45", validate_seed.PRE_RECEIPT_SESSION_IDS
+        )
+        self.assertNotIn(
+            "SESSION-20261118-7c341c", validate_seed.PRE_RECEIPT_SESSION_IDS
         )
 
     def test_the_live_ledger_passes_today(self) -> None:
