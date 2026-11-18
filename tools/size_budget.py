@@ -1386,13 +1386,32 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # Only count tripped --strict. Historical reports cannot be compacted;
         # use the preceding 12-report review margin, not a per-merge increase.
         # Leave the 34 MiB soft, all hard limits and the per-file caps unchanged.
-        # 2026-11-18 (977 -> 990, SESSION-20261118-d8fe06): reports before this
-        # session occupied all 977 slots (977/977); this session's report took
-        # readings/ to 978 files / 34,580,034 B (32.98 MiB of the 34 MiB soft,
-        # 1,071,550 B headroom). Only count tripped --strict. Historical reports
-        # are append-only and cannot be compacted; apply the established
-        # 12-report review margin (978 + 12 = 990). Leave 34 MiB soft, hard
-        # limits (1200 files / 48 MiB) and 256 KiB / 512 KiB per-file caps unchanged.
+        # 2026-11-18 (977 -> 990, SESSION-20261118-8bfc18, post-merge): the
+        # dozen-report margin above lasted one day.  This session's report plus
+        # the two reports that arrived with origin/main b32e161 (PR #913, #914)
+        # take the union to 978 files / 34,697,451 B (33.09 MiB of the 34 MiB
+        # soft), so only the count dimension tripped --strict again -- the
+        # fifth time this line has fired (936/936, 951/951, 965, 977 and now
+        # 978 against 977).  Rescaled by the same measured dozen-report margin
+        # (978 + 12 = 990) rather than per report.  Reports are append-only and
+        # cannot be compacted; deletion needs human approval; the readings/
+        # directory split named in the remedy above is still unimplemented.
+        # The BYTE dimension did not fire but is now the tighter one: 954,133 B
+        # of headroom, which is ~33 reports at the 28,925 B corpus median and
+        # only ~6 at the size of this session's report (147,439 B, 5.1x the
+        # median, 15% of the remaining headroom consumed by one file).  Left at
+        # 34 MiB deliberately -- raising a dimension that has not fired is how
+        # a budget stops measuring.  The next long-report session should expect
+        # to rescale soft_bytes and should measure first.  hard 1200 files /
+        # 48 MiB and the 256 KiB / 512 KiB per-report caps are unchanged.
+        # See readings/2026-11-18-ten-neuroscience-sources-on-detail-and-
+        # self-coming-apart.md §5.6 (台帳保守).
+        # 2026-11-18 (merge of origin/main 845f16a5 x SESSION-20261118-d8fe06):
+        # both branches independently raised 977 -> 990 from the same b32e161
+        # baseline (+12 review margin).  Measured on the merged union:
+        # readings/ = 979 files / 34,730,633 B (33.12 MiB of the 34 MiB soft,
+        # 920,951 B headroom, 11 file slots remaining under 990).  Both
+        # records are preserved above; 990 and 34 MiB both remain [OK].
         soft_files=990,
         hard_files=1200,
         soft_file_bytes=256 * 1024,

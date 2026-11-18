@@ -24,7 +24,10 @@ rule       Vary only the 1-hop admission predicate, every ledger row untouched.
            Requires injected traffic: the live ledger has no evaluation-borne
            1-hop flag, so an unpowered run returns a meaningless all-zero.
 mix        Evaluation channel: hold row count, targets and positions fixed;
-           change only the verdict mix. Tests 20fa8c limb 1.
+           change only the verdict mix. Tests 20fa8c limb 1.  "Positions
+           fixed" clears BOTH heir fields (``spawned_hypothesis_ids`` and,
+           since 2026-11-18, ``scope_inherited_by_hypothesis_ids``), because
+           the engine pays their union; the lineage fallback still routes.
 
 Usage::
 
@@ -213,6 +216,21 @@ def run(target: str = DEFAULT_TARGET, question: str = QUESTION,
         for i, eid in enumerate(eids):
             c["evaluations"][eid]["verdict"] = fn(i)
             c["evaluations"][eid]["spawned_hypothesis_ids"] = []
+            # 2026-11-18: the engine pays the UNION of the two heir fields
+            # (belief_state L684-698; ``scope_inherited_by_hypothesis_ids``
+            # was added 2026-11-16 as P-5).  Clearing only ``spawned`` left
+            # every scope heir being paid, and the share it is paid is
+            # verdict-specific (0.75*delta for narrows_scope, 0.95*delta for
+            # refutes_unconditioned, nothing for supports) -- so the arm that
+            # is meant to change *only* the verdict mix was also changing who
+            # inherits and by how much.  Ten live rows name a scope heir; eight
+            # of them route through that field alone.  Clearing both named
+            # fields is what "hold positions fixed" meant before P-5.  The
+            # lineage *fallback* still routes when both lists are empty, as it
+            # did before this change; disabling it would need
+            # ``heir_credit=False`` and would make this arm incomparable with
+            # the runs the 2026-11-14 and 2026-11-17 reports cite.
+            c["evaluations"][eid]["scope_inherited_by_hypothesis_ids"] = []
         st = bs.compute_belief_state(c)
         d = _delta(base, st, question, target)
         d["evaluation_rows_held_fixed"] = len(eids)
