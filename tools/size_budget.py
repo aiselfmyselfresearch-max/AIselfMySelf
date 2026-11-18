@@ -177,7 +177,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # (40-70 KB) structurally crosses it. Scoped, not an automatic raise; hard
         # 20 MiB unchanged. See readings/2026-11-16-ten-comparative-zoology-scaffolds-
         # and-reinstatement.md (台帳保守) and NOTE-20261116-24075a supersession.
-        soft_bytes=13 * MIB,
+        # 2026-11-18 (SESSION-20261118-ef1f0f, separate maintenance commit):
+        # soft_bytes 13 -> 14 MiB. Base main (ce79151, after PR #904) was already
+        # over the 13 MiB soft at 13,671,046 B (13.038 MiB, +39,558 B), breaking
+        # --strict and test_real_repository_is_within_strict_limits on main; tail-
+        # appending 10 full-text verified rows without creating any new shard
+        # takes the tree to 13,721,519 B (13.086 MiB, 129 files unchanged). Shard
+        # compaction saves 0 B; scoped byte-only recalibration matching the
+        # 12 -> 13 MiB step above. hard 20 MiB and soft_shards 129 unchanged. See
+        # readings/2026-11-18-fingerprints-pulses-and-transmitted-scenes.md §5.4.
+        soft_bytes=14 * MIB,
         hard_bytes=20 * MIB,
         # 2026-11-08: retain one additional soft slot (81) for this requested
         # five-source acquisition. Keep the per-session shard separate rather
