@@ -189,6 +189,35 @@ class RoleReceiptTests(unittest.TestCase):
         )
         self.assertEqual(errors, [])
 
+    def test_a_same_day_internal_label_with_no_receipt_is_exempt_only_by_id(self) -> None:
+        """Two 2026-10-26 rows carry the internal label 20261118.
+
+        On the real day 2026-11-18 the ``today`` upper bound can no longer hide
+        them, but widening it would hide every genuine same-day row too.  Only
+        the named legacy IDs pass; an otherwise identical new ID still fails.
+        """
+        legacy = "SESSION-20261118-1be029"
+        new = "SESSION-20261118-abcdef"
+        errors: list[str] = []
+        validate_seed.check_role_receipts(
+            {legacy: {"session_id": legacy}, new: {"session_id": new}},
+            errors,
+            today=datetime.date(2026, 11, 18),
+        )
+        self.assertEqual(len(errors), 1)
+        self.assertIn(new, errors[0])
+        self.assertNotIn(legacy, errors[0])
+        # The merged tree freezes the whole pre-rule ID set from the 2026-11-17
+        # main tree (PR #898); the two rows above must be in it, and this
+        # session's own ID must not be.
+        self.assertIn(legacy, validate_seed.PRE_RECEIPT_SESSION_IDS)
+        self.assertIn(
+            "SESSION-20261118-291f45", validate_seed.PRE_RECEIPT_SESSION_IDS
+        )
+        self.assertNotIn(
+            "SESSION-20261118-7c341c", validate_seed.PRE_RECEIPT_SESSION_IDS
+        )
+
     def test_the_live_ledger_passes_today(self) -> None:
         """The gate must not fire before its effective date on the real ledgers."""
         errors: list[str] = []
