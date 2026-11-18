@@ -7064,7 +7064,7 @@
 | `map/60-notes-30.md` | 25 | 38,599 |
 | `map/60-notes-31.md` | 25 | 77,380 |
 | `map/60-notes-32.md` | 25 | 113,883 |
-| `map/60-notes-33.md` | 25 | 118,637 |
+| `map/60-notes-33.md` | 25 | 118,691 |
 | `map/60-notes-34.md` | 25 | 67,595 |
 | `map/60-notes-35.md` | 25 | 71,724 |
 | `map/60-notes-36.md` | 25 | 74,328 |
@@ -7075,7 +7075,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・979本・34,783,029 B）
+## 8. 精読ノート索引（readings/・979本・34,783,861 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 915/979 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -7886,7 +7886,7 @@
 | `readings/2026-11-18-neuroscience-retrieval-body-and-continuity.md` | — | 2026-11-18 | — | 8,995 | M10 | ✓ | 脳神経学10資料の精読：保存と想起のあいだ、身体と記録のあいだ |
 | `readings/2026-11-18-read-log-shard-compaction.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-291f45` | 5,707 | S1 | ✓ | `state/read_log.d/` シャード統合記録（SESSION-20261118-291f45） |
 | `readings/2026-11-18-remembering-without-reopening.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-b03e4f` +1 | 15,655 | Q4 M11 S2 ERR1 | ✓ | 思い出せても、もう実行しない——出来事の境界・展望記憶・出所判断を読む |
-| `readings/2026-11-18-silent-traces-honest-organs-and-shared-borders.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-b47924` | 39,101 | Q4 M17 MOT1 S1 | — | 沈黙する痕跡、嘘をつかない臓器、共有される壁——脳神経学10論文の公開全文精読と「保存しない連続」の五つの逆説 |
+| `readings/2026-11-18-silent-traces-honest-organs-and-shared-borders.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-b47924` +1 | 39,691 | Q4 M17 MOT1 S2 | — | 沈黙する痕跡、嘘をつかない臓器、共有される壁——脳神経学10論文の公開全文精読と「保存しない連続」の五つの逆説 |
 | `readings/2026-11-18-ten-neuroscience-sources-on-detail-and-self-coming-apart.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-8bfc18` +8 | 79,696 | Q3 M23 MOT2 S9 | — | 詳細を作ることと、自己を入れること——脳神経学10件：解離・欠如・現実・採取・共有 |
 | `readings/2026-11-18-ten-neuroscience-sources-on-the-index-and-the-reader.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-7c341c` +2 | 27,696 | Q2 M12 S3 | ✓ | 個別の思考・個別の記憶は、どこで「私のもの」になるか——脳神経学10件：索引・再活性化・帰属・読み手 |
 | `readings/2026-11-18-ten-neuroscience-sources-on-thought-memory-and-the-self.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-5fabb2` +1 | 31,969 | Q4 M19 S2 | ✓ | 個別の思考と個別の記憶は、自己のどこで交わるか——脳神経学10件：解離・勾配・基線 |
