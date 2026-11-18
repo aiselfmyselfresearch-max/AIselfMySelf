@@ -418,7 +418,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # without a matching raise. Measured union = 132 files; set to measured +
         # 2 so the next session has one free slot and this trap does not repeat.
         # Hard 160 unchanged; consolidation debt stands.
-        soft_shards=134,
+        # 2026-11-18 (merge of origin/main 6a04011 / PR #933, 131 measured):
+        # upstream consolidated one materials shard, so the
+        # ceiling set above from 132 measured is now +3 free slots. Lowered by one
+        # to keep measured + 2: two free slots, below the --reclaim slack of 3.
+        soft_shards=133,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -610,7 +614,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # without a matching raise. Measured union = 144 files; set to measured +
         # 2 so the next session has one free slot and this trap does not repeat.
         # Hard 160 unchanged; consolidation debt stands.
-        soft_shards=146,
+        # 2026-11-18 (merge of origin/main 6a04011 / PR #933, 143 measured):
+        # upstream consolidated one read_log shard, so the
+        # ceiling set above from 144 measured is now +3 free slots. Lowered by one
+        # to keep measured + 2: two free slots, below the --reclaim slack of 3.
+        soft_shards=145,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -854,7 +862,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # without a matching raise. Measured union = 149 files; set to measured +
         # 2 so the next session has one free slot and this trap does not repeat.
         # Hard 160 unchanged; consolidation debt stands.
-        soft_shards=151,
+        # 2026-11-18 (merge of origin/main 6a04011 / PR #933, 148 measured):
+        # upstream consolidated one sessions shard, so the
+        # ceiling set above from 149 measured is now +3 free slots. Lowered by one
+        # to keep measured + 2: two free slots, below the --reclaim slack of 3.
+        soft_shards=150,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -1224,7 +1236,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # without a matching raise. Measured union = 156 files; set to measured +
         # 2 so the next session has one free slot and this trap does not repeat.
         # Hard 160 unchanged; consolidation debt stands.
-        soft_shards=158,
+        # 2026-11-18 (merge of origin/main 6a04011 / PR #933, 155 measured):
+        # upstream consolidated one notes shard, so the
+        # ceiling set above from 156 measured is now +3 free slots. Lowered by one
+        # to keep measured + 2: two free slots, below the --reclaim slack of 3.
+        soft_shards=157,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
