@@ -173,3 +173,5 @@ assert overlap == {(True,True):70, (False,False):26, (True,False):2}
 PY
 )
 ```
+
+**登録・検算の時点。** 本稿のための追記は報告1本、セッション1行、ノート2行、読書15行、訂正1行、評価1行。素材や関係の過去行は変更していない。同日進行の [#901](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/901) と [#900](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/900) が先に本線に入り、最終的な `readings/` は965本になった。合流時に既定の点検線を超えたのは件数だけ（965 / 964）。既存報告を削らず、従来の12本分の余裕をとって次の点検線を977本とし、バイト数・ハード上限は据え置いた。これは収納の判断であり、§1・§4–5で測った木と母数は変えていない。
