@@ -5866,7 +5866,7 @@
 | `MAT-20261118-02aff1` | research_excerpt | Malia F. Mason, Michael I. Norton, John D. Van Horn, Daniel M. Wegner, Scott T. Grafton, … |
 | `MAT-20261118-d66165` | research_excerpt | Kalina Christoff, Alan M. Gordon, Jonathan Smallwood, Rachelle Smith, Jonathan W. Schoole… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261118-86af16・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261118-ba908c・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -6835,9 +6835,9 @@
 | `SESSION-20261118-1061cc` | 2026-11-18 | `Q-001` | — | — |
 | `SESSION-20261118-63b4a7` | 2026-11-18T01:23:06Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-5fabb2` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261118-ba908c` | 2026-11-18T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-ef1f0f` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-86af16` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261118-ba908c` | 2026-11-18T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7035 件・全表は map/40-relations-*.md）
 
