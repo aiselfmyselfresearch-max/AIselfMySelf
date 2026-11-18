@@ -1322,7 +1322,12 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # compacted; the readings/ directory split named in the remedy above is
         # still unimplemented. hard 1200 files / 48 MiB and the 256 KiB / 512 KiB
         # per-report caps are unchanged.
-        soft_files=964,
+        # 2026-11-18 (964 -> 977, SESSION-20261118-add884): after #900 and
+        # #901 merged, one new report took the union to 965 files (32.44 MiB).
+        # Only count tripped --strict. Historical reports cannot be compacted;
+        # use the preceding 12-report review margin, not a per-merge increase.
+        # Leave the 34 MiB soft, all hard limits and the per-file caps unchanged.
+        soft_files=977,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

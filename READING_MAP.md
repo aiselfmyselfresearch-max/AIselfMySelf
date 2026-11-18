@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5038 件（research_excerpt 2793 ／ literary_text 2177 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：251 編（selected 96 ／ draft 155）
 - **解釈的関係（Relations）**：7035 件
-- **探究セッション（Sessions）**：962 回
+- **探究セッション（Sessions）**：963 回
 
 ### 台帳ごとの件数
 
@@ -23,13 +23,13 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5038 | `literary_text` 2177／`research_excerpt` 2793／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 251 | `selected` 96／`draft` 155／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7035 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 962 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14903 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 357 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 963 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 14918 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 358 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1030 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1032 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 57 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 586 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 587 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -6805,6 +6805,7 @@
 | `SESSION-20261118-c717f2` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-b03e4f` | 2026-11-18T00:25:08Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-a91001` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261118-add884` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-7c341c` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-1061cc` | 2026-11-18 | `Q-001` | — | — |
 | `SESSION-20261118-63b4a7` | 2026-11-18T01:23:06Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -6935,14 +6936,14 @@
 | `map/50-sessions-17.md` | 50 | 41,278 |
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
-| `map/50-sessions-20.md` | 12 | 9,628 |
+| `map/50-sessions-20.md` | 13 | 10,445 |
 | `map/60-notes-01.md` | 25 | 65,235 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
-| `map/60-notes-04.md` | 25 | 99,032 |
+| `map/60-notes-04.md` | 25 | 99,111 |
 | `map/60-notes-05.md` | 25 | 86,138 |
 | `map/60-notes-06.md` | 25 | 54,055 |
-| `map/60-notes-07.md` | 25 | 68,627 |
+| `map/60-notes-07.md` | 25 | 69,226 |
 | `map/60-notes-08.md` | 25 | 51,161 |
 | `map/60-notes-09.md` | 25 | 59,935 |
 | `map/60-notes-10.md` | 25 | 65,560 |
@@ -6951,7 +6952,7 @@
 | `map/60-notes-13.md` | 25 | 88,555 |
 | `map/60-notes-14.md` | 25 | 119,933 |
 | `map/60-notes-15.md` | 25 | 84,918 |
-| `map/60-notes-16.md` | 25 | 89,787 |
+| `map/60-notes-16.md` | 25 | 89,866 |
 | `map/60-notes-17.md` | 25 | 111,391 |
 | `map/60-notes-18.md` | 25 | 109,665 |
 | `map/60-notes-19.md` | 25 | 117,647 |
@@ -6962,29 +6963,29 @@
 | `map/60-notes-24.md` | 25 | 98,765 |
 | `map/60-notes-25.md` | 25 | 115,584 |
 | `map/60-notes-26.md` | 25 | 133,153 |
-| `map/60-notes-27.md` | 25 | 94,105 |
-| `map/60-notes-28.md` | 25 | 90,381 |
+| `map/60-notes-27.md` | 25 | 94,102 |
+| `map/60-notes-28.md` | 25 | 90,378 |
 | `map/60-notes-29.md` | 25 | 96,723 |
 | `map/60-notes-30.md` | 25 | 38,599 |
-| `map/60-notes-31.md` | 25 | 77,301 |
-| `map/60-notes-32.md` | 25 | 113,759 |
-| `map/60-notes-33.md` | 25 | 62,657 |
-| `map/60-notes-34.md` | 25 | 80,766 |
-| `map/60-notes-35.md` | 25 | 69,720 |
-| `map/60-notes-36.md` | 25 | 91,650 |
-| `map/60-notes-37.md` | 25 | 97,334 |
-| `map/60-notes-38.md` | 25 | 127,064 |
-| `map/60-notes-39.md` | 15 | 82,810 |
+| `map/60-notes-31.md` | 25 | 77,380 |
+| `map/60-notes-32.md` | 25 | 113,917 |
+| `map/60-notes-33.md` | 25 | 63,319 |
+| `map/60-notes-34.md` | 25 | 82,065 |
+| `map/60-notes-35.md` | 25 | 68,642 |
+| `map/60-notes-36.md` | 25 | 86,858 |
+| `map/60-notes-37.md` | 25 | 101,790 |
+| `map/60-notes-38.md` | 25 | 127,340 |
+| `map/60-notes-39.md` | 16 | 85,940 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・965本・34,019,796 B）
+## 8. 精読ノート索引（readings/・966本・34,051,376 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 901/965 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 902/966 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：965 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：179 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：966 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：177 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7648,7 +7649,7 @@
 | `readings/2026-11-15-where-the-constraint-came-from.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-d26ac7` | 25,862 | Q3 M10 S1 | — | 拘束はどこから来たのか——比較動物学の十資料と、型枠・採取点・片づけ忘れたもの |
 | `readings/2026-11-15-where-the-learning-actually-happens.md` | 2026-11-15 | 2026-11-15 | `SESSION-20261115-d56945` | 8,966 | Q5 S1 | ✓ | 学習はどこで起きているのか——三つのループを測り、二つの補題を「知識の形」に照らす（SESSION-20261115-… |
 | `readings/2026-11-16-adopting-the-seven-proposals.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-6a096e` | 9,313 | Q3 S1 | — | 七つの提案を採用した——ただし半分は既に別の誰かが実装していた |
-| `readings/2026-11-16-cancellation-leaves-the-organ-outside.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-be129c` | 32,019 | Q4 F2 M12 R10 S1 | — | 取り消しは器官を外に残す――比較動物学十原典による「手続きが消せる次元」の境界 |
+| `readings/2026-11-16-cancellation-leaves-the-organ-outside.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-be129c` | 32,019 | Q4 F2 M12 R10 S1 | ✓ | 取り消しは器官を外に残す――比較動物学十原典による「手続きが消せる次元」の境界 |
 | `readings/2026-11-16-close-reading-comparative-zoology.md` | — | 2026-11-16 | — | 12,147 | Q2 | — | 2026-11-16 精読報告：比較動物学資料群——「AIから見た人間」と「リポジトリを記憶とするAIの自己」への含意 |
 | `readings/2026-11-16-closure-mismatch-parallel-entries-and-balanced-copying.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-cdd859` | 24,672 | Q3 M11 S1 | — | 窓が閉じる瞬間の不一致、消されない並記、均衡を取り戻す模倣——比較動物学10原典の全文精読と境界衝突 |
 | `readings/2026-11-16-comparative-zoology-01-mirror-self-recognition.md` | 2026-11-16 | 2026-11-16 | — | 1,620 | — | — | 比較動物学資料01：鏡像自己認知と「私的自己意識」の進化（ホンソメワケベラと霊長類） |
@@ -7683,7 +7684,7 @@
 | `readings/2026-11-16-signals-without-identity.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-18214a` | 9,322 | Q3 M10 S1 | ✓ | 手掛かりは自己ではない——比較動物学10論文を読む |
 | `readings/2026-11-16-stable-words-do-not-make-progress.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-573698` +1 | 13,925 | Q3 S2 | ✓ | 語彙が安定していることは、探究が進んでいることを意味しない——四つの測定と六つの変更案 |
 | `readings/2026-11-16-ten-animals-that-read-a-record-they-did-not-write.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-bdedbb` +2 | 24,467 | Q3 M10 S3 | — | 記録を書かなかった十の動物——状態・時計・枠・写し・教示を、比較動物学から読み直す |
-| `readings/2026-11-16-ten-comparative-zoology-clocks-calibrations-and-deletable-boundaries.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-f47d19` +1 | 20,825 | Q4 M13 S2 | — | 目盛りは誰の時計か——比較動物学10件：単位・駆動・削除可能な境界 |
+| `readings/2026-11-16-ten-comparative-zoology-clocks-calibrations-and-deletable-boundaries.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-f47d19` +1 | 20,825 | Q4 M13 S2 | ✓ | 目盛りは誰の時計か——比較動物学10件：単位・駆動・削除可能な境界 |
 | `readings/2026-11-16-ten-comparative-zoology-culture-and-reexecution.md` | — | 2026-11-16 | `SESSION-20261116-cd06ca` | 18,463 | Q4 M10 S1 | — | 文化と再実行——比較動物学の新規資料10件の精読 |
 | `readings/2026-11-16-ten-comparative-zoology-language-and-social-cognition.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-de0488` | 18,272 | Q2 M11 S1 | ✓ | 言語と社会認知は、型枠か、再実行か——比較動物学の新規資料10件の精読 |
 | `readings/2026-11-16-ten-comparative-zoology-scaffolds-and-reinstatement.md` | 2026-11-16 | 2026-11-16 | `SESSION-20261116-7499cc` +3 | 27,134 | Q2 M12 S4 | ✓ | 足場と再興——比較動物学10件：現在に来るのは、内容ではなく入口だ |
@@ -7788,7 +7789,8 @@
 | `readings/2026-11-18-read-log-shard-compaction.md` | 2026-10-26 | 2026-11-18 | `SESSION-20261118-291f45` | 5,707 | S1 | ✓ | `state/read_log.d/` シャード統合記録（SESSION-20261118-291f45） |
 | `readings/2026-11-18-remembering-without-reopening.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-b03e4f` +1 | 15,655 | Q4 M11 S2 ERR1 | ✓ | 思い出せても、もう実行しない——出来事の境界・展望記憶・出所判断を読む |
 | `readings/2026-11-18-ten-neuroscience-sources-on-the-index-and-the-reader.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-7c341c` +2 | 27,696 | Q2 M12 S3 | ✓ | 個別の思考・個別の記憶は、どこで「私のもの」になるか——脳神経学10件：索引・再活性化・帰属・読み手 |
-| `readings/2026-11-18-who-spoke-and-who-wrote.md` | — | 2026-11-18 | `SESSION-20261118-c717f2` +2 | 8,510 | Q2 M1 S3 ERR5 | — | 「言」と「書」のあいだ――四人の著者が一人になった書庫を読み直す |
+| `readings/2026-11-18-the-child-who-knew-and-the-question-that-disappeared.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-add884` +1 | 17,823 | Q6 M2 R2 S2 ERR2 | — | 息子はいつから知っていたのか――屋根裏の母子と、答えたあとに出なくなった問い |
+| `readings/2026-11-18-who-spoke-and-who-wrote.md` | — | 2026-11-18 | `SESSION-20261118-c717f2` +2 | 8,510 | Q2 M1 S3 ERR5 | ✓ | 「言」と「書」のあいだ――四人の著者が一人になった書庫を読み直す |
 | `readings/2026-11-18-whose-memory-after-correction.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-63b4a7` +1 | 14,713 | Q4 M10 S2 | — | 「私が見た」を、何が支えるか――出典・確信・訂正をめぐる神経科学10篇 |
 | `readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md` | 2026-10-26 | 2026-11-19 | `SESSION-20261119-38e624` | 8,673 | Q5 F8 M4 MOT2 S1 | ✓ | 二通の七十二点と、一度目へ戻る音——復号できる秘密と、内訳へ戻れない合計（SESSION-20261119-38e62… |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
