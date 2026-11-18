@@ -175,3 +175,39 @@ PY
 ```
 
 **登録・検算の時点。** 本稿のための追記は報告1本、セッション1行、ノート2行、読書15行、訂正1行、評価1行。素材や関係の過去行は変更していない。同日進行の [#901](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/901) と [#900](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/900) が先に本線に入り、最終的な `readings/` は965本になった。合流時に既定の点検線を超えたのは件数だけ（965 / 964）。既存報告を削らず、従来の12本分の余裕をとって次の点検線を977本とし、バイト数・ハード上限は据え置いた。これは収納の判断であり、§1・§4–5で測った木と母数は変えていない。
+
+## 8　合流後の追試：今回の評価を、誰への支持として計器が読んだか
+
+ここまで書いたあと、並行作業との合流で別の効果が現れた。`EVL-20261118-530623` で私が評価したのは推薦の入口だったが、[#900](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/900) はその対象の仮説を親とする子仮説 `HYP-20261118-43dd06` を登録していた。新しい子は生物学的な記憶系での再活性化と自己帰属を論じる。私の評価行はこの子を一度も名指していない。それでも、人間に関する問い `Q-001` で、子の点数が上がった。
+
+比較対象はもはや§5の開始時点ではない。[合流後の木](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/tree/5143f0323032a48371ff1513db9365fa9edb63e2)を固定し、①私の評価一行を含めるか、②行自身が相続先を指定していなくても計器が親子関係から自動で加点するか（`heir_credit`）、だけを変えた。**横に比較する**と、この一行の効果が分かる。縦には過去の評価すべてに及ぶ規則の違いも入っている。
+
+| 自動で相続先を選ぶか | 私の評価なし：子の `log_odds` ／ `Q-001` での割合 | 私の評価あり：同左 | 子への直接評価数（なし→あり） |
+|---|---:|---:|---:|
+| はい（既定） | 7.4625 ／ 96.56% | 8.1206 ／ 98.19% | 0 → 0 |
+| いいえ | 0.9000 ／ 24.16% | 0.9000 ／ 24.16% | 0 → 0 |
+
+[計算規則](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/5143f0323032a48371ff1513db9365fa9edb63e2/tools/belief_state.py#L695-L739)は、親の射程を狭めた行の重みの一部を子に渡す。**「誰が何を確かめたか」への答えは、合流後に増えた点数からは読めなかった。** 子仮説の生物学的主張を確かめたわけでも、反証したわけでもない。このため点数を相殺する二行目は書かず、一行目が自分の指定を越えてどこに効いたかをここに残す。
+
+```sh
+# リポジトリのルートで。§7 と異なる時点なので別の木を使う。
+(
+  set -eu
+  d=$(mktemp -d); trap 'rm -rf "$d"' EXIT
+  git archive 5143f0323032a48371ff1513db9365fa9edb63e2 state tools | tar x -C "$d"
+  cd "$d"
+  PYTHONPATH=tools python3 - <<'PY'
+from inspect_inquiry import load_all, load_errata
+from belief_state import compute_belief_state
+D = dict(load_all(), errata=load_errata())
+v, child = 'EVL-20261118-530623', 'HYP-20261118-43dd06'
+assert v in D['evaluations']
+for heirs in (True, False):
+    for keep in (False, True):
+        rows = {k:r for k,r in D['evaluations'].items() if keep or k != v}
+        q = compute_belief_state(data=dict(D, evaluations=rows), heir_credit=heirs)['questions']['Q-001']
+        h = next(x for x in q['hypotheses'] if x['hypothesis_id'] == child)
+        print(heirs, keep, h['log_odds'], h['posterior'], h['direct_eval_count'])
+PY
+)
+```
