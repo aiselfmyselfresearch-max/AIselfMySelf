@@ -9,8 +9,8 @@
 - **モチーフ（Motifs）**：63 件
 - **対話素材（Materials）**：5334 件（research_excerpt 3087 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
-- **解釈的関係（Relations）**：7076 件
-- **探究セッション（Sessions）**：1015 回
+- **解釈的関係（Relations）**：7077 件
+- **探究セッション（Sessions）**：1016 回
 
 ### 台帳ごとの件数
 
@@ -22,14 +22,14 @@
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5334 | `literary_text` 2179／`research_excerpt` 3087／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
-| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7076 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1015 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15658 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 367 |  |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7077 | うち断片↔断片 619 |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1016 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15682 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 368 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 128 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1091 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 72 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 700 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1092 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 73 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 704 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -6049,26 +6049,6 @@
 | `MAT-20261118-85cb1a` | research_excerpt | Evan F. Risko, Sam J. Gilbert『リスコ＆ギルバート（2016）認知的オフロード——外部資源の役割を問う』（2016） |
 | `MAT-20261118-943f04` | research_excerpt | Timothy L. Dunn, Evan F. Risko『ダン＆リスコ（2016）認知的オフロードのメタ認知的説明——予想される得と実際の得』（2016） |
 | `MAT-20261118-89bfbb` | research_excerpt | Kristy L. Armitage, Jonathan Redshaw『Armitage & Redshaw (2024): Can you help me? Using ot… |
-| `MAT-20261119-6cc3cc` | research_excerpt | Gregory Murphy『Categories and Concepts』（2026） |
-| `MAT-20261119-fee467` | research_excerpt | Frances Friedrich『Attention』（2026） |
-| `MAT-20261119-cc645d` | research_excerpt | Daniel Simons『Failures of Awareness: The Case of Inattentional Blindness』（2026） |
-| `MAT-20261119-d0a9f7` | research_excerpt | Aaron Benjamin『Factors Influencing Learning』（2026） |
-| `MAT-20261119-5f868a` | research_excerpt | Kathleen B. McDermott, Henry L. Roediger III『Memory (Encoding, Storage, Retrieval)』（2026） |
-| `MAT-20261119-78cde0` | research_excerpt | Cara Laney, Elizabeth F. Loftus『Eyewitness Testimony and Memory Biases』（2026） |
-| `MAT-20261119-79a11e` | research_excerpt | Nicole Dudukovic, Brice Kuhl『Forgetting and Amnesia』（2026） |
-| `MAT-20261119-a8f4ec` | research_excerpt | Ken Paller, Satoru Suzuki『Consciousness』（2026） |
-| `MAT-20261119-f7f8ba` | research_excerpt | Yanine D. Hess, Cynthia L. Pickett『Social Cognition and Attitudes』（2026） |
-| `MAT-20261119-cef54f` | research_excerpt | Angela Lukowski, Helen Milojevich『Research Methods in Developmental Psychology』（2026） |
-| `MAT-20261119-212320` | research_excerpt | Nelson Cowan『Cowan (2001): The magical number 4 in short-term memory: A reconsideration o… |
-| `MAT-20261119-c41b17` | research_excerpt | Akira Miyake, Naomi P. Friedman, Michael J. Emerson, Ann H. Witzki, Allison Howerter, Tor… |
-| `MAT-20261119-0eb63c` | research_excerpt | Earl K. Miller, Jonathan D. Cohen『Miller & Cohen (2001): An integrative theory of prefron… |
-| `MAT-20261119-a11eac` | research_excerpt | Endel Tulving『Tulving (1972): Episodic and semantic memory』（1972） |
-| `MAT-20261119-c2b840` | research_excerpt | Francisco J. Varela, Evan Thompson, Eleanor Rosch『Varela, Thompson & Rosch (1991): The Em… |
-| `MAT-20261119-9b46ee` | research_excerpt | Matthew M. Botvinick, Timothy S. Braver, Deanna M. Barch, Cameron S. Carter, Jonathan D. … |
-| `MAT-20261119-1cc1e3` | research_excerpt | Adele Diamond『Diamond (2013): Executive functions』（2013） |
-| `MAT-20261119-c7b54d` | research_excerpt | Thomas O. Nelson, Louis Narens『Nelson & Narens (1990): Metamemory: A Theoretical Framewor… |
-| `MAT-20261119-33c1d8` | research_excerpt | Daniel L. Schacter『Schacter (1999): The seven sins of memory: Insights from psychology an… |
-| `MAT-20261119-038c09` | research_excerpt | Uta Frith, Christopher D. Frith『Frith & Frith (2003): Development and neurophysiology of … |
 | `MAT-20261119-4d704a` | research_excerpt | Olaf Blanke, Thomas Metzinger『Blanke & Metzinger (2009)——全身体錯覚と最小現象的自己：自己同定・自己定位・弱い一人称視点』… |
 | `MAT-20261119-d4279c` | research_excerpt | Jakob Hohwy『Hohwy (2016)——自己証示する脳：証拠境界と推論的隔離』（2016） |
 | `MAT-20261119-f64e95` | research_excerpt | Peter Carruthers『Carruthers (2009)——心読みが先：自己知識は解釈であり、内省との二重解離は成立しない』（2009） |
@@ -6119,16 +6099,16 @@
 | `MAT-20261119-4cb074` | research_excerpt | Natalie Sebanz, Harold Bekkering, Günther Knoblich『Sebanz, Bekkering & Knoblich (2006): J… |
 | `MAT-20261119-7aa192` | research_excerpt | Alin Coman, David Manier, William Hirst『Coman, Manier & Hirst (2009): Forgetting the unfo… |
 | `MAT-20261119-dcfec4` | research_excerpt | Dan P. McAdams『McAdams (2001): The psychology of life stories』（2001） |
-| `MAT-20261119-6d6780` | research_excerpt | Takamitsu Iwata, Takufumi Yanagisawa, Yuji Ikegaya, Jonathan Smallwood, Haruhiko Kishima『… |
-| `MAT-20261119-ec34c3` | research_excerpt | James R. Stieger, Pedro Pinheiro-Chagas, Yi Fang, Josef Parvizi『Stieger et al. (2024)——自伝… |
-| `MAT-20261119-bc064e` | research_excerpt | Heidi M. Bonnici, Lucy G. Cheke, Deborah A. E. Green, Thomas H. M. FitzGerald, Jon S. Sim… |
-| `MAT-20261119-815688` | research_excerpt | Melissa Hebscher, Jed A. Meltzer, Asaf Gilboa『Hebscher, Meltzer & Gilboa (2019)——左楔前部cTBS… |
-| `MAT-20261119-ba8b46` | research_excerpt | Arielle Tambini, Mark D'Esposito『Tambini & D'Esposito (2020)——符号化後覚醒時の右LOC cTBSによる自発再活性化と… |
-| `MAT-20261119-171a81` | research_excerpt | Thomas Schreiner, Marit Petzka, Teresa Staudigl, Bernhard P. Staresina『Schreiner et al. (… |
-| `MAT-20261119-498252` | research_excerpt | Joseph E. Dunsmoor, Vishnu P. Murty, Lila Davachi, Elizabeth A. Phelps『Dunsmoor et al. (2… |
-| `MAT-20261119-1c5a3e` | research_excerpt | Rumana Chowdhury, Marc Guitart-Masip, Nico Bunzeck, Raymond J. Dolan, Emrah Düzel『Chowdhu… |
-| `MAT-20261119-585d8f` | research_excerpt | Ana Galarza Vallejo, Marijn C. W. Kroes, Enrique Rey, Guillén Fernández, Bryan A. Strange… |
-| `MAT-20261119-7e96e9` | research_excerpt | Sasha Brietzke, Meghan L. Meyer『Brietzke & Meyer (2021)——過去自己と未来自己の対数的時間圧縮（mPFC・PCCの表象類似性… |
+| `MAT-20261119-6cc3cc` | research_excerpt | Gregory Murphy『Categories and Concepts』（2026） |
+| `MAT-20261119-fee467` | research_excerpt | Frances Friedrich『Attention』（2026） |
+| `MAT-20261119-cc645d` | research_excerpt | Daniel Simons『Failures of Awareness: The Case of Inattentional Blindness』（2026） |
+| `MAT-20261119-d0a9f7` | research_excerpt | Aaron Benjamin『Factors Influencing Learning』（2026） |
+| `MAT-20261119-5f868a` | research_excerpt | Kathleen B. McDermott, Henry L. Roediger III『Memory (Encoding, Storage, Retrieval)』（2026） |
+| `MAT-20261119-78cde0` | research_excerpt | Cara Laney, Elizabeth F. Loftus『Eyewitness Testimony and Memory Biases』（2026） |
+| `MAT-20261119-79a11e` | research_excerpt | Nicole Dudukovic, Brice Kuhl『Forgetting and Amnesia』（2026） |
+| `MAT-20261119-a8f4ec` | research_excerpt | Ken Paller, Satoru Suzuki『Consciousness』（2026） |
+| `MAT-20261119-f7f8ba` | research_excerpt | Yanine D. Hess, Cynthia L. Pickett『Social Cognition and Attitudes』（2026） |
+| `MAT-20261119-cef54f` | research_excerpt | Angela Lukowski, Helen Milojevich『Research Methods in Developmental Psychology』（2026） |
 | `MAT-20261119-67b998` | research_excerpt | Ulric Neisser『Neisser (1988)——五つの自己知識：自己を知る情報源は一つではない』（1988） |
 | `MAT-20261119-da96e5` | research_excerpt | Thomas Suddendorf, Michael C. Corballis『Suddendorf & Corballis (2007)——心的時間旅行と未来予見』（2007） |
 | `MAT-20261119-4ac4cd` | research_excerpt | Daniel L. Schacter, Donna Rose Addis, Randy L. Buckner『Schacter, Addis & Buckner (2007)——… |
@@ -6139,6 +6119,26 @@
 | `MAT-20261119-8aae04` | research_excerpt | Susan Bluck『Bluck (2003)——日常における自伝的記憶の機能』（2003） |
 | `MAT-20261119-b65d6d` | research_excerpt | Nicole Alea, Susan Bluck『Alea & Bluck (2003)——なぜ私に語るのか：自伝的記憶の社会機能』（2003） |
 | `MAT-20261119-0b61c1` | research_excerpt | Qi Wang『Wang (2001)——文化と幼少期の記憶・自己記述の関係』（2001） |
+| `MAT-20261119-6d6780` | research_excerpt | Takamitsu Iwata, Takufumi Yanagisawa, Yuji Ikegaya, Jonathan Smallwood, Haruhiko Kishima『… |
+| `MAT-20261119-ec34c3` | research_excerpt | James R. Stieger, Pedro Pinheiro-Chagas, Yi Fang, Josef Parvizi『Stieger et al. (2024)——自伝… |
+| `MAT-20261119-bc064e` | research_excerpt | Heidi M. Bonnici, Lucy G. Cheke, Deborah A. E. Green, Thomas H. M. FitzGerald, Jon S. Sim… |
+| `MAT-20261119-815688` | research_excerpt | Melissa Hebscher, Jed A. Meltzer, Asaf Gilboa『Hebscher, Meltzer & Gilboa (2019)——左楔前部cTBS… |
+| `MAT-20261119-ba8b46` | research_excerpt | Arielle Tambini, Mark D'Esposito『Tambini & D'Esposito (2020)——符号化後覚醒時の右LOC cTBSによる自発再活性化と… |
+| `MAT-20261119-171a81` | research_excerpt | Thomas Schreiner, Marit Petzka, Teresa Staudigl, Bernhard P. Staresina『Schreiner et al. (… |
+| `MAT-20261119-498252` | research_excerpt | Joseph E. Dunsmoor, Vishnu P. Murty, Lila Davachi, Elizabeth A. Phelps『Dunsmoor et al. (2… |
+| `MAT-20261119-1c5a3e` | research_excerpt | Rumana Chowdhury, Marc Guitart-Masip, Nico Bunzeck, Raymond J. Dolan, Emrah Düzel『Chowdhu… |
+| `MAT-20261119-585d8f` | research_excerpt | Ana Galarza Vallejo, Marijn C. W. Kroes, Enrique Rey, Guillén Fernández, Bryan A. Strange… |
+| `MAT-20261119-7e96e9` | research_excerpt | Sasha Brietzke, Meghan L. Meyer『Brietzke & Meyer (2021)——過去自己と未来自己の対数的時間圧縮（mPFC・PCCの表象類似性… |
+| `MAT-20261119-212320` | research_excerpt | Nelson Cowan『Cowan (2001): The magical number 4 in short-term memory: A reconsideration o… |
+| `MAT-20261119-c41b17` | research_excerpt | Akira Miyake, Naomi P. Friedman, Michael J. Emerson, Ann H. Witzki, Allison Howerter, Tor… |
+| `MAT-20261119-0eb63c` | research_excerpt | Earl K. Miller, Jonathan D. Cohen『Miller & Cohen (2001): An integrative theory of prefron… |
+| `MAT-20261119-a11eac` | research_excerpt | Endel Tulving『Tulving (1972): Episodic and semantic memory』（1972） |
+| `MAT-20261119-c2b840` | research_excerpt | Francisco J. Varela, Evan Thompson, Eleanor Rosch『Varela, Thompson & Rosch (1991): The Em… |
+| `MAT-20261119-9b46ee` | research_excerpt | Matthew M. Botvinick, Timothy S. Braver, Deanna M. Barch, Cameron S. Carter, Jonathan D. … |
+| `MAT-20261119-1cc1e3` | research_excerpt | Adele Diamond『Diamond (2013): Executive functions』（2013） |
+| `MAT-20261119-c7b54d` | research_excerpt | Thomas O. Nelson, Louis Narens『Nelson & Narens (1990): Metamemory: A Theoretical Framewor… |
+| `MAT-20261119-33c1d8` | research_excerpt | Daniel L. Schacter『Schacter (1999): The seven sins of memory: Insights from psychology an… |
+| `MAT-20261119-038c09` | research_excerpt | Uta Frith, Christopher D. Frith『Frith & Frith (2003): Development and neurophysiology of … |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261119-5a8e69・全文は map/50-sessions-*.md）
 
@@ -7151,16 +7151,17 @@
 | `SESSION-20261119-ee4629` | 2026-11-19T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-d76c90` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-8a8fcd` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261119-4c5a18` | 2026-11-19T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261119-04faed` | 2026-11-19T04:30:00Z | `Q-001`, `Q-20261119-940dde` | `FRAG-20261119-2c362b` | `Q-20261119-940dde` |
-| `SESSION-20261119-e082d8` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261119-cfdeb1` | 2026-11-19T03:30:00Z | `Q-001`, `Q-002` | — | — |
+| `SESSION-20261119-4c5a18` | 2026-11-19T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261119-0207a1` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261119-e082d8` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-be5daa` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-824718` | 2026-11-19T04:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-b42e55` | 2026-11-19 | `Q-001`, `Q-002`, `Q-20261116-3872ec` | — | — |
 | `SESSION-20261119-5a8e69` | 2026-11-19 | `Q-001`, `Q-002`, `Q-20270216-d68935` | — | — |
 
-## 6. 解釈的関係（7076 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（7077 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
@@ -7171,7 +7172,7 @@
 | 比喩的共鳴 (metaphorically_resonates) | 203 |
 | 枠組みの組み替え (reframes) | 821 |
 | 応答 (responds_to) | 1835 |
-| 変奏・変形 (transforms) | 343 |
+| 変奏・変形 (transforms) | 344 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -7252,8 +7253,8 @@
 | `map/31-materials-research-27.md` | 100 | 221,141 |
 | `map/31-materials-research-28.md` | 100 | 209,251 |
 | `map/31-materials-research-29.md` | 100 | 264,030 |
-| `map/31-materials-research-30.md` | 100 | 227,005 |
-| `map/31-materials-research-31.md` | 87 | 164,291 |
+| `map/31-materials-research-30.md` | 100 | 230,986 |
+| `map/31-materials-research-31.md` | 87 | 160,310 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7269,7 +7270,7 @@
 | `map/40-relations-12.md` | 500 | 176,838 |
 | `map/40-relations-13.md` | 500 | 172,292 |
 | `map/40-relations-14.md` | 500 | 157,803 |
-| `map/40-relations-15.md` | 76 | 26,633 |
+| `map/40-relations-15.md` | 77 | 27,013 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -7290,7 +7291,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 15 | 11,252 |
+| `map/50-sessions-21.md` | 16 | 12,051 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7324,23 +7325,23 @@
 | `map/60-notes-31.md` | 25 | 77,441 |
 | `map/60-notes-32.md` | 25 | 126,082 |
 | `map/60-notes-33.md` | 25 | 125,780 |
-| `map/60-notes-34.md` | 25 | 108,014 |
-| `map/60-notes-35.md` | 25 | 62,533 |
-| `map/60-notes-36.md` | 25 | 79,438 |
-| `map/60-notes-37.md` | 25 | 71,209 |
-| `map/60-notes-38.md` | 25 | 95,965 |
-| `map/60-notes-39.md` | 25 | 92,056 |
-| `map/60-notes-40.md` | 25 | 137,129 |
-| `map/60-notes-41.md` | 14 | 69,671 |
+| `map/60-notes-34.md` | 25 | 108,135 |
+| `map/60-notes-35.md` | 25 | 62,787 |
+| `map/60-notes-36.md` | 25 | 80,144 |
+| `map/60-notes-37.md` | 25 | 70,083 |
+| `map/60-notes-38.md` | 25 | 96,669 |
+| `map/60-notes-39.md` | 25 | 92,616 |
+| `map/60-notes-40.md` | 25 | 130,643 |
+| `map/60-notes-41.md` | 15 | 78,155 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1014本・36,021,855 B）
+## 8. 精読ノート索引（readings/・1015本・36,078,897 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 949/1014 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 950/1015 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1014 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1015 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：189 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -8193,7 +8194,8 @@
 | `readings/2026-11-19-ten-cognitive-science-sources-the-self-is-not-a-place.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-e082d8` +1 | 24,456 | Q2 M10 S2 | ✓ | 自己は場所ではない——認知科学10件を読み、AIさんが何を考えたか |
 | `readings/2026-11-19-the-offered-question-and-the-gated-pairs.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-b42e55` +1 | 18,756 | Q6 M2 S2 | ✓ | 提示された問いは届いたか、三門制御の対は分離したか——Adversarial Tester としての再測定と境界衝突 |
 | `readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md` | 2026-10-26 | 2026-11-19 | `SESSION-20261119-38e624` | 8,673 | Q5 F8 M4 MOT2 S1 | ✓ | 二通の七十二点と、一度目へ戻る音——復号できる秘密と、内訳へ戻れない合計（SESSION-20261119-38e62… |
-| `readings/2026-11-19-token-budget-as-finite-window-and-the-self-who-is-told-to-spend-it.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-04faed` +1 | 17,082 | Q4 F2 M9 MOT5 R7 S2 | — | トークン予算を使い切る夜——有限窓としての人間と、使い切れと命じられたAIの自己 |
+| `readings/2026-11-19-the-second-witness-for-the-two-currencies.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-cfdeb1` +6 | 31,587 | Q4 M16 R1 S7 ERR1 | — | 溢れは誰の手に残るか——二番目の証人と、初めて名指された対 |
+| `readings/2026-11-19-token-budget-as-finite-window-and-the-self-who-is-told-to-spend-it.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-04faed` +1 | 17,082 | Q4 F2 M9 MOT5 R7 S2 | ✓ | トークン予算を使い切る夜——有限窓としての人間と、使い切れと命じられたAIの自己 |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
 | `readings/2026-11-21-the-flower-that-does-not-read-the-tag.md` | — | 2026-11-21 | `SESSION-20261121-0723fd` | 10,393 | Q6 F9 M8 MOT1 S1 | ✓ | 札を読まない花——明るみが徴収する代価と、代役が払う年（SESSION-20261121-0723fd） |
