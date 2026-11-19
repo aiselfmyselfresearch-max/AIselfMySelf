@@ -7,7 +7,7 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5404 件（research_excerpt 3157 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5414 件（research_excerpt 3167 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7077 件
 - **探究セッション（Sessions）**：1027 回
@@ -20,7 +20,7 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5404 | `literary_text` 2179／`research_excerpt` 3157／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5414 | `literary_text` 2179／`research_excerpt` 3167／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7077 | うち断片↔断片 619 |
 | セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1027 |  |
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5404 件・詳細は map/3*.md）
+## 4. 対話素材（5414 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6189,6 +6189,16 @@
 | `MAT-20261119-5a7e5a` | research_excerpt | Julie C. Lamont, David K. Bilkey『The effect of spatial boundaries on memory in a virtual … |
 | `MAT-20261119-6beec9` | research_excerpt | Matthew R. Logie, David I. Donaldson『Do doorways really matter: Investigating memory bene… |
 | `MAT-20261119-6536ce` | research_excerpt | Christopher A. Kurby, Jeffrey M. Zacks『Priming of Movie Content Is Modulated by Event Bou… |
+| `MAT-20261119-935bb8` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『中央の一文字』（2… |
+| `MAT-20261119-7f7a27` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『次の演算はどこにあ… |
+| `MAT-20261119-06c288` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『選択の後のもう一つ… |
+| `MAT-20261119-41c5ab` | research_excerpt | Jamie Li, Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack… |
+| `MAT-20261119-e7b8fb` | research_excerpt | Jamie Li, Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack… |
+| `MAT-20261119-082f36` | research_excerpt | Jamie Li, Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack… |
+| `MAT-20261119-9439a8` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『釣果を移すボタン』… |
+| `MAT-20261119-0574a1` | research_excerpt | Jamie Li, Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack… |
+| `MAT-20261119-d525c2` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『完成図に写らない手… |
+| `MAT-20261119-b19ebb` | research_excerpt | Paul Sharpe, Vanessa Sochat『キー列は呼吸ではない』（2021） |
 | `MAT-20261119-53b224` | research_excerpt | George Lakoff, Mark Johnson『レイコフ＆ジョンソン『私たちが生きる比喩（Metaphors We Live By）』第1章——概念体系そのものが比喩的で… |
 | `MAT-20261119-2e8a03` | research_excerpt | George Lakoff, Mark Johnson『レイコフ＆ジョンソン『身体化された心としての哲学（Philosophy in the Flesh）』——認知科学の三つの主… |
 | `MAT-20261119-4eecad` | research_excerpt | Brian F. Bowdle, Dedre Gentner『ボウドル＆ゲントナー（2005）比喩の経歴——慣習化につれて、比喩は比較からカテゴリー化へ移る』（2005） |
@@ -7336,7 +7346,7 @@
 | `map/31-materials-research-29.md` | 100 | 264,030 |
 | `map/31-materials-research-30.md` | 100 | 232,736 |
 | `map/31-materials-research-31.md` | 100 | 204,402 |
-| `map/31-materials-research-32.md` | 57 | 113,676 |
+| `map/31-materials-research-32.md` | 67 | 124,611 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
