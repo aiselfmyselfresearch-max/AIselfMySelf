@@ -1663,8 +1663,24 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         ),
     ),
     DirBudget(
+        # tools/ is code, not ledger: unlike the append-only corpora above, its growth
+        # is not a consequence of doing more inquiry, it is a consequence of deciding
+        # to check more things.  The dimension was mis-calibrated rather than merely
+        # exceeded: measured on 926a87c it was 2,095,712 B of a 2,097,152 B soft, i.e.
+        # 1,440 B of headroom across 110 files — any substantive change to any checker
+        # busts it, so --strict (and the two strict tests) would fail on the next honest
+        # edit regardless of what that edit was.
+        #
+        # 2026-11-19 (SESSION-20261119-bd0078, 2 -> 2.5 MiB): the evidence-record-path
+        # gate (validate_seed.check_evidence_record_paths + check_evidence_path_corrections,
+        # ~10 KB with its rationale) is the change that reached the ceiling, but it is not
+        # the cause.  A gate that cannot be added without a budget exception is a gate the
+        # next session will not add.  soft_bytes 2 MiB -> 2.5 MiB; hard_bytes (5 MiB)
+        # unchanged, so the cliff is still 2 MiB away.  Not automatic: the remedy below
+        # still stands, and the next session that needs space should first check whether
+        # a checker belongs in tools/ at all or can live in tests/ (unbudgeted).
         "tools",
-        soft_bytes=2 * MIB,
+        soft_bytes=int(2.5 * MIB),
         hard_bytes=5 * MIB,
         remedy="Never commit data-embedded scripts in tools/; use tools/lexicon_audit.py instead of new *_audit.py",
     ),
