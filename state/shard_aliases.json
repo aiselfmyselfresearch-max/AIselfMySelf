@@ -1905,7 +1905,14 @@
       "row_count": 20,
       "sha256": "4b4e64daec5a7dfd55fc0995ec4ed4bf4bf6f8816c4ff8cb5b15dfed4fef5fb5",
       "consolidated_on": "2026-11-19",
-      "note": "20 rows: 10 from 2026-11-19-4ef47f693ecd plus 10 folded from 2026-11-19-c8928967fbde; see the c8928967fbde entry"
+      "note": "20 rows: 10 from 2026-11-19-4ef47f693ecd plus 10 folded from 2026-11-19-c8928967fbde; see the c8928967fbde entry",
+      "merged_extension_2": {
+        "line_start": 51,
+        "line_end": 60,
+        "row_count": 10,
+        "sha256": "b51ce8b14f44144a23136ce8c7ad1296d28951dfbc76cdbc3488c59d5d3d78fd",
+        "note": "origin/main 5955998 (PR #951, cognitive-science 10 sources) appended these rows to the shard after it had already been consolidated on this branch; this merge folds them byte-for-byte into this destination at the recorded span. The shard's rows from base and the #948 intake remain at the spans recorded above."
+      }
     },
     "state/materials.d/2026-11-06-48ac778bf7ce.jsonl": {
       "new_shard": "state/materials.d/2026-11-06-4293a7847ca1.jsonl",

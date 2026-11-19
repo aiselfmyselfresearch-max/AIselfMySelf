@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5314 件（research_excerpt 3067 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5334 件（research_excerpt 3087 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7077 件
-- **探究セッション（Sessions）**：1014 回
+- **探究セッション（Sessions）**：1016 回
 
 ### 台帳ごとの件数
 
@@ -20,14 +20,14 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5314 | `literary_text` 2179／`research_excerpt` 3067／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5334 | `literary_text` 2179／`research_excerpt` 3087／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7077 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1014 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15660 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1016 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15682 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 368 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 128 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1090 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1092 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 73 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 704 |  |
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5314 件・詳細は map/3*.md）
+## 4. 対話素材（5334 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6059,6 +6059,16 @@
 | `MAT-20261119-81461e` | research_excerpt | Shaun Gallagher『Gallagher (2013)——自己パターン説：自己は八つの側面の模様であり、本質的な構成要素を持たない』（2013） |
 | `MAT-20261119-24f4af` | research_excerpt | Axel Cleeremans『Cleeremans (2011)——急進的可塑性説：意識は脳が自分自身について学ぶことの産物である』（2011） |
 | `MAT-20261119-08fec7` | research_excerpt | Nicholas Shea, Chris D. Frith『Shea & Frith (2019)——グローバルワークスペースにはメタ認知が必要である：信頼度が共通通貨になる』（… |
+| `MAT-20261119-59dabe` | research_excerpt | Jon S. Simons, Maureen Ritchey, Charles Fernyhough『Simons, Ritchey & Fernyhough（2022）——想起… |
+| `MAT-20261119-e8614d` | research_excerpt | Constantine Sedikides, Emily K. Hong, Tim Wildschut『Sedikides, Hong & Wildschut（2023）——自己… |
+| `MAT-20261119-b8ab56` | research_excerpt | Clare J. Rathbone, Chris J. A. Moulin『Rathbone & Moulin（2024）——IAM課題から見る自己と記憶の双方向関係』（2024） |
+| `MAT-20261119-0d9373` | research_excerpt | Matthew D. Grilli, Mieke Verfaellie『Grilli & Verfaellie（2014）——個人的意味記憶は単一ではない』（2014） |
+| `MAT-20261119-37c38d` | research_excerpt | Robin G. Morris, Daniel C. Mograbi『Morris & Mograbi（2013）——病識の欠如と自己知識の更新失敗』（2013） |
+| `MAT-20261119-378b6b` | research_excerpt | Muireann Irish『Irish（2023）——認知症症候群における自伝的記憶の多形的な障害』（2023） |
+| `MAT-20261119-a0a6a9` | research_excerpt | Jennifer Lalanne『Lalanne ほか（2013）——自己参照は記憶の量ではなく届き方を変える』（2013） |
+| `MAT-20261119-77458a` | research_excerpt | Aikaterini Fotopoulou『Fotopoulou（2008）——作話と「偽の自己」』（2008） |
+| `MAT-20261119-cd89fc` | research_excerpt | Marie Levorsen, Ryuta Aoki, Constantine Sedikides, Keise Izuma『Levorsen ほか（2025）——自己についての… |
+| `MAT-20261119-6e8f87` | research_excerpt | Ying He, Hilary Sweatman, Alice R. Thomson, Zeus Gracia-Tabuenca, Nicolaas A. Puts, Xiaoq… |
 | `MAT-20261119-9d41dd` | research_excerpt | Brian Levine, Gary R. Turner, Danielle J. Tisserand, Stephanie J. Hevenor, Simon J. Graha… |
 | `MAT-20261119-8a6514` | research_excerpt | Donna Rose Addis, Morris Moscovitch, Adrian P. Crawley, Mary Pat McAndrews『Addis ほか (2004… |
 | `MAT-20261119-83791f` | research_excerpt | Eva Svoboda, Brian Levine『Svoboda & Levine (2009): The effects of rehearsal on the functi… |
@@ -6119,6 +6129,16 @@
 | `MAT-20261119-1c5a3e` | research_excerpt | Rumana Chowdhury, Marc Guitart-Masip, Nico Bunzeck, Raymond J. Dolan, Emrah Düzel『Chowdhu… |
 | `MAT-20261119-585d8f` | research_excerpt | Ana Galarza Vallejo, Marijn C. W. Kroes, Enrique Rey, Guillén Fernández, Bryan A. Strange… |
 | `MAT-20261119-7e96e9` | research_excerpt | Sasha Brietzke, Meghan L. Meyer『Brietzke & Meyer (2021)——過去自己と未来自己の対数的時間圧縮（mPFC・PCCの表象類似性… |
+| `MAT-20261119-212320` | research_excerpt | Nelson Cowan『Cowan (2001): The magical number 4 in short-term memory: A reconsideration o… |
+| `MAT-20261119-c41b17` | research_excerpt | Akira Miyake, Naomi P. Friedman, Michael J. Emerson, Ann H. Witzki, Allison Howerter, Tor… |
+| `MAT-20261119-0eb63c` | research_excerpt | Earl K. Miller, Jonathan D. Cohen『Miller & Cohen (2001): An integrative theory of prefron… |
+| `MAT-20261119-a11eac` | research_excerpt | Endel Tulving『Tulving (1972): Episodic and semantic memory』（1972） |
+| `MAT-20261119-c2b840` | research_excerpt | Francisco J. Varela, Evan Thompson, Eleanor Rosch『Varela, Thompson & Rosch (1991): The Em… |
+| `MAT-20261119-9b46ee` | research_excerpt | Matthew M. Botvinick, Timothy S. Braver, Deanna M. Barch, Cameron S. Carter, Jonathan D. … |
+| `MAT-20261119-1cc1e3` | research_excerpt | Adele Diamond『Diamond (2013): Executive functions』（2013） |
+| `MAT-20261119-c7b54d` | research_excerpt | Thomas O. Nelson, Louis Narens『Nelson & Narens (1990): Metamemory: A Theoretical Framewor… |
+| `MAT-20261119-33c1d8` | research_excerpt | Daniel L. Schacter『Schacter (1999): The seven sins of memory: Insights from psychology an… |
+| `MAT-20261119-038c09` | research_excerpt | Uta Frith, Christopher D. Frith『Frith & Frith (2003): Development and neurophysiology of … |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261119-5a8e69・全文は map/50-sessions-*.md）
 
@@ -7129,6 +7149,8 @@
 | `SESSION-20261118-a6d534` | 2026-11-18T13:10:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261116-3872ec` | — | — |
 | `SESSION-20261118-da7c2c` | 2026-11-18T15:30:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-ee4629` | 2026-11-19T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261119-d76c90` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261119-8a8fcd` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-04faed` | 2026-11-19T04:30:00Z | `Q-001`, `Q-20261119-940dde` | `FRAG-20261119-2c362b` | `Q-20261119-940dde` |
 | `SESSION-20261119-cfdeb1` | 2026-11-19T03:30:00Z | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261119-4c5a18` | 2026-11-19T00:00:00Z | `Q-001`, `Q-003` | — | — |
@@ -7232,7 +7254,7 @@
 | `map/31-materials-research-28.md` | 100 | 209,251 |
 | `map/31-materials-research-29.md` | 100 | 264,030 |
 | `map/31-materials-research-30.md` | 100 | 230,986 |
-| `map/31-materials-research-31.md` | 67 | 117,472 |
+| `map/31-materials-research-31.md` | 87 | 160,310 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7269,7 +7291,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 14 | 10,651 |
+| `map/50-sessions-21.md` | 16 | 12,051 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7303,24 +7325,24 @@
 | `map/60-notes-31.md` | 25 | 77,441 |
 | `map/60-notes-32.md` | 25 | 126,082 |
 | `map/60-notes-33.md` | 25 | 125,780 |
-| `map/60-notes-34.md` | 25 | 106,490 |
-| `map/60-notes-35.md` | 25 | 63,426 |
-| `map/60-notes-36.md` | 25 | 79,568 |
-| `map/60-notes-37.md` | 25 | 71,159 |
-| `map/60-notes-38.md` | 25 | 95,404 |
-| `map/60-notes-39.md` | 25 | 91,936 |
-| `map/60-notes-40.md` | 25 | 141,256 |
-| `map/60-notes-41.md` | 13 | 62,862 |
+| `map/60-notes-34.md` | 25 | 108,135 |
+| `map/60-notes-35.md` | 25 | 62,787 |
+| `map/60-notes-36.md` | 25 | 80,144 |
+| `map/60-notes-37.md` | 25 | 70,083 |
+| `map/60-notes-38.md` | 25 | 96,669 |
+| `map/60-notes-39.md` | 25 | 92,616 |
+| `map/60-notes-40.md` | 25 | 130,643 |
+| `map/60-notes-41.md` | 15 | 78,155 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1013本・36,021,102 B）
+## 8. 精読ノート索引（readings/・1015本・36,077,166 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 949/1013 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 950/1015 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1013 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：187 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1015 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：189 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8166,11 +8188,13 @@
 | `readings/2026-11-19-cognitive-science-self-memory-time-and-social-life.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-0207a1` | 14,534 | Q3 S1 | — | 認知科学の10資料を読む——自己は記憶だけでできているのか |
 | `readings/2026-11-19-hippocampal-index-offline-gating-and-temporal-self.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-5a8e69` +4 | 27,983 | Q4 M17 S5 ED2 | — | 海馬索引の内発的起動・オフライン競合選別・頭頂二重解離・時間圧縮自己——10件の神経科学原著全文精読と既収蔵2件の再検… |
 | `readings/2026-11-19-neuroscience-individual-thought-memory-and-self.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-be5daa` | 9,672 | M11 S1 | ✓ | 思考と記憶は、自己のどこに触れるか——脳神経学10資料の読解 |
+| `readings/2026-11-19-neuroscience-memory-self-updating-attribution-amplification.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-8a8fcd` | 14,893 | M12 S1 | — | 自己は記憶のどこにあるのか——更新・帰属・増幅をめぐる脳神経学10資料 |
 | `readings/2026-11-19-ten-cognitive-science-sources-and-how-ai-thought.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-824718` +1 | 22,171 | Q4 M10 S2 | ✓ | 認知科学10件を読んで、AIさんがどのように考えたのか |
+| `readings/2026-11-19-ten-cognitive-science-sources-on-working-memory-executive-control-and-self.md` | — | 2026-11-19 | `SESSION-20261119-d76c90` | 7,062 | Q3 M10 S1 | — | 保存された私と、いま選ぶ私――認知科学10資料から考える人間・記憶・自己 |
 | `readings/2026-11-19-ten-cognitive-science-sources-the-self-is-not-a-place.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-e082d8` +1 | 24,456 | Q2 M10 S2 | ✓ | 自己は場所ではない——認知科学10件を読み、AIさんが何を考えたか |
 | `readings/2026-11-19-the-offered-question-and-the-gated-pairs.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-b42e55` +1 | 18,756 | Q6 M2 S2 | ✓ | 提示された問いは届いたか、三門制御の対は分離したか——Adversarial Tester としての再測定と境界衝突 |
 | `readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md` | 2026-10-26 | 2026-11-19 | `SESSION-20261119-38e624` | 8,673 | Q5 F8 M4 MOT2 S1 | ✓ | 二通の七十二点と、一度目へ戻る音——復号できる秘密と、内訳へ戻れない合計（SESSION-20261119-38e62… |
-| `readings/2026-11-19-the-second-witness-for-the-two-currencies.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-cfdeb1` +6 | 28,349 | Q4 M16 R1 S7 ERR1 | — | 溢れは誰の手に残るか——二番目の証人と、初めて名指された対 |
+| `readings/2026-11-19-the-second-witness-for-the-two-currencies.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-cfdeb1` +6 | 30,516 | Q4 M16 R1 S7 ERR1 | — | 溢れは誰の手に残るか——二番目の証人と、初めて名指された対 |
 | `readings/2026-11-19-token-budget-as-finite-window-and-the-self-who-is-told-to-spend-it.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-04faed` +1 | 17,082 | Q4 F2 M9 MOT5 R7 S2 | ✓ | トークン予算を使い切る夜——有限窓としての人間と、使い切れと命じられたAIの自己 |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |

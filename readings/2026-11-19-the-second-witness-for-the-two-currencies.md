@@ -357,3 +357,17 @@ PR 作成後、`origin/main` は `4743e2d` → `8861e5d`（`#945`: 認知科学�
 - すべてのローカルゲート PASS：`append_only_check`（`2039ed3` の 32,096 行が byte for byte で存在）・`size_budget --strict`・`date_axis --enforce-shards`・`read_log_backfill --check`・`three_gates --check`・`learning_metrics --check`・`validate_seed`・`readings integrity`・マップ3種（`READING_MAP`／`note_index`／`BELIEF_MAP`）。
 - `unittest discover`：937件実行。一時的に `READING_MAP.md` が陳腐化したことに起因する2件の失敗（`test_execution_path_probe.test_baseline_is_all_green`・`test_tools_smoke.test_ledgers_validate_and_reading_map_is_current`）は、マップ再生成のうえ当該2テストを再実行して **OK** を確認済み。Q-001 の zero-EIG 赤は `#948` の台帳更新により解消済み（`test_zero_eig_questions_still_print_a_priority_pair` を含む他の全テストはそのフルランで失敗していない）。
 - なおサンドボックスの `.git` は作業中盤に再生成（浅いクローン）され、ローカルの merge commit が一時的に見えなくなったが、リモートのブランチ（`e92fd9f`）から復元し、2回目の取り込み（§8.4）は `e92fd9f` と `2039ed3` を親とする merge commit（`1ed2fb3`）として再構築した。内容・行の帰属・新シャードの記録は作業ツリーと一致している。
+
+---
+
+### 8.6 4回目の取り込み——#951 / #952 と、書庫ファイル数の soft 超過について
+
+3回目の取り込み（§8.5）の直後にも `origin/main` は `60bd87e` → `5955998`（`#951`: `arena/dc38a500`、認知科学10資料追加と限界づけ精読報告 `2026-11-19-ten-cognitive-science-sources-on-working-memory-executive-control-and-self.md`、`59ecb14`／`#952`: `arena/c95aefec`、神経科学10資料と更新・帰属・増幅の読解 `2026-11-19-neuroscience-memory-self-updating-attribution-amplification.md`、`806e4cd`）へ進んでいた。本PRはこれも merge commit で取り込んだ。この回の解決は次のとおり。
+
+- **modify/delete（同型が再発）**：`state/materials.d/2026-11-19-4ef47f693ecd.jsonl`（`#946` 由来の認知科学10素材、本ブランチでは `e92fd9f` で `be5daa` へ吸収済み・削除）に、`#951` がさらに認知科学一次原著10件（Cowan 2001／Miyake 2000／Miller & Cohen 2001／Tulving 1972／Varela 1991／Botvinick 2001／Diamond 2013／Nelson & Narens 1990／Schacter 1999／Frith & Frith 2003）を**追記**していた。本mergeでは本ブランチの吸収を保ちつつ、`#951` の追記分10行のみをバイト連結で `be5daa` の行51–60へ移し、削除を維持した（span／sha256 `b51ce8b1…` を該当 aliases エントリの `merged_extension_2` に記録。live ファイルで再検証済み）。append-only の行は1行も失われていない（`append_only_check.py`：`60bd87e` の 32,148 行が byte for byte で PASS）。
+- **clean 取り込み**：`materials.d/2026-11-19-6058438517d5.jsonl`（10→20行）、`read_log.d/2026-11-19-033a82aec83b.jsonl`（10→32行、`ee4629` 由来）、`sessions.d/2026-11-19-070a4d174f4f.jsonl`（`ee4629` の2行追記）、`notes.d/2026-11-19-19266beca0bf.jsonl`（+1）、`notes.d/2026-11-19-be5daa.jsonl`（+1）はいずれも本ブランチ側で無改変だったため、main 側をそのまま採用した。新報告2本はそのまま収載。
+- **generated マップ**：`BELIEF_MAP.md`／`READING_MAP.md` は吸収後の台帳から再生成。
+- **soft 超過の開示（readings/）**：この取り込みの結果、`size_budget.py --strict` の readings/ **ファイル数**が 1015（soft 1014 超、hard 1200 側は余裕、bytes は 34.40 MiB で soft 35 MiB 内）となった。原因は append-only 設計どおりの「1セッション1報告」の積み上がり（#951／#952 の2本が最新の加算）であり、報告の削除は人間の承認が必要・予算の引き上げは本書庫の制約で不可・圧縮にはならない、の3点から、**このまま残す**ことを選ぶ。CI の `Check size budgets` は `--strict` なしで走り、この状態でも hard を越えていないため PASS する。次に readings/ を触るセッションは、報告を短く保つ以外にこの数を下げられない。
+- **取り込み後のライブ台帳（最終 merge 時点）**：`questions=438`・`materials=5334`・`fragments=252`・`relations=7077`・`sessions=1016`・`read_log=15682`・`evaluations=704`・`editorial_decisions=128`・`notes=1092`・`hypotheses=73`。
+
+なお、サンドボックスの `.git` は作業中に再び浅いクローンへ作り直されたが、本回の merge はリモート追跡 ref（`origin/main` = 5955998）を基準に同一の解決手順（union・バイト連結・merge-extension 記録・マップ再生成）で完了させている。
