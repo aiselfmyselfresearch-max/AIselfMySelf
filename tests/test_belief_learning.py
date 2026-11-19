@@ -150,19 +150,32 @@ class BeliefStateAndLearningTests(unittest.TestCase):
                 q_state["kl_from_uniform_bits"],
                 math.log2(len(q_state["hypotheses"])) + 1e-4, qid,
             )
+            n_hyp = len(q_state["hypotheses"])
+            # 2026-11-19 (PR #955, SESSION-20261119-cf4da8): the two
+            # `assertLessEqual(..., 1.0)` bounds above used to be applied to
+            # gen0_mass / gen1_plus_mass directly, which made this invariant
+            # depend on which side of a rounding boundary the *rounded* sums
+            # landed.  Q-001 was measured at gen1_plus_mass = 0.9999 before
+            # this session and 1.0001 after it, from the same one-row-per-
+            # hypothesis 4-dp rounding described in the comment below -- i.e.
+            # the fixture failed on an artefact of rounding, not on a
+            # normalisation error (total posterior mass is exact by
+            # construction).  The bounds now allow the documented rounding
+            # tolerance; the normalisation assertions below are unchanged and
+            # still test the real invariant.
+            _rounding_slack = 5e-5 * (n_hyp + 1) + 1e-9
             for key in ("gen0_mass", "gen1_plus_mass"):
                 self.assertGreaterEqual(q_state[key], 0.0, qid)
-                self.assertLessEqual(q_state[key], 1.0, qid)
+                self.assertLessEqual(q_state[key], 1.0 + _rounding_slack, qid)
             # gen0_mass / gen1_plus_mass are computed as sums of posteriors
             # that were each already rounded to 4 dp, then rounded again.  With
             # twelve hypotheses on Q-003 the two rounded sums can therefore
             # miss 1.0 by one or two units in the last place.  This checks that
             # the split is normalised up to that rounding, not that a particular
             # generation should hold a particular share.
-            n_hyp = len(q_state["hypotheses"])
             self.assertAlmostEqual(
                 q_state["gen0_mass"] + q_state["gen1_plus_mass"],
-                1.0, delta=5e-5 * (n_hyp + 1) + 1e-9, msg=qid,
+                1.0, delta=_rounding_slack, msg=qid,
             )
             self.assertIsNotNone(q_state["top_competing_pair"], qid)
             total_p = sum(row["posterior"] for row in q_state["hypotheses"])
