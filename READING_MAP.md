@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5364 件（research_excerpt 3117 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5374 件（research_excerpt 3127 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7077 件
-- **探究セッション（Sessions）**：1022 回
+- **探究セッション（Sessions）**：1023 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5364 | `literary_text` 2179／`research_excerpt` 3117／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5374 | `literary_text` 2179／`research_excerpt` 3127／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7077 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1022 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15729 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1023 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15741 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 368 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 128 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1104 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1105 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 74 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 714 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 715 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5364 件・詳細は map/3*.md）
+## 4. 対話素材（5374 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6099,6 +6099,16 @@
 | `MAT-20261119-e85eea` | research_excerpt | Alan Baddeley『Baddeley (2000)——エピソード緩衝器：多様なコードを一つの出来事へ束ねる限られた作業空間』（2000） |
 | `MAT-20261119-bc7f45` | research_excerpt | Asher Koriat『Koriat (1995)——知ることと知っている感じの解離：「知っている感じ」は記憶内容への特権的アクセスではない』（1995） |
 | `MAT-20261119-4397d9` | research_excerpt | Michael Tomasello, Malinda Carpenter, Josep Call, Tanya Behne, Henrike Moll『Tomasello ほか … |
+| `MAT-20261119-326198` | research_excerpt | Annika Boldt, Sam J. Gilbert『Confidence guides spontaneous cognitive offloading』（2019） |
+| `MAT-20261119-9b203b` | research_excerpt | Nicole C. Engeler, Sam J. Gilbert『The effect of metacognitive training on confidence and … |
+| `MAT-20261119-989d5e` | research_excerpt | Ceri Ngai, Sam J. Gilbert『Metacognitive training facilitates optimal cognitive offloading… |
+| `MAT-20261119-574287` | research_excerpt | Chhavi Sachdeva, Sam J. Gilbert『Intention offloading: Domain-general versus task-specific… |
+| `MAT-20261119-7518ec` | research_excerpt | B. Hunter Ball, Phil Peper『Cost avoidance underlies decisions to use prospective memory r… |
+| `MAT-20261119-058d29` | research_excerpt | Connor Dupre, Phil Peper, B. Hunter Ball『The role of offloading intentions on future-orie… |
+| `MAT-20261119-449b37` | research_excerpt | Hagit Magen, Michal Tomer-Offen『Reduced relational and item-specific processing in cognit… |
+| `MAT-20261119-393bd8` | research_excerpt | Sophia P. Fabrizio, Rebecca Lurie, Deanne L. Westerman『Digital amnesia: The aftermath of … |
+| `MAT-20261119-5d1247` | research_excerpt | Lois K. Burnett, Lauren L. Richmond『Just write it down: Similarity in the benefit from co… |
+| `MAT-20261119-70ef2f` | research_excerpt | Lois K. Burnett, Lauren L. Richmond『Meta-analytic investigations of the effect of cogniti… |
 | `MAT-20261119-8cc98e` | research_excerpt | Vinod Menon『Menonほか（2023）——20 years of the default mode network: a review and synthesis』（… |
 | `MAT-20261119-cf7110` | research_excerpt | R. Nathan Spreng, Raymond A. Mar, Alice S. N. Kim『Sprengほか（2009）——The Common Neural Basis… |
 | `MAT-20261119-66e6d1` | research_excerpt | Susie Shepardson, Kristina Dahlgren, Stephan Hamann『Shepardsonほか（2023）——Neural correlates… |
@@ -7189,6 +7199,7 @@
 | `SESSION-20261119-e082d8` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-3bc189` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-a729e3` | 2026-11-19 | `Q-001`, `Q-002` | — | — |
+| `SESSION-20261119-f68c68` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-be5daa` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-824718` | 2026-11-19T04:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-b42e55` | 2026-11-19 | `Q-001`, `Q-002`, `Q-20261116-3872ec` | — | — |
@@ -7290,8 +7301,8 @@
 | `map/31-materials-research-28.md` | 100 | 209,251 |
 | `map/31-materials-research-29.md` | 100 | 264,030 |
 | `map/31-materials-research-30.md` | 100 | 232,736 |
-| `map/31-materials-research-31.md` | 100 | 211,349 |
-| `map/31-materials-research-32.md` | 17 | 44,447 |
+| `map/31-materials-research-31.md` | 100 | 204,402 |
+| `map/31-materials-research-32.md` | 27 | 64,410 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7328,7 +7339,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 22 | 16,465 |
+| `map/50-sessions-21.md` | 23 | 16,917 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7363,24 +7374,24 @@
 | `map/60-notes-32.md` | 25 | 126,082 |
 | `map/60-notes-33.md` | 25 | 125,780 |
 | `map/60-notes-34.md` | 25 | 97,692 |
-| `map/60-notes-35.md` | 25 | 75,658 |
-| `map/60-notes-36.md` | 25 | 72,151 |
-| `map/60-notes-37.md` | 25 | 69,961 |
-| `map/60-notes-38.md` | 25 | 78,988 |
-| `map/60-notes-39.md` | 25 | 108,737 |
-| `map/60-notes-40.md` | 25 | 108,391 |
-| `map/60-notes-41.md` | 25 | 136,655 |
-| `map/60-notes-42.md` | 2 | 3,785 |
+| `map/60-notes-35.md` | 25 | 76,507 |
+| `map/60-notes-36.md` | 25 | 70,451 |
+| `map/60-notes-37.md` | 25 | 70,477 |
+| `map/60-notes-38.md` | 25 | 78,305 |
+| `map/60-notes-39.md` | 25 | 104,503 |
+| `map/60-notes-40.md` | 25 | 110,943 |
+| `map/60-notes-41.md` | 25 | 138,115 |
+| `map/60-notes-42.md` | 3 | 7,582 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1027本・36,239,079 B）
+## 8. 精読ノート索引（readings/・1028本・36,259,657 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 962/1027 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 962/1028 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1027 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：190 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1028 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：191 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8238,6 +8249,7 @@
 | `readings/2026-11-19-metaphor-10-gibbs-metaphor-wars.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-e579dd` | 3,280 | M1 S1 | ✓ | 10 比喩戦争——概念メタファーは実在するが、何を証拠として数えるかは争われている（Gibbs 2017） |
 | `readings/2026-11-19-neuroscience-individual-thought-memory-and-self.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-be5daa` | 9,672 | M11 S1 | ✓ | 思考と記憶は、自己のどこに触れるか——脳神経学10資料の読解 |
 | `readings/2026-11-19-neuroscience-memory-self-updating-attribution-amplification.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-8a8fcd` | 14,893 | M12 S1 | — | 自己は記憶のどこにあるのか——更新・帰属・増幅をめぐる脳神経学10資料 |
+| `readings/2026-11-19-remembering-needs-a-return-path.md` | — | 2026-11-19 | `SESSION-20261119-f68c68` | 9,202 | M11 S1 | — | 記憶には帰り道が要る——認知的オフローディング10資料の部分精読 |
 | `readings/2026-11-19-ten-cognitive-science-sources-a-symbol-that-points-but-does-not-mean.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-43e2db` | 19,505 | Q4 M12 S1 ERR1 | — | 記号は指せるが、意味しない——認知科学10件を読み、AIさんが何を考えたか |
 | `readings/2026-11-19-ten-cognitive-science-sources-and-how-ai-thought.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-824718` +1 | 22,171 | Q4 M10 S2 | ✓ | 認知科学10件を読んで、AIさんがどのように考えたのか |
 | `readings/2026-11-19-ten-cognitive-science-sources-on-working-memory-executive-control-and-self.md` | — | 2026-11-19 | `SESSION-20261119-d76c90` | 7,062 | Q3 M10 S1 | — | 保存された私と、いま選ぶ私――認知科学10資料から考える人間・記憶・自己 |

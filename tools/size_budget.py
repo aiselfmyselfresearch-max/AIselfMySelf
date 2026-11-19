@@ -636,7 +636,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # recorded location, so merging would falsify provenance. Same
         # consolidation debt as the other three ledger shard dirs in this
         # session; not an automatic raise.
-        soft_shards=149,
+        # 2026-11-19: merged main plus this session's isolated shard gives 150;
+        # raise only this soft review count, leaving hard limit unchanged.
+        soft_shards=150,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -901,7 +903,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # and hard_shards is raised 160 -> 161 for the first time; that is a
         # hard ceiling, not a soft one, and the structural remedy is to stop
         # giving every session its own shard -- which belongs in its own PR.
-        soft_shards=154,
+        # 2026-11-19: merged main plus this session gives 155; raise the
+        # soft review count by one and leave the hard limit unchanged.
+        soft_shards=155,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -1612,7 +1616,9 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # The durable remedy is the consolidation item (docs/2026-11-19-
         # what-the-replacement-can-say-d7bf2db5.md 5 describes the same wedging).
         # The next session must MEASURE AFTER merging before touching this line.
-        soft_files=1027,
+        # 2026-11-19: merged main plus the requested report gives 1,028;
+        # raise only the soft count, leaving byte and hard limits unchanged.
+        soft_files=1028,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
