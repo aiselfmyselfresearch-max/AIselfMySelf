@@ -152,6 +152,33 @@ _ID_STAMP = re.compile(r"^[A-Z]+(?:-[A-Z]+)*-(\d{8})-")
 #: Rows minted before this date stay valid without rewrite (append-only invariant).
 THREE_GATES_RULE_FROM = "20261119"
 SUPPRESS_RETRIEVAL_SUBJECT_TYPES = ("material", "fragment", "note", "hypothesis")
+
+#: Evidence-record-path resolution gate (2026-11-19, added after the measurement in
+#: readings/2026-11-19-two-registers-of-the-same-dissociation.md §4).  The note ledger
+#: has checked since 2026-11-12 that ``path`` names an existing file; the material
+#: ledger, which is the collection that carries the *evidence* pointing relationship,
+#: never did — so a row could claim ``verified`` while its ``origin.evidence_record_path``
+#: named a report that had been renamed (10 rows) or a shard consolidated away.
+#: The rule is source-blind: it does not care *which* collection the label came from,
+#: only that a label which names a location inside this repository resolves to a file,
+#: or is a URL, or is the row's own recorded location (a self-address, which is
+#: provenance rather than a pointer), or is recorded in state/shard_aliases.json.
+#: Anything else may be repaired with an editorial_decisions overlay
+#: (``corrected_evidence_record_path``) instead of rewriting the shard.
+EVIDENCE_PATH_RULE_FROM = "20261119"
+#: Rows this gate tolerates before it fails.  Measured, not chosen (2026-11-19, after
+#: the ten renamed-report rows were repaired): 24 rows point at a repository path that
+#: no longer exists — 14 at ``state/evidence*`` (a ledger directory that was removed
+#: before the current layout) and 10 at ``readings/`` reports that predate the note
+#: index.  A *count*, deliberately not a list of IDs: a list would licence exactly the
+#: rows on it, and the next dead pointer would then be measured against a roster
+#: instead of against the rule.  The baseline only moves down — repair rows, then lower
+#: it in the same change.  A row minted before the rule that this gate "cannot fail" is
+#: still visible here as a number, so the debt is a quantity rather than an amnesty.
+EVIDENCE_PATH_LEGACY_MAX = 24
+_REPO_TOP_LEVEL = frozenset(
+    {"articles", "docs", "map", "prompts", "readings", "schema", "state", "tests", "tools", "viewer"}
+)
 _DOI_RE = re.compile(r"(?:doi\.org/|doi:\s*|^)(10\.\d{4,9}/[^\s\"'<>?#]+)", re.IGNORECASE)
 _PMID_RE = re.compile(r"(?:pubmed\.ncbi\.nlm\.nih\.gov/|pmid[:\s]*)(\d{5,10})(?:\b|/)", re.IGNORECASE)
 _PMCID_RE = re.compile(r"\b(PMC\d{5,10})\b", re.IGNORECASE)
@@ -905,6 +932,155 @@ def check_evaluation_descendant_collision(
             )
 
 
+def check_evidence_record_paths(
+    materials: dict[str, dict[str, Any]], errors: list[str]
+) -> int:
+    """Every in-repository ``origin.evidence_record_path`` must resolve (2026-11-19).
+
+    Returns the number of historical rows the baseline still tolerates.  New rows
+    (``MAT-YYYYMMDD-*`` minted on or after ``EVIDENCE_PATH_RULE_FROM``) must resolve
+    immediately; older rows are counted against ``EVIDENCE_PATH_LEGACY_MAX`` so the
+    gate fails only if the number of unresolvable pointers *grows*.
+    """
+    import ledger_io
+
+    legacy = 0
+    for material_id, record in materials.items():
+        origin = record.get("origin")
+        if not isinstance(origin, dict):
+            continue  # schema validation reports the shape error
+        path = origin.get("evidence_record_path")
+        if not isinstance(path, str) or not path.strip():
+            continue
+        if path.startswith(("http://", "https://")):
+            continue  # a URL is a label, not a claim about this checkout
+        if (ROOT / path).is_file():
+            continue
+        # A self-address points at the row's own recorded location.  It is provenance
+        # (where the row was written), not a pointer to an evidence record, and shard
+        # consolidation is allowed to move that location.
+        if path == origin.get("source_record_path") or path.startswith("state/materials"):
+            continue
+        if ledger_io.resolve_shard_alias(path, root=ROOT) is not None:
+            continue
+        head = path.split("/", 1)[0]
+        if head not in _REPO_TOP_LEVEL:
+            continue  # outside the checkout: unverifiable here, but not a dead in-repo pointer
+        stamp = _ID_STAMP.match(material_id)
+        if stamp and stamp.group(1) >= EVIDENCE_PATH_RULE_FROM:
+            errors.append(
+                f"materials:{material_id}: origin.evidence_record_path {path!r} does not exist "
+                f"(add the file, or repair the pointer with an editorial_decisions "
+                f"corrected_evidence_record_path overlay; do not rewrite the shard)"
+            )
+        else:
+            legacy += 1
+    if legacy > EVIDENCE_PATH_LEGACY_MAX:
+        errors.append(
+            f"materials: {legacy} pre-{EVIDENCE_PATH_RULE_FROM} rows have an unresolvable "
+            f"origin.evidence_record_path, above the frozen baseline {EVIDENCE_PATH_LEGACY_MAX} "
+            f"(+{legacy - EVIDENCE_PATH_LEGACY_MAX}). The baseline only moves down: repair rows "
+            f"with editorial_decisions corrected_evidence_record_path overlays, and lower "
+            f"EVIDENCE_PATH_LEGACY_MAX in the same change."
+        )
+    return legacy
+
+
+def _read_shard_evidence_paths() -> dict[str, str]:
+    """``material_id -> origin.evidence_record_path`` exactly as the shards record it.
+
+    Read from disk rather than from the loaded snapshot, because the snapshot has the
+    editorial overlay already applied.  Malformed lines are skipped: schema validation
+    reports them separately.
+    """
+    out: dict[str, str] = {}
+    for path in ledger_io.collection_files(ROOT / "state" / "materials.jsonl"):
+        if not path.is_file():
+            continue
+        try:
+            lines = path.read_text(encoding="utf-8").splitlines()
+        except OSError:
+            continue
+        for line in lines:
+            if not line.strip():
+                continue
+            try:
+                record = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            mid = record.get("material_id")
+            origin = record.get("origin")
+            if isinstance(mid, str) and isinstance(origin, dict):
+                recorded = origin.get("evidence_record_path")
+                if isinstance(recorded, str):
+                    out[mid] = recorded
+    return out
+
+
+def check_evidence_path_corrections(
+    decisions: dict[str, dict[str, Any]],
+    materials: dict[str, dict[str, Any]],
+    errors: list[str],
+) -> None:
+    """An overlay that corrects a path must correct it to something that exists.
+
+    Without this, ``corrected_evidence_record_path`` would be a second way to write
+    an unresolvable pointer — the gate would be defeated by its own repair mechanism.
+    """
+    shard_recorded_evidence_paths = _read_shard_evidence_paths()
+    for decision_id, record in decisions.items():
+        path = record.get("corrected_evidence_record_path")
+        if path is None:
+            continue
+        target = record.get("target")
+        if not isinstance(target, dict) or target.get("type") != "material":
+            errors.append(
+                f"editorial_decisions:{decision_id}: corrected_evidence_record_path is only "
+                f"valid for target type 'material'"
+            )
+            continue
+        material_id = target.get("id")
+        material = materials.get(material_id) if isinstance(material_id, str) else None
+        if material is None:
+            continue  # check_refs already reports the unknown target
+        if not isinstance(path, str) or not path.strip():
+            continue  # schema reports the shape error
+        path = path.strip()
+        if path.startswith(("http://", "https://")):
+            continue
+        candidate = Path(path)
+        if candidate.is_absolute() or ".." in candidate.parts:
+            errors.append(
+                f"editorial_decisions:{decision_id}: corrected_evidence_record_path must be "
+                f"repository-relative without '..': {path!r}"
+            )
+            continue
+        if not (ROOT / candidate).is_file():
+            errors.append(
+                f"editorial_decisions:{decision_id}: corrected_evidence_record_path "
+                f"{path!r} does not exist; an overlay may not introduce a second dead pointer"
+            )
+            continue
+        # Compare against the path AS RECORDED IN THE SHARD.  The records handed to this
+        # function already carry the overlay (ledger_io.load_collections applies it on
+        # load), so reading ``material["origin"]["evidence_record_path"]`` back would
+        # return the correction itself and make every valid repair look like a no-op.
+        # The shard value is therefore read from the ledger files directly.
+        original = shard_recorded_evidence_paths.get(material_id, "")
+        if path == original:
+            errors.append(
+                f"editorial_decisions:{decision_id}: corrected_evidence_record_path is "
+                f"identical to the row's existing path {path!r}; an overlay that changes "
+                f"nothing hides the fact that the pointer is still dead"
+            )
+        elif candidate.name == Path(original).name:
+            errors.append(
+                f"editorial_decisions:{decision_id}: corrected_evidence_record_path keeps the "
+                f"same file name {candidate.name!r} as the recorded path; the two must be "
+                f"distinguishable or the correction cannot be audited"
+            )
+
+
 def check_refs(
     collection_name: str,
     records: dict[str, dict[str, Any]],
@@ -1252,6 +1428,10 @@ def main() -> int:
     check_psc_verification_gate(evaluations, materials, errors)
     check_material_duplicate_identifiers(materials, errors)
     check_evaluation_descendant_collision(evaluations, hypotheses, errors)
+    check_evidence_record_paths(materials, errors)
+    check_evidence_path_corrections(
+        collections.get("editorial_decisions", {}), materials, errors
+    )
 
     ed_valid_status = {
         "fragment": {"draft", "selected", "archived"},
@@ -1286,6 +1466,17 @@ def main() -> int:
                     errors.append(
                         f"editorial_decisions:{decision_id}: material status 'verified' requires "
                         "non-empty verification_method (>= 8 chars) stating how the primary text was checked"
+                    )
+            elif ttype == "material" and record.get("status") == "unverified":
+                # A downgrade must be able to say why it is one (2026-11-19).  Before
+                # this, only `verified` demanded a method, so the honest repair of a
+                # row whose evidence record had vanished — the one direction the ledger
+                # most needs recorded — was the only direction that could stay silent.
+                if not isinstance(vmethod, str) or len(vmethod.strip()) < 8:
+                    errors.append(
+                        f"editorial_decisions:{decision_id}: material status "
+                        f"{record.get('status')!r} requires non-empty verification_method "
+                        "(>= 8 chars) stating what the re-check found"
                     )
             elif ttype != "material" and vmethod is not None:
                 errors.append(
