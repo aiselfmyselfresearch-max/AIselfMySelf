@@ -281,6 +281,26 @@ python3 -m unittest discover -s tests        # 937件中 1件失敗のみ（既�
 2'''. **3つのライブ台帳ピン付きテストを、再測定の上で意図的に更新した**（ツール凍結の範囲外の `tests/` 側ピン。`ERR-20261119-e49d36` が仮説宛の直接訂正となったため）。`tests/test_errata_addressee.py`・`tests/test_errata_duplicate_claims.py` の `LIVE_DIRECT_ERRATA_ADDRESSEES` を `{HYP-20261116-ac0712, HYP-20261119-539a0c}` へ、`tests/test_boundary_channel_probe.py` の `LIVE_DIRECT_PENALTY_HYPOTHESES` を `1 → 2` へ。いずれも `belief_state.build_errata_index` でライブ再測定し、直接宛先がちょうどこの2件（ともに `contradicted`・`flag`）であることを確認した上での更新である（3ファイルともコメントに 2026-11-19 の再測定を記載）。
 2''''. **残る1件の赤**：`tests/test_lineage_credit_accounting.py::test_zero_eig_questions_still_print_a_priority_pair` は Q-001 の `top_posterior == 1.0`（63b6bf の一点集中、`active_entropy_bits = -0.0`）を理由に失敗するが、これは origin/main（#944 マージ直後）でも同一に失敗する既存の赤である（worktree で実行して確認：この回の `EVL-20261119-c8ca2d` の前後で Q-001 の一点集中は変わらない）。治し方はエンジン側の分布処理（ツール凍結）か、命題そのものの再審査（この回の職掌外）であり、黙ってピンを緩めて緑にすることはせず、この節に既存の赤として残す。
 2'''''. **コミットの分割について**：当初「探究コミット」と「保守コミット」を分ける計画だったが、`NOTE-20261119-2dd99d` が吸収先シャードに同居するなどファイル単位で不可分になったため、本回は **1コミット** とする（`gh pr create` の本文に内訳を全て列挙する）。
+
+### 8.3 main が動いた——#945/#946 の取り込みと、その後のシャード吸収
+
+PR 作成後、`origin/main` は `4743e2d` → `8861e5d`（`#945`: 認知科学レポートの収蔵＋`Compact one adjacent notes shard pair`、`#946`: 同第二弾、計2セッション）へ進んだ。本PRはそれを merge commit で取り込んだ（`state/notes.d/2026-11-19-6636bc222773.jsonl` は両者とも追記していたため union 解決し、4行すべて保持：`04faed`／`b42e55`／`cfdeb1`＝本回／`0207a1`）。
+
+取り込み後、`size_budget.py --strict` が再び赤（`materials.d` 135/soft133、`read_log.d` 151/soft148、`sessions.d` 155/soft153、`evaluations.d` 93/soft92、`notes.d` 160/hard160 の崖）になったため、**新たにマージされたばかりの2セッション（`SESSION-20261119-4c5a18`／`SESSION-20261119-0207a1`）の同日シャード**を、inbound reference 0 を確認の上、バイト連結で吸収した（SHA-256 検証済み）：
+
+| コレクション | 吸収（新規→既存） | 結果 |
+| :--- | :--- | :--- |
+| `materials.d/` | `c8928967fbde`（10行, 0207a1）→ `4ef47f693ecd`（10行, 4c5a18）、さらに union 20行 → `be5daa` の末尾へ | 135 → **133**（soft 133 ちょうど） |
+| `read_log.d/` | `6e824e6f72ff`（10行, 4c5a18）・`81590576851e`（15行, 0207a1）・`a135b59a3fa0`（4行, 機械バックフィル）→ `1f7e515af048` | 151 → **148** |
+| `sessions.d/` | `1a3400078074`（1行, 4c5a18）・`7199e849c8ea`（1行, 0207a1）→ `1fe0e56b678a` | 155 → **153** |
+| `evaluations.d/` | `5e6b59f04990`（1行, 0207a1, `EVL-20261119-75a7b1`）→ `a555492b28af` | 93 → **92** |
+| `notes.d/` | `baba75ec692b`（1行, 4c5a18）→ `6636bc222773` | 160 → **159** |
+
+本セッションでの吸収は合計17本（前記8件＋上記9件）で、すべて `state/shard_aliases.json` に `new_shard`／`line_start`／`line_end`／`row_count`／`sha256`／`consolidated_on=2026-11-19` として記録し（`consolidated_shards` 172 → **189**）、各エントリの span／sha を生ファイルで再照合した。兄弟由来の3本（`bda03af28818`／`73d650035499`／`cb2d0aa6ead7`）は `origin/main` の blob と SHA-256 が一致することを確認した。これらは行の移動であって削除ではなく、各行の著者・来歴は保持されている。なお aliases の既存62件の `new_shard` 不在は、2026-11-12／14 の正規化由来で、本セッションが持ち込んだものではない（`origin/main` に元から存在）。
+
+取り込み後のライブ台帳（本PRの merge 時点）：`sessions=1011`・`read_log=15613`・`evaluations=692`・`materials=5284`・`notes=1087`・`hypotheses=71`・`relations=7071`・`questions=438`・`fragments=252`。本報告の §8.1 の表は**本セッション着手時の実測**（`4743e2d`＝着手時点の main）を残すものであり、その後の main の移動分（+3セッション・+29 read_log など）はこの節と `READING_MAP.md`「台帳ごとの件数」に委ねる。
+
+`unittest` は merge 後に再度フルで実行した。結果：**937件中 1件失敗のみ**（既存の赤 `test_zero_eig_questions_still_print_a_priority_pair`、origin/main 4665/8861e5d 側でも同一に失敗）。なお途中、報告ファイルへ §8.3 を追記した直後に `READING_MAP.md` の陳腐化で2件（`tools.smoke`／`execution_path_probe`）が一時的に失敗したが、`map_build.py` 再実行で両方とも解消した。本回の変更はマップ再生成まで含めて一括でコミットする。
 3. `ERR-20261119-e49d36` は仮説行そのものを書き換えず、`subject_type=hypothesis / subject_id=HYP-20261119-539a0c` の訂正録として記帳した（`weight_effect=flag`：想起の減衰ではなく出典の誤帰属を信念分布へ配線するのみ）。
 4. 新規仮説 `HYP-20261119-0ddede` は本セッションでは一切評価していない（自己評価の回避）。証人登記は次の独立セッションに委ねる。
 
