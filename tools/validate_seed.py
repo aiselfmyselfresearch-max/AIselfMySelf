@@ -105,6 +105,13 @@ REGISTER_RULE_EXEMPT_IDS = frozenset({
     # be given the field afterwards.  Exempted by ID rather than by widening the
     # window, which would hide every future same-day row too.
     "Q-20261117-1d7864",
+    # Minted by SESSION-20261119-38e624 in a shard named 2026-10-24-000000000000
+    # (internal chronology label) while its ID stamp is 20261119, so _is_new_row
+    # treats it as new on 2026-11-19 but the row was written without register.
+    # Append-only rows cannot be given the field afterwards; exempt by ID
+    # rather than by weakening the rule for every future 2026-11-19 row.
+    # See readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md.
+    "Q-20261119-4cf82a",
 })
 CLAIM_WIRING_KINDS = ("reading_revised", "retraction")
 READ_ID_RE = re.compile(r"^READ-\d{8}-[0-9a-f]{6}$")
