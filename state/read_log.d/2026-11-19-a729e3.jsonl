@@ -1,0 +1,5 @@
+{"read_id": "READ-20261119-a72900", "session_id": "SESSION-20261119-a729e3", "target": {"type": "material", "id": "MAT-LIT-007"}, "reading": "reinterpreted", "note": "印刷者と詩人が変らないと感じうるという可能表現を読む。", "created_at": "2026-11-19"}
+{"read_id": "READ-20261119-a72901", "session_id": "SESSION-20261119-a729e3", "target": {"type": "fragment", "id": "FRAG-016"}, "reading": "interpreted", "note": "器と光の二択を印刷者の位置から再読。", "created_at": "2026-11-19"}
+{"read_id": "READ-20261119-a72902", "session_id": "SESSION-20261119-a729e3", "target": {"type": "fragment", "id": "FRAG-018"}, "reading": "contested", "note": "七編という単位に異議。語句と編の組なら七、編なら六。", "created_at": "2026-11-19"}
+{"read_id": "READ-20261119-a72903", "session_id": "SESSION-20261119-a729e3", "target": {"type": "erratum", "id": "ERR-002"}, "reading": "interpreted", "note": "006 で二語句が重なるが当時の中間表ではない。", "created_at": "2026-11-19"}
+{"read_id": "READ-20261119-a72904", "session_id": "SESSION-20261119-a729e3", "target": {"type": "fragment", "id": "FRAG-020"}, "reading": "used_as_context", "note": "問いの末尾の誤測と語句集計の誤測を区別。", "created_at": "2026-11-19"}
