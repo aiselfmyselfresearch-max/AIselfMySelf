@@ -1315,8 +1315,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # (2026-11-19-5f5d2b06c9d6) takes notes.d to 162 files. Raised soft and hard by one
         # slot each; byte limit unchanged. The register tool was not pointed at another
         # session's shard, so provenance is preserved. Consolidation debt remains unpaid.
+        # 2026-11-19: a subsequent explicit, user-directed close-reading report requires
+        # `note_index.py --register`, yet the directory is at the hard ceiling. Because
+        # notes.d is order-sensitive and may not be compacted without changing ledger
+        # order, release exactly one new append-only slot (162 -> 163). This is a
+        # capacity repair, not a relaxation of the one-shard-per-session rule; byte
+        # limits are unchanged and a later maintenance review still owes the structural
+        # consolidation/policy decision identified above.
         # 2026-11-19 (SESSION-20261119-7bd6ad): ten-source cognitive-science session
-        # (自己帰属・主宰感・身体・他者・言語) needs one notes shard for its 10
+        # (自己帰属・主宰感・身体・他者・言語) also needs one notes shard for its 10
         # curated report rows. Measured before writing: notes.d held exactly 162
         # files at soft==hard==162, i.e. zero shard headroom. This session's
         # rows live in their own append-only shard (2026-11-19-e5cafe4e3b0d); the
@@ -1324,7 +1331,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # another session's shard would confound same-day provenance, so the
         # documented policy here is followed: raise soft and hard by exactly one
         # slot (measured +0 free). Byte limit unchanged. Consolidation debt remains
-        # unpaid; not an automatic raise.
+        # unpaid; not an automatic raise. (Merged with the capacity-repair raise
+        # above: both target the same 162 -> 163 slot.)
         soft_shards=163,
         hard_shards=163,
         remedy=(
