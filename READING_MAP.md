@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5344 件（research_excerpt 3097 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7077 件
-- **探究セッション（Sessions）**：1017 回
+- **探究セッション（Sessions）**：1018 回
 
 ### 台帳ごとの件数
 
@@ -23,8 +23,8 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5344 | `literary_text` 2179／`research_excerpt` 3097／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7077 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1017 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15696 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1018 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15700 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 368 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 128 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1093 |  |
@@ -6150,7 +6150,7 @@
 | `MAT-20261119-33c1d8` | research_excerpt | Daniel L. Schacter『Schacter (1999): The seven sins of memory: Insights from psychology an… |
 | `MAT-20261119-038c09` | research_excerpt | Uta Frith, Christopher D. Frith『Frith & Frith (2003): Development and neurophysiology of … |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261119-5a8e69・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261119-35ed86・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -7171,6 +7171,7 @@
 | `SESSION-20261119-824718` | 2026-11-19T04:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-b42e55` | 2026-11-19 | `Q-001`, `Q-002`, `Q-20261116-3872ec` | — | — |
 | `SESSION-20261119-5a8e69` | 2026-11-19 | `Q-001`, `Q-002`, `Q-20270216-d68935` | — | — |
+| `SESSION-20261119-35ed86` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7077 件・全表は map/40-relations-*.md）
 
@@ -7302,7 +7303,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 17 | 12,907 |
+| `map/50-sessions-21.md` | 18 | 13,587 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
