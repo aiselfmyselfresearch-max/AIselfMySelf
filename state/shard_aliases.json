@@ -2,7 +2,7 @@
   "schema_version": 1,
   "normalized_on": "2026-11-12",
   "description": "Maps legacy internal-chronology forward-dated shards (> 2026-11-12) consolidated into real-execution-date shards, plus later order-preserving shard compactions in state/<collection>.d/. Every row is moved byte-for-byte within the same collection.",
-  "consolidated_shards": 172,
+  "consolidated_shards": 211,
   "created_real_date_shards": 50,
   "aliases": {
     "state/editorial_decisions.d/2026-11-18-317db4367875.jsonl": {
@@ -1698,6 +1698,237 @@
       "sha256": "50f72aa7dda1d59cadd0ef07f6871f78d3938cedaa9489c3d2f9585a343db9dc",
       "consolidated_on": "2026-11-19",
       "note": "byte-for-byte append of the immediately following shard; collection concatenation order and rows preserved"
+    },
+    "state/materials.d/2026-11-06-48ac778bf7ce.jsonl": {
+      "new_shard": "state/materials.d/2026-11-06-4293a7847ca1.jsonl",
+      "real_date": "2026-11-06",
+      "original_label_date": "2026-11-06",
+      "line_start": 2,
+      "line_end": 6,
+      "row_count": 5,
+      "sha256": "21d0517dc9e9f68a9ff5c65556583776514e5444a2f32d28dab6519c191c500b",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/materials.d/2026-11-06-5472ddf0bc9b.jsonl": {
+      "new_shard": "state/materials.d/2026-11-06-4293a7847ca1.jsonl",
+      "real_date": "2026-11-06",
+      "original_label_date": "2026-11-06",
+      "line_start": 7,
+      "line_end": 11,
+      "row_count": 5,
+      "sha256": "da13429b28eba2f04d02fe2274a32da8751ed6ee389ae4aa7f77932bb6917e0a",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/materials.d/2026-11-06-579c195b90d6.jsonl": {
+      "new_shard": "state/materials.d/2026-11-06-4293a7847ca1.jsonl",
+      "real_date": "2026-11-06",
+      "original_label_date": "2026-11-06",
+      "line_start": 12,
+      "line_end": 16,
+      "row_count": 5,
+      "sha256": "53ec25dbace9cc9184f52a49509571f141388ff41205cc077536e8a4c18192a1",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/materials.d/2026-11-06-786bfe792b0b.jsonl": {
+      "new_shard": "state/materials.d/2026-11-06-4293a7847ca1.jsonl",
+      "real_date": "2026-11-06",
+      "original_label_date": "2026-11-06",
+      "line_start": 17,
+      "line_end": 24,
+      "row_count": 8,
+      "sha256": "e6a77a7235106313f631b0a2d67b8dc43019128cc4979b0cd410146ca18b7110",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/read_log.d/2026-11-08-037e733f4a82.jsonl": {
+      "new_shard": "state/read_log.d/2026-11-08-000000000000.jsonl",
+      "real_date": "2026-11-08",
+      "original_label_date": "2026-11-08",
+      "line_start": 44,
+      "line_end": 58,
+      "row_count": 15,
+      "sha256": "f2adbf64009e8dc0121236e9e5a06a79f7a932b722599c2f6fe28143bf6df37a",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/read_log.d/2026-11-08-0b1f94ca65b1.jsonl": {
+      "new_shard": "state/read_log.d/2026-11-08-000000000000.jsonl",
+      "real_date": "2026-11-08",
+      "original_label_date": "2026-11-08",
+      "line_start": 59,
+      "line_end": 65,
+      "row_count": 7,
+      "sha256": "08b16c15dd5c16ad7156f89517c7a8d60cda514ff8ab101a68124ac3c46ff989",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/read_log.d/2026-11-08-0f6bdf23f47e.jsonl": {
+      "new_shard": "state/read_log.d/2026-11-08-000000000000.jsonl",
+      "real_date": "2026-11-08",
+      "original_label_date": "2026-11-08",
+      "line_start": 66,
+      "line_end": 81,
+      "row_count": 16,
+      "sha256": "14b9076b0c0fffcf317c026e0626bc25e0ec74443b5aa1e0fd8cf74f47165109",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/read_log.d/2026-11-08-15b12f66d33d.jsonl": {
+      "new_shard": "state/read_log.d/2026-11-08-000000000000.jsonl",
+      "real_date": "2026-11-08",
+      "original_label_date": "2026-11-08",
+      "line_start": 82,
+      "line_end": 90,
+      "row_count": 9,
+      "sha256": "81f9767ac037d75f5d6a5533b67b8ef3b6d88230483094f2fdc54604c5757a91",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/read_log.d/2026-11-08-16d3a71c4ba3.jsonl": {
+      "new_shard": "state/read_log.d/2026-11-08-000000000000.jsonl",
+      "real_date": "2026-11-08",
+      "original_label_date": "2026-11-08",
+      "line_start": 91,
+      "line_end": 99,
+      "row_count": 9,
+      "sha256": "1ad5e24806260eb0601b3f2f8a71eb1d865c8574e2c26009a9733b4cb6186d54",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/read_log.d/2026-11-08-2138fa0ebaa6.jsonl": {
+      "new_shard": "state/read_log.d/2026-11-08-000000000000.jsonl",
+      "real_date": "2026-11-08",
+      "original_label_date": "2026-11-08",
+      "line_start": 100,
+      "line_end": 108,
+      "row_count": 9,
+      "sha256": "5d04d12e3fd87f9377fc9ea8ecfaf4caeb65334875cbe620dbdc2a54a7c47c54",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/sessions.d/2026-11-08-038f0a02294d.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-08-000000000000.jsonl",
+      "real_date": "2026-11-08",
+      "original_label_date": "2026-11-08",
+      "line_start": 8,
+      "line_end": 9,
+      "row_count": 2,
+      "sha256": "af6621f27c20b8383861bb60e7d5d203dfcb0fb6beb8056173d9f98b84d7a8c1",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/sessions.d/2026-11-08-2b50ccc51a75.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-08-000000000000.jsonl",
+      "real_date": "2026-11-08",
+      "original_label_date": "2026-11-08",
+      "line_start": 10,
+      "line_end": 10,
+      "row_count": 1,
+      "sha256": "e7196d8e3ff72f8f8eed3e872ba4b4c33c4968c2e95134a5b32dc343f2543221",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/sessions.d/2026-11-08-2ee22421b98e.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-08-000000000000.jsonl",
+      "real_date": "2026-11-08",
+      "original_label_date": "2026-11-08",
+      "line_start": 11,
+      "line_end": 11,
+      "row_count": 1,
+      "sha256": "264c4b1309d0f5cc1fabc17546e0462ebd13ddf9002f42c7243038134fec95c7",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/sessions.d/2026-11-08-31e0efa1a3ed.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-08-000000000000.jsonl",
+      "real_date": "2026-11-08",
+      "original_label_date": "2026-11-08",
+      "line_start": 12,
+      "line_end": 12,
+      "row_count": 1,
+      "sha256": "e5ccb1d66652d35f04198054ef380b54b618a1fb599cc3fea0021bc4a21f51da",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/sessions.d/2026-11-08-4ee9b3284069.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-08-000000000000.jsonl",
+      "real_date": "2026-11-08",
+      "original_label_date": "2026-11-08",
+      "line_start": 13,
+      "line_end": 13,
+      "row_count": 1,
+      "sha256": "35c2845a53239fd59e46d1db8d6f832763fa62842d3d363219197199aa70710f",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/notes.d/2026-11-07-db23ee8b4d59.jsonl": {
+      "new_shard": "state/notes.d/2026-11-07-da51dfc63bcf.jsonl",
+      "real_date": "2026-11-07",
+      "original_label_date": "2026-11-07",
+      "line_start": 2,
+      "line_end": 3,
+      "row_count": 2,
+      "sha256": "a402ffc8869409810b59c89e49d2e87a134e257bdeb37fe24db107761488419d",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/notes.d/2026-11-07-e157e82b46ef.jsonl": {
+      "new_shard": "state/notes.d/2026-11-07-da51dfc63bcf.jsonl",
+      "real_date": "2026-11-07",
+      "original_label_date": "2026-11-07",
+      "line_start": 4,
+      "line_end": 8,
+      "row_count": 5,
+      "sha256": "034629a731ee13fddf401dfcd6a295a65b68e079639d77fa802c3143ece0ad33",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/notes.d/2026-11-07-e5a652bcb3ea.jsonl": {
+      "new_shard": "state/notes.d/2026-11-07-da51dfc63bcf.jsonl",
+      "real_date": "2026-11-07",
+      "original_label_date": "2026-11-07",
+      "line_start": 9,
+      "line_end": 9,
+      "row_count": 1,
+      "sha256": "db7538c55791fec96121c623dfbb7ea6568b7996f98b1e7a21b0273b1721c00e",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/evaluations.d/2026-11-13-af596754fd76.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-13-adbcc18b6d76.jsonl",
+      "real_date": "2026-11-13",
+      "original_label_date": "2026-11-13",
+      "line_start": 11,
+      "line_end": 25,
+      "row_count": 15,
+      "sha256": "49ce4633a1e52b0d6d6a43546c5bca46c367f55937f50adb18c1838b2813d698",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/evaluations.d/2026-11-13-b1764c98c9e4.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-13-adbcc18b6d76.jsonl",
+      "real_date": "2026-11-13",
+      "original_label_date": "2026-11-13",
+      "line_start": 26,
+      "line_end": 27,
+      "row_count": 2,
+      "sha256": "7c29382c4e198ca71c87c67ef250acde88fa5afe5a190af709ceaf0ad2a47101",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
+    },
+    "state/evaluations.d/2026-11-13-b36c3d3aa402.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-13-adbcc18b6d76.jsonl",
+      "real_date": "2026-11-13",
+      "original_label_date": "2026-11-13",
+      "line_start": 28,
+      "line_end": 33,
+      "row_count": 6,
+      "sha256": "1683040fcf9664e5bfd7906445c8f3464a923c5afa1709a0ed912dbc95268486",
+      "consolidated_on": "2026-11-19",
+      "note": "byte-for-byte append of the immediately following same-date shard; collection concatenation order and rows preserved"
     }
   }
 }
