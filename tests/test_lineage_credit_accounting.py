@@ -333,6 +333,64 @@ class LiveLedgerTests(unittest.TestCase):
                 )
                 checked += 1
 
+    def test_voided_row_pays_no_heir_credit_in_engine_or_audit(self):
+        """A row the engine voided must pay no heir credit in the audit either.
+
+        Regression for a divergence that ran live for two days.  The engine has
+        honoured ``weight_effect: "void_row"`` since 2026-11-16; the first two live
+        voided rows were written on 2026-11-17 (``ERR-20261117-b1e0ed`` /
+        ``-5756c0``, both ``status: "annotated"``, so both count as live corrections).
+        This mirror counted every evaluation row regardless.
+
+        The error stayed invisible because the calibration equality below only visits
+        active hypotheses with no direct evaluation, and both 2026-11-17 voids paid a
+        hypothesis that has 14 of them.  A row written on 2026-11-19 voided a
+        ``narrows_scope`` whose heir *was* in that loop, and put engine and audit
+        0.1625 apart on ``HYP-20261119-8b3e04``.
+
+        Measured at 9316a5b, before that row existed: the mirror reported
+        ``HYP-20261114-874658`` inherited 9.15 where the voided rows leave 8.25.
+        The synthetic fixture below asserts the mechanism without depending on which
+        rows happen to be voided live.
+        """
+        cols = {
+            "questions": {"Q-QA": {"question_id": "Q-QA", "question": "test"}},
+            "hypotheses": {
+                "HYP-P": _hyp("HYP-P"),
+                "HYP-C": _hyp("HYP-C", parents=["HYP-P"]),
+            },
+            "evaluations": {
+                "EVL-VOID": _evl("EVL-VOID", "HYP-P", created="2026-11-13T09:00:00Z"),
+            },
+            "errata": {
+                "ERR-1": {
+                    "errata_id": "ERR-1",
+                    "subject_type": "evaluation",
+                    "subject_id": "EVL-VOID",
+                    "claim": "the row's weight is withdrawn",
+                    "claim_location": "test",
+                    "check": {"kind": "manual", "params": {}},
+                    "verdict": "contradicted",
+                    "status": "corrected",
+                    "weight_effect": "void_row",
+                    "note": "test",
+                    "created_at": "2026-11-19",
+                },
+            },
+        }
+        report = lca.audit(cols)
+        state = belief_state.compute_belief_state(cols)
+        heir = next(h for h in state["questions"]["Q-QA"]["hypotheses"]
+                    if h["hypothesis_id"] == "HYP-C")
+        self.assertEqual(report["routes"], {})
+        self.assertEqual(report["inherited_log_odds"].get("HYP-C", 0.0), 0.0)
+        self.assertAlmostEqual(
+            report["inherited_log_odds"].get("HYP-C", 0.0)
+            + report["compared_penalty_log_odds"].get("HYP-C", 0.0),
+            heir["log_odds"],
+            places=4,
+        )
+
     def test_inherited_share_matches_on_a_synthetic_newborn(self):
         """Calibration that cannot go vacuous when the live census empties.
 
@@ -363,8 +421,13 @@ class LiveLedgerTests(unittest.TestCase):
         self.assertAlmostEqual(inherited + penalty, h["log_odds"], places=3)
 
     def test_route_counts_partition_the_transferring_verdicts(self):
-        total = sum(1 for e in self.cols["evaluations"].values()
-                    if e.get("target_hypothesis_id") in self.cols["hypotheses"]
+        # Voided rows are excluded from the denominator as well as from the routes:
+        # the engine withdraws their weight entirely (2026-11-16 P-6), so a partition
+        # that counted them would demand the audit book credit the engine does not pay.
+        voided = lca.voided_evaluation_ids(self.cols.get("errata", {}))
+        total = sum(1 for eid, e in self.cols["evaluations"].items()
+                    if eid not in voided
+                    and e.get("target_hypothesis_id") in self.cols["hypotheses"]
                     and e.get("verdict") in lca.TRANSFERRING_VERDICTS)
         self.assertEqual(sum(self.report["routes"].values()), total)
 

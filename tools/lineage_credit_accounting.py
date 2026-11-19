@@ -153,10 +153,46 @@ def build_repeat_index(evaluations: dict[str, dict[str, Any]],
     return out
 
 
+def voided_evaluation_ids(errata: dict[str, dict[str, Any]]) -> set[str]:
+    """Evaluation rows whose weight a live correction withdraws.
+
+    The arithmetic below is this module's own: a mirror that quietly called the
+    engine would stop being able to disagree with it.  The *liveness* predicate is
+    not rewritten — ``belief_state.errata_is_live_correction`` decides whether a
+    correction counts at all, and duplicating that test here would create a second
+    place to be wrong about it.  The two are kept in step by
+    ``tests/test_lineage_credit_accounting.py``, which compares the audited shares
+    against the engine's actual ``log_odds`` on the live ledger.
+
+    History, so this is not re-broken: the engine honoured ``void_row`` from
+    2026-11-16, and the first two live voided rows were written on 2026-11-17.
+    This audit counted every evaluation row regardless, and stayed wrong for two
+    days (measured at 9316a5b: ``HYP-20261114-874658`` inherited 9.15 where the
+    voided rows leave 8.25).  The calibration equality did not catch it because
+    that hypothesis has 14 direct evaluations and the equality only visits
+    hypotheses with none.  A row written on 2026-11-19 voided a row whose heir
+    *was* inside the loop (``HYP-20261119-8b3e04``: engine 1.4025, audit 1.565),
+    which is how the divergence finally surfaced.
+    """
+    out: set[str] = set()
+    for rec in errata.values():
+        if rec.get("weight_effect") != "void_row":
+            continue
+        if rec.get("subject_type") != "evaluation":
+            continue
+        if not belief_state.errata_is_live_correction(rec):
+            continue
+        subject = rec.get("subject_id")
+        if isinstance(subject, str) and subject:
+            out.add(subject)
+    return out
+
+
 def audit(cols: dict[str, dict[str, dict[str, Any]]]) -> dict[str, Any]:
     """Classify every child-side mass transfer. Writes nothing."""
     hypotheses = cols.get("hypotheses", {})
     evaluations = cols.get("evaluations", {})
+    voided = voided_evaluation_ids(cols.get("errata", {}))
     children = child_index(hypotheses)
     repeats = build_repeat_index(evaluations, hypotheses)
 
@@ -167,6 +203,11 @@ def audit(cols: dict[str, dict[str, dict[str, Any]]]) -> dict[str, Any]:
     compared_penalty: dict[str, float] = defaultdict(float)
 
     for evl_id, evl in sorted(evaluations.items()):
+        if evl_id in voided:
+            # The engine withdraws a voided row's weight entirely (2026-11-16 P-6),
+            # so it pays no heir credit and no compared-rival penalty.  Counting it
+            # here would make the audit's shares disagree with the engine's log_odds.
+            continue
         target = evl.get("target_hypothesis_id")
         if not isinstance(target, str) or target not in hypotheses:
             continue
