@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5294 件（research_excerpt 3047 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5304 件（research_excerpt 3057 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7076 件
-- **探究セッション（Sessions）**：1011 回
+- **探究セッション（Sessions）**：1012 回
 
 ### 台帳ごとの件数
 
@@ -20,14 +20,14 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5294 | `literary_text` 2179／`research_excerpt` 3047／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5304 | `literary_text` 2179／`research_excerpt` 3057／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7076 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1011 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15612 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1012 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15622 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 367 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 128 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1087 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1088 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 71 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 697 |  |
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5294 件・詳細は map/3*.md）
+## 4. 対話素材（5304 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6059,6 +6059,16 @@
 | `MAT-20261119-a8f4ec` | research_excerpt | Ken Paller, Satoru Suzuki『Consciousness』（2026） |
 | `MAT-20261119-f7f8ba` | research_excerpt | Yanine D. Hess, Cynthia L. Pickett『Social Cognition and Attitudes』（2026） |
 | `MAT-20261119-cef54f` | research_excerpt | Angela Lukowski, Helen Milojevich『Research Methods in Developmental Psychology』（2026） |
+| `MAT-20261119-9d41dd` | research_excerpt | Brian Levine, Gary R. Turner, Danielle J. Tisserand, Stephanie J. Hevenor, Simon J. Graha… |
+| `MAT-20261119-8a6514` | research_excerpt | Donna Rose Addis, Morris Moscovitch, Adrian P. Crawley, Mary Pat McAndrews『Addis ほか (2004… |
+| `MAT-20261119-83791f` | research_excerpt | Eva Svoboda, Brian Levine『Svoboda & Levine (2009): The effects of rehearsal on the functi… |
+| `MAT-20261119-aba727` | research_excerpt | Thackery I. Brown, Jesse Rissman, Tiffany E. Chow, Melina R. Uncapher, Anthony D. Wagner『… |
+| `MAT-20261119-aa9986` | research_excerpt | Norberto Eiji Nawa, Hiroshi Ando『Nawa & Ando (2020): Effective connectivity during autobi… |
+| `MAT-20261119-1fe157` | research_excerpt | Brian Levine, Eva Svoboda, Gary R. Turner, Marina Mandic, Allison Mackey『Levine ほか (2009)… |
+| `MAT-20261119-fdd5c1` | research_excerpt | Nazim Keven, Jake Kurczek, R. Shayna Rosenbaum, Carl F. Craver『Keven ほか (2018): Narrative… |
+| `MAT-20261119-10c397` | research_excerpt | Donna Kwan, Carl F. Craver, Leonard Green, Joel Myerson, R. Shayna Rosenbaum『Kwan ほか (201… |
+| `MAT-20261119-d3e75c` | research_excerpt | Povilas Tarailis, Kim Lory, Paul G. Unschuld, Christoph M. Michel, Lucie Bréchet『Tarailis… |
+| `MAT-20261119-16ccee` | research_excerpt | Edoardo Donarelli, Cristina Civilotti, Giulia Di Fini, Gabriella Gandino, Alessia Celeghi… |
 | `MAT-20261119-8cc98e` | research_excerpt | Vinod Menon『Menonほか（2023）——20 years of the default mode network: a review and synthesis』（… |
 | `MAT-20261119-cf7110` | research_excerpt | R. Nathan Spreng, Raymond A. Mar, Alice S. N. Kim『Sprengほか（2009）——The Common Neural Basis… |
 | `MAT-20261119-66e6d1` | research_excerpt | Susie Shepardson, Kristina Dahlgren, Stephan Hamann『Shepardsonほか（2023）——Neural correlates… |
@@ -7108,6 +7118,7 @@
 | `SESSION-20261118-014945` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-a6d534` | 2026-11-18T13:10:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261116-3872ec` | — | — |
 | `SESSION-20261118-da7c2c` | 2026-11-18T15:30:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261119-ee4629` | 2026-11-19T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-4c5a18` | 2026-11-19T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261119-04faed` | 2026-11-19T04:30:00Z | `Q-001`, `Q-20261119-940dde` | `FRAG-20261119-2c362b` | `Q-20261119-940dde` |
 | `SESSION-20261119-0207a1` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -7209,7 +7220,7 @@
 | `map/31-materials-research-28.md` | 100 | 209,251 |
 | `map/31-materials-research-29.md` | 100 | 264,030 |
 | `map/31-materials-research-30.md` | 100 | 227,005 |
-| `map/31-materials-research-31.md` | 47 | 83,175 |
+| `map/31-materials-research-31.md` | 57 | 98,448 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7246,7 +7257,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 11 | 8,583 |
+| `map/50-sessions-21.md` | 12 | 9,030 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7287,17 +7298,17 @@
 | `map/60-notes-38.md` | 25 | 97,911 |
 | `map/60-notes-39.md` | 25 | 96,405 |
 | `map/60-notes-40.md` | 25 | 137,361 |
-| `map/60-notes-41.md` | 10 | 51,540 |
+| `map/60-notes-41.md` | 11 | 53,586 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1010本・35,899,769 B）
+## 8. 精読ノート索引（readings/・1011本・35,913,614 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 946/1010 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 947/1011 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1010 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：186 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1011 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：187 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8311,3 +8322,4 @@
 | `readings/2027-03-16-ten-neuroscience-sources-on-construction-extension-and-denial.md` | 2026-11-17 | 2027-03-16 | `SESSION-20261117-a989d5` | 28,941 | Q3 M11 S1 | ✓ | 自己は保存されていない——脳神経学10件：構築・内言・延長・否認・復号 |
 | `readings/2027-03-17-ten-cognitive-science-sources-on-memory-externalization-and-self.md` | 2026-11-18 | 2027-03-17 | `SESSION-20261118-21b563` | 11,894 | Q3 M1 S1 | ✓ | 自分の記憶は、どこまで外へ出るか——認知科学10資料の精読 |
 | `readings/2027-03-18-what-a-question-makes-retrievable.md` | 2026-11-19 | 2027-03-18 | `SESSION-20261119-4c5a18` | 4,587 | Q2 M10 S1 | — | 問い方を変えると、何が過去として返ってくるか |
+| `readings/2027-03-19-when-a-memory-becomes-part-of-the-self.md` | 2026-11-19 | 2027-03-19 | `SESSION-20261119-ee4629` | 6,795 | Q3 M10 S1 | — | 一つの思い出は、どのように「私」の一部になるか——脳神経学10資料 |
