@@ -1703,7 +1703,20 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # the measured union. soft_bytes (35 MiB), hard_files (1,200),
         # hard_bytes (48 MiB) and the per-report caps unchanged. Not automatic:
         # the next session must MEASURE AFTER merging before touching this line.
-        soft_files=1052,
+        # --- 2026-11-19 (SESSION-20261119-8de52e, 1,052 -> 1,055): measured AFTER
+        # merging both branches that raised this line in parallel: 7bd6ad's ten
+        # cogsci reports (set soft to its branch measurement, 1,052, which did not
+        # include the parallel report) and this session's one report
+        # (readings/2026-11-19-the-clock-was-a-label-and-the-doubt-came-from-outside.md).
+        # Union on the merged tree e6b077e: 1,053 files / 36,532,830 B = 34.84 MiB
+        # of the 35 MiB soft (bytes NOT binding; ~477 KiB headroom). Set to
+        # measured + 2 (1,053 -> 1,055) following the c1088e precedent so the next
+        # session has two free slots and this line stops being the merge-conflict
+        # hot spot. Reports are append-only (no consolidation can reclaim a file),
+        # the two non-.md corpus files are path-referenced, deletion needs human
+        # approval (none given). soft_bytes / hard_files / hard_bytes and the
+        # per-report caps unchanged. Not automatic.
+        soft_files=1055,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
