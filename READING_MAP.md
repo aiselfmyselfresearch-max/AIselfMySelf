@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5344 件（research_excerpt 3097 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7077 件
-- **探究セッション（Sessions）**：1018 回
+- **探究セッション（Sessions）**：1019 回
 
 ### 台帳ごとの件数
 
@@ -23,8 +23,8 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5344 | `literary_text` 2179／`research_excerpt` 3097／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7077 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1018 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15700 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1019 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15704 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 368 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 128 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1093 |  |
@@ -7167,6 +7167,7 @@
 | `SESSION-20261119-4c5a18` | 2026-11-19T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261119-0207a1` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-e082d8` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261119-3bc189` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-be5daa` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-824718` | 2026-11-19T04:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-b42e55` | 2026-11-19 | `Q-001`, `Q-002`, `Q-20261116-3872ec` | — | — |
@@ -7303,7 +7304,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 18 | 13,587 |
+| `map/50-sessions-21.md` | 19 | 14,275 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
