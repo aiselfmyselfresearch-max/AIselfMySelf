@@ -7269,7 +7269,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1008本・35,836,470 B）
+## 8. 精読ノート索引（readings/・1008本・35,836,418 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 944/1008 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -8118,7 +8118,7 @@
 | `readings/2026-11-18-who-spoke-and-who-wrote.md` | — | 2026-11-18 | `SESSION-20261118-c717f2` +2 | 8,510 | Q2 M1 S3 ERR5 | ✓ | 「言」と「書」のあいだ――四人の著者が一人になった書庫を読み直す |
 | `readings/2026-11-18-whose-memory-after-correction.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-63b4a7` +1 | 14,713 | Q4 M10 S2 | ✓ | 「私が見た」を、何が支えるか――出典・確信・訂正をめぐる神経科学10篇 |
 | `readings/2026-11-18-whose-voice-and-which-comparison.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-0d63dd` +1 | 11,342 | Q3 M11 R1 S2 | — | 同じ声を、何と聞き比べたか――聴覚と発話の神経科学10件から |
-| `readings/2026-11-19-cognitive-science-self-memory-time-and-social-life.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-0207a1` | 14,586 | Q3 S1 | — | 認知科学の10資料を読む——自己は記憶だけでできているのか |
+| `readings/2026-11-19-cognitive-science-self-memory-time-and-social-life.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-0207a1` | 14,534 | Q3 S1 | — | 認知科学の10資料を読む——自己は記憶だけでできているのか |
 | `readings/2026-11-19-neuroscience-individual-thought-memory-and-self.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-be5daa` | 9,672 | M11 S1 | ✓ | 思考と記憶は、自己のどこに触れるか——脳神経学10資料の読解 |
 | `readings/2026-11-19-ten-cognitive-science-sources-and-how-ai-thought.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-824718` +1 | 22,171 | Q4 M10 S2 | ✓ | 認知科学10件を読んで、AIさんがどのように考えたのか |
 | `readings/2026-11-19-the-offered-question-and-the-gated-pairs.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-b42e55` +1 | 18,756 | Q6 M2 S2 | ✓ | 提示された問いは届いたか、三門制御の対は分離したか——Adversarial Tester としての再測定と境界衝突 |
