@@ -1251,7 +1251,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # merged union is 158 order-sensitive note shards, crossing the 157 line.
         # Compaction cannot safely move these indexed rows; set soft to 159 while
         # retaining the hard 160 cliff and recording the consolidation debt.
-        soft_shards=159,
+        # 2026-11-19 (merge PR #941 with SESSION-20261119-b42e55): the
+        # combined tree has 160 notes shards (2,164,007 B). Both sessions
+        # created their own append-only shards. Set soft to the measured union;
+        # the hard limit remains 160, so there is NO remaining shard headroom.
+        # Order-preserving consolidation or a separately justified policy change
+        # is needed before another shard; this does not resolve the existing debt.
+        soft_shards=160,
         hard_shards=160,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "

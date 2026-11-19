@@ -214,7 +214,9 @@ FAIL: literary inquiry seed has errors
 | [`tools/learning_metrics.py --check`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/tools/learning_metrics.py) | **PASS** |
 | [`tools/three_gates.py --check`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/tools/three_gates.py) | **PASS** |
 | [`tools/size_budget.py --strict`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/tools/size_budget.py) | **PASS**（全 soft 内） |
-| `python3 -m unittest discover -s tests` | **OK** |
+| `python3 -m unittest discover -s tests` | マージ後の再検証を実行。結果は PR の CI を参照 |
+
+上表の PASS は PR #941 取り込み前の測定。取り込み後、notes シャードが 160 本となり、soft 上限 159 に対して strict が失敗し、回帰テストの基準状態と陽性対照も失敗した。既存行を変更せず、soft を実測の 160 に限定して修正した。hard も 160 のままで、次のシャード用の余裕はない。順序を保つ整理または別途根拠のある方針変更が必要であり、負債は解消していない。
 
 **検査の通過は探究の進展の証明ではない**（[`prompts/start.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/prompts/start.md)）。
 
