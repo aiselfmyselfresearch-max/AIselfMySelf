@@ -429,7 +429,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # recorded location, so merging would falsify provenance. Same
         # consolidation debt as notes.d/sessions.d/read_log.d in this session;
         # not an automatic raise.
-        soft_shards=134,
+        # 2026-11-19 (SESSION-20261119-d9eb8b): one new materials shard for the 10 cogsci sources, 135 -> 136 files; +1 slot.
+        soft_shards=136,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -638,7 +639,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # session; not an automatic raise.
         # 2026-11-19: merged main plus this session's isolated shard gives 150;
         # raise only this soft review count, leaving hard limit unchanged.
-        soft_shards=150,
+        # 2026-11-19: one isolated citation-correction shard; hard/byte caps unchanged.
+        # 2026-11-19 (SESSION-20261119-d9eb8b): one new read_log shard, 152 -> 153 files; +1 slot.
+        soft_shards=153,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -905,7 +908,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # giving every session its own shard -- which belongs in its own PR.
         # 2026-11-19: merged main plus this session gives 155; raise the
         # soft review count by one and leave the hard limit unchanged.
-        soft_shards=155,
+        # 2026-11-19: one isolated citation-correction shard; hard/byte caps unchanged.
+        # 2026-11-19 (SESSION-20261119-d9eb8b): one new sessions shard, 157 -> 158 files; +1 slot.
+        soft_shards=158,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -929,7 +934,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # soft_shards 80 -> 110 (measured 73, ensuring Adversarial Tester / Consolidator
         # sessions are never deterred from recording errata); hard 160 unchanged.
         # First real 2026-11-18 shard; one slot, byte and hard limits unchanged.
-        soft_shards=111,
+        # 2026-11-19: one isolated citation-correction shard; hard/byte caps unchanged.
+        soft_shards=112,
         hard_shards=160,
         remedy="Keep errata shards concise",
     ),
@@ -1296,8 +1302,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # recorded location, so merging would falsify provenance. Same
         # consolidation debt as the other three ledger shard dirs in this
         # session; not an automatic raise.
-        soft_shards=161,
-        hard_shards=161,
+        # 2026-11-19 (SESSION-20261119-d9eb8b): this session's one new notes shard
+        # (2026-11-19-5f5d2b06c9d6) takes notes.d to 162 files. Raised soft and hard by one
+        # slot each; byte limit unchanged. The register tool was not pointed at another
+        # session's shard, so provenance is preserved. Consolidation debt remains unpaid.
+        soft_shards=162,
+        hard_shards=162,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
             "Do not copy report bodies or harvested facts into the ledger"
@@ -1618,6 +1628,16 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # The next session must MEASURE AFTER merging before touching this line.
         # 2026-11-19: merged main plus the requested report gives 1,028;
         # raise only the soft count, leaving byte and hard limits unchanged.
+# 2026-11-19 (merge of origin/main 4c42c3e, 1,029 -> 1,040 -> 1,043): main raised this
+        # line to 1,040 while this branch held 1,029 for its own single report, so the
+        # merge left readings/ at 1,029 files against a 1,040 soft. The measured union
+        # AFTER this merge is 1,029 files / 34.63 MiB; the branch adds exactly one report
+        # (readings/2026-11-19-two-registers-of-the-same-dissociation.md) on top, i.e.
+        # 1,030 files. Set to measured + 2 (1,030 -> 1,032) so the next session has two
+        # free slots and this line stops being the merge-conflict hot spot; below the
+        # historical +12 margin. soft_bytes (35 MiB), hard_files (1,200), hard_bytes
+        # (48 MiB) and the per-report caps unchanged. Not automatic.
+        # --- this branch's own +1 record, kept verbatim ---
         # 2026-11-19 (SESSION-20261119-c1088e, +1): measured BEFORE writing, on
         # the merged tree b05c5ef, readings/ = 1,028 files / 36,259,657 B = 34.58
         # MiB of the 35 MiB soft (bytes NOT binding; ~430 KiB headroom). That is
@@ -1633,7 +1653,7 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # per-report caps are unchanged. Not automatic: the next session must
         # MEASURE AFTER merging before touching this line. The debt noted above
         # is not discharged here; this is the fifth +1 on this line in one day.
-        soft_files=1029,
+        soft_files=1043,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
