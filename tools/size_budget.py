@@ -1521,7 +1521,19 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # review lines. Reports are append-only. Apply the established +12 report
         # margin (1,014) and a measured 1 MiB byte rescale (35 MiB); hard 1,200
         # files / 48 MiB and per-report caps stay unchanged. Not automatic.
-        soft_files=1014,
+        # 2026-11-19 (PR #947, SESSION-20261119-cfdeb1, user-approved 2026-11-19):
+        # after merging origin/main 5955998 (#951 + #952), the measured union is
+        # readings/ = 1,015 files / 36,073,640 B (34.40 MiB of the 35 MiB soft --
+        # bytes NOT binding). The one over soft 1,014 is this session's report
+        # (readings/2026-11-19-the-second-witness-for-the-two-currencies.md);
+        # reports are append-only, main sat exactly at the 1,014 soft, and the
+        # two non-.md corpus files (2026-10-22-tanka.tsv, 2026-10-24-roundtrip-sample.json)
+        # are referenced by prior reports/index/taxonomy, so consolidation cannot
+        # reduce this dimension and deletion requires human approval (none given).
+        # Human approved a minimal +1 rescale (1,014 -> 1,015), explicitly NOT the
+        # historical +12 margin. soft_bytes (35 MiB), hard_files (1,200),
+        # hard_bytes (48 MiB), and per-report caps unchanged. Not automatic.
+        soft_files=1015,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

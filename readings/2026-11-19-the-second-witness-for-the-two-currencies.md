@@ -371,3 +371,13 @@ PR 作成後、`origin/main` は `4743e2d` → `8861e5d`（`#945`: 認知科学�
 - **取り込み後のライブ台帳（最終 merge 時点）**：`questions=438`・`materials=5334`・`fragments=252`・`relations=7077`・`sessions=1016`・`read_log=15682`・`evaluations=704`・`editorial_decisions=128`・`notes=1092`・`hypotheses=73`。
 
 なお、サンドボックスの `.git` は作業中に再び浅いクローンへ作り直されたが、本回の merge はリモート追跡 ref（`origin/main` = 5955998）を基準に同一の解決手順（union・バイト連結・merge-extension 記録・マップ再生成）で完了させている。
+
+---
+
+### 8.7 1件だけの scoped 予算直し——readings/ soft_files 1014→1015（人間承認）
+
+CI の `Run regression tests` は `test_execution_path_probe.ExecutionPathProbeTests.test_baseline_is_all_green` のみで失敗していた。原因は `size_budget.py --strict` の readings/ **ファイル数**超過（1015 > soft 1014。bytes は 34.41 MiB／soft 35 MiB で問題なし、hard 1200 にも余裕）で、probe の baseline が strict の exit≠0 を許す設計になっているためである。
+
+内訳を測った：`find readings -type f` = **1015**（`.md` 1013 + `2026-10-22-tanka.tsv` + `2026-10-24-roundtrip-sample.json`）。main（`5955998`）はちょうど soft の **1014** であり、超過分は本セッションの報告（`2026-11-19-the-second-witness-for-the-two-currencies.md`）1本のみ。非 `.md` の2ファイルは先行報告・索引・taxonomy から参照されており削除不可（append-only）。報告の削除には人間の承認が必要で、本セッションでは得ていない。
+
+そこで **2026-11-19 に人間へ選択を仰ぎ、承認を得て readings/ soft_files のみを 1014→1015 に scoped で引き上げ**た（過去の +12 レビュー余白ではなく +1 のみ。`soft_bytes` 35 MiB・`hard_files` 1200・`hard_bytes` 48 MiB・per-report caps は不変更）。この収蔵 ledger に課している「予算引き上げ禁止」の例外を、人の判断で1ファイルぶんだけ認めた記録である。根拠は `tools/size_budget.py` の当該コメントと本節。修正コミットは本PRに含まれ、`size_budget.py --strict` は PASS、`unittest` の当該 baseline テストは再実行して OK を確認した。
