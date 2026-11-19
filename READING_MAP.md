@@ -9,8 +9,8 @@
 - **モチーフ（Motifs）**：63 件
 - **対話素材（Materials）**：5264 件（research_excerpt 3017 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
-- **解釈的関係（Relations）**：7070 件
-- **探究セッション（Sessions）**：1008 回
+- **解釈的関係（Relations）**：7071 件
+- **探究セッション（Sessions）**：1009 回
 
 ### 台帳ごとの件数
 
@@ -22,14 +22,14 @@
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5264 | `literary_text` 2179／`research_excerpt` 3017／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
-| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7070 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1008 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15560 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 367 |  |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7071 | うち断片↔断片 619 |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1009 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15584 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 368 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1084 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 70 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 687 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1085 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 71 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 691 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -7079,11 +7079,12 @@
 | `SESSION-20261118-a6d534` | 2026-11-18T13:10:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261116-3872ec` | — | — |
 | `SESSION-20261118-da7c2c` | 2026-11-18T15:30:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-04faed` | 2026-11-19T04:30:00Z | `Q-001`, `Q-20261119-940dde` | `FRAG-20261119-2c362b` | `Q-20261119-940dde` |
+| `SESSION-20261119-cfdeb1` | 2026-11-19T03:30:00Z | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261119-be5daa` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-824718` | 2026-11-19T04:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-b42e55` | 2026-11-19 | `Q-001`, `Q-002`, `Q-20261116-3872ec` | — | — |
 
-## 6. 解釈的関係（7070 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（7071 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
@@ -7094,7 +7095,7 @@
 | 比喩的共鳴 (metaphorically_resonates) | 203 |
 | 枠組みの組み替え (reframes) | 820 |
 | 応答 (responds_to) | 1833 |
-| 変奏・変形 (transforms) | 343 |
+| 変奏・変形 (transforms) | 344 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
@@ -7192,7 +7193,7 @@
 | `map/40-relations-12.md` | 500 | 176,838 |
 | `map/40-relations-13.md` | 500 | 172,292 |
 | `map/40-relations-14.md` | 500 | 157,803 |
-| `map/40-relations-15.md` | 70 | 24,539 |
+| `map/40-relations-15.md` | 71 | 24,919 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -7213,7 +7214,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 8 | 6,589 |
+| `map/50-sessions-21.md` | 9 | 7,388 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7247,23 +7248,23 @@
 | `map/60-notes-31.md` | 25 | 77,441 |
 | `map/60-notes-32.md` | 25 | 126,002 |
 | `map/60-notes-33.md` | 25 | 125,780 |
-| `map/60-notes-34.md` | 25 | 98,423 |
-| `map/60-notes-35.md` | 25 | 66,619 |
-| `map/60-notes-36.md` | 25 | 72,517 |
-| `map/60-notes-37.md` | 25 | 75,835 |
-| `map/60-notes-38.md` | 25 | 100,136 |
-| `map/60-notes-39.md` | 25 | 97,002 |
-| `map/60-notes-40.md` | 25 | 140,522 |
-| `map/60-notes-41.md` | 7 | 39,141 |
+| `map/60-notes-34.md` | 25 | 98,809 |
+| `map/60-notes-35.md` | 25 | 66,191 |
+| `map/60-notes-36.md` | 25 | 73,234 |
+| `map/60-notes-37.md` | 25 | 76,168 |
+| `map/60-notes-38.md` | 25 | 98,919 |
+| `map/60-notes-39.md` | 25 | 94,882 |
+| `map/60-notes-40.md` | 25 | 141,653 |
+| `map/60-notes-41.md` | 8 | 43,363 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1007本・35,805,593 B）
+## 8. 精読ノート索引（readings/・1008本・35,848,300 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 943/1007 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 944/1008 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1007 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1008 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：184 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -8111,7 +8112,8 @@
 | `readings/2026-11-19-ten-cognitive-science-sources-and-how-ai-thought.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-824718` +1 | 22,171 | Q4 M10 S2 | — | 認知科学10件を読んで、AIさんがどのように考えたのか |
 | `readings/2026-11-19-the-offered-question-and-the-gated-pairs.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-b42e55` +1 | 18,756 | Q6 M2 S2 | ✓ | 提示された問いは届いたか、三門制御の対は分離したか——Adversarial Tester としての再測定と境界衝突 |
 | `readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md` | 2026-10-26 | 2026-11-19 | `SESSION-20261119-38e624` | 8,673 | Q5 F8 M4 MOT2 S1 | ✓ | 二通の七十二点と、一度目へ戻る音——復号できる秘密と、内訳へ戻れない合計（SESSION-20261119-38e62… |
-| `readings/2026-11-19-token-budget-as-finite-window-and-the-self-who-is-told-to-spend-it.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-04faed` +1 | 17,082 | Q4 F2 M9 MOT5 R7 S2 | — | トークン予算を使い切る夜——有限窓としての人間と、使い切れと命じられたAIの自己 |
+| `readings/2026-11-19-the-second-witness-for-the-two-currencies.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-cfdeb1` +1 | 22,751 | Q4 M16 R1 S2 ERR1 | — | 溢れは誰の手に残るか——二番目の証人と、初めて名指された対 |
+| `readings/2026-11-19-token-budget-as-finite-window-and-the-self-who-is-told-to-spend-it.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-04faed` +1 | 17,082 | Q4 F2 M9 MOT5 R7 S2 | ✓ | トークン予算を使い切る夜——有限窓としての人間と、使い切れと命じられたAIの自己 |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
 | `readings/2026-11-21-the-flower-that-does-not-read-the-tag.md` | — | 2026-11-21 | `SESSION-20261121-0723fd` | 10,393 | Q6 F9 M8 MOT1 S1 | ✓ | 札を読まない花——明るみが徴収する代価と、代役が払う年（SESSION-20261121-0723fd） |
