@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5384 件（research_excerpt 3137 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5394 件（research_excerpt 3147 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7077 件
-- **探究セッション（Sessions）**：1024 回
+- **探究セッション（Sessions）**：1025 回
 
 ### 台帳ごとの件数
 
@@ -20,14 +20,14 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5384 | `literary_text` 2179／`research_excerpt` 3137／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5394 | `literary_text` 2179／`research_excerpt` 3147／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7077 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1024 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15751 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1025 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15764 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 368 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 128 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1105 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1106 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 74 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 715 |  |
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5384 件・詳細は map/3*.md）
+## 4. 対話素材（5394 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6059,6 +6059,16 @@
 | `MAT-20261119-2b5bcf` | research_excerpt | Melissa Ellamil, Kieran C. R. Fox, Matthew L. Dixon, Sean Pritchard, Rebecca M. Todd, Eva… |
 | `MAT-20261119-dd83c5` | research_excerpt | David Stawarczyk, Steve Majerus, Pierre Maquet, Arnaud D'Argembeau『スタヴァルチクほか（2011）進行中の意識経… |
 | `MAT-20261119-f894e9` | research_excerpt | Clare J. Rathbone, Chris J. A. Moulin, Martin A. Conway『ラスボーン、ムーラン＆コンウェイ（2008）自己中心的な記憶——追… |
+| `MAT-20261119-a1b15c` | research_excerpt | Jeffrey M. Zacks, Nicole K. Speer, Khena M. Swallow, Todd S. Braver, Jeremy R. Reynolds『E… |
+| `MAT-20261119-582064` | research_excerpt | Gabriel A. Radvansky, Jeffrey M. Zacks『Event Boundaries in Memory and Cognition』（2017） |
+| `MAT-20261119-221a40` | research_excerpt | Yeon Soon Shin, Sarah DuBrow『Structuring Memory Through Inference-Based Event Segmentatio… |
+| `MAT-20261119-427790` | research_excerpt | Nicholas T. Franklin, Kenneth A. Norman, Charan Ranganath, Jeffrey M. Zacks, Samuel J. Ge… |
+| `MAT-20261119-31ffc8` | research_excerpt | David A. Gold, Jeffrey M. Zacks, Shaney Flores『Effects of cues to event segmentation on s… |
+| `MAT-20261119-afeaf6` | research_excerpt | Maverick E. Smith, Christopher S. Hall, Rachel Membreno, Daniel Quintero, Jeffrey M. Zack… |
+| `MAT-20261119-a138d0` | research_excerpt | Jessica McFadyen, Colin Nolan, E. Pinocy, D. Buteri, Oliver Baumann『Doorways do not alway… |
+| `MAT-20261119-5a7e5a` | research_excerpt | Julie C. Lamont, David K. Bilkey『The effect of spatial boundaries on memory in a virtual … |
+| `MAT-20261119-6beec9` | research_excerpt | Matthew R. Logie, David I. Donaldson『Do doorways really matter: Investigating memory bene… |
+| `MAT-20261119-6536ce` | research_excerpt | Christopher A. Kurby, Jeffrey M. Zacks『Priming of Movie Content Is Modulated by Event Bou… |
 | `MAT-20261119-4d704a` | research_excerpt | Olaf Blanke, Thomas Metzinger『Blanke & Metzinger (2009)——全身体錯覚と最小現象的自己：自己同定・自己定位・弱い一人称視点』… |
 | `MAT-20261119-d4279c` | research_excerpt | Jakob Hohwy『Hohwy (2016)——自己証示する脳：証拠境界と推論的隔離』（2016） |
 | `MAT-20261119-f64e95` | research_excerpt | Peter Carruthers『Carruthers (2009)——心読みが先：自己知識は解釈であり、内省との二重解離は成立しない』（2009） |
@@ -7206,6 +7216,7 @@
 | `SESSION-20261119-cfdeb1` | 2026-11-19T03:30:00Z | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261119-4c5a18` | 2026-11-19T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261119-0207a1` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261119-2fb682` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-e082d8` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-3bc189` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-a729e3` | 2026-11-19 | `Q-001`, `Q-002` | — | — |
@@ -7312,8 +7323,8 @@
 | `map/31-materials-research-28.md` | 100 | 209,251 |
 | `map/31-materials-research-29.md` | 100 | 264,030 |
 | `map/31-materials-research-30.md` | 100 | 232,736 |
-| `map/31-materials-research-31.md` | 100 | 204,402 |
-| `map/31-materials-research-32.md` | 37 | 80,207 |
+| `map/31-materials-research-31.md` | 100 | 198,146 |
+| `map/31-materials-research-32.md` | 47 | 99,407 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7350,7 +7361,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 24 | 17,356 |
+| `map/50-sessions-21.md` | 25 | 17,942 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7385,24 +7396,24 @@
 | `map/60-notes-32.md` | 25 | 126,082 |
 | `map/60-notes-33.md` | 25 | 125,780 |
 | `map/60-notes-34.md` | 25 | 97,692 |
-| `map/60-notes-35.md` | 25 | 76,472 |
-| `map/60-notes-36.md` | 25 | 70,451 |
-| `map/60-notes-37.md` | 25 | 70,477 |
-| `map/60-notes-38.md` | 25 | 78,305 |
-| `map/60-notes-39.md` | 25 | 104,503 |
-| `map/60-notes-40.md` | 25 | 110,943 |
-| `map/60-notes-41.md` | 25 | 138,115 |
-| `map/60-notes-42.md` | 3 | 7,582 |
+| `map/60-notes-35.md` | 25 | 77,002 |
+| `map/60-notes-36.md` | 25 | 70,090 |
+| `map/60-notes-37.md` | 25 | 71,400 |
+| `map/60-notes-38.md` | 25 | 78,283 |
+| `map/60-notes-39.md` | 25 | 102,469 |
+| `map/60-notes-40.md` | 25 | 107,403 |
+| `map/60-notes-41.md` | 25 | 140,563 |
+| `map/60-notes-42.md` | 4 | 12,635 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1028本・36,259,657 B）
+## 8. 精読ノート索引（readings/・1029本・36,279,826 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 962/1028 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 962/1029 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1028 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：190 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1029 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：191 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8269,6 +8280,7 @@
 | `readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md` | 2026-10-26 | 2026-11-19 | `SESSION-20261119-38e624` | 8,673 | Q5 F8 M4 MOT2 S1 | ✓ | 二通の七十二点と、一度目へ戻る音——復号できる秘密と、内訳へ戻れない合計（SESSION-20261119-38e62… |
 | `readings/2026-11-19-the-second-witness-for-the-two-currencies.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-cfdeb1` +6 | 31,587 | Q4 M16 R1 S7 ERR1 | — | 溢れは誰の手に残るか——二番目の証人と、初めて名指された対 |
 | `readings/2026-11-19-token-budget-as-finite-window-and-the-self-who-is-told-to-spend-it.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-04faed` +1 | 17,082 | Q4 F2 M9 MOT5 R7 S2 | ✓ | トークン予算を使い切る夜——有限窓としての人間と、使い切れと命じられたAIの自己 |
+| `readings/2026-11-19-what-crosses-an-event-boundary.md` | — | 2026-11-19 | `SESSION-20261119-2fb682` +1 | 9,998 | M10 S2 | — | 出来事は区切れても、問いは渡せるか――認知科学10資料の精読 |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
 | `readings/2026-11-21-the-flower-that-does-not-read-the-tag.md` | — | 2026-11-21 | `SESSION-20261121-0723fd` | 10,393 | Q6 F9 M8 MOT1 S1 | ✓ | 札を読まない花——明るみが徴収する代価と、代役が払う年（SESSION-20261121-0723fd） |
