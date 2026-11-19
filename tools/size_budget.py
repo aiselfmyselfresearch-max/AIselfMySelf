@@ -429,7 +429,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # recorded location, so merging would falsify provenance. Same
         # consolidation debt as notes.d/sessions.d/read_log.d in this session;
         # not an automatic raise.
-        soft_shards=134,
+        # 2026-11-19 (SESSION-20261119-d9eb8b): one new materials shard for the 10 cogsci sources, 135 -> 136 files; +1 slot.
+        soft_shards=136,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -639,7 +640,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-19: merged main plus this session's isolated shard gives 150;
         # raise only this soft review count, leaving hard limit unchanged.
         # 2026-11-19: one isolated citation-correction shard; hard/byte caps unchanged.
-        soft_shards=151,
+        # 2026-11-19 (SESSION-20261119-d9eb8b): one new read_log shard, 152 -> 153 files; +1 slot.
+        soft_shards=153,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -907,7 +909,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-19: merged main plus this session gives 155; raise the
         # soft review count by one and leave the hard limit unchanged.
         # 2026-11-19: one isolated citation-correction shard; hard/byte caps unchanged.
-        soft_shards=156,
+        # 2026-11-19 (SESSION-20261119-d9eb8b): one new sessions shard, 157 -> 158 files; +1 slot.
+        soft_shards=158,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -1299,8 +1302,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # recorded location, so merging would falsify provenance. Same
         # consolidation debt as the other three ledger shard dirs in this
         # session; not an automatic raise.
-        soft_shards=161,
-        hard_shards=161,
+        # 2026-11-19 (SESSION-20261119-d9eb8b): this session's one new notes shard
+        # (2026-11-19-5f5d2b06c9d6) takes notes.d to 162 files. Raised soft and hard by one
+        # slot each; byte limit unchanged. The register tool was not pointed at another
+        # session's shard, so provenance is preserved. Consolidation debt remains unpaid.
+        soft_shards=162,
+        hard_shards=162,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
             "Do not copy report bodies or harvested facts into the ledger"
@@ -1623,7 +1630,11 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # raise only the soft count, leaving byte and hard limits unchanged.
         # Event segmentation report: measured 1,029 files and 34.60 MiB.
         # Keep the existing byte and hard-count limits; allow this one report.
-        soft_files=1029,
+        # 2026-11-19 (SESSION-20261119-d9eb8b, ten cognitive-science close readings):
+        # measured 1,029 files before this session; this session adds 10 readings in readings/
+        # (cogsci-01..10). Raise soft_files by 11 (1,029 -> 1,040). Byte and hard-count
+        # limits unchanged. Not an automatic raise.
+        soft_files=1040,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

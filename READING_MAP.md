@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5394 件（research_excerpt 3147 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5404 件（research_excerpt 3157 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7077 件
-- **探究セッション（Sessions）**：1026 回
+- **探究セッション（Sessions）**：1027 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5394 | `literary_text` 2179／`research_excerpt` 3147／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5404 | `literary_text` 2179／`research_excerpt` 3157／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7077 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1026 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15769 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1027 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15779 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 369 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 129 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1106 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1116 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 74 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 715 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 717 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5394 件・詳細は map/3*.md）
+## 4. 対話素材（5404 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6199,8 +6199,18 @@
 | `MAT-20261119-90d0ab` | research_excerpt | Paul H. Thibodeau, Lera Boroditsky『シボドー＆ボロディツキー（2011）われわれが考える比喩——犯罪を「獣」と呼ぶか「ウイルス」と呼ぶかで、対策… |
 | `MAT-20261119-3c1ae7` | research_excerpt | Francesca M. M. Citron, Adele E. Goldberg『シトロン＆ゴールドバーグ（2014）比喩文は直喩的な言い換えより情動的に強く響く——扁桃体と海… |
 | `MAT-20261119-f86cdb` | research_excerpt | Raymond W. Gibbs Jr.『ギブス『比喩戦争（Metaphor Wars）』——概念メタファーは心理的に実在するが、その同定基準と社会的制約をめぐる論争は終わってい… |
+| `MAT-20261119-492b68` | research_excerpt | Roger N. Shepard, Jacqueline Metzler『シェパード＆メッツラー（1971）心的回転——二つの立体が同じ形かは、回す角度に比例した時間で決まる』（… |
+| `MAT-20261119-2baf93` | research_excerpt | Joel Pearson, Stephen M. Kosslyn『ピアソン＆コスリン（2015）表象の異質性——心の中の情報は、命題だけでは保存されない』（2015） |
+| `MAT-20261119-7bc113` | research_excerpt | Philip N. Johnson-Laird『ジョンソン＝レアード（2010）メンタルモデルと人間の推論——推論は論理の骨格ではなく、可能性の模型の上で起こる』（2010） |
+| `MAT-20261119-9b84cf` | research_excerpt | Eleanor Rosch, Carolyn B. Mervis『ロッシュ＆マーヴィス（1975）家族的類似——カテゴリーは定義ではなく、中心に近いものと遠いものの濃淡で成る』（… |
+| `MAT-20261119-85fd59` | research_excerpt | Rolf A. Zwaan, Gabriel A. Radvansky『ズワーン＆ラドヴァンスキー（1998）状況モデル——文章が残すのは文ではなく、描かれた状況である』（199… |
+| `MAT-20261119-150ae4` | research_excerpt | John R. Anderson, Lael J. Schooler『アンダーソン＆スクーラー（1991）環境の反映としての記憶——記憶は、世界で必要とされそうなものを先に出す』… |
+| `MAT-20261119-bb9335` | research_excerpt | Renée Baillargeon, Elizabeth S. Spelke, Stanley Wasserman『ベイラージョン、スペルキ＆ワッサーマン（1985）五か月児の物… |
+| `MAT-20261119-24af77` | research_excerpt | Jonathan St. B. T. Evans, Keith E. Stanovich『エヴァンズ＆スタノヴィッチ（2013）二重過程理論の擁護——速い自動的過程と、作業記憶を… |
+| `MAT-20261119-73242a` | research_excerpt | Jonathan Haidt『ハイト（2001）情動の犬と理由のしっぽ——道徳判断は先に来て、理由は後から組まれる』（2001） |
+| `MAT-20261119-1f072a` | research_excerpt | George Loewenstein『レーベンスタイン（1994）好奇心の心理学——知識のすき間の知覚が生む、誘導された欠乏』（1994） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261119-35ed86・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261119-d9eb8b・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -7230,6 +7240,7 @@
 | `SESSION-20261119-e579dd` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-cf4da8` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-50f9f7` | — | — |
 | `SESSION-20261119-35ed86` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261119-d9eb8b` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7077 件・全表は map/40-relations-*.md）
 
@@ -7325,7 +7336,7 @@
 | `map/31-materials-research-29.md` | 100 | 264,030 |
 | `map/31-materials-research-30.md` | 100 | 232,736 |
 | `map/31-materials-research-31.md` | 100 | 204,402 |
-| `map/31-materials-research-32.md` | 47 | 93,151 |
+| `map/31-materials-research-32.md` | 57 | 113,676 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7362,7 +7373,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 26 | 18,706 |
+| `map/50-sessions-21.md` | 27 | 19,551 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,073 |
@@ -7396,24 +7407,24 @@
 | `map/60-notes-31.md` | 25 | 77,441 |
 | `map/60-notes-32.md` | 25 | 126,082 |
 | `map/60-notes-33.md` | 25 | 125,780 |
-| `map/60-notes-34.md` | 25 | 97,692 |
-| `map/60-notes-35.md` | 25 | 77,042 |
-| `map/60-notes-36.md` | 25 | 70,090 |
-| `map/60-notes-37.md` | 25 | 71,400 |
-| `map/60-notes-38.md` | 25 | 78,283 |
-| `map/60-notes-39.md` | 25 | 102,469 |
-| `map/60-notes-40.md` | 25 | 107,403 |
-| `map/60-notes-41.md` | 25 | 140,563 |
-| `map/60-notes-42.md` | 4 | 12,635 |
+| `map/60-notes-34.md` | 25 | 82,514 |
+| `map/60-notes-35.md` | 25 | 82,680 |
+| `map/60-notes-36.md` | 25 | 62,533 |
+| `map/60-notes-37.md` | 25 | 79,438 |
+| `map/60-notes-38.md` | 25 | 71,209 |
+| `map/60-notes-39.md` | 25 | 95,965 |
+| `map/60-notes-40.md` | 25 | 92,056 |
+| `map/60-notes-41.md` | 25 | 137,129 |
+| `map/60-notes-42.md` | 14 | 69,671 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1029本・36,279,826 B）
+## 8. 精読ノート索引（readings/・1039本・36,311,373 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 962/1029 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 972/1039 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1029 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1039 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：191 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -8258,6 +8269,16 @@
 | `readings/2026-11-18-whose-memory-after-correction.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-63b4a7` +1 | 14,713 | Q4 M10 S2 | ✓ | 「私が見た」を、何が支えるか――出典・確信・訂正をめぐる神経科学10篇 |
 | `readings/2026-11-18-whose-voice-and-which-comparison.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-0d63dd` +1 | 11,342 | Q3 M11 R1 S2 | — | 同じ声を、何と聞き比べたか――聴覚と発話の神経科学10件から |
 | `readings/2026-11-19-cognitive-science-self-memory-time-and-social-life.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-0207a1` | 14,534 | Q3 S1 | — | 認知科学の10資料を読む——自己は記憶だけでできているのか |
+| `readings/2026-11-19-cogsci-01-shepard-metzler-mental-rotation.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-d9eb8b` | 1,600 | Q1 M1 S1 | ✓ | 01 心的回転は「回す時間」として測られる——シェパード＆メッツラー（1971） |
+| `readings/2026-11-19-cogsci-02-pearson-kosslyn-heterogeneity-of-representation.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-d9eb8b` | 1,594 | Q1 M1 S1 | ✓ | 02 表象は一種類ではない——ピアソン＆コスリン（2015）「イメージ論争の終わり」 |
+| `readings/2026-11-19-cogsci-03-johnson-laird-mental-models.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-d9eb8b` | 1,477 | Q1 M1 S1 | ✓ | 03 推論は可能性の模型の上で起こる——ジョンソン＝レアード（2010）「メンタルモデルと人間の推論」 |
+| `readings/2026-11-19-cogsci-04-rosch-mervis-family-resemblance.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-d9eb8b` | 1,446 | Q1 M2 S1 | ✓ | 04 定義がなくてもカテゴリーはある——ロッシュ＆マーヴィス（1975）「家族的類似」 |
+| `readings/2026-11-19-cogsci-05-zwaan-radvansky-situation-models.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-d9eb8b` | 1,365 | Q2 M1 S1 | ✓ | 05 文章が残すのは文ではなく、描かれた状況である——ズワーン＆ラドヴァンスキー（1998） |
+| `readings/2026-11-19-cogsci-06-anderson-schooler-memory-and-environment.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-d9eb8b` | 1,597 | Q1 M1 S1 | ✓ | 06 記憶は世界で必要とされそうなものを先に出す——アンダーソン＆スクーラー（1991） |
+| `readings/2026-11-19-cogsci-07-baillargeon-object-permanence.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-d9eb8b` | 1,602 | Q2 M1 S1 | ✓ | 07 見えなくなっても、物は続く——ベイラージョン、スペルキ＆ワッサーマン（1985） |
+| `readings/2026-11-19-cogsci-08-evans-stanovich-dual-process.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-d9eb8b` | 1,642 | Q1 M1 S1 | ✓ | 08 速い既定と、遅い仮説的思考——エヴァンズ＆スタノヴィッチ（2013） |
+| `readings/2026-11-19-cogsci-09-haidt-emotional-dog-rational-tail.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-d9eb8b` | 1,714 | Q1 M1 S1 | ✓ | 09 判断が先、理由は後——ハイト（2001）「情動の犬と理由のしっぽ」 |
+| `readings/2026-11-19-cogsci-10-loewenstein-psychology-of-curiosity.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-d9eb8b` | 1,414 | Q1 M2 S1 | ✓ | 10 知識の隙間が生む欠乏——レーベンスタイン（1994）「好奇心の心理学」 |
 | `readings/2026-11-19-hippocampal-index-offline-gating-and-temporal-self.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-5a8e69` +4 | 27,983 | Q4 M17 S5 ED2 | ✓ | 海馬索引の内発的起動・オフライン競合選別・頭頂二重解離・時間圧縮自己——10件の神経科学原著全文精読と既収蔵2件の再検… |
 | `readings/2026-11-19-individual-representation-thought-memory-and-self.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-cf4da8` | 23,952 | Q4 M18 S1 | — | 個別の思考と個別の記憶は、自己とどう関係するのか——到達の非対称と束ねの多元性 |
 | `readings/2026-11-19-metaphor-01-lakoff-johnson-argument-is-war.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-e579dd` | 3,019 | Q2 M1 S1 | ✓ | 01 議論は戦いであり、比喩は言葉の外にある——レイコフ＆ジョンソン『私たちが生きる比喩』第1章 |
