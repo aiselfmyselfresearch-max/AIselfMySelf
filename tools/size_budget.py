@@ -1621,7 +1621,9 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # The next session must MEASURE AFTER merging before touching this line.
         # 2026-11-19: merged main plus the requested report gives 1,028;
         # raise only the soft count, leaving byte and hard limits unchanged.
-        soft_files=1028,
+        # Event segmentation report: measured 1,029 files and 34.60 MiB.
+        # Keep the existing byte and hard-count limits; allow this one report.
+        soft_files=1029,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
