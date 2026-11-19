@@ -64,7 +64,7 @@ Simmons et al. 2011 については、著者らによる後年の回顧（Nelson
 
 追加した台帳行は、10 `MAT-*`、1 `SESSION-*`、28 `READ-*`、2 `EVL-*`、構造 `NOTE-*` と手書き上書き `NOTE-*` の2行である。新規の ED verification overlay は不要だった。全て実日付 `2026-11-19`。`read_log` は `session.context_material_ids` からの `used_as_context` 機械バックフィルではなく、資料・先行読み・session・note・evaluation に宛先を書いた手書き行として残し、先行する読みには `in_reply_to` で既存 `READ-*` を名指した。
 
-`python3 tools/belief_state.py --write-map` を先に、`python3 tools/map_build.py` を後に実行して `BELIEF_MAP.md` / `READING_MAP.md` を同期した。サイズ予算が各コレクションの soft 上限に達していたため、`docs/parallel-work.md` §8-2 に従い、直前にマージされた PR #965 が触った5つの同日シャードを避け、現在の open PR が触らず、既存行の著者セッションがすべて `main` にマージ済みの同日シャードへ生バイト追記した。新しい台帳シャードは作らず、`readings/` には精読報告1本だけを足した。`tools/`、`schema/`、`prompts/` は変更していない。
+`python3 tools/belief_state.py --write-map` を先に、`python3 tools/map_build.py` を後に実行して `BELIEF_MAP.md` / `READING_MAP.md` を同期した。サイズ予算が各コレクションの soft 上限に達していたため、`docs/parallel-work.md` §8-2 に従い、同日にマージ済みの PR #965 が触った5つの同日シャードを避け、追記時点で他の open PR が触っておらず、既存行の著者セッションがすべて `main` にマージ済みだった同日シャードへ生バイト追記した。PR 作成後に #966 が `main` へ合流して同じ同日シャードの一部に別セッションの行を足したため、`origin/main` を再マージする際は両側の行をバイト多重集合として保存する和集合で衝突を解き、既存行の書換え・削除は行わなかった。新しい台帳シャードは作らず、`readings/` には精読報告1本だけを足した。`tools/`、`schema/`、`prompts/` は本PRの差分として変更していない。
 
 ## 7. 検証
 
