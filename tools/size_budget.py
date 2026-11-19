@@ -638,7 +638,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # session; not an automatic raise.
         # 2026-11-19: merged main plus this session's isolated shard gives 150;
         # raise only this soft review count, leaving hard limit unchanged.
-        soft_shards=150,
+        # 2026-11-19: one isolated citation-correction shard; hard/byte caps unchanged.
+        soft_shards=151,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -905,7 +906,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # giving every session its own shard -- which belongs in its own PR.
         # 2026-11-19: merged main plus this session gives 155; raise the
         # soft review count by one and leave the hard limit unchanged.
-        soft_shards=155,
+        # 2026-11-19: one isolated citation-correction shard; hard/byte caps unchanged.
+        soft_shards=156,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -929,7 +931,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # soft_shards 80 -> 110 (measured 73, ensuring Adversarial Tester / Consolidator
         # sessions are never deterred from recording errata); hard 160 unchanged.
         # First real 2026-11-18 shard; one slot, byte and hard limits unchanged.
-        soft_shards=111,
+        # 2026-11-19: one isolated citation-correction shard; hard/byte caps unchanged.
+        soft_shards=112,
         hard_shards=160,
         remedy="Keep errata shards concise",
     ),
