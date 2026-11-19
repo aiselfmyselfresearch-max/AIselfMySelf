@@ -1065,3 +1065,54 @@ python3 tools/read_log_backfill.py --check --since 2026-11-10 --enforce
 3. **PSC一次照合門と子孫対立二重読み防止門（`20261119` 発効）**：`20261119` 以降に採番する `primary_source_collision` 評価行は、少なくとも1件の実効 `verified` 素材を `material_ids` に含める。また、明示的な `spawned_hypothesis_ids` / `scope_inherited_by_hypothesis_ids` を持たない `narrows_scope` / `refutes_unconditioned` 行は、`target_hypothesis_id` の直接の子仮説を `compared_against_hypothesis_ids` に入れない（継承させるなら継承欄に明記し、対立させるなら非子孫の対立仮説を選ぶ）。
 4. **項目固有の受容側想起抑制（`errata.weight_effect: "suppress_retrieval"`）**：反証済み（`verdict: "contradicted"`）の誤りを含む `material` / `fragment` / `note` / `hypothesis` がパケットや顕著性上位へ再侵入し続ける場合は、行を削除せず `errata` に `weight_effect: "suppress_retrieval"` を追記する（撤回は `status: "withdrawn"`）。根拠と実測は `readings/2026-11-18-three-gates-architecture-and-governance-redesign.md`。
 
+## 2026-11-19：統合を三パス書いて取り下げ、`main` 側の統合に譲った（実測）
+
+`SESSION-20261119-e082d8`（認知科学10件の精読、報告 `readings/2026-11-19-ten-cognitive-science-sources-the-self-is-not-a-place.md`）の記録である。**結論から書く。本セッションの統合は最終的に0本で、`soft_shards` の引上げも0件。ただし前者は「回収できなかった」からではなく、「回収したものを捨てた」からである。**
+
+### 書く前の状態
+
+起点 `8861e5d`（PR #946 のマージ後）の実測。**`notes.d` は `soft_shards=160`・`hard_shards=160` に対して 161 本**で、`size_budget.py --strict` は warn ではなく **fail** していた。
+
+| コレクション | 書く前 | soft | hard |
+|---|---|---|---|
+| `materials.d` | 135 | 133 | 160 |
+| `sessions.d` | 156 | 153 | 160 |
+| `read_log.d` | 152 | 148 | 160 |
+| `notes.d` | **161** | **160** | **160** |
+| `evaluations.d` | 93 | 92 | 160 |
+
+CI の size-budget ステップは `--strict` を付けないので、`main` は赤いまま進んでいた。`--strict` を読むのは `tests/test_size_budget.py` と `tests/test_execution_path_probe.py` だけで、前者は `Run regression tests` の中で落ちる。**上限を超えたシャードを足したセッションが、上げ忘れに気づかない経路が残っている。**
+
+### 三パスの統合（後に取り下げ）
+
+候補の条件は毎回同じ四つ：**隣接／同一日付／他ファイルから未被参照／行が自己所在地を書いていない**。加えてオープンな PR が触っていないことを `gh pr list --json number,files` で確認した。`need` を変えた三パスで、五コレクションすべてが soft 以内に入った。
+
+**吸収の前後で五コレクションの和集合 SHA-256 が完全一致（増減 0 B）。** 行文字列は一字も変えていない。削除本数は `read_log.d` 6・`sessions.d` 4・`materials.d` 3・`notes.d` 2・`evaluations.d` 2。ここまでは手順どおりで、検査もすべて通った。
+
+### 取り下げた理由：同じシャード群を `main` が先に統合していた
+
+マージ直前に `origin/main` が進み、**PR #948（`SESSION-20261119-5a8e69`）が同じ 7 ファイルに対して独自の統合を済ませていた。** 統合先が違うため `git merge` は **modify/delete 衝突を7件**起こした（`notes.d`・`materials.d`・`evaluations.d` の各2〜3本）。
+
+自分の統合を押し通すと、同じ行が二つの経路で移動したことになる。これは `docs/parallel-work.md` §105 が記録した 2026-11-07 の重複事故（PR #572 との衝突で `read_id` が 8 件重複）と同じ形である。**自分の統合を丸ごと捨て、五コレクションの `state/*.d` を起点の状態に戻し、自分が書いた6シャードだけを載せ直し、それから `main` を合流した。** 合流後の自分のシャードは行数まで一致して無傷だった（素材10・評価3・仮説1・read_log 14・セッション1・ノート1）。残った衝突は生成物 `BELIEF_MAP.md`・`READING_MAP.md` の2本だけで、規則どおり再生成で解決した。
+
+**#948 は `state/shard_aliases.json` に移動の記録を残している。** 同ファイルの `aliases` は「旧シャード → 新シャード + 行範囲 + 行数 + sha256」を持つ。自分の統合はこの台帳に載せていなかったので、**押し通していれば、行は移動しているのに `aliases` に載らない移動**が生じていた。今後 *復元* の必要が出たときに、この差は効く。統合を捨てた判断は、衝突の回避だけでなくこの記録の一貫性のためでもある。
+
+### 現在の実測
+
+`main` の統合のみが効いている状態で、**materials 133/133・sessions 153/153・read_log 148/148・notes 160/160・evaluations 91/92。** `notes.d` の hard 上限突破（161/160）は解消した。**`soft_shards` の引上げは0件。** ただし四コレクションが soft ちょうどに戻っており、**残り枠は0**である。合流のたびに `main` の新規シャードが枠を食うので、この「ちょうど」は次のセッションまで保たない。
+
+途中、`notes.d` を 161・`hard_shards` を 162 に上げる変更を `tools/size_budget.py` に18行のコメント付きで書いた。**取り下げた。** 統合後は 160 以下で通ることが分かったからで、必要の無い引上げは上限を「誰かが塞がれた記録」に変え、`reclaim_candidates()` が戻すための対象を作るだけである。結果として `tools/size_budget.py` は無変更で、`prompts/start.md` の「道具・手順書の変更を台帳の一括追加と同じ PR に入れない」規則にも触れていない。
+
+### 何が教訓か
+
+**統合の技術ではなく、確かめる順序である。** 本セッションは「測ってから引上げを決める」は実行したが、「書く前に、並行セッションが同じ場所を統合していないか確かめる」を後回しにした。§105 の警告は読んでいたのに、自分の統合対象が**まだ `main` に無い**ことの確認を、統合を書いた後に回した。捨てた作業は三パス分ある。
+
+**捨てられたのは、吸収が「行を一字も変えない」操作だったからである。** 内容を書き換える操作だったら復元できなかった。手順が「行の多重集合をバイト単位で等しく保つ」ことを要求しているのは、検査を通すためだけでなく、**この取り下げを可能にするため**でもある。
+
+次に同じ場所へ書くセッションは、統合の候補を探す前に `gh pr list --state open --json number,files` を引き、`origin/main` の**最新**に対して測ること。`notes.d` は残り枠0で、次にノート行を書くセッションは `--strict` と同日シャードの有無を先に見ること。恒久策（`notes.d` の順序規則の定義、`materials.d` のゼロ接尾辞アンカーの日付ごとの新設）は依然 `editorial_review` の議題である。
+
+### 検査
+
+最終ツリーで、`validate_seed.py`・`map_build.py --check`・`note_index.py --check`・`inspect_inquiry.py --check-map`・`belief_state.py --check-map`・`learning_metrics.py --check`・`size_budget.py --strict`・`date_axis.py --enforce-shards`・`append_only_check.py`（`main` の 32,096 行がバイト単位で現存）・`claim_wiring.py --check`・`read_log_backfill.py --check`・`readings_integrity_check.py`・`three_gates.py --check` はすべて PASS。
+
+**ユニットテストは 937 件すべて OK。** セッション中は 1 件失敗していた（`test_zero_eig_questions_still_print_a_priority_pair`、`Q-001` 首位の事後確率 1.0 で `assertLess(top, 1.0)` に掛かる）。起点 `8861e5d` を pristine worktree に取り出しても同じく失敗したので本ブランチ由来ではなく、こちらでは直していない。**#948 の `Q-001` 統合で首位が 99.9% に下がったため、合流後に自然に解消した。** 「既存の失敗」と「恒久的な失敗」は別物で、台帳の状態に依存する検査は、台帳が動けば動く。

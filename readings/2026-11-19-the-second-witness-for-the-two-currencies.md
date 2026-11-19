@@ -344,3 +344,16 @@ PR 作成後、`origin/main` は `4743e2d` → `8861e5d`（`#945`: 認知科学�
 - 前作（一番目の証人）：[`readings/2026-11-19-token-budget-as-finite-window-and-the-self-who-is-told-to-spend-it.md`](2026-11-19-token-budget-as-finite-window-and-the-self-who-is-told-to-spend-it.md)（`NOTE-20261119-6636bc222773`）
 - 検証対の出所：[`readings/2026-11-18-two-layers-of-return-granular-addressing-and-notes-across-days.md`](2026-11-18-two-layers-of-return-granular-addressing-and-notes-across-days.md)（`NOTE-20261118-bed5c3`）
 - 信念分布：[`BELIEF_MAP.md`](../BELIEF_MAP.md) ／ エピソード索引：[`READING_MAP.md`](../READING_MAP.md)
+
+---
+
+### 8.5 3回目の取り込み——#949（ee4629 / e082d8）と最終ステータス
+
+2回目の取り込み（§8.4）の記録を書いている最中にも `origin/main` は `2039ed3` → `60bd87e`（`#949`: `SESSION-20261119-ee4629`＝proposer・脳神経学10件新規収蔵と `SESSION-20261119-e082d8`＝adversarial_tester・認知科学10件新規収蔵）へ進んだ。本PRはこれも merge commit で取り込んだ。本回の衝突は **generated の2ファイルのみ**（`BELIEF_MAP.md`／`READING_MAP.md`、いずれも吸収後の台帳から再生成して解決）。新シャード9本（materials 2／read_log 2／sessions 2／notes 2／evaluations 1／hypotheses 1）はファイル数予算内だったため追加の吸収は行っていない。`readings/` には #949 の新報告2本（`2026-11-19-cognitive-science-sources-the-self-is-not-a-place.md`・`2026-11-19-when-a-memory-becomes-part-of-the-self.md`）がそのまま収載された。`docs/parallel-work.md` も更新されたが、本書の §8.2-2・§8.3・§8.4 が従った規約と同一のものである。
+
+取り込み後のライブ台帳（最終 merge 時点）：`questions=438`・`materials=5314`・`fragments=252`・`relations=7077`・`sessions=1014`・`read_log=15660`・`evaluations=704`・`editorial_decisions=128`・`notes=1090`・`hypotheses=73`。本報告の他の節のカウントは各時点の実測であり、最新の値はこの節と `READING_MAP.md`「台帳ごとの件数」を参照。
+
+**最終検証（追記 §8.5 時点）**
+- すべてのローカルゲート PASS：`append_only_check`（`2039ed3` の 32,096 行が byte for byte で存在）・`size_budget --strict`・`date_axis --enforce-shards`・`read_log_backfill --check`・`three_gates --check`・`learning_metrics --check`・`validate_seed`・`readings integrity`・マップ3種（`READING_MAP`／`note_index`／`BELIEF_MAP`）。
+- `unittest discover`：937件実行。一時的に `READING_MAP.md` が陳腐化したことに起因する2件の失敗（`test_execution_path_probe.test_baseline_is_all_green`・`test_tools_smoke.test_ledgers_validate_and_reading_map_is_current`）は、マップ再生成のうえ当該2テストを再実行して **OK** を確認済み。Q-001 の zero-EIG 赤は `#948` の台帳更新により解消済み（`test_zero_eig_questions_still_print_a_priority_pair` を含む他の全テストはそのフルランで失敗していない）。
+- なおサンドボックスの `.git` は作業中盤に再生成（浅いクローン）され、ローカルの merge commit が一時的に見えなくなったが、リモートのブランチ（`e92fd9f`）から復元し、2回目の取り込み（§8.4）は `e92fd9f` と `2039ed3` を親とする merge commit（`1ed2fb3`）として再構築した。内容・行の帰属・新シャードの記録は作業ツリーと一致している。
