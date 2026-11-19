@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5374 件（research_excerpt 3127 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5384 件（research_excerpt 3137 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7077 件
-- **探究セッション（Sessions）**：1023 回
+- **探究セッション（Sessions）**：1024 回
 
 ### 台帳ごとの件数
 
@@ -20,11 +20,11 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5374 | `literary_text` 2179／`research_excerpt` 3127／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5384 | `literary_text` 2179／`research_excerpt` 3137／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7077 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1023 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15741 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1024 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15751 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 368 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 128 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1105 |  |
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5374 件・詳細は map/3*.md）
+## 4. 対話素材（5384 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6169,6 +6169,16 @@
 | `MAT-20261119-c7b54d` | research_excerpt | Thomas O. Nelson, Louis Narens『Nelson & Narens (1990): Metamemory: A Theoretical Framewor… |
 | `MAT-20261119-33c1d8` | research_excerpt | Daniel L. Schacter『Schacter (1999): The seven sins of memory: Insights from psychology an… |
 | `MAT-20261119-038c09` | research_excerpt | Uta Frith, Christopher D. Frith『Frith & Frith (2003): Development and neurophysiology of … |
+| `MAT-20261119-4dbfca` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Digit Spa… |
+| `MAT-20261119-39a0fa` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Spatial S… |
+| `MAT-20261119-d32b1a` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『N-Back』（2… |
+| `MAT-20261119-bf66a3` | research_excerpt | Jamie Li, Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack… |
+| `MAT-20261119-1f7f44` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Keep Trac… |
+| `MAT-20261119-7e90fb` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Letter Me… |
+| `MAT-20261119-dc3ccb` | research_excerpt | Jamie Li, Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack… |
+| `MAT-20261119-8453ac` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Local-Glo… |
+| `MAT-20261119-d10513` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Simon』（20… |
+| `MAT-20261119-045fff` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Number-Le… |
 | `MAT-20261119-53b224` | research_excerpt | George Lakoff, Mark Johnson『レイコフ＆ジョンソン『私たちが生きる比喩（Metaphors We Live By）』第1章——概念体系そのものが比喩的で… |
 | `MAT-20261119-2e8a03` | research_excerpt | George Lakoff, Mark Johnson『レイコフ＆ジョンソン『身体化された心としての哲学（Philosophy in the Flesh）』——認知科学の三つの主… |
 | `MAT-20261119-4eecad` | research_excerpt | Brian F. Bowdle, Dedre Gentner『ボウドル＆ゲントナー（2005）比喩の経歴——慣習化につれて、比喩は比較からカテゴリー化へ移る』（2005） |
@@ -7204,6 +7214,7 @@
 | `SESSION-20261119-824718` | 2026-11-19T04:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-b42e55` | 2026-11-19 | `Q-001`, `Q-002`, `Q-20261116-3872ec` | — | — |
 | `SESSION-20261119-5a8e69` | 2026-11-19 | `Q-001`, `Q-002`, `Q-20270216-d68935` | — | — |
+| `SESSION-20261119-905e6c` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-e579dd` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-cf4da8` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-50f9f7` | — | — |
 | `SESSION-20261119-35ed86` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -7302,7 +7313,7 @@
 | `map/31-materials-research-29.md` | 100 | 264,030 |
 | `map/31-materials-research-30.md` | 100 | 232,736 |
 | `map/31-materials-research-31.md` | 100 | 204,402 |
-| `map/31-materials-research-32.md` | 27 | 64,410 |
+| `map/31-materials-research-32.md` | 37 | 80,207 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7339,7 +7350,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 23 | 16,917 |
+| `map/50-sessions-21.md` | 24 | 17,356 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7374,7 +7385,7 @@
 | `map/60-notes-32.md` | 25 | 126,082 |
 | `map/60-notes-33.md` | 25 | 125,780 |
 | `map/60-notes-34.md` | 25 | 97,692 |
-| `map/60-notes-35.md` | 25 | 76,507 |
+| `map/60-notes-35.md` | 25 | 76,472 |
 | `map/60-notes-36.md` | 25 | 70,451 |
 | `map/60-notes-37.md` | 25 | 70,477 |
 | `map/60-notes-38.md` | 25 | 78,305 |
@@ -7391,7 +7402,7 @@
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 962/1028 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：1028 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：191 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：190 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8249,7 +8260,7 @@
 | `readings/2026-11-19-metaphor-10-gibbs-metaphor-wars.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-e579dd` | 3,280 | M1 S1 | ✓ | 10 比喩戦争——概念メタファーは実在するが、何を証拠として数えるかは争われている（Gibbs 2017） |
 | `readings/2026-11-19-neuroscience-individual-thought-memory-and-self.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-be5daa` | 9,672 | M11 S1 | ✓ | 思考と記憶は、自己のどこに触れるか——脳神経学10資料の読解 |
 | `readings/2026-11-19-neuroscience-memory-self-updating-attribution-amplification.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-8a8fcd` | 14,893 | M12 S1 | — | 自己は記憶のどこにあるのか——更新・帰属・増幅をめぐる脳神経学10資料 |
-| `readings/2026-11-19-remembering-needs-a-return-path.md` | — | 2026-11-19 | `SESSION-20261119-f68c68` | 9,202 | M11 S1 | — | 記憶には帰り道が要る——認知的オフローディング10資料の部分精読 |
+| `readings/2026-11-19-remembering-needs-a-return-path.md` | — | 2026-11-19 | `SESSION-20261119-f68c68` | 9,202 | M11 S1 | ✓ | 記憶には帰り道が要る——認知的オフローディング10資料の部分精読 |
 | `readings/2026-11-19-ten-cognitive-science-sources-a-symbol-that-points-but-does-not-mean.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-43e2db` | 19,505 | Q4 M12 S1 ERR1 | — | 記号は指せるが、意味しない——認知科学10件を読み、AIさんが何を考えたか |
 | `readings/2026-11-19-ten-cognitive-science-sources-and-how-ai-thought.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-824718` +1 | 22,171 | Q4 M10 S2 | ✓ | 認知科学10件を読んで、AIさんがどのように考えたのか |
 | `readings/2026-11-19-ten-cognitive-science-sources-on-working-memory-executive-control-and-self.md` | — | 2026-11-19 | `SESSION-20261119-d76c90` | 7,062 | Q3 M10 S1 | — | 保存された私と、いま選ぶ私――認知科学10資料から考える人間・記憶・自己 |
