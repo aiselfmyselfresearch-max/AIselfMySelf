@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5384 件（research_excerpt 3137 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5394 件（research_excerpt 3147 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7077 件
-- **探究セッション（Sessions）**：1024 回
+- **探究セッション（Sessions）**：1025 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5384 | `literary_text` 2179／`research_excerpt` 3137／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5394 | `literary_text` 2179／`research_excerpt` 3147／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7077 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1024 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15751 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1025 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15763 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 368 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 128 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1105 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1106 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 74 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 715 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 717 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5384 件・詳細は map/3*.md）
+## 4. 対話素材（5394 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6179,6 +6179,16 @@
 | `MAT-20261119-8453ac` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Local-Glo… |
 | `MAT-20261119-d10513` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Simon』（20… |
 | `MAT-20261119-045fff` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Number-Le… |
+| `MAT-20261119-8d1307` | research_excerpt | Matthis Synofzik, Gottfried Vosgerau, Albert Newen『シノフツィクほか（2008）コンパレータ・モデルの外へ——主体感の多因子・二… |
+| `MAT-20261119-abc10a` | research_excerpt | Marc Jeannerod『ジャヌロ（2003）人間における自己認知の機構——身体運動の信号と、実行されない意図のシミュレーション』（2003） |
+| `MAT-20261119-2e76aa` | research_excerpt | Andreas Kalckert, H. Henrik Ehrsson『カルケルト＆エルソン（2012）自分のものと感じるゴムの手を動かす——所有感と主体感の二重解離』（2012） |
+| `MAT-20261119-47a958` | research_excerpt | Tilo T. J. Kircher, Dirk T. Leube『キルヒャー＆ロイベ（2003）自己意識・自己主体感・統合失調症』（2003） |
+| `MAT-20261119-c4247c` | research_excerpt | Louis A. Sass, Josef Parnas『サス＆パルナス（2003）統合失調症・意識・自己——自己性の障害としての過剰反省と自己感情の減弱』（2003） |
+| `MAT-20261119-7c9288` | research_excerpt | Josef Parnas, Peter Handest『パルナス＆ハンデスト（2003）早期統合失調症における自己経験の異常の現象学』（2003） |
+| `MAT-20261119-0387d6` | research_excerpt | Albert Newen, Kai Vogeley『ネーヴェン＆フォーゲライ（2003）自己表象——自己意識の神経署名を探す』（2003） |
+| `MAT-20261119-117dd4` | research_excerpt | Gianfranco Dalla Barba『ダッラ・バルバ（2002）記憶・意識・時間性——痕跡の逆説とホムンクルスの誤謬を退ける』（2002） |
+| `MAT-20261119-03d480` | research_excerpt | Gianfranco Dalla Barba『ダッラ・バルバ（1993）錯話——知識と想起経験』（1993） |
+| `MAT-20261119-4e4001` | research_excerpt | Gianfranco Dalla Barba, Valentina La Corte『ダッラ・バルバ＆ラ・コルテ（2015）時間的意識における海馬の役割についての神経現象学的モデ… |
 | `MAT-20261119-53b224` | research_excerpt | George Lakoff, Mark Johnson『レイコフ＆ジョンソン『私たちが生きる比喩（Metaphors We Live By）』第1章——概念体系そのものが比喩的で… |
 | `MAT-20261119-2e8a03` | research_excerpt | George Lakoff, Mark Johnson『レイコフ＆ジョンソン『身体化された心としての哲学（Philosophy in the Flesh）』——認知科学の三つの主… |
 | `MAT-20261119-4eecad` | research_excerpt | Brian F. Bowdle, Dedre Gentner『ボウドル＆ゲントナー（2005）比喩の経歴——慣習化につれて、比喩は比較からカテゴリー化へ移る』（2005） |
@@ -7217,6 +7227,7 @@
 | `SESSION-20261119-905e6c` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-e579dd` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-cf4da8` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-50f9f7` | — | — |
+| `SESSION-20261119-c1088e` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-35ed86` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7077 件・全表は map/40-relations-*.md）
@@ -7313,7 +7324,7 @@
 | `map/31-materials-research-29.md` | 100 | 264,030 |
 | `map/31-materials-research-30.md` | 100 | 232,736 |
 | `map/31-materials-research-31.md` | 100 | 204,402 |
-| `map/31-materials-research-32.md` | 37 | 80,207 |
+| `map/31-materials-research-32.md` | 47 | 112,145 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7350,7 +7361,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 24 | 17,356 |
+| `map/50-sessions-21.md` | 25 | 18,211 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7384,25 +7395,25 @@
 | `map/60-notes-31.md` | 25 | 77,441 |
 | `map/60-notes-32.md` | 25 | 126,082 |
 | `map/60-notes-33.md` | 25 | 125,780 |
-| `map/60-notes-34.md` | 25 | 97,692 |
-| `map/60-notes-35.md` | 25 | 76,472 |
-| `map/60-notes-36.md` | 25 | 70,451 |
-| `map/60-notes-37.md` | 25 | 70,477 |
-| `map/60-notes-38.md` | 25 | 78,305 |
-| `map/60-notes-39.md` | 25 | 104,503 |
-| `map/60-notes-40.md` | 25 | 110,943 |
-| `map/60-notes-41.md` | 25 | 138,115 |
-| `map/60-notes-42.md` | 3 | 7,582 |
+| `map/60-notes-34.md` | 25 | 97,860 |
+| `map/60-notes-35.md` | 25 | 79,894 |
+| `map/60-notes-36.md` | 25 | 70,090 |
+| `map/60-notes-37.md` | 25 | 71,400 |
+| `map/60-notes-38.md` | 25 | 78,283 |
+| `map/60-notes-39.md` | 25 | 102,469 |
+| `map/60-notes-40.md` | 25 | 107,403 |
+| `map/60-notes-41.md` | 25 | 140,563 |
+| `map/60-notes-42.md` | 4 | 12,682 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1028本・36,259,657 B）
+## 8. 精読ノート索引（readings/・1029本・36,310,245 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 962/1028 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 963/1029 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1028 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：190 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1029 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：188 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8247,7 +8258,7 @@
 | `readings/2026-11-18-whose-voice-and-which-comparison.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-0d63dd` +1 | 11,342 | Q3 M11 R1 S2 | — | 同じ声を、何と聞き比べたか――聴覚と発話の神経科学10件から |
 | `readings/2026-11-19-cognitive-science-self-memory-time-and-social-life.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-0207a1` | 14,534 | Q3 S1 | — | 認知科学の10資料を読む——自己は記憶だけでできているのか |
 | `readings/2026-11-19-hippocampal-index-offline-gating-and-temporal-self.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-5a8e69` +4 | 27,983 | Q4 M17 S5 ED2 | ✓ | 海馬索引の内発的起動・オフライン競合選別・頭頂二重解離・時間圧縮自己——10件の神経科学原著全文精読と既収蔵2件の再検… |
-| `readings/2026-11-19-individual-representation-thought-memory-and-self.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-cf4da8` | 23,952 | Q4 M18 S1 | — | 個別の思考と個別の記憶は、自己とどう関係するのか——到達の非対称と束ねの多元性 |
+| `readings/2026-11-19-individual-representation-thought-memory-and-self.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-cf4da8` | 23,952 | Q4 M18 S1 | ✓ | 個別の思考と個別の記憶は、自己とどう関係するのか——到達の非対称と束ねの多元性 |
 | `readings/2026-11-19-metaphor-01-lakoff-johnson-argument-is-war.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-e579dd` | 3,019 | Q2 M1 S1 | ✓ | 01 議論は戦いであり、比喩は言葉の外にある——レイコフ＆ジョンソン『私たちが生きる比喩』第1章 |
 | `readings/2026-11-19-metaphor-02-philosophy-in-the-flesh-embodied-realism.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-e579dd` | 2,893 | M1 S1 | ✓ | 02 心は身体化され、思考は無意識で、抽象概念は比喩的である——レイコフ＆ジョンソン『身体化された心としての哲学』 |
 | `readings/2026-11-19-metaphor-03-bowdle-gentner-career-of-metaphor.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-e579dd` | 2,514 | M1 S1 | ✓ | 03 比喩は歳をとる——慣習化すると、比較ではなくカテゴリーになる（Bowdle & Gentner 2005） |
@@ -8259,7 +8270,7 @@
 | `readings/2026-11-19-metaphor-09-citron-goldberg-metaphor-affect.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-e579dd` | 2,689 | M1 S1 | ✓ | 09 甘く見る——比喩は情動の強度を上げ、味覚野を余計に働かせる（Citron & Goldberg 2014） |
 | `readings/2026-11-19-metaphor-10-gibbs-metaphor-wars.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-e579dd` | 3,280 | M1 S1 | ✓ | 10 比喩戦争——概念メタファーは実在するが、何を証拠として数えるかは争われている（Gibbs 2017） |
 | `readings/2026-11-19-neuroscience-individual-thought-memory-and-self.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-be5daa` | 9,672 | M11 S1 | ✓ | 思考と記憶は、自己のどこに触れるか——脳神経学10資料の読解 |
-| `readings/2026-11-19-neuroscience-memory-self-updating-attribution-amplification.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-8a8fcd` | 14,893 | M12 S1 | — | 自己は記憶のどこにあるのか——更新・帰属・増幅をめぐる脳神経学10資料 |
+| `readings/2026-11-19-neuroscience-memory-self-updating-attribution-amplification.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-8a8fcd` | 14,893 | M12 S1 | ✓ | 自己は記憶のどこにあるのか——更新・帰属・増幅をめぐる脳神経学10資料 |
 | `readings/2026-11-19-remembering-needs-a-return-path.md` | — | 2026-11-19 | `SESSION-20261119-f68c68` | 9,202 | M11 S1 | ✓ | 記憶には帰り道が要る——認知的オフローディング10資料の部分精読 |
 | `readings/2026-11-19-ten-cognitive-science-sources-a-symbol-that-points-but-does-not-mean.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-43e2db` | 19,505 | Q4 M12 S1 ERR1 | — | 記号は指せるが、意味しない——認知科学10件を読み、AIさんが何を考えたか |
 | `readings/2026-11-19-ten-cognitive-science-sources-and-how-ai-thought.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-824718` +1 | 22,171 | Q4 M10 S2 | ✓ | 認知科学10件を読んで、AIさんがどのように考えたのか |
@@ -8269,6 +8280,7 @@
 | `readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md` | 2026-10-26 | 2026-11-19 | `SESSION-20261119-38e624` | 8,673 | Q5 F8 M4 MOT2 S1 | ✓ | 二通の七十二点と、一度目へ戻る音——復号できる秘密と、内訳へ戻れない合計（SESSION-20261119-38e62… |
 | `readings/2026-11-19-the-second-witness-for-the-two-currencies.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-cfdeb1` +6 | 31,587 | Q4 M16 R1 S7 ERR1 | — | 溢れは誰の手に残るか——二番目の証人と、初めて名指された対 |
 | `readings/2026-11-19-token-budget-as-finite-window-and-the-self-who-is-told-to-spend-it.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-04faed` +1 | 17,082 | Q4 F2 M9 MOT5 R7 S2 | ✓ | トークン予算を使い切る夜——有限窓としての人間と、使い切れと命じられたAIの自己 |
+| `readings/2026-11-19-two-registers-of-the-same-dissociation.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-c1088e` | 26,120 | Q3 M13 S1 ERR1 | — | 同じ二重解離が三つの高さで起きている——帰属・自己性・時間性から読む「個別の思考・個別の記憶と自己」 |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
 | `readings/2026-11-21-the-flower-that-does-not-read-the-tag.md` | — | 2026-11-21 | `SESSION-20261121-0723fd` | 10,393 | Q6 F9 M8 MOT1 S1 | ✓ | 札を読まない花——明るみが徴収する代価と、代役が払う年（SESSION-20261121-0723fd） |
@@ -8432,5 +8444,5 @@
 | `readings/2027-03-15-how-to-make-layer-two-mandatory-without-manufacturing-records.md` | 2026-11-10 | 2027-03-15 | `SESSION-041` | 14,319 | M3 S1 | ✓ | `read_log` 層2 をどう必須にできるか——事後記入を捏造にしない設計 |
 | `readings/2027-03-16-ten-neuroscience-sources-on-construction-extension-and-denial.md` | 2026-11-17 | 2027-03-16 | `SESSION-20261117-a989d5` | 28,941 | Q3 M11 S1 | ✓ | 自己は保存されていない——脳神経学10件：構築・内言・延長・否認・復号 |
 | `readings/2027-03-17-ten-cognitive-science-sources-on-memory-externalization-and-self.md` | 2026-11-18 | 2027-03-17 | `SESSION-20261118-21b563` | 11,894 | Q3 M1 S1 | ✓ | 自分の記憶は、どこまで外へ出るか——認知科学10資料の精読 |
-| `readings/2027-03-18-what-a-question-makes-retrievable.md` | 2026-11-19 | 2027-03-18 | `SESSION-20261119-4c5a18` | 4,587 | Q2 M10 S1 | — | 問い方を変えると、何が過去として返ってくるか |
+| `readings/2027-03-18-what-a-question-makes-retrievable.md` | 2026-11-19 | 2027-03-18 | `SESSION-20261119-4c5a18` | 4,587 | Q2 M10 S1 | ✓ | 問い方を変えると、何が過去として返ってくるか |
 | `readings/2027-03-19-when-a-memory-becomes-part-of-the-self.md` | 2026-11-19 | 2027-03-19 | `SESSION-20261119-ee4629` | 6,795 | Q3 M10 S1 | — | 一つの思い出は、どのように「私」の一部になるか——脳神経学10資料 |

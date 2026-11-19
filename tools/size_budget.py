@@ -1618,7 +1618,22 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # The next session must MEASURE AFTER merging before touching this line.
         # 2026-11-19: merged main plus the requested report gives 1,028;
         # raise only the soft count, leaving byte and hard limits unchanged.
-        soft_files=1028,
+        # 2026-11-19 (SESSION-20261119-c1088e, +1): measured BEFORE writing, on
+        # the merged tree b05c5ef, readings/ = 1,028 files / 36,259,657 B = 34.58
+        # MiB of the 35 MiB soft (bytes NOT binding; ~430 KiB headroom). That is
+        # exactly the 1,028 soft above, i.e. main arrived already at the ceiling,
+        # so the one report this session was asked to write
+        # (readings/2026-11-19-two-registers-of-the-same-dissociation.md) is the
+        # 1,029th file. Same conditions as the three 2026-11-19 precedents: the
+        # request is "add the report and merge it", reports are append-only (no
+        # consolidation can reclaim a file here), the two non-.md corpus files
+        # are path-referenced, and deletion needs human approval (none given).
+        # Minimal +1 (1,028 -> 1,029) rather than the historical +12 margin.
+        # soft_bytes (35 MiB), hard_files (1,200), hard_bytes (48 MiB) and the
+        # per-report caps are unchanged. Not automatic: the next session must
+        # MEASURE AFTER merging before touching this line. The debt noted above
+        # is not discharged here; this is the fifth +1 on this line in one day.
+        soft_files=1029,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
