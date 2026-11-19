@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：437 件（初期シード 10 件 ＋ 派生 427 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5244 件（research_excerpt 2997 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5254 件（research_excerpt 3007 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：251 編（selected 96 ／ draft 155）
 - **解釈的関係（Relations）**：7059 件
-- **探究セッション（Sessions）**：1004 回
+- **探究セッション（Sessions）**：1005 回
 
 ### 台帳ごとの件数
 
@@ -20,14 +20,14 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 437 | `open` 413／`paused` 24（初期シード 10／セッション派生 396／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5244 | `literary_text` 2179／`research_excerpt` 2997／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5254 | `literary_text` 2179／`research_excerpt` 3007／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 251 | `selected` 96／`draft` 155／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7059 | うち断片↔断片 618 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1004 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15508 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1005 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15518 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 367 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1079 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1080 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 68 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 677 |  |
 
@@ -799,7 +799,7 @@
 | `FRAG-20261117-55b108` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5244 件・詳細は map/3*.md）
+## 4. 対話素材（5254 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6047,8 +6047,18 @@
 | `MAT-20261118-85cb1a` | research_excerpt | Evan F. Risko, Sam J. Gilbert『リスコ＆ギルバート（2016）認知的オフロード——外部資源の役割を問う』（2016） |
 | `MAT-20261118-943f04` | research_excerpt | Timothy L. Dunn, Evan F. Risko『ダン＆リスコ（2016）認知的オフロードのメタ認知的説明——予想される得と実際の得』（2016） |
 | `MAT-20261118-89bfbb` | research_excerpt | Kristy L. Armitage, Jonathan Redshaw『Armitage & Redshaw (2024): Can you help me? Using ot… |
+| `MAT-20261119-8cc98e` | research_excerpt | Vinod Menon『Menonほか（2023）——20 years of the default mode network: a review and synthesis』（… |
+| `MAT-20261119-cf7110` | research_excerpt | R. Nathan Spreng, Raymond A. Mar, Alice S. N. Kim『Sprengほか（2009）——The Common Neural Basis… |
+| `MAT-20261119-66e6d1` | research_excerpt | Susie Shepardson, Kristina Dahlgren, Stephan Hamann『Shepardsonほか（2023）——Neural correlates… |
+| `MAT-20261119-e2e224` | research_excerpt | Jessica R. Andrews-Hanna, Rebecca Saxe, Tal Yarkoni『Andrews-Hannaほか（2014）——Contributions … |
+| `MAT-20261119-5e7b9d` | research_excerpt | Ken Yaoi, Mariko Osaka, Naoyuki Osaka『Yaoiほか（2015）——Neural correlates of the self-referen… |
+| `MAT-20261119-2e2237` | research_excerpt | Gennady G. Knyazev『Knyazevほか（2013）——EEG Correlates of Self-Referential Processing』（2013） |
+| `MAT-20261119-541af6` | research_excerpt | Pénélope Martinelli, Marco Sperduti, Pascale Piolino『Martinelliほか（2013）——Neural substrate… |
+| `MAT-20261119-9cc6d8` | research_excerpt | Helder F. Araujo, Jonas Kaplan, Antonio Damasio『Araujoほか（2013）——Cortical Midline Structur… |
+| `MAT-20261119-6aac77` | research_excerpt | Hilary Sweatman, Ying He, Ross Lawrence, Xiaoqian J. Chai『Sweatmanほか（2025）——Self-referent… |
+| `MAT-20261119-f87f2e` | research_excerpt | Sam Audrain, Adrian W. Gilmore, Jenna M. Wilson, Daniel L. Schacter, Alex Martin『Audrainほ… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261118-da7c2c・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261119-be5daa・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -7056,6 +7066,7 @@
 | `SESSION-20261118-014945` | 2026-11-18 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261118-a6d534` | 2026-11-18T13:10:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261116-3872ec` | — | — |
 | `SESSION-20261118-da7c2c` | 2026-11-18T15:30:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261119-be5daa` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7059 件・全表は map/40-relations-*.md）
 
@@ -7149,7 +7160,8 @@
 | `map/31-materials-research-27.md` | 100 | 221,141 |
 | `map/31-materials-research-28.md` | 100 | 209,251 |
 | `map/31-materials-research-29.md` | 100 | 263,894 |
-| `map/31-materials-research-30.md` | 97 | 223,588 |
+| `map/31-materials-research-30.md` | 100 | 228,559 |
+| `map/31-materials-research-31.md` | 7 | 11,617 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7186,7 +7198,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 4 | 3,394 |
+| `map/50-sessions-21.md` | 5 | 4,191 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7220,24 +7232,24 @@
 | `map/60-notes-31.md` | 25 | 77,441 |
 | `map/60-notes-32.md` | 25 | 126,002 |
 | `map/60-notes-33.md` | 25 | 125,585 |
-| `map/60-notes-34.md` | 25 | 92,425 |
-| `map/60-notes-35.md` | 25 | 68,887 |
-| `map/60-notes-36.md` | 25 | 72,387 |
-| `map/60-notes-37.md` | 25 | 76,667 |
-| `map/60-notes-38.md` | 25 | 101,798 |
-| `map/60-notes-39.md` | 25 | 103,798 |
-| `map/60-notes-40.md` | 25 | 143,089 |
-| `map/60-notes-41.md` | 3 | 14,669 |
+| `map/60-notes-34.md` | 25 | 93,700 |
+| `map/60-notes-35.md` | 25 | 68,318 |
+| `map/60-notes-36.md` | 25 | 72,469 |
+| `map/60-notes-37.md` | 25 | 74,895 |
+| `map/60-notes-38.md` | 25 | 101,960 |
+| `map/60-notes-39.md` | 25 | 102,997 |
+| `map/60-notes-40.md` | 25 | 142,268 |
+| `map/60-notes-41.md` | 4 | 20,731 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1003本・35,676,753 B）
+## 8. 精読ノート索引（readings/・1004本・35,697,701 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 939/1003 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 940/1004 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1003 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：183 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1004 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：184 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8080,6 +8092,7 @@
 | `readings/2026-11-18-who-spoke-and-who-wrote.md` | — | 2026-11-18 | `SESSION-20261118-c717f2` +2 | 8,510 | Q2 M1 S3 ERR5 | ✓ | 「言」と「書」のあいだ――四人の著者が一人になった書庫を読み直す |
 | `readings/2026-11-18-whose-memory-after-correction.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-63b4a7` +1 | 14,713 | Q4 M10 S2 | ✓ | 「私が見た」を、何が支えるか――出典・確信・訂正をめぐる神経科学10篇 |
 | `readings/2026-11-18-whose-voice-and-which-comparison.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-0d63dd` +1 | 11,342 | Q3 M11 R1 S2 | — | 同じ声を、何と聞き比べたか――聴覚と発話の神経科学10件から |
+| `readings/2026-11-19-neuroscience-individual-thought-memory-and-self.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-be5daa` | 9,672 | M11 S1 | — | 思考と記憶は、自己のどこに触れるか——脳神経学10資料の読解 |
 | `readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md` | 2026-10-26 | 2026-11-19 | `SESSION-20261119-38e624` | 8,673 | Q5 F8 M4 MOT2 S1 | ✓ | 二通の七十二点と、一度目へ戻る音——復号できる秘密と、内訳へ戻れない合計（SESSION-20261119-38e62… |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
