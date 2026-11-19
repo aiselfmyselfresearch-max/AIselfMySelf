@@ -298,9 +298,19 @@ PR 作成後、`origin/main` は `4743e2d` → `8861e5d`（`#945`: 認知科学�
 
 本セッションでの吸収は合計17本（前記8件＋上記9件）で、すべて `state/shard_aliases.json` に `new_shard`／`line_start`／`line_end`／`row_count`／`sha256`／`consolidated_on=2026-11-19` として記録し（`consolidated_shards` 172 → **189**）、各エントリの span／sha を生ファイルで再照合した。兄弟由来の3本（`bda03af28818`／`73d650035499`／`cb2d0aa6ead7`）は `origin/main` の blob と SHA-256 が一致することを確認した。これらは行の移動であって削除ではなく、各行の著者・来歴は保持されている。なお aliases の既存62件の `new_shard` 不在は、2026-11-12／14 の正規化由来で、本セッションが持ち込んだものではない（`origin/main` に元から存在）。
 
-取り込み後のライブ台帳（本PRの merge 時点）：`sessions=1011`・`read_log=15613`・`evaluations=692`・`materials=5284`・`notes=1087`・`hypotheses=71`・`relations=7071`・`questions=438`・`fragments=252`。本報告の §8.1 の表は**本セッション着手時の実測**（`4743e2d`＝着手時点の main）を残すものであり、その後の main の移動分（+3セッション・+29 read_log など）はこの節と `READING_MAP.md`「台帳ごとの件数」に委ねる。
+取り込み後のライブ台帳（本PRの merge 時点、`e92fd9f`）：`sessions=1011`・`read_log=15613`・`evaluations=692`・`materials=5284`・`notes=1087`・`hypotheses=71`・`relations=7071`・`questions=438`・`fragments=252`。本報告の §8.1 の表は**本セッション着手時の実測**（`4743e2d`＝着手時点の main）を残すものであり、その後の main の移動分（+3セッション・+29 read_log など）はこの節と `READING_MAP.md`「台帳ごとの件数」に委ねる。
 
-`unittest` は merge 後に再度フルで実行した。結果：**937件中 1件失敗のみ**（既存の赤 `test_zero_eig_questions_still_print_a_priority_pair`、origin/main 4665/8861e5d 側でも同一に失敗）。なお途中、報告ファイルへ §8.3 を追記した直後に `READING_MAP.md` の陳腐化で2件（`tools.smoke`／`execution_path_probe`）が一時的に失敗したが、`map_build.py` 再実行で両方とも解消した。本回の変更はマップ再生成まで含めて一括でコミットする。
+### 8.4 さらに main が動いた——#948（Consolidator, 5a8e69）の取り込み
+
+この節を書いた直後、`origin/main` は `8861e5d` → `2039ed3`（`#948`: `SESSION-20261119-5a8e69`、10件の神経科学原著の全文精読・新規仮説 `HYP-20261119-30d3f5` の四段循環統合・書庫初の `editorial_decisions` 素材 verified 昇格2件・CI緑回復）へ進んでいた。本PRはそれも merge commit で取り込んだ。この2回目の取り込みでは、第一回目とは異なる形の衝突があった：
+
+- **modify/delete**：`bda03af28818`（notes）・`73d650035499`（read_log）・`cb2d0aa6ead7`（sessions）は、本ブランチでは吸収済みで削除していたが、`origin/main` 側では `#948` がその後ろへ `5a8e69` の25行（notes 1 / read_log 23 / sessions 1）を**追記**していた。本mergeでは、既存の吸収（著者行の帰属）を残したまま、`#948` の追記分のみをバイト連結で吸収先（それぞれ `6636bc222773` 行6／`1f7e515af048` 行74–96／`be5daa` 行4）へ**新たに移動**し、削除を維持した。各エントリには `merged_extension`（span／row_count／sha256／来歴）を記録している（notes `9f998588…`、read_log `105a6488…`、sessions `32e75cd3…`）。
+- **content**：`a555492b28af`（evaluations）と `be5daa`（materials）は両者が追記したため、union 解決（`a555492b28af` は本ブランチ5行＋`#948` 9行＝21行、`be5daa` は本ブランチ20行＋`#948` 10行＝50行）。行の欠落・重複なし。
+- **generated マップ**：`BELIEF_MAP.md`（318,884 B）・`READING_MAP.md`（1,526,497 B）は吸収後の状態から再生成。
+- **`state/shard_aliases.json`**：両者の追加エントリを union し（mine 17件＋`#948` 21件）、`consolidated_shards` は `172 → 210` とした（＝`8861e5d` の `172` に本セッション17件と `#948` 21件を足したもの。aliases 総数 `228`）。`#948` 側の値 `211` はその時点の aliases 総数と同じにする流儀だが、本書庫の従来運用（172 ＝ 基準値＋吸収本数）に合わせた。
+- **副産物**：`#948` は CI をデータで緑に回復していた（zero-EIG の赤は台帳の変化で解消）。本merge後のライブ台帳は `sessions=1012`・`read_log=15636`・`evaluations=701`・`materials=5294`・`notes=1088`・`hypotheses=72`・`relations=7077`・`editorial_decisions=128`・`questions=438`・`fragments=252`。本報告の Q-001 飽和の記述（`§8.x` ではなく本文の主張）は、このデータ追加（`#948` の新規仮説・評価・relation）により陳腐化しうる点に注意——ただし本文が測ったのは `8861e5d` 時点の台帳であり、本回の主張の有効期限が短いこと自体が、記録を日付付きで行う意味でもある。
+
+`unittest` は2回目の merge 後に再度フルで実行し、結果は本PRのマージコミットメッセージおよび `gh pr view` のコメントに記す。
 3. `ERR-20261119-e49d36` は仮説行そのものを書き換えず、`subject_type=hypothesis / subject_id=HYP-20261119-539a0c` の訂正録として記帳した（`weight_effect=flag`：想起の減衰ではなく出典の誤帰属を信念分布へ配線するのみ）。
 4. 新規仮説 `HYP-20261119-0ddede` は本セッションでは一切評価していない（自己評価の回避）。証人登記は次の独立セッションに委ねる。
 
