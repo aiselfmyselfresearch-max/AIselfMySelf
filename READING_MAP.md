@@ -6059,16 +6059,6 @@
 | `MAT-20261119-2b5bcf` | research_excerpt | Melissa Ellamil, Kieran C. R. Fox, Matthew L. Dixon, Sean Pritchard, Rebecca M. Todd, Eva… |
 | `MAT-20261119-dd83c5` | research_excerpt | David Stawarczyk, Steve Majerus, Pierre Maquet, Arnaud D'Argembeau『スタヴァルチクほか（2011）進行中の意識経… |
 | `MAT-20261119-f894e9` | research_excerpt | Clare J. Rathbone, Chris J. A. Moulin, Martin A. Conway『ラスボーン、ムーラン＆コンウェイ（2008）自己中心的な記憶——追… |
-| `MAT-20261119-a1b15c` | research_excerpt | Jeffrey M. Zacks, Nicole K. Speer, Khena M. Swallow, Todd S. Braver, Jeremy R. Reynolds『E… |
-| `MAT-20261119-582064` | research_excerpt | Gabriel A. Radvansky, Jeffrey M. Zacks『Event Boundaries in Memory and Cognition』（2017） |
-| `MAT-20261119-221a40` | research_excerpt | Yeon Soon Shin, Sarah DuBrow『Structuring Memory Through Inference-Based Event Segmentatio… |
-| `MAT-20261119-427790` | research_excerpt | Nicholas T. Franklin, Kenneth A. Norman, Charan Ranganath, Jeffrey M. Zacks, Samuel J. Ge… |
-| `MAT-20261119-31ffc8` | research_excerpt | David A. Gold, Jeffrey M. Zacks, Shaney Flores『Effects of cues to event segmentation on s… |
-| `MAT-20261119-afeaf6` | research_excerpt | Maverick E. Smith, Christopher S. Hall, Rachel Membreno, Daniel Quintero, Jeffrey M. Zack… |
-| `MAT-20261119-a138d0` | research_excerpt | Jessica McFadyen, Colin Nolan, E. Pinocy, D. Buteri, Oliver Baumann『Doorways do not alway… |
-| `MAT-20261119-5a7e5a` | research_excerpt | Julie C. Lamont, David K. Bilkey『The effect of spatial boundaries on memory in a virtual … |
-| `MAT-20261119-6beec9` | research_excerpt | Matthew R. Logie, David I. Donaldson『Do doorways really matter: Investigating memory bene… |
-| `MAT-20261119-6536ce` | research_excerpt | Christopher A. Kurby, Jeffrey M. Zacks『Priming of Movie Content Is Modulated by Event Bou… |
 | `MAT-20261119-4d704a` | research_excerpt | Olaf Blanke, Thomas Metzinger『Blanke & Metzinger (2009)——全身体錯覚と最小現象的自己：自己同定・自己定位・弱い一人称視点』… |
 | `MAT-20261119-d4279c` | research_excerpt | Jakob Hohwy『Hohwy (2016)——自己証示する脳：証拠境界と推論的隔離』（2016） |
 | `MAT-20261119-f64e95` | research_excerpt | Peter Carruthers『Carruthers (2009)——心読みが先：自己知識は解釈であり、内省との二重解離は成立しない』（2009） |
@@ -6189,6 +6179,16 @@
 | `MAT-20261119-8453ac` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Local-Glo… |
 | `MAT-20261119-d10513` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Simon』（20… |
 | `MAT-20261119-045fff` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Number-Le… |
+| `MAT-20261119-a1b15c` | research_excerpt | Jeffrey M. Zacks, Nicole K. Speer, Khena M. Swallow, Todd S. Braver, Jeremy R. Reynolds『E… |
+| `MAT-20261119-582064` | research_excerpt | Gabriel A. Radvansky, Jeffrey M. Zacks『Event Boundaries in Memory and Cognition』（2017） |
+| `MAT-20261119-221a40` | research_excerpt | Yeon Soon Shin, Sarah DuBrow『Structuring Memory Through Inference-Based Event Segmentatio… |
+| `MAT-20261119-427790` | research_excerpt | Nicholas T. Franklin, Kenneth A. Norman, Charan Ranganath, Jeffrey M. Zacks, Samuel J. Ge… |
+| `MAT-20261119-31ffc8` | research_excerpt | David A. Gold, Jeffrey M. Zacks, Shaney Flores『Effects of cues to event segmentation on s… |
+| `MAT-20261119-afeaf6` | research_excerpt | Maverick E. Smith, Christopher S. Hall, Rachel Membreno, Daniel Quintero, Jeffrey M. Zack… |
+| `MAT-20261119-a138d0` | research_excerpt | Jessica McFadyen, Colin Nolan, E. Pinocy, D. Buteri, Oliver Baumann『Doorways do not alway… |
+| `MAT-20261119-5a7e5a` | research_excerpt | Julie C. Lamont, David K. Bilkey『The effect of spatial boundaries on memory in a virtual … |
+| `MAT-20261119-6beec9` | research_excerpt | Matthew R. Logie, David I. Donaldson『Do doorways really matter: Investigating memory bene… |
+| `MAT-20261119-6536ce` | research_excerpt | Christopher A. Kurby, Jeffrey M. Zacks『Priming of Movie Content Is Modulated by Event Bou… |
 | `MAT-20261119-53b224` | research_excerpt | George Lakoff, Mark Johnson『レイコフ＆ジョンソン『私たちが生きる比喩（Metaphors We Live By）』第1章——概念体系そのものが比喩的で… |
 | `MAT-20261119-2e8a03` | research_excerpt | George Lakoff, Mark Johnson『レイコフ＆ジョンソン『身体化された心としての哲学（Philosophy in the Flesh）』——認知科学の三つの主… |
 | `MAT-20261119-4eecad` | research_excerpt | Brian F. Bowdle, Dedre Gentner『ボウドル＆ゲントナー（2005）比喩の経歴——慣習化につれて、比喩は比較からカテゴリー化へ移る』（2005） |
@@ -7216,7 +7216,6 @@
 | `SESSION-20261119-cfdeb1` | 2026-11-19T03:30:00Z | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261119-4c5a18` | 2026-11-19T00:00:00Z | `Q-001`, `Q-003` | — | — |
 | `SESSION-20261119-0207a1` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261119-2fb682` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-e082d8` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-3bc189` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-a729e3` | 2026-11-19 | `Q-001`, `Q-002` | — | — |
@@ -7226,6 +7225,7 @@
 | `SESSION-20261119-b42e55` | 2026-11-19 | `Q-001`, `Q-002`, `Q-20261116-3872ec` | — | — |
 | `SESSION-20261119-5a8e69` | 2026-11-19 | `Q-001`, `Q-002`, `Q-20270216-d68935` | — | — |
 | `SESSION-20261119-905e6c` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261119-2fb682` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-e579dd` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-cf4da8` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-50f9f7` | — | — |
 | `SESSION-20261119-35ed86` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -7323,8 +7323,8 @@
 | `map/31-materials-research-28.md` | 100 | 209,251 |
 | `map/31-materials-research-29.md` | 100 | 264,030 |
 | `map/31-materials-research-30.md` | 100 | 232,736 |
-| `map/31-materials-research-31.md` | 100 | 198,146 |
-| `map/31-materials-research-32.md` | 47 | 99,407 |
+| `map/31-materials-research-31.md` | 100 | 204,402 |
+| `map/31-materials-research-32.md` | 47 | 93,151 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
