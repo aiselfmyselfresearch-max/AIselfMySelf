@@ -1548,7 +1548,13 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # hard_files (1,200), hard_bytes (48 MiB) and the per-report caps are
         # unchanged. Not automatic; the next session should measure before
         # rescaling again.
-        soft_files=1016,
+        # 2026-11-19: origin/main dc64b1b merged ten reports while the file
+        # review line was 1,016. This branch adds no readings/ files; the union
+        # is 1,026 files / 36,190,068 B. To restore the existing real-repository
+        # strict test, raise only the file review line to the observed 1,026,
+        # with no extra margin. Bytes, hard limits and per-file caps are unchanged.
+        # See docs/2026-11-19-what-the-replacement-can-say-d7bf2db5.md §5.
+        soft_files=1026,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

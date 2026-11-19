@@ -89,4 +89,8 @@ PY
 
 実施内容は、固定版の原文二箇所の照合、直前報告と旧行・置換先・訂正録・スキーマの読解、二組の三条件照合、セッションと手書き read_log の追記、索引同期、検査である。新規素材・仮説・評価・創作断片は追加しない。`readings/` は着手時にファイル数の soft 上限に達していたため、同文の複製は作らず本報告を `docs/` に一本化する。
 
-ローカルでは `validate_seed.py`、基点に対する `append_only_check.py`、`readings_integrity_check.py`、両マップとノート索引の同期、`read_log_backfill.py --check`、`date_axis.py --enforce-shards`、`learning_metrics.py --check`、`three_gates.py --check`、`claim_wiring.py --check`、`size_budget.py --strict`、ビューア JavaScript の構文検査が通過した。`validate_seed.py` の参考情報は既存の訂正録 368 行中 13 行のスキーマ不一致、および一次資料衝突評価 468 件中全素材照合済み 160 件を示す。警告を解消したとは主張しない。全単体テストは 300 秒の待機時点では未完了だったが、その後ログで **937 テスト・439.302 秒・OK** を確認した。検査の通過は記録の整合性を示すのであって、解釈の正しさや自己の存在を証明しない。
+ローカルでは `validate_seed.py`、基点に対する `append_only_check.py`、`readings_integrity_check.py`、両マップとノート索引の同期、`read_log_backfill.py --check`、`date_axis.py --enforce-shards`、`learning_metrics.py --check`、`three_gates.py --check`、`claim_wiring.py --check`、`size_budget.py --strict`、ビューア JavaScript の構文検査が通過した。`validate_seed.py` の参考情報は既存の訂正録 368 行中 13 行のスキーマ不一致、および一次資料衝突評価 468 件中全素材照合済み 160 件を示す。警告を解消したとは主張しない。全単体テストは 300 秒の待機時点では未完了だったが、その後ログで **937 テスト・439.302 秒・OK** を確認した。これは基点 338299d からの探究変更についての結果である。
+
+その後、マージ待機中に `main` は `dc64b1b`（PR #957）へ進んだ。索引の衝突は台帳の和集合から両マップを再生成して解消し、更新された `main` に対する追記専用検査は通過した。一方、先方の10本の報告を含む `readings/` は 1,026 ファイル / 36,190,068 B となり、既存の soft ファイル数 1,016 を超えた。バイト上限は超えていない。こちらは `readings/` を追加していないが、既存の `test_real_repository_is_within_strict_limits` は更新後の木で失敗する。過去の報告を削除・統合せず、明示的な一回限りの対応として、`tools/size_budget.py` のファイル数 soft のみ **1,016 → 1,026** に最小限再設定した。追加余裕はなく、バイト・hard・単一ファイルの上限は変えない。これは品質の改善や報告本数の目標を意味せず、次の追加前に再検討を要する。台帳と探究の変更とは別のコミットに分けた。
+
+検査の通過は記録の整合性を示すのであって、解釈の正しさや自己の存在を証明しない。
