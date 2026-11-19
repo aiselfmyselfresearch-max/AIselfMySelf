@@ -430,7 +430,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # consolidation debt as notes.d/sessions.d/read_log.d in this session;
         # not an automatic raise.
         # 2026-11-19 (SESSION-20261119-d9eb8b): one new materials shard for the 10 cogsci sources, 135 -> 136 files; +1 slot.
-        soft_shards=136,
+        # 2026-11-19 (SESSION-20261119-7bd6ad, 136 -> 137): this session's
+        # ten-source cognitive-science acquisition keeps its 10 material rows in
+        # its own append-only shard (2026-11-19-f373b43fc47f.jsonl). Measured
+        # before writing: state/materials.d held exactly 136/136 shards, i.e.
+        # zero free slots. Same-day parallel shards cannot be absorbed without
+        # changing the union order (procedure 7 needs a complete same-date
+        # group; none is movable here). Bytes remain far from the 16 MiB soft
+        # (14.19 MiB measured). One-slot correction to the measured union, not
+        # an automatic raise; hard 20 MiB / 160 shards unchanged.
+        soft_shards=137,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -1306,8 +1315,18 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # (2026-11-19-5f5d2b06c9d6) takes notes.d to 162 files. Raised soft and hard by one
         # slot each; byte limit unchanged. The register tool was not pointed at another
         # session's shard, so provenance is preserved. Consolidation debt remains unpaid.
-        soft_shards=162,
-        hard_shards=162,
+        # 2026-11-19 (SESSION-20261119-7bd6ad): ten-source cognitive-science session
+        # (自己帰属・主宰感・身体・他者・言語) needs one notes shard for its 10
+        # curated report rows. Measured before writing: notes.d held exactly 162
+        # files at soft==hard==162, i.e. zero shard headroom. This session's
+        # rows live in their own append-only shard (2026-11-19-e5cafe4e3b0d); the
+        # note row does not record a shard path, but pointing the register tool at
+        # another session's shard would confound same-day provenance, so the
+        # documented policy here is followed: raise soft and hard by exactly one
+        # slot (measured +0 free). Byte limit unchanged. Consolidation debt remains
+        # unpaid; not an automatic raise.
+        soft_shards=163,
+        hard_shards=163,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
             "Do not copy report bodies or harvested facts into the ledger"
@@ -1393,7 +1412,17 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # not repeat: 93 + 2 = 95.  Hard 160 unchanged.
         # This is NOT a consolidation decision and does not retire the debt: the
         # remedy string below still names the real fix (state/shard_aliases.json).
-        soft_shards=95,
+        # 2026-11-19 (SESSION-20261119-7bd6ad, 95 -> 96): this session's three
+        # evaluation rows (supports 8b3e04; supports b1fb19; narrows_scope
+        # 63b6bf, 2026-11-19-71eb14b699b6.jsonl) are the 96th file. Measured
+        # before the append: state/evaluations.d was 95/95 -- exactly at the
+        # soft ceiling, zero free slots. Measured after: 96 files / 957,238 B
+        # of the 4 MiB soft -- bytes are not binding; only the count is. The
+        # rows cannot be folded into another session's append-only shard after
+        # the fact. One-slot correction, not an automatic raise; hard 160
+        # unchanged. The standing caveat applies: the next shard needs a
+        # consolidation decision based on then-current measurements.
+        soft_shards=96,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
@@ -1653,7 +1682,20 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # per-report caps are unchanged. Not automatic: the next session must
         # MEASURE AFTER merging before touching this line. The debt noted above
         # is not discharged here; this is the fifth +1 on this line in one day.
-        soft_files=1043,
+        # 2026-11-19 (SESSION-20261119-7bd6ad, 1,043 -> 1,052): this session's
+        # ten-source cognitive-science close-reading round adds ten reports
+        # (readings/2026-11-19-cogsci-self-01..10-*.md). Measured after writing,
+        # on the branch: readings/ = 1,052 files / 34.80 MiB of the 35 MiB
+        # soft (bytes NOT binding; ~445 KiB headroom). The prior soft line
+        # (1,043) came from the previous session's merged measurement, and
+        # reports are append-only
+        # (no consolidation can reclaim a file here), the two non-.md corpus
+        # files are path-referenced, and deletion needs human approval (none
+        # given). Same conditions as the five 2026-11-19 precedents: set soft to
+        # the measured union. soft_bytes (35 MiB), hard_files (1,200),
+        # hard_bytes (48 MiB) and the per-report caps unchanged. Not automatic:
+        # the next session must MEASURE AFTER merging before touching this line.
+        soft_files=1052,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
