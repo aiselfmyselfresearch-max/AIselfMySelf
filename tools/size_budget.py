@@ -1556,13 +1556,20 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # review lines. Reports are append-only. Apply the established +12 report
         # margin (1,014) and a measured 1 MiB byte rescale (35 MiB); hard 1,200
         # files / 48 MiB and per-report caps stay unchanged. Not automatic.
-        # 2026-11-19 (SESSION-20261119-cf4da8): this report took readings/ to
-        # 1,015 files / 36,068,641 B (34.40 MiB of the 35 MiB soft; ~631 KiB
-        # byte headroom).  Only the FILE-COUNT soft limit fired, by exactly one
-        # report.  Applied the established +12 report margin (1,014 -> 1,026);
-        # soft_bytes, hard 1,200 / 48 MiB and the per-report caps are unchanged.
-        # The byte line is the one to watch next.  Not an automatic raise.
-        soft_files=1026,
+        # 2026-11-19 (PR #955, SESSION-20261119-cf4da8): after merging
+        # origin/main c416d82d (which included PR #947's minimal 1,014 -> 1,015
+        # rescale), the measured union is readings/ = 1,016 files /
+        # 36,188,189 B (34.51 MiB of the 35 MiB soft -- bytes NOT binding).
+        # The one over 1,015 is this session's report
+        # (readings/2026-11-19-individual-representation-thought-memory-and-self.md).
+        # Reports are append-only, main sat exactly at soft, and the non-.md
+        # corpus files are referenced by prior reports, so consolidation cannot
+        # reduce this dimension and deletion needs human approval (none given).
+        # Raised by exactly one slot (1,015 -> 1,016), the same minimal
+        # convention PR #947 used and explicitly not the historical +12 margin.
+        # soft_bytes (35 MiB), hard_files (1,200), hard_bytes (48 MiB) and
+        # per-report caps unchanged. Not automatic.
+        soft_files=1016,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

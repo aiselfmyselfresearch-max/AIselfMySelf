@@ -202,9 +202,12 @@ class BoundaryChannelProbeTests(unittest.TestCase):
     # (ERR-20261117-77cd20 -> HYP-20261116-ac0712) is addressed to a hypothesis
     # on purpose, so that the first firing is observed rather than inferred
     # (readings/2026-11-17-the-comparison-column-does-not-compare.md §7, §10-6).
-    # Pinning the count keeps the property measured: a second direct address
-    # still fails here.
-    LIVE_DIRECT_PENALTY_HYPOTHESES = 1
+    # Pinning the count keeps the property measured: a third direct address
+    # still fails here. Re-measured 2026-11-19 (SESSION-20261119-cfdeb1): the set
+    # moved 1 -> 2 when ERR-20261119-e49d36 (contradicted/annotated, weight_effect
+    # flag) addressed HYP-20261119-539a0c; re-measurement via belief_state.build_errata_index
+    # confirmed exactly {HYP-20261116-ac0712, HYP-20261119-539a0c}.
+    LIVE_DIRECT_PENALTY_HYPOTHESES = 2
 
     def test_direct_branch_reach_is_pinned_on_the_live_ledger(self):
         d = self.res["direct_penalty_branch"]

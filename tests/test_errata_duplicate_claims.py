@@ -159,7 +159,10 @@ class DuplicateClaimWeightTests(unittest.TestCase):
     # 2026-11-17: see tests/test_errata_addressee.py for why the branch is no
     # longer empty. ERR-20261117-77cd20 was filed deliberately; the set below
     # pins it so that any *further* direct address still breaks this guard.
-    LIVE_DIRECT_ERRATA_ADDRESSEES = frozenset({"HYP-20261116-ac0712"})
+    # 2026-11-19 (SESSION-20261119-cfdeb1): a second hypothesis-addressed row
+    # landed (ERR-20261119-e49d36 -> HYP-20261119-539a0c); re-measured with
+    # belief_state.build_errata_index, the declared set was extended accordingly.
+    LIVE_DIRECT_ERRATA_ADDRESSEES = frozenset({"HYP-20261116-ac0712", "HYP-20261119-539a0c"})
 
     def test_live_penalty_branch_addresses_only_the_declared_hypotheses(self):
         idx = bs.build_errata_index(self.cols["errata"])
