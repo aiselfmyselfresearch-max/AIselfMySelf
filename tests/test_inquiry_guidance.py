@@ -171,7 +171,14 @@ class InquiryGuidanceTests(unittest.TestCase):
             # validate_seed.py checks those files exist.  Copying only the
             # referenced files would make this test break every time a new note
             # row is registered.
-            for directory in ("state", "schema", "tools", "readings"):
+            # docs/ is a fixture input too, for the same reason readings/ is: since
+            # 2026-11-19 validate_seed.py checks that every in-repository
+            # origin.evidence_record_path resolves, and ten material rows point at
+            # docs/2026-11-19-memory-under-instruction.md (a close-reading report kept
+            # under docs/ rather than readings/).  Copying only the directories named
+            # here would make this test break every time a report is added outside
+            # readings/.
+            for directory in ("state", "schema", "tools", "readings", "docs"):
                 shutil.copytree(ROOT / directory, repo / directory)
             session = {
                 "session_id": "SESSION-TEST-REREAD",

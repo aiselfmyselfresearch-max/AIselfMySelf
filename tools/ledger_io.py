@@ -264,6 +264,14 @@ def _apply_editorial_overlay(
     (Gate 3, 2026-11-18) replace ``verification.status`` and record the check
     timestamp, method, and decision provenance without rewriting any shard in
     ``state/materials*`` or adding non-schema keys.
+
+    Material decisions may also carry ``corrected_evidence_record_path``
+    (2026-11-19).  The path is a claim about where the evidence record lives,
+    and a shard is never rewritten, so a row that points at a report renamed
+    after it was written — or at a shard consolidated away — keeps a dead
+    pointer forever unless the correction rides on an overlay.  The corrected
+    value replaces ``origin.evidence_record_path`` for every consumer, while
+    the original stays in the shard as the provenance of the mistake.
     """
     if target_type != "material":
         return {**record, "status": status}
@@ -283,7 +291,13 @@ def _apply_editorial_overlay(
     if isinstance(reason, str) and reason.strip():
         tag = f"[overlay {did}] " if isinstance(did, str) and did else ""
         new_v["note"] = f"{tag}{reason.strip()}"
-    return {**record, "verification": new_v}
+    out = {**record, "verification": new_v}
+    corrected_path = decision.get("corrected_evidence_record_path")
+    if isinstance(corrected_path, str) and corrected_path.strip():
+        prev_origin = record.get("origin")
+        if isinstance(prev_origin, dict):
+            out["origin"] = {**prev_origin, "evidence_record_path": corrected_path.strip()}
+    return out
 
 
 def _order_editorial_decisions(
