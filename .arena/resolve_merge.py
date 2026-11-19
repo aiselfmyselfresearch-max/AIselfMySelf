@@ -21,10 +21,13 @@ def sh(*args, check=True):
 
 
 # ---------------------------------------------------------------- measurement
-rd = REPO / "readings"
-files = [f for f in rd.iterdir() if f.is_file()]
-n_files = len(files)
-n_bytes = sum(f.stat().st_size for f in files)
+def measure():
+    rd = REPO / "readings"
+    files = [f for f in rd.iterdir() if f.is_file()]
+    return len(files), sum(f.stat().st_size for f in files)
+
+
+n_files, n_bytes = measure()
 mib = n_bytes / (1024 * 1024)
 
 # ---------------------------------------------------------------------- merge
@@ -85,16 +88,31 @@ if "tools/size_budget.py" in conflicted:
         "        # remedy is the consolidation item, not another +1. The next session",
         "        # must measure before rescaling.",
     ])
-    merged = theirs + "\n" + note + "\n" + ours
+    # Drop any soft_files=/hard_files= assignment lines from both sides; the
+    # provenance comments are what we keep. Mixing two assignment lines is how
+    # a previous run produced "soft_files=1027,        hard_files=1200,".
+    def strip_assignments(text):
+        return "\n".join(
+            ln for ln in text.splitlines()
+            if not re.match(r"\s*(soft_files|hard_files)\s*=", ln)
+        )
+
+    merged = strip_assignments(theirs) + "\n" + note + "\n" + strip_assignments(ours)
     s = s[:start] + merged + s[endline:]
     assert "<<<<<<<" not in s and ">>>>>>>" not in s
 
     # NOTE: measure AFTER the merge (main lands 10-report batches)
-    # the readings/ DirBudget is the only block with hard_files=1200
-    assert s.count("hard_files=1200,") == 1, "readings/ block not unique"
-    s = re.sub(r"soft_files=\d+,\n(\s*)hard_files=1200,",
-               f"soft_files={new_val},\n\\1hard_files=1200,", s, count=1)
+    # the readings/ DirBudget is the only block carrying per_file_remedy
+    anchor = "        per_file_remedy=(\n            \"One report must not absorb all the growth"
+    assert s.count(anchor) == 1, "readings/ block not unique"
+    s = s.replace(
+        anchor,
+        f"        soft_files={new_val},\n        hard_files=1200,\n" + anchor,
+        1,
+    )
     sb.write_text(s)
+    import ast
+    ast.parse(s)   # fail loudly instead of shipping a syntax error to CI
     print(f"size_budget: readings/ soft_files {prev} -> {new_val}")
 
 # ------------------------------------------------------------- regenerate all
@@ -103,6 +121,22 @@ for cmd in (["python3", "tools/belief_state.py", "--write-map"],
     rr = sh(*cmd, check=False)
     out = (rr.stdout or rr.stderr).strip().splitlines()
     print("  ", out[-1] if out else cmd[1])
+
+# ---- re-measure AFTER the merge: main lands whole batches, so the pre-merge
+# number is stale by the time the conflict is written out.
+post_files, post_bytes = measure()
+post_mib = post_bytes / (1024 * 1024)
+s2 = sb.read_text()
+m = re.search(r"soft_files=(\d+),\n\s*hard_files=1200,", s2)
+cur = int(m.group(1)) if m else post_files
+if post_files != cur:
+    s2 = re.sub(r"soft_files=\d+,\n(\s*)hard_files=1200,",
+                f"soft_files={post_files},\n\\1hard_files=1200,", s2, count=1)
+    import ast
+    ast.parse(s2)
+    sb.write_text(s2)
+    print(f"re-measured after merge: {cur} -> {post_files} files "
+          f"({post_mib:.2f} MiB)")
 
 sh("git", "add", "-A")
 left = sh("bash", "-c", "git status --short | grep -E '^(UU|AA|DD)' || true").stdout.strip()

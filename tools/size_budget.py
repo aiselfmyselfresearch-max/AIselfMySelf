@@ -1592,21 +1592,26 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # hard_files (1,200), hard_bytes (48 MiB) and the per-report caps are
         # unchanged. Not automatic; the next session should measure before
         # rescaling again.
-        # 2026-11-19 (PR #955, SESSION-20261119-cf4da8, minimal +1 rescale):
-        # this branch and origin/main raced to the same ceiling. PR #947 took
-        # 1,014 -> 1,015 (user-approved); SESSION-20261119-43e2db took
-        # 1,015 -> 1,016 on main. After merging both, the measured union is
-        # readings/ = 1,017 files / the 35 MiB soft is not binding (bytes OK).
-        # The one file over soft is this session's close-reading report
-        # (readings/2026-11-19-individual-representation-thought-memory-and-self.md).
-        # Reports are append-only; merging shards removes no report and
-        # deletion needs human approval (none given), so consolidation cannot
-        # reclaim this dimension. Applying the same minimal +1 convention both
-        # of the preceding sessions used (1,016 -> 1,017) rather than the
-        # historical +12 margin. Kept both provenance records above/below:
-        # this is the third +1 rescale on 2026-11-19 and is NOT automatic --
-        # four sessions cannot each take a slot indefinitely, and the next
-        # session should measure before rescaling again.
+        # 2026-11-19 (PR #955, SESSION-20261119-cf4da8).  Four sessions and one
+        # 10-report batch all reached this line on the same day, so this block
+        # records the measured union rather than a per-branch guess:
+        #   PR #947            1,014 -> 1,015   (user-approved, minimal)
+        #   SESSION-...43e2db  1,015 -> 1,016
+        #   origin/main dc64b1b: 10 reports landed at once, review line -> 1,026
+        #   this session: adds ONE report
+        # Measured after merging origin/main dc64b1b: readings/ = 1,027 files /
+        # 36,239,079 B = 34.56 MiB of the 35 MiB soft (bytes NOT binding; ~461 KiB
+        # headroom).  soft_files is set to that measured 1,027 with no extra
+        # margin.  soft_bytes (35 MiB), hard_files (1,200), hard_bytes (48 MiB)
+        # and the per-report caps are unchanged.  Not automatic.
+        #
+        # The pattern here is the finding, not the arithmetic: sessions take this
+        # ceiling one report at a time while main receives ten at once, so every
+        # +1 resolved on a branch is consumed by the next merge, and four +1s in
+        # one day is a symptom of consolidation debt rather than a fix for it.
+        # The durable remedy is the consolidation item (docs/2026-11-19-
+        # what-the-replacement-can-say-d7bf2db5.md 5 describes the same wedging).
+        # The next session must MEASURE AFTER merging before touching this line.
         soft_files=1027,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
