@@ -1099,7 +1099,7 @@ CI の size-budget ステップは `--strict` を付けないので、`main` は
 
 ### 現在の実測
 
-`main` の統合のみが効いている状態で、**materials 132/133・sessions 152/153・read_log 147/148・notes 159/160・evaluations 91/92。** `notes.d` の hard 上限突破は解消した。**`soft_shards` の引上げは0件。**
+`main` の統合のみが効いている状態で、**materials 133/133・sessions 153/153・read_log 148/148・notes 160/160・evaluations 91/92。** `notes.d` の hard 上限突破（161/160）は解消した。**`soft_shards` の引上げは0件。** ただし四コレクションが soft ちょうどに戻っており、**残り枠は0**である。合流のたびに `main` の新規シャードが枠を食うので、この「ちょうど」は次のセッションまで保たない。
 
 途中、`notes.d` を 161・`hard_shards` を 162 に上げる変更を `tools/size_budget.py` に18行のコメント付きで書いた。**取り下げた。** 統合後は 160 以下で通ることが分かったからで、必要の無い引上げは上限を「誰かが塞がれた記録」に変え、`reclaim_candidates()` が戻すための対象を作るだけである。結果として `tools/size_budget.py` は無変更で、`prompts/start.md` の「道具・手順書の変更を台帳の一括追加と同じ PR に入れない」規則にも触れていない。
 
@@ -1109,7 +1109,7 @@ CI の size-budget ステップは `--strict` を付けないので、`main` は
 
 **捨てられたのは、吸収が「行を一字も変えない」操作だったからである。** 内容を書き換える操作だったら復元できなかった。手順が「行の多重集合をバイト単位で等しく保つ」ことを要求しているのは、検査を通すためだけでなく、**この取り下げを可能にするため**でもある。
 
-次に同じ場所へ書くセッションは、統合の候補を探す前に `gh pr list --state open --json number,files` を引き、`origin/main` の**最新**に対して測ること。`notes.d` は残り1枠で、次にノート行を書くセッションは `--strict` と同日シャードの有無を先に見ること。恒久策（`notes.d` の順序規則の定義、`materials.d` のゼロ接尾辞アンカーの日付ごとの新設）は依然 `editorial_review` の議題である。
+次に同じ場所へ書くセッションは、統合の候補を探す前に `gh pr list --state open --json number,files` を引き、`origin/main` の**最新**に対して測ること。`notes.d` は残り枠0で、次にノート行を書くセッションは `--strict` と同日シャードの有無を先に見ること。恒久策（`notes.d` の順序規則の定義、`materials.d` のゼロ接尾辞アンカーの日付ごとの新設）は依然 `editorial_review` の議題である。
 
 ### 検査
 
