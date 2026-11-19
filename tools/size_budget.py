@@ -873,7 +873,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-18 (merge origin/main 24d92951 + SESSION-20261118-21b563):
         # merged union is 151 session shards after this session's row and main's
         # parallel row. Set measured + 2 (153); hard 160 unchanged.
-        soft_shards=153,
+        # 2026-11-19: this requested reading session adds one isolated shard;
+        # measured 154. Raise only the review count, not the hard limit.
+        soft_shards=154,
         hard_shards=160,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -1335,7 +1337,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-18 (merge origin/main 24d92951 + SESSION-20261118-21b563):
         # union is 90 evaluation shards; two current-session evaluations have their
         # own shard and main contributed a parallel shard. Set measured + 2 (92).
-soft_shards=92,
+        # 2026-11-19: this session's isolated evaluation shard gives 93;
+        # raise the review count by one, with the hard limit unchanged.
+        soft_shards=93,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
@@ -1554,7 +1558,9 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # strict test, raise only the file review line to the observed 1,026,
         # with no extra margin. Bytes, hard limits and per-file caps are unchanged.
         # See docs/2026-11-19-what-the-replacement-can-say-d7bf2db5.md §5.
-        soft_files=1026,
+        # 2026-11-19: one requested report increases the measured count to
+        # 1,027; raise only the review count, not byte or hard limits.
+        soft_files=1027,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
