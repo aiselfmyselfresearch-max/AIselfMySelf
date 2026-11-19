@@ -94,7 +94,7 @@ python3 -m unittest discover -s tests
 
 ## 8. PRとマージ
 
-PR 作成前に `git fetch origin main` を行うと `main` が基点より進んでいたため、`origin/main` を本ブランチへマージし、台帳の既存バイト列を保存したまま生成マップだけを再生成してから一つの PR にまとめた。本件のPRは base `main`、head `arena/49729863-aiselfmyself` で作成し、`gh pr merge <number> --merge` で `main` へマージした。マージ後の `main` コミットは最終回答の GitHub URL を参照。マージは対象PRのみで、無関係な open PR およびマージ済み PR #965 は操作していない。マージ後にもブランチを切り替えず、`main` を fetch して `--check-source` の自己一致とリンク先を確認した。
+PR 作成前と作成後に `git fetch origin main` を行うと `main` が進んでいたため、いずれも `origin/main` を本ブランチへマージし、台帳の既存バイト列を保存したまま生成マップだけを再生成して一つの PR にまとめ直した。本件のPRは base `main`、head `arena/49729863-aiselfmyself` で作成し、`gh pr merge <number> --merge` で `main` へマージした。マージ後の `main` コミットは最終回答の GitHub URL を参照。マージは対象PRのみで、無関係な open PR および他セッションのマージ済み PR（#965・#966 を含む）は操作していない。マージ後にもブランチを切り替えず、`main` を fetch して `--check-source` の自己一致とリンク先を確認した。
 
 ## 9. 残った限界と次に読み返す記録
 

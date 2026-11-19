@@ -37,6 +37,11 @@
       "minLength": 8,
       "description": "How a material's primary text was checked when target.type == 'material' (required when status == 'verified'; e.g. PMC open-access full text URL/PMCID, DOI publisher full text, printed edition page check)."
     },
+    "corrected_evidence_record_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Append-only repair of a material's origin.evidence_record_path (2026-11-19). The path is a claim about where the evidence record is; when the claimed file does not exist (a report renamed after the row was written, a shard consolidated away), the shard cannot be rewritten, so the corrected location is carried here and applied by tools/ledger_io.py at load time. Repository-relative, no '..', and the target must be an existing file or an absolute URL — validate_seed.py enforces both and requires that the corrected leaf name differ from the shard's own recorded one."
+    },
     "reason": {"type": "string", "minLength": 1},
     "created_at": {"type": "string", "minLength": 4},
     "supersedes": {
