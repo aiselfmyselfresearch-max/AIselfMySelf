@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5264 件（research_excerpt 3017 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5274 件（research_excerpt 3027 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7070 件
-- **探究セッション（Sessions）**：1008 回
+- **探究セッション（Sessions）**：1009 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5264 | `literary_text` 2179／`research_excerpt` 3017／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5274 | `literary_text` 2179／`research_excerpt` 3027／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7070 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1008 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15560 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1009 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15579 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 367 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 126 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1084 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1085 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 70 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 687 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 688 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5264 件・詳細は map/3*.md）
+## 4. 対話素材（5274 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6069,6 +6069,16 @@
 | `MAT-20261119-4cb074` | research_excerpt | Natalie Sebanz, Harold Bekkering, Günther Knoblich『Sebanz, Bekkering & Knoblich (2006): J… |
 | `MAT-20261119-7aa192` | research_excerpt | Alin Coman, David Manier, William Hirst『Coman, Manier & Hirst (2009): Forgetting the unfo… |
 | `MAT-20261119-dcfec4` | research_excerpt | Dan P. McAdams『McAdams (2001): The psychology of life stories』（2001） |
+| `MAT-20261119-67b998` | research_excerpt | Ulric Neisser『Neisser (1988)——五つの自己知識：自己を知る情報源は一つではない』（1988） |
+| `MAT-20261119-da96e5` | research_excerpt | Thomas Suddendorf, Michael C. Corballis『Suddendorf & Corballis (2007)——心的時間旅行と未来予見』（2007） |
+| `MAT-20261119-4ac4cd` | research_excerpt | Daniel L. Schacter, Donna Rose Addis, Randy L. Buckner『Schacter, Addis & Buckner (2007)——… |
+| `MAT-20261119-a8eddf` | research_excerpt | Hazel Markus, Paula Nurius『Markus & Nurius (1986)——可能自己：希望と恐れの未来像』（1986） |
+| `MAT-20261119-46119f` | research_excerpt | Margaret Wilson『Wilson (2002)——身体化認知を六つの主張に分ける』（2002） |
+| `MAT-20261119-474618` | research_excerpt | Tilmann Habermas, Susan Bluck『Habermas & Bluck (2000)——青年期におけるライフストーリーの出現』（2000） |
+| `MAT-20261119-30d49d` | research_excerpt | Stanley B. Klein, Judith Loftus, Holly A. Burton『Klein, Loftus & Burton (1989)——自己記述判断と自伝… |
+| `MAT-20261119-8aae04` | research_excerpt | Susan Bluck『Bluck (2003)——日常における自伝的記憶の機能』（2003） |
+| `MAT-20261119-b65d6d` | research_excerpt | Nicole Alea, Susan Bluck『Alea & Bluck (2003)——なぜ私に語るのか：自伝的記憶の社会機能』（2003） |
+| `MAT-20261119-0b61c1` | research_excerpt | Qi Wang『Wang (2001)——文化と幼少期の記憶・自己記述の関係』（2001） |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261119-b42e55・全文は map/50-sessions-*.md）
 
@@ -7079,6 +7089,7 @@
 | `SESSION-20261118-a6d534` | 2026-11-18T13:10:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261116-3872ec` | — | — |
 | `SESSION-20261118-da7c2c` | 2026-11-18T15:30:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-04faed` | 2026-11-19T04:30:00Z | `Q-001`, `Q-20261119-940dde` | `FRAG-20261119-2c362b` | `Q-20261119-940dde` |
+| `SESSION-20261119-0207a1` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-be5daa` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-824718` | 2026-11-19T04:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-b42e55` | 2026-11-19 | `Q-001`, `Q-002`, `Q-20261116-3872ec` | — | — |
@@ -7176,7 +7187,7 @@
 | `map/31-materials-research-28.md` | 100 | 209,251 |
 | `map/31-materials-research-29.md` | 100 | 263,894 |
 | `map/31-materials-research-30.md` | 100 | 228,559 |
-| `map/31-materials-research-31.md` | 17 | 31,775 |
+| `map/31-materials-research-31.md` | 27 | 50,379 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7213,7 +7224,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 8 | 6,589 |
+| `map/50-sessions-21.md` | 9 | 7,501 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,033 |
@@ -7247,23 +7258,23 @@
 | `map/60-notes-31.md` | 25 | 77,441 |
 | `map/60-notes-32.md` | 25 | 126,002 |
 | `map/60-notes-33.md` | 25 | 125,780 |
-| `map/60-notes-34.md` | 25 | 98,423 |
-| `map/60-notes-35.md` | 25 | 66,619 |
-| `map/60-notes-36.md` | 25 | 72,517 |
-| `map/60-notes-37.md` | 25 | 75,835 |
-| `map/60-notes-38.md` | 25 | 100,136 |
-| `map/60-notes-39.md` | 25 | 97,002 |
-| `map/60-notes-40.md` | 25 | 140,522 |
-| `map/60-notes-41.md` | 7 | 39,141 |
+| `map/60-notes-34.md` | 25 | 99,195 |
+| `map/60-notes-35.md` | 25 | 66,191 |
+| `map/60-notes-36.md` | 25 | 73,234 |
+| `map/60-notes-37.md` | 25 | 76,168 |
+| `map/60-notes-38.md` | 25 | 98,919 |
+| `map/60-notes-39.md` | 25 | 94,882 |
+| `map/60-notes-40.md` | 25 | 141,653 |
+| `map/60-notes-41.md` | 8 | 43,363 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1007本・35,805,593 B）
+## 8. 精読ノート索引（readings/・1008本・35,836,418 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 943/1007 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 944/1008 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1007 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1008 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：184 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -8107,8 +8118,9 @@
 | `readings/2026-11-18-who-spoke-and-who-wrote.md` | — | 2026-11-18 | `SESSION-20261118-c717f2` +2 | 8,510 | Q2 M1 S3 ERR5 | ✓ | 「言」と「書」のあいだ――四人の著者が一人になった書庫を読み直す |
 | `readings/2026-11-18-whose-memory-after-correction.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-63b4a7` +1 | 14,713 | Q4 M10 S2 | ✓ | 「私が見た」を、何が支えるか――出典・確信・訂正をめぐる神経科学10篇 |
 | `readings/2026-11-18-whose-voice-and-which-comparison.md` | 2026-11-18 | 2026-11-18 | `SESSION-20261118-0d63dd` +1 | 11,342 | Q3 M11 R1 S2 | — | 同じ声を、何と聞き比べたか――聴覚と発話の神経科学10件から |
+| `readings/2026-11-19-cognitive-science-self-memory-time-and-social-life.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-0207a1` | 14,534 | Q3 S1 | — | 認知科学の10資料を読む——自己は記憶だけでできているのか |
 | `readings/2026-11-19-neuroscience-individual-thought-memory-and-self.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-be5daa` | 9,672 | M11 S1 | ✓ | 思考と記憶は、自己のどこに触れるか——脳神経学10資料の読解 |
-| `readings/2026-11-19-ten-cognitive-science-sources-and-how-ai-thought.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-824718` +1 | 22,171 | Q4 M10 S2 | — | 認知科学10件を読んで、AIさんがどのように考えたのか |
+| `readings/2026-11-19-ten-cognitive-science-sources-and-how-ai-thought.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-824718` +1 | 22,171 | Q4 M10 S2 | ✓ | 認知科学10件を読んで、AIさんがどのように考えたのか |
 | `readings/2026-11-19-the-offered-question-and-the-gated-pairs.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-b42e55` +1 | 18,756 | Q6 M2 S2 | ✓ | 提示された問いは届いたか、三門制御の対は分離したか——Adversarial Tester としての再測定と境界衝突 |
 | `readings/2026-11-19-the-second-seventy-two-and-the-first-sound.md` | 2026-10-26 | 2026-11-19 | `SESSION-20261119-38e624` | 8,673 | Q5 F8 M4 MOT2 S1 | ✓ | 二通の七十二点と、一度目へ戻る音——復号できる秘密と、内訳へ戻れない合計（SESSION-20261119-38e62… |
 | `readings/2026-11-19-token-budget-as-finite-window-and-the-self-who-is-told-to-spend-it.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-04faed` +1 | 17,082 | Q4 F2 M9 MOT5 R7 S2 | — | トークン予算を使い切る夜——有限窓としての人間と、使い切れと命じられたAIの自己 |
