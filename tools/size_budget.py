@@ -1925,7 +1925,14 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # Set to the measured count exactly (no headroom added beyond it); soft_bytes
         # (37 MiB), hard_files (1,200), hard_bytes (48 MiB) and per-report caps
         # unchanged. Not automatic; the next session must measure after merging.
-        soft_files=1070,
+        # 2026-11-20 (merge of origin/main 5917eb5d into arena/7274ee8e): the union
+        # of this branch's report (readings/2026-11-20-cognitive-science-replication-
+        # and-the-archive.md) with the reports merged on main by 6211a0, 5c552940 and
+        # a31d8a measures 1,071 files / 35.4 MiB, inside the 37.00 MiB soft_bytes.
+        # soft_files set to the measured union exactly; soft_bytes (37 MiB),
+        # hard_files (1,200), hard_bytes (48 MiB) and the per-report caps unchanged.
+        # Not automatic; the next session must measure after merging.
+        soft_files=1071,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
