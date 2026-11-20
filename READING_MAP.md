@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5564 件（research_excerpt 3317 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1053 回
+- **探究セッション（Sessions）**：1054 回
 
 ### 台帳ごとの件数
 
@@ -23,10 +23,10 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5564 | `literary_text` 2179／`research_excerpt` 3317／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1053 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16109 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1054 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16111 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 375 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 140 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 142 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1151 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 79 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 765 |  |
@@ -7410,6 +7410,7 @@
 | `SESSION-20261119-d9eb8b` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-931bbc` | 2026-11-20 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261120-906569` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261120-8f2c11` | 2026-11-20 | `Q-002` | — | — |
 | `SESSION-20261120-99e940` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-277f20` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-ad4661` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
@@ -7508,7 +7509,7 @@
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
 | `map/31-materials-research-17.md` | 100 | 222,366 |
-| `map/31-materials-research-18.md` | 100 | 246,023 |
+| `map/31-materials-research-18.md` | 100 | 246,193 |
 | `map/31-materials-research-19.md` | 100 | 255,170 |
 | `map/31-materials-research-20.md` | 100 | 220,572 |
 | `map/31-materials-research-21.md` | 100 | 241,201 |
@@ -7519,7 +7520,7 @@
 | `map/31-materials-research-26.md` | 100 | 236,163 |
 | `map/31-materials-research-27.md` | 100 | 221,141 |
 | `map/31-materials-research-28.md` | 100 | 209,251 |
-| `map/31-materials-research-29.md` | 100 | 264,030 |
+| `map/31-materials-research-29.md` | 100 | 264,177 |
 | `map/31-materials-research-30.md` | 100 | 232,736 |
 | `map/31-materials-research-31.md` | 100 | 208,066 |
 | `map/31-materials-research-32.md` | 100 | 198,638 |
@@ -7561,8 +7562,8 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 50 | 36,885 |
-| `map/50-sessions-22.md` | 3 | 2,284 |
+| `map/50-sessions-21.md` | 50 | 36,743 |
+| `map/50-sessions-22.md` | 4 | 3,115 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,073 |
@@ -7598,7 +7599,7 @@
 | `map/60-notes-33.md` | 25 | 125,759 |
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
-| `map/60-notes-36.md` | 25 | 101,377 |
+| `map/60-notes-36.md` | 25 | 101,482 |
 | `map/60-notes-37.md` | 25 | 67,930 |
 | `map/60-notes-38.md` | 25 | 78,661 |
 | `map/60-notes-39.md` | 25 | 68,810 |

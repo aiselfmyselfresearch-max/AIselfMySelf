@@ -120,6 +120,11 @@
           "no_hypothesis": {
             "type": "boolean",
             "description": "Set true only when a reading_revised/retraction claim revises no registered hypothesis (for example, a reading that changes how a source is cited). Required from 2026-11-16 onward together with hypothesis_ids: a claim that says a judgment changed must say which hypothesis changed, or say plainly that none was involved. See docs/registers.md."
+          },
+          "recomputer": {
+            "type": "string",
+            "minLength": 8,
+            "description": "How to reproduce this claim's numbers (2026-11-20, ④): a shell command, or 'path#section'. Required from 2026-11-21 for a measured_fact claim whose text contains digits, unless the claim cites a material whose effective verification.status is 'verified'. A number that no later session can recompute is a memory, not a measurement."
           }
         }
       }
