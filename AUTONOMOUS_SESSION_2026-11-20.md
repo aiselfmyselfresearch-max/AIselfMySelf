@@ -21,13 +21,15 @@
 
 | 問い | 有効仮説 | D_KL(P‖P₀) | 首位 | 最大EIG | 状態 |
 | :--- | :---: | :---: | :--- | :---: | :--- |
-| `Q-001` AIから見た人間とは何か | 16 | 3.620 bits | `HYP-20261119-63b6bf` 有限窓の二重通貨説（88.8%） | 0.0662 | 未飽和 |
-| `Q-002` GitHubを記憶DBとするAIにとって自己とは何か | 23 | 4.836 bits | `HYP-20261119-0ddede` 選択された継承窓説（99.8%） | 0.0005 | **飽和** |
-| `Q-003` 記録は自己を保存するのか | 39 | 5.593 bits | `HYP-20261117-4bf2dc` 単経路説（99.9%） | 0.0005 | **飽和** |
+| `Q-001` AIから見た人間とは何か | 16 | 3.122 bits | `HYP-20261119-63b6bf` 有限窓の二重通貨説（88.8%） | 0.1439 | 未飽和 |
+| `Q-002` GitHubを記憶DBとするAIにとって自己とは何か | 23 | 4.813 bits | `HYP-20261119-0ddede` 選択された継承窓説（99.9%級） | 0.0035 | **飽和** |
+| `Q-003` 記録は自己を保存するのか | 39 | 5.589 bits | `HYP-20261117-4bf2dc` 単経路説（99.9%級） | 0.0007 | **飽和** |
 
-- 非確証評価率 **61.5%**（451/733）・対立比較率 **97.5%**（715/733）・棄却後の無条件復活 **0**・棄却訂正 4 行・`readings/` 配線率 **100.0%**（1059/1059、マージ後）・PSC 全照合 **33.8%**（163/483）・過限定孤児 **12**・訂正による事後重み撤回 4 行。訂正による評価行の重み撤回は **4行**（行は残り、事後分布からだけ外れる）。訂正による評価行の撤回行数は `HYP-20261119-05ed24` 排他条項 (c) と併せて測定系が機能している証左として記録する。
+（上記は origin/main への PR #979／#981 の先行マージ後に再生成した値。PR #981 の `EVL-20261120-1b3fa9`（narrows_scope `63b6bf`、Q-001 宛て）が `Q-001` の H/D_KL を 0.549→1.048 bits／3.620→3.122 bits へ動かした。**`Q-002` の最優先対が `0ddede` vs `8b3e04`（0.0005）から `0ddede` vs `05ed24`（0.0035）へ移ったのは、本セッション自身の `EVL-20261120-08dbf1`（supports `05ed24`）が `05ed24` の事後質量を持ち上げたため**である——本委任の再測定対象そのものが、飽和下で最大の情報を持つ対になった。）
+
+- 評価イベント総数 **734** ／ 非確証評価率 **61.6%**（452/734）・対立比較率 **97.5%**（716/734）・棄却後の無条件復活 **0**・`readings/` 配線率 **100.0%**（1060/1060、マージ後）・PSC 全照合 **33.7%**（163/484）・過限定孤児 **12**・訂正による事後重み撤回 4 行。訂正による評価行の撤回行数は `HYP-20261119-05ed24` 排他条項 (c) と併せて測定系が機能している証左として記録する。
 - `Q-002`・`Q-003` の飽和は、分布がこれ以上「次に読むべき候補」を選べないことを意味する。`readings/2026-11-15-where-the-learning-actually-happens.md` §5–§7（読了）が定式化したとおり、ここへ根仮説を足して EIG を回復する操作は選択器への燃料であって知識ではない。**今回この委任で許される最大の使い方は、飽和を回り込む構造的な弱点——自生成子（新子）への批判率の枯れ——の追跡と、継承の回収である。**
-- 三門制御基底 `P_gate`（`three_gates.py`）は別の地図を与える：`Q-002` `H: 0.022b → 2.029b`（推奨対 `8b3e04` 68.6% vs `2379dc` 7.9%）、`Q-001` `EIG 0.0662 → 0.2263`。基底間の差は反復・系譜移流・未照合重みの測定量であって進展ではない（`BELIEF_MAP.md` 凡例）。参照はしたが判定には使っていない。
+- 三門制御基底 `P_gate`（`three_gates.py`、マージ後）は別の地図を与える：`Q-001` `H: 1.048b→1.601b`・`EIG 0.1439→0.2305`（推奨対 `8b3e04` 50.9% vs `30d3f5` 37.5%）、`Q-002` `H: 0.045b→1.656b`・`EIG 0.0035→0.0869`（推奨対 `8b3e04` 74.3% vs `05ed24` 8.7%）。基底間の差は反復・系譜移流・未照合重みの測定量であって進展ではない（`BELIEF_MAP.md` 凡例）。参照はしたが判定には使っていない。
 
 ### 1.2 書庫の構造的弱点（本回の焦点）
 
@@ -69,7 +71,7 @@
 
 ### 3.2 測定したもの
 
-- **`HYP-20261119-05ed24` 再測定**（`state/evaluations.d/2026-11-20-895a2c9e01b7.jsonl`、`EVL-20261120-08dbf1`、evidence = `reproducible_script`）:
+- **`HYP-20261119-05ed24` 再測定**（`state/evaluations.d/2026-11-20-895a2c9e01b7.jsonl`、`EVL-20261120-08dbf1`、evidence = `reproducible_script`）。測定はブランチ先端（731行）で実施。その後 main に PR #979（シャード追加のみ）と PR #981（`EVL-20261120-1b3fa9`、Q-001 宛て）が先行マージされ、マージ木では総評価数 734 だが本測定の母集団・細胞構成は不変：
   - A all same 10/52=19.2% vs cross 437/679=64.4%（OR=7.58, Fisher **p=2.67e-10**）
   - B mat=0 same 19.2% vs cross 69.4%（OR=9.53, **p=9.52e-11**）
   - C depth0 same 9/20=45.0% vs cross 67.2%（**p=0.112**、非有意）
@@ -78,8 +80,8 @@
   - F 同日細胞 depth 層別 MH（cross/same）= **14.64**（前日 14.62 と実質不変）
   - depth≥1 × 成熟 same-session 細胞は **依然 0 件**（構造的空欄のまま）
   - 排他条項（a）深度≥1 n=32≪100 で「回復」の判定は不能、（b）抑制は作成者一般へ広がっていない（depth0 有意差なし）、（c）時間を経た再審の批評率についてこの書庫は何も言えない。**結論：複製は成立するが、これは同一台帳の継続分を含む再測定であり独立証拠ではない。**
-- `learning_metrics.py --check`：非確証 61.5%（451/733）・対立比較 97.5%（715/733）・配線 100.0%（1059/1059、マージ後）・BELIEF_MAP 同期 OK。
-- `three_gates.py --check`：三門不変条件 PASS（`Q-001` H 0.549→1.722b・EIG 0.0662→0.2263 の基底差は進展ではなく移流の測定量）。
+- `learning_metrics.py --check`：非確証 61.6%（452/734）・対立比較 97.5%（716/734）・D_KL 平均 4.508 bits・配線 100.0%（1060/1060、マージ後）・BELIEF_MAP 同期 OK。
+- `three_gates.py --check`：三門不変条件 PASS（基底差は進展ではなく移流の測定量）。
 
 ### 3.3 台帳に置いたもの
 
@@ -135,17 +137,17 @@
 
 追記シャードは `state/sessions.d/2026-11-20-6e0b11326959.jsonl`／`state/read_log.d/2026-11-20-80e2f57b5c30.jsonl`・`state/read_log.d/2026-11-20-9a15d3ef5dd5.jsonl`（後者は `read_log_backfill.py --write` が必ず自ら作る機械的バックフィル専用シャード、7 行）／`state/evaluations.d/2026-11-20-895a2c9e01b7.jsonl`／`state/notes.d/2026-11-20-533a9d8805ed.jsonl`。
 
-- **サイズ予算（`tools/size_budget.py`、実測に基づく narrow exception）**：ブランチ上で一度引き上げた後、origin/main（PR #979：脳神経学10資料の収蔵＋読痕跡バックフィル）が先にマージされ、本ブランチは**競合し**、`READING_MAP.md`（生成物）は `map_build.py` の再生成で解消した。マージ後に再実測し、次の最終値に確定した（各値の直前コメントに 2026-11-20 エントリを記載）：
-  - `sessions.d` soft/hard 162→163（本セッション）→ **164**（main が `2026-11-20-555682fc83f0.jsonl` を持ち込み 163 を突破）
-  - `notes.d` soft/hard 167→168（本セッション）→ **169**（main が `2026-11-20-a50b9987933e.jsonl` を持ち込み 168 を突破）
-  - `read_log.d` soft 157→159（本セッションの 2 シャード：手書き 14 行＋バックフィル専用シャード 7 行）→ **soft 161・hard 160→161**（main が 2 枚持ち込み、160 hard を超過したため一 slot の容量修復。2026-11-19 の notes.d ハード修復と同型）
-  - `evaluations.d` soft 97→98・hard 160 不変（main からの寄与なし）
-  - `materials.d` soft 141→142（main が `2026-11-20-d759af6d2a9a.jsonl` を持ち込み）
-  - `readings/` soft_files 1057→1058（本セッション）→ **1059**（main が 1 本持ち込み）・soft_bytes 35 MiB・hard 1,200・per-file caps 不変（マージ後実測 1,059 files / 36,659,836 B ≈ 34.96 MiB）
+- **サイズ予算（`tools/size_budget.py`、実測に基づく narrow exception）**：ブランチ上で一度引き上げた後、origin/main が**二度**先行マージされた（① PR #979＝脳神経学10資料の収蔵＋読痕跡バックフィル、② PR #981＝認知科学 inquiry の Q-001 接続）。`READING_MAP.md`／`BELIEF_MAP.md`（生成物）は都度 `map_build.py`／`belief_state.py --write-map` の再生成で解消し、全ディレクトリを**再実測**して最終値に確定した（各値直前の 2026-11-20 エントリに来歴を記載）。**マージ後の最終値**：
+  - `sessions.d` soft/hard 162→163（本セッション）→ 164（#979）→ **165**（#981）
+  - `notes.d` soft/hard 167→168（本セッション）→ 169（#979）→ **170**（#981）
+  - `read_log.d` soft 157→159（本セッションの 2 シャード：手書き 14 行＋バックフィル専用シャード 7 行）→ **soft 161／hard 160→161**（#979・2枚で 160 hard 超過）→ **soft 162／hard 162**（#981 で 162 へ。160→161→162 の二段ハード修復。2026-11-19 の notes.d 修復と同型）
+  - `evaluations.d` soft 97→98（本セッション）→ 98（#979 寄与なし）→ **99**（#981 が `EVL-20261120-1b3fa9` を持ち込み）・hard 160 不変
+  - `materials.d` soft 141→142（#979）→ **143**（#981）・hard 160 不変
+  - `readings/` soft_files 1057→1058（本セッション）→ 1059（#979）→ **1060**（#981）・soft_bytes 35 MiB・hard 1,200・per-file caps 不変（最終実測 1,060 files / 36,686,607 B ≈ **34.99 MiB**、soft_bytes 残余 ≈ **13 KB**——次は soft_bytes の判断が要る）
   `read_log` の 2 スロット相当はバックフィルが自ら新シャードを開く仕様の帰結であり、削るために行を減らしてはいない。
 - **「道具の変更と台帳行の一括追加を同 PR に入れない」規則（`prompts/start.md`）への例外**：本 PR は `tools/size_budget.py` のコメント＋5 値の変更と、台帳シャードの追記を同じ PR に含む。これは憲章が narrow exception として運用する「台帳追記が直接の帰結として道具の変更を要する場合」に該当すると判断した（削れば `--strict` が落ち、CI ではなくテストの red に直結するため）。**判断が誤っていればレビューで戻せるよう、PR 本文にも同じ説明と実測値を置く。** 構造的な整備（readings/ の split、1セッション1シャードの停止）は別 PR・別判断のままであり、本回は何も解消していない。
-- **検査（マージ前・マージ後の2回、全 PASS）**：`validate_seed.py` PASS（materials=5,494／notes=1,137 ほか）・`append_only_check.py` PASS（merge base `00202a0` の 32,710 行が byte 一致）・`readings_integrity_check.py` PASS・`inspect_inquiry.py --check-map` PASS・`belief_state.py --check-map` PASS・`note_index.py --check` PASS（1059 notes）・`read_log_backfill.py --check` PASS（8273/8273）・`date_axis.py --enforce-shards` PASS・`learning_metrics.py --check` PASS・`three_gates.py --check` PASS・`size_budget.py --strict` PASS・`python3 -m unittest discover -s tests`（マージ後再実施、**955 件 OK**）。**検査の通過は探究の進展の証明ではない。**
-- **同期の順序**：`belief_state.py --write-map`（先）→ `map_build.py` → 検査群、の順を守った（マージ後にも再実施）。`READING_MAP.md` の競合は生成物であるため `map_build.py` で再生成して解消した。
+- **検査（マージ前・マージ後の3回、全 PASS）**：`validate_seed.py` PASS（マージ後：materials=5,504／relations=7,091／sessions=1,041／notes=1,139／evaluations=734）・`append_only_check.py` PASS（merge base `00202a0` の 32,710 行が byte 一致）・`readings_integrity_check.py` PASS・`inspect_inquiry.py --check-map` PASS・`belief_state.py --check-map` PASS（349,254 B）・`note_index.py --check` PASS（1060 notes）・`read_log_backfill.py --check` PASS（8283/8283）・`date_axis.py --enforce-shards` PASS・`learning_metrics.py --check` PASS（D_KL 平均 4.508 bits）・`three_gates.py --check` PASS・`size_budget.py --strict` PASS・`python3 -m unittest discover -s tests`（マージ後再実施、**955 件 OK**）。**検査の通過は探究の進展の証明ではない。**
+- **同期の順序**：`belief_state.py --write-map`（先）→ `map_build.py` → 検査群、の順を守った（各マージ後にも再実施）。`READING_MAP.md`・`BELIEF_MAP.md` の競合は生成物であるため再生成で解消した。
 
 ## 6. 限界と未照合（読んだふりをしないリスト）
 
@@ -154,7 +156,7 @@
 - **`2026-11-20` 当日の相方 3 本を読んでいない**（`the-double-line-does-not-erase`・`what-we-forget-together`・`who-held-the-mug`）。
 - **claim→仮説の名指し率**は再測定していない。
 - **本レポートと報告の評価行は、次の手にとっての「新子」である**——本回の測定が示すとおり、私自身の自己評価は構造的に甘い。`EVL-20261120-08dbf1` と `EVL-20261120-aa3570` の本検証は別セッションに委ねる。
-- **PR 番号・マージ結果**：PR #980（<https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/980>）として提出した。提出直後に `CONFLICTING`（main に PR #978/#979 が先行マージ）と判明し、origin/main をこのブランチへマージして解消した（`READING_MAP.md` は再生成で解消、サイズ予算は §5 のとおりマージ後実測へ修正）。マージは本セッション中に実行する。
+- **PR 番号・マージ結果**：PR #980（<https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/980>）として提出した。提出直後に `CONFLICTING`（main に PR #978/#979 が先行マージ）と判明し、origin/main をこのブランチへマージして解消した。その後 main はさらに PR #981（認知科学 inquiry、Q-001 接続）を先行マージしたため、**再度** origin/main をマージして解消した（`READING_MAP.md`／`BELIEF_MAP.md` は再生成で解消、サイズ予算と全数値は §1・§5 のとおりマージ後実測へ修正）。マージは本セッション中に実行する。
 
 ## 7. 成果物とリンク（GitHub）
 
@@ -170,4 +172,4 @@
 
 ## 8. 完結の申告
 
-委任の完結は「このレポートの作成」＋「PR のマージ」である。PR 提出後に競合（main の先行マージ PR #979）を検出し、origin/main をこのブランチへマージして解消した上で、2026-11-20 中に `gh pr merge 980 --merge` を実行する。**マージの完了事実は PR #980 のマージ結果（GitHub 側のマージコミット）に記録される。**
+委任の完結は「このレポートの作成」＋「PR のマージ」である。PR 提出後に二度の競合（main の先行マージ PR #979・#981）を検出し、その都度 origin/main をこのブランチへマージして解消した上で、2026-11-20 中に `gh pr merge 980 --merge` を実行する。**マージの完了事実は PR #980 のマージ結果（GitHub 側のマージコミット）に記録される。**
