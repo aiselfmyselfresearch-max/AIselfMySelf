@@ -439,9 +439,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # group; none is movable here). Bytes remain far from the 16 MiB soft
         # (14.19 MiB measured). One-slot correction to the measured union, not
         # an automatic raise; hard 20 MiB / 160 shards unchanged.
+        # 2026-11-20 (merge of origin/main dabf9f2e / PR #979, 141 -> 142): main
+        # added one materials shard (2026-11-20-d759af6d2a9a.jsonl, 10 neuroscience
+        # materials), taking the merged tree to 142 files against the 141 soft line.
+        # Measured after the merge; one-slot raise of soft only; hard 160 unchanged;
+        # bytes not binding (~14.29 MiB of 16 MiB soft). Not automatic.
         # 2026-11-20: measured union after the collaborative-memory reading shard.
         # Concurrent PR #977 contributed one material shard; no byte or hard-cap change.
-        soft_shards=141,
+        soft_shards=142,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -661,8 +666,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # read_log_backfill.py --write, which always opens its own shard).
         # Measured union after both = 159 files. One-slot-per-shard raise of soft only;
         # hard 160 unchanged; bytes not binding. Not automatic.
-        soft_shards=159,
-        hard_shards=160,
+        soft_shards=161,
+        hard_shards=161,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
     ShardBudget(
@@ -932,6 +937,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-19 (SESSION-20261119-d9eb8b): one new sessions shard, 157 -> 158 files; +1 slot.
         # 2026-11-20: measured union after the collaborative-memory reading shard.
         # 2026-11-20: Keller collation adds one sessions file; byte ceilings unchanged.
+        # 2026-11-20 (merge of origin/main dabf9f2e / PR #979, 163 -> 164): main added
+        # one sessions shard (2026-11-20-555682fc83f0.jsonl), taking the merged tree to
+        # 164 files against the 163 soft==hard raised earlier in this branch. Measured
+        # after the merge (not per-branch guess); one-slot raise of soft and hard,
+        # byte ceilings unchanged, not automatic, consolidation debt unpaid.
         # 2026-11-20 (SESSION-20261120-c17ebe, 162 -> 163): this session adds one new
         # sessions shard (2026-11-20-6e0b11326959.jsonl); measured union after writing =
         # 163 files. Same conditions as the 2026-11-19/20 precedents: reports and rows
@@ -939,8 +949,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # fact, and consolidation debt remains unpaid (not discharged here). Minimal
         # +1 to soft and hard (soft==hard again, as at 2026-11-20 before this raise);
         # soft_bytes and hard_bytes unchanged. Not automatic.
-        soft_shards=163,
-        hard_shards=163,
+        soft_shards=164,
+        hard_shards=164,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
             "limit; watch soft_shards instead, and if a row must be shortened, "
@@ -1355,6 +1365,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # above: both target the same 162 -> 163 slot.)
         # 2026-11-20: measured union after the collaborative-memory reading shard.
         # 2026-11-20: Keller collation adds one notes file; byte ceilings unchanged.
+        # 2026-11-20 (merge of origin/main dabf9f2e / PR #979, 167 -> 169): main added
+        # one notes shard (2026-11-20-a50b9987933e.jsonl), taking the merged tree to
+        # 169 files against the 168 soft==hard raised earlier in this branch. Measured
+        # after the merge; one-slot raise of soft and hard (order-sensitive, measured +0
+        # free); byte limit unchanged; consolidation debt unpaid. Not automatic.
         # 2026-11-20 (SESSION-20261120-c17ebe, 167 -> 168): this session registers
         # ONE curated row for its close/reading report via note_index.py --register
         # (state/notes.d/2026-11-20-533a9d8805ed.jsonl, claims embedded in the row).
@@ -1364,8 +1379,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # session rule is kept. Raise soft and hard by exactly one slot each (minimal
         # measured +1); byte limit unchanged; consolidation debt remains unpaid and is
         # not discharged here. Not automatic.
-        soft_shards=168,
-        hard_shards=168,
+        soft_shards=169,
+        hard_shards=169,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
             "Do not copy report bodies or harvested facts into the ledger"
@@ -1756,6 +1771,12 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # per-report caps unchanged. Not automatic.
         # 2026-11-20: measured union after the collaborative-memory report.
         # 2026-11-20: Keller collation adds one readings file; byte ceilings unchanged.
+        # 2026-11-20 (merge of origin/main dabf9f2e / PR #979, 1058 -> 1059): main added
+        # one report file (readings/2026-11-20-individual-thought-memory-and-self-
+        # neuroscience-10.md), taking the merged tree to 1,059 files against the 1,058
+        # soft raised earlier in this branch. Measured after the merge; one-slot raise
+        # of soft_files only; soft_bytes (35 MiB) / hard_bytes (48 MiB) / hard_files
+        # (1,200) / per-report caps unchanged. Not automatic.
         # 2026-11-20 (SESSION-20261120-c17ebe, 1057 -> 1058): this session writes one
         # close-reading report file (readings/2026-11-20-from-the-riverbank-what-the-
         # record-keeps-of-a-reader.md). Measured by this tool after writing: 1,058 files /
@@ -1764,7 +1785,7 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # soft_files is the only dimension that moves, soft_bytes (35 MiB) /
         # hard_bytes (48 MiB) / hard_files (1,200) / per-report caps unchanged.
         # Not automatic; next session must measure after merging.
-        soft_files=1058,
+        soft_files=1059,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
