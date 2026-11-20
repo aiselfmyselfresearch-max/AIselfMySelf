@@ -34,6 +34,7 @@ from __future__ import annotations
 
 import argparse
 import datetime
+import hashlib
 import json
 import re
 import sys
@@ -327,6 +328,312 @@ def upgrade_candidates(
     }
 
 
+def memory_temperature_and_gate_audit(
+    data: dict[str, dict[str, dict[str, Any]]],
+    *,
+    limit: int = 15,
+) -> dict[str, Any]:
+    """Classify materials into Hot/Warm/Cold memory temperature tiers and audit the Two-Stage Gate.
+
+    Operationalises the Two-Stage Inheritance Gate (NOTE-20261120-058297 §1;
+    Koriat 1997 / Tulving 1985 / Tse et al. 2007 / Richards & Frankland 2017):
+    - **Hot Gist Layer**: materials wired into ``hypotheses.*_material_ids``
+      (Tier 2) or ``notes.claims[].material_ids`` (Tier 1).
+    - **Warm Decay Layer**: Tier 0 (unwired) materials that have already crossed
+      Stage 1 (subsequent-session hand-written ``read_log``) yet lack a Tier 1/2
+      gist schema and therefore suffer ~97% attrition at Stage 2 (evaluation).
+    - **Cold Verbatim Archive**: Tier 0 materials with 0 subsequent-session
+      hand-written reads (preserved intact for primary-source verification,
+      errata checks, and seed-driven collision without consuming active slots).
+    """
+    materials = data.get("materials", {})
+    notes = data.get("notes", {})
+    hypotheses = data.get("hypotheses", {})
+    evaluations = data.get("evaluations", {})
+    read_log = data.get("read_log", {})
+    sessions = data.get("sessions", {})
+    questions = data.get("questions", {})
+
+    q_by_mat: dict[str, list[str]] = defaultdict(list)
+    for qid, qrec in questions.items():
+        for mid in qrec.get("material_ids") or ():
+            if isinstance(mid, str) and mid in materials and qid not in q_by_mat[mid]:
+                q_by_mat[mid].append(qid)
+
+    tier1_claim_mids: set[str] = set()
+    for nrec in notes.values():
+        for cl in nrec.get("claims") or ():
+            if isinstance(cl, dict):
+                for mid in cl.get("material_ids") or ():
+                    if isinstance(mid, str) and mid in materials:
+                        tier1_claim_mids.add(mid)
+
+    tier2_hyp_mids: set[str] = set()
+    for hrec in hypotheses.values():
+        for field in ("supporting_material_ids", "counter_material_ids"):
+            for mid in hrec.get(field) or ():
+                if isinstance(mid, str) and mid in materials:
+                    tier2_hyp_mids.add(mid)
+
+    sess_order = {sid: idx for idx, sid in enumerate(sessions.keys())}
+    hand_read_sessions: dict[str, list[str]] = defaultdict(list)
+    for rrec in read_log.values():
+        tgt = rrec.get("target")
+        if not isinstance(tgt, dict) or tgt.get("type") != "material":
+            continue
+        if belief_state.MECHANICAL_READ_LOG_MARK in str(rrec.get("note") or ""):
+            continue
+        mid = str(tgt.get("id") or "")
+        sid = str(rrec.get("session_id") or "")
+        if mid in materials and sid and sid not in hand_read_sessions[mid]:
+            hand_read_sessions[mid].append(sid)
+
+    birth_session: dict[str, str] = {}
+    for sid, srec in sessions.items():
+        for mid in srec.get("context_material_ids") or ():
+            if isinstance(mid, str) and mid in materials and mid not in birth_session:
+                birth_session[mid] = sid
+    for mid, sids in hand_read_sessions.items():
+        if mid not in birth_session and sids:
+            sids_sorted = sorted(sids, key=lambda s: sess_order.get(s, 10**9))
+            birth_session[mid] = sids_sorted[0]
+
+    eval_sessions_by_mat: dict[str, set[str]] = defaultdict(set)
+    for evl in evaluations.values():
+        esid = str(evl.get("session_id") or "")
+        for mid in evl.get("material_ids") or ():
+            if isinstance(mid, str) and mid in materials and esid:
+                eval_sessions_by_mat[mid].add(esid)
+
+    tier_stats: dict[str, dict[str, int]] = {
+        "tier0_unwired": {"total": 0, "stage1_subseq_read": 0, "stage2_subseq_eval": 0},
+        "tier1_note_claim": {"total": 0, "stage1_subseq_read": 0, "stage2_subseq_eval": 0},
+        "tier2_hypothesis": {"total": 0, "stage1_subseq_read": 0, "stage2_subseq_eval": 0},
+    }
+    temperature_counts: Counter[str] = Counter()
+    pre_2026_11_counts: Counter[str] = Counter()
+    tier0_candidates: list[dict[str, Any]] = []
+
+    for mid, mrec in materials.items():
+        bsid = birth_session.get(mid, "")
+        subseq_reads = [s for s in hand_read_sessions.get(mid, ()) if s != bsid]
+        subseq_evals = [s for s in eval_sessions_by_mat.get(mid, set()) if s != bsid]
+        has_s1 = len(subseq_reads) > 0
+        has_s2 = len(subseq_evals) > 0
+        rec_day = belief_state._record_iso_day(mrec, mid)
+        is_early = bool(rec_day and rec_day < "2026-11-01") or mid.startswith(("MAT-0", "MAT-1", "MAT-202610", "MAT-LIT-202610", "MAT-TRC-202610"))
+
+        if mid in tier2_hyp_mids:
+            tkey = "tier2_hypothesis"
+            temp = "hot_gist"
+        elif mid in tier1_claim_mids:
+            tkey = "tier1_note_claim"
+            temp = "hot_gist"
+        else:
+            tkey = "tier0_unwired"
+            temp = "warm_unwired" if has_s1 else "cold_verbatim"
+
+        tier_stats[tkey]["total"] += 1
+        if has_s1:
+            tier_stats[tkey]["stage1_subseq_read"] += 1
+        if has_s1 and has_s2:
+            tier_stats[tkey]["stage2_subseq_eval"] += 1
+
+        temperature_counts[temp] += 1
+        if is_early:
+            pre_2026_11_counts["total"] += 1
+            pre_2026_11_counts[temp] += 1
+
+        if tkey == "tier0_unwired" and (has_s1 or is_early):
+            vstat = str(((mrec.get("verification") or {}).get("status")) or "unrecorded")
+            qids = q_by_mat.get(mid, [])
+            core_qids = [q for q in qids if q in belief_state.CORE_QUESTIONS]
+            if has_s1 or (vstat == "verified" and core_qids):
+                tier0_candidates.append(
+                    {
+                        "material_id": mid,
+                        "title": str(mrec.get("title") or "")[:85],
+                        "verification_status": vstat,
+                        "temperature": temp,
+                        "pre_2026_11": is_early,
+                        "subseq_read_sessions": len(subseq_reads),
+                        "subseq_eval_sessions": len(subseq_evals),
+                        "question_ids": qids[:4],
+                        "core_question_ids": core_qids,
+                    }
+                )
+
+    def _rate_summary(d: dict[str, int]) -> dict[str, Any]:
+        tot = d["total"]
+        s1 = d["stage1_subseq_read"]
+        s2 = d["stage2_subseq_eval"]
+        return {
+            "total": tot,
+            "stage1_subseq_read": s1,
+            "stage1_rate_pct": round(100.0 * s1 / max(1, tot), 2),
+            "stage2_subseq_eval_given_stage1": s2,
+            "stage2_conversion_pct": round(100.0 * s2 / max(1, s1), 2),
+        }
+
+    tier0_candidates.sort(
+        key=lambda r: (
+            0 if r["verification_status"] == "verified" else 1,
+            0 if r["core_question_ids"] else 1,
+            -r["subseq_read_sessions"],
+            0 if r["pre_2026_11"] else 1,
+            r["material_id"],
+        )
+    )
+
+    return {
+        "total_materials": len(materials),
+        "temperature_tiers": dict(temperature_counts),
+        "pre_2026_11_cohort": dict(pre_2026_11_counts),
+        "two_stage_gate_by_tier": {k: _rate_summary(v) for k, v in tier_stats.items()},
+        "top_tier0_candidates": tier0_candidates[:limit] if limit > 0 else tier0_candidates,
+    }
+
+
+def compact_unreferenced_shards(
+    root: Path = _ROOT,
+    *,
+    apply: bool = False,
+    max_per_collection: int = 5,
+    before_date: str = "2026-11-15",
+) -> dict[str, Any]:
+    """Order-preserving non-destructive compaction of unreferenced same-day adjacent shards.
+
+    Follows ``docs/parallel-work.md`` §3: merges adjacent same-day shards
+    ``(s1, s2)`` strictly prior to ``before_date`` where ``s2.name`` has zero
+    textual references anywhere in the repository (and no self-reference), while
+    verifying that the collection's raw-byte union SHA-256 and record order are
+    100% invariant before and after compaction.
+    """
+    root = Path(root).resolve()
+    target_collections = (
+        ("materials", "materials.jsonl"),
+        ("read_log", "read_log.jsonl"),
+        ("sessions", "sessions.jsonl"),
+        ("notes", "notes.jsonl"),
+        ("evaluations", "evaluations.jsonl"),
+    )
+    shard_names: set[str] = set()
+    for _cname, fname in target_collections:
+        sdir = root / "state" / f"{fname[:-6]}.d"
+        if sdir.is_dir():
+            for p in sdir.glob("*.jsonl"):
+                shard_names.add(p.name)
+
+    referenced: set[str] = set()
+    scan_roots = [
+        root / "readings",
+        root / "docs",
+        root / "taxonomy",
+        root / "tools",
+        root / "tests",
+        root / "state",
+        root / "prompts",
+    ]
+    top_mds = list(root.glob("*.md"))
+    files_to_scan: list[Path] = list(top_mds)
+    for sr in scan_roots:
+        if sr.is_dir():
+            files_to_scan.extend(p for p in sr.rglob("*") if p.is_file())
+
+    NamePattern = re.compile(r"\b(2026-\d{2}-\d{2}-[A-Za-z0-9_.-]+\.jsonl)\b")
+    for fpath in files_to_scan:
+        try:
+            txt = fpath.read_text(encoding="utf-8", errors="ignore")
+        except OSError:
+            continue
+        for m in NamePattern.finditer(txt):
+            sname = m.group(1)
+            if sname in shard_names:
+                referenced.add(sname)
+
+    def _collection_raw_digest(base_path: Path) -> tuple[str, int]:
+        h = hashlib.sha256()
+        total_bytes = 0
+        for sp in ledger_io.collection_files(base_path):
+            if not sp.is_file():
+                continue
+            raw = sp.read_bytes()
+            h.update(raw)
+            total_bytes += len(raw)
+        return h.hexdigest(), total_bytes
+
+    summary: dict[str, Any] = {}
+    total_merged = 0
+    for cname, fname in target_collections:
+        base_path = root / "state" / fname
+        sdir = ledger_io.shard_dir(base_path)
+        if not sdir.is_dir():
+            continue
+        shards = sorted(sdir.glob("*.jsonl"))
+        before_count = len(shards)
+        before_sha, before_bytes = _collection_raw_digest(base_path)
+        candidates: list[tuple[Path, Path]] = []
+        idx = 0
+        while idx < len(shards) - 1:
+            s1, s2 = shards[idx], shards[idx + 1]
+            d1, d2 = s1.name[:10], s2.name[:10]
+            if (
+                re.match(r"^\d{4}-\d{2}-\d{2}$", d1)
+                and d1 == d2
+                and d1 < before_date
+                and s2.name not in referenced
+            ):
+                b1 = s1.read_bytes()
+                b2 = s2.read_bytes()
+                if b1.endswith(b"\n") and b2.endswith(b"\n"):
+                    candidates.append((s1, s2))
+                    if len(candidates) >= max_per_collection:
+                        break
+                    # Advance by 2 so planned pairs are disjoint in a single pass
+                    idx += 2
+                    continue
+            idx += 1
+
+        merged_pairs: list[dict[str, str]] = []
+        if apply and candidates:
+            for s1, s2 in candidates:
+                b2 = s2.read_bytes()
+                with s1.open("ab") as fh:
+                    fh.write(b2)
+                s2.unlink()
+                merged_pairs.append({"into": s1.name, " absorbed": s2.name})
+                total_merged += 1
+            after_sha, after_bytes = _collection_raw_digest(base_path)
+            if after_sha != before_sha or after_bytes != before_bytes:
+                raise RuntimeError(
+                    f"compaction digest mismatch on {cname}: {before_sha} != {after_sha}"
+                )
+        else:
+            after_sha, after_bytes = before_sha, before_bytes
+
+        summary[cname] = {
+            "shards_before": before_count,
+            "shards_after": len(sorted(sdir.glob("*.jsonl"))),
+            "safe_disjoint_pairs_found": len(candidates),
+            "merged_count": len(merged_pairs),
+            "merged_pairs": [
+                {"into": s1.name, "absorbed": s2.name} for s1, s2 in candidates
+            ] if not apply else [
+                {"into": p["into"], "absorbed": p[" absorbed"]} for p in merged_pairs
+            ],
+            "union_sha256": after_sha,
+            "union_bytes": after_bytes,
+        }
+
+    return {
+        "applied": apply,
+        "before_date": before_date,
+        "max_per_collection": max_per_collection,
+        "total_shards_merged": total_merged,
+        "collections": summary,
+    }
+
+
 def cohort_suppression_audit(
     data: dict[str, dict[str, dict[str, Any]]],
     errata: dict[str, dict[str, Any]],
@@ -562,6 +869,7 @@ def compute_report(root: Path = _ROOT) -> dict[str, Any]:
     triads = associations.closed_loop_summary(data)
     non_fusing = associations.non_fusing_link_stats(data, errata=errata)
     temp_links = associations.temporal_cohort_links(data, window_days=1, limit=5)
+    mem_temp = memory_temperature_and_gate_audit(data, limit=10)
     s3_cov: dict[str, dict[str, Any]] = {}
     for qid in belief_state.CORE_QUESTIONS:
         if qid not in data["questions"]:
@@ -663,6 +971,7 @@ def compute_report(root: Path = _ROOT) -> dict[str, Any]:
                 "linked_session_pairs": temp_links["linked_session_pairs"],
             },
             "packet_s3_top15_verification": s3_cov,
+            "memory_temperature_and_two_stage_gate": mem_temp,
         },
         "gate_2_receiver_local_inhibition": {
             "core_questions": core_belief,
@@ -778,6 +1087,19 @@ def render_summary(report: dict[str, Any]) -> str:
             f"{q}={v['verified']}/{v['window']} ({v['verified_pct']}%, 生訂正{v['live_errata']})"
             for q, v in g1["packet_s3_top15_verification"].items()
         ),
+        *(
+            [
+                "  記憶三層温度と二段階ゲート  : "
+                f"Hot(要旨配線)={g1['memory_temperature_and_two_stage_gate']['temperature_tiers'].get('hot_gist', 0)} / "
+                f"Warm(手読・未配線)={g1['memory_temperature_and_two_stage_gate']['temperature_tiers'].get('warm_unwired', 0)} / "
+                f"Cold(凍結生データ)={g1['memory_temperature_and_two_stage_gate']['temperature_tiers'].get('cold_verbatim', 0)} | "
+                f"Stage2評価変換率 Tier0={g1['memory_temperature_and_two_stage_gate']['two_stage_gate_by_tier']['tier0_unwired']['stage2_conversion_pct']}% -> "
+                f"Tier1={g1['memory_temperature_and_two_stage_gate']['two_stage_gate_by_tier']['tier1_note_claim']['stage2_conversion_pct']}% -> "
+                f"Tier2={g1['memory_temperature_and_two_stage_gate']['two_stage_gate_by_tier']['tier2_hypothesis']['stage2_conversion_pct']}%"
+            ]
+            if "memory_temperature_and_two_stage_gate" in g1
+            else []
+        ),
         "",
         "[Gate 2] 受け手局所の抑制・並列鎮静・遡及移流遮断 (Wimber 2015 / Gagnepain 2017 / Schmitz 2017)",
         f"  P_gate 遮断件数             : 後付けフォールバック移流 {g2['postdated_fallback_transfers_blocked']} 件 ({g2['postdated_fallback_hypotheses']} 仮説) / 対立相手=子移流 {g2['rival_as_heir_transfers_blocked']} 件",
@@ -854,6 +1176,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--title", default="", help="candidate source title for --check-source")
     parser.add_argument("--fail-on-match", action="store_true", help="exit 1 if --check-source finds an exact identifier match")
     parser.add_argument("--upgrade-candidates", action="store_true", help="Gate 3: list high-leverage non-verified materials to re-verify via editorial_decisions")
+    parser.add_argument("--tier0-candidates", action="store_true", help="Gate 1/2: list Warm/early Tier 0 materials (Stage 1 read but unwired) for notes.claims gist wiring")
+    parser.add_argument("--compact-shards", action="store_true", help="Maintenance: inspect or apply order-preserving same-day unreferenced shard compaction")
+    parser.add_argument("--apply", action="store_true", help="when used with --compact-shards, execute compaction and verify SHA-256 invariance")
+    parser.add_argument("--max-per-collection", type=int, default=5, help="max disjoint shard pairs to merge per collection under --compact-shards (default 5)")
     parser.add_argument("--cohort-suppression", action="store_true", help="Gate 2: run exposure-matched pre/post re-citation cohort audit")
     parser.add_argument("--window-sessions", type=int, default=40, help="session window for --cohort-suppression (default 40)")
     parser.add_argument("--complete", nargs="+", metavar="ID", help="Gate 1: closed-loop A–B–C–A completions with titles")
@@ -926,6 +1252,63 @@ def main(argv: list[str] | None = None) -> int:
                     f"1-step_PSC={r['psc_single_blocker_rows']} PSC={r['psc_citations']} "
                     f"ft_hints={r['fulltext_hint_sessions']}  {r['title'][:58]}"
                 )
+        return 0
+
+    if args.tier0_candidates:
+        data, _err = load_archive(args.root)
+        mt = memory_temperature_and_gate_audit(data, limit=args.limit)
+        if args.json:
+            print(json.dumps(mt, ensure_ascii=False, indent=2))
+        else:
+            tiers = mt["temperature_tiers"]
+            g = mt["two_stage_gate_by_tier"]
+            print(
+                f"=== Memory Temperature & Two-Stage Gate Audit (total={mt['total_materials']:,} materials) ==="
+            )
+            print(
+                f"  Temperature Tiers : Hot(gist-wired)={tiers.get('hot_gist', 0)} | "
+                f"Warm(Stage1-read, unwired)={tiers.get('warm_unwired', 0)} | "
+                f"Cold(verbatim archive)={tiers.get('cold_verbatim', 0)}"
+            )
+            for k, v in g.items():
+                print(
+                    f"  {k:18s}: total={v['total']:>4}  Stage1_read={v['stage1_subseq_read']:>4} ({v['stage1_rate_pct']:>5.2f}%)  "
+                    f"Stage2_eval|S1={v['stage2_subseq_eval_given_stage1']:>3} ({v['stage2_conversion_pct']:>5.2f}%)"
+                )
+            print(
+                f"\n  Top {min(args.limit, len(mt['top_tier0_candidates']))} Tier 0 -> Tier 1 (notes.claims) Gist Wiring Candidates:"
+            )
+            for r in mt["top_tier0_candidates"]:
+                early_tag = "pre-2026-11" if r["pre_2026_11"] else "2026-11+"
+                q_tag = ",".join(r["core_question_ids"] or r["question_ids"]) or "-"
+                print(
+                    f"  {r['material_id']} [{r['verification_status']:18s}] "
+                    f"temp={r['temperature']:13s} {early_tag:11s} "
+                    f"S1_reads={r['subseq_read_sessions']:>2} Q={q_tag:11s}  {r['title'][:52]}"
+                )
+        return 0
+
+    if args.compact_shards:
+        comp = compact_unreferenced_shards(
+            args.root,
+            apply=args.apply,
+            max_per_collection=args.max_per_collection,
+        )
+        if args.json:
+            print(json.dumps(comp, ensure_ascii=False, indent=2))
+        else:
+            mode = "APPLIED" if comp["applied"] else "DRY-RUN"
+            print(
+                f"=== Order-Preserving Same-Day Unreferenced Shard Compaction ({mode}, before={comp['before_date']}) ==="
+            )
+            for cname, info in comp["collections"].items():
+                print(
+                    f"  {cname:12s}: shards {info['shards_before']:>3} -> {info['shards_after']:>3}  "
+                    f"candidates={info['safe_disjoint_pairs_found']}  merged={info['merged_count']}  "
+                    f"sha256={info['union_sha256'][:12]}..."
+                )
+                for p in info["merged_pairs"]:
+                    print(f"    - {p['into']}  <=  {p['absorbed']}")
         return 0
 
     if args.cohort_suppression:
