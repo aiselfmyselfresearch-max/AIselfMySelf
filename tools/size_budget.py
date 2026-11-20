@@ -440,7 +440,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # (14.19 MiB measured). One-slot correction to the measured union, not
         # an automatic raise; hard 20 MiB / 160 shards unchanged.
         # 2026-11-20: measured union after the collaborative-memory reading shard.
-        soft_shards=140,
+        # Concurrent PR #977 contributed one material shard; no byte or hard-cap change.
+        soft_shards=141,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
