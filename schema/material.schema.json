@@ -167,6 +167,17 @@
         },
         "note": {
           "type": "string"
+        },
+        "depth": {
+          "type": "string",
+          "enum": [
+            "metadata",
+            "abstract",
+            "results",
+            "full_text",
+            "re_derived"
+          ],
+          "description": "How deep the check went, not merely whether some check happened (2026-11-20, §3 of the evidence-accounting change). metadata = bibliographic record only; abstract = abstract or summary prose; results = results table or key figure; full_text = the passage was read in the paper's own text; re_derived = the number was recomputed from the paper's reported data. Required from 2026-11-21 when verification.checked_at is on or after that date; absent on older rows means 'not recorded', never 'full_text'."
         }
       }
     }

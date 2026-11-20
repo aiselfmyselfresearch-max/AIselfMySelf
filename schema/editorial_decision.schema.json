@@ -37,6 +37,17 @@
       "minLength": 8,
       "description": "How a material's primary text was checked when target.type == 'material' (required when status == 'verified'; e.g. PMC open-access full text URL/PMCID, DOI publisher full text, printed edition page check)."
     },
+    "verification_depth": {
+      "type": "string",
+      "enum": [
+        "metadata",
+        "abstract",
+        "results",
+        "full_text",
+        "re_derived"
+      ],
+      "description": "Depth of the check this overlay carries (2026-11-20). Applied by tools/ledger_io.py onto the material's verification.depth, so a partial read can be recorded as 'results' instead of being forced into verified/partially_verified."
+    },
     "corrected_evidence_record_path": {
       "type": "string",
       "minLength": 1,

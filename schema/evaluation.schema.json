@@ -109,6 +109,11 @@
       "type": "string",
       "description": "Optional reproducible command verifying a measured verdict."
     },
+    "no_recompute_reason": {
+      "type": "string",
+      "minLength": 8,
+      "description": "Why a number in this row's summary is neither recomputable by script_command nor traceable to a verified material (2026-11-20, ④). Required from 2026-11-21 when the summary asserts a number and neither of the other two routes is present: every number must be recomputed, traced to a checked text, or explained."
+    },
     "scope_inherited_by_hypothesis_ids": {
       "type": "array",
       "items": {
