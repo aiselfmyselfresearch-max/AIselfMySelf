@@ -7,7 +7,7 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5474 件（research_excerpt 3227 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5484 件（research_excerpt 3237 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7081 件
 - **探究セッション（Sessions）**：1037 回
@@ -20,7 +20,7 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5474 | `literary_text` 2179／`research_excerpt` 3227／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5484 | `literary_text` 2179／`research_excerpt` 3237／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7081 | うち断片↔断片 619 |
 | セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1037 |  |
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5474 件・詳細は map/3*.md）
+## 4. 対話素材（5484 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6279,6 +6279,16 @@
 | `MAT-2026-11-20-ddb4b4` | research_excerpt | Baird『Baird (2013): Medial and lateral networks in anterior prefrontal cortex support met… |
 | `MAT-2026-11-20-d83100` | research_excerpt | Ye『Ye (2018): Causal Evidence for Mnemonic Metacognition in Human Precuneus』（2018） |
 | `MAT-2026-11-20-07c75d` | research_excerpt | Ramanan『Ramanan (2017): Distinct Neural Networks Support Autobiographical and Episodic Re… |
+| `MAT-20261120-246f12` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Choice Re… |
+| `MAT-20261120-d23c59` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Go-Nogo T… |
+| `MAT-20261120-eeb710` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Motor-Sel… |
+| `MAT-20261120-0d4994` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Attention… |
+| `MAT-20261120-efda51` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Antisacca… |
+| `MAT-20261120-283469` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『AX-CPT』（2… |
+| `MAT-20261120-953186` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Dot Patte… |
+| `MAT-20261120-a8b1d9` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Image Mon… |
+| `MAT-20261120-75d31d` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Hierarchi… |
+| `MAT-20261120-51dda6` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Intra-Dim… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-2026-11-20-a0ebef・全文は map/50-sessions-*.md）
 
@@ -7417,7 +7427,7 @@
 | `map/31-materials-research-30.md` | 100 | 232,736 |
 | `map/31-materials-research-31.md` | 100 | 208,066 |
 | `map/31-materials-research-32.md` | 100 | 198,638 |
-| `map/31-materials-research-33.md` | 27 | 34,753 |
+| `map/31-materials-research-33.md` | 37 | 44,938 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
