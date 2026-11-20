@@ -1875,8 +1875,13 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # one Adversarial Tester report (readings/2026-11-20-two-tier-gist-gate-and-the-
         # opaque-auditor.md; 0 new ledger shards via Procedure 8-2 raw-byte append).
         # Measured union after merge = 1,067 files (within 37.00 MiB soft_bytes).
+        # 2026-11-20 (SESSION-20261120-ad4661, 1,067 -> 1,068): this Adversarial
+        # Tester session added one report (readings/2026-11-20-cognitive-science-
+        # replication-and-the-archive.md) after ten new materials; no other file
+        # in readings/ was added or removed on this branch.  Measured branch
+        # union = 1,068 files / 37,036,627 B, within the 38,797,312 B soft_bytes.
         # Minimal +1 raise of soft_files only; all byte and per-file caps unchanged.
-        soft_files=1067,
+        soft_files=1068,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
