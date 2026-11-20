@@ -167,5 +167,5 @@ Wegnerの二章は出版社の公開抄録のみ、FisherとMarsh & Rajaramは�
 ## 6. 技術検証と残った制約
 
 - `validate_seed.py`、`three_gates.py --check`、`note_index.py --check`、`read_log_backfill.py --check`、`date_axis.py --enforce-shards`、`readings_integrity_check.py`、`append_only_check.py`、`inspect_inquiry.py --check-map`、`belief_state.py --check-map`、`learning_metrics.py --check` は通過した。`BELIEF_MAP.md` と `READING_MAP.md` を生成し直した。
-- 全955件のユニットテストを実行し、952件は通過、3件は失敗した。失敗は資料本文の検証ではなく、`size_budget.py --strict` が同時に限界へ達したシャード／文書の数を許容しないことに由来する。主な境界超過は `materials.d` 142/141、`read_log.d` 158/157、`sessions.d` 163/162、`notes.d` 168/167、`evaluations.d` 98/97、`readings/` 1058/1057（実数／soft上限）。依頼された10資料・読書ログ・セッション記録・評価・報告を正しく分離して追記したため生じたもので、古い別セッションの履歴を移動・圧縮して帳尻を合わせる保守変更はこの探究PRに混ぜなかった。
+- 最新の`origin/main`を取り込む前に955件のユニットテストを実行し、952件は通過、3件は失敗した。失敗は資料本文の検証ではなく、`size_budget.py --strict` がこの作業による追加後のシャード／文書数を許容しないことに由来する。作業差分を加えた時点の主な境界超過は `materials.d` 142/141、`read_log.d` 158/157、`sessions.d` 163/162、`notes.d` 168/167、`evaluations.d` 98/97、`readings/` 1058/1057（実数／soft上限）。依頼された10資料・読書ログ・セッション記録・評価・報告を正しく分離して追記したため生じたもので、古い別セッションの履歴を移動・圧縮して帳尻を合わせる保守変更はこの探究PRに混ぜなかった。
 - したがって本レポートは内容上の精読・台帳整合性は記録するが、`size_budget.py --strict` と全ユニットテストがPASSしたとは記載しない。CIの結果も同じ制約に従って扱う。
