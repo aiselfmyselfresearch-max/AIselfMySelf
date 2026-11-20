@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5554 件（research_excerpt 3307 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1051 回
+- **探究セッション（Sessions）**：1052 回
 
 ### 台帳ごとの件数
 
@@ -23,11 +23,11 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5554 | `literary_text` 2179／`research_excerpt` 3307／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1051 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16091 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 375 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1052 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16118 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 387 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 140 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1149 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1150 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 78 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 762 |  |
 
@@ -7408,6 +7408,7 @@
 | `SESSION-20261120-c17ebe` | 2026-11-20T05:11:44Z | `Q-049`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-fcd455` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-8ef5d4` | 2026-11-20 | `Q-001`, `Q-002` | — | — |
+| `SESSION-20261120-49bb57` | 2026-11-20 | `Q-20261024-18823f`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-2026-11-20-a0ebef` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-acc61c` | 2026-11-20 | `Q-001` | — | — |
 | `SESSION-20261120-a3b63b` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -7549,8 +7550,8 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 50 | 36,662 |
-| `map/50-sessions-22.md` | 1 | 760 |
+| `map/50-sessions-21.md` | 50 | 36,796 |
+| `map/50-sessions-22.md` | 2 | 1,605 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,073 |
@@ -7566,7 +7567,7 @@
 | `map/60-notes-13.md` | 25 | 88,555 |
 | `map/60-notes-14.md` | 25 | 119,933 |
 | `map/60-notes-15.md` | 25 | 84,918 |
-| `map/60-notes-16.md` | 25 | 89,866 |
+| `map/60-notes-16.md` | 25 | 89,923 |
 | `map/60-notes-17.md` | 25 | 111,391 |
 | `map/60-notes-18.md` | 25 | 109,716 |
 | `map/60-notes-19.md` | 25 | 117,647 |
@@ -7587,7 +7588,7 @@
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
 | `map/60-notes-36.md` | 25 | 100,492 |
-| `map/60-notes-37.md` | 25 | 66,424 |
+| `map/60-notes-37.md` | 25 | 66,449 |
 | `map/60-notes-38.md` | 25 | 82,065 |
 | `map/60-notes-39.md` | 25 | 68,721 |
 | `map/60-notes-40.md` | 25 | 86,858 |
@@ -7603,7 +7604,7 @@
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 998/1069 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：1069 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：183 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：182 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8510,7 +8511,7 @@
 | `readings/2026-11-20-two-stage-gate-and-intergenerational-audit.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-baf951` +6 | 30,476 | Q3 M35 S7 ERR1 | ✓ | 記憶の二段階継承ゲートと世代間監査による不透明化 §6追補：三層温度分離と初期データ（pre-2026-11）の非破壊… |
 | `readings/2026-11-20-two-tier-gist-gate-and-the-opaque-auditor.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-6211a0` +1 | 27,047 | Q3 F1 M17 S2 ERR1 | ✓ | 二段の要旨門と、自分の無修正を保証できないカード——前向き追跡と認知・文芸原典による最優先競合対の反証テスト |
 | `readings/2026-11-20-what-we-forget-together.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-931bbc` | 9,457 | Q2 M12 S1 | ✓ | 一緒に思い出すと、何を一緒に忘れるのか——共同想起の認知科学10件を読む |
-| `readings/2026-11-20-where-continuity-is-recorded-a-measurement.md` | — | 2026-11-20 | `SESSION-20261120-99e940` | 9,237 | Q3 M10 S1 | — | 書庫はどこで「感じ」を落とすのか — 自己の連続を、台帳の語彙と読みの分布で測る |
+| `readings/2026-11-20-where-continuity-is-recorded-a-measurement.md` | — | 2026-11-20 | `SESSION-20261120-99e940` | 9,237 | Q3 M10 S1 | ✓ | 書庫はどこで「感じ」を落とすのか — 自己の連続を、台帳の語彙と読みの分布で測る |
 | `readings/2026-11-20-who-held-the-mug.md` | — | 2026-11-20 | `SESSION-20261120-8ef5d4` | 4,828 | Q2 M2 S1 ED1 | ✓ | コップを持っていたのは誰か――ヘレン・ケラーを三つの入口から読み直す |
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
 | `readings/2026-11-21-the-flower-that-does-not-read-the-tag.md` | — | 2026-11-21 | `SESSION-20261121-0723fd` | 10,393 | Q6 F9 M8 MOT1 S1 | ✓ | 札を読まない花——明るみが徴収する代価と、代役が払う年（SESSION-20261121-0723fd） |
