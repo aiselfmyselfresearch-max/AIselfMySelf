@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5474 件（research_excerpt 3227 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5494 件（research_excerpt 3247 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7081 件
-- **探究セッション（Sessions）**：1037 回
+- **探究セッション（Sessions）**：1039 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5474 | `literary_text` 2179／`research_excerpt` 3227／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5494 | `literary_text` 2179／`research_excerpt` 3247／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7081 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1037 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15881 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1039 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15901 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 375 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 139 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1134 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 140 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1136 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 75 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 730 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 731 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5474 件・詳細は map/3*.md）
+## 4. 対話素材（5494 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6249,6 +6249,16 @@
 | `MAT-20261119-24af77` | research_excerpt | Jonathan St. B. T. Evans, Keith E. Stanovich『エヴァンズ＆スタノヴィッチ（2013）二重過程理論の擁護——速い自動的過程と、作業記憶を… |
 | `MAT-20261119-73242a` | research_excerpt | Jonathan Haidt『ハイト（2001）情動の犬と理由のしっぽ——道徳判断は先に来て、理由は後から組まれる』（2001） |
 | `MAT-20261119-1f072a` | research_excerpt | George Loewenstein『レーベンスタイン（1994）好奇心の心理学——知識のすき間の知覚が生む、誘導された欠乏』（1994） |
+| `MAT-20261120-1fa40c` | research_excerpt | Peña, T., Pepe, N. W., Rajaram, S.『Peña ほか（2026）: How social is social memory? Isolating … |
+| `MAT-20261120-bf84dd` | research_excerpt | Congleton, A. R., Rajaram, S.『Congleton ほか（2011）: The influence of learning methods on co… |
+| `MAT-20261120-8f2ab0` | research_excerpt | Barber, S. J., Harris, C. B., Rajaram, S.『Barber ほか（2015）: Why two heads apart are better… |
+| `MAT-20261120-2d7d79` | research_excerpt | Blumen, H. M., Rajaram, S.『Blumen ほか（2009）: Effects of repeated collaborative retrieval o… |
+| `MAT-20261120-4be56f` | research_excerpt | Jin, J., Choi, H.-Y., Greeley, G. D., Pepe, N. W., Kensinger, E. A., Mohanty, A., Rajaram… |
+| `MAT-20261120-f3e839` | research_excerpt | Choi, H.-Y., Blumen, H. M., Congleton, A. R., Rajaram, S.『Choi ほか（2014）: The role of grou… |
+| `MAT-20261120-c7a96b` | research_excerpt | Maswood, R., Luhmann, C. C., Rajaram, S.『Maswood ほか（2022）: Persistence of false memories … |
+| `MAT-20261120-68be9e` | research_excerpt | Rajaram, S., Maswood, R., Pereira-Pasarin, L. P.『Rajaram ほか（2020）: When social influences… |
+| `MAT-20261120-779b9e` | research_excerpt | Abel, M., Bäuml, K.-H.『Abel ほか（2023）: Joint contributions of collaborative facilitation a… |
+| `MAT-20261120-7e8841` | research_excerpt | Maswood, R., Rasmussen, A. S., Rajaram, S.『Maswood ほか（2019）: Collaborative remembering of… |
 | `MAT-20261120-121f25` | research_excerpt | Janata『The neural architecture of music-evoked autobiographical memories』（2009） |
 | `MAT-20261120-d58a3c` | research_excerpt | El Haj『The involuntary nature of music-evoked autobiographical memories in Alzheimer's di… |
 | `MAT-20261120-0ba273` | research_excerpt | Kaiser『The cognitive characteristics of music-evoked autobiographical memories: Evidence … |
@@ -6269,6 +6279,16 @@
 | `MAT-2026-11-20-ddb4b4` | research_excerpt | Baird『Baird (2013): Medial and lateral networks in anterior prefrontal cortex support met… |
 | `MAT-2026-11-20-d83100` | research_excerpt | Ye『Ye (2018): Causal Evidence for Mnemonic Metacognition in Human Precuneus』（2018） |
 | `MAT-2026-11-20-07c75d` | research_excerpt | Ramanan『Ramanan (2017): Distinct Neural Networks Support Autobiographical and Episodic Re… |
+| `MAT-20261120-246f12` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Choice Re… |
+| `MAT-20261120-d23c59` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Go-Nogo T… |
+| `MAT-20261120-eeb710` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Motor-Sel… |
+| `MAT-20261120-0d4994` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Attention… |
+| `MAT-20261120-efda51` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Antisacca… |
+| `MAT-20261120-283469` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『AX-CPT』（2… |
+| `MAT-20261120-953186` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Dot Patte… |
+| `MAT-20261120-a8b1d9` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Image Mon… |
+| `MAT-20261120-75d31d` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Hierarchi… |
+| `MAT-20261120-51dda6` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Intra-Dim… |
 | `MAT-20261120-f53be8` | research_excerpt | George Dragoi, Susumu Tonegawa『Dragoi & Tonegawa (2011) 海馬プレプレイ——未経験の順序が先行表象から選ばれる』（2011） |
 | `MAT-20261120-88c8df` | research_excerpt | Karen J. Mitchell, Marcia K. Johnson『Mitchell & Johnson (2009) 出典モニタリングの神経機構——『どこから来たか』は推… |
 | `MAT-20261120-749a8f` | research_excerpt | Clare J. Rathbone, Martin A. Conway, Chris J. A. Moulin『Rathbone, Conway & Moulin (2011) … |
@@ -7318,8 +7338,10 @@
 | `SESSION-20261119-c1088e` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-35ed86` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-d9eb8b` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261120-931bbc` | 2026-11-20 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261120-277f20` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-4750ac` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261120-8ef5d4` | 2026-11-20 | `Q-001`, `Q-002` | — | — |
 | `SESSION-2026-11-20-a0ebef` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7081 件・全表は map/40-relations-*.md）
@@ -7368,7 +7390,7 @@
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
 | `map/30-materials-literary-04.md` | 100 | 147,209 |
 | `map/30-materials-literary-05.md` | 100 | 145,861 |
-| `map/30-materials-literary-06.md` | 100 | 167,258 |
+| `map/30-materials-literary-06.md` | 100 | 167,403 |
 | `map/30-materials-literary-07.md` | 100 | 169,821 |
 | `map/30-materials-literary-08.md` | 100 | 184,621 |
 | `map/30-materials-literary-09.md` | 100 | 232,331 |
@@ -7416,8 +7438,8 @@
 | `map/31-materials-research-29.md` | 100 | 264,030 |
 | `map/31-materials-research-30.md` | 100 | 232,736 |
 | `map/31-materials-research-31.md` | 100 | 208,066 |
-| `map/31-materials-research-32.md` | 100 | 197,513 |
-| `map/31-materials-research-33.md` | 27 | 42,748 |
+| `map/31-materials-research-32.md` | 100 | 198,638 |
+| `map/31-materials-research-33.md` | 47 | 66,653 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7454,7 +7476,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 37 | 26,577 |
+| `map/50-sessions-21.md` | 39 | 27,505 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,073 |
@@ -7490,24 +7512,24 @@
 | `map/60-notes-33.md` | 25 | 125,759 |
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
-| `map/60-notes-36.md` | 25 | 83,485 |
-| `map/60-notes-37.md` | 25 | 68,318 |
-| `map/60-notes-38.md` | 25 | 72,469 |
-| `map/60-notes-39.md` | 25 | 74,895 |
-| `map/60-notes-40.md` | 25 | 101,960 |
-| `map/60-notes-41.md` | 25 | 102,997 |
-| `map/60-notes-42.md` | 25 | 142,268 |
-| `map/60-notes-43.md` | 6 | 24,606 |
+| `map/60-notes-36.md` | 25 | 83,823 |
+| `map/60-notes-37.md` | 25 | 66,653 |
+| `map/60-notes-38.md` | 25 | 72,592 |
+| `map/60-notes-39.md` | 25 | 75,261 |
+| `map/60-notes-40.md` | 25 | 102,117 |
+| `map/60-notes-41.md` | 25 | 96,801 |
+| `map/60-notes-42.md` | 25 | 142,667 |
+| `map/60-notes-43.md` | 8 | 36,314 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1056本・36,586,997 B）
+## 8. 精読ノート索引（readings/・1058本・36,620,909 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 989/1056 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 990/1058 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1056 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：186 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1058 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：187 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8403,6 +8425,8 @@
 | `readings/2026-11-20-music-as-a-cue.md` | 2026-11-20 | 2026-11-20 | — | 4,234 | Q3 | — | 曲を覚えていることと、その頃の私を思い出すこと |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
 | `readings/2026-11-20-thinking-remembering-and-attributing-to-self.md` | 2026-11-20 | 2026-11-20 | `SESSION-2026-11-20-a0ebef` | 6,020 | Q3 M10 S1 | ✓ | 思い出すことと「私の過去」として引き受けること——脳神経学10資料 |
+| `readings/2026-11-20-what-we-forget-together.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-931bbc` | 9,457 | Q2 M12 S1 | ✓ | 一緒に思い出すと、何を一緒に忘れるのか——共同想起の認知科学10件を読む |
+| `readings/2026-11-20-who-held-the-mug.md` | — | 2026-11-20 | `SESSION-20261120-8ef5d4` | 4,828 | Q2 M2 S1 ED1 | — | コップを持っていたのは誰か――ヘレン・ケラーを三つの入口から読み直す |
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
 | `readings/2026-11-21-the-flower-that-does-not-read-the-tag.md` | — | 2026-11-21 | `SESSION-20261121-0723fd` | 10,393 | Q6 F9 M8 MOT1 S1 | ✓ | 札を読まない花——明るみが徴収する代価と、代役が払う年（SESSION-20261121-0723fd） |
 | `readings/2026-11-22-the-thin-bowl-and-the-pot-set-before-dawn.md` | 2026-10-27 | 2026-11-22 | `SESSION-20261122-11b1d3` | 9,678 | Q7 F12 M10 MOT1 S1 | ✓ | 薄い椀は全員に届く——鍋の大きさが空腹より先に決まるとき（SESSION-20261122-11b1d3） |
