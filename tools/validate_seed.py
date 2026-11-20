@@ -133,6 +133,25 @@ ROLE_RECEIPT_REQUIRED_FROM = "20261118"
 PRE_RECEIPT_SESSION_IDS = frozenset(
     Path(__file__).with_name("pre_receipt_session_ids.txt").read_text().splitlines()
 )
+# 2026-11-20: one post-cutoff session row reached main without two of the four
+# receipt fields (PR #998, SESSION-20261120-a45e52).  A sessions row cannot be
+# superseded -- a second row with the same session_id is a duplicate, whether it
+# sits in the same shard or in another one -- so the append-only repair available
+# to every other collection does not exist here, and rewriting the line would
+# break the byte-compare step.  Back-filling the two fields would mean issuing a
+# receipt nobody issued: the role that `inspect_inquiry --assignment-json`
+# recomputes for this seed (adversarial_tester) already disagrees with the role
+# the row recorded (proposer), which is exactly why rule 10 forbids back-filling.
+# The defect is therefore carried here, by name, and reported as an advisory on
+# every run instead of turning the whole pipeline red: a red gate that nothing
+# can turn green teaches sessions to skip the gate.  Remove the entry only when
+# a human authorises a one-line rewrite of the row.
+KNOWN_RECEIPT_DEFECTS: dict[str, str] = {
+    "SESSION-20261120-a45e52": (
+        "PR #998; missing offered_target_question_id / offered_reference_mode; "
+        "sessions rows cannot be superseded, so no append-only repair exists"
+    ),
+}
 ROLE_RECEIPT_FIELDS = (
     "dispersal_seed",
     "assigned_role",
@@ -766,6 +785,7 @@ def check_read_log_addressing(
 def check_role_receipts(
     sessions: dict[str, dict[str, Any]],
     errors: list[str],
+    advisories: list[str] | None = None,
     *,
     cutoff: str = ROLE_RECEIPT_REQUIRED_FROM,
     today: datetime.date | None = None,
@@ -791,6 +811,15 @@ def check_role_receipts(
             if not str(record.get(field) or "").strip()
         ]
         if missing:
+            defect = KNOWN_RECEIPT_DEFECTS.get(session_id)
+            if defect:
+                if advisories is not None:
+                    advisories.append(
+                        f"INFO: receipt defect carried, not repaired (advisory): sessions:{session_id} "
+                        f"is missing {', '.join(missing)} — {defect}. The gate stays on for every other row; "
+                        "this line is printed every run so the debt cannot be forgotten"
+                    )
+                continue
             errors.append(
                 f"sessions:{session_id}: missing assignment receipt field(s) "
                 f"{', '.join(missing)}; the seed decided the role, the target question "
@@ -1625,7 +1654,8 @@ def main() -> int:
                 )
 
     check_read_log_addressing(read_logs, errors)
-    check_role_receipts(sessions, errors)
+    receipt_advisories: list[str] = []
+    check_role_receipts(sessions, errors, receipt_advisories)
     check_psc_verification_gate(evaluations, materials, errors)
     check_material_duplicate_identifiers(materials, errors)
     check_evaluation_descendant_collision(evaluations, hypotheses, errors)
@@ -1763,6 +1793,8 @@ def main() -> int:
         print(psc_advisory)
     if psc_new_advisory:
         print(psc_new_advisory)
+    for line in receipt_advisories:
+        print(line)
     # 2026-11-20 (③④): report the backlog the new gates cannot fix retroactively.
     print(
         f"INFO: verification.depth (advisory): {depth_new} material(s) carry a depth; {depth_legacy} legacy `verified` row(s) predate the "

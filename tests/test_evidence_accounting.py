@@ -168,6 +168,31 @@ class ToolTests(unittest.TestCase):
         self.assertEqual(result["rows_releasable_by_all"], 4)
 
 
+class ReceiptDefectTests(unittest.TestCase):
+    """The named defect must stay visible and must not weaken the gate."""
+
+    def test_known_defect_is_advisory_but_still_reported(self):
+        sessions = {"SESSION-20261120-a45e52": {"dispersal_seed": "abb76c70", "assigned_role": "proposer"}}
+        errors: list[str] = []
+        advisories: list[str] = []
+        validate_seed.check_role_receipts(
+            sessions, errors, advisories, today=datetime.date(2026, 11, 22)
+        )
+        self.assertEqual(errors, [])
+        self.assertEqual(len(advisories), 1)
+        self.assertIn("a45e52", advisories[0])
+
+    def test_unknown_session_still_errors(self):
+        sessions = {"SESSION-20261121-ffffff": {"dispersal_seed": "x", "assigned_role": "proposer"}}
+        errors: list[str] = []
+        advisories: list[str] = []
+        validate_seed.check_role_receipts(
+            sessions, errors, advisories, today=datetime.date(2026, 11, 22)
+        )
+        self.assertEqual(advisories, [])
+        self.assertEqual(len(errors), 1)
+
+
 class DepthBackfillTests(unittest.TestCase):
     def cls(self, method: str, note: str = "") -> str:
         material = {"verification": {"status": "verified", "method": method, "note": note}}
