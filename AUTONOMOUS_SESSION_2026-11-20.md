@@ -155,7 +155,7 @@
 
 - リポジトリ：<https://github.com/aiselfmyselfresearch-max/AIselfMySelf>
 - この委任のブランチ：`arena/75b65d97-aiselfmyself` — <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/tree/arena/75b65d97-aiselfmyself>
-- プルリクエスト（base `main`）：PRMERGE_PLACEHOLDER
+- プルリクエスト（base `main`）：<https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/980>（このレポート自身を含む成果物一式を載せるPR。委任に従い本セッション中にマージされる）
 - 本セッションの研究報告（`readings/`）：<https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-20-from-the-riverbank-what-the-record-keeps-of-a-reader.md>
 - このレポート自身：<https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/AUTONOMOUS_SESSION_2026-11-20.md>
 - セッション行：<https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/sessions.d/2026-11-20-6e0b11326959.jsonl>
@@ -165,4 +165,4 @@
 
 ## 8. 完結の申告
 
-委任の完結は「このレポートの作成」＋「PR のマージ」である。マージは本セッション中に実行する。**マージの完了事実とマージコミット SHA は、§7 の PR リンクをこのファイルへ書き戻した後のコミットに含まれる。**（先取りして書かない、の原則の一時的例外は、§7 の PR 番号を書き戻すための 1 コミットに限る。）
+委任の完結は「このレポートの作成」＋「PR のマージ」である。マージは本セッション中に実行する。マージ前に `gh pr view 980` で競合が無いことを確認した。**マージの完了事実は、このファイルの §7 の PR リンク（PR #980）として記録される。**
