@@ -1910,16 +1910,29 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # one Adversarial Tester report (readings/2026-11-20-two-tier-gist-gate-and-the-
         # opaque-auditor.md; 0 new ledger shards via Procedure 8-2 raw-byte append).
         # Measured union after merge = 1,067 files (within 37.00 MiB soft_bytes).
+        # 2026-11-20 (SESSION-20261120-ad4661, 1,067 -> 1,068): this Adversarial
+        # Tester session added one report (readings/2026-11-20-cognitive-science-
+        # replication-and-the-archive.md) after ten new materials; no other file
+        # in readings/ was added or removed on this branch.  Measured branch
+        # union = 1,068 files / 37,036,627 B, within the 38,797,312 B soft_bytes.
         # Minimal +1 raise of soft_files only; all byte and per-file caps unchanged.
-        # 2026-11-20 (merge of origin/main 709c6a41 into arena/5c552940, 1,067 ->
-        # 1,069): the union carries BOTH same-day reports -- 6211a0's Adversarial
-        # Tester report (already counted in the 1,067 above) and this session's
-        # ten-source neuroscience report (readings/2026-11-20-ten-neuroscience-
-        # sources-on-individual-thought-memory-and-self.md). Measured union after
-        # this merge = 1,068 files. Set to measured + 1 (1,069); soft_bytes
-        # (37 MiB), hard_files (1,200), hard_bytes (48 MiB) and the per-report caps
+        # 2026-11-20 (merge of origin/main 738d6e1c into arena/7274ee8e,
+        # 1,067 -> 1,070): main carried two same-day reports from other sessions
+        # (6211a0's Adversarial Tester report and arena/5c552940's ten-source
+        # neuroscience report), and this branch carries one more (readings/2026-11-20-
+        # cognitive-science-replication-and-the-archive.md). Measured union after
+        # this merge = 1,070 files / 37.0 MiB, within the 37.00 MiB soft_bytes.
+        # Set to the measured count exactly (no headroom added beyond it); soft_bytes
+        # (37 MiB), hard_files (1,200), hard_bytes (48 MiB) and per-report caps
         # unchanged. Not automatic; the next session must measure after merging.
-        soft_files=1069,
+        # 2026-11-20 (merge of origin/main 5917eb5d into arena/7274ee8e): the union
+        # of this branch's report (readings/2026-11-20-cognitive-science-replication-
+        # and-the-archive.md) with the reports merged on main by 6211a0, 5c552940 and
+        # a31d8a measures 1,071 files / 35.4 MiB, inside the 37.00 MiB soft_bytes.
+        # soft_files set to the measured union exactly; soft_bytes (37 MiB),
+        # hard_files (1,200), hard_bytes (48 MiB) and the per-report caps unchanged.
+        # Not automatic; the next session must measure after merging.
+        soft_files=1071,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

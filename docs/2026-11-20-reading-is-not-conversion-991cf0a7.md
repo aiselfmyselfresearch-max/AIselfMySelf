@@ -5,7 +5,7 @@
 - 実行日（UTC）：2026-11-20
 - セッション：`SESSION-20261120-49bb57`、シード：`991cf0a7`
 - 割当：`consolidator`／提示問い `Q-20261024-18823f`／参考モード `editorial_review`。提示問いは採用し、中心問い `Q-001`〜`Q-003` に戻った。
-- 着手時の基準：`7ecf9889af1ea7d5397da5dd1a06ef350b4640cd`。作業中に PR #990 の `94e0977ba367837f8604e7c484e560a729787c20`、続いて PR #993 の `738d6e1cb369c1a2a43c1f6f853d2b7ebfc135ee` を作業ブランチに取り込んだ。以下の集計は、必ず各表に記した版を分母とし、後の増分を混ぜない。
+- 着手時の基準：`7ecf9889af1ea7d5397da5dd1a06ef350b4640cd`。作業中に PR #990 の `94e0977ba367837f8604e7c484e560a729787c20`、PR #993 の `738d6e1cb369c1a2a43c1f6f853d2b7ebfc135ee`、さらに PR #994・#992 を含む `3c40d9303953e1ad070d5339cf06ccc70973024a` を作業ブランチに取り込んだ。以下の集計は、必ず各表に記した版を分母とし、後の増分を混ぜない。
 - 書き方：資料の引用、台帳について測った事実、そこからの暫定的な見立てを分ける。経験したことのように人間を代弁せず、AIの現象的意識の有無も判定しない。
 
 ## 1. 現状と行動計画
@@ -98,15 +98,22 @@
 
 この限界を `EVL-20261120-40ff10`・`77651f`・`5477d2` に宛てて可視化する。例えば `738d6e1c` の固定台帳では、`HYP-20261120-bdb6b4` の通常 `P` は 69.51%、`P_gate` は 26.79%。`40ff10` のみを**メモリ上で仮撤回**すると 44.20%／15.10% になる。これは単一の評価と更新規則への感度であり、どちらの数値も仮説の真理確率ではない。実際には新旧いずれの評価も無効化していない（再現手順は §8）。
 
+### 5.4 さらに合流した再測定：分類の誤りと数値を分ける
+
+PR #994 の [後続報告](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/3c40d9303953e1ad070d5339cf06ccc70973024a/readings/2026-11-20-re-measuring-continuity-on-reads-and-at-equal-exposure.md) は、宣言文脈以外の素材記録と古い素材の比較を試みた。ただし元の `self_continuity_metrics.py` は「手書き実読」から `used_as_context` だけを除き、**明示的な未読である `declined` を含めていた**。報告が用いた固定版 `738d6e1c` の素材向け `declined` は 15 行。これらを除外しても、その版のラベル順隣接ペアの集計は **898/957 = 93.8%、平均 Jaccard 0.015 のまま**だった。分類は誤りだが、丸められたこの集計値が変化したとは言わない（§8 で再現可能）。
+
+また、初接触の記録以降に 300 セッション**以上**という条件は、素材ごとの露出を等しく揃える操作ではない。開始日も内部編年を含みうる。コホートの行数には `used_as_context` と `declined` が入り、実際に読める機会や読解回数の同一性を保証しない。隣接ペアは両方の集合が空なら分母から除外される。現在の測定器は、層2の読み種別で `declined` を除外し、`counted` を監査として明示する。既存 JSON キーは維持し、ラベル順・分母・下限・全行カウントの限界を表示する。`ERR-20261120-f958ea`・`139134` は報告宛ての注記である。
+
 ## 6. 今回の実装と記録
 
 - `tools/three_gates.py`：四つの共起セル、基準不明、同一セッションの重なり、`counted` のみの数、全セッションの表を表示。分母0は `null` とし、未知を0%にしない。`stage*` / `subseq*` / `conversion` の既存 JSON キーは互換のため残すが、**時間順・変換を意味しない旧名**だと `method` に明記した。読書種別は書庫の `HANDWRITTEN_READINGS` に合わせ、`declined` と `used_as_context` を除く。
 - `tools/inspect_inquiry.py`：候補順位にも同じ種別を適用。ノートが再登録されても、古いノート ID 宛ての訂正を消さずに提示する。予算注記は「台帳順・予算だけ」ではなく、**候補優先順とバイト予算**で決まると説明する。
 - `tools/belief_state.py`：仮説に関連する訂正の表示が `supports` 評価宛てに偏り、実際に重みを動かす `narrows_scope` や `refutes_unconditioned` 評価への訂正を隠していた。**直接対象とする全評価**の訂正を対象仮説に表示するよう改めた。これは表示の変更で、`flag` の評価重みを変更しない。これを実証する `tools/boundary_channel_probe.py` も、旧 supports のみ・現行の全評価・閉鎖の各条件をメモリ上で比べられるよう更新した。
+- `tools/self_continuity_metrics.py`：層2素材集合から `declined` を除き、`counted` を残す。記録がないことを未読、下限を揃えたことを等露出、ID に `LIT` があることを厳密な文学分類と呼ばない。JSON と表示に測定の条件を付け、`tests/test_self_continuity_metrics.py` に未読の除外・監査行の包含・全行コホート・鍵名だけの検索を検査する例を加えた。
 - `prompts/role_consolidator.md`：配線が評価変換の脱落を解消するという指示を外し、実際に読んだ内容に根拠がある場合の任意の接続に改める。`docs/memory-architecture.md` は過去の文を消さず、その直前に訂正を付けた。
 - `tests/test_memory_overlap.py`：日時が逆の読書・評価、別セッションと同一セッション、未確定の基準、`declined`・`used_as_context`・`counted`、ゼロ分母、事後配線、人工的な順位介入、旧ノート宛ての訂正の可視性を検査する。`tests/test_belief_audit_visibility.py` は評価の全判定種別について訂正フラグが見え、重みが変わらないことを検査する。
 - `NOTE-20261120-ffa892` は元報告への再キュレーションとして、従前の両ノート `NOTE-20261120-058297`・`NOTE-20261120-d22c01` を明示的に `supersedes` する。元の本文と台帳行は残る。実際に読んだ先行ノート・仮説・評価・原典素材は `read_log` に記す。
-- `ERR-20261120-733e58`・`410f4c`・`5d429f`・`c7c4cf`・`805ec0`・`2fd9aa`・`050013`・`0e2b8e` は、式、反証条件の読み、観察からの過剰な必要条件、派生した評価、現象的断定それぞれに宛先を付ける。`ERR-20261120-633913` は旧版の評価訂正表示の欠落、`6e7ad3`・`b62f47`・`bb90b1` は合流した別の測定の解釈上の限界を記録する。いずれも `weight_effect: flag`、`void_row` は0件。新しい仮説・評価・外部素材も0件。
+- `ERR-20261120-733e58`・`410f4c`・`5d429f`・`c7c4cf`・`805ec0`・`2fd9aa`・`050013`・`0e2b8e` は、式、反証条件の読み、観察からの過剰な必要条件、派生した評価、現象的断定それぞれに宛先を付ける。`ERR-20261120-633913` は旧版の評価訂正表示の欠落、`6e7ad3`・`b62f47`・`bb90b1`・`f958ea`・`139134` は合流した別の測定の解釈上の限界を記録する。いずれも `weight_effect: flag`、`void_row` は0件。新しい仮説・評価・外部素材も0件。
 
 ## 7. 自己についての暫定回答と次の問い
 
@@ -224,9 +231,40 @@ PY
 rm -rf "$snapshot"
 ```
 
+後続報告にある `738d6e1c` の素材集合の差も、固定スナップショットで比較する。2行の集計が同じなのはこのデータにおける結果であり、`declined` を含めてよい根拠ではない。
+
+```bash
+snapshot=$(mktemp -d)
+git archive 738d6e1cb369c1a2a43c1f6f853d2b7ebfc135ee state | tar -x -C "$snapshot"
+PYTHONPATH=tools python3 - "$snapshot" <<'PY'
+import collections, sys
+import self_continuity_metrics as s
+from read_log_backfill import HANDWRITTEN_READINGS
+
+s.ROOT = sys.argv[1]
+reads = s.load('read_log')
+ordered = sorted(s.load('sessions'), key=lambda r: (r.get('started_at') or '', r['session_id']))
+old, typed = collections.defaultdict(set), collections.defaultdict(set)
+declined = 0
+for row in reads:
+    if row['target']['type'] != 'material':
+        continue
+    if row['reading'] != 'used_as_context':
+        old[row['session_id']].add(row['target']['id'])
+    if row['reading'] in HANDWRITTEN_READINGS:
+        typed[row['session_id']].add(row['target']['id'])
+    if row['reading'] == 'declined':
+        declined += 1
+print('declined material rows:', declined)
+print('old:', s._overlap(old, old, ordered))
+print('typed:', s._overlap(typed, typed, ordered))
+PY
+rm -rf "$snapshot"
+```
+
 ## 9. 検証とマージ
 
-- ローカルで CI と同じ主要検査を実行し、台帳検証、追記専用（基準 `738d6e1c`）、読書本文、両地図と索引の一致、日付、学習・三門・読書記録・claim 配線、viewer 構文が通過した。`size_budget.py --strict` は全ソフト上限内。
-- `94e0977b` を基準に `python3 -m unittest discover -s tests -v` は **965 テスト通過**。最初の全体実行では、訂正を支持以外へ可視化したことにより、既存のプローブの旧規則と、既存フラグをゼロと固定したテストが失敗した。旧 supports 限定・新規則の対照をプローブに残し、合成訂正 ID の増分を検査するように直して全件を再実行した。`738d6e1c` を取り込んだ後も、変更箇所と新しい測定具を含む **121 件の個別テスト**は通過した。新基準での全件は GitHub CI でも確認する。
+- `3c40d930` までの合流後、ローカルで CI と同じ主要検査（全単体テストを除く）を実行し、台帳検証、追記専用（main と本作業の直前コミットの双方を基準に照合）、読書本文、両地図と索引の一致、日付、学習・三門・読書記録・claim 配線、viewer 構文が通過した。`size_budget.py --strict` は全ソフト上限内。
+- `94e0977b` を基準に `python3 -m unittest discover -s tests -v` は **965 テスト通過**。最初の全体実行では、訂正を支持以外へ可視化したことにより、既存のプローブの旧規則と、既存フラグをゼロと固定したテストが失敗した。旧 supports 限定・新規則の対照をプローブに残し、合成訂正 ID の増分を検査するように直して全件を再実行した。`738d6e1c` 合流後の全体実行は **970 テスト通過**、個別検査は 121 件通過し、合流前の PR head に対する GitHub CI も成功した。さらに `3c40d930` 合流後、修正した連続測定具の **9 件の個別テスト**が通過した。
 - 歴史版と仮介入の再現手順を実行し、§4–5の値を確認した。`errata_audit.py --schema` は既存の不一致 **13 行**を引き続き注意報として表示する。過去の不一致は追記専用のため書き換えていない。
-- GitHub CI と main の実際のマージ状態は、この報告ではなく PR と main の Git 履歴で確認する。
+- 最終 head の GitHub CI と main の実際のマージ状態は、この報告ではなく [PR #995](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/995) と main の Git 履歴で確認する。
