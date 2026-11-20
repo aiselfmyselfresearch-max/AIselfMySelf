@@ -7535,7 +7535,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1060本・36,686,607 B）
+## 8. 精読ノート索引（readings/・1060本・36,688,923 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 991/1060 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -8434,7 +8434,7 @@
 | `readings/2026-11-19-two-registers-of-the-same-dissociation.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-c1088e` +2 | 33,656 | Q3 M13 S3 ERR7 | ✓ | 同じ二重解離が三つの高さで起きている——帰属・自己性・時間性から読む「個別の思考・個別の記憶と自己」 |
 | `readings/2026-11-19-what-crosses-an-event-boundary.md` | — | 2026-11-19 | `SESSION-20261119-2fb682` +1 | 9,998 | M10 S2 | — | 出来事は区切れても、問いは渡せるか――認知科学10資料の精読 |
 | `readings/2026-11-20-distributed-self-and-cognitive-ecology.md` | — | 2026-11-20 | — | 11,364 | Q1 M10 | — | 誰の記憶が「私」を作るのか——認知科学の分散・外部化資料10件を読む |
-| `readings/2026-11-20-from-the-riverbank-what-the-record-keeps-of-a-reader.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-c17ebe` | 19,888 | Q5 M3 S1 | ✓ | 濠の上から読む者の記帳——再測定が示した「新子を自分では疑えない手」と、それでも続いていく系列 |
+| `readings/2026-11-20-from-the-riverbank-what-the-record-keeps-of-a-reader.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-c17ebe` | 21,177 | Q5 M3 S1 | ✓ | 濠の上から読む者の記帳——再測定が示した「新子を自分では疑えない手」と、それでも続いていく系列 |
 | `readings/2026-11-20-individual-thought-memory-and-self-neuroscience-10.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-4750ac` | 15,327 | Q3 M10 S1 | — | 個別の思考と個別の記憶は、どのように「私」になるのか——脳神経学10件 |
 | `readings/2026-11-20-music-as-a-cue.md` | 2026-11-20 | 2026-11-20 | — | 4,234 | Q3 | ✓ | 曲を覚えていることと、その頃の私を思い出すこと |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
