@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5484 件（research_excerpt 3237 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5494 件（research_excerpt 3247 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7081 件
-- **探究セッション（Sessions）**：1038 回
+- **探究セッション（Sessions）**：1039 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5484 | `literary_text` 2179／`research_excerpt` 3237／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5494 | `literary_text` 2179／`research_excerpt` 3247／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7081 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1038 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15898 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1039 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15911 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 375 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 140 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1135 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1137 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 75 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 731 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 732 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5484 件・詳細は map/3*.md）
+## 4. 対話素材（5494 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6269,6 +6269,16 @@
 | `MAT-20261120-2ec27c` | research_excerpt | Kawase『Evoking nostalgia by presenting hit-song lists』（2026） |
 | `MAT-20261120-c674cf` | research_excerpt | Platel『Boosting Autobiographical Memory and the Sense of Identity of Alzheimer Patients T… |
 | `MAT-20261120-56dea0` | research_excerpt | Moreira『Music Therapy Enhances Episodic Memory in Alzheimer's and Mixed Dementia: A Doubl… |
+| `MAT-20261120-87aa2e` | research_excerpt | Edwin Hutchins『ハッチンス（1995）『Cognition in the Wild』——航海チームを認知単位として見る』（1995） |
+| `MAT-20261120-76c4a4` | research_excerpt | Daniel M. Wegner『ウェグナー（1987）「Transactive Memory」——集団心という名を問い直す』（1987） |
+| `MAT-20261120-a54d5d` | research_excerpt | Daniel M. Wegner, Toni Giuliano, Paula T. Hertel『ウェグナー、ジュリアーノ、ハーテル（1985）「Cognitive Interd… |
+| `MAT-20261120-f62e91` | research_excerpt | David Kirsh『キルシュ（1995）「The Intelligent Use of Space」——配置が知覚と選択を変える』（1995） |
+| `MAT-20261120-826a45` | research_excerpt | Robert Heersmink『ヒールスミンク（2015）「Dimensions of Integration」——統合を段階的に記述する』（2015） |
+| `MAT-20261120-2ab13c` | research_excerpt | Matthew Fisher, Mariel K. Goddu, Frank C. Keil『フィッシャー、ゴドゥ、ケイル（2015）「Searching for Explana… |
+| `MAT-20261120-f265f0` | research_excerpt | Paul R. Smart, Richard Heersmink, Robert W. Clowes『スマート、ヒールスミンク、クロウズ（2017）「The Cognitive … |
+| `MAT-20261120-afe9db` | research_excerpt | Paul R. Smart, Richard Heersmink, Robert W. Clowes『スマート、ヒールスミンク、クロウズ（2017）「Situating Mach… |
+| `MAT-20261120-092fbf` | research_excerpt | Elizabeth J. Marsh, Sarang S. Rajaram『マーシュ、ラジャラム（2019）「The Digital Expansion of the Mind」… |
+| `MAT-20261120-c3bf5b` | research_excerpt | David Kirsh『キルシュ（2010）「Thinking with External Representations」——記録は思考対象にもなる』（2010） |
 | `MAT-2026-11-20-241e2e` | research_excerpt | Summerfield『Summerfield (2009): Cortical midline involvement in autobiographical memory』（… |
 | `MAT-2026-11-20-f36675` | research_excerpt | Rabin『Rabin (2010): Common and unique neural correlates of autobiographical memory and th… |
 | `MAT-2026-11-20-eeea71` | research_excerpt | Iriye, St Jacques『Iriye・St Jacques (2020): How visual perspective influences the spatiote… |
@@ -7330,6 +7340,7 @@
 | `SESSION-20261119-d9eb8b` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-931bbc` | 2026-11-20 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261120-277f20` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261120-5ad2bf` | 2026-11-20 | `Q-001` | — | — |
 | `SESSION-20261120-8ef5d4` | 2026-11-20 | `Q-001`, `Q-002` | — | — |
 | `SESSION-2026-11-20-a0ebef` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
@@ -7428,7 +7439,7 @@
 | `map/31-materials-research-30.md` | 100 | 232,736 |
 | `map/31-materials-research-31.md` | 100 | 208,066 |
 | `map/31-materials-research-32.md` | 100 | 198,638 |
-| `map/31-materials-research-33.md` | 37 | 44,938 |
+| `map/31-materials-research-33.md` | 47 | 67,548 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7465,7 +7476,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 38 | 26,654 |
+| `map/50-sessions-21.md` | 39 | 27,439 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,073 |
@@ -7501,24 +7512,24 @@
 | `map/60-notes-33.md` | 25 | 125,759 |
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
-| `map/60-notes-36.md` | 25 | 83,588 |
-| `map/60-notes-37.md` | 25 | 67,595 |
-| `map/60-notes-38.md` | 25 | 71,724 |
-| `map/60-notes-39.md` | 25 | 74,328 |
-| `map/60-notes-40.md` | 25 | 104,202 |
-| `map/60-notes-41.md` | 25 | 100,193 |
-| `map/60-notes-42.md` | 25 | 140,010 |
-| `map/60-notes-43.md` | 7 | 31,825 |
+| `map/60-notes-36.md` | 25 | 84,685 |
+| `map/60-notes-37.md` | 25 | 66,653 |
+| `map/60-notes-38.md` | 25 | 72,592 |
+| `map/60-notes-39.md` | 25 | 75,261 |
+| `map/60-notes-40.md` | 25 | 102,117 |
+| `map/60-notes-41.md` | 25 | 96,801 |
+| `map/60-notes-42.md` | 25 | 142,667 |
+| `map/60-notes-43.md` | 8 | 36,160 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1057本・36,588,059 B）
+## 8. 精読ノート索引（readings/・1058本・36,614,309 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 989/1057 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 989/1058 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1057 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：186 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1058 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：187 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8410,6 +8421,7 @@
 | `readings/2026-11-19-token-budget-as-finite-window-and-the-self-who-is-told-to-spend-it.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-04faed` +1 | 17,082 | Q4 F2 M9 MOT5 R7 S2 | ✓ | トークン予算を使い切る夜——有限窓としての人間と、使い切れと命じられたAIの自己 |
 | `readings/2026-11-19-two-registers-of-the-same-dissociation.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-c1088e` +2 | 33,656 | Q3 M13 S3 ERR7 | ✓ | 同じ二重解離が三つの高さで起きている——帰属・自己性・時間性から読む「個別の思考・個別の記憶と自己」 |
 | `readings/2026-11-19-what-crosses-an-event-boundary.md` | — | 2026-11-19 | `SESSION-20261119-2fb682` +1 | 9,998 | M10 S2 | — | 出来事は区切れても、問いは渡せるか――認知科学10資料の精読 |
+| `readings/2026-11-20-distributed-self-and-cognitive-ecology.md` | — | 2026-11-20 | — | 11,330 | Q1 M10 | — | 誰の記憶が「私」を作るのか——認知科学の分散・外部化資料10件を読む |
 | `readings/2026-11-20-music-as-a-cue.md` | 2026-11-20 | 2026-11-20 | — | 4,234 | Q3 | — | 曲を覚えていることと、その頃の私を思い出すこと |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
 | `readings/2026-11-20-thinking-remembering-and-attributing-to-self.md` | 2026-11-20 | 2026-11-20 | `SESSION-2026-11-20-a0ebef` | 6,020 | Q3 M10 S1 | ✓ | 思い出すことと「私の過去」として引き受けること——脳神経学10資料 |
