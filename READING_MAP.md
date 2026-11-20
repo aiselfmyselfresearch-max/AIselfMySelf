@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5544 件（research_excerpt 3297 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1048 回
+- **探究セッション（Sessions）**：1049 回
 
 ### 台帳ごとの件数
 
@@ -23,13 +23,13 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5544 | `literary_text` 2179／`research_excerpt` 3297／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1048 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16053 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1049 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16069 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 375 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 140 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1146 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1147 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 78 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 752 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 754 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -6350,7 +6350,7 @@
 | `MAT-20261120-0ea985` | research_excerpt | Demis Hassabis, Dharshan Kumaran, Seralynne D. Vann, Eleanor A. Maguire『Hassabis et al. (… |
 | `MAT-20261120-0dda67` | research_excerpt | Dorothy Tse, Richard F. Langston, Mas Kakeyama, Devlin Beth, Patrick A. Spooner, Richard … |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261120-6211a0・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261120-72dc8a・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -7402,6 +7402,7 @@
 | `SESSION-20261120-888c18` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-baf951` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261120-6211a0` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
+| `SESSION-20261120-72dc8a` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7091 件・全表は map/40-relations-*.md）
 
@@ -7535,7 +7536,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 48 | 34,850 |
+| `map/50-sessions-21.md` | 49 | 35,417 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,073 |
@@ -7571,7 +7572,7 @@
 | `map/60-notes-33.md` | 25 | 125,759 |
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
-| `map/60-notes-36.md` | 25 | 103,659 |
+| `map/60-notes-36.md` | 25 | 103,920 |
 | `map/60-notes-37.md` | 25 | 63,746 |
 | `map/60-notes-38.md` | 25 | 80,013 |
 | `map/60-notes-39.md` | 25 | 70,916 |
@@ -7582,13 +7583,13 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1067本・36,983,332 B）
+## 8. 精読ノート索引（readings/・1067本・36,990,313 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 998/1067 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：1067 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：184 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：183 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8491,7 +8492,7 @@
 | `readings/2026-11-20-the-doubt-arrives-from-outside.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-acc61c` +4 | 9,984 | Q2 S5 | ✓ | 疑いは、いつも外から来る——提示対 `63b6bf`×`539a0c` を評価行735件で試した回（シード c967c… |
 | `readings/2026-11-20-thinking-remembering-and-attributing-to-self.md` | 2026-11-20 | 2026-11-20 | `SESSION-2026-11-20-a0ebef` | 6,020 | Q3 M10 S1 | ✓ | 思い出すことと「私の過去」として引き受けること——脳神経学10資料 |
 | `readings/2026-11-20-thought-memory-and-self-neuroscience.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-906569` | 17,694 | Q3 M11 S1 | ✓ | 個々の思考・記憶は「自己」とどう結びつくか——脳神経科学10資料と、GitHubを記憶とするAIへの考察 |
-| `readings/2026-11-20-two-stage-gate-and-intergenerational-audit.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-baf951` +4 | 26,715 | Q3 M26 S5 | — | 二段階継承ゲートと世代間監査——認知科学・神経科学40原典と台帳5,534素材・740評価行の統合検証（シード 5f0… |
+| `readings/2026-11-20-two-stage-gate-and-intergenerational-audit.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-baf951` +6 | 30,476 | Q3 M35 S7 ERR1 | ✓ | 記憶の二段階継承ゲートと世代間監査による不透明化 §6追補：三層温度分離と初期データ（pre-2026-11）の非破壊… |
 | `readings/2026-11-20-two-tier-gist-gate-and-the-opaque-auditor.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-6211a0` +1 | 27,047 | Q3 F1 M17 S2 ERR1 | ✓ | 二段の要旨門と、自分の無修正を保証できないカード——前向き追跡と認知・文芸原典による最優先競合対の反証テスト |
 | `readings/2026-11-20-what-we-forget-together.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-931bbc` | 9,457 | Q2 M12 S1 | ✓ | 一緒に思い出すと、何を一緒に忘れるのか——共同想起の認知科学10件を読む |
 | `readings/2026-11-20-who-held-the-mug.md` | — | 2026-11-20 | `SESSION-20261120-8ef5d4` | 4,828 | Q2 M2 S1 ED1 | — | コップを持っていたのは誰か――ヘレン・ケラーを三つの入口から読み直す |

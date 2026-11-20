@@ -23,7 +23,7 @@ import random
 import re
 import subprocess
 import sys
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Iterable, Sequence
 
@@ -1151,8 +1151,51 @@ def _candidate_materials_for_question(
     clean_dyn = [m for m in dynamic_mids if not _is_retrieval_suppressed("material", m, err_map)]
     sup_dyn = [m for m in dynamic_mids if _is_retrieval_suppressed("material", m, err_map)]
 
+    # Three-tier memory temperature ordering for remaining question materials
+    # (Hot Gist: wired in notes.claims -> Warm: cross-session read_log -> Cold Verbatim):
+    # keeps active gist-wired and re-read materials inside the 16 KiB §3 window
+    # while preserving Cold verbatim items intact as reachable out-of-window pointers.
+    tier1_claim_mids: set[str] = set()
+    for nrec in (data.get("notes") or {}).values():
+        if not isinstance(nrec, dict):
+            continue
+        for cl in nrec.get("claims") or ():
+            if isinstance(cl, dict):
+                for cmid in cl.get("material_ids") or ():
+                    if isinstance(cmid, str):
+                        tier1_claim_mids.add(cmid)
+    mat_read_sessions: dict[str, set[str]] = defaultdict(set)
+    for rrec in (data.get("read_log") or {}).values():
+        if not isinstance(rrec, dict):
+            continue
+        tgt = rrec.get("target")
+        if not isinstance(tgt, dict) or tgt.get("type") != "material":
+            continue
+        if "バックフィル" in str(rrec.get("note") or ""):
+            continue
+        rmid = str(tgt.get("id") or "")
+        rsid = str(rrec.get("session_id") or "")
+        if rmid and rsid:
+            mat_read_sessions[rmid].add(rsid)
+
+    base_tail = clean_base[2:]
+    base_tail_idx = {m: idx for idx, m in enumerate(base_tail)}
+
+    def _base_tail_priority(mid: str) -> tuple[int, int, int, int]:
+        live_err = 1 if _has_live_contradicted_erratum(mid, err_map) else 0
+        temp_tier = (
+            0
+            if mid in tier1_claim_mids
+            else (1 if len(mat_read_sessions.get(mid, ())) >= 2 else 2)
+        )
+        vstat = ((materials[mid].get("verification") or {}).get("status")) or ""
+        ver_tier = 0 if vstat == "verified" else (1 if vstat == "corrected" else (2 if vstat == "partially_verified" else 3))
+        return (live_err, temp_tier, ver_tier, base_tail_idx[mid])
+
+    ordered_base_tail = sorted(base_tail, key=_base_tail_priority)
+
     merged: list[str] = []
-    for mid in clean_base[:2] + clean_dyn + clean_base[2:] + sup_dyn + sup_base:
+    for mid in clean_base[:2] + clean_dyn + ordered_base_tail + sup_dyn + sup_base:
         if mid not in merged:
             merged.append(mid)
     return merged
@@ -1318,7 +1361,8 @@ def _belief_briefing_lines(
     out.append(
         "- **三門・二系統案内**: DN-A（場面・原典復元）=`§3・§4・§4.6・§4.7` ／ "
         "DN-B（現在状態・他回応答監査）=`§0.2・§4.8・read_log.in_reply_to` ／ "
-        "PCS（現実識別・収蔵前重複/昇格照合）=`python3 tools/three_gates.py --check-source`・`--upgrade-candidates`。"
+        "PCS（現実識別・収蔵前重複/昇格照合）=`python3 tools/three_gates.py --check-source`・`--upgrade-candidates` ／ "
+        "二段階ゲート要旨配線（Warm→Hot昇格）=`python3 tools/three_gates.py --tier0-candidates`。"
     )
 
     if qstate and qstate["hypotheses"]:
@@ -1328,6 +1372,16 @@ def _belief_briefing_lines(
                 f"- ⚠️ **対象問い `{target_qid}` の未評価有効仮説（ペア推薦から除外中）**: "
                 + "、".join(f"`{u}`" for u in unex_target)
                 + "（直接評価0件。初回検証を優先検討すること）"
+            )
+        awaiting_ext = [
+            hid for hid in (qstate.get("awaiting_external_audit_ids") or [])
+            if hid not in unex_target
+        ]
+        if awaiting_ext:
+            out.append(
+                f"- 🔍 **対象問い `{target_qid}` の初回外部監査待ち仮説（同一セッション自己評価のみ: {len(awaiting_ext)}件）**: "
+                + "、".join(f"`{u}`" for u in awaiting_ext)
+                + "（`P_gate` では depth≥1 同一セッション自己支持は重み 0。別セッションによる初回横断検証を優先検討）"
             )
         out.append(f"- **対象問い `{target_qid}` の競合仮説・適用条件・反証条件（Exclusion Clause）**:")
         for h in qstate["hypotheses"]:

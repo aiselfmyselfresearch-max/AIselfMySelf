@@ -834,6 +834,161 @@ class Gate3OverlayAndWriteGateTests(unittest.TestCase):
             srv.shutdown()
             srv.server_close()
 
+    def test_memory_temperature_tier0_candidates_and_shard_compaction(self) -> None:
+        self.assertEqual(belief_state.SELF_SUPPORT_DEPTH1_GATED_DISCOUNT, 0.0)
+        data = {
+            "questions": {
+                "Q-001": {
+                    "question_id": "Q-001",
+                    "question": "人間とは何か",
+                    "status": "open",
+                    "material_ids": [
+                        "MAT-BASE-1",
+                        "MAT-BASE-2",
+                        "MAT-20261025-cold01",
+                        "MAT-20261025-warm01",
+                    ],
+                }
+            },
+            "materials": {
+                "MAT-BASE-1": {"material_id": "MAT-BASE-1", "verification": {"status": "verified"}},
+                "MAT-BASE-2": {"material_id": "MAT-BASE-2", "verification": {"status": "verified"}},
+                "MAT-20261025-warm01": {
+                    "material_id": "MAT-20261025-warm01",
+                    "kind": "philosophical_text",
+                    "title": "Early warm unwired source",
+                    "source": {"authors": ["Warm Author"], "year": 2005, "url": "https://example.org/warm"},
+                    "passage": "Warm passage",
+                    "verification": {"status": "verified"},
+                    "scope_note": "scope",
+                    "literary_invitation": "invite",
+                    "motif_ids": ["M-01"],
+                },
+                "MAT-20261025-cold01": {
+                    "material_id": "MAT-20261025-cold01",
+                    "kind": "philosophical_text",
+                    "title": "Early cold verbatim source",
+                    "source": {"authors": ["Cold Author"], "year": 2001, "url": "https://example.org/cold"},
+                    "passage": "Cold passage",
+                    "verification": {"status": "partially_verified"},
+                    "scope_note": "scope",
+                    "literary_invitation": "invite",
+                    "motif_ids": ["M-01"],
+                },
+            },
+            "sessions": {
+                "SESSION-A": {"session_id": "SESSION-A", "context_material_ids": ["MAT-20261025-warm01"]},
+                "SESSION-B": {"session_id": "SESSION-B", "context_material_ids": []},
+            },
+            "notes": {},
+            "hypotheses": {
+                "HYP-20261110-root": {
+                    "hypothesis_id": "HYP-20261110-root",
+                    "question_ids": ["Q-001"],
+                    "session_id": "SESSION-A",
+                    "title": "Root",
+                    "proposition": "P",
+                    "scope_conditions": ["c"],
+                    "exclusion_clause": "e",
+                    "lineage_op": "root",
+                    "parent_hypothesis_ids": [],
+                    "status": "active",
+                    "created_at": "2026-11-10",
+                },
+                "HYP-20261118-child": {
+                    "hypothesis_id": "HYP-20261118-child",
+                    "question_ids": ["Q-001"],
+                    "session_id": "SESSION-B",
+                    "title": "Child",
+                    "proposition": "C",
+                    "scope_conditions": ["c"],
+                    "exclusion_clause": "e",
+                    "lineage_op": "refines",
+                    "parent_hypothesis_ids": ["HYP-20261110-root"],
+                    "status": "active",
+                    "created_at": "2026-11-18",
+                },
+            },
+            "evaluations": {
+                "EVL-20261118-self": {
+                    "evaluation_id": "EVL-20261118-self",
+                    "session_id": "SESSION-B",
+                    "target_hypothesis_id": "HYP-20261118-child",
+                    "compared_against_hypothesis_ids": ["HYP-20261110-root"],
+                    "verdict": "supports",
+                    "evidence_type": "primary_source_collision",
+                    "material_ids": ["MAT-BASE-1"],
+                    "created_at": "2026-11-18",
+                }
+            },
+            "read_log": {
+                "READ-20261025-w1": {
+                    "read_id": "READ-20261025-w1",
+                    "session_id": "SESSION-A",
+                    "target": {"type": "material", "id": "MAT-20261025-warm01"},
+                    "reading": "interpreted",
+                    "note": "Initial birth read of warm material in SESSION-A.",
+                    "created_at": "2026-10-25",
+                },
+                "READ-20261115-w2": {
+                    "read_id": "READ-20261115-w2",
+                    "session_id": "SESSION-B",
+                    "target": {"type": "material", "id": "MAT-20261025-warm01"},
+                    "reading": "reinterpreted",
+                    "note": "Subsequent session re-read of warm material in SESSION-B.",
+                    "created_at": "2026-11-15",
+                },
+            },
+            "errata": {},
+        }
+        st = belief_state.compute_belief_state(data=data)
+        qs = st["questions"]["Q-001"]
+        self.assertIn("HYP-20261118-child", qs["awaiting_external_audit_ids"])
+        by_id = {h["hypothesis_id"]: h for h in qs["hypotheses"]}
+        # Under P_gate, depth>=1 same-session supports carries 0.0 log-odds delta.
+        self.assertEqual(by_id["HYP-20261118-child"]["gated_log_odds"], 0.0)
+
+        mt = three_gates.memory_temperature_and_gate_audit(data, limit=10)
+        self.assertGreaterEqual(mt["temperature_tiers"].get("warm_unwired", 0), 1)
+        self.assertGreaterEqual(mt["temperature_tiers"].get("cold_verbatim", 0), 1)
+        cand_ids = [r["material_id"] for r in mt["top_tier0_candidates"]]
+        self.assertIn("MAT-20261025-warm01", cand_ids)
+
+        # In §3 candidate ordering, Warm (2+ read sessions, verified) precedes Cold verbatim.
+        ordered_mids = inspect_inquiry._candidate_materials_for_question(data, "Q-001")
+        self.assertLess(
+            ordered_mids.index("MAT-20261025-warm01"),
+            ordered_mids.index("MAT-20261025-cold01"),
+        )
+
+        # Verify order-preserving shard compaction in a temporary workspace.
+        with tempfile.TemporaryDirectory() as tmp:
+            troot = Path(tmp)
+            sdir = troot / "state" / "materials.d"
+            sdir.mkdir(parents=True)
+            (troot / "readings").mkdir()
+            s1 = sdir / "2026-11-12-aaaa01.jsonl"
+            s2 = sdir / "2026-11-12-bbbb02.jsonl"
+            s3 = sdir / "2026-11-12-cccc03.jsonl"
+            s1.write_text('{"material_id": "MAT-1"}\n', encoding="utf-8")
+            s2.write_text('{"material_id": "MAT-2"}\n', encoding="utf-8")
+            s3.write_text('{"material_id": "MAT-3"}\n', encoding="utf-8")
+            # Reference s3 in readings/ so only (s1, s2) is eligible for compaction.
+            (troot / "readings" / "ref.md").write_text(
+                "Mentions 2026-11-12-cccc03.jsonl explicitly.\n", encoding="utf-8"
+            )
+            dry = three_gates.compact_unreferenced_shards(troot, apply=False)
+            self.assertEqual(dry["collections"]["materials"]["safe_disjoint_pairs_found"], 1)
+            applied = three_gates.compact_unreferenced_shards(troot, apply=True)
+            self.assertEqual(applied["collections"]["materials"]["merged_count"], 1)
+            self.assertEqual(
+                applied["collections"]["materials"]["union_sha256"],
+                dry["collections"]["materials"]["union_sha256"],
+            )
+            self.assertTrue(s1.is_file())
+            self.assertFalse(s2.is_file())
+            self.assertTrue(s3.is_file())
+
 
 if __name__ == "__main__":
     unittest.main()

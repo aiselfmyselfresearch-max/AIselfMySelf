@@ -5,8 +5,8 @@
 
 ## このロールで行うこと
 
-1. **検証ペアと暫定・侵入仮説の選定**:
-   - パケット `§0.2`（履歴 `P` が飽和しているときや後付け移流を除いて選びたいときは `--pair-policy gated` または `--pair-policy least_separated`）や `python3 tools/belief_state.py --question Q-002 --gated` が示す競合ペア、あるいは `⚠️単一証人`・`⚠️自己評価のみ`（`self_only_provisional`）・`associations.py --inhibited` の未決着侵入項目を選ぶ。
+1. **検証ペアと「初回外部監査待ち（`awaiting_external_audit_ids`）」・侵入仮説の選定**:
+   - パケット `§0.2` の **`P_gate` 推奨検証対（`--pair-policy gated`）** または `python3 tools/belief_state.py --question Q-002 --gated` が示す競合ペア、ならびに **`🔍 初回外部監査待ち仮説（`awaiting_external_audit_ids`：同一セッション自己評価のみ／未評価の有効仮説）`**・`⚠️単一証人`・`associations.py --inhibited` の未決着侵入項目を最優先の横断検証ターゲットとして選ぶ（先行セッションで新設された子仮説に対し、利害を持たない外部セッションとして初めての批判的境界テストを与える）。
 2. **確証バイアスの排除と「両仮説を分けるテスト」の実行**:
    - 片方の仮説に都合のよい例だけを集めず、**仮説Aと仮説Bが異なる予測・解釈を与える境界事例**を以下のいずれかで検証する（`evidence_type`）：
      - `primary_source_collision`: 実効 `verification.status == "verified"` の原典本文との照合による前提の破綻・射程の確定（`20261119` 以降は最低1件の `verified` 素材が必須。既収蔵素材の全文再照合は `editorial_decisions` で昇格可）

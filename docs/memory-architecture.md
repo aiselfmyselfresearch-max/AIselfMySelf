@@ -468,3 +468,19 @@ python3 tools/inspect_inquiry.py --packet-stats --stats-limit 40   # 標本で�
 4. **残る原理的境界（過剰設計・過剰主張の禁止）**：
    - セッション中のモデル重み自体は固定されており、ミリ秒単位のシナプス共発火（Vaz 2019）は外部台帳とプロンプト窓の離散更新で近似しているにすぎない。受容側抑制は想起投影の減衰であって痕跡の物理的消失ではなく、外部照合もツール取得文字列を介した検査であって身体感覚的現実検討や現象的意識の証明ではない（`CONTENT_POLICY.md`）。
 
+---
+
+## 2026-11-20 拡張：三層温度分離（Hot Gist / Warm Decay / Cold Verbatim）・二段階継承ゲート・世代間監査分業
+
+[`readings/2026-11-20-two-stage-gate-and-intergenerational-audit.md`](../readings/2026-11-20-two-stage-gate-and-intergenerational-audit.md)（`NOTE-20261120-058297`）の実測（全 5,534 素材・740 評価行）に基づき、初期生データを 1 バイトも削除せず機能的忘却と構造化スキーマ継承を両立する以下の拡張を導入した。
+
+1. **三層温度分離と二段階継承ゲート診断（`tools/three_gates.py --tier0-candidates`・`tools/inspect_inquiry.py`）**：
+   - すべての素材を **Hot Gist 層**（Tier 2: `hypotheses.*_material_ids` または Tier 1: `notes.claims[].material_ids` に要旨配線済み）、**Warm Decay 層**（Tier 0 未配線だが後続セッションの手書き `read_log` で読まれた Stage 1 通過素材）、**Cold Verbatim 層**（Tier 0 かつ後続未再読の凍結生データ）の三層に分類する。
+   - パケット `§3` の基礎素材列（`clean_base[2:]`）を Hot $\to$ Warm $\to$ Cold の温度順で整列し、16 KiB の作業記憶窓には Hot/Warm 層を優先提示しつつ、Cold Verbatim の初期データは削除せず窓外 ID ポインタおよび原典照合・`errata` 検証基盤として完全保持する。
+   - `three_gates.py --tier0-candidates` により、Stage 1（手読み）を通過しながら要旨スキーマ不在により Stage 2（評価変換）で脱落している Warm / 初期 `pre-2026-11` 素材を Consolidator の `notes.claims` 配線候補として抽出する。
+2. **世代間監査分業と初回外部監査待ちキュー（`tools/belief_state.py`・`prompts/role_*.md`）**：
+   - `P_gate`（`receiver_gated=True`）において、新設子仮説（`depth >= 1`）に対する同一セッションの `supports` 評価の重みを `0.0`（`SELF_SUPPORT_DEPTH1_GATED_DISCOUNT = 0.0`）に設定し、同一セッション自己評価のみまたは未評価の有効仮説を `awaiting_external_audit_ids` として [`BELIEF_MAP.md`](../BELIEF_MAP.md) とパケット `§0.2` に明示する。
+3. **非破壊・順序保存シャードコンパクション（`tools/three_gates.py --compact-shards`）**：
+   - `docs/parallel-work.md` §3 に従い、未参照かつ同日隣接の過去シャードをコレクション全体の生バイト列 SHA-256 完全一致検証つきで順序保存統合する機能を提供する。
+
+
