@@ -23,6 +23,7 @@ if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
 import belief_state
+import depth_backfill
 import double_reading
 import validate_seed
 import verification_targets
@@ -165,6 +166,40 @@ class ToolTests(unittest.TestCase):
         self.assertEqual(result["plan"][0]["rows_released"], 3)
         # rows released are counted once even when both materials backed them
         self.assertEqual(result["rows_releasable_by_all"], 4)
+
+
+class DepthBackfillTests(unittest.TestCase):
+    def cls(self, method: str, note: str = "") -> str:
+        material = {"verification": {"status": "verified", "method": method, "note": note}}
+        return depth_backfill.classify(material)[0]
+
+    def test_negation_blocks_full_text(self):
+        self.assertNotEqual(self.cls("出版社ページのみ確認。本文は未読。"), "full_text_claim")
+
+    def test_partial_read_is_not_full_text(self):
+        self.assertEqual(self.cls("全文のうち第1章のみ読んだ"), "unknown")
+
+    def test_table_only_read_is_results(self):
+        self.assertEqual(self.cls("PMC 全文の表3・表4を取得し、数値を照合"), "results_claim")
+
+    def test_abstract_only_is_shallow(self):
+        self.assertEqual(self.cls("arXiv 要旨と掲載情報で確認"), "shallow_claim")
+
+    def test_plain_full_text_claim(self):
+        self.assertEqual(self.cls("本文を通読し、引用句を確認"), "full_text_claim")
+
+    def test_section_read_is_not_full_text(self):
+        # 通読 + 節指定 is contradictory prose; the conservative reading wins.
+        self.assertEqual(self.cls("本文を通読し、§3の引用句を確認"), "unknown")
+
+    def test_emit_preserves_status_and_records_inference(self):
+        materials = {"M": {"material_id": "M", "verification": {"status": "verified", "method": "本文を通読", "note": "全文"}}}
+        rows = depth_backfill.overlay_rows(
+            [{"material_id": "M", "reason_clause": "本文を通読"}], materials, "SESSION-x", "2026-11-20"
+        )
+        self.assertEqual(rows[0]["status"], "verified")
+        self.assertEqual(rows[0]["verification_depth"], "full_text")
+        self.assertIn("推定", rows[0]["reason"])
 
 
 if __name__ == "__main__":

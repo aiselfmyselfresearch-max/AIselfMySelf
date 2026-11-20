@@ -712,7 +712,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # Rows are append-only provenance and cannot be folded into another session's
         # shard after the fact. Set to measured + 1 (168); hard 175 unchanged. Not
         # automatic.
-        soft_shards=168,
+        # 2026-11-20 (merge of origin/main ce7139a into arena/395bf173, 168 -> 169):
+        # this branch writes no read_log row; the merged tree carries main's same-day
+        # read_log shards. Measured union = 169 files / 6.08 MiB of the 6.50 MiB
+        # soft_bytes. Set to the measured count exactly; hard 175 unchanged.
+        # Not automatic.
+        soft_shards=169,
         hard_shards=175,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -1013,7 +1018,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # A session row is append-only and names its own shard, so the count is the only
         # movable dimension. Set to measured + 1 (171); hard 175 unchanged. Not
         # automatic.
-        soft_shards=171,
+        # 2026-11-20 (merge of origin/main ce7139a into arena/395bf173, 171 -> 173):
+        # this branch adds one sessions shard (2026-11-20-1f939fd0e71b.jsonl, one row)
+        # and the merged tree carries main's own same-day sessions rows. Measured union
+        # after the merge = 173 files / 3.10 MiB of the 4.00 MiB soft_bytes (bytes not
+        # binding; only the count is). Session rows are append-only and name their own
+        # shard, so the count cannot be reclaimed. Set to the measured count exactly;
+        # hard 175 unchanged. Not automatic.
+        soft_shards=173,
         hard_shards=175,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -1940,7 +1952,13 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # hard_files (1,200), hard_bytes (48 MiB) and per-report caps unchanged.
         # Not automatic; the next session must measure after merging.
 
-        soft_files=1072,
+        # 2026-11-20 (merge of origin/main ce7139a into arena/395bf173, 1072 -> 1073):
+        # this branch adds no readings/ report (its deliverables are tools, tests and a
+        # docs/ note); the merged tree carries main's next same-day report. Measured
+        # union = 1,073 files / 35.45 MiB, inside the 37.00 MiB soft_bytes. Set to the
+        # measured count exactly; soft_bytes, hard_files (1,200) and per-report caps
+        # unchanged. Not automatic.
+        soft_files=1073,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

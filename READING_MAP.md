@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5584 件（research_excerpt 3337 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1057 回
+- **探究セッション（Sessions）**：1058 回
 
 ### 台帳ごとの件数
 
@@ -23,10 +23,10 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5584 | `literary_text` 2179／`research_excerpt` 3337／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1057 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1058 |  |
 | 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16164 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 389 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 142 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 544 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1154 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 80 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 768 |  |
@@ -7432,6 +7432,7 @@
 | `SESSION-20261120-906569` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-8f2c11` | 2026-11-20 | `Q-002` | — | — |
 | `SESSION-20261120-99e940` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261120-43fdd4` | 2026-11-20 | `Q-002` | — | — |
 | `SESSION-20261120-277f20` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-ad4661` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261120-749911` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -7498,58 +7499,58 @@
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
 | `map/30-materials-literary-04.md` | 100 | 147,209 |
 | `map/30-materials-literary-05.md` | 100 | 145,861 |
-| `map/30-materials-literary-06.md` | 100 | 167,403 |
+| `map/30-materials-literary-06.md` | 100 | 167,828 |
 | `map/30-materials-literary-07.md` | 100 | 169,821 |
-| `map/30-materials-literary-08.md` | 100 | 184,621 |
-| `map/30-materials-literary-09.md` | 100 | 232,331 |
-| `map/30-materials-literary-10.md` | 100 | 146,850 |
+| `map/30-materials-literary-08.md` | 100 | 185,932 |
+| `map/30-materials-literary-09.md` | 100 | 233,206 |
+| `map/30-materials-literary-10.md` | 100 | 151,959 |
 | `map/30-materials-literary-11.md` | 100 | 144,501 |
-| `map/30-materials-literary-12.md` | 100 | 203,521 |
-| `map/30-materials-literary-13.md` | 100 | 149,370 |
-| `map/30-materials-literary-14.md` | 100 | 163,068 |
-| `map/30-materials-literary-15.md` | 100 | 210,817 |
-| `map/30-materials-literary-16.md` | 100 | 199,091 |
-| `map/30-materials-literary-17.md` | 100 | 265,993 |
-| `map/30-materials-literary-18.md` | 100 | 293,565 |
-| `map/30-materials-literary-19.md` | 100 | 279,389 |
-| `map/30-materials-literary-20.md` | 100 | 268,470 |
+| `map/30-materials-literary-12.md` | 100 | 214,464 |
+| `map/30-materials-literary-13.md` | 100 | 151,892 |
+| `map/30-materials-literary-14.md` | 100 | 165,864 |
+| `map/30-materials-literary-15.md` | 100 | 214,239 |
+| `map/30-materials-literary-16.md` | 100 | 200,194 |
+| `map/30-materials-literary-17.md` | 100 | 271,298 |
+| `map/30-materials-literary-18.md` | 100 | 302,848 |
+| `map/30-materials-literary-19.md` | 100 | 286,117 |
+| `map/30-materials-literary-20.md` | 100 | 276,183 |
 | `map/30-materials-literary-21.md` | 100 | 233,650 |
-| `map/30-materials-literary-22.md` | 79 | 206,745 |
+| `map/30-materials-literary-22.md` | 79 | 207,128 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
-| `map/31-materials-research-02.md` | 100 | 166,172 |
-| `map/31-materials-research-03.md` | 100 | 173,086 |
-| `map/31-materials-research-04.md` | 100 | 215,370 |
-| `map/31-materials-research-05.md` | 100 | 174,719 |
-| `map/31-materials-research-06.md` | 100 | 179,749 |
-| `map/31-materials-research-07.md` | 100 | 220,577 |
-| `map/31-materials-research-08.md` | 100 | 167,738 |
-| `map/31-materials-research-09.md` | 100 | 249,605 |
-| `map/31-materials-research-10.md` | 100 | 245,282 |
-| `map/31-materials-research-11.md` | 100 | 231,242 |
-| `map/31-materials-research-12.md` | 100 | 253,836 |
-| `map/31-materials-research-13.md` | 100 | 252,084 |
-| `map/31-materials-research-14.md` | 100 | 334,031 |
-| `map/31-materials-research-15.md` | 100 | 260,059 |
-| `map/31-materials-research-16.md` | 100 | 246,482 |
-| `map/31-materials-research-17.md` | 100 | 222,366 |
-| `map/31-materials-research-18.md` | 100 | 246,193 |
-| `map/31-materials-research-19.md` | 100 | 255,170 |
-| `map/31-materials-research-20.md` | 100 | 220,572 |
-| `map/31-materials-research-21.md` | 100 | 241,201 |
-| `map/31-materials-research-22.md` | 100 | 247,378 |
-| `map/31-materials-research-23.md` | 100 | 230,571 |
-| `map/31-materials-research-24.md` | 100 | 258,649 |
-| `map/31-materials-research-25.md` | 100 | 260,339 |
-| `map/31-materials-research-26.md` | 100 | 236,163 |
+| `map/31-materials-research-02.md` | 100 | 167,405 |
+| `map/31-materials-research-03.md` | 100 | 173,447 |
+| `map/31-materials-research-04.md` | 100 | 220,129 |
+| `map/31-materials-research-05.md` | 100 | 177,038 |
+| `map/31-materials-research-06.md` | 100 | 183,058 |
+| `map/31-materials-research-07.md` | 100 | 225,256 |
+| `map/31-materials-research-08.md` | 100 | 168,119 |
+| `map/31-materials-research-09.md` | 100 | 260,365 |
+| `map/31-materials-research-10.md` | 100 | 252,255 |
+| `map/31-materials-research-11.md` | 100 | 240,371 |
+| `map/31-materials-research-12.md` | 100 | 258,306 |
+| `map/31-materials-research-13.md` | 100 | 255,486 |
+| `map/31-materials-research-14.md` | 100 | 338,408 |
+| `map/31-materials-research-15.md` | 100 | 260,564 |
+| `map/31-materials-research-16.md` | 100 | 250,088 |
+| `map/31-materials-research-17.md` | 100 | 224,958 |
+| `map/31-materials-research-18.md` | 100 | 249,401 |
+| `map/31-materials-research-19.md` | 100 | 255,612 |
+| `map/31-materials-research-20.md` | 100 | 221,429 |
+| `map/31-materials-research-21.md` | 100 | 245,911 |
+| `map/31-materials-research-22.md` | 100 | 248,647 |
+| `map/31-materials-research-23.md` | 100 | 231,807 |
+| `map/31-materials-research-24.md` | 100 | 259,812 |
+| `map/31-materials-research-25.md` | 100 | 265,493 |
+| `map/31-materials-research-26.md` | 100 | 241,698 |
 | `map/31-materials-research-27.md` | 100 | 221,141 |
 | `map/31-materials-research-28.md` | 100 | 209,251 |
-| `map/31-materials-research-29.md` | 100 | 264,177 |
-| `map/31-materials-research-30.md` | 100 | 232,736 |
-| `map/31-materials-research-31.md` | 100 | 208,066 |
-| `map/31-materials-research-32.md` | 100 | 198,638 |
-| `map/31-materials-research-33.md` | 100 | 207,393 |
-| `map/31-materials-research-34.md` | 37 | 87,287 |
-| `map/32-materials-trace-01.md` | 68 | 166,722 |
+| `map/31-materials-research-29.md` | 100 | 272,924 |
+| `map/31-materials-research-30.md` | 100 | 237,225 |
+| `map/31-materials-research-31.md` | 100 | 212,887 |
+| `map/31-materials-research-32.md` | 100 | 202,898 |
+| `map/31-materials-research-33.md` | 100 | 208,818 |
+| `map/31-materials-research-34.md` | 37 | 87,651 |
+| `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
 | `map/40-relations-03.md` | 500 | 112,564 |
@@ -7585,8 +7586,8 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 50 | 36,940 |
-| `map/50-sessions-22.md` | 7 | 5,576 |
+| `map/50-sessions-21.md` | 50 | 37,185 |
+| `map/50-sessions-22.md` | 8 | 5,951 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,073 |
