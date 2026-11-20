@@ -1862,7 +1862,15 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # 2026-11-20 (SESSION-20261120-749911): this session adds one new report file
         # (readings/2026-11-20-cognitive-science-ten-sources-on-human-and-ai-self.md).
         # Measured files = 1,061. Soft files raised from 1,060 to 1,065.
-        soft_files=1065,
+        # 2026-11-20 (SESSION-20261120-baf951, merge of origin/main 2e35630 / PR #986,
+        # 1,065 -> 1,066): main added readings/2026-11-20-individual-thought-memory-and-
+        # self-in-brain-neuroscience.md (taking origin/main to 1,065) while this branch
+        # added one Consolidator report (readings/2026-11-20-two-stage-gate-and-
+        # intergenerational-audit.md; 0 new ledger shards via Step 8-2 raw-byte append).
+        # Measured union after merge = 1,066 files / 35.22 MiB of 37.00 MiB soft_bytes.
+        # Minimal +1 raise of soft_files only; soft_bytes / hard_bytes / hard_files /
+        # per-report caps unchanged. Not automatic.
+        soft_files=1066,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
