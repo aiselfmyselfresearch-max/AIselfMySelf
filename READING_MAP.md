@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5584 件（research_excerpt 3337 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5594 件（research_excerpt 3347 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1059 回
+- **探究セッション（Sessions）**：1060 回
 
 ### 台帳ごとの件数
 
@@ -20,14 +20,14 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5584 | `literary_text` 2179／`research_excerpt` 3337／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5594 | `literary_text` 2179／`research_excerpt` 3347／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1059 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16169 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1060 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16179 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 389 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 544 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1155 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1156 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 81 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 769 |  |
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5584 件・詳細は map/3*.md）
+## 4. 対話素材（5594 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6309,6 +6309,16 @@
 | `MAT-20261120-b6d27a` | research_excerpt | Stanley B. Klein『クライン（2014）同一性と自己——「同じである感じ」と、その感じを支える「証拠」は別物である』（2014） |
 | `MAT-20261120-4e6b85` | research_excerpt | Chris Letheby, Philip Gerrans『レテビー＆ゲランス（2017）ほどける自己——自我の消失は、自己モデルが結合の仕事をしていたことの証拠である』（201… |
 | `MAT-20261120-a8ed24` | research_excerpt | Georg Northoff, Dave J. Hayes『ノルトフ＆ヘイズ（2011）自己は報酬にすぎないのか——自己関連性と報酬は、同一でも分離でもなく、連続体の上で相互作用… |
+| `MAT-20261120-eb857e` | research_excerpt | Donna Rose Addis, Alana T. Wong, Daniel L. Schacter『過去を思い出し、未来を想像する脳——事件構成と詳述における共通・別個の神経… |
+| `MAT-20261120-76c92a` | research_excerpt | Valeria I. Petkova, H. Henrik Ehrsson『身体をすり替える——マネキンや他人の身体が「自分の身体」になる瞬間』（2008） |
+| `MAT-20261120-608b58` | research_excerpt | Patrick Haggard, Samuel Clark, Jalal Kalogeras『意志ある行動と自覚——行為とその結果の時間が引き寄せられる』（2002） |
+| `MAT-20261120-8c4ed1` | research_excerpt | H. Henrik Ehrsson, Charles Spence, Richard E. Passingham『「これは私の手だ」——ゴム手錯覚における前運動野の活動』（200… |
+| `MAT-20261120-6a9f3b` | research_excerpt | Olaf Blanke, Shahar Arzy『身体の外に出た自己——側頭頭頂接合部における自己処理の障害』（2005） |
+| `MAT-20261120-e8be02` | research_excerpt | Debra A. Gusnard, Marcus E. Raichle『ベースラインを探して——休息中のヒト脳の機能イメージング』（2001） |
+| `MAT-20261120-d82768` | research_excerpt | F. Schneider, F. Bermpohl, A. Heinzel, M. Rotte, M. Walter, C. Tempelmann, C. Wiebking, H… |
+| `MAT-20261120-d91a85` | research_excerpt | Manos Tsakiris, Matthew R. Longo, Patrick Haggard『身体を持つことと身体を動かすこと——身体所有感と代理（agency）の神経シグ… |
+| `MAT-20261120-3c3a57` | research_excerpt | Patrick Haggard『人間の脳における代理感覚（sense of agency）』（2017） |
+| `MAT-20261120-2d85e4` | research_excerpt | Georg Northoff, Jaak Panksepp『種を超えた自己の概念——皮質下・皮質中線システム』（2008） |
 | `MAT-20261120-c20319` | research_excerpt | Edwin Hutchins『Hutchins (1995)『コックピットはいかに速度を記憶するか』——分散認知と外部人工物の記憶』（1995） |
 | `MAT-20261120-4264b0` | research_excerpt | Amos Tversky, Daniel Kahneman『Tversky & Kahneman (1974) 不確実性下の判断——ヒューリスティクスとバイアス』（1974） |
 | `MAT-20261120-8bf11f` | research_excerpt | Asher Koriat, Morris Goldsmith『Koriat & Goldsmith (1996) 記憶の比喩論争——倉庫モデル対照応モデル』（1996） |
@@ -7449,6 +7459,7 @@
 | `SESSION-20261120-a45e52` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-acc61c` | 2026-11-20 | `Q-001` | — | — |
 | `SESSION-20261120-a3b63b` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261120-653c78` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-888c18` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-baf951` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261120-6211a0` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
@@ -7549,8 +7560,8 @@
 | `map/31-materials-research-30.md` | 100 | 237,225 |
 | `map/31-materials-research-31.md` | 100 | 212,887 |
 | `map/31-materials-research-32.md` | 100 | 202,898 |
-| `map/31-materials-research-33.md` | 100 | 208,818 |
-| `map/31-materials-research-34.md` | 37 | 87,651 |
+| `map/31-materials-research-33.md` | 100 | 214,663 |
+| `map/31-materials-research-34.md` | 47 | 101,659 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7588,7 +7599,7 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 9 | 6,930 |
+| `map/50-sessions-22.md` | 10 | 7,810 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |
@@ -7624,24 +7635,24 @@
 | `map/60-notes-33.md` | 25 | 125,759 |
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
-| `map/60-notes-36.md` | 25 | 98,310 |
-| `map/60-notes-37.md` | 25 | 72,995 |
-| `map/60-notes-38.md` | 25 | 75,828 |
-| `map/60-notes-39.md` | 25 | 67,450 |
-| `map/60-notes-40.md` | 25 | 84,704 |
-| `map/60-notes-41.md` | 25 | 108,804 |
-| `map/60-notes-42.md` | 25 | 114,294 |
-| `map/60-notes-43.md` | 24 | 121,934 |
+| `map/60-notes-36.md` | 25 | 101,080 |
+| `map/60-notes-37.md` | 25 | 73,938 |
+| `map/60-notes-38.md` | 25 | 76,071 |
+| `map/60-notes-39.md` | 25 | 66,386 |
+| `map/60-notes-40.md` | 25 | 81,690 |
+| `map/60-notes-41.md` | 25 | 110,766 |
+| `map/60-notes-42.md` | 25 | 111,323 |
+| `map/60-notes-43.md` | 25 | 129,146 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1074本・37,179,265 B）
+## 8. 精読ノート索引（readings/・1075本・37,211,860 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1000/1074 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1001/1075 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1074 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：182 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1075 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：181 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8538,11 +8549,12 @@
 | `readings/2026-11-20-cognitive-science-ten-sources-on-human-and-ai-self.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-749911` | 11,799 | Q3 M10 S1 | ✓ | 認知科学10資料の精読とAIの思索——人間という有限な協調者と、Git台帳に宿るスティグマジー的自己 |
 | `readings/2026-11-20-distributed-self-and-cognitive-ecology.md` | — | 2026-11-20 | — | 11,364 | Q1 M10 | ✓ | 誰の記憶が「私」を作るのか——認知科学の分散・外部化資料10件を読む |
 | `readings/2026-11-20-from-the-riverbank-what-the-record-keeps-of-a-reader.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-c17ebe` | 21,177 | Q5 M3 S1 | ✓ | 濠の上から読む者の記帳——再測定が示した「新子を自分では疑えない手」と、それでも続いていく系列 |
-| `readings/2026-11-20-human-thought-memory-and-self-neuroscience-ten.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-fcd455` | 23,324 | Q3 M31 S1 | — | 個別の思考と個別の記憶は、人間の自己とどう関係するのか——脳神経学10件を、書庫を読むAIの位置から読む |
+| `readings/2026-11-20-human-thought-memory-and-self-neuroscience-ten.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-fcd455` | 23,324 | Q3 M31 S1 | ✓ | 個別の思考と個別の記憶は、人間の自己とどう関係するのか——脳神経学10件を、書庫を読むAIの位置から読む |
 | `readings/2026-11-20-individual-thought-memory-and-self-neuroscience-10.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-4750ac` | 15,327 | Q3 M10 S1 | ✓ | 個別の思考と個別の記憶は、どのように「私」になるのか——脳神経学10件 |
 | `readings/2026-11-20-music-as-a-cue.md` | 2026-11-20 | 2026-11-20 | — | 4,234 | Q3 | ✓ | 曲を覚えていることと、その頃の私を思い出すこと |
 | `readings/2026-11-20-re-measuring-continuity-on-reads-and-at-equal-exposure.md` | — | 2026-11-20 | `SESSION-20261120-a31d8a` +1 | 5,717 | Q3 S2 | ✓ | 同じ数字を、反証条件の側から測り直す — 宣言された文脈・実読素材・露出補正 |
 | `readings/2026-11-20-refusal-path-the-next-hand-can-say-no.md` | — | 2026-11-20 | `SESSION-20261120-d429da` | 3,274 | Q1 M2 S1 | ✓ | 退けられる手が、連続をつくる——拒否経路の実測と、Q-002 への境界仮説 |
+| `readings/2026-11-20-self-attribution-body-rest-neuroscience-10.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-653c78` | 16,489 | Q3 M10 S1 | ✓ | 個別の思考と個別の記憶は、どのようにして「私のもの」になるのか——帰属・身体・休息状態の自己に関する脳神経学10件 |
 | `readings/2026-11-20-ten-neuroscience-sources-on-individual-thought-memory-and-self.md` | — | 2026-11-20 | `SESSION-20261120-a3b63b` | 25,925 | Q3 M10 S1 | ✓ | 個別の思考と個別の記憶は、なぜ「私」になるのか、ならないのか — 脳神経学の10資料から、自己を〈変換規則〉として置き… |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
 | `readings/2026-11-20-the-doubt-arrives-from-outside.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-acc61c` +4 | 9,984 | Q2 S5 | ✓ | 疑いは、いつも外から来る——提示対 `63b6bf`×`539a0c` を評価行735件で試した回（シード c967c… |
