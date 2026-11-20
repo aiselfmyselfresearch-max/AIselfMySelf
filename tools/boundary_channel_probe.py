@@ -17,12 +17,11 @@ Arms
 ----
 position   Same errata content, addressed to different positions relative to the
            target. Tests ccc1d8 limb 1.
-content    Same address, wildly different content (including verdict=holds and
-           status=withdrawn). Tests ccc1d8 limb 2 -- and exposes that the engine
-           reads neither field, so limb 2 CANNOT be settled by this channel.
+content    Same address, different verdict/status; tests whether the direct
+           penalty distinguishes a live contradiction from a spent correction.
 rule       Vary only the 1-hop admission predicate, every ledger row untouched.
-           Requires injected traffic: the live ledger has no evaluation-borne
-           1-hop flag, so an unpowered run returns a meaningless all-zero.
+           A synthetic correction makes the comparison attributable: compare
+           closed, historical supports-only, and current all-verdict rules.
 mix        Evaluation channel: hold row count, targets and positions fixed;
            change only the verdict mix. Tests 20fa8c limb 1.  "Positions
            fixed" clears BOTH heir fields (``spawned_hypothesis_ids`` and,
@@ -60,12 +59,17 @@ QUESTION = "Q-003"
 # The engine line that decides which relations admit a 1-hop errata flag.
 ADMISSION_LINE = (
     '            + [e["evaluation_id"] for e in evals_by_hyp.get(hid, []) '
-    'if e.get("verdict") == "supports"]'
+    'if e.get("evaluation_id")]'
 )
 RULE_REPLACEMENTS = {
     "closed": "            + []",
+    "supports_only": (
+        '            + [e["evaluation_id"] for e in evals_by_hyp.get(hid, []) '
+        'if e.get("evaluation_id") and e.get("verdict") == "supports"]'
+    ),
     "current": ADMISSION_LINE,
-    "widened": '            + [e["evaluation_id"] for e in evals_by_hyp.get(hid, [])]',
+    # Historical name retained for consumers: the old widening is now current.
+    "widened": ADMISSION_LINE,
 }
 
 
@@ -89,9 +93,9 @@ def errata_row(subject_id: str, subject_type: str = "hypothesis", **over: Any) -
 
 def _with_rule(channel: str, source: str) -> Any:
     """Recompile belief_state with a different admission rule. File is not touched."""
-    if ADMISSION_LINE not in source:
+    if source.count(ADMISSION_LINE) != 1:
         raise RuntimeError(
-            "belief_state.py no longer contains the expected 1-hop admission line; "
+            "belief_state.py no longer contains exactly one expected 1-hop admission line; "
             "re-read the engine before trusting this probe"
         )
     mod = types.ModuleType("belief_state_rule_" + channel)
@@ -240,8 +244,10 @@ def run(target: str = DEFAULT_TARGET, question: str = QUESTION,
     # ---- live reachability of the direct-penalty branch -----------------
     idx = bs.build_errata_index(cols["errata"])
     direct = [hid for hid in cols["hypotheses"] if idx.get(hid)]
+    penalising = [hid for hid in direct if any(bs.errata_is_live_correction(e) for e in idx[hid])]
     out["direct_penalty_branch"] = {
         "live_hypotheses_with_a_direct_errata_row": len(direct),
+        "live_hypotheses_with_penalising_direct_errata": len(penalising),
         "live_hypothesis_count": len(cols["hypotheses"]),
         "live_errata_rows": len(cols["errata"]),
         # Measured, not hardcoded: these used to be literal False, which went stale
@@ -255,9 +261,9 @@ def run(target: str = DEFAULT_TARGET, question: str = QUESTION,
             round(v["d_log_odds"], 6) for k, v in out["arms"]["content"].items()
             if k in ("contradicted_open", "contradicted_withdrawn")
         }) > 1,
-        "comment": "The -0.60 branch is latent on the live ledger: no live hypothesis "
-                   "carries a direct errata row. Whether the branch reads verdict and "
-                   "status is measured from the content arm above, not asserted here.",
+        "comment": "Direct addresses include unmeasurable or withdrawn corrections; "
+                   "the separate penalising count uses the live-verdict/status gate. "
+                   "The content arm measures whether the engine reads those fields.",
     }
     return out
 
@@ -313,8 +319,9 @@ def render(res: dict[str, Any]) -> str:
     d = res.get("direct_penalty_branch")
     if d:
         lines.append(f"direct -0.60 branch: {d['live_hypotheses_with_a_direct_errata_row']}"
-                     f"/{d['live_hypothesis_count']} hypotheses reachable, "
-                     f"{d['live_errata_rows']} errata rows live")
+                     f"/{d['live_hypothesis_count']} hypotheses addressed, "
+                     f"{d['live_hypotheses_with_penalising_direct_errata']} with live contradictions, "
+                     f"{d['live_errata_rows']} total errata rows")
     return "\n".join(lines).rstrip()
 
 

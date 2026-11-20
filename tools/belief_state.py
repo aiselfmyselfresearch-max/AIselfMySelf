@@ -927,14 +927,18 @@ def compute_belief_state(
                     log_odds[pid] -= 0.80 * delta
                     adversarial_touches[pid] += 1
 
-    # 1-hop transitive errata check on hypotheses and their supporting materials/notes/evaluations
+    # 1-hop visibility for a hypothesis, its cited materials/notes, and every
+    # evaluation directly targeting it. A narrowing or refuting evaluation can
+    # change the posterior just as a support can: limiting flags to supports
+    # hid corrections on those rows even though their weights still applied.
+    # This changes visibility only; a flag is not a void or a direct penalty.
     hyp_errata: dict[str, list[str]] = defaultdict(list)
     for hid, hyp in hypotheses.items():
         direct_errs = [e["errata_id"] for e in errata_by_target.get(hid, []) if "errata_id" in e]
         ref_ids = (
             list(hyp.get("supporting_material_ids") or [])
             + list(hyp.get("source_note_ids") or [])
-            + [e["evaluation_id"] for e in evals_by_hyp.get(hid, []) if e.get("verdict") == "supports"]
+            + [e["evaluation_id"] for e in evals_by_hyp.get(hid, []) if e.get("evaluation_id")]
         )
         hop_errs: list[str] = []
         for rid in ref_ids:

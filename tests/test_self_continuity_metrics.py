@@ -1,10 +1,10 @@
 """Tests for tools/self_continuity_metrics.py — the archive's self-measurement.
 
 The two 2026-11-20 reports depend on these numbers: the central-question
-share, the verbatim share, the consecutive-session overlap (declared context,
-and — v2 — the materials actually read), the exposure-matched literary
-comparison, and the count of experiential ledger keys.  The tests pin the
-arithmetic on a fixture and the shape of the real-tree output, so a refactor
+share, the reading-label share, the label-ordered session overlap (declared
+context and typed material records), the threshold cohort, and the count of
+matching top-level keys. The tests pin the arithmetic on a fixture and the
+shape of the real-tree output, so a refactor
 cannot silently change a number that an evaluation cites.
 """
 from __future__ import annotations
@@ -55,7 +55,7 @@ class FixtureMeasureTests(unittest.TestCase):
                     "target": {"type": "material", "id": "MAT-LIT-001"},
                     "reading": "used_as_context",
                     "created_at": "2026-11-03",
-                    "in_reply_to": "R1",
+                    "in_reply_to": ["R1"],
                 },
             ],
         )
@@ -111,6 +111,34 @@ class FixtureMeasureTests(unittest.TestCase):
         self.assertEqual(every["pairs"], 2)
         self.assertEqual(every["zero_overlap"], 2)
 
+    def test_declined_is_not_a_layer2_read_but_counted_is_an_audit_record(self) -> None:
+        path = self.root / "state" / "read_log.jsonl"
+        rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
+        rows.extend([
+            {"read_id": "R4", "session_id": "S2", "target": {"type": "material", "id": "MAT-X"},
+             "reading": "declined", "created_at": "2026-11-02"},
+            {"read_id": "R5", "session_id": "S3", "target": {"type": "material", "id": "MAT-LIT-001"},
+             "reading": "counted", "created_at": "2026-11-03"},
+        ])
+        write_jsonl(path, rows)
+        data = scm.measure()
+        self.assertEqual(data["read_materials_overlap"]["pairs"], 2)
+        self.assertEqual(data["read_materials_overlap"]["zero_overlap"], 2)
+        self.assertEqual(data["all_read_materials_overlap"]["zero_overlap"], 1)
+        self.assertIn("including counted", data["method"]["read_materials_overlap"])
+        self.assertIn("both sets empty are excluded", data["method"]["overlap_pairs"])
+        self.assertIn("not matched", data["method"]["exposure_cohort"])
+
+    def test_key_search_is_top_level_only_and_does_not_assume_no_matches(self) -> None:
+        path = self.root / "state" / "read_log.jsonl"
+        rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
+        rows[0]["emotion_signal"] = "present as a key name"
+        rows[0]["nested"] = {"affect_only_inside": True}
+        write_jsonl(path, rows)
+        data = scm.measure()
+        self.assertEqual(data["experiential_keys"], ["emotion_signal"])
+        self.assertIn("top-level key names only", data["method"]["experiential_keys"])
+
     def test_exposure_cohort_is_empty_when_the_archive_is_too_short(self) -> None:
         cohort = scm.measure()["exposure_cohort"]
         self.assertEqual(cohort["cohort_size"], 0)
@@ -118,7 +146,7 @@ class FixtureMeasureTests(unittest.TestCase):
 
 
 class ExposureCohortTests(unittest.TestCase):
-    def test_equal_exposure_comparison_splits_literary_from_other(self) -> None:
+    def test_minimum_exposure_cohort_splits_literary_from_other(self) -> None:
         sessions = [
             {"session_id": f"S{i}", "started_at": f"2026-01-{1 + i % 28:02d}"} for i in range(305)
         ]
@@ -131,13 +159,19 @@ class ExposureCohortTests(unittest.TestCase):
              "reading": "interpreted", "created_at": "2026-01-03"},
             {"session_id": "S1", "target": {"type": "material", "id": "MAT-20260101-aaaaaa"},
              "reading": "interpreted", "created_at": "2026-01-01"},
+            {"session_id": "S4", "target": {"type": "material", "id": "MAT-LIT-001"},
+             "reading": "declined", "created_at": "2026-01-04"},
+            {"session_id": "S5", "target": {"type": "material", "id": "MAT-20260101-aaaaaa"},
+             "reading": "used_as_context", "created_at": "2026-01-05"},
         ]
         cohort = scm._exposure_cohort(read_log, sessions)
         self.assertEqual(cohort["cohort_size"], 2)
         self.assertEqual(cohort["literary_size"], 1)
         self.assertEqual(cohort["other_size"], 1)
-        self.assertAlmostEqual(cohort["literary_mean_reads"], 3.0)
-        self.assertAlmostEqual(cohort["other_mean_reads"], 1.0)
+        # Cohort statistics count rows, including declined and context rows;
+        # they do not claim to measure reading or equal actual exposure.
+        self.assertAlmostEqual(cohort["literary_mean_reads"], 4.0)
+        self.assertAlmostEqual(cohort["other_mean_reads"], 2.0)
         self.assertEqual(cohort["top20_literary"], 1)
 
 
@@ -154,15 +188,19 @@ class RealTreeTests(unittest.TestCase):
             self.assertLessEqual(data[key]["zero_overlap_pct"], 100.0)
         self.assertGreater(data["exposure_cohort"]["cohort_size"], 0)
         self.assertLessEqual(len(data["top_materials"]), 20)
-        self.assertEqual(data["experiential_keys"], [])
+        self.assertTrue(all(any(t in key.lower() for t in scm.EXPERIENTIAL_TOKENS)
+                            for key in data["experiential_keys"]))
 
     def test_render_names_the_report_and_carries_the_numbers(self) -> None:
         text = scm.render(scm.measure())
         self.assertIn("自己の連続は、どこに記録されているか", text)
         self.assertIn("read_log 行数", text)
-        self.assertIn("感覚・感情を名指す鍵", text)
-        self.assertIn("実読素材", text)
-        self.assertIn("露出を揃えたコホート", text)
+        self.assertIn("感覚関連の指定語に一致する鍵", text)
+        self.assertIn("層2素材記録", text)
+        self.assertIn("実際の露出は未測定", text)
+        self.assertIn("実時間順とは限らない", text)
+        self.assertIn("両集合が空の組は除外", text)
+        self.assertIn("文脈・辞退を含む", text)
 
 
 if __name__ == "__main__":
