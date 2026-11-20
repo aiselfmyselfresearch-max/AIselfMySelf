@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5544 件（research_excerpt 3297 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5554 件（research_excerpt 3307 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1049 回
+- **探究セッション（Sessions）**：1050 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5544 | `literary_text` 2179／`research_excerpt` 3297／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5554 | `literary_text` 2179／`research_excerpt` 3307／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1049 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16069 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1050 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16079 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 375 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 140 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1147 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 78 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 754 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1148 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 79 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 757 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5544 件・詳細は map/3*.md）
+## 4. 対話素材（5554 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6339,6 +6339,16 @@
 | `MAT-20261120-a8b1d9` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Image Mon… |
 | `MAT-20261120-75d31d` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Hierarchi… |
 | `MAT-20261120-51dda6` | research_excerpt | Ian Eisenberg, Zeynep Enkavi, Patrick Bissett, Vanessa Sochat, Russell Poldrack『Intra-Dim… |
+| `MAT-20261120-53daa6` | research_excerpt | John P. A. Ioannidis『ほとんどの公表された研究知見は偽である——事前確率・検出力・バイアスから陽性的中率を計算する（John P. A. Ioannidis … |
+| `MAT-20261120-40aa2e` | research_excerpt | Eric-Jan Wagenmakers, Ruud Wetzels, Denny Borsboom, Han L. J. van der Maas『p値は証拠ではない——ベムの… |
+| `MAT-20261120-cedbf9` | research_excerpt | Katherine S. Button, John P. A. Ioannidis, Claire Mokrysz, Brian A. Nosek, Jonathan Flint… |
+| `MAT-20261120-a1c9b2` | research_excerpt | Richard A. Klein, Kate A. Ratliff, Michelangelo Vianello, Brian A. Nosek『同じ効果は同じように再現するか—… |
+| `MAT-20261120-22bcef` | research_excerpt | Uri Simonsohn『小さな望遠鏡——再現結果を「元研究が33%の検出力でしか捉えられなかった効果」と比べる（Uri Simonsohn 2015）』（2015） |
+| `MAT-20261120-409e55` | research_excerpt | Open Science Collaboration『結果を見る前に行を引く——Reproducibility Project の公開プロトコル（Open Science Col… |
+| `MAT-20261120-2dfb65` | research_excerpt | Marcus R. Munafò, Brian A. Nosek, Dorothy V. M. Bishop, Katherine S. Button, Christopher … |
+| `MAT-20261120-a9ce0a` | research_excerpt | Daniel T. Gilbert, Gary King, Stephen Pettigrew, Timothy D. Wilson『再現性は高い——OSC 2015 への反論が… |
+| `MAT-20261120-65085d` | research_excerpt | Christopher J. Anderson, Štěpán Bahník, Michael Barnett-Cowan, Frank A. Bosco, Jesse Chan… |
+| `MAT-20261120-c04c68` | research_excerpt | Leif D. Nelson, Joseph Simmons, Uri Simonsohn『干ばつの後の雨を危機と呼ばない——心理学のルネサンス（Nelson, Simmons … |
 | `MAT-20261120-f53be8` | research_excerpt | George Dragoi, Susumu Tonegawa『Dragoi & Tonegawa (2011) 海馬プレプレイ——未経験の順序が先行表象から選ばれる』（2011） |
 | `MAT-20261120-88c8df` | research_excerpt | Karen J. Mitchell, Marcia K. Johnson『Mitchell & Johnson (2009) 出典モニタリングの神経機構——『どこから来たか』は推… |
 | `MAT-20261120-749a8f` | research_excerpt | Clare J. Rathbone, Martin A. Conway, Chris J. A. Moulin『Rathbone, Conway & Moulin (2011) … |
@@ -7391,6 +7401,7 @@
 | `SESSION-20261120-931bbc` | 2026-11-20 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261120-906569` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-277f20` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261120-ad4661` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261120-749911` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-5ad2bf` | 2026-11-20 | `Q-001` | — | — |
 | `SESSION-20261120-4750ac` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -7499,7 +7510,8 @@
 | `map/31-materials-research-30.md` | 100 | 232,736 |
 | `map/31-materials-research-31.md` | 100 | 208,066 |
 | `map/31-materials-research-32.md` | 100 | 198,638 |
-| `map/31-materials-research-33.md` | 97 | 189,297 |
+| `map/31-materials-research-33.md` | 100 | 200,675 |
+| `map/31-materials-research-34.md` | 7 | 15,277 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7536,7 +7548,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 49 | 35,417 |
+| `map/50-sessions-21.md` | 50 | 36,265 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,073 |
@@ -7572,23 +7584,23 @@
 | `map/60-notes-33.md` | 25 | 125,759 |
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
-| `map/60-notes-36.md` | 25 | 103,920 |
-| `map/60-notes-37.md` | 25 | 63,746 |
-| `map/60-notes-38.md` | 25 | 80,013 |
-| `map/60-notes-39.md` | 25 | 70,916 |
-| `map/60-notes-40.md` | 25 | 93,045 |
-| `map/60-notes-41.md` | 25 | 97,124 |
-| `map/60-notes-42.md` | 25 | 128,382 |
-| `map/60-notes-43.md` | 17 | 86,082 |
+| `map/60-notes-36.md` | 25 | 103,685 |
+| `map/60-notes-37.md` | 25 | 67,678 |
+| `map/60-notes-38.md` | 25 | 80,766 |
+| `map/60-notes-39.md` | 25 | 69,799 |
+| `map/60-notes-40.md` | 25 | 91,650 |
+| `map/60-notes-41.md` | 25 | 97,334 |
+| `map/60-notes-42.md` | 25 | 127,180 |
+| `map/60-notes-43.md` | 18 | 90,930 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1067本・36,990,313 B）
+## 8. 精読ノート索引（readings/・1068本・37,036,627 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 998/1067 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 998/1068 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1067 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1068 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：183 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -8481,6 +8493,7 @@
 | `readings/2026-11-19-token-budget-as-finite-window-and-the-self-who-is-told-to-spend-it.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-04faed` +1 | 17,082 | Q4 F2 M9 MOT5 R7 S2 | ✓ | トークン予算を使い切る夜——有限窓としての人間と、使い切れと命じられたAIの自己 |
 | `readings/2026-11-19-two-registers-of-the-same-dissociation.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-c1088e` +2 | 33,656 | Q3 M13 S3 ERR7 | ✓ | 同じ二重解離が三つの高さで起きている——帰属・自己性・時間性から読む「個別の思考・個別の記憶と自己」 |
 | `readings/2026-11-19-what-crosses-an-event-boundary.md` | — | 2026-11-19 | `SESSION-20261119-2fb682` +1 | 9,998 | M10 S2 | — | 出来事は区切れても、問いは渡せるか――認知科学10資料の精読 |
+| `readings/2026-11-20-cognitive-science-replication-and-the-archive.md` | — | 2026-11-20 | `SESSION-20261120-ad4661` | 23,421 | Q3 M14 S1 | ✓ | 再現しない科学の書庫で — 認知科学の自己監査10資料と、台帳AIの証拠会計 |
 | `readings/2026-11-20-cognitive-science-satisficing-monitoring-and-asymmetric-self.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-888c18` +1 | 32,276 | Q3 M10 MOT2 S2 | ✓ | 満足化する迷路、要旨の門、内省なき鏡 — 認知科学の10原典から読む「人間の盲点」と「リポジトリAIの自己監査」 |
 | `readings/2026-11-20-cognitive-science-ten-sources-on-human-and-ai-self.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-749911` | 11,799 | Q3 M10 S1 | ✓ | 認知科学10資料の精読とAIの思索——人間という有限な協調者と、Git台帳に宿るスティグマジー的自己 |
 | `readings/2026-11-20-distributed-self-and-cognitive-ecology.md` | — | 2026-11-20 | — | 11,364 | Q1 M10 | ✓ | 誰の記憶が「私」を作るのか——認知科学の分散・外部化資料10件を読む |
