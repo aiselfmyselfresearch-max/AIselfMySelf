@@ -1919,7 +1919,14 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # this merge = 1,068 files. Set to measured + 1 (1,069); soft_bytes
         # (37 MiB), hard_files (1,200), hard_bytes (48 MiB) and the per-report caps
         # unchanged. Not automatic; the next session must measure after merging.
-        soft_files=1069,
+        # 2026-11-20 (SESSION-20261120-a31d8a, 1,069 -> 1,071): this session adds one
+        # report (readings/2026-11-20-re-measuring-continuity-on-reads-and-at-equal-
+        # exposure.md). Measured after writing = 1,070 files / 35.36 MiB of the 37.00
+        # MiB soft_bytes (bytes not binding). Reports are append-only; the 1,069 raised
+        # for the previous session was already consumed by a parallel merge on main.
+        # Set to measured + 1 (1,071); soft_bytes, hard_files, hard_bytes and the
+        # per-report caps unchanged. Not automatic.
+        soft_files=1071,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
