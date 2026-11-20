@@ -158,6 +158,10 @@ python3 tools/associations.py --temporal-links          # 第一門：時間窓�
 python3 tools/associations.py --decay        # かつて読まれ、その後沈黙している荷重記録
 python3 tools/associations.py --write-map    # map/associations.md（git管理外）
 
+# 8.5. 台帳の自己測定（自己の連続がどこに記録されるか。読み取り専用）
+python3 tools/self_continuity_metrics.py         # 問いへの集中・逐語率・窓の非連続・語彙の不在
+python3 tools/self_continuity_metrics.py --json  # 同じ数値の機械可読出力
+
 # 9. 上流 ResearchOS との整合性検査・全単体テストの実行
 python3 tools/import_researchos.py --source-root /path/to/ResearchOS --check
 python3 -m unittest discover -s tests -v
