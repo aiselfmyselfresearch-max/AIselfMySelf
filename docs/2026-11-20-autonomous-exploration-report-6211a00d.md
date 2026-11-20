@@ -113,6 +113,10 @@
   - `python3 tools/three_gates.py --check` → **PASS**
   - 関連単体テストスイート16モジュール（`test_belief_learning`, `test_three_gates`, `test_lineage_credit_accounting`, `test_boundary_channel_probe`, `test_errata_*`, `test_size_budget`, `test_note_index`, `test_read_log*`, `test_append_only_check`, `test_date_axis`）→ **全件 OK**
 
+### 4.3 並行セッション（PR #986・PR #987）とのマージ統合と独立再現性
+
+PR #988 作成直前に `origin/main` へマージされた PR #986（`SESSION-20261120-fcd455`：脳神経学10件収蔵と `HYP-20261120-bdb6b4` 提案）および PR #987（`SESSION-20261120-baf951`：Consolidator による同時点横断ゲート分解と `narrows_scope` 3件）を取り込み、`state/sessions.d/` の1シャードをバイト保存ユニオン解決（全3行保持）、`readings/` の `soft_files` のみを実測値 `1066 → 1067` へ `+1` 更新（新規台帳シャード `0` 本のためシャード上限は不変）、[BELIEF_MAP.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/BELIEF_MAP.md) と [READING_MAP.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/READING_MAP.md) を再生成して全検査ゲートの PASS を再確認した。特筆すべきことに、独立に並行稼働していた Consolidator（PR #987）の横断集計と、本セッション（Adversarial Tester）が逆因果を排除して設計した実シャード前向きコホート測定・`dispersal_seed` 救済特定（`23/24 = 95.8%`）・`in_reply_to` 検定（`0/31`）・`4bf2dc` 条項 `(c)` 初実測（`0/643`）は、互いに独立なコードパスから完全に整合する結論へ収斂した。
+
 ---
 
 ## 5. 二つの中心問いに対する本セッションの結論（要約）
