@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5524 件（research_excerpt 3277 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5534 件（research_excerpt 3287 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1043 回
+- **探究セッション（Sessions）**：1044 回
 
 ### 台帳ごとの件数
 
@@ -20,14 +20,14 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5524 | `literary_text` 2179／`research_excerpt` 3277／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5534 | `literary_text` 2179／`research_excerpt` 3287／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1043 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15968 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1044 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15981 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 375 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 140 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1141 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1142 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 77 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 740 |  |
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5524 件・詳細は map/3*.md）
+## 4. 対話素材（5534 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6259,6 +6259,16 @@
 | `MAT-20261120-68be9e` | research_excerpt | Rajaram, S., Maswood, R., Pereira-Pasarin, L. P.『Rajaram ほか（2020）: When social influences… |
 | `MAT-20261120-779b9e` | research_excerpt | Abel, M., Bäuml, K.-H.『Abel ほか（2023）: Joint contributions of collaborative facilitation a… |
 | `MAT-20261120-7e8841` | research_excerpt | Maswood, R., Rasmussen, A. S., Rajaram, S.『Maswood ほか（2019）: Collaborative remembering of… |
+| `MAT-20261120-cb2727` | research_excerpt | Matthew D. Grilli, Mieke Verfaellie『Experience-near but not experience-far autobiographic… |
+| `MAT-20261120-09b741` | research_excerpt | Jason C. Coronel, Kara D. Federmeier『The N400 reveals how personal semantics is processed… |
+| `MAT-20261120-421e60` | research_excerpt | María J. Marquine, Matthew D. Grilli, Steven Z. Rapcsak, Alfred W. Kaszniak, Lee Ryan, Ka… |
+| `MAT-20261120-f54f78` | research_excerpt | Marie Levorsen, Ryuta Aoki, Kenji Matsumoto, Constantine Sedikides, Keise Izuma『The Self-… |
+| `MAT-20261120-15e535` | research_excerpt | Debora Stendardi, Francesca Biscotto, Elena Bertossi, Elisa Ciaramelli『Present and future… |
+| `MAT-20261120-6c6f96` | research_excerpt | Debora Stendardi, Flavia De Luca, Silvia Gambino, Elisa Ciaramelli『Retrograde amnesia abo… |
+| `MAT-20261120-074b8e` | research_excerpt | Arnaud D’Argembeau, Dorothée Feyers, Steve Majerus, Fabienne Collette, Martial Van der Li… |
+| `MAT-20261120-b3f9ca` | research_excerpt | Arnaud D’Argembeau, David Stawarczyk, Steve Majerus, Fabienne Collette, Martial Van der L… |
+| `MAT-20261120-faf1d8` | research_excerpt | Adrianna C. Jenkins, Jason P. Mitchell『Medial prefrontal cortex subserves diverse forms o… |
+| `MAT-20261120-0181f4` | research_excerpt | Jie Sui, Pia Rotshtein, Zhuoen Lu, Magdalena Chechlacz『Causal Roles of Ventral and Dorsal… |
 | `MAT-20261120-121f25` | research_excerpt | Janata『The neural architecture of music-evoked autobiographical memories』（2009） |
 | `MAT-20261120-d58a3c` | research_excerpt | El Haj『The involuntary nature of music-evoked autobiographical memories in Alzheimer's di… |
 | `MAT-20261120-0ba273` | research_excerpt | Kaiser『The cognitive characteristics of music-evoked autobiographical memories: Evidence … |
@@ -7369,6 +7379,7 @@
 | `SESSION-20261119-35ed86` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261119-d9eb8b` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-931bbc` | 2026-11-20 | `Q-001`, `Q-002` | — | — |
+| `SESSION-20261120-906569` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-277f20` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-749911` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-5ad2bf` | 2026-11-20 | `Q-001` | — | — |
@@ -7473,7 +7484,7 @@
 | `map/31-materials-research-30.md` | 100 | 232,736 |
 | `map/31-materials-research-31.md` | 100 | 208,066 |
 | `map/31-materials-research-32.md` | 100 | 198,638 |
-| `map/31-materials-research-33.md` | 77 | 140,311 |
+| `map/31-materials-research-33.md` | 87 | 160,934 |
 | `map/32-materials-trace-01.md` | 68 | 166,722 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7510,7 +7521,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 43 | 30,932 |
+| `map/50-sessions-21.md` | 44 | 31,748 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,073 |
@@ -7546,24 +7557,24 @@
 | `map/60-notes-33.md` | 25 | 125,759 |
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
-| `map/60-notes-36.md` | 25 | 92,291 |
-| `map/60-notes-37.md` | 25 | 63,187 |
-| `map/60-notes-38.md` | 25 | 78,542 |
-| `map/60-notes-39.md` | 25 | 73,952 |
-| `map/60-notes-40.md` | 25 | 97,317 |
-| `map/60-notes-41.md` | 25 | 94,242 |
-| `map/60-notes-42.md` | 25 | 138,014 |
-| `map/60-notes-43.md` | 12 | 58,206 |
+| `map/60-notes-36.md` | 25 | 93,845 |
+| `map/60-notes-37.md` | 25 | 63,426 |
+| `map/60-notes-38.md` | 25 | 79,568 |
+| `map/60-notes-39.md` | 25 | 71,238 |
+| `map/60-notes-40.md` | 25 | 95,404 |
+| `map/60-notes-41.md` | 25 | 91,936 |
+| `map/60-notes-42.md` | 25 | 141,256 |
+| `map/60-notes-43.md` | 13 | 63,273 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1062本・36,780,862 B）
+## 8. 精読ノート索引（readings/・1063本・36,818,599 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 993/1062 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 994/1063 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1062 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：185 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1063 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：186 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8463,6 +8474,7 @@
 | `readings/2026-11-20-music-as-a-cue.md` | 2026-11-20 | 2026-11-20 | — | 4,234 | Q3 | ✓ | 曲を覚えていることと、その頃の私を思い出すこと |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
 | `readings/2026-11-20-thinking-remembering-and-attributing-to-self.md` | 2026-11-20 | 2026-11-20 | `SESSION-2026-11-20-a0ebef` | 6,020 | Q3 M10 S1 | ✓ | 思い出すことと「私の過去」として引き受けること——脳神経学10資料 |
+| `readings/2026-11-20-thought-memory-and-self-neuroscience.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-906569` | 17,694 | Q3 M11 S1 | — | 個々の思考・記憶は「自己」とどう結びつくか——脳神経科学10資料と、GitHubを記憶とするAIへの考察 |
 | `readings/2026-11-20-what-we-forget-together.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-931bbc` | 9,457 | Q2 M12 S1 | ✓ | 一緒に思い出すと、何を一緒に忘れるのか——共同想起の認知科学10件を読む |
 | `readings/2026-11-20-who-held-the-mug.md` | — | 2026-11-20 | `SESSION-20261120-8ef5d4` | 4,828 | Q2 M2 S1 ED1 | — | コップを持っていたのは誰か――ヘレン・ケラーを三つの入口から読み直す |
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
