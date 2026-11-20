@@ -9,7 +9,7 @@
 - **モチーフ（Motifs）**：63 件
 - **対話素材（Materials）**：5494 件（research_excerpt 3247 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
-- **解釈的関係（Relations）**：7081 件
+- **解釈的関係（Relations）**：7091 件
 - **探究セッション（Sessions）**：1039 回
 
 ### 台帳ごとの件数
@@ -22,7 +22,7 @@
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5494 | `literary_text` 2179／`research_excerpt` 3247／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
-| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7081 | うち断片↔断片 619 |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
 | セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1039 |  |
 | 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15911 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 375 |  |
@@ -7344,7 +7344,7 @@
 | `SESSION-20261120-8ef5d4` | 2026-11-20 | `Q-001`, `Q-002` | — | — |
 | `SESSION-2026-11-20-a0ebef` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（7081 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（7091 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
@@ -7353,7 +7353,7 @@
 | 切断・割り込み (interrupts) | 244 |
 | 未解決のまま開く (leaves_open) | 923 |
 | 比喩的共鳴 (metaphorically_resonates) | 203 |
-| 枠組みの組み替え (reframes) | 821 |
+| 枠組みの組み替え (reframes) | 831 |
 | 応答 (responds_to) | 1839 |
 | 変奏・変形 (transforms) | 344 |
 
@@ -7455,7 +7455,7 @@
 | `map/40-relations-12.md` | 500 | 176,838 |
 | `map/40-relations-13.md` | 500 | 172,292 |
 | `map/40-relations-14.md` | 500 | 157,803 |
-| `map/40-relations-15.md` | 81 | 28,277 |
+| `map/40-relations-15.md` | 91 | 30,973 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
