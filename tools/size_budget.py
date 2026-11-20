@@ -1870,7 +1870,13 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # Measured union after merge = 1,066 files / 35.22 MiB of 37.00 MiB soft_bytes.
         # Minimal +1 raise of soft_files only; soft_bytes / hard_bytes / hard_files /
         # per-report caps unchanged. Not automatic.
-        soft_files=1066,
+        # 2026-11-20 (SESSION-20261120-6211a0, merge of origin/main 1ba2c14 / PR #986
+        # & PR #987, 1,066 -> 1,067): main added two reports while this branch added
+        # one Adversarial Tester report (readings/2026-11-20-two-tier-gist-gate-and-the-
+        # opaque-auditor.md; 0 new ledger shards via Procedure 8-2 raw-byte append).
+        # Measured union after merge = 1,067 files (within 37.00 MiB soft_bytes).
+        # Minimal +1 raise of soft_files only; all byte and per-file caps unchanged.
+        soft_files=1067,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
