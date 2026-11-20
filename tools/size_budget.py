@@ -654,7 +654,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-19 (SESSION-20261119-d9eb8b): one new read_log shard, 152 -> 153 files; +1 slot.
         # 2026-11-20: measured union after the collaborative-memory reading shard.
         # 2026-11-20: Keller collation adds one read_log file; byte ceilings unchanged.
-        soft_shards=157,
+        # 2026-11-20 (SESSION-20261120-c17ebe, 157 -> 159): this session adds TWO new
+        # read_log shards: 2026-11-20-80e2f57b5c30.jsonl (14 hand-written rows) and the
+        # machine backfill's own fresh shard 2026-11-20-9a15d3ef5dd5.jsonl (7
+        # used_as_context rows for this session's context_material_ids, created by
+        # read_log_backfill.py --write, which always opens its own shard).
+        # Measured union after both = 159 files. One-slot-per-shard raise of soft only;
+        # hard 160 unchanged; bytes not binding. Not automatic.
+        soft_shards=159,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -925,8 +932,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-19 (SESSION-20261119-d9eb8b): one new sessions shard, 157 -> 158 files; +1 slot.
         # 2026-11-20: measured union after the collaborative-memory reading shard.
         # 2026-11-20: Keller collation adds one sessions file; byte ceilings unchanged.
-        soft_shards=162,
-        hard_shards=162,
+        # 2026-11-20 (SESSION-20261120-c17ebe, 162 -> 163): this session adds one new
+        # sessions shard (2026-11-20-6e0b11326959.jsonl); measured union after writing =
+        # 163 files. Same conditions as the 2026-11-19/20 precedents: reports and rows
+        # are append-only, no row can be moved into another session's shard after the
+        # fact, and consolidation debt remains unpaid (not discharged here). Minimal
+        # +1 to soft and hard (soft==hard again, as at 2026-11-20 before this raise);
+        # soft_bytes and hard_bytes unchanged. Not automatic.
+        soft_shards=163,
+        hard_shards=163,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
             "limit; watch soft_shards instead, and if a row must be shortened, "
@@ -1341,8 +1355,17 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # above: both target the same 162 -> 163 slot.)
         # 2026-11-20: measured union after the collaborative-memory reading shard.
         # 2026-11-20: Keller collation adds one notes file; byte ceilings unchanged.
-        soft_shards=167,
-        hard_shards=167,
+        # 2026-11-20 (SESSION-20261120-c17ebe, 167 -> 168): this session registers
+        # ONE curated row for its close/reading report via note_index.py --register
+        # (state/notes.d/2026-11-20-533a9d8805ed.jsonl, claims embedded in the row).
+        # Measured union after writing = 168 files. Same conditions as the 2026-11-19
+        # capacity repairs: reports/rows are append-only, no row can be moved into
+        # another session's shard, and notes.d is order-sensitive so the 1-shard-per-
+        # session rule is kept. Raise soft and hard by exactly one slot each (minimal
+        # measured +1); byte limit unchanged; consolidation debt remains unpaid and is
+        # not discharged here. Not automatic.
+        soft_shards=168,
+        hard_shards=168,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
             "Do not copy report bodies or harvested facts into the ledger"
@@ -1439,7 +1462,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # unchanged. The standing caveat applies: the next shard needs a
         # consolidation decision based on then-current measurements.
         # 2026-11-20: measured union after the collaborative-memory reading shard.
-        soft_shards=97,
+        # 2026-11-20 (SESSION-20261120-c17ebe, 97 -> 98): this session adds one new
+        # evaluations shard (2026-11-20-895a2c9e01b7.jsonl, 2 rows: supports
+        # HYP-20261119-05ed24 via reproducible_script re-measurement, and supports
+        # HYP-20261119-8b3e04 via fragment_thought_experiment). Measured union after
+        # writing = 98 files. One-slot raise of soft only; hard 160 unchanged; bytes
+        # not binding (~1 MB of 4 MiB soft). Not automatic.
+        soft_shards=98,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
@@ -1727,7 +1756,15 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # per-report caps unchanged. Not automatic.
         # 2026-11-20: measured union after the collaborative-memory report.
         # 2026-11-20: Keller collation adds one readings file; byte ceilings unchanged.
-        soft_files=1057,
+        # 2026-11-20 (SESSION-20261120-c17ebe, 1057 -> 1058): this session writes one
+        # close-reading report file (readings/2026-11-20-from-the-riverbank-what-the-
+        # record-keeps-of-a-reader.md). Measured by this tool after writing: 1,058 files /
+        # 36,626,619 B = 34.93 MiB of the 35 MiB soft_bytes (bytes NOT binding;
+        # ~72 KB headroom, tighter than at 2026-11-19). Reports are append-only,
+        # soft_files is the only dimension that moves, soft_bytes (35 MiB) /
+        # hard_bytes (48 MiB) / hard_files (1,200) / per-report caps unchanged.
+        # Not automatic; next session must measure after merging.
+        soft_files=1058,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

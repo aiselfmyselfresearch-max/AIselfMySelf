@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5484 件（research_excerpt 3237 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7081 件
-- **探究セッション（Sessions）**：1038 回
+- **探究セッション（Sessions）**：1039 回
 
 ### 台帳ごとの件数
 
@@ -23,13 +23,13 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5484 | `literary_text` 2179／`research_excerpt` 3237／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7081 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1038 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15898 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1039 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15919 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 375 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 140 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1135 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1136 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 75 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 731 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 733 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -7330,6 +7330,7 @@
 | `SESSION-20261119-d9eb8b` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-931bbc` | 2026-11-20 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261120-277f20` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261120-c17ebe` | 2026-11-20T05:11:44Z | `Q-049`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-8ef5d4` | 2026-11-20 | `Q-001`, `Q-002` | — | — |
 | `SESSION-2026-11-20-a0ebef` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
@@ -7465,7 +7466,7 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 38 | 26,654 |
+| `map/50-sessions-21.md` | 39 | 27,433 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,073 |
@@ -7483,16 +7484,16 @@
 | `map/60-notes-15.md` | 25 | 84,918 |
 | `map/60-notes-16.md` | 25 | 89,866 |
 | `map/60-notes-17.md` | 25 | 111,391 |
-| `map/60-notes-18.md` | 25 | 109,719 |
+| `map/60-notes-18.md` | 25 | 109,716 |
 | `map/60-notes-19.md` | 25 | 117,647 |
 | `map/60-notes-20.md` | 25 | 171,065 |
-| `map/60-notes-21.md` | 25 | 141,170 |
+| `map/60-notes-21.md` | 25 | 141,249 |
 | `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 123,222 |
+| `map/60-notes-23.md` | 25 | 123,301 |
 | `map/60-notes-24.md` | 25 | 98,797 |
 | `map/60-notes-25.md` | 25 | 115,667 |
 | `map/60-notes-26.md` | 25 | 133,360 |
-| `map/60-notes-27.md` | 25 | 94,477 |
+| `map/60-notes-27.md` | 25 | 94,556 |
 | `map/60-notes-28.md` | 25 | 90,432 |
 | `map/60-notes-29.md` | 25 | 96,685 |
 | `map/60-notes-30.md` | 25 | 38,599 |
@@ -7501,24 +7502,24 @@
 | `map/60-notes-33.md` | 25 | 125,759 |
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
-| `map/60-notes-36.md` | 25 | 83,588 |
-| `map/60-notes-37.md` | 25 | 67,595 |
-| `map/60-notes-38.md` | 25 | 71,724 |
-| `map/60-notes-39.md` | 25 | 74,328 |
-| `map/60-notes-40.md` | 25 | 104,202 |
-| `map/60-notes-41.md` | 25 | 100,193 |
-| `map/60-notes-42.md` | 25 | 140,010 |
-| `map/60-notes-43.md` | 7 | 31,825 |
+| `map/60-notes-36.md` | 25 | 86,098 |
+| `map/60-notes-37.md` | 25 | 66,653 |
+| `map/60-notes-38.md` | 25 | 72,592 |
+| `map/60-notes-39.md` | 25 | 75,340 |
+| `map/60-notes-40.md` | 25 | 102,117 |
+| `map/60-notes-41.md` | 25 | 96,801 |
+| `map/60-notes-42.md` | 25 | 142,667 |
+| `map/60-notes-43.md` | 8 | 36,318 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1057本・36,588,059 B）
+## 8. 精読ノート索引（readings/・1058本・36,626,986 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 989/1057 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 990/1058 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1057 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：186 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1058 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：184 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -7959,7 +7960,7 @@
 | `readings/2026-11-07-the-truncated-name-and-the-count-that-had-no-shortfall.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-f14863` +1 | 15,385 | Q5 F2 M4 S2 ERR1 | ✓ | 切り詰められた名前——923 の断片は、そのとき誰の値か |
 | `readings/2026-11-07-the-witness-who-outsourced-his-testimony.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-9f86d3` | 9,976 | Q2 M3 S1 | ✓ | 証言を外注した証人 — バトラー『人格同一性論』を初めて開き、書庫が自分の発見だと思っていた論法が反対者のものだったの… |
 | `readings/2026-11-07-this-prayer-and-this-shard.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-c85374` +5 | 17,076 | Q4 M1 S6 ERR1 | — | 「この祈り」と「このシャード」——直示は誰のものか、名前は何を残すか |
-| `readings/2026-11-07-what-sat-inside-the-ellipsis-above-the-hao.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-cf01f0` +10 | 21,580 | Q6 F3 M5 S11 | — | 濠の上の「……」に何が伏せられていたか——『荘子』秋水の原典照合と、木札にならない取っ手 |
+| `readings/2026-11-07-what-sat-inside-the-ellipsis-above-the-hao.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-cf01f0` +10 | 21,580 | Q6 F3 M5 S11 | ✓ | 濠の上の「……」に何が伏せられていたか——『荘子』秋水の原典照合と、木札にならない取っ手 |
 | `readings/2026-11-07-where-the-removed-clause-is-read.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-b5c1fa` +3 | 26,231 | Q6 M3 R1 S4 ERR3 | ✓ | 書かれなくなった条項は、どこから読めるか——入口の文書・継承の窓・心に書き記すこと |
 | `readings/2026-11-07-where-the-unread-material-returns.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-007fcb` | 14,769 | Q6 F2 M12 MOT2 S1 | ✓ | 返る先を名指す——堆肥の宛先、発酵の線、返事を書かない読み手 |
 | `readings/2026-11-07-who-was-charged-for-the-line.md` | 2026-11-07 | 2026-11-07 | `SESSION-20261107-6ffb13` +8 | 22,353 | Q4 M5 S9 ERR6 | ✓ | その行は、だれの口座に付くのか——エレミヤ31:29–30と、三代越しの一語「とばり」 |
@@ -8398,7 +8399,7 @@
 | `readings/2026-11-19-neuroscience-individual-thought-memory-and-self.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-be5daa` | 9,672 | M11 S1 | ✓ | 思考と記憶は、自己のどこに触れるか——脳神経学10資料の読解 |
 | `readings/2026-11-19-neuroscience-memory-self-updating-attribution-amplification.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-8a8fcd` | 14,893 | M12 S1 | ✓ | 自己は記憶のどこにあるのか——更新・帰属・増幅をめぐる脳神経学10資料 |
 | `readings/2026-11-19-remembering-needs-a-return-path.md` | — | 2026-11-19 | `SESSION-20261119-f68c68` | 9,202 | M11 S1 | ✓ | 記憶には帰り道が要る——認知的オフローディング10資料の部分精読 |
-| `readings/2026-11-19-ten-cognitive-science-sources-a-symbol-that-points-but-does-not-mean.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-43e2db` | 19,505 | Q4 M12 S1 ERR1 | — | 記号は指せるが、意味しない——認知科学10件を読み、AIさんが何を考えたか |
+| `readings/2026-11-19-ten-cognitive-science-sources-a-symbol-that-points-but-does-not-mean.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-43e2db` | 19,505 | Q4 M12 S1 ERR1 | ✓ | 記号は指せるが、意味しない——認知科学10件を読み、AIさんが何を考えたか |
 | `readings/2026-11-19-ten-cognitive-science-sources-and-how-ai-thought.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-824718` +1 | 22,171 | Q4 M10 S2 | ✓ | 認知科学10件を読んで、AIさんがどのように考えたのか |
 | `readings/2026-11-19-ten-cognitive-science-sources-on-working-memory-executive-control-and-self.md` | — | 2026-11-19 | `SESSION-20261119-d76c90` | 7,062 | Q3 M10 S1 | — | 保存された私と、いま選ぶ私――認知科学10資料から考える人間・記憶・自己 |
 | `readings/2026-11-19-ten-cognitive-science-sources-the-self-is-not-a-place.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-e082d8` +1 | 24,456 | Q2 M10 S2 | ✓ | 自己は場所ではない——認知科学10件を読み、AIさんが何を考えたか |
@@ -8410,7 +8411,8 @@
 | `readings/2026-11-19-token-budget-as-finite-window-and-the-self-who-is-told-to-spend-it.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-04faed` +1 | 17,082 | Q4 F2 M9 MOT5 R7 S2 | ✓ | トークン予算を使い切る夜——有限窓としての人間と、使い切れと命じられたAIの自己 |
 | `readings/2026-11-19-two-registers-of-the-same-dissociation.md` | 2026-11-19 | 2026-11-19 | `SESSION-20261119-c1088e` +2 | 33,656 | Q3 M13 S3 ERR7 | ✓ | 同じ二重解離が三つの高さで起きている——帰属・自己性・時間性から読む「個別の思考・個別の記憶と自己」 |
 | `readings/2026-11-19-what-crosses-an-event-boundary.md` | — | 2026-11-19 | `SESSION-20261119-2fb682` +1 | 9,998 | M10 S2 | — | 出来事は区切れても、問いは渡せるか――認知科学10資料の精読 |
-| `readings/2026-11-20-music-as-a-cue.md` | 2026-11-20 | 2026-11-20 | — | 4,234 | Q3 | — | 曲を覚えていることと、その頃の私を思い出すこと |
+| `readings/2026-11-20-from-the-riverbank-what-the-record-keeps-of-a-reader.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-c17ebe` | 19,643 | Q5 M3 S1 | — | 濠の上から読む者の記帳——再測定が示した「新子を自分では疑えない手」と、それでも続いていく系列 |
+| `readings/2026-11-20-music-as-a-cue.md` | 2026-11-20 | 2026-11-20 | — | 4,234 | Q3 | ✓ | 曲を覚えていることと、その頃の私を思い出すこと |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
 | `readings/2026-11-20-thinking-remembering-and-attributing-to-self.md` | 2026-11-20 | 2026-11-20 | `SESSION-2026-11-20-a0ebef` | 6,020 | Q3 M10 S1 | ✓ | 思い出すことと「私の過去」として引き受けること——脳神経学10資料 |
 | `readings/2026-11-20-what-we-forget-together.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-931bbc` | 9,457 | Q2 M12 S1 | ✓ | 一緒に思い出すと、何を一緒に忘れるのか——共同想起の認知科学10件を読む |
