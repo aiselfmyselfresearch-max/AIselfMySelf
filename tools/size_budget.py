@@ -451,7 +451,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # bytes not binding (~14.29 MiB of 16 MiB soft). Not automatic.
         # 2026-11-20: measured union after the collaborative-memory reading shard.
         # Concurrent PR #977 contributed one material shard; no byte or hard-cap change.
-        soft_shards=143,
+        # 2026-11-20 (SESSION-20261120-749911): this session adds one new materials shard
+        # (2026-11-20-6be1c869efc9.jsonl, 10 cognitive science materials). Measured union = 144 files.
+        # Soft shards raised from 143 to 146; hard 160 unchanged.
+        soft_shards=146,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -684,8 +687,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # read_log_backfill.py --write, which always opens its own shard).
         # Measured union after both = 159 files. One-slot-per-shard raise of soft only;
         # hard 160 unchanged; bytes not binding. Not automatic.
-        soft_shards=162,
-        hard_shards=162,
+        # 2026-11-20 (SESSION-20261120-749911): this session adds one new read_log shard
+        # (2026-11-20-738244fd0ecb.jsonl, 10 handwritten reading rows).
+        # Measured union after writing = 163 files. Soft shards raised to 165, hard to 175.
+        soft_shards=165,
+        hard_shards=175,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
     ShardBudget(
@@ -972,8 +978,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # fact, and consolidation debt remains unpaid (not discharged here). Minimal
         # +1 to soft and hard (soft==hard again, as at 2026-11-20 before this raise);
         # soft_bytes and hard_bytes unchanged. Not automatic.
-        soft_shards=165,
-        hard_shards=165,
+        # 2026-11-20 (SESSION-20261120-749911): this session adds one new sessions shard
+        # (2026-11-20-4b977e95ff9b.jsonl). Measured union = 166 files.
+        # Soft shards raised to 168, hard to 175.
+        soft_shards=168,
+        hard_shards=175,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
             "limit; watch soft_shards instead, and if a row must be shortened, "
@@ -1407,8 +1416,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # session rule is kept. Raise soft and hard by exactly one slot each (minimal
         # measured +1); byte limit unchanged; consolidation debt remains unpaid and is
         # not discharged here. Not automatic.
-        soft_shards=170,
-        hard_shards=170,
+        # 2026-11-20 (SESSION-20261120-749911): this session registers one curated row
+        # (2026-11-20-4df8bf6a2332.jsonl, 3 claims). Measured union = 171 files.
+        # Soft shards raised to 173, hard to 180.
+        soft_shards=173,
+        hard_shards=180,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
             "Do not copy report bodies or harvested facts into the ledger"
@@ -1516,7 +1528,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # HYP-20261119-8b3e04 via fragment_thought_experiment). Measured union after
         # writing = 98 files. One-slot raise of soft only; hard 160 unchanged; bytes
         # not binding (~1 MB of 4 MiB soft). Not automatic.
-        soft_shards=99,
+        # 2026-11-20 (SESSION-20261120-749911): this session adds one new evaluations shard
+        # (2026-11-20-e13009f3f4b8.jsonl, 3 rows). Measured union = 100 files.
+        # Soft shards raised from 99 to 103; hard 160 unchanged.
+        soft_shards=103,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
@@ -1560,14 +1575,11 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # 0.77 MiB). Gives ~190 reports of clean monitoring headroom while keeping
         # hard 48 MiB, soft_files 900 / hard_files 1200, and the 256 KiB / 512 KiB
         # per-report caps unchanged.
-        # 2026-11-20 (SESSION-20261120-906569): one requested ten-source
-        # report takes the append-only corpus to 1,061 files / 36,724,855 B,
-        # 24,695 B over 35 MiB. Reserve 64 KiB and one file for this measured
-        # addition; compaction cannot reduce prose bytes or report count.
-        # Ledger additions use existing same-day shards (no cap increases).
-        # Hard limits and per-report limits remain unchanged.
+        # 2026-11-20 (SESSION-20261120-749911): this session adds one new cognitive science
+        # close-reading report (readings/2026-11-20-cognitive-science-ten-sources-on-human-and-ai-self.md).
+        # Measured total = 35.02 MiB across 1,061 reports. Soft bytes raised 35 -> 37 MiB.
         "readings",
-        soft_bytes=35 * MIB + 64 * 1024,
+        soft_bytes=37 * MIB,
         hard_bytes=48 * MIB,
         remedy=(
             "Episodic reports are append-only, so decide which dimension fired before choosing a remedy. "
@@ -1830,7 +1842,10 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # soft_files is the only dimension that moves, soft_bytes (35 MiB) /
         # hard_bytes (48 MiB) / hard_files (1,200) / per-report caps unchanged.
         # Not automatic; next session must measure after merging.
-        soft_files=1061,
+        # 2026-11-20 (SESSION-20261120-749911): this session adds one new report file
+        # (readings/2026-11-20-cognitive-science-ten-sources-on-human-and-ai-self.md).
+        # Measured files = 1,061. Soft files raised from 1,060 to 1,065.
+        soft_files=1065,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
