@@ -24,7 +24,7 @@
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7081 | うち断片↔断片 619 |
 | セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1039 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15901 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 15908 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 375 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 140 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1136 |  |
