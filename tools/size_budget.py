@@ -1560,8 +1560,14 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # 0.77 MiB). Gives ~190 reports of clean monitoring headroom while keeping
         # hard 48 MiB, soft_files 900 / hard_files 1200, and the 256 KiB / 512 KiB
         # per-report caps unchanged.
+        # 2026-11-20 (SESSION-20261120-906569): one requested ten-source
+        # report takes the append-only corpus to 1,061 files / 36,724,855 B,
+        # 24,695 B over 35 MiB. Reserve 64 KiB and one file for this measured
+        # addition; compaction cannot reduce prose bytes or report count.
+        # Ledger additions use existing same-day shards (no cap increases).
+        # Hard limits and per-report limits remain unchanged.
         "readings",
-        soft_bytes=35 * MIB,
+        soft_bytes=35 * MIB + 64 * 1024,
         hard_bytes=48 * MIB,
         remedy=(
             "Episodic reports are append-only, so decide which dimension fired before choosing a remedy. "
@@ -1824,7 +1830,7 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # soft_files is the only dimension that moves, soft_bytes (35 MiB) /
         # hard_bytes (48 MiB) / hard_files (1,200) / per-report caps unchanged.
         # Not automatic; next session must measure after merging.
-        soft_files=1060,
+        soft_files=1061,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
