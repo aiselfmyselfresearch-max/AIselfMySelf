@@ -1905,16 +1905,21 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # Measured union after merge = 1,066 files / 35.22 MiB of 37.00 MiB soft_bytes.
         # Minimal +1 raise of soft_files only; soft_bytes / hard_bytes / hard_files /
         # per-report caps unchanged. Not automatic.
-        # 2026-11-20 (SESSION-20261120-a3b63b, 1,066 -> 1,068): this session adds
-        # one report (readings/2026-11-20-ten-neuroscience-sources-on-individual-
-        # thought-memory-and-self.md, 24,582 B). Measured after writing = 1,067
-        # files / 35.27 MiB of the 37.00 MiB soft_bytes (bytes not binding).
-        # Reports are append-only and cannot be compacted, and the ten sources were
-        # a user-delegated acquisition round; soft_files is the only dimension that
-        # moves. Set to measured + 1 (1,068); soft_bytes, hard_files, hard_bytes
-        # and the per-report caps unchanged. Not automatic; the next session must
-        # measure after merging.
-        soft_files=1068,
+        # 2026-11-20 (SESSION-20261120-6211a0, merge of origin/main 1ba2c14 / PR #986
+        # & PR #987, 1,066 -> 1,067): main added two reports while this branch added
+        # one Adversarial Tester report (readings/2026-11-20-two-tier-gist-gate-and-the-
+        # opaque-auditor.md; 0 new ledger shards via Procedure 8-2 raw-byte append).
+        # Measured union after merge = 1,067 files (within 37.00 MiB soft_bytes).
+        # Minimal +1 raise of soft_files only; all byte and per-file caps unchanged.
+        # 2026-11-20 (merge of origin/main 709c6a41 into arena/5c552940, 1,067 ->
+        # 1,069): the union carries BOTH same-day reports -- 6211a0's Adversarial
+        # Tester report (already counted in the 1,067 above) and this session's
+        # ten-source neuroscience report (readings/2026-11-20-ten-neuroscience-
+        # sources-on-individual-thought-memory-and-self.md). Measured union after
+        # this merge = 1,068 files. Set to measured + 1 (1,069); soft_bytes
+        # (37 MiB), hard_files (1,200), hard_bytes (48 MiB) and the per-report caps
+        # unchanged. Not automatic; the next session must measure after merging.
+        soft_files=1069,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

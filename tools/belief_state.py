@@ -86,6 +86,14 @@ PSC_GATED_WEIGHTS: dict[str, float] = {
     "no_materials": 0.55,
 }
 SELF_SUPPORT_GATED_DISCOUNT = 0.50
+# 2026-11-20 (NOTE-20261120-058297 §2): across N=740 evaluations, same-session
+# evaluations on depth>=1 child hypotheses had a 2.9% critique rate (1/34; 0/18
+# on verified materials) even when sessions carried explicit bias warnings,
+# whereas cross-session depth>=1 evaluations had a 64.0% critique rate (72.4% on
+# verified materials). Same-session `supports` on a newly minted depth>=1 child
+# is therefore a registration declaration rather than an independent test, and
+# carries 0.0 weight under P_gate until an external session audits the child.
+SELF_SUPPORT_DEPTH1_GATED_DISCOUNT = 0.0
 SUPPRESS_RETRIEVAL_HYP_PENALTY = 1.20
 INHIBITION_STATE_LABELS: dict[str, str] = {
     "refuted_inhibited": "棄却・抑制",
@@ -761,7 +769,10 @@ def compute_belief_state(
         if receiver_gated and verdict == "supports":
             hyp_sid = str(hypotheses[target_id].get("session_id") or "")
             if sid and hyp_sid and sid == hyp_sid:
-                self_factor = SELF_SUPPORT_GATED_DISCOUNT
+                if depths.get(target_id, 0) >= 1:
+                    self_factor = SELF_SUPPORT_DEPTH1_GATED_DISCOUNT
+                else:
+                    self_factor = SELF_SUPPORT_GATED_DISCOUNT
         delta = base_w * indep_discount * comp_factor * self_factor
 
         evals_by_hyp[target_id].append(evl)
@@ -936,6 +947,7 @@ def compute_belief_state(
                 "priority_score": HYPOTHESIS_LESS_CORE_PRIORITY,
                 "top_competing_pair": None,
                 "unexamined_active_hypothesis_ids": [],
+                "awaiting_external_audit_ids": [],
                 "hypotheses": [],
             }
             continue
@@ -1075,6 +1087,12 @@ def compute_belief_state(
         unexamined_active_ids = [
             h["hypothesis_id"] for h in active_entries if h["direct_eval_count"] == 0
         ]
+        awaiting_external_audit_ids = [
+            h["hypothesis_id"]
+            for h in active_entries
+            if (h["direct_eval_count"] == 0 or h.get("self_evaluated_only"))
+            and h["hypothesis_id"] not in suppressed_hypothesis_ids
+        ]
         mean_u = (
             sum(h["uncertainty"] for h in active_entries) / len(active_entries)
             if active_entries
@@ -1136,6 +1154,7 @@ def compute_belief_state(
             "priority_score": round(priority, 4),
             "top_competing_pair": best_pair,
             "unexamined_active_hypothesis_ids": unexamined_active_ids,
+            "awaiting_external_audit_ids": awaiting_external_audit_ids,
             "hypotheses": hyp_entries,
         }
 
@@ -1917,6 +1936,16 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
             lines.append(
                 f"- ⚠️ **未評価の有効仮説（ペア推薦から除外中）**: {unex_list}"
                 "（直接評価 0 件。無補助 root 仮説は下端から浮上しにくいため、初回検証を優先検討すること）"
+            )
+        awaiting_ext = [
+            hid for hid in (qs.get("awaiting_external_audit_ids") or [])
+            if hid not in unexamined
+        ]
+        if awaiting_ext:
+            ext_list = "、".join(f"`{hid}`" for hid in awaiting_ext)
+            lines.append(
+                f"- 🔍 **初回外部監査待ちの有効仮説（同一セッション自己評価のみ: {len(awaiting_ext)}件）**: {ext_list}"
+                "（`P_gate` では depth≥1 の同一セッション自己支持を重み 0 として扱う。別セッションによる初回横断検証を優先検討）"
             )
         gpair = qs.get("gated_top_pair")
         if gpair:
