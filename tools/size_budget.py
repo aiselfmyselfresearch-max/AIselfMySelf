@@ -439,7 +439,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # group; none is movable here). Bytes remain far from the 16 MiB soft
         # (14.19 MiB measured). One-slot correction to the measured union, not
         # an automatic raise; hard 20 MiB / 160 shards unchanged.
-        soft_shards=137,
+        # 2026-11-20: measured union after the collaborative-memory reading shard.
+        soft_shards=140,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -650,7 +651,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # raise only this soft review count, leaving hard limit unchanged.
         # 2026-11-19: one isolated citation-correction shard; hard/byte caps unchanged.
         # 2026-11-19 (SESSION-20261119-d9eb8b): one new read_log shard, 152 -> 153 files; +1 slot.
-        soft_shards=153,
+        # 2026-11-20: measured union after the collaborative-memory reading shard.
+        soft_shards=156,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -919,8 +921,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # soft review count by one and leave the hard limit unchanged.
         # 2026-11-19: one isolated citation-correction shard; hard/byte caps unchanged.
         # 2026-11-19 (SESSION-20261119-d9eb8b): one new sessions shard, 157 -> 158 files; +1 slot.
-        soft_shards=158,
-        hard_shards=160,
+        # 2026-11-20: measured union after the collaborative-memory reading shard.
+        soft_shards=161,
+        hard_shards=161,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
             "limit; watch soft_shards instead, and if a row must be shortened, "
@@ -1333,8 +1336,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # slot (measured +0 free). Byte limit unchanged. Consolidation debt remains
         # unpaid; not an automatic raise. (Merged with the capacity-repair raise
         # above: both target the same 162 -> 163 slot.)
-        soft_shards=163,
-        hard_shards=163,
+        # 2026-11-20: measured union after the collaborative-memory reading shard.
+        soft_shards=166,
+        hard_shards=166,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
             "Do not copy report bodies or harvested facts into the ledger"
@@ -1430,7 +1434,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # the fact. One-slot correction, not an automatic raise; hard 160
         # unchanged. The standing caveat applies: the next shard needs a
         # consolidation decision based on then-current measurements.
-        soft_shards=96,
+        # 2026-11-20: measured union after the collaborative-memory reading shard.
+        soft_shards=97,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
@@ -1716,7 +1721,8 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # the two non-.md corpus files are path-referenced, deletion needs human
         # approval (none given). soft_bytes / hard_files / hard_bytes and the
         # per-report caps unchanged. Not automatic.
-        soft_files=1055,
+        # 2026-11-20: measured union after the collaborative-memory report.
+        soft_files=1056,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
