@@ -652,7 +652,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-19: one isolated citation-correction shard; hard/byte caps unchanged.
         # 2026-11-19 (SESSION-20261119-d9eb8b): one new read_log shard, 152 -> 153 files; +1 slot.
         # 2026-11-20: measured union after the collaborative-memory reading shard.
-        soft_shards=156,
+        # 2026-11-20: Keller collation adds one read_log file; byte ceilings unchanged.
+        soft_shards=157,
         hard_shards=160,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -922,8 +923,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-19: one isolated citation-correction shard; hard/byte caps unchanged.
         # 2026-11-19 (SESSION-20261119-d9eb8b): one new sessions shard, 157 -> 158 files; +1 slot.
         # 2026-11-20: measured union after the collaborative-memory reading shard.
-        soft_shards=161,
-        hard_shards=161,
+        # 2026-11-20: Keller collation adds one sessions file; byte ceilings unchanged.
+        soft_shards=162,
+        hard_shards=162,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
             "limit; watch soft_shards instead, and if a row must be shortened, "
@@ -1337,8 +1339,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # unpaid; not an automatic raise. (Merged with the capacity-repair raise
         # above: both target the same 162 -> 163 slot.)
         # 2026-11-20: measured union after the collaborative-memory reading shard.
-        soft_shards=166,
-        hard_shards=166,
+        # 2026-11-20: Keller collation adds one notes file; byte ceilings unchanged.
+        soft_shards=167,
+        hard_shards=167,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
             "Do not copy report bodies or harvested facts into the ledger"
@@ -1722,7 +1725,8 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # approval (none given). soft_bytes / hard_files / hard_bytes and the
         # per-report caps unchanged. Not automatic.
         # 2026-11-20: measured union after the collaborative-memory report.
-        soft_files=1056,
+        # 2026-11-20: Keller collation adds one readings file; byte ceilings unchanged.
+        soft_files=1057,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
