@@ -52,6 +52,7 @@ import belief_state  # noqa: E402
 import inspect_inquiry  # noqa: E402
 import ledger_io  # noqa: E402
 import validate_seed  # noqa: E402
+from read_log_backfill import HANDWRITTEN_READINGS  # noqa: E402
 
 DNA_TYPES = frozenset({"material", "fragment", "motif"})
 DNB_TYPES = frozenset({"note", "hypothesis", "evaluation", "erratum", "session", "editorial_decision"})
@@ -333,18 +334,22 @@ def memory_temperature_and_gate_audit(
     *,
     limit: int = 15,
 ) -> dict[str, Any]:
-    """Classify materials into Hot/Warm/Cold memory temperature tiers and audit the Two-Stage Gate.
+    """Describe retrospective wiring and read/evaluation *co-occurrence*.
 
-    Operationalises the Two-Stage Inheritance Gate (NOTE-20261120-058297 §1;
-    Koriat 1997 / Tulving 1985 / Tse et al. 2007 / Richards & Frankland 2017):
-    - **Hot Gist Layer**: materials wired into ``hypotheses.*_material_ids``
-      (Tier 2) or ``notes.claims[].material_ids`` (Tier 1).
-    - **Warm Decay Layer**: Tier 0 (unwired) materials that have already crossed
-      Stage 1 (subsequent-session hand-written ``read_log``) yet lack a Tier 1/2
-      gist schema and therefore suffer ~97% attrition at Stage 2 (evaluation).
-    - **Cold Verbatim Archive**: Tier 0 materials with 0 subsequent-session
-      hand-written reads (preserved intact for primary-source verification,
-      errata checks, and seed-driven collision without consuming active slots).
+    For compatibility the JSON retains the old ``stage*`` and ``subseq*`` keys,
+    but neither they nor Hot/Warm/Cold establish a chronological sequence,
+    conversion, causation, or actual absence of reading. The anchor is only the
+    first context mention in ledger order, falling back to the first layer-2
+    reading in that order; ledger order is not real time or proof of birth.
+    R and E each mean a recorded layer-2 read, respectively evaluation citation,
+    in any session different from this anchor. They need not be in the same
+    session, and no order between them is inferred. Unknown anchors are reported
+    separately and excluded from the R/E denominators.
+
+    Tier 1/2 is determined from all current notes/hypotheses, possibly written
+    after the events being counted. ``counted`` is included as an audit record,
+    not equated to interpretation; ``declined`` and ``used_as_context`` are not
+    layer-2 reading records. See the 2026-11-20 audit of NOTE-20261120-058297.
     """
     materials = data.get("materials", {})
     notes = data.get("notes", {})
@@ -377,26 +382,34 @@ def memory_temperature_and_gate_audit(
 
     sess_order = {sid: idx for idx, sid in enumerate(sessions.keys())}
     hand_read_sessions: dict[str, list[str]] = defaultdict(list)
+    active_read_sessions: dict[str, set[str]] = defaultdict(set)
     for rrec in read_log.values():
         tgt = rrec.get("target")
         if not isinstance(tgt, dict) or tgt.get("type") != "material":
             continue
-        if belief_state.MECHANICAL_READ_LOG_MARK in str(rrec.get("note") or ""):
+        # The archive's layer-2 vocabulary includes counted but explicitly
+        # excludes both declined and used_as_context. Searching the note for the
+        # word バックフィル alone also misses manual context/decline rows and can
+        # wrongly discard a real quotation *about* backfills.
+        if rrec.get("reading") not in HANDWRITTEN_READINGS:
             continue
         mid = str(tgt.get("id") or "")
         sid = str(rrec.get("session_id") or "")
-        if mid in materials and sid and sid not in hand_read_sessions[mid]:
-            hand_read_sessions[mid].append(sid)
+        if mid in materials and sid:
+            if sid not in hand_read_sessions[mid]:
+                hand_read_sessions[mid].append(sid)
+            if rrec.get("reading") in associations.ACTIVE_READINGS:
+                active_read_sessions[mid].add(sid)
 
-    birth_session: dict[str, str] = {}
+    anchor_session: dict[str, str] = {}
     for sid, srec in sessions.items():
         for mid in srec.get("context_material_ids") or ():
-            if isinstance(mid, str) and mid in materials and mid not in birth_session:
-                birth_session[mid] = sid
+            if isinstance(mid, str) and mid in materials and mid not in anchor_session:
+                anchor_session[mid] = sid
     for mid, sids in hand_read_sessions.items():
-        if mid not in birth_session and sids:
+        if mid not in anchor_session and sids:
             sids_sorted = sorted(sids, key=lambda s: sess_order.get(s, 10**9))
-            birth_session[mid] = sids_sorted[0]
+            anchor_session[mid] = sids_sorted[0]
 
     eval_sessions_by_mat: dict[str, set[str]] = defaultdict(set)
     for evl in evaluations.values():
@@ -405,22 +418,31 @@ def memory_temperature_and_gate_audit(
             if isinstance(mid, str) and mid in materials and esid:
                 eval_sessions_by_mat[mid].add(esid)
 
-    tier_stats: dict[str, dict[str, int]] = {
-        "tier0_unwired": {"total": 0, "stage1_subseq_read": 0, "stage2_subseq_eval": 0},
-        "tier1_note_claim": {"total": 0, "stage1_subseq_read": 0, "stage2_subseq_eval": 0},
-        "tier2_hypothesis": {"total": 0, "stage1_subseq_read": 0, "stage2_subseq_eval": 0},
+    tier_stats: dict[str, Counter[str]] = {
+        "tier0_unwired": Counter(),
+        "tier1_note_claim": Counter(),
+        "tier2_hypothesis": Counter(),
     }
     temperature_counts: Counter[str] = Counter()
     pre_2026_11_counts: Counter[str] = Counter()
+    any_session_counts: Counter[str] = Counter()
     tier0_candidates: list[dict[str, Any]] = []
 
     for mid, mrec in materials.items():
-        bsid = birth_session.get(mid, "")
-        subseq_reads = [s for s in hand_read_sessions.get(mid, ()) if s != bsid]
-        subseq_evals = [s for s in eval_sessions_by_mat.get(mid, set()) if s != bsid]
-        has_s1 = len(subseq_reads) > 0
-        has_s2 = len(subseq_evals) > 0
+        any_read = bool(hand_read_sessions.get(mid))
+        any_eval = bool(eval_sessions_by_mat.get(mid))
+        any_session_counts[
+            "read_and_eval" if any_read and any_eval else
+            "read_only" if any_read else "eval_only" if any_eval else "neither"
+        ] += 1
+        anchor = anchor_session.get(mid)
+        # An unknown anchor does not make every recorded session "different".
+        read_sessions = set(hand_read_sessions.get(mid, ())) - {anchor} if anchor else set()
+        eval_sessions = eval_sessions_by_mat.get(mid, set()) - {anchor} if anchor else set()
+        has_read = bool(read_sessions)
+        has_eval = bool(eval_sessions)
         rec_day = belief_state._record_iso_day(mrec, mid)
+        # This is a record/ID label, which may differ from the execution date.
         is_early = bool(rec_day and rec_day < "2026-11-01") or mid.startswith(("MAT-0", "MAT-1", "MAT-202610", "MAT-LIT-202610", "MAT-TRC-202610"))
 
         if mid in tier2_hyp_mids:
@@ -431,24 +453,39 @@ def memory_temperature_and_gate_audit(
             temp = "hot_gist"
         else:
             tkey = "tier0_unwired"
-            temp = "warm_unwired" if has_s1 else "cold_verbatim"
+            temp = "warm_unwired" if has_read else "cold_verbatim"
 
-        tier_stats[tkey]["total"] += 1
-        if has_s1:
-            tier_stats[tkey]["stage1_subseq_read"] += 1
-        if has_s1 and has_s2:
-            tier_stats[tkey]["stage2_subseq_eval"] += 1
+        stats = tier_stats[tkey]
+        stats["total"] += 1
+        if not anchor:
+            stats["anchor_unknown"] += 1
+            if eval_sessions_by_mat.get(mid):
+                stats["unknown_anchor_with_any_eval"] += 1
+        else:
+            stats["anchor_known"] += 1
+            if has_read and not (active_read_sessions.get(mid, set()) - {anchor}):
+                stats["non_anchor_counted_only"] += 1
+            if has_read and has_eval:
+                stats["read_and_eval"] += 1
+                if read_sessions & eval_sessions:
+                    stats["read_and_eval_shared_session"] += 1
+            elif has_read:
+                stats["read_only"] += 1
+            elif has_eval:
+                stats["eval_only"] += 1
+            else:
+                stats["neither"] += 1
 
         temperature_counts[temp] += 1
         if is_early:
             pre_2026_11_counts["total"] += 1
             pre_2026_11_counts[temp] += 1
 
-        if tkey == "tier0_unwired" and (has_s1 or is_early):
+        if tkey == "tier0_unwired" and (has_read or is_early):
             vstat = str(((mrec.get("verification") or {}).get("status")) or "unrecorded")
             qids = q_by_mat.get(mid, [])
             core_qids = [q for q in qids if q in belief_state.CORE_QUESTIONS]
-            if has_s1 or (vstat == "verified" and core_qids):
+            if has_read or (vstat == "verified" and core_qids):
                 tier0_candidates.append(
                     {
                         "material_id": mid,
@@ -456,23 +493,42 @@ def memory_temperature_and_gate_audit(
                         "verification_status": vstat,
                         "temperature": temp,
                         "pre_2026_11": is_early,
-                        "subseq_read_sessions": len(subseq_reads),
-                        "subseq_eval_sessions": len(subseq_evals),
+                        # Legacy key names: these are different from the anchor,
+                        # not necessarily subsequent in real time.
+                        "subseq_read_sessions": len(read_sessions),
+                        "subseq_eval_sessions": len(eval_sessions),
                         "question_ids": qids[:4],
                         "core_question_ids": core_qids,
                     }
                 )
 
-    def _rate_summary(d: dict[str, int]) -> dict[str, Any]:
-        tot = d["total"]
-        s1 = d["stage1_subseq_read"]
-        s2 = d["stage2_subseq_eval"]
+    def _rate_summary(d: Counter[str]) -> dict[str, Any]:
+        def pct(numerator: int, denominator: int) -> float | None:
+            return round(100.0 * numerator / denominator, 2) if denominator else None
+
+        known = d["anchor_known"]
+        both = d["read_and_eval"]
+        read = both + d["read_only"]
+        evaluation = both + d["eval_only"]
         return {
-            "total": tot,
-            "stage1_subseq_read": s1,
-            "stage1_rate_pct": round(100.0 * s1 / max(1, tot), 2),
-            "stage2_subseq_eval_given_stage1": s2,
-            "stage2_conversion_pct": round(100.0 * s2 / max(1, s1), 2),
+            "total": d["total"],
+            "anchor_known": known,
+            "anchor_unknown": d["anchor_unknown"],
+            "unknown_anchor_with_any_eval": d["unknown_anchor_with_any_eval"],
+            "read_and_eval": both,
+            "read_only": d["read_only"],
+            "eval_only": d["eval_only"],
+            "neither": d["neither"],
+            "read_and_eval_shared_session": d["read_and_eval_shared_session"],
+            "read_and_eval_no_shared_session": both - d["read_and_eval_shared_session"],
+            "non_anchor_counted_only": d["non_anchor_counted_only"],
+            "eval_in_non_anchor_session": evaluation,
+            "eval_rate_pct": pct(evaluation, known),
+            # Existing JSON keys kept for callers; see method note in output.
+            "stage1_subseq_read": read,
+            "stage1_rate_pct": pct(read, known),
+            "stage2_subseq_eval_given_stage1": both,
+            "stage2_conversion_pct": pct(both, read),
         }
 
     tier0_candidates.sort(
@@ -487,8 +543,22 @@ def memory_temperature_and_gate_audit(
 
     return {
         "total_materials": len(materials),
+        "method": {
+            "anchor": "first context mention in ledger order, else first layer-2 read in ledger order; not a birth date",
+            "read_types": sorted(HANDWRITTEN_READINGS),
+            "counted_is_not_interpretation": True,
+            "event_order": "not established; non-anchor sessions can be the same, earlier, or later",
+            "evaluations": "rows with a session ID, including voided evaluations; citation does not prove a posterior update",
+            "tiers": "retrospective current notes/hypotheses; wiring may have been written after the read or evaluation",
+            "temperature": "cold includes unknown anchors and means no qualifying non-anchor read record, not proof of non-reading",
+            "pre_2026_11": "record/ID label, not necessarily real execution date",
+            "denominators": "known anchors only; null when denominator is zero",
+            "legacy_keys": "stage/subseq/conversion keys are associations, not evidence of a temporal or causal gate",
+        },
         "temperature_tiers": dict(temperature_counts),
         "pre_2026_11_cohort": dict(pre_2026_11_counts),
+        # Across all sessions; no record is not proof that reading did not occur.
+        "any_session_read_eval": {k: any_session_counts[k] for k in ("read_and_eval", "read_only", "eval_only", "neither")},
         "two_stage_gate_by_tier": {k: _rate_summary(v) for k, v in tier_stats.items()},
         "top_tier0_candidates": tier0_candidates[:limit] if limit > 0 else tier0_candidates,
     }
@@ -1068,6 +1138,10 @@ def check_invariants(root: Path = _ROOT, *, today: datetime.date | None = None) 
     return errors
 
 
+def _display_pct(value: float | None) -> str:
+    return "—" if value is None else f"{value:.2f}%"
+
+
 def render_summary(report: dict[str, Any]) -> str:
     g1 = report["gate_1_binding_and_completion"]
     g2 = report["gate_2_receiver_local_inhibition"]
@@ -1089,13 +1163,14 @@ def render_summary(report: dict[str, Any]) -> str:
         ),
         *(
             [
-                "  記憶三層温度と二段階ゲート  : "
-                f"Hot(要旨配線)={g1['memory_temperature_and_two_stage_gate']['temperature_tiers'].get('hot_gist', 0)} / "
-                f"Warm(手読・未配線)={g1['memory_temperature_and_two_stage_gate']['temperature_tiers'].get('warm_unwired', 0)} / "
-                f"Cold(凍結生データ)={g1['memory_temperature_and_two_stage_gate']['temperature_tiers'].get('cold_verbatim', 0)} | "
-                f"Stage2評価変換率 Tier0={g1['memory_temperature_and_two_stage_gate']['two_stage_gate_by_tier']['tier0_unwired']['stage2_conversion_pct']}% -> "
-                f"Tier1={g1['memory_temperature_and_two_stage_gate']['two_stage_gate_by_tier']['tier1_note_claim']['stage2_conversion_pct']}% -> "
-                f"Tier2={g1['memory_temperature_and_two_stage_gate']['two_stage_gate_by_tier']['tier2_hypothesis']['stage2_conversion_pct']}%"
+                "  配線と読書・評価の共起     : "
+                f"Hot(配線)={g1['memory_temperature_and_two_stage_gate']['temperature_tiers'].get('hot_gist', 0)} / "
+                f"Warm(別セッション記録)={g1['memory_temperature_and_two_stage_gate']['temperature_tiers'].get('warm_unwired', 0)} / "
+                f"Cold(別セッション記録なし・不明を含む)={g1['memory_temperature_and_two_stage_gate']['temperature_tiers'].get('cold_verbatim', 0)} | "
+                f"評価記録∩読書記録 / 読書記録 Tier0={_display_pct(g1['memory_temperature_and_two_stage_gate']['two_stage_gate_by_tier']['tier0_unwired']['stage2_conversion_pct'])} / "
+                f"Tier1={_display_pct(g1['memory_temperature_and_two_stage_gate']['two_stage_gate_by_tier']['tier1_note_claim']['stage2_conversion_pct'])} / "
+                f"Tier2={_display_pct(g1['memory_temperature_and_two_stage_gate']['two_stage_gate_by_tier']['tier2_hypothesis']['stage2_conversion_pct'])}",
+                "  注意: 同じ素材の記録の共起であり、読書→評価の時間順・変換・因果を示さない。現在の配線による事後分類。"
             ]
             if "memory_temperature_and_two_stage_gate" in g1
             else []
@@ -1176,7 +1251,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--title", default="", help="candidate source title for --check-source")
     parser.add_argument("--fail-on-match", action="store_true", help="exit 1 if --check-source finds an exact identifier match")
     parser.add_argument("--upgrade-candidates", action="store_true", help="Gate 3: list high-leverage non-verified materials to re-verify via editorial_decisions")
-    parser.add_argument("--tier0-candidates", action="store_true", help="Gate 1/2: list Warm/early Tier 0 materials (Stage 1 read but unwired) for notes.claims gist wiring")
+    parser.add_argument("--tier0-candidates", action="store_true", help="describe retrospective read/evaluation overlap and list unwired candidates (not a temporal or causal gate)")
     parser.add_argument("--compact-shards", action="store_true", help="Maintenance: inspect or apply order-preserving same-day unreferenced shard compaction")
     parser.add_argument("--apply", action="store_true", help="when used with --compact-shards, execute compaction and verify SHA-256 invariance")
     parser.add_argument("--max-per-collection", type=int, default=5, help="max disjoint shard pairs to merge per collection under --compact-shards (default 5)")
@@ -1262,29 +1337,43 @@ def main(argv: list[str] | None = None) -> int:
         else:
             tiers = mt["temperature_tiers"]
             g = mt["two_stage_gate_by_tier"]
+            print(f"=== Retrospective read/evaluation overlap (total={mt['total_materials']:,} materials) ===")
             print(
-                f"=== Memory Temperature & Two-Stage Gate Audit (total={mt['total_materials']:,} materials) ==="
+                f"  Temperature: Hot(wired)={tiers.get('hot_gist', 0)} | "
+                f"Warm(unwired, non-anchor read record)={tiers.get('warm_unwired', 0)} | "
+                f"Cold(no such record or unknown anchor)={tiers.get('cold_verbatim', 0)}"
             )
+            print("  R = layer-2 read record; E = evaluation citation, each in a session != heuristic anchor.")
+            print("  Different sessions are not necessarily later; R and E may precede each other or share a session.")
+            print("  Tiers use current wiring; counted is included, declined and used_as_context are excluded.")
+            all_s = mt["any_session_read_eval"]
             print(
-                f"  Temperature Tiers : Hot(gist-wired)={tiers.get('hot_gist', 0)} | "
-                f"Warm(Stage1-read, unwired)={tiers.get('warm_unwired', 0)} | "
-                f"Cold(verbatim archive)={tiers.get('cold_verbatim', 0)}"
+                "  Any session (no anchor): "
+                f"R∩E={all_s['read_and_eval']} R-only={all_s['read_only']} "
+                f"E-only={all_s['eval_only']} neither={all_s['neither']} "
+                "(no record ≠ proof of no reading; citations include voided rows)."
             )
             for k, v in g.items():
                 print(
-                    f"  {k:18s}: total={v['total']:>4}  Stage1_read={v['stage1_subseq_read']:>4} ({v['stage1_rate_pct']:>5.2f}%)  "
-                    f"Stage2_eval|S1={v['stage2_subseq_eval_given_stage1']:>3} ({v['stage2_conversion_pct']:>5.2f}%)"
+                    f"  {k:18s}: total={v['total']:>4} anchored={v['anchor_known']:>4} unknown={v['anchor_unknown']:>3} | "
+                    f"R∩E={v['read_and_eval']:>3} R-only={v['read_only']:>4} "
+                    f"E-only={v['eval_only']:>3} neither={v['neither']:>4} | "
+                    f"same-session={v['read_and_eval_shared_session']:>3} "
+                    f"no-shared-session={v['read_and_eval_no_shared_session']:>3} | "
+                    f"counted-only in R={v['non_anchor_counted_only']:>3} | "
+                    f"(R∩E)/R={_display_pct(v['stage2_conversion_pct'])}"
                 )
+            print("  Same-session overlap does not establish event order; no rate here is an intervention effect.")
             print(
-                f"\n  Top {min(args.limit, len(mt['top_tier0_candidates']))} Tier 0 -> Tier 1 (notes.claims) Gist Wiring Candidates:"
+                f"\n  Top {min(args.limit, len(mt['top_tier0_candidates']))} unwired candidates (manual review, not an automatic wiring mandate):"
             )
             for r in mt["top_tier0_candidates"]:
-                early_tag = "pre-2026-11" if r["pre_2026_11"] else "2026-11+"
+                early_tag = "label<11" if r["pre_2026_11"] else "other-label"
                 q_tag = ",".join(r["core_question_ids"] or r["question_ids"]) or "-"
                 print(
                     f"  {r['material_id']} [{r['verification_status']:18s}] "
                     f"temp={r['temperature']:13s} {early_tag:11s} "
-                    f"S1_reads={r['subseq_read_sessions']:>2} Q={q_tag:11s}  {r['title'][:52]}"
+                    f"non-anchor-read-sessions={r['subseq_read_sessions']:>2} Q={q_tag:11s}  {r['title'][:52]}"
                 )
         return 0
 

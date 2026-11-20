@@ -61,8 +61,9 @@ class BoundaryChannelProbeTests(unittest.TestCase):
         bystander, bf = self._delta(probe.errata_row("tools/belief_state.py", "tool"))
         self.assertLess(judged, 0.0)
         self.assertEqual(bystander, 0.0)
-        self.assertEqual(len(jf), 1)
-        self.assertEqual(bf, [])
+        baseline = set(probe._hyp(self.base, QUESTION, TARGET)["errata_flags"])
+        self.assertEqual(set(jf) - baseline, {PROBE_ERRATA_ID})
+        self.assertEqual(set(bf), baseline)
 
     def test_direct_penalty_now_reads_verdict_and_status(self):
         """The engine reads verdict/status; this test used to assert that it did not.
@@ -87,8 +88,11 @@ class BoundaryChannelProbeTests(unittest.TestCase):
                         self.assertLess(d, 0.0)
                     else:
                         self.assertEqual(d, 0.0)
-                    # Visibility is not gated: every row stays flagged.
-                    self.assertEqual(len(flags), 1)
+                    # Visibility is not gated; compare the injected ID against
+                    # existing live flags, rather than assuming none exist.
+                    baseline = set(probe._hyp(self.base, QUESTION, TARGET)["errata_flags"])
+                    self.assertEqual(set(flags) - baseline, {PROBE_ERRATA_ID})
+                    self.assertTrue(baseline.issubset(flags))
 
     def test_unknown_status_does_not_escape_the_penalty(self):
         """Two legacy rows carry status `corrected`, outside the schema enum.
@@ -123,8 +127,11 @@ class BoundaryChannelProbeTests(unittest.TestCase):
                 d = h["log_odds"] - base_h["log_odds"]
                 self.assertAlmostEqual(d, one_row, places=6,
                                        msg=f"{k} identical rows are one claim, not {k}")
-                self.assertEqual(len(h["errata_flags"]), k,
-                                 "every row must stay visible even when collapsed")
+                baseline = set(base_h["errata_flags"])
+                self.assertTrue(baseline.issubset(h["errata_flags"]))
+                self.assertEqual(set(h["errata_flags"]) - baseline,
+                                 {f"ERR-PROBE-{i}" for i in range(k)},
+                                 "every added row must stay visible even when collapsed")
         for k in (1, 2, 3):
             with self.subTest(distinct_claims=k):
                 c = copy.deepcopy(self.cols)
@@ -138,7 +145,7 @@ class BoundaryChannelProbeTests(unittest.TestCase):
                                        msg=f"{k} distinct claims should cost {k}x one row")
 
     def test_one_hop_channel_changes_visibility_never_weight(self):
-        """Across all three admission rules, log-odds is identical; only flags move."""
+        """Across the admission rules, log-odds is identical; only flags move."""
         arm = self.res["arms"]["rule_powered"]
         self.assertIn("via_supports_evaluation", arm)
         for tag, per_rule in arm.items():
@@ -152,17 +159,15 @@ class BoundaryChannelProbeTests(unittest.TestCase):
         self.assertNotIn(PROBE_ERRATA_ID, sup["closed"]["errata_flags"])
         self.assertIn(PROBE_ERRATA_ID, sup["current"]["errata_flags"])
 
-    def test_widening_the_rule_admits_a_narrowing_evaluation(self):
-        """A correction addressed to a narrowing evaluation is admitted only by
-        the widened rule. Asserted through the injected row, not through a flag
-        count: ``ERR-20261114-f89b2e`` is a real correction addressed to
-        ``EVL-20261114-3abc38``, a narrows_scope evaluation of TARGET, so the
-        widened rule now returns two flags where it used to return one. The
-        mechanism is unchanged; the live ledger is not empty.
+    def test_current_rule_admits_a_narrowing_evaluation(self):
+        """The historical supports-only rule hid a narrowing correction; the
+        current all-verdict rule exposes it without changing the evaluation's
+        weight. Assert the injected row, not the number of live flags.
         """
         nar = self.res["arms"]["rule_powered"]["via_narrows_evaluation"]
         self.assertNotIn(PROBE_ERRATA_ID, nar["closed"]["errata_flags"])
-        self.assertNotIn(PROBE_ERRATA_ID, nar["current"]["errata_flags"])
+        self.assertNotIn(PROBE_ERRATA_ID, nar["supports_only"]["errata_flags"])
+        self.assertIn(PROBE_ERRATA_ID, nar["current"]["errata_flags"])
         self.assertIn(PROBE_ERRATA_ID, nar["widened"]["errata_flags"])
 
     def test_mix_arm_holds_row_count_fixed(self):
@@ -207,12 +212,18 @@ class BoundaryChannelProbeTests(unittest.TestCase):
     # moved 1 -> 2 when ERR-20261119-e49d36 (contradicted/annotated, weight_effect
     # flag) addressed HYP-20261119-539a0c; re-measurement via belief_state.build_errata_index
     # confirmed exactly {HYP-20261116-ac0712, HYP-20261119-539a0c}.
-    LIVE_DIRECT_PENALTY_HYPOTHESES = 2
+    # 2026-11-20: a third direct address flags HYP-20261120-e6e225 as
+    # unmeasurable, so it is visible but does not fire the penalty.
+    LIVE_DIRECT_ADDRESSED_HYPOTHESES = 3
+    LIVE_DIRECT_PENALISING_HYPOTHESES = 2
 
     def test_direct_branch_reach_is_pinned_on_the_live_ledger(self):
         d = self.res["direct_penalty_branch"]
         self.assertEqual(d["live_hypotheses_with_a_direct_errata_row"],
-                         self.LIVE_DIRECT_PENALTY_HYPOTHESES)
+                         self.LIVE_DIRECT_ADDRESSED_HYPOTHESES)
+        self.assertEqual(d["live_hypotheses_with_penalising_direct_errata"],
+                         self.LIVE_DIRECT_PENALISING_HYPOTHESES)
+        self.assertFalse(bs.errata_is_live_correction(self.cols["errata"]["ERR-20261120-2fd9aa"]))
         self.assertGreater(d["live_errata_rows"], 0)
 
     def test_probe_writes_nothing(self):

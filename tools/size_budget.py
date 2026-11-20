@@ -1932,7 +1932,11 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # soft_files set to the measured union exactly; soft_bytes (37 MiB),
         # hard_files (1,200), hard_bytes (48 MiB) and the per-report caps unchanged.
         # Not automatic; the next session must measure after merging.
-        soft_files=1071,
+        # 2026-11-20 (merge of main 6e84a740 / PR #996): main added one
+        # neuroscience reading, so the combined tree measures 1,072 files /
+        # 37,146,679 B. Raise only soft_files by one to the measured count;
+        # byte limits, hard limits, and per-report caps remain unchanged.
+        soft_files=1072,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
