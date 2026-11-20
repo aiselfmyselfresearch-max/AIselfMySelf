@@ -308,7 +308,7 @@ class MaterialBudgetTests(unittest.TestCase):
             self.assertIn(f"### `{mid}`", packet)
         self.assertNotIn("予算注記", packet)
 
-    def test_default_budget_keeps_a_ledger_order_prefix(self) -> None:
+    def test_default_budget_keeps_a_candidate_order_prefix_without_hypotheses(self) -> None:
         data, order = budget_fixture(count=6)
         sizes = [block_size(data, m) for m in order]
         budget = sizes[0] + sizes[1]
@@ -328,10 +328,11 @@ class MaterialBudgetTests(unittest.TestCase):
         for mid in order[2:]:
             self.assertIn(f"`{mid}`", note[0])
         self.assertIn("対話素材 6 件", note[0])
-        self.assertIn("台帳順の先頭 2 件", note[0])
+        self.assertIn("候補優先順の先頭 2 件", note[0])
         self.assertIn("窓外の 4 件", note[0])
         self.assertIn("--id", packet)
-        self.assertIn("価値や関連度の判断ではなく", packet)
+        self.assertIn("候補の優先順とバイト予算の結果", packet)
+        self.assertIn("未読や価値の欠如を意味しません", packet)
 
     def test_blocks_are_carried_whole_never_split(self) -> None:
         """A half-quoted passage could be mistaken for the full quote."""

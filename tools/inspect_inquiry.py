@@ -29,6 +29,7 @@ from typing import Any, Iterable, Sequence
 
 import ledger_io
 
+from read_log_backfill import HANDWRITTEN_READINGS
 from validate_seed import COLLECTIONS, OPTIONAL_EMPTY_COLLECTIONS, ROOT, load_jsonl
 
 DEFAULT_MAP_PATH = ROOT / "READING_MAP.md"
@@ -717,10 +718,16 @@ def related_notes_lines(
                 "  - 台帳行 `" + str(nid) + "`（`read_log` の `target.type` を `note` にしてこのノートを引用できます）"
             )
         note_errs = errata_for(entry["path"], errata)
-        if nid:
-            for ce in errata_for(str(nid), errata):
+        # A newer curation row must not hide corrections addressed to an older
+        # row for the same report. note_index retains all IDs in note_ids.
+        note_ids = list(entry.get("note_ids") or [])
+        if nid and nid not in note_ids:
+            note_ids.append(nid)
+        for note_id in note_ids:
+            for ce in errata_for(str(note_id), errata):
                 if ce not in note_errs:
                     note_errs.append(ce)
+        note_errs.sort(key=lambda c: (c.get("created_at", ""), c.get("errata_id", "")))
         if note_errs:
             eids = ", ".join(f"`{c.get('errata_id')}`" for c in note_errs)
             lines.append(f"  - **訂正録（この記録の隣に置かれ、記録自体は書き換えていない）**: {eids}")
@@ -1151,10 +1158,10 @@ def _candidate_materials_for_question(
     clean_dyn = [m for m in dynamic_mids if not _is_retrieval_suppressed("material", m, err_map)]
     sup_dyn = [m for m in dynamic_mids if _is_retrieval_suppressed("material", m, err_map)]
 
-    # Three-tier memory temperature ordering for remaining question materials
-    # (Hot Gist: wired in notes.claims -> Warm: cross-session read_log -> Cold Verbatim):
-    # keeps active gist-wired and re-read materials inside the 16 KiB §3 window
-    # while preserving Cold verbatim items intact as reachable out-of-window pointers.
+    # Heuristic ordering for remaining materials: current note-claim wiring,
+    # then layer-2 records in >=2 distinct sessions, then everything else.
+    # This does not prove a reading sequence or that any item was not read.
+    # Preserve unselected items as reachable out-of-window pointers.
     tier1_claim_mids: set[str] = set()
     for nrec in (data.get("notes") or {}).values():
         if not isinstance(nrec, dict):
@@ -1171,7 +1178,9 @@ def _candidate_materials_for_question(
         tgt = rrec.get("target")
         if not isinstance(tgt, dict) or tgt.get("type") != "material":
             continue
-        if "バックフィル" in str(rrec.get("note") or ""):
+        # A declined row explicitly says "not read"; a context row is only
+        # contact. Counted is an audit, not necessarily a close interpretation.
+        if rrec.get("reading") not in HANDWRITTEN_READINGS:
             continue
         rmid = str(tgt.get("id") or "")
         rsid = str(rrec.get("session_id") or "")
@@ -1362,7 +1371,7 @@ def _belief_briefing_lines(
         "- **三門・二系統案内**: DN-A（場面・原典復元）=`§3・§4・§4.6・§4.7` ／ "
         "DN-B（現在状態・他回応答監査）=`§0.2・§4.8・read_log.in_reply_to` ／ "
         "PCS（現実識別・収蔵前重複/昇格照合）=`python3 tools/three_gates.py --check-source`・`--upgrade-candidates` ／ "
-        "二段階ゲート要旨配線（Warm→Hot昇格）=`python3 tools/three_gates.py --tier0-candidates`。"
+        "素材の配線と読書・評価の共起（事後分類、時間順・因果は未検証）=`python3 tools/three_gates.py --tier0-candidates`。"
     )
 
     if qstate and qstate["hypotheses"]:
@@ -1712,13 +1721,11 @@ def build_context_packet(
     lines.append("")
 
     lines.append("## 3. 対話素材（結論の証拠ではなく、摩擦と比喩の種として扱う）")
-    # Byte budget, ledger-order prefix.  Every material of the question is a
-    # candidate in the order the ledger records it; blocks are added whole until
-    # the next one would cross the budget, and everything from there on is named
-    # as omitted rather than silently dropped.  Strict prefix (not best-fit) so
-    # the selection stays deterministic and stays in ledger order -- a greedy
-    # fill would reorder by size and make "which materials did I see" depend on
-    # passage lengths instead of on the question's own record.
+    # Byte budget over the candidate-priority order produced above, not
+    # necessarily ledger order. Blocks are carried whole until the next would
+    # cross the budget; the remaining IDs are named rather than silently dropped.
+    # This is a strict prefix, not best-fit packing: both priority and block size
+    # affect what enters the window, and neither establishes a reader's action.
     packet_materials = _candidate_materials_for_question(data, target_qid, errata=errata)
     shown_mats: list[str] = []
     omitted_mats: list[str] = []
@@ -1738,16 +1745,11 @@ def build_context_packet(
         omitted_str = ", ".join(f"`{m}`" for m in omitted_mats)
         lines.append(
             f"- **予算注記（§3 の上限 {material_budget:,} B）**: この問いの対話素材 "
-            f"{len(packet_materials)} 件のうち台帳順の先頭 {len(shown_mats)} 件（{used_bytes:,} B）を載せ、"
+            f"{len(packet_materials)} 件のうち候補優先順の先頭 {len(shown_mats)} 件（{used_bytes:,} B）を載せ、"
             f"窓外の {len(omitted_mats)} 件は**載せていません**: {omitted_str}。"
         )
         lines.append(
-            # 字节 は簡体字の混入（正しくは バイト／字節）だが、この行は packet の §3 に
-            # 描画されるため、直すと予算注記が出る40問の §3 が +3 B 動き、§3 p99
-            # 16,652→16,655・max 16,956→16,959 になる。max の 16,956 B は追記専用台帳の
-            # CLM-599b4c-4 に入っていて訂正できない。よって表記は据え置き、
-            # 訂正は errata（記録の隣に置き記録自体は書き換えない）で行う。
-            "  省略は素材の価値や関連度の判断ではなく、packet の字节予算だけです。"
+            "  省略は候補の優先順とバイト予算の結果であり、未読や価値の欠如を意味しません。"
             " 窓外の素材も `python3 tools/inspect_inquiry.py --id <MAT-ID>` で全文を引けます"
             "（予算は `--material-budget` で変更可、0 で無制限）。"
         )

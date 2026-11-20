@@ -135,6 +135,28 @@ def _base_data(
     }
 
 
+class EvaluationCorrectionVisibilityTests(unittest.TestCase):
+    def test_flags_on_all_targeted_verdicts_are_visible_without_changing_weight(self) -> None:
+        for verdict in ("supports", "narrows_scope", "refutes_unconditioned", "subsumes"):
+            for correction_verdict in ("contradicted", "unmeasurable"):
+                with self.subTest(verdict=verdict, correction=correction_verdict):
+                    hyps = {h: _make_hyp(h) for h in ("HYP-A", "HYP-B")}
+                    evls = {"EVL-A": _make_evl("EVL-A", "HYP-A", verdict=verdict)}
+                    data = _base_data(hypotheses=hyps, evaluations=evls)
+                    before = belief_state.compute_belief_state(data=data)["questions"]["Q-001"]
+                    data["errata"] = {"ERR-A": {
+                        "errata_id": "ERR-A", "subject_type": "evaluation", "subject_id": "EVL-A",
+                        "verdict": correction_verdict, "status": "open", "weight_effect": "flag",
+                    }}
+                    after = belief_state.compute_belief_state(data=data)["questions"]["Q-001"]
+                    b = {h["hypothesis_id"]: h for h in before["hypotheses"]}
+                    a = {h["hypothesis_id"]: h for h in after["hypotheses"]}
+                    self.assertIn("ERR-A", a["HYP-A"]["errata_flags"])
+                    for hid in hyps:
+                        self.assertEqual(a[hid]["posterior"], b[hid]["posterior"])
+                        self.assertEqual(a[hid]["gated_posterior"], b[hid]["gated_posterior"])
+
+
 class UnsaturatedRatchetTests(unittest.TestCase):
     """§7-1 / §2.2: Top pairs below 90% combined mass flag unsaturated EIG ratchet."""
 

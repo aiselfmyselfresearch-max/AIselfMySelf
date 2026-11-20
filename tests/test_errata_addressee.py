@@ -70,26 +70,29 @@ class ErrataWeightTests(unittest.TestCase):
         cols = copy.deepcopy(self.cols)
         cols["errata"][rec["errata_id"]] = rec
         lo, flags = self._measure(cols)
-        return round(lo - self.base[0], 6), flags
+        # Live one-hop flags can grow as the archive changes. Check the new
+        # synthetic flag without assuming the target previously had none.
+        self.assertTrue(set(self.base[1]).issubset(flags))
+        return round(lo - self.base[0], 6), sorted(set(flags) - set(self.base[1]))
 
     def test_live_contradiction_still_costs_weight(self):
         for status in ("open", "annotated"):
             with self.subTest(status=status):
                 delta, flags = self._with(row(status=status))
                 self.assertLess(delta, 0.0)
-                self.assertEqual(len(flags), 1)
+                self.assertEqual(flags, ["ERR-PROBE-ADDR"])
 
     def test_withdrawn_correction_costs_nothing_but_stays_visible(self):
         delta, flags = self._with(row(status="withdrawn"))
         self.assertEqual(delta, 0.0)
-        self.assertEqual(len(flags), 1, "a retracted correction must remain visible")
+        self.assertEqual(flags, ["ERR-PROBE-ADDR"], "a retracted correction must remain visible")
 
     def test_correction_that_found_no_error_costs_nothing(self):
         for verdict in ("holds", "unmeasurable"):
             with self.subTest(verdict=verdict):
                 delta, flags = self._with(row(verdict=verdict))
                 self.assertEqual(delta, 0.0)
-                self.assertEqual(len(flags), 1)
+                self.assertEqual(flags, ["ERR-PROBE-ADDR"])
 
     def test_unknown_status_cannot_be_used_to_dodge_the_penalty(self):
         # Two live rows carry `corrected`, which is outside the schema enum.
@@ -110,7 +113,10 @@ class ErrataWeightTests(unittest.TestCase):
         delta = round(lo - self.base[0], 6)
         live, _ = self._with(row())
         self.assertEqual(delta, live, "spent corrections were counted toward the weight")
-        self.assertEqual(len(flags), 3, "all three rows should still be visible")
+        self.assertTrue(set(self.base[1]).issubset(flags))
+        self.assertEqual(set(flags) - set(self.base[1]),
+                         {f"ERR-PROBE-MIX{i}" for i in range(3)},
+                         "all three added rows should still be visible")
 
     def test_prose_location_is_not_an_address_when_one_is_present(self):
         delta, flags = self._with(row(
@@ -127,7 +133,7 @@ class ErrataWeightTests(unittest.TestCase):
         del rec["subject_type"]
         delta, flags = self._with(rec)
         self.assertLess(delta, 0.0)
-        self.assertEqual(len(flags), 1)
+        self.assertEqual(flags, ["ERR-PROBE-ADDR"])
 
     def test_index_ignores_prose_but_keeps_every_address_field(self):
         recs = {
@@ -155,7 +161,12 @@ class ErrataWeightTests(unittest.TestCase):
     # 2026-11-19 (SESSION-20261119-cfdeb1): a second hypothesis-addressed row
     # landed (ERR-20261119-e49d36 -> HYP-20261119-539a0c); re-measured with
     # belief_state.build_errata_index, the declared set was extended accordingly.
-    LIVE_DIRECT_ERRATA_ADDRESSEES = frozenset({"HYP-20261116-ac0712", "HYP-20261119-539a0c"})
+    # 2026-11-20: ERR-20261120-2fd9aa flags the unsupported phenomenal
+    # assertion in e6e225 as unmeasurable. This is a direct *address*, not a
+    # penalising contradiction; the tests above continue to check both cases.
+    LIVE_DIRECT_ERRATA_ADDRESSEES = frozenset({
+        "HYP-20261116-ac0712", "HYP-20261119-539a0c", "HYP-20261120-e6e225",
+    })
 
     def test_live_penalty_branch_addresses_only_the_declared_hypotheses(self):
         idx = bs.build_errata_index(self.cols["errata"])

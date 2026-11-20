@@ -94,6 +94,20 @@ SELF_SUPPORT_GATED_DISCOUNT = 0.50
 # is therefore a registration declaration rather than an independent test, and
 # carries 0.0 weight under P_gate until an external session audits the child.
 SELF_SUPPORT_DEPTH1_GATED_DISCOUNT = 0.0
+# 2026-11-20 (④ of the evidence-accounting change): a `supports` row earns the
+# full weight of its cited materials only to the extent that those materials
+# were text-checked.  Measured on this archive before the change: 160/260
+# (61.5%) of `supports` rows with materials cited ZERO verified material, while
+# `narrows_scope` rows did so 46.1% of the time -- critique and support were
+# resting on the same depth of reading.  A row backed entirely by
+# partially_verified sources now keeps half its weight; a row backed entirely by
+# verified ones keeps all of it:
+#     factor = SUPPORT_DEPTH_FLOOR + (1 - SUPPORT_DEPTH_FLOOR) * r
+# where r is the share of the row's cited materials whose effective
+# verification.status is "verified".  Rows citing no material at all are left
+# alone: they are proposition-level audits (or reproducible scripts), and their
+# backing is a different question from whether a passage was read.
+SUPPORT_DEPTH_FLOOR = 0.50
 SUPPRESS_RETRIEVAL_HYP_PENALTY = 1.20
 INHIBITION_STATE_LABELS: dict[str, str] = {
     "refuted_inhibited": "棄却・抑制",
@@ -252,6 +266,34 @@ def classify_evaluation_verification(
     if verified_count > 0:
         return "mixed_verified"
     return "zero_verified"
+
+
+def support_verified_ratio(
+    evl: dict[str, Any],
+    materials: dict[str, dict[str, Any]],
+) -> float | None:
+    """Share of an evaluation's cited materials that were text-checked.
+
+    Returns ``None`` when the row cites no material (proposition-level audit or
+    a reproducible script): those rows are not making a claim about a passage,
+    so the question "how much of this support rests on a checked text?" has no
+    answer for them and must not be silently answered as 0.0.
+
+    The ratio uses the *effective* verification status, i.e. after any
+    editorial_decisions overlay has been applied by ``tools/ledger_io.py``, so a
+    material upgraded this session counts as verified for every earlier row that
+    cited it.  That is deliberate: the mass a row contributed is re-read in the
+    light of what is now known, which is the same convention the PSC weights use.
+    """
+    mids = [m for m in (evl.get("material_ids") or []) if isinstance(m, str) and m]
+    if not mids:
+        return None
+    verified = sum(
+        1
+        for mid in mids
+        if ((materials.get(mid) or {}).get("verification") or {}).get("status") == "verified"
+    )
+    return verified / len(mids)
 
 
 def hypothesis_read_witnesses(
@@ -773,7 +815,12 @@ def compute_belief_state(
                     self_factor = SELF_SUPPORT_DEPTH1_GATED_DISCOUNT
                 else:
                     self_factor = SELF_SUPPORT_GATED_DISCOUNT
-        delta = base_w * indep_discount * comp_factor * self_factor
+        depth_factor = 1.0
+        if receiver_gated and verdict == "supports":
+            ratio = support_verified_ratio(evl, materials)
+            if ratio is not None:
+                depth_factor = SUPPORT_DEPTH_FLOOR + (1.0 - SUPPORT_DEPTH_FLOOR) * ratio
+        delta = base_w * indep_discount * comp_factor * self_factor * depth_factor
 
         evals_by_hyp[target_id].append(evl)
         indep_sources[target_id].add(f"{ev_type}:{source_key}")
@@ -880,14 +927,18 @@ def compute_belief_state(
                     log_odds[pid] -= 0.80 * delta
                     adversarial_touches[pid] += 1
 
-    # 1-hop transitive errata check on hypotheses and their supporting materials/notes/evaluations
+    # 1-hop visibility for a hypothesis, its cited materials/notes, and every
+    # evaluation directly targeting it. A narrowing or refuting evaluation can
+    # change the posterior just as a support can: limiting flags to supports
+    # hid corrections on those rows even though their weights still applied.
+    # This changes visibility only; a flag is not a void or a direct penalty.
     hyp_errata: dict[str, list[str]] = defaultdict(list)
     for hid, hyp in hypotheses.items():
         direct_errs = [e["errata_id"] for e in errata_by_target.get(hid, []) if "errata_id" in e]
         ref_ids = (
             list(hyp.get("supporting_material_ids") or [])
             + list(hyp.get("source_note_ids") or [])
-            + [e["evaluation_id"] for e in evals_by_hyp.get(hid, []) if e.get("verdict") == "supports"]
+            + [e["evaluation_id"] for e in evals_by_hyp.get(hid, []) if e.get("evaluation_id")]
         )
         hop_errs: list[str] = []
         for rid in ref_ids:
@@ -994,6 +1045,23 @@ def compute_belief_state(
             verified_mat_count = ver_classes["all_verified"]
             script_eval_count = ver_classes["script_verified"]
             verified_direct_count = verified_mat_count + script_eval_count
+            # 2026-11-20 (④): how much of this hypothesis's positive support rests
+            # on text-checked sources.  Reported, not stored: it is derived from
+            # the rows every time, so it cannot drift from the ledger.
+            support_ratios = [
+                r
+                for r in (
+                    support_verified_ratio(e, materials)
+                    for e in direct_evals
+                    if str(e.get("verdict") or "") == "supports"
+                )
+                if r is not None
+            ]
+            support_ratio_mean = (
+                round(sum(support_ratios) / len(support_ratios), 4) if support_ratios else None
+            )
+            zero_verified_support_count = sum(1 for r in support_ratios if r == 0.0)
+            fully_verified_support_count = sum(1 for r in support_ratios if r >= 1.0)
             psc_evals = [
                 e for e in direct_evals if e.get("evidence_type") == "primary_source_collision"
             ]
@@ -1058,6 +1126,9 @@ def compute_belief_state(
                 "script_eval_count": script_eval_count,
                 "verified_direct_eval_count": verified_direct_count,
                 "psc_eval_count": len(psc_evals),
+                "support_verified_ratio": support_ratio_mean,
+                "zero_verified_support_count": zero_verified_support_count,
+                "fully_verified_support_count": fully_verified_support_count,
                 "psc_all_verified_count": psc_classes["all_verified"],
                 "psc_mixed_verified_count": psc_classes["mixed_verified"],
                 "psc_zero_verified_count": psc_classes["zero_verified"],
@@ -1968,8 +2039,8 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
         lines.append("")
 
         lines.extend([
-            "| 順位 | ID | 状態 (抑制区分) | 世代/系譜 | 事後確率 P_t | P_sep (対単位割引) | P_lin (系譜移流なし) | P_gate (三門制御) | 不確実性 u | 独立分離 (最終新規) | 評価数 (反証系) | 照合済 (PSC全照合) | 証人 (EVL/読) | 仮説タイトル |",
-            "| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
+            "| 順位 | ID | 状態 (抑制区分) | 世代/系譜 | 事後確率 P_t | P_sep (対単位割引) | P_lin (系譜移流なし) | P_gate (三門制御) | 不確実性 u | 独立分離 (最終新規) | 評価数 (反証系) | 照合済 (PSC全照合) | 支持照合率 | 証人 (EVL/読) | 仮説タイトル |",
+            "| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
         ])
         for idx, h in enumerate(qs["hypotheses"], start=1):
             parents = ", ".join(f"`{p}`" for p in h["parent_hypothesis_ids"]) or "—"
@@ -1982,6 +2053,16 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
                     ver_cell += f" (PSC {h.get('psc_all_verified_count', 0)}/{h['psc_eval_count']})"
             else:
                 ver_cell = "—"
+            # 2026-11-20 (④): share of this hypothesis's positive support that
+            # rests on text-checked sources, plus how many `supports` rows rest on
+            # none at all.  Derived every run; never stored.
+            if h.get("support_verified_ratio") is not None:
+                sup_cell = f"{h['support_verified_ratio'] * 100:.0f}%"
+                nz = h.get("zero_verified_support_count", 0)
+                if nz:
+                    sup_cell += f" ({nz}件ゼロ)"
+            else:
+                sup_cell = "—"
             if "witness_eval_session_count" in h:
                 wit_cell = f"{h['witness_eval_session_count']} / {h.get('witness_read_session_count', 0)}"
                 if h.get("low_witness_high_mass"):
@@ -2016,7 +2097,7 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
                 f"**{h['posterior'] * 100:.1f}%** | {sep_cell} | {lin_cell} | {gate_cell} | {h['uncertainty']:.3f} | "
                 f"{sep_audit} | "
                 f"{h['direct_eval_count']} ({h['adversarial_eval_count']}) | "
-                f"{ver_cell} | {wit_cell} | {h['title']} |"
+                f"{ver_cell} | {sup_cell} | {wit_cell} | {h['title']} |"
             )
 
         lines.append("")

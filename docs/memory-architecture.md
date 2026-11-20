@@ -472,6 +472,8 @@ python3 tools/inspect_inquiry.py --packet-stats --stats-limit 40   # 標本で�
 
 ## 2026-11-20 拡張：三層温度分離（Hot Gist / Warm Decay / Cold Verbatim）・二段階継承ゲート・世代間監査分業
 
+> **同日訂正（下記は当時の設計と解釈の記録）**：元報告の表では、評価総数と「読書記録・評価記録の共通部分」が一致せず、掲載した二項の積だけでは評価総数を説明できない。また、別セッション ID は実時間上の「後続」でも、読書から評価への変換の証拠でもない。現行 `--tier0-candidates` は四分割・基準セッション不明数を表示し、層は現在の配線による事後分類とする。既存 JSON の `stage*` / `subseq*` / `conversion` は互換用の旧名であり、因果や時間順を表さない。`declined`・`used_as_context` は読書記録に含めず、`counted` は計数であって精読とは限らない。下記の「到達」「評価変換」「脱落」や要旨配線の効果を、これらの数値から確定しない。詳細・反例・再現条件は [同日の監査報告](2026-11-20-reading-is-not-conversion-991cf0a7.md) を参照。
+
 [`readings/2026-11-20-two-stage-gate-and-intergenerational-audit.md`](../readings/2026-11-20-two-stage-gate-and-intergenerational-audit.md)（`NOTE-20261120-058297`）の実測（全 5,534 素材・740 評価行）に基づき、初期生データを 1 バイトも削除せず機能的忘却と構造化スキーマ継承を両立する以下の拡張を導入した。
 
 1. **三層温度分離と二段階継承ゲート診断（`tools/three_gates.py --tier0-candidates`・`tools/inspect_inquiry.py`）**：

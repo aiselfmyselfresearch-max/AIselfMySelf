@@ -52,7 +52,7 @@ class DuplicateClaimWeightTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.cols = bs.load_belief_ledgers()
-        cls.base = cls._measure(cls.cols)[0]
+        cls.base, cls.base_flags = cls._measure(cls.cols)
 
     @classmethod
     def _measure(cls, cols) -> tuple[float, list[str]]:
@@ -66,7 +66,12 @@ class DuplicateClaimWeightTests(unittest.TestCase):
         for rec in rows:
             cols["errata"][rec["errata_id"]] = rec
         lo, flags = self._measure(cols)
-        return round(lo - self.base, 6), len(flags)
+        # Count only the synthetic additions; unrelated live one-hop flags may
+        # legitimately appear as more evaluations get corrected.
+        self.assertTrue(set(self.base_flags).issubset(flags))
+        added_flags = set(flags) - set(self.base_flags)
+        self.assertTrue(added_flags.issubset({rec["errata_id"] for rec in rows}))
+        return round(lo - self.base, 6), len(added_flags)
 
     def test_identical_rows_cost_one_penalty_and_all_stay_visible(self):
         one, _ = self._delta([row(1)])
@@ -162,7 +167,11 @@ class DuplicateClaimWeightTests(unittest.TestCase):
     # 2026-11-19 (SESSION-20261119-cfdeb1): a second hypothesis-addressed row
     # landed (ERR-20261119-e49d36 -> HYP-20261119-539a0c); re-measured with
     # belief_state.build_errata_index, the declared set was extended accordingly.
-    LIVE_DIRECT_ERRATA_ADDRESSEES = frozenset({"HYP-20261116-ac0712", "HYP-20261119-539a0c"})
+    # ERR-20261120-2fd9aa adds a direct but unmeasurable flag on e6e225;
+    # it makes the address reachable without activating the penalty.
+    LIVE_DIRECT_ERRATA_ADDRESSEES = frozenset({
+        "HYP-20261116-ac0712", "HYP-20261119-539a0c", "HYP-20261120-e6e225",
+    })
 
     def test_live_penalty_branch_addresses_only_the_declared_hypotheses(self):
         idx = bs.build_errata_index(self.cols["errata"])

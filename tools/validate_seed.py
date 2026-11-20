@@ -1081,6 +1081,205 @@ def check_evidence_path_corrections(
             )
 
 
+
+# ---------------------------------------------------------------------------
+# 2026-11-20 (③④ of the evidence-accounting change)
+#
+# ③ verification.depth: "did a check happen" and "how far into the text did it
+#    go" were the same field.  A session that read a results table had to choose
+#    between claiming `verified` (an overclaim) and staying `partially_verified`
+#    (which reads in reports as "did not read").  `depth` separates the two, and
+#    only binds rows checked on or after DEPTH_CUTOFF, because 5,564 existing
+#    rows cannot acquire a field that was invented after they were written.
+#
+# ④ every number must be recomputed, traced to a checked text, or explained.
+#    `script_command` already covered the first route and `material_ids` the
+#    second; `no_recompute_reason` names the third.  Only rows from the cutoff
+#    on are gated, for the same append-only reason.
+# ---------------------------------------------------------------------------
+VERIFICATION_DEPTHS = frozenset({"metadata", "abstract", "results", "full_text", "re_derived"})
+TRACEABILITY_CUTOFF = "20261121"  # YYYYMMDD, the same stamp format as CLAIM_WIRING_RULE_FROM
+_NUMBER_RE = re.compile(
+    r"(?:\d+(?:\.\d+)?\s*%|\bp\s*[=<]\s*0?\.\d+|\d+\.\d+|\b\d+\s*(?:件|行|回|種|人|資料|評価|セッション|仮説|素材)"
+    r"|\bn\s*=\s*\d+|\b\d{2,}\b)"
+)
+_DATE_RE = re.compile(r"\b\d{4}-\d{2}(?:-\d{2})?\b")
+
+
+def _numbers_in(text: str) -> bool:
+    """True when the prose asserts a quantity (IDs, dates and years excluded)."""
+    if not isinstance(text, str) or not text:
+        return False
+    stripped = _DATE_RE.sub(" ", text)
+    stripped = re.sub(r"\b[A-Z]{2,}-\d{4,}-[0-9a-z]+", " ", stripped)
+    stripped = re.sub(r"\b\d{4}/\d{1,2}/\d{1,2}\b", " ", stripped)
+    return bool(_NUMBER_RE.search(stripped))
+
+
+def check_verification_depth(
+    materials: dict[str, dict[str, Any]],
+    errors: list[str],
+    *,
+    today: datetime.date | None = None,
+) -> tuple[int, int]:
+    """Depth must exist where a check was recorded, and must agree with status."""
+    depth_recorded = 0
+    legacy_missing = 0
+    for mid, record in materials.items():
+        ver = record.get("verification")
+        if not isinstance(ver, dict):
+            continue
+        status = ver.get("status")
+        depth = ver.get("depth")
+        checked_at = str(ver.get("checked_at") or "")
+        if depth is not None and depth not in VERIFICATION_DEPTHS:
+            # The schema enum already rejects this; kept so a future enum widening
+            # cannot silently accept a depth the rest of the archive cannot read.
+            errors.append(
+                f"materials:{mid}: verification.depth {depth!r} is not one of {sorted(VERIFICATION_DEPTHS)}"
+            )
+            continue
+        if depth in ("metadata", "abstract") and status == "verified":
+            errors.append(
+                f"materials:{mid}: verification.depth {depth!r} cannot carry status 'verified' — "
+                "a bibliographic or abstract-level check is 'partially_verified' (or 'verified' "
+                "only once the passage itself was read in the paper's own text)"
+            )
+        if depth in ("full_text", "re_derived") and status not in ("verified", "corrected"):
+            errors.append(
+                f"materials:{mid}: verification.depth {depth!r} requires status 'verified' "
+                f"(got {status!r})"
+            )
+        # Gate on the row's own ID stamp, not on checked_at: legacy rows carry
+        # internal-chronology dates (some in 2027) that _is_new_row already knows
+        # to exclude, and a forward-dated checked_at must not turn a 2026 row into
+        # a rule that only binds tomorrow.
+        if depth:
+            depth_recorded += 1
+        is_new = _is_new_row(mid, TRACEABILITY_CUTOFF, today=today) and checked_at[:10] >= (
+            f"{TRACEABILITY_CUTOFF[:4]}-{TRACEABILITY_CUTOFF[4:6]}-{TRACEABILITY_CUTOFF[6:]}"
+        )
+        if is_new:
+            if status in ("verified", "partially_verified") and not depth:
+                errors.append(
+                    f"materials:{mid}: verification.checked_at {checked_at[:10]} is on or after "
+                    f"{TRACEABILITY_CUTOFF[:4]}-{TRACEABILITY_CUTOFF[4:6]}-{TRACEABILITY_CUTOFF[6:]}, so verification.depth must say how far the check went "
+                    f"({sorted(VERIFICATION_DEPTHS)}); status alone cannot distinguish "
+                    "'read the abstract' from 'read the passage'"
+                )
+        elif status == "verified" and not depth:
+            legacy_missing += 1
+    return depth_recorded, legacy_missing
+
+
+def check_number_traceability(
+    evaluations: dict[str, dict[str, Any]],
+    notes: dict[str, dict[str, Any]],
+    materials: dict[str, dict[str, Any]],
+    errors: list[str],
+    *,
+    today: datetime.date | None = None,
+) -> tuple[int, int]:
+    """A number must be recomputed, traced to a checked text, or explained.
+
+    Returns (gated_rows_checked, legacy_numeric_rows_measured) so the caller can
+    print how large the un-recomputed backlog still is.
+    """
+    def verified(mids: Any) -> bool:
+        return any(
+            ((materials.get(m) or {}).get("verification") or {}).get("status") == "verified"
+            for m in (mids or [])
+            if isinstance(m, str)
+        )
+
+    gated = 0
+    legacy = 0
+    for eid, evl in evaluations.items():
+        summary = evl.get("summary") or ""
+        if not _numbers_in(summary):
+            continue
+        if _is_new_row(eid, TRACEABILITY_CUTOFF, today=today):
+            gated += 1
+            if not str(evl.get("script_command") or "").strip():
+                if not verified(evl.get("material_ids")):
+                    if not str(evl.get("no_recompute_reason") or "").strip():
+                        errors.append(
+                            f"evaluations:{eid}: summary asserts a number, but the row has no "
+                            "script_command, cites no verified material, and gives no "
+                            "no_recompute_reason — a number no later session can reproduce is a "
+                            "memory, not a measurement"
+                        )
+        else:
+            legacy += 1
+    for nid, note in notes.items():
+        claims = note.get("claims")
+        if not isinstance(claims, list):
+            continue
+        for claim in claims:
+            if not isinstance(claim, dict):
+                continue
+            if claim.get("kind") != "measured_fact":
+                continue
+            text = claim.get("text") or ""
+            if not _numbers_in(text):
+                continue
+            if _is_new_row(nid, TRACEABILITY_CUTOFF, today=today):
+                if str(claim.get("recomputer") or "").strip():
+                    continue
+                if verified(claim.get("material_ids")):
+                    continue
+                errors.append(
+                    f"notes:{nid}: claim {claim.get('claim_id')!r} is a measured_fact asserting a "
+                    "number without a recomputer (a command, or 'path#section') and without citing "
+                    "a verified material"
+                )
+            else:
+                legacy += 1
+    return gated, legacy
+
+
+def double_reading_advisory(
+    read_log: dict[str, dict[str, Any]],
+    materials: dict[str, dict[str, Any]],
+) -> str | None:
+    """How much of the corpus has been read twice, by different sessions.
+
+    The archive cannot choose which model a session gets, so the only handle on
+    model-to-model variance is repetition: the same material read from two
+    session draws.  Agreement and disagreement are both informative, and the
+    count is what makes the variance estimable at all.
+    """
+    manual = frozenset({"quoted", "summarized", "interpreted", "reinterpreted", "contested", "counted"})
+    readers: dict[str, set[str]] = {}
+    readings: dict[str, set[tuple[str, str]]] = {}
+    for row in read_log.values():
+        if row.get("reading") not in manual:
+            continue
+        target = row.get("target")
+        if not isinstance(target, dict) or target.get("type") != "material":
+            continue
+        mid = target.get("id")
+        sid = row.get("session_id")
+        if not isinstance(mid, str) or not isinstance(sid, str):
+            continue
+        readers.setdefault(mid, set()).add(sid)
+        readings.setdefault(mid, set()).add((sid, str(row.get("reading"))))
+    multi = {m: s for m, s in readers.items() if len(s) >= 2}
+    if not multi:
+        return None
+    upgraded = sum(
+        1
+        for m in multi
+        if ((materials.get(m) or {}).get("verification") or {}).get("depth") in ("full_text", "re_derived")
+    )
+    return (
+        f"INFO: double reading (advisory): {len(multi)}/{len(readers)} materials read by >=2 sessions "
+        f"({100 * len(multi) / max(1, len(readers)):.1f}%); {upgraded} of those carry a full_text/re_derived "
+        "verification.depth. This count is the only handle on model-to-model variance — a material read "
+        "once has an unknown agreement rate"
+    )
+
+
 def check_refs(
     collection_name: str,
     records: dict[str, dict[str, Any]],
@@ -1316,6 +1515,8 @@ def main() -> int:
     check_refs("evaluations", evaluations, "material_ids", "material", materials, errors)
     check_refs("evaluations", evaluations, "fragment_ids", "fragment", fragments, errors)
     check_refs("evaluations", evaluations, "note_ids", "note", notes, errors)
+    depth_new, depth_legacy = check_verification_depth(materials, errors)
+    num_gated, num_legacy = check_number_traceability(evaluations, notes, materials, errors)
     errata_advisory = errata_schema_advisory(errata_records)
     psc_advisory = psc_verification_advisory(evaluations, materials)
     psc_new_advisory = psc_new_row_advisory(evaluations, materials)
@@ -1562,6 +1763,19 @@ def main() -> int:
         print(psc_advisory)
     if psc_new_advisory:
         print(psc_new_advisory)
+    # 2026-11-20 (③④): report the backlog the new gates cannot fix retroactively.
+    print(
+        f"INFO: verification.depth (advisory): {depth_new} material(s) carry a depth; {depth_legacy} legacy `verified` row(s) predate the "
+        "field, so on those rows 'verified' still means 'a check happened', not 'the passage was read'"
+    )
+    print(
+        f"INFO: number traceability (advisory): {num_gated} numeric row(s) from {TRACEABILITY_CUTOFF} "
+        f"on are gated by script/material/reason; {num_legacy} legacy numeric rows are ungated and "
+        "remain un-recomputed history"
+    )
+    dr_advisory = double_reading_advisory(read_logs, materials)
+    if dr_advisory:
+        print(dr_advisory)
     return 0
 
 

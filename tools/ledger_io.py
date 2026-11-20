@@ -291,6 +291,15 @@ def _apply_editorial_overlay(
     if isinstance(reason, str) and reason.strip():
         tag = f"[overlay {did}] " if isinstance(did, str) and did else ""
         new_v["note"] = f"{tag}{reason.strip()}"
+    # 2026-11-20 (③): the depth of the check rides on the same overlay.  Before
+    # this, a session that had read only a results table had two choices --
+    # call it verified (overclaiming) or leave the row partially_verified (which
+    # reads as "did not read").  `verification.depth` separates "how far in" from
+    # "whether at all", and an overlay can now record a full-text read without
+    # touching the shard.
+    depth = decision.get("verification_depth")
+    if isinstance(depth, str) and depth.strip():
+        new_v["depth"] = depth.strip()
     out = {**record, "verification": new_v}
     corrected_path = decision.get("corrected_evidence_record_path")
     if isinstance(corrected_path, str) and corrected_path.strip():

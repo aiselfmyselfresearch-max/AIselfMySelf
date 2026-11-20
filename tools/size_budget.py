@@ -1932,7 +1932,15 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # soft_files set to the measured union exactly; soft_bytes (37 MiB),
         # hard_files (1,200), hard_bytes (48 MiB) and the per-report caps unchanged.
         # Not automatic; the next session must measure after merging.
-        soft_files=1071,
+        # 2026-11-20 (merge of origin/main 41888e12 into arena/1ba4adee): this branch
+        # adds no readings/ report (its deliverables are tools, schemas, tests and a
+        # docs/ note), while main's #995/#996 carried same-day reports. Measured union
+        # after this merge = 1,072 files / 37,146,679 B, inside the 37.00 MiB
+        # soft_bytes. soft_files set to the measured count exactly; soft_bytes,
+        # hard_files (1,200), hard_bytes (48 MiB) and per-report caps unchanged.
+        # Not automatic; the next session must measure after merging.
+
+        soft_files=1072,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

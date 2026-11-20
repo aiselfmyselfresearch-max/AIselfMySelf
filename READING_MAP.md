@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5584 件（research_excerpt 3337 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1055 回
+- **探究セッション（Sessions）**：1057 回
 
 ### 台帳ごとの件数
 
@@ -23,11 +23,11 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5584 | `literary_text` 2179／`research_excerpt` 3337／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1055 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16133 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 375 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 140 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1153 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1057 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16164 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 389 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 142 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1154 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 80 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 768 |  |
 
@@ -7430,6 +7430,7 @@
 | `SESSION-20261119-d9eb8b` | 2026-11-19 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-931bbc` | 2026-11-20 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261120-906569` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261120-8f2c11` | 2026-11-20 | `Q-002` | — | — |
 | `SESSION-20261120-99e940` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-277f20` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-ad4661` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
@@ -7441,6 +7442,7 @@
 | `SESSION-20261120-c17ebe` | 2026-11-20T05:11:44Z | `Q-049`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-fcd455` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-8ef5d4` | 2026-11-20 | `Q-001`, `Q-002` | — | — |
+| `SESSION-20261120-49bb57` | 2026-11-20 | `Q-20261024-18823f`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-2026-11-20-a0ebef` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-a45e52` | 2026-11-20 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261120-acc61c` | 2026-11-20 | `Q-001` | — | — |
@@ -7530,7 +7532,7 @@
 | `map/31-materials-research-15.md` | 100 | 260,059 |
 | `map/31-materials-research-16.md` | 100 | 246,482 |
 | `map/31-materials-research-17.md` | 100 | 222,366 |
-| `map/31-materials-research-18.md` | 100 | 246,023 |
+| `map/31-materials-research-18.md` | 100 | 246,193 |
 | `map/31-materials-research-19.md` | 100 | 255,170 |
 | `map/31-materials-research-20.md` | 100 | 220,572 |
 | `map/31-materials-research-21.md` | 100 | 241,201 |
@@ -7541,7 +7543,7 @@
 | `map/31-materials-research-26.md` | 100 | 236,163 |
 | `map/31-materials-research-27.md` | 100 | 221,141 |
 | `map/31-materials-research-28.md` | 100 | 209,251 |
-| `map/31-materials-research-29.md` | 100 | 264,030 |
+| `map/31-materials-research-29.md` | 100 | 264,177 |
 | `map/31-materials-research-30.md` | 100 | 232,736 |
 | `map/31-materials-research-31.md` | 100 | 208,066 |
 | `map/31-materials-research-32.md` | 100 | 198,638 |
@@ -7583,8 +7585,8 @@
 | `map/50-sessions-18.md` | 50 | 40,384 |
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
-| `map/50-sessions-21.md` | 50 | 36,810 |
-| `map/50-sessions-22.md` | 5 | 4,038 |
+| `map/50-sessions-21.md` | 50 | 36,940 |
+| `map/50-sessions-22.md` | 7 | 5,576 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,073 |
@@ -7600,7 +7602,7 @@
 | `map/60-notes-13.md` | 25 | 88,555 |
 | `map/60-notes-14.md` | 25 | 119,933 |
 | `map/60-notes-15.md` | 25 | 84,918 |
-| `map/60-notes-16.md` | 25 | 89,866 |
+| `map/60-notes-16.md` | 25 | 89,923 |
 | `map/60-notes-17.md` | 25 | 111,391 |
 | `map/60-notes-18.md` | 25 | 109,716 |
 | `map/60-notes-19.md` | 25 | 117,647 |
@@ -7620,8 +7622,8 @@
 | `map/60-notes-33.md` | 25 | 125,759 |
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
-| `map/60-notes-36.md` | 25 | 101,452 |
-| `map/60-notes-37.md` | 25 | 70,715 |
+| `map/60-notes-36.md` | 25 | 101,532 |
+| `map/60-notes-37.md` | 25 | 70,879 |
 | `map/60-notes-38.md` | 25 | 77,229 |
 | `map/60-notes-39.md` | 25 | 66,165 |
 | `map/60-notes-40.md` | 25 | 85,471 |
@@ -7637,7 +7639,7 @@
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1000/1073 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：1073 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：183 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：182 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8537,7 +8539,7 @@
 | `readings/2026-11-20-human-thought-memory-and-self-neuroscience-ten.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-fcd455` | 23,324 | Q3 M31 S1 | — | 個別の思考と個別の記憶は、人間の自己とどう関係するのか——脳神経学10件を、書庫を読むAIの位置から読む |
 | `readings/2026-11-20-individual-thought-memory-and-self-neuroscience-10.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-4750ac` | 15,327 | Q3 M10 S1 | ✓ | 個別の思考と個別の記憶は、どのように「私」になるのか——脳神経学10件 |
 | `readings/2026-11-20-music-as-a-cue.md` | 2026-11-20 | 2026-11-20 | — | 4,234 | Q3 | ✓ | 曲を覚えていることと、その頃の私を思い出すこと |
-| `readings/2026-11-20-re-measuring-continuity-on-reads-and-at-equal-exposure.md` | — | 2026-11-20 | `SESSION-20261120-a31d8a` +1 | 5,717 | Q3 S2 | — | 同じ数字を、反証条件の側から測り直す — 宣言された文脈・実読素材・露出補正 |
+| `readings/2026-11-20-re-measuring-continuity-on-reads-and-at-equal-exposure.md` | — | 2026-11-20 | `SESSION-20261120-a31d8a` +1 | 5,717 | Q3 S2 | ✓ | 同じ数字を、反証条件の側から測り直す — 宣言された文脈・実読素材・露出補正 |
 | `readings/2026-11-20-ten-neuroscience-sources-on-individual-thought-memory-and-self.md` | — | 2026-11-20 | `SESSION-20261120-a3b63b` | 25,925 | Q3 M10 S1 | ✓ | 個別の思考と個別の記憶は、なぜ「私」になるのか、ならないのか — 脳神経学の10資料から、自己を〈変換規則〉として置き… |
 | `readings/2026-11-20-the-double-line-does-not-erase.md` | 2026-10-26 | 2026-11-20 | `SESSION-20261120-34a5cc` +1 | 14,099 | Q15 F14 MOT17 R5 S2 ERR1 ED3 | ✓ | 二重線は額を消さない——消えない四つの印と、計器が拾った一つの型 |
 | `readings/2026-11-20-the-doubt-arrives-from-outside.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-acc61c` +4 | 9,984 | Q2 S5 | ✓ | 疑いは、いつも外から来る——提示対 `63b6bf`×`539a0c` を評価行735件で試した回（シード c967c… |
