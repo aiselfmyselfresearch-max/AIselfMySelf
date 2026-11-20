@@ -454,7 +454,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-20 (SESSION-20261120-749911): this session adds one new materials shard
         # (2026-11-20-6be1c869efc9.jsonl, 10 cognitive science materials). Measured union = 144 files.
         # Soft shards raised from 143 to 146; hard 160 unchanged.
-        soft_shards=146,
+        # 2026-11-20 (SESSION-20261120-a3b63b, 146 -> 148): this session adds one new
+        # materials shard (2026-11-20-6d7df2cf923e.jsonl, 10 neuroscience materials).
+        # Measured union after writing = 147 files / 14.48 MiB of the 16 MiB soft_bytes
+        # (bytes not binding; only the count is). Every historical materials shard is
+        # path-addressed provenance, so the one-shard-per-session rule is kept and the
+        # count is the only movable dimension. Set to measured + 1 (148); hard 160
+        # unchanged. Not automatic.
+        soft_shards=148,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -698,7 +705,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # append-only provenance and cannot be folded into another session's shard after
         # the fact; consolidation debt remains unpaid. One-slot raise of soft only;
         # hard 175 unchanged; bytes not binding (~6.01 MiB of 6.50 MiB). Not automatic.
-        soft_shards=166,
+        # 2026-11-20 (SESSION-20261120-a3b63b, 166 -> 168): this session adds one new
+        # read_log shard (2026-11-20-b0614eef7e6e.jsonl, 14 hand-written rows: 10 new
+        # materials + 4 hypothesis rereads). Measured union after writing = 167 files /
+        # 6.03 MiB of the 6.50 MiB soft_bytes (bytes not binding; only the count is).
+        # Rows are append-only provenance and cannot be folded into another session's
+        # shard after the fact. Set to measured + 1 (168); hard 175 unchanged. Not
+        # automatic.
+        soft_shards=168,
         hard_shards=175,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -993,7 +1007,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # sessions shard (2026-11-20-8199d0acb11d.jsonl, one row). Measured union after
         # writing = 169 files, crossed by this single row. One-slot raise of soft only;
         # hard 175 unchanged; bytes not binding (3.08 MiB of 4.00 MiB). Not automatic.
-        soft_shards=169,
+        # 2026-11-20 (SESSION-20261120-a3b63b, 169 -> 171): this session adds one new
+        # sessions shard (2026-11-20-d2a20643adba.jsonl, one row). Measured union after
+        # writing = 170 files / 3.09 MiB of the 4.00 MiB soft_bytes (bytes not binding).
+        # A session row is append-only and names its own shard, so the count is the only
+        # movable dimension. Set to measured + 1 (171); hard 175 unchanged. Not
+        # automatic.
+        soft_shards=171,
         hard_shards=175,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -1436,7 +1456,15 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # Measured union after writing = 174 files. notes.d is order-sensitive, so the
         # one-shard-per-session rule is kept. One-slot raise of soft only; hard 180
         # unchanged; bytes not binding (2.17 MiB of 2.25 MiB). Not automatic.
-        soft_shards=174,
+        # 2026-11-20 (SESSION-20261120-a3b63b, 174 -> 176): this session registers
+        # one curated row for its ten-source neuroscience close reading
+        # (2026-11-20-bfedbecd3a4f.jsonl, NOTE-20261120-c97b0a). Measured union
+        # after writing = 175 files / 2.17 MiB of the 2.25 MiB soft_bytes (bytes
+        # not binding). notes.d is order-sensitive, so the one-shard-per-session
+        # rule is kept and the row cannot be folded into another session's shard.
+        # Soft raised to measured + 1 (176) so the next session has one free slot;
+        # hard 180 unchanged; not automatic.
+        soft_shards=176,
         hard_shards=180,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
@@ -1548,7 +1576,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-20 (SESSION-20261120-749911): this session adds one new evaluations shard
         # (2026-11-20-e13009f3f4b8.jsonl, 3 rows). Measured union = 100 files.
         # Soft shards raised from 99 to 103; hard 160 unchanged.
-        soft_shards=103,
+        # 2026-11-20 (SESSION-20261120-a3b63b, 103 -> 105): this session adds one
+        # new evaluations shard (2026-11-20-a1f58dc525f3.jsonl, 5 rows: narrows_scope
+        # on 30d3f5, 18c3f4, 43dd06 and 8b3e04, plus supports on bdb6b4). Measured
+        # union after writing = 104 files / 0.96 MiB of the 4 MiB soft_bytes (bytes
+        # not binding; only the count is). The rows cannot be folded into another
+        # session's append-only shard. Soft raised to measured + 1 (105) so the next
+        # session has one free slot; hard 160 unchanged; not automatic.
+        soft_shards=105,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
@@ -1870,7 +1905,16 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # Measured union after merge = 1,066 files / 35.22 MiB of 37.00 MiB soft_bytes.
         # Minimal +1 raise of soft_files only; soft_bytes / hard_bytes / hard_files /
         # per-report caps unchanged. Not automatic.
-        soft_files=1066,
+        # 2026-11-20 (SESSION-20261120-a3b63b, 1,066 -> 1,068): this session adds
+        # one report (readings/2026-11-20-ten-neuroscience-sources-on-individual-
+        # thought-memory-and-self.md, 24,582 B). Measured after writing = 1,067
+        # files / 35.27 MiB of the 37.00 MiB soft_bytes (bytes not binding).
+        # Reports are append-only and cannot be compacted, and the ten sources were
+        # a user-delegated acquisition round; soft_files is the only dimension that
+        # moves. Set to measured + 1 (1,068); soft_bytes, hard_files, hard_bytes
+        # and the per-report caps unchanged. Not automatic; the next session must
+        # measure after merging.
+        soft_files=1068,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
