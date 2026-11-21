@@ -24,8 +24,10 @@ from collections import Counter
 from pathlib import Path
 
 import ledger_io
+import size_budget
 
 ROOT = Path(__file__).resolve().parents[1]
+_SHARD_DAY_RE = None
 
 
 def _band(value: float, soft: float, hard: float) -> str:
@@ -39,19 +41,26 @@ def _band(value: float, soft: float, hard: float) -> str:
 
 
 def measure_shard_budget(root: Path) -> list[dict]:
-    """Measure shard directory file counts vs soft/hard limits by reading
-    size_budget configuration inline (avoids importing it directly)."""
-    # We invoke size_budget.py's internal logic indirectly by parsing its
-    # output format, but for simplicity we just count shards in key dirs.
-    signals = []
-    shard_dirs = {
-        "state/materials.d": (148, 160),       # observed soft/hard for 1082 files
-        "state/read_log.d": (173, 175),
-        "state/sessions.d": (178, 179),
-        "state/notes.d": (179, 180),
-        "readings/": (1087, 1200),       # synced to size_budget.py after merging origin/main ad7de5a5 (two same-day reports)
+    """Measure shard/directory file counts directly against size_budget thresholds."""
+    shard_map = {b.rel_dir: (b.soft_shards, b.hard_shards) for b in size_budget.SHARD_BUDGETS}
+    dir_map = {
+        f"{b.rel_dir}/": (b.soft_files, b.hard_files)
+        for b in size_budget.DIR_BUDGETS
+        if b.soft_files is not None and b.hard_files is not None
     }
-    for d, (soft, hard) in shard_dirs.items():
+    tracked = (
+        "state/materials.d",
+        "state/read_log.d",
+        "state/sessions.d",
+        "state/notes.d",
+        "readings/",
+    )
+    signals = []
+    for d in tracked:
+        limits = dir_map.get(d) if d.endswith("/") else shard_map.get(d)
+        if not limits:
+            continue
+        soft, hard = limits
         p = root / d
         if d.endswith("/"):
             count = sum(1 for f in p.iterdir() if f.is_file() and f.name.endswith(".md")) if p.is_dir() else 0
@@ -73,9 +82,63 @@ def _load_coll(name: str, id_key: str, root: Path) -> list[dict]:
     return list(coll.get(name, {}).values())
 
 
+def _load_sessions_sorted_real_date(root: Path) -> list[dict]:
+    """Load sessions ordered by shard-bounded real date (immune to 2027-* internal labels)."""
+    import re
+    shard_re = re.compile(r"^(\d{4}-\d{2}-\d{2})-")
+    id_re = re.compile(r"^SESSION-(\d{4})(\d{2})(\d{2})-")
+    base = root / "state" / "sessions.jsonl"
+    coll, _ = ledger_io.load_collections({"sessions": (base, "session_id")}, root=root)
+    sessions_map = coll.get("sessions", {})
+    if not sessions_map:
+        return []
+
+    shard_day_by_id: dict[str, str | None] = {}
+    shared_daily_by_id: dict[str, int] = {}
+    order_by_id: dict[str, int] = {}
+    seq = 0
+    for fpath in ledger_io.collection_files(base):
+        if not fpath.is_file():
+            continue
+        m = shard_re.match(fpath.name)
+        sday = m.group(1) if m else None
+        is_shared_daily = 1 if fpath.name.endswith("-000000000000.jsonl") else 0
+        try:
+            lines = fpath.read_text(encoding="utf-8").splitlines()
+        except OSError:
+            continue
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                rec = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            sid = rec.get("session_id")
+            if isinstance(sid, str):
+                seq += 1
+                shard_day_by_id[sid] = sday
+                shared_daily_by_id[sid] = is_shared_daily
+                order_by_id[sid] = seq
+
+    def sort_key(s: dict) -> tuple[str, str, int, int, str]:
+        sid = str(s.get("session_id") or "")
+        sday = shard_day_by_id.get(sid)
+        im = id_re.match(sid)
+        id_day = f"{im.group(1)}-{im.group(2)}-{im.group(3)}" if im else ""
+        if sday is not None:
+            real_day = id_day if (id_day and id_day <= sday) else sday
+        else:
+            real_day = id_day
+        return (real_day, sday or real_day, shared_daily_by_id.get(sid, 0), order_by_id.get(sid, 0), sid)
+
+    return sorted(sessions_map.values(), key=sort_key)
+
+
 def measure_role_balance(root: Path, window: int = 10) -> dict:
     """Measure role distribution across recent N sessions that have an assigned_role."""
-    sessions = sorted(_load_coll("sessions", "session_id", root), key=lambda s: s.get("started_at") or s.get("session_id", ""))
+    sessions = _load_sessions_sorted_real_date(root)
     with_roles = [s for s in sessions if s.get("assigned_role")]
     recent = with_roles[-window:] if len(with_roles) >= window else with_roles
     roles = Counter(s.get("assigned_role", "unknown") for s in recent)
