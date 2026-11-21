@@ -54,7 +54,7 @@ import ledger_io  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 
-FULL_MARKERS = ("全文", "本文", "通読", "原文", "full text", "full-text", "Full text", "本文PDF")
+FULL_MARKERS = ("全文", "本文", "通読", "full text", "full-text", "Full text", "本文PDF")
 SHALLOW_MARKERS = ("抄録", "abstract", "Abstract", "要旨", "Summary", "significance statement", "書誌", "出版情報", "DOI のみ")
 TABLE_MARKERS = ("表3", "表4", "Table 3", "Table 4", "結果表", "図表", "図1")
 NEGATION = (
@@ -106,12 +106,49 @@ QUOTE_MARKERS = ("元の note:", "元のnote:", "旧 note:", "以前の note:", 
 _REPORT_WORDS = ("報告", "レポート", "メモ", "report", "notes")
 
 
+#: "Results 全節" contains 節 but says the opposite of "one section": it names
+#: *all* of them.  Found in queue rows including MAT-20261118-81ff06 and -aa51ab.
+#: Their method prose claims a read of all Results sections.
+_ALL_SECTIONS = ("全節", "全章", "全項目", "全ページ", "全セクション")
+
+#: A full-text availability claim plus a short list of sections does not prove
+#: a full read. Only treat the abstract as part of a full-read claim when all
+#: five conventional sections are explicitly listed and a reading action is
+#: stated. Even then, this is an inference from prose, not a new source read.
+SECTION_WORDS = (
+    "Abstract", "Introduction", "Methods", "Results", "Discussion",
+    "抄録", "序論", "方法", "結果", "考察",
+)
+LIMITERS = ("のみ", "だけ", "一部", "冒頭", "抜粋", "前半", "後半")
+PARTIAL_LIMITERS = ("前半", "後半")
+
+
+def _enumerates_sections(clause: str) -> bool:
+    """Recognize a claimed read of all five listed conventional sections."""
+    if any(limiter in clause for limiter in LIMITERS):
+        return False
+    if not any(marker in clause for marker in ("全文", "full text", "full-text", "通読")):
+        return False
+    if not any(verb in clause for verb in ("精読", "通読", "直接照合")):
+        return False
+    groups = (("Abstract", "抄録"), ("Introduction", "序論"),
+              ("Methods", "方法"), ("Results", "結果"),
+              ("Discussion", "考察"))
+    return all(any(word in clause for word in group) for group in groups)
+
+
 def _partial_hits(clause: str) -> list[str]:
     """Which PARTIAL markers actually narrow this clause to part of a text."""
     hits: list[str] = []
     cites_report = any(word in clause for word in _REPORT_WORDS)
+    scanned = clause
+    for phrase in _ALL_SECTIONS:
+        scanned = scanned.replace(phrase, "全域")
+    for marker in PARTIAL_LIMITERS:
+        if marker in scanned:
+            hits.append(marker)
     for marker in PARTIAL:
-        if marker not in clause:
+        if marker not in scanned:
             continue
         if marker == "§" and cites_report:
             continue
@@ -138,7 +175,7 @@ def classify(material: dict) -> tuple[str, str]:
     ]
     shallow_clauses = [
         c for m in SHALLOW_MARKERS for c in _sentences_with(text, m)
-        if not any(n in c for n in NEGATION)
+        if not any(n in c for n in NEGATION) and not _enumerates_sections(c)
     ]
     if full_clauses:
         # "抄録と本文§3" is a real limit, not a full read; a partial marker keeps
