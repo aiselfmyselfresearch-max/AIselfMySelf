@@ -30,6 +30,8 @@ VETO_KINDS = {"veto_reading", "veto_claim", "veto_hypothesis", "veto_session_dir
 def _load_coll(name: str, id_key: str, root: Path) -> list[dict]:
     base = root / "state" / f"{name}.jsonl"
     coll, errors = ledger_io.load_collections({name: (base, id_key)}, root=root)
+    if errors:
+        raise ValueError(f"Could not load {name} ledger: {'; '.join(errors[:3])}")
     return list(coll.get(name, {}).values())
 
 
@@ -39,7 +41,7 @@ def run_audit(check: bool = False, root: Path = ROOT) -> int:
     declined = [r for r in rl_list if r.get("reading") == "declined"]
 
     # Read editorial_decisions
-    ed_list = _load_coll("editorial_decisions", "editorial_decision_id", root)
+    ed_list = _load_coll("editorial_decisions", "decision_id", root)
     veto_decisions = [d for d in ed_list if d.get("decision_kind", "") in VETO_KINDS]
 
     # Total action volume (all read_log + all editorial_decisions)
@@ -71,7 +73,8 @@ def run_audit(check: bool = False, root: Path = ROOT) -> int:
     print()
     print(f"Veto/action ratio: {total_veto}/{total_actions} = {veto_ratio*100:.2f}%")
     print(f"Sessions with any veto record: {len(vetoes_by_session)}")
-    print(f"Recent sessions without veto (last {recent_n}): {len(no_veto_recent)}/{len(recent)}")
+    print(f"Sessions without veto (last {recent_n} by session ID, not chronology): {len(no_veto_recent)}/{len(recent)}")
+    print("NOTE: decision_kind veto values are not supported by the current editorial_decisions schema.")
 
     if declined:
         print(f"\nSample declined reads (first 5):")
@@ -86,7 +89,7 @@ def run_audit(check: bool = False, root: Path = ROOT) -> int:
             print(f"  {k}: {v}")
 
     if len(no_veto_recent) == len(recent) and len(recent) > 5:
-        print(f"\nNOTE: No veto records in the last {len(recent)} sessions. Consider whether "
+        print(f"\nNOTE: No veto records in the last {len(recent)} session IDs. Consider whether "
               "inhibitory control (the 'whether' decision) is being structurally recorded.")
 
     # Advisory only -- check mode always passes for now since veto
