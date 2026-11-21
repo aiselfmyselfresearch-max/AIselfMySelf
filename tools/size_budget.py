@@ -2074,13 +2074,18 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # 2026-11-21 (SESSION-20261121-2b7615): one append-only reading
         # brings the measured count to 1,081; bytes remain below the soft limit.
         # Raise only the review threshold to the measured count, not the hard cap.
-        # 2026-11-21 (SESSION-20261121-e7565a, 1,081 -> 1,082 files): this session's
-        # close-reading report adds exactly one file (readings/2026-11-21-ten-cognitive-
-        # science-sources-on-curiosity-and-self-updating.md). Measured union = 1,082
-        # files / 35.78 MiB, inside the 37.00 MiB soft_bytes; the binding dimension is
-        # still the file count, and readings/ is append-only, so shard merging cannot
-        # reduce it. Soft raised to measured + 1 (1,082); hard 1,200 unchanged.
-        soft_files=1082,
+        # 2026-11-21 (SESSION-20261121-d414f0): one neuroscience close-reading
+        # report (thought-memory-self, agency/body/control) brings the measured
+        # count to 1,082; bytes remain at 35.73 MiB inside the 37.00 MiB soft_bytes.
+        # 2026-11-21 (SESSION-20261121-e7565a): this session's close-reading report
+        # adds exactly one file (readings/2026-11-21-ten-cognitive-science-sources-on-
+        # curiosity-and-self-updating.md).
+        # 2026-11-21 (merge of origin/main 873b3e30 into arena/7a48a44d-aiselfmyself):
+        # the merged tree carries BOTH reports, so the measured count is 1,083 and the
+        # soft count above is one below it. The binding dimension is the file count,
+        # and readings/ is append-only, so shard merging cannot reduce it. Soft raised
+        # to measured + 1 (1,083); hard 1,200 unchanged. Not automatic.
+        soft_files=1083,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
