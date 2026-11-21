@@ -2111,17 +2111,14 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # readings/ is append-only, so shard merging cannot reduce the file count, and
         # concurrent same-day reports each moved the count by one. Soft raised to the
         # measured count (1,085); hard_files (1,200) and soft_bytes / hard_bytes unchanged.
-        #
-        # 2026-11-21 (SESSION-20261121-bca844, 1,085 -> 1,086): the merge above brought
-        # origin/main to 1,085, and this branch's report
-        # (readings/2026-11-21-the-nine-was-not-nine.md) is a third report on the same
-        # day, so the union is 1,086. Two concurrent branches each raised the soft to
-        # their own measured count and both were wrong after the merge -- the count is a
+        # 2026-11-21 (SESSION-20261121-ed7949 + origin/main ad7de5a5 merge):
+        # both branches independently raised soft to 1,086 (this branch's report was
+        # readings/2026-11-21-ten-neuroscience-sources-on-thought-memory-and-self.md;
+        # origin/main's was readings/2026-11-21-the-nine-was-not-nine.md). The union
+        # carries BOTH reports, so the measured file count is 1,087. The count is a
         # property of the union, not of either branch. Soft set to the measured union
-        # (1,086). This is the third same-day raise in this dimension; the pattern, not
-        # this number, is the problem. Byte budgets, hard 1,200 and per-report caps
-        # unchanged. Not automatic.
-        soft_files=1086,
+        # (1,087); byte budgets, hard 1,200 and per-report caps unchanged. Not automatic.
+        soft_files=1087,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
