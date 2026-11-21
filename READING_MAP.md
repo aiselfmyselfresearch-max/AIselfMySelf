@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5604 件（research_excerpt 3357 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1061 回
+- **探究セッション（Sessions）**：1062 回
 
 ### 台帳ごとの件数
 
@@ -23,10 +23,10 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5604 | `literary_text` 2179／`research_excerpt` 3357／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1061 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1062 |  |
 | 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16191 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 389 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 544 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 598 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1157 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 82 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 769 |  |
@@ -6410,7 +6410,7 @@
 | `MAT-20261121-a05d57` | research_excerpt | Georg Northoff, Xinyu Shen, Andrea Avramescu, Jie Sui『Northoff, Shen, Avramescu & Sui（202… |
 | `MAT-20261121-22ab38` | research_excerpt | Ran Barkai, Ella Assaf, Bar Efrati, Tal Simon, Liad Mudrik, Yoav Ram『Barkai ほか（2026）——Hom… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261121-fdf447・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261121-75acab・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -7475,6 +7475,7 @@
 | `SESSION-20261120-6211a0` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261120-72dc8a` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261121-fdf447` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261121-75acab` | 2026-11-21 | `Q-002` | — | — |
 
 ## 6. 解釈的関係（7091 件・全表は map/40-relations-*.md）
 
@@ -7524,17 +7525,17 @@
 | `map/30-materials-literary-05.md` | 100 | 145,861 |
 | `map/30-materials-literary-06.md` | 100 | 167,828 |
 | `map/30-materials-literary-07.md` | 100 | 169,821 |
-| `map/30-materials-literary-08.md` | 100 | 185,932 |
-| `map/30-materials-literary-09.md` | 100 | 233,206 |
-| `map/30-materials-literary-10.md` | 100 | 151,959 |
+| `map/30-materials-literary-08.md` | 100 | 186,108 |
+| `map/30-materials-literary-09.md` | 100 | 233,096 |
+| `map/30-materials-literary-10.md` | 100 | 150,914 |
 | `map/30-materials-literary-11.md` | 100 | 144,501 |
-| `map/30-materials-literary-12.md` | 100 | 214,464 |
+| `map/30-materials-literary-12.md` | 100 | 213,922 |
 | `map/30-materials-literary-13.md` | 100 | 151,892 |
-| `map/30-materials-literary-14.md` | 100 | 165,864 |
-| `map/30-materials-literary-15.md` | 100 | 214,239 |
+| `map/30-materials-literary-14.md` | 100 | 165,592 |
+| `map/30-materials-literary-15.md` | 100 | 214,109 |
 | `map/30-materials-literary-16.md` | 100 | 200,194 |
-| `map/30-materials-literary-17.md` | 100 | 271,298 |
-| `map/30-materials-literary-18.md` | 100 | 302,848 |
+| `map/30-materials-literary-17.md` | 100 | 271,221 |
+| `map/30-materials-literary-18.md` | 100 | 300,888 |
 | `map/30-materials-literary-19.md` | 100 | 286,117 |
 | `map/30-materials-literary-20.md` | 100 | 276,183 |
 | `map/30-materials-literary-21.md` | 100 | 233,650 |
@@ -7542,13 +7543,13 @@
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 167,405 |
 | `map/31-materials-research-03.md` | 100 | 173,447 |
-| `map/31-materials-research-04.md` | 100 | 220,129 |
-| `map/31-materials-research-05.md` | 100 | 177,038 |
-| `map/31-materials-research-06.md` | 100 | 183,058 |
+| `map/31-materials-research-04.md` | 100 | 219,369 |
+| `map/31-materials-research-05.md` | 100 | 176,563 |
+| `map/31-materials-research-06.md` | 100 | 182,678 |
 | `map/31-materials-research-07.md` | 100 | 225,256 |
 | `map/31-materials-research-08.md` | 100 | 168,119 |
 | `map/31-materials-research-09.md` | 100 | 260,365 |
-| `map/31-materials-research-10.md` | 100 | 252,255 |
+| `map/31-materials-research-10.md` | 100 | 252,083 |
 | `map/31-materials-research-11.md` | 100 | 240,371 |
 | `map/31-materials-research-12.md` | 100 | 258,306 |
 | `map/31-materials-research-13.md` | 100 | 255,486 |
@@ -7556,7 +7557,7 @@
 | `map/31-materials-research-15.md` | 100 | 260,564 |
 | `map/31-materials-research-16.md` | 100 | 250,088 |
 | `map/31-materials-research-17.md` | 100 | 224,958 |
-| `map/31-materials-research-18.md` | 100 | 249,401 |
+| `map/31-materials-research-18.md` | 100 | 249,268 |
 | `map/31-materials-research-19.md` | 100 | 255,612 |
 | `map/31-materials-research-20.md` | 100 | 221,429 |
 | `map/31-materials-research-21.md` | 100 | 245,911 |
@@ -7572,7 +7573,7 @@
 | `map/31-materials-research-31.md` | 100 | 212,887 |
 | `map/31-materials-research-32.md` | 100 | 202,898 |
 | `map/31-materials-research-33.md` | 100 | 214,663 |
-| `map/31-materials-research-34.md` | 57 | 132,813 |
+| `map/31-materials-research-34.md` | 57 | 132,876 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7610,7 +7611,7 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 11 | 8,646 |
+| `map/50-sessions-22.md` | 12 | 9,302 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |

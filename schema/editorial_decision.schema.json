@@ -44,7 +44,8 @@
         "abstract",
         "results",
         "full_text",
-        "re_derived"
+        "re_derived",
+        "unspecified"
       ],
       "description": "Depth of the check this overlay carries (2026-11-20). Applied by tools/ledger_io.py onto the material's verification.depth, so a partial read can be recorded as 'results' instead of being forced into verified/partially_verified."
     },
