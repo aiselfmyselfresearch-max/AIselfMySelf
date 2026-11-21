@@ -1074,10 +1074,28 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # make silently at 179.
         # 2026-11-21 (merge of origin/main 85e354c, 176 -> 177 files): the merge carries
         # one more session row; this branch adds none. Measured 177 / 3.11 MiB. Soft to
-        # measured (177); hard 178 unchanged — the next session row does NOT fit and must
-        # be shortened rather than raising the hard cap again.
-        soft_shards=177,
-        hard_shards=178,
+        # measured (177).
+        #
+        # 2026-11-21 (SESSION-20261121-a34277, 177 -> 178 files): one new session row, one
+        # new shard. 178 == hard, so this entry is now AT its cap and the previous note
+        # ("shorten the row") has been shown to be wrong: the binding constraint is the
+        # FILE COUNT, and one row per session means one file per session no matter how
+        # short the row is. There is no version of the row that fits.
+        #
+        # What was checked before moving the number again:
+        #   * state/shard_aliases.json exists, so shard consolidation is a mechanism this
+        #     repository already owns (hypotheses/evaluations list it as their remedy), but
+        #     consolidating sessions shards rewrites append-only files and would need its
+        #     own audited change, not a size-budget edit at the end of a session.
+        #   * not writing the row is not available: the session wrote 3 overlays and 3
+        #     errata rows that name it.
+        # So soft = measured (178), hard = 179: ONE slot. When that slot is used, the next
+        # session must either (a) make main require the validate check so that sessions stop
+        # being the thing that is red, or (b) rotate sessions by date with shard_aliases
+        # recorded, as hypotheses and evaluations already do. Raising this number a fifth
+        # time without one of those two is the failure mode this comment exists to stop.
+        soft_shards=178,
+        hard_shards=179,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
             "limit; watch soft_shards instead, and if a row must be shortened, "
@@ -2020,15 +2038,17 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # Not automatic; re-measure after every merge.
         # 2026-11-21 (merge of origin/main 85e354c, 1075 -> 1076 files): one more report
         # from a concurrent session. Soft to measured (1076); hard 1,200 as is.
+        # 2026-11-21 (merge of origin/main 9abbb5e, 1076 -> 1078 files): two more reports
+        # from #1005/#1006; this branch adds none. Soft to measured (1078); hard as is.
         # 2026-11-21 (SESSION-20261121-e3b180, 1078 -> 1079): the ten-source cognitive-science
-        # round adds this session's report (readings/2026-11-21-ten-cognitive-science-sources-
-        # on-grounding-and-the-other-who-answers.md). Measured union = 1,079 files /
-        # 35.64 MiB, inside the 37.00 MiB soft_bytes; the binding dimension is the file
-        # count, and this corpus is append-only, so shard merging cannot reduce it (it
-        # merges state/*.d/ files, not readings/ reports). soft_files set to the measured
-        # count exactly, no headroom added. This is a measured review point, NOT an
-        # automatic allowance; the next session must re-measure after every merge.
-        # hard_files (1,200), soft_bytes / hard_bytes and the per-report caps unchanged.
+        # round adds exactly one report (readings/2026-11-21-ten-cognitive-science-sources-
+        # on-grounding-and-the-other-who-answers.md). Measured union after merging origin/main
+        # (f1e23cc0) = 1,079 files / 35.7 MiB, inside the 37.00 MiB soft_bytes; the binding
+        # dimension is the file count, and this corpus is append-only, so shard merging cannot
+        # reduce it (it merges state/*.d/ files, not readings/ reports). soft_files set to the
+        # measured count exactly, with no headroom added. A measured review point, NOT an
+        # automatic allowance; re-measure after every merge. hard_files (1,200),
+        # soft_bytes / hard_bytes and the per-report caps unchanged.
         soft_files=1079,
         hard_files=1200,
         soft_file_bytes=256 * 1024,

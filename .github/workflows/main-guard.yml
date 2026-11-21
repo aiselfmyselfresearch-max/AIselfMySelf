@@ -1,0 +1,36 @@
+name: main-guard
+
+# The three red merges of 2026-11-20/21 (#998, #1002 and the merge after them)
+# reached main because main accepts merges whose required check has not passed.
+# The repair for the affected rows lives in state/errata.d/ (see
+# `validate_seed.gate_waivers`), but the cause is repository configuration and no
+# file in this repository can close it: the token available to the agent cannot
+# PUT /branches/main/protection (403, measured 2026-11-21).
+#
+# So this workflow is a standing reminder, not enforcement: it fails every day
+# while main is unprotected, and prints the one command that fixes it. It is
+# deliberately NOT a required check -- a status check that nobody can make green
+# stops being read, which is the exact failure this repository keeps re-learning.
+
+on:
+  schedule:
+    - cron: "17 0 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Is main protected against a red merge?
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 tools/main_guard.py --strict

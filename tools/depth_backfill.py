@@ -96,10 +96,42 @@ def _partial(text: str, marker: str) -> bool:
     return any(any(p in c for p in PARTIAL) for c in clauses if not any(n in c for n in NEGATION))
 
 
+QUOTE_MARKERS = ("元の note:", "元のnote:", "旧 note:", "以前の note:", "旧:", "前の note:")
+
+
+#: A "§" inside a clause is ambiguous: "本文§3" narrows the read to one section,
+#: "（精読報告 §2.1）" cites another document and narrows nothing.  Measured on
+#: MAT-EVD-20261118-a91004 (2026-11-21), where the second shape demoted a genuine
+#: six-chunk full-text read to "unknown".
+_REPORT_WORDS = ("報告", "レポート", "メモ", "report", "notes")
+
+
+def _partial_hits(clause: str) -> list[str]:
+    """Which PARTIAL markers actually narrow this clause to part of a text."""
+    hits: list[str] = []
+    cites_report = any(word in clause for word in _REPORT_WORDS)
+    for marker in PARTIAL:
+        if marker not in clause:
+            continue
+        if marker == "§" and cites_report:
+            continue
+        hits.append(marker)
+    return hits
+
+
 def classify(material: dict) -> tuple[str, str]:
     """Return (class, the clause the class was read from)."""
     ver = material.get("verification") or {}
-    text = f"{ver.get('method') or ''}。{ver.get('note') or ''}"
+    # An overlay's note quotes the note it supersedes ("元の note: …").  That quote
+    # is where the *old* row said "全文通読はしていない" -- reading it as the row's
+    # own claim demoted a genuine full-text read (ED-20261119-6887c9, 6 chunks,
+    # F(1,24)=327.25) to "unknown".  The quote is a record of the past, not an
+    # assertion about the present, so classification stops at the marker.
+    note = ver.get("note") or ""
+    for marker in QUOTE_MARKERS:
+        if marker in note:
+            note = note.split(marker, 1)[0]
+    text = f"{ver.get('method') or ''}。{note}"
     full_clauses = [
         c for m in FULL_MARKERS for c in _sentences_with(text, m)
         if not any(n in c for n in NEGATION)
@@ -111,7 +143,7 @@ def classify(material: dict) -> tuple[str, str]:
     if full_clauses:
         # "抄録と本文§3" is a real limit, not a full read; a partial marker keeps
         # the row out of the full_text class even though the word 本文 appears.
-        if any(any(p in c for p in PARTIAL) for c in full_clauses):
+        if any(_partial_hits(c) for c in full_clauses):
             return "unknown", (full_clauses[0] or "")[:160]
         if any(any(t in c for t in TABLE_MARKERS) for c in full_clauses):
             # Full text reached, but the sentence is about a table.  Depth
