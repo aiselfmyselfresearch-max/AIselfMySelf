@@ -23,10 +23,12 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 import ledger_io
+import validate_seed
 
 ROOT = Path(__file__).resolve().parents[1]
 
-AGENCY_STANCE_CUTOFF = "20261121"
+AGENCY_STANCE_CUTOFF = validate_seed.AGENCY_STANCE_CUTOFF
+AGENCY_STANCE_EXEMPT_IDS = validate_seed.AGENCY_STANCE_EXEMPT_IDS
 
 VALID_STANCES = {"endorse", "report_only", "dissent", "self_correction"}
 
@@ -35,6 +37,33 @@ def _id_date_prefix(eid: str) -> str | None:
     if not eid.startswith("EVL-") or len(eid) < 16:
         return None
     return eid[4:12]
+
+
+def _shard_day_map(base: Path) -> dict[str, str | None]:
+    import re
+    shard_re = re.compile(r"^(\d{4})-(\d{2})-(\d{2})-")
+    out: dict[str, str | None] = {}
+    for fpath in ledger_io.collection_files(base):
+        if not fpath.is_file():
+            continue
+        m = shard_re.match(fpath.name)
+        sday = "".join(m.groups()) if m else None
+        try:
+            lines = fpath.read_text(encoding="utf-8").splitlines()
+        except OSError:
+            continue
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                rec = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            eid = rec.get("evaluation_id")
+            if isinstance(eid, str):
+                out[eid] = sday
+    return out
 
 
 def _load(name: str, id_key: str, root: Path) -> list[dict]:
@@ -47,6 +76,7 @@ def _load(name: str, id_key: str, root: Path) -> list[dict]:
 
 def run_audit(check: bool = False, root: Path = ROOT) -> int:
     evals = _load("evaluations", "evaluation_id", root)
+    shard_days = _shard_day_map(root / "state" / "evaluations.jsonl")
 
     total = len(evals)
     missing = []
@@ -54,17 +84,28 @@ def run_audit(check: bool = False, root: Path = ROOT) -> int:
     stance_by_session: dict[str, Counter[str]] = defaultdict(Counter)
     stance_counts: Counter[str] = Counter()
     legacy_missing = 0
+    exempt_missing = 0
     recent_sessions = []  # sessions with any post-cutoff evaluation
 
     for e in evals:
         eid = e.get("evaluation_id", "")
         sid = e.get("session_id", "")
         date_prefix = _id_date_prefix(eid)
-        is_new = date_prefix is not None and date_prefix >= AGENCY_STANCE_CUTOFF
+        sday = shard_days.get(eid)
+        is_forward_label = date_prefix is not None and sday is not None and sday < date_prefix
+        is_exempt = eid in AGENCY_STANCE_EXEMPT_IDS
+        is_new = (
+            date_prefix is not None
+            and date_prefix >= AGENCY_STANCE_CUTOFF
+            and not is_forward_label
+            and not is_exempt
+        )
 
         stance = e.get("agency_stance")
         if stance is None:
-            if is_new:
+            if is_exempt:
+                exempt_missing += 1
+            elif is_new:
                 missing.append(eid)
             else:
                 legacy_missing += 1
@@ -97,7 +138,8 @@ def run_audit(check: bool = False, root: Path = ROOT) -> int:
 
     print("=== Agency Trace Audit (agency_stance) ===")
     print(f"Total evaluations: {total}")
-    print(f"Legacy evaluations (pre-{AGENCY_STANCE_CUTOFF}) missing stance: {legacy_missing} (advisory)")
+    print(f"Legacy evaluations (pre-{AGENCY_STANCE_CUTOFF} or forward-label) missing stance: {legacy_missing} (advisory)")
+    print(f"Pre-rule-introduction {AGENCY_STANCE_CUTOFF} exempt evaluations: {exempt_missing} (advisory)")
     print(f"Post-cutoff evaluations missing stance: {len(missing)}")
     print(f"Invalid stance values: {len(invalid)}")
     print()
