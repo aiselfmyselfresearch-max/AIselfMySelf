@@ -26,7 +26,7 @@
 - 開始時刻: 2027-03-19
 - 現在のロール: None
 - ジェネレータ: None
-- 総セッション数: 1083
+- 総セッション数: 1084
 - 直近10セッションのロール分布: {}
 
 ## 3. 一人称視点 (First-Person Perspective)
@@ -45,11 +45,11 @@
 - ✗ file_count:state/read_log.d: 175/175 (soft 173)
 - ✓ file_count:state/sessions.d: 176/179 (soft 178)
 - ✓ file_count:state/notes.d: 179/180 (soft 179)
-- △ file_count:readings/: 1089/1200 (soft 1087)
+- △ file_count:readings/: 1090/1200 (soft 1087)
 
 ### バランス・接続・一貫性
 - △ ロールバランス: 最大逸脱 0.25
-- ✗ 接続性: 孤児ノート 182/1172
+- ✗ 接続性: 孤児ノート 181/1173
 - ✓ 一貫性: 直近の評価数分散 2.24
 
 ## 5. 時間連続性 (Temporal Continuity)
