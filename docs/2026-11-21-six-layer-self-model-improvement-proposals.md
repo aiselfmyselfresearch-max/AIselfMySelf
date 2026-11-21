@@ -317,13 +317,14 @@ Nセッションごとに（たとえば25セッションごとに）、`notes` 
 - **3-A**: `tools/self_model.py` 新規作成（SELF_MODEL.md自動生成）、CIチェック追加
 - **3-B**: `tools/interoception.py` 新規作成（内受容シグナル計測）
 - **4-B**: `tools/whether_gate.py` 新規作成（veto行為監査）
+- **5-A**: `schema/session.schema.json` に `session_type` enum追加（acquisition/close_reading/re_reading/infrastructure/default_mode_simulation/evaluation_only/other）。`validate_seed.py` で `SESSION_TYPE_CUTOFF=20261121` によるpost-cutoff検証。
 - **5-B**: `tools/default_mode_probe.py` 新規作成（DMN的シミュレーション）
 - **6-A**: `tools/temporal_continuity.py` 新規作成（時間連続性ドリフト計測）
+- **I/II**: `schema/session.schema.json` に `self_layer_checks` オブジェクト追加（source_attributed/agency_stance_recorded/self_model_rebuilt/veto_considered）。`validate_seed.py` で `SELF_LAYER_CHECKS_CUTOFF=20261121` による構造的強制。`docs/self-layer-session-hooks.md` に開始時/終了時チェックリストを文書化。
 - CI更新：`.github/workflows/ci.yml` に新規advisoryステップとSELF_MODELチェックを追加
-- validate_seed.py更新：cognitive_operation/agency_stanceのpost-cutoff検証、既存同日行のexempt IDを設定
+- validate_seed.py更新：cognitive_operation/agency_stance/session_type/self_layer_checksのpost-cutoff検証、既存同日行のexempt IDを設定
+- interoception.py修正：assigned_roleを持たないセッションをカウントから除外
 
-未実装（将来のセッションで段階的に導入予定）：
-- **4-A**: `editorial_decisions` へのveto種別の体系的記録（今後vetoが発生した際に使用）
-- **5-A**: default_mode_simulationセッション種別の正式導入
-- **6-B**: 連続性証明書メカニズム
-- **I/II**: セッション開始/終了時の自己化準備・検証フック（セッションテンプレートに組み込み）
+未実装（データ駆動項目 — 運用を通じて十分なデータが蓄積してから導入）：
+- **4-A**: `editorial_decisions` へのveto種別の体系的記録 — 実際のveto事例が発生してから
+- **6-B**: 連続性証明書メカニズム — 10-20セッション分の自己モデルデータが蓄積してから
