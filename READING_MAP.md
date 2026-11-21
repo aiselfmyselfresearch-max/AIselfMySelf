@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5604 件（research_excerpt 3357 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5614 件（research_excerpt 3367 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1063 回
+- **探究セッション（Sessions）**：1065 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5604 | `literary_text` 2179／`research_excerpt` 3357／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5614 | `literary_text` 2179／`research_excerpt` 3367／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1063 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16191 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 392 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1065 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16210 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 393 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 601 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1157 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 82 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 769 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1159 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 84 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 773 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5604 件・詳細は map/3*.md）
+## 4. 対話素材（5614 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6409,6 +6409,16 @@
 | `MAT-20261121-2a9724` | research_excerpt | T. J. van Woerkum-Rooker『van Woerkum-Rooker（2025）——認知症研究における自己概念の統合：最小・身体埋め込み・省察・社会埋め込みの四… |
 | `MAT-20261121-a05d57` | research_excerpt | Georg Northoff, Xinyu Shen, Andrea Avramescu, Jie Sui『Northoff, Shen, Avramescu & Sui（202… |
 | `MAT-20261121-22ab38` | research_excerpt | Ran Barkai, Ella Assaf, Bar Efrati, Tal Simon, Liad Mudrik, Yoav Ram『Barkai ほか（2026）——Hom… |
+| `MAT-20261121-679e5e` | research_excerpt | Karuna Subramaniam, Tracy L. Luks, Melissa Fisher, Gregory V. Simpson, Srikantan Nagaraja… |
+| `MAT-20261121-14964c` | research_excerpt | Anna Castiglione, Johanna Wagner, Michael Anderson, Adam R. Aron『カスティリオーネ、ワグナー、アンダーソン＆アーロ… |
+| `MAT-20261121-725b3c` | research_excerpt | Amy L. Daitch, Josef Parvizi『ダイッチ＆パルヴィジ（2018）ヒト後内側皮質における神経応答の空間的・時間的異質性——自伝的記憶想起部位と安静時自発思… |
+| `MAT-20261121-13e439` | research_excerpt | Luca D. Kolibius, Frederic Roux, George Parish, Marije Ter Wal, Mircea Van Der Plas, Rame… |
+| `MAT-20261121-76cfe6` | research_excerpt | Marcel Bausch, Johannes Niediek, Thomas P. Reber, Sina Mackay, Jan Boström, Christian E. … |
+| `MAT-20261121-e26342` | research_excerpt | Donna J. Bridge, Joel L. Voss『ブリッジ＆ヴォス（2014）支配的記憶トレースと新奇情報の海馬結合が記憶の安定と変化の双方を支える——能動的想起による… |
+| `MAT-20261121-e7ca3b` | research_excerpt | Peggy L. St. Jacques, Christopher Olm, Daniel L. Schacter『セント・ジャック、オルム＆シャクター（2013）記憶を強化しま… |
+| `MAT-20261121-000c47` | research_excerpt | Andrea L. Courtney, Meghan L. Meyer『コートニー＆マイヤー（2020）社会脳における自己–他者表象は社会的つながりを反映する——mPFCでの親密… |
+| `MAT-20261121-02e30f` | research_excerpt | Patrizia Vannini, Bernard Hanseeuw, Catherine E. Munro, Rebecca E. Amariglio, Gad A. Mars… |
+| `MAT-20261121-3a6118` | research_excerpt | Sabrina Lenzoni, Robin G. Morris, Daniel C. Mograbi『レンツォーニ、モリス＆モグラビ（2020）10年後の「凍結した自己（The… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261121-a34277・全文は map/50-sessions-*.md）
 
@@ -6965,13 +6975,13 @@
 | `SESSION-20261108-5a5795` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-082`, `Q-20261024-c3d7a5` | — | — |
 | `SESSION-20261108-260f17` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-d24387` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261108-73e4e2` | 2026-11-08T14:55:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-17f876` | — | — |
-| `SESSION-20261108-2f6461` | 2026-11-08T15:18:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-17f876` | — | — |
 | `SESSION-20261108-fd0559` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-6befc5` | 2027-03-05 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261108-d5c6c8` | 2026-11-08T14:10:00Z | `Q-001`, `Q-002`, `Q-049` | — | `Q-20261108-0b746a` |
+| `SESSION-20261108-73e4e2` | 2026-11-08T14:55:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-17f876` | — | — |
+| `SESSION-20261108-2f6461` | 2026-11-08T15:18:00Z | `Q-001`, `Q-002`, `Q-003`, `Q-20261027-17f876` | — | — |
 | `SESSION-20261108-d7ce13` | 2027-03-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-b831e7` | 2027-03-07 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261108-d5c6c8` | 2026-11-08T14:10:00Z | `Q-001`, `Q-002`, `Q-049` | — | `Q-20261108-0b746a` |
 | `SESSION-20261108-748ed5` | 2027-03-03 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-784d36` | 2027-03-04 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261108-f57a30` | 2026-11-08 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-3c24ee` | — | — |
@@ -7475,7 +7485,9 @@
 | `SESSION-20261120-6211a0` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261120-72dc8a` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261121-fdf447` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261121-d512b3` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261121-75acab` | 2026-11-21 | `Q-002` | — | — |
+| `SESSION-20261121-d83dd7` | 2026-11-21 | `Q-002`, `Q-001` | — | — |
 | `SESSION-20261121-a34277` | 2026-11-21 | `Q-20261025-b4e703` | — | — |
 
 ## 6. 解釈的関係（7091 件・全表は map/40-relations-*.md）
@@ -7574,7 +7586,7 @@
 | `map/31-materials-research-31.md` | 100 | 212,887 |
 | `map/31-materials-research-32.md` | 100 | 202,898 |
 | `map/31-materials-research-33.md` | 100 | 214,663 |
-| `map/31-materials-research-34.md` | 57 | 132,876 |
+| `map/31-materials-research-34.md` | 67 | 161,895 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7612,10 +7624,10 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 13 | 9,899 |
+| `map/50-sessions-22.md` | 15 | 11,611 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
-| `map/60-notes-03.md` | 25 | 74,072 |
+| `map/60-notes-03.md` | 25 | 74,062 |
 | `map/60-notes-04.md` | 25 | 99,271 |
 | `map/60-notes-05.md` | 25 | 86,138 |
 | `map/60-notes-06.md` | 25 | 54,055 |
@@ -7648,25 +7660,25 @@
 | `map/60-notes-33.md` | 25 | 125,759 |
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
-| `map/60-notes-36.md` | 25 | 101,080 |
-| `map/60-notes-37.md` | 25 | 77,989 |
-| `map/60-notes-38.md` | 25 | 74,544 |
-| `map/60-notes-39.md` | 25 | 68,070 |
-| `map/60-notes-40.md` | 25 | 78,831 |
-| `map/60-notes-41.md` | 25 | 111,119 |
-| `map/60-notes-42.md` | 25 | 110,658 |
-| `map/60-notes-43.md` | 25 | 131,787 |
-| `map/60-notes-44.md` | 1 | 2,468 |
+| `map/60-notes-36.md` | 25 | 101,133 |
+| `map/60-notes-37.md` | 25 | 83,904 |
+| `map/60-notes-38.md` | 25 | 70,451 |
+| `map/60-notes-39.md` | 25 | 70,477 |
+| `map/60-notes-40.md` | 25 | 78,384 |
+| `map/60-notes-41.md` | 25 | 104,503 |
+| `map/60-notes-42.md` | 25 | 110,943 |
+| `map/60-notes-43.md` | 25 | 138,192 |
+| `map/60-notes-44.md` | 3 | 8,110 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1076本・37,253,638 B）
+## 8. 精読ノート索引（readings/・1078本・37,323,883 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1002/1076 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1004/1078 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1076 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：182 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1078 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：183 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8581,8 +8593,10 @@
 | `readings/2026-11-20-what-we-forget-together.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-931bbc` | 9,457 | Q2 M12 S1 | ✓ | 一緒に思い出すと、何を一緒に忘れるのか——共同想起の認知科学10件を読む |
 | `readings/2026-11-20-where-continuity-is-recorded-a-measurement.md` | — | 2026-11-20 | `SESSION-20261120-99e940` | 9,237 | Q3 M10 S1 | ✓ | 書庫はどこで「感じ」を落とすのか — 自己の連続を、台帳の語彙と読みの分布で測る |
 | `readings/2026-11-20-who-held-the-mug.md` | — | 2026-11-20 | `SESSION-20261120-8ef5d4` | 4,828 | Q2 M2 S1 ED1 | ✓ | コップを持っていたのは誰か――ヘレン・ケラーを三つの入口から読み直す |
+| `readings/2026-11-21-individual-thoughts-memories-and-self-updating-gates.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-d512b3` +1 | 22,150 | Q3 M13 S2 | — | 人間の個別の思考と個別の記憶は「自己」とどう関わるか——門前制動・両刃の再結合・凍結する自己、および追記型GitHub… |
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
 | `readings/2026-11-21-the-flower-that-does-not-read-the-tag.md` | — | 2026-11-21 | `SESSION-20261121-0723fd` | 10,393 | Q6 F9 M8 MOT1 S1 | ✓ | 札を読まない花——明るみが徴収する代価と、代役が払う年（SESSION-20261121-0723fd） |
+| `readings/2026-11-21-the-refusal-that-was-not-a-refusal.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-d83dd7` +1 | 10,452 | Q6 M1 S2 | ✓ | 拒否ではなかった拒否——書庫が記録していたのは、断念ではなく持ち越しだった |
 | `readings/2026-11-21-thought-memory-and-self-three-relational-axes.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-fdf447` | 17,136 | Q3 M10 S1 | — | 個別の思考と個別の記憶は、自己とどう関係するのか——三つの関係軸で読む脳神経学10資料 |
 | `readings/2026-11-22-the-thin-bowl-and-the-pot-set-before-dawn.md` | 2026-10-27 | 2026-11-22 | `SESSION-20261122-11b1d3` | 9,678 | Q7 F12 M10 MOT1 S1 | ✓ | 薄い椀は全員に届く——鍋の大きさが空腹より先に決まるとき（SESSION-20261122-11b1d3） |
 | `readings/2026-11-23-a-single-tree-keeps-no-year.md` | 2026-10-27 | 2026-11-23 | `SESSION-20261123-0f9fde` +1 | 13,844 | Q7 F11 M7 MOT5 S2 | ✓ | 一本の木は年を言わない——細い年の合意と、口を下に向けた瓶（SESSION-20261123-0f9fde） |
