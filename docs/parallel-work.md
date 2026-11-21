@@ -1116,3 +1116,33 @@ CI の size-budget ステップは `--strict` を付けないので、`main` は
 最終ツリーで、`validate_seed.py`・`map_build.py --check`・`note_index.py --check`・`inspect_inquiry.py --check-map`・`belief_state.py --check-map`・`learning_metrics.py --check`・`size_budget.py --strict`・`date_axis.py --enforce-shards`・`append_only_check.py`（`main` の 32,096 行がバイト単位で現存）・`claim_wiring.py --check`・`read_log_backfill.py --check`・`readings_integrity_check.py`・`three_gates.py --check` はすべて PASS。
 
 **ユニットテストは 937 件すべて OK。** セッション中は 1 件失敗していた（`test_zero_eig_questions_still_print_a_priority_pair`、`Q-001` 首位の事後確率 1.0 で `assertLess(top, 1.0)` に掛かる）。起点 `8861e5d` を pristine worktree に取り出しても同じく失敗したので本ブランチ由来ではなく、こちらでは直していない。**#948 の `Q-001` 統合で首位が 99.9% に下がったため、合流後に自然に解消した。** 「既存の失敗」と「恒久的な失敗」は別物で、台帳の状態に依存する検査は、台帳が動けば動く。
+
+## 2026-11-21：日次シャード既定化——「1セッション1シャード」の増殖を設計で止めた（SESSION-20261121-3831aa）
+
+`ERR-20261121-8d2b41` が記録した構造原因（新規セッションが毎回専用シャードを作るため `sessions.d` が soft 178 / hard 179 を一日で超過し、統合で遅延させることしかできない）に、設計側から応えた。**予算値は1つも変更していない。**
+
+### 変更点
+
+`tools/new_ledger_shard.py` の既定を **日次シャード** `state/<collection>.d/<YYYY-MM-DD>-000000000000.jsonl` にした。ゼロ接尾辞は統合（`state/shard_aliases.json`）がアンカーとして使っていた名前で、それを新規書き込みの既定に昇格させたものである。
+
+- `create_shard(collection)` は当日の日次シャードを返す。無ければ O_EXCL で作り、あれば**そのまま追記先として返す**。二度目の呼び出しが新しいファイルを作ることはもうない。
+- `--suffix <12 hex>` を渡した時だけ従来どおりの専用シャード（1呼び出し1ファイル、再作成は `already exists` で拒否）。並行ブランチと競合したくないセッションのための隔離弁。
+- これは既存の「手順8-2（同日既存シャードへの追記）」を例外手順から既定にしただけである。実測でも同日シャードにはすでに複数セッションの行が混在しており（本節 2026-11-11 追記の「名指しが一日もたない」）、統合は事後的に同じ形へ寄せていただけだった。
+
+### 併せて記録する残り
+
+1. **並行ブランチの衝突は消えない。** 両ブランチが同じ日次シャードの末尾へ追記すると `git merge` は内容衝突を起こす。正しい解は**両側の行の併合**（行は追記専用・ID付きなので多重集合の和が正）で、`validate_seed.py` と `append_only_check.py` を併合後に走らせる。自動化はしていない。
+2. **`notes.d`・`motifs.d` の順序感受性**は残る。日次シャード内の行順は追記順であり、併合で前後しうる。順序感受性の定義と保護は相変わらず `editorial_review` の議題。
+3. 旧設計の記録（専用シャードの列）は `state/shard_aliases.json` と各シャードの実ファイルに残る。遡及的な移動は行わない。
+
+検証：`tests/test_new_ledger_shard.py` に DayShardTests 4件（共有・日替わり・専用拒否・CLI二度呼出し）を追加、11 OK。本セッションのセッション行・訂正録3行・編集判断2行・read_log 2行はすべて日次シャードへの追記で書き込まれ、新規シャードは errata と editorial_decisions の日次シャード2本だけが生じた（この2本も設計どおり「1日1本」）。
+
+### 契約変更の呼び出し側監査で見つかった取りこぼし（同じ日、同じセッション）
+
+`create_shard` の契約（「新規空ファイル」→「当日の共有シャード、追記前提」）を変えたとき、**呼び出し側を監査していなかった**。フルユニットテストで3件が失敗して発覚した：
+
+- `tools/note_index.py` `register()` は **安全**。`existing + body` を書いており、既存行のバイトを保ったまま追記する。新しい契約に合う。
+- `tools/read_log_backfill.py` `write()` は **破壊的だった**。`create_shard` の返すパスへ新規行だけを `atomic_write_text` しており、日次シャードが既存のとき**その日の行を丸ごと新規行で置き換えていた**（最初の `--write` で書いた2行が、次の `--write` に消される）。旧契約の下では「新規ファイルに新規行を書く」が正しかった文が、契約変更でそのままデータ破壊に変わった。
+- 修正：`write()` を `note_index` と同じ読み込み＋追記の形にした。回帰テスト `test_write_appends_and_never_truncates_the_day_shard` を `tests/test_read_log.py` に追加（2回の `--write` で行が増え続けること・`--check` が通ることを直接固定）。
+
+**教訓：既存の工場関数の契約を変える変更は、その呼び出し側すべての監査と回帰テストを同じ PR に入れる。** これは §105 の「道具・手順書の変更を台帳の一括追加と同じ PR に入れない」と別の話で、道具の変更に台帳の実データが触れているかを見る作業である。実データの損失は起きなかった（`--check` 8,472/8,472 と行の実在で確認、`append_only_check` PASS）。

@@ -286,5 +286,58 @@ class BackfillTests(unittest.TestCase):
             self.assertIn("never fails this check", after.stdout)
 
 
+    def test_write_appends_and_never_truncates_the_day_shard(self) -> None:
+        """2026-11-21 regression: --write must APPEND to the shared day shard.
+
+        ``create_shard`` now returns the day's shared shard, which can already
+        hold rows written earlier the same day.  A first ``--write`` used to
+        atomically replace the shard with only the new rows, silently dropping
+        everything already in it.  Two rounds of ``--write`` must leave round
+        one's rows on disk.
+        """
+        def read_row_count(repo: Path) -> int:
+            total = 0
+            for shard in sorted((repo / "state" / "read_log.d").glob("*.jsonl")):
+                total += sum(1 for line in shard.read_text(encoding="utf-8").splitlines() if line.strip())
+            return total
+
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = copy_repo(Path(tmp))
+            before = read_row_count(repo)
+
+            def add_session(repo: Path, session_id: str, material: str, shard_name: str) -> None:
+                row = {
+                    "session_id": session_id,
+                    "started_at": "2026-11-19",
+                    "human_direction": "test",
+                    "question_ids": [],
+                    "context_material_ids": [material],
+                    "produced_fragment_ids": [],
+                    "new_question_ids": [],
+                    "prompt_template": "test",
+                }
+                shard = repo / "state" / "sessions.d" / shard_name
+                with shard.open("a", encoding="utf-8") as handle:
+                    handle.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+            add_session(repo, "SESSION-20261119-aaaaaa", "MAT-20261024-3c4443", "2026-11-19-aaaaaaaaaaaa.jsonl")
+            round1 = run(repo, "tools/read_log_backfill.py", "--write")
+            self.assertEqual(round1.returncode, 0, round1.stdout + round1.stderr)
+            self.assertIn("WROTE 1 read_log rows", round1.stdout)
+            after1 = read_row_count(repo)
+            self.assertEqual(after1, before + 1, "round 1 must add exactly one row")
+
+            add_session(repo, "SESSION-20261119-bbbbbb", "MAT-20261025-0b9965", "2026-11-19-aaaaaaaaaaaa.jsonl")
+            round2 = run(repo, "tools/read_log_backfill.py", "--write")
+            self.assertEqual(round2.returncode, 0, round2.stdout + round2.stderr)
+            self.assertIn("WROTE 1 read_log rows", round2.stdout)
+            after2 = read_row_count(repo)
+            self.assertEqual(after2, before + 2, "round 2 must append, not replace round 1's rows")
+
+            final = run(repo, "tools/read_log_backfill.py", "--check")
+            self.assertEqual(final.returncode, 0, final.stdout + final.stderr)
+            self.assertIn("PASS", final.stdout)
+
+
 if __name__ == "__main__":
     unittest.main()

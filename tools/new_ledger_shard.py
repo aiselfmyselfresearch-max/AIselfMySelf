@@ -1,27 +1,46 @@
 #!/usr/bin/env python3
-"""Create a per-session ledger shard: state/<collection>.d/<date>-<hex>.jsonl.
+"""Get the ledger shard to append to: state/<collection>.d/<date>-<12 hex>.jsonl.
 
-Parallel sessions must not append to the shared ``state/<collection>.jsonl``
-base files: concurrent appends to one file create Git text conflicts and can
-interleave bytes.  Each session instead works in its own shard, which every tool
-reads as part of the union (``tools/ledger_io.py``).
+Background (2026-11-21, ERR-20261121-8d2b41)
+--------------------------------------------
+The ledger base files ``state/<collection>.jsonl`` are frozen: sessions append
+to shards, and every tool reads the base-plus-shards union
+(``tools/ledger_io.py``).  Until today each *call* minted a new file
+``YYYY-MM-DD-<random hex>.jsonl``, so shard count grew with every session and
+``tools/size_budget.py`` hard limits were reached and cleared again by manual
+consolidation -- delay, not a fix (the history is in ``docs/parallel-work.md``).
+
+The default is now the **day shard**: one canonical file per collection per
+day, ``<date>-000000000000.jsonl`` (the zero suffix that consolidation already
+used as its anchor).  ``create_shard()`` creates it once and later calls return
+the same path to append to.  Sessions on the same day share the file, which is
+what consolidation was doing after the fact, without moving any bytes.
+
+Concurrency: appends within one checkout are serialised by
+``ledger_io.exclusive_lock``.  Two *branches* appending to the same day shard
+can produce a Git conflict at merge; the resolution is to keep both sides'
+lines (rows are append-only and id-keyed, so the union is the correct
+content), then re-run ``tools/validate_seed.py`` and
+``tools/append_only_check.py``.  A session that is racing another open branch
+can ask for a **dedicated** shard instead by passing ``--suffix``: that keeps
+the old one-call-one-file behaviour, including the refusal to create the same
+shard twice.
 
 Usage::
 
-    python3 tools/new_ledger_shard.py fragments --create
-    python3 tools/new_ledger_shard.py questions
+    python3 tools/new_ledger_shard.py fragments --create      # the day shard
+    python3 tools/new_ledger_shard.py questions               # print the path
+    python3 tools/new_ledger_shard.py fragments --create --suffix abcdefabcdef
     python3 tools/new_ledger_shard.py --list fragments
 
-Without ``--create`` the tool only prints the path it would use.  Names follow
-``YYYY-MM-DD-<12 hex>.jsonl`` so that sorting shard names approximates the order
-in which sessions started.  Standard library only.  See ``docs/parallel-work.md``.
+Without ``--create`` the tool only prints the path it would use.  Standard
+library only.  See ``docs/parallel-work.md``.
 """
 from __future__ import annotations
 
 import argparse
 import os
 import re
-import secrets
 import sys
 from datetime import date
 from pathlib import Path
@@ -40,6 +59,10 @@ SHARD_COLLECTIONS = {
 
 _DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 _SUFFIX = re.compile(r"^[0-9a-f]{12}$")
+
+#: The canonical per-day shard suffix.  Consolidation anchored on this name
+#: (state/shard_aliases.json); it is now the default append target.
+DAY_SHARD_SUFFIX = "000000000000"
 
 
 def collection_base(collection: str, root: Path = ROOT) -> Path:
@@ -71,9 +94,9 @@ def shard_path(
     # sessions used to name shards with internal-chronology labels, which sort
     # after later real dates. New shards carry the real date only.
     date_axis.assert_writable_day(stamp)
-    token = suffix or secrets.token_hex(6)
-    if not _SUFFIX.fullmatch(token):
-        raise ValueError(f"suffix must be 12 lowercase hex characters, got {token!r}")
+    if suffix is not None and not _SUFFIX.fullmatch(suffix):
+        raise ValueError(f"suffix must be 12 lowercase hex characters, got {suffix!r}")
+    token = suffix or DAY_SHARD_SUFFIX
     return ledger_io.shard_dir(base) / f"{stamp}-{token}.jsonl"
 
 
@@ -84,17 +107,30 @@ def create_shard(
     day: str | None = None,
     suffix: str | None = None,
 ) -> Path:
-    """Create an empty shard with O_EXCL and return its path."""
+    """Return the shard to append to.
+
+    Without ``suffix`` this is the day shard: created once, reused afterwards.
+    With ``suffix`` this is a dedicated shard: created with O_EXCL and refused
+    if it already exists, which is the pre-2026-11-21 behaviour kept for
+    sessions that need isolation from other branches.
+    """
     base = collection_base(collection, root)
     if not base.is_file():
         raise FileNotFoundError(f"base ledger is missing: {base}")
+    dedicated = suffix is not None
     path = shard_path(collection, root=root, day=day, suffix=suffix)
     # Serialise with --write-map / import_researchos --write, which hold the
     # same writer lock while they regenerate a base file.
     with ledger_io.exclusive_lock(base):
         path.parent.mkdir(parents=True, exist_ok=True)
-        descriptor = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o644)
-        os.close(descriptor)
+        try:
+            descriptor = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o644)
+            os.close(descriptor)
+        except FileExistsError:
+            if dedicated:
+                raise
+            # The day shard exists: it is the shared append target.
+            return path
     return path
 
 
@@ -108,7 +144,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--create", action="store_true", help="create the shard file")
     parser.add_argument("--list", action="store_true", help="list existing shards")
     parser.add_argument("--date", default=None, help="YYYY-MM-DD stamp (default: today)")
-    parser.add_argument("--suffix", default=None, help="12 lowercase hex characters")
+    parser.add_argument(
+        "--suffix",
+        default=None,
+        help="12 lowercase hex characters: request a dedicated shard instead of the shared day shard",
+    )
     parser.add_argument(
         "--root",
         type=Path,

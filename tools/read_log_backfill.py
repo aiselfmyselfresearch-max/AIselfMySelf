@@ -428,7 +428,13 @@ def write(root: Path, today: date | None = None) -> int:
     shard = new_ledger_shard.create_shard("read_log", root=root)
     body = "".join(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n" for row in rows)
     with ledger_io.exclusive_lock(root / "state" / "read_log.jsonl"):
-        ledger_io.atomic_write_text(shard, body)
+        # create_shard returns the shared day shard, which may already hold rows
+        # written earlier today. Append: never overwrite what is there (the
+        # 2026-11-21 day-shard contract; see docs/parallel-work.md).
+        existing = shard.read_text(encoding="utf-8") if shard.is_file() else ""
+        if existing and not existing.endswith("\n"):
+            existing += "\n"
+        ledger_io.atomic_write_text(shard, existing + body)
     print(f"WROTE {len(rows)} read_log rows to {shard}")
     return 0
 
