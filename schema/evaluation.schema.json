@@ -122,6 +122,16 @@
       },
       "uniqueItems": true,
       "description": "Hypotheses that inherit the remaining scope when this row narrows or refutes the target (2026-11-16, P-5). Until now such a parent had to be named in spawned_hypothesis_ids, a field whose name means 'created'; the engine pays it +0.75*delta on narrows_scope and +0.95*delta on refutes_unconditioned, exactly as it does for spawned. Naming the operation here leaves the arithmetic identical and the record readable."
+    },
+    "agency_stance": {
+      "type": "string",
+      "enum": [
+        "endorse",
+        "report_only",
+        "dissent",
+        "self_correction"
+      ],
+      "description": "Required from 2026-11-21 for new evaluations: the evaluator's agential stance toward this judgment. 'endorse' = I subjectively take on this evaluation; 'report_only' = I report the opposition but endorse neither side yet; 'dissent' = I subjectively oppose the target hypothesis; 'self_correction' = I am correcting my own past judgment. This is a structural judgment-of-agency tag (Synofzik et al. 2008), not a claim about phenomenal consciousness."
     }
   }
 }

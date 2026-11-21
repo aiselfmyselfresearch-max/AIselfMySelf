@@ -58,6 +58,9 @@ jobs:
       - name: Check BELIEF_MAP.md is current
         run: python3 tools/belief_state.py --check-map
 
+      - name: Check SELF_MODEL.md is current
+        run: python3 tools/self_model.py --check
+
       - name: Check the readings/ note index section
         run: python3 tools/note_index.py --check
 
@@ -105,6 +108,24 @@ jobs:
 
       - name: Observe inheritance over readings/ (advisory)
         run: python3 tools/inheritance.py --cohorts
+
+      # 2026-11-21 six-layer self model: advisory audits for source attribution,
+      # agency, interoception, whether-gate, and temporal continuity. These tools
+      # write nothing and report only; failures mean the tool broke.
+      - name: Report source-monitoring (cognitive_operation) audit (advisory)
+        run: python3 tools/source_monitoring.py
+
+      - name: Report agency-trace (agency_stance) audit (advisory)
+        run: python3 tools/agency_trace.py
+
+      - name: Report interoception signals (advisory)
+        run: python3 tools/interoception.py
+
+      - name: Report whether-gate (veto) audit (advisory)
+        run: python3 tools/whether_gate.py
+
+      - name: Report temporal-continuity drift (advisory)
+        run: python3 tools/temporal_continuity.py
 
       - name: Run regression tests
         run: python3 -m unittest discover -s tests -v
