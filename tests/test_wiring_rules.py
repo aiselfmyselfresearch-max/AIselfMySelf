@@ -119,5 +119,83 @@ class RegisterTests(unittest.TestCase):
         self.assertEqual(errors, [])
 
 
+class LabelEvidenceTests(unittest.TestCase):
+    """The gate must not depend on the wall clock (measured 2026-11-21).
+
+    Two questions merged by PR #1002 carry the stamp 20261121 but sit in a shard
+    named 2026-10-24; on the merge day the wall clock had not reached the stamp's
+    midnight in every timezone and `validate_seed.py` failed on main.  Left alone,
+    57 more rows would have crossed a moving `stamp <= today` bound one by one
+    until 65 failed, with no commit changing anything.  These tests pin the
+    evidence-based reading that replaces the moving bound.
+    """
+
+    LABEL = "Q-20261121-198fc8"
+    SHARD = Path("state/questions.d/2026-10-24-000000000000.jsonl")
+
+    def test_earlier_shard_than_stamp_is_a_label(self) -> None:
+        self.assertTrue(validate_seed._is_internal_label(self.LABEL, self.SHARD))
+        self.assertFalse(
+            validate_seed._is_new_row(
+                self.LABEL, "20261116", today=datetime.date(2026, 11, 21), shard=self.SHARD
+            )
+        )
+
+    def test_a_real_row_in_its_own_shard_still_fails(self) -> None:
+        # Same stamp, same day, but the row sits in the shard named for that day:
+        # no evidence of a label, so the gate keeps working.
+        errors: list[str] = []
+        validate_seed.check_registers(
+            {"questions": {"Q-20261121-abcdef": {"question_id": "Q-20261121-abcdef"}}},
+            errors,
+            today=datetime.date(2026, 11, 21),
+            shard_of={"Q-20261121-abcdef": Path("state/questions.d/2026-11-21-aaaaaaaaaaaa.jsonl")},
+        )
+        self.assertEqual(len(errors), 1)
+        self.assertIn("register is missing", errors[0])
+
+    def test_undated_shard_proves_nothing(self) -> None:
+        self.assertFalse(validate_seed._is_internal_label(self.LABEL, Path("state/questions.jsonl")))
+        self.assertFalse(validate_seed._is_internal_label(self.LABEL, None))
+
+    def test_tomorrows_stamp_is_still_hidden(self) -> None:
+        # Unchanged behaviour: a stamp later than today is never judged new.
+        self.assertFalse(
+            validate_seed._is_new_row(
+                "Q-20261201-abcdef", "20261116", today=datetime.date(2026, 11, 21)
+            )
+        )
+
+    def test_offer_evidence_finds_labels(self) -> None:
+        collections = {
+            "sessions": {
+                "SESSION-20261116-18e776": {
+                    "session_id": "SESSION-20261116-18e776",
+                    "offered_target_question_id": "Q-20261121-198fc8",
+                }
+            }
+        }
+        labels = validate_seed.build_forward_label_evidence(
+            collections, today=datetime.date(2026, 11, 21)
+        )
+        self.assertIn("Q-20261121-198fc8", labels)
+
+    def test_offer_evidence_ignores_a_forward_dated_offerer(self) -> None:
+        # If the session holding the receipt is itself in the future, the offer
+        # proves nothing about an earlier day.
+        collections = {
+            "sessions": {
+                "SESSION-20270101-aaaaaa": {
+                    "session_id": "SESSION-20270101-aaaaaa",
+                    "offered_target_question_id": "Q-20270201-bbbbbb",
+                }
+            }
+        }
+        labels = validate_seed.build_forward_label_evidence(
+            collections, today=datetime.date(2026, 11, 21)
+        )
+        self.assertEqual(labels, frozenset())
+
+
 if __name__ == "__main__":
     unittest.main()
