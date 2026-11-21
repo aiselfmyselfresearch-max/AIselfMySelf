@@ -2040,16 +2040,18 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # from a concurrent session. Soft to measured (1076); hard 1,200 as is.
         # 2026-11-21 (merge of origin/main 9abbb5e, 1076 -> 1078 files): two more reports
         # from #1005/#1006; this branch adds none. Soft to measured (1078); hard as is.
-        # 2026-11-21 (SESSION-20261121-e3b180, 1078 -> 1079): the ten-source cognitive-science
-        # round adds exactly one report (readings/2026-11-21-ten-cognitive-science-sources-
-        # on-grounding-and-the-other-who-answers.md). Measured union after merging origin/main
-        # (f1e23cc0) = 1,079 files / 35.7 MiB, inside the 37.00 MiB soft_bytes; the binding
-        # dimension is the file count, and this corpus is append-only, so shard merging cannot
-        # reduce it (it merges state/*.d/ files, not readings/ reports). soft_files set to the
-        # measured count exactly, with no headroom added. A measured review point, NOT an
-        # automatic allowance; re-measure after every merge. hard_files (1,200),
+        # 2026-11-21 (SESSION-20261121-9c41e8, 1078 -> 1079 files): one report added
+        # (35.63 MiB, inside 37.00 MiB soft_bytes). Soft to measured (1079); hard as is.
+        # 2026-11-21 (SESSION-20261121-e3b180, 1079 -> 1080 files, after merging origin/main
+        # b6b880c5): the ten-source cognitive-science round adds exactly one report
+        # (readings/2026-11-21-ten-cognitive-science-sources-on-grounding-and-the-other-who-
+        # answers.md). Measured union = 1,080 files / 35.68 MiB, inside the 37.00 MiB
+        # soft_bytes; the binding dimension is the file count, and readings/ is append-only,
+        # so shard merging cannot reduce it (it merges state/*.d/ files, not reports).
+        # soft_files set to the measured count exactly, no headroom added. A measured review
+        # point, NOT an automatic allowance; re-measure after every merge. hard_files (1,200),
         # soft_bytes / hard_bytes and the per-report caps unchanged.
-        soft_files=1079,
+        soft_files=1080,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

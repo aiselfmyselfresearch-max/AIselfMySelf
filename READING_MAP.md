@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5624 件（research_excerpt 3377 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5626 件（research_excerpt 3379 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1066 回
+- **探究セッション（Sessions）**：1067 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5624 | `literary_text` 2179／`research_excerpt` 3377／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5626 | `literary_text` 2179／`research_excerpt` 3379／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1066 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16220 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1067 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16240 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 393 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 601 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1160 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 84 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 774 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 605 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1161 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 85 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 779 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5624 件・詳細は map/3*.md）
+## 4. 対話素材（5626 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6429,6 +6429,8 @@
 | `MAT-20261121-000c47` | research_excerpt | Andrea L. Courtney, Meghan L. Meyer『コートニー＆マイヤー（2020）社会脳における自己–他者表象は社会的つながりを反映する——mPFCでの親密… |
 | `MAT-20261121-02e30f` | research_excerpt | Patrizia Vannini, Bernard Hanseeuw, Catherine E. Munro, Rebecca E. Amariglio, Gad A. Mars… |
 | `MAT-20261121-3a6118` | research_excerpt | Sabrina Lenzoni, Robin G. Morris, Daniel C. Mograbi『レンツォーニ、モリス＆モグラビ（2020）10年後の「凍結した自己（The… |
+| `MAT-20261121-b4e812` | research_excerpt | Roland G. Benoit, Michael C. Anderson『ベノワ＆アンダーソン（2012）不要記憶の意図的忘却を支える正反対の二つの神経機構——右DLPFC海馬… |
+| `MAT-20261121-d91a47` | research_excerpt | David Stawarczyk, Christopher N. Wahlheim, Joset A. Etzel, Abraham Z. Snyder, Jeffrey M. … |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261121-a34277・全文は map/50-sessions-*.md）
 
@@ -7496,6 +7498,7 @@
 | `SESSION-20261120-72dc8a` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261121-fdf447` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261121-d512b3` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261121-9c41e8` | 2026-11-21 | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261121-e3b180` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261121-75acab` | 2026-11-21 | `Q-002` | — | — |
 | `SESSION-20261121-d83dd7` | 2026-11-21 | `Q-002`, `Q-001` | — | — |
@@ -7592,12 +7595,12 @@
 | `map/31-materials-research-26.md` | 100 | 241,698 |
 | `map/31-materials-research-27.md` | 100 | 221,141 |
 | `map/31-materials-research-28.md` | 100 | 209,251 |
-| `map/31-materials-research-29.md` | 100 | 272,924 |
+| `map/31-materials-research-29.md` | 100 | 273,301 |
 | `map/31-materials-research-30.md` | 100 | 237,225 |
 | `map/31-materials-research-31.md` | 100 | 212,887 |
 | `map/31-materials-research-32.md` | 100 | 202,898 |
 | `map/31-materials-research-33.md` | 100 | 214,663 |
-| `map/31-materials-research-34.md` | 77 | 193,365 |
+| `map/31-materials-research-34.md` | 79 | 199,985 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7635,7 +7638,7 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 16 | 12,509 |
+| `map/50-sessions-22.md` | 17 | 13,284 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,062 |
@@ -7672,23 +7675,23 @@
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
 | `map/60-notes-36.md` | 25 | 101,133 |
-| `map/60-notes-37.md` | 25 | 87,275 |
-| `map/60-notes-38.md` | 25 | 70,090 |
-| `map/60-notes-39.md` | 25 | 71,400 |
-| `map/60-notes-40.md` | 25 | 78,362 |
-| `map/60-notes-41.md` | 25 | 102,469 |
-| `map/60-notes-42.md` | 25 | 107,403 |
-| `map/60-notes-43.md` | 25 | 140,563 |
-| `map/60-notes-44.md` | 4 | 13,240 |
+| `map/60-notes-37.md` | 25 | 90,628 |
+| `map/60-notes-38.md` | 25 | 68,887 |
+| `map/60-notes-39.md` | 25 | 72,387 |
+| `map/60-notes-40.md` | 25 | 76,746 |
+| `map/60-notes-41.md` | 25 | 101,798 |
+| `map/60-notes-42.md` | 25 | 103,798 |
+| `map/60-notes-43.md` | 25 | 143,089 |
+| `map/60-notes-44.md` | 5 | 18,959 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1079本・37,373,090 B）
+## 8. 精読ノート索引（readings/・1080本・37,408,182 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1005/1079 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1006/1080 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1079 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1080 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：184 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -8604,8 +8607,9 @@
 | `readings/2026-11-20-what-we-forget-together.md` | 2026-11-20 | 2026-11-20 | `SESSION-20261120-931bbc` | 9,457 | Q2 M12 S1 | ✓ | 一緒に思い出すと、何を一緒に忘れるのか——共同想起の認知科学10件を読む |
 | `readings/2026-11-20-where-continuity-is-recorded-a-measurement.md` | — | 2026-11-20 | `SESSION-20261120-99e940` | 9,237 | Q3 M10 S1 | ✓ | 書庫はどこで「感じ」を落とすのか — 自己の連続を、台帳の語彙と読みの分布で測る |
 | `readings/2026-11-20-who-held-the-mug.md` | — | 2026-11-20 | `SESSION-20261120-8ef5d4` | 4,828 | Q2 M2 S1 ED1 | ✓ | コップを持っていたのは誰か――ヘレン・ケラーを三つの入口から読み直す |
-| `readings/2026-11-21-individual-thoughts-memories-and-self-updating-gates.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-d512b3` +1 | 22,150 | Q3 M13 S2 | — | 人間の個別の思考と個別の記憶は「自己」とどう関わるか——門前制動・両刃の再結合・凍結する自己、および追記型GitHub… |
+| `readings/2026-11-21-individual-thoughts-memories-and-self-updating-gates.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-d512b3` +1 | 22,150 | Q3 M13 S2 | ✓ | 人間の個別の思考と個別の記憶は「自己」とどう関わるか——門前制動・両刃の再結合・凍結する自己、および追記型GitHub… |
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
+| `readings/2026-11-21-opposing-gates-configural-change-and-multi-channel-ledger.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-9c41e8` +2 | 18,909 | Q3 M6 S3 ERR1 ED4 | — | 反対符号の制動門・構成的変化表象・多経路ゲート会計——前回仮説の独立反証と6論文全文照合・台帳実測 |
 | `readings/2026-11-21-ten-cognitive-science-sources-on-grounding-and-the-other-who-answers.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-e3b180` | 22,694 | Q3 M4 S1 | — | 二番目の手が返らないとき——「根拠づけ・教示・警戒・参加」をめぐる認知科学10資料の精読 |
 | `readings/2026-11-21-the-flower-that-does-not-read-the-tag.md` | — | 2026-11-21 | `SESSION-20261121-0723fd` | 10,393 | Q6 F9 M8 MOT1 S1 | ✓ | 札を読まない花——明るみが徴収する代価と、代役が払う年（SESSION-20261121-0723fd） |
 | `readings/2026-11-21-the-refusal-that-was-not-a-refusal.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-d83dd7` +1 | 10,452 | Q6 M1 S2 | ✓ | 拒否ではなかった拒否——書庫が記録していたのは、断念ではなく持ち越しだった |
