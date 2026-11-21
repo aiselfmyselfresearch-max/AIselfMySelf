@@ -2054,7 +2054,11 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # 2026-11-21 (SESSION-20261121-2b7615): one append-only reading
         # brings the measured count to 1,081; bytes remain below the soft limit.
         # Raise only the review threshold to the measured count, not the hard cap.
-        soft_files=1081,
+        # 2026-11-21 (SESSION-20261121-d414f0): one neuroscience close-reading
+        # report (thought-memory-self, agency/body/control) brings the measured
+        # count to 1,082; bytes remain at 35.73 MiB inside the 37.00 MiB soft_bytes.
+        # soft_files set to the measured count exactly.
+        soft_files=1082,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
