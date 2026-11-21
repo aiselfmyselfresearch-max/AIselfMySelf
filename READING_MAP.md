@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5646 件（research_excerpt 3399 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1072 回
+- **探究セッション（Sessions）**：1073 回
 
 ### 台帳ごとの件数
 
@@ -23,7 +23,7 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5646 | `literary_text` 2179／`research_excerpt` 3399／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1072 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1073 |  |
 | 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16284 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 397 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 611 |  |
@@ -7527,6 +7527,7 @@
 | `SESSION-20261121-a34277` | 2026-11-21 | `Q-20261025-b4e703` | — | — |
 | `SESSION-20261121-3831aa` | 2026-11-21 | `Q-002` | — | — |
 | `SESSION-20261121-d414f0` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261121-002438` | 2026-11-21 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261121-2b7615` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7091 件・全表は map/40-relations-*.md）
@@ -7663,7 +7664,7 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 22 | 16,417 |
+| `map/50-sessions-22.md` | 23 | 16,790 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,062 |
@@ -7700,7 +7701,7 @@
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
 | `map/60-notes-36.md` | 25 | 101,133 |
-| `map/60-notes-37.md` | 25 | 90,427 |
+| `map/60-notes-37.md` | 25 | 90,492 |
 | `map/60-notes-38.md` | 25 | 67,595 |
 | `map/60-notes-39.md` | 25 | 71,724 |
 | `map/60-notes-40.md` | 25 | 74,407 |
