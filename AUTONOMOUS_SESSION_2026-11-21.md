@@ -175,19 +175,35 @@ read_log rows whose reading is 'declined': 19
 - セッション行（割当レシート四値つき。`offered_target_question_id` は提示値をそのまま記録し、`question_ids` は実際に取った値を記録した。**両者が違うこと自体が本回の観測点**）。
 - `read_log` 3 行（`.md` のパスを `target.id` に入れて一度 `validate_seed` に落ちたので、ノート ID に直した。**これも記録しておく**）。
 
+### 3.7 マージ中に起きたこと——同じゲートを、別のセッションが別の方法で直していた
+
+本報告を書いた後、`main` が二度動いていた（PR #1004 と、`SESSION-20261121-75acab` のブランチ）。**その PR は `tools/validate_seed.py` の同じ FAIL を、別の方法で消していた。**
+
+| | 本ブランチ | `main` に入った修復 |
+| :--- | :--- | :--- |
+| 方針 | `_is_new_row` の証拠を時計から台帳へ移す | `KNOWN_REGISTER_DEFECTS` に該当 2 件を**名前で**載せ、advisory として毎回印字 |
+| 効果 | 同型の可動上界（57 行）が全部消える | 名指しした 2 行だけが消える |
+| 残るもの | — | 可動上界そのもの（2026-12-01 以降、別の行が同じ理由で赤くなる） |
+
+**どちらも「消した」ように見えるが、消えている範囲が違う。** そして後者のコメントは理由を正しく書いている——「一日に三度目の同型の破損であり、どのセッションも緑にできないゲートは読まれなくなる」。**その判断は正しい。** 本ブランチの修復と併用すれば、名前の免除は 2 件とも**もう発火しない**（台帳の証拠で新規行でなくなるため）。実際、マージ後の `validate_seed.py` は免除行を一度も印字していない。
+
+マージで二つの実害が出たので直した。(1) git が両親の版を並べて残し、`check_registers` に `advisories` が二度書かれ、`KNOWN_REGISTER_DEFECTS` の分岐も二重になった（構文エラーで発覚）。(2) その結果、`main` の免除が**発火しないまま重複コードとして残る**ところだった。片方を残し、両方の理由をコメントに書いた。
+
+**そして `main` は `sessions.d` の hard 上限を 175 → 178 に上げていた**（`SESSION-20261121-75acab`、コメントに代替案 (a)(b)(c) と却下理由つき）。本ブランチは同じ上限を、予算を動かさずに統合でしのいだ。**同じ日に、同じ上限に対して、片方は数字を上げ、片方は構造を畳んだ。** マージ後は統合の効果で 175/177（hard 178）になり、上げた予算は余る。**その引き上げは戻していない。** 一行目（1 セッション 1 シャード）の規則の下で取られた判断であり、本セッションがそれを取り消すのは、自分の成果を自分で大きく見せる二度目の構造変更になるから。事実だけ `tools/size_budget.py` のコメントに残した。
+
 ## 4. 検証結果
 
 | 検証 | 結果 |
 | :--- | :--- |
-| `validate_seed.py` | **PASS**（`main` では FAIL だった） |
+| `validate_seed.py` | **PASS**。マージ前の `main` では FAIL、マージ後の `main` は名前の免除で FAIL を消していた（§3.7）。本ブランチの修復は免除を**発火させない**ので、両方入った木でも PASS |
 | `append_only_check.py` | PASS（`origin/main` の 33,616 行がバイト完全に現存） |
 | `belief_state.py --check-map` / `inspect_inquiry.py --check-map` / `note_index.py --check` | PASS |
 | `date_axis.py --enforce-shards` | PASS（未来日付シャード 0） |
 | `learning_metrics.py --check` / `three_gates.py --check` / `claim_wiring.py --check` | PASS |
 | `read_log_backfill.py --check` | PASS（層2 72.2%、情報のみ） |
 | `readings_integrity_check.py` | PASS |
-| `size_budget.py`（CI が使う非 strict） | **PASS**（hard 違反 0。以前 WARN だった `sessions.d`・`notes.d`・`read_log.d` はすべて圏内へ） |
-| `size_budget.py --strict` | **FAIL（本セッションの責任ではない）**：`readings/` が soft 超過（35.51 MiB / soft 35.49 MiB、1076 files / soft 1073）。**`origin/main` の時点で既に FAIL**（stash して確認済み）。追記専用の本文であり、`size_budget.py` 自身が「FILE COUNT は append-only の当然の結果で欠陥ではない。BYTES は将来の報告を短くするか予算の再調整か削除（人間の承認が要る）でしか減らない」と書いている |
+| `size_budget.py`（CI が使う非 strict） | **PASS**（hard 違反 0。`read_log.d` 170/173、`sessions.d` 175/177・hard 178、`notes.d` 175/179。マージ前は `sessions.d` が hard 上限ちょうど、`notes.d`・`read_log.d` が soft 超過だった） |
+| `size_budget.py --strict` | **FAIL（本セッションの責任ではない）**：`readings/` が soft 超過（35.55 MiB / soft 35.49 MiB、1077 files / soft 1076）。**`origin/main` の時点で既に FAIL**（stash して確認済み）。追記専用の本文であり、`size_budget.py` 自身が「FILE COUNT は append-only の当然の結果で欠陥ではない。BYTES は将来の報告を短くするか予算の再調整か削除（人間の承認が要る）でしか減らない」と書いている |
 | `python3 -m unittest discover -s tests` | 1009 件中 **3 件 FAIL**：`test_size_budget.test_real_repository_is_within_strict_limits`、`test_execution_path_probe.test_baseline_is_all_green`、同 `test_lowered_cap_is_caught_positive_control`。**三つとも `origin/main` の時点で既に FAIL**（stash して 2 件を直接確認、残る 1 件は strict が赤いことの正の対照なので同じ原因）。本セッションが追加した 10 テストは全 PASS、`test_tools_smoke`（`READING_MAP` の鮮度を含む）も PASS |
 | 追加した 10 テスト（`test_wiring_rules` 6 本＋`test_refusal_census` 4 本） | **全 PASS** |
 

@@ -187,6 +187,18 @@ ROLE_RECEIPT_FIELDS = (
     "offered_reference_mode",
 )
 REGISTER_VALUES = ("description", "judgment", "inheritance")
+# 2026-11-21: two question rows reached main without a register (PR #1002).  A
+# question row cannot be superseded any more than a session row can (duplicate
+# IDs are refused in every collection), and the register rule's own exemption set
+# means "merged before the rule's first UTC day", which is not true of these.  The
+# debt is carried by name, printed on every run, instead of turning the pipeline
+# red for everyone: this is the third breakage of the same kind in one day, and a
+# gate that no session can turn green stops being read.  The structural fix is a
+# required status check on main (so a red merge cannot land); until then, this.
+KNOWN_REGISTER_DEFECTS: dict[str, str] = {
+    "Q-20261121-198fc8": "PR #1002 wrote the question without a register; questions cannot be superseded",
+    "Q-20261121-7b68b2": "PR #1002 wrote the question without a register; questions cannot be superseded",
+}
 _ID_STAMP = re.compile(r"^[A-Z]+(?:-[A-Z]+)*-(\d{8})-")
 
 #: Three-Gates forward-dated write rules (2026-11-18, readings/2026-11-18-three-gates-between-trace-and-self.md §4):
@@ -420,10 +432,10 @@ def check_claim_wiring(
 def check_registers(
     collections: dict[str, dict[str, dict[str, Any]]],
     errors: list[str],
+    advisories: list[str] | None = None,
     *,
     today: datetime.date | None = None,
     shard_of: dict[str, Path] | None = None,
-    advisories: list[str] | None = None,
     label_ids: frozenset[str] | None = None,
 ) -> None:
     """New questions and hypotheses must declare which register they are written in.
@@ -449,15 +461,15 @@ def check_registers(
             register = record.get("register")
             if register in REGISTER_VALUES:
                 continue
-            shown = "missing" if register is None else repr(register)
             defect = KNOWN_REGISTER_DEFECTS.get(record_id)
             if defect:
                 if advisories is not None:
                     advisories.append(
-                        f"INFO: register defect carried, not repaired (advisory): "
-                        f"{collection}:{record_id}: register is {shown} — {defect}"
+                        f"INFO: register defect carried, not repaired (advisory): {collection}:{record_id} "
+                        f"— {defect}. The gate stays on for every other row; this line is printed every run"
                     )
                 continue
+            shown = "missing" if register is None else repr(register)
             errors.append(
                 f"{collection}:{record_id}: register is {shown}; declare one of "
                 f"{', '.join(REGISTER_VALUES)} (docs/registers.md). description=what was read, "
@@ -1269,7 +1281,12 @@ def check_evidence_path_corrections(
 #    second; `no_recompute_reason` names the third.  Only rows from the cutoff
 #    on are gated, for the same append-only reason.
 # ---------------------------------------------------------------------------
-VERIFICATION_DEPTHS = frozenset({"metadata", "abstract", "results", "full_text", "re_derived"})
+VERIFICATION_DEPTHS = frozenset({"metadata", "abstract", "results", "full_text", "re_derived", "unspecified"})
+#: `unspecified` records that the archive does not know.  It is allowed on legacy
+#: rows and as a correction that withdraws an inferred depth, but it never
+#: satisfies the new-row requirement: a session that checked a source must say
+#: how far it got, and "I do not know" is not an answer to "how far did you go?".
+CONCRETE_DEPTHS = VERIFICATION_DEPTHS - {"unspecified"}
 TRACEABILITY_CUTOFF = "20261121"  # YYYYMMDD, the same stamp format as CLAIM_WIRING_RULE_FROM
 _NUMBER_RE = re.compile(
     r"(?:\d+(?:\.\d+)?\s*%|\bp\s*[=<]\s*0?\.\d+|\d+\.\d+|\b\d+\s*(?:件|行|回|種|人|資料|評価|セッション|仮説|素材)"
@@ -1332,11 +1349,11 @@ def check_verification_depth(
             f"{TRACEABILITY_CUTOFF[:4]}-{TRACEABILITY_CUTOFF[4:6]}-{TRACEABILITY_CUTOFF[6:]}"
         )
         if is_new:
-            if status in ("verified", "partially_verified") and not depth:
+            if status in ("verified", "partially_verified") and (not depth or depth == "unspecified"):
                 errors.append(
                     f"materials:{mid}: verification.checked_at {checked_at[:10]} is on or after "
                     f"{TRACEABILITY_CUTOFF[:4]}-{TRACEABILITY_CUTOFF[4:6]}-{TRACEABILITY_CUTOFF[6:]}, so verification.depth must say how far the check went "
-                    f"({sorted(VERIFICATION_DEPTHS)}); status alone cannot distinguish "
+                    f"({sorted(CONCRETE_DEPTHS)}); status alone cannot distinguish "
                     "'read the abstract' from 'read the passage'"
                 )
         elif status == "verified" and not depth:
@@ -1471,6 +1488,8 @@ def check_refs(
 
 def main() -> int:
     errors: list[str] = []
+    # 2026-11-21: named gate defects are reported, not raised (see KNOWN_* dicts).
+    gate_advisories: list[str] = []
     specs: dict[str, tuple[Path, str]] = {}
     for name, (filename, id_key, _schema) in COLLECTIONS.items():
         base_path = ROOT / "state" / filename
@@ -1630,6 +1649,11 @@ def main() -> int:
 
     check_note_brakes(notes, errors)
     check_claim_wiring(notes, errors)
+    # 2026-11-21 merge: two repairs landed the same day from two branches.
+    # origin/main carries KNOWN_REGISTER_DEFECTS by name (PR #1004); this branch
+    # moves the new-row evidence from the clock to the ledger.  Both are kept:
+    # the named-defect path reports through `advisories`, so it is handed this
+    # branch's list rather than `gate_advisories`.
     forward_labels = build_forward_label_evidence(collections)
     register_advisories: list[str] = []
     check_registers(
@@ -1824,8 +1848,7 @@ def main() -> int:
                 )
 
     check_read_log_addressing(read_logs, errors)
-    receipt_advisories: list[str] = []
-    check_role_receipts(sessions, errors, receipt_advisories)
+    check_role_receipts(sessions, errors, gate_advisories)
     check_psc_verification_gate(evaluations, materials, errors)
     check_material_duplicate_identifiers(materials, errors)
     check_evaluation_descendant_collision(evaluations, hypotheses, errors)
@@ -1965,7 +1988,7 @@ def main() -> int:
         print(psc_advisory)
     if psc_new_advisory:
         print(psc_new_advisory)
-    for line in receipt_advisories:
+    for line in gate_advisories:
         print(line)
     for line in register_advisories:
         print(line)
