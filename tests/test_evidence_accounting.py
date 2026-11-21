@@ -231,6 +231,48 @@ class OverlayQuoteTests(unittest.TestCase):
         self.assertEqual(depth_backfill.classify(material)[0], "unknown")
 
 
+class SectionEnumerationTests(unittest.TestCase):
+    """Tested on 2026-11-21 against five rows at the head of the reading queue."""
+
+    def test_all_sections_is_not_a_partial_read(self):
+        self.assertEqual(depth_backfill._partial_hits("Results全節を読んだ"), [])
+        self.assertEqual(depth_backfill._partial_hits("STAR Methods前半を確認"), ["前半"])
+
+    def test_listing_sections_is_not_a_mixed_read(self):
+        self.assertTrue(
+            depth_backfill._enumerates_sections(
+                "公開全文（Abstract, Introduction, Results, Discussion, Methods）を精読"
+            )
+        )
+        self.assertFalse(
+            depth_backfill._enumerates_sections("Abstract, Introduction のみを読んだ")
+        )
+        self.assertFalse(depth_backfill._enumerates_sections(
+            "全文から Abstract, Results, Methods を精読"
+        ))
+        self.assertFalse(depth_backfill._enumerates_sections(
+            "全文から Abstract, Introduction, Results, Discussion, Methods を一部精読"
+        ))
+
+    def test_enumerated_sections_classify_as_full_text(self):
+        material = {
+            "verification": {
+                "status": "verified",
+                "method": "PMC公開全文（Abstract, Introduction, Results全節, Discussion, Methods）を精読。",
+                "note": "",
+            }
+        }
+        self.assertEqual(depth_backfill.classify(material)[0], "full_text_claim")
+
+    def test_a_quote_check_is_not_a_full_text_read(self):
+        material = {"verification": {"status": "verified", "method": "流布する原文を確認。", "note": ""}}
+        self.assertNotEqual(depth_backfill.classify(material)[0], "full_text_claim")
+        material["verification"]["method"] = "Results の原文を確認。"
+        self.assertNotEqual(depth_backfill.classify(material)[0], "full_text_claim")
+        material["verification"]["method"] = "全文を通読し、原文を照合。"
+        self.assertEqual(depth_backfill.classify(material)[0], "full_text_claim")
+
+
 class UnspecifiedDepthTests(unittest.TestCase):
     def test_unspecified_is_not_a_new_row_answer(self):
         row = {
