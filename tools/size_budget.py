@@ -2040,7 +2040,9 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # from a concurrent session. Soft to measured (1076); hard 1,200 as is.
         # 2026-11-21 (merge of origin/main 9abbb5e, 1076 -> 1078 files): two more reports
         # from #1005/#1006; this branch adds none. Soft to measured (1078); hard as is.
-        soft_files=1078,
+        # 2026-11-21 (SESSION-20261121-9c41e8, 1078 -> 1079 files): one report added
+        # (35.63 MiB, inside 37.00 MiB soft_bytes). Soft to measured (1079); hard as is.
+        soft_files=1079,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
