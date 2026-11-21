@@ -1353,6 +1353,7 @@ COGNITIVE_OP_EXEMPT_IDS = frozenset({
     "NOTE-20261121-3ddaac",
     "NOTE-20261121-1a6958",
     "NOTE-20261121-fc74cd",
+    "NOTE-20261121-83c7c4",  # from concurrent PR #1017 merged to main
 })
 AGENCY_STANCE_EXEMPT_IDS = frozenset({
     "EVL-20261121-2a793d",
@@ -1366,6 +1367,8 @@ AGENCY_STANCE_EXEMPT_IDS = frozenset({
     "EVL-20261121-63d7a9",
     "EVL-20261121-78e4b6",
     "EVL-20261121-85f1c3",
+    "EVL-20261121-dc5c02",  # from concurrent PR #1017 merged to main
+    "EVL-20261121-f8a8cf",  # from concurrent PR #1017 merged to main
 })
 _NUMBER_RE = re.compile(
     r"(?:\d+(?:\.\d+)?\s*%|\bp\s*[=<]\s*0?\.\d+|\d+\.\d+|\b\d+\s*(?:件|行|回|種|人|資料|評価|セッション|仮説|素材)"
