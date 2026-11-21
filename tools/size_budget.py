@@ -722,7 +722,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # same-day read_log shards from concurrent sessions. Measured union = 172
         # files / 6.08 MiB of the 6.50 MiB soft_bytes. Set to the measured count
         # exactly; hard 175 unchanged. Not automatic.
-        soft_shards=172,
+        # 2026-11-21 (merge of origin/main 85e354c, 172 -> 173 files): one more same-day
+        # read_log shard arrives with the merge. Soft to measured (173); hard 175 as is.
+        soft_shards=173,
         hard_shards=175,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -1057,7 +1059,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # fourth consecutive raise. A collection whose file count grows by one per
         # session forever needs a rotation policy, and that decision is not mine to
         # make silently at 179.
-        soft_shards=176,
+        # 2026-11-21 (merge of origin/main 85e354c, 176 -> 177 files): the merge carries
+        # one more session row; this branch adds none. Measured 177 / 3.11 MiB. Soft to
+        # measured (177); hard 178 unchanged — the next session row does NOT fit and must
+        # be shortened rather than raising the hard cap again.
+        soft_shards=177,
         hard_shards=178,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
@@ -1999,7 +2005,9 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # concurrent sessions. Measured union = 1,075 files / 35.49 MiB, inside the
         # 37.00 MiB soft_bytes. Set to the measured count exactly; hard 1,200 unchanged.
         # Not automatic; re-measure after every merge.
-        soft_files=1075,
+        # 2026-11-21 (merge of origin/main 85e354c, 1075 -> 1076 files): one more report
+        # from a concurrent session. Soft to measured (1076); hard 1,200 as is.
+        soft_files=1076,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
