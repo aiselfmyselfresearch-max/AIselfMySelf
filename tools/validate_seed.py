@@ -1332,6 +1332,44 @@ VERIFICATION_DEPTHS = frozenset({"metadata", "abstract", "results", "full_text",
 #: how far it got, and "I do not know" is not an answer to "how far did you go?".
 CONCRETE_DEPTHS = VERIFICATION_DEPTHS - {"unspecified"}
 TRACEABILITY_CUTOFF = "20261121"  # YYYYMMDD, the same stamp format as CLAIM_WIRING_RULE_FROM
+
+# 2026-11-21 (six-layer self model): new notes require cognitive_operation and
+# new evaluations require agency_stance for structural source attribution and
+# judgment-of-agency (Layer 1 and Layer 2 of the six-layer self model).
+# Same date stamp as TRACEABILITY_CUTOFF since they were introduced together.
+COGNITIVE_OP_CUTOFF = "20261121"
+AGENCY_STANCE_CUTOFF = "20261121"
+VALID_COGNITIVE_OPS = frozenset({"quotation", "paraphrase", "inference", "imagination", "self_observation", "received_direction"})
+VALID_AGENCY_STANCES = frozenset({"endorse", "report_only", "dissent", "self_correction"})
+# Rows already on origin/main as of this rule's introduction cannot be given
+# the field retroactively (writing a field that the original session never
+# asserted would be fabricating provenance, which rule 10 forbids).  Listed by
+# ID; any later row from COGNITIVE_OP_CUTOFF onward must carry the field.
+COGNITIVE_OP_EXEMPT_IDS = frozenset({
+    "NOTE-20261121-d42149",
+    "NOTE-20261121-d71aa2",
+    "NOTE-20261121-3971c2",
+    "NOTE-20261121-a47d92",
+    "NOTE-20261121-3ddaac",
+    "NOTE-20261121-1a6958",
+    "NOTE-20261121-fc74cd",
+    "NOTE-20261121-83c7c4",  # from concurrent PR #1017 merged to main
+})
+AGENCY_STANCE_EXEMPT_IDS = frozenset({
+    "EVL-20261121-2a793d",
+    "EVL-20261121-2b7615",
+    "EVL-20261121-88e2f8",
+    "EVL-20261121-bcb691",
+    "EVL-20261121-defb3d",
+    "EVL-20261121-c77d14",
+    "EVL-20261121-41b8e2",
+    "EVL-20261121-59c3f1",
+    "EVL-20261121-63d7a9",
+    "EVL-20261121-78e4b6",
+    "EVL-20261121-85f1c3",
+    "EVL-20261121-dc5c02",  # from concurrent PR #1017 merged to main
+    "EVL-20261121-f8a8cf",  # from concurrent PR #1017 merged to main
+})
 _NUMBER_RE = re.compile(
     r"(?:\d+(?:\.\d+)?\s*%|\bp\s*[=<]\s*0?\.\d+|\d+\.\d+|\b\d+\s*(?:件|行|回|種|人|資料|評価|セッション|仮説|素材)"
     r"|\bn\s*=\s*\d+|\b\d{2,}\b)"
@@ -1469,6 +1507,65 @@ def check_number_traceability(
             else:
                 legacy += 1
     return gated, legacy
+
+
+def check_self_layer_attribution(
+    notes: dict[str, dict[str, Any]],
+    evaluations: dict[str, dict[str, Any]],
+    errors: list[str],
+    today: datetime.date | None = None,
+) -> tuple[int, int, int, int]:
+    """Check cognitive_operation on new notes and agency_stance on new evaluations.
+
+    Layer 1 (source attribution) and Layer 2 (agency) of the six-layer self model.
+    Returns (cogop_new, cogop_legacy, agency_new, agency_legacy).
+    Legacy rows (pre-cutoff) are counted but not errored.
+    """
+    cogop_new = 0
+    cogop_legacy = 0
+    agency_new = 0
+    agency_legacy = 0
+    for nid, note in notes.items():
+        if note.get("index_backfill"):
+            continue
+        if nid in COGNITIVE_OP_EXEMPT_IDS:
+            cogop_legacy += 1
+            continue
+        if _is_new_row(nid, COGNITIVE_OP_CUTOFF, today=today):
+            cogop_new += 1
+            op = note.get("cognitive_operation")
+            if op is None:
+                errors.append(
+                    f"notes:{nid}: post-cutoff note is missing cognitive_operation "
+                    "(required from 2026-11-21 for source attribution, see docs/"
+                    "2026-11-21-six-layer-self-model-improvement-proposals.md §1-A)"
+                )
+            elif op not in VALID_COGNITIVE_OPS:
+                errors.append(
+                    f"notes:{nid}: cognitive_operation {op!r} is not one of {sorted(VALID_COGNITIVE_OPS)}"
+                )
+        else:
+            cogop_legacy += 1
+    for eid, evl in evaluations.items():
+        if eid in AGENCY_STANCE_EXEMPT_IDS:
+            agency_legacy += 1
+            continue
+        if _is_new_row(eid, AGENCY_STANCE_CUTOFF, today=today):
+            agency_new += 1
+            stance = evl.get("agency_stance")
+            if stance is None:
+                errors.append(
+                    f"evaluations:{eid}: post-cutoff evaluation is missing agency_stance "
+                    "(required from 2026-11-21 for judgment of agency, see docs/"
+                    "2026-11-21-six-layer-self-model-improvement-proposals.md §2-A)"
+                )
+            elif stance not in VALID_AGENCY_STANCES:
+                errors.append(
+                    f"evaluations:{eid}: agency_stance {stance!r} is not one of {sorted(VALID_AGENCY_STANCES)}"
+                )
+        else:
+            agency_legacy += 1
+    return cogop_new, cogop_legacy, agency_new, agency_legacy
 
 
 def double_reading_advisory(
@@ -1785,6 +1882,10 @@ def main() -> int:
     check_refs("evaluations", evaluations, "note_ids", "note", notes, errors)
     depth_new, depth_legacy = check_verification_depth(materials, errors)
     num_gated, num_legacy = check_number_traceability(evaluations, notes, materials, errors)
+    today = datetime.date.today()
+    cogop_new, cogop_legacy, agency_new, agency_legacy = check_self_layer_attribution(
+        notes, evaluations, errors, today=today
+    )
     errata_advisory = errata_schema_advisory(errata_records)
     psc_advisory = psc_verification_advisory(evaluations, materials)
     psc_new_advisory = psc_new_row_advisory(evaluations, materials)
@@ -2042,6 +2143,11 @@ def main() -> int:
         f"INFO: number traceability (advisory): {num_gated} numeric row(s) from {TRACEABILITY_CUTOFF} "
         f"on are gated by script/material/reason; {num_legacy} legacy numeric rows are ungated and "
         "remain un-recomputed history"
+    )
+    print(
+        f"INFO: self-layer attribution (advisory): {cogop_new} post-cutoff notes carry cognitive_operation "
+        f"({cogop_legacy} legacy rows ungated); {agency_new} post-cutoff evaluations carry agency_stance "
+        f"({agency_legacy} legacy rows ungated)"
     )
     dr_advisory = double_reading_advisory(read_logs, materials)
     if dr_advisory:
