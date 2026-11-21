@@ -24,10 +24,10 @@
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
 | セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1069 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16250 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16270 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 393 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 607 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1161 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1162 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 85 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 779 |  |
 
@@ -7687,7 +7687,7 @@
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
 | `map/60-notes-36.md` | 25 | 101,133 |
-| `map/60-notes-37.md` | 25 | 90,933 |
+| `map/60-notes-37.md` | 25 | 91,039 |
 | `map/60-notes-38.md` | 25 | 68,318 |
 | `map/60-notes-39.md` | 25 | 72,469 |
 | `map/60-notes-40.md` | 25 | 74,974 |
@@ -7703,7 +7703,7 @@
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1007/1081 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1080 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1081 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：184 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
