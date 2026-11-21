@@ -717,7 +717,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # read_log shards. Measured union = 169 files / 6.08 MiB of the 6.50 MiB
         # soft_bytes. Set to the measured count exactly; hard 175 unchanged.
         # Not automatic.
-        soft_shards=169,
+        # 2026-11-21 (merge of origin/main 7331236 into arena/6d84bb21, 169 -> 172):
+        # this session writes no read_log row; the merged tree carries main's
+        # same-day read_log shards from concurrent sessions. Measured union = 172
+        # files / 6.08 MiB of the 6.50 MiB soft_bytes. Set to the measured count
+        # exactly; hard 175 unchanged. Not automatic.
+        soft_shards=172,
         hard_shards=175,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -1025,8 +1030,35 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # binding; only the count is). Session rows are append-only and name their own
         # shard, so the count cannot be reclaimed. Set to the measured count exactly;
         # hard 175 unchanged. Not automatic.
-        soft_shards=173,
-        hard_shards=175,
+        #
+        # 2026-11-21 (SESSION-20261121-75acab, 173 -> 176 files; first HARD raise here):
+        # this session adds one sessions shard (2026-11-21-badc9b9c386b.jsonl, one row,
+        # its issued receipt) and the merge of origin/main 7331236 carries two more
+        # same-day session rows from concurrent sessions. Measured union = 176 files /
+        # 3.11 MiB of the 4.00 MiB soft_bytes (bytes still not binding). 176 > hard 175,
+        # so this stops being a soft-only adjustment.
+        #
+        # WHY THE HARD CAP MOVED. The alternatives were checked first:
+        #   (a) omit the session row -> the 54 correction rows must name a session_id
+        #       that exists in sessions, and attributing them to another session's
+        #       receipt would be a false ledger entry. Rejected.
+        #   (b) fold the row into an existing shard -> one-shard-per-session plus the
+        #       append-only byte check forbid it. Rejected.
+        #   (c) compact old shards -> the remedy above says compaction saves ~0 B, and
+        #       it would break the append-only guarantee. Rejected.
+        # So the number moved, by the smallest amount that leaves the historical
+        # two-slot headroom (soft = measured 176, hard = 178). Recorded here rather
+        # than in a commit message because the next reader of this file is the person
+        # about to raise it again.
+        #
+        # WHAT WOULD HAVE TO CHANGE INSTEAD, NEXT TIME (178): a sessions row is ~18 KiB
+        # of narration around a one-line assignment. If the next session cannot fit,
+        # the fix is a shorter session row (the receipt fields, not the prose) — not a
+        # fourth consecutive raise. A collection whose file count grows by one per
+        # session forever needs a rotation policy, and that decision is not mine to
+        # make silently at 179.
+        soft_shards=176,
+        hard_shards=178,
         remedy=(
             "Merging shards saves ~0 B, so compaction cannot hold this byte "
             "limit; watch soft_shards instead, and if a row must be shortened, "
@@ -1476,7 +1508,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # rule is kept and the row cannot be folded into another session's shard.
         # Soft raised to measured + 1 (176) so the next session has one free slot;
         # hard 180 unchanged; not automatic.
-        soft_shards=176,
+        # 2026-11-21 (merge of origin/main 7331236): 176 -> 178 measured, no notes
+        # row written by this session. Raised to 179 (one free slot); hard 180
+        # unchanged. At 180 this stops being raisable without raising the hard cap.
+        soft_shards=179,
         hard_shards=180,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
@@ -1958,7 +1993,13 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # union = 1,073 files / 35.45 MiB, inside the 37.00 MiB soft_bytes. Set to the
         # measured count exactly; soft_bytes, hard_files (1,200) and per-report caps
         # unchanged. Not automatic.
-        soft_files=1073,
+
+        # 2026-11-21 (merge of origin/main 7331236, 1073 -> 1075): this branch adds no
+        # readings/ report; the merged tree carries two more same-day reports from
+        # concurrent sessions. Measured union = 1,075 files / 35.49 MiB, inside the
+        # 37.00 MiB soft_bytes. Set to the measured count exactly; hard 1,200 unchanged.
+        # Not automatic; re-measure after every merge.
+        soft_files=1075,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

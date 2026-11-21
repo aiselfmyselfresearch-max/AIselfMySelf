@@ -168,6 +168,78 @@ class ToolTests(unittest.TestCase):
         self.assertEqual(result["rows_releasable_by_all"], 4)
 
 
+class ClassifierRepairTests(unittest.TestCase):
+    """The first classifier missed copular negation; the repair is pinned here."""
+
+    def cls(self, method: str, note: str = "") -> str:
+        return depth_backfill.classify({"verification": {"status": "verified", "method": method, "note": note}})[0]
+
+    def test_copular_negation_blocks_full_text(self):
+        self.assertNotEqual(self.cls("仕様・実装の全文精読ではない。引用文字列を照合。"), "full_text_claim")
+
+    def test_body_markers_rescue_abstract_rows_from_shallow(self):
+        cls = self.cls("abstract 1 文、方法の記述、結果の数値を文字列一致で照合した。")
+        self.assertEqual(cls, "results_claim")
+
+    def test_original_note_is_recovered_under_overlay_text(self):
+        ver = {"note": "[overlay ED-x] reason 本文到達 元の note: 抄録のみ確認"}
+        self.assertEqual(depth_backfill._original_note(ver), "抄録のみ確認")
+
+    def test_audit_withdraws_a_negated_claim(self):
+        materials = {
+            "M": {
+                "material_id": "M",
+                "verification": {
+                    "status": "verified",
+                    "depth": "full_text",
+                    "method": "仕様・実装の全文精読ではない。",
+                    "note": "[overlay ED-x] ③の遡及適用。 元の note: ",
+                },
+            }
+        }
+        audit = depth_backfill.audit_overlays(materials)
+        self.assertEqual(audit["kept"], 0)
+        self.assertEqual([w["material_id"] for w in audit["withdrawn"]], ["M"])
+
+
+class UnspecifiedDepthTests(unittest.TestCase):
+    def test_unspecified_is_not_a_new_row_answer(self):
+        row = {
+            "material_id": "MAT-20261121-bbbbbb",
+            "verification": {"status": "verified", "checked_at": "2026-11-21", "method": "x", "depth": "unspecified"},
+        }
+        errors: list[str] = []
+        validate_seed.check_verification_depth({"MAT-20261121-bbbbbb": row}, errors, today=datetime.date(2026, 11, 22))
+        self.assertTrue(any("must say how far the check went" in e for e in errors), errors)
+
+    def test_unspecified_is_allowed_on_a_legacy_row(self):
+        row = {
+            "material_id": "MAT-20261001-aaaaaa",
+            "verification": {"status": "verified", "checked_at": "2026-10-01", "method": "x", "depth": "unspecified"},
+        }
+        errors: list[str] = []
+        validate_seed.check_verification_depth({"MAT-20261001-aaaaaa": row}, errors, today=datetime.date(2026, 11, 22))
+        self.assertEqual(errors, [])
+
+
+class RegisterDefectTests(unittest.TestCase):
+    def test_known_register_defect_is_advisory(self):
+        collections = {"questions": {"Q-20261121-198fc8": {"question": "x"}}, "hypotheses": {}}
+        errors: list[str] = []
+        advisories: list[str] = []
+        validate_seed.check_registers(collections, errors, advisories, today=datetime.date(2026, 11, 22))
+        self.assertEqual(errors, [])
+        self.assertEqual(len(advisories), 1)
+
+    def test_unknown_register_defect_still_errors(self):
+        collections = {"questions": {"Q-20261121-abcdef": {"question": "x"}}, "hypotheses": {}}
+        errors: list[str] = []
+        advisories: list[str] = []
+        validate_seed.check_registers(collections, errors, advisories, today=datetime.date(2026, 11, 22))
+        self.assertEqual(advisories, [])
+        self.assertEqual(len(errors), 1)
+
+
 class ReceiptDefectTests(unittest.TestCase):
     """The named defect must stay visible and must not weaken the gate."""
 

@@ -54,10 +54,26 @@ import ledger_io  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 
-FULL_MARKERS = ("全文", "本文", "通読", "full text", "full-text", "Full text", "本文PDF")
+FULL_MARKERS = ("全文", "本文", "通読", "原文", "full text", "full-text", "Full text", "本文PDF")
 SHALLOW_MARKERS = ("抄録", "abstract", "Abstract", "要旨", "Summary", "significance statement", "書誌", "出版情報", "DOI のみ")
 TABLE_MARKERS = ("表3", "表4", "Table 3", "Table 4", "結果表", "図表", "図1")
-NEGATION = ("未読", "未取得", "読めず", "読めなか", "取得できず", "not read", "unread", "未閲覧", "本文未", "全文未")
+NEGATION = (
+    "未読", "未取得", "読めず", "読めなか", "取得できず", "not read", "unread", "未閲覧",
+    "本文未", "全文未",
+    # 2026-11-20 (repair): "仕様・実装の全文精読ではない" reached depth=full_text
+    # because the first version of this list had no plain copular negation.  A
+    # clause that says what was NOT done is the opposite of a depth claim, and
+    # missing it put a false justification into 402 overlay rows.
+    "ではない", "ではありません", "していない", "していません", "しなかった", "せず",
+    "していなか", "には至ら", "には届か", "及ばず", "及びません", "限らない", "限らなか",
+)
+#: Markers that show the reader was inside the body (methods, results, discussion),
+#: not merely at the abstract.  They do not prove a full read; they only stop a row
+#: from being classified as "abstract only".
+BODY_MARKERS = (
+    "方法", "結果", "考察", "統計", "該当箇所", "Results", "Methods", "Discussion",
+    "結果表", "§", "節", "章", "頁", "p.", "Fig", "Table", "表", "図",
+)
 PARTIAL = ("一部", "§", "節", "章", "第1章", "冒頭", "抜粋", "抄録と本文")
 
 _CLAUSE_SPLIT = re.compile(r"[。;；\n]")
@@ -111,8 +127,14 @@ def classify(material: dict) -> tuple[str, str]:
         return "full_text_claim", (full_clauses[0] or "")[:160]
     if shallow_clauses:
         clause = shallow_clauses[0]
-        if any(t in clause for t in TABLE_MARKERS):
-            return "shallow_claim", clause[:160]
+        body = [c for c in _CLAUSE_SPLIT.split(text) if any(b in c for b in BODY_MARKERS)]
+        if body:
+            # The prose mentions an abstract AND something inside the paper.  The
+            # abstract mention does not make the read shallow, and the body mention
+            # does not make it full: this is exactly the "抄録1文と方法を照合" shape
+            # that the first classifier mislabelled as shallow (50% precision on a
+            # 8-row sample).  Call it results-level at most.
+            return "results_claim", body[0][:160]
         return "shallow_claim", clause[:160]
     if any(t in text for t in TABLE_MARKERS):
         return "shallow_claim", ([c for t in TABLE_MARKERS for c in _sentences_with(text, t)][:1] or [""])[0][:160]
@@ -148,6 +170,81 @@ def survey(materials: dict) -> dict:
 
 
 DEPTH_BY_CLASS = {"full_text_claim": "full_text", "results_claim": "results"}
+#: The sentence every retro-applied overlay carries, used to tell an *inferred*
+#: depth (which this tool may withdraw) from a depth a session recorded directly.
+OVERLAY_TAG = "③の遡及適用"
+
+
+def _original_note(ver: dict) -> str:
+    """Recover the note the session wrote, from under this tool's overlay text.
+
+    An overlay rewrites ``verification.note`` as "[overlay ED-…] <reason> 元の note: <orig>".
+    Re-classifying that string means re-reading this tool's own prose, and the
+    reason quotes the clause it was based on — so the audit would grade itself.
+    """
+    note = str(ver.get("note") or "")
+    if "[overlay" not in note:
+        return note
+    marker = "元の note:"
+    return note.split(marker, 1)[1].strip() if marker in note else ""
+
+
+def audit_overlays(materials: dict) -> dict:
+    """Which inferred depths no longer survive the tightened classifier.
+
+    The first version of ``classify`` missed plain copular negation
+    ("全文精読ではない"), so a row whose prose says the text was NOT fully read was
+    labelled ``full_text``.  A wrong depth is worse than no depth: the validator
+    treats ``full_text`` as a claim, and a reader has no way to see that it was
+    inferred.  This function re-runs the classifier over every row this tool
+    touched and returns the disagreements as ``unspecified`` corrections.
+    """
+    wrong = []
+    kept = 0
+    for mid, m in materials.items():
+        ver = m.get("verification") or {}
+        depth = ver.get("depth")
+        if depth not in ("full_text", "results"):
+            continue
+        if OVERLAY_TAG not in str(ver.get("note") or ""):
+            continue
+        clean = dict(m)
+        clean["verification"] = {**ver, "note": _original_note(ver)}
+        cls, clause = classify(clean)
+        expected = DEPTH_BY_CLASS.get(cls)
+        if expected == depth:
+            kept += 1
+            continue
+        wrong.append({"material_id": mid, "depth": depth, "class": cls, "clause": clause})
+    return {"inferred": kept + len(wrong), "kept": kept, "withdrawn": wrong}
+
+
+def correction_rows(targets: list[dict], session_id: str, created_at: str, materials: dict | None = None) -> list[dict]:
+    rows = []
+    for t in targets:
+        mid = t["material_id"]
+        rows.append(
+            {
+                "decision_id": "ED-" + created_at.replace("-", "") + "-c" + hashlib.sha1(mid.encode()).hexdigest()[:7],
+                "session_id": session_id,
+                "target": {"type": "material", "id": mid},
+                "status": "verified",
+                "verification_depth": "unspecified",
+                # status 'verified' requires a method; carry the shard's own text so
+                # the correction cannot look like a fresh claim about the source.
+                "verification_method": str(
+                    (((materials or {}).get(mid) or {}).get("verification") or {}).get("method") or ""
+                )[:400] or "legacy method text (unchanged by this correction)",
+                "reason": (
+                    "前の推定 depth=" + t["depth"] + " を取り消す（" + OVERLAY_TAG + "）。"
+                    "分類器の初版が「全文精読ではない」のような否定を検出できず、"
+                    "記述に反する深さを付けていた。再分類では「" + (t["clause"] or "判定不能") + "」。"
+                    "depth を unspecified に戻す——わからないことを、わかったふりで埋めない。"
+                ),
+                "created_at": created_at,
+            }
+        )
+    return rows
 
 
 def overlay_rows(targets: list[dict], materials: dict, session_id: str, created_at: str, depth: str = "full_text") -> list[dict]:
@@ -182,6 +279,8 @@ def main() -> int:
     parser.add_argument("--list", choices=["full_text_claim", "results_claim", "shallow_claim", "unknown"])
     parser.add_argument("--limit", type=int, default=20)
     parser.add_argument("--emit", choices=["full_text_claim", "results_claim"])
+    parser.add_argument("--audit-overlays", action="store_true")
+    parser.add_argument("--correct", action="store_true")
     parser.add_argument("--session")
     parser.add_argument("--date", default="2026-11-20")
     args = parser.parse_args()
@@ -193,6 +292,28 @@ def main() -> int:
         print(f"WARN: {err}", file=sys.stderr)
     materials = data.get("materials", {})
     result = survey(materials)
+
+    if args.audit_overlays:
+        audit = audit_overlays(materials)
+        if args.json:
+            print(json.dumps(audit, ensure_ascii=False, indent=2))
+            return 0
+        if args.correct:
+            if not args.session:
+                print("--correct requires --session", file=sys.stderr)
+                return 2
+            for row in correction_rows(audit["withdrawn"], args.session, args.date, materials):
+                print(json.dumps(row, ensure_ascii=False))
+            print(f"# wrote {len(audit['withdrawn'])} corrections", file=sys.stderr)
+            return 0
+        print("# overlay audit")
+        print()
+        print(f"- 本道具が付けた推定 depth: **{audit['inferred']:,}**")
+        print(f"- 新しい分類でも維持できる: **{audit['kept']:,}**")
+        print(f"- 取り消すべき: **{len(audit['withdrawn']):,}**")
+        for w in audit["withdrawn"][:10]:
+            print(f"  {w['material_id']}  depth={w['depth']} -> {w['class']}  {w['clause'][:60]}")
+        return 0
 
     if args.emit:
         if not args.session:
