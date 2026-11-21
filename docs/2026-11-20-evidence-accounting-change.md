@@ -417,7 +417,7 @@ PMC 全文6チャンクを読み、F(1,24)=327.25 等の統計値まで引用し
 臨床効果を意味しない。後半Methods・Extended Data図像・付録は未確認なので、全文精読とはせず
 `ED-20261121-3ece48` に `verified` / `results` と到達範囲を記録した。
 
-今回の修正後（1,428件中413件は既に depth あり）: full_text_claim 17、results_claim 108、
+今回の修正後、main との統合時点（1,434件中419件は既に depth あり）: full_text_claim 17、results_claim 108、
 shallow_claim 117、unknown 773。待ち行列は889件（shallow 117 / unknown 772）。前回874件から
 増えたのは、既存の「原文」だけを根拠に全文と推定した一部を、保守的に不明へ戻したためである。
 これらは実読済み件数ではなく、記述に基づく分類である。
