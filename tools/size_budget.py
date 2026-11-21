@@ -2118,7 +2118,16 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # carries BOTH reports, so the measured file count is 1,087. The count is a
         # property of the union, not of either branch. Soft set to the measured union
         # (1,087); byte budgets, hard 1,200 and per-report caps unchanged. Not automatic.
-        soft_files=1087,
+        # 2026-11-21 (SESSION-20261121-63f312, merge of origin/main a4a722f5): this
+        # branch's requested ten-source report
+        # (readings/2026-11-21-before-the-reason-the-procedure.md) unions with the
+        # same-day reports merged meanwhile, so the measured count is 1,088 files /
+        # 35.99 MiB of the 37 MiB soft_bytes (only the count binds). Setting the soft
+        # equal to each branch's measurement is what keeps producing this conflict --
+        # four same-day raises in this one dimension. Raised by the established
+        # dozen-session margin (1,088 + 12 = 1,100) so the canary fires on a burst
+        # rather than on every session; hard 1,200 and per-file caps unchanged.
+        soft_files=1100,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
