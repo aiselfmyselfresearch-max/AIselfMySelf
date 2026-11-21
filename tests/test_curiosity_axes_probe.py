@@ -160,13 +160,11 @@ class ProbeResultTest(unittest.TestCase):
         excluded = probe.compute(exclude_sessions=frozenset({'SESSION-20261121-e7565a'}))
         drop = full['population']['evaluations_live'] - excluded['population']['evaluations_live']
         self.assertEqual(drop, 2)
-        # Computed against the live ledger rather than a fixed snapshot: any later
-        # session that appends evaluation rows moves the absolute count (778 as of
-        # the merge of SESSION-20261121-faaab0's two rows, PR #1019), and a fixed
-        # literal turned that growth into a false failure. The invariant under test
-        # is that excluding e7565a removes exactly its two rows.
+        # The archive is append-only: later sessions may add live evaluation rows.
+        # Keep the invariant tied to the excluded session rather than freezing the
+        # historical population size at the time this test was first written.
         self.assertEqual(excluded['population']['evaluations_live'],
-                         full['population']['evaluations_live'] - 2)
+                         full['population']['evaluations_live'] - drop)
 
 
 if __name__ == '__main__':

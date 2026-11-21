@@ -467,7 +467,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 16 MiB soft_bytes (bytes not binding; only the count is). Same reasoning as
         # above: one shard per session, and the count is the only movable dimension.
         # Soft raised to measured + 1 (149); hard 160 unchanged; not automatic.
-        soft_shards=149,
+        # 2026-11-21 (SESSION-20261121-004556, 149 -> 150): this session adds
+        # eight new expertise/schema/transfer materials in
+        # 2026-11-21-d8c7c4940001.jsonl. Measured union after writing = 150 files /
+        # 14.84 MiB of the 16 MiB soft_bytes (bytes not binding; only the count is).
+        # Soft raised to measured + 1 (150); hard 160 unchanged; not automatic.
+        soft_shards=150,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -742,7 +747,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # The rows cannot be folded into another session's append-only shard. Soft
         # raised to measured + 1 (174) so the next session has one free slot; hard
         # 175 unchanged; not automatic.
-        soft_shards=174,
+        # 2026-11-21 (SESSION-20261121-004556, 174 -> 175): this session adds
+        # ten hand-written material read_log rows in
+        # 2026-11-21-d8c7c4940003.jsonl. Measured union after writing = 175 files /
+        # 6.13 MiB of the 6.50 MiB soft_bytes (bytes not binding; count reaches the
+        # hard ceiling). The rows are kept in their own append-only shard; the next
+        # session must consolidate before another shard is created.
+        soft_shards=175,
         hard_shards=175,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -1687,7 +1698,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # is). Same reasoning as above: the rows cannot be folded into another
         # session's append-only shard. Soft raised to measured + 1 (106) so the next
         # session has one free slot; hard 160 unchanged; not automatic.
-        soft_shards=106,
+        # 2026-11-21 (SESSION-20261121-004556, 106 -> 107): this session adds
+        # three primary-source evaluation rows in
+        # 2026-11-21-d8c7c4940005.jsonl. Measured union after writing = 107 files /
+        # 1.01 MiB of the 4 MiB soft_bytes (bytes not binding; only the count is).
+        # Soft raised to the measured count (107); hard 160 unchanged; not automatic.
+        soft_shards=107,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
@@ -2085,13 +2101,17 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # soft count above is one below it. The binding dimension is the file count,
         # and readings/ is append-only, so shard merging cannot reduce it. Soft raised
         # to measured + 1 (1,083); hard 1,200 unchanged. Not automatic.
-        # 2026-11-21 (PR #1019, SESSION-20261121-faaab0): this session adds exactly one
+        # 2026-11-21 (SESSION-20261121-004556, 1,083 -> 1,084): this session adds
+        # readings/2026-11-21-expertise-is-not-general-memory.md. Measured union after
+        # writing = 1,084 reports / 35.85 MiB, below the 37 MiB soft byte line; the
+        # file-count review point is raised to the measured count, hard 1,200 unchanged.
+        # 2026-11-21 (PR #1019 merge of origin/main 76080d98): the union of this PR's
         # report (readings/2026-11-21-self-as-maintenance-ten-cognitive-science-sources.md)
-        # to the tree above; measured count on the merge of origin/main 267e6c3a is 1,084.
-        # Same remedy discipline as the entries above: the binding dimension is the
-        # append-only file count, so shard merging cannot reduce it. Soft raised to the
-        # measured count (1,084); hard_files (1,200) and soft_bytes / hard_bytes unchanged.
-        soft_files=1084,
+        # and origin/main 76080d98's report (SESSION-20261121-004556) is 1,085 files;
+        # readings/ is append-only, so shard merging cannot reduce the file count, and
+        # concurrent same-day reports each moved the count by one. Soft raised to the
+        # measured count (1,085); hard_files (1,200) and soft_bytes / hard_bytes unchanged.
+        soft_files=1085,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
