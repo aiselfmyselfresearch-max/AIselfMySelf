@@ -141,17 +141,33 @@ PRE_RECEIPT_SESSION_IDS = frozenset(
 # break the byte-compare step.  Back-filling the two fields would mean issuing a
 # receipt nobody issued: the role that `inspect_inquiry --assignment-json`
 # recomputes for this seed (adversarial_tester) already disagrees with the role
-# the row recorded (proposer), which is exactly why rule 10 forbids back-filling.
-# The defect is therefore carried here, by name, and reported as an advisory on
-# every run instead of turning the whole pipeline red: a red gate that nothing
-# can turn green teaches sessions to skip the gate.  Remove the entry only when
-# a human authorises a one-line rewrite of the row.
-KNOWN_RECEIPT_DEFECTS: dict[str, str] = {
-    "SESSION-20261120-a45e52": (
-        "PR #998; missing offered_target_question_id / offered_reference_mode; "
-        "sessions rows cannot be superseded, so no append-only repair exists"
-    ),
-}
+# Gate waivers live in the ledger, not in this file (2026-11-21).
+#
+# Until today three defects (two registerless questions from PR #1002, one session
+# row from PR #998 without its receipt) were carried as Python literals: a dict in
+# this file, printed as an INFO line on every run. The intent was honest -- a gate
+# that no session can turn green stops being read -- but the effect was that the
+# debt lived in the gate and not in the data. Anyone reading state/questions.d
+# would not learn that two rows there are known-defective; anyone auditing the
+# gate had to read its source; and the count of exceptions was whatever the file
+# happened to contain, invisible to every other tool in tools/.
+#
+# A waiver is now an errata row (state/errata.d/, schema/errata.schema.json) that
+# names the subject, the gate, what was expected and what was observed:
+#
+#   {"errata_id": "ERR-...", "subject_type": "question", "subject_id": "Q-...",
+#    "check": {"kind": "manual", "params": {"gate_waiver": "register", ...}},
+#    "verdict": "contradicted", "status": "open", ...}
+#
+# This gate reads those rows. Consequences, all of them intended:
+#   * the waiver is data -- `grep Q-20261121-198fc8 state/errata.d/*.jsonl` finds it;
+#   * `status: "open"` is what makes it live; a later erratum can annotate or
+#     correct it without touching this file, and a row that is not `open` no
+#     longer waives anything, so the gate comes back on by itself;
+#   * a waiver for an unknown gate name, or for a subject_type the gate does not
+#     own, is an ERROR, not a silent no-op. A mistyped waiver must not read as one;
+#   * there is no fallback list in code. If the errata shard is lost, the gate goes
+#     red -- which is the correct behaviour for a lost record of a known defect.
 ROLE_RECEIPT_FIELDS = (
     "dispersal_seed",
     "assigned_role",
@@ -159,18 +175,55 @@ ROLE_RECEIPT_FIELDS = (
     "offered_reference_mode",
 )
 REGISTER_VALUES = ("description", "judgment", "inheritance")
-# 2026-11-21: two question rows reached main without a register (PR #1002).  A
-# question row cannot be superseded any more than a session row can (duplicate
-# IDs are refused in every collection), and the register rule's own exemption set
-# means "merged before the rule's first UTC day", which is not true of these.  The
-# debt is carried by name, printed on every run, instead of turning the pipeline
-# red for everyone: this is the third breakage of the same kind in one day, and a
-# gate that no session can turn green stops being read.  The structural fix is a
-# required status check on main (so a red merge cannot land); until then, this.
-KNOWN_REGISTER_DEFECTS: dict[str, str] = {
-    "Q-20261121-198fc8": "PR #1002 wrote the question without a register; questions cannot be superseded",
-    "Q-20261121-7b68b2": "PR #1002 wrote the question without a register; questions cannot be superseded",
-}
+
+GATE_WAIVER_SUBJECT: dict[str, str] = {"register": "question", "receipt": "session"}
+
+
+def gate_waivers(
+    errata: dict[str, dict[str, Any]], errors: list[str] | None = None
+) -> dict[tuple[str, str], str]:
+    """Return {(gate, subject_id): errata_id} for the waivers currently in force."""
+    waivers: dict[tuple[str, str], str] = {}
+    for errata_id, record in sorted(errata.items()):
+        check = record.get("check") or {}
+        params = check.get("params") or {}
+        gate = params.get("gate_waiver")
+        if not isinstance(gate, str) or not gate:
+            continue
+        if check.get("kind") != "manual":
+            continue
+        if record.get("status") != "open":
+            continue
+        subject_type = record.get("subject_type")
+        subject_id = record.get("subject_id")
+        expected = GATE_WAIVER_SUBJECT.get(gate)
+        if expected is None:
+            if errors is not None:
+                errors.append(
+                    f"errata:{errata_id}: check.params.gate_waiver={gate!r} names no gate in "
+                    f"this validator (known: {', '.join(sorted(GATE_WAIVER_SUBJECT))}); "
+                    "a waiver that names nothing waives nothing"
+                )
+            continue
+        if subject_type != expected or not isinstance(subject_id, str) or not subject_id:
+            if errors is not None:
+                errors.append(
+                    f"errata:{errata_id}: gate_waiver={gate!r} must name subject_type="
+                    f"{expected!r} and a subject_id; got subject_type={subject_type!r}, "
+                    f"subject_id={subject_id!r}"
+                )
+            continue
+        key = (gate, subject_id)
+        if key in waivers:
+            if errors is not None:
+                errors.append(
+                    f"errata:{errata_id}: duplicate gate_waiver for {gate}:{subject_id} "
+                    f"(already waived by {waivers[key]})"
+                )
+            continue
+        waivers[key] = errata_id
+    return waivers
+
 _ID_STAMP = re.compile(r"^[A-Z]+(?:-[A-Z]+)*-(\d{8})-")
 
 #: Three-Gates forward-dated write rules (2026-11-18, readings/2026-11-18-three-gates-between-trace-and-self.md §4):
@@ -315,6 +368,7 @@ def check_registers(
     errors: list[str],
     advisories: list[str] | None = None,
     *,
+    waivers: dict[tuple[str, str], str] | None = None,
     today: datetime.date | None = None,
 ) -> None:
     """New questions and hypotheses must declare which register they are written in."""
@@ -327,12 +381,14 @@ def check_registers(
             register = record.get("register")
             if register in REGISTER_VALUES:
                 continue
-            defect = KNOWN_REGISTER_DEFECTS.get(record_id)
-            if defect:
+            waiver = (waivers or {}).get(("register", record_id))
+            if waiver:
                 if advisories is not None:
                     advisories.append(
-                        f"INFO: register defect carried, not repaired (advisory): {collection}:{record_id} "
-                        f"— {defect}. The gate stays on for every other row; this line is printed every run"
+                        f"INFO: register defect waived by {waiver} (advisory): {collection}:{record_id} "
+                        "carries no register; questions cannot be superseded, so the debt is recorded "
+                        "as an errata row instead of a rewrite. Set that erratum's status away from "
+                        "`open` (or annotate it) and this line disappears; the gate itself is unchanged"
                     )
                 continue
             shown = "missing" if register is None else repr(register)
@@ -808,6 +864,7 @@ def check_role_receipts(
     errors: list[str],
     advisories: list[str] | None = None,
     *,
+    waivers: dict[tuple[str, str], str] | None = None,
     cutoff: str = ROLE_RECEIPT_REQUIRED_FROM,
     today: datetime.date | None = None,
 ) -> None:
@@ -832,13 +889,14 @@ def check_role_receipts(
             if not str(record.get(field) or "").strip()
         ]
         if missing:
-            defect = KNOWN_RECEIPT_DEFECTS.get(session_id)
-            if defect:
+            waiver = (waivers or {}).get(("receipt", session_id))
+            if waiver:
                 if advisories is not None:
                     advisories.append(
-                        f"INFO: receipt defect carried, not repaired (advisory): sessions:{session_id} "
-                        f"is missing {', '.join(missing)} — {defect}. The gate stays on for every other row; "
-                        "this line is printed every run so the debt cannot be forgotten"
+                        f"INFO: receipt defect waived by {waiver} (advisory): sessions:{session_id} "
+                        f"is missing {', '.join(missing)}; sessions rows cannot be superseded and rule 10 "
+                        "forbids back-filling a receipt nobody issued, so the debt lives in the errata "
+                        "ledger. A waiver that is not `open` brings this gate back on"
                     )
                 continue
             errors.append(
@@ -1496,14 +1554,15 @@ def main() -> int:
 
     check_note_brakes(notes, errors)
     check_claim_wiring(notes, errors)
-    check_registers(collections, errors, gate_advisories)
-
     hypotheses = collections.get("hypotheses", {})
     evaluations = collections.get("evaluations", {})
     errata_base = ROOT / "state" / "errata.jsonl"
     errata_records: dict[str, dict[str, Any]] = {}
     if errata_base.exists() or ledger_io.shard_dir(errata_base).is_dir():
         errata_records = ledger_io.load_jsonl_union(errata_base, "errata_id", errors, root=ROOT)
+    gate_waivers_in_force = gate_waivers(errata_records, errors)
+
+    check_registers(collections, errors, gate_advisories, waivers=gate_waivers_in_force)
 
     check_refs("hypotheses", hypotheses, "question_ids", "question", questions, errors)
     check_refs("hypotheses", hypotheses, "parent_hypothesis_ids", "hypothesis", hypotheses, errors)
@@ -1682,7 +1741,7 @@ def main() -> int:
                 )
 
     check_read_log_addressing(read_logs, errors)
-    check_role_receipts(sessions, errors, gate_advisories)
+    check_role_receipts(sessions, errors, gate_advisories, waivers=gate_waivers_in_force)
     check_psc_verification_gate(evaluations, materials, errors)
     check_material_duplicate_identifiers(materials, errors)
     check_evaluation_descendant_collision(evaluations, hypotheses, errors)

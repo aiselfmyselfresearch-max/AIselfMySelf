@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import datetime
 import sys
+import os
 import unittest
 from pathlib import Path
 
@@ -222,33 +223,183 @@ class UnspecifiedDepthTests(unittest.TestCase):
         self.assertEqual(errors, [])
 
 
-class RegisterDefectTests(unittest.TestCase):
-    def test_known_register_defect_is_advisory(self):
-        collections = {"questions": {"Q-20261121-198fc8": {"question": "x"}}, "hypotheses": {}}
+class GateWaiverTests(unittest.TestCase):
+    """A waiver is data (an errata row), never a name in the validator."""
+
+    @staticmethod
+    def waiver(subject_type="question", subject_id="Q-20261121-198fc8", gate="register", status="open"):
+        return {
+            "errata_id": "ERR-20261121-aaaaaa",
+            "subject_type": subject_type,
+            "subject_id": subject_id,
+            "check": {"kind": "manual", "params": {"gate_waiver": gate}},
+            "verdict": "contradicted",
+            "status": status,
+        }
+
+    def test_open_errata_waives_the_register_gate(self):
         errors: list[str] = []
         advisories: list[str] = []
-        validate_seed.check_registers(collections, errors, advisories, today=datetime.date(2026, 11, 22))
+        waivers = validate_seed.gate_waivers({"ERR-20261121-aaaaaa": self.waiver()}, errors)
+        self.assertEqual(errors, [])
+        collections = {"questions": {"Q-20261121-198fc8": {"question": "x"}}, "hypotheses": {}}
+        validate_seed.check_registers(
+            collections, errors, advisories, waivers=waivers, today=datetime.date(2026, 11, 22)
+        )
         self.assertEqual(errors, [])
         self.assertEqual(len(advisories), 1)
+        self.assertIn("ERR-20261121-aaaaaa", advisories[0])
 
-    def test_unknown_register_defect_still_errors(self):
-        collections = {"questions": {"Q-20261121-abcdef": {"question": "x"}}, "hypotheses": {}}
+    def test_no_errata_row_means_no_waiver(self):
         errors: list[str] = []
         advisories: list[str] = []
-        validate_seed.check_registers(collections, errors, advisories, today=datetime.date(2026, 11, 22))
+        waivers = validate_seed.gate_waivers({}, errors)
+        collections = {"questions": {"Q-20261121-198fc8": {"question": "x"}}, "hypotheses": {}}
+        validate_seed.check_registers(
+            collections, errors, advisories, waivers=waivers, today=datetime.date(2026, 11, 22)
+        )
         self.assertEqual(advisories, [])
         self.assertEqual(len(errors), 1)
+
+    def test_a_waiver_that_is_not_open_expires_itself(self):
+        errors: list[str] = []
+        waivers = validate_seed.gate_waivers({"ERR-20261121-aaaaaa": self.waiver(status="annotated")}, errors)
+        self.assertEqual(waivers, {})
+        collections = {"questions": {"Q-20261121-198fc8": {"question": "x"}}, "hypotheses": {}}
+        advisories: list[str] = []
+        validate_seed.check_registers(
+            collections, errors, advisories, waivers=waivers, today=datetime.date(2026, 11, 22)
+        )
+        self.assertEqual(advisories, [])
+        self.assertEqual(len(errors), 1)
+
+    def test_waiver_for_another_question_does_not_leak(self):
+        errors: list[str] = []
+        waivers = validate_seed.gate_waivers(
+            {"ERR-20261121-aaaaaa": self.waiver(subject_id="Q-20261121-other1")}, errors
+        )
+        collections = {"questions": {"Q-20261121-198fc8": {"question": "x"}}, "hypotheses": {}}
+        advisories: list[str] = []
+        validate_seed.check_registers(
+            collections, errors, advisories, waivers=waivers, today=datetime.date(2026, 11, 22)
+        )
+        self.assertEqual(advisories, [])
+        self.assertEqual(len(errors), 1)
+
+    def test_mistyped_gate_name_is_an_error_not_a_silent_no_op(self):
+        errors: list[str] = []
+        waivers = validate_seed.gate_waivers({"ERR-20261121-aaaaaa": self.waiver(gate="regsiter")}, errors)
+        self.assertEqual(waivers, {})
+        self.assertEqual(len(errors), 1)
+        self.assertIn("names no gate", errors[0])
+
+    def test_waiver_with_the_wrong_subject_type_is_an_error(self):
+        errors: list[str] = []
+        waivers = validate_seed.gate_waivers(
+            {"ERR-20261121-aaaaaa": self.waiver(subject_type="session")}, errors
+        )
+        self.assertEqual(waivers, {})
+        self.assertEqual(len(errors), 1)
+
+    def test_two_waivers_for_one_subject_are_refused(self):
+        errors: list[str] = []
+        first = self.waiver()
+        second = dict(first, errata_id="ERR-20261121-bbbbbb")
+        waivers = validate_seed.gate_waivers(
+            {"ERR-20261121-aaaaaa": first, "ERR-20261121-bbbbbb": second}, errors
+        )
+        self.assertEqual(len(waivers), 1)
+        self.assertEqual(len(errors), 1)
+        self.assertIn("duplicate", errors[0])
+
+    def test_the_validator_holds_no_defect_names(self):
+        # The whole point of the move: a name in the source would be invisible to
+        # every reader of state/*.d and could not expire.
+        self.assertFalse(hasattr(validate_seed, "KNOWN_REGISTER_DEFECTS"))
+        self.assertFalse(hasattr(validate_seed, "KNOWN_RECEIPT_DEFECTS"))
+
+
+class MainGuardTests(unittest.TestCase):
+    def test_fix_command_names_the_validate_context(self):
+        guard = __import__("main_guard")
+        command = guard.FIX_COMMAND.format(slug="o/r")
+        self.assertIn("o/r/branches/main/protection", command)
+        self.assertIn('"validate"', command)
+
+    def test_repo_slug_prefers_the_argument_then_the_environment(self):
+        guard = __import__("main_guard")
+        self.assertEqual(guard.repo_slug("a/b"), "a/b")
+        old = os.environ.get("GITHUB_REPOSITORY")
+        os.environ["GITHUB_REPOSITORY"] = "env/repo"
+        try:
+            self.assertEqual(guard.repo_slug(), "env/repo")
+        finally:
+            if old is None:
+                os.environ.pop("GITHUB_REPOSITORY", None)
+            else:
+                os.environ["GITHUB_REPOSITORY"] = old
+
+    def test_unknown_branch_state_is_not_reported_as_healthy(self):
+        guard = __import__("main_guard")
+        state = {"known": False, "protected": None, "detail": "no gh"}
+        self.assertFalse(state["known"])
+        self.assertIsNone(state["protected"])
+        self.assertTrue(hasattr(guard, "fetch_branch_state"))
+
+
+class ReadingQueueTests(unittest.TestCase):
+    """The queue orders work; it must not claim to have done any."""
+
+    def test_fetch_hint_separates_open_hosts_from_dois(self):
+        queue = __import__("reading_queue")
+        self.assertEqual(queue.fetch_hint("https://arxiv.org/abs/2301.11305"), "arxiv")
+        self.assertEqual(queue.fetch_hint("https://pmc.ncbi.nlm.nih.gov/articles/PMC3198338/"), "pmc")
+        self.assertEqual(queue.fetch_hint("https://doi.org/10.1038/x"), "doi")
+        self.assertEqual(queue.fetch_hint(""), "no-url")
+
+    def test_rows_cited_by_more_evaluations_come_first(self):
+        queue = __import__("reading_queue")
+        data = {
+            "materials": {
+                "MAT-20260101-aaaaaa": {"title": "a", "verification": {"status": "verified", "method": "書誌を照合"}},
+                "MAT-20260101-bbbbbb": {"title": "b", "verification": {"status": "verified", "method": "書誌を照合"}},
+                "MAT-20260101-cccccc": {"title": "c", "verification": {"status": "verified", "depth": "full_text"}},
+            },
+            "evaluations": {
+                "EVL-1": {"material_ids": ["MAT-20260101-bbbbbb"]},
+                "EVL-2": {"material_ids": ["MAT-20260101-bbbbbb"]},
+                "EVL-3": {"material_ids": ["MAT-20260101-aaaaaa"]},
+            },
+        }
+        rows = queue.build(data)
+        self.assertEqual([r["material_id"] for r in rows], ["MAT-20260101-bbbbbb", "MAT-20260101-aaaaaa"])
+        self.assertEqual(rows[0]["citations"], 2)
+        # a row that already records its depth is not queued
+        self.assertNotIn("MAT-20260101-cccccc", [r["material_id"] for r in rows])
 
 
 class ReceiptDefectTests(unittest.TestCase):
     """The named defect must stay visible and must not weaken the gate."""
 
-    def test_known_defect_is_advisory_but_still_reported(self):
+    def test_carried_defect_is_advisory_only_through_an_errata_row(self):
         sessions = {"SESSION-20261120-a45e52": {"dispersal_seed": "abb76c70", "assigned_role": "proposer"}}
         errors: list[str] = []
         advisories: list[str] = []
+        waivers = validate_seed.gate_waivers(
+            {
+                "ERR-20261121-cccccc": {
+                    "errata_id": "ERR-20261121-cccccc",
+                    "subject_type": "session",
+                    "subject_id": "SESSION-20261120-a45e52",
+                    "check": {"kind": "manual", "params": {"gate_waiver": "receipt"}},
+                    "verdict": "unmeasurable",
+                    "status": "open",
+                }
+            },
+            errors,
+        )
         validate_seed.check_role_receipts(
-            sessions, errors, advisories, today=datetime.date(2026, 11, 22)
+            sessions, errors, advisories, waivers=waivers, today=datetime.date(2026, 11, 22)
         )
         self.assertEqual(errors, [])
         self.assertEqual(len(advisories), 1)

@@ -116,6 +116,10 @@
   "created_at": {
    "type": "string"
   },
+  "session_id": {
+   "type": "string",
+   "description": "The session that wrote the erratum. Optional, and added on 2026-11-21 because 11 existing rows already carried it while the schema refused it: a judgement without an author cannot be asked to justify itself, and this ledger's whole point is that judgements are attributable. `gate_waiver` errata need it most, since they suppress a gate."
+  },
   "fragment_id": {
    "type": "string",
    "minLength": 1,

@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5604 件（research_excerpt 3357 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1062 回
+- **探究セッション（Sessions）**：1063 回
 
 ### 台帳ごとの件数
 
@@ -23,10 +23,10 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5604 | `literary_text` 2179／`research_excerpt` 3357／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1062 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1063 |  |
 | 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16191 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 389 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 598 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 392 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 601 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1157 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 82 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 769 |  |
@@ -6410,7 +6410,7 @@
 | `MAT-20261121-a05d57` | research_excerpt | Georg Northoff, Xinyu Shen, Andrea Avramescu, Jie Sui『Northoff, Shen, Avramescu & Sui（202… |
 | `MAT-20261121-22ab38` | research_excerpt | Ran Barkai, Ella Assaf, Bar Efrati, Tal Simon, Liad Mudrik, Yoav Ram『Barkai ほか（2026）——Hom… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261121-75acab・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261121-a34277・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -7476,6 +7476,7 @@
 | `SESSION-20261120-72dc8a` | 2026-11-20 | `Q-002`, `Q-001`, `Q-003` | — | — |
 | `SESSION-20261121-fdf447` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261121-75acab` | 2026-11-21 | `Q-002` | — | — |
+| `SESSION-20261121-a34277` | 2026-11-21 | `Q-20261025-b4e703` | — | — |
 
 ## 6. 解釈的関係（7091 件・全表は map/40-relations-*.md）
 
@@ -7542,7 +7543,7 @@
 | `map/30-materials-literary-22.md` | 79 | 207,128 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 167,405 |
-| `map/31-materials-research-03.md` | 100 | 173,447 |
+| `map/31-materials-research-03.md` | 100 | 175,766 |
 | `map/31-materials-research-04.md` | 100 | 219,369 |
 | `map/31-materials-research-05.md` | 100 | 176,563 |
 | `map/31-materials-research-06.md` | 100 | 182,678 |
@@ -7611,7 +7612,7 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 12 | 9,302 |
+| `map/50-sessions-22.md` | 13 | 9,899 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,072 |

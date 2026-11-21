@@ -158,12 +158,15 @@ class TestSchemaReport(unittest.TestCase):
         self.assertEqual(report["violations"], [])
 
     def test_missing_required_field_and_extra_field_are_both_reported(self) -> None:
-        row = self._row(session_id="SESSION-20261108-000000")
+        # `session_id` stopped being an extra field on 2026-11-21: eleven existing rows
+        # already carried it and the schema now knows it (a judgement without an author
+        # cannot be held to account). This test needs a field the schema does not know.
+        row = self._row(wibble_field="SESSION-20261108-000000")
         del row["claim_location"]
         report = errata_audit.schema_report([row])
         joined = " ".join(report["violations"][0]["errors"])
         self.assertIn("claim_location", joined)
-        self.assertIn("session_id", joined)
+        self.assertIn("wibble_field", joined)
 
     def test_input_rows_are_not_mutated(self) -> None:
         rows = [self._row(status="corrected"), self._row(errata_id="ERR-TEST-0002")]
