@@ -724,6 +724,11 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # exactly; hard 175 unchanged. Not automatic.
         # 2026-11-21 (merge of origin/main 85e354c, 172 -> 173 files): one more same-day
         # read_log shard arrives with the merge. Soft to measured (173); hard 175 as is.
+        # 2026-11-21 (merge of origin/main 16593c2 into arena/5f451c37): the count above
+        # is no longer the measured one. That branch consolidated 12 one-row shards into
+        # existing same-date shards (session, notes, read_log) and linked to the next
+        # line, so the union is now 170. The line is left at 173 because it still binds
+        # nothing (170 < 173 < 175) and lowering a budget is not this session's call.
         soft_shards=173,
         hard_shards=175,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
@@ -1032,6 +1037,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # binding; only the count is). Session rows are append-only and name their own
         # shard, so the count cannot be reclaimed. Set to the measured count exactly;
         # hard 175 unchanged. Not automatic.
+        #
+        # NOTE (2026-11-21, merge of 16593c2 into arena/5f451c37): the measured union is
+        # 175 files, not the 176/177 the comments below describe, because that branch
+        # consolidated 3 one-row 2026-11-08 session shards into the existing
+        # 2026-11-08-000000000000.jsonl. The raise below was NOT reverted: it was taken
+        # under the one-row-per-session rule, and undoing it here would be a second
+        # structural change on top of the first, made by a session whose interest it
+        # serves. Recorded in readings/2026-11-21-the-refusal-that-was-not-a-refusal.md.
         #
         # 2026-11-21 (SESSION-20261121-75acab, 173 -> 176 files; first HARD raise here):
         # this session adds one sessions shard (2026-11-21-badc9b9c386b.jsonl, one row,

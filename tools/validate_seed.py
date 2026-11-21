@@ -116,6 +116,34 @@ REGISTER_RULE_EXEMPT_IDS = frozenset({
 CLAIM_WIRING_KINDS = ("reading_revised", "retraction")
 READ_ID_RE = re.compile(r"^READ-\d{8}-[0-9a-f]{6}$")
 
+#: Shards minted on or after this day are named with the real execution date
+#: (docs/time-axis.md rule 2); a shard named before it may carry an internal
+#: chronology label, which is exactly the case the ID stamp cannot be trusted for.
+#: From this day ``tools/new_ledger_shard.py`` also refuses forward-dated shard
+#: names, so "the shard name is not earlier than the ID stamp" is a usable
+#: label detector for everything newer, and remains the only detector for
+#: everything older.
+REAL_DATE_SHARD_FROM = "2026-11-12"
+
+#: Known-good rows whose record cannot prove its own real date, carried by name.
+#: Each one is a 2026-11-21 row whose ID stamp is the real mtime of the session
+#: that will write it, but that sits in a shard named 2026-10-24 because the
+#: only open parallel shard for ``questions`` on that day was that one.  They
+#: are reported as advisories on every run rather than silenced by weakening
+#: the rule for every future row (the same reasoning as KNOWN_RECEIPT_DEFECTS).
+#: Remove an entry only together with a measurement that the row's stamp is the
+#: label, not the date -- see readings/2026-11-21-the-refusal-that-was-not-a-refusal.md.
+KNOWN_REGISTER_DEFECTS: dict[str, str] = {
+    "Q-20261121-198fc8": (
+        "merged with PR #1002 in shard state/questions.d/2026-10-24-000000000000.jsonl; "
+        "append-only rows cannot be given a register afterwards; carried by name"
+    ),
+    "Q-20261121-7b68b2": (
+        "merged with PR #1002 in shard state/questions.d/2026-10-24-000000000000.jsonl; "
+        "append-only rows cannot be given a register afterwards; carried by name"
+    ),
+}
+
 #: Sessions minted on or after this day must carry the assignment receipt.
 #: The receipt exists since 2026-11-15 (``inspect_inquiry.py --assignment-json``)
 #: but was optional, and optional meant unrecorded: of 920 sessions only 69
@@ -264,19 +292,110 @@ def _as_day(stamp: str) -> datetime.date | None:
         return None
 
 
-def _is_new_row(record_id: Any, cutoff: str, *, today: datetime.date | None = None) -> bool:
+def _shard_day(path: Path | None) -> str | None:
+    """Return the YYYYMMDD date a shard file is named with, or None for none."""
+    if path is None:
+        return None
+    match = re.match(r"^(\d{4})-(\d{2})-(\d{2})-", Path(path).name)
+    return "".join(match.groups()) if match else None
+
+
+def _is_internal_label(record_id: Any, shard: Path | None) -> bool:
+    """True when this record's ID stamp is provably an internal chronology label.
+
+    The archive used to stamp IDs with an internal chronology that ran ahead of
+    the real execution date (2026-11-05: 224 session IDs carried labels into the
+    2027s; docs/time-axis.md §0).  Such a record was written on or before the day
+    of the shard it sits in, so a shard named *earlier* than the record's own
+    stamp is proof that the stamp is a label rather than the date the row was
+    written.  This is a proof, not a heuristic: no writer can put a row into a
+    shard that is named before the day the row is minted.
+
+    Rows in the frozen base file, or in a shard with no date in its name, carry
+    no such proof and are never exempted here.
+    """
+    stamp = id_stamp(record_id)
+    shard_stamp = _shard_day(shard)
+    if not stamp or not shard_stamp:
+        return False
+    return shard_stamp < stamp
+
+
+def build_forward_label_evidence(
+    collections: dict[str, dict[str, dict[str, Any]]],
+    *,
+    today: datetime.date | None = None,
+) -> frozenset[str]:
+    """IDs whose stamped date is provably not the day the row was written.
+
+    A session row records the question it was *offered* before it chose anything
+    (``offered_target_question_id``, docs/parallel-work.md rule 10).  If a session
+    whose own stamp is not in the future was offered a question whose stamp is,
+    then that question already existed on the earlier day: its stamp is an
+    internal chronology label, not a date.
+
+    Measured 2026-11-21: 22 such offers exist, the clearest being
+    ``SESSION-20261116-18e776`` (own notes: 実作業日 2026-11-16) which was offered
+    ``Q-20261121-198fc8``..  Under the old ``stamp <= today`` bound that question
+    was read as written today, and the two questions merged by PR #1002 turned
+    the whole gate red without any commit changing a row.
+    """
+    today_stamp = (today or datetime.date.today()).strftime("%Y%m%d")
+    labels: set[str] = set()
+    for record in collections.get("sessions", {}).values():
+        offered = record.get("offered_target_question_id")
+        if not isinstance(offered, str) or not offered:
+            continue
+        referrer = id_stamp(record.get("session_id"))
+        target = id_stamp(offered)
+        # The offerer must be a row we can date (at or before today), and the
+        # offered row must be stamped strictly later than the offer.  A
+        # same-day offer proves nothing: both stamps could be real dates.
+        if referrer and target and referrer <= today_stamp and referrer < target:
+            labels.add(offered)
+    return frozenset(labels)
+
+
+def _is_new_row(
+    record_id: Any,
+    cutoff: str,
+    *,
+    today: datetime.date | None = None,
+    shard: Path | None = None,
+    label_ids: frozenset[str] | None = None,
+) -> bool:
     """True when the row's ID carries a real date at or after ``cutoff``.
 
     Legacy rows carry internal chronology labels in their IDs (some are in 2027),
-    so a bare ``>= cutoff`` test would fail rows that were written long ago.  The
-    upper bound (today) keeps those labels out; new shards are already refused by
-    ``tools/date_axis.py --enforce-shards`` when they are forward-dated.
+    and the old implementation kept them out with an upper bound on *today*.
+    That bound is a moving target: as the wall clock advances, label-stamped rows
+    that were written long ago cross it one by one and are re-read as new rows
+    that broke a rule they predate.  Measured on 2026-11-21: 57 such rows sat in
+    the tree, 2 already failed the register gate and the set was scheduled to
+    reach 65 by 2027-03-01 with no commit changing anything.
+
+    The bound is therefore replaced by evidence in the record itself:
+    ``_is_internal_label`` (the row cannot be newer than the shard it sits in)
+    and ``_future_labels_are_unreachable`` (no real-dated record can have been
+    offered or linked from a stamp the writer could not yet mint).  A row of
+    unknown provenance is judged by its stamp, as before, so the gate keeps
+    every one of its current verdicts except where a forward stamp is provably
+    a label.
     """
     stamp = id_stamp(record_id)
     if not stamp or stamp < cutoff:
         return False
+    if _is_internal_label(record_id, shard):
+        return False
     today_stamp = (today or datetime.date.today()).strftime("%Y%m%d")
-    return stamp <= today_stamp
+    if stamp > today_stamp:
+        # Unchanged from every previous version: a stamp later than today is
+        # label territory, and no such row is judged new.
+        return False
+    # Stamp is at or before today.  Every earlier version called this a new row.
+    # It stops being one only when a record in the ledger proves the stamp is a
+    # label -- see build_forward_label_evidence.
+    return not (label_ids and record_id in label_ids)
 
 
 def check_claim_wiring(
@@ -316,13 +435,28 @@ def check_registers(
     advisories: list[str] | None = None,
     *,
     today: datetime.date | None = None,
+    shard_of: dict[str, Path] | None = None,
+    label_ids: frozenset[str] | None = None,
 ) -> None:
-    """New questions and hypotheses must declare which register they are written in."""
+    """New questions and hypotheses must declare which register they are written in.
+
+    ``shard_of`` maps a record ID to the file it was read from.  It is optional so
+    that a caller holding only parsed rows (a test fixture) still gets the rule;
+    without it, a row whose ID stamp is a legacy internal label is reported like
+    any other, because there is no evidence in the record that it is old.
+    """
+    shard_of = shard_of or {}
     for collection in ("questions", "hypotheses"):
         for record_id, record in sorted(collections.get(collection, {}).items()):
             if record_id in REGISTER_RULE_EXEMPT_IDS:
                 continue
-            if not _is_new_row(record_id, REGISTER_RULE_FROM, today=today):
+            if not _is_new_row(
+                record_id,
+                REGISTER_RULE_FROM,
+                today=today,
+                shard=shard_of.get(record_id),
+                label_ids=label_ids,
+            ):
                 continue
             register = record.get("register")
             if register in REGISTER_VALUES:
@@ -1371,6 +1505,25 @@ def main() -> int:
     for name in COLLECTIONS:
         collections.setdefault(name, {})
     errors.extend(load_errors)
+    # Where each row was read from.  A row's shard is evidence about the day it
+    # was written (see _is_internal_label); parsed rows alone cannot show it.
+    record_shards: dict[str, Path] = {}
+    for name, (filename, id_key, _schema) in COLLECTIONS.items():
+        base_path = ROOT / "state" / filename
+        for path in ledger_io.collection_files(base_path):
+            try:
+                text = path.read_text(encoding="utf-8")
+            except OSError:
+                continue
+            for line in text.splitlines():
+                if not line.strip():
+                    continue
+                try:
+                    record = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                if isinstance(record, dict) and isinstance(record.get(id_key), str):
+                    record_shards.setdefault(record[id_key], path)
 
     for name, (_filename, _id_key, schema_filename) in COLLECTIONS.items():
         records = collections[name]
@@ -1496,7 +1649,20 @@ def main() -> int:
 
     check_note_brakes(notes, errors)
     check_claim_wiring(notes, errors)
-    check_registers(collections, errors, gate_advisories)
+    # 2026-11-21 merge: two repairs landed the same day from two branches.
+    # origin/main carries KNOWN_REGISTER_DEFECTS by name (PR #1004); this branch
+    # moves the new-row evidence from the clock to the ledger.  Both are kept:
+    # the named-defect path reports through `advisories`, so it is handed this
+    # branch's list rather than `gate_advisories`.
+    forward_labels = build_forward_label_evidence(collections)
+    register_advisories: list[str] = []
+    check_registers(
+        collections,
+        errors,
+        shard_of=record_shards,
+        advisories=register_advisories,
+        label_ids=forward_labels,
+    )
 
     hypotheses = collections.get("hypotheses", {})
     evaluations = collections.get("evaluations", {})
@@ -1810,6 +1976,8 @@ def main() -> int:
             print(psc_advisory)
         if psc_new_advisory:
             print(psc_new_advisory)
+        for line in register_advisories:
+            print(line)
         return 1
 
     counts = ", ".join(f"{name}={len(records)}" for name, records in collections.items())
@@ -1821,6 +1989,8 @@ def main() -> int:
     if psc_new_advisory:
         print(psc_new_advisory)
     for line in gate_advisories:
+        print(line)
+    for line in register_advisories:
         print(line)
     # 2026-11-20 (③④): report the backlog the new gates cannot fix retroactively.
     print(
