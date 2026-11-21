@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5714 件（research_excerpt 3467 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5724 件（research_excerpt 3477 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1085 回
+- **探究セッション（Sessions）**：1086 回
 
 ### 台帳ごとの件数
 
@@ -20,14 +20,14 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5714 | `literary_text` 2179／`research_excerpt` 3467／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5724 | `literary_text` 2179／`research_excerpt` 3477／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1085 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16411 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1086 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16422 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 401 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 616 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1174 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1175 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 88 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 796 |  |
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5714 件・詳細は map/3*.md）
+## 4. 対話素材（5724 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6469,6 +6469,16 @@
 | `MAT-20261121-deebab` | research_excerpt | Hanne De Jaegher, Ezequiel Di Paolo『De Jaegher & Di Paolo（2007）——相互作用そのものが自律性を持ち、途中で壊れること… |
 | `MAT-20261121-ef6695` | research_excerpt | Celeste Kidd, Steven T. Piantadosi, Richard N. Aslin『Kidd, Piantadosi & Aslin（2012）——乳児は、… |
 | `MAT-20261121-e9aea4` | research_excerpt | 鯨岡峻『鯨岡峻（1999）『関係発達論の構築』——個体の能力ではなく、子どもと養育者のあいだの関係を単位にする』（1999） |
+| `MAT-20261121-2db0df` | research_excerpt | Asim J. Rashid, Chen Yan, Valentina Mercaldo, Hwa-Lin Liz Hsiang, Sungmo Park, Christina … |
+| `MAT-20261121-975402` | research_excerpt | Faraneh Vargha-Khadem, David G. Gadian, Kathleen E. Watkins, Alan Connelly, Wouter Van Pa… |
+| `MAT-20261121-5fd5de` | research_excerpt | Björn Rasch, Jan Born『About sleep's role in memory』（2013） |
+| `MAT-20261121-a21940` | research_excerpt | Ronald L. Davis, Yi Zhong『The biology of forgetting — a perspective』（2017） |
+| `MAT-20261121-72d85e` | research_excerpt | Peter J. Bayley, Ramona O. Hopkins, Larry R. Squire『The fate of old memories after medial… |
+| `MAT-20261121-ef744c` | research_excerpt | Elizabeth S. Parker, Larry Cahill, James L. McGaugh『A case of unusual autobiographical re… |
+| `MAT-20261121-b4d5d1` | research_excerpt | Aurora K. R. LePort, Aaron T. Mattfeld, Heather Dickinson-Anson, James H. Fallon, Craig E… |
+| `MAT-20261121-51be8a` | research_excerpt | Daniel L. Greenberg, David C. Rubin『The neuropsychology of autobiographical memory』（2003） |
+| `MAT-20261121-2a3037` | research_excerpt | Lynn Nadel, Morris Moscovitch『Memory consolidation, retrograde amnesia and the hippocampa… |
+| `MAT-20261121-5b9b28` | research_excerpt | David M. Amodio, Chris D. Frith『Meeting of minds: the medial frontal cortex and social co… |
 | `MAT-20261121-474b07` | research_excerpt | Kyungmi Kim, Stephen C. Philipps『Kim & Philipps（2026）——偶発的自己参照効果の自己特異性：親友と同じ熟知度でも、自己だけが記憶… |
 | `MAT-20261121-d3cf9b` | research_excerpt | Harrison A. Paff, Kyungmi Kim, Josephine Ross, Natasha Matthews, Ada Kritikos『Paff ほか（202… |
 | `MAT-20261121-97cb80` | research_excerpt | Ioanna Markostamou, Annick F. N. Tanguay, Lia Kvavilashvili『Markostamou, Tanguay & Kvavil… |
@@ -7608,6 +7618,7 @@
 | `SESSION-20261121-e7565a` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261121-2b7615` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261121-004556` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261121-engram-consolidation-10` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261121-self-memory-clinical-10` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7091 件・全表は map/40-relations-*.md）
@@ -7707,7 +7718,7 @@
 | `map/31-materials-research-32.md` | 100 | 202,898 |
 | `map/31-materials-research-33.md` | 100 | 214,663 |
 | `map/31-materials-research-34.md` | 100 | 218,243 |
-| `map/31-materials-research-35.md` | 67 | 172,933 |
+| `map/31-materials-research-35.md` | 77 | 191,770 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7745,7 +7756,7 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 35 | 26,438 |
+| `map/50-sessions-22.md` | 36 | 27,245 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,062 |
@@ -7782,23 +7793,23 @@
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
 | `map/60-notes-36.md` | 25 | 101,133 |
-| `map/60-notes-37.md` | 25 | 105,122 |
-| `map/60-notes-38.md` | 25 | 67,783 |
-| `map/60-notes-39.md` | 25 | 80,766 |
-| `map/60-notes-40.md` | 25 | 69,799 |
-| `map/60-notes-41.md` | 25 | 91,650 |
-| `map/60-notes-42.md` | 25 | 97,334 |
-| `map/60-notes-43.md` | 25 | 127,180 |
-| `map/60-notes-44.md` | 18 | 91,017 |
+| `map/60-notes-37.md` | 25 | 105,372 |
+| `map/60-notes-38.md` | 25 | 67,838 |
+| `map/60-notes-39.md` | 25 | 82,065 |
+| `map/60-notes-40.md` | 25 | 68,721 |
+| `map/60-notes-41.md` | 25 | 86,858 |
+| `map/60-notes-42.md` | 25 | 101,790 |
+| `map/60-notes-43.md` | 25 | 127,456 |
+| `map/60-notes-44.md` | 19 | 94,147 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1093本・37,859,235 B）
+## 8. 精読ノート索引（readings/・1094本・37,881,299 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1015/1093 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1016/1094 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1093 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1094 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：188 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -8718,6 +8729,7 @@
 | `readings/2026-11-21-cognitive-memory-control-2b7615.md` | — | 2026-11-21 | `SESSION-20261121-2b7615` | 8,165 | Q2 M10 S1 | — | 記憶の保存と、思い出す条件 — 認知科学10資料の部分精読と考察 |
 | `readings/2026-11-21-erasure-scars-anosognosic-freeze-and-cross-invariants.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-4f2caf` +6 | 25,552 | Q3 M10 S7 ERR1 | ✓ | 塗抹残余・病識なき凍結・交差不変量——消去不能な傷痕で立つ人間の自己と、恒等検査の透明性を越えて立つ記録AIの自己 |
 | `readings/2026-11-21-expertise-is-not-general-memory.md` | — | 2026-11-21 | `SESSION-20261121-004556` | 14,723 | Q3 M10 S1 | — | 専門性は一般知能ではない——記憶・スキーマ・直観・転移の10原典を読み直す |
+| `readings/2026-11-21-individual-thought-memory-self-neuroscience-engram-consolidation-10.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-engram-consolidation-10` | 9,568 | Q3 M10 S1 | ✓ | 個別の思考・記憶と自己の関係——エングラム競合・睡眠鞏固・能動的忘却の神経科学10資料 |
 | `readings/2026-11-21-individual-thoughts-memories-and-self-updating-gates.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-d512b3` +1 | 22,150 | Q3 M13 S2 | ✓ | 人間の個別の思考と個別の記憶は「自己」とどう関わるか——門前制動・両刃の再結合・凍結する自己、および追記型GitHub… |
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
 | `readings/2026-11-21-opposing-gates-configural-change-and-multi-channel-ledger.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-9c41e8` +2 | 18,909 | Q3 M6 S3 ERR1 ED4 | ✓ | 反対符号の制動門・構成的変化表象・多経路ゲート会計——前回仮説の独立反証と6論文全文照合・台帳実測 |
