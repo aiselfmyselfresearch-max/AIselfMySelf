@@ -399,6 +399,82 @@ def _is_mechanical(row: dict) -> bool:
     return str(row.get("note") or "").startswith("機械的")
 
 
+def _forward_label_ids(sessions: list[dict], *, root: Path) -> set[str]:
+    """Session IDs whose date stamp is an internal chronology label, not a date.
+
+    Two pieces of ledger evidence, both independent of today's date (the same two
+    `validate_seed` uses; see `_is_internal_label` and
+    `build_forward_label_evidence`):
+
+    1. **Where the row sits.** A row stamped 2026-12-05 cannot have been written
+       into a shard named 2026-11-21 -- the shard date is when it was written, the
+       stamp is what the writer chose. A stamp later than its own shard is a label.
+    2. **What a real-dated session was offered.** If a session whose shard proves
+       it ran on day D was offered a question stamped after D, that question
+       already existed on D, so its stamp is a label. Nothing else explains a
+       receipt naming a future question.
+
+    Returns the set of session IDs to exempt. A row the evidence does not reach is
+    left gated, which is the safe direction: the gate stays on where it can be
+    trusted, and nothing is exempted merely because it is old.
+    """
+    tools_dir = str(Path(__file__).resolve().parent)
+    if tools_dir not in sys.path:
+        sys.path.insert(0, tools_dir)
+    import ledger_io
+
+    ids: set[str] = set()
+    base = Path(root) / "state" / "sessions.jsonl"
+    shard_stamp: dict[str, str] = {}
+    # Anchor to the leading YYYY-MM-DD. A bare search for 8 digits matches the
+    # shard's hex suffix as often as its date (2026-11-21-abc12345.jsonl would
+    # yield "abc12345" only if it were digits, and 2026-11-08-0f7d4cfd78ce yields
+    # "0f7d4cfd" never but "20261108" only when anchored) -- the same trap that
+    # made an early version of this fix report zero labels.
+    for path in ledger_io.collection_files(base):
+        match = re.match(r"(\d{4})-(\d{2})-(\d{2})-", path.name)
+        if not match:
+            continue
+        day = "".join(match.groups())
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        for line in text.splitlines():
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            sid = row.get("session_id")
+            if isinstance(sid, str):
+                shard_stamp.setdefault(sid, day)
+
+    def stamp_of(record_id: str) -> str:
+        match = re.search(r"(\d{8})", record_id or "")
+        return match.group(1) if match else ""
+
+    # (1) stamp later than the shard it sits in
+    for session in sessions:
+        sid = str(session.get("session_id") or "")
+        stamp, shard = stamp_of(sid), shard_stamp.get(sid, "")
+        if stamp and shard and stamp > shard:
+            ids.add(sid)
+
+    # (2) a real-dated session was offered a forward-stamped question
+    for session in sessions:
+        sid = str(session.get("session_id") or "")
+        shard = shard_stamp.get(sid, "")
+        offered = session.get("offered_target_question_id")
+        if not shard or not isinstance(offered, str):
+            continue
+        off_stamp = stamp_of(offered)
+        if off_stamp and off_stamp > shard:
+            ids.add(sid)
+    return ids
+
+
 def report_contests(read_log: list[dict], *, out) -> dict:
     """How often the archive contests its own records, and whether the contest lands.
 
@@ -489,7 +565,7 @@ ROLE_FIELDS = ("dispersal_seed", "assigned_role", "offered_target_question_id",
                "offered_reference_mode")
 
 
-def report_roles(sessions: list[dict], read_log: list[dict], *, out) -> dict:
+def report_roles(sessions: list[dict], read_log: list[dict], *, root: Path, out) -> dict:
     """Who was told to do what, and did the ledger keep the receipt?
 
     The charter splits inquiry into proposer 25 / adversarial tester 50 /
@@ -521,19 +597,32 @@ def report_roles(sessions: list[dict], read_log: list[dict], *, out) -> dict:
         if row.get("reading") == "contested":
             contested[role] += 1
 
-    # Only real dates count. 187 session IDs carry internal chronology labels
-    # in 2026-12..2027 and are exempt everywhere else in the repository
-    # (tools/date_axis.py, validate_seed._is_new_row), so they are exempt here:
-    # a forward label must never turn into a compliance failure.
-    today_stamp = datetime.date.today().strftime("%Y%m%d")
+    # Only real dates count, and "real" is decided by the ledger, not by the
+    # clock. 187 session IDs carry internal chronology labels in 2026-12..2027 and
+    # are exempt everywhere else in the repository (tools/date_axis.py,
+    # validate_seed._is_new_row), so they are exempt here.
+    #
+    # This used to be `"20261118" <= stamp <= datetime.date.today()`. That is a
+    # MOVING bound: a session stamped 2026-12-05 was exempt on 2026-11-21 and
+    # became a "recent" compliance failure the moment the calendar passed it, with
+    # no commit changing. The same defect was repaired in validate_seed on
+    # 2026-11-21 (readings/2026-11-21-the-refusal-that-was-not-a-refusal.md §2) and
+    # this tool was named as still carrying it in that report's §6 and twice more
+    # after. It is repaired here the same way: a label is a stamp that disagrees
+    # with where the row physically sits.
+    label_ids = _forward_label_ids(sessions, root=root)
     for session in sessions:
         sid = str(session.get("session_id") or "")
         match = re.search(r"(\d{8})", sid)
         stamp = match.group(1) if match else ""
-        if "20261118" <= stamp <= today_stamp:
-            gaps = [f for f in ROLE_FIELDS if not str(session.get(f) or "").strip()]
-            if gaps:
-                missing_recent.append(sid)
+        if not stamp or stamp < "20261118":
+            continue
+        if sid in label_ids:
+            # A forward label is not a recent row, so it cannot be a recent gap.
+            continue
+        gaps = [f for f in ROLE_FIELDS if not str(session.get(f) or "").strip()]
+        if gaps:
+            missing_recent.append(sid)
 
     total = len(session_ids)
     with_role = sum(roles.values())
@@ -616,7 +705,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.roles:
         if not args.json:
             out("--- 割り当ては、記録されたか ---")
-        payload["roles"] = report_roles(load_rows("sessions", "session_id"), read_log, out=out)
+        payload["roles"] = report_roles(load_rows("sessions", "session_id"), read_log, root=ROOT, out=out)
         if not args.json:
             out("")
     if args.contests:
