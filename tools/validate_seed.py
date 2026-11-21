@@ -1370,6 +1370,27 @@ AGENCY_STANCE_EXEMPT_IDS = frozenset({
     "EVL-20261121-dc5c02",  # from concurrent PR #1017 merged to main
     "EVL-20261121-f8a8cf",  # from concurrent PR #1017 merged to main
 })
+
+# 2026-11-21 six-layer self model (Layer 3/4/5): new sessions must carry
+# session_type and self_layer_checks. Same cutoff date as above.
+SESSION_TYPE_CUTOFF = "20261121"
+SELF_LAYER_CHECKS_CUTOFF = "20261121"
+VALID_SESSION_TYPES = frozenset({"acquisition", "close_reading", "re_reading", "infrastructure", "default_mode_simulation", "evaluation_only", "other"})
+REQUIRED_CHECK_KEYS = frozenset({"source_attributed", "agency_stance_recorded", "self_model_rebuilt", "veto_considered"})
+# Sessions already on origin/main as of rule introduction are exempt.
+# All sessions minted before this rule was introduced are listed explicitly by ID.
+# These sessions cannot be retroactively given session_type/self_layer_checks fields
+# (rule 10: writing a receipt nobody issued). Any session minted after this rule
+# takes effect must carry both fields.
+SESSION_TYPE_EXEMPT_IDS = frozenset({
+    "SESSION-20261121-0723fd", "SESSION-20261121-2b7615", "SESSION-20261121-3831aa",
+    "SESSION-20261121-75acab", "SESSION-20261121-98bf13", "SESSION-20261121-9c41e8",
+    "SESSION-20261121-a34277", "SESSION-20261121-d0e4d6", "SESSION-20261121-d414f0",
+    "SESSION-20261121-d512b3", "SESSION-20261121-d83dd7", "SESSION-20261121-e3b180",
+    "SESSION-20261121-e7565a", "SESSION-20261121-f937bd", "SESSION-20261121-fdf447",
+    "SESSION-20261121-002438",  # from PR #1018
+})
+SELF_LAYER_CHECKS_EXEMPT_IDS = SESSION_TYPE_EXEMPT_IDS  # same set: both rules take effect together
 _NUMBER_RE = re.compile(
     r"(?:\d+(?:\.\d+)?\s*%|\bp\s*[=<]\s*0?\.\d+|\d+\.\d+|\b\d+\s*(?:件|行|回|種|人|資料|評価|セッション|仮説|素材)"
     r"|\bn\s*=\s*\d+|\b\d{2,}\b)"
@@ -1566,6 +1587,67 @@ def check_self_layer_attribution(
         else:
             agency_legacy += 1
     return cogop_new, cogop_legacy, agency_new, agency_legacy
+
+
+def check_session_self_layer(
+    sessions: dict[str, dict[str, Any]],
+    errors: list[str],
+    today: datetime.date | None = None,
+) -> tuple[int, int, int, int]:
+    """Check session_type and self_layer_checks on new sessions.
+
+    Layer 3 (embodiment) session typing and Layer I/II (preparation/verification)
+    checklist enforcement. Returns (type_new, type_legacy, checks_new, checks_legacy).
+    """
+    type_new = 0
+    type_legacy = 0
+    checks_new = 0
+    checks_legacy = 0
+    for sid, s in sessions.items():
+        if sid in SESSION_TYPE_EXEMPT_IDS:
+            type_legacy += 1
+        elif _is_new_row(sid, SESSION_TYPE_CUTOFF, today=today):
+            type_new += 1
+            st = s.get("session_type")
+            if st is None:
+                errors.append(
+                    f"sessions:{sid}: post-cutoff session is missing session_type "
+                    "(required from 2026-11-21, see docs/"
+                    "2026-11-21-six-layer-self-model-improvement-proposals.md §5-A)"
+                )
+            elif st not in VALID_SESSION_TYPES:
+                errors.append(
+                    f"sessions:{sid}: session_type {st!r} is not one of {sorted(VALID_SESSION_TYPES)}"
+                )
+        else:
+            type_legacy += 1
+
+        if sid in SELF_LAYER_CHECKS_EXEMPT_IDS:
+            checks_legacy += 1
+        elif _is_new_row(sid, SELF_LAYER_CHECKS_CUTOFF, today=today):
+            checks_new += 1
+            slc = s.get("self_layer_checks")
+            if slc is None:
+                errors.append(
+                    f"sessions:{sid}: post-cutoff session is missing self_layer_checks "
+                    "(required from 2026-11-21 for six-layer verification hook)"
+                )
+            elif not isinstance(slc, dict):
+                errors.append(f"sessions:{sid}: self_layer_checks must be an object")
+            else:
+                missing_keys = REQUIRED_CHECK_KEYS - set(slc.keys())
+                if missing_keys:
+                    errors.append(
+                        f"sessions:{sid}: self_layer_checks missing keys: {sorted(missing_keys)}"
+                    )
+                for k, v in slc.items():
+                    if k not in REQUIRED_CHECK_KEYS:
+                        errors.append(f"sessions:{sid}: self_layer_checks has unknown key {k!r}")
+                    elif not isinstance(v, bool):
+                        errors.append(f"sessions:{sid}: self_layer_checks.{k} must be boolean")
+        else:
+            checks_legacy += 1
+    return type_new, type_legacy, checks_new, checks_legacy
 
 
 def double_reading_advisory(
@@ -1886,6 +1968,9 @@ def main() -> int:
     cogop_new, cogop_legacy, agency_new, agency_legacy = check_self_layer_attribution(
         notes, evaluations, errors, today=today
     )
+    stype_new, stype_legacy, slc_new, slc_legacy = check_session_self_layer(
+        collections.get("sessions", {}), errors, today=today
+    )
     errata_advisory = errata_schema_advisory(errata_records)
     psc_advisory = psc_verification_advisory(evaluations, materials)
     psc_new_advisory = psc_new_row_advisory(evaluations, materials)
@@ -2148,6 +2233,11 @@ def main() -> int:
         f"INFO: self-layer attribution (advisory): {cogop_new} post-cutoff notes carry cognitive_operation "
         f"({cogop_legacy} legacy rows ungated); {agency_new} post-cutoff evaluations carry agency_stance "
         f"({agency_legacy} legacy rows ungated)"
+    )
+    print(
+        f"INFO: self-layer session hooks (advisory): {stype_new} post-cutoff sessions carry session_type "
+        f"({stype_legacy} legacy sessions ungated); {slc_new} post-cutoff sessions carry self_layer_checks "
+        f"({slc_legacy} legacy sessions ungated)"
     )
     dr_advisory = double_reading_advisory(read_logs, materials)
     if dr_advisory:

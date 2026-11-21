@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5656 件（research_excerpt 3409 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1074 回
+- **探究セッション（Sessions）**：1075 回
 
 ### 台帳ごとの件数
 
@@ -23,7 +23,7 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5656 | `literary_text` 2179／`research_excerpt` 3409／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1074 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1075 |  |
 | 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16302 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 397 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 611 |  |
@@ -7538,6 +7538,7 @@
 | `SESSION-20261121-3831aa` | 2026-11-21 | `Q-002` | — | — |
 | `SESSION-20261121-d414f0` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261121-002438` | 2026-11-21 | `Q-001`, `Q-002` | — | — |
+| `SESSION-20261121-e4d595` | 2026-11-21 | `Q-002` | — | — |
 | `SESSION-20261121-e7565a` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261121-2b7615` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
@@ -7676,7 +7677,7 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 24 | 17,526 |
+| `map/50-sessions-22.md` | 25 | 17,927 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,062 |
