@@ -2105,7 +2105,13 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # readings/2026-11-21-expertise-is-not-general-memory.md. Measured union after
         # writing = 1,084 reports / 35.85 MiB, below the 37 MiB soft byte line; the
         # file-count review point is raised to the measured count, hard 1,200 unchanged.
-        soft_files=1084,
+        # 2026-11-21 (PR #1019 merge of origin/main 76080d98): the union of this PR's
+        # report (readings/2026-11-21-self-as-maintenance-ten-cognitive-science-sources.md)
+        # and origin/main 76080d98's report (SESSION-20261121-004556) is 1,085 files;
+        # readings/ is append-only, so shard merging cannot reduce the file count, and
+        # concurrent same-day reports each moved the count by one. Soft raised to the
+        # measured count (1,085); hard_files (1,200) and soft_bytes / hard_bytes unchanged.
+        soft_files=1085,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

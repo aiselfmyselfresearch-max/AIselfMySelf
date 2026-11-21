@@ -1354,6 +1354,7 @@ COGNITIVE_OP_EXEMPT_IDS = frozenset({
     "NOTE-20261121-1a6958",
     "NOTE-20261121-fc74cd",
     "NOTE-20261121-83c7c4",  # from concurrent PR #1017 merged to main
+    "NOTE-20261121-bce449",  # from concurrent PR #1019 (SESSION-20261121-faaab0, authored pre-gate)
     "NOTE-20261121-b3259d",  # from concurrent PR #1020, minted before the six-layer rule merged
 })
 AGENCY_STANCE_EXEMPT_IDS = frozenset({
@@ -1370,6 +1371,8 @@ AGENCY_STANCE_EXEMPT_IDS = frozenset({
     "EVL-20261121-85f1c3",
     "EVL-20261121-dc5c02",  # from concurrent PR #1017 merged to main
     "EVL-20261121-f8a8cf",  # from concurrent PR #1017 merged to main
+    "EVL-20261121-8aac6f",  # from concurrent PR #1019 (SESSION-20261121-faaab0, authored pre-gate)
+    "EVL-20261121-f07af6",  # from concurrent PR #1019 (SESSION-20261121-faaab0, authored pre-gate)
     "EVL-20261121-8a0d09",  # from concurrent PR #1020, minted before the six-layer rule merged
     "EVL-20261121-c96454",  # from concurrent PR #1020, minted before the six-layer rule merged
     "EVL-20261121-946d73",  # from concurrent PR #1020, minted before the six-layer rule merged
@@ -1393,6 +1396,7 @@ SESSION_TYPE_EXEMPT_IDS = frozenset({
     "SESSION-20261121-d512b3", "SESSION-20261121-d83dd7", "SESSION-20261121-e3b180",
     "SESSION-20261121-e7565a", "SESSION-20261121-f937bd", "SESSION-20261121-fdf447",
     "SESSION-20261121-002438",  # from PR #1018
+    "SESSION-20261121-faaab0",  # from concurrent PR #1019 (SESSION-20261121-faaab0, authored pre-gate)
     "SESSION-20261121-004556",  # from concurrent PR #1020, minted before the six-layer rule merged
 })
 SELF_LAYER_CHECKS_EXEMPT_IDS = SESSION_TYPE_EXEMPT_IDS  # same set: both rules take effect together

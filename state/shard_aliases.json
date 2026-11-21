@@ -2,7 +2,7 @@
   "schema_version": 1,
   "normalized_on": "2026-11-12",
   "description": "Maps legacy internal-chronology forward-dated shards (> 2026-11-12) consolidated into real-execution-date shards, plus later order-preserving shard compactions in state/<collection>.d/. Every row is moved byte-for-byte within the same collection.",
-  "consolidated_shards": 217,
+  "consolidated_shards": 220,
   "created_real_date_shards": 50,
   "aliases": {
     "state/editorial_decisions.d/2026-11-18-317db4367875.jsonl": {
@@ -2587,6 +2587,39 @@
       "sha256": "32e0c8efb94698c560d1818b2f79a96131be3999bab2bd0f021833d0753b44fe",
       "consolidated_on": "2026-11-21",
       "reason": "size_budget soft_shards 178/hard 179 exceeded at 179; documented remedy is consolidation of single-row shards, not a budget raise"
+    },
+    "state/materials.d/2026-11-07-26e5263f3bca.jsonl": {
+      "new_shard": "state/materials.d/2026-11-21-000000000000.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": "2026-11-07",
+      "line_start": 11,
+      "line_end": 11,
+      "row_count": 1,
+      "sha256": "e55f08b2f9957d85223ec585fdb9a05c686e1bd8e05f0a748aa6c7d7b917a1ba",
+      "consolidated_on": "2026-11-21",
+      "reason": "size_budget soft_shards=148 exceeded at 149 (this session's 10 new material acquisitions); the 2026-11-07 single-row shard (MAT-LIT-20261107-e54f97) was folded byte-for-byte into the 2026-11-21 day shard. No row was modified. Budget values unchanged."
+    },
+    "state/evaluations.d/2026-11-21-2a992ef35719.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-21-000000000000.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": "2026-11-21",
+      "line_start": 3,
+      "line_end": 3,
+      "row_count": 1,
+      "sha256": "ee189a6bc2dff0438d15686a3e6e17e754a5c0daa47ce5c9f8977b6ccc9f066a",
+      "consolidated_on": "2026-11-21",
+      "reason": "size_budget soft_shards=105 exceeded at 106 (this session added two evaluation rows); the 2026-11-21 single-row shard (EVL-20261121-2a793d, merged to main earlier today) was folded byte-for-byte into the 2026-11-21 day shard. No row was modified. Budget values unchanged."
+    },
+    "state/evaluations.d/2026-11-21-2b761518cafe.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-21-000000000000.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": "2026-11-21",
+      "line_start": 4,
+      "line_end": 4,
+      "row_count": 1,
+      "sha256": "58099064e701eba48eaae91237b6da6a6165ea62ba8c9a13c69dca79b618eb58",
+      "consolidated_on": "2026-11-21",
+      "reason": "size_budget soft_shards=105 exceeded at 106 (this session added two evaluation rows); the 2026-11-21 single-row shard (EVL-20261121-2b7615, merged to main earlier today) was folded byte-for-byte into the 2026-11-21 day shard. No row was modified. Budget values unchanged."
     }
   }
 }
