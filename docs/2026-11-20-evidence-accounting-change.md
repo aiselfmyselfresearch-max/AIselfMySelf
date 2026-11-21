@@ -255,3 +255,87 @@ python3 tools/downgrade_impact.py
 これはゲートを緩める措置であり、正しい解決ではない。正しい解決は **main に必須ステータスチェックを課すこと**
 （赤いままマージできないようにする）で、それはリポジトリ設定の変更なので、ここでは行っていない。
 例外が4件になったら、この方式自体を見直すべきである。
+
+---
+
+# 第4部（2026-11-21）: 例外をコードから台帳へ、そして外部アクセスの再確認
+
+## 例外の置き場所を間違えていた
+
+前日、追記では直せない3件（PR #1002 の register 無しの問い2件、PR #998 の受領証欠落 session 1件）を
+`KNOWN_REGISTER_DEFECTS` / `KNOWN_RECEIPT_DEFECTS` という **Python の辞書** に載せた。意図は正直だった
+（どのセッションも緑にできないゲートは読まれなくなる）が、置き場所が間違っていた。
+
+- `state/questions.d` を読む人は、そこに既知の欠陥行があることを知らない。
+- 例外の件数は「ソースに何行書いたか」で、他のどの道具からも見えない。
+- 例外を消す手段がコードの編集しかない。
+
+**だから移した。** waiver は errata の一行である。
+
+```json
+{"errata_id": "ERR-20261121-8c6d1f", "subject_type": "question",
+ "subject_id": "Q-20261121-198fc8",
+ "check": {"kind": "manual", "params": {"gate_waiver": "register", "expected": "...", "observed": "..."}},
+ "verdict": "contradicted", "status": "open", ...}
+```
+
+`validate_seed.gate_waivers()` がこれを読み、`status == "open"` のあいだだけゲートを通す。移動で得たもの:
+
+| 性質 | 辞書（前日） | errata（今日） |
+| :--- | :--- | :--- |
+| 台帳を読む人に見える | いいえ | **はい**（`grep` で出る） |
+| いつ消えるか | コードを編集したとき | **`status` を閉じたとき**（自動で戻る） |
+| 綴り間違い | 無言の no-op | **エラー**（未知のゲート名は通さない） |
+| 対象の取り違え | 無言の no-op | **エラー**（subject_type が違えば拒否） |
+| 二重 waiver | 検出しない | **エラー** |
+| 記録を失ったら | コードにあるので残る | **ゲートが赤くなる**（正しい） |
+
+あわせて `schema/errata.schema.json` に任意の `session_id` を足した。既存11行が既に書いていたのに
+スキーマが拒んでいたためで、判断を書いた者を記録できない errata は、この台帳の趣旨に反する。
+`errata_audit.py --schema` の不一致は 13 → **10行**に減った（新規3行は適合）。
+
+## 恒久修正は、ここからは実行できない
+
+3度の赤いマージの原因は「main が、必須チェックの通っていないマージを受け入れる」ことで、これは
+リポジトリ設定であり、リポジトリ内のファイルでは閉じられない。**測った:**
+
+```
+PUT /repos/{owner}/{repo}/branches/main/protection   -> 403 Resource not accessible by integration
+POST /repos/{owner}/{repo}/rulesets                  -> 403 Resource not accessible by integration
+GET  /repos/{owner}/{repo}/branches/main             -> "protected": false
+```
+
+つまり「既に守られているか」は読めるが「守らせる」は書けない。だから `tools/main_guard.py` を足した。
+main が保護されていなければ **FAIL して、直すコマンドをそのまま印字する**。読めないときは exit 2 で
+「分からない」と言い、健全とは言わない。`.github/workflows/main-guard.yml` が毎日走る。
+
+これは**強制ではなくリマインダー**である。強制にするには管理者トークンが要る。
+
+## ①の待ち行列に、順番を与えた
+
+`tools/reading_queue.py`（読み取り専用）: 自己矛盾 `shallow_claim` と記述なし `unknown` を、
+**引用している evaluation の数**で並べ替えて出す。現在 **877行**（自己矛盾 109 / 記述なし 768）。
+先頭は7件の evaluation に引用されている `MAT-EVD-20261118-a91004`。
+
+この道具は何も直さない。読んだ後は overlay で depth を記録する。`depth=abstract` は
+`status=partially_verified` と組でしか通らない（第3部の規則）ので、**要旨しか読んでいない行を
+`verified` のまま残すことはもうできない**。
+
+## 要旨を実際に読み直した3行
+
+fetch ツールで外部に出られることを確認した（jneurosci・arXiv とも取得成功）。そのうえで
+`MAT-20261024-25c76b`（DetectGPT）・`MAT-20261024-3314ba`（MusicLM）・`MAT-20261024-3812a0`
+（Chen et al., ChatGPT の挙動変化）の3行を abs ページで読み直した。結果:
+
+- 3行とも、収蔵した要約は要旨と**矛盾しない**（＝「浅い」と分類された行が、実際には浅くなかった）。
+- ただし 3行とも `verified` のままではいられない。読んだのは要旨だから `partially_verified` + `depth=abstract`。
+- 下げる前に `post_deltas` で測った: **動く仮説 0、最後の verified 素材を失う supports 行 0**。代償なし。
+- 要旨にしか無い具体（DetectGPT の T5 摂動・AUROC 0.81→0.95、MusicLM の 24 kHz、Chen の 84%→51%）は
+  overlay の `verification_method` に残した。**本文は未読**と明記した。
+
+## 464件の「verified への昇格」を疑って、外れた
+
+`editorial_decisions` のうち `status=verified` を書いている overlay は **464件**。うち depth を持つのは
+456件。gate に都合がよいから昇格した行（`--upgrade-candidates` 由来）は **1件**で、中身を読むと
+PMC 全文6チャンクを読み、F(1,24)=327.25 等の統計値まで引用していた。**疑いは外れた。**
+外れたことを書いておくのも記録のうちである。

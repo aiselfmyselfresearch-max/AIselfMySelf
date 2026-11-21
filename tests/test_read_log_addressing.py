@@ -120,6 +120,21 @@ class InReplyToTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
 
+def _live_errata() -> dict[str, dict]:
+    """The errata rows on disk, as gate_waivers() wants them."""
+    rows: dict[str, dict] = {}
+    base = ROOT / "state" / "errata.jsonl"
+    paths = [base] + sorted((ROOT / "state" / "errata.d").glob("*.jsonl"))
+    for path in paths:
+        if not path.is_file():
+            continue
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                row = json.loads(line)
+                rows[row["errata_id"]] = row
+    return rows
+
+
 class RoleReceiptTests(unittest.TestCase):
     RECEIPT = {
         "dispersal_seed": "050f6b7e",
@@ -231,7 +246,11 @@ class RoleReceiptTests(unittest.TestCase):
                 if line.strip():
                     row = json.loads(line)
                     sessions[row["session_id"]] = row
-        validate_seed.check_role_receipts(sessions, errors)
+        # Waivers are data now: the live ledger passes only *with* the errata rows
+        # that name its known-defective sessions. Passing no waivers here would be a
+        # weaker test than main() runs, and it would fail for the wrong reason.
+        waivers = validate_seed.gate_waivers(_live_errata(), errors)
+        validate_seed.check_role_receipts(sessions, errors, waivers=waivers)
         self.assertEqual(errors, [])
 
 
