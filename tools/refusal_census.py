@@ -126,6 +126,9 @@ def census(root: Path = ROOT, *, today: str | None = None) -> dict[str, Any]:
         else:
             left.append(row)
 
+    def named_by(group: list[dict[str, Any]], predicate) -> int:
+        return sum(1 for row in group if predicate(row))
+
     def describe(group: list[dict[str, Any]]) -> dict[str, Any]:
         evals = [evals_by_session.get(row["session_id"], 0) for row in group]
         frags = [len(row.get("produced_fragment_ids") or []) for row in group]
@@ -140,9 +143,36 @@ def census(root: Path = ROOT, *, today: str | None = None) -> dict[str, Any]:
             "sessions_with_no_evaluation": sum(1 for value in evals if value == 0),
             "fragments_mean": _mean(frags),
             "named_by_read_log": len(read_back),
+            # The rate, not the count.  Comparing 9 with 9 across groups of 52 and
+            # 162 is the denominator error this tool shipped with on 2026-11-21:
+            # the counts matched only because the groups do not.
+            "read_back_rate": round(len(read_back) / len(group), 4) if group else 0.0,
             "named_by_a_note_row": len(noted),
             "named_by_an_erratum": len(in_errata),
         }
+
+    # Stratified rates.  The pooled left/took difference in `read_back_rate` is
+    # confounded by which question was offered: sessions offered Q-001..Q-003
+    # almost always take it (9/154 leave) and are read back at ~5%, while sessions
+    # offered a peripheral question leave far more often.  A pooled comparison
+    # therefore compares question types, not leaving.  Clause (a) of
+    # HYP-20261121-011417 asks about a difference *between leaving and taking*, so
+    # it has to be measured inside a stratum.
+    def _stratified(group: list[dict[str, Any]]) -> dict[str, Any]:
+        out: dict[str, Any] = {}
+        for label, keep in (("central", True), ("peripheral", False)):
+            sub = [
+                row
+                for row in group
+                if (row.get("offered_target_question_id") in CORE_QUESTIONS) is keep
+            ]
+            left_sub = [row for row in sub if row.get("offered_target_question_id") not in set(row.get("question_ids") or [])]
+            took_sub = [row for row in sub if row.get("offered_target_question_id") in set(row.get("question_ids") or [])]
+            out[label] = {
+                "left": [len(left_sub), named_by(left_sub, lambda r: r["session_id"] in read_targets)],
+                "took": [len(took_sub), named_by(took_sub, lambda r: r["session_id"] in read_targets)],
+            }
+        return out
 
     central_offers = [
         row for row in receipts if row.get("offered_target_question_id") in CORE_QUESTIONS
@@ -175,6 +205,7 @@ def census(root: Path = ROOT, *, today: str | None = None) -> dict[str, Any]:
         "left": describe(left),
         "took": describe(took),
         "left_sessions": sorted(row["session_id"] for row in left),
+        "stratified": _stratified(receipts),
         "central_offers": len(central_offers),
         "central_left": len(central_left),
         "forward_stamped_offers": forward_offers,
@@ -225,6 +256,17 @@ def render(result: dict[str, Any], *, limit: int = 0) -> str:
         "read_log rows whose reading is 'declined' (the vocabulary the ledger does have "
         f"for refusing to read something): {result['declined_reading_rows']}"
     )
+    out.append("")
+    out.append("read-back rate, stratified by which question was offered")
+    out.append("(pooling the two strata compares question types, not leaving)")
+    for label, arms in result["stratified"].items():
+        l, lk = arms["left"]
+        t, tk = arms["took"]
+        lr = f"{lk / l:.1%}" if l else "n/a"
+        tr = f"{tk / t:.1%}" if t else "n/a"
+        out.append(
+            f"  {label:11} left {lk}/{l:<4} ({lr:>6})   took {tk}/{t:<4} ({tr:>6})"
+        )
     out.append("")
     out.append(
         "NOTE: a receipt records a divergence in assignment, not a motive.  A session that "
