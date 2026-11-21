@@ -2085,7 +2085,13 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # soft count above is one below it. The binding dimension is the file count,
         # and readings/ is append-only, so shard merging cannot reduce it. Soft raised
         # to measured + 1 (1,083); hard 1,200 unchanged. Not automatic.
-        soft_files=1083,
+        # 2026-11-21 (PR #1019, SESSION-20261121-faaab0): this session adds exactly one
+        # report (readings/2026-11-21-self-as-maintenance-ten-cognitive-science-sources.md)
+        # to the tree above; measured count on the merge of origin/main 267e6c3a is 1,084.
+        # Same remedy discipline as the entries above: the binding dimension is the
+        # append-only file count, so shard merging cannot reduce it. Soft raised to the
+        # measured count (1,084); hard_files (1,200) and soft_bytes / hard_bytes unchanged.
+        soft_files=1084,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
