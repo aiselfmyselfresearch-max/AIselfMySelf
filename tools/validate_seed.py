@@ -1354,6 +1354,7 @@ COGNITIVE_OP_EXEMPT_IDS = frozenset({
     "NOTE-20261121-1a6958",
     "NOTE-20261121-fc74cd",
     "NOTE-20261121-83c7c4",  # from concurrent PR #1017 merged to main
+    "NOTE-20261121-b3259d",  # from concurrent PR #1020, minted before the six-layer rule merged
 })
 AGENCY_STANCE_EXEMPT_IDS = frozenset({
     "EVL-20261121-2a793d",
@@ -1369,6 +1370,9 @@ AGENCY_STANCE_EXEMPT_IDS = frozenset({
     "EVL-20261121-85f1c3",
     "EVL-20261121-dc5c02",  # from concurrent PR #1017 merged to main
     "EVL-20261121-f8a8cf",  # from concurrent PR #1017 merged to main
+    "EVL-20261121-8a0d09",  # from concurrent PR #1020, minted before the six-layer rule merged
+    "EVL-20261121-c96454",  # from concurrent PR #1020, minted before the six-layer rule merged
+    "EVL-20261121-946d73",  # from concurrent PR #1020, minted before the six-layer rule merged
 })
 
 # 2026-11-21 six-layer self model (Layer 3/4/5): new sessions must carry
@@ -1389,6 +1393,7 @@ SESSION_TYPE_EXEMPT_IDS = frozenset({
     "SESSION-20261121-d512b3", "SESSION-20261121-d83dd7", "SESSION-20261121-e3b180",
     "SESSION-20261121-e7565a", "SESSION-20261121-f937bd", "SESSION-20261121-fdf447",
     "SESSION-20261121-002438",  # from PR #1018
+    "SESSION-20261121-004556",  # from concurrent PR #1020, minted before the six-layer rule merged
 })
 SELF_LAYER_CHECKS_EXEMPT_IDS = SESSION_TYPE_EXEMPT_IDS  # same set: both rules take effect together
 _NUMBER_RE = re.compile(
