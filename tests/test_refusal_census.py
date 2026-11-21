@@ -48,6 +48,64 @@ class CensusOnFixtureTests(unittest.TestCase):
         json.dumps(result, ensure_ascii=False)
 
 
+class DenominatorTests(unittest.TestCase):
+    """The error this tool shipped with on 2026-11-21, fixed on 2026-11-22.
+
+    ``read_back_rate`` existed as a bare count.  Nine leaving sessions read back
+    and nine taking sessions read back look like "no difference" until you notice
+    the groups were 51 and 147.  The count-only form let the report called
+    ``the-refusal-that-was-not-a-refusal.md`` conclude "cost is indistinguishable"
+    from two numbers whose denominators were not the same size.  A later session
+    (``SESSION-20261121-9c41e8``, ``EVL-20261121-78e4b6``) caught it; these tests
+    keep the normalised form from regressing.
+    """
+
+    def test_read_back_rate_is_normalised_per_group(self) -> None:
+        result = refusal_census.census(ROOT, today="20261121")
+        for group in ("left", "took"):
+            arm = result[group]
+            self.assertIn("read_back_rate", arm)
+            self.assertGreaterEqual(arm["read_back_rate"], 0.0)
+            self.assertLessEqual(arm["read_back_rate"], 1.0)
+            self.assertAlmostEqual(
+                arm["read_back_rate"],
+                arm["named_by_read_log"] / arm["sessions"],
+                places=3,
+            )
+
+    def test_a_count_cannot_stand_in_for_a_rate(self) -> None:
+        # The specific failure: equal counts, unequal denominators.  If this ever
+        # stops being true on the real ledgers the assertion is still meaningful,
+        # because it is about the arithmetic and not about the current data.
+        result = refusal_census.census(ROOT, today="20261121")
+        left, took = result["left"], result["took"]
+        self.assertNotEqual(left["sessions"], took["sessions"])
+        if left["named_by_read_log"] == took["named_by_read_log"]:
+            self.assertNotAlmostEqual(
+                left["read_back_rate"], took["read_back_rate"], places=4
+            )
+
+    def test_strata_partition_the_receipts(self) -> None:
+        result = refusal_census.census(ROOT, today="20261121")
+        strata = result["stratified"]
+        self.assertEqual(set(strata), {"central", "peripheral"})
+        total = sum(
+            strata[s][arm][0] for s in strata for arm in ("left", "took")
+        )
+        self.assertEqual(total, result["sessions_with_receipt"])
+
+    def test_pooled_difference_is_reported_only_with_its_strata(self) -> None:
+        # Clause (a) of HYP-20261121-011417 asks for a rate difference *between
+        # leaving and taking*.  The pooled comparison mixes question types, so the
+        # rendered text must carry the stratified table whenever it prints the
+        # raw counts.
+        result = refusal_census.census(ROOT, today="20261121")
+        text = refusal_census.render(result)
+        self.assertIn("stratified", text.lower())
+        self.assertIn("central", text)
+        self.assertIn("peripheral", text)
+
+
 class SplitLogicTests(unittest.TestCase):
     def test_returned_text_states_that_motive_is_not_measured(self) -> None:
         result = refusal_census.census(ROOT, today="20261121")
