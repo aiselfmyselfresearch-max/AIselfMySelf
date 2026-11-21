@@ -203,6 +203,34 @@ class ClassifierRepairTests(unittest.TestCase):
         self.assertEqual([w["material_id"] for w in audit["withdrawn"]], ["M"])
 
 
+class OverlayQuoteTests(unittest.TestCase):
+    """A quote of the superseded note is a record of the past, not a claim."""
+
+    def test_quoted_old_note_does_not_demote_a_full_text_read(self):
+        material = {
+            "verification": {
+                "status": "verified",
+                "method": "PMC公開全文（全6チャンク）を2026-11-19に通読照合。",
+                "note": "[overlay ED-x] 全文を精読完了。\n\n元の note: 全文逐語通読はしていない。",
+            }
+        }
+        self.assertEqual(depth_backfill.classify(material)[0], "full_text_claim")
+
+    def test_section_marker_in_a_report_citation_does_not_narrow_the_read(self):
+        self.assertEqual(depth_backfill._partial_hits("本文§3だけを読んだ"), ["§"])
+        self.assertEqual(depth_backfill._partial_hits("（精読報告 §2.1）"), [])
+
+    def test_a_genuine_section_limited_read_stays_unknown(self):
+        material = {
+            "verification": {
+                "status": "verified",
+                "method": "本文§3と図2のみを読んだ。",
+                "note": "",
+            }
+        }
+        self.assertEqual(depth_backfill.classify(material)[0], "unknown")
+
+
 class UnspecifiedDepthTests(unittest.TestCase):
     def test_unspecified_is_not_a_new_row_answer(self):
         row = {
