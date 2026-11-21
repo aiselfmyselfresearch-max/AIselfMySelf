@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5636 件（research_excerpt 3389 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1069 回
+- **探究セッション（Sessions）**：1070 回
 
 ### 台帳ごとの件数
 
@@ -23,10 +23,10 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5636 | `literary_text` 2179／`research_excerpt` 3389／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1069 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16250 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 393 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 607 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1070 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16252 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 394 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 609 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1162 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 85 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 780 |  |
@@ -6442,7 +6442,7 @@
 | `MAT-20261121-b4e812` | research_excerpt | Roland G. Benoit, Michael C. Anderson『ベノワ＆アンダーソン（2012）不要記憶の意図的忘却を支える正反対の二つの神経機構——右DLPFC海馬… |
 | `MAT-20261121-d91a47` | research_excerpt | David Stawarczyk, Christopher N. Wahlheim, Joset A. Etzel, Abraham Z. Snyder, Jeffrey M. … |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261121-a34277・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261121-2b7615・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -7509,12 +7509,13 @@
 | `SESSION-20261121-fdf447` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261121-d512b3` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261121-9c41e8` | 2026-11-21 | `Q-002`, `Q-001`, `Q-003` | — | — |
-| `SESSION-20261121-2b7615` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261121-98bf13` | 2026-11-21 | `Q-002` | — | — |
+| `SESSION-20261121-f937bd` | 2026-11-21 | `Q-002` | — | — |
 | `SESSION-20261121-e3b180` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261121-75acab` | 2026-11-21 | `Q-002` | — | — |
 | `SESSION-20261121-d83dd7` | 2026-11-21 | `Q-002`, `Q-001` | — | — |
 | `SESSION-20261121-a34277` | 2026-11-21 | `Q-20261025-b4e703` | — | — |
+| `SESSION-20261121-2b7615` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7091 件・全表は map/40-relations-*.md）
 
@@ -7603,12 +7604,12 @@
 | `map/31-materials-research-22.md` | 100 | 248,647 |
 | `map/31-materials-research-23.md` | 100 | 231,807 |
 | `map/31-materials-research-24.md` | 100 | 259,812 |
-| `map/31-materials-research-25.md` | 100 | 265,493 |
+| `map/31-materials-research-25.md` | 100 | 265,578 |
 | `map/31-materials-research-26.md` | 100 | 241,698 |
 | `map/31-materials-research-27.md` | 100 | 221,141 |
 | `map/31-materials-research-28.md` | 100 | 209,251 |
 | `map/31-materials-research-29.md` | 100 | 273,301 |
-| `map/31-materials-research-30.md` | 100 | 237,225 |
+| `map/31-materials-research-30.md` | 100 | 237,565 |
 | `map/31-materials-research-31.md` | 100 | 212,887 |
 | `map/31-materials-research-32.md` | 100 | 202,898 |
 | `map/31-materials-research-33.md` | 100 | 214,663 |
@@ -7650,7 +7651,7 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 19 | 14,294 |
+| `map/50-sessions-22.md` | 20 | 14,866 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,062 |
