@@ -2051,7 +2051,10 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # soft_files set to the measured count exactly, no headroom added. A measured review
         # point, NOT an automatic allowance; re-measure after every merge. hard_files (1,200),
         # soft_bytes / hard_bytes and the per-report caps unchanged.
-        soft_files=1080,
+        # 2026-11-21 (SESSION-20261121-2b7615): one append-only reading
+        # brings the measured count to 1,081; bytes remain below the soft limit.
+        # Raise only the review threshold to the measured count, not the hard cap.
+        soft_files=1081,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
