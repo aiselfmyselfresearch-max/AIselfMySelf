@@ -2587,6 +2587,39 @@
       "sha256": "32e0c8efb94698c560d1818b2f79a96131be3999bab2bd0f021833d0753b44fe",
       "consolidated_on": "2026-11-21",
       "reason": "size_budget soft_shards 178/hard 179 exceeded at 179; documented remedy is consolidation of single-row shards, not a budget raise"
+    },
+    "state/evaluations.d/2026-11-21-000000000000.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-21-d2a5d455009b.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": null,
+      "line_start": null,
+      "line_end": null,
+      "row_count": 1,
+      "sha256": "2976baf70aa8d137212b743fed908a2b17cb8d6cd611797f37af558de5092767",
+      "consolidated_on": "2026-11-21",
+      "reason": "size_budget soft_shards 107 exceeded at 108; documented remedy is consolidation of same-date shards"
+    },
+    "state/evaluations.d/2026-11-21-2a992ef35719.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-21-d2a5d455009b.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": null,
+      "line_start": null,
+      "line_end": null,
+      "row_count": 1,
+      "sha256": "ee189a6bc2dff0438d15686a3e6e17e754a5c0daa47ce5c9f8977b6ccc9f066a",
+      "consolidated_on": "2026-11-21",
+      "reason": "size_budget soft_shards 107 exceeded at 108; documented remedy is consolidation of same-date shards"
+    },
+    "state/evaluations.d/2026-11-21-2b761518cafe.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-21-d2a5d455009b.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": null,
+      "line_start": null,
+      "line_end": null,
+      "row_count": 1,
+      "sha256": "58099064e701eba48eaae91237b6da6a6165ea62ba8c9a13c69dca79b618eb58",
+      "consolidated_on": "2026-11-21",
+      "reason": "size_budget soft_shards 107 exceeded at 108; documented remedy is consolidation of same-date shards"
     }
   }
 }
