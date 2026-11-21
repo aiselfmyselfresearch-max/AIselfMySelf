@@ -2,7 +2,7 @@
 
 - **日付**：2026-11-21（UTC）
 - **セッション**：`SESSION-20261121-d414f0`
-- **精読本文**：[readings/2026-11-21-thought-memory-self-neuroscience-agency-body-and-control-10.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/arena/d414f045-aiselfmyself/readings/2026-11-21-thought-memory-self-neuroscience-agency-body-and-control-10.md)
+- **精読本文**：[readings/2026-11-21-thought-memory-self-neuroscience-agency-body-and-control-10.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-21-thought-memory-self-neuroscience-agency-body-and-control-10.md)
 - **仮説**：`HYP-20261120-b18876`（思考・記憶・核自己・自伝的自己の四層解離説）
 
 本ファイルは委任された成果物（MDレポート）の要約である。七層の操作・出典・限界は精読本文に置く。
