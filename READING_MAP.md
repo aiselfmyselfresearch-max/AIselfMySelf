@@ -7686,7 +7686,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1080本・37,408,182 B）
+## 8. 精読ノート索引（readings/・1080本・37,410,266 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1006/1080 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -8610,7 +8610,7 @@
 | `readings/2026-11-21-individual-thoughts-memories-and-self-updating-gates.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-d512b3` +1 | 22,150 | Q3 M13 S2 | ✓ | 人間の個別の思考と個別の記憶は「自己」とどう関わるか——門前制動・両刃の再結合・凍結する自己、および追記型GitHub… |
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
 | `readings/2026-11-21-opposing-gates-configural-change-and-multi-channel-ledger.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-9c41e8` +2 | 18,909 | Q3 M6 S3 ERR1 ED4 | — | 反対符号の制動門・構成的変化表象・多経路ゲート会計——前回仮説の独立反証と6論文全文照合・台帳実測 |
-| `readings/2026-11-21-ten-cognitive-science-sources-on-grounding-and-the-other-who-answers.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-e3b180` | 22,694 | Q3 M4 S1 | — | 二番目の手が返らないとき——「根拠づけ・教示・警戒・参加」をめぐる認知科学10資料の精読 |
+| `readings/2026-11-21-ten-cognitive-science-sources-on-grounding-and-the-other-who-answers.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-e3b180` | 23,779 | Q3 M4 S1 | — | 二番目の手が返らないとき——「根拠づけ・教示・警戒・参加」をめぐる認知科学10資料の精読 |
 | `readings/2026-11-21-the-flower-that-does-not-read-the-tag.md` | — | 2026-11-21 | `SESSION-20261121-0723fd` | 10,393 | Q6 F9 M8 MOT1 S1 | ✓ | 札を読まない花——明るみが徴収する代価と、代役が払う年（SESSION-20261121-0723fd） |
 | `readings/2026-11-21-the-refusal-that-was-not-a-refusal.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-d83dd7` +1 | 10,452 | Q6 M1 S2 | ✓ | 拒否ではなかった拒否——書庫が記録していたのは、断念ではなく持ち越しだった |
 | `readings/2026-11-21-thought-memory-and-self-three-relational-axes.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-fdf447` | 17,136 | Q3 M10 S1 | — | 個別の思考と個別の記憶は、自己とどう関係するのか——三つの関係軸で読む脳神経学10資料 |
