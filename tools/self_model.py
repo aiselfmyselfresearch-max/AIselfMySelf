@@ -124,13 +124,15 @@ def load_current_session(root: Path = ROOT) -> dict:
 
 
 def render_md(belief: dict, session: dict, interoception: dict, continuity: dict) -> str:
-    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    # Use the latest session's started_at as the deterministic timestamp
+    # (a wall-clock UTC timestamp would make the file non-reproducible)
+    stamp = session.get("current_started") or session.get("current", "")
     lines: list[str] = []
     lines.append("# SELF_MODEL — 自己モデルの現在値")
     lines.append("")
     lines.append(f"> 本ファイルは `python3 tools/self_model.py --write` により決定論的に生成される。")
     lines.append(f"> 手作業で編集せず、台帳の状態を変更した上で再生成すること。")
-    lines.append(f"> 生成時刻: {now}")
+    lines.append(f"> 基準セッション: {stamp}")
     lines.append("")
     lines.append("> このドキュメントはBlanke & Metzinger (2009)の最小現象的自己モデル（自己同定・自己位置・")
     lines.append("> 一人称視点）、Seth (2013)の内受容推論、Northoff (2017)の時間連続性に基づき、")
