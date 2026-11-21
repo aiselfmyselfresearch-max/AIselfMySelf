@@ -58,6 +58,66 @@ class ShardPathTests(unittest.TestCase):
                 new_ledger_shard.create_shard("fragments", root=root)
 
 
+class DayShardTests(unittest.TestCase):
+    """2026-11-21: the default shard is per-day, not per-session (ERR-20261121-8d2b41)."""
+
+    def test_default_create_reuses_the_day_shard(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = make_root(Path(tmp))
+            first = new_ledger_shard.create_shard("sessions", root=root, day="2026-11-21")
+            second = new_ledger_shard.create_shard("sessions", root=root, day="2026-11-21")
+            self.assertEqual(first, second)
+            self.assertTrue(str(first).endswith("2026-11-21-000000000000.jsonl"))
+            shards = list((root / "state" / "sessions.d").glob("*.jsonl"))
+            self.assertEqual(shards, [first])
+            # two sessions appending to the shared day shard
+            first.write_text('{"session_id": "SESSION-20261121-aaaaaa"}\n', encoding="utf-8")
+            with first.open("a", encoding="utf-8") as handle:
+                handle.write('{"session_id": "SESSION-20261121-bbbbbb"}\n')
+            self.assertEqual(len(first.read_text(encoding="utf-8").splitlines()), 2)
+
+    def test_different_days_get_different_day_shards(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = make_root(Path(tmp))
+            first = new_ledger_shard.create_shard("sessions", root=root, day="2026-11-20")
+            second = new_ledger_shard.create_shard("sessions", root=root, day="2026-11-21")
+            self.assertNotEqual(first, second)
+
+    def test_dedicated_suffix_still_refuses_a_second_create(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = make_root(Path(tmp))
+            path = new_ledger_shard.create_shard(
+                "sessions", root=root, day="2026-11-21", suffix="abcdefabcdef"
+            )
+            self.assertTrue(str(path).endswith("2026-11-21-abcdefabcdef.jsonl"))
+            with self.assertRaises(FileExistsError):
+                new_ledger_shard.create_shard(
+                    "sessions", root=root, day="2026-11-21", suffix="abcdefabcdef"
+                )
+
+    def test_cli_create_twice_without_suffix_reuses_day_shard(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = make_root(Path(tmp))
+            arguments = [
+                "read_log",
+                "--create",
+                "--date",
+                "2026-11-21",
+                "--root",
+                str(root),
+            ]
+            outputs = []
+            for _ in range(2):
+                output = io.StringIO()
+                with contextlib.redirect_stdout(output):
+                    code = new_ledger_shard.main(arguments)
+                self.assertEqual(code, 0)
+                outputs.append(output.getvalue().strip())
+            self.assertEqual(outputs[0], outputs[1])
+            self.assertTrue(outputs[0].endswith("2026-11-21-000000000000.jsonl"))
+            self.assertTrue((root / outputs[0]).is_file())
+
+
 class ShardCliTests(unittest.TestCase):
     def test_errata_shards_use_the_errata_base_ledger(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
