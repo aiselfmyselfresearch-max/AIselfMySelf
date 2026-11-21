@@ -49,7 +49,7 @@ def measure_shard_budget(root: Path) -> list[dict]:
         "state/read_log.d": (173, 175),
         "state/sessions.d": (178, 179),
         "state/notes.d": (179, 180),
-        "readings/": (1082, 1200),
+        "readings/": (1086, 1200),       # synced to size_budget.py after SESSION-20261121-ed7949 added one report
     }
     for d, (soft, hard) in shard_dirs.items():
         p = root / d
