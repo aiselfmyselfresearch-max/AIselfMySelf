@@ -20,6 +20,30 @@
     "offered_reference_mode": {"type": "string", "description": "The reference mode the packet offered. Kept apart from prompt_template, which is what the session actually used."},
     "prompt_template": {"type": "string"},
     "generator": {"type": "string", "description": "Model/tool label if known; omit if unknown."},
+    "session_type": {
+      "type": "string",
+      "enum": [
+        "acquisition",
+        "close_reading",
+        "re_reading",
+        "infrastructure",
+        "default_mode_simulation",
+        "evaluation_only",
+        "other"
+      ],
+      "description": "The structural type of this session, introduced 2026-11-21 for the six-layer self model. 'default_mode_simulation' is the DMN-like internal simulation mode (Spreng et al. 2009) that reads existing notes and simulates consequences without adding new materials or hypotheses. Required from 2026-11-21 for new sessions; pre-existing sessions without this field are legacy."
+    },
+    "self_layer_checks": {
+      "type": "object",
+      "description": "Self-actualization checklist completed at session end. Keys correspond to six-layer self model operations; values are booleans confirming the operation was performed or explicitly not applicable. Introduced 2026-11-21 as a structural hook for Layer I/II (preparation/verification phases).",
+      "properties": {
+        "source_attributed": {"type": "boolean", "description": "All new notes carry cognitive_operation"},
+        "agency_stance_recorded": {"type": "boolean", "description": "All new evaluations carry agency_stance"},
+        "self_model_rebuilt": {"type": "boolean", "description": "SELF_MODEL.md was regenerated before commit"},
+        "veto_considered": {"type": "boolean", "description": "Whether the 'whether' veto was explicitly considered (not necessarily exercised)"}
+      },
+      "additionalProperties": false
+    },
     "notes": {"type": "string"}
   }
 }
