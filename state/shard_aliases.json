@@ -2,7 +2,7 @@
   "schema_version": 1,
   "normalized_on": "2026-11-12",
   "description": "Maps legacy internal-chronology forward-dated shards (> 2026-11-12) consolidated into real-execution-date shards, plus later order-preserving shard compactions in state/<collection>.d/. Every row is moved byte-for-byte within the same collection.",
-  "consolidated_shards": 210,
+  "consolidated_shards": 217,
   "created_real_date_shards": 50,
   "aliases": {
     "state/editorial_decisions.d/2026-11-18-317db4367875.jsonl": {
@@ -2510,6 +2510,83 @@
       "line_end": 35,
       "row_count": 2,
       "sha256": "d0dab5ec0633fe16e6119712038a61fc1a8dc1cc75bf4ec4205700fce8266ec2"
+    },
+    "state/sessions.d/2026-11-21-29c2aa82dbc0.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-21-000000000000.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": null,
+      "line_start": null,
+      "line_end": null,
+      "row_count": 3,
+      "sha256": "bdd182292430ac1215048a78b22728937da1fa43eb7f429317d49b2c286fd2d7",
+      "consolidated_on": "2026-11-21",
+      "reason": "size_budget soft_shards 178/hard 179 exceeded at 179; documented remedy is consolidation of single-row shards, not a budget raise"
+    },
+    "state/sessions.d/2026-11-21-8f6f8e8c357f.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-21-000000000000.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": null,
+      "line_start": null,
+      "line_end": null,
+      "row_count": 1,
+      "sha256": "45db99233b99bc91ba0f750d9d26fc5f306678aeacad79473d957a43812138e3",
+      "consolidated_on": "2026-11-21",
+      "reason": "size_budget soft_shards 178/hard 179 exceeded at 179; documented remedy is consolidation of single-row shards, not a budget raise"
+    },
+    "state/sessions.d/2026-11-21-9b3ea4c02d15.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-21-000000000000.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": null,
+      "line_start": null,
+      "line_end": null,
+      "row_count": 1,
+      "sha256": "d103cbbaa6bfbbc0e78885f040e5d6228f0a7b813da56d30d014ed0ffec726ca",
+      "consolidated_on": "2026-11-21",
+      "reason": "size_budget soft_shards 178/hard 179 exceeded at 179; documented remedy is consolidation of single-row shards, not a budget raise"
+    },
+    "state/sessions.d/2026-11-21-9bada1af4626.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-21-000000000000.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": null,
+      "line_start": null,
+      "line_end": null,
+      "row_count": 1,
+      "sha256": "ab374bc45624235dd401514dd337cc06e4e19442cd6f57a178934bbe6973165a",
+      "consolidated_on": "2026-11-21",
+      "reason": "size_budget soft_shards 178/hard 179 exceeded at 179; documented remedy is consolidation of single-row shards, not a budget raise"
+    },
+    "state/sessions.d/2026-11-21-badc9b9c386b.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-21-000000000000.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": null,
+      "line_start": null,
+      "line_end": null,
+      "row_count": 1,
+      "sha256": "ad1b499764d1e33eb540db83b021e3450f0cf49a9aba921c5b7e5a073ad22e7d",
+      "consolidated_on": "2026-11-21",
+      "reason": "size_budget soft_shards 178/hard 179 exceeded at 179; documented remedy is consolidation of single-row shards, not a budget raise"
+    },
+    "state/sessions.d/2026-11-21-d83dd7000000.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-21-000000000000.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": null,
+      "line_start": null,
+      "line_end": null,
+      "row_count": 1,
+      "sha256": "4c9cf3b16bc8e96297dbcc73fa7093408916972bc4f67abcb8907927cce7998d",
+      "consolidated_on": "2026-11-21",
+      "reason": "size_budget soft_shards 178/hard 179 exceeded at 179; documented remedy is consolidation of single-row shards, not a budget raise"
+    },
+    "state/sessions.d/2026-11-21-dbced3b8b17f.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-21-000000000000.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": null,
+      "line_start": null,
+      "line_end": null,
+      "row_count": 1,
+      "sha256": "32e0c8efb94698c560d1818b2f79a96131be3999bab2bd0f021833d0753b44fe",
+      "consolidated_on": "2026-11-21",
+      "reason": "size_budget soft_shards 178/hard 179 exceeded at 179; documented remedy is consolidation of single-row shards, not a budget raise"
     }
   }
 }
