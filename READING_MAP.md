@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5646 件（research_excerpt 3399 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5666 件（research_excerpt 3419 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1072 回
+- **探究セッション（Sessions）**：1074 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5646 | `literary_text` 2179／`research_excerpt` 3399／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5666 | `literary_text` 2179／`research_excerpt` 3419／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1072 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16264 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1074 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16312 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 398 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 611 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1163 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1165 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 85 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 782 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 784 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5646 件・詳細は map/3*.md）
+## 4. 対話素材（5666 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6419,6 +6419,16 @@
 | `MAT-20261121-e59407` | research_excerpt | Andrew C. Garcia, Sabrina Bhangal, Anthony G. Velasquez, Mark W. Geisler, Ezequiel Morsel… |
 | `MAT-20261121-f8cc05` | research_excerpt | Gert Storms『If My Memory Serves Me Well: Investigating My Memory for the Past 24 Years』（2… |
 | `MAT-20261121-c76547` | research_excerpt | Pei-Chun Tsai, Sam J. Gilbert『Strategic reminder setting for time-based intentions: Influ… |
+| `MAT-20261121-374aed` | research_excerpt | Jerome Gottlieb, Pierre-Yves Oudeyer, Matthias Lopes, Alexander Baranes『Information-seeki… |
+| `MAT-20261121-d51228` | research_excerpt | Celeste Kidd, Benjamin Y. Hayden『The psychology and neuroscience of curiosity』（2015） |
+| `MAT-20261121-deff66` | research_excerpt | Matthias J. Gruber, Brian D. Gelman, Charan Ranganath『States of curiosity modulate hippoc… |
+| `MAT-20261121-cc7e26` | research_excerpt | Matthias J. Gruber, Charan Ranganath『How curiosity enhances hippocampus-dependent memory:… |
+| `MAT-20261121-130153` | research_excerpt | Karin Jepma, Rutger G. Verdonschot, Herman van Steenbergen, Sanne A. R. B. Rombouts, Sven… |
+| `MAT-20261121-97f319` | research_excerpt | Stefania I. Di Domenico, Richard M. Ryan『The emerging neuroscience of intrinsic motivatio… |
+| `MAT-20261121-affd5f` | research_excerpt | Kou Murayama『A reward-learning framework of knowledge acquisition: An integrated account … |
+| `MAT-20261121-88e71d` | research_excerpt | Philipp Schwartenbeck, Johannes Passecker, Tuan U. Hauser, Titus H. FitzGerald, Moritz Kr… |
+| `MAT-20261121-22c1e9` | research_excerpt | Todd B. Kashdan, Michael W. Gallagher, Paul J. Silvia, Brent P. Winterstein, William E. B… |
+| `MAT-20261121-bcaffe` | research_excerpt | Samuel J. Gershman『Deconstructing the human algorithms for exploration』（2018） |
 | `MAT-20261121-ccd780` | research_excerpt | Herbert H. Clark, Susan E. Brennan『Clark & Brennan（1991）——「十分なところまで分かった」という相互信念を、二人が手続きとし… |
 | `MAT-20261121-987a53` | research_excerpt | William S. Horton, Boaz Keysar『Horton & Keysar（1996）——共通基盤は、時間の余裕があるときだけ話し手の設計に入る』（1996） |
 | `MAT-20261121-f108f5` | research_excerpt | Susan E. Brennan, Herbert H. Clark『Brennan & Clark（1996）——同じ相手と同じ呼び名は、相手ごとに閉じた約束になる』（1996） |
@@ -6451,6 +6461,16 @@
 | `MAT-20261121-3a6118` | research_excerpt | Sabrina Lenzoni, Robin G. Morris, Daniel C. Mograbi『レンツォーニ、モリス＆モグラビ（2020）10年後の「凍結した自己（The… |
 | `MAT-20261121-b4e812` | research_excerpt | Roland G. Benoit, Michael C. Anderson『ベノワ＆アンダーソン（2012）不要記憶の意図的忘却を支える正反対の二つの神経機構——右DLPFC海馬… |
 | `MAT-20261121-d91a47` | research_excerpt | David Stawarczyk, Christopher N. Wahlheim, Joset A. Etzel, Abraham Z. Snyder, Jeffrey M. … |
+| `MAT-20261121-3a7b9c` | research_excerpt | Marcia K. Johnson『Johnson（1997）——ソースモニタリング：思考と記憶は永久的な出所タグを持たず、想起時に手がかりから事後帰属される』（1997） |
+| `MAT-20261121-b8d2e1` | research_excerpt | Michael Synofzik, Gottfried Vosgerau, Albert Newen『Synofzik, Vosgerau & Newen（2008）——主体感は… |
+| `MAT-20261121-c4f6a3` | research_excerpt | Manos Tsakiris『Tsakiris（2010）——身体所有感は三層のモデル比較・多感覚統合・主観的経験から構成される能動的プロセス』（2010） |
+| `MAT-20261121-d7e5b2` | research_excerpt | Anil K. Seth『Seth（2013）——内受容推論が身体化された自己の基礎を構成し、自己は予測誤差最小化の動的プロセスである』（2013） |
+| `MAT-20261121-e9a1f4` | research_excerpt | Giuseppe Riva『Riva（2018）——身体記憶は六層の身体表象からなり、高次記憶喪失後も自己の基盤として残りうる』（2018） |
+| `MAT-20261121-f2b3c5` | research_excerpt | Pawel Tacikowski, Marie L. Weijs, H. Henrik Ehrsson『Tacikowski, Weijs & Ehrsson（2020）——身体… |
+| `MAT-20261121-e2d5c7` | research_excerpt | Marcel Brass, Patrick Haggard『Brass & Haggard（2008）——意図的行為はwhat/when/whetherの三層からなり、思考は行為… |
+| `MAT-20261121-f8a1b2` | research_excerpt | Olaf Blanke, Thomas Metzinger『Blanke & Metzinger（2009）——全身錯視と最小現象的自己：自己同定・自己位置・第一人称視点の三要素… |
+| `MAT-20261121-c8d2a9` | research_excerpt | R. Nathan Spreng, Raymond A. Mar, Alice S. N. Kim『Spreng, Mar & Kim（2009）——記憶・未来展望・ナビゲーショ… |
+| `MAT-20261121-d3e4b0` | research_excerpt | Georg Northoff『Northoff（2017）——CMSの遅い時間スケールの神経活動が、個別の内容を超えた自己連続感を支える可能性がある』（2017） |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261121-2b7615・全文は map/50-sessions-*.md）
 
@@ -7527,6 +7547,8 @@
 | `SESSION-20261121-a34277` | 2026-11-21 | `Q-20261025-b4e703` | — | — |
 | `SESSION-20261121-3831aa` | 2026-11-21 | `Q-002` | — | — |
 | `SESSION-20261121-faaab0` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261121-d414f0` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261121-e7565a` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261121-2b7615` | 2026-11-21 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7091 件・全表は map/40-relations-*.md）
@@ -7625,7 +7647,8 @@
 | `map/31-materials-research-31.md` | 100 | 212,887 |
 | `map/31-materials-research-32.md` | 100 | 202,898 |
 | `map/31-materials-research-33.md` | 100 | 214,663 |
-| `map/31-materials-research-34.md` | 99 | 240,400 |
+| `map/31-materials-research-34.md` | 100 | 244,040 |
+| `map/31-materials-research-35.md` | 19 | 47,524 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7663,7 +7686,7 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 22 | 16,312 |
+| `map/50-sessions-22.md` | 24 | 17,997 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,062 |
@@ -7700,23 +7723,23 @@
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
 | `map/60-notes-36.md` | 25 | 101,133 |
-| `map/60-notes-37.md` | 25 | 93,355 |
-| `map/60-notes-38.md` | 25 | 67,595 |
-| `map/60-notes-39.md` | 25 | 71,724 |
-| `map/60-notes-40.md` | 25 | 74,407 |
-| `map/60-notes-41.md` | 25 | 104,202 |
-| `map/60-notes-42.md` | 25 | 100,193 |
-| `map/60-notes-43.md` | 25 | 140,010 |
-| `map/60-notes-44.md` | 7 | 32,394 |
+| `map/60-notes-37.md` | 25 | 97,581 |
+| `map/60-notes-38.md` | 25 | 66,619 |
+| `map/60-notes-39.md` | 25 | 72,517 |
+| `map/60-notes-40.md` | 25 | 75,914 |
+| `map/60-notes-41.md` | 25 | 100,136 |
+| `map/60-notes-42.md` | 25 | 97,002 |
+| `map/60-notes-43.md` | 25 | 140,522 |
+| `map/60-notes-44.md` | 9 | 43,461 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1082本・37,476,459 B）
+## 8. 精読ノート索引（readings/・1084本・37,603,187 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1007/1082 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1009/1084 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1082 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1084 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：186 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -8637,10 +8660,12 @@
 | `readings/2026-11-21-knots-and-the-addressee-of-return.md` | 2026-10-26 | 2026-11-21 | `SESSION-20261121-d0e4d6` +3 | 13,919 | Q7 F13 M4 MOT1 S4 ERR1 ED1 | ✓ | 結び目と、返せの宛先——名詞を消しても動詞が残るか |
 | `readings/2026-11-21-opposing-gates-configural-change-and-multi-channel-ledger.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-9c41e8` +2 | 18,909 | Q3 M6 S3 ERR1 ED4 | — | 反対符号の制動門・構成的変化表象・多経路ゲート会計——前回仮説の独立反証と6論文全文照合・台帳実測 |
 | `readings/2026-11-21-self-as-maintenance-ten-cognitive-science-sources.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-faaab0` +1 | 21,870 | Q3 M10 S2 | — | 「自己は保守である」——認知科学10資料の精読 |
-| `readings/2026-11-21-ten-cognitive-science-sources-on-grounding-and-the-other-who-answers.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-e3b180` | 23,779 | Q3 M4 S1 | — | 二番目の手が返らないとき——「根拠づけ・教示・警戒・参加」をめぐる認知科学10資料の精読 |
+| `readings/2026-11-21-ten-cognitive-science-sources-on-curiosity-and-self-updating.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-e7565a` | 45,816 | Q3 M15 S1 ED4 | — | 知りたいことが分かること自体が報酬になる——「好奇・情報獲得・自己更新」をめぐる認知科学10資料の精読 |
+| `readings/2026-11-21-ten-cognitive-science-sources-on-grounding-and-the-other-who-answers.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-e3b180` | 23,779 | Q3 M4 S1 | ✓ | 二番目の手が返らないとき——「根拠づけ・教示・警戒・参加」をめぐる認知科学10資料の精読 |
 | `readings/2026-11-21-the-flower-that-does-not-read-the-tag.md` | — | 2026-11-21 | `SESSION-20261121-0723fd` | 10,393 | Q6 F9 M8 MOT1 S1 | ✓ | 札を読まない花——明るみが徴収する代価と、代役が払う年（SESSION-20261121-0723fd） |
 | `readings/2026-11-21-the-refusal-that-was-not-a-refusal.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-d83dd7` +1 | 10,452 | Q6 M1 S2 | ✓ | 拒否ではなかった拒否——書庫が記録していたのは、断念ではなく持ち越しだった |
 | `readings/2026-11-21-thought-memory-and-self-three-relational-axes.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-fdf447` | 17,136 | Q3 M10 S1 | — | 個別の思考と個別の記憶は、自己とどう関係するのか——三つの関係軸で読む脳神経学10資料 |
+| `readings/2026-11-21-thought-memory-self-neuroscience-agency-body-and-control-10.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-d414f0` | 15,039 | Q3 M12 S1 | ✓ | 個別の思考と個別の記憶は、どのような機構で自己に結びつき、自己から外れるか——脳神経学10件（主体感・身体性・制御側） |
 | `readings/2026-11-22-the-thin-bowl-and-the-pot-set-before-dawn.md` | 2026-10-27 | 2026-11-22 | `SESSION-20261122-11b1d3` | 9,678 | Q7 F12 M10 MOT1 S1 | ✓ | 薄い椀は全員に届く——鍋の大きさが空腹より先に決まるとき（SESSION-20261122-11b1d3） |
 | `readings/2026-11-23-a-single-tree-keeps-no-year.md` | 2026-10-27 | 2026-11-23 | `SESSION-20261123-0f9fde` +1 | 13,844 | Q7 F11 M7 MOT5 S2 | ✓ | 一本の木は年を言わない——細い年の合意と、口を下に向けた瓶（SESSION-20261123-0f9fde） |
 | `readings/2026-11-24-seven-of-eleven-and-the-tight-copy.md` | 2026-10-27 | 2026-11-24 | `SESSION-20261124-139d83` +2 | 14,962 | Q5 F13 M3 S3 | ✓ | 十一のうち七つ——締まった複製は、なぜ開く戸が少ないのか（SESSION-20261124-139d83） |
