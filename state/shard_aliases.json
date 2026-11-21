@@ -2501,6 +2501,15 @@
       "sha256": "46a3c296d6d96882a842fca531d006b0a0b4f6f3f8945d0f4ee46dd1360208ff",
       "consolidated_on": "2026-11-21",
       "reason": "size_budget soft_shards exceeded; documented remedy is consolidation of single-row shards"
+    },
+    "state/evaluations.d/2026-11-16-148987da7b44.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-16-000000000000.jsonl",
+      "real_date": "2026-11-16",
+      "original_label_date": "2026-11-16",
+      "line_start": 34,
+      "line_end": 35,
+      "row_count": 2,
+      "sha256": "d0dab5ec0633fe16e6119712038a61fc1a8dc1cc75bf4ec4205700fce8266ec2"
     }
   }
 }

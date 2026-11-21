@@ -2020,7 +2020,16 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # Not automatic; re-measure after every merge.
         # 2026-11-21 (merge of origin/main 85e354c, 1075 -> 1076 files): one more report
         # from a concurrent session. Soft to measured (1076); hard 1,200 as is.
-        soft_files=1076,
+        # 2026-11-21 (SESSION-20261121-e3b180, 1078 -> 1079): the ten-source cognitive-science
+        # round adds this session's report (readings/2026-11-21-ten-cognitive-science-sources-
+        # on-grounding-and-the-other-who-answers.md). Measured union = 1,079 files /
+        # 35.64 MiB, inside the 37.00 MiB soft_bytes; the binding dimension is the file
+        # count, and this corpus is append-only, so shard merging cannot reduce it (it
+        # merges state/*.d/ files, not readings/ reports). soft_files set to the measured
+        # count exactly, no headroom added. This is a measured review point, NOT an
+        # automatic allowance; the next session must re-measure after every merge.
+        # hard_files (1,200), soft_bytes / hard_bytes and the per-report caps unchanged.
+        soft_files=1079,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
