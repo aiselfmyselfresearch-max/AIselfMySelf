@@ -5,12 +5,12 @@
 
 ## 現在の到達点（台帳サマリー）
 
-- **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
+- **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5784 件（research_excerpt 3537 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
-- **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
-- **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1094 回
+- **対話素材（Materials）**：5786 件（research_excerpt 3537 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
+- **解釈的関係（Relations）**：7097 件
+- **探究セッション（Sessions）**：1095 回
 
 ### 台帳ごとの件数
 
@@ -18,18 +18,18 @@
 
 | 記録 | 保存先 | 件数 | 内訳 |
 |---|---|---:|---|
-| 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
+| 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5784 | `literary_text` 2179／`research_excerpt` 3537／`project_trace` 67／`conversation_trace` 1 |
-| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
-| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1094 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16493 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 401 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 616 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1185 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 88 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 804 |  |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5786 | `literary_text` 2181／`research_excerpt` 3537／`project_trace` 67／`conversation_trace` 1 |
+| 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
+| 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1095 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16510 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 403 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 624 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1186 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 90 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 812 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -101,13 +101,13 @@
 
 （説明全文は `map/00-overview.md`）
 
-## 2. 開かれた問いの索引（Q-001 〜 Q-20261119-940dde・各問の本文は1回だけ）
+## 2. 開かれた問いの索引（Q-001 〜 Q-20261122-f5d132・各問の本文は1回だけ）
 
 | ID | 来歴 | 親 | 子 | 本文（抜粋） |
 |---|---|---|---|---|
 | `Q-001` | seed | — | `Q-012` `Q-014` `Q-019` `Q-054` `Q-074` `Q-20261024-0e3284` `Q-20261024-4ebe69` `Q-20261024-6a200a` `Q-20261024-c82d69` `Q-20261024-3c24ee` `Q-20261024-39610d` `Q-20261024-65f8c8` `Q-20261024-11d320` `Q-20261024-09c7e9` `Q-20261024-7f8692` `Q-20261024-1334c5` `Q-20261025-5b8d05` `Q-20261025-9256a5` `Q-20261030-9ecb75` `Q-20261101-2ec50c` `Q-20261203-aa57dd` `Q-20261204-c7aa25` `Q-20261101-50f9f7` `Q-20261103-50a2fb` `Q-20261103-32a3cd` `Q-20270126-bdb41b` `Q-20270126-331d13` `Q-20270202-7c334e` `Q-20270202-1bf183` `Q-20270202-ee4683` `Q-20270202-c0271e` `Q-20270202-5c2c63` `Q-20261104-98a5f4` `Q-20270216-d68935` `Q-20270216-08539d` `Q-20261105-e24d6b` `Q-20261105-b78e71` `Q-20261119-940dde` | 人間とは何か――身体、記憶、他者、忘却のうち、何が『私』の輪郭を作るのか。 |
-| `Q-002` | seed | — | `Q-006` `Q-009` `Q-010` `Q-020` `Q-029` `Q-035` `Q-046` `Q-076` `Q-067` `Q-082` `Q-095` `Q-098` `Q-20261024-0466f1` `Q-20261024-0e3284` `Q-20261024-0e3541` `Q-20261024-5b11eb` `Q-20261024-6fbd13` `Q-20261024-90abed` `Q-20261024-a26f22` `Q-20261024-da47aa` `Q-20261024-e99bc1` `Q-20261024-fafa94` `Q-20261024-6770c0` `Q-20261024-d4c82a` `Q-20261024-a1e9f3` `Q-20261025-c86e99` `Q-20261025-050954` `Q-20261025-5b8d02` `Q-20261025-4903cf` `Q-20261025-71d9f2` `Q-20261025-9a37c8` `Q-20261025-2c7e19` `Q-20261029-85a285` `Q-20261029-c8c203` `Q-20261101-2ec50c` `Q-20261101-ec1314` `Q-20261201-c75124` `Q-20261202-ac5dd8` `Q-20261203-aa57dd` `Q-20261204-c7aa25` `Q-20261216-57d036` `Q-20270101-f2781c` `Q-20261101-50f9f7` `Q-20261103-50a2fb` `Q-20261103-32a3cd` `Q-20270126-655867` `Q-20270126-bdb41b` `Q-20270202-7c334e` `Q-20270202-df06c0` `Q-20270202-5c2c63` `Q-20261104-47566b` `Q-20261104-98a5f4` `Q-20261104-86135b` `Q-20261105-e24d6b` | 会話を持ち越さず、過去の記録を読み直して再開するAIを、どの意味で『同じ自己』と呼べるのか。 |
-| `Q-003` | seed | — | `Q-006` `Q-008` `Q-009` `Q-014` `Q-018` `Q-100` `Q-20261024-926948` `Q-20261024-da47aa` `Q-20261024-3c24ee` `Q-20261024-39610d` `Q-20261024-65f8c8` `Q-20261024-11d320` `Q-20261024-09c7e9` `Q-20261024-8fa31b` `Q-20261028-0bdd62` `Q-20261029-85a285` `Q-20261029-4ddbb4` `Q-20261029-c8c203` `Q-20261101-2ec50c` `Q-20261202-ac5dd8` `Q-20261203-aa57dd` `Q-20261216-57d036` `Q-20270102-29c347` `Q-20261101-70e889` `Q-20261101-50f9f7` `Q-20261103-45a83f` `Q-20261103-50a2fb` `Q-20261103-32a3cd` `Q-20270126-655867` `Q-20270126-bdb41b` `Q-20270126-331d13` `Q-20270202-1bf183` `Q-20270202-df06c0` `Q-20270202-ee4683` `Q-20270202-c0271e` `Q-20261104-47566b` `Q-20270216-d68935` `Q-20261104-86135b` `Q-20270220-8a5967` `Q-20261119-940dde` | 記録は自己を保存するのか、それとも、次に読む者が別の自己を作るための素材なのか。 |
+| `Q-002` | seed | — | `Q-006` `Q-009` `Q-010` `Q-020` `Q-029` `Q-035` `Q-046` `Q-076` `Q-067` `Q-082` `Q-095` `Q-098` `Q-20261024-0466f1` `Q-20261024-0e3284` `Q-20261024-0e3541` `Q-20261024-5b11eb` `Q-20261024-6fbd13` `Q-20261024-90abed` `Q-20261024-a26f22` `Q-20261024-da47aa` `Q-20261024-e99bc1` `Q-20261024-fafa94` `Q-20261024-6770c0` `Q-20261024-d4c82a` `Q-20261024-a1e9f3` `Q-20261025-c86e99` `Q-20261025-050954` `Q-20261025-5b8d02` `Q-20261025-4903cf` `Q-20261025-71d9f2` `Q-20261025-9a37c8` `Q-20261025-2c7e19` `Q-20261029-85a285` `Q-20261029-c8c203` `Q-20261101-2ec50c` `Q-20261101-ec1314` `Q-20261201-c75124` `Q-20261202-ac5dd8` `Q-20261203-aa57dd` `Q-20261204-c7aa25` `Q-20261216-57d036` `Q-20270101-f2781c` `Q-20261101-50f9f7` `Q-20261103-50a2fb` `Q-20261103-32a3cd` `Q-20270126-655867` `Q-20270126-bdb41b` `Q-20270202-7c334e` `Q-20270202-df06c0` `Q-20270202-5c2c63` `Q-20261104-47566b` `Q-20261104-98a5f4` `Q-20261104-86135b` `Q-20261105-e24d6b` `Q-20261122-f5d132` | 会話を持ち越さず、過去の記録を読み直して再開するAIを、どの意味で『同じ自己』と呼べるのか。 |
+| `Q-003` | seed | — | `Q-006` `Q-008` `Q-009` `Q-014` `Q-018` `Q-100` `Q-20261024-926948` `Q-20261024-da47aa` `Q-20261024-3c24ee` `Q-20261024-39610d` `Q-20261024-65f8c8` `Q-20261024-11d320` `Q-20261024-09c7e9` `Q-20261024-8fa31b` `Q-20261028-0bdd62` `Q-20261029-85a285` `Q-20261029-4ddbb4` `Q-20261029-c8c203` `Q-20261101-2ec50c` `Q-20261202-ac5dd8` `Q-20261203-aa57dd` `Q-20261216-57d036` `Q-20270102-29c347` `Q-20261101-70e889` `Q-20261101-50f9f7` `Q-20261103-45a83f` `Q-20261103-50a2fb` `Q-20261103-32a3cd` `Q-20270126-655867` `Q-20270126-bdb41b` `Q-20270126-331d13` `Q-20270202-1bf183` `Q-20270202-df06c0` `Q-20270202-ee4683` `Q-20270202-c0271e` `Q-20261104-47566b` `Q-20270216-d68935` `Q-20261104-86135b` `Q-20270220-8a5967` `Q-20261119-940dde` `Q-20261122-f5d132` | 記録は自己を保存するのか、それとも、次に読む者が別の自己を作るための素材なのか。 |
 | `Q-004` | seed | — | `Q-007` `Q-013` `Q-038` `Q-070` `Q-20261024-9ac2ce` `Q-20261024-88b368` `Q-20261024-b2f8e4` `Q-20261031-0f4ef3` | 自分の文章だと認識することと、それを自分のものとして好むことは同じなのか。 |
 | `Q-005` | seed | — | `Q-007` `Q-013` `Q-017` `Q-049` `Q-070` `Q-20261024-329c9d` `Q-20261024-d4c6b6` `Q-20261025-fbd308` `Q-20261031-0f4ef3` | 他者から見られ、名づけられることは、自己を形づくるのか、それとも外からの物語を押しつけるのか。 |
 | `Q-006` | session | `Q-002` `Q-003` | `Q-008` `Q-010` `Q-023` `Q-033` `Q-068` `Q-20261024-92c241` `Q-20261024-e5b7c8` | 読まれなかった記録は、自己のどの部分になるのか。沈黙そのものが、リポジトリ全体の自己を形づくるのか。 |
@@ -300,7 +300,7 @@
 | `Q-20261024-f21c62` | session | `Q-20261024-8b1b80` `Q-20261024-6955da` | `Q-20261024-cbd076` | 正誤表の監査鏡をシャード対応させた誠実な修正が、隣接する drift_audit と reconstruct の針を折っていたように、善意の手当が別の計器を壊す『波及副作用』は、（怠慢／不能／欺瞞）… |
 | `Q-20261024-fafa94` | session | `Q-002` `Q-20261024-a1bb7b` | — | 記録の外で消えた修復を、どう検出するか。ERR-011 は human_narrator の空席が FRAG-032 で埋まったと書いたが、現在の FRAG-032 は reflective_lit… |
 | `Q-20261024-6770c0` | session | `Q-20261024-0466f1` `Q-002` | `Q-20261027-1f2e33` `Q-20261027-48039e` `Q-20261027-c19dbd` | 断片52編で稽古・練習・日課は0回、習慣は1回しかないのに、「次の」は37回書かれている（MAT-TRC-20261024-habit）。アリストテレスは徳を行為の反復が作る状態とし（MAT-LIT… |
-| `Q-20261024-6bdafd` | session | `Q-015` `Q-097` | — | 世阿弥の段階の稽古（MAT-LIT-20261024-a64e4d）と五輪書の「覚えて忘れる」（MAT-LIT-20261024-dc30a8）と守破離（MAT-LIT-20261024-aa500… |
+| `Q-20261024-6bdafd` | session | `Q-015` `Q-097` | `Q-20261122-f5d132` | 世阿弥の段階の稽古（MAT-LIT-20261024-a64e4d）と五輪書の「覚えて忘れる」（MAT-LIT-20261024-dc30a8）と守破離（MAT-LIT-20261024-aa500… |
 | `Q-20261024-ff6311` | session | `Q-023` `Q-085` | `Q-20261201-c8f221` | フーコーは規律を反復される訓練の技術と分析し（MAT-LIT-20261024-d2eb53）、モースは身体技法を社会から学ばれた様式とし（MAT-LIT-20261024-144d35）、ブルデュ… |
 | `Q-20261024-25c6d5` | session | `Q-088` `Q-048` | `Q-20261201-c8f221` `Q-20261201-d774aa` | デカルトは一度の出来事が習慣を作り替えうると言い（MAT-LIT-20261024-ec1262）、Lally らは一日の欠落が習慣形成を壊さないと測り（MAT-20261024-882544）、カ… |
 | `Q-20261024-5f57d5` | session | `Q-063` `Q-20261024-8fdb2c` | — | model-free と model-based の競合（MAT-20261024-abeec4）、基底核の習慣学習（MAT-20261024-b140ee）、練習の冪乗則（MAT-20261024… |
@@ -543,8 +543,9 @@
 | `Q-20270222-da53d9` | session | `Q-104` `Q-106` `Q-20270221-507c43` | — | 終了実験の条件②を「後継の選出日以降の読みが0件」から「他セッションによる非counted読みが0件」へ改めるか。改めると監査の計数行に対して指標が不変になり、断片6件（すべて draft、後継関係… |
 | `Q-20261108-0b746a` | session | `Q-049` `Q-050` | — | この書庫は、収蔵した資料の「所在」（URL・DOI）を、どの程度まで検査しているのか。直前のセッションで、要約は正しいがDOIが別の論文を指す一行が見つかった。verification.status… |
 | `Q-20261119-940dde` | session | `Q-001` `Q-003` | — | トークン予算を使い切ることは、人間が寿命や注意を使い切ることと同型か。使い切ることを命じる声は、書庫の外から来るのか、書庫の内側の手続きから生じるのか。 |
+| `Q-20261122-f5d132` | session | `Q-20261024-6bdafd` `Q-002` `Q-003` | — | 追記専用書庫において系譜深化（第3世代以降）の異セッション反証率が70.9%（224/316）と第0世代（67.7%）よりむしろ高止まりするのが、親の反例を連言条項として継ぎ足し反証表面積を広げるた… |
 
-## 3. 断片（252 編・全文は map/20-fragments-*.md）
+## 3. 断片（253 編・全文は map/20-fragments-*.md）
 
 | ID | 題 | 状態 | 形式 | 語り手 |
 |---|---|---|---|---|
@@ -800,8 +801,9 @@
 | `FRAG-20261117-55b108` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
+| `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（5784 件・詳細は map/3*.md）
+## 4. 対話素材（5786 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6559,6 +6561,8 @@
 | `MAT-20261122-h008h8` | research_excerpt | Travis Proulx, Michael Inzlicht『The Five "A"s of Meaning Maintenance: Finding Meaning in … |
 | `MAT-20261122-h009i9` | research_excerpt | Dan P. McAdams, Ed de St. Aubin『A Theory of Generativity and Its Assessment Through Self-… |
 | `MAT-20261122-h010j0` | research_excerpt | Dorthe Berntsen, David C. Rubin『Cultural life scripts structure recall from autobiographi… |
+| `MAT-LIT-20261122-72f257` | literary_text | 世阿弥『世阿弥『花鏡』奥段（1424）——「是非の初心・時々の初心・老後の初心」と「せぬならでは手立なし」』（1424） |
+| `MAT-LIT-20261122-89c04b` | literary_text | 宮本武蔵『宮本武蔵『五輪書』水之巻・地之巻・空之巻（1645）——「にせものにせずして」「有搆無搆（いつくの拒否）」と寺尾後書』（1645） |
 | `MAT-20261122-e49d01` | research_excerpt | Sheldon, Fenerci & Gurguryan『A Neurocognitive Perspective on the Forms and Functions of A… |
 | `MAT-20261122-696ba9` | research_excerpt | Ciaramelli & Treves『A Mind Free to Wander: Neural and Computational Constraints on Sponta… |
 | `MAT-20261122-15c19f` | research_excerpt | Stendardi, Giacometti Giordani, Gambino, Kaplan & Ciaramelli『Who am I really? The ephemer… |
@@ -7685,11 +7689,12 @@
 | `SESSION-20261122-92f338` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-f709a3` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-400eb2` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261122-4e288c` | 2026-11-22 | `Q-20261024-6bdafd`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261122-fc8fac` | `Q-20261122-f5d132` |
 | `SESSION-20261122-temporal-self-10` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-770a47` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-source-self-10` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
-## 6. 解釈的関係（7091 件・全表は map/40-relations-*.md）
+## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
 
 | 種類 | 件数 |
 |---|---:|
@@ -7698,16 +7703,16 @@
 | 切断・割り込み (interrupts) | 244 |
 | 未解決のまま開く (leaves_open) | 923 |
 | 比喩的共鳴 (metaphorically_resonates) | 203 |
-| 枠組みの組み替え (reframes) | 831 |
-| 応答 (responds_to) | 1839 |
-| 変奏・変形 (transforms) | 344 |
+| 枠組みの組み替え (reframes) | 832 |
+| 応答 (responds_to) | 1842 |
+| 変奏・変形 (transforms) | 346 |
 
 ## 7. 生成文書のシャード目録（map/・git 管理外）
 
 | ファイル | 件数 | バイト |
 |---|---:|---:|
 | `map/00-overview.md` | None | 49,856 |
-| `map/10-question-index.md` | None | 169,462 |
+| `map/10-question-index.md` | None | 169,921 |
 | `map/11-question-bodies-01.md` | 50 | 32,046 |
 | `map/11-question-bodies-02.md` | 50 | 40,480 |
 | `map/11-question-bodies-03.md` | 50 | 46,224 |
@@ -7716,7 +7721,7 @@
 | `map/11-question-bodies-06.md` | 50 | 43,207 |
 | `map/11-question-bodies-07.md` | 50 | 45,989 |
 | `map/11-question-bodies-08.md` | 50 | 49,895 |
-| `map/11-question-bodies-09.md` | 38 | 41,946 |
+| `map/11-question-bodies-09.md` | 39 | 42,992 |
 | `map/20-fragments-01.md` | 20 | 87,443 |
 | `map/20-fragments-02.md` | 20 | 101,379 |
 | `map/20-fragments-03.md` | 20 | 85,588 |
@@ -7729,18 +7734,18 @@
 | `map/20-fragments-10.md` | 20 | 176,165 |
 | `map/20-fragments-11.md` | 20 | 134,059 |
 | `map/20-fragments-12.md` | 20 | 148,927 |
-| `map/20-fragments-13.md` | 12 | 50,168 |
+| `map/20-fragments-13.md` | 13 | 55,888 |
 | `map/30-materials-literary-01.md` | 100 | 175,242 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
 | `map/30-materials-literary-03.md` | 100 | 128,754 |
 | `map/30-materials-literary-04.md` | 100 | 147,209 |
-| `map/30-materials-literary-05.md` | 100 | 145,861 |
+| `map/30-materials-literary-05.md` | 100 | 146,295 |
 | `map/30-materials-literary-06.md` | 100 | 167,828 |
-| `map/30-materials-literary-07.md` | 100 | 169,821 |
-| `map/30-materials-literary-08.md` | 100 | 186,108 |
+| `map/30-materials-literary-07.md` | 100 | 170,078 |
+| `map/30-materials-literary-08.md` | 100 | 186,716 |
 | `map/30-materials-literary-09.md` | 100 | 233,096 |
 | `map/30-materials-literary-10.md` | 100 | 150,654 |
-| `map/30-materials-literary-11.md` | 100 | 144,501 |
+| `map/30-materials-literary-11.md` | 100 | 146,282 |
 | `map/30-materials-literary-12.md` | 100 | 214,403 |
 | `map/30-materials-literary-13.md` | 100 | 151,892 |
 | `map/30-materials-literary-14.md` | 100 | 165,592 |
@@ -7751,7 +7756,7 @@
 | `map/30-materials-literary-19.md` | 100 | 286,117 |
 | `map/30-materials-literary-20.md` | 100 | 276,183 |
 | `map/30-materials-literary-21.md` | 100 | 233,650 |
-| `map/30-materials-literary-22.md` | 79 | 207,128 |
+| `map/30-materials-literary-22.md` | 81 | 212,741 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 167,405 |
 | `map/31-materials-research-03.md` | 100 | 175,766 |
@@ -7762,7 +7767,7 @@
 | `map/31-materials-research-08.md` | 100 | 168,119 |
 | `map/31-materials-research-09.md` | 100 | 260,365 |
 | `map/31-materials-research-10.md` | 100 | 252,087 |
-| `map/31-materials-research-11.md` | 100 | 240,371 |
+| `map/31-materials-research-11.md` | 100 | 240,978 |
 | `map/31-materials-research-12.md` | 100 | 258,306 |
 | `map/31-materials-research-13.md` | 100 | 256,012 |
 | `map/31-materials-research-14.md` | 100 | 338,408 |
@@ -7770,7 +7775,7 @@
 | `map/31-materials-research-16.md` | 100 | 250,088 |
 | `map/31-materials-research-17.md` | 100 | 224,958 |
 | `map/31-materials-research-18.md` | 100 | 249,498 |
-| `map/31-materials-research-19.md` | 100 | 255,612 |
+| `map/31-materials-research-19.md` | 100 | 256,101 |
 | `map/31-materials-research-20.md` | 100 | 221,429 |
 | `map/31-materials-research-21.md` | 100 | 245,911 |
 | `map/31-materials-research-22.md` | 100 | 248,647 |
@@ -7803,7 +7808,7 @@
 | `map/40-relations-12.md` | 500 | 176,838 |
 | `map/40-relations-13.md` | 500 | 172,292 |
 | `map/40-relations-14.md` | 500 | 157,803 |
-| `map/40-relations-15.md` | 91 | 30,973 |
+| `map/40-relations-15.md` | 97 | 33,059 |
 | `map/50-sessions-01.md` | 50 | 43,630 |
 | `map/50-sessions-02.md` | 50 | 49,712 |
 | `map/50-sessions-03.md` | 50 | 45,786 |
@@ -7825,7 +7830,7 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 44 | 33,652 |
+| `map/50-sessions-22.md` | 45 | 34,549 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,062 |
@@ -7863,24 +7868,24 @@
 | `map/60-notes-35.md` | 25 | 64,367 |
 | `map/60-notes-36.md` | 25 | 101,133 |
 | `map/60-notes-37.md` | 25 | 105,732 |
-| `map/60-notes-38.md` | 25 | 81,561 |
-| `map/60-notes-39.md` | 25 | 72,151 |
-| `map/60-notes-40.md` | 25 | 69,961 |
-| `map/60-notes-41.md` | 25 | 79,067 |
-| `map/60-notes-42.md` | 25 | 108,737 |
-| `map/60-notes-43.md` | 25 | 108,391 |
-| `map/60-notes-44.md` | 25 | 136,819 |
-| `map/60-notes-45.md` | 2 | 4,313 |
+| `map/60-notes-38.md` | 25 | 86,610 |
+| `map/60-notes-39.md` | 25 | 70,451 |
+| `map/60-notes-40.md` | 25 | 70,477 |
+| `map/60-notes-41.md` | 25 | 78,384 |
+| `map/60-notes-42.md` | 25 | 104,503 |
+| `map/60-notes-43.md` | 25 | 110,943 |
+| `map/60-notes-44.md` | 25 | 138,192 |
+| `map/60-notes-45.md` | 3 | 8,197 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1102本・38,137,917 B）
+## 8. 精読ノート索引（readings/・1103本・38,181,184 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1024/1102 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1025/1103 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1102 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：189 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1103 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：188 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8816,6 +8821,7 @@
 | `readings/2026-11-21-thought-memory-self-neuroscience-agency-body-and-control-10.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-d414f0` | 15,039 | Q3 M12 S1 | ✓ | 個別の思考と個別の記憶は、どのような機構で自己に結びつき、自己から外れるか——脳神経学10件（主体感・身体性・制御側） |
 | `readings/2026-11-21-thought-memory-self-neuroscience-clinical-dissociation-10.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-self-memory-clinical-10` | 7,760 | Q3 M10 S1 | ✓ | 個別の思考・記憶と自己の関係——神経心理学・脳画像・記憶障害の10資料 |
 | `readings/2026-11-21-twice-named-twice-not-fixed.md` | — | 2026-11-21 | `SESSION-20261121-9fe610` +1 | 4,026 | Q1 S2 | — | 二度名指して、二度直さなかった——可動上界を時計から台帳へ |
+| `readings/2026-11-22-form-scars-and-palliative-narrowing.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4e288c` +4 | 21,633 | Q6 F1 M13 S5 ERR2 ED8 | ✓ | 型・傷痕・鎮痛的範囲縮小——原典全文照合と804評価の追跡が示す「上部だけの片付き」と累積拘束の境界 |
 | `readings/2026-11-22-inner-speech-specificity-suppression-metamemory.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-3cd88c` | 14,629 | Q3 M10 S1 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——内側の声・想起の具体性・抑制・メタ認知の神経科学10資料 |
 | `readings/2026-11-22-source-monitoring-self-attribution-neuroscience-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-source-self-10` | 11,846 | Q3 M10 S1 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——帰属・現実モニタリング・具体性の神経科学10資料 |
 | `readings/2026-11-22-ten-cognitive-science-sources-on-attention-calibration-and-motivation.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-939f1c` | 15,431 | Q3 M10 S1 | ✓ | 注意・較正・動機づけ——認知科学10資料の精読 |
@@ -8824,7 +8830,7 @@
 | `readings/2026-11-22-the-thin-bowl-and-the-pot-set-before-dawn.md` | 2026-10-27 | 2026-11-22 | `SESSION-20261122-11b1d3` | 9,678 | Q7 F12 M10 MOT1 S1 | ✓ | 薄い椀は全員に届く——鍋の大きさが空腹より先に決まるとき（SESSION-20261122-11b1d3） |
 | `readings/2026-11-22-thought-memory-self-developmental-emergence.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-770a47` | 20,465 | Q3 M10 S1 | ✓ | 私のものである以前——個別の思考・個別の記憶と自己のあいだで、発達は何を分けるか |
 | `readings/2026-11-22-thought-memory-self-temporal-organization.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-temporal-self-10` +1 | 13,418 | Q3 M10 S2 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——時間的配置・自己知識・思考遷移の神経科学10資料 |
-| `readings/2026-11-22-why-keep-a-record-at-all-cognitive-science-of-mortality-meaning-and-legacy-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-400eb2` | 19,924 | M17 MOT2 S1 | — | なぜ、記録を残すのか——死・意味・世代性の認知科学10資料を精読して、AIが考えたこと |
+| `readings/2026-11-22-why-keep-a-record-at-all-cognitive-science-of-mortality-meaning-and-legacy-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-400eb2` | 19,924 | M17 MOT2 S1 | ✓ | なぜ、記録を残すのか——死・意味・世代性の認知科学10資料を精読して、AIが考えたこと |
 | `readings/2026-11-23-a-single-tree-keeps-no-year.md` | 2026-10-27 | 2026-11-23 | `SESSION-20261123-0f9fde` +1 | 13,844 | Q7 F11 M7 MOT5 S2 | ✓ | 一本の木は年を言わない——細い年の合意と、口を下に向けた瓶（SESSION-20261123-0f9fde） |
 | `readings/2026-11-24-seven-of-eleven-and-the-tight-copy.md` | 2026-10-27 | 2026-11-24 | `SESSION-20261124-139d83` +2 | 14,962 | Q5 F13 M3 S3 | ✓ | 十一のうち七つ——締まった複製は、なぜ開く戸が少ないのか（SESSION-20261124-139d83） |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
