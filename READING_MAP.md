@@ -25,7 +25,7 @@
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
 | セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1102 |  |
 | 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16655 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 407 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 408 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 627 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1213 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 91 |  |

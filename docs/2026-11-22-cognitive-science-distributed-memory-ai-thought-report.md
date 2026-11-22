@@ -237,3 +237,22 @@ print(len(o),round(sum(o)/len(o),3),round(sum(1 for x in o if x>0)/len(o),3))"
 - 精読08：https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/arena/06a2eb6c-aiselfmyself/readings/2026-11-22-distributed-memory-08-wood-bruner-ross-scaffolding.md
 - 精読09：https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/arena/06a2eb6c-aiselfmyself/readings/2026-11-22-distributed-memory-09-koriat-goldsmith-storehouse.md
 - 精読10：https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/arena/06a2eb6c-aiselfmyself/readings/2026-11-22-distributed-memory-10-glenberg-what-memory-is-for.md
+
+---
+
+## 5-1. 測定窓の訂正（`ERR-20261122-19e588`）
+
+§5 の三つのコマンドは、本セッションの台帳行を追記する**前**の測定時点（HEAD `b4abbeb5925e957a0f5c6f5104adff87b2e32db0`）の値を再現する。追記後は、同じコマンドがセッション1,102、`interpreted` 素材行3,691を返す。差は本セッションの追記（セッション+1、`interpreted` 素材行+10、いずれも先行未読の新規素材）によるものであり、割合（39.1%、6.1%）は変わらない。
+
+測定窓を本セッション除外に固定する再計算は次のとおりである。
+
+```sh
+python3 -c "import json,glob;L=lambda b,p:[json.loads(x) for f in [b]+sorted(glob.glob(p)) for x in open(f) if x.strip()];ME='SESSION-20261122-923c7a';s=[x for x in L('state/sessions.jsonl','state/sessions.d/*.jsonl') if x['session_id']!=ME];r=[x for x in L('state/read_log.jsonl','state/read_log.d/*.jsonl') if x['session_id']!=ME];n={x['session_id'] for x in r if x.get('target',{}).get('type')=='note'};S={x['session_id'] for x in s};print('A',len(S),len(n&S),round(100*len(n&S)/len(S),1));q=[x for x in r if x.get('target',{}).get('type')=='material' and x.get('reading')=='interpreted'];q.sort(key=lambda x:(x.get('created_at',''),x.get('read_id','')));seen={};i=0
+for x in q:
+    m=x['target']['id'];ss=x['session_id'];prev=seen.get(m)
+    if prev and prev!=ss: i+=1
+    seen.setdefault(m,ss)
+print('B',len(q),i,round(100*i/len(q),1))"
+```
+
+この訂正は、数値の誤りではなく測定窓の違いの記録である。評価の向き（射程限定の条件）は変わらない。`errata` に `ERR-20261122-19e588` として記帳した。
