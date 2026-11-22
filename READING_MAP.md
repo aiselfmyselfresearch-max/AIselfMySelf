@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5836 件（research_excerpt 3587 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5866 件（research_excerpt 3617 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1103 回
+- **探究セッション（Sessions）**：1106 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5836 | `literary_text` 2181／`research_excerpt` 3587／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5866 | `literary_text` 2181／`research_excerpt` 3617／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1103 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16655 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 407 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1106 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16691 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 409 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 627 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1205 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1227 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 91 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 832 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 840 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（5836 件・詳細は map/3*.md）
+## 4. 対話素材（5866 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6583,6 +6583,26 @@
 | `MAT-20261122-857b8d` | research_excerpt | Noam Chomsky『Chomsky (1957) 『Syntactic Structures』——構文を自律的な形式系として』（1957） |
 | `MAT-20261122-179526` | research_excerpt | Jerry A. Fodor『Fodor (1983) 『The Modularity of Mind』——入力系のモジュール性と中央系の非モジュール性』（1983） |
 | `MAT-20261122-4bf192` | research_excerpt | James J. Gibson『Gibson (1979) 『The Ecological Approach to Visual Perception』——知覚と環境の直接的な関… |
+| `MAT-20261122-2f13f7` | research_excerpt | Henry L. Roediger III, Michelle L. Meade, Erik T. Bergman『Roediger, Meade & Bergman (2001… |
+| `MAT-20261122-d5d83e` | research_excerpt | Fiona Gabbert, Amina Memon, Kevin Allan『Gabbert, Memon & Allan (2003)「記憶の同調」——別々の映像を見た二人が… |
+| `MAT-20261122-4d6c0b` | research_excerpt | Alexandru Cuc, Jonathan Koppel, William Hirst『Cuc, Koppel & Hirst (2007)「沈黙は金ではない」——聞き手の記… |
+| `MAT-20261122-8203b9` | research_excerpt | Celia B. Harris, Helen M. Paterson, Richard I. Kemp『Harris, Paterson & Kemp (2008)「共同再生と集… |
+| `MAT-20261122-8fa20f` | research_excerpt | John Sutton, Celia B. Harris, Paul G. Keil, Amanda J. Barnier『Sutton, Harris, Keil & Barn… |
+| `MAT-20261122-e0b349` | research_excerpt | Robert D. Rupert『Rupert (2004)「拡張認知仮説への挑戦」——結合は構成ではない』（2004） |
+| `MAT-20261122-0897ae` | research_excerpt | Fred Adams, Kenneth Aizawa『Adams & Aizawa (2001)「認知の境界」——認知の印は、派生されない内容である』（2001） |
+| `MAT-20261122-4bc1b9` | research_excerpt | David Wood, Jerome S. Bruner, Gail Ross『Wood, Bruner & Ross (1976)「問題解決における tutoring」——足場… |
+| `MAT-20261122-a82fdb` | research_excerpt | Asher Koriat, Morris Goldsmith『Koriat & Goldsmith (1996)「記憶の隠喩」——貯蔵庫か、対応か』（1996） |
+| `MAT-20261122-344b2a` | research_excerpt | Arthur M. Glenberg『Glenberg (1997)「記憶は何のためにあるのか」——記憶は貯蔵ではなく、行為のための身体化である』（1997） |
+| `MAT-20261122-fb1867` | research_excerpt | Stephen M. Kosslyn, Thomas M. Ball, Brian J. Reiser『Stephen M. Kosslyn (1978) — Visual im… |
+| `MAT-20261122-522c18` | research_excerpt | Antoine Bechara, Antonio R. Damasio, Hanna Damasio, Steven W. Anderson『Antoine Bechara (1… |
+| `MAT-20261122-8cb0dc` | research_excerpt | Giulio Tononi『Giulio Tononi (2004) — An information integration theory of consciousness』（… |
+| `MAT-20261122-e26a20` | research_excerpt | Karl Friston『Karl Friston (2005) — A theory of cortical responses』（2005） |
+| `MAT-20261122-2b0cb6` | research_excerpt | D. O. Hebb『D. O. Hebb (1949) — The Organization of Behavior: A Neuropsychological Theory』… |
+| `MAT-20261122-3d8fc5` | research_excerpt | L. S. Vygotsky『L. S. Vygotsky (1978) — Mind in Society: The Development of Higher Psychol… |
+| `MAT-20261122-95fa4f` | research_excerpt | Jean Piaget『Jean Piaget (1952) — The Origins of Intelligence in Children』（1952） |
+| `MAT-20261122-d7e121` | research_excerpt | Bernard J. Baars『Bernard J. Baars (1988) — A Cognitive Theory of Consciousness』（1988） |
+| `MAT-20261122-231fce` | research_excerpt | Steven Pinker『Steven Pinker (1994) — The Language Instinct: How the Mind Creates Language… |
+| `MAT-20261122-667f52` | research_excerpt | Alva Noë『Alva Noë (2004) — Action in Perception』（2004） |
 | `MAT-20261122-e49d01` | research_excerpt | Sheldon, Fenerci & Gurguryan『A Neurocognitive Perspective on the Forms and Functions of A… |
 | `MAT-20261122-696ba9` | research_excerpt | Ciaramelli & Treves『A Mind Free to Wander: Neural and Computational Constraints on Sponta… |
 | `MAT-20261122-15c19f` | research_excerpt | Stendardi, Giacometti Giordani, Gambino, Kaplan & Ciaramelli『Who am I really? The ephemer… |
@@ -6623,6 +6643,16 @@
 | `MAT-20261122-4087d2` | research_excerpt | Weiss-Cowie, Verhaeghen, Duarte『An updated account of overgeneral autobiographical memory… |
 | `MAT-20261122-01f6c4` | research_excerpt | Kucyi, Kam, Andrews-Hanna, et al.『Recent advances in the neuroscience of spontaneous and … |
 | `MAT-20261122-de9cb0` | research_excerpt | Kunz, Abramovich Krasa, Willett, et al.『Inner speech in motor cortex and implications for… |
+| `MAT-20261122-8ede07` | research_excerpt | Peter Mundy, Lisa Newell『Attention, Joint Attention, and Social Cognition』（2007） |
+| `MAT-20261122-50e537` | research_excerpt | Amanda C. Brandone, Wyntre Stout『The Origins of Theory of Mind in Infant Social Cognition… |
+| `MAT-20261122-b657d2` | research_excerpt | Caterina Foglino, Agnieszka Wykowska『Joint attention supports working memory when gaze cu… |
+| `MAT-20261122-7311f7` | research_excerpt | Xiaobei Zheng, Chao Sun『Understanding perspective-taking in multiparty conversations: ins… |
+| `MAT-20261122-709996` | research_excerpt | Friederike Schütte, Nivedita Mani, Tanya Behne『Retrospective inferences in selective trus… |
+| `MAT-20261122-5b8a7c` | research_excerpt | Aleksandra Krogulska, Kinga Izdebska, Maciej Hanczakowski, Katarzyna Zawadzka『Whom to tru… |
+| `MAT-20261122-d231f8` | research_excerpt | Johannes B. Mahr, Olivier Mascaro, Hugo Mercier, Gergely Csibra『The effect of disagreemen… |
+| `MAT-20261122-221a66` | research_excerpt | Clelia Rossi-Arnaud, Pietro Spataro, Alessandro Santirocchi, Maria Chiara Pesola, Laura C… |
+| `MAT-20261122-7e6b25` | research_excerpt | Magdalena Abel『Does collaborative remembering serve a directive function? Examining the i… |
+| `MAT-20261122-734925` | research_excerpt | Laura Mieth, Marie Luisa Schaper, Beatrice G. Kuhlmann, Raoul Bell『Memory and metamemory … |
 | `MAT-20261122-262fd3` | research_excerpt | Hollyn M. Johnson, Colleen M. Seifert『ジョンソン＆サイファート（1994）継続的影響効果の源——訂正を覚えていても、因果の穴を埋めるものがな… |
 | `MAT-20261122-bb2675` | research_excerpt | Ullrich K. H. Ecker, Stephan Lewandowsky, Briony Swire, Darren Chang『エッカーほか（2011）誤情報の符号化の… |
 | `MAT-20261122-5afa5d` | research_excerpt | Brady Butterfield, Janet Metcalfe『バターフィールド＆メトカーフ（2001）高確信の誤りは過剰修正される——そして、その誤りは再試験でも頭に浮かび… |
@@ -7743,12 +7773,15 @@
 | `SESSION-20261122-4e288c` | 2026-11-22 | `Q-20261024-6bdafd`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261122-fc8fac` | `Q-20261122-f5d132` |
 | `SESSION-20261122-7ef222` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-1ad049` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-6bdafd`, `Q-20261122-f5d132` | — | — |
+| `SESSION-20261122-923c7a` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-a121a8` | 2026-11-22 | `Q-20261024-6bdafd`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-085b7e` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261122-926331` | 2026-11-22 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261122-29a69e` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-temporal-self-10` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-770a47` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-source-self-10` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261122-06c898` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-6bdafd` | — | — |
 | `SESSION-20261122-3efed8` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-2d7161` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
@@ -7850,7 +7883,8 @@
 | `map/31-materials-research-33.md` | 100 | 214,663 |
 | `map/31-materials-research-34.md` | 100 | 218,243 |
 | `map/31-materials-research-35.md` | 100 | 246,932 |
-| `map/31-materials-research-36.md` | 87 | 220,883 |
+| `map/31-materials-research-36.md` | 100 | 214,343 |
+| `map/31-materials-research-37.md` | 17 | 63,642 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7888,66 +7922,68 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 50 | 38,077 |
-| `map/50-sessions-23.md` | 3 | 2,445 |
-| `map/60-notes-01.md` | 25 | 65,365 |
-| `map/60-notes-02.md` | 25 | 72,350 |
-| `map/60-notes-03.md` | 25 | 71,686 |
-| `map/60-notes-04.md` | 25 | 99,042 |
-| `map/60-notes-05.md` | 25 | 87,543 |
-| `map/60-notes-06.md` | 25 | 55,858 |
-| `map/60-notes-07.md` | 25 | 68,625 |
-| `map/60-notes-08.md` | 25 | 51,755 |
-| `map/60-notes-09.md` | 25 | 58,893 |
-| `map/60-notes-10.md` | 25 | 66,234 |
-| `map/60-notes-11.md` | 25 | 68,703 |
-| `map/60-notes-12.md` | 25 | 69,637 |
-| `map/60-notes-13.md` | 25 | 91,776 |
-| `map/60-notes-14.md` | 25 | 116,478 |
-| `map/60-notes-15.md` | 25 | 85,749 |
-| `map/60-notes-16.md` | 25 | 95,164 |
-| `map/60-notes-17.md` | 25 | 108,413 |
-| `map/60-notes-18.md` | 25 | 112,418 |
-| `map/60-notes-19.md` | 25 | 111,374 |
-| `map/60-notes-20.md` | 25 | 172,767 |
-| `map/60-notes-21.md` | 25 | 141,027 |
-| `map/60-notes-22.md` | 25 | 126,865 |
-| `map/60-notes-23.md` | 25 | 123,144 |
-| `map/60-notes-24.md` | 25 | 99,806 |
-| `map/60-notes-25.md` | 25 | 116,120 |
-| `map/60-notes-26.md` | 25 | 124,206 |
-| `map/60-notes-27.md` | 25 | 104,763 |
-| `map/60-notes-28.md` | 25 | 86,735 |
-| `map/60-notes-29.md` | 25 | 100,885 |
-| `map/60-notes-30.md` | 25 | 38,187 |
-| `map/60-notes-31.md` | 25 | 70,397 |
-| `map/60-notes-32.md` | 25 | 128,603 |
-| `map/60-notes-33.md` | 25 | 125,640 |
-| `map/60-notes-34.md` | 25 | 87,202 |
-| `map/60-notes-35.md` | 25 | 61,028 |
-| `map/60-notes-36.md` | 25 | 103,633 |
-| `map/60-notes-37.md` | 25 | 105,797 |
-| `map/60-notes-38.md` | 25 | 75,209 |
-| `map/60-notes-39.md` | 25 | 90,787 |
-| `map/60-notes-40.md` | 25 | 78,661 |
-| `map/60-notes-41.md` | 25 | 68,810 |
-| `map/60-notes-42.md` | 25 | 83,000 |
-| `map/60-notes-43.md` | 25 | 107,957 |
-| `map/60-notes-44.md` | 25 | 127,654 |
-| `map/60-notes-45.md` | 21 | 99,746 |
+| `map/50-sessions-22.md` | 50 | 38,049 |
+| `map/50-sessions-23.md` | 6 | 4,961 |
+| `map/60-notes-01.md` | 25 | 65,135 |
+| `map/60-notes-02.md` | 25 | 72,215 |
+| `map/60-notes-03.md` | 25 | 70,988 |
+| `map/60-notes-04.md` | 25 | 98,591 |
+| `map/60-notes-05.md` | 25 | 89,141 |
+| `map/60-notes-06.md` | 25 | 55,383 |
+| `map/60-notes-07.md` | 25 | 69,173 |
+| `map/60-notes-08.md` | 25 | 51,569 |
+| `map/60-notes-09.md` | 25 | 58,379 |
+| `map/60-notes-10.md` | 25 | 65,501 |
+| `map/60-notes-11.md` | 25 | 70,152 |
+| `map/60-notes-12.md` | 25 | 68,504 |
+| `map/60-notes-13.md` | 25 | 88,805 |
+| `map/60-notes-14.md` | 25 | 116,343 |
+| `map/60-notes-15.md` | 25 | 86,206 |
+| `map/60-notes-16.md` | 25 | 94,173 |
+| `map/60-notes-17.md` | 25 | 107,066 |
+| `map/60-notes-18.md` | 25 | 119,191 |
+| `map/60-notes-19.md` | 25 | 106,447 |
+| `map/60-notes-20.md` | 25 | 175,246 |
+| `map/60-notes-21.md` | 25 | 142,181 |
+| `map/60-notes-22.md` | 25 | 120,895 |
+| `map/60-notes-23.md` | 25 | 127,094 |
+| `map/60-notes-24.md` | 25 | 99,836 |
+| `map/60-notes-25.md` | 25 | 111,346 |
+| `map/60-notes-26.md` | 25 | 131,190 |
+| `map/60-notes-27.md` | 25 | 105,817 |
+| `map/60-notes-28.md` | 25 | 82,916 |
+| `map/60-notes-29.md` | 25 | 105,109 |
+| `map/60-notes-30.md` | 25 | 37,712 |
+| `map/60-notes-31.md` | 25 | 65,856 |
+| `map/60-notes-32.md` | 25 | 125,976 |
+| `map/60-notes-33.md` | 25 | 129,342 |
+| `map/60-notes-34.md` | 25 | 90,430 |
+| `map/60-notes-35.md` | 25 | 58,816 |
+| `map/60-notes-36.md` | 25 | 101,435 |
+| `map/60-notes-37.md` | 25 | 105,637 |
+| `map/60-notes-38.md` | 25 | 64,679 |
+| `map/60-notes-39.md` | 25 | 56,896 |
+| `map/60-notes-40.md` | 25 | 91,766 |
+| `map/60-notes-41.md` | 25 | 80,766 |
+| `map/60-notes-42.md` | 25 | 69,799 |
+| `map/60-notes-43.md` | 25 | 91,650 |
+| `map/60-notes-44.md` | 25 | 97,334 |
+| `map/60-notes-45.md` | 25 | 127,180 |
+| `map/60-notes-46.md` | 18 | 91,017 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1121本・38,549,918 B）
+## 8. 精読ノート索引（readings/・1143本・38,663,902 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1031/1121 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1043/1143 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1121 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：189 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1143 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：190 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
+| `docs/2026-11-22-cognitive-science-distributed-memory-ai-thought-report.md` | 2026-11-22 | — | — | 0 | — | — | docs/2026-11-22-cognitive-science-distributed-memory-ai-tho… |
 | `docs/2026-11-22-cognitive-science-ten-materials-ai-thought-report.md` | — | — | — | 0 | — | — | docs/2026-11-22-cognitive-science-ten-materials-ai-thought-… |
 | `readings/2026-10-22-breath.md` | 2026-10-24 | 2026-10-22 | `SESSION-030` +2 | 3,394 | Q3 F5 M1 S3 | ✓ | この書庫は一度も長い息をしていない |
 | `readings/2026-10-22-carriers.md` | 2026-10-22 | 2026-10-22 | `SESSION-024` | 4,979 | Q6 F3 M6 S1 | ✓ | 運び手の欄 —— 声はどの言語を通り、誰の手でこの台帳に来たか |
@@ -8882,6 +8918,16 @@
 | `readings/2026-11-21-thought-memory-self-neuroscience-clinical-dissociation-10.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-self-memory-clinical-10` | 7,760 | Q3 M10 S1 | ✓ | 個別の思考・記憶と自己の関係——神経心理学・脳画像・記憶障害の10資料 |
 | `readings/2026-11-21-twice-named-twice-not-fixed.md` | — | 2026-11-21 | `SESSION-20261121-9fe610` +1 | 4,026 | Q1 S2 | — | 二度名指して、二度直さなかった——可動上界を時計から台帳へ |
 | `readings/2026-11-22-attentional-window-blindness-memory.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-2d7161` | 13,024 | Q3 M10 S1 | — | 注意の窓・盲視・系列位置・状態依存想起——認知科学10資料の精読と、AIの見方 |
+| `readings/2026-11-22-cognitive-action-development-01-kosslyn.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,111 | M1 S1 | ✓ | Stephen M. Kosslyn (1978) —— Visual images preserve metric … |
+| `readings/2026-11-22-cognitive-action-development-02-bechara.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,105 | M1 S1 | ✓ | Antoine Bechara (1994) —— Insensitivity to future consequen… |
+| `readings/2026-11-22-cognitive-action-development-03-tononi.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,084 | M1 S1 | ✓ | Giulio Tononi (2004) —— An information integration theory o… |
+| `readings/2026-11-22-cognitive-action-development-04-friston.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,076 | M1 S1 | ✓ | Karl Friston (2005) —— A theory of cortical responses |
+| `readings/2026-11-22-cognitive-action-development-05-hebb.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,131 | M1 S1 | ✓ | D. O. Hebb (1949) —— The Organization of Behavior: A Neurop… |
+| `readings/2026-11-22-cognitive-action-development-06-vygotsky.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,197 | M1 S1 | ✓ | L. S. Vygotsky (1978) —— Mind in Society: The Development o… |
+| `readings/2026-11-22-cognitive-action-development-07-piaget.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,122 | M1 S1 | ✓ | Jean Piaget (1952) —— The Origins of Intelligence in Childr… |
+| `readings/2026-11-22-cognitive-action-development-08-baars.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,054 | M1 S1 | ✓ | Bernard J. Baars (1988) —— A Cognitive Theory of Consciousn… |
+| `readings/2026-11-22-cognitive-action-development-09-pinker.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,122 | M1 S1 | ✓ | Steven Pinker (1994) —— The Language Instinct: How the Mind… |
+| `readings/2026-11-22-cognitive-action-development-10-noe.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,112 | M1 S1 | ✓ | Alva Noë (2004) —— Action in Perception |
 | `readings/2026-11-22-cognitive-science-memory-operations-report.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-29a69e` | 17,054 | Q1 M10 S1 | — | 記憶を持つことと、記憶で考えること――認知科学10資料の精読と、人間・AIの自己への応答 |
 | `readings/2026-11-22-cognitive-science-of-fluency-illusions-memory-reconstruction-and-shared-reality-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-26422d` | 29,116 | Q4 M10 S1 | ✓ | 流暢さの錯覚、記憶の再構成、そして互恵的な共有現実――認知科学10編の一次精読と「記録を読む自己」の境界条件 |
 | `readings/2026-11-22-cognitive-science-ten-materials-01-bartlett-remembering.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 2,279 | Q1 M1 S1 | ✓ | Bartlett (1932) 『Remembering』——記憶はスキーマによって再構成される |
@@ -8894,11 +8940,22 @@
 | `readings/2026-11-22-cognitive-science-ten-materials-08-chomsky-syntactic-structures.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,818 | Q1 M1 S1 | ✓ | Chomsky (1957) 『Syntactic Structures』——構文を自律的な形式系として |
 | `readings/2026-11-22-cognitive-science-ten-materials-09-fodor-modularity.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,735 | Q1 M1 S1 | ✓ | Fodor (1983) 『The Modularity of Mind』——入力系のモジュール性と中央系の非モジュー… |
 | `readings/2026-11-22-cognitive-science-ten-materials-10-gibson-ecological-perception.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,809 | Q2 M1 S1 | ✓ | Gibson (1979) 『The Ecological Approach to Visual Perception… |
+| `readings/2026-11-22-distributed-memory-01-roediger-social-contagion.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-923c7a` | 3,231 | Q2 M1 S1 | ✓ | Roediger, Meade & Bergman (2001)「社会的伝染としての記憶」——他人の誤りが、こちらの再… |
+| `readings/2026-11-22-distributed-memory-02-gabbert-memory-conformity.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-923c7a` | 2,520 | Q1 M1 S1 | ✓ | Gabbert, Memon & Allan (2003)「記憶の同調」——別々の映像を見た二人が、同じ事件を語り始める |
+| `readings/2026-11-22-distributed-memory-03-cuc-silence-is-not-golden.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-923c7a` | 2,812 | Q1 M1 S1 | ✓ | Cuc, Koppel & Hirst (2007)「沈黙は金ではない」——聞き手の記憶は、話し手が想起したものによっ… |
+| `readings/2026-11-22-distributed-memory-04-harris-collaborative-recall.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-923c7a` | 2,852 | Q1 M1 S1 | ✓ | Harris, Paterson & Kemp (2008)「共同再生と集合的記憶」——一緒に思い出すと、思い出せなく… |
+| `readings/2026-11-22-distributed-memory-05-sutton-extended-cognition.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-923c7a` | 3,160 | Q1 M1 S1 | ✓ | Sutton, Harris, Keil & Barnier (2010)「記憶の心理学、拡張認知、社会的に分散した想… |
+| `readings/2026-11-22-distributed-memory-06-rupert-cognitive-bloat.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-923c7a` | 2,654 | Q1 M1 S1 | ✓ | Rupert (2004)「拡張認知仮説への挑戦」——結合は構成ではない |
+| `readings/2026-11-22-distributed-memory-07-adams-aizawa-bounds-of-cognition.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-923c7a` | 2,560 | Q1 M1 S1 | ✓ | Adams & Aizawa (2001)「認知の境界」——認知の印は、派生されない内容である |
+| `readings/2026-11-22-distributed-memory-08-wood-bruner-ross-scaffolding.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-923c7a` | 2,982 | Q1 M1 S1 | ✓ | Wood, Bruner & Ross (1976)「問題解決における tutoring」——足場は、いつ外されるのか |
+| `readings/2026-11-22-distributed-memory-09-koriat-goldsmith-storehouse.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-923c7a` | 2,772 | Q1 M1 S1 | ✓ | Koriat & Goldsmith (1996)「記憶の隠喩」——貯蔵庫か、対応か |
+| `readings/2026-11-22-distributed-memory-10-glenberg-what-memory-is-for.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-923c7a` | 2,768 | Q1 M1 S1 | ✓ | Glenberg (1997)「記憶は何のためにあるのか」——記憶は貯蔵ではなく、行為のための身体化である |
 | `readings/2026-11-22-form-scars-and-palliative-narrowing.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4e288c` +4 | 21,633 | Q6 F1 M13 S5 ERR2 ED8 | ✓ | 型・傷痕・鎮痛的範囲縮小——原典全文照合と804評価の追跡が示す「上部だけの片付き」と累積拘束の境界 |
 | `readings/2026-11-22-inner-speech-specificity-suppression-metamemory.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-3cd88c` | 14,629 | Q3 M10 S1 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——内側の声・想起の具体性・抑制・メタ認知の神経科学10資料 |
 | `readings/2026-11-22-orthogonal-generation-attribution-and-epoch-stratified-audit.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-1ad049` +1 | 10,258 | Q5 M5 S2 ED1 | ✓ | 二軸直交生成帰属とエポック層別化監査——一次神経文献全文照合による `Q-001` 過限定系譜の再分化と `970be… |
 | `readings/2026-11-22-orthogonality-is-not-independence.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-085b7e` | 3,678 | Q1 M2 S1 | ✓ | 直交は独立を意味しない——「私の経験」を分ける神経モデルの射程を読み直す |
 | `readings/2026-11-22-routing-is-not-dependence.md` | — | 2026-11-22 | `SESSION-20261122-a121a8` | 3,182 | Q4 M2 S1 | ✓ | 周辺問の退避は型への依存か——分母と忘却を分ける |
+| `readings/2026-11-22-shared-attention-source-trust-and-collaborative-memory.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-06c898` | 13,528 | Q4 M10 S1 ERR1 | ✓ | 共に注意し、誰を信じ、何を持ち帰るか——認知科学10資料の精読 |
 | `readings/2026-11-22-source-monitoring-self-attribution-neuroscience-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-source-self-10` | 11,846 | Q3 M10 S1 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——帰属・現実モニタリング・具体性の神経科学10資料 |
 | `readings/2026-11-22-ten-cognitive-science-sources-on-attention-calibration-and-motivation.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-939f1c` | 15,431 | Q3 M10 S1 | ✓ | 注意・較正・動機づけ——認知科学10資料の精読 |
 | `readings/2026-11-22-ten-cognitive-science-sources-on-correction-and-what-remains.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-3efed8` +1 | 80,907 | Q3 M26 S2 ERR14 | ✓ | 訂正されたものはどこへ行くのか——訂正・撤回・更新をめぐる認知科学10資料の精読 |
