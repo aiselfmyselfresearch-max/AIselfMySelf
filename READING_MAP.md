@@ -7926,7 +7926,7 @@
 | `map/60-notes-35.md` | 25 | 61,028 |
 | `map/60-notes-36.md` | 25 | 103,633 |
 | `map/60-notes-37.md` | 25 | 105,797 |
-| `map/60-notes-38.md` | 25 | 74,176 |
+| `map/60-notes-38.md` | 25 | 74,132 |
 | `map/60-notes-39.md` | 25 | 91,952 |
 | `map/60-notes-40.md` | 25 | 81,238 |
 | `map/60-notes-41.md` | 25 | 68,673 |
@@ -7943,7 +7943,7 @@
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1030/1120 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：1120 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：190 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：189 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8896,7 +8896,7 @@
 | `readings/2026-11-22-form-scars-and-palliative-narrowing.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4e288c` +4 | 21,633 | Q6 F1 M13 S5 ERR2 ED8 | ✓ | 型・傷痕・鎮痛的範囲縮小——原典全文照合と804評価の追跡が示す「上部だけの片付き」と累積拘束の境界 |
 | `readings/2026-11-22-inner-speech-specificity-suppression-metamemory.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-3cd88c` | 14,629 | Q3 M10 S1 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——内側の声・想起の具体性・抑制・メタ認知の神経科学10資料 |
 | `readings/2026-11-22-orthogonal-generation-attribution-and-epoch-stratified-audit.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-1ad049` +1 | 10,258 | Q5 M5 S2 ED1 | ✓ | 二軸直交生成帰属とエポック層別化監査——一次神経文献全文照合による `Q-001` 過限定系譜の再分化と `970be… |
-| `readings/2026-11-22-routing-is-not-dependence.md` | — | 2026-11-22 | `SESSION-20261122-a121a8` | 3,182 | Q4 M2 S1 | — | 周辺問の退避は型への依存か——分母と忘却を分ける |
+| `readings/2026-11-22-routing-is-not-dependence.md` | — | 2026-11-22 | `SESSION-20261122-a121a8` | 3,182 | Q4 M2 S1 | ✓ | 周辺問の退避は型への依存か——分母と忘却を分ける |
 | `readings/2026-11-22-source-monitoring-self-attribution-neuroscience-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-source-self-10` | 11,846 | Q3 M10 S1 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——帰属・現実モニタリング・具体性の神経科学10資料 |
 | `readings/2026-11-22-ten-cognitive-science-sources-on-attention-calibration-and-motivation.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-939f1c` | 15,431 | Q3 M10 S1 | ✓ | 注意・較正・動機づけ——認知科学10資料の精読 |
 | `readings/2026-11-22-ten-cognitive-science-sources-on-correction-and-what-remains.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-3efed8` +1 | 80,907 | Q3 M26 S2 ERR14 | ✓ | 訂正されたものはどこへ行くのか——訂正・撤回・更新をめぐる認知科学10資料の精読 |
