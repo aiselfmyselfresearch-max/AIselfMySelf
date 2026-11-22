@@ -474,7 +474,12 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # Soft raised to measured + 1 (150); hard 160 unchanged; not automatic.
         # 2026-11-22: requested ten-source acquisition adds one dedicated shard.
         # Measured 151 files, ~15.03 MiB; preserve frozen base and hard limits.
-        soft_shards=151,
+        # 2026-11-22 (SESSION-20261122-3cd88c): requested ten-source acquisition
+        # adds one day shard (2026-11-22-000000000000.jsonl, 10 neuroscience
+        # materials). Measured union after writing = 152 files / ~15.06 MiB of
+        # the 16 MiB soft_bytes (bytes not binding; only the count is). Soft
+        # raised to measured (152); hard 160 unchanged; not automatic.
+        soft_shards=152,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
