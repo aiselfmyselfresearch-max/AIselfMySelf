@@ -210,3 +210,87 @@ class LiveLedgerArmTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# ---------------------------------------------------------------------------
+# 2026-11-22: ``temporal_heir_guard`` -- the third knob, and the narrowest.
+#
+# The fallback reads ``children_by_parent``, which is built from the hypotheses
+# that exist *at read time*. A row recorded before a child was registered
+# therefore pays that child anyway. This knob drops only those credits whose
+# child day is strictly later than the evaluation's day.
+#
+# See readings/2026-11-22-the-question-that-closed-itself.md
+# ---------------------------------------------------------------------------
+
+
+def _hyp_dated(hid, created_at, parents=()):
+    h = _hyp(hid, parents=parents)
+    h["created_at"] = created_at
+    return h
+
+
+def _ledger_dated(hyps, rows):
+    return {"questions": {}, "hypotheses": hyps, "evaluations": {r["evaluation_id"]: r for r in rows},
+            "materials": {}, "fragments": {}, "sessions": {}, "notes": {},
+            "errata": {}, "hypothesis_read_log": {}}
+
+
+class TemporalHeirGuardTests(unittest.TestCase):
+    """The guard denies exactly one thing: credit that post-dates the row."""
+
+    def _post_dated(self):
+        hyps = {
+            "H-P": _hyp_dated("H-P", "2026-11-10T00:00:00Z"),
+            # child registered two days AFTER the evaluation below
+            "H-LATE": _hyp_dated("H-LATE", "2026-11-14T00:00:00Z", parents=["H-P"]),
+        }
+        return _ledger_dated(hyps, [_evl("E-1", "H-P", [])])  # E-1 is dated 2026-11-12
+
+    def _prior(self):
+        hyps = {
+            "H-P": _hyp_dated("H-P", "2026-11-10T00:00:00Z"),
+            # child already existed when the row was written
+            "H-EARLY": _hyp_dated("H-EARLY", "2026-11-11T00:00:00Z", parents=["H-P"]),
+        }
+        return _ledger_dated(hyps, [_evl("E-1", "H-P", [])])
+
+    def test_default_still_pays_a_post_dated_child(self):
+        # Pinned deliberately: the default is the historical arithmetic, so this
+        # test must fail if someone flips the default without meaning to.
+        self.assertGreater(_lo(self._post_dated(), "H-LATE"), 0.0)
+
+    def test_guard_denies_credit_that_post_dates_the_row(self):
+        self.assertAlmostEqual(
+            _lo(self._post_dated(), "H-LATE", temporal_heir_guard=True), 0.0, places=12
+        )
+
+    def test_guard_keeps_credit_for_a_child_that_already_existed(self):
+        self.assertGreater(
+            _lo(self._prior(), "H-EARLY", temporal_heir_guard=True), 0.0
+        )
+
+    def test_guard_does_not_touch_the_target(self):
+        # The row's own verdict on its own target is a measurement, not an
+        # inheritance, so it must survive the guard unchanged.
+        for cols in (self._post_dated(), self._prior()):
+            self.assertAlmostEqual(
+                _lo(cols, "H-P", temporal_heir_guard=True),
+                _lo(cols, "H-P"),
+                places=12,
+            )
+
+    def test_guard_does_not_touch_explicitly_named_heirs(self):
+        hyps = {
+            "H-P": _hyp_dated("H-P", "2026-11-10T00:00:00Z"),
+            "H-NAMED": _hyp_dated("H-NAMED", "2026-11-20T00:00:00Z", parents=["H-P"]),
+        }
+        cols = _ledger_dated(hyps, [_evl("E-1", "H-P", [], spawned=["H-NAMED"])])
+        self.assertGreater(_lo(cols, "H-NAMED", temporal_heir_guard=True), 0.0)
+
+    def test_guard_is_a_subset_of_dropping_the_fallback(self):
+        # Never deny more than heir_credit=False already denies.
+        for cols, hid in ((self._post_dated(), "H-LATE"), (self._prior(), "H-EARLY")):
+            guarded = _lo(cols, hid, temporal_heir_guard=True)
+            no_fallback = _lo(cols, hid, heir_credit=False)
+            self.assertGreaterEqual(guarded, no_fallback - 1e-12)

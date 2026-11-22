@@ -619,6 +619,7 @@ def compute_belief_state(
     heir_credit: bool = True,
     narrowing_partner_share: bool = False,
     receiver_gated: bool = False,
+    temporal_heir_guard: bool = False,
 ) -> dict[str, Any]:
     """Compute posterior distributions, uncertainties, lineage shifts, and next-tests.
 
@@ -652,6 +653,36 @@ def compute_belief_state(
     naming an opponent *raises* it. ``heir_credit=False`` is the only way to
     separate the two readings without editing rows
     (readings/2026-11-17-the-prose-is-right-and-the-mechanism-is-wrong.md §4).
+
+    ``temporal_heir_guard`` (added 2026-11-22, default ``False`` = present
+    arithmetic) is a third knob of the same kind, and the narrowest of the
+    three. It changes exactly one line: when the fallback is used, it drops
+    those heirs whose own ``created_at`` day is **later** than the evaluation's
+    day. Nothing else moves -- explicit ``spawned_hypothesis_ids`` and
+    ``scope_inherited_by_hypothesis_ids`` still pay in full, the
+    ``compared_against`` rival deduction is untouched, and the same-day case is
+    left alone (a same-day child cannot be *proven* later from a date-only
+    stamp, so the day-level comparison declines to decide it).
+
+    Rationale, stated as a measurement rather than an argument. The fallback
+    reads ``children_by_parent``, which is built from the hypotheses that exist
+    **at read time**. A row recorded on 2026-11-13 therefore pays every child
+    the parent acquires afterwards, including children registered a week later.
+    On 2026-11-22 this had grown large enough to close two of the three core
+    questions: ``HYP-20261121-6e3e15`` held ``log_odds = +24.7676`` on Q-002
+    and Q-003 (P = 0.9999 on both, pair EIG identically 0.0), while **all 32**
+    of the fallback rows that paid it predate its registration on 2026-11-21 --
+    and each of its four parents has exactly one child, so no boost is ever
+    divided. Denying only those provably post-dated credits returns it to
+    ``+0.3600``.
+
+    Unlike ``heir_credit=False``, which drops the fallback entirely, this guard
+    keeps the fallback for every child that demonstrably existed. It is
+    deliberately *not* turned on by default here: it changes historical
+    posteriors, which is an inquiry-design decision the 2026-11-14 report
+    explicitly declined to make unilaterally
+    (readings/2026-11-14-the-verdict-arrived-before-the-hypothesis.md §9) and
+    left to ``editorial_review``.
 
     ``narrowing_partner_share`` (added 2026-11-18, default ``False`` = present
     arithmetic) is a second knob of the same kind. At present only the
@@ -875,7 +906,22 @@ def compute_belief_state(
                     if ch not in compared_set and not _is_postdated_fallback(ch)
                 ]
             else:
-                spawned = raw_children
+                if temporal_heir_guard:
+                    # Deny only credits that provably post-date the row: a child
+                    # whose own recorded day is later than the evaluation's day
+                    # did not exist when the row was written, whatever the
+                    # ``parent_hypothesis_ids`` link says now.
+                    spawned = [
+                        ch
+                        for ch in raw_children
+                        if not (
+                            hyp_iso_days.get(ch, "")
+                            and evl_day
+                            and hyp_iso_days[ch] > evl_day
+                        )
+                    ]
+                else:
+                    spawned = raw_children
 
         # Separation bookkeeping for the audit columns (never changes weights).
         if target_id not in separation_partners:
