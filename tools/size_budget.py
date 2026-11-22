@@ -2253,16 +2253,15 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # reports on socially distributed and scaffolded memory took readings/
         # from 1,118 to 1,128 files (36.81 MiB of the 37 MiB soft, so the count
         # is the binding dimension; ~197 KB of byte headroom remains). Reports
-        # are append-only and the count cannot be compacted, so soft_files is
+        # are append-only and the count cannot be compacted, so soft_files was
         # raised by the established +12 review margin (1,128 + 12 = 1,140),
         # not per report. hard_files (1,200), soft_bytes (37 MiB) and the
         # per-file caps are unchanged. Not automatic -- re-measure after merge.
-        # 2026-11-22 (SESSION-20261122-4f251e): after merging main's parallel
-        # ten-source inquiry, the ten concepts/retrieval reports bring this
-        # directory to 1,150 files and 38,689,754 bytes (below 37 MiB soft).
-        # Only count binds. Preserve all reports and use the established +12
-        # review margin, not a byte/hard-cap increase; re-measure after merge.
-        soft_files=1162,
+        # 2026-11-22 (SESSION-20261122-4f251e, PR #1054): integrating the
+        # parallel inquiries including PR #1053 brings the combined count to
+        # 1,151 files. Keep the established +12 review margin; only the count
+        # soft cap moves. Byte and hard caps remain unchanged.
+        soft_files=1163,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
