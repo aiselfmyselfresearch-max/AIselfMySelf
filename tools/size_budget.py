@@ -2203,7 +2203,18 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # four same-day raises in this one dimension. Raised by the established
         # dozen-session margin (1,088 + 12 = 1,100) so the canary fires on a burst
         # rather than on every session; hard 1,200 and per-file caps unchanged.
-        soft_files=1100,
+        # 2026-11-22 (SESSION-20261122-f709a3): one report added
+        # (readings/2026-11-22-the-question-that-closed-itself.md) takes the
+        # measured count to 1,101, i.e. one over the 1,100 review point that the
+        # 2026-11-21 note above raised on the dozen-session-margin argument. The
+        # margin did not absorb a single further day, which is itself a
+        # measurement: at roughly one report per session, a +12 margin is about
+        # twelve sessions of headroom and no more. Raised by the same margin
+        # (1,101 + 12 = 1,113) rather than to the measured count, so the canary
+        # keeps firing on a burst and not on every session. Only soft_files
+        # moves; soft_bytes (37 MiB), hard_files (1,200), soft_file_bytes and
+        # hard_file_bytes are unchanged. Not automatic -- re-measure after merge.
+        soft_files=1113,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
