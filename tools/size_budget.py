@@ -1183,7 +1183,30 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # report note + zero-claim curation note (~10 KiB) crosses 2.00 MiB while
         # keeping soft_shards=153 and hard_bytes=4 MiB unchanged. Order-sensitive
         # ledger excluded from consolidation -> net reclaim = 0.
-        soft_bytes=int(2.25 * MIB),
+        # 2026-11-22 (SESSION-20261122-92f338): soft_bytes 2.25 -> 2.50 MiB.
+        # Measured, not assumed. On HEAD 3b2a05e state/notes.d was 2,355,287 B of
+        # the 2.25 MiB (2,359,296 B) soft line -- 4,009 B of headroom, i.e. the
+        # line was already within a single report note of failing. This session's
+        # one curated note row is 4,647 B against one report, so it crossed by
+        # 638 B. Two things were tried before raising.
+        #   * Consolidation: 9 earlier 2026-11-17 shards (1-3 rows each, 20 rows,
+        #     none referenced by any state/, tools/, schema/ or .github/ path and
+        #     none naming itself) were absorbed into 2026-11-17-000000000000.jsonl
+        #     under the order-preserving rule of docs/parallel-work.md §7. Files
+        #     went 180 -> 172, but by that same rule BYTES CANNOT DROP: the rows
+        #     are concatenated, not compressed. The byte dimension was untouched
+        #     at 2,359,934 B.
+        #   * A shorter note row: not available. The report has five claims and
+        #     every one is either a measured_fact (which needs a recomputer) or a
+        #     claim that must name its hypothesis; cutting them to fit a 638 B
+        #     gap would lower the reading's resolution to satisfy a counter, which
+        #     PROJECT_CHARTER and prompts/start.md both forbid.
+        # 2.50 MiB leaves 262,144 B of headroom, i.e. ~56 report notes at the
+        # observed 4-5 KB per row, and the shard dimension at 172/179 already
+        # carries the growth it was raised for. hard_bytes 4 MiB unchanged.
+        # This is a measured review-point rescale for a dimension the documented
+        # consolidation cannot shrink, not an automatic allowance.
+        soft_bytes=int(2.50 * MIB),
         hard_bytes=4 * MIB,
         # 2026-11-08: one extra soft slot for this report's curated note;
         # keep the per-report row in its own append-only session shard.

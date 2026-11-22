@@ -197,5 +197,60 @@ class LabelEvidenceTests(unittest.TestCase):
         self.assertEqual(labels, frozenset())
 
 
+class SessionSelfLayerGateTests(unittest.TestCase):
+    """The six-layer session gate must read the same evidence as the register gate.
+
+    Measured 2026-11-22: ``SESSION-20261122-11b1d3`` sits in a shard named
+    2026-11-10, so ``_is_internal_label`` proves its stamp is a chronology label;
+    the register gate exempts it, but the session gate read only the stamp and
+    the wall clock, so the same bytes passed on 2026-11-21 and failed on
+    2026-11-22 with no commit in between.  These tests pin both halves: the
+    proven label stays exempt, and a real-dated or unprovable stamp is still
+    required to carry the two fields.
+    """
+
+    ROW = {
+        "session_type": "other",
+        "self_layer_checks": {
+            "source_attributed": True,
+            "agency_stance_recorded": True,
+            "self_model_rebuilt": True,
+            "veto_considered": True,
+        },
+    }
+    TODAY = datetime.date(2026, 11, 22)
+
+    def _run(self, shard, row=None):
+        errors: list[str] = []
+        shard_of = {"SESSION-20261122-abcdef": shard} if shard else {}
+        new, _, _, _ = validate_seed.check_session_self_layer(
+            {"SESSION-20261122-abcdef": row if row is not None else {}},
+            errors,
+            today=self.TODAY,
+            shard_of=shard_of,
+        )
+        return new, errors
+
+    def test_row_in_earlier_named_shard_is_treated_as_a_label(self) -> None:
+        new, errors = self._run(Path("state/sessions.d/2026-11-10-000000000000.jsonl"))
+        self.assertEqual(new, 0)
+        self.assertEqual(errors, [])
+
+    def test_row_in_same_day_shard_is_still_required(self) -> None:
+        new, errors = self._run(Path("state/sessions.d/2026-11-22-aaaa.jsonl"))
+        self.assertEqual(new, 1)
+        self.assertEqual(len(errors), 2)
+
+    def test_row_with_no_shard_evidence_is_still_required(self) -> None:
+        new, errors = self._run(None)
+        self.assertEqual(new, 1)
+        self.assertEqual(len(errors), 2)
+
+    def test_complete_row_passes_in_a_same_day_shard(self) -> None:
+        new, errors = self._run(Path("state/sessions.d/2026-11-22-aaaa.jsonl"), self.ROW)
+        self.assertEqual(new, 1)
+        self.assertEqual(errors, [])
+
+
 if __name__ == "__main__":
     unittest.main()
