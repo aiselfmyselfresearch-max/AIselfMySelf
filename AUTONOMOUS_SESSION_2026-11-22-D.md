@@ -3,7 +3,7 @@
 ## 1. セッション識別・割当受領証（Assignment Receipt）
 
 - **リポジトリ**: [aiselfmyselfresearch-max/AIselfMySelf](https://github.com/aiselfmyselfresearch-max/AIselfMySelf)
-- **作業ブランチ**: `arena/a07d088e-aiselfmyself`（ベースコミット `feebd88dee0074df295ae5657bedd973858434f0`、`origin/main` 最新 `f0e969a3` 合流済）
+- **作業ブランチ**: `arena/a07d088e-aiselfmyself`（ベースコミット `feebd88dee0074df295ae5657bedd973858434f0`、`origin/main` 最新 `aabfa2e3` 合流済）
 - **セッションID**: `SESSION-20261122-1ad049`（実日付 `2026-11-22` / UTC）
 - **ブランチシード / 割当ロール**: `a07d088e`（`seed_int = 2692548750`） / `proposer`（条件付き仮説提案・分割）
 - **提示ターゲット問い / 参照モード**: `Q-001` / `direct_response`
@@ -39,18 +39,18 @@
 
 | 対象 | 評価ID | 判定 / 証拠型 | 要旨 |
 |---|---|---|---|
-| `HYP-20261122-970bed` | `EVL-20261122-26a991` | `narrows_scope` / `reproducible_script` | `W=30` の `-39.3%` は `<=2026-11-15`（`2.05` vs `5.49`）の時期交絡であり `>=2026-11-16`（`f0e969a3` 基準）では `2.43`（`n=46`）対 `2.22`（`n=205`）へ反転。`evl>=2026-11-19` で `d1..2`（`29/41 = 70.7%`）＝`d>=3`（`61/87 = 70.1%`）だが、同一 `adversarial_tester` 内の `prop_len>=700` 脆弱性（`16/17 = 94.1%` vs `<400` `45/62 = 72.6%`）は実在。`EVL=0` 98件中 64件（`65.3%`）は意図的 `acquisition`/整備回（`>=11-19` 非収蔵 `EVL=0` は `3/98 = 3.1%`）。 |
+| `HYP-20261122-970bed` | `EVL-20261122-26a991` | `narrows_scope` / `reproducible_script` | `W=30` の `-39.3%` は `<=2026-11-15`（`2.05` vs `5.49`）の時期交絡であり `>=2026-11-16`（`aabfa2e3` 基準）では `2.42`（`n=48`）対 `2.21`（`n=208`）へ反転。`evl>=2026-11-19` で `d1..2`（`31/44 = 70.5%`）＝`d>=3`（`63/89 = 70.8%`）だが、同一 `adversarial_tester` 内の `prop_len>=700` 脆弱性（`16/17 = 94.1%` vs `<400` `45/62 = 72.6%`）は実在。`EVL=0` 98件中 64件（`65.3%`）は意図的 `acquisition`/整備回（`>=11-19` 非収蔵 `EVL=0` は `3/98 = 3.1%`）。 |
 | `HYP-20261122-f38498` | `EVL-20261122-9318a8` | `narrows_scope` / `primary_source_collision` | 未層別 `EVL=0` 分母の限定に加え、`Ciaramelli & Treves 2019` との衝突により、図式ラッチング（`vmPFC`）を欠く手掛かり活性化保持は生きた抑制ではなく作話・虚再認を生むため、自発思考制御一般へは外挿できない。 |
-| `HYP-20261120-b18876` | `EVL-20261122-71cbe7` | `narrows_scope` / `primary_source_collision` | `Perret 2024`・`Wilbers 2012`・`Ciaramelli 2019` により、条項 `(v)` の「内側頭頂表現」を主観的確信・多感覚統合へ限定し、因果的現実・内側源帰属を `mPFC`/外側 `PFC`/`TPJ` へ譲る。`P_gate` は `26.9%`（2位）へ均衡化。 |
+| `HYP-20261120-b18876` | `EVL-20261122-71cbe7` | `narrows_scope` / `primary_source_collision` | `Perret 2024`・`Wilbers 2012`・`Ciaramelli 2019` により、条項 `(v)` の「内側頭頂表現」を主観的確信・多感覚統合へ限定し、因果的現実・内側源帰属を `mPFC`/外側 `PFC`/`TPJ` へ譲る。`P_gate` は `19.4%`（2位）へ均衡化。 |
 | `HYP-20261119-30d3f5` | `EVL-20261122-05c03a` | `narrows_scope` / `primary_source_collision` | 頭蓋内4段直列循環を棄却・再限定し、`spawned_hypothesis_ids` で新設子仮説 `HYP-20261122-c8df23` へ明示継承（`30d3f5` は `orphan_over_narrowed` → `superseded_inhibited`）。 |
-| **`HYP-20261122-c8df23`** | （自己支持 `EVL` なし） | 新規 `proposer` 子仮説（`Q-001`・`depth=3`・`203` 字） | **二軸直交生成帰属説**：生成軸（`vmPFC` 内発遷移対 `MTL` 場面詳細）と帰属軸（`mPFC`・外側 `PFC`・`TPJ` の実在・内的出所帰属対 `AG`/楔前部の鮮明度・多感覚統合）の直交構造のみを主張し、3項の定量棄却条件を定義。`Q-001 P_gate = 11.6%`（第3位）として外部監査待機。 |
+| **`HYP-20261122-c8df23`** | （自己支持 `EVL` なし） | 新規 `proposer` 子仮説（`Q-001`・`depth=3`・`203` 字） | **二軸直交生成帰属説**：生成軸（`vmPFC` 内発遷移対 `MTL` 場面詳細）と帰属軸（`mPFC`・外側 `PFC`・`TPJ` の実在・内的出所帰属対 `AG`/楔前部の鮮明度・多感覚統合）の直交構造のみを主張し、3項の定量棄却条件を定義。`Q-001 P_gate = 12.8%`（第3位）として外部監査待機。 |
 
 ---
 
 ## 4. 検証と信念分布・予算の確定値
 
-- [BELIEF_MAP.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/BELIEF_MAP.md): `522,814 B / 524,288 B`（残余 `1,474 B`、全サイズ予算 `[OK]`）
+- [BELIEF_MAP.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/BELIEF_MAP.md): `522,906 B / 524,288 B`（残余 `1,382 B`、全サイズ予算 `[OK]`）
 - [SELF_MODEL.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/SELF_MODEL.md): 基準セッション `SESSION-20261122-1ad049`、直近10セッションのロール比 `proposer=3, consolidator=3, adversarial_tester=4`（最大逸脱 `0.1`）
-- **`Q-001` `P_gate` 上位3位**: `HYP-20261121-6e83a4` (`27.7%`) > `HYP-20261120-b18876` (`26.9%`) > `HYP-20261122-c8df23` (`11.6%`)
+- **`Q-001` `P_gate` 上位3位**: `HYP-20261121-6e83a4` (`30.6%`) > `HYP-20261120-b18876` (`19.4%`) > `HYP-20261122-c8df23` (`12.8%`)
 - **`Q-20261024-6bdafd` `P_gate`**: `HYP-20261122-f38498` (`51.5%`) vs `HYP-20261122-970bed` (`48.5%`)（待機解消）
 - **CI 全ゲートおよび単体テスト**: `validate_seed.py`、`append_only_check.py`、`readings_integrity_check.py`、`inspect_inquiry.py --check-map`、`belief_state.py --check-map`、`self_model.py --check`、`note_index.py --check`、`date_axis.py --enforce-shards`、`learning_metrics.py --check`、`three_gates.py --check`、`size_budget.py --strict`、`read_log_backfill.py --check`、`claim_wiring.py --check`、`node --check viewer/app.js`、全 advisory スクリプト、および全中核・ゲート・ツール・サーバー・スモーク単体テスト 55 モジュール（324 件 + 12 件 + 22 ファイル、`test_*_audit.py` 個別テーマ監査群を除く）の通過を確認。
