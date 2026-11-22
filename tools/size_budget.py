@@ -2253,11 +2253,15 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # reports on socially distributed and scaffolded memory took readings/
         # from 1,118 to 1,128 files (36.81 MiB of the 37 MiB soft, so the count
         # is the binding dimension; ~197 KB of byte headroom remains). Reports
-        # are append-only and the count cannot be compacted, so soft_files is
+        # are append-only and the count cannot be compacted, so soft_files was
         # raised by the established +12 review margin (1,128 + 12 = 1,140),
         # not per report. hard_files (1,200), soft_bytes (37 MiB) and the
         # per-file caps are unchanged. Not automatic -- re-measure after merge.
-        soft_files=1140,
+        # 2026-11-22 (PR #1053 integration): origin/main advanced with additional
+        # readings before this report merged. The combined tree has 1,141 reports;
+        # preserve the established +12 review margin (1,141 + 12 = 1,153), not
+        # a one-file-at-a-time ratchet. Hard and byte caps remain unchanged.
+        soft_files=1153,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
