@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5856 件（research_excerpt 3607 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5866 件（research_excerpt 3617 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1104 回
+- **探究セッション（Sessions）**：1105 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5856 | `literary_text` 2181／`research_excerpt` 3607／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5866 | `literary_text` 2181／`research_excerpt` 3617／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1104 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16678 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1105 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16690 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 409 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 627 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1215 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1226 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 91 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 837 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 839 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（5856 件・詳細は map/3*.md）
+## 4. 対話素材（5866 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6593,6 +6593,16 @@
 | `MAT-20261122-4bc1b9` | research_excerpt | David Wood, Jerome S. Bruner, Gail Ross『Wood, Bruner & Ross (1976)「問題解決における tutoring」——足場… |
 | `MAT-20261122-a82fdb` | research_excerpt | Asher Koriat, Morris Goldsmith『Koriat & Goldsmith (1996)「記憶の隠喩」——貯蔵庫か、対応か』（1996） |
 | `MAT-20261122-344b2a` | research_excerpt | Arthur M. Glenberg『Glenberg (1997)「記憶は何のためにあるのか」——記憶は貯蔵ではなく、行為のための身体化である』（1997） |
+| `MAT-20261122-15e9ba` | research_excerpt | Daniel M. Wegner, David J. Schneider, Samuel R. Carter, Teri L. White『Daniel M. Wegner (1… |
+| `MAT-20261122-255163` | research_excerpt | Larry L. Jacoby『Larry L. Jacoby (1991) — 課題名は過程名ではない』（1991） |
+| `MAT-20261122-94271b` | research_excerpt | Lawrence W. Barsalou『Lawrence W. Barsalou (1983) — 目的がその場でカテゴリーを作る』（1983） |
+| `MAT-20261122-36b662` | research_excerpt | Eleanor Rosch『Eleanor Rosch (1975) — 典型的であることと同一であること』（1975） |
+| `MAT-20261122-b9ed73` | research_excerpt | Gordon D. Logan『Gordon D. Logan (1988) — 熟達は保存事例の検索にもなりうる』（1988） |
+| `MAT-20261122-a88741` | research_excerpt | John R. Anderson, Gordon H. Bower『John R. Anderson (1972) — 取り出せることと所属を見分けること』（1972） |
+| `MAT-20261122-2fb35e` | research_excerpt | Allan M. Collins, M. Ross Quillian『Allan M. Collins (1969) — 保存の節約は検索の費用を移す』（1969） |
+| `MAT-20261122-e37509` | research_excerpt | Douglas L. Medin, Marguerite M. Schaffer『Douglas L. Medin (1978) — 抽象を保存しなくても分類できるか』（1978） |
+| `MAT-20261122-6ff6ac` | research_excerpt | Robert M. Nosofsky『Robert M. Nosofsky (1986) — 似ているという判断にも選択が入る』（1986） |
+| `MAT-20261122-53460a` | research_excerpt | Douglas L. Hintzman『Douglas L. Hintzman (1984) — 保存された事例から、保存されなかった抽象へ』（1984） |
 | `MAT-20261122-e49d01` | research_excerpt | Sheldon, Fenerci & Gurguryan『A Neurocognitive Perspective on the Forms and Functions of A… |
 | `MAT-20261122-696ba9` | research_excerpt | Ciaramelli & Treves『A Mind Free to Wander: Neural and Computational Constraints on Sponta… |
 | `MAT-20261122-15c19f` | research_excerpt | Stendardi, Giacometti Giordani, Gambino, Kaplan & Ciaramelli『Who am I really? The ephemer… |
@@ -7765,6 +7775,7 @@
 | `SESSION-20261122-1ad049` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-6bdafd`, `Q-20261122-f5d132` | — | — |
 | `SESSION-20261122-923c7a` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-a121a8` | 2026-11-22 | `Q-20261024-6bdafd`, `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261122-4f251e` | 2026-11-22 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261122-29a69e` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-temporal-self-10` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-770a47` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -7871,8 +7882,8 @@
 | `map/31-materials-research-33.md` | 100 | 214,663 |
 | `map/31-materials-research-34.md` | 100 | 218,243 |
 | `map/31-materials-research-35.md` | 100 | 246,932 |
-| `map/31-materials-research-36.md` | 100 | 245,381 |
-| `map/31-materials-research-37.md` | 7 | 17,814 |
+| `map/31-materials-research-36.md` | 100 | 215,867 |
+| `map/31-materials-research-37.md` | 17 | 63,642 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7910,69 +7921,70 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 50 | 38,023 |
-| `map/50-sessions-23.md` | 4 | 3,370 |
-| `map/60-notes-01.md` | 25 | 65,135 |
-| `map/60-notes-02.md` | 25 | 72,215 |
-| `map/60-notes-03.md` | 25 | 70,988 |
-| `map/60-notes-04.md` | 25 | 98,591 |
-| `map/60-notes-05.md` | 25 | 89,141 |
-| `map/60-notes-06.md` | 25 | 55,383 |
-| `map/60-notes-07.md` | 25 | 69,173 |
-| `map/60-notes-08.md` | 25 | 51,569 |
-| `map/60-notes-09.md` | 25 | 58,379 |
-| `map/60-notes-10.md` | 25 | 65,501 |
-| `map/60-notes-11.md` | 25 | 70,152 |
-| `map/60-notes-12.md` | 25 | 68,504 |
-| `map/60-notes-13.md` | 25 | 88,805 |
-| `map/60-notes-14.md` | 25 | 116,343 |
-| `map/60-notes-15.md` | 25 | 86,206 |
-| `map/60-notes-16.md` | 25 | 94,173 |
-| `map/60-notes-17.md` | 25 | 107,066 |
-| `map/60-notes-18.md` | 25 | 119,191 |
-| `map/60-notes-19.md` | 25 | 106,447 |
-| `map/60-notes-20.md` | 25 | 175,246 |
-| `map/60-notes-21.md` | 25 | 142,181 |
-| `map/60-notes-22.md` | 25 | 120,895 |
-| `map/60-notes-23.md` | 25 | 127,094 |
-| `map/60-notes-24.md` | 25 | 99,836 |
-| `map/60-notes-25.md` | 25 | 111,346 |
-| `map/60-notes-26.md` | 25 | 131,190 |
-| `map/60-notes-27.md` | 25 | 105,817 |
-| `map/60-notes-28.md` | 25 | 82,916 |
-| `map/60-notes-29.md` | 25 | 105,109 |
-| `map/60-notes-30.md` | 25 | 37,712 |
-| `map/60-notes-31.md` | 25 | 65,856 |
-| `map/60-notes-32.md` | 25 | 125,976 |
-| `map/60-notes-33.md` | 25 | 129,342 |
-| `map/60-notes-34.md` | 25 | 90,430 |
-| `map/60-notes-35.md` | 25 | 58,816 |
-| `map/60-notes-36.md` | 25 | 101,435 |
-| `map/60-notes-37.md` | 25 | 105,637 |
-| `map/60-notes-38.md` | 25 | 70,214 |
-| `map/60-notes-39.md` | 25 | 97,221 |
-| `map/60-notes-40.md` | 25 | 67,595 |
-| `map/60-notes-41.md` | 25 | 71,724 |
-| `map/60-notes-42.md` | 25 | 74,407 |
-| `map/60-notes-43.md` | 25 | 104,202 |
-| `map/60-notes-44.md` | 25 | 100,193 |
-| `map/60-notes-45.md` | 25 | 140,010 |
-| `map/60-notes-46.md` | 7 | 32,481 |
+| `map/50-sessions-22.md` | 50 | 38,077 |
+| `map/50-sessions-23.md` | 5 | 4,201 |
+| `map/60-notes-01.md` | 25 | 64,776 |
+| `map/60-notes-02.md` | 25 | 69,314 |
+| `map/60-notes-03.md` | 25 | 69,917 |
+| `map/60-notes-04.md` | 25 | 100,663 |
+| `map/60-notes-05.md` | 25 | 89,973 |
+| `map/60-notes-06.md` | 25 | 56,375 |
+| `map/60-notes-07.md` | 25 | 66,072 |
+| `map/60-notes-08.md` | 25 | 54,881 |
+| `map/60-notes-09.md` | 25 | 57,389 |
+| `map/60-notes-10.md` | 25 | 64,129 |
+| `map/60-notes-11.md` | 25 | 71,883 |
+| `map/60-notes-12.md` | 25 | 67,749 |
+| `map/60-notes-13.md` | 25 | 89,179 |
+| `map/60-notes-14.md` | 25 | 111,572 |
+| `map/60-notes-15.md` | 25 | 91,752 |
+| `map/60-notes-16.md` | 25 | 89,317 |
+| `map/60-notes-17.md` | 25 | 108,348 |
+| `map/60-notes-18.md` | 25 | 120,730 |
+| `map/60-notes-19.md` | 25 | 104,279 |
+| `map/60-notes-20.md` | 25 | 175,661 |
+| `map/60-notes-21.md` | 25 | 145,298 |
+| `map/60-notes-22.md` | 25 | 115,900 |
+| `map/60-notes-23.md` | 25 | 129,810 |
+| `map/60-notes-24.md` | 25 | 102,190 |
+| `map/60-notes-25.md` | 25 | 111,162 |
+| `map/60-notes-26.md` | 25 | 126,122 |
+| `map/60-notes-27.md` | 25 | 112,335 |
+| `map/60-notes-28.md` | 25 | 79,738 |
+| `map/60-notes-29.md` | 25 | 108,721 |
+| `map/60-notes-30.md` | 25 | 37,225 |
+| `map/60-notes-31.md` | 25 | 62,234 |
+| `map/60-notes-32.md` | 25 | 121,997 |
+| `map/60-notes-33.md` | 25 | 134,857 |
+| `map/60-notes-34.md` | 25 | 92,198 |
+| `map/60-notes-35.md` | 25 | 56,035 |
+| `map/60-notes-36.md` | 25 | 104,572 |
+| `map/60-notes-37.md` | 25 | 101,322 |
+| `map/60-notes-38.md` | 25 | 73,864 |
+| `map/60-notes-39.md` | 25 | 58,000 |
+| `map/60-notes-40.md` | 25 | 91,766 |
+| `map/60-notes-41.md` | 25 | 80,766 |
+| `map/60-notes-42.md` | 25 | 69,799 |
+| `map/60-notes-43.md` | 25 | 91,650 |
+| `map/60-notes-44.md` | 25 | 97,334 |
+| `map/60-notes-45.md` | 25 | 127,180 |
+| `map/60-notes-46.md` | 18 | 91,017 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1132本・38,630,174 B）
+## 8. 精読ノート索引（readings/・1143本・38,665,403 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1042/1132 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1053/1143 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1132 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：190 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1143 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：191 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
 | `docs/2026-11-22-cognitive-science-distributed-memory-ai-thought-report.md` | 2026-11-22 | — | — | 0 | — | — | docs/2026-11-22-cognitive-science-distributed-memory-ai-tho… |
 | `docs/2026-11-22-cognitive-science-ten-materials-ai-thought-report.md` | — | — | — | 0 | — | — | docs/2026-11-22-cognitive-science-ten-materials-ai-thought-… |
+| `docs/2026-11-22-concepts-and-retrieval-ai-thought-report.md` | 2026-11-22 | — | — | 0 | — | — | docs/2026-11-22-concepts-and-retrieval-ai-thought-report.md |
 | `readings/2026-10-22-breath.md` | 2026-10-24 | 2026-10-22 | `SESSION-030` +2 | 3,394 | Q3 F5 M1 S3 | ✓ | この書庫は一度も長い息をしていない |
 | `readings/2026-10-22-carriers.md` | 2026-10-22 | 2026-10-22 | `SESSION-024` | 4,979 | Q6 F3 M6 S1 | ✓ | 運び手の欄 —— 声はどの言語を通り、誰の手でこの台帳に来たか |
 | `readings/2026-10-22-close-reading-02.md` | 2026-10-22 | 2026-10-22 | `SESSION-020` +1 | 8,451 | Q4 M14 S2 | ✓ | 精読ノート — 記録の内と外、あるいは自己の場所 |
@@ -8918,6 +8930,16 @@
 | `readings/2026-11-22-cognitive-science-ten-materials-08-chomsky-syntactic-structures.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,818 | Q1 M1 S1 | ✓ | Chomsky (1957) 『Syntactic Structures』——構文を自律的な形式系として |
 | `readings/2026-11-22-cognitive-science-ten-materials-09-fodor-modularity.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,735 | Q1 M1 S1 | ✓ | Fodor (1983) 『The Modularity of Mind』——入力系のモジュール性と中央系の非モジュー… |
 | `readings/2026-11-22-cognitive-science-ten-materials-10-gibson-ecological-perception.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,809 | Q2 M1 S1 | ✓ | Gibson (1979) 『The Ecological Approach to Visual Perception… |
+| `readings/2026-11-22-concepts-and-retrieval-01-wegner.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4f251e` | 1,456 | Q2 M1 S1 | ✓ | 01. Daniel M. Wegner (1987) — 抑制は消去ではない |
+| `readings/2026-11-22-concepts-and-retrieval-02-jacoby.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4f251e` | 1,461 | Q2 M1 S1 | ✓ | 02. Larry L. Jacoby (1991) — 課題名は過程名ではない |
+| `readings/2026-11-22-concepts-and-retrieval-03-barsalou.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4f251e` | 1,363 | Q2 M1 S1 | ✓ | 03. Lawrence W. Barsalou (1983) — 目的がその場でカテゴリーを作る |
+| `readings/2026-11-22-concepts-and-retrieval-04-rosch.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4f251e` | 1,411 | Q2 M1 S1 | ✓ | 04. Eleanor Rosch (1975) — 典型的であることと同一であること |
+| `readings/2026-11-22-concepts-and-retrieval-05-logan.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4f251e` | 1,379 | Q2 M1 S1 | ✓ | 05. Gordon D. Logan (1988) — 熟達は保存事例の検索にもなりうる |
+| `readings/2026-11-22-concepts-and-retrieval-06-anderson-bower.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4f251e` | 1,406 | Q2 M1 S1 | ✓ | 06. John R. Anderson (1972) — 取り出せることと所属を見分けること |
+| `readings/2026-11-22-concepts-and-retrieval-07-collins-quillian.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4f251e` | 1,386 | Q2 M1 S1 | ✓ | 07. Allan M. Collins (1969) — 保存の節約は検索の費用を移す |
+| `readings/2026-11-22-concepts-and-retrieval-08-medin-schaffer.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4f251e` | 1,432 | Q2 M1 S1 | ✓ | 08. Douglas L. Medin (1978) — 抽象を保存しなくても分類できるか |
+| `readings/2026-11-22-concepts-and-retrieval-09-nosofsky.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4f251e` | 1,425 | Q2 M1 S1 | ✓ | 09. Robert M. Nosofsky (1986) — 似ているという判断にも選択が入る |
+| `readings/2026-11-22-concepts-and-retrieval-10-hintzman.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4f251e` | 1,514 | Q2 M1 S1 | ✓ | 10. Douglas L. Hintzman (1984) — 保存された事例から、保存されなかった抽象へ |
 | `readings/2026-11-22-distributed-memory-01-roediger-social-contagion.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-923c7a` | 3,231 | Q2 M1 S1 | ✓ | Roediger, Meade & Bergman (2001)「社会的伝染としての記憶」——他人の誤りが、こちらの再… |
 | `readings/2026-11-22-distributed-memory-02-gabbert-memory-conformity.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-923c7a` | 2,520 | Q1 M1 S1 | ✓ | Gabbert, Memon & Allan (2003)「記憶の同調」——別々の映像を見た二人が、同じ事件を語り始める |
 | `readings/2026-11-22-distributed-memory-03-cuc-silence-is-not-golden.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-923c7a` | 2,812 | Q1 M1 S1 | ✓ | Cuc, Koppel & Hirst (2007)「沈黙は金ではない」——聞き手の記憶は、話し手が想起したものによっ… |
