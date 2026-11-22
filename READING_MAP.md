@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5826 件（research_excerpt 3577 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1099 回
+- **探究セッション（Sessions）**：1100 回
 
 ### 台帳ごとの件数
 
@@ -23,13 +23,13 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5826 | `literary_text` 2181／`research_excerpt` 3577／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1099 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16619 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1100 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16635 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 407 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 624 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1200 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 90 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 823 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 627 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1201 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 91 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 827 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -7732,6 +7732,7 @@
 | `SESSION-20261122-26422d` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20261122-4e288c` | 2026-11-22 | `Q-20261024-6bdafd`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261122-fc8fac` | `Q-20261122-f5d132` |
 | `SESSION-20261122-7ef222` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261122-1ad049` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-6bdafd`, `Q-20261122-f5d132` | — | — |
 | `SESSION-20261122-29a69e` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-temporal-self-10` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-770a47` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -7835,8 +7836,8 @@
 | `map/31-materials-research-32.md` | 100 | 202,898 |
 | `map/31-materials-research-33.md` | 100 | 214,663 |
 | `map/31-materials-research-34.md` | 100 | 218,243 |
-| `map/31-materials-research-35.md` | 100 | 246,711 |
-| `map/31-materials-research-36.md` | 77 | 194,189 |
+| `map/31-materials-research-35.md` | 100 | 246,932 |
+| `map/31-materials-research-36.md` | 77 | 194,687 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7874,7 +7875,7 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 49 | 37,660 |
+| `map/50-sessions-22.md` | 50 | 38,217 |
 | `map/60-notes-01.md` | 25 | 65,365 |
 | `map/60-notes-02.md` | 25 | 72,350 |
 | `map/60-notes-03.md` | 25 | 71,686 |
@@ -7912,23 +7913,23 @@
 | `map/60-notes-35.md` | 25 | 61,028 |
 | `map/60-notes-36.md` | 25 | 103,633 |
 | `map/60-notes-37.md` | 25 | 105,797 |
-| `map/60-notes-38.md` | 25 | 92,348 |
-| `map/60-notes-39.md` | 25 | 71,492 |
-| `map/60-notes-40.md` | 25 | 80,013 |
-| `map/60-notes-41.md` | 25 | 70,916 |
-| `map/60-notes-42.md` | 25 | 93,045 |
-| `map/60-notes-43.md` | 25 | 97,124 |
-| `map/60-notes-44.md` | 25 | 128,382 |
-| `map/60-notes-45.md` | 17 | 86,169 |
+| `map/60-notes-38.md` | 25 | 74,222 |
+| `map/60-notes-39.md` | 25 | 91,766 |
+| `map/60-notes-40.md` | 25 | 80,766 |
+| `map/60-notes-41.md` | 25 | 69,799 |
+| `map/60-notes-42.md` | 25 | 91,650 |
+| `map/60-notes-43.md` | 25 | 97,334 |
+| `map/60-notes-44.md` | 25 | 127,180 |
+| `map/60-notes-45.md` | 18 | 91,017 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1117本・38,487,261 B）
+## 8. 精読ノート索引（readings/・1118本・38,505,098 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1028/1117 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1029/1118 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1117 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1118 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：188 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -8880,6 +8881,7 @@
 | `readings/2026-11-22-cognitive-science-ten-materials-10-gibson-ecological-perception.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,809 | Q2 M1 S1 | ✓ | Gibson (1979) 『The Ecological Approach to Visual Perception… |
 | `readings/2026-11-22-form-scars-and-palliative-narrowing.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4e288c` +4 | 21,633 | Q6 F1 M13 S5 ERR2 ED8 | ✓ | 型・傷痕・鎮痛的範囲縮小——原典全文照合と804評価の追跡が示す「上部だけの片付き」と累積拘束の境界 |
 | `readings/2026-11-22-inner-speech-specificity-suppression-metamemory.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-3cd88c` | 14,629 | Q3 M10 S1 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——内側の声・想起の具体性・抑制・メタ認知の神経科学10資料 |
+| `readings/2026-11-22-orthogonal-generation-attribution-and-epoch-stratified-audit.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-1ad049` +1 | 10,258 | Q5 M5 S2 ED1 | ✓ | 二軸直交生成帰属とエポック層別化監査——一次神経文献全文照合による `Q-001` 過限定系譜の再分化と `970be… |
 | `readings/2026-11-22-source-monitoring-self-attribution-neuroscience-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-source-self-10` | 11,846 | Q3 M10 S1 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——帰属・現実モニタリング・具体性の神経科学10資料 |
 | `readings/2026-11-22-ten-cognitive-science-sources-on-attention-calibration-and-motivation.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-939f1c` | 15,431 | Q3 M10 S1 | ✓ | 注意・較正・動機づけ——認知科学10資料の精読 |
 | `readings/2026-11-22-ten-cognitive-science-sources-on-correction-and-what-remains.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-3efed8` +1 | 80,907 | Q3 M26 S2 ERR14 | ✓ | 訂正されたものはどこへ行くのか——訂正・撤回・更新をめぐる認知科学10資料の精読 |
