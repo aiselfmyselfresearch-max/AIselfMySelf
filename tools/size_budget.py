@@ -2249,7 +2249,15 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # compacted; rescaled by the established +12 review margin
         # (1,114 + 12 = 1,126) rather than per report. hard_files (1,200),
         # soft_bytes (37 MiB) unchanged. Not automatic -- re-measure after merge.
-        soft_files=1126,
+        # 2026-11-22 (SESSION-20261122-923c7a): this session's ten close-reading
+        # reports on socially distributed and scaffolded memory took readings/
+        # from 1,118 to 1,128 files (36.81 MiB of the 37 MiB soft, so the count
+        # is the binding dimension; ~197 KB of byte headroom remains). Reports
+        # are append-only and the count cannot be compacted, so soft_files is
+        # raised by the established +12 review margin (1,128 + 12 = 1,140),
+        # not per report. hard_files (1,200), soft_bytes (37 MiB) and the
+        # per-file caps are unchanged. Not automatic -- re-measure after merge.
+        soft_files=1140,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
