@@ -472,7 +472,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-21-d8c7c4940001.jsonl. Measured union after writing = 150 files /
         # 14.84 MiB of the 16 MiB soft_bytes (bytes not binding; only the count is).
         # Soft raised to measured + 1 (150); hard 160 unchanged; not automatic.
-        soft_shards=150,
+        # 2026-11-22: requested ten-source acquisition adds one dedicated shard.
+        # Measured 151 files, ~15.03 MiB; preserve frozen base and hard limits.
+        soft_shards=151,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -1595,7 +1597,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-21 (merge of origin/main 7331236): 176 -> 178 measured, no notes
         # row written by this session. Raised to 179 (one free slot); hard 180
         # unchanged. At 180 this stops being raisable without raising the hard cap.
-        soft_shards=179,
+        # 2026-11-22: one curated report row adds the 180th shard (~2.25 MiB).
+        # Soft count only; hard count 180 and byte limits remain unchanged.
+        soft_shards=180,
         hard_shards=180,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
