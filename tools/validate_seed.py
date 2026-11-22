@@ -1607,12 +1607,30 @@ def check_session_self_layer(
     sessions: dict[str, dict[str, Any]],
     errors: list[str],
     today: datetime.date | None = None,
+    shard_of: dict[str, Path] | None = None,
+    label_ids: frozenset[str] | None = None,
 ) -> tuple[int, int, int, int]:
     """Check session_type and self_layer_checks on new sessions.
 
     Layer 3 (embodiment) session typing and Layer I/II (preparation/verification)
     checklist enforcement. Returns (type_new, type_legacy, checks_new, checks_legacy).
+
+    ``shard_of`` / ``label_ids`` are forwarded to ``_is_new_row`` exactly as
+    ``check_registers`` already forwards them (2026-11-22).  This gate was the
+    one ID-based check that read only the stamp and the wall clock, and the
+    consequence was measured: ``SESSION-20261122-11b1d3`` sits in the shard
+    ``state/sessions.d/2026-11-10-000000000000.jsonl``, so its stamp is provably
+    an internal chronology label by ``_is_internal_label`` -- yet on 2026-11-21
+    the wall clock still read the day before and the whole gate passed, while on
+    2026-11-22 the same bytes, with no commit, turned it red.  A label row that
+    was written before this rule existed cannot be given the two fields it
+    predates, and a gate that flips on a clock tick rather than on a commit
+    stops being read.  Two mechanisms already existed to express this (the
+    shard proof and the errata waiver); the session gate was simply not wired
+    to the first one.  The rule itself is unchanged and still covers every row
+    whose stamp this test cannot prove to be a label.
     """
+    shard_of = shard_of or {}
     type_new = 0
     type_legacy = 0
     checks_new = 0
@@ -1620,7 +1638,13 @@ def check_session_self_layer(
     for sid, s in sessions.items():
         if sid in SESSION_TYPE_EXEMPT_IDS:
             type_legacy += 1
-        elif _is_new_row(sid, SESSION_TYPE_CUTOFF, today=today):
+        elif _is_new_row(
+            sid,
+            SESSION_TYPE_CUTOFF,
+            today=today,
+            shard=shard_of.get(sid),
+            label_ids=label_ids,
+        ):
             type_new += 1
             st = s.get("session_type")
             if st is None:
@@ -1638,7 +1662,13 @@ def check_session_self_layer(
 
         if sid in SELF_LAYER_CHECKS_EXEMPT_IDS:
             checks_legacy += 1
-        elif _is_new_row(sid, SELF_LAYER_CHECKS_CUTOFF, today=today):
+        elif _is_new_row(
+            sid,
+            SELF_LAYER_CHECKS_CUTOFF,
+            today=today,
+            shard=shard_of.get(sid),
+            label_ids=label_ids,
+        ):
             checks_new += 1
             slc = s.get("self_layer_checks")
             if slc is None:
@@ -1983,7 +2013,11 @@ def main() -> int:
         notes, evaluations, errors, today=today
     )
     stype_new, stype_legacy, slc_new, slc_legacy = check_session_self_layer(
-        collections.get("sessions", {}), errors, today=today
+        collections.get("sessions", {}),
+        errors,
+        today=today,
+        shard_of=record_shards,
+        label_ids=forward_labels,
     )
     errata_advisory = errata_schema_advisory(errata_records)
     psc_advisory = psc_verification_advisory(evaluations, materials)
