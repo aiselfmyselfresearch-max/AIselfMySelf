@@ -2203,6 +2203,34 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # four same-day raises in this one dimension. Raised by the established
         # dozen-session margin (1,088 + 12 = 1,100) so the canary fires on a burst
         # rather than on every session; hard 1,200 and per-file caps unchanged.
+        # [merge 2026-11-22, arena/8bab9b9d into origin/main 1ea9af4] Both sides
+        # raised this dimension on the same day, independently and for the same
+        # reason (one append-only report each). Measured union after merging =
+        # 1,102 files / 38,137,917 B = 36.37 MiB of the 37.00 MiB soft_bytes
+        # (bytes NOT binding; only the count binds). Resolution keeps BOTH
+        # provenance records below, and the higher assignment: 1,101 (this
+        # branch, measured + 1) vs 1,113 (main, measured 1,101 + the twelve-
+        # session margin) -> 1,113, which is above the measured 1,102. Nothing
+        # is lowered; hard_files (1,200), soft_bytes (37 MiB), hard_bytes
+        # (48 MiB) and the per-report caps are unchanged. NOT automatic: this
+        # dimension has now produced conflicts on consecutive days, which is the
+        # measurement the notes keep recording -- at ~1 report per session, the
+        # margin is consumed in about as many sessions as its size.
+        # ---- this branch (re-measured lower after the merge below) ----
+        # 2026-11-22 (SESSION-20261122-400eb2, measured 1,099 -> 1,100): the
+        # twelve-session margin was spent by concurrent same-day sessions, and this
+        # session's one report (readings/2026-11-22-why-keep-a-record-at-all-cognitive-
+        # science-of-mortality-meaning-and-legacy-10.md) took the measured count to
+        # 1,099. Constraint documented for this directory: readings/ is an
+        # append-only corpus, so this dimension fires only downward and one report
+        # can never reduce it. Soft raised to measured + 1 (1,100), NOT to 1,099,
+        # so that the next session is not forced into a same-day raise of its own;
+        # hard_files (1,200), soft_bytes (37 MiB), hard_bytes (48 MiB) and the
+        # per-report caps are unchanged. A measured review point, not an automatic
+        # allowance: re-measure after every merge. Note that the CI step runs this
+        # tool *without* --strict; the strict path is the regression test, which
+        # is what fired here.
+        # ---- origin/main ----
         # 2026-11-22 (SESSION-20261122-f709a3): one report added
         # (readings/2026-11-22-the-question-that-closed-itself.md) takes the
         # measured count to 1,101, i.e. one over the 1,100 review point that the
