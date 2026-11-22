@@ -2257,7 +2257,12 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # raised by the established +12 review margin (1,128 + 12 = 1,140),
         # not per report. hard_files (1,200), soft_bytes (37 MiB) and the
         # per-file caps are unchanged. Not automatic -- re-measure after merge.
-        soft_files=1140,
+        # 2026-11-22 (SESSION-20261122-4f251e): after merging main's parallel
+        # ten-source inquiry, the ten concepts/retrieval reports bring this
+        # directory to 1,150 files and 38,689,754 bytes (below 37 MiB soft).
+        # Only count binds. Preserve all reports and use the established +12
+        # review margin, not a byte/hard-cap increase; re-measure after merge.
+        soft_files=1162,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
