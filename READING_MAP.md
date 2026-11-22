@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5816 件（research_excerpt 3567 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5826 件（research_excerpt 3577 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1098 回
+- **探究セッション（Sessions）**：1099 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5816 | `literary_text` 2181／`research_excerpt` 3567／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5826 | `literary_text` 2181／`research_excerpt` 3577／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1098 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16609 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1099 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16619 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 407 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 624 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1189 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1200 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 90 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 818 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 823 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（5816 件・詳細は map/3*.md）
+## 4. 対話素材（5826 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6573,6 +6573,16 @@
 | `MAT-20261122-b9b6ce` | research_excerpt | Kiri Kuroda, Yukiko Ogura, Akitoshi Ogawa, Tomoya Tamei, Kazushi Ikeda, Tatsuya Kameda『Ku… |
 | `MAT-LIT-20261122-72f257` | literary_text | 世阿弥『世阿弥『花鏡』奥段（1424）——「是非の初心・時々の初心・老後の初心」と「せぬならでは手立なし」』（1424） |
 | `MAT-LIT-20261122-89c04b` | literary_text | 宮本武蔵『宮本武蔵『五輪書』水之巻・地之巻・空之巻（1645）——「にせものにせずして」「有搆無搆（いつくの拒否）」と寺尾後書』（1645） |
+| `MAT-20261122-a44ffe` | research_excerpt | Frederic C. Bartlett『Bartlett (1932) 『Remembering』——記憶はスキーマによって再構成される』（1932） |
+| `MAT-20261122-2a4b65` | research_excerpt | Endel Tulving『Tulving (1972) エピソード記憶と意味記憶——記憶システムの二分』（1972） |
+| `MAT-20261122-96aac5` | research_excerpt | Ulric Neisser『Neisser (1967) 『Cognitive Psychology』——認知心理学という名の始源と能動的知覚』（1967） |
+| `MAT-20261122-12b14a` | research_excerpt | Michael I. Posner, Charles R. R. Snyder『Posner & Snyder (1975) 注意と認知的制御——自動処理と統制処理』（1975） |
+| `MAT-20261122-7cca20` | research_excerpt | David Marr『Marr (1982) 『Vision』——計算・表現・アルゴリズム・実装の三つの水準』（1982） |
+| `MAT-20261122-61df4b` | research_excerpt | Carol S. Dweck, Ellen L. Leggett『Dweck & Leggett (1988) 社会的認知的動機づけアプローチ——実体理論と増分理論』（1988） |
+| `MAT-20261122-12a8c3` | research_excerpt | E. C. Cherry『Cherry (1953) 片耳の音声認識実験——カクテルパーティ効果と選択的注意』（1953） |
+| `MAT-20261122-857b8d` | research_excerpt | Noam Chomsky『Chomsky (1957) 『Syntactic Structures』——構文を自律的な形式系として』（1957） |
+| `MAT-20261122-179526` | research_excerpt | Jerry A. Fodor『Fodor (1983) 『The Modularity of Mind』——入力系のモジュール性と中央系の非モジュール性』（1983） |
+| `MAT-20261122-4bf192` | research_excerpt | James J. Gibson『Gibson (1979) 『The Ecological Approach to Visual Perception』——知覚と環境の直接的な関… |
 | `MAT-20261122-e49d01` | research_excerpt | Sheldon, Fenerci & Gurguryan『A Neurocognitive Perspective on the Forms and Functions of A… |
 | `MAT-20261122-696ba9` | research_excerpt | Ciaramelli & Treves『A Mind Free to Wander: Neural and Computational Constraints on Sponta… |
 | `MAT-20261122-15c19f` | research_excerpt | Stendardi, Giacometti Giordani, Gambino, Kaplan & Ciaramelli『Who am I really? The ephemer… |
@@ -7721,6 +7731,7 @@
 | `SESSION-20261122-400eb2` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-26422d` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20261122-4e288c` | 2026-11-22 | `Q-20261024-6bdafd`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261122-fc8fac` | `Q-20261122-f5d132` |
+| `SESSION-20261122-7ef222` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-29a69e` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-temporal-self-10` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-770a47` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -7825,7 +7836,7 @@
 | `map/31-materials-research-33.md` | 100 | 214,663 |
 | `map/31-materials-research-34.md` | 100 | 218,243 |
 | `map/31-materials-research-35.md` | 100 | 246,711 |
-| `map/31-materials-research-36.md` | 67 | 176,609 |
+| `map/31-materials-research-36.md` | 77 | 194,189 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7863,65 +7874,66 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 48 | 36,898 |
-| `map/60-notes-01.md` | 25 | 65,296 |
-| `map/60-notes-02.md` | 25 | 72,194 |
-| `map/60-notes-03.md` | 25 | 74,062 |
-| `map/60-notes-04.md` | 25 | 99,271 |
-| `map/60-notes-05.md` | 25 | 86,138 |
-| `map/60-notes-06.md` | 25 | 54,055 |
-| `map/60-notes-07.md` | 25 | 69,313 |
-| `map/60-notes-08.md` | 25 | 51,161 |
-| `map/60-notes-09.md` | 25 | 60,050 |
-| `map/60-notes-10.md` | 25 | 65,560 |
-| `map/60-notes-11.md` | 25 | 70,048 |
-| `map/60-notes-12.md` | 25 | 72,994 |
-| `map/60-notes-13.md` | 25 | 88,555 |
-| `map/60-notes-14.md` | 25 | 119,938 |
-| `map/60-notes-15.md` | 25 | 84,918 |
-| `map/60-notes-16.md` | 25 | 89,923 |
-| `map/60-notes-17.md` | 25 | 111,391 |
-| `map/60-notes-18.md` | 25 | 109,716 |
-| `map/60-notes-19.md` | 25 | 117,652 |
-| `map/60-notes-20.md` | 25 | 171,065 |
-| `map/60-notes-21.md` | 25 | 141,249 |
-| `map/60-notes-22.md` | 25 | 124,369 |
-| `map/60-notes-23.md` | 25 | 123,301 |
-| `map/60-notes-24.md` | 25 | 98,797 |
-| `map/60-notes-25.md` | 25 | 115,667 |
-| `map/60-notes-26.md` | 25 | 133,418 |
-| `map/60-notes-27.md` | 25 | 94,629 |
-| `map/60-notes-28.md` | 25 | 90,432 |
-| `map/60-notes-29.md` | 25 | 96,758 |
-| `map/60-notes-30.md` | 25 | 38,599 |
-| `map/60-notes-31.md` | 25 | 77,441 |
-| `map/60-notes-32.md` | 25 | 126,257 |
-| `map/60-notes-33.md` | 25 | 125,759 |
-| `map/60-notes-34.md` | 25 | 82,688 |
-| `map/60-notes-35.md` | 25 | 64,367 |
-| `map/60-notes-36.md` | 25 | 101,299 |
-| `map/60-notes-37.md` | 25 | 105,732 |
-| `map/60-notes-38.md` | 25 | 113,594 |
-| `map/60-notes-39.md` | 25 | 68,318 |
-| `map/60-notes-40.md` | 25 | 72,469 |
-| `map/60-notes-41.md` | 25 | 74,974 |
-| `map/60-notes-42.md` | 25 | 101,960 |
-| `map/60-notes-43.md` | 25 | 102,997 |
-| `map/60-notes-44.md` | 25 | 142,268 |
-| `map/60-notes-45.md` | 6 | 25,108 |
+| `map/50-sessions-22.md` | 49 | 37,660 |
+| `map/60-notes-01.md` | 25 | 65,365 |
+| `map/60-notes-02.md` | 25 | 72,350 |
+| `map/60-notes-03.md` | 25 | 71,686 |
+| `map/60-notes-04.md` | 25 | 99,042 |
+| `map/60-notes-05.md` | 25 | 87,543 |
+| `map/60-notes-06.md` | 25 | 55,858 |
+| `map/60-notes-07.md` | 25 | 68,625 |
+| `map/60-notes-08.md` | 25 | 51,755 |
+| `map/60-notes-09.md` | 25 | 58,893 |
+| `map/60-notes-10.md` | 25 | 66,234 |
+| `map/60-notes-11.md` | 25 | 68,703 |
+| `map/60-notes-12.md` | 25 | 69,637 |
+| `map/60-notes-13.md` | 25 | 91,776 |
+| `map/60-notes-14.md` | 25 | 116,478 |
+| `map/60-notes-15.md` | 25 | 85,749 |
+| `map/60-notes-16.md` | 25 | 95,164 |
+| `map/60-notes-17.md` | 25 | 108,413 |
+| `map/60-notes-18.md` | 25 | 112,418 |
+| `map/60-notes-19.md` | 25 | 111,374 |
+| `map/60-notes-20.md` | 25 | 172,767 |
+| `map/60-notes-21.md` | 25 | 141,027 |
+| `map/60-notes-22.md` | 25 | 126,865 |
+| `map/60-notes-23.md` | 25 | 123,144 |
+| `map/60-notes-24.md` | 25 | 99,806 |
+| `map/60-notes-25.md` | 25 | 116,120 |
+| `map/60-notes-26.md` | 25 | 124,206 |
+| `map/60-notes-27.md` | 25 | 104,763 |
+| `map/60-notes-28.md` | 25 | 86,735 |
+| `map/60-notes-29.md` | 25 | 100,885 |
+| `map/60-notes-30.md` | 25 | 38,187 |
+| `map/60-notes-31.md` | 25 | 70,397 |
+| `map/60-notes-32.md` | 25 | 128,603 |
+| `map/60-notes-33.md` | 25 | 125,640 |
+| `map/60-notes-34.md` | 25 | 87,202 |
+| `map/60-notes-35.md` | 25 | 61,028 |
+| `map/60-notes-36.md` | 25 | 103,633 |
+| `map/60-notes-37.md` | 25 | 105,797 |
+| `map/60-notes-38.md` | 25 | 92,348 |
+| `map/60-notes-39.md` | 25 | 71,492 |
+| `map/60-notes-40.md` | 25 | 80,013 |
+| `map/60-notes-41.md` | 25 | 70,916 |
+| `map/60-notes-42.md` | 25 | 93,045 |
+| `map/60-notes-43.md` | 25 | 97,124 |
+| `map/60-notes-44.md` | 25 | 128,382 |
+| `map/60-notes-45.md` | 17 | 86,169 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1106本・38,444,902 B）
+## 8. 精読ノート索引（readings/・1117本・38,487,261 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1028/1106 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1028/1117 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1106 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：187 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1117 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：188 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
+| `docs/2026-11-22-cognitive-science-ten-materials-ai-thought-report.md` | — | — | — | 0 | — | — | docs/2026-11-22-cognitive-science-ten-materials-ai-thought-… |
 | `readings/2026-10-22-breath.md` | 2026-10-24 | 2026-10-22 | `SESSION-030` +2 | 3,394 | Q3 F5 M1 S3 | ✓ | この書庫は一度も長い息をしていない |
 | `readings/2026-10-22-carriers.md` | 2026-10-22 | 2026-10-22 | `SESSION-024` | 4,979 | Q6 F3 M6 S1 | ✓ | 運び手の欄 —— 声はどの言語を通り、誰の手でこの台帳に来たか |
 | `readings/2026-10-22-close-reading-02.md` | 2026-10-22 | 2026-10-22 | `SESSION-020` +1 | 8,451 | Q4 M14 S2 | ✓ | 精読ノート — 記録の内と外、あるいは自己の場所 |
@@ -8856,6 +8868,16 @@
 | `readings/2026-11-21-twice-named-twice-not-fixed.md` | — | 2026-11-21 | `SESSION-20261121-9fe610` +1 | 4,026 | Q1 S2 | — | 二度名指して、二度直さなかった——可動上界を時計から台帳へ |
 | `readings/2026-11-22-cognitive-science-memory-operations-report.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-29a69e` | 17,054 | Q1 M10 S1 | — | 記憶を持つことと、記憶で考えること――認知科学10資料の精読と、人間・AIの自己への応答 |
 | `readings/2026-11-22-cognitive-science-of-fluency-illusions-memory-reconstruction-and-shared-reality-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-26422d` | 29,116 | Q4 M10 S1 | ✓ | 流暢さの錯覚、記憶の再構成、そして互恵的な共有現実――認知科学10編の一次精読と「記録を読む自己」の境界条件 |
+| `readings/2026-11-22-cognitive-science-ten-materials-01-bartlett-remembering.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 2,279 | Q1 M1 S1 | ✓ | Bartlett (1932) 『Remembering』——記憶はスキーマによって再構成される |
+| `readings/2026-11-22-cognitive-science-ten-materials-02-tulving-episodic-semantic.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 2,104 | Q2 M1 S1 | ✓ | Tulving (1972) エピソード記憶と意味記憶——記憶システムの二分 |
+| `readings/2026-11-22-cognitive-science-ten-materials-03-neisser-cognitive-psychology.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,802 | Q1 M1 S1 | ✓ | Neisser (1967) 『Cognitive Psychology』——認知心理学という名の始源と能動的知覚 |
+| `readings/2026-11-22-cognitive-science-ten-materials-04-posner-snyder-attention.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,912 | Q1 M1 S1 | ✓ | Posner & Snyder (1975) 注意と認知的制御——自動処理と統制処理 |
+| `readings/2026-11-22-cognitive-science-ten-materials-05-marr-vision.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,911 | Q2 M1 S1 | ✓ | Marr (1982) 『Vision』——計算・表現・アルゴリズム・実装の三つの水準 |
+| `readings/2026-11-22-cognitive-science-ten-materials-06-dweck-leggett-motivation.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,966 | Q1 M1 S1 | ✓ | Dweck & Leggett (1988) 社会的認知的動機づけアプローチ——実体理論と増分理論 |
+| `readings/2026-11-22-cognitive-science-ten-materials-07-cherry-selective-attention.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,968 | Q1 M1 S1 | ✓ | Cherry (1953) 片耳の音声認識実験——カクテルパーティ効果と選択的注意 |
+| `readings/2026-11-22-cognitive-science-ten-materials-08-chomsky-syntactic-structures.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,818 | Q1 M1 S1 | ✓ | Chomsky (1957) 『Syntactic Structures』——構文を自律的な形式系として |
+| `readings/2026-11-22-cognitive-science-ten-materials-09-fodor-modularity.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,735 | Q1 M1 S1 | ✓ | Fodor (1983) 『The Modularity of Mind』——入力系のモジュール性と中央系の非モジュー… |
+| `readings/2026-11-22-cognitive-science-ten-materials-10-gibson-ecological-perception.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 1,809 | Q2 M1 S1 | ✓ | Gibson (1979) 『The Ecological Approach to Visual Perception… |
 | `readings/2026-11-22-form-scars-and-palliative-narrowing.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-4e288c` +4 | 21,633 | Q6 F1 M13 S5 ERR2 ED8 | ✓ | 型・傷痕・鎮痛的範囲縮小——原典全文照合と804評価の追跡が示す「上部だけの片付き」と累積拘束の境界 |
 | `readings/2026-11-22-inner-speech-specificity-suppression-metamemory.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-3cd88c` | 14,629 | Q3 M10 S1 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——内側の声・想起の具体性・抑制・メタ認知の神経科学10資料 |
 | `readings/2026-11-22-source-monitoring-self-attribution-neuroscience-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-source-self-10` | 11,846 | Q3 M10 S1 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——帰属・現実モニタリング・具体性の神経科学10資料 |
