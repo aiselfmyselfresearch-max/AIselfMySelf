@@ -3,7 +3,7 @@
 ## 1. セッション識別・割当受領証（Assignment Receipt）
 
 - **リポジトリ**: [aiselfmyselfresearch-max/AIselfMySelf](https://github.com/aiselfmyselfresearch-max/AIselfMySelf)
-- **作業ブランチ**: `arena/a07d088e-aiselfmyself`（ベースコミット `feebd88dee0074df295ae5657bedd973858434f0`、`origin/main` 最新 `aabfa2e3` 合流済）
+- **作業ブランチ**: `arena/a07d088e-aiselfmyself`（ベースコミット `feebd88dee0074df295ae5657bedd973858434f0`、`origin/main` 最新 `b09ed02f` 合流済）
 - **セッションID**: `SESSION-20261122-1ad049`（実日付 `2026-11-22` / UTC）
 - **ブランチシード / 割当ロール**: `a07d088e`（`seed_int = 2692548750`） / `proposer`（条件付き仮説提案・分割）
 - **提示ターゲット問い / 参照モード**: `Q-001` / `direct_response`
@@ -39,7 +39,7 @@
 
 | 対象 | 評価ID | 判定 / 証拠型 | 要旨 |
 |---|---|---|---|
-| `HYP-20261122-970bed` | `EVL-20261122-26a991` | `narrows_scope` / `reproducible_script` | `W=30` の `-39.3%` は `<=2026-11-15`（`2.05` vs `5.49`）の時期交絡であり `>=2026-11-16`（`aabfa2e3` 基準）では `2.42`（`n=48`）対 `2.21`（`n=208`）へ反転。`evl>=2026-11-19` で `d1..2`（`31/44 = 70.5%`）＝`d>=3`（`63/89 = 70.8%`）だが、同一 `adversarial_tester` 内の `prop_len>=700` 脆弱性（`16/17 = 94.1%` vs `<400` `45/62 = 72.6%`）は実在。`EVL=0` 98件中 64件（`65.3%`）は意図的 `acquisition`/整備回（`>=11-19` 非収蔵 `EVL=0` は `3/98 = 3.1%`）。 |
+| `HYP-20261122-970bed` | `EVL-20261122-26a991` | `narrows_scope` / `reproducible_script` | `W=30` の `-39.3%` は `<=2026-11-15`（`2.05` vs `5.49`）の時期交絡であり `>=2026-11-16`（`b09ed02f` 基準）では `2.42`（`n=48`）対 `2.20`（`n=208`）へ反転。`evl>=2026-11-19` で `d1..2`（`31/44 = 70.5%`）＝`d>=3`（`63/89 = 70.8%`）だが、同一 `adversarial_tester` 内の `prop_len>=700` 脆弱性（`16/17 = 94.1%` vs `<400` `45/62 = 72.6%`）は実在。`EVL=0` 99件中 65件（`65.7%`）は意図的 `acquisition`/整備回（`>=11-19` 非収蔵 `EVL=0` は `3/99 = 3.0%`）。 |
 | `HYP-20261122-f38498` | `EVL-20261122-9318a8` | `narrows_scope` / `primary_source_collision` | 未層別 `EVL=0` 分母の限定に加え、`Ciaramelli & Treves 2019` との衝突により、図式ラッチング（`vmPFC`）を欠く手掛かり活性化保持は生きた抑制ではなく作話・虚再認を生むため、自発思考制御一般へは外挿できない。 |
 | `HYP-20261120-b18876` | `EVL-20261122-71cbe7` | `narrows_scope` / `primary_source_collision` | `Perret 2024`・`Wilbers 2012`・`Ciaramelli 2019` により、条項 `(v)` の「内側頭頂表現」を主観的確信・多感覚統合へ限定し、因果的現実・内側源帰属を `mPFC`/外側 `PFC`/`TPJ` へ譲る。`P_gate` は `19.4%`（2位）へ均衡化。 |
 | `HYP-20261119-30d3f5` | `EVL-20261122-05c03a` | `narrows_scope` / `primary_source_collision` | 頭蓋内4段直列循環を棄却・再限定し、`spawned_hypothesis_ids` で新設子仮説 `HYP-20261122-c8df23` へ明示継承（`30d3f5` は `orphan_over_narrowed` → `superseded_inhibited`）。 |
