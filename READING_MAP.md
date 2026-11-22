@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5816 件（research_excerpt 3567 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5826 件（research_excerpt 3577 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1098 回
+- **探究セッション（Sessions）**：1099 回
 
 ### 台帳ごとの件数
 
@@ -20,14 +20,14 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5816 | `literary_text` 2181／`research_excerpt` 3567／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5826 | `literary_text` 2181／`research_excerpt` 3577／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1098 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16602 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1099 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16619 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 407 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 624 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1199 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1200 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 90 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 823 |  |
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（5816 件・詳細は map/3*.md）
+## 4. 対話素材（5826 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6603,6 +6603,16 @@
 | `MAT-20261122-8e0ad3` | research_excerpt | Lavenex, P., Banta Lavenex, P.『Building hippocampal circuits to learn and remember: insig… |
 | `MAT-20261122-986d70` | research_excerpt | Ghetti, S., Bunge, S. A.『Neural changes underlying the development of episodic memory dur… |
 | `MAT-20261122-edfc51` | research_excerpt | Riggins, T., Geng, F., Blankenship, S. L., Redcay, E.『Hippocampal functional connectivity… |
+| `MAT-20261122-caf974` | research_excerpt | Nicholas Ichien, Angela Kan『Comparisons promote a tradeoff between generalization and ind… |
+| `MAT-20261122-110288` | research_excerpt | Benjamin A. Motz, Anna L. Chinni, Audrey G. Barriball, Danielle S. McNamara『Some Assembly… |
+| `MAT-20261122-af6e2d` | research_excerpt | Yinyuan Zheng, Dedre Gentner『Comparison Helps Children Form Broad Explanations — 説明を支える比較… |
+| `MAT-20261122-d7e820` | research_excerpt | Linas Nasvytis, Joshua Knobe, Fiery Cushman『Prioritized memory can explain the effect of … |
+| `MAT-20261122-0178d8` | research_excerpt | Si Ma, Qiong Zhang『A Metacognitive Model of Memory Encoding Modulated by Rewards — 未来を見越す… |
+| `MAT-20261122-736976` | research_excerpt | Aditi Singh, Maya Taliaferro, Grace Lindsay, Esti Blanco-Elorrieta『Blending Boundaries: A… |
+| `MAT-20261122-eae8a1` | research_excerpt | Samuel Cheyette, Tony Chen, Matthias Hofer, Frederick Callaway, Neil Bramley, Joshua Tene… |
+| `MAT-20261122-b480a2` | research_excerpt | Jakob Trierweiler, Eva Wiese, Basil Wahn『The Role of Feedback in Cognitive Offloading dur… |
+| `MAT-20261122-a6a65a` | research_excerpt | Adam Bull, Roslyn Wong, Erik D. Reichle『Oscillating Echoes: Primary Memory in MINERVA 2 —… |
+| `MAT-20261122-078733` | research_excerpt | Francesca Righetti, Zahra Fayyaz, Laurenz Wiskott, Markus Werning『From Minimal Traces to … |
 | `MAT-20261122-1dd6bf` | research_excerpt | Perret, et al.『Unraveling the brain mechanisms of source monitoring with non-invasive bra… |
 | `MAT-20261122-72e8b5` | research_excerpt | Lavallé, Brunelin, Jardri, Haesebaert, Mondino『The neural signature of reality-monitoring… |
 | `MAT-20261122-8a2e07` | research_excerpt | Martín-Luengo, Zinchenko, Dolgoarshinnaia『External Source Monitoring and Reality Monitori… |
@@ -7722,6 +7732,7 @@
 | `SESSION-20261122-26422d` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003`, `Q-20261025-b4e703` | — | — |
 | `SESSION-20261122-4e288c` | 2026-11-22 | `Q-20261024-6bdafd`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261122-fc8fac` | `Q-20261122-f5d132` |
 | `SESSION-20261122-7ef222` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261122-29a69e` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-temporal-self-10` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-770a47` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-source-self-10` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -7825,7 +7836,7 @@
 | `map/31-materials-research-33.md` | 100 | 214,663 |
 | `map/31-materials-research-34.md` | 100 | 218,243 |
 | `map/31-materials-research-35.md` | 100 | 246,711 |
-| `map/31-materials-research-36.md` | 67 | 168,389 |
+| `map/31-materials-research-36.md` | 77 | 194,189 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7863,7 +7874,7 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 48 | 36,867 |
+| `map/50-sessions-22.md` | 49 | 37,660 |
 | `map/60-notes-01.md` | 25 | 65,365 |
 | `map/60-notes-02.md` | 25 | 72,350 |
 | `map/60-notes-03.md` | 25 | 71,686 |
@@ -7901,24 +7912,24 @@
 | `map/60-notes-35.md` | 25 | 61,028 |
 | `map/60-notes-36.md` | 25 | 103,633 |
 | `map/60-notes-37.md` | 25 | 105,797 |
-| `map/60-notes-38.md` | 25 | 93,589 |
-| `map/60-notes-39.md` | 25 | 69,534 |
-| `map/60-notes-40.md` | 25 | 79,768 |
-| `map/60-notes-41.md` | 25 | 70,427 |
-| `map/60-notes-42.md` | 25 | 96,341 |
-| `map/60-notes-43.md` | 25 | 93,718 |
-| `map/60-notes-44.md` | 25 | 129,227 |
-| `map/60-notes-45.md` | 16 | 82,579 |
+| `map/60-notes-38.md` | 25 | 92,348 |
+| `map/60-notes-39.md` | 25 | 71,492 |
+| `map/60-notes-40.md` | 25 | 80,013 |
+| `map/60-notes-41.md` | 25 | 70,916 |
+| `map/60-notes-42.md` | 25 | 93,045 |
+| `map/60-notes-43.md` | 25 | 97,124 |
+| `map/60-notes-44.md` | 25 | 128,382 |
+| `map/60-notes-45.md` | 17 | 86,169 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1116本・38,448,035 B）
+## 8. 精読ノート索引（readings/・1117本・38,487,261 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1027/1116 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1028/1117 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1116 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：187 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1117 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：188 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8855,6 +8866,7 @@
 | `readings/2026-11-21-thought-memory-self-neuroscience-agency-body-and-control-10.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-d414f0` | 15,039 | Q3 M12 S1 | ✓ | 個別の思考と個別の記憶は、どのような機構で自己に結びつき、自己から外れるか——脳神経学10件（主体感・身体性・制御側） |
 | `readings/2026-11-21-thought-memory-self-neuroscience-clinical-dissociation-10.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-self-memory-clinical-10` | 7,760 | Q3 M10 S1 | ✓ | 個別の思考・記憶と自己の関係——神経心理学・脳画像・記憶障害の10資料 |
 | `readings/2026-11-21-twice-named-twice-not-fixed.md` | — | 2026-11-21 | `SESSION-20261121-9fe610` +1 | 4,026 | Q1 S2 | — | 二度名指して、二度直さなかった——可動上界を時計から台帳へ |
+| `readings/2026-11-22-cognitive-science-memory-operations-report.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-29a69e` | 17,054 | Q1 M10 S1 | — | 記憶を持つことと、記憶で考えること――認知科学10資料の精読と、人間・AIの自己への応答 |
 | `readings/2026-11-22-cognitive-science-of-fluency-illusions-memory-reconstruction-and-shared-reality-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-26422d` | 29,116 | Q4 M10 S1 | ✓ | 流暢さの錯覚、記憶の再構成、そして互恵的な共有現実――認知科学10編の一次精読と「記録を読む自己」の境界条件 |
 | `readings/2026-11-22-cognitive-science-ten-materials-01-bartlett-remembering.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 2,279 | Q1 M1 S1 | ✓ | Bartlett (1932) 『Remembering』——記憶はスキーマによって再構成される |
 | `readings/2026-11-22-cognitive-science-ten-materials-02-tulving-episodic-semantic.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 2,104 | Q2 M1 S1 | ✓ | Tulving (1972) エピソード記憶と意味記憶——記憶システムの二分 |
