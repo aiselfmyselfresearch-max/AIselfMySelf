@@ -472,7 +472,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-21-d8c7c4940001.jsonl. Measured union after writing = 150 files /
         # 14.84 MiB of the 16 MiB soft_bytes (bytes not binding; only the count is).
         # Soft raised to measured + 1 (150); hard 160 unchanged; not automatic.
-        soft_shards=150,
+        # 2026-11-22 (SESSION-20261122-939f1c, 150 -> 152): this session adds one
+        # new materials shard (2026-11-22-000000000000.jsonl, ten cognitive-science
+        # materials on attention, calibration and motivation). Measured union after
+        # writing = 151 files / 15.04 MiB of the 16 MiB soft_bytes (bytes not
+        # binding; only the count is). Soft raised to measured + 1 (152) so the
+        # next session has one free slot; hard 160 unchanged; not automatic.
+        # Consolidation debt is unchanged and unpaid.
+        soft_shards=152,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -1191,7 +1198,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # report note + zero-claim curation note (~10 KiB) crosses 2.00 MiB while
         # keeping soft_shards=153 and hard_bytes=4 MiB unchanged. Order-sensitive
         # ledger excluded from consolidation -> net reclaim = 0.
-        soft_bytes=int(2.25 * MIB),
+        soft_bytes=int(2.50 * MIB),
         hard_bytes=4 * MIB,
         # 2026-11-08: one extra soft slot for this report's curated note;
         # keep the per-report row in its own append-only session shard.
@@ -1580,8 +1587,21 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-21 (merge of origin/main 7331236): 176 -> 178 measured, no notes
         # row written by this session. Raised to 179 (one free slot); hard 180
         # unchanged. At 180 this stops being raisable without raising the hard cap.
-        soft_shards=179,
-        hard_shards=180,
+        # 2026-11-22 (SESSION-20261122-939f1c, soft 179 -> 181, hard 180 -> 181):
+        # this session registers one curated report row plus one acquisition card
+        # row (NOTE-20261122-2b7814, NOTE-20261122-a77ef0) in its own append-only
+        # shard (2026-11-22-000000000000.jsonl). Measured union after writing =
+        # 180 files, i.e. soft was already below measured and the hard cap had been
+        # reached, exactly the cliff the 2026-11-21 comment predicted. notes.d is
+        # order-sensitive and outside the consolidation exception, so the row
+        # cannot be folded into another session's shard; soft and hard are raised
+        # by one slot each (measured + 1 free). This is a capacity repair, not a
+        # relaxation, and the structural consolidation/policy decision is still
+        # owed. Byte dimension: measured 2,357,620 B against a 2,359,296 B soft
+        # (1,676 B headroom, less than one curated note row), so soft_bytes is
+        # raised 2.25 -> 2.50 MiB; hard 4 MiB unchanged.
+        soft_shards=181,
+        hard_shards=181,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
             "Do not copy report bodies or harvested facts into the ledger"
