@@ -1400,6 +1400,10 @@ SESSION_TYPE_EXEMPT_IDS = frozenset({
     "SESSION-20261121-004556",  # from concurrent PR #1020, minted before the six-layer rule merged
     "SESSION-20261122-11b1d3",  # from PR #1031, on main before six-layer rule merged; shard 2026-11-10 < stamp 20261122 proves internal label
 })
+# The frozen pre-receipt snapshot (2026-11-17, above) also predates these
+# hooks. Reuse that provenance, not the current date or a row's own timestamp:
+# legacy future-labelled IDs must not become new obligations as time catches up.
+SESSION_TYPE_EXEMPT_IDS = SESSION_TYPE_EXEMPT_IDS | PRE_RECEIPT_SESSION_IDS
 SELF_LAYER_CHECKS_EXEMPT_IDS = SESSION_TYPE_EXEMPT_IDS  # same set: both rules take effect together
 _NUMBER_RE = re.compile(
     r"(?:\d+(?:\.\d+)?\s*%|\bp\s*[=<]\s*0?\.\d+|\d+\.\d+|\b\d+\s*(?:件|行|回|種|人|資料|評価|セッション|仮説|素材)"

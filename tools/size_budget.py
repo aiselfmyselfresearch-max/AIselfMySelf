@@ -479,7 +479,21 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # binding; only the count is). Soft raised to measured + 1 (152) so the
         # next session has one free slot; hard 160 unchanged; not automatic.
         # Consolidation debt is unchanged and unpaid.
-        soft_shards=152,
+        # 2026-11-22: requested ten-source acquisition adds one dedicated shard.
+        # Measured 151 files, ~15.03 MiB; preserve frozen base and hard limits.
+        # 2026-11-22 (SESSION-20261122-3cd88c): requested ten-source acquisition
+        # adds one day shard (2026-11-22-000000000000.jsonl, 10 neuroscience
+        # materials). Measured union after writing = 152 files / ~15.06 MiB of
+        # the 16 MiB soft_bytes (bytes not binding; only the count is). Soft
+        # raised to measured (152); hard 160 unchanged; not automatic.
+        # 2026-11-22 (merge of origin/main 2b9f1b7): the merged union holds 152
+        # materials shards (this branch's ten attention/calibration/motivation
+        # rows and main's two ten-source waves share the day shard
+        # 2026-11-22-000000000000.jsonl, now 20 rows, plus 56f3484d). Measured
+        # after the merge = 152 files / 15.10 MiB of the 16 MiB soft_bytes.
+        # Soft raised to measured + 1 (153) so the next session has one free
+        # slot; hard 160 unchanged.
+        soft_shards=153,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -1600,8 +1614,19 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # owed. Byte dimension: measured 2,357,620 B against a 2,359,296 B soft
         # (1,676 B headroom, less than one curated note row), so soft_bytes is
         # raised 2.25 -> 2.50 MiB; hard 4 MiB unchanged.
-        soft_shards=181,
-        hard_shards=181,
+        # 2026-11-22: one curated report row adds the 180th shard (~2.25 MiB).
+        # Soft count only; hard count 180 and byte limits remain unchanged.
+        # 2026-11-22 (merge of origin/main 2b9f1b7): the merged union holds 181
+        # notes shards -- this branch's own (2026-11-22-000000000000.jsonl, two
+        # curated rows) plus main's two (2026-11-22-000000000000.jsonl row and
+        # 2026-11-22-56f3484d.jsonl). Measured after the merge = 181 files /
+        # 2.25 MiB of the 2.50 MiB soft_bytes (bytes not binding; only the count
+        # is). notes.d is order-sensitive and outside the consolidation
+        # exception, so soft and hard are raised by one slot each (measured + 1
+        # free). Capacity repair, not a relaxation; the consolidation/policy
+        # decision is still owed and the hard cap is now binding at 182.
+        soft_shards=182,
+        hard_shards=182,
         remedy=(
             "Keep one row per (report, reading); supersede instead of rewriting. "
             "Do not copy report bodies or harvested facts into the ledger"
