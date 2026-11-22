@@ -254,7 +254,7 @@ Ghetti & Bunge（2012）は、児童中期のエピソード記憶の発達を�
 
 ### 追記（検証結果、2026-11-22 実行）
 
-- `python3 tools/validate_seed.py`：PASS（materials=5754、sessions=1089、notes=1178、read_log=16456）。
+- `python3 tools/validate_seed.py`：PASS（origin/main 合流後：materials=5764、sessions=1090、notes=1180、read_log=16466）。
 - `python3 tools/inspect_inquiry.py --check-map`：PASS（READING_MAP.md は台帳と一致）。
 - `python3 tools/belief_state.py --check-map`：PASS（BELIEF_MAP.md は最新）。
 - `python3 tools/self_model.py --check`：PASS（SELF_MODEL.md は最新、意味的不変条件を満たす）。
@@ -265,8 +265,10 @@ Ghetti & Bunge（2012）は、児童中期のエピソード記憶の発達を�
 - `python3 tools/read_log_backfill.py --check`：PASS（全セッションの文脈素材に read_log 行がある）。
 - `python3 tools/claim_wiring.py --check`：PASS（訂正・撤回の claim 配線規則）。
 - `python3 tools/readings_integrity_check.py`：PASS（空本文・H1欠落・参照先欠落なし）。
-- `python3 tools/append_only_check.py --base HEAD`：PASS（HEAD の台帳 34,196 行がバイト単位で残存）。
+- `python3 tools/append_only_check.py --base HEAD`：PASS（origin/main の台帳 34,221 行がバイト単位で残存）。
 - `python3 tools/map_build.py --check-readme`：PASS（README に台帳件数なし）。
 - `python3 -m unittest discover -s tests`：終了コード0（全テスト成功）。
+
+origin/main（PR #1034）を合流した際、`READING_MAP.md`・`SELF_MODEL.md`・`BELIEF_MAP.md` に生成物の競合が出たため、手で編集せず各生成器で再生成して解消した。
 
 `three_gates.py --compact-shards --apply` の出力では、統合前後の各コレクションの和集合 SHA-256 が一致し、行の内容と順序が保存されたことを確認した。統合は別コミットに分ける。

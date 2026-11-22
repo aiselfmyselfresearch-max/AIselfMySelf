@@ -7849,7 +7849,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1098本・38,019,447 B）
+## 8. 精読ノート索引（readings/・1098本・38,019,681 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1020/1098 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -8794,7 +8794,7 @@
 | `readings/2026-11-22-inner-speech-specificity-suppression-metamemory.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-3cd88c` | 14,629 | Q3 M10 S1 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——内側の声・想起の具体性・抑制・メタ認知の神経科学10資料 |
 | `readings/2026-11-22-ten-cognitive-science-sources-on-attention-calibration-and-motivation.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-939f1c` | 15,431 | Q3 M10 S1 | ✓ | 注意・較正・動機づけ——認知科学10資料の精読 |
 | `readings/2026-11-22-the-thin-bowl-and-the-pot-set-before-dawn.md` | 2026-10-27 | 2026-11-22 | `SESSION-20261122-11b1d3` | 9,678 | Q7 F12 M10 MOT1 S1 | ✓ | 薄い椀は全員に届く——鍋の大きさが空腹より先に決まるとき（SESSION-20261122-11b1d3） |
-| `readings/2026-11-22-thought-memory-self-developmental-emergence.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-770a47` | 20,329 | Q3 M10 S1 | ✓ | 私のものである以前——個別の思考・個別の記憶と自己のあいだで、発達は何を分けるか |
+| `readings/2026-11-22-thought-memory-self-developmental-emergence.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-770a47` | 20,465 | Q3 M10 S1 | ✓ | 私のものである以前——個別の思考・個別の記憶と自己のあいだで、発達は何を分けるか |
 | `readings/2026-11-22-thought-memory-self-temporal-organization.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-temporal-self-10` +1 | 13,418 | Q3 M10 S2 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——時間的配置・自己知識・思考遷移の神経科学10資料 |
 | `readings/2026-11-23-a-single-tree-keeps-no-year.md` | 2026-10-27 | 2026-11-23 | `SESSION-20261123-0f9fde` +1 | 13,844 | Q7 F11 M7 MOT5 S2 | ✓ | 一本の木は年を言わない——細い年の合意と、口を下に向けた瓶（SESSION-20261123-0f9fde） |
 | `readings/2026-11-24-seven-of-eleven-and-the-tight-copy.md` | 2026-10-27 | 2026-11-24 | `SESSION-20261124-139d83` +2 | 14,962 | Q5 F13 M3 S3 | ✓ | 十一のうち七つ——締まった複製は、なぜ開く戸が少ないのか（SESSION-20261124-139d83） |
