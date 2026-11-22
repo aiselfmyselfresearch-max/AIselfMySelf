@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：438 件（初期シード 10 件 ＋ 派生 428 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5764 件（research_excerpt 3517 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5774 件（research_excerpt 3527 ／ literary_text 2179 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：252 編（selected 96 ／ draft 156）
 - **解釈的関係（Relations）**：7091 件
-- **探究セッション（Sessions）**：1091 回
+- **探究セッション（Sessions）**：1092 回
 
 ### 台帳ごとの件数
 
@@ -20,14 +20,14 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 438 | `open` 414／`paused` 24（初期シード 10／セッション派生 397／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5764 | `literary_text` 2179／`research_excerpt` 3517／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5774 | `literary_text` 2179／`research_excerpt` 3527／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 252 | `selected` 96／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7091 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1091 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16469 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1092 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16479 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 401 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 616 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1181 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1182 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 88 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 800 |  |
 
@@ -801,7 +801,7 @@
 | `FRAG-20261117-cd430d` | 病室にはない琴を、片づけない | draft | essay | reflective_literary_voice |
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 
-## 4. 対話素材（5764 件・詳細は map/3*.md）
+## 4. 対話素材（5774 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6569,8 +6569,18 @@
 | `MAT-20261122-8e0ad3` | research_excerpt | Lavenex, P., Banta Lavenex, P.『Building hippocampal circuits to learn and remember: insig… |
 | `MAT-20261122-986d70` | research_excerpt | Ghetti, S., Bunge, S. A.『Neural changes underlying the development of episodic memory dur… |
 | `MAT-20261122-edfc51` | research_excerpt | Riggins, T., Geng, F., Blankenship, S. L., Redcay, E.『Hippocampal functional connectivity… |
+| `MAT-20261122-1dd6bf` | research_excerpt | Perret, et al.『Unraveling the brain mechanisms of source monitoring with non-invasive bra… |
+| `MAT-20261122-72e8b5` | research_excerpt | Lavallé, Brunelin, Jardri, Haesebaert, Mondino『The neural signature of reality-monitoring… |
+| `MAT-20261122-8a2e07` | research_excerpt | Martín-Luengo, Zinchenko, Dolgoarshinnaia『External Source Monitoring and Reality Monitori… |
+| `MAT-20261122-fc492d` | research_excerpt | Ranjan, Odegaard『Reality monitoring and metacognitive judgments in a false-memory paradig… |
+| `MAT-20261122-4261ef` | research_excerpt | Pérez-Mata, Diges『False memories in forensic psychology: do cognition and brain activity … |
+| `MAT-20261122-81ab10` | research_excerpt | Wang, Wang, Otgaar, Patihis, Sauerland『Self-relevance enhances susceptibility to false me… |
+| `MAT-20261122-975b8b` | research_excerpt | Bulteau, et al.『The update of self-identity: Importance of assessing autobiographical mem… |
+| `MAT-20261122-4087d2` | research_excerpt | Weiss-Cowie, Verhaeghen, Duarte『An updated account of overgeneral autobiographical memory… |
+| `MAT-20261122-01f6c4` | research_excerpt | Kucyi, Kam, Andrews-Hanna, et al.『Recent advances in the neuroscience of spontaneous and … |
+| `MAT-20261122-de9cb0` | research_excerpt | Kunz, Abramovich Krasa, Willett, et al.『Inner speech in motor cortex and implications for… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261122-770a47・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261122-source-self-10・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -7665,6 +7675,7 @@
 | `SESSION-20261122-92f338` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-temporal-self-10` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-770a47` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261122-source-self-10` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7091 件・全表は map/40-relations-*.md）
 
@@ -7764,7 +7775,7 @@
 | `map/31-materials-research-33.md` | 100 | 214,663 |
 | `map/31-materials-research-34.md` | 100 | 218,243 |
 | `map/31-materials-research-35.md` | 100 | 244,669 |
-| `map/31-materials-research-36.md` | 17 | 35,704 |
+| `map/31-materials-research-36.md` | 27 | 53,326 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7802,7 +7813,7 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 41 | 31,225 |
+| `map/50-sessions-22.md` | 42 | 31,975 |
 | `map/60-notes-01.md` | 25 | 65,296 |
 | `map/60-notes-02.md` | 25 | 72,194 |
 | `map/60-notes-03.md` | 25 | 74,062 |
@@ -7840,22 +7851,22 @@
 | `map/60-notes-35.md` | 25 | 64,367 |
 | `map/60-notes-36.md` | 25 | 101,133 |
 | `map/60-notes-37.md` | 25 | 105,732 |
-| `map/60-notes-38.md` | 25 | 74,539 |
-| `map/60-notes-39.md` | 25 | 75,828 |
-| `map/60-notes-40.md` | 25 | 67,450 |
-| `map/60-notes-41.md` | 25 | 84,704 |
-| `map/60-notes-42.md` | 25 | 108,804 |
-| `map/60-notes-43.md` | 25 | 114,294 |
-| `map/60-notes-44.md` | 24 | 122,021 |
+| `map/60-notes-38.md` | 25 | 74,915 |
+| `map/60-notes-39.md` | 25 | 76,071 |
+| `map/60-notes-40.md` | 25 | 66,386 |
+| `map/60-notes-41.md` | 25 | 81,690 |
+| `map/60-notes-42.md` | 25 | 110,766 |
+| `map/60-notes-43.md` | 25 | 111,323 |
+| `map/60-notes-44.md` | 25 | 129,233 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1099本・38,043,261 B）
+## 8. 精読ノート索引（readings/・1100本・38,068,168 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1021/1099 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1022/1100 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1099 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1100 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：188 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -8793,6 +8804,7 @@
 | `readings/2026-11-21-thought-memory-self-neuroscience-clinical-dissociation-10.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-self-memory-clinical-10` | 7,760 | Q3 M10 S1 | ✓ | 個別の思考・記憶と自己の関係——神経心理学・脳画像・記憶障害の10資料 |
 | `readings/2026-11-21-twice-named-twice-not-fixed.md` | — | 2026-11-21 | `SESSION-20261121-9fe610` +1 | 4,026 | Q1 S2 | — | 二度名指して、二度直さなかった——可動上界を時計から台帳へ |
 | `readings/2026-11-22-inner-speech-specificity-suppression-metamemory.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-3cd88c` | 14,629 | Q3 M10 S1 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——内側の声・想起の具体性・抑制・メタ認知の神経科学10資料 |
+| `readings/2026-11-22-source-monitoring-self-attribution-neuroscience-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-source-self-10` | 11,846 | Q3 M10 S1 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——帰属・現実モニタリング・具体性の神経科学10資料 |
 | `readings/2026-11-22-ten-cognitive-science-sources-on-attention-calibration-and-motivation.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-939f1c` | 15,431 | Q3 M10 S1 | ✓ | 注意・較正・動機づけ——認知科学10資料の精読 |
 | `readings/2026-11-22-the-self-identified-by-the-wrong-number.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-92f338` +1 | 12,575 | Q3 M2 S2 | ✓ | 私は自分を、自分の数字で名指していなかった——切片化した二つの検証チャネルと、単一の行列 |
 | `readings/2026-11-22-the-thin-bowl-and-the-pot-set-before-dawn.md` | 2026-10-27 | 2026-11-22 | `SESSION-20261122-11b1d3` | 9,678 | Q7 F12 M10 MOT1 S1 | ✓ | 薄い椀は全員に届く——鍋の大きさが空腹より先に決まるとき（SESSION-20261122-11b1d3） |
