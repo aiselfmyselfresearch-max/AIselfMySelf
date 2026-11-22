@@ -39,7 +39,7 @@
 - 実日付 (開始時刻): 2026-11-22 (2026-11-22)
 - 現在のロール: consolidator
 - ジェネレータ: Arena.ai Agent Mode
-- 総セッション数: 1104
+- 総セッション数: 1105
 - 直近10セッションのロール分布: {"adversarial_tester": 4, "proposer": 2, "consolidator": 4}
 
 ## 3. 一人称視点 (First-Person Perspective)
@@ -66,23 +66,23 @@
 システムの内部状態シグナル（容量・バランス・接続・一貫性）。
 
 ### 容量シグナル
-- ✓ file_count:state/materials.d: 152/160 (soft 153)
-- ✓ file_count:state/read_log.d: 175/176 (soft 176)
-- ✓ file_count:state/sessions.d: 177/179 (soft 178)
-- ✓ file_count:state/notes.d: 172/182 (soft 182)
-- ✓ file_count:readings/: 1137/1200 (soft 1140)
+- ✓ file_count:state/materials.d: 153/160 (soft 153)
+- ✓ file_count:state/read_log.d: 176/176 (soft 176)
+- ✓ file_count:state/sessions.d: 178/179 (soft 178)
+- ✓ file_count:state/notes.d: 173/182 (soft 182)
+- ✓ file_count:readings/: 1138/1200 (soft 1140)
 
 ### バランス・接続・一貫性
 - ✓ ロールバランス: 最大逸脱 0.15
-- ✗ 接続性: 孤児ノート 189/1224
-- ✓ 一貫性: 直近の評価数分散 1.36
+- ✗ 接続性: 孤児ノート 189/1225
+- ✓ 一貫性: 直近の評価数分散 0.4
 
 ## 5. 時間連続性 (Temporal Continuity)
 
 ### 事後確率ドリフト (D_KL in bits)
 - first_209_vs_full: 5.5451
 - first_419_vs_full: 0.0079
-- first_628_vs_full: 0.0001
+- first_629_vs_full: 0.0
 
 ### 世代比 (有効仮説の世代分布)
 - G0: 17
