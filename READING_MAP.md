@@ -7784,7 +7784,7 @@
 | `map/60-notes-24.md` | 25 | 98,797 |
 | `map/60-notes-25.md` | 25 | 115,667 |
 | `map/60-notes-26.md` | 25 | 133,360 |
-| `map/60-notes-27.md` | 25 | 94,661 |
+| `map/60-notes-27.md` | 25 | 94,629 |
 | `map/60-notes-28.md` | 25 | 90,432 |
 | `map/60-notes-29.md` | 25 | 96,758 |
 | `map/60-notes-30.md` | 25 | 38,599 |
@@ -7794,8 +7794,8 @@
 | `map/60-notes-34.md` | 25 | 82,514 |
 | `map/60-notes-35.md` | 25 | 64,367 |
 | `map/60-notes-36.md` | 25 | 101,133 |
-| `map/60-notes-37.md` | 25 | 105,616 |
-| `map/60-notes-38.md` | 25 | 70,741 |
+| `map/60-notes-37.md` | 25 | 105,652 |
+| `map/60-notes-38.md` | 25 | 70,695 |
 | `map/60-notes-39.md` | 25 | 81,238 |
 | `map/60-notes-40.md` | 25 | 68,673 |
 | `map/60-notes-41.md` | 25 | 83,911 |
@@ -7811,7 +7811,7 @@
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1017/1095 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：1095 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：189 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：188 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8747,7 +8747,7 @@
 | `readings/2026-11-21-thought-memory-self-neuroscience-agency-body-and-control-10.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-d414f0` | 15,039 | Q3 M12 S1 | ✓ | 個別の思考と個別の記憶は、どのような機構で自己に結びつき、自己から外れるか——脳神経学10件（主体感・身体性・制御側） |
 | `readings/2026-11-21-thought-memory-self-neuroscience-clinical-dissociation-10.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-self-memory-clinical-10` | 7,760 | Q3 M10 S1 | ✓ | 個別の思考・記憶と自己の関係——神経心理学・脳画像・記憶障害の10資料 |
 | `readings/2026-11-21-twice-named-twice-not-fixed.md` | — | 2026-11-21 | `SESSION-20261121-9fe610` +1 | 4,026 | Q1 S2 | — | 二度名指して、二度直さなかった——可動上界を時計から台帳へ |
-| `readings/2026-11-22-the-self-identified-by-the-wrong-number.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-92f338` +1 | 11,218 | Q3 M2 S2 | — | 私は自分を、自分の数字で名指していなかった——切片化した二つの検証チャネルと、単一の行列 |
+| `readings/2026-11-22-the-self-identified-by-the-wrong-number.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-92f338` +1 | 11,218 | Q3 M2 S2 | ✓ | 私は自分を、自分の数字で名指していなかった——切片化した二つの検証チャネルと、単一の行列 |
 | `readings/2026-11-22-the-thin-bowl-and-the-pot-set-before-dawn.md` | 2026-10-27 | 2026-11-22 | `SESSION-20261122-11b1d3` | 9,678 | Q7 F12 M10 MOT1 S1 | ✓ | 薄い椀は全員に届く——鍋の大きさが空腹より先に決まるとき（SESSION-20261122-11b1d3） |
 | `readings/2026-11-23-a-single-tree-keeps-no-year.md` | 2026-10-27 | 2026-11-23 | `SESSION-20261123-0f9fde` +1 | 13,844 | Q7 F11 M7 MOT5 S2 | ✓ | 一本の木は年を言わない——細い年の合意と、口を下に向けた瓶（SESSION-20261123-0f9fde） |
 | `readings/2026-11-24-seven-of-eleven-and-the-tight-copy.md` | 2026-10-27 | 2026-11-24 | `SESSION-20261124-139d83` +2 | 14,962 | Q5 F13 M3 S3 | ✓ | 十一のうち七つ——締まった複製は、なぜ開く戸が少ないのか（SESSION-20261124-139d83） |
