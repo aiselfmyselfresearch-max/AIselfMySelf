@@ -1398,6 +1398,7 @@ SESSION_TYPE_EXEMPT_IDS = frozenset({
     "SESSION-20261121-002438",  # from PR #1018
     "SESSION-20261121-faaab0",  # from concurrent PR #1019 (SESSION-20261121-faaab0, authored pre-gate)
     "SESSION-20261121-004556",  # from concurrent PR #1020, minted before the six-layer rule merged
+    "SESSION-20261122-11b1d3",  # from PR #1031, on main before six-layer rule merged; shard 2026-11-10 < stamp 20261122 proves internal label
 })
 SELF_LAYER_CHECKS_EXEMPT_IDS = SESSION_TYPE_EXEMPT_IDS  # same set: both rules take effect together
 _NUMBER_RE = re.compile(
