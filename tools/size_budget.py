@@ -753,8 +753,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 6.13 MiB of the 6.50 MiB soft_bytes (bytes not binding; count reaches the
         # hard ceiling). The rows are kept in their own append-only shard; the next
         # session must consolidate before another shard is created.
-        soft_shards=175,
-        hard_shards=175,
+        # 2026-11-22 (SESSION-20261122-939f1c, 175 -> 176): this session adds
+        # ten hand-written material read_log rows in
+        # 2026-11-22-000000000000.jsonl. Measured union after writing = 176 files /
+        # 6.17 MiB of the 6.50 MiB soft_bytes (bytes not binding; only the count is).
+        # The rows are append-only provenance and cannot be folded into another
+        # session's shard. Soft raised to measured + 1 (176) so the next session
+        # has one free slot; hard 175 -> 176 as well (capacity repair, not a
+        # relaxation; bytes not binding). Not automatic.
+        soft_shards=176,
+        hard_shards=176,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
     ShardBudget(
