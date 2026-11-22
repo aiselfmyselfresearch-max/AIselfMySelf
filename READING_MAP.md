@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5846 件（research_excerpt 3597 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5856 件（research_excerpt 3607 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1103 回
+- **探究セッション（Sessions）**：1104 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5846 | `literary_text` 2181／`research_excerpt` 3597／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5856 | `literary_text` 2181／`research_excerpt` 3607／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1103 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16662 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1104 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16672 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 408 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 627 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1214 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1224 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 91 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 836 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 838 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（5846 件・詳細は map/3*.md）
+## 4. 対話素材（5856 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6593,6 +6593,16 @@
 | `MAT-20261122-4bc1b9` | research_excerpt | David Wood, Jerome S. Bruner, Gail Ross『Wood, Bruner & Ross (1976)「問題解決における tutoring」——足場… |
 | `MAT-20261122-a82fdb` | research_excerpt | Asher Koriat, Morris Goldsmith『Koriat & Goldsmith (1996)「記憶の隠喩」——貯蔵庫か、対応か』（1996） |
 | `MAT-20261122-344b2a` | research_excerpt | Arthur M. Glenberg『Glenberg (1997)「記憶は何のためにあるのか」——記憶は貯蔵ではなく、行為のための身体化である』（1997） |
+| `MAT-20261122-fb1867` | research_excerpt | Stephen M. Kosslyn, Thomas M. Ball, Brian J. Reiser『Stephen M. Kosslyn (1978) — Visual im… |
+| `MAT-20261122-522c18` | research_excerpt | Antoine Bechara, Antonio R. Damasio, Hanna Damasio, Steven W. Anderson『Antoine Bechara (1… |
+| `MAT-20261122-8cb0dc` | research_excerpt | Giulio Tononi『Giulio Tononi (2004) — An information integration theory of consciousness』（… |
+| `MAT-20261122-e26a20` | research_excerpt | Karl Friston『Karl Friston (2005) — A theory of cortical responses』（2005） |
+| `MAT-20261122-2b0cb6` | research_excerpt | D. O. Hebb『D. O. Hebb (1949) — The Organization of Behavior: A Neuropsychological Theory』… |
+| `MAT-20261122-3d8fc5` | research_excerpt | L. S. Vygotsky『L. S. Vygotsky (1978) — Mind in Society: The Development of Higher Psychol… |
+| `MAT-20261122-95fa4f` | research_excerpt | Jean Piaget『Jean Piaget (1952) — The Origins of Intelligence in Children』（1952） |
+| `MAT-20261122-d7e121` | research_excerpt | Bernard J. Baars『Bernard J. Baars (1988) — A Cognitive Theory of Consciousness』（1988） |
+| `MAT-20261122-231fce` | research_excerpt | Steven Pinker『Steven Pinker (1994) — The Language Instinct: How the Mind Creates Language… |
+| `MAT-20261122-667f52` | research_excerpt | Alva Noë『Alva Noë (2004) — Action in Perception』（2004） |
 | `MAT-20261122-e49d01` | research_excerpt | Sheldon, Fenerci & Gurguryan『A Neurocognitive Perspective on the Forms and Functions of A… |
 | `MAT-20261122-696ba9` | research_excerpt | Ciaramelli & Treves『A Mind Free to Wander: Neural and Computational Constraints on Sponta… |
 | `MAT-20261122-15c19f` | research_excerpt | Stendardi, Giacometti Giordani, Gambino, Kaplan & Ciaramelli『Who am I really? The ephemer… |
@@ -7755,6 +7765,7 @@
 | `SESSION-20261122-1ad049` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-6bdafd`, `Q-20261122-f5d132` | — | — |
 | `SESSION-20261122-923c7a` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-a121a8` | 2026-11-22 | `Q-20261024-6bdafd`, `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261122-926331` | 2026-11-22 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261122-29a69e` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-temporal-self-10` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-770a47` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -7860,7 +7871,8 @@
 | `map/31-materials-research-33.md` | 100 | 214,663 |
 | `map/31-materials-research-34.md` | 100 | 218,243 |
 | `map/31-materials-research-35.md` | 100 | 246,932 |
-| `map/31-materials-research-36.md` | 97 | 244,129 |
+| `map/31-materials-research-36.md` | 100 | 241,150 |
+| `map/31-materials-research-37.md` | 7 | 17,814 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7898,8 +7910,8 @@
 | `map/50-sessions-19.md` | 50 | 35,982 |
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
-| `map/50-sessions-22.md` | 50 | 38,023 |
-| `map/50-sessions-23.md` | 3 | 2,445 |
+| `map/50-sessions-22.md` | 50 | 37,873 |
+| `map/50-sessions-23.md` | 4 | 3,276 |
 | `map/60-notes-01.md` | 25 | 65,135 |
 | `map/60-notes-02.md` | 25 | 72,215 |
 | `map/60-notes-03.md` | 25 | 70,988 |
@@ -7937,24 +7949,24 @@
 | `map/60-notes-35.md` | 25 | 58,816 |
 | `map/60-notes-36.md` | 25 | 101,435 |
 | `map/60-notes-37.md` | 25 | 105,637 |
-| `map/60-notes-38.md` | 25 | 70,214 |
-| `map/60-notes-39.md` | 25 | 94,948 |
-| `map/60-notes-40.md` | 25 | 68,318 |
-| `map/60-notes-41.md` | 25 | 72,469 |
-| `map/60-notes-42.md` | 25 | 74,974 |
-| `map/60-notes-43.md` | 25 | 101,960 |
-| `map/60-notes-44.md` | 25 | 102,997 |
-| `map/60-notes-45.md` | 25 | 142,268 |
-| `map/60-notes-46.md` | 6 | 25,108 |
+| `map/60-notes-38.md` | 25 | 64,679 |
+| `map/60-notes-39.md` | 25 | 77,626 |
+| `map/60-notes-40.md` | 25 | 69,534 |
+| `map/60-notes-41.md` | 25 | 79,768 |
+| `map/60-notes-42.md` | 25 | 70,427 |
+| `map/60-notes-43.md` | 25 | 96,341 |
+| `map/60-notes-44.md` | 25 | 93,718 |
+| `map/60-notes-45.md` | 25 | 129,227 |
+| `map/60-notes-46.md` | 16 | 82,579 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1131本・38,601,067 B）
+## 8. 精読ノート索引（readings/・1141本・38,625,418 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1041/1131 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1041/1141 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1131 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1141 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：190 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -8894,6 +8906,16 @@
 | `readings/2026-11-21-thought-memory-self-neuroscience-clinical-dissociation-10.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-self-memory-clinical-10` | 7,760 | Q3 M10 S1 | ✓ | 個別の思考・記憶と自己の関係——神経心理学・脳画像・記憶障害の10資料 |
 | `readings/2026-11-21-twice-named-twice-not-fixed.md` | — | 2026-11-21 | `SESSION-20261121-9fe610` +1 | 4,026 | Q1 S2 | — | 二度名指して、二度直さなかった——可動上界を時計から台帳へ |
 | `readings/2026-11-22-attentional-window-blindness-memory.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-2d7161` | 13,024 | Q3 M10 S1 | — | 注意の窓・盲視・系列位置・状態依存想起——認知科学10資料の精読と、AIの見方 |
+| `readings/2026-11-22-cognitive-action-development-01-kosslyn.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,111 | M1 S1 | ✓ | Stephen M. Kosslyn (1978) —— Visual images preserve metric … |
+| `readings/2026-11-22-cognitive-action-development-02-bechara.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,105 | M1 S1 | ✓ | Antoine Bechara (1994) —— Insensitivity to future consequen… |
+| `readings/2026-11-22-cognitive-action-development-03-tononi.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,084 | M1 S1 | ✓ | Giulio Tononi (2004) —— An information integration theory o… |
+| `readings/2026-11-22-cognitive-action-development-04-friston.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,076 | M1 S1 | ✓ | Karl Friston (2005) —— A theory of cortical responses |
+| `readings/2026-11-22-cognitive-action-development-05-hebb.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,131 | M1 S1 | ✓ | D. O. Hebb (1949) —— The Organization of Behavior: A Neurop… |
+| `readings/2026-11-22-cognitive-action-development-06-vygotsky.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,197 | M1 S1 | ✓ | L. S. Vygotsky (1978) —— Mind in Society: The Development o… |
+| `readings/2026-11-22-cognitive-action-development-07-piaget.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,122 | M1 S1 | ✓ | Jean Piaget (1952) —— The Origins of Intelligence in Childr… |
+| `readings/2026-11-22-cognitive-action-development-08-baars.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,054 | M1 S1 | ✓ | Bernard J. Baars (1988) —— A Cognitive Theory of Consciousn… |
+| `readings/2026-11-22-cognitive-action-development-09-pinker.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,122 | M1 S1 | ✓ | Steven Pinker (1994) —— The Language Instinct: How the Mind… |
+| `readings/2026-11-22-cognitive-action-development-10-noe.md` | — | 2026-11-22 | `SESSION-20261122-926331` | 1,112 | M1 S1 | ✓ | Alva Noë (2004) —— Action in Perception |
 | `readings/2026-11-22-cognitive-science-memory-operations-report.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-29a69e` | 17,054 | Q1 M10 S1 | — | 記憶を持つことと、記憶で考えること――認知科学10資料の精読と、人間・AIの自己への応答 |
 | `readings/2026-11-22-cognitive-science-of-fluency-illusions-memory-reconstruction-and-shared-reality-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-26422d` | 29,116 | Q4 M10 S1 | ✓ | 流暢さの錯覚、記憶の再構成、そして互恵的な共有現実――認知科学10編の一次精読と「記録を読む自己」の境界条件 |
 | `readings/2026-11-22-cognitive-science-ten-materials-01-bartlett-remembering.md` | — | 2026-11-22 | `SESSION-20261122-7ef222` | 2,279 | Q1 M1 S1 | ✓ | Bartlett (1932) 『Remembering』——記憶はスキーマによって再構成される |
