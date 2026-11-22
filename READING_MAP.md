@@ -1489,16 +1489,6 @@
 | `MAT-LIT-614` | literary_text | 太安万侶（撰録）『古事記——イザナギとイザナミ、黄泉の国の訪問』（712） |
 | `MAT-LIT-615` | literary_text | （預言者ムハンマドへの啓示）『クルアーン——人間は地上の代理者である』（630） |
 | `MAT-LIT-616` | literary_text | （ナグ・ハマディ文書）『グノーシス神話——無知な造物主デミウルゴス』（200） |
-| `MAT-20261122-e49d01` | research_excerpt | Sheldon, Fenerci & Gurguryan『A Neurocognitive Perspective on the Forms and Functions of A… |
-| `MAT-20261122-696ba9` | research_excerpt | Ciaramelli & Treves『A Mind Free to Wander: Neural and Computational Constraints on Sponta… |
-| `MAT-20261122-15c19f` | research_excerpt | Stendardi, Giacometti Giordani, Gambino, Kaplan & Ciaramelli『Who am I really? The ephemer… |
-| `MAT-20261122-7622f9` | research_excerpt | Iravani et al.『Intracranial Recordings of the Human Orbitofrontal Cortical Activity durin… |
-| `MAT-20261122-8ff3b1` | research_excerpt | Teghil, Bonavita, Procida, Giove & Boccia『Temporal Organization of Episodic and Experienc… |
-| `MAT-20261122-ee9d17` | research_excerpt | Teghil & Boccia『Brain connectivity patterns associated with individual differences in the… |
-| `MAT-20261122-0565e3` | research_excerpt | Kulesza et al.『Neural processing of sad and happy autobiographical memories in women with… |
-| `MAT-20261122-5d358d` | research_excerpt | Sulpizio, Teghil, Ruffo, Cartocci, Giove & Boccia『Unveiling the neural network involved i… |
-| `MAT-20261122-1c73dd` | research_excerpt | Anderson, Fernandino, Gross, Rey & Binder『Neural decoding of autobiographical mental imag… |
-| `MAT-20261122-49fcad` | research_excerpt | Teghil, Wiener & Boccia『Cortical Gradients Support Mental Time Travel into the Past and F… |
 | `MAT-20261024-02b80a` | literary_text | James Macpherson『マクファーソン『オシアン』——古代の署名を、近代の手が代筆する』（1760） |
 | `MAT-20261024-031fd4` | research_excerpt | Zheng Chong, Xiao Dong, Haoxiang Li, Shiyue Zhang, Wenqing Zhang, Xujie Zhang, Dongmei Ji… |
 | `MAT-20261024-043dea` | research_excerpt | Roy A. Huber, A. M. Headrick『Huber & Headrick『筆跡鑑定』（1999）——類似は、同一の証明ではない』（1999） |
@@ -6539,6 +6529,16 @@
 | `MAT-20261121-f858b0` | research_excerpt | Mohamad El Haj, Abdelhalim Boudoukha, Pascal Antoine, Ahmed A. Moustafa, Karim Gallouj, P… |
 | `MAT-20261121-66dd61` | research_excerpt | Angelina R. Sutin, Richard W. Robins『When the “I” looks at the “Me”: autobiographical mem… |
 | `MAT-20261121-44dfca` | research_excerpt | Nathalie H. Meyer et al.『Bodily perception links memory and self: A case study of an amne… |
+| `MAT-20261122-e49d01` | research_excerpt | Sheldon, Fenerci & Gurguryan『A Neurocognitive Perspective on the Forms and Functions of A… |
+| `MAT-20261122-696ba9` | research_excerpt | Ciaramelli & Treves『A Mind Free to Wander: Neural and Computational Constraints on Sponta… |
+| `MAT-20261122-15c19f` | research_excerpt | Stendardi, Giacometti Giordani, Gambino, Kaplan & Ciaramelli『Who am I really? The ephemer… |
+| `MAT-20261122-7622f9` | research_excerpt | Iravani et al.『Intracranial Recordings of the Human Orbitofrontal Cortical Activity durin… |
+| `MAT-20261122-8ff3b1` | research_excerpt | Teghil, Bonavita, Procida, Giove & Boccia『Temporal Organization of Episodic and Experienc… |
+| `MAT-20261122-ee9d17` | research_excerpt | Teghil & Boccia『Brain connectivity patterns associated with individual differences in the… |
+| `MAT-20261122-0565e3` | research_excerpt | Kulesza et al.『Neural processing of sad and happy autobiographical memories in women with… |
+| `MAT-20261122-5d358d` | research_excerpt | Sulpizio, Teghil, Ruffo, Cartocci, Giove & Boccia『Unveiling the neural network involved i… |
+| `MAT-20261122-1c73dd` | research_excerpt | Anderson, Fernandino, Gross, Rey & Binder『Neural decoding of autobiographical mental imag… |
+| `MAT-20261122-49fcad` | research_excerpt | Teghil, Wiener & Boccia『Cortical Gradients Support Mental Time Travel into the Past and F… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261122-temporal-self-10・全文は map/50-sessions-*.md）
 
@@ -7697,39 +7697,39 @@
 | `map/30-materials-literary-22.md` | 79 | 207,128 |
 | `map/31-materials-research-01.md` | 100 | 144,980 |
 | `map/31-materials-research-02.md` | 100 | 167,405 |
-| `map/31-materials-research-03.md` | 100 | 177,684 |
-| `map/31-materials-research-04.md` | 100 | 215,610 |
-| `map/31-materials-research-05.md` | 100 | 180,210 |
-| `map/31-materials-research-06.md` | 100 | 174,963 |
-| `map/31-materials-research-07.md` | 100 | 232,218 |
-| `map/31-materials-research-08.md` | 100 | 170,728 |
-| `map/31-materials-research-09.md` | 100 | 250,544 |
-| `map/31-materials-research-10.md` | 100 | 260,907 |
-| `map/31-materials-research-11.md` | 100 | 220,572 |
-| `map/31-materials-research-12.md` | 100 | 263,017 |
-| `map/31-materials-research-13.md` | 100 | 262,532 |
-| `map/31-materials-research-14.md` | 100 | 336,346 |
-| `map/31-materials-research-15.md` | 100 | 269,500 |
-| `map/31-materials-research-16.md` | 100 | 243,273 |
-| `map/31-materials-research-17.md` | 100 | 223,057 |
-| `map/31-materials-research-18.md` | 100 | 249,272 |
-| `map/31-materials-research-19.md` | 100 | 256,462 |
-| `map/31-materials-research-20.md` | 100 | 222,909 |
-| `map/31-materials-research-21.md` | 100 | 245,830 |
-| `map/31-materials-research-22.md` | 100 | 247,526 |
-| `map/31-materials-research-23.md` | 100 | 230,691 |
-| `map/31-materials-research-24.md` | 100 | 261,949 |
-| `map/31-materials-research-25.md` | 100 | 267,859 |
-| `map/31-materials-research-26.md` | 100 | 237,940 |
-| `map/31-materials-research-27.md` | 100 | 220,175 |
-| `map/31-materials-research-28.md` | 100 | 220,152 |
-| `map/31-materials-research-29.md` | 100 | 263,109 |
-| `map/31-materials-research-30.md` | 100 | 242,928 |
-| `map/31-materials-research-31.md` | 100 | 221,214 |
-| `map/31-materials-research-32.md` | 100 | 197,540 |
-| `map/31-materials-research-33.md` | 100 | 221,725 |
-| `map/31-materials-research-34.md` | 100 | 212,222 |
-| `map/31-materials-research-35.md` | 87 | 209,735 |
+| `map/31-materials-research-03.md` | 100 | 175,766 |
+| `map/31-materials-research-04.md` | 100 | 219,369 |
+| `map/31-materials-research-05.md` | 100 | 176,695 |
+| `map/31-materials-research-06.md` | 100 | 182,678 |
+| `map/31-materials-research-07.md` | 100 | 225,823 |
+| `map/31-materials-research-08.md` | 100 | 168,119 |
+| `map/31-materials-research-09.md` | 100 | 260,365 |
+| `map/31-materials-research-10.md` | 100 | 252,087 |
+| `map/31-materials-research-11.md` | 100 | 240,371 |
+| `map/31-materials-research-12.md` | 100 | 258,306 |
+| `map/31-materials-research-13.md` | 100 | 256,012 |
+| `map/31-materials-research-14.md` | 100 | 338,408 |
+| `map/31-materials-research-15.md` | 100 | 260,564 |
+| `map/31-materials-research-16.md` | 100 | 250,088 |
+| `map/31-materials-research-17.md` | 100 | 224,958 |
+| `map/31-materials-research-18.md` | 100 | 249,498 |
+| `map/31-materials-research-19.md` | 100 | 255,612 |
+| `map/31-materials-research-20.md` | 100 | 221,429 |
+| `map/31-materials-research-21.md` | 100 | 245,911 |
+| `map/31-materials-research-22.md` | 100 | 248,647 |
+| `map/31-materials-research-23.md` | 100 | 231,807 |
+| `map/31-materials-research-24.md` | 100 | 259,812 |
+| `map/31-materials-research-25.md` | 100 | 265,578 |
+| `map/31-materials-research-26.md` | 100 | 241,698 |
+| `map/31-materials-research-27.md` | 100 | 221,141 |
+| `map/31-materials-research-28.md` | 100 | 209,251 |
+| `map/31-materials-research-29.md` | 100 | 273,301 |
+| `map/31-materials-research-30.md` | 100 | 237,565 |
+| `map/31-materials-research-31.md` | 100 | 212,887 |
+| `map/31-materials-research-32.md` | 100 | 202,898 |
+| `map/31-materials-research-33.md` | 100 | 214,663 |
+| `map/31-materials-research-34.md` | 100 | 218,243 |
+| `map/31-materials-research-35.md` | 87 | 210,849 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7815,7 +7815,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1095本・37,910,585 B）
+## 8. 精読ノート索引（readings/・1095本・37,910,744 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1017/1095 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -8758,7 +8758,7 @@
 | `readings/2026-11-21-thought-memory-self-neuroscience-clinical-dissociation-10.md` | 2026-11-21 | 2026-11-21 | `SESSION-20261121-self-memory-clinical-10` | 7,760 | Q3 M10 S1 | ✓ | 個別の思考・記憶と自己の関係——神経心理学・脳画像・記憶障害の10資料 |
 | `readings/2026-11-21-twice-named-twice-not-fixed.md` | — | 2026-11-21 | `SESSION-20261121-9fe610` +1 | 4,026 | Q1 S2 | — | 二度名指して、二度直さなかった——可動上界を時計から台帳へ |
 | `readings/2026-11-22-the-thin-bowl-and-the-pot-set-before-dawn.md` | 2026-10-27 | 2026-11-22 | `SESSION-20261122-11b1d3` | 9,678 | Q7 F12 M10 MOT1 S1 | ✓ | 薄い椀は全員に届く——鍋の大きさが空腹より先に決まるとき（SESSION-20261122-11b1d3） |
-| `readings/2026-11-22-thought-memory-self-temporal-organization.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-temporal-self-10` +1 | 13,327 | Q3 M10 S2 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——時間的配置・自己知識・思考遷移の神経科学10資料 |
+| `readings/2026-11-22-thought-memory-self-temporal-organization.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-temporal-self-10` +1 | 13,418 | Q3 M10 S2 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——時間的配置・自己知識・思考遷移の神経科学10資料 |
 | `readings/2026-11-23-a-single-tree-keeps-no-year.md` | 2026-10-27 | 2026-11-23 | `SESSION-20261123-0f9fde` +1 | 13,844 | Q7 F11 M7 MOT5 S2 | ✓ | 一本の木は年を言わない——細い年の合意と、口を下に向けた瓶（SESSION-20261123-0f9fde） |
 | `readings/2026-11-24-seven-of-eleven-and-the-tight-copy.md` | 2026-10-27 | 2026-11-24 | `SESSION-20261124-139d83` +2 | 14,962 | Q5 F13 M3 S3 | ✓ | 十一のうち七つ——締まった複製は、なぜ開く戸が少ないのか（SESSION-20261124-139d83） |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
