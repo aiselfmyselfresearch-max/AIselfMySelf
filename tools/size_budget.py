@@ -2257,11 +2257,11 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # raised by the established +12 review margin (1,128 + 12 = 1,140),
         # not per report. hard_files (1,200), soft_bytes (37 MiB) and the
         # per-file caps are unchanged. Not automatic -- re-measure after merge.
-        # 2026-11-22 (PR #1053 integration): origin/main advanced with additional
-        # readings before this report merged. The combined tree has 1,141 reports;
-        # preserve the established +12 review margin (1,141 + 12 = 1,153), not
-        # a one-file-at-a-time ratchet. Hard and byte caps remain unchanged.
-        soft_files=1153,
+        # 2026-11-22 (SESSION-20261122-4f251e, PR #1054): integrating the
+        # parallel inquiries including PR #1053 brings the combined count to
+        # 1,151 files. Keep the established +12 review margin; only the count
+        # soft cap moves. Byte and hard caps remain unchanged.
+        soft_files=1163,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
