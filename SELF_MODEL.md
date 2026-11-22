@@ -39,7 +39,7 @@
 - 実日付 (開始時刻): 2026-11-22 (2026-11-22)
 - 現在のロール: consolidator
 - ジェネレータ: arena-agent
-- 総セッション数: 1097
+- 総セッション数: 1098
 - 直近10セッションのロール分布: {"proposer": 3, "consolidator": 3, "adversarial_tester": 4}
 
 ## 3. 一人称視点 (First-Person Perspective)
@@ -66,15 +66,15 @@
 システムの内部状態シグナル（容量・バランス・接続・一貫性）。
 
 ### 容量シグナル
-- ✓ file_count:state/materials.d: 150/160 (soft 153)
-- ✓ file_count:state/read_log.d: 173/176 (soft 176)
-- ✓ file_count:state/sessions.d: 175/179 (soft 178)
-- ✓ file_count:state/notes.d: 170/182 (soft 182)
-- ✓ file_count:readings/: 1103/1200 (soft 1113)
+- ✓ file_count:state/materials.d: 151/160 (soft 153)
+- ✓ file_count:state/read_log.d: 174/176 (soft 176)
+- ✓ file_count:state/sessions.d: 176/179 (soft 178)
+- ✓ file_count:state/notes.d: 171/182 (soft 182)
+- ✓ file_count:readings/: 1104/1200 (soft 1113)
 
 ### バランス・接続・一貫性
 - ✓ ロールバランス: 最大逸脱 0.1
-- ✗ 接続性: 孤児ノート 179/1188
+- ✗ 接続性: 孤児ノート 180/1189
 - △ 一貫性: 直近の評価数分散 5.44
 
 ## 5. 時間連続性 (Temporal Continuity)
