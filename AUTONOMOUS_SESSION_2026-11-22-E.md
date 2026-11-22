@@ -21,7 +21,7 @@
 
 対象問の `P_gate` は基準時の `f38498` 51.5% / `970bed` 48.5% から、それぞれ60.2% / 39.8%になった。素の `P` は `970bed` 57.0% / `f38498` 43.0% で、両指標を混同しない。数値はモデルの会計結果であり真理確率の実証ではない。評価は829→831件、セッションは1101→1102件、精読ノート配線は1119/1119→1120/1120。非確証評価率は62.6%→62.7%。
 
-生成マップ再構築後、`validate_seed.py`、`inspect_inquiry.py --check-map`、`belief_state.py --check-map`、`self_model.py --check`、`note_index.py --check`、`learning_metrics.py --check`、`three_gates.py --check`、`read_log_backfill.py --check`、`date_axis.py --enforce-shards`、`append_only_check.py`、`readings_integrity_check.py`、`claim_wiring.py --check`、`size_budget.py --strict` が通過。検証は記録の整合性を示し、解釈の真偽を保証しない。既存の一次資料衝突の一部には未検証資料が残るという警告も引き続き存在する。
+生成マップ再構築後、`validate_seed.py`、`inspect_inquiry.py --check-map`、`belief_state.py --check-map`、`self_model.py --check`、`note_index.py --check`、`learning_metrics.py --check`、`three_gates.py --check`、`read_log_backfill.py --check`、`date_axis.py --enforce-shards`、`append_only_check.py`、`readings_integrity_check.py`、`claim_wiring.py --check`、`size_budget.py --strict` が通過。全テストは1085件実行され1件失敗した。テスト中に本報告を追加し索引の未再生成状態と重なったためであり、索引再生成後に該当テストを単独再実行して通過した。全テストの再実行結果は別途CIに委ねる。検証は記録の整合性を示し、解釈の真偽を保証しない。既存の一次資料衝突の一部には未検証資料が残るという警告も引き続き存在する。
 
 ## 次への引き継ぎ
 
