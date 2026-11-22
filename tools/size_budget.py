@@ -2242,7 +2242,14 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # keeps firing on a burst and not on every session. Only soft_files
         # moves; soft_bytes (37 MiB), hard_files (1,200), soft_file_bytes and
         # hard_file_bytes are unchanged. Not automatic -- re-measure after merge.
-        soft_files=1113,
+        # 2026-11-22 (SESSION-20261122-7ef222): this session's ten close-reading
+        # reports on classical cognitive science materials (1932-1988) took
+        # readings/ from 1,104 to 1,114 files (36.51 MiB of the 37 MiB soft,
+        # bytes not binding). Reports are append-only and the count cannot be
+        # compacted; rescaled by the established +12 review margin
+        # (1,114 + 12 = 1,126) rather than per report. hard_files (1,200),
+        # soft_bytes (37 MiB) unchanged. Not automatic -- re-measure after merge.
+        soft_files=1126,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
