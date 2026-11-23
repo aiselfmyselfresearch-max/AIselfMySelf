@@ -79,6 +79,36 @@ class InheritanceWindowTests(unittest.TestCase):
         self.assertNotIn("`readings/a.md`", window)
         self.assertIn("`readings/b.md`", window)
 
+    def test_declined_alone_stays_in_window_replacement_counts_once(self) -> None:
+        other = "SESSION-20261105-bbbbbb"
+        negative = dict(read_row("READ-NEG", other, NOTE_A["note_id"]), reading="declined")
+        data = with_notes(base.fixture(), [NOTE_A], [negative])
+        facts, totals = inspect_inquiry.inherited_report_paths(data)
+        self.assertEqual(totals["note_read_rows"], 0)
+        self.assertEqual(totals["inherited_rows"], 0)
+        self.assertNotIn(NOTE_A["path"], facts["read_by"])
+        packet = inspect_inquiry.build_context_packet(data, "Q-001", seed="00000001")
+        window = packet.split("## 4.8", 1)[1]
+        self.assertIn("`readings/a.md`", window)
+        self.assertIn("declined", window)
+        self.assertIn("未読や無価値の証明ではありません", window)
+
+        replacement = read_row("READ-REPLACEMENT", other, NOTE_A["note_id"])
+        data = with_notes(base.fixture(), [NOTE_A], [negative, replacement])
+        facts, totals = inspect_inquiry.inherited_report_paths(data)
+        self.assertEqual(totals["note_read_rows"], 1)
+        self.assertEqual(totals["inherited_rows"], 1)
+        self.assertEqual(facts["read_by"][NOTE_A["path"]], {other})
+        packet = inspect_inquiry.build_context_packet(data, "Q-001", seed="00000001")
+        self.assertNotIn("`readings/a.md`", packet.split("## 4.8", 1)[1])
+
+    def test_missing_session_does_not_count_as_another_reader(self) -> None:
+        unknown = read_row("READ-UNKNOWN", "", NOTE_A["note_id"])
+        data = with_notes(base.fixture(), [NOTE_A], [unknown])
+        facts, totals = inspect_inquiry.inherited_report_paths(data)
+        self.assertEqual(totals["inherited_rows"], 0)
+        self.assertNotIn(NOTE_A["path"], facts["read_by"])
+
     def test_self_read_is_not_inheritance(self) -> None:
         data = with_notes(
             base.fixture(), [NOTE_A],
