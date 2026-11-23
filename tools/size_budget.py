@@ -84,7 +84,25 @@ BUDGETS: tuple[Budget, ...] = (
     ),
     Budget(
         "BELIEF_MAP.md",
-        soft_bytes=512 * 1024,
+        # 2026-11-23 (SESSION-20261123-89b471): this dimension was already
+        # binding, not newly exceeded. Measured on the merge base d560db6,
+        # BELIEF_MAP.md was 523,706 B of the 524,288 B soft -- 582 B of
+        # headroom for a file that is *regenerated*, so any session that
+        # registers a hypothesis busts --strict. The 2026-11-22 note in
+        # readings/2026-11-22-orthogonal-generation-attribution-and-epoch-
+        # stratified-audit.md §1-2 recorded 521,838/524,288 (2,450 B left); the
+        # growth since then is other sessions' rows, not this one's.
+        # This session's two hypotheses were first written as long conjunctions
+        # (propositions 832/458 chars) and trimmed to 299/277 chars on the
+        # "conjunction bloat" argument itself, which returned 4,571 B of the
+        # 15,049 B the additions cost. The remainder is the per-hypothesis
+        # render block, paid once per (hypothesis x question) pair regardless
+        # of prose length -- a structural cost, not a verbose one.
+        # Raised by the established measured + 12 review margin (539,185 + 12
+        # KiB = 551,377 <= 540 KiB), keeping the canary live: the next ~13 KiB
+        # of growth fires it again. hard_bytes (2 MiB) unchanged, and the
+        # remedy below is untouched. Not automatic -- re-measure after merge.
+        soft_bytes=540 * 1024,
         hard_bytes=2 * MIB,
         remedy="Keep BELIEF_MAP.md focused on active/refuted hypothesis distributions via tools/belief_state.py --write-map",
     ),
@@ -1826,6 +1844,16 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # 2026-11-20 (SESSION-20261120-749911): this session adds one new cognitive science
         # close-reading report (readings/2026-11-20-cognitive-science-ten-sources-on-human-and-ai-self.md).
         # Measured total = 35.02 MiB across 1,061 reports. Soft bytes raised 35 -> 37 MiB.
+        # 2026-11-23 (SESSION-20261123-89b471, merge of main into PR #1058): the union
+        # of this branch's one report with main's two (SESSION-20261123-9603d4,
+        # -015356) measured 38,818,124 B across 1,155 reports -- 20,812 B over the
+        # 37 MiB soft. The BYTES dimension fired, not the count (1,155/1,163), so the
+        # sanctioned 1 MiB review step applied: 37 -> 38 MiB. A parallel session
+        # (SESSION-20261123-5b6353) reached the same conclusion independently; both
+        # rationales are kept below because they measured the union at different
+        # moments and agree on the step. hard 48 MiB and the caps are unchanged.
+        # This is merge maintenance, not a research result.
+
         # 2026-11-23 (SESSION-20261123-5b6353, post-merge): soft_bytes 37 -> 38 MiB.
         # Measured on the merged union: origin/main before this session's report stood at
         # 38,785,233 B (12,079 B under the 37 MiB line), and this session's 10-source
