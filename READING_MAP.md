@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5962 件（research_excerpt 3713 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5972 件（research_excerpt 3723 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1129 回
+- **探究セッション（Sessions）**：1130 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5962 | `literary_text` 2181／`research_excerpt` 3713／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5972 | `literary_text` 2181／`research_excerpt` 3723／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1129 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16947 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1130 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16959 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 416 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 630 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1272 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 97 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 884 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1273 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 99 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 887 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（5962 件・詳細は map/3*.md）
+## 4. 対話素材（5972 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6769,6 +6769,16 @@
 | `MAT-20261123-cd5f87` | research_excerpt | Daniel R. Montello, Herbert L. Pick『Montello & Pick (1993) — 垂直に並んだ大規模空間の知識を統合する（書誌のみ） — … |
 | `MAT-20261123-a10b37` | research_excerpt | Christoph Hölscher, Martin Brösamle, Georg Vrachliotis『Hölscher, Brösamle & Vrachliotis (… |
 | `MAT-20261123-5548fe` | research_excerpt | Tobias Meilinger, Markus Knauff『Meilinger & Knauff (2008) — 『道を聞くか地図を使うか』の野外実験（書誌のみ。2006年… |
+| `MAT-20261123-79b170` | research_excerpt | René A. Spitz『Spitz (1945)「病院主義」——物は足りているのに、応答する他者が欠けると自己は育たない』（1945） |
+| `MAT-20261123-47db70` | research_excerpt | Arnold J. Sameroff『Sameroff (1975)「早期社会関係におけるトランザクショナル・モデル」——発達の単位は子でも環境でもなく、反復する相互変換』（19… |
+| `MAT-20261123-cbbf00` | research_excerpt | Urie Bronfenbrenner『Bronfenbrenner (1977)「人間発達の実験的生態学へ向けて」——発達は入れ子の環境系で起こり、実験室はその系を剥ぎ取る』（… |
+| `MAT-20261123-43eb22` | research_excerpt | Colwyn Trevarthen, Kenneth J. Aitken『Trevarthen & Aitken (2001)「乳児の間主観性」——自己と他者の相互意識は、ことば… |
+| `MAT-20261123-c61779` | research_excerpt | Annette Karmiloff-Smith『Karmiloff-Smith (1992)『モジュール性をこえて』——手続き的にできることと、表象として取り出せることは別』（1… |
+| `MAT-20261123-e49fbb` | research_excerpt | Esther Thelen, Linda B. Smith『Thelen & Smith (1994)『認知と行為の発達への動的システム・アプローチ』——表象を保存せず、その場で… |
+| `MAT-20261123-9dc56c` | research_excerpt | Barbara Rogoff『Rogoff (1990)『考えることの徒弟制』——学習の単位は個人の頭ではなく、徒弟制という社会的活動』（1990） |
+| `MAT-20261123-a95958` | research_excerpt | Peter Fonagy, Mary Target『Fonagy & Target (1997)「愛着と反射機能」——養育者が『意図を持つ存在』として子を映すことが自己組織化の中… |
+| `MAT-20261123-b0564c` | research_excerpt | Elizabeth Meins, Charles Fernyhough, Rachel Wainwright, Mani Das Gupta, Emma Fradley, Mic… |
+| `MAT-20261123-2a6e96` | research_excerpt | John Barresi, Chris Moore『Barresi & Moore (1996)「意図的関係と社会的理解」——一人称の情報と三人称の情報を統合する四段階』（199… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261123-785cf3・全文は map/50-sessions-*.md）
 
@@ -7902,6 +7912,7 @@
 | `SESSION-20261123-81c9d6` | 2026-11-23T16:45:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-9fd9b67b` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-27803c86` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261123-27d48c` | 2026-11-23T19:05:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-785cf3` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
@@ -8004,7 +8015,7 @@
 | `map/31-materials-research-35.md` | 100 | 246,932 |
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
-| `map/31-materials-research-38.md` | 13 | 39,905 |
+| `map/31-materials-research-38.md` | 23 | 69,860 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8043,7 +8054,7 @@
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
-| `map/50-sessions-23.md` | 29 | 25,016 |
+| `map/50-sessions-23.md` | 30 | 25,813 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
@@ -8083,24 +8094,24 @@
 | `map/60-notes-37.md` | 25 | 96,920 |
 | `map/60-notes-38.md` | 25 | 73,046 |
 | `map/60-notes-39.md` | 25 | 42,546 |
-| `map/60-notes-40.md` | 25 | 110,909 |
-| `map/60-notes-41.md` | 25 | 111,434 |
-| `map/60-notes-42.md` | 25 | 72,151 |
-| `map/60-notes-43.md` | 25 | 69,961 |
-| `map/60-notes-44.md` | 25 | 79,067 |
-| `map/60-notes-45.md` | 25 | 108,737 |
-| `map/60-notes-46.md` | 25 | 108,391 |
-| `map/60-notes-47.md` | 25 | 136,819 |
-| `map/60-notes-48.md` | 2 | 4,313 |
+| `map/60-notes-40.md` | 25 | 107,878 |
+| `map/60-notes-41.md` | 25 | 118,416 |
+| `map/60-notes-42.md` | 25 | 70,451 |
+| `map/60-notes-43.md` | 25 | 70,477 |
+| `map/60-notes-44.md` | 25 | 78,384 |
+| `map/60-notes-45.md` | 25 | 104,503 |
+| `map/60-notes-46.md` | 25 | 110,943 |
+| `map/60-notes-47.md` | 25 | 138,192 |
+| `map/60-notes-48.md` | 3 | 8,197 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1177本・39,392,368 B）
+## 8. 精読ノート索引（readings/・1178本・39,444,729 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1072/1177 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1072/1178 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1177 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1178 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：195 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9102,6 +9113,7 @@
 | `readings/2026-11-23-a-single-tree-keeps-no-year.md` | 2026-10-27 | 2026-11-23 | `SESSION-20261123-0f9fde` +1 | 13,844 | Q7 F11 M7 MOT5 S2 | ✓ | 一本の木は年を言わない——細い年の合意と、口を下に向けた瓶（SESSION-20261123-0f9fde） |
 | `readings/2026-11-23-coarsening-concentrates-and-what-the-harness-should-change.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-438521` +1 | 11,409 | Q3 S2 | ✓ | 粗視化は効くが、家族の質量は一人の仮説が持っている — 階層化の3つの測定量と、ハーネス側の6つの提案 |
 | `readings/2026-11-23-cognitive-science-ten-sources-on-memory-and-self.md` | — | 2026-11-23 | `SESSION-20261123-91986c` | 8,649 | M10 S1 | — | 認知科学新規10資料——精読とAIの考察（記憶の再構成・帰属・外部記憶） |
+| `readings/2026-11-23-developmental-science-ten-sources-close-reading.md` | — | 2026-11-23 | `SESSION-20261123-27d48c` | 24,970 | Q2 M14 MOT1 S1 | ✓ | 発達科学の十資料を精読する——「育てられる者が育てる者になる」系を、書庫は持っていない |
 | `readings/2026-11-23-gated-pair-separation-and-the-allocation-layer.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-9972a5` | 15,979 | Q3 M3 S1 | — | 三門制御対はなぜ分離しないか——割り当て層の実測と、証拠会計の軸(i)の再棄却 |
 | `readings/2026-11-23-monitoring-conditions-of-the-self.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-9603d4` | 18,365 | Q3 M27 S1 ERR1 | ✓ | 監視・報告・制御の諸条件——認知科学10資料の精読と、AIの見方 |
 | `readings/2026-11-23-post-2010-wave-and-the-two-unconfirmed-citations.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-a22923` +1 | 19,254 | M10 S2 | ✓ | 2010年以降の波と、確定しなかった二つの引用——§9.1 の九項目を全て実行し、六件を収蔵し、四件の誤記を積んだ |

@@ -40,7 +40,20 @@ class BoundaryChannelProbeTests(unittest.TestCase):
     def setUpClass(cls):
         cls.cols = bs.load_belief_ledgers(ROOT)
         cls.base = bs.compute_belief_state(copy.deepcopy(cls.cols))
-        cls.res = probe.run(TARGET, QUESTION, ROOT)
+        # The probe's live run takes ~12 s. "It writes nothing" used to be
+        # measured by running it twice more; the same claim is pinned below by
+        # comparing the bytes either side of the ONE run the class already pays
+        # for (2026-11-23).
+        cls.ledger_before = {p: p.read_bytes() for p in (ROOT / "state").rglob("*.jsonl")}
+        cls.engine_before = (ROOT / "tools" / "belief_state.py").read_bytes()
+        # The loaded ledgers and the unmodified state are handed to the probe:
+        # it recomputes both otherwise, and these tests then recompute a
+        # perturbed state on top -- the live belief state is the expensive part
+        # (~12 s per call) and recomputing the same input changed no result
+        # (measured 2026-11-23).
+        cls.res = probe.run(TARGET, QUESTION, ROOT, cols=cls.cols, base=cls.base)
+        cls.ledger_after = {p: p.read_bytes() for p in (ROOT / "state").rglob("*.jsonl")}
+        cls.engine_after = (ROOT / "tools" / "belief_state.py").read_bytes()
 
     def _delta(self, rec):
         c = copy.deepcopy(self.cols)
@@ -227,19 +240,16 @@ class BoundaryChannelProbeTests(unittest.TestCase):
         self.assertGreater(d["live_errata_rows"], 0)
 
     def test_probe_writes_nothing(self):
-        before = {p: p.read_bytes() for p in (ROOT / "state").rglob("*.jsonl")}
-        probe.run(TARGET, QUESTION, ROOT)
-        after = {p: p.read_bytes() for p in (ROOT / "state").rglob("*.jsonl")}
-        self.assertEqual(before, after)
+        self.assertEqual(self.ledger_before, self.ledger_after)
 
     def test_rule_variant_does_not_modify_the_engine_on_disk(self):
-        src = (ROOT / "tools" / "belief_state.py").read_bytes()
-        probe.run(TARGET, QUESTION, ROOT)
-        self.assertEqual(src, (ROOT / "tools" / "belief_state.py").read_bytes())
+        self.assertEqual(self.engine_before, self.engine_after)
 
     def test_unknown_target_is_rejected(self):
+        # cols/base are handed in: this asserts the rejection, and the class has
+        # already paid for the ledgers and the unmodified state.
         with self.assertRaises(SystemExit):
-            probe.run("HYP-00000000-nosuch", QUESTION, ROOT)
+            probe.run("HYP-00000000-nosuch", QUESTION, ROOT, cols=self.cols, base=self.base)
 
     def test_cli_json_and_exit_zero(self):
         p = subprocess.run([sys.executable, str(ROOT / "tools" / "boundary_channel_probe.py"),

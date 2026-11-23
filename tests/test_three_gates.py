@@ -19,6 +19,10 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import _support  # noqa: E402
+
 TOOLS = ROOT / "tools"
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
@@ -560,11 +564,8 @@ class Gate3OverlayAndWriteGateTests(unittest.TestCase):
         import shutil
 
         with tempfile.TemporaryDirectory() as tmp:
-            repo = Path(tmp) / "repo"
-            shutil.copytree(
-                ROOT,
-                repo,
-                ignore=shutil.ignore_patterns(".git", "__pycache__", "*.pyc", "tests", "map", "readings", "viewer"),
+            repo = _support.copy_repo(
+                Path(tmp), include_readings=False, extra_exclude=("viewer",)
             )
             _write_jsonl(
                 repo / "state" / "editorial_decisions.d" / "2026-11-18-zztest.jsonl",

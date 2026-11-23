@@ -11,25 +11,30 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import _support  # noqa: E402
 
 import ledger_io  # noqa: E402
 import new_id  # noqa: E402
 
 
 def copy_repo(destination: Path) -> Path:
-    repo = destination / "repo"
-    shutil.copytree(
-        ROOT,
-        repo,
-        ignore=shutil.ignore_patterns(".git", "__pycache__", "*.pyc", "tests", "map"),
-    )
-    return repo
+    """Full sandbox: the same rule every module used, now stated in one place.
+
+    See ``tests/_support.py`` for why the ignore list is not repeated per module.
+    """
+    return _support.copy_repo(destination)
 
 
 def run(repo: Path, *args: str) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
-        [sys.executable, *args], cwd=repo, capture_output=True, text=True, timeout=300
-    )
+    """Run a tool against ``repo`` in this interpreter (``_support`` explains why).
+
+    Every caller here asserts an exit status and a line of stdout on a small
+    sandbox; none of them needs a new process, and each spawn cost ~0.6 s of
+    interpreter start against ~0.05 s of actual validation.
+    """
+    return _support.run_tool_in_process(repo, *args)
 
 
 class EditorialDecisionTests(unittest.TestCase):
