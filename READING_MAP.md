@@ -29,7 +29,7 @@
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 630 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1264 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 93 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 868 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 872 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -7885,9 +7885,9 @@
 | `SESSION-20261123-9cfe80` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-45aba9` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-3d973d` | 2026-11-23 | `Q-001`, `Q-002` | — | — |
-| `SESSION-20261123-032b7e` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-bfe725` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-605fe0` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261123-032b7e` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-785cf3` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
