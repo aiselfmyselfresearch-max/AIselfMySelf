@@ -2315,7 +2315,17 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # parallel inquiries including PR #1053 brings the combined count to
         # 1,151 files. Keep the established +12 review margin; only the count
         # soft cap moves. Byte and hard caps remain unchanged.
-        soft_files=1163,
+        # 2026-11-23 (SESSION-20261123-605fe0, report F): this session's second
+        # close-reading report (readings/2026-11-23-three-sources-on-phonology-
+        # self-teaching-and-the-reading-eye.md) takes readings/ from 1,162 to
+        # 1,163 files -- exactly the 1,163 review point set by the #1054 merge,
+        # leaving zero headroom for the next session. Reports are append-only and
+        # the count cannot be compacted; rescaled by the established +12 review
+        # margin (1,163 + 12 = 1,175) rather than per report, so the canary fires
+        # on a burst and not on every session. hard_files (1,200), soft_bytes
+        # (38 MiB) and the per-report caps are unchanged. Not automatic --
+        # re-measure after merge.
+        soft_files=1175,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
