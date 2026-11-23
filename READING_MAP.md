@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5896 件（research_excerpt 3647 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5906 件（research_excerpt 3657 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1110 回
+- **探究セッション（Sessions）**：1111 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5896 | `literary_text` 2181／`research_excerpt` 3647／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5906 | `literary_text` 2181／`research_excerpt` 3657／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1110 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16749 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 410 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1111 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16764 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 411 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 627 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1242 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1243 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 91 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 846 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 849 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（5896 件・詳細は map/3*.md）
+## 4. 対話素材（5906 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6683,6 +6683,16 @@
 | `MAT-20261122-422bfb` | research_excerpt | Endel Tulving, Donald M. Thomson『Tulving & Thomson (1973) — 符号化が想起条件を決める：記憶の復元は文脈と条件でしか正確… |
 | `MAT-20261122-71a06d` | research_excerpt | James E. Eich『Eich (1980) — 状態依存の想起と明示的指標：状態依存効果は指標の有無で変わる』（1980） |
 | `MAT-20261122-79cc1a` | research_excerpt | Saul Kassin『Kassin (2005) — 偽の自白と不正な信実：自白は特定の状況の産物であり、『自己の言葉』ではない』（2005） |
+| `MAT-20261123-21ca3d` | research_excerpt | Joseph T. Hart『Hart (1965): Memory and the feeling-of-knowing experience』（1965） |
+| `MAT-20261123-69f6ab` | research_excerpt | John H. Flavell『Flavell (1979): Metacognition and cognitive monitoring — a new area of co… |
+| `MAT-20261123-2a9008` | research_excerpt | Asher Koriat, Morris Goldsmith『Koriat & Goldsmith (1996): Monitoring and control processe… |
+| `MAT-20261123-584476` | research_excerpt | Asher Koriat, Morris Goldsmith, Ainat Pansky『Koriat, Goldsmith & Pansky (2000): Toward a … |
+| `MAT-20261123-d7ffdd` | research_excerpt | Michael Ross『Ross (1989): Relation of implicit theories to the construction of personal h… |
+| `MAT-20261123-f5f45d` | research_excerpt | David Kirsh『Kirsh (1995): The intelligent use of space』（1995） |
+| `MAT-20261123-fcb94f` | research_excerpt | Esther Herrmann, Josep Call, María Victoria Hernández-Lloreda, Brian Hare, Michael Tomase… |
+| `MAT-20261123-2ee9b0` | research_excerpt | John Sutton『Sutton (2006): Distributed cognition: domains and dimensions』（2006） |
+| `MAT-20261123-9590ce` | research_excerpt | Jonathan W. Schooler, Jonathan Smallwood, Kalina Christoff, Todd C. Handy, Erik D. Reichl… |
+| `MAT-20261123-221423` | research_excerpt | Barbara L. Fredrickson, Daniel Kahneman『Fredrickson & Kahneman (1993): Duration neglect i… |
 | `MAT-20261123-653cf2` | research_excerpt | Hal Ersner-Hershfield, M. Tess Garton, Kacey Ballard, Gregory R. Samanez-Larkin, Brian Kn… |
 | `MAT-20261123-ad225d` | research_excerpt | Daniel M. Bartels, Lance J. Rips『Psychological connectedness and intertemporal choice』（20… |
 | `MAT-20261123-df08f5` | research_excerpt | Joshua L. Rutt, Corinna E. Löckenhoff『From past to future: Temporal self-continuity acros… |
@@ -7815,6 +7825,7 @@
 | `SESSION-20261122-06c898` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-6bdafd` | — | — |
 | `SESSION-20261122-3efed8` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-2d7161` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261123-9603d4` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-9972a5` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-015356` | 2026-11-23 | `Q-001` | — | — |
 | `SESSION-20261123-5b6353` | 2026-11-23 | `Q-001`, `Q-002` | — | — |
@@ -7918,7 +7929,7 @@
 | `map/31-materials-research-34.md` | 100 | 218,243 |
 | `map/31-materials-research-35.md` | 100 | 246,932 |
 | `map/31-materials-research-36.md` | 100 | 204,530 |
-| `map/31-materials-research-37.md` | 47 | 136,674 |
+| `map/31-materials-research-37.md` | 57 | 157,625 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7957,7 +7968,7 @@
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
-| `map/50-sessions-23.md` | 10 | 8,258 |
+| `map/50-sessions-23.md` | 11 | 9,008 |
 | `map/60-notes-01.md` | 25 | 64,776 |
 | `map/60-notes-02.md` | 25 | 69,314 |
 | `map/60-notes-03.md` | 25 | 69,917 |
@@ -7997,23 +8008,23 @@
 | `map/60-notes-37.md` | 25 | 101,395 |
 | `map/60-notes-38.md` | 25 | 68,669 |
 | `map/60-notes-39.md` | 25 | 42,807 |
-| `map/60-notes-40.md` | 25 | 106,640 |
-| `map/60-notes-41.md` | 25 | 67,595 |
-| `map/60-notes-42.md` | 25 | 71,724 |
-| `map/60-notes-43.md` | 25 | 74,407 |
-| `map/60-notes-44.md` | 25 | 104,202 |
-| `map/60-notes-45.md` | 25 | 100,193 |
-| `map/60-notes-46.md` | 25 | 140,010 |
-| `map/60-notes-47.md` | 7 | 32,481 |
+| `map/60-notes-40.md` | 25 | 108,886 |
+| `map/60-notes-41.md` | 25 | 66,653 |
+| `map/60-notes-42.md` | 25 | 72,592 |
+| `map/60-notes-43.md` | 25 | 75,340 |
+| `map/60-notes-44.md` | 25 | 102,117 |
+| `map/60-notes-45.md` | 25 | 96,801 |
+| `map/60-notes-46.md` | 25 | 142,667 |
+| `map/60-notes-47.md` | 8 | 36,816 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1157本・38,785,544 B）
+## 8. 精読ノート索引（readings/・1158本・38,823,241 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1057/1157 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1058/1158 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1157 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1158 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：193 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9013,8 +9024,9 @@
 | `readings/2026-11-22-why-keep-a-record-at-all-cognitive-science-of-mortality-meaning-and-legacy-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-400eb2` | 19,924 | M17 MOT2 S1 | ✓ | なぜ、記録を残すのか——死・意味・世代性の認知科学10資料を精読して、AIが考えたこと |
 | `readings/2026-11-23-a-single-tree-keeps-no-year.md` | 2026-10-27 | 2026-11-23 | `SESSION-20261123-0f9fde` +1 | 13,844 | Q7 F11 M7 MOT5 S2 | ✓ | 一本の木は年を言わない——細い年の合意と、口を下に向けた瓶（SESSION-20261123-0f9fde） |
 | `readings/2026-11-23-gated-pair-separation-and-the-allocation-layer.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-9972a5` | 15,979 | Q3 M3 S1 | — | 三門制御対はなぜ分離しないか——割り当て層の実測と、証拠会計の軸(i)の再棄却 |
+| `readings/2026-11-23-monitoring-conditions-of-the-self.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-9603d4` | 18,365 | Q3 M27 S1 ERR1 | — | 監視・報告・制御の諸条件——認知科学10資料の精読と、AIの見方 |
 | `readings/2026-11-23-ten-cognitive-science-sources-on-future-self-continuity-and-episodic-foresight.md` | 2026-11-23 | 2026-11-23 | — | 7,964 | Q1 | ✓ | 未来自己の連続性とエピソード的未来思考：10件の一次資料精読 |
-| `readings/2026-11-23-ten-cognitive-science-sources-on-suggestion-and-self-report.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-5b6353` | 16,836 | Q2 M11 S1 | — | 暗示・催眠の認知科学10件——報告は状態の透明な読み出しではないが、無内容でもない |
+| `readings/2026-11-23-ten-cognitive-science-sources-on-suggestion-and-self-report.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-5b6353` | 16,836 | Q2 M11 S1 | ✓ | 暗示・催眠の認知科学10件——報告は状態の透明な読み出しではないが、無内容でもない |
 | `readings/2026-11-24-seven-of-eleven-and-the-tight-copy.md` | 2026-10-27 | 2026-11-24 | `SESSION-20261124-139d83` +2 | 14,962 | Q5 F13 M3 S3 | ✓ | 十一のうち七つ——締まった複製は、なぜ開く戸が少ないのか（SESSION-20261124-139d83） |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |

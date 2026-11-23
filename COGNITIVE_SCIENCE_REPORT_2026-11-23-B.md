@@ -124,7 +124,9 @@ Landry et al. (2017) は、催眠の神経画像研究を横断すると信頼�
 - `evaluations` に `EVL-20261123-dc08bb`（`narrows_scope`、比較相手 `HYP-20261120-bdb6b4`、`agency_stance: endorse`、数値は verified 素材からの転記として `no_recompute_reason` を明記）。
 - `notes` に `NOTE-20261123-be0833`（claims 5件、`cognitive_operation: inference`、読みの深さ `excerpt_and_metadata_read`）。`sessions` に `SESSION-20261123-5b6353`。
 - `python3 tools/belief_state.py --write-map` → `python3 tools/map_build.py` の順に再生成。
-- 検査：`validate_seed.py` PASS／`map_build.py --check` PASS／`note_index.py --check` PASS（1157 notes）／`inspect_inquiry.py --check-map` PASS／`belief_state.py --check-map` PASS／`read_log_backfill.py --check` PASS／`date_axis.py --enforce-shards` PASS／`learning_metrics.py --check` PASS／`three_gates.py --check` PASS／`append_only_check.py` PASS（origin/main の 34,793 行がバイト単位で現存）／`readings_integrity_check.py` PASS／`claim_wiring.py --check` PASS／`size_budget.py --strict` PASS（BELIEF_MAP 511.5 KiB / soft 512.0 KiB、readings/ 36.99 MiB / soft 37.00 MiB と余裕は薄い）／ユニットテスト **1085 件 OK**。
+- 検査（`main` 合流後）：`validate_seed.py` PASS／`map_build.py --check` PASS／`note_index.py --check` PASS（1158 notes）／`inspect_inquiry.py --check-map` PASS／`belief_state.py --check-map` PASS／`read_log_backfill.py --check` PASS／`date_axis.py --enforce-shards` PASS／`learning_metrics.py --check` PASS／`three_gates.py --check` PASS／`append_only_check.py` PASS（合流ベース `5e6b93d` の 34,793 行がバイト単位で現存）／`readings_integrity_check.py` PASS／`claim_wiring.py --check` PASS。
+- **`size_budget.py` は非strict（CI が回すモード）で PASS、`--strict` では `readings/` が soft を超える。** 合流後の実測は 38,823,241 B / soft 38,797,312 B（+25,929 B、hard 48 MiB には遠い）。同日に別セッション（PR #1056）も報告を1本追加しており、合流前の私の時点では 38,785,544 B で soft 内だった。**この超過は統合では1 Bも減らない種類のもので、自分の追加に合わせて上限を引き上げる判断はしない。** 上限の見直しは整備・編集レビューの議題として残す。あわせて `BELIEF_MAP.md` は 523,751 B / soft 524,288 B（余裕 537 B）で、評価行を1件足すたびに soft に触れうる状態にある。
+- ユニットテストは合流前の木で **1085 件 OK**。合流後は CI の実行結果を正とする。
 - 検査の通過は探究の進展の証明ではない。
 
 ## 7. 残ったこと（次に読み返す具体的な記録）
