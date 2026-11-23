@@ -1484,6 +1484,14 @@ def _resolve_auto_target(
         bstate_input.setdefault("errata", errata if errata is not None else load_errata(root))
         bstate = belief_state.compute_belief_state(data=bstate_input, root=root)
         # Mix 75% high-information-gain core/hypothesis-bearing questions with 25% open sub-questions
+        # 2026-11-23 (proposal 4): the 25% branch used to draw from
+        # ``metrics["unresponded_questions"]``, a pool that carried the core three
+        # 0 times in all 9 eras measured -- a question with no hypothesis cannot
+        # receive an evaluation, so a session sent there could not register one
+        # (measured: 3 of 73 such sessions registered a hypothesis on the offered
+        # question).  The pool now prefers questions that CAN take a first
+        # hypothesis: hypothesis-less ones, ranked by nothing but the seed, and
+        # never the core three (they are never in that pool anyway).
         if (seed_int % 4) != 3 or not metrics["unresponded_questions"]:
             return belief_state.select_auto_question_id(bstate, open_qids, seed=seed_label)
         return (
