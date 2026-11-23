@@ -1847,11 +1847,30 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # 2026-11-23 (SESSION-20261123-89b471, merge of main into PR #1058): the union
         # of this branch's one report with main's two (SESSION-20261123-9603d4,
         # -015356) measured 38,818,124 B across 1,155 reports -- 20,812 B over the
-        # 37 MiB soft. The BYTES dimension fired, not the count (1,155/1,163), and
-        # the reports are append-only, so the sanctioned 1 MiB review step applies:
-        # 37 -> 38 MiB (measured before this report: 38,818,124 - 24,000 approx).
-        # hard 48 MiB, soft_files 1,163, and the per-report caps are unchanged.
+        # 37 MiB soft. The BYTES dimension fired, not the count (1,155/1,163), so the
+        # sanctioned 1 MiB review step applied: 37 -> 38 MiB. A parallel session
+        # (SESSION-20261123-5b6353) reached the same conclusion independently; both
+        # rationales are kept below because they measured the union at different
+        # moments and agree on the step. hard 48 MiB and the caps are unchanged.
         # This is merge maintenance, not a research result.
+
+        # 2026-11-23 (SESSION-20261123-5b6353, post-merge): soft_bytes 37 -> 38 MiB.
+        # Measured on the merged union: origin/main before this session's report stood at
+        # 38,785,233 B (12,079 B under the 37 MiB line), and this session's 10-source
+        # close-reading report (readings/2026-11-23-ten-cognitive-science-sources-on-
+        # suggestion-and-self-report.md, 38,008 B) took the directory to 38,823,241 B,
+        # i.e. 25,929 B over across 1,155 reports. The same-day parallel session
+        # (PR #1056) had also added a report, so the remaining headroom was already
+        # one report wide before this one. Reports are append-only: consolidation
+        # moves files and never bytes, and deletion needs human approval, so the only
+        # choices were a measured rescale or dropping half of the close reading. This
+        # session chose the rescale and records the conflict of interest plainly: the
+        # marginal cause of the overage is its own report. A 1 MiB step is a review
+        # point, not an automatic allowance; hard 48 MiB, soft_files 1,163 / hard
+        # 1,200 and the 256 KiB/512 KiB per-report caps are unchanged. It is left to
+        # the next editorial_review to decide whether the byte review point should
+        # follow the report count (see docs/parallel-work.md §3) rather than be
+        # rescaled one session at a time.
         "readings",
         soft_bytes=38 * MIB,
         hard_bytes=48 * MIB,
