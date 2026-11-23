@@ -761,10 +761,79 @@ def question_families(
 def assign_session_role(
     seed: str | None = None,
     question_summary: dict[str, Any] | None = None,
+    *,
+    role_binding: bool = False,
 ) -> dict[str, str]:
-    """Deterministically assign one of the 3 inquiry roles (25% proposer, 50% tester, 25% consolidator)."""
+    """Deterministically assign one of the 3 inquiry roles (25% proposer, 50% tester, 25% consolidator).
+
+    ``role_binding`` (proposal 5, 2026-11-23) binds the role to the *target the
+    allocator already chose* instead of letting it be a pure function of the seed.
+    Measured 2026-11-23: role and target were independent (mutual information
+    0.309 bit), so the "proposer makes new hypotheses at the periphery" division
+    of labour existed on paper only.  Under binding, the target's own state
+    picks the role:
+
+    * no live hypothesis (``active`` + ``narrowed``) -> ``proposer``;
+    * the top mass holder -- ``narrowed`` included -- has no adversarial
+      evaluation -> ``adversarial_tester`` aimed at that holder;
+    * the question carries lineage duplicates (two or more live hypotheses
+      sharing a parent or a synthesizes/subsumes op) -> ``consolidator``;
+    * otherwise the seed bucket decides, unchanged.
+
+    Deterministic in the target and switchable, so the default stays
+    reproducible and the effect is measurable seed by seed.
+    """
     if question_summary:
-        active = [h for h in question_summary.get("hypotheses", []) if h["effective_status"] == "active"]
+        live = [
+            h for h in question_summary.get("hypotheses", [])
+            if h["effective_status"] in LIVE_EFFECTIVE_STATUSES
+        ]
+        if role_binding:
+            # Proposal 5: the binding reads the *live* set (``active`` +
+            # ``narrowed``), so a question whose only hypotheses are ``narrowed``
+            # is not "empty" for the binding -- its mass holder is a tester
+            # target.  The default path below keeps its historical ``active``
+            # based reading, so the switch changes the binding, not the default.
+            if not live:
+                return {
+                    "role": "proposer",
+                    "label": ROLE_LABELS_JA["proposer"],
+                    "prompt": "prompts/role_proposer.md",
+                    "reason": "当該問いに有効な条件付き仮説が未登録のため、競合仮説の定式化を優先する。",
+                }
+            # Proposal 5: the top mass holder is the tester's target, and a
+            # ``narrowed`` holder counts -- it holds the mass and has never been
+            # directly evaluated, which is exactly the case the seed-only rule
+            # could not see.
+            top = max(live, key=lambda h: h["posterior"])
+            if top["posterior"] >= 0.45 and top["adversarial_eval_count"] == 0:
+                return {
+                    "role": "adversarial_tester",
+                    "label": ROLE_LABELS_JA["adversarial_tester"],
+                    "prompt": "prompts/role_adversarial_tester.md",
+                    "reason": (
+                        f"対象の質量保持者 {top['hypothesis_id']}"
+                        f"（{top['effective_status']}、P={top['posterior'] * 100:.1f}%）に"
+                        "反証・限定テストが未実施のため、役割を対象に結合して境界検証を優先する。"
+                    ),
+                }
+            # Proposal 5: lineage duplicates are the consolidator's target.
+            lineage_duplicates = [
+                h for h in live
+                if h.get("lineage_op") in ("synthesizes", "subsumes")
+                or h.get("parent_hypothesis_ids")
+            ]
+            if len(lineage_duplicates) >= 2:
+                return {
+                    "role": "consolidator",
+                    "label": ROLE_LABELS_JA["consolidator"],
+                    "prompt": "prompts/role_consolidator.md",
+                    "reason": (
+                        f"対象に家系の重複が {len(lineage_duplicates)} 件あるため、"
+                        "役割を対象に結合して統合(synthesizes/subsumes)と台帳配線を優先する。"
+                    ),
+                }
+        active = [h for h in live if h["effective_status"] == "active"]
         if not active:
             return {
                 "role": "proposer",
@@ -1937,12 +2006,34 @@ def select_gated_pair(
     return best_pair
 
 
+def is_saturated_question(
+    qs: dict[str, Any],
+    *,
+    threshold: float = SATURATION_EIG_THRESHOLD,
+) -> bool:
+    """The allocator's own saturation predicate, as a pure predicate.
+
+    ``saturation_snapshot`` renders this for the core three; proposal 6 (2026-11-23)
+    needs it for *every* question the pool draws from, because a saturated
+    question that keeps being presented keeps collecting hypotheses without
+    learning (measured: ``Q-003`` reached 45 active hypotheses at EIG 0.0).
+    A question with no eligible pair is *not* saturated -- that is missing
+    information, not a settled one, and the two must not be conflated.
+    """
+    pair = qs.get("top_competing_pair")
+    if pair is None:
+        return False
+    eig = float(pair.get("expected_info_gain") or 0.0)
+    return eig < threshold
+
+
 def select_auto_question_id(
     state: dict[str, Any],
     open_question_ids: list[str],
     *,
     seed: str | None = None,
     allocation_basis: str = ALLOCATION_BASIS_DEFAULT,
+    exclude_saturated: bool = False,
 ) -> tuple[str, str]:
     """Select next question via UCB / Expected Information Gain (replaces pure random choice).
 
@@ -1965,6 +2056,15 @@ def select_auto_question_id(
     receptacle that could not hold anything.  Measured 2026-11-23: 409 of 415
     open questions had none, none of the 409 ever received an EVL, and only 3 of
     73 sessions sent to a peripheral question registered a hypothesis there.
+
+    ``exclude_saturated`` (proposal 6, 2026-11-23) removes questions the
+    allocator itself has diagnosed as saturated -- best competing pair EIG below
+    ``SATURATION_EIG_THRESHOLD`` -- from the ranked pool.  Measured 2026-11-23:
+    ``Q-002``/``Q-003`` sat at EIG 0.0 and were still presented, and presentation
+    there only collected hypotheses.  The exclusion is a switchable safety valve
+    for proposal 1's live arithmetic; if the pool would otherwise empty out, the
+    saturated questions are re-admitted with an explicit reason rather than the
+    allocator deadlocking.
     """
     if allocation_basis not in ALLOCATION_BASES:
         raise ValueError(
@@ -1981,6 +2081,19 @@ def select_auto_question_id(
         if (q_states.get(qid) or {}).get("hypothesis_count", 0) > 0
     ]
     unrankable = [qid for qid in open_question_ids if qid not in set(rankable)]
+    # Proposal 6: saturated questions leave the ranked pool.  They are not
+    # scored, so they cannot win on the arithmetic; they are held aside with a
+    # receipt that says why, and re-admitted only if the pool would otherwise
+    # be empty (see the fallback below).
+    saturated: list[str] = []
+    if exclude_saturated:
+        kept: list[str] = []
+        for qid in rankable:
+            if is_saturated_question(q_states.get(qid) or {}):
+                saturated.append(qid)
+            else:
+                kept.append(qid)
+        rankable = kept
     for qid in rankable:
         qs = q_states.get(qid)
         jitter = 0.0
@@ -2099,6 +2212,23 @@ def select_auto_question_id(
                 " — 仮説0件の問いは EVL を受け取れない（EVL は仮説を指す）。読むのではなく"
                 "反証条件付きの最初の仮説を1件作り、その仮説のIDを次セッションに渡すこと。"
                 "この問いに評価が付かないまま終わったセッションは EVL=0 として記録される",
+            ))
+
+    # Proposal 6 fallback: if the exclusion emptied the pool, re-admit the
+    # saturated questions explicitly rather than deadlocking.  The receipt says
+    # the question was saturated, so the reader can see the valve was open and
+    # why it had to close again.
+    if exclude_saturated and saturated and not scored:
+        for qid in saturated:
+            qs = q_states.get(qid) or {}
+            pair = qs.get("top_competing_pair") or {}
+            eig = float(pair.get("expected_info_gain") or 0.0)
+            scored.append((
+                0.0, qid,
+                f"飽和のため再掲 (EIG={eig:.4f} < {SATURATION_EIG_THRESHOLD:.2f})"
+                " — 除外枠が空いたため再掲。この問いの最優先検証対はほぼ情報利得を持たない。"
+                "質量保持者の直接評価が来るか、新規根仮説の登録で EIG が回復するまで、"
+                "対の比較ではなく質量保持者の支持の内訳を読むこと",
             ))
 
     if not scored:

@@ -2388,8 +2388,22 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # bases.  Raised by measured +2,621,440 * (2.55 - 2.53) = 20,480 B
         # against a 6,337 B overage, so the canary fires again after ~14 KiB.
         # hard_bytes (5 MiB) unchanged.
+        #
+        # 2026-11-23 (SESSION-20261123-27803c86, post-merge, 2.55 -> 2.57 MiB):
+        # the re-measure-after-merge step above.  Merging origin/main brought in
+        # five new checkers (boundary_channel_probe.py, errata_audit.py,
+        # execution_path_probe.py, reconstruct.py, serve_viewer.py) and this
+        # branch's three switches (proposal 5 role_binding, proposal 6
+        # exclude_saturated, proposal 7 frontier_expansion) landed on top, for a
+        # measured 2,687,422 B -- 13,554 B over the 2.55 MiB soft cap.  The
+        # remedy was consulted first: these are invariant predicates and
+        # recomputers the readings cite (`--allocation-audit`, `--assignment-json`),
+        # not data-embedded scripts, and no `*_audit.py` was added (still 57).
+        # Prose was already compressed before the raise.  Raised by measured
+        # +2,621,440 * (2.57 - 2.55) = 52,429 B against a 13,554 B overage, so
+        # the canary fires again after ~38 KiB.  hard_bytes (5 MiB) unchanged.
         "tools",
-        soft_bytes=int(2.55 * MIB),
+        soft_bytes=int(2.57 * MIB),
         hard_bytes=5 * MIB,
         remedy="Never commit data-embedded scripts in tools/; use tools/lexicon_audit.py instead of new *_audit.py",
     ),

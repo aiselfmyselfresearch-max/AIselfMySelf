@@ -1224,6 +1224,7 @@ def _belief_briefing_lines(
     errata: dict[str, dict[str, Any]],
     root: Path = ROOT,
     pair_policy: str = "eig",
+    role_binding: bool = False,
 ) -> tuple[list[str], dict[str, str] | None]:
     """Build §0.2 Posterior Belief Briefing & 3-role assignment when hypotheses exist."""
     if not data.get("hypotheses"):
@@ -1253,7 +1254,9 @@ def _belief_briefing_lines(
             if gpair:
                 bstate["questions"][pqid]["top_competing_pair"] = gpair
     qstate = bstate["questions"].get(target_qid)
-    role_info = belief_state.assign_session_role(seed=seed_label, question_summary=qstate)
+    role_info = belief_state.assign_session_role(
+        seed=seed_label, question_summary=qstate, role_binding=role_binding
+    )
 
     out: list[str] = []
     out.append("## 0.2 条件付き仮説分布ブリーフィング（参照層・BELIEF_MAP 要約）")
@@ -1465,6 +1468,7 @@ def _resolve_auto_target(
     seed_int: int,
     errata: dict[str, dict[str, Any]] | None = None,
     root: Path = ROOT,
+    exclude_saturated: bool = False,
 ) -> tuple[str, str | None]:
     """Pick the question an ``--packet auto`` reader is pointed at.
 
@@ -1477,6 +1481,23 @@ def _resolve_auto_target(
     if not questions:
         raise ValueError("no questions available for a context packet")
     open_qids = [qid for qid, q in questions.items() if q.get("status", "open") == "open"]
+    saturated_qids: list[str] = []
+    if exclude_saturated:
+        # Proposal 6: the valve is installed at the pool itself, not only inside
+        # the scorer, so the seed fallback below cannot re-admit a saturated
+        # question by a path that never consulted the predicate.
+        import belief_state as _bs
+
+        bstate_probe = dict(data)
+        bstate_probe.setdefault("errata", errata if errata is not None else load_errata(root))
+        _probe = _bs.compute_belief_state(data=bstate_probe, root=root)
+        kept: list[str] = []
+        for qid in open_qids:
+            if _bs.is_saturated_question(_probe["questions"].get(qid) or {}):
+                saturated_qids.append(qid)
+            else:
+                kept.append(qid)
+        open_qids = kept
     if data.get("hypotheses") and open_qids:
         import belief_state
 
@@ -1493,7 +1514,9 @@ def _resolve_auto_target(
         # hypothesis: hypothesis-less ones, ranked by nothing but the seed, and
         # never the core three (they are never in that pool anyway).
         if (seed_int % 4) != 3 or not metrics["unresponded_questions"]:
-            return belief_state.select_auto_question_id(bstate, open_qids, seed=seed_label)
+            return belief_state.select_auto_question_id(
+                bstate, open_qids, seed=seed_label, exclude_saturated=exclude_saturated
+            )
         return (
             metrics["unresponded_questions"][seed_int % len(metrics["unresponded_questions"])],
             "派生open問い探索枠（25%分散枠）",
@@ -1502,6 +1525,14 @@ def _resolve_auto_target(
         return (
             metrics["unresponded_questions"][seed_int % len(metrics["unresponded_questions"])],
             None,
+        )
+    if saturated_qids and not open_qids:
+        # Proposal 6: the valve emptied the pool.  Re-admit explicitly with the
+        # reason on the receipt rather than falling through to an arbitrary
+        # last-key question that never consulted the predicate.
+        return (
+            saturated_qids[seed_int % len(saturated_qids)],
+            "飽和のため除外枠から再掲（除外するとPoolが空になるため）",
         )
     return (open_qids[seed_int % len(open_qids)] if open_qids else list(questions.keys())[-1], None)
 
@@ -1513,6 +1544,8 @@ def describe_assignment(
     seed: str | None = None,
     errata: dict[str, dict[str, Any]] | None = None,
     root: Path = ROOT,
+    exclude_saturated: bool = False,
+    role_binding: bool = False,
 ) -> dict[str, Any]:
     """The packet's assignment receipt: what the seed decided before anyone chose.
 
@@ -1546,13 +1579,14 @@ def describe_assignment(
     if target_qid == "auto":
         offered, auto_reason = _resolve_auto_target(
             data, metrics, seed_label=seed_label, seed_int=seed_int,
-            errata=errata, root=root,
+            errata=errata, root=root, exclude_saturated=exclude_saturated,
         )
     bstate_input = dict(data)
     bstate_input.setdefault("errata", errata)
     bstate = belief_state.compute_belief_state(data=bstate_input, root=root)
     role_info = belief_state.assign_session_role(
-        seed=seed_label, question_summary=bstate["questions"].get(offered)
+        seed=seed_label, question_summary=bstate["questions"].get(offered),
+        role_binding=role_binding,
     )
     receipt = {
         "dispersal_seed": seed_label,
@@ -1563,6 +1597,13 @@ def describe_assignment(
     return {
         **receipt,
         "seed_int": seed_int,
+        # 2026-11-23 (proposals 5, 6): which switches were in force, so the
+        # receipt says whether the role was bound to the target and whether the
+        # saturated valve was open.  Both default to off and are reversible.
+        "allocation_switches": {
+            "role_binding": role_binding,
+            "exclude_saturated": exclude_saturated,
+        },
         "assigned_role_label": role_info["label"],
         "assigned_role_prompt": role_info["prompt"],
         "assigned_role_reason": role_info["reason"],
@@ -1583,6 +1624,8 @@ def build_context_packet(
     note_view: dict[str, dict[str, Any]] | None = None,
     inheritance_window: int = INHERITANCE_WINDOW_DEFAULT,
     pair_policy: str = "eig",
+    exclude_saturated: bool = False,
+    role_binding: bool = False,
 ) -> str:
     if errata is None:
         errata = load_errata(root)
@@ -1601,7 +1644,7 @@ def build_context_packet(
     if target_qid == "auto":
         target_qid, auto_reason = _resolve_auto_target(
             data, metrics, seed_label=seed_label, seed_int=seed_int,
-            errata=errata, root=root,
+            errata=errata, root=root, exclude_saturated=exclude_saturated,
         )
 
     if target_qid not in questions:
@@ -1610,7 +1653,7 @@ def build_context_packet(
     q = questions[target_qid]
     briefing_lines, role_info = _belief_briefing_lines(
         data, target_qid, seed_label=seed_label, errata=errata, root=root,
-        pair_policy=pair_policy,
+        pair_policy=pair_policy, role_binding=role_binding,
     )
 
     # Gather related fragments (referencing target_qid or its parent questions),
@@ -2453,6 +2496,27 @@ def main() -> int:
         ),
     )
     parser.add_argument(
+        "--exclude-saturated",
+        action="store_true",
+        help=(
+            "Proposal 6 (2026-11-23): drop questions the allocator itself has "
+            "diagnosed as saturated (best competing pair EIG below "
+            f"{0.02}) from the ranked pool. Default off, so the assignment stays "
+            "reproducible; the effect is measured seed by seed."
+        ),
+    )
+    parser.add_argument(
+        "--role-binding",
+        action="store_true",
+        help=(
+            "Proposal 5 (2026-11-23): bind the session role to the target the "
+            "allocator already chose (empty -> proposer, untested top mass holder "
+            "including narrowed -> adversarial_tester, lineage duplicates -> "
+            "consolidator) instead of deriving it from the seed alone. "
+            "Default off, so the default assignment stays reproducible."
+        ),
+    )
+    parser.add_argument(
         "--packet-stats",
         action="store_true",
         help=(
@@ -2494,7 +2558,11 @@ def main() -> int:
 
     if args.assignment_json:
         try:
-            receipt = describe_assignment(data, args.packet or "auto", seed=args.seed)
+            receipt = describe_assignment(
+                data, args.packet or "auto", seed=args.seed,
+                exclude_saturated=args.exclude_saturated,
+                role_binding=args.role_binding,
+            )
         except ValueError as exc:
             print(f"error: {exc}", file=sys.stderr)
             return 1
@@ -2511,6 +2579,8 @@ def main() -> int:
                     material_budget=args.material_budget,
                     inheritance_window=args.inheritance_window,
                     pair_policy=args.pair_policy,
+                    exclude_saturated=args.exclude_saturated,
+                    role_binding=args.role_binding,
                 )
             )
         except ValueError as exc:

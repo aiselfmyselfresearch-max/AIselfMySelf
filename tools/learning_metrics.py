@@ -15,6 +15,14 @@ Five core metrics:
   5. Wiring & Chronology Coverage: 100% readings/*.md -> notes coverage, 0 future shards,
      and current BELIEF_MAP.md
 
+A sixth observation, added 2026-11-23 (proposal 7,
+``readings/2026-11-23-the-ledger-counts-a-closed-question-as-open.md`` §3.5):
+  6. Frontier Expansion Rate: of the sessions the dispersal handed a peripheral
+     question, the share that registered a hypothesis on the question they were
+     actually handed.  The dispersal's 25% branch was measuring "the questions
+     read were scattered", which cannot tell dispersion from empty receptacles;
+     this rate measures whether the frontier actually widened.  Not a gate.
+
 Usage:
   python3 tools/learning_metrics.py
   python3 tools/learning_metrics.py --json
@@ -215,6 +223,45 @@ def compute_learning_metrics(
     })
     prov = bstate.get("provenance_verification") or {}
 
+    # 7. Frontier expansion (proposal 7, 2026-11-23).  The dispersal hands a
+    # peripheral question to ~25% of sessions; the question is whether that
+    # branch widens the frontier or only scatters reading.  Measured ad hoc on
+    # 2026-11-23: 3 of 73 such sessions registered a hypothesis on the question
+    # they were handed (4.1%), and 38 offered questions stayed empty.  This
+    # makes the rate a standing observation computed from the ledger, not a
+    # one-off number in a report.  It is an observation, not a gate: the
+    # charter forbids turning counts into success conditions.
+    core_qids = set(belief_state.CORE_QUESTIONS)
+    hyp_by_session: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for hyp in data["hypotheses"].values():
+        sid = str(hyp.get("session_id") or "")
+        if sid:
+            hyp_by_session[sid].append(hyp)
+    eval_target_ids = {
+        str(e.get("target_hypothesis_id") or "") for e in data["evaluations"].values()
+    }
+    presented_peripheral: list[str] = []
+    expanded_sessions: list[str] = []
+    expanded_evaluated: list[str] = []
+    for srec in data["sessions"].values():
+        offered = str(srec.get("offered_target_question_id") or "")
+        if not offered or offered in core_qids:
+            continue
+        presented_peripheral.append(offered)
+        sid = str(srec.get("session_id") or "")
+        registered = [
+            h for h in hyp_by_session.get(sid, [])
+            if offered in (h.get("question_ids") or [])
+        ]
+        if registered:
+            expanded_sessions.append(sid)
+            if any(h.get("hypothesis_id") in eval_target_ids for h in registered):
+                expanded_evaluated.append(sid)
+    offered_still_empty = sorted({
+        qid for qid in presented_peripheral
+        if (bstate["questions"].get(qid) or {}).get("hypothesis_count", 0) == 0
+    })
+
     return {
         "belief_divergence": {
             "mean_kl_bits": round(sum(kl_values) / max(1, len(kl_values)), 4),
@@ -262,6 +309,19 @@ def compute_learning_metrics(
             "forward_dated_shards": fwd_shards,
             "belief_map_current": map_ok,
             "belief_map_message": map_msg,
+        },
+        "frontier_expansion": {
+            "sessions_presented_peripheral": len(presented_peripheral),
+            "sessions_registered_on_offered": len(expanded_sessions),
+            "expansion_rate": round(
+                len(expanded_sessions) / max(1, len(presented_peripheral)), 4
+            ),
+            "registered_subsequently_evaluated": len(expanded_evaluated),
+            "registered_evaluation_rate": round(
+                len(expanded_evaluated) / max(1, len(expanded_sessions)), 4
+            ),
+            "offered_still_empty_count": len(offered_still_empty),
+            "offered_still_empty_questions": offered_still_empty,
         },
     }
 
@@ -333,6 +393,14 @@ def render_report(metrics: dict[str, Any]) -> str:
             f"P_gate={len(tg['gated_saturated_questions'])}/3 (平均H_gate={tg['mean_gated_entropy_bits']:.3f}b) / "
             f"過限定孤児={tg['orphan_over_narrowed_count']}件 / "
             f"PSC全照合={tg['psc_all_verified_ratio']*100:.1f}% ({tg['psc_all_verified']}/{tg['psc_total']})"
+        )
+    fe = metrics.get("frontier_expansion")
+    if fe:
+        lines.append(
+            f"7. 前線拡大率 (観測値): 周辺問を提示されたセッション {fe['sessions_presented_peripheral']} 件のうち、"
+            f"提示問に仮説を登録した {fe['sessions_registered_on_offered']} 件 "
+            f"(={fe['expansion_rate']*100:.1f}%) / 登録後の評価付き {fe['registered_subsequently_evaluated']} 件 "
+            f"(={fe['registered_evaluation_rate']*100:.1f}%) / 提示後も0仮説の問い {fe['offered_still_empty_count']} 件"
         )
     return "\n".join(lines)
 
