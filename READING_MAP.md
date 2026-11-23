@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5876 件（research_excerpt 3627 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5886 件（research_excerpt 3637 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1107 回
+- **探究セッション（Sessions）**：1108 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5876 | `literary_text` 2181／`research_excerpt` 3627／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5886 | `literary_text` 2181／`research_excerpt` 3637／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1107 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16703 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 409 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1108 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16724 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 410 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 627 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1238 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1240 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 91 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 842 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 843 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（5876 件・詳細は map/3*.md）
+## 4. 対話素材（5886 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6683,8 +6683,18 @@
 | `MAT-20261122-422bfb` | research_excerpt | Endel Tulving, Donald M. Thomson『Tulving & Thomson (1973) — 符号化が想起条件を決める：記憶の復元は文脈と条件でしか正確… |
 | `MAT-20261122-71a06d` | research_excerpt | James E. Eich『Eich (1980) — 状態依存の想起と明示的指標：状態依存効果は指標の有無で変わる』（1980） |
 | `MAT-20261122-79cc1a` | research_excerpt | Saul Kassin『Kassin (2005) — 偽の自白と不正な信実：自白は特定の状況の産物であり、『自己の言葉』ではない』（2005） |
+| `MAT-20261123-653cf2` | research_excerpt | Hal Ersner-Hershfield, M. Tess Garton, Kacey Ballard, Gregory R. Samanez-Larkin, Brian Kn… |
+| `MAT-20261123-ad225d` | research_excerpt | Daniel M. Bartels, Lance J. Rips『Psychological connectedness and intertemporal choice』（20… |
+| `MAT-20261123-df08f5` | research_excerpt | Joshua L. Rutt, Corinna E. Löckenhoff『From past to future: Temporal self-continuity acros… |
+| `MAT-20261123-193170` | research_excerpt | Abraham M. Rutchick, Michael L. Slepian, Monica O. Reyes, Lindsay N. Pleskus, Hal E. Hers… |
+| `MAT-20261123-163b75` | research_excerpt | Yosef Sokol, Mark Serper『Development and Validation of a Future Self-Continuity Questionn… |
+| `MAT-20261123-23228d` | research_excerpt | Benjamin Ganschow, Liza Cornet, Sven Zebel, Jean-Louis van Gelder『Looking Back From the F… |
+| `MAT-20261123-108577` | research_excerpt | Yi Lu, Denis Gerstorf, Corinna E. Löckenhoff『Age Differences in Self-Continuity in German… |
+| `MAT-20261123-d289e6` | research_excerpt | Benjamin Ganschow, Sven Zebel, Jean-Louis van Gelder, Liza J. M. Cornet『Feeling connected… |
+| `MAT-20261123-6f8818` | research_excerpt | Ying Yang, Liangxiangwan Zhang, Weiguo Qu, Wei Fan『The effect of future self-continuity o… |
+| `MAT-20261123-5e768a` | research_excerpt | Rebecca A. Olsen, Anne C. Macaskill, Maree J. Hunt『Episodic Future Thinking Only Reduces … |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261122-2d7161・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261123-015356・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -7795,6 +7805,7 @@
 | `SESSION-20261122-06c898` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-6bdafd` | — | — |
 | `SESSION-20261122-3efed8` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-2d7161` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261123-015356` | 2026-11-23 | `Q-001` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
 
@@ -7895,7 +7906,7 @@
 | `map/31-materials-research-34.md` | 100 | 218,243 |
 | `map/31-materials-research-35.md` | 100 | 246,932 |
 | `map/31-materials-research-36.md` | 100 | 204,530 |
-| `map/31-materials-research-37.md` | 27 | 89,769 |
+| `map/31-materials-research-37.md` | 37 | 110,220 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -7934,7 +7945,7 @@
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
-| `map/50-sessions-23.md` | 7 | 5,754 |
+| `map/50-sessions-23.md` | 8 | 6,626 |
 | `map/60-notes-01.md` | 25 | 64,776 |
 | `map/60-notes-02.md` | 25 | 69,314 |
 | `map/60-notes-03.md` | 25 | 69,917 |
@@ -7974,23 +7985,23 @@
 | `map/60-notes-37.md` | 25 | 101,322 |
 | `map/60-notes-38.md` | 25 | 68,669 |
 | `map/60-notes-39.md` | 25 | 42,807 |
-| `map/60-notes-40.md` | 25 | 99,561 |
-| `map/60-notes-41.md` | 25 | 70,090 |
-| `map/60-notes-42.md` | 25 | 71,400 |
-| `map/60-notes-43.md` | 25 | 78,362 |
-| `map/60-notes-44.md` | 25 | 102,469 |
-| `map/60-notes-45.md` | 25 | 107,403 |
-| `map/60-notes-46.md` | 25 | 140,563 |
-| `map/60-notes-47.md` | 4 | 13,327 |
+| `map/60-notes-40.md` | 25 | 101,165 |
+| `map/60-notes-41.md` | 25 | 68,887 |
+| `map/60-notes-42.md` | 25 | 72,387 |
+| `map/60-notes-43.md` | 25 | 76,746 |
+| `map/60-notes-44.md` | 25 | 101,798 |
+| `map/60-notes-45.md` | 25 | 103,798 |
+| `map/60-notes-46.md` | 25 | 143,089 |
+| `map/60-notes-47.md` | 5 | 19,046 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1154本・38,699,131 B）
+## 8. 精読ノート索引（readings/・1155本・38,714,530 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1054/1154 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1055/1155 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1154 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1155 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：191 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -8989,6 +9000,7 @@
 | `readings/2026-11-22-thought-memory-self-temporal-organization.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-temporal-self-10` +1 | 13,418 | Q3 M10 S2 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——時間的配置・自己知識・思考遷移の神経科学10資料 |
 | `readings/2026-11-22-why-keep-a-record-at-all-cognitive-science-of-mortality-meaning-and-legacy-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-400eb2` | 19,924 | M17 MOT2 S1 | ✓ | なぜ、記録を残すのか——死・意味・世代性の認知科学10資料を精読して、AIが考えたこと |
 | `readings/2026-11-23-a-single-tree-keeps-no-year.md` | 2026-10-27 | 2026-11-23 | `SESSION-20261123-0f9fde` +1 | 13,844 | Q7 F11 M7 MOT5 S2 | ✓ | 一本の木は年を言わない——細い年の合意と、口を下に向けた瓶（SESSION-20261123-0f9fde） |
+| `readings/2026-11-23-ten-cognitive-science-sources-on-future-self-continuity-and-episodic-foresight.md` | 2026-11-23 | 2026-11-23 | — | 7,964 | Q1 | ✓ | 未来自己の連続性とエピソード的未来思考：10件の一次資料精読 |
 | `readings/2026-11-24-seven-of-eleven-and-the-tight-copy.md` | 2026-10-27 | 2026-11-24 | `SESSION-20261124-139d83` +2 | 14,962 | Q5 F13 M3 S3 | ✓ | 十一のうち七つ——締まった複製は、なぜ開く戸が少ないのか（SESSION-20261124-139d83） |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
