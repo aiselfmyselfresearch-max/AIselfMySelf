@@ -14,7 +14,7 @@
       "additionalProperties": false,
       "required": ["type", "id"],
       "properties": {
-        "type": {"type": "string", "enum": ["question", "motif", "material", "fragment", "session", "note", "hypothesis", "evaluation", "erratum", "editorial_decision"], "description": "note=a curated row in state/notes* about one readings/ report; hypothesis/evaluation=structured belief-state records."},
+        "type": {"type": "string", "enum": ["question", "motif", "material", "fragment", "session", "note", "hypothesis", "evaluation", "erratum", "editorial_decision", "relation"], "description": "note=a curated row in state/notes* about one readings/ report; hypothesis/evaluation=structured belief-state records. relation=2026-11-23: an edge became addressable after measurement showed 6,796 of 7,097 relation notes (447,494 characters) are reachable from neither endpoint, so the recorded reason for excluding them (citing the edge adds no reachable content) was false."},
         "id": {"type": "string", "minLength": 1}
       }
     },

@@ -2112,6 +2112,11 @@ def main() -> int:
         # correction cannot be written down" were the same observation.
         "erratum": errata_records,
         "editorial_decision": collections.get("editorial_decisions", {}),
+        # 2026-11-23: relations became addressable.  The recorded reason for
+        # excluding them ("citing the edge adds no reachable content") was measured
+        # and is false for 6,796 of 7,097 rows -- 447,494 characters of relation
+        # notes appear in neither endpoint.  tools/navigation_metrics.py --relations.
+        "relation": collections.get("relations", {}),
     }
     for read_id, record in read_logs.items():
         session_id = record.get("session_id")

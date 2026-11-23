@@ -497,3 +497,35 @@ python3 tools/inspect_inquiry.py --packet-stats --stats-limit 40   # 標本で�
 4. **`primary_question_id`（任意）。** `schema/hypothesis.schema.json` に追加。**既存の行は遡及で埋めない**（追記専用の下で、当時決めていない所属を後から書くのは製造された受領書になる）。表の「一次所属」列は `Q-003 (宣言)` と ``未決→`Q-002` ``（矢印の先は `question_ids[0]` であって決定ではない）の三値。
 5. **`belief_basis`（任意）。** `schema/session.schema.json` に追加。`belief_state.py` の `belief_basis_label()` と同じ語彙（`default` / `temporal_heir_guard` / `receiver_gated` / … を `+` で連結）。`BELIEF_MAP.md` 冒頭と `--json` に使用基底を出す。**記入は強制していない** — 強制すると、欄を足した次のセッションから門が赤くなり、過去の行を書き換える圧力になる。
 6. **`newborn_mass`。** `python3 tools/belief_state.py --newborn-mass [HYP-ID]`。対象仮説を除いた反事実で同じ問いを再計算し、旧首位の希釈（pp）と首位交代を出す。**何も書き込まない。** 初回実測（`HYP-20261123-fe0204`）では3問すべて +0.000pp で、「登録は常に既存仮説を希釈する」という読みを狭めた（`EVL-20261123-30b1a5`）。
+
+---
+
+## 2026-11-23 拡張（2）：`relation` が `read_log` の対象になった——測って決めた schema 変更
+
+§7.1 の項目3（2026-11-02、`note` を enum に追加）と同じ形の変更を、**理由を測ってから**行った。セッションは `SESSION-20261123-a22923`、判定と数字は `docs/2026-11-23-deferred-items-measured-ai-thought-report.md` §11.1・§11.9。
+
+**変更前の状態。** `read_log` の `target.type` は10種で `relation` を含まず、`tools/ledger_ids.py` の `NON_ADDRESSABLE` は `REL` を「**関係は辺であって端点ではない。結ぶ二つの記録はどちらも住所を持つので、辺を引いても到達できる内容は増えない**」という理由で列挙していた。`tests/test_instrument_coverage.py` は `relations` を免除していた。
+
+**測った結果。** relations 7,097 行は **100.000% が note を持ち**（459,798 字、異なり 6,376、反復 10.159%）、その note の冒頭40字が**両端点の行の JSON に現れるのは 283/7,079 = 3.998% だけ**であった。つまり **6,796 本・447,494 字が台帳のどこからも到達できなかった**。記録されていた理由は偽であり、辺を引くと到達できる内容が増えないのではなく、**辺だけが持つ内容が44万字あった**。
+
+```
+python3 tools/navigation_metrics.py --relations --exclude SESSION-20261123-1163f7
+```
+
+**動かした五か所（前例 §7.1-3 と同じ）。**
+
+| # | 実体 | before → after |
+|---|---|---|
+| 1 | `schema/read_log.schema.json` | `target.type` enum 10種 → **11種（`relation` 追加）**。説明欄に測定の数字を書いた——**理由の無い enum は次のセッションが再び削る** |
+| 2 | `schema/relation.schema.json` | `$defs.reference.type` enum → **11種**。両 schema の enum が一致 |
+| 3 | `tools/ledger_ids.py` | `REFERENCE_TYPES` に `"relation": ("relations", "REL")` を追加、**`NON_ADDRESSABLE["REL"]` を削除**。注記で残さない理由：schema が住所を与えるのに registry が不可住所と列挙する状態こそ、検査が捕まえるべき漂移だから |
+| 4 | `tools/validate_seed.py` | 端点解決の prefix 表に `relations` を追加（`note` の前例と同じ欄） |
+| 5 | `tests/test_instrument_coverage.py` | 免除 `("read_log", "relations", "quarantine")` → `("read_log", "quarantine")`。新規検査 `test_relation_is_addressable_because_its_reason_was_measured` は enum の一致だけでなく「**実際に relation を対象にした read_log 行が1件以上ある**」ことを要求する |
+
+**検査は最初 FAIL した**（関係を読む行が0件）。三辺（`REL-20261102-047c50`・`-fb2eac`・`-e361f1`、いずれも中心三問を結ぶ辺）を `interpreted` で読んでから PASS した。**enum を拡げるだけでは住所が開いたことにならない**——使われて初めて開く。この順番（検査が落ちる → 行を書く → 検査が通る）を記録に残すのは、次の schema 変更が同じ順番を踏めるようにするためである。
+
+**触らなかったもの。** `schema/editorial_decision.schema.json` の target enum（fragment｜question｜material）は変更不要。`tools/learning_metrics.py` の k=0/k≥1 の記憶タプルを拡げることは**ゲートの意味論を変える**ので、人間の許可なしには行わない（同ファイルの注記がそう定めている）。他の type-enum の写し（`associations.py`・`errata_audit.py`・`return_channels.py`・`three_gates.py`・`navigation_metrics.py` の `collection_of`）も意図的に触っていない。
+
+**見つけた穴（今回は触っていない）。** `state/selection_snapshots.jsonl` は基底ファイルで `.d` を持たず、`REFERENCE_TYPES` にも `NON_ADDRESSABLE` にも載っていないので、`test_instrument_coverage` から見えない。**どちらの registry にも無い基底ファイルは検査の死角になる。**
+
+**誤記の訂正。** 同じ日に、`tools/ledger_ids.py` の `NON_ADDRESSABLE["REL"]` の理由を誤記行 `ERR-20261123-6ba7c5`（`contradicted`／`corrected`）として積んだ。書庫の制度を変えるときは、**変える理由になった測定の数字を行として残す**——散文だけだと、次のセッションが「なぜ relation が読めるのか」を辿れない。
