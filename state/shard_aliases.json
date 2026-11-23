@@ -2,7 +2,7 @@
   "schema_version": 1,
   "normalized_on": "2026-11-12",
   "description": "Maps legacy internal-chronology forward-dated shards (> 2026-11-12) consolidated into real-execution-date shards, plus later order-preserving shard compactions in state/<collection>.d/. Every row is moved byte-for-byte within the same collection.",
-  "consolidated_shards": 220,
+  "consolidated_shards": 223,
   "created_real_date_shards": 50,
   "aliases": {
     "state/editorial_decisions.d/2026-11-18-317db4367875.jsonl": {
@@ -2631,6 +2631,38 @@
       "sha256": "e55f08b2f9957d85223ec585fdb9a05c686e1bd8e05f0a748aa6c7d7b917a1ba",
       "consolidated_on": "2026-11-21",
       "reason": "size_budget soft_shards=148 exceeded at 149 (this session's 10 new material acquisitions); the 2026-11-07 single-row shard (MAT-LIT-20261107-e54f97) was folded byte-for-byte into the 2026-11-21 day shard. No row was modified. Budget values unchanged."
+    },
+    "state/read_log.d/2026-11-13-e4c8387d71dc.jsonl": {
+      "new_shard": "state/read_log.d/2026-11-13-e23c4e45c14c.jsonl",
+      "real_date": "2026-11-13",
+      "original_label_date": "2026-11-13",
+      "line_start": 15,
+      "line_end": 21,
+      "row_count": 7,
+      "consolidated_on": "2026-11-23",
+      "note": "Order-preserving concatenation into the immediately preceding same-date shard (docs/parallel-work.md procedure 7); rows moved byte-for-byte, union sha256 unchanged (fb463373e2855b13...), file count 177 -> 176. Candidate checked: 0 references in readings/, state/, docs/, prompts/, tools/; no row in the moved shard named its own path."
+    },
+    "state/sessions.d/2026-11-13-4a4ce40d0282.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-13-2dd14267c8e4.jsonl",
+      "real_date": "2026-11-13",
+      "original_label_date": "2026-11-13",
+      "line_start": 9,
+      "line_end": 10,
+      "row_count": 2,
+      "consolidated_on": "2026-11-23",
+      "sha256": "3c75e764f62bd5fa81048123de4e30a838de9ed5e4f7ac1cb7d9e2777070c812",
+      "note": "Order-preserving concatenation (docs/parallel-work.md procedure 7); rows moved byte-for-byte. Retargeted during the 2026-11-23 merge of PR #1056: the previous target (state/sessions.d/2026-11-13-420181d49f5f.jsonl) was itself compacted into state/sessions.d/2026-11-13-2dd14267c8e4.jsonl on the same date, so these 2 rows (SESSION-20261113-431f47, SESSION-20261113-2162b1) now sit at lines 9-10, directly after the original target's 3 rows."
+    },
+    "state/sessions.d/2026-11-13-420181d49f5f.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-13-2dd14267c8e4.jsonl",
+      "real_date": "2026-11-13",
+      "original_label_date": "2026-11-13",
+      "line_start": 6,
+      "line_end": 8,
+      "row_count": 3,
+      "consolidated_on": "2026-11-23",
+      "sha256": "45a7a181f2aaaf43b2c5d88320d280baf495723498a3651fdb851581ea11b8a8",
+      "note": "Order-preserving concatenation into state/sessions.d/2026-11-13-2dd14267c8e4.jsonl (lines 6-8), rows moved byte-for-byte. Alias recorded during the 2026-11-23 merge of PR #1056; commit a29e7c2 performed the consolidation without writing it."
     }
   }
 }

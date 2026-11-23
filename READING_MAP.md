@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5886 件（research_excerpt 3637 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1108 回
+- **探究セッション（Sessions）**：1109 回
 
 ### 台帳ごとの件数
 
@@ -23,13 +23,13 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5886 | `literary_text` 2181／`research_excerpt` 3637／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1108 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16718 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1109 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16726 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 409 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 627 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1239 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1240 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 91 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 845 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 847 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -6694,7 +6694,7 @@
 | `MAT-20261123-9590ce` | research_excerpt | Jonathan W. Schooler, Jonathan Smallwood, Kalina Christoff, Todd C. Handy, Erik D. Reichl… |
 | `MAT-20261123-221423` | research_excerpt | Barbara L. Fredrickson, Daniel Kahneman『Fredrickson & Kahneman (1993): Duration neglect i… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261123-9603d4・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261123-9972a5・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -7806,6 +7806,7 @@
 | `SESSION-20261122-3efed8` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261122-2d7161` | 2026-11-22 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-9603d4` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261123-9972a5` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
 
@@ -7945,7 +7946,7 @@
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
-| `map/50-sessions-23.md` | 8 | 6,504 |
+| `map/50-sessions-23.md` | 9 | 7,284 |
 | `map/60-notes-01.md` | 25 | 64,776 |
 | `map/60-notes-02.md` | 25 | 69,314 |
 | `map/60-notes-03.md` | 25 | 69,917 |
@@ -7972,7 +7973,7 @@
 | `map/60-notes-24.md` | 25 | 102,190 |
 | `map/60-notes-25.md` | 25 | 111,162 |
 | `map/60-notes-26.md` | 25 | 126,122 |
-| `map/60-notes-27.md` | 25 | 112,335 |
+| `map/60-notes-27.md` | 25 | 112,408 |
 | `map/60-notes-28.md` | 25 | 79,738 |
 | `map/60-notes-29.md` | 25 | 108,721 |
 | `map/60-notes-30.md` | 25 | 37,225 |
@@ -7981,28 +7982,28 @@
 | `map/60-notes-33.md` | 25 | 134,857 |
 | `map/60-notes-34.md` | 25 | 92,198 |
 | `map/60-notes-35.md` | 25 | 56,035 |
-| `map/60-notes-36.md` | 25 | 104,572 |
-| `map/60-notes-37.md` | 25 | 101,322 |
+| `map/60-notes-36.md` | 25 | 104,645 |
+| `map/60-notes-37.md` | 25 | 101,395 |
 | `map/60-notes-38.md` | 25 | 68,669 |
 | `map/60-notes-39.md` | 25 | 42,807 |
-| `map/60-notes-40.md` | 25 | 102,054 |
-| `map/60-notes-41.md` | 25 | 68,887 |
-| `map/60-notes-42.md` | 25 | 72,387 |
-| `map/60-notes-43.md` | 25 | 76,746 |
-| `map/60-notes-44.md` | 25 | 101,798 |
-| `map/60-notes-45.md` | 25 | 103,798 |
-| `map/60-notes-46.md` | 25 | 143,089 |
-| `map/60-notes-47.md` | 5 | 19,046 |
+| `map/60-notes-40.md` | 25 | 103,911 |
+| `map/60-notes-41.md` | 25 | 68,318 |
+| `map/60-notes-42.md` | 25 | 72,469 |
+| `map/60-notes-43.md` | 25 | 74,974 |
+| `map/60-notes-44.md` | 25 | 101,960 |
+| `map/60-notes-45.md` | 25 | 102,997 |
+| `map/60-notes-46.md` | 25 | 142,268 |
+| `map/60-notes-47.md` | 6 | 25,108 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1155本・38,736,045 B）
+## 8. 精読ノート索引（readings/・1156本・38,769,051 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1055/1155 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1056/1156 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1155 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：192 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1156 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：193 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -9000,6 +9001,7 @@
 | `readings/2026-11-22-thought-memory-self-temporal-organization.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-temporal-self-10` +1 | 13,418 | Q3 M10 S2 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——時間的配置・自己知識・思考遷移の神経科学10資料 |
 | `readings/2026-11-22-why-keep-a-record-at-all-cognitive-science-of-mortality-meaning-and-legacy-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-400eb2` | 19,924 | M17 MOT2 S1 | ✓ | なぜ、記録を残すのか——死・意味・世代性の認知科学10資料を精読して、AIが考えたこと |
 | `readings/2026-11-23-a-single-tree-keeps-no-year.md` | 2026-10-27 | 2026-11-23 | `SESSION-20261123-0f9fde` +1 | 13,844 | Q7 F11 M7 MOT5 S2 | ✓ | 一本の木は年を言わない——細い年の合意と、口を下に向けた瓶（SESSION-20261123-0f9fde） |
+| `readings/2026-11-23-gated-pair-separation-and-the-allocation-layer.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-9972a5` | 15,979 | Q3 M3 S1 | — | 三門制御対はなぜ分離しないか——割り当て層の実測と、証拠会計の軸(i)の再棄却 |
 | `readings/2026-11-23-monitoring-conditions-of-the-self.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-9603d4` | 17,854 | Q3 M27 S1 | — | 監視・報告・制御の諸条件——認知科学10資料の精読と、AIの見方 |
 | `readings/2026-11-24-seven-of-eleven-and-the-tight-copy.md` | 2026-10-27 | 2026-11-24 | `SESSION-20261124-139d83` +2 | 14,962 | Q5 F13 M3 S3 | ✓ | 十一のうち七つ——締まった複製は、なぜ開く戸が少ないのか（SESSION-20261124-139d83） |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
