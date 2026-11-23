@@ -9,6 +9,9 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import _support  # noqa: E402
 
 
 def run(repo: Path, *args: str) -> subprocess.CompletedProcess[str]:
@@ -29,12 +32,7 @@ class RepositorySmokeTests(unittest.TestCase):
 
     def test_import_write_refuses_materials_shards(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
-            repo = Path(tmp) / "repo"
-            shutil.copytree(
-                ROOT,
-                repo,
-                ignore=shutil.ignore_patterns(".git", "__pycache__", "*.pyc", "tests"),
-            )
+            repo = _support.copy_repo(Path(tmp), include_map=True)
             shard_dir = repo / "state" / "materials.d"
             shard_dir.mkdir(exist_ok=True)
             (shard_dir / "2026-10-21-aaaaaaaaaaaa.jsonl").write_text(

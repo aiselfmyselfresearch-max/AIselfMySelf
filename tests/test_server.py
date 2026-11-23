@@ -4,7 +4,6 @@ from __future__ import annotations
 import http.client
 import json
 import os
-import shutil
 import sys
 import tempfile
 import threading
@@ -15,7 +14,9 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import _support  # noqa: E402
 import ledger_io  # noqa: E402
 import serve_viewer  # noqa: E402
 
@@ -32,13 +33,21 @@ def ledger_record_count(root: Path, collection: str) -> int:
 
 
 def copy_repo(destination: Path) -> Path:
-    repo = destination / "repo"
-    shutil.copytree(
-        ROOT,
-        repo,
-        ignore=shutil.ignore_patterns(".git", "__pycache__", "*.pyc", "tests"),
-    )
+    """A sandbox without the 18 MB of prose these tests never assert on.
+
+    Every assertion here is about ``state/`` counts, concurrency and snapshot
+    freshness. The payload's ``readings`` list must be non-empty (it is served by
+    ``/api/readings/<name>``), which two files satisfy; copying all 1,163 added
+    ~9 s per build and 8 builds (measured 2026-11-23, see
+    docs/2026-11-23-test-suite-runtime-analysis.md).
+    """
+    repo = _support.copy_repo(destination, include_readings=False)
+    _support.materialise_readings(repo, _SAMPLE_READINGS)
     return repo
+
+
+#: Two real reports: /api/readings serves their bodies verbatim.
+_SAMPLE_READINGS = sorted(p.name for p in (ROOT / "readings").glob("*.md"))[:2]
 
 
 class QuietHandler(serve_viewer.ArchiveRequestHandler):
@@ -53,11 +62,12 @@ def start_server(repo: Path) -> tuple[serve_viewer.ReusableThreadingHTTPServer, 
     return server, thread
 
 
-# One rebuild of the derived panes takes ~7 s on a slow machine (measured in a
-# sandbox: 8.4 s cold, 0.03 s warm).  The deadline below is a liveness bound for
-# the test, not a latency assertion: what the server promises is that a warm
-# request is answered from a snapshot immediately, and that promise is asserted
-# directly in ``test_stale_snapshot_is_served_while_a_refresh_runs``.
+# One rebuild of the derived panes takes ~4 s on a slow machine for a sandbox
+# without the report prose (13 s with it; measured 2026-11-23).  The deadline
+# below is a liveness bound for the test, not a latency assertion: what the
+# server promises is that a warm request is answered from a snapshot immediately,
+# and that promise is asserted directly in
+# ``test_stale_snapshot_is_served_while_a_refresh_runs``.
 CLIENT_TIMEOUT = float(os.environ.get("ARCHIVE_TEST_TIMEOUT", "120"))
 
 
@@ -71,6 +81,21 @@ def get(port: int, path: str, timeout: float | None = None) -> tuple[int, dict[s
         return response.status, dict(response.getheaders()), response.read()
     finally:
         connection.close()
+
+
+def _live_payload() -> dict[str, object]:
+    """Build the live payload once per module run, not once per test.
+
+    ``test_api_state_index_and_404`` (through the server's warm-up) and
+    ``test_metabolism_snapshot_tracks_graph_connectivity`` both need the payload
+    of THIS checkout, and each used to pay a 12 s rebuild. The build is cached in
+    ``serve_viewer`` per root; the tests that point ROOT at a sandbox already
+    reset that cache, so this shares the same build they would have made.
+    """
+    try:
+        return serve_viewer.read_archive_payload()  # type: ignore[return-value]
+    except Exception:  # noqa: BLE001 - a cold server path rebuilds it anyway
+        return serve_viewer.read_archive_payload(fresh=True)  # type: ignore[return-value]
 
 
 class ServerTests(unittest.TestCase):
@@ -156,7 +181,7 @@ class ServerTests(unittest.TestCase):
             thread.join(timeout=5)
 
     def test_metabolism_snapshot_tracks_graph_connectivity(self) -> None:
-        payload = serve_viewer.read_archive_payload()
+        payload = _live_payload()
         ma = payload["metabolism_audit"]
         # Integration checks reflect the current data, not a desired graph shape.
         # Algorithmic edge cases are tested with fixtures below and in test_metabolism_audit.
@@ -234,6 +259,7 @@ class ServerTests(unittest.TestCase):
             }
             shard = repo / "state" / "fragments.d" / "2026-10-28-test.jsonl"
             shard.write_text(json.dumps(fragment, ensure_ascii=False) + "\n", encoding="utf-8")
+            self.addCleanup(serve_viewer.reset_caches)
             with mock.patch.object(serve_viewer, "ROOT", repo), mock.patch.object(
                 serve_viewer, "VIEWER_DIR", repo / "viewer"
             ):
@@ -256,18 +282,21 @@ class ServerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             repo = copy_repo(Path(tmp))
             calls: list[int] = []
-            real_build = serve_viewer._read_payload_with_retries
+            real_ensure = serve_viewer._ensure_derived
 
-            def slow_build(*args: object, **kwargs: object) -> dict[str, object]:
+            def counted_ensure(*args: object, **kwargs: object) -> tuple[dict[str, object], bytes]:
                 calls.append(1)
-                time.sleep(2.0)
-                return real_build(*args, **kwargs)  # type: ignore[arg-type]
+                return real_ensure(*args, **kwargs)  # type: ignore[arg-type]
 
+            # The 2 s sleep this used to inject is gone: a cold rebuild of the
+            # panes already takes seconds on this machine, so four clients that
+            # arrive together still overlap. What is counted is the lock's job --
+            # one rebuild for four readers -- not the duration of a rebuild.
+            self.addCleanup(serve_viewer.reset_caches)
+            serve_viewer.reset_caches()
             with mock.patch.object(serve_viewer, "ROOT", repo), mock.patch.object(
                 serve_viewer, "VIEWER_DIR", repo / "viewer"
-            ), mock.patch.object(
-                serve_viewer, "_read_payload_with_retries", side_effect=slow_build
-            ):
+            ), mock.patch.object(serve_viewer, "_ensure_derived", side_effect=counted_ensure):
                 server, thread = start_server(repo)
                 try:
                     port = server.server_address[1]
@@ -312,6 +341,7 @@ class ServerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             repo = copy_repo(Path(tmp))
             materials = repo / "state" / "materials.jsonl"
+            self.addCleanup(serve_viewer.reset_caches)
             with mock.patch.object(serve_viewer, "ROOT", repo), mock.patch.object(
                 serve_viewer, "VIEWER_DIR", repo / "viewer"
             ):
@@ -338,6 +368,7 @@ class ServerTests(unittest.TestCase):
                 time.sleep(1.5)
                 return real_build(*args, **kwargs)  # type: ignore[arg-type]
 
+            self.addCleanup(serve_viewer.reset_caches)
             with mock.patch.object(serve_viewer, "ROOT", repo), mock.patch.object(
                 serve_viewer, "VIEWER_DIR", repo / "viewer"
             ), mock.patch.object(
@@ -386,6 +417,7 @@ class ServerTests(unittest.TestCase):
             failures: list[str] = []
             material_count = ledger_record_count(repo, "materials")
 
+            self.addCleanup(serve_viewer.reset_caches)
             with mock.patch.object(serve_viewer, "ROOT", repo), mock.patch.object(
                 serve_viewer, "VIEWER_DIR", repo / "viewer"
             ):
