@@ -791,7 +791,9 @@ def inherited_report_paths(
     Deliberately not re-using :mod:`note_index`'s harvest: this runs inside every
     packet, and §8 must stay byte-identical to what ``map_build.py`` renders.
     Only ``notes`` (which report a row describes) and ``read_log`` (who logged a
-    reading of that row) are needed.
+    reading of that row) are needed. A ``declined`` row is kept in the ledger but
+    is not a reading; another session is not necessarily chronologically later,
+    and a logged row does not prove full reading or influence.
     """
     notes = data.get("notes", {})
     read_log = data.get("read_log", {})
@@ -822,18 +824,21 @@ def inherited_report_paths(
     }
     for record in read_log.values():
         target = record.get("target")
-        if not isinstance(target, dict) or target.get("type") != "note":
+        if (not isinstance(target, dict) or target.get("type") != "note"
+                or record.get("reading") == "declined"):
             continue
         totals["note_read_rows"] += 1
         path = path_by_note.get(target.get("id"))
         if path is None:
             continue
         reader = record.get("session_id")
-        if isinstance(reader, str) and reader and reader in author_by_path.get(path, set()):
+        if not isinstance(reader, str) or not reader:
+            continue  # an unknown reader cannot establish a distinct session
+        if reader in author_by_path.get(path, set()):
             totals["self_read_rows"] += 1
             continue
         totals["inherited_rows"] += 1
-        read_by_path.setdefault(path, set()).add(reader or "?")
+        read_by_path.setdefault(path, set()).add(reader)
 
     return (
         {"read_by": read_by_path, "authors": author_by_path, "date_real": label_by_path},
@@ -862,17 +867,17 @@ def unread_report_lines(
             if isinstance(nrec, dict) and isinstance(nrec.get("path"), str):
                 eval_paths.add(nrec["path"])
 
-    lines = ["## 4.8 未継承の窓（この報告を、後続のセッションはまだ一度も `read_log` で読んでいない）"]
+    lines = ["## 4.8 未継承の窓（別セッションの有効な note 読解行がない候補）"]
     lines.append(
-        "- **趣旨**: `readings/` はエピソード記憶ですが、後続がそのノート行を "
-        "`read_log`（`target.type: \"note\"`）および `evaluations`（`EVL-*`）で検証・継承した記録を可視化します"
-        "（実測は `python3 tools/inheritance.py` / `python3 tools/learning_metrics.py`）。"
-        "ここに並ぶのは**未継承**の報告で、無価値の判定ではありません。"
+        "- **趣旨**: `readings/` のノート行を対象とした `read_log` の別セッション行を数えます。"
+        "`declined` は記録に残しつつ読解行から除外します。"
+        "日付付きのノートから候補を選び、`evaluations` に参照があるかは別に示します。"
+        "行がないことは未読や無価値の証明ではありません。"
     )
     lines.append(
-        f"- **台帳の実測**: notes 行 {totals['note_rows']} ／ note を指す読み {totals['note_read_rows']} 行"
-        f"（自セッション {totals['self_read_rows']} ／ 後続 {totals['inherited_rows']}）"
-        f" ／ EVL検証接続 {len(eval_paths)} 本。notes 行を持たない報告はそもそも継承を測れません。"
+        f"- **台帳の実測**: notes 行 {totals['note_rows']} ／ note を指す非 declined 行 {totals['note_read_rows']} 行"
+        f"（自セッション {totals['self_read_rows']} ／ 別セッション {totals['inherited_rows']}）"
+        f" ／ EVL参照 {len(eval_paths)} 本。notes 行を持たない報告はそもそも継承を測れません。"
     )
     candidates = sorted(
         (
@@ -884,7 +889,7 @@ def unread_report_lines(
         reverse=True,
     )[:window]
     if not candidates:
-        lines.append("- 窓内に未継承の報告はありません（すべて後続の `read_log` に現れています）。")
+        lines.append("- 窓内に未継承の報告はありません（日付付きのノートに該当候補なし）。")
     else:
         lines.append(
             f"- **直近 {len(candidates)} 本の候補**（新しい順・上から {INHERITANCE_LIMIT} 件だけ名指しします）:"
@@ -892,7 +897,7 @@ def unread_report_lines(
         for path, when in candidates[:INHERITANCE_LIMIT]:
             readers = facts["read_by"].get(path) or set()
             state = "後続あり" if readers else "後続なし"
-            evl_tag = "・EVL検証済" if path in eval_paths else ""
+            evl_tag = "・EVL参照あり" if path in eval_paths else ""
             p_errs = errata_for(path, errata)
             err_ids_str = ", ".join(f"`{e.get('errata_id')}`" for e in p_errs)
             err_tag = f"・訂正録 {err_ids_str}" if err_ids_str else ""
@@ -904,6 +909,7 @@ def unread_report_lines(
     )
     lines.append(
         "- **注意**: この節は候補であって義務ではありません。読まない選択も記録できます。"
+        "別セッション行は本文の通読や判断への影響の証明ではなく、時間的に後とも限りません。"
         "継承の実測は `python3 tools/inheritance.py --cohorts`。"
     )
     lines.append("")

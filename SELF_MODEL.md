@@ -39,7 +39,7 @@
 - 実日付 (開始時刻): 2026-11-23 (2026-11-23)
 - 現在のロール: adversarial_tester
 - ジェネレータ: Arena.ai Agent Mode
-- 総セッション数: 1117
+- 総セッション数: 1118
 - 直近10セッションのロール分布: {"adversarial_tester": 9, "proposer": 1}
 
 ## 3. 一人称視点 (First-Person Perspective)
@@ -67,14 +67,14 @@
 
 ### 容量シグナル
 - ✓ file_count:state/materials.d: 152/160 (soft 153)
-- ✓ file_count:state/read_log.d: 171/176 (soft 176)
-- ✓ file_count:state/sessions.d: 173/179 (soft 178)
-- ✓ file_count:state/notes.d: 169/182 (soft 182)
-- ✓ file_count:readings/: 1159/1200 (soft 1163)
+- ✓ file_count:state/read_log.d: 172/176 (soft 176)
+- ✓ file_count:state/sessions.d: 174/179 (soft 178)
+- ✓ file_count:state/notes.d: 170/182 (soft 182)
+- ✓ file_count:readings/: 1160/1200 (soft 1163)
 
 ### バランス・接続・一貫性
 - ✗ ロールバランス: 最大逸脱 0.4
-- ✗ 接続性: 孤児ノート 202/1259
+- ✗ 接続性: 孤児ノート 202/1260
 - ✓ 一貫性: 直近の評価数分散 0.24
 
 ## 5. 時間連続性 (Temporal Continuity)

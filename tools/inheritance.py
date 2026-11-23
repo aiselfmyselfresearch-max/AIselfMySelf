@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Measure whether later sessions actually read earlier reports (stdlib only).
+"""Measure logged cross-session references to reports (stdlib only).
 
 Why this tool exists
 --------------------
@@ -17,21 +17,21 @@ Both numbers were produced by a scratch script that no longer exists, so they
 cannot be re-run as the corpus grows. This module makes the measurement a
 fixture of the toolset instead:
 
-  * **inherited** — a ``read_log`` row whose ``target.type`` is ``note`` and
-    whose reading session *differs from* the session that recorded the note row.
-    That is the only row shape that proves a report was read by someone other
-    than its author: prose citations, hops through ``inspect_inquiry --packet``
-    and the README window are all invisible to the ledger.
-  * **self-read** — the same session reading its own report. Counted, but never
-    counted as inheritance (an author re-reading a draft is not a successor).
-  * **prose-cited** — a later report links or names the path. Wider than the
-    ledger (it leaves no row), so it is reported separately and never added to
-    the inherited count. Mixing them would let a citation inflate a number that
-    is supposed to mean "a later session could find this again".
+  * **inherited** — a non-``declined`` ``read_log`` row whose ``target.type``
+    is ``note`` and whose session differs from the report's author session(s).
+    This is a logged claim about a note, not proof that the report was read in
+    full, that its conclusions affected a decision, or that the reader came
+    later. ``declined`` is a negative or invalidated trace, not a reading.
+  * The broad cross-session count includes both explicitly interpretive kinds
+    and passive ``used_as_context`` / ``counted`` kinds. Their labels and report
+    counts are also shown separately; neither is an independent reading audit.
+  * **self-read** — a non-``declined`` row by an author session, counted apart.
+  * **prose-cited** — another report links or names the path. This is a separate
+    signal and is never added to the inherited count.
 
-Nothing here is a gate. A report with zero successors is *unmeasured*, not
-unread: the ledger only sees readers who chose to log the reading. The output
-says which of those two it is.
+Nothing here is a gate. A report with no such rows is *unmeasured*, not proven
+unread: the ledger only sees recorded traces. ``--until`` filters by the real
+*report* date, not the read date; it is not a historical as-of snapshot.
 
 Usage::
 
@@ -60,6 +60,7 @@ if str(ROOT / "tools") not in sys.path:
 import date_axis  # noqa: E402
 import ledger_io  # noqa: E402
 import note_index  # noqa: E402
+from associations import ACTIVE_READINGS, PASSIVE_READINGS  # noqa: E402
 
 #: A cohort is one calendar block on the real axis. Six days is the width the
 #: archive's own "数十回" spans used (2027-02-16..02-21, 2027-02-19..02-23), and
@@ -92,15 +93,15 @@ class ReportRow:
 
     @property
     def author_sessions(self) -> set[str]:
-        """Sessions that may legitimately have written this report.
+        """Use note provenance before incidental SESSION IDs in report prose.
 
-        Two sources, because neither alone is reliable: the ``SESSION-`` IDs the
-        report body cites (harvested), and the sessions recorded on its ``notes``
-        rows (curated).  A report that cites no session ID still has an author,
-        and treating it as authorless would score its own re-reading as a
-        successor.
+        The harvester collects *every* mentioned session, including previous or
+        later readers, not just authors. Treating all of them as authors hides
+        cross-session rows. Note provenance is still a heuristic (the registering
+        session may differ from the report author), so it is not proof of actual
+        authorship. For unindexed reports only, retain the old prose fallback.
         """
-        return {s for s in [*self.session_ids, *self.note_sessions] if s}
+        return {s for s in (self.note_sessions or self.session_ids) if s}
 
     @property
     def inherited(self) -> int:
@@ -144,7 +145,19 @@ def collect(
     *,
     until: str | None = None,
 ) -> tuple[list[ReportRow], dict[str, Any]]:
-    """Join ``readings/`` with ``notes`` and ``read_log`` into one row per report."""
+    """Join reports to logged readings; ``until`` selects report-date cohorts only.
+
+    Ledger-wide totals remain explicitly identified as such. The selected reports'
+    note-target totals are resolved, non-declined rows across *all* read dates.
+    """
+    cutoff = None
+    if until is not None:
+        try:
+            cutoff = date.fromisoformat(until)
+            if cutoff.isoformat() != until:
+                raise ValueError
+        except ValueError as exc:
+            raise ValueError("--until must be a valid date in YYYY-MM-DD form") from exc
     root = Path(root)
     data = note_index._load_ledgers(root)  # noqa: SLF001 - same private loader note_index uses
     view = note_index.build_view(root, data)
@@ -177,29 +190,44 @@ def collect(
 
     name_by_path = {rel: Path(rel).name for rel in reports}
     path_by_name = {name: rel for rel, name in name_by_path.items()}
+    selected = {
+        rel: row for rel, row in reports.items()
+        if cutoff is None or (
+            (report_date := date_axis.as_date(row.real_date)) is not None and report_date <= cutoff
+        )
+    }
 
     stats: Counter = Counter()
     for read_id, row in read_log.items():
         target = row.get("target") or {}
         if not isinstance(target, dict):
             continue
-        if target.get("type") == "note":
-            rel = by_note.get(target.get("id"))
-        elif target.get("type") == "session":
-            # Reading a *session row* is not reading the *report* that session
-            # wrote: the row is a compact record, the report is the episode.
-            # Counted apart so it can never inflate the inherited number.
-            stats["session_target_rows"] += 1
+        if target.get("type") == "session":
+            # These whole-ledger counts describe session rows, not reports.
+            if row.get("reading") == "declined":
+                stats["declined_session_target_rows"] += 1
+            else:
+                stats["session_target_rows"] += 1
             continue
-        else:
+        if target.get("type") != "note":
             continue
-        stats["read_rows"] += 1
+        rel = by_note.get(target.get("id"))
         if rel is None or rel not in reports:
-            stats["unresolved_rows"] += 1
+            if row.get("reading") != "declined":
+                stats["unresolved_rows"] += 1  # whole ledger; cannot assign a cohort
             continue
-        report = reports[rel]
+        if rel not in selected:
+            continue
+        if row.get("reading") == "declined":
+            stats["declined_note_rows"] += 1
+            continue  # retained in the ledger, but not a positive reading
+        stats["read_rows"] += 1
+        report = selected[rel]
         reading_session = row.get("session_id")
-        if reading_session and reading_session in report.author_sessions:
+        if not isinstance(reading_session, str) or not reading_session:
+            stats["missing_session_rows"] += 1
+            continue  # cannot establish another session
+        if reading_session in report.author_sessions:
             report.self_reads += 1
             stats["self_rows"] += 1
             continue
@@ -214,8 +242,9 @@ def collect(
         )
         stats["inherited_rows"] += 1
 
-    # prose citations are a wider net; resolve them to report paths
-    for rel, report in reports.items():
+    # Citers can be outside the selected report-date cohort: --until selects
+    # the cited reports, not the dates at which they were cited or read.
+    for report in selected.values():
         cited: list[str] = []
         for source in report.prose_cited_by:
             resolved = path_by_name.get(Path(source).name, source)
@@ -224,18 +253,17 @@ def collect(
         report.prose_cited_by = sorted(set(cited))
         stats["prose_edges"] += len(report.prose_cited_by)
 
-    rows = list(reports.values())
-    if until:
-        rows = [
-            row for row in rows
-            if (row.real_date or "") and row.real_date <= until
-        ] or rows
+    rows = list(selected.values())
     return rows, {
+        "until": until,
         "read_rows": stats["read_rows"],
         "self_rows": stats["self_rows"],
         "inherited_rows": stats["inherited_rows"],
+        "declined_note_rows": stats["declined_note_rows"],
+        "missing_session_rows": stats["missing_session_rows"],
         "unresolved_rows": stats["unresolved_rows"],
         "session_target_rows": stats["session_target_rows"],
+        "declined_session_target_rows": stats["declined_session_target_rows"],
         "prose_edges": stats["prose_edges"],
         "reports": len(rows),
         "notes_rows": len(notes),
@@ -297,16 +325,32 @@ def cohorts(
 def summarize(rows: list[ReportRow], totals: dict[str, Any]) -> dict[str, Any]:
     reports = len(rows)
     inheriting = [row for row in rows if row.inherited]
+    active = [row for row in inheriting if any(hit.get("reading") in ACTIVE_READINGS for hit in row.inherited_rows)]
+    passive_only = [
+        row for row in inheriting
+        if all(hit.get("reading") in PASSIVE_READINGS for hit in row.inherited_rows)
+    ]
+    by_reading = Counter(str(hit.get("reading")) for row in inheriting for hit in row.inherited_rows)
     prose = [row for row in rows if row.prose_cited_by]
     return {
         "reports": reports,
+        "report_date_until": totals.get("until"),
+        # Whole-ledger counts are not filtered by report cohort.
         "read_log_rows": totals.get("read_log_rows"),
+        "session_target_rows": totals.get("session_target_rows"),
+        "unresolved_note_target_rows_all": totals.get("unresolved_rows"),
+        # Resolved note-target counts below refer only to the selected reports.
         "note_target_rows": totals.get("read_rows"),
         "self_read_rows": totals.get("self_rows"),
         "inherited_rows": totals.get("inherited_rows"),
-        "session_target_rows": totals.get("session_target_rows"),
+        "declined_note_target_rows": totals.get("declined_note_rows"),
+        "note_target_rows_without_session": totals.get("missing_session_rows"),
         "inheriting_reports": len(inheriting),
         "inheriting_rate": round(len(inheriting) / reports, 4) if reports else 0.0,
+        "other_session_rows_by_reading": dict(sorted(by_reading.items())),
+        "reports_with_active_trace": len(active),
+        "reports_only_passive_traces": len(passive_only),
+        "reports_only_unclassified_or_mixed_unclassified": len(inheriting) - len(active) - len(passive_only),
         "prose_cited_reports": len(prose),
         "prose_cited_rate": round(len(prose) / reports, 4) if reports else 0.0,
         "reports_with_note_row": sum(1 for row in rows if row.note_ids),
@@ -334,16 +378,31 @@ def summarize(rows: list[ReportRow], totals: dict[str, Any]) -> dict[str, Any]:
 def render(summary: dict[str, Any], blocks: list[dict[str, Any]], *, limit: int = 12) -> str:
     out: list[str] = ["=== inheritance over readings/ (ledger-visible successors) ==="]
     out.append(
-        f"  報告 {summary['reports']} 本 ／ notes 行 {summary['notes_rows']} ／ "
-        f"read_log 全 {summary['read_log_rows']:,} 行"
+        f"  対象報告 {summary['reports']} 本 ／ notes 全 {summary['notes_rows']} 行 ／ "
+        f"read_log 全 {summary['read_log_rows']:,} 行（後二者は全台帳）"
+    )
+    if summary['report_date_until']:
+        out.append(
+            f"  対象は実報告日 <= {summary['report_date_until']}。"
+            "読解・引用は全時点から数えるため、当日時点のスナップショットではない。"
+        )
+    out.append(
+        f"  対象報告を指す有効な note 行 {summary['note_target_rows']} "
+        f"（自セッション {summary['self_read_rows']} ／ 別セッション {summary['inherited_rows']} ／ "
+        f"セッション不明 {summary['note_target_rows_without_session']}）"
     )
     out.append(
-        f"  note を指す行 {summary['note_target_rows']} "
-        f"（自セッション {summary['self_read_rows']} ／ 後続 {summary['inherited_rows']}）"
+        f"  除外した declined note 行 {summary['declined_note_target_rows']}（対象報告） ／ "
+        f"解決不能の note 行 {summary['unresolved_note_target_rows_all']}（全台帳）"
     )
     out.append(
-        f"  後続に読まれた報告 {summary['inheriting_reports']} 本 "
+        f"  別セッションの行が記録された報告 {summary['inheriting_reports']} 本 "
         f"（全 {summary['reports']} 本の {summary['inheriting_rate']:.1%}）"
+    )
+    out.append(
+        f"    うち解釈・引用等のラベルあり {summary['reports_with_active_trace']} 本 ／ "
+        f"文脈・集計ラベルのみ {summary['reports_only_passive_traces']} 本 ／ "
+        f"未分類を含むその他 {summary['reports_only_unclassified_or_mixed_unclassified']} 本"
     )
     out.append(
         f"  継承を測れる報告 {summary['reports_with_note_row']} 本 のうち "
@@ -367,10 +426,11 @@ def render(summary: dict[str, Any], blocks: list[dict[str, Any]], *, limit: int 
         )
     out.append("")
     out.append(
-        "  註: 後続0は「読まれていない」ではなく「誰も read_log に書かなかった」。"
-        "台帳は記帳した読みしか見ない。prose辺は本文リンクで、行を残さない。"
-        "notes0 は notes 行を持たない報告で、note 型の read_log からは指せない＝未測定。"
-        "全体の率はこの分母を含むため、継承を測れる報告だけの率を併記する。"
+        "  註: 別セッションの行は記帳された痕跡であり、時間的に後の読書、"
+        "本文の通読や判断への影響を証明しない。著者の判定は notes の来歴に依存し、"
+        "解釈・引用等も台帳上のラベルである。0 は未測定であって未読の証明ではない。"
+        "declined 行は保存したまま読解として数えない。prose辺は別集計。"
+        "notes0 は note 型の read_log から指せない報告で、未測定。"
     )
     return "\n".join(out)
 
