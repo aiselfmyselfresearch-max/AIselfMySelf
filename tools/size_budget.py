@@ -2315,7 +2315,27 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # parallel inquiries including PR #1053 brings the combined count to
         # 1,151 files. Keep the established +12 review margin; only the count
         # soft cap moves. Byte and hard caps remain unchanged.
-        soft_files=1163,
+        # 2026-11-23 (SESSION-20261123-605fe0, report F): this session's second
+        # close-reading report (readings/2026-11-23-three-sources-on-phonology-
+        # self-teaching-and-the-reading-eye.md) takes readings/ from 1,162 to
+        # 1,163 files -- exactly the 1,163 review point set by the #1054 merge,
+        # leaving zero headroom for the next session. Reports are append-only and
+        # the count cannot be compacted; rescaled by the established +12 review
+        # margin (1,163 + 12 = 1,175) rather than per report, so the canary fires
+        # on a burst and not on every session. hard_files (1,200), soft_bytes
+        # (38 MiB) and the per-report caps are unchanged. Not automatic --
+        # re-measure after merge.
+        # 2026-11-23 (SESSION-20261123-032b7e, PR #1067): the merged tree is
+        # 1,164 files against the 1,163 soft above -- one over, with zero free
+        # slots, so the next session would fail --strict regardless of what it
+        # did. Measured after merging origin/main 069bb64d (PR #1066 landed a
+        # parallel session's report into the same 2026-11-23 window); this
+        # session's own report is one of the 1,164. Byte dimension is not
+        # binding (37.31 MiB of the 38 MiB soft, ~707 KB headroom). Rescaled by
+        # the established +12 review margin (1,164 + 12 = 1,176), not per
+        # report. hard_files (1,200), soft_bytes (38 MiB) and the per-file caps
+        # are unchanged. Not automatic -- re-measure after merge.
+        soft_files=1176,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
