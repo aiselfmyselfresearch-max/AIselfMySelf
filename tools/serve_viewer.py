@@ -216,6 +216,15 @@ _DERIVED_CACHE: tuple[str, dict[str, object], bytes] | None = None
 _FAST_STAT_CACHE: tuple[str, tuple[tuple[str, int, int, int], ...], dict[str, object], bytes] | None = None
 
 
+def reset_caches() -> None:
+    """Drop the derived-payload caches (nothing stale is served; this only stops
+    a payload outliving a test's temporary directory)."""
+    global _DERIVED_CACHE, _FAST_STAT_CACHE
+    with _DERIVED_LOCK:
+        _DERIVED_CACHE = None
+        _FAST_STAT_CACHE = None
+
+
 def _readings_signature(readings_dir: Path) -> list[tuple[str, int, int]]:
     sig: list[tuple[str, int, int]] = []
     if readings_dir.is_dir():

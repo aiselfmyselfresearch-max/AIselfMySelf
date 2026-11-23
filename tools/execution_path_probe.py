@@ -60,13 +60,20 @@ measurement. Sandboxes are removed on completion; the repository is never writte
 from __future__ import annotations
 
 import argparse
+import concurrent.futures
+import contextlib
 import hashlib
+import io
 import json
+import os
 import re
 import shutil
 import subprocess
 import sys
+import importlib
+import inspect
 import tempfile
+import threading
 from pathlib import Path
 from typing import Any, Callable
 
@@ -112,6 +119,11 @@ CHECKS: tuple[tuple[str, tuple[str, ...], str], ...] = (
 )
 
 
+# In-process checks make the sweep affordable; EXECUTION_PATH_PROBE_SUBPROCESS=1
+# restores the spawned path (the tests compare the two).
+IN_PROCESS = os.environ.get("EXECUTION_PATH_PROBE_SUBPROCESS") != "1"
+
+
 def make_sandbox(root: Path) -> Path:
     sb = Path(tempfile.mkdtemp(prefix="execpath-"))
     for d in COPY_DIRS:
@@ -121,6 +133,41 @@ def make_sandbox(root: Path) -> Path:
     for f in root.glob("*.md"):
         shutil.copy2(f, sb / f.name)
     return sb
+
+
+def clone_committed_template(template: Path, root: Path) -> Path:
+    """Copy the committed template into a fresh sandbox and re-copy ``state/``.
+
+    A commit per sandbox cost 0.83 s x 11; copying is 0.35 s (2026-11-23).
+    """
+    sb = Path(tempfile.mkdtemp(prefix="execpath-"))
+    shutil.copytree(template, sb, dirs_exist_ok=True, symlinks=True)
+    shutil.rmtree(sb / "state", ignore_errors=True)
+    shutil.copytree(root / "state", sb / "state")
+    return sb
+
+
+_TEMPLATE_LOCK = threading.Lock()
+_TEMPLATE: tuple[str, Path] | None = None
+
+
+def make_template(root: Path) -> Path:
+    """One sandbox with ``.git`` already committed, reused by every intervention.
+
+    Committing a template per probe run cost 1.1 s x the number of runs. The
+    template is keyed on the root it was built from.
+    """
+    global _TEMPLATE
+    key = str(Path(root).resolve())
+    with _TEMPLATE_LOCK:
+        if _TEMPLATE is not None and _TEMPLATE[0] == key and _TEMPLATE[1].is_dir():
+            return _TEMPLATE[1]
+        template = make_sandbox(root)
+        if not commit_baseline(template):
+            shutil.rmtree(template, ignore_errors=True)
+            raise RuntimeError("could not commit the sandbox template; append_only_check needs it")
+        _TEMPLATE = (key, template)
+        return template
 
 
 def _git(sb: Path, *args: str) -> int:
@@ -161,17 +208,53 @@ def union_lines(sb: Path, coll: str) -> list[str]:
     return out
 
 
+def ledger_collections(root: Path) -> list[str]:
+    """Ledger collections, from the validator's COLLECTIONS rather than assumed.
+
+    fingerprint saw only ``state/*.d/`` directories before, so a collection
+    living only in its frozen base was invisible to it.
+    """
+    with _sandbox_tools(root):
+        return sorted(importlib.import_module("validate_seed").COLLECTIONS)
+
+
 def fingerprint(sb: Path) -> dict[str, dict[str, Any]]:
     fp: dict[str, dict[str, Any]] = {}
-    for d in sorted((sb / "state").glob("*.d")):
-        coll = d.name[:-2]
+    for coll in ledger_collections(sb):
         u = union_lines(sb, coll)
+        d = sb / "state" / f"{coll}.d"
         fp[coll] = {
             "sha256": hashlib.sha256("\n".join(u).encode()).hexdigest()[:16],
             "lines": len(u),
-            "files": len(list(d.glob("*.jsonl"))),
+            "files": len(list(d.glob("*.jsonl"))) if d.is_dir() else 0,
         }
     return fp
+
+
+@contextlib.contextmanager
+def _sandbox_tools(root: Path):
+    """Import a tool from ``root``'s ``tools/`` and undo the import after.
+
+    Modules already in ``sys.modules`` under a tool's name are displaced for the
+    call: restoring the path alone left the host's copies in place, so a probe
+    under the suite measured the LIVE ledgers (2026-11-23).
+    """
+    before_path, before_modules, before_cwd = list(sys.path), dict(sys.modules), os.getcwd()
+    # By NAME: the host copies live in this checkout, so a path test fails.
+    sandbox_names = {p.stem for p in (Path(root) / "tools").glob("*.py")}
+    shadowed = {n: m for n, m in before_modules.items() if n in sandbox_names}
+    try:
+        for name in shadowed:
+            del sys.modules[name]
+        os.chdir(root)
+        sys.path[0:0] = [str(Path(root).resolve() / "tools")]
+        yield
+    finally:
+        for name in [n for n in sys.modules if n not in before_modules]:
+            del sys.modules[name]
+        sys.modules.update(shadowed)
+        os.chdir(before_cwd)
+        sys.path[:] = before_path
 
 
 def _patch(sb: Path, rel: str, old: str, new: str) -> None:
@@ -262,36 +345,157 @@ INTERVENTIONS: tuple[tuple[str, str, Callable[[Path], str] | None, str], ...] = 
 )
 
 
-def run_checks(sb: Path) -> dict[str, dict[str, Any]]:
+def _exit_of(fn: Callable[[], int]) -> int:
+    """Run a tool's ``main()`` and turn its exit path into an exit code.
+
+    The tools print their report themselves; only the status is needed here.
+    ``SystemExit`` is how both ``sys.exit`` and ``argparse`` end, and a tool that
+    raises is reported as a failure rather than crashing the probe: a broken
+    check is a detection, not an absence of one.
+    """
+    try:
+        code = fn()
+    except SystemExit as exc:
+        code = 0 if exc.code is None else int(exc.code) if isinstance(exc.code, int) else 1
+    except Exception:  # noqa: BLE001 - a crashing check must not abort the sweep
+        code = 1
+    return int(code)
+
+
+def run_checks(sb: Path, in_process: bool = IN_PROCESS) -> dict[str, dict[str, Any]]:
+    """Run the seven checks. Each was a child process until 2026-11-23 (86 s per
+    sweep); calling ``main()`` gave identical exits on all 77 runs."""
+    if not in_process:
+        res: dict[str, dict[str, Any]] = {}
+        for name, cmd, kind in CHECKS:
+            p = subprocess.run([sys.executable, *cmd], cwd=sb, capture_output=True, text=True)
+            lines = p.stdout.strip().splitlines() or p.stderr.strip().splitlines() or [""]
+            res[name] = {"exit": p.returncode, "kind": kind, "last": lines[-1][:200]}
+        return res
     res: dict[str, dict[str, Any]] = {}
     for name, cmd, kind in CHECKS:
-        p = subprocess.run([sys.executable, *cmd], cwd=sb, capture_output=True, text=True)
-        lines = p.stdout.strip().splitlines() or p.stderr.strip().splitlines() or [""]
-        res[name] = {"exit": p.returncode, "kind": kind, "last": lines[-1][:200]}
+        res[name] = _run_one_in_sandbox(sb, name, cmd, kind)
     return res
 
 
-def _render_packet(sb: Path, target: str, seed: str) -> tuple[str, int]:
-    p = subprocess.run([sys.executable, "tools/inspect_inquiry.py", "--packet", target,
-                        "--seed", seed], cwd=sb, capture_output=True, text=True)
-    return p.stdout, p.returncode
+def _run_one_in_sandbox(sb: Path, name: str, cmd: tuple[str, ...], kind: str) -> dict[str, Any]:
+    """Run one check inside the sandbox, isolated from this process's imports.
+
+    A tool binds ``ROOT`` at import time to its own location; loading it fresh
+    under a sandbox-only ``sys.path`` keeps what the subprocess gave us (a check
+    that reads the sandbox), and the import is re-paid per check.
+    """
+    script = Path(cmd[0]).name
+    args = list(cmd[1:])
+    before_modules = set(sys.modules)
+    out = io.StringIO()
+    try:
+        with _sandbox_tools(sb):
+            module = importlib.import_module(script[:-3])
+            with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+                # The flags ARE passed (without them every check exited 2); ROOT
+                # comes from the tool's own path, so `--root` is not added.
+                code = _call_main(module.main, args)
+    except Exception:  # noqa: BLE001 - an unimportable check is a failed check
+        code = 1
+    finally:
+        # Drop modules first imported here, so no sandbox-bound module is left.
+        for name_ in set(sys.modules) - before_modules:
+            del sys.modules[name_]
+    lines = out.getvalue().strip().splitlines() or [""]
+    return {"exit": code, "kind": kind, "last": lines[-1][:200]}
 
 
-def run_packet(sb: Path, seed: str = BASE_SEED) -> dict[str, Any]:
+def _call_main(fn: Callable[..., Any], args: list[str]) -> int:
+    """Call a tool's main() with the check's flags.
+
+    ``validate_seed.main()`` takes no argv; passing one raises TypeError, which
+    would be read as a failed check, so the arity is inspected.
+    """
+    if not _takes_argv(fn):
+        return _exit_of(fn)
+    return _exit_of(lambda: fn(args))
+
+
+def _takes_argv(fn: Callable[..., Any]) -> bool:
+    """Whether main() accepts argv."""
+    try:
+        return bool(inspect.signature(fn).parameters)
+    except (TypeError, ValueError):
+        return False
+
+
+def _render_packet(sb: Path, target: str, seed: str, in_process: bool = IN_PROCESS) -> tuple[str, int]:
+    """Render the packet the next reader receives (pinned equal by tests)."""
+    if not in_process:
+        p = subprocess.run([sys.executable, "tools/inspect_inquiry.py", "--packet", target,
+                            "--seed", seed], cwd=sb, capture_output=True, text=True)
+        return p.stdout, p.returncode
+    return _packet_in_process(sb, target, seed)
+
+
+def _packet_in_process(sb: Path, target: str, seed: str) -> tuple[str, int]:
+    """Render one packet, reusing the sandbox's parsed ledgers across calls.
+
+    ``--packet`` parses the ledgers, then harvests every ``readings/*.md`` into a
+    note view. Two packets are rendered per intervention over an unchanged
+    sandbox, so this is done once per RUN; the cache is keyed on the root and the
+    ``state/`` stat signature.
+    """
+    key = str(Path(sb).resolve())
+    signature = _state_stat_signature(Path(sb))
+    entry = _PACKET_CACHE.get(key)
+    out: list[str] = []
+    code = 1
+    try:
+        with _sandbox_tools(sb):
+            import inspect_inquiry as ii
+            import note_index
+            if entry is None or entry[0] != signature:
+                _PACKET_CACHE.clear()
+                data = ii.load_all()
+                harvested = note_index.harvest(Path(sb), data)
+                _PACKET_CACHE[key] = (signature, data, harvested)
+            else:
+                _signature, data, harvested = entry
+            out.append(
+                ii.build_context_packet(
+                    data, target, seed=seed,
+                note_view=note_index.build_view(Path(sb), data, harvested=harvested),
+                )
+            )
+            code = 0
+    except SystemExit as exc:          # load_all() prints and exits on a bad ledger
+        code = 0 if exc.code is None else 1
+    except Exception as exc:  # noqa: BLE001 - reported, not swallowed
+        out.append(f"error: {exc}\n")
+    return ("".join(out) if out else ""), code
+
+
+_PACKET_CACHE: dict[str, tuple[Any, Any, Any]] = {}
+
+
+def _state_stat_signature(sb: Path) -> tuple[tuple[str, int, int], ...]:
+    """Each ledger file's path, size and mtime."""
+    return tuple(
+        (str(p.relative_to(sb)), p.stat().st_size, p.stat().st_mtime_ns)
+        for p in sorted((sb / "state").rglob("*.jsonl"))
+    )
+
+
+def run_packet(sb: Path, seed: str = BASE_SEED, in_process: bool = IN_PROCESS) -> dict[str, Any]:
     """Pinned-target packet: the knobs can be read off a stable question.
 
-    The seed is now a parameter rather than a literal. ``hyp_order`` is the
-    §0.2 ranking, extracted so that "the packet changed" can be separated from
-    "the belief ranking changed" -- the second is what limb (a) is about.
+    The seed is a parameter, not a literal; ``hyp_order`` is the §0.2 ranking.
     """
-    out, rc = _render_packet(sb, "Q-003", seed)
+    out, rc = _render_packet(sb, "Q-003", seed, in_process)
     sec = out.split("## 0.2")[-1].split("\n## 1.")[0]
     return {"sha256": hashlib.sha256(out.encode()).hexdigest()[:16],
             "bytes": len(out), "exit": rc, "seed": seed,
             "hyp_order": _HYP.findall(sec)}
 
 
-def run_packet_auto(sb: Path, seed: str = BASE_SEED) -> dict[str, Any]:
+def run_packet_auto(sb: Path, seed: str = BASE_SEED, in_process: bool = IN_PROCESS) -> dict[str, Any]:
     """Unpinned packet: what a reader who does not choose their own target gets.
 
     This is the only measurement that can show an intervention changing WHICH
@@ -299,7 +503,7 @@ def run_packet_auto(sb: Path, seed: str = BASE_SEED) -> dict[str, Any]:
     cannot show that, by construction -- which is why the target-level reach of
     the path was understated while only the pinned packet was measured.
     """
-    out, rc = _render_packet(sb, "auto", seed)
+    out, rc = _render_packet(sb, "auto", seed, in_process)
     first = out.splitlines()[0] if out else ""
     hdr, role = _HDR.search(first), _ROLE.search(out)
     return {"sha256": hashlib.sha256(out.encode()).hexdigest()[:16],
@@ -309,52 +513,102 @@ def run_packet_auto(sb: Path, seed: str = BASE_SEED) -> dict[str, Any]:
             "role": role.group(1).strip() if role else None}
 
 
-def run(root: Path | str = ROOT, family: str | None = None,
-        only: str | None = None) -> dict[str, Any]:
-    root = Path(root)
-    out: dict[str, Any] = {"root": str(root), "interventions": {}}
-    base_fp = base_checks = base_pkt = base_auto = None
-    for name, fam, fn, seed in INTERVENTIONS:
-        if only and name != only:
-            continue
-        if family and fam != family and name != "I0_control":
-            continue
-        sb = make_sandbox(root)
+def _measure_one(
+    template: Path, root: Path, fam: str,
+    fn: Callable[[Path], str] | None, seed: str, in_process: bool = IN_PROCESS,
+) -> dict[str, Any]:
+    """Measure one intervention in its own sandbox (worker-process safe)."""
+    sb = clone_committed_template(template, root)
+    try:
+        if fn:
+            desc = fn(sb)
+        elif seed != BASE_SEED:
+            desc = f"dispersal seed {BASE_SEED} -> {seed} (no file touched)"
+        else:
+            desc = "exact copy, no intervention"
+        return {
+            "family": fam, "desc": desc, "seed": seed,
+            "fingerprint": fingerprint(sb),
+            "checks": run_checks(sb, in_process),
+            "packet": run_packet(sb, seed, in_process),
+            "packet_auto": run_packet_auto(sb, seed, in_process),
+        }
+    finally:
+        shutil.rmtree(sb, ignore_errors=True)
+
+
+def default_jobs() -> int:
+    """Sandboxes at once: CPU count capped. Two workers: 139 s -> 77 s
+    (2026-11-23). ``EXECUTION_PATH_PROBE_JOBS=1`` is the sequential sweep."""
+    env = os.environ.get("EXECUTION_PATH_PROBE_JOBS")
+    if env:
         try:
-            git_ok = commit_baseline(sb)
-            if fn:
-                desc = fn(sb)
-            elif seed != BASE_SEED:
-                desc = f"dispersal seed {BASE_SEED} -> {seed} (no file touched)"
-            else:
-                desc = "exact copy, no intervention"
-            fp, checks = fingerprint(sb), run_checks(sb)
-            pkt, auto = run_packet(sb, seed), run_packet_auto(sb, seed)
-            if base_fp is None:
-                base_fp, base_checks, base_pkt, base_auto = fp, checks, pkt, auto
-            out["interventions"][name] = {
-                "family": fam, "desc": desc, "seed": seed,
-                "baseline_committed": git_ok,
-                "union_identical": all(fp[c]["sha256"] == base_fp[c]["sha256"] for c in base_fp),
-                "line_counts_identical": all(fp[c]["lines"] == base_fp[c]["lines"] for c in base_fp),
-                "file_count_delta": {c: fp[c]["files"] - base_fp[c]["files"]
-                                     for c in fp if fp[c]["files"] != base_fp[c]["files"]},
-                "checks_flipped": [k for k in checks if checks[k]["exit"] != base_checks[k]["exit"]],
-                "named_checks_flipped": [k for k in checks
-                                         if checks[k]["kind"] == "named_in_scope"
-                                         and checks[k]["exit"] != base_checks[k]["exit"]],
-                "check_exits": {k: v["exit"] for k, v in checks.items()},
-                "packet": pkt, "packet_changed": pkt["sha256"] != base_pkt["sha256"],
-                # The belief ranking is separated from the packet bytes: a path
-                # change that moves what the reader receives but not the ranking
-                # is the only kind that can bear on limb (a).
-                "hyp_order_identical": pkt["hyp_order"] == base_pkt["hyp_order"],
-                "packet_auto": auto,
-                "packet_auto_changed": auto["sha256"] != base_auto["sha256"],
-                "auto_target_changed": auto["target"] != base_auto["target"],
+            return max(1, int(env))
+        except ValueError:
+            pass
+    return max(1, min(4, os.cpu_count() or 1))
+
+
+def run(root: Path | str = ROOT, family: str | None = None,
+        only: str | None = None, in_process: bool = IN_PROCESS,
+        jobs: int | None = None) -> dict[str, Any]:
+    """Sweep the interventions and report what each one moved.
+
+    One template is copied per intervention, each sandbox's ``state/`` is the
+    caller's. With ``jobs > 1`` (default) measurements run in parallel; the
+    comparison against the control happens here in declaration order.
+    """
+    root = Path(root)
+    selected = [
+        (name, fam, fn, seed) for name, fam, fn, seed in INTERVENTIONS
+        if (not only or name == only) and (not family or fam == family or name == "I0_control")
+    ]
+    out: dict[str, Any] = {"root": str(root), "interventions": {}}
+    if not selected:
+        return out
+    # make_template takes the template lock itself; holding it here deadlocked.
+    template = make_template(root)
+    workers = default_jobs() if jobs is None else max(1, int(jobs))
+    results: dict[str, dict[str, Any]] = {}
+    if workers == 1 or len(selected) == 1:
+        for name, fam, fn, seed in selected:
+            results[name] = _measure_one(template, root, fam, fn, seed, in_process)
+    else:
+        with concurrent.futures.ProcessPoolExecutor(max_workers=workers) as pool:
+            futures = {
+                pool.submit(_measure_one, template, root, fam, fn, seed, in_process): name
+                for name, fam, fn, seed in selected
             }
-        finally:
-            shutil.rmtree(sb, ignore_errors=True)
+            for future in concurrent.futures.as_completed(futures):
+                results[futures[future]] = future.result()
+
+    base_fp = base_checks = base_pkt = base_auto = None
+    for name, _fam, _fn, _seed in selected:  # declaration order, not finish order
+        v = results[name]
+        fp, checks, pkt, auto = v["fingerprint"], v["checks"], v["packet"], v["packet_auto"]
+        if base_fp is None:
+            base_fp, base_checks, base_pkt, base_auto = fp, checks, pkt, auto
+        out["interventions"][name] = {
+            "family": v["family"], "desc": v["desc"], "seed": v["seed"],
+            "baseline_committed": True,
+            "union_identical": all(fp[c]["sha256"] == base_fp[c]["sha256"] for c in base_fp),
+            "line_counts_identical": all(fp[c]["lines"] == base_fp[c]["lines"] for c in base_fp),
+            "file_count_delta": {c: fp[c]["files"] - base_fp[c]["files"]
+                                 for c in fp if fp[c]["files"] != base_fp[c]["files"]},
+            "checks_flipped": [k for k in checks if checks[k]["exit"] != base_checks[k]["exit"]],
+            "named_checks_flipped": [k for k in checks
+                                     if checks[k]["kind"] == "named_in_scope"
+                                     and checks[k]["exit"] != base_checks[k]["exit"]],
+            "check_exits": {k: v2["exit"] for k, v2 in checks.items()},
+            "packet": pkt, "packet_changed": pkt["sha256"] != base_pkt["sha256"],
+            # The ranking is separated from the packet bytes: a path change that
+            # moves what the reader receives but not the ranking is what limb (a)
+            # is about.
+            "hyp_order_identical": pkt["hyp_order"] == base_pkt["hyp_order"],
+            "packet_auto": auto,
+            "packet_auto_changed": auto["sha256"] != base_auto["sha256"],
+            "auto_target_changed": auto["target"] != base_auto["target"],
+        }
     if base_checks:
         out["baseline"] = {k: {"exit": v["exit"], "kind": v["kind"]}
                            for k, v in base_checks.items()}
@@ -388,15 +642,20 @@ def render(res: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def main(argv: list[str] | None = None) -> int:
+def main(argv: list[str] | None = None) -> int:  # noqa: D401 - CLI entry
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--root", default=str(ROOT))
     ap.add_argument("--family", choices=["storage", "packet", "seed"])
     ap.add_argument("--only")
     ap.add_argument("--json", action="store_true")
+    ap.add_argument(
+        "--subprocess-checks",
+        action="store_true",
+        help="run each check and packet as a child process (the pre-2026-11-23 path; slower)",
+    )
     args = ap.parse_args(argv)
-    res = run(args.root, args.family, args.only)
+    res = run(args.root, args.family, args.only, in_process=not args.subprocess_checks)
     print(json.dumps(res, ensure_ascii=False, indent=1) if args.json else render(res))
     return 0
 

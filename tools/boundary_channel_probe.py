@@ -131,9 +131,17 @@ def _delta(before: dict[str, Any], after: dict[str, Any], question: str,
 
 
 def run(target: str = DEFAULT_TARGET, question: str = QUESTION,
-        root: Path | str = ROOT) -> dict[str, Any]:
-    cols = bs.load_belief_ledgers(Path(root))
-    base = bs.compute_belief_state(copy.deepcopy(cols))
+        root: Path | str = ROOT, cols: dict[str, Any] | None = None,
+        base: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Measure every arm of the boundary channel on one hypothesis.
+
+    ``cols``/``base`` may come from a caller that already loaded them. No
+    measurement changes; the deepcopy keeps the erratum out of the caller's dict.
+    """
+    if cols is None:
+        cols = bs.load_belief_ledgers(Path(root))
+    if base is None:
+        base = bs.compute_belief_state(copy.deepcopy(cols))
     source = (Path(root) / "tools" / "belief_state.py").read_text(encoding="utf-8")
 
     hyp = cols["hypotheses"].get(target)

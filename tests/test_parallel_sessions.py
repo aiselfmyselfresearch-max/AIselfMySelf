@@ -12,6 +12,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import _support  # noqa: E402
 
 
 WORKER = textwrap.dedent(
@@ -111,13 +114,11 @@ WORKER = textwrap.dedent(
 
 
 def copy_repo(destination: Path) -> Path:
-    repo = destination / "repo"
-    shutil.copytree(
-        ROOT,
-        repo,
-        ignore=shutil.ignore_patterns(".git", "__pycache__", "*.pyc", "tests", "map"),
-    )
-    return repo
+    """Full sandbox: the same rule every module used, now stated in one place.
+
+    See ``tests/_support.py`` for why the ignore list is not repeated per module.
+    """
+    return _support.copy_repo(destination)
 
 
 def ledger_counts(repo: Path) -> dict[str, int]:

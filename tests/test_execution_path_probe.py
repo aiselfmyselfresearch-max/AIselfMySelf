@@ -26,6 +26,7 @@ import json
 import shutil
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -40,10 +41,26 @@ GIT = shutil.which("git") is not None
 SCOPE_NAMED = {"validate_seed", "append_only_check", "belief_state_map"}
 
 
+def _state_snapshot() -> dict[Path, tuple[int, int]]:
+    """Identity of every ledger file: mtime and size, base files and shards."""
+    return {p: (p.stat().st_mtime_ns, p.stat().st_size) for p in (ROOT / "state").rglob("*.jsonl")}
+
+
 class ExecutionPathProbeTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        # One sweep serves every test below, including the "does it write?"
+        # checks: each of those used to re-run a second 15 s sweep to compare
+        # before/after. The hash is taken once, around the sweep that already
+        # exists, so the claim ("the probe writes nothing") is unchanged and the
+        # measurement is not paid twice (2026-11-23).
+        tmp = Path(tempfile.gettempdir())
+        cls.sandboxes_before = set(tmp.glob("execpath-*"))
+        cls.state_before = _state_snapshot()
+        cls.engine_before = (ROOT / "tools" / "inspect_inquiry.py").read_bytes()
         cls.res = probe.run(ROOT)
+        cls.state_after = _state_snapshot()
+        cls.sandboxes_after = set(tmp.glob("execpath-*"))
         cls.iv = cls.res["interventions"]
 
     def test_baseline_is_all_green(self):
@@ -204,10 +221,11 @@ class ExecutionPathProbeTests(unittest.TestCase):
                 self.assertTrue(v["hyp_order_identical"], f"{name} reordered §0.2")
 
     def test_probe_does_not_write_to_the_repository(self):
-        before = {p: p.stat().st_mtime_ns for p in (ROOT / "state").rglob("*.jsonl")}
-        probe.run(ROOT, only="I0_control")
-        after = {p: p.stat().st_mtime_ns for p in (ROOT / "state").rglob("*.jsonl")}
-        self.assertEqual(before, after)
+        self.assertEqual(self.state_before, self.state_after)
+
+    def test_probe_leaves_the_engine_on_disk_unchanged(self):
+        self.assertEqual(self.engine_before,
+                         (ROOT / "tools" / "inspect_inquiry.py").read_bytes())
 
     def test_sandbox_copies_taxonomy_so_the_control_is_not_stale(self):
         """Omitting taxonomy/ makes note_index report STALE on an untouched copy."""
@@ -227,11 +245,89 @@ class ExecutionPathProbeTests(unittest.TestCase):
             shutil.rmtree(sb, ignore_errors=True)
 
     def test_sandboxes_are_cleaned_up(self):
-        import tempfile
-        tmp = Path(tempfile.gettempdir())
-        before = set(tmp.glob("execpath-*"))
-        probe.run(ROOT, only="I0_control")
-        self.assertEqual(set(tmp.glob("execpath-*")) - before, set())
+        """Every per-intervention sandbox is removed; only the cached template stays.
+
+        The template is one committed sandbox kept for the next run() call -- the
+        alternative was committing one per intervention (1.1 s x 11). What this
+        test pinned before 2026-11-23 ("no sandbox outlives the sweep") still
+        holds for every sandbox the sweep itself creates.
+        """
+        leftovers = self.sandboxes_after - self.sandboxes_before
+        self.assertLessEqual(len(leftovers), 1, f"unexpected sandboxes: {leftovers}")
+        if leftovers:
+            self.assertEqual(leftovers, {probe._TEMPLATE[1]})
+
+    def test_the_template_is_one_committed_sandbox_not_one_per_intervention(self):
+        """The baseline commit is paid once, and every sandbox still starts from it."""
+        self.assertEqual(len(self.res["interventions"]), 11)
+        self.assertIsNotNone(probe._TEMPLATE)
+        self.assertTrue((probe._TEMPLATE[1] / ".git").is_dir())
+
+    def test_in_process_checks_and_packets_match_the_subprocess_path(self):
+        """The speed-up must not change what is measured.
+
+        Both the checks and the packet used to be child processes. They are now
+        run in this interpreter against the sandbox (see the probe's docstring).
+        This pins the two paths equal on one sandbox: same seven exit codes, same
+        packet bytes. Without it a refactor could report "nothing noticed" while
+        the check it replaced would have failed.
+        """
+        sb = probe.make_sandbox(ROOT)
+        try:
+            probe.commit_baseline(sb)
+            slow = probe.run_checks(sb, in_process=False)
+            fast = probe.run_checks(sb, in_process=True)
+            self.assertEqual({k: v["exit"] for k, v in slow.items()},
+                             {k: v["exit"] for k, v in fast.items()})
+            for target in ("Q-003", "auto"):
+                with self.subTest(target=target):
+                    old, old_rc = probe._render_packet(sb, target, probe.BASE_SEED, in_process=False)
+                    new, new_rc = probe._render_packet(sb, target, probe.BASE_SEED, in_process=True)
+                    self.assertEqual((old_rc, old), (new_rc, new))
+        finally:
+            shutil.rmtree(sb, ignore_errors=True)
+
+    def test_the_in_process_path_survives_a_polluted_interpreter(self):
+        """The host's copies of the tools must not leak into a sandbox run.
+
+        The suite imports ``inspect_inquiry`` and its neighbours from THIS
+        checkout before this module runs. While that was left in ``sys.modules``,
+        the in-process path measured the live ledger and the live defaults, the
+        four packet interventions reported "no change", and the I3 positive
+        control lost one of its two flipped detectors -- all only when run under
+        the suite, never from the CLI (measured 2026-11-23). The comparison is
+        against the subprocess path, so the assertion is about equivalence, not
+        about a recorded string.
+        """
+        import importlib
+
+        importlib.import_module("inspect_inquiry")  # the polluting import, on purpose
+        sb = probe.make_sandbox(ROOT)
+        try:
+            probe.commit_baseline(sb)
+            old, old_rc = probe._render_packet(sb, "Q-003", probe.BASE_SEED, in_process=False)
+            new, new_rc = probe._render_packet(sb, "Q-003", probe.BASE_SEED, in_process=True)
+            self.assertEqual((old_rc, old), (new_rc, new))
+        finally:
+            shutil.rmtree(sb, ignore_errors=True)
+
+    def test_the_sweep_runs_interventions_side_by_side(self):
+        """Parallel measurement is the default, and it is equivalent to serial.
+
+        One intervention per worker over independent sandboxes; the comparison
+        against the control is done afterwards, in declaration order, so the
+        report is the same object either way.
+        """
+        self.assertGreaterEqual(probe.default_jobs(), 1)
+        serial = probe.run(ROOT, only="P1_window", jobs=1)
+        parallel = probe.run(ROOT, only="P1_window", jobs=2)
+        self.assertEqual(serial["interventions"].keys(), parallel["interventions"].keys())
+        self.assertEqual(
+            {k: v["checks_flipped"] for k, v in serial["interventions"].items()},
+            {k: v["checks_flipped"] for k, v in parallel["interventions"].items()},
+        )
+        self.assertEqual(serial["interventions"]["P1_window"]["packet"]["sha256"],
+                         parallel["interventions"]["P1_window"]["packet"]["sha256"])
 
     def test_cli_json_and_exit_zero(self):
         p = subprocess.run([sys.executable, str(ROOT / "tools" / "execution_path_probe.py"),

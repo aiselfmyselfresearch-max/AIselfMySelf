@@ -127,5 +127,33 @@ jobs:
       - name: Report temporal-continuity drift (advisory)
         run: python3 tools/temporal_continuity.py
 
-      - name: Run regression tests
-        run: python3 -m unittest discover -s tests -v
+  # The regression suite is 1,125 tests and ~8 minutes serially (measured
+  # 2026-11-23: 705 s before the runtime work in
+  # docs/2026-11-23-test-suite-runtime-analysis.md, 482 s after). It is split by
+  # module name so the shards can run at the same time; each shard is an
+  # independent `unittest discover -p` invocation and the job fails if any shard
+  # fails. `-v` is gone: 1,125 lines of "ok" is not read, and the failure
+  # tracebacks print either way.
+  tests:
+    runs-on: ubuntu-latest
+    needs: validate
+    strategy:
+      fail-fast: false
+      matrix:
+        shard:
+          - "test_[a-d]*.py"
+          - "test_e*.py"
+          - "test_[f-l]*.py"
+          - "test_[m-p]*.py"
+          - "test_[q-z]*.py"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run regression tests (${{ matrix.shard }})
+        run: python3 -m unittest discover -s tests -t . -p '${{ matrix.shard }}'
