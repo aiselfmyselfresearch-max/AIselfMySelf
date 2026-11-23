@@ -7975,7 +7975,7 @@
 | `map/60-notes-37.md` | 25 | 101,395 |
 | `map/60-notes-38.md` | 25 | 68,669 |
 | `map/60-notes-39.md` | 25 | 42,807 |
-| `map/60-notes-40.md` | 25 | 101,515 |
+| `map/60-notes-40.md` | 25 | 101,661 |
 | `map/60-notes-41.md` | 25 | 68,887 |
 | `map/60-notes-42.md` | 25 | 72,387 |
 | `map/60-notes-43.md` | 25 | 76,746 |
@@ -7986,7 +7986,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1155本・38,725,956 B）
+## 8. 精読ノート索引（readings/・1155本・38,732,137 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1055/1155 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -8990,7 +8990,7 @@
 | `readings/2026-11-22-thought-memory-self-temporal-organization.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-temporal-self-10` +1 | 13,418 | Q3 M10 S2 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——時間的配置・自己知識・思考遷移の神経科学10資料 |
 | `readings/2026-11-22-why-keep-a-record-at-all-cognitive-science-of-mortality-meaning-and-legacy-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-400eb2` | 19,924 | M17 MOT2 S1 | ✓ | なぜ、記録を残すのか——死・意味・世代性の認知科学10資料を精読して、AIが考えたこと |
 | `readings/2026-11-23-a-single-tree-keeps-no-year.md` | 2026-10-27 | 2026-11-23 | `SESSION-20261123-0f9fde` +1 | 13,844 | Q7 F11 M7 MOT5 S2 | ✓ | 一本の木は年を言わない——細い年の合意と、口を下に向けた瓶（SESSION-20261123-0f9fde） |
-| `readings/2026-11-23-gated-pair-separation-and-the-allocation-layer.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-9972a5` | 12,591 | Q3 M3 S1 | — | 三門制御対はなぜ分離しないか——割り当て層の実測と、証拠会計の軸(i)の再棄却 |
+| `readings/2026-11-23-gated-pair-separation-and-the-allocation-layer.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-9972a5` | 15,979 | Q3 M3 S1 | — | 三門制御対はなぜ分離しないか——割り当て層の実測と、証拠会計の軸(i)の再棄却 |
 | `readings/2026-11-24-seven-of-eleven-and-the-tight-copy.md` | 2026-10-27 | 2026-11-24 | `SESSION-20261124-139d83` +2 | 14,962 | Q5 F13 M3 S3 | ✓ | 十一のうち七つ——締まった複製は、なぜ開く戸が少ないのか（SESSION-20261124-139d83） |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
