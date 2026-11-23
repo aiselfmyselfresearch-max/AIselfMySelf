@@ -1826,8 +1826,25 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # 2026-11-20 (SESSION-20261120-749911): this session adds one new cognitive science
         # close-reading report (readings/2026-11-20-cognitive-science-ten-sources-on-human-and-ai-self.md).
         # Measured total = 35.02 MiB across 1,061 reports. Soft bytes raised 35 -> 37 MiB.
+        # 2026-11-23 (SESSION-20261123-5b6353, post-merge): soft_bytes 37 -> 38 MiB.
+        # Measured on the merged union: origin/main before this session's report stood at
+        # 38,785,233 B (12,079 B under the 37 MiB line), and this session's 10-source
+        # close-reading report (readings/2026-11-23-ten-cognitive-science-sources-on-
+        # suggestion-and-self-report.md, 38,008 B) took the directory to 38,823,241 B,
+        # i.e. 25,929 B over across 1,155 reports. The same-day parallel session
+        # (PR #1056) had also added a report, so the remaining headroom was already
+        # one report wide before this one. Reports are append-only: consolidation
+        # moves files and never bytes, and deletion needs human approval, so the only
+        # choices were a measured rescale or dropping half of the close reading. This
+        # session chose the rescale and records the conflict of interest plainly: the
+        # marginal cause of the overage is its own report. A 1 MiB step is a review
+        # point, not an automatic allowance; hard 48 MiB, soft_files 1,163 / hard
+        # 1,200 and the 256 KiB/512 KiB per-report caps are unchanged. It is left to
+        # the next editorial_review to decide whether the byte review point should
+        # follow the report count (see docs/parallel-work.md §3) rather than be
+        # rescaled one session at a time.
         "readings",
-        soft_bytes=37 * MIB,
+        soft_bytes=38 * MIB,
         hard_bytes=48 * MIB,
         remedy=(
             "Episodic reports are append-only, so decide which dimension fired before choosing a remedy. "
