@@ -1844,8 +1844,16 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # 2026-11-20 (SESSION-20261120-749911): this session adds one new cognitive science
         # close-reading report (readings/2026-11-20-cognitive-science-ten-sources-on-human-and-ai-self.md).
         # Measured total = 35.02 MiB across 1,061 reports. Soft bytes raised 35 -> 37 MiB.
+        # 2026-11-23 (SESSION-20261123-89b471, merge of main into PR #1058): the union
+        # of this branch's one report with main's two (SESSION-20261123-9603d4,
+        # -015356) measured 38,818,124 B across 1,155 reports -- 20,812 B over the
+        # 37 MiB soft. The BYTES dimension fired, not the count (1,155/1,163), and
+        # the reports are append-only, so the sanctioned 1 MiB review step applies:
+        # 37 -> 38 MiB (measured before this report: 38,818,124 - 24,000 approx).
+        # hard 48 MiB, soft_files 1,163, and the per-report caps are unchanged.
+        # This is merge maintenance, not a research result.
         "readings",
-        soft_bytes=37 * MIB,
+        soft_bytes=38 * MIB,
         hard_bytes=48 * MIB,
         remedy=(
             "Episodic reports are append-only, so decide which dimension fired before choosing a remedy. "
