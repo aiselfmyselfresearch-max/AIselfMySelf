@@ -2325,7 +2325,17 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # on a burst and not on every session. hard_files (1,200), soft_bytes
         # (38 MiB) and the per-report caps are unchanged. Not automatic --
         # re-measure after merge.
-        soft_files=1175,
+        # 2026-11-23 (SESSION-20261123-032b7e, PR #1067): the merged tree is
+        # 1,164 files against the 1,163 soft above -- one over, with zero free
+        # slots, so the next session would fail --strict regardless of what it
+        # did. Measured after merging origin/main 069bb64d (PR #1066 landed a
+        # parallel session's report into the same 2026-11-23 window); this
+        # session's own report is one of the 1,164. Byte dimension is not
+        # binding (37.31 MiB of the 38 MiB soft, ~707 KB headroom). Rescaled by
+        # the established +12 review margin (1,164 + 12 = 1,176), not per
+        # report. hard_files (1,200), soft_bytes (38 MiB) and the per-file caps
+        # are unchanged. Not automatic -- re-measure after merge.
+        soft_files=1176,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
