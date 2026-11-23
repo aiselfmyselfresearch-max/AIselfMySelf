@@ -63,6 +63,41 @@ PAIR_EIG_FORMULA = "posterior_left × posterior_right × (uncertainty_left + unc
 # now read this, so they cannot drift apart again.
 HYPOTHESIS_LESS_CORE_PRIORITY = 2.50
 
+# 2026-11-23 (proposal 1): statuses that count as live evidence for the entropy
+# the allocator reads.  ``active_entropy`` was built from ``active`` only, so
+# ``HYP-20261121-6e3e15`` -- holding 99.92% of Q-002/Q-003 as ``narrowed``
+# (narrowed 5x, never supported) -- was excluded, leaving a sub-distribution with
+# 0.050% of the mass and H = 0; a question with H=0 is never selected, so the
+# mass never moved.  ``narrowed`` means "true under stated conditions" and the
+# conditions are in the row, so it stays live; ``refuted`` does not.
+LIVE_EFFECTIVE_STATUSES: tuple[str, ...] = ("active", "narrowed")
+
+# 2026-11-23 (proposal 3): the mass-vs-readability invariant.  A question is
+# ``readable`` when the set the entropy was taken over holds at least this share
+# of the mass.  Below it ``H = 0`` means "mass is outside the counted set", not
+# "settled" -- the two rendered identically for nine eras (2026-11-15..23).
+UNREADABLE_MASS_SHARE_FLOOR = 0.50
+
+# 2026-11-23 (proposal 1, second guard): live mass below this share is a
+# distribution of leftovers, whatever its entropy.  Same 1% that
+# ``PAIR_RECOMMENDATION_MASS_FLOOR`` uses to stop calling a pair a
+# recommendation.  Dormant on 2026-11-23 (Q-002/Q-003 live mass 100.00%); it
+# exists so the next inheritance collapse cannot be scored as competition.
+SCOPE_INCLUSIVE_MIN_MASS_SHARE = 0.01
+
+# 2026-11-23 (proposal 4): score for a question with no hypothesis -- a bootstrap
+# slot, not a competing reading.  Replaces a 0.40 floor that could outrank a
+# centre question once its entropy sank below 0.259 b.
+PROPOSER_BOOTSTRAP_PRIORITY = 0.20
+
+# Which arithmetic the allocator ranks on (see select_auto_question_id):
+#   scoped        raw scope-inclusive entropy -- the default from 2026-11-23
+#   scoped_norm   divided by each question's own log2(n) ceiling (proposal 2 as
+#                 designed; measured to reward small questions, so not default)
+#   historical    the pre-2026-11-23 active-only raw-bit score, kept measurable
+ALLOCATION_BASIS_DEFAULT = "scoped"
+ALLOCATION_BASES: tuple[str, ...] = ("scoped", "scoped_norm", "historical")
+
 # Provisional heuristic, not an empirically calibrated evidence weight. Counting
 # named comparisons as independent sources overstates repeated mentions; this
 # bounded-rate term uses the requested raw count with diminishing increments.
@@ -1207,6 +1242,21 @@ def compute_belief_state(
                 "unexamined_active_hypothesis_ids": [],
                 "awaiting_external_audit_ids": [],
                 "hypotheses": [],
+                # 2026-11-23 (proposal 4): a question with no hypothesis cannot
+                # receive an evaluation at all -- EVLs target hypotheses -- so it
+                # measures nothing, and the figures below say so instead of
+                # leaving a zero to be read as "settled".  Measured: 409 of 415
+                # open questions, and 0 of those 409 ever received an EVL.
+                "live_entropy_bits": 0.0,
+                "live_entropy_max_bits": 0.0,
+                "live_entropy_normalized": 0.0,
+                "live_count": 0,
+                "live_mass_share": 0.0,
+                "live_mass_floor_fired": True,
+                "narrowed_native_mass_share": 0.0,
+                "readable": False,
+                "priority_scoped": None,
+                "priority_scoped_normalized": None,
             }
             continue
 
@@ -1447,8 +1497,76 @@ def compute_belief_state(
             (h["posterior"] / active_mass) * math.log2(max(h["posterior"] / active_mass, 1e-12))
             for h in active_entries
         ) if len(active_entries) > 1 else 0.0
+
+        # 2026-11-23 (proposal 1): the same entropy over every *live* hypothesis,
+        # i.e. ``active`` plus ``narrowed``.  ``narrowed`` means "true under the
+        # conditions recorded in the row", not "not a competitor", so leaving it
+        # out measured the leftovers instead of the question.  Measured on the
+        # 2026-11-23 ledger: Q-002/Q-003 held 99.92% of their mass on a
+        # ``narrowed`` row, so the active-only set carried 0.050% and reported
+        # H=0 while the scope-inclusive set carried 100.00%.
+        live_entries = [h for h in hyp_entries if h["effective_status"] in LIVE_EFFECTIVE_STATUSES]
+        live_mass = sum(h["posterior"] for h in live_entries) or 1.0
+        live_entropy = -sum(
+            (h["posterior"] / live_mass) * math.log2(max(h["posterior"] / live_mass, 1e-12))
+            for h in live_entries
+        ) if len(live_entries) > 1 else 0.0
+
+        # 2026-11-23 (proposal 1, narrowing guard): ``narrowed`` also absorbs the
+        # rows of *other questions* that the engine enrolled here as a multi-
+        # question hypothesis, so its share of the mass need not compete here.
+        # The guard therefore takes the larger of "the narrowed rows native to
+        # this question" and "everything the engine itself called active", and
+        # judges the candidate's mass share against that reference.  On the
+        # 2026-11-23 ledger the reference IS the engine's own active mass for all
+        # three core questions (Q-001 63.47%, Q-002/Q-003 0.05%), so the guard
+        # decides nothing today -- it changes no leader and no assignment.  It is
+        # installed so that a question whose *whole* live mass is a collapsed
+        # inheritance cannot be scored as a live competition by proposal 1.
+        live_hyp_ids = {h["hypothesis_id"] for h in live_entries}
+        engine_active_mass = sum(h["posterior"] for h in active_entries)
+        narrowed_share: dict[str, float] = {}
+        for h in live_entries:
+            if h["effective_status"] != "narrowed":
+                continue
+            # "Native" = the row names this question and no other.  A row shared
+            # with another question is enrolled mass, not this question's own.
+            native = (
+                h["hypothesis_id"] in q_to_hyps.get(qid, [])
+                and not h.get("multi_question")
+            )
+            if native:
+                narrowed_share[h["hypothesis_id"]] = h["posterior"]
+        narrowed_mass = sum(narrowed_share.values())
+        live_reference_mass = max(engine_active_mass, narrowed_mass)
+        live_mass_share = (live_reference_mass / (sum(h["posterior"] for h in hyp_entries) or 1.0))
+        live_floor_fired = live_mass_share < SCOPE_INCLUSIVE_MIN_MASS_SHARE
+
+        # 2026-11-23 (proposal 2): the allocator read raw bits, so two hypotheses
+        # 0.909 bit apart outranked nineteen hypotheses 0.661 bit apart across a
+        # 4.25-bit ceiling.  Both are reported: the raw bits and the share of the
+        # question's own ceiling they occupy.  Measured 2026-11-23: Q-20261024-
+        # 6bdafd 90.9% of a 1.000-bit ceiling vs Q-001 15.6% of 4.248.
+        live_entropy_max = math.log2(len(live_entries)) if len(live_entries) > 1 else 0.0
+        live_entropy_norm = (live_entropy / live_entropy_max) if live_entropy_max > 0 else 0.0
+
         total_evals_q = sum(h["direct_eval_count"] for h in hyp_entries)
+        # The historical score is kept and still reported, because every posterior
+        # and every number in the ledger before 2026-11-23 was produced under it.
         priority = active_entropy + 0.8 * mean_u + (1.0 / math.sqrt(1.0 + total_evals_q))
+        # 2026-11-23 (proposals 1 + 2): both readings reported, because the
+        # disagreement is the finding.  Raw bits is the information-theoretic
+        # quantity; dividing by log2(n_live) *rewards small questions* -- a
+        # 2-way near-tie scores 0.909, a 26-way distribution 0.290, though the
+        # latter leaves 1.364 bits unresolved.  Normalised leaves the
+        # 2-hypothesis peripheral question on top; raw bits puts Q-001 above it
+        # (2.046 vs 1.548).  Kept switchable so the rejection stays reproducible.
+        priority_scoped = (
+            live_entropy + 0.8 * mean_u + (1.0 / math.sqrt(1.0 + total_evals_q))
+        )
+        priority_scoped_normalized = (
+            live_entropy_norm + 0.8 * mean_u + (1.0 / math.sqrt(1.0 + total_evals_q))
+        )
 
         question_states[qid] = {
             "question_id": qid,
@@ -1457,6 +1575,17 @@ def compute_belief_state(
             "active_count": len(active_entries),
             "entropy_bits": round(entropy, 4),
             "active_entropy_bits": round(active_entropy, 4),
+            "live_entropy_bits": round(live_entropy, 4),
+            "live_entropy_max_bits": round(live_entropy_max, 4),
+            "live_entropy_normalized": round(live_entropy_norm, 4),
+            "live_count": len(live_entries),
+            "live_mass_share": round(live_mass_share, 6),
+            "live_mass_floor_fired": live_floor_fired,
+            "narrowed_native_mass_share": round(narrowed_mass, 6),
+            # 2026-11-23 (proposal 3): true when the set the allocator reads holds
+            # at least UNREADABLE_MASS_SHARE_FLOOR of the mass.  False means the
+            # reported entropy is about leftovers, whatever its value.
+            "readable": live_mass_share >= UNREADABLE_MASS_SHARE_FLOOR,
             "max_entropy_bits": round(max_entropy, 4),
             "kl_from_uniform_bits": round(kl_bits, 4),
             "gen0_mass": round(gen0_mass, 4),
@@ -1464,6 +1593,8 @@ def compute_belief_state(
             "mean_active_uncertainty": round(mean_u, 4),
             "total_evaluations": total_evals_q,
             "priority_score": round(priority, 4),
+            "priority_scoped": round(priority_scoped, 4),
+            "priority_scoped_normalized": round(priority_scoped_normalized, 4),
             "top_competing_pair": best_pair,
             # 2026-11-23 (proposal 3): family mass, ALWAYS with the concentration
             # it hides. A caller that reads `family_mass` and ignores
@@ -1811,18 +1942,73 @@ def select_auto_question_id(
     open_question_ids: list[str],
     *,
     seed: str | None = None,
+    allocation_basis: str = ALLOCATION_BASIS_DEFAULT,
 ) -> tuple[str, str]:
-    """Select next question via UCB / Expected Information Gain (replaces pure random choice)."""
+    """Select next question via UCB / Expected Information Gain (replaces pure random choice).
+
+    ``allocation_basis`` chooses which score the selector ranks on:
+
+    ``scoped`` (default from 2026-11-23) ranks on ``priority_scoped`` = raw
+        scope-inclusive entropy (``active`` + ``narrowed``) + 0.8·mean_u +
+        1/√(1+n_evals).
+    ``scoped_norm`` ranks on the same sum with the entropy divided by each
+        question's log2(n) ceiling.  This was proposal 2 as designed and the
+        measurement rejected it: normalising *rewards small questions* (a 2-way
+        near-tie 0.909 vs a 26-way 0.290, though the latter leaves 1.364 bits
+        unresolved).  Kept switchable so the rejection is reproducible.
+    ``historical`` ranks on ``priority_score``, the active-only raw-bit
+        arithmetic every posterior before 2026-11-23 was produced under.  Kept so
+        the old ranking stays measurable, not because it is live.
+
+    Questions with no hypotheses are never ranked (proposal 4): EVLs target
+    hypotheses, so they cannot receive one and a fixed floor for them was a
+    receptacle that could not hold anything.  Measured 2026-11-23: 409 of 415
+    open questions had none, none of the 409 ever received an EVL, and only 3 of
+    73 sessions sent to a peripheral question registered a hypothesis there.
+    """
+    if allocation_basis not in ALLOCATION_BASES:
+        raise ValueError(
+            f"unknown allocation basis {allocation_basis!r}; "
+            f"expected one of {', '.join(ALLOCATION_BASES)}"
+        )
     q_states = state.get("questions", {})
     scored: list[tuple[float, str, str]] = []
-    for qid in open_question_ids:
+    # Proposal 4: the pool the allocator may rank.  Questions without hypotheses
+    # are reported separately (they get a dedicated proposer path, not a score).
+    rankable = [
+        qid
+        for qid in open_question_ids
+        if (q_states.get(qid) or {}).get("hypothesis_count", 0) > 0
+    ]
+    unrankable = [qid for qid in open_question_ids if qid not in set(rankable)]
+    for qid in rankable:
         qs = q_states.get(qid)
         jitter = 0.0
         if seed:
             hval = int(hashlib.sha256(f"ucb:{seed}:{qid}".encode("utf-8")).hexdigest()[:8], 16)
             jitter = (hval / 0xFFFFFFFF) * 0.12
         if qs and qs["hypothesis_count"] > 0:
-            score = float(qs["priority_score"]) + (0.35 if qid in CORE_QUESTIONS else 0.0) + jitter
+            # Hand-built state dicts omit the 2026-11-23 fields; fall back to
+            # ``priority_score`` and say so in the receipt.
+            scoped = qs.get("priority_scoped")
+            if allocation_basis == "historical" or scoped is None:
+                base = float(qs["priority_score"])
+                base_label = f"active_H={qs['active_entropy_bits']:.3f}b"
+                if scoped is None and allocation_basis != "historical":
+                    base_label += "（scope-inclusive 未計算のためhistoricalへ退避）"
+            elif allocation_basis == "scoped_norm":
+                base = float(qs.get("priority_scoped_normalized") or scoped)
+                base_label = (
+                    f"live_H_norm={qs['live_entropy_normalized']:.3f}"
+                    f"(={qs['live_entropy_bits']:.3f}/{qs['live_entropy_max_bits']:.3f}b)"
+                )
+            else:
+                base = float(scoped)
+                base_label = (
+                    f"live_H={qs['live_entropy_bits']:.3f}b"
+                    f"(上限{qs['live_entropy_max_bits']:.3f}b, 利用率{qs['live_entropy_normalized']:.3f})"
+                )
+            score = base + (0.35 if qid in CORE_QUESTIONS else 0.0) + jitter
             pair = qs.get("top_competing_pair")
             if pair:
                 relation = PAIR_RELATION_LABELS.get(pair.get("lineage_relation")) or "不明"
@@ -1867,23 +2053,211 @@ def select_auto_question_id(
             # two posteriors.  On 2026-11-15 scoring one pair moved them apart
             # (score 2.952 -> 2.262 while EIG 0.2259 -> 0.2951), so both formulas
             # are named here instead of leaving "情報利得" to cover two quantities.
+            readable_txt = (
+                ""
+                if qs.get("readable", True)
+                else (
+                    f"; ⚠️読めない（数えた集合が質量の"
+                    f"{qs['live_mass_share'] * 100:.2f}%しか持たない。H=0 は決着ではなく"
+                    f"質量が集合の外にある印）"
+                )
+            )
             reason = (
-                f"情報利得優先選出 (score={score:.3f}=active_H+0.8·mean_u+1/√(1+評価数)+中核0.35+乱数, "
-                f"active_H={qs['active_entropy_bits']:.3f}b, "
+                f"情報利得優先選出 (score={score:.3f}={base_label}+0.8·mean_u+1/√(1+評価数)+中核0.35+乱数, "
+                f"{base_label}, "
                 f"mean_u={qs['mean_active_uncertainty']:.3f}, "
-                f"最優先検証対: {pair_txt}; EIG=p_a×p_b×(u_a+u_b) で両立性は検査しない{unexamined_txt})"
+                f"最優先検証対: {pair_txt}; EIG=p_a×p_b×(u_a+u_b) で両立性は検査しない"
+                f"{unexamined_txt}{readable_txt})"
             )
             scored.append((score, qid, reason))
-        elif qid in CORE_QUESTIONS:
-            score = HYPOTHESIS_LESS_CORE_PRIORITY + jitter
-            scored.append((score, qid, f"中核問い未定式化優先 (score={score:.3f})"))
-        else:
-            score = 0.40 + jitter
-            scored.append((score, qid, f"派生問い探索枠 (score={score:.3f})"))
 
+    # Proposal 4: a question with no hypothesis is not scored at all.  It has no
+    # EVL target, so ranking it was ranking a receptacle that cannot hold
+    # anything.  It is handed to the dedicated proposer path instead, and the
+    # reason says so rather than showing a fabricated score.
+    for qid in unrankable:
+        jitter = 0.0
+        if seed:
+            hval = int(hashlib.sha256(f"ucb:{seed}:{qid}".encode("utf-8")).hexdigest()[:8], 16)
+            jitter = (hval / 0xFFFFFFFF) * 0.12
+        if qid in CORE_QUESTIONS:
+            # The core branch keeps the pre-2026-11-23 constant and the exact
+            # source form ``tests/test_pair_honesty.py`` pins: a core question
+            # with no hypotheses is the archive's own centre going unstated, and
+            # its priority is a standing convention, not a measurement.  Only
+            # the peripheral bootstrap slot below is new (proposal 4).
+            score = HYPOTHESIS_LESS_CORE_PRIORITY + jitter
+            scored.append((
+                score, qid,
+                f"中核問い未定式化優先 (score={score:.3f})"
+                " — 仮説0件のため評価対象になれない。最初の条件付き仮説を作るのが本セッションの任務",
+            ))
+        else:
+            scored.append((
+                PROPOSER_BOOTSTRAP_PRIORITY + jitter, qid,
+                f"提題者ブートストラップ枠 (score={PROPOSER_BOOTSTRAP_PRIORITY + jitter:.3f})"
+                " — 仮説0件の問いは EVL を受け取れない（EVL は仮説を指す）。読むのではなく"
+                "反証条件付きの最初の仮説を1件作り、その仮説のIDを次セッションに渡すこと。"
+                "この問いに評価が付かないまま終わったセッションは EVL=0 として記録される",
+            ))
+
+    if not scored:
+        raise ValueError("no question available for selection")
     scored.sort(key=lambda item: (-item[0], item[1]))
     best = scored[0]
     return best[1], best[2]
+
+
+def _audit_row(qid: str, qs: dict[str, Any], readable: bool, share: float) -> dict[str, Any]:
+    """One audit row, so the empty and populated cases share a shape."""
+    n = int(qs.get("hypothesis_count", 0))
+    if n == 0:
+        return {
+            "question_id": qid, "hypothesis_count": 0, "counted_set": "（仮説0件）",
+            "live_count": 0, "live_mass_share": 0.0, "live_entropy_bits": 0.0,
+            "readable": False, "status": "no_hypotheses",
+            "note": "EVL は仮説を指すため、この問いは評価を受け取れない",
+        }
+    return {
+        "question_id": qid,
+        "hypothesis_count": n,
+        "counted_set": "+".join(LIVE_EFFECTIVE_STATUSES),
+        "live_count": int(qs.get("live_count", 0)),
+        "live_mass_share": share,
+        "live_entropy_bits": float(qs.get("live_entropy_bits", 0.0)),
+        "live_entropy_normalized": float(qs.get("live_entropy_normalized", 0.0)),
+        "readable": readable,
+        "status": "readable" if readable else "unreadable",
+        "note": "" if readable else (
+            f"数えた集合が質量の {share * 100:.2f}% しか持たない。"
+            "報告された H は残余の分散についてであり、決着の印ではない"),
+    }
+
+
+def allocation_audit(
+    root: Path = ROOT,
+    *,
+    seed: str | None = None,
+) -> dict[str, Any]:
+    """Mass-vs-readability invariant (proposal 3) plus the basis spread.
+
+    On 2026-11-23 Q-002/Q-003 reported H = 0.000 bit while 99.92% of their mass
+    sat on one ``narrowed`` hypothesis outside the counted set, and no gate asked
+    whether the number the allocator reads is *about* its question.  Per open
+    question this reports the share of mass the counted set holds, whether that
+    clears ``UNREADABLE_MASS_SHARE_FLOOR``, and what each basis would rank -- so
+    a reader can see whether the warning moves the assignment or only the
+    display.  Writes nothing.
+    """
+    state = compute_belief_state(root=root)
+    questions = state["questions"]
+
+    rows: list[dict[str, Any]] = []
+    for qid, qs in questions.items():
+        n = int(qs.get("hypothesis_count", 0))
+        share = float(qs.get("live_mass_share", 0.0))
+        readable = bool(qs.get("readable", True)) and n > 0
+        rows.append(_audit_row(qid, qs, readable, share))
+
+    unreadable = [r for r in rows if r["status"] == "unreadable"]
+    no_hyp = [r for r in rows if r["status"] == "no_hypotheses"]
+
+    # Does the warning move the assignment, or only the display?
+    open_qids = [
+        qid
+        for qid, q in ledger_io.load_jsonl_union(
+            root / "state" / "questions.jsonl", "question_id", root=root
+        ).items()
+        if q.get("status", "open") == "open"
+    ]
+    basis_leaders: dict[str, str] = {}
+    for basis in ALLOCATION_BASES:
+        try:
+            leader, _reason = select_auto_question_id(
+                state, open_qids, seed=seed, allocation_basis=basis
+            )
+            basis_leaders[basis] = leader
+        except (ValueError, KeyError):
+            basis_leaders[basis] = ""
+
+    return {
+        "allocation_basis": ALLOCATION_BASIS_DEFAULT,
+        "unreadable_mass_share_floor": UNREADABLE_MASS_SHARE_FLOOR,
+        "scope_inclusive_min_mass_share": SCOPE_INCLUSIVE_MIN_MASS_SHARE,
+        "live_effective_statuses": list(LIVE_EFFECTIVE_STATUSES),
+        "questions_audited": len(rows),
+        "readable_count": sum(1 for r in rows if r["status"] == "readable"),
+        "unreadable_count": len(unreadable),
+        "no_hypotheses_count": len(no_hyp),
+        "unreadable_question_ids": [r["question_id"] for r in unreadable],
+        "no_hypotheses_question_ids": [r["question_id"] for r in no_hyp],
+        "basis_leaders": basis_leaders,
+        "basis_leaders_agree": len(set(v for v in basis_leaders.values() if v)) <= 1,
+        "rows": rows,
+    }
+
+
+def render_allocation_audit_markdown(audit: dict[str, Any]) -> str:
+    lines = [
+        "# 割当監査（質量と可読性）",
+        "",
+        f"- 割当基底: `{audit['allocation_basis']}`（切替可能: "
+        + ", ".join(f"`{b}`" for b in ALLOCATION_BASES)
+        + "）",
+        f"- 生存状態として数える: "
+        + ", ".join(f"`{s}`" for s in audit["live_effective_statuses"]),
+        f"- 可読性の下限: 数えた集合が質量の "
+        f"{audit['unreadable_mass_share_floor'] * 100:.0f}% 以上",
+        f"- 監査した問い: {audit['questions_audited']} 件"
+        f"（可読 {audit['readable_count']} / 読めない {audit['unreadable_count']}"
+        f" / 仮説0件 {audit['no_hypotheses_count']}）",
+        "",
+    ]
+    if audit["unreadable_question_ids"]:
+        lines += [
+            "## ⚠️ 読めない問い（報告された H を決着と読んではならない）",
+            "",
+            "| 問い | 仮説数 | 数えた集合 | その質量 | 報告 H |",
+            "|---|---|---|---|---|",
+        ]
+        for r in audit["rows"]:
+            if r["status"] != "unreadable":
+                continue
+            lines.append(
+                f"| `{r['question_id']}` | {r['hypothesis_count']} | "
+                f"{r['counted_set']} ({r['live_count']}件) | "
+                f"{r['live_mass_share'] * 100:.2f}% | {r['live_entropy_bits']:.3f} b |"
+            )
+        lines += [
+            "",
+            "この行がある問いの H は、**未決着度ではなく数え残された部分分布の分散**で"
+            "ある。H=0 は決着の印ではなく、質量が数えた集合の外にある印である"
+            "（`readings/2026-11-23-the-ledger-counts-a-closed-question-as-open.md`）。",
+            "",
+        ]
+    if audit["no_hypotheses_count"]:
+        lines += [
+            "## 仮説0件の問い（評価を受け取れない）",
+            "",
+            f"{audit['no_hypotheses_count']} 件。EVL は仮説を指すため構造的に評価を"
+            "受け取れない。順位付けから外し提題者枠に回している（提案4）。",
+            "",
+        ]
+    lines += [
+        "## 基底ごとの首位（警告が割当を変えるか、表示だけ変えるか）",
+        "",
+        "| 基底 | 首位 |",
+        "|---|---|",
+    ]
+    for basis, leader in audit["basis_leaders"].items():
+        mark = "（既定）" if basis == audit["allocation_basis"] else ""
+        lines.append(f"| `{basis}`{mark} | `{leader or '—'}` |")
+    lines += [
+        "",
+        "基底が一致すれば可読性の警告は**表示**の修正にとどまる。一致しなければ、"
+        "どの基底で読むかが割当を決める。",
+    ]
+    return "\n".join(lines) + "\n"
 
 
 def saturation_snapshot(
@@ -2454,8 +2828,8 @@ def render_belief_map_markdown(state: dict[str, Any], *, full: bool = False) -> 
         )
     lines.extend([
         "",
-        "| 問い | 仮説数 (有効) | 第0世代質量 (素朴基底) | 第1世代+質量 (条件付き) | 事後エントロピー | D_KL(P_t || P_0) | 平均不確実性 u | 最優先検証ペア (EIG=p_a×p_b×(u_a+u_b)) |",
-        "| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
+        "| 問い | 仮説数 (有効) | 第0世代質量 (素朴基底) | 第1世代+質量 (条件付き) | 事後エントロピー H(P) | 生存エントロピー (active+narrowed) | 数えた集合の質量 | D_KL(P_t || P_0) | 平均不確実性 u | 最優先検証ペア (EIG=p_a×p_b×(u_a+u_b)) |",
+        "| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
     ])
     for qid, qs in state["questions"].items():
         pair = qs.get("top_competing_pair")
@@ -2480,12 +2854,47 @@ def render_belief_map_markdown(state: dict[str, Any], *, full: bool = False) -> 
                 )
         else:
             pair_cell = "—"
+        # 2026-11-23 (proposal 3): the mass-share cell is the invariant.  A
+        # question whose counted set holds almost none of its mass reports an
+        # entropy that is *about the leftovers*, not about the question, and it
+        # must be marked as such wherever the number is shown -- this table is
+        # where a reader takes the number from.
+        # Hand-built state dicts omit the 2026-11-23 fields: degrade to "—".
+        if qs.get("hypothesis_count", 0) == 0:
+            live_cell = "—（仮説0件）"
+            mass_cell = "—"
+        elif qs.get("live_entropy_bits") is None:
+            live_cell = "—"
+            mass_cell = "—"
+        elif qs.get("readable", True):
+            live_cell = f"{qs['live_entropy_bits']:.3f} bits"
+            mass_cell = f"{qs['live_mass_share'] * 100:.2f}%"
+        else:
+            live_cell = f"{qs['live_entropy_bits']:.3f} bits ⚠️読めない"
+            mass_cell = f"**{qs['live_mass_share'] * 100:.2f}%** ⚠️"
+        active_only = qs.get("active_entropy_bits")
+        active_txt = f" (active のみなら {active_only:.3f})" if active_only is not None else ""
         lines.append(
             f"| `{qid}` | {qs['hypothesis_count']} ({qs['active_count']}) | "
             f"{qs['gen0_mass'] * 100:.1f}% | **{qs['gen1_plus_mass'] * 100:.1f}%** | "
-            f"{qs['entropy_bits']:.3f} bits | {qs['kl_from_uniform_bits']:.3f} bits | "
+            f"{qs['entropy_bits']:.3f} bits{active_txt} | "
+            f"{live_cell} | {mass_cell} | "
+            f"{qs['kl_from_uniform_bits']:.3f} bits | "
             f"{qs['mean_active_uncertainty']:.3f} | {pair_cell} |"
         )
+
+    lines.extend([
+        "",
+        "> **エントロピーの読み方（2026-11-23 改訂）**: `事後エントロピー H(P)` は全仮説上の"
+        "事後分布の H、`生存エントロピー` は `active`+`narrowed` に限った部分分布の H"
+        "（括弧内は旧来の `active` のみの値）。`narrowed` は「述べられた条件下で真」で、"
+        "反証されない限り質量を持ち続ける。旧来の H はこれを数えず、質量が集合の外にある"
+        "問いでも `0.000 bits` と表示した——**決着と読み残しの区別がつかない表示**だった。"
+        "`数えた集合の質量` が 50% 未満の行は ⚠️ を付け、その H を決着の印として読めない"
+        "ことを示す。監査は "
+        "`python3 tools/belief_state.py --allocation-audit`。",
+        "",
+    ])
 
     lines.extend([
         "",
@@ -2904,7 +3313,24 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="measure cross-question mass (which question each evaluation is addressed to); writes nothing",
     )
+    parser.add_argument(
+        "--allocation-audit",
+        action="store_true",
+        help=(
+            "measure, for every open question, whether the set the allocator reads holds "
+            "the question's mass, and how the ranking differs between allocation bases; "
+            "writes nothing"
+        ),
+    )
     args = parser.parse_args(argv)
+
+    if args.allocation_audit:
+        audit = allocation_audit(root=args.root)
+        if args.json:
+            print(json.dumps(audit, ensure_ascii=False, indent=2))
+        else:
+            print(render_allocation_audit_markdown(audit))
+        return 0
 
     if args.addressee_audit:
         audit = addressee_audit(root=args.root)

@@ -217,7 +217,12 @@ class SelectorReasonTests(unittest.TestCase):
         state = state_with(pair_of(a, b), [a, b])
         _qid, reason = belief_state.select_auto_question_id(state, ["Q-001"])
         self.assertIn("score=", reason)
-        self.assertIn("active_H+0.8·mean_u+1/√(1+評価数)", reason)
+        # 2026-11-23: the scored term is the scope-inclusive live entropy by
+        # default (proposals 1 + 2).  This fixture builds a state dict by hand, so
+        # it takes the documented fallback to the historical arithmetic -- and the
+        # receipt has to *say so*, because a receipt that silently scored on a
+        # different basis than the one asked for is the failure mode pinned here.
+        self.assertIn("active_H=1.000b（scope-inclusive 未計算のためhistoricalへ退避）", reason)
         self.assertIn("EIG=p_a×p_b×(u_a+u_b)", reason)
         self.assertIn("両立性は検査しない", reason)
         self.assertIn("最優先検証対", reason)

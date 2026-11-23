@@ -2374,8 +2374,22 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # 12 KiB (2,635,076 + 12,288 = 2,647,364 <= 2,653,798), so the canary
         # fires again after ~18 KB of growth.  hard_bytes (5 MiB) unchanged.
         # Not automatic -- re-measure after merge.
+        #
+        # 2026-11-23 (SESSION-20261123-9fd9b67b, 2.53 -> 2.55 MiB): the caliper
+        # above left 18 KiB of headroom and the allocation-basis change needed
+        # ~6.3 KiB more than that, over a merge base that had *already* absorbed
+        # cogsci_substrate.py (39,701 B).  Before raising I did the check the
+        # remedy asks for, and the first answer was "trim": tools/belief_state.py
+        # gave back 10,292 B of prose and structure (audit row builder factored
+        # out, four rationale comments compressed) in this session, and the
+        # instrument was NOT moved to tests/ because its output is the
+        # recomputer the reading cites (`--allocation-audit`).  What is left is
+        # the invariant itself: one predicate, one audit renderer, three named
+        # bases.  Raised by measured +2,621,440 * (2.55 - 2.53) = 20,480 B
+        # against a 6,337 B overage, so the canary fires again after ~14 KiB.
+        # hard_bytes (5 MiB) unchanged.
         "tools",
-        soft_bytes=int(2.53 * MIB),
+        soft_bytes=int(2.55 * MIB),
         hard_bytes=5 * MIB,
         remedy="Never commit data-embedded scripts in tools/; use tools/lexicon_audit.py instead of new *_audit.py",
     ),
