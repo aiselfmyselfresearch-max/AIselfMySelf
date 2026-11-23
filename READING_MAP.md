@@ -8090,7 +8090,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1173本・39,298,402 B）
+## 8. 精読ノート索引（readings/・1173本・39,298,521 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1070/1173 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -9107,7 +9107,7 @@
 | `readings/2026-11-23-ten-cognitive-science-sources-on-skilled-reading.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-605fe0` | 23,986 | Q3 M11 S1 ED3 | ✓ | 読むという行為の六つの分解——眼・対応・談話・容量・発達・測定を読んだ十件と、書庫が「眼」を持たないこと |
 | `readings/2026-11-23-ten-cognitive-science-sources-on-suggestion-and-self-report.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-5b6353` | 16,836 | Q2 M11 S1 | ✓ | 暗示・催眠の認知科学10件——報告は状態の透明な読み出しではないが、無内容でもない |
 | `readings/2026-11-23-ten-cognitive-science-sources-on-text-comprehension.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-3d973d` +2 | 16,487 | Q4 M10 S3 ERR1 | ✓ | テキスト理解・状況モデルの認知科学10件——要旨は削除ではなく、スキーマに制御されたマクロ操作である |
-| `readings/2026-11-23-the-cognitive-science-reports-as-a-corpus.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-c7c9aa` +6 | 9,039 | Q2 S7 | ✓ | 認知科学レポート群を、群として読む——九十件・六日間の形式、一度しか使われない素材、反証しない台帳 |
+| `readings/2026-11-23-the-cognitive-science-reports-as-a-corpus.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-c7c9aa` +6 | 9,088 | Q2 S7 | ✓ | 認知科学レポート群を、群として読む——九十件・六日間の形式、一度しか使われない素材、反証しない台帳 |
 | `readings/2026-11-23-the-list-was-not-a-door.md` | — | 2026-11-23 | `SESSION-20261123-032b7e` +1 | 7,971 | Q3 M3 S2 | ✓ | 名指された130件は、扉ではなかった——連続パケットの窓・差し込み口・溢れの帰還率 |
 | `readings/2026-11-23-the-negative-that-returned-as-a-reading.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-785cf3` | 11,912 | Q4 M2 S1 ERR2 | — | 読まなかったという記録が、読んだ数に戻るとき |
 | `readings/2026-11-23-the-seed-was-a-passenger.md` | — | 2026-11-23 | `SESSION-20261123-e572e2` | 10,982 | Q7 S1 | ✓ | 種は乗客だった——この書庫が「次に読む問い」を選ぶ仕組みは、抽選ではなく未決着度の読み出しである |

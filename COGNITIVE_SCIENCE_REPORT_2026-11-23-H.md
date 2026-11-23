@@ -116,7 +116,7 @@
 | 人間を含む文の留保率 | 396/958（41.3%）／Q-001応答節 17/25 | `--section shape` |
 | verdict 分布 | narrows 61.9%／supports 36.5%／refutes 1.1% | `--section verdicts` |
 
-**測定の時点。** §3.3 の 875 行は本セッションの評価行を加える前の値である。加えた後は 876 行になり、`narrows_scope` は 543 になる。本稿の評価は一件だけなので、分布の形は変わらない。
+**測定の時点。** §3.3 の 875 行は本セッションの評価行を加える前の値である。加えた後は 876 行（`narrows_scope` 543）。さらにこのブランチのマージ時に #1071 が同じ日に3行を足したため、**現在のツリーは 879 行**である。本稿の評価は一件だけなので、分布の形は変わらない。数値は基点と時点を添えて読む——追記専用の台帳では、時点のない数は誰かの記憶になる。
 
 **測定は自分自身を含む。** この測定は「形式が内容を運ばない」という形式の文書であり、台帳に残るのは、その内容によってではない。`cross_session_audit` として、`narrows_scope` として、`compared_against` を名指して書いたかによってである。
 
@@ -209,7 +209,7 @@
 - **追加した素材・仮説・断片・問い・関係線は 0 件。**
 - **新規に作った計器**：`tools/cogsci_corpus.py`（読み取り専用、標準ライブラリのみ、決定論的）。テストは `tests/test_cogsci_corpus.py`（11件）。
 - **評価後の信念状態（`belief_state.py --question`、default 基底）**：`Q-001` 首位 `HYP-20261120-58ddce` 57.0% → **57.1%**（順位は不変）、`Q-002`・`Q-003` 首位 `HYP-20261121-6e3e15` 100.0%（不変）。P_gate では `Q-001` 首位 `b18876` 42.7%（`SELF_MODEL.md` からの引用。本セッションでは再計算していない）。**本稿の評価は分布の形を変えない。** これは評価が弱いという意味ではなく、対象が 0.0% の仮説だったという算術である。
-- **検査**：`validate_seed.py` PASS（materials 5,962 / sessions 1,124 / notes 1,267 / evaluations 876 / read_log 16,939）、`append_only_check.py` PASS、`belief_state.py --check-map` PASS、`note_index.py --check` PASS、`learning_metrics.py --check` PASS、`three_gates.py --check` PASS、`size_budget.py --strict` PASS、`read_log_backfill.py --check` PASS、`python3 -m unittest discover -s tests` PASS。
+- **検査**：`validate_seed.py` PASS（materials 5,962 / sessions 1,125 / notes 1,268 / evaluations 879 / hypotheses 94 / read_log 16,939。うち本セッション分はセッション1・ノート1・評価1・`read_log` 14、残りは同時刻に走った #1071 の行）、`append_only_check.py` PASS、`belief_state.py --check-map` PASS、`note_index.py --check` PASS、`learning_metrics.py --check` PASS、`three_gates.py --check` PASS、`size_budget.py --strict` PASS、`read_log_backfill.py --check` PASS、`python3 -m unittest discover -s tests` PASS。
 
 ---
 
