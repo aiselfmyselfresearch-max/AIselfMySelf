@@ -76,6 +76,7 @@ from __future__ import annotations
 
 import argparse
 import glob
+import itertools
 import json
 import math
 import os
@@ -839,6 +840,640 @@ def measure_siblings(led: Ledger, day: str) -> None:
     )
 
 
+
+# ---------------------------------------------------------------------------
+# 2026-11-23 (SESSION-20261123-<this>): the nine leftovers of the previous
+# report's section 9.1.  Each function below answers one of them and writes
+# nothing.
+# ---------------------------------------------------------------------------
+def _row_paths(root: Path) -> tuple[dict[str, str], dict[str, str], dict[str, int]]:
+    """id -> shard path, id -> collection, and shard path -> line count.
+
+    The mapping rule is measure_errata's, not a stricter one: every ``*_id`` field
+    whose value the recogniser accepts resolves to the row that carries it, so a
+    sub-record id (MAT-EVD-*, CLM-*, SRC-*) lands on its parent's shard.  Using a
+    stricter rule here would make this control incomparable with the published
+    incidence in item 4 of the previous report."""
+    where: dict[str, str] = {}
+    coll_of: dict[str, str] = {}
+    lines_of: dict[str, int] = {}
+    paths = sorted(root.glob("state/*.jsonl")) + sorted(root.glob("state/*.d/*.jsonl"))
+    for path in paths:
+        rel = str(path.relative_to(root))
+        coll = rel.split("/")[1]
+        coll = coll[:-6] if coll.endswith(".jsonl") else coll[:-2]
+        text = path.read_text(encoding="utf-8").splitlines()
+        for line in text:
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            for key, value in row.items():
+                if key.endswith("_id") and isinstance(value, str) and ledger_ids.recognise(value):
+                    where.setdefault(value, rel)
+                    coll_of.setdefault(value, coll)
+                    carried = True
+    # the same universe measure_errata uses: the files an id actually resolved to
+    for rel in set(where.values()):
+        lines_of[rel] = sum(
+            1 for line in (root / rel).read_text(encoding="utf-8").splitlines() if line.strip()
+        )
+    return where, coll_of, lines_of
+
+
+def _alias_sets(root: Path) -> tuple[set[str], set[str]]:
+    path = root / "state" / "shard_aliases.json"
+    if not path.is_file():
+        return set(), set()
+    aliases = json.loads(path.read_text(encoding="utf-8")).get("aliases", {})
+    return set(aliases), {v["new_shard"] for v in aliases.values() if isinstance(v, dict)}
+
+
+def measure_relations(led: Ledger) -> None:
+    """Item 1 (and 9): is `relation` unused, or structally unreadable -- and does
+    the recorded reason for excluding it survive measurement?"""
+    print("=== item 1 / relation は read_log の対象になれるか（NON_ADDRESSABLE の理由の検証） ===")
+    rel = load(led.root, "relations")
+    notes = [(r.get("note") or "").strip() for r in rel]
+    nonempty = [x for x in notes if x]
+    total_chars = sum(len(x) for x in nonempty)
+    lengths = sorted(len(x) for x in nonempty)
+    median = lengths[len(lengths) // 2] if lengths else 0
+    distinct = len(set(nonempty))
+    contacts = sum(1 for row in led.read_log if (row.get("target") or {}).get("type") == "relation")
+    print(f"  relations {len(rel):,} 行、note 非空 {len(nonempty):,}（{_pct(len(nonempty), len(rel))}）")
+    print(f"  note の総字数 {total_chars:,}、平均 {total_chars / max(1, len(nonempty)):.1f} 字、中央値 {median} 字")
+    print(f"  異なった note 文 {distinct:,}（定型文の繰り返し {len(nonempty) - distinct:,} 件 = {_pct(len(nonempty) - distinct, len(nonempty))}）")
+    print(f"  read_log で relation を対象にした行: {contacts:,}")
+    rt: Counter = Counter(r.get("relation_type") for r in rel)
+    print("  relation_type: " + ", ".join(f"{k} {v:,}" for k, v in rt.most_common()))
+
+    endpoints: dict[str, dict] = {}
+    for coll in ("materials", "questions", "fragments", "motifs", "notes", "sessions",
+                 "hypotheses", "evaluations", "errata", "editorial_decisions"):
+        for row in load(led.root, coll):
+            for key, value in row.items():
+                if key.endswith("_id") and isinstance(value, str) and value:
+                    endpoints[value] = row
+                    break
+    checked = reachable = 0
+    unreachable_chars = 0
+    samples: list[str] = []
+    for row, note in zip(rel, notes):
+        if len(note) < 8:
+            continue
+        checked += 1
+        blob = ""
+        for side in ("left", "right"):
+            ref = row.get(side) or {}
+            end = endpoints.get(ref.get("id"))
+            if end is not None:
+                blob += json.dumps(end, ensure_ascii=False)
+        if note[:40] and note[:40] in blob:
+            reachable += 1
+        else:
+            unreachable_chars += len(note)
+            if len(samples) < 6:
+                samples.append(f"    {row.get('relation_id')}: {(row.get('left') or {}).get('type')}→{(row.get('right') or {}).get('type')} 「{note[:58]}」")
+    print(f"  端点から到達できる note（先頭40字が端点行内に出現）: {reachable:,}/{checked:,} = {_pct(reachable, checked)}")
+    print(f"  端点に無い散文: {checked - reachable:,} 件・{unreachable_chars:,} 字")
+    for line in samples:
+        print(line)
+    try:
+        import ledger_ids  # type: ignore
+        reason = ledger_ids.NON_ADDRESSABLE.get("REL", "")
+        if reason:
+            print(f"  記録済みの理由（tools/ledger_ids.py NON_ADDRESSABLE['REL']）: {reason}")
+        else:
+            print("  REL は NON_ADDRESSABLE から外れている（REFERENCE_TYPES 侧にある）")
+        print(f"  REFERENCE_TYPES に relation があるか: {'relation' in ledger_ids.REFERENCE_TYPES}")
+    except Exception as exc:  # pragma: no cover
+        print(f"  ledger_ids を読めなかった: {exc}")
+    print("  判定: 理由は『辺を引用しても到達可能な内容は増えない』。測定はそれを支持しない"
+          if checked - reachable else "  判定: 端点から到達できない note は見つからなかった")
+
+
+WHOLE_SCOPE = re.compile(r"state/([a-z_]+)\.jsonl")
+WHOLE_WORDS = ("union", "全行", "全シャード", "全台帳", "全数", "全て")
+
+
+def measure_errata_control(led: Ledger, sample: int = 400, seed: int = 20261123) -> None:
+    """Item 2: the discovery-bias control, in three designs of increasing exposure
+    matching.  (A) errata whose recorded audit scope is a whole-collection union.
+    (B) inside one receiving shard, foreign-dated (moved-in) rows against native
+    rows.  (C) a prospective audit: the same mechanical procedure applied now to a
+    matched random sample of moved and unmoved rows, so exposure is equal by
+    construction and the auditor cannot have 'already looked' at one group."""
+    import random
+
+    print("=== item 2 / 発見バイアスの対照群（三つの設計） ===")
+    where, coll_of, lines_of = _row_paths(led.root)
+    moved, receiving = _alias_sets(led.root)
+    rows_recv: Counter = Counter()
+    rows_other: Counter = Counter()
+    for path, count in lines_of.items():
+        coll = path.split("/")[1]
+        coll = coll[:-6] if coll.endswith(".jsonl") else coll[:-2]
+        if path in receiving:
+            rows_recv[coll] += count
+        elif path not in moved:
+            rows_other[coll] += count
+
+    def klass(subj: str) -> str:
+        path = where.get(subj, "")
+        if path in receiving:
+            return "moved"
+        if path and path not in moved:
+            return "unmoved"
+        return "not_a_row"
+
+    err = led.errata
+    cls = Counter(klass(str(r.get("subject_id") or "")) for r in err)
+    rm, ro = sum(rows_recv.values()), sum(rows_other.values())
+    rate_m = 1000 * cls["moved"] / rm if rm else 0.0
+    rate_u = 1000 * cls["unmoved"] / ro if ro else 0.0
+    print(f"  [0 全体] errata {len(err)} 行の対象: 受け側 {cls['moved']} / 非統合 {cls['unmoved']} / 台帳行でない対象 {cls['not_a_row']}")
+    print(f"           発生率 受け側 {cls['moved']}/{rm:,} = {rate_m:.2f} per1000、非統合 {cls['unmoved']}/{ro:,} = {rate_u:.2f} per1000、率比 {rate_m / rate_u if rate_u else float('inf'):.2f}")
+
+    # ---- (A) audits that recorded a whole-collection scope --------------------
+    def scope_text(row: dict) -> str:
+        params = (row.get("check") or {}).get("params") or {}
+        return " ".join(json.dumps(v, ensure_ascii=False) for v in params.values())
+
+    scans: Counter = Counter()
+    err_in_scan: Counter = Counter()
+    err_in_scan_cls: Counter = Counter()
+    for row in err:
+        text = scope_text(row)
+        named = set(WHOLE_SCOPE.findall(text))
+        if not named or not any(w in text for w in WHOLE_WORDS):
+            continue
+        for coll in named:
+            scans[coll] += 1
+            subj = str(row.get("subject_id") or "")
+            if coll_of.get(subj) == coll:
+                err_in_scan[coll] += 1
+                err_in_scan_cls[(coll, klass(subj))] += 1
+    total_scans = sum(scans.values())
+    print(f"  [A 記録された範囲] 監査範囲が『コレクション全行の union』と読める errata 行: {total_scans} 件の走査（{len([r for r in err if any(w in scope_text(r) for w in WHOLE_WORDS) and WHOLE_SCOPE.findall(scope_text(r))])} 行）")
+    for coll in sorted(scans, key=lambda c: -scans[c])[:8]:
+        rmv, run = rows_recv[coll], rows_other[coll]
+        a, b = err_in_scan_cls[(coll, "moved")], err_in_scan_cls[(coll, "unmoved")]
+        print(f"      {coll:<22} 全行走査 {scans[coll]:>2} 回、対象になった行 受け側 {a}/{rmv:,}・非統合 {b}/{run:,}")
+    print("      読み: 全行を見た監査だけを集めると標本が一桁になり、率比を出せない。")
+    print("            『監査範囲を記録する』ことがこれまで例外的だったためで、対照群は過去からは作れない。")
+
+    # ---- (B) inside one receiving shard: foreign-dated against native ---------
+    def shard_day(path: str) -> str:
+        name = path.rsplit("/", 1)[-1]
+        return name[:10].replace("-", "")
+
+    foreign: Counter = Counter()
+    native: Counter = Counter()
+    foreign_err = native_err = 0
+    for path, count in lines_of.items():
+        if path not in receiving:
+            continue
+        coll = path.split("/")[1]
+        coll = coll[:-6] if coll.endswith(".jsonl") else coll[:-2]
+        for line in (led.root / path).read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            rid = next((v for k, v in row.items()
+                        if k.endswith("_id") and isinstance(v, str) and ledger_ids.recognise(v)), "")
+            day = _day(rid)
+            if not day or day == "00000000":
+                continue
+            if day != shard_day(path):
+                foreign[coll] += 1
+            else:
+                native[coll] += 1
+    for row in err:
+        subj = str(row.get("subject_id") or "")
+        path = where.get(subj, "")
+        if path not in receiving:
+            continue
+        day = _day(subj)
+        if not day or day == "00000000":
+            continue
+        if day != shard_day(path):
+            foreign_err += 1
+        else:
+            native_err += 1
+    tf, tn = sum(foreign.values()), sum(native.values())
+    rf = 1000 * foreign_err / tf if tf else 0.0
+    rn = 1000 * native_err / tn if tn else 0.0
+    print(f"  [B 同一シャード内] 受け側シャードの中の行: 他日付（移動してきた行） {tf:,} / 同一日付（そこに生まれた行） {tn:,}")
+    print(f"      errata 対象 他日付 {foreign_err} = {rf:.2f} per1000、同一日付 {native_err} = {rn:.2f} per1000、率比 {rf / rn if rn else float('inf'):.2f}")
+    if foreign_err + native_err >= 5 and tf and tn:
+        print(f"      chi2(Yates) = {chi2_yates(foreign_err, tf - foreign_err, native_err, tn - native_err):.1f}")
+    print("      読み: 同じファイルの中にあれば監査は両方見えたはず、という設計。ただし統合の監査は")
+    print("            『日付がずれた行を探す』こと自体が目的なので、曝露が等しいとは構成上言えない。")
+
+    # ---- (C) prospective matched audit ---------------------------------------
+    universe = set(where)
+    schemas: dict[str, list] = {}
+    for coll in set(coll_of.values()):
+        spath = led.root / "schema" / f"{coll[:-1] if coll.endswith('s') and coll != 'errata' else coll}.schema.json"
+        for cand in (led.root / "schema" / f"{coll}.schema.json", spath):
+            if cand.is_file():
+                try:
+                    schemas[coll] = json.loads(cand.read_text(encoding="utf-8")).get("required") or []
+                except json.JSONDecodeError:
+                    schemas[coll] = []
+                break
+    fk_re = re.compile(r"^(session_id|.*_ids?|target|left|right|parent_.*|child_.*|.*_by)$")
+
+    def audit(row: dict, path: str, coll: str) -> list:
+        problems = []
+        rid = next((v for k, v in row.items() if k.endswith("_id") and isinstance(v, str)), "")
+        day = _day(rid)
+        if day and day != "00000000" and day != shard_day(path):
+            problems.append("id_day!=shard_day")
+        created = _iso_day(row.get("created_at"))
+        if created and day and created != day:
+            problems.append("created_at!=id_day")
+        for key, value in row.items():
+            if not fk_re.match(key):
+                continue
+            refs = []
+            if isinstance(value, str):
+                refs = [value]
+            elif isinstance(value, list):
+                refs = [v for v in value if isinstance(v, str)]
+            elif isinstance(value, dict):
+                inner = value.get("id")
+                refs = [inner] if isinstance(inner, str) else []
+            for ref in refs:
+                if not ref or ref in universe:
+                    continue
+                if not ledger_ids.recognise(ref):
+                    continue  # a path, a URL, free text -- not a row reference
+                family = ref.split("-")[0]
+                if family in ledger_ids.NON_ADDRESSABLE:
+                    continue  # a sub-record id; its parent is the addressable row
+                problems.append(f"unresolved:{key}")
+                break
+        for field in schemas.get(coll, []):
+            if field not in row:
+                problems.append(f"missing:{field}")
+        return problems
+
+    pool_moved: list = []
+    pool_unmoved: list = []
+    for rel in sorted(lines_of):
+        path = led.root / rel
+        coll = rel.split("/")[1]
+        coll = coll[:-6] if coll.endswith(".jsonl") else coll[:-2]
+        is_recv, is_moved_src = rel in receiving, rel in moved
+        if not is_recv and is_moved_src:
+            continue
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            (pool_moved if is_recv else pool_unmoved).append((row, rel, coll))
+    rng = random.Random(seed)
+    take_m = rng.sample(pool_moved, min(sample, len(pool_moved)))
+    take_u = rng.sample(pool_unmoved, min(sample, len(pool_unmoved)))
+    res = {}
+    for name, take in (("受け側シャードの行（移動を含む）", take_m), ("非統合シャードの行", take_u)):
+        bad = 0
+        kinds: Counter = Counter()
+        for row, rel, coll in take:
+            problems = audit(row, rel, coll)
+            if problems:
+                bad += 1
+                for pr in problems:
+                    kinds[pr.split(":")[0] if ":" in pr else pr] += 1
+        res[name] = (bad, len(take), kinds)
+        print(f"  [C 前向き対照] {name}: n={len(take)}、不一致 {bad} = {100 * bad / max(1, len(take)):.1f}%  内訳 {dict(kinds.most_common(5))}")
+    a = res["受け側シャードの行（移動を含む）"]
+    b = res["非統合シャードの行"]
+    if a[1] and b[1]:
+        print(f"      率比（受け側/非統合）= {(a[0] / a[1]) / (b[0] / b[1]) if b[0] else float('inf'):.2f}"
+              f"、chi2(Yates) = {chi2_yates(a[0], a[1] - a[0], b[0], b[1] - b[0]):.1f}")
+    print(f"      手続: seed={seed} の無作為抽出、同一の機械的検査（ID日付とシャード日付の一致・created_at との一致・")
+    print("            FK らしき欄の解決・schema の required の存在）を両群に同じ瞬間に適用。曝露は構成上等しい。")
+    print("      限界: 機械的検査は過去の監査（人が本文を読んで引用を照合した）と同じではない。")
+    print("            したがってこれは『同じ道具で同じだけ見たら差が出るか』の対照であって、")
+    print("            『過去の誤り発見率』の対照ではない。errata 行は追加していない（§5 の数値を動かさないため）。")
+
+
+def measure_role_cohort(led: Ledger) -> None:
+    """Item 4: is the 23.5% role fill rate negligence, or a field that was
+    introduced part-way through the ledger -- and how fast does the item-3 sample
+    grow now?"""
+    print("=== item 4 / assigned_role の記入率はコホート効果か ===")
+    sessions = list(led.sessions.values())
+    role_days = [_day(s["session_id"]) for s in sessions if s.get("assigned_role")]
+    first_role_day = min((d for d in role_days if d), default="")
+    last_day = led.days[-1] if led.days else ""
+    print(f"  assigned_role が最初に出た日: {first_role_day}、最終セッション日: {last_day}")
+    cohorts = (("導入前", lambda d: d < first_role_day),
+               ("導入後〜最終実日付", lambda d: first_role_day <= d <= "20261123"),
+               ("先走り日付（20261124〜）", lambda d: d > "20261123"))
+    for name, test in cohorts:
+        sel = [s for s in sessions if test(_day(s["session_id"]))]
+        filled = [s for s in sel if s.get("assigned_role")]
+        print(f"  {name:<22} n={len(sel):<5} 記入 {len(filled):<5} = {_pct(len(filled), len(sel))}")
+    print("  導入後の日別:")
+    byday: dict[str, list[int]] = defaultdict(lambda: [0, 0])
+    for s in sessions:
+        d = _day(s["session_id"])
+        if d and first_role_day and d >= first_role_day:
+            byday[d][1] += 1
+            if s.get("assigned_role"):
+                byday[d][0] += 1
+    for d in sorted(byday)[:12]:
+        a, b = byday[d]
+        print(f"    {d}  {a:>3}/{b:<3} = {_pct(a, b)}")
+    # the item-3 sample and its growth
+    reads = led.work_reads()
+    roles_of: dict[str, set] = defaultdict(set)
+    for mid, events in reads.items():
+        for day, sid, _rid in events:
+            role = led.sessions.get(sid, {}).get("assigned_role")
+            if role:
+                roles_of[mid].add(role)
+    multi = {m: r for m, r in roles_of.items() if len(r) >= 2}
+    print(f"  異なる assigned_role のセッションに手読みされた素材: {len(multi)}（item 3 の標本）")
+    per_role: Counter = Counter()
+    for mid, events in reads.items():
+        for _day_, sid, _rid in events:
+            role = led.sessions.get(sid, {}).get("assigned_role")
+            if role:
+                per_role[role] += 1
+    print("  ロール別の手読み行数: " + ", ".join(f"{k} {v}" for k, v in per_role.most_common()))
+    # cumulative sample by day: when did each multi-role material qualify?
+    qualify: dict[str, str] = {}
+    for mid, events in reads.items():
+        seen: dict[str, str] = {}
+        for day, sid, _rid in sorted(events):
+            role = led.sessions.get(sid, {}).get("assigned_role")
+            if role and role not in seen:
+                seen[role] = day
+                if len(seen) >= 2 and mid not in qualify:
+                    qualify[mid] = day
+    days_sorted = sorted(set(qualify.values()))
+    cum = 0
+    series = []
+    for d in days_sorted:
+        cum += sum(1 for v in qualify.values() if v == d)
+        series.append((d, cum))
+    print("  標本の累積（資格を得た日 → 累積素材数）: " + ", ".join(f"{d}:{c}" for d, c in series[-8:]))
+    if len(series) >= 2:
+        span = abs(_day_distance(series[-1][0], series[0][0])) or 1
+        rate = (series[-1][1] - series[0][1]) / span
+        print(f"  増加率 {rate:.2f} 素材/日（{series[0][0]}〜{series[-1][0]}、{span}日）")
+    # per role pair: the unit the power calculation actually needs
+    pair_qualify: dict[tuple, dict[str, str]] = defaultdict(dict)
+    for mid, events in reads.items():
+        seen: dict[str, str] = {}
+        for day, sid, _rid in sorted(events):
+            role = led.sessions.get(sid, {}).get("assigned_role")
+            if role and role not in seen:
+                seen[role] = day
+        for pair in itertools.combinations(sorted(seen), 2):
+            pair_qualify[pair][mid] = max(seen[pair[0]], seen[pair[1]])
+    print("  ロール対別の標本と、n=48（80%検出力で観測差を測るのに要る数）までの見込み:")
+    for pair in sorted(pair_qualify, key=lambda pr: -len(pair_qualify[pr])):
+        days_map = pair_qualify[pair]
+        ordered = sorted(days_map.values())
+        if len(ordered) < 2:
+            continue
+        span = abs(_day_distance(ordered[-1], ordered[0])) or 1
+        pair_rate = len(ordered) / span
+        need = max(0, 48 - len(ordered))
+        eta = f"約 {need / pair_rate:.0f} 日" if pair_rate > 0 and need else "既に到達" if not need else "増加率0"
+        print(f"    {pair[0]:<20} 対 {pair[1]:<20} n={len(ordered):<4} 増加 {pair_rate:.2f}/日  {eta}")
+
+
+def measure_adjacency(led: Ledger, window: int = 5, cut_margin_days: int = 3) -> None:
+    """Item 7: does sitting next to an indexed row in the same shard explain part
+    of the gate effect?  Splits the never-indexed control group by adjacency."""
+    print(f"=== item 7 / 近接の匂い（同一シャード内で索引済み行の ±{window} 行以内か） ===")
+    position: dict[str, tuple[str, int]] = {}
+    for path in sorted(led.root.glob("state/materials.jsonl")) + sorted(led.root.glob("state/materials.d/*.jsonl")):
+        rel = str(path.relative_to(led.root))
+        for index, line in enumerate(path.read_text(encoding="utf-8").splitlines()):
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            mid = row.get("material_id")
+            if mid:
+                position[mid] = (rel, index)
+    indexed = set(led.first_index_day())
+    reads = led.work_reads()
+    last_day = led.days[-1] if led.days else ""
+    cut = _shift(last_day, -cut_margin_days)
+    day_counts = [(d, len(v)) for d, v in sorted(led.sessions_by_day.items())]
+    cum: list[tuple[str, int]] = []
+    running = 0
+    for day, count in day_counts:
+        running += count
+        cum.append((day, running))
+    total = running
+    import bisect
+    keys = [d for d, _ in cum]
+
+    def sessions_after(day: str) -> int:
+        i = bisect.bisect_right(keys, day)
+        return total - (cum[i - 1][1] if i else 0)
+
+    by_file: dict[str, list[int]] = defaultdict(list)
+    for mid, (rel, index) in position.items():
+        if mid in indexed:
+            by_file[rel].append(index)
+    groups = {"索引あり": [0, 0], f"索引なし・隣接±{window}": [0, 0], "索引なし・孤立": [0, 0]}
+    for mid, events in reads.items():
+        if not events:
+            continue
+        first = events[0][0]
+        if first > cut:
+            continue
+        exposure = sessions_after(first)
+        if exposure <= 0:
+            continue
+        reuse = sum(1 for day, _sid, _rid in events if day > first)
+        if mid in indexed:
+            key = "索引あり"
+        else:
+            rel, index = position.get(mid, ("", -1))
+            neighbours = by_file.get(rel, [])
+            key = (f"索引なし・隣接±{window}"
+                   if any(abs(index - n) <= window for n in neighbours) else "索引なし・孤立")
+        groups[key][0] += reuse
+        groups[key][1] += exposure
+    base = groups["索引なし・孤立"]
+    for name, (events, exposure) in groups.items():
+        print(f"  {name:<22} 再利用 {events:>5} / 曝露 {exposure:>9,} セッション = {_per1000(events, exposure):>6} per 1000")
+    for name in ("索引なし・孤立", f"索引なし・隣接±{window}"):
+        a = groups["索引あり"]
+        b = groups[name]
+        if a[1] and b[1] and b[0] >= 0:
+            ora = (a[0] / max(1, a[1] - a[0])) / (b[0] / max(1, b[1] - b[0])) if b[0] else float("inf")
+            print(f"  OR（索引あり 対 {name}）= {ora:.2f}、chi2(Yates) = "
+                  f"{chi2_yates(a[0], a[1] - a[0], b[0], b[1] - b[0]):.1f}")
+    a = groups[f"索引なし・隣接±{window}"]
+    b = groups["索引なし・孤立"]
+    if a[1] and b[1] and a[0] and b[0]:
+        ora = (a[0] / (a[1] - a[0])) / (b[0] / (b[1] - b[0]))
+        print(f"  純粋な近接効果 OR（隣接 対 孤立、どちらも索引なし）= {ora:.2f}、chi2(Yates) = "
+              f"{chi2_yates(a[0], a[1] - a[0], b[0], b[1] - b[0]):.1f}")
+        print("  読み: 1 から離れていれば、シャード内の位置だけで再利用が変わる（走査で届く）。")
+        print("        1 に近ければ、OR=3.84 の差は索引そのものに帰属してよい。")
+
+
+PROVENANCE_TERMS = {
+    "questions": ("questions", "問い"),
+    "fragments": ("fragments", "断片"),
+    "relations": ("relations", "関係線"),
+    "materials": ("materials", "素材"),
+    "motifs": ("motifs", "モチーフ"),
+    "sessions": ("sessions", "セッション"),
+    "notes": ("notes", "ノート"),
+    "evaluations": ("evaluations", "評価"),
+    "hypotheses": ("hypotheses", "仮説"),
+    "errata": ("errata", "訂正録"),
+    "editorial_decisions": ("editorial_decisions", "編集判断"),
+    "read_log": ("read_log", "読み痕跡"),
+}
+
+
+def measure_provenance(led: Ledger) -> None:
+    """Item 3: is the ontogeny order the order in which the archive's own
+    instruments and schemas were built?  Prints the measured first-row day beside
+    every dated mention of that collection in docs/, schema/ and tools/."""
+    print("=== item 3 / 個体発生順序は計器の製作順序か（文書側の日付言及と並べる） ===")
+    onto: dict[str, str] = {}
+    for coll in sorted(PROVENANCE_TERMS):
+        days = []
+        for row in load(led.root, coll):
+            key = next((k for k in row if k.endswith("_id") and isinstance(row[k], str)), "")
+            day = _iso_day(row.get("created_at")) or _day(row.get(key, ""))
+            if day and day != "00000000":
+                days.append(day)
+        onto[coll] = min(days) if days else ""
+    date_re = re.compile(r"(20\d{2}-\d{2}-\d{2})")
+    mentions: dict[str, list[tuple[str, str, str]]] = defaultdict(list)
+    scan = (sorted(led.root.glob("docs/*.md")) + sorted(led.root.glob("schema/*.json"))
+            + sorted(led.root.glob("prompts/*.md")) + [led.root / "PROJECT_CHARTER.md", led.root / "CONTENT_POLICY.md", led.root / "README.md"])
+    for path in scan:
+        if not path.is_file():
+            continue
+        try:
+            text = path.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        for lineno, line in enumerate(text.splitlines(), 1):
+            found = date_re.findall(line)
+            if not found:
+                continue
+            # institutional mentions only: the collection named literally, on a line
+            # that talks about adding it.  The Japanese labels are common words and
+            # match every chronicle line, which dates nothing.
+            if not any(w in line for w in ("追加", "導入", "新設", "enum", "schema", "層", "凍結", "実装")):
+                continue
+            for coll, terms in PROVENANCE_TERMS.items():
+                if terms[0] in line:
+                    for day in found:
+                        mentions[coll].append((day, f"{path.name}:{lineno}", line.strip()[:150]))
+    print("  collection            最古行        文書内の最古の日付言及   言及数")
+    for coll in sorted(onto, key=lambda c: onto[c] or "9999"):
+        ms = sorted(mentions.get(coll, []))
+        first = ms[0][0] if ms else "-"
+        print(f"  {coll:<22}{onto[coll] or '-':<14}{first:<24}{len(ms)}")
+    print("  最古の言及の実例:")
+    for coll in sorted(onto, key=lambda c: onto[c] or "9999"):
+        ms = sorted(mentions.get(coll, []))
+        for day, where, line in ms[:2]:
+            print(f"    [{coll}] {day} {where}: {line}")
+    print("  読み: 最古行の日付と文書内の最古言及が同じ日なら、そのコレクションは")
+    print("        『認知の発達順』ではなく『制度（schema・計器）の導入順』に現れたことになる。")
+
+
+
+BELIEF_BASES: tuple[tuple[str, dict], ...] = (
+    ("既定（heir_credit のみ）", {}),
+    ("receiver_gated（三門）", {"receiver_gated": True}),
+    ("heir_credit=False（系譜を切る）", {"heir_credit": False}),
+    ("pair_level_repeat", {"pair_level_repeat": True}),
+    ("narrowing_partner_share", {"narrowing_partner_share": True}),
+    ("temporal_heir_guard", {"temporal_heir_guard": True}),
+)
+
+
+def measure_bases(led: Ledger, since: str = "") -> None:
+    """Leftover 8: re-measure HYP-20261123-1054be's own quantity on a ledger that
+    has grown since the hypothesis was written.  The hypothesis says the leading
+    answer to the three central questions depends on which accounting basis reads
+    the ledger; its clause (a) is refuted if every basis agrees and the leader's
+    posterior varies by less than 10pp, its clause (c) needs ten independent direct
+    evaluations of the lineage-cut leader before it can be tested at all."""
+    import sys
+
+    print("=== item 8 / HYP-20261123-1054be 会計基底依存説の再測定 ===")
+    sys.path.insert(0, str(led.root / "tools"))
+    import belief_state as bs
+
+    questions = ("Q-001", "Q-002", "Q-003")
+    leaders: dict[str, dict[str, str]] = {q: {} for q in questions}
+    posteriors: dict[str, dict[str, float]] = {q: {} for q in questions}
+    totals = {}
+    for name, knobs in BELIEF_BASES:
+        state = bs.compute_belief_state(root=led.root, **knobs)
+        totals[name] = (state.get("total_hypotheses"), state.get("total_evaluations"))
+        for q in questions:
+            rec = (state.get("questions") or {}).get(q) or {}
+            ranked = rec.get("hypotheses") or []
+            if isinstance(ranked, dict):
+                ranked = list(ranked.values())
+            if not ranked:
+                continue
+            top = ranked[0]
+            leaders[q][name] = top.get("hypothesis_id") or top.get("id") or ""
+            value = top.get("posterior", top.get("p"))
+            posteriors[q][name] = float(value) if value is not None else float("nan")
+    print(f"  台帳: 仮説 {totals[BELIEF_BASES[0][0]][0]}・評価 {totals[BELIEF_BASES[0][0]][1]}"
+          "（仮説が書かれたときは 91・844 だった）")
+    slots: Counter = Counter()
+    for q in questions:
+        kinds = len(set(leaders[q].values()))
+        vals = [v for v in posteriors[q].values() if v == v]
+        print(f"  {q}: 首位 {kinds} 種、首位Pの基底間変動 {100 * (max(vals) - min(vals)):.2f}pp" if vals else f"  {q}: 首位 {kinds} 種")
+        for name, _ in BELIEF_BASES:
+            hid = leaders[q].get(name, "-")
+            slots[hid] += 1
+            print(f"      {name:<34} {hid:<24} P={100 * posteriors[q].get(name, float('nan')):.2f}%")
+    top_slot, top_n = slots.most_common(1)[0]
+    total_slots = sum(slots.values())
+    print(f"  {total_slots} スロットの最大占有: {top_slot} が {top_n}（{_pct(top_n, total_slots)}）")
+    print(f"  条項(a)（全基底が同じ首位かつ変動10pp未満なら棄却）: "
+          f"{'発動' if all(len(set(leaders[q].values())) == 1 for q in questions) else '不発——首位は分かれたまま'}")
+    cut = leaders["Q-001"].get("heir_credit=False（系譜を切る）", "")
+    evaluations = load(led.root, "evaluations")
+    direct = [e for e in evaluations if e.get("target_hypothesis_id") == cut]
+    recent = [e for e in direct if str(e.get("created_at", "")) >= (since or "2026-11-23")]
+    sessions = len({e.get("session_id") for e in recent})
+    print(f"  条項(c)（系譜を切った基底の首位 {cut}）: 評価 総数 {len(direct)}、"
+          f"{since or '2026-11-23'} 以降 {len(recent)} 件・独立セッション {sessions}")
+    print(f"      → 10件以上の独立直接評価: {'ある——検査できる' if sessions >= 10 else 'ない——条項(c)はまだ検査できない'}")
+    print("  条項(b)（周辺密度で正規化すれば首位入れ替わりが消えるか）: 未検査。正規化実装が別に要る。")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--gate", action="store_true", help="item 2: index layer against re-reading")
@@ -847,6 +1482,14 @@ def main() -> int:
     parser.add_argument("--errata", action="store_true", help="item 4: the three staircase candidates")
     parser.add_argument("--roles", action="store_true", help="item 3: role-switch cost and its sample")
     parser.add_argument("--siblings", action="store_true", help="item 6: same-day material partition")
+    parser.add_argument("--relations", action="store_true", help="leftover 1: are relations readable at all")
+    parser.add_argument("--errata-control", action="store_true", help="leftover 2: discovery-bias control group")
+    parser.add_argument("--provenance", action="store_true", help="leftover 3: ontogeny against documented introductions")
+    parser.add_argument("--role-cohort", action="store_true", help="leftover 4: role fill rate as a cohort effect")
+    parser.add_argument("--adjacency", action="store_true", help="leftover 7: shard adjacency smell inside the gate")
+    parser.add_argument("--bases", action="store_true", help="leftover 8: belief leaders under six accounting bases")
+    parser.add_argument("--since", default="", help="with --bases: only count direct evaluations from this day on")
+    parser.add_argument("--window", type=int, default=5, help="adjacency window in shard lines")
     parser.add_argument("--all", action="store_true", help="run every measurement above")
     parser.add_argument("--root", default=str(ROOT), help="repository root holding state/")
     parser.add_argument(
@@ -873,7 +1516,9 @@ def main() -> int:
     parser.add_argument("--min-sessions", type=int, default=20, help="sessions per reference type for --series")
     args = parser.parse_args()
 
-    flags = ("gate", "productivity", "series", "errata", "roles", "siblings")
+    flags = ("gate", "productivity", "series", "errata", "roles", "siblings",
+             "relations", "errata_control", "provenance", "role_cohort", "adjacency",
+             "bases")
     if not args.all and not any(getattr(args, f) for f in flags):
         parser.error("choose at least one measurement, or --all")
     run = {f: (args.all or getattr(args, f)) for f in flags}
@@ -897,6 +1542,18 @@ def main() -> int:
         measure_roles(led)
     if run["siblings"]:
         measure_siblings(led, args.date.replace("-", ""))
+    if run["relations"]:
+        measure_relations(led)
+    if run["errata_control"]:
+        measure_errata_control(led)
+    if run["provenance"]:
+        measure_provenance(led)
+    if run["role_cohort"]:
+        measure_role_cohort(led)
+    if run["adjacency"]:
+        measure_adjacency(led, args.window, args.cut_margin_days)
+    if run["bases"]:
+        measure_bases(led, args.since)
     return 0
 
 

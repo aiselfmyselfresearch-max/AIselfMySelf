@@ -143,6 +143,17 @@ REFERENCE_TYPES: dict[str, tuple[str, str]] = {
     # promoted, paused or archived, and citing that reason is what makes the
     # decision checkable by a later reader.
     "editorial_decision": ("editorial_decisions", "ED"),
+    # Added 2026-11-23 after measurement, not by inspection.  REL sat in
+    # NON_ADDRESSABLE with the reason "a relation is an edge, not an endpoint; the
+    # two records it joins are both addressable, so citing the edge adds no
+    # reachable content".  tools/navigation_metrics.py --relations measured that
+    # reason: all 7,097 relations carry a note (459,798 characters, 6,376 distinct,
+    # 10.2% boilerplate) and only 283 of 7,079 (4.0%) have a note whose opening 40
+    # characters appear inside either endpoint row -- 6,796 notes / 447,494
+    # characters exist nowhere else in the ledger.  The edge does add reachable
+    # content, so it became addressable.  Reading one is recorded like reading an
+    # erratum: a judgment the archive made, about two records it already holds.
+    "relation": ("relations", "REL"),
 }
 
 # Collections and sub-records that exist in the ledger but cannot be the target
@@ -152,8 +163,12 @@ NON_ADDRESSABLE: dict[str, str] = {
     "READ": "a read_log row is the reference itself; pointing one read at another"
             " would make the read graph self-referential without adding a record"
             " that could be checked",
-    "REL": "a relation is an edge, not an endpoint; the two records it joins are"
-           " both addressable, so citing the edge adds no reachable content",
+    # REL moved to REFERENCE_TYPES on 2026-11-23.  Its reason here was measured and
+    # found false: 447,494 characters of relation notes are reachable from neither
+    # endpoint (tools/navigation_metrics.py --relations).  The entry is deleted
+    # rather than kept with a correction, because a registry that lists a family as
+    # unaddressable while the schema addresses it is the drift the coverage test
+    # exists to catch.
     "CLAIM": "a claim lives inside a note's claims array and has no collection of"
              " its own; errata reach it through claim_location free text. Making"
              " CLM-* addressable needs a claims collection first, which is a"

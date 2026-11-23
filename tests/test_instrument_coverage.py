@@ -236,6 +236,31 @@ class ReferenceClosureTests(unittest.TestCase):
         self.assertIn("erratum", types)
         self.assertIn("editorial_decision", types)
 
+    def test_relation_is_addressable_because_its_reason_was_measured(self):
+        """7,097 relations carried 459,798 characters of note prose and read_log
+        could not target a single one, because REL sat in NON_ADDRESSABLE with the
+        reason that citing an edge adds no reachable content. Measured: only 283 of
+        7,079 notes (4.0%) appear inside either endpoint row, so 447,494 characters
+        were reachable from nowhere. The reason was false and the family moved.
+        This asserts the move and that the path is used, not how often."""
+        types = ledger_ids.reference_types()
+        self.assertIn("relation", types)
+        self.assertNotIn("REL", ledger_ids.NON_ADDRESSABLE)
+        rl = json.loads((ROOT / "schema" / "read_log.schema.json").read_text(encoding="utf-8"))
+        self.assertIn("relation", rl["properties"]["target"]["properties"]["type"]["enum"])
+        rows = []
+        for path in sorted((ROOT / "state").glob("read_log.jsonl")) + sorted(
+            (ROOT / "state" / "read_log.d").glob("*.jsonl")
+        ):
+            for line in path.read_text(encoding="utf-8").splitlines():
+                if line.strip():
+                    rows.append(json.loads(line))
+        targeted = [r for r in rows if (r.get("target") or {}).get("type") == "relation"]
+        self.assertTrue(
+            targeted,
+            "relation is addressable but no read_log row uses it: the widening is untested by the ledger",
+        )
+
     def test_every_reference_type_resolves_to_a_collection_that_exists(self):
         """A reference type with no collection behind it is a check that fails on
         the first use, which is what would have happened had the enum been widened
@@ -267,7 +292,7 @@ class ReferenceClosureTests(unittest.TestCase):
             with self.subTest(collection=coll):
                 self.assertTrue(
                     coll in addressable or coll in ledger_ids.NON_ADDRESSABLE
-                    or coll in ("read_log", "relations", "quarantine"),
+                    or coll in ("read_log", "quarantine"),
                     f"state/{coll}.d is neither addressable nor listed with a reason",
                 )
         for fam, reason in ledger_ids.NON_ADDRESSABLE.items():
