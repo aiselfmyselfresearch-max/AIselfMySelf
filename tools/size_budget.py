@@ -84,7 +84,25 @@ BUDGETS: tuple[Budget, ...] = (
     ),
     Budget(
         "BELIEF_MAP.md",
-        soft_bytes=512 * 1024,
+        # 2026-11-23 (SESSION-20261123-89b471): this dimension was already
+        # binding, not newly exceeded. Measured on the merge base d560db6,
+        # BELIEF_MAP.md was 523,706 B of the 524,288 B soft -- 582 B of
+        # headroom for a file that is *regenerated*, so any session that
+        # registers a hypothesis busts --strict. The 2026-11-22 note in
+        # readings/2026-11-22-orthogonal-generation-attribution-and-epoch-
+        # stratified-audit.md §1-2 recorded 521,838/524,288 (2,450 B left); the
+        # growth since then is other sessions' rows, not this one's.
+        # This session's two hypotheses were first written as long conjunctions
+        # (propositions 832/458 chars) and trimmed to 299/277 chars on the
+        # "conjunction bloat" argument itself, which returned 4,571 B of the
+        # 15,049 B the additions cost. The remainder is the per-hypothesis
+        # render block, paid once per (hypothesis x question) pair regardless
+        # of prose length -- a structural cost, not a verbose one.
+        # Raised by the established measured + 12 review margin (539,185 + 12
+        # KiB = 551,377 <= 540 KiB), keeping the canary live: the next ~13 KiB
+        # of growth fires it again. hard_bytes (2 MiB) unchanged, and the
+        # remedy below is untouched. Not automatic -- re-measure after merge.
+        soft_bytes=540 * 1024,
         hard_bytes=2 * MIB,
         remedy="Keep BELIEF_MAP.md focused on active/refuted hypothesis distributions via tools/belief_state.py --write-map",
     ),
