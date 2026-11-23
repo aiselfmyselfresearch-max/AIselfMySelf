@@ -486,3 +486,14 @@ python3 tools/inspect_inquiry.py --packet-stats --stats-limit 40   # 標本で�
    - `docs/parallel-work.md` §3 に従い、未参照かつ同日隣接の過去シャードをコレクション全体の生バイト列 SHA-256 完全一致検証つきで順序保存統合する機能を提供する。
 
 
+
+## 2026-11-23 拡張：表示の圧縮と、家系・一次所属・基底の欄（6提案の実装）
+
+`readings/2026-11-23-coarsening-concentrates-and-what-the-harness-should-change.md` §6 の6提案を、`readings/2026-11-23-six-proposals-implemented.md` で実装した。**事後確率は1件も動いていない。**
+
+1. **詳細ブロックの圧縮（`DETAIL_TOP_N = 12`）。** `BELIEF_MAP.md` の詳細ブロックは 852 行・434,420 B ＝ ファイルの 80.6% を占め、仮説 93 件のうち 88 件が P<1% だった。既定の描画は上位12件（事後確率順）＋**警告付き全件**（訂正・単一証人高質量・自己評価のみ・PSC未照合のみ・想起抑制）を全文表示し、残りは1行に圧縮する。`python3 tools/belief_state.py --write-map --full` は全件詳細を追跡ファイルに書き、未追跡の `map/belief_state_full.md` は常に全件詳細を持つ。**警告付きを無条件に残すのは、反証条件を持つ低質量仮説が既定で見えなくなるのを避けるためである。**
+2. **質量0の対を推薦しない（`PAIR_RECOMMENDATION_MASS_FLOOR = 0.01`）。** 合算 1% 未満の対は「最優先検証ターゲット」ではなく「推薦なし（質量0の対）」と表示し、質量の保持者を名指しする。`unsaturated_supports_ratchet` の算術と `saturated` の定義は変えていない（描画用の `ratchet_warning` を床で止め、`saturation_snapshot` に `no_recommendation` を足した）。受領書（`inspect_inquiry.py --assignment-json`）も同じ扱い。
+3. **家系（root ancestor）の質量行。** `root_ancestor_ids()` は `parent_hypothesis_ids[0]` を再帰的にたどる。`question_families()` は家系の質量と**家系内集中度**（`top_share_within_family`）を同じ dict で返す — 質量だけを取れて集中度を取れない API にすると、「家族の合意」と「一人の独走」の混同がそのまま再現するため。`BELIEF_MAP.md` の「系譜の家系」節に問いごとの上位6家系を出す。
+4. **`primary_question_id`（任意）。** `schema/hypothesis.schema.json` に追加。**既存の行は遡及で埋めない**（追記専用の下で、当時決めていない所属を後から書くのは製造された受領書になる）。表の「一次所属」列は `Q-003 (宣言)` と ``未決→`Q-002` ``（矢印の先は `question_ids[0]` であって決定ではない）の三値。
+5. **`belief_basis`（任意）。** `schema/session.schema.json` に追加。`belief_state.py` の `belief_basis_label()` と同じ語彙（`default` / `temporal_heir_guard` / `receiver_gated` / … を `+` で連結）。`BELIEF_MAP.md` 冒頭と `--json` に使用基底を出す。**記入は強制していない** — 強制すると、欄を足した次のセッションから門が赤くなり、過去の行を書き換える圧力になる。
+6. **`newborn_mass`。** `python3 tools/belief_state.py --newborn-mass [HYP-ID]`。対象仮説を除いた反事実で同じ問いを再計算し、旧首位の希釈（pp）と首位交代を出す。**何も書き込まない。** 初回実測（`HYP-20261123-fe0204`）では3問すべて +0.000pp で、「登録は常に既存仮説を希釈する」という読みを狭めた（`EVL-20261123-30b1a5`）。

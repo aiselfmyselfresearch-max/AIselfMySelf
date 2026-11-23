@@ -19,6 +19,10 @@
     "offered_target_question_id": {"type": "string", "description": "The question the packet offered as its target (--packet auto resolves it from the seed; measured to differ across seeds, changing which question is answered at all). Kept apart from question_ids, which is what the session chose to work on: the difference between the two is the only place a path effect on direction is observable."},
     "offered_reference_mode": {"type": "string", "description": "The reference mode the packet offered. Kept apart from prompt_template, which is what the session actually used."},
     "prompt_template": {"type": "string"},
+    "belief_basis": {
+      "type": "string",
+      "description": "Which accounting basis this session read the distribution under, written as a stable list of the belief_state.py options it passed (e.g. 'default', 'temporal_heir_guard', 'receiver_gated', 'temporal_heir_guard+pair_level_repeat'). Optional. No session row recorded its basis when the field was added on 2026-11-23, so the column starts empty; earlier rows are exempt because they cannot be rewritten (append-only) and because filling one in afterwards would be a manufactured receipt -- the defect rule 10 forbids for the role receipt. Why the field exists: the leader of Q-001 changed under four of the six bases measured on 2026-11-22 (readings/2026-11-23-the-winner-depends-on-the-rules.md), so a posterior quoted without its basis cannot be compared with another. tools/belief_state.py --write-map records the basis it used under its own header; a session reading any other basis has to say so."
+    },
     "generator": {"type": "string", "description": "Model/tool label if known; omit if unknown."},
     "session_type": {
       "type": "string",
