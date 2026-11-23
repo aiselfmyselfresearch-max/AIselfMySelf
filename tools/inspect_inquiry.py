@@ -1295,8 +1295,13 @@ def _belief_briefing_lines(
             pair_detail = f"EIG={pair['expected_info_gain']:.4f}"
             if "pair_mass_sum" in pair:
                 pair_detail += f", 合算={pair['pair_mass_sum']*100:.1f}%"
-            if pair.get("unsaturated_supports_ratchet"):
+            if belief_state.pair_shows_ratchet_warning(pair):
                 pair_detail += " ⚠️未飽和ラチェット注意"
+            elif pair.get("recommended") is False:
+                pair_detail += (
+                    f" ⚠️推薦なし（合算{pair.get('pair_mass_sum', 0.0) * 100:.2f}% "
+                    f"< 下限{belief_state.PAIR_RECOMMENDATION_MASS_FLOOR * 100:.0f}%）"
+                )
             pair_txt = (
                 f"`{pair['left_hypothesis_id']}` vs `{pair['right_hypothesis_id']}` ({pair_detail})"
             )
