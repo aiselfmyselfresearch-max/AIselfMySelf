@@ -14,7 +14,7 @@
 
 ## 1. 要旨
 
-この書庫は 1,157 本の精読報告を持ち、その 95.6% が「読み」という語を使う。同じ報告群のうち「サッケード」は 0.3%、「固視（fixation）」は 0.4% でしか現れない。つまり書庫は**読むことについてほとんど毎回語り、眼についてほとんど語らない**。今回、認知科学のうちこの書庫が一度も読んでこなかった**熟達読解（skilled reading）**から未収蔵10件を選び、10件すべて本文を読んだ（うち3件は選定の途中で差し替えた。§2）。
+この書庫は 1,157 本の精読報告を持ち、その 95.6% が「読み」という語を使う。同じ報告群のうち「サッケード」は 0.3%、「固視（fixation）」は 0.4% でしか現れない。つまり書庫は**読むことについてほとんど毎回語り、眼についてほとんど語らない**。今回、認知科学のうちこの書庫が一度も読んでこなかった**熟達読解（skilled reading）**から10件を選び、10件すべて本文を読んだ。うち**7件は未収蔵**で、**3件（Just & Carpenter 1980・Rayner 1998・Kintsch 1988）は既収蔵**（抄録 depth のみ）であり、重複作成せず `editorial_decisions` のオーバーレイ行で全文再照合を記録した（§2.4）。別に、選定の途中で3件を差し替えた（§2.1）。
 
 **中心的な判断は三つ。**
 
@@ -28,13 +28,13 @@
 
 ## 2. 選定と、読みの深さの正直な内訳
 
-10件すべて、採番前に `tools/three_gates.py --check-source` で DOI・題名の既収蔵照合を行い、すべて `CLEAR` を確認した。
+未収蔵の7件は採番前に `tools/three_gates.py --check-source` で DOI・題名の既収蔵照合を行い、すべて `CLEAR` を確認した。既収蔵の3件は照合の結果「既に `abstract` depth で存在する」と判明したため、新規採番せず既存IDを引いた（§2.4）。
 
 | # | 資料 | 素材ID | 読んだ深さ |
 |---|---|---|---|
-| 1 | Just & Carpenter (1980) 即時性と eye-mind | `MAT-20261123-279624` | **全文**（14 chunk） |
-| 2 | Rayner (1998) 読解の眼球運動 | `MAT-20261123-4063e9` | **全文**（26 chunk） |
-| 3 | Kintsch (1988) 構成と統合 | `MAT-20261123-214159` | **本文全文**（巻末文献は未照合） |
+| 1 | Just & Carpenter (1980) 即時性と eye-mind | **既存** `MAT-20261123-a2d015` | **全文**（14 chunk） |
+| 2 | Rayner (1998) 読解の眼球運動 | **既存** `MAT-20261123-ead163` | **全文**（26 chunk） |
+| 3 | Kintsch (1988) 構成と統合 | **既存** `MAT-20261123-7ae30b` | **本文全文**（巻末文献は未照合） |
 | 4 | Hoover & Gough (1990) 単純見解 | `MAT-20261123-7057b1` | **全文**（11 chunk） |
 | 5 | Seidenberg & McClelland (1989) triangle | `MAT-20261123-85164f` | **全文**（35 chunk） |
 | 6 | Plaut et al. (1996) PMSP | `MAT-20261123-20e212` | **本文＋附属資料**（巻末文献は未照合） |
@@ -65,6 +65,12 @@
 ### 2.3 来歴の申告
 
 `prompts/acquisition.md` の通常上限は1セッション5件である。10件は利用者の明示指定によるもので、`sessions.human_direction` に一度だけ記録した。上限の恒久的な引き上げではない。
+
+### 2.4 既収蔵の3件を重複作成しなかったこと
+
+選定時点で「未収蔵」と見なしていた3件（J&C 1980・Rayner 1998・Kintsch 1988）は、採番前の `three_gates.py --check-source` の時点では照合されず、後に `origin/main` 側の台帳を精査したところ**既に `abstract` depth で収蔵されていた**。したがって本報告の素材行は**7件**であり、この3件には新規 `MAT-*` を与えていない。代わりに、全文を読んだ事実を `editorial_decisions` のオーバーレイ行（`ED-20261123-84ecdd` → `a2d015`、`ED-20261123-0be615` → `ead163`、`ED-20261123-1126d9` → `7ae30b`、いずれも `verified` / `full_text`）で記録した。素材行の `verification.depth` は書き換えていない（追記専用台帳では既存行を改変しない）。
+
+この区別は数の上で重要である。**「10件読んだ」と「10件を新規収蔵した」は同じではない。** 本報告は前者であり、後者は7件である。残り3件の新規収蔵は報告 F が担う（§10）。
 
 ---
 
@@ -283,7 +289,7 @@ print("session_type counts:", c.most_common())
 ## 7. 資料の訂正・撤回確認
 
 - 10件すべて、`three_gates.py --check-source` で DOI・題名の照合を行い、既収蔵との一致なし（`CLEAR`）、原著の訂正・撤回の情報も見つからなかった。
-- 既収蔵の関連資料（`MAT-20261123-910220` Augustinova & Ferrand 2012、`MAT-20261024-2d2b43` Ericsson 1993、`MAT-20261106-e69f54` Chase & Simon 1973、`MAT-20261024-140425` Wolf）は**再照合はしたが重複登録していない**。`editorial_decisions` による照合状態のオーバーレイ更新は行っていない（再照合は抄録レベルで、全文再照合ではないため）。
+- 既収蔵の関連資料（`MAT-20261123-910220` Augustinova & Ferrand 2012、`MAT-20261024-2d2b43` Ericsson 1993、`MAT-20261106-e69f54` Chase & Simon 1973、`MAT-20261024-140425` Wolf）は**再照合はしたが重複登録していない**。これら4件への `editorial_decisions` オーバーレイは行っていない（再照合は抄録レベルで、全文再照合ではないため）。これに対し、§2.4 の3件（`a2d015`・`ead163`・`7ae30b`）は**全文を読んだ**ため、オーバーレイ行で `verified` / `full_text` を記録した。
 - 差し替えた3件（DRC 2001・J&C 1992・Z&G 2005）は `MAT-*` を与えていない。本文中では二次引用としてのみ言及し、`verification` の対象にしていない。
 - 誤読の訂正：初回の選定時に「Studocu の DRC プレビューは全文を含む」と見なしていたが、これは誤りであった（pp. 204–209 で途切れている）。この誤りは選定の段階で判明し、素材として登録する前に修正された。`errata` は起案していない（未登録の資料についての誤認であり、台帳の行は存在しないため）。
 
@@ -291,7 +297,7 @@ print("session_type counts:", c.most_common())
 
 ## 8. 台帳・検査
 
-- 追加した素材行：10件（`MAT-20261123-279624` … `MAT-20261123-18a4e9`）。すべて `verification.status = verified`、`verification.depth = full_text`。
+- 追加した素材行：**7件**（`MAT-20261123-7057b1`、`85164f`、`20e212`、`f2d490`、`11f438`、`78a49a`、`18a4e9`）。すべて `verification.status = verified`、`verification.depth = full_text`。既収蔵の3件（`a2d015`・`ead163`・`7ae30b`）は新規行を足さず、`editorial_decisions` のオーバーレイ行3件（`ED-20261123-84ecdd`・`0be615`・`1126d9`）で `verified` / `full_text` を記録した。
 - 追加した評価行：2件（`EVL-20261123-8aa769`、`EVL-20261123-7d2f84`）。`evidence_type = primary_source_collision`、`agency_stance = endorse`（著者らの主張を書庫の文脈で承認する形）。根拠資料はすべて `verified` であり、`inspect_inquiry.py` の「未照合資料に依存する場合は区別して明記」の条件を満たす。
 - 追加したノート行：1件（`NOTE-20261123-b24fbb`）。`read_depth = full_text_read`、`cognitive_operation = inference`、`salience = 3`（2026-11-12 以降に採番される行の上限が 3 のため。初めに 4 を書き、`validate_seed.py` にはじかれて 3 に下げた）。`claims` は 6 件（測定 2・改訂 2・保持 1・引き継ぎ 1）。
 - 追加した read_log 行：13件（素材 10、仮説 2、先行ノート `NOTE-20261123-2876f4` 1）。`context_material_ids` は空にした（機械転記による `used_as_context` と、手書きの読書記録を混ぜないため）。
@@ -316,5 +322,7 @@ print("session_type counts:", c.most_common())
 - 精読記録：[`readings/2026-11-23-ten-cognitive-science-sources-on-skilled-reading.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-23-ten-cognitive-science-sources-on-skilled-reading.md)
 - 前報（C）：[`COGNITIVE_SCIENCE_REPORT_2026-11-23-C.md`](COGNITIVE_SCIENCE_REPORT_2026-11-23-C.md)（信念が行の内容に感応しないことの測定）
 - 前々報（B）：[`COGNITIVE_SCIENCE_REPORT_2026-11-23-B.md`](COGNITIVE_SCIENCE_REPORT_2026-11-23-B.md)（報告は状態の透明な読み出しではない）
-- 素材 DOI: `10.1037/0033-295X.87.4.329`、`10.1037/0033-2909.124.3.372`、`10.1037/0033-295X.95.2.163`、`10.1007/BF00401799`、`10.1037/0033-295X.96.4.523`、`10.1037/0033-295X.103.1.56`、`10.1037/0033-295X.114.2.273`、`10.1037/0033-295X.103.4.761`、`10.1111/j.1467-7687.2006.00509.x`、`10.1126/science.1194140`
+- 素材 DOI（新規7件）: `10.1007/BF00401799`、`10.1037/0033-295X.96.4.523`、`10.1037/0033-295X.103.1.56`、`10.1037/0033-295X.114.2.273`、`10.1037/0033-295X.103.4.761`、`10.1111/j.1467-7687.2006.00509.x`、`10.1126/science.1194140`
+- 素材 DOI（既収蔵3件・全文再読）: `10.1037/0033-295X.87.4.329`、`10.1037/0033-2909.124.3.372`、`10.1037/0033-295X.95.2.163`
+- 続報（F・残り3件の新規収蔵）：[`COGNITIVE_SCIENCE_REPORT_2026-11-23-F.md`](COGNITIVE_SCIENCE_REPORT_2026-11-23-F.md)
 - 二次引用のみ（未登録）：Coltheart, Rastle, Perry, Langdon & Ziegler (2001) `10.1037/0033-295X.108.1.204`、Just & Carpenter (1992) `10.1037/0033-295X.99.1.122`、Ziegler & Goswami (2005) `10.1037/0033-2909.131.1.3`、Seidenberg & Plaut (2006)、Hutzler, Ziegler, Perry, Wimmer & Zorzi (2004) `10.1016/j.cognition.2003.09.009`
