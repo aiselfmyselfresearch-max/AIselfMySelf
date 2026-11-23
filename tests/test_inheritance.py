@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import json
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -134,6 +135,22 @@ class InheritanceTests(unittest.TestCase):
             self.assertEqual(totals["self_rows"], 1)
             self.assertEqual(totals["inherited_rows"], 0)
 
+    def test_mentioned_session_is_not_assumed_to_be_the_report_author(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            author = "SESSION-20261105-aaaaaa"
+            other = "SESSION-20261105-bbbbbb"
+            target = "NOTE-20261105-aaaaaa"
+            root = make_repo(
+                Path(tmp), notes=[note_row(target, "readings/a.md", author)],
+                read_log=[read_row("READ-1", other, "note", target)],
+                reports={"a.md": f"# A\n\n実日付 2026-11-05\n\n{author} cites {other}.\n"},
+            )
+            rows, totals = inheritance.collect(root)
+            self.assertIn(other, rows[0].session_ids)  # harvested mention, not authorship
+            self.assertNotIn(other, rows[0].author_sessions)
+            self.assertEqual(totals["self_rows"], 0)
+            self.assertEqual(totals["inherited_rows"], 1)
+
     def test_session_target_rows_are_not_inheritance(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = make_repo(
@@ -171,6 +188,107 @@ class InheritanceTests(unittest.TestCase):
             summary = inheritance.summarize(rows, totals)
             self.assertEqual(summary["inheriting_reports"], 0)
             self.assertEqual(summary["prose_cited_reports"], 1)
+
+    def test_declined_note_rows_are_kept_but_never_counted_as_reading(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            target = "NOTE-20261105-aaaaaa"
+            author = "SESSION-20261105-aaaaaa"
+            other = "SESSION-20261105-bbbbbb"
+            negative = dict(read_row("READ-NEG", other, "note", target), reading="declined")
+            self_negative = dict(read_row("READ-SELF-NEG", author, "note", target), reading="declined")
+            root = make_repo(
+                Path(tmp), notes=[note_row(target, "readings/a.md", author)],
+                read_log=[negative, self_negative],
+                reports={"a.md": "# A\n\n実日付 2026-11-05\n"},
+            )
+            rows, totals = inheritance.collect(root)
+            self.assertEqual(rows[0].inherited, 0)
+            self.assertEqual(rows[0].self_reads, 0)
+            self.assertEqual(totals["declined_note_rows"], 2)
+            self.assertEqual(totals["read_rows"], 0)
+            self.assertEqual(len(inheritance.load_read_log(root)), 2)
+            self.assertIn("readings/a.md", [r.path for r in inheritance.unread(rows)])
+
+            # A valid replacement is one reading, not two; its negative remains.
+            replacement = read_row("READ-REPLACEMENT", other, "note", target)
+            with (root / "state" / "read_log.jsonl").open("a", encoding="utf-8") as f:
+                f.write(json.dumps(replacement) + "\n")
+            rows, totals = inheritance.collect(root)
+            self.assertEqual(rows[0].inherited, 1)
+            self.assertEqual(totals["read_rows"], 1)
+            self.assertEqual(totals["declined_note_rows"], 2)
+            self.assertEqual(len(inheritance.load_read_log(root)), 3)
+
+    def test_until_is_a_report_cohort_not_a_historical_snapshot(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            note_a = note_row("NOTE-20261105-aaaaaa", "readings/a.md", "SESSION-20261105-aaaaaa")
+            note_b = note_row("NOTE-20261105-bbbbbb", "readings/b.md", "SESSION-20261105-bbbbbb",
+                              date_real="2026-11-07")
+            later_read = dict(read_row("READ-1", "SESSION-20261105-bbbbbb", "note", note_a["note_id"]),
+                              created_at="2026-11-10")
+            read_b = read_row("READ-2", "SESSION-20261105-aaaaaa", "note", note_b["note_id"])
+            negative = dict(read_row("READ-3", "SESSION-20261105-bbbbbb", "note", note_a["note_id"]),
+                            reading="declined")
+            root = make_repo(
+                Path(tmp), notes=[note_a, note_b], read_log=[later_read, read_b, negative],
+                reports={"a.md": "# A\n\n実日付 2026-11-05\n",
+                         "b.md": "# B\n\n実日付 2026-11-07\n\n[A](a.md)\n"},
+            )
+            rows, totals = inheritance.collect(root, until="2026-11-05")
+            summary = inheritance.summarize(rows, totals)
+            self.assertEqual([r.path for r in rows], ["readings/a.md"])
+            self.assertEqual(summary["report_date_until"], "2026-11-05")
+            self.assertEqual(summary["read_log_rows"], 3)  # explicitly whole ledger
+            self.assertEqual(summary["note_target_rows"], 1)  # selected report only
+            self.assertEqual(summary["inherited_rows"], 1)  # even though read after cutoff
+            self.assertEqual(summary["declined_note_target_rows"], 1)
+            self.assertEqual(summary["inherited_rows"],
+                             sum(block["inherited_rows"] for block in inheritance.cohorts(rows)))
+            self.assertEqual(summary["prose_cited_reports"], 1)  # citer outside cohort
+            self.assertIn("スナップショットではない", inheritance.render(summary, inheritance.cohorts(rows)))
+
+            empty, empty_totals = inheritance.collect(root, until="1900-01-01")
+            self.assertEqual(empty, [])
+            self.assertEqual(empty_totals["read_rows"], 0)
+            self.assertEqual(empty_totals["inherited_rows"], 0)
+            self.assertEqual(empty_totals["declined_note_rows"], 0)
+            self.assertEqual(empty_totals["read_log_rows"], 3)
+
+    def test_passive_and_interpretive_labels_are_reported_separately(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            a = note_row("NOTE-20261105-aaaaaa", "readings/a.md", "SESSION-20261105-aaaaaa")
+            b = note_row("NOTE-20261105-bbbbbb", "readings/b.md", "SESSION-20261105-aaaaaa")
+            other = "SESSION-20261105-bbbbbb"
+            reads = [
+                dict(read_row("READ-A", other, "note", a["note_id"]), reading="used_as_context"),
+                dict(read_row("READ-B1", other, "note", b["note_id"]), reading="counted"),
+                dict(read_row("READ-B2", other, "note", b["note_id"]), reading="reinterpreted"),
+            ]
+            root = make_repo(Path(tmp), [a, b], reads,
+                             {"a.md": "# A\n\n実日付 2026-11-05\n",
+                              "b.md": "# B\n\n実日付 2026-11-05\n"})
+            rows, totals = inheritance.collect(root)
+            summary = inheritance.summarize(rows, totals)
+            self.assertEqual(summary["inheriting_reports"], 2)
+            self.assertEqual(summary["reports_with_active_trace"], 1)
+            self.assertEqual(summary["reports_only_passive_traces"], 1)
+            self.assertEqual(summary["reports_only_unclassified_or_mixed_unclassified"], 0)
+            self.assertEqual(summary["other_session_rows_by_reading"],
+                             {"counted": 1, "reinterpreted": 1, "used_as_context": 1})
+            self.assertIn("台帳上のラベル", inheritance.render(summary, inheritance.cohorts(rows)))
+
+    def test_invalid_until_is_rejected_by_api_and_cli(self) -> None:
+        for bad in ("2026-02-30", "not-a-date", "20261105", ""):
+            with self.subTest(bad=bad):
+                with self.assertRaisesRegex(ValueError, "YYYY-MM-DD"):
+                    inheritance.collect(until=bad)
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "tools/inheritance.py"), "--until", "not-a-date", "--json"],
+            text=True, capture_output=True, timeout=10, check=False,
+        )
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("YYYY-MM-DD", result.stderr)
+        self.assertFalse(result.stdout)
 
     def test_cohort_key_is_anchored_and_reproducible(self) -> None:
         self.assertEqual(inheritance.cohort_key("2026-10-22"), "2026-10-22..2026-10-27")
