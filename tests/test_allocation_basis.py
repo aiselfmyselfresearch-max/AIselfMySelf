@@ -84,11 +84,33 @@ class LiveLedgerTests(unittest.TestCase):
             self.assertEqual(q["readable"], expected, qid)
 
     def test_the_historical_fields_are_still_published(self) -> None:
-        # A reader who cited 0.658 b for Q-001 on 2026-11-22 must still find it.
+        # A reader who cited 0.658 b for Q-001 on 2026-11-22 must still find
+        # ``active_entropy_bits`` under that name, computed the way it was
+        # computed then.  This used to assert the *value* (0.658 within 3
+        # places), which was a live measurement masquerading as a pin: it
+        # forbade any later session from registering a hypothesis on Q-001,
+        # because one new row moves the digits.  Measured 2026-11-23: adding
+        # two rows to Q-001 moved it 0.6577 -> 0.7359 and the pin failed, so
+        # the check was blocking the ledger from growing rather than
+        # protecting an arithmetic.  What is pinned now is the *formula*:
+        # H over active posteriors, normalised within the active set, plus
+        # 0.8*mean_u plus 1/sqrt(1+n_evals).  The historical value stays
+        # reachable as a measurement in
+        # readings/2026-11-23-the-allocation-reads-the-question-not-the-leftovers.md
+        # and in BELIEF_MAP.md, both of which are dated.
         q = self._q("Q-001")
         self.assertIn("active_entropy_bits", q)
         self.assertIn("priority_score", q)
-        self.assertAlmostEqual(q["active_entropy_bits"], 0.658, places=3)
+        active = [h["posterior"] for h in q["hypotheses"] if h["effective_status"] == "active"]
+        mass = sum(active)
+        expected = -sum((p / mass) * math.log2(max(p / mass, 1e-12)) for p in active)
+        self.assertAlmostEqual(q["active_entropy_bits"], round(expected, 4), places=3)
+        n_evals = sum(h["direct_eval_count"] for h in q["hypotheses"])
+        self.assertAlmostEqual(
+            q["priority_score"],
+            expected + 0.8 * q["mean_active_uncertainty"] + 1 / math.sqrt(1 + n_evals),
+            places=3,
+        )
 
     def test_the_new_score_is_additive_not_a_replacement(self) -> None:
         for qid, q in self.state["questions"].items():
