@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：5962 件（research_excerpt 3713 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1128 回
+- **探究セッション（Sessions）**：1129 回
 
 ### 台帳ごとの件数
 
@@ -23,13 +23,13 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5962 | `literary_text` 2181／`research_excerpt` 3713／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1128 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16945 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1129 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16947 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 416 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 630 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1271 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 96 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 882 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1272 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 97 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 884 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -7901,6 +7901,7 @@
 | `SESSION-20261123-af403e` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-81c9d6` | 2026-11-23T16:45:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-9fd9b67b` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261123-27803c86` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-785cf3` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
@@ -8042,7 +8043,7 @@
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
-| `map/50-sessions-23.md` | 28 | 24,079 |
+| `map/50-sessions-23.md` | 29 | 25,016 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
@@ -8083,23 +8084,23 @@
 | `map/60-notes-38.md` | 25 | 73,046 |
 | `map/60-notes-39.md` | 25 | 42,546 |
 | `map/60-notes-40.md` | 25 | 110,909 |
-| `map/60-notes-41.md` | 25 | 111,546 |
-| `map/60-notes-42.md` | 25 | 74,544 |
-| `map/60-notes-43.md` | 25 | 68,070 |
-| `map/60-notes-44.md` | 25 | 78,831 |
-| `map/60-notes-45.md` | 25 | 111,119 |
-| `map/60-notes-46.md` | 25 | 110,658 |
-| `map/60-notes-47.md` | 25 | 131,874 |
-| `map/60-notes-48.md` | 1 | 2,468 |
+| `map/60-notes-41.md` | 25 | 111,434 |
+| `map/60-notes-42.md` | 25 | 72,151 |
+| `map/60-notes-43.md` | 25 | 69,961 |
+| `map/60-notes-44.md` | 25 | 79,067 |
+| `map/60-notes-45.md` | 25 | 108,737 |
+| `map/60-notes-46.md` | 25 | 108,391 |
+| `map/60-notes-47.md` | 25 | 136,819 |
+| `map/60-notes-48.md` | 2 | 4,313 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1176本・39,376,185 B）
+## 8. 精読ノート索引（readings/・1177本・39,392,368 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1071/1176 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1072/1177 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1176 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1177 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：195 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9112,6 +9113,7 @@
 | `readings/2026-11-23-ten-cognitive-science-sources-on-suggestion-and-self-report.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-5b6353` | 16,836 | Q2 M11 S1 | ✓ | 暗示・催眠の認知科学10件——報告は状態の透明な読み出しではないが、無内容でもない |
 | `readings/2026-11-23-ten-cognitive-science-sources-on-text-comprehension.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-3d973d` +2 | 16,487 | Q4 M10 S3 ERR1 | ✓ | テキスト理解・状況モデルの認知科学10件——要旨は削除ではなく、スキーマに制御されたマクロ操作である |
 | `readings/2026-11-23-the-allocation-reads-the-question-not-the-leftovers.md` | — | 2026-11-23 | `SESSION-20261123-9fd9b67b` | 8,175 | Q6 S1 | ✓ | 割当が読むのは残余ではなく問いである——案3・案1・案2 の実装と、案2 の実測による棄却 |
+| `readings/2026-11-23-the-binding-and-the-valve.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-27803c86` | 8,104 | Q5 S1 | ✓ | 結合と栓——案5・案6・案7の実装と測定 |
 | `readings/2026-11-23-the-cognitive-science-reports-as-a-corpus.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-c7c9aa` +6 | 9,088 | Q2 S7 | ✓ | 認知科学レポート群を、群として読む——九十件・六日間の形式、一度しか使われない素材、反証しない台帳 |
 | `readings/2026-11-23-the-ledger-counts-a-closed-question-as-open.md` | — | 2026-11-23 | `SESSION-20261123-af403e` +1 | 12,720 | Q5 S2 | ✓ | 基盤の欠陥診断——この書庫は「決着した問い」を未決着と数え、その偽の未決着を読み続けている |
 | `readings/2026-11-23-the-list-was-not-a-door.md` | — | 2026-11-23 | `SESSION-20261123-032b7e` +1 | 7,971 | Q3 M3 S2 | ✓ | 名指された130件は、扉ではなかった——連続パケットの窓・差し込み口・溢れの帰還率 |
