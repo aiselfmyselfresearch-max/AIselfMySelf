@@ -102,6 +102,15 @@ BUDGETS: tuple[Budget, ...] = (
         # KiB = 551,377 <= 540 KiB), keeping the canary live: the next ~13 KiB
         # of growth fires it again. hard_bytes (2 MiB) unchanged, and the
         # remedy below is untouched. Not automatic -- re-measure after merge.
+        # 2026-11-23 (SESSION-... proposal 2 implemented): the per-hypothesis
+        # detail block was rendered for every (hypothesis x question) pair --
+        # 852 lines, 434,420 B, 80.6% of the file, while 88 of 93 hypotheses held
+        # <1%.  The renderer now prints the full block for the top 12 by posterior
+        # plus every warned hypothesis and one line for the rest, which took the
+        # file from 538,821 B to 322,982 B on this tree without changing a single
+        # posterior.  The cap is deliberately NOT lowered here: the compression
+        # is a display policy, and a session that asks for --full legitimately
+        # needs the headroom.  Re-measure before lowering it.
         soft_bytes=540 * 1024,
         hard_bytes=2 * MIB,
         remedy="Keep BELIEF_MAP.md focused on active/refuted hypothesis distributions via tools/belief_state.py --write-map",

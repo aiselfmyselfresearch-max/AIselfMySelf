@@ -39,6 +39,11 @@
       "items": {"type": "string", "minLength": 1},
       "uniqueItems": true
     },
+    "primary_question_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The one question this hypothesis is primarily about, chosen from question_ids. Optional: 93 rows written before 2026-11-23 cannot be rewritten (append-only), and a value filled in afterwards would be a manufactured decision rather than a recovered one. When absent, readers must treat the hypothesis's attribution as undecided and say so; tools/belief_state.py prints the derived candidate (question_ids[0]) marked as derived, never as decided. Why the field exists: 34 of those 93 hypotheses (36.6%) carry more than one question_ids entry, so a family-level mass total that groups by question reads the same mass twice (readings/2026-11-23-coarsening-concentrates-and-what-the-harness-should-change.md sections 5 and 7)."
+    },
     "title": {
       "type": "string",
       "minLength": 4

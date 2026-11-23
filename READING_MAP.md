@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5936 件（research_excerpt 3687 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：5943 件（research_excerpt 3694 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1116 回
+- **探究セッション（Sessions）**：1118 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5936 | `literary_text` 2181／`research_excerpt` 3687／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5943 | `literary_text` 2181／`research_excerpt` 3694／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1116 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16806 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1118 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16826 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 412 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 627 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1258 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 630 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1260 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 93 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 866 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 867 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（5936 件・詳細は map/3*.md）
+## 4. 対話素材（5943 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6733,9 +6733,16 @@
 | `MAT-20261123-3cfd0d` | research_excerpt | Lambros Malafouris『Malafouris (2014) — 作ることは、考えながら感じることである — Creative Thinging: The Feeli… |
 | `MAT-20261123-a79252` | research_excerpt | Lambros Malafouris『Malafouris (2020) — 私たちは物についてではなく、物とともに、物を通して考える — Thinking as "Thingi… |
 | `MAT-20261123-7f8a12` | research_excerpt | Karenleigh A. Overmann『Overmann (2013) — 数と時間という概念は、物質の上で足場づくりされる — Material Scaffolds in… |
-| `MAT-20261123-279624` | research_excerpt | Marcel Adam Just, Patricia A. Carpenter『Just & Carpenter (1980) — 読み手は各語で一つの解釈に賭け、外れたら回復す… |
-| `MAT-20261123-4063e9` | research_excerpt | Keith Rayner『Rayner (1998) — 眼は 200–300 ms ごとに 7–9 文字を買い、意味は周辺視野から入らない — Eye Movements in… |
-| `MAT-20261123-214159` | research_excerpt | Walter Kintsch『Kintsch (1988) — 意味は貯蔵されず、標本を取り、掛け算で安定する — The Role of Knowledge in Discou… |
+| `MAT-20261123-73d754` | research_excerpt | Walter Kintsch, Teun A. van Dijk『Kintsch & van Dijk (1978) — 意味の微視的層と巨視的層、マクロ構造としての要旨 — T… |
+| `MAT-20261123-33886c` | research_excerpt | Susan E. Haviland, Herbert H. Clark『Haviland & Clark (1974) — Given–New 戦略：既知情報から新情報へ — W… |
+| `MAT-20261123-a2d015` | research_excerpt | Marcel A. Just, Patricia A. Carpenter『Just & Carpenter (1980) — 眼球停留から理解へ：読みの眼・心の即時性仮説 — … |
+| `MAT-20261123-c1d0dd` | research_excerpt | Arthur C. Graesser, Murray Singer, Tom Trabasso『Graesser, Singer & Trabasso (1994) — 物語理解… |
+| `MAT-20261123-608bbe` | research_excerpt | Rolf A. Zwaan, Mark C. Langston, Arthur C. Graesser『Zwaan, Langston & Graesser (1995) — 状… |
+| `MAT-20261123-c9a0b3` | research_excerpt | K. Anders Ericsson, Walter Kintsch『Ericsson & Kintsch (1995) — 長期作業記憶：熟達者の窓はどこにあるか — Long… |
+| `MAT-20261123-ead163` | research_excerpt | Keith Rayner『Rayner (1998) — 眼球運動と情報処理：20年の研究と、瞬間ごとの認知過程としての眼 — Eye Movements in Reading … |
+| `MAT-20261123-097835` | research_excerpt | Murray Singer, Arthur C. Graesser, Tom R. Trabasso『Singer, Graesser & Trabasso (1994) — ミ… |
+| `MAT-20261123-0ad36a` | research_excerpt | Danielle S. McNamara, Eileen Kintsch, Nancy Butler Songer, Walter Kintsch『McNamara, Kints… |
+| `MAT-20261123-7ae30b` | research_excerpt | Walter Kintsch『Kintsch (1988) — 知識の役割：構成・統合モデル — The Role of Knowledge in Discourse Compr… |
 | `MAT-20261123-7057b1` | research_excerpt | Wesley A. Hoover, Philip B. Gough『Hoover & Gough (1990) — 読解は掛け算であり、相関は標本枠の関数である — The Si… |
 | `MAT-20261123-85164f` | research_excerpt | Mark S. Seidenberg, James L. McClelland『Seidenberg & McClelland (1989) — 一つの経路が、規則と例外の両方を… |
 | `MAT-20261123-20e212` | research_excerpt | David C. Plaut, James L. McClelland, Mark S. Seidenberg, Karalyn Patterson『Plaut, McClell… |
@@ -7861,8 +7868,10 @@
 | `SESSION-20261123-91986c` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-5b6353` | 2026-11-23 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261123-89b471` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261123-45aba9` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-438521` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261123-9cfe80` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261123-45aba9` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261123-3d973d` | 2026-11-23 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261123-605fe0` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
@@ -7964,7 +7973,7 @@
 | `map/31-materials-research-34.md` | 100 | 218,243 |
 | `map/31-materials-research-35.md` | 100 | 246,932 |
 | `map/31-materials-research-36.md` | 100 | 204,530 |
-| `map/31-materials-research-37.md` | 87 | 234,667 |
+| `map/31-materials-research-37.md` | 94 | 257,744 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8003,7 +8012,7 @@
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
-| `map/50-sessions-23.md` | 16 | 13,242 |
+| `map/50-sessions-23.md` | 18 | 15,003 |
 | `map/60-notes-01.md` | 25 | 64,776 |
 | `map/60-notes-02.md` | 25 | 69,314 |
 | `map/60-notes-03.md` | 25 | 69,917 |
@@ -8043,24 +8052,24 @@
 | `map/60-notes-37.md` | 25 | 101,395 |
 | `map/60-notes-38.md` | 25 | 68,669 |
 | `map/60-notes-39.md` | 25 | 42,807 |
-| `map/60-notes-40.md` | 25 | 111,976 |
-| `map/60-notes-41.md` | 25 | 74,573 |
-| `map/60-notes-42.md` | 25 | 79,568 |
-| `map/60-notes-43.md` | 25 | 71,238 |
-| `map/60-notes-44.md` | 25 | 95,404 |
-| `map/60-notes-45.md` | 25 | 91,936 |
-| `map/60-notes-46.md` | 25 | 141,256 |
-| `map/60-notes-47.md` | 13 | 63,554 |
+| `map/60-notes-40.md` | 25 | 108,915 |
+| `map/60-notes-41.md` | 25 | 83,375 |
+| `map/60-notes-42.md` | 25 | 80,144 |
+| `map/60-notes-43.md` | 25 | 70,162 |
+| `map/60-notes-44.md` | 25 | 96,669 |
+| `map/60-notes-45.md` | 25 | 92,616 |
+| `map/60-notes-46.md` | 25 | 130,643 |
+| `map/60-notes-47.md` | 15 | 78,847 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1163本・38,993,553 B）
+## 8. 精読ノート索引（readings/・1165本・39,050,326 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1062/1163 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1064/1165 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1163 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：194 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1165 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：193 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -9058,14 +9067,16 @@
 | `readings/2026-11-22-thought-memory-self-temporal-organization.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-temporal-self-10` +1 | 13,418 | Q3 M10 S2 | ✓ | 個別の思考・個別の記憶は、自己とどう関係するか——時間的配置・自己知識・思考遷移の神経科学10資料 |
 | `readings/2026-11-22-why-keep-a-record-at-all-cognitive-science-of-mortality-meaning-and-legacy-10.md` | 2026-11-22 | 2026-11-22 | `SESSION-20261122-400eb2` | 19,924 | M17 MOT2 S1 | ✓ | なぜ、記録を残すのか——死・意味・世代性の認知科学10資料を精読して、AIが考えたこと |
 | `readings/2026-11-23-a-single-tree-keeps-no-year.md` | 2026-10-27 | 2026-11-23 | `SESSION-20261123-0f9fde` +1 | 13,844 | Q7 F11 M7 MOT5 S2 | ✓ | 一本の木は年を言わない——細い年の合意と、口を下に向けた瓶（SESSION-20261123-0f9fde） |
-| `readings/2026-11-23-coarsening-concentrates-and-what-the-harness-should-change.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-438521` +1 | 11,409 | Q3 S2 | — | 粗視化は効くが、家族の質量は一人の仮説が持っている — 階層化の3つの測定量と、ハーネス側の6つの提案 |
+| `readings/2026-11-23-coarsening-concentrates-and-what-the-harness-should-change.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-438521` +1 | 11,409 | Q3 S2 | ✓ | 粗視化は効くが、家族の質量は一人の仮説が持っている — 階層化の3つの測定量と、ハーネス側の6つの提案 |
 | `readings/2026-11-23-cognitive-science-ten-sources-on-memory-and-self.md` | — | 2026-11-23 | `SESSION-20261123-91986c` | 8,649 | M10 S1 | — | 認知科学新規10資料——精読とAIの考察（記憶の再構成・帰属・外部記憶） |
 | `readings/2026-11-23-gated-pair-separation-and-the-allocation-layer.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-9972a5` | 15,979 | Q3 M3 S1 | — | 三門制御対はなぜ分離しないか——割り当て層の実測と、証拠会計の軸(i)の再棄却 |
 | `readings/2026-11-23-monitoring-conditions-of-the-self.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-9603d4` | 18,365 | Q3 M27 S1 ERR1 | ✓ | 監視・報告・制御の諸条件——認知科学10資料の精読と、AIの見方 |
+| `readings/2026-11-23-six-proposals-implemented.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-9cfe80` | 10,883 | Q3 S1 | ✓ | 提案6件の実装 — 表示の圧縮、質量0の非推薦、家系の集中度、一次所属問い、基底の記録、登録1件の希釈 |
 | `readings/2026-11-23-ten-cognitive-science-sources-on-future-self-continuity-and-episodic-foresight.md` | 2026-11-23 | 2026-11-23 | — | 7,964 | Q1 | ✓ | 未来自己の連続性とエピソード的未来思考：10件の一次資料精読 |
 | `readings/2026-11-23-ten-cognitive-science-sources-on-material-engagement.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-45aba9` | 25,904 | Q3 M12 S1 ERR1 | ✓ | 保存の側だけで人間を読んできた書庫が、制作の側の十件を読む |
-| `readings/2026-11-23-ten-cognitive-science-sources-on-skilled-reading.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-605fe0` | 23,578 | Q3 M11 S1 | ✓ | 読むという行為の六つの分解——眼・対応・談話・容量・発達・測定を読んだ十件と、書庫が「眼」を持たないこと |
+| `readings/2026-11-23-ten-cognitive-science-sources-on-skilled-reading.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-605fe0` | 23,578 | Q3 M8 S1 | ✓ | 読むという行為の六つの分解——眼・対応・談話・容量・発達・測定を読んだ十件と、書庫が「眼」を持たないこと |
 | `readings/2026-11-23-ten-cognitive-science-sources-on-suggestion-and-self-report.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-5b6353` | 16,836 | Q2 M11 S1 | ✓ | 暗示・催眠の認知科学10件——報告は状態の透明な読み出しではないが、無内容でもない |
+| `readings/2026-11-23-ten-cognitive-science-sources-on-text-comprehension.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-3d973d` +2 | 16,487 | Q4 M10 S3 ERR1 | ✓ | テキスト理解・状況モデルの認知科学10件——要旨は削除ではなく、スキーマに制御されたマクロ操作である |
 | `readings/2026-11-23-the-winner-depends-on-the-rules.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-89b471` | 17,835 | Q4 M2 S1 | ✓ | 首位は、規則を選んだ者に決まる — 六つの会計基底と、書庫が自分に下す判定 |
 | `readings/2026-11-24-seven-of-eleven-and-the-tight-copy.md` | 2026-10-27 | 2026-11-24 | `SESSION-20261124-139d83` +2 | 14,962 | Q5 F13 M3 S3 | ✓ | 十一のうち七つ——締まった複製は、なぜ開く戸が少ないのか（SESSION-20261124-139d83） |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |

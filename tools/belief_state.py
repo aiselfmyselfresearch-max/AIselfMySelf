@@ -207,6 +207,24 @@ def pair_examined_only_by_supports(ha: dict[str, Any], hb: dict[str, Any]) -> bo
 #   - and reversed only on saturated Q-002 (98.6% mass): -5.8%.
 UNSATURATED_PAIR_MASS_THRESHOLD = 0.90
 
+# 2026-11-23 (proposal 2 of readings/2026-11-23-coarsening-concentrates-and-
+# what-the-harness-should-change.md §6): the per-hypothesis detail block in
+# BELIEF_MAP.md -- proposition, scope_conditions, exclusion_clause, audit meta,
+# separation audit, sources -- was rendered for every (hypothesis x question)
+# pair.  Measured on main @ dd625f8c: 852 detail lines, 434,420 B, 80.6% of a
+# 538,821 B file, while 88 of 93 hypotheses carried P < 1%.  The file is
+# regenerated on every hypothesis registration, so that block -- not the
+# prose -- was the structural half of the size budget.
+#
+# The rule is now: render the detail block for the top N hypotheses by
+# posterior, plus any hypothesis that carries a warning badge or an erratum
+# (the audit information a reader must not lose), and give every other
+# hypothesis one line that keeps its ID, status, P, u, title and count of
+# sources, plus the full text behind `--full`.  Nothing is dropped from the
+# ledger; this is a render policy, and `--full` reproduces the old file byte
+# for byte apart from the heading that says which policy produced it.
+DETAIL_TOP_N = 12
+
 # Minimum posterior mass at which a single independent witnessing session
 # (`witness_eval_session_count <= 1`) is flagged as a single-witness illusion
 # (readings/2026-11-16-what-crosses-the-unheld-interval.md §5.2, §7-3).
@@ -220,6 +238,72 @@ MECHANICAL_READ_LOG_MARK = "バックフィル"
 def pair_mass_sum(ha: dict[str, Any], hb: dict[str, Any]) -> float:
     """Return the combined posterior mass of a candidate pair (rounded to 4 dp)."""
     return round(float(ha.get("posterior", 0.0)) + float(hb.get("posterior", 0.0)), 4)
+
+
+# 2026-11-23 (proposal 5 of readings/2026-11-23-coarsening-concentrates-and-
+# what-the-harness-should-change.md §6): the EIG rule multiplies two posteriors,
+# so a pair whose combined mass is 0.0000 still produces a number, and it was
+# printed as 「最優先検証ターゲット」.  Measured on main @ dd625f8c, both Q-002 and
+# Q-003 offered a pair at `pair_mass_sum=0.0000` (the leader held 99.99%), and
+# both were flagged `unsaturated_supports_ratchet=True` -- i.e. a pair with no
+# mass was reported as 「未飽和」.  Sorting ties by ID then decided which two
+# zero-mass hypotheses were recommended.
+#
+# The floor is a *display and recommendation* threshold, not a belief change:
+# no posterior moves, and `expected_info_gain` is still reported.  Below it the
+# question says 「推薦なし」 and names the hypothesis that actually holds the
+# mass, because that is the fact the reader needs.
+PAIR_RECOMMENDATION_MASS_FLOOR = 0.01
+
+
+def pair_mass_is_negligible(
+    mass_sum: float,
+    *,
+    floor: float = PAIR_RECOMMENDATION_MASS_FLOOR,
+) -> bool:
+    """True when a candidate pair carries too little mass to be worth testing.
+
+    ``0.01`` (1% combined) is one tenth of ``UNSATURATED_PAIR_MASS_THRESHOLD``
+    and eight times the smallest non-zero posterior the engine ever prints
+    (0.1%).  It is a threshold on *recommendation*, never on update: a pair
+    below it may still be the highest-EIG pair in the question, and that fact
+    is reported alongside the refusal rather than silently omitted.
+    """
+    return round(float(mass_sum), 6) < floor
+
+
+def pair_shows_ratchet_warning(pair: dict[str, Any] | None) -> bool:
+    """Whether to print the unsaturated-ratchet warning for a rendered pair.
+
+    ``ratchet_warning`` is the field computed since 2026-11-23: the arithmetic
+    predicate AND at least ``PAIR_RECOMMENDATION_MASS_FLOOR`` of combined mass.
+    A pair holding 0.00% cannot receive an inflow, so warning that it is
+    「未飽和」 was the defect proposal 5 removed. Records without the field
+    (older fixtures, stored JSON) fall back to the raw predicate so nothing
+    they rendered before disappears.
+    """
+    if not pair:
+        return False
+    if "ratchet_warning" in pair:
+        return bool(pair["ratchet_warning"])
+    return bool(pair.get("unsaturated_supports_ratchet"))
+
+
+def pair_is_recommendable(pair: dict[str, Any] | None) -> bool | None:
+    """Whether a rendered pair record should be offered as a test.
+
+    ``None`` means the record predates the field (older fixtures and callers
+    pass a bare pair); those render exactly as before, so a stored JSON dump is
+    still readable and no historical output is re-worded.
+    """
+    if not pair:
+        return None
+    rec = pair.get("recommended")
+    if isinstance(rec, bool):
+        return rec
+    if "pair_mass_sum" in pair:
+        return not pair_mass_is_negligible(pair["pair_mass_sum"])
+    return None
 
 
 def pair_has_unsaturated_supports_ratchet(
@@ -566,6 +650,79 @@ def _generation_depths(hypotheses: dict[str, dict[str, Any]]) -> dict[str, int]:
     return depths
 
 
+def root_ancestor_ids(hypotheses: dict[str, dict[str, Any]]) -> dict[str, str]:
+    """Map every hypothesis to the root of its lineage (family) — the first parent, recursively.
+
+    This is the definition the 2026-11-23 measurement used (proposals 3 and 4 of
+    readings/2026-11-23-coarsening-concentrates-and-what-the-harness-should-
+    change.md). It is deliberately the *same* single-parent walk, not a new one:
+    a `synthesizes` row has several parents and the family a reader gets depends
+    on which parent is walked first, so the choice is stated here rather than
+    left implicit. Cycles and missing parents resolve to the hypothesis itself.
+    """
+    roots: dict[str, str] = {}
+
+    def walk(hid: str, seen: set[str]) -> str:
+        if hid in roots:
+            return roots[hid]
+        if hid in seen or hid not in hypotheses:
+            return hid
+        seen.add(hid)
+        parents = [
+            p for p in (hypotheses[hid].get("parent_hypothesis_ids") or [])
+            if isinstance(p, str) and p in hypotheses and p != hid
+        ]
+        root = walk(parents[0], seen) if parents else hid
+        roots[hid] = root
+        return root
+
+    for hid in hypotheses:
+        walk(hid, set())
+    return roots
+
+
+def question_families(
+    hyp_entries: list[dict[str, Any]],
+    roots: dict[str, str],
+) -> list[dict[str, Any]]:
+    """Group one question's rendered hypotheses into lineage families.
+
+    Each family carries its total mass **and the concentration that mass has**:
+    ``top_share`` is the largest single member's share of the family total, and
+    ``top_hypothesis_id`` names it.  The two numbers are computed together and
+    are never meant to be read apart -- measured on main @ dd625f8c the family
+    totals looked like agreement while 68-99.7% of every family's mass sat in one
+    hypothesis, so a family row without ``top_share`` would amplify exactly the
+    misreading it is meant to prevent (report §4, §7-2).
+
+    Sorting is by family total, largest first, ties broken by root ID so the
+    output stays deterministic.
+    """
+    if not hyp_entries:
+        return []
+    total = sum(float(h.get("posterior") or 0.0) for h in hyp_entries) or 1.0
+    groups: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for h in hyp_entries:
+        groups[roots.get(h["hypothesis_id"], h["hypothesis_id"])].append(h)
+    rows: list[dict[str, Any]] = []
+    for root_id, members in groups.items():
+        mass = sum(float(h.get("posterior") or 0.0) for h in members)
+        top = max(members, key=lambda h: (float(h.get("posterior") or 0.0), h["hypothesis_id"]))
+        top_mass = float(top.get("posterior") or 0.0)
+        rows.append({
+            "root_hypothesis_id": root_id,
+            "member_count": len(members),
+            "mass": round(mass, 6),
+            "mass_share": round(mass / total, 4),
+            "top_hypothesis_id": top["hypothesis_id"],
+            "top_hypothesis_mass": round(top_mass, 6),
+            "top_share_within_family": round(top_mass / mass, 4) if mass > 0 else 0.0,
+            "generations": sorted({int(h.get("generation") or 0) for h in members}),
+        })
+    rows.sort(key=lambda r: (-r["mass"], r["root_hypothesis_id"]))
+    return rows
+
+
 def assign_session_role(
     seed: str | None = None,
     question_summary: dict[str, Any] | None = None,
@@ -736,6 +893,10 @@ def compute_belief_state(
 
     errata_by_target = build_errata_index(errata)
     depths = _generation_depths(hypotheses)
+    # 2026-11-23 (proposals 3, 4): lineage families. Computed once, above every
+    # question loop, so the same hypothesis cannot land in two different
+    # families depending on which question rendered it first.
+    family_roots = root_ancestor_ids(hypotheses)
 
     # 2026-11-16 (P-6): a correction can name an evaluation row as its subject.
     # Until now such a correction only raised a flag on the hypothesis, so
@@ -1146,8 +1307,23 @@ def compute_belief_state(
                 len(direct_evals) > 0 and same_sess_count > 0 and cross_sess_count == 0
             )
 
+            declared_primary = hyp.get("primary_question_id")
             hyp_entries.append({
                 "hypothesis_id": hid,
+                # 2026-11-23 (proposal 4): the question this row is *primarily*
+                # about. `declared` is what the ledger says (empty for all 93
+                # rows written before the field existed); `derived` is printed
+                # only to keep the attribution from being silently invented, and
+                # is never treated as a decision by any grouping here.
+                "primary_question_id": (
+                    declared_primary
+                    if isinstance(declared_primary, str) and declared_primary.strip()
+                    else ""
+                ),
+                "primary_question_id_source": "declared" if declared_primary else "undecided",
+                "primary_question_id_derived": (hyp.get("question_ids") or [""])[0],
+                "multi_question": len(hyp.get("question_ids") or []) > 1,
+                "family_root_hypothesis_id": family_roots.get(hid, hid),
                 "title": hyp.get("title", ""),
                 "proposition": hyp.get("proposition", ""),
                 "scope_conditions": hyp.get("scope_conditions", []),
@@ -1200,6 +1376,7 @@ def compute_belief_state(
         gen0_mass = sum(h["posterior"] for h in hyp_entries if h["generation"] == 0)
         gen1_mass = sum(h["posterior"] for h in hyp_entries if h["generation"] >= 1)
 
+        families = question_families(hyp_entries, family_roots)
         active_entries = [h for h in hyp_entries if h["effective_status"] == "active"]
         unexamined_active_ids = [
             h["hypothesis_id"] for h in active_entries if h["direct_eval_count"] == 0
@@ -1244,6 +1421,24 @@ def compute_belief_state(
                         "lineage_relation": pair_lineage_relation(ha, hb),
                         "examined_only_by_supports": pair_examined_only_by_supports(ha, hb),
                         "unsaturated_supports_ratchet": pair_has_unsaturated_supports_ratchet(ha, hb),
+                        # 2026-11-23 (proposal 5): a pair below the mass floor is
+                        # still *selected* (the loop above is unchanged) but is
+                        # not *recommended*. Keeping the pair in the record and
+                        # refusing the recommendation in the render is the whole
+                        # change: no posterior, no uncertainty, no EIG moves.
+                        "recommended": not pair_mass_is_negligible(
+                            pair_mass_sum(ha, hb)
+                        ),
+                        "recommendation_floor": PAIR_RECOMMENDATION_MASS_FLOOR,
+                        # The ratchet is a statement about mass flowing *into*
+                        # a pair. A pair with no mass cannot have any flow into
+                        # it, so the warning is withheld below the floor even
+                        # though the arithmetic predicate stays True. Both are
+                        # reported; only one is rendered as a warning.
+                        "ratchet_warning": (
+                            pair_has_unsaturated_supports_ratchet(ha, hb)
+                            and not pair_mass_is_negligible(pair_mass_sum(ha, hb))
+                        ),
                     }
 
         # Active-only entropy measures unresolved competition among live scoped hypotheses
@@ -1270,6 +1465,12 @@ def compute_belief_state(
             "total_evaluations": total_evals_q,
             "priority_score": round(priority, 4),
             "top_competing_pair": best_pair,
+            # 2026-11-23 (proposal 3): family mass, ALWAYS with the concentration
+            # it hides. A caller that reads `family_mass` and ignores
+            # `top_share_within_family` reproduces the misreading this field was
+            # added to prevent, so both are computed here and rendered together.
+            "families": families,
+            "family_count": len(families),
             "unexamined_active_hypothesis_ids": unexamined_active_ids,
             "awaiting_external_audit_ids": awaiting_external_audit_ids,
             "hypotheses": hyp_entries,
@@ -1283,6 +1484,29 @@ def compute_belief_state(
     state = {
         "total_hypotheses": len(hypotheses),
         "total_evaluations": len(evaluations),
+        # 2026-11-23 (proposal 4): how much of the ledger has decided its
+        # primary question. Reported at the top level so a reader cannot learn
+        # the attribution rate only by opening every question.
+        "belief_basis": belief_basis_label(
+            receiver_gated=receiver_gated,
+            temporal_heir_guard=temporal_heir_guard,
+            narrowing_partner_share=narrowing_partner_share,
+            pair_level_repeat=pair_level_repeat,
+            heir_credit=heir_credit,
+        ),
+        "multi_question_hypotheses": {
+            "multi_question": sum(
+                1 for h in hypotheses.values() if len(h.get("question_ids") or []) > 1
+            ),
+            "with_primary": sum(
+                1 for h in hypotheses.values()
+                if str(h.get("primary_question_id") or "").strip()
+            ),
+            "without_primary": sum(
+                1 for h in hypotheses.values()
+                if not str(h.get("primary_question_id") or "").strip()
+            ),
+        },
         "core_priority_ranking": [q["question_id"] for q in ranked_core],
         "provenance_verification": provenance_verification,
         "questions": question_states,
@@ -1488,6 +1712,12 @@ def select_least_separated_pair(
         "last_separated": last.get(key, ""),
         "policy": "least_separated",
         "min_posterior": min_posterior,
+        "recommended": not pair_mass_is_negligible(pair_mass_sum(ha, hb)),
+        "recommendation_floor": PAIR_RECOMMENDATION_MASS_FLOOR,
+        "ratchet_warning": (
+            pair_has_unsaturated_supports_ratchet(ha, hb)
+            and not pair_mass_is_negligible(pair_mass_sum(ha, hb))
+        ),
     }
 
 
@@ -1564,6 +1794,14 @@ def select_gated_pair(
                     "separations": seps,
                     "last_separated": last.get(key, ""),
                     "policy": "gated",
+                    "recommended": not pair_mass_is_negligible(lga + rgb),
+                    "recommendation_floor": PAIR_RECOMMENDATION_MASS_FLOOR,
+                    "ratchet_warning": (
+                        pair_has_unsaturated_supports_ratchet(
+                            {"posterior": lga}, {"posterior": rgb}
+                        )
+                        and not pair_mass_is_negligible(lga + rgb)
+                    ),
                 }
     return best_pair
 
@@ -1596,12 +1834,30 @@ def select_auto_question_id(
                     pair_parts.append(f"合算={pair['pair_mass_sum'] * 100:.1f}%")
                 if pair.get("examined_only_by_supports"):
                     pair_parts.append("両側 supports のみ")
-                if pair.get("unsaturated_supports_ratchet"):
+                if pair_shows_ratchet_warning(pair):
                     pair_parts.append("未飽和ラチェット注意")
                 pair_txt = (
                     f"{pair['left_hypothesis_id']} vs {pair['right_hypothesis_id']} "
                     f"({', '.join(pair_parts)})"
                 )
+                if pair_is_recommendable(pair) is False:
+                    # 2026-11-23 (proposal 5): the receipt said 「最優先検証対」 for a
+                    # pair holding 0.00% of the mass. The number stays in the
+                    # sentence (it is the maximum, and hiding it would hide the
+                    # arithmetic); what changes is that it is no longer called a
+                    # recommendation, and the mass holder is named instead.
+                    lead = qs["hypotheses"][0] if qs.get("hypotheses") else None
+                    lead_txt = (
+                        f"質量は `{lead['hypothesis_id']}` の {lead['posterior'] * 100:.1f}% に集中"
+                        if lead
+                        else "質量の保持者は不明"
+                    )
+                    pair_txt = (
+                        f"**推薦なし（合算{pair['pair_mass_sum'] * 100:.2f}% < "
+                        f"{PAIR_RECOMMENDATION_MASS_FLOOR * 100:.0f}%）**: 最大EIG対は "
+                        f"{pair['left_hypothesis_id']} vs {pair['right_hypothesis_id']} "
+                        f"だが質量0。{lead_txt}。対の比較ではなく、その仮説の支持の内訳を確認すること"
+                    )
             else:
                 pair_txt = ("単一仮説検証（対の推薦なし）" if qs["hypothesis_count"] == 1 else "推薦なし（候補に直接評価済みの仮説が2件未満）")
             unexamined = qs.get("unexamined_active_hypothesis_ids") or []
@@ -1653,17 +1909,30 @@ def saturation_snapshot(
         if pair is None:
             continue
         eig = float(pair.get("expected_info_gain") or 0.0)
+        # 2026-11-23 (proposal 5): `saturated` keeps its original meaning -- has
+        # this question stopped selecting? -- because an EIG of 0.0000 is the
+        # strongest possible yes, and silently re-labelling it would change a
+        # metric that other reports cite.  What is added is the *reason*: a
+        # question can stop selecting because its mass is concentrated (no pair
+        # worth recommending), which is a different statement from "the best
+        # pair is weak".  The ratchet warning is the field that changed; see
+        # `pair_has_unsaturated_supports_ratchet`.
         rows.append({
             "question_id": qid,
             "top_eig": round(eig, 4),
             "top_posterior": round(float(qstate["hypotheses"][0].get("posterior") or 0.0), 4),
             "active_count": qstate.get("active_count", 0),
             "saturated": eig < threshold,
+            "no_recommendation": pair_is_recommendable(pair) is False,
+            "pair_mass_sum": pair.get("pair_mass_sum"),
         })
     return {
         "threshold": threshold,
         "questions": rows,
         "saturated_question_ids": [row["question_id"] for row in rows if row["saturated"]],
+        "no_recommendation_question_ids": [
+            row["question_id"] for row in rows if row.get("no_recommendation")
+        ],
     }
 
 
@@ -1922,8 +2191,223 @@ def render_addressee_audit_markdown(audit: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def render_belief_map_markdown(state: dict[str, Any]) -> str:
-    """Render deterministic tracked BELIEF_MAP.md."""
+def _hypothesis_needs_detail(h: dict[str, Any]) -> bool:
+    """True when a hypothesis carries audit information a compressed line loses.
+
+    The badges below are the reasons a reader of BELIEF_MAP.md has to look at
+    this particular hypothesis rather than at the leader: a live erratum, a
+    single-witness high-mass posterior, a same-session-only evaluation, or a
+    `primary_source_collision` set with no verified material.  Keeping those
+    out of the compressed tail is the difference between "the file got
+    smaller" and "the file stopped showing what would falsify it".
+    """
+    if h.get("errata_flags"):
+        return True
+    if h.get("low_witness_high_mass") or h.get("self_evaluated_only"):
+        return True
+    if (
+        h.get("psc_eval_count", 0) > 0
+        and h.get("psc_all_verified_count", 0) == 0
+        and h.get("psc_zero_verified_count", 0) > 0
+    ):
+        return True
+    if h.get("retrieval_suppressed"):
+        return True
+    return False
+
+
+def detail_selection(hypotheses: list[dict[str, Any]], *, full: bool = False) -> set[str]:
+    """Return the hypothesis IDs whose full detail block is rendered.
+
+    ``top_n`` is a render policy, not a belief statement: every hypothesis in
+    the ledger still appears (as a table row and as a one-line compressed
+    entry), and `--full` restores the uncompressed file.
+    """
+    if full:
+        return {h["hypothesis_id"] for h in hypotheses}
+    ranked = sorted(hypotheses, key=lambda h: (-h["posterior"], h["hypothesis_id"]))
+    chosen = {h["hypothesis_id"] for h in ranked[:DETAIL_TOP_N]}
+    chosen |= {h["hypothesis_id"] for h in hypotheses if _hypothesis_needs_detail(h)}
+    return chosen
+
+
+def newborn_mass(
+    data: dict[str, dict[str, dict[str, Any]]],
+    *,
+    hypothesis_id: str | None = None,
+    root: Path = ROOT,
+) -> dict[str, Any]:
+    """Measure what registering one hypothesis does to its question's mass.
+
+    Proposal 6 of the 2026-11-23 report.  The charter forbids registering
+    hypotheses to fill a ledger, but a *metric* is the wrong instrument for that
+    prohibition (the report says so: it can act as pressure not to register at
+    all).  What this measures is narrower and factual: the softmax denominator
+    is the set of hypotheses sharing a question, so adding one row lowers every
+    other row's posterior even before that row is evaluated.  The number is the
+    dilution the archive has been arguing about, per registration.
+
+    Returns, for the named hypothesis (or the most recently created one, by
+    ``created_at`` then ID), the question's leader before and after, the
+    leader's mass change in percentage points, and the number of rows that
+    share the question -- i.e. the dilution a reader can attribute to one row.
+    """
+    hypotheses = data.get("hypotheses") or {}
+    if not hypotheses:
+        return {"writes": False, "hypothesis_id": None, "reason": "no hypotheses in ledger"}
+    target = hypothesis_id
+    if target is None or target not in hypotheses:
+        target = sorted(
+            hypotheses,
+            key=lambda hid: (str(hypotheses[hid].get("created_at") or ""), hid),
+        )[-1]
+    rec = hypotheses[target]
+    qids = [q for q in (rec.get("question_ids") or []) if q]
+    if not qids:
+        return {"writes": False, "hypothesis_id": target, "reason": "target carries no question_ids"}
+    after_state = compute_belief_state(data=data, root=root)
+    without = {
+        key: {k: v for k, v in coll.items() if k != target} if key == "hypotheses" else coll
+        for key, coll in data.items()
+    }
+    before_state = compute_belief_state(data=without, root=root)
+    per_question: list[dict[str, Any]] = []
+    for qid in qids:
+        before_q = (before_state.get("questions") or {}).get(qid) or {}
+        after_q = (after_state.get("questions") or {}).get(qid) or {}
+        before_top = (before_q.get("hypotheses") or [{}])[0] if before_q.get("hypotheses") else {}
+        after_top = (after_q.get("hypotheses") or [{}])[0] if after_q.get("hypotheses") else {}
+        survivor = None
+        if before_top.get("hypothesis_id"):
+            for h in after_q.get("hypotheses") or []:
+                if h.get("hypothesis_id") == before_top["hypothesis_id"]:
+                    survivor = h
+                    break
+        before_p = float(before_top.get("posterior") or 0.0)
+        survivor_p = float((survivor or {}).get("posterior") or 0.0)
+        per_question.append({
+            "question_id": qid,
+            "hypotheses_before": int(before_q.get("hypothesis_count") or 0),
+            "hypotheses_after": int(after_q.get("hypothesis_count") or 0),
+            "leader_before": before_top.get("hypothesis_id"),
+            "leader_before_posterior": round(before_p, 4),
+            "leader_after": after_top.get("hypothesis_id"),
+            "leader_after_posterior": round(float(after_top.get("posterior") or 0.0), 4),
+            # The leader can change identity when the new row lands on top, so
+            # the dilution is reported on the hypothesis that was leading
+            # BEFORE the registration, whether or not it still leads after.
+            "surviving_leader_delta_pp": round((survivor_p - before_p) * 100, 3),
+            "newborn_posterior": round(
+                float(
+                    next(
+                        (h.get("posterior") or 0.0 for h in (after_q.get("hypotheses") or [])
+                         if h.get("hypothesis_id") == target),
+                        0.0,
+                    )
+                ),
+                4,
+            ),
+        })
+    return {
+        "writes": False,
+        "hypothesis_id": target,
+        "created_at": rec.get("created_at"),
+        "multi_question": len(qids) > 1,
+        "questions": per_question,
+        "basis": before_state.get("belief_basis"),
+        "rule": (
+            "登録は分母を増やす。新しい行が評価される前でも、同じ問いを共有する既存の行の事後確率は下がる。"
+            "この値はその希釈の大きさであり、登録の可否を判定する規則ではない。"
+        ),
+    }
+
+
+def render_newborn_mass_markdown(report: dict[str, Any]) -> str:
+    """Render a `--newborn-mass` report (writes nothing)."""
+    lines = ["# 登録1件が動かした質量 (`newborn_mass`)", ""]
+    if not report.get("hypothesis_id"):
+        lines.append(f"- 測定不能: {report.get('reason')}")
+        return "\n".join(lines)
+    lines.append(
+        f"- 対象: `{report['hypothesis_id']}`（作成日 {report.get('created_at') or '不明'}） ｜ "
+        f"基底 `{report.get('basis')}` ｜ 複数問いに跨る: {'はい' if report.get('multi_question') else 'いいえ'}"
+    )
+    lines.append("")
+    lines.append("| 問い | 仮説数 (前→後) | 旧首位 | 旧首位の質量 (前→後) | 希釈 | 新規行の質量 | 首位交代 |")
+    lines.append("| :--- | :---: | :--- | :---: | ---: | ---: | :---: |")
+    for q in report.get("questions") or []:
+        switched = "**交代**" if q["leader_before"] != q["leader_after"] else "—"
+        lines.append(
+            f"| `{q['question_id']}` | {q['hypotheses_before']} → {q['hypotheses_after']} | "
+            f"`{q['leader_before'] or '—'}` | {q['leader_before_posterior'] * 100:.2f}% → "
+            f"{q['leader_after_posterior'] * 100:.2f}% | "
+            f"**{q['surviving_leader_delta_pp']:+.3f}pp** | {q['newborn_posterior'] * 100:.2f}% | {switched} |"
+        )
+    lines.append("")
+    lines.append(f"- 規則: {report.get('rule')}")
+    lines.append("- 本計器は何も書き込まない（`writes: false`）。")
+    return "\n".join(lines)
+
+
+def belief_basis_label(*, receiver_gated: bool = False, **knobs: Any) -> str:
+    """Name the accounting basis a render was produced under.
+
+    The distribution moves with the basis: measured on 2026-11-22, the Q-001
+    leader differed under four of six bases, and the Q-003 leader under three of
+    six (readings/2026-11-23-the-winner-depends-on-the-rules.md).  A file that
+    prints a posterior without naming its basis cannot be compared with a
+    session that read another one, so the name is written into the header and
+    `schema/session.schema.json.belief_basis` carries the same vocabulary.
+    """
+    parts: list[str] = []
+    if receiver_gated:
+        parts.append("receiver_gated")
+    if knobs.get("temporal_heir_guard"):
+        parts.append("temporal_heir_guard")
+    if knobs.get("narrowing_partner_share"):
+        parts.append("narrowing_partner_share")
+    if knobs.get("pair_level_repeat"):
+        parts.append("pair_level_repeat")
+    if knobs.get("heir_credit") is False:
+        parts.append("no_heir_credit")
+    return "+".join(parts) if parts else "default"
+
+
+def _basis_note(state: dict[str, Any]) -> str:
+    basis = state.get("belief_basis") or "default"
+    return (
+        f"> 使用基底 (`belief_basis`): **`{basis}`**。この値は `schema/session.schema.json` の "
+        "`belief_basis` と同じ語彙で、セッション行が自分の読んだ基底を記録するための欄である。"
+        "基底を変えると首位が変わる（2026-11-22 実測: Q-001 は6基底中4つで首位が異なる）ため、"
+        "**基底を書かない事後確率は他の事後確率と比較できない**"
+        "（`readings/2026-11-23-coarsening-concentrates-and-what-the-harness-should-change.md` §6 提案1）。"
+    )
+
+
+def _detail_policy_note(full: bool) -> str:
+    if full:
+        return (
+            "> 詳細ブロック: **全件**（`--full`）。既定の BELIEF_MAP.md は上位"
+            f"{DETAIL_TOP_N}件＋警告付きのみを詳細表示する。"
+        )
+    return (
+        f"> 詳細ブロック: **上位{DETAIL_TOP_N}件（事後確率順）＋警告付き（訂正・単一証人・自己評価のみ・PSC未照合・想起抑制）**。"
+        "残りは1行に圧縮され、命題・適用条件・反証条件の全文は "
+        "`python3 tools/belief_state.py --write-map --full` が書く `map/belief_state_full.md` にある。"
+        "**表示の圧縮であり、事後確率・台帳の行・評価・訂正は1件も変わらない**"
+        "（`readings/2026-11-23-coarsening-concentrates-and-what-the-harness-should-change.md` §6 提案2）。"
+    )
+
+
+def render_belief_map_markdown(state: dict[str, Any], *, full: bool = False) -> str:
+    """Render deterministic tracked BELIEF_MAP.md.
+
+    Default output compresses the per-hypothesis detail block to the top
+    ``DETAIL_TOP_N`` hypotheses by posterior plus every hypothesis carrying a
+    warning badge (``detail_selection``).  ``full=True`` renders every
+    hypothesis in detail, which is what ``--write-map --full`` writes to
+    ``map/belief_state_full.md``.
+    """
     lines: list[str] = [
         "# BELIEF_MAP — 条件付き仮説分布と反証系譜マップ",
         "",
@@ -1937,6 +2421,8 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
         "> 対単位割引列 (`P_sep`): 反復割引の単位をセッションから比較集合へ替えた場合の事後確率。`P` は現行（セッション単位）の値で、履歴の再現性のため既定は変えない。**両者の差が「同じ対を同じ向きに繰り返したこと」の寄与**である（`readings/2026-11-16-stable-words-do-not-make-progress.md` §3）。",
         "> 系譜移流なし列 (`P_lin`): 系譜の引き直し（`spawned` が空のとき engine が親の子を読む）を止めた場合の事後確率。`P` との差が「**その仮説自身への判定ではなく、その親への判定から流れてきた質量**」である（`readings/2026-11-17-the-prose-is-right-and-the-mechanism-is-wrong.md` §3）。既定は引き直しを含む側で、これは併記のみ。",
         "> 独立分離列: その仮説が実際に突き合わされた相手の数と、その仮説が関与する分離が最後に「新規」だった日。証人列が「何セッションが評価したか」を数えるのに対し、こちらは「何と突き合わせたか」を数える。",
+        _basis_note(state),
+        _detail_policy_note(full),
         "",
         "## 概要指標",
         "",
@@ -1978,13 +2464,20 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
             pair_meta = [f"{pair['expected_info_gain']:.4f}", relation]
             if "pair_mass_sum" in pair:
                 mass_label = f"合算{pair['pair_mass_sum'] * 100:.1f}%"
-                if pair.get("unsaturated_supports_ratchet"):
+                if pair_shows_ratchet_warning(pair):
                     mass_label += " ⚠️未飽和"
                 pair_meta.append(mass_label)
-            pair_cell = (
-                f"`{pair['left_hypothesis_id']}` vs `{pair['right_hypothesis_id']}` "
-                f"({', '.join(pair_meta)})"
-            )
+            if pair_is_recommendable(pair) is False:
+                pair_cell = (
+                    f"**推薦なし**（最大EIG対 `{pair['left_hypothesis_id']}` vs "
+                    f"`{pair['right_hypothesis_id']}` は合算{pair['pair_mass_sum'] * 100:.2f}%、"
+                    f"下限{PAIR_RECOMMENDATION_MASS_FLOOR * 100:.0f}%未満で提示しない）"
+                )
+            else:
+                pair_cell = (
+                    f"`{pair['left_hypothesis_id']}` vs `{pair['right_hypothesis_id']}` "
+                    f"({', '.join(pair_meta)})"
+                )
         else:
             pair_cell = "—"
         lines.append(
@@ -1993,6 +2486,51 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
             f"{qs['entropy_bits']:.3f} bits | {qs['kl_from_uniform_bits']:.3f} bits | "
             f"{qs['mean_active_uncertainty']:.3f} | {pair_cell} |"
         )
+
+    lines.extend([
+        "",
+        "## 系譜の家系（root ancestor）と一次所属問い",
+        "",
+        "> 家系は `parent_hypothesis_ids[0]` を再帰的にたどった根で定義する（`synthesizes` の複数親では先頭の親をたどる）。"
+        "**家系の質量と集中度は必ず並べて読むこと。** 2026-11-23 の実測では、家系合計が「家族の合意」に見える一方で、"
+        "その 68–99.7% は一人の仮説が持っていた。家系質量だけを読むと、粗視化は差を研ぐのではなく平均する"
+        "（`readings/2026-11-23-coarsening-concentrates-and-what-the-harness-should-change.md` §4, §7）。",
+        "",
+    ])
+    multi_total = state.get("multi_question_hypotheses") or {}
+    if multi_total:
+        lines.append(
+            f"> 一次所属問い (`primary_question_id`): 宣言済み **{multi_total.get('with_primary', 0)}** / "
+            f"仮説 {state['total_hypotheses']} 件。**未決 {multi_total.get('without_primary', 0)} 件**は"
+            f"遡及で埋めない（追記専用）。複数問いに跨る仮説は **{multi_total.get('multi_question', 0)}** 件で、"
+            "この欄が未決のまま家系質量を問いごとに合計すると、跨りが二重に数えられる。"
+            "各行の「一次所属」列が ``未決→`Q-00x` `` のとき、矢印の先は `question_ids[0]` であって決定ではない。"
+        )
+        lines.append("")
+    lines.extend([
+        "| 家系 (root) | 問い | 成員数 | 家系質量 | 家系内最大仮説 | 家系内集中度 | 世代範囲 |",
+        "| :--- | :--- | ---: | ---: | :--- | ---: | :--- |",
+    ])
+    for qid, qs in state["questions"].items():
+        for fam in (qs.get("families") or [])[:6]:
+            gens = fam["generations"]
+            gen_txt = f"G{gens[0]}–G{gens[-1]}" if len(gens) > 1 else f"G{gens[0]}" if gens else "—"
+            # The question is deliberately the SECOND column: `self_model.py`
+            # reads BELIEF_MAP.md's question summary by lines that begin
+            # "| `Q-00", and a family row starting that way would be parsed as a
+            # summary row and silently replace the real one.
+            lines.append(
+                f"| `{fam['root_hypothesis_id']}` | `{qid}` | {fam['member_count']} | "
+                f"{fam['mass_share'] * 100:.1f}% | `{fam['top_hypothesis_id']}` | "
+                f"**{fam['top_share_within_family'] * 100:.1f}%** | {gen_txt} |"
+            )
+    lines.append("")
+    lines.append(
+        "「家系内集中度」は家系質量のうち最大の成員が持つ割合である。集中度が高い行は、"
+        "家系名が指す構造ではなく**一人の仮説**を指している。表は各問いの上位6家系までを出す"
+        "（全件は `python3 tools/belief_state.py --json` の `questions.<qid>.families`）。"
+        "質量が `0.0%` と出る家系は、丸めの結果であって空ではない。"
+    )
 
     for qid, qs in state["questions"].items():
         lines.extend([
@@ -2005,7 +2543,35 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
             continue
 
         pair = qs.get("top_competing_pair")
-        if pair:
+        if pair and pair_is_recommendable(pair) is False:
+            # 2026-11-23 (proposal 5): a pair with no mass is not a test. The
+            # arithmetic is reported (it is the highest-EIG pair), the refusal
+            # is reported, and the mass a reader would otherwise have to find
+            # themselves is named.
+            leader = qs["hypotheses"][0] if qs["hypotheses"] else None
+            lead_txt = (
+                f"`{leader['hypothesis_id']}` が **{leader['posterior'] * 100:.2f}%** を保持"
+                if leader
+                else "質量の保持者は不明"
+            )
+            lines.append(
+                f"- **推薦なし（質量0の対）**: 最大 EIG の対は "
+                f"`{pair['left_hypothesis_id']}`（P={pair['left_posterior'] * 100:.2f}%） vs "
+                f"`{pair['right_hypothesis_id']}`（P={pair['right_posterior'] * 100:.2f}%）"
+                f" ｜ 合算 **{pair['pair_mass_sum'] * 100:.2f}%** < 下限 "
+                f"{PAIR_RECOMMENDATION_MASS_FLOOR * 100:.0f}%。"
+            )
+            lines.append(
+                f"  - {lead_txt}。残りの同点は辞書順で選ばれており、**この対を検証しても問いは動かない**。"
+                "「未飽和」は質量のある対についての判定であり、合算0%の対はその判定の外にある"
+                "（`readings/2026-11-23-coarsening-concentrates-and-what-the-harness-should-change.md` §6 提案5）。"
+            )
+            lines.append(
+                "  - 代わりに読むもの: この問いでは質量がほぼ一つの仮説に集中しているため、"
+                "検証対象は「次にどの対を突き合わせるか」ではなく、**その一つの仮説の支持が何に乗っているか**"
+                "（上の表の照合済・支持照合率・証人列）である。"
+            )
+        elif pair:
             relation = PAIR_RELATION_LABELS.get(pair.get("lineage_relation")) or "不明"
             lines.append(
                 f"- **最優先検証ターゲット（両側直接評価済みの候補中の最大 EIG={pair['expected_info_gain']:.4f}）**: "
@@ -2028,7 +2594,7 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
                 "「対立」ではなく「次に検証する組」である。系譜関係が無い場合は、両立する二つの仮説が"
                 "並置されているだけの可能性がある（実測例: readings/2026-11-15-the-most-informative-pair-was-not-a-disagreement.md §4）。"
             )
-            if pair.get("unsaturated_supports_ratchet"):
+            if pair_shows_ratchet_warning(pair):
                 pmass = pair.get("pair_mass_sum", pair.get("left_posterior", 0.0) + pair.get("right_posterior", 0.0))
                 lines.append(
                     f"  - ⚠️ **未飽和上位対ラチェット注意（合算占有率 {pmass * 100:.1f}% < "
@@ -2085,7 +2651,7 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
         lines.append("")
 
         lines.extend([
-            "| 順位 | ID | 状態 (抑制区分) | 世代/系譜 | 事後確率 P_t | P_sep (対単位割引) | P_lin (系譜移流なし) | P_gate (三門制御) | 不確実性 u | 独立分離 (最終新規) | 評価数 (反証系) | 照合済 (PSC全照合) | 支持照合率 | 証人 (EVL/読) | 仮説タイトル |",
+            "| 順位 | ID | 状態 (抑制区分) | 世代/系譜 | 一次所属 | 事後確率 P_t | P_sep (対単位割引) | P_lin (系譜移流なし) | P_gate (三門制御) | 不確実性 u | 独立分離 (最終新規) | 評価数 (反証系) | 照合済 (PSC全照合) | 支持照合率 | 証人 (EVL/読) | 仮説タイトル |",
             "| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
         ])
         for idx, h in enumerate(qs["hypotheses"], start=1):
@@ -2137,9 +2703,27 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
                 status_cell += " (想起抑制)"
             sep_audit = f"{h.get('independent_separation_count', 0)} ("
             sep_audit += (h.get("last_new_separation_date") or "なし") + ")"
+            # 2026-11-23 (proposal 4): a declared primary question prints bare; an
+            # undecided one prints the derived candidate with `未決` in front, so
+            # the column can be read as "this row has not decided" at a glance.
+            # Fixtures and older callers hand `render_belief_map_markdown` a
+            # hypothesis dict that predates these keys; read them with a
+            # fallback so a missing column never becomes a KeyError. The
+            # fallback is the same derivation `compute_belief_state` applies:
+            # the first `question_ids` entry, or the rendered question when the
+            # record carries none.
+            if h.get("primary_question_id"):
+                pq_cell = f"`{h['primary_question_id']}`"
+                if h.get("multi_question"):
+                    pq_cell += " (宣言)"
+            else:
+                derived = h.get("primary_question_id_derived") or (
+                    (h.get("question_ids") or [qid])[0]
+                )
+                pq_cell = f"未決→`{derived}`"
             lines.append(
                 f"| {idx} | `{h['hypothesis_id']}` | {status_cell} | "
-                f"G{h['generation']}:{h['lineage_op']} ({parents}) | "
+                f"G{h['generation']}:{h['lineage_op']} ({parents}) | {pq_cell} | "
                 f"**{h['posterior'] * 100:.1f}%** | {sep_cell} | {lin_cell} | {gate_cell} | {h['uncertainty']:.3f} | "
                 f"{sep_audit} | "
                 f"{h['direct_eval_count']} ({h['adversarial_eval_count']}) | "
@@ -2149,7 +2733,12 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
         lines.append("")
         lines.append("### 条件付き命題・適用条件・反証条件（Exclusion Clause）")
         lines.append("")
+        selected = detail_selection(qs["hypotheses"], full=full)
+        compressed: list[dict[str, Any]] = []
         for h in qs["hypotheses"]:
+            if h["hypothesis_id"] not in selected:
+                compressed.append(h)
+                continue
             badges: list[str] = []
             if h.get("errata_flags"):
                 badges.append(
@@ -2210,21 +2799,60 @@ def render_belief_map_markdown(state: dict[str, Any]) -> str:
             notes_s = ", ".join(f"`{n}`" for n in h["source_note_ids"][:5]) or "なし"
             lines.append(f"  - **根拠資料**: 支持={mats} ｜ 反証・緊張={cmats} ｜ 出典ノート={notes_s}")
 
+        if compressed:
+            # One line per hypothesis.  What a compressed line must still carry
+            # is the identity (ID, status), the two numbers the table above is
+            # sorted by (P and u), what it claims (title), and how much backing
+            # it has (counts, not the IDs -- the IDs are one `--full` away).
+            lines.append("")
+            lines.append(
+                f"#### 圧縮表示（詳細は上位{min(DETAIL_TOP_N, len(qs['hypotheses']))}件＋警告付き。"
+                f"全{len(qs['hypotheses'])}件の詳細は `python3 tools/belief_state.py --write-map --full`）"
+            )
+            lines.append("")
+            top_compressed_p = max(h["posterior"] for h in compressed) * 100
+            lines.append(
+                f"以下 {len(compressed)} 件（このうち最大の事後確率は {top_compressed_p:.2f}%）は"
+                f"上位{min(DETAIL_TOP_N, len(qs['hypotheses']))}件の外側にあり、命題・適用条件・反証条件の全文は"
+                "既定の描画では省かれる。"
+                "**省かれたのは表示だけで、台帳の行・評価・訂正は一件も変わっていない。**"
+            )
+            lines.append("")
+            for h in compressed:
+                mats_n = len(h.get("supporting_material_ids") or [])
+                cmats_n = len(h.get("counter_material_ids") or [])
+                notes_n = len(h.get("source_note_ids") or [])
+                lines.append(
+                    f"- `{h['hypothesis_id']}` [{h['effective_status']} / P={h['posterior'] * 100:.2f}% / u={h['uncertainty']:.3f}] "
+                    f"{h['title']} ｜ 評価 {h['direct_eval_count']}（反証系 {h['adversarial_eval_count']}）"
+                    f" ｜ 支持{mats_n}・反証{cmats_n}資料・出典{notes_n}ノート"
+                )
+
     lines.append("")
     return "\n".join(lines)
 
 
 def write_belief_maps(root: Path = ROOT) -> tuple[Path, Path]:
-    """Write tracked BELIEF_MAP.md and untracked map/belief_state.md."""
+    """Write tracked BELIEF_MAP.md and untracked map/belief_state.md.
+
+    The untracked copy keeps the **full** detail block: the tracked file is
+    what a reader and the size budget pay for, while the untracked mirror is
+    where the text that was compressed away still lives.  Before 2026-11-23 the
+    two were byte-identical, so compressing the tracked file would otherwise
+    have deleted the prose from the only place that held it.
+    """
     root = Path(root)
     state = compute_belief_state(root=root)
-    rendered = render_belief_map_markdown(state)
+    tracked_text = render_belief_map_markdown(state)
+    full_text = render_belief_map_markdown(state, full=True)
     tracked = root / "BELIEF_MAP.md"
-    ledger_io.atomic_write_text(tracked, rendered)
+    ledger_io.atomic_write_text(tracked, tracked_text)
     untracked_dir = root / "map"
     untracked_dir.mkdir(parents=True, exist_ok=True)
     untracked = untracked_dir / "belief_state.md"
-    ledger_io.atomic_write_text(untracked, rendered)
+    ledger_io.atomic_write_text(untracked, tracked_text)
+    (untracked_dir / "belief_state_full.md").parent.mkdir(parents=True, exist_ok=True)
+    ledger_io.atomic_write_text(untracked_dir / "belief_state_full.md", full_text)
     return tracked, untracked
 
 
@@ -2252,7 +2880,25 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--json", action="store_true", help="output full JSON belief state")
     parser.add_argument("--write-map", action="store_true", help="write BELIEF_MAP.md and map/belief_state.md")
+    parser.add_argument(
+        "--full",
+        action="store_true",
+        help=(
+            "with --write-map: render every hypothesis's detail block instead of the "
+            f"top-{DETAIL_TOP_N} + warned set (map/belief_state_full.md always gets the full render)"
+        ),
+    )
     parser.add_argument("--check-map", action="store_true", help="verify BELIEF_MAP.md is current")
+    parser.add_argument(
+        "--newborn-mass",
+        metavar="HYP_ID",
+        nargs="?",
+        const="",
+        help=(
+            "measure what registering one hypothesis moved in its question's mass "
+            "(default: the most recently created hypothesis); writes nothing"
+        ),
+    )
     parser.add_argument(
         "--addressee-audit",
         action="store_true",
@@ -2268,8 +2914,26 @@ def main(argv: list[str] | None = None) -> int:
             print(render_addressee_audit_markdown(audit))
         return 0
 
+    if args.newborn_mass is not None:
+        from inspect_inquiry import load_all
+
+        report = newborn_mass(
+            load_all(), hypothesis_id=args.newborn_mass or None, root=args.root
+        )
+        if args.json:
+            print(json.dumps(report, ensure_ascii=False, indent=2))
+        else:
+            print(render_newborn_mass_markdown(report))
+        return 0
+
     if args.write_map:
         tracked, _untracked = write_belief_maps(args.root)
+        if args.full:
+            # `--full` writes the uncompressed render to the tracked path, so a
+            # reader who wants the pre-2026-11-23 file can still get it. The
+            # default re-run of --write-map restores the compressed one.
+            state = compute_belief_state(root=args.root)
+            ledger_io.atomic_write_text(tracked, render_belief_map_markdown(state, full=True))
         size = tracked.stat().st_size
         print(f"WROTE {tracked.relative_to(Path(args.root))} ({size:,} bytes)")
         return 0
