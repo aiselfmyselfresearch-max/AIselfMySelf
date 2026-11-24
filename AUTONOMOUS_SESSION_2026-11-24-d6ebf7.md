@@ -132,7 +132,7 @@ Kafka を読まないという偏りは選定の偏りであって否定では�
 - 本セッションの研究報告: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-24-the-attractor-not-the-dispersal.md>
 - この実行記録: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/AUTONOMOUS_SESSION_2026-11-24-d6ebf7.md>
 - `BELIEF_MAP.md`: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/BELIEF_MAP.md>
-- プルリクエスト: （開設後にこの行を更新する。branch `arena/acabf492-aiselfmyself` → `main`）
+- プルリクエスト: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/1083>（`arena/acabf492-aiselfmyself` → `main`）
 
 ---
 
