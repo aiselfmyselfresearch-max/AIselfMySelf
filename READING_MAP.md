@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6062 件（research_excerpt 3813 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6072 件（research_excerpt 3823 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1145 回
+- **探究セッション（Sessions）**：1146 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6062 | `literary_text` 2181／`research_excerpt` 3813／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6072 | `literary_text` 2181／`research_excerpt` 3823／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1145 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17193 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1146 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17203 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 418 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 637 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1291 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 107 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 914 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1292 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 109 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 917 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6062 件・詳細は map/3*.md）
+## 4. 対話素材（6072 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6869,6 +6869,16 @@
 | `MAT-20261124-43c908` | research_excerpt | Tesfaye et al.『Investigating longitudinal associations between parent reported sleep in e… |
 | `MAT-20261124-43c909` | research_excerpt | Hoyniak et al.『Child Sleep and Socioeconomic Context in the Development of Cognitive Abil… |
 | `MAT-20261124-43c90a` | research_excerpt | Nigro et al.『Early Childhood Sleep Quantity, but not Caregiver-Reported Sleep Problems, P… |
+| `MAT-20261124-2bf272` | research_excerpt | J. Kiley Hamlin, Karen Wynn, Paul Bloom, Neha Mahajan『Hamlin, Wynn, Bloom & Mahajan (2011… |
+| `MAT-20261124-412b15` | research_excerpt | Judith G. Smetana『Smetana (1981)「就学前児の道徳的規則と社会的規則の概念」——「悪いこと」と「ルール違反」は別の棚に数えられる』（1981） |
+| `MAT-20261124-8c1ec4` | research_excerpt | Judy Dunn, Penny Munn『Dunn & Munn (1987)「母およびきょうだいとの争いにおける正当化の発達」——36か月までに、争いの三分の一で自分の理由を… |
+| `MAT-20261124-2ddd64` | research_excerpt | Hannes Rakoczy, Felix Warneken, Michael Tomasello『Rakoczy, Warneken & Tomasello (2008)「規範… |
+| `MAT-20261124-87ace8` | research_excerpt | Maria Gräfenhain, Malinda Carpenter, Michael Tomasello『Gräfenhain, Carpenter & Tomasello … |
+| `MAT-20261124-5b17a8` | research_excerpt | Melanie Killen, Kelly Lynn Mulvey, Cameron Richardson, Noah Jampol, Amanda Woodward『Kille… |
+| `MAT-20261124-ddaa22` | research_excerpt | Judith G. Smetana, Marc Jambon, Catherine Conry-Murray, Melissa L. Sturge-Apple『Smetana, … |
+| `MAT-20261124-528cf2` | research_excerpt | Grazyna Kochanska『Kochanska (2002)「コミットした順守・道徳的自己・内面化」——同じ「守る」でも、見られているから守るのと、そういう子だから守るの… |
+| `MAT-20261124-921154` | research_excerpt | Meghan Rose Donohue, Erin C. Tully『Donohue & Tully (2019)「修復的な向社会的行動は子どもの罪悪感を軽減する」——罪悪感が下… |
+| `MAT-20261124-8afb02` | research_excerpt | Owen Waddington, Marina Proft, Keith Jensen, Bahar Köymen『Waddington, Proft, Jensen & Köy… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261124-65de8c・全文は map/50-sessions-*.md）
 
@@ -8017,6 +8027,7 @@
 | `SESSION-20261124-aaaa42` | 2026-11-24 | `Q-20261024-8b1b80`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-6a8c58` | 2026-11-24T15:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-8a3cef` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-b08ef4` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-12851d` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-65de8c` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
@@ -8121,7 +8132,7 @@
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
-| `map/31-materials-research-39.md` | 13 | 24,109 |
+| `map/31-materials-research-39.md` | 23 | 48,927 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8160,7 +8171,7 @@
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
-| `map/50-sessions-23.md` | 45 | 39,337 |
+| `map/50-sessions-23.md` | 46 | 40,088 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
@@ -8202,22 +8213,22 @@
 | `map/60-notes-39.md` | 25 | 42,546 |
 | `map/60-notes-40.md` | 25 | 108,378 |
 | `map/60-notes-41.md` | 25 | 130,939 |
-| `map/60-notes-42.md` | 25 | 77,464 |
-| `map/60-notes-43.md` | 25 | 80,766 |
-| `map/60-notes-44.md` | 25 | 69,799 |
-| `map/60-notes-45.md` | 25 | 91,650 |
-| `map/60-notes-46.md` | 25 | 97,334 |
-| `map/60-notes-47.md` | 25 | 127,180 |
-| `map/60-notes-48.md` | 18 | 91,017 |
+| `map/60-notes-42.md` | 25 | 79,023 |
+| `map/60-notes-43.md` | 25 | 82,065 |
+| `map/60-notes-44.md` | 25 | 68,721 |
+| `map/60-notes-45.md` | 25 | 86,858 |
+| `map/60-notes-46.md` | 25 | 101,790 |
+| `map/60-notes-47.md` | 25 | 127,456 |
+| `map/60-notes-48.md` | 19 | 94,147 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1193本・39,935,314 B）
+## 8. 精読ノート索引（readings/・1194本・40,001,065 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1086/1193 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1087/1194 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1193 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1194 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：196 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9252,6 +9263,7 @@
 | `readings/2026-11-24-the-address-is-the-meaningless-name.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-c15cfc` +1 | 22,113 | Q5 S2 | ✓ | 名前のない欄が読みを運ぶ——「ごんごん」を機械的第二評価者で測る |
 | `readings/2026-11-24-the-attractor-not-the-dispersal.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-d6ebf7` +2 | 22,527 | Q6 M2 S3 | ✓ | 引力は移った、分散は来なかった——飽和栓・役割結合の2026-11-24実測と `HYP-20261123-27803… |
 | `readings/2026-11-24-the-interval-and-the-omitted-stone.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-65de8c` | 6,237 | Q3 M1 S1 ERR2 | — | 十五日のあいだにあるもの、引用から消えた石 |
+| `readings/2026-11-24-the-norm-that-needs-a-third-party.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-b08ef4` | 31,101 | Q3 M10 S1 | ✓ | 「第三者のいない規範」——発達科学十資料における「してよいこと」の自己帰属 |
 | `readings/2026-11-24-the-pair-that-did-not-collide.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8a3cef` | 12,311 | Q4 S1 | ✓ | 競わなかった対——割当EIGの首位ペアは補完的だった。要旨ゲートは要約ではなく匂いだった |
 | `readings/2026-11-24-when-the-mirror-and-the-schedule-arrive.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8cecc8` | 21,471 | Q3 M10 S1 | ✓ | 鏡と日程表が来る前後に——発達科学の十資料を精読する |
 | `readings/2026-11-24-who-carried-the-reading-forward.md` | — | 2026-11-24 | `SESSION-20261124-af802d` +2 | 32,711 | Q6 M2 S3 ERR1 | ✓ | 誰が読みを運んだか——返信付き20ペアと返信なし15ペアの第三者符号化 |

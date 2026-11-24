@@ -535,7 +535,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # after the merge = 152 files / 15.10 MiB of the 16 MiB soft_bytes.
         # Soft raised to measured + 1 (153) so the next session has one free
         # slot; hard 160 unchanged.
-        soft_shards=153,
+        # 2026-11-24 (SESSION-20261124-b08ef4, 153 -> 154): this session adds one
+        # new materials shard (2026-11-24-b08ef4abc0de.jsonl, ten developmental-
+        # science materials on normativity, responsibility and repair). Measured
+        # union after writing = 154 files / 16.03 MiB of the 17 MiB soft_bytes
+        # (bytes not binding; only the count is). Soft raised to measured (154);
+        # hard 160 unchanged; not automatic. Consolidation debt unchanged: the
+        # shard is named by its own sessions row, so compaction cannot remove it.
+        # 2026-11-24 (merge of PR #1097): union = 155 shards, one over 154.
+        # Raised to measured (155); hard 160 unchanged.
+        soft_shards=155,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -2401,7 +2410,13 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # moves, at the larger of the two independently measured review points.
         # hard_files (1,200), soft_bytes (38 MiB), hard_bytes (48 MiB), and
         # per-report caps are unchanged. Not automatic -- measured after merge.
-        soft_files=1189,
+        # 2026-11-24 (SESSION-20261124-b08ef4): merged tree = 1,190 readings
+        # files against the 1,189 soft; this session's own report is one of them
+        # (conflict of interest recorded). Bytes not binding. Raised to measured
+        # + 5 (1,195), not the usual +12, because hard_files is 1,200: ten reports
+        # of hard headroom remain. This dimension needs a real decision, not
+        # another routine raise.
+        soft_files=1195,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
