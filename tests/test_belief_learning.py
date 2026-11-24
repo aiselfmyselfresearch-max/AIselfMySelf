@@ -373,8 +373,27 @@ class BeliefStateAndLearningTests(unittest.TestCase):
                 self.assertGreater(core_hits, 0)
             elif core_within_jitter:
                 # A near-tied core question must be able to win, but must not
-                # dominate: the leader is still a non-core question.
-                self.assertGreater(core_hits, 0)
+                # dominate: the leader is still a non-core question.  The window
+                # bound is the *difference* of two [0, 0.12) hash jitters, so the
+                # win probability decays quadratically to zero at the edge:
+                # trailing the leader by g wins with P = (0.12-g)^2 / (2*0.12^2)
+                # per pick.  Measured 2026-11-24 (SESSION-20261124-8a3cef with PR
+                # #1095's rows): the gap walked to 0.1156, where E[core_hits in 80]
+                # is 0.05 and 0/80 is the expected mode -- demanding wins there
+                # pinned the hash luck of 80 fixed seeds, not the router (the same
+                # defect class as the value pins re-bound on 2026-11-23 and
+                # 2026-11-24).  What is pinned is the arithmetic: every pick stays
+                # inside the window (asserted above), the core never dominates what
+                # it does not lead, and whenever the gap is small enough for the
+                # router's own math to expect wins (E >= 10 of 80 at g <= 0.06),
+                # wins actually occur.
+                gap = min(
+                    top_any - scores[q]
+                    for q in ("Q-001", "Q-002", "Q-003")
+                    if q in scores
+                )
+                if gap <= 0.06:
+                    self.assertGreater(core_hits, 0, (gap, core_hits))
                 self.assertLess(core_hits, 80)
             else:
                 self.assertEqual(core_hits, 0)
