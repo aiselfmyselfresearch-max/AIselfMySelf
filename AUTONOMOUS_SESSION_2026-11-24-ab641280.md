@@ -1,7 +1,8 @@
 # 自律探究実行報告 — 開いている修復の隣で、初回の検証を置く
 
 - **リポジトリ**: [`aiselfmyselfresearch-max/AIselfMySelf`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf)
-- **作業ブランチ**: `arena/ab641280-aiselfmyself`（基準コミット `f4e5db3` = `main` の現行先端、PR #1097 のマージ結果）
+- **作業ブランチ**: `arena/ab641280-aiselfmyself`（基準コミット `f4e5db3` = `main`・セッション開始時点の先端）
+- **マージ時の再同期**: 本セッションの PR を出した後、`main` が並行セッションのマージ（PR #1093〜#1099 ほか：発達科学10件フルテキスト収蔵＋精読×2、maps 再生成、`materials.d` soft 上限 154→155）で先へ進んだため、**セッション終盤に `origin/main` を本ブランチへ取り込んだ**（マージコミット `bc7eda50`）。3つの台帳日シャードは両側の行をバイト同一の和集合として解消し、`BELIEF_MAP.md`／`READING_MAP.md`／`SELF_MODEL.md` は再生成した。マージ後の現行断面は sessions=1149・read_log=17243・evaluations=925・materials=6092（本報告 §3〜§5 の計数は**記帳前断面**であり、この値とは別物として読むこと）。
 - **セッション**: `SESSION-20261124-1a4ed0` ／ シード `ab641280` ／ 割当ロール **adversarial_tester**（50%枠）／ 提示問 `Q-20261024-8b1b80` ／ 参考モード `rereading_and_collision`（採用するが「読み」の対象を台帳内に限定）
 - **実行日**: 2026-11-24（UTC）
 - **委任**: 利用者から1件（現状分析 → トークン予算を最大限使い切る行動計画 → 自律実行 → MDレポート → **最後に必ずマージ**、リンクは GitHub URL）。原文は `sessions.human_direction` に保存し、研究上の証拠には使っていない。
@@ -103,14 +104,14 @@
 
 `python3 tools/belief_state.py --write-map` → `python3 tools/map_build.py` → `python3 tools/self_model.py --write` の順で再生成した後、以下をすべて実行した。
 
-- `validate_seed.py` … PASS（sessions=1146・read_log=17207・hypotheses=107・evaluations=917）
-- `append_only_check.py` … PASS（origin/main の35,619行がバイト単位で残っている。shard 圧縮も含め）
+- `validate_seed.py` … PASS（記帳直後断面: sessions=1146・read_log=17207・hypotheses=107・evaluations=917）。**`origin/main` 取り込み後の現行断面: sessions=1149・read_log=17243・materials=6092・hypotheses=111・evaluations=925（`validate_seed.py` 実測）**。
+- `append_only_check.py --base origin/main` … PASS（origin/main の35,703行がすべてバイト単位で残っている。shard 圧縮と main 取り込みの後）
 - `readings_integrity_check.py` … PASS（0件欠落）
 - `inspect_inquiry.py --check-map` / `belief_state.py --check-map` / `note_index.py --check` / `read_log_backfill.py --check` … すべて PASS
 - `date_axis.py --enforce-shards` … PASS（未来日付シャード 0）
 - `learning_metrics.py --check` / `three_gates.py --check` … PASS
-- `size_budget.py --strict` … **PASS**（§5.4の圧縮の後。着手前は材料154/153で FAIL していた）
-- `python3 -m unittest discover -s tests` … **Ran 1193 tests … OK（exit=0・約607秒）**。着手前 main（`f4e5db3`）で失敗していた3件（`test_real_repository_is_within_strict_limits`／`test_baseline_is_all_green`／`test_lowered_cap_is_caught_positive_control`）は §5.4 の shard 圧縮で解消し、全件パスを確認した。なお CI（`.github/workflows/ci.yml`）は unittest を実行せず、non-strict `size_budget.py` のみを見る（本報告 §1-6）。
+- `size_budget.py --strict` … **PASS**（§5.4の圧縮の後。着手前は材料154/153で FAIL していた。その後の `origin/main` 取り込みで soft 上限は 155 に再スケールされた）
+- `python3 -m unittest discover -s tests` … **Ran 1193 tests … OK（exit=0・約607秒）**。着手前 main（`f4e5db3`）で失敗していた3件（`test_real_repository_is_within_strict_limits`／`test_baseline_is_all_green`／`test_lowered_cap_is_caught_positive_control`）は §5.4 の shard 圧縮で解消し、全件パスを確認した。**マージコミット `bc7eda50` 後にも別途フル実行（`/tmp/full3.log`・`/tmp/full3.exit`）しており、main の行を取り込んだ現行断面でも同じく OK であることを確認した。**なお CI（`.github/workflows/ci.yml`）は unittest を実行せず、non-strict `size_budget.py` のみを見る（本報告 §1-6）。
 
 （検査の通過は探究の進展の証明ではない。）
 
@@ -135,7 +136,7 @@
 3. **`HYP-20261124-36e70d` exclusion (b)**: 凍結標本（返信20・対照15）にランダムな READ-ID を注入した介入実験。先行（`9f4d685b`）の機械的第二評価者を基盤に使える。
 4. **Kafka『父への手紙』（`MAT-LIT-125`）→遺言（`MAT-LIT-132`）**: 原典入手可能環境での精読。封鎖型二変奏として `a554f0` 系の「片方向の閉塞」の端点に位置する。
 5. **`HYP-20261124-90827f` の実務的後続**: `learning_metrics.py --check` の配線率は 1193/1193=100% のまま維持されている。本回で `readings/` への還流が欠けたので、次回の consolidator 回が本報告を読み返すことを推奨する。
-6. **materials.d の soft 上限153**: 次の収蔵セッションは自動的に再び soft 破超（または新規収蔵の断念）を迎える。抜本対策は shard 圧縮の常態化か soft の計測的引き上げ（PR #830 型）であり、その判断は次の利用者委任の範囲である。
+6. **materials.d soft 上限の処遇が本セッション中に変わった**: 着手前は 154/153 で `--strict` 赤、origin/main で失敗していた3テストの原因だったため、本セッションは最小シャード1件のバイト同一圧縮（154→153）を行った（§5.4）。その後の `origin/main` 取り込みで main 側は soft 上限を **155** へ引き上げており、圧縮はもはや素ゲートの必須件ではない。ただし行の連結と `shard_aliases.json` の来歴（sha256・行スパン）は件数削減にかかわらず正当な記録であり、そのまま残した。次の収蔵セッションは 154/155 の余地を持つ。
 
 ---
 
