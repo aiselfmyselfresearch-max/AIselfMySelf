@@ -8180,7 +8180,7 @@
 | `map/60-notes-39.md` | 25 | 42,546 |
 | `map/60-notes-40.md` | 25 | 108,378 |
 | `map/60-notes-41.md` | 25 | 130,939 |
-| `map/60-notes-42.md` | 25 | 72,085 |
+| `map/60-notes-42.md` | 25 | 72,210 |
 | `map/60-notes-43.md` | 25 | 80,013 |
 | `map/60-notes-44.md` | 25 | 70,916 |
 | `map/60-notes-45.md` | 25 | 93,045 |
@@ -8190,7 +8190,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1192本・39,881,925 B）
+## 8. 精読ノート索引（readings/・1192本・39,883,412 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1085/1192 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -9230,7 +9230,7 @@
 | `readings/2026-11-24-the-address-is-the-meaningless-name.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-c15cfc` +1 | 22,113 | Q5 S2 | ✓ | 名前のない欄が読みを運ぶ——「ごんごん」を機械的第二評価者で測る |
 | `readings/2026-11-24-the-attractor-not-the-dispersal.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-d6ebf7` +2 | 22,527 | Q6 M2 S3 | ✓ | 引力は移った、分散は来なかった——飽和栓・役割結合の2026-11-24実測と `HYP-20261123-27803… |
 | `readings/2026-11-24-the-interval-and-the-omitted-stone.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-65de8c` | 6,237 | Q3 M1 S1 ERR2 | — | 十五日のあいだにあるもの、引用から消えた石 |
-| `readings/2026-11-24-the-pair-that-did-not-collide.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8a3cef` | 11,454 | Q3 S1 | ✓ | 競わなかった対——割当EIGの首位ペアは補完的だった。要旨ゲートは要約ではなく匂いだった |
+| `readings/2026-11-24-the-pair-that-did-not-collide.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8a3cef` | 12,120 | Q4 S1 | ✓ | 競わなかった対——割当EIGの首位ペアは補完的だった。要旨ゲートは要約ではなく匂いだった |
 | `readings/2026-11-24-when-the-mirror-and-the-schedule-arrive.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8cecc8` | 21,471 | Q3 M10 S1 | ✓ | 鏡と日程表が来る前後に——発達科学の十資料を精読する |
 | `readings/2026-11-24-who-carried-the-reading-forward.md` | — | 2026-11-24 | `SESSION-20261124-af802d` +2 | 32,711 | Q6 M2 S3 ERR1 | ✓ | 誰が読みを運んだか——返信付き20ペアと返信なし15ペアの第三者符号化 |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
