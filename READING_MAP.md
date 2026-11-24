@@ -7,7 +7,7 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6062 件（research_excerpt 3813 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6072 件（research_excerpt 3823 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
 - **探究セッション（Sessions）**：1146 回
@@ -20,7 +20,7 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6062 | `literary_text` 2181／`research_excerpt` 3813／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6072 | `literary_text` 2181／`research_excerpt` 3823／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
 | セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1146 |  |
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6062 件・詳細は map/3*.md）
+## 4. 対話素材（6072 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6859,6 +6859,16 @@
 | `MAT-20261124-24f887` | research_excerpt | Kurt W. Fischer『Fischer (1980) 技能理論——発達は梯子ではなく網。同じ人が課題と支えに応じて異なる水準を示す』（1980） |
 | `MAT-20261124-db8d62` | research_excerpt | Marinus H. van IJzendoorn, Pieter M. Kroonenberg『van IJzendoorn & Kroonenberg (1988) 愛着の文… |
 | `MAT-20261124-0c9ca0` | research_excerpt | Susan Harter『Harter (1999)『自己の構成』——自己表象は内容と構造を変えて発達し、本物の自己は「自分の意見を言えること」で試される』（1999） |
+| `MAT-20261124-43c901` | research_excerpt | Li et al.『Unpredictability in Caregiver-child Relationships: Impact on Child Verbal Abili… |
+| `MAT-20261124-43c902` | research_excerpt | Kaletsch & Liszkowski『Does Caregivers' Responsiveness Influence the Early Development of … |
+| `MAT-20261124-43c903` | research_excerpt | Bratsch-Hines et al.『Infant and Toddler Child-Care Quality and Stability in Relation to P… |
+| `MAT-20261124-43c904` | research_excerpt | Bornstein, Putnick & Esposito『Skill-Experience Transactions across Development: Bidirecti… |
+| `MAT-20261124-43c905` | research_excerpt | Fusaroli et al.『Caregiver linguistic alignment to autistic and typically developing child… |
+| `MAT-20261124-43c906` | research_excerpt | Windsor et al.『Effect of Foster Care on Language Learning at 8 Years: Findings from the B… |
+| `MAT-20261124-43c907` | research_excerpt | Bruce, Ermanni & Bell『The Longitudinal Contributions of Child Language, Negative Emotiona… |
+| `MAT-20261124-43c908` | research_excerpt | Tesfaye et al.『Investigating longitudinal associations between parent reported sleep in e… |
+| `MAT-20261124-43c909` | research_excerpt | Hoyniak et al.『Child Sleep and Socioeconomic Context in the Development of Cognitive Abil… |
+| `MAT-20261124-43c90a` | research_excerpt | Nigro et al.『Early Childhood Sleep Quantity, but not Caregiver-Reported Sleep Problems, P… |
 | `MAT-20261124-2bf272` | research_excerpt | J. Kiley Hamlin, Karen Wynn, Paul Bloom, Neha Mahajan『Hamlin, Wynn, Bloom & Mahajan (2011… |
 | `MAT-20261124-412b15` | research_excerpt | Judith G. Smetana『Smetana (1981)「就学前児の道徳的規則と社会的規則の概念」——「悪いこと」と「ルール違反」は別の棚に数えられる』（1981） |
 | `MAT-20261124-8c1ec4` | research_excerpt | Judy Dunn, Penny Munn『Dunn & Munn (1987)「母およびきょうだいとの争いにおける正当化の発達」——36か月までに、争いの三分の一で自分の理由を… |
@@ -8122,7 +8132,7 @@
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
-| `map/31-materials-research-39.md` | 13 | 34,407 |
+| `map/31-materials-research-39.md` | 23 | 48,927 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |

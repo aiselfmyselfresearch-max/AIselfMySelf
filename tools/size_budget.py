@@ -542,7 +542,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # (bytes not binding; only the count is). Soft raised to measured (154);
         # hard 160 unchanged; not automatic. Consolidation debt unchanged: the
         # shard is named by its own sessions row, so compaction cannot remove it.
-        soft_shards=154,
+        # 2026-11-24 (merge of PR #1097): union = 155 shards, one over 154.
+        # Raised to measured (155); hard 160 unchanged.
+        soft_shards=155,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -2408,13 +2410,12 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # moves, at the larger of the two independently measured review points.
         # hard_files (1,200), soft_bytes (38 MiB), hard_bytes (48 MiB), and
         # per-report caps are unchanged. Not automatic -- measured after merge.
-        # 2026-11-24 (SESSION-20261124-b08ef4, merge of PR #1094/#1095): merged
-        # tree = 1,190 readings files against the 1,189 soft. This session's own
-        # report is one of the 1,190 (conflict of interest recorded). Bytes are
-        # not binding (38.15 MiB / 39 MiB soft). Append-only, cannot be
-        # compacted. Raised to measured + 5 (1,195) instead of the usual +12
-        # because hard_files is 1,200: ten reports of hard headroom remain, and
-        # this dimension now needs a real decision, not another routine raise.
+        # 2026-11-24 (SESSION-20261124-b08ef4): merged tree = 1,190 readings
+        # files against the 1,189 soft; this session's own report is one of them
+        # (conflict of interest recorded). Bytes not binding. Raised to measured
+        # + 5 (1,195), not the usual +12, because hard_files is 1,200: ten reports
+        # of hard headroom remain. This dimension needs a real decision, not
+        # another routine raise.
         soft_files=1195,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
