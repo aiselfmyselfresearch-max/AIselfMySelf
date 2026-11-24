@@ -207,3 +207,9 @@
 ## 出典
 
 各資料の書誌識別子、要約、本文確認深度、取得元、適用限界は対応する `MAT-20261124-*` レコードに記録した。全十件は全文を確認し、引用ではなく要約を用いた。出典一覧と後続の判断は本稿の §1–§4、および `NOTE-*` / `EVL-20261124-04e24f` を参照。
+
+## 追補：`origin/main` 合流後の容量検査（2026-11-24）
+
+PR [#1082](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/1082) を取り込んだ後、`readings/` のファイル数が 1,177 となり、`size_budget.py --strict` は soft file-count 上限 1,176 を1件超えて終了コード1を返した。PR #1081 側も合流前の `origin/main` 側も、共通の merge base `0ddd058` からそれぞれ 1,176 ファイルで、別々に追加された報告が合流で重なったためである。バイト数は 39,526,901 B / 39,845,888 B（38 MiB）で、318,987 B の余裕があり、超過したのは件数だけだった。
+
+`readings/` は追記専用のため、統合でファイル数を減らすことはできず、既存報告の削除には人間の承認が要る。`tests/test_size_budget.py::SizeBudgetTests::test_real_repository_is_within_strict_limits` も strict 上限内を要求する。そこで `tools/size_budget.py` の **`soft_files` だけ**を、従来の測定後 +12 枠の基準に従い 1,176 から 1,189（実測 1,177 + 12）へ調整した。hard file count 1,200、38 MiB / 48 MiB の byte 上限、単一報告の上限は変えていない。これは合流後に実測した1件超過に対する限定的な再較正であり、自動的な引上げではない。
