@@ -6779,16 +6779,6 @@
 | `MAT-20261123-a95958` | research_excerpt | Peter Fonagy, Mary Target『Fonagy & Target (1997)「愛着と反射機能」——養育者が『意図を持つ存在』として子を映すことが自己組織化の中… |
 | `MAT-20261123-b0564c` | research_excerpt | Elizabeth Meins, Charles Fernyhough, Rachel Wainwright, Mani Das Gupta, Emma Fradley, Mic… |
 | `MAT-20261123-2a6e96` | research_excerpt | John Barresi, Chris Moore『Barresi & Moore (1996)「意図的関係と社会的理解」——一人称の情報と三人称の情報を統合する四段階』（199… |
-| `MAT-20261124-a4fbb4` | research_excerpt | Beulah Amsterdam『Amsterdam (1972)「二歳以前の鏡像自己反応」——鏡の中で『私』を見つけるまでに、遊戯・忌避・自己顕示が順に現れる』（1972） |
-| `MAT-20261124-1375a6` | research_excerpt | Philippe Rochat『Rochat (2003)「生後早期に開いていく自己意識の五段階」——分化から他者眼中の自分まで、自己は段階でできあがる』（2003） |
-| `MAT-20261124-5417eb` | research_excerpt | Mary Main, Erik Hesse『Main & Hesse (1990)「未解決の心的外傷と乳児の不統合愛着」——安全基地が恐怖の源になるとき、戦略は組み上がらない』（… |
-| `MAT-20261124-6608db` | research_excerpt | L. Alan Sroufe『Sroufe (1979)「個別発達の一貫性」——変わることの連続は特性ではなく、その時期の課題への適応の質として現れる』（1979） |
-| `MAT-20261124-4b16e5` | research_excerpt | Kenneth M. Kaye『Kaye (1982)『乳児の心と社会的生活——親はどのように人を作るか』——ターンテイキングが較正の最小単位になる』（1982） |
-| `MAT-20261124-94feb1` | research_excerpt | Betty Hart, Todd R. Risley『Hart & Risley (1995)『意味のある違い』——応答の質の前に、話しかけの量が3,000万語の差を作る』（19… |
-| `MAT-20261124-c4cf72` | research_excerpt | Lawrence Kohlberg『Kohlberg (1969)「段階と系列——社会化への認知発達的アプローチ」——段階は量的増加ではなく質的再編である』（1969） |
-| `MAT-20261124-4e4b17` | research_excerpt | Willis F. Overton『Overton (2006)「発達心理学——哲学・概念・方法論」——単位は個体でも環境でもなく、関係それ自体である』（2006） |
-| `MAT-20261124-0e57f2` | research_excerpt | Daniel N. Stern『Stern (1985)『乳児の対人世界』——調律は『何を』ではなく『どう』を合わせる。生気情動の横断的マッチング』（1985） |
-| `MAT-20261124-abe26b` | research_excerpt | Arnold Gesell『Gesell (1928)『乳児期と人間の成長』——195項目の発達日程表。成熟は学習の前に時刻表を置く』（1928） |
 | `MAT-20261124-6b66fb` | research_excerpt | Susanne Kristen-Antonow, Beate Sodian, Hannah Perst, Maria Licata『9か月から4歳までに現れる自己——社会的応答性… |
 | `MAT-20261124-da2ad3` | research_excerpt | Brenda Salley et al.『視覚的注意と社会的関与は共同注意への異なる足場か』（2016） |
 | `MAT-20261124-dc98a0` | research_excerpt | Lynne Murray, Leonardo De Pascalis, Laura Bozicevic, Laura Hawkins, Valentina Sclafani, P… |
@@ -6809,6 +6799,16 @@
 | `MAT-20261124-fbfa5e` | research_excerpt | Michael Tomasello『Michael Tomasello (1999)『人間の認知の文化的起源（The Cultural Origins of Human Cogn… |
 | `MAT-20261124-b37a34` | research_excerpt | Alison Gopnik, Andrew N. Meltzoff, Patricia K. Kuhl『Alison Gopnik・Andrew N. Meltzoff・Patr… |
 | `MAT-20261124-11d1a6` | research_excerpt | Margaret S. Mahler, Fred Pine, Anni Bergman『Margaret S. Mahler 他 (1975)『人間乳児の心理的誕生（The Ps… |
+| `MAT-20261124-a4fbb4` | research_excerpt | Beulah Amsterdam『Amsterdam (1972)「二歳以前の鏡像自己反応」——鏡の中で『私』を見つけるまでに、遊戯・忌避・自己顕示が順に現れる』（1972） |
+| `MAT-20261124-1375a6` | research_excerpt | Philippe Rochat『Rochat (2003)「生後早期に開いていく自己意識の五段階」——分化から他者眼中の自分まで、自己は段階でできあがる』（2003） |
+| `MAT-20261124-5417eb` | research_excerpt | Mary Main, Erik Hesse『Main & Hesse (1990)「未解決の心的外傷と乳児の不統合愛着」——安全基地が恐怖の源になるとき、戦略は組み上がらない』（… |
+| `MAT-20261124-6608db` | research_excerpt | L. Alan Sroufe『Sroufe (1979)「個別発達の一貫性」——変わることの連続は特性ではなく、その時期の課題への適応の質として現れる』（1979） |
+| `MAT-20261124-4b16e5` | research_excerpt | Kenneth M. Kaye『Kaye (1982)『乳児の心と社会的生活——親はどのように人を作るか』——ターンテイキングが較正の最小単位になる』（1982） |
+| `MAT-20261124-94feb1` | research_excerpt | Betty Hart, Todd R. Risley『Hart & Risley (1995)『意味のある違い』——応答の質の前に、話しかけの量が3,000万語の差を作る』（19… |
+| `MAT-20261124-c4cf72` | research_excerpt | Lawrence Kohlberg『Kohlberg (1969)「段階と系列——社会化への認知発達的アプローチ」——段階は量的増加ではなく質的再編である』（1969） |
+| `MAT-20261124-4e4b17` | research_excerpt | Willis F. Overton『Overton (2006)「発達心理学——哲学・概念・方法論」——単位は個体でも環境でもなく、関係それ自体である』（2006） |
+| `MAT-20261124-0e57f2` | research_excerpt | Daniel N. Stern『Stern (1985)『乳児の対人世界』——調律は『何を』ではなく『どう』を合わせる。生気情動の横断的マッチング』（1985） |
+| `MAT-20261124-abe26b` | research_excerpt | Arnold Gesell『Gesell (1928)『乳児期と人間の成長』——195項目の発達日程表。成熟は学習の前に時刻表を置く』（1928） |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261124-65de8c・全文は map/50-sessions-*.md）
 
@@ -7944,12 +7944,12 @@
 | `SESSION-20261123-27803c86` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-27d48c` | 2026-11-23T19:05:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-785cf3` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261124-8cecc8` | 2026-11-24T12:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-2e54b0` | 2026-11-24 | `Q-001` | — | — |
 | `SESSION-20261124-fa13c2` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-d6ebf7` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-064e84` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-dc2436` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-8cecc8` | 2026-11-24T12:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-65de8c` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
