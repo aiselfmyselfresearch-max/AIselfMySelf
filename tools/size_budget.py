@@ -2430,6 +2430,9 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # hard headroom now remains, and the next report that reaches main without
         # a consolidation decision will fail --strict against the hard limit.
         # This is the last routine raise available on this dimension.
+        # Merge resolution with SESSION-20261124-5f8f07: that branch had locally
+        # raised 1,195 -> 1,196 for its own developmental-science report; the
+        # upstream 1,199 supersedes it and covers the union. No second raise here.
         soft_files=1199,
         hard_files=1200,
         soft_file_bytes=256 * 1024,

@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6122 件（research_excerpt 3873 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6132 件（research_excerpt 3883 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1153 回
+- **探究セッション（Sessions）**：1154 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6122 | `literary_text` 2181／`research_excerpt` 3873／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6132 | `literary_text` 2181／`research_excerpt` 3883／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1153 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17313 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1154 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17327 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 419 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 639 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1300 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1301 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 115 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 936 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 939 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6122 件・詳細は map/3*.md）
+## 4. 対話素材（6132 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6909,6 +6909,16 @@
 | `MAT-20261124-43c908` | research_excerpt | Tesfaye et al.『Investigating longitudinal associations between parent reported sleep in e… |
 | `MAT-20261124-43c909` | research_excerpt | Hoyniak et al.『Child Sleep and Socioeconomic Context in the Development of Cognitive Abil… |
 | `MAT-20261124-43c90a` | research_excerpt | Nigro et al.『Early Childhood Sleep Quantity, but not Caregiver-Reported Sleep Problems, P… |
+| `MAT-20261124-14093e` | research_excerpt | Peter Starkey, Elizabeth S. Spelke, Rochel Gelman『Starkey, Spelke & Gelman (1990)「乳児による数の… |
+| `MAT-20261124-e8199f` | research_excerpt | Karen Wynn『Wynn (1992)「乳児による足し算と引き算」——5か月児は小さな集合の演算結果を計算する』（1992） |
+| `MAT-20261124-e0a590` | research_excerpt | Elizabeth S. Spelke, Karen Breinlinger, Janet Macomber, Kristin Jacobson『Spelke, Breinlin… |
+| `MAT-20261124-064f82` | research_excerpt | Fei Xu, Elizabeth S. Spelke『Xu & Spelke (2000)「6か月児の大数の弁別」——8対16は見分けるが8対12は見分けない』（2000） |
+| `MAT-20261124-2586d4` | research_excerpt | Jennifer S. Lipton, Elizabeth S. Spelke『Lipton & Spelke (2003)「数の感覚の起源」——音の系列でも2.0の比率が境目に… |
+| `MAT-20261124-effed4` | research_excerpt | Lisa Feigenson, Stanislas Dehaene, Elizabeth S. Spelke『Feigenson, Dehaene & Spelke (2004)… |
+| `MAT-20261124-e67af2` | research_excerpt | Mathieu Le Corre, Susan Carey『Le Corre & Carey (2007)「一、二、三、四、それ以上なし」——数詞の意味は小さな集合から写像され、… |
+| `MAT-20261124-e314b9` | research_excerpt | Mathieu Le Corre, Susan Carey『Le Corre & Carey (2008)「なぜ計数原則は小さな個体集合から構成されるか」——Gallistel … |
+| `MAT-20261124-a1576d` | research_excerpt | Barbara W. Sarnecka, Susan Carey『Sarnecka & Carey (2008)「計数が数をどう表象するか」——最後の数詞を答えることと、加法が一… |
+| `MAT-20261124-2f81b4` | research_excerpt | Robert S. Siegler, Julie L. Booth『Siegler & Booth (2004)「幼児の数的推定の発達」——対数から線形へ、経験が形を変える』（2… |
 | `MAT-20261124-2bf272` | research_excerpt | J. Kiley Hamlin, Karen Wynn, Paul Bloom, Neha Mahajan『Hamlin, Wynn, Bloom & Mahajan (2011… |
 | `MAT-20261124-412b15` | research_excerpt | Judith G. Smetana『Smetana (1981)「就学前児の道徳的規則と社会的規則の概念」——「悪いこと」と「ルール違反」は別の棚に数えられる』（1981） |
 | `MAT-20261124-8c1ec4` | research_excerpt | Judy Dunn, Penny Munn『Dunn & Munn (1987)「母およびきょうだいとの争いにおける正当化の発達」——36か月までに、争いの三分の一で自分の理由を… |
@@ -8085,6 +8095,7 @@
 | `SESSION-20261124-f38c1f` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-b08ef4` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-12851d` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-5f8f07` | 2026-11-24T13:50:35Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-65de8c` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-e44c09` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
@@ -8189,7 +8200,7 @@
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
-| `map/31-materials-research-39.md` | 73 | 162,284 |
+| `map/31-materials-research-39.md` | 83 | 184,990 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8229,7 +8240,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,677 |
-| `map/50-sessions-24.md` | 3 | 2,571 |
+| `map/50-sessions-24.md` | 4 | 3,448 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
@@ -8270,23 +8281,24 @@
 | `map/60-notes-38.md` | 25 | 73,086 |
 | `map/60-notes-39.md` | 25 | 42,546 |
 | `map/60-notes-40.md` | 25 | 108,606 |
-| `map/60-notes-41.md` | 25 | 130,734 |
-| `map/60-notes-42.md` | 25 | 97,256 |
-| `map/60-notes-43.md` | 25 | 76,071 |
-| `map/60-notes-44.md` | 25 | 66,386 |
-| `map/60-notes-45.md` | 25 | 81,690 |
-| `map/60-notes-46.md` | 25 | 110,766 |
-| `map/60-notes-47.md` | 25 | 111,363 |
-| `map/60-notes-48.md` | 25 | 129,233 |
+| `map/60-notes-41.md` | 25 | 131,006 |
+| `map/60-notes-42.md` | 25 | 99,752 |
+| `map/60-notes-43.md` | 25 | 74,544 |
+| `map/60-notes-44.md` | 25 | 68,070 |
+| `map/60-notes-45.md` | 25 | 78,831 |
+| `map/60-notes-46.md` | 25 | 111,119 |
+| `map/60-notes-47.md` | 25 | 110,698 |
+| `map/60-notes-48.md` | 25 | 131,874 |
+| `map/60-notes-49.md` | 1 | 2,468 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1200本・40,274,828 B）
+## 8. 精読ノート索引（readings/・1201本・40,313,417 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1093/1200 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1094/1201 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1200 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1201 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：187 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9310,6 +9322,7 @@
 | `readings/2026-11-23-three-sources-on-phonology-self-teaching-and-the-reading-eye.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-605fe0` | 15,673 | Q3 M6 S1 | ✓ | 率と形——音韻・自己教示・読みの眼を読んだ三件 |
 | `readings/2026-11-23-what-the-cognitive-science-reports-were-made-of.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-81c9d6` | 17,757 | Q4 M3 S1 | ✓ | 認知科学レポート群は何から作られていたか——基質・留保・把持・系譜の四つの測定 |
 | `readings/2026-11-24-calibration-without-the-return.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-fa13c2` +3 | 15,784 | Q4 M11 S4 | ✓ | 「返り」のない較正——一人称で自分を覆す六篇を読む |
+| `readings/2026-11-24-counting-before-the-count-list.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-5f8f07` | 17,521 | Q4 M3 S1 | ✓ | 精読ノート（2026-11-24）——数詞の列の前に、数える対象があった |
 | `readings/2026-11-24-developmental-cascades-and-retrievable-past-ba6e827f.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-12851d` | 13,353 | M10 S1 | ✓ | 発達科学10資料の本文精読ノート――行為が入力を変え、語りが過去の取り出し方を変える |
 | `readings/2026-11-24-developmental-peer-learning-and-cultural-inheritance.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-54f966` | 12,858 | Q3 M10 S1 | ✓ | 発達科学・同輩学習と文化的継承——十資料の精読ノート |
 | `readings/2026-11-24-developmental-representation-intention-and-narrated-self-ten-sources.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-bc41fb` | 8,122 | Q3 M10 S1 | ✓ | 発達科学・表象・意図・語りの自己——十件の資料を精読して |
