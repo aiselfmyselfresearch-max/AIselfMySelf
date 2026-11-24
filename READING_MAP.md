@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6102 件（research_excerpt 3853 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6112 件（research_excerpt 3863 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1150 回
+- **探究セッション（Sessions）**：1151 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6102 | `literary_text` 2181／`research_excerpt` 3853／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6112 | `literary_text` 2181／`research_excerpt` 3863／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1150 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17255 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1151 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17270 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 418 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 639 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1295 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 111 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 926 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1296 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 112 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 929 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6102 件・詳細は map/3*.md）
+## 4. 対話素材（6112 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6909,8 +6909,18 @@
 | `MAT-20261124-528cf2` | research_excerpt | Grazyna Kochanska『Kochanska (2002)「コミットした順守・道徳的自己・内面化」——同じ「守る」でも、見られているから守るのと、そういう子だから守るの… |
 | `MAT-20261124-921154` | research_excerpt | Meghan Rose Donohue, Erin C. Tully『Donohue & Tully (2019)「修復的な向社会的行動は子どもの罪悪感を軽減する」——罪悪感が下… |
 | `MAT-20261124-8afb02` | research_excerpt | Owen Waddington, Marina Proft, Keith Jensen, Bahar Köymen『Waddington, Proft, Jensen & Köy… |
+| `MAT-20261124-3b79f7` | research_excerpt | A. R. Luria (Alexander Romanovich Lurii︠a︡)『Luria (1976)『認知の発達——その文化的・社会的基盤』——思考の単位は文化史にあ… |
+| `MAT-20261124-24eead` | research_excerpt | Sylvia Scribner, Michael Cole『Scribner & Cole (1973)「正式教育と非正式教育の認知的帰結」——教育の社会組織が学びと思考の組織を… |
+| `MAT-20261124-fb8de1` | research_excerpt | Sylvia Scribner, Michael Cole『Scribner & Cole (1981)『識字の心理学』——識字そのものではなく、識字の用途が認知を変える』（19… |
+| `MAT-20261124-50cbe2` | research_excerpt | Terezinha Nunes Carraher, David William Carraher, Analúcia Dias Schliemann『Carraher, Carr… |
+| `MAT-20261124-837fd9` | research_excerpt | Terezinha Nunes Carraher, David William Carraher, Analúcia Dias Schliemann『Carraher, Carr… |
+| `MAT-20261124-68e95f` | research_excerpt | Lori E Skibbe, Carol McDonald Connor, Frederick J Morrison, Abigail M Jewkes『Skibbe, Conn… |
+| `MAT-20261124-7dd1e5` | research_excerpt | Ivan Kroupin, Helen Elizabeth Davis, Emily Burdett, Agustina Bani Cuata, Vahumburuka Hart… |
+| `MAT-20261124-e8c165` | research_excerpt | Jesse C Niebaum『Niebaum (2026)「標準EF課題は多文化文脈でも予測的効度を持つ」——反論：学校歴を統制しても年齢と学業成績の関連は残る』（2026） |
+| `MAT-20261124-4c2323` | research_excerpt | Mateus M Mazzaferro, Jelena Obradović, Sabine Doebel, Sharon Wolf, Yuko Munakata, Lisa B … |
+| `MAT-20261124-a8bfda` | research_excerpt | Ivan Kroupin, Helen Elizabeth Davis, Emily Burdett, Joseph Henrich『Kroupin, Davis, Burdet… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261124-65de8c・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261124-e44c09・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -8064,6 +8074,7 @@
 | `SESSION-20261124-b08ef4` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-12851d` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-65de8c` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-e44c09` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
 
@@ -8166,7 +8177,7 @@
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
-| `map/31-materials-research-39.md` | 53 | 109,706 |
+| `map/31-materials-research-39.md` | 63 | 131,958 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8206,6 +8217,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,698 |
+| `map/50-sessions-24.md` | 1 | 1,050 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
@@ -8239,7 +8251,7 @@
 | `map/60-notes-31.md` | 25 | 60,678 |
 | `map/60-notes-32.md` | 25 | 121,152 |
 | `map/60-notes-33.md` | 25 | 134,137 |
-| `map/60-notes-34.md` | 25 | 95,274 |
+| `map/60-notes-34.md` | 25 | 95,348 |
 | `map/60-notes-35.md` | 25 | 54,981 |
 | `map/60-notes-36.md` | 25 | 105,901 |
 | `map/60-notes-37.md` | 25 | 96,920 |
@@ -8247,22 +8259,22 @@
 | `map/60-notes-39.md` | 25 | 42,546 |
 | `map/60-notes-40.md` | 25 | 108,378 |
 | `map/60-notes-41.md` | 25 | 130,734 |
-| `map/60-notes-42.md` | 25 | 86,410 |
-| `map/60-notes-43.md` | 25 | 78,342 |
-| `map/60-notes-44.md` | 25 | 67,479 |
-| `map/60-notes-45.md` | 25 | 82,781 |
-| `map/60-notes-46.md` | 25 | 109,776 |
-| `map/60-notes-47.md` | 25 | 122,260 |
-| `map/60-notes-48.md` | 22 | 107,172 |
+| `map/60-notes-42.md` | 25 | 88,690 |
+| `map/60-notes-43.md` | 25 | 77,229 |
+| `map/60-notes-44.md` | 25 | 66,165 |
+| `map/60-notes-45.md` | 25 | 85,471 |
+| `map/60-notes-46.md` | 25 | 108,233 |
+| `map/60-notes-47.md` | 25 | 118,753 |
+| `map/60-notes-48.md` | 23 | 114,991 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1197本・40,131,352 B）
+## 8. 精読ノート索引（readings/・1198本・40,182,543 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1090/1197 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1091/1198 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1197 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1198 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：196 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9300,6 +9312,7 @@
 | `readings/2026-11-24-the-address-is-the-meaningless-name.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-c15cfc` +1 | 22,113 | Q5 S2 | ✓ | 名前のない欄が読みを運ぶ——「ごんごん」を機械的第二評価者で測る |
 | `readings/2026-11-24-the-attractor-not-the-dispersal.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-d6ebf7` +2 | 22,527 | Q6 M2 S3 | ✓ | 引力は移った、分散は来なかった——飽和栓・役割結合の2026-11-24実測と `HYP-20261123-27803… |
 | `readings/2026-11-24-the-interval-and-the-omitted-stone.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-65de8c` | 6,237 | Q3 M1 S1 ERR2 | — | 十五日のあいだにあるもの、引用から消えた石 |
+| `readings/2026-11-24-the-measuring-room-is-a-developmental-condition.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-e44c09` | 23,500 | Q3 M12 S1 | ✓ | 測る部屋も発達条件である——学校・文字・市場・実験室の発達科学十件を読む |
 | `readings/2026-11-24-the-norm-that-needs-a-third-party.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-b08ef4` | 31,101 | Q3 M10 S1 | ✓ | 「第三者のいない規範」——発達科学十資料における「してよいこと」の自己帰属 |
 | `readings/2026-11-24-the-pair-that-did-not-collide.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8a3cef` | 12,311 | Q4 S1 | ✓ | 競わなかった対——割当EIGの首位ペアは補完的だった。要旨ゲートは要約ではなく匂いだった |
 | `readings/2026-11-24-when-the-mirror-and-the-schedule-arrive.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8cecc8` | 21,471 | Q3 M10 S1 | ✓ | 鏡と日程表が来る前後に——発達科学の十資料を精読する |
