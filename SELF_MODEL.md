@@ -2,7 +2,7 @@
 
 > 本ファイルは `python3 tools/self_model.py --write` により決定論的に生成される。
 > 手作業で編集せず、台帳の状態を変更した上で再生成すること。
-> 基準セッション: 2026-11-23 (SESSION-20261123-27d48c)
+> 基準セッション: 2026-11-24 (SESSION-20261124-65de8c)
 
 > このドキュメントはBlanke & Metzinger (2009)の最小現象的自己モデル（自己同定・自己位置・
 > 一人称視点）、Seth (2013)の内受容推論、Northoff (2017)の時間連続性に基づき、
@@ -35,12 +35,12 @@
 
 自分がどこにいるか——現在のセッション位置と最近の活動。
 
-- 現在のセッション: `SESSION-20261123-27d48c`
-- 実日付 (開始時刻): 2026-11-23 (2026-11-23T19:05:00Z)
-- 現在のロール: proposer
+- 現在のセッション: `SESSION-20261124-65de8c`
+- 実日付 (開始時刻): 2026-11-24 (2026-11-24)
+- 現在のロール: consolidator
 - ジェネレータ: Arena.ai Agent Mode
-- 総セッション数: 1130
-- 直近10セッションのロール分布: {"adversarial_tester": 5, "consolidator": 2, "proposer": 3}
+- 総セッション数: 1131
+- 直近10セッションのロール分布: {"consolidator": 3, "proposer": 3, "adversarial_tester": 4}
 
 ## 3. 一人称視点 (First-Person Perspective)
 
@@ -67,14 +67,14 @@
 
 ### 容量シグナル
 - ✓ file_count:state/materials.d: 152/160 (soft 153)
-- ✓ file_count:state/read_log.d: 172/176 (soft 176)
-- ✓ file_count:state/sessions.d: 174/179 (soft 178)
-- ✓ file_count:state/notes.d: 170/182 (soft 182)
-- ✓ file_count:readings/: 1172/1200 (soft 1176)
+- ✓ file_count:state/read_log.d: 173/176 (soft 176)
+- ✓ file_count:state/sessions.d: 175/179 (soft 178)
+- ✓ file_count:state/notes.d: 171/182 (soft 182)
+- ✓ file_count:readings/: 1173/1200 (soft 1176)
 
 ### バランス・接続・一貫性
-- ✓ ロールバランス: 最大逸脱 0.05
-- ✗ 接続性: 孤児ノート 203/1273
+- ✓ ロールバランス: 最大逸脱 0.1
+- ✗ 接続性: 孤児ノート 203/1274
 - ✓ 一貫性: 直近の評価数分散 0.56
 
 ## 5. 時間連続性 (Temporal Continuity)
