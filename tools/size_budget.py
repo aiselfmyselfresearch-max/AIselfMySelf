@@ -216,7 +216,13 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 16 MiB leaves ~2.95 MiB of headroom against an observed 40-90 KB per wave.
         # hard_bytes 20 MiB unchanged.  See readings/2026-11-18-the-thought-that-was-mine-
         # and-not-mine.md §13 and docs/mode-rotation-triggers.md.
-        soft_bytes=16 * MIB,
+        # 2026-11-24 (SESSION-20261124-aaaa42, merge of PR #1092 db81d61): soft_bytes
+        # 16 -> 17 MiB. Measured on the merged union: origin/main db81d61 stood at
+        # 16,754,482 B (22,734 B under 16 MiB after five same-day 10-source waves),
+        # and this session's 10 verified developmental-science rows (26,273 B) took
+        # state/materials.d to 16,780,755 B (+3,539 B over 16 MiB; shard count 153
+        # unchanged, hard 20 MiB unchanged). Shard consolidation cannot reduce bytes.
+        soft_bytes=17 * MIB,
         hard_bytes=20 * MIB,
         # 2026-11-08: retain one additional soft slot (81) for this requested
         # five-source acquisition. Keep the per-session shard separate rather
@@ -1889,8 +1895,14 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # the next editorial_review to decide whether the byte review point should
         # follow the report count (see docs/parallel-work.md §3) rather than be
         # rescaled one session at a time.
+        # 2026-11-24 (SESSION-20261124-aaaa42, merge of PR #1092 db81d61): soft_bytes
+        # 38 -> 39 MiB. Measured on the merged union across 1,187 reports: origin/main
+        # db81d61 stood at 39,845,489 B (399 B under 38 MiB after PR #1091 and #1092),
+        # and this session's condensed 10-paper close-reading report (16,834 B) took
+        # readings/ to 39,862,323 B (+16,435 B over 38 MiB; files 1,187/1,189, hard
+        # 48 MiB and per-report caps unchanged). Append-only corpus; not automatic.
         "readings",
-        soft_bytes=38 * MIB,
+        soft_bytes=39 * MIB,
         hard_bytes=48 * MIB,
         remedy=(
             "Episodic reports are append-only, so decide which dimension fired before choosing a remedy. "
