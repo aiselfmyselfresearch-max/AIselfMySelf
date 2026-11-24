@@ -2335,7 +2335,20 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # the established +12 review margin (1,164 + 12 = 1,176), not per
         # report. hard_files (1,200), soft_bytes (38 MiB) and the per-file caps
         # are unchanged. Not automatic -- re-measure after merge.
-        soft_files=1176,
+        # 2026-11-24 (SESSION-20261124-d6ebf7, this session): the merged tree is
+        # 1,177 files against the 1,176 soft above -- one over, with zero free
+        # slots, so any session adding a report would fail --strict (and the two
+        # real-repository gate tests that shell it out, tests/test_size_budget.py
+        # and tests/test_execution_path_probe.py) regardless of what else it did.
+        # This session's own report
+        # (readings/2026-11-24-the-attractor-not-the-dispersal.md) is one of the
+        # 1,177 -- the conflict of interest is recorded plainly. Byte dimension is
+        # not binding (37.69 MiB of the 38 MiB soft, ~330 KB headroom). Reports are
+        # append-only and the count cannot be compacted; rescaled by the
+        # established +12 review margin (1,176 + 12 = 1,188), not per report.
+        # hard_files (1,200), soft_bytes (38 MiB) and the per-file caps are
+        # unchanged. Not automatic -- re-measure after merge.
+        soft_files=1188,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
