@@ -162,11 +162,15 @@ class AllocationBasisTests(unittest.TestCase):
         # Measured 2026-11-24 (SESSION-20261124-8cecc8): adding two live
         # hypotheses to Q-001 moved some seeds under the *historical*
         # (active-only priority_score) arithmetic as well — 94/253 now pick
-        # Q-001, 159/253 still pick Q-20261024-6bdafd.  The point of this
-        # test is that the old ranking stays *measurable* (it still surfaces
-        # the peripheral question the default no longer does), not that it
-        # freezes a set of picks.  Pinning the singleton here would make the
-        # constant a prohibition on growth, not a record — the same defect
+        # Q-001, 159/253 still pick Q-20261024-6bdafd.  And when a bootstrap
+        # proposer session (e.g. SESSION-20261124-aaaa42 on Q-20261024-8b1b80)
+        # registers a first live un-evaluated hypothesis on an open peripheral
+        # question, that 1-hypothesis peripheral question outscores both Q-001
+        # and Q-20261024-6bdafd under the historical active-only score (1.800
+        # vs 1.630).  The point of this test is that the old ranking stays
+        # *measurable* (it still surfaces peripheral question(s) the default no
+        # longer does), not that it freezes a single peripheral ID and forbids
+        # bootstrap expansion on other peripheral questions — the same defect
         # class fixed for active_entropy_bits on 2026-11-23 (see
         # DEVELOPMENTAL_SCIENCE_REPORT_2026-11-23.md §10-2).
         picks = {
@@ -181,14 +185,22 @@ class AllocationBasisTests(unittest.TestCase):
             )[0]
             for s in self.seeds
         }
-        # The historical ranking still reaches a question the default does not.
-        self.assertIn("Q-20261024-6bdafd", picks)
+        # The historical ranking still reaches at least one non-core peripheral
+        # question that the default does not.
+        non_core_picks = picks - {"Q-001", "Q-002", "Q-003"}
+        self.assertTrue(
+            non_core_picks,
+            f"expected historical basis to surface a peripheral question, got {picks}",
+        )
         # And it is no longer identical to the default (default is all-centre).
         self.assertNotEqual(picks, default_picks)
 
     def test_the_normalised_basis_is_kept_and_still_reverses_the_ranking(self) -> None:
-        # Proposal 2 as designed was wrong.  Recorded as measurement so the
-        # correction is reproducible and cannot be re-proposed as new.
+        # Proposal 2 as designed was wrong: normalising by log2(n) lets small-n
+        # peripheral questions beat the 30+-hypothesis centre.  Recorded as a
+        # relational measurement (rather than pinning a single peripheral ID,
+        # which would forbid new 1-hypothesis bootstrap additions on other
+        # peripheral questions) so the reason survives its correction.
         norm_q = self.state["questions"]["Q-001"]
         lead_q = self.state["questions"]["Q-20261024-6bdafd"]
         self.assertLess(
@@ -201,7 +213,8 @@ class AllocationBasisTests(unittest.TestCase):
             )[0]
             for s in self.seeds
         }
-        self.assertEqual(picks, {"Q-20261024-6bdafd"})
+        self.assertNotIn("Q-001", picks)
+        self.assertTrue(picks - {"Q-001", "Q-002", "Q-003"})
 
     def test_an_unknown_basis_is_rejected(self) -> None:
         with self.assertRaises(ValueError):

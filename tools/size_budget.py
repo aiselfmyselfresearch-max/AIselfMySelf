@@ -216,19 +216,21 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 16 MiB leaves ~2.95 MiB of headroom against an observed 40-90 KB per wave.
         # hard_bytes 20 MiB unchanged.  See readings/2026-11-18-the-thought-that-was-mine-
         # and-not-mine.md §13 and docs/mode-rotation-triggers.md.
-        # 2026-11-24 (SESSION-20261124-6a8c58, this session): soft_bytes 16 -> 17 MiB.
-        # Measured after writing this session's ten-row developmental-science wave into
-        # the existing day shard 2026-11-24-000000000000.jsonl: 16,792,755 B against the
-        # 16 MiB (16,777,216 B) line, i.e. 15,539 B over, with 15,539 B supplied by this
-        # session's own rows (the shard was already the day's shared file, so no new file
-        # and soft_shards is untouched). Consolidation cannot help: merging shards removes
-        # files, never bytes, and this is the byte dimension. Rows are append-only, so the
-        # only alternatives were a shorter row or a rescaled review point; the ten rows
-        # are the deliverable of an explicitly human-authorized 10-source acquisition
-        # (sessions.human_direction), and trimming their provenance to fit a counter would
-        # lower the record's resolution. 1 MiB step is the established review margin
-        # (~40-90 KB per ten-source wave, so ~11 waves of headroom). hard_bytes 20 MiB and
-        # soft_shards unchanged. Not automatic -- re-measure after merge.
+        # 2026-11-24: soft_bytes 16 -> 17 MiB. TWO parallel same-day sessions crossed
+        # this line from the same direction, and the merge is what makes the record
+        # honest: SESSION-20261124-aaaa42 (PR #1093) wrote 10 verified
+        # developmental-science rows (26,273 B) into the day shard while this session
+        # (SESSION-20261124-6a8c58) wrote its own 10-row developmental-science wave
+        # (15,539 B) into the same shard. Each session measured its own tree
+        # (16,780,755 B and 16,792,755 B respectively, both just over the 16,777,216 B
+        # line); the merged union stands above both. Neither raise is the other's
+        # cause, and neither would have been needed if the day had held one wave:
+        # this is the known structural cost of same-day parallel 10-source waves.
+        # Shard consolidation cannot help (it removes files, never bytes), rows are
+        # append-only, and trimming provenance to fit a counter would lower the
+        # record's resolution. 1 MiB step keeps the established ~40-90 KB-per-wave
+        # review margin. hard_bytes 20 MiB and soft_shards unchanged. Not automatic --
+        # re-measure after merge.
         soft_bytes=17 * MIB,
         hard_bytes=20 * MIB,
         # 2026-11-08: retain one additional soft slot (81) for this requested
@@ -1902,20 +1904,25 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # the next editorial_review to decide whether the byte review point should
         # follow the report count (see docs/parallel-work.md §3) rather than be
         # rescaled one session at a time.
+        # 2026-11-24 (SESSION-20261124-aaaa42, merge of PR #1092 db81d61): soft_bytes
+        # 38 -> 39 MiB. Measured on the merged union across 1,187 reports: origin/main
+        # db81d61 stood at 39,845,489 B (399 B under 38 MiB after PR #1091 and #1092),
+        # and this session's condensed 10-paper close-reading report (16,834 B) took
+        # readings/ to 39,862,323 B (+16,435 B over 38 MiB; files 1,187/1,189, hard
+        # 48 MiB and per-report caps unchanged). Append-only corpus; not automatic.
         "readings",
-        # 2026-11-24 (SESSION-20261124-6a8c58, this session): soft_bytes 38 -> 39 MiB.
-        # Measured on this tree: 39,889,137 B across 1,187 files against the 38 MiB
-        # (39,845,888 B) line -- 43,249 B over, of which this session's one close-reading
-        # report (readings/2026-11-24-who-the-timetable-is-for.md) is the marginal cause;
-        # the pre-existing headroom was 351 B, i.e. less than one report, so the line was
-        # already one session away from firing. The FILE dimension did not fire
-        # (1,187 / soft 1,189), so bytes is the dimension to rescale. Reports are
-        # append-only: consolidation moves files and never bytes, and deletion needs human
-        # approval, so the choices were a measured rescale or dropping half of the close
-        # reading. 1 MiB step leaves ~25 reports at the observed ~40 KB average.
-        # Conflict of interest recorded plainly: the marginal cause is this session's own
-        # report. hard 48 MiB, soft_files 1,189 / hard 1,200 and the 256 KiB / 512 KiB
-        # per-report caps unchanged. Not automatic -- re-measure after merge.
+        # 2026-11-24: soft_bytes 38 -> 39 MiB. Again two same-day sessions, both
+        # writing a developmental-science close-reading report, crossed the same line:
+        # SESSION-20261124-aaaa42's report is 16,834 B and this session's
+        # (readings/2026-11-24-who-the-timetable-is-for.md) 50,058 B; origin/main
+        # db81d61 had 399 B of headroom and this tree measured 39,889,137 B against
+        # 39,845,888 B. The FILE dimension did not fire (1,187 / soft 1,189), so bytes
+        # is the dimension to rescale. Reports are append-only (consolidation moves
+        # files, never bytes; deletion needs human approval). 1 MiB step is ~25 reports
+        # at the observed average. Conflict of interest recorded plainly: this
+        # session's own report is one of the two marginal causes. hard 48 MiB,
+        # soft_files 1,189 / hard 1,200 and the 256 KiB / 512 KiB per-report caps
+        # unchanged. Not automatic -- re-measure after merge.
         soft_bytes=39 * MIB,
         hard_bytes=48 * MIB,
         remedy=(
