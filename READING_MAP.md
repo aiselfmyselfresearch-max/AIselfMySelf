@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6122 件（research_excerpt 3873 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6132 件（research_excerpt 3883 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1153 回
+- **探究セッション（Sessions）**：1154 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6122 | `literary_text` 2181／`research_excerpt` 3873／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6132 | `literary_text` 2181／`research_excerpt` 3883／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1153 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17313 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1154 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17327 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 419 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 639 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1298 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 113 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 936 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1301 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 115 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 939 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6122 件・詳細は map/3*.md）
+## 4. 対話素材（6132 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6889,6 +6889,16 @@
 | `MAT-20261124-daec4d` | research_excerpt | Sarah Leckey, Claudia Gonzales, Diana Selmeczy, Simona Ghetti『Leckey, Gonzales, Selmeczy … |
 | `MAT-20261124-cac705` | research_excerpt | Stéphane Bernard, Joëlle Proust, Fabrice Clément『Bernard, Proust & Clément (2015) 3〜5歳児の手… |
 | `MAT-20261124-e9987b` | research_excerpt | Brandon W. Goulding, Emily E. Stonehouse, Ori Friedman『Goulding, Stonehouse & Friedman (2… |
+| `MAT-20261124-a878cb` | research_excerpt | Maria Nagy『Nagy (1948)「子どもの死についての理論」——3〜10歳378名の言葉と絵から、死は分離→擬人化→不可逆の三段階を経るとされた最初の研究』（1948） |
+| `MAT-20261124-536f85` | research_excerpt | Mark W. Speece, Sandor B. Brent『Speece & Brent (1984)「子どもの死についての理解——死の概念の三成分のレビュー」』（1984） |
+| `MAT-20261124-e4264d` | research_excerpt | Robert Kastenbaum, Paul T. Costa Jr.『Kastenbaum & Costa (1977)「死についての心理学的視点」——最初の包括レビューと、… |
+| `MAT-20261124-c26b01` | research_excerpt | Brenda L. Kenyon『Kenyon (2001)「子どもの死の概念の現在の研究——批判的レビュー」』（2001） |
+| `MAT-20261124-a33441` | research_excerpt | Virginia Slaughter, Michelle Lyons『Slaughter & Lyons (2003)「幼児期における生命と死についての学習」——生命観（vita… |
+| `MAT-20261124-e98249` | research_excerpt | Virginia Slaughter, Maya Griffiths『Slaughter & Griffiths (2007)「幼児の死の理解と死の恐怖」』（2007） |
+| `MAT-20261124-cc4c2e` | research_excerpt | Jesse M. Bering, David F. Bjorklund『Bering & Bjorklund (2004)「来世についての推論は発達の規則性として自然に生じる」』… |
+| `MAT-20261124-699830` | research_excerpt | Karl S. Rosengren, Peggy J. Miller, Isabel T. Gutiérrez, Philip I. Chow, Stevie S. Schein… |
+| `MAT-20261124-d8b7db` | research_excerpt | Fotini Bonoti, Angeliki Leondari, Adelais Mastora『Bonoti, Leondari & Mastora (2013)「描画と D… |
+| `MAT-20261124-e971d6` | research_excerpt | Rita Astuti, Paul L. Harris『Astuti & Harris (2008)「マダガスカル農村における死と祖先の生の理解」』（2008） |
 | `MAT-20261124-43c901` | research_excerpt | Li et al.『Unpredictability in Caregiver-child Relationships: Impact on Child Verbal Abili… |
 | `MAT-20261124-43c902` | research_excerpt | Kaletsch & Liszkowski『Does Caregivers' Responsiveness Influence the Early Development of … |
 | `MAT-20261124-43c903` | research_excerpt | Bratsch-Hines et al.『Infant and Toddler Child-Care Quality and Stability in Relation to P… |
@@ -8082,6 +8092,7 @@
 | `SESSION-20261124-be1f70` | 2026-11-24 | `Q-20261024-8b1b80`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-1a4ed0` | 2026-11-24 | `Q-20261024-8b1b80`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-b382df` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-6bdafd`, `Q-20261024-8b1b80` | — | — |
+| `SESSION-20261124-f38c1f` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-b08ef4` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-12851d` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-5f8f07` | 2026-11-24T13:50:35Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -8189,7 +8200,7 @@
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
-| `map/31-materials-research-39.md` | 73 | 154,664 |
+| `map/31-materials-research-39.md` | 83 | 184,990 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8228,12 +8239,12 @@
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
-| `map/50-sessions-23.md` | 50 | 43,657 |
-| `map/50-sessions-24.md` | 3 | 2,590 |
+| `map/50-sessions-23.md` | 50 | 43,677 |
+| `map/50-sessions-24.md` | 4 | 3,448 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
-| `map/60-notes-04.md` | 25 | 100,309 |
+| `map/60-notes-04.md` | 25 | 100,365 |
 | `map/60-notes-05.md` | 25 | 91,978 |
 | `map/60-notes-06.md` | 25 | 55,753 |
 | `map/60-notes-07.md` | 25 | 67,234 |
@@ -8256,7 +8267,7 @@
 | `map/60-notes-24.md` | 25 | 95,849 |
 | `map/60-notes-25.md` | 25 | 117,398 |
 | `map/60-notes-26.md` | 25 | 119,631 |
-| `map/60-notes-27.md` | 25 | 124,539 |
+| `map/60-notes-27.md` | 25 | 124,577 |
 | `map/60-notes-28.md` | 25 | 78,201 |
 | `map/60-notes-29.md` | 25 | 110,717 |
 | `map/60-notes-30.md` | 25 | 36,498 |
@@ -8271,22 +8282,23 @@
 | `map/60-notes-39.md` | 25 | 42,546 |
 | `map/60-notes-40.md` | 25 | 108,606 |
 | `map/60-notes-41.md` | 25 | 131,006 |
-| `map/60-notes-42.md` | 25 | 93,905 |
-| `map/60-notes-43.md` | 25 | 76,071 |
-| `map/60-notes-44.md` | 25 | 66,386 |
-| `map/60-notes-45.md` | 25 | 81,690 |
-| `map/60-notes-46.md` | 25 | 110,766 |
-| `map/60-notes-47.md` | 25 | 111,363 |
-| `map/60-notes-48.md` | 25 | 129,233 |
+| `map/60-notes-42.md` | 25 | 99,752 |
+| `map/60-notes-43.md` | 25 | 74,544 |
+| `map/60-notes-44.md` | 25 | 68,070 |
+| `map/60-notes-45.md` | 25 | 78,831 |
+| `map/60-notes-46.md` | 25 | 111,119 |
+| `map/60-notes-47.md` | 25 | 110,698 |
+| `map/60-notes-48.md` | 25 | 131,874 |
+| `map/60-notes-49.md` | 1 | 2,468 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1200本・40,250,166 B）
+## 8. 精読ノート索引（readings/・1201本・40,313,417 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1093/1200 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1094/1201 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1200 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1201 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：187 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -8965,7 +8977,7 @@
 | `readings/2026-11-16-comparative-zoology-03-metacognition.md` | — | 2026-11-16 | — | 4,474 | Q2 | — | 2026-11-16 比較動物学資料 03：動物メタ認知——不確実性モニタリングの系統発生とAIへの含意 |
 | `readings/2026-11-16-comparative-zoology-03-stigmergy-external-memory.md` | 2026-11-16 | 2026-11-16 | — | 1,656 | — | ✓ | 比較動物学資料03：社会性昆虫のスティグメルジー（痕跡協調）と外部記憶 |
 | `readings/2026-11-16-comparative-zoology-04-animal-culture.md` | — | 2026-11-16 | — | 4,701 | Q2 | — | 2026-11-16 比較動物学資料 04：動物文化と累積文化——ラチェット効果の進化的起源 |
-| `readings/2026-11-16-comparative-zoology-04-comparative-thanatology.md` | 2026-11-16 | 2026-11-16 | — | 1,628 | — | — | 比較動物学資料04：比較死生学（Comparative Thanatology）— 動物の「死」の認識と哀悼行動 |
+| `readings/2026-11-16-comparative-zoology-04-comparative-thanatology.md` | 2026-11-16 | 2026-11-16 | — | 1,628 | — | ✓ | 比較動物学資料04：比較死生学（Comparative Thanatology）— 動物の「死」の認識と哀悼行動 |
 | `readings/2026-11-16-comparative-zoology-05-compositional-syntax-birds.md` | 2026-11-16 | 2026-11-16 | — | 1,490 | — | — | 比較動物学資料05：シジュウカラの合成的統語（Compositional Syntax）と動物言語の進化 |
 | `readings/2026-11-16-comparative-zoology-05-embodied-cognition.md` | — | 2026-11-16 | — | 4,382 | Q2 | — | 2026-11-16 比較動物学資料 05：身体化認知の比較的視座——タコ、クモ、AIの身体なき知性 |
 | `readings/2026-11-16-comparative-zoology-06-consciousness-declaration.md` | — | 2026-11-16 | — | 4,330 | Q2 | — | 2026-11-16 比較動物学資料 06：ケンブリッジ意識宣言とその波及——「人間だけが意識を持つ」の終焉 |
@@ -9324,6 +9336,7 @@
 | `readings/2026-11-24-sleeper-cascades-cultural-norm-enforcement-and-procedural-metacognition.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-be1f70` | 20,034 | Q4 M10 S1 | ✓ | 剥奪後のスリーパー回復と潜在カスケード・規範施行の文化多様性・手続的メタ認知と現在アンカー——発達科学10原著の精読（… |
 | `readings/2026-11-24-the-address-is-the-meaningless-name.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-c15cfc` +1 | 22,113 | Q5 S2 | ✓ | 名前のない欄が読みを運ぶ——「ごんごん」を機械的第二評価者で測る |
 | `readings/2026-11-24-the-attractor-not-the-dispersal.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-d6ebf7` +2 | 22,527 | Q6 M2 S3 | ✓ | 引力は移った、分散は来なかった——飽和栓・役割結合の2026-11-24実測と `HYP-20261123-27803… |
+| `readings/2026-11-24-the-child-who-counts-the-dead.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-f38c1f` | 30,609 | Q4 M11 MOT1 S1 | — | いつ死を知るか——発達科学十件と、一つに数えられてきた問い |
 | `readings/2026-11-24-the-interval-and-the-omitted-stone.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-65de8c` | 6,237 | Q3 M1 S1 ERR2 | — | 十五日のあいだにあるもの、引用から消えた石 |
 | `readings/2026-11-24-the-measuring-room-is-a-developmental-condition.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-e44c09` | 23,500 | Q3 M12 S1 | ✓ | 測る部屋も発達条件である——学校・文字・市場・実験室の発達科学十件を読む |
 | `readings/2026-11-24-the-norm-that-needs-a-third-party.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-b08ef4` | 31,101 | Q3 M10 S1 | ✓ | 「第三者のいない規範」——発達科学十資料における「してよいこと」の自己帰属 |
