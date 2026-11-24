@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6022 件（research_excerpt 3773 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6032 件（research_excerpt 3783 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1140 回
+- **探究セッション（Sessions）**：1141 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6022 | `literary_text` 2181／`research_excerpt` 3773／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6032 | `literary_text` 2181／`research_excerpt` 3783／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1140 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17125 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1141 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17137 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 418 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 634 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1285 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1286 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 102 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 903 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 905 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6022 件・詳細は map/3*.md）
+## 4. 対話素材（6032 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6829,6 +6829,16 @@
 | `MAT-20261124-4e4b17` | research_excerpt | Willis F. Overton『Overton (2006)「発達心理学——哲学・概念・方法論」——単位は個体でも環境でもなく、関係それ自体である』（2006） |
 | `MAT-20261124-0e57f2` | research_excerpt | Daniel N. Stern『Stern (1985)『乳児の対人世界』——調律は『何を』ではなく『どう』を合わせる。生気情動の横断的マッチング』（1985） |
 | `MAT-20261124-abe26b` | research_excerpt | Arnold Gesell『Gesell (1928)『乳児期と人間の成長』——195項目の発達日程表。成熟は学習の前に時刻表を置く』（1928） |
+| `MAT-20261124-9bced5` | research_excerpt | James E. Marcia『Marcia (1966) 自我同一性の地位——探索とコミットメントの二軸が四つの地位を分ける』（1966） |
+| `MAT-20261124-210986` | research_excerpt | Dan P. McAdams, Kate C. McLean『McAdams & McLean (2013) ナラティブ・アイデンティティ——自己は語りとして統合され、語りによっ… |
+| `MAT-20261124-b238ec` | research_excerpt | Mary Main, Nancy Kaplan, Jude Cassidy『Main, Kaplan & Cassidy (1985) 表象水準への移行——乳児期の愛着は成人の語… |
+| `MAT-20261124-a792ef` | research_excerpt | Judy S. DeLoache『DeLoache (1987) スケールモデルと二重表象——2歳半にはまだ「物」と「記号」が同時に立たない』（1987） |
+| `MAT-20261124-4b900f` | research_excerpt | Kristine H. Onishi, Renée Baillargeon『Onishi & Baillargeon (2005) 15か月児の暗黙の誤信念理解——言語化できなく… |
+| `MAT-20261124-48ac7b` | research_excerpt | Laurence Steinberg『Steinberg (2008) 青年期リスク行動の社会神経科学——報酬系の早期成熟と制御系の遅い成熟がずれる』（2008） |
+| `MAT-20261124-d4d91a` | research_excerpt | Walter Mischel, Yuichi Shoda, Monica L. Rodriguez『Mischel, Shoda & Rodriguez (1989) 遅延満足—… |
+| `MAT-20261124-1ab009` | research_excerpt | Renée Baillargeon『Baillargeon (1987) 3か月半の対象永続性——見えなくなったものが残る、という理解は思ったより早い』（1987） |
+| `MAT-20261124-ffa22e` | research_excerpt | Michael Tomasello, Malinda Carpenter, Josep Call, Tanya Behne, Henrike Moll『Tomasello et … |
+| `MAT-20261124-4ce331` | research_excerpt | Amanda L. Woodward『Woodward (1998) 乳児は手の軌道より目標対象を符号化する——行為は動きではなく、向かう先として見え始める』（1998） |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261124-65de8c・全文は map/50-sessions-*.md）
 
@@ -7972,6 +7982,7 @@
 | `SESSION-20261124-3eddda` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-8cecc8` | 2026-11-24T12:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-af802d` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-bc41fb` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-12851d` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-65de8c` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
@@ -8075,7 +8086,7 @@
 | `map/31-materials-research-35.md` | 100 | 246,932 |
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
-| `map/31-materials-research-38.md` | 73 | 194,580 |
+| `map/31-materials-research-38.md` | 83 | 221,590 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8114,7 +8125,7 @@
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
-| `map/50-sessions-23.md` | 40 | 34,997 |
+| `map/50-sessions-23.md` | 41 | 36,008 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
@@ -8155,23 +8166,23 @@
 | `map/60-notes-38.md` | 25 | 73,046 |
 | `map/60-notes-39.md` | 25 | 42,546 |
 | `map/60-notes-40.md` | 25 | 108,250 |
-| `map/60-notes-41.md` | 25 | 129,431 |
-| `map/60-notes-42.md` | 25 | 70,227 |
-| `map/60-notes-43.md` | 25 | 79,568 |
-| `map/60-notes-44.md` | 25 | 71,238 |
-| `map/60-notes-45.md` | 25 | 95,404 |
-| `map/60-notes-46.md` | 25 | 91,936 |
-| `map/60-notes-47.md` | 25 | 141,256 |
-| `map/60-notes-48.md` | 13 | 63,554 |
+| `map/60-notes-41.md` | 25 | 130,704 |
+| `map/60-notes-42.md` | 25 | 69,596 |
+| `map/60-notes-43.md` | 25 | 79,438 |
+| `map/60-notes-44.md` | 25 | 71,288 |
+| `map/60-notes-45.md` | 25 | 95,965 |
+| `map/60-notes-46.md` | 25 | 92,056 |
+| `map/60-notes-47.md` | 25 | 137,129 |
+| `map/60-notes-48.md` | 14 | 70,363 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1188本・39,786,459 B）
+## 8. 精読ノート索引（readings/・1189本・39,805,999 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1081/1188 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1082/1189 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1188 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1189 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：195 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9196,6 +9207,7 @@
 | `readings/2026-11-23-what-the-cognitive-science-reports-were-made-of.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-81c9d6` | 17,757 | Q4 M3 S1 | ✓ | 認知科学レポート群は何から作られていたか——基質・留保・把持・系譜の四つの測定 |
 | `readings/2026-11-24-calibration-without-the-return.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-fa13c2` +3 | 15,784 | Q4 M11 S4 | ✓ | 「返り」のない較正——一人称で自分を覆す六篇を読む |
 | `readings/2026-11-24-developmental-cascades-and-retrievable-past-ba6e827f.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-12851d` | 13,353 | M10 S1 | ✓ | 発達科学10資料の本文精読ノート――行為が入力を変え、語りが過去の取り出し方を変える |
+| `readings/2026-11-24-developmental-representation-intention-and-narrated-self-ten-sources.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-bc41fb` | 8,122 | Q3 M10 S1 | ✓ | 発達科学・表象・意図・語りの自己——十件の資料を精読して |
 | `readings/2026-11-24-developmental-science-classics-ten-sources-close-reading.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-064e84` +1 | 14,017 | Q3 M11 S2 ERR1 | ✓ | 発達科学の古典十資料を精読する——「自己」は与えられるのではなく、応答と共有のなかで組み上げられる |
 | `readings/2026-11-24-developmental-science-language-mind-identity-ten-sources-close-reading.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-3eddda` +3 | 16,375 | Q3 M12 S4 ERR1 | ✓ | 発達科学の言語・心・同一性十資料を精読する——「自己」は語り、他者を思い、関係のなかで編み直される |
 | `readings/2026-11-24-infant-interaction-and-joint-attention-ten-sources.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-2e54b0` | 14,364 | Q1 M10 S1 ERR1 ED4 | ✓ | 乳児相互行為と共同注意の十資料——「他者」は発達の場だが、「自己」の直接測定ではない |
