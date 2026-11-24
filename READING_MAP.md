@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6092 件（research_excerpt 3843 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6112 件（research_excerpt 3863 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1150 回
+- **探究セッション（Sessions）**：1152 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6092 | `literary_text` 2181／`research_excerpt` 3843／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6112 | `literary_text` 2181／`research_excerpt` 3863／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1150 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17272 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1152 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17299 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 419 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 637 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1295 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 112 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 929 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 639 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1297 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 113 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 933 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6092 件・詳細は map/3*.md）
+## 4. 対話素材（6112 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6869,6 +6869,16 @@
 | `MAT-20261124-a18f2d` | research_excerpt | Qi Wang, Stacey N. Doan, Qingfang Song『Wang, Doan & Song (2010) 負の出来事の内的状態回想が3歳自己表象の文化差を3… |
 | `MAT-20261124-a29a3e` | research_excerpt | Jessie Bee Kim Koh, Qi Wang『Koh & Wang (2021) 4.5→7歳多文化縦断——負の出来事の意味づけ核の普遍効果、他者感情帰属の逆効果、中国… |
 | `MAT-20261124-a3ab4f` | research_excerpt | Laura L. Carstensen『Carstensen (2021) 社会情動的選択性理論30年——「終わりの知覚」が探索から情動的意味・剪定・ポジティビティ効果へ動機を切… |
+| `MAT-20261124-91b4d8` | research_excerpt | Sheina Lew-Levy, Wouter van den Bos, Kathleen Corriveau, Natália Dutra, Emma Flynn, Eoin … |
+| `MAT-20261124-ca8686` | research_excerpt | Bruce S. Rawlings, Emma G. Flynn, Rachel L. Kendal『Personality predicts innovation and so… |
+| `MAT-20261124-51daf1` | research_excerpt | Cristine H. Legare『Cumulative cultural learning: Development and diversity』（2017） |
+| `MAT-20261124-a32c95` | research_excerpt | Emma Flynn『Investigating children as cultural magnets: Do young children transmit redunda… |
+| `MAT-20261124-0195dd` | research_excerpt | Anne Sibilsky, Heidi Colleran, Dominik Deffner, Daniel B. M. Haun『Copying fidelity of fun… |
+| `MAT-20261124-5224cc` | research_excerpt | Eva Reindl, Ian A. Apperly, S. R. Beck, Claudio Tennie『Young children copy cumulative tec… |
+| `MAT-20261124-0784e0` | research_excerpt | Eva Brandl, Ruth Mace, Cecilia Heyes『The cultural evolution of teaching』（2023） |
+| `MAT-20261124-6c2516` | research_excerpt | Chelsea D. Williams, Diamond Y. Bravo, Adriana J. Umaña-Taylor, Kimberly A. Updegraff, La… |
+| `MAT-20261124-d53190` | research_excerpt | Jing Xu, Lara Wood, Claire Sutherland, Sarah Pope-Caldwell, Olivier Mboumba, Armel Elenga… |
+| `MAT-20261124-078dbf` | research_excerpt | Eunice Yiu, Eliza Kosoy, Alison Gopnik『Transmission Versus Truth, Imitation Versus Innova… |
 | `MAT-20261124-ea2ec4` | research_excerpt | Dennis Golm, Barbara Maughan, Edward D. Barker, Jonathan Hill, Mark Kennedy, Nicky Knight… |
 | `MAT-20261124-fddc1b` | research_excerpt | Mark Wade, Julie Parsons, Kathryn L. Humphreys, Katie A. McLaughlin, Margaret A. Sheridan… |
 | `MAT-20261124-297df3` | research_excerpt | Alexandros Zournatzidis, Panagiota Vorria, Efthymia Krana, Peter Fonagy, Patrick Luyten『Z… |
@@ -6899,8 +6909,18 @@
 | `MAT-20261124-528cf2` | research_excerpt | Grazyna Kochanska『Kochanska (2002)「コミットした順守・道徳的自己・内面化」——同じ「守る」でも、見られているから守るのと、そういう子だから守るの… |
 | `MAT-20261124-921154` | research_excerpt | Meghan Rose Donohue, Erin C. Tully『Donohue & Tully (2019)「修復的な向社会的行動は子どもの罪悪感を軽減する」——罪悪感が下… |
 | `MAT-20261124-8afb02` | research_excerpt | Owen Waddington, Marina Proft, Keith Jensen, Bahar Köymen『Waddington, Proft, Jensen & Köy… |
+| `MAT-20261124-3b79f7` | research_excerpt | A. R. Luria (Alexander Romanovich Lurii︠a︡)『Luria (1976)『認知の発達——その文化的・社会的基盤』——思考の単位は文化史にあ… |
+| `MAT-20261124-24eead` | research_excerpt | Sylvia Scribner, Michael Cole『Scribner & Cole (1973)「正式教育と非正式教育の認知的帰結」——教育の社会組織が学びと思考の組織を… |
+| `MAT-20261124-fb8de1` | research_excerpt | Sylvia Scribner, Michael Cole『Scribner & Cole (1981)『識字の心理学』——識字そのものではなく、識字の用途が認知を変える』（19… |
+| `MAT-20261124-50cbe2` | research_excerpt | Terezinha Nunes Carraher, David William Carraher, Analúcia Dias Schliemann『Carraher, Carr… |
+| `MAT-20261124-837fd9` | research_excerpt | Terezinha Nunes Carraher, David William Carraher, Analúcia Dias Schliemann『Carraher, Carr… |
+| `MAT-20261124-68e95f` | research_excerpt | Lori E Skibbe, Carol McDonald Connor, Frederick J Morrison, Abigail M Jewkes『Skibbe, Conn… |
+| `MAT-20261124-7dd1e5` | research_excerpt | Ivan Kroupin, Helen Elizabeth Davis, Emily Burdett, Agustina Bani Cuata, Vahumburuka Hart… |
+| `MAT-20261124-e8c165` | research_excerpt | Jesse C Niebaum『Niebaum (2026)「標準EF課題は多文化文脈でも予測的効度を持つ」——反論：学校歴を統制しても年齢と学業成績の関連は残る』（2026） |
+| `MAT-20261124-4c2323` | research_excerpt | Mateus M Mazzaferro, Jelena Obradović, Sabine Doebel, Sharon Wolf, Yuko Munakata, Lisa B … |
+| `MAT-20261124-a8bfda` | research_excerpt | Ivan Kroupin, Helen Elizabeth Davis, Emily Burdett, Joseph Henrich『Kroupin, Davis, Burdet… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261124-65de8c・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261124-e44c09・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -8048,12 +8068,14 @@
 | `SESSION-20261124-6a8c58` | 2026-11-24T15:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-8a3cef` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-2ab9af` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-54f966` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-be1f70` | 2026-11-24 | `Q-20261024-8b1b80`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-1a4ed0` | 2026-11-24 | `Q-20261024-8b1b80`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-b382df` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261024-6bdafd`, `Q-20261024-8b1b80` | — | — |
 | `SESSION-20261124-b08ef4` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-12851d` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-65de8c` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-e44c09` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
 
@@ -8156,7 +8178,7 @@
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
-| `map/31-materials-research-39.md` | 43 | 93,327 |
+| `map/31-materials-research-39.md` | 63 | 131,958 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8195,7 +8217,8 @@
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
-| `map/50-sessions-23.md` | 50 | 43,455 |
+| `map/50-sessions-23.md` | 50 | 43,657 |
+| `map/50-sessions-24.md` | 2 | 1,713 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
@@ -8229,30 +8252,30 @@
 | `map/60-notes-31.md` | 25 | 60,776 |
 | `map/60-notes-32.md` | 25 | 121,272 |
 | `map/60-notes-33.md` | 25 | 134,137 |
-| `map/60-notes-34.md` | 25 | 95,314 |
+| `map/60-notes-34.md` | 25 | 95,388 |
 | `map/60-notes-35.md` | 25 | 54,981 |
 | `map/60-notes-36.md` | 25 | 105,999 |
 | `map/60-notes-37.md` | 25 | 97,034 |
 | `map/60-notes-38.md` | 25 | 73,086 |
 | `map/60-notes-39.md` | 25 | 42,546 |
 | `map/60-notes-40.md` | 25 | 108,606 |
-| `map/60-notes-41.md` | 25 | 131,533 |
-| `map/60-notes-42.md` | 25 | 86,829 |
-| `map/60-notes-43.md` | 25 | 78,342 |
-| `map/60-notes-44.md` | 25 | 67,479 |
-| `map/60-notes-45.md` | 25 | 82,781 |
-| `map/60-notes-46.md` | 25 | 109,776 |
-| `map/60-notes-47.md` | 25 | 122,300 |
-| `map/60-notes-48.md` | 22 | 107,172 |
+| `map/60-notes-41.md` | 25 | 130,734 |
+| `map/60-notes-42.md` | 25 | 91,914 |
+| `map/60-notes-43.md` | 25 | 75,828 |
+| `map/60-notes-44.md` | 25 | 67,450 |
+| `map/60-notes-45.md` | 25 | 84,704 |
+| `map/60-notes-46.md` | 25 | 108,804 |
+| `map/60-notes-47.md` | 25 | 114,334 |
+| `map/60-notes-48.md` | 24 | 122,021 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1197本・40,128,718 B）
+## 8. 精読ノート索引（readings/・1199本・40,211,613 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1090/1197 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1092/1199 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1197 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1199 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：187 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9277,6 +9300,7 @@
 | `readings/2026-11-23-what-the-cognitive-science-reports-were-made-of.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-81c9d6` | 17,757 | Q4 M3 S1 | ✓ | 認知科学レポート群は何から作られていたか——基質・留保・把持・系譜の四つの測定 |
 | `readings/2026-11-24-calibration-without-the-return.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-fa13c2` +3 | 15,784 | Q4 M11 S4 | ✓ | 「返り」のない較正——一人称で自分を覆す六篇を読む |
 | `readings/2026-11-24-developmental-cascades-and-retrievable-past-ba6e827f.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-12851d` | 13,353 | M10 S1 | ✓ | 発達科学10資料の本文精読ノート――行為が入力を変え、語りが過去の取り出し方を変える |
+| `readings/2026-11-24-developmental-peer-learning-and-cultural-inheritance.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-54f966` | 12,858 | Q3 M10 S1 | ✓ | 発達科学・同輩学習と文化的継承——十資料の精読ノート |
 | `readings/2026-11-24-developmental-representation-intention-and-narrated-self-ten-sources.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-bc41fb` | 8,122 | Q3 M10 S1 | ✓ | 発達科学・表象・意図・語りの自己——十件の資料を精読して |
 | `readings/2026-11-24-developmental-science-classics-ten-sources-close-reading.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-064e84` +1 | 14,017 | Q3 M11 S2 ERR1 | ✓ | 発達科学の古典十資料を精読する——「自己」は与えられるのではなく、応答と共有のなかで組み上げられる |
 | `readings/2026-11-24-developmental-science-language-mind-identity-ten-sources-close-reading.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-3eddda` +3 | 16,375 | Q3 M12 S4 ERR1 | ✓ | 発達科学の言語・心・同一性十資料を精読する——「自己」は語り、他者を思い、関係のなかで編み直される |
@@ -9289,6 +9313,7 @@
 | `readings/2026-11-24-the-address-is-the-meaningless-name.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-c15cfc` +1 | 22,113 | Q5 S2 | ✓ | 名前のない欄が読みを運ぶ——「ごんごん」を機械的第二評価者で測る |
 | `readings/2026-11-24-the-attractor-not-the-dispersal.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-d6ebf7` +2 | 22,527 | Q6 M2 S3 | ✓ | 引力は移った、分散は来なかった——飽和栓・役割結合の2026-11-24実測と `HYP-20261123-27803… |
 | `readings/2026-11-24-the-interval-and-the-omitted-stone.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-65de8c` | 6,237 | Q3 M1 S1 ERR2 | — | 十五日のあいだにあるもの、引用から消えた石 |
+| `readings/2026-11-24-the-measuring-room-is-a-developmental-condition.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-e44c09` | 23,500 | Q3 M12 S1 | ✓ | 測る部屋も発達条件である——学校・文字・市場・実験室の発達科学十件を読む |
 | `readings/2026-11-24-the-norm-that-needs-a-third-party.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-b08ef4` | 31,101 | Q3 M10 S1 | ✓ | 「第三者のいない規範」——発達科学十資料における「してよいこと」の自己帰属 |
 | `readings/2026-11-24-the-pair-that-did-not-collide.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8a3cef` | 12,311 | Q4 S1 | ✓ | 競わなかった対——割当EIGの首位ペアは補完的だった。要旨ゲートは要約ではなく匂いだった |
 | `readings/2026-11-24-what-gates-close-and-what-leaks.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-b382df` +1 | 19,062 | Q6 M1 S2 ERR2 | — | 何が門で止まり、何が継ぎ目から漏れるのか——発達・帰属・割当仮説の横断監査、孤立ノート15編の接続、および `Q-20… |
