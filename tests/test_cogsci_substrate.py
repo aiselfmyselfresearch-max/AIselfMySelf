@@ -237,22 +237,26 @@ class RealTreeTests(unittest.TestCase):
         self.assertGreater(corpus["separation"]["count"], corpus["identity"]["count"])
 
     def test_citation_fields_are_read_only_by_the_gated_basis(self) -> None:
-        # The finding behind HYP-20261117-4bf2dc, re-measured per basis: on the
-        # default arithmetic the citation fields are not inputs at all, and on
-        # P_gate they are (material_ids through the PSC verification class).
+        """The finding behind HYP-20261117-4bf2dc, re-measured per basis.
+
+        On the default arithmetic the citation fields are not inputs at all
+        (tvd == 0.0), and on P_gate ``material_ids`` is read (through the PSC
+        verification class) while ``note_ids`` and ``script_command`` stay at
+        0.0. Until 2026-11-24 this asserted ``Q-001 > 0.05`` (measured at
+        0.0512), but ``SESSION-20261124-b382df`` filed EVL-20261124-8f8501
+        (``supports`` with 7 verified materials on non-corpus HYP-20261124-4514c6),
+        diluting the fixed 90-report ``corpus_rows`` share on Q-001 from
+        0.0512 to 0.0438 while Q-002 (0.0508) and Q-003 (0.1245) stayed >0.05.
+        Pin ``Q-001 > 0.02`` and ``Q-003 > 0.05`` so normal Q-001 ledger growth
+        does not trip an arbitrary threshold while a broken P_gate still fails.
+        """
         import cogsci_substrate as submod
 
         cf = submod.section_grip(self.reports)["counterfactuals"]
         for field in ("material_ids_cleared", "note_ids_cleared", "script_command_cleared"):
             self.assertEqual(cf[field]["tvd"]["Q-001"], 0.0, field)
-        # The magnitude is a property of the corpus, not of the mechanism, so it
-        # is not pinned to the value first measured.  2026-11-24: three
-        # `narrows_scope` rows carrying material_ids (EVL-20261124-ebecfd /
-        # -0b259f / -00f36a, SESSION-20261124-f38c1f) moved it from >0.05 to
-        # 0.0499.  What the finding says is that the field IS an input on the
-        # gated basis and is NOT one on the default basis, where the TVD is
-        # exactly 0.0 above.  So the invariant is non-degeneracy, not size.
-        self.assertGreater(cf["material_ids_cleared"]["gated_tvd"]["Q-001"], 0.01)
+        self.assertGreater(cf["material_ids_cleared"]["gated_tvd"]["Q-001"], 0.02)
+        self.assertGreater(cf["material_ids_cleared"]["gated_tvd"]["Q-003"], 0.05)
         # note_ids and script_command are not inputs on either basis.
         self.assertEqual(cf["note_ids_cleared"]["gated_tvd"]["Q-001"], 0.0)
         self.assertEqual(cf["script_command_cleared"]["gated_tvd"]["Q-001"], 0.0)

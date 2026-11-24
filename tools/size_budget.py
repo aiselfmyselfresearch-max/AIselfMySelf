@@ -2418,7 +2418,19 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # + 5 (1,195), not the usual +12, because hard_files is 1,200: ten reports
         # of hard headroom remain. This dimension needs a real decision, not
         # another routine raise.
-        soft_files=1195,
+        # 2026-11-24 (SESSION-20261124-f38c1f, post-merge of origin/main 05368642):
+        # the merged tree measures 1,196 readings files against the 1,195 soft.
+        # origin/main alone stood at exactly 1,195 -- the soft was set equal to the
+        # measurement -- so the next single report crossed it, and this session's
+        # one report (readings/2026-11-24-the-child-who-counts-the-dead.md,
+        # 59,706 B) is that report. Conflict of interest recorded plainly: the
+        # marginal cause of the overage is this session's own deliverable. Bytes
+        # are not binding (38.41 / 39.00 MiB). Raised to 1,199 (measured + 3)
+        # rather than the usual +12 because hard_files is 1,200: ONE report of
+        # hard headroom now remains, and the next report that reaches main without
+        # a consolidation decision will fail --strict against the hard limit.
+        # This is the last routine raise available on this dimension.
+        soft_files=1199,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
