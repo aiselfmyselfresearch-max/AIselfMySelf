@@ -2335,7 +2335,17 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # the established +12 review margin (1,164 + 12 = 1,176), not per
         # report. hard_files (1,200), soft_bytes (38 MiB) and the per-file caps
         # are unchanged. Not automatic -- re-measure after merge.
-        soft_files=1176,
+        # 2026-11-24 (SESSION-20261124-2e54b0, PR #1081 post-merge): the
+        # PR #1081 branch and origin/main from merge-base 0ddd058 each had 1,176
+        # readings; their independent one-report additions produce 1,177 in the
+        # merged tree, one over soft. The count is binding and cannot be
+        # reclaimed by compaction because readings/ is append-only. The merged
+        # tree is 39,526,901 B of the 39,845,888 B (38 MiB) byte soft, leaving
+        # 318,987 B, so bytes are not binding. Rescaled only soft_files by the
+        # established +12 review margin (1,177 + 12 = 1,189), not per report.
+        # hard_files (1,200), soft_bytes (38 MiB), hard_bytes (48 MiB), and
+        # per-report caps are unchanged. Not automatic -- measured after merge.
+        soft_files=1189,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
