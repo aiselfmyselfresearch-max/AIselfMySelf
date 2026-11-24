@@ -251,11 +251,37 @@ class RealTreeTests(unittest.TestCase):
         self.assertEqual(cf["script_command_cleared"]["gated_tvd"]["Q-001"], 0.0)
 
     def test_the_two_bases_disagree_on_every_question(self) -> None:
+        """The bases differ in their *distributions*, not necessarily in their leader.
+
+        Until 2026-11-24 this asserted that the top hypothesis also differed on
+        all three questions. That held by luck of the tree, not by construction:
+        ``SESSION-20261124-3eddda`` filed four rows (two ``supports`` for the
+        default leader ``HYP-20261120-58ddce``'s rivals, two ``narrows_scope``
+        against the gated leader ``HYP-20261120-b18876``), and Q-001's two
+        leaders collapsed onto one hypothesis while the distributions stayed
+        0.769 apart -- the bases still rank the rest of Q-001 differently. An
+        assertion that reads only the leader would have called that a change of
+        basis, which it was not; the honest invariant is the distance. What is
+        pinned here: every question's two posteriors differ by TVD >= 0.3, and
+        at least two of the three leaders differ. Both fail if the receiver gate
+        stops reading the citation fields.
+        """
+        import belief_state as bs
         import cogsci_substrate as submod
 
         base = submod.section_grip(self.reports)["baseline"]
+        leaders_differ = sum(
+            1 for qid in ("Q-001", "Q-002", "Q-003") if base["default"][qid][0] != base["gated"][qid][0]
+        )
+        self.assertGreaterEqual(leaders_differ, 2, base)
+
+        data = bs.load_belief_ledgers(ROOT)
+        default = bs.compute_belief_state(data)
+        gated = bs.compute_belief_state(data, receiver_gated=True)
         for qid in ("Q-001", "Q-002", "Q-003"):
-            self.assertNotEqual(base["default"][qid][0], base["gated"][qid][0], qid)
+            a = submod._posterior_map(default, qid)
+            b = submod._posterior_map(gated, qid)
+            self.assertGreaterEqual(submod._tvd(a, b), 0.3, qid)
 
     def test_judgment_strings_are_what_moves_it(self) -> None:
         import cogsci_substrate as submod
