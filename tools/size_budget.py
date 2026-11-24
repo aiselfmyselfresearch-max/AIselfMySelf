@@ -595,7 +595,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (human-authorized preventive rescaling for monitoring window):
         # soft_bytes 5 -> 6.5 MiB (measured 4.55 MiB) and soft_shards 96 -> 130
         # (measured 94, leaving only 2 slots before --strict failure); hard 10 MiB / 160 unchanged.
-        # 2026-11-24 (SESSION-20261124-be1f70, merge of c6afd08): 6.5 -> 7.0 MiB (6,819,088 B).
+        # 2026-11-24 concurrent sessions (54f966, be1f70): union exceeds 6.5 MiB.
+        # Soft 7.0 MiB; hard 10 MiB unchanged.
         soft_bytes=int(7.0 * MIB),
         hard_bytes=10 * MIB,
         # 2026-11-08: retain one additional soft slot (81) because two
