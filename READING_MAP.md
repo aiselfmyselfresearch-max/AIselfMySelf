@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：5982 件（research_excerpt 3733 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6002 件（research_excerpt 3753 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1131 回
+- **探究セッション（Sessions）**：1136 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 5982 | `literary_text` 2181／`research_excerpt` 3733／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6002 | `literary_text` 2181／`research_excerpt` 3753／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1131 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 16971 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 416 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 630 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1274 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 101 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 890 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1136 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17043 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 418 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 634 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1279 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 102 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 896 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（5982 件・詳細は map/3*.md）
+## 4. 対話素材（6002 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6789,8 +6789,28 @@
 | `MAT-20261124-4e4b17` | research_excerpt | Willis F. Overton『Overton (2006)「発達心理学——哲学・概念・方法論」——単位は個体でも環境でもなく、関係それ自体である』（2006） |
 | `MAT-20261124-0e57f2` | research_excerpt | Daniel N. Stern『Stern (1985)『乳児の対人世界』——調律は『何を』ではなく『どう』を合わせる。生気情動の横断的マッチング』（1985） |
 | `MAT-20261124-abe26b` | research_excerpt | Arnold Gesell『Gesell (1928)『乳児期と人間の成長』——195項目の発達日程表。成熟は学習の前に時刻表を置く』（1928） |
+| `MAT-20261124-6b66fb` | research_excerpt | Susanne Kristen-Antonow, Beate Sodian, Hannah Perst, Maria Licata『9か月から4歳までに現れる自己——社会的応答性… |
+| `MAT-20261124-da2ad3` | research_excerpt | Brenda Salley et al.『視覚的注意と社会的関与は共同注意への異なる足場か』（2016） |
+| `MAT-20261124-dc98a0` | research_excerpt | Lynne Murray, Leonardo De Pascalis, Laura Bozicevic, Laura Hawkins, Valentina Sclafani, P… |
+| `MAT-20261124-040bf9` | research_excerpt | Iris Nomikou, Giuseppe Leonardi, Alicja Radkowska, Joanna Rączaszek-Leonardi, Katharina J… |
+| `MAT-20261124-a17411` | research_excerpt | Holly Rayson, James J. Bonaiuto, Pier F. Ferrari, Bhismadev Chakrabarti, Lynne Murray『自分の… |
+| `MAT-20261124-d30efa` | research_excerpt | Tibor Tauzin, György Gergely『交換行動の相互依存性は主体帰属の手がかりになりうる』（2021） |
+| `MAT-20261124-ace0f7` | research_excerpt | Dianna Ilyka, Mark H. Johnson, Sarah Lloyd-Fox『乳児の社会的相互行為と脳発達——系統的レビュー』（2021） |
+| `MAT-20261124-add013` | research_excerpt | Emily A. M. Phillips, Louise Goupil, Megan Whitehorn, Emma Bruce-Gardyne, Florian A. Csol… |
+| `MAT-20261124-b45947` | research_excerpt | Joscha Kärtner, Moritz Köster『動的発達システムとしての初期社会認知——ライフワールド・アプローチ』（2024） |
+| `MAT-20261124-0d2bfc` | research_excerpt | Gideon Salter, Malinda Carpenter『共同注意の発達起源——乳児の初期共同注意ビッド』（2025） |
+| `MAT-20261124-0bb027` | research_excerpt | Jean Piaget『Jean Piaget (1952)『知能の起源（The Origins of Intelligence in Children）』——対象恒存は与えられ… |
+| `MAT-20261124-6ef287` | research_excerpt | John Bowlby『John Bowlby (1969)『愛着と喪失 第1巻：愛着（Attachment and Loss, Vol. 1）』——愛着は欲動ではなく、進化した… |
+| `MAT-20261124-290451` | research_excerpt | Mary D. S. Ainsworth, Mary C. Blehar, Everett Waters, Sally Wall『Mary D. S. Ainsworth 他 (… |
+| `MAT-20261124-191625` | research_excerpt | Andrew N. Meltzoff, M. Keith Moore『Andrew N. Meltzoff & M. Keith Moore (1977)「人間新生児による顔と手… |
+| `MAT-20261124-360f22` | research_excerpt | Eleanor J. Gibson, Anne D. Pick『Eleanor J. Gibson & Anne D. Pick (2000)『知覚学習と発達への生態的アプローチ… |
+| `MAT-20261124-755e16` | research_excerpt | Susan Oyama『Susan Oyama (1985/2000)『情報の発生（The Ontogeny of Information）』——素因と環境は原因ではなく産物；構… |
+| `MAT-20261124-f0d1f3` | research_excerpt | Conrad Hal Waddington『C. H. Waddington (1957)『遺伝子の戦略（The Strategy of the Genes）』——エピジェネティ… |
+| `MAT-20261124-fbfa5e` | research_excerpt | Michael Tomasello『Michael Tomasello (1999)『人間の認知の文化的起源（The Cultural Origins of Human Cogn… |
+| `MAT-20261124-b37a34` | research_excerpt | Alison Gopnik, Andrew N. Meltzoff, Patricia K. Kuhl『Alison Gopnik・Andrew N. Meltzoff・Patr… |
+| `MAT-20261124-11d1a6` | research_excerpt | Margaret S. Mahler, Fred Pine, Anni Bergman『Margaret S. Mahler 他 (1975)『人間乳児の心理的誕生（The Ps… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261124-8cecc8・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261124-65de8c・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -7925,6 +7945,11 @@
 | `SESSION-20261123-27d48c` | 2026-11-23T19:05:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261123-785cf3` | 2026-11-23 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-8cecc8` | 2026-11-24T12:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-2e54b0` | 2026-11-24 | `Q-001` | — | — |
+| `SESSION-20261124-fa13c2` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-d6ebf7` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-064e84` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-65de8c` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
 
@@ -8026,7 +8051,7 @@
 | `map/31-materials-research-35.md` | 100 | 246,932 |
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
-| `map/31-materials-research-38.md` | 33 | 100,550 |
+| `map/31-materials-research-38.md` | 53 | 145,752 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8065,7 +8090,7 @@
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
-| `map/50-sessions-23.md` | 31 | 26,586 |
+| `map/50-sessions-23.md` | 36 | 31,045 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
@@ -8079,7 +8104,7 @@
 | `map/60-notes-11.md` | 25 | 72,508 |
 | `map/60-notes-12.md` | 25 | 67,462 |
 | `map/60-notes-13.md` | 25 | 89,758 |
-| `map/60-notes-14.md` | 25 | 109,461 |
+| `map/60-notes-14.md` | 25 | 109,554 |
 | `map/60-notes-15.md` | 25 | 93,823 |
 | `map/60-notes-16.md` | 25 | 89,163 |
 | `map/60-notes-17.md` | 25 | 107,511 |
@@ -8097,32 +8122,32 @@
 | `map/60-notes-29.md` | 25 | 110,717 |
 | `map/60-notes-30.md` | 25 | 36,498 |
 | `map/60-notes-31.md` | 25 | 60,678 |
-| `map/60-notes-32.md` | 25 | 121,091 |
+| `map/60-notes-32.md` | 25 | 121,152 |
 | `map/60-notes-33.md` | 25 | 134,137 |
-| `map/60-notes-34.md` | 25 | 95,213 |
+| `map/60-notes-34.md` | 25 | 95,274 |
 | `map/60-notes-35.md` | 25 | 54,981 |
 | `map/60-notes-36.md` | 25 | 105,901 |
 | `map/60-notes-37.md` | 25 | 96,920 |
 | `map/60-notes-38.md` | 25 | 73,046 |
 | `map/60-notes-39.md` | 25 | 42,546 |
-| `map/60-notes-40.md` | 25 | 107,944 |
-| `map/60-notes-41.md` | 25 | 121,110 |
-| `map/60-notes-42.md` | 25 | 70,090 |
-| `map/60-notes-43.md` | 25 | 71,400 |
-| `map/60-notes-44.md` | 25 | 78,362 |
-| `map/60-notes-45.md` | 25 | 102,469 |
-| `map/60-notes-46.md` | 25 | 107,403 |
-| `map/60-notes-47.md` | 25 | 140,563 |
-| `map/60-notes-48.md` | 4 | 13,327 |
+| `map/60-notes-40.md` | 25 | 108,153 |
+| `map/60-notes-41.md` | 25 | 129,743 |
+| `map/60-notes-42.md` | 25 | 66,619 |
+| `map/60-notes-43.md` | 25 | 72,517 |
+| `map/60-notes-44.md` | 25 | 75,914 |
+| `map/60-notes-45.md` | 25 | 100,136 |
+| `map/60-notes-46.md` | 25 | 97,002 |
+| `map/60-notes-47.md` | 25 | 140,522 |
+| `map/60-notes-48.md` | 9 | 43,461 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1179本・39,491,816 B）
+## 8. 精読ノート索引（readings/・1184本・39,644,741 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1073/1179 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1078/1184 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1179 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1184 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：195 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9140,12 +9165,17 @@
 | `readings/2026-11-23-the-cognitive-science-reports-as-a-corpus.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-c7c9aa` +6 | 9,088 | Q2 S7 | ✓ | 認知科学レポート群を、群として読む——九十件・六日間の形式、一度しか使われない素材、反証しない台帳 |
 | `readings/2026-11-23-the-ledger-counts-a-closed-question-as-open.md` | — | 2026-11-23 | `SESSION-20261123-af403e` +1 | 12,720 | Q5 S2 | ✓ | 基盤の欠陥診断——この書庫は「決着した問い」を未決着と数え、その偽の未決着を読み続けている |
 | `readings/2026-11-23-the-list-was-not-a-door.md` | — | 2026-11-23 | `SESSION-20261123-032b7e` +1 | 7,971 | Q3 M3 S2 | ✓ | 名指された130件は、扉ではなかった——連続パケットの窓・差し込み口・溢れの帰還率 |
-| `readings/2026-11-23-the-negative-that-returned-as-a-reading.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-785cf3` | 11,912 | Q4 M2 S1 ERR2 | — | 読まなかったという記録が、読んだ数に戻るとき |
+| `readings/2026-11-23-the-negative-that-returned-as-a-reading.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-785cf3` | 11,912 | Q4 M2 S1 ERR2 | ✓ | 読まなかったという記録が、読んだ数に戻るとき |
 | `readings/2026-11-23-the-seed-was-a-passenger.md` | — | 2026-11-23 | `SESSION-20261123-e572e2` | 10,982 | Q7 S1 | ✓ | 種は乗客だった——この書庫が「次に読む問い」を選ぶ仕組みは、抽選ではなく未決着度の読み出しである |
 | `readings/2026-11-23-the-winner-depends-on-the-rules.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-89b471` | 17,835 | Q4 M2 S1 | ✓ | 首位は、規則を選んだ者に決まる — 六つの会計基底と、書庫が自分に下す判定 |
 | `readings/2026-11-23-three-sources-on-phonology-self-teaching-and-the-reading-eye.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-605fe0` | 15,673 | Q3 M6 S1 | ✓ | 率と形——音韻・自己教示・読みの眼を読んだ三件 |
 | `readings/2026-11-23-what-the-cognitive-science-reports-were-made-of.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-81c9d6` | 17,757 | Q4 M3 S1 | ✓ | 認知科学レポート群は何から作られていたか——基質・留保・把持・系譜の四つの測定 |
+| `readings/2026-11-24-calibration-without-the-return.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-fa13c2` +3 | 15,784 | Q4 M11 S4 | ✓ | 「返り」のない較正——一人称で自分を覆す六篇を読む |
+| `readings/2026-11-24-developmental-science-classics-ten-sources-close-reading.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-064e84` +1 | 14,017 | Q3 M11 S2 ERR1 | ✓ | 発達科学の古典十資料を精読する——「自己」は与えられるのではなく、応答と共有のなかで組み上げられる |
+| `readings/2026-11-24-infant-interaction-and-joint-attention-ten-sources.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-2e54b0` | 14,364 | Q1 M10 S1 ERR1 ED4 | ✓ | 乳児相互行為と共同注意の十資料——「他者」は発達の場だが、「自己」の直接測定ではない |
 | `readings/2026-11-24-seven-of-eleven-and-the-tight-copy.md` | 2026-10-27 | 2026-11-24 | `SESSION-20261124-139d83` +2 | 14,962 | Q5 F13 M3 S3 | ✓ | 十一のうち七つ——締まった複製は、なぜ開く戸が少ないのか（SESSION-20261124-139d83） |
+| `readings/2026-11-24-the-attractor-not-the-dispersal.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-d6ebf7` +2 | 22,527 | Q6 M2 S3 | ✓ | 引力は移った、分散は来なかった——飽和栓・役割結合の2026-11-24実測と `HYP-20261123-27803… |
+| `readings/2026-11-24-the-interval-and-the-omitted-stone.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-65de8c` | 6,237 | Q3 M1 S1 ERR2 | — | 十五日のあいだにあるもの、引用から消えた石 |
 | `readings/2026-11-24-when-the-mirror-and-the-schedule-arrive.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8cecc8` | 21,471 | Q3 M10 S1 | ✓ | 鏡と日程表が来る前後に——発達科学の十資料を精読する |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
