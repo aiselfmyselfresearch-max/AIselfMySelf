@@ -70,7 +70,7 @@
 - ✓ file_count:state/read_log.d: 176/176 (soft 176)
 - ✓ file_count:state/sessions.d: 178/179 (soft 178)
 - ✓ file_count:state/notes.d: 174/182 (soft 182)
-- ✓ file_count:readings/: 1188/1200 (soft 1189)
+- ✓ file_count:readings/: 1188/1200 (soft 1195)
 
 ### バランス・接続・一貫性
 - ✗ ロールバランス: 最大逸脱 0.4
