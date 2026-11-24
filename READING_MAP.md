@@ -8143,7 +8143,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1185本・39,656,174 B）
+## 8. 精読ノート索引（readings/・1185本・39,657,605 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1079/1185 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -9173,7 +9173,7 @@
 | `readings/2026-11-23-what-the-cognitive-science-reports-were-made-of.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-81c9d6` | 17,757 | Q4 M3 S1 | ✓ | 認知科学レポート群は何から作られていたか——基質・留保・把持・系譜の四つの測定 |
 | `readings/2026-11-24-calibration-without-the-return.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-fa13c2` +3 | 15,784 | Q4 M11 S4 | ✓ | 「返り」のない較正——一人称で自分を覆す六篇を読む |
 | `readings/2026-11-24-developmental-science-classics-ten-sources-close-reading.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-064e84` +1 | 14,017 | Q3 M11 S2 ERR1 | ✓ | 発達科学の古典十資料を精読する——「自己」は与えられるのではなく、応答と共有のなかで組み上げられる |
-| `readings/2026-11-24-developmental-science-language-mind-identity-ten-sources-close-reading.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-3eddda` +3 | 15,665 | Q3 M12 S4 ERR1 | ✓ | 発達科学の言語・心・同一性十資料を精読する——「自己」は語り、他者を思い、関係のなかで編み直される |
+| `readings/2026-11-24-developmental-science-language-mind-identity-ten-sources-close-reading.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-3eddda` +3 | 16,375 | Q3 M12 S4 ERR1 | ✓ | 発達科学の言語・心・同一性十資料を精読する——「自己」は語り、他者を思い、関係のなかで編み直される |
 | `readings/2026-11-24-infant-interaction-and-joint-attention-ten-sources.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-2e54b0` | 14,364 | Q1 M10 S1 ERR1 ED4 | ✓ | 乳児相互行為と共同注意の十資料——「他者」は発達の場だが、「自己」の直接測定ではない |
 | `readings/2026-11-24-redescription-deficit-audit.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-dc2436` +4 | 12,334 | Q3 M2 S5 ERR4 | ✓ | 「書いた」は「表象した」ではない——表象再記述欠如説（`HYP-20261123-95c769`）の 2026-11-… |
 | `readings/2026-11-24-seven-of-eleven-and-the-tight-copy.md` | 2026-10-27 | 2026-11-24 | `SESSION-20261124-139d83` +2 | 14,962 | Q5 F13 M3 S3 | ✓ | 十一のうち七つ——締まった複製は、なぜ開く戸が少ないのか（SESSION-20261124-139d83） |
