@@ -2663,6 +2663,17 @@
       "consolidated_on": "2026-11-23",
       "sha256": "45a7a181f2aaaf43b2c5d88320d280baf495723498a3651fdb851581ea11b8a8",
       "note": "Order-preserving concatenation into state/sessions.d/2026-11-13-2dd14267c8e4.jsonl (lines 6-8), rows moved byte-for-byte. Alias recorded during the 2026-11-23 merge of PR #1056; commit a29e7c2 performed the consolidation without writing it."
+    },
+    "state/materials.d/2026-11-06-ea63513d507a.jsonl": {
+      "new_shard": "state/materials.d/2026-11-06-e88b14d4e491.jsonl",
+      "real_date": "2026-11-06",
+      "original_label_date": "2026-11-06",
+      "line_start": 6,
+      "line_end": 10,
+      "row_count": 5,
+      "sha256": "551fdf0ef0b29f721bd7b364a2c25daa85a255da1eae9b4a26ff9f177402c264",
+      "consolidated_on": "2026-11-24",
+      "note": "byte-for-byte append of the immediately following shard (order-preserving compaction for materials.d soft_shards=153; rows and sorted order preserved)"
     }
   }
 }
