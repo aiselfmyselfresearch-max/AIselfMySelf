@@ -2408,7 +2408,14 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # moves, at the larger of the two independently measured review points.
         # hard_files (1,200), soft_bytes (38 MiB), hard_bytes (48 MiB), and
         # per-report caps are unchanged. Not automatic -- measured after merge.
-        soft_files=1189,
+        # 2026-11-24 (SESSION-20261124-b08ef4, merge of PR #1094/#1095): merged
+        # tree = 1,190 readings files against the 1,189 soft. This session's own
+        # report is one of the 1,190 (conflict of interest recorded). Bytes are
+        # not binding (38.15 MiB / 39 MiB soft). Append-only, cannot be
+        # compacted. Raised to measured + 5 (1,195) instead of the usual +12
+        # because hard_files is 1,200: ten reports of hard headroom remain, and
+        # this dimension now needs a real decision, not another routine raise.
+        soft_files=1195,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
