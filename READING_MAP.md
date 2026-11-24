@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6062 件（research_excerpt 3813 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6092 件（research_excerpt 3843 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1146 回
+- **探究セッション（Sessions）**：1149 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6062 | `literary_text` 2181／`research_excerpt` 3813／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6092 | `literary_text` 2181／`research_excerpt` 3843／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1146 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17207 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1149 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17243 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 418 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 637 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1291 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 107 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 917 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1294 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 111 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 925 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6062 件・詳細は map/3*.md）
+## 4. 対話素材（6092 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6859,6 +6859,26 @@
 | `MAT-20261124-24f887` | research_excerpt | Kurt W. Fischer『Fischer (1980) 技能理論——発達は梯子ではなく網。同じ人が課題と支えに応じて異なる水準を示す』（1980） |
 | `MAT-20261124-db8d62` | research_excerpt | Marinus H. van IJzendoorn, Pieter M. Kroonenberg『van IJzendoorn & Kroonenberg (1988) 愛着の文… |
 | `MAT-20261124-0c9ca0` | research_excerpt | Susan Harter『Harter (1999)『自己の構成』——自己表象は内容と構造を変えて発達し、本物の自己は「自分の意見を言えること」で試される』（1999） |
+| `MAT-20261124-9a1e4c` | research_excerpt | Charlotte Grosse Wiesmann, Katharina Rothmaler, Ebru Hasan, Clara Habdank, Yiyi Yang, H. … |
+| `MAT-20261124-9b2f5d` | research_excerpt | Kimberly Cuevas, Vinaya Rajan, Katherine C. Morasch, Martha Ann Bell『Cuevas et al. (2015)… |
+| `MAT-20261124-9c3a6e` | research_excerpt | Tracy Riggins『Riggins (2014) 4–10歳縦断研究——事実記憶の直線増加と5–7歳の出所結合急加速』（2014） |
+| `MAT-20261124-9d4b7f` | research_excerpt | Allison P. O'Leary, Vladimir M. Sloutsky『O'Leary & Sloutsky (2017) メタ認知の関節分離——モニタリングと制御の解… |
+| `MAT-20261124-9e5c8a` | research_excerpt | Margaret Whedon, Nicole B. Perry, E. Brooke Curtis, Martha Ann Bell『Whedon et al. (2021) … |
+| `MAT-20261124-9f6d9b` | research_excerpt | Alejandrina Cristia, Emmanuel Dupoux, Michael Gurven, Jonathan Stieglitz『Cristia et al. (… |
+| `MAT-20261124-a07e1c` | research_excerpt | Margaret Cychosz, Alejandrina Cristia, Elika Bergelson, Marisa Casillas, Gwendolyn Baudet… |
+| `MAT-20261124-a18f2d` | research_excerpt | Qi Wang, Stacey N. Doan, Qingfang Song『Wang, Doan & Song (2010) 負の出来事の内的状態回想が3歳自己表象の文化差を3… |
+| `MAT-20261124-a29a3e` | research_excerpt | Jessie Bee Kim Koh, Qi Wang『Koh & Wang (2021) 4.5→7歳多文化縦断——負の出来事の意味づけ核の普遍効果、他者感情帰属の逆効果、中国… |
+| `MAT-20261124-a3ab4f` | research_excerpt | Laura L. Carstensen『Carstensen (2021) 社会情動的選択性理論30年——「終わりの知覚」が探索から情動的意味・剪定・ポジティビティ効果へ動機を切… |
+| `MAT-20261124-ea2ec4` | research_excerpt | Dennis Golm, Barbara Maughan, Edward D. Barker, Jonathan Hill, Mark Kennedy, Nicky Knight… |
+| `MAT-20261124-fddc1b` | research_excerpt | Mark Wade, Julie Parsons, Kathryn L. Humphreys, Katie A. McLaughlin, Margaret A. Sheridan… |
+| `MAT-20261124-297df3` | research_excerpt | Alexandros Zournatzidis, Panagiota Vorria, Efthymia Krana, Peter Fonagy, Patrick Luyten『Z… |
+| `MAT-20261124-92bb2c` | research_excerpt | Patricia Kanngiesser, Marie Schäfer, Esther Herrmann, Henrike Zeidler, Daniel Haun, Micha… |
+| `MAT-20261124-dbdf3c` | research_excerpt | Bailey R. House, Patricia Kanngiesser, H. Clark Barrett, Süleyman Yilmaz, Alejandro M. Sm… |
+| `MAT-20261124-0c81f3` | research_excerpt | Michael T. Rizzo, Leon Li, Amanda R. Burkholder, Melanie Killen『Rizzo, Li, Burkholder & K… |
+| `MAT-20261124-2c02cd` | research_excerpt | Louise Goupil, Margaux Romand-Monnier, Sid Kouider『Goupil, Romand-Monnier & Kouider (2016… |
+| `MAT-20261124-daec4d` | research_excerpt | Sarah Leckey, Claudia Gonzales, Diana Selmeczy, Simona Ghetti『Leckey, Gonzales, Selmeczy … |
+| `MAT-20261124-cac705` | research_excerpt | Stéphane Bernard, Joëlle Proust, Fabrice Clément『Bernard, Proust & Clément (2015) 3〜5歳児の手… |
+| `MAT-20261124-e9987b` | research_excerpt | Brandon W. Goulding, Emily E. Stonehouse, Ori Friedman『Goulding, Stonehouse & Friedman (2… |
 | `MAT-20261124-43c901` | research_excerpt | Li et al.『Unpredictability in Caregiver-child Relationships: Impact on Child Verbal Abili… |
 | `MAT-20261124-43c902` | research_excerpt | Kaletsch & Liszkowski『Does Caregivers' Responsiveness Influence the Early Development of … |
 | `MAT-20261124-43c903` | research_excerpt | Bratsch-Hines et al.『Infant and Toddler Child-Care Quality and Stability in Relation to P… |
@@ -6869,6 +6889,16 @@
 | `MAT-20261124-43c908` | research_excerpt | Tesfaye et al.『Investigating longitudinal associations between parent reported sleep in e… |
 | `MAT-20261124-43c909` | research_excerpt | Hoyniak et al.『Child Sleep and Socioeconomic Context in the Development of Cognitive Abil… |
 | `MAT-20261124-43c90a` | research_excerpt | Nigro et al.『Early Childhood Sleep Quantity, but not Caregiver-Reported Sleep Problems, P… |
+| `MAT-20261124-2bf272` | research_excerpt | J. Kiley Hamlin, Karen Wynn, Paul Bloom, Neha Mahajan『Hamlin, Wynn, Bloom & Mahajan (2011… |
+| `MAT-20261124-412b15` | research_excerpt | Judith G. Smetana『Smetana (1981)「就学前児の道徳的規則と社会的規則の概念」——「悪いこと」と「ルール違反」は別の棚に数えられる』（1981） |
+| `MAT-20261124-8c1ec4` | research_excerpt | Judy Dunn, Penny Munn『Dunn & Munn (1987)「母およびきょうだいとの争いにおける正当化の発達」——36か月までに、争いの三分の一で自分の理由を… |
+| `MAT-20261124-2ddd64` | research_excerpt | Hannes Rakoczy, Felix Warneken, Michael Tomasello『Rakoczy, Warneken & Tomasello (2008)「規範… |
+| `MAT-20261124-87ace8` | research_excerpt | Maria Gräfenhain, Malinda Carpenter, Michael Tomasello『Gräfenhain, Carpenter & Tomasello … |
+| `MAT-20261124-5b17a8` | research_excerpt | Melanie Killen, Kelly Lynn Mulvey, Cameron Richardson, Noah Jampol, Amanda Woodward『Kille… |
+| `MAT-20261124-ddaa22` | research_excerpt | Judith G. Smetana, Marc Jambon, Catherine Conry-Murray, Melissa L. Sturge-Apple『Smetana, … |
+| `MAT-20261124-528cf2` | research_excerpt | Grazyna Kochanska『Kochanska (2002)「コミットした順守・道徳的自己・内面化」——同じ「守る」でも、見られているから守るのと、そういう子だから守るの… |
+| `MAT-20261124-921154` | research_excerpt | Meghan Rose Donohue, Erin C. Tully『Donohue & Tully (2019)「修復的な向社会的行動は子どもの罪悪感を軽減する」——罪悪感が下… |
+| `MAT-20261124-8afb02` | research_excerpt | Owen Waddington, Marina Proft, Keith Jensen, Bahar Köymen『Waddington, Proft, Jensen & Köy… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261124-65de8c・全文は map/50-sessions-*.md）
 
@@ -8017,7 +8047,10 @@
 | `SESSION-20261124-aaaa42` | 2026-11-24 | `Q-20261024-8b1b80`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-6a8c58` | 2026-11-24T15:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-8a3cef` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-2ab9af` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-be1f70` | 2026-11-24 | `Q-20261024-8b1b80`, `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-1a4ed0` | 2026-11-24 | `Q-20261024-8b1b80`, `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-b08ef4` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-12851d` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-65de8c` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
@@ -8122,7 +8155,7 @@
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
-| `map/31-materials-research-39.md` | 13 | 24,109 |
+| `map/31-materials-research-39.md` | 43 | 93,327 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8161,7 +8194,7 @@
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
-| `map/50-sessions-23.md` | 46 | 40,284 |
+| `map/50-sessions-23.md` | 49 | 42,833 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
@@ -8202,23 +8235,23 @@
 | `map/60-notes-38.md` | 25 | 73,046 |
 | `map/60-notes-39.md` | 25 | 42,546 |
 | `map/60-notes-40.md` | 25 | 108,378 |
-| `map/60-notes-41.md` | 25 | 130,939 |
-| `map/60-notes-42.md` | 25 | 77,464 |
-| `map/60-notes-43.md` | 25 | 80,766 |
-| `map/60-notes-44.md` | 25 | 69,799 |
-| `map/60-notes-45.md` | 25 | 91,650 |
-| `map/60-notes-46.md` | 25 | 97,334 |
-| `map/60-notes-47.md` | 25 | 127,180 |
-| `map/60-notes-48.md` | 18 | 91,017 |
+| `map/60-notes-41.md` | 25 | 131,533 |
+| `map/60-notes-42.md` | 25 | 83,346 |
+| `map/60-notes-43.md` | 25 | 78,661 |
+| `map/60-notes-44.md` | 25 | 68,810 |
+| `map/60-notes-45.md` | 25 | 83,000 |
+| `map/60-notes-46.md` | 25 | 107,957 |
+| `map/60-notes-47.md` | 25 | 127,654 |
+| `map/60-notes-48.md` | 21 | 99,746 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1193本・39,935,314 B）
+## 8. 精読ノート索引（readings/・1196本・40,099,648 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1086/1193 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1089/1196 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1193 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1196 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：196 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9247,12 +9280,15 @@
 | `readings/2026-11-24-developmental-science-classics-ten-sources-close-reading.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-064e84` +1 | 14,017 | Q3 M11 S2 ERR1 | ✓ | 発達科学の古典十資料を精読する——「自己」は与えられるのではなく、応答と共有のなかで組み上げられる |
 | `readings/2026-11-24-developmental-science-language-mind-identity-ten-sources-close-reading.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-3eddda` +3 | 16,375 | Q3 M12 S4 ERR1 | ✓ | 発達科学の言語・心・同一性十資料を精読する——「自己」は語り、他者を思い、関係のなかで編み直される |
 | `readings/2026-11-24-infant-interaction-and-joint-attention-ten-sources.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-2e54b0` | 14,364 | Q1 M10 S1 ERR1 ED4 | ✓ | 乳児相互行為と共同注意の十資料——「他者」は発達の場だが、「自己」の直接測定ではない |
+| `readings/2026-11-24-lifespan-self-memory-speech-culture-endings-ten-papers.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-2ab9af` | 26,777 | Q4 M10 S1 | ✓ | 生涯発達科学の10編精読——他者参照の反転・記憶の出所結合・内言の成熟・文化の三層・終わりの知覚 |
 | `readings/2026-11-24-redescription-deficit-audit.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-dc2436` +4 | 12,334 | Q3 M2 S5 ERR4 | ✓ | 「書いた」は「表象した」ではない——表象再記述欠如説（`HYP-20261123-95c769`）の 2026-11-… |
 | `readings/2026-11-24-reparation-selective-trust-and-scaffolded-memory.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-aaaa42` | 8,371 | Q4 M12 S1 | ✓ | ミスマッチの修復・選別的信頼・忘却と精緻化——発達科学10原著の精読（SESSION-20261124-aaaa42） |
 | `readings/2026-11-24-seven-of-eleven-and-the-tight-copy.md` | 2026-10-27 | 2026-11-24 | `SESSION-20261124-139d83` +2 | 14,962 | Q5 F13 M3 S3 | ✓ | 十一のうち七つ——締まった複製は、なぜ開く戸が少ないのか（SESSION-20261124-139d83） |
+| `readings/2026-11-24-sleeper-cascades-cultural-norm-enforcement-and-procedural-metacognition.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-be1f70` | 20,034 | Q4 M10 S1 | ✓ | 剥奪後のスリーパー回復と潜在カスケード・規範施行の文化多様性・手続的メタ認知と現在アンカー——発達科学10原著の精読（… |
 | `readings/2026-11-24-the-address-is-the-meaningless-name.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-c15cfc` +1 | 22,113 | Q5 S2 | ✓ | 名前のない欄が読みを運ぶ——「ごんごん」を機械的第二評価者で測る |
 | `readings/2026-11-24-the-attractor-not-the-dispersal.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-d6ebf7` +2 | 22,527 | Q6 M2 S3 | ✓ | 引力は移った、分散は来なかった——飽和栓・役割結合の2026-11-24実測と `HYP-20261123-27803… |
 | `readings/2026-11-24-the-interval-and-the-omitted-stone.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-65de8c` | 6,237 | Q3 M1 S1 ERR2 | — | 十五日のあいだにあるもの、引用から消えた石 |
+| `readings/2026-11-24-the-norm-that-needs-a-third-party.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-b08ef4` | 31,101 | Q3 M10 S1 | ✓ | 「第三者のいない規範」——発達科学十資料における「してよいこと」の自己帰属 |
 | `readings/2026-11-24-the-pair-that-did-not-collide.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8a3cef` | 12,311 | Q4 S1 | ✓ | 競わなかった対——割当EIGの首位ペアは補完的だった。要旨ゲートは要約ではなく匂いだった |
 | `readings/2026-11-24-when-the-mirror-and-the-schedule-arrive.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8cecc8` | 21,471 | Q3 M10 S1 | ✓ | 鏡と日程表が来る前後に——発達科学の十資料を精読する |
 | `readings/2026-11-24-who-carried-the-reading-forward.md` | — | 2026-11-24 | `SESSION-20261124-af802d` +2 | 32,711 | Q6 M2 S3 ERR1 | ✓ | 誰が読みを運んだか——返信付き20ペアと返信なし15ペアの第三者符号化 |

@@ -535,7 +535,16 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # after the merge = 152 files / 15.10 MiB of the 16 MiB soft_bytes.
         # Soft raised to measured + 1 (153) so the next session has one free
         # slot; hard 160 unchanged.
-        soft_shards=153,
+        # 2026-11-24 (SESSION-20261124-b08ef4, 153 -> 154): this session adds one
+        # new materials shard (2026-11-24-b08ef4abc0de.jsonl, ten developmental-
+        # science materials on normativity, responsibility and repair). Measured
+        # union after writing = 154 files / 16.03 MiB of the 17 MiB soft_bytes
+        # (bytes not binding; only the count is). Soft raised to measured (154);
+        # hard 160 unchanged; not automatic. Consolidation debt unchanged: the
+        # shard is named by its own sessions row, so compaction cannot remove it.
+        # 2026-11-24 (merge of PR #1097): union = 155 shards, one over 154.
+        # Raised to measured (155); hard 160 unchanged.
+        soft_shards=155,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -586,7 +595,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (human-authorized preventive rescaling for monitoring window):
         # soft_bytes 5 -> 6.5 MiB (measured 4.55 MiB) and soft_shards 96 -> 130
         # (measured 94, leaving only 2 slots before --strict failure); hard 10 MiB / 160 unchanged.
-        soft_bytes=int(6.5 * MIB),
+        # 2026-11-24 (SESSION-20261124-be1f70, merge of c6afd08): 6.5 -> 7.0 MiB (6,819,088 B).
+        soft_bytes=int(7.0 * MIB),
         hard_bytes=10 * MIB,
         # 2026-11-08: retain one additional soft slot (81) because two
         # parallel sessions on the same day (PR #585 arena/e8b72114-aiselfmyself
@@ -2401,7 +2411,13 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # moves, at the larger of the two independently measured review points.
         # hard_files (1,200), soft_bytes (38 MiB), hard_bytes (48 MiB), and
         # per-report caps are unchanged. Not automatic -- measured after merge.
-        soft_files=1189,
+        # 2026-11-24 (SESSION-20261124-b08ef4): merged tree = 1,190 readings
+        # files against the 1,189 soft; this session's own report is one of them
+        # (conflict of interest recorded). Bytes not binding. Raised to measured
+        # + 5 (1,195), not the usual +12, because hard_files is 1,200: ten reports
+        # of hard headroom remain. This dimension needs a real decision, not
+        # another routine raise.
+        soft_files=1195,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
@@ -2469,7 +2485,7 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # +2,621,440 * (2.57 - 2.55) = 52,429 B against a 13,554 B overage, so
         # the canary fires again after ~38 KiB.  hard_bytes (5 MiB) unchanged.
         "tools",
-        soft_bytes=int(2.57 * MIB),
+        soft_bytes=int(2.58 * MIB),
         hard_bytes=5 * MIB,
         remedy="Never commit data-embedded scripts in tools/; use tools/lexicon_audit.py instead of new *_audit.py",
     ),

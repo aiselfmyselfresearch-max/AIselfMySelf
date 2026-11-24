@@ -494,7 +494,11 @@ class LiveLedgerTests(unittest.TestCase):
         """
         for qid, q in self.state["questions"].items():
             pair = q.get("top_competing_pair")
-            if not q["hypotheses"] or len(q["hypotheses"]) < 2:
+            active_hyps = [h for h in q["hypotheses"] if h["effective_status"] == "active"]
+            candidates = active_hyps if len(active_hyps) >= 2 else q["hypotheses"]
+            examined_candidates = [h for h in candidates if h["direct_eval_count"] > 0]
+            if len(examined_candidates) < 2:
+                self.assertIsNone(pair, qid)
                 continue
             self.assertIsNotNone(pair, qid)
             self.assertIn("left_hypothesis_id", pair)
