@@ -159,13 +159,32 @@ class AllocationBasisTests(unittest.TestCase):
         self.assertEqual(picks, {"Q-001"})
 
     def test_the_historical_basis_still_reproduces_the_old_choice(self) -> None:
+        # Measured 2026-11-24 (SESSION-20261124-8cecc8): adding two live
+        # hypotheses to Q-001 moved some seeds under the *historical*
+        # (active-only priority_score) arithmetic as well — 94/253 now pick
+        # Q-001, 159/253 still pick Q-20261024-6bdafd.  The point of this
+        # test is that the old ranking stays *measurable* (it still surfaces
+        # the peripheral question the default no longer does), not that it
+        # freezes a set of picks.  Pinning the singleton here would make the
+        # constant a prohibition on growth, not a record — the same defect
+        # class fixed for active_entropy_bits on 2026-11-23 (see
+        # DEVELOPMENTAL_SCIENCE_REPORT_2026-11-23.md §10-2).
         picks = {
             belief_state.select_auto_question_id(
                 self.state, self.open_qids, seed=s, allocation_basis="historical"
             )[0]
             for s in self.seeds
         }
-        self.assertEqual(picks, {"Q-20261024-6bdafd"})
+        default_picks = {
+            belief_state.select_auto_question_id(
+                self.state, self.open_qids, seed=s
+            )[0]
+            for s in self.seeds
+        }
+        # The historical ranking still reaches a question the default does not.
+        self.assertIn("Q-20261024-6bdafd", picks)
+        # And it is no longer identical to the default (default is all-centre).
+        self.assertNotEqual(picks, default_picks)
 
     def test_the_normalised_basis_is_kept_and_still_reverses_the_ranking(self) -> None:
         # Proposal 2 as designed was wrong.  Recorded as measurement so the

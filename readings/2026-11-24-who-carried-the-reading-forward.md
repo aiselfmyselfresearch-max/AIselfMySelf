@@ -62,7 +62,7 @@
 
 ### 0.5 自己包含——この測定は自分自身の足跡を数える
 
-本稿の符号化は、**本セッションの記帳を含まない断面**を母集団とする。理由は第三者性である：自分を返信の相手に数えることは、符号化の独立性を破る。付録Aはその除外を明示的なパラメータとして実装し、自己込みの差分も併せて印字する。実測差分：返信ペア census は 20→**23**（本セッションの返信付き行2行から +3 ペア——`NOTE-20261123-4b96e4` の行が同一ノートの2行に返しているため2ペア、`NOTE-20261124-f27d99` の行で1ペア）、対照候補は 1,837→**1,939**（自分のノート読了行が交差セッション再読を作る +102）。シード数も両側を印字する（自己込みで +1、258→259）。d6ebf7 §0.5 が「含む側で統一」したのと逆の向きを選ぶのは、今回の測定対象が**人（セッション）の読みの連続性**であり、被験者に自分を含められないからである。
+本稿の符号化は、**本セッションの記帳を含まない断面**を母集団とする。理由は第三者性である：自分を返信の相手に数えることは、符号化の独立性を破る。付録Aはその除外を明示的なパラメータとして実装し、自己込みの差分も併せて印字する。実測差分：返信ペア census は 20→**23**（本セッションの返信付き行2行から +3 ペア——`NOTE-20261123-4b96e4` の行が同一ノートの2行に返しているため2ペア、`NOTE-20261124-f27d99` の行で1ペア）、対照候補は 1,837→**1,939**（自分のノート読了行が交差セッション再読を作る +102）。シード数も両側を印字する（自己込みで +1、258→259）。（いずれも測定時断面の値。）マージ後の現行台帳では自己除外の対照候補1,839・シード261・前線提示79件へ動くが、符号化と標本は測定時断面に凍結してある。d6ebf7 §0.5 が「含む側で統一」したのと逆の向きを選ぶのは、今回の測定対象が**人（セッション）の読みの連続性**であり、被験者に自分を含められないからである。
 
 ---
 
@@ -77,7 +77,7 @@ dc2436 は「承継の正しさを符号化するフィールドが台帳に存�
 ### 1.1 母集団と標本
 
 - **返信群（A）＝全数**：`read_log` のうち `in_reply_to` を持ち、cross-session かつ**同一の NOTE を同じ対象として読む**ペア。該当 **20ペア**（返信行141・有向ペア161・うち同一ノート cross-session 20）。返信は「どの読みに対して書いたか」を名指す欄であり、このクラスが (b) の「先行する読み」への橋渡しそのものである。
-- **対照群（C）＝シード抽出**：`in_reply_to` なし・cross-session・同一 NOTE の再読ペア。実日付 ≤ 2026-11-24 に限定した候補 **1,837件**から、ノートごとに最初の1ペアへ重複排除したうえで、シード `b537ebb8` の乱数で **15ペア**を抽出（1ノート1ペア。付録Aが同手順で同じ15件を再現する）。
+- **対照群（C）＝シード抽出**：`in_reply_to` なし・cross-session・同一 NOTE の再読ペア。実日付 ≤ 2026-11-24 に限定した候補 **1,837件**（測定時断面）から、ノートごとに最初の1ペアへ重複排除したうえで、シード `b537ebb8` の乱数で **15ペア**を抽出した（1ノート1ペア）。この15ペアは表Cに凍結してある。マージ（PR #1086–#1089）で候補は1,839へ増え、シード抽出生の標本は現在の台帳では別の15件になる——**標本の正しさは再抽引ではなくメンバシップで検証する**：付録Aが測定時抽出のread_id対を埋め込み、追記専用の性質（`append_only_check`）により、測定時に有効だったペアは以後も有効であり続けることを現在の台帳に対して確かめる。
 - 返信群のうち `declined` 墓標を含むペア（A16・A18）も除外しない——墓標の構造を正しく受け取ることも承継の一種であり、判定表に classes を分けて残した。
 
 ### 1.2 二つの基準
@@ -103,7 +103,7 @@ dc2436 は「承継の正しさを符号化するフィールドが台帳に存�
 
 | ペア | 対象NOTE | PRED | SUCC | 厳格 | 機能 | 根拠 |
 |---|---|---|---|---|---|---|
-| A01 | NOTE-20261116-882f06 | interpreted | reinterpreted | partial | correct | 数値は報告本文に正確（到達13行・supports 9/9・narrows 0/8）。ただし引き継いだのは報告の根拠であり、先行の §6 清定（3つの直し方は977052側の経路だけを止める）には関与しない。なお NOTE 行の claims は「11行」と報告本文の「13行（うち11 live）」が食い違い、後続の13は**報告側に忠実**だった——再記述の漂移がノート行側にあった。 |
+| A01 | NOTE-20261116-882f06 | contested | reinterpreted | partial | correct | 数値は報告本文に正確（到達13行・supports 9/9・narrows 0/8）。ただし引き継いだのは報告の根拠であり、先行の §6 清定（3つの直し方は977052側の経路だけを止める）には関与しない。なお NOTE 行の claims は「11行」と報告本文の「13行（うち11 live）」が食い違い、後続の13は**報告側に忠実**だった——再記述の漂移がノート行側にあった。 |
 | A02 | NOTE-20261117-66242d | reinterpreted | contested | correct | correct | 先行が由来報告の自己読み戻し（n=1・頻度未測定の留保）であることを正確に特定し、留保を引き継いだうえで、委任の実行という独立事例で反証条件 (c) を試す。 |
 | A03 | NOTE-20261117-23f8b4 | reinterpreted | contested | correct | correct | 先行が継承した単経路説を命題として正確に引き、複製に仮説宛訂正1行（−0.6000）で前半を維持・後半を狭窄。台帳の既知挙動と整合。 |
 | A04 | NOTE-20261118-75e938 | interpreted | reinterpreted | correct | correct | 「先行の読みを引き継ぎ」と明記。「読めた／返事を宛てられた」の分離に第三項（他者由来か）を追加——歪めず延長。 |
@@ -174,8 +174,8 @@ dc2436 は「承継の正しさを符号化するフィールドが台帳に存�
 | 除外条件 | 測定（2026-11-24・本セッション記帳前／後も同一結論） | 発火 |
 |---|---|---|
 | (a) 非飽和プール上位2問の優先度差が jitter 上限 0.12 を下回るのに単一問へ 250/250 集中 | `Q-20261024-6bdafd` priority_scoped **1.6296** vs `Q-20261203-aa57dd` **0.7634**、**差 0.8662**（非飽和ランク可能プールはこの2問のみ）。jitter 上限を足しても 0.7634+0.12＝0.8834 < 1.6296 で順位は覆らない。集中は勾配の帰結として記述可能 | **非発火** |
-| (b) 後日の断面で栓 on の行き先 distinct が 10 問を超える | 栓 on：記録シード distinct=1（**258/258** が `Q-20261024-6bdafd`、自己込み 259/259 でも1問）、合成 250/250 同一。核心問への流入 0/258。**ただし本測定は登録と同一日（2026-11-24）の断面であり、「後日の断面」の条件は未充足** | **未発火（同日限定・検証未了を明記）** |
-| (c) 栓 on で前線拡大率が 3.9% を有意に上回る | 3/77＝**3.9%**（d6ebf7 時点と完全一致、後続評価済み3・依然空39） | **非発火** |
+| (b) 後日の断面で栓 on の行き先 distinct が 10 問を超える | 栓 on：記録シード distinct=1（**258/258** が `Q-20261024-6bdafd`、自己込み 259/259 でも1問、マージ後 261/261・262/262 でも1問）、合成 250/250 同一。核心問への流入 0/258。**ただし本測定は登録と同一日（2026-11-24）の断面であり、「後日の断面」の条件は未充足** | **未発火（同日限定・検証未了を明記）** |
+| (c) 栓 on で前線拡大率が 3.9% を有意に上回る | 測定時 3/77＝**3.9%**（d6ebf7 時点と完全一致、後続評価済み3・依然空39）。マージ（PR #1086–#1089）後は提示分母79で3.8%——登録3は不変で、どちらも「3.9%を有意に上回る」を満たさない | **非発火** |
 
 - **判定**：`supports`（`reproducible_script`／`endorse`）。(a) の機構（勾配と jitter の関数）は登録時の記述を直接測って裏づけ、(c) は不変。(b) は**同日の再実行では「後日」の条件を満たさない**ため、判定を支持側に置きつつ、発火判定を次断面へ明示的に持ち越す（§11-1）。
 - **比較相手**：親 `HYP-20261123-27803c`（「182問へ分散」が現行断面で偽だった元の射程限定）と `HYP-20261123-cc92df`（書庫の数値は読み方の副産物という artifact 読み）。distinct=1 が自己込み・除外の両側で不変であることは、この断面での数値が当日の行の加減で揺れないことを示す（ただし単一断面であること自体は変わらない）。
@@ -292,8 +292,10 @@ sed -n '/^```python$/,/^```$/p' readings/2026-11-24-who-carried-the-reading-forw
 - coding tallies are re-parsed from the tables in this report (the tables ARE the
   record of the manual judgments; the judgments themselves are not recomputable,
   which is stated as a limitation in section 10-1/10-8);
-- pair censuses, the seeded control sample, plug-on dispersion, the priority gap
-  and the frontier rate are recomputed from the ledger.
+- pair censuses, the frozen-sample membership (the coded sample is verified by
+  id-pair membership on the current ledger, not by re-drawing), plug-on
+  dispersion, the priority gap and the frontier rate are recomputed from the
+  ledger; measurement-time values are printed alongside for drift detection.
 
 Read-only. Standard library plus this repository's tools/ only.
 """
@@ -397,9 +399,87 @@ a1, c1 = pair_census(exclude_self=False)
 print(f"reply-pair census   : self-excluded={len(a0)} self-included={len(a1)}")
 print(f"control candidates   : self-excluded={len(c0)} self-included={len(c1)}")
 
-# seeded sample reproduction (must equal the 15 rows in table C).
-# The original draw used a fresh Random for the control shuffle only: no other
-# shuffle may consume the stream before rng.shuffle(c_uniq).
+# --- 2b. frozen measurement frame: membership, not re-drawing --------------
+# The coded sample was drawn from the measurement-time pool (reply census 20,
+# control candidates 1,837; self-excluded). Merges only ADD rows (append-only,
+# checked by tools/append_only_check.py), so a pair that was valid at
+# measurement stays valid: tables A/C are verified against these frozen id
+# pairs on the CURRENT ledger instead of re-drawing (a re-draw after a merge
+# would produce a different sample, which is drift, not an error).
+FROZEN_REPLY = [
+    ("READ-20261117-8253cc", "READ-20261117-720c4c"),
+    ("READ-20261117-def0cc", "READ-20261117-cd01c1"),
+    ("READ-20261117-06e110", "READ-20261117-cfc698"),
+    ("READ-20261118-76e2ea", "READ-20261118-001ef3"),
+    ("READ-20261118-5c469e", "READ-20261118-0c4cb0"),
+    ("READ-20261118-12f7f9", "READ-20261118-0c4cb0"),
+    ("READ-20261117-cc2db0", "READ-20261118-7725ad"),
+    ("READ-20261118-4af52f", "READ-20261118-81ff22"),
+    ("READ-20261118-30c79b", "READ-20261118-ada2cb"),
+    ("READ-20261118-153c8f", "READ-20261118-d4dcc6"),
+    ("READ-20261120-e091ad", "READ-20261120-a4fd7d"),
+    ("READ-20261121-aec61c", "READ-20261122-138c00"),
+    ("READ-20261122-7a58cc", "READ-20261122-be18d1"),
+    ("READ-20261122-2b9090", "READ-20261122-c9f222"),
+    ("READ-20261120-d04a34", "READ-20261123-1ac7fc"),
+    ("READ-20261118-bc8f93", "READ-20261123-278fe0"),
+    ("READ-20261121-a107b7", "READ-20261123-648319"),
+    ("READ-20261118-8e3f2b", "READ-20261123-abf224"),
+    ("READ-20261122-4df6c0", "READ-20261123-d657ef"),
+    ("READ-20261124-827203", "READ-20261124-701e14"),
+]
+FROZEN_CONTROL = [
+    ("READ-20261110-bdb392", "READ-20261111-9f5d94"),
+    ("READ-20261107-4bee77", "READ-20261107-540b07"),
+    ("READ-20261107-29119a", "READ-20261107-2a504f"),
+    ("READ-20261114-80b91d", "READ-20261114-1e918b"),
+    ("READ-20261113-228947", "READ-20261113-a0d5e3"),
+    ("READ-20261108-754e1e", "READ-20261108-9c8659"),
+    ("READ-20261108-d6dd47", "READ-20261110-76aa93"),
+    ("READ-20261118-1b4e83", "READ-20261118-0c4cb0"),
+    ("READ-20261119-7982ff", "READ-20261120-621107"),
+    ("READ-20261117-433ac6", "READ-20261117-592dfe"),
+    ("READ-20261116-6efb37", "READ-20261116-ca38bd"),
+    ("READ-20261107-e37084", "READ-20261107-0c8a2f"),
+    ("READ-20261111-b72d2c", "READ-20261111-4c3859"),
+    ("READ-20261111-58a13c", "READ-20261111-3fc87c"),
+    ("READ-20261120-393e34", "READ-20261120-3e7d2d"),
+]
+by_id = {r["read_id"]: r for r in rows("read_log")
+         if r.get("read_id") and r.get("session_id") != MY_SESSION}
+
+
+def valid_pair(pa, pb, reply):
+    ra, rb = by_id.get(pa), by_id.get(pb)
+    if ra is None or rb is None:
+        return False
+    if ra["target"]["type"] != "note" or ra["target"]["id"] != rb["target"]["id"]:
+        return False
+    if ra["session_id"] == rb["session_id"]:
+        return False
+    if (ra.get("created_at", "")[:10]) > CUT or (rb.get("created_at", "")[:10]) > CUT:
+        return False
+    if not reply and (ra["reading"] == "declined" or rb["reading"] == "declined"):
+        return False
+    succ_to_pred = pa in (rb.get("in_reply_to") or [])
+    pred_to_succ = pb in (ra.get("in_reply_to") or [])
+    return (succ_to_pred and not pred_to_succ) if reply else (
+        not succ_to_pred and not pred_to_succ)
+
+
+reply_ok = sum(valid_pair(a, b, True) for a, b in FROZEN_REPLY)
+ctrl_ok = sum(valid_pair(a, b, False) for a, b in FROZEN_CONTROL)
+print(f"frozen reply pairs valid on current ledger   : {reply_ok}/{len(FROZEN_REPLY)}")
+print(f"frozen control pairs valid on current ledger : {ctrl_ok}/{len(FROZEN_CONTROL)}")
+assert reply_ok == 20 and ctrl_ok == 15
+a_notes = [n for _, n in re.findall(r"^\| (A\d\d) \| (NOTE-\S+) \|", text, flags=re.M)]
+c_notes = [n for _, n in re.findall(r"^\| (C\d\d) \| (NOTE-\S+) \|", text, flags=re.M)]
+assert a_notes == [by_id[a]["target"]["id"] for a, b in FROZEN_REPLY]
+assert c_notes == [by_id[a]["target"]["id"] for a, b in FROZEN_CONTROL]
+print("table A/C note columns match frozen pair order: True")
+
+# informational: the same seeded draw on the CURRENT (grown) pool — after a
+# merge this differs from table C; that is pool growth, not an error.
 rng = random.Random(int("b537ebb8", 16))
 c_uniq, seen = [], set()
 for a, b in sorted(c0, key=lambda x: (x[1]["target"]["id"], x[1]["read_id"])):
@@ -409,11 +489,10 @@ for a, b in sorted(c0, key=lambda x: (x[1]["target"]["id"], x[1]["read_id"])):
     c_uniq.append((a, b))
 rng.shuffle(c_uniq)
 c_samp = c_uniq[:15]
-print("control sample (seeded):",
-      ",".join(b["target"]["id"] for _, b in c_samp))
-print("sample matches table C :",
-      set(b["target"]["id"] for _, b in c_samp) == set(
-          re.findall(r"^\| C\d\d \| (NOTE-\S+) \|", text, flags=re.M)))
+print(f"pool now: reply={len(a0)} control={len(c0)} "
+      f"(measurement-time: reply=20 control=1837)")
+print("current-ledger seeded draw equals table C (True only pre-merge):",
+      set(b["target"]["id"] for _, b in c_samp) == set(c_notes))
 
 
 # --- 3. HYP-20261124-779eca clauses ---------------------------------------
@@ -430,7 +509,8 @@ seeds_all = sorted({str(s["dispersal_seed"]) for s in sessions.values()
                     if s.get("dispersal_seed")})
 seeds_ex = sorted({str(s["dispersal_seed"]) for s in sessions.values()
                    if s.get("dispersal_seed") and s.get("session_id") != MY_SESSION})
-print(f"recorded seeds: self-excluded={len(seeds_ex)} self-included={len(seeds_all)}")
+print(f"recorded seeds: self-excluded={len(seeds_ex)} self-included={len(seeds_all)} "
+      f"(measurement-time: 258 / 259)")
 
 synth = [hashlib.sha256(f"synth:{i}".encode()).hexdigest()[:8] for i in range(250)]
 for label, seeds in [("recorded(excl self)", seeds_ex),
@@ -462,5 +542,6 @@ metrics = learning_metrics.compute_learning_metrics(root=Path("."))
 fe = metrics["frontier_expansion"]
 print(f"frontier: presented_peripheral={fe['sessions_presented_peripheral']} "
       f"registered={fe['sessions_registered_on_offered']} "
-      f"rate={fe['expansion_rate'] * 100:.1f}%")
+      f"rate={fe['expansion_rate'] * 100:.1f}% "
+      f"(measurement-time: 3/77 = 3.9%)")
 ```
