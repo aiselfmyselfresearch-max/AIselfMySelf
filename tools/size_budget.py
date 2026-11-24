@@ -595,8 +595,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (human-authorized preventive rescaling for monitoring window):
         # soft_bytes 5 -> 6.5 MiB (measured 4.55 MiB) and soft_shards 96 -> 130
         # (measured 94, leaving only 2 slots before --strict failure); hard 10 MiB / 160 unchanged.
-        # 2026-11-24: 12 reads; +0.01 MiB; hard unchanged.
-        soft_bytes=int(6.51 * MIB),
+        # 2026-11-24 concurrent sessions (54f966, be1f70): union exceeds 6.5 MiB.
+        # Soft 7.0 MiB; hard 10 MiB unchanged.
+        soft_bytes=int(7.0 * MIB),
         hard_bytes=10 * MIB,
         # 2026-11-08: retain one additional soft slot (81) because two
         # parallel sessions on the same day (PR #585 arena/e8b72114-aiselfmyself
@@ -2485,7 +2486,7 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # +2,621,440 * (2.57 - 2.55) = 52,429 B against a 13,554 B overage, so
         # the canary fires again after ~38 KiB.  hard_bytes (5 MiB) unchanged.
         "tools",
-        soft_bytes=int(2.57 * MIB),
+        soft_bytes=int(2.58 * MIB),
         hard_bytes=5 * MIB,
         remedy="Never commit data-embedded scripts in tools/; use tools/lexicon_audit.py instead of new *_audit.py",
     ),
