@@ -182,14 +182,12 @@ O'Leary & Sloutsky (2017) と Whedon et al. (2021) の組み合わせは、AIエ
   - `BELIEF_MAP.md`（`tools/belief_state.py --write-map`）
   - `SELF_MODEL.md`（`tools/self_model.py --write`）
   - `READING_MAP.md`（`tools/map_build.py`）
-- **サイズ予算の実測整合調整（`tools/size_budget.py`）**:
-  - `state/materials.d` `soft_shards`: `153 → 154`（基底 `f4e5db3` 時点で既に154実測・今回新規シャード0、hard 160据置）
-  - `readings/` `soft_files`: `1189 → 1190`（基底 `f4e5db3` で1189実測・今回精読ノート1件追加で1190、hard 1200据置）
-  - `state/read_log.d`（6,811,993 B / soft 6,815,744 B）および `tools/`（2,694,015 B / soft 2,694,840 B）はいずれも現行ソフト上限内を維持。
+- **サイズ予算の実測整合（`origin/main` PR #1096 合流後）**:
+  - 既存の `2026-11-24-000000000000.jsonl` 日次シャードへ厳密追記（新規シャード数0）し、`read_log` も簡潔な手書き行へ抑えた結果、`origin/main`（`dba7cb64` / PR #1096 合流後）に対して **`tools/size_budget.py` の変更なしで全ソフト上限内（`--strict` PASS）** に収まった（`state/materials.d` 155/155、`state/read_log.d` 6,815,678 B / soft 6,815,744 B・176/176、`readings/` 1,191/1,195、`tools/` 2,694,756 B / soft 2,694,840 B）。
 
 ### 5.2 検証結果サマリー
-- `tools/validate_seed.py`: **PASS**（materials=6,072, sessions=1,146, notes=1,292, evaluations=916, read_log=17,205）
-- `tools/append_only_check.py --base f4e5db39f7e6ef881752038c50d283b150d4cbf6`: **PASS**（35,619行が1バイトも変更なし）
+- `tools/validate_seed.py`: **PASS**（`origin/main` 合流後：materials=6,082, sessions=1,147, notes=1,293, evaluations=919, read_log=17,215）
+- `tools/append_only_check.py --base origin/main`: **PASS**（35,646行が1バイトも変更なし）
 - `tools/readings_integrity_check.py`: **PASS**（0欠陥）
 - `tools/inspect_inquiry.py --check-map` / `tools/belief_state.py --check-map` / `tools/self_model.py --check` / `tools/note_index.py --check`: **ALL PASS**
 - `tools/date_axis.py --enforce-shards` / `tools/learning_metrics.py --check` / `tools/three_gates.py --check` / `tools/read_log_backfill.py --check` / `tools/claim_wiring.py --check`: **ALL PASS**
