@@ -526,7 +526,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # after the merge = 152 files / 15.10 MiB of the 16 MiB soft_bytes.
         # Soft raised to measured + 1 (153) so the next session has one free
         # slot; hard 160 unchanged.
-        soft_shards=153,
+        # 2026-11-24 (SESSION-20261124-b08ef4, 153 -> 154): this session adds one
+        # new materials shard (2026-11-24-b08ef4abc0de.jsonl, ten developmental-
+        # science materials on normativity, responsibility and repair). Measured
+        # union after writing = 154 files / 16.03 MiB of the 17 MiB soft_bytes
+        # (bytes not binding; only the count is). Soft raised to measured (154);
+        # hard 160 unchanged; not automatic. Consolidation debt unchanged: the
+        # shard is named by its own sessions row, so compaction cannot remove it.
+        soft_shards=154,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
