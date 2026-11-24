@@ -535,7 +535,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # after the merge = 152 files / 15.10 MiB of the 16 MiB soft_bytes.
         # Soft raised to measured + 1 (153) so the next session has one free
         # slot; hard 160 unchanged.
-        soft_shards=153,
+        # 2026-11-24 (SESSION-20261124-2ab9af): base f4e5db3 already measured
+        # 154 shards; this session appended to existing day shard (0 new files).
+        # Raise soft 153 -> 154 to match measured; hard 160 unchanged.
+        soft_shards=154,
         hard_shards=160,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -2401,7 +2404,9 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # moves, at the larger of the two independently measured review points.
         # hard_files (1,200), soft_bytes (38 MiB), hard_bytes (48 MiB), and
         # per-report caps are unchanged. Not automatic -- measured after merge.
-        soft_files=1189,
+        # 2026-11-24 (SESSION-20261124-2ab9af): base f4e5db3 measured 1,189;
+        # this session adds 1 close-reading note -> 1,190. Hard 1,200 unchanged.
+        soft_files=1190,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
