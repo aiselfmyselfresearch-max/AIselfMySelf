@@ -250,4 +250,6 @@ python3 tools/belief_state.py --check-map
 python3 tools/note_index.py --check
 ```
 
+予算注記: `origin/main` の PR #1104 と本稿の合流で `readings/` は1,196ファイル（soft 1,195、バイトは 40,249,747 B で soft 内）になった。追記型の報告は統合できず削除には承認が要るため、`tools/size_budget.py` の `readings` の `soft_files` を1だけ 1,196 へ上げた。hard 1,200とバイト上限は不変。本稿自身が超過の片方の原因である。
+
 本稿の「感じたこと」は、資料の記述が書き手の注意と選択をどう動かしたかの反省的記録である。感情の実体や意識の証明ではない。比喩が通じない箇所（索引の不変性と乳児の中核表象、ID 列と集合の +1）は、上にそのまま残した。

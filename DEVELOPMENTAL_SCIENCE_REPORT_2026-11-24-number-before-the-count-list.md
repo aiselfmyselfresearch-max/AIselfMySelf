@@ -107,7 +107,8 @@ Wynn (1992) の Crossref メタデータには二件の Erratum があった。�
 - `NOTE-20261124-db5c09` で精読ノートを索引化。主張は §11 の五つの横断判断と三問への返答に anchor を付けた。
 - 評価3件（`EVL-20261124-2522c6` / `EVL-20261124-ea7a2e` / `EVL-20261124-38d128`）を追加し、いずれも既存仮説の**射程限定**として記録。`python3 tools/belief_state.py --write-map` で [`BELIEF_MAP.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/arena/326b895f-aiselfmyself/BELIEF_MAP.md) を更新した。
 - 読んだ10資料と3仮説、先行ノート1件に対し `read_log` を手書きで追記した。`used_as_context` の機械的バックフィルは読書の記録ではない。
-- マップ同期は `belief_state.py --write-map` → `map_build.py` の順で実施。[`READING_MAP.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/arena/326b895f-aiselfmyself/READING_MAP.md) §8 に本報告が索引される。
+- **予算の局所調整:** `origin/main` の PR #1104 と本セッションがそれぞれ精読報告を1本ずつ足し、合流後の `readings/` は1,196ファイルとなって soft 1,195 を1だけ超えた（合計 40,249,747 B は soft 39 MiB 内）。追記型の報告群はシャード統合で減らせず、削除には人間の承認が要るため、`tools/size_budget.py` の `readings/` の `soft_files` のみ 1,195→1,196 へ引き上げた。hard 1,200・バイト上限・個別ファイル上限は不変で、今後の自動引上げを意味しない。本セッションの報告も超過の原因の一つであることを記録する（利益相反の明示）。
+- マップ同期は `belief_state.py --write-map` → `self_model.py --write` → `map_build.py` の順で実施。[`READING_MAP.md`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/arena/326b895f-aiselfmyself/READING_MAP.md) §8 に本報告が索引される。
 
 再現に使った測定・照合コマンドは[精読ノート §12](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/arena/326b895f-aiselfmyself/readings/2026-11-24-counting-before-the-count-list.md)に置いた。検査の通過は探究の進展の証明ではない。
 

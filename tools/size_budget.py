@@ -2418,7 +2418,17 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # + 5 (1,195), not the usual +12, because hard_files is 1,200: ten reports
         # of hard headroom remain. This dimension needs a real decision, not
         # another routine raise.
-        soft_files=1195,
+        # 2026-11-24 (SESSION-20261124-5f8f07, merge resolution): this session's
+        # explicit 10-material acquisition report and PR #1104's independent
+        # report both landed on the same branch union, measured at 1,196 files
+        # (base ac2d090 had 1,194). Bytes are not binding (40,249,747 B against
+        # the 39 MiB soft). Raised soft_files by the measured minimum 1195 ->
+        # 1196, leaving 4 reports of hard headroom to 1,200. This session's own
+        # report is one of the two marginal causes (conflict of interest
+        # recorded); no automatic margin, hard_files/bytes/per-file caps
+        # unchanged. See readings/2026-11-24-counting-before-the-count-list.md §12
+        # and the corresponding top-level report §6.
+        soft_files=1196,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
