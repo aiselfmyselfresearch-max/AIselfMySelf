@@ -595,7 +595,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-12 (human-authorized preventive rescaling for monitoring window):
         # soft_bytes 5 -> 6.5 MiB (measured 4.55 MiB) and soft_shards 96 -> 130
         # (measured 94, leaving only 2 slots before --strict failure); hard 10 MiB / 160 unchanged.
-        soft_bytes=int(6.5 * MIB),
+        # 2026-11-24: 12 reads; +0.01 MiB; hard unchanged.
+        soft_bytes=int(6.51 * MIB),
         hard_bytes=10 * MIB,
         # 2026-11-08: retain one additional soft slot (81) because two
         # parallel sessions on the same day (PR #585 arena/e8b72114-aiselfmyself

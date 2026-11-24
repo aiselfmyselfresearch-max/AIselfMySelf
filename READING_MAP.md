@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6082 件（research_excerpt 3833 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6092 件（research_excerpt 3843 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1147 回
+- **探究セッション（Sessions）**：1148 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6082 | `literary_text` 2181／`research_excerpt` 3833／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6092 | `literary_text` 2181／`research_excerpt` 3843／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1147 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17215 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1148 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17227 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 418 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 637 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1293 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 639 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1294 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 109 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 919 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 920 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6082 件・詳細は map/3*.md）
+## 4. 対話素材（6092 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6869,6 +6869,16 @@
 | `MAT-20261124-a18f2d` | research_excerpt | Qi Wang, Stacey N. Doan, Qingfang Song『Wang, Doan & Song (2010) 負の出来事の内的状態回想が3歳自己表象の文化差を3… |
 | `MAT-20261124-a29a3e` | research_excerpt | Jessie Bee Kim Koh, Qi Wang『Koh & Wang (2021) 4.5→7歳多文化縦断——負の出来事の意味づけ核の普遍効果、他者感情帰属の逆効果、中国… |
 | `MAT-20261124-a3ab4f` | research_excerpt | Laura L. Carstensen『Carstensen (2021) 社会情動的選択性理論30年——「終わりの知覚」が探索から情動的意味・剪定・ポジティビティ効果へ動機を切… |
+| `MAT-20261124-91b4d8` | research_excerpt | Sheina Lew-Levy, Wouter van den Bos, Kathleen Corriveau, Natália Dutra, Emma Flynn, Eoin … |
+| `MAT-20261124-ca8686` | research_excerpt | Bruce S. Rawlings, Emma G. Flynn, Rachel L. Kendal『Personality predicts innovation and so… |
+| `MAT-20261124-51daf1` | research_excerpt | Cristine H. Legare『Cumulative cultural learning: Development and diversity』（2017） |
+| `MAT-20261124-a32c95` | research_excerpt | Emma Flynn『Investigating children as cultural magnets: Do young children transmit redunda… |
+| `MAT-20261124-0195dd` | research_excerpt | Anne Sibilsky, Heidi Colleran, Dominik Deffner, Daniel B. M. Haun『Copying fidelity of fun… |
+| `MAT-20261124-5224cc` | research_excerpt | Eva Reindl, Ian A. Apperly, S. R. Beck, Claudio Tennie『Young children copy cumulative tec… |
+| `MAT-20261124-0784e0` | research_excerpt | Eva Brandl, Ruth Mace, Cecilia Heyes『The cultural evolution of teaching』（2023） |
+| `MAT-20261124-6c2516` | research_excerpt | Chelsea D. Williams, Diamond Y. Bravo, Adriana J. Umaña-Taylor, Kimberly A. Updegraff, La… |
+| `MAT-20261124-d53190` | research_excerpt | Jing Xu, Lara Wood, Claire Sutherland, Sarah Pope-Caldwell, Olivier Mboumba, Armel Elenga… |
+| `MAT-20261124-078dbf` | research_excerpt | Eunice Yiu, Eliza Kosoy, Alison Gopnik『Transmission Versus Truth, Imitation Versus Innova… |
 | `MAT-20261124-43c901` | research_excerpt | Li et al.『Unpredictability in Caregiver-child Relationships: Impact on Child Verbal Abili… |
 | `MAT-20261124-43c902` | research_excerpt | Kaletsch & Liszkowski『Does Caregivers' Responsiveness Influence the Early Development of … |
 | `MAT-20261124-43c903` | research_excerpt | Bratsch-Hines et al.『Infant and Toddler Child-Care Quality and Stability in Relation to P… |
@@ -8038,6 +8048,7 @@
 | `SESSION-20261124-6a8c58` | 2026-11-24T15:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-8a3cef` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-2ab9af` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-54f966` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-b08ef4` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-12851d` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-65de8c` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -8143,7 +8154,7 @@
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
-| `map/31-materials-research-39.md` | 33 | 72,586 |
+| `map/31-materials-research-39.md` | 43 | 88,965 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8182,7 +8193,7 @@
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
-| `map/50-sessions-23.md` | 47 | 41,094 |
+| `map/50-sessions-23.md` | 48 | 41,959 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
@@ -8223,23 +8234,23 @@
 | `map/60-notes-38.md` | 25 | 73,046 |
 | `map/60-notes-39.md` | 25 | 42,546 |
 | `map/60-notes-40.md` | 25 | 108,378 |
-| `map/60-notes-41.md` | 25 | 131,533 |
-| `map/60-notes-42.md` | 25 | 81,134 |
-| `map/60-notes-43.md` | 25 | 81,238 |
-| `map/60-notes-44.md` | 25 | 68,673 |
-| `map/60-notes-45.md` | 25 | 83,911 |
-| `map/60-notes-46.md` | 25 | 103,949 |
-| `map/60-notes-47.md` | 25 | 128,343 |
-| `map/60-notes-48.md` | 20 | 97,233 |
+| `map/60-notes-41.md` | 25 | 130,734 |
+| `map/60-notes-42.md` | 25 | 83,609 |
+| `map/60-notes-43.md` | 25 | 78,661 |
+| `map/60-notes-44.md` | 25 | 68,810 |
+| `map/60-notes-45.md` | 25 | 83,000 |
+| `map/60-notes-46.md` | 25 | 107,957 |
+| `map/60-notes-47.md` | 25 | 127,654 |
+| `map/60-notes-48.md` | 21 | 99,746 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1195本・40,058,761 B）
+## 8. 精読ノート索引（readings/・1196本・40,090,465 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1088/1195 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1089/1196 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1195 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1196 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：196 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9264,6 +9275,7 @@
 | `readings/2026-11-23-what-the-cognitive-science-reports-were-made-of.md` | 2026-11-23 | 2026-11-23 | `SESSION-20261123-81c9d6` | 17,757 | Q4 M3 S1 | ✓ | 認知科学レポート群は何から作られていたか——基質・留保・把持・系譜の四つの測定 |
 | `readings/2026-11-24-calibration-without-the-return.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-fa13c2` +3 | 15,784 | Q4 M11 S4 | ✓ | 「返り」のない較正——一人称で自分を覆す六篇を読む |
 | `readings/2026-11-24-developmental-cascades-and-retrievable-past-ba6e827f.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-12851d` | 13,353 | M10 S1 | ✓ | 発達科学10資料の本文精読ノート――行為が入力を変え、語りが過去の取り出し方を変える |
+| `readings/2026-11-24-developmental-peer-learning-and-cultural-inheritance.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-54f966` | 12,858 | Q3 M10 S1 | ✓ | 発達科学・同輩学習と文化的継承——十資料の精読ノート |
 | `readings/2026-11-24-developmental-representation-intention-and-narrated-self-ten-sources.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-bc41fb` | 8,122 | Q3 M10 S1 | ✓ | 発達科学・表象・意図・語りの自己——十件の資料を精読して |
 | `readings/2026-11-24-developmental-science-classics-ten-sources-close-reading.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-064e84` +1 | 14,017 | Q3 M11 S2 ERR1 | ✓ | 発達科学の古典十資料を精読する——「自己」は与えられるのではなく、応答と共有のなかで組み上げられる |
 | `readings/2026-11-24-developmental-science-language-mind-identity-ten-sources-close-reading.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-3eddda` +3 | 16,375 | Q3 M12 S4 ERR1 | ✓ | 発達科学の言語・心・同一性十資料を精読する——「自己」は語り、他者を思い、関係のなかで編み直される |
