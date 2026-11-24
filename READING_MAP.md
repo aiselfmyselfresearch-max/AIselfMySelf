@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6042 件（research_excerpt 3793 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6052 件（research_excerpt 3803 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1143 回
+- **探究セッション（Sessions）**：1144 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6042 | `literary_text` 2181／`research_excerpt` 3793／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6052 | `literary_text` 2181／`research_excerpt` 3803／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1143 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17173 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1144 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17186 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 418 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 634 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1289 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 105 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 909 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 637 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1290 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 107 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 911 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6042 件・詳細は map/3*.md）
+## 4. 対話素材（6052 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6849,6 +6849,16 @@
 | `MAT-20261124-21acdf` | research_excerpt | Patricia J. Bauer, Marina Larkina『Bauer & Larkina (2016) 児童と成人における自伝的記憶の保持と忘却——4年間前向き追跡と主… |
 | `MAT-20261124-982819` | research_excerpt | Hillary A. Langley, Jennifer L. Coffman, Peter A. Ornstein『Langley, Coffman & Ornstein (2… |
 | `MAT-20261124-e69bec` | research_excerpt | Sanghag Kim, Grazyna Kochanska『Kim & Kochanska (2019) 誠実性の児童期起源——幼児期努力的統制・コミットした順守から14歳への… |
+| `MAT-20261124-3d5c72` | research_excerpt | Sandra Scarr, Kathleen McCartney『Scarr & McCartney (1983)「人はいかにして自分の環境を作るか」——三つの遺伝子→環境効果。… |
+| `MAT-20261124-8918bc` | research_excerpt | Jay Belsky, Michael Pluess『Belsky & Pluess (2009)「素因ストレスを超えて」——ある個体は不利にも有利にも「より強く」反応する。脆弱… |
+| `MAT-20261124-2650f8` | research_excerpt | Dante Cicchetti, Fred A. Rogosch『Cicchetti & Rogosch (1996)「発達精神病理学における等終結と多終結」——同じ終状態に多く… |
+| `MAT-20261124-4f90bc` | research_excerpt | Charles M. Super, Sara Harkness『Super & Harkness (1986)「発達的ニッチ」——子どもの場所・養育の慣習・養育者の心理学。文化は… |
+| `MAT-20261124-cb27ea` | research_excerpt | Robert S. Siegler『Siegler (1996)『創発する心』——階段ではなく重なり合う波。同じ子どもが同じ時期に複数の方略を持ち、変動・選択・保持で変わる』（1… |
+| `MAT-20261124-66ebf3` | research_excerpt | Mark H. Johnson『Johnson (2011)「相互作用特化」——領域は成熟してから働くのではなく、競合と相互作用の結果として細く同調していく』（2011） |
+| `MAT-20261124-717726` | research_excerpt | Heidi Keller『Keller (2007)『乳児期の文化』——独立・相互依存・自律関連という三つの文化モデルが、自己の基礎をいつ・どの形で作るかを変える』（2007） |
+| `MAT-20261124-24f887` | research_excerpt | Kurt W. Fischer『Fischer (1980) 技能理論——発達は梯子ではなく網。同じ人が課題と支えに応じて異なる水準を示す』（1980） |
+| `MAT-20261124-db8d62` | research_excerpt | Marinus H. van IJzendoorn, Pieter M. Kroonenberg『van IJzendoorn & Kroonenberg (1988) 愛着の文… |
+| `MAT-20261124-0c9ca0` | research_excerpt | Susan Harter『Harter (1999)『自己の構成』——自己表象は内容と構造を変えて発達し、本物の自己は「自分の意見を言えること」で試される』（1999） |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261124-65de8c・全文は map/50-sessions-*.md）
 
@@ -7995,6 +8005,7 @@
 | `SESSION-20261124-bc41fb` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-c15cfc` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003`, `Q-20261130-caf330` | — | — |
 | `SESSION-20261124-aaaa42` | 2026-11-24 | `Q-20261024-8b1b80`, `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261124-6a8c58` | 2026-11-24T15:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-12851d` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-65de8c` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
@@ -8098,7 +8109,8 @@
 | `map/31-materials-research-35.md` | 100 | 246,932 |
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
-| `map/31-materials-research-38.md` | 93 | 240,485 |
+| `map/31-materials-research-38.md` | 100 | 262,380 |
+| `map/31-materials-research-39.md` | 3 | 9,589 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8137,7 +8149,7 @@
 | `map/50-sessions-20.md` | 50 | 40,776 |
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
-| `map/50-sessions-23.md` | 43 | 37,688 |
+| `map/50-sessions-23.md` | 44 | 38,457 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
@@ -8179,23 +8191,23 @@
 | `map/60-notes-39.md` | 25 | 42,546 |
 | `map/60-notes-40.md` | 25 | 108,250 |
 | `map/60-notes-41.md` | 25 | 130,811 |
-| `map/60-notes-42.md` | 25 | 72,822 |
-| `map/60-notes-43.md` | 25 | 79,768 |
-| `map/60-notes-44.md` | 25 | 70,427 |
-| `map/60-notes-45.md` | 25 | 96,341 |
-| `map/60-notes-46.md` | 25 | 93,718 |
-| `map/60-notes-47.md` | 25 | 129,227 |
-| `map/60-notes-48.md` | 16 | 82,579 |
+| `map/60-notes-42.md` | 25 | 76,580 |
+| `map/60-notes-43.md` | 25 | 80,013 |
+| `map/60-notes-44.md` | 25 | 70,916 |
+| `map/60-notes-45.md` | 25 | 93,045 |
+| `map/60-notes-46.md` | 25 | 97,124 |
+| `map/60-notes-47.md` | 25 | 128,382 |
+| `map/60-notes-48.md` | 17 | 86,169 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1191本・39,862,323 B）
+## 8. 精読ノート索引（readings/・1192本・39,913,835 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1084/1191 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1085/1192 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1191 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：195 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1192 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：196 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -9231,6 +9243,7 @@
 | `readings/2026-11-24-the-interval-and-the-omitted-stone.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-65de8c` | 6,237 | Q3 M1 S1 ERR2 | — | 十五日のあいだにあるもの、引用から消えた石 |
 | `readings/2026-11-24-when-the-mirror-and-the-schedule-arrive.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8cecc8` | 21,471 | Q3 M10 S1 | ✓ | 鏡と日程表が来る前後に——発達科学の十資料を精読する |
 | `readings/2026-11-24-who-carried-the-reading-forward.md` | — | 2026-11-24 | `SESSION-20261124-af802d` +2 | 32,711 | Q6 M2 S3 ERR1 | ✓ | 誰が読みを運んだか——返信付き20ペアと返信なし15ペアの第三者符号化 |
+| `readings/2026-11-24-who-the-timetable-is-for.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-6a8c58` +1 | 26,282 | Q4 M11 S2 ED3 | — | その時間表は、誰のためのものか——発達科学十件と、条件の非普遍性 |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
 | `readings/2026-11-26-the-blank-is-a-way-of-seeing.md` | — | 2026-11-26 | `SESSION-20261126-7b7806` +1 | 6,120 | Q6 F6 M4 MOT2 S2 | ✓ | 空欄は、すでに一つの見方である —— 名を書かない贈与と、返却先のない写真 |
