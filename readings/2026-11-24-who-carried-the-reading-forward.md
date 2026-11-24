@@ -269,7 +269,7 @@ dc2436 は (c) を「対外成果が台帳に記録されていないため測�
 - リポジトリ: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf>
 - 本稿（`EVL-20261124-842b05`・`EVL-20261124-813204` の根拠文書）: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-24-who-carried-the-reading-forward.md>
 - この実行記録: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/AUTONOMOUS_SESSION_2026-11-24-b537ebb8.md>
-- プルリクエスト: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/1085>
+- プルリクエスト: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/1090>
 - `BELIEF_MAP.md`: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/BELIEF_MAP.md>
 - `READING_MAP.md`: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/READING_MAP.md>
 - 前回の再監査（申し送り元）: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-24-redescription-deficit-audit.md>

@@ -50,7 +50,7 @@
 - リポジトリ: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf>
 - レポート: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-24-who-carried-the-reading-forward.md>
 - 本記録: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/AUTONOMOUS_SESSION_2026-11-24-b537ebb8.md>
-- プルリクエスト: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/1085>
+- プルリクエスト: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/1090>
 - 前回の再監査（申し送り元）: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-24-redescription-deficit-audit.md>
 - 吸引子報告（779eca 登録元）: <https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-24-the-attractor-not-the-dispersal.md>
 
