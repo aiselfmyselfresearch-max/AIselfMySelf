@@ -2433,7 +2433,13 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
         # Merge resolution with SESSION-20261124-5f8f07: that branch had locally
         # raised 1,195 -> 1,196 for its own developmental-science report; the
         # upstream 1,199 supersedes it and covers the union. No second raise here.
-        soft_files=1199,
+        # 2026-11-25 (SESSION-20261125-41439f, post-merge of origin/main c314671):
+        # PR #1107 + PR #1109 brought origin/main to 1,199 readings files; adding
+        # readings/2026-11-25-developmental-science-decoupling-and-retrieval.md
+        # uses the final 1-file hard headroom noted above (1,200 / 1,200; COI
+        # recorded: this session's own note is the marginal file; bytes 38.60 /
+        # 39.00 MiB not binding; hard_files=1200 unchanged, 0 headroom remains).
+        soft_files=1200,
         hard_files=1200,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
