@@ -23,6 +23,13 @@ A sixth observation, added 2026-11-23 (proposal 7,
      read were scattered", which cannot tell dispersion from empty receptacles;
      this rate measures whether the frontier actually widened.  Not a gate.
 
+A seventh observation, added 2026-11-25 (§4.1 of the self-model-axes audit):
+  7. Domain Boundedness: of the hypotheses whose domain can be attributed via
+     their source notes' quadrant, the share that stayed within the session's
+     intended domain (in-domain effect ratio) versus the share that spilled
+     across (cross-domain spillover rate).  Measures the developmental-science
+     report's third axis.  Not a gate.
+
 Usage:
   python3 tools/learning_metrics.py
   python3 tools/learning_metrics.py --json
@@ -262,6 +269,64 @@ def compute_learning_metrics(
         if (bstate["questions"].get(qid) or {}).get("hypothesis_count", 0) == 0
     })
 
+    # 8. Domain boundedness (§4.1, 2026-11-25).  The developmental-science
+    #    report's third axis asks whether a context packet's effect stays
+    #    within the domain it was aimed at. The ledger has no per-hypothesis
+    #    or per-session domain field, but two linkages exist: a note carries a
+    #    `quadrant`, and a hypothesis carries `source_note_ids` pointing at the
+    #    notes it was built from. So:
+    #      * a session's *intended* domain = the quadrant(s) of the notes it
+    #        wrote (session_id);
+    #      * a hypothesis's *actual* domain = the quadrant of its source notes
+    #        (majority vote), falling back to the quadrant of the notes its
+    #        session wrote when it has no source_note_ids.
+    #    in-domain effect ratio / cross-domain spillover rate are the shares of
+    #    attributed hypotheses whose actual domain matches / misses the session's
+    #    intended domain. This is a measurement, not a gate (see the proposal:
+    #    decide gate status after seeing the distribution).
+    note_quadrant: dict[str, str] = {}
+    for nrec in data["notes"].values():
+        q = nrec.get("quadrant")
+        if isinstance(q, str) and q:
+            note_quadrant[str(nrec.get("note_id"))] = q
+    session_intended: dict[str, Counter[str]] = defaultdict(Counter)
+    for nrec in data["notes"].values():
+        sid = str(nrec.get("session_id") or "")
+        if sid and nrec.get("index_backfill") is not True:
+            q = nrec.get("quadrant")
+            if isinstance(q, str) and q:
+                session_intended[sid][q] += 1
+
+    in_domain = 0
+    cross_domain = 0
+    unattributed = 0
+    domain_breakdown: Counter[str] = Counter()
+    for hyp in data["hypotheses"].values():
+        sid = str(hyp.get("session_id") or "")
+        intended = session_intended.get(sid)
+        if not intended:
+            continue
+        intended_quadrant = intended.most_common(1)[0][0]
+        actual: str | None = None
+        src_quadrants: Counter[str] = Counter()
+        for nid in hyp.get("source_note_ids") or []:
+            q = note_quadrant.get(str(nid))
+            if q:
+                src_quadrants[q] += 1
+        if src_quadrants:
+            actual = src_quadrants.most_common(1)[0][0]
+        elif sid in session_intended:
+            actual = session_intended[sid].most_common(1)[0][0]
+        if actual is None:
+            unattributed += 1
+            continue
+        domain_breakdown[actual] += 1
+        if actual == intended_quadrant:
+            in_domain += 1
+        else:
+            cross_domain += 1
+    attributed = in_domain + cross_domain
+
     return {
         "belief_divergence": {
             "mean_kl_bits": round(sum(kl_values) / max(1, len(kl_values)), 4),
@@ -322,6 +387,15 @@ def compute_learning_metrics(
             ),
             "offered_still_empty_count": len(offered_still_empty),
             "offered_still_empty_questions": offered_still_empty,
+        },
+        "domain_boundedness": {
+            "attributed_hypotheses": attributed,
+            "in_domain_count": in_domain,
+            "cross_domain_count": cross_domain,
+            "unattributed_count": unattributed,
+            "in_domain_effect_ratio": round(in_domain / max(1, attributed), 4),
+            "cross_domain_spillover_rate": round(cross_domain / max(1, attributed), 4),
+            "actual_domain_breakdown": dict(domain_breakdown),
         },
     }
 
@@ -401,6 +475,14 @@ def render_report(metrics: dict[str, Any]) -> str:
             f"提示問に仮説を登録した {fe['sessions_registered_on_offered']} 件 "
             f"(={fe['expansion_rate']*100:.1f}%) / 登録後の評価付き {fe['registered_subsequently_evaluated']} 件 "
             f"(={fe['registered_evaluation_rate']*100:.1f}%) / 提示後も0仮説の問い {fe['offered_still_empty_count']} 件"
+        )
+    db = metrics.get("domain_boundedness")
+    if db:
+        lines.append(
+            f"8. 領域別限定性 (観測値, §4.1): 領域帰属のつかない仮説 {db['unattributed_count']} 件を除く "
+            f"{db['attributed_hypotheses']} 件中、意図領域内への効き {db['in_domain_count']} 件 "
+            f"(={db['in_domain_effect_ratio']*100:.1f}%) / 領域跨ぎ波及 {db['cross_domain_count']} 件 "
+            f"(={db['cross_domain_spillover_rate']*100:.1f}%)"
         )
     return "\n".join(lines)
 

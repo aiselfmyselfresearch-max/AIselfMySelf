@@ -2028,6 +2028,53 @@ def double_reading_advisory(
     )
 
 
+def subcategory_label_advisory(
+    notes: dict[str, dict[str, Any]],
+) -> str | None:
+    """§4.2: report note `subcategories` labels outside the canonical set.
+
+    The note ledger mixes English snake_case and Japanese labels for the same
+    concept, which fragments any label-based domain measurement. Canonical
+    labels and their alias targets live in taxonomy_plan.py; existing rows are
+    never rewritten, so this advisory surfaces the non-canonical labels that
+    remain so new rows can be written against the canonical form.
+    """
+    import taxonomy_plan  # local import: taxonomy_plan -> inspect_inquiry -> ... -> new_id -> validate_seed.ROOT
+
+    canonical = taxonomy_plan.CANONICAL_SUBCATEGORY_LABELS
+    aliases = taxonomy_plan.SUBCATEGORY_LABEL_ALIASES
+    non_canonical: dict[str, int] = {}
+    aliased = 0
+    for note in notes.values():
+        subs = note.get("subcategories")
+        if not isinstance(subs, list):
+            continue
+        for label in subs:
+            if not isinstance(label, str):
+                continue
+            if label in canonical:
+                continue
+            if label in aliases:
+                aliased += 1
+                continue
+            non_canonical[label] = non_canonical.get(label, 0) + 1
+    if not non_canonical and not aliased:
+        return None
+    parts = []
+    if aliased:
+        parts.append(f"{aliased} label occurrence(s) resolve to a canonical label via the alias map")
+    if non_canonical:
+        distinct = len(non_canonical)
+        total = sum(non_canonical.values())
+        sample = ", ".join(repr(k) for k in sorted(non_canonical)[:8])
+        more = ", …" if distinct > 8 else ""
+        parts.append(
+            f"{distinct} distinct label(s) ({total} occurrence(s)) are neither canonical nor aliased "
+            f"and still need a canonical form; sample: {sample}{more}"
+        )
+    return "INFO: subcategory label normalization (advisory, §4.2): " + "; ".join(parts)
+
+
 def check_refs(
     collection_name: str,
     records: dict[str, dict[str, Any]],
@@ -2622,6 +2669,9 @@ def main(argv: list[str] | None = None) -> int:
     dr_advisory = double_reading_advisory(read_logs, materials)
     if dr_advisory:
         print(dr_advisory)
+    sub_advisory = subcategory_label_advisory(notes)
+    if sub_advisory:
+        print(sub_advisory)
     return 0
 
 

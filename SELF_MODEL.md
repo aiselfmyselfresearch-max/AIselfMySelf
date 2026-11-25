@@ -131,6 +131,18 @@
 - **Q-002** (`HYP-20261124-779eca` vs `HYP-20261124-6622b8`, EIG_amort=0.0281): 予測 D_KL=0.02053 bits (Δleft=-5.59pp, Δright=+1.81pp)
 - **Q-003** (`HYP-20261124-779eca` vs `HYP-20261117-4bf2dc`, EIG_amort=0.0248): 予測 D_KL=0.02180 bits (Δleft=-5.38pp, Δright=+0.64pp)
 
+## 7. 三軸の実装対応 (Self-Model Axes)
+
+発達科学レポートの三軸（脱結合・検索トリガー・領域別限定性）が、どの
+ツール・ゲートで担われているかの対応表。人側の証拠と書庫側の実装の
+接続が一目で確認できる。
+
+| 軸 | 意味 | 実装機構（ツール・ゲート） | 状態 |
+| :--- | :--- | :--- | :--- |
+| 脱結合 (Dissociation) | 自己と非自己・自己と他者の操作の分離 | `belief_state.py`（信念分布の条件付き更新）、`associations.py`（連想・抑制）、三門ゲート | 実装済み |
+| 検索トリガー (Search Trigger) | 何が検索・再開を起動するかの条件 | `inspect_inquiry.py`（`build_context_packet`、`_is_retrieval_suppressed`）、`memory_tiers.py`、errata の `suppress_retrieval` | 実装済み（§4.3 で読書キューにも反映） |
+| 領域別限定性 (Domain Boundedness) | 文脈パケットの効きが意図領域に留まるか | `learning_metrics.py` の領域別限定性メトリクス（§4.1）、`taxonomy_plan.py` のサブカテゴリ正規化（§4.2） | 計測済み（観測値、ゲート未定） |
+
 ---
 
 *このファイルは自動生成されています。内容の修正は `tools/self_model.py` のロジック変更、
