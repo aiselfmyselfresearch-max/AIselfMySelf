@@ -28,10 +28,28 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-import ledger_io
-
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT / "tools") not in sys.path:
+    sys.path.insert(0, str(ROOT / "tools"))
+
+import default_mode_probe  # noqa: E402
+import ledger_io  # noqa: E402
+
 SELF_MODEL_PATH = ROOT / "SELF_MODEL.md"
+
+
+def _has_belief_ledgers(root: Path) -> bool:
+    for fname in ("questions.jsonl", "hypotheses.jsonl", "evaluations.jsonl"):
+        base = root / "state" / fname
+        if not (base.is_file() or ledger_io.shard_dir(base).is_dir()):
+            return False
+    return True
+
+
+def load_prediction_error(root: Path = ROOT) -> dict:
+    if root == ROOT or _has_belief_ledgers(root):
+        return default_mode_probe.compute_prediction_error(root=root)
+    return {}
 
 
 def _run_json(script: str, *args: str) -> dict:
@@ -265,7 +283,11 @@ def load_current_session(root: Path = ROOT) -> dict:
     }
 
 
-def validate_invariants(belief: dict, session: dict) -> list[str]:
+def validate_invariants(
+    belief: dict,
+    session: dict,
+    prediction_error: dict | None = None,
+) -> list[str]:
     """Check cross-ledger semantic invariants so --check never rubber-stamps a blank or frozen self-model."""
     import re
     errors: list[str] = []
@@ -313,10 +335,29 @@ def validate_invariants(belief: dict, session: dict) -> list[str]:
             errors.append(
                 f"current session {cur} carries forward-dated internal label started_at={started!r} > real_date={rday!r}"
             )
+
+    if prediction_error:
+        errors.extend(default_mode_probe.validate_prediction_error_invariants(prediction_error))
+        retro = prediction_error.get("retrospective") or {}
+        prosp = prediction_error.get("prospective") or {}
+        les = retro.get("latest_eval_session") or {}
+        cpairs = prosp.get("core_pairs") or {}
+        if int(les.get("evl_count") or 0) > 0:
+            for qid, info in sorted(cq.items()):
+                if len(info.get("top_amortized") or []) >= 2 and qid not in cpairs:
+                    errors.append(
+                        f"{qid} has >=2 P_amort Top3 rows in BELIEF_MAP.md but §6 prospective.core_pairs is missing {qid}"
+                    )
     return errors
 
 
-def render_md(belief: dict, session: dict, interoception: dict, continuity: dict) -> str:
+def render_md(
+    belief: dict,
+    session: dict,
+    interoception: dict,
+    continuity: dict,
+    prediction_error: dict | None = None,
+) -> str:
     # Use the latest session's real date + session_id as the deterministic timestamp
     # (never use a forward-running internal label or wall-clock UTC timestamp)
     rday = session.get("current_real_date") or session.get("current_started") or ""
@@ -427,9 +468,72 @@ def render_md(belief: dict, session: dict, interoception: dict, continuity: dict
     lines.append("")
     lines.append("## 6. 予測誤差 (Prediction Error)")
     lines.append("")
-    lines.append("前回の自己モデルからの予測と実際の状態の差分。このセクションは今後の")
-    lines.append("`default_mode_probe.py` により更新される予定。現在は準備中。")
-    lines.append("")
+    if prediction_error and isinstance(prediction_error.get("retrospective"), dict):
+        band = str(prediction_error.get("band") or "?")
+        pe_marker = {"green": "✓", "amber": "△", "red": "✗"}.get(band, "?")
+        reasons = "; ".join(prediction_error.get("alarm_reasons") or [])
+        retro = prediction_error["retrospective"]
+        ls = retro.get("latest_session") or {}
+        les = retro.get("latest_eval_session") or {}
+        tw = retro.get("trailing_window") or {}
+        prosp = (prediction_error.get("prospective") or {}).get("core_pairs") or {}
+
+        lines.append("`default_mode_probe.py` による前回予測と事後更新の実測差分、および次回検証の反事実感度（読み取り専用・台帳無変更）。")
+        lines.append("")
+        lines.append(f"- **予測誤差アラーム**: {pe_marker} `{band}` — {reasons}")
+        lines.append(
+            f"- **直近評価セッション**: `{les.get('session_id') or '?'}` "
+            f"（評価 {les.get('evl_count', 0)} 件 / 反証系 {les.get('adversarial_evl_count', 0)} 件 / "
+            f"`verified` 引用 {les.get('verified_cited_evl_count', 0)} 件 / "
+            f"フロンティア照準: `{les.get('frontier_alignment', '?')}`）"
+        )
+        actual_qs_str = ", ".join(ls.get("actual_question_ids") or []) or "なし"
+        lines.append(
+            f"- **最新セッション割当整合**: `{ls.get('session_id') or '?'}` "
+            f"（ロール `{ls.get('assigned_role', '?')}` / 参照基底 `{ls.get('belief_basis', '?')}` / "
+            f"提示問い `{ls.get('offered_target_question_id', '?')}` -> 実行 `{actual_qs_str}`）"
+        )
+        lines.append("")
+        lines.append("### 直近評価セッションの事後確率シフト")
+        per_q = les.get("per_question") or {}
+        for qid in ["Q-001", "Q-002", "Q-003"]:
+            pq = per_q.get(qid) or {}
+            shifted = "あり" if pq.get("top_amort_pair_shifted") else "なし"
+            lines.append(
+                f"- **{qid}**: D_KL(P_amort)={float(pq.get('dkl_amort_bits', 0.0)):.5f} bits, "
+                f"D_KL(P_gate)={float(pq.get('dkl_gate_bits', 0.0)):.5f} bits, "
+                f"L1(P_amort)={float(pq.get('l1_amort', 0.0)):.4f}, 首位対入替={shifted}"
+            )
+        lines.append("")
+        lines.append("### 直近ウィンドウ停滞監視")
+        w_n = int(tw.get("window_eval_sessions") or 0)
+        z_n = int(tw.get("zero_shift_eval_sessions") or 0)
+        cum = tw.get("cumulative_core_dkl_amort_bits") or {}
+        cum_str = ", ".join(
+            f"{qid}={float(cum.get(qid, 0.0)):.5f}b" for qid in ["Q-001", "Q-002", "Q-003"]
+        )
+        stasis_n = len(tw.get("recent_nominal_stasis_sessions") or [])
+        lines.append(f"- 直近 {w_n} 評価セッション無更新回数: {z_n}/{w_n}（閾値 D_KL < 0.0001 bits）")
+        lines.append(f"- 直近 {w_n} 評価セッション累積ドリフト D_KL(P_amort): {cum_str}")
+        lines.append(f"- 直近探求5セッションの名目的受諾（成果物0件）: {stasis_n} 件")
+        if prosp:
+            lines.append("")
+            lines.append("### 次回検証の事前感度予測 (1件の独立 verified 反証衝突)")
+            for qid in ["Q-001", "Q-002", "Q-003"]:
+                cp = prosp.get(qid)
+                if not cp:
+                    continue
+                lines.append(
+                    f"- **{qid}** (`{cp['left_hypothesis_id']}` vs `{cp['right_hypothesis_id']}`, "
+                    f"EIG_amort={float(cp.get('novelty_adjusted_eig', 0.0)):.4f}): "
+                    f"予測 D_KL={float(cp.get('pred_dkl_amort_bits', 0.0)):.5f} bits "
+                    f"(Δleft={float(cp.get('delta_left_pp', 0.0)):+.2f}pp, "
+                    f"Δright={float(cp.get('delta_right_pp', 0.0)):+.2f}pp)"
+                )
+        lines.append("")
+    else:
+        lines.append("予測誤差プローブ未接続（最小テストフィクスチャ）。")
+        lines.append("")
     lines.append("---")
     lines.append("")
     lines.append("*このファイルは自動生成されています。内容の修正は `tools/self_model.py` のロジック変更、")
@@ -442,12 +546,13 @@ def write_map(root: Path = ROOT) -> None:
     target_path = root / "SELF_MODEL.md"
     belief = load_belief_summary(root)
     session = load_current_session(root)
-    inv_errors = validate_invariants(belief, session)
+    prediction_error = load_prediction_error(root)
+    inv_errors = validate_invariants(belief, session, prediction_error)
     if inv_errors:
         raise RuntimeError("SELF_MODEL invariant failure: " + "; ".join(inv_errors))
     interoception = _run_json("interoception.py") if root == ROOT else {"shard_budgets": [], "role_balance": {}, "connectivity": {}, "consistency": {}}
     continuity = _run_json("temporal_continuity.py") if root == ROOT else {"posterior_drift_bits": {}, "generation_ratio_active": {}, "multi_refute_targets": {}}
-    md = render_md(belief, session, interoception, continuity)
+    md = render_md(belief, session, interoception, continuity, prediction_error)
     ledger_io.atomic_write_text(target_path, md)
     size = target_path.stat().st_size
     print(f"WROTE SELF_MODEL.md ({size} bytes)")
@@ -460,14 +565,15 @@ def check_map(root: Path = ROOT) -> bool:
         return False
     belief = load_belief_summary(root)
     session = load_current_session(root)
-    inv_errors = validate_invariants(belief, session)
+    prediction_error = load_prediction_error(root)
+    inv_errors = validate_invariants(belief, session, prediction_error)
     if inv_errors:
         for err in inv_errors:
             print(f"FAIL: SELF_MODEL invariant: {err}")
         return False
     interoception = _run_json("interoception.py") if root == ROOT else {"shard_budgets": [], "role_balance": {}, "connectivity": {}, "consistency": {}}
     continuity = _run_json("temporal_continuity.py") if root == ROOT else {"posterior_drift_bits": {}, "generation_ratio_active": {}, "multi_refute_targets": {}}
-    expected = render_md(belief, session, interoception, continuity)
+    expected = render_md(belief, session, interoception, continuity, prediction_error)
     actual = target_path.read_text(encoding="utf-8")
     if actual.strip() != expected.strip():
         print("FAIL: SELF_MODEL.md is stale; run tools/self_model.py --write")

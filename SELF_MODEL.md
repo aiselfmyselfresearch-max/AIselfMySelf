@@ -110,8 +110,26 @@
 
 ## 6. 予測誤差 (Prediction Error)
 
-前回の自己モデルからの予測と実際の状態の差分。このセクションは今後の
-`default_mode_probe.py` により更新される予定。現在は準備中。
+`default_mode_probe.py` による前回予測と事後更新の実測差分、および次回検証の反事実感度（読み取り専用・台帳無変更）。
+
+- **予測誤差アラーム**: ✓ `green` — 直近 5 評価セッション中 5/5 回で有意な事後更新を観測（最大累積 D_KL=0.8862 bits）
+- **直近評価セッション**: `SESSION-20261125-c3bcee` （評価 5 件 / 反証系 3 件 / `verified` 引用 0 件 / フロンティア照準: `off_frontier_exploration`）
+- **最新セッション割当整合**: `SESSION-20261125-672b94` （ロール `consolidator` / 参照基底 `amortized（default / receiver_gated / amortized の3基底を並列比較し、歴史的 P_t を改変せず P_amort を並置）` / 提示問い `Q-001` -> 実行 `Q-001, Q-002, Q-003`）
+
+### 直近評価セッションの事後確率シフト
+- **Q-001**: D_KL(P_amort)=0.03626 bits, D_KL(P_gate)=0.01700 bits, L1(P_amort)=0.0838, 首位対入替=なし
+- **Q-002**: D_KL(P_amort)=0.03694 bits, D_KL(P_gate)=0.01135 bits, L1(P_amort)=0.0678, 首位対入替=なし
+- **Q-003**: D_KL(P_amort)=0.01953 bits, D_KL(P_gate)=0.01039 bits, L1(P_amort)=0.0616, 首位対入替=なし
+
+### 直近ウィンドウ停滞監視
+- 直近 5 評価セッション無更新回数: 0/5（閾値 D_KL < 0.0001 bits）
+- 直近 5 評価セッション累積ドリフト D_KL(P_amort): Q-001=0.88623b, Q-002=0.75834b, Q-003=0.59820b
+- 直近探求5セッションの名目的受諾（成果物0件）: 1 件
+
+### 次回検証の事前感度予測 (1件の独立 verified 反証衝突)
+- **Q-001** (`HYP-20261124-6622b8` vs `HYP-20261124-779eca`, EIG_amort=0.0361): 予測 D_KL=0.05547 bits (Δleft=-9.07pp, Δright=+3.44pp)
+- **Q-002** (`HYP-20261124-779eca` vs `HYP-20261124-6622b8`, EIG_amort=0.0281): 予測 D_KL=0.02053 bits (Δleft=-5.59pp, Δright=+1.81pp)
+- **Q-003** (`HYP-20261124-779eca` vs `HYP-20261117-4bf2dc`, EIG_amort=0.0248): 予測 D_KL=0.02180 bits (Δleft=-5.38pp, Δright=+0.64pp)
 
 ---
 
