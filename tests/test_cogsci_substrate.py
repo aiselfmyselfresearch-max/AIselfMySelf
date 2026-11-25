@@ -208,7 +208,12 @@ class RealTreeTests(unittest.TestCase):
         self.assertLessEqual(here, base)
         # Only this session's two files may be absent from the base discovery.
         self.assertLessEqual(base - here, sub.SELF_REPORTS_CURRENT)
-        self.assertEqual(len(self.reports), 90)
+        # 2026-11-25 (SESSION-20261125-3ede13): the pin was 90 until
+        # docs/2026-11-25-cognitive-science-thought-memory-self-ten-materials-report.md
+        # joined the corpus via a merged session without updating it, so the
+        # test was already red at HEAD (1964559). The corpus legitimately grew;
+        # the pin follows the corpus, not the other way round.
+        self.assertEqual(len(self.reports), 91)
 
     def test_series_cites_research_almost_only(self) -> None:
         kinds = self.substrate["cited_by_kind"]
