@@ -161,6 +161,16 @@
       "items": {"type": "string", "minLength": 1},
       "uniqueItems": true
     },
+    "memory_tier": {
+      "type": "string",
+      "enum": ["hot", "cold", "subsumed"],
+      "description": "Optional explicit memory-tier override (2026-11-25 three-tier architecture). 'subsumed' graduates an episodic note from default hot retrieval once its durable claims and falsification conditions have been consolidated into an L1 domain digest (`consolidated_into`), while keeping the raw L0 file and ledger row immutable."
+    },
+    "consolidated_into": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Optional L1 domain digest identifier (e.g. 'DIGEST-DEVSCI') into which this episodic note's durable claims have been consolidated."
+    },
     "notes": {"type": "string"}
   }
 }

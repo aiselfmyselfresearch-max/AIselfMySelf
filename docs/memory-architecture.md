@@ -2,6 +2,8 @@
 
 `docs/map-architecture.md` が「**増え続ける本文をどこに置くか**」（4層・レンジ分割・生成物は git の外）を定めたのに対し、本文書は「**増え続ける記憶を、次のセッションがどう取り出すか**」を定める。2026-11-02 の人間からの委任（「レポート群の扱いと、長期記憶／短期記憶・連想の設計を提案し、提案どおり実装せよ」）に応じて書き、同日に実装した内容を実測値とともに記録する。
 
+> **2026-11-25 追補（三階層記憶 L0/L1/L2・世代償却 `P_amort`・エポック境界凍結の実装）**：下表で 2026-11-02 当時に「`L0/L1/L2 の段階的読み込みは未実装`」「`減衰がない`」と記録されていた2つの未実装課題は、発達科学10論文の精読（`SESSION-20261125-5310bf`）と人間による設計採択を経て `tools/memory_tiers.py`・`tools/belief_state.py`・`tools/inspect_inquiry.py`・`docs/CONSOLIDATED_DIGESTS.md`・`state/epoch_manifest.json` として実装された。仕様と数理の詳細は [`docs/three-tier-memory-and-amortization.md`](three-tier-memory-and-amortization.md) を参照。
+
 ---
 
 ## 1. 対応表 — 人間の記憶の階層と、この書庫の置き場
