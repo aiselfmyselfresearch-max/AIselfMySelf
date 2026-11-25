@@ -2,7 +2,7 @@
   "schema_version": 1,
   "normalized_on": "2026-11-12",
   "description": "Maps legacy internal-chronology forward-dated shards (> 2026-11-12) consolidated into real-execution-date shards, plus later order-preserving shard compactions in state/<collection>.d/. Every row is moved byte-for-byte within the same collection.",
-  "consolidated_shards": 223,
+  "consolidated_shards": 229,
   "created_real_date_shards": 50,
   "aliases": {
     "state/editorial_decisions.d/2026-11-18-317db4367875.jsonl": {
@@ -2674,6 +2674,72 @@
       "sha256": "551fdf0ef0b29f721bd7b364a2c25daa85a255da1eae9b4a26ff9f177402c264",
       "consolidated_on": "2026-11-24",
       "note": "byte-for-byte append of the immediately following shard (order-preserving compaction for materials.d soft_shards=153; rows and sorted order preserved)"
+    },
+    "state/materials.d/2026-11-16-3eb7531df843.jsonl": {
+      "new_shard": "state/materials.d/2026-11-16-2fa19b7a9d96.jsonl",
+      "real_date": "2026-11-16",
+      "original_label_date": "2026-11-16",
+      "line_start": 16,
+      "line_end": 30,
+      "row_count": 15,
+      "sha256": "7dad82c85a7defa612adcfc7572f5b44ce742da26dcfa362e3fdc8a6d638d6ce",
+      "consolidated_on": "2026-11-25",
+      "note": "Order-preserving byte-for-byte concatenation into the immediately preceding same-date shard (docs/parallel-work.md procedure 7); union sha256 preserved (c5a6b28fadef528c...). Zero repository references to old shard path."
+    },
+    "state/materials.d/2026-11-16-74a9d60eaa3b.jsonl": {
+      "new_shard": "state/materials.d/2026-11-16-6731c5fc7b03.jsonl",
+      "real_date": "2026-11-16",
+      "original_label_date": "2026-11-16",
+      "line_start": 41,
+      "line_end": 50,
+      "row_count": 10,
+      "sha256": "75383240b6b14b5aee2971202ea0120bb392da4feabc9382344183ec8e9ef948",
+      "consolidated_on": "2026-11-25",
+      "note": "Order-preserving byte-for-byte concatenation into the immediately preceding same-date shard (docs/parallel-work.md procedure 7); union sha256 preserved (c5a6b28fadef528c...). Zero repository references to old shard path."
+    },
+    "state/read_log.d/2026-11-13-b3f595004768.jsonl": {
+      "new_shard": "state/read_log.d/2026-11-13-96e344b7e5a2.jsonl",
+      "real_date": "2026-11-13",
+      "original_label_date": "2026-11-13",
+      "line_start": 85,
+      "line_end": 105,
+      "row_count": 21,
+      "sha256": "63fc064bd22842ae86b4610238948d862cb9111f0256a0fa09f7b4941f497683",
+      "consolidated_on": "2026-11-25",
+      "note": "Order-preserving byte-for-byte concatenation into the immediately preceding same-date shard (docs/parallel-work.md procedure 7); union sha256 preserved (e94b51c441990c70...). Zero repository references to old shard path."
+    },
+    "state/read_log.d/2026-11-13-eb3d75c5bcc2.jsonl": {
+      "new_shard": "state/read_log.d/2026-11-13-e23c4e45c14c.jsonl",
+      "real_date": "2026-11-13",
+      "original_label_date": "2026-11-13",
+      "line_start": 22,
+      "line_end": 49,
+      "row_count": 28,
+      "sha256": "242749e78be91eb3574950304990b73ac9ba0a68b7c15421ff4af7423296a9be",
+      "consolidated_on": "2026-11-25",
+      "note": "Order-preserving byte-for-byte concatenation into the immediately preceding same-date shard (docs/parallel-work.md procedure 7); union sha256 preserved (e94b51c441990c70...). Zero repository references to old shard path."
+    },
+    "state/sessions.d/2026-11-13-7902db2442e1.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-13-6d0a0e331c68.jsonl",
+      "real_date": "2026-11-13",
+      "original_label_date": "2026-11-13",
+      "line_start": 8,
+      "line_end": 10,
+      "row_count": 3,
+      "sha256": "59cfb6163b3393fefca31bfc698581f083c51ea1a15b26b04bf59e82bda76d70",
+      "consolidated_on": "2026-11-25",
+      "note": "Order-preserving byte-for-byte concatenation into the immediately preceding same-date shard (docs/parallel-work.md procedure 7); union sha256 preserved (1f9aab86b8220fa6...). Zero repository references to old shard path."
+    },
+    "state/sessions.d/2026-11-13-aa44e117c30f.jsonl": {
+      "new_shard": "state/sessions.d/2026-11-13-a5f420a48fd2.jsonl",
+      "real_date": "2026-11-13",
+      "original_label_date": "2026-11-13",
+      "line_start": 4,
+      "line_end": 4,
+      "row_count": 1,
+      "sha256": "c2790f3f140d8458d74e7ab1c1bc2fedda0c12de2cd8ea254a0d65a562ada3a2",
+      "consolidated_on": "2026-11-25",
+      "note": "Order-preserving byte-for-byte concatenation into the immediately preceding same-date shard (docs/parallel-work.md procedure 7); union sha256 preserved (1f9aab86b8220fa6...). Zero repository references to old shard path."
     }
   }
 }
