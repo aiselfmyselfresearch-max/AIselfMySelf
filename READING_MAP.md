@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：6146 件（research_excerpt 3897 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1157 回
+- **探究セッション（Sessions）**：1158 回
 
 ### 台帳ごとの件数
 
@@ -23,13 +23,13 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6146 | `literary_text` 2181／`research_excerpt` 3897／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1157 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17350 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 419 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 639 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1158 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17368 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 432 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 640 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1304 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 116 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 944 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 947 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -6954,7 +6954,7 @@
 | `MAT-20261125-c17fbb` | research_excerpt | Eimear O'Connor, Teresa McCormack, Aidan Feeney『O'Connor, McCormack & Feeney (2014)「後悔と適応… |
 | `MAT-20261125-e7b741` | research_excerpt | Teresa McCormack, Patrick Burns, Eimear O'Connor, Agnieszka Jaroslawska, Eugene M. Caruso… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261125-5310bf・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261125-d44dc0・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -8115,6 +8115,7 @@
 | `SESSION-20261124-e44c09` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-126d0c` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003`, `Q-20261101-031383` | — | — |
 | `SESSION-20261125-5310bf` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261125-d44dc0` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
 
@@ -8217,7 +8218,7 @@
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
-| `map/31-materials-research-39.md` | 97 | 224,987 |
+| `map/31-materials-research-39.md` | 97 | 225,728 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8257,7 +8258,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 7 | 5,769 |
+| `map/50-sessions-24.md` | 8 | 6,529 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
