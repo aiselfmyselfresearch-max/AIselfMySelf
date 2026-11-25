@@ -179,6 +179,26 @@
             "unspecified"
           ],
           "description": "How deep the check went, not merely whether some check happened (2026-11-20, §3 of the evidence-accounting change). `unspecified` means the record does not say (legacy rows, and corrections that withdraw an *inferred* depth): it is never satisfied as a new row's answer and never means full_text. metadata = bibliographic record only; abstract = abstract or summary prose; results = results table or key figure; full_text = the passage was read in the paper's own text; re_derived = the number was recomputed from the paper's reported data. Required from 2026-11-21 when verification.checked_at is on or after that date; absent on older rows means 'not recorded', never 'full_text'."
+        },
+        "quote_status": {
+          "type": "string",
+          "enum": [
+            "verbatim",
+            "paraphrase_summary",
+            "mixed",
+            "none"
+          ],
+          "description": "Reality-monitoring witness for `passage` (2026-11-25, cross-semantic invariant gate). `verbatim` = passage is a direct verbatim excerpt from the primary text (may contain `...`/`…` ellipses between ordered verbatim clauses); `paraphrase_summary` = passage is an explicit editorial summary/paraphrase (must carry an explicit summary marker); `mixed` = editorial summary prose embedding >=1 inline quoted verbatim span; `none` = empty passage. Required from 2026-11-26 on new `research_excerpt` / `literary_text` rows with `status == 'verified'` and `depth in ('full_text', 'results')`."
+        },
+        "span_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "SHA-256 hex digest of the canonical normalized verbatim span(s) in `passage`, emitted by `python3 tools/three_gates.py --verify-span` after verifying contiguous substring presence against the fetched primary text. Recomputed offline in CI (`validate_seed.py` / `three_gates.py --check`)."
+        },
+        "span_norm_chars": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Character length of the canonical normalized verbatim span(s) hashed in `span_sha256`."
         }
       }
     }

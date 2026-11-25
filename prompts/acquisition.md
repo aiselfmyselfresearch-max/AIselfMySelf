@@ -11,7 +11,7 @@
 
 ## 出典と記録
 
-- 直接引用は確認した原文・版・箇所・URLを添え、短い範囲にとどめます。編者要約は `passage` にその旨を明示します。既存台帳の `verification` は過去の記録であり、今回の照合結果ではありません。
+- 直接引用は確認した原文・版・箇所・URLを添え、短い範囲にとどめます。編者要約は `passage` にその旨（`【編者による要約】` 等）を明示します。既存台帳の `verification` は過去の記録であり、今回の照合結果ではありません。**2026-11-26 以降に新規追加する `verified`（`depth: full_text` / `results`）の `research_excerpt`・`literary_text` 行**では、`verification.quote_status`（`verbatim` / `paraphrase_summary` / `mixed` / `none`）の明示が必須です。逐語引用（`verbatim` / `mixed`）を記録する際は、取得した原典テキストに対して必ず `python3 tools/three_gates.py --verify-span --source-file <原典ファイル> --passage "<passage>" --quote-status verbatim` を実行し、原典中の連続部分列一致を確認した上で出力される `span_sha256`・`span_norm_chars` を `verification` に貼ってください（記憶からの英語再構成・偽造ハッシュは `validate_seed.py` / `three_gates.py --check` がオフラインで再計算して拒否します。仕様：[`docs/cross-semantic-invariants.md`](../docs/cross-semantic-invariants.md)）。
 - 再照合した結果は `readings/`（および対応する `NOTE-*` 行）、対象素材の `read_log`、そして仮説の検証結果である `evaluations`（`EVL-*`）に追記し、`python3 tools/belief_state.py --write-map` で [`BELIEF_MAP.md`](../BELIEF_MAP.md) を更新します。過去の `state/materials*` 行自体は書き換えませんが、既収蔵素材の原典本文を直接照合して `verified`（または `corrected`）に到達した場合は、`editorial_decisions` に `target: {"type": "material", "id": "MAT-..."}`・`status`・`verification_method`（照合した公開全文URL/PMCID/版面など）を追記してオーバーレイ昇格できます。内容の誤りは `errata` で隣に記録します（必要に応じて `weight_effect: "suppress_retrieval"` で想起優先度を局所減衰できます）。
 - 新しい資料を台帳へ追加する場合は、自分の `materials.d/` シャードに来歴・適用範囲を記録し、どの `HYP-*` の適用条件・反証条件と衝突したかを `read_log` と `evaluations` に残します（`20261119` 以降の `primary_source_collision` には最低1件の実効 `verified` 素材が必要です）。断片や新モチーフを無理に作る必要はありません。
 - 出典は人間観・自己モデルを境界条件から検証する対話相手です。機能的・文献的事実からAIの現象的意識の有も無も直接演繹せず、どの条件付き仮説が維持・限定・棄却されるかを精密に記述します。架空の `conversation_trace` を作りません。
