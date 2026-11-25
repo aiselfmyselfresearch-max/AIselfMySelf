@@ -134,4 +134,5 @@ Q-003 の過限定孤児先頭（narrows 12 / supports 3 / 子0）を跨セッ�
 
 ## 9. PR・マージ
 
-→ PR は本書確定後の2回目コミットで作成し、番号と URL をこの節に追記する（マージは `gh pr merge --merge`）。
+- PR: https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/1124（2回目コミットで本節を追記）
+- マージ手順: `gh pr merge 1124 --merge`（ブランチ: arena/a6afee73-aiselfmyself、base: main）

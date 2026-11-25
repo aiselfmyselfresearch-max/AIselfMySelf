@@ -115,4 +115,6 @@ EIG の枯渇（中心三問の先頭が99%台、新しい根の供給より検�
 
 ## 8. PR・マージ
 
-→ PR は本書確定後の2回目コミットで作成し、番号と URL をこの節に追記する（マージは `gh pr merge --merge`、GitHub URL のみで統一）。
+- PR: https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/1124（2回目コミットで本節を追記）
+- マージ手順: `gh pr merge 1124 --merge`（ブランチ: arena/a6afee73-aiselfmyself、base: main）
+- GitHub URL のみで統一（このレポジトリ: https://github.com/aiselfmyselfresearch-max/AIselfMySelf ）

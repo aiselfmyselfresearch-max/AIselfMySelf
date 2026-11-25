@@ -8360,7 +8360,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1219本・40,603,505 B）
+## 8. 精読ノート索引（readings/・1219本・40,603,580 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1112/1219 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -9428,7 +9428,7 @@
 | `readings/2026-11-25-self-conscious-emotions-audience-and-the-early-self.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,933 | M1 S1 | ✓ | 自己意識的情動は想定より早く、そして「見る人」のために働く——初期発達における情動の動機・伝達機能 |
 | `readings/2026-11-25-statistical-word-segmentation-speaker-variability.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,757 | M1 S1 | ✓ | 声の多様性が語の境界を切り分ける——8か月児は8人の声から、2人ではできず |
 | `readings/2026-11-25-the-first-audit-of-the-two-stage-revision.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-3ede13` +3 | 13,231 | Q3 M13 S4 ERR1 | ✓ | 未評価の二段階改訂説への初回監査と、過限定孤児への子仮説引き渡し——脱結合の転移境界と再現率軸の提案 |
-| `readings/2026-11-25-the-first-external-audits-of-three-unevaluated-hypotheses.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-331481` +5 | 11,341 | Q4 M6 S6 ERR2 | ✓ | 未評価三仮説の初回外部監査と、過限定孤児からの引き渡し |
+| `readings/2026-11-25-the-first-external-audits-of-three-unevaluated-hypotheses.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-331481` +5 | 11,440 | Q4 M6 S6 ERR2 | ✓ | 未評価三仮説の初回外部監査と、過限定孤児からの引き渡し |
 | `readings/2026-11-25-three-tier-memory-generational-amortization-and-epoch-freeze.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-672b94` | 7,226 | Q3 M3 S1 | — | 三階層記憶（L0/L1/L2）・世代償却（`P_amort`）・エポック境界凍結の制度化と実測（2026-11-25） |
 | `readings/2026-11-25-when-the-unread-counts-6e20f3f7.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-126d0c` | 7,871 | Q3 M2 S1 | ✓ | 読まれなかった行は、睡っているのか——比較の分母と継承の境界 |
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
