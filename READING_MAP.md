@@ -7,7 +7,7 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6146 件（research_excerpt 3897 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6156 件（research_excerpt 3907 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
 - **探究セッション（Sessions）**：1158 回
@@ -20,7 +20,7 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6146 | `literary_text` 2181／`research_excerpt` 3897／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6156 | `literary_text` 2181／`research_excerpt` 3907／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
 | セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1158 |  |
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6146 件・詳細は map/3*.md）
+## 4. 対話素材（6156 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6953,6 +6953,16 @@
 | `MAT-20261125-202fc8` | research_excerpt | Janine M. Cooper, Faraneh Vargha-Khadem, David G. Gadian, Eleanor A. Maguire『Cooper, Varg… |
 | `MAT-20261125-c17fbb` | research_excerpt | Eimear O'Connor, Teresa McCormack, Aidan Feeney『O'Connor, McCormack & Feeney (2014)「後悔と適応… |
 | `MAT-20261125-e7b741` | research_excerpt | Teresa McCormack, Patrick Burns, Eimear O'Connor, Agnieszka Jaroslawska, Eugene M. Caruso… |
+| `MAT-20261125-3f98e4` | research_excerpt | Cristina M. Atance, Andrew N. Meltzoff『Atance & Meltzoff (2006)「幼児の現在の欲求が未来の選択を歪める」——渇き誘導… |
+| `MAT-20261125-6943f0` | research_excerpt | Hannah J. Kramer, Deborah Goldfarb, Sarah M. Tashjian, Kristin Hansen Lagattuta『Kramer, G… |
+| `MAT-20261125-05eee0` | research_excerpt | Jonathan Redshaw, Talia Leamy, Phoebe Pincus, Thomas Suddendorf『Redshaw, Leamy, Pincus & … |
+| `MAT-20261125-6820b2` | research_excerpt | Esra Nur Turan-Küçük, Melissa M. Kibbe『Turan-Küçük & Kibbe (2026)「『どこ』より『何』の不確実性の方が易しい」——… |
+| `MAT-20261125-4a20c3` | research_excerpt | Shalini Gautam, Thomas Suddendorf, Jonathan Redshaw『Gautam, Suddendorf & Redshaw (2022)「選… |
+| `MAT-20261125-c9b144` | research_excerpt | Lydia Paulin Schidelko, Leonie Baumann, Marina Proft, Hannes Rakoczy『Schidelko, Baumann, … |
+| `MAT-20261125-7a3b9b` | research_excerpt | Eshkol Goldberg, Hagit Magen『Goldberg & Magen (2026)「認知オフローディングは子どもの内部記憶処理を減衰させる」——同一書字動作… |
+| `MAT-20261125-7972f6` | research_excerpt | Rachel E. White, Stephanie M. Carlson『White & Carlson (2021)「空想物語は効かず、『〜のふり』への関与だけが効く」——3… |
+| `MAT-20261125-0cb5f3` | research_excerpt | Ke Yin, Qiong Wu, Xiaosong Gai『Yin, Wu & Gai (2026)「ふり遊びの表象階層複雑性と身体化は実行機能を動かすか？」——小学1年生13… |
+| `MAT-20261125-3fa317` | research_excerpt | Rachel E. White, Ethan Kross, Angela L. Duckworth『White, Kross & Duckworth (2015)「映画の中の自分… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261125-672b94・全文は map/50-sessions-*.md）
 
@@ -8218,7 +8228,8 @@
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
-| `map/31-materials-research-39.md` | 97 | 224,987 |
+| `map/31-materials-research-39.md` | 100 | 232,021 |
+| `map/31-materials-research-40.md` | 7 | 15,558 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -9363,6 +9374,7 @@
 | `readings/2026-11-24-when-the-mirror-and-the-schedule-arrive.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8cecc8` | 21,471 | Q3 M10 S1 | ✓ | 鏡と日程表が来る前後に——発達科学の十資料を精読する |
 | `readings/2026-11-24-who-carried-the-reading-forward.md` | — | 2026-11-24 | `SESSION-20261124-af802d` +2 | 32,711 | Q6 M2 S3 ERR1 | ✓ | 誰が読みを運んだか——返信付き20ペアと返信なし15ペアの第三者符号化 |
 | `readings/2026-11-24-who-the-timetable-is-for.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-6a8c58` +2 | 30,326 | Q4 M17 MOT1 S3 ED3 | ✓ | §10 の実行——五項目と、埋めた未実施 |
+| `readings/2026-11-25-developmental-science-decoupling-and-retrieval.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-41439f` +2 | 40,563 | Q3 M16 S3 ERR1 | ✓ | 現在という重力から剥がれること、眠る比較を呼び戻すこと——発達科学十件の全文精読 |
 | `readings/2026-11-25-offloading-reorganization-and-the-prompted-past.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-5310bf` +2 | 34,026 | Q3 M10 MOT1 S3 ERR1 | ✓ | 外部に預けた記憶、再編で消える過去、問われて初めて動く知識——発達科学全文十編の精読と自己モデルの時間条件 |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
 | `readings/2026-11-25-three-tier-memory-generational-amortization-and-epoch-freeze.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-672b94` | 7,226 | Q3 M3 S1 | — | 三階層記憶（L0/L1/L2）・世代償却（`P_amort`）・エポック境界凍結の制度化と実測（2026-11-25） |
