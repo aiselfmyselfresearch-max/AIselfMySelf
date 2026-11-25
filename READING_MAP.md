@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6246 件（research_excerpt 3997 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6256 件（research_excerpt 4007 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1173 回
+- **探究セッション（Sessions）**：1174 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6246 | `literary_text` 2181／`research_excerpt` 3997／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6256 | `literary_text` 2181／`research_excerpt` 4007／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1173 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17623 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1174 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17634 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 446 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 642 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1327 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1328 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 121 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 987 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 988 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6246 件・詳細は map/3*.md）
+## 4. 対話素材（6256 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -7003,6 +7003,16 @@
 | `MAT-20261125-9cac3e` | research_excerpt | Kari S. Kretch, Karen E. Adolph『The organization of exploratory behaviors in infant locom… |
 | `MAT-20261125-2ce6dc` | research_excerpt | Whitney G. Cole, Scott R. Robinson, Karen E. Adolph『Bouts of Steps: The Organization of I… |
 | `MAT-20261125-e48e3a` | research_excerpt | Justine E. Hoch, Sinclaire M. O’Grady, Karen E. Adolph『It’s the Journey, Not the Destinat… |
+| `MAT-20261125-86fc49` | research_excerpt | Jamie M Lawler, Jessica Hruschak, Kristin Aho, Yanni Liu, Ka I Ip, Renee Lajiness-O’Neill… |
+| `MAT-20261125-9b5d13` | research_excerpt | Elfriede R Holstein, Maria Theobald, Leonie S Weindorf, Garvin Brod『Elfriede R Holstein ほ… |
+| `MAT-20261125-062f52` | research_excerpt | Diego Pablo de la Hera, Mariano Sigman, Cecilia Ines Calero『Diego Pablo de la Hera ほか（201… |
+| `MAT-20261125-1cdeed` | research_excerpt | Kirsten H Blakey, Samuel Ronfard『Kirsten H Blakey ほか（2026） How to Increase Children's and… |
+| `MAT-20261125-77b74e` | research_excerpt | Rista C Plate, Kristin Shutts, Aaron Cochrane, C Shawn Green, Seth D Pollak『Rista C Plate… |
+| `MAT-20261125-534811` | research_excerpt | Stella C Gerdemann, Jenny Tippmann, Bianca Dietrich, Jan M Engelmann, Robert Hepach『Stell… |
+| `MAT-20261125-9a137c` | research_excerpt | John R Best, Patricia H Miller『John R Best ほか（2010） A Developmental Perspective on Execut… |
+| `MAT-20261125-4fc2cf` | research_excerpt | Stella Li, Bridget L Callaghan, Rick Richardson『Stella Li ほか（2014） Infantile amnesia: for… |
+| `MAT-20261125-0c9012` | research_excerpt | Kathleen Kang, Nina Alexander, Jan R Wessel, Pauline Wimberger, Katharina Nitzsche, Cleme… |
+| `MAT-20261125-68dd24` | research_excerpt | Elisabeth Stöttinger, Beate Priewasser, Eva Rafetseder『Elisabeth Stöttinger ほか（2026） Chil… |
 | `MAT-20261125-f8563a` | research_excerpt | Endel Tulving『Tulving (2002)「Chronesthesia」』（2002） |
 | `MAT-20261125-f2b873` | research_excerpt | Arnaud D'Argembeau, Alain Mathy『D'Argembeau & Mathy (2011)「What are the functions of epis… |
 | `MAT-20261125-aff018` | research_excerpt | Ariel Sutin, Richard A. Robins『Sutin & Robins (2007)「Phenomenology of autobiographical me… |
@@ -8225,6 +8235,7 @@
 | `SESSION-20261125-87e4ca` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-07fe74` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-7ad91d` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261125-ef68d5` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-c4a9e2` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-c3bcee` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-d4dad9` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -8334,7 +8345,8 @@
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
 | `map/31-materials-research-39.md` | 100 | 233,376 |
-| `map/31-materials-research-40.md` | 97 | 228,026 |
+| `map/31-materials-research-40.md` | 100 | 230,718 |
+| `map/31-materials-research-41.md` | 7 | 14,193 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8374,7 +8386,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 23 | 18,472 |
+| `map/50-sessions-24.md` | 24 | 19,384 |
 | `map/60-notes-01.md` | 25 | 74,291 |
 | `map/60-notes-02.md` | 25 | 66,698 |
 | `map/60-notes-03.md` | 25 | 75,046 |
@@ -8416,24 +8428,24 @@
 | `map/60-notes-39.md` | 25 | 49,236 |
 | `map/60-notes-40.md` | 25 | 98,433 |
 | `map/60-notes-41.md` | 25 | 130,259 |
-| `map/60-notes-42.md` | 25 | 112,103 |
-| `map/60-notes-43.md` | 25 | 69,416 |
-| `map/60-notes-44.md` | 25 | 74,544 |
-| `map/60-notes-45.md` | 25 | 68,070 |
-| `map/60-notes-46.md` | 25 | 78,831 |
-| `map/60-notes-47.md` | 25 | 111,201 |
-| `map/60-notes-48.md` | 25 | 110,698 |
-| `map/60-notes-49.md` | 25 | 131,948 |
-| `map/60-notes-50.md` | 1 | 2,468 |
+| `map/60-notes-42.md` | 25 | 112,227 |
+| `map/60-notes-43.md` | 25 | 69,424 |
+| `map/60-notes-44.md` | 25 | 72,151 |
+| `map/60-notes-45.md` | 25 | 69,961 |
+| `map/60-notes-46.md` | 25 | 79,067 |
+| `map/60-notes-47.md` | 25 | 108,819 |
+| `map/60-notes-48.md` | 25 | 108,431 |
+| `map/60-notes-49.md` | 25 | 136,893 |
+| `map/60-notes-50.md` | 2 | 4,313 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1226本・40,779,540 B）
+## 8. 精読ノート索引（readings/・1227本・40,793,341 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1118/1226 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1118/1227 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1226 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1227 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：193 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9488,6 +9500,7 @@
 | `readings/2026-11-25-body-relative-possibilities-ten-studies.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-07fe74` | 13,742 | M10 S1 | ✓ | 身体に対する可能性を学ぶ——発達科学10資料の精読ノート |
 | `readings/2026-11-25-cognitive-science-thought-memory-self-6e4355a8.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-87e4ca` | 24,594 | Q3 M15 S1 | — | 確信が集まって自己になること、逸れ方は意図で割れること——認知科学十件の全文精読と衝突試験 |
 | `readings/2026-11-25-cooperative-game-third-party-sharing.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,788 | M1 S1 | ✓ | 協力的ゲームは第三者への分かち合いを促す——しかし社会的包摂には効かない |
+| `readings/2026-11-25-developmental-error-conflict-and-revision.md` | — | 2026-11-25 | `SESSION-20261125-ef68d5` | 6,538 | M10 S1 | ✓ | 誤り・葛藤・改訂をめぐる発達科学10資料の精読 |
 | `readings/2026-11-25-developmental-science-decoupling-and-retrieval.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-41439f` +2 | 40,563 | Q3 M16 S3 ERR1 | ✓ | 現在という重力から剥がれること、眠る比較を呼び戻すこと——発達科学十件の全文精読 |
 | `readings/2026-11-25-developmental-science-metacognition-curiosity-and-the-emergent-self.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-d07306` | 25,310 | M10 S1 | ✓ | 発達科学十選の精読——メタ記憶の監視、情動の力学、視点の先行、好奇心・規範・良心・嘘の成立点を、書庫AIは「自己の条件… |
 | `readings/2026-11-25-developmental-science-social-cultural-self-ten-sources-close-reading.md` | — | 2026-11-25 | `SESSION-20261125-d4dad9` | 10,299 | Q3 M10 S1 | ✓ | 発達科学の「関係・文化・回復の自己」十資料を精読する——人間の自己は、単独の個の内部ではなく、応答と文化的な径路のなか… |
