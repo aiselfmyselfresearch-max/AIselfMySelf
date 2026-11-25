@@ -316,7 +316,7 @@ def validate_invariants(belief: dict, session: dict) -> list[str]:
     return errors
 
 
-def render_md(belief: dict, session: dict, interoception: dict, continuity: dict) -> str:
+def render_md(belief: dict, session: dict, interoception: dict, continuity: dict, prediction: dict | None = None) -> str:
     # Use the latest session's real date + session_id as the deterministic timestamp
     # (never use a forward-running internal label or wall-clock UTC timestamp)
     rday = session.get("current_real_date") or session.get("current_started") or ""
@@ -427,8 +427,57 @@ def render_md(belief: dict, session: dict, interoception: dict, continuity: dict
     lines.append("")
     lines.append("## 6. 予測誤差 (Prediction Error)")
     lines.append("")
-    lines.append("前回の自己モデルからの予測と実際の状態の差分。このセクションは今後の")
-    lines.append("`default_mode_probe.py` により更新される予定。現在は準備中。")
+    lines.append("前回の自己モデルからの予測と実際の状態の差分。このセクションは")
+    lines.append("`default_mode_probe.py` により更新される。")
+    lines.append("")
+    if prediction:
+        status = prediction.get("status")
+        if status == "ok":
+            pair = prediction.get("next_highest_eig_pair") or {}
+            left = pair.get("left") or ""
+            right = pair.get("right") or ""
+            left_title = pair.get("left_title") or ""
+            right_title = pair.get("right_title") or ""
+            lines.append("### 次に最も高い予測誤差を生む対立仮説ペア")
+            lines.append("")
+            lines.append("前回のモデルが立てた予測（この対立ペアが次に解き分けられる）に対し、")
+            lines.append("実際の読み・評価がどちらに傾いたかの差分が、ここに反映される。")
+            lines.append("")
+            lines.append(f"- 左: `{left}` — {left_title}")
+            lines.append(f"- 右: `{right}` — {right_title}")
+            lines.append("")
+            note = prediction.get("simulation_note")
+            if note:
+                lines.append("**シミュレーション注記**（`default_mode_probe.py` による予測、評価は作られない）:")
+                lines.append("")
+                lines.append(f"> {note}")
+                lines.append("")
+        elif status == "no_eig_pair_found":
+            lines.append("### 予測誤差の対象ペアが未確立")
+            lines.append("")
+            lines.append("`default_mode_probe.py` が、解き分けられる対立仮説ペアをまだ見出せない。")
+            lines.append("台帳に十分な対立仮説が蓄積されると、ここに予測誤差の対象が現れる。")
+            lines.append("")
+        else:
+            lines.append("### 予測誤差プローブの状態")
+            lines.append("")
+            lines.append(f"`default_mode_probe.py` の状態: `{status}`")
+            lines.append("")
+    else:
+        lines.append("`default_mode_probe.py` により更新される予定。現在は準備中。")
+        lines.append("")
+    lines.append("")
+    lines.append("## 7. 三軸の実装対応 (Self-Model Axes)")
+    lines.append("")
+    lines.append("発達科学レポートの三軸（脱結合・検索トリガー・領域別限定性）が、どの")
+    lines.append("ツール・ゲートで担われているかの対応表。人側の証拠と書庫側の実装の")
+    lines.append("接続が一目で確認できる。")
+    lines.append("")
+    lines.append("| 軸 | 意味 | 実装機構（ツール・ゲート） | 状態 |")
+    lines.append("| :--- | :--- | :--- | :--- |")
+    lines.append("| 脱結合 (Dissociation) | 自己と非自己・自己と他者の操作の分離 | `belief_state.py`（信念分布の条件付き更新）、`associations.py`（連想・抑制）、三門ゲート | 実装済み |")
+    lines.append("| 検索トリガー (Search Trigger) | 何が検索・再開を起動するかの条件 | `inspect_inquiry.py`（`build_context_packet`、`_is_retrieval_suppressed`）、`memory_tiers.py`、errata の `suppress_retrieval` | 実装済み（§4.3 で読書キューにも反映） |")
+    lines.append("| 領域別限定性 (Domain Boundedness) | 文脈パケットの効きが意図領域に留まるか | `learning_metrics.py` の領域別限定性メトリクス（§4.1）、`taxonomy_plan.py` のサブカテゴリ正規化（§4.2） | 計測済み（観測値、ゲート未定） |")
     lines.append("")
     lines.append("---")
     lines.append("")
@@ -447,7 +496,8 @@ def write_map(root: Path = ROOT) -> None:
         raise RuntimeError("SELF_MODEL invariant failure: " + "; ".join(inv_errors))
     interoception = _run_json("interoception.py") if root == ROOT else {"shard_budgets": [], "role_balance": {}, "connectivity": {}, "consistency": {}}
     continuity = _run_json("temporal_continuity.py") if root == ROOT else {"posterior_drift_bits": {}, "generation_ratio_active": {}, "multi_refute_targets": {}}
-    md = render_md(belief, session, interoception, continuity)
+    prediction = _run_json("default_mode_probe.py") if root == ROOT else None
+    md = render_md(belief, session, interoception, continuity, prediction)
     ledger_io.atomic_write_text(target_path, md)
     size = target_path.stat().st_size
     print(f"WROTE SELF_MODEL.md ({size} bytes)")
@@ -467,7 +517,8 @@ def check_map(root: Path = ROOT) -> bool:
         return False
     interoception = _run_json("interoception.py") if root == ROOT else {"shard_budgets": [], "role_balance": {}, "connectivity": {}, "consistency": {}}
     continuity = _run_json("temporal_continuity.py") if root == ROOT else {"posterior_drift_bits": {}, "generation_ratio_active": {}, "multi_refute_targets": {}}
-    expected = render_md(belief, session, interoception, continuity)
+    prediction = _run_json("default_mode_probe.py") if root == ROOT else None
+    expected = render_md(belief, session, interoception, continuity, prediction)
     actual = target_path.read_text(encoding="utf-8")
     if actual.strip() != expected.strip():
         print("FAIL: SELF_MODEL.md is stale; run tools/self_model.py --write")

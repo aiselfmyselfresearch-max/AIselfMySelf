@@ -110,8 +110,33 @@
 
 ## 6. 予測誤差 (Prediction Error)
 
-前回の自己モデルからの予測と実際の状態の差分。このセクションは今後の
-`default_mode_probe.py` により更新される予定。現在は準備中。
+前回の自己モデルからの予測と実際の状態の差分。このセクションは
+`default_mode_probe.py` により更新される。
+
+### 次に最も高い予測誤差を生む対立仮説ペア
+
+前回のモデルが立てた予測（この対立ペアが次に解き分けられる）に対し、
+実際の読み・評価がどちらに傾いたかの差分が、ここに反映される。
+
+- 左: `HYP-20261120-58ddce` — 満足化採餌・要旨ゲート・外的分布監査の三層非対称説——有限窓下の人間と台帳AIは、逐語痕跡の保存可逆性ではなく、情報匂いによる要旨ゲートと内省なき外的行動分布監査によって分岐する
+- 右: `HYP-20261119-30d3f5` — 内発索引起動・オフライン競合選別・頭頂二重解離・時間圧縮自己の四段循環説——個別記憶と個別思考の往還は海馬–視床前核リップル起動・睡眠覚醒の競合タグ選別・視点と鮮明度の分離・対数圧縮自己の四段で成立する
+
+**シミュレーション注記**（`default_mode_probe.py` による予測、評価は作られない）:
+
+> If the next session directly tests this pair by reading one or more materials relevant to the opposition, the expected outcome is either: (a) one hypothesis gains mass at the expense of the other, narrowing their joint scope; (b) a synthesis is proposed, creating a child hypothesis with lineage_op=synthesizes; (c) a contradiction is found in the current framing, requiring a splits child. This is a simulation only; no evaluation is created.
+
+
+## 7. 三軸の実装対応 (Self-Model Axes)
+
+発達科学レポートの三軸（脱結合・検索トリガー・領域別限定性）が、どの
+ツール・ゲートで担われているかの対応表。人側の証拠と書庫側の実装の
+接続が一目で確認できる。
+
+| 軸 | 意味 | 実装機構（ツール・ゲート） | 状態 |
+| :--- | :--- | :--- | :--- |
+| 脱結合 (Dissociation) | 自己と非自己・自己と他者の操作の分離 | `belief_state.py`（信念分布の条件付き更新）、`associations.py`（連想・抑制）、三門ゲート | 実装済み |
+| 検索トリガー (Search Trigger) | 何が検索・再開を起動するかの条件 | `inspect_inquiry.py`（`build_context_packet`、`_is_retrieval_suppressed`）、`memory_tiers.py`、errata の `suppress_retrieval` | 実装済み（§4.3 で読書キューにも反映） |
+| 領域別限定性 (Domain Boundedness) | 文脈パケットの効きが意図領域に留まるか | `learning_metrics.py` の領域別限定性メトリクス（§4.1）、`taxonomy_plan.py` のサブカテゴリ正規化（§4.2） | 計測済み（観測値、ゲート未定） |
 
 ---
 

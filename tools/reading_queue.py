@@ -27,6 +27,10 @@ Each line carries the URL to fetch and a ``fetch`` hint: ``arxiv``/``pmc``/
 ``journal`` pages came back through the page-fetch tool on 2026-11-21, while a
 bare ``doi.org`` link usually redirects to a paywall and needs an OA copy first.
 
+As of 2026-11-25 (§4.3) a material under a live ``suppress_retrieval`` erratum
+is flagged and pushed to the tail rather than dropped, so the second gate's
+retrieval suppression is honored on the reading-proposed path too.
+
 Usage
 -----
     python3 tools/reading_queue.py                  # both classes, top 40
@@ -72,6 +76,17 @@ def build(data: dict) -> list[dict]:
             if isinstance(mid, str):
                 citations[mid] = citations.get(mid, 0) + 1
 
+    # §4.3 (2026-11-25): honor the second gate's retrieval suppression. A
+    # material under a live `suppress_retrieval` erratum is demoted (flagged,
+    # pushed to the tail) rather than dropped -- the queue is an ordering tool,
+    # not a filter, and the suppression predicate is the same one
+    # build_context_packet uses, so the reading-proposed path stays consistent
+    # with the packet path. load_all() does not carry errata, so load them here.
+    try:
+        errata = inspect_inquiry.load_errata(ROOT)
+    except Exception:
+        errata = {}
+
     queue: list[dict] = []
     for mid, material in data.get("materials", {}).items():
         verification = material.get("verification") or {}
@@ -83,6 +98,7 @@ def build(data: dict) -> list[dict]:
         source = material.get("source") or {}
         origin = material.get("origin") or {}
         url = source.get("url") or ""
+        suppressed = inspect_inquiry._is_retrieval_suppressed("material", mid, errata)
         queue.append(
             {
                 "material_id": mid,
@@ -94,9 +110,11 @@ def build(data: dict) -> list[dict]:
                 "checked_at": str(verification.get("checked_at") or ""),
                 "clause": clause[:110],
                 "evidence_record_path": str(origin.get("evidence_record_path") or ""),
+                "suppressed": suppressed,
             }
         )
-    queue.sort(key=lambda row: (-row["citations"], row["checked_at"], row["material_id"]))
+    # suppressed rows sort last (flag first, then citations descending).
+    queue.sort(key=lambda row: (row["suppressed"], -row["citations"], row["checked_at"], row["material_id"]))
     return queue
 
 
@@ -120,18 +138,22 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     shallow = sum(1 for row in queue if row["kind"] == "shallow")
+    suppressed = sum(1 for row in queue if row.get("suppressed"))
     print("# reading queue (read-only)")
     print()
     print(f"- 行数: **{len(queue):,}**（自己矛盾 {shallow:,} / 記述なし {len(queue) - shallow:,}）")
-    print("- 並び: 引用されている evaluation の数 → 照合日の古い順")
+    if suppressed:
+        print(f"- 検索抑制中（第二門・`suppress_retrieval`）: **{suppressed:,}** 件を末尾に降位")
+    print("- 並び: 引用されている evaluation の数 → 照合日の古い順（抑制中は末尾）")
     print("- この道具は何も直さない。読む順番を決めるだけである。")
     print()
     print("| # | 素材 | 種別 | 引用 | fetch | 照合日 | URL |")
     print("| ---: | :--- | :--- | ---: | :--- | :--- | :--- |")
     for index, row in enumerate(queue[: args.limit], 1):
         url = row["url"] or "（URL なし）"
+        mark = " 🔴抑制中" if row.get("suppressed") else ""
         print(
-            f"| {index} | `{row['material_id']}` | {row['kind']} | {row['citations']} | "
+            f"| {index} | `{row['material_id']}` | {row['kind']}{mark} | {row['citations']} | "
             f"{row['fetch']} | {row['checked_at']} | {url} |"
         )
     print()
