@@ -227,8 +227,12 @@ class BoundaryChannelProbeTests(unittest.TestCase):
     # confirmed exactly {HYP-20261116-ac0712, HYP-20261119-539a0c}.
     # 2026-11-20: a third direct address flags HYP-20261120-e6e225 as
     # unmeasurable, so it is visible but does not fire the penalty.
-    LIVE_DIRECT_ADDRESSED_HYPOTHESES = 3
-    LIVE_DIRECT_PENALISING_HYPOTHESES = 2
+    # 2026-11-25 (SESSION-20261125-331481): a fourth direct address lands —
+    # ERR-20261125-304f57 (contradicted/annotated, weight_effect flag) flags the
+    # role misattribution in HYP-20261125-0eab61; re-measured via
+    # boundary_channel_probe: addressed 3 -> 4, penalising 2 -> 3.
+    LIVE_DIRECT_ADDRESSED_HYPOTHESES = 4
+    LIVE_DIRECT_PENALISING_HYPOTHESES = 3
 
     def test_direct_branch_reach_is_pinned_on_the_live_ledger(self):
         d = self.res["direct_penalty_branch"]

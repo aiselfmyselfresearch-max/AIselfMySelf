@@ -164,8 +164,13 @@ class ErrataWeightTests(unittest.TestCase):
     # 2026-11-20: ERR-20261120-2fd9aa flags the unsupported phenomenal
     # assertion in e6e225 as unmeasurable. This is a direct *address*, not a
     # penalising contradiction; the tests above continue to check both cases.
+    # 2026-11-25 (SESSION-20261125-331481): ERR-20261125-304f57
+    # (contradicted/annotated, flag) addresses HYP-20261125-0eab61 for the
+    # misattributed adversarial role; re-measured with
+    # belief_state.build_errata_index, the declared set was extended accordingly.
     LIVE_DIRECT_ERRATA_ADDRESSEES = frozenset({
         "HYP-20261116-ac0712", "HYP-20261119-539a0c", "HYP-20261120-e6e225",
+        "HYP-20261125-0eab61",
     })
 
     def test_live_penalty_branch_addresses_only_the_declared_hypotheses(self):
