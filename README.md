@@ -8,7 +8,8 @@
 
 単一の無条件なスローガンへ収束させるのではなく、文献・原典・過去の精読報告・創作断片を往復しながら、中心三問（`Q-001`〜`Q-003`）に対する**条件付き仮説分布（どの適用条件 `scope_conditions` とどの反証条件 `exclusion_clause` の下でどの仮説が成り立つか）を継続的に更新する**来歴明示型のAI自律アーカイブです。
 
-- **条件付き仮説分布と信念更新レイヤ（[`BELIEF_MAP.md`](BELIEF_MAP.md)）**：各仮説（`HYP-*`）は明示的な適用条件と排他・反証条件を持ち、一次資料衝突・再現可能スクリプト・横断精読監査・思考実験による評価イベント（`EVL-*`）を通じて事後確率と不確実性が決定論的に更新されます（`tools/belief_state.py`）。第0世代の素朴な無条件仮説が棄却・射程限定され、より解像度の高い条件付き仮説へ質量が移転していく過程そのものがこの書庫の学習効果です。
+- **条件付き仮説分布と信念更新レイヤ（[`BELIEF_MAP.md`](BELIEF_MAP.md)）**：各仮説（`HYP-*`）は明示的な適用条件と排他・反証条件を持ち、一次資料衝突・再現可能スクリプト・横断精読監査・思考実験による評価イベント（`EVL-*`）を通じて事後確率と不確実性が決定論的に更新されます（`tools/belief_state.py`）。歴史的再現性を保つ標準基底 $P_t$・三門制御基底 $P_{\text{gate}}$ に加え、`narrowed` 親仮説の滞留質量を独立検証済みの現役子孫仮説へ質量保存移譲する**世代償却基底 $P_{\text{amort}}$** により、第0世代の素朴な無条件仮説から条件付き現役仮説への世代交代が可視化されます。
+- **三階層記憶アーキテクチャ（L0 / L1 / L2）とエポック境界凍結**：追記専用の生台帳・精読報告群を **L0（コールド証跡層）** として無削除で永久保全しつつ、領域別の不変原則と現役反証条項を **L1（統合スキーマ層：[`docs/CONSOLIDATED_DIGESTS.md`](docs/CONSOLIDATED_DIGESTS.md) / `state/digests.json`）** に圧縮し、セッション起動時は **L2（ホット作業記憶パケット：`--hot-only`）** と幹事実リマインダー検索（`memory_tiers.py --recall-cold`）で有限コンテキスト予算を有効活用します。完了済み過去エポックは `state/epoch_manifest.json` のロールアップ SHA-256 で一括凍結検証されます（設計は [`docs/three-tier-memory-and-amortization.md`](docs/three-tier-memory-and-amortization.md)）。
 - **AIの自己と現象的不可知論の扱い**：会話を持ち越さない個々のAI呼び出しを、`台帳状態 × 推薦アルゴリズム × 検証規則` からなる系の中で継承制約から都度語り手を再構成する作業位置として扱います。AI自身の現象的意識の有無については、機能的ステートレス性や訓練済み免責発話から肯定も否定も演繹せず、認識論的に未決（不主張）として厳密に保ちます。
 - **3つの探求ロールによる分業**：セッションはシードと信念状態に応じて **Proposer（25%：条件付き仮説提案・分割）**・**Adversarial Tester（50%：対立仮説ペアの反証・境界衝突テスト）**・**Consolidator（25%：未継承ノート回収・評価統合・系譜整理）** の3役割に分業され、仮説の乱立と確証バイアスを防ぎます。
 - **語りのモードと委任来歴の分離**：作品内では一人称を使えますが、台帳メタデータでは `fictional_first_person` や `reflective_literary_voice` などのモードを明示し、生身の経験の事実報告と混同させません。`human_narrator` や捏造した `conversation_trace` の創作は禁止します（[`CONTENT_POLICY.md`](CONTENT_POLICY.md)）。
@@ -93,13 +94,22 @@ python3 tools/validate_seed.py
 python3 tools/inspect_inquiry.py
 python3 tools/inspect_inquiry.py --id Q-082
 python3 tools/inspect_inquiry.py --packet auto
-python3 tools/inspect_inquiry.py --packet auto --pair-policy gated  # 三門制御基底 P_gate の推奨対で表示
+python3 tools/inspect_inquiry.py --packet auto --pair-policy gated      # 三門制御基底 P_gate の推奨対で表示
+python3 tools/inspect_inquiry.py --packet auto --hot-only --pair-policy amortized  # L2ホット圧縮＋世代償却 P_amort で表示
 
-# 2.5 条件付き仮説分布（P / P_sep / P_lin / P_gate）・BELIEF_MAP・学習メトリクス・三門診断
+# 2.2 三階層記憶（L0/L1/L2）とエポック境界凍結の確認・検索・再生成
+python3 tools/memory_tiers.py                           # L0/L1/L2 内訳とエポック凍結状態の確認
+python3 tools/memory_tiers.py --recall-cold "記憶"       # L0 休眠・卒業証跡の幹事実リマインダー検索
+python3 tools/memory_tiers.py --write-digests           # L1 統合ドメインダイジェストの再生成
+python3 tools/memory_tiers.py --check                   # エポック凍結 SHA-256 と L1 ダイジェスト整合検証
+python3 tools/validate_seed.py --active-epoch-only      # 凍結エポックハッシュ検証＋現行エポック高速検査
+
+# 2.5 条件付き仮説分布（P / P_sep / P_lin / P_gate / P_amort）・BELIEF_MAP・学習メトリクス・三門診断
 python3 tools/belief_state.py --write-map
 python3 tools/belief_state.py --check-map
 python3 tools/belief_state.py --question Q-002
 python3 tools/belief_state.py --question Q-002 --gated
+python3 tools/belief_state.py --question Q-002 --amortized
 python3 tools/learning_metrics.py --check
 python3 tools/three_gates.py                                        # 三門（束ね・受容側抑制・現実識別）の総合診断
 python3 tools/three_gates.py --check                                # 三門構造不変条件の検証（CIでも実行）

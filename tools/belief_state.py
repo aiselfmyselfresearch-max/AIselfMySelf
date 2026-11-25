@@ -95,8 +95,20 @@ PROPOSER_BOOTSTRAP_PRIORITY = 0.20
 #   scoped_norm   divided by each question's own log2(n) ceiling (proposal 2 as
 #                 designed; measured to reward small questions, so not default)
 #   historical    the pre-2026-11-23 active-only raw-bit score, kept measurable
+#   amortized     entropy over active hypotheses under P_amort (generational
+#                 amortization: narrowed/over-narrowed parent mass transfers to
+#                 independently verified active descendants, 2026-11-25)
 ALLOCATION_BASIS_DEFAULT = "scoped"
-ALLOCATION_BASES: tuple[str, ...] = ("scoped", "scoped_norm", "historical")
+ALLOCATION_BASES: tuple[str, ...] = ("scoped", "scoped_norm", "historical", "amortized")
+
+# 2026-11-25 (Generational Amortization / Forgetting Decay):
+# Once a scope-narrowed parent hypothesis has active descendants in the same
+# question that have passed independent cross-session verification, retain only
+# a decayed residual share on the parent and transfer the released mass to its
+# verified active heirs (mass-conserving generational transfer).
+AMORTIZATION_NARROWED_RETENTION = 0.10
+AMORTIZATION_OVER_NARROWED_RETENTION = 0.35
+DETAIL_AMORT_TOP_N = 3
 
 # Provisional heuristic, not an empirically calibrated evidence weight. Counting
 # named comparisons as independent sources overstates repeated mentions; this
@@ -1824,7 +1836,148 @@ def compute_belief_state(
                     gated_log_odds=float(h.get("log_odds", 0.0)),
                     retrieval_suppressed=bool(h.get("retrieval_suppressed")),
                 )
+
+    # 2026-11-25 (Generational Amortization / P_amort):
+    # Reported beside P and P_gate, never substituted for them, so every
+    # historical citation stays reproducible while releasing deadweight mass
+    # trapped on narrowed/over-narrowed ancestors into independently verified
+    # active descendants.
+    for qid, qs in state["questions"].items():
+        hyps_list = qs.get("hypotheses") or []
+        if not hyps_list:
+            qs["amortized_active_mass_share"] = 0.0
+            qs["amortized_narrowed_mass_share"] = 0.0
+            qs["amortized_readable"] = False
+            qs["amortized_entropy_bits"] = 0.0
+            qs["priority_amortized"] = None
+            qs["amortized_top_pair"] = None
+            continue
+        base_key = "gated_posterior" if "gated_posterior" in hyps_list[0] else "posterior"
+        amort_map, heirs_map = _amortize_question_distribution(
+            hyps_list, base_key=base_key, weight_key=base_key
+        )
+        raw_amort_map, _ = _amortize_question_distribution(
+            hyps_list, base_key="posterior", weight_key=base_key
+        )
+        for h in hyps_list:
+            hid = h["hypothesis_id"]
+            ap = amort_map.get(hid, float(h.get(base_key, 0.0)))
+            rap = raw_amort_map.get(hid, float(h.get("posterior", 0.0)))
+            h["amortized_posterior"] = round(ap, 4)
+            h["amortized_raw_posterior"] = round(rap, 4)
+            h["amortized_delta_pp"] = round((ap - float(h.get("posterior", 0.0))) * 100, 2)
+            h["amortized_heirs"] = heirs_map.get(hid, [])
+        act_probs = [
+            amort_map[h["hypothesis_id"]]
+            for h in hyps_list
+            if h.get("effective_status") == "active"
+        ]
+        nar_probs = [
+            amort_map[h["hypothesis_id"]]
+            for h in hyps_list
+            if h.get("effective_status") == "narrowed"
+        ]
+        act_mass = sum(act_probs)
+        nar_mass = sum(nar_probs)
+        amort_h = (
+            -sum((p / act_mass) * math.log2(max(p / act_mass, 1e-12)) for p in act_probs if p > 0)
+            if act_mass > 0
+            else 0.0
+        )
+        n_evals = sum(int(h.get("direct_eval_count", 0)) for h in hyps_list)
+        mean_u = float(qs.get("mean_active_uncertainty", 0.0))
+        qs["amortized_active_mass_share"] = round(act_mass, 4)
+        qs["amortized_narrowed_mass_share"] = round(nar_mass, 4)
+        qs["amortized_readable"] = act_mass >= UNREADABLE_MASS_SHARE_FLOOR
+        qs["amortized_entropy_bits"] = round(amort_h, 4)
+        qs["priority_amortized"] = round(
+            amort_h + 0.8 * mean_u + 1.0 / math.sqrt(1 + n_evals), 4
+        )
+        qs["amortized_top_pair"] = select_amortized_pair(state, evaluations, qid)
+
     return state
+
+
+def _amortize_question_distribution(
+    hyps_list: list[dict[str, Any]],
+    *,
+    base_key: str = "gated_posterior",
+    weight_key: str = "gated_posterior",
+) -> tuple[dict[str, float], dict[str, list[str]]]:
+    """Mass-conserving generational amortization within one question.
+
+    When a ``narrowed`` (or over-narrowed ``narrows_scope > supports``) parent
+    hypothesis has active descendants in the same question that have passed
+    independent cross-session evaluation, attenuate the parent's retained mass
+    and transfer the released mass proportionally to those verified active heirs.
+    Parents without verified active heirs retain 100% of their mass (so an
+    ``orphan_over_narrowed`` hypothesis never loses mass into thin air).
+    """
+    by_id = {h["hypothesis_id"]: h for h in hyps_list}
+    mass = {h["hypothesis_id"]: float(h.get(base_key, h.get("posterior", 0.0))) for h in hyps_list}
+    children_in_q = {
+        hid: [c for c in (h.get("children_hypothesis_ids") or []) if c in by_id]
+        for hid, h in by_id.items()
+    }
+    heirs_out: dict[str, list[str]] = {}
+
+    def _verified_active_heirs(start_id: str) -> list[str]:
+        seen: set[str] = set()
+        stack = list(children_in_q.get(start_id, []))
+        found: list[str] = []
+        while stack:
+            cid = stack.pop()
+            if cid in seen:
+                continue
+            seen.add(cid)
+            ch = by_id[cid]
+            if (
+                ch.get("effective_status") == "active"
+                and int(ch.get("direct_eval_count", 0)) >= 1
+                and not ch.get("self_evaluated_only", False)
+                and not ch.get("retrieval_suppressed", False)
+            ):
+                found.append(cid)
+            stack.extend(children_in_q.get(cid, []))
+        return sorted(found)
+
+    ordered = sorted(
+        hyps_list, key=lambda h: (int(h.get("generation", 0)), h["hypothesis_id"])
+    )
+    for h in ordered:
+        hid = h["hypothesis_id"]
+        heirs = _verified_active_heirs(hid)
+        if not heirs:
+            continue
+        vc = h.get("verdict_counts") or {}
+        n_nar = int(vc.get("narrows_scope", 0))
+        n_sup = int(vc.get("supports", 0))
+        eff = h.get("effective_status")
+        if eff == "narrowed":
+            keep = AMORTIZATION_NARROWED_RETENTION * (0.5 ** max(0, len(heirs) - 1))
+        elif eff == "active" and n_nar > n_sup and n_nar >= 2:
+            keep = AMORTIZATION_OVER_NARROWED_RETENTION
+        else:
+            continue
+        cur = mass[hid]
+        transfer = cur * (1.0 - keep)
+        if transfer <= 0.0:
+            continue
+        mass[hid] = cur - transfer
+        heirs_out[hid] = heirs
+        weights = {
+            cid: max(0.0, float(by_id[cid].get(weight_key, by_id[cid].get("posterior", 0.0)))) + 0.01
+            for cid in heirs
+        }
+        w_sum = sum(weights.values())
+        for cid in heirs:
+            mass[cid] += transfer * (weights[cid] / w_sum)
+
+    total = sum(mass.values())
+    if total > 0.0:
+        for hid in mass:
+            mass[hid] /= total
+    return mass, heirs_out
 
 
 def separation_counts(
@@ -2006,6 +2159,81 @@ def select_gated_pair(
     return best_pair
 
 
+def select_amortized_pair(
+    state: dict[str, Any],
+    evaluations: dict[str, dict[str, Any]],
+    question_id: str,
+) -> dict[str, Any] | None:
+    """Select the next competing pair under generation-amortized ``P_amort``."""
+    qstate = (state.get("questions") or {}).get(question_id) or {}
+    excluded_states = {"refuted_inhibited", "superseded_inhibited", "orphan_over_narrowed"}
+    eligible = [
+        h
+        for h in (qstate.get("hypotheses") or [])
+        if h.get("effective_status") == "active"
+        and h.get("direct_eval_count", 0) > 0
+        and h.get("inhibition_state") not in excluded_states
+    ]
+    if len(eligible) < 2:
+        eligible = [
+            h
+            for h in (qstate.get("hypotheses") or [])
+            if h.get("effective_status") == "active"
+            and h.get("direct_eval_count", 0) > 0
+            and not h.get("retrieval_suppressed")
+        ]
+    if len(eligible) < 2:
+        return None
+    counts, last = separation_counts(evaluations)
+    best_score = -1.0
+    best_pair: dict[str, Any] | None = None
+    for i in range(len(eligible)):
+        for j in range(i + 1, len(eligible)):
+            ha, hb = eligible[i], eligible[j]
+            pa = float(ha.get("amortized_posterior", ha.get("gated_posterior", ha.get("posterior", 0.0))))
+            pb = float(hb.get("amortized_posterior", hb.get("gated_posterior", hb.get("posterior", 0.0))))
+            ua = float(ha.get("uncertainty", 0.0))
+            ub = float(hb.get("uncertainty", 0.0))
+            raw_aig = pa * pb * (ua + ub)
+            key = tuple(sorted((ha["hypothesis_id"], hb["hypothesis_id"])))
+            seps = counts.get(key, 0)
+            scored = raw_aig / (1.0 + 0.15 * seps)
+            if scored > best_score:
+                best_score = scored
+                la, rb = (ha, hb) if pa >= pb else (hb, ha)
+                lpa = float(la.get("amortized_posterior", la.get("gated_posterior", la.get("posterior", 0.0))))
+                rpb = float(rb.get("amortized_posterior", rb.get("gated_posterior", rb.get("posterior", 0.0))))
+                best_pair = {
+                    "left_hypothesis_id": la["hypothesis_id"],
+                    "left_title": la.get("title", ""),
+                    "right_hypothesis_id": rb["hypothesis_id"],
+                    "right_title": rb.get("title", ""),
+                    "left_posterior": round(lpa, 4),
+                    "right_posterior": round(rpb, 4),
+                    "left_historical_posterior": round(float(la.get("posterior", 0.0)), 4),
+                    "right_historical_posterior": round(float(rb.get("posterior", 0.0)), 4),
+                    "left_uncertainty": round(float(la.get("uncertainty", 0.0)), 4),
+                    "right_uncertainty": round(float(rb.get("uncertainty", 0.0)), 4),
+                    "expected_info_gain": round(raw_aig, 4),
+                    "novelty_adjusted_eig": round(scored, 4),
+                    "formula": "p_amort_a*p_amort_b*(u_a+u_b)/(1+0.15*sep)",
+                    "lineage_relation": pair_lineage_relation(la, rb),
+                    "pair_mass_sum": round(lpa + rpb, 4),
+                    "separations": seps,
+                    "last_separated": last.get(key, ""),
+                    "policy": "amortized",
+                    "recommended": not pair_mass_is_negligible(lpa + rpb),
+                    "recommendation_floor": PAIR_RECOMMENDATION_MASS_FLOOR,
+                    "ratchet_warning": (
+                        pair_has_unsaturated_supports_ratchet(
+                            {"posterior": lpa}, {"posterior": rpb}
+                        )
+                        and not pair_mass_is_negligible(lpa + rpb)
+                    ),
+                }
+    return best_pair
+
+
 def is_saturated_question(
     qs: dict[str, Any],
     *,
@@ -2114,6 +2342,12 @@ def select_auto_question_id(
                 base_label = (
                     f"live_H_norm={qs['live_entropy_normalized']:.3f}"
                     f"(={qs['live_entropy_bits']:.3f}/{qs['live_entropy_max_bits']:.3f}b)"
+                )
+            elif allocation_basis == "amortized":
+                base = float(qs.get("priority_amortized") if qs.get("priority_amortized") is not None else scoped)
+                base_label = (
+                    f"amort_H={qs.get('amortized_entropy_bits', 0.0):.3f}b"
+                    f"(現役質量{qs.get('amortized_active_mass_share', 0.0) * 100:.1f}%)"
                 )
             else:
                 base = float(scoped)
@@ -2725,12 +2959,20 @@ def detail_selection(hypotheses: list[dict[str, Any]], *, full: bool = False) ->
 
     ``top_n`` is a render policy, not a belief statement: every hypothesis in
     the ledger still appears (as a table row and as a one-line compressed
-    entry), and `--full` restores the uncompressed file.
+    entry), and `--full` restores the uncompressed file.  When ``amortized_posterior``
+    is present on the computed state, the top ``DETAIL_AMORT_TOP_N`` active
+    heirs under ``P_amort`` also retain their full proposition/exclusion block.
     """
     if full:
         return {h["hypothesis_id"] for h in hypotheses}
     ranked = sorted(hypotheses, key=lambda h: (-h["posterior"], h["hypothesis_id"]))
     chosen = {h["hypothesis_id"] for h in ranked[:DETAIL_TOP_N]}
+    if any("amortized_posterior" in h for h in hypotheses):
+        amort_ranked = sorted(
+            hypotheses,
+            key=lambda h: (-float(h.get("amortized_posterior", 0.0)), h["hypothesis_id"]),
+        )
+        chosen |= {h["hypothesis_id"] for h in amort_ranked[:DETAIL_AMORT_TOP_N]}
     chosen |= {h["hypothesis_id"] for h in hypotheses if _hypothesis_needs_detail(h)}
     return chosen
 
@@ -2924,6 +3166,7 @@ def render_belief_map_markdown(state: dict[str, Any], *, full: bool = False) -> 
         "> 証人列: `EVL_sess / RL_sess`（直接評価の独立セッション数 / 機械的バックフィルを除く手書き `read_log` 読了セッション数）。`P≥5%` かつ `EVL_sess≤1` に単一証人警告を付す。",
         "> 対単位割引列 (`P_sep`): 反復割引の単位をセッションから比較集合へ替えた場合の事後確率。`P` は現行（セッション単位）の値で、履歴の再現性のため既定は変えない。**両者の差が「同じ対を同じ向きに繰り返したこと」の寄与**である（`readings/2026-11-16-stable-words-do-not-make-progress.md` §3）。",
         "> 系譜移流なし列 (`P_lin`): 系譜の引き直し（`spawned` が空のとき engine が親の子を読む）を止めた場合の事後確率。`P` との差が「**その仮説自身への判定ではなく、その親への判定から流れてきた質量**」である（`readings/2026-11-17-the-prose-is-right-and-the-mechanism-is-wrong.md` §3）。既定は引き直しを含む側で、これは併記のみ。",
+        "> 世代償却列 (`P_amort`): `P_gate` を基盤とし、`narrowed` または過限定（`narrows_scope > supports`）の親仮説が独立異セッション評価を通過した現役子孫（`active`）を持つとき、親の滞留質量を減衰させて検証済み現役子孫へ質量保存移譲した事後確率（2026-11-25 導入）。`P` の再現性を壊さず、`narrowed` 固着による死荷重（`Q-002`/`Q-003` の >99% ロック等）を解消して現役世代間の競争を可視化する。",
         "> 独立分離列: その仮説が実際に突き合わされた相手の数と、その仮説が関与する分離が最後に「新規」だった日。証人列が「何セッションが評価したか」を数えるのに対し、こちらは「何と突き合わせたか」を数える。",
         _basis_note(state),
         _detail_policy_note(full),
@@ -3179,6 +3422,17 @@ def render_belief_map_markdown(state: dict[str, Any], *, full: bool = False) -> 
                 f" ｜ 系譜: {grel} ｜ 既分離: {gpair.get('separations', 0)}回"
                 "（後付け・対立相手フォールバック移流遮断＋PSC照合度重み＋対反復割引＋自己支持暫定割引）"
             )
+        apair = qs.get("amortized_top_pair")
+        if apair:
+            arel = PAIR_RELATION_LABELS.get(apair.get("lineage_relation")) or "不明"
+            amass = qs.get("amortized_active_mass_share", 0.0) * 100
+            ah = qs.get("amortized_entropy_bits", 0.0)
+            lines.append(
+                f"- **世代償却基底（`P_amort`）推奨検証対（`--pair-policy amortized`, EIG_amort={apair['expected_info_gain']:.4f}）**: "
+                f"`{apair['left_hypothesis_id']}`（P_amort={apair['left_posterior']*100:.1f}%） vs "
+                f"`{apair['right_hypothesis_id']}`（P_amort={apair['right_posterior']*100:.1f}%）"
+                f" ｜ 系譜: {arel} ｜ 現役質量比率: **{amass:.1f}%**（H_amort={ah:.3f} bits）"
+            )
         orphans = qs.get("orphan_over_narrowed_ids") or []
         if orphans:
             orp_list = "、".join(f"`{hid}`" for hid in orphans[:6])
@@ -3190,8 +3444,8 @@ def render_belief_map_markdown(state: dict[str, Any], *, full: bool = False) -> 
         lines.append("")
 
         lines.extend([
-            "| 順位 | ID | 状態 (抑制区分) | 世代/系譜 | 一次所属 | 事後確率 P_t | P_sep (対単位割引) | P_lin (系譜移流なし) | P_gate (三門制御) | 不確実性 u | 独立分離 (最終新規) | 評価数 (反証系) | 照合済 (PSC全照合) | 支持照合率 | 証人 (EVL/読) | 仮説タイトル |",
-            "| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
+            "| 順位 | ID | 状態 (抑制区分) | 世代/系譜 | 一次所属 | 事後確率 P_t | P_sep (対単位割引) | P_lin (系譜移流なし) | P_gate (三門制御) | P_amort (世代償却) | 不確実性 u | 独立分離 (最終新規) | 評価数 (反証系) | 照合済 (PSC全照合) | 支持照合率 | 証人 (EVL/読) | 仮説タイトル |",
+            "| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |",
         ])
         for idx, h in enumerate(qs["hypotheses"], start=1):
             parents = ", ".join(f"`{p}`" for p in h["parent_hypothesis_ids"]) or "—"
@@ -3234,6 +3488,10 @@ def render_belief_map_markdown(state: dict[str, Any], *, full: bool = False) -> 
                 gate_cell = f"**{h['gated_posterior'] * 100:.1f}%** ({h.get('gated_delta_pp', 0.0):+.1f}pp)"
             else:
                 gate_cell = "—"
+            if "amortized_posterior" in h:
+                amort_cell = f"**{h['amortized_posterior'] * 100:.1f}%** ({h.get('amortized_delta_pp', 0.0):+.1f}pp)"
+            else:
+                amort_cell = "—"
             inh_st = h.get("inhibition_state", "")
             status_cell = f"`{h['effective_status']}`"
             if inh_st in ("orphan_over_narrowed", "superseded_inhibited", "self_only_provisional"):
@@ -3263,7 +3521,7 @@ def render_belief_map_markdown(state: dict[str, Any], *, full: bool = False) -> 
             lines.append(
                 f"| {idx} | `{h['hypothesis_id']}` | {status_cell} | "
                 f"G{h['generation']}:{h['lineage_op']} ({parents}) | {pq_cell} | "
-                f"**{h['posterior'] * 100:.1f}%** | {sep_cell} | {lin_cell} | {gate_cell} | {h['uncertainty']:.3f} | "
+                f"**{h['posterior'] * 100:.1f}%** | {sep_cell} | {lin_cell} | {gate_cell} | {amort_cell} | {h['uncertainty']:.3f} | "
                 f"{sep_audit} | "
                 f"{h['direct_eval_count']} ({h['adversarial_eval_count']}) | "
                 f"{ver_cell} | {sup_cell} | {wit_cell} | {h['title']} |"
@@ -3417,6 +3675,11 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="compute under the Three-Gates receiver-gated basis (P_gate)",
     )
+    parser.add_argument(
+        "--amortized",
+        action="store_true",
+        help="when inspecting --question, order and display hypotheses by generation-amortized P_amort",
+    )
     parser.add_argument("--json", action="store_true", help="output full JSON belief state")
     parser.add_argument("--write-map", action="store_true", help="write BELIEF_MAP.md and map/belief_state.md")
     parser.add_argument(
@@ -3508,6 +3771,16 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         if args.json:
             print(json.dumps(qs, ensure_ascii=False, indent=2))
+        elif args.amortized:
+            ordered = sorted(
+                qs["hypotheses"],
+                key=lambda h: (-float(h.get("amortized_posterior", 0.0)), h["hypothesis_id"]),
+            )
+            for h in ordered:
+                print(
+                    f"{h['hypothesis_id']} [{h['effective_status']}] P_amort={h.get('amortized_posterior', 0.0)*100:.1f}% "
+                    f"(P_t={h['posterior']*100:.1f}%) u={h['uncertainty']:.3f} G{h['generation']} {h['title']}"
+                )
         else:
             for h in qs["hypotheses"]:
                 print(
