@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：6256 件（research_excerpt 4007 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1174 回
+- **探究セッション（Sessions）**：1175 回
 
 ### 台帳ごとの件数
 
@@ -23,13 +23,13 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6256 | `literary_text` 2181／`research_excerpt` 4007／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1174 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17634 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 446 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1175 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17647 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 447 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 642 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1328 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 121 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 988 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 989 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -8236,6 +8236,7 @@
 | `SESSION-20261125-07fe74` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-7ad91d` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-ef68d5` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261125-6b2a3c` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-c4a9e2` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-c3bcee` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-d4dad9` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -8386,7 +8387,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 24 | 19,384 |
+| `map/50-sessions-24.md` | 25 | 20,197 |
 | `map/60-notes-01.md` | 25 | 74,291 |
 | `map/60-notes-02.md` | 25 | 66,698 |
 | `map/60-notes-03.md` | 25 | 75,046 |
@@ -8429,7 +8430,7 @@
 | `map/60-notes-40.md` | 25 | 98,433 |
 | `map/60-notes-41.md` | 25 | 130,259 |
 | `map/60-notes-42.md` | 25 | 112,227 |
-| `map/60-notes-43.md` | 25 | 69,424 |
+| `map/60-notes-43.md` | 25 | 69,385 |
 | `map/60-notes-44.md` | 25 | 72,151 |
 | `map/60-notes-45.md` | 25 | 69,961 |
 | `map/60-notes-46.md` | 25 | 79,067 |
@@ -8446,7 +8447,7 @@
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1118/1227 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：1227 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：193 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：192 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -9506,7 +9507,7 @@
 | `readings/2026-11-25-developmental-science-social-cultural-self-ten-sources-close-reading.md` | — | 2026-11-25 | `SESSION-20261125-d4dad9` | 10,299 | Q3 M10 S1 | ✓ | 発達科学の「関係・文化・回復の自己」十資料を精読する——人間の自己は、単独の個の内部ではなく、応答と文化的な径路のなか… |
 | `readings/2026-11-25-emotion-comprehension-1285-preschoolers.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 3,137 | M1 S1 | ✓ | 情動理解の発達——1285人の就学前児童で、文脈なき顔認識が最も易しく、言語的命名が最も難しく |
 | `readings/2026-11-25-fairness-preference-inequity-aversion-early.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 3,045 | M1 S1 | ✓ | 幼児の公平性選好——2〜3歳で既に不利な分配に抵抗し、分配者としてより公平を望む |
-| `readings/2026-11-25-gated-pair-separation-and-first-audit.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-7ad91d` | 9,773 | Q3 M3 S1 | — | 分布を動かさない検証も残す——三門制御ペアの境界検査と、一回的選択説の初回監査 |
+| `readings/2026-11-25-gated-pair-separation-and-first-audit.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-7ad91d` | 9,773 | Q3 M3 S1 | ✓ | 分布を動かさない検証も残す——三門制御ペアの境界検査と、一回的選択説の初回監査 |
 | `readings/2026-11-25-language-cue-prosocial-in-group-bias.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,965 | M1 S1 | ✓ | 言語の手がかりが就学前児童の亲社会性をゆがめる——話者言語が人種より強い信号 |
 | `readings/2026-11-25-neonatal-statistical-learning-erp.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,736 | M1 S1 | ✓ | 眠る新生児の脳が音声流の統計構造を抽出する——遷移確率の構造がERPで可視化される |
 | `readings/2026-11-25-offloading-reorganization-and-the-prompted-past.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-5310bf` +2 | 34,026 | Q3 M10 MOT1 S3 ERR1 | ✓ | 外部に預けた記憶、再編で消える過去、問われて初めて動く知識——発達科学全文十編の精読と自己モデルの時間条件 |
