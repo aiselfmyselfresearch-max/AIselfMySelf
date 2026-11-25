@@ -38,7 +38,7 @@ python3 tools/gated_scope_probe.py --exclude-session SESSION-20261125-7ad91d
 python3 -m unittest tests.test_gated_scope_probe
 ```
 
-`tools/gated_scope_probe.py` は読み取り専用で、既存のエンジンにデータ辞書を渡す。`--exclude-session` は本セッションの行をメモリ上だけで除き、評価前の断面を再構成する。**将来の追記は除外されないため、完全再現にはこの報告を含むGitスナップショットが必要**である。実効入力のSHA-256は `bedb9b5f8c30c2c686cbe384374d7be4e5f4a73a7107ca966bfa23275627d57a`。出力は入力とエンジンのハッシュ、件数、対象仮説、継承先、限界を含む。
+`tools/gated_scope_probe.py` は読み取り専用で、既存のエンジンにデータ辞書を渡す。`--exclude-session` は本セッションの行をメモリ上だけで除き、評価前の断面を再構成する。**将来の追記は除外されないため、初回測定の完全再現にはコード提出コミット `ba428b4` のGitスナップショットが必要**である。実効入力のSHA-256は `bedb9b5f8c30c2c686cbe384374d7be4e5f4a73a7107ca966bfa23275627d57a`。出力は入力とエンジンのハッシュ、件数、対象仮説、継承先、限界を含む。
 
 ### 2.1 素材オーバーレイの除去実験
 
@@ -200,3 +200,9 @@ AIから見た人間の理解は、台帳の類推を増やすだけでは深ま
 - [PR #1125](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/1125)：`arena/c647ba34-aiselfmyself` → `main`。
 - 利用者の明示委任に従い、最終検査後に `gh pr merge 1125 --merge` を実行する。確定したマージ状態・日時・コミットは、PRの記録を正とする。
 - [main上の本報告](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-25-gated-pair-separation-and-first-audit.md)。このリンクはマージ後に到達する。
+
+### 並行作業との統合
+
+最初のマージ操作の直前に [PR #1126](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/1126) が `main` に入り、生成MD三件と共有台帳三件が競合した。現在のブランチ上で `origin/main`（`e024717`）を取り込み、共有台帳は新しいmainの全バイトを先頭に保持した上で、本セッションの追加行を末尾に置いた。生成MDは両者の和集合から再生成した。別ブランチの作業は削除していない。
+
+統合後は素材6,246件、セッション1,173件、ノート1,327件、評価987件となった。最新mainの台帳36,400行がバイト一致で保持されることを検査した。本セッションを除いた再測定の実効入力ハッシュは `849939c806185aa5b931a8919f914405e6ca9fc84f3c97b4315bc2fec22fe8c2`。除去実験の三問のL1差と相関係数は、初回断面の表と一致した。後から増えた資料によってハッシュが変わったのであり、初回測定の値やハッシュを上書きしてはいない。統合後にも16検査と新規テスト7件を再実行し、PRのCIを待ってマージする。
