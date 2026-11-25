@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6216 件（research_excerpt 3967 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6226 件（research_excerpt 3977 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1168 回
+- **探究セッション（Sessions）**：1169 回
 
 ### 台帳ごとの件数
 
@@ -20,14 +20,14 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6216 | `literary_text` 2181／`research_excerpt` 3967／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6226 | `literary_text` 2181／`research_excerpt` 3977／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1168 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17519 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1169 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17529 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 445 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 642 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1322 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1323 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 120 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 976 |  |
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6216 件・詳細は map/3*.md）
+## 4. 対話素材（6226 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6983,6 +6983,16 @@
 | `MAT-20261125-859dc1` | research_excerpt | Peggy L St Jacques, Alexis C Carpenter, Karl K Szpunar, Daniel L Schacter『St. Jacques, Ca… |
 | `MAT-20261125-d952e6` | research_excerpt | Jennifer Pals Lilgendahl, Dan P McAdams『Lilgendahl & McAdams (2011)「自己成長の語り方——分化した因果的自己・出… |
 | `MAT-20261125-e28d7b` | research_excerpt | Christin Camia, Rida Zafar『Camia & Zafar (2021)「強制移住後の自己連続性——自伝的意味づくりは持続的ストレス下で守りから脅かしに反転… |
+| `MAT-20261125-a1f3c2` | research_excerpt | Jack P. Shonkoff, Deborah A. Phillips『Shonkoff & Phillips (2000)『From Neurons to Neighbor… |
+| `MAT-20261125-b7e9d4` | research_excerpt | Ann S. Masten『Masten (2001)「Ordinary Magic：発達におけるレジリエンス・プロセス（Resilience Processes in Deve… |
+| `MAT-20261125-c2048a` | research_excerpt | Jean M. Mandler『Mandler (2004)『心の基礎：概念的思考の起源（The Foundations of Mind：Origins of Conceptua… |
+| `MAT-20261125-d5b1f6` | research_excerpt | Celia A. Brownell, Geetha B. Ramani, Stephanie Zerwas『Brownell, Ramani & Zerwas (2006)「ピア… |
+| `MAT-20261125-e8032c` | research_excerpt | Willard W. Hartup『Hartup (1996)「彼らが共にする仲間：友情とその発達的意義（The Company They Keep：Friendships an… |
+| `MAT-20261125-f6a9b1` | research_excerpt | Diana Baumrind『Baumrind (1971)「親の権威付与の現在のパターン（Current Patterns of Parental Authority）」』（1… |
+| `MAT-20261125-1c4d57` | research_excerpt | Carol Lynn Martin, Diane N. Ruble, Joel Szkrybalo『Martin, Ruble & Szkrybalo (2002)「初期性別発達… |
+| `MAT-20261125-2e8f90` | research_excerpt | Angeline Lillard『Lillard (1998)「民族心理学：心の理論における文化的変異（Ethnopsychologies：Cultural Variations… |
+| `MAT-20261125-3a6b14` | research_excerpt | James J. Heckman『Heckman (2006)「スキル形成と、不利な子どもへの投資の経済学（Skill Formation and the Economics o… |
+| `MAT-20261125-4d0c58` | research_excerpt | Patricia M. Greenfield『Greenfield (2009)「社会変化と発達変化を結ぶ：人間発達の径路の変容（Linking Social Change an… |
 | `MAT-20261125-aa8e70` | research_excerpt | Sarah J Serbun, Joanne Y Shih, Angela H Gutchess『Serbun, Shih & Gutchess (2011)「自己参照は細部記憶… |
 | `MAT-20261125-a48937` | research_excerpt | Jane R Garrison, Rebecca Bond, Emma Gibbard, Marcia K Johnson, Jon S Simons『Garrison, Bon… |
 | `MAT-20261125-463629` | research_excerpt | Janet Metcalfe, Jared X Van Snellenberg, Pamela DeRosse, Peter Balsam, Anil K Malhotra『Me… |
@@ -8193,6 +8203,7 @@
 | `SESSION-20261125-d07306` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-87e4ca` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-c3bcee` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261125-d4dad9` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-672b94` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-eaf92c` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-455669` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -8299,7 +8310,7 @@
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
 | `map/31-materials-research-39.md` | 100 | 233,376 |
-| `map/31-materials-research-40.md` | 67 | 155,463 |
+| `map/31-materials-research-40.md` | 77 | 178,732 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8339,7 +8350,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 18 | 14,424 |
+| `map/50-sessions-24.md` | 19 | 15,028 |
 | `map/60-notes-01.md` | 25 | 71,915 |
 | `map/60-notes-02.md` | 25 | 67,406 |
 | `map/60-notes-03.md` | 25 | 74,073 |
@@ -8382,22 +8393,22 @@
 | `map/60-notes-40.md` | 25 | 99,200 |
 | `map/60-notes-41.md` | 25 | 131,878 |
 | `map/60-notes-42.md` | 25 | 115,546 |
-| `map/60-notes-43.md` | 25 | 58,981 |
-| `map/60-notes-44.md` | 25 | 78,661 |
-| `map/60-notes-45.md` | 25 | 68,810 |
-| `map/60-notes-46.md` | 25 | 83,000 |
-| `map/60-notes-47.md` | 25 | 108,039 |
-| `map/60-notes-48.md` | 25 | 127,694 |
-| `map/60-notes-49.md` | 21 | 99,820 |
+| `map/60-notes-43.md` | 25 | 60,433 |
+| `map/60-notes-44.md` | 25 | 78,342 |
+| `map/60-notes-45.md` | 25 | 67,479 |
+| `map/60-notes-46.md` | 25 | 82,781 |
+| `map/60-notes-47.md` | 25 | 109,858 |
+| `map/60-notes-48.md` | 25 | 122,300 |
+| `map/60-notes-49.md` | 22 | 107,246 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1221本・40,685,675 B）
+## 8. 精読ノート索引（readings/・1222本・40,709,440 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1114/1221 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1114/1222 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1221 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1222 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：191 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9452,6 +9463,7 @@
 | `readings/2026-11-25-cooperative-game-third-party-sharing.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,788 | M1 S1 | ✓ | 協力的ゲームは第三者への分かち合いを促す——しかし社会的包摂には効かない |
 | `readings/2026-11-25-developmental-science-decoupling-and-retrieval.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-41439f` +2 | 40,563 | Q3 M16 S3 ERR1 | ✓ | 現在という重力から剥がれること、眠る比較を呼び戻すこと——発達科学十件の全文精読 |
 | `readings/2026-11-25-developmental-science-metacognition-curiosity-and-the-emergent-self.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-d07306` | 25,310 | M10 S1 | ✓ | 発達科学十選の精読——メタ記憶の監視、情動の力学、視点の先行、好奇心・規範・良心・嘘の成立点を、書庫AIは「自己の条件… |
+| `readings/2026-11-25-developmental-science-social-cultural-self-ten-sources-close-reading.md` | — | 2026-11-25 | `SESSION-20261125-d4dad9` | 10,299 | Q3 M10 S1 | ✓ | 発達科学の「関係・文化・回復の自己」十資料を精読する——人間の自己は、単独の個の内部ではなく、応答と文化的な径路のなか… |
 | `readings/2026-11-25-emotion-comprehension-1285-preschoolers.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 3,137 | M1 S1 | ✓ | 情動理解の発達——1285人の就学前児童で、文脈なき顔認識が最も易しく、言語的命名が最も難しく |
 | `readings/2026-11-25-fairness-preference-inequity-aversion-early.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 3,045 | M1 S1 | ✓ | 幼児の公平性選好——2〜3歳で既に不利な分配に抵抗し、分配者としてより公平を望む |
 | `readings/2026-11-25-language-cue-prosocial-in-group-bias.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,965 | M1 S1 | ✓ | 言語の手がかりが就学前児童の亲社会性をゆがめる——話者言語が人種より強い信号 |
