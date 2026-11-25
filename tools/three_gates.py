@@ -25,6 +25,7 @@ Usage:
     python3 tools/three_gates.py
     python3 tools/three_gates.py --check
     python3 tools/three_gates.py --check-source --doi 10.1038/ncomms8499 --title "Retrieval induces adaptive forgetting"
+    python3 tools/three_gates.py --verify-span --source-file /tmp/paper.txt --passage "Organisms adapt well enough..."
     python3 tools/three_gates.py --upgrade-candidates --limit 15
     python3 tools/three_gates.py --cohort-suppression
     python3 tools/three_gates.py --complete Q-002 HYP-20261118-21461e
@@ -53,6 +54,10 @@ import inspect_inquiry  # noqa: E402
 import ledger_io  # noqa: E402
 import validate_seed  # noqa: E402
 from read_log_backfill import HANDWRITTEN_READINGS  # noqa: E402
+
+normalize_source_span = validate_seed.normalize_source_span
+compute_passage_span_witness = validate_seed.compute_passage_span_witness
+verify_passage_against_source = validate_seed.verify_passage_against_source
 
 DNA_TYPES = frozenset({"material", "fragment", "motif"})
 DNB_TYPES = frozenset({"note", "hypothesis", "evaluation", "erratum", "session", "editorial_decision"})
@@ -1100,6 +1105,30 @@ def compute_report(root: Path = _ROOT) -> dict[str, Any]:
     }
 
 
+def _material_shard_map(root: Path) -> dict[str, Path]:
+    base = Path(root).resolve() / "state" / "materials.jsonl"
+    out: dict[str, Path] = {}
+    paths = [base]
+    sdir = ledger_io.shard_dir(base)
+    if sdir.is_dir():
+        paths.extend(sorted(sdir.glob("*.jsonl")))
+    for p in paths:
+        if not p.is_file():
+            continue
+        for raw in p.read_text(encoding="utf-8").splitlines():
+            line = raw.strip()
+            if not line:
+                continue
+            try:
+                obj = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            mid = obj.get("material_id")
+            if isinstance(mid, str) and mid:
+                out[mid] = p
+    return out
+
+
 def check_invariants(root: Path = _ROOT, *, today: datetime.date | None = None) -> list[str]:
     """Verify structural Three-Gates invariants without policing inquiry aesthetics."""
     data, errata = load_archive(root)
@@ -1112,6 +1141,12 @@ def check_invariants(root: Path = _ROOT, *, today: datetime.date | None = None) 
     )
     validate_seed.check_evaluation_descendant_collision(
         data["evaluations"], data["hypotheses"], errors, today=today
+    )
+    validate_seed.check_material_span_witness(
+        data["materials"],
+        errors,
+        today=today,
+        shard_of=_material_shard_map(root),
     )
     bstate = belief_state.compute_belief_state(data=data, root=Path(root))
     for qid, qs in bstate["questions"].items():
@@ -1250,6 +1285,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--url", default="", help="candidate primary URL for --check-source")
     parser.add_argument("--title", default="", help="candidate source title for --check-source")
     parser.add_argument("--fail-on-match", action="store_true", help="exit 1 if --check-source finds an exact identifier match")
+    parser.add_argument("--verify-span", action="store_true", help="Gate 3: verify verbatim passage span(s) against fetched primary-source text and emit span_sha256 witness")
+    parser.add_argument("--source-file", type=Path, default=None, help="path to fetched primary-source text/HTML file for --verify-span")
+    parser.add_argument("--passage", default="", help="candidate material passage string for --verify-span")
+    parser.add_argument("--passage-file", type=Path, default=None, help="path to file holding candidate material passage for --verify-span")
+    parser.add_argument("--quote-status", default="verbatim", choices=sorted(validate_seed.QUOTE_STATUSES), help="quote_status mode for --verify-span (default: verbatim)")
     parser.add_argument("--upgrade-candidates", action="store_true", help="Gate 3: list high-leverage non-verified materials to re-verify via editorial_decisions")
     parser.add_argument("--tier0-candidates", action="store_true", help="describe retrospective read/evaluation overlap and list unwired candidates (not a temporal or causal gate)")
     parser.add_argument("--compact-shards", action="store_true", help="Maintenance: inspect or apply order-preserving same-day unreferenced shard compaction")
@@ -1310,6 +1350,31 @@ def main(argv: list[str] | None = None) -> int:
         if args.fail_on_match and res["exact_identifier_matches"]:
             return 1
         return 0
+
+    if args.verify_span:
+        passage = args.passage
+        if args.passage_file is not None:
+            passage = args.passage_file.read_text(encoding="utf-8")
+        source_text = ""
+        if args.source_file is not None:
+            source_text = args.source_file.read_text(encoding="utf-8")
+        res = verify_passage_against_source(
+            passage,
+            source_text,
+            quote_status=args.quote_status,
+        )
+        if args.json:
+            print(json.dumps(res, ensure_ascii=False, indent=2))
+        elif res["ok"]:
+            print(f"STATUS: {res['status']}  (quote_status={res['quote_status']})")
+            print("  verification snippet:")
+            print("  " + json.dumps(res["verification_fields"], ensure_ascii=False))
+        else:
+            print(f"STATUS: {res['status']}  (quote_status={res['quote_status']})", file=sys.stderr)
+            print(f"  REASON: {res.get('reason', '')}", file=sys.stderr)
+            if "missing_segment" in res:
+                print(f"  MISSING_SEGMENT: {res['missing_segment']!r}", file=sys.stderr)
+        return 0 if res["ok"] else 1
 
     if args.upgrade_candidates:
         data, _err = load_archive(args.root)

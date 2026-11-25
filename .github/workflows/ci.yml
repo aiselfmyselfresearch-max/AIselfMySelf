@@ -61,6 +61,9 @@ jobs:
       - name: Check SELF_MODEL.md is current
         run: python3 tools/self_model.py --check
 
+      - name: Check prediction-error and counterfactual invariants
+        run: python3 tools/default_mode_probe.py --check
+
       - name: Check the readings/ note index section
         run: python3 tools/note_index.py --check
 
