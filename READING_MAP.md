@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6136 件（research_excerpt 3887 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6146 件（research_excerpt 3897 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1155 回
+- **探究セッション（Sessions）**：1156 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6136 | `literary_text` 2181／`research_excerpt` 3887／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6146 | `literary_text` 2181／`research_excerpt` 3897／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1155 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17331 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1156 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17346 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 419 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 639 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1302 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 115 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 941 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1303 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 116 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 945 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6136 件・詳細は map/3*.md）
+## 4. 対話素材（6146 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6943,8 +6943,18 @@
 | `MAT-20261124-e8c165` | research_excerpt | Jesse C Niebaum『Niebaum (2026)「標準EF課題は多文化文脈でも予測的効度を持つ」——反論：学校歴を統制しても年齢と学業成績の関連は残る』（2026） |
 | `MAT-20261124-4c2323` | research_excerpt | Mateus M Mazzaferro, Jelena Obradović, Sabine Doebel, Sharon Wolf, Yuko Munakata, Lisa B … |
 | `MAT-20261124-a8bfda` | research_excerpt | Ivan Kroupin, Helen Elizabeth Davis, Emily Burdett, Joseph Henrich『Kroupin, Davis, Burdet… |
+| `MAT-20261125-3f98e4` | research_excerpt | Cristina M. Atance, Andrew N. Meltzoff『Atance & Meltzoff (2006)「未来の渇きを予見する」——現在の渇きが3〜5歳児の… |
+| `MAT-20261125-6943f0` | research_excerpt | Hannah J. Kramer, Deborah Goldfarb, Sarah M. Tashjian, Kristin Hansen Lagattuta『Kramer, G… |
+| `MAT-20261125-05eee0` | research_excerpt | Jonathan Redshaw, Tara Leamy, Pepita Pincus, Thomas Suddendorf『Redshaw, Leamy, Pincus & S… |
+| `MAT-20261125-6820b2` | research_excerpt | Ebru N. Turan-Küçük, Melissa M. Kibbe『Turan-Küçük & Kibbe (2026)「『どこ』より『何』の不確実性の方が易しい」——2… |
+| `MAT-20261125-2a3ba5` | research_excerpt | Eimear O'Connor, Teresa McCormack, Aidan Feeney『O'Connor, McCormack & Feeney (2014)「59/60… |
+| `MAT-20261125-4a20c3` | research_excerpt | Shalini Gautam, Thomas Suddendorf, Jonathan Redshaw『Gautam, Suddendorf & Redshaw (2022)「開… |
+| `MAT-20261125-c9dacd` | research_excerpt | Kristy L. Armitage, Adam Bulley, Jonathan Redshaw『Armitage, Bulley & Redshaw (2020)「回さなくて… |
+| `MAT-20261125-1daa62` | research_excerpt | Yibiao Liang, Erik Blaser, Li Yi, Liyang Sai, Zsuzsa Kaldy『Liang, Blaser, Yi, Sai & Kaldy… |
+| `MAT-20261125-7972f6` | research_excerpt | Rachel E. White, Stephanie M. Carlson『White & Carlson (2021)「空想の絵柄は効かず、『〜のふり』だけが効く」——3歳児の… |
+| `MAT-20261125-3fa317` | research_excerpt | Rachel E. White, Ethan Kross, Angela L. Duckworth『White, Kross & Duckworth (2015)「逐次再生から再… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261124-e44c09・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261125-41439f・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -8103,6 +8113,7 @@
 | `SESSION-20261124-5f8f07` | 2026-11-24T13:50:35Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-65de8c` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261124-e44c09` | 2026-11-24 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261125-41439f` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
 
@@ -8205,7 +8216,7 @@
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
-| `map/31-materials-research-39.md` | 87 | 198,105 |
+| `map/31-materials-research-39.md` | 97 | 219,024 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8245,7 +8256,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 5 | 4,199 |
+| `map/50-sessions-24.md` | 6 | 5,048 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
@@ -8287,23 +8298,23 @@
 | `map/60-notes-39.md` | 25 | 42,546 |
 | `map/60-notes-40.md` | 25 | 108,606 |
 | `map/60-notes-41.md` | 25 | 131,006 |
-| `map/60-notes-42.md` | 25 | 98,735 |
-| `map/60-notes-43.md` | 25 | 74,544 |
-| `map/60-notes-44.md` | 25 | 68,070 |
-| `map/60-notes-45.md` | 25 | 78,831 |
-| `map/60-notes-46.md` | 25 | 111,119 |
-| `map/60-notes-47.md` | 25 | 110,698 |
-| `map/60-notes-48.md` | 25 | 131,874 |
-| `map/60-notes-49.md` | 1 | 2,468 |
+| `map/60-notes-42.md` | 25 | 103,128 |
+| `map/60-notes-43.md` | 25 | 72,151 |
+| `map/60-notes-44.md` | 25 | 69,961 |
+| `map/60-notes-45.md` | 25 | 79,067 |
+| `map/60-notes-46.md` | 25 | 108,737 |
+| `map/60-notes-47.md` | 25 | 108,431 |
+| `map/60-notes-48.md` | 25 | 136,819 |
+| `map/60-notes-49.md` | 2 | 4,313 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1201本・40,321,568 B）
+## 8. 精読ノート索引（readings/・1202本・40,400,028 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1094/1201 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1095/1202 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1201 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1202 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：187 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9350,6 +9361,7 @@
 | `readings/2026-11-24-when-the-mirror-and-the-schedule-arrive.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8cecc8` | 21,471 | Q3 M10 S1 | ✓ | 鏡と日程表が来る前後に——発達科学の十資料を精読する |
 | `readings/2026-11-24-who-carried-the-reading-forward.md` | — | 2026-11-24 | `SESSION-20261124-af802d` +2 | 32,711 | Q6 M2 S3 ERR1 | ✓ | 誰が読みを運んだか——返信付き20ペアと返信なし15ペアの第三者符号化 |
 | `readings/2026-11-24-who-the-timetable-is-for.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-6a8c58` +2 | 30,326 | Q4 M17 MOT1 S3 ED3 | ✓ | §10 の実行——五項目と、埋めた未実施 |
+| `readings/2026-11-25-developmental-science-decoupling-and-retrieval.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-41439f` | 38,117 | Q3 M15 S1 | ✓ | 現在という重力から剥がれること、眠る比較を呼び戻すこと——発達科学十件の全文精読 |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
 | `readings/2026-11-26-the-blank-is-a-way-of-seeing.md` | — | 2026-11-26 | `SESSION-20261126-7b7806` +1 | 6,120 | Q6 F6 M4 MOT2 S2 | ✓ | 空欄は、すでに一つの見方である —— 名を書かない贈与と、返却先のない写真 |
