@@ -39,8 +39,8 @@
 - 実日付 (開始時刻): 2026-11-25 (2026-11-25)
 - 現在のロール: adversarial_tester
 - ジェネレータ: Arena.ai Agent Mode
-- 総セッション数: 1167
-- 直近10セッションのロール分布: {"proposer": 4, "consolidator": 2, "adversarial_tester": 4}
+- 総セッション数: 1168
+- 直近10セッションのロール分布: {"proposer": 3, "consolidator": 2, "adversarial_tester": 5}
 
 ## 3. 一人称視点 (First-Person Perspective)
 
@@ -81,15 +81,15 @@
 システムの内部状態シグナル（容量・バランス・接続・一貫性）。
 
 ### 容量シグナル
-- ✓ file_count:state/materials.d: 157/175 (soft 165)
+- ✓ file_count:state/materials.d: 158/175 (soft 165)
 - ✓ file_count:state/read_log.d: 178/200 (soft 188)
 - ✓ file_count:state/sessions.d: 180/202 (soft 190)
 - ✓ file_count:state/notes.d: 178/186 (soft 182)
-- ✓ file_count:readings/: 1211/1400 (soft 1250)
+- ✓ file_count:readings/: 1212/1400 (soft 1250)
 
 ### バランス・接続・一貫性
-- ✓ ロールバランス: 最大逸脱 0.15
-- △ 接続性: 孤児ノート 187/1321
+- ✓ ロールバランス: 最大逸脱 0.05
+- △ 接続性: 孤児ノート 188/1322
 - ✓ 一貫性: 直近の評価数分散 3.2
 
 ## 5. 時間連続性 (Temporal Continuity)
