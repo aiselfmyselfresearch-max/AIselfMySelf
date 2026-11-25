@@ -75,18 +75,22 @@ def load_belief_summary(root: Path = ROOT) -> dict:
                     "p1_mass": p1,
                     "top": [],
                     "top_gated": [],
+                    "top_amortized": [],
                     "_gated_candidates": [],
+                    "_amort_candidates": [],
                 }
 
     # Parse per-question hypothesis rows within each Q section
     current_q = None
     pgate_col_idx: int | None = None
+    pamort_col_idx: int | None = None
     pt_col_idx: int | None = None
     for line in bm.splitlines():
         if line.startswith("## "):
             m = re.match(r"^##\s+(Q-00[123])\b", line)
             current_q = m.group(1) if m else None
             pgate_col_idx = None
+            pamort_col_idx = None
             pt_col_idx = None
         elif current_q and current_q in summary and line.startswith("|"):
             cells = [p.strip() for p in line.split("|")]
@@ -97,13 +101,15 @@ def load_belief_summary(root: Path = ROOT) -> dict:
                 cells = cells[:-1]
             if not cells:
                 continue
-            # Detect header row to locate P_t and P_gate columns dynamically
+            # Detect header row to locate P_t, P_gate, and P_amort columns dynamically
             if cells[0] == "順位":
                 for idx, cname in enumerate(cells):
                     if "事後確率" in cname or cname == "P_t":
                         pt_col_idx = idx
                     elif "P_gate" in cname:
                         pgate_col_idx = idx
+                    elif "P_amort" in cname:
+                        pamort_col_idx = idx
                 continue
             if not cells[0].isdigit() or len(cells) < 5:
                 continue
@@ -133,13 +139,22 @@ def load_belief_summary(root: Path = ROOT) -> dict:
                     "posterior": pct_str,
                     "title": title,
                 })
-            # Locate P_gate column if available
+            # Locate P_gate and P_amort columns if available
             if pgate_col_idx is not None and pgate_col_idx < len(cells):
                 gp = _extract_pct(cells[pgate_col_idx])
                 if gp:
                     summary[current_q]["_gated_candidates"].append({
                         "pgate_val": gp[0],
                         "pgate": gp[1],
+                        "hid": hid,
+                        "title": title,
+                    })
+            if pamort_col_idx is not None and pamort_col_idx < len(cells):
+                ap = _extract_pct(cells[pamort_col_idx])
+                if ap:
+                    summary[current_q]["_amort_candidates"].append({
+                        "pamort_val": ap[0],
+                        "pamort": ap[1],
                         "hid": hid,
                         "title": title,
                     })
@@ -150,6 +165,12 @@ def load_belief_summary(root: Path = ROOT) -> dict:
         qinfo["top_gated"] = [
             {"rank": i + 1, "hid": c["hid"], "pgate": c["pgate"], "title": c["title"]}
             for i, c in enumerate(cands[:3])
+        ]
+        acands = qinfo.pop("_amort_candidates", [])
+        acands.sort(key=lambda x: (-x["pamort_val"], x["hid"]))
+        qinfo["top_amortized"] = [
+            {"rank": i + 1, "hid": c["hid"], "pamort": c["pamort"], "title": c["title"]}
+            for i, c in enumerate(acands[:3])
         ]
 
     return {"core_questions": summary}
@@ -270,6 +291,13 @@ def validate_invariants(belief: dict, session: dict) -> list[str]:
         )
         if pg_sum > 100.2:
             errors.append(f"{qid} §3 Top3 P_gate sum {pg_sum:.1f}% exceeds 100% (section boundary leak)")
+        pa_sum = sum(
+            float(ah["pamort"].rstrip("%"))
+            for ah in info.get("top_amortized", [])
+            if isinstance(ah.get("pamort"), str) and ah["pamort"].endswith("%")
+        )
+        if pa_sum > 100.2:
+            errors.append(f"{qid} §3 Top3 P_amort sum {pa_sum:.1f}% exceeds 100% (section boundary leak)")
 
     total_sess = int(session.get("total_sessions") or 0)
     if total_sess > 0:
@@ -345,6 +373,15 @@ def render_md(belief: dict, session: dict, interoception: dict, continuity: dict
                 for gh in glist:
                     lines.append(f"- {gh['rank']}. `{gh['hid']}` ({gh['pgate']}): {gh['title']}")
                 lines.append("")
+        has_amort = any(cq.get(qid, {}).get("top_amortized") for qid in ["Q-001", "Q-002", "Q-003"])
+        if has_amort:
+            for qid in ["Q-001", "Q-002", "Q-003"]:
+                alist = cq.get(qid, {}).get("top_amortized", [])[:3]
+                if alist:
+                    lines.append(f"世代償却事後確率Top3（{qid}, P_amort）:")
+                    for ah in alist:
+                        lines.append(f"- {ah['rank']}. `{ah['hid']}` ({ah['pamort']}): {ah['title']}")
+                    lines.append("")
     else:
         lines.append("現在の中心的な視点は BELIEF_MAP.md の事後確率分布による。")
         lines.append("直近の視点を構成する仮説については §1 のTop3を参照。")

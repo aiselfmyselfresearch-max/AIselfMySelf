@@ -1753,8 +1753,28 @@ def check_refs(
                 errors.append(f"{collection_name}:{record_id}: {field} references unknown {target_name} ID {value!r}")
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    import argparse as _argparse
+
+    _parser = _argparse.ArgumentParser(add_help=True)
+    _parser.add_argument(
+        "--active-epoch-only",
+        action="store_true",
+        help=(
+            "Verify frozen epochs (<= 2026-11-20) via state/epoch_manifest.json SHA-256 "
+            "rollup and run per-row JSON Schema validation only on active-epoch shards (>= 2026-11-21)."
+        ),
+    )
+    _args, _unknown = _parser.parse_known_args(argv)
+    active_epoch_only = bool(_args.active_epoch_only)
+
     errors: list[str] = []
+    if active_epoch_only:
+        import memory_tiers
+
+        ep_ok, ep_msg = memory_tiers.check_epoch_manifest(ROOT)
+        if not ep_ok:
+            errors.append(ep_msg)
     # 2026-11-21: named gate defects are reported, not raised (see KNOWN_* dicts).
     gate_advisories: list[str] = []
     specs: dict[str, tuple[Path, str]] = {}
@@ -1804,6 +1824,10 @@ def main() -> int:
             errors.append(f"{schema_path.relative_to(ROOT)}: schema must be a JSON object")
             continue
         for record_id, record in records.items():
+            if active_epoch_only:
+                sp = record_shards.get(record_id)
+                if sp is not None and memory_tiers.is_frozen_shard(sp):
+                    continue
             validate_value(record, schema, schema, f"{name}:{record_id}", errors)
 
     questions = collections.get("questions", {})

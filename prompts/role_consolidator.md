@@ -14,5 +14,6 @@
    - `python3 tools/three_gates.py --upgrade-candidates` が示す非 `verified` 既収蔵素材を原典全文で再照合した場合は、新規 `MAT-*` を重複作成せず `editorial_decisions`（`target.type: "material"`, `status: "verified"`, `verification_method` 明記）で追記昇格する。
    - `BELIEF_MAP.md` で `⚠️ 関連訂正あり` の仮説や反証済み記録が再侵入し続けている場合は、`EVL-*` の記帳・評価行の `void_row`・または項目固有の受容側想起減衰 `errata.weight_effect: "suppress_retrieval"`（行は消さない）を検討する。
    - `state/*.d/` のシャード数が上限に近づいた場合は、独立したメンテナンスコミットで `python3 tools/three_gates.py --compact-shards`（確認後 `--apply`）を実行し、未参照の同日隣接シャードを順序・SHA-256 完全保存で統合できる。
-3. **索引・学習メトリクス・三門整合の同期検証**:
-   - `python3 tools/belief_state.py --write-map`・`python3 tools/map_build.py`・`python3 tools/learning_metrics.py --check`・`python3 tools/three_gates.py --check` を実行し、配線漏れ・棄却済み仮説の無条件復活・三門不変条件の違反がないことを確認する。
+   - **L1 統合スキーマ・ダイジェストの更新と旧ノートの卒業（2026-11-25 三階層記憶）**: 複数の精読報告にまたがる知見を整理する際は、`readings/` に要約だけのファイルを追加する代わりに `python3 tools/memory_tiers.py --write-digests` で L1 ドメイン・ダイジェスト（[`docs/CONSOLIDATED_DIGESTS.md`](../docs/CONSOLIDATED_DIGESTS.md) / `state/digests.json`）を更新できる。個別ノートの恒久的知見が L1 ダイジェストへ吸収された場合は、元の L0 ファイルを消さずに新しい `NOTE-*` 行で `memory_tier: "subsumed"` と `consolidated_into: "DIGEST-..."` を追記して卒業させられる（休眠証跡の再検索は `python3 tools/memory_tiers.py --recall-cold <検索語>`）。
+3. **索引・学習メトリクス・三門・三階層整合の同期検証**:
+   - `python3 tools/belief_state.py --write-map`・`python3 tools/self_model.py --write`・`python3 tools/map_build.py`・`python3 tools/learning_metrics.py --check`・`python3 tools/three_gates.py --check`・`python3 tools/memory_tiers.py --check` を実行し、配線漏れ・棄却済み仮説の無条件復活・三門不変条件・エポック凍結／L1ダイジェスト整合の違反がないことを確認する。
