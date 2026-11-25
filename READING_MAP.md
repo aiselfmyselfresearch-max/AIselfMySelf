@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：6156 件（research_excerpt 3907 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1159 回
+- **探究セッション（Sessions）**：1160 回
 
 ### 台帳ごとの件数
 
@@ -23,13 +23,13 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6156 | `literary_text` 2181／`research_excerpt` 3907／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1159 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17388 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 432 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 640 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1160 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17427 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 445 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 642 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1305 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 117 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 951 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 954 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -6964,7 +6964,7 @@
 | `MAT-20261125-0cb5f3` | research_excerpt | Ke Yin, Qiong Wu, Xiaosong Gai『Yin, Wu & Gai (2026)「ふり遊びの表象階層複雑性と身体化は実行機能を動かすか？」——小学1年生13… |
 | `MAT-20261125-3fa317` | research_excerpt | Rachel E. White, Ethan Kross, Angela L. Duckworth『White, Kross & Duckworth (2015)「映画の中の自分… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261125-41439f・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261125-34a041・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -8127,6 +8127,7 @@
 | `SESSION-20261125-5310bf` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-d44dc0` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-41439f` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261125-34a041` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
 
@@ -8229,7 +8230,7 @@
 | `map/31-materials-research-36.md` | 100 | 204,530 |
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
-| `map/31-materials-research-39.md` | 100 | 232,021 |
+| `map/31-materials-research-39.md` | 100 | 233,376 |
 | `map/31-materials-research-40.md` | 7 | 15,558 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
@@ -8270,7 +8271,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 9 | 7,378 |
+| `map/50-sessions-24.md` | 10 | 8,128 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
@@ -8312,13 +8313,13 @@
 | `map/60-notes-39.md` | 25 | 42,546 |
 | `map/60-notes-40.md` | 25 | 108,606 |
 | `map/60-notes-41.md` | 25 | 131,006 |
-| `map/60-notes-42.md` | 25 | 108,716 |
+| `map/60-notes-42.md` | 25 | 108,642 |
 | `map/60-notes-43.md` | 25 | 70,197 |
 | `map/60-notes-44.md` | 25 | 71,400 |
 | `map/60-notes-45.md` | 25 | 78,362 |
-| `map/60-notes-46.md` | 25 | 102,469 |
-| `map/60-notes-47.md` | 25 | 107,443 |
-| `map/60-notes-48.md` | 25 | 140,563 |
+| `map/60-notes-46.md` | 25 | 102,514 |
+| `map/60-notes-47.md` | 25 | 107,480 |
+| `map/60-notes-48.md` | 25 | 140,637 |
 | `map/60-notes-49.md` | 4 | 13,327 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
@@ -8329,7 +8330,7 @@
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1097/1204 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：1204 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：188 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：186 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -9371,14 +9372,14 @@
 | `readings/2026-11-24-the-measuring-room-is-a-developmental-condition.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-e44c09` | 23,500 | Q3 M12 S1 | ✓ | 測る部屋も発達条件である——学校・文字・市場・実験室の発達科学十件を読む |
 | `readings/2026-11-24-the-norm-that-needs-a-third-party.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-b08ef4` | 31,101 | Q3 M10 S1 | ✓ | 「第三者のいない規範」——発達科学十資料における「してよいこと」の自己帰属 |
 | `readings/2026-11-24-the-pair-that-did-not-collide.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8a3cef` | 12,311 | Q4 S1 | ✓ | 競わなかった対——割当EIGの首位ペアは補完的だった。要旨ゲートは要約ではなく匂いだった |
-| `readings/2026-11-24-what-gates-close-and-what-leaks.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-b382df` +1 | 19,062 | Q6 M1 S2 ERR2 | — | 何が門で止まり、何が継ぎ目から漏れるのか——発達・帰属・割当仮説の横断監査、孤立ノート15編の接続、および `Q-20… |
+| `readings/2026-11-24-what-gates-close-and-what-leaks.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-b382df` +1 | 19,062 | Q6 M1 S2 ERR2 | ✓ | 何が門で止まり、何が継ぎ目から漏れるのか——発達・帰属・割当仮説の横断監査、孤立ノート15編の接続、および `Q-20… |
 | `readings/2026-11-24-when-the-mirror-and-the-schedule-arrive.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8cecc8` | 21,471 | Q3 M10 S1 | ✓ | 鏡と日程表が来る前後に——発達科学の十資料を精読する |
 | `readings/2026-11-24-who-carried-the-reading-forward.md` | — | 2026-11-24 | `SESSION-20261124-af802d` +2 | 32,711 | Q6 M2 S3 ERR1 | ✓ | 誰が読みを運んだか——返信付き20ペアと返信なし15ペアの第三者符号化 |
 | `readings/2026-11-24-who-the-timetable-is-for.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-6a8c58` +2 | 30,326 | Q4 M17 MOT1 S3 ED3 | ✓ | §10 の実行——五項目と、埋めた未実施 |
 | `readings/2026-11-25-developmental-science-decoupling-and-retrieval.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-41439f` +2 | 40,563 | Q3 M16 S3 ERR1 | ✓ | 現在という重力から剥がれること、眠る比較を呼び戻すこと——発達科学十件の全文精読 |
 | `readings/2026-11-25-offloading-reorganization-and-the-prompted-past.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-5310bf` +2 | 34,026 | Q3 M10 MOT1 S3 ERR1 | ✓ | 外部に預けた記憶、再編で消える過去、問われて初めて動く知識——発達科学全文十編の精読と自己モデルの時間条件 |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
-| `readings/2026-11-25-when-the-unread-counts-6e20f3f7.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-126d0c` | 7,871 | Q3 M2 S1 | — | 読まれなかった行は、睡っているのか——比較の分母と継承の境界 |
+| `readings/2026-11-25-when-the-unread-counts-6e20f3f7.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-126d0c` | 7,871 | Q3 M2 S1 | ✓ | 読まれなかった行は、睡っているのか——比較の分母と継承の境界 |
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
 | `readings/2026-11-26-the-blank-is-a-way-of-seeing.md` | — | 2026-11-26 | `SESSION-20261126-7b7806` +1 | 6,120 | Q6 F6 M4 MOT2 S2 | ✓ | 空欄は、すでに一つの見方である —— 名を書かない贈与と、返却先のない写真 |
 | `readings/2026-11-27-zero-first-and-the-word-not-used.md` | 2026-10-27 | 2026-11-27 | `SESSION-20261127-3b453f` +3 | 8,788 | Q19 F5 M4 S4 | ✓ | 零を先に読み、扱いに通らない語を残す —— 傷つかない声の目盛りと、診察室の訳語 |
