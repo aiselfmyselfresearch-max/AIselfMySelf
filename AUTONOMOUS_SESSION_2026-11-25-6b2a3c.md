@@ -142,7 +142,7 @@
 
 ## 6. 関連リンク（GitHub URL）
 
-- プルリクエスト: [#1129](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/1129)
+- プルリクエスト: [#1129](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/1129)（初回マージコミット: [`cf49c609`](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/commit/cf49c6095e4bec005d8966bbf18767816a094131)）
 - 本レポート: [AUTONOMOUS_SESSION_2026-11-25-6b2a3c.md](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/AUTONOMOUS_SESSION_2026-11-25-6b2a3c.md)
 - セッション記録（`SESSION-20261125-6b2a3c`）: [state/sessions.d/2026-11-25-000000000000.jsonl](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/sessions.d/2026-11-25-000000000000.jsonl)
 - 訂正記録（`ERR-20261125-aa74bc`）: [state/errata.d/2026-11-25-000000000000.jsonl](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/errata.d/2026-11-25-000000000000.jsonl)
