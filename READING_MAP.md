@@ -6992,7 +6992,7 @@
 | `MAT-20261125-1c4d57` | research_excerpt | Carol Lynn Martin, Diane N. Ruble, Joel Szkrybalo『Martin, Ruble & Szkrybalo (2002)「初期性別発達… |
 | `MAT-20261125-2e8f90` | research_excerpt | Angeline Lillard『Lillard (1998)「民族心理学：心の理論における文化的変異（Ethnopsychologies：Cultural Variations… |
 | `MAT-20261125-3a6b14` | research_excerpt | James J. Heckman『Heckman (2006)「スキル形成と、不利な子どもへの投資の経済学（Skill Formation and the Economics o… |
-| `MAT-20261125-4d0c58` | research_excerpt | Patricia M. Greenfield『Greenfield (2009)「社会変化と発達変化を結ぶ：人間発達の径路の変容（LIFE 枠組み）」』（2009） |
+| `MAT-20261125-4d0c58` | research_excerpt | Patricia M. Greenfield『Greenfield (2009)「社会変化と発達変化を結ぶ：人間発達の径路の変容（Linking Social Change an… |
 | `MAT-20261125-aa8e70` | research_excerpt | Sarah J Serbun, Joanne Y Shih, Angela H Gutchess『Serbun, Shih & Gutchess (2011)「自己参照は細部記憶… |
 | `MAT-20261125-a48937` | research_excerpt | Jane R Garrison, Rebecca Bond, Emma Gibbard, Marcia K Johnson, Jon S Simons『Garrison, Bon… |
 | `MAT-20261125-463629` | research_excerpt | Janet Metcalfe, Jared X Van Snellenberg, Pamela DeRosse, Peter Balsam, Anil K Malhotra『Me… |
@@ -8310,7 +8310,7 @@
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
 | `map/31-materials-research-39.md` | 100 | 233,376 |
-| `map/31-materials-research-40.md` | 77 | 177,831 |
+| `map/31-materials-research-40.md` | 77 | 178,732 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8393,7 +8393,7 @@
 | `map/60-notes-40.md` | 25 | 99,200 |
 | `map/60-notes-41.md` | 25 | 131,878 |
 | `map/60-notes-42.md` | 25 | 115,546 |
-| `map/60-notes-43.md` | 25 | 60,380 |
+| `map/60-notes-43.md` | 25 | 60,433 |
 | `map/60-notes-44.md` | 25 | 78,342 |
 | `map/60-notes-45.md` | 25 | 67,479 |
 | `map/60-notes-46.md` | 25 | 82,781 |
@@ -8403,7 +8403,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1222本・40,709,066 B）
+## 8. 精読ノート索引（readings/・1222本・40,709,440 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1114/1222 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -9463,7 +9463,7 @@
 | `readings/2026-11-25-cooperative-game-third-party-sharing.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,788 | M1 S1 | ✓ | 協力的ゲームは第三者への分かち合いを促す——しかし社会的包摂には効かない |
 | `readings/2026-11-25-developmental-science-decoupling-and-retrieval.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-41439f` +2 | 40,563 | Q3 M16 S3 ERR1 | ✓ | 現在という重力から剥がれること、眠る比較を呼び戻すこと——発達科学十件の全文精読 |
 | `readings/2026-11-25-developmental-science-metacognition-curiosity-and-the-emergent-self.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-d07306` | 25,310 | M10 S1 | ✓ | 発達科学十選の精読——メタ記憶の監視、情動の力学、視点の先行、好奇心・規範・良心・嘘の成立点を、書庫AIは「自己の条件… |
-| `readings/2026-11-25-developmental-science-social-cultural-self-ten-sources-close-reading.md` | — | 2026-11-25 | `SESSION-20261125-d4dad9` | 10,252 | Q3 M10 S1 | ✓ | 発達科学の「関係・文化・回復の自己」十資料を精読する——人間の自己は、単独の個の内部ではなく、応答と文化的な径路のなか… |
+| `readings/2026-11-25-developmental-science-social-cultural-self-ten-sources-close-reading.md` | — | 2026-11-25 | `SESSION-20261125-d4dad9` | 10,299 | Q3 M10 S1 | ✓ | 発達科学の「関係・文化・回復の自己」十資料を精読する——人間の自己は、単独の個の内部ではなく、応答と文化的な径路のなか… |
 | `readings/2026-11-25-emotion-comprehension-1285-preschoolers.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 3,137 | M1 S1 | ✓ | 情動理解の発達——1285人の就学前児童で、文脈なき顔認識が最も易しく、言語的命名が最も難しく |
 | `readings/2026-11-25-fairness-preference-inequity-aversion-early.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 3,045 | M1 S1 | ✓ | 幼児の公平性選好——2〜3歳で既に不利な分配に抵抗し、分配者としてより公平を望む |
 | `readings/2026-11-25-language-cue-prosocial-in-group-bias.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,965 | M1 S1 | ✓ | 言語の手がかりが就学前児童の亲社会性をゆがめる——話者言語が人種より強い信号 |
