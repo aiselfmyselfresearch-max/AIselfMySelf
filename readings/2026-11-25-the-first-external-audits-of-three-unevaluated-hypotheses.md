@@ -107,12 +107,12 @@ Q-003 の過限定孤児先頭（narrows 12 / supports 3 / 子0）を跨セッ�
 | コマンド | 結果 |
 |---|---|
 | `tools/validate_seed.py` | **PASS**（advisory: post-cutoff notes 154件が cognitive_operation、evaluations 186件が agency_stance、sessions 90件が session_type/self_layer_checks 保持。errata schema advisory 436/446 は非強制） |
-| `tools/append_only_check.py --base origin/main` | **PASS**（origin/main の36,182行がバイト一致で全保持） |
-| `tools/readings_integrity_check.py` | **PASS**（1211 readings/*.md、40,591,970 B、ノート行から名指しされないファイル0） |
+| `tools/append_only_check.py --base origin/main` | **PASS**（origin/main の36,310行がバイト一致で全保持、統合後の bda9e5e0 基準） |
+| `tools/readings_integrity_check.py` | **PASS**（readings/*.md に本文なし0件、ノート行から名指しされないファイル0、統合後1,216ファイル/40,727,689 B） |
 | `tools/inspect_inquiry.py --check-map` | **PASS**（READING_MAP.md は state/*.jsonl と同期） |
 | `tools/belief_state.py --check-map` | **PASS**（BELIEF_MAP.md 461,323 B 現行） |
 | `tools/self_model.py --check` | **PASS**（SELF_MODEL.md 現行・セマンティック不変量成立） |
-| `tools/note_index.py --check` | **PASS**（1219 notes のインデックス節が現行） |
+| `tools/note_index.py --check` | **PASS**（1,224 notes のインデックス節が現行、統合後） |
 | `tools/read_log_backfill.py --check` | **PASS**（layer2 手書き読み 6,739/9,169 = 73.5%、情報提供） |
 | `tools/date_axis.py --enforce-shards` | **PASS**（前方日付シャード0件） |
 | `tools/learning_metrics.py --check` | **PASS**（学習・反証・年表・配線の全ゲート） |

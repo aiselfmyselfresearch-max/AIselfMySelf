@@ -89,19 +89,19 @@ EIG の枯渇（中心三問の先頭が99%台、新しい根の供給より検�
 | コマンド | 結果 |
 |---|---|
 | `tools/validate_seed.py` | **PASS**（self-layer advisory: notes 154 / evaluations 186 / sessions 90 が post-cutoff 必須項目を保持） |
-| `tools/append_only_check.py --base origin/main` | **PASS**（origin/main の36,182行がバイト一致） |
+| `tools/append_only_check.py --base origin/main` | **PASS**（origin/main の36,310行がバイト一致、統合後 bda9e5e0 基準） |
 | `tools/readings_integrity_check.py` | **PASS** |
 | `tools/inspect_inquiry.py --check-map` | **PASS** |
 | `tools/belief_state.py --check-map` | **PASS** |
 | `tools/self_model.py --check` | **PASS** |
-| `tools/note_index.py --check` | **PASS**（1,219 notes） |
+| `tools/note_index.py --check` | **PASS**（1,224 notes、統合後） |
 | `tools/read_log_backfill.py --check` | **PASS**（layer2 73.5%、情報提供） |
 | `tools/date_axis.py --enforce-shards` | **PASS** |
 | `tools/learning_metrics.py --check` | **PASS** |
 | `tools/three_gates.py --check` | **PASS** |
 | `tools/memory_tiers.py --check` | **PASS** |
 | `tools/claim_wiring.py --check` | **PASS** |
-| `tools/size_budget.py --strict` | **PASS**（readings 1213/1250 等、全ソフト上限内） |
+| `tools/size_budget.py --strict` | **PASS**（readings 1,216/1,250・38.84 MiB、notes.d 180/182 ファイル等、全ソフト上限内、統合後） |
 | `python3 -m unittest discover -s tests` | **1,207 tests 全PASS**（ERR-304f57 の直接宛先追加に伴う宣言セット再測定・ピン更新3件を含む。詳細は readings 側 §7） |
 
 補記: read_log の対象 evaluation id 12行を実 id に修正（未コミット branch 内のみ、origin/main 行は不変）。詳細は readings/2026-11-25-the-first-external-audits-of-three-unevaluated-hypotheses.md §7。
