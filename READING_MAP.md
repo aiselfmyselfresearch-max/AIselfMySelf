@@ -8406,7 +8406,7 @@
 | `map/60-notes-40.md` | 25 | 98,433 |
 | `map/60-notes-41.md` | 25 | 130,259 |
 | `map/60-notes-42.md` | 25 | 116,131 |
-| `map/60-notes-43.md` | 25 | 64,113 |
+| `map/60-notes-43.md` | 25 | 64,145 |
 | `map/60-notes-44.md` | 25 | 76,071 |
 | `map/60-notes-45.md` | 25 | 66,386 |
 | `map/60-notes-46.md` | 25 | 81,690 |
@@ -8416,7 +8416,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1225本・40,746,472 B）
+## 8. 精読ノート索引（readings/・1225本・40,747,844 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1117/1225 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -9480,7 +9480,7 @@
 | `readings/2026-11-25-developmental-science-social-cultural-self-ten-sources-close-reading.md` | — | 2026-11-25 | `SESSION-20261125-d4dad9` | 10,299 | Q3 M10 S1 | ✓ | 発達科学の「関係・文化・回復の自己」十資料を精読する——人間の自己は、単独の個の内部ではなく、応答と文化的な径路のなか… |
 | `readings/2026-11-25-emotion-comprehension-1285-preschoolers.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 3,137 | M1 S1 | ✓ | 情動理解の発達——1285人の就学前児童で、文脈なき顔認識が最も易しく、言語的命名が最も難しく |
 | `readings/2026-11-25-fairness-preference-inequity-aversion-early.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 3,045 | M1 S1 | ✓ | 幼児の公平性選好——2〜3歳で既に不利な分配に抵抗し、分配者としてより公平を望む |
-| `readings/2026-11-25-gated-pair-separation-and-first-audit.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-7ad91d` | 8,401 | Q3 M3 S1 | — | 分布を動かさない検証も残す——三門制御ペアの境界検査と、一回的選択説の初回監査 |
+| `readings/2026-11-25-gated-pair-separation-and-first-audit.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-7ad91d` | 9,201 | Q3 M3 S1 | — | 分布を動かさない検証も残す——三門制御ペアの境界検査と、一回的選択説の初回監査 |
 | `readings/2026-11-25-language-cue-prosocial-in-group-bias.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,965 | M1 S1 | ✓ | 言語の手がかりが就学前児童の亲社会性をゆがめる——話者言語が人種より強い信号 |
 | `readings/2026-11-25-neonatal-statistical-learning-erp.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,736 | M1 S1 | ✓ | 眠る新生児の脳が音声流の統計構造を抽出する——遷移確率の構造がERPで可視化される |
 | `readings/2026-11-25-offloading-reorganization-and-the-prompted-past.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-5310bf` +2 | 34,026 | Q3 M10 MOT1 S3 ERR1 | ✓ | 外部に預けた記憶、再編で消える過去、問われて初めて動く知識——発達科学全文十編の精読と自己モデルの時間条件 |
