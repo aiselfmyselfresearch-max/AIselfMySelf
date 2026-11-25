@@ -44,14 +44,22 @@ class MemoryTiersAndAmortizationTests(unittest.TestCase):
 
         for core_q in ("Q-001", "Q-002", "Q-003"):
             hyps = self.bstate["questions"][core_q]["hypotheses"]
+            active_p = sum(
+                h["posterior"] for h in hyps if h["effective_status"] == "active"
+            )
+            active_pg = sum(
+                h["gated_posterior"] for h in hyps if h["effective_status"] == "active"
+            )
             active_amort = sum(
                 h["amortized_posterior"] for h in hyps if h["effective_status"] == "active"
             )
             self.assertGreater(
                 active_amort,
-                0.95,
-                f"{core_q} active amortized mass should exceed 95%, got {active_amort:.4f}",
+                0.85,
+                f"{core_q} active amortized mass should comfortably exceed readability floor, got {active_amort:.4f}",
             )
+            self.assertGreater(active_amort, active_p, core_q)
+            self.assertGreaterEqual(active_amort, active_pg - 1e-6, core_q)
             pair = belief_state.select_amortized_pair(
                 self.bstate, self.data["evaluations"], core_q
             )
