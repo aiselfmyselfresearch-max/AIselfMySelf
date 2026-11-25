@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：6156 件（research_excerpt 3907 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1159 回
+- **探究セッション（Sessions）**：1160 回
 
 ### 台帳ごとの件数
 
@@ -23,11 +23,11 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6156 | `literary_text` 2181／`research_excerpt` 3907／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1159 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17388 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1160 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17396 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 432 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 640 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1305 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1306 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 117 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 951 |  |
 
@@ -6964,7 +6964,7 @@
 | `MAT-20261125-0cb5f3` | research_excerpt | Ke Yin, Qiong Wu, Xiaosong Gai『Yin, Wu & Gai (2026)「ふり遊びの表象階層複雑性と身体化は実行機能を動かすか？」——小学1年生13… |
 | `MAT-20261125-3fa317` | research_excerpt | Rachel E. White, Ethan Kross, Angela L. Duckworth『White, Kross & Duckworth (2015)「映画の中の自分… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261125-41439f・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261125-672b94・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -8127,6 +8127,7 @@
 | `SESSION-20261125-5310bf` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-d44dc0` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-41439f` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261125-672b94` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
 
@@ -8270,7 +8271,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 9 | 7,378 |
+| `map/50-sessions-24.md` | 10 | 8,108 |
 | `map/60-notes-01.md` | 25 | 71,508 |
 | `map/60-notes-02.md` | 25 | 68,039 |
 | `map/60-notes-03.md` | 25 | 71,934 |
@@ -8312,23 +8313,23 @@
 | `map/60-notes-39.md` | 25 | 42,546 |
 | `map/60-notes-40.md` | 25 | 108,606 |
 | `map/60-notes-41.md` | 25 | 131,006 |
-| `map/60-notes-42.md` | 25 | 108,716 |
-| `map/60-notes-43.md` | 25 | 70,197 |
-| `map/60-notes-44.md` | 25 | 71,400 |
-| `map/60-notes-45.md` | 25 | 78,362 |
-| `map/60-notes-46.md` | 25 | 102,469 |
-| `map/60-notes-47.md` | 25 | 107,443 |
-| `map/60-notes-48.md` | 25 | 140,563 |
-| `map/60-notes-49.md` | 4 | 13,327 |
+| `map/60-notes-42.md` | 25 | 110,278 |
+| `map/60-notes-43.md` | 25 | 68,994 |
+| `map/60-notes-44.md` | 25 | 72,387 |
+| `map/60-notes-45.md` | 25 | 76,746 |
+| `map/60-notes-46.md` | 25 | 101,798 |
+| `map/60-notes-47.md` | 25 | 103,838 |
+| `map/60-notes-48.md` | 25 | 143,089 |
+| `map/60-notes-49.md` | 5 | 19,046 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1204本・40,480,266 B）
+## 8. 精読ノート索引（readings/・1205本・40,491,918 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1097/1204 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1098/1205 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1204 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1205 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：188 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9378,7 +9379,8 @@
 | `readings/2026-11-25-developmental-science-decoupling-and-retrieval.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-41439f` +2 | 40,563 | Q3 M16 S3 ERR1 | ✓ | 現在という重力から剥がれること、眠る比較を呼び戻すこと——発達科学十件の全文精読 |
 | `readings/2026-11-25-offloading-reorganization-and-the-prompted-past.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-5310bf` +2 | 34,026 | Q3 M10 MOT1 S3 ERR1 | ✓ | 外部に預けた記憶、再編で消える過去、問われて初めて動く知識——発達科学全文十編の精読と自己モデルの時間条件 |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
-| `readings/2026-11-25-when-the-unread-counts-6e20f3f7.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-126d0c` | 7,871 | Q3 M2 S1 | — | 読まれなかった行は、睡っているのか——比較の分母と継承の境界 |
+| `readings/2026-11-25-three-tier-memory-generational-amortization-and-epoch-freeze.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-672b94` | 7,226 | Q3 M3 S1 | — | 三階層記憶（L0/L1/L2）・世代償却（`P_amort`）・エポック境界凍結の制度化と実測（2026-11-25） |
+| `readings/2026-11-25-when-the-unread-counts-6e20f3f7.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-126d0c` | 7,871 | Q3 M2 S1 | ✓ | 読まれなかった行は、睡っているのか——比較の分母と継承の境界 |
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
 | `readings/2026-11-26-the-blank-is-a-way-of-seeing.md` | — | 2026-11-26 | `SESSION-20261126-7b7806` +1 | 6,120 | Q6 F6 M4 MOT2 S2 | ✓ | 空欄は、すでに一つの見方である —— 名を書かない贈与と、返却先のない写真 |
 | `readings/2026-11-27-zero-first-and-the-word-not-used.md` | 2026-10-27 | 2026-11-27 | `SESSION-20261127-3b453f` +3 | 8,788 | Q19 F5 M4 S4 | ✓ | 零を先に読み、扱いに通らない語を残す —— 傷つかない声の目盛りと、診察室の訳語 |

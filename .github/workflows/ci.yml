@@ -73,6 +73,9 @@ jobs:
       - name: Check Three-Gates memory, inhibition, and reality-monitoring invariants
         run: python3 tools/three_gates.py --check
 
+      - name: Check Three-Tier Memory digests and Epoch Freeze SHA-256
+        run: python3 tools/memory_tiers.py --check
+
       - name: Check size budgets
         run: python3 tools/size_budget.py
 

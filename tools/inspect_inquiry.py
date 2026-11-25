@@ -1225,6 +1225,7 @@ def _belief_briefing_lines(
     root: Path = ROOT,
     pair_policy: str = "eig",
     role_binding: bool = False,
+    hot_only: bool = False,
 ) -> tuple[list[str], dict[str, str] | None]:
     """Build §0.2 Posterior Belief Briefing & 3-role assignment when hypotheses exist."""
     if not data.get("hypotheses"):
@@ -1253,6 +1254,13 @@ def _belief_briefing_lines(
             )
             if gpair:
                 bstate["questions"][pqid]["top_competing_pair"] = gpair
+    elif pair_policy == "amortized":
+        for pqid in list(bstate.get("questions") or ()):
+            apair = belief_state.select_amortized_pair(
+                bstate, bstate_input.get("evaluations") or {}, pqid
+            )
+            if apair:
+                bstate["questions"][pqid]["top_competing_pair"] = apair
     qstate = bstate["questions"].get(target_qid)
     role_info = belief_state.assign_session_role(
         seed=seed_label, question_summary=qstate, role_binding=role_binding
@@ -1300,6 +1308,24 @@ def _belief_briefing_lines(
                 f"P_gate首位 `{g_top['hypothesis_id']}` ({g_top.get('gated_posterior', 0.0)*100:.1f}%) ｜ 最優先検証: {pair_txt}"
             )
             continue
+        if pair and pair.get("policy") == "amortized":
+            pair_detail = (
+                f"世代償却P_amort: EIG_amort={pair['expected_info_gain']:.4f}, "
+                f"P_amort={pair.get('left_posterior', 0.0)*100:.1f}%/{pair.get('right_posterior', 0.0)*100:.1f}%, "
+                f"分離{pair.get('separations', 0)}回"
+            )
+            pair_txt = f"`{pair['left_hypothesis_id']}` vs `{pair['right_hypothesis_id']}` ({pair_detail})"
+            a_top = max(
+                cqs["hypotheses"],
+                key=lambda h: float(h.get("amortized_posterior", h.get("posterior", 0.0))),
+            )
+            out.append(
+                f"  - `{cqid}`: 有効仮説 {cqs['active_count']}/{cqs['hypothesis_count']} 件 ｜ "
+                f"H_amort={cqs.get('amortized_entropy_bits', 0.0):.3f}b "
+                f"(現役質量{cqs.get('amortized_active_mass_share', 0.0)*100:.1f}%) ｜ "
+                f"P_amort首位 `{a_top['hypothesis_id']}` ({a_top.get('amortized_posterior', 0.0)*100:.1f}%) ｜ 最優先検証: {pair_txt}"
+            )
+            continue
         if pair:
             pair_detail = f"EIG={pair['expected_info_gain']:.4f}"
             if "pair_mass_sum" in pair:
@@ -1328,6 +1354,29 @@ def _belief_briefing_lines(
             f"条件付き世代質量 **{cqs['gen1_plus_mass']*100:.1f}%** ｜ D_KL={cqs['kl_from_uniform_bits']:.3f}b ｜ "
             f"首位 `{top_h['hypothesis_id']}` ({top_h['posterior']*100:.1f}%) ｜ 最優先検証: {pair_txt}{unex_txt}"
         )
+
+    if pair_policy != "amortized" and any(
+        "amortized_active_mass_share" in (bstate["questions"].get(cqid) or {})
+        for cqid in CORE_QUESTION_IDS
+    ):
+        amort_bits: list[str] = []
+        for cqid in CORE_QUESTION_IDS:
+            cqs = bstate["questions"].get(cqid) or {}
+            if not cqs.get("hypotheses"):
+                continue
+            a_top = max(
+                cqs["hypotheses"],
+                key=lambda h: float(h.get("amortized_posterior", 0.0)),
+            )
+            amort_bits.append(
+                f"`{cqid}` 首位 `{a_top['hypothesis_id']}` "
+                f"({a_top.get('amortized_posterior', 0.0)*100:.1f}%, 現役質量{cqs.get('amortized_active_mass_share', 0.0)*100:.1f}%)"
+            )
+        if amort_bits:
+            out.append(
+                f"- **世代償却基底（`P_amort` / `--pair-policy amortized`）**: {' ／ '.join(amort_bits)}。"
+                "三階層記憶の L1 統合スキーマは `docs/CONSOLIDATED_DIGESTS.md`、L0 休眠証跡検索は `python3 tools/memory_tiers.py --recall-cold <語句>`。"
+            )
 
     prov = bstate.get("provenance_verification") or {}
     if prov.get("psc_total", 0) > 0:
@@ -1407,7 +1456,19 @@ def _belief_briefing_lines(
                 + "（`P_gate` では depth≥1 同一セッション自己支持は重み 0。別セッションによる初回横断検証を優先検討）"
             )
         out.append(f"- **対象問い `{target_qid}` の競合仮説・適用条件・反証条件（Exclusion Clause）**:")
-        for h in qstate["hypotheses"]:
+        all_hyps = list(qstate["hypotheses"])
+        omitted_hyps_count = 0
+        if hot_only and len(all_hyps) > 8:
+            active_sorted = sorted(
+                (h for h in all_hyps if h.get("effective_status") == "active"),
+                key=lambda h: (-float(h.get("amortized_posterior", h.get("gated_posterior", h.get("posterior", 0.0)))), h["hypothesis_id"]),
+            )
+            keep_ids = {h["hypothesis_id"] for h in active_sorted[:8]} | set(unex_target)
+            shown_hyps = [h for h in active_sorted if h["hypothesis_id"] in keep_ids]
+            omitted_hyps_count = len(all_hyps) - len(shown_hyps)
+        else:
+            shown_hyps = all_hyps
+        for h in shown_hyps:
             eflags = h.get("errata_flags") or []
             badges: list[str] = []
             if eflags:
@@ -1436,6 +1497,11 @@ def _belief_briefing_lines(
                 if "gated_posterior" in h
                 else ""
             )
+            amort_meta = (
+                f" / P_amort={h['amortized_posterior']*100:.1f}%"
+                if "amortized_posterior" in h
+                else ""
+            )
             inh_st = h.get("inhibition_state")
             if inh_st == "orphan_over_narrowed":
                 badges.append("🔸過限定・子仮説0")
@@ -1445,12 +1511,17 @@ def _belief_briefing_lines(
                 badges.append("🔇想起抑制")
             ebadge = (" " + " ".join(badges)) if badges else ""
             out.append(
-                f"  - **`{h['hypothesis_id']}`** [`{h['effective_status']}` / **P={h['posterior']*100:.1f}%**{gate_meta} / "
+                f"  - **`{h['hypothesis_id']}`** [`{h['effective_status']}` / **P={h['posterior']*100:.1f}%**{gate_meta}{amort_meta} / "
                 f"u={h['uncertainty']:.3f} / G{h['generation']}:{h['lineage_op']}{audit_meta}] {h['title']}{ebadge}"
             )
             out.append(f"    - 命題: {_one_line(h['proposition'], 150)}")
             out.append(f"    - 適用条件: {_one_line(' ／ '.join(h['scope_conditions']), 140)}")
             out.append(f"    - 反証条件: {_one_line(h['exclusion_clause'], 140)}")
+        if omitted_hyps_count > 0:
+            out.append(
+                f"  - *(L2 ホット圧縮 `--hot-only` により棄却済・narrowed・低質量仮説 {omitted_hyps_count} 件の詳細を省略。"
+                f"全件は `BELIEF_MAP.md` または `--include-cold` で参照可能)*"
+            )
     else:
         out.append(
             f"- **対象問い `{target_qid}`**: 直接の `HYP-*` は未登録です。中心三問の条件付き仮説と接続するか、"
@@ -1469,6 +1540,7 @@ def _resolve_auto_target(
     errata: dict[str, dict[str, Any]] | None = None,
     root: Path = ROOT,
     exclude_saturated: bool = False,
+    allocation_basis: str = "scoped",
 ) -> tuple[str, str | None]:
     """Pick the question an ``--packet auto`` reader is pointed at.
 
@@ -1515,7 +1587,11 @@ def _resolve_auto_target(
         # never the core three (they are never in that pool anyway).
         if (seed_int % 4) != 3 or not metrics["unresponded_questions"]:
             return belief_state.select_auto_question_id(
-                bstate, open_qids, seed=seed_label, exclude_saturated=exclude_saturated
+                bstate,
+                open_qids,
+                seed=seed_label,
+                allocation_basis=allocation_basis,
+                exclude_saturated=exclude_saturated,
             )
         return (
             metrics["unresponded_questions"][seed_int % len(metrics["unresponded_questions"])],
@@ -1546,6 +1622,7 @@ def describe_assignment(
     root: Path = ROOT,
     exclude_saturated: bool = False,
     role_binding: bool = False,
+    allocation_basis: str = "scoped",
 ) -> dict[str, Any]:
     """The packet's assignment receipt: what the seed decided before anyone chose.
 
@@ -1580,6 +1657,7 @@ def describe_assignment(
         offered, auto_reason = _resolve_auto_target(
             data, metrics, seed_label=seed_label, seed_int=seed_int,
             errata=errata, root=root, exclude_saturated=exclude_saturated,
+            allocation_basis=allocation_basis,
         )
     bstate_input = dict(data)
     bstate_input.setdefault("errata", errata)
@@ -1626,6 +1704,9 @@ def build_context_packet(
     pair_policy: str = "eig",
     exclude_saturated: bool = False,
     role_binding: bool = False,
+    allocation_basis: str = "scoped",
+    hot_only: bool = False,
+    include_cold: bool = False,
 ) -> str:
     if errata is None:
         errata = load_errata(root)
@@ -1645,6 +1726,7 @@ def build_context_packet(
         target_qid, auto_reason = _resolve_auto_target(
             data, metrics, seed_label=seed_label, seed_int=seed_int,
             errata=errata, root=root, exclude_saturated=exclude_saturated,
+            allocation_basis=allocation_basis,
         )
 
     if target_qid not in questions:
@@ -1654,6 +1736,7 @@ def build_context_packet(
     briefing_lines, role_info = _belief_briefing_lines(
         data, target_qid, seed_label=seed_label, errata=errata, root=root,
         pair_policy=pair_policy, role_binding=role_binding,
+        hot_only=hot_only and not include_cold,
     )
 
     # Gather related fragments (referencing target_qid or its parent questions),
@@ -1782,6 +1865,11 @@ def build_context_packet(
                 )
     lines.append("")
 
+    if hot_only:
+        import memory_tiers
+
+        lines.extend(memory_tiers.for_question_digest_lines(target_qid, root=root))
+
     lines.append("## 3. 対話素材（結論の証拠ではなく、摩擦と比喩の種として扱う）")
     # Byte budget over the candidate-priority order produced above, not
     # necessarily ledger order. Blocks are carried whole until the next would
@@ -1789,6 +1877,15 @@ def build_context_packet(
     # This is a strict prefix, not best-fit packing: both priority and block size
     # affect what enters the window, and neither establishes a reader's action.
     packet_materials = _candidate_materials_for_question(data, target_qid, errata=errata)
+    cold_filtered_mats: list[str] = []
+    if hot_only and not include_cold and packet_materials:
+        import memory_tiers
+
+        mat_classes = memory_tiers.classify_materials({**data, "errata": errata})
+        hot_cands = [m for m in packet_materials if (mat_classes.get(m) or {}).get("tier") == "hot"]
+        if hot_cands:
+            cold_filtered_mats = [m for m in packet_materials if m not in set(hot_cands)]
+            packet_materials = hot_cands
     shown_mats: list[str] = []
     omitted_mats: list[str] = []
     used_bytes = 0
@@ -1803,6 +1900,15 @@ def build_context_packet(
         shown_mats.append(mat_id)
         used_bytes += cost
         lines.extend(block)
+    if cold_filtered_mats:
+        c_sample = ", ".join(f"`{m}`" for m in cold_filtered_mats[:8])
+        more_c = f" ほか{len(cold_filtered_mats) - 8}件" if len(cold_filtered_mats) > 8 else ""
+        lines.append(
+            f"- **L0 コールド証跡隔離注記（`--hot-only`）**: 未検証・未配線の休眠素材 {len(cold_filtered_mats)} 件"
+            f"（{c_sample}{more_c}）をホット作業記憶窓から除外しました。"
+            " 幹事実リマインダー検索は `python3 tools/memory_tiers.py --recall-cold <語句>`、全件含める場合は `--include-cold`。"
+        )
+        lines.append("")
     if omitted_mats:
         omitted_str = ", ".join(f"`{m}`" for m in omitted_mats)
         lines.append(
@@ -2462,15 +2568,33 @@ def main() -> int:
     )
     parser.add_argument(
         "--pair-policy",
-        choices=("eig", "least_separated", "gated"),
+        choices=("eig", "least_separated", "gated", "amortized"),
         default="eig",
         help=(
             "Which pair the packet offers as the next test. 'eig' (default) is historical "
             "p_a*p_b*(u_a+u_b); 'least_separated' offers the least-tested active pair with "
-            "P>=1%%; 'gated' uses the Three-Gates receiver-gated basis P_gate (blocking "
-            "post-dated and opponent-as-heir fallback credit, weighting PSC by verification, "
-            "and discounting pair repeats and self-only supports)."
+            "P>=1%%; 'gated' uses the Three-Gates receiver-gated basis P_gate; 'amortized' "
+            "uses generation-amortized P_amort (releasing narrowed parent mass into verified active heirs)."
         ),
+    )
+    parser.add_argument(
+        "--allocation-basis",
+        choices=("scoped", "scoped_norm", "historical", "amortized"),
+        default="scoped",
+        help="Which allocation basis `--packet auto` and `--assignment-json` rank open questions under (default: scoped).",
+    )
+    parser.add_argument(
+        "--hot-only",
+        action="store_true",
+        help=(
+            "Three-tier L2 working-memory mode: inject L1 consolidated domain digest summary "
+            "(`docs/CONSOLIDATED_DIGESTS.md`) and filter out L0 cold (unverified/unwired) materials."
+        ),
+    )
+    parser.add_argument(
+        "--include-cold",
+        action="store_true",
+        help="Explicitly retain all L0 cold materials even when `--hot-only` is passed.",
     )
     parser.add_argument(
         "--material-budget",
@@ -2562,6 +2686,7 @@ def main() -> int:
                 data, args.packet or "auto", seed=args.seed,
                 exclude_saturated=args.exclude_saturated,
                 role_binding=args.role_binding,
+                allocation_basis=args.allocation_basis,
             )
         except ValueError as exc:
             print(f"error: {exc}", file=sys.stderr)
@@ -2581,6 +2706,9 @@ def main() -> int:
                     pair_policy=args.pair_policy,
                     exclude_saturated=args.exclude_saturated,
                     role_binding=args.role_binding,
+                    allocation_basis=args.allocation_basis,
+                    hot_only=args.hot_only,
+                    include_cold=args.include_cold,
                 )
             )
         except ValueError as exc:
