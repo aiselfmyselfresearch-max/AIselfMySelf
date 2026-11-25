@@ -213,6 +213,8 @@ class RealTreeTests(unittest.TestCase):
         # joined the corpus via a merged session without updating it, so the
         # test was already red at HEAD (1964559). The corpus legitimately grew;
         # the pin follows the corpus, not the other way round.
+        # (The parallel session SESSION-20261125-c3bcee reached the same 90 -> 91
+        # conclusion independently; both comments are kept.)
         self.assertEqual(len(self.reports), 91)
 
     def test_series_cites_research_almost_only(self) -> None:

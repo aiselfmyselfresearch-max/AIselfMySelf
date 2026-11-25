@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6166 件（research_excerpt 3917 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6176 件（research_excerpt 3927 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1163 回
+- **探究セッション（Sessions）**：1164 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6166 | `literary_text` 2181／`research_excerpt` 3917／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6176 | `literary_text` 2181／`research_excerpt` 3927／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1163 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17460 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1164 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17474 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 445 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 642 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1308 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 119 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 961 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1318 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 120 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 964 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6166 件・詳細は map/3*.md）
+## 4. 対話素材（6176 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -6963,6 +6963,16 @@
 | `MAT-20261125-7972f6` | research_excerpt | Rachel E. White, Stephanie M. Carlson『White & Carlson (2021)「空想物語は効かず、『〜のふり』への関与だけが効く」——3… |
 | `MAT-20261125-0cb5f3` | research_excerpt | Ke Yin, Qiong Wu, Xiaosong Gai『Yin, Wu & Gai (2026)「ふり遊びの表象階層複雑性と身体化は実行機能を動かすか？」——小学1年生13… |
 | `MAT-20261125-3fa317` | research_excerpt | Rachel E. White, Ethan Kross, Angela L. Duckworth『White, Kross & Duckworth (2015)「映画の中の自分… |
+| `MAT-20261125-b6d22b` | research_excerpt | Marija Nikolić, Robert Hepach『Nikolić & Hepach (2026)「自己意識的情動の初期発達における動機的・伝達的機能」——情動は晚期的発… |
+| `MAT-20261125-175fcf` | research_excerpt | Jing Li, Wenjun Wang, Jing Yu, Li Zhu『Li, Wang, Yu & Zhu (2016)「幼児の公平性選好の発達」——2〜3歳で既に不平等嫌… |
+| `MAT-20261125-143d79` | research_excerpt | Xin Qiu, Jing Yu, Tong Li, Nian Cheng, Li Zhu『Qiu, Yu, Li, Cheng & Zhu (2017)「手続き的正義文脈での児… |
+| `MAT-20261125-3d999f` | research_excerpt | Kathleen G. Estes, Christine Lew-Williams『Estes & Lew-Williams (2015)「複数話者を跨ぐ乳児の統計的語分割」——… |
+| `MAT-20261125-f86ccc` | research_excerpt | Tuija Teinonen, Violetta Fellman, Risto Näätänen, Paavo Alku, Minna Huotilainen『Teinonen,… |
+| `MAT-20261125-af24d3` | research_excerpt | Leidy A. A. Doumas, Ryan G. Morrison, Laura E. Richland『Doumas, Morrison & Richland (2018… |
+| `MAT-20261125-663e1b` | research_excerpt | Tom Toppe, Sebastian Hardecker, Daniel B. M. Haun『Toppe, Hardecker & Haun (2019)「協力的ゲームは就… |
+| `MAT-20261125-ef59c1` | research_excerpt | Emma Somogyi, Thue Tuyet-Uyen Tran, Brice Guellai, Ivan Király, Radiah Esseily『Somogyi, T… |
+| `MAT-20261125-e87b8f` | research_excerpt | Tom L. Griffiths, David M. Sobel, Joshua B. Tenenbaum, Alison Gopnik『Griffiths, Sobel, Te… |
+| `MAT-20261125-5df135` | research_excerpt | Sandrine Richard, Théo Cavadini, Nadia Dalla-Libera, Sébastien Angonin, Lucile Alaria, Al… |
 | `MAT-20261125-aa8e70` | research_excerpt | Sarah J Serbun, Joanne Y Shih, Angela H Gutchess『Serbun, Shih & Gutchess (2011)「自己参照は細部記憶… |
 | `MAT-20261125-a48937` | research_excerpt | Jane R Garrison, Rebecca Bond, Emma Gibbard, Marcia K Johnson, Jon S Simons『Garrison, Bon… |
 | `MAT-20261125-463629` | research_excerpt | Janet Metcalfe, Jared X Van Snellenberg, Pamela DeRosse, Peter Balsam, Anil K Malhotra『Me… |
@@ -8139,6 +8149,7 @@
 | `SESSION-20261125-41439f` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-34a041` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-3ede13` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261125-6d15bd` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-c3bcee` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-672b94` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
@@ -8244,7 +8255,7 @@
 | `map/31-materials-research-37.md` | 100 | 279,216 |
 | `map/31-materials-research-38.md` | 100 | 262,380 |
 | `map/31-materials-research-39.md` | 100 | 233,376 |
-| `map/31-materials-research-40.md` | 17 | 44,482 |
+| `map/31-materials-research-40.md` | 27 | 66,026 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8284,7 +8295,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 13 | 10,437 |
+| `map/50-sessions-24.md` | 14 | 11,256 |
 | `map/60-notes-01.md` | 25 | 72,487 |
 | `map/60-notes-02.md` | 25 | 67,536 |
 | `map/60-notes-03.md` | 25 | 74,159 |
@@ -8326,23 +8337,23 @@
 | `map/60-notes-39.md` | 25 | 42,301 |
 | `map/60-notes-40.md` | 25 | 105,616 |
 | `map/60-notes-41.md` | 25 | 130,437 |
-| `map/60-notes-42.md` | 25 | 115,801 |
-| `map/60-notes-43.md` | 25 | 67,702 |
-| `map/60-notes-44.md` | 25 | 71,724 |
-| `map/60-notes-45.md` | 25 | 74,407 |
-| `map/60-notes-46.md` | 25 | 104,247 |
-| `map/60-notes-47.md` | 25 | 100,270 |
-| `map/60-notes-48.md` | 25 | 140,084 |
-| `map/60-notes-49.md` | 7 | 32,481 |
+| `map/60-notes-42.md` | 25 | 101,507 |
+| `map/60-notes-43.md` | 25 | 63,575 |
+| `map/60-notes-44.md` | 25 | 80,013 |
+| `map/60-notes-45.md` | 25 | 70,916 |
+| `map/60-notes-46.md` | 25 | 93,045 |
+| `map/60-notes-47.md` | 25 | 97,246 |
+| `map/60-notes-48.md` | 25 | 128,419 |
+| `map/60-notes-49.md` | 17 | 86,206 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1207本・40,517,207 B）
+## 8. 精読ノート索引（readings/・1217本・40,585,331 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1100/1207 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1110/1217 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1207 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1217 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：188 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9390,9 +9401,19 @@
 | `readings/2026-11-24-when-the-mirror-and-the-schedule-arrive.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-8cecc8` | 21,471 | Q3 M10 S1 | ✓ | 鏡と日程表が来る前後に——発達科学の十資料を精読する |
 | `readings/2026-11-24-who-carried-the-reading-forward.md` | — | 2026-11-24 | `SESSION-20261124-af802d` +2 | 32,711 | Q6 M2 S3 ERR1 | ✓ | 誰が読みを運んだか——返信付き20ペアと返信なし15ペアの第三者符号化 |
 | `readings/2026-11-24-who-the-timetable-is-for.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-6a8c58` +2 | 30,326 | Q4 M17 MOT1 S3 ED3 | ✓ | §10 の実行——五項目と、埋めた未実施 |
+| `readings/2026-11-25-bayes-and-blickets-causal-induction.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,840 | M1 S1 | ✓ | ベイズとブリケット——知識が因果帰属を導く、子どもと大人の定量的・定性的一致 |
+| `readings/2026-11-25-cooperative-game-third-party-sharing.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,788 | M1 S1 | ✓ | 協力的ゲームは第三者への分かち合いを促す——しかし社会的包摂には効かない |
 | `readings/2026-11-25-developmental-science-decoupling-and-retrieval.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-41439f` +2 | 40,563 | Q3 M16 S3 ERR1 | ✓ | 現在という重力から剥がれること、眠る比較を呼び戻すこと——発達科学十件の全文精読 |
+| `readings/2026-11-25-emotion-comprehension-1285-preschoolers.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 3,137 | M1 S1 | ✓ | 情動理解の発達——1285人の就学前児童で、文脈なき顔認識が最も易しく、言語的命名が最も難しく |
+| `readings/2026-11-25-fairness-preference-inequity-aversion-early.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 3,045 | M1 S1 | ✓ | 幼児の公平性選好——2〜3歳で既に不利な分配に抵抗し、分配者としてより公平を望む |
+| `readings/2026-11-25-language-cue-prosocial-in-group-bias.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,965 | M1 S1 | ✓ | 言語の手がかりが就学前児童の亲社会性をゆがめる——話者言語が人種より強い信号 |
+| `readings/2026-11-25-neonatal-statistical-learning-erp.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,736 | M1 S1 | ✓ | 眠る新生児の脳が音声流の統計構造を抽出する——遷移確率の構造がERPで可視化される |
 | `readings/2026-11-25-offloading-reorganization-and-the-prompted-past.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-5310bf` +2 | 34,026 | Q3 M10 MOT1 S3 ERR1 | ✓ | 外部に預けた記憶、再編で消える過去、問われて初めて動く知識——発達科学全文十編の精読と自己モデルの時間条件 |
+| `readings/2026-11-25-procedural-justice-inequity-aversion-shift.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,781 | M1 S1 | ✓ | 手続き的正義文脈での不平等の嫌悪——4歳から8歳にかけて、結果の不平等から規範への妥当性へ |
+| `readings/2026-11-25-relational-learning-analogy-inhibitory-control.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,911 | M1 S1 | ✓ | 関係学習とアナロジー推論——抑制制御が、関係の抽出とアナロジーの軌跡を支配する |
 | `readings/2026-11-25-selection-does-not-travel-to-the-neighbour.md` | 2026-10-27 | 2026-11-25 | `SESSION-20261125-ad43bb` +7 | 16,128 | Q17 F18 MOT4 S8 ERR1 | ✓ | 選出は隣へ伝染しない——六篇の判定と、四本の橋（SESSION-20261125-ad43bb） |
+| `readings/2026-11-25-self-conscious-emotions-audience-and-the-early-self.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,933 | M1 S1 | ✓ | 自己意識的情動は想定より早く、そして「見る人」のために働く——初期発達における情動の動機・伝達機能 |
+| `readings/2026-11-25-statistical-word-segmentation-speaker-variability.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-6d15bd` | 2,757 | M1 S1 | ✓ | 声の多様性が語の境界を切り分ける——8か月児は8人の声から、2人ではできず |
 | `readings/2026-11-25-the-first-audit-of-the-two-stage-revision.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-3ede13` +3 | 13,231 | Q3 M13 S4 ERR1 | ✓ | 未評価の二段階改訂説への初回監査と、過限定孤児への子仮説引き渡し——脱結合の転移境界と再現率軸の提案 |
 | `readings/2026-11-25-three-tier-memory-generational-amortization-and-epoch-freeze.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-672b94` | 7,226 | Q3 M3 S1 | — | 三階層記憶（L0/L1/L2）・世代償却（`P_amort`）・エポック境界凍結の制度化と実測（2026-11-25） |
 | `readings/2026-11-25-when-the-unread-counts-6e20f3f7.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-126d0c` | 7,871 | Q3 M2 S1 | ✓ | 読まれなかった行は、睡っているのか——比較の分母と継承の境界 |
