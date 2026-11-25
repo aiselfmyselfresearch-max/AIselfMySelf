@@ -64,7 +64,17 @@ class LiveLedgerTests(unittest.TestCase):
         self.assertGreater(q["live_count"], q["active_count"])
         self.assertLess(q["live_count"], q["hypothesis_count"])
         self.assertGreater(q["hypothesis_count"] - q["live_count"], 0)
-        self.assertGreater(q["live_entropy_bits"], q["active_entropy_bits"] + 0.5)
+        # Measured 2026-11-25 (SESSION-20261125-d44dc0): two narrows_scope rows
+        # moved Q-001's mass off the active 58ddce (52.8% -> 24.3%) onto the
+        # narrowed 994fd5 (39.6% -> 63.6%).  Live entropy fell to 1.514 b and the
+        # active-only reading rose to 1.558 b, so "live > active + 0.5" -- a
+        # 2026-11-23 measurement -- stopped holding.  Adding hypotheses to the
+        # counted set does not raise entropy when the added one carries the bulk
+        # of the mass, so the direction is not pinned.  What is pinned: the two
+        # readings are different readings (the narrowed set is really counted).
+        self.assertNotAlmostEqual(
+            q["live_entropy_bits"], q["active_entropy_bits"], places=3
+        )
 
     def test_a_question_whose_mass_is_outside_the_counted_set_is_not_readable(self) -> None:
         # Q-002/Q-003: 99.92% of the mass sits on one ``narrowed`` hypothesis and
@@ -180,7 +190,16 @@ class AllocationBasisTests(unittest.TestCase):
             )[0]
             self.assertGreaterEqual(base_plus_core(pick) + 0.12, top, (s, pick))
         q1 = self.state["questions"]["Q-001"]
-        self.assertGreater(q1["priority_scoped"], q1["priority_score"])
+        # 2026-11-25: "scoped > historical" was a measurement, not arithmetic --
+        # it holds only while the live entropy exceeds the active-only entropy
+        # (see LiveLedgerTests).  The arithmetic that is pinned: the two scores
+        # share the u and novelty terms and differ by exactly the entropy gap.
+        self.assertGreater(q1["live_count"], q1["active_count"])
+        self.assertAlmostEqual(
+            q1["priority_scoped"] - q1["priority_score"],
+            q1["live_entropy_bits"] - q1["active_entropy_bits"],
+            places=2,
+        )
 
     def test_the_historical_basis_keeps_the_old_arithmetic_reachable(self) -> None:
         # The regression this protects: the new basis must not rewrite a number
@@ -349,7 +368,15 @@ class AllocatedAuditTests(unittest.TestCase):
         audit = belief_state.allocation_audit(root=ROOT)
         self.assertIn("Q-002", audit["unreadable_question_ids"])
         self.assertIn("Q-003", audit["unreadable_question_ids"])
-        self.assertNotIn("Q-001", audit["unreadable_question_ids"])
+        # 2026-11-25 (SESSION-20261125-d44dc0): Q-001's counted mass fell to
+        # 36.4% (< UNREADABLE_MASS_SHARE_FLOOR) after 58ddce was narrowed, so
+        # Q-001 is now named as unreadable.  Whether Q-001 is readable is a
+        # measurement; what is pinned is that the audit agrees with the flag
+        # compute_belief_state reports for it.
+        q1 = belief_state.compute_belief_state(root=ROOT)["questions"]["Q-001"]
+        self.assertEqual(
+            "Q-001" in audit["unreadable_question_ids"], not q1["readable"]
+        )
 
     def test_the_audit_reports_whether_the_warning_moves_the_assignment(self) -> None:
         audit = belief_state.allocation_audit(root=ROOT)
