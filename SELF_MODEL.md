@@ -39,7 +39,7 @@
 - 実日付 (開始時刻): 2026-11-25 (2026-11-25)
 - 現在のロール: adversarial_tester
 - ジェネレータ: Arena.ai Agent Mode
-- 総セッション数: 1168
+- 総セッション数: 1169
 - 直近10セッションのロール分布: {"proposer": 3, "consolidator": 2, "adversarial_tester": 5}
 
 ## 3. 一人称視点 (First-Person Perspective)
@@ -82,14 +82,14 @@
 
 ### 容量シグナル
 - ✓ file_count:state/materials.d: 158/175 (soft 165)
-- ✓ file_count:state/read_log.d: 178/200 (soft 188)
-- ✓ file_count:state/sessions.d: 180/202 (soft 190)
-- ✓ file_count:state/notes.d: 178/186 (soft 182)
-- ✓ file_count:readings/: 1212/1400 (soft 1250)
+- ✓ file_count:state/read_log.d: 179/200 (soft 188)
+- ✓ file_count:state/sessions.d: 181/202 (soft 190)
+- ✓ file_count:state/notes.d: 179/186 (soft 182)
+- ✓ file_count:readings/: 1213/1400 (soft 1250)
 
 ### バランス・接続・一貫性
 - ✓ ロールバランス: 最大逸脱 0.05
-- △ 接続性: 孤児ノート 188/1322
+- △ 接続性: 孤児ノート 189/1323
 - ✓ 一貫性: 直近の評価数分散 3.2
 
 ## 5. 時間連続性 (Temporal Continuity)
@@ -124,7 +124,7 @@
 ### 直近ウィンドウ停滞監視
 - 直近 5 評価セッション無更新回数: 0/5（閾値 D_KL < 0.0001 bits）
 - 直近 5 評価セッション累積ドリフト D_KL(P_amort): Q-001=2.44074b, Q-002=2.31854b, Q-003=1.38871b
-- 直近探求5セッションの名目的受諾（成果物0件）: 1 件
+- 直近探求5セッションの名目的受諾（成果物0件）: 2 件
 
 ### 次回検証の事前感度予測 (1件の独立 verified 反証衝突)
 - **Q-001** (`HYP-20261121-6e83a4` vs `HYP-20261124-6622b8`, EIG_amort=0.0426): 予測 D_KL=0.42376 bits (Δleft=-30.73pp, Δright=+8.29pp)

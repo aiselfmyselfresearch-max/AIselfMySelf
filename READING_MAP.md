@@ -24,7 +24,7 @@
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
 | セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1169 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17519 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17529 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 445 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 642 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1323 |  |
@@ -7078,7 +7078,6 @@
 | `SESSION-038` | 2026-10-24 | `Q-015`, `Q-020`, `Q-022`, `Q-081`, `Q-097`, `Q-098`, `Q-099`, `Q-100`, `Q-101` | — | `Q-097`, `Q-098`, `Q-099`, `Q-100`, `Q-101` |
 | `SESSION-041` | 2026-11-01 | `Q-002`, `Q-003`, `Q-020`, `Q-021`, `Q-023` | — | — |
 | `SESSION-20261108-a9b8c7` | 2026-11-08 | `Q-001`, `Q-002` | — | — |
-| `SESSION-20261125-d4dad9` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-039` | 2026-10-24 | `Q-002`, `Q-046`, `Q-057`, `Q-062`, `Q-087`, `Q-088`, `Q-089`, `Q-090`, `Q-091`, `Q-20261024-d0e002`, `Q-20261024-2d6c23`, `Q-20261024-93bfec`, `Q-20261024-4284fe`, `Q-20261024-cfd57d` | `FRAG-20261024-036346`, `FRAG-20261024-1d17b9`, `FRAG-20261024-1bb7e9` | `Q-20261024-d0e002`, `Q-20261024-2d6c23`, `Q-20261024-93bfec`, `Q-20261024-4284fe`, `Q-20261024-cfd57d` |
 | `SESSION-040` | 2026-10-24 | `Q-002`, `Q-044`, `Q-052`, `Q-062`, `Q-072`, `Q-082`, `Q-097`, `Q-101`, `Q-20261024-5b11eb`, `Q-20261024-a1bb7b`, `Q-20261024-08551f`, `Q-20261024-962620`, `Q-20261024-d01189` | `FRAG-20261024-83e251`, `FRAG-20261024-be45a7` | `Q-20261024-5b11eb`, `Q-20261024-a1bb7b`, `Q-20261024-08551f`, `Q-20261024-962620`, `Q-20261024-d01189` |
 | `SESSION-044` | 2026-10-24 | `Q-102`, `Q-103`, `Q-104`, `Q-105`, `Q-106` | — | `Q-102`, `Q-103`, `Q-104`, `Q-105`, `Q-106` |
@@ -8204,6 +8203,7 @@
 | `SESSION-20261125-d07306` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-87e4ca` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-c3bcee` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261125-d4dad9` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-672b94` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-eaf92c` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-455669` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -8327,30 +8327,30 @@
 | `map/40-relations-13.md` | 500 | 172,292 |
 | `map/40-relations-14.md` | 500 | 157,803 |
 | `map/40-relations-15.md` | 97 | 33,059 |
-| `map/50-sessions-01.md` | 50 | 42,915 |
-| `map/50-sessions-02.md` | 50 | 50,312 |
-| `map/50-sessions-03.md` | 50 | 45,801 |
-| `map/50-sessions-04.md` | 50 | 45,242 |
-| `map/50-sessions-05.md` | 50 | 46,430 |
-| `map/50-sessions-06.md` | 50 | 46,625 |
-| `map/50-sessions-07.md` | 50 | 46,166 |
-| `map/50-sessions-08.md` | 50 | 42,782 |
-| `map/50-sessions-09.md` | 50 | 42,273 |
-| `map/50-sessions-10.md` | 50 | 37,509 |
-| `map/50-sessions-11.md` | 50 | 40,973 |
-| `map/50-sessions-12.md` | 50 | 42,278 |
-| `map/50-sessions-13.md` | 50 | 41,656 |
-| `map/50-sessions-14.md` | 50 | 43,068 |
-| `map/50-sessions-15.md` | 50 | 36,416 |
-| `map/50-sessions-16.md` | 50 | 34,009 |
-| `map/50-sessions-17.md` | 50 | 41,170 |
-| `map/50-sessions-18.md` | 50 | 40,902 |
-| `map/50-sessions-19.md` | 50 | 35,812 |
-| `map/50-sessions-20.md` | 50 | 40,610 |
-| `map/50-sessions-21.md` | 50 | 37,315 |
-| `map/50-sessions-22.md` | 50 | 37,706 |
-| `map/50-sessions-23.md` | 50 | 43,811 |
-| `map/50-sessions-24.md` | 19 | 15,129 |
+| `map/50-sessions-01.md` | 50 | 43,630 |
+| `map/50-sessions-02.md` | 50 | 49,712 |
+| `map/50-sessions-03.md` | 50 | 45,786 |
+| `map/50-sessions-04.md` | 50 | 45,449 |
+| `map/50-sessions-05.md` | 50 | 46,370 |
+| `map/50-sessions-06.md` | 50 | 46,731 |
+| `map/50-sessions-07.md` | 50 | 45,911 |
+| `map/50-sessions-08.md` | 50 | 42,965 |
+| `map/50-sessions-09.md` | 50 | 42,307 |
+| `map/50-sessions-10.md` | 50 | 37,534 |
+| `map/50-sessions-11.md` | 50 | 40,875 |
+| `map/50-sessions-12.md` | 50 | 42,341 |
+| `map/50-sessions-13.md` | 50 | 41,649 |
+| `map/50-sessions-14.md` | 50 | 42,981 |
+| `map/50-sessions-15.md` | 50 | 35,907 |
+| `map/50-sessions-16.md` | 50 | 34,595 |
+| `map/50-sessions-17.md` | 50 | 41,278 |
+| `map/50-sessions-18.md` | 50 | 40,384 |
+| `map/50-sessions-19.md` | 50 | 35,982 |
+| `map/50-sessions-20.md` | 50 | 40,776 |
+| `map/50-sessions-21.md` | 50 | 36,947 |
+| `map/50-sessions-22.md` | 50 | 38,141 |
+| `map/50-sessions-23.md` | 50 | 43,631 |
+| `map/50-sessions-24.md` | 19 | 15,028 |
 | `map/60-notes-01.md` | 25 | 71,915 |
 | `map/60-notes-02.md` | 25 | 67,406 |
 | `map/60-notes-03.md` | 25 | 74,073 |
