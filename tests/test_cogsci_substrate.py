@@ -218,7 +218,10 @@ class RealTreeTests(unittest.TestCase):
         # 2026-11-25 (SESSION-20261125-455669): 91 -> 92 as
         # docs/2026-11-25-cognitive-science-thought-memory-self-ten-materials-report-b.md
         # joins the corpus in this session; the pin follows the corpus.
-        self.assertEqual(len(self.reports), 92)
+        # 2026-11-25 (SESSION-20261125-87e4ca): 92 -> 93 as
+        # readings/2026-11-25-cognitive-science-thought-memory-self-6e4355a8.md
+        # joins the corpus in this session; the pin follows the corpus.
+        self.assertEqual(len(self.reports), 93)
 
     def test_series_cites_research_almost_only(self) -> None:
         kinds = self.substrate["cited_by_kind"]
