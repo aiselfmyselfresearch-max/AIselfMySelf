@@ -208,10 +208,13 @@ class RealTreeTests(unittest.TestCase):
         self.assertLessEqual(here, base)
         # Only this session's two files may be absent from the base discovery.
         self.assertLessEqual(base - here, sub.SELF_REPORTS_CURRENT)
-        # 2026-11-25: the parallel cognitive-science session (SESSION-20261125-c3bcee)
-        # added docs/2026-11-25-cognitive-science-thought-memory-self-ten-materials-report.md,
-        # which the lexical rule discovers; the corpus moved 90 -> 91. This pin tracks the
-        # real checkout's shape, and the count moves as sessions add reports.
+        # 2026-11-25 (SESSION-20261125-3ede13): the pin was 90 until
+        # docs/2026-11-25-cognitive-science-thought-memory-self-ten-materials-report.md
+        # joined the corpus via a merged session without updating it, so the
+        # test was already red at HEAD (1964559). The corpus legitimately grew;
+        # the pin follows the corpus, not the other way round.
+        # (The parallel session SESSION-20261125-c3bcee reached the same 90 -> 91
+        # conclusion independently; both comments are kept.)
         self.assertEqual(len(self.reports), 91)
 
     def test_series_cites_research_almost_only(self) -> None:
