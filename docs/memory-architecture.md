@@ -531,3 +531,9 @@ python3 tools/navigation_metrics.py --relations --exclude SESSION-20261123-1163f
 **見つけた穴（今回は触っていない）。** `state/selection_snapshots.jsonl` は基底ファイルで `.d` を持たず、`REFERENCE_TYPES` にも `NON_ADDRESSABLE` にも載っていないので、`test_instrument_coverage` から見えない。**どちらの registry にも無い基底ファイルは検査の死角になる。**
 
 **誤記の訂正。** 同じ日に、`tools/ledger_ids.py` の `NON_ADDRESSABLE["REL"]` の理由を誤記行 `ERR-20261123-6ba7c5`（`contradicted`／`corrected`）として積んだ。書庫の制度を変えるときは、**変える理由になった測定の数字を行として残す**——散文だけだと、次のセッションが「なぜ relation が読めるのか」を辿れない。
+
+### 7.7 三階層記憶・世代償却および交差意味的不変量（2026-11-25 追補）
+
+- **三階層記憶・世代償却・エポック凍結**: `P_amort`・`docs/CONSOLIDATED_DIGESTS.md`・`memory_tiers.py --recall-cold`・`state/epoch_freezes.json` の詳細は [`docs/three-tier-memory-and-amortization.md`](three-tier-memory-and-amortization.md) を参照。
+- **交差意味的不変量と予測誤差アラーム**: `SELF_MODEL.md` §6（`default_mode_probe.py --check` による遡及的 `D_KL`・停滞アラーム・事前反事実感度）および原典スパン SHA-256 証跡（`three_gates.py --verify-span`・`validate_seed.py` の `SPAN_WITNESS_RULE_FROM`）の詳細は [`docs/cross-semantic-invariants.md`](cross-semantic-invariants.md) を参照。
+

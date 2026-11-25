@@ -7,8 +7,10 @@ that IDs referenced across JSONL collections actually exist.
 from __future__ import annotations
 
 import datetime
+import hashlib
 import json
 import re
+import unicodedata
 from pathlib import Path
 from typing import Any
 
@@ -250,6 +252,37 @@ _ID_STAMP = re.compile(r"^[A-Z]+(?:-[A-Z]+)*-(\d{8})-")
 #: Rows minted before this date stay valid without rewrite (append-only invariant).
 THREE_GATES_RULE_FROM = "20261119"
 SUPPRESS_RETRIEVAL_SUBJECT_TYPES = ("material", "fragment", "note", "hypothesis")
+
+#: Primary-source span witness & quote_status cross-semantic invariant gate (2026-11-25):
+#: New research_excerpt rows from 2026-11-26 with status == 'verified' and depth in
+#: ('full_text', 'results') must declare verification.quote_status ('verbatim',
+#: 'paraphrase_summary', 'mixed', 'none'). Whenever quote_status is 'verbatim' or 'mixed'
+#: on ANY row, span_sha256 and span_norm_chars must match the recomputed canonical
+#: normalized verbatim span(s) emitted by ``three_gates.py --verify-span``.
+SPAN_WITNESS_RULE_FROM = "20261126"
+QUOTE_STATUSES = frozenset({"verbatim", "paraphrase_summary", "mixed", "none"})
+SUMMARY_ATTRIBUTION_MARKERS = (
+    "編者による要約",
+    "編者要約",
+    "要約",
+    "editor summary",
+    "editorial summary",
+    "summary",
+    "paraphrase",
+)
+_SUMMARY_PREFIXES = (
+    "【編者による要約】",
+    "【編者要約】",
+    "[editor summary]",
+    "[editorial summary]",
+)
+_SPAN_HTML_TAG_RE = re.compile(r"<[^>]{1,80}>")
+_SPAN_TOKEN_RE = re.compile(r"[0-9a-z\u3040-\u30ff\u4e00-\u9fff]+")
+_SPAN_ELLIPSIS_RE = re.compile(r"(?:\[\s*\.\.\.+\s*\]|\[\s*…+\s*\]|\.\.\.+|…+)")
+_SPAN_CJK_RE = re.compile(r"[\u3040-\u30ff\u4e00-\u9fff]")
+_INLINE_QUOTE_RE = re.compile(
+    r'"([^"\n]{12,})"|\u201c([^\u201d\n]{12,})\u201d|「([^」]{6,})」|『([^』]{6,})』'
+)
 
 #: Evidence-record-path resolution gate (2026-11-19, added after the measurement in
 #: readings/2026-11-19-two-registers-of-the-same-dissociation.md §4).  The note ledger
@@ -1478,6 +1511,265 @@ def check_verification_depth(
     return depth_recorded, legacy_missing
 
 
+def normalize_source_span(text: str) -> str:
+    """Canonical token sequence for primary-source span matching & hashing."""
+    cleaned = _SPAN_HTML_TAG_RE.sub(" ", str(text or ""))
+    norm = unicodedata.normalize("NFKC", cleaned).casefold()
+    return " ".join(_SPAN_TOKEN_RE.findall(norm))
+
+
+def _min_span_chars(norm_text: str) -> int:
+    return 6 if _SPAN_CJK_RE.search(norm_text) else 12
+
+
+def extract_canonical_verbatim_segments(passage: str, quote_status: str) -> list[str]:
+    """Extract ordered normalized verbatim clauses from ``passage``."""
+    raw = str(passage or "")
+    if quote_status == "verbatim":
+        return [
+            seg
+            for seg in (normalize_source_span(part) for part in _SPAN_ELLIPSIS_RE.split(raw))
+            if seg
+        ]
+    if quote_status == "mixed":
+        segments: list[str] = []
+        for match in _INLINE_QUOTE_RE.finditer(raw):
+            quoted = next((g for g in match.groups() if g is not None), "")
+            q_parts = [
+                seg
+                for seg in (normalize_source_span(part) for part in _SPAN_ELLIPSIS_RE.split(quoted))
+                if seg
+            ]
+            joined_len = sum(len(s) for s in q_parts)
+            if q_parts and joined_len >= _min_span_chars(" ".join(q_parts)):
+                segments.extend(q_parts)
+        return segments
+    return []
+
+
+def compute_passage_span_witness(passage: str, quote_status: str) -> dict[str, Any]:
+    """Compute canonical normalized span segments, SHA-256, and char count."""
+    segments = extract_canonical_verbatim_segments(passage, quote_status)
+    canonical = "\n".join(segments)
+    sha = hashlib.sha256(canonical.encode("utf-8")).hexdigest() if canonical else ""
+    return {
+        "quote_status": quote_status,
+        "segments": segments,
+        "canonical_norm": canonical,
+        "span_sha256": sha,
+        "span_norm_chars": len(canonical),
+    }
+
+
+def verify_passage_against_source(
+    passage: str,
+    source_text: str,
+    *,
+    quote_status: str = "verbatim",
+) -> dict[str, Any]:
+    """Verify verbatim span(s) in ``passage`` against fetched ``source_text`` (Gate 3)."""
+    if quote_status not in QUOTE_STATUSES:
+        return {
+            "ok": False,
+            "status": "INVALID_QUOTE_STATUS",
+            "quote_status": quote_status,
+            "reason": f"quote_status must be one of {sorted(QUOTE_STATUSES)}",
+        }
+    raw_passage = str(passage or "")
+    if quote_status == "none":
+        if raw_passage.strip():
+            return {
+                "ok": False,
+                "status": "NON_EMPTY_PASSAGE_FOR_NONE",
+                "quote_status": "none",
+                "reason": "quote_status='none' requires an empty passage",
+            }
+        return {
+            "ok": True,
+            "status": "VERIFIED_NONE",
+            "quote_status": "none",
+            "verification_fields": {"quote_status": "none"},
+        }
+    if quote_status == "paraphrase_summary":
+        folded = unicodedata.normalize("NFKC", raw_passage).casefold()
+        if not any(m in folded for m in SUMMARY_ATTRIBUTION_MARKERS):
+            return {
+                "ok": False,
+                "status": "MISSING_SUMMARY_MARKER",
+                "quote_status": "paraphrase_summary",
+                "reason": "paraphrase_summary requires an explicit summary marker (e.g. 【編者による要約】)",
+            }
+        return {
+            "ok": True,
+            "status": "VERIFIED_SUMMARY_LABEL",
+            "quote_status": "paraphrase_summary",
+            "verification_fields": {"quote_status": "paraphrase_summary"},
+        }
+
+    witness = compute_passage_span_witness(raw_passage, quote_status)
+    segments = witness["segments"]
+    min_chars = _min_span_chars(witness["canonical_norm"])
+    if not segments or witness["span_norm_chars"] < min_chars:
+        return {
+            "ok": False,
+            "status": "EMPTY_OR_TOO_SHORT_SPAN",
+            "quote_status": quote_status,
+            "reason": f"quote_status={quote_status!r} requires verbatim span(s) >= {min_chars} normalized chars",
+        }
+
+    norm_source = normalize_source_span(source_text)
+    if not norm_source:
+        return {
+            "ok": False,
+            "status": "EMPTY_SOURCE_TEXT",
+            "quote_status": quote_status,
+            "reason": "source_text is empty after normalization",
+        }
+    haystack = f" {norm_source} "
+    cursor = 0
+    for idx, seg in enumerate(segments):
+        is_cjk = bool(_SPAN_CJK_RE.search(seg)) and " " not in seg
+        needle = seg if is_cjk else f" {seg} "
+        pos = haystack.find(needle, cursor)
+        if pos < 0:
+            return {
+                "ok": False,
+                "status": "CONFABULATION_MISMATCH",
+                "quote_status": quote_status,
+                "matched_before_failure": idx,
+                "total_segments": len(segments),
+                "missing_segment": seg,
+                "reason": "claimed verbatim segment does not occur in order inside source_text",
+            }
+        cursor = pos + max(1, len(needle) - 1)
+
+    return {
+        "ok": True,
+        "status": "VERIFIED_SPAN",
+        "quote_status": quote_status,
+        "matched_segments": len(segments),
+        "span_sha256": witness["span_sha256"],
+        "span_norm_chars": witness["span_norm_chars"],
+        "verification_fields": {
+            "quote_status": quote_status,
+            "span_sha256": witness["span_sha256"],
+            "span_norm_chars": witness["span_norm_chars"],
+        },
+    }
+
+
+def check_material_span_witness(
+    materials: dict[str, dict[str, Any]],
+    errors: list[str],
+    *,
+    today: datetime.date | None = None,
+    shard_of: dict[str, Path] | None = None,
+    label_ids: frozenset[str] | None = None,
+    cutoff: str = SPAN_WITNESS_RULE_FROM,
+) -> tuple[int, int]:
+    """Cross-semantic invariant between passage, verification.depth, quote_status, and span_sha256."""
+    shard_of = shard_of or {}
+    witness_checked = 0
+    legacy_ungated = 0
+    for mid, record in sorted(materials.items()):
+        ver = record.get("verification")
+        if not isinstance(ver, dict):
+            continue
+        vstat = ver.get("status")
+        vdepth = ver.get("depth")
+        qstat = ver.get("quote_status")
+        sha = ver.get("span_sha256")
+        nchars = ver.get("span_norm_chars")
+        passage = str(record.get("passage") or "")
+        context = str(record.get("context") or "")
+
+        is_new = _is_new_row(
+            mid,
+            cutoff,
+            today=today,
+            shard=shard_of.get(mid),
+            label_ids=label_ids,
+        )
+        needs_gate = (
+            record.get("kind") in ("research_excerpt", "literary_text")
+            and vstat == "verified"
+            and vdepth in ("full_text", "results")
+        )
+        if needs_gate:
+            if is_new and qstat is None:
+                errors.append(
+                    f"materials:{mid}: post-{cutoff} verified {record.get('kind')} (depth={vdepth!r}) "
+                    "must declare verification.quote_status ('verbatim', 'paraphrase_summary', "
+                    "'mixed', or 'none'); run `python3 tools/three_gates.py --verify-span` for verbatim quotes"
+                )
+                continue
+            if not is_new and qstat is None:
+                legacy_ungated += 1
+
+        if (sha is not None or nchars is not None) and qstat not in ("verbatim", "mixed"):
+            errors.append(
+                f"materials:{mid}: span_sha256/span_norm_chars require verification.quote_status "
+                f"in ('verbatim', 'mixed') (got {qstat!r})"
+            )
+            continue
+
+        if qstat is None:
+            continue
+        witness_checked += 1
+        if qstat not in QUOTE_STATUSES:
+            errors.append(
+                f"materials:{mid}: verification.quote_status {qstat!r} is not one of {sorted(QUOTE_STATUSES)}"
+            )
+            continue
+
+        if qstat in ("verbatim", "mixed"):
+            if vstat not in ("verified", "partially_verified", "corrected"):
+                errors.append(
+                    f"materials:{mid}: quote_status={qstat!r} contradicts verification.status={vstat!r}"
+                )
+            if vdepth in ("metadata", "unspecified"):
+                errors.append(
+                    f"materials:{mid}: quote_status={qstat!r} contradicts verification.depth={vdepth!r} "
+                    "(cannot claim verbatim text from metadata/unspecified check)"
+                )
+            folded_start = unicodedata.normalize("NFKC", passage.lstrip()).casefold()
+            if qstat == "verbatim" and any(folded_start.startswith(p) for p in _SUMMARY_PREFIXES):
+                errors.append(
+                    f"materials:{mid}: quote_status='verbatim' contradicts editorial summary prefix in passage"
+                )
+            witness = compute_passage_span_witness(passage, qstat)
+            min_chars = _min_span_chars(witness["canonical_norm"])
+            if not witness["segments"] or witness["span_norm_chars"] < min_chars:
+                errors.append(
+                    f"materials:{mid}: quote_status={qstat!r} has no verifiable verbatim span >= {min_chars} normalized chars"
+                )
+                continue
+            if not isinstance(sha, str) or not isinstance(nchars, int):
+                errors.append(
+                    f"materials:{mid}: quote_status={qstat!r} requires both span_sha256 and span_norm_chars "
+                    "(run `python3 tools/three_gates.py --verify-span --source-file <path> --passage ...`)"
+                )
+                continue
+            if sha != witness["span_sha256"] or nchars != witness["span_norm_chars"]:
+                errors.append(
+                    f"materials:{mid}: span witness mismatch for quote_status={qstat!r}: "
+                    f"recorded ({sha[:12]}..., {nchars}) != recomputed ({witness['span_sha256'][:12]}..., "
+                    f"{witness['span_norm_chars']}) — passage was altered or hash was not generated from source"
+                )
+        elif qstat == "paraphrase_summary":
+            combined = unicodedata.normalize("NFKC", f"{passage} {context}").casefold()
+            if not any(m in combined for m in SUMMARY_ATTRIBUTION_MARKERS):
+                errors.append(
+                    f"materials:{mid}: quote_status='paraphrase_summary' requires an explicit summary "
+                    "attribution marker (e.g. 【編者による要約】) in passage or context"
+                )
+        elif qstat == "none" and passage.strip():
+            errors.append(
+                f"materials:{mid}: quote_status='none' contradicts non-empty passage"
+            )
+    return witness_checked, legacy_ungated
+
+
 def check_number_traceability(
     evaluations: dict[str, dict[str, Any]],
     notes: dict[str, dict[str, Any]],
@@ -2090,6 +2382,13 @@ def main(argv: list[str] | None = None) -> int:
         shard_of=record_shards,
         label_ids=forward_labels,
     )
+    span_checked, span_legacy = check_material_span_witness(
+        materials,
+        errors,
+        today=today,
+        shard_of=record_shards,
+        label_ids=forward_labels,
+    )
     errata_advisory = errata_schema_advisory(errata_records)
     psc_advisory = psc_verification_advisory(evaluations, materials)
     psc_new_advisory = psc_new_row_advisory(evaluations, materials)
@@ -2362,6 +2661,10 @@ def main(argv: list[str] | None = None) -> int:
         f"INFO: self-layer session hooks (advisory): {stype_new} post-cutoff sessions carry session_type "
         f"({stype_legacy} legacy sessions ungated); {slc_new} post-cutoff sessions carry self_layer_checks "
         f"({slc_legacy} legacy sessions ungated)"
+    )
+    print(
+        f"INFO: primary-source span witness (advisory): {span_checked} material(s) carry quote_status/span_sha256 "
+        f"witness ({span_legacy} pre-{SPAN_WITNESS_RULE_FROM} verified full_text/results row(s) ungated)"
     )
     dr_advisory = double_reading_advisory(read_logs, materials)
     if dr_advisory:
