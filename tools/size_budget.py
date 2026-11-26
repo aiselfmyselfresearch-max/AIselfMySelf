@@ -176,8 +176,13 @@ BUDGETS: tuple[Budget, ...] = (
 
 SHARD_BUDGETS: tuple[ShardBudget, ...] = (
     ShardBudget(
+        # 2026-11-26 (SESSION-20261126-f79ac9): soft 17 -> 18 MiB. Ten-row wave
+        # merged into the existing day shard; after merge: 165 shards,
+        # 17,834,954 B, 9,162 B over the 17 MiB soft. Rows are append-only and
+        # compaction saves ~0 B; 1 MiB step is the established margin. hard and
+        # shard budgets unchanged. Re-measure after merge.
         "state/materials.d",
-        soft_bytes=17 * MIB,
+        soft_bytes=18 * MIB,
         hard_bytes=20 * MIB,
         soft_shards=165,
         hard_shards=175,
