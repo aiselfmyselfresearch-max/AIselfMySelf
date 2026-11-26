@@ -9,3 +9,4 @@ state/.*.tmp
 map/
 tools/_*
 !tools/__init__.py
+scratch/

@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6346 件（research_excerpt 4097 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6356 件（research_excerpt 4107 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：254 編（selected 97 ／ draft 157）
 - **解釈的関係（Relations）**：7100 件
-- **探究セッション（Sessions）**：1189 回
+- **探究セッション（Sessions）**：1190 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6346 | `literary_text` 2181／`research_excerpt` 4097／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6356 | `literary_text` 2181／`research_excerpt` 4107／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 254 | `selected` 97／`draft` 157／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7100 | うち断片↔断片 620 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1189 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17835 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1190 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17845 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 494 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 646 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1344 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1345 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 124 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1030 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1034 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -804,7 +804,7 @@
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 | `FRAG-20261126-aeaab0` | 一冬のあとで、肩だけをほどく | draft | scene | third_person |
 
-## 4. 対話素材（6346 件・詳細は map/3*.md）
+## 4. 対話素材（6356 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -7084,6 +7084,16 @@
 | `MAT-20261126-87d400` | research_excerpt | Alice M. Isen, Kimberly A. Daubman, Gregory P. Nowicki『Isen, Daubman & Nowicki (1987)「Pos… |
 | `MAT-20261126-619b07` | research_excerpt | James J. Gross, Oliver P. John『Gross & John (2003)「Individual differences in two emotion … |
 | `MAT-20261126-c38132` | research_excerpt | Anson J. Whitmer, Ian H. Gotlib『Whitmer & Gotlib (2013)「An attentional scope model of rum… |
+| `MAT-20261126-3f795f` | research_excerpt | Michael N. Shadlen, Daphna Shohamy『Shadlen & Shohamy (2016)「Decision Making and Sequentia… |
+| `MAT-20261126-7a28f0` | research_excerpt | Aaron M. Bornstein, Ming-Wei Khaw, Daphna Shohamy, Nathaniel D. Daw『Bornstein, Khaw, Shoh… |
+| `MAT-20261126-2a9d78` | research_excerpt | Sebastian Gluth, Thomas Sommer, Jochen Rieskamp, Christian Büchel『Gluth, Sommer, Rieskamp… |
+| `MAT-20261126-078259` | research_excerpt | Vishnu P. Murty, Oriel FeldmanHall, Lila E. Hunter, Elizabeth A. Phelps, Lila Davachi『Mur… |
+| `MAT-20261126-66b901` | research_excerpt | Eric J. Johnson, Gerald Häubl, Anat Keinan『Johnson, Häubl & Keinan (2007)「Aspects of endo… |
+| `MAT-20261126-269736` | research_excerpt | Donald A. Redelmeier, Daniel Kahneman『Redelmeier & Kahneman (1996)「Patients' memories of … |
+| `MAT-20261126-5b972c` | research_excerpt | Derrick Wirtz, Justin Kruger, Christina Napa Scollon, Ed Diener『Wirtz, Kruger, Napa Scoll… |
+| `MAT-20261126-541424` | research_excerpt | Carey K. Morewedge, Daniel T. Gilbert, Timothy D. Wilson『Morewedge, Gilbert & Wilson (200… |
+| `MAT-20261126-a9bf08` | research_excerpt | Tali Sharot, Cristina M. Velasquez, Raymond J. Dolan『Sharot, Velasquez & Dolan (2010)「Do … |
+| `MAT-20261126-08c918` | research_excerpt | Michael K. Chen, Jennifer L. Risen『Chen & Risen (2010)「How choice affects and reflects pr… |
 | `MAT-20261126-e0228c` | research_excerpt | Laura Kurdziel, Kasey Duclos, Rebecca M C Spencer『Kurdziel, Duclos & Spencer (2013)「昼寝の睡眠… |
 | `MAT-20261126-c5aa0c` | research_excerpt | Patricia K Kuhl, Feng-Ming Tsao, Huei-Mei Liu『Kuhl, Tsao & Liu (2003)「乳児期の外国語経験：短期曝露と社会的相… |
 | `MAT-20261126-fc72d5` | research_excerpt | B J Casey, Leah H Somerville, Ian H Gotlib, Ozlem Ayduk, Nicholas T Franklin, Mary K Askr… |
@@ -8339,6 +8349,7 @@
 | `SESSION-20261126-8bfbf3` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-cc0e19` | 2026-11-26T10:51:58Z | `Q-20261204-c7aa25`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261126-aeaab0` | — |
 | `SESSION-20261126-351c39` | 2026-11-26T11:18:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261126-f79ac9` | 2026-11-26T12:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-3e6ea0` | 2026-11-26T12:30:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-f49607` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-0debc9` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -8452,7 +8463,8 @@
 | `map/31-materials-research-38.md` | 100 | 262,380 |
 | `map/31-materials-research-39.md` | 100 | 234,668 |
 | `map/31-materials-research-40.md` | 100 | 230,718 |
-| `map/31-materials-research-41.md` | 97 | 232,791 |
+| `map/31-materials-research-41.md` | 100 | 236,431 |
+| `map/31-materials-research-42.md` | 7 | 18,643 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8492,67 +8504,67 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 39 | 31,734 |
-| `map/60-notes-01.md` | 25 | 81,838 |
-| `map/60-notes-02.md` | 25 | 64,575 |
-| `map/60-notes-03.md` | 25 | 74,303 |
-| `map/60-notes-04.md` | 25 | 93,136 |
-| `map/60-notes-05.md` | 25 | 94,020 |
-| `map/60-notes-06.md` | 25 | 66,561 |
-| `map/60-notes-07.md` | 25 | 59,356 |
-| `map/60-notes-08.md` | 25 | 59,402 |
-| `map/60-notes-09.md` | 25 | 57,932 |
-| `map/60-notes-10.md` | 25 | 61,275 |
-| `map/60-notes-11.md` | 25 | 65,848 |
-| `map/60-notes-12.md` | 25 | 69,258 |
-| `map/60-notes-13.md` | 25 | 86,161 |
-| `map/60-notes-14.md` | 25 | 104,959 |
-| `map/60-notes-15.md` | 25 | 101,987 |
-| `map/60-notes-16.md` | 25 | 83,794 |
-| `map/60-notes-17.md` | 25 | 99,370 |
-| `map/60-notes-18.md` | 25 | 121,493 |
-| `map/60-notes-19.md` | 25 | 96,613 |
-| `map/60-notes-20.md` | 25 | 166,420 |
-| `map/60-notes-21.md` | 25 | 144,476 |
-| `map/60-notes-22.md` | 25 | 137,114 |
-| `map/60-notes-23.md` | 25 | 114,733 |
-| `map/60-notes-24.md` | 25 | 114,166 |
-| `map/60-notes-25.md` | 25 | 111,984 |
-| `map/60-notes-26.md` | 25 | 112,488 |
-| `map/60-notes-27.md` | 25 | 155,230 |
-| `map/60-notes-28.md` | 25 | 49,087 |
-| `map/60-notes-29.md` | 25 | 128,902 |
-| `map/60-notes-30.md` | 25 | 41,432 |
-| `map/60-notes-31.md` | 25 | 46,689 |
-| `map/60-notes-32.md` | 25 | 115,676 |
-| `map/60-notes-33.md` | 25 | 127,929 |
-| `map/60-notes-34.md` | 25 | 119,323 |
-| `map/60-notes-35.md` | 25 | 55,675 |
-| `map/60-notes-36.md` | 25 | 85,693 |
-| `map/60-notes-37.md` | 25 | 96,008 |
-| `map/60-notes-38.md` | 25 | 92,790 |
-| `map/60-notes-39.md` | 25 | 46,209 |
-| `map/60-notes-40.md` | 25 | 90,240 |
-| `map/60-notes-41.md` | 25 | 126,326 |
-| `map/60-notes-42.md` | 25 | 118,132 |
-| `map/60-notes-43.md` | 25 | 79,664 |
-| `map/60-notes-44.md` | 25 | 78,456 |
-| `map/60-notes-45.md` | 25 | 80,256 |
-| `map/60-notes-46.md` | 25 | 71,005 |
-| `map/60-notes-47.md` | 25 | 96,341 |
-| `map/60-notes-48.md` | 25 | 93,840 |
-| `map/60-notes-49.md` | 25 | 129,264 |
-| `map/60-notes-50.md` | 16 | 82,616 |
+| `map/50-sessions-24.md` | 40 | 32,669 |
+| `map/60-notes-01.md` | 25 | 85,214 |
+| `map/60-notes-02.md` | 25 | 62,845 |
+| `map/60-notes-03.md` | 25 | 73,671 |
+| `map/60-notes-04.md` | 25 | 93,585 |
+| `map/60-notes-05.md` | 25 | 93,544 |
+| `map/60-notes-06.md` | 25 | 68,959 |
+| `map/60-notes-07.md` | 25 | 59,237 |
+| `map/60-notes-08.md` | 25 | 59,835 |
+| `map/60-notes-09.md` | 25 | 56,752 |
+| `map/60-notes-10.md` | 25 | 61,166 |
+| `map/60-notes-11.md` | 25 | 65,444 |
+| `map/60-notes-12.md` | 25 | 69,479 |
+| `map/60-notes-13.md` | 25 | 86,329 |
+| `map/60-notes-14.md` | 25 | 101,701 |
+| `map/60-notes-15.md` | 25 | 102,844 |
+| `map/60-notes-16.md` | 25 | 87,791 |
+| `map/60-notes-17.md` | 25 | 98,978 |
+| `map/60-notes-18.md` | 25 | 116,678 |
+| `map/60-notes-19.md` | 25 | 98,292 |
+| `map/60-notes-20.md` | 25 | 161,707 |
+| `map/60-notes-21.md` | 25 | 137,810 |
+| `map/60-notes-22.md` | 25 | 145,495 |
+| `map/60-notes-23.md` | 25 | 118,889 |
+| `map/60-notes-24.md` | 25 | 114,216 |
+| `map/60-notes-25.md` | 25 | 108,373 |
+| `map/60-notes-26.md` | 25 | 112,648 |
+| `map/60-notes-27.md` | 25 | 156,310 |
+| `map/60-notes-28.md` | 25 | 48,353 |
+| `map/60-notes-29.md` | 25 | 131,311 |
+| `map/60-notes-30.md` | 25 | 40,986 |
+| `map/60-notes-31.md` | 25 | 49,093 |
+| `map/60-notes-32.md` | 25 | 115,039 |
+| `map/60-notes-33.md` | 25 | 113,821 |
+| `map/60-notes-34.md` | 25 | 132,558 |
+| `map/60-notes-35.md` | 25 | 56,891 |
+| `map/60-notes-36.md` | 25 | 84,943 |
+| `map/60-notes-37.md` | 25 | 97,160 |
+| `map/60-notes-38.md` | 25 | 93,581 |
+| `map/60-notes-39.md` | 25 | 45,474 |
+| `map/60-notes-40.md` | 25 | 88,479 |
+| `map/60-notes-41.md` | 25 | 122,827 |
+| `map/60-notes-42.md` | 25 | 118,729 |
+| `map/60-notes-43.md` | 25 | 79,884 |
+| `map/60-notes-44.md` | 25 | 81,054 |
+| `map/60-notes-45.md` | 25 | 80,501 |
+| `map/60-notes-46.md` | 25 | 71,494 |
+| `map/60-notes-47.md` | 25 | 93,045 |
+| `map/60-notes-48.md` | 25 | 97,246 |
+| `map/60-notes-49.md` | 25 | 128,419 |
+| `map/60-notes-50.md` | 17 | 86,206 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1241本・41,188,511 B）
+## 8. 精読ノート索引（readings/・1242本・41,188,511 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1132/1241 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1133/1242 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1241 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：197 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1242 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：198 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -8564,6 +8576,7 @@
 | `docs/2026-11-25-cognitive-science-thought-memory-self-ten-materials-report-2.md` | 2026-11-25 | — | — | 0 | — | — | docs/2026-11-25-cognitive-science-thought-memory-self-ten-m… |
 | `docs/2026-11-25-cognitive-science-thought-memory-self-ten-materials-report-b.md` | 2026-11-25 | — | — | 0 | — | — | docs/2026-11-25-cognitive-science-thought-memory-self-ten-m… |
 | `docs/2026-11-25-cognitive-science-thought-memory-self-ten-materials-report.md` | 2026-11-25 | — | — | 0 | — | — | docs/2026-11-25-cognitive-science-thought-memory-self-ten-m… |
+| `docs/2026-11-26-cognitive-science-thought-memory-self-decision-value-axis-report.md` | 2026-11-26 | — | — | 0 | — | — | docs/2026-11-26-cognitive-science-thought-memory-self-decis… |
 | `docs/2026-11-26-cognitive-science-thought-memory-self-direction-and-loop-report.md` | 2026-11-26 | — | — | 0 | — | — | 認知科学10資料の収蔵と精読報告——個別の思考・個別の記憶と自己は、どちら向きに結ばれているのか（向きと循環の軸） |
 | `docs/2026-11-26-cognitive-science-thought-memory-self-emotion-axis-report.md` | 2026-11-26 | — | — | 0 | — | — | 認知科学10資料の収蔵と精読報告——個別の思考・個別の記憶と自己は、情動によってどう編まれるのか（情動・感情の軸） |
 | `docs/2026-11-26-cognitive-science-thought-memory-self-social-axis-report.md` | 2026-11-26 | — | — | 0 | — | — | 認知科学10資料の収蔵と精読報告——個別の思考・個別の記憶と自己は、他者を経由して結ばれるのか（社会軸） |
