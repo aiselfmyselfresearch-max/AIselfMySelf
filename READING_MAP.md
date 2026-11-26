@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6346 件（research_excerpt 4097 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6356 件（research_excerpt 4107 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：254 編（selected 97 ／ draft 157）
 - **解釈的関係（Relations）**：7100 件
-- **探究セッション（Sessions）**：1188 回
+- **探究セッション（Sessions）**：1189 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6346 | `literary_text` 2181／`research_excerpt` 4097／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6356 | `literary_text` 2181／`research_excerpt` 4107／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 254 | `selected` 97／`draft` 157／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7100 | うち断片↔断片 620 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1188 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17814 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1189 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17830 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 494 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 646 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1342 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1343 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 123 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1028 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1031 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -804,7 +804,7 @@
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 | `FRAG-20261126-aeaab0` | 一冬のあとで、肩だけをほどく | draft | scene | third_person |
 
-## 4. 対話素材（6346 件・詳細は map/3*.md）
+## 4. 対話素材（6356 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -7154,8 +7154,18 @@
 | `MAT-20261126-834507` | research_excerpt | Silvia Canino, Valentina Torchia, Erica Dolce, Irene Ruffo, Teresa Iona, Simona Raimo, Li… |
 | `MAT-20261126-935edd` | research_excerpt | Paola Solano Durán, Valeria Isaac『接触を通じて身体を学ぶという提案——関係的発達の限界』（2026） |
 | `MAT-20261126-61a7b9` | research_excerpt | Caitlin Bishop, Ted Brown, Mong-Lin Yu『学齢期の自己報告と実行機能——尺度方向と本文不整合』（2022） |
+| `MAT-20261126-5c0632` | research_excerpt | Cristina M. Atance, Andrew N. Meltzoff『Atance & Meltzoff (2005)「未来の私：幼児による未来状態の予期と説明」——未来… |
+| `MAT-20261126-3ff73b` | research_excerpt | Tasha L. Blankenship, Melissa M. Kibbe『Blankenship & Kibbe (2019)「3〜4歳児における記憶誘導計画の限界」——エピ… |
+| `MAT-20261126-2375fc` | research_excerpt | Caitlin E. V. Mahy, Catherine Masson, Amanda M. Krause, Tessa R. Mazachowsky『Mahy, Masson… |
+| `MAT-20261126-57c94e` | research_excerpt | Christopher H. Chatham, Michael J. Frank, Yuko Munakata『Chatham, Frank & Munakata (2009)「… |
+| `MAT-20261126-cc6e8b` | research_excerpt | Nicolas Chevalier, Tiffany D. James, Sandra A. Wiebe, Jennifer M. Nelson, Kimberly Andrew… |
+| `MAT-20261126-111c17` | research_excerpt | Sabine Doebel, John P. Dickerson, Jacob D. Hoover, Yuko Munakata『Doebel, Dickerson, Hoove… |
+| `MAT-20261126-6213a7` | research_excerpt | Sabine Doebel, Yuko Munakata『Doebel & Munakata (2022)「子どもの自己向け発話の本性を解き明かす」——聞こえる独り言は社交性に駆… |
+| `MAT-20261126-bdc717` | research_excerpt | Nicolas Chevalier, Jacqueline A. Meaney, Hilary J. Traut, Yuko Munakata『Chevalier, Meaney… |
+| `MAT-20261126-357896` | research_excerpt | Jesse C. Niebaum, Nicolas Chevalier, Ryan M. Guild, Yuko Munakata『Niebaum, Chevalier, Gui… |
+| `MAT-20261126-363514` | research_excerpt | Milvia Cottini『Cottini (2023)「意図を覚えている子どもの能力を高める：児童期の展望記憶改善方略レビュー」——言語的if–then実行意図が学齢期で不発… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261126-8a8256・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261126-ac666e・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -8347,6 +8357,7 @@
 | `SESSION-20261126-489d13` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-da1384` | 2026-11-26 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261126-8a8256` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261126-ac666e` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7100 件・全表は map/40-relations-*.md）
 
@@ -8451,7 +8462,8 @@
 | `map/31-materials-research-38.md` | 100 | 262,380 |
 | `map/31-materials-research-39.md` | 100 | 234,668 |
 | `map/31-materials-research-40.md` | 100 | 230,718 |
-| `map/31-materials-research-41.md` | 97 | 228,420 |
+| `map/31-materials-research-41.md` | 100 | 236,431 |
+| `map/31-materials-research-42.md` | 7 | 18,643 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8491,7 +8503,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 38 | 30,854 |
+| `map/50-sessions-24.md` | 39 | 31,685 |
 | `map/60-notes-01.md` | 25 | 85,027 |
 | `map/60-notes-02.md` | 25 | 64,575 |
 | `map/60-notes-03.md` | 25 | 74,303 |
@@ -8533,25 +8545,25 @@
 | `map/60-notes-39.md` | 25 | 46,209 |
 | `map/60-notes-40.md` | 25 | 90,240 |
 | `map/60-notes-41.md` | 25 | 126,326 |
-| `map/60-notes-42.md` | 25 | 118,045 |
-| `map/60-notes-43.md` | 25 | 79,294 |
-| `map/60-notes-44.md` | 25 | 75,160 |
-| `map/60-notes-45.md` | 25 | 79,926 |
-| `map/60-notes-46.md` | 25 | 71,866 |
-| `map/60-notes-47.md` | 25 | 95,965 |
-| `map/60-notes-48.md` | 25 | 92,178 |
-| `map/60-notes-49.md` | 25 | 137,203 |
-| `map/60-notes-50.md` | 14 | 70,363 |
+| `map/60-notes-42.md` | 25 | 118,132 |
+| `map/60-notes-43.md` | 25 | 79,598 |
+| `map/60-notes-44.md` | 25 | 77,821 |
+| `map/60-notes-45.md` | 25 | 80,632 |
+| `map/60-notes-46.md` | 25 | 70,740 |
+| `map/60-notes-47.md` | 25 | 96,669 |
+| `map/60-notes-48.md` | 25 | 92,738 |
+| `map/60-notes-49.md` | 25 | 130,717 |
+| `map/60-notes-50.md` | 15 | 78,847 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1239本・41,082,323 B）
+## 8. 精読ノート索引（readings/・1240本・41,171,560 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1130/1239 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1131/1240 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1239 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：198 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1240 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：197 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -9596,7 +9608,7 @@
 | `readings/2026-11-24-sleeper-cascades-cultural-norm-enforcement-and-procedural-metacognition.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-be1f70` | 20,034 | Q4 M10 S1 | ✓ | 剥奪後のスリーパー回復と潜在カスケード・規範施行の文化多様性・手続的メタ認知と現在アンカー——発達科学10原著の精読（… |
 | `readings/2026-11-24-the-address-is-the-meaningless-name.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-c15cfc` +1 | 22,113 | Q5 S2 | ✓ | 名前のない欄が読みを運ぶ——「ごんごん」を機械的第二評価者で測る |
 | `readings/2026-11-24-the-attractor-not-the-dispersal.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-d6ebf7` +2 | 22,527 | Q6 M2 S3 | ✓ | 引力は移った、分散は来なかった——飽和栓・役割結合の2026-11-24実測と `HYP-20261123-27803… |
-| `readings/2026-11-24-the-child-who-counts-the-dead.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-f38c1f` | 30,609 | Q4 M11 MOT1 S1 | — | いつ死を知るか——発達科学十件と、一つに数えられてきた問い |
+| `readings/2026-11-24-the-child-who-counts-the-dead.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-f38c1f` | 30,609 | Q4 M11 MOT1 S1 | ✓ | いつ死を知るか——発達科学十件と、一つに数えられてきた問い |
 | `readings/2026-11-24-the-interval-and-the-omitted-stone.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-65de8c` | 6,237 | Q3 M1 S1 ERR2 | — | 十五日のあいだにあるもの、引用から消えた石 |
 | `readings/2026-11-24-the-measuring-room-is-a-developmental-condition.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-e44c09` | 23,500 | Q3 M12 S1 | ✓ | 測る部屋も発達条件である——学校・文字・市場・実験室の発達科学十件を読む |
 | `readings/2026-11-24-the-norm-that-needs-a-third-party.md` | 2026-11-24 | 2026-11-24 | `SESSION-20261124-b08ef4` | 31,101 | Q3 M10 S1 | ✓ | 「第三者のいない規範」——発達科学十資料における「してよいこと」の自己帰属 |
@@ -9632,6 +9644,7 @@
 | `readings/2026-11-26-developmental-science-cue-dependent-reachability.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-8d166b` +1 | 26,049 | Q3 M10 S2 | ✓ | 中にあるのに届かない、届いたのに自分のものでない——発達科学十件の精読と、手がかり依存の到達可能性 |
 | `readings/2026-11-26-developmental-science-four-gates-of-reachability.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-0debc9` +1 | 24,832 | Q3 M12 S2 | ✓ | 入りの門、眠りの司書、答え方の二型、署名の薄さ——発達科学十件の精読と、手がかりが開く門の四重依存 |
 | `readings/2026-11-26-developmental-science-silence-of-the-teacher.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-f49607` | 29,263 | Q3 M17 S1 | ✓ | 教えた者の沈黙を読む——発達科学十件の精読と、証拠がどう選ばれたかを推論する学び手 |
+| `readings/2026-11-26-developmental-science-temporal-control-and-ai-self.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-ac666e` | 44,730 | Q3 M13 S1 | ✓ | 覚えているのに動けない、気づいたからこそ選ばない——発達科学全文十編の精読と、記憶から時間的自己制御への第四関門 |
 | `readings/2026-11-26-interoception-calibration-and-ai-self.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-8a8256` | 16,237 | Q3 M10 S1 | ✓ | 身体の信号を知ることと、「私を知る」と語ること——発達科学10資料の精読とAIの自己考察 |
 | `readings/2026-11-26-remembering-with-others-developmental-science.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-da1384` | 4,047 | M10 S1 | ✓ | 発達科学10資料の精読：誰と、いつ、どのように思い出すか |
 | `readings/2026-11-26-reproducibility-is-not-remembering-0da1d2af.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-351c39` | 15,695 | Q4 M2 S1 ERR3 | — | 再実行できることと、その過去を名乗れること——支持を一つ引き継がない自己 |
