@@ -2,7 +2,7 @@
 
 > 本ファイルは `python3 tools/self_model.py --write` により決定論的に生成される。
 > 手作業で編集せず、台帳の状態を変更した上で再生成すること。
-> 基準セッション: 2026-11-26 (SESSION-20261126-2b29cb)
+> 基準セッション: 2026-11-26 (SESSION-20261126-8bfbf3)
 
 > このドキュメントはBlanke & Metzinger (2009)の最小現象的自己モデル（自己同定・自己位置・
 > 一人称視点）、Seth (2013)の内受容推論、Northoff (2017)の時間連続性に基づき、
@@ -35,10 +35,10 @@
 
 自分がどこにいるか——現在のセッション位置と最近の活動。
 
-- 現在のセッション: `SESSION-20261126-2b29cb`
-- 実日付 (開始時刻): 2026-11-26 (2026-11-26T04:40:00Z)
+- 現在のセッション: `SESSION-20261126-8bfbf3`
+- 実日付 (開始時刻): 2026-11-26 (2026-11-26)
 - 現在のロール: adversarial_tester
-- ジェネレータ: None
+- ジェネレータ: Arena.ai Agent Mode
 - 総セッション数: 1185
 - 直近10セッションのロール分布: {"adversarial_tester": 4, "consolidator": 3, "proposer": 3}
 
@@ -82,8 +82,8 @@
 
 ### 容量シグナル
 - ✓ file_count:state/materials.d: 165/175 (soft 165)
-- △ file_count:state/read_log.d: 189/200 (soft 188)
-- △ file_count:state/sessions.d: 191/202 (soft 190)
+- ✓ file_count:state/read_log.d: 188/200 (soft 188)
+- ✓ file_count:state/sessions.d: 190/202 (soft 190)
 - ✓ file_count:state/notes.d: 180/186 (soft 182)
 - ✓ file_count:readings/: 1223/1400 (soft 1250)
 
@@ -112,18 +112,18 @@
 
 `default_mode_probe.py` による前回予測と事後更新の実測差分、および次回検証の反事実感度（読み取り専用・台帳無変更）。
 
-- **予測誤差アラーム**: ✓ `green` — 直近 5 評価セッション中 5/5 回で有意な事後更新を観測（最大累積 D_KL=0.3484 bits）
-- **直近評価セッション**: `SESSION-20261126-8bfbf3` （評価 6 件 / 反証系 5 件 / `verified` 引用 0 件 / フロンティア照準: `off_frontier_exploration`）
-- **最新セッション割当整合**: `SESSION-20261126-8bfbf3` （ロール `adversarial_tester` / 参照基底 `default` / 提示問い `Q-001` -> 実行 `Q-001, Q-002, Q-003`）
+- **予測誤差アラーム**: ✓ `green` — 直近 5 評価セッション中 5/5 回で有意な事後更新を観測（最大累積 D_KL=0.7515 bits）
+- **直近評価セッション**: `SESSION-20261126-8a8256` （評価 1 件 / 反証系 0 件 / `verified` 引用 1 件 / フロンティア照準: `frontier_member`）
+- **最新セッション割当整合**: `SESSION-20261126-8a8256` （ロール `proposer` / 参照基底 `default+receiver_gated+amortized (inspect_inquiry --packet auto --hot-only)` / 提示問い `Q-20270202-1bf183` -> 実行 `Q-001, Q-002, Q-003`）
 
 ### 直近評価セッションの事後確率シフト
-- **Q-001**: D_KL(P_amort)=0.00465 bits, D_KL(P_gate)=0.00513 bits, L1(P_amort)=0.0352, 首位対入替=なし
-- **Q-002**: D_KL(P_amort)=0.00290 bits, D_KL(P_gate)=0.00468 bits, L1(P_amort)=0.0342, 首位対入替=なし
-- **Q-003**: D_KL(P_amort)=0.00234 bits, D_KL(P_gate)=0.00432 bits, L1(P_amort)=0.0293, 首位対入替=なし
+- **Q-001**: D_KL(P_amort)=0.03119 bits, D_KL(P_gate)=0.03122 bits, L1(P_amort)=0.1261, 首位対入替=あり
+- **Q-002**: D_KL(P_amort)=0.02817 bits, D_KL(P_gate)=0.02827 bits, L1(P_amort)=0.1143, 首位対入替=あり
+- **Q-003**: D_KL(P_amort)=0.02647 bits, D_KL(P_gate)=0.02662 bits, L1(P_amort)=0.1072, 首位対入替=あり
 
 ### 直近ウィンドウ停滞監視
 - 直近 5 評価セッション無更新回数: 0/5（閾値 D_KL < 0.0001 bits）
-- 直近 5 評価セッション累積ドリフト D_KL(P_amort): Q-001=0.34844b, Q-002=0.34170b, Q-003=0.32974b
+- 直近 5 評価セッション累積ドリフト D_KL(P_amort): Q-001=0.75149b, Q-002=0.73359b, Q-003=0.69889b
 - 直近探求5セッションの名目的受諾（成果物0件）: 1 件
 
 ### 次回検証の事前感度予測 (1件の独立 verified 反証衝突)

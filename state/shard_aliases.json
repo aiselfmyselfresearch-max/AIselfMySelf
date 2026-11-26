@@ -2,7 +2,7 @@
  "schema_version": 1,
  "normalized_on": "2026-11-12",
  "description": "Maps legacy internal-chronology forward-dated shards (> 2026-11-12) consolidated into real-execution-date shards, plus later order-preserving shard compactions in state/<collection>.d/. Every row is moved byte-for-byte within the same collection.",
- "consolidated_shards": 243,
+ "consolidated_shards": 245,
  "created_real_date_shards": 50,
  "aliases": {
   "state/editorial_decisions.d/2026-11-18-317db4367875.jsonl": {
@@ -2894,6 +2894,28 @@
    "sha256": "e3ca8ab95286834440fdff3c72b0719959452c92e703a859178361ade7553367",
    "consolidated_on": "2026-11-26",
    "note": "byte-for-byte concatenation into the lexicographically first same-day shard; rows not rewritten"
+  },
+  "state/read_log.d/2026-11-26-f7b6517e8bfb.jsonl": {
+   "new_shard": "state/read_log.d/2026-11-26-000000000000.jsonl",
+   "real_date": "2026-11-26",
+   "original_label_date": "2026-11-26",
+   "line_start": 27,
+   "line_end": 40,
+   "row_count": 14,
+   "sha256": "c3fd166645470fd36e869cd41475a553952a9d6bdfaab432d3b4fb0e495b4ab8",
+   "consolidated_on": "2026-11-26",
+   "note": "byte-for-byte concatenation into the same-day day shard; rows not rewritten"
+  },
+  "state/sessions.d/2026-11-26-f7b6517e8bfb.jsonl": {
+   "new_shard": "state/sessions.d/2026-11-26-000000000000.jsonl",
+   "real_date": "2026-11-26",
+   "original_label_date": "2026-11-26",
+   "line_start": 3,
+   "line_end": 3,
+   "row_count": 1,
+   "sha256": "55ec1dc79742e3a817e8dd2323763adc129e09766a74b1f8b2a8f0f48b9dca2a",
+   "consolidated_on": "2026-11-26",
+   "note": "byte-for-byte concatenation into the same-day day shard; rows not rewritten"
   }
  }
 }
