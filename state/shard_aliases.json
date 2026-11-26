@@ -2,7 +2,7 @@
   "schema_version": 1,
   "normalized_on": "2026-11-12",
   "description": "Maps legacy internal-chronology forward-dated shards (> 2026-11-12) consolidated into real-execution-date shards, plus later order-preserving shard compactions in state/<collection>.d/. Every row is moved byte-for-byte within the same collection.",
-  "consolidated_shards": 229,
+  "consolidated_shards": 234,
   "created_real_date_shards": 50,
   "aliases": {
     "state/editorial_decisions.d/2026-11-18-317db4367875.jsonl": {
@@ -2740,6 +2740,61 @@
       "sha256": "c2790f3f140d8458d74e7ab1c1bc2fedda0c12de2cd8ea254a0d65a562ada3a2",
       "consolidated_on": "2026-11-25",
       "note": "Order-preserving byte-for-byte concatenation into the immediately preceding same-date shard (docs/parallel-work.md procedure 7); union sha256 preserved (1f9aab86b8220fa6...). Zero repository references to old shard path."
+    },
+    "state/evaluations.d/2026-11-21-593ea651d935.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-21-000000000000.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": "2026-11-21",
+      "line_start": 13,
+      "line_end": 14,
+      "row_count": 2,
+      "sha256": "7fe2b923f266fa85ee92928236505cee8ac61519d264081a26fc78899993cd18",
+      "consolidated_on": "2026-11-26",
+      "note": "Order-preserving byte-for-byte concatenation into the immediately preceding same-date shard (docs/parallel-work.md procedure 7); union sha256 preserved (04c5a6f4234fa60e...). Zero repository references to old shard path."
+    },
+    "state/evaluations.d/2026-11-22-ce5c225e7b42.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-22-000000000000.jsonl",
+      "real_date": "2026-11-22",
+      "original_label_date": "2026-11-22",
+      "line_start": 41,
+      "line_end": 41,
+      "row_count": 1,
+      "sha256": "482533660e4281efb12e8f7a38c7d180b96c94fdffca5e109f5f6f391fa327ac",
+      "consolidated_on": "2026-11-26",
+      "note": "Order-preserving byte-for-byte concatenation into the immediately preceding same-date shard (docs/parallel-work.md procedure 7); union sha256 preserved (04c5a6f4234fa60e...). Zero repository references to old shard path."
+    },
+    "state/evaluations.d/2026-11-22-eb3f4ba5a270.jsonl": {
+      "new_shard": "state/evaluations.d/2026-11-22-000000000000.jsonl",
+      "real_date": "2026-11-22",
+      "original_label_date": "2026-11-22",
+      "line_start": 42,
+      "line_end": 44,
+      "row_count": 3,
+      "sha256": "a2c3e8dd28a4894994ff7b8d2a1bc93030b975b1ce1bfcc60812721e879e6128",
+      "consolidated_on": "2026-11-26",
+      "note": "Order-preserving byte-for-byte concatenation into the immediately preceding same-date shard (docs/parallel-work.md procedure 7); union sha256 preserved (04c5a6f4234fa60e...). Zero repository references to old shard path."
+    },
+    "state/notes.d/2026-11-21-2ece2a4cbdbf.jsonl": {
+      "new_shard": "state/notes.d/2026-11-21-000000000000.jsonl",
+      "real_date": "2026-11-21",
+      "original_label_date": "2026-11-21",
+      "line_start": 10,
+      "line_end": 10,
+      "row_count": 1,
+      "sha256": "c80a0dfdee9428b75983dcfad9f2ce277c7358422117919ee501883161d4a380",
+      "consolidated_on": "2026-11-26",
+      "note": "Order-preserving byte-for-byte concatenation into the immediately preceding same-date shard (docs/parallel-work.md procedure 7); union sha256 preserved (179a18e8c7137343...). Zero repository references to old shard path."
+    },
+    "state/notes.d/2026-11-23-6ad0c5c70001.jsonl": {
+      "new_shard": "state/notes.d/2026-11-23-000000000000.jsonl",
+      "real_date": "2026-11-23",
+      "original_label_date": "2026-11-23",
+      "line_start": 35,
+      "line_end": 35,
+      "row_count": 1,
+      "sha256": "170a465bcf127cf07cb696e514ef94ae5e80f2ca243449671a09ec87547ba3f1",
+      "consolidated_on": "2026-11-26",
+      "note": "Order-preserving byte-for-byte concatenation into the immediately preceding same-date shard (docs/parallel-work.md procedure 7); union sha256 preserved (179a18e8c7137343...). Zero repository references to old shard path."
     }
   }
 }
