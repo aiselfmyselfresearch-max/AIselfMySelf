@@ -443,6 +443,137 @@ class Gate3OverlayAndWriteGateTests(unittest.TestCase):
             validate_seed.check_psc_verification_gate(evls, loaded["materials"], gate_errs_ver, today=future)
             self.assertEqual(gate_errs_ver, [])
 
+    def test_check_source_title_index_guards_and_author_year(self) -> None:
+        # docs/2026-11-26-check-source-title-blindspot-proposal.md, stage 1.
+        def mat(mid, title, src_title, *, url="", authors=(), year=None, note="", kind="research_excerpt"):
+            return {"material_id": mid, "kind": kind, "title": title, "verification": {"status": "partially_verified"},
+                    "source": {"title": src_title, "url": url, "authors": list(authors), "year": year, "version_note": note}}
+
+        materials = {m["material_id"]: m for m in (
+            mat("MAT-20261106-aaaaaa", "新生児模倣の原論文と大規模追試",
+                "Imitation of Facial and Manual Gestures by Human Neonates (Science 198, 75-78, 1977) ／ "
+                "Comprehensive Longitudinal Study Challenges the Existence of Neonatal Imitation in Humans (Current Biology 26, 2016)",
+                url="https://example.org/meltzoff1977.pdf", authors=["Andrew N. Meltzoff", "M. Keith Moore"], year=1977),
+            mat("MAT-20261107-bbbbbb", "自己参照効果のメタ分析", "The self-reference effect in memory: a meta-analysis",
+                note="Psychological Bulletin; doi:10.1037/0033-2909.121.3.371"),
+            mat("MAT-20261108-cccccc", "詩篇23", "Psalm 23 (King James Version)", kind="literary_text"),
+            mat("MAT-20261108-dddddd", "讃歌", "Rig-Veda, Book 10, Hymn CXXXV. Yama", kind="literary_text"),
+            mat("MAT-20261109-eeeeee", "再現性", "Estimating the reproducibility of psychological science"),
+        )}
+        # The second work of a combined row is found through source.title (display title is Japanese).
+        hit = three_gates.check_source(
+            materials, title="Comprehensive longitudinal study challenges the existence of neonatal imitation in humans")
+        self.assertEqual(hit["status"], "SIMILAR_TITLE")
+        self.assertEqual(hit["similar_title_matches"][0]["material_id"], "MAT-20261106-aaaaaa")
+        self.assertEqual(hit["similar_title_matches"][0]["matched_field"], "source.title")
+        # Numeric locators (Arabic or Roman) keep chapters and hymns apart.
+        self.assertEqual(three_gates.check_source(materials, title="Psalm 24 (King James Version)")["status"], "CLEAR")
+        self.assertEqual(three_gates.check_source(materials, title="Psalm 23 (King James Version)")["status"], "SIMILAR_TITLE")
+        self.assertEqual(three_gates.check_source(materials, title="Rig-Veda Book 10 Hymn XIV Yama")["status"], "CLEAR")
+        # A comment on a paper is related, not the paper.
+        com = three_gates.check_source(materials, title='Comment on "Estimating the reproducibility of psychological science"')
+        self.assertEqual(com["status"], "RELATED")
+        self.assertEqual(com["related_title_matches"][0]["material_id"], "MAT-20261109-eeeeee")
+        # A DOI written only in version_note is reported separately and is not an identifier-gate hit.
+        note = three_gates.check_source(materials, doi="10.1037/0033-2909.121.3.371")
+        self.assertEqual(note["status"], "NOTE_IDENTIFIER")
+        self.assertEqual(note["exact_identifier_matches"], [])
+        # Author + year reach rows without a matching title; CLEAR carries the not-proof-of-novelty advisory.
+        auth = three_gates.check_source(materials, author="Meltzoff", year=1977)
+        self.assertEqual([m["material_id"] for m in auth["author_year_matches"]], ["MAT-20261106-aaaaaa"])
+        self.assertEqual(three_gates.check_source(materials, author="Meltzoff", year=1990)["status"], "CLEAR")
+        clear = three_gates.check_source(materials, title="An entirely unrelated monograph about tidal engineering")
+        self.assertTrue(any("not proof" in a for a in clear["advisories"]))
+
+    def test_source_recording_rules_and_duplicate_audit(self) -> None:
+        today = datetime.date(2026, 11, 28)
+        combined = "Imitation of Facial and Manual Gestures by Human Neonates ／ Comprehensive Longitudinal Study of Neonatal Imitation"
+        rows = {
+            "MAT-20261127-aaaaaa": {"kind": "research_excerpt", "source": {"title": combined, "url": "", "version_note": ""}},
+            "MAT-20261127-bbbbbb": {"kind": "research_excerpt", "source": {"title": combined, "url": "", "version_note": "single-work: one title"}},
+            "MAT-20261127-cccccc": {"kind": "research_excerpt", "source": {"title": "Vision and language navigation (VLN / Room-to-Room benchmark)", "url": "", "version_note": "doi:10.1000/xyz"}},
+            "MAT-20261127-dddddd": {"kind": "literary_text", "source": {"title": "Mencius, Chapter 21 / Gaozi I 1-8 (James Legge translation)", "url": "", "version_note": ""}},
+            "MAT-20261126-eeeeee": {"kind": "research_excerpt", "source": {"title": combined, "url": "", "version_note": ""}},
+        }
+        errs: list[str] = []
+        adv: list[str] = []
+        validate_seed.check_material_source_recording(rows, errs, adv, today=today)
+        self.assertEqual(len(errs), 1)
+        self.assertIn("MAT-20261127-aaaaaa", errs[0])
+        self.assertEqual(len(adv), 1)
+        self.assertIn("MAT-20261127-cccccc", adv[0])
+
+        def mat(mid, src_title, url="", kind="research_excerpt"):
+            return {"material_id": mid, "kind": kind, "title": "表示題", "source": {"title": src_title, "url": url}}
+
+        mats = {m["material_id"]: m for m in (
+            mat("MAT-20261110-aaaaaa", "How a Cockpit Remembers Its Speeds"),
+            mat("MAT-20261120-bbbbbb", "How a cockpit remembers its speeds", "https://doi.org/10.1207/s15516709cog1903_1"),
+            mat("MAT-20261111-cccccc", "The self-reference effect in memory: a meta-analysis", "https://doi.org/10.1037/0033-2909.121.3.371"),
+            mat("MAT-20261121-dddddd", "The self-reference effect in memory: a meta-analysis", "https://doi.org/10.1037/0033-2909.121.371"),
+            mat("MAT-20261112-eeeeee", "Hávamál, The Poetic Edda, Bellows translation", kind="literary_text"),
+            mat("MAT-20261122-ffffff", "Hávamál, The Poetic Edda, Bellows translation", kind="literary_text"),
+        )}
+        audit = three_gates.source_duplicate_audit(mats, today=today)
+        causes = {r["material_id"]: r["cause"] for r in audit["post_gate_duplicates"]}
+        self.assertEqual(causes, {"MAT-20261120-bbbbbb": "earlier_row_has_no_identifier",
+                                  "MAT-20261121-dddddd": "doi_disagreement"})
+        self.assertEqual(len(audit["doi_conflict_clusters"]), 1)
+
+    def test_japanese_title_arxiv_and_source_identity_errata(self) -> None:
+        today = datetime.date(2026, 11, 28)
+
+        def mat(mid, src_title, authors, url="", year=2011, note=""):
+            return {"material_id": mid, "kind": "research_excerpt", "title": "表示題",
+                    "source": {"title": src_title, "authors": authors, "year": year, "url": url, "version_note": note}}
+
+        rows = {m["material_id"]: m for m in (
+            mat("MAT-20261127-aaaaaa", "グーグル効果と記憶", ["Betsy Sparrow"]),
+            mat("MAT-20261127-bbbbbb", "グーグル効果と記憶", ["Betsy Sparrow"], note="original-title: 邦訳書として刊行"),
+            mat("MAT-20261127-cccccc", "自己の発達", ["山田 太郎"]),
+            mat("MAT-20261126-dddddd", "グーグル効果と記憶", ["Betsy Sparrow"]),
+        )}
+        errs: list[str] = []
+        validate_seed.check_material_source_recording(rows, errs, [], today=today)
+        self.assertEqual(len(errs), 1)
+        self.assertIn("MAT-20261127-aaaaaa", errs[0])
+
+        arx = {
+            "MAT-20261120-111111": {"material_id": "MAT-20261120-111111", "source": {"url": "https://arxiv.org/abs/2310.13548v2"}},
+            "MAT-20261126-222222": {"material_id": "MAT-20261126-222222", "source": {"url": "https://doi.org/10.48550/arXiv.2310.13548"}},
+            "MAT-20261127-333333": {"material_id": "MAT-20261127-333333", "source": {"url": "", "source_id": "arXiv:2310.13548"}},
+        }
+        self.assertEqual(validate_seed.extract_material_identifiers(arx["MAT-20261126-222222"]).get("arxiv"), "2310.13548")
+        dup_errs: list[str] = []
+        validate_seed.check_material_duplicate_identifiers(arx, dup_errs, today=today)
+        self.assertEqual(len(dup_errs), 1)
+        self.assertIn("MAT-20261127-333333", dup_errs[0])
+
+        mats = {m["material_id"]: m for m in (
+            mat("MAT-20261105-aaaaaa", "Google effects on memory: cognitive consequences of having information at our fingertips",
+                ["Betsy Sparrow"], "https://doi.org/10.1126/science.1207745"),
+            mat("MAT-20261123-bbbbbb", "Sparrow ほか (2011)「グーグル効果」", ["Betsy Sparrow"], "https://doi.org/10.1126/science.1207090"),
+            mat("MAT-20261123-cccccc", "人の記憶の再検討", ["Martin Sparrow"]),
+        )}
+        audit = three_gates.source_duplicate_audit(mats, today=today)
+        suspects = {r["material_id"]: r for r in audit["cross_language_suspects"]}
+        self.assertEqual(set(suspects), {"MAT-20261123-bbbbbb", "MAT-20261123-cccccc"})
+        self.assertEqual(audit["unreviewed"]["cross_language_suspects"], 2)
+        errata = {
+            "ERR-20261126-000001": {"subject_type": "material", "subject_id": "MAT-20261123-bbbbbb", "verdict": "contradicted",
+                                    "check": {"kind": "manual", "params": {"audit": "source_identity", "duplicate_of": "MAT-20261105-aaaaaa",
+                                                                           "correct_doi": "10.1126/science.1207745"}}},
+            "ERR-20261126-000002": {"subject_type": "material", "subject_id": "MAT-20261123-cccccc", "verdict": "holds",
+                                    "check": {"kind": "manual", "params": {"audit": "source_identity", "distinct_from": ["MAT-20261105-aaaaaa"]}}},
+        }
+        audit = three_gates.source_duplicate_audit(mats, today=today, errata=errata)
+        self.assertEqual(audit["unreviewed"]["cross_language_suspects"], 0)
+        chk = three_gates.check_source(mats, doi="10.1126/science.1207745", errata=errata)
+        hits = {m["material_id"]: m for m in chk["exact_identifier_matches"]}
+        self.assertEqual(hits["MAT-20261123-bbbbbb"]["matched_on"], ["errata.correct_doi:10.1126/science.1207745"])
+        self.assertEqual(hits["MAT-20261123-bbbbbb"]["source_identity_reviews"][0]["duplicate_of"], "MAT-20261105-aaaaaa")
+        self.assertNotIn("MAT-20261123-cccccc", hits)
+
     def test_duplicate_identifier_and_descendant_collision_gates(self) -> None:
         future = datetime.date(2026, 11, 20)
         materials = {

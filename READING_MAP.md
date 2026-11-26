@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6306 件（research_excerpt 4057 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6326 件（research_excerpt 4077 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1181 回
+- **探究セッション（Sessions）**：1183 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6306 | `literary_text` 2181／`research_excerpt` 4057／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6326 | `literary_text` 2181／`research_excerpt` 4077／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1181 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17727 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 448 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1183 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17751 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 491 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 645 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1334 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1336 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 123 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1017 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1020 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6306 件・詳細は map/3*.md）
+## 4. 対話素材（6326 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -7063,6 +7063,26 @@
 | `MAT-20261125-5fb77e` | research_excerpt | Bálint Varga, Ágnes Melinda Kovács『Human infants appreciate that information bears value … |
 | `MAT-20261125-0015f4` | research_excerpt | Angela D Evans, Kang Lee『Emergence of Lying in Very Young Children（Developmental Psycholo… |
 | `MAT-20261125-0ae71c` | research_excerpt | Maureen E McQuillan, John E Bates, Angela D Staples, Caroline P Hoyniak, Kathleen M Rudas… |
+| `MAT-20261126-07e4bd` | research_excerpt | Elizabeth Bonawitz, Patrick Shafto, Hyowon Gweon, Noah D Goodman, Elizabeth Spelke, Laura… |
+| `MAT-20261126-c33acd` | research_excerpt | Hyowon Gweon, Joshua B Tenenbaum, Laura E Schulz『Gweon, Tenenbaum & Schulz (2010)「乳児は帰納的般… |
+| `MAT-20261126-88a5cf` | research_excerpt | Aimee E Stahl, Lisa Feigenson『Stahl & Feigenson (2015)「期待違反の観察は乳児の学習と探索を高める」——物理法則を破った物につ… |
+| `MAT-20261126-19244f` | research_excerpt | LouAnn Gerken, Colin Dawson, Razanne Chatila, Josh Tenenbaum『Gerken, Dawson, Chatila & Te… |
+| `MAT-20261126-c7c3b8` | research_excerpt | Chen Yu, Sumarga H Suanda, Linda B Smith『Yu, Suanda & Smith (2019)「共同注意の中の乳児の持続的注意が語彙発達を予… |
+| `MAT-20261126-b152cc` | research_excerpt | Andrew Whiten, Gillian Allan, Siobahn Devlin, Natalie Kseib, Nicola Raw, Nicola McGuigan『… |
+| `MAT-20261126-d3fb5a` | research_excerpt | Michael Tomasello『Tomasello (2018)「早期道徳発達における規範的転回」——3歳ごろ、子どもは『したい』から『すべき』へ移り、共同の約束は双方の合意… |
+| `MAT-20261126-dd4611` | research_excerpt | Stephanie M Carlson, Rachel E White, Angela Davis-Unger『Carlson, White & Davis-Unger (201… |
+| `MAT-20261126-f853cc` | research_excerpt | Andrik I Becht, Eduard T Klapwijk, Lara M Wierenga, Renske van der Cruijsen, Jochem Spaan… |
+| `MAT-20261126-14fc34` | research_excerpt | Dylan G Gee, Laurel J Gabard-Durnam, Jessica Flannery, Bonnie Goff, Kathryn L Humphreys, … |
+| `MAT-20261126-c8c12c` | research_excerpt | Norbert Schwarz, Gerald L. Clore『Schwarz & Clore (1983)「Mood, misattribution, and judgmen… |
+| `MAT-20261126-8b72b7` | research_excerpt | Joseph P. Forgas『Forgas (1995)「Mood and judgment: The affect infusion model (AIM)」——処理の様式… |
+| `MAT-20261126-0a7a63` | research_excerpt | Daniel T. Gilbert, Elizabeth C. Pinel, Timothy D. Wilson, Stephen J. Blumberg, Theresa P.… |
+| `MAT-20261126-69dc12` | research_excerpt | Timothy D. Wilson, Tiffany Wheatley, Jonathan M. Meyers, Daniel T. Gilbert, Daphna Axsom『… |
+| `MAT-20261126-c92641` | research_excerpt | James L. McGaugh『McGaugh (2004)「The Amygdala Modulates the Consolidation of Memories of E… |
+| `MAT-20261126-21767f` | research_excerpt | Larry Cahill, James L. McGaugh『Cahill & McGaugh (1995)「A novel demonstration of enhanced … |
+| `MAT-20261126-a55435` | research_excerpt | Elizabeth A. Kensinger『Kensinger (2009)「Remembering the Details: Effects of Emotion」——情動は… |
+| `MAT-20261126-87d400` | research_excerpt | Alice M. Isen, Kimberly A. Daubman, Gregory P. Nowicki『Isen, Daubman & Nowicki (1987)「Pos… |
+| `MAT-20261126-619b07` | research_excerpt | James J. Gross, Oliver P. John『Gross & John (2003)「Individual differences in two emotion … |
+| `MAT-20261126-c38132` | research_excerpt | Anson J. Whitmer, Ian H. Gotlib『Whitmer & Gotlib (2013)「An attentional scope model of rum… |
 | `MAT-20261126-e0228c` | research_excerpt | Laura Kurdziel, Kasey Duclos, Rebecca M C Spencer『Kurdziel, Duclos & Spencer (2013)「昼寝の睡眠… |
 | `MAT-20261126-c5aa0c` | research_excerpt | Patricia K Kuhl, Feng-Ming Tsao, Huei-Mei Liu『Kuhl, Tsao & Liu (2003)「乳児期の外国語経験：短期曝露と社会的相… |
 | `MAT-20261126-fc72d5` | research_excerpt | B J Casey, Leah H Somerville, Ian H Gotlib, Ozlem Ayduk, Nicholas T Franklin, Mary K Askr… |
@@ -7103,16 +7123,16 @@
 | `MAT-20261126-ddfee9` | research_excerpt | William Hirst, Jeremy K. Yamashiro, Alin Coman『Hirst, Yamashiro & Coman (2018)「Collective… |
 | `MAT-20261126-8f69ff` | research_excerpt | Adam D. Brown, Nicole Kouri, William Hirst『Brown, Kouri & Hirst (2012)「Memory's Malleabil… |
 | `MAT-20261126-36d364` | research_excerpt | Ethan Zell, Emily Balcetis『Zell & Balcetis (2012)「The Influence of Social Comparison on V… |
-| `MAT-20261126-c8c12c` | research_excerpt | Norbert Schwarz, Gerald L. Clore『Schwarz & Clore (1983)「Mood, misattribution, and judgmen… |
-| `MAT-20261126-8b72b7` | research_excerpt | Joseph P. Forgas『Forgas (1995)「Mood and judgment: The affect infusion model (AIM)」——処理の様式… |
-| `MAT-20261126-0a7a63` | research_excerpt | Daniel T. Gilbert, Elizabeth C. Pinel, Timothy D. Wilson, Stephen J. Blumberg, Theresa P.… |
-| `MAT-20261126-69dc12` | research_excerpt | Timothy D. Wilson, Tiffany Wheatley, Jonathan M. Meyers, Daniel T. Gilbert, Daphna Axsom『… |
-| `MAT-20261126-c92641` | research_excerpt | James L. McGaugh『McGaugh (2004)「The Amygdala Modulates the Consolidation of Memories of E… |
-| `MAT-20261126-21767f` | research_excerpt | Larry Cahill, James L. McGaugh『Cahill & McGaugh (1995)「A novel demonstration of enhanced … |
-| `MAT-20261126-a55435` | research_excerpt | Elizabeth A. Kensinger『Kensinger (2009)「Remembering the Details: Effects of Emotion」——情動は… |
-| `MAT-20261126-87d400` | research_excerpt | Alice M. Isen, Kimberly A. Daubman, Gregory P. Nowicki『Isen, Daubman & Nowicki (1987)「Pos… |
-| `MAT-20261126-619b07` | research_excerpt | James J. Gross, Oliver P. John『Gross & John (2003)「Individual differences in two emotion … |
-| `MAT-20261126-c38132` | research_excerpt | Anson J. Whitmer, Ian H. Gotlib『Whitmer & Gotlib (2013)「An attentional scope model of rum… |
+| `MAT-20261126-da1301` | research_excerpt | Llanos Merín, Alonso Mateo, Marta Nieto, Laura Ros, José Miguel Latorre『Language and auto… |
+| `MAT-20261126-da1302` | research_excerpt | Christina G McDonnell, Kristin Valentino, Michelle Comas, Amy K Nuttall『Mother-Child Remi… |
+| `MAT-20261126-da1303` | research_excerpt | Monica Lawson, Kristin Valentino, Ruth Speidel, Christina G McDonnell, E Mark Cummings『Re… |
+| `MAT-20261126-da1304` | research_excerpt | Xin Feng, Yihui Gong, Meingold Chan, Karis Inboden, Qi Wang『Mother-Child Reminiscing of E… |
+| `MAT-20261126-da1305` | research_excerpt | Kristin Valentino, E Mark Cummings, John Borkowski, Leah C Hibel, Jennifer Lefever, Monic… |
+| `MAT-20261126-da1306` | research_excerpt | Kristin Valentino, Leah C Hibel, Ruth Speidel, Kaitlin Fondren, Elisa Ugarte『Longitudinal… |
+| `MAT-20261126-da1307` | research_excerpt | Kristin Valentino, Michelle Comas, Amy K Nuttall, Taylor Thomas『Training maltreating pare… |
+| `MAT-20261126-da1308` | research_excerpt | Katherine Edler, Monica Lawson, Ruth Speidel, Kristin Valentino『Intergenerational transmi… |
+| `MAT-20261126-da1309` | research_excerpt | Seungjin Lee, Juyoung Kim『Mother–child conversations and coping strategies as antecedents… |
+| `MAT-20261126-da1310` | research_excerpt | Amy M Hedrick, Catherine A Haden, Peter A Ornstein『Elaborative Talk During and After an E… |
 
 ## 5. セッション履歴（SESSION-001 〜 SESSION-20261126-8bfbf3・全文は map/50-sessions-*.md）
 
@@ -8294,10 +8314,12 @@
 | `SESSION-20261125-eaf92c` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-455669` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-a31fe6` | 2026-11-26T01:30:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261126-f49607` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-0debc9` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-bd7f0b` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-8d166b` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-489d13` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261126-da1384` | 2026-11-26 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261126-8bfbf3` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
@@ -8403,7 +8425,7 @@
 | `map/31-materials-research-38.md` | 100 | 262,380 |
 | `map/31-materials-research-39.md` | 100 | 234,668 |
 | `map/31-materials-research-40.md` | 100 | 230,718 |
-| `map/31-materials-research-41.md` | 57 | 140,727 |
+| `map/31-materials-research-41.md` | 77 | 182,970 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8443,7 +8465,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 31 | 24,905 |
+| `map/50-sessions-24.md` | 33 | 26,432 |
 | `map/60-notes-01.md` | 25 | 83,016 |
 | `map/60-notes-02.md` | 25 | 64,921 |
 | `map/60-notes-03.md` | 25 | 75,633 |
@@ -8485,24 +8507,24 @@
 | `map/60-notes-39.md` | 25 | 46,908 |
 | `map/60-notes-40.md` | 25 | 91,698 |
 | `map/60-notes-41.md` | 25 | 130,721 |
-| `map/60-notes-42.md` | 25 | 111,861 |
+| `map/60-notes-42.md` | 25 | 111,878 |
 | `map/60-notes-43.md` | 25 | 85,375 |
-| `map/60-notes-44.md` | 25 | 66,760 |
-| `map/60-notes-45.md` | 25 | 72,592 |
-| `map/60-notes-46.md` | 25 | 75,340 |
-| `map/60-notes-47.md` | 25 | 102,162 |
-| `map/60-notes-48.md` | 25 | 96,878 |
-| `map/60-notes-49.md` | 25 | 142,741 |
-| `map/60-notes-50.md` | 8 | 36,816 |
+| `map/60-notes-44.md` | 25 | 69,217 |
+| `map/60-notes-45.md` | 25 | 73,234 |
+| `map/60-notes-46.md` | 25 | 76,247 |
+| `map/60-notes-47.md` | 25 | 98,964 |
+| `map/60-notes-48.md` | 25 | 94,959 |
+| `map/60-notes-49.md` | 25 | 141,727 |
+| `map/60-notes-50.md` | 10 | 47,684 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1233本・40,909,612 B）
+## 8. 精読ノート索引（readings/・1235本・40,977,378 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1124/1233 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1126/1235 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1233 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1235 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：195 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9582,6 +9604,8 @@
 | `readings/2026-11-26-biphasic-mortality-and-snapshot-anchors.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-a31fe6` +3 | 9,120 | Q3 M3 S4 ERR1 ED3 | ✓ | 二相の死生観とスナップショットの錨——未読原典の完読とコミット `ee4ee11c` 復元による申し送り検証 |
 | `readings/2026-11-26-developmental-science-cue-dependent-reachability.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-8d166b` +1 | 26,049 | Q3 M10 S2 | ✓ | 中にあるのに届かない、届いたのに自分のものでない——発達科学十件の精読と、手がかり依存の到達可能性 |
 | `readings/2026-11-26-developmental-science-four-gates-of-reachability.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-0debc9` +1 | 24,832 | Q3 M12 S2 | ✓ | 入りの門、眠りの司書、答え方の二型、署名の薄さ——発達科学十件の精読と、手がかりが開く門の四重依存 |
+| `readings/2026-11-26-developmental-science-silence-of-the-teacher.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-f49607` | 29,263 | Q3 M17 S1 | ✓ | 教えた者の沈黙を読む——発達科学十件の精読と、証拠がどう選ばれたかを推論する学び手 |
+| `readings/2026-11-26-remembering-with-others-developmental-science.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-da1384` | 4,047 | M10 S1 | ✓ | 発達科学10資料の精読：誰と、いつ、どのように思い出すか |
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
 | `readings/2026-11-26-the-blank-is-a-way-of-seeing.md` | — | 2026-11-26 | `SESSION-20261126-7b7806` +1 | 6,120 | Q6 F6 M4 MOT2 S2 | ✓ | 空欄は、すでに一つの見方である —— 名を書かない贈与と、返却先のない写真 |
 | `readings/2026-11-27-zero-first-and-the-word-not-used.md` | 2026-10-27 | 2026-11-27 | `SESSION-20261127-3b453f` +3 | 8,788 | Q19 F5 M4 S4 | ✓ | 零を先に読み、扱いに通らない語を残す —— 傷つかない声の目盛りと、診察室の訳語 |

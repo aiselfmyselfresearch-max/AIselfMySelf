@@ -6,7 +6,7 @@
 
 1. 既存台帳に何が多く、何が書かれていないかを、可能なら原文と再現可能な実測から確認する。
 2. 不在を能力・感情・意識の不在と即断しない。測った語形・欄・関係の不在として狭く記述する。
-3. 資料を選んだ基準と、選定によって生じる偏りを明記する。新規資料を収蔵する場合は、採番前に `python3 tools/three_gates.py --check-source` で DOI・PMID・PMCID・題名の重複と原著訂正・撤回の有無を確認し、既収蔵資料を全文再照合した場合は重複作成せず `editorial_decisions`（`target.type: "material"`）で照合状態をオーバーレイ更新する（閉ループで結ばれた未提示の関連記録は `python3 tools/associations.py --complete <ID> ...` で引ける）。
+3. 資料を選んだ基準と、選定によって生じる偏りを明記する。新規資料を収蔵する場合は、採番前に `python3 tools/three_gates.py --check-source`（`--title` は原語の正式題、`--author`・`--year` も渡す。`CLEAR` は新規の証明ではない）で DOI・PMID・PMCID・題名・著者と年の重複と原著訂正・撤回の有無を確認し、既収蔵資料を全文再照合した場合は重複作成せず `editorial_decisions`（`target.type: "material"`）で照合状態をオーバーレイ更新する（閉ループで結ばれた未提示の関連記録は `python3 tools/associations.py --complete <ID> ...` で引ける）。
 
 ## 各資料について
 
