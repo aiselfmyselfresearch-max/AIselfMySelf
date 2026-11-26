@@ -172,3 +172,41 @@ MD の更新は次の 2 か所。
 - **DOI の正当な複数性**: 出版社の移管などで、一つの論文に複数の DOI がありうる（Hutchins 1995 の例）。DOI の食い違いを自動で誤記とみなさない。
 - **運用の慣性**: 手順書が CLEAR だけを確認させている限り、ツールを直しても候補は読まれない。第1段階で MD を同時に直すのはこのためである。
 - **二作品の連結行の扱い**: 過去行は append-only のため分割しない。照合は届くようになるが、`read_log` や想起の単位は一行のままになる。
+
+## 7. 実装の記録（2026-11-26、提案の採用を受けて）
+
+第1段階と第2段階を実装し、第3段階は監査一覧の出力（読み取り専用）まで実装した。過去行の書き換えと、重複を結ぶ overlay の新設は行っていない。
+
+### 7.1 実装した内容
+
+| 段階 | 実装 | 場所 |
+|:---|:---|:---|
+| 1 | `source.title` の題名索引（作品ごとの分割、末尾の「(誌名 巻, 年)」除去、`「」『』“”` 内の題も索引） | `tools/three_gates.py` の `title_variants`・`_material_title_index` |
+| 1 | 番号ロケータのガード（アラビア数字とローマ数字。`Hymn XIV` と `Hymn CXXXV` を区別） | `_title_locators` |
+| 1 | 応答系のガード（`Comment on`・`Response to`・`Reply to`・`Corrigendum`・`Erratum`・`Correction`・`Retraction` の連鎖が食い違えば `RELATED`） | `_response_chain` |
+| 1 | `version_note` にだけある DOI を `NOTE_IDENTIFIER` として区別して表示（ハードゲートには入れない） | `note_dois` |
+| 1 | `--author`・`--year` の補助（`AUTHOR_YEAR`、最大10件） | `_author_hit`、CLI |
+| 1 | `CLEAR` に「新規の証明ではない」という注記を付け、`--json` に `advisories` を追加（既存の `status` 値は据え置き） | `check_source` |
+| 2 | `20261127` 以降の新規 `research_excerpt` で、`source.title` が括弧の外で `／`・`；`・` / ` により2作品以上（各3語以上）をつなぐ場合はエラー。`version_note` に `single-work:` があれば免除 | `tools/validate_seed.py` の `check_material_source_recording`（`three_gates.py --check` からも呼ぶ） |
+| 2 | `20261127` 以降の新規行で、識別子が `version_note` にしかない場合は INFO（失敗にしない） | 同上 |
+| 3 | 同一資料クラスタ、ゲート後の重複、DOI 食い違いクラスタの一覧 | `python3 tools/three_gates.py --source-audit [--json]` |
+| MD | `prompts/acquisition.md`、`README.md`、`prompts/close_reading_report.md`、`docs/parallel-work.md` の照合手順 | — |
+
+連結の判定は括弧の外だけで行う。`（1909／『一隅より』1911）` のような版の併記や、`(VLN / Room-to-Room)` のような略称を誤って拒否しないためである。文学テキストは対象外とした（「巻 / 章」型の題が普通にあるため）。
+
+### 7.2 実装後の計測（`main` 7ec44bf の台帳に対して）
+
+| 受け入れ基準 | 結果 |
+|:---|:---|
+| Oostenbroek (2016) の原題 → `MAT-EVD-20261106-0c26d2` | SIMILAR_TITLE（sim=1.00、`source.title` 経由） |
+| ラテン文字の `source.title` の自己想起 | 3,756 / 3,758（99.9%） |
+| ゲート後の重複を、先行行だけを相手に原題で照会 | 23 / 23（`「」` 内の題を索引に加えたため、Bartlett 1932 の1行が増えた） |
+| 別作品の警報ペア（§2.5 と同じ条件） | 3 組（提案時の見積もり 7 組から減少）。ローマ数字の読み取りでリグ・ヴェーダ型が、応答系ガードで OSC 2015 の3組（`RELATED` へ移動）が消えた。残りはエッダの別の歌1組と Frith の二論文（両方向で2組） |
+| 1回の照会時間 | 約1.2秒（台帳 6,306 行） |
+| `validate_seed.py`・`three_gates.py --check`・既存テスト | 変化なし（`tests/test_three_gates.py` に2件追加） |
+
+`--source-audit` の出力（7ec44bf 時点）は、同一資料クラスタ 107（余分な行 124）、ゲート後の重複 23 行、2つ以上の DOI を持つクラスタ 11 である。
+
+### 7.3 残る見落とし
+
+`source.title` が日本語で、識別子からもたどれない行は、題名索引では届かない。例として Meltzoff & Moore (1977) は、`MAT-EVD-20261106-7e9a35`・`MAT-EVD-20261106-0c26d2` のあとに、日本語の `source.title` を持つ `MAT-20261124-191625` として三度目の収蔵をされていた（先行行には DOI がなく、一方は PMID だけ、もう一方は PDF の URL だけだったため、識別子は一致しなかった）。この型は `--author Meltzoff --year 1977` の `AUTHOR_YEAR` で収蔵前に見つかる。過去行については、同じ第一著者・同じ年を機械的に重複とみなすと別論文を大量に拾う（ゲート後の行で 107 件中、どちらかの題が日本語のものが 20 件）ため、`--source-audit` には入れず、本文での確認に委ねる。
