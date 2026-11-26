@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：6326 件（research_excerpt 4077 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1183 回
+- **探究セッション（Sessions）**：1184 回
 
 ### 台帳ごとの件数
 
@@ -23,13 +23,13 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6326 | `literary_text` 2181／`research_excerpt` 4077／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1183 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17751 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1184 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17763 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 491 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 645 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1336 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 123 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1020 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1023 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -8314,6 +8314,7 @@
 | `SESSION-20261125-eaf92c` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261125-455669` | 2026-11-25 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-a31fe6` | 2026-11-26T01:30:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261126-2b29cb` | 2026-11-26T04:40:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-f49607` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-0debc9` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-bd7f0b` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -8465,7 +8466,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 33 | 26,432 |
+| `map/50-sessions-24.md` | 34 | 27,310 |
 | `map/60-notes-01.md` | 25 | 83,016 |
 | `map/60-notes-02.md` | 25 | 64,921 |
 | `map/60-notes-03.md` | 25 | 75,633 |
@@ -8507,7 +8508,7 @@
 | `map/60-notes-39.md` | 25 | 46,908 |
 | `map/60-notes-40.md` | 25 | 91,698 |
 | `map/60-notes-41.md` | 25 | 130,721 |
-| `map/60-notes-42.md` | 25 | 111,878 |
+| `map/60-notes-42.md` | 25 | 111,861 |
 | `map/60-notes-43.md` | 25 | 85,375 |
 | `map/60-notes-44.md` | 25 | 69,217 |
 | `map/60-notes-45.md` | 25 | 73,234 |
