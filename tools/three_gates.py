@@ -201,6 +201,26 @@ def _author_hit(rec: dict[str, Any], author_tokens: list[str], year: int | None)
     return year is None or src.get("year") == year or str(year) in str(src.get("title") or "")
 
 
+def source_identity_reviews(errata: dict[str, dict[str, Any]] | None) -> dict[str, list[dict[str, Any]]]:
+    """Material errata with ``check.params.audit == "source_identity"`` (proposal section 8):
+    ``duplicate_of``/``same_work_as`` name earlier rows of the same work, ``correct_doi``
+    the verified DOI, ``distinct_from`` rows read and found to be other works."""
+    out: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for eid, rec in (errata or {}).items():
+        params = (rec.get("check") or {}).get("params") or {}
+        if rec.get("subject_type") != "material" or params.get("audit") != "source_identity":
+            continue
+        out[str(rec.get("subject_id") or "")].append({
+            "errata_id": eid,
+            "verdict": rec.get("verdict"),
+            "duplicate_of": params.get("duplicate_of") or "",
+            "correct_doi": str(params.get("correct_doi") or "").lower(),
+            "same_work_as": list(params.get("same_work_as") or []),
+            "distinct_from": list(params.get("distinct_from") or []),
+        })
+    return out
+
+
 def check_source(
     materials: dict[str, dict[str, Any]],
     *,
@@ -212,6 +232,7 @@ def check_source(
     author: str = "",
     year: int | None = None,
     title_threshold: float = 0.72,
+    errata: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Check a candidate primary source against all archived materials (Gate 3).
 
@@ -219,8 +240,10 @@ def check_source(
     are reported separately), titles (display ``title`` and every work in
     ``source.title``, guarded by numeric locators and Comment/Response prefixes)
     and, with ``author``, first-author surname plus ``year``.  Every title/author
-    hit is advisory: CLEAR means "not found in these indexes", not "new".
+    hit is advisory: CLEAR means "not found in these indexes", not "new".  ``errata``
+    adds source-identity reviews (correct_doi also matches; hits carry the review).
     """
+    reviews = source_identity_reviews(errata)
     probe = {
         "source": {
             "url": " ".join(x for x in (url, f"https://doi.org/{doi}" if doi else "", f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/" if pmid else "", pmcid) if x),
@@ -261,9 +284,12 @@ def check_source(
                 m_ids["pmcid"] = cm.group(1).upper()
         matched_on = [
             f"{k}:{wanted_ids[k]}"
-            for k in ("doi", "pmcid", "pmid")
+            for k in ("doi", "pmcid", "pmid", "arxiv")
             if k in wanted_ids and m_ids.get(k) == wanted_ids[k]
         ]
+        rev = reviews.get(mid, [])
+        if not matched_on and "doi" in wanted_ids and any(r["correct_doi"] == wanted_ids["doi"] for r in rev):
+            matched_on = [f"errata.correct_doi:{wanted_ids['doi']}"]
         vstat = str(((rec.get("verification") or {}).get("status")) or "unrecorded")
         src = rec.get("source") or {}
         base = {
@@ -275,6 +301,8 @@ def check_source(
             "url": str(src.get("url") or ""),
             "can_upgrade_via_editorial_decision": vstat != "verified",
         }
+        if rev:
+            base["source_identity_reviews"] = rev
         if matched_on:
             exact_matches.append({**base, "matched_on": matched_on})
             continue
@@ -344,15 +372,17 @@ def source_duplicate_audit(
     *,
     cutoff: str = validate_seed.THREE_GATES_RULE_FROM,
     today: datetime.date | None = None,
+    errata: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Same-source clusters by shared identifier or identical work title (read-only audit).
 
-    Lists rows minted on/after ``cutoff`` that repeat an earlier row (the identifier
-    gate cannot see them when the earlier row has no identifier or the DOIs disagree)
-    and clusters holding two or more different DOIs (misrecorded, or a genuine second
-    DOI after a publisher move).  Literary-only clusters are skipped: same translator
-    and title pattern with different chapters is the norm there, not duplication.
+    Lists rows minted on/after ``cutoff`` repeating an earlier row (missed by the
+    identifier gate: no identifier or DOIs disagree), clusters with two or more DOIs
+    (misrecorded, or a publisher-move alias) and ``cross_language_suspects`` (same
+    first-author surname+year, exactly one source.title Japanese).  Literary-only
+    clusters are skipped.  Rows carry ``reviewed_by`` from source-identity errata.
     """
+    reviews = source_identity_reviews(errata)
     parent = {mid: mid for mid in materials}
 
     def root(x: str) -> str:
@@ -401,13 +431,57 @@ def source_duplicate_audit(
             else:
                 cause = "earlier_row_has_no_identifier"
             post_gate.append({"material_id": mid, "earlier": earlier, "cause": cause,
-                              "source_title": str((materials[mid].get("source") or {}).get("title") or "")})
+                              "source_title": str((materials[mid].get("source") or {}).get("title") or ""),
+                              "reviewed_by": [r["errata_id"] for r in reviews.get(mid, [])]})
+    for c in conflicts:
+        c["reviewed_by"] = sorted(r["errata_id"] for m in c["material_ids"] for r in reviews.get(m, []))
+
+    clustered = {m for c in dup_clusters for m in c}
+    jp = validate_seed._JAPANESE_SCRIPT_RE
+
+    def first_author_year(rec: dict[str, Any]) -> tuple[str, Any] | None:
+        src = rec.get("source") if isinstance(rec.get("source"), dict) else {}
+        authors = src.get("authors") if isinstance(src.get("authors"), list) else []
+        if not authors or not src.get("year"):
+            return None
+        name = "".join(c for c in unicodedata.normalize("NFKD", str(authors[0])) if not unicodedata.combining(c))
+        name = name.casefold().split(",")[0] if "," in name else name.casefold()
+        toks = [t for t in re.findall(r"[a-z\u3040-\u30ff\u4e00-\u9fff]+", name)
+                if len(t) >= 2 and t not in {"jr", "sr", "ii", "iii", "iv"}]
+        return (toks[-1], src.get("year")) if toks else None
+
+    by_key: dict[tuple[str, Any], list[str]] = defaultdict(list)
+    for mid, rec in materials.items():
+        key = first_author_year(rec)
+        if key and not literary(mid):
+            by_key[key].append(mid)
+    suspects: list[dict[str, Any]] = []
+    for members in by_key.values():
+        members.sort(key=lambda m: (stamp(m), m))
+        for i, mid in enumerate(members[1:], start=1):
+            if (mid in clustered or materials[mid].get("kind") != "research_excerpt"
+                    or not validate_seed._is_new_row(mid, cutoff, today=today)):
+                continue
+            title = str((materials[mid].get("source") or {}).get("title") or "")
+            others = [o for o in members[:i] if o not in parent or root(o) != root(mid)]
+            others = [o for o in others if bool(jp.search(title)) != bool(jp.search(str((materials[o].get("source") or {}).get("title") or "")))]
+            if not others:
+                continue
+            seen = {d for r in reviews.get(mid, []) for d in [r["duplicate_of"], *r["same_work_as"], *r["distinct_from"]]}
+            suspects.append({"material_id": mid, "earlier": others, "source_title": title,
+                             "reviewed_by": [r["errata_id"] for r in reviews.get(mid, [])] if set(others) <= seen else []})
     return {
         "clusters": len(dup_clusters),
         "extra_rows": sum(len(c) - 1 for c in dup_clusters),
         "post_gate_cutoff": cutoff,
         "post_gate_duplicates": post_gate,
         "doi_conflict_clusters": conflicts,
+        "cross_language_suspects": suspects,
+        "unreviewed": {
+            "post_gate_duplicates": sum(1 for r in post_gate if not r["reviewed_by"]),
+            "doi_conflict_clusters": sum(1 for r in conflicts if not r["reviewed_by"]),
+            "cross_language_suspects": sum(1 for r in suspects if not r["reviewed_by"]),
+        },
     }
 
 
@@ -417,13 +491,14 @@ def duplicate_identifier_summary(materials: dict[str, dict[str, Any]]) -> dict[s
         "doi": defaultdict(list),
         "pmcid": defaultdict(list),
         "pmid": defaultdict(list),
+        "arxiv": defaultdict(list),
     }
     for mid, rec in materials.items():
         ids = validate_seed.extract_material_identifiers(rec)
         for kind, val in ids.items():
             buckets[kind][val].append(mid)
     out: dict[str, Any] = {}
-    for kind in ("doi", "pmcid", "pmid"):
+    for kind in ("doi", "pmcid", "pmid", "arxiv"):
         dups = {v: mids for v, mids in buckets[kind].items() if len(mids) >= 2}
         extra = sum(len(mids) - 1 for mids in dups.values())
         sample = [
@@ -1525,17 +1600,26 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.source_audit:
         data, _err = load_archive(args.root)
-        res = source_duplicate_audit(data["materials"])
+        res = source_duplicate_audit(data["materials"], errata=data.get("errata"))
         if args.json:
             print(json.dumps(res, ensure_ascii=False, indent=2))
         else:
+            def mark(r: dict[str, Any]) -> str:
+                return f"reviewed {', '.join(r['reviewed_by'])}" if r["reviewed_by"] else "UNREVIEWED"
+
+            un = res["unreviewed"]
             print(f"same-source clusters: {res['clusters']} (extra rows {res['extra_rows']})")
-            print(f"rows minted on/after {res['post_gate_cutoff']} repeating an earlier row: {len(res['post_gate_duplicates'])}")
+            print(f"rows minted on/after {res['post_gate_cutoff']} repeating an earlier row: "
+                  f"{len(res['post_gate_duplicates'])} (unreviewed {un['post_gate_duplicates']})")
             for r in res["post_gate_duplicates"]:
-                print(f"  DUP   {r['material_id']} <- {', '.join(r['earlier'])} [{r['cause']}] {r['source_title'][:60]}")
-            print(f"clusters with two or more DOIs: {len(res['doi_conflict_clusters'])}")
+                print(f"  DUP   {r['material_id']} <- {', '.join(r['earlier'])} [{r['cause']}] {mark(r)}  {r['source_title'][:50]}")
+            print(f"clusters with two or more DOIs: {len(res['doi_conflict_clusters'])} (unreviewed {un['doi_conflict_clusters']})")
             for r in res["doi_conflict_clusters"]:
-                print(f"  DOI   {', '.join(r['material_ids'])}: {' | '.join(r['dois'])}")
+                print(f"  DOI   {', '.join(r['material_ids'])}: {' | '.join(r['dois'])}  {mark(r)}")
+            print(f"cross-language same author+year suspects: {len(res['cross_language_suspects'])} "
+                  f"(unreviewed {un['cross_language_suspects']})")
+            for r in res["cross_language_suspects"]:
+                print(f"  LANG  {r['material_id']} ~ {', '.join(r['earlier'][:3])} {mark(r)}  {r['source_title'][:50]}")
         return 0
 
     if args.check_source:
@@ -1549,6 +1633,7 @@ def main(argv: list[str] | None = None) -> int:
             title=args.title,
             author=args.author,
             year=args.year,
+            errata=data.get("errata"),
         )
         if args.json:
             print(json.dumps(res, ensure_ascii=False, indent=2))
@@ -1571,6 +1656,13 @@ def main(argv: list[str] | None = None) -> int:
                     f"  AUTHR  {m['material_id']} [{m['verification_status']}] "
                     f"year={m['year']}  {(m['source_title'] or m['title'])[:75]}"
                 )
+            for key in ("exact_identifier_matches", "note_identifier_matches", "similar_title_matches",
+                        "author_year_matches", "related_title_matches"):
+                for m in res[key]:
+                    for r in m.get("source_identity_reviews", []):
+                        bits = [f"duplicate_of={r['duplicate_of']}" if r["duplicate_of"] else "",
+                                f"correct_doi={r['correct_doi']}" if r["correct_doi"] else ""]
+                        print(f"  ERRAT  {m['material_id']}: {r['errata_id']} {' '.join(b for b in bits if b)}")
             if res["editorial_upgrade_template"]:
                 print(
                     "  HINT : Cite the existing MAT-* directly; if you verified its full text, "
