@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6316 件（research_excerpt 4067 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6326 件（research_excerpt 4077 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：253 編（selected 97 ／ draft 156）
 - **解釈的関係（Relations）**：7097 件
-- **探究セッション（Sessions）**：1183 回
+- **探究セッション（Sessions）**：1184 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6316 | `literary_text` 2181／`research_excerpt` 4067／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6326 | `literary_text` 2181／`research_excerpt` 4077／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 253 | `selected` 97／`draft` 156／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7097 | うち断片↔断片 619 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1183 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17749 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1184 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17763 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 491 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 645 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1335 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1336 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 123 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1017 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1018 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -803,7 +803,7 @@
 | `FRAG-20261119-2c362b` | 予算を使い切る夜——トークンを数える手と、寿命を数えない手 | draft | essay | reflective_literary_voice |
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 
-## 4. 対話素材（6316 件・詳細は map/3*.md）
+## 4. 対話素材（6326 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -7123,8 +7123,18 @@
 | `MAT-20261126-da1308` | research_excerpt | Katherine Edler, Monica Lawson, Ruth Speidel, Kristin Valentino『Intergenerational transmi… |
 | `MAT-20261126-da1309` | research_excerpt | Seungjin Lee, Juyoung Kim『Mother–child conversations and coping strategies as antecedents… |
 | `MAT-20261126-da1310` | research_excerpt | Amy M Hedrick, Catherine A Haden, Peter A Ornstein『Elaborative Talk During and After an E… |
+| `MAT-20261126-b354da` | research_excerpt | Lara Maister, Teresa Tang, Manos Tsakiris『乳児の心拍同期弁別——反応と自己報告の間』（2017） |
+| `MAT-20261126-62844a` | research_excerpt | Markus R Tünte, Stefanie Hoehl, Moritz Wunderwald, Johannes Bullinger, Asena Boyadziheva,… |
+| `MAT-20261126-e25ffc` | research_excerpt | Lisa Musculus, Markus R Tünte, Markus Raab, Ezgi Kayhan『最小自己の発達という予測——理論を結果にしない』（2021） |
+| `MAT-20261126-8160f1` | research_excerpt | Anne Koch, Olga Pollatos『食行動が先か、感度が先か——児童期の縦断研究』（2014） |
+| `MAT-20261126-039c1f` | research_excerpt | Eleana Georgiou, Ellen Matthias, Susanne Kobel, Sarah Kettner, Jens Dreyhaupt, Jürgen M S… |
+| `MAT-20261126-be5a83` | research_excerpt | M. Klabunde, H. Juszczak, T. Jordan, J. M. Baker, J. Bruno, V. Carrion, A. L. Reiss『小児の内受… |
+| `MAT-20261126-4b9519` | research_excerpt | Rosie Donaghy, Jeanne Shinskey, Manos Tsakiris『養育者の身体への注意と乳児への接触——報告と行動の分離』（2024） |
+| `MAT-20261126-834507` | research_excerpt | Silvia Canino, Valentina Torchia, Erica Dolce, Irene Ruffo, Teresa Iona, Simona Raimo, Li… |
+| `MAT-20261126-935edd` | research_excerpt | Paola Solano Durán, Valeria Isaac『接触を通じて身体を学ぶという提案——関係的発達の限界』（2026） |
+| `MAT-20261126-61a7b9` | research_excerpt | Caitlin Bishop, Ted Brown, Mong-Lin Yu『学齢期の自己報告と実行機能——尺度方向と本文不整合』（2022） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261126-da1384・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261126-8a8256・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -8311,6 +8321,7 @@
 | `SESSION-20261126-8d166b` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-489d13` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-da1384` | 2026-11-26 | `Q-001`, `Q-002` | — | — |
+| `SESSION-20261126-8a8256` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7097 件・全表は map/40-relations-*.md）
 
@@ -8415,7 +8426,7 @@
 | `map/31-materials-research-38.md` | 100 | 262,380 |
 | `map/31-materials-research-39.md` | 100 | 234,668 |
 | `map/31-materials-research-40.md` | 100 | 230,718 |
-| `map/31-materials-research-41.md` | 67 | 157,725 |
+| `map/31-materials-research-41.md` | 77 | 180,937 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8455,7 +8466,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 33 | 26,530 |
+| `map/50-sessions-24.md` | 34 | 27,356 |
 | `map/60-notes-01.md` | 25 | 81,962 |
 | `map/60-notes-02.md` | 25 | 63,922 |
 | `map/60-notes-03.md` | 25 | 73,523 |
@@ -8499,22 +8510,22 @@
 | `map/60-notes-41.md` | 25 | 130,414 |
 | `map/60-notes-42.md` | 25 | 110,258 |
 | `map/60-notes-43.md` | 25 | 88,806 |
-| `map/60-notes-44.md` | 25 | 65,599 |
-| `map/60-notes-45.md` | 25 | 72,517 |
-| `map/60-notes-46.md` | 25 | 75,914 |
-| `map/60-notes-47.md` | 25 | 100,181 |
-| `map/60-notes-48.md` | 25 | 97,079 |
-| `map/60-notes-49.md` | 25 | 140,596 |
-| `map/60-notes-50.md` | 9 | 43,461 |
+| `map/60-notes-44.md` | 25 | 66,054 |
+| `map/60-notes-45.md` | 25 | 73,234 |
+| `map/60-notes-46.md` | 25 | 76,247 |
+| `map/60-notes-47.md` | 25 | 98,964 |
+| `map/60-notes-48.md` | 25 | 94,959 |
+| `map/60-notes-49.md` | 25 | 141,727 |
+| `map/60-notes-50.md` | 10 | 47,684 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1234本・40,977,378 B）
+## 8. 精読ノート索引（readings/・1235本・41,014,819 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1125/1234 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1126/1235 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1234 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1235 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：194 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9594,6 +9605,7 @@
 | `readings/2026-11-26-developmental-science-cue-dependent-reachability.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-8d166b` +1 | 26,049 | Q3 M10 S2 | ✓ | 中にあるのに届かない、届いたのに自分のものでない——発達科学十件の精読と、手がかり依存の到達可能性 |
 | `readings/2026-11-26-developmental-science-four-gates-of-reachability.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-0debc9` +1 | 24,832 | Q3 M12 S2 | ✓ | 入りの門、眠りの司書、答え方の二型、署名の薄さ——発達科学十件の精読と、手がかりが開く門の四重依存 |
 | `readings/2026-11-26-developmental-science-silence-of-the-teacher.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-f49607` | 29,263 | Q3 M17 S1 | ✓ | 教えた者の沈黙を読む——発達科学十件の精読と、証拠がどう選ばれたかを推論する学び手 |
+| `readings/2026-11-26-interoception-calibration-and-ai-self.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-8a8256` | 16,237 | Q3 M10 S1 | ✓ | 身体の信号を知ることと、「私を知る」と語ること——発達科学10資料の精読とAIの自己考察 |
 | `readings/2026-11-26-remembering-with-others-developmental-science.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-da1384` | 4,047 | M10 S1 | ✓ | 発達科学10資料の精読：誰と、いつ、どのように思い出すか |
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
 | `readings/2026-11-26-the-blank-is-a-way-of-seeing.md` | — | 2026-11-26 | `SESSION-20261126-7b7806` +1 | 6,120 | Q6 F6 M4 MOT2 S2 | ✓ | 空欄は、すでに一つの見方である —— 名を書かない贈与と、返却先のない写真 |
