@@ -210,3 +210,87 @@ MD の更新は次の 2 か所。
 ### 7.3 残る見落とし
 
 `source.title` が日本語で、識別子からもたどれない行は、題名索引では届かない。例として Meltzoff & Moore (1977) は、`MAT-EVD-20261106-7e9a35`・`MAT-EVD-20261106-0c26d2` のあとに、日本語の `source.title` を持つ `MAT-20261124-191625` として三度目の収蔵をされていた（先行行には DOI がなく、一方は PMID だけ、もう一方は PDF の URL だけだったため、識別子は一致しなかった）。この型は `--author Meltzoff --year 1977` の `AUTHOR_YEAR` で収蔵前に見つかる。過去行については、同じ第一著者・同じ年を機械的に重複とみなすと別論文を大量に拾う（ゲート後の行で 107 件中、どちらかの題が日本語のものが 20 件）ため、`--source-audit` には入れず、本文での確認に委ねる。
+
+（7.3 の見落としは §8 で扱った。）
+
+## 8. 残る見落としの補修（2026-11-26、7.3 を受けて）
+
+### 8.1 方針
+
+過去の資料行は書き換えない。確認結果は `state/errata.d/` に errata 行として追記し、ツールがその行を読んで表示する（オーバーレイ型）。資料についての errata は仮説の重みを動かさない。`belief_state.py` が減点するのは、主語が仮説で判定が `contradicted` の行だけで、資料の errata は目印になるだけである。
+
+### 8.2 source_identity errata の書き方
+
+- 共通項目：`subject_type: "material"`、`check.kind: "manual"`、`weight_effect: "flag"`。
+- `check.params.audit: "source_identity"` を置く。
+- 同じ作品の行の場合：
+  - `duplicate_of`：引用すべき先行行（一つ）。
+  - `same_work_as`：同じ作品の、ほかの先行行。
+  - 判定は `contradicted`（「新しい資料」という主張が成り立たない）、状態は `open`。
+- 記録された DOI が誤っている場合：
+  - `recorded_doi`：記録されている DOI。
+  - `correct_doi`：Crossref で題・著者・巻・頁を確かめた DOI。
+  - `verification`：照会した URL。
+  - 登録の有無は doi.org の handle API（`/api/handles/<doi>`）で確かめる。取得できなければ未登録の DOI である。出版社の移管で付いた別名（HS_ALIAS）は誤りとして扱わない。
+- 別の作品と確かめた場合：
+  - `distinct_from` に相手の行を書く。
+  - 判定は `holds`、状態は `annotated`。
+- 手順：`--source-audit` で候補を出し、両方の行の `source`（title・authors・year・url・version_note）を読み比べる。そのうえで DOI を上記の方法で照合する。
+
+ツール側の扱い：
+
+- **`--source-audit`**：各行に `reviewed_by` を付け、未確認の件数を `unreviewed` として数える。
+- **`--check-source --doi <正しい DOI>`**：`correct_doi` が一致する行も `errata.correct_doi:<doi>` として返し、`ERRAT` 行に `duplicate_of` と `correct_doi` を出す。DOI を誤って記録された行も、正しい DOI で引ける。
+
+### 8.3 日本語題の行（今後の行）
+
+日本語題の行は、第一著者の姓と年の一致で拾うことにした。そのうえで、日本語題の行そのものを今後は作らせない。
+
+**`--source-audit` の `cross_language_suspects`**
+- 対象：ゲート後に作られた研究資料の行のうち、第一著者の姓と年が先行行と同じで、`source.title` が片方だけ日本語の組。
+- 姓の取り出し：「姓, 名」の形と、ダイアクリティカルマークに対応した。`Jr.` のような接尾辞と 1 文字の語は除く。この改善で、Swann Jr. と Janeway Jr. の組、Crespo-García と Kovacs の組の誤検知が消えた。
+- 件数：20 件から 16 件になった。
+
+**`validate_seed.py` の新しい拒否（`20261127` 以降に作られた `research_excerpt` 行）**
+- 条件：著者がすべてラテン文字なのに、`source.title` が日本語の行。
+- 規模：台帳全体で 621 行、20261120〜25 の行で 72 行あった。
+- 例外：本当に日本語題で刊行された作品なら、`version_note` に `original-title: <理由>` と書く。著者に日本語表記がある行は対象外である。
+
+**arXiv ID**
+- `arxiv.org/abs|pdf/`、`arXiv:`、`10.48550/arXiv.` の三つの書き方を `2310.13548` の形にそろえ、識別子として扱う（`source.url` と `source_id` だけを見る）。
+- 重複の拒否は `20261127` 以降の行に限る。
+- これまでは DOI・PMID・PMCID しか比べていなかったため、arXiv だけで記録された同じプレプリントが重複していても止まらなかった。
+
+### 8.4 監査の結果（`main` dd38b33 の台帳）
+
+errata 43 行を追記した（`state/errata.d/2026-11-26-6043705bbd7f.jsonl`、`ERR-20261126-2847a7` ほか）。
+
+| 区分 | 件数 | 内容 |
+|---|---|---|
+| ゲート後の重複 | 23 | すべて `duplicate_of` を記録 |
+| 監査の途中で見つけた行 | 4 | Bartlett `a44ffe`、Nottebohm `73dd8c`（`60bac9` の重複）、Nottebohm `60bac9` と Koriat `8bf11f`（DOI のみ） |
+| 日本語題の同一作品 | 10 | Mindblindness、Syntactic Structures、Sparrow 2011、Meltzoff 1977（三度目）、Loftus 1995、Neisser & Harsch、Waddington 1957、Tomasello 1999、Fisher 2015、Piaget 1952 |
+| 別の作品と確認 | 6 | R. Klein と M. Klein など、同姓の別人や同じ著者の別論文 |
+
+DOI の食い違い 11 クラスタを Crossref と doi.org で照合した結果：
+
+- 誤った DOI は 11 行あった。
+  - 内訳：別の論文の DOI だったもの 7 行（Dodart 2002、Kros 2002、Stickgold 2013、Salmond 2006、Grodzinsky & Santi 2009、Steels & Belpaeme 2005、Tsuchida & Fellows 2009）と、登録されていない DOI 4 行。
+  - クラスタの外でも、Sparrow 2011（`3f5775`）の DOI が Crossref に登録されていなかった。正しい DOI は `10.1126/science.1207745` である。
+- 誤りのない別名 DOI が 1 組あった（Hutchins 1995。`10.1016/0364-0213(95)90020-9` は `10.1207/s15516709cog1903_1` の別名）。
+- 監査の途中で著者名の誤記も見つかったので、`measured_now` に残した。
+  - Symons の名は Cynthia が正しい。
+  - Yeshurun の名は Yaara が正しい。
+  - Heersmink の名は Richard が正しい。
+  - Tversky & Kahneman 1974 の第一著者は Tversky である。
+
+追記後の `--source-audit`：
+
+- ゲート後の重複：23 件（未確認 0）
+- DOI 食い違い：11 クラスタ（未確認 0）
+- 日本語題の疑い：16 件（未確認 0）
+
+### 8.5 残り
+
+- 7.2 の自己想起の取りこぼし 2 件と、アンソロジー容器題の誤警報は、許容した残差のままである。
+- `--source-audit` の 107 クラスタのうち、ゲート後の行も DOI の食い違いも含まないものは、errata で確認していない。これらの古い重複は歴史として残し、引用するときに `--check-source` で正典となる行を選ぶ。
