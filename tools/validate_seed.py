@@ -313,10 +313,12 @@ _REPO_TOP_LEVEL = frozenset(
 _DOI_RE = re.compile(r"(?:doi\.org/|doi:\s*|^)(10\.\d{4,9}/[^\s\"'<>?#]+)", re.IGNORECASE)
 _PMID_RE = re.compile(r"(?:pubmed\.ncbi\.nlm\.nih\.gov/|pmid[:\s]*)(\d{5,10})(?:\b|/)", re.IGNORECASE)
 _PMCID_RE = re.compile(r"\b(PMC\d{5,10})\b", re.IGNORECASE)
+#: arXiv ids (enforced from ARXIV_RULE_FROM): abs/pdf URLs, "arXiv:" and 10.48550 DOIs -> "2310.13548".
+_ARXIV_RE = re.compile(r"(?:arxiv\.org/(?:abs|pdf)/|arxiv:\s*|10\.48550/arxiv\.)(\d{4}\.\d{4,5})", re.IGNORECASE)
 
 
 def extract_material_identifiers(record: dict[str, Any]) -> dict[str, str]:
-    """Extract canonical external identifiers (doi, pmid, pmcid) from a material row.
+    """Extract canonical external identifiers (doi, pmid, pmcid, arxiv) from a material row.
 
     Inspects ``source.url`` and ``source.source_id`` only (never ``passage`` or
     ``scope_note``, which legitimately cite related papers). Used by both the
@@ -348,6 +350,10 @@ def extract_material_identifiers(record: dict[str, Any]) -> dict[str, str]:
             cm = _PMCID_RE.search(text)
             if cm:
                 out["pmcid"] = cm.group(1).upper()
+        if "arxiv" not in out:
+            am = _ARXIV_RE.search(text)
+            if am:
+                out["arxiv"] = am.group(1)
     return out
 
 
@@ -1125,8 +1131,9 @@ def check_material_duplicate_identifiers(
             continue
         is_legacy_chronology = isinstance(mid, str) and mid.startswith("MAT-LIT-2027")
         enforce = (not is_legacy_chronology) and _is_new_row(mid, cutoff, today=today)
+        enforce_arxiv = (not is_legacy_chronology) and _is_new_row(mid, ARXIV_RULE_FROM, today=today)
         reported = False
-        for kind in ("doi", "pmcid", "pmid"):
+        for kind in ("doi", "pmcid", "pmid", "arxiv"):
             val = idents.get(kind)
             if not val:
                 continue
@@ -1134,7 +1141,7 @@ def check_material_duplicate_identifiers(
             prev = first_seen.get(key)
             if prev is None:
                 first_seen[key] = mid
-            elif enforce and not reported and prev != mid:
+            elif (enforce_arxiv if kind == "arxiv" else enforce) and not reported and prev != mid:
                 errors.append(
                     f"materials:{mid}: duplicate {kind.upper()} {val!r} already archived as "
                     f"{prev!r}; cite {prev!r} directly (and append an editorial_decisions "
@@ -1142,6 +1149,93 @@ def check_material_duplicate_identifiers(
                     "check beforehand with `python3 tools/three_gates.py --check-source`"
                 )
                 reported = True
+
+
+#: Source recording rules (2026-11-27, docs/2026-11-26-check-source-title-blindspot-proposal.md
+#: stage 2).  New research_excerpt rows keep one work per row: a source.title joining two
+#: titles with ／, ； or " / " (outside brackets) hid Oostenbroek 2016 inside a 1977 row whose
+#: url named only the 1977 paper.  A title that itself contains such a separator is declared
+#: with "single-work:" in source.version_note.  A Japanese source.title with only
+#: Latin-script authors is a gloss the title index cannot reach (621 rows, 72 in
+#: 20261120-25); a real Japanese original declares "original-title:".  Identifiers only
+#: in version_note are an advisory (the note may cite a related paper).
+SOURCE_RECORDING_RULE_FROM = "20261127"
+ARXIV_RULE_FROM = "20261127"
+_JAPANESE_SCRIPT_RE = re.compile(r"[\u3040-\u30ff\u4e00-\u9fff]")
+_COMBINED_TITLE_SEP_RE = re.compile(r"\s*(?:／|；|\s/\s)\s*")
+_TITLE_WORD_RE = re.compile(r"[0-9a-z\u3040-\u30ff\u4e00-\u9fff]+")
+_TITLE_STOPWORDS = frozenset({"the", "and", "for", "with", "from", "of", "in", "on", "to", "a", "an", "by"})
+_NOTE_DOI_RE = re.compile(r"\b10\.\d{4,9}/[^\s\"'<>?#、。，「」（）()\[\]]+", re.IGNORECASE)
+
+
+def combined_title_parts(title: Any) -> list[str]:
+    """Top-level parts of a title joining >=2 works (each >=3 words), else []."""
+    text = str(title or "")
+    depth, depths = 0, []
+    for ch in text:
+        if ch in "(（[「『【〈《“":
+            depth += 1
+        elif ch in ")）]」』】〉》”" and depth:
+            depth -= 1
+        depths.append(depth)
+    parts, start = [], 0
+    for m in _COMBINED_TITLE_SEP_RE.finditer(text):
+        if depths[m.start()] == 0 and (m.start() == 0 or depths[m.start() - 1] == 0):
+            parts.append(text[start:m.start()])
+            start = m.end()
+    parts.append(text[start:])
+
+    def words(part: str) -> int:
+        norm = unicodedata.normalize("NFKC", part).casefold()
+        return sum(1 for t in _TITLE_WORD_RE.findall(norm) if len(t) >= 2 and t not in _TITLE_STOPWORDS)
+
+    titled = [p.strip() for p in parts if words(p) >= 3]
+    return titled if len(titled) >= 2 else []
+
+
+def check_material_source_recording(
+    materials: dict[str, dict[str, Any]],
+    errors: list[str],
+    advisories: list[str] | None = None,
+    *,
+    cutoff: str = SOURCE_RECORDING_RULE_FROM,
+    today: datetime.date | None = None,
+) -> None:
+    """Stage-2 source recording rules for materials minted on/after ``cutoff``."""
+    note_only = []
+    for mid, record in materials.items():
+        if not _is_new_row(mid, cutoff, today=today):
+            continue
+        src = record.get("source") if isinstance(record.get("source"), dict) else {}
+        vnote = str(src.get("version_note") or "")
+        parts = combined_title_parts(src.get("title"))
+        if record.get("kind") == "research_excerpt" and parts and "single-work:" not in vnote:
+            errors.append(
+                f"materials:{mid}: source.title joins {len(parts)} works ({' | '.join(p[:40] for p in parts)}); "
+                "record one work per row with its own url/DOI and its original-language title (a translation or "
+                "reprint title goes in title/version_note), or declare 'single-work: <reason>' in "
+                "source.version_note if the title itself contains the separator"
+            )
+        authors = [str(a) for a in (src.get("authors") or []) if str(a).strip()] if isinstance(src.get("authors"), list) else []
+        if (
+            record.get("kind") == "research_excerpt"
+            and _JAPANESE_SCRIPT_RE.search(str(src.get("title") or ""))
+            and authors
+            and not any(_JAPANESE_SCRIPT_RE.search(a) for a in authors)
+            and "original-title:" not in vnote
+        ):
+            errors.append(
+                f"materials:{mid}: source.title is Japanese but every author is Latin-script; record the "
+                "original-language title (the Japanese gloss goes in title) so --check-source --title can "
+                "find it, or declare 'original-title: <reason>' in source.version_note"
+            )
+        if not extract_material_identifiers(record) and _NOTE_DOI_RE.search(vnote):
+            note_only.append(mid)
+    if note_only and advisories is not None:
+        advisories.append(
+            f"INFO: source identifiers (advisory): {len(note_only)} material(s) minted on/after {cutoff} carry a DOI "
+            f"only in source.version_note ({', '.join(note_only[:5])}); put the row's own DOI in source.url or source_id"
+        )
 
 
 def check_evaluation_descendant_collision(
@@ -2505,6 +2599,7 @@ def main(argv: list[str] | None = None) -> int:
     check_role_receipts(sessions, errors, gate_advisories, waivers=gate_waivers_in_force)
     check_psc_verification_gate(evaluations, materials, errors)
     check_material_duplicate_identifiers(materials, errors)
+    check_material_source_recording(materials, errors, gate_advisories)
     check_evaluation_descendant_collision(evaluations, hypotheses, errors)
     check_evidence_record_paths(materials, errors)
     check_evidence_path_corrections(

@@ -95,6 +95,132 @@ def _normalize_title(title: str) -> tuple[str, set[str]]:
     return " ".join(tokens), set(tokens)
 
 
+# Title index for --check-source (2026-11-27,
+# docs/2026-11-26-check-source-title-blindspot-proposal.md).  The display ``title`` is a
+# Japanese gloss on most rows, so an original title passed with --title matched only
+# 22.4% of rows' own source.title; indexing source.title (split into its works, a
+# trailing "(Journal 12, 2016)" dropped) raised that to 99.9% and caught all 22 rows
+# minted after the 20261119 identifier gate that duplicate an earlier row.
+_TITLE_SPLIT_RE = re.compile(r"\s*(?:／|；|\s/\s|;\s)\s*")
+_TITLE_TAIL_RE = re.compile(r"\s*[(（][^()（）]*\d{4}[^()（）]*[)）]\s*$")
+_ROMAN_RE = re.compile(r"\b(?=[MDCLXVI]{2,}\b)M{0,4}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})\b")
+_RESPONSE_RE = re.compile(
+    r"^\W*(comment(?:ary)?\s+on|response\s+to|reply\s+to|corrigendum|erratum|correction|retraction)\b(?:\s+(?:to|of|note))?\W*",
+    re.IGNORECASE,
+)
+_QUOTED_TITLE_RE = re.compile(r"[「『“]([^」』”]+)[」』”]")
+_NOTE_DOI_RE = re.compile(r"\b(10\.\d{4,9}/[^\s\"'<>?#、。，「」（）()\[\]]+)", re.IGNORECASE)
+_ROMAN_VAL = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+
+
+def _roman_to_int(text: str) -> int:
+    vals = [_ROMAN_VAL[c] for c in text]
+    return sum(-v if i + 1 < len(vals) and v < vals[i + 1] else v for i, v in enumerate(vals))
+
+
+def _title_locators(text: str) -> frozenset[str]:
+    """Chapter/verse/hymn numbers in a title (trailing citation year dropped, Roman numerals read)."""
+    body = _TITLE_TAIL_RE.sub("", unicodedata.normalize("NFKC", text))
+    body = _ROMAN_RE.sub(lambda m: f" {_roman_to_int(m.group(0))} " if m.group(0) else "", body)
+    return frozenset(str(int(n)) for n in re.findall(r"\d+", body))
+
+
+def _response_chain(text: str) -> tuple[str, ...]:
+    """('comment',) for 'Comment on X', ('response', 'comment') for 'Response to Comment on X'."""
+    chain: list[str] = []
+    rest = unicodedata.normalize("NFKC", text)
+    while (m := _RESPONSE_RE.match(rest)) and len(chain) < 4:
+        chain.append(m.group(1).split()[0].casefold())
+        rest = rest[m.end():]
+    return tuple(chain)
+
+
+def title_variants(text: str, *, min_tokens: int = 3, split: bool = True) -> list[dict[str, Any]]:
+    """Index keys for one title: each work of a combined title, with and without a citation tail."""
+    text = str(text or "")
+    parts = [p for p in (_TITLE_SPLIT_RE.split(text) if split else [text]) if p.strip()] or [text]
+    if split:  # 'Sparrow, Liu & Wegner (2011)「Google Effects on Memory…」' -> the quoted title too
+        parts += _QUOTED_TITLE_RE.findall(text)
+    out: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for part in parts:
+        for variant in (part, _TITLE_TAIL_RE.sub("", part)):
+            norm, toks = _normalize_title(variant)
+            if len(toks) < min_tokens or norm in seen:
+                continue
+            seen.add(norm)
+            out.append({"text": part.strip(), "norm": norm, "tokens": toks,
+                        "locators": _title_locators(part), "chain": _response_chain(part)})
+    return out
+
+
+def _material_title_index(rec: dict[str, Any]) -> list[tuple[str, dict[str, Any]]]:
+    src = rec.get("source") if isinstance(rec.get("source"), dict) else {}
+    keys = [("title", v) for v in title_variants(str(rec.get("title") or ""), min_tokens=1, split=False)]
+    keys += [("source.title", v) for v in title_variants(str(src.get("title") or ""))]
+    return keys
+
+
+def _best_title_match(
+    queries: list[dict[str, Any]], keys: list[tuple[str, dict[str, Any]]], threshold: float
+) -> tuple[float, str, str, bool]:
+    """(similarity, field, matched text, same_response_chain) of the best guarded match."""
+    best = (0.0, "", "", True)
+    for q in queries:
+        for field, k in keys:
+            if q["locators"] and k["locators"] and q["locators"] != k["locators"]:
+                continue  # Psalm 23 is not Psalm 24; Hymn XIV is not Hymn CXXXV
+            if q["norm"] == k["norm"]:
+                sim = 1.0
+            else:
+                union = len(q["tokens"] | k["tokens"])
+                sim = len(q["tokens"] & k["tokens"]) / union if union else 0.0
+            same_chain = q["chain"] == k["chain"]
+            cand = (sim, field, k["text"], same_chain)
+            if sim >= threshold and (best[0] < threshold or (same_chain, sim) > (best[3], best[0])):
+                best = cand
+            elif best[0] < threshold and sim > best[0]:
+                best = cand
+    return best
+
+
+def note_dois(rec: dict[str, Any]) -> set[str]:
+    """DOIs written only in ``source.version_note`` (may name related papers, so advisory only)."""
+    vnote = str(((rec.get("source") or {}).get("version_note")) or "")
+    return {m.rstrip(".,;:)/]}>").lower() for m in _NOTE_DOI_RE.findall(vnote)}
+
+
+def _author_hit(rec: dict[str, Any], author_tokens: list[str], year: int | None) -> bool:
+    src = rec.get("source") if isinstance(rec.get("source"), dict) else {}
+    authors = src.get("authors") if isinstance(src.get("authors"), list) else []
+    if not any(
+        all((t in name) if re.search(r"[\u3040-\u30ff\u4e00-\u9fff]", t) else (t in set(_WORD_RE.findall(name))) for t in author_tokens)
+        for name in (unicodedata.normalize("NFKC", str(a)).casefold() for a in authors)
+    ):
+        return False
+    return year is None or src.get("year") == year or str(year) in str(src.get("title") or "")
+
+
+def source_identity_reviews(errata: dict[str, dict[str, Any]] | None) -> dict[str, list[dict[str, Any]]]:
+    """Material errata with ``check.params.audit == "source_identity"`` (proposal section 8):
+    ``duplicate_of``/``same_work_as`` name earlier rows of the same work, ``correct_doi``
+    the verified DOI, ``distinct_from`` rows read and found to be other works."""
+    out: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for eid, rec in (errata or {}).items():
+        params = (rec.get("check") or {}).get("params") or {}
+        if rec.get("subject_type") != "material" or params.get("audit") != "source_identity":
+            continue
+        out[str(rec.get("subject_id") or "")].append({
+            "errata_id": eid,
+            "verdict": rec.get("verdict"),
+            "duplicate_of": params.get("duplicate_of") or "",
+            "correct_doi": str(params.get("correct_doi") or "").lower(),
+            "same_work_as": list(params.get("same_work_as") or []),
+            "distinct_from": list(params.get("distinct_from") or []),
+        })
+    return out
+
+
 def check_source(
     materials: dict[str, dict[str, Any]],
     *,
@@ -103,9 +229,21 @@ def check_source(
     pmcid: str = "",
     url: str = "",
     title: str = "",
+    author: str = "",
+    year: int | None = None,
     title_threshold: float = 0.72,
+    errata: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """Check a candidate primary source against all archived materials (Gate 3)."""
+    """Check a candidate primary source against all archived materials (Gate 3).
+
+    Matches identifiers (``source.url``/``source_id``; DOIs only in ``version_note``
+    are reported separately), titles (display ``title`` and every work in
+    ``source.title``, guarded by numeric locators and Comment/Response prefixes)
+    and, with ``author``, first-author surname plus ``year``.  Every title/author
+    hit is advisory: CLEAR means "not found in these indexes", not "new".  ``errata``
+    adds source-identity reviews (correct_doi also matches; hits carry the review).
+    """
+    reviews = source_identity_reviews(errata)
     probe = {
         "source": {
             "url": " ".join(x for x in (url, f"https://doi.org/{doi}" if doi else "", f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/" if pmid else "", pmcid) if x),
@@ -128,9 +266,13 @@ def check_source(
         if cm:
             wanted_ids["pmcid"] = cm.group(1).upper()
 
-    q_norm, q_tokens = _normalize_title(title)
+    queries = title_variants(title)
+    author_tokens = [t for t in _WORD_RE.findall(unicodedata.normalize("NFKC", author).casefold()) if len(t) >= 2]
     exact_matches: list[dict[str, Any]] = []
+    note_matches: list[dict[str, Any]] = []
     title_matches: list[dict[str, Any]] = []
+    related_matches: list[dict[str, Any]] = []
+    author_matches: list[dict[str, Any]] = []
 
     for mid, rec in materials.items():
         m_ids = validate_seed.extract_material_identifiers(rec)
@@ -142,52 +284,61 @@ def check_source(
                 m_ids["pmcid"] = cm.group(1).upper()
         matched_on = [
             f"{k}:{wanted_ids[k]}"
-            for k in ("doi", "pmcid", "pmid")
+            for k in ("doi", "pmcid", "pmid", "arxiv")
             if k in wanted_ids and m_ids.get(k) == wanted_ids[k]
         ]
+        rev = reviews.get(mid, [])
+        if not matched_on and "doi" in wanted_ids and any(r["correct_doi"] == wanted_ids["doi"] for r in rev):
+            matched_on = [f"errata.correct_doi:{wanted_ids['doi']}"]
         vstat = str(((rec.get("verification") or {}).get("status")) or "unrecorded")
         src = rec.get("source") or {}
+        base = {
+            "material_id": mid,
+            "title": str(rec.get("title") or ""),
+            "source_title": str(src.get("title") or ""),
+            "year": src.get("year"),
+            "verification_status": vstat,
+            "url": str(src.get("url") or ""),
+            "can_upgrade_via_editorial_decision": vstat != "verified",
+        }
+        if rev:
+            base["source_identity_reviews"] = rev
         if matched_on:
-            exact_matches.append(
-                {
-                    "material_id": mid,
-                    "matched_on": matched_on,
-                    "title": str(rec.get("title") or ""),
-                    "year": src.get("year"),
-                    "verification_status": vstat,
-                    "url": str(src.get("url") or ""),
-                    "can_upgrade_via_editorial_decision": vstat != "verified",
-                }
-            )
+            exact_matches.append({**base, "matched_on": matched_on})
             continue
-        if q_tokens and len(q_tokens) >= 3:
-            m_norm, m_tokens = _normalize_title(str(rec.get("title") or ""))
-            if not m_tokens:
-                continue
-            if q_norm == m_norm:
-                sim = 1.0
-            else:
-                inter = len(q_tokens & m_tokens)
-                union = len(q_tokens | m_tokens)
-                sim = inter / union if union else 0.0
-            if sim >= title_threshold:
-                title_matches.append(
-                    {
-                        "material_id": mid,
-                        "title_similarity": round(sim, 3),
-                        "title": str(rec.get("title") or ""),
-                        "year": src.get("year"),
-                        "verification_status": vstat,
-                        "url": str(src.get("url") or ""),
-                        "can_upgrade_via_editorial_decision": vstat != "verified",
-                    }
-                )
+        if "doi" in wanted_ids and wanted_ids["doi"] in note_dois(rec):
+            note_matches.append({**base, "matched_on": [f"version_note.doi:{wanted_ids['doi']}"]})
+            continue
+        sim, field, matched, same_chain = (0.0, "", "", True)
+        if queries:
+            sim, field, matched, same_chain = _best_title_match(queries, _material_title_index(rec), title_threshold)
+        if sim >= title_threshold:
+            row = {**base, "title_similarity": round(sim, 3), "matched_field": field, "matched_title": matched}
+            (title_matches if same_chain else related_matches).append(row)
+        elif author_tokens and _author_hit(rec, author_tokens, year):
+            author_matches.append({**base, "title_similarity": round(sim, 3)})
 
     title_matches.sort(key=lambda r: (-r["title_similarity"], r["material_id"]))
-    status = "DUPLICATE_ID" if exact_matches else ("SIMILAR_TITLE" if title_matches else "CLEAR")
+    related_matches.sort(key=lambda r: (-r["title_similarity"], r["material_id"]))
+    author_matches.sort(key=lambda r: (-r["title_similarity"], r["material_id"]))
+    status = next(
+        (name for name, rows in (("DUPLICATE_ID", exact_matches), ("NOTE_IDENTIFIER", note_matches),
+                                 ("SIMILAR_TITLE", title_matches), ("AUTHOR_YEAR", author_matches),
+                                 ("RELATED", related_matches)) if rows),
+        "CLEAR",
+    )
+    advisories: list[str] = []
+    if status == "CLEAR":
+        advisories.append("CLEAR means no hit in the identifier/title/author indexes; it is not proof that the source is new.")
+    if not queries:
+        advisories.append("No original title (>=3 words) was given; pass --title with the source's original-language title.")
+    if not author_tokens:
+        advisories.append("Pass --author <first-author surname> --year <year> to reach rows whose source.title is a translation.")
+    if note_matches:
+        advisories.append("NOTE_IDENTIFIER: the DOI appears only in version_note, which may cite a related paper; read the row.")
     upgrade_hint = None
     first_non_v = next(
-        (m for m in exact_matches + title_matches if m["can_upgrade_via_editorial_decision"]),
+        (m for m in exact_matches + note_matches + title_matches if m["can_upgrade_via_editorial_decision"]),
         None,
     )
     if first_non_v:
@@ -204,9 +355,133 @@ def check_source(
         "status": status,
         "queried_identifiers": wanted_ids,
         "queried_title": title,
+        "queried_author": author,
+        "queried_year": year,
         "exact_identifier_matches": exact_matches,
-        "similar_title_matches": title_matches[:5],
+        "note_identifier_matches": note_matches,
+        "similar_title_matches": title_matches[:8],
+        "author_year_matches": author_matches[:10],
+        "related_title_matches": related_matches[:8],
+        "advisories": advisories,
         "editorial_upgrade_template": upgrade_hint,
+    }
+
+
+def source_duplicate_audit(
+    materials: dict[str, dict[str, Any]],
+    *,
+    cutoff: str = validate_seed.THREE_GATES_RULE_FROM,
+    today: datetime.date | None = None,
+    errata: dict[str, dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """Same-source clusters by shared identifier or identical work title (read-only audit).
+
+    Lists rows minted on/after ``cutoff`` repeating an earlier row (missed by the
+    identifier gate: no identifier or DOIs disagree), clusters with two or more DOIs
+    (misrecorded, or a publisher-move alias) and ``cross_language_suspects`` (same
+    first-author surname+year, exactly one source.title Japanese).  Literary-only
+    clusters are skipped.  Rows carry ``reviewed_by`` from source-identity errata.
+    """
+    reviews = source_identity_reviews(errata)
+    parent = {mid: mid for mid in materials}
+
+    def root(x: str) -> str:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    ids = {mid: validate_seed.extract_material_identifiers(rec) for mid, rec in materials.items()}
+    groups: dict[Any, list[str]] = defaultdict(list)
+    for mid, rec in materials.items():
+        for v in title_variants(str((rec.get("source") or {}).get("title") or ""), min_tokens=4):
+            groups[("title", v["norm"])].append(mid)
+        for kind, val in ids[mid].items():
+            groups[(kind, val)].append(mid)
+    for members in groups.values():
+        for other in members[1:]:
+            parent[root(other)] = root(members[0])
+    clusters: dict[str, list[str]] = defaultdict(list)
+    for mid in materials:
+        clusters[root(mid)].append(mid)
+
+    def literary(mid: str) -> bool:
+        return mid.startswith("MAT-LIT") or materials[mid].get("kind") == "literary_text"
+
+    def stamp(mid: str) -> str:
+        return validate_seed.id_stamp(mid) or "00000000"
+
+    dup_clusters = [sorted(c, key=lambda m: (stamp(m), m)) for c in clusters.values()
+                    if len(c) >= 2 and not all(literary(m) for m in c)]
+    post_gate: list[dict[str, Any]] = []
+    conflicts: list[dict[str, Any]] = []
+    for c in dup_clusters:
+        dois = sorted({ids[m]["doi"] for m in c if ids[m].get("doi")})
+        if len(dois) >= 2:
+            conflicts.append({"material_ids": c, "dois": dois})
+        for i, mid in enumerate(c[1:], start=1):
+            if not validate_seed._is_new_row(mid, cutoff, today=today):
+                continue
+            earlier = c[:i]
+            mine = ids[mid].get("doi")
+            if mine and any(ids[e].get("doi") and ids[e]["doi"] != mine for e in earlier):
+                cause = "doi_disagreement"
+            elif not ids[mid]:
+                cause = "new_row_has_no_identifier"
+            else:
+                cause = "earlier_row_has_no_identifier"
+            post_gate.append({"material_id": mid, "earlier": earlier, "cause": cause,
+                              "source_title": str((materials[mid].get("source") or {}).get("title") or ""),
+                              "reviewed_by": [r["errata_id"] for r in reviews.get(mid, [])]})
+    for c in conflicts:
+        c["reviewed_by"] = sorted(r["errata_id"] for m in c["material_ids"] for r in reviews.get(m, []))
+
+    clustered = {m for c in dup_clusters for m in c}
+    jp = validate_seed._JAPANESE_SCRIPT_RE
+
+    def first_author_year(rec: dict[str, Any]) -> tuple[str, Any] | None:
+        src = rec.get("source") if isinstance(rec.get("source"), dict) else {}
+        authors = src.get("authors") if isinstance(src.get("authors"), list) else []
+        if not authors or not src.get("year"):
+            return None
+        name = "".join(c for c in unicodedata.normalize("NFKD", str(authors[0])) if not unicodedata.combining(c))
+        name = name.casefold().split(",")[0] if "," in name else name.casefold()
+        toks = [t for t in re.findall(r"[a-z\u3040-\u30ff\u4e00-\u9fff]+", name)
+                if len(t) >= 2 and t not in {"jr", "sr", "ii", "iii", "iv"}]
+        return (toks[-1], src.get("year")) if toks else None
+
+    by_key: dict[tuple[str, Any], list[str]] = defaultdict(list)
+    for mid, rec in materials.items():
+        key = first_author_year(rec)
+        if key and not literary(mid):
+            by_key[key].append(mid)
+    suspects: list[dict[str, Any]] = []
+    for members in by_key.values():
+        members.sort(key=lambda m: (stamp(m), m))
+        for i, mid in enumerate(members[1:], start=1):
+            if (mid in clustered or materials[mid].get("kind") != "research_excerpt"
+                    or not validate_seed._is_new_row(mid, cutoff, today=today)):
+                continue
+            title = str((materials[mid].get("source") or {}).get("title") or "")
+            others = [o for o in members[:i] if o not in parent or root(o) != root(mid)]
+            others = [o for o in others if bool(jp.search(title)) != bool(jp.search(str((materials[o].get("source") or {}).get("title") or "")))]
+            if not others:
+                continue
+            seen = {d for r in reviews.get(mid, []) for d in [r["duplicate_of"], *r["same_work_as"], *r["distinct_from"]]}
+            suspects.append({"material_id": mid, "earlier": others, "source_title": title,
+                             "reviewed_by": [r["errata_id"] for r in reviews.get(mid, [])] if set(others) <= seen else []})
+    return {
+        "clusters": len(dup_clusters),
+        "extra_rows": sum(len(c) - 1 for c in dup_clusters),
+        "post_gate_cutoff": cutoff,
+        "post_gate_duplicates": post_gate,
+        "doi_conflict_clusters": conflicts,
+        "cross_language_suspects": suspects,
+        "unreviewed": {
+            "post_gate_duplicates": sum(1 for r in post_gate if not r["reviewed_by"]),
+            "doi_conflict_clusters": sum(1 for r in conflicts if not r["reviewed_by"]),
+            "cross_language_suspects": sum(1 for r in suspects if not r["reviewed_by"]),
+        },
     }
 
 
@@ -216,13 +491,14 @@ def duplicate_identifier_summary(materials: dict[str, dict[str, Any]]) -> dict[s
         "doi": defaultdict(list),
         "pmcid": defaultdict(list),
         "pmid": defaultdict(list),
+        "arxiv": defaultdict(list),
     }
     for mid, rec in materials.items():
         ids = validate_seed.extract_material_identifiers(rec)
         for kind, val in ids.items():
             buckets[kind][val].append(mid)
     out: dict[str, Any] = {}
-    for kind in ("doi", "pmcid", "pmid"):
+    for kind in ("doi", "pmcid", "pmid", "arxiv"):
         dups = {v: mids for v, mids in buckets[kind].items() if len(mids) >= 2}
         extra = sum(len(mids) - 1 for mids in dups.values())
         sample = [
@@ -1139,6 +1415,7 @@ def check_invariants(root: Path = _ROOT, *, today: datetime.date | None = None) 
     validate_seed.check_material_duplicate_identifiers(
         data["materials"], errors, today=today
     )
+    validate_seed.check_material_source_recording(data["materials"], errors, today=today)
     validate_seed.check_evaluation_descendant_collision(
         data["evaluations"], data["hypotheses"], errors, today=today
     )
@@ -1283,7 +1560,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--pmid", default="", help="candidate PubMed ID for --check-source")
     parser.add_argument("--pmcid", default="", help="candidate PMC ID (e.g. PMC4506998) for --check-source")
     parser.add_argument("--url", default="", help="candidate primary URL for --check-source")
-    parser.add_argument("--title", default="", help="candidate source title for --check-source")
+    parser.add_argument("--title", default="", help="candidate original-language title for --check-source")
+    parser.add_argument("--author", default="", help="candidate first-author surname for --check-source")
+    parser.add_argument("--year", type=int, default=None, help="candidate publication year for --check-source (with --author)")
+    parser.add_argument("--source-audit", action="store_true", help="Gate 3: list same-source clusters, post-gate duplicates and DOI conflicts (read-only)")
     parser.add_argument("--fail-on-match", action="store_true", help="exit 1 if --check-source finds an exact identifier match")
     parser.add_argument("--verify-span", action="store_true", help="Gate 3: verify verbatim passage span(s) against fetched primary-source text and emit span_sha256 witness")
     parser.add_argument("--source-file", type=Path, default=None, help="path to fetched primary-source text/HTML file for --verify-span")
@@ -1318,6 +1598,30 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 0
 
+    if args.source_audit:
+        data, _err = load_archive(args.root)
+        res = source_duplicate_audit(data["materials"], errata=data.get("errata"))
+        if args.json:
+            print(json.dumps(res, ensure_ascii=False, indent=2))
+        else:
+            def mark(r: dict[str, Any]) -> str:
+                return f"reviewed {', '.join(r['reviewed_by'])}" if r["reviewed_by"] else "UNREVIEWED"
+
+            un = res["unreviewed"]
+            print(f"same-source clusters: {res['clusters']} (extra rows {res['extra_rows']})")
+            print(f"rows minted on/after {res['post_gate_cutoff']} repeating an earlier row: "
+                  f"{len(res['post_gate_duplicates'])} (unreviewed {un['post_gate_duplicates']})")
+            for r in res["post_gate_duplicates"]:
+                print(f"  DUP   {r['material_id']} <- {', '.join(r['earlier'])} [{r['cause']}] {mark(r)}  {r['source_title'][:50]}")
+            print(f"clusters with two or more DOIs: {len(res['doi_conflict_clusters'])} (unreviewed {un['doi_conflict_clusters']})")
+            for r in res["doi_conflict_clusters"]:
+                print(f"  DOI   {', '.join(r['material_ids'])}: {' | '.join(r['dois'])}  {mark(r)}")
+            print(f"cross-language same author+year suspects: {len(res['cross_language_suspects'])} "
+                  f"(unreviewed {un['cross_language_suspects']})")
+            for r in res["cross_language_suspects"]:
+                print(f"  LANG  {r['material_id']} ~ {', '.join(r['earlier'][:3])} {mark(r)}  {r['source_title'][:50]}")
+        return 0
+
     if args.check_source:
         data, _err = load_archive(args.root)
         res = check_source(
@@ -1327,26 +1631,45 @@ def main(argv: list[str] | None = None) -> int:
             pmcid=args.pmcid,
             url=args.url,
             title=args.title,
+            author=args.author,
+            year=args.year,
+            errata=data.get("errata"),
         )
         if args.json:
             print(json.dumps(res, ensure_ascii=False, indent=2))
         else:
             print(f"STATUS: {res['status']}  (queried={res['queried_identifiers']})")
-            for m in res["exact_identifier_matches"]:
+            for label, key in (("EXACT", "exact_identifier_matches"), ("NOTE ", "note_identifier_matches")):
+                for m in res[key]:
+                    print(
+                        f"  {label}  {m['material_id']} [{m['verification_status']}] "
+                        f"matched={m['matched_on']}  {m['title'][:75]}"
+                    )
+            for label, key in (("TITLE", "similar_title_matches"), ("RELTD", "related_title_matches")):
+                for m in res[key]:
+                    print(
+                        f"  {label}  {m['material_id']} [{m['verification_status']}] "
+                        f"sim={m['title_similarity']:.2f} via {m['matched_field']}  {m['matched_title'][:75]}"
+                    )
+            for m in res["author_year_matches"]:
                 print(
-                    f"  EXACT  {m['material_id']} [{m['verification_status']}] "
-                    f"matched={m['matched_on']}  {m['title'][:75]}"
+                    f"  AUTHR  {m['material_id']} [{m['verification_status']}] "
+                    f"year={m['year']}  {(m['source_title'] or m['title'])[:75]}"
                 )
-            for m in res["similar_title_matches"]:
-                print(
-                    f"  TITLE  {m['material_id']} [{m['verification_status']}] "
-                    f"sim={m['title_similarity']:.2f}  {m['title'][:75]}"
-                )
+            for key in ("exact_identifier_matches", "note_identifier_matches", "similar_title_matches",
+                        "author_year_matches", "related_title_matches"):
+                for m in res[key]:
+                    for r in m.get("source_identity_reviews", []):
+                        bits = [f"duplicate_of={r['duplicate_of']}" if r["duplicate_of"] else "",
+                                f"correct_doi={r['correct_doi']}" if r["correct_doi"] else ""]
+                        print(f"  ERRAT  {m['material_id']}: {r['errata_id']} {' '.join(b for b in bits if b)}")
             if res["editorial_upgrade_template"]:
                 print(
                     "  HINT : Cite the existing MAT-* directly; if you verified its full text, "
                     "append an editorial_decisions overlay (target.type='material', status='verified')."
                 )
+            for line in res["advisories"]:
+                print(f"  NOTE : {line}")
         if args.fail_on_match and res["exact_identifier_matches"]:
             return 1
         return 0

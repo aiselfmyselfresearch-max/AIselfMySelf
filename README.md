@@ -113,7 +113,8 @@ python3 tools/belief_state.py --question Q-002 --amortized
 python3 tools/learning_metrics.py --check
 python3 tools/three_gates.py                                        # 三門（束ね・受容側抑制・現実識別）の総合診断
 python3 tools/three_gates.py --check                                # 三門構造不変条件の検証（CIでも実行）
-python3 tools/three_gates.py --check-source --doi 10.xxxx/yyyy --title "..."  # 収蔵前の重複・既収蔵照合
+python3 tools/three_gates.py --check-source --doi 10.xxxx/yyyy --title "<原題>" --author <姓> --year <年>  # 収蔵前の重複・既収蔵照合（CLEAR は新規の証明ではない）
+python3 tools/three_gates.py --source-audit                         # 既収蔵の同一資料クラスタ・ゲート後重複・DOI 食い違い（読み取り専用）
 python3 tools/three_gates.py --upgrade-candidates                   # 一次照合昇格の波及が大きい既収蔵素材
 python3 tools/three_gates.py --cohort-suppression                   # 限定・棄却・訂正前後の再浮上コホート実測
 python3 tools/date_axis.py --enforce-shards
