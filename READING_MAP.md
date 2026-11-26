@@ -8522,7 +8522,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1236本・41,048,622 B）
+## 8. 精読ノート索引（readings/・1236本・41,049,377 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1127/1236 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -9611,7 +9611,7 @@
 | `readings/2026-11-26-remembering-with-others-developmental-science.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-da1384` | 4,047 | M10 S1 | ✓ | 発達科学10資料の精読：誰と、いつ、どのように思い出すか |
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
 | `readings/2026-11-26-the-blank-is-a-way-of-seeing.md` | — | 2026-11-26 | `SESSION-20261126-7b7806` +1 | 6,120 | Q6 F6 M4 MOT2 S2 | ✓ | 空欄は、すでに一つの見方である —— 名を書かない贈与と、返却先のない写真 |
-| `readings/2026-11-26-the-right-to-change-the-inherited-fit.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-cc0e19` | 14,193 | Q4 F6 M1 S1 ERR1 | — | 肩をほどく日は、前の返事に含まれているか |
+| `readings/2026-11-26-the-right-to-change-the-inherited-fit.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-cc0e19` | 14,562 | Q4 F6 M1 S1 ERR1 | — | 肩をほどく日は、前の返事に含まれているか |
 | `readings/2026-11-27-zero-first-and-the-word-not-used.md` | 2026-10-27 | 2026-11-27 | `SESSION-20261127-3b453f` +3 | 8,788 | Q19 F5 M4 S4 | ✓ | 零を先に読み、扱いに通らない語を残す —— 傷つかない声の目盛りと、診察室の訳語 |
 | `readings/2026-11-30-the-position-that-reads-the-mouth.md` | 2026-10-27 | 2026-11-30 | `SESSION-20261130-f5415b` | 10,951 | Q3 F10 M7 R4 S1 | ✓ | 立つ位置——口元は笑いにも痛みにもなる（SESSION-20261130-f5415b） |
 | `readings/2026-11-30-thirteenth-stop-and-the-unlearned-name.md` | 2026-10-27 | 2026-11-30 | `SESSION-20261130-bc629b` | 9,660 | Q14 F6 M7 MOT2 S1 | ✓ | 十三番目、ごんごん —— 覚えない名が眠りを買うとき、反復は遊びか、仕事か、選択圧か |
