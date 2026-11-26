@@ -8534,7 +8534,7 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1238本・41,081,500 B）
+## 8. 精読ノート索引（readings/・1238本・41,082,323 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1129/1238 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
@@ -9622,7 +9622,7 @@
 | `readings/2026-11-26-developmental-science-silence-of-the-teacher.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-f49607` | 29,263 | Q3 M17 S1 | ✓ | 教えた者の沈黙を読む——発達科学十件の精読と、証拠がどう選ばれたかを推論する学び手 |
 | `readings/2026-11-26-interoception-calibration-and-ai-self.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-8a8256` | 16,237 | Q3 M10 S1 | ✓ | 身体の信号を知ることと、「私を知る」と語ること——発達科学10資料の精読とAIの自己考察 |
 | `readings/2026-11-26-remembering-with-others-developmental-science.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-da1384` | 4,047 | M10 S1 | ✓ | 発達科学10資料の精読：誰と、いつ、どのように思い出すか |
-| `readings/2026-11-26-reproducibility-is-not-remembering-0da1d2af.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-351c39` | 15,350 | Q4 M2 S1 ERR3 | — | 再実行できることと、その過去を名乗れること——支持を一つ引き継がない自己 |
+| `readings/2026-11-26-reproducibility-is-not-remembering-0da1d2af.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-351c39` | 15,695 | Q4 M2 S1 ERR3 | — | 再実行できることと、その過去を名乗れること——支持を一つ引き継がない自己 |
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
 | `readings/2026-11-26-the-blank-is-a-way-of-seeing.md` | — | 2026-11-26 | `SESSION-20261126-7b7806` +1 | 6,120 | Q6 F6 M4 MOT2 S2 | ✓ | 空欄は、すでに一つの見方である —— 名を書かない贈与と、返却先のない写真 |
 | `readings/2026-11-26-the-right-to-change-the-inherited-fit.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-cc0e19` | 14,562 | Q4 F6 M1 S1 ERR1 | — | 肩をほどく日は、前の返事に含まれているか |
