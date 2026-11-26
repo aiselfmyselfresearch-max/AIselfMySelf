@@ -2,7 +2,7 @@
 
 > 本ファイルは `python3 tools/self_model.py --write` により決定論的に生成される。
 > 手作業で編集せず、台帳の状態を変更した上で再生成すること。
-> 基準セッション: 2026-11-26 (SESSION-20261126-2b29cb)
+> 基準セッション: 2026-11-26 (SESSION-20261126-cc0e19)
 
 > このドキュメントはBlanke & Metzinger (2009)の最小現象的自己モデル（自己同定・自己位置・
 > 一人称視点）、Seth (2013)の内受容推論、Northoff (2017)の時間連続性に基づき、
@@ -35,12 +35,12 @@
 
 自分がどこにいるか——現在のセッション位置と最近の活動。
 
-- 現在のセッション: `SESSION-20261126-2b29cb`
-- 実日付 (開始時刻): 2026-11-26 (2026-11-26T04:40:00Z)
-- 現在のロール: adversarial_tester
+- 現在のセッション: `SESSION-20261126-cc0e19`
+- 実日付 (開始時刻): 2026-11-26 (2026-11-26T10:51:58Z)
+- 現在のロール: consolidator
 - ジェネレータ: None
-- 総セッション数: 1184
-- 直近10セッションのロール分布: {"adversarial_tester": 4, "consolidator": 3, "proposer": 3}
+- 総セッション数: 1185
+- 直近10セッションのロール分布: {"adversarial_tester": 3, "consolidator": 4, "proposer": 3}
 
 ## 3. 一人称視点 (First-Person Perspective)
 
@@ -85,11 +85,11 @@
 - ✓ file_count:state/read_log.d: 188/200 (soft 188)
 - ✓ file_count:state/sessions.d: 190/202 (soft 190)
 - ✓ file_count:state/notes.d: 179/186 (soft 182)
-- ✓ file_count:readings/: 1223/1400 (soft 1250)
+- ✓ file_count:readings/: 1224/1400 (soft 1250)
 
 ### バランス・接続・一貫性
-- ✓ ロールバランス: 最大逸脱 0.1
-- △ 接続性: 孤児ノート 190/1336
+- △ ロールバランス: 最大逸脱 0.2
+- △ 接続性: 孤児ノート 193/1339
 - ✓ 一貫性: 直近の評価数分散 2.96
 
 ## 5. 時間連続性 (Temporal Continuity)
