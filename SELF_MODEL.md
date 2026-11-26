@@ -84,7 +84,7 @@
 - ✓ file_count:state/materials.d: 163/175 (soft 165)
 - ✓ file_count:state/read_log.d: 185/200 (soft 188)
 - ✓ file_count:state/sessions.d: 187/202 (soft 190)
-- ✗ file_count:state/notes.d: 183/186 (soft 182)
+- ✓ file_count:state/notes.d: 176/186 (soft 182)
 - ✓ file_count:readings/: 1220/1400 (soft 1250)
 
 ### バランス・接続・一貫性
