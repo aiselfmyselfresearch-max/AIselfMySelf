@@ -200,7 +200,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         "state/read_log.d",
         soft_bytes=7 * MIB,
         hard_bytes=10 * MIB,
-        soft_shards=190,
+        # 2026-11-27: +1 day shard (question-asking session read_log rows)
+        soft_shards=191,
         hard_shards=200,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -224,7 +225,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         "state/sessions.d",
         soft_bytes=4 * MIB,
         hard_bytes=8 * MIB,
-        soft_shards=192,
+        # 2026-11-27: +1 day shard (question-asking session row)
+        soft_shards=193,
         hard_shards=202,
         remedy="Merging shards saves ~0 B, so compaction cannot hold this byte limit; watch soft_shards instead, and if a row must be shortened, cut the narration before the decision",
     ),
@@ -272,7 +274,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         "state/evaluations.d",
         soft_bytes=4 * MIB,
         hard_bytes=12 * MIB,
-        soft_shards=109,
+        # 2026-11-27: +1 day shard (question-asking session evaluations)
+        soft_shards=110,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
