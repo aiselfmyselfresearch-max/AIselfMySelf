@@ -1,0 +1,50 @@
+{
+  "base_commit": "28c20dabca1876dbcf3210ee9017fb95f5d5c2fe",
+  "baseline_captured_before_session_rows": true,
+  "command": "python3 tools/belief_state.py --json",
+  "comparison": "Compare per-question hypotheses by ID, only numeric posterior/gated_posterior/amortized_posterior fields; do not confuse read-witness counts with probability changes.",
+  "results": [
+    {
+      "question_id": "Q-001",
+      "hypothesis_sets_equal": true,
+      "max_abs_delta": {
+        "posterior": 0.0,
+        "gated_posterior": 0.0,
+        "amortized_posterior": 0.0
+      },
+      "read_witness_changed_ids": [
+        "HYP-20261126-4e5813",
+        "HYP-20261124-c8497c",
+        "HYP-20261121-6e83a4"
+      ]
+    },
+    {
+      "question_id": "Q-002",
+      "hypothesis_sets_equal": true,
+      "max_abs_delta": {
+        "posterior": 0.0,
+        "gated_posterior": 0.0,
+        "amortized_posterior": 0.0
+      },
+      "read_witness_changed_ids": [
+        "HYP-20261121-6e83a4",
+        "HYP-20261124-c8497c",
+        "HYP-20261126-4e5813"
+      ]
+    },
+    {
+      "question_id": "Q-003",
+      "hypothesis_sets_equal": true,
+      "max_abs_delta": {
+        "posterior": 0.0,
+        "gated_posterior": 0.0,
+        "amortized_posterior": 0.0
+      },
+      "read_witness_changed_ids": [
+        "HYP-20261121-6e83a4",
+        "HYP-20261124-c8497c",
+        "HYP-20261126-4e5813"
+      ]
+    }
+  ]
+}
