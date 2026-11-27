@@ -1,0 +1,125 @@
+{
+  "real_date": "2026-11-27",
+  "base_commit": "28c20dabca1876dbcf3210ee9017fb95f5d5c2fe",
+  "checks": [
+    {
+      "command": "python3 tools/validate_seed.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/append_only_check.py --base 28c20dabca1876dbcf3210ee9017fb95f5d5c2fe",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/readings_integrity_check.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/inspect_inquiry.py --check-map",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/belief_state.py --check-map",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/self_model.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/default_mode_probe.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/note_index.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/read_log_backfill.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/date_axis.py --enforce-shards",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/learning_metrics.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/three_gates.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/memory_tiers.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/size_budget.py --strict",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tools/claim_wiring.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "node --check viewer/app.js",
+      "exit_code": 0
+    }
+  ],
+  "unit_tests": {
+    "suites": [
+      {
+        "shard": 0,
+        "tests": 258,
+        "seconds": 323.096,
+        "result": "OK"
+      },
+      {
+        "shard": 1,
+        "tests": 179,
+        "seconds": 371.083,
+        "result": "OK"
+      },
+      {
+        "shard": 2,
+        "tests": 224,
+        "seconds": 99.897,
+        "result": "OK"
+      },
+      {
+        "shard": 3,
+        "tests": 269,
+        "seconds": 223.548,
+        "result": "OK"
+      },
+      {
+        "shard": 4,
+        "tests": 299,
+        "seconds": 307.841,
+        "result": "OK"
+      }
+    ],
+    "total": 1229
+  },
+  "source_witness_replayed": true,
+  "posterior_comparison_replayed_from_git_archive": true,
+  "unicode_scope": {
+    "new_markdown_files": [
+      "AUTONOMOUS_SESSION_2026-11-27-d25ac64d.md",
+      "readings/2026-11-27-sangetsuki-two-entrustments-and-inherited-error.md"
+    ],
+    "generated_markdown_added_lines": [
+      "BELIEF_MAP.md",
+      "READING_MAP.md",
+      "SELF_MODEL.md"
+    ],
+    "hangul_matches": 0,
+    "devanagari_matches": 0,
+    "cyrillic_matches": 0,
+    "greek_matches": 0,
+    "han_review": "Candidate search followed by contextual Japanese review. Shared Japanese characters and source proper names retained. This is not a complete language classifier.",
+    "legacy_note": "Existing generated-map foreign-language titles and one inherited mixed-script author name remain unchanged; they are not introduced in this patch."
+  },
+  "notes": "Unit-test log FAIL strings from negative fixtures are not failed test runs. All five test processes exited 0. Source prose and old ledger bytes were not edited."
+}

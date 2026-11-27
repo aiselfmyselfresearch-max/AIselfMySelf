@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：6417 件（research_excerpt 4168 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：254 編（selected 97 ／ draft 157）
 - **解釈的関係（Relations）**：7100 件
-- **探究セッション（Sessions）**：1200 回
+- **探究セッション（Sessions）**：1201 回
 
 ### 台帳ごとの件数
 
@@ -23,11 +23,11 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6417 | `literary_text` 2181／`research_excerpt` 4168／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 254 | `selected` 97／`draft` 157／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7100 | うち断片↔断片 620 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1200 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17977 |  |
-| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 494 |  |
-| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 646 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1355 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1201 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17985 |  |
+| 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 496 |  |
+| 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 648 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1356 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 125 |  |
 | 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1050 |  |
 
@@ -8423,6 +8423,7 @@
 | `SESSION-20261126-8a8256` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-ac666e` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-55160f` | 2026-11-27 | `Q-001`, `Q-002` | — | — |
+| `SESSION-20261127-92a878` | 2026-11-27 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-2167d8` | 2026-11-27T00:34:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-ce6eb9` | 2026-11-27T03:20:00Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-c93065` | 2026-11-27T02:28:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -8474,7 +8475,7 @@
 | `map/20-fragments-13.md` | 14 | 59,233 |
 | `map/30-materials-literary-01.md` | 100 | 175,606 |
 | `map/30-materials-literary-02.md` | 100 | 133,370 |
-| `map/30-materials-literary-03.md` | 100 | 128,754 |
+| `map/30-materials-literary-03.md` | 100 | 129,370 |
 | `map/30-materials-literary-04.md` | 100 | 147,209 |
 | `map/30-materials-literary-05.md` | 100 | 146,295 |
 | `map/30-materials-literary-06.md` | 100 | 167,828 |
@@ -8482,7 +8483,7 @@
 | `map/30-materials-literary-08.md` | 100 | 186,716 |
 | `map/30-materials-literary-09.md` | 100 | 233,096 |
 | `map/30-materials-literary-10.md` | 100 | 150,654 |
-| `map/30-materials-literary-11.md` | 100 | 146,282 |
+| `map/30-materials-literary-11.md` | 100 | 146,912 |
 | `map/30-materials-literary-12.md` | 100 | 214,403 |
 | `map/30-materials-literary-13.md` | 100 | 151,892 |
 | `map/30-materials-literary-14.md` | 100 | 165,592 |
@@ -8575,11 +8576,12 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 50 | 41,190 |
+| `map/50-sessions-24.md` | 50 | 41,227 |
+| `map/50-sessions-25.md` | 1 | 1,127 |
 | `map/60-notes-01.md` | 25 | 85,214 |
 | `map/60-notes-02.md` | 25 | 62,845 |
-| `map/60-notes-03.md` | 25 | 73,671 |
-| `map/60-notes-04.md` | 25 | 93,585 |
+| `map/60-notes-03.md` | 25 | 73,745 |
+| `map/60-notes-04.md` | 25 | 93,659 |
 | `map/60-notes-05.md` | 25 | 93,544 |
 | `map/60-notes-06.md` | 25 | 68,959 |
 | `map/60-notes-07.md` | 25 | 59,237 |
@@ -8597,7 +8599,7 @@
 | `map/60-notes-19.md` | 25 | 98,292 |
 | `map/60-notes-20.md` | 25 | 161,707 |
 | `map/60-notes-21.md` | 25 | 137,810 |
-| `map/60-notes-22.md` | 25 | 145,495 |
+| `map/60-notes-22.md` | 25 | 145,614 |
 | `map/60-notes-23.md` | 25 | 118,889 |
 | `map/60-notes-24.md` | 25 | 114,216 |
 | `map/60-notes-25.md` | 25 | 108,373 |
@@ -8619,23 +8621,23 @@
 | `map/60-notes-41.md` | 25 | 122,827 |
 | `map/60-notes-42.md` | 25 | 118,729 |
 | `map/60-notes-43.md` | 25 | 79,870 |
-| `map/60-notes-44.md` | 25 | 83,546 |
-| `map/60-notes-45.md` | 25 | 72,639 |
-| `map/60-notes-46.md` | 25 | 69,961 |
-| `map/60-notes-47.md` | 25 | 79,645 |
-| `map/60-notes-48.md` | 25 | 108,819 |
-| `map/60-notes-49.md` | 25 | 108,431 |
-| `map/60-notes-50.md` | 25 | 136,893 |
-| `map/60-notes-51.md` | 2 | 4,313 |
+| `map/60-notes-44.md` | 25 | 85,382 |
+| `map/60-notes-45.md` | 25 | 70,939 |
+| `map/60-notes-46.md` | 25 | 70,477 |
+| `map/60-notes-47.md` | 25 | 78,962 |
+| `map/60-notes-48.md` | 25 | 104,548 |
+| `map/60-notes-49.md` | 25 | 111,020 |
+| `map/60-notes-50.md` | 25 | 138,266 |
+| `map/60-notes-51.md` | 3 | 8,197 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1252本・41,396,663 B）
+## 8. 精読ノート索引（readings/・1253本・41,423,725 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1141/1252 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1142/1253 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1252 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1253 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：199 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9734,6 +9736,7 @@
 | `readings/2026-11-27-question-asking-as-a-developmental-mechanism.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-55160f` | 14,154 | Q3 M10 S1 | ✓ | 問いを発達の仕組みとして読む——子どもの質問発達10資料の精読 |
 | `readings/2026-11-27-retrieval-failure-agency-and-archive-operations.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-ce6eb9` | 8,501 | M2 S1 | ✓ | 検索の失敗を測れるようにする——AIエージェント研究の知見を書庫の運用へ |
 | `readings/2026-11-27-retrieval-failure-probes-and-adoption.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-51f246` | 7,302 | S1 | ✓ | 検索失敗プローブの実測と運用採用——語形を変えると、行は届かなくなる |
+| `readings/2026-11-27-sangetsuki-two-entrustments-and-inherited-error.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-92a878` +1 | 11,091 | Q3 M2 S2 ERR2 | ✓ | 詩を残すこと、妻子を託すこと——『山月記』と、誤りを継がない自己 |
 | `readings/2026-11-27-thought-memory-self-enhancement-selection-temporal-appraisal.md` | — | 2026-11-27 | `SESSION-20261127-1ab166` | 8,876 | Q3 M13 S1 | — | 個別の思考と記憶は、人間にとっての自己とどう関係するか——自己高揚・動機づけによる記憶の選別と時間的自己評価 |
 | `readings/2026-11-27-thought-memory-self-identity-across-contexts.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-a469a3` | 8,134 | M10 S1 | — | 個別の思考と記憶は、自己にどう関わるか——発達・加齢・課題文脈からの10資料 |
 | `readings/2026-11-27-zero-first-and-the-word-not-used.md` | 2026-10-27 | 2026-11-27 | `SESSION-20261127-3b453f` +3 | 8,788 | Q19 F5 M4 S4 | ✓ | 零を先に読み、扱いに通らない語を残す —— 傷つかない声の目盛りと、診察室の訳語 |

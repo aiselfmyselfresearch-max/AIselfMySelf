@@ -1,0 +1,20 @@
+{
+  "source_repository": "aozorahack/aozorabunko_text",
+  "source_commit": "0984f7dc18a2270bdfd2ff99bf14fd1b3ebb4f65",
+  "path": "cards/000119/files/624_ruby_5668/624_ruby_5668.txt",
+  "blob_sha": "1f6c641747da62b87329ba60f982b571e59dd44f",
+  "raw_bytes": 23487,
+  "sha256": "9d7723fe7ad8cac77fb7e989765c794cac73754c0a61fce79d8053b091365fe4",
+  "decoding": "utf-8-sig",
+  "normalization": "Remove ruby brackets, input annotations, and ruby anchor bars; preserve all other characters.",
+  "contains": {
+    "曾て進士に登第した頃": true,
+    "同年に進士の第に登り": true,
+    "袁": true,
+    "李郭": false,
+    "私はかつて人間であった": false,
+    "如何にも自分は隴西の李徴である": true,
+    "人間にかえる数時間も": true,
+    "先ず、この事の方を先にお願いすべきだったのだ": true
+  }
+}
