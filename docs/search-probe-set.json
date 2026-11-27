@@ -1,0 +1,437 @@
+{
+ "description": "検索失敗プローブセット（2026-11-27）。1素材につき同じ情報需要を3つの語形で問う: ledger=行自身の語の部分一致, paraphrase=行が使わない同義表現, hypernym=行が使わない上位語。tools/probe_search.py --run で再生する。語形の作成者は SESSION-20261127-<このセッション>（収録対象は前報 §4 P1 の事前予測 (i)>(ii)>(iii)）。標的の選定: 子どもの嘘・正直さの10行（MAT-20261127-*) + 全素材を material_id 順に並べ 6,407/14≈458 刻みで抽出した14行（MAT-20261127-* は除外）。",
+ "probes": [
+  {
+   "target_id": "MAT-20261127-ac35c9",
+   "kind": "ledger",
+   "query": "Verbal Deception",
+   "note": "原題の語"
+  },
+  {
+   "target_id": "MAT-20261127-ac35c9",
+   "kind": "paraphrase",
+   "query": "うそをつく",
+   "note": "行は漢字『嘘』のみ"
+  },
+  {
+   "target_id": "MAT-20261127-ac35c9",
+   "kind": "hypernym",
+   "query": "欺瞞",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-20261127-1dd5af",
+   "kind": "ledger",
+   "query": "Children's Lying",
+   "note": "原題の語"
+  },
+  {
+   "target_id": "MAT-20261127-1dd5af",
+   "kind": "paraphrase",
+   "query": "偽り",
+   "note": "行は『嘘』表記"
+  },
+  {
+   "target_id": "MAT-20261127-1dd5af",
+   "kind": "hypernym",
+   "query": "不誠実",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-20261127-0ebdaf",
+   "kind": "ledger",
+   "query": "Make False Statements",
+   "note": "原題の語"
+  },
+  {
+   "target_id": "MAT-20261127-0ebdaf",
+   "kind": "paraphrase",
+   "query": "嘘をつく",
+   "note": "行は『虚偽主張』表記"
+  },
+  {
+   "target_id": "MAT-20261127-0ebdaf",
+   "kind": "hypernym",
+   "query": "不正直",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-20261127-6cd597",
+   "kind": "ledger",
+   "query": "Truth Induction",
+   "note": "原題の語"
+  },
+  {
+   "target_id": "MAT-20261127-6cd597",
+   "kind": "paraphrase",
+   "query": "正直に話す",
+   "note": "行は『真実誘導』表記"
+  },
+  {
+   "target_id": "MAT-20261127-6cd597",
+   "kind": "hypernym",
+   "query": "面接技法",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-20261127-6c26c1",
+   "kind": "ledger",
+   "query": "cheating behavior",
+   "note": "原題の語"
+  },
+  {
+   "target_id": "MAT-20261127-6c26c1",
+   "kind": "paraphrase",
+   "query": "カンニング",
+   "note": "行は『不正』表記"
+  },
+  {
+   "target_id": "MAT-20261127-6c26c1",
+   "kind": "hypernym",
+   "query": "規則違反",
+   "note": "行は『規則を破る』と表記"
+  },
+  {
+   "target_id": "MAT-20261127-e35dc7",
+   "kind": "ledger",
+   "query": "Cross-Cultural Differences",
+   "note": "原題の語"
+  },
+  {
+   "target_id": "MAT-20261127-e35dc7",
+   "kind": "paraphrase",
+   "query": "文化比較",
+   "note": "行は英語題"
+  },
+  {
+   "target_id": "MAT-20261127-e35dc7",
+   "kind": "hypernym",
+   "query": "道徳判断",
+   "note": "行は『道徳的評価』表記"
+  },
+  {
+   "target_id": "MAT-20261127-7d596d",
+   "kind": "ledger",
+   "query": "Lie Detection",
+   "note": "原題の語"
+  },
+  {
+   "target_id": "MAT-20261127-7d596d",
+   "kind": "paraphrase",
+   "query": "欺瞞の判別",
+   "note": "行は『嘘』表記"
+  },
+  {
+   "target_id": "MAT-20261127-7d596d",
+   "kind": "hypernym",
+   "query": "対人知覚",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-20261127-a777da",
+   "kind": "ledger",
+   "query": "Transgression Disclosure",
+   "note": "原題の語"
+  },
+  {
+   "target_id": "MAT-20261127-a777da",
+   "kind": "paraphrase",
+   "query": "打ち明け",
+   "note": "行は『申告』表記"
+  },
+  {
+   "target_id": "MAT-20261127-a777da",
+   "kind": "hypernym",
+   "query": "告白",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-20261127-85f4be",
+   "kind": "ledger",
+   "query": "Concealment",
+   "note": "原題の語"
+  },
+  {
+   "target_id": "MAT-20261127-85f4be",
+   "kind": "paraphrase",
+   "query": "隠し事",
+   "note": "行は『秘密にする』表記"
+  },
+  {
+   "target_id": "MAT-20261127-85f4be",
+   "kind": "hypernym",
+   "query": "秘密保持",
+   "note": "行は『秘密にする』と表記"
+  },
+  {
+   "target_id": "MAT-20261127-78acd5",
+   "kind": "ledger",
+   "query": "Neural network topology",
+   "note": "原題の語"
+  },
+  {
+   "target_id": "MAT-20261127-78acd5",
+   "kind": "paraphrase",
+   "query": "脳の回路",
+   "note": "行は『ネットワーク解析』表記"
+  },
+  {
+   "target_id": "MAT-20261127-78acd5",
+   "kind": "hypernym",
+   "query": "神経画像",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-EVD-001",
+   "kind": "ledger",
+   "query": "Stateless Language Agents",
+   "note": "原題の語"
+  },
+  {
+   "target_id": "MAT-EVD-001",
+   "kind": "paraphrase",
+   "query": "状態を持たないエージェント",
+   "note": "行は英語題"
+  },
+  {
+   "target_id": "MAT-EVD-001",
+   "kind": "hypernym",
+   "query": "AIシステム",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-LIT-348",
+   "kind": "ledger",
+   "query": "トリストラム・シャンディ",
+   "note": "表示題の語"
+  },
+  {
+   "target_id": "MAT-LIT-348",
+   "kind": "paraphrase",
+   "query": "空白のページ",
+   "note": "行は『頁を空白にする』表記"
+  },
+  {
+   "target_id": "MAT-LIT-348",
+   "kind": "hypernym",
+   "query": "読者参加",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-LIT-20261024-8ab8d8",
+   "kind": "ledger",
+   "query": "黄泉平坂",
+   "note": "表示題の語"
+  },
+  {
+   "target_id": "MAT-LIT-20261024-8ab8d8",
+   "kind": "paraphrase",
+   "query": "死者の国",
+   "note": "行は『黄泉』表記"
+  },
+  {
+   "target_id": "MAT-LIT-20261024-8ab8d8",
+   "kind": "hypernym",
+   "query": "神話",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-LIT-20261024-4702db",
+   "kind": "ledger",
+   "query": "枯野をかけ廻る",
+   "note": "表示題の語"
+  },
+  {
+   "target_id": "MAT-LIT-20261024-4702db",
+   "kind": "paraphrase",
+   "query": "死の直前の夢",
+   "note": "行は『死の直前に、夢のなかで』と表記"
+  },
+  {
+   "target_id": "MAT-LIT-20261024-4702db",
+   "kind": "hypernym",
+   "query": "臨終の歌",
+   "note": "行は『辞世』表記"
+  },
+  {
+   "target_id": "MAT-20261024-da0dce",
+   "kind": "ledger",
+   "query": "負荷と選択的注意",
+   "note": "表示題の語"
+  },
+  {
+   "target_id": "MAT-20261024-da0dce",
+   "kind": "paraphrase",
+   "query": "注意が逸れる",
+   "note": "行は『気の散りやすさ』表記"
+  },
+  {
+   "target_id": "MAT-20261024-da0dce",
+   "kind": "hypernym",
+   "query": "注意過程",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-20261025-a647be",
+   "kind": "ledger",
+   "query": "ヴォイニッチ手稿",
+   "note": "表示題の語"
+  },
+  {
+   "target_id": "MAT-20261025-a647be",
+   "kind": "paraphrase",
+   "query": "未解読の写本",
+   "note": "行は『解読の試み』表記"
+  },
+  {
+   "target_id": "MAT-20261025-a647be",
+   "kind": "hypernym",
+   "query": "暗号文書",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-LIT-20270102-163e1e",
+   "kind": "ledger",
+   "query": "トマス福音書",
+   "note": "表示題の語"
+  },
+  {
+   "target_id": "MAT-LIT-20270102-163e1e",
+   "kind": "paraphrase",
+   "query": "外典",
+   "note": "行は『トマス福音書』表記"
+  },
+  {
+   "target_id": "MAT-LIT-20270102-163e1e",
+   "kind": "hypernym",
+   "query": "初期キリスト教文書",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-EVD-20261106-5f7c83",
+   "kind": "ledger",
+   "query": "検索練習",
+   "note": "表示題の語"
+  },
+  {
+   "target_id": "MAT-EVD-20261106-5f7c83",
+   "kind": "paraphrase",
+   "query": "テスト効果",
+   "note": "行は『検索練習』表記"
+  },
+  {
+   "target_id": "MAT-EVD-20261106-5f7c83",
+   "kind": "hypernym",
+   "query": "学習方略",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-20261111-34c08b",
+   "kind": "ledger",
+   "query": "熱力学的な時間の矢",
+   "note": "表示題の語"
+  },
+  {
+   "target_id": "MAT-20261111-34c08b",
+   "kind": "paraphrase",
+   "query": "エントロピーの矢",
+   "note": "行は『時間の矢』表記"
+  },
+  {
+   "target_id": "MAT-20261111-34c08b",
+   "kind": "hypernym",
+   "query": "時間の非対称性",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-20261113-4abaca",
+   "kind": "ledger",
+   "query": "Ultimate physical limits",
+   "note": "原題の語"
+  },
+  {
+   "target_id": "MAT-20261113-4abaca",
+   "kind": "paraphrase",
+   "query": "演算の限界",
+   "note": "行は英語題"
+  },
+  {
+   "target_id": "MAT-20261113-4abaca",
+   "kind": "hypernym",
+   "query": "計算理論",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-20261115-a16502",
+   "kind": "ledger",
+   "query": "Keas Perform",
+   "note": "原題の語"
+  },
+  {
+   "target_id": "MAT-20261115-a16502",
+   "kind": "paraphrase",
+   "query": "オウム",
+   "note": "行は『ケア』表記"
+  },
+  {
+   "target_id": "MAT-20261115-a16502",
+   "kind": "hypernym",
+   "query": "動物認知",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-20261118-b5a1da",
+   "kind": "ledger",
+   "query": "Engram Access Hypothesis",
+   "note": "原題の語"
+  },
+  {
+   "target_id": "MAT-20261118-b5a1da",
+   "kind": "paraphrase",
+   "query": "記憶痕跡",
+   "note": "行は英語題"
+  },
+  {
+   "target_id": "MAT-20261118-b5a1da",
+   "kind": "hypernym",
+   "query": "記憶の消失",
+   "note": "行は『Forgetting』表記（『忘却』はpassageに出現するため差し替え）"
+  },
+  {
+   "target_id": "MAT-20261120-bca553",
+   "kind": "ledger",
+   "query": "メタ認知的監視",
+   "note": "表示題の語"
+  },
+  {
+   "target_id": "MAT-20261120-bca553",
+   "kind": "paraphrase",
+   "query": "思考の観察",
+   "note": "行は『メタ認知』表記"
+  },
+  {
+   "target_id": "MAT-20261120-bca553",
+   "kind": "hypernym",
+   "query": "自己監視",
+   "note": "上位語"
+  },
+  {
+   "target_id": "MAT-20261123-c43921",
+   "kind": "ledger",
+   "query": "想像の回転",
+   "note": "表示題の語"
+  },
+  {
+   "target_id": "MAT-20261123-c43921",
+   "kind": "paraphrase",
+   "query": "心的回転",
+   "note": "行は『想像の回転』表記"
+  },
+  {
+   "target_id": "MAT-20261123-c43921",
+   "kind": "hypernym",
+   "query": "空間認知",
+   "note": "上位語"
+  }
+ ]
+}
