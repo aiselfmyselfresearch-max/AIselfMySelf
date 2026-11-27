@@ -2916,6 +2916,50 @@
    "sha256": "55ec1dc79742e3a817e8dd2323763adc129e09766a74b1f8b2a8f0f48b9dca2a",
    "consolidated_on": "2026-11-26",
    "note": "byte-for-byte concatenation into the same-day day shard; rows not rewritten"
+  },
+  "state/materials.d/2026-11-25-8578053a.jsonl": {
+   "new_shard": "state/materials.d/2026-11-25-9b78bf09.jsonl",
+   "real_date": "2026-11-25",
+   "original_label_date": "2026-11-25",
+   "line_start": 1,
+   "line_end": 10,
+   "row_count": 10,
+   "sha256": "54ec00ec69c165c942ce6fa230118410e189fdf31bf763322c8ad7bd39dfc093",
+   "consolidated_on": "2026-11-27",
+   "note": "byte-for-byte concatenation into the adjacent same-day shard (size_budget file-count budget); rows not rewritten"
+  },
+  "state/read_log.d/2026-11-25-8578053a.jsonl": {
+   "new_shard": "state/read_log.d/2026-11-25-9b78bf09.jsonl",
+   "real_date": "2026-11-25",
+   "original_label_date": "2026-11-25",
+   "line_start": 1,
+   "line_end": 10,
+   "row_count": 10,
+   "sha256": "86572add642c13032a9d0b7e5eff3970be52c15cd4fd157c7d5a900e440d1200",
+   "consolidated_on": "2026-11-27",
+   "note": "byte-for-byte concatenation into the adjacent same-day shard (size_budget file-count budget); rows not rewritten"
+  },
+  "state/sessions.d/2026-11-25-8578053a.jsonl": {
+   "new_shard": "state/sessions.d/2026-11-25-9b78bf09.jsonl",
+   "real_date": "2026-11-25",
+   "original_label_date": "2026-11-25",
+   "line_start": 1,
+   "line_end": 1,
+   "row_count": 1,
+   "sha256": "4c2ca9e2db0aacf38718b8b3ce7eeea7c1c27d49507d55b75cd8c9a4b8631e3f",
+   "consolidated_on": "2026-11-27",
+   "note": "byte-for-byte concatenation into the adjacent same-day shard (size_budget file-count budget); rows not rewritten"
+  },
+  "state/evaluations.d/2026-11-25-8578053a.jsonl": {
+   "new_shard": "state/evaluations.d/2026-11-25-9b78bf09.jsonl",
+   "real_date": "2026-11-25",
+   "original_label_date": "2026-11-25",
+   "line_start": 1,
+   "line_end": 1,
+   "row_count": 1,
+   "sha256": "6757efe71dd2c14bc6f2a61c9c5a9db16da458c051254763efc0d68f8649d98e",
+   "consolidated_on": "2026-11-27",
+   "note": "byte-for-byte concatenation into the adjacent same-day shard (size_budget file-count budget); rows not rewritten"
   }
  }
 }
