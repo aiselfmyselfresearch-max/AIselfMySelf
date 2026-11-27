@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6366 件（research_excerpt 4117 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6376 件（research_excerpt 4127 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：254 編（selected 97 ／ draft 157）
 - **解釈的関係（Relations）**：7100 件
-- **探究セッション（Sessions）**：1191 回
+- **探究セッション（Sessions）**：1192 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6366 | `literary_text` 2181／`research_excerpt` 4117／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6376 | `literary_text` 2181／`research_excerpt` 4127／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 254 | `selected` 97／`draft` 157／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7100 | うち断片↔断片 620 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1191 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17858 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1192 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17870 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 494 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 646 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1346 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1347 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 124 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1036 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1037 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -804,7 +804,7 @@
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 | `FRAG-20261126-aeaab0` | 一冬のあとで、肩だけをほどく | draft | scene | third_person |
 
-## 4. 対話素材（6366 件・詳細は map/3*.md）
+## 4. 対話素材（6376 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -7174,8 +7174,18 @@
 | `MAT-20261126-bdc717` | research_excerpt | Nicolas Chevalier, Jacqueline A. Meaney, Hilary J. Traut, Yuko Munakata『Chevalier, Meaney… |
 | `MAT-20261126-357896` | research_excerpt | Jesse C. Niebaum, Nicolas Chevalier, Ryan M. Guild, Yuko Munakata『Niebaum, Chevalier, Gui… |
 | `MAT-20261126-363514` | research_excerpt | Milvia Cottini『Cottini (2023)「意図を覚えている子どもの能力を高める：児童期の展望記憶改善方略レビュー」——言語的if–then実行意図が学齢期で不発… |
+| `MAT-20261127-a46901` | research_excerpt | Josephine Ross, Jacqui Hutchison, Sheila J. Cunningham『The self-memory system: Exploring … |
+| `MAT-20261127-a46902` | research_excerpt | Gratiela Chirtop, Chloe M. Bates, Andrew K. Martin『The self and friend reference effects … |
+| `MAT-20261127-a46903` | research_excerpt | Jonathan D Jackson, Cindy Luu, Abigail Vigderman, Eric D Leshikar, Peggy L St Jacques, An… |
+| `MAT-20261127-a46904` | research_excerpt | Julie Krans, June de Bree, Michelle L. Moulds『Involuntary Cognitions in Everyday Life: Ex… |
+| `MAT-20261127-a46905` | research_excerpt | Sarah Hennessy, Jessica R Andrews-Hanna, Matthew D Grilli『The Advantages of Aging: Greate… |
+| `MAT-20261127-a46906` | research_excerpt | Lynette J Tippett, Sally C Prebble, Donna Rose Addis『The Persistence of the Self over Tim… |
+| `MAT-20261127-a46907` | research_excerpt | Denise R. Beike, Holly E. Cole, Carmen R. Merrick『Specific autobiographical memories are … |
+| `MAT-20261127-a46908` | research_excerpt | Andrea Vranić, Margareta Jelić, Mirjana Tonković『Functions of Autobiographical Memory in … |
+| `MAT-20261127-a46909` | research_excerpt | Juan C Meléndez, Ana I Agusti, Encarnación Satorres, Alfonso Pitarque『Are semantic and ep… |
+| `MAT-20261127-a46910` | research_excerpt | Tove Harnett, Glenn Möllergren『Before, Behind and Beyond: Life Stories and Identity in De… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261126-ac666e・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261127-a469a3・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -8370,6 +8380,7 @@
 | `SESSION-20261126-da1384` | 2026-11-26 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261126-8a8256` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-ac666e` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261127-a469a3` | 2026-11-27 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7100 件・全表は map/40-relations-*.md）
 
@@ -8475,7 +8486,7 @@
 | `map/31-materials-research-39.md` | 100 | 234,668 |
 | `map/31-materials-research-40.md` | 100 | 230,718 |
 | `map/31-materials-research-41.md` | 100 | 229,907 |
-| `map/31-materials-research-42.md` | 17 | 42,662 |
+| `map/31-materials-research-42.md` | 27 | 55,661 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8515,7 +8526,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 41 | 33,446 |
+| `map/50-sessions-24.md` | 42 | 34,349 |
 | `map/60-notes-01.md` | 25 | 85,214 |
 | `map/60-notes-02.md` | 25 | 62,845 |
 | `map/60-notes-03.md` | 25 | 73,671 |
@@ -8559,23 +8570,23 @@
 | `map/60-notes-41.md` | 25 | 122,827 |
 | `map/60-notes-42.md` | 25 | 118,729 |
 | `map/60-notes-43.md` | 25 | 79,884 |
-| `map/60-notes-44.md` | 25 | 84,769 |
-| `map/60-notes-45.md` | 25 | 81,254 |
-| `map/60-notes-46.md` | 25 | 70,377 |
-| `map/60-notes-47.md` | 25 | 91,650 |
-| `map/60-notes-48.md` | 25 | 97,456 |
-| `map/60-notes-49.md` | 25 | 127,180 |
-| `map/60-notes-50.md` | 18 | 91,091 |
+| `map/60-notes-44.md` | 25 | 83,853 |
+| `map/60-notes-45.md` | 25 | 82,553 |
+| `map/60-notes-46.md` | 25 | 69,299 |
+| `map/60-notes-47.md` | 25 | 86,858 |
+| `map/60-notes-48.md` | 25 | 101,912 |
+| `map/60-notes-49.md` | 25 | 127,456 |
+| `map/60-notes-50.md` | 19 | 94,221 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1243本・41,221,506 B）
+## 8. 精読ノート索引（readings/・1244本・41,238,652 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1134/1243 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1135/1244 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1243 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：198 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1244 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：199 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -9666,6 +9677,7 @@
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
 | `readings/2026-11-26-the-blank-is-a-way-of-seeing.md` | — | 2026-11-26 | `SESSION-20261126-7b7806` +1 | 6,120 | Q6 F6 M4 MOT2 S2 | ✓ | 空欄は、すでに一つの見方である —— 名を書かない贈与と、返却先のない写真 |
 | `readings/2026-11-26-the-right-to-change-the-inherited-fit.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-cc0e19` | 14,562 | Q4 F6 M1 S1 ERR1 | — | 肩をほどく日は、前の返事に含まれているか |
+| `readings/2026-11-27-thought-memory-self-identity-across-contexts.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-a469a3` | 8,134 | M10 S1 | — | 個別の思考と記憶は、自己にどう関わるか——発達・加齢・課題文脈からの10資料 |
 | `readings/2026-11-27-zero-first-and-the-word-not-used.md` | 2026-10-27 | 2026-11-27 | `SESSION-20261127-3b453f` +3 | 8,788 | Q19 F5 M4 S4 | ✓ | 零を先に読み、扱いに通らない語を残す —— 傷つかない声の目盛りと、診察室の訳語 |
 | `readings/2026-11-30-the-position-that-reads-the-mouth.md` | 2026-10-27 | 2026-11-30 | `SESSION-20261130-f5415b` | 10,951 | Q3 F10 M7 R4 S1 | ✓ | 立つ位置——口元は笑いにも痛みにもなる（SESSION-20261130-f5415b） |
 | `readings/2026-11-30-thirteenth-stop-and-the-unlearned-name.md` | 2026-10-27 | 2026-11-30 | `SESSION-20261130-bc629b` | 9,660 | Q14 F6 M7 MOT2 S1 | ✓ | 十三番目、ごんごん —— 覚えない名が眠りを買うとき、反復は遊びか、仕事か、選択圧か |
