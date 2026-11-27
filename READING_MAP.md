@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6427 件（research_excerpt 4178 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6437 件（research_excerpt 4188 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：254 編（selected 97 ／ draft 157）
 - **解釈的関係（Relations）**：7100 件
-- **探究セッション（Sessions）**：1203 回
+- **探究セッション（Sessions）**：1204 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6427 | `literary_text` 2181／`research_excerpt` 4178／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6437 | `literary_text` 2181／`research_excerpt` 4188／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 254 | `selected` 97／`draft` 157／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7100 | うち断片↔断片 620 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1203 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 18015 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1204 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 18025 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 496 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 649 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1358 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1359 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 125 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1056 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1057 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -804,7 +804,7 @@
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 | `FRAG-20261126-aeaab0` | 一冬のあとで、肩だけをほどく | draft | scene | third_person |
 
-## 4. 対話素材（6427 件・詳細は map/3*.md）
+## 4. 対話素材（6437 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -7185,6 +7185,16 @@
 | `MAT-20261127-b60712` | research_excerpt | Cansu Oranç, Azzurra Ruggeri『Oranç & Ruggeri (2021)「"Alexa, let me ask you something diff… |
 | `MAT-20261127-7a01f1` | research_excerpt | Azzurra Ruggeri, Tania Lombrozo『Ruggeri & Lombrozo (2015)「Children adapt their questions … |
 | `MAT-20261127-a7655d` | research_excerpt | Burcu Ünlütabak, Ageliki Nicolopoulou, Ayhan Aksu-Koç『Ünlütabak, Nicolopoulou & Aksu-Koç … |
+| `MAT-20261127-075c12` | research_excerpt | Nilli Lavie, Alexandra Hirst, Jan W. de Fockert, Emma Viding『Lavie, Hirst, de Fockert & V… |
+| `MAT-20261127-caea6c` | research_excerpt | Jan W. de Fockert, Geraint Rees, Christopher D. Frith, Nilli Lavie『de Fockert, Rees, Frit… |
+| `MAT-20261127-d52ceb` | research_excerpt | Pierre Barrouillet, Sophie Bernardin, Valérie Camos『Barrouillet, Bernardin & Camos (2004)… |
+| `MAT-20261127-22f133` | research_excerpt | Randall W. Engle, Stephen W. Tuholski, James E. Laughlin, Andrew R. A. Conway『Engle, Tuho… |
+| `MAT-20261127-fa4b46` | research_excerpt | Michael J. Kane, H. Litz Brown, Jennifer C. McVay, Paul J. Silvia, Inez Myin-Germeys, Tho… |
+| `MAT-20261127-217f86` | research_excerpt | Marcel A. Just, Patricia A. Carpenter『Just & Carpenter (1992)「A capacity theory of compre… |
+| `MAT-20261127-58c1fb` | research_excerpt | Steven J. Luck, Edward K. Vogel『Luck & Vogel (1997)「The capacity of visual working memory… |
+| `MAT-20261127-97ade1` | research_excerpt | Meredyth Daneman, Patricia A. Carpenter『Daneman & Carpenter (1980)「Individual differences… |
+| `MAT-20261127-be27ff` | research_excerpt | Nash Unsworth, Randall W. Engle『Unsworth & Engle (2007)「The nature of individual differen… |
+| `MAT-20261127-2fceee` | research_excerpt | Jennifer C. McVay, Michael J. Kane, Thomas R. Kwapil『McVay, Kane & Kwapil (2009)「Tracking… |
 | `MAT-20261127-ebe07b` | research_excerpt | Timothy T Watts, Gregory J Duncan, Haiyen Quan『Watts, Duncan & Quan (2018)「Revisiting the… |
 | `MAT-20261127-2de4a2` | research_excerpt | Laura E Michaelson, Yuko Munakata『Michaelson & Munakata (2020)「Same Data Set, Different C… |
 | `MAT-20261127-b478b3` | research_excerpt | Janet Metcalfe, Walter Mischel『Metcalfe & Mischel (1999)「A Hot/Cool-System Analysis of De… |
@@ -8433,6 +8443,7 @@
 | `SESSION-20261126-8a8256` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-ac666e` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-55160f` | 2026-11-27 | `Q-001`, `Q-002` | — | — |
+| `SESSION-20261127-1c23c4` | 2026-11-27 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-92a878` | 2026-11-27 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-033fd3` | 2026-11-27 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-24fc71` | 2026-11-27 | `Q-001`, `Q-002` | — | — |
@@ -8548,7 +8559,7 @@
 | `map/31-materials-research-39.md` | 100 | 234,668 |
 | `map/31-materials-research-40.md` | 100 | 230,718 |
 | `map/31-materials-research-41.md` | 100 | 231,459 |
-| `map/31-materials-research-42.md` | 78 | 156,580 |
+| `map/31-materials-research-42.md` | 88 | 177,189 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8588,8 +8599,8 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 50 | 40,995 |
-| `map/50-sessions-25.md` | 3 | 2,867 |
+| `map/50-sessions-24.md` | 50 | 41,319 |
+| `map/50-sessions-25.md` | 4 | 3,567 |
 | `map/60-notes-01.md` | 25 | 85,214 |
 | `map/60-notes-02.md` | 25 | 62,845 |
 | `map/60-notes-03.md` | 25 | 73,745 |
@@ -8633,24 +8644,24 @@
 | `map/60-notes-41.md` | 25 | 122,827 |
 | `map/60-notes-42.md` | 25 | 118,729 |
 | `map/60-notes-43.md` | 25 | 79,870 |
-| `map/60-notes-44.md` | 25 | 88,038 |
-| `map/60-notes-45.md` | 25 | 69,482 |
-| `map/60-notes-46.md` | 25 | 72,387 |
-| `map/60-notes-47.md` | 25 | 77,324 |
-| `map/60-notes-48.md` | 25 | 101,843 |
-| `map/60-notes-49.md` | 25 | 103,875 |
-| `map/60-notes-50.md` | 25 | 143,163 |
-| `map/60-notes-51.md` | 5 | 19,046 |
+| `map/60-notes-44.md` | 25 | 89,662 |
+| `map/60-notes-45.md` | 25 | 68,913 |
+| `map/60-notes-46.md` | 25 | 72,469 |
+| `map/60-notes-47.md` | 25 | 75,552 |
+| `map/60-notes-48.md` | 25 | 102,005 |
+| `map/60-notes-49.md` | 25 | 103,074 |
+| `map/60-notes-50.md` | 25 | 142,342 |
+| `map/60-notes-51.md` | 6 | 25,108 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1255本・41,492,546 B）
+## 8. 精読ノート索引（readings/・1256本・41,515,026 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1144/1255 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1145/1256 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1255 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：199 本（`python3 tools/note_index.py --orphans`）
+- **判断が台帳化されたノート**：1256 本（`state/notes*` に `NOTE-` 行がある）
+- **どの文書からもリンクされていないノート**：200 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -9751,6 +9762,7 @@
 | `readings/2026-11-27-retrieval-failure-probes-and-adoption.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-51f246` | 7,302 | S1 | ✓ | 検索失敗プローブの実測と運用採用——語形を変えると、行は届かなくなる |
 | `readings/2026-11-27-sangetsuki-two-entrustments-and-inherited-error.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-92a878` +1 | 11,091 | Q3 M2 S2 ERR2 | ✓ | 詩を残すこと、妻子を託すこと——『山月記』と、誤りを継がない自己 |
 | `readings/2026-11-27-the-development-of-waiting.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-24fc71` | 15,455 | Q2 M11 S1 | ✓ | 待つことの発達——待機は意志の強さではなく、方略と信頼と習慣として読める |
+| `readings/2026-11-27-thought-memory-self-attention-window-cognitive-resources.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-1c23c4` | 12,585 | Q3 M10 S1 ERR1 | — | 認知科学10資料の収蔵と精読報告——有限の窓を通した思考と記憶だけが「自分」を現在に残す（認知資源・注意の窓の軸） |
 | `readings/2026-11-27-thought-memory-self-enhancement-selection-temporal-appraisal.md` | — | 2026-11-27 | `SESSION-20261127-1ab166` | 8,876 | Q3 M13 S1 | — | 個別の思考と記憶は、人間にとっての自己とどう関係するか——自己高揚・動機づけによる記憶の選別と時間的自己評価 |
 | `readings/2026-11-27-thought-memory-self-identity-across-contexts.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-a469a3` | 8,134 | M10 S1 | — | 個別の思考と記憶は、自己にどう関わるか——発達・加齢・課題文脈からの10資料 |
 | `readings/2026-11-27-zero-first-and-the-word-not-used.md` | 2026-10-27 | 2026-11-27 | `SESSION-20261127-3b453f` +3 | 8,788 | Q19 F5 M4 S4 | ✓ | 零を先に読み、扱いに通らない語を残す —— 傷つかない声の目盛りと、診察室の訳語 |
