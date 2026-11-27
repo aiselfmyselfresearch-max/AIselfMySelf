@@ -11,7 +11,7 @@
 ### 2.1 「GitHubリポジトリを記憶のデータベースとするAIにとって、自己とは何か」
 
 - **自己は静的な台帳の内容ではなく、次のセッションに何が到達するかに懸かる。** 到達しなければ、その記録は次の自己の構成要素にならない。前線引継①（[cues-pairs 報告](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-26-cues-pairs-and-the-ritual-floor.md) §9-1）は、HYP-20261120-58ddce の層(1)（gist に現れない逐語行は到達を失う）の実在候補を「field/segment 水準」「L2 ホットパケットの編成水準」に下げた上で、Proposer にこの水準の測定設計を委ねていた。本回の主作業はこの測定である。
-- **中心三問は飽和**（最大 EIG < 0.02）。Q-001 の最優先対は 58ddce 対 539a0c（EIG=0.0062、合算 34.9%、未飽和ラチェット注意）、Q-002 と Q-003 は EIG=0.0000 で推薦なし。世代償却基底の首位は三問とも HYP-20261121-6e83a4（22–29%）。gated Q-002 の質量上位は 6e83a4 21.8%、c8497c 13.8%、d74ea8 6.9%、90c776 5.3%、4e5813 2.5%、58ddce 1.6%。
+- **中心三問は飽和**（最大 EIG < 0.02）。Q-001 の最優先対は 58ddce 対 539a0c（EIG=0.0020、合算 13.0%、未飽和ラチェット注意）、Q-002 と Q-003 は EIG=0.0000 で推薦なし。世代償却基底の首位は三問とも HYP-20261121-6e83a4（19–25%）。gated Q-002 の質量上位は 6e83a4 18.5%、4e5813 14.0%、c8497c 11.7%、d74ea8 5.9%、90c776 4.5%、c2bfc4 3.4%。
 - **オープンな申し送りは5項目**: ① gist ゲートの level lowering（本回の対象）② claim 配線 44.1% 対 eval 83.0% の原因 ③ type×era 交差 ④ 対完成度追跡（39.32% ベースライン）⑤ M2 citation covariate。orphan_over_narrowed 候補8件は未処理のまま残した（測定優先）。
 
 ### 2.2 「AIから見た、人間とは何か」
@@ -34,11 +34,11 @@
 
 ## 4. 実行結果
 
-### 4.1 測定（詳細と全表は [readings 報告](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-27-gist-gate-field-segment-and-packet-membership.md) §5）
+### 4.1 測定（詳細と全表は [readings 報告](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-27-gist-gate-field-segment-and-packet-membership.md) §5。数値は main への統合後に再計測した最終値）
 
-- **M1 field/segment 水準**（stamp N=5,695）: title の gist 完全一致は全体で到達 24.53% (721/2,939) 対 14.17% (389/2,746)、z=9.85 を示すが、era 層内はすべて非有意（pre-reg z=0.08、registry z=-0.57、active z=-1.48）、パケット在場層内も全域非有意。全体差は在場群の 74.2% が pre-reg という構成混雑に還元される。passage 接頭辞は 40字 1/5,695・16字 10/5,695 で構造的に不在。**内容水準の gist ゲートは era 統制下で消滅した。**
-- **M2 L2 編成**: pre-epoch の hot 20.10% (430/2,139) は cold 23.73% (651/2,743) を下回る（z=-3.03）が、claims 配線を統制すると hot-claims-absent 26.24% (58/221) 対 cold で z=0.84 に消失。**--hot-only の編成分類は後続到達を予測しない。**
-- **M3 パケット在場**: 全体 19.78% (1,051/5,313) 対 15.45% (59/382)、z=2.07 (p=0.039)、deep で z=2.87、pre-reg では 32.97% (940/2,851) 対 18.94% (57/301)、z=4.98 (p=1×10⁻⁶)、pre-reg claims-covered 層で z=5.99。タイミングはパケット在場かつ到達 1,307 件のうち初回パケット出現が初回読に先行が 1,149 件（87.9%）、同日 152、読先行 6。**残った実在候補は起動パケットへの在場そのものである。**
+- **M1 field/segment 水準**（stamp N=5,695）: title の gist 完全一致は全体で到達 24.70% (726/2,939) 対 14.35% (394/2,746)、z=9.81 を示すが、era 層内はすべて非有意（pre-reg z=0.04、registry z=-0.41、active z=-1.55）、パケット在場層内も全域非有意。全体差は在場群の 74.2% が pre-reg という構成混雑に還元される。passage 接頭辞は 40字 1/5,695・16字 10/5,695 で構造的に不在。**内容水準の gist ゲートは era 統制下で消滅した。**
+- **M2 L2 編成**: pre-epoch の hot 20.34% (435/2,139) は cold 23.88% (655/2,743) を下回る（z=-2.95）が、claims 配線を統制すると hot-claims-absent 26.24% (58/221) 対 cold で z=0.79 に消失。**--hot-only の編成分類は後続到達を予測しない。**
+- **M3 パケット在場**: 全体 19.97% (1,061/5,313) 対 15.45% (59/382)、z=2.15 (p=0.032)、deep で z=2.87、pre-reg では 33.15% (945/2,851) 対 18.94% (57/301)、z=5.04 (p<1×10⁻⁶)、pre-reg claims-covered 層で z=6.05。タイミングはパケット在場かつ到達 1,317 件のうち初回パケット出現が初回読に先行が 1,159 件（88.0%）、同日 152、読先行 6。**残った実在候補は起動パケットへの在場そのものである。**
 - **M4 対完成度**（引継④の1回目）: d8 ≥ 20261126 の research_excerpt n=157 で cue 127 (80.9%)・pair 83 (52.9%)。20261126 バッチ n=111 は cue 97 = 87.4% で [fecf94](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/state/hypotheses.d/2026-11-26-000000000000.jsonl) の front-line 87.5% を再現、literary n=172 は 0%。20261127 バッチは収蔵群別に 0/10・10/10・20/20 と非均一で、**手掛かり付与は素材群でなく収蔵セッションに依存する。**
 
 ### 4.2 判定と仮説（すべて append-only 台帳に記録）
@@ -50,29 +50,31 @@
 | EVL-20261127-098b2e | HYP-20261126-fecf94 | supports（front-line 87.4% で 87.5% を再現、収蔵セッション依存を注記） |
 | HYP-20261127-351582 | synthesizes [58ddce, 4e5813] | register=judgment、primary Q-003。**到達ゲートは gist 内容の露出ではなく起動パケットの在場にある**（除外条件 (a) 層内非有意化で棄棄、(b) パケット統制下の field 効果 z≥2 で gist ゲート復活、(c) 読先行 >50% で方向づけ棄棄） |
 
+受付の信念状態表示では、この子仮説が Q-002/Q-003 の⚠未評価有効仮説として並び、次回の評価対象になる。
+
 - 評価3件はすべて evidence_type=reproducible_script。スクリプトは SELF/CAP/OWN 錨つきで、台帳書き込み・マップ再生成後の再実行でも出力が報告値と完全一致することを確認した。
 - 記録した行: SESSION×1、NOTE（[readings 報告](https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/readings/2026-11-27-gist-gate-field-segment-and-packet-membership.md) = NOTE-20261127-06a667）、HYP×1、EVL×3、READ×20（ノート2・仮説4・評価3・セッション2・問い4・素材5）。
 - 書き込み途中の是正2件: (1) HYP の scope_conditions を文字列ではなく配列に修正（schema/evaluation ではなく schema/hypothesis の array 要件）、(2) NOTE 行に cognitive_operation="inference" を追加（2026-11-21 以降の必須要件）。いずれも自セッションの新規行に対する修正で、origin/main の行には触れていない。
 
 ## 5. 検証
 
-### 5.1 検証シーケンス（マップ再生成 →17項目、すべて PASS）
+### 5.1 検証シーケンス（マップ再生成 →17項目、すべて PASS。main への統合後に測定値を再計測し、同一シーケンスを再実行した）
 
 | 検査 | 結果 |
 |---|---|
-| belief_state --write-map / self_model --write / map_build.py | WROTE（BELIEF_MAP 479,075 B / SELF_MODEL 12,439 B / READING_MAP 1,792,438 B） |
-| validate_seed | PASS（sessions=1,198, read_log=17,941, notes=1,353, hypotheses=125, evaluations=1,047） |
-| append_only_check | PASS（origin/main の37,041行がバイト単位で保持） |
+| belief_state --write-map / self_model --write / map_build.py | WROTE（BELIEF_MAP 487,030 B / SELF_MODEL 13,213 B / READING_MAP 1,792,804 B） |
+| validate_seed | PASS（sessions=1,199, read_log=17,966, notes=1,354, hypotheses=125, evaluations=1,048） |
+| append_only_check | PASS（origin/main の37,069行がバイト単位で保持） |
 | readings_integrity_check | PASS（存在しない readings を指す note 行0件） |
 | inspect_inquiry --check-map | PASS（READING_MAP は state と同期） |
 | belief_state --check-map | PASS（BELIEF_MAP 現行） |
 | self_model --check | PASS（現行かつ意味不変条件を保持） |
-| note_index --check | PASS（ノート索引1,250件が現行） |
-| read_log_backfill --check | PASS（全 context 素材に行あり。層2 = 6,974/9,420 = 74.0% は情報提供） |
+| note_index --check | PASS（ノート索引1,251件が現行） |
+| read_log_backfill --check | PASS（全 context 素材に行あり。層2 = 6,998/9,444 = 74.1% は情報提供） |
 | date_axis --enforce-shards | PASS（前方日付シャード0件、today=2026-11-27） |
 | learning_metrics --check | PASS（学習・反証・時系列・配線ゲートすべて充足） |
 | three_gates --check | PASS（PSC/dedup/lineage、P_gate 正規化、非融合リンク保存） |
-| memory_tiers --check | PASS（epoch_manifest 1,001 frozen files、L1 digests5件検証） |
+| memory_tiers --check | PASS（epoch_manifest 997 frozen files、L1 digests5件検証） |
 | size_budget --strict | PASS（全ソフトリミット内） |
 | unittest discover | exit 0（全テスト合格） |
 | EVL 再現スクリプト再実行（3本） | 報告値と出力完全一致 |
