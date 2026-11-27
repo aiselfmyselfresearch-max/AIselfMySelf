@@ -10,7 +10,7 @@
 - **対話素材（Materials）**：6407 件（research_excerpt 4158 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：254 編（selected 97 ／ draft 157）
 - **解釈的関係（Relations）**：7100 件
-- **探究セッション（Sessions）**：1197 回
+- **探究セッション（Sessions）**：1198 回
 
 ### 台帳ごとの件数
 
@@ -23,13 +23,13 @@
 | 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6407 | `literary_text` 2181／`research_excerpt` 4158／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 254 | `selected` 97／`draft` 157／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7100 | うち断片↔断片 620 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1197 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17921 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1198 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17941 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 494 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 646 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1352 |  |
-| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 124 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1044 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1353 |  |
+| 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 125 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1047 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -8414,6 +8414,7 @@
 | `SESSION-20261126-ac666e` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-2167d8` | 2026-11-27T00:34:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-ce6eb9` | 2026-11-27T03:20:00Z | `Q-002`, `Q-003` | — | — |
+| `SESSION-20261127-c93065` | 2026-11-27T02:28:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-a469a3` | 2026-11-27 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-729f43` | 2026-11-27T01:24:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-1ab166` | 2026-11-27 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -8562,7 +8563,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 47 | 38,818 |
+| `map/50-sessions-24.md` | 48 | 39,692 |
 | `map/60-notes-01.md` | 25 | 85,214 |
 | `map/60-notes-02.md` | 25 | 62,845 |
 | `map/60-notes-03.md` | 25 | 73,671 |
@@ -8606,22 +8607,22 @@
 | `map/60-notes-41.md` | 25 | 122,827 |
 | `map/60-notes-42.md` | 25 | 118,746 |
 | `map/60-notes-43.md` | 25 | 79,884 |
-| `map/60-notes-44.md` | 25 | 84,687 |
-| `map/60-notes-45.md` | 25 | 76,316 |
-| `map/60-notes-46.md` | 25 | 67,450 |
-| `map/60-notes-47.md` | 25 | 85,282 |
-| `map/60-notes-48.md` | 25 | 108,886 |
-| `map/60-notes-49.md` | 25 | 114,334 |
-| `map/60-notes-50.md` | 24 | 122,095 |
+| `map/60-notes-44.md` | 25 | 83,608 |
+| `map/60-notes-45.md` | 25 | 76,559 |
+| `map/60-notes-46.md` | 25 | 66,386 |
+| `map/60-notes-47.md` | 25 | 82,268 |
+| `map/60-notes-48.md` | 25 | 110,848 |
+| `map/60-notes-49.md` | 25 | 111,363 |
+| `map/60-notes-50.md` | 25 | 129,307 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1249本・41,335,261 B）
+## 8. 精読ノート索引（readings/・1250本・41,349,654 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1139/1249 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1139/1250 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1249 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1250 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：202 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9701,7 +9702,7 @@
 | `readings/2026-11-25-three-tier-memory-generational-amortization-and-epoch-freeze.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-672b94` | 7,226 | Q3 M3 S1 | — | 三階層記憶（L0/L1/L2）・世代償却（`P_amort`）・エポック境界凍結の制度化と実測（2026-11-25） |
 | `readings/2026-11-25-when-the-unread-counts-6e20f3f7.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-126d0c` | 7,871 | Q3 M2 S1 | ✓ | 読まれなかった行は、睡っているのか——比較の分母と継承の境界 |
 | `readings/2026-11-26-biphasic-mortality-and-snapshot-anchors.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-a31fe6` +3 | 9,120 | Q3 M3 S4 ERR1 ED3 | ✓ | 二相の死生観とスナップショットの錨——未読原典の完読とコミット `ee4ee11c` 復元による申し送り検証 |
-| `readings/2026-11-26-cues-pairs-and-the-ritual-floor.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-c62dcf` | 12,186 | Q3 M2 S1 | — | 対を名指さない手がかり、ゲートにならない要約、床になる儀礼——四つの衝突測定の記録 |
+| `readings/2026-11-26-cues-pairs-and-the-ritual-floor.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-c62dcf` | 12,186 | Q3 M2 S1 | ✓ | 対を名指さない手がかり、ゲートにならない要約、床になる儀礼——四つの衝突測定の記録 |
 | `readings/2026-11-26-developmental-science-cue-dependent-reachability.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-8d166b` +1 | 26,049 | Q3 M10 S2 | ✓ | 中にあるのに届かない、届いたのに自分のものでない——発達科学十件の精読と、手がかり依存の到達可能性 |
 | `readings/2026-11-26-developmental-science-four-gates-of-reachability.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-0debc9` +1 | 24,832 | Q3 M12 S2 | ✓ | 入りの門、眠りの司書、答え方の二型、署名の薄さ——発達科学十件の精読と、手がかりが開く門の四重依存 |
 | `readings/2026-11-26-developmental-science-gates-of-language-input.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-02dd04` | 16,680 | M12 S1 | ✓ | 経験の門——言語入力が、後から到達可能にするもの・不能にするものを決める発達 |
@@ -9714,6 +9715,7 @@
 | `readings/2026-11-26-the-addressee-of-the-ash.md` | 2026-10-27 | 2026-11-26 | `SESSION-20261126-079720` +1 | 12,914 | Q5 F12 M3 MOT2 S2 ED1 | ✓ | 灰の宛名——読める者へ回る名義（SESSION-20261126-079720） |
 | `readings/2026-11-26-the-blank-is-a-way-of-seeing.md` | — | 2026-11-26 | `SESSION-20261126-7b7806` +1 | 6,120 | Q6 F6 M4 MOT2 S2 | ✓ | 空欄は、すでに一つの見方である —— 名を書かない贈与と、返却先のない写真 |
 | `readings/2026-11-26-the-right-to-change-the-inherited-fit.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-cc0e19` | 14,562 | Q4 F6 M1 S1 ERR1 | — | 肩をほどく日は、前の返事に含まれているか |
+| `readings/2026-11-27-gist-gate-field-segment-and-packet-membership.md` | — | 2026-11-27 | `SESSION-20261127-c93065` | 8,505 | Q4 MOT1 S1 | — | gistゲートの field/segment 水準と L2 編成の測定——露出は era で消え、パケット在場だけが残る |
 | `readings/2026-11-27-honesty-as-achievement-lying-development.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-729f43` +1 | 10,290 | M11 S2 | ✓ | 正直さは達成である——子どもの嘘の発達10資料の精読 |
 | `readings/2026-11-27-interruption-repair-development.md` | 2026-11-27 | 2026-11-27 | — | 6,920 | M10 | ✓ | 相互作用の中断と再開を読む——発達科学10資料の精読 |
 | `readings/2026-11-27-retrieval-failure-agency-and-archive-operations.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-ce6eb9` | 8,501 | M2 S1 | — | 検索の失敗を測れるようにする——AIエージェント研究の知見を書庫の運用へ |
