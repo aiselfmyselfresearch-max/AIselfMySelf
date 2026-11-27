@@ -82,8 +82,8 @@
 
 ### 容量シグナル
 - ✓ file_count:state/materials.d: 166/175 (soft 167)
-- ✓ file_count:state/read_log.d: 190/200 (soft 190)
-- ✓ file_count:state/sessions.d: 192/202 (soft 192)
+- ✓ file_count:state/read_log.d: 190/200 (soft 191)
+- ✓ file_count:state/sessions.d: 192/202 (soft 193)
 - ✓ file_count:state/notes.d: 182/186 (soft 182)
 - ✓ file_count:readings/: 1236/1400 (soft 1250)
 
