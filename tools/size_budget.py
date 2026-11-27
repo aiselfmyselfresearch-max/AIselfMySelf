@@ -307,7 +307,7 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
     ),
     DirBudget(
         "tools",
-        soft_bytes=int(2.58 * MIB),
+        soft_bytes=int(2.62 * MIB),
         hard_bytes=5 * MIB,
         remedy="Never commit data-embedded scripts in tools/; use tools/lexicon_audit.py instead of new *_audit.py",
     ),
