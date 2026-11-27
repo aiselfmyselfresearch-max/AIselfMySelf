@@ -39,8 +39,8 @@
 - 実日付 (開始時刻): 2026-11-27 (2026-11-27)
 - 現在のロール: adversarial_tester
 - ジェネレータ: None
-- 総セッション数: 1193
-- 直近10セッションのロール分布: {"adversarial_tester": 8, "consolidator": 1, "proposer": 1}
+- 総セッション数: 1194
+- 直近10セッションのロール分布: {"adversarial_tester": 7, "consolidator": 2, "proposer": 1}
 
 ## 3. 一人称視点 (First-Person Perspective)
 
@@ -84,12 +84,12 @@
 - ✓ file_count:state/materials.d: 166/175 (soft 166)
 - ✓ file_count:state/read_log.d: 189/200 (soft 189)
 - ✓ file_count:state/sessions.d: 191/202 (soft 191)
-- ✓ file_count:state/notes.d: 181/186 (soft 182)
-- ✓ file_count:readings/: 1230/1400 (soft 1250)
+- ✓ file_count:state/notes.d: 182/186 (soft 182)
+- ✓ file_count:readings/: 1231/1400 (soft 1250)
 
 ### バランス・接続・一貫性
-- △ ロールバランス: 最大逸脱 0.3
-- △ 接続性: 孤児ノート 194/1348
+- ✓ ロールバランス: 最大逸脱 0.2
+- △ 接続性: 孤児ノート 195/1349
 - ✓ 一貫性: 直近の評価数分散 1.04
 
 ## 5. 時間連続性 (Temporal Continuity)
@@ -124,7 +124,7 @@
 ### 直近ウィンドウ停滞監視
 - 直近 5 評価セッション無更新回数: 0/5（閾値 D_KL < 0.0001 bits）
 - 直近 5 評価セッション累積ドリフト D_KL(P_amort): Q-001=0.16237b, Q-002=0.14159b, Q-003=0.13255b
-- 直近探求5セッションの名目的受諾（成果物0件）: 1 件
+- 直近探求5セッションの名目的受諾（成果物0件）: 2 件
 
 ### 次回検証の事前感度予測 (1件の独立 verified 反証衝突)
 - **Q-001** (`HYP-20261121-6e83a4` vs `HYP-20261124-c8497c`, EIG_amort=0.0237): 予測 D_KL=0.31939 bits (Δleft=-23.78pp, Δright=+3.31pp)
