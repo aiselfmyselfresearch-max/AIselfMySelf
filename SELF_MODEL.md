@@ -39,8 +39,8 @@
 - 実日付 (開始時刻): 2026-11-27 (2026-11-27)
 - 現在のロール: consolidator
 - ジェネレータ: None
-- 総セッション数: 1201
-- 直近10セッションのロール分布: {"proposer": 2, "consolidator": 4, "adversarial_tester": 4}
+- 総セッション数: 1202
+- 直近10セッションのロール分布: {"consolidator": 4, "adversarial_tester": 5, "proposer": 1}
 
 ## 3. 一人称視点 (First-Person Perspective)
 
@@ -85,11 +85,11 @@
 - ✓ file_count:state/read_log.d: 191/200 (soft 191)
 - ✓ file_count:state/sessions.d: 193/202 (soft 193)
 - ✓ file_count:state/notes.d: 182/186 (soft 182)
-- ✓ file_count:readings/: 1238/1400 (soft 1250)
+- ✓ file_count:readings/: 1239/1400 (soft 1250)
 
 ### バランス・接続・一貫性
 - ✓ ロールバランス: 最大逸脱 0.15
-- △ 接続性: 孤児ノート 197/1356
+- △ 接続性: 孤児ノート 198/1357
 - ✓ 一貫性: 直近の評価数分散 0.64
 
 ## 5. 時間連続性 (Temporal Continuity)
