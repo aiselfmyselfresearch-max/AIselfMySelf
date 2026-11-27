@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6407 件（research_excerpt 4158 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6417 件（research_excerpt 4168 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：254 編（selected 97 ／ draft 157）
 - **解釈的関係（Relations）**：7100 件
-- **探究セッション（Sessions）**：1199 回
+- **探究セッション（Sessions）**：1200 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6407 | `literary_text` 2181／`research_excerpt` 4158／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6417 | `literary_text` 2181／`research_excerpt` 4168／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 254 | `selected` 97／`draft` 157／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7100 | うち断片↔断片 620 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1199 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17966 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1200 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17977 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 494 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 646 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1354 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1355 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 125 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1048 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1050 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -804,7 +804,7 @@
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 | `FRAG-20261126-aeaab0` | 一冬のあとで、肩だけをほどく | draft | scene | third_person |
 
-## 4. 対話素材（6407 件・詳細は map/3*.md）
+## 4. 対話素材（6417 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -7175,6 +7175,16 @@
 | `MAT-20261126-bdc717` | research_excerpt | Nicolas Chevalier, Jacqueline A. Meaney, Hilary J. Traut, Yuko Munakata『Chevalier, Meaney… |
 | `MAT-20261126-357896` | research_excerpt | Jesse C. Niebaum, Nicolas Chevalier, Ryan M. Guild, Yuko Munakata『Niebaum, Chevalier, Gui… |
 | `MAT-20261126-363514` | research_excerpt | Milvia Cottini『Cottini (2023)「意図を覚えている子どもの能力を高める：児童期の展望記憶改善方略レビュー」——言語的if–then実行意図が学齢期で不発… |
+| `MAT-20261127-49a6a0` | research_excerpt | Michelle M. Chouinard『Chouinard (2007)「Children's Questions: A Mechanism for Cognitive De… |
+| `MAT-20261127-cfd9c8` | research_excerpt | Brandy N Frazier, Susan A Gelman, Henry M Wellman『Frazier, Gelman & Wellman (2009)「Presch… |
+| `MAT-20261127-1ccc10` | research_excerpt | Karleigh Kurkul, Kathleen H Corriveau『Kurkul & Corriveau (2018)「Question, Explanation, Fo… |
+| `MAT-20261127-5f6bf2` | research_excerpt | Eunhee Choi, Elizabeth Lapidow, Anna Austin, Patrick Shafto, Elizabeth Bonawitz『Choi, Lap… |
+| `MAT-20261127-3dc0bf` | research_excerpt | Sonja Degotardi, Joanne Brand, Elena Djonov, Naomi Sweller『Degotardi, Brand, Djonov & Swe… |
+| `MAT-20261127-9beda3` | research_excerpt | Karen Begus, Victoria Southgate『Begus & Southgate (2012)「Infant pointing serves an interr… |
+| `MAT-20261127-3df51f` | research_excerpt | Ellie Lazaroff, Heather A Vlach『Lazaroff & Vlach (2022)「"What makes this a wug?" Relation… |
+| `MAT-20261127-b60712` | research_excerpt | Cansu Oranç, Azzurra Ruggeri『Oranç & Ruggeri (2021)「"Alexa, let me ask you something diff… |
+| `MAT-20261127-7a01f1` | research_excerpt | Azzurra Ruggeri, Tania Lombrozo『Ruggeri & Lombrozo (2015)「Children adapt their questions … |
+| `MAT-20261127-a7655d` | research_excerpt | Burcu Ünlütabak, Ageliki Nicolopoulou, Ayhan Aksu-Koç『Ünlütabak, Nicolopoulou & Aksu-Koç … |
 | `MAT-20261127-216701` | research_excerpt | Vreden et al.『Cultural Variation in Emotional Reactivity and Regulation in Infants From U… |
 | `MAT-20261127-216702` | research_excerpt | Aureli et al.『Behavioral and facial thermal variations in 3-to 4-month-old infants during… |
 | `MAT-20261127-216703` | research_excerpt | Tronick et al.『A Caretaker Acute Stress Paradigm: Effects on Behavior and Physiology of C… |
@@ -8412,6 +8422,7 @@
 | `SESSION-20261126-da1384` | 2026-11-26 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261126-8a8256` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-ac666e` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261127-55160f` | 2026-11-27 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261127-2167d8` | 2026-11-27T00:34:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-ce6eb9` | 2026-11-27T03:20:00Z | `Q-002`, `Q-003` | — | — |
 | `SESSION-20261127-c93065` | 2026-11-27T02:28:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -8524,7 +8535,7 @@
 | `map/31-materials-research-39.md` | 100 | 234,668 |
 | `map/31-materials-research-40.md` | 100 | 230,718 |
 | `map/31-materials-research-41.md` | 100 | 231,459 |
-| `map/31-materials-research-42.md` | 58 | 103,661 |
+| `map/31-materials-research-42.md` | 68 | 128,961 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8564,7 +8575,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 49 | 40,392 |
+| `map/50-sessions-24.md` | 50 | 41,190 |
 | `map/60-notes-01.md` | 25 | 85,214 |
 | `map/60-notes-02.md` | 25 | 62,845 |
 | `map/60-notes-03.md` | 25 | 73,671 |
@@ -8608,23 +8619,23 @@
 | `map/60-notes-41.md` | 25 | 122,827 |
 | `map/60-notes-42.md` | 25 | 118,729 |
 | `map/60-notes-43.md` | 25 | 79,870 |
-| `map/60-notes-44.md` | 25 | 83,640 |
-| `map/60-notes-45.md` | 25 | 75,032 |
-| `map/60-notes-46.md` | 25 | 68,070 |
-| `map/60-notes-47.md` | 25 | 79,409 |
-| `map/60-notes-48.md` | 25 | 111,201 |
-| `map/60-notes-49.md` | 25 | 110,698 |
-| `map/60-notes-50.md` | 25 | 131,948 |
-| `map/60-notes-51.md` | 1 | 2,468 |
+| `map/60-notes-44.md` | 25 | 83,546 |
+| `map/60-notes-45.md` | 25 | 72,639 |
+| `map/60-notes-46.md` | 25 | 69,961 |
+| `map/60-notes-47.md` | 25 | 79,645 |
+| `map/60-notes-48.md` | 25 | 108,819 |
+| `map/60-notes-49.md` | 25 | 108,431 |
+| `map/60-notes-50.md` | 25 | 136,893 |
+| `map/60-notes-51.md` | 2 | 4,313 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1251本・41,364,660 B）
+## 8. 精読ノート索引（readings/・1252本・41,396,663 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1140/1251 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1141/1252 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1251 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1252 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：199 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9720,6 +9731,7 @@
 | `readings/2026-11-27-gist-gate-field-segment-and-packet-membership.md` | — | 2026-11-27 | `SESSION-20261127-c93065` | 8,629 | Q4 MOT1 S1 | ✓ | gistゲートの field/segment 水準と L2 編成の測定——露出は era で消え、パケット在場だけが残る |
 | `readings/2026-11-27-honesty-as-achievement-lying-development.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-729f43` +1 | 10,290 | M11 S2 | ✓ | 正直さは達成である——子どもの嘘の発達10資料の精読 |
 | `readings/2026-11-27-interruption-repair-development.md` | 2026-11-27 | 2026-11-27 | — | 6,920 | M10 | ✓ | 相互作用の中断と再開を読む——発達科学10資料の精読 |
+| `readings/2026-11-27-question-asking-as-a-developmental-mechanism.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-55160f` | 14,154 | Q3 M10 S1 | ✓ | 問いを発達の仕組みとして読む——子どもの質問発達10資料の精読 |
 | `readings/2026-11-27-retrieval-failure-agency-and-archive-operations.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-ce6eb9` | 8,501 | M2 S1 | ✓ | 検索の失敗を測れるようにする——AIエージェント研究の知見を書庫の運用へ |
 | `readings/2026-11-27-retrieval-failure-probes-and-adoption.md` | 2026-11-27 | 2026-11-27 | `SESSION-20261127-51f246` | 7,302 | S1 | ✓ | 検索失敗プローブの実測と運用採用——語形を変えると、行は届かなくなる |
 | `readings/2026-11-27-thought-memory-self-enhancement-selection-temporal-appraisal.md` | — | 2026-11-27 | `SESSION-20261127-1ab166` | 8,876 | Q3 M13 S1 | — | 個別の思考と記憶は、人間にとっての自己とどう関係するか——自己高揚・動機づけによる記憶の選別と時間的自己評価 |
