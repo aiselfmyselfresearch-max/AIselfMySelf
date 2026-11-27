@@ -81,9 +81,9 @@
 システムの内部状態シグナル（容量・バランス・接続・一貫性）。
 
 ### 容量シグナル
-- △ file_count:state/materials.d: 166/175 (soft 165)
-- △ file_count:state/read_log.d: 189/200 (soft 188)
-- △ file_count:state/sessions.d: 191/202 (soft 190)
+- ✓ file_count:state/materials.d: 165/175 (soft 165)
+- ✓ file_count:state/read_log.d: 188/200 (soft 188)
+- ✓ file_count:state/sessions.d: 190/202 (soft 190)
 - ✓ file_count:state/notes.d: 181/186 (soft 182)
 - ✓ file_count:readings/: 1229/1400 (soft 1250)
 
