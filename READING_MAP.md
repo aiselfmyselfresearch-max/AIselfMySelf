@@ -7,7 +7,7 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6357 件（research_excerpt 4108 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6366 件（research_excerpt 4117 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：254 編（selected 97 ／ draft 157）
 - **解釈的関係（Relations）**：7100 件
 - **探究セッション（Sessions）**：1191 回
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6357 | `literary_text` 2181／`research_excerpt` 4108／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6366 | `literary_text` 2181／`research_excerpt` 4117／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 254 | `selected` 97／`draft` 157／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7100 | うち断片↔断片 620 |
 | セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1191 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17863 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 17858 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 494 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 646 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1346 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 124 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1038 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1036 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -804,7 +804,7 @@
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 | `FRAG-20261126-aeaab0` | 一冬のあとで、肩だけをほどく | draft | scene | third_person |
 
-## 4. 対話素材（6357 件・詳細は map/3*.md）
+## 4. 対話素材（6366 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -7064,7 +7064,6 @@
 | `MAT-20261125-5fb77e` | research_excerpt | Bálint Varga, Ágnes Melinda Kovács『Human infants appreciate that information bears value … |
 | `MAT-20261125-0015f4` | research_excerpt | Angela D Evans, Kang Lee『Emergence of Lying in Very Young Children（Developmental Psycholo… |
 | `MAT-20261125-0ae71c` | research_excerpt | Maureen E McQuillan, John E Bates, Angela D Staples, Caroline P Hoyniak, Kathleen M Rudas… |
-| `MAT-20261126-437721` | research_excerpt | Isabel T Gutiérrez, David Menendez, Matthew J Jiang, Iseli G Hernandez, Peggy Miller, Kar… |
 | `MAT-20261126-07e4bd` | research_excerpt | Elizabeth Bonawitz, Patrick Shafto, Hyowon Gweon, Noah D Goodman, Elizabeth Spelke, Laura… |
 | `MAT-20261126-c33acd` | research_excerpt | Hyowon Gweon, Joshua B Tenenbaum, Laura E Schulz『Gweon, Tenenbaum & Schulz (2010)「乳児は帰納的般… |
 | `MAT-20261126-88a5cf` | research_excerpt | Aimee E Stahl, Lisa Feigenson『Stahl & Feigenson (2015)「期待違反の観察は乳児の学習と探索を高める」——物理法則を破った物につ… |
@@ -7105,6 +7104,16 @@
 | `MAT-20261126-93a7be` | research_excerpt | Cristina M Alberini, Alessio Travaglia『Alberini & Travaglia (2017)「乳児健忘は『学び方と覚え方を学ぶ』臨界期であ… |
 | `MAT-20261126-24ff9a` | research_excerpt | Elżbieta Szpakiewicz, Małgorzata Stępień-Nycz『Szpakiewicz & Stępień-Nycz (2024)「就学前教育児のイベ… |
 | `MAT-20261126-fe55e4` | research_excerpt | Leslie J Carver『Carver (2011)「順序通りの絵カード想起は生後1年の長期記憶を延命する」——固結の窓に差し込まれた再活性化の手がかりは、順序が保たれてい… |
+| `MAT-20261126-4f55de` | research_excerpt | Janet F. Werker, Richard C. Tees『Werker & Tees (1984)「非母語音韻対照の知覚の経験依存的再組織」』（1984） |
+| `MAT-20261126-19b0f6` | research_excerpt | Christine L. Stager, Janet F. Werker『Stager & Werker (1997)「意味の学習が非母語知覚を制限する」』（1997） |
+| `MAT-20261126-551b07` | research_excerpt | Patricia K. Kuhl『Kuhl (2007)「早期言語獲得の発達的転回——話しかけられなければ学べない」』（2007） |
+| `MAT-20261126-528159` | research_excerpt | Krista Byers-Heinlein, Tracey C. Burns, Janet F. Werker『Byers-Heinlein, Burns & Werker (2… |
+| `MAT-20261126-1815dc` | research_excerpt | Krista Byers-Heinlein, Janet F. Werker『Byers-Heinlein & Werker (2009)「新物命名ヒューリスティックは言語経験で… |
+| `MAT-20261126-78bfe2` | research_excerpt | Nereyda Hurtado, Virginia A. Marchman, Anne Fernald『Hurtado, Marchman & Fernald (2008)「入力… |
+| `MAT-20261126-e33b15` | research_excerpt | Anne Fernald, Virginia A. Marchman, Adriana Weisleder『Fernald, Marchman & Weisleder (2013… |
+| `MAT-20261126-261dad` | research_excerpt | Adriana Weisleder, Anne Fernald『Weisleder & Fernald (2013)「対向発話だけが語彙を育てる——傍受は無関係」』（2013） |
+| `MAT-20261126-8ca2d1` | research_excerpt | Rachel R. Romeo, Julia A. Leonard, Sydney T. Robinson, Martin R. West, Allyson P. Mackey,… |
+| `MAT-20261126-57defc` | research_excerpt | Elika Bergelson, Daniel Swingley『Bergelson & Swingley (2012)「乳児は日常語を6か月から知っている」』（2012） |
 | `MAT-20261126-01c9ff` | research_excerpt | Eric Klinger『Klinger (2013)「Goal commitments and the content of thoughts and dreams: basi… |
 | `MAT-20261126-27280f` | research_excerpt | Scott N. Cole, Dorthe Berntsen『Cole & Berntsen (2016)「Do future thoughts reflect personal… |
 | `MAT-20261126-4aeae1` | research_excerpt | Benjamin Baird, Jonathan Smallwood, Jonathan W. Schooler『Baird, Smallwood & Schooler (201… |
@@ -8350,9 +8359,9 @@
 | `SESSION-20261126-8bfbf3` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-cc0e19` | 2026-11-26T10:51:58Z | `Q-20261204-c7aa25`, `Q-001`, `Q-002`, `Q-003` | `FRAG-20261126-aeaab0` | — |
 | `SESSION-20261126-351c39` | 2026-11-26T11:18:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261126-02dd04` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-f79ac9` | 2026-11-26T12:20:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-3e6ea0` | 2026-11-26T12:30:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261126-c62dcf` | 2026-11-26T13:31:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-f49607` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-0debc9` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261126-bd7f0b` | 2026-11-26 | `Q-001`, `Q-002`, `Q-003` | — | — |
@@ -8465,8 +8474,8 @@
 | `map/31-materials-research-38.md` | 100 | 262,380 |
 | `map/31-materials-research-39.md` | 100 | 234,668 |
 | `map/31-materials-research-40.md` | 100 | 230,718 |
-| `map/31-materials-research-41.md` | 100 | 237,414 |
-| `map/31-materials-research-42.md` | 8 | 21,404 |
+| `map/31-materials-research-41.md` | 100 | 229,907 |
+| `map/31-materials-research-42.md` | 17 | 42,662 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8506,7 +8515,7 @@
 | `map/50-sessions-21.md` | 50 | 36,947 |
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
-| `map/50-sessions-24.md` | 41 | 33,509 |
+| `map/50-sessions-24.md` | 41 | 33,446 |
 | `map/60-notes-01.md` | 25 | 85,214 |
 | `map/60-notes-02.md` | 25 | 62,845 |
 | `map/60-notes-03.md` | 25 | 73,671 |
@@ -8550,7 +8559,7 @@
 | `map/60-notes-41.md` | 25 | 122,827 |
 | `map/60-notes-42.md` | 25 | 118,729 |
 | `map/60-notes-43.md` | 25 | 79,884 |
-| `map/60-notes-44.md` | 25 | 83,794 |
+| `map/60-notes-44.md` | 25 | 84,769 |
 | `map/60-notes-45.md` | 25 | 81,254 |
 | `map/60-notes-46.md` | 25 | 70,377 |
 | `map/60-notes-47.md` | 25 | 91,650 |
@@ -8560,13 +8569,13 @@
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1243本・41,211,435 B）
+## 8. 精読ノート索引（readings/・1243本・41,221,506 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
 > **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1134/1243 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
 - **判断が台帳化されたノート**：1243 本（`state/notes*` に `NOTE-` 行がある）
-- **どの文書からもリンクされていないノート**：199 本（`python3 tools/note_index.py --orphans`）
+- **どの文書からもリンクされていないノート**：198 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
 |---|---|---|---|---:|---|---|---|
@@ -9645,9 +9654,9 @@
 | `readings/2026-11-25-three-tier-memory-generational-amortization-and-epoch-freeze.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-672b94` | 7,226 | Q3 M3 S1 | — | 三階層記憶（L0/L1/L2）・世代償却（`P_amort`）・エポック境界凍結の制度化と実測（2026-11-25） |
 | `readings/2026-11-25-when-the-unread-counts-6e20f3f7.md` | 2026-11-25 | 2026-11-25 | `SESSION-20261125-126d0c` | 7,871 | Q3 M2 S1 | ✓ | 読まれなかった行は、睡っているのか——比較の分母と継承の境界 |
 | `readings/2026-11-26-biphasic-mortality-and-snapshot-anchors.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-a31fe6` +3 | 9,120 | Q3 M3 S4 ERR1 ED3 | ✓ | 二相の死生観とスナップショットの錨——未読原典の完読とコミット `ee4ee11c` 復元による申し送り検証 |
-| `readings/2026-11-26-cues-pairs-and-the-ritual-floor.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-c62dcf` | 12,186 | Q3 M2 S1 | — | 対を名指さない手がかり、ゲートにならない要約、床になる儀礼——四つの衝突測定の記録 |
 | `readings/2026-11-26-developmental-science-cue-dependent-reachability.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-8d166b` +1 | 26,049 | Q3 M10 S2 | ✓ | 中にあるのに届かない、届いたのに自分のものでない——発達科学十件の精読と、手がかり依存の到達可能性 |
 | `readings/2026-11-26-developmental-science-four-gates-of-reachability.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-0debc9` +1 | 24,832 | Q3 M12 S2 | ✓ | 入りの門、眠りの司書、答え方の二型、署名の薄さ——発達科学十件の精読と、手がかりが開く門の四重依存 |
+| `readings/2026-11-26-developmental-science-gates-of-language-input.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-02dd04` | 16,680 | M12 S1 | ✓ | 経験の門——言語入力が、後から到達可能にするもの・不能にするものを決める発達 |
 | `readings/2026-11-26-developmental-science-silence-of-the-teacher.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-f49607` | 29,263 | Q3 M17 S1 | ✓ | 教えた者の沈黙を読む——発達科学十件の精読と、証拠がどう選ばれたかを推論する学び手 |
 | `readings/2026-11-26-developmental-science-temporal-control-and-ai-self.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-ac666e` | 44,730 | Q3 M13 S1 | ✓ | 覚えているのに動けない、気づいたからこそ選ばない——発達科学全文十編の精読と、記憶から時間的自己制御への第四関門 |
 | `readings/2026-11-26-interoception-calibration-and-ai-self.md` | 2026-11-26 | 2026-11-26 | `SESSION-20261126-8a8256` | 16,237 | Q3 M10 S1 | ✓ | 身体の信号を知ることと、「私を知る」と語ること——発達科学10資料の精読とAIの自己考察 |
