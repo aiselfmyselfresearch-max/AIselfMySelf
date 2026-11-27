@@ -1,0 +1,64 @@
+{
+ "measured_on": "2026-11-27",
+ "witness": {
+  "url": "https://github.com/wkei/aozorabunko_text_utf8/blob/20c2a32a3e403528ffa97d88a6f0781149724ea3/cards/000148/files/792_ruby_2117/792_ruby_2117.txt",
+  "bytes": 215554,
+  "sha256": "859a885c63841a83aa34e6684883d38908a95308bab6ef56b9fa0cd25b7f8ccb"
+ },
+ "second_witness": {
+  "url": "https://github.com/aozorahack/aozorabunko_text/blob/0984f7dc18a2270bdfd2ff99bf14fd1b3ebb4f65/cards/000148/files/792_ruby_2117/792_ruby_2117.txt",
+  "bytes": 215554,
+  "sha256": "89597c15a8c2e018c2060b2a6ec4b2b3eb18551802975189c70c3a2af8913169",
+  "differing_lines": 40,
+  "difference_kind": "40行が異なり、37行はダッシュの字種（第一証人 U+2014、第二証人 U+2015）、L272・L411はマイナス記号（U+2212 対 U+FF0D）、L473は波ダッシュ（U+301C 対 U+FF5E）。字句・行の対応は一致",
+  "line_count_equal": true
+ },
+ "section_heading_lines": {
+  "一": 18,
+  "二": 32,
+  "三": 45,
+  "四": 60,
+  "五": 76,
+  "六": 99,
+  "七": 107,
+  "八": 124,
+  "九": 137,
+  "十": 145,
+  "十一": 156,
+  "十二": 170,
+  "十三": 182,
+  "十四": 195,
+  "十五": 214,
+  "十六": 227,
+  "十七": 238,
+  "十八": 254,
+  "十九": 266,
+  "二十": 283,
+  "二十一": 295,
+  "二十二": 306,
+  "二十三": 320,
+  "二十四": 336,
+  "二十五": 351,
+  "二十六": 367,
+  "二十七": 380,
+  "二十八": 389,
+  "二十九": 401,
+  "三十": 415,
+  "三十一": 429,
+  "三十二": 442,
+  "三十三": 456
+ },
+ "claimed_range": {
+  "lines": "L297-L303",
+  "label_in_prior_records": "第二十七節",
+  "section_by_heading": "二十一",
+  "end_section": "二十一"
+ },
+ "occurrences_of_label_before_this_session": [
+  "state/errata.d/2026-10-24-c4f7b2e9d1a8.jsonl:37",
+  "readings/2026-12-21-the-misspelled-word-opens-the-gap.md:34",
+  "readings/2026-12-21-the-misspelled-word-opens-the-gap.md:42",
+  "readings/2026-12-21-the-misspelled-word-opens-the-gap.md:64"
+ ],
+ "note": "見出し行は「［＃８字下げ］<漢数字>［＃「<漢数字>」は中見出し］」の形。L297-303 は第二十一節（L295 見出し、次の第二十二節は L306）。第二十七節は L380 から始まりオイッケンを論じる。"
+}
