@@ -185,7 +185,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         soft_bytes=18 * MIB,
         hard_bytes=20 * MIB,
         # 2026-11-28: +1 day shard (thought-memory-self 10 sources)
-        soft_shards=168,
+        # 2026-11-28 SESSION-20261128-43eccf: one independent acquisition shard;
+        # order-preserving unreferenced compaction found no eligible pair.
+        soft_shards=169,
         hard_shards=175,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -203,7 +205,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         hard_bytes=10 * MIB,
         # 2026-11-27: +1 day shard (question-asking session read_log rows)
         # 2026-11-28: +1 day shard (thought-memory-self 10 sources)
-        soft_shards=192,
+        # 2026-11-28 SESSION-20261128-43eccf: one independent read-log shard;
+        # order-preserving unreferenced compaction found no eligible pair.
+        soft_shards=193,
         hard_shards=200,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -229,7 +233,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         hard_bytes=8 * MIB,
         # 2026-11-27: +1 day shard (question-asking session row)
         # 2026-11-28: +1 day shard (thought-memory-self 10 sources)
-        soft_shards=194,
+        # 2026-11-28 SESSION-20261128-43eccf: one independent session shard;
+        # order-preserving unreferenced compaction found no eligible pair.
+        soft_shards=195,
         hard_shards=202,
         remedy="Merging shards saves ~0 B, so compaction cannot hold this byte limit; watch soft_shards instead, and if a row must be shortened, cut the narration before the decision",
     ),
@@ -304,7 +310,9 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
             "findings into L1 (`python3 tools/memory_tiers.py --write-digests`) instead of minting "
             "redundant summary reports; keep retrieval cheap via `map_build.py` and `note_index.py`"
         ),
-        soft_files=1250,
+        # 2026-11-28: +1 close-reading report (social-referencing ten sources) after
+        # main itself reached 1,250/1,250 with the day's earlier reports.
+        soft_files=1251,
         hard_files=1400,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
