@@ -310,7 +310,9 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
             "findings into L1 (`python3 tools/memory_tiers.py --write-digests`) instead of minting "
             "redundant summary reports; keep retrieval cheap via `map_build.py` and `note_index.py`"
         ),
-        soft_files=1250,
+        # 2026-11-28: +1 close-reading report (social-referencing ten sources) after
+        # main itself reached 1,250/1,250 with the day's earlier reports.
+        soft_files=1251,
         hard_files=1400,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,

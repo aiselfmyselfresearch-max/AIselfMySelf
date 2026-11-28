@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6488 件（research_excerpt 4239 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6498 件（research_excerpt 4249 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：254 編（selected 97 ／ draft 157）
 - **解釈的関係（Relations）**：7100 件
-- **探究セッション（Sessions）**：1213 回
+- **探究セッション（Sessions）**：1214 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6488 | `literary_text` 2181／`research_excerpt` 4239／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6498 | `literary_text` 2181／`research_excerpt` 4249／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 254 | `selected` 97／`draft` 157／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7100 | うち断片↔断片 620 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1213 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 18121 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1214 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 18133 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 504 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 650 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1368 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1369 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 125 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1064 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1065 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -804,7 +804,7 @@
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 | `FRAG-20261126-aeaab0` | 一冬のあとで、肩だけをほどく | draft | scene | third_person |
 
-## 4. 対話素材（6488 件・詳細は map/3*.md）
+## 4. 対話素材（6498 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -7286,6 +7286,16 @@
 | `MAT-20261128-b542cc` | research_excerpt | McVay, J. C., Kane, M. J.『心ぐれは執行機能か執行失敗か——二因子による再解釈』（2010） |
 | `MAT-20261128-93d0fe` | research_excerpt | Mooneyham, M. W., Schooler, J. W.『心ぐれの費用と便益の総説』（2013） |
 | `MAT-20261128-b6ec7f` | research_excerpt | Belk, R. W.『所有物と拡張された自己』（1988） |
+| `MAT-20261128-89ddfc` | research_excerpt | J. F. Sorce, R. N. Emde, J. J. Campos, M. D. Klinnert『Sorce, Emde, Campos & Klinnert（1985… |
+| `MAT-20261128-117c37` | research_excerpt | M. D. Klinnert, R. N. Emde, P. Butterfield, J. J. Campos『Klinnert, Emde, Butterfield & Ca… |
+| `MAT-20261128-c64cfe` | research_excerpt | T. A. Walden, T. A. Ogan『Walden & Ogan（1988）——6〜22か月の横断で見る社会的参照の発達、見る・規制する・触る前に見るが別々に育つ』（… |
+| `MAT-20261128-0e320c` | research_excerpt | R. Hornik, N. Risenhoover, M. R. Gunnar『Hornik, Risenhoover & Gunnar（1987）——母親の快・中立・不快の情動… |
+| `MAT-20261128-979a3f` | research_excerpt | S. Feinman, M. Lewis『Feinman & Lewis（1983）——10か月児の社会的参照は、母親への反応を差し引いても残る、見知らぬ人への二階の効果』（19… |
+| `MAT-20261128-875a0a` | research_excerpt | D. L. Mumme, A. Fernald, C. Herrera『Mumme, Fernald & Herrera（1996）——怖の声だけが12か月児の母親注視と玩具接近… |
+| `MAT-20261128-e93b98` | research_excerpt | M. J. Hertenstein, J. J. Campos『Hertenstein & Campos（2004）——成人の情動表現の行動規制効果は1時間後にも残る、14か月児… |
+| `MAT-20261128-7a9c0c` | research_excerpt | D. A. Baldwin, L. J. Moses『Baldwin & Moses（1996）——12か月児は社会的情報の良き「消費者」だが、まだ「探索者」ではない』（1996） |
+| `MAT-20261128-0310b3` | research_excerpt | C. Fawcett, U. Liszkowski『Fawcett & Liszkowski（2015）——乳児期から幼児期・文化横断で社会的参照を整理する章、参照の相手は専門性… |
+| `MAT-20261128-c9cb96` | research_excerpt | S. Ehli, J. Wolf, A. Newen, S. Schneider, B. Voigt『Ehli, Wolf, Newen, Schneider & Voigt（2… |
 | `MAT-20261128-43ec01` | research_excerpt | John H. Mace, Hope E. Aaron『Mace (2025) — Semantic-to-autobiographical memory priming: Pr… |
 | `MAT-20261128-43ec02` | research_excerpt | John H. Mace, Kenneth E. Ingle, Hope E. Aaron『Mace (2025) — Narrative processing primes a… |
 | `MAT-20261128-43ec03` | research_excerpt | Krystian Barzykowski, Ewa Ilczuk, Lia Kvavilashvili『Barzykowski (2024) — A comprehensive … |
@@ -8513,6 +8523,7 @@
 | `SESSION-20261128-5dc42e` | 2026-11-28 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261128-3abcb4` | 2026-11-28 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261128-55548f` | 2026-11-28 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261128-6a6db4` | 2026-11-28T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261128-43eccf` | 2026-11-28 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7100 件・全表は map/40-relations-*.md）
@@ -8620,7 +8631,7 @@
 | `map/31-materials-research-40.md` | 100 | 230,718 |
 | `map/31-materials-research-41.md` | 100 | 231,459 |
 | `map/31-materials-research-42.md` | 100 | 207,045 |
-| `map/31-materials-research-43.md` | 39 | 87,442 |
+| `map/31-materials-research-43.md` | 49 | 112,813 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8661,7 +8672,7 @@
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
 | `map/50-sessions-24.md` | 50 | 41,174 |
-| `map/50-sessions-25.md` | 13 | 10,770 |
+| `map/50-sessions-25.md` | 14 | 11,727 |
 | `map/60-notes-01.md` | 25 | 83,321 |
 | `map/60-notes-02.md` | 25 | 63,370 |
 | `map/60-notes-03.md` | 25 | 73,919 |
@@ -8706,22 +8717,22 @@
 | `map/60-notes-42.md` | 25 | 120,202 |
 | `map/60-notes-43.md` | 25 | 80,432 |
 | `map/60-notes-44.md` | 25 | 93,920 |
-| `map/60-notes-45.md` | 25 | 69,406 |
-| `map/60-notes-46.md` | 25 | 80,740 |
-| `map/60-notes-47.md` | 25 | 71,924 |
-| `map/60-notes-48.md` | 25 | 95,965 |
-| `map/60-notes-49.md` | 25 | 92,178 |
-| `map/60-notes-50.md` | 25 | 137,203 |
-| `map/60-notes-51.md` | 14 | 70,363 |
+| `map/60-notes-45.md` | 25 | 68,134 |
+| `map/60-notes-46.md` | 25 | 80,632 |
+| `map/60-notes-47.md` | 25 | 71,612 |
+| `map/60-notes-48.md` | 25 | 96,669 |
+| `map/60-notes-49.md` | 25 | 92,738 |
+| `map/60-notes-50.md` | 25 | 130,717 |
+| `map/60-notes-51.md` | 15 | 78,847 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1264本・41,730,410 B）
+## 8. 精読ノート索引（readings/・1265本・41,757,858 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1152/1264 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1153/1265 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1264 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1265 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：203 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9832,6 +9843,7 @@
 | `readings/2026-11-28-empathy-development-ten-sources-close-reading.md` | 2026-11-28 | 2026-11-28 | `SESSION-20261128-37be81` | 10,640 | M10 S1 | ✓ | 共感の発達——乳幼児から思春期への10資料の精読 |
 | `readings/2026-11-28-savings-without-recognition.md` | — | 2026-11-28 | `SESSION-20261128-169c67` +4 | 20,311 | Q3 M7 S5 ERR3 | ✓ | 再認なき節約——Ebbinghaus を原典で読み、有限窓の対を書庫自身の評価史で測る |
 | `readings/2026-11-28-self-talk-mood-memory-and-extended-self-ten-sources-close-reading.md` | 2026-11-28 | 2026-11-28 | `SESSION-20261128-3abcb4` +1 | 10,862 | Q2 M10 S2 | — | 思考と記憶は自己にどう書き戻るか——自己対話・気分一致・想起更新・拡張自己からの10資料の精読 |
+| `readings/2026-11-28-social-referencing-ten-sources-close-reading.md` | 2026-11-28 | 2026-11-28 | `SESSION-20261128-6a6db4` | 11,502 | M10 S1 | ✓ | 社会的参照——乳児期に始まる他者からの評価の借用——10資料の精読 |
 | `readings/2026-11-28-ten-cognitive-science-sources-on-thought-memory-and-self.md` | 2026-11-28 | 2026-11-28 | `SESSION-20261128-4a2aec` | 7,636 | M10 S1 | — | 個別の思考と記憶は自己にどう関わるか——自己知識の解離と未来思考からの10資料 |
 | `readings/2026-11-28-the-agent-left-and-the-belief-stayed.md` | 2026-11-28 | 2026-11-28 | `SESSION-20261128-65148b` | 16,409 | Q3 M13 S1 | ✓ | エージェントは席を立ったのに、信念は残って働く——心の理論発達10資料の精読 |
 | `readings/2026-11-28-the-same-status-is-not-the-same-memory.md` | 2026-11-28 | 2026-11-28 | `SESSION-20261128-5dc42e` | 19,651 | Q4 M1 S1 ERR1 | ✓ | 同じ状態でも、同じ記憶ではない——『道草』の二通の書付と、再照合を消し過ぎた反実仮想 |
