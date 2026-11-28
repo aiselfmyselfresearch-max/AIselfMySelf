@@ -329,12 +329,24 @@ class RealTreeTests(unittest.TestCase):
         ``comparison_cleared`` (0.5356) stay high on the same tree. The bound is
         therefore 0.12, still 0.1345 above the 0.0 that the non-input fields
         (``material_ids``, ``note_ids``, ``script_command``) produce.
+        ``SESSION-20261128-169c67`` then filed two Q-001-visible
+        ``narrows_scope`` rows (``EVL-20261128-77ed9f`` against
+        ``HYP-20261119-63b6bf``, ``EVL-20261128-739337`` against
+        ``HYP-20261119-539a0c``), the second and third members of the default
+        leader's rivals. Measured on the same checkout (``origin/main`` d951def
+        plus those rows): ``all_narrows_scope`` 0.181 -> 0.0951, while
+        ``all_supports`` 0.8912 -> 0.9696 and ``comparison_cleared``
+        0.6151 -> 0.3801 stay far from 0.0. The bound is therefore 0.08. Each
+        session that narrows a Q-001 rival lowers this number, so an absolute
+        floor will keep needing a hand edit; a relative check (for example
+        against ``all_supports``) would be the infrastructure fix, and is not
+        made here because a ledger PR does not change tools.
         """
         import cogsci_substrate as submod
 
         cf = submod.section_grip(self.reports)["counterfactuals"]
         self.assertGreater(cf["all_supports"]["tvd"]["Q-001"], 0.5)
-        self.assertGreater(cf["all_narrows_scope"]["tvd"]["Q-001"], 0.12)
+        self.assertGreater(cf["all_narrows_scope"]["tvd"]["Q-001"], 0.08)
         self.assertGreater(cf["comparison_cleared"]["tvd"]["Q-001"], 0.3)
 
     def test_ninety_reports_are_wired_to_notes_only_through_readings(self) -> None:
