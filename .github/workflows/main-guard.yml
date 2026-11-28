@@ -1,16 +1,29 @@
 name: main-guard
 
-# The three red merges of 2026-11-20/21 (#998, #1002 and the merge after them)
-# reached main because main accepts merges whose required check has not passed.
-# The repair for the affected rows lives in state/errata.d/ (see
-# `validate_seed.gate_waivers`), but the cause is repository configuration and no
-# file in this repository can close it: the token available to the agent cannot
-# PUT /branches/main/protection (403, measured 2026-11-21).
+# Three red merges reached main on 2026-11-20/21 (#998, #1002 and the merge
+# after them) because main accepted merges whose required check had not
+# passed.  No file in this repository could close that: the agent token cannot
+# PUT /branches/main/protection (403, measured 2026-11-21).  The repository
+# owner applied branch protection from the settings on 2026-11-21; measured on
+# GET /repos/{slug}/branches/main since then: protected=true, required context
+# ["validate"], enforcement_level "everyone"
+# (docs/2026-11-28-main-guard-policy-conformance.md).
 #
-# So this workflow is a standing reminder, not enforcement: it fails every day
-# while main is unprotected, and prints the one command that fixes it. It is
-# deliberately NOT a required check -- a status check that nobody can make green
-# stops being read, which is the exact failure this repository keeps re-learning.
+# This workflow has therefore been green since 2026-11-21; its old comment
+# claimed it "fails every day while main is unprotected", which is no longer
+# true and, kept standing, would teach every reader that the guard is stuck
+# red.  It is a drift detector now: tools/main_guard.py verifies the posture
+# against POLICY -- protection present, the required `validate` context in
+# place, enforcement still "everyone" (an exemption for admins would exempt
+# the only identity that merges in this repository) -- and this job goes red
+# on the day any of that drifts.
+#
+# It is deliberately NOT a required status check: its own failure mode is the
+# removal of required-check enforcement itself, at which point no required
+# check can block anything.  Its only lever is being read, which is why it
+# runs daily, fails loudly, and prints the one command that restores the
+# posture.  The gate that actually keeps a red merge out is `validate`, still
+# required.
 
 on:
   schedule:
@@ -29,7 +42,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Is main protected against a red merge?
+      - name: Check main's branch-protection posture against POLICY
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
