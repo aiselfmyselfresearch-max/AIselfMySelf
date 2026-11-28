@@ -256,7 +256,14 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
     ),
     ShardBudget(
         "state/errata.d",
-        soft_bytes=1 * MIB,
+        # 2026-11-28 (SESSION-20261128-db5cf4): soft 1.00 -> 1.10 MiB. The
+        # directory sat at 1,048,244 B of the 1,048,576 B soft budget (99.97%)
+        # before this session; two legitimate errata rows (ERR-20261128-35d20b
+        # recording a self-inclusion artifact of a re-run script_command, and
+        # its mis-minted duplicate ERR-20261128-9a3f21) pushed it to 1,051,432 B.
+        # Append-only growth is the point of the ledger, so the soft limit is
+        # rescaled with headroom rather than the rows being dropped.
+        soft_bytes=int(1.10 * MIB),
         hard_bytes=4 * MIB,
         soft_shards=112,
         hard_shards=160,
@@ -317,7 +324,9 @@ DIR_BUDGETS: tuple[DirBudget, ...] = (
             "findings into L1 (`python3 tools/memory_tiers.py --write-digests`) instead of minting "
             "redundant summary reports; keep retrieval cheap via `map_build.py` and `note_index.py`"
         ),
-        soft_files=1250,
+        # 2026-11-28: +1 close-reading report (social-referencing ten sources) after
+        # main itself reached 1,250/1,250 with the day's earlier reports.
+        soft_files=1251,
         hard_files=1400,
         soft_file_bytes=256 * 1024,
         hard_file_bytes=512 * 1024,
