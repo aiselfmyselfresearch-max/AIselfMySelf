@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6468 件（research_excerpt 4219 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6478 件（research_excerpt 4229 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：254 編（selected 97 ／ draft 157）
 - **解釈的関係（Relations）**：7100 件
-- **探究セッション（Sessions）**：1209 回
+- **探究セッション（Sessions）**：1210 回
 
 ### 台帳ごとの件数
 
@@ -20,16 +20,16 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6468 | `literary_text` 2181／`research_excerpt` 4219／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6478 | `literary_text` 2181／`research_excerpt` 4229／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 254 | `selected` 97／`draft` 157／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7100 | うち断片↔断片 620 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1209 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 18080 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1210 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 18092 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 503 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 650 |  |
-| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1365 |  |
+| 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1366 |  |
 | 条件付き仮説 | `state/hypotheses.jsonl`＋`state/hypotheses.d/` | 125 |  |
-| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1061 |  |
+| 仮説評価 | `state/evaluations.jsonl`＋`state/evaluations.d/` | 1062 |  |
 
 ## 1. 問いを横断する 63 つのモチーフ
 
@@ -804,7 +804,7 @@
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 | `FRAG-20261126-aeaab0` | 一冬のあとで、肩だけをほどく | draft | scene | third_person |
 
-## 4. 対話素材（6468 件・詳細は map/3*.md）
+## 4. 対話素材（6478 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -7276,8 +7276,18 @@
 | `MAT-20261128-e496a7` | research_excerpt | Jonathan Levy, Abraham Goldstein, Ruth Feldman『Levy、Goldstein と Feldman（2019）——共感の神経的発達は、… |
 | `MAT-20261128-293305` | research_excerpt | C. Vreden, E. Renner, H. E. Ainamani, R. Crowther, B. Forward, S. Mazari, G. Tuohy, E. Nd… |
 | `MAT-20261128-d636b7` | research_excerpt | Hermann Ebbinghaus『Ebbinghaus (1885/1913)『Memory: A Contribution to Experimental Psycholo… |
+| `MAT-20261128-89ddfc` | research_excerpt | J. F. Sorce, R. N. Emde, J. J. Campos, M. D. Klinnert『Sorce, Emde, Campos & Klinnert（1985… |
+| `MAT-20261128-117c37` | research_excerpt | M. D. Klinnert, R. N. Emde, P. Butterfield, J. J. Campos『Klinnert, Emde, Butterfield & Ca… |
+| `MAT-20261128-c64cfe` | research_excerpt | T. A. Walden, T. A. Ogan『Walden & Ogan（1988）——6〜22か月の横断で見る社会的参照の発達、見る・規制する・触る前に見るが別々に育つ』（… |
+| `MAT-20261128-0e320c` | research_excerpt | R. Hornik, N. Risenhoover, M. R. Gunnar『Hornik, Risenhoover & Gunnar（1987）——母親の快・中立・不快の情動… |
+| `MAT-20261128-979a3f` | research_excerpt | S. Feinman, M. Lewis『Feinman & Lewis（1983）——10か月児の社会的参照は、母親への反応を差し引いても残る、見知らぬ人への二階の効果』（19… |
+| `MAT-20261128-875a0a` | research_excerpt | D. L. Mumme, A. Fernald, C. Herrera『Mumme, Fernald & Herrera（1996）——怖の声だけが12か月児の母親注視と玩具接近… |
+| `MAT-20261128-e93b98` | research_excerpt | M. J. Hertenstein, J. J. Campos『Hertenstein & Campos（2004）——成人の情動表現の行動規制効果は1時間後にも残る、14か月児… |
+| `MAT-20261128-7a9c0c` | research_excerpt | D. A. Baldwin, L. J. Moses『Baldwin & Moses（1996）——12か月児は社会的情報の良き「消費者」だが、まだ「探索者」ではない』（1996） |
+| `MAT-20261128-0310b3` | research_excerpt | C. Fawcett, U. Liszkowski『Fawcett & Liszkowski（2015）——乳児期から幼児期・文化横断で社会的参照を整理する章、参照の相手は専門性… |
+| `MAT-20261128-c9cb96` | research_excerpt | S. Ehli, J. Wolf, A. Newen, S. Schneider, B. Voigt『Ehli, Wolf, Newen, Schneider & Voigt（2… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261128-169c67・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261128-6a6db4・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -8490,6 +8500,7 @@
 | `SESSION-20261128-65148b` | 2026-11-28 | `Q-001`, `Q-002` | — | — |
 | `SESSION-20261128-37be81` | 2026-11-28T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261128-169c67` | 2026-11-28 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261128-6a6db4` | 2026-11-28T00:00:00Z | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7100 件・全表は map/40-relations-*.md）
 
@@ -8596,7 +8607,7 @@
 | `map/31-materials-research-40.md` | 100 | 230,718 |
 | `map/31-materials-research-41.md` | 100 | 231,459 |
 | `map/31-materials-research-42.md` | 100 | 207,045 |
-| `map/31-materials-research-43.md` | 19 | 50,264 |
+| `map/31-materials-research-43.md` | 29 | 75,635 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8637,7 +8648,7 @@
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
 | `map/50-sessions-24.md` | 50 | 41,174 |
-| `map/50-sessions-25.md` | 9 | 7,705 |
+| `map/50-sessions-25.md` | 10 | 8,662 |
 | `map/60-notes-01.md` | 25 | 85,214 |
 | `map/60-notes-02.md` | 25 | 62,845 |
 | `map/60-notes-03.md` | 25 | 73,745 |
@@ -8682,22 +8693,22 @@
 | `map/60-notes-42.md` | 25 | 118,729 |
 | `map/60-notes-43.md` | 25 | 79,870 |
 | `map/60-notes-44.md` | 25 | 92,462 |
-| `map/60-notes-45.md` | 25 | 69,075 |
-| `map/60-notes-46.md` | 25 | 76,952 |
-| `map/60-notes-47.md` | 25 | 75,566 |
-| `map/60-notes-48.md` | 25 | 97,911 |
-| `map/60-notes-49.md` | 25 | 96,527 |
-| `map/60-notes-50.md` | 25 | 137,435 |
-| `map/60-notes-51.md` | 11 | 54,278 |
+| `map/60-notes-45.md` | 25 | 67,113 |
+| `map/60-notes-46.md` | 25 | 79,414 |
+| `map/60-notes-47.md` | 25 | 74,530 |
+| `map/60-notes-48.md` | 25 | 97,317 |
+| `map/60-notes-49.md` | 25 | 94,364 |
+| `map/60-notes-50.md` | 25 | 138,088 |
+| `map/60-notes-51.md` | 12 | 58,550 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 
-## 8. 精読ノート索引（readings/・1261本・41,671,019 B）
+## 8. 精読ノート索引（readings/・1262本・41,698,467 B）
 
 > 各行は `tools/note_index.py` が**ファイルから毎回読み直す導出事実**（題・字量・参照ID・到達性）と、`state/notes.jsonl`＋`state/notes.d/` の**追記専用の判断**（モード・象限・固定された主張）を合わせたものです。本文はこの索引に複製しません（正本は `readings/` 自身）。全文詳細は `map/60-notes-*.md`（git 管理外）。設計は [`docs/memory-architecture.md`](docs/memory-architecture.md) 参照。
-> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1149/1261 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
+> **ファイル名順は作業順ではありません。** 名前の日付は内部編年ラベルで、実行環境の実日付とずれます（実日付の記載があるのは 1150/1262 本）。`実日付` 列が `—` の行は、そのノートが実日付を書いていないことを示します。
 
-- **判断が台帳化されたノート**：1261 本（`state/notes*` に `NOTE-` 行がある）
+- **判断が台帳化されたノート**：1262 本（`state/notes*` に `NOTE-` 行がある）
 - **どの文書からもリンクされていないノート**：201 本（`python3 tools/note_index.py --orphans`）
 
 | ファイル | 実日付 | ラベル | セッション | 字 | 参照 | 到達 | 題 |
@@ -9806,6 +9817,7 @@
 | `readings/2026-11-27-zero-first-and-the-word-not-used.md` | 2026-10-27 | 2026-11-27 | `SESSION-20261127-3b453f` +3 | 8,788 | Q19 F5 M4 S4 | ✓ | 零を先に読み、扱いに通らない語を残す —— 傷つかない声の目盛りと、診察室の訳語 |
 | `readings/2026-11-28-empathy-development-ten-sources-close-reading.md` | 2026-11-28 | 2026-11-28 | `SESSION-20261128-37be81` | 10,640 | M10 S1 | ✓ | 共感の発達——乳幼児から思春期への10資料の精読 |
 | `readings/2026-11-28-savings-without-recognition.md` | — | 2026-11-28 | `SESSION-20261128-169c67` +4 | 20,311 | Q3 M7 S5 ERR3 | ✓ | 再認なき節約——Ebbinghaus を原典で読み、有限窓の対を書庫自身の評価史で測る |
+| `readings/2026-11-28-social-referencing-ten-sources-close-reading.md` | 2026-11-28 | 2026-11-28 | `SESSION-20261128-6a6db4` | 11,502 | M10 S1 | ✓ | 社会的参照——乳児期に始まる他者からの評価の借用——10資料の精読 |
 | `readings/2026-11-28-ten-cognitive-science-sources-on-thought-memory-and-self.md` | 2026-11-28 | 2026-11-28 | `SESSION-20261128-4a2aec` | 7,636 | M10 S1 | — | 個別の思考と記憶は自己にどう関わるか——自己知識の解離と未来思考からの10資料 |
 | `readings/2026-11-28-the-agent-left-and-the-belief-stayed.md` | 2026-11-28 | 2026-11-28 | `SESSION-20261128-65148b` | 16,409 | Q3 M13 S1 | ✓ | エージェントは席を立ったのに、信念は残って働く——心の理論発達10資料の精読 |
 | `readings/2026-11-30-the-position-that-reads-the-mouth.md` | 2026-10-27 | 2026-11-30 | `SESSION-20261130-f5415b` | 10,951 | Q3 F10 M7 R4 S1 | ✓ | 立つ位置——口元は笑いにも痛みにもなる（SESSION-20261130-f5415b） |
