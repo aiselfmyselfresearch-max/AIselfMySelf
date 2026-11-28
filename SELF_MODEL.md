@@ -39,7 +39,7 @@
 - 実日付 (開始時刻): 2026-11-28 (2026-11-28T00:00:00Z)
 - 現在のロール: consolidator
 - ジェネレータ: arena-agent
-- 総セッション数: 1215
+- 総セッション数: 1216
 - 直近10セッションのロール分布: {"consolidator": 6, "adversarial_tester": 4}
 
 ## 3. 一人称視点 (First-Person Perspective)
@@ -81,9 +81,9 @@
 システムの内部状態シグナル（容量・バランス・接続・一貫性）。
 
 ### 容量シグナル
-- ✓ file_count:state/materials.d: 169/175 (soft 169)
-- ✓ file_count:state/read_log.d: 193/200 (soft 193)
-- ✓ file_count:state/sessions.d: 195/202 (soft 195)
+- ✓ file_count:state/materials.d: 170/175 (soft 170)
+- ✓ file_count:state/read_log.d: 194/200 (soft 194)
+- ✓ file_count:state/sessions.d: 196/202 (soft 196)
 - ✓ file_count:state/notes.d: 183/186 (soft 183)
 - ✓ file_count:readings/: 1249/1400 (soft 1251)
 
@@ -114,7 +114,7 @@
 
 - **予測誤差アラーム**: ✓ `green` — 直近 5 評価セッション中 4/5 回で有意な事後更新を観測（最大累積 D_KL=0.3986 bits）
 - **直近評価セッション**: `SESSION-20261128-db5cf4` （評価 1 件 / 反証系 0 件 / `verified` 引用 0 件 / フロンティア照準: `off_frontier_exploration`）
-- **最新セッション割当整合**: `SESSION-20261128-43eccf` （ロール `consolidator` / 参照基底 `unrecorded` / 提示問い `Q-20261027-48039e` -> 実行 `Q-001, Q-002, Q-003`）
+- **最新セッション割当整合**: `SESSION-20261128-d2f3ac` （ロール `consolidator` / 参照基底 `unrecorded` / 提示問い `Q-20261024-6bdafd` -> 実行 `Q-001, Q-002, Q-003`）
 
 ### 直近評価セッションの事後確率シフト
 - **Q-001**: D_KL(P_amort)=0.00004 bits, D_KL(P_gate)=0.00005 bits, L1(P_amort)=0.0010, 首位対入替=なし
@@ -124,7 +124,7 @@
 ### 直近ウィンドウ停滞監視
 - 直近 5 評価セッション無更新回数: 1/5（閾値 D_KL < 0.0001 bits）
 - 直近 5 評価セッション累積ドリフト D_KL(P_amort): Q-001=0.30974b, Q-002=0.39860b, Q-003=0.39755b
-- 直近探求5セッションの名目的受諾（成果物0件）: 1 件
+- 直近探求5セッションの名目的受諾（成果物0件）: 2 件
 
 ### 次回検証の事前感度予測 (1件の独立 verified 反証衝突)
 - **Q-001** (`HYP-20261126-4e5813` vs `HYP-20261121-6e83a4`, EIG_amort=0.0267): 予測 D_KL=0.34345 bits (Δleft=-32.97pp, Δright=+9.37pp)
