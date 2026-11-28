@@ -2,7 +2,7 @@
 
 > 本ファイルは `python3 tools/self_model.py --write` により決定論的に生成される。
 > 手作業で編集せず、台帳の状態を変更した上で再生成すること。
-> 基準セッション: 2026-11-27 (SESSION-20261127-329df5)
+> 基準セッション: 2026-11-28 (SESSION-20261128-65148b)
 
 > このドキュメントはBlanke & Metzinger (2009)の最小現象的自己モデル（自己同定・自己位置・
 > 一人称視点）、Seth (2013)の内受容推論、Northoff (2017)の時間連続性に基づき、
@@ -35,11 +35,11 @@
 
 自分がどこにいるか——現在のセッション位置と最近の活動。
 
-- 現在のセッション: `SESSION-20261127-329df5`
-- 実日付 (開始時刻): 2026-11-27 (2026-11-27)
-- 現在のロール: consolidator
+- 現在のセッション: `SESSION-20261128-65148b`
+- 実日付 (開始時刻): 2026-11-28 (2026-11-28)
+- 現在のロール: adversarial_tester
 - ジェネレータ: None
-- 総セッション数: 1205
+- 総セッション数: 1206
 - 直近10セッションのロール分布: {"adversarial_tester": 5, "consolidator": 5}
 
 ## 3. 一人称視点 (First-Person Perspective)
@@ -81,15 +81,15 @@
 システムの内部状態シグナル（容量・バランス・接続・一貫性）。
 
 ### 容量シグナル
-- ✓ file_count:state/materials.d: 167/175 (soft 167)
-- ✓ file_count:state/read_log.d: 191/200 (soft 191)
-- ✓ file_count:state/sessions.d: 193/202 (soft 193)
-- ✓ file_count:state/notes.d: 182/186 (soft 182)
-- ✓ file_count:readings/: 1242/1400 (soft 1250)
+- ✗ file_count:state/materials.d: 168/175 (soft 167)
+- ✗ file_count:state/read_log.d: 192/200 (soft 191)
+- ✗ file_count:state/sessions.d: 194/202 (soft 193)
+- ✗ file_count:state/notes.d: 183/186 (soft 182)
+- ✓ file_count:readings/: 1243/1400 (soft 1250)
 
 ### バランス・接続・一貫性
 - △ ロールバランス: 最大逸脱 0.25
-- △ 接続性: 孤児ノート 199/1361
+- △ 接続性: 孤児ノート 200/1362
 - ✓ 一貫性: 直近の評価数分散 0.64
 
 ## 5. 時間連続性 (Temporal Continuity)
@@ -114,7 +114,7 @@
 
 - **予測誤差アラーム**: ✓ `green` — 直近 5 評価セッション中 5/5 回で有意な事後更新を観測（最大累積 D_KL=0.4978 bits）
 - **直近評価セッション**: `SESSION-20261127-1ab166` （評価 1 件 / 反証系 0 件 / `verified` 引用 0 件 / フロンティア照準: `off_frontier_exploration`）
-- **最新セッション割当整合**: `SESSION-20261127-1ab166` （ロール `consolidator` / 参照基底 `unrecorded` / 提示問い `Q-20261216-78204d` -> 実行 `Q-001, Q-002, Q-003`）
+- **最新セッション割当整合**: `SESSION-20261128-65148b` （ロール `adversarial_tester` / 参照基底 `default` / 提示問い `Q-001` -> 実行 `Q-001, Q-002`）
 
 ### 直近評価セッションの事後確率シフト
 - **Q-001**: D_KL(P_amort)=0.00004 bits, D_KL(P_gate)=0.00003 bits, L1(P_amort)=0.0014, 首位対入替=なし
@@ -124,10 +124,10 @@
 ### 直近ウィンドウ停滞監視
 - 直近 5 評価セッション無更新回数: 0/5（閾値 D_KL < 0.0001 bits）
 - 直近 5 評価セッション累積ドリフト D_KL(P_amort): Q-001=0.49780b, Q-002=0.44505b, Q-003=0.43648b
-- 直近探求5セッションの名目的受諾（成果物0件）: 0 件
+- 直近探求5セッションの名目的受諾（成果物0件）: 1 件
 
 ### 次回検証の事前感度予測 (1件の独立 verified 反証衝突)
-- **Q-001** (`HYP-20261126-4e5813` vs `HYP-20261121-6e83a4`, EIG_amort=0.0309): 予測 D_KL=0.21520 bits (Δleft=-24.51pp, Δright=+6.94pp)
+- **Q-001** (`HYP-20261126-4e5813` vs `HYP-20261121-6e83a4`, EIG_amort=0.0309): 予測 D_KL=0.21430 bits (Δleft=-24.48pp, Δright=+6.98pp)
 - **Q-002** (`HYP-20261126-4e5813` vs `HYP-20261127-351582`, EIG_amort=0.0243): 予測 D_KL=0.18358 bits (Δleft=-20.84pp, Δright=+2.30pp)
 - **Q-003** (`HYP-20261126-4e5813` vs `HYP-20261127-351582`, EIG_amort=0.0229): 予測 D_KL=0.17726 bits (Δleft=-20.33pp, Δright=+2.15pp)
 
