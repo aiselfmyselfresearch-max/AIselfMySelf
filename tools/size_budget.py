@@ -184,7 +184,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         "state/materials.d",
         soft_bytes=18 * MIB,
         hard_bytes=20 * MIB,
-        # 2026-11-28: +1 day shard (theory-of-mind 10-material acquisition, materials rows)
+        # 2026-11-28: +1 day shard (thought-memory-self 10 sources)
         soft_shards=168,
         hard_shards=175,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
@@ -202,7 +202,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         soft_bytes=7 * MIB,
         hard_bytes=10 * MIB,
         # 2026-11-27: +1 day shard (question-asking session read_log rows)
-        # 2026-11-28: +1 day shard (theory-of-mind acquisition read_log rows)
+        # 2026-11-28: +1 day shard (thought-memory-self 10 sources)
         soft_shards=192,
         hard_shards=200,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
@@ -228,7 +228,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         soft_bytes=4 * MIB,
         hard_bytes=8 * MIB,
         # 2026-11-27: +1 day shard (question-asking session row)
-        # 2026-11-28: +1 day shard (theory-of-mind acquisition session row)
+        # 2026-11-28: +1 day shard (thought-memory-self 10 sources)
         soft_shards=194,
         hard_shards=202,
         remedy="Merging shards saves ~0 B, so compaction cannot hold this byte limit; watch soft_shards instead, and if a row must be shortened, cut the narration before the decision",
@@ -261,7 +261,7 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         "state/notes.d",
         soft_bytes=int(2.75 * MIB),
         hard_bytes=4 * MIB,
-        # 2026-11-28: +1 day shard (theory-of-mind close-reading note row)
+        # 2026-11-28: +1 day shard (thought-memory-self 10 sources)
         soft_shards=183,
         hard_shards=186,
         remedy="Keep one row per (report, reading); supersede instead of rewriting. Do not copy report bodies or harvested facts into the ledger",
@@ -279,7 +279,8 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         soft_bytes=4 * MIB,
         hard_bytes=12 * MIB,
         # 2026-11-27: +1 day shard (question-asking session evaluations)
-        soft_shards=110,
+        # 2026-11-28: +1 day shard (thought-memory-self 10 sources)
+        soft_shards=111,
         hard_shards=160,
         remedy="Consolidate older date-stamped evaluation shards via state/shard_aliases.json",
     ),
