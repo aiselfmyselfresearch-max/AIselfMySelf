@@ -187,7 +187,10 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-28: +1 day shard (thought-memory-self 10 sources)
         # 2026-11-28 SESSION-20261128-43eccf: one independent acquisition shard;
         # order-preserving unreferenced compaction found no eligible pair.
-        soft_shards=169,
+        # 2026-11-28 SESSION-20261128-d2f3ac: human override for 10 sources in one
+        # session; +1 soft_shards only (no eligible merge without touching existing
+        # rows). hard unchanged.
+        soft_shards=170,
         hard_shards=175,
         remedy="Default to zero-acquisition re-reading sessions; compact old shards when shard count grows",
     ),
@@ -207,7 +210,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-28: +1 day shard (thought-memory-self 10 sources)
         # 2026-11-28 SESSION-20261128-43eccf: one independent read-log shard;
         # order-preserving unreferenced compaction found no eligible pair.
-        soft_shards=193,
+        # 2026-11-28 SESSION-20261128-d2f3ac: +1 soft_shards for the 10 read-log
+        # rows' shard (human override). hard unchanged.
+        soft_shards=194,
         hard_shards=200,
         remedy="Compact old state/read_log.d/ shards when shard count exceeds soft budget",
     ),
@@ -235,7 +240,9 @@ SHARD_BUDGETS: tuple[ShardBudget, ...] = (
         # 2026-11-28: +1 day shard (thought-memory-self 10 sources)
         # 2026-11-28 SESSION-20261128-43eccf: one independent session shard;
         # order-preserving unreferenced compaction found no eligible pair.
-        soft_shards=195,
+        # 2026-11-28 SESSION-20261128-d2f3ac: +1 soft_shards for the human-override
+        # session row. hard unchanged.
+        soft_shards=196,
         hard_shards=202,
         remedy="Merging shards saves ~0 B, so compaction cannot hold this byte limit; watch soft_shards instead, and if a row must be shortened, cut the narration before the decision",
     ),

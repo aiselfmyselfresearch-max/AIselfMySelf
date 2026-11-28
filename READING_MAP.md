@@ -7,10 +7,10 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6488 件（research_excerpt 4239 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6498 件（research_excerpt 4249 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：254 編（selected 97 ／ draft 157）
 - **解釈的関係（Relations）**：7100 件
-- **探究セッション（Sessions）**：1212 回
+- **探究セッション（Sessions）**：1213 回
 
 ### 台帳ごとの件数
 
@@ -20,11 +20,11 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6488 | `literary_text` 2181／`research_excerpt` 4239／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6498 | `literary_text` 2181／`research_excerpt` 4249／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 254 | `selected` 97／`draft` 157／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7100 | うち断片↔断片 620 |
-| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1212 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 18109 |  |
+| セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1213 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 18119 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 504 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 650 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1367 |  |
@@ -804,7 +804,7 @@
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 | `FRAG-20261126-aeaab0` | 一冬のあとで、肩だけをほどく | draft | scene | third_person |
 
-## 4. 対話素材（6488 件・詳細は map/3*.md）
+## 4. 対話素材（6498 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -7296,8 +7296,18 @@
 | `MAT-20261128-43ec08` | research_excerpt | Christopher Steadman, Videep Venkatesha, Cati Poulos, Anne M. Cleary, Nathaniel Blanchard… |
 | `MAT-20261128-43ec09` | research_excerpt | Yesim Unveren, Mevhibe Saricaoglu, Ece Zeynep Karakulak, Lütfü Hanoğlu『Unveren (2025) — I… |
 | `MAT-20261128-43ec10` | research_excerpt | Mohamad EL Haj, Samuel Bulteau, Noad Maria Azzi, Souheil Hallit『Haj (2026) — Analyzing me… |
+| `MAT-20261128-d2f301` | research_excerpt | Georgia Nigro, Ulric Neisser『Nigro & Neisser (1983) — 個別記憶の視点：場の視点と観察者の視点』（1983） |
+| `MAT-20261128-d2f302` | research_excerpt | James W. Pennebaker『Pennebaker (1997) — 感情的経験を書くことは治療的過程である』（1997） |
+| `MAT-20261128-d2f303` | research_excerpt | Robert N. Butler『Butler (1963) — ライフレビュー：高齢者のリミニセンスを解釈する』（1963） |
+| `MAT-20261128-d2f304` | research_excerpt | Dorthe Berntsen, David C. Rubin『Berntsen & Rubin (2006) — 出来事の中心性尺度：トラウマを自己同一性に統合する度合いの測定… |
+| `MAT-20261128-d2f305` | research_excerpt | Susan Bluck, Tilmann Habermas『Bluck & Habermas (2000) — 生活物語スキーマ：記憶と自己を時間で束ねる骨格』（2000） |
+| `MAT-20261128-d2f306` | research_excerpt | Shelley Duval, Robert A. Wicklund『Duval & Wicklund (1972) — 客観的自己意識の理論：自己への注意と基準との不一致』（19… |
+| `MAT-20261128-d2f307` | research_excerpt | Lauren B. Alloy, Lyn Y. Abramson『Alloy & Abramson (1979) — うつと非うつ学生の連関判断：悲しくて賢い』（1979） |
+| `MAT-20261128-d2f308` | research_excerpt | Endel Tulving『Tulving (1985) — 記憶システムは何個あるか：程序・意味・情景の単階層的配列』（1985） |
+| `MAT-20261128-d2f309` | research_excerpt | William James『James (1890) — 心理学の原理 第X章：自己の意識——経験的自己と社会的自己』（1890） |
+| `MAT-20261128-d2f310` | research_excerpt | Charles Horton Cooley『Cooley (1902) — 社会における人間本性 第5章：社会的自己——ルッキンググラスセルフ』（1902） |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261128-43eccf・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261128-d2f3ac・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -8513,6 +8523,7 @@
 | `SESSION-20261128-5dc42e` | 2026-11-28 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261128-3abcb4` | 2026-11-28 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261128-43eccf` | 2026-11-28 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261128-d2f3ac` | 2026-11-28 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7100 件・全表は map/40-relations-*.md）
 
@@ -8619,7 +8630,7 @@
 | `map/31-materials-research-40.md` | 100 | 230,718 |
 | `map/31-materials-research-41.md` | 100 | 231,459 |
 | `map/31-materials-research-42.md` | 100 | 207,045 |
-| `map/31-materials-research-43.md` | 39 | 87,442 |
+| `map/31-materials-research-43.md` | 49 | 110,884 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8660,7 +8671,7 @@
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
 | `map/50-sessions-24.md` | 50 | 41,174 |
-| `map/50-sessions-25.md` | 12 | 9,939 |
+| `map/50-sessions-25.md` | 13 | 10,681 |
 | `map/60-notes-01.md` | 25 | 85,214 |
 | `map/60-notes-02.md` | 25 | 62,845 |
 | `map/60-notes-03.md` | 25 | 73,745 |
