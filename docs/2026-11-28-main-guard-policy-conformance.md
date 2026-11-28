@@ -244,3 +244,43 @@ main-guard が赤くなった日（保護の削除・context の欠落・enforce
 - 事故の行を運んだマージ: https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/998 ・ https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/1002
 - 新規行判定を変えたマージ: https://github.com/aiselfmyselfresearch-max/AIselfMySelf/pull/1005
 - テスト実行時間の分析: https://github.com/aiselfmyselfresearch-max/AIselfMySelf/blob/main/docs/2026-11-23-test-suite-runtime-analysis.md
+
+---
+
+## 8. 追記（2026-11-28・第二報）: waiver を閉じる経路を実測し、第 4.8 節の一文を訂正する
+
+利用者から「解除条件は達成済みである。今回限り人間判断として台帳行の書き換え (a) を許可すればクリーンな状態に保てるか、あるいはこの処理自体が別種の負債を生むか」との問いを受けた。以下はその実測と訂正である。本節は追記であり、第 4.8 節の本文は書き換えない。
+
+### 8.1 第 4.8 節の訂正
+
+第 4.8 節は「(b) を行うと register ゲートがこの 2 行に再び届くため、同一変更内での ID 免除（`REGISTER_RULE_EXEMPT_IDS` と `PRE_RECEIPT_SESSION_IDS` の前例に沿う）が同時に必要」と書いた。**register 側についてはこれは過大記述だった。** 実測（2026-11-28、main `7bf94bf` の木を複製し、waiver 3 行の `status` を `open` → `annotated` に書き換えて `validate_seed` を実行）では、register ゲートは 2 問い（Q-20261121-198fc8 / Q-20261121-7b68b2）に一切届かず、エラーは 0 件。#1005 の新規行判定がこの 2 行を旧行として分類する限り、waiver が open でも閉まっていても register 側には何も起きない（waiver は不発のままである）。コード免除が必須になるのは受領証 1 件（SESSION-20261120-a45e52）のみで、`REGISTER_RULE_EXEMPT_IDS` への追加は不要だった。
+
+### 8.2 実測: (a) の書き換えと、それを完結させたときに残るもの
+
+| 手順 | `validate_seed` | `append_only_check --base HEAD` |
+| :--- | :--- | :--- |
+| 現状（waiver 3 件 open） | 緑。INFO 1 行（ERR-20261121-23edfe の受領証 waiver） | 緑 |
+| waiver 3 行を `annotated` に書き換え | **赤**。1 エラー: `sessions:SESSION-20261120-a45e52: missing assignment receipt field(s)`（INFO の予告どおり受領証ゲートが戻る）。register のエラーは 0 | **赤**。`errata: 3 (edited 3)` と 3 行を列挙 |
+| さらに `tools/pre_receipt_session_ids.txt` へ SESSION-20261120-a45e52 を追加 | 緑 | **赤のまま**（書き換えの列挙は免除で消えない） |
+
+`append_only_check` の docstring はこの挙動を設計として明言している: "**no override: when a human has approved changing a row on main, this check stays red and its output is the list of what is being changed.**" つまり人間の承認はゲートを開けず、承認つきの変更であっても赤は赤のまま列挙される。必須チェック（`validate`）と `enforcement_level: everyone`（第 2.1 節実測）が課された main に、この PR が通常の経路で着地することはできない。着地させるには必須チェックの一時的な緩和か直接 push による迂回が必要で、それは 2026-11-20/21 の赤マージと同じ「ゲートを越える」操作である。
+
+### 8.3 コード免除が持つ定義の破れ
+
+`PRE_RECEIPT_SESSION_IDS` の定義は「2026-11-17 20:07 UTC の main の木（`10b5088`）に既に在った session ID」である（tools/validate_seed.py のコメント。95 行）。実測で `git grep SESSION-20261120-a45e52 10b5088 -- state/` は 0 件。この行は 2026-11-20 に刻印された行であり、集合の定義を満たさない。追加すれば 95 行の集合に「凍結時点に存在しない最初のメンバー」が入り、免除機構そのものの信頼性が下がる。
+
+### 8.4 前例: 「承認つき書き換え」は 2026-11-12 に既に起きた
+
+`readings/2026-11-12-what-pr-655-did-and-what-now-stops-it.md` は、main の 177 コミットを遡った監査で、マージ済み 4 PR が既存行を変えていたことを記録する。うち #631（セッション 3 行）と #645（セッション 1 行）は内容の変更で、**#645 は「利用者の承認つきと記録されている」**。これらを当時のどのゲートも検出できなかったことが、バイト比較ゲート（tools/append_only_check.py、2026-11-12）を作らせた。つまり「今回限りの人間承認による書き換え」はこのリポジトリで既に一度実現され、その検出不能性が現在の invariant を生んだ。同じ問いが次の追記で直せない行で再び上がるとき、後続セッションが参照する記録はこの 2026-11-12 の記録と本節である。
+
+### 8.5 閉じないことのコスト（実測）と、スキーマの意味論
+
+- `validate_seed` の INFO 1 行（受領証 waiver）のみ。`errata_audit` のペナルティは waiver 行に掛からない（2026-11-28 実測）。
+- 3 つの errata_id を引用する文書は 4 ファイル（当該 shard、docs 2 本、readings 1 本、2026-11-28 実測）。書き換えるとこの 4 か所の参照先の本文が後から変わる。
+- schema/errata.schema.json の `status` は「A written value, not an edited one: rows are append-only, so `open` stays `open` even after a later session corrects it」と宣言し、`corrected` を `corrected_by` からの**導出値**として定義している。(a) はこの宣言に直接反する。後続 errata による導出で閉じる (b) は意味論に沿うが、8.2 の実測のとおり register 2 件では無変化であり、受領証 1 件ではコード免除が必ず残る。
+
+### 8.6 結論
+
+- **register 2 件（ERR-20261121-8c6d1f / 8074f0）**: 閉じても何も変わらない（不発）。閉じる装置（(b) の導出拡張）を実装するコストが、得られるもの（見かけの整理）を上回る。開いたまま。
+- **受領証 1 件（ERR-20261121-23edfe）**: どの経路で閉じてもコード免除が必須になり、その免除は集合の定義を破る。**open のままが、この台帳の設計上のクリーン状態である。** INFO 1 行は債務の 利息であり、新しい負債ではない。
+- **(a) は物理的には可能**だが（管理権限の人間はゲートを越えられる）、それが買うのは整理であり、払うのは invariant の強度である。台帳の行は「書き換えられない」という性質から「承認があれば書き換えられる」という方針へ変わり、複数セッションが記録を読んで振る舞うこの書庫では、例外は後続の判断分布に載る。「将来的に発生しない」の保証はなく、実際、新しいゲートが過去の行に届かない構図は繰り返し起きている（2026-11-25 の quote_status ゲートは 587 行を未適用のまま INFO で運用中 —— validate_seed 出力の 2026-11-28 実測）。型に対する解決は一度きりの承認ではなく機構であり、機構は既に在る: 追記で直せない欠陥の正しい保持形式が、open な errata 行である。
