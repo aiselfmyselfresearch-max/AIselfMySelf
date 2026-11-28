@@ -7,7 +7,7 @@
 
 - **開かれた問い（Questions）**：439 件（初期シード 10 件 ＋ 派生 429 件）
 - **モチーフ（Motifs）**：63 件
-- **対話素材（Materials）**：6478 件（research_excerpt 4229 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
+- **対話素材（Materials）**：6488 件（research_excerpt 4239 ／ literary_text 2181 ／ project_trace 67 ／ conversation_trace 1）
 - **文芸断片（Fragments）**：254 編（selected 97 ／ draft 157）
 - **解釈的関係（Relations）**：7100 件
 - **探究セッション（Sessions）**：1212 回
@@ -20,11 +20,11 @@
 |---|---|---:|---|
 | 問い | `state/questions.jsonl`＋`state/questions.d/` | 439 | `open` 415／`paused` 24（初期シード 10／セッション派生 398／資料派生 31） |
 | モチーフ | `state/motifs.jsonl`＋`state/motifs.d/` | 63 |  |
-| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6478 | `literary_text` 2181／`research_excerpt` 4229／`project_trace` 67／`conversation_trace` 1 |
+| 素材 | `state/materials.jsonl`＋`state/materials.d/` | 6488 | `literary_text` 2181／`research_excerpt` 4239／`project_trace` 67／`conversation_trace` 1 |
 | 断片 | `state/fragments.jsonl`＋`state/fragments.d/` | 254 | `selected` 97／`draft` 157／`human_narrator` 0 |
 | 関係 | `state/relations.jsonl`＋`state/relations.d/` | 7100 | うち断片↔断片 620 |
 | セッション | `state/sessions.jsonl`＋`state/sessions.d/` | 1212 |  |
-| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 18111 |  |
+| 読み痕跡 | `state/read_log.jsonl`＋`state/read_log.d/` | 18109 |  |
 | 訂正録 | `state/errata.jsonl`＋`state/errata.d/` | 504 |  |
 | 編集判断 | `state/editorial_decisions.jsonl`＋`state/editorial_decisions.d/` | 650 |  |
 | 精読ノート | `state/notes.jsonl`＋`state/notes.d/` | 1368 |  |
@@ -804,7 +804,7 @@
 | `FRAG-20261122-fc8fac` | 箪笥の旧書付と「せぬ」の欄——棒を引けない帳面の上で型を使うこと | selected | essay | reflective_literary_voice |
 | `FRAG-20261126-aeaab0` | 一冬のあとで、肩だけをほどく | draft | scene | third_person |
 
-## 4. 対話素材（6478 件・詳細は map/3*.md）
+## 4. 対話素材（6488 件・詳細は map/3*.md）
 
 | ID | 種 | 題（著者・年） |
 |---|---|---|
@@ -7286,8 +7286,18 @@
 | `MAT-20261128-b542cc` | research_excerpt | McVay, J. C., Kane, M. J.『心ぐれは執行機能か執行失敗か——二因子による再解釈』（2010） |
 | `MAT-20261128-93d0fe` | research_excerpt | Mooneyham, M. W., Schooler, J. W.『心ぐれの費用と便益の総説』（2013） |
 | `MAT-20261128-b6ec7f` | research_excerpt | Belk, R. W.『所有物と拡張された自己』（1988） |
+| `MAT-20261128-43ec01` | research_excerpt | John H. Mace, Hope E. Aaron『Mace (2025) — Semantic-to-autobiographical memory priming: Pr… |
+| `MAT-20261128-43ec02` | research_excerpt | John H. Mace, Kenneth E. Ingle, Hope E. Aaron『Mace (2025) — Narrative processing primes a… |
+| `MAT-20261128-43ec03` | research_excerpt | Krystian Barzykowski, Ewa Ilczuk, Lia Kvavilashvili『Barzykowski (2024) — A comprehensive … |
+| `MAT-20261128-43ec04` | research_excerpt | Krystian Barzykowski, Ewa Ilczuk, Lia Kvavilashvili『Barzykowski (2024) — Dataset of autob… |
+| `MAT-20261128-43ec05` | research_excerpt | Justina Pociunaite, Daniel Zimprich『Pociunaite (2023) — Characteristics of positive and n… |
+| `MAT-20261128-43ec06` | research_excerpt | Ayleen Roderer, Annette Bohn『Roderer (2023) — Retrospective future thinking as a novel me… |
+| `MAT-20261128-43ec07` | research_excerpt | Jeremy K. Yamashiro, James H. Liu, Robert Jiqi Zhang『Yamashiro (2023) — Implicit intertem… |
+| `MAT-20261128-43ec08` | research_excerpt | Christopher Steadman, Videep Venkatesha, Cati Poulos, Anne M. Cleary, Nathaniel Blanchard… |
+| `MAT-20261128-43ec09` | research_excerpt | Yesim Unveren, Mevhibe Saricaoglu, Ece Zeynep Karakulak, Lütfü Hanoğlu『Unveren (2025) — I… |
+| `MAT-20261128-43ec10` | research_excerpt | Mohamad EL Haj, Samuel Bulteau, Noad Maria Azzi, Souheil Hallit『Haj (2026) — Analyzing me… |
 
-## 5. セッション履歴（SESSION-001 〜 SESSION-20261128-55548f・全文は map/50-sessions-*.md）
+## 5. セッション履歴（SESSION-001 〜 SESSION-20261128-43eccf・全文は map/50-sessions-*.md）
 
 | Session | 日付 | たどった問い | 生成断片 | 新しい問い |
 |---|---|---|---|---|
@@ -8502,7 +8512,7 @@
 | `SESSION-20261128-169c67` | 2026-11-28 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261128-5dc42e` | 2026-11-28 | `Q-001`, `Q-002`, `Q-003` | — | — |
 | `SESSION-20261128-3abcb4` | 2026-11-28 | `Q-001`, `Q-002`, `Q-003` | — | — |
-| `SESSION-20261128-55548f` | 2026-11-28 | `Q-001`, `Q-002`, `Q-003` | — | — |
+| `SESSION-20261128-43eccf` | 2026-11-28 | `Q-001`, `Q-002`, `Q-003` | — | — |
 
 ## 6. 解釈的関係（7100 件・全表は map/40-relations-*.md）
 
@@ -8609,7 +8619,7 @@
 | `map/31-materials-research-40.md` | 100 | 230,718 |
 | `map/31-materials-research-41.md` | 100 | 231,459 |
 | `map/31-materials-research-42.md` | 100 | 207,045 |
-| `map/31-materials-research-43.md` | 29 | 71,387 |
+| `map/31-materials-research-43.md` | 39 | 87,442 |
 | `map/32-materials-trace-01.md` | 68 | 168,651 |
 | `map/40-relations-01.md` | 500 | 119,404 |
 | `map/40-relations-02.md` | 500 | 107,550 |
@@ -8650,58 +8660,58 @@
 | `map/50-sessions-22.md` | 50 | 38,141 |
 | `map/50-sessions-23.md` | 50 | 43,631 |
 | `map/50-sessions-24.md` | 50 | 41,174 |
-| `map/50-sessions-25.md` | 12 | 10,145 |
-| `map/60-notes-01.md` | 25 | 83,276 |
-| `map/60-notes-02.md` | 25 | 63,370 |
-| `map/60-notes-03.md` | 25 | 73,919 |
-| `map/60-notes-04.md` | 25 | 92,585 |
-| `map/60-notes-05.md` | 25 | 94,950 |
-| `map/60-notes-06.md` | 25 | 69,801 |
-| `map/60-notes-07.md` | 25 | 60,108 |
-| `map/60-notes-08.md` | 25 | 60,062 |
-| `map/60-notes-09.md` | 25 | 56,803 |
-| `map/60-notes-10.md` | 25 | 61,887 |
-| `map/60-notes-11.md` | 25 | 63,664 |
-| `map/60-notes-12.md` | 25 | 70,547 |
-| `map/60-notes-13.md` | 25 | 81,971 |
-| `map/60-notes-14.md` | 25 | 102,943 |
-| `map/60-notes-15.md` | 25 | 103,455 |
-| `map/60-notes-16.md` | 25 | 90,399 |
-| `map/60-notes-17.md` | 25 | 96,585 |
-| `map/60-notes-18.md` | 25 | 116,100 |
-| `map/60-notes-19.md` | 25 | 98,052 |
-| `map/60-notes-20.md` | 25 | 159,854 |
-| `map/60-notes-21.md` | 25 | 139,941 |
-| `map/60-notes-22.md` | 25 | 146,209 |
-| `map/60-notes-23.md` | 25 | 117,340 |
-| `map/60-notes-24.md` | 25 | 116,361 |
-| `map/60-notes-25.md` | 25 | 106,068 |
-| `map/60-notes-26.md` | 25 | 117,470 |
-| `map/60-notes-27.md` | 25 | 154,325 |
-| `map/60-notes-28.md` | 25 | 45,381 |
-| `map/60-notes-29.md` | 25 | 132,085 |
-| `map/60-notes-30.md` | 25 | 45,243 |
-| `map/60-notes-31.md` | 25 | 43,023 |
-| `map/60-notes-32.md` | 25 | 117,529 |
-| `map/60-notes-33.md` | 25 | 112,092 |
-| `map/60-notes-34.md` | 25 | 136,877 |
-| `map/60-notes-35.md` | 25 | 52,506 |
-| `map/60-notes-36.md` | 25 | 85,735 |
-| `map/60-notes-37.md` | 25 | 98,468 |
-| `map/60-notes-38.md` | 25 | 97,332 |
-| `map/60-notes-39.md` | 25 | 44,755 |
-| `map/60-notes-40.md` | 25 | 87,998 |
-| `map/60-notes-41.md` | 25 | 119,161 |
-| `map/60-notes-42.md` | 25 | 120,202 |
-| `map/60-notes-43.md` | 25 | 80,432 |
-| `map/60-notes-44.md` | 25 | 93,920 |
-| `map/60-notes-45.md` | 25 | 69,406 |
-| `map/60-notes-46.md` | 25 | 80,740 |
-| `map/60-notes-47.md` | 25 | 71,924 |
-| `map/60-notes-48.md` | 25 | 95,965 |
-| `map/60-notes-49.md` | 25 | 92,178 |
-| `map/60-notes-50.md` | 25 | 137,203 |
-| `map/60-notes-51.md` | 14 | 70,363 |
+| `map/50-sessions-25.md` | 12 | 9,939 |
+| `map/60-notes-01.md` | 25 | 85,214 |
+| `map/60-notes-02.md` | 25 | 62,845 |
+| `map/60-notes-03.md` | 25 | 73,745 |
+| `map/60-notes-04.md` | 25 | 93,659 |
+| `map/60-notes-05.md` | 25 | 93,544 |
+| `map/60-notes-06.md` | 25 | 68,959 |
+| `map/60-notes-07.md` | 25 | 59,237 |
+| `map/60-notes-08.md` | 25 | 59,835 |
+| `map/60-notes-09.md` | 25 | 56,752 |
+| `map/60-notes-10.md` | 25 | 61,166 |
+| `map/60-notes-11.md` | 25 | 65,444 |
+| `map/60-notes-12.md` | 25 | 69,479 |
+| `map/60-notes-13.md` | 25 | 86,329 |
+| `map/60-notes-14.md` | 25 | 101,701 |
+| `map/60-notes-15.md` | 25 | 102,844 |
+| `map/60-notes-16.md` | 25 | 87,791 |
+| `map/60-notes-17.md` | 25 | 99,036 |
+| `map/60-notes-18.md` | 25 | 116,678 |
+| `map/60-notes-19.md` | 25 | 98,292 |
+| `map/60-notes-20.md` | 25 | 161,707 |
+| `map/60-notes-21.md` | 25 | 137,810 |
+| `map/60-notes-22.md` | 25 | 145,614 |
+| `map/60-notes-23.md` | 25 | 118,889 |
+| `map/60-notes-24.md` | 25 | 114,216 |
+| `map/60-notes-25.md` | 25 | 108,373 |
+| `map/60-notes-26.md` | 25 | 112,648 |
+| `map/60-notes-27.md` | 25 | 156,310 |
+| `map/60-notes-28.md` | 25 | 48,353 |
+| `map/60-notes-29.md` | 25 | 131,311 |
+| `map/60-notes-30.md` | 25 | 40,986 |
+| `map/60-notes-31.md` | 25 | 49,093 |
+| `map/60-notes-32.md` | 25 | 115,089 |
+| `map/60-notes-33.md` | 25 | 113,821 |
+| `map/60-notes-34.md` | 25 | 132,558 |
+| `map/60-notes-35.md` | 25 | 56,891 |
+| `map/60-notes-36.md` | 25 | 84,943 |
+| `map/60-notes-37.md` | 25 | 97,160 |
+| `map/60-notes-38.md` | 25 | 93,581 |
+| `map/60-notes-39.md` | 25 | 45,474 |
+| `map/60-notes-40.md` | 25 | 88,609 |
+| `map/60-notes-41.md` | 25 | 122,827 |
+| `map/60-notes-42.md` | 25 | 118,729 |
+| `map/60-notes-43.md` | 25 | 79,870 |
+| `map/60-notes-44.md` | 25 | 92,462 |
+| `map/60-notes-45.md` | 25 | 70,531 |
+| `map/60-notes-46.md` | 25 | 80,440 |
+| `map/60-notes-47.md` | 25 | 71,816 |
+| `map/60-notes-48.md` | 25 | 95,404 |
+| `map/60-notes-49.md` | 25 | 92,058 |
+| `map/60-notes-50.md` | 25 | 141,330 |
+| `map/60-notes-51.md` | 13 | 63,554 |
 
 再生成: `python3 tools/map_build.py` ／ 検査: `python3 tools/map_build.py --check`。シャードキーは台帳の挿入順（安定した順序）で、`map/manifest.json` に ID→シャードの対応表と sha256 を置いている。
 

@@ -81,9 +81,9 @@
 システムの内部状態シグナル（容量・バランス・接続・一貫性）。
 
 ### 容量シグナル
-- ✓ file_count:state/materials.d: 168/175 (soft 168)
-- ✓ file_count:state/read_log.d: 192/200 (soft 192)
-- ✓ file_count:state/sessions.d: 194/202 (soft 194)
+- ✓ file_count:state/materials.d: 169/175 (soft 169)
+- ✓ file_count:state/read_log.d: 193/200 (soft 193)
+- ✓ file_count:state/sessions.d: 195/202 (soft 195)
 - ✓ file_count:state/notes.d: 183/186 (soft 183)
 - ✓ file_count:readings/: 1248/1400 (soft 1250)
 
@@ -112,9 +112,9 @@
 
 `default_mode_probe.py` による前回予測と事後更新の実測差分、および次回検証の反事実感度（読み取り専用・台帳無変更）。
 
-- **予測誤差アラーム**: ✓ `green` — 直近 5 評価セッション中 5/5 回で有意な事後更新を観測（最大累積 D_KL=0.3939 bits）
-- **直近評価セッション**: `SESSION-20261128-55548f` （評価 2 件 / 反証系 1 件 / `verified` 引用 0 件 / フロンティア照準: `exact_frontier_pair`）
-- **最新セッション割当整合**: `SESSION-20261128-55548f` （ロール `consolidator` / 参照基底 `default+receiver_gated+amortized` / 提示問い `Q-20261024-6bdafd` -> 実行 `Q-001, Q-002, Q-003`）
+- **予測誤差アラーム**: ✓ `green` — 直近 5 評価セッション中 5/5 回で有意な事後更新を観測（最大累積 D_KL=0.0022 bits）
+- **直近評価セッション**: `SESSION-20261128-3abcb4` （評価 1 件 / 反証系 0 件 / `verified` 引用 0 件 / フロンティア照準: `off_frontier_exploration`）
+- **最新セッション割当整合**: `SESSION-20261128-43eccf` （ロール `consolidator` / 参照基底 `unrecorded` / 提示問い `Q-20261027-48039e` -> 実行 `Q-001, Q-002, Q-003`）
 
 ### 直近評価セッションの事後確率シフト
 - **Q-001**: D_KL(P_amort)=0.30799 bits, D_KL(P_gate)=0.30993 bits, L1(P_amort)=0.6446, 首位対入替=なし
